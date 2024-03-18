@@ -983,22 +983,22 @@ func (a *CustomFormsAPIService) ExportFormDefinitionsByTenantExecute(r ApiExport
 	localVarFormParams := url.Values{}
 
 	if r.offset != nil {
-		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
 	} else {
 		var defaultValue int64 = 0
 		r.offset = &defaultValue
 	}
 	if r.limit != nil {
-		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
 		var defaultValue int64 = 250
 		r.limit = &defaultValue
 	}
 	if r.filters != nil {
-		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "")
 	}
 	if r.sorters != nil {
-		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "")
 	} else {
 		var defaultValue string = "name"
 		r.sorters = &defaultValue
@@ -2408,22 +2408,22 @@ func (a *CustomFormsAPIService) SearchFormDefinitionsByTenantExecute(r ApiSearch
 	localVarFormParams := url.Values{}
 
 	if r.offset != nil {
-		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
 	} else {
 		var defaultValue int64 = 0
 		r.offset = &defaultValue
 	}
 	if r.limit != nil {
-		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
 		var defaultValue int64 = 250
 		r.limit = &defaultValue
 	}
 	if r.filters != nil {
-		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "")
 	}
 	if r.sorters != nil {
-		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "")
 	} else {
 		var defaultValue string = "name"
 		r.sorters = &defaultValue
@@ -2605,13 +2605,13 @@ func (a *CustomFormsAPIService) SearchFormElementDataByElementIDExecute(r ApiSea
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
 		var defaultValue int64 = 250
 		r.limit = &defaultValue
 	}
 	if r.filters != nil {
-		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3114,16 +3114,16 @@ func (a *CustomFormsAPIService) ShowPreviewDataSourceExecute(r ApiShowPreviewDat
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
 		var defaultValue int64 = 10
 		r.limit = &defaultValue
 	}
 	if r.filters != nil {
-		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "")
 	}
 	if r.query != nil {
-		parameterAddToQuery(localVarQueryParams, "query", r.query, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "query", r.query, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

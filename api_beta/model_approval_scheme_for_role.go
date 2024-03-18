@@ -147,7 +147,7 @@ func (o *ApprovalSchemeForRole) UnmarshalJSON(bytes []byte) (err error) {
 	varApprovalSchemeForRole := _ApprovalSchemeForRole{}
 
 	if err = json.Unmarshal(bytes, &varApprovalSchemeForRole); err == nil {
-	*o = ApprovalSchemeForRole(varApprovalSchemeForRole)
+			*o = ApprovalSchemeForRole(varApprovalSchemeForRole)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -22,7 +22,8 @@ var _ MappedNullable = &AccessRequestPreApproval{}
 type AccessRequestPreApproval struct {
 	// The unique ID of the access request.
 	AccessRequestId string `json:"accessRequestId"`
-	RequestedFor AccessItemRequestedForDto `json:"requestedFor"`
+	// Identities access was requested for.
+	RequestedFor []AccessItemRequestedForDto `json:"requestedFor"`
 	// Details of the access items being requested.
 	RequestedItems []AccessRequestPreApprovalRequestedItemsInner `json:"requestedItems"`
 	RequestedBy AccessItemRequesterDto `json:"requestedBy"`
@@ -35,7 +36,7 @@ type _AccessRequestPreApproval AccessRequestPreApproval
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccessRequestPreApproval(accessRequestId string, requestedFor AccessItemRequestedForDto, requestedItems []AccessRequestPreApprovalRequestedItemsInner, requestedBy AccessItemRequesterDto) *AccessRequestPreApproval {
+func NewAccessRequestPreApproval(accessRequestId string, requestedFor []AccessItemRequestedForDto, requestedItems []AccessRequestPreApprovalRequestedItemsInner, requestedBy AccessItemRequesterDto) *AccessRequestPreApproval {
 	this := AccessRequestPreApproval{}
 	this.AccessRequestId = accessRequestId
 	this.RequestedFor = requestedFor
@@ -77,9 +78,9 @@ func (o *AccessRequestPreApproval) SetAccessRequestId(v string) {
 }
 
 // GetRequestedFor returns the RequestedFor field value
-func (o *AccessRequestPreApproval) GetRequestedFor() AccessItemRequestedForDto {
+func (o *AccessRequestPreApproval) GetRequestedFor() []AccessItemRequestedForDto {
 	if o == nil {
-		var ret AccessItemRequestedForDto
+		var ret []AccessItemRequestedForDto
 		return ret
 	}
 
@@ -88,15 +89,15 @@ func (o *AccessRequestPreApproval) GetRequestedFor() AccessItemRequestedForDto {
 
 // GetRequestedForOk returns a tuple with the RequestedFor field value
 // and a boolean to check if the value has been set.
-func (o *AccessRequestPreApproval) GetRequestedForOk() (*AccessItemRequestedForDto, bool) {
+func (o *AccessRequestPreApproval) GetRequestedForOk() ([]AccessItemRequestedForDto, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.RequestedFor, true
+	return o.RequestedFor, true
 }
 
 // SetRequestedFor sets field value
-func (o *AccessRequestPreApproval) SetRequestedFor(v AccessItemRequestedForDto) {
+func (o *AccessRequestPreApproval) SetRequestedFor(v []AccessItemRequestedForDto) {
 	o.RequestedFor = v
 }
 
@@ -171,7 +172,7 @@ func (o AccessRequestPreApproval) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *AccessRequestPreApproval) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -198,7 +199,7 @@ func (o *AccessRequestPreApproval) UnmarshalJSON(bytes []byte) (err error) {
 	varAccessRequestPreApproval := _AccessRequestPreApproval{}
 
 	if err = json.Unmarshal(bytes, &varAccessRequestPreApproval); err == nil {
-	*o = AccessRequestPreApproval(varAccessRequestPreApproval)
+			*o = AccessRequestPreApproval(varAccessRequestPreApproval)
 }
 
 	additionalProperties := make(map[string]interface{})

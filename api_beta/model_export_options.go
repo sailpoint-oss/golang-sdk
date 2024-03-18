@@ -174,7 +174,7 @@ func (o *ExportOptions) UnmarshalJSON(bytes []byte) (err error) {
 	varExportOptions := _ExportOptions{}
 
 	if err = json.Unmarshal(bytes, &varExportOptions); err == nil {
-	*o = ExportOptions(varExportOptions)
+			*o = ExportOptions(varExportOptions)
 }
 
 	additionalProperties := make(map[string]interface{})

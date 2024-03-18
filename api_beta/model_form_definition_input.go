@@ -211,7 +211,7 @@ func (o *FormDefinitionInput) UnmarshalJSON(bytes []byte) (err error) {
 	varFormDefinitionInput := _FormDefinitionInput{}
 
 	if err = json.Unmarshal(bytes, &varFormDefinitionInput); err == nil {
-	*o = FormDefinitionInput(varFormDefinitionInput)
+			*o = FormDefinitionInput(varFormDefinitionInput)
 }
 
 	additionalProperties := make(map[string]interface{})

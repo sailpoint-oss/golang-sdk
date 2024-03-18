@@ -4,69 +4,41 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateSearchAttributeConfig**](SearchAttributeConfigurationAPI.md#CreateSearchAttributeConfig) | **Post** /accounts/search-attribute-config | Configure/create extended search attributes in IdentityNow.
-[**DeleteSearchAttributeConfig**](SearchAttributeConfigurationAPI.md#DeleteSearchAttributeConfig) | **Delete** /accounts/search-attribute-config/{name} | Delete an extended search attribute in IdentityNow.
-[**GetSearchAttributeConfig**](SearchAttributeConfigurationAPI.md#GetSearchAttributeConfig) | **Get** /accounts/search-attribute-config | Retrieve a list of extended search attributes in IdentityNow.
-[**GetSingleSearchAttributeConfig**](SearchAttributeConfigurationAPI.md#GetSingleSearchAttributeConfig) | **Get** /accounts/search-attribute-config/{name} | Get the details of a specific extended search attribute in IdentityNow.
-[**PatchSearchAttributeConfig**](SearchAttributeConfigurationAPI.md#PatchSearchAttributeConfig) | **Patch** /accounts/search-attribute-config/{name} | Update the details of a specific extended search attribute in IdentityNow.
+[**CreateSearchAttributeConfig**](#create-search-attribute-config) | **Post** /accounts/search-attribute-config | Configure/create extended search attributes in IdentityNow.
+[**DeleteSearchAttributeConfig**](#delete-search-attribute-config) | **Delete** /accounts/search-attribute-config/{name} | Delete an extended search attribute in IdentityNow.
+[**GetSearchAttributeConfig**](#get-search-attribute-config) | **Get** /accounts/search-attribute-config | Retrieve a list of extended search attributes in IdentityNow.
+[**GetSingleSearchAttributeConfig**](#get-single-search-attribute-config) | **Get** /accounts/search-attribute-config/{name} | Get the details of a specific extended search attribute in IdentityNow.
+[**PatchSearchAttributeConfig**](#patch-search-attribute-config) | **Patch** /accounts/search-attribute-config/{name} | Update the details of a specific extended search attribute in IdentityNow.
 
 
 
-## CreateSearchAttributeConfig
-
-> map[string]interface{} CreateSearchAttributeConfig(ctx).SearchAttributeConfig(searchAttributeConfig).Execute()
-
-Configure/create extended search attributes in IdentityNow.
+## create-search-attribute-config
 
 
+This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names.  It will then validate the inputs and configure/create and attribute promotion configuration in the Link ObjectConfig.
+A token with ORG_ADMIN authority is required to call this API.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | searchAttributeConfig | [**SearchAttributeConfig**](SearchAttributeConfig.md) | True  | 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    searchAttributeConfig := *openapiclient.NewSearchAttributeConfig() // SearchAttributeConfig | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SearchAttributeConfigurationAPI.CreateSearchAttributeConfig(context.Background()).SearchAttributeConfig(searchAttributeConfig).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationAPI.CreateSearchAttributeConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateSearchAttributeConfig`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `SearchAttributeConfigurationAPI.CreateSearchAttributeConfig`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateSearchAttributeConfigRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **searchAttributeConfig** | [**SearchAttributeConfig**](SearchAttributeConfig.md) |  | 
-
+	
 ### Return type
 
 **map[string]interface{}**
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+202 | Accepted - Returned if the request was successfully accepted into the system. | map[string]interface{}
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -78,63 +50,32 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteSearchAttributeConfig
-
-> DeleteSearchAttributeConfig(ctx, name).Execute()
-
-Delete an extended search attribute in IdentityNow.
+## delete-search-attribute-config
 
 
+This API accepts an extended attribute name and deletes the corresponding extended attribute configuration.
+A token with ORG_ADMIN authority is required to call this API.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | name | **string** | True  | Name of the extended search attribute configuration to delete.
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    name := "newMailAttribute" // string | Name of the extended search attribute configuration to delete.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.SearchAttributeConfigurationAPI.DeleteSearchAttributeConfig(context.Background(), name).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationAPI.DeleteSearchAttributeConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**name** | **string** | Name of the extended search attribute configuration to delete. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDeleteSearchAttributeConfigRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+	
 ### Return type
 
  (empty response body)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+204 | No content - indicates the request was successful but there is no content to be returned in the response. | 
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -146,56 +87,30 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetSearchAttributeConfig
-
-> []SearchAttributeConfig GetSearchAttributeConfig(ctx).Execute()
-
-Retrieve a list of extended search attributes in IdentityNow.
+## get-search-attribute-config
 
 
+This API retrieves a list of attribute/application associates currently configured in IdentityNow.
+A token with ORG_ADMIN authority is required to call this API.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SearchAttributeConfigurationAPI.GetSearchAttributeConfig(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationAPI.GetSearchAttributeConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetSearchAttributeConfig`: []SearchAttributeConfig
-    fmt.Fprintf(os.Stdout, "Response from `SearchAttributeConfigurationAPI.GetSearchAttributeConfig`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetSearchAttributeConfigRequest struct via the builder pattern
-
-
+	
 ### Return type
 
-[**[]SearchAttributeConfig**](SearchAttributeConfig.md)
+[**[]SearchAttributeConfig**](SearchAttributeConfig)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | List of attribute configurations in IdentityNow. | []SearchAttributeConfig
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -207,65 +122,33 @@ Other parameters are passed through a pointer to a apiGetSearchAttributeConfigRe
 [[Back to README]](../README.md)
 
 
-## GetSingleSearchAttributeConfig
-
-> []SearchAttributeConfig GetSingleSearchAttributeConfig(ctx, name).Execute()
-
-Get the details of a specific extended search attribute in IdentityNow.
+## get-single-search-attribute-config
 
 
+This API accepts an extended attribute name and retrieves the corresponding extended attribute configuration.
+A token with ORG_ADMIN authority is required to call this API.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | name | **string** | True  | Name of the extended search attribute configuration to delete.
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    name := "newMailAttribute" // string | Name of the extended search attribute configuration to delete.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SearchAttributeConfigurationAPI.GetSingleSearchAttributeConfig(context.Background(), name).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationAPI.GetSingleSearchAttributeConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetSingleSearchAttributeConfig`: []SearchAttributeConfig
-    fmt.Fprintf(os.Stdout, "Response from `SearchAttributeConfigurationAPI.GetSingleSearchAttributeConfig`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**name** | **string** | Name of the extended search attribute configuration to delete. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetSingleSearchAttributeConfigRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+	
 ### Return type
 
-[**[]SearchAttributeConfig**](SearchAttributeConfig.md)
+[**[]SearchAttributeConfig**](SearchAttributeConfig)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Specific attribute configuration in IdentityNow. | []SearchAttributeConfig
+204 | No content - indicates the request was successful but there is no content to be returned in the response. | 
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -277,67 +160,35 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PatchSearchAttributeConfig
-
-> SearchAttributeConfig PatchSearchAttributeConfig(ctx, name).JsonPatchOperation(jsonPatchOperation).Execute()
-
-Update the details of a specific extended search attribute in IdentityNow.
+## patch-search-attribute-config
 
 
+This API updates an existing Search Attribute Configuration. The following fields are patchable:
+**name**, **displayName**, **applicationAttributes**
+A token with ORG_ADMIN authority is required to call this API.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | name | **string** | True  | Name of the Search Attribute Configuration to patch.
+ Body  | jsonPatchOperation | [**[]JsonPatchOperation**](JsonPatchOperation.md) | True  | 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    name := "promotedMailAttribute" // string | Name of the Search Attribute Configuration to patch.
-    jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SearchAttributeConfigurationAPI.PatchSearchAttributeConfig(context.Background(), name).JsonPatchOperation(jsonPatchOperation).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationAPI.PatchSearchAttributeConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PatchSearchAttributeConfig`: SearchAttributeConfig
-    fmt.Fprintf(os.Stdout, "Response from `SearchAttributeConfigurationAPI.PatchSearchAttributeConfig`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**name** | **string** | Name of the Search Attribute Configuration to patch. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPatchSearchAttributeConfigRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **jsonPatchOperation** | [**[]JsonPatchOperation**](JsonPatchOperation.md) |  | 
-
+	
 ### Return type
 
-[**SearchAttributeConfig**](SearchAttributeConfig.md)
+[**SearchAttributeConfig**](SearchAttributeConfig)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Responds with the Search Attribute Configuration as updated. | SearchAttributeConfig
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 

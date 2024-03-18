@@ -133,7 +133,7 @@ func (o *PermissionDto) UnmarshalJSON(bytes []byte) (err error) {
 	varPermissionDto := _PermissionDto{}
 
 	if err = json.Unmarshal(bytes, &varPermissionDto); err == nil {
-	*o = PermissionDto(varPermissionDto)
+			*o = PermissionDto(varPermissionDto)
 }
 
 	additionalProperties := make(map[string]interface{})

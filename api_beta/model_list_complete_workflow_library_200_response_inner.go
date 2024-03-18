@@ -17,51 +17,51 @@ import (
 
 // ListCompleteWorkflowLibrary200ResponseInner struct for ListCompleteWorkflowLibrary200ResponseInner
 type ListCompleteWorkflowLibrary200ResponseInner struct {
-	WorkflowLibraryActionvar *WorkflowLibraryAction
-	WorkflowLibraryOperatorvar *WorkflowLibraryOperator
-	WorkflowLibraryTriggervar *WorkflowLibraryTrigger
+	WorkflowLibraryAction *WorkflowLibraryAction
+	WorkflowLibraryOperator *WorkflowLibraryOperator
+	WorkflowLibraryTrigger *WorkflowLibraryTrigger
 }
 
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *ListCompleteWorkflowLibrary200ResponseInner) UnmarshalJSON(data []byte) error {
 	var err error
-	// try to unmarshal JSON data into WorkflowLibraryActionvar
-	err = json.Unmarshal(data, &dst.WorkflowLibraryActionvar);
+	// try to unmarshal JSON data into WorkflowLibraryAction
+	err = json.Unmarshal(data, &dst.WorkflowLibraryAction);
 	if err == nil {
-		jsonWorkflowLibraryActionvar, _ := json.Marshal(dst.WorkflowLibraryActionvar)
-		if string(jsonWorkflowLibraryActionvar) == "{}" { // empty struct
-			dst.WorkflowLibraryActionvar = nil
+		jsonWorkflowLibraryAction, _ := json.Marshal(dst.WorkflowLibraryAction)
+		if string(jsonWorkflowLibraryAction) == "{}" { // empty struct
+			dst.WorkflowLibraryAction = nil
 		} else {
-			return nil // data stored in dst.WorkflowLibraryActionvar, return on the first match
+			return nil // data stored in dst.WorkflowLibraryAction, return on the first match
 		}
 	} else {
-		dst.WorkflowLibraryActionvar = nil
+		dst.WorkflowLibraryAction = nil
 	}
 
-	// try to unmarshal JSON data into WorkflowLibraryOperatorvar
-	err = json.Unmarshal(data, &dst.WorkflowLibraryOperatorvar);
+	// try to unmarshal JSON data into WorkflowLibraryOperator
+	err = json.Unmarshal(data, &dst.WorkflowLibraryOperator);
 	if err == nil {
-		jsonWorkflowLibraryOperatorvar, _ := json.Marshal(dst.WorkflowLibraryOperatorvar)
-		if string(jsonWorkflowLibraryOperatorvar) == "{}" { // empty struct
-			dst.WorkflowLibraryOperatorvar = nil
+		jsonWorkflowLibraryOperator, _ := json.Marshal(dst.WorkflowLibraryOperator)
+		if string(jsonWorkflowLibraryOperator) == "{}" { // empty struct
+			dst.WorkflowLibraryOperator = nil
 		} else {
-			return nil // data stored in dst.WorkflowLibraryOperatorvar, return on the first match
+			return nil // data stored in dst.WorkflowLibraryOperator, return on the first match
 		}
 	} else {
-		dst.WorkflowLibraryOperatorvar = nil
+		dst.WorkflowLibraryOperator = nil
 	}
 
-	// try to unmarshal JSON data into WorkflowLibraryTriggervar
-	err = json.Unmarshal(data, &dst.WorkflowLibraryTriggervar);
+	// try to unmarshal JSON data into WorkflowLibraryTrigger
+	err = json.Unmarshal(data, &dst.WorkflowLibraryTrigger);
 	if err == nil {
-		jsonWorkflowLibraryTriggervar, _ := json.Marshal(dst.WorkflowLibraryTriggervar)
-		if string(jsonWorkflowLibraryTriggervar) == "{}" { // empty struct
-			dst.WorkflowLibraryTriggervar = nil
+		jsonWorkflowLibraryTrigger, _ := json.Marshal(dst.WorkflowLibraryTrigger)
+		if string(jsonWorkflowLibraryTrigger) == "{}" { // empty struct
+			dst.WorkflowLibraryTrigger = nil
 		} else {
-			return nil // data stored in dst.WorkflowLibraryTriggervar, return on the first match
+			return nil // data stored in dst.WorkflowLibraryTrigger, return on the first match
 		}
 	} else {
-		dst.WorkflowLibraryTriggervar = nil
+		dst.WorkflowLibraryTrigger = nil
 	}
 
 	return fmt.Errorf("data failed to match schemas in anyOf(ListCompleteWorkflowLibrary200ResponseInner)")
@@ -69,16 +69,16 @@ func (dst *ListCompleteWorkflowLibrary200ResponseInner) UnmarshalJSON(data []byt
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src *ListCompleteWorkflowLibrary200ResponseInner) MarshalJSON() ([]byte, error) {
-	if src.WorkflowLibraryActionvar != nil {
-		return json.Marshal(&src.WorkflowLibraryActionvar)
+	if src.WorkflowLibraryAction != nil {
+		return json.Marshal(&src.WorkflowLibraryAction)
 	}
 
-	if src.WorkflowLibraryOperatorvar != nil {
-		return json.Marshal(&src.WorkflowLibraryOperatorvar)
+	if src.WorkflowLibraryOperator != nil {
+		return json.Marshal(&src.WorkflowLibraryOperator)
 	}
 
-	if src.WorkflowLibraryTriggervar != nil {
-		return json.Marshal(&src.WorkflowLibraryTriggervar)
+	if src.WorkflowLibraryTrigger != nil {
+		return json.Marshal(&src.WorkflowLibraryTrigger)
 	}
 
 	return nil, nil // no data in anyOf schemas

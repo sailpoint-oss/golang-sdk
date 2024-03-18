@@ -174,7 +174,7 @@ func (o *FormError) UnmarshalJSON(bytes []byte) (err error) {
 	varFormError := _FormError{}
 
 	if err = json.Unmarshal(bytes, &varFormError); err == nil {
-	*o = FormError(varFormError)
+			*o = FormError(varFormError)
 }
 
 	additionalProperties := make(map[string]interface{})

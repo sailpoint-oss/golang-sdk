@@ -211,7 +211,7 @@ func (o *EmailNotificationOption) UnmarshalJSON(bytes []byte) (err error) {
 	varEmailNotificationOption := _EmailNotificationOption{}
 
 	if err = json.Unmarshal(bytes, &varEmailNotificationOption); err == nil {
-	*o = EmailNotificationOption(varEmailNotificationOption)
+			*o = EmailNotificationOption(varEmailNotificationOption)
 }
 
 	additionalProperties := make(map[string]interface{})

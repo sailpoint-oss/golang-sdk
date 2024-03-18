@@ -364,7 +364,7 @@ func (o *SubscriptionPutRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varSubscriptionPutRequest := _SubscriptionPutRequest{}
 
 	if err = json.Unmarshal(bytes, &varSubscriptionPutRequest); err == nil {
-	*o = SubscriptionPutRequest(varSubscriptionPutRequest)
+			*o = SubscriptionPutRequest(varSubscriptionPutRequest)
 }
 
 	additionalProperties := make(map[string]interface{})

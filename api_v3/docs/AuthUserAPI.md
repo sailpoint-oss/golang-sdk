@@ -4,12 +4,12 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetAuthUser**](AuthUserAPI.md#GetAuthUser) | **Get** /auth-users/{id} | Auth User Details
-[**PatchAuthUser**](AuthUserAPI.md#PatchAuthUser) | **Patch** /auth-users/{id} | Auth User Update
+[**GetAuthUser**](#get-auth-user) | **Get** /auth-users/{id} | Auth User Details
+[**PatchAuthUser**](#patch-auth-user) | **Patch** /auth-users/{id} | Auth User Update
 
 
 
-## Auth User Details
+## get-auth-user
 
 
 Return the specified user's authentication system details.
@@ -19,10 +19,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **string** | True  | Identity ID
 
-
+	
 ### Return type
 
-[**AuthUser**](AuthUser.md)
+[**AuthUser**](AuthUser)
 
 ### Responses
 Code | Description  | Data Type
@@ -45,43 +45,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//GetAuthUser
-
-    id := "ef38f94347e94562b5bb8424a56397d8"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.AuthUserAPI.GetAuthUser(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthUserAPI.GetAuthUser``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetAuthUser`: AuthUser
-    fmt.Fprintf(os.Stdout, "Response from `AuthUserAPI.GetAuthUser`: %v\n", resp)
-}
-```
-
-
-
-
-## Auth User Update
+## patch-auth-user
 
 
 Use a PATCH request to update an existing user in the authentication system.
@@ -96,10 +61,10 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **string** | True  | Identity ID
  Body  | jsonPatchOperation | [**[]JsonPatchOperation**](JsonPatchOperation.md) | True  | A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
-
+	
 ### Return type
 
-[**AuthUser**](AuthUser.md)
+[**AuthUser**](AuthUser)
 
 ### Responses
 Code | Description  | Data Type
@@ -121,40 +86,4 @@ Code | Description  | Data Type
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//PatchAuthUser
-
-    id := "ef38f94347e94562b5bb8424a56397d8"
-    jsonPatchOperation := []sailpoint.JsonPatchOperation{*sailpoint.NewJsonPatchOperation("replace", "/description")}
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.AuthUserAPI.PatchAuthUser(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthUserAPI.PatchAuthUser``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PatchAuthUser`: AuthUser
-    fmt.Fprintf(os.Stdout, "Response from `AuthUserAPI.PatchAuthUser`: %v\n", resp)
-}
-```
-
-
 

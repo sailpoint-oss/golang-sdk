@@ -137,7 +137,7 @@ func (o *ManagedClusterRedis) UnmarshalJSON(bytes []byte) (err error) {
 	varManagedClusterRedis := _ManagedClusterRedis{}
 
 	if err = json.Unmarshal(bytes, &varManagedClusterRedis); err == nil {
-	*o = ManagedClusterRedis(varManagedClusterRedis)
+			*o = ManagedClusterRedis(varManagedClusterRedis)
 }
 
 	additionalProperties := make(map[string]interface{})

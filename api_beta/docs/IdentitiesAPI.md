@@ -4,72 +4,43 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteIdentity**](IdentitiesAPI.md#DeleteIdentity) | **Delete** /identities/{id} | Deletes an identity.
-[**GetIdentity**](IdentitiesAPI.md#GetIdentity) | **Get** /identities/{id} | Identity Details
-[**GetIdentityOwnershipDetails**](IdentitiesAPI.md#GetIdentityOwnershipDetails) | **Get** /identities/{identityId}/ownership | Get ownership details
-[**ListIdentities**](IdentitiesAPI.md#ListIdentities) | **Get** /identities | List Identities
-[**StartIdentityProcessing**](IdentitiesAPI.md#StartIdentityProcessing) | **Post** /identities/process | Process a list of identityIds
-[**SynchronizeAttributesForIdentity**](IdentitiesAPI.md#SynchronizeAttributesForIdentity) | **Post** /identities/{identityId}/synchronize-attributes | Attribute synchronization for single identity.
+[**DeleteIdentity**](#delete-identity) | **Delete** /identities/{id} | Deletes an identity.
+[**GetIdentity**](#get-identity) | **Get** /identities/{id} | Identity Details
+[**GetIdentityOwnershipDetails**](#get-identity-ownership-details) | **Get** /identities/{identityId}/ownership | Get ownership details
+[**GetRoleAssignment**](#get-role-assignment) | **Get** /identities/{identityId}/role-assignments/{assignmentId} | Get role assignment
+[**GetRoleAssignments**](#get-role-assignments) | **Get** /identities/{identityId}/role-assignments | Get role assignments
+[**ListIdentities**](#list-identities) | **Get** /identities | List Identities
+[**StartIdentityProcessing**](#start-identity-processing) | **Post** /identities/process | Process a list of identityIds
+[**SynchronizeAttributesForIdentity**](#synchronize-attributes-for-identity) | **Post** /identities/{identityId}/synchronize-attributes | Attribute synchronization for single identity.
 
 
 
-## DeleteIdentity
-
-> DeleteIdentity(ctx, id).Execute()
-
-Deletes an identity.
+## delete-identity
 
 
+The API returns successful response if the requested identity was deleted.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | Identity Id
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | Identity Id
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.IdentitiesAPI.DeleteIdentity(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.DeleteIdentity``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Identity Id | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDeleteIdentityRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+	
 ### Return type
 
  (empty response body)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+204 | No content - indicates the request was successful but there is no content to be returned in the response. | 
+400 | Client Error - Returned if the request is invalid. It may indicate that the specified identity is marked as protected and cannot be deleted. | IdentityAssociationDetails
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -81,65 +52,32 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetIdentity
-
-> Identity GetIdentity(ctx, id).Execute()
-
-Identity Details
+## get-identity
 
 
+This API returns a single identity using the Identity ID.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | Identity Id
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | Identity Id
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentitiesAPI.GetIdentity(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.GetIdentity``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetIdentity`: Identity
-    fmt.Fprintf(os.Stdout, "Response from `IdentitiesAPI.GetIdentity`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Identity Id | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetIdentityRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+	
 ### Return type
 
-[**Identity**](Identity.md)
+[**Identity**](Identity)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | An identity object | Identity
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -151,65 +89,32 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetIdentityOwnershipDetails
-
-> IdentityOwnershipAssociationDetails GetIdentityOwnershipDetails(ctx, identityId).Execute()
-
-Get ownership details
+## get-identity-ownership-details
 
 
+Get Ownership association details of an Identity
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | identityId | **string** | True  | The identity id
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    identityId := "ff8081814d2a8036014d701f3fbf53fa" // string | The identity id
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentitiesAPI.GetIdentityOwnershipDetails(context.Background(), identityId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.GetIdentityOwnershipDetails``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetIdentityOwnershipDetails`: IdentityOwnershipAssociationDetails
-    fmt.Fprintf(os.Stdout, "Response from `IdentitiesAPI.GetIdentityOwnershipDetails`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**identityId** | **string** | The identity id | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetIdentityOwnershipDetailsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+	
 ### Return type
 
-[**IdentityOwnershipAssociationDetails**](IdentityOwnershipAssociationDetails.md)
+[**IdentityOwnershipAssociationDetails**](IdentityOwnershipAssociationDetails)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Ownership association details of an Identity. | IdentityOwnershipAssociationDetails
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -221,71 +126,33 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListIdentities
-
-> []Identity ListIdentities(ctx).Filters(filters).Sorters(sorters).DefaultFilter(defaultFilter).Count(count).Limit(limit).Offset(offset).Execute()
-
-List Identities
+## get-role-assignment
 
 
 
-### Example
 
-```go
-package main
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | identityId | **string** | True  | Identity Id
+Path   | assignmentId | **string** | True  | Assignment Id
 
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    filters := "id eq "6c9079b270a266a60170a2779fcb0006" or correlated eq false" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **alias**: *eq, sw*  **firstname**: *eq, sw*  **lastname**: *eq, sw*  **email**: *eq, sw*  **cloudStatus**: *eq*  **processingState**: *eq*  **correlated**: *eq*  **protected**: *eq* (optional)
-    sorters := "name,-cloudStatus" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, alias, cloudStatus** (optional)
-    defaultFilter := "NONE" // string | Adds additional filter to filters query parameter.  CORRELATED_ONLY adds correlated=true and returns only identities that are correlated.  NONE does not add any and returns all identities that satisfy filters query parameter. (optional) (default to "CORRELATED_ONLY")
-    count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-    limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
-    offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentitiesAPI.ListIdentities(context.Background()).Filters(filters).Sorters(sorters).DefaultFilter(defaultFilter).Count(count).Limit(limit).Offset(offset).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.ListIdentities``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListIdentities`: []Identity
-    fmt.Fprintf(os.Stdout, "Response from `IdentitiesAPI.ListIdentities`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListIdentitiesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **alias**: *eq, sw*  **firstname**: *eq, sw*  **lastname**: *eq, sw*  **email**: *eq, sw*  **cloudStatus**: *eq*  **processingState**: *eq*  **correlated**: *eq*  **protected**: *eq* | 
- **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, alias, cloudStatus** | 
- **defaultFilter** | **string** | Adds additional filter to filters query parameter.  CORRELATED_ONLY adds correlated&#x3D;true and returns only identities that are correlated.  NONE does not add any and returns all identities that satisfy filters query parameter. | [default to &quot;CORRELATED_ONLY&quot;]
- **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
- **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
- **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
-
+	
 ### Return type
 
-[**[]Identity**](Identity.md)
+[**RoleAssignmentDto**](RoleAssignmentDto)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | A role assignment object | RoleAssignmentDto
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -297,61 +164,122 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## StartIdentityProcessing
-
-> TaskResultResponse StartIdentityProcessing(ctx).ProcessIdentitiesRequest(processIdentitiesRequest).Execute()
-
-Process a list of identityIds
+## get-role-assignments
 
 
+This returns either a list of Role Assignments when querying with either a Role Id or Role Name, or a list of Role Assignment References if querying with only identity Id.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | identityId | **string** | True  | Identity Id to get the role assignments for
+  Query | roleId | **string** |   (optional) | Role Id to filter the role assignments with
+  Query | roleName | **string** |   (optional) | Role name to filter the role assignments with
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    processIdentitiesRequest := *openapiclient.NewProcessIdentitiesRequest() // ProcessIdentitiesRequest | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentitiesAPI.StartIdentityProcessing(context.Background()).ProcessIdentitiesRequest(processIdentitiesRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.StartIdentityProcessing``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StartIdentityProcessing`: TaskResultResponse
-    fmt.Fprintf(os.Stdout, "Response from `IdentitiesAPI.StartIdentityProcessing`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiStartIdentityProcessingRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **processIdentitiesRequest** | [**ProcessIdentitiesRequest**](ProcessIdentitiesRequest.md) |  | 
-
+	
 ### Return type
 
-[**TaskResultResponse**](TaskResultResponse.md)
+[**[]GetRoleAssignments200ResponseInner**](GetRoleAssignments200ResponseInner)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | A role assignment object | []GetRoleAssignments200ResponseInner
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## list-identities
+
+
+This API returns a list of identities.
+
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+  Query | filters | **string** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **alias**: *eq, sw*  **firstname**: *eq, sw*  **lastname**: *eq, sw*  **email**: *eq, sw*  **cloudStatus**: *eq*  **processingState**: *eq*  **correlated**: *eq*  **protected**: *eq*
+  Query | sorters | **string** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, alias, cloudStatus**
+  Query | defaultFilter | **string** |   (optional) (default to "CORRELATED_ONLY") | Adds additional filter to filters query parameter.  CORRELATED_ONLY adds correlated=true and returns only identities that are correlated.  NONE does not add any and returns all identities that satisfy filters query parameter.
+  Query | count | **bool** |   (optional) (default to false) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | limit | **int32** |   (optional) (default to 250) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | offset | **int32** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+
+	
+### Return type
+
+[**[]Identity**](Identity)
+
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | List of identities. | []Identity
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
+
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## start-identity-processing
+
+
+You could use this endpoint to:
+1. Calculate identity attributes, including applying or running any rules or transforms (e.g. calculate Lifecycle State at a point-in-time it's expected to change).
+2. Evaluate role assignments, leading to assignment of new roles and removal of existing roles.
+3. Enforce provisioning for any assigned accesses that haven't been fulfilled (e.g. failure due to source health).
+4. Recalculate manager relationships.
+5. Potentially clean-up identity processing errors, assuming the error has been resolved.
+
+To learn more, refer to the [identity processing documentation](https://documentation.sailpoint.com/saas/help/setup/identity_processing.html).
+
+A token with ORG_ADMIN or HELPDESK authority is required to call this API.
+
+
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | processIdentitiesRequest | [**ProcessIdentitiesRequest**](ProcessIdentitiesRequest.md) | True  | 
+
+	
+### Return type
+
+[**TaskResultResponse**](TaskResultResponse)
+
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+202 | Object containing the DTO type TASK_RESULT and the job id for the task | TaskResultResponse
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
+
 
 ### HTTP request headers
 
@@ -363,65 +291,32 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SynchronizeAttributesForIdentity
-
-> IdentitySyncJob SynchronizeAttributesForIdentity(ctx, identityId).Execute()
-
-Attribute synchronization for single identity.
+## synchronize-attributes-for-identity
 
 
+This end-point performs attribute synchronization for a selected identity. The endpoint can be called once in 10 seconds per identity. A token with ORG_ADMIN or API authority is required to call this API.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | identityId | **string** | True  | The Identity id
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    identityId := "identityId_example" // string | The Identity id
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentitiesAPI.SynchronizeAttributesForIdentity(context.Background(), identityId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.SynchronizeAttributesForIdentity``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `SynchronizeAttributesForIdentity`: IdentitySyncJob
-    fmt.Fprintf(os.Stdout, "Response from `IdentitiesAPI.SynchronizeAttributesForIdentity`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**identityId** | **string** | The Identity id | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiSynchronizeAttributesForIdentityRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+	
 ### Return type
 
-[**IdentitySyncJob**](IdentitySyncJob.md)
+[**IdentitySyncJob**](IdentitySyncJob)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+202 | An Identity Sync job | IdentitySyncJob
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 

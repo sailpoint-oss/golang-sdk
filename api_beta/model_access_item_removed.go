@@ -246,7 +246,7 @@ func (o *AccessItemRemoved) UnmarshalJSON(bytes []byte) (err error) {
 	varAccessItemRemoved := _AccessItemRemoved{}
 
 	if err = json.Unmarshal(bytes, &varAccessItemRemoved); err == nil {
-	*o = AccessItemRemoved(varAccessItemRemoved)
+			*o = AccessItemRemoved(varAccessItemRemoved)
 }
 
 	additionalProperties := make(map[string]interface{})

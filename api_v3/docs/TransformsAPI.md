@@ -4,15 +4,15 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateTransform**](TransformsAPI.md#CreateTransform) | **Post** /transforms | Create transform
-[**DeleteTransform**](TransformsAPI.md#DeleteTransform) | **Delete** /transforms/{id} | Delete a transform
-[**GetTransform**](TransformsAPI.md#GetTransform) | **Get** /transforms/{id} | Transform by ID
-[**ListTransforms**](TransformsAPI.md#ListTransforms) | **Get** /transforms | List transforms
-[**UpdateTransform**](TransformsAPI.md#UpdateTransform) | **Put** /transforms/{id} | Update a transform
+[**CreateTransform**](#create-transform) | **Post** /transforms | Create transform
+[**DeleteTransform**](#delete-transform) | **Delete** /transforms/{id} | Delete a transform
+[**GetTransform**](#get-transform) | **Get** /transforms/{id} | Transform by ID
+[**ListTransforms**](#list-transforms) | **Get** /transforms | List transforms
+[**UpdateTransform**](#update-transform) | **Put** /transforms/{id} | Update a transform
 
 
 
-## Create transform
+## create-transform
 
 
 Creates a new transform object immediately. By default, the internal flag is set to false to indicate that this is a custom transform. Only SailPoint employees have the ability to create a transform with internal set to true. Newly created Transforms can be used in the Identity Profile mappings within the UI. A token with transform write authority is required to call this API.
@@ -22,10 +22,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | transform | [**Transform**](Transform.md) | True  | The transform to be created.
 
-
+	
 ### Return type
 
-[**TransformRead**](TransformRead.md)
+[**TransformRead**](TransformRead)
 
 ### Responses
 Code | Description  | Data Type
@@ -48,43 +48,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//CreateTransform
-
-    transform := *sailpoint.NewTransform("Timestamp To Date", "dateFormat", map[string]interface{}(123))
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.TransformsAPI.CreateTransform(context.Background()).Transform(transform).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TransformsAPI.CreateTransform``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateTransform`: TransformRead
-    fmt.Fprintf(os.Stdout, "Response from `TransformsAPI.CreateTransform`: %v\n", resp)
-}
-```
-
-
-
-
-## Delete a transform
+## delete-transform
 
 
 Deletes the transform specified by the given ID. Attempting to delete a transform that is used in one or more Identity Profile mappings will result in an error. If this occurs, you must first remove the transform from all mappings before deleting the transform.
@@ -95,7 +60,7 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **string** | True  | ID of the transform to delete
 
-
+	
 ### Return type
 
  (empty response body)
@@ -121,41 +86,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//DeleteTransform
-
-    id := "2cd78adghjkja34jh2b1hkjhasuecd"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.V3.TransformsAPI.DeleteTransform(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TransformsAPI.DeleteTransform``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-
-
-
-## Transform by ID
+## get-transform
 
 
 This API returns the transform specified by the given ID.
@@ -166,10 +98,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **string** | True  | ID of the transform to retrieve
 
-
+	
 ### Return type
 
-[**TransformRead**](TransformRead.md)
+[**TransformRead**](TransformRead)
 
 ### Responses
 Code | Description  | Data Type
@@ -192,43 +124,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//GetTransform
-
-    id := "2cd78adghjkja34jh2b1hkjhasuecd"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.TransformsAPI.GetTransform(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TransformsAPI.GetTransform``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetTransform`: TransformRead
-    fmt.Fprintf(os.Stdout, "Response from `TransformsAPI.GetTransform`: %v\n", resp)
-}
-```
-
-
-
-
-## List transforms
+## list-transforms
 
 
 Gets a list of all saved transform objects.
@@ -243,10 +140,10 @@ Param Type | Name | Data Type | Required  | Description
   Query | name | **string** |   (optional) | Name of the transform to retrieve from the list.
   Query | filters | **string** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **internal**: *eq*  **name**: *eq, sw*
 
-
+	
 ### Return type
 
-[**[]TransformRead**](TransformRead.md)
+[**[]TransformRead**](TransformRead)
 
 ### Responses
 Code | Description  | Data Type
@@ -269,47 +166,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//ListTransforms
-
-    //offset := int32(0)
-    //limit := int32(250)
-    //count := true
-    //name := "ExampleTransformName123"
-    //filters := "name eq "Uppercase""
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.TransformsAPI.ListTransforms(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TransformsAPI.ListTransforms``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListTransforms`: []TransformRead
-    fmt.Fprintf(os.Stdout, "Response from `TransformsAPI.ListTransforms`: %v\n", resp)
-}
-```
-
-
-
-
-## Update a transform
+## update-transform
 
 
 Replaces the transform specified by the given ID with the transform provided in the request body. Only the "attributes" field is mutable. Attempting to change other properties (ex. "name" and "type") will result in an error.
@@ -321,10 +179,10 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **string** | True  | ID of the transform to update
  Body  | transform | [**Transform**](Transform.md) |   (optional) | The updated transform object. Must include \"name\", \"type\", and \"attributes\" fields, but \"name\" and \"type\" must not be modified.
 
-
+	
 ### Return type
 
-[**TransformRead**](TransformRead.md)
+[**TransformRead**](TransformRead)
 
 ### Responses
 Code | Description  | Data Type
@@ -346,40 +204,4 @@ Code | Description  | Data Type
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//UpdateTransform
-
-    id := "2cd78adghjkja34jh2b1hkjhasuecd"
-    //transform := *sailpoint.NewTransform("Timestamp To Date", "dateFormat", map[string]interface{}(123))
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.TransformsAPI.UpdateTransform(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TransformsAPI.UpdateTransform``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateTransform`: TransformRead
-    fmt.Fprintf(os.Stdout, "Response from `TransformsAPI.UpdateTransform`: %v\n", resp)
-}
-```
-
-
 

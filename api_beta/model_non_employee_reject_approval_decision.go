@@ -89,7 +89,7 @@ func (o NonEmployeeRejectApprovalDecision) ToMap() (map[string]interface{}, erro
 }
 
 func (o *NonEmployeeRejectApprovalDecision) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -113,7 +113,7 @@ func (o *NonEmployeeRejectApprovalDecision) UnmarshalJSON(bytes []byte) (err err
 	varNonEmployeeRejectApprovalDecision := _NonEmployeeRejectApprovalDecision{}
 
 	if err = json.Unmarshal(bytes, &varNonEmployeeRejectApprovalDecision); err == nil {
-	*o = NonEmployeeRejectApprovalDecision(varNonEmployeeRejectApprovalDecision)
+			*o = NonEmployeeRejectApprovalDecision(varNonEmployeeRejectApprovalDecision)
 }
 
 	additionalProperties := make(map[string]interface{})

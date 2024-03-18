@@ -29,6 +29,8 @@ const (
 	ACCOUNTACTIVITYITEMOPERATION_UNLOCK AccountActivityItemOperation = "UNLOCK"
 	ACCOUNTACTIVITYITEMOPERATION_LOCK AccountActivityItemOperation = "LOCK"
 	ACCOUNTACTIVITYITEMOPERATION_REMOVE AccountActivityItemOperation = "REMOVE"
+	ACCOUNTACTIVITYITEMOPERATION_SET AccountActivityItemOperation = "SET"
+	ACCOUNTACTIVITYITEMOPERATION_NULL AccountActivityItemOperation = "null"
 )
 
 // All allowed values of AccountActivityItemOperation enum
@@ -42,6 +44,8 @@ var AllowedAccountActivityItemOperationEnumValues = []AccountActivityItemOperati
 	"UNLOCK",
 	"LOCK",
 	"REMOVE",
+	"SET",
+	"null",
 }
 
 func (v *AccountActivityItemOperation) UnmarshalJSON(src []byte) error {

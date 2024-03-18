@@ -89,7 +89,7 @@ func (o AccountAttributesCreateAttributes) ToMap() (map[string]interface{}, erro
 }
 
 func (o *AccountAttributesCreateAttributes) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -113,7 +113,7 @@ func (o *AccountAttributesCreateAttributes) UnmarshalJSON(bytes []byte) (err err
 	varAccountAttributesCreateAttributes := _AccountAttributesCreateAttributes{}
 
 	if err = json.Unmarshal(bytes, &varAccountAttributesCreateAttributes); err == nil {
-	*o = AccountAttributesCreateAttributes(varAccountAttributesCreateAttributes)
+			*o = AccountAttributesCreateAttributes(varAccountAttributesCreateAttributes)
 }
 
 	additionalProperties := make(map[string]interface{})

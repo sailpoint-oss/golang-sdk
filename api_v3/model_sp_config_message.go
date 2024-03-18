@@ -145,7 +145,7 @@ func (o SpConfigMessage) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *SpConfigMessage) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -171,7 +171,7 @@ func (o *SpConfigMessage) UnmarshalJSON(bytes []byte) (err error) {
 	varSpConfigMessage := _SpConfigMessage{}
 
 	if err = json.Unmarshal(bytes, &varSpConfigMessage); err == nil {
-	*o = SpConfigMessage(varSpConfigMessage)
+			*o = SpConfigMessage(varSpConfigMessage)
 }
 
 	additionalProperties := make(map[string]interface{})

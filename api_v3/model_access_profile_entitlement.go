@@ -435,7 +435,7 @@ func (o *AccessProfileEntitlement) UnmarshalJSON(bytes []byte) (err error) {
 	varAccessProfileEntitlement := _AccessProfileEntitlement{}
 
 	if err = json.Unmarshal(bytes, &varAccessProfileEntitlement); err == nil {
-	*o = AccessProfileEntitlement(varAccessProfileEntitlement)
+			*o = AccessProfileEntitlement(varAccessProfileEntitlement)
 }
 
 	additionalProperties := make(map[string]interface{})

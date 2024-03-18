@@ -137,7 +137,7 @@ func (o *FormUsedBy) UnmarshalJSON(bytes []byte) (err error) {
 	varFormUsedBy := _FormUsedBy{}
 
 	if err = json.Unmarshal(bytes, &varFormUsedBy); err == nil {
-	*o = FormUsedBy(varFormUsedBy)
+			*o = FormUsedBy(varFormUsedBy)
 }
 
 	additionalProperties := make(map[string]interface{})

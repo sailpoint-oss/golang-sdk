@@ -43,6 +43,7 @@ CreateAccount Create Account
 
 This API submits an account creation task and returns the task ID.  
 The `sourceId` where this account will be created must be included in the `attributes` object.
+>**Note: This API only supports account creation for file based sources.**
 A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -204,6 +205,7 @@ DeleteAccount Delete Account
 
 Use this API to delete an account. 
 This endpoint submits an account delete task and returns the task ID. 
+This endpoint only deletes the account from IdentityNow, not the source itself, which can result in the account's returning with the next aggregation between the source and IdentityNow.  To avoid this scenario, it is recommended that you [disable accounts](https://developer.sailpoint.com/idn/api/v3/disable-account) rather than delete them. This will also allow you to reenable the accounts in the future. 
 A token with ORG_ADMIN authority is required to call this API.
 >**NOTE:** You can only delete accounts from sources of the "DelimitedFile" type.**
 
@@ -1625,19 +1627,19 @@ func (a *AccountsAPIService) GetAccountEntitlementsExecute(r ApiGetAccountEntitl
 	localVarFormParams := url.Values{}
 
 	if r.offset != nil {
-		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
 	} else {
 		var defaultValue int32 = 0
 		r.offset = &defaultValue
 	}
 	if r.limit != nil {
-		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
 		var defaultValue int32 = 250
 		r.limit = &defaultValue
 	}
 	if r.count != nil {
-		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "")
 	} else {
 		var defaultValue bool = false
 		r.count = &defaultValue
@@ -1808,7 +1810,7 @@ func (r ApiListAccountsRequest) Sorters(sorters string) ApiListAccountsRequest {
 	return r
 }
 
-func (r ApiListAccountsRequest) Execute() ([]ListAccounts200ResponseInner, *http.Response, error) {
+func (r ApiListAccountsRequest) Execute() ([]Account, *http.Response, error) {
 	return r.ApiService.ListAccountsExecute(r)
 }
 
@@ -1829,13 +1831,13 @@ func (a *AccountsAPIService) ListAccounts(ctx context.Context) ApiListAccountsRe
 }
 
 // Execute executes the request
-//  @return []ListAccounts200ResponseInner
-func (a *AccountsAPIService) ListAccountsExecute(r ApiListAccountsRequest) ([]ListAccounts200ResponseInner, *http.Response, error) {
+//  @return []Account
+func (a *AccountsAPIService) ListAccountsExecute(r ApiListAccountsRequest) ([]Account, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []ListAccounts200ResponseInner
+		localVarReturnValue  []Account
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.ListAccounts")
@@ -1850,31 +1852,31 @@ func (a *AccountsAPIService) ListAccountsExecute(r ApiListAccountsRequest) ([]Li
 	localVarFormParams := url.Values{}
 
 	if r.detailLevel != nil {
-		parameterAddToQuery(localVarQueryParams, "detailLevel", r.detailLevel, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "detailLevel", r.detailLevel, "")
 	}
 	if r.limit != nil {
-		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
 		var defaultValue int32 = 250
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
-		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
 	} else {
 		var defaultValue int32 = 0
 		r.offset = &defaultValue
 	}
 	if r.count != nil {
-		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "")
 	} else {
 		var defaultValue bool = false
 		r.count = &defaultValue
 	}
 	if r.filters != nil {
-		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "")
 	}
 	if r.sorters != nil {
-		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

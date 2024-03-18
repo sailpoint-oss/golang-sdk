@@ -137,7 +137,7 @@ func (o *WorkflowDefinition) UnmarshalJSON(bytes []byte) (err error) {
 	varWorkflowDefinition := _WorkflowDefinition{}
 
 	if err = json.Unmarshal(bytes, &varWorkflowDefinition); err == nil {
-	*o = WorkflowDefinition(varWorkflowDefinition)
+			*o = WorkflowDefinition(varWorkflowDefinition)
 }
 
 	additionalProperties := make(map[string]interface{})

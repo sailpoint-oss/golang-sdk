@@ -163,7 +163,7 @@ func (o OrphanUncorrelatedReportArguments) ToMap() (map[string]interface{}, erro
 }
 
 func (o *OrphanUncorrelatedReportArguments) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -187,7 +187,7 @@ func (o *OrphanUncorrelatedReportArguments) UnmarshalJSON(bytes []byte) (err err
 	varOrphanUncorrelatedReportArguments := _OrphanUncorrelatedReportArguments{}
 
 	if err = json.Unmarshal(bytes, &varOrphanUncorrelatedReportArguments); err == nil {
-	*o = OrphanUncorrelatedReportArguments(varOrphanUncorrelatedReportArguments)
+			*o = OrphanUncorrelatedReportArguments(varOrphanUncorrelatedReportArguments)
 }
 
 	additionalProperties := make(map[string]interface{})

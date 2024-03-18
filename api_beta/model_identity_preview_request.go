@@ -135,7 +135,7 @@ func (o *IdentityPreviewRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varIdentityPreviewRequest := _IdentityPreviewRequest{}
 
 	if err = json.Unmarshal(bytes, &varIdentityPreviewRequest); err == nil {
-	*o = IdentityPreviewRequest(varIdentityPreviewRequest)
+			*o = IdentityPreviewRequest(varIdentityPreviewRequest)
 }
 
 	additionalProperties := make(map[string]interface{})

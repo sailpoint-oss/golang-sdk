@@ -114,7 +114,7 @@ func (o *TenantConfigurationDetails) UnmarshalJSON(bytes []byte) (err error) {
 	varTenantConfigurationDetails := _TenantConfigurationDetails{}
 
 	if err = json.Unmarshal(bytes, &varTenantConfigurationDetails); err == nil {
-	*o = TenantConfigurationDetails(varTenantConfigurationDetails)
+			*o = TenantConfigurationDetails(varTenantConfigurationDetails)
 }
 
 	additionalProperties := make(map[string]interface{})

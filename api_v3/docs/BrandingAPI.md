@@ -4,15 +4,15 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateBrandingItem**](BrandingAPI.md#CreateBrandingItem) | **Post** /brandings | Create a branding item
-[**DeleteBranding**](BrandingAPI.md#DeleteBranding) | **Delete** /brandings/{name} | Delete a branding item
-[**GetBranding**](BrandingAPI.md#GetBranding) | **Get** /brandings/{name} | Get a branding item
-[**GetBrandingList**](BrandingAPI.md#GetBrandingList) | **Get** /brandings | List of branding items
-[**SetBrandingItem**](BrandingAPI.md#SetBrandingItem) | **Put** /brandings/{name} | Update a branding item
+[**CreateBrandingItem**](#create-branding-item) | **Post** /brandings | Create a branding item
+[**DeleteBranding**](#delete-branding) | **Delete** /brandings/{name} | Delete a branding item
+[**GetBranding**](#get-branding) | **Get** /brandings/{name} | Get a branding item
+[**GetBrandingList**](#get-branding-list) | **Get** /brandings | List of branding items
+[**SetBrandingItem**](#set-branding-item) | **Put** /brandings/{name} | Update a branding item
 
 
 
-## Create a branding item
+## create-branding-item
 
 
 This API endpoint creates a branding item.
@@ -30,10 +30,10 @@ Param Type | Name | Data Type | Required  | Description
    | loginInformationalMessage | **string** |   (optional) | login information message
    | fileStandard | ***os.File** |   (optional) | png file with logo
 
-
+	
 ### Return type
 
-[**BrandingItem**](BrandingItem.md)
+[**BrandingItem**](BrandingItem)
 
 ### Responses
 Code | Description  | Data Type
@@ -55,50 +55,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//CreateBrandingItem
-
-    name := "name_example"
-    productName := "productName_example"
-    //actionButtonColor := "actionButtonColor_example"
-    //activeLinkColor := "activeLinkColor_example"
-    //navigationColor := "navigationColor_example"
-    //emailFromAddress := "emailFromAddress_example"
-    //loginInformationalMessage := "loginInformationalMessage_example"
-    //fileStandard := os.NewFile(1234, "some_file")
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.BrandingAPI.CreateBrandingItem(context.Background()).Name(name).ProductName(productName).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.CreateBrandingItem``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateBrandingItem`: BrandingItem
-    fmt.Fprintf(os.Stdout, "Response from `BrandingAPI.CreateBrandingItem`: %v\n", resp)
-}
-```
-
-
-
-
-## Delete a branding item
+## delete-branding
 
 
 This API endpoint delete information for an existing branding item by name.
@@ -109,7 +67,7 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | name | **string** | True  | The name of the branding item to be deleted
 
-
+	
 ### Return type
 
  (empty response body)
@@ -135,41 +93,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//DeleteBranding
-
-    name := "default"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.V3.BrandingAPI.DeleteBranding(context.Background(), name).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.DeleteBranding``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-
-
-
-## Get a branding item
+## get-branding
 
 
 This API endpoint retrieves information for an existing branding item by name.
@@ -180,10 +105,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | name | **string** | True  | The name of the branding item to be retrieved
 
-
+	
 ### Return type
 
-[**BrandingItem**](BrandingItem.md)
+[**BrandingItem**](BrandingItem)
 
 ### Responses
 Code | Description  | Data Type
@@ -206,43 +131,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//GetBranding
-
-    name := "default"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.BrandingAPI.GetBranding(context.Background(), name).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.GetBranding``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetBranding`: BrandingItem
-    fmt.Fprintf(os.Stdout, "Response from `BrandingAPI.GetBranding`: %v\n", resp)
-}
-```
-
-
-
-
-## List of branding items
+## get-branding-list
 
 
 This API endpoint returns a list of branding items.
@@ -253,10 +143,10 @@ A token with API, ORG_ADMIN authority is required to call this API.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 
-
+	
 ### Return type
 
-[**[]BrandingItem**](BrandingItem.md)
+[**[]BrandingItem**](BrandingItem)
 
 ### Responses
 Code | Description  | Data Type
@@ -278,42 +168,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//GetBrandingList
-
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.BrandingAPI.GetBrandingList(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.GetBrandingList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetBrandingList`: []BrandingItem
-    fmt.Fprintf(os.Stdout, "Response from `BrandingAPI.GetBrandingList`: %v\n", resp)
-}
-```
-
-
-
-
-## Update a branding item
+## set-branding-item
 
 
 This API endpoint updates information for an existing branding item.
@@ -332,10 +188,10 @@ Path   | name | **string** | True  | The name of the branding item to be retriev
    | loginInformationalMessage | **string** |   (optional) | login information message
    | fileStandard | ***os.File** |   (optional) | png file with logo
 
-
+	
 ### Return type
 
-[**BrandingItem**](BrandingItem.md)
+[**BrandingItem**](BrandingItem)
 
 ### Responses
 Code | Description  | Data Type
@@ -357,47 +213,4 @@ Code | Description  | Data Type
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//SetBrandingItem
-
-    name := "default"
-    name2 := "name_example"
-    productName := "productName_example"
-    //actionButtonColor := "actionButtonColor_example"
-    //activeLinkColor := "activeLinkColor_example"
-    //navigationColor := "navigationColor_example"
-    //emailFromAddress := "emailFromAddress_example"
-    //loginInformationalMessage := "loginInformationalMessage_example"
-    //fileStandard := os.NewFile(1234, "some_file")
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.BrandingAPI.SetBrandingItem(context.Background(), name).Name2(name2).ProductName(productName).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.SetBrandingItem``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `SetBrandingItem`: BrandingItem
-    fmt.Fprintf(os.Stdout, "Response from `BrandingAPI.SetBrandingItem`: %v\n", resp)
-}
-```
-
-
 

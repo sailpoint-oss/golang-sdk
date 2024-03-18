@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **Name** | Pointer to **NullableString** | The name of the scheduled search.  | [optional] 
 **Description** | Pointer to **NullableString** | The description of the scheduled search.  | [optional] 
 **SavedSearchId** | **string** | The ID of the saved search that will be executed. | 
-**Created** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] [readonly] 
-**Modified** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] [readonly] 
+**Created** | Pointer to **NullableTime** | The date the scheduled search was initially created. | [optional] [readonly] 
+**Modified** | Pointer to **NullableTime** | The last date the scheduled search was modified. | [optional] [readonly] 
 **Schedule** | [**Schedule1**](Schedule1.md) |  | 
 **Recipients** | [**[]SearchScheduleRecipientsInner**](SearchScheduleRecipientsInner.md) | A list of identities that should receive the scheduled search report via email. | 
 **Enabled** | Pointer to **bool** | Indicates if the scheduled search is enabled.  | [optional] [default to false]

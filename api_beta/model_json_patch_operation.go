@@ -153,7 +153,7 @@ func (o JsonPatchOperation) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *JsonPatchOperation) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -178,7 +178,7 @@ func (o *JsonPatchOperation) UnmarshalJSON(bytes []byte) (err error) {
 	varJsonPatchOperation := _JsonPatchOperation{}
 
 	if err = json.Unmarshal(bytes, &varJsonPatchOperation); err == nil {
-	*o = JsonPatchOperation(varJsonPatchOperation)
+			*o = JsonPatchOperation(varJsonPatchOperation)
 }
 
 	additionalProperties := make(map[string]interface{})

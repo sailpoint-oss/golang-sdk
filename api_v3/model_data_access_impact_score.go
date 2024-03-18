@@ -100,7 +100,7 @@ func (o *DataAccessImpactScore) UnmarshalJSON(bytes []byte) (err error) {
 	varDataAccessImpactScore := _DataAccessImpactScore{}
 
 	if err = json.Unmarshal(bytes, &varDataAccessImpactScore); err == nil {
-	*o = DataAccessImpactScore(varDataAccessImpactScore)
+			*o = DataAccessImpactScore(varDataAccessImpactScore)
 }
 
 	additionalProperties := make(map[string]interface{})

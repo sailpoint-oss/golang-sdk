@@ -203,7 +203,7 @@ func (o *Requestability) UnmarshalJSON(bytes []byte) (err error) {
 	varRequestability := _Requestability{}
 
 	if err = json.Unmarshal(bytes, &varRequestability); err == nil {
-	*o = Requestability(varRequestability)
+			*o = Requestability(varRequestability)
 }
 
 	additionalProperties := make(map[string]interface{})

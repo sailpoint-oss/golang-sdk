@@ -4,74 +4,45 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateServiceDeskIntegration**](ServiceDeskIntegrationAPI.md#CreateServiceDeskIntegration) | **Post** /service-desk-integrations | Create new Service Desk integration
-[**DeleteServiceDeskIntegration**](ServiceDeskIntegrationAPI.md#DeleteServiceDeskIntegration) | **Delete** /service-desk-integrations/{id} | Delete a Service Desk integration
-[**GetServiceDeskIntegration**](ServiceDeskIntegrationAPI.md#GetServiceDeskIntegration) | **Get** /service-desk-integrations/{id} | Get a Service Desk integration
-[**GetServiceDeskIntegrationList**](ServiceDeskIntegrationAPI.md#GetServiceDeskIntegrationList) | **Get** /service-desk-integrations | List existing Service Desk Integrations
-[**GetServiceDeskIntegrationTemplate**](ServiceDeskIntegrationAPI.md#GetServiceDeskIntegrationTemplate) | **Get** /service-desk-integrations/templates/{scriptName} | Service Desk integration template by scriptName.
-[**GetServiceDeskIntegrationTypes**](ServiceDeskIntegrationAPI.md#GetServiceDeskIntegrationTypes) | **Get** /service-desk-integrations/types | Service Desk Integration Types List.
-[**GetStatusCheckDetails**](ServiceDeskIntegrationAPI.md#GetStatusCheckDetails) | **Get** /service-desk-integrations/status-check-configuration | Get the time check configuration
-[**PatchServiceDeskIntegration**](ServiceDeskIntegrationAPI.md#PatchServiceDeskIntegration) | **Patch** /service-desk-integrations/{id} | Service Desk Integration Update PATCH
-[**PutServiceDeskIntegration**](ServiceDeskIntegrationAPI.md#PutServiceDeskIntegration) | **Put** /service-desk-integrations/{id} | Update a Service Desk integration
-[**UpdateStatusCheckDetails**](ServiceDeskIntegrationAPI.md#UpdateStatusCheckDetails) | **Put** /service-desk-integrations/status-check-configuration | Update the time check configuration
+[**CreateServiceDeskIntegration**](#create-service-desk-integration) | **Post** /service-desk-integrations | Create new Service Desk integration
+[**DeleteServiceDeskIntegration**](#delete-service-desk-integration) | **Delete** /service-desk-integrations/{id} | Delete a Service Desk integration
+[**GetServiceDeskIntegration**](#get-service-desk-integration) | **Get** /service-desk-integrations/{id} | Get a Service Desk integration
+[**GetServiceDeskIntegrationList**](#get-service-desk-integration-list) | **Get** /service-desk-integrations | List existing Service Desk Integrations
+[**GetServiceDeskIntegrationTemplate**](#get-service-desk-integration-template) | **Get** /service-desk-integrations/templates/{scriptName} | Service Desk integration template by scriptName.
+[**GetServiceDeskIntegrationTypes**](#get-service-desk-integration-types) | **Get** /service-desk-integrations/types | Service Desk Integration Types List.
+[**GetStatusCheckDetails**](#get-status-check-details) | **Get** /service-desk-integrations/status-check-configuration | Get the time check configuration
+[**PatchServiceDeskIntegration**](#patch-service-desk-integration) | **Patch** /service-desk-integrations/{id} | Service Desk Integration Update PATCH
+[**PutServiceDeskIntegration**](#put-service-desk-integration) | **Put** /service-desk-integrations/{id} | Update a Service Desk integration
+[**UpdateStatusCheckDetails**](#update-status-check-details) | **Put** /service-desk-integrations/status-check-configuration | Update the time check configuration
 
 
 
-## CreateServiceDeskIntegration
-
-> ServiceDeskIntegrationDto CreateServiceDeskIntegration(ctx).ServiceDeskIntegrationDto(serviceDeskIntegrationDto).Execute()
-
-Create new Service Desk integration
+## create-service-desk-integration
 
 
+Create a new Service Desk Integrations.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | serviceDeskIntegrationDto | [**ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto.md) | True  | The specifics of a new integration to create
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    serviceDeskIntegrationDto := *openapiclient.NewServiceDeskIntegrationDto("Service Desk Integration Name", "A very nice Service Desk integration", "ServiceNowSDIM", map[string]interface{}{"key": interface{}(123)}) // ServiceDeskIntegrationDto | The specifics of a new integration to create
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegrationAPI.CreateServiceDeskIntegration(context.Background()).ServiceDeskIntegrationDto(serviceDeskIntegrationDto).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.CreateServiceDeskIntegration``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateServiceDeskIntegration`: ServiceDeskIntegrationDto
-    fmt.Fprintf(os.Stdout, "Response from `ServiceDeskIntegrationAPI.CreateServiceDeskIntegration`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateServiceDeskIntegrationRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **serviceDeskIntegrationDto** | [**ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto.md) | The specifics of a new integration to create | 
-
+	
 ### Return type
 
-[**ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto.md)
+[**ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | details of the created integration | ServiceDeskIntegrationDto
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -83,63 +54,32 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteServiceDeskIntegration
-
-> DeleteServiceDeskIntegration(ctx, id).Execute()
-
-Delete a Service Desk integration
+## delete-service-desk-integration
 
 
+Delete an existing Service Desk integration by ID.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | ID of Service Desk integration to delete
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    id := "anId" // string | ID of Service Desk integration to delete
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ServiceDeskIntegrationAPI.DeleteServiceDeskIntegration(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.DeleteServiceDeskIntegration``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | ID of Service Desk integration to delete | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDeleteServiceDeskIntegrationRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+	
 ### Return type
 
  (empty response body)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+204 | Service Desk integration with the given ID successfully deleted | 
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -151,65 +91,32 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetServiceDeskIntegration
-
-> ServiceDeskIntegrationDto GetServiceDeskIntegration(ctx, id).Execute()
-
-Get a Service Desk integration
+## get-service-desk-integration
 
 
+Get an existing Service Desk integration by ID.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | ID of the Service Desk integration to get
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    id := "anId" // string | ID of the Service Desk integration to get
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegrationAPI.GetServiceDeskIntegration(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.GetServiceDeskIntegration``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetServiceDeskIntegration`: ServiceDeskIntegrationDto
-    fmt.Fprintf(os.Stdout, "Response from `ServiceDeskIntegrationAPI.GetServiceDeskIntegration`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | ID of the Service Desk integration to get | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetServiceDeskIntegrationRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+	
 ### Return type
 
-[**ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto.md)
+[**ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | ServiceDeskIntegrationDto with the given ID | ServiceDeskIntegrationDto
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -221,69 +128,36 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetServiceDeskIntegrationList
-
-> []ServiceDeskIntegrationDto GetServiceDeskIntegrationList(ctx).Offset(offset).Limit(limit).Sorters(sorters).Filters(filters).Count(count).Execute()
-
-List existing Service Desk Integrations
+## get-service-desk-integration-list
 
 
+Get a list of ServiceDeskIntegrationDto for existing Service Desk Integrations.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+  Query | offset | **int32** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | limit | **int32** |   (optional) (default to 250) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | sorters | **string** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**
+  Query | filters | **string** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq*  **type**: *eq, in*  **cluster**: *eq, in*
+  Query | count | **bool** |   (optional) (default to false) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-    limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
-    sorters := "name" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name** (optional)
-    filters := "id eq 2c91808b6ef1d43e016efba0ce470904" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq*  **type**: *eq, in*  **cluster**: *eq, in* (optional)
-    count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationList(context.Background()).Offset(offset).Limit(limit).Sorters(sorters).Filters(filters).Count(count).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.GetServiceDeskIntegrationList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetServiceDeskIntegrationList`: []ServiceDeskIntegrationDto
-    fmt.Fprintf(os.Stdout, "Response from `ServiceDeskIntegrationAPI.GetServiceDeskIntegrationList`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetServiceDeskIntegrationListRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
- **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
- **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name** | 
- **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq*  **type**: *eq, in*  **cluster**: *eq, in* | 
- **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
-
+	
 ### Return type
 
-[**[]ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto.md)
+[**[]ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | List of ServiceDeskIntegrationDto | []ServiceDeskIntegrationDto
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -295,65 +169,32 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetServiceDeskIntegrationTemplate
-
-> ServiceDeskIntegrationTemplateDto GetServiceDeskIntegrationTemplate(ctx, scriptName).Execute()
-
-Service Desk integration template by scriptName.
+## get-service-desk-integration-template
 
 
+This API endpoint returns an existing Service Desk integration template by scriptName.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | scriptName | **string** | True  | The scriptName value of the Service Desk integration template to get
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    scriptName := "aScriptName" // string | The scriptName value of the Service Desk integration template to get
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTemplate(context.Background(), scriptName).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTemplate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetServiceDeskIntegrationTemplate`: ServiceDeskIntegrationTemplateDto
-    fmt.Fprintf(os.Stdout, "Response from `ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTemplate`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**scriptName** | **string** | The scriptName value of the Service Desk integration template to get | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetServiceDeskIntegrationTemplateRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+	
 ### Return type
 
-[**ServiceDeskIntegrationTemplateDto**](ServiceDeskIntegrationTemplateDto.md)
+[**ServiceDeskIntegrationTemplateDto**](ServiceDeskIntegrationTemplateDto)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Responds with the ServiceDeskIntegrationTemplateDto with the specified scriptName. | ServiceDeskIntegrationTemplateDto
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -365,56 +206,31 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetServiceDeskIntegrationTypes
-
-> []ServiceDeskIntegrationTemplateType GetServiceDeskIntegrationTypes(ctx).Execute()
-
-Service Desk Integration Types List.
+## get-service-desk-integration-types
 
 
+This API endpoint returns the current list of supported Service Desk integration types.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTypes(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTypes``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetServiceDeskIntegrationTypes`: []ServiceDeskIntegrationTemplateType
-    fmt.Fprintf(os.Stdout, "Response from `ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTypes`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetServiceDeskIntegrationTypesRequest struct via the builder pattern
-
-
+	
 ### Return type
 
-[**[]ServiceDeskIntegrationTemplateType**](ServiceDeskIntegrationTemplateType.md)
+[**[]ServiceDeskIntegrationTemplateType**](ServiceDeskIntegrationTemplateType)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Responds with an array of the currently supported Service Desk integration types. | []ServiceDeskIntegrationTemplateType
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -426,56 +242,31 @@ Other parameters are passed through a pointer to a apiGetServiceDeskIntegrationT
 [[Back to README]](../README.md)
 
 
-## GetStatusCheckDetails
-
-> QueuedCheckConfigDetails GetStatusCheckDetails(ctx).Execute()
-
-Get the time check configuration
+## get-status-check-details
 
 
+Get the time check configuration of queued SDIM tickets.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegrationAPI.GetStatusCheckDetails(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.GetStatusCheckDetails``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetStatusCheckDetails`: QueuedCheckConfigDetails
-    fmt.Fprintf(os.Stdout, "Response from `ServiceDeskIntegrationAPI.GetStatusCheckDetails`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetStatusCheckDetailsRequest struct via the builder pattern
-
-
+	
 ### Return type
 
-[**QueuedCheckConfigDetails**](QueuedCheckConfigDetails.md)
+[**QueuedCheckConfigDetails**](QueuedCheckConfigDetails)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | QueuedCheckConfigDetails containing the configured values | QueuedCheckConfigDetails
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -487,67 +278,33 @@ Other parameters are passed through a pointer to a apiGetStatusCheckDetailsReque
 [[Back to README]](../README.md)
 
 
-## PatchServiceDeskIntegration
-
-> ServiceDeskIntegrationDto PatchServiceDeskIntegration(ctx, id).PatchServiceDeskIntegrationRequest(patchServiceDeskIntegrationRequest).Execute()
-
-Service Desk Integration Update PATCH
+## patch-service-desk-integration
 
 
+Update an existing ServiceDeskIntegration by ID with a PATCH request.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | ID of the Service Desk integration to update
+ Body  | patchServiceDeskIntegrationRequest | [**PatchServiceDeskIntegrationRequest**](PatchServiceDeskIntegrationRequest.md) | True  | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed. 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    id := "anId" // string | ID of the Service Desk integration to update
-    patchServiceDeskIntegrationRequest := *openapiclient.NewPatchServiceDeskIntegrationRequest() // PatchServiceDeskIntegrationRequest | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed. 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegrationAPI.PatchServiceDeskIntegration(context.Background(), id).PatchServiceDeskIntegrationRequest(patchServiceDeskIntegrationRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.PatchServiceDeskIntegration``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PatchServiceDeskIntegration`: ServiceDeskIntegrationDto
-    fmt.Fprintf(os.Stdout, "Response from `ServiceDeskIntegrationAPI.PatchServiceDeskIntegration`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | ID of the Service Desk integration to update | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPatchServiceDeskIntegrationRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **patchServiceDeskIntegrationRequest** | [**PatchServiceDeskIntegrationRequest**](PatchServiceDeskIntegrationRequest.md) | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only &#x60;replace&#x60; operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed.  | 
-
+	
 ### Return type
 
-[**ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto.md)
+[**ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | ServiceDeskIntegrationDto as updated | ServiceDeskIntegrationDto
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -559,67 +316,33 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PutServiceDeskIntegration
-
-> ServiceDeskIntegrationDto PutServiceDeskIntegration(ctx, id).ServiceDeskIntegrationDto(serviceDeskIntegrationDto).Execute()
-
-Update a Service Desk integration
+## put-service-desk-integration
 
 
+Update an existing Service Desk integration by ID with updated value in JSON form as the request body.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | ID of the Service Desk integration to update
+ Body  | serviceDeskIntegrationDto | [**ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto.md) | True  | The specifics of the integration to update
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    id := "anId" // string | ID of the Service Desk integration to update
-    serviceDeskIntegrationDto := *openapiclient.NewServiceDeskIntegrationDto("Service Desk Integration Name", "A very nice Service Desk integration", "ServiceNowSDIM", map[string]interface{}{"key": interface{}(123)}) // ServiceDeskIntegrationDto | The specifics of the integration to update
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegrationAPI.PutServiceDeskIntegration(context.Background(), id).ServiceDeskIntegrationDto(serviceDeskIntegrationDto).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.PutServiceDeskIntegration``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PutServiceDeskIntegration`: ServiceDeskIntegrationDto
-    fmt.Fprintf(os.Stdout, "Response from `ServiceDeskIntegrationAPI.PutServiceDeskIntegration`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | ID of the Service Desk integration to update | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPutServiceDeskIntegrationRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **serviceDeskIntegrationDto** | [**ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto.md) | The specifics of the integration to update | 
-
+	
 ### Return type
 
-[**ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto.md)
+[**ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | ServiceDeskIntegrationDto as updated | ServiceDeskIntegrationDto
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -631,61 +354,32 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateStatusCheckDetails
-
-> QueuedCheckConfigDetails UpdateStatusCheckDetails(ctx).QueuedCheckConfigDetails(queuedCheckConfigDetails).Execute()
-
-Update the time check configuration
+## update-status-check-details
 
 
+Update the time check configuration of queued SDIM tickets.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | queuedCheckConfigDetails | [**QueuedCheckConfigDetails**](QueuedCheckConfigDetails.md) | True  | the modified time check configuration
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    queuedCheckConfigDetails := *openapiclient.NewQueuedCheckConfigDetails("30", "2") // QueuedCheckConfigDetails | the modified time check configuration
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegrationAPI.UpdateStatusCheckDetails(context.Background()).QueuedCheckConfigDetails(queuedCheckConfigDetails).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.UpdateStatusCheckDetails``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateStatusCheckDetails`: QueuedCheckConfigDetails
-    fmt.Fprintf(os.Stdout, "Response from `ServiceDeskIntegrationAPI.UpdateStatusCheckDetails`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUpdateStatusCheckDetailsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **queuedCheckConfigDetails** | [**QueuedCheckConfigDetails**](QueuedCheckConfigDetails.md) | the modified time check configuration | 
-
+	
 ### Return type
 
-[**QueuedCheckConfigDetails**](QueuedCheckConfigDetails.md)
+[**QueuedCheckConfigDetails**](QueuedCheckConfigDetails)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | QueuedCheckConfigDetails as updated | QueuedCheckConfigDetails
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 

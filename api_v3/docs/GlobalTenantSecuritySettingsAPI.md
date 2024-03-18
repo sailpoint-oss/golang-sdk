@@ -4,13 +4,13 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateAuthOrgNetworkConfig**](GlobalTenantSecuritySettingsAPI.md#CreateAuthOrgNetworkConfig) | **Post** /auth-org/network-config | Create security network configuration.
-[**GetAuthOrgNetworkConfig**](GlobalTenantSecuritySettingsAPI.md#GetAuthOrgNetworkConfig) | **Get** /auth-org/network-config | Get security network configuration.
-[**PatchAuthOrgNetworkConfig**](GlobalTenantSecuritySettingsAPI.md#PatchAuthOrgNetworkConfig) | **Patch** /auth-org/network-config | Update security network configuration.
+[**CreateAuthOrgNetworkConfig**](#create-auth-org-network-config) | **Post** /auth-org/network-config | Create security network configuration.
+[**GetAuthOrgNetworkConfig**](#get-auth-org-network-config) | **Get** /auth-org/network-config | Get security network configuration.
+[**PatchAuthOrgNetworkConfig**](#patch-auth-org-network-config) | **Patch** /auth-org/network-config | Update security network configuration.
 
 
 
-## Create security network configuration.
+## create-auth-org-network-config
 
 
 This API returns the details of an org's network auth configuration. Requires security scope of: 'sp:auth-org:create'
@@ -20,10 +20,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | networkConfiguration | [**NetworkConfiguration**](NetworkConfiguration.md) | True  | Network configuration creation request body.   The following constraints ensure the request body conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters.
 
-
+	
 ### Return type
 
-[**NetworkConfiguration**](NetworkConfiguration.md)
+[**NetworkConfiguration**](NetworkConfiguration)
 
 ### Responses
 Code | Description  | Data Type
@@ -46,43 +46,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//CreateAuthOrgNetworkConfig
-
-    networkConfiguration := *sailpoint.NewNetworkConfiguration()
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.GlobalTenantSecuritySettingsAPI.CreateAuthOrgNetworkConfig(context.Background()).NetworkConfiguration(networkConfiguration).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GlobalTenantSecuritySettingsAPI.CreateAuthOrgNetworkConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateAuthOrgNetworkConfig`: NetworkConfiguration
-    fmt.Fprintf(os.Stdout, "Response from `GlobalTenantSecuritySettingsAPI.CreateAuthOrgNetworkConfig`: %v\n", resp)
-}
-```
-
-
-
-
-## Get security network configuration.
+## get-auth-org-network-config
 
 
 This API returns the details of an org's network auth configuration. Requires security scope of: 'sp:auth-org:read'
@@ -91,10 +56,10 @@ This API returns the details of an org's network auth configuration. Requires se
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 
-
+	
 ### Return type
 
-[**NetworkConfiguration**](NetworkConfiguration.md)
+[**NetworkConfiguration**](NetworkConfiguration)
 
 ### Responses
 Code | Description  | Data Type
@@ -117,42 +82,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//GetAuthOrgNetworkConfig
-
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.GlobalTenantSecuritySettingsAPI.GetAuthOrgNetworkConfig(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GlobalTenantSecuritySettingsAPI.GetAuthOrgNetworkConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetAuthOrgNetworkConfig`: NetworkConfiguration
-    fmt.Fprintf(os.Stdout, "Response from `GlobalTenantSecuritySettingsAPI.GetAuthOrgNetworkConfig`: %v\n", resp)
-}
-```
-
-
-
-
-## Update security network configuration.
+## patch-auth-org-network-config
 
 
 This API updates an existing network configuration for an org using PATCH
@@ -163,10 +94,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | jsonPatchOperation | [**[]JsonPatchOperation**](JsonPatchOperation.md) | True  | A list of auth org network configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Network Config conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters.
 
-
+	
 ### Return type
 
-[**NetworkConfiguration**](NetworkConfiguration.md)
+[**NetworkConfiguration**](NetworkConfiguration)
 
 ### Responses
 Code | Description  | Data Type
@@ -188,39 +119,4 @@ Code | Description  | Data Type
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//PatchAuthOrgNetworkConfig
-
-    jsonPatchOperation := []sailpoint.JsonPatchOperation{*sailpoint.NewJsonPatchOperation("replace", "/description")}
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.GlobalTenantSecuritySettingsAPI.PatchAuthOrgNetworkConfig(context.Background()).JsonPatchOperation(jsonPatchOperation).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GlobalTenantSecuritySettingsAPI.PatchAuthOrgNetworkConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PatchAuthOrgNetworkConfig`: NetworkConfiguration
-    fmt.Fprintf(os.Stdout, "Response from `GlobalTenantSecuritySettingsAPI.PatchAuthOrgNetworkConfig`: %v\n", resp)
-}
-```
-
-
 

@@ -137,7 +137,7 @@ func (o *EvaluateResponse) UnmarshalJSON(bytes []byte) (err error) {
 	varEvaluateResponse := _EvaluateResponse{}
 
 	if err = json.Unmarshal(bytes, &varEvaluateResponse); err == nil {
-	*o = EvaluateResponse(varEvaluateResponse)
+			*o = EvaluateResponse(varEvaluateResponse)
 }
 
 	additionalProperties := make(map[string]interface{})

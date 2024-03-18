@@ -147,7 +147,7 @@ func (o *PasswordChangeResponse) UnmarshalJSON(bytes []byte) (err error) {
 	varPasswordChangeResponse := _PasswordChangeResponse{}
 
 	if err = json.Unmarshal(bytes, &varPasswordChangeResponse); err == nil {
-	*o = PasswordChangeResponse(varPasswordChangeResponse)
+			*o = PasswordChangeResponse(varPasswordChangeResponse)
 }
 
 	additionalProperties := make(map[string]interface{})

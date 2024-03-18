@@ -174,7 +174,7 @@ func (o *AccountSource) UnmarshalJSON(bytes []byte) (err error) {
 	varAccountSource := _AccountSource{}
 
 	if err = json.Unmarshal(bytes, &varAccountSource); err == nil {
-	*o = AccountSource(varAccountSource)
+			*o = AccountSource(varAccountSource)
 }
 
 	additionalProperties := make(map[string]interface{})

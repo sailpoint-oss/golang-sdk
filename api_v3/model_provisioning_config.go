@@ -23,7 +23,7 @@ type ProvisioningConfig struct {
 	UniversalManager *bool `json:"universalManager,omitempty"`
 	// References to sources for the Service Desk integration template.  May only be specified if universalManager is false.
 	ManagedResourceRefs []ServiceDeskSource `json:"managedResourceRefs,omitempty"`
-	PlanInitializerScript *ProvisioningConfigPlanInitializerScript `json:"planInitializerScript,omitempty"`
+	PlanInitializerScript NullableProvisioningConfigPlanInitializerScript `json:"planInitializerScript,omitempty"`
 	// Name of an attribute that when true disables the saving of ProvisioningRequest objects whenever plans are sent through this integration.
 	NoProvisioningRequests *bool `json:"noProvisioningRequests,omitempty"`
 	// When saving pending requests is enabled, this defines the number of hours the request is allowed to live before it is considered expired and no longer affects plan compilation.
@@ -118,36 +118,46 @@ func (o *ProvisioningConfig) SetManagedResourceRefs(v []ServiceDeskSource) {
 	o.ManagedResourceRefs = v
 }
 
-// GetPlanInitializerScript returns the PlanInitializerScript field value if set, zero value otherwise.
+// GetPlanInitializerScript returns the PlanInitializerScript field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProvisioningConfig) GetPlanInitializerScript() ProvisioningConfigPlanInitializerScript {
-	if o == nil || isNil(o.PlanInitializerScript) {
+	if o == nil || isNil(o.PlanInitializerScript.Get()) {
 		var ret ProvisioningConfigPlanInitializerScript
 		return ret
 	}
-	return *o.PlanInitializerScript
+	return *o.PlanInitializerScript.Get()
 }
 
 // GetPlanInitializerScriptOk returns a tuple with the PlanInitializerScript field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProvisioningConfig) GetPlanInitializerScriptOk() (*ProvisioningConfigPlanInitializerScript, bool) {
-	if o == nil || isNil(o.PlanInitializerScript) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PlanInitializerScript, true
+	return o.PlanInitializerScript.Get(), o.PlanInitializerScript.IsSet()
 }
 
 // HasPlanInitializerScript returns a boolean if a field has been set.
 func (o *ProvisioningConfig) HasPlanInitializerScript() bool {
-	if o != nil && !isNil(o.PlanInitializerScript) {
+	if o != nil && o.PlanInitializerScript.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPlanInitializerScript gets a reference to the given ProvisioningConfigPlanInitializerScript and assigns it to the PlanInitializerScript field.
+// SetPlanInitializerScript gets a reference to the given NullableProvisioningConfigPlanInitializerScript and assigns it to the PlanInitializerScript field.
 func (o *ProvisioningConfig) SetPlanInitializerScript(v ProvisioningConfigPlanInitializerScript) {
-	o.PlanInitializerScript = &v
+	o.PlanInitializerScript.Set(&v)
+}
+// SetPlanInitializerScriptNil sets the value for PlanInitializerScript to be an explicit nil
+func (o *ProvisioningConfig) SetPlanInitializerScriptNil() {
+	o.PlanInitializerScript.Set(nil)
+}
+
+// UnsetPlanInitializerScript ensures that no value is present for PlanInitializerScript, not even an explicit nil
+func (o *ProvisioningConfig) UnsetPlanInitializerScript() {
+	o.PlanInitializerScript.Unset()
 }
 
 // GetNoProvisioningRequests returns the NoProvisioningRequests field value if set, zero value otherwise.
@@ -228,8 +238,8 @@ func (o ProvisioningConfig) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.ManagedResourceRefs) {
 		toSerialize["managedResourceRefs"] = o.ManagedResourceRefs
 	}
-	if !isNil(o.PlanInitializerScript) {
-		toSerialize["planInitializerScript"] = o.PlanInitializerScript
+	if o.PlanInitializerScript.IsSet() {
+		toSerialize["planInitializerScript"] = o.PlanInitializerScript.Get()
 	}
 	if !isNil(o.NoProvisioningRequests) {
 		toSerialize["noProvisioningRequests"] = o.NoProvisioningRequests
@@ -249,7 +259,7 @@ func (o *ProvisioningConfig) UnmarshalJSON(bytes []byte) (err error) {
 	varProvisioningConfig := _ProvisioningConfig{}
 
 	if err = json.Unmarshal(bytes, &varProvisioningConfig); err == nil {
-	*o = ProvisioningConfig(varProvisioningConfig)
+			*o = ProvisioningConfig(varProvisioningConfig)
 }
 
 	additionalProperties := make(map[string]interface{})

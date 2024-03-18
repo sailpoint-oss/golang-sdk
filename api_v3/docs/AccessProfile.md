@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Created** | Pointer to **time.Time** | Date the Access Profile was created | [optional] [readonly] 
 **Modified** | Pointer to **time.Time** | Date the Access Profile was last modified. | [optional] [readonly] 
 **Enabled** | Pointer to **bool** | Whether the Access Profile is enabled. If the Access Profile is enabled then you must include at least one Entitlement. | [optional] [default to true]
-**Owner** | [**AccessProfileOwner**](AccessProfileOwner.md) |  | 
+**Owner** | [**OwnerReference**](OwnerReference.md) |  | 
 **Source** | [**AccessProfileSourceRef**](AccessProfileSourceRef.md) |  | 
 **Entitlements** | Pointer to [**[]EntitlementRef**](EntitlementRef.md) | A list of entitlements associated with the Access Profile. If enabled is false this is allowed to be empty otherwise it needs to contain at least one Entitlement. | [optional] 
 **Requestable** | Pointer to **bool** | Whether the Access Profile is requestable via access request. Currently, making an Access Profile non-requestable is only supported  for customers enabled with the new Request Center. Otherwise, attempting to create an Access Profile with a value  **false** in this field results in a 400 error. | [optional] [default to true]
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewAccessProfile
 
-`func NewAccessProfile(name string, owner AccessProfileOwner, source AccessProfileSourceRef, ) *AccessProfile`
+`func NewAccessProfile(name string, owner OwnerReference, source AccessProfileSourceRef, ) *AccessProfile`
 
 NewAccessProfile instantiates a new AccessProfile object
 This constructor will assign default values to properties that have it defined,
@@ -195,20 +195,20 @@ HasEnabled returns a boolean if a field has been set.
 
 ### GetOwner
 
-`func (o *AccessProfile) GetOwner() AccessProfileOwner`
+`func (o *AccessProfile) GetOwner() OwnerReference`
 
 GetOwner returns the Owner field if non-nil, zero value otherwise.
 
 ### GetOwnerOk
 
-`func (o *AccessProfile) GetOwnerOk() (*AccessProfileOwner, bool)`
+`func (o *AccessProfile) GetOwnerOk() (*OwnerReference, bool)`
 
 GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwner
 
-`func (o *AccessProfile) SetOwner(v AccessProfileOwner)`
+`func (o *AccessProfile) SetOwner(v OwnerReference)`
 
 SetOwner sets Owner field to given value.
 

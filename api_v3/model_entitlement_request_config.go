@@ -26,7 +26,7 @@ type EntitlementRequestConfig struct {
 	// Flag for requiring comments while rejecting an entitlement request.
 	DeniedCommentsRequired *bool `json:"deniedCommentsRequired,omitempty"`
 	// Approval schemes for granting entitlement request. This can be empty if no approval is needed. Multiple schemes must be comma-separated. The valid schemes are \"entitlementOwner\", \"sourceOwner\", \"manager\" and \"workgroup:{id}\". Multiple workgroups (governance groups) can be used. 
-	GrantRequestApprovalSchemes *string `json:"grantRequestApprovalSchemes,omitempty"`
+	GrantRequestApprovalSchemes NullableString `json:"grantRequestApprovalSchemes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -43,7 +43,7 @@ func NewEntitlementRequestConfig() *EntitlementRequestConfig {
 	var deniedCommentsRequired bool = false
 	this.DeniedCommentsRequired = &deniedCommentsRequired
 	var grantRequestApprovalSchemes string = "sourceOwner"
-	this.GrantRequestApprovalSchemes = &grantRequestApprovalSchemes
+	this.GrantRequestApprovalSchemes = *NewNullableString(&grantRequestApprovalSchemes)
 	return &this
 }
 
@@ -57,7 +57,7 @@ func NewEntitlementRequestConfigWithDefaults() *EntitlementRequestConfig {
 	var deniedCommentsRequired bool = false
 	this.DeniedCommentsRequired = &deniedCommentsRequired
 	var grantRequestApprovalSchemes string = "sourceOwner"
-	this.GrantRequestApprovalSchemes = &grantRequestApprovalSchemes
+	this.GrantRequestApprovalSchemes = *NewNullableString(&grantRequestApprovalSchemes)
 	return &this
 }
 
@@ -157,36 +157,46 @@ func (o *EntitlementRequestConfig) SetDeniedCommentsRequired(v bool) {
 	o.DeniedCommentsRequired = &v
 }
 
-// GetGrantRequestApprovalSchemes returns the GrantRequestApprovalSchemes field value if set, zero value otherwise.
+// GetGrantRequestApprovalSchemes returns the GrantRequestApprovalSchemes field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EntitlementRequestConfig) GetGrantRequestApprovalSchemes() string {
-	if o == nil || isNil(o.GrantRequestApprovalSchemes) {
+	if o == nil || isNil(o.GrantRequestApprovalSchemes.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.GrantRequestApprovalSchemes
+	return *o.GrantRequestApprovalSchemes.Get()
 }
 
 // GetGrantRequestApprovalSchemesOk returns a tuple with the GrantRequestApprovalSchemes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EntitlementRequestConfig) GetGrantRequestApprovalSchemesOk() (*string, bool) {
-	if o == nil || isNil(o.GrantRequestApprovalSchemes) {
+	if o == nil {
 		return nil, false
 	}
-	return o.GrantRequestApprovalSchemes, true
+	return o.GrantRequestApprovalSchemes.Get(), o.GrantRequestApprovalSchemes.IsSet()
 }
 
 // HasGrantRequestApprovalSchemes returns a boolean if a field has been set.
 func (o *EntitlementRequestConfig) HasGrantRequestApprovalSchemes() bool {
-	if o != nil && !isNil(o.GrantRequestApprovalSchemes) {
+	if o != nil && o.GrantRequestApprovalSchemes.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetGrantRequestApprovalSchemes gets a reference to the given string and assigns it to the GrantRequestApprovalSchemes field.
+// SetGrantRequestApprovalSchemes gets a reference to the given NullableString and assigns it to the GrantRequestApprovalSchemes field.
 func (o *EntitlementRequestConfig) SetGrantRequestApprovalSchemes(v string) {
-	o.GrantRequestApprovalSchemes = &v
+	o.GrantRequestApprovalSchemes.Set(&v)
+}
+// SetGrantRequestApprovalSchemesNil sets the value for GrantRequestApprovalSchemes to be an explicit nil
+func (o *EntitlementRequestConfig) SetGrantRequestApprovalSchemesNil() {
+	o.GrantRequestApprovalSchemes.Set(nil)
+}
+
+// UnsetGrantRequestApprovalSchemes ensures that no value is present for GrantRequestApprovalSchemes, not even an explicit nil
+func (o *EntitlementRequestConfig) UnsetGrantRequestApprovalSchemes() {
+	o.GrantRequestApprovalSchemes.Unset()
 }
 
 func (o EntitlementRequestConfig) MarshalJSON() ([]byte, error) {
@@ -208,8 +218,8 @@ func (o EntitlementRequestConfig) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.DeniedCommentsRequired) {
 		toSerialize["deniedCommentsRequired"] = o.DeniedCommentsRequired
 	}
-	if !isNil(o.GrantRequestApprovalSchemes) {
-		toSerialize["grantRequestApprovalSchemes"] = o.GrantRequestApprovalSchemes
+	if o.GrantRequestApprovalSchemes.IsSet() {
+		toSerialize["grantRequestApprovalSchemes"] = o.GrantRequestApprovalSchemes.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -223,7 +233,7 @@ func (o *EntitlementRequestConfig) UnmarshalJSON(bytes []byte) (err error) {
 	varEntitlementRequestConfig := _EntitlementRequestConfig{}
 
 	if err = json.Unmarshal(bytes, &varEntitlementRequestConfig); err == nil {
-	*o = EntitlementRequestConfig(varEntitlementRequestConfig)
+			*o = EntitlementRequestConfig(varEntitlementRequestConfig)
 }
 
 	additionalProperties := make(map[string]interface{})

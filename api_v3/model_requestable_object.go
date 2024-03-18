@@ -29,7 +29,7 @@ type RequestableObject struct {
 	// The time when the requestable object was last modified
 	Modified NullableTime `json:"modified,omitempty"`
 	// Description of the requestable object.
-	Description *string `json:"description,omitempty"`
+	Description NullableString `json:"description,omitempty"`
 	Type *RequestableObjectType `json:"type,omitempty"`
 	RequestStatus *RequestableObjectRequestStatus `json:"requestStatus,omitempty"`
 	// If *requestStatus* is *PENDING*, indicates the id of the associated account activity.
@@ -197,36 +197,46 @@ func (o *RequestableObject) UnsetModified() {
 	o.Modified.Unset()
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RequestableObject) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || isNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Description
+	return *o.Description.Get()
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RequestableObject) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *RequestableObject) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && o.Description.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given string and assigns it to the Description field.
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
 func (o *RequestableObject) SetDescription(v string) {
-	o.Description = &v
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *RequestableObject) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *RequestableObject) UnsetDescription() {
+	o.Description.Unset()
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -431,8 +441,8 @@ func (o RequestableObject) ToMap() (map[string]interface{}, error) {
 	if o.Modified.IsSet() {
 		toSerialize["modified"] = o.Modified.Get()
 	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -461,7 +471,7 @@ func (o *RequestableObject) UnmarshalJSON(bytes []byte) (err error) {
 	varRequestableObject := _RequestableObject{}
 
 	if err = json.Unmarshal(bytes, &varRequestableObject); err == nil {
-	*o = RequestableObject(varRequestableObject)
+			*o = RequestableObject(varRequestableObject)
 }
 
 	additionalProperties := make(map[string]interface{})

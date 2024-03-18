@@ -4,80 +4,51 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateSodPolicy**](SODPolicyAPI.md#CreateSodPolicy) | **Post** /sod-policies | Create SOD policy
-[**DeleteSodPolicy**](SODPolicyAPI.md#DeleteSodPolicy) | **Delete** /sod-policies/{id} | Delete SOD policy by ID
-[**DeleteSodPolicySchedule**](SODPolicyAPI.md#DeleteSodPolicySchedule) | **Delete** /sod-policies/{id}/schedule | Delete SOD policy schedule
-[**GetCustomViolationReport**](SODPolicyAPI.md#GetCustomViolationReport) | **Get** /sod-violation-report/{reportResultId}/download/{fileName} | Download custom violation report
-[**GetDefaultViolationReport**](SODPolicyAPI.md#GetDefaultViolationReport) | **Get** /sod-violation-report/{reportResultId}/download | Download violation report
-[**GetSodAllReportRunStatus**](SODPolicyAPI.md#GetSodAllReportRunStatus) | **Get** /sod-violation-report | Get multi-report run task status
-[**GetSodPolicy**](SODPolicyAPI.md#GetSodPolicy) | **Get** /sod-policies/{id} | Get SOD policy by ID
-[**GetSodPolicySchedule**](SODPolicyAPI.md#GetSodPolicySchedule) | **Get** /sod-policies/{id}/schedule | Get SOD policy schedule
-[**GetSodViolationReportRunStatus**](SODPolicyAPI.md#GetSodViolationReportRunStatus) | **Get** /sod-policies/sod-violation-report-status/{reportResultId} | Get violation report run status
-[**GetSodViolationReportStatus**](SODPolicyAPI.md#GetSodViolationReportStatus) | **Get** /sod-policies/{id}/violation-report | Get SOD violation report status
-[**ListSodPolicies**](SODPolicyAPI.md#ListSodPolicies) | **Get** /sod-policies | List SOD policies
-[**PatchSodPolicy**](SODPolicyAPI.md#PatchSodPolicy) | **Patch** /sod-policies/{id} | Patch a SOD policy
-[**PutPolicySchedule**](SODPolicyAPI.md#PutPolicySchedule) | **Put** /sod-policies/{id}/schedule | Update SOD Policy schedule
-[**PutSodPolicy**](SODPolicyAPI.md#PutSodPolicy) | **Put** /sod-policies/{id} | Update SOD policy by ID
-[**StartSodAllPoliciesForOrg**](SODPolicyAPI.md#StartSodAllPoliciesForOrg) | **Post** /sod-violation-report/run | Runs all policies for org
-[**StartSodPolicy**](SODPolicyAPI.md#StartSodPolicy) | **Post** /sod-policies/{id}/violation-report/run | Runs SOD policy violation report
+[**CreateSodPolicy**](#create-sod-policy) | **Post** /sod-policies | Create SOD policy
+[**DeleteSodPolicy**](#delete-sod-policy) | **Delete** /sod-policies/{id} | Delete SOD policy by ID
+[**DeleteSodPolicySchedule**](#delete-sod-policy-schedule) | **Delete** /sod-policies/{id}/schedule | Delete SOD policy schedule
+[**GetCustomViolationReport**](#get-custom-violation-report) | **Get** /sod-violation-report/{reportResultId}/download/{fileName} | Download custom violation report
+[**GetDefaultViolationReport**](#get-default-violation-report) | **Get** /sod-violation-report/{reportResultId}/download | Download violation report
+[**GetSodAllReportRunStatus**](#get-sod-all-report-run-status) | **Get** /sod-violation-report | Get multi-report run task status
+[**GetSodPolicy**](#get-sod-policy) | **Get** /sod-policies/{id} | Get SOD policy by ID
+[**GetSodPolicySchedule**](#get-sod-policy-schedule) | **Get** /sod-policies/{id}/schedule | Get SOD policy schedule
+[**GetSodViolationReportRunStatus**](#get-sod-violation-report-run-status) | **Get** /sod-policies/sod-violation-report-status/{reportResultId} | Get violation report run status
+[**GetSodViolationReportStatus**](#get-sod-violation-report-status) | **Get** /sod-policies/{id}/violation-report | Get SOD violation report status
+[**ListSodPolicies**](#list-sod-policies) | **Get** /sod-policies | List SOD policies
+[**PatchSodPolicy**](#patch-sod-policy) | **Patch** /sod-policies/{id} | Patch a SOD policy
+[**PutPolicySchedule**](#put-policy-schedule) | **Put** /sod-policies/{id}/schedule | Update SOD Policy schedule
+[**PutSodPolicy**](#put-sod-policy) | **Put** /sod-policies/{id} | Update SOD policy by ID
+[**StartSodAllPoliciesForOrg**](#start-sod-all-policies-for-org) | **Post** /sod-violation-report/run | Runs all policies for org
+[**StartSodPolicy**](#start-sod-policy) | **Post** /sod-policies/{id}/violation-report/run | Runs SOD policy violation report
 
 
 
-## CreateSodPolicy
-
-> SodPolicy CreateSodPolicy(ctx).SodPolicy(sodPolicy).Execute()
-
-Create SOD policy
+## create-sod-policy
 
 
+This creates both General and Conflicting Access Based policy, with a limit of 50 entitlements for each (left & right) criteria for Conflicting Access Based SOD policy.
+Requires role of ORG_ADMIN.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | sodPolicy | [**SodPolicy**](SodPolicy.md) | True  | 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    sodPolicy := *openapiclient.NewSodPolicy() // SodPolicy | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPolicyAPI.CreateSodPolicy(context.Background()).SodPolicy(sodPolicy).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyAPI.CreateSodPolicy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateSodPolicy`: SodPolicy
-    fmt.Fprintf(os.Stdout, "Response from `SODPolicyAPI.CreateSodPolicy`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateSodPolicyRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **sodPolicy** | [**SodPolicy**](SodPolicy.md) |  | 
-
+	
 ### Return type
 
-[**SodPolicy**](SodPolicy.md)
+[**SodPolicy**](SodPolicy)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+201 | SOD policy created | SodPolicy
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -89,65 +60,34 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteSodPolicy
-
-> DeleteSodPolicy(ctx, id).Logical(logical).Execute()
-
-Delete SOD policy by ID
+## delete-sod-policy
 
 
+This deletes a specified SOD policy.
+Requires role of ORG_ADMIN.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | The ID of the SOD Policy to delete.
+  Query | logical | **bool** |   (optional) (default to true) | Indicates whether this is a soft delete (logical true) or a hard delete.
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the SOD Policy to delete.
-    logical := true // bool | Indicates whether this is a soft delete (logical true) or a hard delete. (optional) (default to true)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.SODPolicyAPI.DeleteSodPolicy(context.Background(), id).Logical(logical).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyAPI.DeleteSodPolicy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the SOD Policy to delete. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDeleteSodPolicyRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **logical** | **bool** | Indicates whether this is a soft delete (logical true) or a hard delete. | [default to true]
-
+	
 ### Return type
 
  (empty response body)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+204 | No content. | 
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -159,63 +99,33 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteSodPolicySchedule
-
-> DeleteSodPolicySchedule(ctx, id).Execute()
-
-Delete SOD policy schedule
+## delete-sod-policy-schedule
 
 
+This deletes schedule for a specified SOD policy.
+Requires role of ORG_ADMIN.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | The ID of the SOD policy the schedule must be deleted for.
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the SOD policy the schedule must be deleted for.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.SODPolicyAPI.DeleteSodPolicySchedule(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyAPI.DeleteSodPolicySchedule``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the SOD policy the schedule must be deleted for. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDeleteSodPolicyScheduleRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+	
 ### Return type
 
  (empty response body)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+204 | No content. | 
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -227,68 +137,34 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetCustomViolationReport
-
-> *os.File GetCustomViolationReport(ctx, reportResultId, fileName).Execute()
-
-Download custom violation report
+## get-custom-violation-report
 
 
+This allows to download a specified named violation report for a given report reference.
+Requires role of ORG_ADMIN.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | reportResultId | **string** | True  | The ID of the report reference to download.
+Path   | fileName | **string** | True  | Custom Name for the  file.
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    reportResultId := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the report reference to download.
-    fileName := "custom-name" // string | Custom Name for the  file.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPolicyAPI.GetCustomViolationReport(context.Background(), reportResultId, fileName).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyAPI.GetCustomViolationReport``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetCustomViolationReport`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `SODPolicyAPI.GetCustomViolationReport`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reportResultId** | **string** | The ID of the report reference to download. | 
-**fileName** | **string** | Custom Name for the  file. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetCustomViolationReportRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
+	
 ### Return type
 
-[***os.File**](*os.File.md)
+[***os.File**](*os.File)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Returns the zip file with given custom name that contains the violation report file. | *os.File
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -300,65 +176,33 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetDefaultViolationReport
-
-> *os.File GetDefaultViolationReport(ctx, reportResultId).Execute()
-
-Download violation report
+## get-default-violation-report
 
 
+This allows to download a violation report for a given report reference.
+Requires role of ORG_ADMIN.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | reportResultId | **string** | True  | The ID of the report reference to download.
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    reportResultId := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the report reference to download.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPolicyAPI.GetDefaultViolationReport(context.Background(), reportResultId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyAPI.GetDefaultViolationReport``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetDefaultViolationReport`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `SODPolicyAPI.GetDefaultViolationReport`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reportResultId** | **string** | The ID of the report reference to download. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetDefaultViolationReportRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+	
 ### Return type
 
-[***os.File**](*os.File.md)
+[***os.File**](*os.File)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Returns the PolicyReport.zip that contains the violation report file. | *os.File
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -370,56 +214,31 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetSodAllReportRunStatus
-
-> ReportResultReference GetSodAllReportRunStatus(ctx).Execute()
-
-Get multi-report run task status
+## get-sod-all-report-run-status
 
 
+This endpoint gets the status for a violation report for all policy run.
+Requires role of ORG_ADMIN.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPolicyAPI.GetSodAllReportRunStatus(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyAPI.GetSodAllReportRunStatus``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetSodAllReportRunStatus`: ReportResultReference
-    fmt.Fprintf(os.Stdout, "Response from `SODPolicyAPI.GetSodAllReportRunStatus`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetSodAllReportRunStatusRequest struct via the builder pattern
-
-
+	
 ### Return type
 
-[**ReportResultReference**](ReportResultReference.md)
+[**ReportResultReference**](ReportResultReference)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Status of the violation report run task for all policy run. | ReportResultReference
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -431,65 +250,33 @@ Other parameters are passed through a pointer to a apiGetSodAllReportRunStatusRe
 [[Back to README]](../README.md)
 
 
-## GetSodPolicy
-
-> SodPolicy GetSodPolicy(ctx, id).Execute()
-
-Get SOD policy by ID
+## get-sod-policy
 
 
+This gets specified SOD policy.
+Requires role of ORG_ADMIN.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | The ID of the object reference to retrieve.
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the object reference to retrieve.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPolicyAPI.GetSodPolicy(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyAPI.GetSodPolicy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetSodPolicy`: SodPolicy
-    fmt.Fprintf(os.Stdout, "Response from `SODPolicyAPI.GetSodPolicy`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the object reference to retrieve. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetSodPolicyRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+	
 ### Return type
 
-[**SodPolicy**](SodPolicy.md)
+[**SodPolicy**](SodPolicy)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | SOD policy ID. | SodPolicy
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -501,65 +288,32 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetSodPolicySchedule
-
-> SodPolicySchedule GetSodPolicySchedule(ctx, id).Execute()
-
-Get SOD policy schedule
+## get-sod-policy-schedule
 
 
+This endpoint gets a specified SOD policy's schedule.
+Requires the role of ORG_ADMIN.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | The ID of the object reference to retrieve.
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the object reference to retrieve.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPolicyAPI.GetSodPolicySchedule(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyAPI.GetSodPolicySchedule``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetSodPolicySchedule`: SodPolicySchedule
-    fmt.Fprintf(os.Stdout, "Response from `SODPolicyAPI.GetSodPolicySchedule`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the object reference to retrieve. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetSodPolicyScheduleRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+	
 ### Return type
 
-[**SodPolicySchedule**](SodPolicySchedule.md)
+[**SodPolicySchedule**](SodPolicySchedule)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | SOD policy ID. | SodPolicySchedule
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -571,65 +325,33 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetSodViolationReportRunStatus
-
-> ReportResultReference GetSodViolationReportRunStatus(ctx, reportResultId).Execute()
-
-Get violation report run status
+## get-sod-violation-report-run-status
 
 
+This gets the status for a violation report run task that has already been invoked.
+Requires role of ORG_ADMIN.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | reportResultId | **string** | True  | The ID of the report reference to retrieve.
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    reportResultId := "2e8d8180-24bc-4d21-91c6-7affdb473b0d" // string | The ID of the report reference to retrieve.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPolicyAPI.GetSodViolationReportRunStatus(context.Background(), reportResultId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyAPI.GetSodViolationReportRunStatus``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetSodViolationReportRunStatus`: ReportResultReference
-    fmt.Fprintf(os.Stdout, "Response from `SODPolicyAPI.GetSodViolationReportRunStatus`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reportResultId** | **string** | The ID of the report reference to retrieve. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetSodViolationReportRunStatusRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+	
 ### Return type
 
-[**ReportResultReference**](ReportResultReference.md)
+[**ReportResultReference**](ReportResultReference)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Status of the violation report run task. | ReportResultReference
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -641,65 +363,33 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetSodViolationReportStatus
-
-> ReportResultReference GetSodViolationReportStatus(ctx, id).Execute()
-
-Get SOD violation report status
+## get-sod-violation-report-status
 
 
+This gets the status for a violation report run task that has already been invoked.
+Requires role of ORG_ADMIN.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | The ID of the object reference to retrieve.
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the object reference to retrieve.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPolicyAPI.GetSodViolationReportStatus(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyAPI.GetSodViolationReportStatus``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetSodViolationReportStatus`: ReportResultReference
-    fmt.Fprintf(os.Stdout, "Response from `SODPolicyAPI.GetSodViolationReportStatus`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the object reference to retrieve. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetSodViolationReportStatusRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+	
 ### Return type
 
-[**ReportResultReference**](ReportResultReference.md)
+[**ReportResultReference**](ReportResultReference)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Status of the violation report run task. | ReportResultReference
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -711,67 +401,35 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListSodPolicies
-
-> []SodPolicy ListSodPolicies(ctx).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
-
-List SOD policies
+## list-sod-policies
 
 
+This gets list of all SOD policies.
+Requires role of ORG_ADMIN
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+  Query | limit | **int32** |   (optional) (default to 250) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | offset | **int32** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | count | **bool** |   (optional) (default to false) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | filters | **string** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **name**: *eq*  **state**: *eq*
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
-    offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-    count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-    filters := "id eq "bc693f07e7b645539626c25954c58554"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **name**: *eq*  **state**: *eq* (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPolicyAPI.ListSodPolicies(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyAPI.ListSodPolicies``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListSodPolicies`: []SodPolicy
-    fmt.Fprintf(os.Stdout, "Response from `SODPolicyAPI.ListSodPolicies`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListSodPoliciesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
- **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
- **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
- **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **name**: *eq*  **state**: *eq* | 
-
+	
 ### Return type
 
-[**[]SodPolicy**](SodPolicy.md)
+[**[]SodPolicy**](SodPolicy)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | List of all SOD policies. | []SodPolicy
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -783,67 +441,35 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PatchSodPolicy
-
-> SodPolicy PatchSodPolicy(ctx, id).RequestBody(requestBody).Execute()
-
-Patch a SOD policy
+## patch-sod-policy
 
 
+Allows updating SOD Policy fields other than ["id","created","creatorId","policyQuery","type"] using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+Requires role of ORG_ADMIN.
+This endpoint can only patch CONFLICTING_ACCESS_BASED type policies. Do not use this endpoint to patch general policies - doing so will build an API exception.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | The ID of the SOD policy being modified.
+ Body  | requestBody | **[]map[string]interface{}** | True  | A list of SOD Policy update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * ownerRef * externalPolicyReference * compensatingControls * correctionAdvice * state * tags * violationOwnerAssignmentConfig * scheduled * conflictingAccessCriteria 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    id := "2c9180835d191a86015d28455b4a2329" // string | The ID of the SOD policy being modified.
-    requestBody := []map[string]interface{}{map[string]interface{}(123)} // []map[string]interface{} | A list of SOD Policy update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * ownerRef * externalPolicyReference * compensatingControls * correctionAdvice * state * tags * violationOwnerAssignmentConfig * scheduled * conflictingAccessCriteria 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPolicyAPI.PatchSodPolicy(context.Background(), id).RequestBody(requestBody).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyAPI.PatchSodPolicy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PatchSodPolicy`: SodPolicy
-    fmt.Fprintf(os.Stdout, "Response from `SODPolicyAPI.PatchSodPolicy`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the SOD policy being modified. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPatchSodPolicyRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **requestBody** | **[]map[string]interface{}** | A list of SOD Policy update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * ownerRef * externalPolicyReference * compensatingControls * correctionAdvice * state * tags * violationOwnerAssignmentConfig * scheduled * conflictingAccessCriteria  | 
-
+	
 ### Return type
 
-[**SodPolicy**](SodPolicy.md)
+[**SodPolicy**](SodPolicy)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Indicates the PATCH operation succeeded, and returns the SOD policy&#39;s new representation. | SodPolicy
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -855,67 +481,33 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PutPolicySchedule
-
-> SodPolicySchedule PutPolicySchedule(ctx, id).SodPolicySchedule(sodPolicySchedule).Execute()
-
-Update SOD Policy schedule
+## put-policy-schedule
 
 
+This updates schedule for a specified SOD policy.
+Requires role of ORG_ADMIN.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | The ID of the SOD policy to update its schedule.
+ Body  | sodPolicySchedule | [**SodPolicySchedule**](SodPolicySchedule.md) | True  | 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the SOD policy to update its schedule.
-    sodPolicySchedule := *openapiclient.NewSodPolicySchedule() // SodPolicySchedule | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPolicyAPI.PutPolicySchedule(context.Background(), id).SodPolicySchedule(sodPolicySchedule).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyAPI.PutPolicySchedule``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PutPolicySchedule`: SodPolicySchedule
-    fmt.Fprintf(os.Stdout, "Response from `SODPolicyAPI.PutPolicySchedule`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the SOD policy to update its schedule. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPutPolicyScheduleRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **sodPolicySchedule** | [**SodPolicySchedule**](SodPolicySchedule.md) |  | 
-
+	
 ### Return type
 
-[**SodPolicySchedule**](SodPolicySchedule.md)
+[**SodPolicySchedule**](SodPolicySchedule)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | SOD policy by ID. | SodPolicySchedule
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -927,67 +519,34 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PutSodPolicy
-
-> SodPolicy PutSodPolicy(ctx, id).SodPolicy(sodPolicy).Execute()
-
-Update SOD policy by ID
+## put-sod-policy
 
 
+This updates a specified SOD policy.
+Requires role of ORG_ADMIN.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | The ID of the SOD policy to update.
+ Body  | sodPolicy | [**SodPolicy**](SodPolicy.md) | True  | 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the SOD policy to update.
-    sodPolicy := *openapiclient.NewSodPolicy() // SodPolicy | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPolicyAPI.PutSodPolicy(context.Background(), id).SodPolicy(sodPolicy).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyAPI.PutSodPolicy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PutSodPolicy`: SodPolicy
-    fmt.Fprintf(os.Stdout, "Response from `SODPolicyAPI.PutSodPolicy`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the SOD policy to update. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPutSodPolicyRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **sodPolicy** | [**SodPolicy**](SodPolicy.md) |  | 
-
+	
 ### Return type
 
-[**SodPolicy**](SodPolicy.md)
+[**SodPolicy**](SodPolicy)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | SOD Policy by ID | SodPolicy
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -999,61 +558,32 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## StartSodAllPoliciesForOrg
-
-> ReportResultReference StartSodAllPoliciesForOrg(ctx).MultiPolicyRequest(multiPolicyRequest).Execute()
-
-Runs all policies for org
+## start-sod-all-policies-for-org
 
 
+Runs multi-policy report for the org. If a policy reports more than 5000 violations, the report mentions that the violation limit was exceeded for that policy. If the request is empty, the report runs for all policies. Otherwise, the report runs for only the filtered policy list provided.
+Requires role of ORG_ADMIN.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | multiPolicyRequest | [**MultiPolicyRequest**](MultiPolicyRequest.md) |   (optional) | 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    multiPolicyRequest := *openapiclient.NewMultiPolicyRequest() // MultiPolicyRequest |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPolicyAPI.StartSodAllPoliciesForOrg(context.Background()).MultiPolicyRequest(multiPolicyRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyAPI.StartSodAllPoliciesForOrg``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StartSodAllPoliciesForOrg`: ReportResultReference
-    fmt.Fprintf(os.Stdout, "Response from `SODPolicyAPI.StartSodAllPoliciesForOrg`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiStartSodAllPoliciesForOrgRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **multiPolicyRequest** | [**MultiPolicyRequest**](MultiPolicyRequest.md) |  | 
-
+	
 ### Return type
 
-[**ReportResultReference**](ReportResultReference.md)
+[**ReportResultReference**](ReportResultReference)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Reference to the violation report run task. | ReportResultReference
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -1065,65 +595,33 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## StartSodPolicy
-
-> ReportResultReference StartSodPolicy(ctx, id).Execute()
-
-Runs SOD policy violation report
+## start-sod-policy
 
 
+This invokes processing of violation report for given SOD policy. If the policy reports more than 5000 violations, the report returns with violation limit exceeded message.
+Requires role of ORG_ADMIN.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | The SOD policy ID to run.
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The SOD policy ID to run.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPolicyAPI.StartSodPolicy(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyAPI.StartSodPolicy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StartSodPolicy`: ReportResultReference
-    fmt.Fprintf(os.Stdout, "Response from `SODPolicyAPI.StartSodPolicy`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The SOD policy ID to run. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiStartSodPolicyRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+	
 ### Return type
 
-[**ReportResultReference**](ReportResultReference.md)
+[**ReportResultReference**](ReportResultReference)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Reference to the violation report run task. | ReportResultReference
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 

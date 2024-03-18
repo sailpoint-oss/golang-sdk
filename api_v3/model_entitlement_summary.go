@@ -435,7 +435,7 @@ func (o *EntitlementSummary) UnmarshalJSON(bytes []byte) (err error) {
 	varEntitlementSummary := _EntitlementSummary{}
 
 	if err = json.Unmarshal(bytes, &varEntitlementSummary); err == nil {
-	*o = EntitlementSummary(varEntitlementSummary)
+			*o = EntitlementSummary(varEntitlementSummary)
 }
 
 	additionalProperties := make(map[string]interface{})

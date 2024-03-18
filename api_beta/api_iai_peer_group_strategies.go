@@ -97,19 +97,19 @@ func (a *IAIPeerGroupStrategiesAPIService) GetPeerGroupOutliersExecute(r ApiGetP
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
 		var defaultValue int32 = 250
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
-		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
 	} else {
 		var defaultValue int32 = 0
 		r.offset = &defaultValue
 	}
 	if r.count != nil {
-		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "")
 	} else {
 		var defaultValue bool = false
 		r.count = &defaultValue

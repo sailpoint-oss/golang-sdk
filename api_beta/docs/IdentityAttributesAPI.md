@@ -4,70 +4,41 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateIdentityAttribute**](IdentityAttributesAPI.md#CreateIdentityAttribute) | **Post** /identity-attributes | Create Identity Attribute
-[**DeleteIdentityAttribute**](IdentityAttributesAPI.md#DeleteIdentityAttribute) | **Delete** /identity-attributes/{name} | Delete Identity Attribute
-[**DeleteIdentityAttributesInBulk**](IdentityAttributesAPI.md#DeleteIdentityAttributesInBulk) | **Post** /identity-attributes/bulk-delete | Bulk delete Identity Attributes
-[**GetIdentityAttribute**](IdentityAttributesAPI.md#GetIdentityAttribute) | **Get** /identity-attributes/{name} | Get Identity Attribute
-[**ListIdentityAttributes**](IdentityAttributesAPI.md#ListIdentityAttributes) | **Get** /identity-attributes | List Identity Attributes
-[**PutIdentityAttribute**](IdentityAttributesAPI.md#PutIdentityAttribute) | **Put** /identity-attributes/{name} | Update Identity Attribute
+[**CreateIdentityAttribute**](#create-identity-attribute) | **Post** /identity-attributes | Create Identity Attribute
+[**DeleteIdentityAttribute**](#delete-identity-attribute) | **Delete** /identity-attributes/{name} | Delete Identity Attribute
+[**DeleteIdentityAttributesInBulk**](#delete-identity-attributes-in-bulk) | **Post** /identity-attributes/bulk-delete | Bulk delete Identity Attributes
+[**GetIdentityAttribute**](#get-identity-attribute) | **Get** /identity-attributes/{name} | Get Identity Attribute
+[**ListIdentityAttributes**](#list-identity-attributes) | **Get** /identity-attributes | List Identity Attributes
+[**PutIdentityAttribute**](#put-identity-attribute) | **Put** /identity-attributes/{name} | Update Identity Attribute
 
 
 
-## CreateIdentityAttribute
-
-> IdentityAttribute CreateIdentityAttribute(ctx).IdentityAttribute(identityAttribute).Execute()
-
-Create Identity Attribute
+## create-identity-attribute
 
 
+This creates a new identity attribute.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | identityAttribute | [**IdentityAttribute**](IdentityAttribute.md) | True  | 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    identityAttribute := *openapiclient.NewIdentityAttribute() // IdentityAttribute | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityAttributesAPI.CreateIdentityAttribute(context.Background()).IdentityAttribute(identityAttribute).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesAPI.CreateIdentityAttribute``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateIdentityAttribute`: IdentityAttribute
-    fmt.Fprintf(os.Stdout, "Response from `IdentityAttributesAPI.CreateIdentityAttribute`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateIdentityAttributeRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **identityAttribute** | [**IdentityAttribute**](IdentityAttribute.md) |  | 
-
+	
 ### Return type
 
-[**IdentityAttribute**](IdentityAttribute.md)
+[**IdentityAttribute**](IdentityAttribute)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+201 | The identity attribute was created successfully | IdentityAttribute
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -79,63 +50,32 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteIdentityAttribute
-
-> DeleteIdentityAttribute(ctx, name).Execute()
-
-Delete Identity Attribute
+## delete-identity-attribute
 
 
+This deletes an identity attribute with the given name.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | name | **string** | True  | The attribute's technical name.
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    name := "displayName" // string | The attribute's technical name.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.IdentityAttributesAPI.DeleteIdentityAttribute(context.Background(), name).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesAPI.DeleteIdentityAttribute``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**name** | **string** | The attribute&#39;s technical name. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDeleteIdentityAttributeRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+	
 ### Return type
 
  (empty response body)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+204 | No content - indicates the request was successful but there is no content to be returned in the response. | 
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -147,59 +87,32 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteIdentityAttributesInBulk
-
-> DeleteIdentityAttributesInBulk(ctx).IdentityAttributeNames(identityAttributeNames).Execute()
-
-Bulk delete Identity Attributes
+## delete-identity-attributes-in-bulk
 
 
+This deletes identity attributes for a given set of names. Attributes that are currently mapped in an Identity Profile cannot be deleted.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | identityAttributeNames | [**IdentityAttributeNames**](IdentityAttributeNames.md) | True  | 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    identityAttributeNames := *openapiclient.NewIdentityAttributeNames() // IdentityAttributeNames | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.IdentityAttributesAPI.DeleteIdentityAttributesInBulk(context.Background()).IdentityAttributeNames(identityAttributeNames).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesAPI.DeleteIdentityAttributesInBulk``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDeleteIdentityAttributesInBulkRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **identityAttributeNames** | [**IdentityAttributeNames**](IdentityAttributeNames.md) |  | 
-
+	
 ### Return type
 
  (empty response body)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+204 | No content - indicates the request was successful but there is no content to be returned in the response. | 
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -211,65 +124,32 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetIdentityAttribute
-
-> IdentityAttribute GetIdentityAttribute(ctx, name).Execute()
-
-Get Identity Attribute
+## get-identity-attribute
 
 
+This gets an identity attribute for a given technical name.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | name | **string** | True  | The attribute's technical name.
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    name := "displayName" // string | The attribute's technical name.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityAttributesAPI.GetIdentityAttribute(context.Background(), name).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesAPI.GetIdentityAttribute``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetIdentityAttribute`: IdentityAttribute
-    fmt.Fprintf(os.Stdout, "Response from `IdentityAttributesAPI.GetIdentityAttribute`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**name** | **string** | The attribute&#39;s technical name. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetIdentityAttributeRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+	
 ### Return type
 
-[**IdentityAttribute**](IdentityAttribute.md)
+[**IdentityAttribute**](IdentityAttribute)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | The identity attribute with the given name | IdentityAttribute
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -281,67 +161,34 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListIdentityAttributes
-
-> []IdentityAttribute ListIdentityAttributes(ctx).IncludeSystem(includeSystem).IncludeSilent(includeSilent).SearchableOnly(searchableOnly).Count(count).Execute()
-
-List Identity Attributes
+## list-identity-attributes
 
 
+This gets a collection of identity attributes.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+  Query | includeSystem | **bool** |   (optional) (default to false) | Include \"system\" attributes in the response.
+  Query | includeSilent | **bool** |   (optional) (default to false) | Include \"silent\" attributes in the response.
+  Query | searchableOnly | **bool** |   (optional) (default to false) | Include only \"searchable\" attributes in the response.
+  Query | count | **bool** |   (optional) (default to false) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    includeSystem := false // bool | Include \"system\" attributes in the response. (optional) (default to false)
-    includeSilent := false // bool | Include \"silent\" attributes in the response. (optional) (default to false)
-    searchableOnly := false // bool | Include only \"searchable\" attributes in the response. (optional) (default to false)
-    count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityAttributesAPI.ListIdentityAttributes(context.Background()).IncludeSystem(includeSystem).IncludeSilent(includeSilent).SearchableOnly(searchableOnly).Count(count).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesAPI.ListIdentityAttributes``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListIdentityAttributes`: []IdentityAttribute
-    fmt.Fprintf(os.Stdout, "Response from `IdentityAttributesAPI.ListIdentityAttributes`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListIdentityAttributesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **includeSystem** | **bool** | Include \&quot;system\&quot; attributes in the response. | [default to false]
- **includeSilent** | **bool** | Include \&quot;silent\&quot; attributes in the response. | [default to false]
- **searchableOnly** | **bool** | Include only \&quot;searchable\&quot; attributes in the response. | [default to false]
- **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
-
+	
 ### Return type
 
-[**[]IdentityAttribute**](IdentityAttribute.md)
+[**[]IdentityAttribute**](IdentityAttribute)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | List of identity attributes | []IdentityAttribute
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -353,67 +200,33 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PutIdentityAttribute
-
-> IdentityAttribute PutIdentityAttribute(ctx, name).IdentityAttribute(identityAttribute).Execute()
-
-Update Identity Attribute
+## put-identity-attribute
 
 
+This updates an existing identity attribute.  Making an attribute searchable requires that the `system`, `standard`, and `multi` properties be set to false.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | name | **string** | True  | The attribute's technical name.
+ Body  | identityAttribute | [**IdentityAttribute**](IdentityAttribute.md) | True  | 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    name := "displayName" // string | The attribute's technical name.
-    identityAttribute := *openapiclient.NewIdentityAttribute() // IdentityAttribute | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityAttributesAPI.PutIdentityAttribute(context.Background(), name).IdentityAttribute(identityAttribute).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesAPI.PutIdentityAttribute``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PutIdentityAttribute`: IdentityAttribute
-    fmt.Fprintf(os.Stdout, "Response from `IdentityAttributesAPI.PutIdentityAttribute`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**name** | **string** | The attribute&#39;s technical name. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPutIdentityAttributeRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **identityAttribute** | [**IdentityAttribute**](IdentityAttribute.md) |  | 
-
+	
 ### Return type
 
-[**IdentityAttribute**](IdentityAttribute.md)
+[**IdentityAttribute**](IdentityAttribute)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | The identity attribute was updated successfully | IdentityAttribute
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 

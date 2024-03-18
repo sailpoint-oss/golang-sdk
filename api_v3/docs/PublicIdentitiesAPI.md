@@ -4,11 +4,11 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetPublicIdentities**](PublicIdentitiesAPI.md#GetPublicIdentities) | **Get** /public-identities | Get a list of public identities
+[**GetPublicIdentities**](#get-public-identities) | **Get** /public-identities | Get a list of public identities
 
 
 
-## Get a list of public identities
+## get-public-identities
 
 
 
@@ -23,10 +23,10 @@ Param Type | Name | Data Type | Required  | Description
   Query | addCoreFilters | **bool** |   (optional) (default to false) | If *true*, only get identities which satisfy ALL the following criteria in addition to any criteria specified by *filters*:   - Should be either correlated or protected.   - Should not be \"spadmin\" or \"cloudadmin\".   - uid should not be null.   - lastname should not be null.   - email should not be null.
   Query | sorters | **string** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**
 
-
+	
 ### Return type
 
-[**[]PublicIdentity**](PublicIdentity.md)
+[**[]PublicIdentity**](PublicIdentity)
 
 ### Responses
 Code | Description  | Data Type
@@ -47,44 +47,4 @@ Code | Description  | Data Type
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//GetPublicIdentities
-
-    //limit := int32(250)
-    //offset := int32(0)
-    //count := true
-    //filters := "firstname eq "John""
-    //addCoreFilters := false
-    //sorters := "name"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.PublicIdentitiesAPI.GetPublicIdentities(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PublicIdentitiesAPI.GetPublicIdentities``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetPublicIdentities`: []PublicIdentity
-    fmt.Fprintf(os.Stdout, "Response from `PublicIdentitiesAPI.GetPublicIdentities`: %v\n", resp)
-}
-```
-
-
 

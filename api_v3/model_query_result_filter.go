@@ -137,7 +137,7 @@ func (o *QueryResultFilter) UnmarshalJSON(bytes []byte) (err error) {
 	varQueryResultFilter := _QueryResultFilter{}
 
 	if err = json.Unmarshal(bytes, &varQueryResultFilter); err == nil {
-	*o = QueryResultFilter(varQueryResultFilter)
+			*o = QueryResultFilter(varQueryResultFilter)
 }
 
 	additionalProperties := make(map[string]interface{})

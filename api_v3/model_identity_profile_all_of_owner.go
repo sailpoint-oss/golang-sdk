@@ -174,7 +174,7 @@ func (o *IdentityProfileAllOfOwner) UnmarshalJSON(bytes []byte) (err error) {
 	varIdentityProfileAllOfOwner := _IdentityProfileAllOfOwner{}
 
 	if err = json.Unmarshal(bytes, &varIdentityProfileAllOfOwner); err == nil {
-	*o = IdentityProfileAllOfOwner(varIdentityProfileAllOfOwner)
+			*o = IdentityProfileAllOfOwner(varIdentityProfileAllOfOwner)
 }
 
 	additionalProperties := make(map[string]interface{})

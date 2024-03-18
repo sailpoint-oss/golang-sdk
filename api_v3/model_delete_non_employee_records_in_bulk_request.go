@@ -89,7 +89,7 @@ func (o DeleteNonEmployeeRecordsInBulkRequest) ToMap() (map[string]interface{}, 
 }
 
 func (o *DeleteNonEmployeeRecordsInBulkRequest) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -113,7 +113,7 @@ func (o *DeleteNonEmployeeRecordsInBulkRequest) UnmarshalJSON(bytes []byte) (err
 	varDeleteNonEmployeeRecordsInBulkRequest := _DeleteNonEmployeeRecordsInBulkRequest{}
 
 	if err = json.Unmarshal(bytes, &varDeleteNonEmployeeRecordsInBulkRequest); err == nil {
-	*o = DeleteNonEmployeeRecordsInBulkRequest(varDeleteNonEmployeeRecordsInBulkRequest)
+			*o = DeleteNonEmployeeRecordsInBulkRequest(varDeleteNonEmployeeRecordsInBulkRequest)
 }
 
 	additionalProperties := make(map[string]interface{})

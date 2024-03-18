@@ -173,7 +173,7 @@ func (o *IdentityReference) UnmarshalJSON(bytes []byte) (err error) {
 	varIdentityReference := _IdentityReference{}
 
 	if err = json.Unmarshal(bytes, &varIdentityReference); err == nil {
-	*o = IdentityReference(varIdentityReference)
+			*o = IdentityReference(varIdentityReference)
 }
 
 	additionalProperties := make(map[string]interface{})

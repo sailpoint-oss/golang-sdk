@@ -4,15 +4,15 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CancelAccessRequest**](AccessRequestsAPI.md#CancelAccessRequest) | **Post** /access-requests/cancel | Cancel Access Request
-[**CreateAccessRequest**](AccessRequestsAPI.md#CreateAccessRequest) | **Post** /access-requests | Submit an Access Request
-[**GetAccessRequestConfig**](AccessRequestsAPI.md#GetAccessRequestConfig) | **Get** /access-request-config | Get Access Request Configuration
-[**ListAccessRequestStatus**](AccessRequestsAPI.md#ListAccessRequestStatus) | **Get** /access-request-status | Access Request Status
-[**SetAccessRequestConfig**](AccessRequestsAPI.md#SetAccessRequestConfig) | **Put** /access-request-config | Update Access Request Configuration
+[**CancelAccessRequest**](#cancel-access-request) | **Post** /access-requests/cancel | Cancel Access Request
+[**CreateAccessRequest**](#create-access-request) | **Post** /access-requests | Submit an Access Request
+[**GetAccessRequestConfig**](#get-access-request-config) | **Get** /access-request-config | Get Access Request Configuration
+[**ListAccessRequestStatus**](#list-access-request-status) | **Get** /access-request-status | Access Request Status
+[**SetAccessRequestConfig**](#set-access-request-config) | **Put** /access-request-config | Update Access Request Configuration
 
 
 
-## Cancel Access Request
+## cancel-access-request
 
 
 This API endpoint cancels a pending access request. An access request can be cancelled only if it has not passed the approval step.
@@ -23,7 +23,7 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | cancelAccessRequest | [**CancelAccessRequest**](CancelAccessRequest.md) | True  | 
 
-
+	
 ### Return type
 
 **map[string]interface{}**
@@ -49,43 +49,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//CancelAccessRequest
-
-    cancelAccessRequest := *sailpoint.NewCancelAccessRequest("2c9180835d2e5168015d32f890ca1581", "I requested this role by mistake.")
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.AccessRequestsAPI.CancelAccessRequest(context.Background()).CancelAccessRequest(cancelAccessRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.CancelAccessRequest``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CancelAccessRequest`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.CancelAccessRequest`: %v\n", resp)
-}
-```
-
-
-
-
-## Submit an Access Request
+## create-access-request
 
 
 This submits the access request into IdentityNow, where it will follow any IdentityNow approval processes.
@@ -127,7 +92,7 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | accessRequest | [**AccessRequest**](AccessRequest.md) | True  | 
 
-
+	
 ### Return type
 
 **map[string]interface{}**
@@ -152,43 +117,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//CreateAccessRequest
-
-    accessRequest := *sailpoint.NewAccessRequest([]string{"2c918084660f45d6016617daa9210584"}, []sailpoint.AccessRequestItem{*sailpoint.NewAccessRequestItem("ACCESS_PROFILE", "2c9180835d2e5168015d32f890ca1581")})
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.AccessRequestsAPI.CreateAccessRequest(context.Background()).AccessRequest(accessRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.CreateAccessRequest``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateAccessRequest`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.CreateAccessRequest`: %v\n", resp)
-}
-```
-
-
-
-
-## Get Access Request Configuration
+## get-access-request-config
 
 
 This endpoint returns the current access-request configuration.
@@ -197,10 +127,10 @@ This endpoint returns the current access-request configuration.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 
-
+	
 ### Return type
 
-[**AccessRequestConfig**](AccessRequestConfig.md)
+[**AccessRequestConfig**](AccessRequestConfig)
 
 ### Responses
 Code | Description  | Data Type
@@ -222,42 +152,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//GetAccessRequestConfig
-
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.AccessRequestsAPI.GetAccessRequestConfig(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.GetAccessRequestConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetAccessRequestConfig`: AccessRequestConfig
-    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.GetAccessRequestConfig`: %v\n", resp)
-}
-```
-
-
-
-
-## Access Request Status
+## list-access-request-status
 
 
 The Access Request Status API returns a list of access request statuses based on the specified query parameters.
@@ -276,10 +172,10 @@ Param Type | Name | Data Type | Required  | Description
   Query | filters | **string** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
   Query | sorters | **string** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name**
 
-
+	
 ### Return type
 
-[**[]RequestedItemStatus**](RequestedItemStatus.md)
+[**[]RequestedItemStatus**](RequestedItemStatus)
 
 ### Responses
 Code | Description  | Data Type
@@ -301,51 +197,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//ListAccessRequestStatus
-
-    //requestedFor := "2c9180877b2b6ea4017b2c545f971429"
-    //requestedBy := "2c9180877b2b6ea4017b2c545f971429"
-    //regardingIdentity := "2c9180877b2b6ea4017b2c545f971429"
-    //assignedTo := "2c9180877b2b6ea4017b2c545f971429"
-    //count := false
-    //limit := int32(100)
-    //offset := int32(10)
-    //filters := "accountActivityItemId eq "2c918086771c86df0177401efcdf54c0""
-    //sorters := "created"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.AccessRequestsAPI.ListAccessRequestStatus(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.ListAccessRequestStatus``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListAccessRequestStatus`: []RequestedItemStatus
-    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.ListAccessRequestStatus`: %v\n", resp)
-}
-```
-
-
-
-
-## Update Access Request Configuration
+## set-access-request-config
 
 
 This endpoint replaces the current access-request configuration.
@@ -356,10 +209,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | accessRequestConfig | [**AccessRequestConfig**](AccessRequestConfig.md) | True  | 
 
-
+	
 ### Return type
 
-[**AccessRequestConfig**](AccessRequestConfig.md)
+[**AccessRequestConfig**](AccessRequestConfig)
 
 ### Responses
 Code | Description  | Data Type
@@ -380,39 +233,4 @@ Code | Description  | Data Type
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//SetAccessRequestConfig
-
-    accessRequestConfig := *sailpoint.NewAccessRequestConfig()
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.AccessRequestsAPI.SetAccessRequestConfig(context.Background()).AccessRequestConfig(accessRequestConfig).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.SetAccessRequestConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `SetAccessRequestConfig`: AccessRequestConfig
-    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.SetAccessRequestConfig`: %v\n", resp)
-}
-```
-
-
 

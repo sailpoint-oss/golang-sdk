@@ -33,7 +33,7 @@ type AccessProfile struct {
 	Modified *time.Time `json:"modified,omitempty"`
 	// Whether the Access Profile is enabled. If the Access Profile is enabled then you must include at least one Entitlement.
 	Enabled *bool `json:"enabled,omitempty"`
-	Owner AccessProfileOwner `json:"owner"`
+	Owner OwnerReference `json:"owner"`
 	Source AccessProfileSourceRef `json:"source"`
 	// A list of entitlements associated with the Access Profile. If enabled is false this is allowed to be empty otherwise it needs to contain at least one Entitlement.
 	Entitlements []EntitlementRef `json:"entitlements,omitempty"`
@@ -53,7 +53,7 @@ type _AccessProfile AccessProfile
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccessProfile(name string, owner AccessProfileOwner, source AccessProfileSourceRef) *AccessProfile {
+func NewAccessProfile(name string, owner OwnerReference, source AccessProfileSourceRef) *AccessProfile {
 	this := AccessProfile{}
 	this.Name = name
 	var enabled bool = true
@@ -272,9 +272,9 @@ func (o *AccessProfile) SetEnabled(v bool) {
 }
 
 // GetOwner returns the Owner field value
-func (o *AccessProfile) GetOwner() AccessProfileOwner {
+func (o *AccessProfile) GetOwner() OwnerReference {
 	if o == nil {
-		var ret AccessProfileOwner
+		var ret OwnerReference
 		return ret
 	}
 
@@ -283,7 +283,7 @@ func (o *AccessProfile) GetOwner() AccessProfileOwner {
 
 // GetOwnerOk returns a tuple with the Owner field value
 // and a boolean to check if the value has been set.
-func (o *AccessProfile) GetOwnerOk() (*AccessProfileOwner, bool) {
+func (o *AccessProfile) GetOwnerOk() (*OwnerReference, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -291,7 +291,7 @@ func (o *AccessProfile) GetOwnerOk() (*AccessProfileOwner, bool) {
 }
 
 // SetOwner sets field value
-func (o *AccessProfile) SetOwner(v AccessProfileOwner) {
+func (o *AccessProfile) SetOwner(v OwnerReference) {
 	o.Owner = v
 }
 
@@ -592,7 +592,7 @@ func (o AccessProfile) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *AccessProfile) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -618,7 +618,7 @@ func (o *AccessProfile) UnmarshalJSON(bytes []byte) (err error) {
 	varAccessProfile := _AccessProfile{}
 
 	if err = json.Unmarshal(bytes, &varAccessProfile); err == nil {
-	*o = AccessProfile(varAccessProfile)
+			*o = AccessProfile(varAccessProfile)
 }
 
 	additionalProperties := make(map[string]interface{})

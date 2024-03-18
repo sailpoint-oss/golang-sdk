@@ -19,7 +19,9 @@ var _ MappedNullable = &ConfigType{}
 
 // ConfigType Type of Reassignment Configuration.
 type ConfigType struct {
-	InternalName *ConfigTypeEnum `json:"internalName,omitempty"`
+	Priority *int32 `json:"priority,omitempty"`
+	InternalName *ConfigTypeEnumCamel `json:"internalName,omitempty"`
+	InternalNameCamel *ConfigTypeEnum `json:"internalNameCamel,omitempty"`
 	// Human readable display name of the type to be shown on UI
 	DisplayName *string `json:"displayName,omitempty"`
 	// Description of the type of work to be reassigned, displayed by the UI.
@@ -46,10 +48,42 @@ func NewConfigTypeWithDefaults() *ConfigType {
 	return &this
 }
 
+// GetPriority returns the Priority field value if set, zero value otherwise.
+func (o *ConfigType) GetPriority() int32 {
+	if o == nil || isNil(o.Priority) {
+		var ret int32
+		return ret
+	}
+	return *o.Priority
+}
+
+// GetPriorityOk returns a tuple with the Priority field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConfigType) GetPriorityOk() (*int32, bool) {
+	if o == nil || isNil(o.Priority) {
+		return nil, false
+	}
+	return o.Priority, true
+}
+
+// HasPriority returns a boolean if a field has been set.
+func (o *ConfigType) HasPriority() bool {
+	if o != nil && !isNil(o.Priority) {
+		return true
+	}
+
+	return false
+}
+
+// SetPriority gets a reference to the given int32 and assigns it to the Priority field.
+func (o *ConfigType) SetPriority(v int32) {
+	o.Priority = &v
+}
+
 // GetInternalName returns the InternalName field value if set, zero value otherwise.
-func (o *ConfigType) GetInternalName() ConfigTypeEnum {
+func (o *ConfigType) GetInternalName() ConfigTypeEnumCamel {
 	if o == nil || isNil(o.InternalName) {
-		var ret ConfigTypeEnum
+		var ret ConfigTypeEnumCamel
 		return ret
 	}
 	return *o.InternalName
@@ -57,7 +91,7 @@ func (o *ConfigType) GetInternalName() ConfigTypeEnum {
 
 // GetInternalNameOk returns a tuple with the InternalName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ConfigType) GetInternalNameOk() (*ConfigTypeEnum, bool) {
+func (o *ConfigType) GetInternalNameOk() (*ConfigTypeEnumCamel, bool) {
 	if o == nil || isNil(o.InternalName) {
 		return nil, false
 	}
@@ -73,9 +107,41 @@ func (o *ConfigType) HasInternalName() bool {
 	return false
 }
 
-// SetInternalName gets a reference to the given ConfigTypeEnum and assigns it to the InternalName field.
-func (o *ConfigType) SetInternalName(v ConfigTypeEnum) {
+// SetInternalName gets a reference to the given ConfigTypeEnumCamel and assigns it to the InternalName field.
+func (o *ConfigType) SetInternalName(v ConfigTypeEnumCamel) {
 	o.InternalName = &v
+}
+
+// GetInternalNameCamel returns the InternalNameCamel field value if set, zero value otherwise.
+func (o *ConfigType) GetInternalNameCamel() ConfigTypeEnum {
+	if o == nil || isNil(o.InternalNameCamel) {
+		var ret ConfigTypeEnum
+		return ret
+	}
+	return *o.InternalNameCamel
+}
+
+// GetInternalNameCamelOk returns a tuple with the InternalNameCamel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConfigType) GetInternalNameCamelOk() (*ConfigTypeEnum, bool) {
+	if o == nil || isNil(o.InternalNameCamel) {
+		return nil, false
+	}
+	return o.InternalNameCamel, true
+}
+
+// HasInternalNameCamel returns a boolean if a field has been set.
+func (o *ConfigType) HasInternalNameCamel() bool {
+	if o != nil && !isNil(o.InternalNameCamel) {
+		return true
+	}
+
+	return false
+}
+
+// SetInternalNameCamel gets a reference to the given ConfigTypeEnum and assigns it to the InternalNameCamel field.
+func (o *ConfigType) SetInternalNameCamel(v ConfigTypeEnum) {
+	o.InternalNameCamel = &v
 }
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
@@ -152,8 +218,14 @@ func (o ConfigType) MarshalJSON() ([]byte, error) {
 
 func (o ConfigType) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !isNil(o.Priority) {
+		toSerialize["priority"] = o.Priority
+	}
 	if !isNil(o.InternalName) {
 		toSerialize["internalName"] = o.InternalName
+	}
+	if !isNil(o.InternalNameCamel) {
+		toSerialize["internalNameCamel"] = o.InternalNameCamel
 	}
 	if !isNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
@@ -173,13 +245,15 @@ func (o *ConfigType) UnmarshalJSON(bytes []byte) (err error) {
 	varConfigType := _ConfigType{}
 
 	if err = json.Unmarshal(bytes, &varConfigType); err == nil {
-	*o = ConfigType(varConfigType)
+			*o = ConfigType(varConfigType)
 }
 
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+		delete(additionalProperties, "priority")
 		delete(additionalProperties, "internalName")
+		delete(additionalProperties, "internalNameCamel")
 		delete(additionalProperties, "displayName")
 		delete(additionalProperties, "description")
 		o.AdditionalProperties = additionalProperties

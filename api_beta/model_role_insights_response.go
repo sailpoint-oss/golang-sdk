@@ -286,7 +286,7 @@ func (o *RoleInsightsResponse) UnmarshalJSON(bytes []byte) (err error) {
 	varRoleInsightsResponse := _RoleInsightsResponse{}
 
 	if err = json.Unmarshal(bytes, &varRoleInsightsResponse); err == nil {
-	*o = RoleInsightsResponse(varRoleInsightsResponse)
+			*o = RoleInsightsResponse(varRoleInsightsResponse)
 }
 
 	additionalProperties := make(map[string]interface{})

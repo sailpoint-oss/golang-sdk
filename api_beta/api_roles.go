@@ -745,28 +745,28 @@ func (a *RolesAPIService) GetRoleAssignedIdentitiesExecute(r ApiGetRoleAssignedI
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
 		var defaultValue int32 = 250
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
-		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
 	} else {
 		var defaultValue int32 = 0
 		r.offset = &defaultValue
 	}
 	if r.count != nil {
-		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "")
 	} else {
 		var defaultValue bool = false
 		r.count = &defaultValue
 	}
 	if r.filters != nil {
-		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "")
 	}
 	if r.sorters != nil {
-		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -963,28 +963,28 @@ func (a *RolesAPIService) GetRoleEntitlementsExecute(r ApiGetRoleEntitlementsReq
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
 		var defaultValue int32 = 250
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
-		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
 	} else {
 		var defaultValue int32 = 0
 		r.offset = &defaultValue
 	}
 	if r.count != nil {
-		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "")
 	} else {
 		var defaultValue bool = false
 		r.count = &defaultValue
 	}
 	if r.filters != nil {
-		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "")
 	}
 	if r.sorters != nil {
-		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1198,37 +1198,37 @@ func (a *RolesAPIService) ListRolesExecute(r ApiListRolesRequest) ([]Role, *http
 	localVarFormParams := url.Values{}
 
 	if r.forSubadmin != nil {
-		parameterAddToQuery(localVarQueryParams, "for-subadmin", r.forSubadmin, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "for-subadmin", r.forSubadmin, "")
 	}
 	if r.limit != nil {
-		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
 		var defaultValue int32 = 50
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
-		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
 	} else {
 		var defaultValue int32 = 0
 		r.offset = &defaultValue
 	}
 	if r.count != nil {
-		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "")
 	} else {
 		var defaultValue bool = false
 		r.count = &defaultValue
 	}
 	if r.filters != nil {
-		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "")
 	}
 	if r.sorters != nil {
-		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "")
 	}
 	if r.forSegmentIds != nil {
-		parameterAddToQuery(localVarQueryParams, "for-segment-ids", r.forSegmentIds, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "for-segment-ids", r.forSegmentIds, "")
 	}
 	if r.includeUnsegmented != nil {
-		parameterAddToQuery(localVarQueryParams, "include-unsegmented", r.includeUnsegmented, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include-unsegmented", r.includeUnsegmented, "")
 	} else {
 		var defaultValue bool = true
 		r.includeUnsegmented = &defaultValue

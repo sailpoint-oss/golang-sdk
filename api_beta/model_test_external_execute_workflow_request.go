@@ -100,7 +100,7 @@ func (o *TestExternalExecuteWorkflowRequest) UnmarshalJSON(bytes []byte) (err er
 	varTestExternalExecuteWorkflowRequest := _TestExternalExecuteWorkflowRequest{}
 
 	if err = json.Unmarshal(bytes, &varTestExternalExecuteWorkflowRequest); err == nil {
-	*o = TestExternalExecuteWorkflowRequest(varTestExternalExecuteWorkflowRequest)
+			*o = TestExternalExecuteWorkflowRequest(varTestExternalExecuteWorkflowRequest)
 }
 
 	additionalProperties := make(map[string]interface{})

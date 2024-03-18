@@ -4,13 +4,13 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetPasswordChangeStatus**](PasswordManagementAPI.md#GetPasswordChangeStatus) | **Get** /password-change-status/{id} | Get Password Change Request Status
-[**QueryPasswordInfo**](PasswordManagementAPI.md#QueryPasswordInfo) | **Post** /query-password-info | Query Password Info
-[**SetPassword**](PasswordManagementAPI.md#SetPassword) | **Post** /set-password | Set Identity&#39;s Password
+[**GetPasswordChangeStatus**](#get-password-change-status) | **Get** /password-change-status/{id} | Get Password Change Request Status
+[**QueryPasswordInfo**](#query-password-info) | **Post** /query-password-info | Query Password Info
+[**SetPassword**](#set-password) | **Post** /set-password | Set Identity&#39;s Password
 
 
 
-## Get Password Change Request Status
+## get-password-change-status
 
 
 This API returns the status of a password change request. A token with identity owner or trusted API client application authority is required to call this API.
@@ -20,10 +20,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **string** | True  | Password change request ID
 
-
+	
 ### Return type
 
-[**PasswordStatus**](PasswordStatus.md)
+[**PasswordStatus**](PasswordStatus)
 
 ### Responses
 Code | Description  | Data Type
@@ -46,43 +46,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//GetPasswordChangeStatus
-
-    id := "089899f13a8f4da7824996191587bab9"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.PasswordManagementAPI.GetPasswordChangeStatus(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementAPI.GetPasswordChangeStatus``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetPasswordChangeStatus`: PasswordStatus
-    fmt.Fprintf(os.Stdout, "Response from `PasswordManagementAPI.GetPasswordChangeStatus`: %v\n", resp)
-}
-```
-
-
-
-
-## Query Password Info
+## query-password-info
 
 
 This API is used to query password related information. 
@@ -100,10 +65,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | passwordInfoQueryDTO | [**PasswordInfoQueryDTO**](PasswordInfoQueryDTO.md) | True  | 
 
-
+	
 ### Return type
 
-[**PasswordInfo**](PasswordInfo.md)
+[**PasswordInfo**](PasswordInfo)
 
 ### Responses
 Code | Description  | Data Type
@@ -125,43 +90,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//QueryPasswordInfo
-
-    passwordInfoQueryDTO := *sailpoint.NewPasswordInfoQueryDTO()
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.PasswordManagementAPI.QueryPasswordInfo(context.Background()).PasswordInfoQueryDTO(passwordInfoQueryDTO).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementAPI.QueryPasswordInfo``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `QueryPasswordInfo`: PasswordInfo
-    fmt.Fprintf(os.Stdout, "Response from `PasswordManagementAPI.QueryPasswordInfo`: %v\n", resp)
-}
-```
-
-
-
-
-## Set Identity's Password
+## set-password
 
 
 This API is used to set a password for an identity. 
@@ -212,10 +142,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | passwordChangeRequest | [**PasswordChangeRequest**](PasswordChangeRequest.md) | True  | 
 
-
+	
 ### Return type
 
-[**PasswordChangeResponse**](PasswordChangeResponse.md)
+[**PasswordChangeResponse**](PasswordChangeResponse)
 
 ### Responses
 Code | Description  | Data Type
@@ -236,39 +166,4 @@ Code | Description  | Data Type
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//SetPassword
-
-    passwordChangeRequest := *sailpoint.NewPasswordChangeRequest()
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.PasswordManagementAPI.SetPassword(context.Background()).PasswordChangeRequest(passwordChangeRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementAPI.SetPassword``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `SetPassword`: PasswordChangeResponse
-    fmt.Fprintf(os.Stdout, "Response from `PasswordManagementAPI.SetPassword`: %v\n", resp)
-}
-```
-
-
 

@@ -100,7 +100,7 @@ func (o *PutPasswordDictionaryRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varPutPasswordDictionaryRequest := _PutPasswordDictionaryRequest{}
 
 	if err = json.Unmarshal(bytes, &varPutPasswordDictionaryRequest); err == nil {
-	*o = PutPasswordDictionaryRequest(varPutPasswordDictionaryRequest)
+			*o = PutPasswordDictionaryRequest(varPutPasswordDictionaryRequest)
 }
 
 	additionalProperties := make(map[string]interface{})

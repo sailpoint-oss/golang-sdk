@@ -258,7 +258,7 @@ func (o *ConfigurationItemRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varConfigurationItemRequest := _ConfigurationItemRequest{}
 
 	if err = json.Unmarshal(bytes, &varConfigurationItemRequest); err == nil {
-	*o = ConfigurationItemRequest(varConfigurationItemRequest)
+			*o = ConfigurationItemRequest(varConfigurationItemRequest)
 }
 
 	additionalProperties := make(map[string]interface{})

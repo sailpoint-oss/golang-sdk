@@ -4,12 +4,12 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetPasswordDictionary**](PasswordDictionaryAPI.md#GetPasswordDictionary) | **Get** /password-dictionary | Get Password Dictionary
-[**PutPasswordDictionary**](PasswordDictionaryAPI.md#PutPasswordDictionary) | **Put** /password-dictionary | Update Password Dictionary
+[**GetPasswordDictionary**](#get-password-dictionary) | **Get** /password-dictionary | Get Password Dictionary
+[**PutPasswordDictionary**](#put-password-dictionary) | **Put** /password-dictionary | Update Password Dictionary
 
 
 
-## Get Password Dictionary
+## get-password-dictionary
 
 
 This gets password dictionary for the organization.
@@ -47,7 +47,7 @@ qazxsws
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 
-
+	
 ### Return type
 
 **string**
@@ -73,42 +73,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//GetPasswordDictionary
-
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.PasswordDictionaryAPI.GetPasswordDictionary(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordDictionaryAPI.GetPasswordDictionary``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetPasswordDictionary`: string
-    fmt.Fprintf(os.Stdout, "Response from `PasswordDictionaryAPI.GetPasswordDictionary`: %v\n", resp)
-}
-```
-
-
-
-
-## Update Password Dictionary
+## put-password-dictionary
 
 
 This updates password dictionary for the organization.
@@ -147,7 +113,7 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
    | file | ***os.File** |   (optional) | 
 
-
+	
 ### Return type
 
  (empty response body)
@@ -173,37 +139,4 @@ Code | Description  | Data Type
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//PutPasswordDictionary
-
-    //file := os.NewFile(1234, "some_file")
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.V3.PasswordDictionaryAPI.PutPasswordDictionary(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordDictionaryAPI.PutPasswordDictionary``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-
 

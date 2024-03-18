@@ -4,14 +4,14 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SearchAggregate**](SearchAPI.md#SearchAggregate) | **Post** /search/aggregate | Perform a Search Query Aggregation
-[**SearchCount**](SearchAPI.md#SearchCount) | **Post** /search/count | Count Documents Satisfying a Query
-[**SearchGet**](SearchAPI.md#SearchGet) | **Get** /search/{index}/{id} | Get a Document by ID
-[**SearchPost**](SearchAPI.md#SearchPost) | **Post** /search | Perform Search
+[**SearchAggregate**](#search-aggregate) | **Post** /search/aggregate | Perform a Search Query Aggregation
+[**SearchCount**](#search-count) | **Post** /search/count | Count Documents Satisfying a Query
+[**SearchGet**](#search-get) | **Get** /search/{index}/{id} | Get a Document by ID
+[**SearchPost**](#search-post) | **Post** /search | Perform Search
 
 
 
-## Perform a Search Query Aggregation
+## search-aggregate
 
 
 Performs a search query aggregation and returns the aggregation result. By default, you can page a maximum of 10,000 search result records.  To page past 10,000 records, you can use searchAfter paging.  Refer to [Paginating Search Queries](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-search-queries) for more information about how to implement searchAfter paging. 
@@ -24,10 +24,10 @@ Param Type | Name | Data Type | Required  | Description
   Query | limit | **int32** |   (optional) (default to 250) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
   Query | count | **bool** |   (optional) (default to false) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
-
+	
 ### Return type
 
-[**AggregationResult**](AggregationResult.md)
+[**AggregationResult**](AggregationResult)
 
 ### Responses
 Code | Description  | Data Type
@@ -49,46 +49,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//SearchAggregate
-
-    search := *sailpoint.NewSearch()
-    //offset := int32(0)
-    //limit := int32(250)
-    //count := true
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.SearchAPI.SearchAggregate(context.Background()).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.SearchAggregate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `SearchAggregate`: AggregationResult
-    fmt.Fprintf(os.Stdout, "Response from `SearchAPI.SearchAggregate`: %v\n", resp)
-}
-```
-
-
-
-
-## Count Documents Satisfying a Query
+## search-count
 
 
 Performs a search with a provided query and returns the count of results in the X-Total-Count header.
@@ -98,7 +60,7 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | search | [**Search**](Search.md) | True  | 
 
-
+	
 ### Return type
 
  (empty response body)
@@ -123,41 +85,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//SearchCount
-
-    search := *sailpoint.NewSearch()
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.V3.SearchAPI.SearchCount(context.Background()).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.SearchCount``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-
-
-
-## Get a Document by ID
+## search-get
 
 
 Fetches a single document from the specified index, using the specified document ID.
@@ -168,7 +97,7 @@ Param Type | Name | Data Type | Required  | Description
 Path   | index | **string** | True  | The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, and *roles*. 
 Path   | id | **string** | True  | ID of the requested document.
 
-
+	
 ### Return type
 
 **map[string]interface{}**
@@ -194,44 +123,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//SearchGet
-
-    index := "accounts"
-    id := "2c91808568c529c60168cca6f90c1313"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.SearchAPI.SearchGet(context.Background(), index, id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.SearchGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `SearchGet`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `SearchAPI.SearchGet`: %v\n", resp)
-}
-```
-
-
-
-
-## Perform Search
+## search-post
 
 
 Performs a search with the provided query and returns a matching result collection. By default, you can page a maximum of 10,000 search result records.  To page past 10,000 records, you can use searchAfter paging.  Refer to [Paginating Search Queries](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-search-queries) for more information about how to implement searchAfter paging. 
@@ -244,7 +137,7 @@ Param Type | Name | Data Type | Required  | Description
   Query | limit | **int32** |   (optional) (default to 10000) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
   Query | count | **bool** |   (optional) (default to false) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
-
+	
 ### Return type
 
 **[]map[string]interface{}**
@@ -268,42 +161,4 @@ Code | Description  | Data Type
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//SearchPost
-
-    search := *sailpoint.NewSearch()
-    //offset := int32(0)
-    //limit := int32(10000)
-    //count := true
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.SearchAPI.SearchPost(context.Background()).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.SearchPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `SearchPost`: []map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `SearchAPI.SearchPost`: %v\n", resp)
-}
-```
-
-
 

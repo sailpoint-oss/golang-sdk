@@ -4,11 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Id** | Pointer to **string** | Unique ID of the common access item | [optional] 
 **Access** | Pointer to [**CommonAccessItemAccess**](CommonAccessItemAccess.md) |  | [optional] 
 **Status** | Pointer to **string** | CONFIRMED or DENIED | [optional] 
 **LastUpdated** | Pointer to **time.Time** |  | [optional] [readonly] 
 **ReviewedByUser** | Pointer to **bool** | true if user has confirmed or denied status | [optional] 
-**LastReviewed** | Pointer to **time.Time** |  | [optional] [readonly] 
+**LastReviewed** | Pointer to **NullableTime** |  | [optional] [readonly] 
+**CreatedByUser** | Pointer to **bool** |  | [optional] [default to false]
 
 ## Methods
 
@@ -28,6 +30,31 @@ will change when the set of required properties is changed
 NewCommonAccessResponseWithDefaults instantiates a new CommonAccessResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetId
+
+`func (o *CommonAccessResponse) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *CommonAccessResponse) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *CommonAccessResponse) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *CommonAccessResponse) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 ### GetAccess
 
@@ -153,6 +180,41 @@ SetLastReviewed sets LastReviewed field to given value.
 `func (o *CommonAccessResponse) HasLastReviewed() bool`
 
 HasLastReviewed returns a boolean if a field has been set.
+
+### SetLastReviewedNil
+
+`func (o *CommonAccessResponse) SetLastReviewedNil(b bool)`
+
+ SetLastReviewedNil sets the value for LastReviewed to be an explicit nil
+
+### UnsetLastReviewed
+`func (o *CommonAccessResponse) UnsetLastReviewed()`
+
+UnsetLastReviewed ensures that no value is present for LastReviewed, not even an explicit nil
+### GetCreatedByUser
+
+`func (o *CommonAccessResponse) GetCreatedByUser() bool`
+
+GetCreatedByUser returns the CreatedByUser field if non-nil, zero value otherwise.
+
+### GetCreatedByUserOk
+
+`func (o *CommonAccessResponse) GetCreatedByUserOk() (*bool, bool)`
+
+GetCreatedByUserOk returns a tuple with the CreatedByUser field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedByUser
+
+`func (o *CommonAccessResponse) SetCreatedByUser(v bool)`
+
+SetCreatedByUser sets CreatedByUser field to given value.
+
+### HasCreatedByUser
+
+`func (o *CommonAccessResponse) HasCreatedByUser() bool`
+
+HasCreatedByUser returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

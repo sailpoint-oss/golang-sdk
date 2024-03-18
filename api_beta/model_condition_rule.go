@@ -248,7 +248,7 @@ func (o *ConditionRule) UnmarshalJSON(bytes []byte) (err error) {
 	varConditionRule := _ConditionRule{}
 
 	if err = json.Unmarshal(bytes, &varConditionRule); err == nil {
-	*o = ConditionRule(varConditionRule)
+			*o = ConditionRule(varConditionRule)
 }
 
 	additionalProperties := make(map[string]interface{})

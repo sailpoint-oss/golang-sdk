@@ -30,9 +30,10 @@ type PendingApproval struct {
 	Modified *time.Time `json:"modified,omitempty"`
 	// When the access-request was created.
 	RequestCreated *time.Time `json:"requestCreated,omitempty"`
-	RequestType *AccessRequestType `json:"requestType,omitempty"`
+	RequestType NullableAccessRequestType `json:"requestType,omitempty"`
 	Requester *AccessItemRequesterDto `json:"requester,omitempty"`
-	RequestedFor *AccessItemRequestedForDto `json:"requestedFor,omitempty"`
+	// Identities access was requested for.
+	RequestedFor []AccessItemRequestedForDto `json:"requestedFor,omitempty"`
 	Owner *AccessItemOwnerDto `json:"owner,omitempty"`
 	RequestedObject *RequestableObjectReference `json:"requestedObject,omitempty"`
 	RequesterComment *CommentDto1 `json:"requesterComment,omitempty"`
@@ -61,6 +62,10 @@ type _PendingApproval PendingApproval
 // will change when the set of required properties is changed
 func NewPendingApproval() *PendingApproval {
 	this := PendingApproval{}
+	var commentRequiredWhenRejected bool = false
+	this.CommentRequiredWhenRejected = &commentRequiredWhenRejected
+	var removeDateUpdateRequested bool = false
+	this.RemoveDateUpdateRequested = &removeDateUpdateRequested
 	return &this
 }
 
@@ -69,6 +74,10 @@ func NewPendingApproval() *PendingApproval {
 // but it doesn't guarantee that properties required by API are set
 func NewPendingApprovalWithDefaults() *PendingApproval {
 	this := PendingApproval{}
+	var commentRequiredWhenRejected bool = false
+	this.CommentRequiredWhenRejected = &commentRequiredWhenRejected
+	var removeDateUpdateRequested bool = false
+	this.RemoveDateUpdateRequested = &removeDateUpdateRequested
 	return &this
 }
 
@@ -232,36 +241,46 @@ func (o *PendingApproval) SetRequestCreated(v time.Time) {
 	o.RequestCreated = &v
 }
 
-// GetRequestType returns the RequestType field value if set, zero value otherwise.
+// GetRequestType returns the RequestType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PendingApproval) GetRequestType() AccessRequestType {
-	if o == nil || isNil(o.RequestType) {
+	if o == nil || isNil(o.RequestType.Get()) {
 		var ret AccessRequestType
 		return ret
 	}
-	return *o.RequestType
+	return *o.RequestType.Get()
 }
 
 // GetRequestTypeOk returns a tuple with the RequestType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PendingApproval) GetRequestTypeOk() (*AccessRequestType, bool) {
-	if o == nil || isNil(o.RequestType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RequestType, true
+	return o.RequestType.Get(), o.RequestType.IsSet()
 }
 
 // HasRequestType returns a boolean if a field has been set.
 func (o *PendingApproval) HasRequestType() bool {
-	if o != nil && !isNil(o.RequestType) {
+	if o != nil && o.RequestType.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRequestType gets a reference to the given AccessRequestType and assigns it to the RequestType field.
+// SetRequestType gets a reference to the given NullableAccessRequestType and assigns it to the RequestType field.
 func (o *PendingApproval) SetRequestType(v AccessRequestType) {
-	o.RequestType = &v
+	o.RequestType.Set(&v)
+}
+// SetRequestTypeNil sets the value for RequestType to be an explicit nil
+func (o *PendingApproval) SetRequestTypeNil() {
+	o.RequestType.Set(nil)
+}
+
+// UnsetRequestType ensures that no value is present for RequestType, not even an explicit nil
+func (o *PendingApproval) UnsetRequestType() {
+	o.RequestType.Unset()
 }
 
 // GetRequester returns the Requester field value if set, zero value otherwise.
@@ -297,17 +316,17 @@ func (o *PendingApproval) SetRequester(v AccessItemRequesterDto) {
 }
 
 // GetRequestedFor returns the RequestedFor field value if set, zero value otherwise.
-func (o *PendingApproval) GetRequestedFor() AccessItemRequestedForDto {
+func (o *PendingApproval) GetRequestedFor() []AccessItemRequestedForDto {
 	if o == nil || isNil(o.RequestedFor) {
-		var ret AccessItemRequestedForDto
+		var ret []AccessItemRequestedForDto
 		return ret
 	}
-	return *o.RequestedFor
+	return o.RequestedFor
 }
 
 // GetRequestedForOk returns a tuple with the RequestedFor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PendingApproval) GetRequestedForOk() (*AccessItemRequestedForDto, bool) {
+func (o *PendingApproval) GetRequestedForOk() ([]AccessItemRequestedForDto, bool) {
 	if o == nil || isNil(o.RequestedFor) {
 		return nil, false
 	}
@@ -323,9 +342,9 @@ func (o *PendingApproval) HasRequestedFor() bool {
 	return false
 }
 
-// SetRequestedFor gets a reference to the given AccessItemRequestedForDto and assigns it to the RequestedFor field.
-func (o *PendingApproval) SetRequestedFor(v AccessItemRequestedForDto) {
-	o.RequestedFor = &v
+// SetRequestedFor gets a reference to the given []AccessItemRequestedForDto and assigns it to the RequestedFor field.
+func (o *PendingApproval) SetRequestedFor(v []AccessItemRequestedForDto) {
+	o.RequestedFor = v
 }
 
 // GetOwner returns the Owner field value if set, zero value otherwise.
@@ -705,8 +724,8 @@ func (o PendingApproval) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.RequestCreated) {
 		toSerialize["requestCreated"] = o.RequestCreated
 	}
-	if !isNil(o.RequestType) {
-		toSerialize["requestType"] = o.RequestType
+	if o.RequestType.IsSet() {
+		toSerialize["requestType"] = o.RequestType.Get()
 	}
 	if !isNil(o.Requester) {
 		toSerialize["requester"] = o.Requester
@@ -759,7 +778,7 @@ func (o *PendingApproval) UnmarshalJSON(bytes []byte) (err error) {
 	varPendingApproval := _PendingApproval{}
 
 	if err = json.Unmarshal(bytes, &varPendingApproval); err == nil {
-	*o = PendingApproval(varPendingApproval)
+			*o = PendingApproval(varPendingApproval)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -26,7 +26,7 @@ type CreateFormInstanceRequest struct {
 	// FormDefinitionID is the id of the form definition that created this form
 	FormDefinitionId string `json:"formDefinitionId"`
 	// FormInput is an object of form input labels to value
-	FormInput map[string]map[string]interface{} `json:"formInput,omitempty"`
+	FormInput map[string]interface{} `json:"formInput,omitempty"`
 	// Recipients is required
 	Recipients []FormInstanceRecipient `json:"recipients"`
 	// StandAloneForm is a boolean flag to indicate if this form should be available for users to complete via the standalone form UI or should this only be available to be completed by as an embedded form
@@ -138,9 +138,9 @@ func (o *CreateFormInstanceRequest) SetFormDefinitionId(v string) {
 }
 
 // GetFormInput returns the FormInput field value if set, zero value otherwise.
-func (o *CreateFormInstanceRequest) GetFormInput() map[string]map[string]interface{} {
+func (o *CreateFormInstanceRequest) GetFormInput() map[string]interface{} {
 	if o == nil || isNil(o.FormInput) {
-		var ret map[string]map[string]interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 	return o.FormInput
@@ -148,9 +148,9 @@ func (o *CreateFormInstanceRequest) GetFormInput() map[string]map[string]interfa
 
 // GetFormInputOk returns a tuple with the FormInput field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateFormInstanceRequest) GetFormInputOk() (map[string]map[string]interface{}, bool) {
+func (o *CreateFormInstanceRequest) GetFormInputOk() (map[string]interface{}, bool) {
 	if o == nil || isNil(o.FormInput) {
-		return map[string]map[string]interface{}{}, false
+		return map[string]interface{}{}, false
 	}
 	return o.FormInput, true
 }
@@ -164,8 +164,8 @@ func (o *CreateFormInstanceRequest) HasFormInput() bool {
 	return false
 }
 
-// SetFormInput gets a reference to the given map[string]map[string]interface{} and assigns it to the FormInput field.
-func (o *CreateFormInstanceRequest) SetFormInput(v map[string]map[string]interface{}) {
+// SetFormInput gets a reference to the given map[string]interface{} and assigns it to the FormInput field.
+func (o *CreateFormInstanceRequest) SetFormInput(v map[string]interface{}) {
 	o.FormInput = v
 }
 
@@ -324,7 +324,7 @@ func (o CreateFormInstanceRequest) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *CreateFormInstanceRequest) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -351,7 +351,7 @@ func (o *CreateFormInstanceRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varCreateFormInstanceRequest := _CreateFormInstanceRequest{}
 
 	if err = json.Unmarshal(bytes, &varCreateFormInstanceRequest); err == nil {
-	*o = CreateFormInstanceRequest(varCreateFormInstanceRequest)
+			*o = CreateFormInstanceRequest(varCreateFormInstanceRequest)
 }
 
 	additionalProperties := make(map[string]interface{})

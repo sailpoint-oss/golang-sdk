@@ -4,84 +4,53 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CancelWorkflowExecution**](WorkflowsAPI.md#CancelWorkflowExecution) | **Post** /workflow-executions/{id}/cancel | Cancel Workflow Execution by ID
-[**CreateWorkflow**](WorkflowsAPI.md#CreateWorkflow) | **Post** /workflows | Create Workflow
-[**DeleteWorkflow**](WorkflowsAPI.md#DeleteWorkflow) | **Delete** /workflows/{id} | Delete Workflow By Id
-[**GetWorkflow**](WorkflowsAPI.md#GetWorkflow) | **Get** /workflows/{id} | Get Workflow By Id
-[**GetWorkflowExecution**](WorkflowsAPI.md#GetWorkflowExecution) | **Get** /workflow-executions/{id} | Get a Workflow Execution
-[**GetWorkflowExecutionHistory**](WorkflowsAPI.md#GetWorkflowExecutionHistory) | **Get** /workflow-executions/{id}/history | Get Workflow Execution History
-[**ListCompleteWorkflowLibrary**](WorkflowsAPI.md#ListCompleteWorkflowLibrary) | **Get** /workflow-library | List Complete Workflow Library
-[**ListWorkflowExecutions**](WorkflowsAPI.md#ListWorkflowExecutions) | **Get** /workflows/{id}/executions | List Workflow Executions
-[**ListWorkflowLibraryActions**](WorkflowsAPI.md#ListWorkflowLibraryActions) | **Get** /workflow-library/actions | List Workflow Library Actions
-[**ListWorkflowLibraryOperators**](WorkflowsAPI.md#ListWorkflowLibraryOperators) | **Get** /workflow-library/operators | List Workflow Library Operators
-[**ListWorkflowLibraryTriggers**](WorkflowsAPI.md#ListWorkflowLibraryTriggers) | **Get** /workflow-library/triggers | List Workflow Library Triggers
-[**ListWorkflows**](WorkflowsAPI.md#ListWorkflows) | **Get** /workflows | List Workflows
-[**PatchWorkflow**](WorkflowsAPI.md#PatchWorkflow) | **Patch** /workflows/{id} | Patch Workflow
-[**PostExternalExecuteWorkflow**](WorkflowsAPI.md#PostExternalExecuteWorkflow) | **Post** /workflows/execute/external/{id} | Execute Workflow via External Trigger
-[**PostWorkflowExternalTrigger**](WorkflowsAPI.md#PostWorkflowExternalTrigger) | **Post** /workflows/{id}/external/oauth-clients | Generate External Trigger OAuth Client
-[**TestExternalExecuteWorkflow**](WorkflowsAPI.md#TestExternalExecuteWorkflow) | **Post** /workflows/execute/external/{id}/test | Test Workflow via External Trigger
-[**TestWorkflow**](WorkflowsAPI.md#TestWorkflow) | **Post** /workflows/{id}/test | Test Workflow By Id
-[**UpdateWorkflow**](WorkflowsAPI.md#UpdateWorkflow) | **Put** /workflows/{id} | Update Workflow
+[**CancelWorkflowExecution**](#cancel-workflow-execution) | **Post** /workflow-executions/{id}/cancel | Cancel Workflow Execution by ID
+[**CreateWorkflow**](#create-workflow) | **Post** /workflows | Create Workflow
+[**DeleteWorkflow**](#delete-workflow) | **Delete** /workflows/{id} | Delete Workflow By Id
+[**GetWorkflow**](#get-workflow) | **Get** /workflows/{id} | Get Workflow By Id
+[**GetWorkflowExecution**](#get-workflow-execution) | **Get** /workflow-executions/{id} | Get a Workflow Execution
+[**GetWorkflowExecutionHistory**](#get-workflow-execution-history) | **Get** /workflow-executions/{id}/history | Get Workflow Execution History
+[**ListCompleteWorkflowLibrary**](#list-complete-workflow-library) | **Get** /workflow-library | List Complete Workflow Library
+[**ListWorkflowExecutions**](#list-workflow-executions) | **Get** /workflows/{id}/executions | List Workflow Executions
+[**ListWorkflowLibraryActions**](#list-workflow-library-actions) | **Get** /workflow-library/actions | List Workflow Library Actions
+[**ListWorkflowLibraryOperators**](#list-workflow-library-operators) | **Get** /workflow-library/operators | List Workflow Library Operators
+[**ListWorkflowLibraryTriggers**](#list-workflow-library-triggers) | **Get** /workflow-library/triggers | List Workflow Library Triggers
+[**ListWorkflows**](#list-workflows) | **Get** /workflows | List Workflows
+[**PatchWorkflow**](#patch-workflow) | **Patch** /workflows/{id} | Patch Workflow
+[**PostExternalExecuteWorkflow**](#post-external-execute-workflow) | **Post** /workflows/execute/external/{id} | Execute Workflow via External Trigger
+[**PostWorkflowExternalTrigger**](#post-workflow-external-trigger) | **Post** /workflows/{id}/external/oauth-clients | Generate External Trigger OAuth Client
+[**TestExternalExecuteWorkflow**](#test-external-execute-workflow) | **Post** /workflows/execute/external/{id}/test | Test Workflow via External Trigger
+[**TestWorkflow**](#test-workflow) | **Post** /workflows/{id}/test | Test Workflow By Id
+[**UpdateWorkflow**](#update-workflow) | **Put** /workflows/{id} | Update Workflow
 
 
 
-## CancelWorkflowExecution
-
-> CancelWorkflowExecution(ctx, id).Execute()
-
-Cancel Workflow Execution by ID
+## cancel-workflow-execution
 
 
+Use this API to cancel a running workflow execution.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | The workflow execution ID
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    id := "c17bea3a-574d-453c-9e04-4365fbf5af0b" // string | The workflow execution ID
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.WorkflowsAPI.CancelWorkflowExecution(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.CancelWorkflowExecution``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The workflow execution ID | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCancelWorkflowExecutionRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+	
 ### Return type
 
  (empty response body)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+204 | No content - indicates the request was successful but there is no content to be returned in the response. | 
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -93,61 +62,31 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CreateWorkflow
-
-> Workflow CreateWorkflow(ctx).CreateWorkflowRequest(createWorkflowRequest).Execute()
-
-Create Workflow
+## create-workflow
 
 
+Create a new workflow with the desired trigger and steps specified in the request body.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | createWorkflowRequest | [**CreateWorkflowRequest**](CreateWorkflowRequest.md) | True  | 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    createWorkflowRequest := *openapiclient.NewCreateWorkflowRequest("Send Email", *openapiclient.NewWorkflowBodyOwner()) // CreateWorkflowRequest | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsAPI.CreateWorkflow(context.Background()).CreateWorkflowRequest(createWorkflowRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.CreateWorkflow``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateWorkflow`: Workflow
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.CreateWorkflow`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateWorkflowRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **createWorkflowRequest** | [**CreateWorkflowRequest**](CreateWorkflowRequest.md) |  | 
-
+	
 ### Return type
 
-[**Workflow**](Workflow.md)
+[**Workflow**](Workflow)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | The Workflow object | Workflow
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -159,63 +98,31 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteWorkflow
-
-> DeleteWorkflow(ctx, id).Execute()
-
-Delete Workflow By Id
+## delete-workflow
 
 
+Delete a workflow.  **Enabled workflows cannot be deleted**.  They must first be disabled.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | Id of the Workflow
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    id := "c17bea3a-574d-453c-9e04-4365fbf5af0b" // string | Id of the Workflow
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.WorkflowsAPI.DeleteWorkflow(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.DeleteWorkflow``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Id of the Workflow | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDeleteWorkflowRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+	
 ### Return type
 
  (empty response body)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+204 | No content - indicates the request was successful but there is no content to be returned in the response. | 
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -227,65 +134,31 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetWorkflow
-
-> Workflow GetWorkflow(ctx, id).Execute()
-
-Get Workflow By Id
+## get-workflow
 
 
+Get a single workflow by id.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | Id of the workflow
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    id := "c17bea3a-574d-453c-9e04-4365fbf5af0b" // string | Id of the workflow
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsAPI.GetWorkflow(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.GetWorkflow``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetWorkflow`: Workflow
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.GetWorkflow`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Id of the workflow | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetWorkflowRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+	
 ### Return type
 
-[**Workflow**](Workflow.md)
+[**Workflow**](Workflow)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | The workflow object | Workflow
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -297,65 +170,32 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetWorkflowExecution
-
-> map[string]interface{} GetWorkflowExecution(ctx, id).Execute()
-
-Get a Workflow Execution
+## get-workflow-execution
 
 
+Get a single workflow execution.  Workflow executions are available for up to 90 days before being archived.  If you attempt to access a workflow execution that has been archived, you will receive a 404 Not Found.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | Id of the workflow execution
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    id := "c17bea3a-574d-453c-9e04-4365fbf5af0b" // string | Id of the workflow execution
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsAPI.GetWorkflowExecution(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.GetWorkflowExecution``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetWorkflowExecution`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.GetWorkflowExecution`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Id of the workflow execution | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetWorkflowExecutionRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+	
 ### Return type
 
 **map[string]interface{}**
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | The workflow execution | map[string]interface{}
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -367,65 +207,32 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetWorkflowExecutionHistory
-
-> []WorkflowExecutionEvent GetWorkflowExecutionHistory(ctx, id).Execute()
-
-Get Workflow Execution History
+## get-workflow-execution-history
 
 
+Get a detailed history of a single workflow execution.  Workflow executions are available for up to 90 days before being archived.  If you attempt to access a workflow execution that has been archived, you will receive a 404 Not Found.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | Id of the workflow execution
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    id := "c17bea3a-574d-453c-9e04-4365fbf5af0b" // string | Id of the workflow execution
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsAPI.GetWorkflowExecutionHistory(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.GetWorkflowExecutionHistory``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetWorkflowExecutionHistory`: []WorkflowExecutionEvent
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.GetWorkflowExecutionHistory`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Id of the workflow execution | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetWorkflowExecutionHistoryRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+	
 ### Return type
 
-[**[]WorkflowExecutionEvent**](WorkflowExecutionEvent.md)
+[**[]WorkflowExecutionEvent**](WorkflowExecutionEvent)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | List of workflow execution events for the given workflow execution | []WorkflowExecutionEvent
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -437,63 +244,32 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListCompleteWorkflowLibrary
-
-> []ListCompleteWorkflowLibrary200ResponseInner ListCompleteWorkflowLibrary(ctx).Limit(limit).Offset(offset).Execute()
-
-List Complete Workflow Library
+## list-complete-workflow-library
 
 
+This lists all triggers, actions, and operators in the library
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+  Query | limit | **int32** |   (optional) (default to 250) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | offset | **int32** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
-    offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsAPI.ListCompleteWorkflowLibrary(context.Background()).Limit(limit).Offset(offset).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.ListCompleteWorkflowLibrary``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListCompleteWorkflowLibrary`: []ListCompleteWorkflowLibrary200ResponseInner
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.ListCompleteWorkflowLibrary`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListCompleteWorkflowLibraryRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
- **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
-
+	
 ### Return type
 
-[**[]ListCompleteWorkflowLibrary200ResponseInner**](ListCompleteWorkflowLibrary200ResponseInner.md)
+[**[]ListCompleteWorkflowLibrary200ResponseInner**](ListCompleteWorkflowLibrary200ResponseInner)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | List of workflow steps | []ListCompleteWorkflowLibrary200ResponseInner
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -505,73 +281,46 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListWorkflowExecutions
-
-> []WorkflowExecution ListWorkflowExecutions(ctx, id).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
-
-List Workflow Executions
+## list-workflow-executions
 
 
+This lists the executions for a given workflow. Workflow executions are available for up to 90 days before being archived. By default, you can get a maximum of 250 executions.  To get executions past the first 250 records, you can do the following: 
+1. Use the [Get Workflows](https://developer.sailpoint.com/idn/api/beta/list-workflows) endpoint to get your workflows. 
+2. Get your workflow ID from the response. 
+3. You can then do either of the following: 
 
-### Example
+  - Filter to find relevant workflow executions.
+  For example, you can filter for failed workflow executions: `GET /workflows/:workflowID/executions?filters=status eq "Failed"`
 
-```go
-package main
+  - You can paginate through results with the `offset` parameter. 
+  For example, you can page through 50 executions per page and use that as a way to get to the records past the first 250. 
+  Refer to [Paginating Results](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results) for more information about the query parameters you can use to achieve pagination. 
 
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | Id of the workflow
+  Query | limit | **int32** |   (optional) (default to 250) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | offset | **int32** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | count | **bool** |   (optional) (default to false) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | filters | **string** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **startTime**: *eq, lt, le, gt, ge*  **status**: *eq*
 
-func main() {
-    id := "c17bea3a-574d-453c-9e04-4365fbf5af0b" // string | Id of the workflow
-    limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
-    offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-    count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-    filters := "status eq "Failed"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **startTime**: *eq, lt, le, gt, ge*  **status**: *eq* (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsAPI.ListWorkflowExecutions(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.ListWorkflowExecutions``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListWorkflowExecutions`: []WorkflowExecution
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.ListWorkflowExecutions`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Id of the workflow | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListWorkflowExecutionsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
- **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
- **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
- **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **startTime**: *eq, lt, le, gt, ge*  **status**: *eq* | 
-
+	
 ### Return type
 
-[**[]WorkflowExecution**](WorkflowExecution.md)
+[**[]WorkflowExecution**](WorkflowExecution)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | List of workflow executions for the given workflow | []WorkflowExecution
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -583,65 +332,33 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListWorkflowLibraryActions
-
-> []WorkflowLibraryAction ListWorkflowLibraryActions(ctx).Limit(limit).Offset(offset).Filters(filters).Execute()
-
-List Workflow Library Actions
+## list-workflow-library-actions
 
 
+This lists the workflow actions available to you.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+  Query | limit | **int32** |   (optional) (default to 250) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | offset | **int32** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | filters | **string** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
-    offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-    filters := "id eq "sp:create-campaign"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq* (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsAPI.ListWorkflowLibraryActions(context.Background()).Limit(limit).Offset(offset).Filters(filters).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.ListWorkflowLibraryActions``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListWorkflowLibraryActions`: []WorkflowLibraryAction
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.ListWorkflowLibraryActions`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListWorkflowLibraryActionsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
- **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
- **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq* | 
-
+	
 ### Return type
 
-[**[]WorkflowLibraryAction**](WorkflowLibraryAction.md)
+[**[]WorkflowLibraryAction**](WorkflowLibraryAction)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | List of workflow actions | []WorkflowLibraryAction
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -653,56 +370,30 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListWorkflowLibraryOperators
-
-> []WorkflowLibraryOperator ListWorkflowLibraryOperators(ctx).Execute()
-
-List Workflow Library Operators
+## list-workflow-library-operators
 
 
+This lists the workflow operators available to you
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsAPI.ListWorkflowLibraryOperators(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.ListWorkflowLibraryOperators``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListWorkflowLibraryOperators`: []WorkflowLibraryOperator
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.ListWorkflowLibraryOperators`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListWorkflowLibraryOperatorsRequest struct via the builder pattern
-
-
+	
 ### Return type
 
-[**[]WorkflowLibraryOperator**](WorkflowLibraryOperator.md)
+[**[]WorkflowLibraryOperator**](WorkflowLibraryOperator)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | List of workflow operators | []WorkflowLibraryOperator
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -714,65 +405,33 @@ Other parameters are passed through a pointer to a apiListWorkflowLibraryOperato
 [[Back to README]](../README.md)
 
 
-## ListWorkflowLibraryTriggers
-
-> []WorkflowLibraryTrigger ListWorkflowLibraryTriggers(ctx).Limit(limit).Offset(offset).Filters(filters).Execute()
-
-List Workflow Library Triggers
+## list-workflow-library-triggers
 
 
+This lists the workflow triggers available to you
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+  Query | limit | **int32** |   (optional) (default to 250) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | offset | **int32** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | filters | **string** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
-    offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-    filters := "id eq "idn:identity-attributes-changed"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq* (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsAPI.ListWorkflowLibraryTriggers(context.Background()).Limit(limit).Offset(offset).Filters(filters).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.ListWorkflowLibraryTriggers``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListWorkflowLibraryTriggers`: []WorkflowLibraryTrigger
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.ListWorkflowLibraryTriggers`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListWorkflowLibraryTriggersRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
- **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
- **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq* | 
-
+	
 ### Return type
 
-[**[]WorkflowLibraryTrigger**](WorkflowLibraryTrigger.md)
+[**[]WorkflowLibraryTrigger**](WorkflowLibraryTrigger)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | List of workflow triggers | []WorkflowLibraryTrigger
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -784,56 +443,30 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListWorkflows
-
-> []Workflow ListWorkflows(ctx).Execute()
-
-List Workflows
+## list-workflows
 
 
+List all workflows in the tenant.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsAPI.ListWorkflows(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.ListWorkflows``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListWorkflows`: []Workflow
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.ListWorkflows`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListWorkflowsRequest struct via the builder pattern
-
-
+	
 ### Return type
 
-[**[]Workflow**](Workflow.md)
+[**[]Workflow**](Workflow)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | List of workflows | []Workflow
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -845,67 +478,32 @@ Other parameters are passed through a pointer to a apiListWorkflowsRequest struc
 [[Back to README]](../README.md)
 
 
-## PatchWorkflow
-
-> Workflow PatchWorkflow(ctx, id).JsonPatchOperation(jsonPatchOperation).Execute()
-
-Patch Workflow
+## patch-workflow
 
 
+Partially update an existing Workflow using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | Id of the Workflow
+ Body  | jsonPatchOperation | [**[]JsonPatchOperation**](JsonPatchOperation.md) | True  | 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    id := "c17bea3a-574d-453c-9e04-4365fbf5af0b" // string | Id of the Workflow
-    jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsAPI.PatchWorkflow(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.PatchWorkflow``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PatchWorkflow`: Workflow
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.PatchWorkflow`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Id of the Workflow | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPatchWorkflowRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **jsonPatchOperation** | [**[]JsonPatchOperation**](JsonPatchOperation.md) |  | 
-
+	
 ### Return type
 
-[**Workflow**](Workflow.md)
+[**Workflow**](Workflow)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | The Workflow object | Workflow
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -917,67 +515,32 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PostExternalExecuteWorkflow
-
-> PostExternalExecuteWorkflow200Response PostExternalExecuteWorkflow(ctx, id).PostExternalExecuteWorkflowRequest(postExternalExecuteWorkflowRequest).Execute()
-
-Execute Workflow via External Trigger
+## post-external-execute-workflow
 
 
+This endpoint allows a service outside of IdentityNow to initiate a workflow that uses the "External Trigger" step.  The external service will invoke this endpoint with the input data it wants to send to the workflow in the body.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | Id of the workflow
+ Body  | postExternalExecuteWorkflowRequest | [**PostExternalExecuteWorkflowRequest**](PostExternalExecuteWorkflowRequest.md) |   (optional) | 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    id := "c17bea3a-574d-453c-9e04-4365fbf5af0b" // string | Id of the workflow
-    postExternalExecuteWorkflowRequest := *openapiclient.NewPostExternalExecuteWorkflowRequest() // PostExternalExecuteWorkflowRequest |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsAPI.PostExternalExecuteWorkflow(context.Background(), id).PostExternalExecuteWorkflowRequest(postExternalExecuteWorkflowRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.PostExternalExecuteWorkflow``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PostExternalExecuteWorkflow`: PostExternalExecuteWorkflow200Response
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.PostExternalExecuteWorkflow`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Id of the workflow | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPostExternalExecuteWorkflowRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **postExternalExecuteWorkflowRequest** | [**PostExternalExecuteWorkflowRequest**](PostExternalExecuteWorkflowRequest.md) |  | 
-
+	
 ### Return type
 
-[**PostExternalExecuteWorkflow200Response**](PostExternalExecuteWorkflow200Response.md)
+[**PostExternalExecuteWorkflow200Response**](PostExternalExecuteWorkflow200Response)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | The Workflow object | PostExternalExecuteWorkflow200Response
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -989,65 +552,31 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PostWorkflowExternalTrigger
-
-> WorkflowOAuthClient PostWorkflowExternalTrigger(ctx, id).Execute()
-
-Generate External Trigger OAuth Client
+## post-workflow-external-trigger
 
 
+Create OAuth client ID, client secret, and callback URL for use in an external trigger.  External triggers will need this information to generate an access token to authenticate to the callback URL and submit a trigger payload that will initiate the workflow.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | Id of the workflow
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    id := "c17bea3a-574d-453c-9e04-4365fbf5af0b" // string | Id of the workflow
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsAPI.PostWorkflowExternalTrigger(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.PostWorkflowExternalTrigger``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PostWorkflowExternalTrigger`: WorkflowOAuthClient
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.PostWorkflowExternalTrigger`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Id of the workflow | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPostWorkflowExternalTriggerRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+	
 ### Return type
 
-[**WorkflowOAuthClient**](WorkflowOAuthClient.md)
+[**WorkflowOAuthClient**](WorkflowOAuthClient)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | The OAuth Client object | WorkflowOAuthClient
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -1059,67 +588,32 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## TestExternalExecuteWorkflow
-
-> TestExternalExecuteWorkflow200Response TestExternalExecuteWorkflow(ctx, id).TestExternalExecuteWorkflowRequest(testExternalExecuteWorkflowRequest).Execute()
-
-Test Workflow via External Trigger
+## test-external-execute-workflow
 
 
+Validate a workflow with an "External Trigger" can receive input.  The response includes the input that the workflow received, which can be used to validate that the input is intact when it reaches the workflow.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | Id of the workflow
+ Body  | testExternalExecuteWorkflowRequest | [**TestExternalExecuteWorkflowRequest**](TestExternalExecuteWorkflowRequest.md) |   (optional) | 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    id := "c17bea3a-574d-453c-9e04-4365fbf5af0b" // string | Id of the workflow
-    testExternalExecuteWorkflowRequest := *openapiclient.NewTestExternalExecuteWorkflowRequest() // TestExternalExecuteWorkflowRequest |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsAPI.TestExternalExecuteWorkflow(context.Background(), id).TestExternalExecuteWorkflowRequest(testExternalExecuteWorkflowRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.TestExternalExecuteWorkflow``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `TestExternalExecuteWorkflow`: TestExternalExecuteWorkflow200Response
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.TestExternalExecuteWorkflow`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Id of the workflow | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiTestExternalExecuteWorkflowRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **testExternalExecuteWorkflowRequest** | [**TestExternalExecuteWorkflowRequest**](TestExternalExecuteWorkflowRequest.md) |  | 
-
+	
 ### Return type
 
-[**TestExternalExecuteWorkflow200Response**](TestExternalExecuteWorkflow200Response.md)
+[**TestExternalExecuteWorkflow200Response**](TestExternalExecuteWorkflow200Response)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Responds with the test input | TestExternalExecuteWorkflow200Response
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -1131,67 +625,34 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## TestWorkflow
-
-> TestWorkflow200Response TestWorkflow(ctx, id).TestWorkflowRequest(testWorkflowRequest).Execute()
-
-Test Workflow By Id
+## test-workflow
 
 
+Test a workflow with the provided input data.  The input data should resemble the input that the trigger will send the workflow.  See the [event trigger documentation](https://developer.sailpoint.com/idn/docs/event-triggers/available) for an example input for the trigger that initiates this workflow.
+This endpoint will return an execution ID, which can be used to lookup more information about the execution using the `Get a Workflow Execution` endpoint.
+**This will cause a live run of the workflow, which could result in unintended modifications to your IDN tenant.**
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | Id of the workflow
+ Body  | testWorkflowRequest | [**TestWorkflowRequest**](TestWorkflowRequest.md) | True  | 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    id := "c17bea3a-574d-453c-9e04-4365fbf5af0b" // string | Id of the workflow
-    testWorkflowRequest := *openapiclient.NewTestWorkflowRequest(map[string]interface{}(123)) // TestWorkflowRequest | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsAPI.TestWorkflow(context.Background(), id).TestWorkflowRequest(testWorkflowRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.TestWorkflow``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `TestWorkflow`: TestWorkflow200Response
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.TestWorkflow`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Id of the workflow | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiTestWorkflowRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **testWorkflowRequest** | [**TestWorkflowRequest**](TestWorkflowRequest.md) |  | 
-
+	
 ### Return type
 
-[**TestWorkflow200Response**](TestWorkflow200Response.md)
+[**TestWorkflow200Response**](TestWorkflow200Response)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | The Workflow object | TestWorkflow200Response
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -1203,67 +664,32 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateWorkflow
-
-> Workflow UpdateWorkflow(ctx, id).WorkflowBody(workflowBody).Execute()
-
-Update Workflow
+## update-workflow
 
 
+Perform a full update of a workflow.  The updated workflow object is returned in the response.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | Id of the Workflow
+ Body  | workflowBody | [**WorkflowBody**](WorkflowBody.md) | True  | 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    id := "c17bea3a-574d-453c-9e04-4365fbf5af0b" // string | Id of the Workflow
-    workflowBody := *openapiclient.NewWorkflowBody() // WorkflowBody | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsAPI.UpdateWorkflow(context.Background(), id).WorkflowBody(workflowBody).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.UpdateWorkflow``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateWorkflow`: Workflow
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.UpdateWorkflow`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Id of the Workflow | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUpdateWorkflowRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **workflowBody** | [**WorkflowBody**](WorkflowBody.md) |  | 
-
+	
 ### Return type
 
-[**Workflow**](Workflow.md)
+[**Workflow**](Workflow)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | The Workflow object | Workflow
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 

@@ -136,7 +136,7 @@ func (o *NonEmployeeIdentityReferenceWithId) UnmarshalJSON(bytes []byte) (err er
 	varNonEmployeeIdentityReferenceWithId := _NonEmployeeIdentityReferenceWithId{}
 
 	if err = json.Unmarshal(bytes, &varNonEmployeeIdentityReferenceWithId); err == nil {
-	*o = NonEmployeeIdentityReferenceWithId(varNonEmployeeIdentityReferenceWithId)
+			*o = NonEmployeeIdentityReferenceWithId(varNonEmployeeIdentityReferenceWithId)
 }
 
 	additionalProperties := make(map[string]interface{})

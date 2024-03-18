@@ -137,7 +137,7 @@ func (o *AccessItemRef) UnmarshalJSON(bytes []byte) (err error) {
 	varAccessItemRef := _AccessItemRef{}
 
 	if err = json.Unmarshal(bytes, &varAccessItemRef); err == nil {
-	*o = AccessItemRef(varAccessItemRef)
+			*o = AccessItemRef(varAccessItemRef)
 }
 
 	additionalProperties := make(map[string]interface{})

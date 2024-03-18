@@ -753,28 +753,28 @@ func (a *AccessProfilesAPIService) GetAccessProfileEntitlementsExecute(r ApiGetA
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
 		var defaultValue int32 = 250
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
-		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
 	} else {
 		var defaultValue int32 = 0
 		r.offset = &defaultValue
 	}
 	if r.count != nil {
-		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "")
 	} else {
 		var defaultValue bool = false
 		r.count = &defaultValue
 	}
 	if r.filters != nil {
-		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "")
 	}
 	if r.sorters != nil {
-		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -988,37 +988,37 @@ func (a *AccessProfilesAPIService) ListAccessProfilesExecute(r ApiListAccessProf
 	localVarFormParams := url.Values{}
 
 	if r.forSubadmin != nil {
-		parameterAddToQuery(localVarQueryParams, "for-subadmin", r.forSubadmin, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "for-subadmin", r.forSubadmin, "")
 	}
 	if r.limit != nil {
-		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
 		var defaultValue int32 = 50
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
-		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
 	} else {
 		var defaultValue int32 = 0
 		r.offset = &defaultValue
 	}
 	if r.count != nil {
-		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "")
 	} else {
 		var defaultValue bool = false
 		r.count = &defaultValue
 	}
 	if r.filters != nil {
-		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "")
 	}
 	if r.sorters != nil {
-		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "")
 	}
 	if r.forSegmentIds != nil {
-		parameterAddToQuery(localVarQueryParams, "for-segment-ids", r.forSegmentIds, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "for-segment-ids", r.forSegmentIds, "")
 	}
 	if r.includeUnsegmented != nil {
-		parameterAddToQuery(localVarQueryParams, "include-unsegmented", r.includeUnsegmented, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include-unsegmented", r.includeUnsegmented, "")
 	} else {
 		var defaultValue bool = true
 		r.includeUnsegmented = &defaultValue
@@ -1180,8 +1180,6 @@ A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is requi
 >  The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles, however, any new access profiles as well as any updates to existing descriptions will be limited to 2000 characters.
 
 > You can only add or replace **entitlements** that exist on the source that the access profile is attached to. You can use the **list entitlements** endpoint with the **filters** query parameter to get a list of available entitlements on the access profile's source.
-
->  Patching the value of the **requestable** field is only supported for customers enabled with the new Request Center. Otherwise, attempting to modify this field results in a 400 error.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Access Profile to patch

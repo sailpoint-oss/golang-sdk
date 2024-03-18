@@ -4,69 +4,39 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreatePasswordSyncGroup**](PasswordSyncGroupsAPI.md#CreatePasswordSyncGroup) | **Post** /password-sync-groups | Create Password Sync Group
-[**DeletePasswordSyncGroup**](PasswordSyncGroupsAPI.md#DeletePasswordSyncGroup) | **Delete** /password-sync-groups/{id} | Delete Password Sync Group by ID
-[**GetPasswordSyncGroup**](PasswordSyncGroupsAPI.md#GetPasswordSyncGroup) | **Get** /password-sync-groups/{id} | Get Password Sync Group by ID
-[**GetPasswordSyncGroups**](PasswordSyncGroupsAPI.md#GetPasswordSyncGroups) | **Get** /password-sync-groups | Get Password Sync Group List
-[**UpdatePasswordSyncGroup**](PasswordSyncGroupsAPI.md#UpdatePasswordSyncGroup) | **Put** /password-sync-groups/{id} | Update Password Sync Group by ID
+[**CreatePasswordSyncGroup**](#create-password-sync-group) | **Post** /password-sync-groups | Create Password Sync Group
+[**DeletePasswordSyncGroup**](#delete-password-sync-group) | **Delete** /password-sync-groups/{id} | Delete Password Sync Group by ID
+[**GetPasswordSyncGroup**](#get-password-sync-group) | **Get** /password-sync-groups/{id} | Get Password Sync Group by ID
+[**GetPasswordSyncGroups**](#get-password-sync-groups) | **Get** /password-sync-groups | Get Password Sync Group List
+[**UpdatePasswordSyncGroup**](#update-password-sync-group) | **Put** /password-sync-groups/{id} | Update Password Sync Group by ID
 
 
 
-## CreatePasswordSyncGroup
-
-> PasswordSyncGroup CreatePasswordSyncGroup(ctx).PasswordSyncGroup(passwordSyncGroup).Execute()
-
-Create Password Sync Group
+## create-password-sync-group
 
 
+This API creates a password sync group based on the specifications provided. A token with ORG_ADMIN authority is required to call this API.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | passwordSyncGroup | [**PasswordSyncGroup**](PasswordSyncGroup.md) | True  | 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    passwordSyncGroup := *openapiclient.NewPasswordSyncGroup() // PasswordSyncGroup | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordSyncGroupsAPI.CreatePasswordSyncGroup(context.Background()).PasswordSyncGroup(passwordSyncGroup).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsAPI.CreatePasswordSyncGroup``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreatePasswordSyncGroup`: PasswordSyncGroup
-    fmt.Fprintf(os.Stdout, "Response from `PasswordSyncGroupsAPI.CreatePasswordSyncGroup`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreatePasswordSyncGroupRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **passwordSyncGroup** | [**PasswordSyncGroup**](PasswordSyncGroup.md) |  | 
-
+	
 ### Return type
 
-[**PasswordSyncGroup**](PasswordSyncGroup.md)
+[**PasswordSyncGroup**](PasswordSyncGroup)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Reference to the password sync group. | PasswordSyncGroup
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -78,63 +48,31 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeletePasswordSyncGroup
-
-> DeletePasswordSyncGroup(ctx, id).Execute()
-
-Delete Password Sync Group by ID
+## delete-password-sync-group
 
 
+This API deletes the specified password sync group. A token with ORG_ADMIN authority is required to call this API.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | The ID of password sync group to delete.
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    id := "6881f631-3bd5-4213-9c75-8e05cc3e35dd" // string | The ID of password sync group to delete.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PasswordSyncGroupsAPI.DeletePasswordSyncGroup(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsAPI.DeletePasswordSyncGroup``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of password sync group to delete. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDeletePasswordSyncGroupRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+	
 ### Return type
 
  (empty response body)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+204 | No content - indicates the request was successful but there is no content to be returned in the response. | 
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -146,65 +84,32 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetPasswordSyncGroup
-
-> PasswordSyncGroup GetPasswordSyncGroup(ctx, id).Execute()
-
-Get Password Sync Group by ID
+## get-password-sync-group
 
 
+This API returns the sync group for the specified ID. A token with ORG_ADMIN authority is required to call this API.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | The ID of password sync group to retrieve.
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    id := "6881f631-3bd5-4213-9c75-8e05cc3e35dd" // string | The ID of password sync group to retrieve.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordSyncGroupsAPI.GetPasswordSyncGroup(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsAPI.GetPasswordSyncGroup``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetPasswordSyncGroup`: PasswordSyncGroup
-    fmt.Fprintf(os.Stdout, "Response from `PasswordSyncGroupsAPI.GetPasswordSyncGroup`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of password sync group to retrieve. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetPasswordSyncGroupRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+	
 ### Return type
 
-[**PasswordSyncGroup**](PasswordSyncGroup.md)
+[**PasswordSyncGroup**](PasswordSyncGroup)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Reference to the password sync group. | PasswordSyncGroup
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -216,65 +121,33 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetPasswordSyncGroups
-
-> []PasswordSyncGroup GetPasswordSyncGroups(ctx).Limit(limit).Offset(offset).Count(count).Execute()
-
-Get Password Sync Group List
+## get-password-sync-groups
 
 
+This API returns a list of password sync groups. A token with ORG_ADMIN authority is required to call this API.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+  Query | limit | **int32** |   (optional) (default to 250) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | offset | **int32** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | count | **bool** |   (optional) (default to false) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
-    offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-    count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordSyncGroupsAPI.GetPasswordSyncGroups(context.Background()).Limit(limit).Offset(offset).Count(count).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsAPI.GetPasswordSyncGroups``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetPasswordSyncGroups`: []PasswordSyncGroup
-    fmt.Fprintf(os.Stdout, "Response from `PasswordSyncGroupsAPI.GetPasswordSyncGroups`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetPasswordSyncGroupsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
- **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
- **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
-
+	
 ### Return type
 
-[**[]PasswordSyncGroup**](PasswordSyncGroup.md)
+[**[]PasswordSyncGroup**](PasswordSyncGroup)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | A list of password sync groups. | []PasswordSyncGroup
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -286,67 +159,33 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdatePasswordSyncGroup
-
-> PasswordSyncGroup UpdatePasswordSyncGroup(ctx, id).PasswordSyncGroup(passwordSyncGroup).Execute()
-
-Update Password Sync Group by ID
+## update-password-sync-group
 
 
+This API updates the specified password sync group. A token with ORG_ADMIN authority is required to call this API.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | The ID of password sync group to update.
+ Body  | passwordSyncGroup | [**PasswordSyncGroup**](PasswordSyncGroup.md) | True  | 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    id := "6881f631-3bd5-4213-9c75-8e05cc3e35dd" // string | The ID of password sync group to update.
-    passwordSyncGroup := *openapiclient.NewPasswordSyncGroup() // PasswordSyncGroup | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordSyncGroupsAPI.UpdatePasswordSyncGroup(context.Background(), id).PasswordSyncGroup(passwordSyncGroup).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsAPI.UpdatePasswordSyncGroup``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdatePasswordSyncGroup`: PasswordSyncGroup
-    fmt.Fprintf(os.Stdout, "Response from `PasswordSyncGroupsAPI.UpdatePasswordSyncGroup`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of password sync group to update. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUpdatePasswordSyncGroupRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **passwordSyncGroup** | [**PasswordSyncGroup**](PasswordSyncGroup.md) |  | 
-
+	
 ### Return type
 
-[**PasswordSyncGroup**](PasswordSyncGroup.md)
+[**PasswordSyncGroup**](PasswordSyncGroup)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Reference to the password sync group. | PasswordSyncGroup
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 

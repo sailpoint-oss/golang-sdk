@@ -201,7 +201,7 @@ func (o *SavedSearchCompleteSearchResults) UnmarshalJSON(bytes []byte) (err erro
 	varSavedSearchCompleteSearchResults := _SavedSearchCompleteSearchResults{}
 
 	if err = json.Unmarshal(bytes, &varSavedSearchCompleteSearchResults); err == nil {
-	*o = SavedSearchCompleteSearchResults(varSavedSearchCompleteSearchResults)
+			*o = SavedSearchCompleteSearchResults(varSavedSearchCompleteSearchResults)
 }
 
 	additionalProperties := make(map[string]interface{})

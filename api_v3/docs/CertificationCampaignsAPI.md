@@ -4,32 +4,32 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CompleteCampaign**](CertificationCampaignsAPI.md#CompleteCampaign) | **Post** /campaigns/{id}/complete | Complete a Campaign
-[**CreateCampaign**](CertificationCampaignsAPI.md#CreateCampaign) | **Post** /campaigns | Create a campaign
-[**CreateCampaignTemplate**](CertificationCampaignsAPI.md#CreateCampaignTemplate) | **Post** /campaign-templates | Create a Campaign Template
-[**DeleteCampaignTemplate**](CertificationCampaignsAPI.md#DeleteCampaignTemplate) | **Delete** /campaign-templates/{id} | Delete a Campaign Template
-[**DeleteCampaignTemplateSchedule**](CertificationCampaignsAPI.md#DeleteCampaignTemplateSchedule) | **Delete** /campaign-templates/{id}/schedule | Deletes a Campaign Template&#39;s Schedule
-[**DeleteCampaigns**](CertificationCampaignsAPI.md#DeleteCampaigns) | **Post** /campaigns/delete | Deletes Campaigns
-[**GetActiveCampaigns**](CertificationCampaignsAPI.md#GetActiveCampaigns) | **Get** /campaigns | List Campaigns
-[**GetCampaign**](CertificationCampaignsAPI.md#GetCampaign) | **Get** /campaigns/{id} | Get a campaign
-[**GetCampaignReports**](CertificationCampaignsAPI.md#GetCampaignReports) | **Get** /campaigns/{id}/reports | Get Campaign Reports
-[**GetCampaignReportsConfig**](CertificationCampaignsAPI.md#GetCampaignReportsConfig) | **Get** /campaigns/reports-configuration | Get Campaign Reports Configuration
-[**GetCampaignTemplate**](CertificationCampaignsAPI.md#GetCampaignTemplate) | **Get** /campaign-templates/{id} | Get a Campaign Template
-[**GetCampaignTemplateSchedule**](CertificationCampaignsAPI.md#GetCampaignTemplateSchedule) | **Get** /campaign-templates/{id}/schedule | Gets a Campaign Template&#39;s Schedule
-[**ListCampaignTemplates**](CertificationCampaignsAPI.md#ListCampaignTemplates) | **Get** /campaign-templates | List Campaign Templates
-[**Move**](CertificationCampaignsAPI.md#Move) | **Post** /campaigns/{id}/reassign | Reassign Certifications
-[**PatchCampaignTemplate**](CertificationCampaignsAPI.md#PatchCampaignTemplate) | **Patch** /campaign-templates/{id} | Update a Campaign Template
-[**SetCampaignReportsConfig**](CertificationCampaignsAPI.md#SetCampaignReportsConfig) | **Put** /campaigns/reports-configuration | Set Campaign Reports Configuration
-[**SetCampaignTemplateSchedule**](CertificationCampaignsAPI.md#SetCampaignTemplateSchedule) | **Put** /campaign-templates/{id}/schedule | Sets a Campaign Template&#39;s Schedule
-[**StartCampaign**](CertificationCampaignsAPI.md#StartCampaign) | **Post** /campaigns/{id}/activate | Activate a Campaign
-[**StartCampaignRemediationScan**](CertificationCampaignsAPI.md#StartCampaignRemediationScan) | **Post** /campaigns/{id}/run-remediation-scan | Run Campaign Remediation Scan
-[**StartCampaignReport**](CertificationCampaignsAPI.md#StartCampaignReport) | **Post** /campaigns/{id}/run-report/{type} | Run Campaign Report
-[**StartGenerateCampaignTemplate**](CertificationCampaignsAPI.md#StartGenerateCampaignTemplate) | **Post** /campaign-templates/{id}/generate | Generate a Campaign from Template
-[**UpdateCampaign**](CertificationCampaignsAPI.md#UpdateCampaign) | **Patch** /campaigns/{id} | Update a Campaign
+[**CompleteCampaign**](#complete-campaign) | **Post** /campaigns/{id}/complete | Complete a Campaign
+[**CreateCampaign**](#create-campaign) | **Post** /campaigns | Create a campaign
+[**CreateCampaignTemplate**](#create-campaign-template) | **Post** /campaign-templates | Create a Campaign Template
+[**DeleteCampaignTemplate**](#delete-campaign-template) | **Delete** /campaign-templates/{id} | Delete a Campaign Template
+[**DeleteCampaignTemplateSchedule**](#delete-campaign-template-schedule) | **Delete** /campaign-templates/{id}/schedule | Deletes a Campaign Template&#39;s Schedule
+[**DeleteCampaigns**](#delete-campaigns) | **Post** /campaigns/delete | Deletes Campaigns
+[**GetActiveCampaigns**](#get-active-campaigns) | **Get** /campaigns | List Campaigns
+[**GetCampaign**](#get-campaign) | **Get** /campaigns/{id} | Get a campaign
+[**GetCampaignReports**](#get-campaign-reports) | **Get** /campaigns/{id}/reports | Get Campaign Reports
+[**GetCampaignReportsConfig**](#get-campaign-reports-config) | **Get** /campaigns/reports-configuration | Get Campaign Reports Configuration
+[**GetCampaignTemplate**](#get-campaign-template) | **Get** /campaign-templates/{id} | Get a Campaign Template
+[**GetCampaignTemplateSchedule**](#get-campaign-template-schedule) | **Get** /campaign-templates/{id}/schedule | Gets a Campaign Template&#39;s Schedule
+[**ListCampaignTemplates**](#list-campaign-templates) | **Get** /campaign-templates | List Campaign Templates
+[**Move**](#move) | **Post** /campaigns/{id}/reassign | Reassign Certifications
+[**PatchCampaignTemplate**](#patch-campaign-template) | **Patch** /campaign-templates/{id} | Update a Campaign Template
+[**SetCampaignReportsConfig**](#set-campaign-reports-config) | **Put** /campaigns/reports-configuration | Set Campaign Reports Configuration
+[**SetCampaignTemplateSchedule**](#set-campaign-template-schedule) | **Put** /campaign-templates/{id}/schedule | Sets a Campaign Template&#39;s Schedule
+[**StartCampaign**](#start-campaign) | **Post** /campaigns/{id}/activate | Activate a Campaign
+[**StartCampaignRemediationScan**](#start-campaign-remediation-scan) | **Post** /campaigns/{id}/run-remediation-scan | Run Campaign Remediation Scan
+[**StartCampaignReport**](#start-campaign-report) | **Post** /campaigns/{id}/run-report/{type} | Run Campaign Report
+[**StartGenerateCampaignTemplate**](#start-generate-campaign-template) | **Post** /campaign-templates/{id}/generate | Generate a Campaign from Template
+[**UpdateCampaign**](#update-campaign) | **Patch** /campaigns/{id} | Update a Campaign
 
 
 
-## Complete a Campaign
+## complete-campaign
 
 
 :::caution
@@ -52,7 +52,7 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **string** | True  | The campaign id
  Body  | campaignCompleteOptions | [**CampaignCompleteOptions**](CampaignCompleteOptions.md) |   (optional) | Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE
 
-
+	
 ### Return type
 
 **map[string]interface{}**
@@ -78,44 +78,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//CompleteCampaign
-
-    id := "ef38f94347e94562b5bb8424a56397d8"
-    //campaignCompleteOptions := *sailpoint.NewCampaignCompleteOptions()
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.CertificationCampaignsAPI.CompleteCampaign(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.CompleteCampaign``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CompleteCampaign`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.CompleteCampaign`: %v\n", resp)
-}
-```
-
-
-
-
-## Create a campaign
+## create-campaign
 
 
 Creates a new Certification Campaign with the information provided in the request body.
@@ -125,10 +89,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | campaign | [**Campaign**](Campaign.md) | True  | 
 
-
+	
 ### Return type
 
-[**Campaign**](Campaign.md)
+[**Campaign**](Campaign)
 
 ### Responses
 Code | Description  | Data Type
@@ -150,43 +114,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//CreateCampaign
-
-    campaign := *sailpoint.NewCampaign("Manager Campaign", "Everyone needs to be reviewed by their manager", "MANAGER")
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.CertificationCampaignsAPI.CreateCampaign(context.Background()).Campaign(campaign).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.CreateCampaign``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateCampaign`: Campaign
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.CreateCampaign`: %v\n", resp)
-}
-```
-
-
-
-
-## Create a Campaign Template
+## create-campaign-template
 
 
 Create a campaign Template based on campaign.
@@ -196,10 +125,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | campaignTemplate | [**CampaignTemplate**](CampaignTemplate.md) | True  | 
 
-
+	
 ### Return type
 
-[**CampaignTemplate**](CampaignTemplate.md)
+[**CampaignTemplate**](CampaignTemplate)
 
 ### Responses
 Code | Description  | Data Type
@@ -221,44 +150,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    "time"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//CreateCampaignTemplate
-
-    campaignTemplate := *sailpoint.NewCampaignTemplate("Manager Campaign Template", "Template for the annual manager campaign.", time.Now(), time.Now(), *sailpoint.NewCampaign("Manager Campaign", "Everyone needs to be reviewed by their manager", "MANAGER"))
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.CertificationCampaignsAPI.CreateCampaignTemplate(context.Background()).CampaignTemplate(campaignTemplate).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.CreateCampaignTemplate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateCampaignTemplate`: CampaignTemplate
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.CreateCampaignTemplate`: %v\n", resp)
-}
-```
-
-
-
-
-## Delete a Campaign Template
+## delete-campaign-template
 
 
 Deletes a campaign template by ID.
@@ -268,7 +161,7 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **string** | True  | The ID of the campaign template being deleted.
 
-
+	
 ### Return type
 
  (empty response body)
@@ -294,41 +187,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//DeleteCampaignTemplate
-
-    id := "2c9180835d191a86015d28455b4a2329"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.V3.CertificationCampaignsAPI.DeleteCampaignTemplate(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.DeleteCampaignTemplate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-
-
-
-## Deletes a Campaign Template's Schedule
+## delete-campaign-template-schedule
 
 
 Deletes the schedule for a campaign template. Returns a 404 if there is no schedule set.
@@ -338,7 +198,7 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **string** | True  | The ID of the campaign template whose schedule is being deleted.
 
-
+	
 ### Return type
 
  (empty response body)
@@ -364,41 +224,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//DeleteCampaignTemplateSchedule
-
-    id := "04bedce387bd47b2ae1f86eb0bb36dee"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.V3.CertificationCampaignsAPI.DeleteCampaignTemplateSchedule(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.DeleteCampaignTemplateSchedule``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-
-
-
-## Deletes Campaigns
+## delete-campaigns
 
 
 Deletes campaigns whose Ids are specified in the provided list of campaign Ids. Authorized callers must be an ORG_ADMIN or a CERT_ADMIN.
@@ -408,7 +235,7 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | campaignsDeleteRequest | [**CampaignsDeleteRequest**](CampaignsDeleteRequest.md) | True  | The ids of the campaigns to delete.
 
-
+	
 ### Return type
 
 **map[string]interface{}**
@@ -434,43 +261,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//DeleteCampaigns
-
-    campaignsDeleteRequest := *sailpoint.NewCampaignsDeleteRequest()
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.CertificationCampaignsAPI.DeleteCampaigns(context.Background()).CampaignsDeleteRequest(campaignsDeleteRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.DeleteCampaigns``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeleteCampaigns`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.DeleteCampaigns`: %v\n", resp)
-}
-```
-
-
-
-
-## List Campaigns
+## get-active-campaigns
 
 
 Gets campaigns and returns them in a list. Can provide increased level of detail for each campaign if provided the correct query.
@@ -485,10 +277,10 @@ Param Type | Name | Data Type | Required  | Description
   Query | filters | **string** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **status**: *eq, in*
   Query | sorters | **string** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created**
 
-
+	
 ### Return type
 
-[**[]GetActiveCampaigns200ResponseInner**](GetActiveCampaigns200ResponseInner.md)
+[**[]GetActiveCampaigns200ResponseInner**](GetActiveCampaigns200ResponseInner)
 
 ### Responses
 Code | Description  | Data Type
@@ -510,48 +302,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//GetActiveCampaigns
-
-    //detail := "FULL"
-    //limit := int32(250)
-    //offset := int32(0)
-    //count := true
-    //filters := "name eq "Manager Campaign""
-    //sorters := "name"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.CertificationCampaignsAPI.GetActiveCampaigns(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetActiveCampaigns``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetActiveCampaigns`: []GetActiveCampaigns200ResponseInner
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.GetActiveCampaigns`: %v\n", resp)
-}
-```
-
-
-
-
-## Get a campaign
+## get-campaign
 
 
 Retrieves information for an existing campaign using the campaign's ID. Authorized callers must be a reviewer for this campaign, an ORG_ADMIN, or a CERT_ADMIN.
@@ -561,10 +313,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **string** | True  | The ID of the campaign to be retrieved
 
-
+	
 ### Return type
 
-[**SlimCampaign**](SlimCampaign.md)
+[**SlimCampaign**](SlimCampaign)
 
 ### Responses
 Code | Description  | Data Type
@@ -587,43 +339,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//GetCampaign
-
-    id := "2c91808571bcfcf80171c23e4b4221fc"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.CertificationCampaignsAPI.GetCampaign(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetCampaign``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetCampaign`: SlimCampaign
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.GetCampaign`: %v\n", resp)
-}
-```
-
-
-
-
-## Get Campaign Reports
+## get-campaign-reports
 
 
 Fetches all reports for a certification campaign by campaign ID.
@@ -634,10 +351,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **string** | True  | The ID of the campaign for which reports are being fetched.
 
-
+	
 ### Return type
 
-[**[]CampaignReport**](CampaignReport.md)
+[**[]CampaignReport**](CampaignReport)
 
 ### Responses
 Code | Description  | Data Type
@@ -660,43 +377,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//GetCampaignReports
-
-    id := "2c91808571bcfcf80171c23e4b4221fc"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.CertificationCampaignsAPI.GetCampaignReports(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetCampaignReports``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetCampaignReports`: []CampaignReport
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.GetCampaignReports`: %v\n", resp)
-}
-```
-
-
-
-
-## Get Campaign Reports Configuration
+## get-campaign-reports-config
 
 
 Fetches configuration for campaign reports. Currently it includes only one element - identity attributes defined as custom report columns.
@@ -706,10 +388,10 @@ Requires roles of CERT_ADMIN and ORG_ADMIN.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 
-
+	
 ### Return type
 
-[**CampaignReportsConfig**](CampaignReportsConfig.md)
+[**CampaignReportsConfig**](CampaignReportsConfig)
 
 ### Responses
 Code | Description  | Data Type
@@ -731,42 +413,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//GetCampaignReportsConfig
-
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.CertificationCampaignsAPI.GetCampaignReportsConfig(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetCampaignReportsConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetCampaignReportsConfig`: CampaignReportsConfig
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.GetCampaignReportsConfig`: %v\n", resp)
-}
-```
-
-
-
-
-## Get a Campaign Template
+## get-campaign-template
 
 
 Fetches a campaign template by ID.
@@ -776,10 +424,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **string** | True  | The desired campaign template's ID.
 
-
+	
 ### Return type
 
-[**CampaignTemplate**](CampaignTemplate.md)
+[**CampaignTemplate**](CampaignTemplate)
 
 ### Responses
 Code | Description  | Data Type
@@ -802,43 +450,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//GetCampaignTemplate
-
-    id := "2c9180835d191a86015d28455b4a2329"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.CertificationCampaignsAPI.GetCampaignTemplate(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetCampaignTemplate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetCampaignTemplate`: CampaignTemplate
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.GetCampaignTemplate`: %v\n", resp)
-}
-```
-
-
-
-
-## Gets a Campaign Template's Schedule
+## get-campaign-template-schedule
 
 
 Gets the schedule for a campaign template. Returns a 404 if there is no schedule set.
@@ -848,10 +461,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **string** | True  | The ID of the campaign template whose schedule is being fetched.
 
-
+	
 ### Return type
 
-[**Schedule**](Schedule.md)
+[**Schedule**](Schedule)
 
 ### Responses
 Code | Description  | Data Type
@@ -874,43 +487,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//GetCampaignTemplateSchedule
-
-    id := "04bedce387bd47b2ae1f86eb0bb36dee"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.CertificationCampaignsAPI.GetCampaignTemplateSchedule(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetCampaignTemplateSchedule``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetCampaignTemplateSchedule`: Schedule
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.GetCampaignTemplateSchedule`: %v\n", resp)
-}
-```
-
-
-
-
-## List Campaign Templates
+## list-campaign-templates
 
 
 Lists all CampaignTemplates. Scope can be reduced via standard V3 query params.
@@ -926,10 +504,10 @@ Param Type | Name | Data Type | Required  | Description
   Query | sorters | **string** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**
   Query | filters | **string** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, ge, gt, in, le, lt, ne, sw*  **id**: *eq, ge, gt, in, le, lt, ne, sw*
 
-
+	
 ### Return type
 
-[**[]CampaignTemplate**](CampaignTemplate.md)
+[**[]CampaignTemplate**](CampaignTemplate)
 
 ### Responses
 Code | Description  | Data Type
@@ -951,47 +529,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//ListCampaignTemplates
-
-    //limit := int32(250)
-    //offset := int32(0)
-    //count := true
-    //sorters := "name"
-    //filters := "name eq "manager template""
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.CertificationCampaignsAPI.ListCampaignTemplates(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.ListCampaignTemplates``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListCampaignTemplates`: []CampaignTemplate
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.ListCampaignTemplates`: %v\n", resp)
-}
-```
-
-
-
-
-## Reassign Certifications
+## move
 
 
 This API reassigns the specified certifications from one identity to another. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
@@ -1002,10 +541,10 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **string** | True  | The certification campaign ID
  Body  | adminReviewReassign | [**AdminReviewReassign**](AdminReviewReassign.md) | True  | 
 
-
+	
 ### Return type
 
-[**CertificationTask**](CertificationTask.md)
+[**CertificationTask**](CertificationTask)
 
 ### Responses
 Code | Description  | Data Type
@@ -1028,44 +567,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//Move
-
-    id := "ef38f94347e94562b5bb8424a56397d8"
-    adminReviewReassign := *sailpoint.NewAdminReviewReassign()
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.CertificationCampaignsAPI.Move(context.Background(), id).AdminReviewReassign(adminReviewReassign).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.Move``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `Move`: CertificationTask
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.Move`: %v\n", resp)
-}
-```
-
-
-
-
-## Update a Campaign Template
+## patch-campaign-template
 
 
 Allows updating individual fields on a campaign template using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
@@ -1076,10 +579,10 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **string** | True  | The ID of the campaign template being modified.
  Body  | jsonPatchOperation | [**[]JsonPatchOperation**](JsonPatchOperation.md) | True  | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) 
 
-
+	
 ### Return type
 
-[**CampaignTemplate**](CampaignTemplate.md)
+[**CampaignTemplate**](CampaignTemplate)
 
 ### Responses
 Code | Description  | Data Type
@@ -1102,44 +605,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//PatchCampaignTemplate
-
-    id := "2c9180835d191a86015d28455b4a2329"
-    jsonPatchOperation := []sailpoint.JsonPatchOperation{*sailpoint.NewJsonPatchOperation("replace", "/description")}
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.CertificationCampaignsAPI.PatchCampaignTemplate(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.PatchCampaignTemplate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PatchCampaignTemplate`: CampaignTemplate
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.PatchCampaignTemplate`: %v\n", resp)
-}
-```
-
-
-
-
-## Set Campaign Reports Configuration
+## set-campaign-reports-config
 
 
 Overwrites configuration for campaign reports.
@@ -1150,10 +617,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | campaignReportsConfig | [**CampaignReportsConfig**](CampaignReportsConfig.md) | True  | Campaign Report Configuration
 
-
+	
 ### Return type
 
-[**CampaignReportsConfig**](CampaignReportsConfig.md)
+[**CampaignReportsConfig**](CampaignReportsConfig)
 
 ### Responses
 Code | Description  | Data Type
@@ -1175,43 +642,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//SetCampaignReportsConfig
-
-    campaignReportsConfig := *sailpoint.NewCampaignReportsConfig()
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.CertificationCampaignsAPI.SetCampaignReportsConfig(context.Background()).CampaignReportsConfig(campaignReportsConfig).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.SetCampaignReportsConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `SetCampaignReportsConfig`: CampaignReportsConfig
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.SetCampaignReportsConfig`: %v\n", resp)
-}
-```
-
-
-
-
-## Sets a Campaign Template's Schedule
+## set-campaign-template-schedule
 
 
 Sets the schedule for a campaign template. If a schedule already exists, it will be overwritten with the new one.
@@ -1222,7 +654,7 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **string** | True  | The ID of the campaign template being scheduled.
  Body  | schedule | [**Schedule**](Schedule.md) |   (optional) | 
 
-
+	
 ### Return type
 
  (empty response body)
@@ -1248,42 +680,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//SetCampaignTemplateSchedule
-
-    id := "04bedce387bd47b2ae1f86eb0bb36dee"
-    //schedule := *sailpoint.NewSchedule("WEEKLY", *sailpoint.NewScheduleHours("LIST", []string{"Values_example"}))
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.V3.CertificationCampaignsAPI.SetCampaignTemplateSchedule(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.SetCampaignTemplateSchedule``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-
-
-
-## Activate a Campaign
+## start-campaign
 
 
 Submits a job to activate the campaign with the given Id. The campaign must be staged.
@@ -1295,7 +693,7 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **string** | True  | The campaign id
  Body  | activateCampaignOptions | [**ActivateCampaignOptions**](ActivateCampaignOptions.md) |   (optional) | Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format.
 
-
+	
 ### Return type
 
 **map[string]interface{}**
@@ -1321,44 +719,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//StartCampaign
-
-    id := "ef38f94347e94562b5bb8424a56397d8"
-    //activateCampaignOptions := *sailpoint.NewActivateCampaignOptions()
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.CertificationCampaignsAPI.StartCampaign(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.StartCampaign``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StartCampaign`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.StartCampaign`: %v\n", resp)
-}
-```
-
-
-
-
-## Run Campaign Remediation Scan
+## start-campaign-remediation-scan
 
 
 Kicks off remediation scan task for a certification campaign.
@@ -1369,7 +731,7 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **string** | True  | The ID of the campaign for which remediation scan is being run.
 
-
+	
 ### Return type
 
 **map[string]interface{}**
@@ -1395,43 +757,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//StartCampaignRemediationScan
-
-    id := "2c91808571bcfcf80171c23e4b4221fc"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.CertificationCampaignsAPI.StartCampaignRemediationScan(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.StartCampaignRemediationScan``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StartCampaignRemediationScan`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.StartCampaignRemediationScan`: %v\n", resp)
-}
-```
-
-
-
-
-## Run Campaign Report
+## start-campaign-report
 
 
 Runs a report for a certification campaign.
@@ -1443,7 +770,7 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **string** | True  | The ID of the campaign for which report is being run.
 Path   | type_ | [**ReportType**](ReportType.md) | True  | The type of the report to run.
 
-
+	
 ### Return type
 
 **map[string]interface{}**
@@ -1469,44 +796,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//StartCampaignReport
-
-    id := "2c91808571bcfcf80171c23e4b4221fc"
-    type_ := sailpoint.ReportType("CAMPAIGN_COMPOSITION_REPORT")
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.CertificationCampaignsAPI.StartCampaignReport(context.Background(), id, type_).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.StartCampaignReport``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StartCampaignReport`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.StartCampaignReport`: %v\n", resp)
-}
-```
-
-
-
-
-## Generate a Campaign from Template
+## start-generate-campaign-template
 
 
 Generates a new campaign from a campaign template.
@@ -1520,10 +811,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **string** | True  | The ID of the campaign template to use for generation.
 
-
+	
 ### Return type
 
-[**CampaignReference**](CampaignReference.md)
+[**CampaignReference**](CampaignReference)
 
 ### Responses
 Code | Description  | Data Type
@@ -1545,43 +836,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//StartGenerateCampaignTemplate
-
-    id := "2c9180835d191a86015d28455b4a2329"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.CertificationCampaignsAPI.StartGenerateCampaignTemplate(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.StartGenerateCampaignTemplate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StartGenerateCampaignTemplate`: CampaignReference
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.StartGenerateCampaignTemplate`: %v\n", resp)
-}
-```
-
-
-
-
-## Update a Campaign
+## update-campaign
 
 
 Allows updating individual fields on a campaign using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
@@ -1592,10 +848,10 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **string** | True  | The ID of the campaign template being modified.
  Body  | jsonPatchOperation | [**[]JsonPatchOperation**](JsonPatchOperation.md) | True  | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  In the *STAGED* status, the following fields can be patched: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  In the *ACTIVE* status, the following fields can be patched: * deadline 
 
-
+	
 ### Return type
 
-[**SlimCampaign**](SlimCampaign.md)
+[**SlimCampaign**](SlimCampaign)
 
 ### Responses
 Code | Description  | Data Type
@@ -1617,40 +873,4 @@ Code | Description  | Data Type
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//UpdateCampaign
-
-    id := "2c91808571bcfcf80171c23e4b4221fc"
-    jsonPatchOperation := []sailpoint.JsonPatchOperation{*sailpoint.NewJsonPatchOperation("replace", "/description")}
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.CertificationCampaignsAPI.UpdateCampaign(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.UpdateCampaign``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateCampaign`: SlimCampaign
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.UpdateCampaign`: %v\n", resp)
-}
-```
-
-
 

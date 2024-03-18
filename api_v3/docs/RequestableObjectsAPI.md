@@ -4,11 +4,11 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ListRequestableObjects**](RequestableObjectsAPI.md#ListRequestableObjects) | **Get** /requestable-objects | Requestable Objects List
+[**ListRequestableObjects**](#list-requestable-objects) | **Get** /requestable-objects | Requestable Objects List
 
 
 
-## Requestable Objects List
+## list-requestable-objects
 
 
 This endpoint returns a list of acccess items that that can be requested through the Access Request endpoints. Access items are marked with AVAILABLE, PENDING or ASSIGNED with respect to the identity provided using *identity-id* query param.
@@ -27,10 +27,10 @@ Param Type | Name | Data Type | Required  | Description
   Query | filters | **string** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw* 
   Query | sorters | **string** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name** 
 
-
+	
 ### Return type
 
-[**[]RequestableObject**](RequestableObject.md)
+[**[]RequestableObject**](RequestableObject)
 
 ### Responses
 Code | Description  | Data Type
@@ -51,47 +51,4 @@ Code | Description  | Data Type
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//ListRequestableObjects
-
-    //identityId := "e7eab60924f64aa284175b9fa3309599"
-    //types := []sailpoint.RequestableObjectType{sailpoint.RequestableObjectType("ACCESS_PROFILE")}
-    //term := "Finance Role"
-    //statuses := []sailpoint.RequestableObjectRequestStatus{sailpoint.RequestableObjectRequestStatus("AVAILABLE")}
-    //limit := int32(250)
-    //offset := int32(0)
-    //count := true
-    //filters := "name sw "bob""
-    //sorters := "name"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.RequestableObjectsAPI.ListRequestableObjects(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RequestableObjectsAPI.ListRequestableObjects``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListRequestableObjects`: []RequestableObject
-    fmt.Fprintf(os.Stdout, "Response from `RequestableObjectsAPI.ListRequestableObjects`: %v\n", resp)
-}
-```
-
-
 

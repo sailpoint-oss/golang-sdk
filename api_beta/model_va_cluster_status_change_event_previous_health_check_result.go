@@ -145,7 +145,7 @@ func (o VAClusterStatusChangeEventPreviousHealthCheckResult) ToMap() (map[string
 }
 
 func (o *VAClusterStatusChangeEventPreviousHealthCheckResult) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -171,7 +171,7 @@ func (o *VAClusterStatusChangeEventPreviousHealthCheckResult) UnmarshalJSON(byte
 	varVAClusterStatusChangeEventPreviousHealthCheckResult := _VAClusterStatusChangeEventPreviousHealthCheckResult{}
 
 	if err = json.Unmarshal(bytes, &varVAClusterStatusChangeEventPreviousHealthCheckResult); err == nil {
-	*o = VAClusterStatusChangeEventPreviousHealthCheckResult(varVAClusterStatusChangeEventPreviousHealthCheckResult)
+			*o = VAClusterStatusChangeEventPreviousHealthCheckResult(varVAClusterStatusChangeEventPreviousHealthCheckResult)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -33,7 +33,7 @@ type Role struct {
 	Description NullableString `json:"description,omitempty"`
 	Owner OwnerReference `json:"owner"`
 	AccessProfiles []AccessProfileRef `json:"accessProfiles,omitempty"`
-	Entitlements []EntitlementRef `json:"Entitlements,omitempty"`
+	Entitlements []EntitlementRef `json:"entitlements,omitempty"`
 	Membership NullableRoleMembershipSelector `json:"membership,omitempty"`
 	// This field is not directly modifiable and is generally expected to be *null*. In very rare instances, some Roles may have been created using membership selection criteria that are no longer fully supported. While these Roles will still work, they should be migrated to STANDARD or IDENTITY_LIST selection criteria. This field exists for informational purposes as an aid to such migration.
 	LegacyMembershipInfo map[string]interface{} `json:"legacyMembershipInfo,omitempty"`
@@ -296,9 +296,9 @@ func (o *Role) SetAccessProfiles(v []AccessProfileRef) {
 	o.AccessProfiles = v
 }
 
-// GetEntitlements returns the Entitlements field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetEntitlements returns the Entitlements field value if set, zero value otherwise.
 func (o *Role) GetEntitlements() []EntitlementRef {
-	if o == nil {
+	if o == nil || isNil(o.Entitlements) {
 		var ret []EntitlementRef
 		return ret
 	}
@@ -307,7 +307,6 @@ func (o *Role) GetEntitlements() []EntitlementRef {
 
 // GetEntitlementsOk returns a tuple with the Entitlements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Role) GetEntitlementsOk() ([]EntitlementRef, bool) {
 	if o == nil || isNil(o.Entitlements) {
 		return nil, false
@@ -317,7 +316,7 @@ func (o *Role) GetEntitlementsOk() ([]EntitlementRef, bool) {
 
 // HasEntitlements returns a boolean if a field has been set.
 func (o *Role) HasEntitlements() bool {
-	if o != nil && isNil(o.Entitlements) {
+	if o != nil && !isNil(o.Entitlements) {
 		return true
 	}
 
@@ -588,8 +587,8 @@ func (o Role) ToMap() (map[string]interface{}, error) {
 	if o.AccessProfiles != nil {
 		toSerialize["accessProfiles"] = o.AccessProfiles
 	}
-	if o.Entitlements != nil {
-		toSerialize["Entitlements"] = o.Entitlements
+	if !isNil(o.Entitlements) {
+		toSerialize["entitlements"] = o.Entitlements
 	}
 	if o.Membership.IsSet() {
 		toSerialize["membership"] = o.Membership.Get()
@@ -621,7 +620,7 @@ func (o Role) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *Role) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -646,7 +645,7 @@ func (o *Role) UnmarshalJSON(bytes []byte) (err error) {
 	varRole := _Role{}
 
 	if err = json.Unmarshal(bytes, &varRole); err == nil {
-	*o = Role(varRole)
+			*o = Role(varRole)
 }
 
 	additionalProperties := make(map[string]interface{})
@@ -659,7 +658,7 @@ func (o *Role) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "owner")
 		delete(additionalProperties, "accessProfiles")
-		delete(additionalProperties, "Entitlements")
+		delete(additionalProperties, "entitlements")
 		delete(additionalProperties, "membership")
 		delete(additionalProperties, "legacyMembershipInfo")
 		delete(additionalProperties, "enabled")

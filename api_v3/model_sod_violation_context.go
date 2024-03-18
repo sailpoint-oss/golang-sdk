@@ -135,7 +135,7 @@ func (o *SodViolationContext) UnmarshalJSON(bytes []byte) (err error) {
 	varSodViolationContext := _SodViolationContext{}
 
 	if err = json.Unmarshal(bytes, &varSodViolationContext); err == nil {
-	*o = SodViolationContext(varSodViolationContext)
+			*o = SodViolationContext(varSodViolationContext)
 }
 
 	additionalProperties := make(map[string]interface{})

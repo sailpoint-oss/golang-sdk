@@ -99,7 +99,7 @@ func (o *RecommenderCalculationsIdentityAttributesValue) UnmarshalJSON(bytes []b
 	varRecommenderCalculationsIdentityAttributesValue := _RecommenderCalculationsIdentityAttributesValue{}
 
 	if err = json.Unmarshal(bytes, &varRecommenderCalculationsIdentityAttributesValue); err == nil {
-	*o = RecommenderCalculationsIdentityAttributesValue(varRecommenderCalculationsIdentityAttributesValue)
+			*o = RecommenderCalculationsIdentityAttributesValue(varRecommenderCalculationsIdentityAttributesValue)
 }
 
 	additionalProperties := make(map[string]interface{})

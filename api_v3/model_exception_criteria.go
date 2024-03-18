@@ -100,7 +100,7 @@ func (o *ExceptionCriteria) UnmarshalJSON(bytes []byte) (err error) {
 	varExceptionCriteria := _ExceptionCriteria{}
 
 	if err = json.Unmarshal(bytes, &varExceptionCriteria); err == nil {
-	*o = ExceptionCriteria(varExceptionCriteria)
+			*o = ExceptionCriteria(varExceptionCriteria)
 }
 
 	additionalProperties := make(map[string]interface{})

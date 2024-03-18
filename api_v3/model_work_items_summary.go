@@ -174,7 +174,7 @@ func (o *WorkItemsSummary) UnmarshalJSON(bytes []byte) (err error) {
 	varWorkItemsSummary := _WorkItemsSummary{}
 
 	if err = json.Unmarshal(bytes, &varWorkItemsSummary); err == nil {
-	*o = WorkItemsSummary(varWorkItemsSummary)
+			*o = WorkItemsSummary(varWorkItemsSummary)
 }
 
 	additionalProperties := make(map[string]interface{})

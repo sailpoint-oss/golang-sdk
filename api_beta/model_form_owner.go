@@ -137,7 +137,7 @@ func (o *FormOwner) UnmarshalJSON(bytes []byte) (err error) {
 	varFormOwner := _FormOwner{}
 
 	if err = json.Unmarshal(bytes, &varFormOwner); err == nil {
-	*o = FormOwner(varFormOwner)
+			*o = FormOwner(varFormOwner)
 }
 
 	additionalProperties := make(map[string]interface{})

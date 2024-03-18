@@ -89,7 +89,7 @@ func (o RoleBulkDeleteRequest) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *RoleBulkDeleteRequest) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -113,7 +113,7 @@ func (o *RoleBulkDeleteRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varRoleBulkDeleteRequest := _RoleBulkDeleteRequest{}
 
 	if err = json.Unmarshal(bytes, &varRoleBulkDeleteRequest); err == nil {
-	*o = RoleBulkDeleteRequest(varRoleBulkDeleteRequest)
+			*o = RoleBulkDeleteRequest(varRoleBulkDeleteRequest)
 }
 
 	additionalProperties := make(map[string]interface{})

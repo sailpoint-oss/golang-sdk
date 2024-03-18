@@ -372,7 +372,7 @@ func (o *Segment) UnmarshalJSON(bytes []byte) (err error) {
 	varSegment := _Segment{}
 
 	if err = json.Unmarshal(bytes, &varSegment); err == nil {
-	*o = Segment(varSegment)
+			*o = Segment(varSegment)
 }
 
 	additionalProperties := make(map[string]interface{})

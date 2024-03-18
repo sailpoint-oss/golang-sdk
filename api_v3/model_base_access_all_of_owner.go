@@ -211,7 +211,7 @@ func (o *BaseAccessAllOfOwner) UnmarshalJSON(bytes []byte) (err error) {
 	varBaseAccessAllOfOwner := _BaseAccessAllOfOwner{}
 
 	if err = json.Unmarshal(bytes, &varBaseAccessAllOfOwner); err == nil {
-	*o = BaseAccessAllOfOwner(varBaseAccessAllOfOwner)
+			*o = BaseAccessAllOfOwner(varBaseAccessAllOfOwner)
 }
 
 	additionalProperties := make(map[string]interface{})

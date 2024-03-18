@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **RequestedFor** | **[]string** | A list of Identity IDs for whom the Access is requested. If it&#39;s a Revoke request, there can only be one Identity ID. | 
-**RequestType** | Pointer to [**AccessRequestType**](AccessRequestType.md) |  | [optional] 
+**RequestType** | Pointer to [**NullableAccessRequestType**](AccessRequestType.md) |  | [optional] 
 **RequestedItems** | [**[]AccessRequestItem**](AccessRequestItem.md) |  | 
 **ClientMetadata** | Pointer to **map[string]string** | Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities. | [optional] 
 
@@ -73,6 +73,16 @@ SetRequestType sets RequestType field to given value.
 
 HasRequestType returns a boolean if a field has been set.
 
+### SetRequestTypeNil
+
+`func (o *AccessRequest) SetRequestTypeNil(b bool)`
+
+ SetRequestTypeNil sets the value for RequestType to be an explicit nil
+
+### UnsetRequestType
+`func (o *AccessRequest) UnsetRequestType()`
+
+UnsetRequestType ensures that no value is present for RequestType, not even an explicit nil
 ### GetRequestedItems
 
 `func (o *AccessRequest) GetRequestedItems() []AccessRequestItem`

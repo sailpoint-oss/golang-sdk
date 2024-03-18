@@ -12,6 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
+	"time"
 	"fmt"
 )
 
@@ -20,8 +21,14 @@ var _ MappedNullable = &ServiceDeskIntegrationDto{}
 
 // ServiceDeskIntegrationDto struct for ServiceDeskIntegrationDto
 type ServiceDeskIntegrationDto struct {
+	// Unique identifier for the Service Desk integration
+	Id *string `json:"id,omitempty"`
 	// Service Desk integration's name. The name must be unique.
 	Name string `json:"name"`
+	// The date and time the Service Desk integration was created
+	Created *time.Time `json:"created,omitempty"`
+	// The date and time the Service Desk integration was last modified
+	Modified *time.Time `json:"modified,omitempty"`
 	// Service Desk integration's description.
 	Description string `json:"description"`
 	// Service Desk integration types:  - ServiceNowSDIM - ServiceNow 
@@ -30,7 +37,7 @@ type ServiceDeskIntegrationDto struct {
 	ClusterRef *SourceClusterDto `json:"clusterRef,omitempty"`
 	// Cluster ID for the Service Desk integration (replaced by clusterRef, retained for backward compatibility).
 	// Deprecated
-	Cluster *string `json:"cluster,omitempty"`
+	Cluster NullableString `json:"cluster,omitempty"`
 	// Source IDs for the Service Desk integration (replaced by provisioningConfig.managedSResourceRefs, but retained here for backward compatibility).
 	// Deprecated
 	ManagedSources []string `json:"managedSources,omitempty"`
@@ -66,6 +73,38 @@ func NewServiceDeskIntegrationDtoWithDefaults() *ServiceDeskIntegrationDto {
 	return &this
 }
 
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *ServiceDeskIntegrationDto) GetId() string {
+	if o == nil || isNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServiceDeskIntegrationDto) GetIdOk() (*string, bool) {
+	if o == nil || isNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *ServiceDeskIntegrationDto) HasId() bool {
+	if o != nil && !isNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *ServiceDeskIntegrationDto) SetId(v string) {
+	o.Id = &v
+}
+
 // GetName returns the Name field value
 func (o *ServiceDeskIntegrationDto) GetName() string {
 	if o == nil {
@@ -88,6 +127,70 @@ func (o *ServiceDeskIntegrationDto) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *ServiceDeskIntegrationDto) SetName(v string) {
 	o.Name = v
+}
+
+// GetCreated returns the Created field value if set, zero value otherwise.
+func (o *ServiceDeskIntegrationDto) GetCreated() time.Time {
+	if o == nil || isNil(o.Created) {
+		var ret time.Time
+		return ret
+	}
+	return *o.Created
+}
+
+// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServiceDeskIntegrationDto) GetCreatedOk() (*time.Time, bool) {
+	if o == nil || isNil(o.Created) {
+		return nil, false
+	}
+	return o.Created, true
+}
+
+// HasCreated returns a boolean if a field has been set.
+func (o *ServiceDeskIntegrationDto) HasCreated() bool {
+	if o != nil && !isNil(o.Created) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *ServiceDeskIntegrationDto) SetCreated(v time.Time) {
+	o.Created = &v
+}
+
+// GetModified returns the Modified field value if set, zero value otherwise.
+func (o *ServiceDeskIntegrationDto) GetModified() time.Time {
+	if o == nil || isNil(o.Modified) {
+		var ret time.Time
+		return ret
+	}
+	return *o.Modified
+}
+
+// GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServiceDeskIntegrationDto) GetModifiedOk() (*time.Time, bool) {
+	if o == nil || isNil(o.Modified) {
+		return nil, false
+	}
+	return o.Modified, true
+}
+
+// HasModified returns a boolean if a field has been set.
+func (o *ServiceDeskIntegrationDto) HasModified() bool {
+	if o != nil && !isNil(o.Modified) {
+		return true
+	}
+
+	return false
+}
+
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *ServiceDeskIntegrationDto) SetModified(v time.Time) {
+	o.Modified = &v
 }
 
 // GetDescription returns the Description field value
@@ -202,39 +305,49 @@ func (o *ServiceDeskIntegrationDto) SetClusterRef(v SourceClusterDto) {
 	o.ClusterRef = &v
 }
 
-// GetCluster returns the Cluster field value if set, zero value otherwise.
+// GetCluster returns the Cluster field value if set, zero value otherwise (both if not set or set to explicit null).
 // Deprecated
 func (o *ServiceDeskIntegrationDto) GetCluster() string {
-	if o == nil || isNil(o.Cluster) {
+	if o == nil || isNil(o.Cluster.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Cluster
+	return *o.Cluster.Get()
 }
 
 // GetClusterOk returns a tuple with the Cluster field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 // Deprecated
 func (o *ServiceDeskIntegrationDto) GetClusterOk() (*string, bool) {
-	if o == nil || isNil(o.Cluster) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Cluster, true
+	return o.Cluster.Get(), o.Cluster.IsSet()
 }
 
 // HasCluster returns a boolean if a field has been set.
 func (o *ServiceDeskIntegrationDto) HasCluster() bool {
-	if o != nil && !isNil(o.Cluster) {
+	if o != nil && o.Cluster.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCluster gets a reference to the given string and assigns it to the Cluster field.
+// SetCluster gets a reference to the given NullableString and assigns it to the Cluster field.
 // Deprecated
 func (o *ServiceDeskIntegrationDto) SetCluster(v string) {
-	o.Cluster = &v
+	o.Cluster.Set(&v)
+}
+// SetClusterNil sets the value for Cluster to be an explicit nil
+func (o *ServiceDeskIntegrationDto) SetClusterNil() {
+	o.Cluster.Set(nil)
+}
+
+// UnsetCluster ensures that no value is present for Cluster, not even an explicit nil
+func (o *ServiceDeskIntegrationDto) UnsetCluster() {
+	o.Cluster.Unset()
 }
 
 // GetManagedSources returns the ManagedSources field value if set, zero value otherwise.
@@ -370,7 +483,16 @@ func (o ServiceDeskIntegrationDto) MarshalJSON() ([]byte, error) {
 
 func (o ServiceDeskIntegrationDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !isNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["name"] = o.Name
+	if !isNil(o.Created) {
+		toSerialize["created"] = o.Created
+	}
+	if !isNil(o.Modified) {
+		toSerialize["modified"] = o.Modified
+	}
 	toSerialize["description"] = o.Description
 	toSerialize["type"] = o.Type
 	if !isNil(o.OwnerRef) {
@@ -379,8 +501,8 @@ func (o ServiceDeskIntegrationDto) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.ClusterRef) {
 		toSerialize["clusterRef"] = o.ClusterRef
 	}
-	if !isNil(o.Cluster) {
-		toSerialize["cluster"] = o.Cluster
+	if o.Cluster.IsSet() {
+		toSerialize["cluster"] = o.Cluster.Get()
 	}
 	if !isNil(o.ManagedSources) {
 		toSerialize["managedSources"] = o.ManagedSources
@@ -401,7 +523,7 @@ func (o ServiceDeskIntegrationDto) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *ServiceDeskIntegrationDto) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -428,13 +550,16 @@ func (o *ServiceDeskIntegrationDto) UnmarshalJSON(bytes []byte) (err error) {
 	varServiceDeskIntegrationDto := _ServiceDeskIntegrationDto{}
 
 	if err = json.Unmarshal(bytes, &varServiceDeskIntegrationDto); err == nil {
-	*o = ServiceDeskIntegrationDto(varServiceDeskIntegrationDto)
+			*o = ServiceDeskIntegrationDto(varServiceDeskIntegrationDto)
 }
 
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
+		delete(additionalProperties, "created")
+		delete(additionalProperties, "modified")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "ownerRef")

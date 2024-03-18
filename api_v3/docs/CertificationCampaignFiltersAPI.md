@@ -4,15 +4,15 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateCampaignFilter**](CertificationCampaignFiltersAPI.md#CreateCampaignFilter) | **Post** /campaign-filters | Create a Campaign Filter
-[**DeleteCampaignFilters**](CertificationCampaignFiltersAPI.md#DeleteCampaignFilters) | **Post** /campaign-filters/delete | Deletes Campaign Filters
-[**GetCampaignFilterById**](CertificationCampaignFiltersAPI.md#GetCampaignFilterById) | **Get** /campaign-filters/{id} | Get Campaign Filter by ID
-[**ListCampaignFilters**](CertificationCampaignFiltersAPI.md#ListCampaignFilters) | **Get** /campaign-filters | List Campaign Filters
-[**UpdateCampaignFilter**](CertificationCampaignFiltersAPI.md#UpdateCampaignFilter) | **Post** /campaign-filters/{id} | Updates a Campaign Filter
+[**CreateCampaignFilter**](#create-campaign-filter) | **Post** /campaign-filters | Create a Campaign Filter
+[**DeleteCampaignFilters**](#delete-campaign-filters) | **Post** /campaign-filters/delete | Deletes Campaign Filters
+[**GetCampaignFilterById**](#get-campaign-filter-by-id) | **Get** /campaign-filters/{id} | Get Campaign Filter by ID
+[**ListCampaignFilters**](#list-campaign-filters) | **Get** /campaign-filters | List Campaign Filters
+[**UpdateCampaignFilter**](#update-campaign-filter) | **Post** /campaign-filters/{id} | Updates a Campaign Filter
 
 
 
-## Create a Campaign Filter
+## create-campaign-filter
 
 
 Create a campaign Filter based on filter details and criteria.
@@ -22,10 +22,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | campaignFilterDetails | [**CampaignFilterDetails**](CampaignFilterDetails.md) | True  | 
 
-
+	
 ### Return type
 
-[**CampaignFilterDetails**](CampaignFilterDetails.md)
+[**CampaignFilterDetails**](CampaignFilterDetails)
 
 ### Responses
 Code | Description  | Data Type
@@ -47,43 +47,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//CreateCampaignFilter
-
-    campaignFilterDetails := *sailpoint.NewCampaignFilterDetails("Identity Attribute Campaign Filter", "Campaign filter to certify data based on specified property of Identity Attribute.", "SailPoint Support", map[string]interface{}(INCLUSION))
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.CertificationCampaignFiltersAPI.CreateCampaignFilter(context.Background()).CampaignFilterDetails(campaignFilterDetails).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignFiltersAPI.CreateCampaignFilter``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateCampaignFilter`: CampaignFilterDetails
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignFiltersAPI.CreateCampaignFilter`: %v\n", resp)
-}
-```
-
-
-
-
-## Deletes Campaign Filters
+## delete-campaign-filters
 
 
 Deletes campaign filters whose Ids are specified in the provided list of campaign filter Ids. Authorized callers must be an ORG_ADMIN or a CERT_ADMIN.
@@ -93,7 +58,7 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | requestBody | **[]string** | True  | A json list of IDs of campaign filters to delete.
 
-
+	
 ### Return type
 
  (empty response body)
@@ -119,41 +84,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//DeleteCampaignFilters
-
-    requestBody := []string{"Property_example"}
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.V3.CertificationCampaignFiltersAPI.DeleteCampaignFilters(context.Background()).RequestBody(requestBody).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignFiltersAPI.DeleteCampaignFilters``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-
-
-
-## Get Campaign Filter by ID
+## get-campaign-filter-by-id
 
 
 Retrieves information for an existing campaign filter using the filter's ID.
@@ -163,10 +95,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | filterId | **string** | True  | The ID of the campaign filter to be retrieved.
 
-
+	
 ### Return type
 
-[**[]CampaignFilterDetails**](CampaignFilterDetails.md)
+[**[]CampaignFilterDetails**](CampaignFilterDetails)
 
 ### Responses
 Code | Description  | Data Type
@@ -189,43 +121,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//GetCampaignFilterById
-
-    filterId := "e9f9a1397b842fd5a65842087040d3ac"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.CertificationCampaignFiltersAPI.GetCampaignFilterById(context.Background(), filterId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignFiltersAPI.GetCampaignFilterById``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetCampaignFilterById`: []CampaignFilterDetails
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignFiltersAPI.GetCampaignFilterById`: %v\n", resp)
-}
-```
-
-
-
-
-## List Campaign Filters
+## list-campaign-filters
 
 
 Lists all Campaign Filters. Scope can be reduced via standard V3 query params.
@@ -239,15 +136,15 @@ Param Type | Name | Data Type | Required  | Description
   Query | start | **int32** |   (optional) (default to 0) | Start/Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
   Query | includeSystemFilters | **bool** |   (optional) (default to true) | If true, include system filters in the count and results, exclude them otherwise. If not provided any value for it then by default it is true.
 
-
+	
 ### Return type
 
-[**[]CampaignFilterDetails**](CampaignFilterDetails.md)
+[**ListCampaignFilters200Response**](ListCampaignFilters200Response)
 
 ### Responses
 Code | Description  | Data Type
 ------------- | ------------- | -------------
-200 | List of campaign filter objects | []CampaignFilterDetails
+200 | List of campaign filter objects | ListCampaignFilters200Response
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
@@ -264,45 +161,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//ListCampaignFilters
-
-    //limit := int32(250)
-    //start := int32(0)
-    //includeSystemFilters := true
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.CertificationCampaignFiltersAPI.ListCampaignFilters(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignFiltersAPI.ListCampaignFilters``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListCampaignFilters`: []CampaignFilterDetails
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignFiltersAPI.ListCampaignFilters`: %v\n", resp)
-}
-```
-
-
-
-
-## Updates a Campaign Filter
+## update-campaign-filter
 
 
 Updates an existing campaign filter using the filter's ID.
@@ -313,10 +173,10 @@ Param Type | Name | Data Type | Required  | Description
 Path   | filterId | **string** | True  | The ID of the campaign filter being modified.
  Body  | campaignFilterDetails | [**CampaignFilterDetails**](CampaignFilterDetails.md) | True  | A campaign filter details with updated field values.
 
-
+	
 ### Return type
 
-[**CampaignFilterDetails**](CampaignFilterDetails.md)
+[**CampaignFilterDetails**](CampaignFilterDetails)
 
 ### Responses
 Code | Description  | Data Type
@@ -337,40 +197,4 @@ Code | Description  | Data Type
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//UpdateCampaignFilter
-
-    filterId := "e9f9a1397b842fd5a65842087040d3ac"
-    campaignFilterDetails := *sailpoint.NewCampaignFilterDetails("Identity Attribute Campaign Filter", "Campaign filter to certify data based on specified property of Identity Attribute.", "SailPoint Support", map[string]interface{}(INCLUSION))
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.CertificationCampaignFiltersAPI.UpdateCampaignFilter(context.Background(), filterId).CampaignFilterDetails(campaignFilterDetails).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignFiltersAPI.UpdateCampaignFilter``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateCampaignFilter`: CampaignFilterDetails
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignFiltersAPI.UpdateCampaignFilter`: %v\n", resp)
-}
-```
-
-
 

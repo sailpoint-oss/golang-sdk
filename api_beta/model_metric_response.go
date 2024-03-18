@@ -137,7 +137,7 @@ func (o *MetricResponse) UnmarshalJSON(bytes []byte) (err error) {
 	varMetricResponse := _MetricResponse{}
 
 	if err = json.Unmarshal(bytes, &varMetricResponse); err == nil {
-	*o = MetricResponse(varMetricResponse)
+			*o = MetricResponse(varMetricResponse)
 }
 
 	additionalProperties := make(map[string]interface{})

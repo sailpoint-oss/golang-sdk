@@ -4,67 +4,39 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreatePasswordOrgConfig**](PasswordConfigurationAPI.md#CreatePasswordOrgConfig) | **Post** /password-org-config | Create Password Org Config
-[**GetPasswordOrgConfig**](PasswordConfigurationAPI.md#GetPasswordOrgConfig) | **Get** /password-org-config | Get Password Org Config
-[**PutPasswordOrgConfig**](PasswordConfigurationAPI.md#PutPasswordOrgConfig) | **Put** /password-org-config | Update Password Org Config
+[**CreatePasswordOrgConfig**](#create-password-org-config) | **Post** /password-org-config | Create Password Org Config
+[**GetPasswordOrgConfig**](#get-password-org-config) | **Get** /password-org-config | Get Password Org Config
+[**PutPasswordOrgConfig**](#put-password-org-config) | **Put** /password-org-config | Update Password Org Config
 
 
 
-## CreatePasswordOrgConfig
-
-> PasswordOrgConfig CreatePasswordOrgConfig(ctx).PasswordOrgConfig(passwordOrgConfig).Execute()
-
-Create Password Org Config
+## create-password-org-config
 
 
+This API creates the password org config. Unspecified fields will use default value.
+To be able to use the custom password instructions, you must set the `customInstructionsEnabled` field to "true".
+Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:write'
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | passwordOrgConfig | [**PasswordOrgConfig**](PasswordOrgConfig.md) | True  | 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    passwordOrgConfig := *openapiclient.NewPasswordOrgConfig() // PasswordOrgConfig | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordConfigurationAPI.CreatePasswordOrgConfig(context.Background()).PasswordOrgConfig(passwordOrgConfig).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordConfigurationAPI.CreatePasswordOrgConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreatePasswordOrgConfig`: PasswordOrgConfig
-    fmt.Fprintf(os.Stdout, "Response from `PasswordConfigurationAPI.CreatePasswordOrgConfig`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreatePasswordOrgConfigRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **passwordOrgConfig** | [**PasswordOrgConfig**](PasswordOrgConfig.md) |  | 
-
+	
 ### Return type
 
-[**PasswordOrgConfig**](PasswordOrgConfig.md)
+[**PasswordOrgConfig**](PasswordOrgConfig)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Reference to the password org config. | PasswordOrgConfig
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -76,56 +48,30 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetPasswordOrgConfig
-
-> PasswordOrgConfig GetPasswordOrgConfig(ctx).Execute()
-
-Get Password Org Config
+## get-password-org-config
 
 
+This API returns the password org config . Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:read'
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordConfigurationAPI.GetPasswordOrgConfig(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordConfigurationAPI.GetPasswordOrgConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetPasswordOrgConfig`: PasswordOrgConfig
-    fmt.Fprintf(os.Stdout, "Response from `PasswordConfigurationAPI.GetPasswordOrgConfig`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetPasswordOrgConfigRequest struct via the builder pattern
-
-
+	
 ### Return type
 
-[**PasswordOrgConfig**](PasswordOrgConfig.md)
+[**PasswordOrgConfig**](PasswordOrgConfig)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Reference to the password org config. | PasswordOrgConfig
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -137,61 +83,33 @@ Other parameters are passed through a pointer to a apiGetPasswordOrgConfigReques
 [[Back to README]](../README.md)
 
 
-## PutPasswordOrgConfig
-
-> PasswordOrgConfig PutPasswordOrgConfig(ctx).PasswordOrgConfig(passwordOrgConfig).Execute()
-
-Update Password Org Config
+## put-password-org-config
 
 
+This API updates the password org config for specified fields. Other fields will keep original value.
+You must set the `customInstructionsEnabled` field to "true" to be able to use custom password instructions. 
+Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:write'
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | passwordOrgConfig | [**PasswordOrgConfig**](PasswordOrgConfig.md) | True  | 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    passwordOrgConfig := *openapiclient.NewPasswordOrgConfig() // PasswordOrgConfig | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordConfigurationAPI.PutPasswordOrgConfig(context.Background()).PasswordOrgConfig(passwordOrgConfig).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordConfigurationAPI.PutPasswordOrgConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PutPasswordOrgConfig`: PasswordOrgConfig
-    fmt.Fprintf(os.Stdout, "Response from `PasswordConfigurationAPI.PutPasswordOrgConfig`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPutPasswordOrgConfigRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **passwordOrgConfig** | [**PasswordOrgConfig**](PasswordOrgConfig.md) |  | 
-
+	
 ### Return type
 
-[**PasswordOrgConfig**](PasswordOrgConfig.md)
+[**PasswordOrgConfig**](PasswordOrgConfig)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Reference to the password org config. | PasswordOrgConfig
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 

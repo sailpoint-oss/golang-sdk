@@ -173,7 +173,7 @@ func (o *BaseReferenceDto) UnmarshalJSON(bytes []byte) (err error) {
 	varBaseReferenceDto := _BaseReferenceDto{}
 
 	if err = json.Unmarshal(bytes, &varBaseReferenceDto); err == nil {
-	*o = BaseReferenceDto(varBaseReferenceDto)
+			*o = BaseReferenceDto(varBaseReferenceDto)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -22,6 +22,9 @@ Name | Type | Description | Notes
 **Uuid** | Pointer to **NullableString** | The unique ID of the account as determined by the account schema | [optional] 
 **ManuallyCorrelated** | **bool** | Indicates if the account has been manually correlated to an identity | 
 **HasEntitlements** | **bool** | Indicates if the account has entitlements | 
+**Identity** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**SourceOwner** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**Features** | Pointer to **NullableString** | A string list containing the owning source&#39;s features | [optional] 
 
 ## Methods
 
@@ -452,6 +455,91 @@ and a boolean to check if the value has been set.
 SetHasEntitlements sets HasEntitlements field to given value.
 
 
+### GetIdentity
+
+`func (o *Account) GetIdentity() BaseReferenceDto`
+
+GetIdentity returns the Identity field if non-nil, zero value otherwise.
+
+### GetIdentityOk
+
+`func (o *Account) GetIdentityOk() (*BaseReferenceDto, bool)`
+
+GetIdentityOk returns a tuple with the Identity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdentity
+
+`func (o *Account) SetIdentity(v BaseReferenceDto)`
+
+SetIdentity sets Identity field to given value.
+
+### HasIdentity
+
+`func (o *Account) HasIdentity() bool`
+
+HasIdentity returns a boolean if a field has been set.
+
+### GetSourceOwner
+
+`func (o *Account) GetSourceOwner() BaseReferenceDto`
+
+GetSourceOwner returns the SourceOwner field if non-nil, zero value otherwise.
+
+### GetSourceOwnerOk
+
+`func (o *Account) GetSourceOwnerOk() (*BaseReferenceDto, bool)`
+
+GetSourceOwnerOk returns a tuple with the SourceOwner field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSourceOwner
+
+`func (o *Account) SetSourceOwner(v BaseReferenceDto)`
+
+SetSourceOwner sets SourceOwner field to given value.
+
+### HasSourceOwner
+
+`func (o *Account) HasSourceOwner() bool`
+
+HasSourceOwner returns a boolean if a field has been set.
+
+### GetFeatures
+
+`func (o *Account) GetFeatures() string`
+
+GetFeatures returns the Features field if non-nil, zero value otherwise.
+
+### GetFeaturesOk
+
+`func (o *Account) GetFeaturesOk() (*string, bool)`
+
+GetFeaturesOk returns a tuple with the Features field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFeatures
+
+`func (o *Account) SetFeatures(v string)`
+
+SetFeatures sets Features field to given value.
+
+### HasFeatures
+
+`func (o *Account) HasFeatures() bool`
+
+HasFeatures returns a boolean if a field has been set.
+
+### SetFeaturesNil
+
+`func (o *Account) SetFeaturesNil(b bool)`
+
+ SetFeaturesNil sets the value for Features to be an explicit nil
+
+### UnsetFeatures
+`func (o *Account) UnsetFeatures()`
+
+UnsetFeatures ensures that no value is present for Features, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

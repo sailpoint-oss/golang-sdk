@@ -37,6 +37,8 @@ type _SodExemptCriteria SodExemptCriteria
 // will change when the set of required properties is changed
 func NewSodExemptCriteria() *SodExemptCriteria {
 	this := SodExemptCriteria{}
+	var existing bool = false
+	this.Existing = &existing
 	return &this
 }
 
@@ -45,6 +47,8 @@ func NewSodExemptCriteria() *SodExemptCriteria {
 // but it doesn't guarantee that properties required by API are set
 func NewSodExemptCriteriaWithDefaults() *SodExemptCriteria {
 	this := SodExemptCriteria{}
+	var existing bool = false
+	this.Existing = &existing
 	return &this
 }
 
@@ -210,7 +214,7 @@ func (o *SodExemptCriteria) UnmarshalJSON(bytes []byte) (err error) {
 	varSodExemptCriteria := _SodExemptCriteria{}
 
 	if err = json.Unmarshal(bytes, &varSodExemptCriteria); err == nil {
-	*o = SodExemptCriteria(varSodExemptCriteria)
+			*o = SodExemptCriteria(varSodExemptCriteria)
 }
 
 	additionalProperties := make(map[string]interface{})

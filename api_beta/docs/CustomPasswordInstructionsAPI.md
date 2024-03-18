@@ -4,67 +4,35 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateCustomPasswordInstructions**](CustomPasswordInstructionsAPI.md#CreateCustomPasswordInstructions) | **Post** /custom-password-instructions | Create Custom Password Instructions
-[**DeleteCustomPasswordInstructions**](CustomPasswordInstructionsAPI.md#DeleteCustomPasswordInstructions) | **Delete** /custom-password-instructions/{pageId} | Delete Custom Password Instructions by page ID
-[**GetCustomPasswordInstructions**](CustomPasswordInstructionsAPI.md#GetCustomPasswordInstructions) | **Get** /custom-password-instructions/{pageId} | Get Custom Password Instructions by Page ID
+[**CreateCustomPasswordInstructions**](#create-custom-password-instructions) | **Post** /custom-password-instructions | Create Custom Password Instructions
+[**DeleteCustomPasswordInstructions**](#delete-custom-password-instructions) | **Delete** /custom-password-instructions/{pageId} | Delete Custom Password Instructions by page ID
+[**GetCustomPasswordInstructions**](#get-custom-password-instructions) | **Get** /custom-password-instructions/{pageId} | Get Custom Password Instructions by Page ID
 
 
 
-## CreateCustomPasswordInstructions
-
-> CustomPasswordInstruction CreateCustomPasswordInstructions(ctx).CustomPasswordInstruction(customPasswordInstruction).Execute()
-
-Create Custom Password Instructions
+## create-custom-password-instructions
 
 
+This API creates the custom password instructions for the specified page ID. A token with ORG_ADMIN authority is required to call this API.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | customPasswordInstruction | [**CustomPasswordInstruction**](CustomPasswordInstruction.md) | True  | 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    customPasswordInstruction := *openapiclient.NewCustomPasswordInstruction() // CustomPasswordInstruction | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomPasswordInstructionsAPI.CreateCustomPasswordInstructions(context.Background()).CustomPasswordInstruction(customPasswordInstruction).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CustomPasswordInstructionsAPI.CreateCustomPasswordInstructions``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateCustomPasswordInstructions`: CustomPasswordInstruction
-    fmt.Fprintf(os.Stdout, "Response from `CustomPasswordInstructionsAPI.CreateCustomPasswordInstructions`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateCustomPasswordInstructionsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **customPasswordInstruction** | [**CustomPasswordInstruction**](CustomPasswordInstruction.md) |  | 
-
+	
 ### Return type
 
-[**CustomPasswordInstruction**](CustomPasswordInstruction.md)
+[**CustomPasswordInstruction**](CustomPasswordInstruction)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Reference to the custom password instructions. | CustomPasswordInstruction
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -76,65 +44,31 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteCustomPasswordInstructions
-
-> DeleteCustomPasswordInstructions(ctx, pageId).Locale(locale).Execute()
-
-Delete Custom Password Instructions by page ID
+## delete-custom-password-instructions
 
 
+This API delete the custom password instructions for the specified page ID. A token with ORG_ADMIN authority is required to call this API.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | pageId | **string** | True  | The page ID of custom password instructions to delete.
+  Query | locale | **string** |   (optional) | The locale for the custom instructions, a BCP47 language tag. The default value is \\\"default\\\".
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    pageId := "mfa:select" // string | The page ID of custom password instructions to delete.
-    locale := "locale_example" // string | The locale for the custom instructions, a BCP47 language tag. The default value is \\\"default\\\". (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.CustomPasswordInstructionsAPI.DeleteCustomPasswordInstructions(context.Background(), pageId).Locale(locale).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CustomPasswordInstructionsAPI.DeleteCustomPasswordInstructions``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pageId** | **string** | The page ID of custom password instructions to delete. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDeleteCustomPasswordInstructionsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **locale** | **string** | The locale for the custom instructions, a BCP47 language tag. The default value is \\\&quot;default\\\&quot;. | 
-
+	
 ### Return type
 
  (empty response body)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+204 | No content - indicates the request was successful but there is no content to be returned in the response. | 
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -146,67 +80,31 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetCustomPasswordInstructions
-
-> CustomPasswordInstruction GetCustomPasswordInstructions(ctx, pageId).Locale(locale).Execute()
-
-Get Custom Password Instructions by Page ID
+## get-custom-password-instructions
 
 
+This API returns the custom password instructions for the specified page ID. A token with ORG_ADMIN authority is required to call this API.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | pageId | **string** | True  | The page ID of custom password instructions to query.
+  Query | locale | **string** |   (optional) | The locale for the custom instructions, a BCP47 language tag. The default value is \\\"default\\\".
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    pageId := "mfa:select" // string | The page ID of custom password instructions to query.
-    locale := "locale_example" // string | The locale for the custom instructions, a BCP47 language tag. The default value is \\\"default\\\". (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomPasswordInstructionsAPI.GetCustomPasswordInstructions(context.Background(), pageId).Locale(locale).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CustomPasswordInstructionsAPI.GetCustomPasswordInstructions``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetCustomPasswordInstructions`: CustomPasswordInstruction
-    fmt.Fprintf(os.Stdout, "Response from `CustomPasswordInstructionsAPI.GetCustomPasswordInstructions`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pageId** | **string** | The page ID of custom password instructions to query. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetCustomPasswordInstructionsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **locale** | **string** | The locale for the custom instructions, a BCP47 language tag. The default value is \\\&quot;default\\\&quot;. | 
-
+	
 ### Return type
 
-[**CustomPasswordInstruction**](CustomPasswordInstruction.md)
+[**CustomPasswordInstruction**](CustomPasswordInstruction)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Reference to the custom password instructions. | CustomPasswordInstruction
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 

@@ -147,7 +147,7 @@ func (o *BasicAuthConfig) UnmarshalJSON(bytes []byte) (err error) {
 	varBasicAuthConfig := _BasicAuthConfig{}
 
 	if err = json.Unmarshal(bytes, &varBasicAuthConfig); err == nil {
-	*o = BasicAuthConfig(varBasicAuthConfig)
+			*o = BasicAuthConfig(varBasicAuthConfig)
 }
 
 	additionalProperties := make(map[string]interface{})

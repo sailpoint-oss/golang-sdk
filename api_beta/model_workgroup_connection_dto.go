@@ -136,7 +136,7 @@ func (o *WorkgroupConnectionDto) UnmarshalJSON(bytes []byte) (err error) {
 	varWorkgroupConnectionDto := _WorkgroupConnectionDto{}
 
 	if err = json.Unmarshal(bytes, &varWorkgroupConnectionDto); err == nil {
-	*o = WorkgroupConnectionDto(varWorkgroupConnectionDto)
+			*o = WorkgroupConnectionDto(varWorkgroupConnectionDto)
 }
 
 	additionalProperties := make(map[string]interface{})

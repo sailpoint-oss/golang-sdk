@@ -31,7 +31,7 @@ type Segment struct {
 	// The segment's optional description.
 	Description *string `json:"description,omitempty"`
 	Owner NullableOwnerReferenceSegments `json:"owner,omitempty"`
-	VisibilityCriteria *VisibilityCriteria `json:"visibilityCriteria,omitempty"`
+	VisibilityCriteria *SegmentVisibilityCriteria `json:"visibilityCriteria,omitempty"`
 	// This boolean indicates whether the segment is currently active. Inactive segments have no effect.
 	Active *bool `json:"active,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -263,9 +263,9 @@ func (o *Segment) UnsetOwner() {
 }
 
 // GetVisibilityCriteria returns the VisibilityCriteria field value if set, zero value otherwise.
-func (o *Segment) GetVisibilityCriteria() VisibilityCriteria {
+func (o *Segment) GetVisibilityCriteria() SegmentVisibilityCriteria {
 	if o == nil || isNil(o.VisibilityCriteria) {
-		var ret VisibilityCriteria
+		var ret SegmentVisibilityCriteria
 		return ret
 	}
 	return *o.VisibilityCriteria
@@ -273,7 +273,7 @@ func (o *Segment) GetVisibilityCriteria() VisibilityCriteria {
 
 // GetVisibilityCriteriaOk returns a tuple with the VisibilityCriteria field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Segment) GetVisibilityCriteriaOk() (*VisibilityCriteria, bool) {
+func (o *Segment) GetVisibilityCriteriaOk() (*SegmentVisibilityCriteria, bool) {
 	if o == nil || isNil(o.VisibilityCriteria) {
 		return nil, false
 	}
@@ -289,8 +289,8 @@ func (o *Segment) HasVisibilityCriteria() bool {
 	return false
 }
 
-// SetVisibilityCriteria gets a reference to the given VisibilityCriteria and assigns it to the VisibilityCriteria field.
-func (o *Segment) SetVisibilityCriteria(v VisibilityCriteria) {
+// SetVisibilityCriteria gets a reference to the given SegmentVisibilityCriteria and assigns it to the VisibilityCriteria field.
+func (o *Segment) SetVisibilityCriteria(v SegmentVisibilityCriteria) {
 	o.VisibilityCriteria = &v
 }
 
@@ -372,7 +372,7 @@ func (o *Segment) UnmarshalJSON(bytes []byte) (err error) {
 	varSegment := _Segment{}
 
 	if err = json.Unmarshal(bytes, &varSegment); err == nil {
-	*o = Segment(varSegment)
+			*o = Segment(varSegment)
 }
 
 	additionalProperties := make(map[string]interface{})

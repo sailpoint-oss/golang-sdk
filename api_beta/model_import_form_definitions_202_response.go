@@ -207,7 +207,7 @@ func (o *ImportFormDefinitions202Response) UnmarshalJSON(bytes []byte) (err erro
 	varImportFormDefinitions202Response := _ImportFormDefinitions202Response{}
 
 	if err = json.Unmarshal(bytes, &varImportFormDefinitions202Response); err == nil {
-	*o = ImportFormDefinitions202Response(varImportFormDefinitions202Response)
+			*o = ImportFormDefinitions202Response(varImportFormDefinitions202Response)
 }
 
 	additionalProperties := make(map[string]interface{})

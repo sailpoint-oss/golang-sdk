@@ -13,7 +13,8 @@ package api_beta
 import (
 	"context"
 	"fmt"
-		"strings"
+	"net/http"
+	"strings"
 
 	retryablehttp "github.com/hashicorp/go-retryablehttp"
 )
@@ -100,7 +101,7 @@ ClientId: 		  clientId,
 		TokenURL:		  tokenURL,
 		Token:			  token,
 		DefaultHeader:    make(map[string]string),
-		UserAgent:        "OpenAPI-Generator/2.0.2/go",
+		UserAgent:        "OpenAPI-Generator/2.0.3/go",
 		Debug:            false,
 		Servers:          ServerConfigurations{
 			{

@@ -144,7 +144,7 @@ func (o SourceSyncJob) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *SourceSyncJob) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -170,7 +170,7 @@ func (o *SourceSyncJob) UnmarshalJSON(bytes []byte) (err error) {
 	varSourceSyncJob := _SourceSyncJob{}
 
 	if err = json.Unmarshal(bytes, &varSourceSyncJob); err == nil {
-	*o = SourceSyncJob(varSourceSyncJob)
+			*o = SourceSyncJob(varSourceSyncJob)
 }
 
 	additionalProperties := make(map[string]interface{})

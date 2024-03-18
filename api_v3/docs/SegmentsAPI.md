@@ -4,15 +4,15 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateSegment**](SegmentsAPI.md#CreateSegment) | **Post** /segments | Create Segment
-[**DeleteSegment**](SegmentsAPI.md#DeleteSegment) | **Delete** /segments/{id} | Delete Segment by ID
-[**GetSegment**](SegmentsAPI.md#GetSegment) | **Get** /segments/{id} | Get Segment by ID
-[**ListSegments**](SegmentsAPI.md#ListSegments) | **Get** /segments | List Segments
-[**PatchSegment**](SegmentsAPI.md#PatchSegment) | **Patch** /segments/{id} | Update Segment
+[**CreateSegment**](#create-segment) | **Post** /segments | Create Segment
+[**DeleteSegment**](#delete-segment) | **Delete** /segments/{id} | Delete Segment by ID
+[**GetSegment**](#get-segment) | **Get** /segments/{id} | Get Segment by ID
+[**ListSegments**](#list-segments) | **Get** /segments | List Segments
+[**PatchSegment**](#patch-segment) | **Patch** /segments/{id} | Update Segment
 
 
 
-## Create Segment
+## create-segment
 
 
 This API creates a segment. 
@@ -24,10 +24,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | segment | [**Segment**](Segment.md) | True  | 
 
-
+	
 ### Return type
 
-[**Segment**](Segment.md)
+[**Segment**](Segment)
 
 ### Responses
 Code | Description  | Data Type
@@ -49,43 +49,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//CreateSegment
-
-    segment := *sailpoint.NewSegment()
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.SegmentsAPI.CreateSegment(context.Background()).Segment(segment).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SegmentsAPI.CreateSegment``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateSegment`: Segment
-    fmt.Fprintf(os.Stdout, "Response from `SegmentsAPI.CreateSegment`: %v\n", resp)
-}
-```
-
-
-
-
-## Delete Segment by ID
+## delete-segment
 
 
 This API deletes the segment specified by the given ID.
@@ -97,7 +62,7 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **string** | True  | The segment ID to delete.
 
-
+	
 ### Return type
 
  (empty response body)
@@ -123,41 +88,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//DeleteSegment
-
-    id := "ef38f94347e94562b5bb8424a56397d8"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.V3.SegmentsAPI.DeleteSegment(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SegmentsAPI.DeleteSegment``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-
-
-
-## Get Segment by ID
+## get-segment
 
 
 This API returns the segment specified by the given ID.
@@ -168,10 +100,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **string** | True  | The segment ID to retrieve.
 
-
+	
 ### Return type
 
-[**Segment**](Segment.md)
+[**Segment**](Segment)
 
 ### Responses
 Code | Description  | Data Type
@@ -194,43 +126,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//GetSegment
-
-    id := "ef38f94347e94562b5bb8424a56397d8"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.SegmentsAPI.GetSegment(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SegmentsAPI.GetSegment``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetSegment`: Segment
-    fmt.Fprintf(os.Stdout, "Response from `SegmentsAPI.GetSegment`: %v\n", resp)
-}
-```
-
-
-
-
-## List Segments
+## list-segments
 
 
 This API returns a list of all segments. 
@@ -243,10 +140,10 @@ Param Type | Name | Data Type | Required  | Description
   Query | offset | **int32** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
   Query | count | **bool** |   (optional) (default to false) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
-
+	
 ### Return type
 
-[**[]Segment**](Segment.md)
+[**[]Segment**](Segment)
 
 ### Responses
 Code | Description  | Data Type
@@ -268,45 +165,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//ListSegments
-
-    //limit := int32(250)
-    //offset := int32(0)
-    //count := true
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.SegmentsAPI.ListSegments(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SegmentsAPI.ListSegments``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListSegments`: []Segment
-    fmt.Fprintf(os.Stdout, "Response from `SegmentsAPI.ListSegments`: %v\n", resp)
-}
-```
-
-
-
-
-## Update Segment
+## patch-segment
 
 
 Use this API to update segment fields by using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
@@ -319,10 +179,10 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **string** | True  | The segment ID to modify.
  Body  | requestBody | **[]map[string]interface{}** | True  | A list of segment update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * owner * visibilityCriteria * active 
 
-
+	
 ### Return type
 
-[**Segment**](Segment.md)
+[**Segment**](Segment)
 
 ### Responses
 Code | Description  | Data Type
@@ -344,40 +204,4 @@ Code | Description  | Data Type
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//PatchSegment
-
-    id := "ef38f94347e94562b5bb8424a56397d8"
-    requestBody := []map[string]interface{}{map[string]interface{}(123)}
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.SegmentsAPI.PatchSegment(context.Background(), id).RequestBody(requestBody).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SegmentsAPI.PatchSegment``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PatchSegment`: Segment
-    fmt.Fprintf(os.Stdout, "Response from `SegmentsAPI.PatchSegment`: %v\n", resp)
-}
-```
-
-
 

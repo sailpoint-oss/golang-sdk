@@ -299,7 +299,7 @@ func (o *IdentityListItem) UnmarshalJSON(bytes []byte) (err error) {
 	varIdentityListItem := _IdentityListItem{}
 
 	if err = json.Unmarshal(bytes, &varIdentityListItem); err == nil {
-	*o = IdentityListItem(varIdentityListItem)
+			*o = IdentityListItem(varIdentityListItem)
 }
 
 	additionalProperties := make(map[string]interface{})

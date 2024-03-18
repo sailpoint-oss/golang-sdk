@@ -4,73 +4,43 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateReassignmentConfiguration**](WorkReassignmentAPI.md#CreateReassignmentConfiguration) | **Post** /reassignment-configurations | Create a Reassignment Configuration
-[**DeleteReassignmentConfiguration**](WorkReassignmentAPI.md#DeleteReassignmentConfiguration) | **Delete** /reassignment-configurations/{identityId} | Delete Reassignment Configuration
-[**GetEvaluateReassignmentConfiguration**](WorkReassignmentAPI.md#GetEvaluateReassignmentConfiguration) | **Get** /reassignment-configurations/{identityId}/evaluate/{configType} | Evaluate Reassignment Configuration
-[**GetReassignmentConfigTypes**](WorkReassignmentAPI.md#GetReassignmentConfigTypes) | **Get** /reassignment-configurations/types | List Reassignment Config Types
-[**GetReassignmentConfiguration**](WorkReassignmentAPI.md#GetReassignmentConfiguration) | **Get** /reassignment-configurations/{identityId} | Get Reassignment Configuration
-[**GetTenantConfigConfiguration**](WorkReassignmentAPI.md#GetTenantConfigConfiguration) | **Get** /reassignment-configurations/tenant-config | Get Tenant-wide Reassignment Configuration settings
-[**ListReassignmentConfigurations**](WorkReassignmentAPI.md#ListReassignmentConfigurations) | **Get** /reassignment-configurations | List Reassignment Configurations
-[**PutReassignmentConfig**](WorkReassignmentAPI.md#PutReassignmentConfig) | **Put** /reassignment-configurations/{identityId} | Update Reassignment Configuration
-[**PutTenantConfiguration**](WorkReassignmentAPI.md#PutTenantConfiguration) | **Put** /reassignment-configurations/tenant-config | Update Tenant-wide Reassignment Configuration settings
+[**CreateReassignmentConfiguration**](#create-reassignment-configuration) | **Post** /reassignment-configurations | Create a Reassignment Configuration
+[**DeleteReassignmentConfiguration**](#delete-reassignment-configuration) | **Delete** /reassignment-configurations/{identityId} | Delete Reassignment Configuration
+[**GetEvaluateReassignmentConfiguration**](#get-evaluate-reassignment-configuration) | **Get** /reassignment-configurations/{identityId}/evaluate/{configType} | Evaluate Reassignment Configuration
+[**GetReassignmentConfigTypes**](#get-reassignment-config-types) | **Get** /reassignment-configurations/types | List Reassignment Config Types
+[**GetReassignmentConfiguration**](#get-reassignment-configuration) | **Get** /reassignment-configurations/{identityId} | Get Reassignment Configuration
+[**GetTenantConfigConfiguration**](#get-tenant-config-configuration) | **Get** /reassignment-configurations/tenant-config | Get Tenant-wide Reassignment Configuration settings
+[**ListReassignmentConfigurations**](#list-reassignment-configurations) | **Get** /reassignment-configurations | List Reassignment Configurations
+[**PutReassignmentConfig**](#put-reassignment-config) | **Put** /reassignment-configurations/{identityId} | Update Reassignment Configuration
+[**PutTenantConfiguration**](#put-tenant-configuration) | **Put** /reassignment-configurations/tenant-config | Update Tenant-wide Reassignment Configuration settings
 
 
 
-## CreateReassignmentConfiguration
-
-> ConfigurationItemResponse CreateReassignmentConfiguration(ctx).ConfigurationItemRequest(configurationItemRequest).Execute()
-
-Create a Reassignment Configuration
+## create-reassignment-configuration
 
 
+Creates a new Reassignment Configuration for the specified identity.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | configurationItemRequest | [**ConfigurationItemRequest**](ConfigurationItemRequest.md) | True  | 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    configurationItemRequest := *openapiclient.NewConfigurationItemRequest() // ConfigurationItemRequest | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkReassignmentAPI.CreateReassignmentConfiguration(context.Background()).ConfigurationItemRequest(configurationItemRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.CreateReassignmentConfiguration``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateReassignmentConfiguration`: ConfigurationItemResponse
-    fmt.Fprintf(os.Stdout, "Response from `WorkReassignmentAPI.CreateReassignmentConfiguration`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateReassignmentConfigurationRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **configurationItemRequest** | [**ConfigurationItemRequest**](ConfigurationItemRequest.md) |  | 
-
+	
 ### Return type
 
-[**ConfigurationItemResponse**](ConfigurationItemResponse.md)
+[**ConfigurationItemResponse**](ConfigurationItemResponse)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+201 | The newly created Reassignment Configuration object | ConfigurationItemResponse
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -82,63 +52,31 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteReassignmentConfiguration
-
-> DeleteReassignmentConfiguration(ctx, identityId).Execute()
-
-Delete Reassignment Configuration
+## delete-reassignment-configuration
 
 
+Deletes all Reassignment Configuration for the specified identity
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | identityId | **string** | True  | unique identity id
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    identityId := "2c91808781a71ddb0181b9090b5c504e" // string | unique identity id
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.WorkReassignmentAPI.DeleteReassignmentConfiguration(context.Background(), identityId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.DeleteReassignmentConfiguration``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**identityId** | **string** | unique identity id | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDeleteReassignmentConfigurationRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+	
 ### Return type
 
  (empty response body)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+204 | Reassignment Configuration deleted | 
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -150,70 +88,33 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetEvaluateReassignmentConfiguration
-
-> []EvaluateResponse GetEvaluateReassignmentConfiguration(ctx, identityId, configType).ExclusionFilters(exclusionFilters).Execute()
-
-Evaluate Reassignment Configuration
+## get-evaluate-reassignment-configuration
 
 
+Evaluates the Reassignment Configuration for an `Identity` to determine if work items for the specified type should be reassigned. If a valid Reassignment Configuration is found for the identity & work type, then a lookup is initiated which recursively fetches the Reassignment Configuration for the next `TargetIdentity` until no more results are found or a max depth of 5. That lookup trail is provided in the response and the final reassigned identity in the lookup list is returned as the `reassignToId` property. If no Reassignment Configuration is found for the specified identity & config type then the requested Identity ID will be used as the `reassignToId` value and the lookupTrail node will be empty.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | identityId | **string** | True  | unique identity id
+Path   | configType | [**ConfigTypeEnum**](ConfigTypeEnum.md) | True  | Reassignment work type
+  Query | exclusionFilters | **[]string** |   (optional) | Exclusion filters that disable parts of the reassignment evaluation. Possible values are listed below: - `SELF_REVIEW_DELEGATION`: This will exclude delegations of self-review reassignments
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    identityId := "2c91808781a71ddb0181b9090b5c504e" // string | unique identity id
-    configType := openapiclient.ConfigTypeEnum("ACCESS_REQUESTS") // ConfigTypeEnum | Reassignment work type
-    exclusionFilters := []string{"Inner_example"} // []string | Exclusion filters that disable parts of the reassignment evaluation. Possible values are listed below: - `SELF_REVIEW_DELEGATION`: This will exclude delegations of self-review reassignments (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkReassignmentAPI.GetEvaluateReassignmentConfiguration(context.Background(), identityId, configType).ExclusionFilters(exclusionFilters).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.GetEvaluateReassignmentConfiguration``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetEvaluateReassignmentConfiguration`: []EvaluateResponse
-    fmt.Fprintf(os.Stdout, "Response from `WorkReassignmentAPI.GetEvaluateReassignmentConfiguration`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**identityId** | **string** | unique identity id | 
-**configType** | [**ConfigTypeEnum**](.md) | Reassignment work type | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetEvaluateReassignmentConfigurationRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **exclusionFilters** | **[]string** | Exclusion filters that disable parts of the reassignment evaluation. Possible values are listed below: - &#x60;SELF_REVIEW_DELEGATION&#x60;: This will exclude delegations of self-review reassignments | 
-
+	
 ### Return type
 
-[**[]EvaluateResponse**](EvaluateResponse.md)
+[**[]EvaluateResponse**](EvaluateResponse)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Evaluated Reassignment Configuration | []EvaluateResponse
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -225,56 +126,30 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetReassignmentConfigTypes
-
-> []ConfigType GetReassignmentConfigTypes(ctx).Execute()
-
-List Reassignment Config Types
+## get-reassignment-config-types
 
 
+Gets a collection of types which are available in the Reassignment Configuration UI.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkReassignmentAPI.GetReassignmentConfigTypes(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.GetReassignmentConfigTypes``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetReassignmentConfigTypes`: []ConfigType
-    fmt.Fprintf(os.Stdout, "Response from `WorkReassignmentAPI.GetReassignmentConfigTypes`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetReassignmentConfigTypesRequest struct via the builder pattern
-
-
+	
 ### Return type
 
-[**[]ConfigType**](ConfigType.md)
+[**[]ConfigType**](ConfigType)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | List of Reassignment Configuration Types | []ConfigType
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -286,65 +161,32 @@ Other parameters are passed through a pointer to a apiGetReassignmentConfigTypes
 [[Back to README]](../README.md)
 
 
-## GetReassignmentConfiguration
-
-> ConfigurationResponse GetReassignmentConfiguration(ctx, identityId).Execute()
-
-Get Reassignment Configuration
+## get-reassignment-configuration
 
 
+Gets the Reassignment Configuration for an identity.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | identityId | **string** | True  | unique identity id
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    identityId := "2c91808781a71ddb0181b9090b5c504f" // string | unique identity id
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkReassignmentAPI.GetReassignmentConfiguration(context.Background(), identityId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.GetReassignmentConfiguration``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetReassignmentConfiguration`: ConfigurationResponse
-    fmt.Fprintf(os.Stdout, "Response from `WorkReassignmentAPI.GetReassignmentConfiguration`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**identityId** | **string** | unique identity id | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetReassignmentConfigurationRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+	
 ### Return type
 
-[**ConfigurationResponse**](ConfigurationResponse.md)
+[**ConfigurationResponse**](ConfigurationResponse)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Reassignment Configuration for an identity | ConfigurationResponse
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -356,56 +198,31 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetTenantConfigConfiguration
-
-> TenantConfigurationResponse GetTenantConfigConfiguration(ctx).Execute()
-
-Get Tenant-wide Reassignment Configuration settings
+## get-tenant-config-configuration
 
 
+Gets the global Reassignment Configuration settings for the requestor's tenant.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkReassignmentAPI.GetTenantConfigConfiguration(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.GetTenantConfigConfiguration``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetTenantConfigConfiguration`: TenantConfigurationResponse
-    fmt.Fprintf(os.Stdout, "Response from `WorkReassignmentAPI.GetTenantConfigConfiguration`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetTenantConfigConfigurationRequest struct via the builder pattern
-
-
+	
 ### Return type
 
-[**TenantConfigurationResponse**](TenantConfigurationResponse.md)
+[**TenantConfigurationResponse**](TenantConfigurationResponse)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Tenant-wide Reassignment Configuration settings | TenantConfigurationResponse
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -417,56 +234,31 @@ Other parameters are passed through a pointer to a apiGetTenantConfigConfigurati
 [[Back to README]](../README.md)
 
 
-## ListReassignmentConfigurations
-
-> []ConfigurationResponse ListReassignmentConfigurations(ctx).Execute()
-
-List Reassignment Configurations
+## list-reassignment-configurations
 
 
+Gets all Reassignment configuration for the current org.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkReassignmentAPI.ListReassignmentConfigurations(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.ListReassignmentConfigurations``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListReassignmentConfigurations`: []ConfigurationResponse
-    fmt.Fprintf(os.Stdout, "Response from `WorkReassignmentAPI.ListReassignmentConfigurations`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListReassignmentConfigurationsRequest struct via the builder pattern
-
-
+	
 ### Return type
 
-[**[]ConfigurationResponse**](ConfigurationResponse.md)
+[**[]ConfigurationResponse**](ConfigurationResponse)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | A list of Reassignment Configurations for an org | []ConfigurationResponse
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -478,67 +270,32 @@ Other parameters are passed through a pointer to a apiListReassignmentConfigurat
 [[Back to README]](../README.md)
 
 
-## PutReassignmentConfig
-
-> ConfigurationItemResponse PutReassignmentConfig(ctx, identityId).ConfigurationItemRequest(configurationItemRequest).Execute()
-
-Update Reassignment Configuration
+## put-reassignment-config
 
 
+Replaces existing Reassignment configuration for an identity with the newly provided configuration.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | identityId | **string** | True  | unique identity id
+ Body  | configurationItemRequest | [**ConfigurationItemRequest**](ConfigurationItemRequest.md) | True  | 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    identityId := "2c91808781a71ddb0181b9090b5c504e" // string | unique identity id
-    configurationItemRequest := *openapiclient.NewConfigurationItemRequest() // ConfigurationItemRequest | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkReassignmentAPI.PutReassignmentConfig(context.Background(), identityId).ConfigurationItemRequest(configurationItemRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.PutReassignmentConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PutReassignmentConfig`: ConfigurationItemResponse
-    fmt.Fprintf(os.Stdout, "Response from `WorkReassignmentAPI.PutReassignmentConfig`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**identityId** | **string** | unique identity id | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPutReassignmentConfigRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **configurationItemRequest** | [**ConfigurationItemRequest**](ConfigurationItemRequest.md) |  | 
-
+	
 ### Return type
 
-[**ConfigurationItemResponse**](ConfigurationItemResponse.md)
+[**ConfigurationItemResponse**](ConfigurationItemResponse)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Reassignment Configuration updated | ConfigurationItemResponse
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -550,61 +307,31 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PutTenantConfiguration
-
-> TenantConfigurationResponse PutTenantConfiguration(ctx).TenantConfigurationRequest(tenantConfigurationRequest).Execute()
-
-Update Tenant-wide Reassignment Configuration settings
+## put-tenant-configuration
 
 
+Replaces existing Tenant-wide Reassignment Configuration settings with the newly provided settings.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | tenantConfigurationRequest | [**TenantConfigurationRequest**](TenantConfigurationRequest.md) | True  | 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    tenantConfigurationRequest := *openapiclient.NewTenantConfigurationRequest() // TenantConfigurationRequest | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkReassignmentAPI.PutTenantConfiguration(context.Background()).TenantConfigurationRequest(tenantConfigurationRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.PutTenantConfiguration``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PutTenantConfiguration`: TenantConfigurationResponse
-    fmt.Fprintf(os.Stdout, "Response from `WorkReassignmentAPI.PutTenantConfiguration`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPutTenantConfigurationRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **tenantConfigurationRequest** | [**TenantConfigurationRequest**](TenantConfigurationRequest.md) |  | 
-
+	
 ### Return type
 
-[**TenantConfigurationResponse**](TenantConfigurationResponse.md)
+[**TenantConfigurationResponse**](TenantConfigurationResponse)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Tenant-wide Reassignment Configuration settings | TenantConfigurationResponse
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 

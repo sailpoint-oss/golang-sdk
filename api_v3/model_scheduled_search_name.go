@@ -157,7 +157,7 @@ func (o *ScheduledSearchName) UnmarshalJSON(bytes []byte) (err error) {
 	varScheduledSearchName := _ScheduledSearchName{}
 
 	if err = json.Unmarshal(bytes, &varScheduledSearchName); err == nil {
-	*o = ScheduledSearchName(varScheduledSearchName)
+			*o = ScheduledSearchName(varScheduledSearchName)
 }
 
 	additionalProperties := make(map[string]interface{})

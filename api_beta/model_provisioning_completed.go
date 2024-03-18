@@ -341,7 +341,7 @@ func (o ProvisioningCompleted) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *ProvisioningCompleted) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -368,7 +368,7 @@ func (o *ProvisioningCompleted) UnmarshalJSON(bytes []byte) (err error) {
 	varProvisioningCompleted := _ProvisioningCompleted{}
 
 	if err = json.Unmarshal(bytes, &varProvisioningCompleted); err == nil {
-	*o = ProvisioningCompleted(varProvisioningCompleted)
+			*o = ProvisioningCompleted(varProvisioningCompleted)
 }
 
 	additionalProperties := make(map[string]interface{})

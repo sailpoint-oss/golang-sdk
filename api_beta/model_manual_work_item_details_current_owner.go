@@ -174,7 +174,7 @@ func (o *ManualWorkItemDetailsCurrentOwner) UnmarshalJSON(bytes []byte) (err err
 	varManualWorkItemDetailsCurrentOwner := _ManualWorkItemDetailsCurrentOwner{}
 
 	if err = json.Unmarshal(bytes, &varManualWorkItemDetailsCurrentOwner); err == nil {
-	*o = ManualWorkItemDetailsCurrentOwner(varManualWorkItemDetailsCurrentOwner)
+			*o = ManualWorkItemDetailsCurrentOwner(varManualWorkItemDetailsCurrentOwner)
 }
 
 	additionalProperties := make(map[string]interface{})

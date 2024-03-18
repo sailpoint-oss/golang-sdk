@@ -4,61 +4,35 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetPublicIdentityConfig**](PublicIdentitiesConfigAPI.md#GetPublicIdentityConfig) | **Get** /public-identities-config | Get Public Identity Config
-[**UpdatePublicIdentityConfig**](PublicIdentitiesConfigAPI.md#UpdatePublicIdentityConfig) | **Put** /public-identities-config | Update Public Identity Config
+[**GetPublicIdentityConfig**](#get-public-identity-config) | **Get** /public-identities-config | Get Public Identity Config
+[**UpdatePublicIdentityConfig**](#update-public-identity-config) | **Put** /public-identities-config | Update Public Identity Config
 
 
 
-## GetPublicIdentityConfig
-
-> PublicIdentityConfig GetPublicIdentityConfig(ctx).Execute()
-
-Get Public Identity Config
+## get-public-identity-config
 
 
+This gets details of public identity config.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PublicIdentitiesConfigAPI.GetPublicIdentityConfig(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PublicIdentitiesConfigAPI.GetPublicIdentityConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetPublicIdentityConfig`: PublicIdentityConfig
-    fmt.Fprintf(os.Stdout, "Response from `PublicIdentitiesConfigAPI.GetPublicIdentityConfig`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetPublicIdentityConfigRequest struct via the builder pattern
-
-
+	
 ### Return type
 
-[**PublicIdentityConfig**](PublicIdentityConfig.md)
+[**PublicIdentityConfig**](PublicIdentityConfig)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Request succeeded. | PublicIdentityConfig
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -70,61 +44,31 @@ Other parameters are passed through a pointer to a apiGetPublicIdentityConfigReq
 [[Back to README]](../README.md)
 
 
-## UpdatePublicIdentityConfig
-
-> PublicIdentityConfig UpdatePublicIdentityConfig(ctx).PublicIdentityConfig(publicIdentityConfig).Execute()
-
-Update Public Identity Config
+## update-public-identity-config
 
 
+This updates the details of public identity config.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | publicIdentityConfig | [**PublicIdentityConfig**](PublicIdentityConfig.md) | True  | 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    publicIdentityConfig := *openapiclient.NewPublicIdentityConfig() // PublicIdentityConfig | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PublicIdentitiesConfigAPI.UpdatePublicIdentityConfig(context.Background()).PublicIdentityConfig(publicIdentityConfig).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PublicIdentitiesConfigAPI.UpdatePublicIdentityConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdatePublicIdentityConfig`: PublicIdentityConfig
-    fmt.Fprintf(os.Stdout, "Response from `PublicIdentitiesConfigAPI.UpdatePublicIdentityConfig`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUpdatePublicIdentityConfigRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **publicIdentityConfig** | [**PublicIdentityConfig**](PublicIdentityConfig.md) |  | 
-
+	
 ### Return type
 
-[**PublicIdentityConfig**](PublicIdentityConfig.md)
+[**PublicIdentityConfig**](PublicIdentityConfig)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Request succeeded. | PublicIdentityConfig
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 

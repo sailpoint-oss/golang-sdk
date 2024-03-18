@@ -174,7 +174,7 @@ func (o *SourceManagerCorrelationRule) UnmarshalJSON(bytes []byte) (err error) {
 	varSourceManagerCorrelationRule := _SourceManagerCorrelationRule{}
 
 	if err = json.Unmarshal(bytes, &varSourceManagerCorrelationRule); err == nil {
-	*o = SourceManagerCorrelationRule(varSourceManagerCorrelationRule)
+			*o = SourceManagerCorrelationRule(varSourceManagerCorrelationRule)
 }
 
 	additionalProperties := make(map[string]interface{})

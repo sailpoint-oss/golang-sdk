@@ -100,7 +100,7 @@ func (o *MultiPolicyRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varMultiPolicyRequest := _MultiPolicyRequest{}
 
 	if err = json.Unmarshal(bytes, &varMultiPolicyRequest); err == nil {
-	*o = MultiPolicyRequest(varMultiPolicyRequest)
+			*o = MultiPolicyRequest(varMultiPolicyRequest)
 }
 
 	additionalProperties := make(map[string]interface{})

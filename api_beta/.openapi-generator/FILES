@@ -11,6 +11,7 @@ api_account_activities.go
 api_account_aggregations.go
 api_account_usages.go
 api_accounts.go
+api_auth_profile.go
 api_certification_campaigns.go
 api_certifications.go
 api_connector_rule_management.go
@@ -58,6 +59,7 @@ api_sources.go
 api_sp_config.go
 api_tagged_objects.go
 api_task_management.go
+api_tenant.go
 api_transforms.go
 api_triggers.go
 api_work_items.go
@@ -100,6 +102,7 @@ docs/AccessRecommendationMessage.md
 docs/AccessRequest.md
 docs/AccessRequestApprovalsAPI.md
 docs/AccessRequestConfig.md
+docs/AccessRequestContext.md
 docs/AccessRequestDynamicApprover.md
 docs/AccessRequestDynamicApprover1.md
 docs/AccessRequestDynamicApproverRequestedItemsInner.md
@@ -150,6 +153,7 @@ docs/AccountCorrelated.md
 docs/AccountCorrelatedAccount.md
 docs/AccountCorrelatedIdentity.md
 docs/AccountCorrelatedSource.md
+docs/AccountInfoDto.md
 docs/AccountRequestInfo.md
 docs/AccountStatusChanged.md
 docs/AccountStatusChangedAccount.md
@@ -179,6 +183,7 @@ docs/ApprovalScheme.md
 docs/ApprovalSchemeForRole.md
 docs/ApprovalStatus.md
 docs/ApprovalStatusDto.md
+docs/ApprovalStatusDtoCurrentOwner.md
 docs/ApprovalStatusDtoOriginalOwner.md
 docs/ApprovalSummary.md
 docs/Argument.md
@@ -192,8 +197,13 @@ docs/AttributeDefinitionSchema.md
 docs/AttributeDefinitionType.md
 docs/AttributesChanged.md
 docs/AuditDetails.md
+docs/AuthProfile.md
+docs/AuthProfileAPI.md
+docs/AuthProfileRequest.md
+docs/AuthProfileSummary.md
 docs/BaseCommonDto.md
 docs/BaseCommonDto1.md
+docs/BaseReferenceDto.md
 docs/BasicAuthConfig.md
 docs/BearerTokenAuthConfig.md
 docs/BeforeProvisioningRuleDto.md
@@ -234,6 +244,7 @@ docs/CloseAccessRequest.md
 docs/Comment.md
 docs/CommentDto.md
 docs/CommentDto1.md
+docs/CommentDto1Author.md
 docs/CommentDtoAuthor.md
 docs/CommonAccessIDStatus.md
 docs/CommonAccessItemAccess.md
@@ -246,6 +257,7 @@ docs/CompleteCampaignOptions.md
 docs/CompleteInvocation.md
 docs/CompleteInvocationInput.md
 docs/CompletedApproval.md
+docs/CompletedApprovalPreApprovalTriggerResult.md
 docs/CompletedApprovalReviewedBy.md
 docs/CompletedApprovalReviewerComment.md
 docs/CompletedApprovalState.md
@@ -256,6 +268,7 @@ docs/ConditionRule.md
 docs/ConfigObject.md
 docs/ConfigType.md
 docs/ConfigTypeEnum.md
+docs/ConfigTypeEnumCamel.md
 docs/ConfigurationDetailsResponse.md
 docs/ConfigurationItemRequest.md
 docs/ConfigurationItemResponse.md
@@ -272,6 +285,8 @@ docs/ConnectorRuleUpdateRequest.md
 docs/ConnectorRuleValidationResponse.md
 docs/ConnectorRuleValidationResponseDetailsInner.md
 docs/ConnectorsAPI.md
+docs/ContextAttributeDto.md
+docs/ContextAttributeDtoValue.md
 docs/CorrelatedGovernanceEvent.md
 docs/CreateDomainDkim405Response.md
 docs/CreateFormDefinitionFileRequestRequest.md
@@ -299,10 +314,13 @@ docs/Entitlement.md
 docs/EntitlementAccessRequestConfig.md
 docs/EntitlementApprovalScheme.md
 docs/EntitlementBulkUpdateRequest.md
+docs/EntitlementManuallyUpdatedFields.md
+docs/EntitlementOwner.md
 docs/EntitlementRef.md
 docs/EntitlementRequestConfig.md
 docs/EntitlementRequestConfig1.md
 docs/EntitlementSource.md
+docs/EntitlementSourceResetBaseReferenceDto.md
 docs/EntitlementsAPI.md
 docs/EntityCreatedByDTO.md
 docs/Error.md
@@ -347,7 +365,6 @@ docs/FormItemDetails.md
 docs/FormOwner.md
 docs/FormUsedBy.md
 docs/ForwardApprovalDto.md
-docs/FullAccount.md
 docs/Fullcampaign.md
 docs/FullcampaignAllOfFilter.md
 docs/FullcampaignAllOfRoleCompositionCampaignInfo.md
@@ -360,6 +377,7 @@ docs/GetActiveCampaigns200ResponseInner.md
 docs/GetHistoricalIdentityEvents200ResponseInner.md
 docs/GetOAuthClientResponse.md
 docs/GetPersonalAccessTokenResponse.md
+docs/GetRoleAssignments200ResponseInner.md
 docs/GovernanceGroupsAPI.md
 docs/GrantType.md
 docs/HttpAuthenticationType.md
@@ -399,6 +417,7 @@ docs/IdentityCreated.md
 docs/IdentityCreatedIdentity.md
 docs/IdentityDeleted.md
 docs/IdentityDeletedIdentity.md
+docs/IdentityDtoLifecycleState.md
 docs/IdentityDtoManagerRef.md
 docs/IdentityEntities.md
 docs/IdentityEntitiesIdentityEntity.md
@@ -428,6 +447,7 @@ docs/IdentitySyncJob.md
 docs/IdentitySyncPayload.md
 docs/IdentityWithNewAccess.md
 docs/IdentityWithNewAccessAccessRefsInner.md
+docs/ImportEntitlementCsvRequest.md
 docs/ImportFormDefinitions202Response.md
 docs/ImportFormDefinitions202ResponseErrorsInner.md
 docs/ImportNonEmployeeRecordsInBulkRequest.md
@@ -445,12 +465,12 @@ docs/KbaAnswerRequestItem.md
 docs/KbaAuthResponse.md
 docs/KbaAuthResponseItem.md
 docs/LatestOutlierSummary.md
+docs/License.md
 docs/LifecycleState.md
 docs/LifecycleStateDto.md
 docs/LifecycleStatesAPI.md
 docs/ListAccessProfiles401Response.md
 docs/ListAccessProfiles429Response.md
-docs/ListAccounts200ResponseInner.md
 docs/ListCompleteWorkflowLibrary200ResponseInner.md
 docs/ListFormDefinitionsByTenantResponse.md
 docs/ListFormElementDataByElementIDResponse.md
@@ -458,6 +478,7 @@ docs/ListFormInstancesByTenantResponse.md
 docs/ListIdentityAccessItems200ResponseInner.md
 docs/ListPredefinedSelectOptionsResponse.md
 docs/ListWorkgroupMembers200ResponseInner.md
+docs/LoadEntitlementTask.md
 docs/LocaleOrigin.md
 docs/LocalizedMessage.md
 docs/LookupStep.md
@@ -565,6 +586,7 @@ docs/PreApprovalTriggerDetails.md
 docs/PreferencesDto.md
 docs/PreviewDataSourceResponse.md
 docs/ProcessIdentitiesRequest.md
+docs/Product.md
 docs/ProvisioningCompleted.md
 docs/ProvisioningCompletedAccountRequestsInner.md
 docs/ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner.md
@@ -611,7 +633,12 @@ docs/RequestableObjectRequestStatus.md
 docs/RequestableObjectType.md
 docs/RequestableObjectsAPI.md
 docs/RequestedItemStatus.md
+docs/RequestedItemStatusCancelledRequestDetails.md
+docs/RequestedItemStatusPreApprovalTriggerDetails.md
+docs/RequestedItemStatusProvisioningDetails.md
 docs/RequestedItemStatusRequestState.md
+docs/RequestedItemStatusRequesterComment.md
+docs/RequestedItemStatusSodViolationContext.md
 docs/ResourceBundleMessage.md
 docs/ResourceObject.md
 docs/ResourceObjectsRequest.md
@@ -621,6 +648,8 @@ docs/Reviewer.md
 docs/Revocability.md
 docs/RevocabilityForRole.md
 docs/Role.md
+docs/RoleAssignmentDto.md
+docs/RoleAssignmentRef.md
 docs/RoleAssignmentSourceType.md
 docs/RoleBulkDeleteRequest.md
 docs/RoleCriteriaKey.md
@@ -639,6 +668,7 @@ docs/RoleInsightsInsight.md
 docs/RoleInsightsResponse.md
 docs/RoleInsightsRole.md
 docs/RoleInsightsSummary.md
+docs/RoleMatchDto.md
 docs/RoleMembershipIdentity.md
 docs/RoleMembershipSelector.md
 docs/RoleMembershipSelectorType.md
@@ -667,6 +697,7 @@ docs/RoleMiningSessionScope.md
 docs/RoleMiningSessionScopingMethod.md
 docs/RoleMiningSessionState.md
 docs/RoleMiningSessionStatus.md
+docs/RoleTargetDto.md
 docs/RolesAPI.md
 docs/SODPolicyAPI.md
 docs/SODViolationsAPI.md
@@ -680,6 +711,7 @@ docs/Schedule.md
 docs/Schedule1.md
 docs/Schedule1Days.md
 docs/Schedule1Hours.md
+docs/Schedule1Months.md
 docs/ScheduleDays.md
 docs/ScheduleHours.md
 docs/ScheduleMonths.md
@@ -703,7 +735,6 @@ docs/ServiceDeskIntegrationDto.md
 docs/ServiceDeskIntegrationTemplateDto.md
 docs/ServiceDeskIntegrationTemplateType.md
 docs/ServiceDeskSource.md
-docs/SlimAccount.md
 docs/Slimcampaign.md
 docs/SodExemptCriteria.md
 docs/SodExemptCriteria1.md
@@ -725,9 +756,11 @@ docs/SodViolationContextConflictingAccessCriteria.md
 docs/SodViolationContextConflictingAccessCriteriaLeftCriteria.md
 docs/Source.md
 docs/Source1.md
-docs/SourceAccount.md
 docs/SourceAccountCorrelationConfig.md
 docs/SourceAccountCorrelationRule.md
+docs/SourceAccountCreated.md
+docs/SourceAccountDeleted.md
+docs/SourceAccountUpdated.md
 docs/SourceBeforeProvisioningRule.md
 docs/SourceCluster.md
 docs/SourceClusterDto.md
@@ -784,6 +817,8 @@ docs/TaskStatusMessage.md
 docs/TemplateBulkDeleteDto.md
 docs/TemplateDto.md
 docs/TemplateDtoDefault.md
+docs/Tenant.md
+docs/TenantAPI.md
 docs/TenantConfigurationDetails.md
 docs/TenantConfigurationRequest.md
 docs/TenantConfigurationResponse.md
@@ -888,6 +923,7 @@ model_access_profile_usage_used_by_inner.go
 model_access_recommendation_message.go
 model_access_request.go
 model_access_request_config.go
+model_access_request_context.go
 model_access_request_dynamic_approver.go
 model_access_request_dynamic_approver_1.go
 model_access_request_dynamic_approver_requested_items_inner.go
@@ -934,6 +970,7 @@ model_account_correlated.go
 model_account_correlated_account.go
 model_account_correlated_identity.go
 model_account_correlated_source.go
+model_account_info_dto.go
 model_account_request_info.go
 model_account_status_changed.go
 model_account_status_changed_account.go
@@ -961,6 +998,7 @@ model_approval_scheme.go
 model_approval_scheme_for_role.go
 model_approval_status.go
 model_approval_status_dto.go
+model_approval_status_dto_current_owner.go
 model_approval_status_dto_original_owner.go
 model_approval_summary.go
 model_argument.go
@@ -974,8 +1012,12 @@ model_attribute_definition_schema.go
 model_attribute_definition_type.go
 model_attributes_changed.go
 model_audit_details.go
+model_auth_profile.go
+model_auth_profile_request.go
+model_auth_profile_summary.go
 model_base_common_dto.go
 model_base_common_dto_1.go
+model_base_reference_dto.go
 model_basic_auth_config.go
 model_bearer_token_auth_config.go
 model_before_provisioning_rule_dto.go
@@ -1014,6 +1056,7 @@ model_close_access_request.go
 model_comment.go
 model_comment_dto.go
 model_comment_dto_1.go
+model_comment_dto_1_author.go
 model_comment_dto_author.go
 model_common_access_id_status.go
 model_common_access_item_access.go
@@ -1026,6 +1069,7 @@ model_complete_campaign_options.go
 model_complete_invocation.go
 model_complete_invocation_input.go
 model_completed_approval.go
+model_completed_approval_pre_approval_trigger_result.go
 model_completed_approval_reviewed_by.go
 model_completed_approval_reviewer_comment.go
 model_completed_approval_state.go
@@ -1036,6 +1080,7 @@ model_condition_rule.go
 model_config_object.go
 model_config_type.go
 model_config_type_enum.go
+model_config_type_enum_camel.go
 model_configuration_details_response.go
 model_configuration_item_request.go
 model_configuration_item_response.go
@@ -1050,6 +1095,8 @@ model_connector_rule_response.go
 model_connector_rule_update_request.go
 model_connector_rule_validation_response.go
 model_connector_rule_validation_response_details_inner.go
+model_context_attribute_dto.go
+model_context_attribute_dto_value.go
 model_correlated_governance_event.go
 model_create_domain_dkim_405_response.go
 model_create_form_definition_file_request_request.go
@@ -1075,10 +1122,13 @@ model_entitlement.go
 model_entitlement_access_request_config.go
 model_entitlement_approval_scheme.go
 model_entitlement_bulk_update_request.go
+model_entitlement_manually_updated_fields.go
+model_entitlement_owner.go
 model_entitlement_ref.go
 model_entitlement_request_config.go
 model_entitlement_request_config_1.go
 model_entitlement_source.go
+model_entitlement_source_reset_base_reference_dto.go
 model_entity_created_by_dto.go
 model_error.go
 model_error_message.go
@@ -1122,7 +1172,6 @@ model_form_item_details.go
 model_form_owner.go
 model_form_used_by.go
 model_forward_approval_dto.go
-model_full_account.go
 model_fullcampaign.go
 model_fullcampaign_all_of_filter.go
 model_fullcampaign_all_of_role_composition_campaign_info.go
@@ -1135,6 +1184,7 @@ model_get_active_campaigns_200_response_inner.go
 model_get_historical_identity_events_200_response_inner.go
 model_get_o_auth_client_response.go
 model_get_personal_access_token_response.go
+model_get_role_assignments_200_response_inner.go
 model_grant_type.go
 model_http_authentication_type.go
 model_http_config.go
@@ -1164,6 +1214,7 @@ model_identity_created.go
 model_identity_created_identity.go
 model_identity_deleted.go
 model_identity_deleted_identity.go
+model_identity_dto_lifecycle_state.go
 model_identity_dto_manager_ref.go
 model_identity_entities.go
 model_identity_entities_identity_entity.go
@@ -1191,6 +1242,7 @@ model_identity_sync_job.go
 model_identity_sync_payload.go
 model_identity_with_new_access.go
 model_identity_with_new_access_access_refs_inner.go
+model_import_entitlement_csv_request.go
 model_import_form_definitions_202_response.go
 model_import_form_definitions_202_response_errors_inner.go
 model_import_non_employee_records_in_bulk_request.go
@@ -1208,11 +1260,11 @@ model_kba_answer_request_item.go
 model_kba_auth_response.go
 model_kba_auth_response_item.go
 model_latest_outlier_summary.go
+model_license.go
 model_lifecycle_state.go
 model_lifecycle_state_dto.go
 model_list_access_profiles_401_response.go
 model_list_access_profiles_429_response.go
-model_list_accounts_200_response_inner.go
 model_list_complete_workflow_library_200_response_inner.go
 model_list_form_definitions_by_tenant_response.go
 model_list_form_element_data_by_element_id_response.go
@@ -1220,6 +1272,7 @@ model_list_form_instances_by_tenant_response.go
 model_list_identity_access_items_200_response_inner.go
 model_list_predefined_select_options_response.go
 model_list_workgroup_members_200_response_inner.go
+model_load_entitlement_task.go
 model_locale_origin.go
 model_localized_message.go
 model_lookup_step.go
@@ -1314,6 +1367,7 @@ model_pre_approval_trigger_details.go
 model_preferences_dto.go
 model_preview_data_source_response.go
 model_process_identities_request.go
+model_product.go
 model_provisioning_completed.go
 model_provisioning_completed_account_requests_inner.go
 model_provisioning_completed_account_requests_inner_attribute_requests_inner.go
@@ -1358,7 +1412,12 @@ model_requestable_object_reference.go
 model_requestable_object_request_status.go
 model_requestable_object_type.go
 model_requested_item_status.go
+model_requested_item_status_cancelled_request_details.go
+model_requested_item_status_pre_approval_trigger_details.go
+model_requested_item_status_provisioning_details.go
 model_requested_item_status_request_state.go
+model_requested_item_status_requester_comment.go
+model_requested_item_status_sod_violation_context.go
 model_resource_bundle_message.go
 model_resource_object.go
 model_resource_objects_request.go
@@ -1368,6 +1427,8 @@ model_reviewer.go
 model_revocability.go
 model_revocability_for_role.go
 model_role.go
+model_role_assignment_dto.go
+model_role_assignment_ref.go
 model_role_assignment_source_type.go
 model_role_bulk_delete_request.go
 model_role_criteria_key.go
@@ -1385,6 +1446,7 @@ model_role_insights_insight.go
 model_role_insights_response.go
 model_role_insights_role.go
 model_role_insights_summary.go
+model_role_match_dto.go
 model_role_membership_identity.go
 model_role_membership_selector.go
 model_role_membership_selector_type.go
@@ -1413,6 +1475,7 @@ model_role_mining_session_scope.go
 model_role_mining_session_scoping_method.go
 model_role_mining_session_state.go
 model_role_mining_session_status.go
+model_role_target_dto.go
 model_saved_search_complete.go
 model_saved_search_complete_search_results.go
 model_saved_search_complete_search_results_account.go
@@ -1422,6 +1485,7 @@ model_schedule.go
 model_schedule_1.go
 model_schedule_1_days.go
 model_schedule_1_hours.go
+model_schedule_1_months.go
 model_schedule_days.go
 model_schedule_hours.go
 model_schedule_months.go
@@ -1442,7 +1506,6 @@ model_service_desk_integration_dto.go
 model_service_desk_integration_template_dto.go
 model_service_desk_integration_template_type.go
 model_service_desk_source.go
-model_slim_account.go
 model_slimcampaign.go
 model_sod_exempt_criteria.go
 model_sod_exempt_criteria_1.go
@@ -1464,9 +1527,11 @@ model_sod_violation_context_conflicting_access_criteria.go
 model_sod_violation_context_conflicting_access_criteria_left_criteria.go
 model_source.go
 model_source_1.go
-model_source_account.go
 model_source_account_correlation_config.go
 model_source_account_correlation_rule.go
+model_source_account_created.go
+model_source_account_deleted.go
+model_source_account_updated.go
 model_source_before_provisioning_rule.go
 model_source_cluster.go
 model_source_cluster_dto.go
@@ -1519,6 +1584,7 @@ model_task_status_message.go
 model_template_bulk_delete_dto.go
 model_template_dto.go
 model_template_dto_default.go
+model_tenant.go
 model_tenant_configuration_details.go
 model_tenant_configuration_request.go
 model_tenant_configuration_response.go
@@ -1591,6 +1657,7 @@ test/api_account_activities_test.go
 test/api_account_aggregations_test.go
 test/api_account_usages_test.go
 test/api_accounts_test.go
+test/api_auth_profile_test.go
 test/api_certification_campaigns_test.go
 test/api_certifications_test.go
 test/api_connector_rule_management_test.go
@@ -1638,6 +1705,7 @@ test/api_sources_test.go
 test/api_sp_config_test.go
 test/api_tagged_objects_test.go
 test/api_task_management_test.go
+test/api_tenant_test.go
 test/api_transforms_test.go
 test/api_triggers_test.go
 test/api_work_items_test.go

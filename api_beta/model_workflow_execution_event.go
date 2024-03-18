@@ -175,7 +175,7 @@ func (o *WorkflowExecutionEvent) UnmarshalJSON(bytes []byte) (err error) {
 	varWorkflowExecutionEvent := _WorkflowExecutionEvent{}
 
 	if err = json.Unmarshal(bytes, &varWorkflowExecutionEvent); err == nil {
-	*o = WorkflowExecutionEvent(varWorkflowExecutionEvent)
+			*o = WorkflowExecutionEvent(varWorkflowExecutionEvent)
 }
 
 	additionalProperties := make(map[string]interface{})

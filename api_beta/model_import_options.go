@@ -252,7 +252,7 @@ func (o *ImportOptions) UnmarshalJSON(bytes []byte) (err error) {
 	varImportOptions := _ImportOptions{}
 
 	if err = json.Unmarshal(bytes, &varImportOptions); err == nil {
-	*o = ImportOptions(varImportOptions)
+			*o = ImportOptions(varImportOptions)
 }
 
 	additionalProperties := make(map[string]interface{})

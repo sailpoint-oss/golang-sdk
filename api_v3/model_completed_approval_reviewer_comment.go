@@ -18,12 +18,13 @@ import (
 // checks if the CompletedApprovalReviewerComment type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &CompletedApprovalReviewerComment{}
 
-// CompletedApprovalReviewerComment The approval's reviewer's comment.
+// CompletedApprovalReviewerComment struct for CompletedApprovalReviewerComment
 type CompletedApprovalReviewerComment struct {
 	// Comment content.
 	Comment NullableString `json:"comment,omitempty"`
 	// Date and time comment was created.
 	Created *time.Time `json:"created,omitempty"`
+	Author *CommentDtoAuthor `json:"author,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -120,6 +121,38 @@ func (o *CompletedApprovalReviewerComment) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
+// GetAuthor returns the Author field value if set, zero value otherwise.
+func (o *CompletedApprovalReviewerComment) GetAuthor() CommentDtoAuthor {
+	if o == nil || isNil(o.Author) {
+		var ret CommentDtoAuthor
+		return ret
+	}
+	return *o.Author
+}
+
+// GetAuthorOk returns a tuple with the Author field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CompletedApprovalReviewerComment) GetAuthorOk() (*CommentDtoAuthor, bool) {
+	if o == nil || isNil(o.Author) {
+		return nil, false
+	}
+	return o.Author, true
+}
+
+// HasAuthor returns a boolean if a field has been set.
+func (o *CompletedApprovalReviewerComment) HasAuthor() bool {
+	if o != nil && !isNil(o.Author) {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthor gets a reference to the given CommentDtoAuthor and assigns it to the Author field.
+func (o *CompletedApprovalReviewerComment) SetAuthor(v CommentDtoAuthor) {
+	o.Author = &v
+}
+
 func (o CompletedApprovalReviewerComment) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -136,6 +169,9 @@ func (o CompletedApprovalReviewerComment) ToMap() (map[string]interface{}, error
 	if !isNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
+	if !isNil(o.Author) {
+		toSerialize["author"] = o.Author
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -148,7 +184,7 @@ func (o *CompletedApprovalReviewerComment) UnmarshalJSON(bytes []byte) (err erro
 	varCompletedApprovalReviewerComment := _CompletedApprovalReviewerComment{}
 
 	if err = json.Unmarshal(bytes, &varCompletedApprovalReviewerComment); err == nil {
-	*o = CompletedApprovalReviewerComment(varCompletedApprovalReviewerComment)
+			*o = CompletedApprovalReviewerComment(varCompletedApprovalReviewerComment)
 }
 
 	additionalProperties := make(map[string]interface{})
@@ -156,6 +192,7 @@ func (o *CompletedApprovalReviewerComment) UnmarshalJSON(bytes []byte) (err erro
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "comment")
 		delete(additionalProperties, "created")
+		delete(additionalProperties, "author")
 		o.AdditionalProperties = additionalProperties
 	}
 

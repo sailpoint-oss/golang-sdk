@@ -255,7 +255,7 @@ func (o *Access) UnmarshalJSON(bytes []byte) (err error) {
 	varAccess := _Access{}
 
 	if err = json.Unmarshal(bytes, &varAccess); err == nil {
-	*o = Access(varAccess)
+			*o = Access(varAccess)
 }
 
 	additionalProperties := make(map[string]interface{})

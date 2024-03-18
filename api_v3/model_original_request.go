@@ -210,7 +210,7 @@ func (o *OriginalRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varOriginalRequest := _OriginalRequest{}
 
 	if err = json.Unmarshal(bytes, &varOriginalRequest); err == nil {
-	*o = OriginalRequest(varOriginalRequest)
+			*o = OriginalRequest(varOriginalRequest)
 }
 
 	additionalProperties := make(map[string]interface{})

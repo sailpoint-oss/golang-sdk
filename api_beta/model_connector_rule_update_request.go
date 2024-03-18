@@ -283,7 +283,7 @@ func (o ConnectorRuleUpdateRequest) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *ConnectorRuleUpdateRequest) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -310,7 +310,7 @@ func (o *ConnectorRuleUpdateRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varConnectorRuleUpdateRequest := _ConnectorRuleUpdateRequest{}
 
 	if err = json.Unmarshal(bytes, &varConnectorRuleUpdateRequest); err == nil {
-	*o = ConnectorRuleUpdateRequest(varConnectorRuleUpdateRequest)
+			*o = ConnectorRuleUpdateRequest(varConnectorRuleUpdateRequest)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Operation** | Pointer to [**ProvisioningCriteriaOperation**](ProvisioningCriteriaOperation.md) |  | [optional] 
 **Attribute** | Pointer to **NullableString** | Name of the Account attribute to be tested. If **operation** is one of EQUALS, NOT_EQUALS, CONTAINS, or HAS, this field is required. Otherwise, specifying it is an error. | [optional] 
 **Value** | Pointer to **string** | String value to test the Account attribute w/r/t the specified operation. If the operation is one of EQUALS, NOT_EQUALS, or CONTAINS, this field is required. Otherwise, specifying it is an error. If the Attribute is not String-typed, it will be converted to the appropriate type. | [optional] 
+**Children** | Pointer to **NullableString** | Array of child criteria. Required if the operation is AND or OR, otherwise it must be left null. A maximum of three levels of criteria are supported, including leaf nodes. | [optional] 
 
 ## Methods
 
@@ -112,6 +113,41 @@ SetValue sets Value field to given value.
 
 HasValue returns a boolean if a field has been set.
 
+### GetChildren
+
+`func (o *ProvisioningCriteriaLevel3) GetChildren() string`
+
+GetChildren returns the Children field if non-nil, zero value otherwise.
+
+### GetChildrenOk
+
+`func (o *ProvisioningCriteriaLevel3) GetChildrenOk() (*string, bool)`
+
+GetChildrenOk returns a tuple with the Children field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChildren
+
+`func (o *ProvisioningCriteriaLevel3) SetChildren(v string)`
+
+SetChildren sets Children field to given value.
+
+### HasChildren
+
+`func (o *ProvisioningCriteriaLevel3) HasChildren() bool`
+
+HasChildren returns a boolean if a field has been set.
+
+### SetChildrenNil
+
+`func (o *ProvisioningCriteriaLevel3) SetChildrenNil(b bool)`
+
+ SetChildrenNil sets the value for Children to be an explicit nil
+
+### UnsetChildren
+`func (o *ProvisioningCriteriaLevel3) UnsetChildren()`
+
+UnsetChildren ensures that no value is present for Children, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

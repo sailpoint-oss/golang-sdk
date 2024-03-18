@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**State** | Pointer to **string** | The status of SOD violation check | [optional] 
-**Uuid** | Pointer to **string** | The id of the Violation check event | [optional] 
+**State** | Pointer to **NullableString** | The status of SOD violation check | [optional] 
+**Uuid** | Pointer to **NullableString** | The id of the Violation check event | [optional] 
 **ViolationCheckResult** | Pointer to [**SodViolationCheckResult**](SodViolationCheckResult.md) |  | [optional] 
 
 ## Methods
@@ -52,6 +52,16 @@ SetState sets State field to given value.
 
 HasState returns a boolean if a field has been set.
 
+### SetStateNil
+
+`func (o *SodViolationContextCheckCompleted) SetStateNil(b bool)`
+
+ SetStateNil sets the value for State to be an explicit nil
+
+### UnsetState
+`func (o *SodViolationContextCheckCompleted) UnsetState()`
+
+UnsetState ensures that no value is present for State, not even an explicit nil
 ### GetUuid
 
 `func (o *SodViolationContextCheckCompleted) GetUuid() string`
@@ -77,6 +87,16 @@ SetUuid sets Uuid field to given value.
 
 HasUuid returns a boolean if a field has been set.
 
+### SetUuidNil
+
+`func (o *SodViolationContextCheckCompleted) SetUuidNil(b bool)`
+
+ SetUuidNil sets the value for Uuid to be an explicit nil
+
+### UnsetUuid
+`func (o *SodViolationContextCheckCompleted) UnsetUuid()`
+
+UnsetUuid ensures that no value is present for Uuid, not even an explicit nil
 ### GetViolationCheckResult
 
 `func (o *SodViolationContextCheckCompleted) GetViolationCheckResult() SodViolationCheckResult`

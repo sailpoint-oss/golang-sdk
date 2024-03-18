@@ -4,68 +4,36 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GenerateDigitToken**](PasswordManagementAPI.md#GenerateDigitToken) | **Post** /generate-password-reset-token/digit | Generate a digit token
-[**GetIdentityPasswordChangeStatus**](PasswordManagementAPI.md#GetIdentityPasswordChangeStatus) | **Get** /password-change-status/{id} | Get Password Change Request Status
-[**QueryPasswordInfo**](PasswordManagementAPI.md#QueryPasswordInfo) | **Post** /query-password-info | Query Password Info
-[**SetIdentityPassword**](PasswordManagementAPI.md#SetIdentityPassword) | **Post** /set-password | Set Identity&#39;s Password
+[**GenerateDigitToken**](#generate-digit-token) | **Post** /generate-password-reset-token/digit | Generate a digit token
+[**GetIdentityPasswordChangeStatus**](#get-identity-password-change-status) | **Get** /password-change-status/{id} | Get Password Change Request Status
+[**QueryPasswordInfo**](#query-password-info) | **Post** /query-password-info | Query Password Info
+[**SetIdentityPassword**](#set-identity-password) | **Post** /set-password | Set Identity&#39;s Password
 
 
 
-## GenerateDigitToken
-
-> PasswordDigitToken GenerateDigitToken(ctx).PasswordDigitTokenReset(passwordDigitTokenReset).Execute()
-
-Generate a digit token
+## generate-digit-token
 
 
+This API is used to generate a digit token for password management. Requires authorization scope of "idn:password-digit-token:create".
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | passwordDigitTokenReset | [**PasswordDigitTokenReset**](PasswordDigitTokenReset.md) | True  | 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    passwordDigitTokenReset := *openapiclient.NewPasswordDigitTokenReset("Abby.Smith") // PasswordDigitTokenReset | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordManagementAPI.GenerateDigitToken(context.Background()).PasswordDigitTokenReset(passwordDigitTokenReset).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementAPI.GenerateDigitToken``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GenerateDigitToken`: PasswordDigitToken
-    fmt.Fprintf(os.Stdout, "Response from `PasswordManagementAPI.GenerateDigitToken`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGenerateDigitTokenRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **passwordDigitTokenReset** | [**PasswordDigitTokenReset**](PasswordDigitTokenReset.md) |  | 
-
+	
 ### Return type
 
-[**PasswordDigitToken**](PasswordDigitToken.md)
+[**PasswordDigitToken**](PasswordDigitToken)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | The digit token for password management. | PasswordDigitToken
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -77,65 +45,31 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetIdentityPasswordChangeStatus
-
-> PasswordStatus GetIdentityPasswordChangeStatus(ctx, id).Execute()
-
-Get Password Change Request Status
+## get-identity-password-change-status
 
 
+This API returns the status of a password change request. A token with identity owner or trusted API client application authority is required to call this API.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    id := "id_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordManagementAPI.GetIdentityPasswordChangeStatus(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementAPI.GetIdentityPasswordChangeStatus``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetIdentityPasswordChangeStatus`: PasswordStatus
-    fmt.Fprintf(os.Stdout, "Response from `PasswordManagementAPI.GetIdentityPasswordChangeStatus`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetIdentityPasswordChangeStatusRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+	
 ### Return type
 
-[**PasswordStatus**](PasswordStatus.md)
+[**PasswordStatus**](PasswordStatus)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Status of the password change request | PasswordStatus
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -147,61 +81,39 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## QueryPasswordInfo
-
-> PasswordInfo QueryPasswordInfo(ctx).PasswordInfoQueryDTO(passwordInfoQueryDTO).Execute()
-
-Query Password Info
+## query-password-info
 
 
+This API is used to query password related information. 
 
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    passwordInfoQueryDTO := *openapiclient.NewPasswordInfoQueryDTO() // PasswordInfoQueryDTO | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordManagementAPI.QueryPasswordInfo(context.Background()).PasswordInfoQueryDTO(passwordInfoQueryDTO).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementAPI.QueryPasswordInfo``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `QueryPasswordInfo`: PasswordInfo
-    fmt.Fprintf(os.Stdout, "Response from `PasswordManagementAPI.QueryPasswordInfo`: %v\n", resp)
-}
-```
-
-### Path Parameters
+A token with [API authority](https://developer.sailpoint.com/idn/api/authentication#client-credentials-grant-flow) 
+is required to call this API.  "API authority" refers to a token that only has the "client_credentials" 
+grant type, and therefore no user context. A [personal access token](https://developer.sailpoint.com/idn/api/authentication#personal-access-tokens) 
+or a token generated with the [authorization_code](https://developer.sailpoint.com/idn/api/authentication#authorization-code-grant-flow) 
+grant type will **NOT** work on this endpoint, and a `403 Forbidden` response 
+will be returned.
 
 
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | passwordInfoQueryDTO | [**PasswordInfoQueryDTO**](PasswordInfoQueryDTO.md) | True  | 
 
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiQueryPasswordInfoRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **passwordInfoQueryDTO** | [**PasswordInfoQueryDTO**](PasswordInfoQueryDTO.md) |  | 
-
+	
 ### Return type
 
-[**PasswordInfo**](PasswordInfo.md)
+[**PasswordInfo**](PasswordInfo)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Reference to the password info. | PasswordInfo
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -213,61 +125,72 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SetIdentityPassword
-
-> PasswordChangeResponse SetIdentityPassword(ctx).PasswordChangeRequest(passwordChangeRequest).Execute()
-
-Set Identity's Password
+## set-identity-password
 
 
+This API is used to set a password for an identity. 
 
-### Example
+An identity can change their own password (as well as any of their accounts' passwords) if they use a token generated by their IDN user, such as a [personal access token](https://developer.sailpoint.com/idn/api/authentication#personal-access-tokens) or ["authorization_code" derived OAuth token](https://developer.sailpoint.com/idn/api/authentication#authorization-code-grant-flow).
 
-```go
-package main
+A token with [API authority](https://developer.sailpoint.com/idn/api/authentication#client-credentials-grant-flow) can be used to change **any** identity's password or the password of any of the identity's accounts. 
+"API authority" refers to a token that only has the "client_credentials" grant type.
 
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
+You can use this endpoint to generate an `encryptedPassword` (RSA encrypted using publicKey). 
+To do so, follow these steps:
 
-func main() {
-    passwordChangeRequest := *openapiclient.NewPasswordChangeRequest() // PasswordChangeRequest | 
+1. Use [Query Password Info](https://developer.sailpoint.com/idn/api/v3/query-password-info) to get the following information: `identityId`, `sourceId`, `publicKeyId`, `publicKey`, `accounts`, and `policies`. 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordManagementAPI.SetIdentityPassword(context.Background()).PasswordChangeRequest(passwordChangeRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementAPI.SetIdentityPassword``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `SetIdentityPassword`: PasswordChangeResponse
-    fmt.Fprintf(os.Stdout, "Response from `PasswordManagementAPI.SetIdentityPassword`: %v\n", resp)
+2. Choose an account from the previous response that you will provide as an `accountId` in your request to set an encrypted password. 
+
+3. Use [Set Identity's Password](https://developer.sailpoint.com/idn/api/v3/set-password) and provide the information you got from your earlier query. Then add this code to your request to get the encrypted password:
+
+```java
+import javax.crypto.Cipher;
+import java.security.KeyFactory;
+import java.security.PublicKey;
+import java.security.spec.X509EncodedKeySpec;
+import java util.Base64;
+
+String encrypt(String publicKey, String toEncrypt) throws Exception {
+  byte[] publicKeyBytes = Base64.getDecoder().decode(publicKey);
+  byte[] encryptedBytes = encryptRsa(publicKeyBytes, toEncrypt.getBytes("UTF-8"));
+  return Base64.getEncoder().encodeToString(encryptedBytes);
 }
-```
 
-### Path Parameters
+private byte[] encryptRsa(byte[] publicKeyBytes, byte[] toEncryptBytes) throws Exception {
+  PublicKey key = KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec(publicKeyBytes));
+  String transformation = "RSA/ECB/PKCS1Padding";
+  Cipher cipher = Cipher.getInstance(transformation);
+  cipher.init(1, key);
+  return cipher.doFinal(toEncryptBytes);
+}
+```    
+
+In this example, `toEncrypt` refers to the plain text password you are setting and then encrypting, and the `publicKey` refers to the publicKey you got from the first request you sent. 
+
+You can then use [Get Password Change Request Status](https://developer.sailpoint.com/idn/api/v3/get-password-change-status) to check the password change request status. To do so, you must provide the `requestId` from your earlier request to set the password. 
 
 
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | passwordChangeRequest | [**PasswordChangeRequest**](PasswordChangeRequest.md) | True  | 
 
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiSetIdentityPasswordRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **passwordChangeRequest** | [**PasswordChangeRequest**](PasswordChangeRequest.md) |  | 
-
+	
 ### Return type
 
-[**PasswordChangeResponse**](PasswordChangeResponse.md)
+[**PasswordChangeResponse**](PasswordChangeResponse)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+202 | Reference to the password change. | PasswordChangeResponse
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 

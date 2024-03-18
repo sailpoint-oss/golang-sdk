@@ -100,7 +100,7 @@ func (o *ViolationPrediction) UnmarshalJSON(bytes []byte) (err error) {
 	varViolationPrediction := _ViolationPrediction{}
 
 	if err = json.Unmarshal(bytes, &varViolationPrediction); err == nil {
-	*o = ViolationPrediction(varViolationPrediction)
+			*o = ViolationPrediction(varViolationPrediction)
 }
 
 	additionalProperties := make(map[string]interface{})

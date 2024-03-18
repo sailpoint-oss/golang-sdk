@@ -249,7 +249,7 @@ func (o *LatestOutlierSummary) UnmarshalJSON(bytes []byte) (err error) {
 	varLatestOutlierSummary := _LatestOutlierSummary{}
 
 	if err = json.Unmarshal(bytes, &varLatestOutlierSummary); err == nil {
-	*o = LatestOutlierSummary(varLatestOutlierSummary)
+			*o = LatestOutlierSummary(varLatestOutlierSummary)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -396,7 +396,7 @@ func (o *RemediationItems) UnmarshalJSON(bytes []byte) (err error) {
 	varRemediationItems := _RemediationItems{}
 
 	if err = json.Unmarshal(bytes, &varRemediationItems); err == nil {
-	*o = RemediationItems(varRemediationItems)
+			*o = RemediationItems(varRemediationItems)
 }
 
 	additionalProperties := make(map[string]interface{})

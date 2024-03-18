@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | Id of the campaign filter | [optional] 
 **Name** | **string** | This is campaign filter&#39;s name. | 
 **Description** | **string** | This is campaign filter&#39;s description. | 
-**Owner** | **string** | The owner of this filter. This field is automatically populated at creation time with the current user. | 
+**Owner** | **NullableString** | The owner of this filter. This field is automatically populated at creation time with the current user. | 
 **Mode** | **map[string]interface{}** | The mode/type of Filter, where it is of INCLUSION or EXCLUSION type. INCLUSION type will include the data in generated campaign  as per specified in criteria, whereas EXCLUSION type will exclude the the data in generated campaign as per specified in criteria. | 
 **CriteriaList** | Pointer to [**[]CampaignFilterDetailsCriteriaListInner**](CampaignFilterDetailsCriteriaListInner.md) | List of criteria. | [optional] 
 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewCampaignFilterDetails
 
-`func NewCampaignFilterDetails(name string, description string, owner string, mode map[string]interface{}, ) *CampaignFilterDetails`
+`func NewCampaignFilterDetails(name string, description string, owner NullableString, mode map[string]interface{}, ) *CampaignFilterDetails`
 
 NewCampaignFilterDetails instantiates a new CampaignFilterDetails object
 This constructor will assign default values to properties that have it defined,
@@ -115,6 +115,16 @@ and a boolean to check if the value has been set.
 SetOwner sets Owner field to given value.
 
 
+### SetOwnerNil
+
+`func (o *CampaignFilterDetails) SetOwnerNil(b bool)`
+
+ SetOwnerNil sets the value for Owner to be an explicit nil
+
+### UnsetOwner
+`func (o *CampaignFilterDetails) UnsetOwner()`
+
+UnsetOwner ensures that no value is present for Owner, not even an explicit nil
 ### GetMode
 
 `func (o *CampaignFilterDetails) GetMode() map[string]interface{}`

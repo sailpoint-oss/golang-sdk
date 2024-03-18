@@ -472,7 +472,7 @@ func (o *SpConfigObject) UnmarshalJSON(bytes []byte) (err error) {
 	varSpConfigObject := _SpConfigObject{}
 
 	if err = json.Unmarshal(bytes, &varSpConfigObject); err == nil {
-	*o = SpConfigObject(varSpConfigObject)
+			*o = SpConfigObject(varSpConfigObject)
 }
 
 	additionalProperties := make(map[string]interface{})

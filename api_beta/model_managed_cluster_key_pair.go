@@ -204,7 +204,7 @@ func (o *ManagedClusterKeyPair) UnmarshalJSON(bytes []byte) (err error) {
 	varManagedClusterKeyPair := _ManagedClusterKeyPair{}
 
 	if err = json.Unmarshal(bytes, &varManagedClusterKeyPair); err == nil {
-	*o = ManagedClusterKeyPair(varManagedClusterKeyPair)
+			*o = ManagedClusterKeyPair(varManagedClusterKeyPair)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -100,7 +100,7 @@ func (o *CampaignAllOfSourceOwnerCampaignInfo) UnmarshalJSON(bytes []byte) (err 
 	varCampaignAllOfSourceOwnerCampaignInfo := _CampaignAllOfSourceOwnerCampaignInfo{}
 
 	if err = json.Unmarshal(bytes, &varCampaignAllOfSourceOwnerCampaignInfo); err == nil {
-	*o = CampaignAllOfSourceOwnerCampaignInfo(varCampaignAllOfSourceOwnerCampaignInfo)
+			*o = CampaignAllOfSourceOwnerCampaignInfo(varCampaignAllOfSourceOwnerCampaignInfo)
 }
 
 	additionalProperties := make(map[string]interface{})

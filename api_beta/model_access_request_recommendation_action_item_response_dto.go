@@ -173,7 +173,7 @@ func (o *AccessRequestRecommendationActionItemResponseDto) UnmarshalJSON(bytes [
 	varAccessRequestRecommendationActionItemResponseDto := _AccessRequestRecommendationActionItemResponseDto{}
 
 	if err = json.Unmarshal(bytes, &varAccessRequestRecommendationActionItemResponseDto); err == nil {
-	*o = AccessRequestRecommendationActionItemResponseDto(varAccessRequestRecommendationActionItemResponseDto)
+			*o = AccessRequestRecommendationActionItemResponseDto(varAccessRequestRecommendationActionItemResponseDto)
 }
 
 	additionalProperties := make(map[string]interface{})

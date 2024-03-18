@@ -99,7 +99,7 @@ func (o *VisibilityCriteria) UnmarshalJSON(bytes []byte) (err error) {
 	varVisibilityCriteria := _VisibilityCriteria{}
 
 	if err = json.Unmarshal(bytes, &varVisibilityCriteria); err == nil {
-	*o = VisibilityCriteria(varVisibilityCriteria)
+			*o = VisibilityCriteria(varVisibilityCriteria)
 }
 
 	additionalProperties := make(map[string]interface{})

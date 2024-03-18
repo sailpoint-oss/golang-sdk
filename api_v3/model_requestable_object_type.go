@@ -22,12 +22,14 @@ type RequestableObjectType string
 const (
 	REQUESTABLEOBJECTTYPE_ACCESS_PROFILE RequestableObjectType = "ACCESS_PROFILE"
 	REQUESTABLEOBJECTTYPE_ROLE RequestableObjectType = "ROLE"
+	REQUESTABLEOBJECTTYPE_ENTITLEMENT RequestableObjectType = "ENTITLEMENT"
 )
 
 // All allowed values of RequestableObjectType enum
 var AllowedRequestableObjectTypeEnumValues = []RequestableObjectType{
 	"ACCESS_PROFILE",
 	"ROLE",
+	"ENTITLEMENT",
 }
 
 func (v *RequestableObjectType) UnmarshalJSON(src []byte) error {

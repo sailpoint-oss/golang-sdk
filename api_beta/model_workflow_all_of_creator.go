@@ -174,7 +174,7 @@ func (o *WorkflowAllOfCreator) UnmarshalJSON(bytes []byte) (err error) {
 	varWorkflowAllOfCreator := _WorkflowAllOfCreator{}
 
 	if err = json.Unmarshal(bytes, &varWorkflowAllOfCreator); err == nil {
-	*o = WorkflowAllOfCreator(varWorkflowAllOfCreator)
+			*o = WorkflowAllOfCreator(varWorkflowAllOfCreator)
 }
 
 	additionalProperties := make(map[string]interface{})

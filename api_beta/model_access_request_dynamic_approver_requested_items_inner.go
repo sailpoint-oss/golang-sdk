@@ -267,7 +267,7 @@ func (o AccessRequestDynamicApproverRequestedItemsInner) ToMap() (map[string]int
 }
 
 func (o *AccessRequestDynamicApproverRequestedItemsInner) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -294,7 +294,7 @@ func (o *AccessRequestDynamicApproverRequestedItemsInner) UnmarshalJSON(bytes []
 	varAccessRequestDynamicApproverRequestedItemsInner := _AccessRequestDynamicApproverRequestedItemsInner{}
 
 	if err = json.Unmarshal(bytes, &varAccessRequestDynamicApproverRequestedItemsInner); err == nil {
-	*o = AccessRequestDynamicApproverRequestedItemsInner(varAccessRequestDynamicApproverRequestedItemsInner)
+			*o = AccessRequestDynamicApproverRequestedItemsInner(varAccessRequestDynamicApproverRequestedItemsInner)
 }
 
 	additionalProperties := make(map[string]interface{})

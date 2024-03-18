@@ -174,7 +174,7 @@ func (o *SourceAccountCorrelationRule) UnmarshalJSON(bytes []byte) (err error) {
 	varSourceAccountCorrelationRule := _SourceAccountCorrelationRule{}
 
 	if err = json.Unmarshal(bytes, &varSourceAccountCorrelationRule); err == nil {
-	*o = SourceAccountCorrelationRule(varSourceAccountCorrelationRule)
+			*o = SourceAccountCorrelationRule(varSourceAccountCorrelationRule)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -210,7 +210,7 @@ func (o *IdentityAttributePreview) UnmarshalJSON(bytes []byte) (err error) {
 	varIdentityAttributePreview := _IdentityAttributePreview{}
 
 	if err = json.Unmarshal(bytes, &varIdentityAttributePreview); err == nil {
-	*o = IdentityAttributePreview(varIdentityAttributePreview)
+			*o = IdentityAttributePreview(varIdentityAttributePreview)
 }
 
 	additionalProperties := make(map[string]interface{})

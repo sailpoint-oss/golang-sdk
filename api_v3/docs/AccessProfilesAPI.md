@@ -4,17 +4,17 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateAccessProfile**](AccessProfilesAPI.md#create-an-access-profile) | **Post** /access-profiles | Create an Access Profile
-[**DeleteAccessProfile**](AccessProfilesAPI.md#delete-the-specified-access-profile) | **Delete** /access-profiles/{id} | Delete the specified Access Profile
-[**DeleteAccessProfilesInBulk**](AccessProfilesAPI.md#delete-access-profiles) | **Post** /access-profiles/bulk-delete | Delete Access Profile(s)
-[**GetAccessProfile**](AccessProfilesAPI.md#get-an-access-profile) | **Get** /access-profiles/{id} | Get an Access Profile
-[**GetAccessProfileEntitlements**](AccessProfilesAPI.md#list-access-profiles-entitlements) | **Get** /access-profiles/{id}/entitlements | List Access Profile&#39;s Entitlements
-[**ListAccessProfiles**](AccessProfilesAPI.md#list-access-profiles) | **Get** /access-profiles | List Access Profiles
-[**PatchAccessProfile**](AccessProfilesAPI.md#patch-a-specified-access-profile) | **Patch** /access-profiles/{id} | Patch a specified Access Profile
+[**CreateAccessProfile**](#create-access-profile) | **Post** /access-profiles | Create an Access Profile
+[**DeleteAccessProfile**](#delete-access-profile) | **Delete** /access-profiles/{id} | Delete the specified Access Profile
+[**DeleteAccessProfilesInBulk**](#delete-access-profiles-in-bulk) | **Post** /access-profiles/bulk-delete | Delete Access Profile(s)
+[**GetAccessProfile**](#get-access-profile) | **Get** /access-profiles/{id} | Get an Access Profile
+[**GetAccessProfileEntitlements**](#get-access-profile-entitlements) | **Get** /access-profiles/{id}/entitlements | List Access Profile&#39;s Entitlements
+[**ListAccessProfiles**](#list-access-profiles) | **Get** /access-profiles | List Access Profiles
+[**PatchAccessProfile**](#patch-access-profile) | **Patch** /access-profiles/{id} | Patch a specified Access Profile
 
 
 
-## Create an Access Profile
+## create-access-profile
 
 
 This API creates an Access Profile.
@@ -26,10 +26,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | accessProfile | [**AccessProfile**](AccessProfile.md) | True  | 
 
-
+	
 ### Return type
 
-[**AccessProfile**](AccessProfile.md)
+[**AccessProfile**](AccessProfile)
 
 ### Responses
 Code | Description  | Data Type
@@ -51,59 +51,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
- id := "123" 
-	 ownerName := "John Doe" 
-	 ownerType := "Identity" 
-	 sourceName := "Employee Database" 
-	 sourceType := "SOURCE" 
- accessProfile := v3.AccessProfile{ 
- Name: "Employee-database-read-write", 
- Owner: v3.OwnerReference{  
- Id:   &id, 
- Name: &ownerName, 
- Type: &ownerType, 
-}, 
- Source: v3.AccessProfileSourceRef{ 
- Id:   &id, 
- Name: &sourceName, 
- Type: &sourceType, 
-},}
-
-    accessProfile := *sailpoint.NewAccessProfile("Employee-database-read-write", *sailpoint.NewAccessProfileOwner(), *sailpoint.NewAccessProfileSourceRef())
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.AccessProfilesAPI.CreateAccessProfile(context.Background()).AccessProfile(accessProfile).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.CreateAccessProfile``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateAccessProfile`: AccessProfile
-    fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.CreateAccessProfile`: %v\n", resp)
-}
-```
-
-
-
-
-## Delete the specified Access Profile
+## delete-access-profile
 
 
 This API deletes an existing Access Profile.
@@ -117,7 +66,7 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **string** | True  | ID of the Access Profile to delete
 
-
+	
 ### Return type
 
  (empty response body)
@@ -142,41 +91,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//DeleteAccessProfile
-
-    id := "2c91808a7813090a017814121919ecca"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.V3.AccessProfilesAPI.DeleteAccessProfile(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.DeleteAccessProfile``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-
-
-
-## Delete Access Profile(s)
+## delete-access-profiles-in-bulk
 
 
 This API initiates a bulk deletion of one or more Access Profiles.
@@ -190,10 +106,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | accessProfileBulkDeleteRequest | [**AccessProfileBulkDeleteRequest**](AccessProfileBulkDeleteRequest.md) | True  | 
 
-
+	
 ### Return type
 
-[**AccessProfileBulkDeleteResponse**](AccessProfileBulkDeleteResponse.md)
+[**AccessProfileBulkDeleteResponse**](AccessProfileBulkDeleteResponse)
 
 ### Responses
 Code | Description  | Data Type
@@ -216,43 +132,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//DeleteAccessProfilesInBulk
-
-    accessProfileBulkDeleteRequest := *sailpoint.NewAccessProfileBulkDeleteRequest()
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.AccessProfilesAPI.DeleteAccessProfilesInBulk(context.Background()).AccessProfileBulkDeleteRequest(accessProfileBulkDeleteRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.DeleteAccessProfilesInBulk``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeleteAccessProfilesInBulk`: AccessProfileBulkDeleteResponse
-    fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.DeleteAccessProfilesInBulk`: %v\n", resp)
-}
-```
-
-
-
-
-## Get an Access Profile
+## get-access-profile
 
 
 This API returns an Access Profile by its ID.
@@ -264,10 +145,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **string** | True  | ID of the Access Profile
 
-
+	
 ### Return type
 
-[**AccessProfile**](AccessProfile.md)
+[**AccessProfile**](AccessProfile)
 
 ### Responses
 Code | Description  | Data Type
@@ -289,43 +170,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//GetAccessProfile
-
-    id := "2c9180837ca6693d017ca8d097500149"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.AccessProfilesAPI.GetAccessProfile(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.GetAccessProfile``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetAccessProfile`: AccessProfile
-    fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.GetAccessProfile`: %v\n", resp)
-}
-```
-
-
-
-
-## List Access Profile's Entitlements
+## get-access-profile-entitlements
 
 
 This API lists the Entitlements associated with a given Access Profile
@@ -342,10 +188,10 @@ Path   | id | **string** | True  | ID of the containing Access Profile
   Query | filters | **string** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **attribute**: *eq, sw*  **value**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **source.id**: *eq, in*
   Query | sorters | **string** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, attribute, value, created, modified**
 
-
+	
 ### Return type
 
-[**[]Entitlement**](Entitlement.md)
+[**[]Entitlement**](Entitlement)
 
 ### Responses
 Code | Description  | Data Type
@@ -367,46 +213,6 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//GetAccessProfileEntitlements
-
-    id := "2c91808a7813090a017814121919ecca"
-    //limit := int32(250)
-    //offset := int32(0)
-    //count := true
-    //filters := "attribute eq "memberOf""
-    //sorters := "name,-modified"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.AccessProfilesAPI.GetAccessProfileEntitlements(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.GetAccessProfileEntitlements``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetAccessProfileEntitlements`: []Entitlement
-    fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.GetAccessProfileEntitlements`: %v\n", resp)
-}
-```
-
-
-
 
 ## list-access-profiles
 
@@ -427,10 +233,10 @@ Param Type | Name | Data Type | Required  | Description
   Query | forSegmentIds | **string** |   (optional) | If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error.
   Query | includeUnsegmented | **bool** |   (optional) (default to true) | Whether or not the response list should contain unsegmented Access Profiles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.
 
-
+	
 ### Return type
 
-[**[]AccessProfile**](AccessProfile.md)
+[**[]AccessProfile**](AccessProfile)
 
 ### Responses
 Code | Description  | Data Type
@@ -452,50 +258,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//ListAccessProfiles
-
-    //forSubadmin := "8c190e6787aa4ed9a90bd9d5344523fb"
-    //limit := int32(50)
-    //offset := int32(0)
-    //count := true
-    //filters := "name eq "SailPoint Support""
-    //sorters := "name,-modified"
-    //forSegmentIds := "0b5c9f25-83c6-4762-9073-e38f7bb2ae26,2e8d8180-24bc-4d21-91c6-7affdb473b0d"
-    //includeUnsegmented := false
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.AccessProfilesAPI.ListAccessProfiles(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.ListAccessProfiles``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListAccessProfiles`: []AccessProfile
-    fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.ListAccessProfiles`: %v\n", resp)
-}
-```
-
-
-
-
-## Patch a specified Access Profile
+## patch-access-profile
 
 
 This API updates an existing Access Profile. The following fields are patchable:
@@ -529,18 +293,16 @@ A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is requi
 
 > You can only add or replace **entitlements** that exist on the source that the access profile is attached to. You can use the **list entitlements** endpoint with the **filters** query parameter to get a list of available entitlements on the access profile's source.
 
->  Patching the value of the **requestable** field is only supported for customers enabled with the new Request Center. Otherwise, attempting to modify this field results in a 400 error.
-
 ### Parameters 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **string** | True  | ID of the Access Profile to patch
  Body  | jsonPatchOperation | [**[]JsonPatchOperation**](JsonPatchOperation.md) | True  | 
 
-
+	
 ### Return type
 
-[**AccessProfile**](AccessProfile.md)
+[**AccessProfile**](AccessProfile)
 
 ### Responses
 Code | Description  | Data Type
@@ -561,40 +323,4 @@ Code | Description  | Data Type
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//PatchAccessProfile
-
-    id := "2c91808a7813090a017814121919ecca"
-    jsonPatchOperation := []sailpoint.JsonPatchOperation{*sailpoint.NewJsonPatchOperation("replace", "/description")}
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.AccessProfilesAPI.PatchAccessProfile(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.PatchAccessProfile``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PatchAccessProfile`: AccessProfile
-    fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.PatchAccessProfile`: %v\n", resp)
-}
-```
-
-
 

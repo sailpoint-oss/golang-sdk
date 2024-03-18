@@ -4,75 +4,37 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetAccessRequestIdentityMetrics**](AccessRequestIdentityMetricsAPI.md#GetAccessRequestIdentityMetrics) | **Get** /access-request-identity-metrics/{identityId}/requested-objects/{requestedObjectId}/type/{type} | Return access request identity metrics
+[**GetAccessRequestIdentityMetrics**](#get-access-request-identity-metrics) | **Get** /access-request-identity-metrics/{identityId}/requested-objects/{requestedObjectId}/type/{type} | Return access request identity metrics
 
 
 
-## GetAccessRequestIdentityMetrics
-
-> map[string]interface{} GetAccessRequestIdentityMetrics(ctx, identityId, requestedObjectId, type_).Execute()
-
-Return access request identity metrics
+## get-access-request-identity-metrics
 
 
+Use this API to return information access metrics.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | identityId | **string** | True  | Manager's identity ID.
+Path   | requestedObjectId | **string** | True  | Requested access item's ID.
+Path   | type_ | **string** | True  | Requested access item's type.
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    identityId := "7025c863-c270-4ba6-beea-edf3cb091573" // string | Identity's ID.
-    requestedObjectId := "2db501be-f0fb-4cc5-a695-334133c52891" // string | Requested access item's ID.
-    type_ := "ENTITLEMENT" // string | Requested access item's type.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestIdentityMetricsAPI.GetAccessRequestIdentityMetrics(context.Background(), identityId, requestedObjectId, type_).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestIdentityMetricsAPI.GetAccessRequestIdentityMetrics``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetAccessRequestIdentityMetrics`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `AccessRequestIdentityMetricsAPI.GetAccessRequestIdentityMetrics`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**identityId** | **string** | Identity&#39;s ID. | 
-**requestedObjectId** | **string** | Requested access item&#39;s ID. | 
-**type_** | **string** | Requested access item&#39;s type. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetAccessRequestIdentityMetricsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-
+	
 ### Return type
 
 **map[string]interface{}**
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Summary of the resource access and source activity for the direct reports of the provided manager. | map[string]interface{}
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 

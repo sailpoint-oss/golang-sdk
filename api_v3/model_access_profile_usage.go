@@ -137,7 +137,7 @@ func (o *AccessProfileUsage) UnmarshalJSON(bytes []byte) (err error) {
 	varAccessProfileUsage := _AccessProfileUsage{}
 
 	if err = json.Unmarshal(bytes, &varAccessProfileUsage); err == nil {
-	*o = AccessProfileUsage(varAccessProfileUsage)
+			*o = AccessProfileUsage(varAccessProfileUsage)
 }
 
 	additionalProperties := make(map[string]interface{})

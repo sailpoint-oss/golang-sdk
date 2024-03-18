@@ -301,7 +301,7 @@ func (o InvocationStatus) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *InvocationStatus) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -330,7 +330,7 @@ func (o *InvocationStatus) UnmarshalJSON(bytes []byte) (err error) {
 	varInvocationStatus := _InvocationStatus{}
 
 	if err = json.Unmarshal(bytes, &varInvocationStatus); err == nil {
-	*o = InvocationStatus(varInvocationStatus)
+			*o = InvocationStatus(varInvocationStatus)
 }
 
 	additionalProperties := make(map[string]interface{})

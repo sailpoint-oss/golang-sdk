@@ -397,7 +397,7 @@ func (o *NonEmployeeSourceWithCloudExternalId) UnmarshalJSON(bytes []byte) (err 
 	varNonEmployeeSourceWithCloudExternalId := _NonEmployeeSourceWithCloudExternalId{}
 
 	if err = json.Unmarshal(bytes, &varNonEmployeeSourceWithCloudExternalId); err == nil {
-	*o = NonEmployeeSourceWithCloudExternalId(varNonEmployeeSourceWithCloudExternalId)
+			*o = NonEmployeeSourceWithCloudExternalId(varNonEmployeeSourceWithCloudExternalId)
 }
 
 	additionalProperties := make(map[string]interface{})

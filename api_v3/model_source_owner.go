@@ -174,7 +174,7 @@ func (o *SourceOwner) UnmarshalJSON(bytes []byte) (err error) {
 	varSourceOwner := _SourceOwner{}
 
 	if err = json.Unmarshal(bytes, &varSourceOwner); err == nil {
-	*o = SourceOwner(varSourceOwner)
+			*o = SourceOwner(varSourceOwner)
 }
 
 	additionalProperties := make(map[string]interface{})

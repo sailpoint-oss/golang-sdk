@@ -171,7 +171,7 @@ func (o *ImportFormDefinitions202ResponseErrorsInner) UnmarshalJSON(bytes []byte
 	varImportFormDefinitions202ResponseErrorsInner := _ImportFormDefinitions202ResponseErrorsInner{}
 
 	if err = json.Unmarshal(bytes, &varImportFormDefinitions202ResponseErrorsInner); err == nil {
-	*o = ImportFormDefinitions202ResponseErrorsInner(varImportFormDefinitions202ResponseErrorsInner)
+			*o = ImportFormDefinitions202ResponseErrorsInner(varImportFormDefinitions202ResponseErrorsInner)
 }
 
 	additionalProperties := make(map[string]interface{})

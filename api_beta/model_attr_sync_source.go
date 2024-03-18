@@ -174,7 +174,7 @@ func (o *AttrSyncSource) UnmarshalJSON(bytes []byte) (err error) {
 	varAttrSyncSource := _AttrSyncSource{}
 
 	if err = json.Unmarshal(bytes, &varAttrSyncSource); err == nil {
-	*o = AttrSyncSource(varAttrSyncSource)
+			*o = AttrSyncSource(varAttrSyncSource)
 }
 
 	additionalProperties := make(map[string]interface{})

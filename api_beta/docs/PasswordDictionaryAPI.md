@@ -4,61 +4,65 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetPasswordDictionary**](PasswordDictionaryAPI.md#GetPasswordDictionary) | **Get** /password-dictionary | Get Password Dictionary
-[**PutPasswordDictionary**](PasswordDictionaryAPI.md#PutPasswordDictionary) | **Put** /password-dictionary | Update Password Dictionary
+[**GetPasswordDictionary**](#get-password-dictionary) | **Get** /password-dictionary | Get Password Dictionary
+[**PutPasswordDictionary**](#put-password-dictionary) | **Put** /password-dictionary | Update Password Dictionary
 
 
 
-## GetPasswordDictionary
-
-> string GetPasswordDictionary(ctx).Execute()
-
-Get Password Dictionary
+## get-password-dictionary
 
 
+This gets password dictionary for the organization.
+A token with ORG_ADMIN authority is required to call this API.
+The password dictionary file can contain lines that are:
+1. comment lines - the first character is '#', can be 128 Unicode codepoints in length, and are ignored during processing
+2. empty lines
+3. locale line - the first line that starts with "locale=" is considered to be locale line, the rest are treated as normal content lines
+4. line containing the password dictionary word - it must start with non-whitespace character and only non-whitespace characters are allowed;
+        maximum length of the line is 128 Unicode codepoints
 
-### Example
 
-```go
-package main
+Password dictionary file may not contain more than 2,500 lines (not counting whitespace lines, comment lines and locale line).
+  Password dict file must contain UTF-8 characters only.
 
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
+# Sample password text file
 
-func main() {
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordDictionaryAPI.GetPasswordDictionary(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordDictionaryAPI.GetPasswordDictionary``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetPasswordDictionary`: string
-    fmt.Fprintf(os.Stdout, "Response from `PasswordDictionaryAPI.GetPasswordDictionary`: %v\n", resp)
-}
 ```
 
-### Path Parameters
+# Password dictionary small test file
 
-This endpoint does not need any parameter.
+locale=en_US
 
-### Other Parameters
+# Password dictionary prohibited words
 
-Other parameters are passed through a pointer to a apiGetPasswordDictionaryRequest struct via the builder pattern
+qwerty
+abcd
+aaaaa
+password
+qazxsws
 
+```
 
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+
+	
 ### Return type
 
 **string**
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | A password dictionary response | string
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -70,59 +74,62 @@ Other parameters are passed through a pointer to a apiGetPasswordDictionaryReque
 [[Back to README]](../README.md)
 
 
-## PutPasswordDictionary
-
-> PutPasswordDictionary(ctx).File(file).Execute()
-
-Update Password Dictionary
+## put-password-dictionary
 
 
+This updates password dictionary for the organization.
+A token with ORG_ADMIN authority is required to call this API.
+The password dictionary file can contain lines that are:
+1. comment lines - the first character is '#', can be 128 Unicode codepoints in length, and are ignored during processing
+2. empty lines
+3. locale line - the first line that starts with "locale=" is considered to be locale line, the rest are treated as normal content lines
+4. line containing the password dictionary word - it must start with non-whitespace character and only non-whitespace characters are allowed;
+        maximum length of the line is 128 Unicode codepoints
 
-### Example
 
-```go
-package main
+Password dictionary file may not contain more than 2,500 lines (not counting whitespace lines, comment lines and locale line).
+  Password dict file must contain UTF-8 characters only.
 
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
+# Sample password text file
 
-func main() {
-    file := os.NewFile(1234, "some_file") // *os.File |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PasswordDictionaryAPI.PutPasswordDictionary(context.Background()).File(file).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordDictionaryAPI.PutPasswordDictionary``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
 ```
 
-### Path Parameters
+# Password dictionary small test file
 
+locale=en_US
 
+# Password dictionary prohibited words
 
-### Other Parameters
+qwerty
+abcd
+aaaaa
+password
+qazxsws
 
-Other parameters are passed through a pointer to a apiPutPasswordDictionaryRequest struct via the builder pattern
+```
 
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+   | file | ***os.File** |   (optional) | 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **file** | ***os.File** |  | 
-
+	
 ### Return type
 
  (empty response body)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Successfully updated. | 
+201 | Created. | 
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 

@@ -4,11 +4,11 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetUsagesByAccountId**](AccountUsagesAPI.md#GetUsagesByAccountId) | **Get** /account-usages/{accountId}/summaries | Returns account usage insights
+[**GetUsagesByAccountId**](#get-usages-by-account-id) | **Get** /account-usages/{accountId}/summaries | Returns account usage insights
 
 
 
-## Returns account usage insights
+## get-usages-by-account-id
 
 
 This API returns a summary of account usage insights for past 12 months.
@@ -22,10 +22,10 @@ Path   | accountId | **string** | True  | ID of IDN account
   Query | count | **bool** |   (optional) (default to false) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
   Query | sorters | **string** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **date**
 
-
+	
 ### Return type
 
-[**[]AccountUsage**](AccountUsage.md)
+[**[]AccountUsage**](AccountUsage)
 
 ### Responses
 Code | Description  | Data Type
@@ -46,43 +46,4 @@ Code | Description  | Data Type
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//GetUsagesByAccountId
-
-    accountId := "ef38f94347e94562b5bb8424a56397d8"
-    //limit := int32(250)
-    //offset := int32(0)
-    //count := true
-    //sorters := "-date"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.AccountUsagesAPI.GetUsagesByAccountId(context.Background(), accountId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountUsagesAPI.GetUsagesByAccountId``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetUsagesByAccountId`: []AccountUsage
-    fmt.Fprintf(os.Stdout, "Response from `AccountUsagesAPI.GetUsagesByAccountId`: %v\n", resp)
-}
-```
-
-
 

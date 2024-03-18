@@ -4,69 +4,35 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetMessageCatalogs**](IAIMessageCatalogsAPI.md#GetMessageCatalogs) | **Get** /translation-catalogs/{catalog-id} | Get Message catalogs
+[**GetMessageCatalogs**](#get-message-catalogs) | **Get** /translation-catalogs/{catalog-id} | Get Message catalogs
 
 
 
-## GetMessageCatalogs
-
-> []MessageCatalogDto GetMessageCatalogs(ctx, catalogId).Execute()
-
-Get Message catalogs
+## get-message-catalogs
 
 
+The getMessageCatalogs API returns message catalog based on the language headers in the requested object.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | catalogId | **string** | True  | The ID of the message catalog.
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    catalogId := "recommender" // string | The ID of the message catalog.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIMessageCatalogsAPI.GetMessageCatalogs(context.Background(), catalogId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIMessageCatalogsAPI.GetMessageCatalogs``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetMessageCatalogs`: []MessageCatalogDto
-    fmt.Fprintf(os.Stdout, "Response from `IAIMessageCatalogsAPI.GetMessageCatalogs`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**catalogId** | **string** | The ID of the message catalog. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetMessageCatalogsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+	
 ### Return type
 
-[**[]MessageCatalogDto**](MessageCatalogDto.md)
+[**[]MessageCatalogDto**](MessageCatalogDto)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | The message catalogs based on the request headers | []MessageCatalogDto
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 

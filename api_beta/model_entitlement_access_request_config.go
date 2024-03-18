@@ -182,7 +182,7 @@ func (o *EntitlementAccessRequestConfig) UnmarshalJSON(bytes []byte) (err error)
 	varEntitlementAccessRequestConfig := _EntitlementAccessRequestConfig{}
 
 	if err = json.Unmarshal(bytes, &varEntitlementAccessRequestConfig); err == nil {
-	*o = EntitlementAccessRequestConfig(varEntitlementAccessRequestConfig)
+			*o = EntitlementAccessRequestConfig(varEntitlementAccessRequestConfig)
 }
 
 	additionalProperties := make(map[string]interface{})

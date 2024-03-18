@@ -137,7 +137,7 @@ func (o *CommonAccessIDStatus) UnmarshalJSON(bytes []byte) (err error) {
 	varCommonAccessIDStatus := _CommonAccessIDStatus{}
 
 	if err = json.Unmarshal(bytes, &varCommonAccessIDStatus); err == nil {
-	*o = CommonAccessIDStatus(varCommonAccessIDStatus)
+			*o = CommonAccessIDStatus(varCommonAccessIDStatus)
 }
 
 	additionalProperties := make(map[string]interface{})

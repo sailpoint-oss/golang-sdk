@@ -6,7 +6,7 @@ All URIs are relative to *{{basePath}}*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-{{#operations}}{{#operation}}[**{{operationId}}**]({{classname}}.md#{{#lambda.kebabcase}}{{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}{{/lambda.kebabcase}}) | **{{httpMethod}}** {{path}} | {{summary}}
+{{#operations}}{{#operation}}[**{{operationId}}**](#{{#lambda.kebabcase}}{{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}{{/lambda.kebabcase}}) | **{{httpMethod}}** {{path}} | {{summary}}
 {{/operation}}{{/operations}}
 
 {{#operations}}
@@ -24,10 +24,10 @@ Param Type | Name | Data Type | Required  | Description
 {{#isPathParam}}Path{{/isPathParam}} {{#isBodyParam}}Body{{/isBodyParam}} {{#isQueryParam}}Query{{/isQueryParam}} | {{paramName}} | {{#isContainer}}{{#isArray}}{{#items}}{{^isPrimitiveType}}{{^isFile}}[{{/isFile}}{{/isPrimitiveType}}**[]{{dataType}}**{{^isPrimitiveType}}{{^isFile}}]({{^baseType}}{{dataType}}{{/baseType}}{{baseType}}.md){{/isFile}}{{/isPrimitiveType}}{{/items}}{{/isArray}}{{#isMap}}{{#items}}{{^isPrimitiveType}}{{^isFile}}[{{/isFile}}{{/isPrimitiveType}}**map[string]{{dataType}}**{{^isPrimitiveType}}{{^isFile}}]({{^baseType}}{{dataType}}{{/baseType}}{{baseType}}.md){{/isFile}}{{/isPrimitiveType}}{{/items}}{{/isMap}}{{/isContainer}}{{^isContainer}}{{^isPrimitiveType}}{{^isFile}}[{{/isFile}}{{/isPrimitiveType}}**{{dataType}}**{{^isPrimitiveType}}{{^isFile}}]({{^baseType}}{{dataType}}{{/baseType}}{{baseType}}.md){{/isFile}}{{/isPrimitiveType}}{{/isContainer}} | {{#required}}True{{/required}} {{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}} | {{{description}}}
 {{/allParams}}
 
-
+	
 ### Return type
 
-{{#returnType}}{{#returnTypeIsPrimitive}}**{{{returnType}}}**{{/returnTypeIsPrimitive}}{{^returnTypeIsPrimitive}}[**{{{returnType}}}**]({{returnBaseType}}.md){{/returnTypeIsPrimitive}}{{/returnType}}{{^returnType}} (empty response body){{/returnType}}
+{{#returnType}}{{#returnTypeIsPrimitive}}**{{{returnType}}}**{{/returnTypeIsPrimitive}}{{^returnTypeIsPrimitive}}[**{{{returnType}}}**]({{returnBaseType}}){{/returnTypeIsPrimitive}}{{/returnType}}{{^returnType}} (empty response body){{/returnType}}
 
 ### Responses
 Code | Description  | Data Type
@@ -45,48 +45,6 @@ Code | Description  | Data Type
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-{{#vendorExtensions.x-go-import}}
-{{{vendorExtensions.x-go-import}}}
-{{/vendorExtensions.x-go-import}}
-    {{#lambda.lowercase}}{{subModuleName}}{{/lambda.lowercase}} "{{moduleImportPath}}"
-    {{goImportAlias}} "{{gitHost}}/{{gitUserId}}/{{gitRepoId}}{{#isGoSubmodule}}/{{packageName}}{{/isGoSubmodule}}"
-)
-
-func main() {
-
-    //{{operationId}}
-
-    {{#allParams}}
-    {{^required}}//{{/required}}{{paramName}} := {{{vendorExtensions.x-go-example}}}
-    {{/allParams}}
-
-
-
-    configuration := {{goImportAlias}}.NewDefaultConfiguration()
-    apiClient := {{goImportAlias}}.NewAPIClient(configuration)
-    {{#returnType}}resp, {{/returnType}}r, err := apiClient.{{subModuleName}}.{{classname}}.{{operationId}}(context.Background(){{#pathParams}}, {{paramName}}{{/pathParams}}){{#allParams}}{{^isPathParam}}{{#required}}.{{vendorExtensions.x-export-param-name}}({{paramName}}){{/required}}{{/isPathParam}}{{/allParams}}.Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `{{classname}}.{{operationId}}``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    {{#returnType}}
-    // response from `{{operationId}}`: {{{.}}}
-    fmt.Fprintf(os.Stdout, "Response from `{{classname}}.{{operationId}}`: %v\n", resp)
-    {{/returnType}}
-}
-```
-
-
 
 {{/operation}}
 {{/operations}}

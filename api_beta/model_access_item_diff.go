@@ -210,7 +210,7 @@ func (o *AccessItemDiff) UnmarshalJSON(bytes []byte) (err error) {
 	varAccessItemDiff := _AccessItemDiff{}
 
 	if err = json.Unmarshal(bytes, &varAccessItemDiff); err == nil {
-	*o = AccessItemDiff(varAccessItemDiff)
+			*o = AccessItemDiff(varAccessItemDiff)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -174,7 +174,7 @@ func (o *CampaignAllOfSourcesWithOrphanEntitlements) UnmarshalJSON(bytes []byte)
 	varCampaignAllOfSourcesWithOrphanEntitlements := _CampaignAllOfSourcesWithOrphanEntitlements{}
 
 	if err = json.Unmarshal(bytes, &varCampaignAllOfSourcesWithOrphanEntitlements); err == nil {
-	*o = CampaignAllOfSourcesWithOrphanEntitlements(varCampaignAllOfSourcesWithOrphanEntitlements)
+			*o = CampaignAllOfSourcesWithOrphanEntitlements(varCampaignAllOfSourcesWithOrphanEntitlements)
 }
 
 	additionalProperties := make(map[string]interface{})

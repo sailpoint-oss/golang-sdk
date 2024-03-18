@@ -4,67 +4,37 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetRecommendations**](IAIRecommendationsAPI.md#GetRecommendations) | **Post** /recommendations/request | Returns a Recommendation Based on Object
-[**GetRecommendationsConfig**](IAIRecommendationsAPI.md#GetRecommendationsConfig) | **Get** /recommendations/config | Get certification recommendation config values
-[**UpdateRecommendationsConfig**](IAIRecommendationsAPI.md#UpdateRecommendationsConfig) | **Put** /recommendations/config | Update certification recommendation config values
+[**GetRecommendations**](#get-recommendations) | **Post** /recommendations/request | Returns a Recommendation Based on Object
+[**GetRecommendationsConfig**](#get-recommendations-config) | **Get** /recommendations/config | Get certification recommendation config values
+[**UpdateRecommendationsConfig**](#update-recommendations-config) | **Put** /recommendations/config | Update certification recommendation config values
 
 
 
-## GetRecommendations
-
-> RecommendationResponseDto GetRecommendations(ctx).RecommendationRequestDto(recommendationRequestDto).Execute()
-
-Returns a Recommendation Based on Object
+## get-recommendations
 
 
+The getRecommendations API returns recommendations based on the requested object. The recommendations are invoked by IdentityIQ and IdentityNow plug-ins that retrieve recommendations based on the performed calculations.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | recommendationRequestDto | [**RecommendationRequestDto**](RecommendationRequestDto.md) | True  | 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    recommendationRequestDto := *openapiclient.NewRecommendationRequestDto() // RecommendationRequestDto | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRecommendationsAPI.GetRecommendations(context.Background()).RecommendationRequestDto(recommendationRequestDto).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRecommendationsAPI.GetRecommendations``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetRecommendations`: RecommendationResponseDto
-    fmt.Fprintf(os.Stdout, "Response from `IAIRecommendationsAPI.GetRecommendations`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetRecommendationsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **recommendationRequestDto** | [**RecommendationRequestDto**](RecommendationRequestDto.md) |  | 
-
+	
 ### Return type
 
-[**RecommendationResponseDto**](RecommendationResponseDto.md)
+[**RecommendationResponseDto**](RecommendationResponseDto)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | The recommendations for a customer | RecommendationResponseDto
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -76,56 +46,29 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetRecommendationsConfig
-
-> RecommendationConfigDto GetRecommendationsConfig(ctx).Execute()
-
-Get certification recommendation config values
+## get-recommendations-config
 
 
+Retrieves configuration attributes used by certification recommendations.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRecommendationsAPI.GetRecommendationsConfig(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRecommendationsAPI.GetRecommendationsConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetRecommendationsConfig`: RecommendationConfigDto
-    fmt.Fprintf(os.Stdout, "Response from `IAIRecommendationsAPI.GetRecommendationsConfig`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetRecommendationsConfigRequest struct via the builder pattern
-
-
+	
 ### Return type
 
-[**RecommendationConfigDto**](RecommendationConfigDto.md)
+[**RecommendationConfigDto**](RecommendationConfigDto)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Cert recommendation configuration attributes | RecommendationConfigDto
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -137,61 +80,30 @@ Other parameters are passed through a pointer to a apiGetRecommendationsConfigRe
 [[Back to README]](../README.md)
 
 
-## UpdateRecommendationsConfig
-
-> RecommendationConfigDto UpdateRecommendationsConfig(ctx).RecommendationConfigDto(recommendationConfigDto).Execute()
-
-Update certification recommendation config values
+## update-recommendations-config
 
 
+Updates configuration attributes used by certification recommendations.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | recommendationConfigDto | [**RecommendationConfigDto**](RecommendationConfigDto.md) | True  | 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    recommendationConfigDto := *openapiclient.NewRecommendationConfigDto() // RecommendationConfigDto | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRecommendationsAPI.UpdateRecommendationsConfig(context.Background()).RecommendationConfigDto(recommendationConfigDto).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRecommendationsAPI.UpdateRecommendationsConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateRecommendationsConfig`: RecommendationConfigDto
-    fmt.Fprintf(os.Stdout, "Response from `IAIRecommendationsAPI.UpdateRecommendationsConfig`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUpdateRecommendationsConfigRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **recommendationConfigDto** | [**RecommendationConfigDto**](RecommendationConfigDto.md) |  | 
-
+	
 ### Return type
 
-[**RecommendationConfigDto**](RecommendationConfigDto.md)
+[**RecommendationConfigDto**](RecommendationConfigDto)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Cert recommendation configuration attributes after update | RecommendationConfigDto
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 

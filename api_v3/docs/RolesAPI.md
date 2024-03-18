@@ -4,17 +4,17 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateRole**](RolesAPI.md#CreateRole) | **Post** /roles | Create a Role
-[**DeleteBulkRoles**](RolesAPI.md#DeleteBulkRoles) | **Post** /roles/bulk-delete | Delete Role(s)
-[**DeleteRole**](RolesAPI.md#DeleteRole) | **Delete** /roles/{id} | Delete a Role
-[**GetRole**](RolesAPI.md#GetRole) | **Get** /roles/{id} | Get a Role
-[**GetRoleAssignedIdentities**](RolesAPI.md#GetRoleAssignedIdentities) | **Get** /roles/{id}/assigned-identities | List Identities assigned a Role
-[**ListRoles**](RolesAPI.md#ListRoles) | **Get** /roles | List Roles
-[**PatchRole**](RolesAPI.md#PatchRole) | **Patch** /roles/{id} | Patch a specified Role
+[**CreateRole**](#create-role) | **Post** /roles | Create a Role
+[**DeleteBulkRoles**](#delete-bulk-roles) | **Post** /roles/bulk-delete | Delete Role(s)
+[**DeleteRole**](#delete-role) | **Delete** /roles/{id} | Delete a Role
+[**GetRole**](#get-role) | **Get** /roles/{id} | Get a Role
+[**GetRoleAssignedIdentities**](#get-role-assigned-identities) | **Get** /roles/{id}/assigned-identities | List Identities assigned a Role
+[**ListRoles**](#list-roles) | **Get** /roles | List Roles
+[**PatchRole**](#patch-role) | **Patch** /roles/{id} | Patch a specified Role
 
 
 
-## Create a Role
+## create-role
 
 
 This API creates a role.
@@ -27,10 +27,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | role | [**Role**](Role.md) | True  | 
 
-
+	
 ### Return type
 
-[**Role**](Role.md)
+[**Role**](Role)
 
 ### Responses
 Code | Description  | Data Type
@@ -52,43 +52,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//CreateRole
-
-    role := *sailpoint.NewRole("Role 2567", *sailpoint.NewOwnerReference())
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.RolesAPI.CreateRole(context.Background()).Role(role).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.CreateRole``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateRole`: Role
-    fmt.Fprintf(os.Stdout, "Response from `RolesAPI.CreateRole`: %v\n", resp)
-}
-```
-
-
-
-
-## Delete Role(s)
+## delete-bulk-roles
 
 
 This API initiates a bulk deletion of one or more Roles.
@@ -100,10 +65,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | roleBulkDeleteRequest | [**RoleBulkDeleteRequest**](RoleBulkDeleteRequest.md) | True  | 
 
-
+	
 ### Return type
 
-[**TaskResultDto**](TaskResultDto.md)
+[**TaskResultDto**](TaskResultDto)
 
 ### Responses
 Code | Description  | Data Type
@@ -125,43 +90,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//DeleteBulkRoles
-
-    roleBulkDeleteRequest := *sailpoint.NewRoleBulkDeleteRequest([]string{"RoleIds_example"})
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.RolesAPI.DeleteBulkRoles(context.Background()).RoleBulkDeleteRequest(roleBulkDeleteRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.DeleteBulkRoles``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeleteBulkRoles`: TaskResultDto
-    fmt.Fprintf(os.Stdout, "Response from `RolesAPI.DeleteBulkRoles`: %v\n", resp)
-}
-```
-
-
-
-
-## Delete a Role
+## delete-role
 
 
 This API deletes a Role by its ID.
@@ -172,7 +102,7 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **string** | True  | ID of the Role
 
-
+	
 ### Return type
 
  (empty response body)
@@ -197,41 +127,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//DeleteRole
-
-    id := "2c91808a7813090a017814121e121518"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.V3.RolesAPI.DeleteRole(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.DeleteRole``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-
-
-
-## Get a Role
+## get-role
 
 
 This API returns a Role by its ID.
@@ -243,10 +140,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **string** | True  | ID of the Role
 
-
+	
 ### Return type
 
-[**Role**](Role.md)
+[**Role**](Role)
 
 ### Responses
 Code | Description  | Data Type
@@ -268,43 +165,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//GetRole
-
-    id := "2c91808a7813090a017814121e121518"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.RolesAPI.GetRole(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.GetRole``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetRole`: Role
-    fmt.Fprintf(os.Stdout, "Response from `RolesAPI.GetRole`: %v\n", resp)
-}
-```
-
-
-
-
-## List Identities assigned a Role
+## get-role-assigned-identities
 
 
 
@@ -319,10 +181,10 @@ Path   | id | **string** | True  | ID of the Role for which the assigned Identit
   Query | filters | **string** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **aliasName**: *eq, sw*  **email**: *eq, sw*  **name**: *eq, sw, co*
   Query | sorters | **string** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, aliasName, email**
 
-
+	
 ### Return type
 
-[**[]RoleIdentity**](RoleIdentity.md)
+[**[]RoleIdentity**](RoleIdentity)
 
 ### Responses
 Code | Description  | Data Type
@@ -344,48 +206,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//GetRoleAssignedIdentities
-
-    id := "2c91808a7813090a017814121e121518"
-    //limit := int32(250)
-    //offset := int32(0)
-    //count := true
-    //filters := "name sw Joe"
-    //sorters := "aliasName,name"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.RolesAPI.GetRoleAssignedIdentities(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.GetRoleAssignedIdentities``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetRoleAssignedIdentities`: []RoleIdentity
-    fmt.Fprintf(os.Stdout, "Response from `RolesAPI.GetRoleAssignedIdentities`: %v\n", resp)
-}
-```
-
-
-
-
-## List Roles
+## list-roles
 
 
 This API returns a list of Roles.
@@ -404,10 +226,10 @@ Param Type | Name | Data Type | Required  | Description
   Query | forSegmentIds | **string** |   (optional) | If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error.
   Query | includeUnsegmented | **bool** |   (optional) (default to true) | Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.
 
-
+	
 ### Return type
 
-[**[]Role**](Role.md)
+[**[]Role**](Role)
 
 ### Responses
 Code | Description  | Data Type
@@ -429,50 +251,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//ListRoles
-
-    //forSubadmin := "5168015d32f890ca15812c9180835d2e"
-    //limit := int32(50)
-    //offset := int32(0)
-    //count := true
-    //filters := "requestable eq false"
-    //sorters := "name,-modified"
-    //forSegmentIds := "0b5c9f25-83c6-4762-9073-e38f7bb2ae26,2e8d8180-24bc-4d21-91c6-7affdb473b0d"
-    //includeUnsegmented := false
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.RolesAPI.ListRoles(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.ListRoles``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListRoles`: []Role
-    fmt.Fprintf(os.Stdout, "Response from `RolesAPI.ListRoles`: %v\n", resp)
-}
-```
-
-
-
-
-## Patch a specified Role
+## patch-role
 
 
 This API updates an existing Role using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
@@ -487,10 +267,10 @@ Param Type | Name | Data Type | Required  | Description
 Path   | id | **string** | True  | ID of the Role to patch
  Body  | jsonPatchOperation | [**[]JsonPatchOperation**](JsonPatchOperation.md) | True  | 
 
-
+	
 ### Return type
 
-[**Role**](Role.md)
+[**Role**](Role)
 
 ### Responses
 Code | Description  | Data Type
@@ -511,40 +291,4 @@ Code | Description  | Data Type
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//PatchRole
-
-    id := "2c91808a7813090a017814121e121518"
-    jsonPatchOperation := []sailpoint.JsonPatchOperation{*sailpoint.NewJsonPatchOperation("replace", "/description")}
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.RolesAPI.PatchRole(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.PatchRole``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PatchRole`: Role
-    fmt.Fprintf(os.Stdout, "Response from `RolesAPI.PatchRole`: %v\n", resp)
-}
-```
-
-
 

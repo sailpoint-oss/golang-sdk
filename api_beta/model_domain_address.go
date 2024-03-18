@@ -100,7 +100,7 @@ func (o *DomainAddress) UnmarshalJSON(bytes []byte) (err error) {
 	varDomainAddress := _DomainAddress{}
 
 	if err = json.Unmarshal(bytes, &varDomainAddress); err == nil {
-	*o = DomainAddress(varDomainAddress)
+			*o = DomainAddress(varDomainAddress)
 }
 
 	additionalProperties := make(map[string]interface{})

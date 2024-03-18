@@ -4,12 +4,12 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetPublicIdentityConfig**](PublicIdentitiesConfigAPI.md#GetPublicIdentityConfig) | **Get** /public-identities-config | Get the Public Identities Configuration
-[**UpdatePublicIdentityConfig**](PublicIdentitiesConfigAPI.md#UpdatePublicIdentityConfig) | **Put** /public-identities-config | Update the Public Identities Configuration
+[**GetPublicIdentityConfig**](#get-public-identity-config) | **Get** /public-identities-config | Get the Public Identities Configuration
+[**UpdatePublicIdentityConfig**](#update-public-identity-config) | **Put** /public-identities-config | Update the Public Identities Configuration
 
 
 
-## Get the Public Identities Configuration
+## get-public-identity-config
 
 
 Returns the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns. A token with ORG ADMIN authority is required to call this API.
@@ -18,10 +18,10 @@ Returns the publicly visible attributes of an identity available to request appr
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 
-
+	
 ### Return type
 
-[**PublicIdentityConfig**](PublicIdentityConfig.md)
+[**PublicIdentityConfig**](PublicIdentityConfig)
 
 ### Responses
 Code | Description  | Data Type
@@ -43,42 +43,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//GetPublicIdentityConfig
-
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.PublicIdentitiesConfigAPI.GetPublicIdentityConfig(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PublicIdentitiesConfigAPI.GetPublicIdentityConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetPublicIdentityConfig`: PublicIdentityConfig
-    fmt.Fprintf(os.Stdout, "Response from `PublicIdentitiesConfigAPI.GetPublicIdentityConfig`: %v\n", resp)
-}
-```
-
-
-
-
-## Update the Public Identities Configuration
+## update-public-identity-config
 
 
 Updates the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns. A token with ORG ADMIN authority is required to call this API.
@@ -88,10 +54,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | publicIdentityConfig | [**PublicIdentityConfig**](PublicIdentityConfig.md) | True  | 
 
-
+	
 ### Return type
 
-[**PublicIdentityConfig**](PublicIdentityConfig.md)
+[**PublicIdentityConfig**](PublicIdentityConfig)
 
 ### Responses
 Code | Description  | Data Type
@@ -112,39 +78,4 @@ Code | Description  | Data Type
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//UpdatePublicIdentityConfig
-
-    publicIdentityConfig := *sailpoint.NewPublicIdentityConfig()
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.PublicIdentitiesConfigAPI.UpdatePublicIdentityConfig(context.Background()).PublicIdentityConfig(publicIdentityConfig).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PublicIdentitiesConfigAPI.UpdatePublicIdentityConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdatePublicIdentityConfig`: PublicIdentityConfig
-    fmt.Fprintf(os.Stdout, "Response from `PublicIdentitiesConfigAPI.UpdatePublicIdentityConfig`: %v\n", resp)
-}
-```
-
-
 

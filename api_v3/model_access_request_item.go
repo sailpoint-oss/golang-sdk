@@ -29,7 +29,7 @@ type AccessRequestItem struct {
 	Comment *string `json:"comment,omitempty"`
 	// Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities and /access-request-status.
 	ClientMetadata *map[string]string `json:"clientMetadata,omitempty"`
-	// The date the role or access profile is no longer assigned to the specified identity. * Specify a date in the future. * The current SLA for the deprovisioning is 24 hours. * This date can be modified to either extend or decrease the duration of access item assignments for the specified identity. * Currently it is not supported for entitlements. 
+	// The date the role or access profile is no longer assigned to the specified identity. Also known as the expiration date. * Specify a date in the future. * The current SLA for the deprovisioning is 24 hours. * This date can be modified to either extend or decrease the duration of access item assignments for the specified identity. You can change the expiration date for requests for yourself or direct reports, but you cannot remove an expiration date on an already approved item. If the access request has not been approved, you can cancel it and submit a new one without the expiration. If it has already been approved, then you have to revoke the access and then re-request without the expiration. * Currently it is not supported for entitlements. 
 	RemoveDate *time.Time `json:"removeDate,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -229,7 +229,7 @@ func (o AccessRequestItem) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *AccessRequestItem) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -254,7 +254,7 @@ func (o *AccessRequestItem) UnmarshalJSON(bytes []byte) (err error) {
 	varAccessRequestItem := _AccessRequestItem{}
 
 	if err = json.Unmarshal(bytes, &varAccessRequestItem); err == nil {
-	*o = AccessRequestItem(varAccessRequestItem)
+			*o = AccessRequestItem(varAccessRequestItem)
 }
 
 	additionalProperties := make(map[string]interface{})

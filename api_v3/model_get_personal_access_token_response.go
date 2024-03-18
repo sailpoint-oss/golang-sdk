@@ -32,6 +32,8 @@ type GetPersonalAccessTokenResponse struct {
 	Created time.Time `json:"created"`
 	// The date and time, down to the millisecond, when this personal access token was last used to generate an access token. This timestamp does not get updated on every PAT usage, but only once a day. This property can be useful for identifying which PATs are no longer actively used and can be removed.
 	LastUsed NullableTime `json:"lastUsed,omitempty"`
+	// If true, this token is managed by the SailPoint platform, and is not visible in the user interface. For example, Workflows will create managed personal access tokens for users who create workflows.
+	Managed *bool `json:"managed,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -48,6 +50,8 @@ func NewGetPersonalAccessTokenResponse(id string, name string, scope []string, o
 	this.Scope = scope
 	this.Owner = owner
 	this.Created = created
+	var managed bool = false
+	this.Managed = &managed
 	return &this
 }
 
@@ -56,6 +60,8 @@ func NewGetPersonalAccessTokenResponse(id string, name string, scope []string, o
 // but it doesn't guarantee that properties required by API are set
 func NewGetPersonalAccessTokenResponseWithDefaults() *GetPersonalAccessTokenResponse {
 	this := GetPersonalAccessTokenResponse{}
+	var managed bool = false
+	this.Managed = &managed
 	return &this
 }
 
@@ -223,6 +229,38 @@ func (o *GetPersonalAccessTokenResponse) UnsetLastUsed() {
 	o.LastUsed.Unset()
 }
 
+// GetManaged returns the Managed field value if set, zero value otherwise.
+func (o *GetPersonalAccessTokenResponse) GetManaged() bool {
+	if o == nil || isNil(o.Managed) {
+		var ret bool
+		return ret
+	}
+	return *o.Managed
+}
+
+// GetManagedOk returns a tuple with the Managed field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetPersonalAccessTokenResponse) GetManagedOk() (*bool, bool) {
+	if o == nil || isNil(o.Managed) {
+		return nil, false
+	}
+	return o.Managed, true
+}
+
+// HasManaged returns a boolean if a field has been set.
+func (o *GetPersonalAccessTokenResponse) HasManaged() bool {
+	if o != nil && !isNil(o.Managed) {
+		return true
+	}
+
+	return false
+}
+
+// SetManaged gets a reference to the given bool and assigns it to the Managed field.
+func (o *GetPersonalAccessTokenResponse) SetManaged(v bool) {
+	o.Managed = &v
+}
+
 func (o GetPersonalAccessTokenResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -243,6 +281,9 @@ func (o GetPersonalAccessTokenResponse) ToMap() (map[string]interface{}, error) 
 	if o.LastUsed.IsSet() {
 		toSerialize["lastUsed"] = o.LastUsed.Get()
 	}
+	if !isNil(o.Managed) {
+		toSerialize["managed"] = o.Managed
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -252,7 +293,7 @@ func (o GetPersonalAccessTokenResponse) ToMap() (map[string]interface{}, error) 
 }
 
 func (o *GetPersonalAccessTokenResponse) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -280,7 +321,7 @@ func (o *GetPersonalAccessTokenResponse) UnmarshalJSON(bytes []byte) (err error)
 	varGetPersonalAccessTokenResponse := _GetPersonalAccessTokenResponse{}
 
 	if err = json.Unmarshal(bytes, &varGetPersonalAccessTokenResponse); err == nil {
-	*o = GetPersonalAccessTokenResponse(varGetPersonalAccessTokenResponse)
+			*o = GetPersonalAccessTokenResponse(varGetPersonalAccessTokenResponse)
 }
 
 	additionalProperties := make(map[string]interface{})
@@ -292,6 +333,7 @@ func (o *GetPersonalAccessTokenResponse) UnmarshalJSON(bytes []byte) (err error)
 		delete(additionalProperties, "owner")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "lastUsed")
+		delete(additionalProperties, "managed")
 		o.AdditionalProperties = additionalProperties
 	}
 

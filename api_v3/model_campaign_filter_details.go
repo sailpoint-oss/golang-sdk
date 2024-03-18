@@ -27,7 +27,7 @@ type CampaignFilterDetails struct {
 	// This is campaign filter's description.
 	Description string `json:"description"`
 	// The owner of this filter. This field is automatically populated at creation time with the current user.
-	Owner string `json:"owner"`
+	Owner NullableString `json:"owner"`
 	// The mode/type of Filter, where it is of INCLUSION or EXCLUSION type. INCLUSION type will include the data in generated campaign  as per specified in criteria, whereas EXCLUSION type will exclude the the data in generated campaign as per specified in criteria.
 	Mode map[string]interface{} `json:"mode"`
 	// List of criteria.
@@ -41,7 +41,7 @@ type _CampaignFilterDetails CampaignFilterDetails
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCampaignFilterDetails(name string, description string, owner string, mode map[string]interface{}) *CampaignFilterDetails {
+func NewCampaignFilterDetails(name string, description string, owner NullableString, mode map[string]interface{}) *CampaignFilterDetails {
 	this := CampaignFilterDetails{}
 	this.Name = name
 	this.Description = description
@@ -139,27 +139,29 @@ func (o *CampaignFilterDetails) SetDescription(v string) {
 }
 
 // GetOwner returns the Owner field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *CampaignFilterDetails) GetOwner() string {
-	if o == nil {
+	if o == nil || o.Owner.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Owner
+	return *o.Owner.Get()
 }
 
 // GetOwnerOk returns a tuple with the Owner field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CampaignFilterDetails) GetOwnerOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Owner, true
+	return o.Owner.Get(), o.Owner.IsSet()
 }
 
 // SetOwner sets field value
 func (o *CampaignFilterDetails) SetOwner(v string) {
-	o.Owner = v
+	o.Owner.Set(&v)
 }
 
 // GetMode returns the Mode field value
@@ -233,7 +235,7 @@ func (o CampaignFilterDetails) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["name"] = o.Name
 	toSerialize["description"] = o.Description
-	toSerialize["owner"] = o.Owner
+	toSerialize["owner"] = o.Owner.Get()
 	toSerialize["mode"] = o.Mode
 	if !isNil(o.CriteriaList) {
 		toSerialize["criteriaList"] = o.CriteriaList
@@ -247,7 +249,7 @@ func (o CampaignFilterDetails) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *CampaignFilterDetails) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -274,7 +276,7 @@ func (o *CampaignFilterDetails) UnmarshalJSON(bytes []byte) (err error) {
 	varCampaignFilterDetails := _CampaignFilterDetails{}
 
 	if err = json.Unmarshal(bytes, &varCampaignFilterDetails); err == nil {
-	*o = CampaignFilterDetails(varCampaignFilterDetails)
+			*o = CampaignFilterDetails(varCampaignFilterDetails)
 }
 
 	additionalProperties := make(map[string]interface{})

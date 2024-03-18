@@ -245,7 +245,7 @@ func (o *ExpansionItem) UnmarshalJSON(bytes []byte) (err error) {
 	varExpansionItem := _ExpansionItem{}
 
 	if err = json.Unmarshal(bytes, &varExpansionItem); err == nil {
-	*o = ExpansionItem(varExpansionItem)
+			*o = ExpansionItem(varExpansionItem)
 }
 
 	additionalProperties := make(map[string]interface{})

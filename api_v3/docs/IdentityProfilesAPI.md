@@ -4,18 +4,18 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteIdentityProfile**](IdentityProfilesAPI.md#DeleteIdentityProfile) | **Delete** /identity-profiles/{identity-profile-id} | Delete an Identity Profile
-[**DeleteIdentityProfiles**](IdentityProfilesAPI.md#DeleteIdentityProfiles) | **Post** /identity-profiles/bulk-delete | Delete Identity Profiles
-[**ExportIdentityProfiles**](IdentityProfilesAPI.md#ExportIdentityProfiles) | **Get** /identity-profiles/export | Export Identity Profiles
-[**GetDefaultIdentityAttributeConfig**](IdentityProfilesAPI.md#GetDefaultIdentityAttributeConfig) | **Get** /identity-profiles/{identity-profile-id}/default-identity-attribute-config | Get default Identity Attribute Config
-[**GetIdentityProfile**](IdentityProfilesAPI.md#GetIdentityProfile) | **Get** /identity-profiles/{identity-profile-id} | Get single Identity Profile
-[**ImportIdentityProfiles**](IdentityProfilesAPI.md#ImportIdentityProfiles) | **Post** /identity-profiles/import | Import Identity Profiles
-[**ListIdentityProfiles**](IdentityProfilesAPI.md#ListIdentityProfiles) | **Get** /identity-profiles | Identity Profiles List
-[**SyncIdentityProfile**](IdentityProfilesAPI.md#SyncIdentityProfile) | **Post** /identity-profiles/{identity-profile-id}/process-identities | Process identities under profile
+[**DeleteIdentityProfile**](#delete-identity-profile) | **Delete** /identity-profiles/{identity-profile-id} | Delete an Identity Profile
+[**DeleteIdentityProfiles**](#delete-identity-profiles) | **Post** /identity-profiles/bulk-delete | Delete Identity Profiles
+[**ExportIdentityProfiles**](#export-identity-profiles) | **Get** /identity-profiles/export | Export Identity Profiles
+[**GetDefaultIdentityAttributeConfig**](#get-default-identity-attribute-config) | **Get** /identity-profiles/{identity-profile-id}/default-identity-attribute-config | Get default Identity Attribute Config
+[**GetIdentityProfile**](#get-identity-profile) | **Get** /identity-profiles/{identity-profile-id} | Get single Identity Profile
+[**ImportIdentityProfiles**](#import-identity-profiles) | **Post** /identity-profiles/import | Import Identity Profiles
+[**ListIdentityProfiles**](#list-identity-profiles) | **Get** /identity-profiles | Identity Profiles List
+[**SyncIdentityProfile**](#sync-identity-profile) | **Post** /identity-profiles/{identity-profile-id}/process-identities | Process identities under profile
 
 
 
-## Delete an Identity Profile
+## delete-identity-profile
 
 
 This deletes an Identity Profile based on ID.
@@ -31,10 +31,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | identityProfileId | **string** | True  | The Identity Profile ID.
 
-
+	
 ### Return type
 
-[**TaskResultSimplified**](TaskResultSimplified.md)
+[**TaskResultSimplified**](TaskResultSimplified)
 
 ### Responses
 Code | Description  | Data Type
@@ -57,43 +57,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//DeleteIdentityProfile
-
-    identityProfileId := "ef38f94347e94562b5bb8424a56397d8"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.IdentityProfilesAPI.DeleteIdentityProfile(context.Background(), identityProfileId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.DeleteIdentityProfile``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeleteIdentityProfile`: TaskResultSimplified
-    fmt.Fprintf(os.Stdout, "Response from `IdentityProfilesAPI.DeleteIdentityProfile`: %v\n", resp)
-}
-```
-
-
-
-
-## Delete Identity Profiles
+## delete-identity-profiles
 
 
 This deletes multiple Identity Profiles via a list of supplied IDs.
@@ -109,10 +74,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | requestBody | **[]string** | True  | Identity Profile bulk delete request body.
 
-
+	
 ### Return type
 
-[**TaskResultSimplified**](TaskResultSimplified.md)
+[**TaskResultSimplified**](TaskResultSimplified)
 
 ### Responses
 Code | Description  | Data Type
@@ -134,43 +99,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//DeleteIdentityProfiles
-
-    requestBody := []string{"Property_example"}
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.IdentityProfilesAPI.DeleteIdentityProfiles(context.Background()).RequestBody(requestBody).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.DeleteIdentityProfiles``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeleteIdentityProfiles`: TaskResultSimplified
-    fmt.Fprintf(os.Stdout, "Response from `IdentityProfilesAPI.DeleteIdentityProfiles`: %v\n", resp)
-}
-```
-
-
-
-
-## Export Identity Profiles
+## export-identity-profiles
 
 
 This exports existing identity profiles in the format specified by the sp-config service.
@@ -184,10 +114,10 @@ Param Type | Name | Data Type | Required  | Description
   Query | filters | **string** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne*  **name**: *eq, ne*  **priority**: *eq, ne*
   Query | sorters | **string** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, priority**
 
-
+	
 ### Return type
 
-[**[]IdentityProfileExportedObject**](IdentityProfileExportedObject.md)
+[**[]IdentityProfileExportedObject**](IdentityProfileExportedObject)
 
 ### Responses
 Code | Description  | Data Type
@@ -209,47 +139,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//ExportIdentityProfiles
-
-    //limit := int32(250)
-    //offset := int32(0)
-    //count := true
-    //filters := "id eq "ef38f94347e94562b5bb8424a56397d8""
-    //sorters := "id,name"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.IdentityProfilesAPI.ExportIdentityProfiles(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.ExportIdentityProfiles``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ExportIdentityProfiles`: []IdentityProfileExportedObject
-    fmt.Fprintf(os.Stdout, "Response from `IdentityProfilesAPI.ExportIdentityProfiles`: %v\n", resp)
-}
-```
-
-
-
-
-## Get default Identity Attribute Config
+## get-default-identity-attribute-config
 
 
 This returns the default identity attribute config.
@@ -260,10 +151,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | identityProfileId | **string** | True  | The Identity Profile ID.
 
-
+	
 ### Return type
 
-[**IdentityAttributeConfig**](IdentityAttributeConfig.md)
+[**IdentityAttributeConfig**](IdentityAttributeConfig)
 
 ### Responses
 Code | Description  | Data Type
@@ -286,43 +177,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//GetDefaultIdentityAttributeConfig
-
-    identityProfileId := "2b838de9-db9b-abcf-e646-d4f274ad4238"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.IdentityProfilesAPI.GetDefaultIdentityAttributeConfig(context.Background(), identityProfileId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.GetDefaultIdentityAttributeConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetDefaultIdentityAttributeConfig`: IdentityAttributeConfig
-    fmt.Fprintf(os.Stdout, "Response from `IdentityProfilesAPI.GetDefaultIdentityAttributeConfig`: %v\n", resp)
-}
-```
-
-
-
-
-## Get single Identity Profile
+## get-identity-profile
 
 
 This returns a single Identity Profile based on ID.
@@ -333,10 +189,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | identityProfileId | **string** | True  | The Identity Profile ID.
 
-
+	
 ### Return type
 
-[**IdentityProfile**](IdentityProfile.md)
+[**IdentityProfile**](IdentityProfile)
 
 ### Responses
 Code | Description  | Data Type
@@ -359,43 +215,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//GetIdentityProfile
-
-    identityProfileId := "2b838de9-db9b-abcf-e646-d4f274ad4238"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.IdentityProfilesAPI.GetIdentityProfile(context.Background(), identityProfileId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.GetIdentityProfile``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetIdentityProfile`: IdentityProfile
-    fmt.Fprintf(os.Stdout, "Response from `IdentityProfilesAPI.GetIdentityProfile`: %v\n", resp)
-}
-```
-
-
-
-
-## Import Identity Profiles
+## import-identity-profiles
 
 
 This imports previously exported identity profiles.
@@ -405,10 +226,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | identityProfileExportedObject | [**[]IdentityProfileExportedObject**](IdentityProfileExportedObject.md) | True  | Previously exported Identity Profiles.
 
-
+	
 ### Return type
 
-[**ObjectImportResult**](ObjectImportResult.md)
+[**ObjectImportResult**](ObjectImportResult)
 
 ### Responses
 Code | Description  | Data Type
@@ -430,43 +251,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//ImportIdentityProfiles
-
-    identityProfileExportedObject := []sailpoint.IdentityProfileExportedObject{*sailpoint.NewIdentityProfileExportedObject()}
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.IdentityProfilesAPI.ImportIdentityProfiles(context.Background()).IdentityProfileExportedObject(identityProfileExportedObject).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.ImportIdentityProfiles``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ImportIdentityProfiles`: ObjectImportResult
-    fmt.Fprintf(os.Stdout, "Response from `IdentityProfilesAPI.ImportIdentityProfiles`: %v\n", resp)
-}
-```
-
-
-
-
-## Identity Profiles List
+## list-identity-profiles
 
 
 This returns a list of Identity Profiles based on the specified query parameters.
@@ -481,10 +267,10 @@ Param Type | Name | Data Type | Required  | Description
   Query | filters | **string** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, ge, gt, in, le, lt, isnull, sw*  **name**: *eq, ne, in, le, lt, isnull, sw*  **priority**: *eq, ne*
   Query | sorters | **string** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, priority, created, modified, owner.id, owner.name**
 
-
+	
 ### Return type
 
-[**[]IdentityProfile**](IdentityProfile.md)
+[**[]IdentityProfile**](IdentityProfile)
 
 ### Responses
 Code | Description  | Data Type
@@ -506,47 +292,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//ListIdentityProfiles
-
-    //limit := int32(250)
-    //offset := int32(0)
-    //count := true
-    //filters := "id eq "ef38f94347e94562b5bb8424a56397d8""
-    //sorters := "id,name"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.IdentityProfilesAPI.ListIdentityProfiles(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.ListIdentityProfiles``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListIdentityProfiles`: []IdentityProfile
-    fmt.Fprintf(os.Stdout, "Response from `IdentityProfilesAPI.ListIdentityProfiles`: %v\n", resp)
-}
-```
-
-
-
-
-## Process identities under profile
+## sync-identity-profile
 
 
 Process identities under the profile
@@ -558,7 +305,7 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | identityProfileId | **string** | True  | The Identity Profile ID to be processed
 
-
+	
 ### Return type
 
 **map[string]interface{}**
@@ -583,39 +330,4 @@ Code | Description  | Data Type
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//SyncIdentityProfile
-
-    identityProfileId := "ef38f94347e94562b5bb8424a56397d8"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.IdentityProfilesAPI.SyncIdentityProfile(context.Background(), identityProfileId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.SyncIdentityProfile``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `SyncIdentityProfile`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `IdentityProfilesAPI.SyncIdentityProfile`: %v\n", resp)
-}
-```
-
-
 

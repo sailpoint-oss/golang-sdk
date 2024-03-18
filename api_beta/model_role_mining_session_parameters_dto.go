@@ -426,7 +426,7 @@ func (o *RoleMiningSessionParametersDto) UnmarshalJSON(bytes []byte) (err error)
 	varRoleMiningSessionParametersDto := _RoleMiningSessionParametersDto{}
 
 	if err = json.Unmarshal(bytes, &varRoleMiningSessionParametersDto); err == nil {
-	*o = RoleMiningSessionParametersDto(varRoleMiningSessionParametersDto)
+			*o = RoleMiningSessionParametersDto(varRoleMiningSessionParametersDto)
 }
 
 	additionalProperties := make(map[string]interface{})

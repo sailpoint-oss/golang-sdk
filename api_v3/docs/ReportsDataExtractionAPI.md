@@ -4,14 +4,14 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CancelReport**](ReportsDataExtractionAPI.md#CancelReport) | **Post** /reports/{id}/cancel | Cancel Report
-[**GetReport**](ReportsDataExtractionAPI.md#GetReport) | **Get** /reports/{taskResultId} | Get Report File
-[**GetReportResult**](ReportsDataExtractionAPI.md#GetReportResult) | **Get** /reports/{taskResultId}/result | Get Report Result
-[**StartReport**](ReportsDataExtractionAPI.md#StartReport) | **Post** /reports/run | Run Report
+[**CancelReport**](#cancel-report) | **Post** /reports/{id}/cancel | Cancel Report
+[**GetReport**](#get-report) | **Get** /reports/{taskResultId} | Get Report File
+[**GetReportResult**](#get-report-result) | **Get** /reports/{taskResultId}/result | Get Report Result
+[**StartReport**](#start-report) | **Post** /reports/run | Run Report
 
 
 
-## Cancel Report
+## cancel-report
 
 
 Cancels a running report.
@@ -21,7 +21,7 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **string** | True  | ID of the running Report to cancel
 
-
+	
 ### Return type
 
  (empty response body)
@@ -46,41 +46,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//CancelReport
-
-    id := "a1ed223247144cc29d23c632624b4767"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    r, err := apiClient.V3.ReportsDataExtractionAPI.CancelReport(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ReportsDataExtractionAPI.CancelReport``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-
-
-
-## Get Report File
+## get-report
 
 
 Gets a report in file format.
@@ -93,10 +60,10 @@ Path   | taskResultId | **string** | True  | Unique identifier of the task resul
   Query | name | **string** |   (optional) | preferred Report file name, by default will be used report name from task result.
   Query | auditable | **bool** |   (optional) (default to false) | Enables auditing for current report download. Will create an audit event and sent it to the REPORT cloud-audit kafka topic.  Event will be created if there is any result present by requested taskResultId.
 
-
+	
 ### Return type
 
-[***os.File**](*os.File.md)
+[***os.File**](*os.File)
 
 ### Responses
 Code | Description  | Data Type
@@ -119,46 +86,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//GetReport
-
-    taskResultId := "ef38f94347e94562b5bb8424a56397d8"
-    fileFormat := "csv"
-    //name := "Identities Details Report"
-    //auditable := true
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.ReportsDataExtractionAPI.GetReport(context.Background(), taskResultId).FileFormat(fileFormat).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ReportsDataExtractionAPI.GetReport``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetReport`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `ReportsDataExtractionAPI.GetReport`: %v\n", resp)
-}
-```
-
-
-
-
-## Get Report Result
+## get-report-result
 
 
 Get the report results for a report that was run or is running. Returns empty report result in case there are no active task definitions with used in payload task definition name.
@@ -169,10 +98,10 @@ Param Type | Name | Data Type | Required  | Description
 Path   | taskResultId | **string** | True  | Unique identifier of the task result which handled report
   Query | completed | **bool** |   (optional) (default to false) | state of task result to apply ordering when results are fetching from the DB
 
-
+	
 ### Return type
 
-[**ReportResults**](ReportResults.md)
+[**ReportResults**](ReportResults)
 
 ### Responses
 Code | Description  | Data Type
@@ -194,44 +123,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//GetReportResult
-
-    taskResultId := "ef38f94347e94562b5bb8424a56397d8"
-    //completed := true
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.ReportsDataExtractionAPI.GetReportResult(context.Background(), taskResultId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ReportsDataExtractionAPI.GetReportResult``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetReportResult`: ReportResults
-    fmt.Fprintf(os.Stdout, "Response from `ReportsDataExtractionAPI.GetReportResult`: %v\n", resp)
-}
-```
-
-
-
-
-## Run Report
+## start-report
 
 
 Runs a report according to input report details. If non-concurrent task is already running then it returns, otherwise new task creates and returns.
@@ -241,10 +134,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | reportDetails | [**ReportDetails**](ReportDetails.md) | True  | 
 
-
+	
 ### Return type
 
-[**TaskResultDetails**](TaskResultDetails.md)
+[**TaskResultDetails**](TaskResultDetails)
 
 ### Responses
 Code | Description  | Data Type
@@ -265,39 +158,4 @@ Code | Description  | Data Type
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//StartReport
-
-    reportDetails := *sailpoint.NewReportDetails()
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.ReportsDataExtractionAPI.StartReport(context.Background()).ReportDetails(reportDetails).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ReportsDataExtractionAPI.StartReport``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StartReport`: TaskResultDetails
-    fmt.Fprintf(os.Stdout, "Response from `ReportsDataExtractionAPI.StartReport`: %v\n", resp)
-}
-```
-
-
 

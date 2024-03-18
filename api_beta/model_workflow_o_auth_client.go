@@ -174,7 +174,7 @@ func (o *WorkflowOAuthClient) UnmarshalJSON(bytes []byte) (err error) {
 	varWorkflowOAuthClient := _WorkflowOAuthClient{}
 
 	if err = json.Unmarshal(bytes, &varWorkflowOAuthClient); err == nil {
-	*o = WorkflowOAuthClient(varWorkflowOAuthClient)
+			*o = WorkflowOAuthClient(varWorkflowOAuthClient)
 }
 
 	additionalProperties := make(map[string]interface{})

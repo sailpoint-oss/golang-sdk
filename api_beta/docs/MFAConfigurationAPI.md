@@ -4,74 +4,41 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteMFAConfig**](MFAConfigurationAPI.md#DeleteMFAConfig) | **Delete** /mfa/{method}/delete | Delete MFA method configuration
-[**GetMFADuoConfig**](MFAConfigurationAPI.md#GetMFADuoConfig) | **Get** /mfa/duo-web/config | Configuration of Duo MFA method
-[**GetMFAOktaConfig**](MFAConfigurationAPI.md#GetMFAOktaConfig) | **Get** /mfa/okta-verify/config | Configuration of Okta MFA method
-[**SetMFADuoConfig**](MFAConfigurationAPI.md#SetMFADuoConfig) | **Put** /mfa/duo-web/config | Set Duo MFA configuration
-[**SetMFAOktaConfig**](MFAConfigurationAPI.md#SetMFAOktaConfig) | **Put** /mfa/okta-verify/config | Set Okta MFA configuration
-[**TestMFAConfig**](MFAConfigurationAPI.md#TestMFAConfig) | **Get** /mfa/{method}/test | MFA method&#39;s test configuration
+[**DeleteMFAConfig**](#delete-mfa-config) | **Delete** /mfa/{method}/delete | Delete MFA method configuration
+[**GetMFADuoConfig**](#get-mfa-duo-config) | **Get** /mfa/duo-web/config | Configuration of Duo MFA method
+[**GetMFAOktaConfig**](#get-mfa-okta-config) | **Get** /mfa/okta-verify/config | Configuration of Okta MFA method
+[**SetMFADuoConfig**](#set-mfa-duo-config) | **Put** /mfa/duo-web/config | Set Duo MFA configuration
+[**SetMFAOktaConfig**](#set-mfa-okta-config) | **Put** /mfa/okta-verify/config | Set Okta MFA configuration
+[**TestMFAConfig**](#test-mfa-config) | **Get** /mfa/{method}/test | MFA method&#39;s test configuration
 
 
 
-## DeleteMFAConfig
-
-> MfaOktaConfig DeleteMFAConfig(ctx, method).Execute()
-
-Delete MFA method configuration
+## delete-mfa-config
 
 
+This API removes the configuration for the specified MFA method.
+A token with ORG_ADMIN authority is required to call this API.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | method | **string** | True  | The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'.
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    method := "okta-verify" // string | The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFAConfigurationAPI.DeleteMFAConfig(context.Background(), method).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.DeleteMFAConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeleteMFAConfig`: MfaOktaConfig
-    fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationAPI.DeleteMFAConfig`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**method** | **string** | The name of the MFA method. The currently supported method names are &#39;okta-verify&#39; and &#39;duo-web&#39;. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDeleteMFAConfigRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+	
 ### Return type
 
-[**MfaOktaConfig**](MfaOktaConfig.md)
+[**MfaOktaConfig**](MfaOktaConfig)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | MFA configuration of an MFA method. | MfaOktaConfig
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -83,56 +50,30 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetMFADuoConfig
-
-> MfaDuoConfig GetMFADuoConfig(ctx).Execute()
-
-Configuration of Duo MFA method
+## get-mfa-duo-config
 
 
+This API returns the configuration of an Duo MFA method. A token with ORG_ADMIN authority is required to call this API.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFAConfigurationAPI.GetMFADuoConfig(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.GetMFADuoConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetMFADuoConfig`: MfaDuoConfig
-    fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationAPI.GetMFADuoConfig`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetMFADuoConfigRequest struct via the builder pattern
-
-
+	
 ### Return type
 
-[**MfaDuoConfig**](MfaDuoConfig.md)
+[**MfaDuoConfig**](MfaDuoConfig)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | The configuration of an Duo MFA method. | MfaDuoConfig
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -144,56 +85,30 @@ Other parameters are passed through a pointer to a apiGetMFADuoConfigRequest str
 [[Back to README]](../README.md)
 
 
-## GetMFAOktaConfig
-
-> MfaOktaConfig GetMFAOktaConfig(ctx).Execute()
-
-Configuration of Okta MFA method
+## get-mfa-okta-config
 
 
+This API returns the configuration of an Okta MFA method. A token with ORG_ADMIN authority is required to call this API.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFAConfigurationAPI.GetMFAOktaConfig(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.GetMFAOktaConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetMFAOktaConfig`: MfaOktaConfig
-    fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationAPI.GetMFAOktaConfig`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetMFAOktaConfigRequest struct via the builder pattern
-
-
+	
 ### Return type
 
-[**MfaOktaConfig**](MfaOktaConfig.md)
+[**MfaOktaConfig**](MfaOktaConfig)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | The configuration of an Okta MFA method. | MfaOktaConfig
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -205,61 +120,31 @@ Other parameters are passed through a pointer to a apiGetMFAOktaConfigRequest st
 [[Back to README]](../README.md)
 
 
-## SetMFADuoConfig
-
-> MfaDuoConfig SetMFADuoConfig(ctx).MfaDuoConfig(mfaDuoConfig).Execute()
-
-Set Duo MFA configuration
+## set-mfa-duo-config
 
 
+This API sets the configuration of an Duo MFA method. A token with ORG_ADMIN authority is required to call this API.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | mfaDuoConfig | [**MfaDuoConfig**](MfaDuoConfig.md) | True  | 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    mfaDuoConfig := *openapiclient.NewMfaDuoConfig() // MfaDuoConfig | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFAConfigurationAPI.SetMFADuoConfig(context.Background()).MfaDuoConfig(mfaDuoConfig).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.SetMFADuoConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `SetMFADuoConfig`: MfaDuoConfig
-    fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationAPI.SetMFADuoConfig`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiSetMFADuoConfigRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **mfaDuoConfig** | [**MfaDuoConfig**](MfaDuoConfig.md) |  | 
-
+	
 ### Return type
 
-[**MfaDuoConfig**](MfaDuoConfig.md)
+[**MfaDuoConfig**](MfaDuoConfig)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | MFA configuration of an Duo MFA method. | MfaDuoConfig
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -271,61 +156,31 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SetMFAOktaConfig
-
-> MfaOktaConfig SetMFAOktaConfig(ctx).MfaOktaConfig(mfaOktaConfig).Execute()
-
-Set Okta MFA configuration
+## set-mfa-okta-config
 
 
+This API sets the configuration of an Okta MFA method. A token with ORG_ADMIN authority is required to call this API.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | mfaOktaConfig | [**MfaOktaConfig**](MfaOktaConfig.md) | True  | 
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    mfaOktaConfig := *openapiclient.NewMfaOktaConfig() // MfaOktaConfig | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFAConfigurationAPI.SetMFAOktaConfig(context.Background()).MfaOktaConfig(mfaOktaConfig).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.SetMFAOktaConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `SetMFAOktaConfig`: MfaOktaConfig
-    fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationAPI.SetMFAOktaConfig`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiSetMFAOktaConfigRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **mfaOktaConfig** | [**MfaOktaConfig**](MfaOktaConfig.md) |  | 
-
+	
 ### Return type
 
-[**MfaOktaConfig**](MfaOktaConfig.md)
+[**MfaOktaConfig**](MfaOktaConfig)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | MFA configuration of an Okta MFA method. | MfaOktaConfig
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -337,65 +192,32 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## TestMFAConfig
-
-> MfaConfigTestResponse TestMFAConfig(ctx, method).Execute()
-
-MFA method's test configuration
+## test-mfa-config
 
 
+This API validates that the configuration is valid and will properly authenticate with the MFA provider identified by the method path parameter.
+A token with ORG_ADMIN authority is required to call this API.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | method | **string** | True  | The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'.
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    method := "okta-verify" // string | The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFAConfigurationAPI.TestMFAConfig(context.Background(), method).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.TestMFAConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `TestMFAConfig`: MfaConfigTestResponse
-    fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationAPI.TestMFAConfig`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**method** | **string** | The name of the MFA method. The currently supported method names are &#39;okta-verify&#39; and &#39;duo-web&#39;. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiTestMFAConfigRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
+	
 ### Return type
 
-[**MfaConfigTestResponse**](MfaConfigTestResponse.md)
+[**MfaConfigTestResponse**](MfaConfigTestResponse)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | The result of configuration test for the MFA provider. | MfaConfigTestResponse
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 

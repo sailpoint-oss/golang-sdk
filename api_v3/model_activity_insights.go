@@ -174,7 +174,7 @@ func (o *ActivityInsights) UnmarshalJSON(bytes []byte) (err error) {
 	varActivityInsights := _ActivityInsights{}
 
 	if err = json.Unmarshal(bytes, &varActivityInsights); err == nil {
-	*o = ActivityInsights(varActivityInsights)
+			*o = ActivityInsights(varActivityInsights)
 }
 
 	additionalProperties := make(map[string]interface{})

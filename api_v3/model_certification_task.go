@@ -359,7 +359,7 @@ func (o *CertificationTask) UnmarshalJSON(bytes []byte) (err error) {
 	varCertificationTask := _CertificationTask{}
 
 	if err = json.Unmarshal(bytes, &varCertificationTask); err == nil {
-	*o = CertificationTask(varCertificationTask)
+			*o = CertificationTask(varCertificationTask)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -137,7 +137,7 @@ func (o *EntitlementDocumentAllOfSource) UnmarshalJSON(bytes []byte) (err error)
 	varEntitlementDocumentAllOfSource := _EntitlementDocumentAllOfSource{}
 
 	if err = json.Unmarshal(bytes, &varEntitlementDocumentAllOfSource); err == nil {
-	*o = EntitlementDocumentAllOfSource(varEntitlementDocumentAllOfSource)
+			*o = EntitlementDocumentAllOfSource(varEntitlementDocumentAllOfSource)
 }
 
 	additionalProperties := make(map[string]interface{})

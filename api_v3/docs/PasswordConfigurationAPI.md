@@ -4,13 +4,13 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreatePasswordOrgConfig**](PasswordConfigurationAPI.md#CreatePasswordOrgConfig) | **Post** /password-org-config | Create Password Org Config
-[**GetPasswordOrgConfig**](PasswordConfigurationAPI.md#GetPasswordOrgConfig) | **Get** /password-org-config | Get Password Org Config
-[**PutPasswordOrgConfig**](PasswordConfigurationAPI.md#PutPasswordOrgConfig) | **Put** /password-org-config | Update Password Org Config
+[**CreatePasswordOrgConfig**](#create-password-org-config) | **Post** /password-org-config | Create Password Org Config
+[**GetPasswordOrgConfig**](#get-password-org-config) | **Get** /password-org-config | Get Password Org Config
+[**PutPasswordOrgConfig**](#put-password-org-config) | **Put** /password-org-config | Update Password Org Config
 
 
 
-## Create Password Org Config
+## create-password-org-config
 
 
 This API creates the password org config. Unspecified fields will use default value.
@@ -22,10 +22,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | passwordOrgConfig | [**PasswordOrgConfig**](PasswordOrgConfig.md) | True  | 
 
-
+	
 ### Return type
 
-[**PasswordOrgConfig**](PasswordOrgConfig.md)
+[**PasswordOrgConfig**](PasswordOrgConfig)
 
 ### Responses
 Code | Description  | Data Type
@@ -47,43 +47,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//CreatePasswordOrgConfig
-
-    passwordOrgConfig := *sailpoint.NewPasswordOrgConfig()
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.PasswordConfigurationAPI.CreatePasswordOrgConfig(context.Background()).PasswordOrgConfig(passwordOrgConfig).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordConfigurationAPI.CreatePasswordOrgConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreatePasswordOrgConfig`: PasswordOrgConfig
-    fmt.Fprintf(os.Stdout, "Response from `PasswordConfigurationAPI.CreatePasswordOrgConfig`: %v\n", resp)
-}
-```
-
-
-
-
-## Get Password Org Config
+## get-password-org-config
 
 
 This API returns the password org config . Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:read'
@@ -92,10 +57,10 @@ This API returns the password org config . Requires ORG_ADMIN, API role or autho
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 
-
+	
 ### Return type
 
-[**PasswordOrgConfig**](PasswordOrgConfig.md)
+[**PasswordOrgConfig**](PasswordOrgConfig)
 
 ### Responses
 Code | Description  | Data Type
@@ -117,42 +82,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//GetPasswordOrgConfig
-
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.PasswordConfigurationAPI.GetPasswordOrgConfig(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordConfigurationAPI.GetPasswordOrgConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetPasswordOrgConfig`: PasswordOrgConfig
-    fmt.Fprintf(os.Stdout, "Response from `PasswordConfigurationAPI.GetPasswordOrgConfig`: %v\n", resp)
-}
-```
-
-
-
-
-## Update Password Org Config
+## put-password-org-config
 
 
 This API updates the password org config for specified fields. Other fields will keep original value.
@@ -164,10 +95,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | passwordOrgConfig | [**PasswordOrgConfig**](PasswordOrgConfig.md) | True  | 
 
-
+	
 ### Return type
 
-[**PasswordOrgConfig**](PasswordOrgConfig.md)
+[**PasswordOrgConfig**](PasswordOrgConfig)
 
 ### Responses
 Code | Description  | Data Type
@@ -188,39 +119,4 @@ Code | Description  | Data Type
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//PutPasswordOrgConfig
-
-    passwordOrgConfig := *sailpoint.NewPasswordOrgConfig()
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.PasswordConfigurationAPI.PutPasswordOrgConfig(context.Background()).PasswordOrgConfig(passwordOrgConfig).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordConfigurationAPI.PutPasswordOrgConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PutPasswordOrgConfig`: PasswordOrgConfig
-    fmt.Fprintf(os.Stdout, "Response from `PasswordConfigurationAPI.PutPasswordOrgConfig`: %v\n", resp)
-}
-```
-
-
 

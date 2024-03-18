@@ -100,7 +100,7 @@ func (o *JsonPatch) UnmarshalJSON(bytes []byte) (err error) {
 	varJsonPatch := _JsonPatch{}
 
 	if err = json.Unmarshal(bytes, &varJsonPatch); err == nil {
-	*o = JsonPatch(varJsonPatch)
+			*o = JsonPatch(varJsonPatch)
 }
 
 	additionalProperties := make(map[string]interface{})

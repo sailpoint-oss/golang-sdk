@@ -20,9 +20,9 @@ var _ MappedNullable = &ManagerCorrelationMapping{}
 // ManagerCorrelationMapping struct for ManagerCorrelationMapping
 type ManagerCorrelationMapping struct {
 	// Name of the attribute to use for manager correlation. The value found on the account attribute will be used to lookup the manager's identity.
-	AccountAttribute *string `json:"accountAttribute,omitempty"`
+	AccountAttributeName *string `json:"accountAttributeName,omitempty"`
 	// Name of the identity attribute to search when trying to find a manager using the value from the accountAttribute.
-	IdentityAttribute *string `json:"identityAttribute,omitempty"`
+	IdentityAttributeName *string `json:"identityAttributeName,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -45,68 +45,68 @@ func NewManagerCorrelationMappingWithDefaults() *ManagerCorrelationMapping {
 	return &this
 }
 
-// GetAccountAttribute returns the AccountAttribute field value if set, zero value otherwise.
-func (o *ManagerCorrelationMapping) GetAccountAttribute() string {
-	if o == nil || isNil(o.AccountAttribute) {
+// GetAccountAttributeName returns the AccountAttributeName field value if set, zero value otherwise.
+func (o *ManagerCorrelationMapping) GetAccountAttributeName() string {
+	if o == nil || isNil(o.AccountAttributeName) {
 		var ret string
 		return ret
 	}
-	return *o.AccountAttribute
+	return *o.AccountAttributeName
 }
 
-// GetAccountAttributeOk returns a tuple with the AccountAttribute field value if set, nil otherwise
+// GetAccountAttributeNameOk returns a tuple with the AccountAttributeName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ManagerCorrelationMapping) GetAccountAttributeOk() (*string, bool) {
-	if o == nil || isNil(o.AccountAttribute) {
+func (o *ManagerCorrelationMapping) GetAccountAttributeNameOk() (*string, bool) {
+	if o == nil || isNil(o.AccountAttributeName) {
 		return nil, false
 	}
-	return o.AccountAttribute, true
+	return o.AccountAttributeName, true
 }
 
-// HasAccountAttribute returns a boolean if a field has been set.
-func (o *ManagerCorrelationMapping) HasAccountAttribute() bool {
-	if o != nil && !isNil(o.AccountAttribute) {
+// HasAccountAttributeName returns a boolean if a field has been set.
+func (o *ManagerCorrelationMapping) HasAccountAttributeName() bool {
+	if o != nil && !isNil(o.AccountAttributeName) {
 		return true
 	}
 
 	return false
 }
 
-// SetAccountAttribute gets a reference to the given string and assigns it to the AccountAttribute field.
-func (o *ManagerCorrelationMapping) SetAccountAttribute(v string) {
-	o.AccountAttribute = &v
+// SetAccountAttributeName gets a reference to the given string and assigns it to the AccountAttributeName field.
+func (o *ManagerCorrelationMapping) SetAccountAttributeName(v string) {
+	o.AccountAttributeName = &v
 }
 
-// GetIdentityAttribute returns the IdentityAttribute field value if set, zero value otherwise.
-func (o *ManagerCorrelationMapping) GetIdentityAttribute() string {
-	if o == nil || isNil(o.IdentityAttribute) {
+// GetIdentityAttributeName returns the IdentityAttributeName field value if set, zero value otherwise.
+func (o *ManagerCorrelationMapping) GetIdentityAttributeName() string {
+	if o == nil || isNil(o.IdentityAttributeName) {
 		var ret string
 		return ret
 	}
-	return *o.IdentityAttribute
+	return *o.IdentityAttributeName
 }
 
-// GetIdentityAttributeOk returns a tuple with the IdentityAttribute field value if set, nil otherwise
+// GetIdentityAttributeNameOk returns a tuple with the IdentityAttributeName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ManagerCorrelationMapping) GetIdentityAttributeOk() (*string, bool) {
-	if o == nil || isNil(o.IdentityAttribute) {
+func (o *ManagerCorrelationMapping) GetIdentityAttributeNameOk() (*string, bool) {
+	if o == nil || isNil(o.IdentityAttributeName) {
 		return nil, false
 	}
-	return o.IdentityAttribute, true
+	return o.IdentityAttributeName, true
 }
 
-// HasIdentityAttribute returns a boolean if a field has been set.
-func (o *ManagerCorrelationMapping) HasIdentityAttribute() bool {
-	if o != nil && !isNil(o.IdentityAttribute) {
+// HasIdentityAttributeName returns a boolean if a field has been set.
+func (o *ManagerCorrelationMapping) HasIdentityAttributeName() bool {
+	if o != nil && !isNil(o.IdentityAttributeName) {
 		return true
 	}
 
 	return false
 }
 
-// SetIdentityAttribute gets a reference to the given string and assigns it to the IdentityAttribute field.
-func (o *ManagerCorrelationMapping) SetIdentityAttribute(v string) {
-	o.IdentityAttribute = &v
+// SetIdentityAttributeName gets a reference to the given string and assigns it to the IdentityAttributeName field.
+func (o *ManagerCorrelationMapping) SetIdentityAttributeName(v string) {
+	o.IdentityAttributeName = &v
 }
 
 func (o ManagerCorrelationMapping) MarshalJSON() ([]byte, error) {
@@ -119,11 +119,11 @@ func (o ManagerCorrelationMapping) MarshalJSON() ([]byte, error) {
 
 func (o ManagerCorrelationMapping) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AccountAttribute) {
-		toSerialize["accountAttribute"] = o.AccountAttribute
+	if !isNil(o.AccountAttributeName) {
+		toSerialize["accountAttributeName"] = o.AccountAttributeName
 	}
-	if !isNil(o.IdentityAttribute) {
-		toSerialize["identityAttribute"] = o.IdentityAttribute
+	if !isNil(o.IdentityAttributeName) {
+		toSerialize["identityAttributeName"] = o.IdentityAttributeName
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -137,14 +137,14 @@ func (o *ManagerCorrelationMapping) UnmarshalJSON(bytes []byte) (err error) {
 	varManagerCorrelationMapping := _ManagerCorrelationMapping{}
 
 	if err = json.Unmarshal(bytes, &varManagerCorrelationMapping); err == nil {
-	*o = ManagerCorrelationMapping(varManagerCorrelationMapping)
+			*o = ManagerCorrelationMapping(varManagerCorrelationMapping)
 }
 
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "accountAttribute")
-		delete(additionalProperties, "identityAttribute")
+		delete(additionalProperties, "accountAttributeName")
+		delete(additionalProperties, "identityAttributeName")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -174,7 +174,7 @@ func (o *SendTestNotificationRequestDto) UnmarshalJSON(bytes []byte) (err error)
 	varSendTestNotificationRequestDto := _SendTestNotificationRequestDto{}
 
 	if err = json.Unmarshal(bytes, &varSendTestNotificationRequestDto); err == nil {
-	*o = SendTestNotificationRequestDto(varSendTestNotificationRequestDto)
+			*o = SendTestNotificationRequestDto(varSendTestNotificationRequestDto)
 }
 
 	additionalProperties := make(map[string]interface{})

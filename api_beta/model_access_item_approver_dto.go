@@ -174,7 +174,7 @@ func (o *AccessItemApproverDto) UnmarshalJSON(bytes []byte) (err error) {
 	varAccessItemApproverDto := _AccessItemApproverDto{}
 
 	if err = json.Unmarshal(bytes, &varAccessItemApproverDto); err == nil {
-	*o = AccessItemApproverDto(varAccessItemApproverDto)
+			*o = AccessItemApproverDto(varAccessItemApproverDto)
 }
 
 	additionalProperties := make(map[string]interface{})

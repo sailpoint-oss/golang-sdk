@@ -137,7 +137,7 @@ func (o *PostExternalExecuteWorkflow200Response) UnmarshalJSON(bytes []byte) (er
 	varPostExternalExecuteWorkflow200Response := _PostExternalExecuteWorkflow200Response{}
 
 	if err = json.Unmarshal(bytes, &varPostExternalExecuteWorkflow200Response); err == nil {
-	*o = PostExternalExecuteWorkflow200Response(varPostExternalExecuteWorkflow200Response)
+			*o = PostExternalExecuteWorkflow200Response(varPostExternalExecuteWorkflow200Response)
 }
 
 	additionalProperties := make(map[string]interface{})

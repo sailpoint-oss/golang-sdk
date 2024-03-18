@@ -211,7 +211,7 @@ func (o *PeerGroupMember) UnmarshalJSON(bytes []byte) (err error) {
 	varPeerGroupMember := _PeerGroupMember{}
 
 	if err = json.Unmarshal(bytes, &varPeerGroupMember); err == nil {
-	*o = PeerGroupMember(varPeerGroupMember)
+			*o = PeerGroupMember(varPeerGroupMember)
 }
 
 	additionalProperties := make(map[string]interface{})

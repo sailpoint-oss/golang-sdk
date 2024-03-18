@@ -146,7 +146,7 @@ func (o *ViolationOwnerAssignmentConfig) UnmarshalJSON(bytes []byte) (err error)
 	varViolationOwnerAssignmentConfig := _ViolationOwnerAssignmentConfig{}
 
 	if err = json.Unmarshal(bytes, &varViolationOwnerAssignmentConfig); err == nil {
-	*o = ViolationOwnerAssignmentConfig(varViolationOwnerAssignmentConfig)
+			*o = ViolationOwnerAssignmentConfig(varViolationOwnerAssignmentConfig)
 }
 
 	additionalProperties := make(map[string]interface{})

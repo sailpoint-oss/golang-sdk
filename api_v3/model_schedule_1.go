@@ -22,6 +22,7 @@ var _ MappedNullable = &Schedule1{}
 // Schedule1 The schedule information.
 type Schedule1 struct {
 	Type ScheduleType `json:"type"`
+	Months *Schedule1Months `json:"months,omitempty"`
 	Days *Schedule1Days `json:"days,omitempty"`
 	Hours Schedule1Hours `json:"hours"`
 	// A date-time in ISO-8601 format
@@ -74,6 +75,38 @@ func (o *Schedule1) GetTypeOk() (*ScheduleType, bool) {
 // SetType sets field value
 func (o *Schedule1) SetType(v ScheduleType) {
 	o.Type = v
+}
+
+// GetMonths returns the Months field value if set, zero value otherwise.
+func (o *Schedule1) GetMonths() Schedule1Months {
+	if o == nil || isNil(o.Months) {
+		var ret Schedule1Months
+		return ret
+	}
+	return *o.Months
+}
+
+// GetMonthsOk returns a tuple with the Months field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Schedule1) GetMonthsOk() (*Schedule1Months, bool) {
+	if o == nil || isNil(o.Months) {
+		return nil, false
+	}
+	return o.Months, true
+}
+
+// HasMonths returns a boolean if a field has been set.
+func (o *Schedule1) HasMonths() bool {
+	if o != nil && !isNil(o.Months) {
+		return true
+	}
+
+	return false
+}
+
+// SetMonths gets a reference to the given Schedule1Months and assigns it to the Months field.
+func (o *Schedule1) SetMonths(v Schedule1Months) {
+	o.Months = &v
 }
 
 // GetDays returns the Days field value if set, zero value otherwise.
@@ -227,6 +260,9 @@ func (o Schedule1) MarshalJSON() ([]byte, error) {
 func (o Schedule1) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
+	if !isNil(o.Months) {
+		toSerialize["months"] = o.Months
+	}
 	if !isNil(o.Days) {
 		toSerialize["days"] = o.Days
 	}
@@ -246,7 +282,7 @@ func (o Schedule1) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *Schedule1) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -271,13 +307,14 @@ func (o *Schedule1) UnmarshalJSON(bytes []byte) (err error) {
 	varSchedule1 := _Schedule1{}
 
 	if err = json.Unmarshal(bytes, &varSchedule1); err == nil {
-	*o = Schedule1(varSchedule1)
+			*o = Schedule1(varSchedule1)
 }
 
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
+		delete(additionalProperties, "months")
 		delete(additionalProperties, "days")
 		delete(additionalProperties, "hours")
 		delete(additionalProperties, "expiration")

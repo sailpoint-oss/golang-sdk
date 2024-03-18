@@ -4,12 +4,12 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetAccountActivity**](AccountActivitiesAPI.md#GetAccountActivity) | **Get** /account-activities/{id} | Get an Account Activity
-[**ListAccountActivities**](AccountActivitiesAPI.md#ListAccountActivities) | **Get** /account-activities | List Account Activities
+[**GetAccountActivity**](#get-account-activity) | **Get** /account-activities/{id} | Get an Account Activity
+[**ListAccountActivities**](#list-account-activities) | **Get** /account-activities | List Account Activities
 
 
 
-## Get an Account Activity
+## get-account-activity
 
 
 This gets a single account activity by its id.
@@ -19,10 +19,10 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **string** | True  | The account activity id
 
-
+	
 ### Return type
 
-[**AccountActivity**](AccountActivity.md)
+[**AccountActivity**](AccountActivity)
 
 ### Responses
 Code | Description  | Data Type
@@ -45,43 +45,8 @@ Code | Description  | Data Type
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-### Example
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//GetAccountActivity
-
-    id := "ef38f94347e94562b5bb8424a56397d8"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.AccountActivitiesAPI.GetAccountActivity(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountActivitiesAPI.GetAccountActivity``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetAccountActivity`: AccountActivity
-    fmt.Fprintf(os.Stdout, "Response from `AccountActivitiesAPI.GetAccountActivity`: %v\n", resp)
-}
-```
-
-
-
-
-## List Account Activities
+## list-account-activities
 
 
 This gets a collection of account activities that satisfy the given query parameters.
@@ -98,10 +63,10 @@ Param Type | Name | Data Type | Required  | Description
   Query | filters | **string** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **type**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **created**: *gt, lt, ge, le, eq, in, ne, isnull, sw*  **modified**: *gt, lt, ge, le, eq, in, ne, isnull, sw*
   Query | sorters | **string** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **type, created, modified**
 
-
+	
 ### Return type
 
-[**[]AccountActivity**](AccountActivity.md)
+[**[]AccountActivity**](AccountActivity)
 
 ### Responses
 Code | Description  | Data Type
@@ -122,46 +87,4 @@ Code | Description  | Data Type
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-
-//ListAccountActivities
-
-    //requestedFor := "2c91808568c529c60168cca6f90c1313"
-    //requestedBy := "2c91808568c529c60168cca6f90c1313"
-    //regardingIdentity := "2c91808568c529c60168cca6f90c1313"
-    //limit := int32(250)
-    //offset := int32(0)
-    //count := true
-    //filters := "type eq "Identity Refresh""
-    //sorters := "created"
-
-
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.AccountActivitiesAPI.ListAccountActivities(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountActivitiesAPI.ListAccountActivities``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListAccountActivities`: []AccountActivity
-    fmt.Fprintf(os.Stdout, "Response from `AccountActivitiesAPI.ListAccountActivities`: %v\n", resp)
-}
-```
-
-
 

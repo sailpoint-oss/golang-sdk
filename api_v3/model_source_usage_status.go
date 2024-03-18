@@ -100,7 +100,7 @@ func (o *SourceUsageStatus) UnmarshalJSON(bytes []byte) (err error) {
 	varSourceUsageStatus := _SourceUsageStatus{}
 
 	if err = json.Unmarshal(bytes, &varSourceUsageStatus); err == nil {
-	*o = SourceUsageStatus(varSourceUsageStatus)
+			*o = SourceUsageStatus(varSourceUsageStatus)
 }
 
 	additionalProperties := make(map[string]interface{})

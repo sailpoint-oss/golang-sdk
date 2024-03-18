@@ -545,7 +545,7 @@ func (o *NonEmployeeRecord) UnmarshalJSON(bytes []byte) (err error) {
 	varNonEmployeeRecord := _NonEmployeeRecord{}
 
 	if err = json.Unmarshal(bytes, &varNonEmployeeRecord); err == nil {
-	*o = NonEmployeeRecord(varNonEmployeeRecord)
+			*o = NonEmployeeRecord(varNonEmployeeRecord)
 }
 
 	additionalProperties := make(map[string]interface{})

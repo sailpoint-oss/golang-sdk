@@ -32,19 +32,19 @@ type Identity struct {
 	// Alternate unique identifier for the identity
 	Alias *string `json:"alias,omitempty"`
 	// The email address of the identity
-	EmailAddress *string `json:"emailAddress,omitempty"`
+	EmailAddress NullableString `json:"emailAddress,omitempty"`
 	// The processing state of the identity
 	ProcessingState NullableString `json:"processingState,omitempty"`
 	// The identity's status in the system
 	IdentityStatus *string `json:"identityStatus,omitempty"`
-	ManagerRef *IdentityDtoManagerRef `json:"managerRef,omitempty"`
+	ManagerRef NullableIdentityDtoManagerRef `json:"managerRef,omitempty"`
 	// Whether this identity is a manager of another identity
 	IsManager *bool `json:"isManager,omitempty"`
 	// The last time the identity was refreshed by the system
 	LastRefresh *time.Time `json:"lastRefresh,omitempty"`
 	// A map with the identity attributes for the identity
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
-	LifecycleState *LifecycleStateDto `json:"lifecycleState,omitempty"`
+	LifecycleState *IdentityDtoLifecycleState `json:"lifecycleState,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -224,36 +224,46 @@ func (o *Identity) SetAlias(v string) {
 	o.Alias = &v
 }
 
-// GetEmailAddress returns the EmailAddress field value if set, zero value otherwise.
+// GetEmailAddress returns the EmailAddress field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Identity) GetEmailAddress() string {
-	if o == nil || isNil(o.EmailAddress) {
+	if o == nil || isNil(o.EmailAddress.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.EmailAddress
+	return *o.EmailAddress.Get()
 }
 
 // GetEmailAddressOk returns a tuple with the EmailAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Identity) GetEmailAddressOk() (*string, bool) {
-	if o == nil || isNil(o.EmailAddress) {
+	if o == nil {
 		return nil, false
 	}
-	return o.EmailAddress, true
+	return o.EmailAddress.Get(), o.EmailAddress.IsSet()
 }
 
 // HasEmailAddress returns a boolean if a field has been set.
 func (o *Identity) HasEmailAddress() bool {
-	if o != nil && !isNil(o.EmailAddress) {
+	if o != nil && o.EmailAddress.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetEmailAddress gets a reference to the given string and assigns it to the EmailAddress field.
+// SetEmailAddress gets a reference to the given NullableString and assigns it to the EmailAddress field.
 func (o *Identity) SetEmailAddress(v string) {
-	o.EmailAddress = &v
+	o.EmailAddress.Set(&v)
+}
+// SetEmailAddressNil sets the value for EmailAddress to be an explicit nil
+func (o *Identity) SetEmailAddressNil() {
+	o.EmailAddress.Set(nil)
+}
+
+// UnsetEmailAddress ensures that no value is present for EmailAddress, not even an explicit nil
+func (o *Identity) UnsetEmailAddress() {
+	o.EmailAddress.Unset()
 }
 
 // GetProcessingState returns the ProcessingState field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -330,36 +340,46 @@ func (o *Identity) SetIdentityStatus(v string) {
 	o.IdentityStatus = &v
 }
 
-// GetManagerRef returns the ManagerRef field value if set, zero value otherwise.
+// GetManagerRef returns the ManagerRef field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Identity) GetManagerRef() IdentityDtoManagerRef {
-	if o == nil || isNil(o.ManagerRef) {
+	if o == nil || isNil(o.ManagerRef.Get()) {
 		var ret IdentityDtoManagerRef
 		return ret
 	}
-	return *o.ManagerRef
+	return *o.ManagerRef.Get()
 }
 
 // GetManagerRefOk returns a tuple with the ManagerRef field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Identity) GetManagerRefOk() (*IdentityDtoManagerRef, bool) {
-	if o == nil || isNil(o.ManagerRef) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ManagerRef, true
+	return o.ManagerRef.Get(), o.ManagerRef.IsSet()
 }
 
 // HasManagerRef returns a boolean if a field has been set.
 func (o *Identity) HasManagerRef() bool {
-	if o != nil && !isNil(o.ManagerRef) {
+	if o != nil && o.ManagerRef.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetManagerRef gets a reference to the given IdentityDtoManagerRef and assigns it to the ManagerRef field.
+// SetManagerRef gets a reference to the given NullableIdentityDtoManagerRef and assigns it to the ManagerRef field.
 func (o *Identity) SetManagerRef(v IdentityDtoManagerRef) {
-	o.ManagerRef = &v
+	o.ManagerRef.Set(&v)
+}
+// SetManagerRefNil sets the value for ManagerRef to be an explicit nil
+func (o *Identity) SetManagerRefNil() {
+	o.ManagerRef.Set(nil)
+}
+
+// UnsetManagerRef ensures that no value is present for ManagerRef, not even an explicit nil
+func (o *Identity) UnsetManagerRef() {
+	o.ManagerRef.Unset()
 }
 
 // GetIsManager returns the IsManager field value if set, zero value otherwise.
@@ -459,9 +479,9 @@ func (o *Identity) SetAttributes(v map[string]interface{}) {
 }
 
 // GetLifecycleState returns the LifecycleState field value if set, zero value otherwise.
-func (o *Identity) GetLifecycleState() LifecycleStateDto {
+func (o *Identity) GetLifecycleState() IdentityDtoLifecycleState {
 	if o == nil || isNil(o.LifecycleState) {
-		var ret LifecycleStateDto
+		var ret IdentityDtoLifecycleState
 		return ret
 	}
 	return *o.LifecycleState
@@ -469,7 +489,7 @@ func (o *Identity) GetLifecycleState() LifecycleStateDto {
 
 // GetLifecycleStateOk returns a tuple with the LifecycleState field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Identity) GetLifecycleStateOk() (*LifecycleStateDto, bool) {
+func (o *Identity) GetLifecycleStateOk() (*IdentityDtoLifecycleState, bool) {
 	if o == nil || isNil(o.LifecycleState) {
 		return nil, false
 	}
@@ -485,8 +505,8 @@ func (o *Identity) HasLifecycleState() bool {
 	return false
 }
 
-// SetLifecycleState gets a reference to the given LifecycleStateDto and assigns it to the LifecycleState field.
-func (o *Identity) SetLifecycleState(v LifecycleStateDto) {
+// SetLifecycleState gets a reference to the given IdentityDtoLifecycleState and assigns it to the LifecycleState field.
+func (o *Identity) SetLifecycleState(v IdentityDtoLifecycleState) {
 	o.LifecycleState = &v
 }
 
@@ -507,8 +527,8 @@ func (o Identity) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Alias) {
 		toSerialize["alias"] = o.Alias
 	}
-	if !isNil(o.EmailAddress) {
-		toSerialize["emailAddress"] = o.EmailAddress
+	if o.EmailAddress.IsSet() {
+		toSerialize["emailAddress"] = o.EmailAddress.Get()
 	}
 	if o.ProcessingState.IsSet() {
 		toSerialize["processingState"] = o.ProcessingState.Get()
@@ -516,8 +536,8 @@ func (o Identity) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.IdentityStatus) {
 		toSerialize["identityStatus"] = o.IdentityStatus
 	}
-	if !isNil(o.ManagerRef) {
-		toSerialize["managerRef"] = o.ManagerRef
+	if o.ManagerRef.IsSet() {
+		toSerialize["managerRef"] = o.ManagerRef.Get()
 	}
 	if !isNil(o.IsManager) {
 		toSerialize["isManager"] = o.IsManager
@@ -540,7 +560,7 @@ func (o Identity) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *Identity) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -564,7 +584,7 @@ func (o *Identity) UnmarshalJSON(bytes []byte) (err error) {
 	varIdentity := _Identity{}
 
 	if err = json.Unmarshal(bytes, &varIdentity); err == nil {
-	*o = Identity(varIdentity)
+			*o = Identity(varIdentity)
 }
 
 	additionalProperties := make(map[string]interface{})

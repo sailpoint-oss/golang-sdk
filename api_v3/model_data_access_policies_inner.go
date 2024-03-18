@@ -100,7 +100,7 @@ func (o *DataAccessPoliciesInner) UnmarshalJSON(bytes []byte) (err error) {
 	varDataAccessPoliciesInner := _DataAccessPoliciesInner{}
 
 	if err = json.Unmarshal(bytes, &varDataAccessPoliciesInner); err == nil {
-	*o = DataAccessPoliciesInner(varDataAccessPoliciesInner)
+			*o = DataAccessPoliciesInner(varDataAccessPoliciesInner)
 }
 
 	additionalProperties := make(map[string]interface{})
