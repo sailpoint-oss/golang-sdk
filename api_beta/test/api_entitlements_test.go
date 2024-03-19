@@ -64,6 +64,20 @@ func Test_api_beta_EntitlementsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test EntitlementsAPIService ImportEntitlementCsv", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.API_BETA.EntitlementsAPI.ImportEntitlementCsv(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test EntitlementsAPIService ListEntitlementChildren", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -139,6 +153,20 @@ func Test_api_beta_EntitlementsAPIService(t *testing.T) {
 		var id string
 
 		resp, httpRes, err := apiClient.Beta.EntitlementsAPI.ResetSourceEntitlements(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test EntitlementsAPIService ResetSourceEntitlements", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.API_BETA.EntitlementsAPI.ResetSourceEntitlements(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

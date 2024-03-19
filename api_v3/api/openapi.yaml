@@ -39450,10 +39450,7 @@ components:
             id: 2c7180a46faadee4016fb4e018c20642
             type: IDENTITY
           scheme: MANAGER
-          currentOwner:
-            name: Allen Albertson
-            id: 2c3780a46faadee4016fb4e018c20652
-            type: IDENTITY
+          currentOwner: null
           modified: 2019-08-23T18:52:57.398Z
           comment: I approve this request
           forwarded: false
@@ -39473,10 +39470,7 @@ components:
             id: 2c7180a46faadee4016fb4e018c20642
             type: IDENTITY
           scheme: MANAGER
-          currentOwner:
-            name: Allen Albertson
-            id: 2c3780a46faadee4016fb4e018c20652
-            type: IDENTITY
+          currentOwner: null
           modified: 2019-08-23T18:52:57.398Z
           comment: I approve this request
           forwarded: false
@@ -39500,86 +39494,10 @@ components:
         errorMessages:
         - null
         - null
-        sodViolationContext:
-          violationCheckResult:
-            clientMetadata:
-              requestedAppName: test-app
-              requestedAppId: 2c91808f7892918f0178b78da4a305a1
-            violationContexts:
-            - conflictingAccessCriteria:
-                leftCriteria:
-                  criteriaList:
-                  - existing: true
-                    name: My HR Entitlement
-                    id: 2c918085771e9d3301773b3cb66f6398
-                    type: IDENTITY
-                  - existing: true
-                    name: My HR Entitlement
-                    id: 2c918085771e9d3301773b3cb66f6398
-                    type: IDENTITY
-                rightCriteria:
-                  criteriaList:
-                  - existing: true
-                    name: My HR Entitlement
-                    id: 2c918085771e9d3301773b3cb66f6398
-                    type: IDENTITY
-                  - existing: true
-                    name: My HR Entitlement
-                    id: 2c918085771e9d3301773b3cb66f6398
-                    type: IDENTITY
-              policy:
-                name: Business SOD Policy
-                id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
-                type: SOD_POLICY
-            - conflictingAccessCriteria:
-                leftCriteria:
-                  criteriaList:
-                  - existing: true
-                    name: My HR Entitlement
-                    id: 2c918085771e9d3301773b3cb66f6398
-                    type: IDENTITY
-                  - existing: true
-                    name: My HR Entitlement
-                    id: 2c918085771e9d3301773b3cb66f6398
-                    type: IDENTITY
-                rightCriteria:
-                  criteriaList:
-                  - existing: true
-                    name: My HR Entitlement
-                    id: 2c918085771e9d3301773b3cb66f6398
-                    type: IDENTITY
-                  - existing: true
-                    name: My HR Entitlement
-                    id: 2c918085771e9d3301773b3cb66f6398
-                    type: IDENTITY
-              policy:
-                name: Business SOD Policy
-                id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
-                type: SOD_POLICY
-            violatedPolicies:
-            - name: Business SOD Policy
-              id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
-              type: SOD_POLICY
-            - name: Business SOD Policy
-              id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
-              type: SOD_POLICY
-            message:
-              localeOrigin: DEFAULT
-              text: The request was syntactically correct but its content is semantically
-                invalid.
-              locale: en-US
-          state: SUCCESS
-          uuid: f73d16e9-a038-46c5-b217-1246e15fdbdd
-        cancelledRequestDetails:
-          owner:
-            name: Support
-            id: 2c9180a46faadee4016fb4e018c20639
-            type: IDENTITY
-          modified: 2019-12-20T09:17:12.192Z
-          comment: This request must be cancelled.
+        sodViolationContext: null
+        cancelledRequestDetails: null
         accessRequestId: 2b838de9-db9b-abcf-e646-d4f274ad4238
-        provisioningDetails:
-          orderedSubPhaseReferences: manualWorkItemDetails
+        provisioningDetails: null
         accountActivityItemId: 2c9180926cbfbddd016cbfc7c3b10010
         name: AccessProfile1
         manualWorkItemDetails:
@@ -45335,14 +45253,7 @@ components:
           id: 2c9180a46faadee4016fb4e018c20639
           type: IDENTITY
         created: 2020-01-01T00:00:00Z
-        visibilityCriteria:
-          expression:
-            children: []
-            attribute: location
-            value:
-              type: STRING
-              value: Austin
-            operator: EQUALS
+        visibilityCriteria: null
         name: segment-xyz
         modified: 2020-01-01T00:00:00Z
         description: This segment represents xyz
@@ -48209,10 +48120,7 @@ components:
           id: 2c7180a46faadee4016fb4e018c20642
           type: IDENTITY
         scheme: MANAGER
-        currentOwner:
-          name: Allen Albertson
-          id: 2c3780a46faadee4016fb4e018c20652
-          type: IDENTITY
+        currentOwner: null
         modified: 2019-08-23T18:52:57.398Z
         comment: I approve this request
         forwarded: false
@@ -52222,13 +52130,6 @@ components:
           name: id
           type: access
     Expression:
-      example:
-        children: []
-        attribute: location
-        value:
-          type: STRING
-          value: Austin
-        operator: EQUALS
       properties:
         operator:
           description: Operator for the expression
