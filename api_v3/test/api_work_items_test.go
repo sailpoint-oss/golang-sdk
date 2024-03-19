@@ -29,7 +29,7 @@ func Test_api_v3_WorkItemsAPIService(t *testing.T) {
 		var id string
 		var approvalItemId string
 
-		resp, httpRes, err := apiClient.API_V3.WorkItemsAPI.ApproveApprovalItem(context.Background(), id, approvalItemId).Execute()
+		resp, httpRes, err := apiClient.V3.WorkItemsAPI.ApproveApprovalItem(context.Background(), id, approvalItemId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -43,7 +43,7 @@ func Test_api_v3_WorkItemsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.WorkItemsAPI.ApproveApprovalItemsInBulk(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.WorkItemsAPI.ApproveApprovalItemsInBulk(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -57,7 +57,7 @@ func Test_api_v3_WorkItemsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.WorkItemsAPI.CompleteWorkItem(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.WorkItemsAPI.CompleteWorkItem(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -69,7 +69,7 @@ func Test_api_v3_WorkItemsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.WorkItemsAPI.GetCompletedWorkItems(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.WorkItemsAPI.GetCompletedWorkItems(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -81,7 +81,7 @@ func Test_api_v3_WorkItemsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.WorkItemsAPI.GetCountCompletedWorkItems(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.WorkItemsAPI.GetCountCompletedWorkItems(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -93,7 +93,7 @@ func Test_api_v3_WorkItemsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.WorkItemsAPI.GetCountWorkItems(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.WorkItemsAPI.GetCountWorkItems(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -107,7 +107,7 @@ func Test_api_v3_WorkItemsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.WorkItemsAPI.GetWorkItem(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.WorkItemsAPI.GetWorkItem(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -119,7 +119,7 @@ func Test_api_v3_WorkItemsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.WorkItemsAPI.GetWorkItemsSummary(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.WorkItemsAPI.GetWorkItemsSummary(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -131,7 +131,7 @@ func Test_api_v3_WorkItemsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.WorkItemsAPI.ListWorkItems(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.WorkItemsAPI.ListWorkItems(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -146,7 +146,7 @@ func Test_api_v3_WorkItemsAPIService(t *testing.T) {
 		var id string
 		var approvalItemId string
 
-		resp, httpRes, err := apiClient.API_V3.WorkItemsAPI.RejectApprovalItem(context.Background(), id, approvalItemId).Execute()
+		resp, httpRes, err := apiClient.V3.WorkItemsAPI.RejectApprovalItem(context.Background(), id, approvalItemId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -160,7 +160,7 @@ func Test_api_v3_WorkItemsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.WorkItemsAPI.RejectApprovalItemsInBulk(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.WorkItemsAPI.RejectApprovalItemsInBulk(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -174,7 +174,7 @@ func Test_api_v3_WorkItemsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.WorkItemsAPI.SubmitAccountSelection(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.WorkItemsAPI.SubmitAccountSelection(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

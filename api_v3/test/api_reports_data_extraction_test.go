@@ -28,7 +28,7 @@ func Test_api_v3_ReportsDataExtractionAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_V3.ReportsDataExtractionAPI.CancelReport(context.Background(), id).Execute()
+		httpRes, err := apiClient.V3.ReportsDataExtractionAPI.CancelReport(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -41,7 +41,7 @@ func Test_api_v3_ReportsDataExtractionAPIService(t *testing.T) {
 
 		var taskResultId string
 
-		resp, httpRes, err := apiClient.API_V3.ReportsDataExtractionAPI.GetReport(context.Background(), taskResultId).Execute()
+		resp, httpRes, err := apiClient.V3.ReportsDataExtractionAPI.GetReport(context.Background(), taskResultId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -55,7 +55,7 @@ func Test_api_v3_ReportsDataExtractionAPIService(t *testing.T) {
 
 		var taskResultId string
 
-		resp, httpRes, err := apiClient.API_V3.ReportsDataExtractionAPI.GetReportResult(context.Background(), taskResultId).Execute()
+		resp, httpRes, err := apiClient.V3.ReportsDataExtractionAPI.GetReportResult(context.Background(), taskResultId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -67,7 +67,7 @@ func Test_api_v3_ReportsDataExtractionAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.ReportsDataExtractionAPI.StartReport(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.ReportsDataExtractionAPI.StartReport(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

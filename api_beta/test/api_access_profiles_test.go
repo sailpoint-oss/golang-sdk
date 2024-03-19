@@ -26,7 +26,7 @@ func Test_api_beta_AccessProfilesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.AccessProfilesAPI.CreateAccessProfile(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.AccessProfilesAPI.CreateAccessProfile(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_beta_AccessProfilesAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_BETA.AccessProfilesAPI.DeleteAccessProfile(context.Background(), id).Execute()
+		httpRes, err := apiClient.Beta.AccessProfilesAPI.DeleteAccessProfile(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -51,7 +51,7 @@ func Test_api_beta_AccessProfilesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.AccessProfilesAPI.DeleteAccessProfilesInBulk(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.AccessProfilesAPI.DeleteAccessProfilesInBulk(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -65,7 +65,7 @@ func Test_api_beta_AccessProfilesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.AccessProfilesAPI.GetAccessProfile(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.AccessProfilesAPI.GetAccessProfile(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -79,7 +79,7 @@ func Test_api_beta_AccessProfilesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.AccessProfilesAPI.GetAccessProfileEntitlements(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.AccessProfilesAPI.GetAccessProfileEntitlements(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -91,7 +91,7 @@ func Test_api_beta_AccessProfilesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.AccessProfilesAPI.ListAccessProfiles(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.AccessProfilesAPI.ListAccessProfiles(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -105,7 +105,7 @@ func Test_api_beta_AccessProfilesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.AccessProfilesAPI.PatchAccessProfile(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.AccessProfilesAPI.PatchAccessProfile(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -117,7 +117,7 @@ func Test_api_beta_AccessProfilesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.AccessProfilesAPI.UpdateAccessProfilesInBulk(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.AccessProfilesAPI.UpdateAccessProfilesInBulk(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -28,7 +28,7 @@ func Test_api_beta_ManagedClientsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.ManagedClientsAPI.GetManagedClientStatus(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.ManagedClientsAPI.GetManagedClientStatus(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -42,7 +42,7 @@ func Test_api_beta_ManagedClientsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.ManagedClientsAPI.UpdateManagedClientStatus(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.ManagedClientsAPI.UpdateManagedClientStatus(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

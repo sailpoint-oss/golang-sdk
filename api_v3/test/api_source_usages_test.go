@@ -28,7 +28,7 @@ func Test_api_v3_SourceUsagesAPIService(t *testing.T) {
 
 		var sourceId string
 
-		resp, httpRes, err := apiClient.API_V3.SourceUsagesAPI.GetStatusBySourceId(context.Background(), sourceId).Execute()
+		resp, httpRes, err := apiClient.V3.SourceUsagesAPI.GetStatusBySourceId(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -42,7 +42,7 @@ func Test_api_v3_SourceUsagesAPIService(t *testing.T) {
 
 		var sourceId string
 
-		resp, httpRes, err := apiClient.API_V3.SourceUsagesAPI.GetUsagesBySourceId(context.Background(), sourceId).Execute()
+		resp, httpRes, err := apiClient.V3.SourceUsagesAPI.GetUsagesBySourceId(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

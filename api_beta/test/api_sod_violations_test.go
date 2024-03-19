@@ -26,7 +26,7 @@ func Test_api_beta_SODViolationsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.SODViolationsAPI.StartPredictSodViolations(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.SODViolationsAPI.StartPredictSodViolations(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

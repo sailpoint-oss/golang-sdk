@@ -26,7 +26,7 @@ func Test_api_beta_MFAControllerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.MFAControllerAPI.CreateSendToken(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.MFAControllerAPI.CreateSendToken(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_beta_MFAControllerAPIService(t *testing.T) {
 
 		var method string
 
-		resp, httpRes, err := apiClient.API_BETA.MFAControllerAPI.PingVerificationStatus(context.Background(), method).Execute()
+		resp, httpRes, err := apiClient.Beta.MFAControllerAPI.PingVerificationStatus(context.Background(), method).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -52,7 +52,7 @@ func Test_api_beta_MFAControllerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.MFAControllerAPI.SendDuoVerifyRequest(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.MFAControllerAPI.SendDuoVerifyRequest(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -64,7 +64,7 @@ func Test_api_beta_MFAControllerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.MFAControllerAPI.SendKbaAnswers(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.MFAControllerAPI.SendKbaAnswers(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -76,7 +76,7 @@ func Test_api_beta_MFAControllerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.MFAControllerAPI.SendOktaVerifyRequest(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.MFAControllerAPI.SendOktaVerifyRequest(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -88,7 +88,7 @@ func Test_api_beta_MFAControllerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.MFAControllerAPI.SendTokenAuthRequest(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.MFAControllerAPI.SendTokenAuthRequest(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

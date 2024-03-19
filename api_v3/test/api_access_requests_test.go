@@ -26,7 +26,7 @@ func Test_api_v3_AccessRequestsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.AccessRequestsAPI.CancelAccessRequest(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.AccessRequestsAPI.CancelAccessRequest(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -38,7 +38,7 @@ func Test_api_v3_AccessRequestsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.AccessRequestsAPI.CreateAccessRequest(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.AccessRequestsAPI.CreateAccessRequest(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -50,7 +50,7 @@ func Test_api_v3_AccessRequestsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.AccessRequestsAPI.GetAccessRequestConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.AccessRequestsAPI.GetAccessRequestConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -62,7 +62,7 @@ func Test_api_v3_AccessRequestsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.AccessRequestsAPI.ListAccessRequestStatus(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.AccessRequestsAPI.ListAccessRequestStatus(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,7 +74,7 @@ func Test_api_v3_AccessRequestsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.AccessRequestsAPI.SetAccessRequestConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.AccessRequestsAPI.SetAccessRequestConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

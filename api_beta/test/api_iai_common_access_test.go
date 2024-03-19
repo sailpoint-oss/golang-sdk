@@ -26,7 +26,7 @@ func Test_api_beta_IAICommonAccessAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.IAICommonAccessAPI.CreateCommonAccess(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.IAICommonAccessAPI.CreateCommonAccess(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -38,7 +38,7 @@ func Test_api_beta_IAICommonAccessAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.IAICommonAccessAPI.GetCommonAccess(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.IAICommonAccessAPI.GetCommonAccess(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -50,7 +50,7 @@ func Test_api_beta_IAICommonAccessAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.IAICommonAccessAPI.UpdateCommonAccessStatusInBulk(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.IAICommonAccessAPI.UpdateCommonAccessStatusInBulk(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

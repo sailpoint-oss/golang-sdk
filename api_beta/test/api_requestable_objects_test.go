@@ -26,7 +26,7 @@ func Test_api_beta_RequestableObjectsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.RequestableObjectsAPI.ListRequestableObjects(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.RequestableObjectsAPI.ListRequestableObjects(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

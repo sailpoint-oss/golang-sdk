@@ -26,7 +26,7 @@ func Test_api_v3_AccessProfilesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.AccessProfilesAPI.CreateAccessProfile(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.AccessProfilesAPI.CreateAccessProfile(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_v3_AccessProfilesAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_V3.AccessProfilesAPI.DeleteAccessProfile(context.Background(), id).Execute()
+		httpRes, err := apiClient.V3.AccessProfilesAPI.DeleteAccessProfile(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -51,7 +51,7 @@ func Test_api_v3_AccessProfilesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.AccessProfilesAPI.DeleteAccessProfilesInBulk(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.AccessProfilesAPI.DeleteAccessProfilesInBulk(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -65,7 +65,7 @@ func Test_api_v3_AccessProfilesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.AccessProfilesAPI.GetAccessProfile(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.AccessProfilesAPI.GetAccessProfile(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -79,7 +79,7 @@ func Test_api_v3_AccessProfilesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.AccessProfilesAPI.GetAccessProfileEntitlements(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.AccessProfilesAPI.GetAccessProfileEntitlements(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -91,7 +91,7 @@ func Test_api_v3_AccessProfilesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.AccessProfilesAPI.ListAccessProfiles(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.AccessProfilesAPI.ListAccessProfiles(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -105,7 +105,7 @@ func Test_api_v3_AccessProfilesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.AccessProfilesAPI.PatchAccessProfile(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.AccessProfilesAPI.PatchAccessProfile(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

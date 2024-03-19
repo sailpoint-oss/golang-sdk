@@ -26,7 +26,7 @@ func Test_api_beta_TenantAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.TenantAPI.GetTenant(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.TenantAPI.GetTenant(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

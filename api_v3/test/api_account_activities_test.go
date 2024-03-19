@@ -28,7 +28,7 @@ func Test_api_v3_AccountActivitiesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.AccountActivitiesAPI.GetAccountActivity(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.AccountActivitiesAPI.GetAccountActivity(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_v3_AccountActivitiesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.AccountActivitiesAPI.ListAccountActivities(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.AccountActivitiesAPI.ListAccountActivities(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

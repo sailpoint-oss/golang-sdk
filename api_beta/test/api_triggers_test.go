@@ -28,7 +28,7 @@ func Test_api_beta_TriggersAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_BETA.TriggersAPI.CompleteTriggerInvocation(context.Background(), id).Execute()
+		httpRes, err := apiClient.Beta.TriggersAPI.CompleteTriggerInvocation(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -39,7 +39,7 @@ func Test_api_beta_TriggersAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.TriggersAPI.CreateSubscription(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.TriggersAPI.CreateSubscription(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -53,7 +53,7 @@ func Test_api_beta_TriggersAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_BETA.TriggersAPI.DeleteSubscription(context.Background(), id).Execute()
+		httpRes, err := apiClient.Beta.TriggersAPI.DeleteSubscription(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -64,7 +64,7 @@ func Test_api_beta_TriggersAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.TriggersAPI.ListSubscriptions(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.TriggersAPI.ListSubscriptions(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -76,7 +76,7 @@ func Test_api_beta_TriggersAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.TriggersAPI.ListTriggerInvocationStatus(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.TriggersAPI.ListTriggerInvocationStatus(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -88,7 +88,7 @@ func Test_api_beta_TriggersAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.TriggersAPI.ListTriggers(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.TriggersAPI.ListTriggers(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -102,7 +102,7 @@ func Test_api_beta_TriggersAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.TriggersAPI.PatchSubscription(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.TriggersAPI.PatchSubscription(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -114,7 +114,7 @@ func Test_api_beta_TriggersAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.TriggersAPI.StartTestTriggerInvocation(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.TriggersAPI.StartTestTriggerInvocation(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -126,7 +126,7 @@ func Test_api_beta_TriggersAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.TriggersAPI.TestSubscriptionFilter(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.TriggersAPI.TestSubscriptionFilter(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -140,7 +140,7 @@ func Test_api_beta_TriggersAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.TriggersAPI.UpdateSubscription(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.TriggersAPI.UpdateSubscription(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

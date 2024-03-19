@@ -26,7 +26,7 @@ func Test_api_beta_PasswordSyncGroupsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.PasswordSyncGroupsAPI.CreatePasswordSyncGroup(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.PasswordSyncGroupsAPI.CreatePasswordSyncGroup(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_beta_PasswordSyncGroupsAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_BETA.PasswordSyncGroupsAPI.DeletePasswordSyncGroup(context.Background(), id).Execute()
+		httpRes, err := apiClient.Beta.PasswordSyncGroupsAPI.DeletePasswordSyncGroup(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -53,7 +53,7 @@ func Test_api_beta_PasswordSyncGroupsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.PasswordSyncGroupsAPI.GetPasswordSyncGroup(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.PasswordSyncGroupsAPI.GetPasswordSyncGroup(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -65,7 +65,7 @@ func Test_api_beta_PasswordSyncGroupsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.PasswordSyncGroupsAPI.GetPasswordSyncGroups(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.PasswordSyncGroupsAPI.GetPasswordSyncGroups(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -79,7 +79,7 @@ func Test_api_beta_PasswordSyncGroupsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.PasswordSyncGroupsAPI.UpdatePasswordSyncGroup(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.PasswordSyncGroupsAPI.UpdatePasswordSyncGroup(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

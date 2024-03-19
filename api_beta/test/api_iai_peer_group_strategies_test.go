@@ -28,7 +28,7 @@ func Test_api_beta_IAIPeerGroupStrategiesAPIService(t *testing.T) {
 
 		var strategy string
 
-		resp, httpRes, err := apiClient.API_BETA.IAIPeerGroupStrategiesAPI.GetPeerGroupOutliers(context.Background(), strategy).Execute()
+		resp, httpRes, err := apiClient.Beta.IAIPeerGroupStrategiesAPI.GetPeerGroupOutliers(context.Background(), strategy).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

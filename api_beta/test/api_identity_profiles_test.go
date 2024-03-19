@@ -26,7 +26,7 @@ func Test_api_beta_IdentityProfilesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.IdentityProfilesAPI.CreateIdentityProfile(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.IdentityProfilesAPI.CreateIdentityProfile(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_beta_IdentityProfilesAPIService(t *testing.T) {
 
 		var identityProfileId string
 
-		resp, httpRes, err := apiClient.API_BETA.IdentityProfilesAPI.DeleteIdentityProfile(context.Background(), identityProfileId).Execute()
+		resp, httpRes, err := apiClient.Beta.IdentityProfilesAPI.DeleteIdentityProfile(context.Background(), identityProfileId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -52,7 +52,7 @@ func Test_api_beta_IdentityProfilesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.IdentityProfilesAPI.DeleteIdentityProfiles(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.IdentityProfilesAPI.DeleteIdentityProfiles(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -64,7 +64,7 @@ func Test_api_beta_IdentityProfilesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.IdentityProfilesAPI.ExportIdentityProfiles(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.IdentityProfilesAPI.ExportIdentityProfiles(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -76,7 +76,7 @@ func Test_api_beta_IdentityProfilesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.IdentityProfilesAPI.GenerateIdentityPreview(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.IdentityProfilesAPI.GenerateIdentityPreview(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -90,7 +90,7 @@ func Test_api_beta_IdentityProfilesAPIService(t *testing.T) {
 
 		var identityProfileId string
 
-		resp, httpRes, err := apiClient.API_BETA.IdentityProfilesAPI.GetDefaultIdentityAttributeConfig(context.Background(), identityProfileId).Execute()
+		resp, httpRes, err := apiClient.Beta.IdentityProfilesAPI.GetDefaultIdentityAttributeConfig(context.Background(), identityProfileId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -104,7 +104,7 @@ func Test_api_beta_IdentityProfilesAPIService(t *testing.T) {
 
 		var identityProfileId string
 
-		resp, httpRes, err := apiClient.API_BETA.IdentityProfilesAPI.GetIdentityProfile(context.Background(), identityProfileId).Execute()
+		resp, httpRes, err := apiClient.Beta.IdentityProfilesAPI.GetIdentityProfile(context.Background(), identityProfileId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -116,7 +116,7 @@ func Test_api_beta_IdentityProfilesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.IdentityProfilesAPI.ImportIdentityProfiles(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.IdentityProfilesAPI.ImportIdentityProfiles(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -128,7 +128,7 @@ func Test_api_beta_IdentityProfilesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.IdentityProfilesAPI.ListIdentityProfiles(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.IdentityProfilesAPI.ListIdentityProfiles(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -142,7 +142,7 @@ func Test_api_beta_IdentityProfilesAPIService(t *testing.T) {
 
 		var identityProfileId string
 
-		resp, httpRes, err := apiClient.API_BETA.IdentityProfilesAPI.SyncIdentityProfile(context.Background(), identityProfileId).Execute()
+		resp, httpRes, err := apiClient.Beta.IdentityProfilesAPI.SyncIdentityProfile(context.Background(), identityProfileId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -156,7 +156,7 @@ func Test_api_beta_IdentityProfilesAPIService(t *testing.T) {
 
 		var identityProfileId string
 
-		resp, httpRes, err := apiClient.API_BETA.IdentityProfilesAPI.UpdateIdentityProfile(context.Background(), identityProfileId).Execute()
+		resp, httpRes, err := apiClient.Beta.IdentityProfilesAPI.UpdateIdentityProfile(context.Background(), identityProfileId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -26,7 +26,7 @@ func Test_api_beta_OAuthClientsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.OAuthClientsAPI.CreateOauthClient(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.OAuthClientsAPI.CreateOauthClient(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_beta_OAuthClientsAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_BETA.OAuthClientsAPI.DeleteOauthClient(context.Background(), id).Execute()
+		httpRes, err := apiClient.Beta.OAuthClientsAPI.DeleteOauthClient(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -53,7 +53,7 @@ func Test_api_beta_OAuthClientsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.OAuthClientsAPI.GetOauthClient(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.OAuthClientsAPI.GetOauthClient(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -65,7 +65,7 @@ func Test_api_beta_OAuthClientsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.OAuthClientsAPI.ListOauthClients(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.OAuthClientsAPI.ListOauthClients(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -79,7 +79,7 @@ func Test_api_beta_OAuthClientsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.OAuthClientsAPI.PatchOauthClient(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.OAuthClientsAPI.PatchOauthClient(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

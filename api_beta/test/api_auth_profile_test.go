@@ -26,7 +26,7 @@ func Test_api_beta_AuthProfileAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.AuthProfileAPI.CreateProfileConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.AuthProfileAPI.CreateProfileConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_beta_AuthProfileAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_BETA.AuthProfileAPI.DeleteProfileConfig(context.Background(), id).Execute()
+		httpRes, err := apiClient.Beta.AuthProfileAPI.DeleteProfileConfig(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -51,7 +51,7 @@ func Test_api_beta_AuthProfileAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.AuthProfileAPI.GetProfileConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.AuthProfileAPI.GetProfileConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -63,7 +63,7 @@ func Test_api_beta_AuthProfileAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.AuthProfileAPI.GetProfileConfigList(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.AuthProfileAPI.GetProfileConfigList(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -77,7 +77,7 @@ func Test_api_beta_AuthProfileAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.AuthProfileAPI.PatchProfileConfig(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.AuthProfileAPI.PatchProfileConfig(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

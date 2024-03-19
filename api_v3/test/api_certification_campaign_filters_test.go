@@ -26,7 +26,7 @@ func Test_api_v3_CertificationCampaignFiltersAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.CertificationCampaignFiltersAPI.CreateCampaignFilter(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.CertificationCampaignFiltersAPI.CreateCampaignFilter(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -38,7 +38,7 @@ func Test_api_v3_CertificationCampaignFiltersAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.API_V3.CertificationCampaignFiltersAPI.DeleteCampaignFilters(context.Background()).Execute()
+		httpRes, err := apiClient.V3.CertificationCampaignFiltersAPI.DeleteCampaignFilters(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -51,7 +51,7 @@ func Test_api_v3_CertificationCampaignFiltersAPIService(t *testing.T) {
 
 		var filterId string
 
-		resp, httpRes, err := apiClient.API_V3.CertificationCampaignFiltersAPI.GetCampaignFilterById(context.Background(), filterId).Execute()
+		resp, httpRes, err := apiClient.V3.CertificationCampaignFiltersAPI.GetCampaignFilterById(context.Background(), filterId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -63,7 +63,7 @@ func Test_api_v3_CertificationCampaignFiltersAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.CertificationCampaignFiltersAPI.ListCampaignFilters(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.CertificationCampaignFiltersAPI.ListCampaignFilters(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -77,7 +77,7 @@ func Test_api_v3_CertificationCampaignFiltersAPIService(t *testing.T) {
 
 		var filterId string
 
-		resp, httpRes, err := apiClient.API_V3.CertificationCampaignFiltersAPI.UpdateCampaignFilter(context.Background(), filterId).Execute()
+		resp, httpRes, err := apiClient.V3.CertificationCampaignFiltersAPI.UpdateCampaignFilter(context.Background(), filterId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

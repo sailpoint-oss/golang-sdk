@@ -28,7 +28,7 @@ func Test_api_beta_AccessRequestApprovalsAPIService(t *testing.T) {
 
 		var approvalId string
 
-		resp, httpRes, err := apiClient.API_BETA.AccessRequestApprovalsAPI.ApproveAccessRequest(context.Background(), approvalId).Execute()
+		resp, httpRes, err := apiClient.Beta.AccessRequestApprovalsAPI.ApproveAccessRequest(context.Background(), approvalId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -42,7 +42,7 @@ func Test_api_beta_AccessRequestApprovalsAPIService(t *testing.T) {
 
 		var approvalId string
 
-		resp, httpRes, err := apiClient.API_BETA.AccessRequestApprovalsAPI.ForwardAccessRequest(context.Background(), approvalId).Execute()
+		resp, httpRes, err := apiClient.Beta.AccessRequestApprovalsAPI.ForwardAccessRequest(context.Background(), approvalId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -54,7 +54,7 @@ func Test_api_beta_AccessRequestApprovalsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.AccessRequestApprovalsAPI.GetAccessRequestApprovalSummary(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.AccessRequestApprovalsAPI.GetAccessRequestApprovalSummary(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -66,7 +66,7 @@ func Test_api_beta_AccessRequestApprovalsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.AccessRequestApprovalsAPI.ListCompletedApprovals(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.AccessRequestApprovalsAPI.ListCompletedApprovals(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -78,7 +78,7 @@ func Test_api_beta_AccessRequestApprovalsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.AccessRequestApprovalsAPI.ListPendingApprovals(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.AccessRequestApprovalsAPI.ListPendingApprovals(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -92,7 +92,7 @@ func Test_api_beta_AccessRequestApprovalsAPIService(t *testing.T) {
 
 		var approvalId string
 
-		resp, httpRes, err := apiClient.API_BETA.AccessRequestApprovalsAPI.RejectAccessRequest(context.Background(), approvalId).Execute()
+		resp, httpRes, err := apiClient.Beta.AccessRequestApprovalsAPI.RejectAccessRequest(context.Background(), approvalId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

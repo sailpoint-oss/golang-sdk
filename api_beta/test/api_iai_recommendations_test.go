@@ -26,7 +26,7 @@ func Test_api_beta_IAIRecommendationsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.IAIRecommendationsAPI.GetRecommendations(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.IAIRecommendationsAPI.GetRecommendations(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -38,7 +38,7 @@ func Test_api_beta_IAIRecommendationsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.IAIRecommendationsAPI.GetRecommendationsConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.IAIRecommendationsAPI.GetRecommendationsConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -50,7 +50,7 @@ func Test_api_beta_IAIRecommendationsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.IAIRecommendationsAPI.UpdateRecommendationsConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.IAIRecommendationsAPI.UpdateRecommendationsConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

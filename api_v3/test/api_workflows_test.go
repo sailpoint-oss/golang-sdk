@@ -28,7 +28,7 @@ func Test_api_v3_WorkflowsAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_V3.WorkflowsAPI.CancelWorkflowExecution(context.Background(), id).Execute()
+		httpRes, err := apiClient.V3.WorkflowsAPI.CancelWorkflowExecution(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -41,7 +41,7 @@ func Test_api_v3_WorkflowsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.WorkflowsAPI.CreateExternalExecuteWorkflow(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.WorkflowsAPI.CreateExternalExecuteWorkflow(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -53,7 +53,7 @@ func Test_api_v3_WorkflowsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.WorkflowsAPI.CreateWorkflow(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.WorkflowsAPI.CreateWorkflow(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -67,7 +67,7 @@ func Test_api_v3_WorkflowsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.WorkflowsAPI.CreateWorkflowExternalTrigger(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.WorkflowsAPI.CreateWorkflowExternalTrigger(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -81,7 +81,7 @@ func Test_api_v3_WorkflowsAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_V3.WorkflowsAPI.DeleteWorkflow(context.Background(), id).Execute()
+		httpRes, err := apiClient.V3.WorkflowsAPI.DeleteWorkflow(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -94,7 +94,7 @@ func Test_api_v3_WorkflowsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.WorkflowsAPI.GetWorkflow(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.WorkflowsAPI.GetWorkflow(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -108,7 +108,7 @@ func Test_api_v3_WorkflowsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.WorkflowsAPI.GetWorkflowExecution(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.WorkflowsAPI.GetWorkflowExecution(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -122,7 +122,7 @@ func Test_api_v3_WorkflowsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.WorkflowsAPI.GetWorkflowExecutionHistory(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.WorkflowsAPI.GetWorkflowExecutionHistory(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -134,7 +134,7 @@ func Test_api_v3_WorkflowsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.WorkflowsAPI.ListCompleteWorkflowLibrary(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.WorkflowsAPI.ListCompleteWorkflowLibrary(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -148,7 +148,7 @@ func Test_api_v3_WorkflowsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.WorkflowsAPI.ListWorkflowExecutions(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.WorkflowsAPI.ListWorkflowExecutions(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -160,7 +160,7 @@ func Test_api_v3_WorkflowsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.WorkflowsAPI.ListWorkflowLibraryActions(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.WorkflowsAPI.ListWorkflowLibraryActions(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -172,7 +172,7 @@ func Test_api_v3_WorkflowsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.WorkflowsAPI.ListWorkflowLibraryOperators(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.WorkflowsAPI.ListWorkflowLibraryOperators(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -184,7 +184,7 @@ func Test_api_v3_WorkflowsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.WorkflowsAPI.ListWorkflowLibraryTriggers(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.WorkflowsAPI.ListWorkflowLibraryTriggers(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -196,7 +196,7 @@ func Test_api_v3_WorkflowsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.WorkflowsAPI.ListWorkflows(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.WorkflowsAPI.ListWorkflows(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -210,7 +210,7 @@ func Test_api_v3_WorkflowsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.WorkflowsAPI.PatchWorkflow(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.WorkflowsAPI.PatchWorkflow(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -224,7 +224,7 @@ func Test_api_v3_WorkflowsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.WorkflowsAPI.PutWorkflow(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.WorkflowsAPI.PutWorkflow(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -238,7 +238,7 @@ func Test_api_v3_WorkflowsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.WorkflowsAPI.TestExternalExecuteWorkflow(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.WorkflowsAPI.TestExternalExecuteWorkflow(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -252,7 +252,7 @@ func Test_api_v3_WorkflowsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.WorkflowsAPI.TestWorkflow(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.WorkflowsAPI.TestWorkflow(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

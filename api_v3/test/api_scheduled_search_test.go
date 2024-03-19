@@ -26,7 +26,7 @@ func Test_api_v3_ScheduledSearchAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.ScheduledSearchAPI.CreateScheduledSearch(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.ScheduledSearchAPI.CreateScheduledSearch(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_v3_ScheduledSearchAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_V3.ScheduledSearchAPI.DeleteScheduledSearch(context.Background(), id).Execute()
+		httpRes, err := apiClient.V3.ScheduledSearchAPI.DeleteScheduledSearch(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -53,7 +53,7 @@ func Test_api_v3_ScheduledSearchAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.ScheduledSearchAPI.GetScheduledSearch(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.ScheduledSearchAPI.GetScheduledSearch(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -65,7 +65,7 @@ func Test_api_v3_ScheduledSearchAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.ScheduledSearchAPI.ListScheduledSearch(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.ScheduledSearchAPI.ListScheduledSearch(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -79,7 +79,7 @@ func Test_api_v3_ScheduledSearchAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_V3.ScheduledSearchAPI.UnsubscribeScheduledSearch(context.Background(), id).Execute()
+		httpRes, err := apiClient.V3.ScheduledSearchAPI.UnsubscribeScheduledSearch(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -92,7 +92,7 @@ func Test_api_v3_ScheduledSearchAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.ScheduledSearchAPI.UpdateScheduledSearch(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.ScheduledSearchAPI.UpdateScheduledSearch(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

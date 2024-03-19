@@ -28,7 +28,7 @@ func Test_api_beta_AccountUsagesAPIService(t *testing.T) {
 
 		var accountId string
 
-		resp, httpRes, err := apiClient.API_BETA.AccountUsagesAPI.GetUsagesByAccountId(context.Background(), accountId).Execute()
+		resp, httpRes, err := apiClient.Beta.AccountUsagesAPI.GetUsagesByAccountId(context.Background(), accountId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -26,7 +26,7 @@ func Test_api_v3_PublicIdentitiesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.PublicIdentitiesAPI.GetPublicIdentities(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.PublicIdentitiesAPI.GetPublicIdentities(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

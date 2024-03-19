@@ -28,7 +28,7 @@ func Test_api_v3_AuthUserAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.AuthUserAPI.GetAuthUser(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.AuthUserAPI.GetAuthUser(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -42,7 +42,7 @@ func Test_api_v3_AuthUserAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.AuthUserAPI.PatchAuthUser(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.AuthUserAPI.PatchAuthUser(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

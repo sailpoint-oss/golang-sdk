@@ -28,7 +28,7 @@ func Test_api_beta_IdentityHistoryAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.IdentityHistoryAPI.CompareIdentitySnapshots(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.IdentityHistoryAPI.CompareIdentitySnapshots(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -43,7 +43,7 @@ func Test_api_beta_IdentityHistoryAPIService(t *testing.T) {
 		var id string
 		var accessType string
 
-		resp, httpRes, err := apiClient.API_BETA.IdentityHistoryAPI.CompareIdentitySnapshotsAccessType(context.Background(), id, accessType).Execute()
+		resp, httpRes, err := apiClient.Beta.IdentityHistoryAPI.CompareIdentitySnapshotsAccessType(context.Background(), id, accessType).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -57,7 +57,7 @@ func Test_api_beta_IdentityHistoryAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.IdentityHistoryAPI.GetHistoricalIdentity(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.IdentityHistoryAPI.GetHistoricalIdentity(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -71,7 +71,7 @@ func Test_api_beta_IdentityHistoryAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.IdentityHistoryAPI.GetHistoricalIdentityEvents(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.IdentityHistoryAPI.GetHistoricalIdentityEvents(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -86,7 +86,7 @@ func Test_api_beta_IdentityHistoryAPIService(t *testing.T) {
 		var id string
 		var date string
 
-		resp, httpRes, err := apiClient.API_BETA.IdentityHistoryAPI.GetIdentitySnapshot(context.Background(), id, date).Execute()
+		resp, httpRes, err := apiClient.Beta.IdentityHistoryAPI.GetIdentitySnapshot(context.Background(), id, date).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -100,7 +100,7 @@ func Test_api_beta_IdentityHistoryAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.IdentityHistoryAPI.GetIdentitySnapshotSummary(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.IdentityHistoryAPI.GetIdentitySnapshotSummary(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -114,7 +114,7 @@ func Test_api_beta_IdentityHistoryAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.IdentityHistoryAPI.GetIdentityStartDate(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.IdentityHistoryAPI.GetIdentityStartDate(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -126,7 +126,7 @@ func Test_api_beta_IdentityHistoryAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.IdentityHistoryAPI.ListHistoricalIdentities(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.IdentityHistoryAPI.ListHistoricalIdentities(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -140,7 +140,7 @@ func Test_api_beta_IdentityHistoryAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.IdentityHistoryAPI.ListIdentityAccessItems(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.IdentityHistoryAPI.ListIdentityAccessItems(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -155,7 +155,7 @@ func Test_api_beta_IdentityHistoryAPIService(t *testing.T) {
 		var id string
 		var date string
 
-		resp, httpRes, err := apiClient.API_BETA.IdentityHistoryAPI.ListIdentitySnapshotAccessItems(context.Background(), id, date).Execute()
+		resp, httpRes, err := apiClient.Beta.IdentityHistoryAPI.ListIdentitySnapshotAccessItems(context.Background(), id, date).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -169,7 +169,7 @@ func Test_api_beta_IdentityHistoryAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.IdentityHistoryAPI.ListIdentitySnapshots(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.IdentityHistoryAPI.ListIdentitySnapshots(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

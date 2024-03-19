@@ -28,7 +28,7 @@ func Test_api_v3_IdentityProfilesAPIService(t *testing.T) {
 
 		var identityProfileId string
 
-		resp, httpRes, err := apiClient.API_V3.IdentityProfilesAPI.DeleteIdentityProfile(context.Background(), identityProfileId).Execute()
+		resp, httpRes, err := apiClient.V3.IdentityProfilesAPI.DeleteIdentityProfile(context.Background(), identityProfileId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_v3_IdentityProfilesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.IdentityProfilesAPI.DeleteIdentityProfiles(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.IdentityProfilesAPI.DeleteIdentityProfiles(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -52,7 +52,7 @@ func Test_api_v3_IdentityProfilesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.IdentityProfilesAPI.ExportIdentityProfiles(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.IdentityProfilesAPI.ExportIdentityProfiles(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -66,7 +66,7 @@ func Test_api_v3_IdentityProfilesAPIService(t *testing.T) {
 
 		var identityProfileId string
 
-		resp, httpRes, err := apiClient.API_V3.IdentityProfilesAPI.GetDefaultIdentityAttributeConfig(context.Background(), identityProfileId).Execute()
+		resp, httpRes, err := apiClient.V3.IdentityProfilesAPI.GetDefaultIdentityAttributeConfig(context.Background(), identityProfileId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -80,7 +80,7 @@ func Test_api_v3_IdentityProfilesAPIService(t *testing.T) {
 
 		var identityProfileId string
 
-		resp, httpRes, err := apiClient.API_V3.IdentityProfilesAPI.GetIdentityProfile(context.Background(), identityProfileId).Execute()
+		resp, httpRes, err := apiClient.V3.IdentityProfilesAPI.GetIdentityProfile(context.Background(), identityProfileId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -92,7 +92,7 @@ func Test_api_v3_IdentityProfilesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.IdentityProfilesAPI.ImportIdentityProfiles(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.IdentityProfilesAPI.ImportIdentityProfiles(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -104,7 +104,7 @@ func Test_api_v3_IdentityProfilesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.IdentityProfilesAPI.ListIdentityProfiles(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.IdentityProfilesAPI.ListIdentityProfiles(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -118,7 +118,7 @@ func Test_api_v3_IdentityProfilesAPIService(t *testing.T) {
 
 		var identityProfileId string
 
-		resp, httpRes, err := apiClient.API_V3.IdentityProfilesAPI.SyncIdentityProfile(context.Background(), identityProfileId).Execute()
+		resp, httpRes, err := apiClient.V3.IdentityProfilesAPI.SyncIdentityProfile(context.Background(), identityProfileId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

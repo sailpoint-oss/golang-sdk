@@ -26,7 +26,7 @@ func Test_api_beta_SODPolicyAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.SODPolicyAPI.CreateSodPolicy(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.SODPolicyAPI.CreateSodPolicy(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_beta_SODPolicyAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_BETA.SODPolicyAPI.DeleteSodPolicy(context.Background(), id).Execute()
+		httpRes, err := apiClient.Beta.SODPolicyAPI.DeleteSodPolicy(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -53,7 +53,7 @@ func Test_api_beta_SODPolicyAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_BETA.SODPolicyAPI.DeleteSodPolicySchedule(context.Background(), id).Execute()
+		httpRes, err := apiClient.Beta.SODPolicyAPI.DeleteSodPolicySchedule(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -67,7 +67,7 @@ func Test_api_beta_SODPolicyAPIService(t *testing.T) {
 		var reportResultId string
 		var fileName string
 
-		resp, httpRes, err := apiClient.API_BETA.SODPolicyAPI.GetCustomViolationReport(context.Background(), reportResultId, fileName).Execute()
+		resp, httpRes, err := apiClient.Beta.SODPolicyAPI.GetCustomViolationReport(context.Background(), reportResultId, fileName).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -81,7 +81,7 @@ func Test_api_beta_SODPolicyAPIService(t *testing.T) {
 
 		var reportResultId string
 
-		resp, httpRes, err := apiClient.API_BETA.SODPolicyAPI.GetDefaultViolationReport(context.Background(), reportResultId).Execute()
+		resp, httpRes, err := apiClient.Beta.SODPolicyAPI.GetDefaultViolationReport(context.Background(), reportResultId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -93,7 +93,7 @@ func Test_api_beta_SODPolicyAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.SODPolicyAPI.GetSodAllReportRunStatus(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.SODPolicyAPI.GetSodAllReportRunStatus(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -107,7 +107,7 @@ func Test_api_beta_SODPolicyAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.SODPolicyAPI.GetSodPolicy(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.SODPolicyAPI.GetSodPolicy(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -121,7 +121,7 @@ func Test_api_beta_SODPolicyAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.SODPolicyAPI.GetSodPolicySchedule(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.SODPolicyAPI.GetSodPolicySchedule(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -135,7 +135,7 @@ func Test_api_beta_SODPolicyAPIService(t *testing.T) {
 
 		var reportResultId string
 
-		resp, httpRes, err := apiClient.API_BETA.SODPolicyAPI.GetSodViolationReportRunStatus(context.Background(), reportResultId).Execute()
+		resp, httpRes, err := apiClient.Beta.SODPolicyAPI.GetSodViolationReportRunStatus(context.Background(), reportResultId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -149,7 +149,7 @@ func Test_api_beta_SODPolicyAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.SODPolicyAPI.GetSodViolationReportStatus(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.SODPolicyAPI.GetSodViolationReportStatus(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -161,7 +161,7 @@ func Test_api_beta_SODPolicyAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.SODPolicyAPI.ListSodPolicies(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.SODPolicyAPI.ListSodPolicies(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -175,7 +175,7 @@ func Test_api_beta_SODPolicyAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.SODPolicyAPI.PatchSodPolicy(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.SODPolicyAPI.PatchSodPolicy(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -189,7 +189,7 @@ func Test_api_beta_SODPolicyAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.SODPolicyAPI.PutPolicySchedule(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.SODPolicyAPI.PutPolicySchedule(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -203,7 +203,7 @@ func Test_api_beta_SODPolicyAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.SODPolicyAPI.PutSodPolicy(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.SODPolicyAPI.PutSodPolicy(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -215,7 +215,7 @@ func Test_api_beta_SODPolicyAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.SODPolicyAPI.StartSodAllPoliciesForOrg(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.SODPolicyAPI.StartSodAllPoliciesForOrg(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -229,7 +229,7 @@ func Test_api_beta_SODPolicyAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.SODPolicyAPI.StartSodPolicy(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.SODPolicyAPI.StartSodPolicy(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

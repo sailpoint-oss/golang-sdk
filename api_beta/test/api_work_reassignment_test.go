@@ -26,7 +26,7 @@ func Test_api_beta_WorkReassignmentAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.WorkReassignmentAPI.CreateReassignmentConfiguration(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.WorkReassignmentAPI.CreateReassignmentConfiguration(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_beta_WorkReassignmentAPIService(t *testing.T) {
 
 		var identityId string
 
-		httpRes, err := apiClient.API_BETA.WorkReassignmentAPI.DeleteReassignmentConfiguration(context.Background(), identityId).Execute()
+		httpRes, err := apiClient.Beta.WorkReassignmentAPI.DeleteReassignmentConfiguration(context.Background(), identityId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -54,7 +54,7 @@ func Test_api_beta_WorkReassignmentAPIService(t *testing.T) {
 		var identityId string
 		var configType ConfigTypeEnum
 
-		resp, httpRes, err := apiClient.API_BETA.WorkReassignmentAPI.GetEvaluateReassignmentConfiguration(context.Background(), identityId, configType).Execute()
+		resp, httpRes, err := apiClient.Beta.WorkReassignmentAPI.GetEvaluateReassignmentConfiguration(context.Background(), identityId, configType).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -66,7 +66,7 @@ func Test_api_beta_WorkReassignmentAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.WorkReassignmentAPI.GetReassignmentConfigTypes(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.WorkReassignmentAPI.GetReassignmentConfigTypes(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -80,7 +80,7 @@ func Test_api_beta_WorkReassignmentAPIService(t *testing.T) {
 
 		var identityId string
 
-		resp, httpRes, err := apiClient.API_BETA.WorkReassignmentAPI.GetReassignmentConfiguration(context.Background(), identityId).Execute()
+		resp, httpRes, err := apiClient.Beta.WorkReassignmentAPI.GetReassignmentConfiguration(context.Background(), identityId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -92,7 +92,7 @@ func Test_api_beta_WorkReassignmentAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.WorkReassignmentAPI.GetTenantConfigConfiguration(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.WorkReassignmentAPI.GetTenantConfigConfiguration(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -104,7 +104,7 @@ func Test_api_beta_WorkReassignmentAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.WorkReassignmentAPI.ListReassignmentConfigurations(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.WorkReassignmentAPI.ListReassignmentConfigurations(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -118,7 +118,7 @@ func Test_api_beta_WorkReassignmentAPIService(t *testing.T) {
 
 		var identityId string
 
-		resp, httpRes, err := apiClient.API_BETA.WorkReassignmentAPI.PutReassignmentConfig(context.Background(), identityId).Execute()
+		resp, httpRes, err := apiClient.Beta.WorkReassignmentAPI.PutReassignmentConfig(context.Background(), identityId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -130,7 +130,7 @@ func Test_api_beta_WorkReassignmentAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.WorkReassignmentAPI.PutTenantConfiguration(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.WorkReassignmentAPI.PutTenantConfiguration(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

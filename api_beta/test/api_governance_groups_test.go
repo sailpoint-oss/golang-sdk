@@ -26,7 +26,7 @@ func Test_api_beta_GovernanceGroupsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.GovernanceGroupsAPI.CreateWorkgroup(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.GovernanceGroupsAPI.CreateWorkgroup(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_beta_GovernanceGroupsAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_BETA.GovernanceGroupsAPI.DeleteWorkgroup(context.Background(), id).Execute()
+		httpRes, err := apiClient.Beta.GovernanceGroupsAPI.DeleteWorkgroup(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -53,7 +53,7 @@ func Test_api_beta_GovernanceGroupsAPIService(t *testing.T) {
 
 		var workgroupId string
 
-		resp, httpRes, err := apiClient.API_BETA.GovernanceGroupsAPI.DeleteWorkgroupMembers(context.Background(), workgroupId).Execute()
+		resp, httpRes, err := apiClient.Beta.GovernanceGroupsAPI.DeleteWorkgroupMembers(context.Background(), workgroupId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -65,7 +65,7 @@ func Test_api_beta_GovernanceGroupsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.GovernanceGroupsAPI.DeleteWorkgroupsInBulk(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.GovernanceGroupsAPI.DeleteWorkgroupsInBulk(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -79,7 +79,7 @@ func Test_api_beta_GovernanceGroupsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.GovernanceGroupsAPI.GetWorkgroup(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.GovernanceGroupsAPI.GetWorkgroup(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -93,7 +93,7 @@ func Test_api_beta_GovernanceGroupsAPIService(t *testing.T) {
 
 		var workgroupId string
 
-		resp, httpRes, err := apiClient.API_BETA.GovernanceGroupsAPI.ListConnections(context.Background(), workgroupId).Execute()
+		resp, httpRes, err := apiClient.Beta.GovernanceGroupsAPI.ListConnections(context.Background(), workgroupId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -107,7 +107,7 @@ func Test_api_beta_GovernanceGroupsAPIService(t *testing.T) {
 
 		var workgroupId string
 
-		resp, httpRes, err := apiClient.API_BETA.GovernanceGroupsAPI.ListWorkgroupMembers(context.Background(), workgroupId).Execute()
+		resp, httpRes, err := apiClient.Beta.GovernanceGroupsAPI.ListWorkgroupMembers(context.Background(), workgroupId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -119,7 +119,7 @@ func Test_api_beta_GovernanceGroupsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.GovernanceGroupsAPI.ListWorkgroups(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.GovernanceGroupsAPI.ListWorkgroups(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -133,7 +133,7 @@ func Test_api_beta_GovernanceGroupsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.GovernanceGroupsAPI.PatchWorkgroup(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.GovernanceGroupsAPI.PatchWorkgroup(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -147,7 +147,7 @@ func Test_api_beta_GovernanceGroupsAPIService(t *testing.T) {
 
 		var workgroupId string
 
-		resp, httpRes, err := apiClient.API_BETA.GovernanceGroupsAPI.UpdateWorkgroupMembers(context.Background(), workgroupId).Execute()
+		resp, httpRes, err := apiClient.Beta.GovernanceGroupsAPI.UpdateWorkgroupMembers(context.Background(), workgroupId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

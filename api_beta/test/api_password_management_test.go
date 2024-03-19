@@ -26,7 +26,7 @@ func Test_api_beta_PasswordManagementAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.PasswordManagementAPI.GenerateDigitToken(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.PasswordManagementAPI.GenerateDigitToken(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_beta_PasswordManagementAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.PasswordManagementAPI.GetIdentityPasswordChangeStatus(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.PasswordManagementAPI.GetIdentityPasswordChangeStatus(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -52,7 +52,7 @@ func Test_api_beta_PasswordManagementAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.PasswordManagementAPI.QueryPasswordInfo(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.PasswordManagementAPI.QueryPasswordInfo(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -64,7 +64,7 @@ func Test_api_beta_PasswordManagementAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.PasswordManagementAPI.SetIdentityPassword(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.PasswordManagementAPI.SetIdentityPassword(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

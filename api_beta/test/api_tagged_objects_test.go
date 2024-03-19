@@ -29,7 +29,7 @@ func Test_api_beta_TaggedObjectsAPIService(t *testing.T) {
 		var type_ string
 		var id string
 
-		httpRes, err := apiClient.API_BETA.TaggedObjectsAPI.DeleteTaggedObject(context.Background(), type_, id).Execute()
+		httpRes, err := apiClient.Beta.TaggedObjectsAPI.DeleteTaggedObject(context.Background(), type_, id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -40,7 +40,7 @@ func Test_api_beta_TaggedObjectsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.API_BETA.TaggedObjectsAPI.DeleteTagsToManyObject(context.Background()).Execute()
+		httpRes, err := apiClient.Beta.TaggedObjectsAPI.DeleteTagsToManyObject(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -54,7 +54,7 @@ func Test_api_beta_TaggedObjectsAPIService(t *testing.T) {
 		var type_ string
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.TaggedObjectsAPI.GetTaggedObject(context.Background(), type_, id).Execute()
+		resp, httpRes, err := apiClient.Beta.TaggedObjectsAPI.GetTaggedObject(context.Background(), type_, id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -66,7 +66,7 @@ func Test_api_beta_TaggedObjectsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.TaggedObjectsAPI.ListTaggedObjects(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.TaggedObjectsAPI.ListTaggedObjects(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -80,7 +80,7 @@ func Test_api_beta_TaggedObjectsAPIService(t *testing.T) {
 
 		var type_ string
 
-		resp, httpRes, err := apiClient.API_BETA.TaggedObjectsAPI.ListTaggedObjectsByType(context.Background(), type_).Execute()
+		resp, httpRes, err := apiClient.Beta.TaggedObjectsAPI.ListTaggedObjectsByType(context.Background(), type_).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -95,7 +95,7 @@ func Test_api_beta_TaggedObjectsAPIService(t *testing.T) {
 		var type_ string
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.TaggedObjectsAPI.PutTaggedObject(context.Background(), type_, id).Execute()
+		resp, httpRes, err := apiClient.Beta.TaggedObjectsAPI.PutTaggedObject(context.Background(), type_, id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -107,7 +107,7 @@ func Test_api_beta_TaggedObjectsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.API_BETA.TaggedObjectsAPI.SetTagToObject(context.Background()).Execute()
+		httpRes, err := apiClient.Beta.TaggedObjectsAPI.SetTagToObject(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -118,7 +118,7 @@ func Test_api_beta_TaggedObjectsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.TaggedObjectsAPI.SetTagsToManyObjects(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.TaggedObjectsAPI.SetTagsToManyObjects(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

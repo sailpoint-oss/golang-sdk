@@ -26,7 +26,7 @@ func Test_api_beta_AccessRequestsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.AccessRequestsAPI.CancelAccessRequest(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.AccessRequestsAPI.CancelAccessRequest(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -38,7 +38,7 @@ func Test_api_beta_AccessRequestsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.AccessRequestsAPI.CloseAccessRequest(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.AccessRequestsAPI.CloseAccessRequest(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -50,7 +50,7 @@ func Test_api_beta_AccessRequestsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.AccessRequestsAPI.CreateAccessRequest(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.AccessRequestsAPI.CreateAccessRequest(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -62,7 +62,7 @@ func Test_api_beta_AccessRequestsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.AccessRequestsAPI.GetAccessRequestConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.AccessRequestsAPI.GetAccessRequestConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,7 +74,7 @@ func Test_api_beta_AccessRequestsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.AccessRequestsAPI.ListAccessRequestStatus(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.AccessRequestsAPI.ListAccessRequestStatus(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -86,7 +86,7 @@ func Test_api_beta_AccessRequestsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.AccessRequestsAPI.SetAccessRequestConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.AccessRequestsAPI.SetAccessRequestConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

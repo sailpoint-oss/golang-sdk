@@ -26,7 +26,7 @@ func Test_api_beta_PasswordDictionaryAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.PasswordDictionaryAPI.GetPasswordDictionary(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.PasswordDictionaryAPI.GetPasswordDictionary(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -38,7 +38,7 @@ func Test_api_beta_PasswordDictionaryAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.API_BETA.PasswordDictionaryAPI.PutPasswordDictionary(context.Background()).Execute()
+		httpRes, err := apiClient.Beta.PasswordDictionaryAPI.PutPasswordDictionary(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
