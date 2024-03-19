@@ -17,65 +17,65 @@ import (
 
 // SubscriptionPatchRequestInnerValue The value to be used for the operation, required for \"add\" and \"replace\" operations
 type SubscriptionPatchRequestInnerValue struct {
-	[]SubscriptionPatchRequestInnerValueAnyOfInner *[]SubscriptionPatchRequestInnerValueAnyOfInner
-	int32 *int32
-	map[string]interface{} *map[string]interface{}
-	string *string
+	SubscriptionPatchRequestInnerValueAnyOfInnervar *[]SubscriptionPatchRequestInnerValueAnyOfInner
+	int32var *int32
+	mapvar *map[string]interface{}
+	stringvar *string
 }
 
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *SubscriptionPatchRequestInnerValue) UnmarshalJSON(data []byte) error {
 	var err error
-	// try to unmarshal JSON data into []SubscriptionPatchRequestInnerValueAnyOfInner
-	err = json.Unmarshal(data, &dst.[]SubscriptionPatchRequestInnerValueAnyOfInner);
+	// try to unmarshal JSON data into SubscriptionPatchRequestInnerValueAnyOfInnervar
+	err = json.Unmarshal(data, &dst.SubscriptionPatchRequestInnerValueAnyOfInnervar);
 	if err == nil {
-		json[]SubscriptionPatchRequestInnerValueAnyOfInner, _ := json.Marshal(dst.[]SubscriptionPatchRequestInnerValueAnyOfInner)
-		if string(json[]SubscriptionPatchRequestInnerValueAnyOfInner) == "{}" { // empty struct
-			dst.[]SubscriptionPatchRequestInnerValueAnyOfInner = nil
+		jsonSubscriptionPatchRequestInnerValueAnyOfInnervar, _ := json.Marshal(dst.SubscriptionPatchRequestInnerValueAnyOfInnervar)
+		if string(jsonSubscriptionPatchRequestInnerValueAnyOfInnervar) == "{}" { // empty struct
+			dst.SubscriptionPatchRequestInnerValueAnyOfInnervar = nil
 		} else {
-			return nil // data stored in dst.[]SubscriptionPatchRequestInnerValueAnyOfInner, return on the first match
+			return nil // data stored in dst.SubscriptionPatchRequestInnerValueAnyOfInnervar, return on the first match
 		}
 	} else {
-		dst.[]SubscriptionPatchRequestInnerValueAnyOfInner = nil
+		dst.SubscriptionPatchRequestInnerValueAnyOfInnervar = nil
 	}
 
-	// try to unmarshal JSON data into int32
-	err = json.Unmarshal(data, &dst.int32);
+	// try to unmarshal JSON data into int32var
+	err = json.Unmarshal(data, &dst.int32var);
 	if err == nil {
-		jsonint32, _ := json.Marshal(dst.int32)
-		if string(jsonint32) == "{}" { // empty struct
-			dst.int32 = nil
+		jsonint32var, _ := json.Marshal(dst.int32var)
+		if string(jsonint32var) == "{}" { // empty struct
+			dst.int32var = nil
 		} else {
-			return nil // data stored in dst.int32, return on the first match
+			return nil // data stored in dst.int32var, return on the first match
 		}
 	} else {
-		dst.int32 = nil
+		dst.int32var = nil
 	}
 
-	// try to unmarshal JSON data into map[string]interface{}
-	err = json.Unmarshal(data, &dst.map[string]interface{});
+	// try to unmarshal JSON data into mapvar
+	err = json.Unmarshal(data, &dst.mapvar);
 	if err == nil {
-		jsonmap[string]interface{}, _ := json.Marshal(dst.map[string]interface{})
-		if string(jsonmap[string]interface{}) == "{}" { // empty struct
-			dst.map[string]interface{} = nil
+		jsonmapvar, _ := json.Marshal(dst.mapvar)
+		if string(jsonmapvar) == "{}" { // empty struct
+			dst.mapvar = nil
 		} else {
-			return nil // data stored in dst.map[string]interface{}, return on the first match
+			return nil // data stored in dst.mapvar, return on the first match
 		}
 	} else {
-		dst.map[string]interface{} = nil
+		dst.mapvar = nil
 	}
 
-	// try to unmarshal JSON data into string
-	err = json.Unmarshal(data, &dst.string);
+	// try to unmarshal JSON data into stringvar
+	err = json.Unmarshal(data, &dst.stringvar);
 	if err == nil {
-		jsonstring, _ := json.Marshal(dst.string)
-		if string(jsonstring) == "{}" { // empty struct
-			dst.string = nil
+		jsonstringvar, _ := json.Marshal(dst.stringvar)
+		if string(jsonstringvar) == "{}" { // empty struct
+			dst.stringvar = nil
 		} else {
-			return nil // data stored in dst.string, return on the first match
+			return nil // data stored in dst.stringvar, return on the first match
 		}
 	} else {
-		dst.string = nil
+		dst.stringvar = nil
 	}
 
 	return fmt.Errorf("data failed to match schemas in anyOf(SubscriptionPatchRequestInnerValue)")
@@ -83,20 +83,20 @@ func (dst *SubscriptionPatchRequestInnerValue) UnmarshalJSON(data []byte) error 
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src *SubscriptionPatchRequestInnerValue) MarshalJSON() ([]byte, error) {
-	if src.[]SubscriptionPatchRequestInnerValueAnyOfInner != nil {
-		return json.Marshal(&src.[]SubscriptionPatchRequestInnerValueAnyOfInner)
+	if src.SubscriptionPatchRequestInnerValueAnyOfInnervar != nil {
+		return json.Marshal(&src.SubscriptionPatchRequestInnerValueAnyOfInnervar)
 	}
 
-	if src.int32 != nil {
-		return json.Marshal(&src.int32)
+	if src.int32var != nil {
+		return json.Marshal(&src.int32var)
 	}
 
-	if src.map[string]interface{} != nil {
-		return json.Marshal(&src.map[string]interface{})
+	if src.mapvar != nil {
+		return json.Marshal(&src.mapvar)
 	}
 
-	if src.string != nil {
-		return json.Marshal(&src.string)
+	if src.stringvar != nil {
+		return json.Marshal(&src.stringvar)
 	}
 
 	return nil, nil // no data in anyOf schemas
@@ -137,5 +137,4 @@ func (v *NullableSubscriptionPatchRequestInnerValue) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
 
