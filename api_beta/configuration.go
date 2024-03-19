@@ -13,7 +13,6 @@ package api_beta
 import (
 	"context"
 	"fmt"
-	"net/http"
 	"strings"
 
 	retryablehttp "github.com/hashicorp/go-retryablehttp"
