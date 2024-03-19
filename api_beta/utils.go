@@ -329,7 +329,7 @@ func (v *NullableTime) UnmarshalJSON(src []byte) error {
 }
 
 // IsNil checks if an input is nil
-func IsNil(i interface{}) bool {
+func isNil(i interface{}) bool {
 	if i == nil {
 		return true
 	}
