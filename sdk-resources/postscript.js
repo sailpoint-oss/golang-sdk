@@ -31,7 +31,6 @@ const renameFileToIndices = function (filePath) {
   // Determine the new file path by changing the file's name to 'indices'
   let dirPath = path.dirname(filePath); // Gets the directory path of the current file
 
-
   const targetDir = path.join(dirPath, "Models"); // Appends 'models' to the directory path
 
   const newFilePath = path.join(targetDir, "indices.md"); // Constructs the full target path
@@ -141,20 +140,6 @@ const fixFiles = function (myArray) {
       fileOut = [];
     }
 
-    for (const line of rawDataArra) {
-      if (line.includes("**Indices** | Pointer to [**[]Index**](Index)")) {
-        fileOut.push(
-          line.replaceAll(
-            "**Indices** | Pointer to [**[]Index**](Index)",
-            "**Indices** | Pointer to [**[]Index**](Indices)"
-          )
-        );
-        madeChange = true;
-      } else {
-        fileOut.push(line);
-      }
-    }
-
     //adjust the document type naming to fix the duplicate type errors
     if (
       file.includes("model_event_document.go") ||
@@ -249,6 +234,20 @@ const fixFiles = function (myArray) {
       }
       rawDataArra = fileOut.slice();
       fileOut = [];
+    }
+
+    for (const line of rawDataArra) {
+      if (line.includes("**Indices** | Pointer to [**[]Index**](Index)")) {
+        fileOut.push(
+          line.replaceAll(
+            "**Indices** | Pointer to [**[]Index**](Index)",
+            "**Indices** | Pointer to [**[]Index**](Indices)"
+          )
+        );
+        madeChange = true;
+      } else {
+        fileOut.push(line);
+      }
     }
 
     if (madeChange) {
