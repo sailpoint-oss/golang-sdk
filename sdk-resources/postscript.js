@@ -15,6 +15,32 @@ const getAllFiles = function (dirPath, arrayOfFiles) {
   return arrayOfFiles;
 };
 
+const moveFile = function (sourcePath, targetPath) {
+  // Create the target directory if it doesn't exist
+  const directory = path.dirname(targetPath);
+  if (!fs.existsSync(directory)) {
+    fs.mkdirSync(directory, { recursive: true });
+  }
+
+  // Move the file
+  fs.renameSync(sourcePath, targetPath);
+  // console.log(`Moved: ${sourcePath} to ${targetPath}`);
+};
+
+const renameFileToIndices = function (filePath) {
+  // Determine the new file path by changing the file's name to 'indices'
+  let dirPath = path.dirname(filePath); // Gets the directory path of the current file
+
+
+  const targetDir = path.join(dirPath, "Models"); // Appends 'models' to the directory path
+
+  const newFilePath = path.join(targetDir, "indices.md"); // Constructs the full target path
+
+  // Rename the file
+  fs.renameSync(filePath, newFilePath);
+  console.log(`Renamed: ${filePath} to ${newFilePath}`);
+};
+
 const fixFiles = function (myArray) {
   let fixCheck = 0;
   for (const file of myArray) {
@@ -113,6 +139,20 @@ const fixFiles = function (myArray) {
       }
       rawDataArra = fileOut.slice();
       fileOut = [];
+    }
+
+    for (const line of rawDataArra) {
+      if (line.includes("**Indices** | Pointer to [**[]Index**](Index)")) {
+        fileOut.push(
+          line.replaceAll(
+            "**Indices** | Pointer to [**[]Index**](Index)",
+            "**Indices** | Pointer to [**[]Index**](Indices)"
+          )
+        );
+        madeChange = true;
+      } else {
+        fileOut.push(line);
+      }
     }
 
     //adjust the document type naming to fix the duplicate type errors
@@ -214,6 +254,50 @@ const fixFiles = function (myArray) {
     if (madeChange) {
       fixCheck += 1;
       fs.writeFileSync(file, rawDataArra.join("\n"));
+    }
+
+    if (file.endsWith("API.md")) {
+      let dirPath = path.dirname(file); // Gets the directory path of the current file
+
+      const targetDir = path.join(dirPath, "Methods"); // Appends 'methods' to the directory path
+
+      const targetPath = path.join(targetDir, path.basename(file)); // Constructs the full target path
+
+      // Check if the file exists before trying to move it
+      if (fs.existsSync(file)) {
+        moveFile(file, targetPath);
+        fixCheck++;
+      } else {
+        console.error(`File not found: ${file}`);
+      }
+    } else if (
+      file.includes(`\\golang-sdk\\api_v3\\docs`) ||
+      file.includes(`\\golang-sdk\\api_beta\\docs`)
+    ) {
+      if (file.includes("Index.md")) {
+        if (fs.existsSync(file)) {
+          renameFileToIndices(file);
+          fixCheck++;
+          continue; // Skip further processing for this file
+        } else {
+          console.error(`File not found: ${file}`);
+          continue;
+        }
+      } else {
+        let dirPath = path.dirname(file); // Gets the directory path of the current file
+
+        const targetDir = path.join(dirPath, "Models"); // Appends 'models' to the directory path
+
+        const targetPath = path.join(targetDir, path.basename(file)); // Constructs the full target path
+
+        // Check if the file exists before trying to move it
+        if (fs.existsSync(file)) {
+          moveFile(file, targetPath);
+          fixCheck++;
+        } else {
+          console.error(`File not found: ${file}`);
+        }
+      }
     }
   }
 
