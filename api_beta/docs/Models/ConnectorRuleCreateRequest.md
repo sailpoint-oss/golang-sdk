@@ -5,7 +5,7 @@ pagination_label: ConnectorRuleCreateRequest
 sidebar_label: ConnectorRuleCreateRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ConnectorRuleCreateRequest'] 
-slug: /tools/sdk/go/documentation/beta/models/connector-rule-create-request
+slug: /tools/sdk/go/beta/models/connector-rule-create-request
 tags: ['SDK', 'Software Development Kit', 'ConnectorRuleCreateRequest']
 ---
 

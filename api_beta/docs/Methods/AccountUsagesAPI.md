@@ -5,7 +5,7 @@ pagination_label: AccountUsages
 sidebar_label: AccountUsages
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccountUsages'] 
-slug: /tools/sdk/go/documentation/beta/api/account-usages
+slug: /tools/sdk/go/beta/methods/account-usages
 tags: ['SDK', 'Software Development Kit', 'AccountUsages']
 ---
 

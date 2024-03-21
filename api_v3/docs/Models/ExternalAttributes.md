@@ -5,7 +5,7 @@ pagination_label: ExternalAttributes
 sidebar_label: ExternalAttributes
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ExternalAttributes'] 
-slug: /tools/sdk/go/documentation/v3/models/external-attributes
+slug: /tools/sdk/go/v3/models/external-attributes
 tags: ['SDK', 'Software Development Kit', 'ExternalAttributes']
 ---
 

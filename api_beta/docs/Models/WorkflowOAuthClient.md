@@ -5,7 +5,7 @@ pagination_label: WorkflowOAuthClient
 sidebar_label: WorkflowOAuthClient
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'WorkflowOAuthClient'] 
-slug: /tools/sdk/go/documentation/beta/models/workflow-o-auth-client
+slug: /tools/sdk/go/beta/models/workflow-o-auth-client
 tags: ['SDK', 'Software Development Kit', 'WorkflowOAuthClient']
 ---
 

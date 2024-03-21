@@ -5,7 +5,7 @@ pagination_label: WorkflowBodyOwner
 sidebar_label: WorkflowBodyOwner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'WorkflowBodyOwner'] 
-slug: /tools/sdk/go/documentation/beta/models/workflow-body-owner
+slug: /tools/sdk/go/beta/models/workflow-body-owner
 tags: ['SDK', 'Software Development Kit', 'WorkflowBodyOwner']
 ---
 

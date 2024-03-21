@@ -5,7 +5,7 @@ pagination_label: FormElementDynamicDataSource
 sidebar_label: FormElementDynamicDataSource
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'FormElementDynamicDataSource'] 
-slug: /tools/sdk/go/documentation/beta/models/form-element-dynamic-data-source
+slug: /tools/sdk/go/beta/models/form-element-dynamic-data-source
 tags: ['SDK', 'Software Development Kit', 'FormElementDynamicDataSource']
 ---
 

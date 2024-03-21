@@ -5,7 +5,7 @@ pagination_label: AccessCriteria
 sidebar_label: AccessCriteria
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessCriteria'] 
-slug: /tools/sdk/go/documentation/v3/models/access-criteria
+slug: /tools/sdk/go/v3/models/access-criteria
 tags: ['SDK', 'Software Development Kit', 'AccessCriteria']
 ---
 

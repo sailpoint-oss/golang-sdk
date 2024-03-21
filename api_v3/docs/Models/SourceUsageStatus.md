@@ -5,7 +5,7 @@ pagination_label: SourceUsageStatus
 sidebar_label: SourceUsageStatus
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SourceUsageStatus'] 
-slug: /tools/sdk/go/documentation/v3/models/source-usage-status
+slug: /tools/sdk/go/v3/models/source-usage-status
 tags: ['SDK', 'Software Development Kit', 'SourceUsageStatus']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: OutliersContributingFeatureAccessItems
 sidebar_label: OutliersContributingFeatureAccessItems
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'OutliersContributingFeatureAccessItems'] 
-slug: /tools/sdk/go/documentation/beta/models/outliers-contributing-feature-access-items
+slug: /tools/sdk/go/beta/models/outliers-contributing-feature-access-items
 tags: ['SDK', 'Software Development Kit', 'OutliersContributingFeatureAccessItems']
 ---
 

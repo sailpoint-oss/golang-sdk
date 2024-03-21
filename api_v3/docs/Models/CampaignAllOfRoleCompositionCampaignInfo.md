@@ -5,7 +5,7 @@ pagination_label: CampaignAllOfRoleCompositionCampaignInfo
 sidebar_label: CampaignAllOfRoleCompositionCampaignInfo
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CampaignAllOfRoleCompositionCampaignInfo'] 
-slug: /tools/sdk/go/documentation/v3/models/campaign-all-of-role-composition-campaign-info
+slug: /tools/sdk/go/v3/models/campaign-all-of-role-composition-campaign-info
 tags: ['SDK', 'Software Development Kit', 'CampaignAllOfRoleCompositionCampaignInfo']
 ---
 

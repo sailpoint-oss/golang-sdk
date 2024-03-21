@@ -5,7 +5,7 @@ pagination_label: ManualWorkItemDetailsOriginalOwner
 sidebar_label: ManualWorkItemDetailsOriginalOwner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ManualWorkItemDetailsOriginalOwner'] 
-slug: /tools/sdk/go/documentation/beta/models/manual-work-item-details-original-owner
+slug: /tools/sdk/go/beta/models/manual-work-item-details-original-owner
 tags: ['SDK', 'Software Development Kit', 'ManualWorkItemDetailsOriginalOwner']
 ---
 

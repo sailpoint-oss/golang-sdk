@@ -5,7 +5,7 @@ pagination_label: FormInstanceResponse
 sidebar_label: FormInstanceResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'FormInstanceResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/form-instance-response
+slug: /tools/sdk/go/beta/models/form-instance-response
 tags: ['SDK', 'Software Development Kit', 'FormInstanceResponse']
 ---
 

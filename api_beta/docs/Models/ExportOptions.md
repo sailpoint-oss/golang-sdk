@@ -5,7 +5,7 @@ pagination_label: ExportOptions
 sidebar_label: ExportOptions
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ExportOptions'] 
-slug: /tools/sdk/go/documentation/beta/models/export-options
+slug: /tools/sdk/go/beta/models/export-options
 tags: ['SDK', 'Software Development Kit', 'ExportOptions']
 ---
 

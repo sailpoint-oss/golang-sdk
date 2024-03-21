@@ -5,7 +5,7 @@ pagination_label: IdentityAccess
 sidebar_label: IdentityAccess
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityAccess'] 
-slug: /tools/sdk/go/documentation/v3/models/identity-access
+slug: /tools/sdk/go/v3/models/identity-access
 tags: ['SDK', 'Software Development Kit', 'IdentityAccess']
 ---
 

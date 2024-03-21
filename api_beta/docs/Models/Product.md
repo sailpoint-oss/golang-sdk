@@ -5,7 +5,7 @@ pagination_label: Product
 sidebar_label: Product
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Product'] 
-slug: /tools/sdk/go/documentation/beta/models/product
+slug: /tools/sdk/go/beta/models/product
 tags: ['SDK', 'Software Development Kit', 'Product']
 ---
 

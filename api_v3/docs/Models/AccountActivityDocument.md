@@ -5,7 +5,7 @@ pagination_label: AccountActivityDocument
 sidebar_label: AccountActivityDocument
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccountActivityDocument'] 
-slug: /tools/sdk/go/documentation/v3/models/account-activity-document
+slug: /tools/sdk/go/v3/models/account-activity-document
 tags: ['SDK', 'Software Development Kit', 'AccountActivityDocument']
 ---
 

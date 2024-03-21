@@ -5,7 +5,7 @@ pagination_label: TaskResultDetailsMessagesInner
 sidebar_label: TaskResultDetailsMessagesInner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'TaskResultDetailsMessagesInner'] 
-slug: /tools/sdk/go/documentation/v3/models/task-result-details-messages-inner
+slug: /tools/sdk/go/v3/models/task-result-details-messages-inner
 tags: ['SDK', 'Software Development Kit', 'TaskResultDetailsMessagesInner']
 ---
 

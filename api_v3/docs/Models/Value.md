@@ -5,7 +5,7 @@ pagination_label: Value
 sidebar_label: Value
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Value'] 
-slug: /tools/sdk/go/documentation/v3/models/value
+slug: /tools/sdk/go/v3/models/value
 tags: ['SDK', 'Software Development Kit', 'Value']
 ---
 

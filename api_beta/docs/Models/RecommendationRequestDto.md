@@ -5,7 +5,7 @@ pagination_label: RecommendationRequestDto
 sidebar_label: RecommendationRequestDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RecommendationRequestDto'] 
-slug: /tools/sdk/go/documentation/beta/models/recommendation-request-dto
+slug: /tools/sdk/go/beta/models/recommendation-request-dto
 tags: ['SDK', 'Software Development Kit', 'RecommendationRequestDto']
 ---
 

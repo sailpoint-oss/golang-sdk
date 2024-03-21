@@ -5,7 +5,7 @@ pagination_label: MFAConfiguration
 sidebar_label: MFAConfiguration
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'MFAConfiguration'] 
-slug: /tools/sdk/go/documentation/beta/api/mfa-configuration
+slug: /tools/sdk/go/beta/methods/mfa-configuration
 tags: ['SDK', 'Software Development Kit', 'MFAConfiguration']
 ---
 

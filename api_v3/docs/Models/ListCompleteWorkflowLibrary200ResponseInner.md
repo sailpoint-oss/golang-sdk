@@ -5,7 +5,7 @@ pagination_label: ListCompleteWorkflowLibrary200ResponseInner
 sidebar_label: ListCompleteWorkflowLibrary200ResponseInner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ListCompleteWorkflowLibrary200ResponseInner'] 
-slug: /tools/sdk/go/documentation/v3/models/list-complete-workflow-library200-response-inner
+slug: /tools/sdk/go/v3/models/list-complete-workflow-library200-response-inner
 tags: ['SDK', 'Software Development Kit', 'ListCompleteWorkflowLibrary200ResponseInner']
 ---
 

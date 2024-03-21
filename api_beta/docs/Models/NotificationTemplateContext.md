@@ -5,7 +5,7 @@ pagination_label: NotificationTemplateContext
 sidebar_label: NotificationTemplateContext
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'NotificationTemplateContext'] 
-slug: /tools/sdk/go/documentation/beta/models/notification-template-context
+slug: /tools/sdk/go/beta/models/notification-template-context
 tags: ['SDK', 'Software Development Kit', 'NotificationTemplateContext']
 ---
 

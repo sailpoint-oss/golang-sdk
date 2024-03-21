@@ -5,7 +5,7 @@ pagination_label: RequestedItemStatusRequestState
 sidebar_label: RequestedItemStatusRequestState
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RequestedItemStatusRequestState'] 
-slug: /tools/sdk/go/documentation/v3/models/requested-item-status-request-state
+slug: /tools/sdk/go/v3/models/requested-item-status-request-state
 tags: ['SDK', 'Software Development Kit', 'RequestedItemStatusRequestState']
 ---
 

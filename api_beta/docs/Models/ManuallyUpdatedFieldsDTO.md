@@ -5,7 +5,7 @@ pagination_label: ManuallyUpdatedFieldsDTO
 sidebar_label: ManuallyUpdatedFieldsDTO
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ManuallyUpdatedFieldsDTO'] 
-slug: /tools/sdk/go/documentation/beta/models/manually-updated-fields-dto
+slug: /tools/sdk/go/beta/models/manually-updated-fields-dto
 tags: ['SDK', 'Software Development Kit', 'ManuallyUpdatedFieldsDTO']
 ---
 

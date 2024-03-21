@@ -5,7 +5,7 @@ pagination_label: EntitlementSourceResetBaseReferenceDto
 sidebar_label: EntitlementSourceResetBaseReferenceDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'EntitlementSourceResetBaseReferenceDto'] 
-slug: /tools/sdk/go/documentation/beta/models/entitlement-source-reset-base-reference-dto
+slug: /tools/sdk/go/beta/models/entitlement-source-reset-base-reference-dto
 tags: ['SDK', 'Software Development Kit', 'EntitlementSourceResetBaseReferenceDto']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: ExceptionAccessCriteria
 sidebar_label: ExceptionAccessCriteria
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ExceptionAccessCriteria'] 
-slug: /tools/sdk/go/documentation/beta/models/exception-access-criteria
+slug: /tools/sdk/go/beta/models/exception-access-criteria
 tags: ['SDK', 'Software Development Kit', 'ExceptionAccessCriteria']
 ---
 

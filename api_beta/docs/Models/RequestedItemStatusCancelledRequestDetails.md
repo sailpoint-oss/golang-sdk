@@ -5,7 +5,7 @@ pagination_label: RequestedItemStatusCancelledRequestDetails
 sidebar_label: RequestedItemStatusCancelledRequestDetails
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RequestedItemStatusCancelledRequestDetails'] 
-slug: /tools/sdk/go/documentation/beta/models/requested-item-status-cancelled-request-details
+slug: /tools/sdk/go/beta/models/requested-item-status-cancelled-request-details
 tags: ['SDK', 'Software Development Kit', 'RequestedItemStatusCancelledRequestDetails']
 ---
 

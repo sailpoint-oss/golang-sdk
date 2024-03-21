@@ -5,7 +5,7 @@ pagination_label: LoadEntitlementTask
 sidebar_label: LoadEntitlementTask
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'LoadEntitlementTask'] 
-slug: /tools/sdk/go/documentation/beta/models/load-entitlement-task
+slug: /tools/sdk/go/beta/models/load-entitlement-task
 tags: ['SDK', 'Software Development Kit', 'LoadEntitlementTask']
 ---
 

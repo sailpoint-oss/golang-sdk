@@ -5,7 +5,7 @@ pagination_label: GovernanceGroups
 sidebar_label: GovernanceGroups
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'GovernanceGroups'] 
-slug: /tools/sdk/go/documentation/beta/api/governance-groups
+slug: /tools/sdk/go/beta/methods/governance-groups
 tags: ['SDK', 'Software Development Kit', 'GovernanceGroups']
 ---
 

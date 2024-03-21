@@ -5,7 +5,7 @@ pagination_label: NonEmployeeSourceLiteWithSchemaAttributes
 sidebar_label: NonEmployeeSourceLiteWithSchemaAttributes
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'NonEmployeeSourceLiteWithSchemaAttributes'] 
-slug: /tools/sdk/go/documentation/beta/models/non-employee-source-lite-with-schema-attributes
+slug: /tools/sdk/go/beta/models/non-employee-source-lite-with-schema-attributes
 tags: ['SDK', 'Software Development Kit', 'NonEmployeeSourceLiteWithSchemaAttributes']
 ---
 

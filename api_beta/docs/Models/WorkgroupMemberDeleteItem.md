@@ -5,7 +5,7 @@ pagination_label: WorkgroupMemberDeleteItem
 sidebar_label: WorkgroupMemberDeleteItem
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'WorkgroupMemberDeleteItem'] 
-slug: /tools/sdk/go/documentation/beta/models/workgroup-member-delete-item
+slug: /tools/sdk/go/beta/models/workgroup-member-delete-item
 tags: ['SDK', 'Software Development Kit', 'WorkgroupMemberDeleteItem']
 ---
 

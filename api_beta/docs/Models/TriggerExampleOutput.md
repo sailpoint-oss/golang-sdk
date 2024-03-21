@@ -5,7 +5,7 @@ pagination_label: TriggerExampleOutput
 sidebar_label: TriggerExampleOutput
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'TriggerExampleOutput'] 
-slug: /tools/sdk/go/documentation/beta/models/trigger-example-output
+slug: /tools/sdk/go/beta/models/trigger-example-output
 tags: ['SDK', 'Software Development Kit', 'TriggerExampleOutput']
 ---
 

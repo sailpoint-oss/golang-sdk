@@ -5,7 +5,7 @@ pagination_label: WorkItemsSummary
 sidebar_label: WorkItemsSummary
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'WorkItemsSummary'] 
-slug: /tools/sdk/go/documentation/beta/models/work-items-summary
+slug: /tools/sdk/go/beta/models/work-items-summary
 tags: ['SDK', 'Software Development Kit', 'WorkItemsSummary']
 ---
 

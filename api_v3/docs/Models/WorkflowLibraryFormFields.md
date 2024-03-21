@@ -5,7 +5,7 @@ pagination_label: WorkflowLibraryFormFields
 sidebar_label: WorkflowLibraryFormFields
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'WorkflowLibraryFormFields'] 
-slug: /tools/sdk/go/documentation/v3/models/workflow-library-form-fields
+slug: /tools/sdk/go/v3/models/workflow-library-form-fields
 tags: ['SDK', 'Software Development Kit', 'WorkflowLibraryFormFields']
 ---
 

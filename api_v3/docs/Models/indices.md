@@ -5,7 +5,7 @@ pagination_label: Index
 sidebar_label: Index
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Index'] 
-slug: /tools/sdk/go/documentation/v3/models/index
+slug: /tools/sdk/go/v3/models/index
 tags: ['SDK', 'Software Development Kit', 'Index']
 ---
 

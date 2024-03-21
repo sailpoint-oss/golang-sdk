@@ -5,7 +5,7 @@ pagination_label: RequestedItemStatusSodViolationContext
 sidebar_label: RequestedItemStatusSodViolationContext
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RequestedItemStatusSodViolationContext'] 
-slug: /tools/sdk/go/documentation/v3/models/requested-item-status-sod-violation-context
+slug: /tools/sdk/go/v3/models/requested-item-status-sod-violation-context
 tags: ['SDK', 'Software Development Kit', 'RequestedItemStatusSodViolationContext']
 ---
 

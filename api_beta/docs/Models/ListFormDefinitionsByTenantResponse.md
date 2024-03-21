@@ -5,7 +5,7 @@ pagination_label: ListFormDefinitionsByTenantResponse
 sidebar_label: ListFormDefinitionsByTenantResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ListFormDefinitionsByTenantResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/list-form-definitions-by-tenant-response
+slug: /tools/sdk/go/beta/models/list-form-definitions-by-tenant-response
 tags: ['SDK', 'Software Development Kit', 'ListFormDefinitionsByTenantResponse']
 ---
 

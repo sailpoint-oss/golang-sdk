@@ -5,7 +5,7 @@ pagination_label: BaseDocument
 sidebar_label: BaseDocument
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'BaseDocument'] 
-slug: /tools/sdk/go/documentation/v3/models/base-document
+slug: /tools/sdk/go/v3/models/base-document
 tags: ['SDK', 'Software Development Kit', 'BaseDocument']
 ---
 

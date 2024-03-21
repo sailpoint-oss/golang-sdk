@@ -5,7 +5,7 @@ pagination_label: TestInvocation
 sidebar_label: TestInvocation
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'TestInvocation'] 
-slug: /tools/sdk/go/documentation/beta/models/test-invocation
+slug: /tools/sdk/go/beta/models/test-invocation
 tags: ['SDK', 'Software Development Kit', 'TestInvocation']
 ---
 

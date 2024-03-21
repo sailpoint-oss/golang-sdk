@@ -5,7 +5,7 @@ pagination_label: NonEmployeeSource
 sidebar_label: NonEmployeeSource
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'NonEmployeeSource'] 
-slug: /tools/sdk/go/documentation/beta/models/non-employee-source
+slug: /tools/sdk/go/beta/models/non-employee-source
 tags: ['SDK', 'Software Development Kit', 'NonEmployeeSource']
 ---
 

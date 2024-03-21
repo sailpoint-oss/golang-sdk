@@ -5,7 +5,7 @@ pagination_label: EntitlementApprovalScheme
 sidebar_label: EntitlementApprovalScheme
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'EntitlementApprovalScheme'] 
-slug: /tools/sdk/go/documentation/beta/models/entitlement-approval-scheme
+slug: /tools/sdk/go/beta/models/entitlement-approval-scheme
 tags: ['SDK', 'Software Development Kit', 'EntitlementApprovalScheme']
 ---
 

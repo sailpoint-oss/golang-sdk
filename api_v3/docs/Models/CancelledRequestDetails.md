@@ -5,7 +5,7 @@ pagination_label: CancelledRequestDetails
 sidebar_label: CancelledRequestDetails
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CancelledRequestDetails'] 
-slug: /tools/sdk/go/documentation/v3/models/cancelled-request-details
+slug: /tools/sdk/go/v3/models/cancelled-request-details
 tags: ['SDK', 'Software Development Kit', 'CancelledRequestDetails']
 ---
 

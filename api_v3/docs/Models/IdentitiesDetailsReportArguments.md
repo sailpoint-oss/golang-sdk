@@ -5,7 +5,7 @@ pagination_label: IdentitiesDetailsReportArguments
 sidebar_label: IdentitiesDetailsReportArguments
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentitiesDetailsReportArguments'] 
-slug: /tools/sdk/go/documentation/v3/models/identities-details-report-arguments
+slug: /tools/sdk/go/v3/models/identities-details-report-arguments
 tags: ['SDK', 'Software Development Kit', 'IdentitiesDetailsReportArguments']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: AccountAttributesChangedChangesInner
 sidebar_label: AccountAttributesChangedChangesInner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccountAttributesChangedChangesInner'] 
-slug: /tools/sdk/go/documentation/beta/models/account-attributes-changed-changes-inner
+slug: /tools/sdk/go/beta/models/account-attributes-changed-changes-inner
 tags: ['SDK', 'Software Development Kit', 'AccountAttributesChangedChangesInner']
 ---
 

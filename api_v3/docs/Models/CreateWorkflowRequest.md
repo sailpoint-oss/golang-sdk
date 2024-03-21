@@ -5,7 +5,7 @@ pagination_label: CreateWorkflowRequest
 sidebar_label: CreateWorkflowRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CreateWorkflowRequest'] 
-slug: /tools/sdk/go/documentation/v3/models/create-workflow-request
+slug: /tools/sdk/go/v3/models/create-workflow-request
 tags: ['SDK', 'Software Development Kit', 'CreateWorkflowRequest']
 ---
 

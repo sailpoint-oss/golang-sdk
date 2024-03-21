@@ -5,7 +5,7 @@ pagination_label: TaskReturnDetails
 sidebar_label: TaskReturnDetails
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'TaskReturnDetails'] 
-slug: /tools/sdk/go/documentation/beta/models/task-return-details
+slug: /tools/sdk/go/beta/models/task-return-details
 tags: ['SDK', 'Software Development Kit', 'TaskReturnDetails']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: ExceptionCriteriaCriteriaListInner
 sidebar_label: ExceptionCriteriaCriteriaListInner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ExceptionCriteriaCriteriaListInner'] 
-slug: /tools/sdk/go/documentation/beta/models/exception-criteria-criteria-list-inner
+slug: /tools/sdk/go/beta/models/exception-criteria-criteria-list-inner
 tags: ['SDK', 'Software Development Kit', 'ExceptionCriteriaCriteriaListInner']
 ---
 

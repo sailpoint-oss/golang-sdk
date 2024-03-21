@@ -5,7 +5,7 @@ pagination_label: NetworkConfiguration
 sidebar_label: NetworkConfiguration
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'NetworkConfiguration'] 
-slug: /tools/sdk/go/documentation/v3/models/network-configuration
+slug: /tools/sdk/go/v3/models/network-configuration
 tags: ['SDK', 'Software Development Kit', 'NetworkConfiguration']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: Notifications
 sidebar_label: Notifications
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Notifications'] 
-slug: /tools/sdk/go/documentation/beta/api/notifications
+slug: /tools/sdk/go/beta/methods/notifications
 tags: ['SDK', 'Software Development Kit', 'Notifications']
 ---
 

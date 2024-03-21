@@ -5,7 +5,7 @@ pagination_label: TypedReference
 sidebar_label: TypedReference
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'TypedReference'] 
-slug: /tools/sdk/go/documentation/v3/models/typed-reference
+slug: /tools/sdk/go/v3/models/typed-reference
 tags: ['SDK', 'Software Development Kit', 'TypedReference']
 ---
 

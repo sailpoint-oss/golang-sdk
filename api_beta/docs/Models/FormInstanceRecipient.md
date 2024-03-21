@@ -5,7 +5,7 @@ pagination_label: FormInstanceRecipient
 sidebar_label: FormInstanceRecipient
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'FormInstanceRecipient'] 
-slug: /tools/sdk/go/documentation/beta/models/form-instance-recipient
+slug: /tools/sdk/go/beta/models/form-instance-recipient
 tags: ['SDK', 'Software Development Kit', 'FormInstanceRecipient']
 ---
 

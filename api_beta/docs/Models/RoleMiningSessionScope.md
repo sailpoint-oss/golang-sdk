@@ -5,7 +5,7 @@ pagination_label: RoleMiningSessionScope
 sidebar_label: RoleMiningSessionScope
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RoleMiningSessionScope'] 
-slug: /tools/sdk/go/documentation/beta/models/role-mining-session-scope
+slug: /tools/sdk/go/beta/models/role-mining-session-scope
 tags: ['SDK', 'Software Development Kit', 'RoleMiningSessionScope']
 ---
 

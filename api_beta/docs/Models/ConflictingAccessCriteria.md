@@ -5,7 +5,7 @@ pagination_label: ConflictingAccessCriteria
 sidebar_label: ConflictingAccessCriteria
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ConflictingAccessCriteria'] 
-slug: /tools/sdk/go/documentation/beta/models/conflicting-access-criteria
+slug: /tools/sdk/go/beta/models/conflicting-access-criteria
 tags: ['SDK', 'Software Development Kit', 'ConflictingAccessCriteria']
 ---
 

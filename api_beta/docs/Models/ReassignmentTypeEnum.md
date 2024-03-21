@@ -5,7 +5,7 @@ pagination_label: ReassignmentTypeEnum
 sidebar_label: ReassignmentTypeEnum
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ReassignmentTypeEnum'] 
-slug: /tools/sdk/go/documentation/beta/models/reassignment-type-enum
+slug: /tools/sdk/go/beta/models/reassignment-type-enum
 tags: ['SDK', 'Software Development Kit', 'ReassignmentTypeEnum']
 ---
 

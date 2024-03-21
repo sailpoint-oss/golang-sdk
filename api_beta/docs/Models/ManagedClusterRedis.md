@@ -5,7 +5,7 @@ pagination_label: ManagedClusterRedis
 sidebar_label: ManagedClusterRedis
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ManagedClusterRedis'] 
-slug: /tools/sdk/go/documentation/beta/models/managed-cluster-redis
+slug: /tools/sdk/go/beta/models/managed-cluster-redis
 tags: ['SDK', 'Software Development Kit', 'ManagedClusterRedis']
 ---
 

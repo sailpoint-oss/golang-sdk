@@ -5,7 +5,7 @@ pagination_label: NonEmployeeIdentityReferenceWithId
 sidebar_label: NonEmployeeIdentityReferenceWithId
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'NonEmployeeIdentityReferenceWithId'] 
-slug: /tools/sdk/go/documentation/v3/models/non-employee-identity-reference-with-id
+slug: /tools/sdk/go/v3/models/non-employee-identity-reference-with-id
 tags: ['SDK', 'Software Development Kit', 'NonEmployeeIdentityReferenceWithId']
 ---
 

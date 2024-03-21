@@ -5,7 +5,7 @@ pagination_label: SourceAccountCorrelationConfig
 sidebar_label: SourceAccountCorrelationConfig
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SourceAccountCorrelationConfig'] 
-slug: /tools/sdk/go/documentation/beta/models/source-account-correlation-config
+slug: /tools/sdk/go/beta/models/source-account-correlation-config
 tags: ['SDK', 'Software Development Kit', 'SourceAccountCorrelationConfig']
 ---
 

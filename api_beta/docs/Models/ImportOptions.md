@@ -5,7 +5,7 @@ pagination_label: ImportOptions
 sidebar_label: ImportOptions
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ImportOptions'] 
-slug: /tools/sdk/go/documentation/beta/models/import-options
+slug: /tools/sdk/go/beta/models/import-options
 tags: ['SDK', 'Software Development Kit', 'ImportOptions']
 ---
 

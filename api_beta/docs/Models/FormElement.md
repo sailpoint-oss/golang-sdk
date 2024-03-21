@@ -5,7 +5,7 @@ pagination_label: FormElement
 sidebar_label: FormElement
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'FormElement'] 
-slug: /tools/sdk/go/documentation/beta/models/form-element
+slug: /tools/sdk/go/beta/models/form-element
 tags: ['SDK', 'Software Development Kit', 'FormElement']
 ---
 

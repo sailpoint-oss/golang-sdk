@@ -5,7 +5,7 @@ pagination_label: PasswordChangeResponse
 sidebar_label: PasswordChangeResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'PasswordChangeResponse'] 
-slug: /tools/sdk/go/documentation/v3/models/password-change-response
+slug: /tools/sdk/go/v3/models/password-change-response
 tags: ['SDK', 'Software Development Kit', 'PasswordChangeResponse']
 ---
 

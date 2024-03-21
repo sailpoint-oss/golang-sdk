@@ -5,7 +5,7 @@ pagination_label: RecommendationConfigDto
 sidebar_label: RecommendationConfigDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RecommendationConfigDto'] 
-slug: /tools/sdk/go/documentation/beta/models/recommendation-config-dto
+slug: /tools/sdk/go/beta/models/recommendation-config-dto
 tags: ['SDK', 'Software Development Kit', 'RecommendationConfigDto']
 ---
 

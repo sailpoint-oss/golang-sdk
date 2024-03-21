@@ -5,7 +5,7 @@ pagination_label: VisibilityCriteria
 sidebar_label: VisibilityCriteria
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'VisibilityCriteria'] 
-slug: /tools/sdk/go/documentation/v3/models/visibility-criteria
+slug: /tools/sdk/go/v3/models/visibility-criteria
 tags: ['SDK', 'Software Development Kit', 'VisibilityCriteria']
 ---
 

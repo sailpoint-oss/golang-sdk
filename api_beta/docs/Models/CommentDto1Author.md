@@ -5,7 +5,7 @@ pagination_label: CommentDto1Author
 sidebar_label: CommentDto1Author
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CommentDto1Author'] 
-slug: /tools/sdk/go/documentation/beta/models/comment-dto1-author
+slug: /tools/sdk/go/beta/models/comment-dto1-author
 tags: ['SDK', 'Software Development Kit', 'CommentDto1Author']
 ---
 

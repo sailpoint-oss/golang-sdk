@@ -5,7 +5,7 @@ pagination_label: VAClusterStatusChangeEventApplication
 sidebar_label: VAClusterStatusChangeEventApplication
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'VAClusterStatusChangeEventApplication'] 
-slug: /tools/sdk/go/documentation/beta/models/va-cluster-status-change-event-application
+slug: /tools/sdk/go/beta/models/va-cluster-status-change-event-application
 tags: ['SDK', 'Software Development Kit', 'VAClusterStatusChangeEventApplication']
 ---
 

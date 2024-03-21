@@ -5,7 +5,7 @@ pagination_label: AccountStatusChangedAccount
 sidebar_label: AccountStatusChangedAccount
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccountStatusChangedAccount'] 
-slug: /tools/sdk/go/documentation/beta/models/account-status-changed-account
+slug: /tools/sdk/go/beta/models/account-status-changed-account
 tags: ['SDK', 'Software Development Kit', 'AccountStatusChangedAccount']
 ---
 

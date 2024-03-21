@@ -5,7 +5,7 @@ pagination_label: RoleMiningSessionDtoCreatedBy
 sidebar_label: RoleMiningSessionDtoCreatedBy
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RoleMiningSessionDtoCreatedBy'] 
-slug: /tools/sdk/go/documentation/beta/models/role-mining-session-dto-created-by
+slug: /tools/sdk/go/beta/models/role-mining-session-dto-created-by
 tags: ['SDK', 'Software Development Kit', 'RoleMiningSessionDtoCreatedBy']
 ---
 

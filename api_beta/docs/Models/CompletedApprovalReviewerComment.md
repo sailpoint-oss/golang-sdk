@@ -5,7 +5,7 @@ pagination_label: CompletedApprovalReviewerComment
 sidebar_label: CompletedApprovalReviewerComment
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CompletedApprovalReviewerComment'] 
-slug: /tools/sdk/go/documentation/beta/models/completed-approval-reviewer-comment
+slug: /tools/sdk/go/beta/models/completed-approval-reviewer-comment
 tags: ['SDK', 'Software Development Kit', 'CompletedApprovalReviewerComment']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: DomainStatusDto
 sidebar_label: DomainStatusDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'DomainStatusDto'] 
-slug: /tools/sdk/go/documentation/beta/models/domain-status-dto
+slug: /tools/sdk/go/beta/models/domain-status-dto
 tags: ['SDK', 'Software Development Kit', 'DomainStatusDto']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: FormElementDataSourceConfigOptions
 sidebar_label: FormElementDataSourceConfigOptions
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'FormElementDataSourceConfigOptions'] 
-slug: /tools/sdk/go/documentation/beta/models/form-element-data-source-config-options
+slug: /tools/sdk/go/beta/models/form-element-data-source-config-options
 tags: ['SDK', 'Software Development Kit', 'FormElementDataSourceConfigOptions']
 ---
 

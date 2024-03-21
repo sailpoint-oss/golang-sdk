@@ -5,7 +5,7 @@ pagination_label: ProvisioningCompleted
 sidebar_label: ProvisioningCompleted
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ProvisioningCompleted'] 
-slug: /tools/sdk/go/documentation/beta/models/provisioning-completed
+slug: /tools/sdk/go/beta/models/provisioning-completed
 tags: ['SDK', 'Software Development Kit', 'ProvisioningCompleted']
 ---
 

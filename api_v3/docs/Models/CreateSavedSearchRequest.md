@@ -5,7 +5,7 @@ pagination_label: CreateSavedSearchRequest
 sidebar_label: CreateSavedSearchRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CreateSavedSearchRequest'] 
-slug: /tools/sdk/go/documentation/v3/models/create-saved-search-request
+slug: /tools/sdk/go/v3/models/create-saved-search-request
 tags: ['SDK', 'Software Development Kit', 'CreateSavedSearchRequest']
 ---
 

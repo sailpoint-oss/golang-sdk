@@ -5,7 +5,7 @@ pagination_label: AccountAttributesCreateAttributes
 sidebar_label: AccountAttributesCreateAttributes
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccountAttributesCreateAttributes'] 
-slug: /tools/sdk/go/documentation/v3/models/account-attributes-create-attributes
+slug: /tools/sdk/go/v3/models/account-attributes-create-attributes
 tags: ['SDK', 'Software Development Kit', 'AccountAttributesCreateAttributes']
 ---
 

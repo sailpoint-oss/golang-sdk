@@ -5,7 +5,7 @@ pagination_label: AccessRequestDynamicApprover
 sidebar_label: AccessRequestDynamicApprover
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessRequestDynamicApprover'] 
-slug: /tools/sdk/go/documentation/beta/models/access-request-dynamic-approver
+slug: /tools/sdk/go/beta/models/access-request-dynamic-approver
 tags: ['SDK', 'Software Development Kit', 'AccessRequestDynamicApprover']
 ---
 

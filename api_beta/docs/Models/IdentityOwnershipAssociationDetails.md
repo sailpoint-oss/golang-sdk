@@ -5,7 +5,7 @@ pagination_label: IdentityOwnershipAssociationDetails
 sidebar_label: IdentityOwnershipAssociationDetails
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityOwnershipAssociationDetails'] 
-slug: /tools/sdk/go/documentation/beta/models/identity-ownership-association-details
+slug: /tools/sdk/go/beta/models/identity-ownership-association-details
 tags: ['SDK', 'Software Development Kit', 'IdentityOwnershipAssociationDetails']
 ---
 

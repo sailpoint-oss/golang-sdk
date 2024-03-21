@@ -5,7 +5,7 @@ pagination_label: AccessRequestContext
 sidebar_label: AccessRequestContext
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessRequestContext'] 
-slug: /tools/sdk/go/documentation/beta/models/access-request-context
+slug: /tools/sdk/go/beta/models/access-request-context
 tags: ['SDK', 'Software Development Kit', 'AccessRequestContext']
 ---
 

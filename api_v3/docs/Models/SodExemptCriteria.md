@@ -5,7 +5,7 @@ pagination_label: SodExemptCriteria
 sidebar_label: SodExemptCriteria
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SodExemptCriteria'] 
-slug: /tools/sdk/go/documentation/v3/models/sod-exempt-criteria
+slug: /tools/sdk/go/v3/models/sod-exempt-criteria
 tags: ['SDK', 'Software Development Kit', 'SodExemptCriteria']
 ---
 

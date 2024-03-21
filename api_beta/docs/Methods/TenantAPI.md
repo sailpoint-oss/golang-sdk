@@ -5,7 +5,7 @@ pagination_label: Tenant
 sidebar_label: Tenant
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Tenant'] 
-slug: /tools/sdk/go/documentation/beta/api/tenant
+slug: /tools/sdk/go/beta/methods/tenant
 tags: ['SDK', 'Software Development Kit', 'Tenant']
 ---
 

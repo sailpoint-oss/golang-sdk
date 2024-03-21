@@ -5,7 +5,7 @@ pagination_label: EventBridgeConfig
 sidebar_label: EventBridgeConfig
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'EventBridgeConfig'] 
-slug: /tools/sdk/go/documentation/beta/models/event-bridge-config
+slug: /tools/sdk/go/beta/models/event-bridge-config
 tags: ['SDK', 'Software Development Kit', 'EventBridgeConfig']
 ---
 

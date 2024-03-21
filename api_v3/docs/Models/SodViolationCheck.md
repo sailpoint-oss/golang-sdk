@@ -5,7 +5,7 @@ pagination_label: SodViolationCheck
 sidebar_label: SodViolationCheck
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SodViolationCheck'] 
-slug: /tools/sdk/go/documentation/v3/models/sod-violation-check
+slug: /tools/sdk/go/v3/models/sod-violation-check
 tags: ['SDK', 'Software Development Kit', 'SodViolationCheck']
 ---
 

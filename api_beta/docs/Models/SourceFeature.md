@@ -5,7 +5,7 @@ pagination_label: SourceFeature
 sidebar_label: SourceFeature
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SourceFeature'] 
-slug: /tools/sdk/go/documentation/beta/models/source-feature
+slug: /tools/sdk/go/beta/models/source-feature
 tags: ['SDK', 'Software Development Kit', 'SourceFeature']
 ---
 

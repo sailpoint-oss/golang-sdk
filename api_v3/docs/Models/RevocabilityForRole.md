@@ -5,7 +5,7 @@ pagination_label: RevocabilityForRole
 sidebar_label: RevocabilityForRole
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RevocabilityForRole'] 
-slug: /tools/sdk/go/documentation/v3/models/revocability-for-role
+slug: /tools/sdk/go/v3/models/revocability-for-role
 tags: ['SDK', 'Software Development Kit', 'RevocabilityForRole']
 ---
 

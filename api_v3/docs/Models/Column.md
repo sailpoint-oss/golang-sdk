@@ -5,7 +5,7 @@ pagination_label: Column
 sidebar_label: Column
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Column'] 
-slug: /tools/sdk/go/documentation/v3/models/column
+slug: /tools/sdk/go/v3/models/column
 tags: ['SDK', 'Software Development Kit', 'Column']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: FormDefinitionDynamicSchemaResponse
 sidebar_label: FormDefinitionDynamicSchemaResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'FormDefinitionDynamicSchemaResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/form-definition-dynamic-schema-response
+slug: /tools/sdk/go/beta/models/form-definition-dynamic-schema-response
 tags: ['SDK', 'Software Development Kit', 'FormDefinitionDynamicSchemaResponse']
 ---
 

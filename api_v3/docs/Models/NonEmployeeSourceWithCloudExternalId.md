@@ -5,7 +5,7 @@ pagination_label: NonEmployeeSourceWithCloudExternalId
 sidebar_label: NonEmployeeSourceWithCloudExternalId
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'NonEmployeeSourceWithCloudExternalId'] 
-slug: /tools/sdk/go/documentation/v3/models/non-employee-source-with-cloud-external-id
+slug: /tools/sdk/go/v3/models/non-employee-source-with-cloud-external-id
 tags: ['SDK', 'Software Development Kit', 'NonEmployeeSourceWithCloudExternalId']
 ---
 

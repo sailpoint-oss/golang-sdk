@@ -5,7 +5,7 @@ pagination_label: IAIRoleMining
 sidebar_label: IAIRoleMining
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IAIRoleMining'] 
-slug: /tools/sdk/go/documentation/beta/api/iai-role-mining
+slug: /tools/sdk/go/beta/methods/iai-role-mining
 tags: ['SDK', 'Software Development Kit', 'IAIRoleMining']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: AuthProfile
 sidebar_label: AuthProfile
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AuthProfile'] 
-slug: /tools/sdk/go/documentation/beta/models/auth-profile
+slug: /tools/sdk/go/beta/models/auth-profile
 tags: ['SDK', 'Software Development Kit', 'AuthProfile']
 ---
 

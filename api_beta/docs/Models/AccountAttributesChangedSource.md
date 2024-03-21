@@ -5,7 +5,7 @@ pagination_label: AccountAttributesChangedSource
 sidebar_label: AccountAttributesChangedSource
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccountAttributesChangedSource'] 
-slug: /tools/sdk/go/documentation/beta/models/account-attributes-changed-source
+slug: /tools/sdk/go/beta/models/account-attributes-changed-source
 tags: ['SDK', 'Software Development Kit', 'AccountAttributesChangedSource']
 ---
 

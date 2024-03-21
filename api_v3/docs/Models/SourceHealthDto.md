@@ -5,7 +5,7 @@ pagination_label: SourceHealthDto
 sidebar_label: SourceHealthDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SourceHealthDto'] 
-slug: /tools/sdk/go/documentation/v3/models/source-health-dto
+slug: /tools/sdk/go/v3/models/source-health-dto
 tags: ['SDK', 'Software Development Kit', 'SourceHealthDto']
 ---
 

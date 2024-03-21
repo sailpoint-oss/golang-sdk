@@ -5,7 +5,7 @@ pagination_label: AccessItemDiff
 sidebar_label: AccessItemDiff
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessItemDiff'] 
-slug: /tools/sdk/go/documentation/beta/models/access-item-diff
+slug: /tools/sdk/go/beta/models/access-item-diff
 tags: ['SDK', 'Software Development Kit', 'AccessItemDiff']
 ---
 

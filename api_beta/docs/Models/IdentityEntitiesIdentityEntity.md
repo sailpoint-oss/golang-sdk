@@ -5,7 +5,7 @@ pagination_label: IdentityEntitiesIdentityEntity
 sidebar_label: IdentityEntitiesIdentityEntity
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityEntitiesIdentityEntity'] 
-slug: /tools/sdk/go/documentation/beta/models/identity-entities-identity-entity
+slug: /tools/sdk/go/beta/models/identity-entities-identity-entity
 tags: ['SDK', 'Software Development Kit', 'IdentityEntitiesIdentityEntity']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: IdentityAttributePreview
 sidebar_label: IdentityAttributePreview
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityAttributePreview'] 
-slug: /tools/sdk/go/documentation/beta/models/identity-attribute-preview
+slug: /tools/sdk/go/beta/models/identity-attribute-preview
 tags: ['SDK', 'Software Development Kit', 'IdentityAttributePreview']
 ---
 

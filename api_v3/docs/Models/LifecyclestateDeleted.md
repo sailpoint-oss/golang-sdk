@@ -5,7 +5,7 @@ pagination_label: LifecyclestateDeleted
 sidebar_label: LifecyclestateDeleted
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'LifecyclestateDeleted'] 
-slug: /tools/sdk/go/documentation/v3/models/lifecyclestate-deleted
+slug: /tools/sdk/go/v3/models/lifecyclestate-deleted
 tags: ['SDK', 'Software Development Kit', 'LifecyclestateDeleted']
 ---
 

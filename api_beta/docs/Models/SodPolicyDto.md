@@ -5,7 +5,7 @@ pagination_label: SodPolicyDto
 sidebar_label: SodPolicyDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SodPolicyDto'] 
-slug: /tools/sdk/go/documentation/beta/models/sod-policy-dto
+slug: /tools/sdk/go/beta/models/sod-policy-dto
 tags: ['SDK', 'Software Development Kit', 'SodPolicyDto']
 ---
 

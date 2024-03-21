@@ -5,7 +5,7 @@ pagination_label: ResourceObjectsResponse
 sidebar_label: ResourceObjectsResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ResourceObjectsResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/resource-objects-response
+slug: /tools/sdk/go/beta/models/resource-objects-response
 tags: ['SDK', 'Software Development Kit', 'ResourceObjectsResponse']
 ---
 

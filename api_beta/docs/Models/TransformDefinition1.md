@@ -5,7 +5,7 @@ pagination_label: TransformDefinition1
 sidebar_label: TransformDefinition1
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'TransformDefinition1'] 
-slug: /tools/sdk/go/documentation/beta/models/transform-definition1
+slug: /tools/sdk/go/beta/models/transform-definition1
 tags: ['SDK', 'Software Development Kit', 'TransformDefinition1']
 ---
 

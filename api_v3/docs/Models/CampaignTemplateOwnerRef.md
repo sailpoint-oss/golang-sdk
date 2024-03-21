@@ -5,7 +5,7 @@ pagination_label: CampaignTemplateOwnerRef
 sidebar_label: CampaignTemplateOwnerRef
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CampaignTemplateOwnerRef'] 
-slug: /tools/sdk/go/documentation/v3/models/campaign-template-owner-ref
+slug: /tools/sdk/go/v3/models/campaign-template-owner-ref
 tags: ['SDK', 'Software Development Kit', 'CampaignTemplateOwnerRef']
 ---
 

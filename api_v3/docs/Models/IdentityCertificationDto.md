@@ -5,7 +5,7 @@ pagination_label: IdentityCertificationDto
 sidebar_label: IdentityCertificationDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityCertificationDto'] 
-slug: /tools/sdk/go/documentation/v3/models/identity-certification-dto
+slug: /tools/sdk/go/v3/models/identity-certification-dto
 tags: ['SDK', 'Software Development Kit', 'IdentityCertificationDto']
 ---
 

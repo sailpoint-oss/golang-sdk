@@ -5,7 +5,7 @@ pagination_label: SearchExportReportArguments
 sidebar_label: SearchExportReportArguments
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SearchExportReportArguments'] 
-slug: /tools/sdk/go/documentation/v3/models/search-export-report-arguments
+slug: /tools/sdk/go/v3/models/search-export-report-arguments
 tags: ['SDK', 'Software Development Kit', 'SearchExportReportArguments']
 ---
 

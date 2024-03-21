@@ -5,7 +5,7 @@ pagination_label: ConditionEffect
 sidebar_label: ConditionEffect
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ConditionEffect'] 
-slug: /tools/sdk/go/documentation/beta/models/condition-effect
+slug: /tools/sdk/go/beta/models/condition-effect
 tags: ['SDK', 'Software Development Kit', 'ConditionEffect']
 ---
 

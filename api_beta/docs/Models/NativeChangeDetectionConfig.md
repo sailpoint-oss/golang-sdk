@@ -5,7 +5,7 @@ pagination_label: NativeChangeDetectionConfig
 sidebar_label: NativeChangeDetectionConfig
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'NativeChangeDetectionConfig'] 
-slug: /tools/sdk/go/documentation/beta/models/native-change-detection-config
+slug: /tools/sdk/go/beta/models/native-change-detection-config
 tags: ['SDK', 'Software Development Kit', 'NativeChangeDetectionConfig']
 ---
 

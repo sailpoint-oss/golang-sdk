@@ -5,7 +5,7 @@ pagination_label: ImportNonEmployeeRecordsInBulkRequest
 sidebar_label: ImportNonEmployeeRecordsInBulkRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ImportNonEmployeeRecordsInBulkRequest'] 
-slug: /tools/sdk/go/documentation/beta/models/import-non-employee-records-in-bulk-request
+slug: /tools/sdk/go/beta/models/import-non-employee-records-in-bulk-request
 tags: ['SDK', 'Software Development Kit', 'ImportNonEmployeeRecordsInBulkRequest']
 ---
 

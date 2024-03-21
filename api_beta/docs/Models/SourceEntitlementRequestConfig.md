@@ -5,7 +5,7 @@ pagination_label: SourceEntitlementRequestConfig
 sidebar_label: SourceEntitlementRequestConfig
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SourceEntitlementRequestConfig'] 
-slug: /tools/sdk/go/documentation/beta/models/source-entitlement-request-config
+slug: /tools/sdk/go/beta/models/source-entitlement-request-config
 tags: ['SDK', 'Software Development Kit', 'SourceEntitlementRequestConfig']
 ---
 

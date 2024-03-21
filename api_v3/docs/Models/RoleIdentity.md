@@ -5,7 +5,7 @@ pagination_label: RoleIdentity
 sidebar_label: RoleIdentity
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RoleIdentity'] 
-slug: /tools/sdk/go/documentation/v3/models/role-identity
+slug: /tools/sdk/go/v3/models/role-identity
 tags: ['SDK', 'Software Development Kit', 'RoleIdentity']
 ---
 

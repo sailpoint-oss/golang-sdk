@@ -5,7 +5,7 @@ pagination_label: OktaVerificationRequest
 sidebar_label: OktaVerificationRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'OktaVerificationRequest'] 
-slug: /tools/sdk/go/documentation/beta/models/okta-verification-request
+slug: /tools/sdk/go/beta/models/okta-verification-request
 tags: ['SDK', 'Software Development Kit', 'OktaVerificationRequest']
 ---
 

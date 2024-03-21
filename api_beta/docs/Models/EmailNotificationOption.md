@@ -5,7 +5,7 @@ pagination_label: EmailNotificationOption
 sidebar_label: EmailNotificationOption
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'EmailNotificationOption'] 
-slug: /tools/sdk/go/documentation/beta/models/email-notification-option
+slug: /tools/sdk/go/beta/models/email-notification-option
 tags: ['SDK', 'Software Development Kit', 'EmailNotificationOption']
 ---
 

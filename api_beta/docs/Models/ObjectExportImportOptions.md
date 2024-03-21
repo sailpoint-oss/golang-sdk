@@ -5,7 +5,7 @@ pagination_label: ObjectExportImportOptions
 sidebar_label: ObjectExportImportOptions
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ObjectExportImportOptions'] 
-slug: /tools/sdk/go/documentation/beta/models/object-export-import-options
+slug: /tools/sdk/go/beta/models/object-export-import-options
 tags: ['SDK', 'Software Development Kit', 'ObjectExportImportOptions']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: EvaluateResponse
 sidebar_label: EvaluateResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'EvaluateResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/evaluate-response
+slug: /tools/sdk/go/beta/models/evaluate-response
 tags: ['SDK', 'Software Development Kit', 'EvaluateResponse']
 ---
 

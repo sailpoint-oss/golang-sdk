@@ -5,7 +5,7 @@ pagination_label: MessageCatalogDto
 sidebar_label: MessageCatalogDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'MessageCatalogDto'] 
-slug: /tools/sdk/go/documentation/beta/models/message-catalog-dto
+slug: /tools/sdk/go/beta/models/message-catalog-dto
 tags: ['SDK', 'Software Development Kit', 'MessageCatalogDto']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: OrgConfig
 sidebar_label: OrgConfig
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'OrgConfig'] 
-slug: /tools/sdk/go/documentation/beta/models/org-config
+slug: /tools/sdk/go/beta/models/org-config
 tags: ['SDK', 'Software Development Kit', 'OrgConfig']
 ---
 

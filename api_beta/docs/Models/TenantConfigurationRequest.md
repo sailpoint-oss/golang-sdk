@@ -5,7 +5,7 @@ pagination_label: TenantConfigurationRequest
 sidebar_label: TenantConfigurationRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'TenantConfigurationRequest'] 
-slug: /tools/sdk/go/documentation/beta/models/tenant-configuration-request
+slug: /tools/sdk/go/beta/models/tenant-configuration-request
 tags: ['SDK', 'Software Development Kit', 'TenantConfigurationRequest']
 ---
 

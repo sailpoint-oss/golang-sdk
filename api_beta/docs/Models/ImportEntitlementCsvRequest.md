@@ -5,7 +5,7 @@ pagination_label: ImportEntitlementCsvRequest
 sidebar_label: ImportEntitlementCsvRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ImportEntitlementCsvRequest'] 
-slug: /tools/sdk/go/documentation/beta/models/import-entitlement-csv-request
+slug: /tools/sdk/go/beta/models/import-entitlement-csv-request
 tags: ['SDK', 'Software Development Kit', 'ImportEntitlementCsvRequest']
 ---
 

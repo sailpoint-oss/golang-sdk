@@ -5,7 +5,7 @@ pagination_label: ConfigurationDetailsResponse
 sidebar_label: ConfigurationDetailsResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ConfigurationDetailsResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/configuration-details-response
+slug: /tools/sdk/go/beta/models/configuration-details-response
 tags: ['SDK', 'Software Development Kit', 'ConfigurationDetailsResponse']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: CreateOAuthClientRequest
 sidebar_label: CreateOAuthClientRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CreateOAuthClientRequest'] 
-slug: /tools/sdk/go/documentation/v3/models/create-o-auth-client-request
+slug: /tools/sdk/go/v3/models/create-o-auth-client-request
 tags: ['SDK', 'Software Development Kit', 'CreateOAuthClientRequest']
 ---
 

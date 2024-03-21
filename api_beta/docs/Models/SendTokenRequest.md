@@ -5,7 +5,7 @@ pagination_label: SendTokenRequest
 sidebar_label: SendTokenRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SendTokenRequest'] 
-slug: /tools/sdk/go/documentation/beta/models/send-token-request
+slug: /tools/sdk/go/beta/models/send-token-request
 tags: ['SDK', 'Software Development Kit', 'SendTokenRequest']
 ---
 

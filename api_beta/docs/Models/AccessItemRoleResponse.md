@@ -5,7 +5,7 @@ pagination_label: AccessItemRoleResponse
 sidebar_label: AccessItemRoleResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessItemRoleResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/access-item-role-response
+slug: /tools/sdk/go/beta/models/access-item-role-response
 tags: ['SDK', 'Software Development Kit', 'AccessItemRoleResponse']
 ---
 

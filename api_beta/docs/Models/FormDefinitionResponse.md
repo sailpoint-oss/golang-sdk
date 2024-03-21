@@ -5,7 +5,7 @@ pagination_label: FormDefinitionResponse
 sidebar_label: FormDefinitionResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'FormDefinitionResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/form-definition-response
+slug: /tools/sdk/go/beta/models/form-definition-response
 tags: ['SDK', 'Software Development Kit', 'FormDefinitionResponse']
 ---
 

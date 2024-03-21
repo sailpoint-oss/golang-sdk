@@ -5,7 +5,7 @@ pagination_label: InvocationStatus
 sidebar_label: InvocationStatus
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'InvocationStatus'] 
-slug: /tools/sdk/go/documentation/beta/models/invocation-status
+slug: /tools/sdk/go/beta/models/invocation-status
 tags: ['SDK', 'Software Development Kit', 'InvocationStatus']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: RoleMembershipIdentity
 sidebar_label: RoleMembershipIdentity
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RoleMembershipIdentity'] 
-slug: /tools/sdk/go/documentation/beta/models/role-membership-identity
+slug: /tools/sdk/go/beta/models/role-membership-identity
 tags: ['SDK', 'Software Development Kit', 'RoleMembershipIdentity']
 ---
 

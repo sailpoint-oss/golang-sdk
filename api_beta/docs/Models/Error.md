@@ -5,7 +5,7 @@ pagination_label: Error
 sidebar_label: Error
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Error'] 
-slug: /tools/sdk/go/documentation/beta/models/error
+slug: /tools/sdk/go/beta/models/error
 tags: ['SDK', 'Software Development Kit', 'Error']
 ---
 

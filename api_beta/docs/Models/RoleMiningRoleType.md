@@ -5,7 +5,7 @@ pagination_label: RoleMiningRoleType
 sidebar_label: RoleMiningRoleType
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RoleMiningRoleType'] 
-slug: /tools/sdk/go/documentation/beta/models/role-mining-role-type
+slug: /tools/sdk/go/beta/models/role-mining-role-type
 tags: ['SDK', 'Software Development Kit', 'RoleMiningRoleType']
 ---
 

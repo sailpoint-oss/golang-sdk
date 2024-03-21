@@ -5,7 +5,7 @@ pagination_label: ConnectorRuleManagement
 sidebar_label: ConnectorRuleManagement
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ConnectorRuleManagement'] 
-slug: /tools/sdk/go/documentation/beta/api/connector-rule-management
+slug: /tools/sdk/go/beta/methods/connector-rule-management
 tags: ['SDK', 'Software Development Kit', 'ConnectorRuleManagement']
 ---
 

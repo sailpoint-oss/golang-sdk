@@ -5,7 +5,7 @@ pagination_label: SubscriptionPatchRequestInnerValue
 sidebar_label: SubscriptionPatchRequestInnerValue
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SubscriptionPatchRequestInnerValue'] 
-slug: /tools/sdk/go/documentation/beta/models/subscription-patch-request-inner-value
+slug: /tools/sdk/go/beta/models/subscription-patch-request-inner-value
 tags: ['SDK', 'Software Development Kit', 'SubscriptionPatchRequestInnerValue']
 ---
 

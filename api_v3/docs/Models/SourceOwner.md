@@ -5,7 +5,7 @@ pagination_label: SourceOwner
 sidebar_label: SourceOwner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SourceOwner'] 
-slug: /tools/sdk/go/documentation/v3/models/source-owner
+slug: /tools/sdk/go/v3/models/source-owner
 tags: ['SDK', 'Software Development Kit', 'SourceOwner']
 ---
 

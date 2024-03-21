@@ -5,7 +5,7 @@ pagination_label: SavedSearchName
 sidebar_label: SavedSearchName
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SavedSearchName'] 
-slug: /tools/sdk/go/documentation/v3/models/saved-search-name
+slug: /tools/sdk/go/v3/models/saved-search-name
 tags: ['SDK', 'Software Development Kit', 'SavedSearchName']
 ---
 

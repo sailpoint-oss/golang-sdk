@@ -5,7 +5,7 @@ pagination_label: ValidateFilterInputDto
 sidebar_label: ValidateFilterInputDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ValidateFilterInputDto'] 
-slug: /tools/sdk/go/documentation/beta/models/validate-filter-input-dto
+slug: /tools/sdk/go/beta/models/validate-filter-input-dto
 tags: ['SDK', 'Software Development Kit', 'ValidateFilterInputDto']
 ---
 

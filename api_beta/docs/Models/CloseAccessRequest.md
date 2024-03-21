@@ -5,7 +5,7 @@ pagination_label: CloseAccessRequest
 sidebar_label: CloseAccessRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CloseAccessRequest'] 
-slug: /tools/sdk/go/documentation/beta/models/close-access-request
+slug: /tools/sdk/go/beta/models/close-access-request
 tags: ['SDK', 'Software Development Kit', 'CloseAccessRequest']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: BaseEntitlement
 sidebar_label: BaseEntitlement
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'BaseEntitlement'] 
-slug: /tools/sdk/go/documentation/v3/models/base-entitlement
+slug: /tools/sdk/go/v3/models/base-entitlement
 tags: ['SDK', 'Software Development Kit', 'BaseEntitlement']
 ---
 

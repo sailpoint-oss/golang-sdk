@@ -5,7 +5,7 @@ pagination_label: PasswordChangeRequest
 sidebar_label: PasswordChangeRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'PasswordChangeRequest'] 
-slug: /tools/sdk/go/documentation/beta/models/password-change-request
+slug: /tools/sdk/go/beta/models/password-change-request
 tags: ['SDK', 'Software Development Kit', 'PasswordChangeRequest']
 ---
 

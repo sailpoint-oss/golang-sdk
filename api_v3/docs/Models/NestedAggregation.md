@@ -5,7 +5,7 @@ pagination_label: NestedAggregation
 sidebar_label: NestedAggregation
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'NestedAggregation'] 
-slug: /tools/sdk/go/documentation/v3/models/nested-aggregation
+slug: /tools/sdk/go/v3/models/nested-aggregation
 tags: ['SDK', 'Software Development Kit', 'NestedAggregation']
 ---
 

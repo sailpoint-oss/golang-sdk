@@ -5,7 +5,7 @@ pagination_label: AccessRequestRecommendationItemType
 sidebar_label: AccessRequestRecommendationItemType
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessRequestRecommendationItemType'] 
-slug: /tools/sdk/go/documentation/beta/models/access-request-recommendation-item-type
+slug: /tools/sdk/go/beta/models/access-request-recommendation-item-type
 tags: ['SDK', 'Software Development Kit', 'AccessRequestRecommendationItemType']
 ---
 

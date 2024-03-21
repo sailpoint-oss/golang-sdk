@@ -5,7 +5,7 @@ pagination_label: OAuthClients
 sidebar_label: OAuthClients
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'OAuthClients'] 
-slug: /tools/sdk/go/documentation/beta/api/o-auth-clients
+slug: /tools/sdk/go/beta/methods/o-auth-clients
 tags: ['SDK', 'Software Development Kit', 'OAuthClients']
 ---
 

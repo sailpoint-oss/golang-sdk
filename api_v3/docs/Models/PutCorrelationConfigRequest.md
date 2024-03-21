@@ -5,7 +5,7 @@ pagination_label: PutCorrelationConfigRequest
 sidebar_label: PutCorrelationConfigRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'PutCorrelationConfigRequest'] 
-slug: /tools/sdk/go/documentation/v3/models/put-correlation-config-request
+slug: /tools/sdk/go/v3/models/put-correlation-config-request
 tags: ['SDK', 'Software Development Kit', 'PutCorrelationConfigRequest']
 ---
 

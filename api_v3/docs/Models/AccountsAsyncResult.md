@@ -5,7 +5,7 @@ pagination_label: AccountsAsyncResult
 sidebar_label: AccountsAsyncResult
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccountsAsyncResult'] 
-slug: /tools/sdk/go/documentation/v3/models/accounts-async-result
+slug: /tools/sdk/go/v3/models/accounts-async-result
 tags: ['SDK', 'Software Development Kit', 'AccountsAsyncResult']
 ---
 

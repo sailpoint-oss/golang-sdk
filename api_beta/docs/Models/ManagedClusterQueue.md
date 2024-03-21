@@ -5,7 +5,7 @@ pagination_label: ManagedClusterQueue
 sidebar_label: ManagedClusterQueue
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ManagedClusterQueue'] 
-slug: /tools/sdk/go/documentation/beta/models/managed-cluster-queue
+slug: /tools/sdk/go/beta/models/managed-cluster-queue
 tags: ['SDK', 'Software Development Kit', 'ManagedClusterQueue']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: AccessProfileRef
 sidebar_label: AccessProfileRef
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessProfileRef'] 
-slug: /tools/sdk/go/documentation/v3/models/access-profile-ref
+slug: /tools/sdk/go/v3/models/access-profile-ref
 tags: ['SDK', 'Software Development Kit', 'AccessProfileRef']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: AccessItemRemoved
 sidebar_label: AccessItemRemoved
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessItemRemoved'] 
-slug: /tools/sdk/go/documentation/beta/models/access-item-removed
+slug: /tools/sdk/go/beta/models/access-item-removed
 tags: ['SDK', 'Software Development Kit', 'AccessItemRemoved']
 ---
 

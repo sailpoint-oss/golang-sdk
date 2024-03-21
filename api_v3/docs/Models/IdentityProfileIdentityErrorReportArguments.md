@@ -5,7 +5,7 @@ pagination_label: IdentityProfileIdentityErrorReportArguments
 sidebar_label: IdentityProfileIdentityErrorReportArguments
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityProfileIdentityErrorReportArguments'] 
-slug: /tools/sdk/go/documentation/v3/models/identity-profile-identity-error-report-arguments
+slug: /tools/sdk/go/v3/models/identity-profile-identity-error-report-arguments
 tags: ['SDK', 'Software Development Kit', 'IdentityProfileIdentityErrorReportArguments']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: ApprovalScheme
 sidebar_label: ApprovalScheme
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ApprovalScheme'] 
-slug: /tools/sdk/go/documentation/v3/models/approval-scheme
+slug: /tools/sdk/go/v3/models/approval-scheme
 tags: ['SDK', 'Software Development Kit', 'ApprovalScheme']
 ---
 

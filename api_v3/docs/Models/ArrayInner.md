@@ -5,7 +5,7 @@ pagination_label: ArrayInner
 sidebar_label: ArrayInner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ArrayInner'] 
-slug: /tools/sdk/go/documentation/v3/models/array-inner
+slug: /tools/sdk/go/v3/models/array-inner
 tags: ['SDK', 'Software Development Kit', 'ArrayInner']
 ---
 

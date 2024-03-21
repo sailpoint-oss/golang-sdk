@@ -5,7 +5,7 @@ pagination_label: AccountUncorrelatedAccount
 sidebar_label: AccountUncorrelatedAccount
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccountUncorrelatedAccount'] 
-slug: /tools/sdk/go/documentation/beta/models/account-uncorrelated-account
+slug: /tools/sdk/go/beta/models/account-uncorrelated-account
 tags: ['SDK', 'Software Development Kit', 'AccountUncorrelatedAccount']
 ---
 

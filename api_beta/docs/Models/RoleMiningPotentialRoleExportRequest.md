@@ -5,7 +5,7 @@ pagination_label: RoleMiningPotentialRoleExportRequest
 sidebar_label: RoleMiningPotentialRoleExportRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RoleMiningPotentialRoleExportRequest'] 
-slug: /tools/sdk/go/documentation/beta/models/role-mining-potential-role-export-request
+slug: /tools/sdk/go/beta/models/role-mining-potential-role-export-request
 tags: ['SDK', 'Software Development Kit', 'RoleMiningPotentialRoleExportRequest']
 ---
 

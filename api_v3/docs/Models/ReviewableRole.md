@@ -5,7 +5,7 @@ pagination_label: ReviewableRole
 sidebar_label: ReviewableRole
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ReviewableRole'] 
-slug: /tools/sdk/go/documentation/v3/models/reviewable-role
+slug: /tools/sdk/go/v3/models/reviewable-role
 tags: ['SDK', 'Software Development Kit', 'ReviewableRole']
 ---
 

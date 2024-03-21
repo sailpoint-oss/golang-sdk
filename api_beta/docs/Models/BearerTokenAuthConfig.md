@@ -5,7 +5,7 @@ pagination_label: BearerTokenAuthConfig
 sidebar_label: BearerTokenAuthConfig
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'BearerTokenAuthConfig'] 
-slug: /tools/sdk/go/documentation/beta/models/bearer-token-auth-config
+slug: /tools/sdk/go/beta/models/bearer-token-auth-config
 tags: ['SDK', 'Software Development Kit', 'BearerTokenAuthConfig']
 ---
 

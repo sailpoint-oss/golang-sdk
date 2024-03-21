@@ -5,7 +5,7 @@ pagination_label: AccessItemRequestedForDto
 sidebar_label: AccessItemRequestedForDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessItemRequestedForDto'] 
-slug: /tools/sdk/go/documentation/beta/models/access-item-requested-for-dto
+slug: /tools/sdk/go/beta/models/access-item-requested-for-dto
 tags: ['SDK', 'Software Development Kit', 'AccessItemRequestedForDto']
 ---
 

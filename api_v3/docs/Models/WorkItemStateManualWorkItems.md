@@ -5,7 +5,7 @@ pagination_label: WorkItemStateManualWorkItems
 sidebar_label: WorkItemStateManualWorkItems
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'WorkItemStateManualWorkItems'] 
-slug: /tools/sdk/go/documentation/v3/models/work-item-state-manual-work-items
+slug: /tools/sdk/go/v3/models/work-item-state-manual-work-items
 tags: ['SDK', 'Software Development Kit', 'WorkItemStateManualWorkItems']
 ---
 

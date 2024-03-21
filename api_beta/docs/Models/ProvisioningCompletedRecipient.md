@@ -5,7 +5,7 @@ pagination_label: ProvisioningCompletedRecipient
 sidebar_label: ProvisioningCompletedRecipient
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ProvisioningCompletedRecipient'] 
-slug: /tools/sdk/go/documentation/beta/models/provisioning-completed-recipient
+slug: /tools/sdk/go/beta/models/provisioning-completed-recipient
 tags: ['SDK', 'Software Development Kit', 'ProvisioningCompletedRecipient']
 ---
 

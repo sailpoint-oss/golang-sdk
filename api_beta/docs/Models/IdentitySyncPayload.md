@@ -5,7 +5,7 @@ pagination_label: IdentitySyncPayload
 sidebar_label: IdentitySyncPayload
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentitySyncPayload'] 
-slug: /tools/sdk/go/documentation/beta/models/identity-sync-payload
+slug: /tools/sdk/go/beta/models/identity-sync-payload
 tags: ['SDK', 'Software Development Kit', 'IdentitySyncPayload']
 ---
 

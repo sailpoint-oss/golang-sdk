@@ -5,7 +5,7 @@ pagination_label: BucketAggregation
 sidebar_label: BucketAggregation
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'BucketAggregation'] 
-slug: /tools/sdk/go/documentation/v3/models/bucket-aggregation
+slug: /tools/sdk/go/v3/models/bucket-aggregation
 tags: ['SDK', 'Software Development Kit', 'BucketAggregation']
 ---
 

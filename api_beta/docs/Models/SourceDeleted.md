@@ -5,7 +5,7 @@ pagination_label: SourceDeleted
 sidebar_label: SourceDeleted
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SourceDeleted'] 
-slug: /tools/sdk/go/documentation/beta/models/source-deleted
+slug: /tools/sdk/go/beta/models/source-deleted
 tags: ['SDK', 'Software Development Kit', 'SourceDeleted']
 ---
 

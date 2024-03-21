@@ -5,7 +5,7 @@ pagination_label: UpdateDetail
 sidebar_label: UpdateDetail
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'UpdateDetail'] 
-slug: /tools/sdk/go/documentation/v3/models/update-detail
+slug: /tools/sdk/go/v3/models/update-detail
 tags: ['SDK', 'Software Development Kit', 'UpdateDetail']
 ---
 

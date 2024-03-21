@@ -5,7 +5,7 @@ pagination_label: FormOwner
 sidebar_label: FormOwner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'FormOwner'] 
-slug: /tools/sdk/go/documentation/beta/models/form-owner
+slug: /tools/sdk/go/beta/models/form-owner
 tags: ['SDK', 'Software Development Kit', 'FormOwner']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: ProcessIdentitiesRequest
 sidebar_label: ProcessIdentitiesRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ProcessIdentitiesRequest'] 
-slug: /tools/sdk/go/documentation/beta/models/process-identities-request
+slug: /tools/sdk/go/beta/models/process-identities-request
 tags: ['SDK', 'Software Development Kit', 'ProcessIdentitiesRequest']
 ---
 

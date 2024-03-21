@@ -5,7 +5,7 @@ pagination_label: AccessProfileEntitlement
 sidebar_label: AccessProfileEntitlement
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessProfileEntitlement'] 
-slug: /tools/sdk/go/documentation/v3/models/access-profile-entitlement
+slug: /tools/sdk/go/v3/models/access-profile-entitlement
 tags: ['SDK', 'Software Development Kit', 'AccessProfileEntitlement']
 ---
 

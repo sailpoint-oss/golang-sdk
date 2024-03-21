@@ -5,7 +5,7 @@ pagination_label: ClientLogConfiguration
 sidebar_label: ClientLogConfiguration
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ClientLogConfiguration'] 
-slug: /tools/sdk/go/documentation/beta/models/client-log-configuration
+slug: /tools/sdk/go/beta/models/client-log-configuration
 tags: ['SDK', 'Software Development Kit', 'ClientLogConfiguration']
 ---
 

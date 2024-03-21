@@ -5,7 +5,7 @@ pagination_label: IdentityAttributeTransform
 sidebar_label: IdentityAttributeTransform
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityAttributeTransform'] 
-slug: /tools/sdk/go/documentation/v3/models/identity-attribute-transform
+slug: /tools/sdk/go/v3/models/identity-attribute-transform
 tags: ['SDK', 'Software Development Kit', 'IdentityAttributeTransform']
 ---
 

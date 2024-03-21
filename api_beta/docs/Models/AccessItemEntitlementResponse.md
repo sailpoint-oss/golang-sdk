@@ -5,7 +5,7 @@ pagination_label: AccessItemEntitlementResponse
 sidebar_label: AccessItemEntitlementResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessItemEntitlementResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/access-item-entitlement-response
+slug: /tools/sdk/go/beta/models/access-item-entitlement-response
 tags: ['SDK', 'Software Development Kit', 'AccessItemEntitlementResponse']
 ---
 

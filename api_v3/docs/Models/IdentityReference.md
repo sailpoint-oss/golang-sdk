@@ -5,7 +5,7 @@ pagination_label: IdentityReference
 sidebar_label: IdentityReference
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityReference'] 
-slug: /tools/sdk/go/documentation/v3/models/identity-reference
+slug: /tools/sdk/go/v3/models/identity-reference
 tags: ['SDK', 'Software Development Kit', 'IdentityReference']
 ---
 

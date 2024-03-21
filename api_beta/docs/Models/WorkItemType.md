@@ -5,7 +5,7 @@ pagination_label: WorkItemType
 sidebar_label: WorkItemType
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'WorkItemType'] 
-slug: /tools/sdk/go/documentation/beta/models/work-item-type
+slug: /tools/sdk/go/beta/models/work-item-type
 tags: ['SDK', 'Software Development Kit', 'WorkItemType']
 ---
 

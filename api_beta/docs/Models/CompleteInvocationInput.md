@@ -5,7 +5,7 @@ pagination_label: CompleteInvocationInput
 sidebar_label: CompleteInvocationInput
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CompleteInvocationInput'] 
-slug: /tools/sdk/go/documentation/beta/models/complete-invocation-input
+slug: /tools/sdk/go/beta/models/complete-invocation-input
 tags: ['SDK', 'Software Development Kit', 'CompleteInvocationInput']
 ---
 

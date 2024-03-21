@@ -5,7 +5,7 @@ pagination_label: MfaDuoConfig
 sidebar_label: MfaDuoConfig
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'MfaDuoConfig'] 
-slug: /tools/sdk/go/documentation/beta/models/mfa-duo-config
+slug: /tools/sdk/go/beta/models/mfa-duo-config
 tags: ['SDK', 'Software Development Kit', 'MfaDuoConfig']
 ---
 

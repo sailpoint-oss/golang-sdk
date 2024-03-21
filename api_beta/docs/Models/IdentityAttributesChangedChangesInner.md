@@ -5,7 +5,7 @@ pagination_label: IdentityAttributesChangedChangesInner
 sidebar_label: IdentityAttributesChangedChangesInner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityAttributesChangedChangesInner'] 
-slug: /tools/sdk/go/documentation/beta/models/identity-attributes-changed-changes-inner
+slug: /tools/sdk/go/beta/models/identity-attributes-changed-changes-inner
 tags: ['SDK', 'Software Development Kit', 'IdentityAttributesChangedChangesInner']
 ---
 

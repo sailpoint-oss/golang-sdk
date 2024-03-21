@@ -5,7 +5,7 @@ pagination_label: ManagedClusterKeyPair
 sidebar_label: ManagedClusterKeyPair
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ManagedClusterKeyPair'] 
-slug: /tools/sdk/go/documentation/beta/models/managed-cluster-key-pair
+slug: /tools/sdk/go/beta/models/managed-cluster-key-pair
 tags: ['SDK', 'Software Development Kit', 'ManagedClusterKeyPair']
 ---
 

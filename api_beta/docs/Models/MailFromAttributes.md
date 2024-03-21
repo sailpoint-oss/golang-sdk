@@ -5,7 +5,7 @@ pagination_label: MailFromAttributes
 sidebar_label: MailFromAttributes
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'MailFromAttributes'] 
-slug: /tools/sdk/go/documentation/beta/models/mail-from-attributes
+slug: /tools/sdk/go/beta/models/mail-from-attributes
 tags: ['SDK', 'Software Development Kit', 'MailFromAttributes']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: Requestability
 sidebar_label: Requestability
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Requestability'] 
-slug: /tools/sdk/go/documentation/v3/models/requestability
+slug: /tools/sdk/go/v3/models/requestability
 tags: ['SDK', 'Software Development Kit', 'Requestability']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: Field
 sidebar_label: Field
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Field'] 
-slug: /tools/sdk/go/documentation/beta/models/field
+slug: /tools/sdk/go/beta/models/field
 tags: ['SDK', 'Software Development Kit', 'Field']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: ConnectorRuleCreateRequestSignature
 sidebar_label: ConnectorRuleCreateRequestSignature
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ConnectorRuleCreateRequestSignature'] 
-slug: /tools/sdk/go/documentation/beta/models/connector-rule-create-request-signature
+slug: /tools/sdk/go/beta/models/connector-rule-create-request-signature
 tags: ['SDK', 'Software Development Kit', 'ConnectorRuleCreateRequestSignature']
 ---
 

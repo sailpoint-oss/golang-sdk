@@ -5,7 +5,7 @@ pagination_label: WorkflowLibraryAction
 sidebar_label: WorkflowLibraryAction
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'WorkflowLibraryAction'] 
-slug: /tools/sdk/go/documentation/v3/models/workflow-library-action
+slug: /tools/sdk/go/v3/models/workflow-library-action
 tags: ['SDK', 'Software Development Kit', 'WorkflowLibraryAction']
 ---
 

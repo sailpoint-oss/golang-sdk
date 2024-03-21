@@ -5,7 +5,7 @@ pagination_label: OwnerReferenceSegments
 sidebar_label: OwnerReferenceSegments
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'OwnerReferenceSegments'] 
-slug: /tools/sdk/go/documentation/beta/models/owner-reference-segments
+slug: /tools/sdk/go/beta/models/owner-reference-segments
 tags: ['SDK', 'Software Development Kit', 'OwnerReferenceSegments']
 ---
 

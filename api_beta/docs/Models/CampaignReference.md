@@ -5,7 +5,7 @@ pagination_label: CampaignReference
 sidebar_label: CampaignReference
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CampaignReference'] 
-slug: /tools/sdk/go/documentation/beta/models/campaign-reference
+slug: /tools/sdk/go/beta/models/campaign-reference
 tags: ['SDK', 'Software Development Kit', 'CampaignReference']
 ---
 

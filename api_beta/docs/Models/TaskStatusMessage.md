@@ -5,7 +5,7 @@ pagination_label: TaskStatusMessage
 sidebar_label: TaskStatusMessage
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'TaskStatusMessage'] 
-slug: /tools/sdk/go/documentation/beta/models/task-status-message
+slug: /tools/sdk/go/beta/models/task-status-message
 tags: ['SDK', 'Software Development Kit', 'TaskStatusMessage']
 ---
 

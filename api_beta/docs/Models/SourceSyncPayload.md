@@ -5,7 +5,7 @@ pagination_label: SourceSyncPayload
 sidebar_label: SourceSyncPayload
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SourceSyncPayload'] 
-slug: /tools/sdk/go/documentation/beta/models/source-sync-payload
+slug: /tools/sdk/go/beta/models/source-sync-payload
 tags: ['SDK', 'Software Development Kit', 'SourceSyncPayload']
 ---
 

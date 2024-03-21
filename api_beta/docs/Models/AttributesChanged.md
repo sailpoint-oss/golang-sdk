@@ -5,7 +5,7 @@ pagination_label: AttributesChanged
 sidebar_label: AttributesChanged
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AttributesChanged'] 
-slug: /tools/sdk/go/documentation/beta/models/attributes-changed
+slug: /tools/sdk/go/beta/models/attributes-changed
 tags: ['SDK', 'Software Development Kit', 'AttributesChanged']
 ---
 

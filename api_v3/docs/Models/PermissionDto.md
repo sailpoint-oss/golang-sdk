@@ -5,7 +5,7 @@ pagination_label: PermissionDto
 sidebar_label: PermissionDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'PermissionDto'] 
-slug: /tools/sdk/go/documentation/v3/models/permission-dto
+slug: /tools/sdk/go/v3/models/permission-dto
 tags: ['SDK', 'Software Development Kit', 'PermissionDto']
 ---
 

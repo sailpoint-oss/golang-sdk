@@ -5,7 +5,7 @@ pagination_label: PutPasswordDictionaryRequest
 sidebar_label: PutPasswordDictionaryRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'PutPasswordDictionaryRequest'] 
-slug: /tools/sdk/go/documentation/v3/models/put-password-dictionary-request
+slug: /tools/sdk/go/v3/models/put-password-dictionary-request
 tags: ['SDK', 'Software Development Kit', 'PutPasswordDictionaryRequest']
 ---
 

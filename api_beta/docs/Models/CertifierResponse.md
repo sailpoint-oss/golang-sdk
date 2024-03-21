@@ -5,7 +5,7 @@ pagination_label: CertifierResponse
 sidebar_label: CertifierResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CertifierResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/certifier-response
+slug: /tools/sdk/go/beta/models/certifier-response
 tags: ['SDK', 'Software Development Kit', 'CertifierResponse']
 ---
 

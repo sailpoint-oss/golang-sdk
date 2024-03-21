@@ -5,7 +5,7 @@ pagination_label: AccessItemRequestedFor
 sidebar_label: AccessItemRequestedFor
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessItemRequestedFor'] 
-slug: /tools/sdk/go/documentation/beta/models/access-item-requested-for
+slug: /tools/sdk/go/beta/models/access-item-requested-for
 tags: ['SDK', 'Software Development Kit', 'AccessItemRequestedFor']
 ---
 

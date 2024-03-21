@@ -5,7 +5,7 @@ pagination_label: CertificationSignedOffCertification
 sidebar_label: CertificationSignedOffCertification
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CertificationSignedOffCertification'] 
-slug: /tools/sdk/go/documentation/beta/models/certification-signed-off-certification
+slug: /tools/sdk/go/beta/models/certification-signed-off-certification
 tags: ['SDK', 'Software Development Kit', 'CertificationSignedOffCertification']
 ---
 

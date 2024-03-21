@@ -5,7 +5,7 @@ pagination_label: HttpAuthenticationType
 sidebar_label: HttpAuthenticationType
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'HttpAuthenticationType'] 
-slug: /tools/sdk/go/documentation/beta/models/http-authentication-type
+slug: /tools/sdk/go/beta/models/http-authentication-type
 tags: ['SDK', 'Software Development Kit', 'HttpAuthenticationType']
 ---
 

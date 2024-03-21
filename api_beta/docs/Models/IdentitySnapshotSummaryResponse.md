@@ -5,7 +5,7 @@ pagination_label: IdentitySnapshotSummaryResponse
 sidebar_label: IdentitySnapshotSummaryResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentitySnapshotSummaryResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/identity-snapshot-summary-response
+slug: /tools/sdk/go/beta/models/identity-snapshot-summary-response
 tags: ['SDK', 'Software Development Kit', 'IdentitySnapshotSummaryResponse']
 ---
 

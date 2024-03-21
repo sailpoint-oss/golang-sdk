@@ -5,7 +5,7 @@ pagination_label: ScheduleMonths
 sidebar_label: ScheduleMonths
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ScheduleMonths'] 
-slug: /tools/sdk/go/documentation/v3/models/schedule-months
+slug: /tools/sdk/go/v3/models/schedule-months
 tags: ['SDK', 'Software Development Kit', 'ScheduleMonths']
 ---
 

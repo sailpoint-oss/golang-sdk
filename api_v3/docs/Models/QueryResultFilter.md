@@ -5,7 +5,7 @@ pagination_label: QueryResultFilter
 sidebar_label: QueryResultFilter
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'QueryResultFilter'] 
-slug: /tools/sdk/go/documentation/v3/models/query-result-filter
+slug: /tools/sdk/go/v3/models/query-result-filter
 tags: ['SDK', 'Software Development Kit', 'QueryResultFilter']
 ---
 

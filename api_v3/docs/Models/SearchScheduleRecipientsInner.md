@@ -5,7 +5,7 @@ pagination_label: SearchScheduleRecipientsInner
 sidebar_label: SearchScheduleRecipientsInner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SearchScheduleRecipientsInner'] 
-slug: /tools/sdk/go/documentation/v3/models/search-schedule-recipients-inner
+slug: /tools/sdk/go/v3/models/search-schedule-recipients-inner
 tags: ['SDK', 'Software Development Kit', 'SearchScheduleRecipientsInner']
 ---
 

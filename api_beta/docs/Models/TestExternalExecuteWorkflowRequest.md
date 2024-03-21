@@ -5,7 +5,7 @@ pagination_label: TestExternalExecuteWorkflowRequest
 sidebar_label: TestExternalExecuteWorkflowRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'TestExternalExecuteWorkflowRequest'] 
-slug: /tools/sdk/go/documentation/beta/models/test-external-execute-workflow-request
+slug: /tools/sdk/go/beta/models/test-external-execute-workflow-request
 tags: ['SDK', 'Software Development Kit', 'TestExternalExecuteWorkflowRequest']
 ---
 

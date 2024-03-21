@@ -5,7 +5,7 @@ pagination_label: SearchFormDefinitionsByTenant400Response
 sidebar_label: SearchFormDefinitionsByTenant400Response
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SearchFormDefinitionsByTenant400Response'] 
-slug: /tools/sdk/go/documentation/beta/models/search-form-definitions-by-tenant400-response
+slug: /tools/sdk/go/beta/models/search-form-definitions-by-tenant400-response
 tags: ['SDK', 'Software Development Kit', 'SearchFormDefinitionsByTenant400Response']
 ---
 

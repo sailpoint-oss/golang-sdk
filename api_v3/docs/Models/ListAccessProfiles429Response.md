@@ -5,7 +5,7 @@ pagination_label: ListAccessProfiles429Response
 sidebar_label: ListAccessProfiles429Response
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ListAccessProfiles429Response'] 
-slug: /tools/sdk/go/documentation/v3/models/list-access-profiles429-response
+slug: /tools/sdk/go/v3/models/list-access-profiles429-response
 tags: ['SDK', 'Software Development Kit', 'ListAccessProfiles429Response']
 ---
 

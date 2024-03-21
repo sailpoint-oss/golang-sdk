@@ -5,7 +5,7 @@ pagination_label: SectionDetails
 sidebar_label: SectionDetails
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SectionDetails'] 
-slug: /tools/sdk/go/documentation/beta/models/section-details
+slug: /tools/sdk/go/beta/models/section-details
 tags: ['SDK', 'Software Development Kit', 'SectionDetails']
 ---
 

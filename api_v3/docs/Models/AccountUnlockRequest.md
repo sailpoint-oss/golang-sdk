@@ -5,7 +5,7 @@ pagination_label: AccountUnlockRequest
 sidebar_label: AccountUnlockRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccountUnlockRequest'] 
-slug: /tools/sdk/go/documentation/v3/models/account-unlock-request
+slug: /tools/sdk/go/v3/models/account-unlock-request
 tags: ['SDK', 'Software Development Kit', 'AccountUnlockRequest']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: CreateExternalExecuteWorkflow200Response
 sidebar_label: CreateExternalExecuteWorkflow200Response
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CreateExternalExecuteWorkflow200Response'] 
-slug: /tools/sdk/go/documentation/v3/models/create-external-execute-workflow200-response
+slug: /tools/sdk/go/v3/models/create-external-execute-workflow200-response
 tags: ['SDK', 'Software Development Kit', 'CreateExternalExecuteWorkflow200Response']
 ---
 

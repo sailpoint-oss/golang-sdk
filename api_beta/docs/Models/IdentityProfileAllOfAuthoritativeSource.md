@@ -5,7 +5,7 @@ pagination_label: IdentityProfileAllOfAuthoritativeSource
 sidebar_label: IdentityProfileAllOfAuthoritativeSource
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityProfileAllOfAuthoritativeSource'] 
-slug: /tools/sdk/go/documentation/beta/models/identity-profile-all-of-authoritative-source
+slug: /tools/sdk/go/beta/models/identity-profile-all-of-authoritative-source
 tags: ['SDK', 'Software Development Kit', 'IdentityProfileAllOfAuthoritativeSource']
 ---
 

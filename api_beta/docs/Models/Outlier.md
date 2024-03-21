@@ -5,7 +5,7 @@ pagination_label: Outlier
 sidebar_label: Outlier
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Outlier'] 
-slug: /tools/sdk/go/documentation/beta/models/outlier
+slug: /tools/sdk/go/beta/models/outlier
 tags: ['SDK', 'Software Development Kit', 'Outlier']
 ---
 

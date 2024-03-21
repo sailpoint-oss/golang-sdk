@@ -5,7 +5,7 @@ pagination_label: ManagerCorrelationMapping
 sidebar_label: ManagerCorrelationMapping
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ManagerCorrelationMapping'] 
-slug: /tools/sdk/go/documentation/beta/models/manager-correlation-mapping
+slug: /tools/sdk/go/beta/models/manager-correlation-mapping
 tags: ['SDK', 'Software Development Kit', 'ManagerCorrelationMapping']
 ---
 

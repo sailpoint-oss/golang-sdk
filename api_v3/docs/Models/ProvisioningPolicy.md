@@ -5,7 +5,7 @@ pagination_label: ProvisioningPolicy
 sidebar_label: ProvisioningPolicy
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ProvisioningPolicy'] 
-slug: /tools/sdk/go/documentation/v3/models/provisioning-policy
+slug: /tools/sdk/go/v3/models/provisioning-policy
 tags: ['SDK', 'Software Development Kit', 'ProvisioningPolicy']
 ---
 

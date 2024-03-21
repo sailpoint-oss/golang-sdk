@@ -5,7 +5,7 @@ pagination_label: DeleteSource202Response
 sidebar_label: DeleteSource202Response
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'DeleteSource202Response'] 
-slug: /tools/sdk/go/documentation/v3/models/delete-source202-response
+slug: /tools/sdk/go/v3/models/delete-source202-response
 tags: ['SDK', 'Software Development Kit', 'DeleteSource202Response']
 ---
 

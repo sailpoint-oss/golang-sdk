@@ -5,7 +5,7 @@ pagination_label: AccessRequestPhases
 sidebar_label: AccessRequestPhases
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessRequestPhases'] 
-slug: /tools/sdk/go/documentation/v3/models/access-request-phases
+slug: /tools/sdk/go/v3/models/access-request-phases
 tags: ['SDK', 'Software Development Kit', 'AccessRequestPhases']
 ---
 

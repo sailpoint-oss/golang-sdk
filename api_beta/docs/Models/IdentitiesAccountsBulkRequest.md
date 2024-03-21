@@ -5,7 +5,7 @@ pagination_label: IdentitiesAccountsBulkRequest
 sidebar_label: IdentitiesAccountsBulkRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentitiesAccountsBulkRequest'] 
-slug: /tools/sdk/go/documentation/beta/models/identities-accounts-bulk-request
+slug: /tools/sdk/go/beta/models/identities-accounts-bulk-request
 tags: ['SDK', 'Software Development Kit', 'IdentitiesAccountsBulkRequest']
 ---
 

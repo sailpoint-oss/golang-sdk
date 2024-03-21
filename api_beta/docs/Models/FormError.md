@@ -5,7 +5,7 @@ pagination_label: FormError
 sidebar_label: FormError
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'FormError'] 
-slug: /tools/sdk/go/documentation/beta/models/form-error
+slug: /tools/sdk/go/beta/models/form-error
 tags: ['SDK', 'Software Development Kit', 'FormError']
 ---
 

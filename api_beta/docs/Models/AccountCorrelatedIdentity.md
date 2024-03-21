@@ -5,7 +5,7 @@ pagination_label: AccountCorrelatedIdentity
 sidebar_label: AccountCorrelatedIdentity
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccountCorrelatedIdentity'] 
-slug: /tools/sdk/go/documentation/beta/models/account-correlated-identity
+slug: /tools/sdk/go/beta/models/account-correlated-identity
 tags: ['SDK', 'Software Development Kit', 'AccountCorrelatedIdentity']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: ReviewableEntitlement
 sidebar_label: ReviewableEntitlement
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ReviewableEntitlement'] 
-slug: /tools/sdk/go/documentation/v3/models/reviewable-entitlement
+slug: /tools/sdk/go/v3/models/reviewable-entitlement
 tags: ['SDK', 'Software Development Kit', 'ReviewableEntitlement']
 ---
 

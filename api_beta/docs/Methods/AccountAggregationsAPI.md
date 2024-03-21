@@ -5,7 +5,7 @@ pagination_label: AccountAggregations
 sidebar_label: AccountAggregations
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccountAggregations'] 
-slug: /tools/sdk/go/documentation/beta/api/account-aggregations
+slug: /tools/sdk/go/beta/methods/account-aggregations
 tags: ['SDK', 'Software Development Kit', 'AccountAggregations']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: NonEmployeeApprovalSummary
 sidebar_label: NonEmployeeApprovalSummary
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'NonEmployeeApprovalSummary'] 
-slug: /tools/sdk/go/documentation/v3/models/non-employee-approval-summary
+slug: /tools/sdk/go/v3/models/non-employee-approval-summary
 tags: ['SDK', 'Software Development Kit', 'NonEmployeeApprovalSummary']
 ---
 

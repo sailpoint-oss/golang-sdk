@@ -5,7 +5,7 @@ pagination_label: ObjectImportResult
 sidebar_label: ObjectImportResult
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ObjectImportResult'] 
-slug: /tools/sdk/go/documentation/beta/models/object-import-result
+slug: /tools/sdk/go/beta/models/object-import-result
 tags: ['SDK', 'Software Development Kit', 'ObjectImportResult']
 ---
 

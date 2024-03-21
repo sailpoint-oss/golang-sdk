@@ -5,7 +5,7 @@ pagination_label: SpConfigImportJobStatus
 sidebar_label: SpConfigImportJobStatus
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SpConfigImportJobStatus'] 
-slug: /tools/sdk/go/documentation/beta/models/sp-config-import-job-status
+slug: /tools/sdk/go/beta/models/sp-config-import-job-status
 tags: ['SDK', 'Software Development Kit', 'SpConfigImportJobStatus']
 ---
 

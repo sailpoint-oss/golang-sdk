@@ -5,7 +5,7 @@ pagination_label: SelectorType
 sidebar_label: SelectorType
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SelectorType'] 
-slug: /tools/sdk/go/documentation/beta/models/selector-type
+slug: /tools/sdk/go/beta/models/selector-type
 tags: ['SDK', 'Software Development Kit', 'SelectorType']
 ---
 

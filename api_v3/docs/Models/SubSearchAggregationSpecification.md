@@ -5,7 +5,7 @@ pagination_label: SubSearchAggregationSpecification
 sidebar_label: SubSearchAggregationSpecification
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SubSearchAggregationSpecification'] 
-slug: /tools/sdk/go/documentation/v3/models/sub-search-aggregation-specification
+slug: /tools/sdk/go/v3/models/sub-search-aggregation-specification
 tags: ['SDK', 'Software Development Kit', 'SubSearchAggregationSpecification']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: AccessItemAccountResponse
 sidebar_label: AccessItemAccountResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessItemAccountResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/access-item-account-response
+slug: /tools/sdk/go/beta/models/access-item-account-response
 tags: ['SDK', 'Software Development Kit', 'AccessItemAccountResponse']
 ---
 

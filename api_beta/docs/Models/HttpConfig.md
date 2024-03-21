@@ -5,7 +5,7 @@ pagination_label: HttpConfig
 sidebar_label: HttpConfig
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'HttpConfig'] 
-slug: /tools/sdk/go/documentation/beta/models/http-config
+slug: /tools/sdk/go/beta/models/http-config
 tags: ['SDK', 'Software Development Kit', 'HttpConfig']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: ReportType
 sidebar_label: ReportType
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ReportType'] 
-slug: /tools/sdk/go/documentation/v3/models/report-type
+slug: /tools/sdk/go/v3/models/report-type
 tags: ['SDK', 'Software Development Kit', 'ReportType']
 ---
 

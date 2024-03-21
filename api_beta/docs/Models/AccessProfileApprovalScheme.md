@@ -5,7 +5,7 @@ pagination_label: AccessProfileApprovalScheme
 sidebar_label: AccessProfileApprovalScheme
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessProfileApprovalScheme'] 
-slug: /tools/sdk/go/documentation/beta/models/access-profile-approval-scheme
+slug: /tools/sdk/go/beta/models/access-profile-approval-scheme
 tags: ['SDK', 'Software Development Kit', 'AccessProfileApprovalScheme']
 ---
 

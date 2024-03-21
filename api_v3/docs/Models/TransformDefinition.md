@@ -5,7 +5,7 @@ pagination_label: TransformDefinition
 sidebar_label: TransformDefinition
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'TransformDefinition'] 
-slug: /tools/sdk/go/documentation/v3/models/transform-definition
+slug: /tools/sdk/go/v3/models/transform-definition
 tags: ['SDK', 'Software Development Kit', 'TransformDefinition']
 ---
 

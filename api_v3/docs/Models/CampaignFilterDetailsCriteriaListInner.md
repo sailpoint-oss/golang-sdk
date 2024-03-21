@@ -5,7 +5,7 @@ pagination_label: CampaignFilterDetailsCriteriaListInner
 sidebar_label: CampaignFilterDetailsCriteriaListInner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CampaignFilterDetailsCriteriaListInner'] 
-slug: /tools/sdk/go/documentation/v3/models/campaign-filter-details-criteria-list-inner
+slug: /tools/sdk/go/v3/models/campaign-filter-details-criteria-list-inner
 tags: ['SDK', 'Software Development Kit', 'CampaignFilterDetailsCriteriaListInner']
 ---
 

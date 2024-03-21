@@ -5,7 +5,7 @@ pagination_label: RequestedItemStatusRequesterComment
 sidebar_label: RequestedItemStatusRequesterComment
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RequestedItemStatusRequesterComment'] 
-slug: /tools/sdk/go/documentation/beta/models/requested-item-status-requester-comment
+slug: /tools/sdk/go/beta/models/requested-item-status-requester-comment
 tags: ['SDK', 'Software Development Kit', 'RequestedItemStatusRequesterComment']
 ---
 

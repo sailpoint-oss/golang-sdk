@@ -5,7 +5,7 @@ pagination_label: CreateFormDefinitionRequest
 sidebar_label: CreateFormDefinitionRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CreateFormDefinitionRequest'] 
-slug: /tools/sdk/go/documentation/beta/models/create-form-definition-request
+slug: /tools/sdk/go/beta/models/create-form-definition-request
 tags: ['SDK', 'Software Development Kit', 'CreateFormDefinitionRequest']
 ---
 

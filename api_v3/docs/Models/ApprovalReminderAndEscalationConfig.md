@@ -5,7 +5,7 @@ pagination_label: ApprovalReminderAndEscalationConfig
 sidebar_label: ApprovalReminderAndEscalationConfig
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ApprovalReminderAndEscalationConfig'] 
-slug: /tools/sdk/go/documentation/v3/models/approval-reminder-and-escalation-config
+slug: /tools/sdk/go/v3/models/approval-reminder-and-escalation-config
 tags: ['SDK', 'Software Development Kit', 'ApprovalReminderAndEscalationConfig']
 ---
 

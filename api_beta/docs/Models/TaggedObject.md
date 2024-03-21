@@ -5,7 +5,7 @@ pagination_label: TaggedObject
 sidebar_label: TaggedObject
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'TaggedObject'] 
-slug: /tools/sdk/go/documentation/beta/models/tagged-object
+slug: /tools/sdk/go/beta/models/tagged-object
 tags: ['SDK', 'Software Development Kit', 'TaggedObject']
 ---
 

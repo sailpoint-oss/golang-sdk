@@ -5,7 +5,7 @@ pagination_label: CreateFormInstanceRequest
 sidebar_label: CreateFormInstanceRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CreateFormInstanceRequest'] 
-slug: /tools/sdk/go/documentation/beta/models/create-form-instance-request
+slug: /tools/sdk/go/beta/models/create-form-instance-request
 tags: ['SDK', 'Software Development Kit', 'CreateFormInstanceRequest']
 ---
 

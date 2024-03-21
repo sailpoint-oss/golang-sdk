@@ -5,7 +5,7 @@ pagination_label: AccessProfileBulkDeleteRequest
 sidebar_label: AccessProfileBulkDeleteRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessProfileBulkDeleteRequest'] 
-slug: /tools/sdk/go/documentation/v3/models/access-profile-bulk-delete-request
+slug: /tools/sdk/go/v3/models/access-profile-bulk-delete-request
 tags: ['SDK', 'Software Development Kit', 'AccessProfileBulkDeleteRequest']
 ---
 

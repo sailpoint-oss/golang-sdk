@@ -5,7 +5,7 @@ pagination_label: ActivateCampaignOptions
 sidebar_label: ActivateCampaignOptions
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ActivateCampaignOptions'] 
-slug: /tools/sdk/go/documentation/beta/models/activate-campaign-options
+slug: /tools/sdk/go/beta/models/activate-campaign-options
 tags: ['SDK', 'Software Development Kit', 'ActivateCampaignOptions']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: RequestabilityForRole
 sidebar_label: RequestabilityForRole
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RequestabilityForRole'] 
-slug: /tools/sdk/go/documentation/beta/models/requestability-for-role
+slug: /tools/sdk/go/beta/models/requestability-for-role
 tags: ['SDK', 'Software Development Kit', 'RequestabilityForRole']
 ---
 

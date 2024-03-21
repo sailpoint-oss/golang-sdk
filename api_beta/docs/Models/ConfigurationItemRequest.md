@@ -5,7 +5,7 @@ pagination_label: ConfigurationItemRequest
 sidebar_label: ConfigurationItemRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ConfigurationItemRequest'] 
-slug: /tools/sdk/go/documentation/beta/models/configuration-item-request
+slug: /tools/sdk/go/beta/models/configuration-item-request
 tags: ['SDK', 'Software Development Kit', 'ConfigurationItemRequest']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: ServiceDeskSource
 sidebar_label: ServiceDeskSource
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ServiceDeskSource'] 
-slug: /tools/sdk/go/documentation/v3/models/service-desk-source
+slug: /tools/sdk/go/v3/models/service-desk-source
 tags: ['SDK', 'Software Development Kit', 'ServiceDeskSource']
 ---
 

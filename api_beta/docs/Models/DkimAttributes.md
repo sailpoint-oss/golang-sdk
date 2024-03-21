@@ -5,7 +5,7 @@ pagination_label: DkimAttributes
 sidebar_label: DkimAttributes
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'DkimAttributes'] 
-slug: /tools/sdk/go/documentation/beta/models/dkim-attributes
+slug: /tools/sdk/go/beta/models/dkim-attributes
 tags: ['SDK', 'Software Development Kit', 'DkimAttributes']
 ---
 

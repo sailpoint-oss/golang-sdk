@@ -5,7 +5,7 @@ pagination_label: ServiceDeskIntegration
 sidebar_label: ServiceDeskIntegration
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ServiceDeskIntegration'] 
-slug: /tools/sdk/go/documentation/v3/api/service-desk-integration
+slug: /tools/sdk/go/v3/methods/service-desk-integration
 tags: ['SDK', 'Software Development Kit', 'ServiceDeskIntegration']
 ---
 

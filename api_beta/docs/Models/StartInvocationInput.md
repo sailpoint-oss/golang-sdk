@@ -5,7 +5,7 @@ pagination_label: StartInvocationInput
 sidebar_label: StartInvocationInput
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'StartInvocationInput'] 
-slug: /tools/sdk/go/documentation/beta/models/start-invocation-input
+slug: /tools/sdk/go/beta/models/start-invocation-input
 tags: ['SDK', 'Software Development Kit', 'StartInvocationInput']
 ---
 

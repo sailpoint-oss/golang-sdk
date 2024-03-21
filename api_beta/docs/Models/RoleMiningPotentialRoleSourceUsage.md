@@ -5,7 +5,7 @@ pagination_label: RoleMiningPotentialRoleSourceUsage
 sidebar_label: RoleMiningPotentialRoleSourceUsage
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RoleMiningPotentialRoleSourceUsage'] 
-slug: /tools/sdk/go/documentation/beta/models/role-mining-potential-role-source-usage
+slug: /tools/sdk/go/beta/models/role-mining-potential-role-source-usage
 tags: ['SDK', 'Software Development Kit', 'RoleMiningPotentialRoleSourceUsage']
 ---
 

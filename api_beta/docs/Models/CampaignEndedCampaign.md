@@ -5,7 +5,7 @@ pagination_label: CampaignEndedCampaign
 sidebar_label: CampaignEndedCampaign
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CampaignEndedCampaign'] 
-slug: /tools/sdk/go/documentation/beta/models/campaign-ended-campaign
+slug: /tools/sdk/go/beta/models/campaign-ended-campaign
 tags: ['SDK', 'Software Development Kit', 'CampaignEndedCampaign']
 ---
 

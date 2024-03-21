@@ -5,7 +5,7 @@ pagination_label: IdentityProfileExportedObject
 sidebar_label: IdentityProfileExportedObject
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityProfileExportedObject'] 
-slug: /tools/sdk/go/documentation/beta/models/identity-profile-exported-object
+slug: /tools/sdk/go/beta/models/identity-profile-exported-object
 tags: ['SDK', 'Software Development Kit', 'IdentityProfileExportedObject']
 ---
 

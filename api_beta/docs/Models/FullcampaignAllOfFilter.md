@@ -5,7 +5,7 @@ pagination_label: FullcampaignAllOfFilter
 sidebar_label: FullcampaignAllOfFilter
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'FullcampaignAllOfFilter'] 
-slug: /tools/sdk/go/documentation/beta/models/fullcampaign-all-of-filter
+slug: /tools/sdk/go/beta/models/fullcampaign-all-of-filter
 tags: ['SDK', 'Software Development Kit', 'FullcampaignAllOfFilter']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: SodRecipient
 sidebar_label: SodRecipient
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SodRecipient'] 
-slug: /tools/sdk/go/documentation/beta/models/sod-recipient
+slug: /tools/sdk/go/beta/models/sod-recipient
 tags: ['SDK', 'Software Development Kit', 'SodRecipient']
 ---
 

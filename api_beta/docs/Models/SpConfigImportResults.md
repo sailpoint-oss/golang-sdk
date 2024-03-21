@@ -5,7 +5,7 @@ pagination_label: SpConfigImportResults
 sidebar_label: SpConfigImportResults
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SpConfigImportResults'] 
-slug: /tools/sdk/go/documentation/beta/models/sp-config-import-results
+slug: /tools/sdk/go/beta/models/sp-config-import-results
 tags: ['SDK', 'Software Development Kit', 'SpConfigImportResults']
 ---
 

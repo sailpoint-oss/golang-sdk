@@ -5,7 +5,7 @@ pagination_label: PersonalAccessTokens
 sidebar_label: PersonalAccessTokens
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'PersonalAccessTokens'] 
-slug: /tools/sdk/go/documentation/beta/api/personal-access-tokens
+slug: /tools/sdk/go/beta/methods/personal-access-tokens
 tags: ['SDK', 'Software Development Kit', 'PersonalAccessTokens']
 ---
 

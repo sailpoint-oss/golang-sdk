@@ -5,7 +5,7 @@ pagination_label: SourceUsages
 sidebar_label: SourceUsages
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SourceUsages'] 
-slug: /tools/sdk/go/documentation/v3/api/source-usages
+slug: /tools/sdk/go/v3/methods/source-usages
 tags: ['SDK', 'Software Development Kit', 'SourceUsages']
 ---
 

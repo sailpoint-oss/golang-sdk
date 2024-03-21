@@ -5,7 +5,7 @@ pagination_label: RecommenderCalculationsIdentityAttributesValue
 sidebar_label: RecommenderCalculationsIdentityAttributesValue
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RecommenderCalculationsIdentityAttributesValue'] 
-slug: /tools/sdk/go/documentation/beta/models/recommender-calculations-identity-attributes-value
+slug: /tools/sdk/go/beta/models/recommender-calculations-identity-attributes-value
 tags: ['SDK', 'Software Development Kit', 'RecommenderCalculationsIdentityAttributesValue']
 ---
 

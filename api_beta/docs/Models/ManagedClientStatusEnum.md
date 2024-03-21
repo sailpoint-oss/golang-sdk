@@ -5,7 +5,7 @@ pagination_label: ManagedClientStatusEnum
 sidebar_label: ManagedClientStatusEnum
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ManagedClientStatusEnum'] 
-slug: /tools/sdk/go/documentation/beta/models/managed-client-status-enum
+slug: /tools/sdk/go/beta/models/managed-client-status-enum
 tags: ['SDK', 'Software Development Kit', 'ManagedClientStatusEnum']
 ---
 

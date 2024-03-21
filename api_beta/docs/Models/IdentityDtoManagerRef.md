@@ -5,7 +5,7 @@ pagination_label: IdentityDtoManagerRef
 sidebar_label: IdentityDtoManagerRef
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityDtoManagerRef'] 
-slug: /tools/sdk/go/documentation/beta/models/identity-dto-manager-ref
+slug: /tools/sdk/go/beta/models/identity-dto-manager-ref
 tags: ['SDK', 'Software Development Kit', 'IdentityDtoManagerRef']
 ---
 

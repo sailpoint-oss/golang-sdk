@@ -5,7 +5,7 @@ pagination_label: BrandingItemCreate
 sidebar_label: BrandingItemCreate
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'BrandingItemCreate'] 
-slug: /tools/sdk/go/documentation/v3/models/branding-item-create
+slug: /tools/sdk/go/v3/models/branding-item-create
 tags: ['SDK', 'Software Development Kit', 'BrandingItemCreate']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: ProvisioningConfig
 sidebar_label: ProvisioningConfig
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ProvisioningConfig'] 
-slug: /tools/sdk/go/documentation/beta/models/provisioning-config
+slug: /tools/sdk/go/beta/models/provisioning-config
 tags: ['SDK', 'Software Development Kit', 'ProvisioningConfig']
 ---
 

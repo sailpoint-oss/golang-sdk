@@ -5,7 +5,7 @@ pagination_label: ApprovalForwardHistory
 sidebar_label: ApprovalForwardHistory
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ApprovalForwardHistory'] 
-slug: /tools/sdk/go/documentation/beta/models/approval-forward-history
+slug: /tools/sdk/go/beta/models/approval-forward-history
 tags: ['SDK', 'Software Development Kit', 'ApprovalForwardHistory']
 ---
 

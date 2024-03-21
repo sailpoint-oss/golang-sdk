@@ -5,7 +5,7 @@ pagination_label: SlimCampaign
 sidebar_label: SlimCampaign
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SlimCampaign'] 
-slug: /tools/sdk/go/documentation/v3/models/slim-campaign
+slug: /tools/sdk/go/v3/models/slim-campaign
 tags: ['SDK', 'Software Development Kit', 'SlimCampaign']
 ---
 

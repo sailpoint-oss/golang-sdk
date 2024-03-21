@@ -5,7 +5,7 @@ pagination_label: SearchArguments
 sidebar_label: SearchArguments
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SearchArguments'] 
-slug: /tools/sdk/go/documentation/v3/models/search-arguments
+slug: /tools/sdk/go/v3/models/search-arguments
 tags: ['SDK', 'Software Development Kit', 'SearchArguments']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: CompleteCampaignOptions
 sidebar_label: CompleteCampaignOptions
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CompleteCampaignOptions'] 
-slug: /tools/sdk/go/documentation/beta/models/complete-campaign-options
+slug: /tools/sdk/go/beta/models/complete-campaign-options
 tags: ['SDK', 'Software Development Kit', 'CompleteCampaignOptions']
 ---
 

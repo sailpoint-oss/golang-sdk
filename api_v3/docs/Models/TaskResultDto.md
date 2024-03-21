@@ -5,7 +5,7 @@ pagination_label: TaskResultDto
 sidebar_label: TaskResultDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'TaskResultDto'] 
-slug: /tools/sdk/go/documentation/v3/models/task-result-dto
+slug: /tools/sdk/go/v3/models/task-result-dto
 tags: ['SDK', 'Software Development Kit', 'TaskResultDto']
 ---
 

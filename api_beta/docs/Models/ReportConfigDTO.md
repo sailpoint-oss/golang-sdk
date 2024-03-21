@@ -5,7 +5,7 @@ pagination_label: ReportConfigDTO
 sidebar_label: ReportConfigDTO
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ReportConfigDTO'] 
-slug: /tools/sdk/go/documentation/beta/models/report-config-dto
+slug: /tools/sdk/go/beta/models/report-config-dto
 tags: ['SDK', 'Software Development Kit', 'ReportConfigDTO']
 ---
 

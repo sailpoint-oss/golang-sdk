@@ -5,7 +5,7 @@ pagination_label: AggregationResult
 sidebar_label: AggregationResult
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AggregationResult'] 
-slug: /tools/sdk/go/documentation/v3/models/aggregation-result
+slug: /tools/sdk/go/v3/models/aggregation-result
 tags: ['SDK', 'Software Development Kit', 'AggregationResult']
 ---
 

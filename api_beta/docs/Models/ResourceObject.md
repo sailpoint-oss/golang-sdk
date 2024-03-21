@@ -5,7 +5,7 @@ pagination_label: ResourceObject
 sidebar_label: ResourceObject
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ResourceObject'] 
-slug: /tools/sdk/go/documentation/beta/models/resource-object
+slug: /tools/sdk/go/beta/models/resource-object
 tags: ['SDK', 'Software Development Kit', 'ResourceObject']
 ---
 

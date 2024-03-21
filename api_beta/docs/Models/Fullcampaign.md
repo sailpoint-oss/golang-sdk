@@ -5,7 +5,7 @@ pagination_label: Fullcampaign
 sidebar_label: Fullcampaign
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Fullcampaign'] 
-slug: /tools/sdk/go/documentation/beta/models/fullcampaign
+slug: /tools/sdk/go/beta/models/fullcampaign
 tags: ['SDK', 'Software Development Kit', 'Fullcampaign']
 ---
 

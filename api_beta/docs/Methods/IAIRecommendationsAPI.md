@@ -5,7 +5,7 @@ pagination_label: IAIRecommendations
 sidebar_label: IAIRecommendations
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IAIRecommendations'] 
-slug: /tools/sdk/go/documentation/beta/api/iai-recommendations
+slug: /tools/sdk/go/beta/methods/iai-recommendations
 tags: ['SDK', 'Software Development Kit', 'IAIRecommendations']
 ---
 

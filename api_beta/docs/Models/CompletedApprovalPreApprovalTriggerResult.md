@@ -5,7 +5,7 @@ pagination_label: CompletedApprovalPreApprovalTriggerResult
 sidebar_label: CompletedApprovalPreApprovalTriggerResult
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CompletedApprovalPreApprovalTriggerResult'] 
-slug: /tools/sdk/go/documentation/beta/models/completed-approval-pre-approval-trigger-result
+slug: /tools/sdk/go/beta/models/completed-approval-pre-approval-trigger-result
 tags: ['SDK', 'Software Development Kit', 'CompletedApprovalPreApprovalTriggerResult']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: RoleBulkDeleteRequest
 sidebar_label: RoleBulkDeleteRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RoleBulkDeleteRequest'] 
-slug: /tools/sdk/go/documentation/beta/models/role-bulk-delete-request
+slug: /tools/sdk/go/beta/models/role-bulk-delete-request
 tags: ['SDK', 'Software Development Kit', 'RoleBulkDeleteRequest']
 ---
 

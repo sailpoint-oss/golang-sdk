@@ -5,7 +5,7 @@ pagination_label: TokenAuthResponse
 sidebar_label: TokenAuthResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'TokenAuthResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/token-auth-response
+slug: /tools/sdk/go/beta/models/token-auth-response
 tags: ['SDK', 'Software Development Kit', 'TokenAuthResponse']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: TemplateDto
 sidebar_label: TemplateDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'TemplateDto'] 
-slug: /tools/sdk/go/documentation/beta/models/template-dto
+slug: /tools/sdk/go/beta/models/template-dto
 tags: ['SDK', 'Software Development Kit', 'TemplateDto']
 ---
 

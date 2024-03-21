@@ -5,7 +5,7 @@ pagination_label: SourceManagerCorrelationRule
 sidebar_label: SourceManagerCorrelationRule
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SourceManagerCorrelationRule'] 
-slug: /tools/sdk/go/documentation/beta/models/source-manager-correlation-rule
+slug: /tools/sdk/go/beta/models/source-manager-correlation-rule
 tags: ['SDK', 'Software Development Kit', 'SourceManagerCorrelationRule']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: RoleAssignmentSourceType
 sidebar_label: RoleAssignmentSourceType
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RoleAssignmentSourceType'] 
-slug: /tools/sdk/go/documentation/v3/models/role-assignment-source-type
+slug: /tools/sdk/go/v3/models/role-assignment-source-type
 tags: ['SDK', 'Software Development Kit', 'RoleAssignmentSourceType']
 ---
 

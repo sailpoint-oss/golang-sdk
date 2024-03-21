@@ -5,7 +5,7 @@ pagination_label: SourceSyncJob
 sidebar_label: SourceSyncJob
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SourceSyncJob'] 
-slug: /tools/sdk/go/documentation/beta/models/source-sync-job
+slug: /tools/sdk/go/beta/models/source-sync-job
 tags: ['SDK', 'Software Development Kit', 'SourceSyncJob']
 ---
 

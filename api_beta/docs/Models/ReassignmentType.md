@@ -5,7 +5,7 @@ pagination_label: ReassignmentType
 sidebar_label: ReassignmentType
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ReassignmentType'] 
-slug: /tools/sdk/go/documentation/beta/models/reassignment-type
+slug: /tools/sdk/go/beta/models/reassignment-type
 tags: ['SDK', 'Software Development Kit', 'ReassignmentType']
 ---
 

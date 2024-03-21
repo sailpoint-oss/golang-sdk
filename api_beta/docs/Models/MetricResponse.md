@@ -5,7 +5,7 @@ pagination_label: MetricResponse
 sidebar_label: MetricResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'MetricResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/metric-response
+slug: /tools/sdk/go/beta/models/metric-response
 tags: ['SDK', 'Software Development Kit', 'MetricResponse']
 ---
 

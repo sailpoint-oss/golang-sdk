@@ -5,7 +5,7 @@ pagination_label: ExportPayload
 sidebar_label: ExportPayload
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ExportPayload'] 
-slug: /tools/sdk/go/documentation/beta/models/export-payload
+slug: /tools/sdk/go/beta/models/export-payload
 tags: ['SDK', 'Software Development Kit', 'ExportPayload']
 ---
 

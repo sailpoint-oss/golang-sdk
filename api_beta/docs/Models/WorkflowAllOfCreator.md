@@ -5,7 +5,7 @@ pagination_label: WorkflowAllOfCreator
 sidebar_label: WorkflowAllOfCreator
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'WorkflowAllOfCreator'] 
-slug: /tools/sdk/go/documentation/beta/models/workflow-all-of-creator
+slug: /tools/sdk/go/beta/models/workflow-all-of-creator
 tags: ['SDK', 'Software Development Kit', 'WorkflowAllOfCreator']
 ---
 

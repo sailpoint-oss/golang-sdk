@@ -5,7 +5,7 @@ pagination_label: BaseReferenceDto
 sidebar_label: BaseReferenceDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'BaseReferenceDto'] 
-slug: /tools/sdk/go/documentation/v3/models/base-reference-dto
+slug: /tools/sdk/go/v3/models/base-reference-dto
 tags: ['SDK', 'Software Development Kit', 'BaseReferenceDto']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef
 sidebar_label: FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef'] 
-slug: /tools/sdk/go/documentation/beta/models/fullcampaign-all-of-role-composition-campaign-info-remediator-ref
+slug: /tools/sdk/go/beta/models/fullcampaign-all-of-role-composition-campaign-info-remediator-ref
 tags: ['SDK', 'Software Development Kit', 'FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef']
 ---
 

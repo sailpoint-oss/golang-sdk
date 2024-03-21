@@ -5,7 +5,7 @@ pagination_label: ReviewRecommendation
 sidebar_label: ReviewRecommendation
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ReviewRecommendation'] 
-slug: /tools/sdk/go/documentation/v3/models/review-recommendation
+slug: /tools/sdk/go/v3/models/review-recommendation
 tags: ['SDK', 'Software Development Kit', 'ReviewRecommendation']
 ---
 

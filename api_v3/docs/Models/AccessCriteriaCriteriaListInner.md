@@ -5,7 +5,7 @@ pagination_label: AccessCriteriaCriteriaListInner
 sidebar_label: AccessCriteriaCriteriaListInner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessCriteriaCriteriaListInner'] 
-slug: /tools/sdk/go/documentation/v3/models/access-criteria-criteria-list-inner
+slug: /tools/sdk/go/v3/models/access-criteria-criteria-list-inner
 tags: ['SDK', 'Software Development Kit', 'AccessCriteriaCriteriaListInner']
 ---
 

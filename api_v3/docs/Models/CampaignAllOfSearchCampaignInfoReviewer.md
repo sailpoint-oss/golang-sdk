@@ -5,7 +5,7 @@ pagination_label: CampaignAllOfSearchCampaignInfoReviewer
 sidebar_label: CampaignAllOfSearchCampaignInfoReviewer
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CampaignAllOfSearchCampaignInfoReviewer'] 
-slug: /tools/sdk/go/documentation/v3/models/campaign-all-of-search-campaign-info-reviewer
+slug: /tools/sdk/go/v3/models/campaign-all-of-search-campaign-info-reviewer
 tags: ['SDK', 'Software Development Kit', 'CampaignAllOfSearchCampaignInfoReviewer']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: ReviewDecision
 sidebar_label: ReviewDecision
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ReviewDecision'] 
-slug: /tools/sdk/go/documentation/v3/models/review-decision
+slug: /tools/sdk/go/v3/models/review-decision
 tags: ['SDK', 'Software Development Kit', 'ReviewDecision']
 ---
 

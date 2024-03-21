@@ -5,7 +5,7 @@ pagination_label: RoleAssignmentDto
 sidebar_label: RoleAssignmentDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RoleAssignmentDto'] 
-slug: /tools/sdk/go/documentation/beta/models/role-assignment-dto
+slug: /tools/sdk/go/beta/models/role-assignment-dto
 tags: ['SDK', 'Software Development Kit', 'RoleAssignmentDto']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: FormDefinitionFileUploadResponse
 sidebar_label: FormDefinitionFileUploadResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'FormDefinitionFileUploadResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/form-definition-file-upload-response
+slug: /tools/sdk/go/beta/models/form-definition-file-upload-response
 tags: ['SDK', 'Software Development Kit', 'FormDefinitionFileUploadResponse']
 ---
 

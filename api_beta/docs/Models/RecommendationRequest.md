@@ -5,7 +5,7 @@ pagination_label: RecommendationRequest
 sidebar_label: RecommendationRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RecommendationRequest'] 
-slug: /tools/sdk/go/documentation/beta/models/recommendation-request
+slug: /tools/sdk/go/beta/models/recommendation-request
 tags: ['SDK', 'Software Development Kit', 'RecommendationRequest']
 ---
 

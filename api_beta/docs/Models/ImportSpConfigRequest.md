@@ -5,7 +5,7 @@ pagination_label: ImportSpConfigRequest
 sidebar_label: ImportSpConfigRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ImportSpConfigRequest'] 
-slug: /tools/sdk/go/documentation/beta/models/import-sp-config-request
+slug: /tools/sdk/go/beta/models/import-sp-config-request
 tags: ['SDK', 'Software Development Kit', 'ImportSpConfigRequest']
 ---
 

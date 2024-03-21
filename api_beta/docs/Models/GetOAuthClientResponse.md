@@ -5,7 +5,7 @@ pagination_label: GetOAuthClientResponse
 sidebar_label: GetOAuthClientResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'GetOAuthClientResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/get-o-auth-client-response
+slug: /tools/sdk/go/beta/models/get-o-auth-client-response
 tags: ['SDK', 'Software Development Kit', 'GetOAuthClientResponse']
 ---
 

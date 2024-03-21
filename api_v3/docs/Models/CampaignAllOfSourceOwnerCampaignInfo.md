@@ -5,7 +5,7 @@ pagination_label: CampaignAllOfSourceOwnerCampaignInfo
 sidebar_label: CampaignAllOfSourceOwnerCampaignInfo
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CampaignAllOfSourceOwnerCampaignInfo'] 
-slug: /tools/sdk/go/documentation/v3/models/campaign-all-of-source-owner-campaign-info
+slug: /tools/sdk/go/v3/models/campaign-all-of-source-owner-campaign-info
 tags: ['SDK', 'Software Development Kit', 'CampaignAllOfSourceOwnerCampaignInfo']
 ---
 

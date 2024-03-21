@@ -5,7 +5,7 @@ pagination_label: RequestOnBehalfOfConfig
 sidebar_label: RequestOnBehalfOfConfig
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RequestOnBehalfOfConfig'] 
-slug: /tools/sdk/go/documentation/beta/models/request-on-behalf-of-config
+slug: /tools/sdk/go/beta/models/request-on-behalf-of-config
 tags: ['SDK', 'Software Development Kit', 'RequestOnBehalfOfConfig']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: AccessConstraint
 sidebar_label: AccessConstraint
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessConstraint'] 
-slug: /tools/sdk/go/documentation/v3/models/access-constraint
+slug: /tools/sdk/go/v3/models/access-constraint
 tags: ['SDK', 'Software Development Kit', 'AccessConstraint']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: ConnectorRuleValidationResponse
 sidebar_label: ConnectorRuleValidationResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ConnectorRuleValidationResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/connector-rule-validation-response
+slug: /tools/sdk/go/beta/models/connector-rule-validation-response
 tags: ['SDK', 'Software Development Kit', 'ConnectorRuleValidationResponse']
 ---
 

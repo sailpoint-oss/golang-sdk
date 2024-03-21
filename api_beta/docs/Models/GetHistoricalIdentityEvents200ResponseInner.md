@@ -5,7 +5,7 @@ pagination_label: GetHistoricalIdentityEvents200ResponseInner
 sidebar_label: GetHistoricalIdentityEvents200ResponseInner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'GetHistoricalIdentityEvents200ResponseInner'] 
-slug: /tools/sdk/go/documentation/beta/models/get-historical-identity-events200-response-inner
+slug: /tools/sdk/go/beta/models/get-historical-identity-events200-response-inner
 tags: ['SDK', 'Software Development Kit', 'GetHistoricalIdentityEvents200ResponseInner']
 ---
 

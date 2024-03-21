@@ -5,7 +5,7 @@ pagination_label: DeleteNonEmployeeRecordsInBulkRequest
 sidebar_label: DeleteNonEmployeeRecordsInBulkRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'DeleteNonEmployeeRecordsInBulkRequest'] 
-slug: /tools/sdk/go/documentation/v3/models/delete-non-employee-records-in-bulk-request
+slug: /tools/sdk/go/v3/models/delete-non-employee-records-in-bulk-request
 tags: ['SDK', 'Software Development Kit', 'DeleteNonEmployeeRecordsInBulkRequest']
 ---
 

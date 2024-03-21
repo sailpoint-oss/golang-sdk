@@ -5,7 +5,7 @@ pagination_label: TransformRead
 sidebar_label: TransformRead
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'TransformRead'] 
-slug: /tools/sdk/go/documentation/v3/models/transform-read
+slug: /tools/sdk/go/v3/models/transform-read
 tags: ['SDK', 'Software Development Kit', 'TransformRead']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: WorkflowTriggerAttributes
 sidebar_label: WorkflowTriggerAttributes
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'WorkflowTriggerAttributes'] 
-slug: /tools/sdk/go/documentation/v3/models/workflow-trigger-attributes
+slug: /tools/sdk/go/v3/models/workflow-trigger-attributes
 tags: ['SDK', 'Software Development Kit', 'WorkflowTriggerAttributes']
 ---
 

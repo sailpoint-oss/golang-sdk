@@ -5,7 +5,7 @@ pagination_label: Schedule1Hours
 sidebar_label: Schedule1Hours
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Schedule1Hours'] 
-slug: /tools/sdk/go/documentation/v3/models/schedule1-hours
+slug: /tools/sdk/go/v3/models/schedule1-hours
 tags: ['SDK', 'Software Development Kit', 'Schedule1Hours']
 ---
 

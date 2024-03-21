@@ -5,7 +5,7 @@ pagination_label: EntityCreatedByDTO
 sidebar_label: EntityCreatedByDTO
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'EntityCreatedByDTO'] 
-slug: /tools/sdk/go/documentation/beta/models/entity-created-by-dto
+slug: /tools/sdk/go/beta/models/entity-created-by-dto
 tags: ['SDK', 'Software Development Kit', 'EntityCreatedByDTO']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: CreatePersonalAccessTokenResponse
 sidebar_label: CreatePersonalAccessTokenResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CreatePersonalAccessTokenResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/create-personal-access-token-response
+slug: /tools/sdk/go/beta/models/create-personal-access-token-response
 tags: ['SDK', 'Software Development Kit', 'CreatePersonalAccessTokenResponse']
 ---
 

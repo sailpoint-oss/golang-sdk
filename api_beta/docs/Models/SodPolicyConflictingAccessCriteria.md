@@ -5,7 +5,7 @@ pagination_label: SodPolicyConflictingAccessCriteria
 sidebar_label: SodPolicyConflictingAccessCriteria
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SodPolicyConflictingAccessCriteria'] 
-slug: /tools/sdk/go/documentation/beta/models/sod-policy-conflicting-access-criteria
+slug: /tools/sdk/go/beta/models/sod-policy-conflicting-access-criteria
 tags: ['SDK', 'Software Development Kit', 'SodPolicyConflictingAccessCriteria']
 ---
 

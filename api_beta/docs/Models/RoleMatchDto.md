@@ -5,7 +5,7 @@ pagination_label: RoleMatchDto
 sidebar_label: RoleMatchDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RoleMatchDto'] 
-slug: /tools/sdk/go/documentation/beta/models/role-match-dto
+slug: /tools/sdk/go/beta/models/role-match-dto
 tags: ['SDK', 'Software Development Kit', 'RoleMatchDto']
 ---
 

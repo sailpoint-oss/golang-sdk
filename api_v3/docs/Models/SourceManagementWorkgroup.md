@@ -5,7 +5,7 @@ pagination_label: SourceManagementWorkgroup
 sidebar_label: SourceManagementWorkgroup
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SourceManagementWorkgroup'] 
-slug: /tools/sdk/go/documentation/v3/models/source-management-workgroup
+slug: /tools/sdk/go/v3/models/source-management-workgroup
 tags: ['SDK', 'Software Development Kit', 'SourceManagementWorkgroup']
 ---
 

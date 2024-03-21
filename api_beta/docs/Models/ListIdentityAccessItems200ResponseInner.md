@@ -5,7 +5,7 @@ pagination_label: ListIdentityAccessItems200ResponseInner
 sidebar_label: ListIdentityAccessItems200ResponseInner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ListIdentityAccessItems200ResponseInner'] 
-slug: /tools/sdk/go/documentation/beta/models/list-identity-access-items200-response-inner
+slug: /tools/sdk/go/beta/models/list-identity-access-items200-response-inner
 tags: ['SDK', 'Software Development Kit', 'ListIdentityAccessItems200ResponseInner']
 ---
 

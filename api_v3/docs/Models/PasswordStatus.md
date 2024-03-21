@@ -5,7 +5,7 @@ pagination_label: PasswordStatus
 sidebar_label: PasswordStatus
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'PasswordStatus'] 
-slug: /tools/sdk/go/documentation/v3/models/password-status
+slug: /tools/sdk/go/v3/models/password-status
 tags: ['SDK', 'Software Development Kit', 'PasswordStatus']
 ---
 

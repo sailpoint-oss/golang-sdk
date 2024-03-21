@@ -5,7 +5,7 @@ pagination_label: ListFormInstancesByTenantResponse
 sidebar_label: ListFormInstancesByTenantResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ListFormInstancesByTenantResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/list-form-instances-by-tenant-response
+slug: /tools/sdk/go/beta/models/list-form-instances-by-tenant-response
 tags: ['SDK', 'Software Development Kit', 'ListFormInstancesByTenantResponse']
 ---
 

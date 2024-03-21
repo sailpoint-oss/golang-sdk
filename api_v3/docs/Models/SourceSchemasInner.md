@@ -5,7 +5,7 @@ pagination_label: SourceSchemasInner
 sidebar_label: SourceSchemasInner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SourceSchemasInner'] 
-slug: /tools/sdk/go/documentation/v3/models/source-schemas-inner
+slug: /tools/sdk/go/v3/models/source-schemas-inner
 tags: ['SDK', 'Software Development Kit', 'SourceSchemasInner']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: MultiPolicyRequest
 sidebar_label: MultiPolicyRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'MultiPolicyRequest'] 
-slug: /tools/sdk/go/documentation/beta/models/multi-policy-request
+slug: /tools/sdk/go/beta/models/multi-policy-request
 tags: ['SDK', 'Software Development Kit', 'MultiPolicyRequest']
 ---
 

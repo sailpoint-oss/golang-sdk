@@ -5,7 +5,7 @@ pagination_label: AccessRequestConfig
 sidebar_label: AccessRequestConfig
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessRequestConfig'] 
-slug: /tools/sdk/go/documentation/beta/models/access-request-config
+slug: /tools/sdk/go/beta/models/access-request-config
 tags: ['SDK', 'Software Development Kit', 'AccessRequestConfig']
 ---
 

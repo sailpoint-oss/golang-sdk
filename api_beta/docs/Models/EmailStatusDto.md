@@ -5,7 +5,7 @@ pagination_label: EmailStatusDto
 sidebar_label: EmailStatusDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'EmailStatusDto'] 
-slug: /tools/sdk/go/documentation/beta/models/email-status-dto
+slug: /tools/sdk/go/beta/models/email-status-dto
 tags: ['SDK', 'Software Development Kit', 'EmailStatusDto']
 ---
 

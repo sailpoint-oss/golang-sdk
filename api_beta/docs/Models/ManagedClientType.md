@@ -5,7 +5,7 @@ pagination_label: ManagedClientType
 sidebar_label: ManagedClientType
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ManagedClientType'] 
-slug: /tools/sdk/go/documentation/beta/models/managed-client-type
+slug: /tools/sdk/go/beta/models/managed-client-type
 tags: ['SDK', 'Software Development Kit', 'ManagedClientType']
 ---
 

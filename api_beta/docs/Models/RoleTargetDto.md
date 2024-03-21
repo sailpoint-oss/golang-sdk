@@ -5,7 +5,7 @@ pagination_label: RoleTargetDto
 sidebar_label: RoleTargetDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RoleTargetDto'] 
-slug: /tools/sdk/go/documentation/beta/models/role-target-dto
+slug: /tools/sdk/go/beta/models/role-target-dto
 tags: ['SDK', 'Software Development Kit', 'RoleTargetDto']
 ---
 

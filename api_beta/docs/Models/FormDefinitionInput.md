@@ -5,7 +5,7 @@ pagination_label: FormDefinitionInput
 sidebar_label: FormDefinitionInput
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'FormDefinitionInput'] 
-slug: /tools/sdk/go/documentation/beta/models/form-definition-input
+slug: /tools/sdk/go/beta/models/form-definition-input
 tags: ['SDK', 'Software Development Kit', 'FormDefinitionInput']
 ---
 

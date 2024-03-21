@@ -5,7 +5,7 @@ pagination_label: RoleMiningPotentialRoleProvisionState
 sidebar_label: RoleMiningPotentialRoleProvisionState
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RoleMiningPotentialRoleProvisionState'] 
-slug: /tools/sdk/go/documentation/beta/models/role-mining-potential-role-provision-state
+slug: /tools/sdk/go/beta/models/role-mining-potential-role-provision-state
 tags: ['SDK', 'Software Development Kit', 'RoleMiningPotentialRoleProvisionState']
 ---
 

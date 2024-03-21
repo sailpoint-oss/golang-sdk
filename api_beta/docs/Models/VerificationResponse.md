@@ -5,7 +5,7 @@ pagination_label: VerificationResponse
 sidebar_label: VerificationResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'VerificationResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/verification-response
+slug: /tools/sdk/go/beta/models/verification-response
 tags: ['SDK', 'Software Development Kit', 'VerificationResponse']
 ---
 

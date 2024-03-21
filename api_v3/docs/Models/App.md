@@ -5,7 +5,7 @@ pagination_label: App
 sidebar_label: App
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'App'] 
-slug: /tools/sdk/go/documentation/v3/models/app
+slug: /tools/sdk/go/v3/models/app
 tags: ['SDK', 'Software Development Kit', 'App']
 ---
 

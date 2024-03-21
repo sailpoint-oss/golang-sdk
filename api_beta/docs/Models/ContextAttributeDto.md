@@ -5,7 +5,7 @@ pagination_label: ContextAttributeDto
 sidebar_label: ContextAttributeDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ContextAttributeDto'] 
-slug: /tools/sdk/go/documentation/beta/models/context-attribute-dto
+slug: /tools/sdk/go/beta/models/context-attribute-dto
 tags: ['SDK', 'Software Development Kit', 'ContextAttributeDto']
 ---
 

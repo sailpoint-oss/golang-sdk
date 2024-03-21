@@ -5,7 +5,7 @@ pagination_label: CertificationCampaignFilters
 sidebar_label: CertificationCampaignFilters
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CertificationCampaignFilters'] 
-slug: /tools/sdk/go/documentation/v3/api/certification-campaign-filters
+slug: /tools/sdk/go/v3/methods/certification-campaign-filters
 tags: ['SDK', 'Software Development Kit', 'CertificationCampaignFilters']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: WorkItemsForm
 sidebar_label: WorkItemsForm
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'WorkItemsForm'] 
-slug: /tools/sdk/go/documentation/v3/models/work-items-form
+slug: /tools/sdk/go/v3/models/work-items-form
 tags: ['SDK', 'Software Development Kit', 'WorkItemsForm']
 ---
 

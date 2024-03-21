@@ -5,7 +5,7 @@ pagination_label: License
 sidebar_label: License
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'License'] 
-slug: /tools/sdk/go/documentation/beta/models/license
+slug: /tools/sdk/go/beta/models/license
 tags: ['SDK', 'Software Development Kit', 'License']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: GetPersonalAccessTokenResponse
 sidebar_label: GetPersonalAccessTokenResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'GetPersonalAccessTokenResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/get-personal-access-token-response
+slug: /tools/sdk/go/beta/models/get-personal-access-token-response
 tags: ['SDK', 'Software Development Kit', 'GetPersonalAccessTokenResponse']
 ---
 

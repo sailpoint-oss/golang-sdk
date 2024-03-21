@@ -5,7 +5,7 @@ pagination_label: Transforms
 sidebar_label: Transforms
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Transforms'] 
-slug: /tools/sdk/go/documentation/beta/api/transforms
+slug: /tools/sdk/go/beta/methods/transforms
 tags: ['SDK', 'Software Development Kit', 'Transforms']
 ---
 

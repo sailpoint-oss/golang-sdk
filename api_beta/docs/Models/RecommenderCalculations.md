@@ -5,7 +5,7 @@ pagination_label: RecommenderCalculations
 sidebar_label: RecommenderCalculations
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RecommenderCalculations'] 
-slug: /tools/sdk/go/documentation/beta/models/recommender-calculations
+slug: /tools/sdk/go/beta/models/recommender-calculations
 tags: ['SDK', 'Software Development Kit', 'RecommenderCalculations']
 ---
 

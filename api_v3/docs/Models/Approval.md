@@ -5,7 +5,7 @@ pagination_label: Approval
 sidebar_label: Approval
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Approval'] 
-slug: /tools/sdk/go/documentation/v3/models/approval
+slug: /tools/sdk/go/v3/models/approval
 tags: ['SDK', 'Software Development Kit', 'Approval']
 ---
 

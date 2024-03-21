@@ -5,7 +5,7 @@ pagination_label: IdentitySyncJob
 sidebar_label: IdentitySyncJob
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentitySyncJob'] 
-slug: /tools/sdk/go/documentation/beta/models/identity-sync-job
+slug: /tools/sdk/go/beta/models/identity-sync-job
 tags: ['SDK', 'Software Development Kit', 'IdentitySyncJob']
 ---
 

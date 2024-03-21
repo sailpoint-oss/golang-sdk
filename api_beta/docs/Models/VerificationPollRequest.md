@@ -5,7 +5,7 @@ pagination_label: VerificationPollRequest
 sidebar_label: VerificationPollRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'VerificationPollRequest'] 
-slug: /tools/sdk/go/documentation/beta/models/verification-poll-request
+slug: /tools/sdk/go/beta/models/verification-poll-request
 tags: ['SDK', 'Software Development Kit', 'VerificationPollRequest']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: ConnectedObject
 sidebar_label: ConnectedObject
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ConnectedObject'] 
-slug: /tools/sdk/go/documentation/beta/models/connected-object
+slug: /tools/sdk/go/beta/models/connected-object
 tags: ['SDK', 'Software Development Kit', 'ConnectedObject']
 ---
 

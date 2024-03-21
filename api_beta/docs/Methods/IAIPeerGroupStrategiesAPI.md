@@ -5,7 +5,7 @@ pagination_label: IAIPeerGroupStrategies
 sidebar_label: IAIPeerGroupStrategies
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IAIPeerGroupStrategies'] 
-slug: /tools/sdk/go/documentation/beta/api/iai-peer-group-strategies
+slug: /tools/sdk/go/beta/methods/iai-peer-group-strategies
 tags: ['SDK', 'Software Development Kit', 'IAIPeerGroupStrategies']
 ---
 

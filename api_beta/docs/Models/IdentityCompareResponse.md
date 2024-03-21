@@ -5,7 +5,7 @@ pagination_label: IdentityCompareResponse
 sidebar_label: IdentityCompareResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityCompareResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/identity-compare-response
+slug: /tools/sdk/go/beta/models/identity-compare-response
 tags: ['SDK', 'Software Development Kit', 'IdentityCompareResponse']
 ---
 

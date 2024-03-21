@@ -5,7 +5,7 @@ pagination_label: SourceAccountDeleted
 sidebar_label: SourceAccountDeleted
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SourceAccountDeleted'] 
-slug: /tools/sdk/go/documentation/beta/models/source-account-deleted
+slug: /tools/sdk/go/beta/models/source-account-deleted
 tags: ['SDK', 'Software Development Kit', 'SourceAccountDeleted']
 ---
 

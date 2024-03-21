@@ -5,7 +5,7 @@ pagination_label: PasswordSyncGroups
 sidebar_label: PasswordSyncGroups
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'PasswordSyncGroups'] 
-slug: /tools/sdk/go/documentation/beta/api/password-sync-groups
+slug: /tools/sdk/go/beta/methods/password-sync-groups
 tags: ['SDK', 'Software Development Kit', 'PasswordSyncGroups']
 ---
 

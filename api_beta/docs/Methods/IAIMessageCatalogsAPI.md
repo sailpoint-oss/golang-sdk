@@ -5,7 +5,7 @@ pagination_label: IAIMessageCatalogs
 sidebar_label: IAIMessageCatalogs
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IAIMessageCatalogs'] 
-slug: /tools/sdk/go/documentation/beta/api/iai-message-catalogs
+slug: /tools/sdk/go/beta/methods/iai-message-catalogs
 tags: ['SDK', 'Software Development Kit', 'IAIMessageCatalogs']
 ---
 

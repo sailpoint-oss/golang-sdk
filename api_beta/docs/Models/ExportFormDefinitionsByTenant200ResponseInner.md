@@ -5,7 +5,7 @@ pagination_label: ExportFormDefinitionsByTenant200ResponseInner
 sidebar_label: ExportFormDefinitionsByTenant200ResponseInner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ExportFormDefinitionsByTenant200ResponseInner'] 
-slug: /tools/sdk/go/documentation/beta/models/export-form-definitions-by-tenant200-response-inner
+slug: /tools/sdk/go/beta/models/export-form-definitions-by-tenant200-response-inner
 tags: ['SDK', 'Software Development Kit', 'ExportFormDefinitionsByTenant200ResponseInner']
 ---
 

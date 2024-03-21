@@ -5,7 +5,7 @@ pagination_label: SodReportResultDto
 sidebar_label: SodReportResultDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SodReportResultDto'] 
-slug: /tools/sdk/go/documentation/beta/models/sod-report-result-dto
+slug: /tools/sdk/go/beta/models/sod-report-result-dto
 tags: ['SDK', 'Software Development Kit', 'SodReportResultDto']
 ---
 

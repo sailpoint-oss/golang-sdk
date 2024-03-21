@@ -5,7 +5,7 @@ pagination_label: InnerHit
 sidebar_label: InnerHit
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'InnerHit'] 
-slug: /tools/sdk/go/documentation/v3/models/inner-hit
+slug: /tools/sdk/go/v3/models/inner-hit
 tags: ['SDK', 'Software Development Kit', 'InnerHit']
 ---
 

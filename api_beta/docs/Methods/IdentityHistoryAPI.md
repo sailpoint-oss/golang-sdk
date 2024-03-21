@@ -5,7 +5,7 @@ pagination_label: IdentityHistory
 sidebar_label: IdentityHistory
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityHistory'] 
-slug: /tools/sdk/go/documentation/beta/api/identity-history
+slug: /tools/sdk/go/beta/methods/identity-history
 tags: ['SDK', 'Software Development Kit', 'IdentityHistory']
 ---
 

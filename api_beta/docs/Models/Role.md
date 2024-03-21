@@ -5,7 +5,7 @@ pagination_label: Role
 sidebar_label: Role
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Role'] 
-slug: /tools/sdk/go/documentation/beta/models/role
+slug: /tools/sdk/go/beta/models/role
 tags: ['SDK', 'Software Development Kit', 'Role']
 ---
 

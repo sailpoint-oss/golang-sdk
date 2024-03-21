@@ -5,7 +5,7 @@ pagination_label: IdentityDocumentAllOfSource
 sidebar_label: IdentityDocumentAllOfSource
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityDocumentAllOfSource'] 
-slug: /tools/sdk/go/documentation/v3/models/identity-document-all-of-source
+slug: /tools/sdk/go/v3/models/identity-document-all-of-source
 tags: ['SDK', 'Software Development Kit', 'IdentityDocumentAllOfSource']
 ---
 

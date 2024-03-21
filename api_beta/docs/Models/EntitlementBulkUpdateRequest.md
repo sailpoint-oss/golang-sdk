@@ -5,7 +5,7 @@ pagination_label: EntitlementBulkUpdateRequest
 sidebar_label: EntitlementBulkUpdateRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'EntitlementBulkUpdateRequest'] 
-slug: /tools/sdk/go/documentation/beta/models/entitlement-bulk-update-request
+slug: /tools/sdk/go/beta/models/entitlement-bulk-update-request
 tags: ['SDK', 'Software Development Kit', 'EntitlementBulkUpdateRequest']
 ---
 

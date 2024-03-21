@@ -5,7 +5,7 @@ pagination_label: DomainAddress
 sidebar_label: DomainAddress
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'DomainAddress'] 
-slug: /tools/sdk/go/documentation/beta/models/domain-address
+slug: /tools/sdk/go/beta/models/domain-address
 tags: ['SDK', 'Software Development Kit', 'DomainAddress']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: RoleCriteriaLevel1
 sidebar_label: RoleCriteriaLevel1
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RoleCriteriaLevel1'] 
-slug: /tools/sdk/go/documentation/beta/models/role-criteria-level1
+slug: /tools/sdk/go/beta/models/role-criteria-level1
 tags: ['SDK', 'Software Development Kit', 'RoleCriteriaLevel1']
 ---
 

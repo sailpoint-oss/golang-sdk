@@ -5,7 +5,7 @@ pagination_label: DtoType
 sidebar_label: DtoType
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'DtoType'] 
-slug: /tools/sdk/go/documentation/beta/models/dto-type
+slug: /tools/sdk/go/beta/models/dto-type
 tags: ['SDK', 'Software Development Kit', 'DtoType']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: AccessSummary
 sidebar_label: AccessSummary
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessSummary'] 
-slug: /tools/sdk/go/documentation/v3/models/access-summary
+slug: /tools/sdk/go/v3/models/access-summary
 tags: ['SDK', 'Software Development Kit', 'AccessSummary']
 ---
 

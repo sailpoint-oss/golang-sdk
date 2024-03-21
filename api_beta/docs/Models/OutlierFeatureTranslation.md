@@ -5,7 +5,7 @@ pagination_label: OutlierFeatureTranslation
 sidebar_label: OutlierFeatureTranslation
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'OutlierFeatureTranslation'] 
-slug: /tools/sdk/go/documentation/beta/models/outlier-feature-translation
+slug: /tools/sdk/go/beta/models/outlier-feature-translation
 tags: ['SDK', 'Software Development Kit', 'OutlierFeatureTranslation']
 ---
 

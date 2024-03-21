@@ -5,7 +5,7 @@ pagination_label: FilterAggregation
 sidebar_label: FilterAggregation
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'FilterAggregation'] 
-slug: /tools/sdk/go/documentation/v3/models/filter-aggregation
+slug: /tools/sdk/go/v3/models/filter-aggregation
 tags: ['SDK', 'Software Development Kit', 'FilterAggregation']
 ---
 

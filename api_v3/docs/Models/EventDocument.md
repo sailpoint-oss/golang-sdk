@@ -5,7 +5,7 @@ pagination_label: EventDocument
 sidebar_label: EventDocument
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'EventDocument'] 
-slug: /tools/sdk/go/documentation/v3/models/event-document
+slug: /tools/sdk/go/v3/models/event-document
 tags: ['SDK', 'Software Development Kit', 'EventDocument']
 ---
 

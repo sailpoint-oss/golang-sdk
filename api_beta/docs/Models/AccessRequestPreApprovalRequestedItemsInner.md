@@ -5,7 +5,7 @@ pagination_label: AccessRequestPreApprovalRequestedItemsInner
 sidebar_label: AccessRequestPreApprovalRequestedItemsInner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessRequestPreApprovalRequestedItemsInner'] 
-slug: /tools/sdk/go/documentation/beta/models/access-request-pre-approval-requested-items-inner
+slug: /tools/sdk/go/beta/models/access-request-pre-approval-requested-items-inner
 tags: ['SDK', 'Software Development Kit', 'AccessRequestPreApprovalRequestedItemsInner']
 ---
 

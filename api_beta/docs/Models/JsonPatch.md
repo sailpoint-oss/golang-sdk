@@ -5,7 +5,7 @@ pagination_label: JsonPatch
 sidebar_label: JsonPatch
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'JsonPatch'] 
-slug: /tools/sdk/go/documentation/beta/models/json-patch
+slug: /tools/sdk/go/beta/models/json-patch
 tags: ['SDK', 'Software Development Kit', 'JsonPatch']
 ---
 

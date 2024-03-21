@@ -5,7 +5,7 @@ pagination_label: CampaignAlert
 sidebar_label: CampaignAlert
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CampaignAlert'] 
-slug: /tools/sdk/go/documentation/v3/models/campaign-alert
+slug: /tools/sdk/go/v3/models/campaign-alert
 tags: ['SDK', 'Software Development Kit', 'CampaignAlert']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: NonEmployeeSourceWithNECount
 sidebar_label: NonEmployeeSourceWithNECount
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'NonEmployeeSourceWithNECount'] 
-slug: /tools/sdk/go/documentation/v3/models/non-employee-source-with-ne-count
+slug: /tools/sdk/go/v3/models/non-employee-source-with-ne-count
 tags: ['SDK', 'Software Development Kit', 'NonEmployeeSourceWithNECount']
 ---
 

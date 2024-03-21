@@ -5,7 +5,7 @@ pagination_label: EventAttributes
 sidebar_label: EventAttributes
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'EventAttributes'] 
-slug: /tools/sdk/go/documentation/v3/models/event-attributes
+slug: /tools/sdk/go/v3/models/event-attributes
 tags: ['SDK', 'Software Development Kit', 'EventAttributes']
 ---
 

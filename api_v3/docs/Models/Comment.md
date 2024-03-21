@@ -5,7 +5,7 @@ pagination_label: Comment
 sidebar_label: Comment
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Comment'] 
-slug: /tools/sdk/go/documentation/v3/models/comment
+slug: /tools/sdk/go/v3/models/comment
 tags: ['SDK', 'Software Development Kit', 'Comment']
 ---
 

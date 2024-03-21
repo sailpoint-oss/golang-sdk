@@ -5,7 +5,7 @@ pagination_label: WorkflowLibraryTrigger
 sidebar_label: WorkflowLibraryTrigger
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'WorkflowLibraryTrigger'] 
-slug: /tools/sdk/go/documentation/beta/models/workflow-library-trigger
+slug: /tools/sdk/go/beta/models/workflow-library-trigger
 tags: ['SDK', 'Software Development Kit', 'WorkflowLibraryTrigger']
 ---
 

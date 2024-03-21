@@ -5,7 +5,7 @@ pagination_label: ManagedClientStatus
 sidebar_label: ManagedClientStatus
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ManagedClientStatus'] 
-slug: /tools/sdk/go/documentation/beta/models/managed-client-status
+slug: /tools/sdk/go/beta/models/managed-client-status
 tags: ['SDK', 'Software Development Kit', 'ManagedClientStatus']
 ---
 

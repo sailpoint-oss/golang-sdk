@@ -5,7 +5,7 @@ pagination_label: TaskStatus
 sidebar_label: TaskStatus
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'TaskStatus'] 
-slug: /tools/sdk/go/documentation/beta/models/task-status
+slug: /tools/sdk/go/beta/models/task-status
 tags: ['SDK', 'Software Development Kit', 'TaskStatus']
 ---
 

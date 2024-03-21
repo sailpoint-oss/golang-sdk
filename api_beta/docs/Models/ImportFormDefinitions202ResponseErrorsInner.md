@@ -5,7 +5,7 @@ pagination_label: ImportFormDefinitions202ResponseErrorsInner
 sidebar_label: ImportFormDefinitions202ResponseErrorsInner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ImportFormDefinitions202ResponseErrorsInner'] 
-slug: /tools/sdk/go/documentation/beta/models/import-form-definitions202-response-errors-inner
+slug: /tools/sdk/go/beta/models/import-form-definitions202-response-errors-inner
 tags: ['SDK', 'Software Development Kit', 'ImportFormDefinitions202ResponseErrorsInner']
 ---
 

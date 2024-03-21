@@ -5,7 +5,7 @@ pagination_label: IdentityDeletedIdentity
 sidebar_label: IdentityDeletedIdentity
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityDeletedIdentity'] 
-slug: /tools/sdk/go/documentation/beta/models/identity-deleted-identity
+slug: /tools/sdk/go/beta/models/identity-deleted-identity
 tags: ['SDK', 'Software Development Kit', 'IdentityDeletedIdentity']
 ---
 

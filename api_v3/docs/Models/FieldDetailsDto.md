@@ -5,7 +5,7 @@ pagination_label: FieldDetailsDto
 sidebar_label: FieldDetailsDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'FieldDetailsDto'] 
-slug: /tools/sdk/go/documentation/v3/models/field-details-dto
+slug: /tools/sdk/go/v3/models/field-details-dto
 tags: ['SDK', 'Software Development Kit', 'FieldDetailsDto']
 ---
 

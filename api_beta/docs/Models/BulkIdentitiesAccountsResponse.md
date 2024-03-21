@@ -5,7 +5,7 @@ pagination_label: BulkIdentitiesAccountsResponse
 sidebar_label: BulkIdentitiesAccountsResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'BulkIdentitiesAccountsResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/bulk-identities-accounts-response
+slug: /tools/sdk/go/beta/models/bulk-identities-accounts-response
 tags: ['SDK', 'Software Development Kit', 'BulkIdentitiesAccountsResponse']
 ---
 

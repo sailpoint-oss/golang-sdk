@@ -5,7 +5,7 @@ pagination_label: SodViolationContextCheckCompleted1
 sidebar_label: SodViolationContextCheckCompleted1
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SodViolationContextCheckCompleted1'] 
-slug: /tools/sdk/go/documentation/beta/models/sod-violation-context-check-completed1
+slug: /tools/sdk/go/beta/models/sod-violation-context-check-completed1
 tags: ['SDK', 'Software Development Kit', 'SodViolationContextCheckCompleted1']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: DeleteCampaignsRequest
 sidebar_label: DeleteCampaignsRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'DeleteCampaignsRequest'] 
-slug: /tools/sdk/go/documentation/beta/models/delete-campaigns-request
+slug: /tools/sdk/go/beta/models/delete-campaigns-request
 tags: ['SDK', 'Software Development Kit', 'DeleteCampaignsRequest']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: PostExternalExecuteWorkflow200Response
 sidebar_label: PostExternalExecuteWorkflow200Response
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'PostExternalExecuteWorkflow200Response'] 
-slug: /tools/sdk/go/documentation/beta/models/post-external-execute-workflow200-response
+slug: /tools/sdk/go/beta/models/post-external-execute-workflow200-response
 tags: ['SDK', 'Software Development Kit', 'PostExternalExecuteWorkflow200Response']
 ---
 

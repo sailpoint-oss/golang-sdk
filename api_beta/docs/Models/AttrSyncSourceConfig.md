@@ -5,7 +5,7 @@ pagination_label: AttrSyncSourceConfig
 sidebar_label: AttrSyncSourceConfig
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AttrSyncSourceConfig'] 
-slug: /tools/sdk/go/documentation/beta/models/attr-sync-source-config
+slug: /tools/sdk/go/beta/models/attr-sync-source-config
 tags: ['SDK', 'Software Development Kit', 'AttrSyncSourceConfig']
 ---
 

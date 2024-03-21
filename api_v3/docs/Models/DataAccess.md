@@ -5,7 +5,7 @@ pagination_label: DataAccess
 sidebar_label: DataAccess
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'DataAccess'] 
-slug: /tools/sdk/go/documentation/v3/models/data-access
+slug: /tools/sdk/go/v3/models/data-access
 tags: ['SDK', 'Software Development Kit', 'DataAccess']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: PasswordInfoAccount
 sidebar_label: PasswordInfoAccount
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'PasswordInfoAccount'] 
-slug: /tools/sdk/go/documentation/v3/models/password-info-account
+slug: /tools/sdk/go/v3/models/password-info-account
 tags: ['SDK', 'Software Development Kit', 'PasswordInfoAccount']
 ---
 

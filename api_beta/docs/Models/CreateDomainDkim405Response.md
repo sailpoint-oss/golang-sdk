@@ -5,7 +5,7 @@ pagination_label: CreateDomainDkim405Response
 sidebar_label: CreateDomainDkim405Response
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CreateDomainDkim405Response'] 
-slug: /tools/sdk/go/documentation/beta/models/create-domain-dkim405-response
+slug: /tools/sdk/go/beta/models/create-domain-dkim405-response
 tags: ['SDK', 'Software Development Kit', 'CreateDomainDkim405Response']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: ResourceBundleMessage
 sidebar_label: ResourceBundleMessage
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ResourceBundleMessage'] 
-slug: /tools/sdk/go/documentation/beta/models/resource-bundle-message
+slug: /tools/sdk/go/beta/models/resource-bundle-message
 tags: ['SDK', 'Software Development Kit', 'ResourceBundleMessage']
 ---
 

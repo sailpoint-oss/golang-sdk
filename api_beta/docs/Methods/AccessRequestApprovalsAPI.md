@@ -5,7 +5,7 @@ pagination_label: AccessRequestApprovals
 sidebar_label: AccessRequestApprovals
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessRequestApprovals'] 
-slug: /tools/sdk/go/documentation/beta/api/access-request-approvals
+slug: /tools/sdk/go/beta/methods/access-request-approvals
 tags: ['SDK', 'Software Development Kit', 'AccessRequestApprovals']
 ---
 

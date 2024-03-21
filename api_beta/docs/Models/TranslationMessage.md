@@ -5,7 +5,7 @@ pagination_label: TranslationMessage
 sidebar_label: TranslationMessage
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'TranslationMessage'] 
-slug: /tools/sdk/go/documentation/beta/models/translation-message
+slug: /tools/sdk/go/beta/models/translation-message
 tags: ['SDK', 'Software Development Kit', 'TranslationMessage']
 ---
 

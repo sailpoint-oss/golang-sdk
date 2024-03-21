@@ -5,7 +5,7 @@ pagination_label: Invocation
 sidebar_label: Invocation
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Invocation'] 
-slug: /tools/sdk/go/documentation/beta/models/invocation
+slug: /tools/sdk/go/beta/models/invocation
 tags: ['SDK', 'Software Development Kit', 'Invocation']
 ---
 

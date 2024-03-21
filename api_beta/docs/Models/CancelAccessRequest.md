@@ -5,7 +5,7 @@ pagination_label: CancelAccessRequest
 sidebar_label: CancelAccessRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CancelAccessRequest'] 
-slug: /tools/sdk/go/documentation/beta/models/cancel-access-request
+slug: /tools/sdk/go/beta/models/cancel-access-request
 tags: ['SDK', 'Software Development Kit', 'CancelAccessRequest']
 ---
 

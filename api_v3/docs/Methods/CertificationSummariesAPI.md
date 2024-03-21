@@ -5,7 +5,7 @@ pagination_label: CertificationSummaries
 sidebar_label: CertificationSummaries
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CertificationSummaries'] 
-slug: /tools/sdk/go/documentation/v3/api/certification-summaries
+slug: /tools/sdk/go/v3/methods/certification-summaries
 tags: ['SDK', 'Software Development Kit', 'CertificationSummaries']
 ---
 

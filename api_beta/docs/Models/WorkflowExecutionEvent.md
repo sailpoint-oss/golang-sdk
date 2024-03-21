@@ -5,7 +5,7 @@ pagination_label: WorkflowExecutionEvent
 sidebar_label: WorkflowExecutionEvent
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'WorkflowExecutionEvent'] 
-slug: /tools/sdk/go/documentation/beta/models/workflow-execution-event
+slug: /tools/sdk/go/beta/models/workflow-execution-event
 tags: ['SDK', 'Software Development Kit', 'WorkflowExecutionEvent']
 ---
 

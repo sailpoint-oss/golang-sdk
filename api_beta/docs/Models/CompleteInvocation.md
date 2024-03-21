@@ -5,7 +5,7 @@ pagination_label: CompleteInvocation
 sidebar_label: CompleteInvocation
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CompleteInvocation'] 
-slug: /tools/sdk/go/documentation/beta/models/complete-invocation
+slug: /tools/sdk/go/beta/models/complete-invocation
 tags: ['SDK', 'Software Development Kit', 'CompleteInvocation']
 ---
 

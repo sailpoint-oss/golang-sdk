@@ -5,7 +5,7 @@ pagination_label: GlobalTenantSecuritySettings
 sidebar_label: GlobalTenantSecuritySettings
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'GlobalTenantSecuritySettings'] 
-slug: /tools/sdk/go/documentation/v3/api/global-tenant-security-settings
+slug: /tools/sdk/go/v3/methods/global-tenant-security-settings
 tags: ['SDK', 'Software Development Kit', 'GlobalTenantSecuritySettings']
 ---
 

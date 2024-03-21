@@ -5,7 +5,7 @@ pagination_label: MetricType
 sidebar_label: MetricType
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'MetricType'] 
-slug: /tools/sdk/go/documentation/v3/models/metric-type
+slug: /tools/sdk/go/v3/models/metric-type
 tags: ['SDK', 'Software Development Kit', 'MetricType']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: ReviewReassign
 sidebar_label: ReviewReassign
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ReviewReassign'] 
-slug: /tools/sdk/go/documentation/beta/models/review-reassign
+slug: /tools/sdk/go/beta/models/review-reassign
 tags: ['SDK', 'Software Development Kit', 'ReviewReassign']
 ---
 

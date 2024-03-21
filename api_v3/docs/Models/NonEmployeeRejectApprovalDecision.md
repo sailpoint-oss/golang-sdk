@@ -5,7 +5,7 @@ pagination_label: NonEmployeeRejectApprovalDecision
 sidebar_label: NonEmployeeRejectApprovalDecision
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'NonEmployeeRejectApprovalDecision'] 
-slug: /tools/sdk/go/documentation/v3/models/non-employee-reject-approval-decision
+slug: /tools/sdk/go/v3/models/non-employee-reject-approval-decision
 tags: ['SDK', 'Software Development Kit', 'NonEmployeeRejectApprovalDecision']
 ---
 

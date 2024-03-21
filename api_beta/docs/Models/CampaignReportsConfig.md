@@ -5,7 +5,7 @@ pagination_label: CampaignReportsConfig
 sidebar_label: CampaignReportsConfig
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CampaignReportsConfig'] 
-slug: /tools/sdk/go/documentation/beta/models/campaign-reports-config
+slug: /tools/sdk/go/beta/models/campaign-reports-config
 tags: ['SDK', 'Software Development Kit', 'CampaignReportsConfig']
 ---
 

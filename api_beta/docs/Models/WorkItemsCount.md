@@ -5,7 +5,7 @@ pagination_label: WorkItemsCount
 sidebar_label: WorkItemsCount
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'WorkItemsCount'] 
-slug: /tools/sdk/go/documentation/beta/models/work-items-count
+slug: /tools/sdk/go/beta/models/work-items-count
 tags: ['SDK', 'Software Development Kit', 'WorkItemsCount']
 ---
 

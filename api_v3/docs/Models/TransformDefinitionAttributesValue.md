@@ -5,7 +5,7 @@ pagination_label: TransformDefinitionAttributesValue
 sidebar_label: TransformDefinitionAttributesValue
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'TransformDefinitionAttributesValue'] 
-slug: /tools/sdk/go/documentation/v3/models/transform-definition-attributes-value
+slug: /tools/sdk/go/v3/models/transform-definition-attributes-value
 tags: ['SDK', 'Software Development Kit', 'TransformDefinitionAttributesValue']
 ---
 

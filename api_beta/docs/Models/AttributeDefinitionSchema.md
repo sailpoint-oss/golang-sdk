@@ -5,7 +5,7 @@ pagination_label: AttributeDefinitionSchema
 sidebar_label: AttributeDefinitionSchema
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AttributeDefinitionSchema'] 
-slug: /tools/sdk/go/documentation/beta/models/attribute-definition-schema
+slug: /tools/sdk/go/beta/models/attribute-definition-schema
 tags: ['SDK', 'Software Development Kit', 'AttributeDefinitionSchema']
 ---
 

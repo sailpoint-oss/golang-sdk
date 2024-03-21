@@ -5,7 +5,7 @@ pagination_label: SourceCreatedActor
 sidebar_label: SourceCreatedActor
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SourceCreatedActor'] 
-slug: /tools/sdk/go/documentation/beta/models/source-created-actor
+slug: /tools/sdk/go/beta/models/source-created-actor
 tags: ['SDK', 'Software Development Kit', 'SourceCreatedActor']
 ---
 

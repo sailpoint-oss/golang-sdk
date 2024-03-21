@@ -5,7 +5,7 @@ pagination_label: Triggers
 sidebar_label: Triggers
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Triggers'] 
-slug: /tools/sdk/go/documentation/beta/api/triggers
+slug: /tools/sdk/go/beta/methods/triggers
 tags: ['SDK', 'Software Development Kit', 'Triggers']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: AccountRequestInfo
 sidebar_label: AccountRequestInfo
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccountRequestInfo'] 
-slug: /tools/sdk/go/documentation/beta/models/account-request-info
+slug: /tools/sdk/go/beta/models/account-request-info
 tags: ['SDK', 'Software Development Kit', 'AccountRequestInfo']
 ---
 

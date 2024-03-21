@@ -5,7 +5,7 @@ pagination_label: ReassignmentTrailDTO
 sidebar_label: ReassignmentTrailDTO
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ReassignmentTrailDTO'] 
-slug: /tools/sdk/go/documentation/v3/models/reassignment-trail-dto
+slug: /tools/sdk/go/v3/models/reassignment-trail-dto
 tags: ['SDK', 'Software Development Kit', 'ReassignmentTrailDTO']
 ---
 

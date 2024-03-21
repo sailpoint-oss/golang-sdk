@@ -5,7 +5,7 @@ pagination_label: ProvisioningCompletedAccountRequestsInner
 sidebar_label: ProvisioningCompletedAccountRequestsInner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ProvisioningCompletedAccountRequestsInner'] 
-slug: /tools/sdk/go/documentation/beta/models/provisioning-completed-account-requests-inner
+slug: /tools/sdk/go/beta/models/provisioning-completed-account-requests-inner
 tags: ['SDK', 'Software Development Kit', 'ProvisioningCompletedAccountRequestsInner']
 ---
 

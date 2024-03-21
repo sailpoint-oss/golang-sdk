@@ -5,7 +5,7 @@ pagination_label: NonEmployeeBulkUploadJob
 sidebar_label: NonEmployeeBulkUploadJob
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'NonEmployeeBulkUploadJob'] 
-slug: /tools/sdk/go/documentation/beta/models/non-employee-bulk-upload-job
+slug: /tools/sdk/go/beta/models/non-employee-bulk-upload-job
 tags: ['SDK', 'Software Development Kit', 'NonEmployeeBulkUploadJob']
 ---
 

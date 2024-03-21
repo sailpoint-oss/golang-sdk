@@ -5,7 +5,7 @@ pagination_label: AccessRequestPreApproval1
 sidebar_label: AccessRequestPreApproval1
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessRequestPreApproval1'] 
-slug: /tools/sdk/go/documentation/beta/models/access-request-pre-approval1
+slug: /tools/sdk/go/beta/models/access-request-pre-approval1
 tags: ['SDK', 'Software Development Kit', 'AccessRequestPreApproval1']
 ---
 

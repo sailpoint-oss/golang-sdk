@@ -5,7 +5,7 @@ pagination_label: PasswordManagement
 sidebar_label: PasswordManagement
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'PasswordManagement'] 
-slug: /tools/sdk/go/documentation/beta/api/password-management
+slug: /tools/sdk/go/beta/methods/password-management
 tags: ['SDK', 'Software Development Kit', 'PasswordManagement']
 ---
 

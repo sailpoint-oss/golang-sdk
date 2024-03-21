@@ -5,7 +5,7 @@ pagination_label: ApprovalStatusDtoCurrentOwner
 sidebar_label: ApprovalStatusDtoCurrentOwner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ApprovalStatusDtoCurrentOwner'] 
-slug: /tools/sdk/go/documentation/beta/models/approval-status-dto-current-owner
+slug: /tools/sdk/go/beta/models/approval-status-dto-current-owner
 tags: ['SDK', 'Software Development Kit', 'ApprovalStatusDtoCurrentOwner']
 ---
 

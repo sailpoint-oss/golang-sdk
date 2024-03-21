@@ -5,7 +5,7 @@ pagination_label: SODViolations
 sidebar_label: SODViolations
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SODViolations'] 
-slug: /tools/sdk/go/documentation/v3/api/sod-violations
+slug: /tools/sdk/go/v3/methods/sod-violations
 tags: ['SDK', 'Software Development Kit', 'SODViolations']
 ---
 

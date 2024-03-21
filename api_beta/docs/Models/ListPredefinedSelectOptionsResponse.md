@@ -5,7 +5,7 @@ pagination_label: ListPredefinedSelectOptionsResponse
 sidebar_label: ListPredefinedSelectOptionsResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ListPredefinedSelectOptionsResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/list-predefined-select-options-response
+slug: /tools/sdk/go/beta/models/list-predefined-select-options-response
 tags: ['SDK', 'Software Development Kit', 'ListPredefinedSelectOptionsResponse']
 ---
 

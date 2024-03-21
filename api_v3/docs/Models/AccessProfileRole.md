@@ -5,7 +5,7 @@ pagination_label: AccessProfileRole
 sidebar_label: AccessProfileRole
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessProfileRole'] 
-slug: /tools/sdk/go/documentation/v3/models/access-profile-role
+slug: /tools/sdk/go/v3/models/access-profile-role
 tags: ['SDK', 'Software Development Kit', 'AccessProfileRole']
 ---
 

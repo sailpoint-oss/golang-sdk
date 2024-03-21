@@ -5,7 +5,7 @@ pagination_label: ExpressionChildrenInner
 sidebar_label: ExpressionChildrenInner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ExpressionChildrenInner'] 
-slug: /tools/sdk/go/documentation/v3/models/expression-children-inner
+slug: /tools/sdk/go/v3/models/expression-children-inner
 tags: ['SDK', 'Software Development Kit', 'ExpressionChildrenInner']
 ---
 

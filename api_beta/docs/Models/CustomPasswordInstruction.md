@@ -5,7 +5,7 @@ pagination_label: CustomPasswordInstruction
 sidebar_label: CustomPasswordInstruction
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CustomPasswordInstruction'] 
-slug: /tools/sdk/go/documentation/beta/models/custom-password-instruction
+slug: /tools/sdk/go/beta/models/custom-password-instruction
 tags: ['SDK', 'Software Development Kit', 'CustomPasswordInstruction']
 ---
 

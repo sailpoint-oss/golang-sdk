@@ -5,7 +5,7 @@ pagination_label: PostExternalExecuteWorkflowRequest
 sidebar_label: PostExternalExecuteWorkflowRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'PostExternalExecuteWorkflowRequest'] 
-slug: /tools/sdk/go/documentation/beta/models/post-external-execute-workflow-request
+slug: /tools/sdk/go/beta/models/post-external-execute-workflow-request
 tags: ['SDK', 'Software Development Kit', 'PostExternalExecuteWorkflowRequest']
 ---
 

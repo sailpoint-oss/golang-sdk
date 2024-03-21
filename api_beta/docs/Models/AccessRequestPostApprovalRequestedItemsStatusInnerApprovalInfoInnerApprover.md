@@ -5,7 +5,7 @@ pagination_label: AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfo
 sidebar_label: AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover'] 
-slug: /tools/sdk/go/documentation/beta/models/access-request-post-approval-requested-items-status-inner-approval-info-inner-approver
+slug: /tools/sdk/go/beta/models/access-request-post-approval-requested-items-status-inner-approval-info-inner-approver
 tags: ['SDK', 'Software Development Kit', 'AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover']
 ---
 

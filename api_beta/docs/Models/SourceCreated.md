@@ -5,7 +5,7 @@ pagination_label: SourceCreated
 sidebar_label: SourceCreated
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SourceCreated'] 
-slug: /tools/sdk/go/documentation/beta/models/source-created
+slug: /tools/sdk/go/beta/models/source-created
 tags: ['SDK', 'Software Development Kit', 'SourceCreated']
 ---
 

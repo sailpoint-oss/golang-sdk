@@ -5,7 +5,7 @@ pagination_label: ApprovalSchemeForRole
 sidebar_label: ApprovalSchemeForRole
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ApprovalSchemeForRole'] 
-slug: /tools/sdk/go/documentation/beta/models/approval-scheme-for-role
+slug: /tools/sdk/go/beta/models/approval-scheme-for-role
 tags: ['SDK', 'Software Development Kit', 'ApprovalSchemeForRole']
 ---
 

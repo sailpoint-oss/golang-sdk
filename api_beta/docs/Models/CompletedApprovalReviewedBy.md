@@ -5,7 +5,7 @@ pagination_label: CompletedApprovalReviewedBy
 sidebar_label: CompletedApprovalReviewedBy
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CompletedApprovalReviewedBy'] 
-slug: /tools/sdk/go/documentation/beta/models/completed-approval-reviewed-by
+slug: /tools/sdk/go/beta/models/completed-approval-reviewed-by
 tags: ['SDK', 'Software Development Kit', 'CompletedApprovalReviewedBy']
 ---
 

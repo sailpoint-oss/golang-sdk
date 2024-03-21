@@ -5,7 +5,7 @@ pagination_label: Access
 sidebar_label: Access
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Access'] 
-slug: /tools/sdk/go/documentation/v3/models/access
+slug: /tools/sdk/go/v3/models/access
 tags: ['SDK', 'Software Development Kit', 'Access']
 ---
 

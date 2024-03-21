@@ -5,7 +5,7 @@ pagination_label: AccountsExportReportArguments
 sidebar_label: AccountsExportReportArguments
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccountsExportReportArguments'] 
-slug: /tools/sdk/go/documentation/v3/models/accounts-export-report-arguments
+slug: /tools/sdk/go/v3/models/accounts-export-report-arguments
 tags: ['SDK', 'Software Development Kit', 'AccountsExportReportArguments']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: IdentityCertDecisionSummary
 sidebar_label: IdentityCertDecisionSummary
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityCertDecisionSummary'] 
-slug: /tools/sdk/go/documentation/v3/models/identity-cert-decision-summary
+slug: /tools/sdk/go/v3/models/identity-cert-decision-summary
 tags: ['SDK', 'Software Development Kit', 'IdentityCertDecisionSummary']
 ---
 

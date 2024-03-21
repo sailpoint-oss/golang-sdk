@@ -5,7 +5,7 @@ pagination_label: PreApprovalTriggerDetails
 sidebar_label: PreApprovalTriggerDetails
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'PreApprovalTriggerDetails'] 
-slug: /tools/sdk/go/documentation/beta/models/pre-approval-trigger-details
+slug: /tools/sdk/go/beta/models/pre-approval-trigger-details
 tags: ['SDK', 'Software Development Kit', 'PreApprovalTriggerDetails']
 ---
 

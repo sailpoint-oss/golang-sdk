@@ -5,7 +5,7 @@ pagination_label: ConfigObject
 sidebar_label: ConfigObject
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ConfigObject'] 
-slug: /tools/sdk/go/documentation/beta/models/config-object
+slug: /tools/sdk/go/beta/models/config-object
 tags: ['SDK', 'Software Development Kit', 'ConfigObject']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: TestWorkflowRequest
 sidebar_label: TestWorkflowRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'TestWorkflowRequest'] 
-slug: /tools/sdk/go/documentation/beta/models/test-workflow-request
+slug: /tools/sdk/go/beta/models/test-workflow-request
 tags: ['SDK', 'Software Development Kit', 'TestWorkflowRequest']
 ---
 

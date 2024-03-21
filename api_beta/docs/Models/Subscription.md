@@ -5,7 +5,7 @@ pagination_label: Subscription
 sidebar_label: Subscription
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Subscription'] 
-slug: /tools/sdk/go/documentation/beta/models/subscription
+slug: /tools/sdk/go/beta/models/subscription
 tags: ['SDK', 'Software Development Kit', 'Subscription']
 ---
 

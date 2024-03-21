@@ -5,7 +5,7 @@ pagination_label: ProvisioningCriteriaOperation
 sidebar_label: ProvisioningCriteriaOperation
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ProvisioningCriteriaOperation'] 
-slug: /tools/sdk/go/documentation/beta/models/provisioning-criteria-operation
+slug: /tools/sdk/go/beta/models/provisioning-criteria-operation
 tags: ['SDK', 'Software Development Kit', 'ProvisioningCriteriaOperation']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: FormInstanceCreatedBy
 sidebar_label: FormInstanceCreatedBy
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'FormInstanceCreatedBy'] 
-slug: /tools/sdk/go/documentation/beta/models/form-instance-created-by
+slug: /tools/sdk/go/beta/models/form-instance-created-by
 tags: ['SDK', 'Software Development Kit', 'FormInstanceCreatedBy']
 ---
 

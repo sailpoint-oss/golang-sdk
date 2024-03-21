@@ -5,7 +5,7 @@ pagination_label: FullcampaignAllOfSearchCampaignInfo
 sidebar_label: FullcampaignAllOfSearchCampaignInfo
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'FullcampaignAllOfSearchCampaignInfo'] 
-slug: /tools/sdk/go/documentation/beta/models/fullcampaign-all-of-search-campaign-info
+slug: /tools/sdk/go/beta/models/fullcampaign-all-of-search-campaign-info
 tags: ['SDK', 'Software Development Kit', 'FullcampaignAllOfSearchCampaignInfo']
 ---
 

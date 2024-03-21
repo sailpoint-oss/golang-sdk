@@ -5,7 +5,7 @@ pagination_label: HttpDispatchMode
 sidebar_label: HttpDispatchMode
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'HttpDispatchMode'] 
-slug: /tools/sdk/go/documentation/beta/models/http-dispatch-mode
+slug: /tools/sdk/go/beta/models/http-dispatch-mode
 tags: ['SDK', 'Software Development Kit', 'HttpDispatchMode']
 ---
 

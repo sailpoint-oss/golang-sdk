@@ -5,7 +5,7 @@ pagination_label: SavedSearchCompleteSearchResults
 sidebar_label: SavedSearchCompleteSearchResults
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SavedSearchCompleteSearchResults'] 
-slug: /tools/sdk/go/documentation/beta/models/saved-search-complete-search-results
+slug: /tools/sdk/go/beta/models/saved-search-complete-search-results
 tags: ['SDK', 'Software Development Kit', 'SavedSearchCompleteSearchResults']
 ---
 

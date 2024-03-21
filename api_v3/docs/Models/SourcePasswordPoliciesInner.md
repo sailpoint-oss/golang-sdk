@@ -5,7 +5,7 @@ pagination_label: SourcePasswordPoliciesInner
 sidebar_label: SourcePasswordPoliciesInner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SourcePasswordPoliciesInner'] 
-slug: /tools/sdk/go/documentation/v3/models/source-password-policies-inner
+slug: /tools/sdk/go/v3/models/source-password-policies-inner
 tags: ['SDK', 'Software Development Kit', 'SourcePasswordPoliciesInner']
 ---
 

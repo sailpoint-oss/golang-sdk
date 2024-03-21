@@ -5,7 +5,7 @@ pagination_label: ListFormElementDataByElementIDResponse
 sidebar_label: ListFormElementDataByElementIDResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ListFormElementDataByElementIDResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/list-form-element-data-by-element-id-response
+slug: /tools/sdk/go/beta/models/list-form-element-data-by-element-id-response
 tags: ['SDK', 'Software Development Kit', 'ListFormElementDataByElementIDResponse']
 ---
 

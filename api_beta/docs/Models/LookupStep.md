@@ -5,7 +5,7 @@ pagination_label: LookupStep
 sidebar_label: LookupStep
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'LookupStep'] 
-slug: /tools/sdk/go/documentation/beta/models/lookup-step
+slug: /tools/sdk/go/beta/models/lookup-step
 tags: ['SDK', 'Software Development Kit', 'LookupStep']
 ---
 

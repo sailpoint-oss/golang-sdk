@@ -5,7 +5,7 @@ pagination_label: WorkReassignment
 sidebar_label: WorkReassignment
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'WorkReassignment'] 
-slug: /tools/sdk/go/documentation/beta/api/work-reassignment
+slug: /tools/sdk/go/beta/methods/work-reassignment
 tags: ['SDK', 'Software Development Kit', 'WorkReassignment']
 ---
 

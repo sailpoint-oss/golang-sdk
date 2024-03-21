@@ -5,7 +5,7 @@ pagination_label: AccessItemReviewedBy
 sidebar_label: AccessItemReviewedBy
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessItemReviewedBy'] 
-slug: /tools/sdk/go/documentation/beta/models/access-item-reviewed-by
+slug: /tools/sdk/go/beta/models/access-item-reviewed-by
 tags: ['SDK', 'Software Development Kit', 'AccessItemReviewedBy']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: AccessItemApproverDto
 sidebar_label: AccessItemApproverDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessItemApproverDto'] 
-slug: /tools/sdk/go/documentation/beta/models/access-item-approver-dto
+slug: /tools/sdk/go/beta/models/access-item-approver-dto
 tags: ['SDK', 'Software Development Kit', 'AccessItemApproverDto']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: WorkgroupDto
 sidebar_label: WorkgroupDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'WorkgroupDto'] 
-slug: /tools/sdk/go/documentation/beta/models/workgroup-dto
+slug: /tools/sdk/go/beta/models/workgroup-dto
 tags: ['SDK', 'Software Development Kit', 'WorkgroupDto']
 ---
 

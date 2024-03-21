@@ -5,7 +5,7 @@ pagination_label: LifecycleStates
 sidebar_label: LifecycleStates
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'LifecycleStates'] 
-slug: /tools/sdk/go/documentation/beta/api/lifecycle-states
+slug: /tools/sdk/go/beta/methods/lifecycle-states
 tags: ['SDK', 'Software Development Kit', 'LifecycleStates']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: AccountAttributes
 sidebar_label: AccountAttributes
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccountAttributes'] 
-slug: /tools/sdk/go/documentation/beta/models/account-attributes
+slug: /tools/sdk/go/beta/models/account-attributes
 tags: ['SDK', 'Software Development Kit', 'AccountAttributes']
 ---
 

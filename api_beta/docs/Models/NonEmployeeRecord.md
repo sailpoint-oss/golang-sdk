@@ -5,7 +5,7 @@ pagination_label: NonEmployeeRecord
 sidebar_label: NonEmployeeRecord
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'NonEmployeeRecord'] 
-slug: /tools/sdk/go/documentation/beta/models/non-employee-record
+slug: /tools/sdk/go/beta/models/non-employee-record
 tags: ['SDK', 'Software Development Kit', 'NonEmployeeRecord']
 ---
 

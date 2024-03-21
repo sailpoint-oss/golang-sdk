@@ -5,7 +5,7 @@ pagination_label: EntitlementSummary
 sidebar_label: EntitlementSummary
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'EntitlementSummary'] 
-slug: /tools/sdk/go/documentation/v3/models/entitlement-summary
+slug: /tools/sdk/go/v3/models/entitlement-summary
 tags: ['SDK', 'Software Development Kit', 'EntitlementSummary']
 ---
 

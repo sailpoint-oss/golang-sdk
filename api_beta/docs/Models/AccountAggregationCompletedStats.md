@@ -5,7 +5,7 @@ pagination_label: AccountAggregationCompletedStats
 sidebar_label: AccountAggregationCompletedStats
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccountAggregationCompletedStats'] 
-slug: /tools/sdk/go/documentation/beta/models/account-aggregation-completed-stats
+slug: /tools/sdk/go/beta/models/account-aggregation-completed-stats
 tags: ['SDK', 'Software Development Kit', 'AccountAggregationCompletedStats']
 ---
 

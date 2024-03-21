@@ -5,7 +5,7 @@ pagination_label: IdentityProfile1
 sidebar_label: IdentityProfile1
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityProfile1'] 
-slug: /tools/sdk/go/documentation/beta/models/identity-profile1
+slug: /tools/sdk/go/beta/models/identity-profile1
 tags: ['SDK', 'Software Development Kit', 'IdentityProfile1']
 ---
 

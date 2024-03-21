@@ -5,7 +5,7 @@ pagination_label: ConditionRule
 sidebar_label: ConditionRule
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ConditionRule'] 
-slug: /tools/sdk/go/documentation/beta/models/condition-rule
+slug: /tools/sdk/go/beta/models/condition-rule
 tags: ['SDK', 'Software Development Kit', 'ConditionRule']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: ViolationPrediction
 sidebar_label: ViolationPrediction
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ViolationPrediction'] 
-slug: /tools/sdk/go/documentation/beta/models/violation-prediction
+slug: /tools/sdk/go/beta/models/violation-prediction
 tags: ['SDK', 'Software Development Kit', 'ViolationPrediction']
 ---
 

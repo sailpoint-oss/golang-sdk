@@ -5,7 +5,7 @@ pagination_label: AccessRequestRecommendationActionItemResponseDto
 sidebar_label: AccessRequestRecommendationActionItemResponseDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessRequestRecommendationActionItemResponseDto'] 
-slug: /tools/sdk/go/documentation/beta/models/access-request-recommendation-action-item-response-dto
+slug: /tools/sdk/go/beta/models/access-request-recommendation-action-item-response-dto
 tags: ['SDK', 'Software Development Kit', 'AccessRequestRecommendationActionItemResponseDto']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: MetricAggregation
 sidebar_label: MetricAggregation
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'MetricAggregation'] 
-slug: /tools/sdk/go/documentation/v3/models/metric-aggregation
+slug: /tools/sdk/go/v3/models/metric-aggregation
 tags: ['SDK', 'Software Development Kit', 'MetricAggregation']
 ---
 

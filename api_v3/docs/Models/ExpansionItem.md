@@ -5,7 +5,7 @@ pagination_label: ExpansionItem
 sidebar_label: ExpansionItem
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ExpansionItem'] 
-slug: /tools/sdk/go/documentation/v3/models/expansion-item
+slug: /tools/sdk/go/v3/models/expansion-item
 tags: ['SDK', 'Software Development Kit', 'ExpansionItem']
 ---
 

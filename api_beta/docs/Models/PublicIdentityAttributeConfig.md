@@ -5,7 +5,7 @@ pagination_label: PublicIdentityAttributeConfig
 sidebar_label: PublicIdentityAttributeConfig
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'PublicIdentityAttributeConfig'] 
-slug: /tools/sdk/go/documentation/beta/models/public-identity-attribute-config
+slug: /tools/sdk/go/beta/models/public-identity-attribute-config
 tags: ['SDK', 'Software Development Kit', 'PublicIdentityAttributeConfig']
 ---
 

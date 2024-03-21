@@ -5,7 +5,7 @@ pagination_label: RoleMiningEntitlement
 sidebar_label: RoleMiningEntitlement
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RoleMiningEntitlement'] 
-slug: /tools/sdk/go/documentation/beta/models/role-mining-entitlement
+slug: /tools/sdk/go/beta/models/role-mining-entitlement
 tags: ['SDK', 'Software Development Kit', 'RoleMiningEntitlement']
 ---
 

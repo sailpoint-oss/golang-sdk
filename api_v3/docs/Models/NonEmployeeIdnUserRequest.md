@@ -5,7 +5,7 @@ pagination_label: NonEmployeeIdnUserRequest
 sidebar_label: NonEmployeeIdnUserRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'NonEmployeeIdnUserRequest'] 
-slug: /tools/sdk/go/documentation/v3/models/non-employee-idn-user-request
+slug: /tools/sdk/go/v3/models/non-employee-idn-user-request
 tags: ['SDK', 'Software Development Kit', 'NonEmployeeIdnUserRequest']
 ---
 

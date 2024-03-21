@@ -5,7 +5,7 @@ pagination_label: GrantType
 sidebar_label: GrantType
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'GrantType'] 
-slug: /tools/sdk/go/documentation/v3/models/grant-type
+slug: /tools/sdk/go/v3/models/grant-type
 tags: ['SDK', 'Software Development Kit', 'GrantType']
 ---
 

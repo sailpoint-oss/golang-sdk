@@ -5,7 +5,7 @@ pagination_label: PasswordOrgConfig
 sidebar_label: PasswordOrgConfig
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'PasswordOrgConfig'] 
-slug: /tools/sdk/go/documentation/beta/models/password-org-config
+slug: /tools/sdk/go/beta/models/password-org-config
 tags: ['SDK', 'Software Development Kit', 'PasswordOrgConfig']
 ---
 

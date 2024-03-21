@@ -5,7 +5,7 @@ pagination_label: WorkgroupBulkDeleteRequest
 sidebar_label: WorkgroupBulkDeleteRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'WorkgroupBulkDeleteRequest'] 
-slug: /tools/sdk/go/documentation/beta/models/workgroup-bulk-delete-request
+slug: /tools/sdk/go/beta/models/workgroup-bulk-delete-request
 tags: ['SDK', 'Software Development Kit', 'WorkgroupBulkDeleteRequest']
 ---
 

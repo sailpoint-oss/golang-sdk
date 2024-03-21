@@ -5,7 +5,7 @@ pagination_label: IdentityAttributesChangedChangesInnerOldValueOneOfValue
 sidebar_label: IdentityAttributesChangedChangesInnerOldValueOneOfValue
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityAttributesChangedChangesInnerOldValueOneOfValue'] 
-slug: /tools/sdk/go/documentation/beta/models/identity-attributes-changed-changes-inner-old-value-one-of-value
+slug: /tools/sdk/go/beta/models/identity-attributes-changed-changes-inner-old-value-one-of-value
 tags: ['SDK', 'Software Development Kit', 'IdentityAttributesChangedChangesInnerOldValueOneOfValue']
 ---
 

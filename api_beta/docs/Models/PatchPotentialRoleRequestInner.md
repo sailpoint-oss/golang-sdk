@@ -5,7 +5,7 @@ pagination_label: PatchPotentialRoleRequestInner
 sidebar_label: PatchPotentialRoleRequestInner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'PatchPotentialRoleRequestInner'] 
-slug: /tools/sdk/go/documentation/beta/models/patch-potential-role-request-inner
+slug: /tools/sdk/go/beta/models/patch-potential-role-request-inner
 tags: ['SDK', 'Software Development Kit', 'PatchPotentialRoleRequestInner']
 ---
 

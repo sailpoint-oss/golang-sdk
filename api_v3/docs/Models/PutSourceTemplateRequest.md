@@ -5,7 +5,7 @@ pagination_label: PutSourceTemplateRequest
 sidebar_label: PutSourceTemplateRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'PutSourceTemplateRequest'] 
-slug: /tools/sdk/go/documentation/v3/models/put-source-template-request
+slug: /tools/sdk/go/v3/models/put-source-template-request
 tags: ['SDK', 'Software Development Kit', 'PutSourceTemplateRequest']
 ---
 

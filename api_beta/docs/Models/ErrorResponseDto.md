@@ -5,7 +5,7 @@ pagination_label: ErrorResponseDto
 sidebar_label: ErrorResponseDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ErrorResponseDto'] 
-slug: /tools/sdk/go/documentation/beta/models/error-response-dto
+slug: /tools/sdk/go/beta/models/error-response-dto
 tags: ['SDK', 'Software Development Kit', 'ErrorResponseDto']
 ---
 

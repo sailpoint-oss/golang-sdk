@@ -5,7 +5,7 @@ pagination_label: TemplateBulkDeleteDto
 sidebar_label: TemplateBulkDeleteDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'TemplateBulkDeleteDto'] 
-slug: /tools/sdk/go/documentation/beta/models/template-bulk-delete-dto
+slug: /tools/sdk/go/beta/models/template-bulk-delete-dto
 tags: ['SDK', 'Software Development Kit', 'TemplateBulkDeleteDto']
 ---
 

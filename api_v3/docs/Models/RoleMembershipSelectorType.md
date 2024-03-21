@@ -5,7 +5,7 @@ pagination_label: RoleMembershipSelectorType
 sidebar_label: RoleMembershipSelectorType
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RoleMembershipSelectorType'] 
-slug: /tools/sdk/go/documentation/v3/models/role-membership-selector-type
+slug: /tools/sdk/go/v3/models/role-membership-selector-type
 tags: ['SDK', 'Software Development Kit', 'RoleMembershipSelectorType']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: NonEmployeeLifecycleManagement
 sidebar_label: NonEmployeeLifecycleManagement
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'NonEmployeeLifecycleManagement'] 
-slug: /tools/sdk/go/documentation/v3/api/non-employee-lifecycle-management
+slug: /tools/sdk/go/v3/methods/non-employee-lifecycle-management
 tags: ['SDK', 'Software Development Kit', 'NonEmployeeLifecycleManagement']
 ---
 

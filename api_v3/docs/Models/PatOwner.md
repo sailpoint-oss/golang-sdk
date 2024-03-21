@@ -5,7 +5,7 @@ pagination_label: PatOwner
 sidebar_label: PatOwner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'PatOwner'] 
-slug: /tools/sdk/go/documentation/v3/models/pat-owner
+slug: /tools/sdk/go/v3/models/pat-owner
 tags: ['SDK', 'Software Development Kit', 'PatOwner']
 ---
 

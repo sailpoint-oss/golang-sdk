@@ -5,7 +5,7 @@ pagination_label: ErrorMessage
 sidebar_label: ErrorMessage
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ErrorMessage'] 
-slug: /tools/sdk/go/documentation/beta/models/error-message
+slug: /tools/sdk/go/beta/models/error-message
 tags: ['SDK', 'Software Development Kit', 'ErrorMessage']
 ---
 

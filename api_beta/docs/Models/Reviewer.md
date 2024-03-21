@@ -5,7 +5,7 @@ pagination_label: Reviewer
 sidebar_label: Reviewer
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Reviewer'] 
-slug: /tools/sdk/go/documentation/beta/models/reviewer
+slug: /tools/sdk/go/beta/models/reviewer
 tags: ['SDK', 'Software Development Kit', 'Reviewer']
 ---
 

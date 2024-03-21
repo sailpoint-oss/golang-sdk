@@ -5,7 +5,7 @@ pagination_label: CertificationIdentitySummary
 sidebar_label: CertificationIdentitySummary
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CertificationIdentitySummary'] 
-slug: /tools/sdk/go/documentation/v3/models/certification-identity-summary
+slug: /tools/sdk/go/v3/models/certification-identity-summary
 tags: ['SDK', 'Software Development Kit', 'CertificationIdentitySummary']
 ---
 

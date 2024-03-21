@@ -5,7 +5,7 @@ pagination_label: IdentityDocumentAllOfIdentityProfile
 sidebar_label: IdentityDocumentAllOfIdentityProfile
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityDocumentAllOfIdentityProfile'] 
-slug: /tools/sdk/go/documentation/v3/models/identity-document-all-of-identity-profile
+slug: /tools/sdk/go/v3/models/identity-document-all-of-identity-profile
 tags: ['SDK', 'Software Development Kit', 'IdentityDocumentAllOfIdentityProfile']
 ---
 

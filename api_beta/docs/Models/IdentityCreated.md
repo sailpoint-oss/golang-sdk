@@ -5,7 +5,7 @@ pagination_label: IdentityCreated
 sidebar_label: IdentityCreated
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityCreated'] 
-slug: /tools/sdk/go/documentation/beta/models/identity-created
+slug: /tools/sdk/go/beta/models/identity-created
 tags: ['SDK', 'Software Development Kit', 'IdentityCreated']
 ---
 

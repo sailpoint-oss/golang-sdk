@@ -5,7 +5,7 @@ pagination_label: FormDefinitionDynamicSchemaRequestAttributes
 sidebar_label: FormDefinitionDynamicSchemaRequestAttributes
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'FormDefinitionDynamicSchemaRequestAttributes'] 
-slug: /tools/sdk/go/documentation/beta/models/form-definition-dynamic-schema-request-attributes
+slug: /tools/sdk/go/beta/models/form-definition-dynamic-schema-request-attributes
 tags: ['SDK', 'Software Development Kit', 'FormDefinitionDynamicSchemaRequestAttributes']
 ---
 

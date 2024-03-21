@@ -5,7 +5,7 @@ pagination_label: ViolationContext
 sidebar_label: ViolationContext
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ViolationContext'] 
-slug: /tools/sdk/go/documentation/beta/models/violation-context
+slug: /tools/sdk/go/beta/models/violation-context
 tags: ['SDK', 'Software Development Kit', 'ViolationContext']
 ---
 

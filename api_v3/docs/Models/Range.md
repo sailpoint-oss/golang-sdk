@@ -5,7 +5,7 @@ pagination_label: Range
 sidebar_label: Range
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Range'] 
-slug: /tools/sdk/go/documentation/v3/models/range
+slug: /tools/sdk/go/v3/models/range
 tags: ['SDK', 'Software Development Kit', 'Range']
 ---
 

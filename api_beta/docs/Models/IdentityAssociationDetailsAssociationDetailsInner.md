@@ -5,7 +5,7 @@ pagination_label: IdentityAssociationDetailsAssociationDetailsInner
 sidebar_label: IdentityAssociationDetailsAssociationDetailsInner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityAssociationDetailsAssociationDetailsInner'] 
-slug: /tools/sdk/go/documentation/beta/models/identity-association-details-association-details-inner
+slug: /tools/sdk/go/beta/models/identity-association-details-association-details-inner
 tags: ['SDK', 'Software Development Kit', 'IdentityAssociationDetailsAssociationDetailsInner']
 ---
 

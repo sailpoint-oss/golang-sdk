@@ -5,7 +5,7 @@ pagination_label: SetLifecycleStateRequest
 sidebar_label: SetLifecycleStateRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SetLifecycleStateRequest'] 
-slug: /tools/sdk/go/documentation/v3/models/set-lifecycle-state-request
+slug: /tools/sdk/go/v3/models/set-lifecycle-state-request
 tags: ['SDK', 'Software Development Kit', 'SetLifecycleStateRequest']
 ---
 

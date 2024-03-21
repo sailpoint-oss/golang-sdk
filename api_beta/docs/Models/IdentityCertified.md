@@ -5,7 +5,7 @@ pagination_label: IdentityCertified
 sidebar_label: IdentityCertified
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityCertified'] 
-slug: /tools/sdk/go/documentation/beta/models/identity-certified
+slug: /tools/sdk/go/beta/models/identity-certified
 tags: ['SDK', 'Software Development Kit', 'IdentityCertified']
 ---
 

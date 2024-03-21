@@ -5,7 +5,7 @@ pagination_label: AccountActivityItemOperation
 sidebar_label: AccountActivityItemOperation
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccountActivityItemOperation'] 
-slug: /tools/sdk/go/documentation/beta/models/account-activity-item-operation
+slug: /tools/sdk/go/beta/models/account-activity-item-operation
 tags: ['SDK', 'Software Development Kit', 'AccountActivityItemOperation']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: Schema
 sidebar_label: Schema
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Schema'] 
-slug: /tools/sdk/go/documentation/v3/models/schema
+slug: /tools/sdk/go/v3/models/schema
 tags: ['SDK', 'Software Development Kit', 'Schema']
 ---
 

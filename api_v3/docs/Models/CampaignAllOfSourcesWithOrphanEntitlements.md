@@ -5,7 +5,7 @@ pagination_label: CampaignAllOfSourcesWithOrphanEntitlements
 sidebar_label: CampaignAllOfSourcesWithOrphanEntitlements
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CampaignAllOfSourcesWithOrphanEntitlements'] 
-slug: /tools/sdk/go/documentation/v3/models/campaign-all-of-sources-with-orphan-entitlements
+slug: /tools/sdk/go/v3/models/campaign-all-of-sources-with-orphan-entitlements
 tags: ['SDK', 'Software Development Kit', 'CampaignAllOfSourcesWithOrphanEntitlements']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: ErrorMessageDto
 sidebar_label: ErrorMessageDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ErrorMessageDto'] 
-slug: /tools/sdk/go/documentation/beta/models/error-message-dto
+slug: /tools/sdk/go/beta/models/error-message-dto
 tags: ['SDK', 'Software Development Kit', 'ErrorMessageDto']
 ---
 

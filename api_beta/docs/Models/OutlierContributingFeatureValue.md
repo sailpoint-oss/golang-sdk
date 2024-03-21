@@ -5,7 +5,7 @@ pagination_label: OutlierContributingFeatureValue
 sidebar_label: OutlierContributingFeatureValue
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'OutlierContributingFeatureValue'] 
-slug: /tools/sdk/go/documentation/beta/models/outlier-contributing-feature-value
+slug: /tools/sdk/go/beta/models/outlier-contributing-feature-value
 tags: ['SDK', 'Software Development Kit', 'OutlierContributingFeatureValue']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: PasswordConfiguration
 sidebar_label: PasswordConfiguration
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'PasswordConfiguration'] 
-slug: /tools/sdk/go/documentation/beta/api/password-configuration
+slug: /tools/sdk/go/beta/methods/password-configuration
 tags: ['SDK', 'Software Development Kit', 'PasswordConfiguration']
 ---
 

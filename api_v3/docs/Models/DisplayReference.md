@@ -5,7 +5,7 @@ pagination_label: DisplayReference
 sidebar_label: DisplayReference
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'DisplayReference'] 
-slug: /tools/sdk/go/documentation/v3/models/display-reference
+slug: /tools/sdk/go/v3/models/display-reference
 tags: ['SDK', 'Software Development Kit', 'DisplayReference']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: CommonAccessItemAccess
 sidebar_label: CommonAccessItemAccess
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CommonAccessItemAccess'] 
-slug: /tools/sdk/go/documentation/beta/models/common-access-item-access
+slug: /tools/sdk/go/beta/models/common-access-item-access
 tags: ['SDK', 'Software Development Kit', 'CommonAccessItemAccess']
 ---
 

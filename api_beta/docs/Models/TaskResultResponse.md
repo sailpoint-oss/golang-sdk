@@ -5,7 +5,7 @@ pagination_label: TaskResultResponse
 sidebar_label: TaskResultResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'TaskResultResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/task-result-response
+slug: /tools/sdk/go/beta/models/task-result-response
 tags: ['SDK', 'Software Development Kit', 'TaskResultResponse']
 ---
 

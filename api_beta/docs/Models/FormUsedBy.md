@@ -5,7 +5,7 @@ pagination_label: FormUsedBy
 sidebar_label: FormUsedBy
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'FormUsedBy'] 
-slug: /tools/sdk/go/documentation/beta/models/form-used-by
+slug: /tools/sdk/go/beta/models/form-used-by
 tags: ['SDK', 'Software Development Kit', 'FormUsedBy']
 ---
 

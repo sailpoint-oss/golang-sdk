@@ -5,7 +5,7 @@ pagination_label: IdentityExceptionReportReference
 sidebar_label: IdentityExceptionReportReference
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityExceptionReportReference'] 
-slug: /tools/sdk/go/documentation/v3/models/identity-exception-report-reference
+slug: /tools/sdk/go/v3/models/identity-exception-report-reference
 tags: ['SDK', 'Software Development Kit', 'IdentityExceptionReportReference']
 ---
 

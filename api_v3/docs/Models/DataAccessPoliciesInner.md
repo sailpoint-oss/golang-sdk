@@ -5,7 +5,7 @@ pagination_label: DataAccessPoliciesInner
 sidebar_label: DataAccessPoliciesInner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'DataAccessPoliciesInner'] 
-slug: /tools/sdk/go/documentation/v3/models/data-access-policies-inner
+slug: /tools/sdk/go/v3/models/data-access-policies-inner
 tags: ['SDK', 'Software Development Kit', 'DataAccessPoliciesInner']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: CertificationPhase
 sidebar_label: CertificationPhase
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CertificationPhase'] 
-slug: /tools/sdk/go/documentation/beta/models/certification-phase
+slug: /tools/sdk/go/beta/models/certification-phase
 tags: ['SDK', 'Software Development Kit', 'CertificationPhase']
 ---
 

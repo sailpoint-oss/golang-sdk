@@ -5,7 +5,7 @@ pagination_label: FormElementPreviewRequest
 sidebar_label: FormElementPreviewRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'FormElementPreviewRequest'] 
-slug: /tools/sdk/go/documentation/beta/models/form-element-preview-request
+slug: /tools/sdk/go/beta/models/form-element-preview-request
 tags: ['SDK', 'Software Development Kit', 'FormElementPreviewRequest']
 ---
 

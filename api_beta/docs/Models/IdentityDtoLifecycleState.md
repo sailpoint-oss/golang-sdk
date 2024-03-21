@@ -5,7 +5,7 @@ pagination_label: IdentityDtoLifecycleState
 sidebar_label: IdentityDtoLifecycleState
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityDtoLifecycleState'] 
-slug: /tools/sdk/go/documentation/beta/models/identity-dto-lifecycle-state
+slug: /tools/sdk/go/beta/models/identity-dto-lifecycle-state
 tags: ['SDK', 'Software Development Kit', 'IdentityDtoLifecycleState']
 ---
 

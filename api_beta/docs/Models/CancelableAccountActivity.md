@@ -5,7 +5,7 @@ pagination_label: CancelableAccountActivity
 sidebar_label: CancelableAccountActivity
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CancelableAccountActivity'] 
-slug: /tools/sdk/go/documentation/beta/models/cancelable-account-activity
+slug: /tools/sdk/go/beta/models/cancelable-account-activity
 tags: ['SDK', 'Software Development Kit', 'CancelableAccountActivity']
 ---
 

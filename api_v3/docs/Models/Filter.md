@@ -5,7 +5,7 @@ pagination_label: Filter
 sidebar_label: Filter
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Filter'] 
-slug: /tools/sdk/go/documentation/v3/models/filter
+slug: /tools/sdk/go/v3/models/filter
 tags: ['SDK', 'Software Development Kit', 'Filter']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: Revocability
 sidebar_label: Revocability
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Revocability'] 
-slug: /tools/sdk/go/documentation/v3/models/revocability
+slug: /tools/sdk/go/v3/models/revocability
 tags: ['SDK', 'Software Development Kit', 'Revocability']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: RequestedItemStatusPreApprovalTriggerDetails
 sidebar_label: RequestedItemStatusPreApprovalTriggerDetails
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RequestedItemStatusPreApprovalTriggerDetails'] 
-slug: /tools/sdk/go/documentation/beta/models/requested-item-status-pre-approval-trigger-details
+slug: /tools/sdk/go/beta/models/requested-item-status-pre-approval-trigger-details
 tags: ['SDK', 'Software Development Kit', 'RequestedItemStatusPreApprovalTriggerDetails']
 ---
 

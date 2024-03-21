@@ -5,7 +5,7 @@ pagination_label: ExceptionCriteria
 sidebar_label: ExceptionCriteria
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ExceptionCriteria'] 
-slug: /tools/sdk/go/documentation/v3/models/exception-criteria
+slug: /tools/sdk/go/v3/models/exception-criteria
 tags: ['SDK', 'Software Development Kit', 'ExceptionCriteria']
 ---
 

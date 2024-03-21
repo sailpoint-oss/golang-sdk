@@ -5,7 +5,7 @@ pagination_label: RequestedItemStatusProvisioningDetails
 sidebar_label: RequestedItemStatusProvisioningDetails
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RequestedItemStatusProvisioningDetails'] 
-slug: /tools/sdk/go/documentation/beta/models/requested-item-status-provisioning-details
+slug: /tools/sdk/go/beta/models/requested-item-status-provisioning-details
 tags: ['SDK', 'Software Development Kit', 'RequestedItemStatusProvisioningDetails']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: SelfImportExportDto
 sidebar_label: SelfImportExportDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SelfImportExportDto'] 
-slug: /tools/sdk/go/documentation/beta/models/self-import-export-dto
+slug: /tools/sdk/go/beta/models/self-import-export-dto
 tags: ['SDK', 'Software Development Kit', 'SelfImportExportDto']
 ---
 

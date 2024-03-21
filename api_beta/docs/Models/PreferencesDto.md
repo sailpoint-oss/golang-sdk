@@ -5,7 +5,7 @@ pagination_label: PreferencesDto
 sidebar_label: PreferencesDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'PreferencesDto'] 
-slug: /tools/sdk/go/documentation/beta/models/preferences-dto
+slug: /tools/sdk/go/beta/models/preferences-dto
 tags: ['SDK', 'Software Development Kit', 'PreferencesDto']
 ---
 

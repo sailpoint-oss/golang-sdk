@@ -5,7 +5,7 @@ pagination_label: UpdateAccessProfilesInBulk412Response
 sidebar_label: UpdateAccessProfilesInBulk412Response
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'UpdateAccessProfilesInBulk412Response'] 
-slug: /tools/sdk/go/documentation/beta/models/update-access-profiles-in-bulk412-response
+slug: /tools/sdk/go/beta/models/update-access-profiles-in-bulk412-response
 tags: ['SDK', 'Software Development Kit', 'UpdateAccessProfilesInBulk412Response']
 ---
 

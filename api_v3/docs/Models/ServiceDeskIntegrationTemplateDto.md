@@ -5,7 +5,7 @@ pagination_label: ServiceDeskIntegrationTemplateDto
 sidebar_label: ServiceDeskIntegrationTemplateDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ServiceDeskIntegrationTemplateDto'] 
-slug: /tools/sdk/go/documentation/v3/models/service-desk-integration-template-dto
+slug: /tools/sdk/go/v3/models/service-desk-integration-template-dto
 tags: ['SDK', 'Software Development Kit', 'ServiceDeskIntegrationTemplateDto']
 ---
 

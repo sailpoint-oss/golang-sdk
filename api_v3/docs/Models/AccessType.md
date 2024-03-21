@@ -5,7 +5,7 @@ pagination_label: AccessType
 sidebar_label: AccessType
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessType'] 
-slug: /tools/sdk/go/documentation/v3/models/access-type
+slug: /tools/sdk/go/v3/models/access-type
 tags: ['SDK', 'Software Development Kit', 'AccessType']
 ---
 

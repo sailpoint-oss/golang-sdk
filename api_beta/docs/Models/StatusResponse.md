@@ -5,7 +5,7 @@ pagination_label: StatusResponse
 sidebar_label: StatusResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'StatusResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/status-response
+slug: /tools/sdk/go/beta/models/status-response
 tags: ['SDK', 'Software Development Kit', 'StatusResponse']
 ---
 

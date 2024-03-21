@@ -5,7 +5,7 @@ pagination_label: Query
 sidebar_label: Query
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Query'] 
-slug: /tools/sdk/go/documentation/v3/models/query
+slug: /tools/sdk/go/v3/models/query
 tags: ['SDK', 'Software Development Kit', 'Query']
 ---
 

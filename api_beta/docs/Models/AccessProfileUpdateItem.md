@@ -5,7 +5,7 @@ pagination_label: AccessProfileUpdateItem
 sidebar_label: AccessProfileUpdateItem
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessProfileUpdateItem'] 
-slug: /tools/sdk/go/documentation/beta/models/access-profile-update-item
+slug: /tools/sdk/go/beta/models/access-profile-update-item
 tags: ['SDK', 'Software Development Kit', 'AccessProfileUpdateItem']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: TypeAheadQuery
 sidebar_label: TypeAheadQuery
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'TypeAheadQuery'] 
-slug: /tools/sdk/go/documentation/v3/models/type-ahead-query
+slug: /tools/sdk/go/v3/models/type-ahead-query
 tags: ['SDK', 'Software Development Kit', 'TypeAheadQuery']
 ---
 

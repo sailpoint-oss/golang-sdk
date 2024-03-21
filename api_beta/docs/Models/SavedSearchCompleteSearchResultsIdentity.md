@@ -5,7 +5,7 @@ pagination_label: SavedSearchCompleteSearchResultsIdentity
 sidebar_label: SavedSearchCompleteSearchResultsIdentity
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SavedSearchCompleteSearchResultsIdentity'] 
-slug: /tools/sdk/go/documentation/beta/models/saved-search-complete-search-results-identity
+slug: /tools/sdk/go/beta/models/saved-search-complete-search-results-identity
 tags: ['SDK', 'Software Development Kit', 'SavedSearchCompleteSearchResultsIdentity']
 ---
 

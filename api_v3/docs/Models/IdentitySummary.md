@@ -5,7 +5,7 @@ pagination_label: IdentitySummary
 sidebar_label: IdentitySummary
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentitySummary'] 
-slug: /tools/sdk/go/documentation/v3/models/identity-summary
+slug: /tools/sdk/go/v3/models/identity-summary
 tags: ['SDK', 'Software Development Kit', 'IdentitySummary']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: SendTestNotificationRequestDto
 sidebar_label: SendTestNotificationRequestDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SendTestNotificationRequestDto'] 
-slug: /tools/sdk/go/documentation/beta/models/send-test-notification-request-dto
+slug: /tools/sdk/go/beta/models/send-test-notification-request-dto
 tags: ['SDK', 'Software Development Kit', 'SendTestNotificationRequestDto']
 ---
 

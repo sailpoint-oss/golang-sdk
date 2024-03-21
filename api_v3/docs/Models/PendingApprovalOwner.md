@@ -5,7 +5,7 @@ pagination_label: PendingApprovalOwner
 sidebar_label: PendingApprovalOwner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'PendingApprovalOwner'] 
-slug: /tools/sdk/go/documentation/v3/models/pending-approval-owner
+slug: /tools/sdk/go/v3/models/pending-approval-owner
 tags: ['SDK', 'Software Development Kit', 'PendingApprovalOwner']
 ---
 

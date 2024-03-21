@@ -5,7 +5,7 @@ pagination_label: Owns
 sidebar_label: Owns
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Owns'] 
-slug: /tools/sdk/go/documentation/v3/models/owns
+slug: /tools/sdk/go/v3/models/owns
 tags: ['SDK', 'Software Development Kit', 'Owns']
 ---
 

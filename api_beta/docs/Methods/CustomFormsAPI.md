@@ -5,7 +5,7 @@ pagination_label: CustomForms
 sidebar_label: CustomForms
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CustomForms'] 
-slug: /tools/sdk/go/documentation/beta/api/custom-forms
+slug: /tools/sdk/go/beta/methods/custom-forms
 tags: ['SDK', 'Software Development Kit', 'CustomForms']
 ---
 

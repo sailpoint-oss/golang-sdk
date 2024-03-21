@@ -5,7 +5,7 @@ pagination_label: AccessRequestPostApproval
 sidebar_label: AccessRequestPostApproval
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessRequestPostApproval'] 
-slug: /tools/sdk/go/documentation/beta/models/access-request-post-approval
+slug: /tools/sdk/go/beta/models/access-request-post-approval
 tags: ['SDK', 'Software Development Kit', 'AccessRequestPostApproval']
 ---
 

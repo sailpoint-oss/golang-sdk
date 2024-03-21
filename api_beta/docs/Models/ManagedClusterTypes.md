@@ -5,7 +5,7 @@ pagination_label: ManagedClusterTypes
 sidebar_label: ManagedClusterTypes
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ManagedClusterTypes'] 
-slug: /tools/sdk/go/documentation/beta/models/managed-cluster-types
+slug: /tools/sdk/go/beta/models/managed-cluster-types
 tags: ['SDK', 'Software Development Kit', 'ManagedClusterTypes']
 ---
 

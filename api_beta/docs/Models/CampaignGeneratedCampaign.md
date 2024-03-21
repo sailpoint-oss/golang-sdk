@@ -5,7 +5,7 @@ pagination_label: CampaignGeneratedCampaign
 sidebar_label: CampaignGeneratedCampaign
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CampaignGeneratedCampaign'] 
-slug: /tools/sdk/go/documentation/beta/models/campaign-generated-campaign
+slug: /tools/sdk/go/beta/models/campaign-generated-campaign
 tags: ['SDK', 'Software Development Kit', 'CampaignGeneratedCampaign']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: IAIAccessRequestRecommendations
 sidebar_label: IAIAccessRequestRecommendations
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IAIAccessRequestRecommendations'] 
-slug: /tools/sdk/go/documentation/beta/api/iai-access-request-recommendations
+slug: /tools/sdk/go/beta/methods/iai-access-request-recommendations
 tags: ['SDK', 'Software Development Kit', 'IAIAccessRequestRecommendations']
 ---
 

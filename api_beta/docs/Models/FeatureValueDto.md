@@ -5,7 +5,7 @@ pagination_label: FeatureValueDto
 sidebar_label: FeatureValueDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'FeatureValueDto'] 
-slug: /tools/sdk/go/documentation/beta/models/feature-value-dto
+slug: /tools/sdk/go/beta/models/feature-value-dto
 tags: ['SDK', 'Software Development Kit', 'FeatureValueDto']
 ---
 

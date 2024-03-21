@@ -5,7 +5,7 @@ pagination_label: CriteriaType
 sidebar_label: CriteriaType
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CriteriaType'] 
-slug: /tools/sdk/go/documentation/v3/models/criteria-type
+slug: /tools/sdk/go/v3/models/criteria-type
 tags: ['SDK', 'Software Development Kit', 'CriteriaType']
 ---
 

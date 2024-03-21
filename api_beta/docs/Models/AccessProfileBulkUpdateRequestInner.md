@@ -5,7 +5,7 @@ pagination_label: AccessProfileBulkUpdateRequestInner
 sidebar_label: AccessProfileBulkUpdateRequestInner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessProfileBulkUpdateRequestInner'] 
-slug: /tools/sdk/go/documentation/beta/models/access-profile-bulk-update-request-inner
+slug: /tools/sdk/go/beta/models/access-profile-bulk-update-request-inner
 tags: ['SDK', 'Software Development Kit', 'AccessProfileBulkUpdateRequestInner']
 ---
 

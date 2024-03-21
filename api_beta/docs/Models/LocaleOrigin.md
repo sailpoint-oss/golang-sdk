@@ -5,7 +5,7 @@ pagination_label: LocaleOrigin
 sidebar_label: LocaleOrigin
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'LocaleOrigin'] 
-slug: /tools/sdk/go/documentation/beta/models/locale-origin
+slug: /tools/sdk/go/beta/models/locale-origin
 tags: ['SDK', 'Software Development Kit', 'LocaleOrigin']
 ---
 

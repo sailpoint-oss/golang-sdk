@@ -5,7 +5,7 @@ pagination_label: AccessProfileUsage
 sidebar_label: AccessProfileUsage
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessProfileUsage'] 
-slug: /tools/sdk/go/documentation/v3/models/access-profile-usage
+slug: /tools/sdk/go/v3/models/access-profile-usage
 tags: ['SDK', 'Software Development Kit', 'AccessProfileUsage']
 ---
 

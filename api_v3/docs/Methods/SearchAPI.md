@@ -5,7 +5,7 @@ pagination_label: Search
 sidebar_label: Search
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Search'] 
-slug: /tools/sdk/go/documentation/v3/api/search
+slug: /tools/sdk/go/v3/methods/search
 tags: ['SDK', 'Software Development Kit', 'Search']
 ---
 

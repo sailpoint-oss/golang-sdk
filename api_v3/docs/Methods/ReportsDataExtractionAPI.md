@@ -5,7 +5,7 @@ pagination_label: ReportsDataExtraction
 sidebar_label: ReportsDataExtraction
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ReportsDataExtraction'] 
-slug: /tools/sdk/go/documentation/v3/api/reports-data-extraction
+slug: /tools/sdk/go/v3/methods/reports-data-extraction
 tags: ['SDK', 'Software Development Kit', 'ReportsDataExtraction']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: RoleMiningIdentity
 sidebar_label: RoleMiningIdentity
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RoleMiningIdentity'] 
-slug: /tools/sdk/go/documentation/beta/models/role-mining-identity
+slug: /tools/sdk/go/beta/models/role-mining-identity
 tags: ['SDK', 'Software Development Kit', 'RoleMiningIdentity']
 ---
 

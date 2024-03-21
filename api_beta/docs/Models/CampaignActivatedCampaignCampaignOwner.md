@@ -5,7 +5,7 @@ pagination_label: CampaignActivatedCampaignCampaignOwner
 sidebar_label: CampaignActivatedCampaignCampaignOwner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CampaignActivatedCampaignCampaignOwner'] 
-slug: /tools/sdk/go/documentation/beta/models/campaign-activated-campaign-campaign-owner
+slug: /tools/sdk/go/beta/models/campaign-activated-campaign-campaign-owner
 tags: ['SDK', 'Software Development Kit', 'CampaignActivatedCampaignCampaignOwner']
 ---
 

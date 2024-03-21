@@ -5,7 +5,7 @@ pagination_label: Connectors
 sidebar_label: Connectors
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Connectors'] 
-slug: /tools/sdk/go/documentation/beta/api/connectors
+slug: /tools/sdk/go/beta/methods/connectors
 tags: ['SDK', 'Software Development Kit', 'Connectors']
 ---
 

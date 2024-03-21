@@ -5,7 +5,7 @@ pagination_label: ForwardApprovalDto
 sidebar_label: ForwardApprovalDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ForwardApprovalDto'] 
-slug: /tools/sdk/go/documentation/v3/models/forward-approval-dto
+slug: /tools/sdk/go/v3/models/forward-approval-dto
 tags: ['SDK', 'Software Development Kit', 'ForwardApprovalDto']
 ---
 

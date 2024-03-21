@@ -5,7 +5,7 @@ pagination_label: ImportFormDefinitions202Response
 sidebar_label: ImportFormDefinitions202Response
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ImportFormDefinitions202Response'] 
-slug: /tools/sdk/go/documentation/beta/models/import-form-definitions202-response
+slug: /tools/sdk/go/beta/models/import-form-definitions202-response
 tags: ['SDK', 'Software Development Kit', 'ImportFormDefinitions202Response']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: AttributeDefinition
 sidebar_label: AttributeDefinition
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AttributeDefinition'] 
-slug: /tools/sdk/go/documentation/v3/models/attribute-definition
+slug: /tools/sdk/go/v3/models/attribute-definition
 tags: ['SDK', 'Software Development Kit', 'AttributeDefinition']
 ---
 

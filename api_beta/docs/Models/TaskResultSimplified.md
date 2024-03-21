@@ -5,7 +5,7 @@ pagination_label: TaskResultSimplified
 sidebar_label: TaskResultSimplified
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'TaskResultSimplified'] 
-slug: /tools/sdk/go/documentation/beta/models/task-result-simplified
+slug: /tools/sdk/go/beta/models/task-result-simplified
 tags: ['SDK', 'Software Development Kit', 'TaskResultSimplified']
 ---
 

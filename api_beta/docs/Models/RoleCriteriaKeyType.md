@@ -5,7 +5,7 @@ pagination_label: RoleCriteriaKeyType
 sidebar_label: RoleCriteriaKeyType
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RoleCriteriaKeyType'] 
-slug: /tools/sdk/go/documentation/beta/models/role-criteria-key-type
+slug: /tools/sdk/go/beta/models/role-criteria-key-type
 tags: ['SDK', 'Software Development Kit', 'RoleCriteriaKeyType']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: Operation
 sidebar_label: Operation
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Operation'] 
-slug: /tools/sdk/go/documentation/v3/models/operation
+slug: /tools/sdk/go/v3/models/operation
 tags: ['SDK', 'Software Development Kit', 'Operation']
 ---
 

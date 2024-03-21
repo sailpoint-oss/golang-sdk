@@ -5,7 +5,7 @@ pagination_label: ExecutionStatus
 sidebar_label: ExecutionStatus
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ExecutionStatus'] 
-slug: /tools/sdk/go/documentation/beta/models/execution-status
+slug: /tools/sdk/go/beta/models/execution-status
 tags: ['SDK', 'Software Development Kit', 'ExecutionStatus']
 ---
 

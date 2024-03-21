@@ -5,7 +5,7 @@ pagination_label: BaseAccess
 sidebar_label: BaseAccess
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'BaseAccess'] 
-slug: /tools/sdk/go/documentation/v3/models/base-access
+slug: /tools/sdk/go/v3/models/base-access
 tags: ['SDK', 'Software Development Kit', 'BaseAccess']
 ---
 

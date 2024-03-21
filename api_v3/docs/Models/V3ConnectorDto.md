@@ -5,7 +5,7 @@ pagination_label: V3ConnectorDto
 sidebar_label: V3ConnectorDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'V3ConnectorDto'] 
-slug: /tools/sdk/go/documentation/v3/models/v3-connector-dto
+slug: /tools/sdk/go/v3/models/v3-connector-dto
 tags: ['SDK', 'Software Development Kit', 'V3ConnectorDto']
 ---
 

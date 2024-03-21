@@ -5,7 +5,7 @@ pagination_label: SodPolicySchedule
 sidebar_label: SodPolicySchedule
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SodPolicySchedule'] 
-slug: /tools/sdk/go/documentation/beta/models/sod-policy-schedule
+slug: /tools/sdk/go/beta/models/sod-policy-schedule
 tags: ['SDK', 'Software Development Kit', 'SodPolicySchedule']
 ---
 

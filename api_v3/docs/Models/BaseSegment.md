@@ -5,7 +5,7 @@ pagination_label: BaseSegment
 sidebar_label: BaseSegment
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'BaseSegment'] 
-slug: /tools/sdk/go/documentation/v3/models/base-segment
+slug: /tools/sdk/go/v3/models/base-segment
 tags: ['SDK', 'Software Development Kit', 'BaseSegment']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: ScheduleType
 sidebar_label: ScheduleType
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ScheduleType'] 
-slug: /tools/sdk/go/documentation/v3/models/schedule-type
+slug: /tools/sdk/go/v3/models/schedule-type
 tags: ['SDK', 'Software Development Kit', 'ScheduleType']
 ---
 

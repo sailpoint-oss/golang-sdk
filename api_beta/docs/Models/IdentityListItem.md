@@ -5,7 +5,7 @@ pagination_label: IdentityListItem
 sidebar_label: IdentityListItem
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityListItem'] 
-slug: /tools/sdk/go/documentation/beta/models/identity-list-item
+slug: /tools/sdk/go/beta/models/identity-list-item
 tags: ['SDK', 'Software Development Kit', 'IdentityListItem']
 ---
 

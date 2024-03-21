@@ -5,7 +5,7 @@ pagination_label: PendingApprovalAction
 sidebar_label: PendingApprovalAction
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'PendingApprovalAction'] 
-slug: /tools/sdk/go/documentation/v3/models/pending-approval-action
+slug: /tools/sdk/go/v3/models/pending-approval-action
 tags: ['SDK', 'Software Development Kit', 'PendingApprovalAction']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: SearchAggregationSpecification
 sidebar_label: SearchAggregationSpecification
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SearchAggregationSpecification'] 
-slug: /tools/sdk/go/documentation/v3/models/search-aggregation-specification
+slug: /tools/sdk/go/v3/models/search-aggregation-specification
 tags: ['SDK', 'Software Development Kit', 'SearchAggregationSpecification']
 ---
 

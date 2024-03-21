@@ -5,7 +5,7 @@ pagination_label: GetRoleAssignments200ResponseInner
 sidebar_label: GetRoleAssignments200ResponseInner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'GetRoleAssignments200ResponseInner'] 
-slug: /tools/sdk/go/documentation/beta/models/get-role-assignments200-response-inner
+slug: /tools/sdk/go/beta/models/get-role-assignments200-response-inner
 tags: ['SDK', 'Software Development Kit', 'GetRoleAssignments200ResponseInner']
 ---
 

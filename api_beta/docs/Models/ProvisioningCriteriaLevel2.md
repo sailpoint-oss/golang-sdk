@@ -5,7 +5,7 @@ pagination_label: ProvisioningCriteriaLevel2
 sidebar_label: ProvisioningCriteriaLevel2
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ProvisioningCriteriaLevel2'] 
-slug: /tools/sdk/go/documentation/beta/models/provisioning-criteria-level2
+slug: /tools/sdk/go/beta/models/provisioning-criteria-level2
 tags: ['SDK', 'Software Development Kit', 'ProvisioningCriteriaLevel2']
 ---
 

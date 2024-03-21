@@ -5,7 +5,7 @@ pagination_label: AccountToggleRequest
 sidebar_label: AccountToggleRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccountToggleRequest'] 
-slug: /tools/sdk/go/documentation/v3/models/account-toggle-request
+slug: /tools/sdk/go/v3/models/account-toggle-request
 tags: ['SDK', 'Software Development Kit', 'AccountToggleRequest']
 ---
 

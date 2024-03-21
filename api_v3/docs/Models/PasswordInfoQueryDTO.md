@@ -5,7 +5,7 @@ pagination_label: PasswordInfoQueryDTO
 sidebar_label: PasswordInfoQueryDTO
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'PasswordInfoQueryDTO'] 
-slug: /tools/sdk/go/documentation/v3/models/password-info-query-dto
+slug: /tools/sdk/go/v3/models/password-info-query-dto
 tags: ['SDK', 'Software Development Kit', 'PasswordInfoQueryDTO']
 ---
 

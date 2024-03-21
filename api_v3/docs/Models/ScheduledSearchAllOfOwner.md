@@ -5,7 +5,7 @@ pagination_label: ScheduledSearchAllOfOwner
 sidebar_label: ScheduledSearchAllOfOwner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ScheduledSearchAllOfOwner'] 
-slug: /tools/sdk/go/documentation/v3/models/scheduled-search-all-of-owner
+slug: /tools/sdk/go/v3/models/scheduled-search-all-of-owner
 tags: ['SDK', 'Software Development Kit', 'ScheduledSearchAllOfOwner']
 ---
 

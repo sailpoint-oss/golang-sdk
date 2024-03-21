@@ -5,7 +5,7 @@ pagination_label: AccountCorrelatedSource
 sidebar_label: AccountCorrelatedSource
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccountCorrelatedSource'] 
-slug: /tools/sdk/go/documentation/beta/models/account-correlated-source
+slug: /tools/sdk/go/beta/models/account-correlated-source
 tags: ['SDK', 'Software Development Kit', 'AccountCorrelatedSource']
 ---
 

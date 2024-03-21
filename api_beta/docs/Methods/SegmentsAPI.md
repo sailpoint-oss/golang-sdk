@@ -5,7 +5,7 @@ pagination_label: Segments
 sidebar_label: Segments
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Segments'] 
-slug: /tools/sdk/go/documentation/beta/api/segments
+slug: /tools/sdk/go/beta/methods/segments
 tags: ['SDK', 'Software Development Kit', 'Segments']
 ---
 

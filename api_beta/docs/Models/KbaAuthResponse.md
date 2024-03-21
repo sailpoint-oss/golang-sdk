@@ -5,7 +5,7 @@ pagination_label: KbaAuthResponse
 sidebar_label: KbaAuthResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'KbaAuthResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/kba-auth-response
+slug: /tools/sdk/go/beta/models/kba-auth-response
 tags: ['SDK', 'Software Development Kit', 'KbaAuthResponse']
 ---
 

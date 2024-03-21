@@ -5,7 +5,7 @@ pagination_label: ProvisioningConfigManagedResourceRefsInner
 sidebar_label: ProvisioningConfigManagedResourceRefsInner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ProvisioningConfigManagedResourceRefsInner'] 
-slug: /tools/sdk/go/documentation/beta/models/provisioning-config-managed-resource-refs-inner
+slug: /tools/sdk/go/beta/models/provisioning-config-managed-resource-refs-inner
 tags: ['SDK', 'Software Development Kit', 'ProvisioningConfigManagedResourceRefsInner']
 ---
 

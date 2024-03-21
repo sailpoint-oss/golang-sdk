@@ -5,7 +5,7 @@ pagination_label: KbaAnswerRequestItem
 sidebar_label: KbaAnswerRequestItem
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'KbaAnswerRequestItem'] 
-slug: /tools/sdk/go/documentation/beta/models/kba-answer-request-item
+slug: /tools/sdk/go/beta/models/kba-answer-request-item
 tags: ['SDK', 'Software Development Kit', 'KbaAnswerRequestItem']
 ---
 

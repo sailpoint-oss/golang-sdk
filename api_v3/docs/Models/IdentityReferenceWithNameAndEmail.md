@@ -5,7 +5,7 @@ pagination_label: IdentityReferenceWithNameAndEmail
 sidebar_label: IdentityReferenceWithNameAndEmail
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityReferenceWithNameAndEmail'] 
-slug: /tools/sdk/go/documentation/v3/models/identity-reference-with-name-and-email
+slug: /tools/sdk/go/v3/models/identity-reference-with-name-and-email
 tags: ['SDK', 'Software Development Kit', 'IdentityReferenceWithNameAndEmail']
 ---
 

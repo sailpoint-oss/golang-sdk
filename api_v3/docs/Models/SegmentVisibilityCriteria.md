@@ -5,7 +5,7 @@ pagination_label: SegmentVisibilityCriteria
 sidebar_label: SegmentVisibilityCriteria
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SegmentVisibilityCriteria'] 
-slug: /tools/sdk/go/documentation/v3/models/segment-visibility-criteria
+slug: /tools/sdk/go/v3/models/segment-visibility-criteria
 tags: ['SDK', 'Software Development Kit', 'SegmentVisibilityCriteria']
 ---
 

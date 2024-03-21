@@ -5,7 +5,7 @@ pagination_label: SourceAccountCorrelationRule
 sidebar_label: SourceAccountCorrelationRule
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SourceAccountCorrelationRule'] 
-slug: /tools/sdk/go/documentation/beta/models/source-account-correlation-rule
+slug: /tools/sdk/go/beta/models/source-account-correlation-rule
 tags: ['SDK', 'Software Development Kit', 'SourceAccountCorrelationRule']
 ---
 

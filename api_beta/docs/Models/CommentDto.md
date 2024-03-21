@@ -5,7 +5,7 @@ pagination_label: CommentDto
 sidebar_label: CommentDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CommentDto'] 
-slug: /tools/sdk/go/documentation/beta/models/comment-dto
+slug: /tools/sdk/go/beta/models/comment-dto
 tags: ['SDK', 'Software Development Kit', 'CommentDto']
 ---
 

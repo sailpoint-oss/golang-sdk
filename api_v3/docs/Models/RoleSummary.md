@@ -5,7 +5,7 @@ pagination_label: RoleSummary
 sidebar_label: RoleSummary
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RoleSummary'] 
-slug: /tools/sdk/go/documentation/v3/models/role-summary
+slug: /tools/sdk/go/v3/models/role-summary
 tags: ['SDK', 'Software Development Kit', 'RoleSummary']
 ---
 

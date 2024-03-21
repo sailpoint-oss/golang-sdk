@@ -5,7 +5,7 @@ pagination_label: ListCampaignFilters200Response
 sidebar_label: ListCampaignFilters200Response
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ListCampaignFilters200Response'] 
-slug: /tools/sdk/go/documentation/v3/models/list-campaign-filters200-response
+slug: /tools/sdk/go/v3/models/list-campaign-filters200-response
 tags: ['SDK', 'Software Development Kit', 'ListCampaignFilters200Response']
 ---
 

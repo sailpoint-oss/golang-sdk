@@ -5,7 +5,7 @@ pagination_label: PatchServiceDeskIntegrationRequest
 sidebar_label: PatchServiceDeskIntegrationRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'PatchServiceDeskIntegrationRequest'] 
-slug: /tools/sdk/go/documentation/v3/models/patch-service-desk-integration-request
+slug: /tools/sdk/go/v3/models/patch-service-desk-integration-request
 tags: ['SDK', 'Software Development Kit', 'PatchServiceDeskIntegrationRequest']
 ---
 

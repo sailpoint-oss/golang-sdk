@@ -5,7 +5,7 @@ pagination_label: CampaignTemplate
 sidebar_label: CampaignTemplate
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CampaignTemplate'] 
-slug: /tools/sdk/go/documentation/v3/models/campaign-template
+slug: /tools/sdk/go/v3/models/campaign-template
 tags: ['SDK', 'Software Development Kit', 'CampaignTemplate']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: OutlierFeatureSummaryOutlierFeatureDisplayValuesInner
 sidebar_label: OutlierFeatureSummaryOutlierFeatureDisplayValuesInner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'OutlierFeatureSummaryOutlierFeatureDisplayValuesInner'] 
-slug: /tools/sdk/go/documentation/beta/models/outlier-feature-summary-outlier-feature-display-values-inner
+slug: /tools/sdk/go/beta/models/outlier-feature-summary-outlier-feature-display-values-inner
 tags: ['SDK', 'Software Development Kit', 'OutlierFeatureSummaryOutlierFeatureDisplayValuesInner']
 ---
 

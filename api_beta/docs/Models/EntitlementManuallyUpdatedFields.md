@@ -5,7 +5,7 @@ pagination_label: EntitlementManuallyUpdatedFields
 sidebar_label: EntitlementManuallyUpdatedFields
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'EntitlementManuallyUpdatedFields'] 
-slug: /tools/sdk/go/documentation/beta/models/entitlement-manually-updated-fields
+slug: /tools/sdk/go/beta/models/entitlement-manually-updated-fields
 tags: ['SDK', 'Software Development Kit', 'EntitlementManuallyUpdatedFields']
 ---
 

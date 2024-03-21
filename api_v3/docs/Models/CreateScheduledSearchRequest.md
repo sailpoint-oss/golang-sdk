@@ -5,7 +5,7 @@ pagination_label: CreateScheduledSearchRequest
 sidebar_label: CreateScheduledSearchRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CreateScheduledSearchRequest'] 
-slug: /tools/sdk/go/documentation/v3/models/create-scheduled-search-request
+slug: /tools/sdk/go/v3/models/create-scheduled-search-request
 tags: ['SDK', 'Software Development Kit', 'CreateScheduledSearchRequest']
 ---
 

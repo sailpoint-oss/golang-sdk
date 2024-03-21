@@ -5,7 +5,7 @@ pagination_label: SourceManagerCorrelationMapping
 sidebar_label: SourceManagerCorrelationMapping
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SourceManagerCorrelationMapping'] 
-slug: /tools/sdk/go/documentation/v3/models/source-manager-correlation-mapping
+slug: /tools/sdk/go/v3/models/source-manager-correlation-mapping
 tags: ['SDK', 'Software Development Kit', 'SourceManagerCorrelationMapping']
 ---
 

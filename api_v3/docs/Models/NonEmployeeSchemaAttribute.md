@@ -5,7 +5,7 @@ pagination_label: NonEmployeeSchemaAttribute
 sidebar_label: NonEmployeeSchemaAttribute
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'NonEmployeeSchemaAttribute'] 
-slug: /tools/sdk/go/documentation/v3/models/non-employee-schema-attribute
+slug: /tools/sdk/go/v3/models/non-employee-schema-attribute
 tags: ['SDK', 'Software Development Kit', 'NonEmployeeSchemaAttribute']
 ---
 

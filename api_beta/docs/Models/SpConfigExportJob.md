@@ -5,7 +5,7 @@ pagination_label: SpConfigExportJob
 sidebar_label: SpConfigExportJob
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SpConfigExportJob'] 
-slug: /tools/sdk/go/documentation/beta/models/sp-config-export-job
+slug: /tools/sdk/go/beta/models/sp-config-export-job
 tags: ['SDK', 'Software Development Kit', 'SpConfigExportJob']
 ---
 

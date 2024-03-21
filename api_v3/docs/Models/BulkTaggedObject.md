@@ -5,7 +5,7 @@ pagination_label: BulkTaggedObject
 sidebar_label: BulkTaggedObject
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'BulkTaggedObject'] 
-slug: /tools/sdk/go/documentation/v3/models/bulk-tagged-object
+slug: /tools/sdk/go/v3/models/bulk-tagged-object
 tags: ['SDK', 'Software Development Kit', 'BulkTaggedObject']
 ---
 

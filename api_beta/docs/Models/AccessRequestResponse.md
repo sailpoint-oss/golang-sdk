@@ -5,7 +5,7 @@ pagination_label: AccessRequestResponse
 sidebar_label: AccessRequestResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessRequestResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/access-request-response
+slug: /tools/sdk/go/beta/models/access-request-response
 tags: ['SDK', 'Software Development Kit', 'AccessRequestResponse']
 ---
 

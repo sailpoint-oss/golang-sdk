@@ -5,7 +5,7 @@ pagination_label: AccessItemOwnerDto
 sidebar_label: AccessItemOwnerDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessItemOwnerDto'] 
-slug: /tools/sdk/go/documentation/beta/models/access-item-owner-dto
+slug: /tools/sdk/go/beta/models/access-item-owner-dto
 tags: ['SDK', 'Software Development Kit', 'AccessItemOwnerDto']
 ---
 

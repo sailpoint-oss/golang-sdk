@@ -5,7 +5,7 @@ pagination_label: MfaConfigTestResponse
 sidebar_label: MfaConfigTestResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'MfaConfigTestResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/mfa-config-test-response
+slug: /tools/sdk/go/beta/models/mfa-config-test-response
 tags: ['SDK', 'Software Development Kit', 'MfaConfigTestResponse']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: MfaOktaConfig
 sidebar_label: MfaOktaConfig
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'MfaOktaConfig'] 
-slug: /tools/sdk/go/documentation/beta/models/mfa-okta-config
+slug: /tools/sdk/go/beta/models/mfa-okta-config
 tags: ['SDK', 'Software Development Kit', 'MfaOktaConfig']
 ---
 

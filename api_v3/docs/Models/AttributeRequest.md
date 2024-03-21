@@ -5,7 +5,7 @@ pagination_label: AttributeRequest
 sidebar_label: AttributeRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AttributeRequest'] 
-slug: /tools/sdk/go/documentation/v3/models/attribute-request
+slug: /tools/sdk/go/v3/models/attribute-request
 tags: ['SDK', 'Software Development Kit', 'AttributeRequest']
 ---
 

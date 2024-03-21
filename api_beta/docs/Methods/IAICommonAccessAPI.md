@@ -5,7 +5,7 @@ pagination_label: IAICommonAccess
 sidebar_label: IAICommonAccess
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IAICommonAccess'] 
-slug: /tools/sdk/go/documentation/beta/api/iai-common-access
+slug: /tools/sdk/go/beta/methods/iai-common-access
 tags: ['SDK', 'Software Development Kit', 'IAICommonAccess']
 ---
 

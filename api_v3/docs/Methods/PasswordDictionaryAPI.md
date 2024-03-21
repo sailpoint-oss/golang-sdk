@@ -5,7 +5,7 @@ pagination_label: PasswordDictionary
 sidebar_label: PasswordDictionary
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'PasswordDictionary'] 
-slug: /tools/sdk/go/documentation/v3/api/password-dictionary
+slug: /tools/sdk/go/v3/methods/password-dictionary
 tags: ['SDK', 'Software Development Kit', 'PasswordDictionary']
 ---
 

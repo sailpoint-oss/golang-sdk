@@ -5,7 +5,7 @@ pagination_label: TaskManagement
 sidebar_label: TaskManagement
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'TaskManagement'] 
-slug: /tools/sdk/go/documentation/beta/api/task-management
+slug: /tools/sdk/go/beta/methods/task-management
 tags: ['SDK', 'Software Development Kit', 'TaskManagement']
 ---
 

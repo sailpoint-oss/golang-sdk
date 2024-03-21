@@ -5,7 +5,7 @@ pagination_label: IdentityDocument
 sidebar_label: IdentityDocument
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityDocument'] 
-slug: /tools/sdk/go/documentation/v3/models/identity-document
+slug: /tools/sdk/go/v3/models/identity-document
 tags: ['SDK', 'Software Development Kit', 'IdentityDocument']
 ---
 

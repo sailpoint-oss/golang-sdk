@@ -5,7 +5,7 @@ pagination_label: IdentityWithNewAccess
 sidebar_label: IdentityWithNewAccess
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityWithNewAccess'] 
-slug: /tools/sdk/go/documentation/beta/models/identity-with-new-access
+slug: /tools/sdk/go/beta/models/identity-with-new-access
 tags: ['SDK', 'Software Development Kit', 'IdentityWithNewAccess']
 ---
 

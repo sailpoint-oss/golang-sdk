@@ -5,7 +5,7 @@ pagination_label: MFAController
 sidebar_label: MFAController
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'MFAController'] 
-slug: /tools/sdk/go/documentation/beta/api/mfa-controller
+slug: /tools/sdk/go/beta/methods/mfa-controller
 tags: ['SDK', 'Software Development Kit', 'MFAController']
 ---
 

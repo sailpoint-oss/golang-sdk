@@ -5,7 +5,7 @@ pagination_label: ActivityInsights
 sidebar_label: ActivityInsights
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ActivityInsights'] 
-slug: /tools/sdk/go/documentation/v3/models/activity-insights
+slug: /tools/sdk/go/v3/models/activity-insights
 tags: ['SDK', 'Software Development Kit', 'ActivityInsights']
 ---
 

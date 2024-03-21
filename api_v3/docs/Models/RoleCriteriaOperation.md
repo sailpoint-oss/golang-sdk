@@ -5,7 +5,7 @@ pagination_label: RoleCriteriaOperation
 sidebar_label: RoleCriteriaOperation
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RoleCriteriaOperation'] 
-slug: /tools/sdk/go/documentation/v3/models/role-criteria-operation
+slug: /tools/sdk/go/v3/models/role-criteria-operation
 tags: ['SDK', 'Software Development Kit', 'RoleCriteriaOperation']
 ---
 

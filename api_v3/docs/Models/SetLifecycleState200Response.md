@@ -5,7 +5,7 @@ pagination_label: SetLifecycleState200Response
 sidebar_label: SetLifecycleState200Response
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SetLifecycleState200Response'] 
-slug: /tools/sdk/go/documentation/v3/models/set-lifecycle-state200-response
+slug: /tools/sdk/go/v3/models/set-lifecycle-state200-response
 tags: ['SDK', 'Software Development Kit', 'SetLifecycleState200Response']
 ---
 

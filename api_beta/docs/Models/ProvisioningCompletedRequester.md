@@ -5,7 +5,7 @@ pagination_label: ProvisioningCompletedRequester
 sidebar_label: ProvisioningCompletedRequester
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ProvisioningCompletedRequester'] 
-slug: /tools/sdk/go/documentation/beta/models/provisioning-completed-requester
+slug: /tools/sdk/go/beta/models/provisioning-completed-requester
 tags: ['SDK', 'Software Development Kit', 'ProvisioningCompletedRequester']
 ---
 

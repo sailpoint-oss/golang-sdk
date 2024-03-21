@@ -5,7 +5,7 @@ pagination_label: QueuedCheckConfigDetails
 sidebar_label: QueuedCheckConfigDetails
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'QueuedCheckConfigDetails'] 
-slug: /tools/sdk/go/documentation/beta/models/queued-check-config-details
+slug: /tools/sdk/go/beta/models/queued-check-config-details
 tags: ['SDK', 'Software Development Kit', 'QueuedCheckConfigDetails']
 ---
 

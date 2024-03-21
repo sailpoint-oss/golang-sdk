@@ -5,7 +5,7 @@ pagination_label: PreviewDataSourceResponse
 sidebar_label: PreviewDataSourceResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'PreviewDataSourceResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/preview-data-source-response
+slug: /tools/sdk/go/beta/models/preview-data-source-response
 tags: ['SDK', 'Software Development Kit', 'PreviewDataSourceResponse']
 ---
 

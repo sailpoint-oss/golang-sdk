@@ -5,7 +5,7 @@ pagination_label: IdentityWithNewAccessAccessRefsInner
 sidebar_label: IdentityWithNewAccessAccessRefsInner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityWithNewAccessAccessRefsInner'] 
-slug: /tools/sdk/go/documentation/v3/models/identity-with-new-access-access-refs-inner
+slug: /tools/sdk/go/v3/models/identity-with-new-access-access-refs-inner
 tags: ['SDK', 'Software Development Kit', 'IdentityWithNewAccessAccessRefsInner']
 ---
 

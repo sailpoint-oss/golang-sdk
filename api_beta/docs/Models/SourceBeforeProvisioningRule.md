@@ -5,7 +5,7 @@ pagination_label: SourceBeforeProvisioningRule
 sidebar_label: SourceBeforeProvisioningRule
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SourceBeforeProvisioningRule'] 
-slug: /tools/sdk/go/documentation/beta/models/source-before-provisioning-rule
+slug: /tools/sdk/go/beta/models/source-before-provisioning-rule
 tags: ['SDK', 'Software Development Kit', 'SourceBeforeProvisioningRule']
 ---
 

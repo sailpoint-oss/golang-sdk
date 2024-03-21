@@ -5,7 +5,7 @@ pagination_label: PasswordDigitToken
 sidebar_label: PasswordDigitToken
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'PasswordDigitToken'] 
-slug: /tools/sdk/go/documentation/beta/models/password-digit-token
+slug: /tools/sdk/go/beta/models/password-digit-token
 tags: ['SDK', 'Software Development Kit', 'PasswordDigitToken']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: WorkflowBody
 sidebar_label: WorkflowBody
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'WorkflowBody'] 
-slug: /tools/sdk/go/documentation/beta/models/workflow-body
+slug: /tools/sdk/go/beta/models/workflow-body
 tags: ['SDK', 'Software Development Kit', 'WorkflowBody']
 ---
 

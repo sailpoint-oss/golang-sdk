@@ -5,7 +5,7 @@ pagination_label: Workflow
 sidebar_label: Workflow
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Workflow'] 
-slug: /tools/sdk/go/documentation/v3/models/workflow
+slug: /tools/sdk/go/v3/models/workflow
 tags: ['SDK', 'Software Development Kit', 'Workflow']
 ---
 

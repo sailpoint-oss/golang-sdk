@@ -5,7 +5,7 @@ pagination_label: IdentityCertificationTask
 sidebar_label: IdentityCertificationTask
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityCertificationTask'] 
-slug: /tools/sdk/go/documentation/beta/models/identity-certification-task
+slug: /tools/sdk/go/beta/models/identity-certification-task
 tags: ['SDK', 'Software Development Kit', 'IdentityCertificationTask']
 ---
 

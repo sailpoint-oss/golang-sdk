@@ -5,7 +5,7 @@ pagination_label: IdentityPreviewResponse
 sidebar_label: IdentityPreviewResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityPreviewResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/identity-preview-response
+slug: /tools/sdk/go/beta/models/identity-preview-response
 tags: ['SDK', 'Software Development Kit', 'IdentityPreviewResponse']
 ---
 

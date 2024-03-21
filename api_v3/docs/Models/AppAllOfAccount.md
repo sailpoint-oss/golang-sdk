@@ -5,7 +5,7 @@ pagination_label: AppAllOfAccount
 sidebar_label: AppAllOfAccount
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AppAllOfAccount'] 
-slug: /tools/sdk/go/documentation/v3/models/app-all-of-account
+slug: /tools/sdk/go/v3/models/app-all-of-account
 tags: ['SDK', 'Software Development Kit', 'AppAllOfAccount']
 ---
 

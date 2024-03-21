@@ -5,7 +5,7 @@ pagination_label: SourceUpdatedActor
 sidebar_label: SourceUpdatedActor
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SourceUpdatedActor'] 
-slug: /tools/sdk/go/documentation/beta/models/source-updated-actor
+slug: /tools/sdk/go/beta/models/source-updated-actor
 tags: ['SDK', 'Software Development Kit', 'SourceUpdatedActor']
 ---
 

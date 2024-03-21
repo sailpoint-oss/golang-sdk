@@ -5,7 +5,7 @@ pagination_label: AccountInfoDto
 sidebar_label: AccountInfoDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccountInfoDto'] 
-slug: /tools/sdk/go/documentation/beta/models/account-info-dto
+slug: /tools/sdk/go/beta/models/account-info-dto
 tags: ['SDK', 'Software Development Kit', 'AccountInfoDto']
 ---
 

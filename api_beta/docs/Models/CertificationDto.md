@@ -5,7 +5,7 @@ pagination_label: CertificationDto
 sidebar_label: CertificationDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CertificationDto'] 
-slug: /tools/sdk/go/documentation/beta/models/certification-dto
+slug: /tools/sdk/go/beta/models/certification-dto
 tags: ['SDK', 'Software Development Kit', 'CertificationDto']
 ---
 

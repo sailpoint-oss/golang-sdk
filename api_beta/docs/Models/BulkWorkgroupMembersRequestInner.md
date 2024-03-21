@@ -5,7 +5,7 @@ pagination_label: BulkWorkgroupMembersRequestInner
 sidebar_label: BulkWorkgroupMembersRequestInner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'BulkWorkgroupMembersRequestInner'] 
-slug: /tools/sdk/go/documentation/beta/models/bulk-workgroup-members-request-inner
+slug: /tools/sdk/go/beta/models/bulk-workgroup-members-request-inner
 tags: ['SDK', 'Software Development Kit', 'BulkWorkgroupMembersRequestInner']
 ---
 

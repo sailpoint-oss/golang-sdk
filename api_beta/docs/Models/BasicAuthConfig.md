@@ -5,7 +5,7 @@ pagination_label: BasicAuthConfig
 sidebar_label: BasicAuthConfig
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'BasicAuthConfig'] 
-slug: /tools/sdk/go/documentation/beta/models/basic-auth-config
+slug: /tools/sdk/go/beta/models/basic-auth-config
 tags: ['SDK', 'Software Development Kit', 'BasicAuthConfig']
 ---
 

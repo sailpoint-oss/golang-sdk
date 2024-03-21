@@ -5,7 +5,7 @@ pagination_label: SourceAccountCreated
 sidebar_label: SourceAccountCreated
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SourceAccountCreated'] 
-slug: /tools/sdk/go/documentation/beta/models/source-account-created
+slug: /tools/sdk/go/beta/models/source-account-created
 tags: ['SDK', 'Software Development Kit', 'SourceAccountCreated']
 ---
 

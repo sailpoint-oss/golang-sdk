@@ -5,7 +5,7 @@ pagination_label: CommonAccessItemResponse
 sidebar_label: CommonAccessItemResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CommonAccessItemResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/common-access-item-response
+slug: /tools/sdk/go/beta/models/common-access-item-response
 tags: ['SDK', 'Software Development Kit', 'CommonAccessItemResponse']
 ---
 

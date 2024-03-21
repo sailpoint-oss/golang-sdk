@@ -5,7 +5,7 @@ pagination_label: Source
 sidebar_label: Source
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Source'] 
-slug: /tools/sdk/go/documentation/v3/models/source
+slug: /tools/sdk/go/v3/models/source
 tags: ['SDK', 'Software Development Kit', 'Source']
 ---
 

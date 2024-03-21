@@ -5,7 +5,7 @@ pagination_label: TextQuery
 sidebar_label: TextQuery
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'TextQuery'] 
-slug: /tools/sdk/go/documentation/v3/models/text-query
+slug: /tools/sdk/go/v3/models/text-query
 tags: ['SDK', 'Software Development Kit', 'TextQuery']
 ---
 

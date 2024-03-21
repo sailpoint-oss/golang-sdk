@@ -5,7 +5,7 @@ pagination_label: ConfigTypeEnum
 sidebar_label: ConfigTypeEnum
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ConfigTypeEnum'] 
-slug: /tools/sdk/go/documentation/beta/models/config-type-enum
+slug: /tools/sdk/go/beta/models/config-type-enum
 tags: ['SDK', 'Software Development Kit', 'ConfigTypeEnum']
 ---
 

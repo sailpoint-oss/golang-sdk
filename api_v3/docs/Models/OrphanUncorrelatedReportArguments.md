@@ -5,7 +5,7 @@ pagination_label: OrphanUncorrelatedReportArguments
 sidebar_label: OrphanUncorrelatedReportArguments
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'OrphanUncorrelatedReportArguments'] 
-slug: /tools/sdk/go/documentation/v3/models/orphan-uncorrelated-report-arguments
+slug: /tools/sdk/go/v3/models/orphan-uncorrelated-report-arguments
 tags: ['SDK', 'Software Development Kit', 'OrphanUncorrelatedReportArguments']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: IAIOutliers
 sidebar_label: IAIOutliers
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IAIOutliers'] 
-slug: /tools/sdk/go/documentation/beta/api/iai-outliers
+slug: /tools/sdk/go/beta/methods/iai-outliers
 tags: ['SDK', 'Software Development Kit', 'IAIOutliers']
 ---
 

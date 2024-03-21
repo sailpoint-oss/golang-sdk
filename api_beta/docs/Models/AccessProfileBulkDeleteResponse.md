@@ -5,7 +5,7 @@ pagination_label: AccessProfileBulkDeleteResponse
 sidebar_label: AccessProfileBulkDeleteResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessProfileBulkDeleteResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/access-profile-bulk-delete-response
+slug: /tools/sdk/go/beta/models/access-profile-bulk-delete-response
 tags: ['SDK', 'Software Development Kit', 'AccessProfileBulkDeleteResponse']
 ---
 

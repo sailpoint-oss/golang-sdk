@@ -5,7 +5,7 @@ pagination_label: PeerGroupMember
 sidebar_label: PeerGroupMember
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'PeerGroupMember'] 
-slug: /tools/sdk/go/documentation/beta/models/peer-group-member
+slug: /tools/sdk/go/beta/models/peer-group-member
 tags: ['SDK', 'Software Development Kit', 'PeerGroupMember']
 ---
 

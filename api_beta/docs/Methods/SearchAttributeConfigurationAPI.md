@@ -5,7 +5,7 @@ pagination_label: SearchAttributeConfiguration
 sidebar_label: SearchAttributeConfiguration
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SearchAttributeConfiguration'] 
-slug: /tools/sdk/go/documentation/beta/api/search-attribute-configuration
+slug: /tools/sdk/go/beta/methods/search-attribute-configuration
 tags: ['SDK', 'Software Development Kit', 'SearchAttributeConfiguration']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: RoleInsightsInsight
 sidebar_label: RoleInsightsInsight
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RoleInsightsInsight'] 
-slug: /tools/sdk/go/documentation/beta/models/role-insights-insight
+slug: /tools/sdk/go/beta/models/role-insights-insight
 tags: ['SDK', 'Software Development Kit', 'RoleInsightsInsight']
 ---
 

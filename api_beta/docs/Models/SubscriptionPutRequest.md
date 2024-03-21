@@ -5,7 +5,7 @@ pagination_label: SubscriptionPutRequest
 sidebar_label: SubscriptionPutRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SubscriptionPutRequest'] 
-slug: /tools/sdk/go/documentation/beta/models/subscription-put-request
+slug: /tools/sdk/go/beta/models/subscription-put-request
 tags: ['SDK', 'Software Development Kit', 'SubscriptionPutRequest']
 ---
 

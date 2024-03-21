@@ -5,7 +5,7 @@ pagination_label: TestWorkflow200Response
 sidebar_label: TestWorkflow200Response
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'TestWorkflow200Response'] 
-slug: /tools/sdk/go/documentation/beta/models/test-workflow200-response
+slug: /tools/sdk/go/beta/models/test-workflow200-response
 tags: ['SDK', 'Software Development Kit', 'TestWorkflow200Response']
 ---
 

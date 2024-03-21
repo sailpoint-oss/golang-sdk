@@ -5,7 +5,7 @@ pagination_label: CreateExternalExecuteWorkflowRequest
 sidebar_label: CreateExternalExecuteWorkflowRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CreateExternalExecuteWorkflowRequest'] 
-slug: /tools/sdk/go/documentation/v3/models/create-external-execute-workflow-request
+slug: /tools/sdk/go/v3/models/create-external-execute-workflow-request
 tags: ['SDK', 'Software Development Kit', 'CreateExternalExecuteWorkflowRequest']
 ---
 

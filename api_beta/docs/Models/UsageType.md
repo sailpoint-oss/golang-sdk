@@ -5,7 +5,7 @@ pagination_label: UsageType
 sidebar_label: UsageType
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'UsageType'] 
-slug: /tools/sdk/go/documentation/beta/models/usage-type
+slug: /tools/sdk/go/beta/models/usage-type
 tags: ['SDK', 'Software Development Kit', 'UsageType']
 ---
 

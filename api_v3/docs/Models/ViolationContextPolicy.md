@@ -5,7 +5,7 @@ pagination_label: ViolationContextPolicy
 sidebar_label: ViolationContextPolicy
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ViolationContextPolicy'] 
-slug: /tools/sdk/go/documentation/v3/models/violation-context-policy
+slug: /tools/sdk/go/v3/models/violation-context-policy
 tags: ['SDK', 'Software Development Kit', 'ViolationContextPolicy']
 ---
 

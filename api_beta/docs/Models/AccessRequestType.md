@@ -5,7 +5,7 @@ pagination_label: AccessRequestType
 sidebar_label: AccessRequestType
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessRequestType'] 
-slug: /tools/sdk/go/documentation/beta/models/access-request-type
+slug: /tools/sdk/go/beta/models/access-request-type
 tags: ['SDK', 'Software Development Kit', 'AccessRequestType']
 ---
 

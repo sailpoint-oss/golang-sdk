@@ -5,7 +5,7 @@ pagination_label: Argument
 sidebar_label: Argument
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Argument'] 
-slug: /tools/sdk/go/documentation/beta/models/argument
+slug: /tools/sdk/go/beta/models/argument
 tags: ['SDK', 'Software Development Kit', 'Argument']
 ---
 

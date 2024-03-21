@@ -5,7 +5,7 @@ pagination_label: SpConfigJob
 sidebar_label: SpConfigJob
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SpConfigJob'] 
-slug: /tools/sdk/go/documentation/beta/models/sp-config-job
+slug: /tools/sdk/go/beta/models/sp-config-job
 tags: ['SDK', 'Software Development Kit', 'SpConfigJob']
 ---
 

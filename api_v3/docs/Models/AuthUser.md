@@ -5,7 +5,7 @@ pagination_label: AuthUser
 sidebar_label: AuthUser
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AuthUser'] 
-slug: /tools/sdk/go/documentation/v3/models/auth-user
+slug: /tools/sdk/go/v3/models/auth-user
 tags: ['SDK', 'Software Development Kit', 'AuthUser']
 ---
 

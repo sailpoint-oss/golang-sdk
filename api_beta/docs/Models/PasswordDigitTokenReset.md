@@ -5,7 +5,7 @@ pagination_label: PasswordDigitTokenReset
 sidebar_label: PasswordDigitTokenReset
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'PasswordDigitTokenReset'] 
-slug: /tools/sdk/go/documentation/beta/models/password-digit-token-reset
+slug: /tools/sdk/go/beta/models/password-digit-token-reset
 tags: ['SDK', 'Software Development Kit', 'PasswordDigitTokenReset']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: WorkItemForward
 sidebar_label: WorkItemForward
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'WorkItemForward'] 
-slug: /tools/sdk/go/documentation/beta/models/work-item-forward
+slug: /tools/sdk/go/beta/models/work-item-forward
 tags: ['SDK', 'Software Development Kit', 'WorkItemForward']
 ---
 

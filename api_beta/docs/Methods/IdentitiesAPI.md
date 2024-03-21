@@ -5,7 +5,7 @@ pagination_label: Identities
 sidebar_label: Identities
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Identities'] 
-slug: /tools/sdk/go/documentation/beta/api/identities
+slug: /tools/sdk/go/beta/methods/identities
 tags: ['SDK', 'Software Development Kit', 'Identities']
 ---
 

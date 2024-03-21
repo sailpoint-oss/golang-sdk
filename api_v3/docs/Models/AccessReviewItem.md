@@ -5,7 +5,7 @@ pagination_label: AccessReviewItem
 sidebar_label: AccessReviewItem
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessReviewItem'] 
-slug: /tools/sdk/go/documentation/v3/models/access-review-item
+slug: /tools/sdk/go/v3/models/access-review-item
 tags: ['SDK', 'Software Development Kit', 'AccessReviewItem']
 ---
 

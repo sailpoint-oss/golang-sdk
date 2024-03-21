@@ -5,7 +5,7 @@ pagination_label: NonEmployeeRequestLite
 sidebar_label: NonEmployeeRequestLite
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'NonEmployeeRequestLite'] 
-slug: /tools/sdk/go/documentation/beta/models/non-employee-request-lite
+slug: /tools/sdk/go/beta/models/non-employee-request-lite
 tags: ['SDK', 'Software Development Kit', 'NonEmployeeRequestLite']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: AccessItemRef
 sidebar_label: AccessItemRef
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessItemRef'] 
-slug: /tools/sdk/go/documentation/beta/models/access-item-ref
+slug: /tools/sdk/go/beta/models/access-item-ref
 tags: ['SDK', 'Software Development Kit', 'AccessItemRef']
 ---
 

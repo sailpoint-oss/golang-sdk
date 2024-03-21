@@ -5,7 +5,7 @@ pagination_label: Bound
 sidebar_label: Bound
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Bound'] 
-slug: /tools/sdk/go/documentation/v3/models/bound
+slug: /tools/sdk/go/v3/models/bound
 tags: ['SDK', 'Software Development Kit', 'Bound']
 ---
 

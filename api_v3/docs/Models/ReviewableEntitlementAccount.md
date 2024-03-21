@@ -5,7 +5,7 @@ pagination_label: ReviewableEntitlementAccount
 sidebar_label: ReviewableEntitlementAccount
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ReviewableEntitlementAccount'] 
-slug: /tools/sdk/go/documentation/v3/models/reviewable-entitlement-account
+slug: /tools/sdk/go/v3/models/reviewable-entitlement-account
 tags: ['SDK', 'Software Development Kit', 'ReviewableEntitlementAccount']
 ---
 

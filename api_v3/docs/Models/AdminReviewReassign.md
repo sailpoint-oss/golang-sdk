@@ -5,7 +5,7 @@ pagination_label: AdminReviewReassign
 sidebar_label: AdminReviewReassign
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AdminReviewReassign'] 
-slug: /tools/sdk/go/documentation/v3/models/admin-review-reassign
+slug: /tools/sdk/go/v3/models/admin-review-reassign
 tags: ['SDK', 'Software Development Kit', 'AdminReviewReassign']
 ---
 

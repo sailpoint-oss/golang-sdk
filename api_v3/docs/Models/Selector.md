@@ -5,7 +5,7 @@ pagination_label: Selector
 sidebar_label: Selector
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Selector'] 
-slug: /tools/sdk/go/documentation/v3/models/selector
+slug: /tools/sdk/go/v3/models/selector
 tags: ['SDK', 'Software Development Kit', 'Selector']
 ---
 

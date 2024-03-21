@@ -5,7 +5,7 @@ pagination_label: AccessItemAccessProfileResponse
 sidebar_label: AccessItemAccessProfileResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessItemAccessProfileResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/access-item-access-profile-response
+slug: /tools/sdk/go/beta/models/access-item-access-profile-response
 tags: ['SDK', 'Software Development Kit', 'AccessItemAccessProfileResponse']
 ---
 

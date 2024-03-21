@@ -5,7 +5,7 @@ pagination_label: NonEmployeeSourceRequestBody
 sidebar_label: NonEmployeeSourceRequestBody
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'NonEmployeeSourceRequestBody'] 
-slug: /tools/sdk/go/documentation/beta/models/non-employee-source-request-body
+slug: /tools/sdk/go/beta/models/non-employee-source-request-body
 tags: ['SDK', 'Software Development Kit', 'NonEmployeeSourceRequestBody']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: TriggerExampleInput
 sidebar_label: TriggerExampleInput
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'TriggerExampleInput'] 
-slug: /tools/sdk/go/documentation/beta/models/trigger-example-input
+slug: /tools/sdk/go/beta/models/trigger-example-input
 tags: ['SDK', 'Software Development Kit', 'TriggerExampleInput']
 ---
 

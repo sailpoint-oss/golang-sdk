@@ -5,7 +5,7 @@ pagination_label: IdentityAttributesChangedIdentity
 sidebar_label: IdentityAttributesChangedIdentity
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'IdentityAttributesChangedIdentity'] 
-slug: /tools/sdk/go/documentation/beta/models/identity-attributes-changed-identity
+slug: /tools/sdk/go/beta/models/identity-attributes-changed-identity
 tags: ['SDK', 'Software Development Kit', 'IdentityAttributesChangedIdentity']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: ConfigTypeEnumCamel
 sidebar_label: ConfigTypeEnumCamel
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ConfigTypeEnumCamel'] 
-slug: /tools/sdk/go/documentation/beta/models/config-type-enum-camel
+slug: /tools/sdk/go/beta/models/config-type-enum-camel
 tags: ['SDK', 'Software Development Kit', 'ConfigTypeEnumCamel']
 ---
 

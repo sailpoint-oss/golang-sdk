@@ -5,7 +5,7 @@ pagination_label: EntitlementSource
 sidebar_label: EntitlementSource
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'EntitlementSource'] 
-slug: /tools/sdk/go/documentation/v3/models/entitlement-source
+slug: /tools/sdk/go/v3/models/entitlement-source
 tags: ['SDK', 'Software Development Kit', 'EntitlementSource']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: CampaignActivatedCampaign
 sidebar_label: CampaignActivatedCampaign
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CampaignActivatedCampaign'] 
-slug: /tools/sdk/go/documentation/beta/models/campaign-activated-campaign
+slug: /tools/sdk/go/beta/models/campaign-activated-campaign
 tags: ['SDK', 'Software Development Kit', 'CampaignActivatedCampaign']
 ---
 

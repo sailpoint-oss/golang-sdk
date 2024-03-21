@@ -5,7 +5,7 @@ pagination_label: BaseCommonDto1
 sidebar_label: BaseCommonDto1
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'BaseCommonDto1'] 
-slug: /tools/sdk/go/documentation/beta/models/base-common-dto1
+slug: /tools/sdk/go/beta/models/base-common-dto1
 tags: ['SDK', 'Software Development Kit', 'BaseCommonDto1']
 ---
 

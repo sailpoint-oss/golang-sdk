@@ -5,7 +5,7 @@ pagination_label: CampaignFilterDetails
 sidebar_label: CampaignFilterDetails
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CampaignFilterDetails'] 
-slug: /tools/sdk/go/documentation/v3/models/campaign-filter-details
+slug: /tools/sdk/go/v3/models/campaign-filter-details
 tags: ['SDK', 'Software Development Kit', 'CampaignFilterDetails']
 ---
 

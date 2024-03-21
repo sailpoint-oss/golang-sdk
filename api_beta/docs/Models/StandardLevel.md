@@ -5,7 +5,7 @@ pagination_label: StandardLevel
 sidebar_label: StandardLevel
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'StandardLevel'] 
-slug: /tools/sdk/go/documentation/beta/models/standard-level
+slug: /tools/sdk/go/beta/models/standard-level
 tags: ['SDK', 'Software Development Kit', 'StandardLevel']
 ---
 

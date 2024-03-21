@@ -5,7 +5,7 @@ pagination_label: CommonAccessIDStatus
 sidebar_label: CommonAccessIDStatus
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CommonAccessIDStatus'] 
-slug: /tools/sdk/go/documentation/beta/models/common-access-id-status
+slug: /tools/sdk/go/beta/models/common-access-id-status
 tags: ['SDK', 'Software Development Kit', 'CommonAccessIDStatus']
 ---
 

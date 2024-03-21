@@ -5,7 +5,7 @@ pagination_label: SourceClusterDto
 sidebar_label: SourceClusterDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'SourceClusterDto'] 
-slug: /tools/sdk/go/documentation/beta/models/source-cluster-dto
+slug: /tools/sdk/go/beta/models/source-cluster-dto
 tags: ['SDK', 'Software Development Kit', 'SourceClusterDto']
 ---
 

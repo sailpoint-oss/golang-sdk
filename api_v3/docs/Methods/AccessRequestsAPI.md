@@ -5,7 +5,7 @@ pagination_label: AccessRequests
 sidebar_label: AccessRequests
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessRequests'] 
-slug: /tools/sdk/go/documentation/v3/api/access-requests
+slug: /tools/sdk/go/v3/methods/access-requests
 tags: ['SDK', 'Software Development Kit', 'AccessRequests']
 ---
 

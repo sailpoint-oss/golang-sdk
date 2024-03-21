@@ -5,7 +5,7 @@ pagination_label: ViolationOwnerAssignmentConfig
 sidebar_label: ViolationOwnerAssignmentConfig
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ViolationOwnerAssignmentConfig'] 
-slug: /tools/sdk/go/documentation/v3/models/violation-owner-assignment-config
+slug: /tools/sdk/go/v3/models/violation-owner-assignment-config
 tags: ['SDK', 'Software Development Kit', 'ViolationOwnerAssignmentConfig']
 ---
 

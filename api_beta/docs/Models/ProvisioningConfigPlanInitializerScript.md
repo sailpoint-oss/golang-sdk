@@ -5,7 +5,7 @@ pagination_label: ProvisioningConfigPlanInitializerScript
 sidebar_label: ProvisioningConfigPlanInitializerScript
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ProvisioningConfigPlanInitializerScript'] 
-slug: /tools/sdk/go/documentation/beta/models/provisioning-config-plan-initializer-script
+slug: /tools/sdk/go/beta/models/provisioning-config-plan-initializer-script
 tags: ['SDK', 'Software Development Kit', 'ProvisioningConfigPlanInitializerScript']
 ---
 

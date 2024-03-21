@@ -5,7 +5,7 @@ pagination_label: ManagedClusterAttributes
 sidebar_label: ManagedClusterAttributes
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ManagedClusterAttributes'] 
-slug: /tools/sdk/go/documentation/beta/models/managed-cluster-attributes
+slug: /tools/sdk/go/beta/models/managed-cluster-attributes
 tags: ['SDK', 'Software Development Kit', 'ManagedClusterAttributes']
 ---
 

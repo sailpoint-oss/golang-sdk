@@ -5,7 +5,7 @@ pagination_label: ValidateFilterOutputDto
 sidebar_label: ValidateFilterOutputDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ValidateFilterOutputDto'] 
-slug: /tools/sdk/go/documentation/beta/models/validate-filter-output-dto
+slug: /tools/sdk/go/beta/models/validate-filter-output-dto
 tags: ['SDK', 'Software Development Kit', 'ValidateFilterOutputDto']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: VAClusterStatusChangeEventPreviousHealthCheckResult
 sidebar_label: VAClusterStatusChangeEventPreviousHealthCheckResult
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'VAClusterStatusChangeEventPreviousHealthCheckResult'] 
-slug: /tools/sdk/go/documentation/beta/models/va-cluster-status-change-event-previous-health-check-result
+slug: /tools/sdk/go/beta/models/va-cluster-status-change-event-previous-health-check-result
 tags: ['SDK', 'Software Development Kit', 'VAClusterStatusChangeEventPreviousHealthCheckResult']
 ---
 

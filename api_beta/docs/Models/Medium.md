@@ -5,7 +5,7 @@ pagination_label: Medium
 sidebar_label: Medium
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Medium'] 
-slug: /tools/sdk/go/documentation/beta/models/medium
+slug: /tools/sdk/go/beta/models/medium
 tags: ['SDK', 'Software Development Kit', 'Medium']
 ---
 

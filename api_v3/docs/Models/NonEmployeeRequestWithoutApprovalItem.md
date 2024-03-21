@@ -5,7 +5,7 @@ pagination_label: NonEmployeeRequestWithoutApprovalItem
 sidebar_label: NonEmployeeRequestWithoutApprovalItem
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'NonEmployeeRequestWithoutApprovalItem'] 
-slug: /tools/sdk/go/documentation/v3/models/non-employee-request-without-approval-item
+slug: /tools/sdk/go/v3/models/non-employee-request-without-approval-item
 tags: ['SDK', 'Software Development Kit', 'NonEmployeeRequestWithoutApprovalItem']
 ---
 

@@ -5,7 +5,7 @@ pagination_label: CorrelatedGovernanceEvent
 sidebar_label: CorrelatedGovernanceEvent
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CorrelatedGovernanceEvent'] 
-slug: /tools/sdk/go/documentation/beta/models/correlated-governance-event
+slug: /tools/sdk/go/beta/models/correlated-governance-event
 tags: ['SDK', 'Software Development Kit', 'CorrelatedGovernanceEvent']
 ---
 

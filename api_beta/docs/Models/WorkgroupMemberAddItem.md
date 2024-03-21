@@ -5,7 +5,7 @@ pagination_label: WorkgroupMemberAddItem
 sidebar_label: WorkgroupMemberAddItem
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'WorkgroupMemberAddItem'] 
-slug: /tools/sdk/go/documentation/beta/models/workgroup-member-add-item
+slug: /tools/sdk/go/beta/models/workgroup-member-add-item
 tags: ['SDK', 'Software Development Kit', 'WorkgroupMemberAddItem']
 ---
 

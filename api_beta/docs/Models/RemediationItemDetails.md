@@ -5,7 +5,7 @@ pagination_label: RemediationItemDetails
 sidebar_label: RemediationItemDetails
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RemediationItemDetails'] 
-slug: /tools/sdk/go/documentation/beta/models/remediation-item-details
+slug: /tools/sdk/go/beta/models/remediation-item-details
 tags: ['SDK', 'Software Development Kit', 'RemediationItemDetails']
 ---
 

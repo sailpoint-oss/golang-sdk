@@ -5,7 +5,7 @@ pagination_label: OwnerReference
 sidebar_label: OwnerReference
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'OwnerReference'] 
-slug: /tools/sdk/go/documentation/beta/models/owner-reference
+slug: /tools/sdk/go/beta/models/owner-reference
 tags: ['SDK', 'Software Development Kit', 'OwnerReference']
 ---
 

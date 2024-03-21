@@ -5,7 +5,7 @@ pagination_label: ConnectorRuleResponse
 sidebar_label: ConnectorRuleResponse
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ConnectorRuleResponse'] 
-slug: /tools/sdk/go/documentation/beta/models/connector-rule-response
+slug: /tools/sdk/go/beta/models/connector-rule-response
 tags: ['SDK', 'Software Development Kit', 'ConnectorRuleResponse']
 ---
 

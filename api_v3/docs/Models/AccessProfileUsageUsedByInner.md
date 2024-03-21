@@ -5,7 +5,7 @@ pagination_label: AccessProfileUsageUsedByInner
 sidebar_label: AccessProfileUsageUsedByInner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessProfileUsageUsedByInner'] 
-slug: /tools/sdk/go/documentation/v3/models/access-profile-usage-used-by-inner
+slug: /tools/sdk/go/v3/models/access-profile-usage-used-by-inner
 tags: ['SDK', 'Software Development Kit', 'AccessProfileUsageUsedByInner']
 ---
 

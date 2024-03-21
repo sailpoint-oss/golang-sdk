@@ -5,7 +5,7 @@ pagination_label: RoleMiningPotentialRoleEditEntitlements
 sidebar_label: RoleMiningPotentialRoleEditEntitlements
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RoleMiningPotentialRoleEditEntitlements'] 
-slug: /tools/sdk/go/documentation/beta/models/role-mining-potential-role-edit-entitlements
+slug: /tools/sdk/go/beta/models/role-mining-potential-role-edit-entitlements
 tags: ['SDK', 'Software Development Kit', 'RoleMiningPotentialRoleEditEntitlements']
 ---
 

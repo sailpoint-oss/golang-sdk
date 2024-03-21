@@ -5,7 +5,7 @@ pagination_label: BeforeProvisioningRuleDto
 sidebar_label: BeforeProvisioningRuleDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'BeforeProvisioningRuleDto'] 
-slug: /tools/sdk/go/documentation/beta/models/before-provisioning-rule-dto
+slug: /tools/sdk/go/beta/models/before-provisioning-rule-dto
 tags: ['SDK', 'Software Development Kit', 'BeforeProvisioningRuleDto']
 ---
 

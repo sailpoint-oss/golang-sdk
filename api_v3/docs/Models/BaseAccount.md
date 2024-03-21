@@ -5,7 +5,7 @@ pagination_label: BaseAccount
 sidebar_label: BaseAccount
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'BaseAccount'] 
-slug: /tools/sdk/go/documentation/v3/models/base-account
+slug: /tools/sdk/go/v3/models/base-account
 tags: ['SDK', 'Software Development Kit', 'BaseAccount']
 ---
 

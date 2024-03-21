@@ -5,7 +5,7 @@ pagination_label: ReportResults
 sidebar_label: ReportResults
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ReportResults'] 
-slug: /tools/sdk/go/documentation/v3/models/report-results
+slug: /tools/sdk/go/v3/models/report-results
 tags: ['SDK', 'Software Development Kit', 'ReportResults']
 ---
 

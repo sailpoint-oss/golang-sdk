@@ -5,7 +5,7 @@ pagination_label: FormCondition
 sidebar_label: FormCondition
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'FormCondition'] 
-slug: /tools/sdk/go/documentation/beta/models/form-condition
+slug: /tools/sdk/go/beta/models/form-condition
 tags: ['SDK', 'Software Development Kit', 'FormCondition']
 ---
 

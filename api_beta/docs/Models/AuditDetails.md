@@ -5,7 +5,7 @@ pagination_label: AuditDetails
 sidebar_label: AuditDetails
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AuditDetails'] 
-slug: /tools/sdk/go/documentation/beta/models/audit-details
+slug: /tools/sdk/go/beta/models/audit-details
 tags: ['SDK', 'Software Development Kit', 'AuditDetails']
 ---
 

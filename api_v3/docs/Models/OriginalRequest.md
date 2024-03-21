@@ -5,7 +5,7 @@ pagination_label: OriginalRequest
 sidebar_label: OriginalRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'OriginalRequest'] 
-slug: /tools/sdk/go/documentation/v3/models/original-request
+slug: /tools/sdk/go/v3/models/original-request
 tags: ['SDK', 'Software Development Kit', 'OriginalRequest']
 ---
 

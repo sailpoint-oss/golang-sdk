@@ -5,7 +5,7 @@ pagination_label: AccessRequestIdentityMetrics
 sidebar_label: AccessRequestIdentityMetrics
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessRequestIdentityMetrics'] 
-slug: /tools/sdk/go/documentation/beta/api/access-request-identity-metrics
+slug: /tools/sdk/go/beta/methods/access-request-identity-metrics
 tags: ['SDK', 'Software Development Kit', 'AccessRequestIdentityMetrics']
 ---
 

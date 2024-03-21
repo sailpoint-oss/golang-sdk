@@ -5,7 +5,7 @@ pagination_label: ConnectorDetail
 sidebar_label: ConnectorDetail
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'ConnectorDetail'] 
-slug: /tools/sdk/go/documentation/v3/models/connector-detail
+slug: /tools/sdk/go/v3/models/connector-detail
 tags: ['SDK', 'Software Development Kit', 'ConnectorDetail']
 ---
 

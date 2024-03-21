@@ -5,7 +5,7 @@ pagination_label: CompletionStatus
 sidebar_label: CompletionStatus
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'CompletionStatus'] 
-slug: /tools/sdk/go/documentation/beta/models/completion-status
+slug: /tools/sdk/go/beta/models/completion-status
 tags: ['SDK', 'Software Development Kit', 'CompletionStatus']
 ---
 

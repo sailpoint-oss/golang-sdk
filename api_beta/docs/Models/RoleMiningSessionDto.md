@@ -5,7 +5,7 @@ pagination_label: RoleMiningSessionDto
 sidebar_label: RoleMiningSessionDto
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RoleMiningSessionDto'] 
-slug: /tools/sdk/go/documentation/beta/models/role-mining-session-dto
+slug: /tools/sdk/go/beta/models/role-mining-session-dto
 tags: ['SDK', 'Software Development Kit', 'RoleMiningSessionDto']
 ---
 

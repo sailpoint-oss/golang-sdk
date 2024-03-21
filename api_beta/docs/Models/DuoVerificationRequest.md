@@ -5,7 +5,7 @@ pagination_label: DuoVerificationRequest
 sidebar_label: DuoVerificationRequest
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'DuoVerificationRequest'] 
-slug: /tools/sdk/go/documentation/beta/models/duo-verification-request
+slug: /tools/sdk/go/beta/models/duo-verification-request
 tags: ['SDK', 'Software Development Kit', 'DuoVerificationRequest']
 ---
 

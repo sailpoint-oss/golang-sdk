@@ -5,7 +5,7 @@ pagination_label: EntitlementOwner
 sidebar_label: EntitlementOwner
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'EntitlementOwner'] 
-slug: /tools/sdk/go/documentation/beta/models/entitlement-owner
+slug: /tools/sdk/go/beta/models/entitlement-owner
 tags: ['SDK', 'Software Development Kit', 'EntitlementOwner']
 ---
 

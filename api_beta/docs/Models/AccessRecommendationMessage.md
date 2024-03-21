@@ -5,7 +5,7 @@ pagination_label: AccessRecommendationMessage
 sidebar_label: AccessRecommendationMessage
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'AccessRecommendationMessage'] 
-slug: /tools/sdk/go/documentation/beta/models/access-recommendation-message
+slug: /tools/sdk/go/beta/models/access-recommendation-message
 tags: ['SDK', 'Software Development Kit', 'AccessRecommendationMessage']
 ---
 

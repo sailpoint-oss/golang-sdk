@@ -5,7 +5,7 @@ pagination_label: RequestableObjectReference
 sidebar_label: RequestableObjectReference
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'RequestableObjectReference'] 
-slug: /tools/sdk/go/documentation/beta/models/requestable-object-reference
+slug: /tools/sdk/go/beta/models/requestable-object-reference
 tags: ['SDK', 'Software Development Kit', 'RequestableObjectReference']
 ---
 

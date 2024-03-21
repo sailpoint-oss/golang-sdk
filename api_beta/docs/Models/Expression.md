@@ -5,7 +5,7 @@ pagination_label: Expression
 sidebar_label: Expression
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'Expression'] 
-slug: /tools/sdk/go/documentation/beta/models/expression
+slug: /tools/sdk/go/beta/models/expression
 tags: ['SDK', 'Software Development Kit', 'Expression']
 ---
 

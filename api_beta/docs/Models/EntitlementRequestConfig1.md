@@ -5,7 +5,7 @@ pagination_label: EntitlementRequestConfig1
 sidebar_label: EntitlementRequestConfig1
 sidebar_class_name: gosdk
 keywords: ['go', 'golang', 'sdk', 'EntitlementRequestConfig1'] 
-slug: /tools/sdk/go/documentation/beta/models/entitlement-request-config1
+slug: /tools/sdk/go/beta/models/entitlement-request-config1
 tags: ['SDK', 'Software Development Kit', 'EntitlementRequestConfig1']
 ---
 
