@@ -68897,11 +68897,11 @@ components:
         value:
           description: Value that was derived during the preview.
           example: email@mail.com
-          type: object
+          type: string
         previousValue:
           description: The value of the attribute before the preview.
           example: oldEmail@mail.com
-          type: object
+          type: string
         errorMessages:
           items:
             $ref: '#/components/schemas/ErrorMessageDto'

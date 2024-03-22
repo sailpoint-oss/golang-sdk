@@ -22,9 +22,9 @@ type IdentityAttributePreview struct {
 	// Name of the attribute that is being previewed.
 	Name *string `json:"name,omitempty"`
 	// Value that was derived during the preview.
-	Value map[string]interface{} `json:"value,omitempty"`
+	Value *string `json:"value,omitempty"`
 	// The value of the attribute before the preview.
-	PreviousValue map[string]interface{} `json:"previousValue,omitempty"`
+	PreviousValue *string `json:"previousValue,omitempty"`
 	ErrorMessages []ErrorMessageDto `json:"errorMessages,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -81,19 +81,19 @@ func (o *IdentityAttributePreview) SetName(v string) {
 }
 
 // GetValue returns the Value field value if set, zero value otherwise.
-func (o *IdentityAttributePreview) GetValue() map[string]interface{} {
+func (o *IdentityAttributePreview) GetValue() string {
 	if o == nil || isNil(o.Value) {
-		var ret map[string]interface{}
+		var ret string
 		return ret
 	}
-	return o.Value
+	return *o.Value
 }
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityAttributePreview) GetValueOk() (map[string]interface{}, bool) {
+func (o *IdentityAttributePreview) GetValueOk() (*string, bool) {
 	if o == nil || isNil(o.Value) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.Value, true
 }
@@ -107,25 +107,25 @@ func (o *IdentityAttributePreview) HasValue() bool {
 	return false
 }
 
-// SetValue gets a reference to the given map[string]interface{} and assigns it to the Value field.
-func (o *IdentityAttributePreview) SetValue(v map[string]interface{}) {
-	o.Value = v
+// SetValue gets a reference to the given string and assigns it to the Value field.
+func (o *IdentityAttributePreview) SetValue(v string) {
+	o.Value = &v
 }
 
 // GetPreviousValue returns the PreviousValue field value if set, zero value otherwise.
-func (o *IdentityAttributePreview) GetPreviousValue() map[string]interface{} {
+func (o *IdentityAttributePreview) GetPreviousValue() string {
 	if o == nil || isNil(o.PreviousValue) {
-		var ret map[string]interface{}
+		var ret string
 		return ret
 	}
-	return o.PreviousValue
+	return *o.PreviousValue
 }
 
 // GetPreviousValueOk returns a tuple with the PreviousValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityAttributePreview) GetPreviousValueOk() (map[string]interface{}, bool) {
+func (o *IdentityAttributePreview) GetPreviousValueOk() (*string, bool) {
 	if o == nil || isNil(o.PreviousValue) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.PreviousValue, true
 }
@@ -139,9 +139,9 @@ func (o *IdentityAttributePreview) HasPreviousValue() bool {
 	return false
 }
 
-// SetPreviousValue gets a reference to the given map[string]interface{} and assigns it to the PreviousValue field.
-func (o *IdentityAttributePreview) SetPreviousValue(v map[string]interface{}) {
-	o.PreviousValue = v
+// SetPreviousValue gets a reference to the given string and assigns it to the PreviousValue field.
+func (o *IdentityAttributePreview) SetPreviousValue(v string) {
+	o.PreviousValue = &v
 }
 
 // GetErrorMessages returns the ErrorMessages field value if set, zero value otherwise.
