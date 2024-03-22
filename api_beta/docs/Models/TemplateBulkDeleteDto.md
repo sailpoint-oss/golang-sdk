@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'TemplateBulkDeleteDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | **string** |  | 
-**Medium** | Pointer to **string** |  | [optional] 
-**Locale** | Pointer to **string** | The locale for the message text, a BCP 47 language tag. | [optional] 
+**Key** |  **string** |  | 
+**Medium** |  Pointer to **string** |  | [optional] 
+**Locale** |  Pointer to **string** | The locale for the message text, a BCP 47 language tag. | [optional] 
 
 ## Methods
 

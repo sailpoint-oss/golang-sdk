@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'IdentityDeletedIdentity']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | Deleted identity&#39;s DTO type. | 
-**Id** | **string** | Deleted identity ID. | 
-**Name** | **string** | Deleted identity&#39;s display name. | 
+**Type** |  **string** | Deleted identity&#39;s DTO type. | 
+**Id** |  **string** | Deleted identity ID. | 
+**Name** |  **string** | Deleted identity&#39;s display name. | 
 
 ## Methods
 

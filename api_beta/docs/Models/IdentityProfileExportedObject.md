@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'IdentityProfileExportedObject']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Version** | Pointer to **int32** | Version or object from the target service. | [optional] 
-**Self** | Pointer to [**SelfImportExportDto**](SelfImportExportDto) |  | [optional] 
-**Object** | Pointer to [**IdentityProfile1**](IdentityProfile1) |  | [optional] 
+**Version** |  Pointer to **int32** | Version or object from the target service. | [optional] 
+**Self** |  Pointer to [**SelfImportExportDto**](self-import-export-dto) |  | [optional] 
+**Object** |  Pointer to [**IdentityProfile1**](identity-profile1) |  | [optional] 
 
 ## Methods
 

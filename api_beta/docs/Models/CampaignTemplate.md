@@ -15,15 +15,15 @@ tags: ['SDK', 'Software Development Kit', 'CampaignTemplate']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Id of the campaign template | [optional] 
-**Name** | **string** | This template&#39;s name. Has no bearing on generated campaigns&#39; names. | 
-**Description** | **string** | This template&#39;s description. Has no bearing on generated campaigns&#39; descriptions. | 
-**Created** | **time.Time** | Creation date of Campaign Template | [readonly] 
-**Modified** | **time.Time** | Modification date of Campaign Template | [readonly] 
-**Scheduled** | Pointer to **bool** | Indicates if this campaign template has been scheduled. | [optional] [readonly] [default to false]
-**OwnerRef** | Pointer to [**CampaignTemplateOwnerRef**](CampaignTemplateOwnerRef) |  | [optional] 
-**DeadlineDuration** | Pointer to **string** | The time period during which the campaign should be completed, formatted as an ISO-8601 Duration. When this template generates a campaign, the campaign&#39;s deadline will be the current date plus this duration. For example, if generation occurred on 2020-01-01 and this field was \&quot;P2W\&quot; (two weeks), the resulting campaign&#39;s deadline would be 2020-01-15 (the current date plus 14 days). | [optional] 
-**Campaign** | [**Campaign**](Campaign) | This will hold campaign related information like name, description etc. | 
+**Id** |  Pointer to **string** | Id of the campaign template | [optional] 
+**Name** |  **string** | This template&#39;s name. Has no bearing on generated campaigns&#39; names. | 
+**Description** |  **string** | This template&#39;s description. Has no bearing on generated campaigns&#39; descriptions. | 
+**Created** |  **time.Time** | Creation date of Campaign Template | [readonly] 
+**Modified** |  **time.Time** | Modification date of Campaign Template | [readonly] 
+**Scheduled** |  Pointer to **bool** | Indicates if this campaign template has been scheduled. | [optional] [readonly] [default to false]
+**OwnerRef** |  Pointer to [**CampaignTemplateOwnerRef**](campaign-template-owner-ref) |  | [optional] 
+**DeadlineDuration** |  Pointer to **string** | The time period during which the campaign should be completed, formatted as an ISO-8601 Duration. When this template generates a campaign, the campaign&#39;s deadline will be the current date plus this duration. For example, if generation occurred on 2020-01-01 and this field was \&quot;P2W\&quot; (two weeks), the resulting campaign&#39;s deadline would be 2020-01-15 (the current date plus 14 days). | [optional] 
+**Campaign** |  [**Campaign**](campaign) | This will hold campaign related information like name, description etc. | 
 
 ## Methods
 

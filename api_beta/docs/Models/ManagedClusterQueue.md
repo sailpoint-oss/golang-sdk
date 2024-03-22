@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'ManagedClusterQueue']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | ManagedCluster queue name | [optional] 
-**Region** | Pointer to **string** | ManagedCluster queue aws region | [optional] 
+**Name** |  Pointer to **string** | ManagedCluster queue name | [optional] 
+**Region** |  Pointer to **string** | ManagedCluster queue aws region | [optional] 
 
 ## Methods
 

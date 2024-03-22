@@ -15,11 +15,11 @@ tags: ['SDK', 'Software Development Kit', 'RecommendationRequestDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Requests** | Pointer to [**[]RecommendationRequest**](RecommendationRequest) |  | [optional] 
-**ExcludeInterpretations** | Pointer to **bool** | Exclude interpretations in the response if \&quot;true\&quot;. Return interpretations in the response if this attribute is not specified. | [optional] [default to false]
-**IncludeTranslationMessages** | Pointer to **bool** | When set to true, the calling system uses the translated messages for the specified language | [optional] [default to false]
-**IncludeDebugInformation** | Pointer to **bool** | Returns the recommender calculations if set to true | [optional] [default to false]
-**PrescribeMode** | Pointer to **bool** | When set to true, uses prescribedRulesRecommenderConfig to get identity attributes and peer group threshold instead of standard config. | [optional] [default to false]
+**Requests** |  Pointer to [**[]RecommendationRequest**](recommendation-request) |  | [optional] 
+**ExcludeInterpretations** |  Pointer to **bool** | Exclude interpretations in the response if \&quot;true\&quot;. Return interpretations in the response if this attribute is not specified. | [optional] [default to false]
+**IncludeTranslationMessages** |  Pointer to **bool** | When set to true, the calling system uses the translated messages for the specified language | [optional] [default to false]
+**IncludeDebugInformation** |  Pointer to **bool** | Returns the recommender calculations if set to true | [optional] [default to false]
+**PrescribeMode** |  Pointer to **bool** | When set to true, uses prescribedRulesRecommenderConfig to get identity attributes and peer group threshold instead of standard config. | [optional] [default to false]
 
 ## Methods
 

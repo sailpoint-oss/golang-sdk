@@ -15,12 +15,12 @@ tags: ['SDK', 'Software Development Kit', 'ApprovalForwardHistory']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**OldApproverName** | Pointer to **string** | Display name of approver from whom the approval was forwarded. | [optional] 
-**NewApproverName** | Pointer to **string** | Display name of approver to whom the approval was forwarded. | [optional] 
-**Comment** | Pointer to **NullableString** | Comment made while forwarding. | [optional] 
-**Modified** | Pointer to **time.Time** | Time at which approval was forwarded. | [optional] 
-**ForwarderName** | Pointer to **NullableString** | Display name of forwarder who forwarded the approval. | [optional] 
-**ReassignmentType** | Pointer to [**ReassignmentType**](ReassignmentType) |  | [optional] 
+**OldApproverName** |  Pointer to **string** | Display name of approver from whom the approval was forwarded. | [optional] 
+**NewApproverName** |  Pointer to **string** | Display name of approver to whom the approval was forwarded. | [optional] 
+**Comment** |  Pointer to **NullableString** | Comment made while forwarding. | [optional] 
+**Modified** |  Pointer to **time.Time** | Time at which approval was forwarded. | [optional] 
+**ForwarderName** |  Pointer to **NullableString** | Display name of forwarder who forwarded the approval. | [optional] 
+**ReassignmentType** |  Pointer to [**ReassignmentType**](reassignment-type) |  | [optional] 
 
 ## Methods
 

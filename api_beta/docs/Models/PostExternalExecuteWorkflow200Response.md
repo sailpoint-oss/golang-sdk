@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'PostExternalExecuteWorkflow200Respons
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**WorkflowExecutionId** | Pointer to **string** | The workflow execution id | [optional] 
-**Message** | Pointer to **string** | An error message if any errors occurred | [optional] 
+**WorkflowExecutionId** |  Pointer to **string** | The workflow execution id | [optional] 
+**Message** |  Pointer to **string** | An error message if any errors occurred | [optional] 
 
 ## Methods
 

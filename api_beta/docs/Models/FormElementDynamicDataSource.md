@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'FormElementDynamicDataSource']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Config** | Pointer to [**FormElementDynamicDataSourceConfig**](FormElementDynamicDataSourceConfig) |  | [optional] 
-**DataSourceType** | Pointer to **string** | DataSourceType is a FormElementDataSourceType value STATIC FormElementDataSourceTypeStatic INTERNAL FormElementDataSourceTypeInternal SEARCH FormElementDataSourceTypeSearch | [optional] 
+**Config** |  Pointer to [**FormElementDynamicDataSourceConfig**](form-element-dynamic-data-source-config) |  | [optional] 
+**DataSourceType** |  Pointer to **string** | DataSourceType is a FormElementDataSourceType value STATIC FormElementDataSourceTypeStatic INTERNAL FormElementDataSourceTypeInternal SEARCH FormElementDataSourceTypeSearch | [optional] 
 
 ## Methods
 

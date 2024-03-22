@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'SearchAttributeConfig']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | Name of the new attribute | [optional] 
-**DisplayName** | Pointer to **string** | The display name of the new attribute | [optional] 
-**ApplicationAttributes** | Pointer to **map[string]interface{}** | Map of application id and their associated attribute. | [optional] 
+**Name** |  Pointer to **string** | Name of the new attribute | [optional] 
+**DisplayName** |  Pointer to **string** | The display name of the new attribute | [optional] 
+**ApplicationAttributes** |  Pointer to **map[string]interface{}** | Map of application id and their associated attribute. | [optional] 
 
 ## Methods
 

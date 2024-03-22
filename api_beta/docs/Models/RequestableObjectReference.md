@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'RequestableObjectReference']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Id of the object. | [optional] 
-**Name** | Pointer to **string** | Name of the object. | [optional] 
-**Description** | Pointer to **string** | Description of the object. | [optional] 
-**Type** | Pointer to **string** | Type of the object. | [optional] 
+**Id** |  Pointer to **string** | Id of the object. | [optional] 
+**Name** |  Pointer to **string** | Name of the object. | [optional] 
+**Description** |  Pointer to **string** | Description of the object. | [optional] 
+**Type** |  Pointer to **string** | Type of the object. | [optional] 
 
 ## Methods
 

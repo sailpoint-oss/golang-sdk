@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'ManagedClientStatus']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Body** | **map[string]interface{}** | ManagedClientStatus body information | 
-**Status** | [**ManagedClientStatusEnum**](ManagedClientStatusEnum) |  | 
-**Type** | [**NullableManagedClientType**](ManagedClientType) |  | 
-**Timestamp** | **time.Time** | timestamp on the Client Status update | 
+**Body** |  **map[string]interface{}** | ManagedClientStatus body information | 
+**Status** |  [**ManagedClientStatusEnum**](managed-client-status-enum) |  | 
+**Type** |  [**NullableManagedClientType**](managed-client-type) |  | 
+**Timestamp** |  **time.Time** | timestamp on the Client Status update | 
 
 ## Methods
 

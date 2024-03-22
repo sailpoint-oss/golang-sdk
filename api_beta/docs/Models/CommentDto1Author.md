@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'CommentDto1Author']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | The type of object | [optional] 
-**Id** | Pointer to **string** | The unique ID of the object | [optional] 
-**Name** | Pointer to **string** | The display name of the object | [optional] 
+**Type** |  Pointer to **string** | The type of object | [optional] 
+**Id** |  Pointer to **string** | The unique ID of the object | [optional] 
+**Name** |  Pointer to **string** | The display name of the object | [optional] 
 
 ## Methods
 

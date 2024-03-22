@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'ExportFormDefinitionsByTenant200Respo
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Object** | Pointer to [**FormDefinitionResponse**](FormDefinitionResponse) |  | [optional] 
-**Self** | Pointer to **string** |  | [optional] 
-**Version** | Pointer to **int32** |  | [optional] 
+**Object** |  Pointer to [**FormDefinitionResponse**](form-definition-response) |  | [optional] 
+**Self** |  Pointer to **string** |  | [optional] 
+**Version** |  Pointer to **int32** |  | [optional] 
 
 ## Methods
 

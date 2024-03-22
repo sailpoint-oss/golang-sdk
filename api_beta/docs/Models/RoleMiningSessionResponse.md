@@ -15,17 +15,17 @@ tags: ['SDK', 'Software Development Kit', 'RoleMiningSessionResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Scope** | Pointer to [**RoleMiningSessionScope**](RoleMiningSessionScope) |  | [optional] 
-**MinNumIdentitiesInPotentialRole** | Pointer to **int32** | Minimum number of identities in a potential role | [optional] 
-**PrescribedPruneThreshold** | Pointer to **int32** | The computed (or prescribed) prune threshold for this session | [optional] 
-**PruneThreshold** | Pointer to **int32** | The prune threshold to be used for this role mining session | [optional] 
-**PotentialRoleCount** | Pointer to **int32** | The number of potential roles | [optional] 
-**PotentialRolesReadyCount** | Pointer to **int32** | The number of potential roles which have completed processing | [optional] 
-**Status** | Pointer to [**RoleMiningSessionStatus**](RoleMiningSessionStatus) |  | [optional] 
-**Id** | Pointer to **string** | Session Id for this role mining session | [optional] 
-**CreatedDate** | Pointer to **time.Time** | The date-time when this role mining session was created. | [optional] 
-**ModifiedDate** | Pointer to **time.Time** | The date-time when this role mining session was completed. | [optional] 
-**Type** | Pointer to [**RoleMiningRoleType**](RoleMiningRoleType) |  | [optional] 
+**Scope** |  Pointer to [**RoleMiningSessionScope**](role-mining-session-scope) |  | [optional] 
+**MinNumIdentitiesInPotentialRole** |  Pointer to **int32** | Minimum number of identities in a potential role | [optional] 
+**PrescribedPruneThreshold** |  Pointer to **int32** | The computed (or prescribed) prune threshold for this session | [optional] 
+**PruneThreshold** |  Pointer to **int32** | The prune threshold to be used for this role mining session | [optional] 
+**PotentialRoleCount** |  Pointer to **int32** | The number of potential roles | [optional] 
+**PotentialRolesReadyCount** |  Pointer to **int32** | The number of potential roles which have completed processing | [optional] 
+**Status** |  Pointer to [**RoleMiningSessionStatus**](role-mining-session-status) |  | [optional] 
+**Id** |  Pointer to **string** | Session Id for this role mining session | [optional] 
+**CreatedDate** |  Pointer to **time.Time** | The date-time when this role mining session was created. | [optional] 
+**ModifiedDate** |  Pointer to **time.Time** | The date-time when this role mining session was completed. | [optional] 
+**Type** |  Pointer to [**RoleMiningRoleType**](role-mining-role-type) |  | [optional] 
 
 ## Methods
 

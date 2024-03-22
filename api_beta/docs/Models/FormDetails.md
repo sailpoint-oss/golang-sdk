@@ -15,12 +15,12 @@ tags: ['SDK', 'Software Development Kit', 'FormDetails']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | ID of the form | [optional] 
-**Name** | Pointer to **string** | Name of the form | [optional] 
-**Title** | Pointer to **string** | The form title | [optional] 
-**Subtitle** | Pointer to **string** | The form subtitle. | [optional] 
-**TargetUser** | Pointer to **string** | The name of the user that should be shown this form | [optional] 
-**Sections** | Pointer to [**SectionDetails**](SectionDetails) |  | [optional] 
+**Id** |  Pointer to **string** | ID of the form | [optional] 
+**Name** |  Pointer to **string** | Name of the form | [optional] 
+**Title** |  Pointer to **string** | The form title | [optional] 
+**Subtitle** |  Pointer to **string** | The form subtitle. | [optional] 
+**TargetUser** |  Pointer to **string** | The name of the user that should be shown this form | [optional] 
+**Sections** |  Pointer to [**SectionDetails**](section-details) |  | [optional] 
 
 ## Methods
 

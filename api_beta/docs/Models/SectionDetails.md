@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'SectionDetails']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | Name of the FormItem | [optional] 
-**Label** | Pointer to **string** | Label of the section | [optional] 
-**FormItems** | Pointer to **[]map[string]interface{}** | List of FormItems. FormItems can be SectionDetails and/or FieldDetails | [optional] 
+**Name** |  Pointer to **string** | Name of the FormItem | [optional] 
+**Label** |  Pointer to **string** | Label of the section | [optional] 
+**FormItems** |  Pointer to **[]map[string]interface{}** | List of FormItems. FormItems can be SectionDetails and/or FieldDetails | [optional] 
 
 ## Methods
 

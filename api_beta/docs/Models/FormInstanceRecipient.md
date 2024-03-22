@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'FormInstanceRecipient']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | ID is a unique identifier | [optional] 
-**Type** | Pointer to **string** | Type is a FormInstanceRecipientType value IDENTITY FormInstanceRecipientIdentity | [optional] 
+**Id** |  Pointer to **string** | ID is a unique identifier | [optional] 
+**Type** |  Pointer to **string** | Type is a FormInstanceRecipientType value IDENTITY FormInstanceRecipientIdentity | [optional] 
 
 ## Methods
 

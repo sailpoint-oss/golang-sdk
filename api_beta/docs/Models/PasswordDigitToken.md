@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'PasswordDigitToken']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DigitToken** | Pointer to **string** | The digit token for password management | [optional] 
-**RequestId** | Pointer to **string** | The reference ID of the digit token generation request | [optional] 
+**DigitToken** |  Pointer to **string** | The digit token for password management | [optional] 
+**RequestId** |  Pointer to **string** | The reference ID of the digit token generation request | [optional] 
 
 ## Methods
 

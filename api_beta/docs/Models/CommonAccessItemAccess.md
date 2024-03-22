@@ -15,12 +15,12 @@ tags: ['SDK', 'Software Development Kit', 'CommonAccessItemAccess']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Common access ID | [optional] 
-**Type** | Pointer to [**CommonAccessType**](CommonAccessType) |  | [optional] 
-**Name** | Pointer to **string** | Common access name | [optional] 
-**Description** | Pointer to **NullableString** | Common access description | [optional] 
-**OwnerName** | Pointer to **string** | Common access owner name | [optional] 
-**OwnerId** | Pointer to **string** | Common access owner ID | [optional] 
+**Id** |  Pointer to **string** | Common access ID | [optional] 
+**Type** |  Pointer to [**CommonAccessType**](common-access-type) |  | [optional] 
+**Name** |  Pointer to **string** | Common access name | [optional] 
+**Description** |  Pointer to **NullableString** | Common access description | [optional] 
+**OwnerName** |  Pointer to **string** | Common access owner name | [optional] 
+**OwnerId** |  Pointer to **string** | Common access owner ID | [optional] 
 
 ## Methods
 

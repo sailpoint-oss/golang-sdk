@@ -15,15 +15,15 @@ tags: ['SDK', 'Software Development Kit', 'RoleMiningEntitlement']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EntitlementRef** | Pointer to [**RoleMiningEntitlementRef**](RoleMiningEntitlementRef) |  | [optional] 
-**Name** | Pointer to **string** | Name of the entitlement | [optional] 
-**ApplicationName** | Pointer to **string** | Application name of the entitlement | [optional] 
-**IdentityCount** | Pointer to **int32** | The number of identities with this entitlement in a role. | [optional] 
-**Popularity** | Pointer to **float32** | The % popularity of this entitlement in a role. | [optional] 
-**PopularityInOrg** | Pointer to **float32** | The % popularity of this entitlement in the org. | [optional] 
-**SourceId** | Pointer to **string** | The ID of the source/application. | [optional] 
-**ActivitySourceState** | Pointer to **NullableString** | The status of activity data for the source.   Value is complete or notComplete. | [optional] 
-**SourceUsagePercent** | Pointer to **NullableFloat32** | The percentage of identities in the potential role that have usage of the source/application of this entitlement. | [optional] 
+**EntitlementRef** |  Pointer to [**RoleMiningEntitlementRef**](role-mining-entitlement-ref) |  | [optional] 
+**Name** |  Pointer to **string** | Name of the entitlement | [optional] 
+**ApplicationName** |  Pointer to **string** | Application name of the entitlement | [optional] 
+**IdentityCount** |  Pointer to **int32** | The number of identities with this entitlement in a role. | [optional] 
+**Popularity** |  Pointer to **float32** | The % popularity of this entitlement in a role. | [optional] 
+**PopularityInOrg** |  Pointer to **float32** | The % popularity of this entitlement in the org. | [optional] 
+**SourceId** |  Pointer to **string** | The ID of the source/application. | [optional] 
+**ActivitySourceState** |  Pointer to **NullableString** | The status of activity data for the source.   Value is complete or notComplete. | [optional] 
+**SourceUsagePercent** |  Pointer to **NullableFloat32** | The percentage of identities in the potential role that have usage of the source/application of this entitlement. | [optional] 
 
 ## Methods
 

@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'FormItemDetails']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | Name of the FormItem | [optional] 
+**Name** |  Pointer to **string** | Name of the FormItem | [optional] 
 
 ## Methods
 

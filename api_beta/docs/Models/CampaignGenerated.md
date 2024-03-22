@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CampaignGenerated']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Campaign** | [**CampaignGeneratedCampaign**](CampaignGeneratedCampaign) |  | 
+**Campaign** |  [**CampaignGeneratedCampaign**](campaign-generated-campaign) |  | 
 
 ## Methods
 

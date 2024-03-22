@@ -15,13 +15,13 @@ tags: ['SDK', 'Software Development Kit', 'WorkflowLibraryTrigger']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Trigger ID. This is a static namespaced ID for the trigger. | [optional] 
-**Type** | Pointer to **map[string]interface{}** | Trigger type | [optional] 
-**Name** | Pointer to **string** | Trigger Name | [optional] 
-**Description** | Pointer to **string** | Trigger Description | [optional] 
-**IsDynamicSchema** | Pointer to **bool** | Determines whether the dynamic output schema is returned in place of the action&#39;s output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields. | [optional] 
-**InputExample** | Pointer to **map[string]interface{}** | Example trigger payload if applicable | [optional] 
-**FormFields** | Pointer to [**[]WorkflowLibraryFormFields**](WorkflowLibraryFormFields) | One or more inputs that the trigger accepts | [optional] 
+**Id** |  Pointer to **string** | Trigger ID. This is a static namespaced ID for the trigger. | [optional] 
+**Type** |  Pointer to **map[string]interface{}** | Trigger type | [optional] 
+**Name** |  Pointer to **string** | Trigger Name | [optional] 
+**Description** |  Pointer to **string** | Trigger Description | [optional] 
+**IsDynamicSchema** |  Pointer to **bool** | Determines whether the dynamic output schema is returned in place of the action&#39;s output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields. | [optional] 
+**InputExample** |  Pointer to **map[string]interface{}** | Example trigger payload if applicable | [optional] 
+**FormFields** |  Pointer to [**[]WorkflowLibraryFormFields**](workflow-library-form-fields) | One or more inputs that the trigger accepts | [optional] 
 
 ## Methods
 

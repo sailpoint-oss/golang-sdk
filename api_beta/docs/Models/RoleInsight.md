@@ -15,11 +15,11 @@ tags: ['SDK', 'Software Development Kit', 'RoleInsight']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Insight id | [optional] 
-**NumberOfUpdates** | Pointer to **int32** | Total number of updates for this role | [optional] 
-**CreatedDate** | Pointer to **time.Time** | The date-time insights were last created for this role. | [optional] 
-**Role** | Pointer to [**RoleInsightsRole**](RoleInsightsRole) |  | [optional] 
-**Insight** | Pointer to [**RoleInsightsInsight**](RoleInsightsInsight) |  | [optional] 
+**Id** |  Pointer to **string** | Insight id | [optional] 
+**NumberOfUpdates** |  Pointer to **int32** | Total number of updates for this role | [optional] 
+**CreatedDate** |  Pointer to **time.Time** | The date-time insights were last created for this role. | [optional] 
+**Role** |  Pointer to [**RoleInsightsRole**](role-insights-role) |  | [optional] 
+**Insight** |  Pointer to [**RoleInsightsInsight**](role-insights-insight) |  | [optional] 
 
 ## Methods
 

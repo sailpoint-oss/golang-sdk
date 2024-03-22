@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'IdentityPreviewRequest']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IdentityId** | Pointer to **string** |  | [optional] 
-**IdentityAttributeConfig** | Pointer to [**IdentityAttributeConfig**](IdentityAttributeConfig) |  | [optional] 
+**IdentityId** |  Pointer to **string** |  | [optional] 
+**IdentityAttributeConfig** |  Pointer to [**IdentityAttributeConfig**](identity-attribute-config) |  | [optional] 
 
 ## Methods
 

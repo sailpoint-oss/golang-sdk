@@ -15,14 +15,14 @@ tags: ['SDK', 'Software Development Kit', 'OutlierContributingFeature']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Contributing feature id | [optional] 
-**Name** | Pointer to **string** | The name of the feature | [optional] 
-**ValueType** | Pointer to **string** | The data type of the value field | [optional] 
-**Value** | Pointer to [**OutlierContributingFeatureValue**](OutlierContributingFeatureValue) |  | [optional] 
-**Importance** | Pointer to **float32** | The importance of the feature. This can also be a negative value | [optional] 
-**DisplayName** | Pointer to **string** | The (translated if header is passed) displayName for the feature | [optional] 
-**Description** | Pointer to **string** | The (translated if header is passed) description for the feature | [optional] 
-**TranslationMessages** | Pointer to [**OutlierFeatureTranslation**](OutlierFeatureTranslation) |  | [optional] 
+**Id** |  Pointer to **string** | Contributing feature id | [optional] 
+**Name** |  Pointer to **string** | The name of the feature | [optional] 
+**ValueType** |  Pointer to **string** | The data type of the value field | [optional] 
+**Value** |  Pointer to [**OutlierContributingFeatureValue**](outlier-contributing-feature-value) |  | [optional] 
+**Importance** |  Pointer to **float32** | The importance of the feature. This can also be a negative value | [optional] 
+**DisplayName** |  Pointer to **string** | The (translated if header is passed) displayName for the feature | [optional] 
+**Description** |  Pointer to **string** | The (translated if header is passed) description for the feature | [optional] 
+**TranslationMessages** |  Pointer to [**OutlierFeatureTranslation**](outlier-feature-translation) |  | [optional] 
 
 ## Methods
 

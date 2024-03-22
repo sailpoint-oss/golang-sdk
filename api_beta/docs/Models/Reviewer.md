@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'Reviewer']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | The reviewer&#39;s DTO type. | 
-**Id** | **string** | The reviewer&#39;s ID. | 
-**Name** | **string** | The reviewer&#39;s display name. | 
-**Email** | Pointer to **NullableString** | The reviewing identity&#39;s email. Only applicable to &#x60;IDENTITY&#x60;. | [optional] 
+**Type** |  **string** | The reviewer&#39;s DTO type. | 
+**Id** |  **string** | The reviewer&#39;s ID. | 
+**Name** |  **string** | The reviewer&#39;s display name. | 
+**Email** |  Pointer to **NullableString** | The reviewing identity&#39;s email. Only applicable to &#x60;IDENTITY&#x60;. | [optional] 
 
 ## Methods
 

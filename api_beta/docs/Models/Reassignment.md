@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'Reassignment']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**From** | Pointer to [**CertificationReference**](CertificationReference) |  | [optional] 
-**Comment** | Pointer to **string** | Comments from the previous reviewer. | [optional] 
+**From** |  Pointer to [**CertificationReference**](certification-reference) |  | [optional] 
+**Comment** |  Pointer to **string** | Comments from the previous reviewer. | [optional] 
 
 ## Methods
 

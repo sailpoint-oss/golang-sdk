@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'ManagedClusterKeyPair']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PublicKey** | Pointer to **NullableString** | ManagedCluster publicKey | [optional] 
-**PublicKeyThumbprint** | Pointer to **NullableString** | ManagedCluster publicKeyThumbprint | [optional] 
-**PublicKeyCertificate** | Pointer to **NullableString** | ManagedCluster publicKeyCertificate | [optional] 
+**PublicKey** |  Pointer to **NullableString** | ManagedCluster publicKey | [optional] 
+**PublicKeyThumbprint** |  Pointer to **NullableString** | ManagedCluster publicKeyThumbprint | [optional] 
+**PublicKeyCertificate** |  Pointer to **NullableString** | ManagedCluster publicKeyCertificate | [optional] 
 
 ## Methods
 

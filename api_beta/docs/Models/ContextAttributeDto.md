@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'ContextAttributeDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Attribute** | Pointer to **string** | The name of the attribute | [optional] 
-**Value** | Pointer to [**ContextAttributeDtoValue**](ContextAttributeDtoValue) |  | [optional] 
+**Attribute** |  Pointer to **string** | The name of the attribute | [optional] 
+**Value** |  Pointer to [**ContextAttributeDtoValue**](context-attribute-dto-value) |  | [optional] 
 
 ## Methods
 

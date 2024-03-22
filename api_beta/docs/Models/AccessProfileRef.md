@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'AccessProfileRef']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | ID of the Access Profile | [optional] 
-**Type** | Pointer to **string** | Type of requested object. This field must be either left null or set to &#39;ACCESS_PROFILE&#39; when creating an Access Profile, otherwise a 400 Bad Request error will result. | [optional] 
-**Name** | Pointer to **string** | Human-readable display name of the Access Profile. This field is ignored on input. | [optional] 
+**Id** |  Pointer to **string** | ID of the Access Profile | [optional] 
+**Type** |  Pointer to **string** | Type of requested object. This field must be either left null or set to &#39;ACCESS_PROFILE&#39; when creating an Access Profile, otherwise a 400 Bad Request error will result. | [optional] 
+**Name** |  Pointer to **string** | Human-readable display name of the Access Profile. This field is ignored on input. | [optional] 
 
 ## Methods
 

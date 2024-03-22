@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'FormOwner']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | FormOwnerType value. IDENTITY FormOwnerTypeIdentity | [optional] 
-**Id** | Pointer to **string** | Unique identifier of the form&#39;s owner. | [optional] 
+**Type** |  Pointer to **string** | FormOwnerType value. IDENTITY FormOwnerTypeIdentity | [optional] 
+**Id** |  Pointer to **string** | Unique identifier of the form&#39;s owner. | [optional] 
 
 ## Methods
 

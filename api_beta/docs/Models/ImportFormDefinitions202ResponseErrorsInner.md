@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'ImportFormDefinitions202ResponseError
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Detail** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
-**Key** | Pointer to **string** |  | [optional] 
-**Text** | Pointer to **string** |  | [optional] 
+**Detail** |  Pointer to **map[string]map[string]interface{}** |  | [optional] 
+**Key** |  Pointer to **string** |  | [optional] 
+**Text** |  Pointer to **string** |  | [optional] 
 
 ## Methods
 

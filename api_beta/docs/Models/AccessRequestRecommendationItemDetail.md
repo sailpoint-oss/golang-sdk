@@ -15,13 +15,13 @@ tags: ['SDK', 'Software Development Kit', 'AccessRequestRecommendationItemDetail
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IdentityId** | Pointer to **string** | Identity ID for the recommendation | [optional] 
-**Access** | Pointer to [**AccessRequestRecommendationItemDetailAccess**](AccessRequestRecommendationItemDetailAccess) |  | [optional] 
-**Ignored** | Pointer to **bool** | Whether or not the identity has already chosen to ignore this recommendation. | [optional] 
-**Requested** | Pointer to **bool** | Whether or not the identity has already chosen to request this recommendation. | [optional] 
-**Viewed** | Pointer to **bool** | Whether or not the identity reportedly viewed this recommendation. | [optional] 
-**Messages** | Pointer to [**[]AccessRecommendationMessage**](AccessRecommendationMessage) |  | [optional] 
-**TranslationMessages** | Pointer to [**[]TranslationMessage**](TranslationMessage) | The list of translation messages | [optional] 
+**IdentityId** |  Pointer to **string** | Identity ID for the recommendation | [optional] 
+**Access** |  Pointer to [**AccessRequestRecommendationItemDetailAccess**](access-request-recommendation-item-detail-access) |  | [optional] 
+**Ignored** |  Pointer to **bool** | Whether or not the identity has already chosen to ignore this recommendation. | [optional] 
+**Requested** |  Pointer to **bool** | Whether or not the identity has already chosen to request this recommendation. | [optional] 
+**Viewed** |  Pointer to **bool** | Whether or not the identity reportedly viewed this recommendation. | [optional] 
+**Messages** |  Pointer to [**[]AccessRecommendationMessage**](access-recommendation-message) |  | [optional] 
+**TranslationMessages** |  Pointer to [**[]TranslationMessage**](translation-message) | The list of translation messages | [optional] 
 
 ## Methods
 

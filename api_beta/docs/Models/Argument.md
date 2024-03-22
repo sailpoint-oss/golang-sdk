@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'Argument']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** | the name of the argument | 
-**Description** | Pointer to **string** | the description of the argument | [optional] 
-**Type** | Pointer to **NullableString** | the programmatic type of the argument | [optional] 
+**Name** |  **string** | the name of the argument | 
+**Description** |  Pointer to **string** | the description of the argument | [optional] 
+**Type** |  Pointer to **NullableString** | the programmatic type of the argument | [optional] 
 
 ## Methods
 

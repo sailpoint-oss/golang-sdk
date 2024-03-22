@@ -15,25 +15,25 @@ tags: ['SDK', 'Software Development Kit', 'GetOAuthClientResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | ID of the OAuth client | 
-**BusinessName** | **NullableString** | The name of the business the API Client should belong to | 
-**HomepageUrl** | **NullableString** | The homepage URL associated with the owner of the API Client | 
-**Name** | **string** | A human-readable name for the API Client | 
-**Description** | **NullableString** | A description of the API Client | 
-**AccessTokenValiditySeconds** | **int32** | The number of seconds an access token generated for this API Client is valid for | 
-**RefreshTokenValiditySeconds** | **int32** | The number of seconds a refresh token generated for this API Client is valid for | 
-**RedirectUris** | **[]string** | A list of the approved redirect URIs used with the authorization_code flow | 
-**GrantTypes** | [**[]GrantType**](GrantType) | A list of OAuth 2.0 grant types this API Client can be used with | 
-**AccessType** | [**AccessType**](AccessType) |  | 
-**Type** | [**ClientType**](ClientType) |  | 
-**Internal** | **bool** | An indicator of whether the API Client can be used for requests internal to IDN | 
-**Enabled** | **bool** | An indicator of whether the API Client is enabled for use | 
-**StrongAuthSupported** | **bool** | An indicator of whether the API Client supports strong authentication | 
-**ClaimsSupported** | **bool** | An indicator of whether the API Client supports the serialization of SAML claims when used with the authorization_code flow | 
-**Created** | **time.Time** | The date and time, down to the millisecond, when the API Client was created | 
-**Modified** | **time.Time** | The date and time, down to the millisecond, when the API Client was last updated | 
-**LastUsed** | Pointer to **NullableTime** | The date and time, down to the millisecond, when this API Client was last used to generate an access token. This timestamp does not get updated on every API Client usage, but only once a day. This property can be useful for identifying which API Clients are no longer actively used and can be removed. | [optional] 
-**Scope** | **[]string** | Scopes of the API Client. | 
+**Id** |  **string** | ID of the OAuth client | 
+**BusinessName** |  **NullableString** | The name of the business the API Client should belong to | 
+**HomepageUrl** |  **NullableString** | The homepage URL associated with the owner of the API Client | 
+**Name** |  **string** | A human-readable name for the API Client | 
+**Description** |  **NullableString** | A description of the API Client | 
+**AccessTokenValiditySeconds** |  **int32** | The number of seconds an access token generated for this API Client is valid for | 
+**RefreshTokenValiditySeconds** |  **int32** | The number of seconds a refresh token generated for this API Client is valid for | 
+**RedirectUris** |  **[]string** | A list of the approved redirect URIs used with the authorization_code flow | 
+**GrantTypes** |  [**[]GrantType**](grant-type) | A list of OAuth 2.0 grant types this API Client can be used with | 
+**AccessType** |  [**AccessType**](access-type) |  | 
+**Type** |  [**ClientType**](client-type) |  | 
+**Internal** |  **bool** | An indicator of whether the API Client can be used for requests internal to IDN | 
+**Enabled** |  **bool** | An indicator of whether the API Client is enabled for use | 
+**StrongAuthSupported** |  **bool** | An indicator of whether the API Client supports strong authentication | 
+**ClaimsSupported** |  **bool** | An indicator of whether the API Client supports the serialization of SAML claims when used with the authorization_code flow | 
+**Created** |  **time.Time** | The date and time, down to the millisecond, when the API Client was created | 
+**Modified** |  **time.Time** | The date and time, down to the millisecond, when the API Client was last updated | 
+**LastUsed** |  Pointer to **NullableTime** | The date and time, down to the millisecond, when this API Client was last used to generate an access token. This timestamp does not get updated on every API Client usage, but only once a day. This property can be useful for identifying which API Clients are no longer actively used and can be removed. | [optional] 
+**Scope** |  **[]string** | Scopes of the API Client. | 
 
 ## Methods
 

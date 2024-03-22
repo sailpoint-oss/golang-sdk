@@ -15,11 +15,11 @@ tags: ['SDK', 'Software Development Kit', 'AccountStatusChanged']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EventType** | Pointer to **string** | the event type | [optional] 
-**IdentityId** | Pointer to **string** | the identity id | [optional] 
-**Dt** | Pointer to **string** | the date of event | [optional] 
-**Account** | Pointer to [**AccountStatusChangedAccount**](AccountStatusChangedAccount) |  | [optional] 
-**StatusChange** | Pointer to [**AccountStatusChangedStatusChange**](AccountStatusChangedStatusChange) |  | [optional] 
+**EventType** |  Pointer to **string** | the event type | [optional] 
+**IdentityId** |  Pointer to **string** | the identity id | [optional] 
+**Dt** |  Pointer to **string** | the date of event | [optional] 
+**Account** |  Pointer to [**AccountStatusChangedAccount**](account-status-changed-account) |  | [optional] 
+**StatusChange** |  Pointer to [**AccountStatusChangedStatusChange**](account-status-changed-status-change) |  | [optional] 
 
 ## Methods
 

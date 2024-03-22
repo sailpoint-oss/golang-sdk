@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'SourceManagementWorkgroup']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | The type of object being referenced | [optional] 
-**Id** | Pointer to **string** | ID of the management workgroup | [optional] 
-**Name** | Pointer to **string** | Human-readable display name of the management workgroup | [optional] 
+**Type** |  Pointer to **string** | The type of object being referenced | [optional] 
+**Id** |  Pointer to **string** | ID of the management workgroup | [optional] 
+**Name** |  Pointer to **string** | Human-readable display name of the management workgroup | [optional] 
 
 ## Methods
 

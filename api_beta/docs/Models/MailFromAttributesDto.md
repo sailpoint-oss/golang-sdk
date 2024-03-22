@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'MailFromAttributesDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Identity** | Pointer to **string** | The identity or domain address | [optional] 
-**MailFromDomain** | Pointer to **string** | The new MAIL FROM domain of the identity. Must be a subdomain of the identity. | [optional] 
+**Identity** |  Pointer to **string** | The identity or domain address | [optional] 
+**MailFromDomain** |  Pointer to **string** | The new MAIL FROM domain of the identity. Must be a subdomain of the identity. | [optional] 
 
 ## Methods
 

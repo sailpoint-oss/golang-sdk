@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'VerificationPollRequest']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RequestId** | **string** | Verification request Id | 
+**RequestId** |  **string** | Verification request Id | 
 
 ## Methods
 

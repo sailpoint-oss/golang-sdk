@@ -15,12 +15,12 @@ tags: ['SDK', 'Software Development Kit', 'SourceUpdated']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | The unique ID of the source. | 
-**Name** | **string** | The user friendly name of the source. | 
-**Type** | **string** | The connection type of the source. | 
-**Modified** | **time.Time** | The date and time the source was modified. | 
-**Connector** | **string** | The connector type used to connect to the source. | 
-**Actor** | [**SourceUpdatedActor**](SourceUpdatedActor) |  | 
+**Id** |  **string** | The unique ID of the source. | 
+**Name** |  **string** | The user friendly name of the source. | 
+**Type** |  **string** | The connection type of the source. | 
+**Modified** |  **time.Time** | The date and time the source was modified. | 
+**Connector** |  **string** | The connector type used to connect to the source. | 
+**Actor** |  [**SourceUpdatedActor**](source-updated-actor) |  | 
 
 ## Methods
 

@@ -15,12 +15,12 @@ tags: ['SDK', 'Software Development Kit', 'OutliersContributingFeatureAccessItem
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | The ID of the access item | [optional] 
-**DisplayName** | Pointer to **string** | the display name of the access item | [optional] 
-**Description** | Pointer to **string** | Description of the access item. | [optional] 
-**AccessType** | Pointer to **string** | The type of the access item. | [optional] 
-**SourceName** | Pointer to **string** | the associated source name if it exists | [optional] 
-**ExtremelyRare** | Pointer to **bool** | rarest access | [optional] [default to false]
+**Id** |  Pointer to **string** | The ID of the access item | [optional] 
+**DisplayName** |  Pointer to **string** | the display name of the access item | [optional] 
+**Description** |  Pointer to **string** | Description of the access item. | [optional] 
+**AccessType** |  Pointer to **string** | The type of the access item. | [optional] 
+**SourceName** |  Pointer to **string** | the associated source name if it exists | [optional] 
+**ExtremelyRare** |  Pointer to **bool** | rarest access | [optional] [default to false]
 
 ## Methods
 

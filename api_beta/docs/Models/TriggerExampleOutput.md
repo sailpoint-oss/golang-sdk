@@ -15,12 +15,12 @@ tags: ['SDK', 'Software Development Kit', 'TriggerExampleOutput']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | The unique ID of the identity to add to the approver list for the access request. | 
-**Name** | **string** | The name of the identity to add to the approver list for the access request. | 
-**Type** | **map[string]interface{}** | The type of object being referenced. | 
-**Approved** | **bool** | Whether or not to approve the access request. | 
-**Comment** | **string** | A comment about the decision to approve or deny the request. | 
-**Approver** | **string** | The name of the entity that approved or denied the request. | 
+**Id** |  **string** | The unique ID of the identity to add to the approver list for the access request. | 
+**Name** |  **string** | The name of the identity to add to the approver list for the access request. | 
+**Type** |  **map[string]interface{}** | The type of object being referenced. | 
+**Approved** |  **bool** | Whether or not to approve the access request. | 
+**Comment** |  **string** | A comment about the decision to approve or deny the request. | 
+**Approver** |  **string** | The name of the entity that approved or denied the request. | 
 
 ## Methods
 

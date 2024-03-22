@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'SavedSearchCompleteSearchResultsEntit
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Count** | **string** | The number of rows in the table. | 
-**Noun** | **string** | The type of object represented in the table. | 
-**Preview** | **[][]string** | A sample of the data in the table. | 
+**Count** |  **string** | The number of rows in the table. | 
+**Noun** |  **string** | The type of object represented in the table. | 
+**Preview** |  **[][]string** | A sample of the data in the table. | 
 
 ## Methods
 

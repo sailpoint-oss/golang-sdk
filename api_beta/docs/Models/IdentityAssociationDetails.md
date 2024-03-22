@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'IdentityAssociationDetails']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Message** | Pointer to **string** | any additional context information of the http call result | [optional] 
-**AssociationDetails** | Pointer to [**[]IdentityAssociationDetailsAssociationDetailsInner**](IdentityAssociationDetailsAssociationDetailsInner) | list of all the resource associations for the identity | [optional] 
+**Message** |  Pointer to **string** | any additional context information of the http call result | [optional] 
+**AssociationDetails** |  Pointer to [**[]IdentityAssociationDetailsAssociationDetailsInner**](identity-association-details-association-details-inner) | list of all the resource associations for the identity | [optional] 
 
 ## Methods
 

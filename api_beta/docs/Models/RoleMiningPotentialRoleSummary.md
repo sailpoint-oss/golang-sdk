@@ -15,19 +15,19 @@ tags: ['SDK', 'Software Development Kit', 'RoleMiningPotentialRoleSummary']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Id of the potential role | [optional] 
-**Name** | Pointer to **string** | Name of the potential role | [optional] 
-**PotentialRoleRef** | Pointer to [**RoleMiningPotentialRoleRef**](RoleMiningPotentialRoleRef) |  | [optional] 
-**IdentityCount** | Pointer to **int32** | The number of identities in a potential role. | [optional] 
-**EntitlementCount** | Pointer to **int32** | The number of entitlements in a potential role. | [optional] 
-**IdentityGroupStatus** | Pointer to **string** | The status for this identity group which can be \&quot;REQUESTED\&quot; or \&quot;OBTAINED\&quot; | [optional] 
-**ProvisionState** | Pointer to [**RoleMiningPotentialRoleProvisionState**](RoleMiningPotentialRoleProvisionState) |  | [optional] 
-**RoleId** | Pointer to **NullableString** | ID of the provisioned role in IIQ or IDN.  Null if this potential role has not been provisioned. | [optional] 
-**Density** | Pointer to **int32** | The density metric (0-100) of this potential role. Higher density values indicate higher similarity amongst the identities. | [optional] 
-**Freshness** | Pointer to **int32** | The freshness metric (0-100) of this potential role. Higher freshness values indicate this potential role is more distinctive compared to existing roles. | [optional] 
-**Quality** | Pointer to **int32** | The quality metric (0-100) of this potential role. Higher quality values indicate this potential role has high density and freshness. | [optional] 
-**Type** | Pointer to [**RoleMiningRoleType**](RoleMiningRoleType) |  | [optional] 
-**Session** | Pointer to [**RoleMiningSessionParametersDto**](RoleMiningSessionParametersDto) |  | [optional] 
+**Id** |  Pointer to **string** | Id of the potential role | [optional] 
+**Name** |  Pointer to **string** | Name of the potential role | [optional] 
+**PotentialRoleRef** |  Pointer to [**RoleMiningPotentialRoleRef**](role-mining-potential-role-ref) |  | [optional] 
+**IdentityCount** |  Pointer to **int32** | The number of identities in a potential role. | [optional] 
+**EntitlementCount** |  Pointer to **int32** | The number of entitlements in a potential role. | [optional] 
+**IdentityGroupStatus** |  Pointer to **string** | The status for this identity group which can be \&quot;REQUESTED\&quot; or \&quot;OBTAINED\&quot; | [optional] 
+**ProvisionState** |  Pointer to [**RoleMiningPotentialRoleProvisionState**](role-mining-potential-role-provision-state) |  | [optional] 
+**RoleId** |  Pointer to **NullableString** | ID of the provisioned role in IIQ or IDN.  Null if this potential role has not been provisioned. | [optional] 
+**Density** |  Pointer to **int32** | The density metric (0-100) of this potential role. Higher density values indicate higher similarity amongst the identities. | [optional] 
+**Freshness** |  Pointer to **int32** | The freshness metric (0-100) of this potential role. Higher freshness values indicate this potential role is more distinctive compared to existing roles. | [optional] 
+**Quality** |  Pointer to **int32** | The quality metric (0-100) of this potential role. Higher quality values indicate this potential role has high density and freshness. | [optional] 
+**Type** |  Pointer to [**RoleMiningRoleType**](role-mining-role-type) |  | [optional] 
+**Session** |  Pointer to [**RoleMiningSessionParametersDto**](role-mining-session-parameters-dto) |  | [optional] 
 
 ## Methods
 

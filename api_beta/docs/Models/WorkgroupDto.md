@@ -15,12 +15,12 @@ tags: ['SDK', 'Software Development Kit', 'WorkgroupDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Owner** | Pointer to [**OwnerDto**](OwnerDto) |  | [optional] 
-**Id** | Pointer to **string** | Governance group ID. | [optional] [readonly] 
-**Name** | Pointer to **string** | Governance group name. | [optional] 
-**Description** | Pointer to **string** | Governance group description. | [optional] 
-**MemberCount** | Pointer to **int64** | Number of members in the governance group. | [optional] [readonly] 
-**ConnectionCount** | Pointer to **int64** | Number of connections in the governance group. | [optional] [readonly] 
+**Owner** |  Pointer to [**OwnerDto**](owner-dto) |  | [optional] 
+**Id** |  Pointer to **string** | Governance group ID. | [optional] [readonly] 
+**Name** |  Pointer to **string** | Governance group name. | [optional] 
+**Description** |  Pointer to **string** | Governance group description. | [optional] 
+**MemberCount** |  Pointer to **int64** | Number of members in the governance group. | [optional] [readonly] 
+**ConnectionCount** |  Pointer to **int64** | Number of connections in the governance group. | [optional] [readonly] 
 
 ## Methods
 

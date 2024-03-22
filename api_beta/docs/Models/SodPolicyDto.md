@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'SodPolicyDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | SOD policy DTO type. | [optional] 
-**Id** | Pointer to **string** | SOD policy ID. | [optional] 
-**Name** | Pointer to **string** | SOD policy display name. | [optional] 
+**Type** |  Pointer to **string** | SOD policy DTO type. | [optional] 
+**Id** |  Pointer to **string** | SOD policy ID. | [optional] 
+**Name** |  Pointer to **string** | SOD policy display name. | [optional] 
 
 ## Methods
 

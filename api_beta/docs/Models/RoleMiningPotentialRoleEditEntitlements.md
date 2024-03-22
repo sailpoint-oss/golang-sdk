@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'RoleMiningPotentialRoleEditEntitlemen
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ids** | Pointer to **[]string** | The list of entitlement ids to be edited | [optional] 
-**Exclude** | Pointer to **bool** | If true, add ids to be exclusion list. If false, remove ids from the exclusion list. | [optional] 
+**Ids** |  Pointer to **[]string** | The list of entitlement ids to be edited | [optional] 
+**Exclude** |  Pointer to **bool** | If true, add ids to be exclusion list. If false, remove ids from the exclusion list. | [optional] 
 
 ## Methods
 

@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'CompletedApprovalPreApprovalTriggerRe
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Comment** | Pointer to **string** | The comment from the trigger | [optional] 
-**Decision** | Pointer to [**CompletedApprovalState**](CompletedApprovalState) |  | [optional] 
-**Reviewer** | Pointer to **string** | The name of the approver | [optional] 
-**Date** | Pointer to **time.Time** | The date and time the trigger decided on the request | [optional] 
+**Comment** |  Pointer to **string** | The comment from the trigger | [optional] 
+**Decision** |  Pointer to [**CompletedApprovalState**](completed-approval-state) |  | [optional] 
+**Reviewer** |  Pointer to **string** | The name of the approver | [optional] 
+**Date** |  Pointer to **time.Time** | The date and time the trigger decided on the request | [optional] 
 
 ## Methods
 

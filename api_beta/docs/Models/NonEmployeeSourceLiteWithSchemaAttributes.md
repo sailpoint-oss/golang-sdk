@@ -15,11 +15,11 @@ tags: ['SDK', 'Software Development Kit', 'NonEmployeeSourceLiteWithSchemaAttrib
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Non-Employee source id. | [optional] 
-**SourceId** | Pointer to **string** | Source Id associated with this non-employee source. | [optional] 
-**Name** | Pointer to **string** | Source name associated with this non-employee source. | [optional] 
-**Description** | Pointer to **string** | Source description associated with this non-employee source. | [optional] 
-**SchemaAttributes** | Pointer to [**[]NonEmployeeSchemaAttribute**](NonEmployeeSchemaAttribute) | List of schema attributes associated with this non-employee source. | [optional] 
+**Id** |  Pointer to **string** | Non-Employee source id. | [optional] 
+**SourceId** |  Pointer to **string** | Source Id associated with this non-employee source. | [optional] 
+**Name** |  Pointer to **string** | Source name associated with this non-employee source. | [optional] 
+**Description** |  Pointer to **string** | Source description associated with this non-employee source. | [optional] 
+**SchemaAttributes** |  Pointer to [**[]NonEmployeeSchemaAttribute**](non-employee-schema-attribute) | List of schema attributes associated with this non-employee source. | [optional] 
 
 ## Methods
 

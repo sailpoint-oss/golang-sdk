@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'DuoVerificationRequest']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**UserId** | **string** | User id for Verification request. | 
-**SignedResponse** | **string** | User id for Verification request. | 
+**UserId** |  **string** | User id for Verification request. | 
+**SignedResponse** |  **string** | User id for Verification request. | 
 
 ## Methods
 

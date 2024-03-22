@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'SourceSyncJob']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Job ID. | 
-**Status** | **string** | The job status. | 
-**Payload** | [**SourceSyncPayload**](SourceSyncPayload) |  | 
+**Id** |  **string** | Job ID. | 
+**Status** |  **string** | The job status. | 
+**Payload** |  [**SourceSyncPayload**](source-sync-payload) |  | 
 
 ## Methods
 

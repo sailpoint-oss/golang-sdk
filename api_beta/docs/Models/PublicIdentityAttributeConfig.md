@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'PublicIdentityAttributeConfig']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | Pointer to **string** | the key of the attribute | [optional] 
-**Name** | Pointer to **string** | the display name of the attribute | [optional] 
+**Key** |  Pointer to **string** | the key of the attribute | [optional] 
+**Name** |  Pointer to **string** | the display name of the attribute | [optional] 
 
 ## Methods
 

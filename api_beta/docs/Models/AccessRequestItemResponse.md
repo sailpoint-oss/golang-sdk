@@ -15,14 +15,14 @@ tags: ['SDK', 'Software Development Kit', 'AccessRequestItemResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Operation** | Pointer to **string** | the access request item operation | [optional] 
-**AccessItemType** | Pointer to **string** | the access item type | [optional] 
-**Name** | Pointer to **string** | the name of access request item | [optional] 
-**Decision** | Pointer to **string** | the final decision for the access request | [optional] 
-**Description** | Pointer to **string** | the description of access request item | [optional] 
-**SourceId** | Pointer to **string** | the source id | [optional] 
-**SourceName** | Pointer to **string** | the source Name | [optional] 
-**ApprovalInfos** | Pointer to [**[]ApprovalInfoResponse**](ApprovalInfoResponse) |  | [optional] 
+**Operation** |  Pointer to **string** | the access request item operation | [optional] 
+**AccessItemType** |  Pointer to **string** | the access item type | [optional] 
+**Name** |  Pointer to **string** | the name of access request item | [optional] 
+**Decision** |  Pointer to **string** | the final decision for the access request | [optional] 
+**Description** |  Pointer to **string** | the description of access request item | [optional] 
+**SourceId** |  Pointer to **string** | the source id | [optional] 
+**SourceName** |  Pointer to **string** | the source Name | [optional] 
+**ApprovalInfos** |  Pointer to [**[]ApprovalInfoResponse**](approval-info-response) |  | [optional] 
 
 ## Methods
 

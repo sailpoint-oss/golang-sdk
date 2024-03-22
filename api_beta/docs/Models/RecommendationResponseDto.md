@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'RecommendationResponseDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Response** | Pointer to [**[]RecommendationResponse**](RecommendationResponse) |  | [optional] 
+**Response** |  Pointer to [**[]RecommendationResponse**](recommendation-response) |  | [optional] 
 
 ## Methods
 

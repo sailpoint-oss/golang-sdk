@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'AccessCriteria']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | Business name for the access construct list | [optional] 
-**CriteriaList** | Pointer to [**[]AccessCriteriaCriteriaListInner**](AccessCriteriaCriteriaListInner) | List of criteria.  There is a min of 1 and max of 50 items in the list. | [optional] 
+**Name** |  Pointer to **string** | Business name for the access construct list | [optional] 
+**CriteriaList** |  Pointer to [**[]AccessCriteriaCriteriaListInner**](access-criteria-criteria-list-inner) | List of criteria.  There is a min of 1 and max of 50 items in the list. | [optional] 
 
 ## Methods
 

@@ -15,11 +15,11 @@ tags: ['SDK', 'Software Development Kit', 'DomainStatusDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | New UUID associated with domain to be verified | [optional] 
-**Domain** | Pointer to **string** | A domain address | [optional] 
-**DkimEnabled** | Pointer to **map[string]interface{}** | DKIM is enabled for this domain | [optional] [default to false]
-**DkimTokens** | Pointer to **[]string** | DKIM tokens required for authentication | [optional] 
-**DkimVerificationStatus** | Pointer to **string** | Status of DKIM authentication | [optional] 
+**Id** |  Pointer to **string** | New UUID associated with domain to be verified | [optional] 
+**Domain** |  Pointer to **string** | A domain address | [optional] 
+**DkimEnabled** |  Pointer to **map[string]interface{}** | DKIM is enabled for this domain | [optional] [default to false]
+**DkimTokens** |  Pointer to **[]string** | DKIM tokens required for authentication | [optional] 
+**DkimVerificationStatus** |  Pointer to **string** | Status of DKIM authentication | [optional] 
 
 ## Methods
 

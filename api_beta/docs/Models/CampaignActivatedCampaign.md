@@ -15,15 +15,15 @@ tags: ['SDK', 'Software Development Kit', 'CampaignActivatedCampaign']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique ID for the campaign. | 
-**Name** | **string** | The human friendly name of the campaign. | 
-**Description** | **string** | Extended description of the campaign. | 
-**Created** | **time.Time** | The date and time the campaign was created. | 
-**Modified** | Pointer to **NullableTime** | The date and time the campaign was last modified. | [optional] 
-**Deadline** | **time.Time** | The date and time the campaign is due. | 
-**Type** | **map[string]interface{}** | The type of campaign. | 
-**CampaignOwner** | [**CampaignActivatedCampaignCampaignOwner**](CampaignActivatedCampaignCampaignOwner) |  | 
-**Status** | **map[string]interface{}** | The current status of the campaign. | 
+**Id** |  **string** | Unique ID for the campaign. | 
+**Name** |  **string** | The human friendly name of the campaign. | 
+**Description** |  **string** | Extended description of the campaign. | 
+**Created** |  **time.Time** | The date and time the campaign was created. | 
+**Modified** |  Pointer to **NullableTime** | The date and time the campaign was last modified. | [optional] 
+**Deadline** |  **time.Time** | The date and time the campaign is due. | 
+**Type** |  **map[string]interface{}** | The type of campaign. | 
+**CampaignOwner** |  [**CampaignActivatedCampaignCampaignOwner**](campaign-activated-campaign-campaign-owner) |  | 
+**Status** |  **map[string]interface{}** | The current status of the campaign. | 
 
 ## Methods
 

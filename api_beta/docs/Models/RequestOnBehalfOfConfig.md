@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'RequestOnBehalfOfConfig']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AllowRequestOnBehalfOfAnyoneByAnyone** | Pointer to **bool** | If anyone can request access for anyone. | [optional] 
-**AllowRequestOnBehalfOfEmployeeByManager** | Pointer to **bool** | If a manager can request access for his/her direct reports. | [optional] 
+**AllowRequestOnBehalfOfAnyoneByAnyone** |  Pointer to **bool** | If anyone can request access for anyone. | [optional] 
+**AllowRequestOnBehalfOfEmployeeByManager** |  Pointer to **bool** | If a manager can request access for his/her direct reports. | [optional] 
 
 ## Methods
 

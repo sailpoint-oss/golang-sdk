@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'RoleTargetDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Source** | Pointer to [**BaseReferenceDto**](BaseReferenceDto) |  | [optional] 
-**AccountInfo** | Pointer to [**AccountInfoDto**](AccountInfoDto) |  | [optional] 
-**RoleName** | Pointer to **string** | Specific role name for this target if using multiple accounts | [optional] 
+**Source** |  Pointer to [**BaseReferenceDto**](base-reference-dto) |  | [optional] 
+**AccountInfo** |  Pointer to [**AccountInfoDto**](account-info-dto) |  | [optional] 
+**RoleName** |  Pointer to **string** | Specific role name for this target if using multiple accounts | [optional] 
 
 ## Methods
 

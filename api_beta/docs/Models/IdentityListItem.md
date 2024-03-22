@@ -15,12 +15,12 @@ tags: ['SDK', 'Software Development Kit', 'IdentityListItem']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | the identity ID | [optional] 
-**DisplayName** | Pointer to **string** | the display name of the identity | [optional] 
-**FirstName** | Pointer to **string** | the first name of the identity | [optional] 
-**LastName** | Pointer to **string** | the last name of the identity | [optional] 
-**Active** | Pointer to **bool** | indicates if an identity is active or not | [optional] [default to true]
-**DeletedDate** | Pointer to **NullableString** | the date when the identity was deleted | [optional] 
+**Id** |  Pointer to **string** | the identity ID | [optional] 
+**DisplayName** |  Pointer to **string** | the display name of the identity | [optional] 
+**FirstName** |  Pointer to **string** | the first name of the identity | [optional] 
+**LastName** |  Pointer to **string** | the last name of the identity | [optional] 
+**Active** |  Pointer to **bool** | indicates if an identity is active or not | [optional] [default to true]
+**DeletedDate** |  Pointer to **NullableString** | the date when the identity was deleted | [optional] 
 
 ## Methods
 

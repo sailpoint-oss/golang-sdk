@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'EntitlementRequestConfig']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessRequestConfig** | Pointer to [**EntitlementAccessRequestConfig**](EntitlementAccessRequestConfig) |  | [optional] 
+**AccessRequestConfig** |  Pointer to [**EntitlementAccessRequestConfig**](entitlement-access-request-config) |  | [optional] 
 
 ## Methods
 

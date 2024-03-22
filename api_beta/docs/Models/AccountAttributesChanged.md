@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'AccountAttributesChanged']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Identity** | [**AccountAttributesChangedIdentity**](AccountAttributesChangedIdentity) |  | 
-**Source** | [**AccountAttributesChangedSource**](AccountAttributesChangedSource) |  | 
-**Account** | [**AccountAttributesChangedAccount**](AccountAttributesChangedAccount) |  | 
-**Changes** | [**[]AccountAttributesChangedChangesInner**](AccountAttributesChangedChangesInner) | A list of attributes that changed. | 
+**Identity** |  [**AccountAttributesChangedIdentity**](account-attributes-changed-identity) |  | 
+**Source** |  [**AccountAttributesChangedSource**](account-attributes-changed-source) |  | 
+**Account** |  [**AccountAttributesChangedAccount**](account-attributes-changed-account) |  | 
+**Changes** |  [**[]AccountAttributesChangedChangesInner**](account-attributes-changed-changes-inner) | A list of attributes that changed. | 
 
 ## Methods
 

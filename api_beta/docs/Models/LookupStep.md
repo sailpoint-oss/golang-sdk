@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'LookupStep']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ReassignedToId** | Pointer to **string** | The ID of the Identity who work is reassigned to | [optional] 
-**ReassignedFromId** | Pointer to **string** | The ID of the Identity who work is reassigned from | [optional] 
-**ReassignmentType** | Pointer to [**ReassignmentTypeEnum**](ReassignmentTypeEnum) |  | [optional] 
+**ReassignedToId** |  Pointer to **string** | The ID of the Identity who work is reassigned to | [optional] 
+**ReassignedFromId** |  Pointer to **string** | The ID of the Identity who work is reassigned from | [optional] 
+**ReassignmentType** |  Pointer to [**ReassignmentTypeEnum**](reassignment-type-enum) |  | [optional] 
 
 ## Methods
 

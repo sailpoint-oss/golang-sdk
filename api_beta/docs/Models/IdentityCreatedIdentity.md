@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'IdentityCreatedIdentity']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | Created identity&#39;s DTO type. | 
-**Id** | **string** | Created identity ID. | 
-**Name** | **string** | Created identity&#39;s display name. | 
+**Type** |  **string** | Created identity&#39;s DTO type. | 
+**Id** |  **string** | Created identity ID. | 
+**Name** |  **string** | Created identity&#39;s display name. | 
 
 ## Methods
 

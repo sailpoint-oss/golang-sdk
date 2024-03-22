@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'CancelAccessRequest']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccountActivityId** | **string** | This refers to the identityRequestId. To successfully cancel an access request, you must provide the identityRequestId. | 
-**Comment** | **string** | Reason for cancelling the pending access request. | 
+**AccountActivityId** |  **string** | This refers to the identityRequestId. To successfully cancel an access request, you must provide the identityRequestId. | 
+**Comment** |  **string** | Reason for cancelling the pending access request. | 
 
 ## Methods
 

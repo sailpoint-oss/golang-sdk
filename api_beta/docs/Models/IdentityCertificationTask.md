@@ -15,11 +15,11 @@ tags: ['SDK', 'Software Development Kit', 'IdentityCertificationTask']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | The task id | [optional] 
-**CertificationId** | Pointer to **string** | The certification id | [optional] 
-**Type** | Pointer to **string** |  | [optional] 
-**Status** | Pointer to **string** |  | [optional] 
-**Errors** | Pointer to **[]string** | Any errors executing the task (Optional). | [optional] 
+**Id** |  Pointer to **string** | The task id | [optional] 
+**CertificationId** |  Pointer to **string** | The certification id | [optional] 
+**Type** |  Pointer to **string** |  | [optional] 
+**Status** |  Pointer to **string** |  | [optional] 
+**Errors** |  Pointer to **[]string** | Any errors executing the task (Optional). | [optional] 
 
 ## Methods
 

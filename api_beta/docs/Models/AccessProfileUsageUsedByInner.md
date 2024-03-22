@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'AccessProfileUsageUsedByInner']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | DTO type of role using the access profile. | [optional] 
-**Id** | Pointer to **string** | ID of role using the access profile. | [optional] 
-**Name** | Pointer to **string** | Display name of role using the access profile. | [optional] 
+**Type** |  Pointer to **string** | DTO type of role using the access profile. | [optional] 
+**Id** |  Pointer to **string** | ID of role using the access profile. | [optional] 
+**Name** |  Pointer to **string** | Display name of role using the access profile. | [optional] 
 
 ## Methods
 

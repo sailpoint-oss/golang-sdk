@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'AccountAggregationCompletedSource']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | The DTO type of the source the accounts are being aggregated from. | 
-**Id** | **string** | The ID of the source the accounts are being aggregated from. | 
-**Name** | **string** | Display name of the source the accounts are being aggregated from. | 
+**Type** |  **string** | The DTO type of the source the accounts are being aggregated from. | 
+**Id** |  **string** | The ID of the source the accounts are being aggregated from. | 
+**Name** |  **string** | Display name of the source the accounts are being aggregated from. | 
 
 ## Methods
 

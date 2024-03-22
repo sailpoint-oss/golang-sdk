@@ -15,11 +15,11 @@ tags: ['SDK', 'Software Development Kit', 'ProvisioningConfig']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**UniversalManager** | Pointer to **bool** | Specifies whether this configuration is used to manage provisioning requests for all sources from the org.  If true, no managedResourceRefs are allowed. | [optional] [readonly] [default to false]
-**ManagedResourceRefs** | Pointer to [**[]ProvisioningConfigManagedResourceRefsInner**](ProvisioningConfigManagedResourceRefsInner) | References to sources for the Service Desk integration template.  May only be specified if universalManager is false. | [optional] 
-**PlanInitializerScript** | Pointer to [**ProvisioningConfigPlanInitializerScript**](ProvisioningConfigPlanInitializerScript) |  | [optional] 
-**NoProvisioningRequests** | Pointer to **bool** | Name of an attribute that when true disables the saving of ProvisioningRequest objects whenever plans are sent through this integration. | [optional] [default to false]
-**ProvisioningRequestExpiration** | Pointer to **int32** | When saving pending requests is enabled, this defines the number of hours the request is allowed to live before it is considered expired and no longer affects plan compilation. | [optional] 
+**UniversalManager** |  Pointer to **bool** | Specifies whether this configuration is used to manage provisioning requests for all sources from the org.  If true, no managedResourceRefs are allowed. | [optional] [readonly] [default to false]
+**ManagedResourceRefs** |  Pointer to [**[]ProvisioningConfigManagedResourceRefsInner**](provisioning-config-managed-resource-refs-inner) | References to sources for the Service Desk integration template.  May only be specified if universalManager is false. | [optional] 
+**PlanInitializerScript** |  Pointer to [**ProvisioningConfigPlanInitializerScript**](provisioning-config-plan-initializer-script) |  | [optional] 
+**NoProvisioningRequests** |  Pointer to **bool** | Name of an attribute that when true disables the saving of ProvisioningRequest objects whenever plans are sent through this integration. | [optional] [default to false]
+**ProvisioningRequestExpiration** |  Pointer to **int32** | When saving pending requests is enabled, this defines the number of hours the request is allowed to live before it is considered expired and no longer affects plan compilation. | [optional] 
 
 ## Methods
 

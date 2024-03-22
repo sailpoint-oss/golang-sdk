@@ -15,12 +15,12 @@ tags: ['SDK', 'Software Development Kit', 'SourceCreated']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | The unique ID of the source. | 
-**Name** | **string** | Human friendly name of the source. | 
-**Type** | **string** | The connection type. | 
-**Created** | **time.Time** | The date and time the source was created. | 
-**Connector** | **string** | The connector type used to connect to the source. | 
-**Actor** | [**SourceCreatedActor**](SourceCreatedActor) |  | 
+**Id** |  **string** | The unique ID of the source. | 
+**Name** |  **string** | Human friendly name of the source. | 
+**Type** |  **string** | The connection type. | 
+**Created** |  **time.Time** | The date and time the source was created. | 
+**Connector** |  **string** | The connector type used to connect to the source. | 
+**Actor** |  [**SourceCreatedActor**](source-created-actor) |  | 
 
 ## Methods
 

@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'AccessConstraint']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | Type of Access | 
-**Ids** | Pointer to **[]string** | Must be set only if operator is SELECTED. | [optional] 
-**Operator** | **string** | Used to determine whether the scope of the campaign should be reduced for selected ids or all. | 
+**Type** |  **string** | Type of Access | 
+**Ids** |  Pointer to **[]string** | Must be set only if operator is SELECTED. | [optional] 
+**Operator** |  **string** | Used to determine whether the scope of the campaign should be reduced for selected ids or all. | 
 
 ## Methods
 

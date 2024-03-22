@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'FormCondition']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RuleOperator** | Pointer to **string** | ConditionRuleLogicalOperatorType value. AND ConditionRuleLogicalOperatorTypeAnd OR ConditionRuleLogicalOperatorTypeOr | [optional] 
-**Rules** | Pointer to [**[]ConditionRule**](ConditionRule) | List of rules. | [optional] 
-**Effects** | Pointer to [**[]ConditionEffect**](ConditionEffect) | List of effects. | [optional] 
+**RuleOperator** |  Pointer to **string** | ConditionRuleLogicalOperatorType value. AND ConditionRuleLogicalOperatorTypeAnd OR ConditionRuleLogicalOperatorTypeOr | [optional] 
+**Rules** |  Pointer to [**[]ConditionRule**](condition-rule) | List of rules. | [optional] 
+**Effects** |  Pointer to [**[]ConditionEffect**](condition-effect) | List of effects. | [optional] 
 
 ## Methods
 

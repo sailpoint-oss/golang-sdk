@@ -15,11 +15,11 @@ tags: ['SDK', 'Software Development Kit', 'AccessRequestConfig']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ApprovalsMustBeExternal** | Pointer to **bool** | If true, then approvals must be processed by external system. | [optional] 
-**AutoApprovalEnabled** | Pointer to **bool** | If true and requester and reviewer are the same, then automatically approve the approval. | [optional] 
-**RequestOnBehalfOfConfig** | Pointer to [**RequestOnBehalfOfConfig**](RequestOnBehalfOfConfig) |  | [optional] 
-**ApprovalReminderAndEscalationConfig** | Pointer to [**ApprovalReminderAndEscalationConfig**](ApprovalReminderAndEscalationConfig) |  | [optional] 
-**EntitlementRequestConfig** | Pointer to [**EntitlementRequestConfig1**](EntitlementRequestConfig1) |  | [optional] 
+**ApprovalsMustBeExternal** |  Pointer to **bool** | If true, then approvals must be processed by external system. | [optional] 
+**AutoApprovalEnabled** |  Pointer to **bool** | If true and requester and reviewer are the same, then automatically approve the approval. | [optional] 
+**RequestOnBehalfOfConfig** |  Pointer to [**RequestOnBehalfOfConfig**](request-on-behalf-of-config) |  | [optional] 
+**ApprovalReminderAndEscalationConfig** |  Pointer to [**ApprovalReminderAndEscalationConfig**](approval-reminder-and-escalation-config) |  | [optional] 
+**EntitlementRequestConfig** |  Pointer to [**EntitlementRequestConfig1**](entitlement-request-config1) |  | [optional] 
 
 ## Methods
 

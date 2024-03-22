@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'TaskReturnDetails']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** | Display name of the TaskReturnDetails | 
-**AttributeName** | **string** | Attribute the TaskReturnDetails is for | 
+**Name** |  **string** | Display name of the TaskReturnDetails | 
+**AttributeName** |  **string** | Attribute the TaskReturnDetails is for | 
 
 ## Methods
 

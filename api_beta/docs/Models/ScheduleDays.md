@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'ScheduleDays']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | Enum type to specify days value | 
-**Values** | **[]string** | Values of the days based on the enum type mentioned above | 
-**Interval** | Pointer to **int64** | Interval between the cert generations | [optional] 
+**Type** |  **string** | Enum type to specify days value | 
+**Values** |  **[]string** | Values of the days based on the enum type mentioned above | 
+**Interval** |  Pointer to **int64** | Interval between the cert generations | [optional] 
 
 ## Methods
 

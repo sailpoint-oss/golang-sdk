@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'PasswordDigitTokenReset']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**UserId** | **string** | The uid of the user requested for digit token | 
-**Length** | Pointer to **int32** | The length of digit token. It should be from 6 to 18, inclusive. The default value is 6. | [optional] 
-**DurationMinutes** | Pointer to **int32** | The time to live for the digit token in minutes. The default value is 5 minutes. | [optional] 
+**UserId** |  **string** | The uid of the user requested for digit token | 
+**Length** |  Pointer to **int32** | The length of digit token. It should be from 6 to 18, inclusive. The default value is 6. | [optional] 
+**DurationMinutes** |  Pointer to **int32** | The time to live for the digit token in minutes. The default value is 5 minutes. | [optional] 
 
 ## Methods
 

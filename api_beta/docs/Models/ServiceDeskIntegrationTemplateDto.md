@@ -15,13 +15,13 @@ tags: ['SDK', 'Software Development Kit', 'ServiceDeskIntegrationTemplateDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | System-generated unique ID of the Object | [optional] [readonly] 
-**Name** | **string** | Name of the Object | 
-**Created** | Pointer to **time.Time** | Creation date of the Object | [optional] [readonly] 
-**Modified** | Pointer to **time.Time** | Last modification date of the Object | [optional] [readonly] 
-**Type** | **string** | The &#39;type&#39; property specifies the type of the Service Desk integration template. | [default to "Web Service SDIM"]
-**Attributes** | **map[string]interface{}** | The &#39;attributes&#39; property value is a map of attributes available for integrations using this Service Desk integration template. | 
-**ProvisioningConfig** | [**ProvisioningConfig**](ProvisioningConfig) |  | 
+**Id** |  Pointer to **string** | System-generated unique ID of the Object | [optional] [readonly] 
+**Name** |  **string** | Name of the Object | 
+**Created** |  Pointer to **time.Time** | Creation date of the Object | [optional] [readonly] 
+**Modified** |  Pointer to **time.Time** | Last modification date of the Object | [optional] [readonly] 
+**Type** |  **string** | The &#39;type&#39; property specifies the type of the Service Desk integration template. | [default to "Web Service SDIM"]
+**Attributes** |  **map[string]interface{}** | The &#39;attributes&#39; property value is a map of attributes available for integrations using this Service Desk integration template. | 
+**ProvisioningConfig** |  [**ProvisioningConfig**](provisioning-config) |  | 
 
 ## Methods
 

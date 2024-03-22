@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'AccessItemAppResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessType** | Pointer to **string** | the access item type. entitlement in this case | [optional] 
-**Id** | Pointer to **string** | the access item id | [optional] 
-**DisplayName** | Pointer to **string** | the access profile display name | [optional] 
-**SourceName** | Pointer to **string** | the associated source name if it exists | [optional] 
+**AccessType** |  Pointer to **string** | the access item type. entitlement in this case | [optional] 
+**Id** |  Pointer to **string** | the access item id | [optional] 
+**DisplayName** |  Pointer to **string** | the access profile display name | [optional] 
+**SourceName** |  Pointer to **string** | the associated source name if it exists | [optional] 
 
 ## Methods
 

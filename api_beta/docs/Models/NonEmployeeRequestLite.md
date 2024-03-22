@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'NonEmployeeRequestLite']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Non-Employee request id. | [optional] 
-**Requester** | Pointer to [**IdentityReferenceWithId**](IdentityReferenceWithId) |  | [optional] 
+**Id** |  Pointer to **string** | Non-Employee request id. | [optional] 
+**Requester** |  Pointer to [**IdentityReferenceWithId**](identity-reference-with-id) |  | [optional] 
 
 ## Methods
 

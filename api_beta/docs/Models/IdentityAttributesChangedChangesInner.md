@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'IdentityAttributesChangedChangesInner
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Attribute** | **string** | The name of the identity attribute that changed. | 
-**OldValue** | Pointer to [**NullableIdentityAttributesChangedChangesInnerOldValue**](IdentityAttributesChangedChangesInnerOldValue) |  | [optional] 
-**NewValue** | Pointer to [**IdentityAttributesChangedChangesInnerNewValue**](IdentityAttributesChangedChangesInnerNewValue) |  | [optional] 
+**Attribute** |  **string** | The name of the identity attribute that changed. | 
+**OldValue** |  Pointer to [**NullableIdentityAttributesChangedChangesInnerOldValue**](identity-attributes-changed-changes-inner-old-value) |  | [optional] 
+**NewValue** |  Pointer to [**IdentityAttributesChangedChangesInnerNewValue**](identity-attributes-changed-changes-inner-new-value) |  | [optional] 
 
 ## Methods
 

@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'SendTestNotificationRequestDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | Pointer to **string** | The template notification key. | [optional] 
-**Medium** | Pointer to **string** | The notification medium. Has to be one of the following enum values. | [optional] 
-**Context** | Pointer to **map[string]interface{}** | A Json object that denotes the context specific to the template. | [optional] 
+**Key** |  Pointer to **string** | The template notification key. | [optional] 
+**Medium** |  Pointer to **string** | The notification medium. Has to be one of the following enum values. | [optional] 
+**Context** |  Pointer to **map[string]interface{}** | A Json object that denotes the context specific to the template. | [optional] 
 
 ## Methods
 

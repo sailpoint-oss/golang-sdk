@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'AuthProfileSummary']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Tenant** | Pointer to **string** | Tenant name. | [optional] 
-**Id** | Pointer to **string** | Identity ID. | [optional] 
+**Tenant** |  Pointer to **string** | Tenant name. | [optional] 
+**Id** |  Pointer to **string** | Identity ID. | [optional] 
 
 ## Methods
 

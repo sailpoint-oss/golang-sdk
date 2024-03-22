@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'RoleMiningPotentialRoleProvisionReque
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RoleName** | Pointer to **string** | Name of the new role being created | [optional] 
-**RoleDescription** | Pointer to **string** | Short description of the new role being created | [optional] 
-**OwnerId** | Pointer to **string** | ID of the identity that will own this role | [optional] 
+**RoleName** |  Pointer to **string** | Name of the new role being created | [optional] 
+**RoleDescription** |  Pointer to **string** | Short description of the new role being created | [optional] 
+**OwnerId** |  Pointer to **string** | ID of the identity that will own this role | [optional] 
 
 ## Methods
 

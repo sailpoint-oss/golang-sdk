@@ -15,12 +15,12 @@ tags: ['SDK', 'Software Development Kit', 'CreatePersonalAccessTokenResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | The ID of the personal access token (to be used as the username for Basic Auth). | 
-**Secret** | **string** | The secret of the personal access token (to be used as the password for Basic Auth). | 
-**Scope** | **[]string** | Scopes of the personal  access token. | 
-**Name** | **string** | The name of the personal access token. Cannot be the same as other personal access tokens owned by a user. | 
-**Owner** | [**PatOwner**](PatOwner) |  | 
-**Created** | **time.Time** | The date and time, down to the millisecond, when this personal access token was created. | 
+**Id** |  **string** | The ID of the personal access token (to be used as the username for Basic Auth). | 
+**Secret** |  **string** | The secret of the personal access token (to be used as the password for Basic Auth). | 
+**Scope** |  **[]string** | Scopes of the personal  access token. | 
+**Name** |  **string** | The name of the personal access token. Cannot be the same as other personal access tokens owned by a user. | 
+**Owner** |  [**PatOwner**](pat-owner) |  | 
+**Created** |  **time.Time** | The date and time, down to the millisecond, when this personal access token was created. | 
 
 ## Methods
 

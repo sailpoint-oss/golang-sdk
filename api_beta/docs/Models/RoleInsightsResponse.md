@@ -15,12 +15,12 @@ tags: ['SDK', 'Software Development Kit', 'RoleInsightsResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Request Id for a role insight generation request | [optional] 
-**CreatedDate** | Pointer to **time.Time** | The date-time role insights request was created. | [optional] 
-**LastGenerated** | Pointer to **time.Time** | The date-time role insights request was completed. | [optional] 
-**NumberOfUpdates** | Pointer to **int32** | Total number of updates for this request. Starts with 0 and will have correct number when request is COMPLETED. | [optional] 
-**RoleIds** | Pointer to **[]string** | The role IDs that are in this request. | [optional] 
-**Status** | Pointer to **string** | Request status | [optional] 
+**Id** |  Pointer to **string** | Request Id for a role insight generation request | [optional] 
+**CreatedDate** |  Pointer to **time.Time** | The date-time role insights request was created. | [optional] 
+**LastGenerated** |  Pointer to **time.Time** | The date-time role insights request was completed. | [optional] 
+**NumberOfUpdates** |  Pointer to **int32** | Total number of updates for this request. Starts with 0 and will have correct number when request is COMPLETED. | [optional] 
+**RoleIds** |  Pointer to **[]string** | The role IDs that are in this request. | [optional] 
+**Status** |  Pointer to **string** | Request status | [optional] 
 
 ## Methods
 

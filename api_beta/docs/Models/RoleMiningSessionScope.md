@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'RoleMiningSessionScope']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IdentityIds** | Pointer to **[]string** | The list of identities for this role mining session. | [optional] 
-**Criteria** | Pointer to **NullableString** | The \&quot;search\&quot; criteria that produces the list of identities for this role mining session. | [optional] 
-**AttributeFilterCriteria** | Pointer to **[]map[string]interface{}** | The filter criteria for this role mining session. | [optional] 
+**IdentityIds** |  Pointer to **[]string** | The list of identities for this role mining session. | [optional] 
+**Criteria** |  Pointer to **NullableString** | The \&quot;search\&quot; criteria that produces the list of identities for this role mining session. | [optional] 
+**AttributeFilterCriteria** |  Pointer to **[]map[string]interface{}** | The filter criteria for this role mining session. | [optional] 
 
 ## Methods
 

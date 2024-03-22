@@ -15,11 +15,11 @@ tags: ['SDK', 'Software Development Kit', 'FormElement']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Form element identifier. | [optional] 
-**ElementType** | Pointer to **string** | FormElementType value.  TEXT FormElementTypeText TOGGLE FormElementTypeToggle TEXTAREA FormElementTypeTextArea HIDDEN FormElementTypeHidden PHONE FormElementTypePhone EMAIL FormElementTypeEmail SELECT FormElementTypeSelect DATE FormElementTypeDate SECTION FormElementTypeSection COLUMNS FormElementTypeColumns | [optional] 
-**Config** | Pointer to **map[string]map[string]interface{}** | Config object. | [optional] 
-**Key** | Pointer to **string** | Technical key. | [optional] 
-**Validations** | Pointer to **map[string]interface{}** | Set of FormElementValidation items. | [optional] 
+**Id** |  Pointer to **string** | Form element identifier. | [optional] 
+**ElementType** |  Pointer to **string** | FormElementType value.  TEXT FormElementTypeText TOGGLE FormElementTypeToggle TEXTAREA FormElementTypeTextArea HIDDEN FormElementTypeHidden PHONE FormElementTypePhone EMAIL FormElementTypeEmail SELECT FormElementTypeSelect DATE FormElementTypeDate SECTION FormElementTypeSection COLUMNS FormElementTypeColumns | [optional] 
+**Config** |  Pointer to **map[string]map[string]interface{}** | Config object. | [optional] 
+**Key** |  Pointer to **string** | Technical key. | [optional] 
+**Validations** |  Pointer to **map[string]interface{}** | Set of FormElementValidation items. | [optional] 
 
 ## Methods
 

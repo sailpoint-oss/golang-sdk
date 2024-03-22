@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'AccessRequestResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RequesterId** | Pointer to **string** | the requester Id | [optional] 
-**RequesterName** | Pointer to **string** | the requesterName | [optional] 
-**Items** | Pointer to [**[]AccessRequestItemResponse**](AccessRequestItemResponse) |  | [optional] 
+**RequesterId** |  Pointer to **string** | the requester Id | [optional] 
+**RequesterName** |  Pointer to **string** | the requesterName | [optional] 
+**Items** |  Pointer to [**[]AccessRequestItemResponse**](access-request-item-response) |  | [optional] 
 
 ## Methods
 

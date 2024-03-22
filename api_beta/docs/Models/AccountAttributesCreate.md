@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'AccountAttributesCreate']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Attributes** | [**AccountAttributesCreateAttributes**](AccountAttributesCreateAttributes) |  | 
+**Attributes** |  [**AccountAttributesCreateAttributes**](account-attributes-create-attributes) |  | 
 
 ## Methods
 

@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'PublicIdentityConfig']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Attributes** | Pointer to [**[]PublicIdentityAttributeConfig**](PublicIdentityAttributeConfig) |  | [optional] 
-**ModifiedBy** | Pointer to [**NullableIdentityReference**](IdentityReference) |  | [optional] 
-**Modified** | Pointer to **NullableTime** | the date/time of the modification | [optional] 
+**Attributes** |  Pointer to [**[]PublicIdentityAttributeConfig**](public-identity-attribute-config) |  | [optional] 
+**ModifiedBy** |  Pointer to [**NullableIdentityReference**](identity-reference) |  | [optional] 
+**Modified** |  Pointer to **NullableTime** | the date/time of the modification | [optional] 
 
 ## Methods
 

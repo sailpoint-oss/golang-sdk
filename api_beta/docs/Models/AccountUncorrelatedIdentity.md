@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'AccountUncorrelatedIdentity']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | DTO type of the identity the account is uncorrelated with. | 
-**Id** | **string** | ID of the identity the account is uncorrelated with. | 
-**Name** | **string** | Display name of the identity the account is uncorrelated with. | 
+**Type** |  **string** | DTO type of the identity the account is uncorrelated with. | 
+**Id** |  **string** | ID of the identity the account is uncorrelated with. | 
+**Name** |  **string** | Display name of the identity the account is uncorrelated with. | 
 
 ## Methods
 

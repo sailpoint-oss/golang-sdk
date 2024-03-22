@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'RequestedItemStatusSodViolationContex
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**State** | Pointer to **NullableString** | The status of SOD violation check | [optional] 
-**Uuid** | Pointer to **NullableString** | The id of the Violation check event | [optional] 
-**ViolationCheckResult** | Pointer to [**SodViolationCheckResult**](SodViolationCheckResult) |  | [optional] 
+**State** |  Pointer to **NullableString** | The status of SOD violation check | [optional] 
+**Uuid** |  Pointer to **NullableString** | The id of the Violation check event | [optional] 
+**ViolationCheckResult** |  Pointer to [**SodViolationCheckResult**](sod-violation-check-result) |  | [optional] 
 
 ## Methods
 

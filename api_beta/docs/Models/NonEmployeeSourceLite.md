@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'NonEmployeeSourceLite']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Non-Employee source id. | [optional] 
-**SourceId** | Pointer to **string** | Source Id associated with this non-employee source. | [optional] 
-**Name** | Pointer to **string** | Source name associated with this non-employee source. | [optional] 
-**Description** | Pointer to **string** | Source description associated with this non-employee source. | [optional] 
+**Id** |  Pointer to **string** | Non-Employee source id. | [optional] 
+**SourceId** |  Pointer to **string** | Source Id associated with this non-employee source. | [optional] 
+**Name** |  Pointer to **string** | Source name associated with this non-employee source. | [optional] 
+**Description** |  Pointer to **string** | Source description associated with this non-employee source. | [optional] 
 
 ## Methods
 

@@ -15,12 +15,12 @@ tags: ['SDK', 'Software Development Kit', 'SpConfigJob']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**JobId** | **string** | Unique id assigned to this job. | 
-**Status** | **string** | Status of the job. | 
-**Type** | **string** | Type of the job, either export or import. | 
-**Expiration** | **time.Time** | The time until which the artifacts will be available for download. | 
-**Created** | **time.Time** | The time the job was started. | 
-**Modified** | **time.Time** | The time of the last update to the job. | 
+**JobId** |  **string** | Unique id assigned to this job. | 
+**Status** |  **string** | Status of the job. | 
+**Type** |  **string** | Type of the job, either export or import. | 
+**Expiration** |  **time.Time** | The time until which the artifacts will be available for download. | 
+**Created** |  **time.Time** | The time the job was started. | 
+**Modified** |  **time.Time** | The time of the last update to the job. | 
 
 ## Methods
 

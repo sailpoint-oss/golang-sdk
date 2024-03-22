@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'ProvisioningPolicyDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** | the provisioning policy name | 
-**Description** | Pointer to **string** | the description of the provisioning policy | [optional] 
-**UsageType** | Pointer to [**UsageType**](UsageType) |  | [optional] 
-**Fields** | Pointer to [**[]FieldDetailsDto**](FieldDetailsDto) |  | [optional] 
+**Name** |  **string** | the provisioning policy name | 
+**Description** |  Pointer to **string** | the description of the provisioning policy | [optional] 
+**UsageType** |  Pointer to [**UsageType**](usage-type) |  | [optional] 
+**Fields** |  Pointer to [**[]FieldDetailsDto**](field-details-dto) |  | [optional] 
 
 ## Methods
 

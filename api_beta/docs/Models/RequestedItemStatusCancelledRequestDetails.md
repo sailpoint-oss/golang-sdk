@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'RequestedItemStatusCancelledRequestDe
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Comment** | Pointer to **string** | Comment made by the owner when cancelling the associated request. | [optional] 
-**Owner** | Pointer to [**OwnerDto**](OwnerDto) |  | [optional] 
-**Modified** | Pointer to **time.Time** | Date comment was added by the owner when cancelling the associated request. | [optional] 
+**Comment** |  Pointer to **string** | Comment made by the owner when cancelling the associated request. | [optional] 
+**Owner** |  Pointer to [**OwnerDto**](owner-dto) |  | [optional] 
+**Modified** |  Pointer to **time.Time** | Date comment was added by the owner when cancelling the associated request. | [optional] 
 
 ## Methods
 

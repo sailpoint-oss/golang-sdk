@@ -15,15 +15,15 @@ tags: ['SDK', 'Software Development Kit', 'SodPolicySchedule']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | SOD Policy schedule name | [optional] 
-**Created** | Pointer to **time.Time** | The time when this SOD policy schedule is created. | [optional] 
-**Modified** | Pointer to **time.Time** | The time when this SOD policy schedule is modified. | [optional] 
-**Description** | Pointer to **string** | SOD Policy schedule description | [optional] 
-**Schedule** | Pointer to [**Schedule1**](Schedule1) |  | [optional] 
-**Recipients** | Pointer to [**[]SodRecipient**](SodRecipient) |  | [optional] 
-**EmailEmptyResults** | Pointer to **bool** | Indicates if empty results need to be emailed | [optional] 
-**CreatorId** | Pointer to **string** | Policy&#39;s creator ID | [optional] 
-**ModifierId** | Pointer to **string** | Policy&#39;s modifier ID | [optional] 
+**Name** |  Pointer to **string** | SOD Policy schedule name | [optional] 
+**Created** |  Pointer to **time.Time** | The time when this SOD policy schedule is created. | [optional] 
+**Modified** |  Pointer to **time.Time** | The time when this SOD policy schedule is modified. | [optional] 
+**Description** |  Pointer to **string** | SOD Policy schedule description | [optional] 
+**Schedule** |  Pointer to [**Schedule1**](schedule1) |  | [optional] 
+**Recipients** |  Pointer to [**[]SodRecipient**](sod-recipient) |  | [optional] 
+**EmailEmptyResults** |  Pointer to **bool** | Indicates if empty results need to be emailed | [optional] 
+**CreatorId** |  Pointer to **string** | Policy&#39;s creator ID | [optional] 
+**ModifierId** |  Pointer to **string** | Policy&#39;s modifier ID | [optional] 
 
 ## Methods
 

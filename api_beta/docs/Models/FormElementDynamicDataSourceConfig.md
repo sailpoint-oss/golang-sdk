@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'FormElementDynamicDataSourceConfig']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AggregationBucketField** | Pointer to **string** | AggregationBucketField is the aggregation bucket field name | [optional] 
-**Indices** | Pointer to **[]string** | Indices is a list of indices to use | [optional] 
-**ObjectType** | Pointer to **string** | ObjectType is a PreDefinedSelectOption value IDENTITY PreDefinedSelectOptionIdentity ACCESS_PROFILE PreDefinedSelectOptionAccessProfile SOURCES PreDefinedSelectOptionSources ROLE PreDefinedSelectOptionRole ENTITLEMENT PreDefinedSelectOptionEntitlement | [optional] 
-**Query** | Pointer to **string** | Query is a text | [optional] 
+**AggregationBucketField** |  Pointer to **string** | AggregationBucketField is the aggregation bucket field name | [optional] 
+**Indices** |  Pointer to **[]string** | Indices is a list of indices to use | [optional] 
+**ObjectType** |  Pointer to **string** | ObjectType is a PreDefinedSelectOption value IDENTITY PreDefinedSelectOptionIdentity ACCESS_PROFILE PreDefinedSelectOptionAccessProfile SOURCES PreDefinedSelectOptionSources ROLE PreDefinedSelectOptionRole ENTITLEMENT PreDefinedSelectOptionEntitlement | [optional] 
+**Query** |  Pointer to **string** | Query is a text | [optional] 
 
 ## Methods
 

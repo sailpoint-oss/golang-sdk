@@ -15,15 +15,15 @@ tags: ['SDK', 'Software Development Kit', 'AccessItemEntitlementResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessType** | Pointer to **string** | the access item type. entitlement in this case | [optional] 
-**Id** | Pointer to **string** | the access item id | [optional] 
-**Attribute** | Pointer to **string** | the entitlement attribute | [optional] 
-**Value** | Pointer to **string** | the associated value | [optional] 
-**EntitlementType** | Pointer to **string** | the type of entitlement | [optional] 
-**SourceName** | Pointer to **string** | the name of the source | [optional] 
-**SourceId** | Pointer to **string** | the id of the source | [optional] 
-**Description** | Pointer to **string** | the description for the entitlment | [optional] 
-**DisplayName** | Pointer to **string** | the display name of the identity | [optional] 
+**AccessType** |  Pointer to **string** | the access item type. entitlement in this case | [optional] 
+**Id** |  Pointer to **string** | the access item id | [optional] 
+**Attribute** |  Pointer to **string** | the entitlement attribute | [optional] 
+**Value** |  Pointer to **string** | the associated value | [optional] 
+**EntitlementType** |  Pointer to **string** | the type of entitlement | [optional] 
+**SourceName** |  Pointer to **string** | the name of the source | [optional] 
+**SourceId** |  Pointer to **string** | the id of the source | [optional] 
+**Description** |  Pointer to **string** | the description for the entitlment | [optional] 
+**DisplayName** |  Pointer to **string** | the display name of the identity | [optional] 
 
 ## Methods
 

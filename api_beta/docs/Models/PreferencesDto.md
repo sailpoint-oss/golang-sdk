@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'PreferencesDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | Pointer to **string** | The template notification key. | [optional] 
-**Mediums** | Pointer to [**[]Medium**](Medium) | List of preferred notification mediums, i.e., the mediums (or method) for which notifications are enabled. More mediums may be added in the future. | [optional] 
-**Modified** | Pointer to **time.Time** | Modified date of preference | [optional] 
+**Key** |  Pointer to **string** | The template notification key. | [optional] 
+**Mediums** |  Pointer to [**[]Medium**](medium) | List of preferred notification mediums, i.e., the mediums (or method) for which notifications are enabled. More mediums may be added in the future. | [optional] 
+**Modified** |  Pointer to **time.Time** | Modified date of preference | [optional] 
 
 ## Methods
 

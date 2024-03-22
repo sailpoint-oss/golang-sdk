@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'IdentitySyncJob']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Job ID. | 
-**Status** | **string** | The job status. | 
-**Payload** | [**IdentitySyncPayload**](IdentitySyncPayload) |  | 
+**Id** |  **string** | Job ID. | 
+**Status** |  **string** | The job status. | 
+**Payload** |  [**IdentitySyncPayload**](identity-sync-payload) |  | 
 
 ## Methods
 

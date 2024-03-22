@@ -15,13 +15,13 @@ tags: ['SDK', 'Software Development Kit', 'AuthProfileRequest']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | Authentication Profile name. | [optional] 
-**OffNetwork** | Pointer to **bool** | Use it to block access from off network. | [optional] [default to false]
-**UntrustedGeography** | Pointer to **bool** | Use it to block access from untrusted geoographies. | [optional] [default to false]
-**ApplicationId** | Pointer to **string** | Application ID. | [optional] 
-**ApplicationName** | Pointer to **string** | Application name. | [optional] 
-**Type** | Pointer to **string** | Type of the Authentication Profile. | [optional] 
-**StrongAuthLogin** | Pointer to **bool** | Use it to enable strong authentication. | [optional] [default to false]
+**Name** |  Pointer to **string** | Authentication Profile name. | [optional] 
+**OffNetwork** |  Pointer to **bool** | Use it to block access from off network. | [optional] [default to false]
+**UntrustedGeography** |  Pointer to **bool** | Use it to block access from untrusted geoographies. | [optional] [default to false]
+**ApplicationId** |  Pointer to **string** | Application ID. | [optional] 
+**ApplicationName** |  Pointer to **string** | Application name. | [optional] 
+**Type** |  Pointer to **string** | Type of the Authentication Profile. | [optional] 
+**StrongAuthLogin** |  Pointer to **bool** | Use it to enable strong authentication. | [optional] [default to false]
 
 ## Methods
 

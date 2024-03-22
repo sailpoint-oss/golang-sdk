@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'WorkgroupConnectionDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Object** | Pointer to [**ConnectedObject**](ConnectedObject) |  | [optional] 
-**ConnectionType** | Pointer to **string** | Connection Type. | [optional] 
+**Object** |  Pointer to [**ConnectedObject**](connected-object) |  | [optional] 
+**ConnectionType** |  Pointer to **string** | Connection Type. | [optional] 
 
 ## Methods
 

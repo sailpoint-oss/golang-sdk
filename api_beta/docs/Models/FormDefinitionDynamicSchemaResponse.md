@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'FormDefinitionDynamicSchemaResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**OutputSchema** | Pointer to **map[string]map[string]interface{}** | OutputSchema holds a JSON schema generated dynamically | [optional] 
+**OutputSchema** |  Pointer to **map[string]map[string]interface{}** | OutputSchema holds a JSON schema generated dynamically | [optional] 
 
 ## Methods
 

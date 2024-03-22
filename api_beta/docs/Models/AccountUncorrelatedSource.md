@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'AccountUncorrelatedSource']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | The DTO type of the source the accounts are uncorrelated from. | 
-**Id** | **string** | The ID of the source the accounts are uncorrelated from. | 
-**Name** | **string** | Display name of the source the accounts are uncorrelated from. | 
+**Type** |  **string** | The DTO type of the source the accounts are uncorrelated from. | 
+**Id** |  **string** | The ID of the source the accounts are uncorrelated from. | 
+**Name** |  **string** | Display name of the source the accounts are uncorrelated from. | 
 
 ## Methods
 

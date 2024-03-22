@@ -15,19 +15,19 @@ tags: ['SDK', 'Software Development Kit', 'RoleMiningSessionDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Scope** | Pointer to [**RoleMiningSessionScope**](RoleMiningSessionScope) |  | [optional] 
-**PruneThreshold** | Pointer to **NullableInt32** | The prune threshold to be used or null to calculate prescribedPruneThreshold | [optional] 
-**PrescribedPruneThreshold** | Pointer to **NullableInt32** | The calculated prescribedPruneThreshold | [optional] 
-**MinNumIdentitiesInPotentialRole** | Pointer to **NullableInt32** | Minimum number of identities in a potential role | [optional] 
-**PotentialRoleCount** | Pointer to **int32** | Number of potential roles | [optional] 
-**PotentialRolesReadyCount** | Pointer to **int32** | Number of potential roles ready | [optional] 
-**Status** | Pointer to [**RoleMiningSessionStatus**](RoleMiningSessionStatus) |  | [optional] 
-**Type** | Pointer to [**RoleMiningRoleType**](RoleMiningRoleType) |  | [optional] 
-**EmailRecipientId** | Pointer to **NullableString** | The id of the user who will receive an email about the role mining session | [optional] 
-**CreatedBy** | Pointer to [**RoleMiningSessionDtoCreatedBy**](RoleMiningSessionDtoCreatedBy) |  | [optional] 
-**IdentityCount** | Pointer to **int32** | Number of identities in the population which meet the search criteria or identity list provided | [optional] 
-**Saved** | Pointer to **bool** | The session&#39;s saved status | [optional] [default to false]
-**Name** | Pointer to **NullableString** | The session&#39;s saved name | [optional] 
+**Scope** |  Pointer to [**RoleMiningSessionScope**](role-mining-session-scope) |  | [optional] 
+**PruneThreshold** |  Pointer to **NullableInt32** | The prune threshold to be used or null to calculate prescribedPruneThreshold | [optional] 
+**PrescribedPruneThreshold** |  Pointer to **NullableInt32** | The calculated prescribedPruneThreshold | [optional] 
+**MinNumIdentitiesInPotentialRole** |  Pointer to **NullableInt32** | Minimum number of identities in a potential role | [optional] 
+**PotentialRoleCount** |  Pointer to **int32** | Number of potential roles | [optional] 
+**PotentialRolesReadyCount** |  Pointer to **int32** | Number of potential roles ready | [optional] 
+**Status** |  Pointer to [**RoleMiningSessionStatus**](role-mining-session-status) |  | [optional] 
+**Type** |  Pointer to [**RoleMiningRoleType**](role-mining-role-type) |  | [optional] 
+**EmailRecipientId** |  Pointer to **NullableString** | The id of the user who will receive an email about the role mining session | [optional] 
+**CreatedBy** |  Pointer to [**RoleMiningSessionDtoCreatedBy**](role-mining-session-dto-created-by) |  | [optional] 
+**IdentityCount** |  Pointer to **int32** | Number of identities in the population which meet the search criteria or identity list provided | [optional] 
+**Saved** |  Pointer to **bool** | The session&#39;s saved status | [optional] [default to false]
+**Name** |  Pointer to **NullableString** | The session&#39;s saved name | [optional] 
 
 ## Methods
 

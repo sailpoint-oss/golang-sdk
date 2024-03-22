@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'PreApprovalTriggerDetails']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Comment** | Pointer to **string** | Comment left for the pre-approval decision | [optional] 
-**Reviewer** | Pointer to **string** | The reviewer of the pre-approval decision | [optional] 
-**Decision** | Pointer to **string** | The decision of the pre-approval trigger | [optional] 
+**Comment** |  Pointer to **string** | Comment left for the pre-approval decision | [optional] 
+**Reviewer** |  Pointer to **string** | The reviewer of the pre-approval decision | [optional] 
+**Decision** |  Pointer to **string** | The decision of the pre-approval trigger | [optional] 
 
 ## Methods
 

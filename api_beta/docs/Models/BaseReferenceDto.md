@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'BaseReferenceDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | the application ID | [optional] 
-**Name** | Pointer to **string** | the application name | [optional] 
+**Id** |  Pointer to **string** | the application ID | [optional] 
+**Name** |  Pointer to **string** | the application name | [optional] 
 
 ## Methods
 

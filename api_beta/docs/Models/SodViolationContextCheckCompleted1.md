@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'SodViolationContextCheckCompleted1']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**State** | Pointer to **string** | The status of SOD violation check | [optional] 
-**Uuid** | Pointer to **string** | The id of the Violation check event | [optional] 
-**ViolationCheckResult** | Pointer to [**SodViolationCheckResult1**](SodViolationCheckResult1) |  | [optional] 
+**State** |  Pointer to **string** | The status of SOD violation check | [optional] 
+**Uuid** |  Pointer to **string** | The id of the Violation check event | [optional] 
+**ViolationCheckResult** |  Pointer to [**SodViolationCheckResult1**](sod-violation-check-result1) |  | [optional] 
 
 ## Methods
 

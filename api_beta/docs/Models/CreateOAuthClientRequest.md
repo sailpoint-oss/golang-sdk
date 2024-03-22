@@ -15,21 +15,21 @@ tags: ['SDK', 'Software Development Kit', 'CreateOAuthClientRequest']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BusinessName** | Pointer to **NullableString** | The name of the business the API Client should belong to | [optional] 
-**HomepageUrl** | Pointer to **NullableString** | The homepage URL associated with the owner of the API Client | [optional] 
-**Name** | **NullableString** | A human-readable name for the API Client | 
-**Description** | **NullableString** | A description of the API Client | 
-**AccessTokenValiditySeconds** | **int32** | The number of seconds an access token generated for this API Client is valid for | 
-**RefreshTokenValiditySeconds** | Pointer to **int32** | The number of seconds a refresh token generated for this API Client is valid for | [optional] 
-**RedirectUris** | Pointer to **[]string** | A list of the approved redirect URIs. Provide one or more URIs when assigning the AUTHORIZATION_CODE grant type to a new OAuth Client. | [optional] 
-**GrantTypes** | [**[]GrantType**](GrantType) | A list of OAuth 2.0 grant types this API Client can be used with | 
-**AccessType** | [**AccessType**](AccessType) |  | 
-**Type** | Pointer to [**ClientType**](ClientType) |  | [optional] 
-**Internal** | Pointer to **bool** | An indicator of whether the API Client can be used for requests internal within the product. | [optional] 
-**Enabled** | **bool** | An indicator of whether the API Client is enabled for use | 
-**StrongAuthSupported** | Pointer to **bool** | An indicator of whether the API Client supports strong authentication | [optional] 
-**ClaimsSupported** | Pointer to **bool** | An indicator of whether the API Client supports the serialization of SAML claims when used with the authorization_code flow | [optional] 
-**Scope** | Pointer to **[]string** | Scopes of the API Client. If no scope is specified, the client will be created with the default scope \&quot;sp:scopes:all\&quot;. This means the API Client will have all the rights of the owner who created it. | [optional] 
+**BusinessName** |  Pointer to **NullableString** | The name of the business the API Client should belong to | [optional] 
+**HomepageUrl** |  Pointer to **NullableString** | The homepage URL associated with the owner of the API Client | [optional] 
+**Name** |  **NullableString** | A human-readable name for the API Client | 
+**Description** |  **NullableString** | A description of the API Client | 
+**AccessTokenValiditySeconds** |  **int32** | The number of seconds an access token generated for this API Client is valid for | 
+**RefreshTokenValiditySeconds** |  Pointer to **int32** | The number of seconds a refresh token generated for this API Client is valid for | [optional] 
+**RedirectUris** |  Pointer to **[]string** | A list of the approved redirect URIs. Provide one or more URIs when assigning the AUTHORIZATION_CODE grant type to a new OAuth Client. | [optional] 
+**GrantTypes** |  [**[]GrantType**](grant-type) | A list of OAuth 2.0 grant types this API Client can be used with | 
+**AccessType** |  [**AccessType**](access-type) |  | 
+**Type** |  Pointer to [**ClientType**](client-type) |  | [optional] 
+**Internal** |  Pointer to **bool** | An indicator of whether the API Client can be used for requests internal within the product. | [optional] 
+**Enabled** |  **bool** | An indicator of whether the API Client is enabled for use | 
+**StrongAuthSupported** |  Pointer to **bool** | An indicator of whether the API Client supports strong authentication | [optional] 
+**ClaimsSupported** |  Pointer to **bool** | An indicator of whether the API Client supports the serialization of SAML claims when used with the authorization_code flow | [optional] 
+**Scope** |  Pointer to **[]string** | Scopes of the API Client. If no scope is specified, the client will be created with the default scope \&quot;sp:scopes:all\&quot;. This means the API Client will have all the rights of the owner who created it. | [optional] 
 
 ## Methods
 

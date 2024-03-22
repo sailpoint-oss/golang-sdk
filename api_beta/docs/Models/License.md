@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'License']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**LicenseId** | Pointer to **string** | Name of the license | [optional] 
-**LegacyFeatureName** | Pointer to **string** | Legacy name of the license | [optional] 
+**LicenseId** |  Pointer to **string** | Name of the license | [optional] 
+**LegacyFeatureName** |  Pointer to **string** | Legacy name of the license | [optional] 
 
 ## Methods
 

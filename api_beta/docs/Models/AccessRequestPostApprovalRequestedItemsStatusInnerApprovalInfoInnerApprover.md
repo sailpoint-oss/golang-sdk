@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'AccessRequestPostApprovalRequestedIte
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **map[string]interface{}** | The type of object that is referenced | 
-**Id** | **string** | ID of identity who approved the access item request. | 
-**Name** | **string** | Human-readable display name of identity who approved the access item request. | 
+**Type** |  **map[string]interface{}** | The type of object that is referenced | 
+**Id** |  **string** | ID of identity who approved the access item request. | 
+**Name** |  **string** | Human-readable display name of identity who approved the access item request. | 
 
 ## Methods
 

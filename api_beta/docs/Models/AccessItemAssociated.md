@@ -15,11 +15,11 @@ tags: ['SDK', 'Software Development Kit', 'AccessItemAssociated']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessItem** | Pointer to [**AccessItemAssociatedAccessItem**](AccessItemAssociatedAccessItem) |  | [optional] 
-**IdentityId** | Pointer to **string** | the identity id | [optional] 
-**EventType** | Pointer to **string** | the event type | [optional] 
-**Dt** | Pointer to **string** | the date of event | [optional] 
-**GovernanceEvent** | Pointer to [**CorrelatedGovernanceEvent**](CorrelatedGovernanceEvent) |  | [optional] 
+**AccessItem** |  Pointer to [**AccessItemAssociatedAccessItem**](access-item-associated-access-item) |  | [optional] 
+**IdentityId** |  Pointer to **string** | the identity id | [optional] 
+**EventType** |  Pointer to **string** | the event type | [optional] 
+**Dt** |  Pointer to **string** | the date of event | [optional] 
+**GovernanceEvent** |  Pointer to [**CorrelatedGovernanceEvent**](correlated-governance-event) |  | [optional] 
 
 ## Methods
 

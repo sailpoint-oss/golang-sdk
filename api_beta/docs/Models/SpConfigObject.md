@@ -15,17 +15,17 @@ tags: ['SDK', 'Software Development Kit', 'SpConfigObject']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ObjectType** | Pointer to **string** | The object type this configuration is for. | [optional] 
-**ResolveByIdUrl** | Pointer to [**SpConfigUrl**](SpConfigUrl) |  | [optional] 
-**ResolveByNameUrl** | Pointer to [**[]SpConfigUrl**](SpConfigUrl) | Url and query parameters to be used to resolve this type of object by name. | [optional] 
-**ExportUrl** | Pointer to [**SpConfigUrl**](SpConfigUrl) |  | [optional] 
-**ExportRight** | Pointer to **string** | Rights needed by the invoker of sp-config/export in order to export this type of object. | [optional] 
-**ExportLimit** | Pointer to **int32** | Pagination limit imposed by the target service for this object type. | [optional] 
-**ImportUrl** | Pointer to [**SpConfigUrl**](SpConfigUrl) |  | [optional] 
-**ImportRight** | Pointer to **string** | Rights needed by the invoker of sp-config/import in order to import this type of object. | [optional] 
-**ImportLimit** | Pointer to **int32** | Pagination limit imposed by the target service for this object type. | [optional] 
-**ReferenceExtractors** | Pointer to **[]string** | List of json paths within an exported object of this type that represent references that need to be resolved. | [optional] 
-**SignatureRequired** | Pointer to **bool** | If true, this type of object will be JWS signed and cannot be modified before import. | [optional] [default to false]
+**ObjectType** |  Pointer to **string** | The object type this configuration is for. | [optional] 
+**ResolveByIdUrl** |  Pointer to [**SpConfigUrl**](sp-config-url) |  | [optional] 
+**ResolveByNameUrl** |  Pointer to [**[]SpConfigUrl**](sp-config-url) | Url and query parameters to be used to resolve this type of object by name. | [optional] 
+**ExportUrl** |  Pointer to [**SpConfigUrl**](sp-config-url) |  | [optional] 
+**ExportRight** |  Pointer to **string** | Rights needed by the invoker of sp-config/export in order to export this type of object. | [optional] 
+**ExportLimit** |  Pointer to **int32** | Pagination limit imposed by the target service for this object type. | [optional] 
+**ImportUrl** |  Pointer to [**SpConfigUrl**](sp-config-url) |  | [optional] 
+**ImportRight** |  Pointer to **string** | Rights needed by the invoker of sp-config/import in order to import this type of object. | [optional] 
+**ImportLimit** |  Pointer to **int32** | Pagination limit imposed by the target service for this object type. | [optional] 
+**ReferenceExtractors** |  Pointer to **[]string** | List of json paths within an exported object of this type that represent references that need to be resolved. | [optional] 
+**SignatureRequired** |  Pointer to **bool** | If true, this type of object will be JWS signed and cannot be modified before import. | [optional] [default to false]
 
 ## Methods
 

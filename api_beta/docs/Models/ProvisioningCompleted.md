@@ -15,14 +15,14 @@ tags: ['SDK', 'Software Development Kit', 'ProvisioningCompleted']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TrackingNumber** | **string** | The reference number of the provisioning request. Useful for tracking status in the Account Activity search interface. | 
-**Sources** | **string** | One or more sources that the provisioning transaction(s) were done against.  Sources are comma separated. | 
-**Action** | Pointer to **NullableString** | Origin of where the provisioning request came from. | [optional] 
-**Errors** | Pointer to **[]string** | A list of any accumulated error messages that occurred during provisioning. | [optional] 
-**Warnings** | Pointer to **[]string** | A list of any accumulated warning messages that occurred during provisioning. | [optional] 
-**Recipient** | [**ProvisioningCompletedRecipient**](ProvisioningCompletedRecipient) |  | 
-**Requester** | Pointer to [**NullableProvisioningCompletedRequester**](ProvisioningCompletedRequester) |  | [optional] 
-**AccountRequests** | [**[]ProvisioningCompletedAccountRequestsInner**](ProvisioningCompletedAccountRequestsInner) | A list of provisioning instructions to perform on an account-by-account basis. | 
+**TrackingNumber** |  **string** | The reference number of the provisioning request. Useful for tracking status in the Account Activity search interface. | 
+**Sources** |  **string** | One or more sources that the provisioning transaction(s) were done against.  Sources are comma separated. | 
+**Action** |  Pointer to **NullableString** | Origin of where the provisioning request came from. | [optional] 
+**Errors** |  Pointer to **[]string** | A list of any accumulated error messages that occurred during provisioning. | [optional] 
+**Warnings** |  Pointer to **[]string** | A list of any accumulated warning messages that occurred during provisioning. | [optional] 
+**Recipient** |  [**ProvisioningCompletedRecipient**](provisioning-completed-recipient) |  | 
+**Requester** |  Pointer to [**NullableProvisioningCompletedRequester**](provisioning-completed-requester) |  | [optional] 
+**AccountRequests** |  [**[]ProvisioningCompletedAccountRequestsInner**](provisioning-completed-account-requests-inner) | A list of provisioning instructions to perform on an account-by-account basis. | 
 
 ## Methods
 

@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'VerificationResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RequestId** | Pointer to **NullableString** | The verificationPollRequest request ID | [optional] 
-**Status** | Pointer to **string** | MFA Authentication status | [optional] 
-**Error** | Pointer to **NullableString** | Error messages from MFA verification request | [optional] 
+**RequestId** |  Pointer to **NullableString** | The verificationPollRequest request ID | [optional] 
+**Status** |  Pointer to **string** | MFA Authentication status | [optional] 
+**Error** |  Pointer to **NullableString** | Error messages from MFA verification request | [optional] 
 
 ## Methods
 

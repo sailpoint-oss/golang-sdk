@@ -15,13 +15,13 @@ tags: ['SDK', 'Software Development Kit', 'CertificationTask']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | The ID of the certification task. | [optional] 
-**Type** | Pointer to **string** | The type of the certification task. More values may be added in the future. | [optional] 
-**TargetType** | Pointer to **string** | The type of item that is being operated on by this task whose ID is stored in the targetId field. | [optional] 
-**TargetId** | Pointer to **string** | The ID of the item being operated on by this task. | [optional] 
-**Status** | Pointer to **string** | The status of the task. | [optional] 
-**Errors** | Pointer to [**[]ErrorMessageDto**](ErrorMessageDto) |  | [optional] 
-**Created** | Pointer to **time.Time** | The date and time on which this task was created. | [optional] 
+**Id** |  Pointer to **string** | The ID of the certification task. | [optional] 
+**Type** |  Pointer to **string** | The type of the certification task. More values may be added in the future. | [optional] 
+**TargetType** |  Pointer to **string** | The type of item that is being operated on by this task whose ID is stored in the targetId field. | [optional] 
+**TargetId** |  Pointer to **string** | The ID of the item being operated on by this task. | [optional] 
+**Status** |  Pointer to **string** | The status of the task. | [optional] 
+**Errors** |  Pointer to [**[]ErrorMessageDto**](error-message-dto) |  | [optional] 
+**Created** |  Pointer to **time.Time** | The date and time on which this task was created. | [optional] 
 
 ## Methods
 

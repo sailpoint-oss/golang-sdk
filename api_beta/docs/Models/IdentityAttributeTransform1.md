@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'IdentityAttributeTransform1']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IdentityAttributeName** | Pointer to **string** | Name of the identity attribute. | [optional] 
-**TransformDefinition** | Pointer to [**TransformDefinition1**](TransformDefinition1) |  | [optional] 
+**IdentityAttributeName** |  Pointer to **string** | Name of the identity attribute. | [optional] 
+**TransformDefinition** |  Pointer to [**TransformDefinition1**](transform-definition1) |  | [optional] 
 
 ## Methods
 

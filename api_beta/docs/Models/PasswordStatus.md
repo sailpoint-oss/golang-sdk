@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'PasswordStatus']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RequestId** | Pointer to **NullableString** | The password change request ID | [optional] 
-**State** | Pointer to **string** | Password change state | [optional] 
-**Errors** | Pointer to **[]string** | The errors during the password change request | [optional] 
-**SourceIds** | Pointer to **[]string** | List of source IDs in the password change request | [optional] 
+**RequestId** |  Pointer to **NullableString** | The password change request ID | [optional] 
+**State** |  Pointer to **string** | Password change state | [optional] 
+**Errors** |  Pointer to **[]string** | The errors during the password change request | [optional] 
+**SourceIds** |  Pointer to **[]string** | List of source IDs in the password change request | [optional] 
 
 ## Methods
 

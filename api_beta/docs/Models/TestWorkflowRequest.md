@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'TestWorkflowRequest']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Input** | **map[string]interface{}** | The test input for the workflow. | 
+**Input** |  **map[string]interface{}** | The test input for the workflow. | 
 
 ## Methods
 

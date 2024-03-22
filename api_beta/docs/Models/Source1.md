@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'Source1']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | The type of the source | [optional] 
-**Properties** | Pointer to **map[string]interface{}** | The source properties | [optional] 
+**Type** |  Pointer to **string** | The type of the source | [optional] 
+**Properties** |  Pointer to **map[string]interface{}** | The source properties | [optional] 
 
 ## Methods
 

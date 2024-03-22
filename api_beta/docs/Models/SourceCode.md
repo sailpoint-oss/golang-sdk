@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'SourceCode']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Version** | **string** | the version of the code | 
-**Script** | **string** | The code | 
+**Version** |  **string** | the version of the code | 
+**Script** |  **string** | The code | 
 
 ## Methods
 

@@ -15,13 +15,13 @@ tags: ['SDK', 'Software Development Kit', 'CommonAccessItemResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Common Access Item ID | [optional] 
-**Access** | Pointer to [**CommonAccessItemAccess**](CommonAccessItemAccess) |  | [optional] 
-**Status** | Pointer to [**CommonAccessItemState**](CommonAccessItemState) |  | [optional] 
-**LastUpdated** | Pointer to **string** |  | [optional] 
-**ReviewedByUser** | Pointer to **bool** |  | [optional] 
-**LastReviewed** | Pointer to **string** |  | [optional] 
-**CreatedByUser** | Pointer to **string** |  | [optional] 
+**Id** |  Pointer to **string** | Common Access Item ID | [optional] 
+**Access** |  Pointer to [**CommonAccessItemAccess**](common-access-item-access) |  | [optional] 
+**Status** |  Pointer to [**CommonAccessItemState**](common-access-item-state) |  | [optional] 
+**LastUpdated** |  Pointer to **string** |  | [optional] 
+**ReviewedByUser** |  Pointer to **bool** |  | [optional] 
+**LastReviewed** |  Pointer to **string** |  | [optional] 
+**CreatedByUser** |  Pointer to **string** |  | [optional] 
 
 ## Methods
 

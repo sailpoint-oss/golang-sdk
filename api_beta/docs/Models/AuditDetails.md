@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'AuditDetails']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Created** | Pointer to **time.Time** | Initial date and time when the record was created | [optional] 
-**CreatedBy** | Pointer to [**Identity1**](Identity1) |  | [optional] 
-**Modified** | Pointer to **time.Time** | Last modified date and time for the record | [optional] 
-**ModifiedBy** | Pointer to [**Identity1**](Identity1) |  | [optional] 
+**Created** |  Pointer to **time.Time** | Initial date and time when the record was created | [optional] 
+**CreatedBy** |  Pointer to [**Identity1**](identity1) |  | [optional] 
+**Modified** |  Pointer to **time.Time** | Last modified date and time for the record | [optional] 
+**ModifiedBy** |  Pointer to [**Identity1**](identity1) |  | [optional] 
 
 ## Methods
 

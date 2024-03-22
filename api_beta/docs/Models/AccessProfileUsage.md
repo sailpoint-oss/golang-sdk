@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'AccessProfileUsage']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessProfileId** | Pointer to **string** | ID of the Access Profile that is in use | [optional] 
-**UsedBy** | Pointer to [**[]AccessProfileUsageUsedByInner**](AccessProfileUsageUsedByInner) | List of references to objects which are using the indicated Access Profile | [optional] 
+**AccessProfileId** |  Pointer to **string** | ID of the Access Profile that is in use | [optional] 
+**UsedBy** |  Pointer to [**[]AccessProfileUsageUsedByInner**](access-profile-usage-used-by-inner) | List of references to objects which are using the indicated Access Profile | [optional] 
 
 ## Methods
 

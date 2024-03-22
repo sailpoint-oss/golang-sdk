@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'RoleInsightsInsight']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | The number of identities in this role with the entitlement. | [optional] 
-**IdentitiesWithAccess** | Pointer to **int32** | The number of identities in this role with the entitlement. | [optional] 
-**IdentitiesImpacted** | Pointer to **int32** | The number of identities in this role that do not have the specified entitlement. | [optional] 
-**TotalNumberOfIdentities** | Pointer to **int32** | The total number of identities. | [optional] 
+**Type** |  Pointer to **string** | The number of identities in this role with the entitlement. | [optional] 
+**IdentitiesWithAccess** |  Pointer to **int32** | The number of identities in this role with the entitlement. | [optional] 
+**IdentitiesImpacted** |  Pointer to **int32** | The number of identities in this role that do not have the specified entitlement. | [optional] 
+**TotalNumberOfIdentities** |  Pointer to **int32** | The total number of identities. | [optional] 
 
 ## Methods
 

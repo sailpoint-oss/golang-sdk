@@ -15,13 +15,13 @@ tags: ['SDK', 'Software Development Kit', 'AccountStatusChangedAccount']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | the ID of the account in the database | [optional] 
-**NativeIdentity** | Pointer to **string** | the native identifier of the account | [optional] 
-**DisplayName** | Pointer to **string** | the display name of the account | [optional] 
-**SourceId** | Pointer to **string** | the ID of the source for this account | [optional] 
-**SourceName** | Pointer to **string** | the name of the source for this account | [optional] 
-**EntitlementCount** | Pointer to **int32** | the number of entitlements on this account | [optional] 
-**AccessType** | Pointer to **string** | this value is always \&quot;account\&quot; | [optional] 
+**Id** |  Pointer to **string** | the ID of the account in the database | [optional] 
+**NativeIdentity** |  Pointer to **string** | the native identifier of the account | [optional] 
+**DisplayName** |  Pointer to **string** | the display name of the account | [optional] 
+**SourceId** |  Pointer to **string** | the ID of the source for this account | [optional] 
+**SourceName** |  Pointer to **string** | the name of the source for this account | [optional] 
+**EntitlementCount** |  Pointer to **int32** | the number of entitlements on this account | [optional] 
+**AccessType** |  Pointer to **string** | this value is always \&quot;account\&quot; | [optional] 
 
 ## Methods
 

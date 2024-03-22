@@ -15,12 +15,12 @@ tags: ['SDK', 'Software Development Kit', 'NonEmployeeSourceRequestBody']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** | Name of non-employee source. | 
-**Description** | **string** | Description of non-employee source. | 
-**Owner** | [**NonEmployeeIdnUserRequest**](NonEmployeeIdnUserRequest) |  | 
-**ManagementWorkgroup** | Pointer to **string** | The ID for the management workgroup that contains source sub-admins | [optional] 
-**Approvers** | Pointer to [**[]NonEmployeeIdnUserRequest**](NonEmployeeIdnUserRequest) | List of approvers. | [optional] 
-**AccountManagers** | Pointer to [**[]NonEmployeeIdnUserRequest**](NonEmployeeIdnUserRequest) | List of account managers. | [optional] 
+**Name** |  **string** | Name of non-employee source. | 
+**Description** |  **string** | Description of non-employee source. | 
+**Owner** |  [**NonEmployeeIdnUserRequest**](non-employee-idn-user-request) |  | 
+**ManagementWorkgroup** |  Pointer to **string** | The ID for the management workgroup that contains source sub-admins | [optional] 
+**Approvers** |  Pointer to [**[]NonEmployeeIdnUserRequest**](non-employee-idn-user-request) | List of approvers. | [optional] 
+**AccountManagers** |  Pointer to [**[]NonEmployeeIdnUserRequest**](non-employee-idn-user-request) | List of account managers. | [optional] 
 
 ## Methods
 

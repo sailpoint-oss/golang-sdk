@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'MetricResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | the name of metric | [optional] 
-**Value** | Pointer to **float32** | the value associated to the metric | [optional] 
+**Name** |  Pointer to **string** | the name of metric | [optional] 
+**Value** |  Pointer to **float32** | the value associated to the metric | [optional] 
 
 ## Methods
 

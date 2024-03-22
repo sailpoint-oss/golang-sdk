@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'CampaignAlert']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Level** | Pointer to **string** | Denotes the level of the message | [optional] 
-**Localizations** | Pointer to [**[]ErrorMessageDto**](ErrorMessageDto) |  | [optional] 
+**Level** |  Pointer to **string** | Denotes the level of the message | [optional] 
+**Localizations** |  Pointer to [**[]ErrorMessageDto**](error-message-dto) |  | [optional] 
 
 ## Methods
 

@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'KbaAnswerRequest']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Answers** | [**[]KbaAnswerRequestItem**](KbaAnswerRequestItem) | Kba answers | 
+**Answers** |  [**[]KbaAnswerRequestItem**](kba-answer-request-item) | Kba answers | 
 
 ## Methods
 

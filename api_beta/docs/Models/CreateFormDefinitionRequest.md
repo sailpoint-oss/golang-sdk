@@ -15,13 +15,13 @@ tags: ['SDK', 'Software Development Kit', 'CreateFormDefinitionRequest']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Description** | Pointer to **string** | Description is the form definition description | [optional] 
-**FormConditions** | Pointer to [**[]FormCondition**](FormCondition) | FormConditions is the conditional logic that modify the form dynamically modify the form as the recipient is interacting out the form | [optional] 
-**FormElements** | Pointer to [**[]FormElement**](FormElement) | FormElements is a list of nested form elements | [optional] 
-**FormInput** | Pointer to [**[]FormDefinitionInput**](FormDefinitionInput) | FormInput is a list of form inputs that are required when creating a form-instance object | [optional] 
-**Name** | **string** | Name is the form definition name | 
-**Owner** | [**FormOwner**](FormOwner) |  | 
-**UsedBy** | Pointer to [**[]FormUsedBy**](FormUsedBy) | UsedBy is a list of objects where when any system uses a particular form it reaches out to the form service to record it is currently being used | [optional] 
+**Description** |  Pointer to **string** | Description is the form definition description | [optional] 
+**FormConditions** |  Pointer to [**[]FormCondition**](form-condition) | FormConditions is the conditional logic that modify the form dynamically modify the form as the recipient is interacting out the form | [optional] 
+**FormElements** |  Pointer to [**[]FormElement**](form-element) | FormElements is a list of nested form elements | [optional] 
+**FormInput** |  Pointer to [**[]FormDefinitionInput**](form-definition-input) | FormInput is a list of form inputs that are required when creating a form-instance object | [optional] 
+**Name** |  **string** | Name is the form definition name | 
+**Owner** |  [**FormOwner**](form-owner) |  | 
+**UsedBy** |  Pointer to [**[]FormUsedBy**](form-used-by) | UsedBy is a list of objects where when any system uses a particular form it reaches out to the form service to record it is currently being used | [optional] 
 
 ## Methods
 

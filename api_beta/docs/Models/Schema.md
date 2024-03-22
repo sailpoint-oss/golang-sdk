@@ -15,18 +15,18 @@ tags: ['SDK', 'Software Development Kit', 'Schema']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | The id of the Schema. | [optional] 
-**Name** | Pointer to **string** | The name of the Schema. | [optional] 
-**NativeObjectType** | Pointer to **string** | The name of the object type on the native system that the schema represents. | [optional] 
-**IdentityAttribute** | Pointer to **string** | The name of the attribute used to calculate the unique identifier for an object in the schema. | [optional] 
-**DisplayAttribute** | Pointer to **string** | The name of the attribute used to calculate the display value for an object in the schema. | [optional] 
-**HierarchyAttribute** | Pointer to **string** | The name of the attribute whose values represent other objects in a hierarchy. Only relevant to group schemas. | [optional] 
-**IncludePermissions** | Pointer to **bool** | Flag indicating whether or not the include permissions with the object data when aggregating the schema. | [optional] 
-**Features** | Pointer to [**[]SourceFeature**](SourceFeature) | The features that the schema supports. | [optional] 
-**Configuration** | Pointer to **map[string]interface{}** | Holds any extra configuration data that the schema may require. | [optional] 
-**Attributes** | Pointer to [**[]AttributeDefinition**](AttributeDefinition) | The attribute definitions which form the schema. | [optional] 
-**Created** | Pointer to **time.Time** | The date the Schema was created. | [optional] 
-**Modified** | Pointer to **time.Time** | The date the Schema was last modified. | [optional] 
+**Id** |  Pointer to **string** | The id of the Schema. | [optional] 
+**Name** |  Pointer to **string** | The name of the Schema. | [optional] 
+**NativeObjectType** |  Pointer to **string** | The name of the object type on the native system that the schema represents. | [optional] 
+**IdentityAttribute** |  Pointer to **string** | The name of the attribute used to calculate the unique identifier for an object in the schema. | [optional] 
+**DisplayAttribute** |  Pointer to **string** | The name of the attribute used to calculate the display value for an object in the schema. | [optional] 
+**HierarchyAttribute** |  Pointer to **string** | The name of the attribute whose values represent other objects in a hierarchy. Only relevant to group schemas. | [optional] 
+**IncludePermissions** |  Pointer to **bool** | Flag indicating whether or not the include permissions with the object data when aggregating the schema. | [optional] 
+**Features** |  Pointer to [**[]SourceFeature**](source-feature) | The features that the schema supports. | [optional] 
+**Configuration** |  Pointer to **map[string]interface{}** | Holds any extra configuration data that the schema may require. | [optional] 
+**Attributes** |  Pointer to [**[]AttributeDefinition**](attribute-definition) | The attribute definitions which form the schema. | [optional] 
+**Created** |  Pointer to **time.Time** | The date the Schema was created. | [optional] 
+**Modified** |  Pointer to **time.Time** | The date the Schema was last modified. | [optional] 
 
 ## Methods
 

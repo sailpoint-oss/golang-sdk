@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'AccountCorrelatedIdentity']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | DTO type of the identity the account is correlated with. | 
-**Id** | **string** | ID of the identity the account is correlated with. | 
-**Name** | **string** | Display name of the identity the account is correlated with. | 
+**Type** |  **string** | DTO type of the identity the account is correlated with. | 
+**Id** |  **string** | ID of the identity the account is correlated with. | 
+**Name** |  **string** | Display name of the identity the account is correlated with. | 
 
 ## Methods
 

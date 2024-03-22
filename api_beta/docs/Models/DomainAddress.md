@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'DomainAddress']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Domain** | Pointer to **string** | A domain address | [optional] 
+**Domain** |  Pointer to **string** | A domain address | [optional] 
 
 ## Methods
 

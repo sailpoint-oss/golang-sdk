@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'BasicAuthConfig']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**UserName** | Pointer to **string** | The username to authenticate. | [optional] 
-**Password** | Pointer to **NullableString** | The password to authenticate. On response, this field is set to null as to not return secrets. | [optional] 
+**UserName** |  Pointer to **string** | The username to authenticate. | [optional] 
+**Password** |  Pointer to **NullableString** | The password to authenticate. On response, this field is set to null as to not return secrets. | [optional] 
 
 ## Methods
 

@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'ProvisioningConfigPlanInitializerScri
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Source** | Pointer to **string** | This is a Rule that allows provisioning instruction changes. | [optional] 
+**Source** |  Pointer to **string** | This is a Rule that allows provisioning instruction changes. | [optional] 
 
 ## Methods
 

@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'RoleMiningPotentialRoleSourceUsage']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | The identity ID | [optional] 
-**DisplayName** | Pointer to **string** | Display name for the identity | [optional] 
-**Email** | Pointer to **string** | Email address for the identity | [optional] 
-**UsageCount** | Pointer to **int32** | The number of days there has been usage of the source by the identity. | [optional] 
+**Id** |  Pointer to **string** | The identity ID | [optional] 
+**DisplayName** |  Pointer to **string** | Display name for the identity | [optional] 
+**Email** |  Pointer to **string** | Email address for the identity | [optional] 
+**UsageCount** |  Pointer to **int32** | The number of days there has been usage of the source by the identity. | [optional] 
 
 ## Methods
 

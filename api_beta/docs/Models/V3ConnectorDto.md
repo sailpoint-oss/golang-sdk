@@ -15,13 +15,13 @@ tags: ['SDK', 'Software Development Kit', 'V3ConnectorDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | The connector name | [optional] 
-**Type** | Pointer to **string** | The connector type | [optional] 
-**ScriptName** | Pointer to **string** | The connector script name | [optional] 
-**Features** | Pointer to **[]string** | The list of features supported by the connector | [optional] 
-**DirectConnect** | Pointer to **bool** | true if the source is a direct connect source | [optional] [default to false]
-**ConnectorMetadata** | Pointer to **map[string]interface{}** | Object containing metadata pertinent to the UI to be used | [optional] 
-**Status** | Pointer to **string** | The connector status | [optional] 
+**Name** |  Pointer to **string** | The connector name | [optional] 
+**Type** |  Pointer to **string** | The connector type | [optional] 
+**ScriptName** |  Pointer to **string** | The connector script name | [optional] 
+**Features** |  Pointer to **[]string** | The list of features supported by the connector | [optional] 
+**DirectConnect** |  Pointer to **bool** | true if the source is a direct connect source | [optional] [default to false]
+**ConnectorMetadata** |  Pointer to **map[string]interface{}** | Object containing metadata pertinent to the UI to be used | [optional] 
+**Status** |  Pointer to **string** | The connector status | [optional] 
 
 ## Methods
 

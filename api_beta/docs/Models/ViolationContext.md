@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'ViolationContext']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Policy** | Pointer to [**ViolationContextPolicy**](ViolationContextPolicy) |  | [optional] 
-**ConflictingAccessCriteria** | Pointer to [**ExceptionAccessCriteria**](ExceptionAccessCriteria) |  | [optional] 
+**Policy** |  Pointer to [**ViolationContextPolicy**](violation-context-policy) |  | [optional] 
+**ConflictingAccessCriteria** |  Pointer to [**ExceptionAccessCriteria**](exception-access-criteria) |  | [optional] 
 
 ## Methods
 

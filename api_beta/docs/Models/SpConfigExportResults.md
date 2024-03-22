@@ -15,12 +15,12 @@ tags: ['SDK', 'Software Development Kit', 'SpConfigExportResults']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Version** | Pointer to **int32** | Current version of the export results object. | [optional] 
-**Timestamp** | Pointer to **time.Time** | Time the export was completed. | [optional] 
-**Tenant** | Pointer to **string** | Name of the tenant where this export originated. | [optional] 
-**Description** | Pointer to **string** | Optional user defined description/name for export job. | [optional] 
-**Options** | Pointer to [**ExportOptions**](ExportOptions) |  | [optional] 
-**Objects** | Pointer to [**[]ConfigObject**](ConfigObject) |  | [optional] 
+**Version** |  Pointer to **int32** | Current version of the export results object. | [optional] 
+**Timestamp** |  Pointer to **time.Time** | Time the export was completed. | [optional] 
+**Tenant** |  Pointer to **string** | Name of the tenant where this export originated. | [optional] 
+**Description** |  Pointer to **string** | Optional user defined description/name for export job. | [optional] 
+**Options** |  Pointer to [**ExportOptions**](export-options) |  | [optional] 
+**Objects** |  Pointer to [**[]ConfigObject**](config-object) |  | [optional] 
 
 ## Methods
 

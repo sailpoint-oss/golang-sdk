@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'FormUsedBy']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | FormUsedByType value.  WORKFLOW FormUsedByTypeWorkflow SOURCE FormUsedByTypeSource | [optional] 
-**Id** | Pointer to **string** | Unique identifier of the system using the form. | [optional] 
+**Type** |  Pointer to **string** | FormUsedByType value.  WORKFLOW FormUsedByTypeWorkflow SOURCE FormUsedByTypeSource | [optional] 
+**Id** |  Pointer to **string** | Unique identifier of the system using the form. | [optional] 
 
 ## Methods
 

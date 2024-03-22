@@ -15,12 +15,12 @@ tags: ['SDK', 'Software Development Kit', 'FieldDetailsDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | The name of the attribute. | [optional] 
-**Transform** | Pointer to **map[string]interface{}** | The transform to apply to the field | [optional] [default to {}]
-**Attributes** | Pointer to **map[string]interface{}** | Attributes required for the transform | [optional] 
-**IsRequired** | Pointer to **bool** | Flag indicating whether or not the attribute is required. | [optional] [readonly] [default to false]
-**Type** | Pointer to **string** | The type of the attribute. | [optional] 
-**IsMultiValued** | Pointer to **bool** | Flag indicating whether or not the attribute is multi-valued. | [optional] [default to false]
+**Name** |  Pointer to **string** | The name of the attribute. | [optional] 
+**Transform** |  Pointer to **map[string]interface{}** | The transform to apply to the field | [optional] [default to {}]
+**Attributes** |  Pointer to **map[string]interface{}** | Attributes required for the transform | [optional] 
+**IsRequired** |  Pointer to **bool** | Flag indicating whether or not the attribute is required. | [optional] [readonly] [default to false]
+**Type** |  Pointer to **string** | The type of the attribute. | [optional] 
+**IsMultiValued** |  Pointer to **bool** | Flag indicating whether or not the attribute is multi-valued. | [optional] [default to false]
 
 ## Methods
 

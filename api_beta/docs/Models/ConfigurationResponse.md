@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'ConfigurationResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Identity** | Pointer to [**Identity1**](Identity1) |  | [optional] 
-**ConfigDetails** | Pointer to [**[]ConfigurationDetailsResponse**](ConfigurationDetailsResponse) | Details of how work should be reassigned for an Identity | [optional] 
+**Identity** |  Pointer to [**Identity1**](identity1) |  | [optional] 
+**ConfigDetails** |  Pointer to [**[]ConfigurationDetailsResponse**](configuration-details-response) | Details of how work should be reassigned for an Identity | [optional] 
 
 ## Methods
 

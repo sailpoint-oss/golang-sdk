@@ -15,13 +15,13 @@ tags: ['SDK', 'Software Development Kit', 'AccountsCollectedForAggregation']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Source** | [**AccountsCollectedForAggregationSource**](AccountsCollectedForAggregationSource) |  | 
-**Status** | **map[string]interface{}** | The overall status of the collection. | 
-**Started** | **time.Time** | The date and time when the account collection started. | 
-**Completed** | **time.Time** | The date and time when the account collection finished. | 
-**Errors** | **[]string** | A list of errors that occurred during the collection. | 
-**Warnings** | **[]string** | A list of warnings that occurred during the collection. | 
-**Stats** | [**AccountsCollectedForAggregationStats**](AccountsCollectedForAggregationStats) |  | 
+**Source** |  [**AccountsCollectedForAggregationSource**](accounts-collected-for-aggregation-source) |  | 
+**Status** |  **map[string]interface{}** | The overall status of the collection. | 
+**Started** |  **time.Time** | The date and time when the account collection started. | 
+**Completed** |  **time.Time** | The date and time when the account collection finished. | 
+**Errors** |  **[]string** | A list of errors that occurred during the collection. | 
+**Warnings** |  **[]string** | A list of warnings that occurred during the collection. | 
+**Stats** |  [**AccountsCollectedForAggregationStats**](accounts-collected-for-aggregation-stats) |  | 
 
 ## Methods
 

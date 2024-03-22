@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'CampaignTemplateOwnerRef']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Id of the owner | [optional] 
-**Type** | Pointer to **string** | Type of the owner | [optional] 
-**Name** | Pointer to **string** | Name of the owner | [optional] 
-**Email** | Pointer to **string** | Email of the owner | [optional] 
+**Id** |  Pointer to **string** | Id of the owner | [optional] 
+**Type** |  Pointer to **string** | Type of the owner | [optional] 
+**Name** |  Pointer to **string** | Name of the owner | [optional] 
+**Email** |  Pointer to **string** | Email of the owner | [optional] 
 
 ## Methods
 

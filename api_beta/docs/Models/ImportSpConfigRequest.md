@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'ImportSpConfigRequest']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | ***os.File** | JSON file containing the objects to be imported. | 
-**Options** | Pointer to [**ImportOptions**](ImportOptions) |  | [optional] 
+**Data** |  ***os.File** | JSON file containing the objects to be imported. | 
+**Options** |  Pointer to [**ImportOptions**](import-options) |  | [optional] 
 
 ## Methods
 

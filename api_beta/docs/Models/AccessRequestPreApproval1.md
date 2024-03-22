@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'AccessRequestPreApproval1']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Approved** | **bool** | Whether or not to approve the access request. | 
-**Comment** | **string** | A comment about the decision to approve or deny the request. | 
-**Approver** | **string** | The name of the entity that approved or denied the request. | 
+**Approved** |  **bool** | Whether or not to approve the access request. | 
+**Comment** |  **string** | A comment about the decision to approve or deny the request. | 
+**Approver** |  **string** | The name of the entity that approved or denied the request. | 
 
 ## Methods
 

@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'VAClusterStatusChangeEventApplication
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | The GUID of the application | 
-**Name** | **string** | The name of the application | 
-**Attributes** | **map[string]interface{}** | Custom map of attributes for a source.  This will only be populated if type is &#x60;SOURCE&#x60; and the source has a proxy. | 
+**Id** |  **string** | The GUID of the application | 
+**Name** |  **string** | The name of the application | 
+**Attributes** |  **map[string]interface{}** | Custom map of attributes for a source.  This will only be populated if type is &#x60;SOURCE&#x60; and the source has a proxy. | 
 
 ## Methods
 

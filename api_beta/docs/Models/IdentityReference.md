@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'IdentityReference']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to [**DtoType**](DtoType) |  | [optional] 
-**Id** | Pointer to **string** | Identity id | [optional] 
-**Name** | Pointer to **string** | Human-readable display name of identity. | [optional] 
+**Type** |  Pointer to [**DtoType**](dto-type) |  | [optional] 
+**Id** |  Pointer to **string** | Identity id | [optional] 
+**Name** |  Pointer to **string** | Human-readable display name of identity. | [optional] 
 
 ## Methods
 

@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'AccessRequestRecommendationActionItem
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IdentityId** | **string** | The identity ID taking the action. | 
-**Access** | [**AccessRequestRecommendationItem**](AccessRequestRecommendationItem) |  | 
+**IdentityId** |  **string** | The identity ID taking the action. | 
+**Access** |  [**AccessRequestRecommendationItem**](access-request-recommendation-item) |  | 
 
 ## Methods
 

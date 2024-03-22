@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'TokenAuthResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Status** | Pointer to **string** | MFA Authentication status | [optional] 
+**Status** |  Pointer to **string** | MFA Authentication status | [optional] 
 
 ## Methods
 

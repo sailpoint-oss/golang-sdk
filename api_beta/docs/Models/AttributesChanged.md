@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'AttributesChanged']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Changes** | Pointer to [**[]AttributeChange**](AttributeChange) |  | [optional] 
-**EventType** | Pointer to **string** | the event type | [optional] 
-**IdentityId** | Pointer to **string** | the identity id | [optional] 
-**Dt** | Pointer to **string** | the date of event | [optional] 
+**Changes** |  Pointer to [**[]AttributeChange**](attribute-change) |  | [optional] 
+**EventType** |  Pointer to **string** | the event type | [optional] 
+**IdentityId** |  Pointer to **string** | the identity id | [optional] 
+**Dt** |  Pointer to **string** | the date of event | [optional] 
 
 ## Methods
 

@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'ValidateFilterInputDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Input** | **map[string]interface{}** | Mock input to evaluate filter expression against. | 
-**Filter** | **string** | JSONPath filter to conditionally invoke trigger when expression evaluates to true. | 
+**Input** |  **map[string]interface{}** | Mock input to evaluate filter expression against. | 
+**Filter** |  **string** | JSONPath filter to conditionally invoke trigger when expression evaluates to true. | 
 
 ## Methods
 

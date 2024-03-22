@@ -15,14 +15,14 @@ tags: ['SDK', 'Software Development Kit', 'CreateFormInstanceRequest']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedBy** | [**FormInstanceCreatedBy**](FormInstanceCreatedBy) |  | 
-**Expire** | **string** | Expire is required | 
-**FormDefinitionId** | **string** | FormDefinitionID is the id of the form definition that created this form | 
-**FormInput** | Pointer to **map[string]interface{}** | FormInput is an object of form input labels to value | [optional] 
-**Recipients** | [**[]FormInstanceRecipient**](FormInstanceRecipient) | Recipients is required | 
-**StandAloneForm** | Pointer to **bool** | StandAloneForm is a boolean flag to indicate if this form should be available for users to complete via the standalone form UI or should this only be available to be completed by as an embedded form | [optional] [default to false]
-**State** | Pointer to **string** | State is required, if not present initial state is FormInstanceStateAssigned ASSIGNED FormInstanceStateAssigned IN_PROGRESS FormInstanceStateInProgress SUBMITTED FormInstanceStateSubmitted COMPLETED FormInstanceStateCompleted CANCELLED FormInstanceStateCancelled | [optional] 
-**Ttl** | Pointer to **int64** | TTL an epoch timestamp in seconds, it most be in seconds or dynamodb will ignore it SEE: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/time-to-live-ttl-before-you-start.html | [optional] 
+**CreatedBy** |  [**FormInstanceCreatedBy**](form-instance-created-by) |  | 
+**Expire** |  **string** | Expire is required | 
+**FormDefinitionId** |  **string** | FormDefinitionID is the id of the form definition that created this form | 
+**FormInput** |  Pointer to **map[string]interface{}** | FormInput is an object of form input labels to value | [optional] 
+**Recipients** |  [**[]FormInstanceRecipient**](form-instance-recipient) | Recipients is required | 
+**StandAloneForm** |  Pointer to **bool** | StandAloneForm is a boolean flag to indicate if this form should be available for users to complete via the standalone form UI or should this only be available to be completed by as an embedded form | [optional] [default to false]
+**State** |  Pointer to **string** | State is required, if not present initial state is FormInstanceStateAssigned ASSIGNED FormInstanceStateAssigned IN_PROGRESS FormInstanceStateInProgress SUBMITTED FormInstanceStateSubmitted COMPLETED FormInstanceStateCompleted CANCELLED FormInstanceStateCancelled | [optional] 
+**Ttl** |  Pointer to **int64** | TTL an epoch timestamp in seconds, it most be in seconds or dynamodb will ignore it SEE: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/time-to-live-ttl-before-you-start.html | [optional] 
 
 ## Methods
 

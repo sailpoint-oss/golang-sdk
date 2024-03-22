@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'PeerGroupMember']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | A unique identifier for the peer group member. | [optional] 
-**Type** | Pointer to **string** | The type of the peer group member. | [optional] 
-**PeerGroupId** | Pointer to **string** | The ID of the peer group. | [optional] 
-**Attributes** | Pointer to **map[string]map[string]interface{}** | Arbitrary key-value pairs, belonging to the peer group member. | [optional] 
+**Id** |  Pointer to **string** | A unique identifier for the peer group member. | [optional] 
+**Type** |  Pointer to **string** | The type of the peer group member. | [optional] 
+**PeerGroupId** |  Pointer to **string** | The ID of the peer group. | [optional] 
+**Attributes** |  Pointer to **map[string]map[string]interface{}** | Arbitrary key-value pairs, belonging to the peer group member. | [optional] 
 
 ## Methods
 

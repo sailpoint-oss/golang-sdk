@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'AttributeChange']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | the attribute name | [optional] 
-**PreviousValue** | Pointer to **string** | the old value of attribute | [optional] 
-**NewValue** | Pointer to **string** | the new value of attribute | [optional] 
+**Name** |  Pointer to **string** | the attribute name | [optional] 
+**PreviousValue** |  Pointer to **string** | the old value of attribute | [optional] 
+**NewValue** |  Pointer to **string** | the new value of attribute | [optional] 
 
 ## Methods
 

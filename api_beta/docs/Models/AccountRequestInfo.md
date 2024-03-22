@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'AccountRequestInfo']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RequestedObjectId** | Pointer to **string** | Id of requested object | [optional] 
-**RequestedObjectName** | Pointer to **string** | Human-readable name of requested object | [optional] 
-**RequestedObjectType** | Pointer to [**RequestableObjectType**](RequestableObjectType) |  | [optional] 
+**RequestedObjectId** |  Pointer to **string** | Id of requested object | [optional] 
+**RequestedObjectName** |  Pointer to **string** | Human-readable name of requested object | [optional] 
+**RequestedObjectType** |  Pointer to [**RequestableObjectType**](requestable-object-type) |  | [optional] 
 
 ## Methods
 

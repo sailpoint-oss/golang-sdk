@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'ConfigObject']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Version** | Pointer to **int32** | Current version of configuration object. | [optional] 
-**Self** | Pointer to [**SelfImportExportDto**](SelfImportExportDto) |  | [optional] 
-**Object** | Pointer to **map[string]interface{}** | Object details. Format dependant on the object type. | [optional] 
+**Version** |  Pointer to **int32** | Current version of configuration object. | [optional] 
+**Self** |  Pointer to [**SelfImportExportDto**](self-import-export-dto) |  | [optional] 
+**Object** |  Pointer to **map[string]interface{}** | Object details. Format dependant on the object type. | [optional] 
 
 ## Methods
 

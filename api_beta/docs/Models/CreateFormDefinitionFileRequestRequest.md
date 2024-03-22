@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateFormDefinitionFileRequestReques
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**File** | ***os.File** | File specifying the multipart | 
+**File** |  ***os.File** | File specifying the multipart | 
 
 ## Methods
 

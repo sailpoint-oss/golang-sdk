@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'AccessItemRef']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | ID of the access item to retrieve the recommendation for. | [optional] 
-**Type** | Pointer to **string** | Access item&#39;s type. | [optional] 
+**Id** |  Pointer to **string** | ID of the access item to retrieve the recommendation for. | [optional] 
+**Type** |  Pointer to **string** | Access item&#39;s type. | [optional] 
 
 ## Methods
 

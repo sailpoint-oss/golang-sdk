@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'AccessItemDiff']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | the id of the access item | [optional] 
-**EventType** | Pointer to **string** |  | [optional] 
-**DisplayName** | Pointer to **string** | the display name of the access item | [optional] 
-**SourceName** | Pointer to **string** | the source name of the access item | [optional] 
+**Id** |  Pointer to **string** | the id of the access item | [optional] 
+**EventType** |  Pointer to **string** |  | [optional] 
+**DisplayName** |  Pointer to **string** | the display name of the access item | [optional] 
+**SourceName** |  Pointer to **string** | the source name of the access item | [optional] 
 
 ## Methods
 

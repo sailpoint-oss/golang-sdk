@@ -15,15 +15,15 @@ tags: ['SDK', 'Software Development Kit', 'AccessItemAccessProfileResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessType** | Pointer to **string** | the access item type. accessProfile in this case | [optional] 
-**Id** | Pointer to **string** | the access item id | [optional] 
-**Name** | Pointer to **string** | the access profile name | [optional] 
-**SourceName** | Pointer to **string** | the name of the source | [optional] 
-**SourceId** | Pointer to **string** | the id of the source | [optional] 
-**Description** | Pointer to **string** | the description for the access profile | [optional] 
-**DisplayName** | Pointer to **string** | the display name of the identity | [optional] 
-**EntitlementCount** | Pointer to **string** | the number of entitlements the access profile will create | [optional] 
-**AppDisplayName** | Pointer to **string** | the name of app | [optional] 
+**AccessType** |  Pointer to **string** | the access item type. accessProfile in this case | [optional] 
+**Id** |  Pointer to **string** | the access item id | [optional] 
+**Name** |  Pointer to **string** | the access profile name | [optional] 
+**SourceName** |  Pointer to **string** | the name of the source | [optional] 
+**SourceId** |  Pointer to **string** | the id of the source | [optional] 
+**Description** |  Pointer to **string** | the description for the access profile | [optional] 
+**DisplayName** |  Pointer to **string** | the display name of the identity | [optional] 
+**EntitlementCount** |  Pointer to **string** | the number of entitlements the access profile will create | [optional] 
+**AppDisplayName** |  Pointer to **string** | the name of app | [optional] 
 
 ## Methods
 

@@ -15,13 +15,13 @@ tags: ['SDK', 'Software Development Kit', 'LoadEntitlementTask']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | System-generated unique ID of the task this taskStatus represents | [optional] 
-**Type** | Pointer to **string** | Type of task this task represents | [optional] 
-**UniqueName** | Pointer to **string** | The name of the task | [optional] 
-**Description** | Pointer to **string** | The description of the task | [optional] 
-**Launcher** | Pointer to **string** | The user who initiated the task | [optional] 
-**Created** | Pointer to **time.Time** | The creation date of the task | [optional] 
-**Returns** | Pointer to **map[string]interface{}** | Return values from the task | [optional] 
+**Id** |  Pointer to **string** | System-generated unique ID of the task this taskStatus represents | [optional] 
+**Type** |  Pointer to **string** | Type of task this task represents | [optional] 
+**UniqueName** |  Pointer to **string** | The name of the task | [optional] 
+**Description** |  Pointer to **string** | The description of the task | [optional] 
+**Launcher** |  Pointer to **string** | The user who initiated the task | [optional] 
+**Created** |  Pointer to **time.Time** | The creation date of the task | [optional] 
+**Returns** |  Pointer to **map[string]interface{}** | Return values from the task | [optional] 
 
 ## Methods
 

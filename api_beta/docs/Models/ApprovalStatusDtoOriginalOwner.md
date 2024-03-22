@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'ApprovalStatusDtoOriginalOwner']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | DTO type of original approval owner&#39;s identity. | [optional] 
-**Id** | Pointer to **string** | ID of original approval owner&#39;s identity. | [optional] 
-**Name** | Pointer to **string** | Display name of original approval owner. | [optional] 
+**Type** |  Pointer to **string** | DTO type of original approval owner&#39;s identity. | [optional] 
+**Id** |  Pointer to **string** | ID of original approval owner&#39;s identity. | [optional] 
+**Name** |  Pointer to **string** | Display name of original approval owner. | [optional] 
 
 ## Methods
 

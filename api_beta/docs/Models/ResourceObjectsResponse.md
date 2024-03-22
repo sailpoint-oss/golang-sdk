@@ -15,11 +15,11 @@ tags: ['SDK', 'Software Development Kit', 'ResourceObjectsResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | ID of the source | [optional] [readonly] 
-**Name** | Pointer to **string** | Name of the source | [optional] [readonly] 
-**ObjectCount** | Pointer to **int32** | The number of objects that were fetched by the connector. | [optional] [readonly] 
-**ElapsedMillis** | Pointer to **int32** | The number of milliseconds spent on the entire request. | [optional] [readonly] 
-**ResourceObjects** | Pointer to [**[]ResourceObject**](ResourceObject) | Fetched objects from the source connector. | [optional] [readonly] 
+**Id** |  Pointer to **string** | ID of the source | [optional] [readonly] 
+**Name** |  Pointer to **string** | Name of the source | [optional] [readonly] 
+**ObjectCount** |  Pointer to **int32** | The number of objects that were fetched by the connector. | [optional] [readonly] 
+**ElapsedMillis** |  Pointer to **int32** | The number of milliseconds spent on the entire request. | [optional] [readonly] 
+**ResourceObjects** |  Pointer to [**[]ResourceObject**](resource-object) | Fetched objects from the source connector. | [optional] [readonly] 
 
 ## Methods
 

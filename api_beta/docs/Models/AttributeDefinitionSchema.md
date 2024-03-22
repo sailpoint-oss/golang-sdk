@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'AttributeDefinitionSchema']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | The type of object being referenced | [optional] 
-**Id** | Pointer to **string** | The object ID this reference applies to. | [optional] 
-**Name** | Pointer to **string** | The human-readable display name of the object. | [optional] 
+**Type** |  Pointer to **string** | The type of object being referenced | [optional] 
+**Id** |  Pointer to **string** | The object ID this reference applies to. | [optional] 
+**Name** |  Pointer to **string** | The human-readable display name of the object. | [optional] 
 
 ## Methods
 

@@ -15,13 +15,13 @@ tags: ['SDK', 'Software Development Kit', 'CommonAccessResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Unique ID of the common access item | [optional] 
-**Access** | Pointer to [**CommonAccessItemAccess**](CommonAccessItemAccess) |  | [optional] 
-**Status** | Pointer to **string** | CONFIRMED or DENIED | [optional] 
-**LastUpdated** | Pointer to **time.Time** |  | [optional] [readonly] 
-**ReviewedByUser** | Pointer to **bool** | true if user has confirmed or denied status | [optional] 
-**LastReviewed** | Pointer to **NullableTime** |  | [optional] [readonly] 
-**CreatedByUser** | Pointer to **bool** |  | [optional] [default to false]
+**Id** |  Pointer to **string** | Unique ID of the common access item | [optional] 
+**Access** |  Pointer to [**CommonAccessItemAccess**](common-access-item-access) |  | [optional] 
+**Status** |  Pointer to **string** | CONFIRMED or DENIED | [optional] 
+**LastUpdated** |  Pointer to **time.Time** |  | [optional] [readonly] 
+**ReviewedByUser** |  Pointer to **bool** | true if user has confirmed or denied status | [optional] 
+**LastReviewed** |  Pointer to **NullableTime** |  | [optional] [readonly] 
+**CreatedByUser** |  Pointer to **bool** |  | [optional] [default to false]
 
 ## Methods
 

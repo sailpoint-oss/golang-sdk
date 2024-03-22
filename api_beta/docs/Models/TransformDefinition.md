@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'TransformDefinition']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | The type of the transform definition. | [optional] 
-**Attributes** | Pointer to **map[string]interface{}** | Arbitrary key-value pairs to store any metadata for the object | [optional] 
+**Type** |  Pointer to **string** | The type of the transform definition. | [optional] 
+**Attributes** |  Pointer to **map[string]interface{}** | Arbitrary key-value pairs to store any metadata for the object | [optional] 
 
 ## Methods
 

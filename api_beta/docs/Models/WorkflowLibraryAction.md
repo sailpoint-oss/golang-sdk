@@ -15,13 +15,13 @@ tags: ['SDK', 'Software Development Kit', 'WorkflowLibraryAction']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Action ID. This is a static namespaced ID for the action | [optional] 
-**Name** | Pointer to **string** | Action Name | [optional] 
-**Type** | Pointer to **string** | Action type | [optional] 
-**Description** | Pointer to **string** | Action Description | [optional] 
-**FormFields** | Pointer to [**[]WorkflowLibraryFormFields**](WorkflowLibraryFormFields) | One or more inputs that the action accepts | [optional] 
-**IsDynamicSchema** | Pointer to **bool** | Determines whether the dynamic output schema is returned in place of the action&#39;s output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields. | [optional] 
-**OutputSchema** | Pointer to **map[string]interface{}** | Defines the output schema, if any, that this action produces. | [optional] 
+**Id** |  Pointer to **string** | Action ID. This is a static namespaced ID for the action | [optional] 
+**Name** |  Pointer to **string** | Action Name | [optional] 
+**Type** |  Pointer to **string** | Action type | [optional] 
+**Description** |  Pointer to **string** | Action Description | [optional] 
+**FormFields** |  Pointer to [**[]WorkflowLibraryFormFields**](workflow-library-form-fields) | One or more inputs that the action accepts | [optional] 
+**IsDynamicSchema** |  Pointer to **bool** | Determines whether the dynamic output schema is returned in place of the action&#39;s output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields. | [optional] 
+**OutputSchema** |  Pointer to **map[string]interface{}** | Defines the output schema, if any, that this action produces. | [optional] 
 
 ## Methods
 

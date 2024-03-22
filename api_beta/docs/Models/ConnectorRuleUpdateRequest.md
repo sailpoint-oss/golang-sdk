@@ -15,13 +15,13 @@ tags: ['SDK', 'Software Development Kit', 'ConnectorRuleUpdateRequest']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** | the name of the rule | 
-**Description** | Pointer to **string** | a description of the rule&#39;s purpose | [optional] 
-**Type** | **string** | the type of rule | 
-**Signature** | Pointer to [**ConnectorRuleCreateRequestSignature**](ConnectorRuleCreateRequestSignature) |  | [optional] 
-**SourceCode** | [**SourceCode**](SourceCode) |  | 
-**Attributes** | Pointer to **map[string]interface{}** | a map of string to objects | [optional] 
-**Id** | **string** | the ID of the rule to update | 
+**Name** |  **string** | the name of the rule | 
+**Description** |  Pointer to **string** | a description of the rule&#39;s purpose | [optional] 
+**Type** |  **string** | the type of rule | 
+**Signature** |  Pointer to [**ConnectorRuleCreateRequestSignature**](connector-rule-create-request-signature) |  | [optional] 
+**SourceCode** |  [**SourceCode**](source-code) |  | 
+**Attributes** |  Pointer to **map[string]interface{}** | a map of string to objects | [optional] 
+**Id** |  **string** | the ID of the rule to update | 
 
 ## Methods
 

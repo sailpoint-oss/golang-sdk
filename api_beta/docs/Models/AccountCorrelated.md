@@ -15,11 +15,11 @@ tags: ['SDK', 'Software Development Kit', 'AccountCorrelated']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Identity** | [**AccountCorrelatedIdentity**](AccountCorrelatedIdentity) |  | 
-**Source** | [**AccountCorrelatedSource**](AccountCorrelatedSource) |  | 
-**Account** | [**AccountCorrelatedAccount**](AccountCorrelatedAccount) |  | 
-**Attributes** | **map[string]interface{}** | The attributes associated with the account.  Attributes are unique per source. | 
-**EntitlementCount** | Pointer to **int32** | The number of entitlements associated with this account. | [optional] 
+**Identity** |  [**AccountCorrelatedIdentity**](account-correlated-identity) |  | 
+**Source** |  [**AccountCorrelatedSource**](account-correlated-source) |  | 
+**Account** |  [**AccountCorrelatedAccount**](account-correlated-account) |  | 
+**Attributes** |  **map[string]interface{}** | The attributes associated with the account.  Attributes are unique per source. | 
+**EntitlementCount** |  Pointer to **int32** | The number of entitlements associated with this account. | [optional] 
 
 ## Methods
 

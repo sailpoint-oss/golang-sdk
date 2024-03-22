@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'AttrSyncSourceConfig']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Source** | [**AttrSyncSource**](AttrSyncSource) |  | 
-**Attributes** | [**[]AttrSyncSourceAttributeConfig**](AttrSyncSourceAttributeConfig) | Attribute synchronization configuration for specific identity attributes in the context of a source | 
+**Source** |  [**AttrSyncSource**](attr-sync-source) |  | 
+**Attributes** |  [**[]AttrSyncSourceAttributeConfig**](attr-sync-source-attribute-config) | Attribute synchronization configuration for specific identity attributes in the context of a source | 
 
 ## Methods
 

@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'BaseCommonDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | System-generated unique ID of the Object | [optional] [readonly] 
-**Name** | **string** | Name of the Object | 
-**Created** | Pointer to **time.Time** | Creation date of the Object | [optional] [readonly] 
-**Modified** | Pointer to **time.Time** | Last modification date of the Object | [optional] [readonly] 
+**Id** |  Pointer to **string** | System-generated unique ID of the Object | [optional] [readonly] 
+**Name** |  **string** | Name of the Object | 
+**Created** |  Pointer to **time.Time** | Creation date of the Object | [optional] [readonly] 
+**Modified** |  Pointer to **time.Time** | Last modification date of the Object | [optional] [readonly] 
 
 ## Methods
 

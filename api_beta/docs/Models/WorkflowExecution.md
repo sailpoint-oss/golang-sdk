@@ -15,12 +15,12 @@ tags: ['SDK', 'Software Development Kit', 'WorkflowExecution']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | The workflow execution ID | [optional] 
-**WorkflowId** | Pointer to **string** | The workflow ID | [optional] 
-**RequestId** | Pointer to **string** | This backend ID tracks a workflow request in the system. You can provide this ID in a customer support ticket for debugging purposes. | [optional] 
-**StartTime** | Pointer to **time.Time** | The date/time the workflow started | [optional] 
-**CloseTime** | Pointer to **time.Time** | The date/time the workflow ended | [optional] 
-**Status** | Pointer to **string** | The workflow execution status | [optional] 
+**Id** |  Pointer to **string** | The workflow execution ID | [optional] 
+**WorkflowId** |  Pointer to **string** | The workflow ID | [optional] 
+**RequestId** |  Pointer to **string** | This backend ID tracks a workflow request in the system. You can provide this ID in a customer support ticket for debugging purposes. | [optional] 
+**StartTime** |  Pointer to **time.Time** | The date/time the workflow started | [optional] 
+**CloseTime** |  Pointer to **time.Time** | The date/time the workflow ended | [optional] 
+**Status** |  Pointer to **string** | The workflow execution status | [optional] 
 
 ## Methods
 

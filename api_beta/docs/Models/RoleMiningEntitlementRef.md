@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'RoleMiningEntitlementRef']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Id of the entitlement | [optional] 
-**Name** | Pointer to **string** | Name of the entitlement | [optional] 
-**Description** | Pointer to **NullableString** | Description forthe entitlement | [optional] 
-**Attribute** | Pointer to **string** | The entitlement attribute | [optional] 
+**Id** |  Pointer to **string** | Id of the entitlement | [optional] 
+**Name** |  Pointer to **string** | Name of the entitlement | [optional] 
+**Description** |  Pointer to **NullableString** | Description forthe entitlement | [optional] 
+**Attribute** |  Pointer to **string** | The entitlement attribute | [optional] 
 
 ## Methods
 

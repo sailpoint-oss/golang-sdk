@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'WorkgroupBulkDeleteRequest']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ids** | Pointer to **[]string** | List of IDs of Governance Groups to be deleted. | [optional] 
+**Ids** |  Pointer to **[]string** | List of IDs of Governance Groups to be deleted. | [optional] 
 
 ## Methods
 

@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'WorkItemsSummary']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Open** | Pointer to **int32** | The count of open work items | [optional] 
-**Completed** | Pointer to **int32** | The count of completed work items | [optional] 
-**Total** | Pointer to **int32** | The count of total work items | [optional] 
+**Open** |  Pointer to **int32** | The count of open work items | [optional] 
+**Completed** |  Pointer to **int32** | The count of completed work items | [optional] 
+**Total** |  Pointer to **int32** | The count of total work items | [optional] 
 
 ## Methods
 

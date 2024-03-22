@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'RoleMiningPotentialRoleExportRequest'
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MinEntitlementPopularity** | Pointer to **int32** | The minimum popularity among identities in the role which an entitlement must have to be included in the report | [optional] 
-**IncludeCommonAccess** | Pointer to **bool** | If false, do not include entitlements that are highly popular among the entire orginization | [optional] 
+**MinEntitlementPopularity** |  Pointer to **int32** | The minimum popularity among identities in the role which an entitlement must have to be included in the report | [optional] 
+**IncludeCommonAccess** |  Pointer to **bool** | If false, do not include entitlements that are highly popular among the entire orginization | [optional] 
 
 ## Methods
 

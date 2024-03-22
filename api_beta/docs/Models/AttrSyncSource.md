@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'AttrSyncSource']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | DTO type of target source for attribute synchronization. | [optional] 
-**Id** | Pointer to **string** | ID of target source for attribute synchronization. | [optional] 
-**Name** | Pointer to **string** | Human-readable name of target source for attribute synchronization. | [optional] 
+**Type** |  Pointer to **string** | DTO type of target source for attribute synchronization. | [optional] 
+**Id** |  Pointer to **string** | ID of target source for attribute synchronization. | [optional] 
+**Name** |  Pointer to **string** | Human-readable name of target source for attribute synchronization. | [optional] 
 
 ## Methods
 

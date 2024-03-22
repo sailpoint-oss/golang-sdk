@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'ErrorResponseDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DetailCode** | Pointer to **string** | Fine-grained error code providing more detail of the error. | [optional] 
-**TrackingId** | Pointer to **string** | Unique tracking id for the error. | [optional] 
-**Messages** | Pointer to [**[]ErrorMessageDto**](ErrorMessageDto) | Generic localized reason for error | [optional] 
-**Causes** | Pointer to [**[]ErrorMessageDto**](ErrorMessageDto) | Plain-text descriptive reasons to provide additional detail to the text provided in the messages field | [optional] 
+**DetailCode** |  Pointer to **string** | Fine-grained error code providing more detail of the error. | [optional] 
+**TrackingId** |  Pointer to **string** | Unique tracking id for the error. | [optional] 
+**Messages** |  Pointer to [**[]ErrorMessageDto**](error-message-dto) | Generic localized reason for error | [optional] 
+**Causes** |  Pointer to [**[]ErrorMessageDto**](error-message-dto) | Plain-text descriptive reasons to provide additional detail to the text provided in the messages field | [optional] 
 
 ## Methods
 

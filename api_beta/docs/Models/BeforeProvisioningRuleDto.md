@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'BeforeProvisioningRuleDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | Before Provisioning Rule DTO type. | [optional] 
-**Id** | Pointer to **string** | Before Provisioning Rule ID. | [optional] 
-**Name** | Pointer to **string** | Rule display name. | [optional] 
+**Type** |  Pointer to **string** | Before Provisioning Rule DTO type. | [optional] 
+**Id** |  Pointer to **string** | Before Provisioning Rule ID. | [optional] 
+**Name** |  Pointer to **string** | Rule display name. | [optional] 
 
 ## Methods
 

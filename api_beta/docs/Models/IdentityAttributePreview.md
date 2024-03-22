@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'IdentityAttributePreview']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | Name of the attribute that is being previewed. | [optional] 
-**Value** | Pointer to **map[string]interface{}** | Value that was derived during the preview. | [optional] 
-**PreviousValue** | Pointer to **map[string]interface{}** | The value of the attribute before the preview. | [optional] 
-**ErrorMessages** | Pointer to [**[]ErrorMessageDto**](ErrorMessageDto) |  | [optional] 
+**Name** |  Pointer to **string** | Name of the attribute that is being previewed. | [optional] 
+**Value** |  Pointer to **map[string]interface{}** | Value that was derived during the preview. | [optional] 
+**PreviousValue** |  Pointer to **map[string]interface{}** | The value of the attribute before the preview. | [optional] 
+**ErrorMessages** |  Pointer to [**[]ErrorMessageDto**](error-message-dto) |  | [optional] 
 
 ## Methods
 

@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'SourceManagerCorrelationRule']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | The type of object being referenced | [optional] 
-**Id** | Pointer to **string** | ID of the rule | [optional] 
-**Name** | Pointer to **string** | Human-readable display name of the rule | [optional] 
+**Type** |  Pointer to **string** | The type of object being referenced | [optional] 
+**Id** |  Pointer to **string** | ID of the rule | [optional] 
+**Name** |  Pointer to **string** | Human-readable display name of the rule | [optional] 
 
 ## Methods
 

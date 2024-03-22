@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'WorkflowExecutionEvent']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **map[string]interface{}** | The type of event | [optional] 
-**Timestamp** | Pointer to **time.Time** | The date-time when the event occurred | [optional] 
-**Attributes** | Pointer to **map[string]interface{}** | Additional attributes associated with the event | [optional] 
+**Type** |  Pointer to **map[string]interface{}** | The type of event | [optional] 
+**Timestamp** |  Pointer to **time.Time** | The date-time when the event occurred | [optional] 
+**Attributes** |  Pointer to **map[string]interface{}** | Additional attributes associated with the event | [optional] 
 
 ## Methods
 

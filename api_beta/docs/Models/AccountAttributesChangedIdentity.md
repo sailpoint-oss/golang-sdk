@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'AccountAttributesChangedIdentity']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | DTO type of the identity whose account attributes were updated. | 
-**Id** | **string** | ID of the identity whose account attributes were updated. | 
-**Name** | **string** | Display name of the identity whose account attributes were updated. | 
+**Type** |  **string** | DTO type of the identity whose account attributes were updated. | 
+**Id** |  **string** | ID of the identity whose account attributes were updated. | 
+**Name** |  **string** | Display name of the identity whose account attributes were updated. | 
 
 ## Methods
 

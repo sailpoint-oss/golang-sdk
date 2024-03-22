@@ -15,15 +15,15 @@ tags: ['SDK', 'Software Development Kit', 'CampaignGeneratedCampaign']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | The unique ID of the campaign. | 
-**Name** | **string** | Human friendly name of the campaign. | 
-**Description** | **string** | Extended description of the campaign. | 
-**Created** | **time.Time** | The date and time the campaign was created. | 
-**Modified** | Pointer to **NullableString** | The date and time the campaign was last modified. | [optional] 
-**Deadline** | Pointer to **NullableString** | The date and time when the campaign must be finished by. | [optional] 
-**Type** | **map[string]interface{}** | The type of campaign that was generated. | 
-**CampaignOwner** | [**CampaignGeneratedCampaignCampaignOwner**](CampaignGeneratedCampaignCampaignOwner) |  | 
-**Status** | **map[string]interface{}** | The current status of the campaign. | 
+**Id** |  **string** | The unique ID of the campaign. | 
+**Name** |  **string** | Human friendly name of the campaign. | 
+**Description** |  **string** | Extended description of the campaign. | 
+**Created** |  **time.Time** | The date and time the campaign was created. | 
+**Modified** |  Pointer to **NullableString** | The date and time the campaign was last modified. | [optional] 
+**Deadline** |  Pointer to **NullableString** | The date and time when the campaign must be finished by. | [optional] 
+**Type** |  **map[string]interface{}** | The type of campaign that was generated. | 
+**CampaignOwner** |  [**CampaignGeneratedCampaignCampaignOwner**](campaign-generated-campaign-campaign-owner) |  | 
+**Status** |  **map[string]interface{}** | The current status of the campaign. | 
 
 ## Methods
 

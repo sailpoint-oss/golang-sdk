@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'ConnectorRuleCreateRequestSignature']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Input** | [**[]Argument**](Argument) |  | 
-**Output** | Pointer to [**NullableArgument**](Argument) |  | [optional] 
+**Input** |  [**[]Argument**](argument) |  | 
+**Output** |  Pointer to [**NullableArgument**](argument) |  | [optional] 
 
 ## Methods
 

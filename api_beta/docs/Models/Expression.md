@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'Expression']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Operator** | Pointer to **string** | Operator for the expression | [optional] 
-**Attribute** | Pointer to **string** | Name for the attribute | [optional] 
-**Value** | Pointer to [**Value**](Value) |  | [optional] 
-**Children** | Pointer to [**[]Value**](Value) | List of expressions | [optional] 
+**Operator** |  Pointer to **string** | Operator for the expression | [optional] 
+**Attribute** |  Pointer to **string** | Name for the attribute | [optional] 
+**Value** |  Pointer to [**Value**](value) |  | [optional] 
+**Children** |  Pointer to [**[]Value**](value) | List of expressions | [optional] 
 
 ## Methods
 

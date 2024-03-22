@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CertificationSignedOff']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Certification** | [**CertificationSignedOffCertification**](CertificationSignedOffCertification) |  | 
+**Certification** |  [**CertificationSignedOffCertification**](certification-signed-off-certification) |  | 
 
 ## Methods
 

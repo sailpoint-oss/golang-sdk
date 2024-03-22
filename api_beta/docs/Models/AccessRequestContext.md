@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'AccessRequestContext']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RequestedContext** | Pointer to [**[]ContextAttributeDto**](ContextAttributeDto) |  | [optional] 
-**AssignedContext** | Pointer to [**[]RoleMatchDto**](RoleMatchDto) |  | [optional] 
+**RequestedContext** |  Pointer to [**[]ContextAttributeDto**](context-attribute-dto) |  | [optional] 
+**AssignedContext** |  Pointer to [**[]RoleMatchDto**](role-match-dto) |  | [optional] 
 
 ## Methods
 

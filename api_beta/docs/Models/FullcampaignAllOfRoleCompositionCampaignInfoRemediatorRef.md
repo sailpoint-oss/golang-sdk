@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'FullcampaignAllOfRoleCompositionCampa
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | Legal Remediator Type | 
-**Id** | **string** | The ID of the remediator. | 
-**Name** | Pointer to **string** | The name of the remediator. | [optional] [readonly] 
+**Type** |  **string** | Legal Remediator Type | 
+**Id** |  **string** | The ID of the remediator. | 
+**Name** |  Pointer to **string** | The name of the remediator. | [optional] [readonly] 
 
 ## Methods
 

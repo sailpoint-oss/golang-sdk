@@ -15,22 +15,22 @@ tags: ['SDK', 'Software Development Kit', 'TaskStatus']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | System-generated unique ID of the task this TaskStatus represents | 
-**Type** | **string** | Type of task this TaskStatus represents | 
-**UniqueName** | **string** | Name of the task this TaskStatus represents | 
-**Description** | **string** | Description of the task this TaskStatus represents | 
-**ParentName** | **string** | Name of the parent of the task this TaskStatus represents | 
-**Launcher** | **string** | Service to execute the task this TaskStatus represents | 
-**Created** | **time.Time** | Creation date of the task this TaskStatus represents | 
-**Modified** | **time.Time** | Last modification date of the task this TaskStatus represents | 
-**Launched** | **time.Time** | Launch date of the task this TaskStatus represents | 
-**Completed** | **time.Time** | Completion date of the task this TaskStatus represents | 
-**CompletionStatus** | **string** | Completion status of the task this TaskStatus represents | 
-**Messages** | [**[]TaskStatusMessage**](TaskStatusMessage) | Messages associated with the task this TaskStatus represents | 
-**Returns** | [**[]TaskReturnDetails**](TaskReturnDetails) | Return values from the task this TaskStatus represents | 
-**Attributes** | **map[string]interface{}** | Attributes of the task this TaskStatus represents | 
-**Progress** | **string** | Current progress of the task this TaskStatus represents | 
-**PercentComplete** | **int32** | Current percentage completion of the task this TaskStatus represents | 
+**Id** |  **string** | System-generated unique ID of the task this TaskStatus represents | 
+**Type** |  **string** | Type of task this TaskStatus represents | 
+**UniqueName** |  **string** | Name of the task this TaskStatus represents | 
+**Description** |  **string** | Description of the task this TaskStatus represents | 
+**ParentName** |  **string** | Name of the parent of the task this TaskStatus represents | 
+**Launcher** |  **string** | Service to execute the task this TaskStatus represents | 
+**Created** |  **time.Time** | Creation date of the task this TaskStatus represents | 
+**Modified** |  **time.Time** | Last modification date of the task this TaskStatus represents | 
+**Launched** |  **time.Time** | Launch date of the task this TaskStatus represents | 
+**Completed** |  **time.Time** | Completion date of the task this TaskStatus represents | 
+**CompletionStatus** |  **string** | Completion status of the task this TaskStatus represents | 
+**Messages** |  [**[]TaskStatusMessage**](task-status-message) | Messages associated with the task this TaskStatus represents | 
+**Returns** |  [**[]TaskReturnDetails**](task-return-details) | Return values from the task this TaskStatus represents | 
+**Attributes** |  **map[string]interface{}** | Attributes of the task this TaskStatus represents | 
+**Progress** |  **string** | Current progress of the task this TaskStatus represents | 
+**PercentComplete** |  **int32** | Current percentage completion of the task this TaskStatus represents | 
 
 ## Methods
 

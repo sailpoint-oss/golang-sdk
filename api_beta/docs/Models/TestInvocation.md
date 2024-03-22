@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'TestInvocation']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TriggerId** | **string** | Trigger ID | 
-**Input** | Pointer to **map[string]interface{}** | Mock input to use for test invocation.  This must adhere to the input schema defined in the trigger being invoked.  If this property is omitted, then the default trigger sample payload will be sent. | [optional] 
-**ContentJson** | **map[string]interface{}** | JSON map of invocation metadata. | 
-**SubscriptionIds** | Pointer to **[]string** | Only send the test event to the subscription IDs listed.  If omitted, the test event will be sent to all subscribers. | [optional] 
+**TriggerId** |  **string** | Trigger ID | 
+**Input** |  Pointer to **map[string]interface{}** | Mock input to use for test invocation.  This must adhere to the input schema defined in the trigger being invoked.  If this property is omitted, then the default trigger sample payload will be sent. | [optional] 
+**ContentJson** |  **map[string]interface{}** | JSON map of invocation metadata. | 
+**SubscriptionIds** |  Pointer to **[]string** | Only send the test event to the subscription IDs listed.  If omitted, the test event will be sent to all subscribers. | [optional] 
 
 ## Methods
 

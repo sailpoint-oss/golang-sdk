@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'EntitlementApprovalScheme']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ApproverType** | Pointer to **string** | Describes the individual or group that is responsible for an approval step. Values are as follows.  **ENTITLEMENT_OWNER**: Owner of the associated Entitlement  **SOURCE_OWNER**: Owner of the associated Source  **MANAGER**: Manager of the Identity for whom the request is being made  **GOVERNANCE_GROUP**: A Governance Group, the ID of which is specified by the **approverId** field | [optional] 
-**ApproverId** | Pointer to **NullableString** | Id of the specific approver, used only when approverType is GOVERNANCE_GROUP | [optional] 
+**ApproverType** |  Pointer to **string** | Describes the individual or group that is responsible for an approval step. Values are as follows.  **ENTITLEMENT_OWNER**: Owner of the associated Entitlement  **SOURCE_OWNER**: Owner of the associated Source  **MANAGER**: Manager of the Identity for whom the request is being made  **GOVERNANCE_GROUP**: A Governance Group, the ID of which is specified by the **approverId** field | [optional] 
+**ApproverId** |  Pointer to **NullableString** | Id of the specific approver, used only when approverType is GOVERNANCE_GROUP | [optional] 
 
 ## Methods
 

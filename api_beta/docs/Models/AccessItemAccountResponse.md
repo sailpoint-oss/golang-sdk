@@ -15,13 +15,13 @@ tags: ['SDK', 'Software Development Kit', 'AccessItemAccountResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessType** | Pointer to **string** | the access item type. account in this case | [optional] 
-**Id** | Pointer to **string** | the access item id | [optional] 
-**NativeIdentity** | Pointer to **string** | the native identifier used to uniquely identify an acccount | [optional] 
-**SourceName** | Pointer to **string** | the name of the source | [optional] 
-**SourceId** | Pointer to **string** | the id of the source | [optional] 
-**EntitlementCount** | Pointer to **string** | the number of entitlements the account will create | [optional] 
-**DisplayName** | Pointer to **string** | the display name of the identity | [optional] 
+**AccessType** |  Pointer to **string** | the access item type. account in this case | [optional] 
+**Id** |  Pointer to **string** | the access item id | [optional] 
+**NativeIdentity** |  Pointer to **string** | the native identifier used to uniquely identify an acccount | [optional] 
+**SourceName** |  Pointer to **string** | the name of the source | [optional] 
+**SourceId** |  Pointer to **string** | the id of the source | [optional] 
+**EntitlementCount** |  Pointer to **string** | the number of entitlements the account will create | [optional] 
+**DisplayName** |  Pointer to **string** | the display name of the identity | [optional] 
 
 ## Methods
 

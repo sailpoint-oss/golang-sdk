@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'PostExternalExecuteWorkflowRequest']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Input** | Pointer to **map[string]interface{}** | The input for the workflow | [optional] 
+**Input** |  Pointer to **map[string]interface{}** | The input for the workflow | [optional] 
 
 ## Methods
 

@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'AccessRequested']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessRequest** | Pointer to [**AccessRequestResponse**](AccessRequestResponse) |  | [optional] 
-**IdentityId** | Pointer to **string** | the identity id | [optional] 
-**EventType** | Pointer to **string** | the event type | [optional] 
-**Dt** | Pointer to **string** | the date of event | [optional] 
+**AccessRequest** |  Pointer to [**AccessRequestResponse**](access-request-response) |  | [optional] 
+**IdentityId** |  Pointer to **string** | the identity id | [optional] 
+**EventType** |  Pointer to **string** | the event type | [optional] 
+**Dt** |  Pointer to **string** | the date of event | [optional] 
 
 ## Methods
 

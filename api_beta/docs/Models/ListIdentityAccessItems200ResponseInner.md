@@ -15,19 +15,19 @@ tags: ['SDK', 'Software Development Kit', 'ListIdentityAccessItems200ResponseInn
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessType** | Pointer to **string** | the access item type. role in this case | [optional] 
-**Id** | Pointer to **string** | the access item id | [optional] 
-**Name** | Pointer to **string** | the access profile name | [optional] 
-**SourceName** | Pointer to **string** | the associated source name if it exists | [optional] 
-**SourceId** | Pointer to **string** | the id of the source | [optional] 
-**Description** | Pointer to **string** | the description for the role | [optional] 
-**DisplayName** | Pointer to **string** | the role display name | [optional] 
-**EntitlementCount** | Pointer to **string** | the number of entitlements the account will create | [optional] 
-**AppDisplayName** | Pointer to **string** | the name of app | [optional] 
-**NativeIdentity** | Pointer to **string** | the native identifier used to uniquely identify an acccount | [optional] 
-**Attribute** | Pointer to **string** | the entitlement attribute | [optional] 
-**Value** | Pointer to **string** | the associated value | [optional] 
-**EntitlementType** | Pointer to **string** | the type of entitlement | [optional] 
+**AccessType** |  Pointer to **string** | the access item type. role in this case | [optional] 
+**Id** |  Pointer to **string** | the access item id | [optional] 
+**Name** |  Pointer to **string** | the access profile name | [optional] 
+**SourceName** |  Pointer to **string** | the associated source name if it exists | [optional] 
+**SourceId** |  Pointer to **string** | the id of the source | [optional] 
+**Description** |  Pointer to **string** | the description for the role | [optional] 
+**DisplayName** |  Pointer to **string** | the role display name | [optional] 
+**EntitlementCount** |  Pointer to **string** | the number of entitlements the account will create | [optional] 
+**AppDisplayName** |  Pointer to **string** | the name of app | [optional] 
+**NativeIdentity** |  Pointer to **string** | the native identifier used to uniquely identify an acccount | [optional] 
+**Attribute** |  Pointer to **string** | the entitlement attribute | [optional] 
+**Value** |  Pointer to **string** | the associated value | [optional] 
+**EntitlementType** |  Pointer to **string** | the type of entitlement | [optional] 
 
 ## Methods
 

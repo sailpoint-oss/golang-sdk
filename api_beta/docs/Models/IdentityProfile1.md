@@ -15,19 +15,19 @@ tags: ['SDK', 'Software Development Kit', 'IdentityProfile1']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | System-generated unique ID of the Object | [optional] [readonly] 
-**Name** | **string** | Name of the Object | 
-**Created** | Pointer to **time.Time** | Creation date of the Object | [optional] [readonly] 
-**Modified** | Pointer to **time.Time** | Last modification date of the Object | [optional] [readonly] 
-**Description** | Pointer to **NullableString** | The description of the Identity Profile. | [optional] 
-**Owner** | Pointer to [**NullableIdentityProfileAllOfOwner**](IdentityProfileAllOfOwner) |  | [optional] 
-**Priority** | Pointer to **int64** | The priority for an Identity Profile. | [optional] 
-**AuthoritativeSource** | [**IdentityProfile1AllOfAuthoritativeSource**](IdentityProfile1AllOfAuthoritativeSource) |  | 
-**IdentityRefreshRequired** | Pointer to **bool** | True if a identity refresh is needed. Typically triggered when a change on the source has been made. | [optional] [default to false]
-**IdentityCount** | Pointer to **int32** | The number of identities that belong to the Identity Profile. | [optional] 
-**IdentityAttributeConfig** | Pointer to [**IdentityAttributeConfig1**](IdentityAttributeConfig1) |  | [optional] 
-**IdentityExceptionReportReference** | Pointer to [**NullableIdentityExceptionReportReference1**](IdentityExceptionReportReference1) |  | [optional] 
-**HasTimeBasedAttr** | Pointer to **bool** | Indicates the value of requiresPeriodicRefresh attribute for the Identity Profile. | [optional] [default to false]
+**Id** |  Pointer to **string** | System-generated unique ID of the Object | [optional] [readonly] 
+**Name** |  **string** | Name of the Object | 
+**Created** |  Pointer to **time.Time** | Creation date of the Object | [optional] [readonly] 
+**Modified** |  Pointer to **time.Time** | Last modification date of the Object | [optional] [readonly] 
+**Description** |  Pointer to **NullableString** | The description of the Identity Profile. | [optional] 
+**Owner** |  Pointer to [**NullableIdentityProfileAllOfOwner**](identity-profile-all-of-owner) |  | [optional] 
+**Priority** |  Pointer to **int64** | The priority for an Identity Profile. | [optional] 
+**AuthoritativeSource** |  [**IdentityProfile1AllOfAuthoritativeSource**](identity-profile1-all-of-authoritative-source) |  | 
+**IdentityRefreshRequired** |  Pointer to **bool** | True if a identity refresh is needed. Typically triggered when a change on the source has been made. | [optional] [default to false]
+**IdentityCount** |  Pointer to **int32** | The number of identities that belong to the Identity Profile. | [optional] 
+**IdentityAttributeConfig** |  Pointer to [**IdentityAttributeConfig1**](identity-attribute-config1) |  | [optional] 
+**IdentityExceptionReportReference** |  Pointer to [**NullableIdentityExceptionReportReference1**](identity-exception-report-reference1) |  | [optional] 
+**HasTimeBasedAttr** |  Pointer to **bool** | Indicates the value of requiresPeriodicRefresh attribute for the Identity Profile. | [optional] [default to false]
 
 ## Methods
 

@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'SendTokenResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RequestId** | Pointer to **NullableString** | The token request ID | [optional] 
-**Status** | Pointer to **string** | Status of sending token | [optional] 
-**ErrorMessage** | Pointer to **NullableString** | Error messages from token send request | [optional] 
+**RequestId** |  Pointer to **NullableString** | The token request ID | [optional] 
+**Status** |  Pointer to **string** | Status of sending token | [optional] 
+**ErrorMessage** |  Pointer to **NullableString** | Error messages from token send request | [optional] 
 
 ## Methods
 

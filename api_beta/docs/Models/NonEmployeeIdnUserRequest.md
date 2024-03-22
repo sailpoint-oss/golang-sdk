@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'NonEmployeeIdnUserRequest']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Identity id. | 
+**Id** |  **string** | Identity id. | 
 
 ## Methods
 

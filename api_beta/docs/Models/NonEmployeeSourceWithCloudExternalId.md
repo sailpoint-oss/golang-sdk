@@ -15,16 +15,16 @@ tags: ['SDK', 'Software Development Kit', 'NonEmployeeSourceWithCloudExternalId'
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Non-Employee source id. | [optional] 
-**SourceId** | Pointer to **string** | Source Id associated with this non-employee source. | [optional] 
-**Name** | Pointer to **string** | Source name associated with this non-employee source. | [optional] 
-**Description** | Pointer to **string** | Source description associated with this non-employee source. | [optional] 
-**Approvers** | Pointer to [**[]IdentityReferenceWithId**](IdentityReferenceWithId) | List of approvers | [optional] 
-**AccountManagers** | Pointer to [**[]IdentityReferenceWithId**](IdentityReferenceWithId) | List of account managers | [optional] 
-**Modified** | Pointer to **time.Time** | When the request was last modified. | [optional] 
-**Created** | Pointer to **time.Time** | When the request was created. | [optional] 
-**NonEmployeeCount** | Pointer to **NullableInt32** | The number of non-employee records on all sources that *requested-for* user manages. | [optional] 
-**CloudExternalId** | Pointer to **string** | Legacy ID used for sources from the V1 API. This attribute will be removed from a future version of the API and will not be considered a breaking change. No clients should rely on this ID always being present. | [optional] 
+**Id** |  Pointer to **string** | Non-Employee source id. | [optional] 
+**SourceId** |  Pointer to **string** | Source Id associated with this non-employee source. | [optional] 
+**Name** |  Pointer to **string** | Source name associated with this non-employee source. | [optional] 
+**Description** |  Pointer to **string** | Source description associated with this non-employee source. | [optional] 
+**Approvers** |  Pointer to [**[]IdentityReferenceWithId**](identity-reference-with-id) | List of approvers | [optional] 
+**AccountManagers** |  Pointer to [**[]IdentityReferenceWithId**](identity-reference-with-id) | List of account managers | [optional] 
+**Modified** |  Pointer to **time.Time** | When the request was last modified. | [optional] 
+**Created** |  Pointer to **time.Time** | When the request was created. | [optional] 
+**NonEmployeeCount** |  Pointer to **NullableInt32** | The number of non-employee records on all sources that *requested-for* user manages. | [optional] 
+**CloudExternalId** |  Pointer to **string** | Legacy ID used for sources from the V1 API. This attribute will be removed from a future version of the API and will not be considered a breaking change. No clients should rely on this ID always being present. | [optional] 
 
 ## Methods
 

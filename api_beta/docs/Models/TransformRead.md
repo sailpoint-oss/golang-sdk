@@ -15,11 +15,11 @@ tags: ['SDK', 'Software Development Kit', 'TransformRead']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** | Unique name of this transform | 
-**Type** | **string** | The type of transform operation | 
-**Attributes** | **map[string]interface{}** | Meta-data about the transform. Values in this list are specific to the type of transform to be executed. | 
-**Id** | **string** | Unique ID of this transform | 
-**Internal** | **bool** | Indicates whether this is an internal SailPoint-created transform or a customer-created transform | [default to false]
+**Name** |  **string** | Unique name of this transform | 
+**Type** |  **string** | The type of transform operation | 
+**Attributes** |  **map[string]interface{}** | Meta-data about the transform. Values in this list are specific to the type of transform to be executed. | 
+**Id** |  **string** | Unique ID of this transform | 
+**Internal** |  **bool** | Indicates whether this is an internal SailPoint-created transform or a customer-created transform | [default to false]
 
 ## Methods
 

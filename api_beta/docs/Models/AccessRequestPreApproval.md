@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'AccessRequestPreApproval']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessRequestId** | **string** | The unique ID of the access request. | 
-**RequestedFor** | [**[]AccessItemRequestedForDto**](AccessItemRequestedForDto) | Identities access was requested for. | 
-**RequestedItems** | [**[]AccessRequestPreApprovalRequestedItemsInner**](AccessRequestPreApprovalRequestedItemsInner) | Details of the access items being requested. | 
-**RequestedBy** | [**AccessItemRequesterDto**](AccessItemRequesterDto) |  | 
+**AccessRequestId** |  **string** | The unique ID of the access request. | 
+**RequestedFor** |  [**[]AccessItemRequestedForDto**](access-item-requested-for-dto) | Identities access was requested for. | 
+**RequestedItems** |  [**[]AccessRequestPreApprovalRequestedItemsInner**](access-request-pre-approval-requested-items-inner) | Details of the access items being requested. | 
+**RequestedBy** |  [**AccessItemRequesterDto**](access-item-requester-dto) |  | 
 
 ## Methods
 

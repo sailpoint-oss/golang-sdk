@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'RoleMiningIdentityDistribution']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AttributeName** | Pointer to **string** | Id of the potential role | [optional] 
-**Distribution** | Pointer to **[]map[string]string** |  | [optional] 
+**AttributeName** |  Pointer to **string** | Id of the potential role | [optional] 
+**Distribution** |  Pointer to **[]map[string]string** |  | [optional] 
 
 ## Methods
 

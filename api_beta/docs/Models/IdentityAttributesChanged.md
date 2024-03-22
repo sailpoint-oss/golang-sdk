@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'IdentityAttributesChanged']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Identity** | [**IdentityAttributesChangedIdentity**](IdentityAttributesChangedIdentity) |  | 
-**Changes** | [**[]IdentityAttributesChangedChangesInner**](IdentityAttributesChangedChangesInner) | A list of one or more identity attributes that changed on the identity. | 
+**Identity** |  [**IdentityAttributesChangedIdentity**](identity-attributes-changed-identity) |  | 
+**Changes** |  [**[]IdentityAttributesChangedChangesInner**](identity-attributes-changed-changes-inner) | A list of one or more identity attributes that changed on the identity. | 
 
 ## Methods
 

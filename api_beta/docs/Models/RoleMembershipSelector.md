@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'RoleMembershipSelector']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to [**RoleMembershipSelectorType**](RoleMembershipSelectorType) |  | [optional] 
-**Criteria** | Pointer to [**NullableRoleCriteriaLevel1**](RoleCriteriaLevel1) |  | [optional] 
-**Identities** | Pointer to [**[]RoleMembershipIdentity**](RoleMembershipIdentity) | Defines role membership as being exclusive to the specified Identities, when type is IDENTITY_LIST. | [optional] 
+**Type** |  Pointer to [**RoleMembershipSelectorType**](role-membership-selector-type) |  | [optional] 
+**Criteria** |  Pointer to [**NullableRoleCriteriaLevel1**](role-criteria-level1) |  | [optional] 
+**Identities** |  Pointer to [**[]RoleMembershipIdentity**](role-membership-identity) | Defines role membership as being exclusive to the specified Identities, when type is IDENTITY_LIST. | [optional] 
 
 ## Methods
 

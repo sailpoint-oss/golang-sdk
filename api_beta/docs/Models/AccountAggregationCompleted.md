@@ -15,13 +15,13 @@ tags: ['SDK', 'Software Development Kit', 'AccountAggregationCompleted']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Source** | [**AccountAggregationCompletedSource**](AccountAggregationCompletedSource) |  | 
-**Status** | **map[string]interface{}** | The overall status of the aggregation. | 
-**Started** | **time.Time** | The date and time when the account aggregation started. | 
-**Completed** | **time.Time** | The date and time when the account aggregation finished. | 
-**Errors** | **[]string** | A list of errors that occurred during the aggregation. | 
-**Warnings** | **[]string** | A list of warnings that occurred during the aggregation. | 
-**Stats** | [**AccountAggregationCompletedStats**](AccountAggregationCompletedStats) |  | 
+**Source** |  [**AccountAggregationCompletedSource**](account-aggregation-completed-source) |  | 
+**Status** |  **map[string]interface{}** | The overall status of the aggregation. | 
+**Started** |  **time.Time** | The date and time when the account aggregation started. | 
+**Completed** |  **time.Time** | The date and time when the account aggregation finished. | 
+**Errors** |  **[]string** | A list of errors that occurred during the aggregation. | 
+**Warnings** |  **[]string** | A list of warnings that occurred during the aggregation. | 
+**Stats** |  [**AccountAggregationCompletedStats**](account-aggregation-completed-stats) |  | 
 
 ## Methods
 

@@ -15,13 +15,13 @@ tags: ['SDK', 'Software Development Kit', 'TaskResultSimplified']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Task identifier | [optional] 
-**Name** | Pointer to **string** | Task name | [optional] 
-**Description** | Pointer to **string** | Task description | [optional] 
-**Launcher** | Pointer to **string** | User or process who launched the task | [optional] 
-**Completed** | Pointer to **time.Time** | Date time of completion | [optional] 
-**Launched** | Pointer to **time.Time** | Date time when the task was launched | [optional] 
-**CompletionStatus** | Pointer to **string** | Task result status | [optional] 
+**Id** |  Pointer to **string** | Task identifier | [optional] 
+**Name** |  Pointer to **string** | Task name | [optional] 
+**Description** |  Pointer to **string** | Task description | [optional] 
+**Launcher** |  Pointer to **string** | User or process who launched the task | [optional] 
+**Completed** |  Pointer to **time.Time** | Date time of completion | [optional] 
+**Launched** |  Pointer to **time.Time** | Date time when the task was launched | [optional] 
+**CompletionStatus** |  Pointer to **string** | Task result status | [optional] 
 
 ## Methods
 

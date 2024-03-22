@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'AccessRequestDynamicApprover']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessRequestId** | **string** | The unique ID of the access request object. Can be used with the [access request status endpoint](https://developer.sailpoint.com/idn/api/beta/list-access-request-status) to get the status of the request.  | 
-**RequestedFor** | [**[]AccessItemRequestedForDto**](AccessItemRequestedForDto) | Identities access was requested for. | 
-**RequestedItems** | [**[]AccessRequestDynamicApproverRequestedItemsInner**](AccessRequestDynamicApproverRequestedItemsInner) | The access items that are being requested. | 
-**RequestedBy** | [**AccessItemRequesterDto**](AccessItemRequesterDto) |  | 
+**AccessRequestId** |  **string** | The unique ID of the access request object. Can be used with the [access request status endpoint](https://developer.sailpoint.com/idn/api/beta/list-access-request-status) to get the status of the request.  | 
+**RequestedFor** |  [**[]AccessItemRequestedForDto**](access-item-requested-for-dto) | Identities access was requested for. | 
+**RequestedItems** |  [**[]AccessRequestDynamicApproverRequestedItemsInner**](access-request-dynamic-approver-requested-items-inner) | The access items that are being requested. | 
+**RequestedBy** |  [**AccessItemRequesterDto**](access-item-requester-dto) |  | 
 
 ## Methods
 

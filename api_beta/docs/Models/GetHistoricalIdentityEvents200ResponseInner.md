@@ -15,21 +15,21 @@ tags: ['SDK', 'Software Development Kit', 'GetHistoricalIdentityEvents200Respons
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessItem** | Pointer to [**AccessItemAssociatedAccessItem**](AccessItemAssociatedAccessItem) |  | [optional] 
-**IdentityId** | Pointer to **string** | the identity id | [optional] 
-**EventType** | Pointer to **string** | the event type | [optional] 
-**Dt** | Pointer to **string** | the date of event | [optional] 
-**GovernanceEvent** | Pointer to [**CorrelatedGovernanceEvent**](CorrelatedGovernanceEvent) |  | [optional] 
-**Changes** | Pointer to [**[]AttributeChange**](AttributeChange) |  | [optional] 
-**AccessRequest** | Pointer to [**AccessRequestResponse**](AccessRequestResponse) |  | [optional] 
-**CertificationId** | Pointer to **string** | the id of the certification item | [optional] 
-**CertificationName** | Pointer to **string** | the certification item name | [optional] 
-**SignedDate** | Pointer to **string** | the date ceritification was signed | [optional] 
-**Certifiers** | Pointer to [**[]CertifierResponse**](CertifierResponse) | this field is deprecated and may go away | [optional] 
-**Reviewers** | Pointer to [**[]CertifierResponse**](CertifierResponse) | The list of identities who review this certification | [optional] 
-**Signer** | Pointer to [**CertifierResponse**](CertifierResponse) |  | [optional] 
-**Account** | Pointer to [**AccountStatusChangedAccount**](AccountStatusChangedAccount) |  | [optional] 
-**StatusChange** | Pointer to [**AccountStatusChangedStatusChange**](AccountStatusChangedStatusChange) |  | [optional] 
+**AccessItem** |  Pointer to [**AccessItemAssociatedAccessItem**](access-item-associated-access-item) |  | [optional] 
+**IdentityId** |  Pointer to **string** | the identity id | [optional] 
+**EventType** |  Pointer to **string** | the event type | [optional] 
+**Dt** |  Pointer to **string** | the date of event | [optional] 
+**GovernanceEvent** |  Pointer to [**CorrelatedGovernanceEvent**](correlated-governance-event) |  | [optional] 
+**Changes** |  Pointer to [**[]AttributeChange**](attribute-change) |  | [optional] 
+**AccessRequest** |  Pointer to [**AccessRequestResponse**](access-request-response) |  | [optional] 
+**CertificationId** |  Pointer to **string** | the id of the certification item | [optional] 
+**CertificationName** |  Pointer to **string** | the certification item name | [optional] 
+**SignedDate** |  Pointer to **string** | the date ceritification was signed | [optional] 
+**Certifiers** |  Pointer to [**[]CertifierResponse**](certifier-response) | this field is deprecated and may go away | [optional] 
+**Reviewers** |  Pointer to [**[]CertifierResponse**](certifier-response) | The list of identities who review this certification | [optional] 
+**Signer** |  Pointer to [**CertifierResponse**](certifier-response) |  | [optional] 
+**Account** |  Pointer to [**AccountStatusChangedAccount**](account-status-changed-account) |  | [optional] 
+**StatusChange** |  Pointer to [**AccountStatusChangedStatusChange**](account-status-changed-status-change) |  | [optional] 
 
 ## Methods
 

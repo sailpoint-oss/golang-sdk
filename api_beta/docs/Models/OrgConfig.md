@@ -15,16 +15,16 @@ tags: ['SDK', 'Software Development Kit', 'OrgConfig']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**OrgName** | Pointer to **string** | The name of the org. | [optional] 
-**TimeZone** | Pointer to **string** | The selected time zone which is to be used for the org.  This directly affects when scheduled tasks are executed.  Valid options can be found at /beta/org-config/valid-time-zones | [optional] 
-**LcsChangeHonorsSourceEnableFeature** | Pointer to **bool** | Flag to determine whether the LCS_CHANGE_HONORS_SOURCE_ENABLE_FEATURE flag is enabled for the current org. | [optional] 
-**ArmCustomerId** | Pointer to **NullableString** | ARM Customer ID | [optional] 
-**ArmSapSystemIdMappings** | Pointer to **NullableString** | A list of IDN::sourceId to ARM::systemId mappings. | [optional] 
-**ArmAuth** | Pointer to **NullableString** | ARM authentication string | [optional] 
-**ArmDb** | Pointer to **NullableString** | ARM database name | [optional] 
-**ArmSsoUrl** | Pointer to **NullableString** | ARM SSO URL | [optional] 
-**IaiEnableCertificationRecommendations** | Pointer to **bool** | Flag to determine whether IAI Certification Recommendations are enabled for the current org | [optional] 
-**SodReportConfigs** | Pointer to [**[]ReportConfigDTO**](ReportConfigDTO) |  | [optional] 
+**OrgName** |  Pointer to **string** | The name of the org. | [optional] 
+**TimeZone** |  Pointer to **string** | The selected time zone which is to be used for the org.  This directly affects when scheduled tasks are executed.  Valid options can be found at /beta/org-config/valid-time-zones | [optional] 
+**LcsChangeHonorsSourceEnableFeature** |  Pointer to **bool** | Flag to determine whether the LCS_CHANGE_HONORS_SOURCE_ENABLE_FEATURE flag is enabled for the current org. | [optional] 
+**ArmCustomerId** |  Pointer to **NullableString** | ARM Customer ID | [optional] 
+**ArmSapSystemIdMappings** |  Pointer to **NullableString** | A list of IDN::sourceId to ARM::systemId mappings. | [optional] 
+**ArmAuth** |  Pointer to **NullableString** | ARM authentication string | [optional] 
+**ArmDb** |  Pointer to **NullableString** | ARM database name | [optional] 
+**ArmSsoUrl** |  Pointer to **NullableString** | ARM SSO URL | [optional] 
+**IaiEnableCertificationRecommendations** |  Pointer to **bool** | Flag to determine whether IAI Certification Recommendations are enabled for the current org | [optional] 
+**SodReportConfigs** |  Pointer to [**[]ReportConfigDTO**](report-config-dto) |  | [optional] 
 
 ## Methods
 

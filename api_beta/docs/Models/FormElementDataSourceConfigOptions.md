@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'FormElementDataSourceConfigOptions']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Label** | Pointer to **string** | Label is the main label to display to the user when selecting this option | [optional] 
-**SubLabel** | Pointer to **string** | SubLabel is the sub label to display below the label in diminutive styling to help describe or identify this option | [optional] 
-**Value** | Pointer to **string** | Value is the value to save as an entry when the user selects this option | [optional] 
+**Label** |  Pointer to **string** | Label is the main label to display to the user when selecting this option | [optional] 
+**SubLabel** |  Pointer to **string** | SubLabel is the sub label to display below the label in diminutive styling to help describe or identify this option | [optional] 
+**Value** |  Pointer to **string** | Value is the value to save as an entry when the user selects this option | [optional] 
 
 ## Methods
 

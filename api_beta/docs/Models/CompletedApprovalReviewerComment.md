@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'CompletedApprovalReviewerComment']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Comment** | Pointer to **NullableString** | Comment content. | [optional] 
-**Author** | Pointer to [**CommentDtoAuthor**](CommentDtoAuthor) |  | [optional] 
-**Created** | Pointer to **time.Time** | Date and time comment was created. | [optional] 
+**Comment** |  Pointer to **NullableString** | Comment content. | [optional] 
+**Author** |  Pointer to [**CommentDtoAuthor**](comment-dto-author) |  | [optional] 
+**Created** |  Pointer to **time.Time** | Date and time comment was created. | [optional] 
 
 ## Methods
 

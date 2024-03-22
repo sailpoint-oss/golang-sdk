@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'ImportEntitlementCsvRequest']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CsvFile** | ***os.File** |  | 
+**CsvFile** |  ***os.File** |  | 
 
 ## Methods
 

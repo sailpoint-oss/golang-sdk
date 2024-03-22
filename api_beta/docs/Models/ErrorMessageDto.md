@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'ErrorMessageDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Locale** | Pointer to **NullableString** | The locale for the message text, a BCP 47 language tag. | [optional] 
-**LocaleOrigin** | Pointer to [**NullableLocaleOrigin**](LocaleOrigin) |  | [optional] 
-**Text** | Pointer to **string** | Actual text of the error message in the indicated locale. | [optional] 
+**Locale** |  Pointer to **NullableString** | The locale for the message text, a BCP 47 language tag. | [optional] 
+**LocaleOrigin** |  Pointer to [**NullableLocaleOrigin**](locale-origin) |  | [optional] 
+**Text** |  Pointer to **string** | Actual text of the error message in the indicated locale. | [optional] 
 
 ## Methods
 

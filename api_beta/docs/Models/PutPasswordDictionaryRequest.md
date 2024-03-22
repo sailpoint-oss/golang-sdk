@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'PutPasswordDictionaryRequest']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**File** | Pointer to ***os.File** |  | [optional] 
+**File** |  Pointer to ***os.File** |  | [optional] 
 
 ## Methods
 

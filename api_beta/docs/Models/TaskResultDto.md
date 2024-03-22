@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'TaskResultDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | Task result DTO type. | [optional] 
-**Id** | Pointer to **string** | Task result ID. | [optional] 
-**Name** | Pointer to **NullableString** | Task result display name. | [optional] 
+**Type** |  Pointer to **string** | Task result DTO type. | [optional] 
+**Id** |  Pointer to **string** | Task result ID. | [optional] 
+**Name** |  Pointer to **NullableString** | Task result display name. | [optional] 
 
 ## Methods
 

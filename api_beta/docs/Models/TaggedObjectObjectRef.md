@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'TaggedObjectObjectRef']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | DTO type | [optional] 
-**Id** | Pointer to **string** | ID of the object to which this reference applies | [optional] 
-**Name** | Pointer to **NullableString** | Human-readable display name of the object to which this reference applies | [optional] 
+**Type** |  Pointer to **string** | DTO type | [optional] 
+**Id** |  Pointer to **string** | ID of the object to which this reference applies | [optional] 
+**Name** |  Pointer to **NullableString** | Human-readable display name of the object to which this reference applies | [optional] 
 
 ## Methods
 

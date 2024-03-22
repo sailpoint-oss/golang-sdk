@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'NotificationTemplateContext']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Attributes** | Pointer to **map[string]interface{}** | A JSON object that stores the context. | [optional] 
-**Created** | Pointer to **time.Time** | When the global context was created | [optional] 
-**Modified** | Pointer to **time.Time** | When the global context was last modified | [optional] 
+**Attributes** |  Pointer to **map[string]interface{}** | A JSON object that stores the context. | [optional] 
+**Created** |  Pointer to **time.Time** | When the global context was created | [optional] 
+**Modified** |  Pointer to **time.Time** | When the global context was last modified | [optional] 
 
 ## Methods
 

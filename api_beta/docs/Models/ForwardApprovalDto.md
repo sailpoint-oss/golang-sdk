@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'ForwardApprovalDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**NewOwnerId** | **string** | The Id of the new owner | 
-**Comment** | **string** | The comment provided by the forwarder | 
+**NewOwnerId** |  **string** | The Id of the new owner | 
+**Comment** |  **string** | The comment provided by the forwarder | 
 
 ## Methods
 

@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'ExceptionAccessCriteria']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**LeftCriteria** | Pointer to [**ExceptionCriteria**](ExceptionCriteria) |  | [optional] 
-**RightCriteria** | Pointer to [**ExceptionCriteria**](ExceptionCriteria) |  | [optional] 
+**LeftCriteria** |  Pointer to [**ExceptionCriteria**](exception-criteria) |  | [optional] 
+**RightCriteria** |  Pointer to [**ExceptionCriteria**](exception-criteria) |  | [optional] 
 
 ## Methods
 

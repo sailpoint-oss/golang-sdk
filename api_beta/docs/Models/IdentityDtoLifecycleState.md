@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'IdentityDtoLifecycleState']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**StateName** | **string** | The name of the lifecycle state | 
-**ManuallyUpdated** | **bool** | Whether the lifecycle state has been manually or automatically set | 
+**StateName** |  **string** | The name of the lifecycle state | 
+**ManuallyUpdated** |  **bool** | Whether the lifecycle state has been manually or automatically set | 
 
 ## Methods
 

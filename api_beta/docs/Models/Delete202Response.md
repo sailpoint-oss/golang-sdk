@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'Delete202Response']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | The type of object being referenced | [optional] 
-**Id** | Pointer to **string** | ID of the task result | [optional] 
-**Name** | Pointer to **string** | Human-readable display name of the task result (should be null/empty) | [optional] 
+**Type** |  Pointer to **string** | The type of object being referenced | [optional] 
+**Id** |  Pointer to **string** | ID of the task result | [optional] 
+**Name** |  Pointer to **string** | Human-readable display name of the task result (should be null/empty) | [optional] 
 
 ## Methods
 

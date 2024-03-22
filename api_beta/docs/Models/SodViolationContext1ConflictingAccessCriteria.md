@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'SodViolationContext1ConflictingAccess
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**LeftCriteria** | Pointer to [**SodViolationContext1ConflictingAccessCriteriaLeftCriteria**](SodViolationContext1ConflictingAccessCriteriaLeftCriteria) |  | [optional] 
-**RightCriteria** | Pointer to [**SodViolationContext1ConflictingAccessCriteriaLeftCriteria**](SodViolationContext1ConflictingAccessCriteriaLeftCriteria) |  | [optional] 
+**LeftCriteria** |  Pointer to [**SodViolationContext1ConflictingAccessCriteriaLeftCriteria**](sod-violation-context1-conflicting-access-criteria-left-criteria) |  | [optional] 
+**RightCriteria** |  Pointer to [**SodViolationContext1ConflictingAccessCriteriaLeftCriteria**](sod-violation-context1-conflicting-access-criteria-left-criteria) |  | [optional] 
 
 ## Methods
 

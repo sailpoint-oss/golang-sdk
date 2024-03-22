@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'RoleMiningSessionStatus']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**State** | Pointer to [**RoleMiningSessionState**](RoleMiningSessionState) |  | [optional] 
+**State** |  Pointer to [**RoleMiningSessionState**](role-mining-session-state) |  | [optional] 
 
 ## Methods
 

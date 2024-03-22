@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'IdentityEntities']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IdentityEntity** | Pointer to [**IdentityEntitiesIdentityEntity**](IdentityEntitiesIdentityEntity) |  | [optional] 
+**IdentityEntity** |  Pointer to [**IdentityEntitiesIdentityEntity**](identity-entities-identity-entity) |  | [optional] 
 
 ## Methods
 

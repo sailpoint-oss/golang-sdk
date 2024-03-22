@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CompleteCampaignOptions']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AutoCompleteAction** | Pointer to **string** | Determines whether to auto-approve(APPROVE) or auto-revoke(REVOKE) upon campaign completion. | [optional] [default to "APPROVE"]
+**AutoCompleteAction** |  Pointer to **string** | Determines whether to auto-approve(APPROVE) or auto-revoke(REVOKE) upon campaign completion. | [optional] [default to "APPROVE"]
 
 ## Methods
 

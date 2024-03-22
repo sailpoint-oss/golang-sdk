@@ -15,13 +15,13 @@ tags: ['SDK', 'Software Development Kit', 'ApprovalItems']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | The approval item&#39;s ID | [optional] 
-**Account** | Pointer to **string** | The account referenced by the approval item | [optional] 
-**Application** | Pointer to **string** | The name of the application/source | [optional] 
-**Name** | Pointer to **string** | The attribute&#39;s name | [optional] 
-**Operation** | Pointer to **string** | The attribute&#39;s operation | [optional] 
-**Value** | Pointer to **string** | The attribute&#39;s value | [optional] 
-**State** | Pointer to [**WorkItemState**](WorkItemState) |  | [optional] 
+**Id** |  Pointer to **string** | The approval item&#39;s ID | [optional] 
+**Account** |  Pointer to **string** | The account referenced by the approval item | [optional] 
+**Application** |  Pointer to **string** | The name of the application/source | [optional] 
+**Name** |  Pointer to **string** | The attribute&#39;s name | [optional] 
+**Operation** |  Pointer to **string** | The attribute&#39;s operation | [optional] 
+**Value** |  Pointer to **string** | The attribute&#39;s value | [optional] 
+**State** |  Pointer to [**WorkItemState**](work-item-state) |  | [optional] 
 
 ## Methods
 

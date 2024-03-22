@@ -15,11 +15,11 @@ tags: ['SDK', 'Software Development Kit', 'AccessItemRoleResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessType** | Pointer to **string** | the access item type. role in this case | [optional] 
-**Id** | Pointer to **string** | the access item id | [optional] 
-**DisplayName** | Pointer to **string** | the role display name | [optional] 
-**Description** | Pointer to **string** | the description for the role | [optional] 
-**SourceName** | Pointer to **string** | the associated source name if it exists | [optional] 
+**AccessType** |  Pointer to **string** | the access item type. role in this case | [optional] 
+**Id** |  Pointer to **string** | the access item id | [optional] 
+**DisplayName** |  Pointer to **string** | the role display name | [optional] 
+**Description** |  Pointer to **string** | the description for the role | [optional] 
+**SourceName** |  Pointer to **string** | the associated source name if it exists | [optional] 
 
 ## Methods
 

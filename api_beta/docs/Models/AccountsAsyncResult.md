@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'AccountsAsyncResult']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | id of the task | 
+**Id** |  **string** | id of the task | 
 
 ## Methods
 

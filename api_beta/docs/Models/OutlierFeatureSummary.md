@@ -15,14 +15,14 @@ tags: ['SDK', 'Software Development Kit', 'OutlierFeatureSummary']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ContributingFeatureName** | Pointer to **string** | Contributing feature name | [optional] 
-**IdentityOutlierDisplayName** | Pointer to **string** | Identity display name | [optional] 
-**OutlierFeatureDisplayValues** | Pointer to [**[]OutlierFeatureSummaryOutlierFeatureDisplayValuesInner**](OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) |  | [optional] 
-**FeatureDefinition** | Pointer to **string** | Definition of the feature | [optional] 
-**FeatureExplanation** | Pointer to **string** | Detailed explanation of the feature | [optional] 
-**PeerDisplayName** | Pointer to **string** | outlier&#39;s peer identity display name | [optional] 
-**PeerIdentityId** | Pointer to **string** | outlier&#39;s peer identity id | [optional] 
-**AccessItemReference** | Pointer to **map[string]interface{}** | Access Item reference | [optional] 
+**ContributingFeatureName** |  Pointer to **string** | Contributing feature name | [optional] 
+**IdentityOutlierDisplayName** |  Pointer to **string** | Identity display name | [optional] 
+**OutlierFeatureDisplayValues** |  Pointer to [**[]OutlierFeatureSummaryOutlierFeatureDisplayValuesInner**](outlier-feature-summary-outlier-feature-display-values-inner) |  | [optional] 
+**FeatureDefinition** |  Pointer to **string** | Definition of the feature | [optional] 
+**FeatureExplanation** |  Pointer to **string** | Detailed explanation of the feature | [optional] 
+**PeerDisplayName** |  Pointer to **string** | outlier&#39;s peer identity display name | [optional] 
+**PeerIdentityId** |  Pointer to **string** | outlier&#39;s peer identity id | [optional] 
+**AccessItemReference** |  Pointer to **map[string]interface{}** | Access Item reference | [optional] 
 
 ## Methods
 

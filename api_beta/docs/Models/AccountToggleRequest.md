@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'AccountToggleRequest']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ExternalVerificationId** | Pointer to **string** | If set, an external process validates that the user wants to proceed with this request. | [optional] 
-**ForceProvisioning** | Pointer to **bool** | If set, provisioning updates the account attribute at the source.   This option is used when the account is not synced to ensure the attribute is updated. | [optional] 
+**ExternalVerificationId** |  Pointer to **string** | If set, an external process validates that the user wants to proceed with this request. | [optional] 
+**ForceProvisioning** |  Pointer to **bool** | If set, provisioning updates the account attribute at the source.   This option is used when the account is not synced to ensure the attribute is updated. | [optional] 
 
 ## Methods
 

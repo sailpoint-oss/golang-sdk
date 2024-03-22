@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'FullcampaignAllOfSourceOwnerCampaignI
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SourceIds** | Pointer to **[]string** | The list of sources to be included in the campaign. | [optional] 
+**SourceIds** |  Pointer to **[]string** | The list of sources to be included in the campaign. | [optional] 
 
 ## Methods
 

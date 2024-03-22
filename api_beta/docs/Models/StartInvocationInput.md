@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'StartInvocationInput']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TriggerId** | Pointer to **string** | Trigger ID | [optional] 
-**Input** | Pointer to **map[string]interface{}** | Trigger input payload. Its schema is defined in the trigger definition. | [optional] 
-**ContentJson** | Pointer to **map[string]interface{}** | JSON map of invocation metadata | [optional] 
+**TriggerId** |  Pointer to **string** | Trigger ID | [optional] 
+**Input** |  Pointer to **map[string]interface{}** | Trigger input payload. Its schema is defined in the trigger definition. | [optional] 
+**ContentJson** |  Pointer to **map[string]interface{}** | JSON map of invocation metadata | [optional] 
 
 ## Methods
 

@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'IdentitySnapshotSummaryResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Snapshot** | Pointer to **string** | the date when the identity record was created | [optional] 
+**Snapshot** |  Pointer to **string** | the date when the identity record was created | [optional] 
 
 ## Methods
 

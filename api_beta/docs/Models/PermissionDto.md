@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'PermissionDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Rights** | Pointer to **[]string** | All the rights (e.g. actions) that this permission allows on the target | [optional] [readonly] 
-**Target** | Pointer to **string** | The target the permission would grants rights on. | [optional] [readonly] 
+**Rights** |  Pointer to **[]string** | All the rights (e.g. actions) that this permission allows on the target | [optional] [readonly] 
+**Target** |  Pointer to **string** | The target the permission would grants rights on. | [optional] [readonly] 
 
 ## Methods
 

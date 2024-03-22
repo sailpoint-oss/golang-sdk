@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CampaignEnded']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Campaign** | [**CampaignEndedCampaign**](CampaignEndedCampaign) |  | 
+**Campaign** |  [**CampaignEndedCampaign**](campaign-ended-campaign) |  | 
 
 ## Methods
 

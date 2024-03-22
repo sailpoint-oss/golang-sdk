@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'AccessRecommendationMessage']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Interpretation** | Pointer to **string** | Information about why the access item was recommended. | [optional] 
+**Interpretation** |  Pointer to **string** | Information about why the access item was recommended. | [optional] 
 
 ## Methods
 

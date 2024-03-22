@@ -15,12 +15,12 @@ tags: ['SDK', 'Software Development Kit', 'NativeChangeDetectionConfig']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Enabled** | Pointer to **bool** | A flag indicating if Native Change Detection is enabled for a source. | [optional] [default to false]
-**Operations** | Pointer to **[]string** | Operation types for which Native Change Detection is enabled for a source. | [optional] 
-**AllEntitlements** | Pointer to **bool** | A flag indicating that all entitlements participate in Native Change Detection. | [optional] [default to false]
-**AllNonEntitlementAttributes** | Pointer to **bool** | A flag indicating that all non-entitlement account attributes participate in Native Change Detection. | [optional] [default to false]
-**SelectedEntitlements** | Pointer to **[]string** | If allEntitlements flag is off this field lists entitlements that participate in Native Change Detection. | [optional] 
-**SelectedNonEntitlementAttributes** | Pointer to **[]string** | If allNonEntitlementAttributes flag is off this field lists non-entitlement account attributes that participate in Native Change Detection. | [optional] 
+**Enabled** |  Pointer to **bool** | A flag indicating if Native Change Detection is enabled for a source. | [optional] [default to false]
+**Operations** |  Pointer to **[]string** | Operation types for which Native Change Detection is enabled for a source. | [optional] 
+**AllEntitlements** |  Pointer to **bool** | A flag indicating that all entitlements participate in Native Change Detection. | [optional] [default to false]
+**AllNonEntitlementAttributes** |  Pointer to **bool** | A flag indicating that all non-entitlement account attributes participate in Native Change Detection. | [optional] [default to false]
+**SelectedEntitlements** |  Pointer to **[]string** | If allEntitlements flag is off this field lists entitlements that participate in Native Change Detection. | [optional] 
+**SelectedNonEntitlementAttributes** |  Pointer to **[]string** | If allNonEntitlementAttributes flag is off this field lists non-entitlement account attributes that participate in Native Change Detection. | [optional] 
 
 ## Methods
 

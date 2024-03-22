@@ -15,11 +15,11 @@ tags: ['SDK', 'Software Development Kit', 'FormDefinitionDynamicSchemaRequest']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Attributes** | Pointer to [**FormDefinitionDynamicSchemaRequestAttributes**](FormDefinitionDynamicSchemaRequestAttributes) |  | [optional] 
-**Description** | Pointer to **string** | Description is the form definition dynamic schema description text | [optional] 
-**Id** | Pointer to **string** | ID is a unique identifier | [optional] 
-**Type** | Pointer to **string** | Type is the form definition dynamic schema type | [optional] 
-**VersionNumber** | Pointer to **int64** | VersionNumber is the form definition dynamic schema version number | [optional] 
+**Attributes** |  Pointer to [**FormDefinitionDynamicSchemaRequestAttributes**](form-definition-dynamic-schema-request-attributes) |  | [optional] 
+**Description** |  Pointer to **string** | Description is the form definition dynamic schema description text | [optional] 
+**Id** |  Pointer to **string** | ID is a unique identifier | [optional] 
+**Type** |  Pointer to **string** | Type is the form definition dynamic schema type | [optional] 
+**VersionNumber** |  Pointer to **int64** | VersionNumber is the form definition dynamic schema version number | [optional] 
 
 ## Methods
 

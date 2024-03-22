@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'AccountUncorrelated']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Identity** | [**AccountUncorrelatedIdentity**](AccountUncorrelatedIdentity) |  | 
-**Source** | [**AccountUncorrelatedSource**](AccountUncorrelatedSource) |  | 
-**Account** | [**AccountUncorrelatedAccount**](AccountUncorrelatedAccount) |  | 
-**EntitlementCount** | Pointer to **int32** | The number of entitlements associated with this account. | [optional] 
+**Identity** |  [**AccountUncorrelatedIdentity**](account-uncorrelated-identity) |  | 
+**Source** |  [**AccountUncorrelatedSource**](account-uncorrelated-source) |  | 
+**Account** |  [**AccountUncorrelatedAccount**](account-uncorrelated-account) |  | 
+**EntitlementCount** |  Pointer to **int32** | The number of entitlements associated with this account. | [optional] 
 
 ## Methods
 

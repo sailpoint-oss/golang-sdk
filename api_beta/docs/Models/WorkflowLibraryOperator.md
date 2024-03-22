@@ -15,11 +15,11 @@ tags: ['SDK', 'Software Development Kit', 'WorkflowLibraryOperator']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Operator ID. | [optional] 
-**Name** | Pointer to **string** | Operator friendly name | [optional] 
-**Type** | Pointer to **string** | Operator type | [optional] 
-**Description** | Pointer to **string** | Description of the operator | [optional] 
-**FormFields** | Pointer to [**[]WorkflowLibraryFormFields**](WorkflowLibraryFormFields) | One or more inputs that the operator accepts | [optional] 
+**Id** |  Pointer to **string** | Operator ID. | [optional] 
+**Name** |  Pointer to **string** | Operator friendly name | [optional] 
+**Type** |  Pointer to **string** | Operator type | [optional] 
+**Description** |  Pointer to **string** | Description of the operator | [optional] 
+**FormFields** |  Pointer to [**[]WorkflowLibraryFormFields**](workflow-library-form-fields) | One or more inputs that the operator accepts | [optional] 
 
 ## Methods
 

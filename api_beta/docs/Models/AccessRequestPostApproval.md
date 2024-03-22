@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'AccessRequestPostApproval']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessRequestId** | **string** | The unique ID of the access request. | 
-**RequestedFor** | [**[]AccessItemRequestedForDto**](AccessItemRequestedForDto) | Identities access was requested for. | 
-**RequestedItemsStatus** | [**[]AccessRequestPostApprovalRequestedItemsStatusInner**](AccessRequestPostApprovalRequestedItemsStatusInner) | Details on the outcome of each access item. | 
-**RequestedBy** | [**AccessItemRequesterDto**](AccessItemRequesterDto) |  | 
+**AccessRequestId** |  **string** | The unique ID of the access request. | 
+**RequestedFor** |  [**[]AccessItemRequestedForDto**](access-item-requested-for-dto) | Identities access was requested for. | 
+**RequestedItemsStatus** |  [**[]AccessRequestPostApprovalRequestedItemsStatusInner**](access-request-post-approval-requested-items-status-inner) | Details on the outcome of each access item. | 
+**RequestedBy** |  [**AccessItemRequesterDto**](access-item-requester-dto) |  | 
 
 ## Methods
 

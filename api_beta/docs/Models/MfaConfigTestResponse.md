@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'MfaConfigTestResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**State** | Pointer to **string** | The configuration test result. | [optional] [readonly] 
-**Error** | Pointer to **string** | The error message to indicate the failure of configuration test. | [optional] [readonly] 
+**State** |  Pointer to **string** | The configuration test result. | [optional] [readonly] 
+**Error** |  Pointer to **string** | The error message to indicate the failure of configuration test. | [optional] [readonly] 
 
 ## Methods
 

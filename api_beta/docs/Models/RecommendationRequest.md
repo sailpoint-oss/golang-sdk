@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'RecommendationRequest']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IdentityId** | Pointer to **string** | The identity ID | [optional] 
-**Item** | Pointer to [**AccessItemRef**](AccessItemRef) |  | [optional] 
+**IdentityId** |  Pointer to **string** | The identity ID | [optional] 
+**Item** |  Pointer to [**AccessItemRef**](access-item-ref) |  | [optional] 
 
 ## Methods
 

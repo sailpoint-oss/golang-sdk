@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'SourceCluster']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | The type of object being referenced | 
-**Id** | **string** | ID of the cluster | 
-**Name** | **string** | Human-readable display name of the cluster | 
+**Type** |  **string** | The type of object being referenced | 
+**Id** |  **string** | ID of the cluster | 
+**Name** |  **string** | Human-readable display name of the cluster | 
 
 ## Methods
 

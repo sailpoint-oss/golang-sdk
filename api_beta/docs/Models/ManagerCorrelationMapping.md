@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'ManagerCorrelationMapping']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccountAttribute** | Pointer to **string** | Name of the attribute to use for manager correlation. The value found on the account attribute will be used to lookup the manager&#39;s identity. | [optional] 
-**IdentityAttribute** | Pointer to **string** | Name of the identity attribute to search when trying to find a manager using the value from the accountAttribute. | [optional] 
+**AccountAttribute** |  Pointer to **string** | Name of the attribute to use for manager correlation. The value found on the account attribute will be used to lookup the manager&#39;s identity. | [optional] 
+**IdentityAttribute** |  Pointer to **string** | Name of the identity attribute to search when trying to find a manager using the value from the accountAttribute. | [optional] 
 
 ## Methods
 

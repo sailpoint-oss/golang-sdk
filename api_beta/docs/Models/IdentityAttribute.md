@@ -15,14 +15,14 @@ tags: ['SDK', 'Software Development Kit', 'IdentityAttribute']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | The technical name of the identity attribute | [optional] 
-**DisplayName** | Pointer to **string** | The business-friendly name of the identity attribute | [optional] 
-**Standard** | Pointer to **bool** | Shows if the attribute is &#39;standard&#39; or default | [optional] [default to false]
-**Type** | Pointer to **string** | The type of the identity attribute | [optional] 
-**Multi** | Pointer to **bool** | Shows if the identity attribute is multi-valued | [optional] [default to false]
-**Searchable** | Pointer to **bool** | Shows if the identity attribute is searchable | [optional] [default to false]
-**System** | Pointer to **bool** | Shows this is &#39;system&#39; identity attribute that does not have a source and is not configurable. | [optional] [default to false]
-**Sources** | Pointer to [**[]Source1**](Source1) | List of sources for an attribute, this specifies how the value of the rule is derived | [optional] 
+**Name** |  Pointer to **string** | The technical name of the identity attribute | [optional] 
+**DisplayName** |  Pointer to **string** | The business-friendly name of the identity attribute | [optional] 
+**Standard** |  Pointer to **bool** | Shows if the attribute is &#39;standard&#39; or default | [optional] [default to false]
+**Type** |  Pointer to **string** | The type of the identity attribute | [optional] 
+**Multi** |  Pointer to **bool** | Shows if the identity attribute is multi-valued | [optional] [default to false]
+**Searchable** |  Pointer to **bool** | Shows if the identity attribute is searchable | [optional] [default to false]
+**System** |  Pointer to **bool** | Shows this is &#39;system&#39; identity attribute that does not have a source and is not configurable. | [optional] [default to false]
+**Sources** |  Pointer to [**[]Source1**](source1) | List of sources for an attribute, this specifies how the value of the rule is derived | [optional] 
 
 ## Methods
 

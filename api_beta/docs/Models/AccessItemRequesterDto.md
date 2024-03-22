@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'AccessItemRequesterDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | Access item requester&#39;s DTO type. | [optional] 
-**Id** | Pointer to **string** | Access item requester&#39;s identity ID. | [optional] 
-**Name** | Pointer to **string** | Access item owner&#39;s human-readable display name. | [optional] 
+**Type** |  Pointer to **string** | Access item requester&#39;s DTO type. | [optional] 
+**Id** |  Pointer to **string** | Access item requester&#39;s identity ID. | [optional] 
+**Name** |  Pointer to **string** | Access item owner&#39;s human-readable display name. | [optional] 
 
 ## Methods
 

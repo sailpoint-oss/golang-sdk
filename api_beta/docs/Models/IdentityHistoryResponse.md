@@ -15,12 +15,12 @@ tags: ['SDK', 'Software Development Kit', 'IdentityHistoryResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | the identity ID | [optional] 
-**DisplayName** | Pointer to **string** | the display name of the identity | [optional] 
-**Snapshot** | Pointer to **string** | the date when the identity record was created | [optional] 
-**DeletedDate** | Pointer to **string** | the date when the identity was deleted | [optional] 
-**AccessItemCount** | Pointer to **map[string]string** | A map containing the count of each access item | [optional] 
-**Attributes** | Pointer to **map[string]string** | A map containing the identity attributes | [optional] 
+**Id** |  Pointer to **string** | the identity ID | [optional] 
+**DisplayName** |  Pointer to **string** | the display name of the identity | [optional] 
+**Snapshot** |  Pointer to **string** | the date when the identity record was created | [optional] 
+**DeletedDate** |  Pointer to **string** | the date when the identity was deleted | [optional] 
+**AccessItemCount** |  Pointer to **map[string]string** | A map containing the count of each access item | [optional] 
+**Attributes** |  Pointer to **map[string]string** | A map containing the identity attributes | [optional] 
 
 ## Methods
 

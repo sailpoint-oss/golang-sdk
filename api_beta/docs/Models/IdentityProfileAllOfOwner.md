@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'IdentityProfileAllOfOwner']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | Type of the object to which this reference applies | [optional] 
-**Id** | Pointer to **string** | ID of the object to which this reference applies | [optional] 
-**Name** | Pointer to **string** | Human-readable display name of the object to which this reference applies | [optional] 
+**Type** |  Pointer to **string** | Type of the object to which this reference applies | [optional] 
+**Id** |  Pointer to **string** | ID of the object to which this reference applies | [optional] 
+**Name** |  Pointer to **string** | Human-readable display name of the object to which this reference applies | [optional] 
 
 ## Methods
 

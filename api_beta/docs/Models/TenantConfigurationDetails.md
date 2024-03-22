@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'TenantConfigurationDetails']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Disabled** | Pointer to **NullableBool** | Flag to determine if Reassignment Configuration is enabled or disabled for a tenant.  When this flag is set to true, Reassignment Configuration is disabled. | [optional] [default to false]
+**Disabled** |  Pointer to **NullableBool** | Flag to determine if Reassignment Configuration is enabled or disabled for a tenant.  When this flag is set to true, Reassignment Configuration is disabled. | [optional] [default to false]
 
 ## Methods
 

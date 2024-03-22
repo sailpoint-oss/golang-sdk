@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'SourceCreatedActor']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | DTO type of identity who created the source. | 
-**Id** | **string** | ID of identity who created the source. | 
-**Name** | **string** | Display name of identity who created the source. | 
+**Type** |  **string** | DTO type of identity who created the source. | 
+**Id** |  **string** | ID of identity who created the source. | 
+**Name** |  **string** | Display name of identity who created the source. | 
 
 ## Methods
 

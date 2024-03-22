@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'CompleteInvocationInput']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**LocalizedError** | Pointer to [**LocalizedMessage**](LocalizedMessage) |  | [optional] 
-**Output** | Pointer to **map[string]interface{}** | Trigger output that completed the invocation. Its schema is defined in the trigger definition. | [optional] 
+**LocalizedError** |  Pointer to [**LocalizedMessage**](localized-message) |  | [optional] 
+**Output** |  Pointer to **map[string]interface{}** | Trigger output that completed the invocation. Its schema is defined in the trigger definition. | [optional] 
 
 ## Methods
 

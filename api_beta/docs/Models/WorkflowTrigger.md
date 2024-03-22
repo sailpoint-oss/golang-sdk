@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'WorkflowTrigger']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | The trigger type | 
-**Attributes** | **map[string]interface{}** | Workflow Trigger Attributes. | 
+**Type** |  **string** | The trigger type | 
+**Attributes** |  **map[string]interface{}** | Workflow Trigger Attributes. | 
 
 ## Methods
 

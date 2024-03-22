@@ -15,14 +15,14 @@ tags: ['SDK', 'Software Development Kit', 'IdentityCertified']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CertificationId** | Pointer to **string** | the id of the certification item | [optional] 
-**CertificationName** | Pointer to **string** | the certification item name | [optional] 
-**SignedDate** | Pointer to **string** | the date ceritification was signed | [optional] 
-**Certifiers** | Pointer to [**[]CertifierResponse**](CertifierResponse) | this field is deprecated and may go away | [optional] 
-**Reviewers** | Pointer to [**[]CertifierResponse**](CertifierResponse) | The list of identities who review this certification | [optional] 
-**Signer** | Pointer to [**CertifierResponse**](CertifierResponse) |  | [optional] 
-**EventType** | Pointer to **string** | the event type | [optional] 
-**Dt** | Pointer to **string** | the date of event | [optional] 
+**CertificationId** |  Pointer to **string** | the id of the certification item | [optional] 
+**CertificationName** |  Pointer to **string** | the certification item name | [optional] 
+**SignedDate** |  Pointer to **string** | the date ceritification was signed | [optional] 
+**Certifiers** |  Pointer to [**[]CertifierResponse**](certifier-response) | this field is deprecated and may go away | [optional] 
+**Reviewers** |  Pointer to [**[]CertifierResponse**](certifier-response) | The list of identities who review this certification | [optional] 
+**Signer** |  Pointer to [**CertifierResponse**](certifier-response) |  | [optional] 
+**EventType** |  Pointer to **string** | the event type | [optional] 
+**Dt** |  Pointer to **string** | the date of event | [optional] 
 
 ## Methods
 

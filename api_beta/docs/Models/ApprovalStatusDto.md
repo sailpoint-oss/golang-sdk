@@ -15,15 +15,15 @@ tags: ['SDK', 'Software Development Kit', 'ApprovalStatusDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Forwarded** | Pointer to **bool** | True if the request for this item was forwarded from one owner to another. | [optional] [default to false]
-**OriginalOwner** | Pointer to [**ApprovalStatusDtoOriginalOwner**](ApprovalStatusDtoOriginalOwner) |  | [optional] 
-**CurrentOwner** | Pointer to [**ApprovalStatusDtoCurrentOwner**](ApprovalStatusDtoCurrentOwner) |  | [optional] 
-**Modified** | Pointer to **NullableTime** | Time at which item was modified. | [optional] 
-**Status** | Pointer to [**ManualWorkItemState**](ManualWorkItemState) |  | [optional] 
-**Scheme** | Pointer to [**ApprovalScheme**](ApprovalScheme) |  | [optional] 
-**ErrorMessages** | Pointer to [**[]ErrorMessageDto**](ErrorMessageDto) | If the request failed, includes any error messages that were generated. | [optional] 
-**Comment** | Pointer to **NullableString** | Comment, if any, provided by the approver. | [optional] 
-**RemoveDate** | Pointer to **NullableTime** | The date the role or access profile is no longer assigned to the specified identity. | [optional] 
+**Forwarded** |  Pointer to **bool** | True if the request for this item was forwarded from one owner to another. | [optional] [default to false]
+**OriginalOwner** |  Pointer to [**ApprovalStatusDtoOriginalOwner**](approval-status-dto-original-owner) |  | [optional] 
+**CurrentOwner** |  Pointer to [**ApprovalStatusDtoCurrentOwner**](approval-status-dto-current-owner) |  | [optional] 
+**Modified** |  Pointer to **NullableTime** | Time at which item was modified. | [optional] 
+**Status** |  Pointer to [**ManualWorkItemState**](manual-work-item-state) |  | [optional] 
+**Scheme** |  Pointer to [**ApprovalScheme**](approval-scheme) |  | [optional] 
+**ErrorMessages** |  Pointer to [**[]ErrorMessageDto**](error-message-dto) | If the request failed, includes any error messages that were generated. | [optional] 
+**Comment** |  Pointer to **NullableString** | Comment, if any, provided by the approver. | [optional] 
+**RemoveDate** |  Pointer to **NullableTime** | The date the role or access profile is no longer assigned to the specified identity. | [optional] 
 
 ## Methods
 

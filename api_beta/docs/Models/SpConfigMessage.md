@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'SpConfigMessage']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | **string** | Message key. | 
-**Text** | **string** | Message text. | 
-**Details** | **map[string]map[string]interface{}** | Message details if any, in key:value pairs. | 
+**Key** |  **string** | Message key. | 
+**Text** |  **string** | Message text. | 
+**Details** |  **map[string]map[string]interface{}** | Message details if any, in key:value pairs. | 
 
 ## Methods
 

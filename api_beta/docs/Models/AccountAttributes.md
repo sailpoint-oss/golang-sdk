@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'AccountAttributes']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Attributes** | **map[string]interface{}** | The schema attribute values for the account | 
+**Attributes** |  **map[string]interface{}** | The schema attribute values for the account | 
 
 ## Methods
 

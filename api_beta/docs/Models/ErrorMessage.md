@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'ErrorMessage']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Locale** | Pointer to **string** | Locale is the current Locale | [optional] 
-**LocaleOrigin** | Pointer to **string** | LocaleOrigin holds possible values of how the locale was selected | [optional] 
-**Text** | Pointer to **string** | Text is the actual text of the error message | [optional] 
+**Locale** |  Pointer to **string** | Locale is the current Locale | [optional] 
+**LocaleOrigin** |  Pointer to **string** | LocaleOrigin holds possible values of how the locale was selected | [optional] 
+**Text** |  Pointer to **string** | Text is the actual text of the error message | [optional] 
 
 ## Methods
 

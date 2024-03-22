@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'AttrSyncSourceAttributeConfig']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** | Name of the identity attribute | 
-**DisplayName** | **string** | Display name of the identity attribute | 
-**Enabled** | **bool** | Determines whether or not the attribute is enabled for synchronization | 
-**Target** | **string** | Name of the source account attribute to which the identity attribute value will be synchronized if enabled | 
+**Name** |  **string** | Name of the identity attribute | 
+**DisplayName** |  **string** | Display name of the identity attribute | 
+**Enabled** |  **bool** | Determines whether or not the attribute is enabled for synchronization | 
+**Target** |  **string** | Name of the source account attribute to which the identity attribute value will be synchronized if enabled | 
 
 ## Methods
 

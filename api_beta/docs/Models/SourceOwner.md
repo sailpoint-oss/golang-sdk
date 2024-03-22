@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'SourceOwner']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | The type of object being referenced | [optional] 
-**Id** | Pointer to **string** | ID of the identity | [optional] 
-**Name** | Pointer to **string** | Human-readable display name of the identity | [optional] 
+**Type** |  Pointer to **string** | The type of object being referenced | [optional] 
+**Id** |  Pointer to **string** | ID of the identity | [optional] 
+**Name** |  Pointer to **string** | Human-readable display name of the identity | [optional] 
 
 ## Methods
 

@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'ExceptionCriteriaAccess']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to [**DtoType**](DtoType) |  | [optional] 
-**Id** | Pointer to **string** | ID of the object to which this reference applies | [optional] 
-**Name** | Pointer to **string** | Human-readable display name of the object to which this reference applies | [optional] 
-**Existing** | Pointer to **bool** | Whether the subject identity already had that access or not | [optional] 
+**Type** |  Pointer to [**DtoType**](dto-type) |  | [optional] 
+**Id** |  Pointer to **string** | ID of the object to which this reference applies | [optional] 
+**Name** |  Pointer to **string** | Human-readable display name of the object to which this reference applies | [optional] 
+**Existing** |  Pointer to **bool** | Whether the subject identity already had that access or not | [optional] 
 
 ## Methods
 

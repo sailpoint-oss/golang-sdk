@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'TestExternalExecuteWorkflow200Respons
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Payload** | Pointer to **map[string]interface{}** | The input that was received | [optional] 
+**Payload** |  Pointer to **map[string]interface{}** | The input that was received | [optional] 
 
 ## Methods
 

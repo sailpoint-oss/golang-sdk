@@ -15,12 +15,12 @@ tags: ['SDK', 'Software Development Kit', 'PasswordSyncGroup']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | ID of the sync group | [optional] 
-**Name** | Pointer to **string** | Name of the sync group | [optional] 
-**PasswordPolicyId** | Pointer to **string** | ID of the password policy | [optional] 
-**SourceIds** | Pointer to **[]string** | List of password managed sources IDs | [optional] 
-**Created** | Pointer to **NullableTime** | The date and time this sync group was created | [optional] 
-**Modified** | Pointer to **NullableTime** | The date and time this sync group was last modified | [optional] 
+**Id** |  Pointer to **string** | ID of the sync group | [optional] 
+**Name** |  Pointer to **string** | Name of the sync group | [optional] 
+**PasswordPolicyId** |  Pointer to **string** | ID of the password policy | [optional] 
+**SourceIds** |  Pointer to **[]string** | List of password managed sources IDs | [optional] 
+**Created** |  Pointer to **NullableTime** | The date and time this sync group was created | [optional] 
+**Modified** |  Pointer to **NullableTime** | The date and time this sync group was last modified | [optional] 
 
 ## Methods
 

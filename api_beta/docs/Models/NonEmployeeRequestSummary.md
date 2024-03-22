@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'NonEmployeeRequestSummary']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Approved** | Pointer to **float32** | The number of approved non-employee requests on all sources that *requested-for* user manages. | [optional] 
-**Rejected** | Pointer to **float32** | The number of rejected non-employee requests on all sources that *requested-for* user manages. | [optional] 
-**Pending** | Pointer to **float32** | The number of pending non-employee requests on all sources that *requested-for* user manages. | [optional] 
-**NonEmployeeCount** | Pointer to **float32** | The number of non-employee records on all sources that *requested-for* user manages. | [optional] 
+**Approved** |  Pointer to **float32** | The number of approved non-employee requests on all sources that *requested-for* user manages. | [optional] 
+**Rejected** |  Pointer to **float32** | The number of rejected non-employee requests on all sources that *requested-for* user manages. | [optional] 
+**Pending** |  Pointer to **float32** | The number of pending non-employee requests on all sources that *requested-for* user manages. | [optional] 
+**NonEmployeeCount** |  Pointer to **float32** | The number of non-employee records on all sources that *requested-for* user manages. | [optional] 
 
 ## Methods
 

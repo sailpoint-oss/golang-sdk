@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'FormElementPreviewRequest']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DataSource** | Pointer to [**FormElementDynamicDataSource**](FormElementDynamicDataSource) |  | [optional] 
+**DataSource** |  Pointer to [**FormElementDynamicDataSource**](form-element-dynamic-data-source) |  | [optional] 
 
 ## Methods
 

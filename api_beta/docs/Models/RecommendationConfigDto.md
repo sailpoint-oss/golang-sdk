@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'RecommendationConfigDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RecommenderFeatures** | Pointer to **[]string** | List of identity attributes to use for calculating certification recommendations | [optional] 
-**PeerGroupPercentageThreshold** | Pointer to **float32** | The percent value that the recommendation calculation must surpass to produce a YES recommendation | [optional] 
-**RunAutoSelectOnce** | Pointer to **bool** | If true, rulesRecommenderConfig will be refreshed with new programatically selected attribute and threshold values on the next pipeline run | [optional] [default to false]
-**OnlyTuneThreshold** | Pointer to **bool** | If true, rulesRecommenderConfig will be refreshed with new programatically selected threshold values on the next pipeline run | [optional] [default to false]
+**RecommenderFeatures** |  Pointer to **[]string** | List of identity attributes to use for calculating certification recommendations | [optional] 
+**PeerGroupPercentageThreshold** |  Pointer to **float32** | The percent value that the recommendation calculation must surpass to produce a YES recommendation | [optional] 
+**RunAutoSelectOnce** |  Pointer to **bool** | If true, rulesRecommenderConfig will be refreshed with new programatically selected attribute and threshold values on the next pipeline run | [optional] [default to false]
+**OnlyTuneThreshold** |  Pointer to **bool** | If true, rulesRecommenderConfig will be refreshed with new programatically selected threshold values on the next pipeline run | [optional] [default to false]
 
 ## Methods
 

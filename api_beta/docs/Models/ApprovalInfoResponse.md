@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'ApprovalInfoResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | the id of approver | [optional] 
-**Name** | Pointer to **string** | the name of approver | [optional] 
-**Status** | Pointer to **string** | the status of the approval request | [optional] 
+**Id** |  Pointer to **string** | the id of approver | [optional] 
+**Name** |  Pointer to **string** | the name of approver | [optional] 
+**Status** |  Pointer to **string** | the status of the approval request | [optional] 
 
 ## Methods
 

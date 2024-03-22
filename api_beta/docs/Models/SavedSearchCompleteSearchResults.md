@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'SavedSearchCompleteSearchResults']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Account** | Pointer to [**NullableSavedSearchCompleteSearchResultsAccount**](SavedSearchCompleteSearchResultsAccount) |  | [optional] 
-**Entitlement** | Pointer to [**NullableSavedSearchCompleteSearchResultsEntitlement**](SavedSearchCompleteSearchResultsEntitlement) |  | [optional] 
-**Identity** | Pointer to [**NullableSavedSearchCompleteSearchResultsIdentity**](SavedSearchCompleteSearchResultsIdentity) |  | [optional] 
+**Account** |  Pointer to [**NullableSavedSearchCompleteSearchResultsAccount**](saved-search-complete-search-results-account) |  | [optional] 
+**Entitlement** |  Pointer to [**NullableSavedSearchCompleteSearchResultsEntitlement**](saved-search-complete-search-results-entitlement) |  | [optional] 
+**Identity** |  Pointer to [**NullableSavedSearchCompleteSearchResultsIdentity**](saved-search-complete-search-results-identity) |  | [optional] 
 
 ## Methods
 

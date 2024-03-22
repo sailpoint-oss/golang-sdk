@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'IdentityAttributesChangedIdentity']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | DTO type of identity whose attributes changed. | 
-**Id** | **string** | ID of identity whose attributes changed. | 
-**Name** | **string** | Display name of identity whose attributes changed. | 
+**Type** |  **string** | DTO type of identity whose attributes changed. | 
+**Id** |  **string** | ID of identity whose attributes changed. | 
+**Name** |  **string** | Display name of identity whose attributes changed. | 
 
 ## Methods
 

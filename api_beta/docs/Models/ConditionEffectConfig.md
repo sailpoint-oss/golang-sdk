@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'ConditionEffectConfig']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DefaultValueLabel** | Pointer to **string** | Effect type&#39;s label. | [optional] 
-**Element** | Pointer to **string** | Element&#39;s identifier. | [optional] 
+**DefaultValueLabel** |  Pointer to **string** | Effect type&#39;s label. | [optional] 
+**Element** |  Pointer to **string** | Element&#39;s identifier. | [optional] 
 
 ## Methods
 

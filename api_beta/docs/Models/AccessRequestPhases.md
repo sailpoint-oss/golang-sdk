@@ -15,12 +15,12 @@ tags: ['SDK', 'Software Development Kit', 'AccessRequestPhases']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Started** | Pointer to **time.Time** | The time that this phase started. | [optional] 
-**Finished** | Pointer to **NullableTime** | The time that this phase finished. | [optional] 
-**Name** | Pointer to **string** | The name of this phase. | [optional] 
-**State** | Pointer to **string** | The state of this phase. | [optional] 
-**Result** | Pointer to **NullableString** | The state of this phase. | [optional] 
-**PhaseReference** | Pointer to **NullableString** | A reference to another object on the RequestedItemStatus that contains more details about the phase. Note that for the Provisioning phase, this will be empty if there are no manual work items. | [optional] 
+**Started** |  Pointer to **time.Time** | The time that this phase started. | [optional] 
+**Finished** |  Pointer to **NullableTime** | The time that this phase finished. | [optional] 
+**Name** |  Pointer to **string** | The name of this phase. | [optional] 
+**State** |  Pointer to **string** | The state of this phase. | [optional] 
+**Result** |  Pointer to **NullableString** | The state of this phase. | [optional] 
+**PhaseReference** |  Pointer to **NullableString** | A reference to another object on the RequestedItemStatus that contains more details about the phase. Note that for the Provisioning phase, this will be empty if there are no manual work items. | [optional] 
 
 ## Methods
 

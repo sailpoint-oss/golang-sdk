@@ -15,15 +15,15 @@ tags: ['SDK', 'Software Development Kit', 'NonEmployeeSource']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Non-Employee source id. | [optional] 
-**SourceId** | Pointer to **string** | Source Id associated with this non-employee source. | [optional] 
-**Name** | Pointer to **string** | Source name associated with this non-employee source. | [optional] 
-**Description** | Pointer to **string** | Source description associated with this non-employee source. | [optional] 
-**Approvers** | Pointer to [**[]IdentityReferenceWithId**](IdentityReferenceWithId) | List of approvers | [optional] 
-**AccountManagers** | Pointer to [**[]IdentityReferenceWithId**](IdentityReferenceWithId) | List of account managers | [optional] 
-**Modified** | Pointer to **time.Time** | When the request was last modified. | [optional] 
-**Created** | Pointer to **time.Time** | When the request was created. | [optional] 
-**NonEmployeeCount** | Pointer to **NullableInt32** | The number of non-employee records on all sources that *requested-for* user manages. | [optional] 
+**Id** |  Pointer to **string** | Non-Employee source id. | [optional] 
+**SourceId** |  Pointer to **string** | Source Id associated with this non-employee source. | [optional] 
+**Name** |  Pointer to **string** | Source name associated with this non-employee source. | [optional] 
+**Description** |  Pointer to **string** | Source description associated with this non-employee source. | [optional] 
+**Approvers** |  Pointer to [**[]IdentityReferenceWithId**](identity-reference-with-id) | List of approvers | [optional] 
+**AccountManagers** |  Pointer to [**[]IdentityReferenceWithId**](identity-reference-with-id) | List of account managers | [optional] 
+**Modified** |  Pointer to **time.Time** | When the request was last modified. | [optional] 
+**Created** |  Pointer to **time.Time** | When the request was created. | [optional] 
+**NonEmployeeCount** |  Pointer to **NullableInt32** | The number of non-employee records on all sources that *requested-for* user manages. | [optional] 
 
 ## Methods
 

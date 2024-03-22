@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'BearerTokenAuthConfig']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BearerToken** | Pointer to **NullableString** | Bearer token | [optional] 
+**BearerToken** |  Pointer to **NullableString** | Bearer token | [optional] 
 
 ## Methods
 

@@ -15,31 +15,31 @@ tags: ['SDK', 'Software Development Kit', 'ManagedCluster']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | ManagedCluster ID | 
-**Name** | Pointer to **string** | ManagedCluster name | [optional] 
-**Pod** | Pointer to **string** | ManagedCluster pod | [optional] 
-**Org** | Pointer to **string** | ManagedCluster org | [optional] 
-**Type** | Pointer to [**ManagedClusterTypes**](ManagedClusterTypes) |  | [optional] 
-**Configuration** | Pointer to **map[string]string** | ManagedProcess configuration map | [optional] 
-**KeyPair** | Pointer to [**ManagedClusterKeyPair**](ManagedClusterKeyPair) |  | [optional] 
-**Attributes** | Pointer to [**ManagedClusterAttributes**](ManagedClusterAttributes) |  | [optional] 
-**Description** | Pointer to **string** | ManagedCluster description | [optional] 
-**Redis** | Pointer to [**ManagedClusterRedis**](ManagedClusterRedis) |  | [optional] 
-**ClientType** | [**NullableManagedClientType**](ManagedClientType) |  | 
-**CcgVersion** | **string** | CCG version used by the ManagedCluster | 
-**PinnedConfig** | Pointer to **bool** | boolean flag indiacting whether or not the cluster configuration is pinned | [optional] [default to false]
-**LogConfiguration** | Pointer to [**NullableClientLogConfiguration**](ClientLogConfiguration) |  | [optional] 
-**Operational** | Pointer to **bool** | Whether or not the cluster is operational or not | [optional] [default to false]
-**Status** | Pointer to **string** | Cluster status | [optional] 
-**PublicKeyCertificate** | Pointer to **NullableString** | Public key certificate | [optional] 
-**PublicKeyThumbprint** | Pointer to **NullableString** | Public key thumbprint | [optional] 
-**PublicKey** | Pointer to **NullableString** | Public key | [optional] 
-**AlertKey** | Pointer to **string** | Key describing any immediate cluster alerts | [optional] 
-**ClientIds** | Pointer to **[]string** | List of clients in a cluster | [optional] 
-**ServiceCount** | Pointer to **int32** | Number of services bound to a cluster | [optional] [default to 0]
-**CcId** | Pointer to **string** | CC ID only used in calling CC, will be removed without notice when Migration to CEGS is finished | [optional] [default to "0"]
-**CreatedAt** | Pointer to **NullableTime** | The date/time this cluster was created | [optional] 
-**UpdatedAt** | Pointer to **NullableTime** | The date/time this cluster was last updated | [optional] 
+**Id** |  **string** | ManagedCluster ID | 
+**Name** |  Pointer to **string** | ManagedCluster name | [optional] 
+**Pod** |  Pointer to **string** | ManagedCluster pod | [optional] 
+**Org** |  Pointer to **string** | ManagedCluster org | [optional] 
+**Type** |  Pointer to [**ManagedClusterTypes**](managed-cluster-types) |  | [optional] 
+**Configuration** |  Pointer to **map[string]string** | ManagedProcess configuration map | [optional] 
+**KeyPair** |  Pointer to [**ManagedClusterKeyPair**](managed-cluster-key-pair) |  | [optional] 
+**Attributes** |  Pointer to [**ManagedClusterAttributes**](managed-cluster-attributes) |  | [optional] 
+**Description** |  Pointer to **string** | ManagedCluster description | [optional] 
+**Redis** |  Pointer to [**ManagedClusterRedis**](managed-cluster-redis) |  | [optional] 
+**ClientType** |  [**NullableManagedClientType**](managed-client-type) |  | 
+**CcgVersion** |  **string** | CCG version used by the ManagedCluster | 
+**PinnedConfig** |  Pointer to **bool** | boolean flag indiacting whether or not the cluster configuration is pinned | [optional] [default to false]
+**LogConfiguration** |  Pointer to [**NullableClientLogConfiguration**](client-log-configuration) |  | [optional] 
+**Operational** |  Pointer to **bool** | Whether or not the cluster is operational or not | [optional] [default to false]
+**Status** |  Pointer to **string** | Cluster status | [optional] 
+**PublicKeyCertificate** |  Pointer to **NullableString** | Public key certificate | [optional] 
+**PublicKeyThumbprint** |  Pointer to **NullableString** | Public key thumbprint | [optional] 
+**PublicKey** |  Pointer to **NullableString** | Public key | [optional] 
+**AlertKey** |  Pointer to **string** | Key describing any immediate cluster alerts | [optional] 
+**ClientIds** |  Pointer to **[]string** | List of clients in a cluster | [optional] 
+**ServiceCount** |  Pointer to **int32** | Number of services bound to a cluster | [optional] [default to 0]
+**CcId** |  Pointer to **string** | CC ID only used in calling CC, will be removed without notice when Migration to CEGS is finished | [optional] [default to "0"]
+**CreatedAt** |  Pointer to **NullableTime** | The date/time this cluster was created | [optional] 
+**UpdatedAt** |  Pointer to **NullableTime** | The date/time this cluster was last updated | [optional] 
 
 ## Methods
 

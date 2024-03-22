@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'SourceUpdatedActor']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | DTO type of identity who updated the source. | 
-**Id** | Pointer to **string** | ID of identity who updated the source. | [optional] 
-**Name** | **string** | Display name of identity who updated the source. | 
+**Type** |  **string** | DTO type of identity who updated the source. | 
+**Id** |  Pointer to **string** | ID of identity who updated the source. | [optional] 
+**Name** |  **string** | Display name of identity who updated the source. | 
 
 ## Methods
 

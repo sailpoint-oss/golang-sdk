@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'TenantConfigurationRequest']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ConfigDetails** | Pointer to [**TenantConfigurationDetails**](TenantConfigurationDetails) |  | [optional] 
+**ConfigDetails** |  Pointer to [**TenantConfigurationDetails**](tenant-configuration-details) |  | [optional] 
 
 ## Methods
 

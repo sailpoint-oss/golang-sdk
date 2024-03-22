@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'KbaAnswerRequestItem']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**QuestionId** | **string** | Question Id | 
-**Answer** | **string** | An answer for the KBA question | 
+**QuestionId** |  **string** | Question Id | 
+**Answer** |  **string** | An answer for the KBA question | 
 
 ## Methods
 

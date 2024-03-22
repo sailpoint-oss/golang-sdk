@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'AccountStatusChangedStatusChange']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PreviousStatus** | Pointer to **string** | the previous status of the account | [optional] 
-**NewStatus** | Pointer to **string** | the new status of the account | [optional] 
+**PreviousStatus** |  Pointer to **string** | the previous status of the account | [optional] 
+**NewStatus** |  Pointer to **string** | the new status of the account | [optional] 
 
 ## Methods
 

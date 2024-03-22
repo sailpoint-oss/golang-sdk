@@ -15,12 +15,12 @@ tags: ['SDK', 'Software Development Kit', 'RoleInsightsSummary']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**NumberOfUpdates** | Pointer to **int32** | Total number of roles with updates | [optional] 
-**LastGenerated** | Pointer to **time.Time** | The date-time role insights were last found. | [optional] 
-**EntitlementsIncludedInRoles** | Pointer to **int32** | The number of entitlements included in roles (vs free radicals). | [optional] 
-**TotalNumberOfEntitlements** | Pointer to **int32** | The total number of entitlements. | [optional] 
-**IdentitiesWithAccessViaRoles** | Pointer to **int32** | The number of identities in roles vs. identities with just entitlements and not in roles. | [optional] 
-**TotalNumberOfIdentities** | Pointer to **int32** | The total number of identities. | [optional] 
+**NumberOfUpdates** |  Pointer to **int32** | Total number of roles with updates | [optional] 
+**LastGenerated** |  Pointer to **time.Time** | The date-time role insights were last found. | [optional] 
+**EntitlementsIncludedInRoles** |  Pointer to **int32** | The number of entitlements included in roles (vs free radicals). | [optional] 
+**TotalNumberOfEntitlements** |  Pointer to **int32** | The total number of entitlements. | [optional] 
+**IdentitiesWithAccessViaRoles** |  Pointer to **int32** | The number of identities in roles vs. identities with just entitlements and not in roles. | [optional] 
+**TotalNumberOfIdentities** |  Pointer to **int32** | The total number of identities. | [optional] 
 
 ## Methods
 

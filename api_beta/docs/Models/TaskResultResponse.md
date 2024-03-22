@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'TaskResultResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | the type of response reference | [optional] 
-**Id** | Pointer to **string** | the task ID | [optional] 
-**Name** | Pointer to **string** | the task name (not used in this endpoint, always null) | [optional] 
+**Type** |  Pointer to **string** | the type of response reference | [optional] 
+**Id** |  Pointer to **string** | the task ID | [optional] 
+**Name** |  Pointer to **string** | the task name (not used in this endpoint, always null) | [optional] 
 
 ## Methods
 

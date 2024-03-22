@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'PreviewDataSourceResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]FormElementDataSourceConfigOptions**](FormElementDataSourceConfigOptions) | Results holds a list of FormElementDataSourceConfigOptions items | [optional] 
+**Results** |  Pointer to [**[]FormElementDataSourceConfigOptions**](form-element-data-source-config-options) | Results holds a list of FormElementDataSourceConfigOptions items | [optional] 
 
 ## Methods
 

@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'CommentDtoAuthor']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | DTO type of the commenting identity. | [optional] 
-**Id** | Pointer to **string** | ID of the commenting identity. | [optional] 
-**Name** | Pointer to **string** | Display name of the commenting identity. | [optional] 
+**Type** |  Pointer to **string** | DTO type of the commenting identity. | [optional] 
+**Id** |  Pointer to **string** | ID of the commenting identity. | [optional] 
+**Name** |  Pointer to **string** | Display name of the commenting identity. | [optional] 
 
 ## Methods
 

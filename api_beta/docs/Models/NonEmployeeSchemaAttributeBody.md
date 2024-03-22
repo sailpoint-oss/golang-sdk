@@ -15,12 +15,12 @@ tags: ['SDK', 'Software Development Kit', 'NonEmployeeSchemaAttributeBody']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | Type of the attribute. Only type &#39;TEXT&#39; is supported for custom attributes. | 
-**Label** | **string** | Label displayed on the UI for this schema attribute. | 
-**TechnicalName** | **string** | The technical name of the attribute. Must be unique per source. | 
-**HelpText** | Pointer to **string** | help text displayed by UI. | [optional] 
-**Placeholder** | Pointer to **string** | Hint text that fills UI box. | [optional] 
-**Required** | Pointer to **bool** | If true, the schema attribute is required for all non-employees in the source | [optional] 
+**Type** |  **string** | Type of the attribute. Only type &#39;TEXT&#39; is supported for custom attributes. | 
+**Label** |  **string** | Label displayed on the UI for this schema attribute. | 
+**TechnicalName** |  **string** | The technical name of the attribute. Must be unique per source. | 
+**HelpText** |  Pointer to **string** | help text displayed by UI. | [optional] 
+**Placeholder** |  Pointer to **string** | Hint text that fills UI box. | [optional] 
+**Required** |  Pointer to **bool** | If true, the schema attribute is required for all non-employees in the source | [optional] 
 
 ## Methods
 

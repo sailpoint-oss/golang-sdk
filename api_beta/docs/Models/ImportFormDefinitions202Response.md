@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'ImportFormDefinitions202Response']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Errors** | Pointer to [**[]ImportFormDefinitions202ResponseErrorsInner**](ImportFormDefinitions202ResponseErrorsInner) |  | [optional] 
-**ImportedObjects** | Pointer to [**[]ExportFormDefinitionsByTenant200ResponseInner**](ExportFormDefinitionsByTenant200ResponseInner) |  | [optional] 
-**Infos** | Pointer to [**[]ImportFormDefinitions202ResponseErrorsInner**](ImportFormDefinitions202ResponseErrorsInner) |  | [optional] 
-**Warnings** | Pointer to [**[]ImportFormDefinitions202ResponseErrorsInner**](ImportFormDefinitions202ResponseErrorsInner) |  | [optional] 
+**Errors** |  Pointer to [**[]ImportFormDefinitions202ResponseErrorsInner**](import-form-definitions202-response-errors-inner) |  | [optional] 
+**ImportedObjects** |  Pointer to [**[]ExportFormDefinitionsByTenant200ResponseInner**](export-form-definitions-by-tenant200-response-inner) |  | [optional] 
+**Infos** |  Pointer to [**[]ImportFormDefinitions202ResponseErrorsInner**](import-form-definitions202-response-errors-inner) |  | [optional] 
+**Warnings** |  Pointer to [**[]ImportFormDefinitions202ResponseErrorsInner**](import-form-definitions202-response-errors-inner) |  | [optional] 
 
 ## Methods
 

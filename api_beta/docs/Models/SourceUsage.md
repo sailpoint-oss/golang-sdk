@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'SourceUsage']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Date** | Pointer to **string** | The first day of the month for which activity is aggregated. | [optional] 
-**Count** | Pointer to **float32** | The average number of days that accounts were active within this source, for the month. | [optional] 
+**Date** |  Pointer to **string** | The first day of the month for which activity is aggregated. | [optional] 
+**Count** |  Pointer to **float32** | The average number of days that accounts were active within this source, for the month. | [optional] 
 
 ## Methods
 

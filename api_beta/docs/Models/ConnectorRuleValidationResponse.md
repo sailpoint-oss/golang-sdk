@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'ConnectorRuleValidationResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**State** | **string** |  | 
-**Details** | [**[]ConnectorRuleValidationResponseDetailsInner**](ConnectorRuleValidationResponseDetailsInner) |  | 
+**State** |  **string** |  | 
+**Details** |  [**[]ConnectorRuleValidationResponseDetailsInner**](connector-rule-validation-response-details-inner) |  | 
 
 ## Methods
 

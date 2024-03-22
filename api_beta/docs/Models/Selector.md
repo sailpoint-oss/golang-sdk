@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'Selector']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | [**SelectorType**](SelectorType) |  | 
-**Values** | **[]string** | The selected values.  | 
-**Interval** | Pointer to **NullableInt32** | The selected interval for RANGE selectors.  | [optional] 
+**Type** |  [**SelectorType**](selector-type) |  | 
+**Values** |  **[]string** | The selected values.  | 
+**Interval** |  Pointer to **NullableInt32** | The selected interval for RANGE selectors.  | [optional] 
 
 ## Methods
 

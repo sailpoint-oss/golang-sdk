@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'Value']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | The type of attribute value | [optional] 
-**Value** | Pointer to **string** | The attribute value | [optional] 
+**Type** |  Pointer to **string** | The type of attribute value | [optional] 
+**Value** |  Pointer to **string** | The attribute value | [optional] 
 
 ## Methods
 

@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'AdminReviewReassign']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CertificationIds** | Pointer to **[]string** | List of certification IDs to reassign | [optional] 
-**ReassignTo** | Pointer to [**AdminReviewReassignReassignTo**](AdminReviewReassignReassignTo) |  | [optional] 
-**Reason** | Pointer to **string** | Comment to explain why the certification was reassigned | [optional] 
+**CertificationIds** |  Pointer to **[]string** | List of certification IDs to reassign | [optional] 
+**ReassignTo** |  Pointer to [**AdminReviewReassignReassignTo**](admin-review-reassign-reassign-to) |  | [optional] 
+**Reason** |  Pointer to **string** | Comment to explain why the certification was reassigned | [optional] 
 
 ## Methods
 

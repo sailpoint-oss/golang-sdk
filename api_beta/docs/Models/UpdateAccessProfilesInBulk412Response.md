@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'UpdateAccessProfilesInBulk412Response
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Message** | Pointer to **map[string]interface{}** | A message describing the error | [optional] 
+**Message** |  Pointer to **map[string]interface{}** | A message describing the error | [optional] 
 
 ## Methods
 

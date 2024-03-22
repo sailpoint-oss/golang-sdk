@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'AccessProfileBulkDeleteResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TaskId** | Pointer to **string** | ID of the task which is executing the bulk deletion. This can be passed to the **_/task-status** API to track status. | [optional] 
-**Pending** | Pointer to **[]string** | List of IDs of Access Profiles which are pending deletion. | [optional] 
-**InUse** | Pointer to [**[]AccessProfileUsage**](AccessProfileUsage) | List of usages of Access Profiles targeted for deletion. | [optional] 
+**TaskId** |  Pointer to **string** | ID of the task which is executing the bulk deletion. This can be passed to the **_/task-status** API to track status. | [optional] 
+**Pending** |  Pointer to **[]string** | List of IDs of Access Profiles which are pending deletion. | [optional] 
+**InUse** |  Pointer to [**[]AccessProfileUsage**](access-profile-usage) | List of usages of Access Profiles targeted for deletion. | [optional] 
 
 ## Methods
 

@@ -15,23 +15,23 @@ tags: ['SDK', 'Software Development Kit', 'CertificationSignedOffCertification']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique ID of the certification. | 
-**Name** | **string** | The name of the certification. | 
-**Created** | **time.Time** | The date and time the certification was created. | 
-**Modified** | Pointer to **NullableTime** | The date and time the certification was last modified. | [optional] 
-**CampaignRef** | [**CampaignReference**](CampaignReference) |  | 
-**Phase** | [**CertificationPhase**](CertificationPhase) |  | 
-**Due** | **time.Time** | The due date of the certification. | 
-**Signed** | **time.Time** | The date the reviewer signed off on the certification. | 
-**Reviewer** | [**Reviewer**](Reviewer) |  | 
-**Reassignment** | Pointer to [**Reassignment**](Reassignment) |  | [optional] 
-**HasErrors** | **bool** | Indicates it the certification has any errors. | 
-**ErrorMessage** | Pointer to **NullableString** | A message indicating what the error is. | [optional] 
-**Completed** | **bool** | Indicates if all certification decisions have been made. | 
-**DecisionsMade** | **int32** | The number of approve/revoke/acknowledge decisions that have been made by the reviewer. | 
-**DecisionsTotal** | **int32** | The total number of approve/revoke/acknowledge decisions for the certification. | 
-**EntitiesCompleted** | **int32** | The number of entities (identities, access profiles, roles, etc.) for which all decisions have been made and are complete. | 
-**EntitiesTotal** | **int32** | The total number of entities (identities, access profiles, roles, etc.) in the certification, both complete and incomplete. | 
+**Id** |  **string** | Unique ID of the certification. | 
+**Name** |  **string** | The name of the certification. | 
+**Created** |  **time.Time** | The date and time the certification was created. | 
+**Modified** |  Pointer to **NullableTime** | The date and time the certification was last modified. | [optional] 
+**CampaignRef** |  [**CampaignReference**](campaign-reference) |  | 
+**Phase** |  [**CertificationPhase**](certification-phase) |  | 
+**Due** |  **time.Time** | The due date of the certification. | 
+**Signed** |  **time.Time** | The date the reviewer signed off on the certification. | 
+**Reviewer** |  [**Reviewer**](reviewer) |  | 
+**Reassignment** |  Pointer to [**Reassignment**](reassignment) |  | [optional] 
+**HasErrors** |  **bool** | Indicates it the certification has any errors. | 
+**ErrorMessage** |  Pointer to **NullableString** | A message indicating what the error is. | [optional] 
+**Completed** |  **bool** | Indicates if all certification decisions have been made. | 
+**DecisionsMade** |  **int32** | The number of approve/revoke/acknowledge decisions that have been made by the reviewer. | 
+**DecisionsTotal** |  **int32** | The total number of approve/revoke/acknowledge decisions for the certification. | 
+**EntitiesCompleted** |  **int32** | The number of entities (identities, access profiles, roles, etc.) for which all decisions have been made and are complete. | 
+**EntitiesTotal** |  **int32** | The total number of entities (identities, access profiles, roles, etc.) in the certification, both complete and incomplete. | 
 
 ## Methods
 

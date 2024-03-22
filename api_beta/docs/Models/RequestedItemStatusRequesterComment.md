@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'RequestedItemStatusRequesterComment']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Comment** | Pointer to **NullableString** | Comment content. | [optional] 
-**Created** | Pointer to **time.Time** | Date and time comment was created. | [optional] 
-**Author** | Pointer to [**CommentDto1Author**](CommentDto1Author) |  | [optional] 
+**Comment** |  Pointer to **NullableString** | Comment content. | [optional] 
+**Created** |  Pointer to **time.Time** | Date and time comment was created. | [optional] 
+**Author** |  Pointer to [**CommentDto1Author**](comment-dto1-author) |  | [optional] 
 
 ## Methods
 

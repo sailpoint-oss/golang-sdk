@@ -15,12 +15,12 @@ tags: ['SDK', 'Software Development Kit', 'AccessRequestPreApprovalRequestedItem
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | The unique ID of the access item being requested. | 
-**Name** | **string** | The human friendly name of the access item. | 
-**Description** | Pointer to **NullableString** | Detailed description of the access item. | [optional] 
-**Type** | **map[string]interface{}** | The type of access item. | 
-**Operation** | **map[string]interface{}** | The action to perform on the access item. | 
-**Comment** | Pointer to **NullableString** | A comment from the identity requesting the access. | [optional] 
+**Id** |  **string** | The unique ID of the access item being requested. | 
+**Name** |  **string** | The human friendly name of the access item. | 
+**Description** |  Pointer to **NullableString** | Detailed description of the access item. | [optional] 
+**Type** |  **map[string]interface{}** | The type of access item. | 
+**Operation** |  **map[string]interface{}** | The action to perform on the access item. | 
+**Comment** |  Pointer to **NullableString** | A comment from the identity requesting the access. | [optional] 
 
 ## Methods
 

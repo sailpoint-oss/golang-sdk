@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'ServiceDeskIntegrationTemplateType']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | This is the name of the type. | [optional] 
-**Type** | **string** | This is the type value for the type. | 
-**ScriptName** | **string** | This is the scriptName attribute value for the type. | 
+**Name** |  Pointer to **string** | This is the name of the type. | [optional] 
+**Type** |  **string** | This is the type value for the type. | 
+**ScriptName** |  **string** | This is the scriptName attribute value for the type. | 
 
 ## Methods
 

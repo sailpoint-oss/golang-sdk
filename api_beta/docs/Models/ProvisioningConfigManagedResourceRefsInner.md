@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'ProvisioningConfigManagedResourceRefs
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **map[string]interface{}** | The type of object being referenced | [optional] 
-**Id** | Pointer to **map[string]interface{}** | ID of the source | [optional] 
-**Name** | Pointer to **map[string]interface{}** | Human-readable display name of the source | [optional] 
+**Type** |  Pointer to **map[string]interface{}** | The type of object being referenced | [optional] 
+**Id** |  Pointer to **map[string]interface{}** | ID of the source | [optional] 
+**Name** |  Pointer to **map[string]interface{}** | Human-readable display name of the source | [optional] 
 
 ## Methods
 

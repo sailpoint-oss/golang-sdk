@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'JsonPatchOperation']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Op** | **string** | The operation to be performed | 
-**Path** | **string** | A string JSON Pointer representing the target path to an element to be affected by the operation | 
-**Value** | Pointer to [**JsonPatchOperationValue**](JsonPatchOperationValue) |  | [optional] 
+**Op** |  **string** | The operation to be performed | 
+**Path** |  **string** | A string JSON Pointer representing the target path to an element to be affected by the operation | 
+**Value** |  Pointer to [**JsonPatchOperationValue**](json-patch-operation-value) |  | [optional] 
 
 ## Methods
 

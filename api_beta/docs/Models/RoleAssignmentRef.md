@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'RoleAssignmentRef']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Assignment Id | [optional] 
-**Role** | Pointer to [**BaseReferenceDto**](BaseReferenceDto) |  | [optional] 
+**Id** |  Pointer to **string** | Assignment Id | [optional] 
+**Role** |  Pointer to [**BaseReferenceDto**](base-reference-dto) |  | [optional] 
 
 ## Methods
 

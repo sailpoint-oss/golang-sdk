@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'ViolationOwnerAssignmentConfig']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AssignmentRule** | Pointer to **NullableString** | Details about the violations owner. MANAGER - identity&#39;s manager STATIC - Governance Group or Identity | [optional] 
-**OwnerRef** | Pointer to [**ViolationOwnerAssignmentConfigOwnerRef**](ViolationOwnerAssignmentConfigOwnerRef) |  | [optional] 
+**AssignmentRule** |  Pointer to **NullableString** | Details about the violations owner. MANAGER - identity&#39;s manager STATIC - Governance Group or Identity | [optional] 
+**OwnerRef** |  Pointer to [**ViolationOwnerAssignmentConfigOwnerRef**](violation-owner-assignment-config-owner-ref) |  | [optional] 
 
 ## Methods
 

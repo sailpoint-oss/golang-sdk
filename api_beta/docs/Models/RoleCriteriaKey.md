@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'RoleCriteriaKey']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | [**RoleCriteriaKeyType**](RoleCriteriaKeyType) |  | 
-**Property** | **string** | The name of the attribute or entitlement to which the associated criteria applies. | 
-**SourceId** | Pointer to **NullableString** | ID of the Source from which an account attribute or entitlement is drawn. Required if type is ACCOUNT or ENTITLEMENT | [optional] 
+**Type** |  [**RoleCriteriaKeyType**](role-criteria-key-type) |  | 
+**Property** |  **string** | The name of the attribute or entitlement to which the associated criteria applies. | 
+**SourceId** |  Pointer to **NullableString** | ID of the Source from which an account attribute or entitlement is drawn. Required if type is ACCOUNT or ENTITLEMENT | [optional] 
 
 ## Methods
 

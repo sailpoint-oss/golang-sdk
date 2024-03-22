@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'DeleteCampaignsRequest']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ids** | Pointer to **[]string** | The ids of the campaigns to delete | [optional] 
+**Ids** |  Pointer to **[]string** | The ids of the campaigns to delete | [optional] 
 
 ## Methods
 

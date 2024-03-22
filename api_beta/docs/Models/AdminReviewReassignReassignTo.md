@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'AdminReviewReassignReassignTo']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | The identity ID to which the review is being assigned. | [optional] 
-**Type** | Pointer to **string** | The type of the ID provided. | [optional] 
+**Id** |  Pointer to **string** | The identity ID to which the review is being assigned. | [optional] 
+**Type** |  Pointer to **string** | The type of the ID provided. | [optional] 
 
 ## Methods
 

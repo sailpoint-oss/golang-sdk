@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'ObjectImportResult']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Infos** | [**[]SpConfigMessage**](SpConfigMessage) | Informational messages returned from the target service on import. | 
-**Warnings** | [**[]SpConfigMessage**](SpConfigMessage) | Warning messages returned from the target service on import. | 
-**Errors** | [**[]SpConfigMessage**](SpConfigMessage) | Error messages returned from the target service on import. | 
-**ImportedObjects** | [**[]ImportObject**](ImportObject) | References to objects that were created or updated by the import. | 
+**Infos** |  [**[]SpConfigMessage**](sp-config-message) | Informational messages returned from the target service on import. | 
+**Warnings** |  [**[]SpConfigMessage**](sp-config-message) | Warning messages returned from the target service on import. | 
+**Errors** |  [**[]SpConfigMessage**](sp-config-message) | Error messages returned from the target service on import. | 
+**ImportedObjects** |  [**[]ImportObject**](import-object) | References to objects that were created or updated by the import. | 
 
 ## Methods
 

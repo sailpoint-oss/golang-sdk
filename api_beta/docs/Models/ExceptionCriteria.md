@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'ExceptionCriteria']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CriteriaList** | Pointer to [**[]ExceptionCriteriaCriteriaListInner**](ExceptionCriteriaCriteriaListInner) | List of exception criteria. There is a min of 1 and max of 50 items in the list. | [optional] 
+**CriteriaList** |  Pointer to [**[]ExceptionCriteriaCriteriaListInner**](exception-criteria-criteria-list-inner) | List of exception criteria. There is a min of 1 and max of 50 items in the list. | [optional] 
 
 ## Methods
 

@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'FullcampaignAllOfSourcesWithOrphanEnt
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Id of the source | [optional] 
-**Type** | Pointer to **string** | Type | [optional] 
-**Name** | Pointer to **string** | Name of the source | [optional] 
+**Id** |  Pointer to **string** | Id of the source | [optional] 
+**Type** |  Pointer to **string** | Type | [optional] 
+**Name** |  Pointer to **string** | Name of the source | [optional] 
 
 ## Methods
 

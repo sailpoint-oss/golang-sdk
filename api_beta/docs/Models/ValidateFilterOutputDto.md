@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'ValidateFilterOutputDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IsValid** | Pointer to **bool** | When this field is true, the filter expression is valid against the input. | [optional] [default to false]
-**IsValidJSONPath** | Pointer to **bool** | When this field is true, the filter expression is using a valid JSON path. | [optional] [default to false]
-**IsPathExist** | Pointer to **bool** | When this field is true, the filter expression is using an existing path. | [optional] [default to false]
+**IsValid** |  Pointer to **bool** | When this field is true, the filter expression is valid against the input. | [optional] [default to false]
+**IsValidJSONPath** |  Pointer to **bool** | When this field is true, the filter expression is using a valid JSON path. | [optional] [default to false]
+**IsPathExist** |  Pointer to **bool** | When this field is true, the filter expression is using an existing path. | [optional] [default to false]
 
 ## Methods
 

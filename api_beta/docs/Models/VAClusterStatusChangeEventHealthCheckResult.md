@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'VAClusterStatusChangeEventHealthCheck
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Message** | **string** | Detailed message of the result of the health check. | 
-**ResultType** | **string** | The type of the health check result. | 
-**Status** | **map[string]interface{}** | The status of the health check. | 
+**Message** |  **string** | Detailed message of the result of the health check. | 
+**ResultType** |  **string** | The type of the health check result. | 
+**Status** |  **map[string]interface{}** | The status of the health check. | 
 
 ## Methods
 

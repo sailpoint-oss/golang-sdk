@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'Comment']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CommenterId** | Pointer to **string** | Id of the identity making the comment | [optional] 
-**CommenterName** | Pointer to **string** | Human-readable display name of the identity making the comment | [optional] 
-**Body** | Pointer to **string** | Content of the comment | [optional] 
-**Date** | Pointer to **time.Time** | Date and time comment was made | [optional] 
+**CommenterId** |  Pointer to **string** | Id of the identity making the comment | [optional] 
+**CommenterName** |  Pointer to **string** | Human-readable display name of the identity making the comment | [optional] 
+**Body** |  Pointer to **string** | Content of the comment | [optional] 
+**Date** |  Pointer to **time.Time** | Date and time comment was made | [optional] 
 
 ## Methods
 

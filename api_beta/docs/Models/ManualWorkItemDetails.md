@@ -15,12 +15,12 @@ tags: ['SDK', 'Software Development Kit', 'ManualWorkItemDetails']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Forwarded** | Pointer to **bool** | True if the request for this item was forwarded from one owner to another. | [optional] [default to false]
-**OriginalOwner** | Pointer to [**NullableManualWorkItemDetailsOriginalOwner**](ManualWorkItemDetailsOriginalOwner) |  | [optional] 
-**CurrentOwner** | Pointer to [**NullableManualWorkItemDetailsCurrentOwner**](ManualWorkItemDetailsCurrentOwner) |  | [optional] 
-**Modified** | Pointer to **time.Time** | Time at which item was modified. | [optional] 
-**Status** | Pointer to [**ManualWorkItemState**](ManualWorkItemState) |  | [optional] 
-**ForwardHistory** | Pointer to [**[]ApprovalForwardHistory**](ApprovalForwardHistory) | The history of approval forward action. | [optional] 
+**Forwarded** |  Pointer to **bool** | True if the request for this item was forwarded from one owner to another. | [optional] [default to false]
+**OriginalOwner** |  Pointer to [**NullableManualWorkItemDetailsOriginalOwner**](manual-work-item-details-original-owner) |  | [optional] 
+**CurrentOwner** |  Pointer to [**NullableManualWorkItemDetailsCurrentOwner**](manual-work-item-details-current-owner) |  | [optional] 
+**Modified** |  Pointer to **time.Time** | Time at which item was modified. | [optional] 
+**Status** |  Pointer to [**ManualWorkItemState**](manual-work-item-state) |  | [optional] 
+**ForwardHistory** |  Pointer to [**[]ApprovalForwardHistory**](approval-forward-history) | The history of approval forward action. | [optional] 
 
 ## Methods
 

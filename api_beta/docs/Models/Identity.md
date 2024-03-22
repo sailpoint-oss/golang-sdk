@@ -15,19 +15,19 @@ tags: ['SDK', 'Software Development Kit', 'Identity']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | System-generated unique ID of the Object | [optional] [readonly] 
-**Name** | **string** | Name of the Object | 
-**Created** | Pointer to **time.Time** | Creation date of the Object | [optional] [readonly] 
-**Modified** | Pointer to **time.Time** | Last modification date of the Object | [optional] [readonly] 
-**Alias** | Pointer to **string** | Alternate unique identifier for the identity | [optional] 
-**EmailAddress** | Pointer to **NullableString** | The email address of the identity | [optional] 
-**ProcessingState** | Pointer to **NullableString** | The processing state of the identity | [optional] 
-**IdentityStatus** | Pointer to **string** | The identity&#39;s status in the system | [optional] 
-**ManagerRef** | Pointer to [**NullableIdentityDtoManagerRef**](IdentityDtoManagerRef) |  | [optional] 
-**IsManager** | Pointer to **bool** | Whether this identity is a manager of another identity | [optional] [default to false]
-**LastRefresh** | Pointer to **time.Time** | The last time the identity was refreshed by the system | [optional] 
-**Attributes** | Pointer to **map[string]interface{}** | A map with the identity attributes for the identity | [optional] 
-**LifecycleState** | Pointer to [**IdentityDtoLifecycleState**](IdentityDtoLifecycleState) |  | [optional] 
+**Id** |  Pointer to **string** | System-generated unique ID of the Object | [optional] [readonly] 
+**Name** |  **string** | Name of the Object | 
+**Created** |  Pointer to **time.Time** | Creation date of the Object | [optional] [readonly] 
+**Modified** |  Pointer to **time.Time** | Last modification date of the Object | [optional] [readonly] 
+**Alias** |  Pointer to **string** | Alternate unique identifier for the identity | [optional] 
+**EmailAddress** |  Pointer to **NullableString** | The email address of the identity | [optional] 
+**ProcessingState** |  Pointer to **NullableString** | The processing state of the identity | [optional] 
+**IdentityStatus** |  Pointer to **string** | The identity&#39;s status in the system | [optional] 
+**ManagerRef** |  Pointer to [**NullableIdentityDtoManagerRef**](identity-dto-manager-ref) |  | [optional] 
+**IsManager** |  Pointer to **bool** | Whether this identity is a manager of another identity | [optional] [default to false]
+**LastRefresh** |  Pointer to **time.Time** | The last time the identity was refreshed by the system | [optional] 
+**Attributes** |  Pointer to **map[string]interface{}** | A map with the identity attributes for the identity | [optional] 
+**LifecycleState** |  Pointer to [**IdentityDtoLifecycleState**](identity-dto-lifecycle-state) |  | [optional] 
 
 ## Methods
 

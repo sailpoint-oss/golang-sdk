@@ -15,13 +15,13 @@ tags: ['SDK', 'Software Development Kit', 'CampaignReference']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | The unique ID of the campaign. | 
-**Name** | **string** | The name of the campaign. | 
-**Type** | **string** | The type of object that is being referenced. | 
-**CampaignType** | **string** | The type of the campaign. | 
-**Description** | **NullableString** | The description of the campaign set by the admin who created it. | 
-**CorrelatedStatus** | **map[string]interface{}** | The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source). | 
-**MandatoryCommentRequirement** | **string** | Determines whether comments are required for decisions during certification reviews. You can require comments for all decisions, revoke-only decisions, or no decisions. By default, comments are not required for decisions. | 
+**Id** |  **string** | The unique ID of the campaign. | 
+**Name** |  **string** | The name of the campaign. | 
+**Type** |  **string** | The type of object that is being referenced. | 
+**CampaignType** |  **string** | The type of the campaign. | 
+**Description** |  **NullableString** | The description of the campaign set by the admin who created it. | 
+**CorrelatedStatus** |  **map[string]interface{}** | The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source). | 
+**MandatoryCommentRequirement** |  **string** | Determines whether comments are required for decisions during certification reviews. You can require comments for all decisions, revoke-only decisions, or no decisions. By default, comments are not required for decisions. | 
 
 ## Methods
 

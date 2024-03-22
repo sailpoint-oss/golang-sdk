@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'ImportNonEmployeeRecordsInBulkRequest
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | ***os.File** |  | 
+**Data** |  ***os.File** |  | 
 
 ## Methods
 

@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'AccessProfileBulkUpdateRequestInner']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Access Profile ID. | [optional] 
-**Requestable** | Pointer to **bool** | Access Profile is requestable or not. | [optional] 
+**Id** |  Pointer to **string** | Access Profile ID. | [optional] 
+**Requestable** |  Pointer to **bool** | Access Profile is requestable or not. | [optional] 
 
 ## Methods
 

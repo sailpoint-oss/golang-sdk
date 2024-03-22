@@ -15,12 +15,12 @@ tags: ['SDK', 'Software Development Kit', 'PasswordInfo']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IdentityId** | Pointer to **string** |  | [optional] 
-**SourceId** | Pointer to **string** |  | [optional] 
-**PublicKeyId** | Pointer to **string** |  | [optional] 
-**PublicKey** | Pointer to **string** | User&#39;s public key with Base64 encoding | [optional] 
-**Accounts** | Pointer to [**[]PasswordInfoAccount**](PasswordInfoAccount) | Account info related to queried identity and source | [optional] 
-**Policies** | Pointer to **[]string** | Password constraints | [optional] 
+**IdentityId** |  Pointer to **string** |  | [optional] 
+**SourceId** |  Pointer to **string** |  | [optional] 
+**PublicKeyId** |  Pointer to **string** |  | [optional] 
+**PublicKey** |  Pointer to **string** | User&#39;s public key with Base64 encoding | [optional] 
+**Accounts** |  Pointer to [**[]PasswordInfoAccount**](password-info-account) | Account info related to queried identity and source | [optional] 
+**Policies** |  Pointer to **[]string** | Password constraints | [optional] 
 
 ## Methods
 

@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'ResourceBundleMessage']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | Pointer to **string** | The key of the message | [optional] 
-**Format** | Pointer to **string** | The format of the message | [optional] 
+**Key** |  Pointer to **string** | The key of the message | [optional] 
+**Format** |  Pointer to **string** | The format of the message | [optional] 
 
 ## Methods
 

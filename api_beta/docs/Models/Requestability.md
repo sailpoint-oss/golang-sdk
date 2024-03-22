@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'Requestability']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CommentsRequired** | Pointer to **NullableBool** | Whether the requester of the containing object must provide comments justifying the request | [optional] [default to false]
-**DenialCommentsRequired** | Pointer to **NullableBool** | Whether an approver must provide comments when denying the request | [optional] [default to false]
-**ApprovalSchemes** | Pointer to [**[]AccessProfileApprovalScheme**](AccessProfileApprovalScheme) | List describing the steps in approving the request | [optional] 
+**CommentsRequired** |  Pointer to **NullableBool** | Whether the requester of the containing object must provide comments justifying the request | [optional] [default to false]
+**DenialCommentsRequired** |  Pointer to **NullableBool** | Whether an approver must provide comments when denying the request | [optional] [default to false]
+**ApprovalSchemes** |  Pointer to [**[]AccessProfileApprovalScheme**](access-profile-approval-scheme) | List describing the steps in approving the request | [optional] 
 
 ## Methods
 

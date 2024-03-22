@@ -15,13 +15,13 @@ tags: ['SDK', 'Software Development Kit', 'CorrelatedGovernanceEvent']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | The name of the governance event, such as the certification name or access request ID. | [optional] 
-**Dt** | Pointer to **string** | The date that the certification or access request was completed. | [optional] 
-**Type** | Pointer to **string** | The type of governance event. | [optional] 
-**GovernanceId** | Pointer to **string** | The ID of the instance that caused the event - either the certification ID or access request ID. | [optional] 
-**Owners** | Pointer to [**[]CertifierResponse**](CertifierResponse) | The owners of the governance event (the certifiers or approvers) | [optional] 
-**Reviewers** | Pointer to [**[]CertifierResponse**](CertifierResponse) | The owners of the governance event (the certifiers or approvers), this field should be preferred over owners | [optional] 
-**DecisionMaker** | Pointer to [**CertifierResponse**](CertifierResponse) |  | [optional] 
+**Name** |  Pointer to **string** | The name of the governance event, such as the certification name or access request ID. | [optional] 
+**Dt** |  Pointer to **string** | The date that the certification or access request was completed. | [optional] 
+**Type** |  Pointer to **string** | The type of governance event. | [optional] 
+**GovernanceId** |  Pointer to **string** | The ID of the instance that caused the event - either the certification ID or access request ID. | [optional] 
+**Owners** |  Pointer to [**[]CertifierResponse**](certifier-response) | The owners of the governance event (the certifiers or approvers) | [optional] 
+**Reviewers** |  Pointer to [**[]CertifierResponse**](certifier-response) | The owners of the governance event (the certifiers or approvers), this field should be preferred over owners | [optional] 
+**DecisionMaker** |  Pointer to [**CertifierResponse**](certifier-response) |  | [optional] 
 
 ## Methods
 

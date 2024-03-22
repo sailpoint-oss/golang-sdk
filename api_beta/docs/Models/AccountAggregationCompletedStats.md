@@ -15,11 +15,11 @@ tags: ['SDK', 'Software Development Kit', 'AccountAggregationCompletedStats']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Scanned** | **int32** | The number of accounts which were scanned / iterated over. | 
-**Unchanged** | **int32** | The number of accounts which existed before, but had no changes. | 
-**Changed** | **int32** | The number of accounts which existed before, but had changes. | 
-**Added** | **int32** | The number of accounts which are new - have not existed before. | 
-**Removed** | **int32** | The number accounts which existed before, but no longer exist (thus getting removed). | 
+**Scanned** |  **int32** | The number of accounts which were scanned / iterated over. | 
+**Unchanged** |  **int32** | The number of accounts which existed before, but had no changes. | 
+**Changed** |  **int32** | The number of accounts which existed before, but had changes. | 
+**Added** |  **int32** | The number of accounts which are new - have not existed before. | 
+**Removed** |  **int32** | The number accounts which existed before, but no longer exist (thus getting removed). | 
 
 ## Methods
 

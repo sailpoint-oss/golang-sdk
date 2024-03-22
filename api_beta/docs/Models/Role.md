@@ -15,21 +15,21 @@ tags: ['SDK', 'Software Development Kit', 'Role']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | The id of the Role. This field must be left null when creating an Role, otherwise a 400 Bad Request error will result. | [optional] 
-**Name** | **string** | The human-readable display name of the Role | 
-**Created** | Pointer to **time.Time** | Date the Role was created | [optional] [readonly] 
-**Modified** | Pointer to **time.Time** | Date the Role was last modified. | [optional] [readonly] 
-**Description** | Pointer to **NullableString** | A human-readable description of the Role | [optional] 
-**Owner** | [**OwnerReference**](OwnerReference) |  | 
-**AccessProfiles** | Pointer to [**[]AccessProfileRef**](AccessProfileRef) |  | [optional] 
-**Entitlements** | Pointer to [**[]EntitlementRef**](EntitlementRef) |  | [optional] 
-**Membership** | Pointer to [**NullableRoleMembershipSelector**](RoleMembershipSelector) |  | [optional] 
-**LegacyMembershipInfo** | Pointer to **map[string]interface{}** | This field is not directly modifiable and is generally expected to be *null*. In very rare instances, some Roles may have been created using membership selection criteria that are no longer fully supported. While these Roles will still work, they should be migrated to STANDARD or IDENTITY_LIST selection criteria. This field exists for informational purposes as an aid to such migration. | [optional] 
-**Enabled** | Pointer to **bool** | Whether the Role is enabled or not. | [optional] [default to false]
-**Requestable** | Pointer to **bool** | Whether the Role can be the target of access requests. | [optional] [default to false]
-**AccessRequestConfig** | Pointer to [**RequestabilityForRole**](RequestabilityForRole) |  | [optional] 
-**RevocationRequestConfig** | Pointer to [**RevocabilityForRole**](RevocabilityForRole) |  | [optional] 
-**Segments** | Pointer to **[]string** | List of IDs of segments, if any, to which this Role is assigned. | [optional] 
+**Id** |  Pointer to **string** | The id of the Role. This field must be left null when creating an Role, otherwise a 400 Bad Request error will result. | [optional] 
+**Name** |  **string** | The human-readable display name of the Role | 
+**Created** |  Pointer to **time.Time** | Date the Role was created | [optional] [readonly] 
+**Modified** |  Pointer to **time.Time** | Date the Role was last modified. | [optional] [readonly] 
+**Description** |  Pointer to **NullableString** | A human-readable description of the Role | [optional] 
+**Owner** |  [**OwnerReference**](owner-reference) |  | 
+**AccessProfiles** |  Pointer to [**[]AccessProfileRef**](access-profile-ref) |  | [optional] 
+**Entitlements** |  Pointer to [**[]EntitlementRef**](entitlement-ref) |  | [optional] 
+**Membership** |  Pointer to [**NullableRoleMembershipSelector**](role-membership-selector) |  | [optional] 
+**LegacyMembershipInfo** |  Pointer to **map[string]interface{}** | This field is not directly modifiable and is generally expected to be *null*. In very rare instances, some Roles may have been created using membership selection criteria that are no longer fully supported. While these Roles will still work, they should be migrated to STANDARD or IDENTITY_LIST selection criteria. This field exists for informational purposes as an aid to such migration. | [optional] 
+**Enabled** |  Pointer to **bool** | Whether the Role is enabled or not. | [optional] [default to false]
+**Requestable** |  Pointer to **bool** | Whether the Role can be the target of access requests. | [optional] [default to false]
+**AccessRequestConfig** |  Pointer to [**RequestabilityForRole**](requestability-for-role) |  | [optional] 
+**RevocationRequestConfig** |  Pointer to [**RevocabilityForRole**](revocability-for-role) |  | [optional] 
+**Segments** |  Pointer to **[]string** | List of IDs of segments, if any, to which this Role is assigned. | [optional] 
 
 ## Methods
 

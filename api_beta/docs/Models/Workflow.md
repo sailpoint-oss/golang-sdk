@@ -15,17 +15,17 @@ tags: ['SDK', 'Software Development Kit', 'Workflow']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | The name of the workflow | [optional] 
-**Owner** | Pointer to [**WorkflowBodyOwner**](WorkflowBodyOwner) |  | [optional] 
-**Description** | Pointer to **string** | Description of what the workflow accomplishes | [optional] 
-**Definition** | Pointer to [**WorkflowDefinition**](WorkflowDefinition) |  | [optional] 
-**Enabled** | Pointer to **bool** | Enable or disable the workflow.  Workflows cannot be created in an enabled state. | [optional] [default to false]
-**Trigger** | Pointer to [**WorkflowTrigger**](WorkflowTrigger) |  | [optional] 
-**Id** | Pointer to **string** | Workflow ID. This is a UUID generated upon creation. | [optional] 
-**ExecutionCount** | Pointer to **int32** | The number of times this workflow has been executed. | [optional] 
-**FailureCount** | Pointer to **int32** | The number of times this workflow has failed during execution. | [optional] 
-**Created** | Pointer to **time.Time** | The date and time the workflow was created. | [optional] 
-**Creator** | Pointer to [**WorkflowAllOfCreator**](WorkflowAllOfCreator) |  | [optional] 
+**Name** |  Pointer to **string** | The name of the workflow | [optional] 
+**Owner** |  Pointer to [**WorkflowBodyOwner**](workflow-body-owner) |  | [optional] 
+**Description** |  Pointer to **string** | Description of what the workflow accomplishes | [optional] 
+**Definition** |  Pointer to [**WorkflowDefinition**](workflow-definition) |  | [optional] 
+**Enabled** |  Pointer to **bool** | Enable or disable the workflow.  Workflows cannot be created in an enabled state. | [optional] [default to false]
+**Trigger** |  Pointer to [**WorkflowTrigger**](workflow-trigger) |  | [optional] 
+**Id** |  Pointer to **string** | Workflow ID. This is a UUID generated upon creation. | [optional] 
+**ExecutionCount** |  Pointer to **int32** | The number of times this workflow has been executed. | [optional] 
+**FailureCount** |  Pointer to **int32** | The number of times this workflow has failed during execution. | [optional] 
+**Created** |  Pointer to **time.Time** | The date and time the workflow was created. | [optional] 
+**Creator** |  Pointer to [**WorkflowAllOfCreator**](workflow-all-of-creator) |  | [optional] 
 
 ## Methods
 

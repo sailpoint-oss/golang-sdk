@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'CertificationReferenceDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | DTO type of certification for review. | [optional] 
-**Id** | Pointer to **string** | ID of certification for review. | [optional] 
-**Name** | Pointer to **string** | Display name of certification for review. | [optional] 
+**Type** |  Pointer to **string** | DTO type of certification for review. | [optional] 
+**Id** |  Pointer to **string** | ID of certification for review. | [optional] 
+**Name** |  Pointer to **string** | Display name of certification for review. | [optional] 
 
 ## Methods
 

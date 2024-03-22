@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'SpConfigUrl']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Url** | Pointer to **string** | URL for the target object endpoint. | [optional] 
-**Query** | Pointer to **map[string]interface{}** | Any query parameters that are needed for the URL. | [optional] 
+**Url** |  Pointer to **string** | URL for the target object endpoint. | [optional] 
+**Query** |  Pointer to **map[string]interface{}** | Any query parameters that are needed for the URL. | [optional] 
 
 ## Methods
 

@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'KbaAuthResponseItem']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**QuestionId** | Pointer to **NullableString** | The KBA question id | [optional] 
-**IsVerified** | Pointer to **NullableBool** | Return true if verified | [optional] 
+**QuestionId** |  Pointer to **NullableString** | The KBA question id | [optional] 
+**IsVerified** |  Pointer to **NullableBool** | Return true if verified | [optional] 
 
 ## Methods
 

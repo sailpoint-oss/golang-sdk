@@ -15,11 +15,11 @@ tags: ['SDK', 'Software Development Kit', 'HttpConfig']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Url** | **string** | URL of the external/custom integration. | 
-**HttpDispatchMode** | [**HttpDispatchMode**](HttpDispatchMode) |  | 
-**HttpAuthenticationType** | Pointer to [**HttpAuthenticationType**](HttpAuthenticationType) |  | [optional] [default to HTTPAUTHENTICATIONTYPE_NO_AUTH]
-**BasicAuthConfig** | Pointer to [**NullableBasicAuthConfig**](BasicAuthConfig) |  | [optional] 
-**BearerTokenAuthConfig** | Pointer to [**NullableBearerTokenAuthConfig**](BearerTokenAuthConfig) |  | [optional] 
+**Url** |  **string** | URL of the external/custom integration. | 
+**HttpDispatchMode** |  [**HttpDispatchMode**](http-dispatch-mode) |  | 
+**HttpAuthenticationType** |  Pointer to [**HttpAuthenticationType**](http-authentication-type) |  | [optional] [default to HTTPAUTHENTICATIONTYPE_NO_AUTH]
+**BasicAuthConfig** |  Pointer to [**NullableBasicAuthConfig**](basic-auth-config) |  | [optional] 
+**BearerTokenAuthConfig** |  Pointer to [**NullableBearerTokenAuthConfig**](bearer-token-auth-config) |  | [optional] 
 
 ## Methods
 

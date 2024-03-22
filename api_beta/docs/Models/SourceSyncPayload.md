@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'SourceSyncPayload']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | Payload type. | 
-**DataJson** | **string** | Payload type. | 
+**Type** |  **string** | Payload type. | 
+**DataJson** |  **string** | Payload type. | 
 
 ## Methods
 

@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'EventBridgeConfig']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AwsAccount** | **string** | AWS Account Number (12-digit number) that has the EventBridge Partner Event Source Resource. | 
-**AwsRegion** | **string** | AWS Region that has the EventBridge Partner Event Source Resource. See https://docs.aws.amazon.com/general/latest/gr/rande.html for a full list of available values. | 
+**AwsAccount** |  **string** | AWS Account Number (12-digit number) that has the EventBridge Partner Event Source Resource. | 
+**AwsRegion** |  **string** | AWS Region that has the EventBridge Partner Event Source Resource. See https://docs.aws.amazon.com/general/latest/gr/rande.html for a full list of available values. | 
 
 ## Methods
 

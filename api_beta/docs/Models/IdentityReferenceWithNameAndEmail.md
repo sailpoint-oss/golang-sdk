@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'IdentityReferenceWithNameAndEmail']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | The type can only be IDENTITY. This is read-only | [optional] 
-**Id** | Pointer to **string** | Identity id. | [optional] 
-**Name** | Pointer to **string** | Human-readable display name of identity. This is read-only | [optional] 
-**Email** | Pointer to **string** | Email address of identity. This is read-only | [optional] 
+**Type** |  Pointer to **string** | The type can only be IDENTITY. This is read-only | [optional] 
+**Id** |  Pointer to **string** | Identity id. | [optional] 
+**Name** |  Pointer to **string** | Human-readable display name of identity. This is read-only | [optional] 
+**Email** |  Pointer to **string** | Email address of identity. This is read-only | [optional] 
 
 ## Methods
 

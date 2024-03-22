@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'CompleteInvocation']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Secret** | **string** | Unique invocation secret that was generated when the invocation was created. Required to authenticate to the endpoint. | 
-**Error** | Pointer to **string** | The error message to indicate a failed invocation or error if any. | [optional] 
-**Output** | **map[string]interface{}** | Trigger output to complete the invocation. Its schema is defined in the trigger definition. | 
+**Secret** |  **string** | Unique invocation secret that was generated when the invocation was created. Required to authenticate to the endpoint. | 
+**Error** |  Pointer to **string** | The error message to indicate a failed invocation or error if any. | [optional] 
+**Output** |  **map[string]interface{}** | Trigger output to complete the invocation. Its schema is defined in the trigger definition. | 
 
 ## Methods
 

@@ -15,13 +15,13 @@ tags: ['SDK', 'Software Development Kit', 'ConnectorDetail']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | The connector name | [optional] 
-**SourceConfigXml** | Pointer to **string** | XML representation of the source config data | [optional] 
-**SourceConfig** | Pointer to **string** | JSON representation of the source config data | [optional] 
-**DirectConnect** | Pointer to **bool** | true if the source is a direct connect source | [optional] 
-**FileUpload** | Pointer to **bool** | Connector config&#39;s file upload attribute, false if not there | [optional] 
-**UploadedFiles** | Pointer to **string** | List of uploaded file strings for the connector | [optional] 
-**ConnectorMetadata** | Pointer to **map[string]interface{}** | Object containing metadata pertinent to the UI to be used | [optional] 
+**Name** |  Pointer to **string** | The connector name | [optional] 
+**SourceConfigXml** |  Pointer to **string** | XML representation of the source config data | [optional] 
+**SourceConfig** |  Pointer to **string** | JSON representation of the source config data | [optional] 
+**DirectConnect** |  Pointer to **bool** | true if the source is a direct connect source | [optional] 
+**FileUpload** |  Pointer to **bool** | Connector config&#39;s file upload attribute, false if not there | [optional] 
+**UploadedFiles** |  Pointer to **string** | List of uploaded file strings for the connector | [optional] 
+**ConnectorMetadata** |  Pointer to **map[string]interface{}** | Object containing metadata pertinent to the UI to be used | [optional] 
 
 ## Methods
 

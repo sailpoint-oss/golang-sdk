@@ -15,13 +15,13 @@ tags: ['SDK', 'Software Development Kit', 'GetPersonalAccessTokenResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | The ID of the personal access token (to be used as the username for Basic Auth). | 
-**Name** | **string** | The name of the personal access token. Cannot be the same as other personal access tokens owned by a user. | 
-**Scope** | **[]string** | Scopes of the personal  access token. | 
-**Owner** | [**PatOwner**](PatOwner) |  | 
-**Created** | **time.Time** | The date and time, down to the millisecond, when this personal access token was created. | 
-**LastUsed** | Pointer to **NullableTime** | The date and time, down to the millisecond, when this personal access token was last used to generate an access token. This timestamp does not get updated on every PAT usage, but only once a day. This property can be useful for identifying which PATs are no longer actively used and can be removed. | [optional] 
-**Managed** | Pointer to **bool** | If true, this token is managed by the SailPoint platform, and is not visible in the user interface. For example, Workflows will create managed personal access tokens for users who create workflows. | [optional] [default to false]
+**Id** |  **string** | The ID of the personal access token (to be used as the username for Basic Auth). | 
+**Name** |  **string** | The name of the personal access token. Cannot be the same as other personal access tokens owned by a user. | 
+**Scope** |  **[]string** | Scopes of the personal  access token. | 
+**Owner** |  [**PatOwner**](pat-owner) |  | 
+**Created** |  **time.Time** | The date and time, down to the millisecond, when this personal access token was created. | 
+**LastUsed** |  Pointer to **NullableTime** | The date and time, down to the millisecond, when this personal access token was last used to generate an access token. This timestamp does not get updated on every PAT usage, but only once a day. This property can be useful for identifying which PATs are no longer actively used and can be removed. | [optional] 
+**Managed** |  Pointer to **bool** | If true, this token is managed by the SailPoint platform, and is not visible in the user interface. For example, Workflows will create managed personal access tokens for users who create workflows. | [optional] [default to false]
 
 ## Methods
 

@@ -15,14 +15,14 @@ tags: ['SDK', 'Software Development Kit', 'ListCompleteWorkflowLibrary200Respons
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Operator ID. | [optional] 
-**Name** | Pointer to **string** | Operator friendly name | [optional] 
-**Type** | Pointer to **string** | Operator type | [optional] 
-**Description** | Pointer to **string** | Description of the operator | [optional] 
-**FormFields** | Pointer to [**[]WorkflowLibraryFormFields**](WorkflowLibraryFormFields) | One or more inputs that the operator accepts | [optional] 
-**IsDynamicSchema** | Pointer to **bool** | Determines whether the dynamic output schema is returned in place of the action&#39;s output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields. | [optional] 
-**OutputSchema** | Pointer to **map[string]interface{}** | Defines the output schema, if any, that this action produces. | [optional] 
-**InputExample** | Pointer to **map[string]interface{}** | Example trigger payload if applicable | [optional] 
+**Id** |  Pointer to **string** | Operator ID. | [optional] 
+**Name** |  Pointer to **string** | Operator friendly name | [optional] 
+**Type** |  Pointer to **string** | Operator type | [optional] 
+**Description** |  Pointer to **string** | Description of the operator | [optional] 
+**FormFields** |  Pointer to [**[]WorkflowLibraryFormFields**](workflow-library-form-fields) | One or more inputs that the operator accepts | [optional] 
+**IsDynamicSchema** |  Pointer to **bool** | Determines whether the dynamic output schema is returned in place of the action&#39;s output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields. | [optional] 
+**OutputSchema** |  Pointer to **map[string]interface{}** | Defines the output schema, if any, that this action produces. | [optional] 
+**InputExample** |  Pointer to **map[string]interface{}** | Example trigger payload if applicable | [optional] 
 
 ## Methods
 

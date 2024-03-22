@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'ReviewReassign']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Reassign** | [**[]ReassignReference**](ReassignReference) |  | 
-**ReassignTo** | **string** | The ID of the identity to which the certification is reassigned | 
-**Reason** | **string** | The reason comment for why the reassign was made | 
+**Reassign** |  [**[]ReassignReference**](reassign-reference) |  | 
+**ReassignTo** |  **string** | The ID of the identity to which the certification is reassigned | 
+**Reason** |  **string** | The reason comment for why the reassign was made | 
 
 ## Methods
 

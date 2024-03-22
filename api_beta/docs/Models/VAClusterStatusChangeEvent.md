@@ -15,11 +15,11 @@ tags: ['SDK', 'Software Development Kit', 'VAClusterStatusChangeEvent']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Created** | **time.Time** | The date and time the status change occurred. | 
-**Type** | **map[string]interface{}** | The type of the object that initiated this event. | 
-**Application** | [**VAClusterStatusChangeEventApplication**](VAClusterStatusChangeEventApplication) |  | 
-**HealthCheckResult** | [**VAClusterStatusChangeEventHealthCheckResult**](VAClusterStatusChangeEventHealthCheckResult) |  | 
-**PreviousHealthCheckResult** | [**VAClusterStatusChangeEventPreviousHealthCheckResult**](VAClusterStatusChangeEventPreviousHealthCheckResult) |  | 
+**Created** |  **time.Time** | The date and time the status change occurred. | 
+**Type** |  **map[string]interface{}** | The type of the object that initiated this event. | 
+**Application** |  [**VAClusterStatusChangeEventApplication**](va-cluster-status-change-event-application) |  | 
+**HealthCheckResult** |  [**VAClusterStatusChangeEventHealthCheckResult**](va-cluster-status-change-event-health-check-result) |  | 
+**PreviousHealthCheckResult** |  [**VAClusterStatusChangeEventPreviousHealthCheckResult**](va-cluster-status-change-event-previous-health-check-result) |  | 
 
 ## Methods
 

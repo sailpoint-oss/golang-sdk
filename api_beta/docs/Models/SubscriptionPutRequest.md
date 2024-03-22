@@ -15,14 +15,14 @@ tags: ['SDK', 'Software Development Kit', 'SubscriptionPutRequest']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | Subscription name. | [optional] 
-**Description** | Pointer to **string** | Subscription description. | [optional] 
-**Type** | Pointer to [**SubscriptionType**](SubscriptionType) |  | [optional] 
-**ResponseDeadline** | Pointer to **string** | Deadline for completing REQUEST_RESPONSE trigger invocation, represented in ISO-8601 duration format. | [optional] [default to "PT1H"]
-**HttpConfig** | Pointer to [**HttpConfig**](HttpConfig) |  | [optional] 
-**EventBridgeConfig** | Pointer to [**EventBridgeConfig**](EventBridgeConfig) |  | [optional] 
-**Enabled** | Pointer to **bool** | Whether subscription should receive real-time trigger invocations or not.  Test trigger invocations are always enabled regardless of this option. | [optional] [default to true]
-**Filter** | Pointer to **string** | JSONPath filter to conditionally invoke trigger when expression evaluates to true. | [optional] 
+**Name** |  Pointer to **string** | Subscription name. | [optional] 
+**Description** |  Pointer to **string** | Subscription description. | [optional] 
+**Type** |  Pointer to [**SubscriptionType**](subscription-type) |  | [optional] 
+**ResponseDeadline** |  Pointer to **string** | Deadline for completing REQUEST_RESPONSE trigger invocation, represented in ISO-8601 duration format. | [optional] [default to "PT1H"]
+**HttpConfig** |  Pointer to [**HttpConfig**](http-config) |  | [optional] 
+**EventBridgeConfig** |  Pointer to [**EventBridgeConfig**](event-bridge-config) |  | [optional] 
+**Enabled** |  Pointer to **bool** | Whether subscription should receive real-time trigger invocations or not.  Test trigger invocations are always enabled regardless of this option. | [optional] [default to true]
+**Filter** |  Pointer to **string** | JSONPath filter to conditionally invoke trigger when expression evaluates to true. | [optional] 
 
 ## Methods
 

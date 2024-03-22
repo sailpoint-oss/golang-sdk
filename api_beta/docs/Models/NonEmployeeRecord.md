@@ -15,19 +15,19 @@ tags: ['SDK', 'Software Development Kit', 'NonEmployeeRecord']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Non-Employee record id. | [optional] 
-**AccountName** | Pointer to **string** | Requested identity account name. | [optional] 
-**FirstName** | Pointer to **string** | Non-Employee&#39;s first name. | [optional] 
-**LastName** | Pointer to **string** | Non-Employee&#39;s last name. | [optional] 
-**Email** | Pointer to **string** | Non-Employee&#39;s email. | [optional] 
-**Phone** | Pointer to **string** | Non-Employee&#39;s phone. | [optional] 
-**Manager** | Pointer to **string** | The account ID of a valid identity to serve as this non-employee&#39;s manager. | [optional] 
-**SourceId** | Pointer to **string** | Non-Employee&#39;s source id. | [optional] 
-**Data** | Pointer to **map[string]string** | Attribute blob/bag for a non-employee. | [optional] 
-**StartDate** | Pointer to **time.Time** | Non-Employee employment start date. | [optional] 
-**EndDate** | Pointer to **time.Time** | Non-Employee employment end date. | [optional] 
-**Modified** | Pointer to **time.Time** | When the request was last modified. | [optional] 
-**Created** | Pointer to **time.Time** | When the request was created. | [optional] 
+**Id** |  Pointer to **string** | Non-Employee record id. | [optional] 
+**AccountName** |  Pointer to **string** | Requested identity account name. | [optional] 
+**FirstName** |  Pointer to **string** | Non-Employee&#39;s first name. | [optional] 
+**LastName** |  Pointer to **string** | Non-Employee&#39;s last name. | [optional] 
+**Email** |  Pointer to **string** | Non-Employee&#39;s email. | [optional] 
+**Phone** |  Pointer to **string** | Non-Employee&#39;s phone. | [optional] 
+**Manager** |  Pointer to **string** | The account ID of a valid identity to serve as this non-employee&#39;s manager. | [optional] 
+**SourceId** |  Pointer to **string** | Non-Employee&#39;s source id. | [optional] 
+**Data** |  Pointer to **map[string]string** | Attribute blob/bag for a non-employee. | [optional] 
+**StartDate** |  Pointer to **time.Time** | Non-Employee employment start date. | [optional] 
+**EndDate** |  Pointer to **time.Time** | Non-Employee employment end date. | [optional] 
+**Modified** |  Pointer to **time.Time** | When the request was last modified. | [optional] 
+**Created** |  Pointer to **time.Time** | When the request was created. | [optional] 
 
 ## Methods
 

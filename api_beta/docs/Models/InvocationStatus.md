@@ -15,14 +15,14 @@ tags: ['SDK', 'Software Development Kit', 'InvocationStatus']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Invocation ID | 
-**TriggerId** | **string** | Trigger ID | 
-**SubscriptionId** | **string** | Subscription ID | 
-**Type** | [**InvocationStatusType**](InvocationStatusType) |  | 
-**Created** | **time.Time** | Invocation created timestamp. ISO-8601 in UTC. | 
-**Completed** | Pointer to **time.Time** | Invocation completed timestamp; empty fields imply invocation is in-flight or not completed. ISO-8601 in UTC. | [optional] 
-**StartInvocationInput** | [**StartInvocationInput**](StartInvocationInput) |  | 
-**CompleteInvocationInput** | Pointer to [**CompleteInvocationInput**](CompleteInvocationInput) |  | [optional] 
+**Id** |  **string** | Invocation ID | 
+**TriggerId** |  **string** | Trigger ID | 
+**SubscriptionId** |  **string** | Subscription ID | 
+**Type** |  [**InvocationStatusType**](invocation-status-type) |  | 
+**Created** |  **time.Time** | Invocation created timestamp. ISO-8601 in UTC. | 
+**Completed** |  Pointer to **time.Time** | Invocation completed timestamp; empty fields imply invocation is in-flight or not completed. ISO-8601 in UTC. | [optional] 
+**StartInvocationInput** |  [**StartInvocationInput**](start-invocation-input) |  | 
+**CompleteInvocationInput** |  Pointer to [**CompleteInvocationInput**](complete-invocation-input) |  | [optional] 
 
 ## Methods
 

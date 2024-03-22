@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'TaskStatusMessage']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | Type of the message | 
-**LocalizedText** | [**LocalizedMessage**](LocalizedMessage) |  | 
-**Key** | **string** | Key of the message | 
-**Parameters** | **[]map[string]interface{}** | Message parameters for internationalization | 
+**Type** |  **string** | Type of the message | 
+**LocalizedText** |  [**LocalizedMessage**](localized-message) |  | 
+**Key** |  **string** | Key of the message | 
+**Parameters** |  **[]map[string]interface{}** | Message parameters for internationalization | 
 
 ## Methods
 

@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'FormError']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | Pointer to **string** | Key is the technical key | [optional] 
-**Messages** | Pointer to [**[]ErrorMessage**](ErrorMessage) | Messages is a list of web.ErrorMessage items | [optional] 
-**Value** | Pointer to **map[string]interface{}** | Value is the value associated with a Key | [optional] 
+**Key** |  Pointer to **string** | Key is the technical key | [optional] 
+**Messages** |  Pointer to [**[]ErrorMessage**](error-message) | Messages is a list of web.ErrorMessage items | [optional] 
+**Value** |  Pointer to **map[string]interface{}** | Value is the value associated with a Key | [optional] 
 
 ## Methods
 

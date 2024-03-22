@@ -15,17 +15,17 @@ tags: ['SDK', 'Software Development Kit', 'TemplateDtoDefault']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | Pointer to **string** | The key of the default template | [optional] 
-**Name** | Pointer to **string** | The name of the default template | [optional] 
-**Medium** | Pointer to **string** | The message medium. More mediums may be added in the future. | [optional] 
-**Locale** | Pointer to **string** | The locale for the message text, a BCP 47 language tag. | [optional] 
-**Subject** | Pointer to **NullableString** | The subject of the default template | [optional] 
-**Header** | Pointer to **NullableString** | The header value is now located within the body field. If included with non-null values, will result in a 400. | [optional] 
-**Body** | Pointer to **string** | The body of the default template | [optional] 
-**Footer** | Pointer to **NullableString** | The footer value is now located within the body field. If included with non-null values, will result in a 400. | [optional] 
-**From** | Pointer to **NullableString** | The \&quot;From:\&quot; address of the default template | [optional] 
-**ReplyTo** | Pointer to **NullableString** | The \&quot;Reply To\&quot; field of the default template | [optional] 
-**Description** | Pointer to **NullableString** | The description of the default template | [optional] 
+**Key** |  Pointer to **string** | The key of the default template | [optional] 
+**Name** |  Pointer to **string** | The name of the default template | [optional] 
+**Medium** |  Pointer to **string** | The message medium. More mediums may be added in the future. | [optional] 
+**Locale** |  Pointer to **string** | The locale for the message text, a BCP 47 language tag. | [optional] 
+**Subject** |  Pointer to **NullableString** | The subject of the default template | [optional] 
+**Header** |  Pointer to **NullableString** | The header value is now located within the body field. If included with non-null values, will result in a 400. | [optional] 
+**Body** |  Pointer to **string** | The body of the default template | [optional] 
+**Footer** |  Pointer to **NullableString** | The footer value is now located within the body field. If included with non-null values, will result in a 400. | [optional] 
+**From** |  Pointer to **NullableString** | The \&quot;From:\&quot; address of the default template | [optional] 
+**ReplyTo** |  Pointer to **NullableString** | The \&quot;Reply To\&quot; field of the default template | [optional] 
+**Description** |  Pointer to **NullableString** | The description of the default template | [optional] 
 
 ## Methods
 

@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'ConnectedObject']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to [**ConnectedObjectType**](ConnectedObjectType) |  | [optional] 
-**Id** | Pointer to **string** | ID of the object to which this reference applies | [optional] 
-**Name** | Pointer to **string** | Human-readable name of Connected object | [optional] 
-**Description** | Pointer to **string** | Description of the Connected object. | [optional] 
+**Type** |  Pointer to [**ConnectedObjectType**](connected-object-type) |  | [optional] 
+**Id** |  Pointer to **string** | ID of the object to which this reference applies | [optional] 
+**Name** |  Pointer to **string** | Human-readable name of Connected object | [optional] 
+**Description** |  Pointer to **string** | Description of the Connected object. | [optional] 
 
 ## Methods
 

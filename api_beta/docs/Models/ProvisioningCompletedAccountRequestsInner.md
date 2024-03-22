@@ -15,13 +15,13 @@ tags: ['SDK', 'Software Development Kit', 'ProvisioningCompletedAccountRequestsI
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Source** | [**ProvisioningCompletedAccountRequestsInnerSource**](ProvisioningCompletedAccountRequestsInnerSource) |  | 
-**AccountId** | Pointer to **string** | The unique idenfier of the account being provisioned. | [optional] 
-**AccountOperation** | **string** | The provisioning operation; typically Create, Modify, Enable, Disable, Unlock, or Delete. | 
-**ProvisioningResult** | **map[string]interface{}** | The overall result of the provisioning transaction; this could be success, pending, failed, etc. | 
-**ProvisioningTarget** | **string** | The name of the provisioning channel selected; this could be the same as the source, or could be a Service Desk Integration Module (SDIM). | 
-**TicketId** | Pointer to **NullableString** | A reference to a tracking number, if this is sent to a Service Desk Integration Module (SDIM). | [optional] 
-**AttributeRequests** | Pointer to [**[]ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner**](ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner) | A list of attributes as part of the provisioning transaction. | [optional] 
+**Source** |  [**ProvisioningCompletedAccountRequestsInnerSource**](provisioning-completed-account-requests-inner-source) |  | 
+**AccountId** |  Pointer to **string** | The unique idenfier of the account being provisioned. | [optional] 
+**AccountOperation** |  **string** | The provisioning operation; typically Create, Modify, Enable, Disable, Unlock, or Delete. | 
+**ProvisioningResult** |  **map[string]interface{}** | The overall result of the provisioning transaction; this could be success, pending, failed, etc. | 
+**ProvisioningTarget** |  **string** | The name of the provisioning channel selected; this could be the same as the source, or could be a Service Desk Integration Module (SDIM). | 
+**TicketId** |  Pointer to **NullableString** | A reference to a tracking number, if this is sent to a Service Desk Integration Module (SDIM). | [optional] 
+**AttributeRequests** |  Pointer to [**[]ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner**](provisioning-completed-account-requests-inner-attribute-requests-inner) | A list of attributes as part of the provisioning transaction. | [optional] 
 
 ## Methods
 

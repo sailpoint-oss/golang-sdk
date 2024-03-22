@@ -15,11 +15,11 @@ tags: ['SDK', 'Software Development Kit', 'DkimAttributes']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | UUID associated with domain to be verified | [optional] 
-**Address** | Pointer to **string** | The identity or domain address | [optional] 
-**DkimEnabled** | Pointer to **bool** | Whether or not DKIM has been enabled for this domain / identity | [optional] [default to false]
-**DkimTokens** | Pointer to **[]string** | The tokens to be added to a DNS for verification | [optional] 
-**DkimVerificationStatus** | Pointer to **string** | The current status if the domain /identity has been verified. Ie Success, Failed, Pending | [optional] 
+**Id** |  Pointer to **string** | UUID associated with domain to be verified | [optional] 
+**Address** |  Pointer to **string** | The identity or domain address | [optional] 
+**DkimEnabled** |  Pointer to **bool** | Whether or not DKIM has been enabled for this domain / identity | [optional] [default to false]
+**DkimTokens** |  Pointer to **[]string** | The tokens to be added to a DNS for verification | [optional] 
+**DkimVerificationStatus** |  Pointer to **string** | The current status if the domain /identity has been verified. Ie Success, Failed, Pending | [optional] 
 
 ## Methods
 

@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'AccessItemRequestedForDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | DTO type of identity the access item is requested for. | [optional] 
-**Id** | Pointer to **string** | ID of identity the access item is requested for. | [optional] 
-**Name** | Pointer to **string** | Human-readable display name of identity the access item is requested for. | [optional] 
+**Type** |  Pointer to **string** | DTO type of identity the access item is requested for. | [optional] 
+**Id** |  Pointer to **string** | ID of identity the access item is requested for. | [optional] 
+**Name** |  Pointer to **string** | Human-readable display name of identity the access item is requested for. | [optional] 
 
 ## Methods
 

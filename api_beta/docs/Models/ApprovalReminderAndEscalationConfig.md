@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'ApprovalReminderAndEscalationConfig']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DaysUntilEscalation** | Pointer to **NullableInt32** | Number of days to wait before the first reminder. If no reminders are configured, then this is the number of days to wait before escalation. | [optional] 
-**DaysBetweenReminders** | Pointer to **NullableInt32** | Number of days to wait between reminder notifications. | [optional] 
-**MaxReminders** | Pointer to **NullableInt32** | Maximum number of reminder notification to send to the reviewer before approval escalation. | [optional] 
-**FallbackApproverRef** | Pointer to [**NullableIdentityReferenceWithNameAndEmail**](IdentityReferenceWithNameAndEmail) |  | [optional] 
+**DaysUntilEscalation** |  Pointer to **NullableInt32** | Number of days to wait before the first reminder. If no reminders are configured, then this is the number of days to wait before escalation. | [optional] 
+**DaysBetweenReminders** |  Pointer to **NullableInt32** | Number of days to wait between reminder notifications. | [optional] 
+**MaxReminders** |  Pointer to **NullableInt32** | Maximum number of reminder notification to send to the reviewer before approval escalation. | [optional] 
+**FallbackApproverRef** |  Pointer to [**NullableIdentityReferenceWithNameAndEmail**](identity-reference-with-name-and-email) |  | [optional] 
 
 ## Methods
 

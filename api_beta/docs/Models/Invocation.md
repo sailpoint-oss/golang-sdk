@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'Invocation']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Invocation ID | [optional] 
-**TriggerId** | Pointer to **string** | Trigger ID | [optional] 
-**Secret** | Pointer to **string** | Unique invocation secret. | [optional] 
-**ContentJson** | Pointer to **map[string]interface{}** | JSON map of invocation metadata. | [optional] 
+**Id** |  Pointer to **string** | Invocation ID | [optional] 
+**TriggerId** |  Pointer to **string** | Trigger ID | [optional] 
+**Secret** |  Pointer to **string** | Unique invocation secret. | [optional] 
+**ContentJson** |  Pointer to **map[string]interface{}** | JSON map of invocation metadata. | [optional] 
 
 ## Methods
 

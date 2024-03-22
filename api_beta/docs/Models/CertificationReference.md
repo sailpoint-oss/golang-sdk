@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'CertificationReference']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | DTO type of certification for review. | [optional] 
-**Id** | Pointer to **string** | ID of certification for review. | [optional] 
-**Name** | Pointer to **string** | Display name of certification for review. | [optional] 
-**Reviewer** | Pointer to [**Reviewer**](Reviewer) |  | [optional] 
+**Type** |  Pointer to **string** | DTO type of certification for review. | [optional] 
+**Id** |  Pointer to **string** | ID of certification for review. | [optional] 
+**Name** |  Pointer to **string** | Display name of certification for review. | [optional] 
+**Reviewer** |  Pointer to [**Reviewer**](reviewer) |  | [optional] 
 
 ## Methods
 

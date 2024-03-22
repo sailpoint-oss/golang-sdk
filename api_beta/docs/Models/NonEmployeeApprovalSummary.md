@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'NonEmployeeApprovalSummary']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Approved** | Pointer to **float32** | The number of approved non-employee approval requests. | [optional] 
-**Pending** | Pointer to **float32** | The number of pending non-employee approval requests. | [optional] 
-**Rejected** | Pointer to **float32** | The number of rejected non-employee approval requests. | [optional] 
+**Approved** |  Pointer to **float32** | The number of approved non-employee approval requests. | [optional] 
+**Pending** |  Pointer to **float32** | The number of pending non-employee approval requests. | [optional] 
+**Rejected** |  Pointer to **float32** | The number of rejected non-employee approval requests. | [optional] 
 
 ## Methods
 

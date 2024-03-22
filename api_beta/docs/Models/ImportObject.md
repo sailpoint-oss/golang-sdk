@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'ImportObject']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | DTO type of object created or updated by import. | [optional] 
-**Id** | Pointer to **string** | ID of object created or updated by import. | [optional] 
-**Name** | Pointer to **string** | Display name of object created or updated by import. | [optional] 
+**Type** |  Pointer to **string** | DTO type of object created or updated by import. | [optional] 
+**Id** |  Pointer to **string** | ID of object created or updated by import. | [optional] 
+**Name** |  Pointer to **string** | Display name of object created or updated by import. | [optional] 
 
 ## Methods
 

@@ -15,12 +15,12 @@ tags: ['SDK', 'Software Development Kit', 'FieldDetails']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | Name of the FormItem | [optional] 
-**DisplayName** | Pointer to **string** | Display name of the field | [optional] 
-**DisplayType** | Pointer to **string** | Type of the field to display | [optional] 
-**Required** | Pointer to **bool** | True if the field is required | [optional] 
-**AllowedValuesList** | Pointer to **[]map[string]interface{}** | List of allowed values for the field | [optional] 
-**Value** | Pointer to **map[string]interface{}** | Value of the field | [optional] 
+**Name** |  Pointer to **string** | Name of the FormItem | [optional] 
+**DisplayName** |  Pointer to **string** | Display name of the field | [optional] 
+**DisplayType** |  Pointer to **string** | Type of the field to display | [optional] 
+**Required** |  Pointer to **bool** | True if the field is required | [optional] 
+**AllowedValuesList** |  Pointer to **[]map[string]interface{}** | List of allowed values for the field | [optional] 
+**Value** |  Pointer to **map[string]interface{}** | Value of the field | [optional] 
 
 ## Methods
 

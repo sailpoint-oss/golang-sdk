@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'EmailStatusDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** |  | [optional] 
-**Email** | Pointer to **string** |  | [optional] 
-**VerificationStatus** | Pointer to **string** |  | [optional] 
+**Id** |  Pointer to **string** |  | [optional] 
+**Email** |  Pointer to **string** |  | [optional] 
+**VerificationStatus** |  Pointer to **string** |  | [optional] 
 
 ## Methods
 

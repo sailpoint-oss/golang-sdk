@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'Transform']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** | Unique name of this transform | 
-**Type** | **string** | The type of transform operation | 
-**Attributes** | **map[string]interface{}** | Meta-data about the transform. Values in this list are specific to the type of transform to be executed. | 
+**Name** |  **string** | Unique name of this transform | 
+**Type** |  **string** | The type of transform operation | 
+**Attributes** |  **map[string]interface{}** | Meta-data about the transform. Values in this list are specific to the type of transform to be executed. | 
 
 ## Methods
 

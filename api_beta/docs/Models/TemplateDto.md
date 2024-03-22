@@ -15,20 +15,20 @@ tags: ['SDK', 'Software Development Kit', 'TemplateDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | **string** | The key of the template | 
-**Name** | Pointer to **string** | The name of the Task Manager Subscription | [optional] 
-**Medium** | **string** | The message medium. More mediums may be added in the future. | 
-**Locale** | **string** | The locale for the message text, a BCP 47 language tag. | 
-**Subject** | Pointer to **string** | The subject line in the template | [optional] 
-**Header** | Pointer to **NullableString** | The header value is now located within the body field. If included with non-null values, will result in a 400. | [optional] 
-**Body** | Pointer to **string** | The body in the template | [optional] 
-**Footer** | Pointer to **NullableString** | The footer value is now located within the body field. If included with non-null values, will result in a 400. | [optional] 
-**From** | Pointer to **string** | The \&quot;From:\&quot; address in the template | [optional] 
-**ReplyTo** | Pointer to **string** | The \&quot;Reply To\&quot; line in the template | [optional] 
-**Description** | Pointer to **string** | The description in the template | [optional] 
-**Id** | Pointer to **string** | This is auto-generated. | [optional] 
-**Created** | Pointer to **time.Time** | The time when this template is created. This is auto-generated. | [optional] 
-**Modified** | Pointer to **time.Time** | The time when this template was last modified. This is auto-generated. | [optional] 
+**Key** |  **string** | The key of the template | 
+**Name** |  Pointer to **string** | The name of the Task Manager Subscription | [optional] 
+**Medium** |  **string** | The message medium. More mediums may be added in the future. | 
+**Locale** |  **string** | The locale for the message text, a BCP 47 language tag. | 
+**Subject** |  Pointer to **string** | The subject line in the template | [optional] 
+**Header** |  Pointer to **NullableString** | The header value is now located within the body field. If included with non-null values, will result in a 400. | [optional] 
+**Body** |  Pointer to **string** | The body in the template | [optional] 
+**Footer** |  Pointer to **NullableString** | The footer value is now located within the body field. If included with non-null values, will result in a 400. | [optional] 
+**From** |  Pointer to **string** | The \&quot;From:\&quot; address in the template | [optional] 
+**ReplyTo** |  Pointer to **string** | The \&quot;Reply To\&quot; line in the template | [optional] 
+**Description** |  Pointer to **string** | The description in the template | [optional] 
+**Id** |  Pointer to **string** | This is auto-generated. | [optional] 
+**Created** |  Pointer to **time.Time** | The time when this template is created. This is auto-generated. | [optional] 
+**Modified** |  Pointer to **time.Time** | The time when this template was last modified. This is auto-generated. | [optional] 
 
 ## Methods
 

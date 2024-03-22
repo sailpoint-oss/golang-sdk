@@ -15,14 +15,14 @@ tags: ['SDK', 'Software Development Kit', 'Trigger']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique identifier of the trigger. | 
-**Name** | **string** | Trigger Name. | 
-**Type** | [**TriggerType**](TriggerType) |  | 
-**Description** | Pointer to **string** | Trigger Description. | [optional] 
-**InputSchema** | **string** | The JSON schema of the payload that will be sent by the trigger to the subscribed service. | 
-**ExampleInput** | [**TriggerExampleInput**](TriggerExampleInput) |  | 
-**OutputSchema** | Pointer to **NullableString** | The JSON schema of the response that will be sent by the subscribed service to the trigger in response to an event.  This only applies to a trigger type of &#x60;REQUEST_RESPONSE&#x60;. | [optional] 
-**ExampleOutput** | Pointer to [**NullableTriggerExampleOutput**](TriggerExampleOutput) |  | [optional] 
+**Id** |  **string** | Unique identifier of the trigger. | 
+**Name** |  **string** | Trigger Name. | 
+**Type** |  [**TriggerType**](trigger-type) |  | 
+**Description** |  Pointer to **string** | Trigger Description. | [optional] 
+**InputSchema** |  **string** | The JSON schema of the payload that will be sent by the trigger to the subscribed service. | 
+**ExampleInput** |  [**TriggerExampleInput**](trigger-example-input) |  | 
+**OutputSchema** |  Pointer to **NullableString** | The JSON schema of the response that will be sent by the subscribed service to the trigger in response to an event.  This only applies to a trigger type of &#x60;REQUEST_RESPONSE&#x60;. | [optional] 
+**ExampleOutput** |  Pointer to [**NullableTriggerExampleOutput**](trigger-example-output) |  | [optional] 
 
 ## Methods
 

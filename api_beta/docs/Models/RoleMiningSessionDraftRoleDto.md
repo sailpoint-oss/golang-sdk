@@ -15,13 +15,13 @@ tags: ['SDK', 'Software Development Kit', 'RoleMiningSessionDraftRoleDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Description** | Pointer to **string** | Draft role description | [optional] 
-**IdentityIds** | Pointer to **[]string** | The list of identities for this role mining session. | [optional] 
-**EntitlementIds** | Pointer to **[]string** | The list of entitlement ids for this role mining session. | [optional] 
-**ExcludedEntitlements** | Pointer to **[]string** | The list of excluded entitlement ids. | [optional] 
-**Modified** | Pointer to **time.Time** | Last modified date | [optional] 
-**Name** | Pointer to **string** | Name of the draft role | [optional] 
-**Type** | Pointer to [**RoleMiningRoleType**](RoleMiningRoleType) |  | [optional] 
+**Description** |  Pointer to **string** | Draft role description | [optional] 
+**IdentityIds** |  Pointer to **[]string** | The list of identities for this role mining session. | [optional] 
+**EntitlementIds** |  Pointer to **[]string** | The list of entitlement ids for this role mining session. | [optional] 
+**ExcludedEntitlements** |  Pointer to **[]string** | The list of excluded entitlement ids. | [optional] 
+**Modified** |  Pointer to **time.Time** | Last modified date | [optional] 
+**Name** |  Pointer to **string** | Name of the draft role | [optional] 
+**Type** |  Pointer to [**RoleMiningRoleType**](role-mining-role-type) |  | [optional] 
 
 ## Methods
 

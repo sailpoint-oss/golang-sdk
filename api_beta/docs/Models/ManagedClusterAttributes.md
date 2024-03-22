@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'ManagedClusterAttributes']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Queue** | Pointer to [**ManagedClusterQueue**](ManagedClusterQueue) |  | [optional] 
-**Keystore** | Pointer to **NullableString** | ManagedCluster keystore for spConnectCluster type | [optional] 
+**Queue** |  Pointer to [**ManagedClusterQueue**](managed-cluster-queue) |  | [optional] 
+**Keystore** |  Pointer to **NullableString** | ManagedCluster keystore for spConnectCluster type | [optional] 
 
 ## Methods
 

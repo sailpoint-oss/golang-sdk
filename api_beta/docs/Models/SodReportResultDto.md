@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'SodReportResultDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | SOD policy violation report result DTO type. | [optional] 
-**Id** | Pointer to **string** | SOD policy violation report result ID. | [optional] 
-**Name** | Pointer to **string** | Human-readable name of the SOD policy violation report result. | [optional] 
+**Type** |  Pointer to **string** | SOD policy violation report result DTO type. | [optional] 
+**Id** |  Pointer to **string** | SOD policy violation report result ID. | [optional] 
+**Name** |  Pointer to **string** | Human-readable name of the SOD policy violation report result. | [optional] 
 
 ## Methods
 

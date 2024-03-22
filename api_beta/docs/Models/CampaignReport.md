@@ -15,12 +15,12 @@ tags: ['SDK', 'Software Development Kit', 'CampaignReport']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | SOD policy violation report result DTO type. | [optional] 
-**Id** | Pointer to **string** | SOD policy violation report result ID. | [optional] 
-**Name** | Pointer to **string** | Human-readable name of the SOD policy violation report result. | [optional] 
-**Status** | Pointer to **string** | Status of a SOD policy violation report. | [optional] 
-**ReportType** | [**ReportType**](ReportType) |  | 
-**LastRunAt** | Pointer to **time.Time** | The most recent date and time this report was run | [optional] [readonly] 
+**Type** |  Pointer to **string** | SOD policy violation report result DTO type. | [optional] 
+**Id** |  Pointer to **string** | SOD policy violation report result ID. | [optional] 
+**Name** |  Pointer to **string** | Human-readable name of the SOD policy violation report result. | [optional] 
+**Status** |  Pointer to **string** | Status of a SOD policy violation report. | [optional] 
+**ReportType** |  [**ReportType**](report-type) |  | 
+**LastRunAt** |  Pointer to **time.Time** | The most recent date and time this report was run | [optional] [readonly] 
 
 ## Methods
 

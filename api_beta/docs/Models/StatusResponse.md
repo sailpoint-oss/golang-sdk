@@ -15,11 +15,11 @@ tags: ['SDK', 'Software Development Kit', 'StatusResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | ID of the source | [optional] [readonly] 
-**Name** | Pointer to **string** | Name of the source | [optional] [readonly] 
-**Status** | Pointer to **string** | The status of the health check. | [optional] [readonly] 
-**ElapsedMillis** | Pointer to **int32** | The number of milliseconds spent on the entire request. | [optional] [readonly] 
-**Details** | Pointer to **map[string]interface{}** | The document contains the results of the health check. The schema of this document depends on the type of source used.  | [optional] [readonly] 
+**Id** |  Pointer to **string** | ID of the source | [optional] [readonly] 
+**Name** |  Pointer to **string** | Name of the source | [optional] [readonly] 
+**Status** |  Pointer to **string** | The status of the health check. | [optional] [readonly] 
+**ElapsedMillis** |  Pointer to **int32** | The number of milliseconds spent on the entire request. | [optional] [readonly] 
+**Details** |  Pointer to **map[string]interface{}** | The document contains the results of the health check. The schema of this document depends on the type of source used.  | [optional] [readonly] 
 
 ## Methods
 

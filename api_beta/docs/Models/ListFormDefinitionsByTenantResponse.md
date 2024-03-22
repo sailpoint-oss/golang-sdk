@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'ListFormDefinitionsByTenantResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Count** | Pointer to **int64** | Count number of results. | [optional] 
-**Results** | Pointer to [**[]FormDefinitionResponse**](FormDefinitionResponse) | List of FormDefinitionResponse items. | [optional] 
+**Count** |  Pointer to **int64** | Count number of results. | [optional] 
+**Results** |  Pointer to [**[]FormDefinitionResponse**](form-definition-response) | List of FormDefinitionResponse items. | [optional] 
 
 ## Methods
 

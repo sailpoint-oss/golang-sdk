@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'Error']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DetailCode** | Pointer to **string** | DetailCode is the text of the status code returned | [optional] 
-**Messages** | Pointer to [**[]ErrorMessage**](ErrorMessage) |  | [optional] 
-**TrackingId** | Pointer to **string** | TrackingID is the request tracking unique identifier | [optional] 
+**DetailCode** |  Pointer to **string** | DetailCode is the text of the status code returned | [optional] 
+**Messages** |  Pointer to [**[]ErrorMessage**](error-message) |  | [optional] 
+**TrackingId** |  Pointer to **string** | TrackingID is the request tracking unique identifier | [optional] 
 
 ## Methods
 

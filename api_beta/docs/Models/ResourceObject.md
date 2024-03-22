@@ -15,19 +15,19 @@ tags: ['SDK', 'Software Development Kit', 'ResourceObject']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Instance** | Pointer to **string** | Identifier of the specific instance where this object resides. | [optional] [readonly] 
-**Identity** | Pointer to **string** | Native identity of the object in the Source. | [optional] [readonly] 
-**Uuid** | Pointer to **string** | Universal unique identifier of the object in the Source. | [optional] [readonly] 
-**PreviousIdentity** | Pointer to **string** | Native identity that the object has previously. | [optional] [readonly] 
-**Name** | Pointer to **string** | Display name for this object. | [optional] [readonly] 
-**ObjectType** | Pointer to **string** | Type of object. | [optional] [readonly] 
-**Incomplete** | Pointer to **bool** | A flag indicating that this is an incomplete object. Used in special cases where the connector has to return account information in several phases and the objects might not have a complete set of all account attributes. The attributes in this object will replace the corresponding attributes in the Link, but no other Link attributes will be changed. | [optional] [readonly] 
-**Incremental** | Pointer to **bool** | A flag indicating that this is an incremental change object. This is similar to incomplete but it also means that the values of any multi-valued attributes in this object should be merged with the existing values in the Link rather than replacing the existing Link value. | [optional] [readonly] 
-**Delete** | Pointer to **bool** | A flag indicating that this object has been deleted. This is set only when doing delta aggregation and the connector supports detection of native deletes. | [optional] [readonly] 
-**Remove** | Pointer to **bool** | A flag set indicating that the values in the attributes represent things to remove rather than things to add. Setting this implies incremental. The values which are always for multi-valued attributes are removed from the current values. | [optional] [readonly] 
-**Missing** | Pointer to **[]string** | A list of attribute names that are not included in this object. This is only used with SMConnector and will only contain \&quot;groups\&quot;. | [optional] [readonly] 
-**Attributes** | Pointer to **map[string]interface{}** | Attributes of this ResourceObject. | [optional] [readonly] 
-**FinalUpdate** | Pointer to **bool** | In Aggregation, for sparse object the count for total accounts scanned identities updated is not incremented. | [optional] [readonly] 
+**Instance** |  Pointer to **string** | Identifier of the specific instance where this object resides. | [optional] [readonly] 
+**Identity** |  Pointer to **string** | Native identity of the object in the Source. | [optional] [readonly] 
+**Uuid** |  Pointer to **string** | Universal unique identifier of the object in the Source. | [optional] [readonly] 
+**PreviousIdentity** |  Pointer to **string** | Native identity that the object has previously. | [optional] [readonly] 
+**Name** |  Pointer to **string** | Display name for this object. | [optional] [readonly] 
+**ObjectType** |  Pointer to **string** | Type of object. | [optional] [readonly] 
+**Incomplete** |  Pointer to **bool** | A flag indicating that this is an incomplete object. Used in special cases where the connector has to return account information in several phases and the objects might not have a complete set of all account attributes. The attributes in this object will replace the corresponding attributes in the Link, but no other Link attributes will be changed. | [optional] [readonly] 
+**Incremental** |  Pointer to **bool** | A flag indicating that this is an incremental change object. This is similar to incomplete but it also means that the values of any multi-valued attributes in this object should be merged with the existing values in the Link rather than replacing the existing Link value. | [optional] [readonly] 
+**Delete** |  Pointer to **bool** | A flag indicating that this object has been deleted. This is set only when doing delta aggregation and the connector supports detection of native deletes. | [optional] [readonly] 
+**Remove** |  Pointer to **bool** | A flag set indicating that the values in the attributes represent things to remove rather than things to add. Setting this implies incremental. The values which are always for multi-valued attributes are removed from the current values. | [optional] [readonly] 
+**Missing** |  Pointer to **[]string** | A list of attribute names that are not included in this object. This is only used with SMConnector and will only contain \&quot;groups\&quot;. | [optional] [readonly] 
+**Attributes** |  Pointer to **map[string]interface{}** | Attributes of this ResourceObject. | [optional] [readonly] 
+**FinalUpdate** |  Pointer to **bool** | In Aggregation, for sparse object the count for total accounts scanned identities updated is not incremented. | [optional] [readonly] 
 
 ## Methods
 

@@ -15,11 +15,11 @@ tags: ['SDK', 'Software Development Kit', 'RoleInsightsRole']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | Role name | [optional] 
-**Id** | Pointer to **string** | Role id | [optional] 
-**Description** | Pointer to **string** | Role description | [optional] 
-**OwnerName** | Pointer to **string** | Role owner name | [optional] 
-**OwnerId** | Pointer to **string** | Role owner id | [optional] 
+**Name** |  Pointer to **string** | Role name | [optional] 
+**Id** |  Pointer to **string** | Role id | [optional] 
+**Description** |  Pointer to **string** | Role description | [optional] 
+**OwnerName** |  Pointer to **string** | Role owner name | [optional] 
+**OwnerId** |  Pointer to **string** | Role owner id | [optional] 
 
 ## Methods
 

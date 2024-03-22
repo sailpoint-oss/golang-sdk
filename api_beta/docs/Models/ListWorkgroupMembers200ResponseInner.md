@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'ListWorkgroupMembers200ResponseInner'
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | Workgroup member identity DTO type. | [optional] 
-**Id** | Pointer to **string** | Workgroup member identity ID. | [optional] 
-**Name** | Pointer to **string** | Workgroup member identity display name. | [optional] 
+**Type** |  Pointer to **string** | Workgroup member identity DTO type. | [optional] 
+**Id** |  Pointer to **string** | Workgroup member identity ID. | [optional] 
+**Name** |  Pointer to **string** | Workgroup member identity display name. | [optional] 
 
 ## Methods
 

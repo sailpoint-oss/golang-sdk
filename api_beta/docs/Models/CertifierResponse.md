@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'CertifierResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | the id of the certifier | [optional] 
-**DisplayName** | Pointer to **string** | the name of the certifier | [optional] 
+**Id** |  Pointer to **string** | the id of the certifier | [optional] 
+**DisplayName** |  Pointer to **string** | the name of the certifier | [optional] 
 
 ## Methods
 

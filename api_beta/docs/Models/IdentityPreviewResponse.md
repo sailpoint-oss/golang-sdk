@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'IdentityPreviewResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Identity** | Pointer to [**IdentityPreviewResponseIdentity**](IdentityPreviewResponseIdentity) |  | [optional] 
-**PreviewAttributes** | Pointer to [**[]IdentityAttributePreview**](IdentityAttributePreview) |  | [optional] 
+**Identity** |  Pointer to [**IdentityPreviewResponseIdentity**](identity-preview-response-identity) |  | [optional] 
+**PreviewAttributes** |  Pointer to [**[]IdentityAttributePreview**](identity-attribute-preview) |  | [optional] 
 
 ## Methods
 

@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'CreateDomainDkim405Response']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ErrorName** | Pointer to **map[string]interface{}** | A message describing the error | [optional] 
-**ErrorMessage** | Pointer to **map[string]interface{}** | Description of the error | [optional] 
-**TrackingId** | Pointer to **string** | Unique tracking id for the error. | [optional] 
+**ErrorName** |  Pointer to **map[string]interface{}** | A message describing the error | [optional] 
+**ErrorMessage** |  Pointer to **map[string]interface{}** | Description of the error | [optional] 
+**TrackingId** |  Pointer to **string** | Unique tracking id for the error. | [optional] 
 
 ## Methods
 

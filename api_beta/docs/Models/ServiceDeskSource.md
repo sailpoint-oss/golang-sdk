@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'ServiceDeskSource']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | DTO type of source for service desk integration template. | [optional] 
-**Id** | Pointer to **string** | ID of source for service desk integration template. | [optional] 
-**Name** | Pointer to **string** | Human-readable name of source for service desk integration template. | [optional] 
+**Type** |  Pointer to **string** | DTO type of source for service desk integration template. | [optional] 
+**Id** |  Pointer to **string** | ID of source for service desk integration template. | [optional] 
+**Name** |  Pointer to **string** | Human-readable name of source for service desk integration template. | [optional] 
 
 ## Methods
 

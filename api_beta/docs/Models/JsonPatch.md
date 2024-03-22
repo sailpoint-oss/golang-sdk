@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'JsonPatch']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Operations** | Pointer to [**[]JsonPatchOperation**](JsonPatchOperation) | Operations to be applied | [optional] 
+**Operations** |  Pointer to [**[]JsonPatchOperation**](json-patch-operation) | Operations to be applied | [optional] 
 
 ## Methods
 

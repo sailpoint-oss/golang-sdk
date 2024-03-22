@@ -15,11 +15,11 @@ tags: ['SDK', 'Software Development Kit', 'ConfigurationItemRequest']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ReassignedFromId** | Pointer to **string** | The identity id to reassign an item from | [optional] 
-**ReassignedToId** | Pointer to **string** | The identity id to reassign an item to | [optional] 
-**ConfigType** | Pointer to [**ConfigTypeEnum**](ConfigTypeEnum) |  | [optional] 
-**StartDate** | Pointer to **time.Time** | The date from which to start reassigning work items | [optional] 
-**EndDate** | Pointer to **NullableTime** | The date from which to stop reassigning work items.  If this is an null string it indicates a permanent reassignment. | [optional] 
+**ReassignedFromId** |  Pointer to **string** | The identity id to reassign an item from | [optional] 
+**ReassignedToId** |  Pointer to **string** | The identity id to reassign an item to | [optional] 
+**ConfigType** |  Pointer to [**ConfigTypeEnum**](config-type-enum) |  | [optional] 
+**StartDate** |  Pointer to **time.Time** | The date from which to start reassigning work items | [optional] 
+**EndDate** |  Pointer to **NullableTime** | The date from which to stop reassigning work items.  If this is an null string it indicates a permanent reassignment. | [optional] 
 
 ## Methods
 

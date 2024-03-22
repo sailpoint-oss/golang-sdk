@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'ListAccessProfiles401Response']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Error** | Pointer to **map[string]interface{}** | A message describing the error | [optional] 
+**Error** |  Pointer to **map[string]interface{}** | A message describing the error | [optional] 
 
 ## Methods
 

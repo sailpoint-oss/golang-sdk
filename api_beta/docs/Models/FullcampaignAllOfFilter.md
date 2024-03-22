@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'FullcampaignAllOfFilter']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | The ID of whatever type of filter is being used. | [optional] 
-**Type** | Pointer to **string** | Type of the filter | [optional] 
-**Name** | Pointer to **string** | Name of the filter | [optional] 
+**Id** |  Pointer to **string** | The ID of whatever type of filter is being used. | [optional] 
+**Type** |  Pointer to **string** | Type of the filter | [optional] 
+**Name** |  Pointer to **string** | Name of the filter | [optional] 
 
 ## Methods
 

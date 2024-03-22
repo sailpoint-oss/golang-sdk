@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'ManualWorkItemDetailsCurrentOwner']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | DTO type of current work item owner&#39;s identity. | [optional] 
-**Id** | Pointer to **string** | ID of current work item owner&#39;s identity. | [optional] 
-**Name** | Pointer to **string** | Display name of current work item owner. | [optional] 
+**Type** |  Pointer to **string** | DTO type of current work item owner&#39;s identity. | [optional] 
+**Id** |  Pointer to **string** | ID of current work item owner&#39;s identity. | [optional] 
+**Name** |  Pointer to **string** | Display name of current work item owner. | [optional] 
 
 ## Methods
 

@@ -15,11 +15,11 @@ tags: ['SDK', 'Software Development Kit', 'WorkflowLibraryFormFields']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**HelpText** | Pointer to **string** | Describes the form field in the UI | [optional] 
-**Label** | Pointer to **string** | A human readable name for this form field in the UI | [optional] 
-**Name** | Pointer to **string** | The name of the input attribute | [optional] 
-**Required** | Pointer to **bool** | Denotes if this field is a required attribute | [optional] 
-**Type** | Pointer to **map[string]interface{}** | The type of the form field | [optional] 
+**HelpText** |  Pointer to **string** | Describes the form field in the UI | [optional] 
+**Label** |  Pointer to **string** | A human readable name for this form field in the UI | [optional] 
+**Name** |  Pointer to **string** | The name of the input attribute | [optional] 
+**Required** |  Pointer to **bool** | Denotes if this field is a required attribute | [optional] 
+**Type** |  Pointer to **map[string]interface{}** | The type of the form field | [optional] 
 
 ## Methods
 

@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'CampaignActivated']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Campaign** | [**CampaignActivatedCampaign**](CampaignActivatedCampaign) |  | 
+**Campaign** |  [**CampaignActivatedCampaign**](campaign-activated-campaign) |  | 
 
 ## Methods
 

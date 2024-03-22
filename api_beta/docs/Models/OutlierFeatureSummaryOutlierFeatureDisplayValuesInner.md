@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'OutlierFeatureSummaryOutlierFeatureDi
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DisplayName** | Pointer to **string** | display name | [optional] 
-**Value** | Pointer to **string** | value | [optional] 
-**ValueType** | Pointer to **string** | The data type of the value field | [optional] 
+**DisplayName** |  Pointer to **string** | display name | [optional] 
+**Value** |  Pointer to **string** | value | [optional] 
+**ValueType** |  Pointer to **string** | The data type of the value field | [optional] 
 
 ## Methods
 

@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'KbaAuthResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**KbaAuthResponseItems** | Pointer to [**[]KbaAuthResponseItem**](KbaAuthResponseItem) |  | [optional] 
-**Status** | Pointer to **string** | MFA Authentication status | [optional] 
+**KbaAuthResponseItems** |  Pointer to [**[]KbaAuthResponseItem**](kba-auth-response-item) |  | [optional] 
+**Status** |  Pointer to **string** | MFA Authentication status | [optional] 
 
 ## Methods
 

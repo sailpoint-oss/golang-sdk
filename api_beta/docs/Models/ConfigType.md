@@ -15,11 +15,11 @@ tags: ['SDK', 'Software Development Kit', 'ConfigType']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Priority** | Pointer to **int32** |  | [optional] 
-**InternalName** | Pointer to [**ConfigTypeEnumCamel**](ConfigTypeEnumCamel) |  | [optional] 
-**InternalNameCamel** | Pointer to [**ConfigTypeEnum**](ConfigTypeEnum) |  | [optional] 
-**DisplayName** | Pointer to **string** | Human readable display name of the type to be shown on UI | [optional] 
-**Description** | Pointer to **string** | Description of the type of work to be reassigned, displayed by the UI. | [optional] 
+**Priority** |  Pointer to **int32** |  | [optional] 
+**InternalName** |  Pointer to [**ConfigTypeEnumCamel**](config-type-enum-camel) |  | [optional] 
+**InternalNameCamel** |  Pointer to [**ConfigTypeEnum**](config-type-enum) |  | [optional] 
+**DisplayName** |  Pointer to **string** | Human readable display name of the type to be shown on UI | [optional] 
+**Description** |  Pointer to **string** | Description of the type of work to be reassigned, displayed by the UI. | [optional] 
 
 ## Methods
 

@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'RoleMiningPotentialRoleRef']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Id of the potential role | [optional] 
-**Name** | Pointer to **string** | Name of the potential role | [optional] 
+**Id** |  Pointer to **string** | Id of the potential role | [optional] 
+**Name** |  Pointer to **string** | Name of the potential role | [optional] 
 
 ## Methods
 

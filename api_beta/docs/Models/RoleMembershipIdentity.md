@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'RoleMembershipIdentity']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to [**DtoType**](DtoType) |  | [optional] 
-**Id** | Pointer to **string** | Identity id | [optional] 
-**Name** | Pointer to **NullableString** | Human-readable display name of the Identity. | [optional] 
-**AliasName** | Pointer to **NullableString** | User name of the Identity | [optional] 
+**Type** |  Pointer to [**DtoType**](dto-type) |  | [optional] 
+**Id** |  Pointer to **string** | Identity id | [optional] 
+**Name** |  Pointer to **NullableString** | Human-readable display name of the Identity. | [optional] 
+**AliasName** |  Pointer to **NullableString** | User name of the Identity | [optional] 
 
 ## Methods
 

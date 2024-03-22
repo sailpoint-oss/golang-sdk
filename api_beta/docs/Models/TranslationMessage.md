@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'TranslationMessage']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | Pointer to **string** | The key of the translation message | [optional] 
-**Values** | Pointer to **[]string** | The values corresponding to the translation messages | [optional] 
+**Key** |  Pointer to **string** | The key of the translation message | [optional] 
+**Values** |  Pointer to **[]string** | The values corresponding to the translation messages | [optional] 
 
 ## Methods
 

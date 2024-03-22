@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'WorkflowBodyOwner']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | The type of object that is referenced | [optional] 
-**Id** | Pointer to **string** | The unique ID of the object | [optional] 
-**Name** | Pointer to **string** | The name of the object | [optional] 
+**Type** |  Pointer to **string** | The type of object that is referenced | [optional] 
+**Id** |  Pointer to **string** | The unique ID of the object | [optional] 
+**Name** |  Pointer to **string** | The name of the object | [optional] 
 
 ## Methods
 

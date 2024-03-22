@@ -15,20 +15,20 @@ tags: ['SDK', 'Software Development Kit', 'AccessProfile']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | The ID of the Access Profile | [optional] [readonly] 
-**Name** | **string** | Name of the Access Profile | 
-**Description** | Pointer to **NullableString** | Information about the Access Profile | [optional] 
-**Created** | Pointer to **time.Time** | Date the Access Profile was created | [optional] [readonly] 
-**Modified** | Pointer to **time.Time** | Date the Access Profile was last modified. | [optional] [readonly] 
-**Enabled** | Pointer to **bool** | Whether the Access Profile is enabled. If the Access Profile is enabled then you must include at least one Entitlement. | [optional] [default to true]
-**Owner** | [**OwnerReference**](OwnerReference) |  | 
-**Source** | [**AccessProfileSourceRef**](AccessProfileSourceRef) |  | 
-**Entitlements** | Pointer to [**[]EntitlementRef**](EntitlementRef) | A list of entitlements associated with the Access Profile. If enabled is false this is allowed to be empty otherwise it needs to contain at least one Entitlement. | [optional] 
-**Requestable** | Pointer to **bool** | Whether the Access Profile is requestable via access request. Currently, making an Access Profile non-requestable is only supported  for customers enabled with the new Request Center. Otherwise, attempting to create an Access Profile with a value  **false** in this field results in a 400 error. | [optional] [default to true]
-**AccessRequestConfig** | Pointer to [**NullableRequestability**](Requestability) |  | [optional] 
-**RevocationRequestConfig** | Pointer to [**NullableRevocability**](Revocability) |  | [optional] 
-**Segments** | Pointer to **[]string** | List of IDs of segments, if any, to which this Access Profile is assigned. | [optional] 
-**ProvisioningCriteria** | Pointer to [**NullableProvisioningCriteriaLevel1**](ProvisioningCriteriaLevel1) |  | [optional] 
+**Id** |  Pointer to **string** | The ID of the Access Profile | [optional] [readonly] 
+**Name** |  **string** | Name of the Access Profile | 
+**Description** |  Pointer to **NullableString** | Information about the Access Profile | [optional] 
+**Created** |  Pointer to **time.Time** | Date the Access Profile was created | [optional] [readonly] 
+**Modified** |  Pointer to **time.Time** | Date the Access Profile was last modified. | [optional] [readonly] 
+**Enabled** |  Pointer to **bool** | Whether the Access Profile is enabled. If the Access Profile is enabled then you must include at least one Entitlement. | [optional] [default to true]
+**Owner** |  [**OwnerReference**](owner-reference) |  | 
+**Source** |  [**AccessProfileSourceRef**](access-profile-source-ref) |  | 
+**Entitlements** |  Pointer to [**[]EntitlementRef**](entitlement-ref) | A list of entitlements associated with the Access Profile. If enabled is false this is allowed to be empty otherwise it needs to contain at least one Entitlement. | [optional] 
+**Requestable** |  Pointer to **bool** | Whether the Access Profile is requestable via access request. Currently, making an Access Profile non-requestable is only supported  for customers enabled with the new Request Center. Otherwise, attempting to create an Access Profile with a value  **false** in this field results in a 400 error. | [optional] [default to true]
+**AccessRequestConfig** |  Pointer to [**NullableRequestability**](requestability) |  | [optional] 
+**RevocationRequestConfig** |  Pointer to [**NullableRevocability**](revocability) |  | [optional] 
+**Segments** |  Pointer to **[]string** | List of IDs of segments, if any, to which this Access Profile is assigned. | [optional] 
+**ProvisioningCriteria** |  Pointer to [**NullableProvisioningCriteriaLevel1**](provisioning-criteria-level1) |  | [optional] 
 
 ## Methods
 

@@ -15,11 +15,11 @@ tags: ['SDK', 'Software Development Kit', 'ConfigurationDetailsResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ConfigType** | Pointer to [**ConfigTypeEnum**](ConfigTypeEnum) |  | [optional] 
-**TargetIdentity** | Pointer to [**Identity1**](Identity1) |  | [optional] 
-**StartDate** | Pointer to **time.Time** | The date from which to start reassigning work items | [optional] 
-**EndDate** | Pointer to **time.Time** | The date from which to stop reassigning work items.  If this is an empty string it indicates a permanent reassignment. | [optional] 
-**AuditDetails** | Pointer to [**AuditDetails**](AuditDetails) |  | [optional] 
+**ConfigType** |  Pointer to [**ConfigTypeEnum**](config-type-enum) |  | [optional] 
+**TargetIdentity** |  Pointer to [**Identity1**](identity1) |  | [optional] 
+**StartDate** |  Pointer to **time.Time** | The date from which to start reassigning work items | [optional] 
+**EndDate** |  Pointer to **time.Time** | The date from which to stop reassigning work items.  If this is an empty string it indicates a permanent reassignment. | [optional] 
+**AuditDetails** |  Pointer to [**AuditDetails**](audit-details) |  | [optional] 
 
 ## Methods
 

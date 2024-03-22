@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'RoleMatchDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RoleName** | Pointer to **string** | The name of the role | [optional] 
-**MatchedAttributes** | Pointer to [**[]ContextAttributeDto**](ContextAttributeDto) |  | [optional] 
+**RoleName** |  Pointer to **string** | The name of the role | [optional] 
+**MatchedAttributes** |  Pointer to [**[]ContextAttributeDto**](context-attribute-dto) |  | [optional] 
 
 ## Methods
 

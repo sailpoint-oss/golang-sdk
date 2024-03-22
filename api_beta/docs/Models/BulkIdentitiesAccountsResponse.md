@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'BulkIdentitiesAccountsResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Identifier of bulk request item. | [optional] 
-**StatusCode** | Pointer to **int32** | Response status value. | [optional] 
-**Message** | Pointer to **string** | Status containing additional context information about failures. | [optional] 
+**Id** |  Pointer to **string** | Identifier of bulk request item. | [optional] 
+**StatusCode** |  Pointer to **int32** | Response status value. | [optional] 
+**Message** |  Pointer to **string** | Status containing additional context information about failures. | [optional] 
 
 ## Methods
 

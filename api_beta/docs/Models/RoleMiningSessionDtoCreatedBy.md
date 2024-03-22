@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'RoleMiningSessionDtoCreatedBy']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | ID of the creator | [optional] 
-**DisplayName** | Pointer to **string** | The display name of the creator | [optional] 
+**Id** |  Pointer to **string** | ID of the creator | [optional] 
+**DisplayName** |  Pointer to **string** | The display name of the creator | [optional] 
 
 ## Methods
 

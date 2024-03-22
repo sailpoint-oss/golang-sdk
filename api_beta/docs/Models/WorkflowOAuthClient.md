@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'WorkflowOAuthClient']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | OAuth client ID for the trigger. This is a UUID generated upon creation. | [optional] 
-**Secret** | Pointer to **string** | OAuthClient secret. | [optional] 
-**Url** | Pointer to **string** | URL for the external trigger to invoke | [optional] 
+**Id** |  Pointer to **string** | OAuth client ID for the trigger. This is a UUID generated upon creation. | [optional] 
+**Secret** |  Pointer to **string** | OAuthClient secret. | [optional] 
+**Url** |  Pointer to **string** | URL for the external trigger to invoke | [optional] 
 
 ## Methods
 

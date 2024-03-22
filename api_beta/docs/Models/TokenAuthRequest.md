@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'TokenAuthRequest']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Token** | **string** | Token value | 
-**UserAlias** | **string** | User alias from table spt_identity field named &#39;name&#39; | 
-**DeliveryType** | **string** | Token delivery type | 
+**Token** |  **string** | Token value | 
+**UserAlias** |  **string** | User alias from table spt_identity field named &#39;name&#39; | 
+**DeliveryType** |  **string** | Token delivery type | 
 
 ## Methods
 

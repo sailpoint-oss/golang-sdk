@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'FeatureValueDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Feature** | Pointer to **string** | The type of feature | [optional] 
-**Numerator** | Pointer to **int32** | The number of identities that have access to the feature | [optional] 
-**Denominator** | Pointer to **int32** | The number of identities with the corresponding feature | [optional] 
+**Feature** |  Pointer to **string** | The type of feature | [optional] 
+**Numerator** |  Pointer to **int32** | The number of identities that have access to the feature | [optional] 
+**Denominator** |  Pointer to **int32** | The number of identities with the corresponding feature | [optional] 
 
 ## Methods
 

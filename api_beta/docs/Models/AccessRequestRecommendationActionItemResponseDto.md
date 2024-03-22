@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'AccessRequestRecommendationActionItem
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IdentityId** | Pointer to **string** | The identity ID taking the action. | [optional] 
-**Access** | Pointer to [**AccessRequestRecommendationItem**](AccessRequestRecommendationItem) |  | [optional] 
-**Timestamp** | Pointer to **time.Time** |  | [optional] 
+**IdentityId** |  Pointer to **string** | The identity ID taking the action. | [optional] 
+**Access** |  Pointer to [**AccessRequestRecommendationItem**](access-request-recommendation-item) |  | [optional] 
+**Timestamp** |  Pointer to **time.Time** |  | [optional] 
 
 ## Methods
 

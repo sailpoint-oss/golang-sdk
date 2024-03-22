@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'IdentityDeleted']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Identity** | [**IdentityDeletedIdentity**](IdentityDeletedIdentity) |  | 
-**Attributes** | **map[string]interface{}** | The attributes assigned to the identity. Attributes are determined by the identity profile. | 
+**Identity** |  [**IdentityDeletedIdentity**](identity-deleted-identity) |  | 
+**Attributes** |  **map[string]interface{}** | The attributes assigned to the identity. Attributes are determined by the identity profile. | 
 
 ## Methods
 

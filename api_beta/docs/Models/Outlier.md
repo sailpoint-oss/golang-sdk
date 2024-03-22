@@ -15,17 +15,17 @@ tags: ['SDK', 'Software Development Kit', 'Outlier']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | The identity&#39;s unique identifier for the outlier record | [optional] 
-**IdentityId** | Pointer to **string** | The ID of the identity that is detected as an outlier | [optional] 
-**Type** | Pointer to **string** | The type of outlier summary | [optional] 
-**FirstDetectionDate** | Pointer to **time.Time** | The first date the outlier was detected | [optional] 
-**LatestDetectionDate** | Pointer to **time.Time** | The most recent date the outlier was detected | [optional] 
-**Ignored** | Pointer to **bool** | Flag whether or not the outlier has been ignored | [optional] 
-**Attributes** | Pointer to **map[string]interface{}** | Object containing mapped identity attributes | [optional] 
-**Score** | Pointer to **float32** | The outlier score determined by the detection engine ranging from 0..1 | [optional] 
-**UnignoreType** | Pointer to **NullableString** | Enum value of if the outlier manually or automatically un-ignored. Will be NULL if outlier is not ignored | [optional] 
-**UnignoreDate** | Pointer to **NullableTime** | shows date when last time has been unignored outlier | [optional] 
-**IgnoreDate** | Pointer to **NullableTime** | shows date when last time has been ignored outlier | [optional] 
+**Id** |  Pointer to **string** | The identity&#39;s unique identifier for the outlier record | [optional] 
+**IdentityId** |  Pointer to **string** | The ID of the identity that is detected as an outlier | [optional] 
+**Type** |  Pointer to **string** | The type of outlier summary | [optional] 
+**FirstDetectionDate** |  Pointer to **time.Time** | The first date the outlier was detected | [optional] 
+**LatestDetectionDate** |  Pointer to **time.Time** | The most recent date the outlier was detected | [optional] 
+**Ignored** |  Pointer to **bool** | Flag whether or not the outlier has been ignored | [optional] 
+**Attributes** |  Pointer to **map[string]interface{}** | Object containing mapped identity attributes | [optional] 
+**Score** |  Pointer to **float32** | The outlier score determined by the detection engine ranging from 0..1 | [optional] 
+**UnignoreType** |  Pointer to **NullableString** | Enum value of if the outlier manually or automatically un-ignored. Will be NULL if outlier is not ignored | [optional] 
+**UnignoreDate** |  Pointer to **NullableTime** | shows date when last time has been unignored outlier | [optional] 
+**IgnoreDate** |  Pointer to **NullableTime** | shows date when last time has been ignored outlier | [optional] 
 
 ## Methods
 

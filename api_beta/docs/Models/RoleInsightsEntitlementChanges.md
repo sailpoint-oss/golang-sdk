@@ -15,13 +15,13 @@ tags: ['SDK', 'Software Development Kit', 'RoleInsightsEntitlementChanges']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | Name of the entitlement | [optional] 
-**Id** | Pointer to **string** | Id of the entitlement | [optional] 
-**Description** | Pointer to **string** | Description for the entitlement | [optional] 
-**Attribute** | Pointer to **string** | Attribute for the entitlement | [optional] 
-**Value** | Pointer to **string** | Attribute value for the entitlement | [optional] 
-**Source** | Pointer to **string** | Source or the application for the entitlement | [optional] 
-**Insight** | Pointer to [**RoleInsightsInsight**](RoleInsightsInsight) |  | [optional] 
+**Name** |  Pointer to **string** | Name of the entitlement | [optional] 
+**Id** |  Pointer to **string** | Id of the entitlement | [optional] 
+**Description** |  Pointer to **string** | Description for the entitlement | [optional] 
+**Attribute** |  Pointer to **string** | Attribute for the entitlement | [optional] 
+**Value** |  Pointer to **string** | Attribute value for the entitlement | [optional] 
+**Source** |  Pointer to **string** | Source or the application for the entitlement | [optional] 
+**Insight** |  Pointer to [**RoleInsightsInsight**](role-insights-insight) |  | [optional] 
 
 ## Methods
 

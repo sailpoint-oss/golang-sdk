@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'ProcessIdentitiesRequest']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IdentityIds** | Pointer to **[]string** | List of up to 250 identity IDs to process. | [optional] 
+**IdentityIds** |  Pointer to **[]string** | List of up to 250 identity IDs to process. | [optional] 
 
 ## Methods
 

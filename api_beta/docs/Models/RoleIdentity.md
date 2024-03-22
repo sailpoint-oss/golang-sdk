@@ -15,11 +15,11 @@ tags: ['SDK', 'Software Development Kit', 'RoleIdentity']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | The ID of the Identity | [optional] 
-**AliasName** | Pointer to **string** | The alias / username of the Identity | [optional] 
-**Name** | Pointer to **string** | The human-readable display name of the Identity | [optional] 
-**Email** | Pointer to **string** | Email address of the Identity | [optional] 
-**RoleAssignmentSource** | Pointer to [**RoleAssignmentSourceType**](RoleAssignmentSourceType) |  | [optional] 
+**Id** |  Pointer to **string** | The ID of the Identity | [optional] 
+**AliasName** |  Pointer to **string** | The alias / username of the Identity | [optional] 
+**Name** |  Pointer to **string** | The human-readable display name of the Identity | [optional] 
+**Email** |  Pointer to **string** | Email address of the Identity | [optional] 
+**RoleAssignmentSource** |  Pointer to [**RoleAssignmentSourceType**](role-assignment-source-type) |  | [optional] 
 
 ## Methods
 

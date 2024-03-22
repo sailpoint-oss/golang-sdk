@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'BulkWorkgroupMembersRequestInner']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | Identity&#39;s DTO type. | [optional] 
-**Id** | Pointer to **string** | Identity ID. | [optional] 
-**Name** | Pointer to **string** | Identity&#39;s display name. | [optional] 
+**Type** |  Pointer to **string** | Identity&#39;s DTO type. | [optional] 
+**Id** |  Pointer to **string** | Identity ID. | [optional] 
+**Name** |  Pointer to **string** | Identity&#39;s display name. | [optional] 
 
 ## Methods
 

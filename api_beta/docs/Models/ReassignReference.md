@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'ReassignReference']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | The ID of item or identity being reassigned. | 
-**Type** | **string** | The type of item or identity being reassigned. | 
+**Id** |  **string** | The ID of item or identity being reassigned. | 
+**Type** |  **string** | The type of item or identity being reassigned. | 
 
 ## Methods
 

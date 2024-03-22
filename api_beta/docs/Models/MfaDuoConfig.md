@@ -15,12 +15,12 @@ tags: ['SDK', 'Software Development Kit', 'MfaDuoConfig']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MfaMethod** | Pointer to **NullableString** | Mfa method name | [optional] 
-**Enabled** | Pointer to **bool** | If MFA method is enabled. | [optional] [default to false]
-**Host** | Pointer to **NullableString** | The server host name or IP address of the MFA provider. | [optional] 
-**AccessKey** | Pointer to **NullableString** | The secret key for authenticating requests to the MFA provider. | [optional] 
-**IdentityAttribute** | Pointer to **NullableString** | Optional. The name of the attribute for mapping IdentityNow identity to the MFA provider. | [optional] 
-**ConfigProperties** | Pointer to **map[string]interface{}** | A map with additional config properties for the given MFA method - duo-web. | [optional] 
+**MfaMethod** |  Pointer to **NullableString** | Mfa method name | [optional] 
+**Enabled** |  Pointer to **bool** | If MFA method is enabled. | [optional] [default to false]
+**Host** |  Pointer to **NullableString** | The server host name or IP address of the MFA provider. | [optional] 
+**AccessKey** |  Pointer to **NullableString** | The secret key for authenticating requests to the MFA provider. | [optional] 
+**IdentityAttribute** |  Pointer to **NullableString** | Optional. The name of the attribute for mapping IdentityNow identity to the MFA provider. | [optional] 
+**ConfigProperties** |  Pointer to **map[string]interface{}** | A map with additional config properties for the given MFA method - duo-web. | [optional] 
 
 ## Methods
 

@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'Identity1']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | The ID of the object | [optional] 
-**Name** | Pointer to **string** | Human-readable display name of the object | [optional] 
+**Id** |  Pointer to **string** | The ID of the object | [optional] 
+**Name** |  Pointer to **string** | Human-readable display name of the object | [optional] 
 
 ## Methods
 

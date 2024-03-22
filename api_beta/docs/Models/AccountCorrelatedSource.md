@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'AccountCorrelatedSource']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | The DTO type of the source the accounts are being correlated from. | 
-**Id** | **string** | The ID of the source the accounts are being correlated from. | 
-**Name** | **string** | Display name of the source the accounts are being correlated from. | 
+**Type** |  **string** | The DTO type of the source the accounts are being correlated from. | 
+**Id** |  **string** | The ID of the source the accounts are being correlated from. | 
+**Name** |  **string** | Display name of the source the accounts are being correlated from. | 
 
 ## Methods
 

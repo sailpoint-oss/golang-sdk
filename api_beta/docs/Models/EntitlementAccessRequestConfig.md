@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'EntitlementAccessRequestConfig']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ApprovalSchemes** | Pointer to [**[]EntitlementApprovalScheme**](EntitlementApprovalScheme) | Ordered list of approval steps for the access request. Empty when no approval is required. | [optional] 
-**RequestCommentRequired** | Pointer to **bool** | If the requester must provide a comment during access request. | [optional] [default to false]
-**DenialCommentRequired** | Pointer to **bool** | If the reviewer must provide a comment when denying the access request. | [optional] [default to false]
+**ApprovalSchemes** |  Pointer to [**[]EntitlementApprovalScheme**](entitlement-approval-scheme) | Ordered list of approval steps for the access request. Empty when no approval is required. | [optional] 
+**RequestCommentRequired** |  Pointer to **bool** | If the requester must provide a comment during access request. | [optional] [default to false]
+**DenialCommentRequired** |  Pointer to **bool** | If the reviewer must provide a comment when denying the access request. | [optional] [default to false]
 
 ## Methods
 

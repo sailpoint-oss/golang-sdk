@@ -15,10 +15,10 @@ tags: ['SDK', 'Software Development Kit', 'SodExemptCriteria1']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Existing** | Pointer to **bool** | If the entitlement already belonged to the user or not. | [optional] [default to false]
-**Type** | Pointer to [**DtoType**](DtoType) |  | [optional] 
-**Id** | Pointer to **string** | Entitlement ID | [optional] 
-**Name** | Pointer to **string** | Entitlement name | [optional] 
+**Existing** |  Pointer to **bool** | If the entitlement already belonged to the user or not. | [optional] [default to false]
+**Type** |  Pointer to [**DtoType**](dto-type) |  | [optional] 
+**Id** |  Pointer to **string** | Entitlement ID | [optional] 
+**Name** |  Pointer to **string** | Entitlement name | [optional] 
 
 ## Methods
 

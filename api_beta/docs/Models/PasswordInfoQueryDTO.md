@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'PasswordInfoQueryDTO']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**UserName** | Pointer to **string** | The login name of the user | [optional] 
-**SourceName** | Pointer to **string** | The display name of the source | [optional] 
+**UserName** |  Pointer to **string** | The login name of the user | [optional] 
+**SourceName** |  Pointer to **string** | The display name of the source | [optional] 
 
 ## Methods
 

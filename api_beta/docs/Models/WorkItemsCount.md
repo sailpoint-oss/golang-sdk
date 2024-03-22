@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'WorkItemsCount']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Count** | Pointer to **int32** | The count of work items | [optional] 
+**Count** |  Pointer to **int32** | The count of work items | [optional] 
 
 ## Methods
 

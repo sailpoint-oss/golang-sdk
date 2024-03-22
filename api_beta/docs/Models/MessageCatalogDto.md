@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'MessageCatalogDto']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Locale** | Pointer to **string** | The language in which the messages are returned | [optional] 
-**Messages** | Pointer to [**[]ResourceBundleMessage**](ResourceBundleMessage) | The list of message with their keys and formats | [optional] 
+**Locale** |  Pointer to **string** | The language in which the messages are returned | [optional] 
+**Messages** |  Pointer to [**[]ResourceBundleMessage**](resource-bundle-message) | The list of message with their keys and formats | [optional] 
 
 ## Methods
 

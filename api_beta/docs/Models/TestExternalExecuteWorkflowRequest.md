@@ -15,7 +15,7 @@ tags: ['SDK', 'Software Development Kit', 'TestExternalExecuteWorkflowRequest']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Input** | Pointer to **map[string]interface{}** | The test input for the workflow | [optional] 
+**Input** |  Pointer to **map[string]interface{}** | The test input for the workflow | [optional] 
 
 ## Methods
 

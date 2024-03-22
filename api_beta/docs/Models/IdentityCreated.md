@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'IdentityCreated']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Identity** | [**IdentityCreatedIdentity**](IdentityCreatedIdentity) |  | 
-**Attributes** | **map[string]interface{}** | The attributes assigned to the identity. Attributes are determined by the identity profile. | 
+**Identity** |  [**IdentityCreatedIdentity**](identity-created-identity) |  | 
+**Attributes** |  **map[string]interface{}** | The attributes assigned to the identity. Attributes are determined by the identity profile. | 
 
 ## Methods
 

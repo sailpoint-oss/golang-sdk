@@ -15,16 +15,16 @@ tags: ['SDK', 'Software Development Kit', 'RequestableObject']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Id of the requestable object itself | [optional] 
-**Name** | Pointer to **string** | Human-readable display name of the requestable object | [optional] 
-**Created** | Pointer to **time.Time** | The time when the requestable object was created | [optional] 
-**Modified** | Pointer to **NullableTime** | The time when the requestable object was last modified | [optional] 
-**Description** | Pointer to **NullableString** | Description of the requestable object. | [optional] 
-**Type** | Pointer to [**RequestableObjectType**](RequestableObjectType) |  | [optional] 
-**RequestStatus** | Pointer to [**RequestableObjectRequestStatus**](RequestableObjectRequestStatus) |  | [optional] 
-**IdentityRequestId** | Pointer to **NullableString** | If *requestStatus* is *PENDING*, indicates the id of the associated account activity. | [optional] 
-**OwnerRef** | Pointer to [**NullableIdentityReferenceWithNameAndEmail**](IdentityReferenceWithNameAndEmail) |  | [optional] 
-**RequestCommentsRequired** | Pointer to **bool** | Whether the requester must provide comments when requesting the object. | [optional] 
+**Id** |  Pointer to **string** | Id of the requestable object itself | [optional] 
+**Name** |  Pointer to **string** | Human-readable display name of the requestable object | [optional] 
+**Created** |  Pointer to **time.Time** | The time when the requestable object was created | [optional] 
+**Modified** |  Pointer to **NullableTime** | The time when the requestable object was last modified | [optional] 
+**Description** |  Pointer to **NullableString** | Description of the requestable object. | [optional] 
+**Type** |  Pointer to [**RequestableObjectType**](requestable-object-type) |  | [optional] 
+**RequestStatus** |  Pointer to [**RequestableObjectRequestStatus**](requestable-object-request-status) |  | [optional] 
+**IdentityRequestId** |  Pointer to **NullableString** | If *requestStatus* is *PENDING*, indicates the id of the associated account activity. | [optional] 
+**OwnerRef** |  Pointer to [**NullableIdentityReferenceWithNameAndEmail**](identity-reference-with-name-and-email) |  | [optional] 
+**RequestCommentsRequired** |  Pointer to **bool** | Whether the requester must provide comments when requesting the object. | [optional] 
 
 ## Methods
 

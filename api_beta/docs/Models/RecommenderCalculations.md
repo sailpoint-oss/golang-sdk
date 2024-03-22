@@ -15,14 +15,14 @@ tags: ['SDK', 'Software Development Kit', 'RecommenderCalculations']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IdentityId** | Pointer to **string** | The ID of the identity | [optional] 
-**EntitlementId** | Pointer to **string** | The entitlement ID | [optional] 
-**Recommendation** | Pointer to **string** | The actual recommendation | [optional] 
-**OverallWeightedScore** | Pointer to **float32** | The overall weighted score | [optional] 
-**FeatureWeightedScores** | Pointer to **map[string]float32** | The weighted score of each individual feature | [optional] 
-**Threshold** | Pointer to **float32** | The configured value against which the overallWeightedScore is compared | [optional] 
-**IdentityAttributes** | Pointer to [**map[string]RecommenderCalculationsIdentityAttributesValue**](RecommenderCalculationsIdentityAttributesValue) | The values for your configured features | [optional] 
-**FeatureValues** | Pointer to [**FeatureValueDto**](FeatureValueDto) |  | [optional] 
+**IdentityId** |  Pointer to **string** | The ID of the identity | [optional] 
+**EntitlementId** |  Pointer to **string** | The entitlement ID | [optional] 
+**Recommendation** |  Pointer to **string** | The actual recommendation | [optional] 
+**OverallWeightedScore** |  Pointer to **float32** | The overall weighted score | [optional] 
+**FeatureWeightedScores** |  Pointer to **map[string]float32** | The weighted score of each individual feature | [optional] 
+**Threshold** |  Pointer to **float32** | The configured value against which the overallWeightedScore is compared | [optional] 
+**IdentityAttributes** |  Pointer to [**map[string]RecommenderCalculationsIdentityAttributesValue**](recommender-calculations-identity-attributes-value) | The values for your configured features | [optional] 
+**FeatureValues** |  Pointer to [**FeatureValueDto**](feature-value-dto) |  | [optional] 
 
 ## Methods
 

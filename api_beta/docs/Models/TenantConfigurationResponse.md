@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'TenantConfigurationResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AuditDetails** | Pointer to [**AuditDetails**](AuditDetails) |  | [optional] 
-**ConfigDetails** | Pointer to [**TenantConfigurationDetails**](TenantConfigurationDetails) |  | [optional] 
+**AuditDetails** |  Pointer to [**AuditDetails**](audit-details) |  | [optional] 
+**ConfigDetails** |  Pointer to [**TenantConfigurationDetails**](tenant-configuration-details) |  | [optional] 
 
 ## Methods
 

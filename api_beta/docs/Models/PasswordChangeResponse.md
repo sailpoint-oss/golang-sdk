@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'PasswordChangeResponse']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RequestId** | Pointer to **NullableString** | The password change request ID | [optional] 
-**State** | Pointer to **string** | Password change state | [optional] 
+**RequestId** |  Pointer to **NullableString** | The password change request ID | [optional] 
+**State** |  Pointer to **string** | Password change state | [optional] 
 
 ## Methods
 

@@ -15,8 +15,8 @@ tags: ['SDK', 'Software Development Kit', 'LocalizedMessage']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Locale** | **string** | Message locale | 
-**Message** | **string** | Message text | 
+**Locale** |  **string** | Message locale | 
+**Message** |  **string** | Message text | 
 
 ## Methods
 

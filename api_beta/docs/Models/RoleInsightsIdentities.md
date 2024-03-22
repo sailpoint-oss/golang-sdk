@@ -15,9 +15,9 @@ tags: ['SDK', 'Software Development Kit', 'RoleInsightsIdentities']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Id for identity | [optional] 
-**Name** | Pointer to **string** | Name for identity | [optional] 
-**Attributes** | Pointer to **map[string]string** |  | [optional] 
+**Id** |  Pointer to **string** | Id for identity | [optional] 
+**Name** |  Pointer to **string** | Name for identity | [optional] 
+**Attributes** |  Pointer to **map[string]string** |  | [optional] 
 
 ## Methods
 

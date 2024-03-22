@@ -15,17 +15,17 @@ tags: ['SDK', 'Software Development Kit', 'Subscription']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Subscription ID. | 
-**Name** | **string** | Subscription name. | 
-**Description** | Pointer to **string** | Subscription description. | [optional] 
-**TriggerId** | **string** | ID of trigger subscribed to. | 
-**TriggerName** | **string** | Trigger name of trigger subscribed to. | 
-**Type** | [**SubscriptionType**](SubscriptionType) |  | 
-**ResponseDeadline** | **string** | Deadline for completing REQUEST_RESPONSE trigger invocation, represented in ISO-8601 duration format. | [default to "PT1H"]
-**HttpConfig** | Pointer to [**HttpConfig**](HttpConfig) |  | [optional] 
-**EventBridgeConfig** | Pointer to [**EventBridgeConfig**](EventBridgeConfig) |  | [optional] 
-**Enabled** | **bool** | Whether subscription should receive real-time trigger invocations or not. Test trigger invocations are always enabled regardless of this option. | [default to true]
-**Filter** | Pointer to **string** | JSONPath filter to conditionally invoke trigger when expression evaluates to true. | [optional] 
+**Id** |  **string** | Subscription ID. | 
+**Name** |  **string** | Subscription name. | 
+**Description** |  Pointer to **string** | Subscription description. | [optional] 
+**TriggerId** |  **string** | ID of trigger subscribed to. | 
+**TriggerName** |  **string** | Trigger name of trigger subscribed to. | 
+**Type** |  [**SubscriptionType**](subscription-type) |  | 
+**ResponseDeadline** |  **string** | Deadline for completing REQUEST_RESPONSE trigger invocation, represented in ISO-8601 duration format. | [default to "PT1H"]
+**HttpConfig** |  Pointer to [**HttpConfig**](http-config) |  | [optional] 
+**EventBridgeConfig** |  Pointer to [**EventBridgeConfig**](event-bridge-config) |  | [optional] 
+**Enabled** |  **bool** | Whether subscription should receive real-time trigger invocations or not. Test trigger invocations are always enabled regardless of this option. | [default to true]
+**Filter** |  Pointer to **string** | JSONPath filter to conditionally invoke trigger when expression evaluates to true. | [optional] 
 
 ## Methods
 

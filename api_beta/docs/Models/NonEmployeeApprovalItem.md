@@ -15,15 +15,15 @@ tags: ['SDK', 'Software Development Kit', 'NonEmployeeApprovalItem']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Non-Employee approval item id | [optional] 
-**Approver** | Pointer to [**IdentityReferenceWithId**](IdentityReferenceWithId) |  | [optional] 
-**AccountName** | Pointer to **string** | Requested identity account name | [optional] 
-**ApprovalStatus** | Pointer to [**ApprovalStatus**](ApprovalStatus) |  | [optional] 
-**ApprovalOrder** | Pointer to **float32** | Approval order | [optional] 
-**Comment** | Pointer to **string** | comment of approver | [optional] 
-**Modified** | Pointer to **time.Time** | When the request was last modified. | [optional] 
-**Created** | Pointer to **time.Time** | When the request was created. | [optional] 
-**NonEmployeeRequest** | Pointer to [**NonEmployeeRequestLite**](NonEmployeeRequestLite) |  | [optional] 
+**Id** |  Pointer to **string** | Non-Employee approval item id | [optional] 
+**Approver** |  Pointer to [**IdentityReferenceWithId**](identity-reference-with-id) |  | [optional] 
+**AccountName** |  Pointer to **string** | Requested identity account name | [optional] 
+**ApprovalStatus** |  Pointer to [**ApprovalStatus**](approval-status) |  | [optional] 
+**ApprovalOrder** |  Pointer to **float32** | Approval order | [optional] 
+**Comment** |  Pointer to **string** | comment of approver | [optional] 
+**Modified** |  Pointer to **time.Time** | When the request was last modified. | [optional] 
+**Created** |  Pointer to **time.Time** | When the request was created. | [optional] 
+**NonEmployeeRequest** |  Pointer to [**NonEmployeeRequestLite**](non-employee-request-lite) |  | [optional] 
 
 ## Methods
 
