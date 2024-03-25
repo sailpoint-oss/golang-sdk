@@ -26648,6 +26648,8 @@ paths:
           **connectionType**: *eq, ge, gt, in, le, lt, ne, isnull, sw*
 
           **connectorName**: *eq, ge, gt, in, ne, isnull, sw*
+
+          **category**: *co, eq, ge, gt, in, le, lt, ne, sw*
         example: name eq "Employees"
         in: query
         name: filters
@@ -38040,6 +38042,7 @@ components:
           - mail
         created: 2022-02-08T14:50:03.827Z
         managerCorrelationMapping: null
+        credentialProviderEnabled: false
         accountCorrelationConfig:
           name: "Directory [source-62867] Account Correlation"
           id: 2c9180855d191c59015d28583727245a
@@ -38055,6 +38058,7 @@ components:
           name: group
         name: My Source
         connectorName: Active Directory
+        category: CredentialProvider
         beforeProvisioningRule:
           name: Example Rule
           id: 2c918085708c274401708c2a8a760001
@@ -38204,6 +38208,17 @@ components:
           description: The date-time when the source was last modified
           example: 2024-01-23T18:08:50.897Z
           format: date-time
+          type: string
+        credentialProviderEnabled:
+          default: false
+          description: Enables credential provider for this source. If credentialProvider
+            is turned on  then source can use credential provider(s) to fetch credentials.
+          example: false
+          type: boolean
+        category:
+          description: "The category of source (e.g. null, CredentialProvider)"
+          example: CredentialProvider
+          nullable: true
           type: string
       required:
       - connector

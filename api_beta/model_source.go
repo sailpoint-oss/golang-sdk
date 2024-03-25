@@ -71,6 +71,10 @@ type Source struct {
 	Created *time.Time `json:"created,omitempty"`
 	// The date-time when the source was last modified
 	Modified *time.Time `json:"modified,omitempty"`
+	// Enables credential provider for this source. If credentialProvider is turned on  then source can use credential provider(s) to fetch credentials.
+	CredentialProviderEnabled *bool `json:"credentialProviderEnabled,omitempty"`
+	// The category of source (e.g. null, CredentialProvider)
+	Category NullableString `json:"category,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -89,6 +93,8 @@ func NewSource(name string, owner SourceOwner, connector string) *Source {
 	this.Authoritative = &authoritative
 	var healthy bool = false
 	this.Healthy = &healthy
+	var credentialProviderEnabled bool = false
+	this.CredentialProviderEnabled = &credentialProviderEnabled
 	return &this
 }
 
@@ -101,6 +107,8 @@ func NewSourceWithDefaults() *Source {
 	this.Authoritative = &authoritative
 	var healthy bool = false
 	this.Healthy = &healthy
+	var credentialProviderEnabled bool = false
+	this.CredentialProviderEnabled = &credentialProviderEnabled
 	return &this
 }
 
@@ -1008,6 +1016,80 @@ func (o *Source) SetModified(v time.Time) {
 	o.Modified = &v
 }
 
+// GetCredentialProviderEnabled returns the CredentialProviderEnabled field value if set, zero value otherwise.
+func (o *Source) GetCredentialProviderEnabled() bool {
+	if o == nil || isNil(o.CredentialProviderEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.CredentialProviderEnabled
+}
+
+// GetCredentialProviderEnabledOk returns a tuple with the CredentialProviderEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Source) GetCredentialProviderEnabledOk() (*bool, bool) {
+	if o == nil || isNil(o.CredentialProviderEnabled) {
+		return nil, false
+	}
+	return o.CredentialProviderEnabled, true
+}
+
+// HasCredentialProviderEnabled returns a boolean if a field has been set.
+func (o *Source) HasCredentialProviderEnabled() bool {
+	if o != nil && !isNil(o.CredentialProviderEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetCredentialProviderEnabled gets a reference to the given bool and assigns it to the CredentialProviderEnabled field.
+func (o *Source) SetCredentialProviderEnabled(v bool) {
+	o.CredentialProviderEnabled = &v
+}
+
+// GetCategory returns the Category field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Source) GetCategory() string {
+	if o == nil || isNil(o.Category.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Category.Get()
+}
+
+// GetCategoryOk returns a tuple with the Category field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Source) GetCategoryOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Category.Get(), o.Category.IsSet()
+}
+
+// HasCategory returns a boolean if a field has been set.
+func (o *Source) HasCategory() bool {
+	if o != nil && o.Category.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCategory gets a reference to the given NullableString and assigns it to the Category field.
+func (o *Source) SetCategory(v string) {
+	o.Category.Set(&v)
+}
+// SetCategoryNil sets the value for Category to be an explicit nil
+func (o *Source) SetCategoryNil() {
+	o.Category.Set(nil)
+}
+
+// UnsetCategory ensures that no value is present for Category, not even an explicit nil
+func (o *Source) UnsetCategory() {
+	o.Category.Unset()
+}
+
 func (o Source) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1097,6 +1179,12 @@ func (o Source) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
+	if !isNil(o.CredentialProviderEnabled) {
+		toSerialize["credentialProviderEnabled"] = o.CredentialProviderEnabled
+	}
+	if o.Category.IsSet() {
+		toSerialize["category"] = o.Category.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -1167,6 +1255,8 @@ func (o *Source) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "connectorImplementationId")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "modified")
+		delete(additionalProperties, "credentialProviderEnabled")
+		delete(additionalProperties, "category")
 		o.AdditionalProperties = additionalProperties
 	}
 

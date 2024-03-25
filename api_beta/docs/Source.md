@@ -33,6 +33,8 @@ Name | Type | Description | Notes
 **ConnectorImplementationId** | Pointer to **string** | The connector implementation id | [optional] 
 **Created** | Pointer to **time.Time** | The date-time when the source was created | [optional] 
 **Modified** | Pointer to **time.Time** | The date-time when the source was last modified | [optional] 
+**CredentialProviderEnabled** | Pointer to **bool** | Enables credential provider for this source. If credentialProvider is turned on  then source can use credential provider(s) to fetch credentials. | [optional] [default to false]
+**Category** | Pointer to **NullableString** | The category of source (e.g. null, CredentialProvider) | [optional] 
 
 ## Methods
 
@@ -763,6 +765,66 @@ SetModified sets Modified field to given value.
 
 HasModified returns a boolean if a field has been set.
 
+### GetCredentialProviderEnabled
+
+`func (o *Source) GetCredentialProviderEnabled() bool`
+
+GetCredentialProviderEnabled returns the CredentialProviderEnabled field if non-nil, zero value otherwise.
+
+### GetCredentialProviderEnabledOk
+
+`func (o *Source) GetCredentialProviderEnabledOk() (*bool, bool)`
+
+GetCredentialProviderEnabledOk returns a tuple with the CredentialProviderEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCredentialProviderEnabled
+
+`func (o *Source) SetCredentialProviderEnabled(v bool)`
+
+SetCredentialProviderEnabled sets CredentialProviderEnabled field to given value.
+
+### HasCredentialProviderEnabled
+
+`func (o *Source) HasCredentialProviderEnabled() bool`
+
+HasCredentialProviderEnabled returns a boolean if a field has been set.
+
+### GetCategory
+
+`func (o *Source) GetCategory() string`
+
+GetCategory returns the Category field if non-nil, zero value otherwise.
+
+### GetCategoryOk
+
+`func (o *Source) GetCategoryOk() (*string, bool)`
+
+GetCategoryOk returns a tuple with the Category field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCategory
+
+`func (o *Source) SetCategory(v string)`
+
+SetCategory sets Category field to given value.
+
+### HasCategory
+
+`func (o *Source) HasCategory() bool`
+
+HasCategory returns a boolean if a field has been set.
+
+### SetCategoryNil
+
+`func (o *Source) SetCategoryNil(b bool)`
+
+ SetCategoryNil sets the value for Category to be an explicit nil
+
+### UnsetCategory
+`func (o *Source) UnsetCategory()`
+
+UnsetCategory ensures that no value is present for Category, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
