@@ -632,8 +632,7 @@ tags:
   name: Public Identities Config
 - description: "Use this API to implement reports lifecycle managing and monitoring.\n\
     With this functionality in place, users can run reports, view their results, and\
-    \ cancel reports in progress. \nThis can be potentially helpful for auditing purposes.\
-    \ \n"
+    \ cancel reports in progress. \nThis can be potentially helpful for auditing purposes.\n"
   name: Reports Data Extraction
 - description: "Use this API to implement requestable object functionality. \nWith\
     \ this functionality in place, administrators can determine which access items\
@@ -853,7 +852,7 @@ tags:
     \ an access item would potentially trigger a SOD violation. \nThis second option\
     \ is a good way to prevent SOD violations from triggering at all. \n\nRefer to\
     \ [Handling Policy Violations](https://documentation.sailpoint.com/saas/help/sod/policy-violations.html)\
-    \ for more information about SOD policy violations. \n"
+    \ for more information about SOD policy violations.\n"
   name: SOD Violations
 - description: |
     Use this API to implement source usage insight functionality.
@@ -968,7 +967,7 @@ tags:
     \ \n\nThese are the types of information often expressed in tags: \n\n- Affected\
     \ departments\n\n- Compliance and regulatory categories \n\n- Remediation urgency\
     \ levels \n\n- Risk levels \n\nRefer to [Tagging Items in Search](https://documentation.sailpoint.com/saas/help/search/index.html?h=tags#tagging-items-in-search)\
-    \ for more information about tagging objects in IdentityNow. \n"
+    \ for more information about tagging objects in IdentityNow.\n"
   name: Tagged Objects
 - description: |
     The purpose of this API is to expose functionality for the manipulation of Transform objects.
@@ -5231,8 +5230,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
-        - idn:branding:read
+      - UserContextAuth: []
       summary: List of branding items
       tags:
       - Branding
@@ -5311,8 +5309,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
-        - idn:branding:write
+      - UserContextAuth: []
       summary: Create a branding item
       tags:
       - Branding
@@ -5409,8 +5406,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
-        - idn:branding:write
+      - UserContextAuth: []
       summary: Delete a branding item
       tags:
       - Branding
@@ -5509,8 +5505,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
-        - idn:branding:read
+      - UserContextAuth: []
       summary: Get a branding item
       tags:
       - Branding
@@ -5615,8 +5610,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
-        - idn:branding:write
+      - UserContextAuth: []
       summary: Update a branding item
       tags:
       - Branding

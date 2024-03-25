@@ -27,6 +27,7 @@ api_iai_outliers.go
 api_iai_peer_group_strategies.go
 api_iai_recommendations.go
 api_iai_role_mining.go
+api_icons.go
 api_identities.go
 api_identity_attributes.go
 api_identity_history.go
@@ -390,6 +391,7 @@ docs/IAIOutliersAPI.md
 docs/IAIPeerGroupStrategiesAPI.md
 docs/IAIRecommendationsAPI.md
 docs/IAIRoleMiningAPI.md
+docs/IconsAPI.md
 docs/IdentitiesAPI.md
 docs/IdentitiesAccountsBulkRequest.md
 docs/Identity.md
@@ -735,6 +737,8 @@ docs/ServiceDeskIntegrationDto.md
 docs/ServiceDeskIntegrationTemplateDto.md
 docs/ServiceDeskIntegrationTemplateType.md
 docs/ServiceDeskSource.md
+docs/SetIcon200Response.md
+docs/SetIconRequest.md
 docs/Slimcampaign.md
 docs/SodExemptCriteria.md
 docs/SodExemptCriteria1.md
@@ -1506,6 +1510,8 @@ model_service_desk_integration_dto.go
 model_service_desk_integration_template_dto.go
 model_service_desk_integration_template_type.go
 model_service_desk_source.go
+model_set_icon_200_response.go
+model_set_icon_request.go
 model_slimcampaign.go
 model_sod_exempt_criteria.go
 model_sod_exempt_criteria_1.go
@@ -1673,6 +1679,7 @@ test/api_iai_outliers_test.go
 test/api_iai_peer_group_strategies_test.go
 test/api_iai_recommendations_test.go
 test/api_iai_role_mining_test.go
+test/api_icons_test.go
 test/api_identities_test.go
 test/api_identity_attributes_test.go
 test/api_identity_history_test.go

@@ -711,7 +711,7 @@ tags:
     \ the API to create and manage segments, they use a JSON expression in the `visibilityCriteria`\
     \ object to define the segment's identities and access items. \n\nRefer to [Managing\
     \ Access Request Segments](https://documentation.sailpoint.com/saas/help/requests/segments.html)\
-    \ for more information about segments in IdentityNow. \n"
+    \ for more information about segments in IdentityNow.\n"
   name: Segments
 - description: |
     Use this API to build an integration between IdentityNow and a service desk ITSM (IT service management) solution.
@@ -767,7 +767,7 @@ tags:
     \ to the policy and schedule it to run at a regular interval. \n\nRefer to [Managing\
     \ Policies](https://documentation.sailpoint.com/saas/help/sod/manage-policies.html)\
     \ for more information about SOD policies. \n\nRefer to [Subscribe to a SOD Policy](https://documentation.sailpoint.com/saas/help/sod/policy-violations.html#subscribe-to-an-sod-policy)\
-    \ for more information about SOD policy subscriptions. \n"
+    \ for more information about SOD policy subscriptions.\n"
   name: SOD Policy
 - description: "Use this API to check for current \"separation of duties\" (SOD) policy\
     \ violations as well as potential future SOD policy violations. \nWith SOD violation\
@@ -792,7 +792,7 @@ tags:
     \ an access item would potentially trigger a SOD violation. \nThis second option\
     \ is a good way to prevent SOD violations from triggering at all. \n\nRefer to\
     \ [Handling Policy Violations](https://documentation.sailpoint.com/saas/help/sod/policy-violations.html)\
-    \ for more information about SOD policy violations. \n"
+    \ for more information about SOD policy violations.\n"
   name: SOD Violations
 - description: |
     Use this API to implement source usage insight functionality.
@@ -889,7 +889,7 @@ tags:
     \ \n\nThese are the types of information often expressed in tags: \n\n- Affected\
     \ departments\n\n- Compliance and regulatory categories \n\n- Remediation urgency\
     \ levels \n\n- Risk levels \n\nRefer to [Tagging Items in Search](https://documentation.sailpoint.com/saas/help/search/index.html?h=tags#tagging-items-in-search)\
-    \ for more information about tagging objects in IdentityNow. \n"
+    \ for more information about tagging objects in IdentityNow.\n"
   name: Tagged Objects
 - name: Task Management
 - description: API for reading tenant details.
@@ -972,6 +972,10 @@ tags:
 - description: |
     Workflows allow administrators to create custom automation scripts directly within IdentityNow.  These automation scripts respond to [event triggers](https://developer.sailpoint.com/idn/docs/event-triggers#how-to-get-started-with-event-triggers) and perform a series of actions to perform tasks that are either too cumbersome or not available in the IdentityNow UI.  Workflows can be configured via a graphical user interface within IdentityNow, or by creating and uploading a JSON formatted script to the Workflow service.  The Workflows API collection provides the necessary functionality to create, manage, and test your workflows via REST.
   name: Workflows
+- description: "Use this API to implement functionality related to object icons (application\
+    \ icons for example). \nWith this functionality in place, administrators can set\
+    \ or remove an icon for specific object type for use throughout IdentityNow.\n"
+  name: Icons
 paths:
   /access-profiles:
     get:
@@ -51789,6 +51793,220 @@ paths:
       summary: Return access request identity metrics
       tags:
       - Access Request Identity Metrics
+  /icons/{objectType}/{objectId}:
+    delete:
+      description: This API endpoint delete an icon by object type and object id.
+        A token with ORG_ADMIN authority is required to call this API.
+      operationId: deleteIcon
+      parameters:
+      - description: "Object type. Available options ['application']"
+        example: application
+        in: path
+        name: objectType
+        required: true
+        schema:
+          type: string
+      - description: Object id.
+        example: a291e870-48c3-4953-b656-fb5ce2a93169
+        in: path
+        name: objectId
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth: []
+      summary: Delete an icon
+      tags:
+      - Icons
+    put:
+      description: This API endpoint updates an icon by object type and object id.
+        A token with ORG_ADMIN authority is required to call this API.
+      operationId: setIcon
+      parameters:
+      - description: "Object type. Available options ['application']"
+        example: application
+        in: path
+        name: objectType
+        required: true
+        schema:
+          type: string
+      - description: Object id.
+        example: a291e870-48c3-4953-b656-fb5ce2a93169
+        in: path
+        name: objectId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/setIcon_request'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/setIcon_200_response'
+          description: Icon updated
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth: []
+      summary: Update an icon
+      tags:
+      - Icons
 components:
   examples:
     SlimCampaigns:
@@ -74891,6 +75109,25 @@ components:
           x-go-name: File
       required:
       - file
+      type: object
+    setIcon_request:
+      properties:
+        image:
+          description: "file with icon. Allowed mime-types ['image/png', 'image/jpeg']"
+          example: \x00\x00\x00\x02
+          format: binary
+          type: string
+      required:
+      - image
+      type: object
+    setIcon_200_response:
+      example:
+        icon: ""
+      properties:
+        icon:
+          description: url to file with icon
+          example: ""
+          type: string
       type: object
     fullcampaign_allOf_filter:
       description: Determines which items will be included in this campaign. The default

@@ -248,6 +248,8 @@ Class | Method | HTTP request | Description
 *IAIRoleMiningAPI* | [**PatchPotentialRole_0**](docs/IAIRoleMiningAPI.md#patchpotentialrole_0) | **Patch** /role-mining-potential-roles/{potentialRoleId} | Update a potential role
 *IAIRoleMiningAPI* | [**PatchRoleMiningSession**](docs/IAIRoleMiningAPI.md#patchroleminingsession) | **Patch** /role-mining-sessions/{sessionId} | Patch a role mining session
 *IAIRoleMiningAPI* | [**UpdateEntitlementsPotentialRole**](docs/IAIRoleMiningAPI.md#updateentitlementspotentialrole) | **Post** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/edit-entitlements | Edit entitlements for a potential role to exclude some entitlements
+*IconsAPI* | [**DeleteIcon**](docs/IconsAPI.md#deleteicon) | **Delete** /icons/{objectType}/{objectId} | Delete an icon
+*IconsAPI* | [**SetIcon**](docs/IconsAPI.md#seticon) | **Put** /icons/{objectType}/{objectId} | Update an icon
 *IdentitiesAPI* | [**DeleteIdentity**](docs/IdentitiesAPI.md#deleteidentity) | **Delete** /identities/{id} | Deletes an identity.
 *IdentitiesAPI* | [**GetIdentity**](docs/IdentitiesAPI.md#getidentity) | **Get** /identities/{id} | Identity Details
 *IdentitiesAPI* | [**GetIdentityOwnershipDetails**](docs/IdentitiesAPI.md#getidentityownershipdetails) | **Get** /identities/{identityId}/ownership | Get ownership details
@@ -1171,6 +1173,8 @@ Class | Method | HTTP request | Description
  - [ServiceDeskIntegrationTemplateDto](docs/ServiceDeskIntegrationTemplateDto.md)
  - [ServiceDeskIntegrationTemplateType](docs/ServiceDeskIntegrationTemplateType.md)
  - [ServiceDeskSource](docs/ServiceDeskSource.md)
+ - [SetIcon200Response](docs/SetIcon200Response.md)
+ - [SetIconRequest](docs/SetIconRequest.md)
  - [Slimcampaign](docs/Slimcampaign.md)
  - [SodExemptCriteria](docs/SodExemptCriteria.md)
  - [SodExemptCriteria1](docs/SodExemptCriteria1.md)
