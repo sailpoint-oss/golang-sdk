@@ -284,7 +284,7 @@ func (o *Form) UnmarshalJSON(bytes []byte) (err error) {
 	varForm := _Form{}
 
 	if err = json.Unmarshal(bytes, &varForm); err == nil {
-	*o = Form(varForm)
+			*o = Form(varForm)
 }
 
 	additionalProperties := make(map[string]interface{})

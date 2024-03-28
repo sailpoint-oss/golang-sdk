@@ -210,7 +210,7 @@ func (o *Query) UnmarshalJSON(bytes []byte) (err error) {
 	varQuery := _Query{}
 
 	if err = json.Unmarshal(bytes, &varQuery); err == nil {
-	*o = Query(varQuery)
+			*o = Query(varQuery)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -137,7 +137,7 @@ func (o *ListCampaignFilters200Response) UnmarshalJSON(bytes []byte) (err error)
 	varListCampaignFilters200Response := _ListCampaignFilters200Response{}
 
 	if err = json.Unmarshal(bytes, &varListCampaignFilters200Response); err == nil {
-	*o = ListCampaignFilters200Response(varListCampaignFilters200Response)
+			*o = ListCampaignFilters200Response(varListCampaignFilters200Response)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -101,7 +101,7 @@ func (o *Revocability) UnmarshalJSON(bytes []byte) (err error) {
 	varRevocability := _Revocability{}
 
 	if err = json.Unmarshal(bytes, &varRevocability); err == nil {
-	*o = Revocability(varRevocability)
+			*o = Revocability(varRevocability)
 }
 
 	additionalProperties := make(map[string]interface{})

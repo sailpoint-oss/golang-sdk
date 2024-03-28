@@ -142,7 +142,7 @@ func (o BaseDocument) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *BaseDocument) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -168,7 +168,7 @@ func (o *BaseDocument) UnmarshalJSON(bytes []byte) (err error) {
 	varBaseDocument := _BaseDocument{}
 
 	if err = json.Unmarshal(bytes, &varBaseDocument); err == nil {
-	*o = BaseDocument(varBaseDocument)
+			*o = BaseDocument(varBaseDocument)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -174,7 +174,7 @@ func (o *LifecyclestateDeleted) UnmarshalJSON(bytes []byte) (err error) {
 	varLifecyclestateDeleted := _LifecyclestateDeleted{}
 
 	if err = json.Unmarshal(bytes, &varLifecyclestateDeleted); err == nil {
-	*o = LifecyclestateDeleted(varLifecyclestateDeleted)
+			*o = LifecyclestateDeleted(varLifecyclestateDeleted)
 }
 
 	additionalProperties := make(map[string]interface{})

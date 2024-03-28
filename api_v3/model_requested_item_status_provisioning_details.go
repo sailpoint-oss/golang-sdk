@@ -100,7 +100,7 @@ func (o *RequestedItemStatusProvisioningDetails) UnmarshalJSON(bytes []byte) (er
 	varRequestedItemStatusProvisioningDetails := _RequestedItemStatusProvisioningDetails{}
 
 	if err = json.Unmarshal(bytes, &varRequestedItemStatusProvisioningDetails); err == nil {
-	*o = RequestedItemStatusProvisioningDetails(varRequestedItemStatusProvisioningDetails)
+			*o = RequestedItemStatusProvisioningDetails(varRequestedItemStatusProvisioningDetails)
 }
 
 	additionalProperties := make(map[string]interface{})

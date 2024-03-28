@@ -45,6 +45,7 @@ type ManagedClient struct {
 	Name *string `json:"name,omitempty"`
 	// Milliseconds since the ManagedClient has polled the server
 	SinceLastSeen *string `json:"sinceLastSeen,omitempty"`
+	// Status of the ManagedClient
 	Status *ManagedClientStatusEnum `json:"status,omitempty"`
 	// Type of the ManagedClient (VA, CCG)
 	Type string `json:"type"`
@@ -634,7 +635,7 @@ func (o ManagedClient) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *ManagedClient) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -661,7 +662,7 @@ func (o *ManagedClient) UnmarshalJSON(bytes []byte) (err error) {
 	varManagedClient := _ManagedClient{}
 
 	if err = json.Unmarshal(bytes, &varManagedClient); err == nil {
-	*o = ManagedClient(varManagedClient)
+			*o = ManagedClient(varManagedClient)
 }
 
 	additionalProperties := make(map[string]interface{})

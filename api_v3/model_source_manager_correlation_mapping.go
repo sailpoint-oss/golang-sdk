@@ -137,7 +137,7 @@ func (o *SourceManagerCorrelationMapping) UnmarshalJSON(bytes []byte) (err error
 	varSourceManagerCorrelationMapping := _SourceManagerCorrelationMapping{}
 
 	if err = json.Unmarshal(bytes, &varSourceManagerCorrelationMapping); err == nil {
-	*o = SourceManagerCorrelationMapping(varSourceManagerCorrelationMapping)
+			*o = SourceManagerCorrelationMapping(varSourceManagerCorrelationMapping)
 }
 
 	additionalProperties := make(map[string]interface{})

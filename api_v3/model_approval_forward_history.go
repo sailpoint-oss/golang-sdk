@@ -305,7 +305,7 @@ func (o *ApprovalForwardHistory) UnmarshalJSON(bytes []byte) (err error) {
 	varApprovalForwardHistory := _ApprovalForwardHistory{}
 
 	if err = json.Unmarshal(bytes, &varApprovalForwardHistory); err == nil {
-	*o = ApprovalForwardHistory(varApprovalForwardHistory)
+			*o = ApprovalForwardHistory(varApprovalForwardHistory)
 }
 
 	additionalProperties := make(map[string]interface{})

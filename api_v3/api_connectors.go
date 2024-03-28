@@ -416,7 +416,7 @@ func (a *ConnectorsAPIService) GetConnectorExecute(r ApiGetConnectorRequest) (*C
 	localVarFormParams := url.Values{}
 
 	if r.locale != nil {
-		parameterAddToQuery(localVarQueryParams, "locale", r.locale, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "locale", r.locale, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

@@ -100,7 +100,7 @@ func (o *SetLifecycleState200Response) UnmarshalJSON(bytes []byte) (err error) {
 	varSetLifecycleState200Response := _SetLifecycleState200Response{}
 
 	if err = json.Unmarshal(bytes, &varSetLifecycleState200Response); err == nil {
-	*o = SetLifecycleState200Response(varSetLifecycleState200Response)
+			*o = SetLifecycleState200Response(varSetLifecycleState200Response)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -174,7 +174,7 @@ func (o *IdentityDtoManagerRef) UnmarshalJSON(bytes []byte) (err error) {
 	varIdentityDtoManagerRef := _IdentityDtoManagerRef{}
 
 	if err = json.Unmarshal(bytes, &varIdentityDtoManagerRef); err == nil {
-	*o = IdentityDtoManagerRef(varIdentityDtoManagerRef)
+			*o = IdentityDtoManagerRef(varIdentityDtoManagerRef)
 }
 
 	additionalProperties := make(map[string]interface{})

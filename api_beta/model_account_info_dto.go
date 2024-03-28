@@ -174,7 +174,7 @@ func (o *AccountInfoDto) UnmarshalJSON(bytes []byte) (err error) {
 	varAccountInfoDto := _AccountInfoDto{}
 
 	if err = json.Unmarshal(bytes, &varAccountInfoDto); err == nil {
-	*o = AccountInfoDto(varAccountInfoDto)
+			*o = AccountInfoDto(varAccountInfoDto)
 }
 
 	additionalProperties := make(map[string]interface{})

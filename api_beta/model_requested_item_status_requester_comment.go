@@ -184,7 +184,7 @@ func (o *RequestedItemStatusRequesterComment) UnmarshalJSON(bytes []byte) (err e
 	varRequestedItemStatusRequesterComment := _RequestedItemStatusRequesterComment{}
 
 	if err = json.Unmarshal(bytes, &varRequestedItemStatusRequesterComment); err == nil {
-	*o = RequestedItemStatusRequesterComment(varRequestedItemStatusRequesterComment)
+			*o = RequestedItemStatusRequesterComment(varRequestedItemStatusRequesterComment)
 }
 
 	additionalProperties := make(map[string]interface{})

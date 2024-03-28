@@ -230,7 +230,7 @@ func (o *RoleCriteriaLevel1) UnmarshalJSON(bytes []byte) (err error) {
 	varRoleCriteriaLevel1 := _RoleCriteriaLevel1{}
 
 	if err = json.Unmarshal(bytes, &varRoleCriteriaLevel1); err == nil {
-	*o = RoleCriteriaLevel1(varRoleCriteriaLevel1)
+			*o = RoleCriteriaLevel1(varRoleCriteriaLevel1)
 }
 
 	additionalProperties := make(map[string]interface{})

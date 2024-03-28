@@ -232,7 +232,7 @@ func (o V3CreateConnectorDto) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *V3CreateConnectorDto) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -257,7 +257,7 @@ func (o *V3CreateConnectorDto) UnmarshalJSON(bytes []byte) (err error) {
 	varV3CreateConnectorDto := _V3CreateConnectorDto{}
 
 	if err = json.Unmarshal(bytes, &varV3CreateConnectorDto); err == nil {
-	*o = V3CreateConnectorDto(varV3CreateConnectorDto)
+			*o = V3CreateConnectorDto(varV3CreateConnectorDto)
 }
 
 	additionalProperties := make(map[string]interface{})

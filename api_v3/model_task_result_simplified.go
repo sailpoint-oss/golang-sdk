@@ -323,7 +323,7 @@ func (o *TaskResultSimplified) UnmarshalJSON(bytes []byte) (err error) {
 	varTaskResultSimplified := _TaskResultSimplified{}
 
 	if err = json.Unmarshal(bytes, &varTaskResultSimplified); err == nil {
-	*o = TaskResultSimplified(varTaskResultSimplified)
+			*o = TaskResultSimplified(varTaskResultSimplified)
 }
 
 	additionalProperties := make(map[string]interface{})

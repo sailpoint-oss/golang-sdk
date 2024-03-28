@@ -14,19 +14,19 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func Test_api_beta_ConnectorRuleManagementAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sailpoint.NewDefaultConfiguration()
+	apiClient := sailpoint.NewAPIClient(configuration)
 
 	t.Run("Test ConnectorRuleManagementAPIService CreateConnectorRule", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.ConnectorRuleManagementAPI.CreateConnectorRule(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.ConnectorRuleManagementAPI.CreateConnectorRule(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_beta_ConnectorRuleManagementAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_BETA.ConnectorRuleManagementAPI.DeleteConnectorRule(context.Background(), id).Execute()
+		httpRes, err := apiClient.Beta.ConnectorRuleManagementAPI.DeleteConnectorRule(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -53,7 +53,7 @@ func Test_api_beta_ConnectorRuleManagementAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.ConnectorRuleManagementAPI.GetConnectorRule(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.ConnectorRuleManagementAPI.GetConnectorRule(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -65,7 +65,7 @@ func Test_api_beta_ConnectorRuleManagementAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.ConnectorRuleManagementAPI.GetConnectorRuleList(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.ConnectorRuleManagementAPI.GetConnectorRuleList(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -79,7 +79,7 @@ func Test_api_beta_ConnectorRuleManagementAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.ConnectorRuleManagementAPI.UpdateConnectorRule(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.ConnectorRuleManagementAPI.UpdateConnectorRule(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -91,7 +91,7 @@ func Test_api_beta_ConnectorRuleManagementAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.ConnectorRuleManagementAPI.ValidateConnectorRule(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.ConnectorRuleManagementAPI.ValidateConnectorRule(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

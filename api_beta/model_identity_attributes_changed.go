@@ -116,7 +116,7 @@ func (o IdentityAttributesChanged) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *IdentityAttributesChanged) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -141,7 +141,7 @@ func (o *IdentityAttributesChanged) UnmarshalJSON(bytes []byte) (err error) {
 	varIdentityAttributesChanged := _IdentityAttributesChanged{}
 
 	if err = json.Unmarshal(bytes, &varIdentityAttributesChanged); err == nil {
-	*o = IdentityAttributesChanged(varIdentityAttributesChanged)
+			*o = IdentityAttributesChanged(varIdentityAttributesChanged)
 }
 
 	additionalProperties := make(map[string]interface{})

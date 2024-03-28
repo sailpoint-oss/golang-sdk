@@ -27,9 +27,9 @@ type CreateScheduledSearchRequest struct {
 	Description NullableString `json:"description,omitempty"`
 	// The ID of the saved search that will be executed.
 	SavedSearchId string `json:"savedSearchId"`
-	// A date-time in ISO-8601 format
+	// The date the scheduled search was initially created.
 	Created NullableTime `json:"created,omitempty"`
-	// A date-time in ISO-8601 format
+	// The last date the scheduled search was modified.
 	Modified NullableTime `json:"modified,omitempty"`
 	Schedule Schedule1 `json:"schedule"`
 	// A list of identities that should receive the scheduled search report via email.
@@ -456,7 +456,7 @@ func (o CreateScheduledSearchRequest) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *CreateScheduledSearchRequest) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -482,7 +482,7 @@ func (o *CreateScheduledSearchRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varCreateScheduledSearchRequest := _CreateScheduledSearchRequest{}
 
 	if err = json.Unmarshal(bytes, &varCreateScheduledSearchRequest); err == nil {
-	*o = CreateScheduledSearchRequest(varCreateScheduledSearchRequest)
+			*o = CreateScheduledSearchRequest(varCreateScheduledSearchRequest)
 }
 
 	additionalProperties := make(map[string]interface{})

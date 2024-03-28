@@ -174,7 +174,7 @@ func (o *FullcampaignAllOfFilter) UnmarshalJSON(bytes []byte) (err error) {
 	varFullcampaignAllOfFilter := _FullcampaignAllOfFilter{}
 
 	if err = json.Unmarshal(bytes, &varFullcampaignAllOfFilter); err == nil {
-	*o = FullcampaignAllOfFilter(varFullcampaignAllOfFilter)
+			*o = FullcampaignAllOfFilter(varFullcampaignAllOfFilter)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -174,7 +174,7 @@ func (o *ReassignmentTrailDTO) UnmarshalJSON(bytes []byte) (err error) {
 	varReassignmentTrailDTO := _ReassignmentTrailDTO{}
 
 	if err = json.Unmarshal(bytes, &varReassignmentTrailDTO); err == nil {
-	*o = ReassignmentTrailDTO(varReassignmentTrailDTO)
+			*o = ReassignmentTrailDTO(varReassignmentTrailDTO)
 }
 
 	additionalProperties := make(map[string]interface{})

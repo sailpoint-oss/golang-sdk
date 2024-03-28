@@ -245,7 +245,7 @@ func (o *ConfigType) UnmarshalJSON(bytes []byte) (err error) {
 	varConfigType := _ConfigType{}
 
 	if err = json.Unmarshal(bytes, &varConfigType); err == nil {
-	*o = ConfigType(varConfigType)
+			*o = ConfigType(varConfigType)
 }
 
 	additionalProperties := make(map[string]interface{})

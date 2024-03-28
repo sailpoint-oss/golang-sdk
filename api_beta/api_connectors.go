@@ -104,28 +104,28 @@ func (a *ConnectorsAPIService) GetConnectorListExecute(r ApiGetConnectorListRequ
 	localVarFormParams := url.Values{}
 
 	if r.filters != nil {
-		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "")
 	}
 	if r.limit != nil {
-		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
 		var defaultValue int32 = 250
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
-		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
 	} else {
 		var defaultValue int32 = 0
 		r.offset = &defaultValue
 	}
 	if r.count != nil {
-		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "")
 	} else {
 		var defaultValue bool = false
 		r.count = &defaultValue
 	}
 	if r.locale != nil {
-		parameterAddToQuery(localVarQueryParams, "locale", r.locale, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "locale", r.locale, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

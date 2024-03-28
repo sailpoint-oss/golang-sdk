@@ -323,7 +323,7 @@ func (o *LoadEntitlementTask) UnmarshalJSON(bytes []byte) (err error) {
 	varLoadEntitlementTask := _LoadEntitlementTask{}
 
 	if err = json.Unmarshal(bytes, &varLoadEntitlementTask); err == nil {
-	*o = LoadEntitlementTask(varLoadEntitlementTask)
+			*o = LoadEntitlementTask(varLoadEntitlementTask)
 }
 
 	additionalProperties := make(map[string]interface{})

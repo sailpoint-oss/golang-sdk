@@ -174,7 +174,7 @@ func (o *PatOwner) UnmarshalJSON(bytes []byte) (err error) {
 	varPatOwner := _PatOwner{}
 
 	if err = json.Unmarshal(bytes, &varPatOwner); err == nil {
-	*o = PatOwner(varPatOwner)
+			*o = PatOwner(varPatOwner)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -13,7 +13,7 @@ package api_v3
 import (
 	"context"
 	"fmt"
-		"strings"
+	"strings"
 
 	retryablehttp "github.com/hashicorp/go-retryablehttp"
 )

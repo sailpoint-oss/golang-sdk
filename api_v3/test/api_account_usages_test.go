@@ -14,13 +14,13 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func Test_api_v3_AccountUsagesAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sailpoint.NewDefaultConfiguration()
+	apiClient := sailpoint.NewAPIClient(configuration)
 
 	t.Run("Test AccountUsagesAPIService GetUsagesByAccountId", func(t *testing.T) {
 
@@ -28,7 +28,7 @@ func Test_api_v3_AccountUsagesAPIService(t *testing.T) {
 
 		var accountId string
 
-		resp, httpRes, err := apiClient.API_V3.AccountUsagesAPI.GetUsagesByAccountId(context.Background(), accountId).Execute()
+		resp, httpRes, err := apiClient.V3.AccountUsagesAPI.GetUsagesByAccountId(context.Background(), accountId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

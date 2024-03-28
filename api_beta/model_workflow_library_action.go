@@ -322,7 +322,7 @@ func (o *WorkflowLibraryAction) UnmarshalJSON(bytes []byte) (err error) {
 	varWorkflowLibraryAction := _WorkflowLibraryAction{}
 
 	if err = json.Unmarshal(bytes, &varWorkflowLibraryAction); err == nil {
-	*o = WorkflowLibraryAction(varWorkflowLibraryAction)
+			*o = WorkflowLibraryAction(varWorkflowLibraryAction)
 }
 
 	additionalProperties := make(map[string]interface{})

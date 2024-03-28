@@ -282,7 +282,7 @@ func (o *PasswordInfo) UnmarshalJSON(bytes []byte) (err error) {
 	varPasswordInfo := _PasswordInfo{}
 
 	if err = json.Unmarshal(bytes, &varPasswordInfo); err == nil {
-	*o = PasswordInfo(varPasswordInfo)
+			*o = PasswordInfo(varPasswordInfo)
 }
 
 	additionalProperties := make(map[string]interface{})

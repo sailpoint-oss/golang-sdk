@@ -212,7 +212,7 @@ func (o *UpdateDetail) UnmarshalJSON(bytes []byte) (err error) {
 	varUpdateDetail := _UpdateDetail{}
 
 	if err = json.Unmarshal(bytes, &varUpdateDetail); err == nil {
-	*o = UpdateDetail(varUpdateDetail)
+			*o = UpdateDetail(varUpdateDetail)
 }
 
 	additionalProperties := make(map[string]interface{})

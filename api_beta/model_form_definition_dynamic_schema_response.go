@@ -100,7 +100,7 @@ func (o *FormDefinitionDynamicSchemaResponse) UnmarshalJSON(bytes []byte) (err e
 	varFormDefinitionDynamicSchemaResponse := _FormDefinitionDynamicSchemaResponse{}
 
 	if err = json.Unmarshal(bytes, &varFormDefinitionDynamicSchemaResponse); err == nil {
-	*o = FormDefinitionDynamicSchemaResponse(varFormDefinitionDynamicSchemaResponse)
+			*o = FormDefinitionDynamicSchemaResponse(varFormDefinitionDynamicSchemaResponse)
 }
 
 	additionalProperties := make(map[string]interface{})

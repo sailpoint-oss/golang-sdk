@@ -137,7 +137,7 @@ func (o *AuthProfileSummary) UnmarshalJSON(bytes []byte) (err error) {
 	varAuthProfileSummary := _AuthProfileSummary{}
 
 	if err = json.Unmarshal(bytes, &varAuthProfileSummary); err == nil {
-	*o = AuthProfileSummary(varAuthProfileSummary)
+			*o = AuthProfileSummary(varAuthProfileSummary)
 }
 
 	additionalProperties := make(map[string]interface{})

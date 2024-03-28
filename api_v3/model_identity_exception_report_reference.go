@@ -137,7 +137,7 @@ func (o *IdentityExceptionReportReference) UnmarshalJSON(bytes []byte) (err erro
 	varIdentityExceptionReportReference := _IdentityExceptionReportReference{}
 
 	if err = json.Unmarshal(bytes, &varIdentityExceptionReportReference); err == nil {
-	*o = IdentityExceptionReportReference(varIdentityExceptionReportReference)
+			*o = IdentityExceptionReportReference(varIdentityExceptionReportReference)
 }
 
 	additionalProperties := make(map[string]interface{})

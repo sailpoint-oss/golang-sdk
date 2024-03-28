@@ -174,7 +174,7 @@ func (o *CustomPasswordInstruction) UnmarshalJSON(bytes []byte) (err error) {
 	varCustomPasswordInstruction := _CustomPasswordInstruction{}
 
 	if err = json.Unmarshal(bytes, &varCustomPasswordInstruction); err == nil {
-	*o = CustomPasswordInstruction(varCustomPasswordInstruction)
+			*o = CustomPasswordInstruction(varCustomPasswordInstruction)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -145,7 +145,7 @@ func (o *EntitlementManuallyUpdatedFields) UnmarshalJSON(bytes []byte) (err erro
 	varEntitlementManuallyUpdatedFields := _EntitlementManuallyUpdatedFields{}
 
 	if err = json.Unmarshal(bytes, &varEntitlementManuallyUpdatedFields); err == nil {
-	*o = EntitlementManuallyUpdatedFields(varEntitlementManuallyUpdatedFields)
+			*o = EntitlementManuallyUpdatedFields(varEntitlementManuallyUpdatedFields)
 }
 
 	additionalProperties := make(map[string]interface{})

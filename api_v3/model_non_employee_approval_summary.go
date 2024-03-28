@@ -174,7 +174,7 @@ func (o *NonEmployeeApprovalSummary) UnmarshalJSON(bytes []byte) (err error) {
 	varNonEmployeeApprovalSummary := _NonEmployeeApprovalSummary{}
 
 	if err = json.Unmarshal(bytes, &varNonEmployeeApprovalSummary); err == nil {
-	*o = NonEmployeeApprovalSummary(varNonEmployeeApprovalSummary)
+			*o = NonEmployeeApprovalSummary(varNonEmployeeApprovalSummary)
 }
 
 	additionalProperties := make(map[string]interface{})

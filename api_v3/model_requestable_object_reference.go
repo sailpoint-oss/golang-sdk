@@ -211,7 +211,7 @@ func (o *RequestableObjectReference) UnmarshalJSON(bytes []byte) (err error) {
 	varRequestableObjectReference := _RequestableObjectReference{}
 
 	if err = json.Unmarshal(bytes, &varRequestableObjectReference); err == nil {
-	*o = RequestableObjectReference(varRequestableObjectReference)
+			*o = RequestableObjectReference(varRequestableObjectReference)
 }
 
 	additionalProperties := make(map[string]interface{})

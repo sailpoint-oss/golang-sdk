@@ -14,13 +14,13 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func Test_api_beta_LifecycleStatesAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sailpoint.NewDefaultConfiguration()
+	apiClient := sailpoint.NewAPIClient(configuration)
 
 	t.Run("Test LifecycleStatesAPIService ListLifecycleStates", func(t *testing.T) {
 
@@ -29,7 +29,7 @@ func Test_api_beta_LifecycleStatesAPIService(t *testing.T) {
 		var identityProfileId string
 		var lifecycleStateId string
 
-		resp, httpRes, err := apiClient.API_BETA.LifecycleStatesAPI.ListLifecycleStates(context.Background(), identityProfileId, lifecycleStateId).Execute()
+		resp, httpRes, err := apiClient.Beta.LifecycleStatesAPI.ListLifecycleStates(context.Background(), identityProfileId, lifecycleStateId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -44,7 +44,7 @@ func Test_api_beta_LifecycleStatesAPIService(t *testing.T) {
 		var identityProfileId string
 		var lifecycleStateId string
 
-		resp, httpRes, err := apiClient.API_BETA.LifecycleStatesAPI.UpdateLifecycleStates(context.Background(), identityProfileId, lifecycleStateId).Execute()
+		resp, httpRes, err := apiClient.Beta.LifecycleStatesAPI.UpdateLifecycleStates(context.Background(), identityProfileId, lifecycleStateId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

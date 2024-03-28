@@ -238,7 +238,7 @@ func (o *StatusResponse) UnmarshalJSON(bytes []byte) (err error) {
 	varStatusResponse := _StatusResponse{}
 
 	if err = json.Unmarshal(bytes, &varStatusResponse); err == nil {
-	*o = StatusResponse(varStatusResponse)
+			*o = StatusResponse(varStatusResponse)
 }
 
 	additionalProperties := make(map[string]interface{})

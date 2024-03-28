@@ -14,19 +14,19 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func Test_api_beta_TaskManagementAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sailpoint.NewDefaultConfiguration()
+	apiClient := sailpoint.NewAPIClient(configuration)
 
 	t.Run("Test TaskManagementAPIService GetPendingTaskHeaders", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.API_BETA.TaskManagementAPI.GetPendingTaskHeaders(context.Background()).Execute()
+		httpRes, err := apiClient.Beta.TaskManagementAPI.GetPendingTaskHeaders(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -37,7 +37,7 @@ func Test_api_beta_TaskManagementAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.TaskManagementAPI.GetPendingTasks(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.TaskManagementAPI.GetPendingTasks(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -51,7 +51,7 @@ func Test_api_beta_TaskManagementAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.TaskManagementAPI.GetTaskStatus(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.TaskManagementAPI.GetTaskStatus(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -63,7 +63,7 @@ func Test_api_beta_TaskManagementAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.TaskManagementAPI.GetTaskStatusList(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.TaskManagementAPI.GetTaskStatusList(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -77,7 +77,7 @@ func Test_api_beta_TaskManagementAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.TaskManagementAPI.UpdateTaskStatus(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.TaskManagementAPI.UpdateTaskStatus(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

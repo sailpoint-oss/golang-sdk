@@ -137,7 +137,7 @@ func (o *AccessProfileDocumentAllOfSource) UnmarshalJSON(bytes []byte) (err erro
 	varAccessProfileDocumentAllOfSource := _AccessProfileDocumentAllOfSource{}
 
 	if err = json.Unmarshal(bytes, &varAccessProfileDocumentAllOfSource); err == nil {
-	*o = AccessProfileDocumentAllOfSource(varAccessProfileDocumentAllOfSource)
+			*o = AccessProfileDocumentAllOfSource(varAccessProfileDocumentAllOfSource)
 }
 
 	additionalProperties := make(map[string]interface{})

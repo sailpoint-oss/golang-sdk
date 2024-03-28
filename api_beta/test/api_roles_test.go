@@ -14,19 +14,19 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func Test_api_beta_RolesAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sailpoint.NewDefaultConfiguration()
+	apiClient := sailpoint.NewAPIClient(configuration)
 
 	t.Run("Test RolesAPIService BulkDeleteRoles", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.RolesAPI.BulkDeleteRoles(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.RolesAPI.BulkDeleteRoles(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -38,7 +38,7 @@ func Test_api_beta_RolesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.RolesAPI.CreateRole(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.RolesAPI.CreateRole(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -52,7 +52,7 @@ func Test_api_beta_RolesAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_BETA.RolesAPI.DeleteRole(context.Background(), id).Execute()
+		httpRes, err := apiClient.Beta.RolesAPI.DeleteRole(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -65,7 +65,7 @@ func Test_api_beta_RolesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.RolesAPI.GetRole(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.RolesAPI.GetRole(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -79,7 +79,7 @@ func Test_api_beta_RolesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.RolesAPI.GetRoleAssignedIdentities(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.RolesAPI.GetRoleAssignedIdentities(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -93,7 +93,7 @@ func Test_api_beta_RolesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.RolesAPI.GetRoleEntitlements(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.RolesAPI.GetRoleEntitlements(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -105,7 +105,7 @@ func Test_api_beta_RolesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.RolesAPI.ListRoles(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.RolesAPI.ListRoles(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -119,7 +119,7 @@ func Test_api_beta_RolesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.RolesAPI.PatchRole(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.RolesAPI.PatchRole(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

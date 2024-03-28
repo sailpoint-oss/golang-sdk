@@ -174,7 +174,7 @@ func (o *AccessItemRequesterDto) UnmarshalJSON(bytes []byte) (err error) {
 	varAccessItemRequesterDto := _AccessItemRequesterDto{}
 
 	if err = json.Unmarshal(bytes, &varAccessItemRequesterDto); err == nil {
-	*o = AccessItemRequesterDto(varAccessItemRequesterDto)
+			*o = AccessItemRequesterDto(varAccessItemRequesterDto)
 }
 
 	additionalProperties := make(map[string]interface{})

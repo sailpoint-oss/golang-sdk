@@ -14,13 +14,13 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func Test_api_beta_AccessRequestIdentityMetricsAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sailpoint.NewDefaultConfiguration()
+	apiClient := sailpoint.NewAPIClient(configuration)
 
 	t.Run("Test AccessRequestIdentityMetricsAPIService GetAccessRequestIdentityMetrics", func(t *testing.T) {
 
@@ -30,7 +30,7 @@ func Test_api_beta_AccessRequestIdentityMetricsAPIService(t *testing.T) {
 		var requestedObjectId string
 		var type_ string
 
-		resp, httpRes, err := apiClient.API_BETA.AccessRequestIdentityMetricsAPI.GetAccessRequestIdentityMetrics(context.Background(), identityId, requestedObjectId, type_).Execute()
+		resp, httpRes, err := apiClient.Beta.AccessRequestIdentityMetricsAPI.GetAccessRequestIdentityMetrics(context.Background(), identityId, requestedObjectId, type_).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

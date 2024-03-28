@@ -174,7 +174,7 @@ func (o *RequestedItemStatusPreApprovalTriggerDetails) UnmarshalJSON(bytes []byt
 	varRequestedItemStatusPreApprovalTriggerDetails := _RequestedItemStatusPreApprovalTriggerDetails{}
 
 	if err = json.Unmarshal(bytes, &varRequestedItemStatusPreApprovalTriggerDetails); err == nil {
-	*o = RequestedItemStatusPreApprovalTriggerDetails(varRequestedItemStatusPreApprovalTriggerDetails)
+			*o = RequestedItemStatusPreApprovalTriggerDetails(varRequestedItemStatusPreApprovalTriggerDetails)
 }
 
 	additionalProperties := make(map[string]interface{})

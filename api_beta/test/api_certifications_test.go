@@ -14,13 +14,13 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func Test_api_beta_CertificationsAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sailpoint.NewDefaultConfiguration()
+	apiClient := sailpoint.NewAPIClient(configuration)
 
 	t.Run("Test CertificationsAPIService GetIdentityCertificationItemPermissions", func(t *testing.T) {
 
@@ -29,7 +29,7 @@ func Test_api_beta_CertificationsAPIService(t *testing.T) {
 		var certificationId string
 		var itemId string
 
-		resp, httpRes, err := apiClient.API_BETA.CertificationsAPI.GetIdentityCertificationItemPermissions(context.Background(), certificationId, itemId).Execute()
+		resp, httpRes, err := apiClient.Beta.CertificationsAPI.GetIdentityCertificationItemPermissions(context.Background(), certificationId, itemId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -43,7 +43,7 @@ func Test_api_beta_CertificationsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.CertificationsAPI.GetIdentityCertificationPendingTasks(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.CertificationsAPI.GetIdentityCertificationPendingTasks(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -58,7 +58,7 @@ func Test_api_beta_CertificationsAPIService(t *testing.T) {
 		var id string
 		var taskId string
 
-		resp, httpRes, err := apiClient.API_BETA.CertificationsAPI.GetIdentityCertificationTaskStatus(context.Background(), id, taskId).Execute()
+		resp, httpRes, err := apiClient.Beta.CertificationsAPI.GetIdentityCertificationTaskStatus(context.Background(), id, taskId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -72,7 +72,7 @@ func Test_api_beta_CertificationsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.CertificationsAPI.ListCertificationReviewers(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.CertificationsAPI.ListCertificationReviewers(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -86,7 +86,7 @@ func Test_api_beta_CertificationsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.CertificationsAPI.SubmitReassignCertsAsync(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.CertificationsAPI.SubmitReassignCertsAsync(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

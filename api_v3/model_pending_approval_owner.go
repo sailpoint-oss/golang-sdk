@@ -174,7 +174,7 @@ func (o *PendingApprovalOwner) UnmarshalJSON(bytes []byte) (err error) {
 	varPendingApprovalOwner := _PendingApprovalOwner{}
 
 	if err = json.Unmarshal(bytes, &varPendingApprovalOwner); err == nil {
-	*o = PendingApprovalOwner(varPendingApprovalOwner)
+			*o = PendingApprovalOwner(varPendingApprovalOwner)
 }
 
 	additionalProperties := make(map[string]interface{})

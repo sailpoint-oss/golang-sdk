@@ -14,19 +14,19 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func Test_api_beta_CustomPasswordInstructionsAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sailpoint.NewDefaultConfiguration()
+	apiClient := sailpoint.NewAPIClient(configuration)
 
 	t.Run("Test CustomPasswordInstructionsAPIService CreateCustomPasswordInstructions", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.CustomPasswordInstructionsAPI.CreateCustomPasswordInstructions(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.CustomPasswordInstructionsAPI.CreateCustomPasswordInstructions(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_beta_CustomPasswordInstructionsAPIService(t *testing.T) {
 
 		var pageId string
 
-		httpRes, err := apiClient.API_BETA.CustomPasswordInstructionsAPI.DeleteCustomPasswordInstructions(context.Background(), pageId).Execute()
+		httpRes, err := apiClient.Beta.CustomPasswordInstructionsAPI.DeleteCustomPasswordInstructions(context.Background(), pageId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -53,7 +53,7 @@ func Test_api_beta_CustomPasswordInstructionsAPIService(t *testing.T) {
 
 		var pageId string
 
-		resp, httpRes, err := apiClient.API_BETA.CustomPasswordInstructionsAPI.GetCustomPasswordInstructions(context.Background(), pageId).Execute()
+		resp, httpRes, err := apiClient.Beta.CustomPasswordInstructionsAPI.GetCustomPasswordInstructions(context.Background(), pageId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

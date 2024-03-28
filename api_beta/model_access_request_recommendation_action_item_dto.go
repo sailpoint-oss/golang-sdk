@@ -116,7 +116,7 @@ func (o AccessRequestRecommendationActionItemDto) ToMap() (map[string]interface{
 }
 
 func (o *AccessRequestRecommendationActionItemDto) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -141,7 +141,7 @@ func (o *AccessRequestRecommendationActionItemDto) UnmarshalJSON(bytes []byte) (
 	varAccessRequestRecommendationActionItemDto := _AccessRequestRecommendationActionItemDto{}
 
 	if err = json.Unmarshal(bytes, &varAccessRequestRecommendationActionItemDto); err == nil {
-	*o = AccessRequestRecommendationActionItemDto(varAccessRequestRecommendationActionItemDto)
+			*o = AccessRequestRecommendationActionItemDto(varAccessRequestRecommendationActionItemDto)
 }
 
 	additionalProperties := make(map[string]interface{})

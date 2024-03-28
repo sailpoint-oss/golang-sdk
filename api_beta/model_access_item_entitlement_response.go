@@ -396,7 +396,7 @@ func (o *AccessItemEntitlementResponse) UnmarshalJSON(bytes []byte) (err error) 
 	varAccessItemEntitlementResponse := _AccessItemEntitlementResponse{}
 
 	if err = json.Unmarshal(bytes, &varAccessItemEntitlementResponse); err == nil {
-	*o = AccessItemEntitlementResponse(varAccessItemEntitlementResponse)
+			*o = AccessItemEntitlementResponse(varAccessItemEntitlementResponse)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -306,7 +306,7 @@ func (o *PasswordSyncGroup) UnmarshalJSON(bytes []byte) (err error) {
 	varPasswordSyncGroup := _PasswordSyncGroup{}
 
 	if err = json.Unmarshal(bytes, &varPasswordSyncGroup); err == nil {
-	*o = PasswordSyncGroup(varPasswordSyncGroup)
+			*o = PasswordSyncGroup(varPasswordSyncGroup)
 }
 
 	additionalProperties := make(map[string]interface{})

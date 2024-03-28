@@ -145,7 +145,7 @@ func (o AccountAggregationCompletedSource) ToMap() (map[string]interface{}, erro
 }
 
 func (o *AccountAggregationCompletedSource) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -171,7 +171,7 @@ func (o *AccountAggregationCompletedSource) UnmarshalJSON(bytes []byte) (err err
 	varAccountAggregationCompletedSource := _AccountAggregationCompletedSource{}
 
 	if err = json.Unmarshal(bytes, &varAccountAggregationCompletedSource); err == nil {
-	*o = AccountAggregationCompletedSource(varAccountAggregationCompletedSource)
+			*o = AccountAggregationCompletedSource(varAccountAggregationCompletedSource)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -501,7 +501,7 @@ func (o *Outlier) UnmarshalJSON(bytes []byte) (err error) {
 	varOutlier := _Outlier{}
 
 	if err = json.Unmarshal(bytes, &varOutlier); err == nil {
-	*o = Outlier(varOutlier)
+			*o = Outlier(varOutlier)
 }
 
 	additionalProperties := make(map[string]interface{})

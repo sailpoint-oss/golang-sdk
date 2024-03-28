@@ -508,7 +508,7 @@ func (o *Schema) UnmarshalJSON(bytes []byte) (err error) {
 	varSchema := _Schema{}
 
 	if err = json.Unmarshal(bytes, &varSchema); err == nil {
-	*o = Schema(varSchema)
+			*o = Schema(varSchema)
 }
 
 	additionalProperties := make(map[string]interface{})

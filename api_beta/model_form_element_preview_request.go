@@ -99,7 +99,7 @@ func (o *FormElementPreviewRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varFormElementPreviewRequest := _FormElementPreviewRequest{}
 
 	if err = json.Unmarshal(bytes, &varFormElementPreviewRequest); err == nil {
-	*o = FormElementPreviewRequest(varFormElementPreviewRequest)
+			*o = FormElementPreviewRequest(varFormElementPreviewRequest)
 }
 
 	additionalProperties := make(map[string]interface{})

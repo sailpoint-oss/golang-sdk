@@ -137,7 +137,7 @@ func (o *IdentityAssociationDetailsAssociationDetailsInner) UnmarshalJSON(bytes 
 	varIdentityAssociationDetailsAssociationDetailsInner := _IdentityAssociationDetailsAssociationDetailsInner{}
 
 	if err = json.Unmarshal(bytes, &varIdentityAssociationDetailsAssociationDetailsInner); err == nil {
-	*o = IdentityAssociationDetailsAssociationDetailsInner(varIdentityAssociationDetailsAssociationDetailsInner)
+			*o = IdentityAssociationDetailsAssociationDetailsInner(varIdentityAssociationDetailsAssociationDetailsInner)
 }
 
 	additionalProperties := make(map[string]interface{})

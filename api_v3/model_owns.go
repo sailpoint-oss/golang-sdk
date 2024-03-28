@@ -315,7 +315,7 @@ func (o *Owns) UnmarshalJSON(bytes []byte) (err error) {
 	varOwns := _Owns{}
 
 	if err = json.Unmarshal(bytes, &varOwns); err == nil {
-	*o = Owns(varOwns)
+			*o = Owns(varOwns)
 }
 
 	additionalProperties := make(map[string]interface{})

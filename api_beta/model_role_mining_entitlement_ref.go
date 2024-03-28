@@ -221,7 +221,7 @@ func (o *RoleMiningEntitlementRef) UnmarshalJSON(bytes []byte) (err error) {
 	varRoleMiningEntitlementRef := _RoleMiningEntitlementRef{}
 
 	if err = json.Unmarshal(bytes, &varRoleMiningEntitlementRef); err == nil {
-	*o = RoleMiningEntitlementRef(varRoleMiningEntitlementRef)
+			*o = RoleMiningEntitlementRef(varRoleMiningEntitlementRef)
 }
 
 	additionalProperties := make(map[string]interface{})

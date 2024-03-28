@@ -363,7 +363,7 @@ func (o *AccessProfileRole) UnmarshalJSON(bytes []byte) (err error) {
 	varAccessProfileRole := _AccessProfileRole{}
 
 	if err = json.Unmarshal(bytes, &varAccessProfileRole); err == nil {
-	*o = AccessProfileRole(varAccessProfileRole)
+			*o = AccessProfileRole(varAccessProfileRole)
 }
 
 	additionalProperties := make(map[string]interface{})

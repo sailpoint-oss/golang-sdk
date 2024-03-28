@@ -174,7 +174,7 @@ func (o *SodRecipient) UnmarshalJSON(bytes []byte) (err error) {
 	varSodRecipient := _SodRecipient{}
 
 	if err = json.Unmarshal(bytes, &varSodRecipient); err == nil {
-	*o = SodRecipient(varSodRecipient)
+			*o = SodRecipient(varSodRecipient)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -211,7 +211,7 @@ func (o *ErrorResponseDto) UnmarshalJSON(bytes []byte) (err error) {
 	varErrorResponseDto := _ErrorResponseDto{}
 
 	if err = json.Unmarshal(bytes, &varErrorResponseDto); err == nil {
-	*o = ErrorResponseDto(varErrorResponseDto)
+			*o = ErrorResponseDto(varErrorResponseDto)
 }
 
 	additionalProperties := make(map[string]interface{})

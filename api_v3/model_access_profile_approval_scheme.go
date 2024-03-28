@@ -147,7 +147,7 @@ func (o *AccessProfileApprovalScheme) UnmarshalJSON(bytes []byte) (err error) {
 	varAccessProfileApprovalScheme := _AccessProfileApprovalScheme{}
 
 	if err = json.Unmarshal(bytes, &varAccessProfileApprovalScheme); err == nil {
-	*o = AccessProfileApprovalScheme(varAccessProfileApprovalScheme)
+			*o = AccessProfileApprovalScheme(varAccessProfileApprovalScheme)
 }
 
 	additionalProperties := make(map[string]interface{})

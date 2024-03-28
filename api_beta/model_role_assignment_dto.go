@@ -392,7 +392,7 @@ func (o *RoleAssignmentDto) UnmarshalJSON(bytes []byte) (err error) {
 	varRoleAssignmentDto := _RoleAssignmentDto{}
 
 	if err = json.Unmarshal(bytes, &varRoleAssignmentDto); err == nil {
-	*o = RoleAssignmentDto(varRoleAssignmentDto)
+			*o = RoleAssignmentDto(varRoleAssignmentDto)
 }
 
 	additionalProperties := make(map[string]interface{})

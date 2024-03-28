@@ -695,7 +695,7 @@ func (o *Product) UnmarshalJSON(bytes []byte) (err error) {
 	varProduct := _Product{}
 
 	if err = json.Unmarshal(bytes, &varProduct); err == nil {
-	*o = Product(varProduct)
+			*o = Product(varProduct)
 }
 
 	additionalProperties := make(map[string]interface{})

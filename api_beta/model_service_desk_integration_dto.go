@@ -401,7 +401,7 @@ func (o ServiceDeskIntegrationDto) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *ServiceDeskIntegrationDto) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -428,7 +428,7 @@ func (o *ServiceDeskIntegrationDto) UnmarshalJSON(bytes []byte) (err error) {
 	varServiceDeskIntegrationDto := _ServiceDeskIntegrationDto{}
 
 	if err = json.Unmarshal(bytes, &varServiceDeskIntegrationDto); err == nil {
-	*o = ServiceDeskIntegrationDto(varServiceDeskIntegrationDto)
+			*o = ServiceDeskIntegrationDto(varServiceDeskIntegrationDto)
 }
 
 	additionalProperties := make(map[string]interface{})

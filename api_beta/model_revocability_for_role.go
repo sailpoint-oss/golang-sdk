@@ -202,7 +202,7 @@ func (o *RevocabilityForRole) UnmarshalJSON(bytes []byte) (err error) {
 	varRevocabilityForRole := _RevocabilityForRole{}
 
 	if err = json.Unmarshal(bytes, &varRevocabilityForRole); err == nil {
-	*o = RevocabilityForRole(varRevocabilityForRole)
+			*o = RevocabilityForRole(varRevocabilityForRole)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -622,7 +622,7 @@ func (o *FormInstanceResponse) UnmarshalJSON(bytes []byte) (err error) {
 	varFormInstanceResponse := _FormInstanceResponse{}
 
 	if err = json.Unmarshal(bytes, &varFormInstanceResponse); err == nil {
-	*o = FormInstanceResponse(varFormInstanceResponse)
+			*o = FormInstanceResponse(varFormInstanceResponse)
 }
 
 	additionalProperties := make(map[string]interface{})

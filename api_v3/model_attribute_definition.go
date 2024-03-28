@@ -332,7 +332,7 @@ func (o *AttributeDefinition) UnmarshalJSON(bytes []byte) (err error) {
 	varAttributeDefinition := _AttributeDefinition{}
 
 	if err = json.Unmarshal(bytes, &varAttributeDefinition); err == nil {
-	*o = AttributeDefinition(varAttributeDefinition)
+			*o = AttributeDefinition(varAttributeDefinition)
 }
 
 	additionalProperties := make(map[string]interface{})

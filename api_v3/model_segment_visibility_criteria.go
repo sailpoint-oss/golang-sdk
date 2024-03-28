@@ -99,7 +99,7 @@ func (o *SegmentVisibilityCriteria) UnmarshalJSON(bytes []byte) (err error) {
 	varSegmentVisibilityCriteria := _SegmentVisibilityCriteria{}
 
 	if err = json.Unmarshal(bytes, &varSegmentVisibilityCriteria); err == nil {
-	*o = SegmentVisibilityCriteria(varSegmentVisibilityCriteria)
+			*o = SegmentVisibilityCriteria(varSegmentVisibilityCriteria)
 }
 
 	additionalProperties := make(map[string]interface{})

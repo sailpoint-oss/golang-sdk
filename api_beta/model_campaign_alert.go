@@ -136,7 +136,7 @@ func (o *CampaignAlert) UnmarshalJSON(bytes []byte) (err error) {
 	varCampaignAlert := _CampaignAlert{}
 
 	if err = json.Unmarshal(bytes, &varCampaignAlert); err == nil {
-	*o = CampaignAlert(varCampaignAlert)
+			*o = CampaignAlert(varCampaignAlert)
 }
 
 	additionalProperties := make(map[string]interface{})

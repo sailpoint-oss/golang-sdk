@@ -136,7 +136,7 @@ func (o *RoleAssignmentRef) UnmarshalJSON(bytes []byte) (err error) {
 	varRoleAssignmentRef := _RoleAssignmentRef{}
 
 	if err = json.Unmarshal(bytes, &varRoleAssignmentRef); err == nil {
-	*o = RoleAssignmentRef(varRoleAssignmentRef)
+			*o = RoleAssignmentRef(varRoleAssignmentRef)
 }
 
 	additionalProperties := make(map[string]interface{})

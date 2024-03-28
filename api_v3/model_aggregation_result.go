@@ -137,7 +137,7 @@ func (o *AggregationResult) UnmarshalJSON(bytes []byte) (err error) {
 	varAggregationResult := _AggregationResult{}
 
 	if err = json.Unmarshal(bytes, &varAggregationResult); err == nil {
-	*o = AggregationResult(varAggregationResult)
+			*o = AggregationResult(varAggregationResult)
 }
 
 	additionalProperties := make(map[string]interface{})

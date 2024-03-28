@@ -14,13 +14,13 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func Test_api_beta_IconsAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sailpoint.NewDefaultConfiguration()
+	apiClient := sailpoint.NewAPIClient(configuration)
 
 	t.Run("Test IconsAPIService DeleteIcon", func(t *testing.T) {
 
@@ -29,7 +29,7 @@ func Test_api_beta_IconsAPIService(t *testing.T) {
 		var objectType string
 		var objectId string
 
-		httpRes, err := apiClient.API_BETA.IconsAPI.DeleteIcon(context.Background(), objectType, objectId).Execute()
+		httpRes, err := apiClient.Beta.IconsAPI.DeleteIcon(context.Background(), objectType, objectId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -43,7 +43,7 @@ func Test_api_beta_IconsAPIService(t *testing.T) {
 		var objectType string
 		var objectId string
 
-		resp, httpRes, err := apiClient.API_BETA.IconsAPI.SetIcon(context.Background(), objectType, objectId).Execute()
+		resp, httpRes, err := apiClient.Beta.IconsAPI.SetIcon(context.Background(), objectType, objectId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

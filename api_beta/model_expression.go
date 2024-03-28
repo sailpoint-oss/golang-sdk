@@ -210,7 +210,7 @@ func (o *Expression) UnmarshalJSON(bytes []byte) (err error) {
 	varExpression := _Expression{}
 
 	if err = json.Unmarshal(bytes, &varExpression); err == nil {
-	*o = Expression(varExpression)
+			*o = Expression(varExpression)
 }
 
 	additionalProperties := make(map[string]interface{})

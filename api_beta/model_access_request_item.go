@@ -229,7 +229,7 @@ func (o AccessRequestItem) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *AccessRequestItem) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -254,7 +254,7 @@ func (o *AccessRequestItem) UnmarshalJSON(bytes []byte) (err error) {
 	varAccessRequestItem := _AccessRequestItem{}
 
 	if err = json.Unmarshal(bytes, &varAccessRequestItem); err == nil {
-	*o = AccessRequestItem(varAccessRequestItem)
+			*o = AccessRequestItem(varAccessRequestItem)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -185,7 +185,7 @@ func (o *RoleMiningSessionScope) UnmarshalJSON(bytes []byte) (err error) {
 	varRoleMiningSessionScope := _RoleMiningSessionScope{}
 
 	if err = json.Unmarshal(bytes, &varRoleMiningSessionScope); err == nil {
-	*o = RoleMiningSessionScope(varRoleMiningSessionScope)
+			*o = RoleMiningSessionScope(varRoleMiningSessionScope)
 }
 
 	additionalProperties := make(map[string]interface{})

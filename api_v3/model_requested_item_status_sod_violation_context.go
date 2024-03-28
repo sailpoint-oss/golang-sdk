@@ -193,7 +193,7 @@ func (o *RequestedItemStatusSodViolationContext) UnmarshalJSON(bytes []byte) (er
 	varRequestedItemStatusSodViolationContext := _RequestedItemStatusSodViolationContext{}
 
 	if err = json.Unmarshal(bytes, &varRequestedItemStatusSodViolationContext); err == nil {
-	*o = RequestedItemStatusSodViolationContext(varRequestedItemStatusSodViolationContext)
+			*o = RequestedItemStatusSodViolationContext(varRequestedItemStatusSodViolationContext)
 }
 
 	additionalProperties := make(map[string]interface{})

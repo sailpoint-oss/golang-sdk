@@ -174,7 +174,7 @@ func (o *AttributeRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varAttributeRequest := _AttributeRequest{}
 
 	if err = json.Unmarshal(bytes, &varAttributeRequest); err == nil {
-	*o = AttributeRequest(varAttributeRequest)
+			*o = AttributeRequest(varAttributeRequest)
 }
 
 	additionalProperties := make(map[string]interface{})

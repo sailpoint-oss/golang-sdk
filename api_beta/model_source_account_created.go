@@ -294,7 +294,7 @@ func (o SourceAccountCreated) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *SourceAccountCreated) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -324,7 +324,7 @@ func (o *SourceAccountCreated) UnmarshalJSON(bytes []byte) (err error) {
 	varSourceAccountCreated := _SourceAccountCreated{}
 
 	if err = json.Unmarshal(bytes, &varSourceAccountCreated); err == nil {
-	*o = SourceAccountCreated(varSourceAccountCreated)
+			*o = SourceAccountCreated(varSourceAccountCreated)
 }
 
 	additionalProperties := make(map[string]interface{})

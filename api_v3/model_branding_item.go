@@ -429,7 +429,7 @@ func (o *BrandingItem) UnmarshalJSON(bytes []byte) (err error) {
 	varBrandingItem := _BrandingItem{}
 
 	if err = json.Unmarshal(bytes, &varBrandingItem); err == nil {
-	*o = BrandingItem(varBrandingItem)
+			*o = BrandingItem(varBrandingItem)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -137,7 +137,7 @@ func (o *TranslationMessage) UnmarshalJSON(bytes []byte) (err error) {
 	varTranslationMessage := _TranslationMessage{}
 
 	if err = json.Unmarshal(bytes, &varTranslationMessage); err == nil {
-	*o = TranslationMessage(varTranslationMessage)
+			*o = TranslationMessage(varTranslationMessage)
 }
 
 	additionalProperties := make(map[string]interface{})

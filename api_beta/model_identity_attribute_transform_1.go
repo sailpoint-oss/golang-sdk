@@ -136,7 +136,7 @@ func (o *IdentityAttributeTransform1) UnmarshalJSON(bytes []byte) (err error) {
 	varIdentityAttributeTransform1 := _IdentityAttributeTransform1{}
 
 	if err = json.Unmarshal(bytes, &varIdentityAttributeTransform1); err == nil {
-	*o = IdentityAttributeTransform1(varIdentityAttributeTransform1)
+			*o = IdentityAttributeTransform1(varIdentityAttributeTransform1)
 }
 
 	additionalProperties := make(map[string]interface{})

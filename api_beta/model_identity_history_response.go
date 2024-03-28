@@ -285,7 +285,7 @@ func (o *IdentityHistoryResponse) UnmarshalJSON(bytes []byte) (err error) {
 	varIdentityHistoryResponse := _IdentityHistoryResponse{}
 
 	if err = json.Unmarshal(bytes, &varIdentityHistoryResponse); err == nil {
-	*o = IdentityHistoryResponse(varIdentityHistoryResponse)
+			*o = IdentityHistoryResponse(varIdentityHistoryResponse)
 }
 
 	additionalProperties := make(map[string]interface{})

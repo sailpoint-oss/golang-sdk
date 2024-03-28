@@ -154,7 +154,7 @@ func (o AccessConstraint) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *AccessConstraint) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -179,7 +179,7 @@ func (o *AccessConstraint) UnmarshalJSON(bytes []byte) (err error) {
 	varAccessConstraint := _AccessConstraint{}
 
 	if err = json.Unmarshal(bytes, &varAccessConstraint); err == nil {
-	*o = AccessConstraint(varAccessConstraint)
+			*o = AccessConstraint(varAccessConstraint)
 }
 
 	additionalProperties := make(map[string]interface{})

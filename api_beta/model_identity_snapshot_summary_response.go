@@ -100,7 +100,7 @@ func (o *IdentitySnapshotSummaryResponse) UnmarshalJSON(bytes []byte) (err error
 	varIdentitySnapshotSummaryResponse := _IdentitySnapshotSummaryResponse{}
 
 	if err = json.Unmarshal(bytes, &varIdentitySnapshotSummaryResponse); err == nil {
-	*o = IdentitySnapshotSummaryResponse(varIdentitySnapshotSummaryResponse)
+			*o = IdentitySnapshotSummaryResponse(varIdentitySnapshotSummaryResponse)
 }
 
 	additionalProperties := make(map[string]interface{})

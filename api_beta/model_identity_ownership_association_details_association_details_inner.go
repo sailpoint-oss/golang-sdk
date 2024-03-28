@@ -137,7 +137,7 @@ func (o *IdentityOwnershipAssociationDetailsAssociationDetailsInner) UnmarshalJS
 	varIdentityOwnershipAssociationDetailsAssociationDetailsInner := _IdentityOwnershipAssociationDetailsAssociationDetailsInner{}
 
 	if err = json.Unmarshal(bytes, &varIdentityOwnershipAssociationDetailsAssociationDetailsInner); err == nil {
-	*o = IdentityOwnershipAssociationDetailsAssociationDetailsInner(varIdentityOwnershipAssociationDetailsAssociationDetailsInner)
+			*o = IdentityOwnershipAssociationDetailsAssociationDetailsInner(varIdentityOwnershipAssociationDetailsAssociationDetailsInner)
 }
 
 	additionalProperties := make(map[string]interface{})

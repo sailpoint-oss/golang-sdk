@@ -256,7 +256,7 @@ func (o *TaskResultDetailsMessagesInner) UnmarshalJSON(bytes []byte) (err error)
 	varTaskResultDetailsMessagesInner := _TaskResultDetailsMessagesInner{}
 
 	if err = json.Unmarshal(bytes, &varTaskResultDetailsMessagesInner); err == nil {
-	*o = TaskResultDetailsMessagesInner(varTaskResultDetailsMessagesInner)
+			*o = TaskResultDetailsMessagesInner(varTaskResultDetailsMessagesInner)
 }
 
 	additionalProperties := make(map[string]interface{})

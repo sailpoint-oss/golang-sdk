@@ -578,7 +578,7 @@ func (o CertificationSignedOffCertification) ToMap() (map[string]interface{}, er
 }
 
 func (o *CertificationSignedOffCertification) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -615,7 +615,7 @@ func (o *CertificationSignedOffCertification) UnmarshalJSON(bytes []byte) (err e
 	varCertificationSignedOffCertification := _CertificationSignedOffCertification{}
 
 	if err = json.Unmarshal(bytes, &varCertificationSignedOffCertification); err == nil {
-	*o = CertificationSignedOffCertification(varCertificationSignedOffCertification)
+			*o = CertificationSignedOffCertification(varCertificationSignedOffCertification)
 }
 
 	additionalProperties := make(map[string]interface{})

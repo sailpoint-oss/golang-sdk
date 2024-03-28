@@ -406,7 +406,7 @@ func (o *ReviewableRole) UnmarshalJSON(bytes []byte) (err error) {
 	varReviewableRole := _ReviewableRole{}
 
 	if err = json.Unmarshal(bytes, &varReviewableRole); err == nil {
-	*o = ReviewableRole(varReviewableRole)
+			*o = ReviewableRole(varReviewableRole)
 }
 
 	additionalProperties := make(map[string]interface{})

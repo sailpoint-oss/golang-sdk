@@ -152,7 +152,7 @@ func (o CampaignAllOfRoleCompositionCampaignInfoRemediatorRef) ToMap() (map[stri
 }
 
 func (o *CampaignAllOfRoleCompositionCampaignInfoRemediatorRef) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -177,7 +177,7 @@ func (o *CampaignAllOfRoleCompositionCampaignInfoRemediatorRef) UnmarshalJSON(by
 	varCampaignAllOfRoleCompositionCampaignInfoRemediatorRef := _CampaignAllOfRoleCompositionCampaignInfoRemediatorRef{}
 
 	if err = json.Unmarshal(bytes, &varCampaignAllOfRoleCompositionCampaignInfoRemediatorRef); err == nil {
-	*o = CampaignAllOfRoleCompositionCampaignInfoRemediatorRef(varCampaignAllOfRoleCompositionCampaignInfoRemediatorRef)
+			*o = CampaignAllOfRoleCompositionCampaignInfoRemediatorRef(varCampaignAllOfRoleCompositionCampaignInfoRemediatorRef)
 }
 
 	additionalProperties := make(map[string]interface{})
