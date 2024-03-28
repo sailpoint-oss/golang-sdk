@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetEntitlement**](EntitlementsAPI.md#GetEntitlement) | **Get** /entitlements/{id} | Get an entitlement
 [**GetEntitlementRequestConfig**](EntitlementsAPI.md#GetEntitlementRequestConfig) | **Get** /entitlements/{id}/entitlement-request-config | Get Entitlement Request Config
-[**ImportEntitlementCsv**](EntitlementsAPI.md#ImportEntitlementCsv) | **Post** /entitlements/aggregate/sources/{id} | Import Entitlement CSV File
+[**ImportEntitlements**](EntitlementsAPI.md#ImportEntitlements) | **Post** /entitlements/aggregate/sources/{id} | Aggregate Entitlements
 [**ListEntitlementChildren**](EntitlementsAPI.md#ListEntitlementChildren) | **Get** /entitlements/{id}/children | List of entitlements children
 [**ListEntitlementParents**](EntitlementsAPI.md#ListEntitlementParents) | **Get** /entitlements/{id}/parents | List of entitlements parents
 [**ListEntitlements**](EntitlementsAPI.md#ListEntitlements) | **Get** /entitlements | Gets a list of entitlements.
@@ -157,11 +157,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ImportEntitlementCsv
+## ImportEntitlements
 
-> LoadEntitlementTask ImportEntitlementCsv(ctx, id).CsvFile(csvFile).Execute()
+> LoadEntitlementTask ImportEntitlements(ctx, id).CsvFile(csvFile).Execute()
 
-Import Entitlement CSV File
+Aggregate Entitlements
 
 
 
@@ -183,13 +183,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EntitlementsAPI.ImportEntitlementCsv(context.Background(), id).CsvFile(csvFile).Execute()
+    resp, r, err := apiClient.EntitlementsAPI.ImportEntitlements(context.Background(), id).CsvFile(csvFile).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.ImportEntitlementCsv``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.ImportEntitlements``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ImportEntitlementCsv`: LoadEntitlementTask
-    fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.ImportEntitlementCsv`: %v\n", resp)
+    // response from `ImportEntitlements`: LoadEntitlementTask
+    fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.ImportEntitlements`: %v\n", resp)
 }
 ```
 
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiImportEntitlementCsvRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiImportEntitlementsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

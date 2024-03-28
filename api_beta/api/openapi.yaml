@@ -12494,9 +12494,11 @@ paths:
       - Entitlements
   /entitlements/aggregate/sources/{id}:
     post:
-      description: 'Uploads a comma separated file (CSV) to a delimited file source
-        and starts an entitlement aggregation on the source.   '
-      operationId: importEntitlementCsv
+      description: "Starts an entitlement aggregation on the specified source. \n\
+        If the target source is a direct connection, then a request body is not needed.\
+        \ If the target source is a delimited file source, then the CSV file needs\
+        \ to be included in the request body.   "
+      operationId: importEntitlements
       parameters:
       - description: Source Id
         example: ef38f94347e94562b5bb8424a56397d8
@@ -12509,14 +12511,14 @@ paths:
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/importEntitlementCsv_request'
+              $ref: '#/components/schemas/importEntitlements_request'
       responses:
         "202":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/LoadEntitlementTask'
-          description: Load Entitlements Task
+          description: Aggregate Entitlements Task
         "400":
           content:
             application/json:
@@ -12576,7 +12578,7 @@ paths:
       security:
       - UserContextAuth:
         - idn:entitlements:manage
-      summary: Import Entitlement CSV File
+      summary: Aggregate Entitlements
       tags:
       - Entitlements
   /generate-password-reset-token/digit:
@@ -74528,7 +74530,7 @@ components:
       oneOf:
       - $ref: '#/components/schemas/slimcampaign'
       - $ref: '#/components/schemas/Campaign'
-    importEntitlementCsv_request:
+    importEntitlements_request:
       properties:
         csvFile:
           format: binary

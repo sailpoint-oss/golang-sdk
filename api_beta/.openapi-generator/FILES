@@ -449,7 +449,7 @@ docs/IdentitySyncJob.md
 docs/IdentitySyncPayload.md
 docs/IdentityWithNewAccess.md
 docs/IdentityWithNewAccessAccessRefsInner.md
-docs/ImportEntitlementCsvRequest.md
+docs/ImportEntitlementsRequest.md
 docs/ImportFormDefinitions202Response.md
 docs/ImportFormDefinitions202ResponseErrorsInner.md
 docs/ImportNonEmployeeRecordsInBulkRequest.md
@@ -1246,7 +1246,7 @@ model_identity_sync_job.go
 model_identity_sync_payload.go
 model_identity_with_new_access.go
 model_identity_with_new_access_access_refs_inner.go
-model_import_entitlement_csv_request.go
+model_import_entitlements_request.go
 model_import_form_definitions_202_response.go
 model_import_form_definitions_202_response_errors_inner.go
 model_import_non_employee_records_in_bulk_request.go

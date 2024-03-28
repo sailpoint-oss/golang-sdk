@@ -360,33 +360,34 @@ func (a *EntitlementsAPIService) GetEntitlementRequestConfigExecute(r ApiGetEnti
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiImportEntitlementCsvRequest struct {
+type ApiImportEntitlementsRequest struct {
 	ctx context.Context
 	ApiService *EntitlementsAPIService
 	id string
 	csvFile *os.File
 }
 
-func (r ApiImportEntitlementCsvRequest) CsvFile(csvFile *os.File) ApiImportEntitlementCsvRequest {
+func (r ApiImportEntitlementsRequest) CsvFile(csvFile *os.File) ApiImportEntitlementsRequest {
 	r.csvFile = csvFile
 	return r
 }
 
-func (r ApiImportEntitlementCsvRequest) Execute() (*LoadEntitlementTask, *http.Response, error) {
-	return r.ApiService.ImportEntitlementCsvExecute(r)
+func (r ApiImportEntitlementsRequest) Execute() (*LoadEntitlementTask, *http.Response, error) {
+	return r.ApiService.ImportEntitlementsExecute(r)
 }
 
 /*
-ImportEntitlementCsv Import Entitlement CSV File
+ImportEntitlements Aggregate Entitlements
 
-Uploads a comma separated file (CSV) to a delimited file source and starts an entitlement aggregation on the source.   
+Starts an entitlement aggregation on the specified source. 
+If the target source is a direct connection, then a request body is not needed. If the target source is a delimited file source, then the CSV file needs to be included in the request body.   
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Source Id
- @return ApiImportEntitlementCsvRequest
+ @return ApiImportEntitlementsRequest
 */
-func (a *EntitlementsAPIService) ImportEntitlementCsv(ctx context.Context, id string) ApiImportEntitlementCsvRequest {
-	return ApiImportEntitlementCsvRequest{
+func (a *EntitlementsAPIService) ImportEntitlements(ctx context.Context, id string) ApiImportEntitlementsRequest {
+	return ApiImportEntitlementsRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -395,7 +396,7 @@ func (a *EntitlementsAPIService) ImportEntitlementCsv(ctx context.Context, id st
 
 // Execute executes the request
 //  @return LoadEntitlementTask
-func (a *EntitlementsAPIService) ImportEntitlementCsvExecute(r ApiImportEntitlementCsvRequest) (*LoadEntitlementTask, *http.Response, error) {
+func (a *EntitlementsAPIService) ImportEntitlementsExecute(r ApiImportEntitlementsRequest) (*LoadEntitlementTask, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -403,7 +404,7 @@ func (a *EntitlementsAPIService) ImportEntitlementCsvExecute(r ApiImportEntitlem
 		localVarReturnValue  *LoadEntitlementTask
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.ImportEntitlementCsv")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.ImportEntitlements")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

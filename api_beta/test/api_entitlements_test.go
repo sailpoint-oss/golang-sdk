@@ -50,13 +50,13 @@ func Test_api_beta_EntitlementsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test EntitlementsAPIService ImportEntitlementCsv", func(t *testing.T) {
+	t.Run("Test EntitlementsAPIService ImportEntitlements", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.EntitlementsAPI.ImportEntitlementCsv(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.API_BETA.EntitlementsAPI.ImportEntitlements(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

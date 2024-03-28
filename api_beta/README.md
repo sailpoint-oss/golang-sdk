@@ -181,7 +181,7 @@ Class | Method | HTTP request | Description
 *CustomPasswordInstructionsAPI* | [**GetCustomPasswordInstructions**](docs/CustomPasswordInstructionsAPI.md#getcustompasswordinstructions) | **Get** /custom-password-instructions/{pageId} | Get Custom Password Instructions by Page ID
 *EntitlementsAPI* | [**GetEntitlement**](docs/EntitlementsAPI.md#getentitlement) | **Get** /entitlements/{id} | Get an entitlement
 *EntitlementsAPI* | [**GetEntitlementRequestConfig**](docs/EntitlementsAPI.md#getentitlementrequestconfig) | **Get** /entitlements/{id}/entitlement-request-config | Get Entitlement Request Config
-*EntitlementsAPI* | [**ImportEntitlementCsv**](docs/EntitlementsAPI.md#importentitlementcsv) | **Post** /entitlements/aggregate/sources/{id} | Import Entitlement CSV File
+*EntitlementsAPI* | [**ImportEntitlements**](docs/EntitlementsAPI.md#importentitlements) | **Post** /entitlements/aggregate/sources/{id} | Aggregate Entitlements
 *EntitlementsAPI* | [**ListEntitlementChildren**](docs/EntitlementsAPI.md#listentitlementchildren) | **Get** /entitlements/{id}/children | List of entitlements children
 *EntitlementsAPI* | [**ListEntitlementParents**](docs/EntitlementsAPI.md#listentitlementparents) | **Get** /entitlements/{id}/parents | List of entitlements parents
 *EntitlementsAPI* | [**ListEntitlements**](docs/EntitlementsAPI.md#listentitlements) | **Get** /entitlements | Gets a list of entitlements.
@@ -909,7 +909,7 @@ Class | Method | HTTP request | Description
  - [IdentitySyncPayload](docs/IdentitySyncPayload.md)
  - [IdentityWithNewAccess](docs/IdentityWithNewAccess.md)
  - [IdentityWithNewAccessAccessRefsInner](docs/IdentityWithNewAccessAccessRefsInner.md)
- - [ImportEntitlementCsvRequest](docs/ImportEntitlementCsvRequest.md)
+ - [ImportEntitlementsRequest](docs/ImportEntitlementsRequest.md)
  - [ImportFormDefinitions202Response](docs/ImportFormDefinitions202Response.md)
  - [ImportFormDefinitions202ResponseErrorsInner](docs/ImportFormDefinitions202ResponseErrorsInner.md)
  - [ImportNonEmployeeRecordsInBulkRequest](docs/ImportNonEmployeeRecordsInBulkRequest.md)
