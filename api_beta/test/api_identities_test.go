@@ -104,6 +104,19 @@ func Test_api_beta_IdentitiesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test IdentitiesAPIService ResetIdentity", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var identityId string
+
+		httpRes, err := apiClient.Beta.IdentitiesAPI.ResetIdentity(context.Background(), identityId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test IdentitiesAPIService StartIdentityProcessing", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

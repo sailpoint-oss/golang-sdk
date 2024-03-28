@@ -16,8 +16,8 @@ tags: ['SDK', 'Software Development Kit', 'IdentityAttributePreview']
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** |  Pointer to **string** | Name of the attribute that is being previewed. | [optional] 
-**Value** |  Pointer to **map[string]interface{}** | Value that was derived during the preview. | [optional] 
-**PreviousValue** |  Pointer to **map[string]interface{}** | The value of the attribute before the preview. | [optional] 
+**Value** |  Pointer to **string** | Value that was derived during the preview. | [optional] 
+**PreviousValue** |  Pointer to **string** | The value of the attribute before the preview. | [optional] 
 **ErrorMessages** |  Pointer to [**[]ErrorMessageDto**](error-message-dto) |  | [optional] 
 
 ## Methods
@@ -66,20 +66,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetValue
 
-`func (o *IdentityAttributePreview) GetValue() map[string]interface{}`
+`func (o *IdentityAttributePreview) GetValue() string`
 
 GetValue returns the Value field if non-nil, zero value otherwise.
 
 ### GetValueOk
 
-`func (o *IdentityAttributePreview) GetValueOk() (*map[string]interface{}, bool)`
+`func (o *IdentityAttributePreview) GetValueOk() (*string, bool)`
 
 GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValue
 
-`func (o *IdentityAttributePreview) SetValue(v map[string]interface{})`
+`func (o *IdentityAttributePreview) SetValue(v string)`
 
 SetValue sets Value field to given value.
 
@@ -91,20 +91,20 @@ HasValue returns a boolean if a field has been set.
 
 ### GetPreviousValue
 
-`func (o *IdentityAttributePreview) GetPreviousValue() map[string]interface{}`
+`func (o *IdentityAttributePreview) GetPreviousValue() string`
 
 GetPreviousValue returns the PreviousValue field if non-nil, zero value otherwise.
 
 ### GetPreviousValueOk
 
-`func (o *IdentityAttributePreview) GetPreviousValueOk() (*map[string]interface{}, bool)`
+`func (o *IdentityAttributePreview) GetPreviousValueOk() (*string, bool)`
 
 GetPreviousValueOk returns a tuple with the PreviousValue field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPreviousValue
 
-`func (o *IdentityAttributePreview) SetPreviousValue(v map[string]interface{})`
+`func (o *IdentityAttributePreview) SetPreviousValue(v string)`
 
 SetPreviousValue sets PreviousValue field to given value.
 

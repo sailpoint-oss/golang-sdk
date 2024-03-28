@@ -100,6 +100,8 @@ type APIClient struct {
 
 	IAIRoleMiningAPI *IAIRoleMiningAPIService
 
+	IconsAPI *IconsAPIService
+
 	IdentitiesAPI *IdentitiesAPIService
 
 	IdentityAttributesAPI *IdentityAttributesAPIService
@@ -217,6 +219,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.IAIPeerGroupStrategiesAPI = (*IAIPeerGroupStrategiesAPIService)(&c.common)
 	c.IAIRecommendationsAPI = (*IAIRecommendationsAPIService)(&c.common)
 	c.IAIRoleMiningAPI = (*IAIRoleMiningAPIService)(&c.common)
+	c.IconsAPI = (*IconsAPIService)(&c.common)
 	c.IdentitiesAPI = (*IdentitiesAPIService)(&c.common)
 	c.IdentityAttributesAPI = (*IdentityAttributesAPIService)(&c.common)
 	c.IdentityHistoryAPI = (*IdentityHistoryAPIService)(&c.common)

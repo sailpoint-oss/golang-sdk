@@ -245,10 +245,29 @@ const fixFiles = function (myArray) {
           )
         );
         madeChange = true;
+      } else if (line.includes("[***os.File**](../models/os-file)")) {
+        fileOut.push(
+          line.replaceAll(
+            "[***os.File**](../models/os-file)",
+            "[***os.File**](https://pkg.go.dev/os)"
+          )
+        );
+        madeChange = true;
+      } else if (line.includes("[**map[string][]Column**](array)")){
+        fileOut.push(
+          line.replaceAll(
+            "[**map[string][]Column**](array)",
+            "[**map[string][]Column**]"
+          )
+        );
+        madeChange = true;
       } else {
         fileOut.push(line);
       }
     }
+
+    rawDataArra = fileOut.slice();
+    fileOut = [];
 
     if (madeChange) {
       fixCheck += 1;

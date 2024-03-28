@@ -192,9 +192,11 @@ tags:
     \ and easy changes to that access. \n"
   name: Auth User
 - description: "Use this API to implement and customize branding functionality. \n\
-    With this functionality in place, administrators can get list of existing branding\
-    \ items, create new branding and configure them for use throughout IdentityNow.\
-    \ \nIt allows to customise color of navigation bar, action buttons, logo and emailFromAddress.\n"
+    With this functionality in place, administrators can get and manage existing branding\
+    \ items, and they can also create new branding items and configure them for use\
+    \ throughout Identity Security Cloud. \nThe Branding APIs provide administrators\
+    \ with a way to customize branding items. \nThis customization includes details\
+    \ like their colors, logos, and other information. \n"
   name: Branding
 - description: "Use this API to implement certification campaign functionality.\n\
     With this functionality in place, administrators can create, customize, and manage\
@@ -632,8 +634,7 @@ tags:
   name: Public Identities Config
 - description: "Use this API to implement reports lifecycle managing and monitoring.\n\
     With this functionality in place, users can run reports, view their results, and\
-    \ cancel reports in progress. \nThis can be potentially helpful for auditing purposes.\
-    \ \n"
+    \ cancel reports in progress. \nThis can be potentially helpful for auditing purposes.\n"
   name: Reports Data Extraction
 - description: "Use this API to implement requestable object functionality. \nWith\
     \ this functionality in place, administrators can determine which access items\
@@ -853,7 +854,7 @@ tags:
     \ an access item would potentially trigger a SOD violation. \nThis second option\
     \ is a good way to prevent SOD violations from triggering at all. \n\nRefer to\
     \ [Handling Policy Violations](https://documentation.sailpoint.com/saas/help/sod/policy-violations.html)\
-    \ for more information about SOD policy violations. \n"
+    \ for more information about SOD policy violations.\n"
   name: SOD Violations
 - description: |
     Use this API to implement source usage insight functionality.
@@ -968,7 +969,7 @@ tags:
     \ \n\nThese are the types of information often expressed in tags: \n\n- Affected\
     \ departments\n\n- Compliance and regulatory categories \n\n- Remediation urgency\
     \ levels \n\n- Risk levels \n\nRefer to [Tagging Items in Search](https://documentation.sailpoint.com/saas/help/search/index.html?h=tags#tagging-items-in-search)\
-    \ for more information about tagging objects in IdentityNow. \n"
+    \ for more information about tagging objects in IdentityNow.\n"
   name: Tagged Objects
 - description: |
     The purpose of this API is to expose functionality for the manipulation of Transform objects.
@@ -5231,8 +5232,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
-        - idn:branding:read
+      - UserContextAuth: []
       summary: List of branding items
       tags:
       - Branding
@@ -5311,8 +5311,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
-        - idn:branding:write
+      - UserContextAuth: []
       summary: Create a branding item
       tags:
       - Branding
@@ -5409,8 +5408,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
-        - idn:branding:write
+      - UserContextAuth: []
       summary: Delete a branding item
       tags:
       - Branding
@@ -5509,8 +5507,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
-        - idn:branding:read
+      - UserContextAuth: []
       summary: Get a branding item
       tags:
       - Branding
@@ -5615,8 +5612,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
-        - idn:branding:write
+      - UserContextAuth: []
       summary: Update a branding item
       tags:
       - Branding
@@ -26648,6 +26644,8 @@ paths:
           **connectionType**: *eq, ge, gt, in, le, lt, ne, isnull, sw*
 
           **connectorName**: *eq, ge, gt, in, ne, isnull, sw*
+
+          **category**: *co, eq, ge, gt, in, le, lt, ne, sw*
         example: name eq "Employees"
         in: query
         name: filters
@@ -38359,6 +38357,7 @@ components:
         managerCorrelationMapping:
           accountAttributeName: manager
           identityAttributeName: manager
+        credentialProviderEnabled: false
         accountCorrelationConfig:
           name: "Directory [source-62867] Account Correlation"
           id: 2c9180855d191c59015d28583727245a
@@ -38374,6 +38373,7 @@ components:
           name: group
         name: My Source
         connectorName: Active Directory
+        category: CredentialProvider
         beforeProvisioningRule:
           name: Example Rule
           id: 2c918085708c274401708c2a8a760001
@@ -38523,6 +38523,17 @@ components:
           description: The date-time when the source was last modified
           example: 2024-01-23T18:08:50.897Z
           format: date-time
+          type: string
+        credentialProviderEnabled:
+          default: false
+          description: Enables credential provider for this source. If credentialProvider
+            is turned on  then source can use credential provider(s) to fetch credentials.
+          example: false
+          type: boolean
+        category:
+          description: "The category of source (e.g. null, CredentialProvider)"
+          example: CredentialProvider
+          nullable: true
           type: string
       required:
       - connector
