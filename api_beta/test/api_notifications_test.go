@@ -106,20 +106,6 @@ func Test_api_beta_NotificationsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NotificationsAPIService GetNotificationPreference", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var key string
-
-		resp, httpRes, err := apiClient.API_BETA.NotificationsAPI.GetNotificationPreference(context.Background(), key).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test NotificationsAPIService GetNotificationTemplate", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -158,6 +144,18 @@ func Test_api_beta_NotificationsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test NotificationsAPIService ListNotificationPreferences", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.API_BETA.NotificationsAPI.ListNotificationPreferences(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test NotificationsAPIService ListNotificationTemplateDefaults", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -187,20 +185,6 @@ func Test_api_beta_NotificationsAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.NotificationsAPI.PutMailFromAttributes(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test NotificationsAPIService PutNotificationPreference", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var key string
-
-		resp, httpRes, err := apiClient.API_BETA.NotificationsAPI.PutNotificationPreference(context.Background(), key).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

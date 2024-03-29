@@ -11,14 +11,13 @@ Method | HTTP request | Description
 [**DeleteVerifiedFromAddress**](NotificationsAPI.md#DeleteVerifiedFromAddress) | **Delete** /verified-from-addresses/{id} | Delete Verified From Address
 [**GetDkimAttributes**](NotificationsAPI.md#GetDkimAttributes) | **Get** /verified-domains | Get DKIM Attributes
 [**GetMailFromAttributes**](NotificationsAPI.md#GetMailFromAttributes) | **Get** /mail-from-attributes/{identity} | Get MAIL FROM Attributes
-[**GetNotificationPreference**](NotificationsAPI.md#GetNotificationPreference) | **Get** /notification-preferences/{key} | Get Notification Preferences for tenant.
 [**GetNotificationTemplate**](NotificationsAPI.md#GetNotificationTemplate) | **Get** /notification-templates/{id} | Get Notification Template By Id
 [**GetNotificationsTemplateContext**](NotificationsAPI.md#GetNotificationsTemplateContext) | **Get** /notification-template-context | Get Notification Template Context
 [**ListFromAddresses**](NotificationsAPI.md#ListFromAddresses) | **Get** /verified-from-addresses | List From Addresses
+[**ListNotificationPreferences**](NotificationsAPI.md#ListNotificationPreferences) | **Get** /notification-preferences/{key} | List Notification Preferences for tenant.
 [**ListNotificationTemplateDefaults**](NotificationsAPI.md#ListNotificationTemplateDefaults) | **Get** /notification-template-defaults | List Notification Template Defaults
 [**ListNotificationTemplates**](NotificationsAPI.md#ListNotificationTemplates) | **Get** /notification-templates | List Notification Templates
 [**PutMailFromAttributes**](NotificationsAPI.md#PutMailFromAttributes) | **Put** /mail-from-attributes | Change MAIL FROM domain
-[**PutNotificationPreference**](NotificationsAPI.md#PutNotificationPreference) | **Put** /notification-preferences/{key} | Overwrite preferences notification key.
 [**SendTestNotification**](NotificationsAPI.md#SendTestNotification) | **Post** /send-test-notification | Send Test Notification
 
 
@@ -480,76 +479,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetNotificationPreference
-
-> PreferencesDto GetNotificationPreference(ctx, key).Execute()
-
-Get Notification Preferences for tenant.
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    key := "cloud_manual_work_item_summary" // string | The notification key.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsAPI.GetNotificationPreference(context.Background(), key).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.GetNotificationPreference``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetNotificationPreference`: PreferencesDto
-    fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.GetNotificationPreference`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**key** | **string** | The notification key. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetNotificationPreferenceRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**PreferencesDto**](PreferencesDto.md)
-
-### Authorization
-
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## GetNotificationTemplate
 
 > []TemplateDto GetNotificationTemplate(ctx, id).Execute()
@@ -740,6 +669,67 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]EmailStatusDto**](EmailStatusDto.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListNotificationPreferences
+
+> []PreferencesDto ListNotificationPreferences(ctx).Execute()
+
+List Notification Preferences for tenant.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.NotificationsAPI.ListNotificationPreferences(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.ListNotificationPreferences``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListNotificationPreferences`: []PreferencesDto
+    fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.ListNotificationPreferences`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListNotificationPreferencesRequest struct via the builder pattern
+
+
+### Return type
+
+[**[]PreferencesDto**](PreferencesDto.md)
 
 ### Authorization
 
@@ -946,78 +936,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**MailFromAttributes**](MailFromAttributes.md)
-
-### Authorization
-
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## PutNotificationPreference
-
-> PreferencesDto PutNotificationPreference(ctx, key).PreferencesDto(preferencesDto).Execute()
-
-Overwrite preferences notification key.
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    key := "cloud_manual_work_item_summary" // string | The notification key.
-    preferencesDto := *openapiclient.NewPreferencesDto() // PreferencesDto | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsAPI.PutNotificationPreference(context.Background(), key).PreferencesDto(preferencesDto).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.PutNotificationPreference``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PutNotificationPreference`: PreferencesDto
-    fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.PutNotificationPreference`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**key** | **string** | The notification key. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPutNotificationPreferenceRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **preferencesDto** | [**PreferencesDto**](PreferencesDto.md) |  | 
-
-### Return type
-
-[**PreferencesDto**](PreferencesDto.md)
 
 ### Authorization
 

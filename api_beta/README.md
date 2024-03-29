@@ -344,14 +344,13 @@ Class | Method | HTTP request | Description
 *NotificationsAPI* | [**DeleteVerifiedFromAddress**](docs/NotificationsAPI.md#deleteverifiedfromaddress) | **Delete** /verified-from-addresses/{id} | Delete Verified From Address
 *NotificationsAPI* | [**GetDkimAttributes**](docs/NotificationsAPI.md#getdkimattributes) | **Get** /verified-domains | Get DKIM Attributes
 *NotificationsAPI* | [**GetMailFromAttributes**](docs/NotificationsAPI.md#getmailfromattributes) | **Get** /mail-from-attributes/{identity} | Get MAIL FROM Attributes
-*NotificationsAPI* | [**GetNotificationPreference**](docs/NotificationsAPI.md#getnotificationpreference) | **Get** /notification-preferences/{key} | Get Notification Preferences for tenant.
 *NotificationsAPI* | [**GetNotificationTemplate**](docs/NotificationsAPI.md#getnotificationtemplate) | **Get** /notification-templates/{id} | Get Notification Template By Id
 *NotificationsAPI* | [**GetNotificationsTemplateContext**](docs/NotificationsAPI.md#getnotificationstemplatecontext) | **Get** /notification-template-context | Get Notification Template Context
 *NotificationsAPI* | [**ListFromAddresses**](docs/NotificationsAPI.md#listfromaddresses) | **Get** /verified-from-addresses | List From Addresses
+*NotificationsAPI* | [**ListNotificationPreferences**](docs/NotificationsAPI.md#listnotificationpreferences) | **Get** /notification-preferences/{key} | List Notification Preferences for tenant.
 *NotificationsAPI* | [**ListNotificationTemplateDefaults**](docs/NotificationsAPI.md#listnotificationtemplatedefaults) | **Get** /notification-template-defaults | List Notification Template Defaults
 *NotificationsAPI* | [**ListNotificationTemplates**](docs/NotificationsAPI.md#listnotificationtemplates) | **Get** /notification-templates | List Notification Templates
 *NotificationsAPI* | [**PutMailFromAttributes**](docs/NotificationsAPI.md#putmailfromattributes) | **Put** /mail-from-attributes | Change MAIL FROM domain
-*NotificationsAPI* | [**PutNotificationPreference**](docs/NotificationsAPI.md#putnotificationpreference) | **Put** /notification-preferences/{key} | Overwrite preferences notification key.
 *NotificationsAPI* | [**SendTestNotification**](docs/NotificationsAPI.md#sendtestnotification) | **Post** /send-test-notification | Send Test Notification
 *OAuthClientsAPI* | [**CreateOauthClient**](docs/OAuthClientsAPI.md#createoauthclient) | **Post** /oauth-clients | Create OAuth Client
 *OAuthClientsAPI* | [**DeleteOauthClient**](docs/OAuthClientsAPI.md#deleteoauthclient) | **Delete** /oauth-clients/{id} | Delete OAuth Client
