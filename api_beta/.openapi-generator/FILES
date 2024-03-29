@@ -200,7 +200,6 @@ docs/AttributesChanged.md
 docs/AuditDetails.md
 docs/AuthProfile.md
 docs/AuthProfileAPI.md
-docs/AuthProfileRequest.md
 docs/AuthProfileSummary.md
 docs/BaseCommonDto.md
 docs/BaseCommonDto1.md
@@ -1017,7 +1016,6 @@ model_attribute_definition_type.go
 model_attributes_changed.go
 model_audit_details.go
 model_auth_profile.go
-model_auth_profile_request.go
 model_auth_profile_summary.go
 model_base_common_dto.go
 model_base_common_dto_1.go
