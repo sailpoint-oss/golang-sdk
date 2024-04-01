@@ -14757,6 +14757,10 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth:
+        - idn:identity:read
+        - idn:identity:manage
       summary: List Identities
       tags:
       - Identities
@@ -14961,6 +14965,7 @@ paths:
       security:
       - UserContextAuth:
         - idn:identity:read
+        - idn:identity:manage
       summary: Identity Details
       tags:
       - Identities
