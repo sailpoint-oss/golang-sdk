@@ -200,7 +200,6 @@ docs/AttributesChanged.md
 docs/AuditDetails.md
 docs/AuthProfile.md
 docs/AuthProfileAPI.md
-docs/AuthProfileRequest.md
 docs/AuthProfileSummary.md
 docs/BaseCommonDto.md
 docs/BaseCommonDto1.md
@@ -449,7 +448,7 @@ docs/IdentitySyncJob.md
 docs/IdentitySyncPayload.md
 docs/IdentityWithNewAccess.md
 docs/IdentityWithNewAccessAccessRefsInner.md
-docs/ImportEntitlementCsvRequest.md
+docs/ImportEntitlementsRequest.md
 docs/ImportFormDefinitions202Response.md
 docs/ImportFormDefinitions202ResponseErrorsInner.md
 docs/ImportNonEmployeeRecordsInBulkRequest.md
@@ -1017,7 +1016,6 @@ model_attribute_definition_type.go
 model_attributes_changed.go
 model_audit_details.go
 model_auth_profile.go
-model_auth_profile_request.go
 model_auth_profile_summary.go
 model_base_common_dto.go
 model_base_common_dto_1.go
@@ -1246,7 +1244,7 @@ model_identity_sync_job.go
 model_identity_sync_payload.go
 model_identity_with_new_access.go
 model_identity_with_new_access_access_refs_inner.go
-model_import_entitlement_csv_request.go
+model_import_entitlements_request.go
 model_import_form_definitions_202_response.go
 model_import_form_definitions_202_response_errors_inner.go
 model_import_non_employee_records_in_bulk_request.go

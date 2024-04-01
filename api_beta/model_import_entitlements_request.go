@@ -16,37 +16,37 @@ import (
 	"fmt"
 )
 
-// checks if the ImportEntitlementCsvRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ImportEntitlementCsvRequest{}
+// checks if the ImportEntitlementsRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ImportEntitlementsRequest{}
 
-// ImportEntitlementCsvRequest struct for ImportEntitlementCsvRequest
-type ImportEntitlementCsvRequest struct {
+// ImportEntitlementsRequest struct for ImportEntitlementsRequest
+type ImportEntitlementsRequest struct {
 	CsvFile *os.File `json:"csvFile"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _ImportEntitlementCsvRequest ImportEntitlementCsvRequest
+type _ImportEntitlementsRequest ImportEntitlementsRequest
 
-// NewImportEntitlementCsvRequest instantiates a new ImportEntitlementCsvRequest object
+// NewImportEntitlementsRequest instantiates a new ImportEntitlementsRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewImportEntitlementCsvRequest(csvFile *os.File) *ImportEntitlementCsvRequest {
-	this := ImportEntitlementCsvRequest{}
+func NewImportEntitlementsRequest(csvFile *os.File) *ImportEntitlementsRequest {
+	this := ImportEntitlementsRequest{}
 	this.CsvFile = csvFile
 	return &this
 }
 
-// NewImportEntitlementCsvRequestWithDefaults instantiates a new ImportEntitlementCsvRequest object
+// NewImportEntitlementsRequestWithDefaults instantiates a new ImportEntitlementsRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewImportEntitlementCsvRequestWithDefaults() *ImportEntitlementCsvRequest {
-	this := ImportEntitlementCsvRequest{}
+func NewImportEntitlementsRequestWithDefaults() *ImportEntitlementsRequest {
+	this := ImportEntitlementsRequest{}
 	return &this
 }
 
 // GetCsvFile returns the CsvFile field value
-func (o *ImportEntitlementCsvRequest) GetCsvFile() *os.File {
+func (o *ImportEntitlementsRequest) GetCsvFile() *os.File {
 	if o == nil {
 		var ret *os.File
 		return ret
@@ -57,7 +57,7 @@ func (o *ImportEntitlementCsvRequest) GetCsvFile() *os.File {
 
 // GetCsvFileOk returns a tuple with the CsvFile field value
 // and a boolean to check if the value has been set.
-func (o *ImportEntitlementCsvRequest) GetCsvFileOk() (**os.File, bool) {
+func (o *ImportEntitlementsRequest) GetCsvFileOk() (**os.File, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -65,11 +65,11 @@ func (o *ImportEntitlementCsvRequest) GetCsvFileOk() (**os.File, bool) {
 }
 
 // SetCsvFile sets field value
-func (o *ImportEntitlementCsvRequest) SetCsvFile(v *os.File) {
+func (o *ImportEntitlementsRequest) SetCsvFile(v *os.File) {
 	o.CsvFile = v
 }
 
-func (o ImportEntitlementCsvRequest) MarshalJSON() ([]byte, error) {
+func (o ImportEntitlementsRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -77,7 +77,7 @@ func (o ImportEntitlementCsvRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o ImportEntitlementCsvRequest) ToMap() (map[string]interface{}, error) {
+func (o ImportEntitlementsRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["csvFile"] = o.CsvFile
 
@@ -88,7 +88,7 @@ func (o ImportEntitlementCsvRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ImportEntitlementCsvRequest) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ImportEntitlementsRequest) UnmarshalJSON(bytes []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -110,10 +110,10 @@ func (o *ImportEntitlementCsvRequest) UnmarshalJSON(bytes []byte) (err error) {
 		}
 	}
 
-	varImportEntitlementCsvRequest := _ImportEntitlementCsvRequest{}
+	varImportEntitlementsRequest := _ImportEntitlementsRequest{}
 
-	if err = json.Unmarshal(bytes, &varImportEntitlementCsvRequest); err == nil {
-			*o = ImportEntitlementCsvRequest(varImportEntitlementCsvRequest)
+	if err = json.Unmarshal(bytes, &varImportEntitlementsRequest); err == nil {
+			*o = ImportEntitlementsRequest(varImportEntitlementsRequest)
 }
 
 	additionalProperties := make(map[string]interface{})
@@ -126,38 +126,38 @@ func (o *ImportEntitlementCsvRequest) UnmarshalJSON(bytes []byte) (err error) {
 	return err
 }
 
-type NullableImportEntitlementCsvRequest struct {
-	value *ImportEntitlementCsvRequest
+type NullableImportEntitlementsRequest struct {
+	value *ImportEntitlementsRequest
 	isSet bool
 }
 
-func (v NullableImportEntitlementCsvRequest) Get() *ImportEntitlementCsvRequest {
+func (v NullableImportEntitlementsRequest) Get() *ImportEntitlementsRequest {
 	return v.value
 }
 
-func (v *NullableImportEntitlementCsvRequest) Set(val *ImportEntitlementCsvRequest) {
+func (v *NullableImportEntitlementsRequest) Set(val *ImportEntitlementsRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableImportEntitlementCsvRequest) IsSet() bool {
+func (v NullableImportEntitlementsRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableImportEntitlementCsvRequest) Unset() {
+func (v *NullableImportEntitlementsRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableImportEntitlementCsvRequest(val *ImportEntitlementCsvRequest) *NullableImportEntitlementCsvRequest {
-	return &NullableImportEntitlementCsvRequest{value: val, isSet: true}
+func NewNullableImportEntitlementsRequest(val *ImportEntitlementsRequest) *NullableImportEntitlementsRequest {
+	return &NullableImportEntitlementsRequest{value: val, isSet: true}
 }
 
-func (v NullableImportEntitlementCsvRequest) MarshalJSON() ([]byte, error) {
+func (v NullableImportEntitlementsRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableImportEntitlementCsvRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableImportEntitlementsRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
