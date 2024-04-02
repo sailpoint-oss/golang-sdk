@@ -18,6 +18,7 @@ api_connector_rule_management.go
 api_connectors.go
 api_custom_forms.go
 api_custom_password_instructions.go
+api_discovered_applications.go
 api_entitlements.go
 api_governance_groups.go
 api_iai_access_request_recommendations.go
@@ -35,6 +36,8 @@ api_identity_profiles.go
 api_lifecycle_states.go
 api_managed_clients.go
 api_managed_clusters.go
+api_manual_discover_applications.go
+api_manual_discover_applications_template.go
 api_mfa_configuration.go
 api_mfa_controller.go
 api_non_employee_lifecycle_management.go
@@ -63,6 +66,7 @@ api_task_management.go
 api_tenant.go
 api_transforms.go
 api_triggers.go
+api_vendor_connector_mappings.go
 api_work_items.go
 api_work_reassignment.go
 api_workflows.go
@@ -303,6 +307,9 @@ docs/CustomPasswordInstructionsAPI.md
 docs/Delete202Response.md
 docs/DeleteCampaignsRequest.md
 docs/DeleteNonEmployeeRecordInBulkRequest.md
+docs/DeleteVendorConnectorMapping200Response.md
+docs/DiscoveredApplicationsAPI.md
+docs/DiscoveredApplicationsInner.md
 docs/DkimAttributes.md
 docs/DomainAddress.md
 docs/DomainStatusDto.md
@@ -501,6 +508,10 @@ docs/ManagedClusterRedis.md
 docs/ManagedClusterTypes.md
 docs/ManagedClustersAPI.md
 docs/ManagerCorrelationMapping.md
+docs/ManualDiscoverApplications.md
+docs/ManualDiscoverApplicationsAPI.md
+docs/ManualDiscoverApplicationsTemplate.md
+docs/ManualDiscoverApplicationsTemplateAPI.md
 docs/ManualWorkItemDetails.md
 docs/ManualWorkItemDetailsCurrentOwner.md
 docs/ManualWorkItemDetailsOriginalOwner.md
@@ -854,6 +865,12 @@ docs/VAClusterStatusChangeEventPreviousHealthCheckResult.md
 docs/ValidateFilterInputDto.md
 docs/ValidateFilterOutputDto.md
 docs/Value.md
+docs/VendorConnectorMapping.md
+docs/VendorConnectorMappingDeletedAt.md
+docs/VendorConnectorMappingDeletedBy.md
+docs/VendorConnectorMappingUpdatedAt.md
+docs/VendorConnectorMappingUpdatedBy.md
+docs/VendorConnectorMappingsAPI.md
 docs/VerificationPollRequest.md
 docs/VerificationResponse.md
 docs/ViolationContext.md
@@ -1113,6 +1130,8 @@ model_custom_password_instruction.go
 model_delete_202_response.go
 model_delete_campaigns_request.go
 model_delete_non_employee_record_in_bulk_request.go
+model_delete_vendor_connector_mapping_200_response.go
+model_discovered_applications_inner.go
 model_dkim_attributes.go
 model_domain_address.go
 model_domain_status_dto.go
@@ -1292,6 +1311,8 @@ model_managed_cluster_queue.go
 model_managed_cluster_redis.go
 model_managed_cluster_types.go
 model_manager_correlation_mapping.go
+model_manual_discover_applications.go
+model_manual_discover_applications_template.go
 model_manual_work_item_details.go
 model_manual_work_item_details_current_owner.go
 model_manual_work_item_details_original_owner.go
@@ -1619,6 +1640,11 @@ model_va_cluster_status_change_event_previous_health_check_result.go
 model_validate_filter_input_dto.go
 model_validate_filter_output_dto.go
 model_value.go
+model_vendor_connector_mapping.go
+model_vendor_connector_mapping_deleted_at.go
+model_vendor_connector_mapping_deleted_by.go
+model_vendor_connector_mapping_updated_at.go
+model_vendor_connector_mapping_updated_by.go
 model_verification_poll_request.go
 model_verification_response.go
 model_violation_context.go
@@ -1668,6 +1694,7 @@ test/api_connector_rule_management_test.go
 test/api_connectors_test.go
 test/api_custom_forms_test.go
 test/api_custom_password_instructions_test.go
+test/api_discovered_applications_test.go
 test/api_entitlements_test.go
 test/api_governance_groups_test.go
 test/api_iai_access_request_recommendations_test.go
@@ -1685,6 +1712,8 @@ test/api_identity_profiles_test.go
 test/api_lifecycle_states_test.go
 test/api_managed_clients_test.go
 test/api_managed_clusters_test.go
+test/api_manual_discover_applications_template_test.go
+test/api_manual_discover_applications_test.go
 test/api_mfa_configuration_test.go
 test/api_mfa_controller_test.go
 test/api_non_employee_lifecycle_management_test.go
@@ -1713,6 +1742,7 @@ test/api_task_management_test.go
 test/api_tenant_test.go
 test/api_transforms_test.go
 test/api_triggers_test.go
+test/api_vendor_connector_mappings_test.go
 test/api_work_items_test.go
 test/api_work_reassignment_test.go
 test/api_workflows_test.go

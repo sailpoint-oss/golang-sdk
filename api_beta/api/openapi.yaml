@@ -977,6 +977,18 @@ tags:
 - description: |
     Workflows allow administrators to create custom automation scripts directly within IdentityNow.  These automation scripts respond to [event triggers](https://developer.sailpoint.com/idn/docs/event-triggers#how-to-get-started-with-event-triggers) and perform a series of actions to perform tasks that are either too cumbersome or not available in the IdentityNow UI.  Workflows can be configured via a graphical user interface within IdentityNow, or by creating and uploading a JSON formatted script to the Workflow service.  The Workflows API collection provides the necessary functionality to create, manage, and test your workflows via REST.
   name: Workflows
+- description: |
+    Use this API to manually upload application names to be correlated to an IDN connector.
+  name: Manual Discover Applications
+- description: |
+    Use this API to download the CSV template to send to the application discovery service.
+  name: Manual Discover Applications Template
+- description: |
+    Use this API to retrieve all the available discovered apps for a given tenant id.
+  name: Discovered Applications
+- description: |
+    Use this API to manage mappings between various SaaS vendors and IdentityNow (IDN) connectors.
+  name: Vendor Connector Mappings
 - description: "Use this API to implement functionality related to object icons (application\
     \ icons for example). \nWith this functionality in place, administrators can set\
     \ or remove an icon for specific object type for use throughout IdentityNow.\n"
@@ -51721,6 +51733,583 @@ paths:
       summary: Return access request identity metrics
       tags:
       - Access Request Identity Metrics
+  /manual-discover-applications:
+    post:
+      description: This API allows for the upload of a CSV file containing application
+        data to be manually correlated to potential IDN connector(s).
+      operationId: sendManualDiscoverApplicationsCsvTemplate
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/importEntitlements_request'
+      responses:
+        "200":
+          content:
+            multipart/form-data:
+              schema:
+                $ref: '#/components/schemas/ManualDiscoverApplications'
+          description: The CSV has been successfully processed.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:application-discovery:write
+      summary: CSV Upload to discover applications
+      tags:
+      - Manual Discover Applications
+  /manual-discover-applications-template:
+    get:
+      description: |
+        Allows the user to download an example CSV file with two columns `application_name` and `domain`. The CSV file contains a single row with the values 'Example Application' and 'Example Description'.
+      operationId: getManualDiscoverApplicationsCsvTemplate
+      responses:
+        "200":
+          content:
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/ManualDiscoverApplicationsTemplate'
+          description: A CSV file download was successful.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:application-discovery:read
+      summary: CSV template download for discovery
+      tags:
+      - Manual Discover Applications Template
+  /discovered-applications:
+    get:
+      description: |
+        Fetches a list of applications that have been identified within the environment. This includes details such as application names, discovery dates, potential correlated saas_vendors and related suggested connectors.
+      operationId: getDiscoveredApplications
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+      - description: "Filter results using the standard syntax described in [V3 API\
+          \ Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)\n\
+          \  \n  \nFiltering is supported for the following fields and operators:\n\
+          \n**name**: *eq, sw, co*\n\n**description**: *eq, sw, co*\n"
+        example: name eq "Okta" and description co "Okta"
+        in: query
+        name: filter
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **name, description, discoveredAt, discoverySource**
+        example: name
+        in: query
+        name: sorters
+        schema:
+          format: comma-separated
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/DiscoveredApplications'
+                type: array
+          description: Successfully retrieved list of discovered applications.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:application-discovery:read
+      summary: Retrieve discovered applications for tenant
+      tags:
+      - Discovered Applications
+  /vendor-connector-mappings:
+    delete:
+      description: |
+        Soft deletes a mapping between a SaaS vendor and an IDN connector, removing the established correlation.
+      operationId: deleteVendorConnectorMapping
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VendorConnectorMapping'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/deleteVendorConnectorMapping_200_response'
+          description: Successfully deleted the specified vendor connector mapping.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:application-discovery:write
+      summary: Delete a vendor connector mapping
+      tags:
+      - Vendor Connector Mappings
+    get:
+      description: |
+        Retrieves a list of mappings between SaaS vendors and IDN connectors, detailing the connections established for correlation.
+      operationId: getVendorConnectorMappings
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                example:
+                - id: 78733556-9ea3-4f59-bf69-e5cd92b011b4
+                  vendor: Example Vendor
+                  connector: Example Connector
+                  createdAt: 2024-03-13T12:56:19.391294Z
+                  createdBy: admin
+                  updatedAt:
+                    Time: 2024-03-14T12:56:19.391294Z
+                    Valid: true
+                  updatedBy:
+                    String: user-67891
+                    Valid: true
+                  deletedAt:
+                    Time: 0001-01-01T00:00:00Z
+                    Valid: false
+                  deletedBy:
+                    String: ""
+                    Valid: false
+                - id: 78733556-9ea3-4f59-bf69-e5cd92b011b5
+                  vendor: Another Corporation
+                  connector: Another Connector
+                  createdAt: 2024-04-13T11:46:19.391294Z
+                  createdBy: admin
+                  updatedAt:
+                    Time: 0001-01-01T00:00:00Z
+                    Valid: false
+                  updatedBy:
+                    String: ""
+                    Valid: false
+                  deletedAt:
+                    Time: 0001-01-01T00:00:00Z
+                    Valid: false
+                  deletedBy:
+                    String: ""
+                    Valid: false
+                items:
+                  $ref: '#/components/schemas/VendorConnectorMapping'
+                type: array
+          description: Successfully retrieved list.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createDomainDkim_405_response'
+          description: "Method Not Allowed - indicates that the server knows the request\
+            \ method, but the target resource doesn't support this method."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:application-discovery:read
+      summary: List vendor connector mappings
+      tags:
+      - Vendor Connector Mappings
+    post:
+      description: |
+        Creates a new mapping between a SaaS vendor and an IDN connector to establish correlation paths.
+      operationId: createVendorConnectorMapping
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VendorConnectorMapping'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VendorConnectorMapping'
+          description: Successfully created a new vendor connector mapping.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createDomainDkim_405_response'
+          description: "Method Not Allowed - indicates that the server knows the request\
+            \ method, but the target resource doesn't support this method."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:application-discovery:write
+      summary: Create a vendor connector mapping
+      tags:
+      - Vendor Connector Mappings
   /icons/{objectType}/{objectId}:
     delete:
       description: This API endpoint delete an icon by object type and object id.
@@ -66879,6 +67468,104 @@ components:
           x-go-name: Results
       type: object
       x-go-package: github.com/sailpoint/sp-forms/domain
+    ManualDiscoverApplications:
+      example:
+        file: |-
+          application_name,description
+          "Sample App","This is a sample description for Sample App."
+          "Another App","Description for Another App."
+      properties:
+        file:
+          description: The CSV file to upload containing `application_name` and `description`
+            columns. Each row represents an application to be discovered.
+          example: |-
+            application_name,description
+            "Sample App","This is a sample description for Sample App."
+            "Another App","Description for Another App."
+          format: binary
+          type: string
+      required:
+      - file
+      type: object
+    ManualDiscoverApplicationsTemplate:
+      example:
+        application_name: Example Application
+        domain: Example Description
+      properties:
+        application_name:
+          description: Name of the example application.
+          example: Example Application
+          type: string
+        domain:
+          description: Description of the example application's domain.
+          example: Example Description
+          type: string
+      type: object
+    DiscoveredApplications:
+      description: An array of discovered applications for a given tenant
+      example:
+      - id: app-123
+        name: ExampleApp
+        discoverySource: CSV
+        discoveredVendor: ExampleVendor
+        description: An application for managing examples.
+        recommendedConnectors:
+        - ConnectorA
+        - ConnectorB
+        discoveredTimestamp: 2023-01-01T12:00:00Z
+      items:
+        $ref: '#/components/schemas/DiscoveredApplications_inner'
+      type: array
+    VendorConnectorMapping:
+      example:
+        createdAt: 2024-03-13T12:56:19.391294Z
+        deletedAt:
+          Valid: false
+          Time: 0001-01-01T00:00:00Z
+        updatedBy:
+          Valid: true
+          String: user-67891
+        connector: Example connector
+        createdBy: admin
+        vendor: Example vendor
+        id: 78733556-9ea3-4f59-bf69-e5cd92b011b4
+        deletedBy:
+          Valid: false
+          String: ""
+        updatedAt:
+          Valid: true
+          Time: 2024-03-14T12:56:19.391294Z
+      properties:
+        id:
+          description: The unique identifier for the vendor-connector mapping.
+          example: 78733556-9ea3-4f59-bf69-e5cd92b011b4
+          type: string
+        vendor:
+          description: The name of the vendor.
+          example: Example vendor
+          type: string
+        connector:
+          description: The name of the connector.
+          example: Example connector
+          type: string
+        createdAt:
+          description: The creation timestamp of the mapping.
+          example: 2024-03-13T12:56:19.391294Z
+          format: date-time
+          type: string
+        createdBy:
+          description: The identifier of the user who created the mapping.
+          example: admin
+          type: string
+        updatedAt:
+          $ref: '#/components/schemas/VendorConnectorMapping_updatedAt'
+        updatedBy:
+          $ref: '#/components/schemas/VendorConnectorMapping_updatedBy'
+        deletedAt:
+          $ref: '#/components/schemas/VendorConnectorMapping_deletedAt'
+        deletedBy:
+          $ref: '#/components/schemas/VendorConnectorMapping_deletedBy'
+      type: object
     ApprovalItemDetails:
       example:
         application: Active Directory
@@ -74991,6 +75678,15 @@ components:
       required:
       - file
       type: object
+    deleteVendorConnectorMapping_200_response:
+      example:
+        count: 1
+      properties:
+        count:
+          description: The number of vendor connector mappings successfully deleted.
+          example: 1
+          type: integer
+      type: object
     setIcon_request:
       properties:
         image:
@@ -76272,6 +76968,121 @@ components:
           x-go-name: FormDefinitionID
       type: object
       x-go-name: Attributes
+    DiscoveredApplications_inner:
+      properties:
+        id:
+          description: Unique identifier for the discovered application.
+          format: uuid
+          type: string
+        name:
+          description: Name of the discovered application.
+          example: ExampleApp
+          type: string
+        discoverySource:
+          description: Source from which the application was discovered.
+          example: CSV
+          type: string
+        discoveredVendor:
+          description: The vendor associated with the discovered application.
+          example: ExampleVendor
+          type: string
+        description:
+          description: A brief description of the discovered application.
+          example: An application for managing examples.
+          type: string
+        recommendedConnectors:
+          description: List of recommended connectors for the application.
+          example:
+          - ConnectorA
+          - ConnectorB
+          items:
+            type: string
+          type: array
+        discoveredTimestamp:
+          description: "The timestamp when the application was discovered, in ISO\
+            \ 8601 format."
+          example: 2023-01-01T12:00:00Z
+          format: date-time
+          type: string
+      type: object
+    VendorConnectorMapping_updatedAt:
+      description: An object representing the nullable timestamp of the last update.
+      example:
+        Valid: true
+        Time: 2024-03-14T12:56:19.391294Z
+      nullable: true
+      properties:
+        Time:
+          description: "The timestamp when the mapping was last updated, represented\
+            \ in ISO 8601 format."
+          example: 2024-03-14T12:56:19.391294Z
+          format: date-time
+          type: string
+        Valid:
+          default: false
+          description: A flag indicating if the 'Time' field is set and valid.
+          example: true
+          type: boolean
+      type: object
+    VendorConnectorMapping_updatedBy:
+      description: An object representing the nullable identifier of the user who
+        last updated the mapping.
+      example:
+        Valid: true
+        String: user-67891
+      nullable: true
+      properties:
+        String:
+          description: "The identifier of the user who last updated the mapping, if\
+            \ available."
+          example: user-67891
+          type: string
+        Valid:
+          default: false
+          description: A flag indicating if the 'String' field is set and valid.
+          example: true
+          type: boolean
+      type: object
+    VendorConnectorMapping_deletedAt:
+      description: An object representing the nullable timestamp of when the mapping
+        was deleted.
+      example:
+        Valid: false
+        Time: 0001-01-01T00:00:00Z
+      nullable: true
+      properties:
+        Time:
+          description: "The timestamp when the mapping was deleted, represented in\
+            \ ISO 8601 format, if applicable."
+          example: 0001-01-01T00:00:00Z
+          format: date-time
+          type: string
+        Valid:
+          default: false
+          description: "A flag indicating if the 'Time' field is set and valid, i.e.,\
+            \ if the mapping has been deleted."
+          example: false
+          type: boolean
+      type: object
+    VendorConnectorMapping_deletedBy:
+      description: An object representing the nullable identifier of the user who
+        deleted the mapping.
+      example:
+        Valid: false
+        String: ""
+      nullable: true
+      properties:
+        String:
+          description: "The identifier of the user who deleted the mapping, if applicable."
+          example: ""
+          type: string
+        Valid:
+          default: false
+          description: "A flag indicating if the 'String' field is set and valid,\
+            \ i.e., if the mapping has been deleted."
+          example: false
+          type: boolean
+      type: object
     AccessProfileUsage_usedBy_inner:
       description: Role using the access profile.
       example:

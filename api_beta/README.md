@@ -179,6 +179,7 @@ Class | Method | HTTP request | Description
 *CustomPasswordInstructionsAPI* | [**CreateCustomPasswordInstructions**](docs/CustomPasswordInstructionsAPI.md#createcustompasswordinstructions) | **Post** /custom-password-instructions | Create Custom Password Instructions
 *CustomPasswordInstructionsAPI* | [**DeleteCustomPasswordInstructions**](docs/CustomPasswordInstructionsAPI.md#deletecustompasswordinstructions) | **Delete** /custom-password-instructions/{pageId} | Delete Custom Password Instructions by page ID
 *CustomPasswordInstructionsAPI* | [**GetCustomPasswordInstructions**](docs/CustomPasswordInstructionsAPI.md#getcustompasswordinstructions) | **Get** /custom-password-instructions/{pageId} | Get Custom Password Instructions by Page ID
+*DiscoveredApplicationsAPI* | [**GetDiscoveredApplications**](docs/DiscoveredApplicationsAPI.md#getdiscoveredapplications) | **Get** /discovered-applications | Retrieve discovered applications for tenant
 *EntitlementsAPI* | [**GetEntitlement**](docs/EntitlementsAPI.md#getentitlement) | **Get** /entitlements/{id} | Get an entitlement
 *EntitlementsAPI* | [**GetEntitlementRequestConfig**](docs/EntitlementsAPI.md#getentitlementrequestconfig) | **Get** /entitlements/{id}/entitlement-request-config | Get Entitlement Request Config
 *EntitlementsAPI* | [**ImportEntitlements**](docs/EntitlementsAPI.md#importentitlements) | **Post** /entitlements/aggregate/sources/{id} | Aggregate Entitlements
@@ -307,6 +308,8 @@ Class | Method | HTTP request | Description
 *ManagedClustersAPI* | [**GetManagedCluster**](docs/ManagedClustersAPI.md#getmanagedcluster) | **Get** /managed-clusters/{id} | Get a specified ManagedCluster.
 *ManagedClustersAPI* | [**GetManagedClusters**](docs/ManagedClustersAPI.md#getmanagedclusters) | **Get** /managed-clusters | Retrieve all Managed Clusters.
 *ManagedClustersAPI* | [**PutClientLogConfiguration**](docs/ManagedClustersAPI.md#putclientlogconfiguration) | **Put** /managed-clusters/{id}/log-config | Update managed cluster&#39;s log configuration
+*ManualDiscoverApplicationsAPI* | [**SendManualDiscoverApplicationsCsvTemplate**](docs/ManualDiscoverApplicationsAPI.md#sendmanualdiscoverapplicationscsvtemplate) | **Post** /manual-discover-applications | CSV Upload to discover applications
+*ManualDiscoverApplicationsTemplateAPI* | [**GetManualDiscoverApplicationsCsvTemplate**](docs/ManualDiscoverApplicationsTemplateAPI.md#getmanualdiscoverapplicationscsvtemplate) | **Get** /manual-discover-applications-template | CSV template download for discovery
 *NonEmployeeLifecycleManagementAPI* | [**ApproveNonEmployeeRequest**](docs/NonEmployeeLifecycleManagementAPI.md#approvenonemployeerequest) | **Post** /non-employee-approvals/{id}/approve | Approve a Non-Employee Request
 *NonEmployeeLifecycleManagementAPI* | [**CreateNonEmployeeRecord**](docs/NonEmployeeLifecycleManagementAPI.md#createnonemployeerecord) | **Post** /non-employee-records | Create Non-Employee Record
 *NonEmployeeLifecycleManagementAPI* | [**CreateNonEmployeeRequest**](docs/NonEmployeeLifecycleManagementAPI.md#createnonemployeerequest) | **Post** /non-employee-requests | Create Non-Employee Request
@@ -512,6 +515,9 @@ Class | Method | HTTP request | Description
 *TriggersAPI* | [**StartTestTriggerInvocation**](docs/TriggersAPI.md#starttesttriggerinvocation) | **Post** /trigger-invocations/test | Start a Test Invocation
 *TriggersAPI* | [**TestSubscriptionFilter**](docs/TriggersAPI.md#testsubscriptionfilter) | **Post** /trigger-subscriptions/validate-filter | Validate a Subscription Filter
 *TriggersAPI* | [**UpdateSubscription**](docs/TriggersAPI.md#updatesubscription) | **Put** /trigger-subscriptions/{id} | Update a Subscription
+*VendorConnectorMappingsAPI* | [**CreateVendorConnectorMapping**](docs/VendorConnectorMappingsAPI.md#createvendorconnectormapping) | **Post** /vendor-connector-mappings | Create a vendor connector mapping
+*VendorConnectorMappingsAPI* | [**DeleteVendorConnectorMapping**](docs/VendorConnectorMappingsAPI.md#deletevendorconnectormapping) | **Delete** /vendor-connector-mappings | Delete a vendor connector mapping
+*VendorConnectorMappingsAPI* | [**GetVendorConnectorMappings**](docs/VendorConnectorMappingsAPI.md#getvendorconnectormappings) | **Get** /vendor-connector-mappings | List vendor connector mappings
 *WorkItemsAPI* | [**ApproveApprovalItem**](docs/WorkItemsAPI.md#approveapprovalitem) | **Post** /work-items/{id}/approve/{approvalItemId} | Approve an Approval Item
 *WorkItemsAPI* | [**ApproveApprovalItemsInBulk**](docs/WorkItemsAPI.md#approveapprovalitemsinbulk) | **Post** /work-items/bulk-approve/{id} | Bulk approve Approval Items
 *WorkItemsAPI* | [**CompleteWorkItem**](docs/WorkItemsAPI.md#completeworkitem) | **Post** /work-items/{id} | Complete a Work Item
@@ -776,6 +782,8 @@ Class | Method | HTTP request | Description
  - [Delete202Response](docs/Delete202Response.md)
  - [DeleteCampaignsRequest](docs/DeleteCampaignsRequest.md)
  - [DeleteNonEmployeeRecordInBulkRequest](docs/DeleteNonEmployeeRecordInBulkRequest.md)
+ - [DeleteVendorConnectorMapping200Response](docs/DeleteVendorConnectorMapping200Response.md)
+ - [DiscoveredApplicationsInner](docs/DiscoveredApplicationsInner.md)
  - [DkimAttributes](docs/DkimAttributes.md)
  - [DomainAddress](docs/DomainAddress.md)
  - [DomainStatusDto](docs/DomainStatusDto.md)
@@ -955,6 +963,8 @@ Class | Method | HTTP request | Description
  - [ManagedClusterRedis](docs/ManagedClusterRedis.md)
  - [ManagedClusterTypes](docs/ManagedClusterTypes.md)
  - [ManagerCorrelationMapping](docs/ManagerCorrelationMapping.md)
+ - [ManualDiscoverApplications](docs/ManualDiscoverApplications.md)
+ - [ManualDiscoverApplicationsTemplate](docs/ManualDiscoverApplicationsTemplate.md)
  - [ManualWorkItemDetails](docs/ManualWorkItemDetails.md)
  - [ManualWorkItemDetailsCurrentOwner](docs/ManualWorkItemDetailsCurrentOwner.md)
  - [ManualWorkItemDetailsOriginalOwner](docs/ManualWorkItemDetailsOriginalOwner.md)
@@ -1282,6 +1292,11 @@ Class | Method | HTTP request | Description
  - [ValidateFilterInputDto](docs/ValidateFilterInputDto.md)
  - [ValidateFilterOutputDto](docs/ValidateFilterOutputDto.md)
  - [Value](docs/Value.md)
+ - [VendorConnectorMapping](docs/VendorConnectorMapping.md)
+ - [VendorConnectorMappingDeletedAt](docs/VendorConnectorMappingDeletedAt.md)
+ - [VendorConnectorMappingDeletedBy](docs/VendorConnectorMappingDeletedBy.md)
+ - [VendorConnectorMappingUpdatedAt](docs/VendorConnectorMappingUpdatedAt.md)
+ - [VendorConnectorMappingUpdatedBy](docs/VendorConnectorMappingUpdatedBy.md)
  - [VerificationPollRequest](docs/VerificationPollRequest.md)
  - [VerificationResponse](docs/VerificationResponse.md)
  - [ViolationContext](docs/ViolationContext.md)

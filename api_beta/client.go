@@ -82,6 +82,8 @@ type APIClient struct {
 
 	CustomPasswordInstructionsAPI *CustomPasswordInstructionsAPIService
 
+	DiscoveredApplicationsAPI *DiscoveredApplicationsAPIService
+
 	EntitlementsAPI *EntitlementsAPIService
 
 	GovernanceGroupsAPI *GovernanceGroupsAPIService
@@ -119,6 +121,10 @@ type APIClient struct {
 	ManagedClientsAPI *ManagedClientsAPIService
 
 	ManagedClustersAPI *ManagedClustersAPIService
+
+	ManualDiscoverApplicationsAPI *ManualDiscoverApplicationsAPIService
+
+	ManualDiscoverApplicationsTemplateAPI *ManualDiscoverApplicationsTemplateAPIService
 
 	NonEmployeeLifecycleManagementAPI *NonEmployeeLifecycleManagementAPIService
 
@@ -172,6 +178,8 @@ type APIClient struct {
 
 	TriggersAPI *TriggersAPIService
 
+	VendorConnectorMappingsAPI *VendorConnectorMappingsAPIService
+
 	WorkItemsAPI *WorkItemsAPIService
 
 	WorkReassignmentAPI *WorkReassignmentAPIService
@@ -210,6 +218,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ConnectorsAPI = (*ConnectorsAPIService)(&c.common)
 	c.CustomFormsAPI = (*CustomFormsAPIService)(&c.common)
 	c.CustomPasswordInstructionsAPI = (*CustomPasswordInstructionsAPIService)(&c.common)
+	c.DiscoveredApplicationsAPI = (*DiscoveredApplicationsAPIService)(&c.common)
 	c.EntitlementsAPI = (*EntitlementsAPIService)(&c.common)
 	c.GovernanceGroupsAPI = (*GovernanceGroupsAPIService)(&c.common)
 	c.IAIAccessRequestRecommendationsAPI = (*IAIAccessRequestRecommendationsAPIService)(&c.common)
@@ -229,6 +238,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.MFAControllerAPI = (*MFAControllerAPIService)(&c.common)
 	c.ManagedClientsAPI = (*ManagedClientsAPIService)(&c.common)
 	c.ManagedClustersAPI = (*ManagedClustersAPIService)(&c.common)
+	c.ManualDiscoverApplicationsAPI = (*ManualDiscoverApplicationsAPIService)(&c.common)
+	c.ManualDiscoverApplicationsTemplateAPI = (*ManualDiscoverApplicationsTemplateAPIService)(&c.common)
 	c.NonEmployeeLifecycleManagementAPI = (*NonEmployeeLifecycleManagementAPIService)(&c.common)
 	c.NotificationsAPI = (*NotificationsAPIService)(&c.common)
 	c.OAuthClientsAPI = (*OAuthClientsAPIService)(&c.common)
@@ -255,6 +266,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.TenantAPI = (*TenantAPIService)(&c.common)
 	c.TransformsAPI = (*TransformsAPIService)(&c.common)
 	c.TriggersAPI = (*TriggersAPIService)(&c.common)
+	c.VendorConnectorMappingsAPI = (*VendorConnectorMappingsAPIService)(&c.common)
 	c.WorkItemsAPI = (*WorkItemsAPIService)(&c.common)
 	c.WorkReassignmentAPI = (*WorkReassignmentAPIService)(&c.common)
 	c.WorkflowsAPI = (*WorkflowsAPIService)(&c.common)
