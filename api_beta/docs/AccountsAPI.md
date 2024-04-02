@@ -6,6 +6,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateAccount**](AccountsAPI.md#CreateAccount) | **Post** /accounts | Create Account
 [**DeleteAccount**](AccountsAPI.md#DeleteAccount) | **Delete** /accounts/{id} | Delete Account
+[**DeleteAccountAsync**](AccountsAPI.md#DeleteAccountAsync) | **Post** /accounts/{id}/remove | Remove Account
+[**DeleteAccountsAsync**](AccountsAPI.md#DeleteAccountsAsync) | **Post** /sources/{id}/remove-accounts | Remove All Accounts
 [**DisableAccount**](AccountsAPI.md#DisableAccount) | **Post** /accounts/{id}/disable | Disable Account
 [**DisableAccountForIdentity**](AccountsAPI.md#DisableAccountForIdentity) | **Post** /identities-accounts/{id}/disable | Disable IDN Account for Identity
 [**DisableAccountsForIdentities**](AccountsAPI.md#DisableAccountsForIdentities) | **Post** /identities-accounts/disable | Disable IDN Accounts for Identities
@@ -143,6 +145,146 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AccountsAsyncResult**](AccountsAsyncResult.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteAccountAsync
+
+> TaskResultDto DeleteAccountAsync(ctx, id).Execute()
+
+Remove Account
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    id := "c350d6aa4f104c61b062cb632421ad10" // string | The account id
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AccountsAPI.DeleteAccountAsync(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.DeleteAccountAsync``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteAccountAsync`: TaskResultDto
+    fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.DeleteAccountAsync`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The account id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteAccountAsyncRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**TaskResultDto**](TaskResultDto.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteAccountsAsync
+
+> TaskResultDto DeleteAccountsAsync(ctx, id).Execute()
+
+Remove All Accounts
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    id := "ebbf35756e1140699ce52b233121384a" // string | The source id
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AccountsAPI.DeleteAccountsAsync(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.DeleteAccountsAsync``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteAccountsAsync`: TaskResultDto
+    fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.DeleteAccountsAsync`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The source id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteAccountsAsyncRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**TaskResultDto**](TaskResultDto.md)
 
 ### Authorization
 

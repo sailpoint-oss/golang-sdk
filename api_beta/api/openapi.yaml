@@ -5399,6 +5399,97 @@ paths:
       summary: Unlock Account
       tags:
       - Accounts
+  /accounts/{id}/remove:
+    post:
+      description: |
+        Use this endpoint to remove accounts from the system without provisioning changes to the source. Accounts that are removed could be re-created during the next aggregation.
+
+        This endpoint is good for:
+        * Removing accounts that no longer exist on the source.
+        * Removing accounts that won't be aggregated following updates to the source configuration.
+        * Forcing accounts to be re-created following the next aggregation to re-run account processing, support testing, etc.
+      operationId: deleteAccountAsync
+      parameters:
+      - description: The account id
+        example: c350d6aa4f104c61b062cb632421ad10
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "202":
+          content:
+            application/json:
+              example:
+                type: TASK_RESULT
+                id: 464ae7bf791e49fdb74606a2e4a89635
+                name: null
+              schema:
+                $ref: '#/components/schemas/TaskResultDto'
+          description: Accepted. Returns task result details of removal request.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:account:remove
+      summary: Remove Account
+      tags:
+      - Accounts
   /identities-accounts/{id}/enable:
     post:
       description: This API submits a task to enable IDN account for a single identity.
@@ -38161,6 +38252,97 @@ paths:
       summary: Bulk Update Provisioning Policies
       tags:
       - Sources
+  /sources/{id}/remove-accounts:
+    post:
+      description: |
+        Use this endpoint to remove all accounts from the system without provisioning changes to the source. Accounts that are removed could be re-created during the next aggregation.
+
+        This endpoint is good for:
+        * Removing accounts that no longer exist on the source.
+        * Removing accounts that won't be aggregated following updates to the source configuration.
+        * Forcing accounts to be re-created following the next aggregation to re-run account processing, support testing, etc.
+      operationId: deleteAccountsAsync
+      parameters:
+      - description: The source id
+        example: ebbf35756e1140699ce52b233121384a
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "202":
+          content:
+            application/json:
+              example:
+                type: TASK_RESULT
+                id: 464ae7bf791e49fdb74606a2e4a89635
+                name: null
+              schema:
+                $ref: '#/components/schemas/TaskResultDto'
+          description: Accepted. Returns task result details of removal request.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:account:remove
+      summary: Remove All Accounts
+      tags:
+      - Accounts
   /sources/{sourceId}/schemas:
     get:
       operationId: listSourceSchemas
@@ -55249,6 +55431,29 @@ components:
           example: false
           type: boolean
       type: object
+    TaskResultDto:
+      description: Task result.
+      example:
+        name: name
+        id: 464ae7bf791e49fdb74606a2e4a89635
+        type: TASK_RESULT
+      properties:
+        type:
+          description: Task result DTO type.
+          enum:
+          - TASK_RESULT
+          example: TASK_RESULT
+          type: string
+        id:
+          description: Task result ID.
+          example: 464ae7bf791e49fdb74606a2e4a89635
+          type: string
+        name:
+          description: Task result display name.
+          nullable: true
+          type: string
+          example: null
+      type: object
     IdentitiesAccountsBulkRequest:
       example:
         identityIds:
@@ -61971,29 +62176,6 @@ components:
           type: array
       required:
       - roleIds
-      type: object
-    TaskResultDto:
-      description: Task result.
-      example:
-        name: name
-        id: 464ae7bf791e49fdb74606a2e4a89635
-        type: TASK_RESULT
-      properties:
-        type:
-          description: Task result DTO type.
-          enum:
-          - TASK_RESULT
-          example: TASK_RESULT
-          type: string
-        id:
-          description: Task result ID.
-          example: 464ae7bf791e49fdb74606a2e4a89635
-          type: string
-        name:
-          description: Task result display name.
-          nullable: true
-          type: string
-          example: null
       type: object
     RoleIdentity:
       description: A subset of the fields of an Identity which is a member of a Role.

@@ -106,6 +106,8 @@ Class | Method | HTTP request | Description
 *AccountUsagesAPI* | [**GetUsagesByAccountId**](docs/AccountUsagesAPI.md#getusagesbyaccountid) | **Get** /account-usages/{accountId}/summaries | Returns account usage insights
 *AccountsAPI* | [**CreateAccount**](docs/AccountsAPI.md#createaccount) | **Post** /accounts | Create Account
 *AccountsAPI* | [**DeleteAccount**](docs/AccountsAPI.md#deleteaccount) | **Delete** /accounts/{id} | Delete Account
+*AccountsAPI* | [**DeleteAccountAsync**](docs/AccountsAPI.md#deleteaccountasync) | **Post** /accounts/{id}/remove | Remove Account
+*AccountsAPI* | [**DeleteAccountsAsync**](docs/AccountsAPI.md#deleteaccountsasync) | **Post** /sources/{id}/remove-accounts | Remove All Accounts
 *AccountsAPI* | [**DisableAccount**](docs/AccountsAPI.md#disableaccount) | **Post** /accounts/{id}/disable | Disable Account
 *AccountsAPI* | [**DisableAccountForIdentity**](docs/AccountsAPI.md#disableaccountforidentity) | **Post** /identities-accounts/{id}/disable | Disable IDN Account for Identity
 *AccountsAPI* | [**DisableAccountsForIdentities**](docs/AccountsAPI.md#disableaccountsforidentities) | **Post** /identities-accounts/disable | Disable IDN Accounts for Identities
