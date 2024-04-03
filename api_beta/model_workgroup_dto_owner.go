@@ -23,7 +23,7 @@ type WorkgroupDtoOwner struct {
 	Type *string `json:"type,omitempty"`
 	// Owner's identity ID.
 	Id *string `json:"id,omitempty"`
-	// Owner's display name.
+	// Owner's name.
 	Name *string `json:"name,omitempty"`
 	// The display name of the identity
 	DisplayName *string `json:"displayName,omitempty"`

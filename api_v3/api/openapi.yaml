@@ -46755,7 +46755,7 @@ components:
           example: 2c9180a46faadee4016fb4e018c20639
           type: string
         name:
-          description: Owner's display name.
+          description: Owner's name.
           example: Support
           type: string
       type: object

@@ -23,7 +23,7 @@ type OwnerDto struct {
 	Type *string `json:"type,omitempty"`
 	// Owner's identity ID.
 	Id *string `json:"id,omitempty"`
-	// Owner's display name.
+	// Owner's name.
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
