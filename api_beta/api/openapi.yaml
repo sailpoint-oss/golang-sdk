@@ -75292,6 +75292,7 @@ components:
         name: Michael Michaels
         id: 2c7180a46faadee4016fb4e018c20642
         type: IDENTITY
+        email: michael.michaels@sailpoint.com
       properties:
         type:
           description: Workgroup member identity DTO type.
@@ -75306,6 +75307,10 @@ components:
         name:
           description: Workgroup member identity display name.
           example: Michael Michaels
+          type: string
+        email:
+          description: Workgroup member identity email.
+          example: michael.michaels@sailpoint.com
           type: string
       type: object
     searchFormDefinitionsByTenant_400_response:

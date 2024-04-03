@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Type** | Pointer to **string** | Workgroup member identity DTO type. | [optional] 
 **Id** | Pointer to **string** | Workgroup member identity ID. | [optional] 
 **Name** | Pointer to **string** | Workgroup member identity display name. | [optional] 
+**Email** | Pointer to **string** | Workgroup member identity email. | [optional] 
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetName sets Name field to given value.
 `func (o *ListWorkgroupMembers200ResponseInner) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetEmail
+
+`func (o *ListWorkgroupMembers200ResponseInner) GetEmail() string`
+
+GetEmail returns the Email field if non-nil, zero value otherwise.
+
+### GetEmailOk
+
+`func (o *ListWorkgroupMembers200ResponseInner) GetEmailOk() (*string, bool)`
+
+GetEmailOk returns a tuple with the Email field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEmail
+
+`func (o *ListWorkgroupMembers200ResponseInner) SetEmail(v string)`
+
+SetEmail sets Email field to given value.
+
+### HasEmail
+
+`func (o *ListWorkgroupMembers200ResponseInner) HasEmail() bool`
+
+HasEmail returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

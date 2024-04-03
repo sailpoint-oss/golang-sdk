@@ -25,6 +25,8 @@ type ListWorkgroupMembers200ResponseInner struct {
 	Id *string `json:"id,omitempty"`
 	// Workgroup member identity display name.
 	Name *string `json:"name,omitempty"`
+	// Workgroup member identity email.
+	Email *string `json:"email,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -143,6 +145,38 @@ func (o *ListWorkgroupMembers200ResponseInner) SetName(v string) {
 	o.Name = &v
 }
 
+// GetEmail returns the Email field value if set, zero value otherwise.
+func (o *ListWorkgroupMembers200ResponseInner) GetEmail() string {
+	if o == nil || isNil(o.Email) {
+		var ret string
+		return ret
+	}
+	return *o.Email
+}
+
+// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListWorkgroupMembers200ResponseInner) GetEmailOk() (*string, bool) {
+	if o == nil || isNil(o.Email) {
+		return nil, false
+	}
+	return o.Email, true
+}
+
+// HasEmail returns a boolean if a field has been set.
+func (o *ListWorkgroupMembers200ResponseInner) HasEmail() bool {
+	if o != nil && !isNil(o.Email) {
+		return true
+	}
+
+	return false
+}
+
+// SetEmail gets a reference to the given string and assigns it to the Email field.
+func (o *ListWorkgroupMembers200ResponseInner) SetEmail(v string) {
+	o.Email = &v
+}
+
 func (o ListWorkgroupMembers200ResponseInner) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -161,6 +195,9 @@ func (o ListWorkgroupMembers200ResponseInner) ToMap() (map[string]interface{}, e
 	}
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
+	}
+	if !isNil(o.Email) {
+		toSerialize["email"] = o.Email
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -183,6 +220,7 @@ func (o *ListWorkgroupMembers200ResponseInner) UnmarshalJSON(bytes []byte) (err 
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
+		delete(additionalProperties, "email")
 		o.AdditionalProperties = additionalProperties
 	}
 
