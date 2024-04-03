@@ -66076,10 +66076,7 @@ components:
       type: object
     WorkgroupDto:
       example:
-        owner:
-          name: Support
-          id: 2c9180a46faadee4016fb4e018c20639
-          type: IDENTITY
+        owner: null
         connectionCount: 1641498673000
         memberCount: 1641498673000
         name: DB Access Governance Group
@@ -66087,7 +66084,7 @@ components:
         id: 2c91808568c529c60168cca6f90c1313
       properties:
         owner:
-          $ref: '#/components/schemas/OwnerDto'
+          $ref: '#/components/schemas/WorkgroupDto_owner'
         id:
           description: Governance group ID.
           example: 2c91808568c529c60168cca6f90c1313
@@ -76939,6 +76936,22 @@ components:
           example: William Wilson
           type: string
       type: object
+    WorkgroupDto_owner:
+      allOf:
+      - $ref: '#/components/schemas/OwnerDto'
+      - description: Governance group owner.
+        properties:
+          displayName:
+            description: The display name of the identity
+            example: Support
+            readOnly: true
+            type: string
+          emailAddress:
+            description: The primary email address of the identity
+            example: support@sailpoint.com
+            readOnly: true
+            type: string
+        type: object
     BulkWorkgroupMembersRequest_inner:
       description: Identity's basic details.
       properties:

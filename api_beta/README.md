@@ -1328,6 +1328,7 @@ Class | Method | HTTP request | Description
  - [WorkgroupConnectionDto](docs/WorkgroupConnectionDto.md)
  - [WorkgroupDeleteItem](docs/WorkgroupDeleteItem.md)
  - [WorkgroupDto](docs/WorkgroupDto.md)
+ - [WorkgroupDtoOwner](docs/WorkgroupDtoOwner.md)
  - [WorkgroupMemberAddItem](docs/WorkgroupMemberAddItem.md)
  - [WorkgroupMemberDeleteItem](docs/WorkgroupMemberDeleteItem.md)
 

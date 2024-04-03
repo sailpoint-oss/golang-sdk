@@ -905,6 +905,7 @@ docs/WorkgroupBulkDeleteRequest.md
 docs/WorkgroupConnectionDto.md
 docs/WorkgroupDeleteItem.md
 docs/WorkgroupDto.md
+docs/WorkgroupDtoOwner.md
 docs/WorkgroupMemberAddItem.md
 docs/WorkgroupMemberDeleteItem.md
 git_push.sh
@@ -1676,6 +1677,7 @@ model_workgroup_bulk_delete_request.go
 model_workgroup_connection_dto.go
 model_workgroup_delete_item.go
 model_workgroup_dto.go
+model_workgroup_dto_owner.go
 model_workgroup_member_add_item.go
 model_workgroup_member_delete_item.go
 response.go

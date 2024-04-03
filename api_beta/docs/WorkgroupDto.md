@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Owner** | Pointer to [**OwnerDto**](OwnerDto.md) |  | [optional] 
+**Owner** | Pointer to [**WorkgroupDtoOwner**](WorkgroupDtoOwner.md) |  | [optional] 
 **Id** | Pointer to **string** | Governance group ID. | [optional] [readonly] 
 **Name** | Pointer to **string** | Governance group name. | [optional] 
 **Description** | Pointer to **string** | Governance group description. | [optional] 
@@ -32,20 +32,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetOwner
 
-`func (o *WorkgroupDto) GetOwner() OwnerDto`
+`func (o *WorkgroupDto) GetOwner() WorkgroupDtoOwner`
 
 GetOwner returns the Owner field if non-nil, zero value otherwise.
 
 ### GetOwnerOk
 
-`func (o *WorkgroupDto) GetOwnerOk() (*OwnerDto, bool)`
+`func (o *WorkgroupDto) GetOwnerOk() (*WorkgroupDtoOwner, bool)`
 
 GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwner
 
-`func (o *WorkgroupDto) SetOwner(v OwnerDto)`
+`func (o *WorkgroupDto) SetOwner(v WorkgroupDtoOwner)`
 
 SetOwner sets Owner field to given value.
 
