@@ -20671,6 +20671,7 @@ paths:
       - Non-Employee Lifecycle Management
   /managed-clients/{id}/status:
     get:
+      deprecated: true
       description: Retrieve Managed Client Status by ID.
       operationId: getManagedClientStatus
       parameters:
@@ -20776,6 +20777,7 @@ paths:
       tags:
       - Managed Clients
     post:
+      deprecated: true
       description: Update a status detail passed in from the client
       operationId: updateManagedClientStatus
       parameters:
@@ -20881,6 +20883,7 @@ paths:
       - Managed Clients
   /managed-clusters/{id}:
     get:
+      deprecated: true
       description: Retrieve a ManagedCluster by ID.
       operationId: getManagedCluster
       parameters:
@@ -20983,6 +20986,7 @@ paths:
       - Managed Clusters
   /managed-clusters/{id}/log-config:
     get:
+      deprecated: true
       description: Get managed cluster's log configuration.
       operationId: getClientLogConfiguration
       parameters:
@@ -21085,6 +21089,7 @@ paths:
       tags:
       - Managed Clusters
     put:
+      deprecated: true
       description: Update managed cluster's log configuration
       operationId: putClientLogConfiguration
       parameters:
@@ -21193,6 +21198,7 @@ paths:
       - Managed Clusters
   /managed-clusters:
     get:
+      deprecated: true
       description: "Retrieve all Managed Clusters for the current Org, based on request\
         \ context."
       operationId: getManagedClusters

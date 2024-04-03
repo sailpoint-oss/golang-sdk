@@ -48,6 +48,8 @@ Retrieve Managed Client Status by ID.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Managed Client Status to get
  @return ApiGetManagedClientStatusRequest
+
+Deprecated
 */
 func (a *ManagedClientsAPIService) GetManagedClientStatus(ctx context.Context, id string) ApiGetManagedClientStatusRequest {
 	return ApiGetManagedClientStatusRequest{
@@ -59,6 +61,7 @@ func (a *ManagedClientsAPIService) GetManagedClientStatus(ctx context.Context, i
 
 // Execute executes the request
 //  @return ManagedClientStatus
+// Deprecated
 func (a *ManagedClientsAPIService) GetManagedClientStatusExecute(r ApiGetManagedClientStatusRequest) (*ManagedClientStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -226,6 +229,8 @@ Update a status detail passed in from the client
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Managed Client Status to update
  @return ApiUpdateManagedClientStatusRequest
+
+Deprecated
 */
 func (a *ManagedClientsAPIService) UpdateManagedClientStatus(ctx context.Context, id string) ApiUpdateManagedClientStatusRequest {
 	return ApiUpdateManagedClientStatusRequest{
@@ -237,6 +242,7 @@ func (a *ManagedClientsAPIService) UpdateManagedClientStatus(ctx context.Context
 
 // Execute executes the request
 //  @return ManagedClientStatusAggResponse
+// Deprecated
 func (a *ManagedClientsAPIService) UpdateManagedClientStatusExecute(r ApiUpdateManagedClientStatusRequest) (*ManagedClientStatusAggResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
