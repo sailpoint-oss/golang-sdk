@@ -63414,8 +63414,8 @@ components:
           - mail
         created: 2022-02-08T14:50:03.827Z
         managerCorrelationMapping:
-          accountAttribute: manager
-          identityAttribute: manager
+          accountAttributeName: manager
+          identityAttributeName: manager
         credentialProviderEnabled: false
         accountCorrelationConfig:
           name: "Directory [source-62867] Account Correlation"
@@ -71074,15 +71074,15 @@ components:
       type: object
     ManagerCorrelationMapping:
       example:
-        accountAttribute: manager
-        identityAttribute: manager
+        accountAttributeName: manager
+        identityAttributeName: manager
       properties:
-        accountAttribute:
+        accountAttributeName:
           description: Name of the attribute to use for manager correlation. The value
             found on the account attribute will be used to lookup the manager's identity.
           example: manager
           type: string
-        identityAttribute:
+        identityAttributeName:
           description: Name of the identity attribute to search when trying to find
             a manager using the value from the accountAttribute.
           example: manager
