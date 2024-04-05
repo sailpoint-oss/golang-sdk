@@ -12,6 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the IdentityAttribute type satisfies the MappedNullable interface at compile time
@@ -19,21 +20,21 @@ var _ MappedNullable = &IdentityAttribute{}
 
 // IdentityAttribute struct for IdentityAttribute
 type IdentityAttribute struct {
-	// The technical name of the identity attribute
-	Name *string `json:"name,omitempty"`
-	// The business-friendly name of the identity attribute
+	// Identity attribute's technical name.
+	Name string `json:"name"`
+	// Identity attribute's business-friendly name.
 	DisplayName *string `json:"displayName,omitempty"`
-	// Shows if the attribute is 'standard' or default
+	// Indicates whether the attribute is 'standard' or 'default'.
 	Standard *bool `json:"standard,omitempty"`
-	// The type of the identity attribute
+	// Identity attribute's type.
 	Type *string `json:"type,omitempty"`
-	// Shows if the identity attribute is multi-valued
+	// Indicates whether the identity attribute is multi-valued.
 	Multi *bool `json:"multi,omitempty"`
-	// Shows if the identity attribute is searchable
+	// Indicates whether the identity attribute is searchable.
 	Searchable *bool `json:"searchable,omitempty"`
-	// Shows this is 'system' identity attribute that does not have a source and is not configurable.
+	// Indicates whether the identity attribute is 'system', meaning that it doesn't have a source and isn't configurable.
 	System *bool `json:"system,omitempty"`
-	// List of sources for an attribute, this specifies how the value of the rule is derived
+	// Identity attribute's list of sources - this specifies how the rule's value is derived.
 	Sources []Source1 `json:"sources,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -44,8 +45,9 @@ type _IdentityAttribute IdentityAttribute
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentityAttribute() *IdentityAttribute {
+func NewIdentityAttribute(name string) *IdentityAttribute {
 	this := IdentityAttribute{}
+	this.Name = name
 	var standard bool = false
 	this.Standard = &standard
 	var multi bool = false
@@ -73,36 +75,28 @@ func NewIdentityAttributeWithDefaults() *IdentityAttribute {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *IdentityAttribute) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *IdentityAttribute) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *IdentityAttribute) HasName() bool {
-	if o != nil && !isNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *IdentityAttribute) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
@@ -339,9 +333,7 @@ func (o IdentityAttribute) MarshalJSON() ([]byte, error) {
 
 func (o IdentityAttribute) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["name"] = o.Name
 	if !isNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
@@ -372,6 +364,27 @@ func (o IdentityAttribute) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *IdentityAttribute) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varIdentityAttribute := _IdentityAttribute{}
 
 	if err = json.Unmarshal(bytes, &varIdentityAttribute); err == nil {

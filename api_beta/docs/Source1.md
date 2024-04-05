@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | The type of the source | [optional] 
-**Properties** | Pointer to **map[string]interface{}** | The source properties | [optional] 
+**Type** | Pointer to **string** | Source type. | [optional] 
+**Properties** | Pointer to **map[string]interface{}** | Source properties. | [optional] 
 
 ## Methods
 

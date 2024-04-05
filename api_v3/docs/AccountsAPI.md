@@ -681,7 +681,7 @@ import (
 )
 
 func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The account id
+    id := "ef38f94347e94562b5bb8424a56397d8" // string | The account ID.
     accountUnlockRequest := *openapiclient.NewAccountUnlockRequest() // AccountUnlockRequest | 
 
     configuration := openapiclient.NewConfiguration()
@@ -702,7 +702,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The account id | 
+**id** | **string** | The account ID. | 
 
 ### Other Parameters
 

@@ -2684,10 +2684,11 @@ func (r ApiUnlockAccountRequest) Execute() (*AccountsAsyncResult, *http.Response
 UnlockAccount Unlock Account
 
 This API submits a task to unlock an account and returns the task ID.  
+To use this endpoint to unlock an account that has the `forceProvisioning` option set to true, the `idn:accounts-provisioning:manage` scope is required. 
 A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The account id
+ @param id The account ID.
  @return ApiUnlockAccountRequest
 */
 func (a *AccountsAPIService) UnlockAccount(ctx context.Context, id string) ApiUnlockAccountRequest {
