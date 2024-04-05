@@ -76,6 +76,8 @@ type APIClient struct {
 
 	CertificationsAPI *CertificationsAPIService
 
+	ConfigurationHubAPI *ConfigurationHubAPIService
+
 	ConnectorsAPI *ConnectorsAPIService
 
 	GlobalTenantSecuritySettingsAPI *GlobalTenantSecuritySettingsAPIService
@@ -163,6 +165,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.CertificationCampaignsAPI = (*CertificationCampaignsAPIService)(&c.common)
 	c.CertificationSummariesAPI = (*CertificationSummariesAPIService)(&c.common)
 	c.CertificationsAPI = (*CertificationsAPIService)(&c.common)
+	c.ConfigurationHubAPI = (*ConfigurationHubAPIService)(&c.common)
 	c.ConnectorsAPI = (*ConnectorsAPIService)(&c.common)
 	c.GlobalTenantSecuritySettingsAPI = (*GlobalTenantSecuritySettingsAPIService)(&c.common)
 	c.IdentityProfilesAPI = (*IdentityProfilesAPIService)(&c.common)

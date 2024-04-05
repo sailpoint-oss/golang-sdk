@@ -160,6 +160,11 @@ Class | Method | HTTP request | Description
 *CertificationsAPI* | [**ReassignIdentityCertifications**](docs/CertificationsAPI.md#reassignidentitycertifications) | **Post** /certifications/{id}/reassign | Reassign Identities or Items
 *CertificationsAPI* | [**SignOffIdentityCertification**](docs/CertificationsAPI.md#signoffidentitycertification) | **Post** /certifications/{id}/sign-off | Finalize Identity Certification Decisions
 *CertificationsAPI* | [**SubmitReassignCertsAsync**](docs/CertificationsAPI.md#submitreassigncertsasync) | **Post** /certifications/{id}/reassign-async | Reassign Certifications Asynchronously
+*ConfigurationHubAPI* | [**CreateObjectMapping**](docs/ConfigurationHubAPI.md#createobjectmapping) | **Post** /configuration-hub/object-mappings/{sourceOrg} | Creates an object mapping
+*ConfigurationHubAPI* | [**CreateObjectMappings**](docs/ConfigurationHubAPI.md#createobjectmappings) | **Post** /configuration-hub/object-mappings/{sourceOrg}/bulk-create | Bulk creates object mappings
+*ConfigurationHubAPI* | [**DeleteObjectMapping**](docs/ConfigurationHubAPI.md#deleteobjectmapping) | **Delete** /configuration-hub/object-mappings/{sourceOrg}/{objectMappingId} | Deletes an object mapping
+*ConfigurationHubAPI* | [**GetObjectMappings**](docs/ConfigurationHubAPI.md#getobjectmappings) | **Get** /configuration-hub/object-mappings/{sourceOrg} | Gets list of object mappings
+*ConfigurationHubAPI* | [**UpdateObjectMappings**](docs/ConfigurationHubAPI.md#updateobjectmappings) | **Post** /configuration-hub/object-mappings/{sourceOrg}/bulk-patch | Bulk updates object mappings
 *ConnectorsAPI* | [**CreateCustomConnector**](docs/ConnectorsAPI.md#createcustomconnector) | **Post** /connectors | Create custom connector
 *ConnectorsAPI* | [**DeleteCustomConnector**](docs/ConnectorsAPI.md#deletecustomconnector) | **Delete** /connectors/{scriptName} | 
 *ConnectorsAPI* | [**GetConnector**](docs/ConnectorsAPI.md#getconnector) | **Get** /connectors/{scriptName} | 
@@ -643,6 +648,12 @@ Class | Method | HTTP request | Description
  - [NonEmployeeSourceWithCloudExternalId](docs/NonEmployeeSourceWithCloudExternalId.md)
  - [NonEmployeeSourceWithNECount](docs/NonEmployeeSourceWithNECount.md)
  - [ObjectImportResult](docs/ObjectImportResult.md)
+ - [ObjectMappingBulkCreateRequest](docs/ObjectMappingBulkCreateRequest.md)
+ - [ObjectMappingBulkCreateResponse](docs/ObjectMappingBulkCreateResponse.md)
+ - [ObjectMappingBulkPatchRequest](docs/ObjectMappingBulkPatchRequest.md)
+ - [ObjectMappingBulkPatchResponse](docs/ObjectMappingBulkPatchResponse.md)
+ - [ObjectMappingRequest](docs/ObjectMappingRequest.md)
+ - [ObjectMappingResponse](docs/ObjectMappingResponse.md)
  - [Operation](docs/Operation.md)
  - [OriginalRequest](docs/OriginalRequest.md)
  - [OrphanUncorrelatedReportArguments](docs/OrphanUncorrelatedReportArguments.md)

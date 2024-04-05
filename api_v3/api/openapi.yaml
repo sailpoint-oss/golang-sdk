@@ -375,6 +375,9 @@ tags:
     \ would be affected.\n"
   name: Certification Summaries
 - description: |
+    Upload configurations and manage object mappings between tenants.
+  name: Configuration Hub
+- description: |
     Use this API to implement connector functionality.
     With this functionality in place, administrators can view available connectors.
 
@@ -10701,6 +10704,634 @@ paths:
       summary: List of Pending Certification Tasks
       tags:
       - Certifications
+  /configuration-hub/object-mappings/{sourceOrg}:
+    get:
+      description: |-
+        This gets a list of existing object mappings between current org and source org.
+        The request will need the following security scope:
+        - sp:config-object-mapping:read
+      operationId: getObjectMappings
+      parameters:
+      - description: The name of the source org.
+        example: source-org
+        in: path
+        name: sourceOrg
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - objectMappingId: 3d6e0144-963f-4bd6-8d8d-d77b4e507ce4
+                objectType: GOVERNANCE_GROUP
+                jsonPath: $.description
+                sourceValue: Sample Governance Group
+                targetValue: Sample Governance Group - Updated
+                enabled: true
+                created: 2024-03-19T23:18:53.732Z
+                modified: 2024-03-19T23:18:53.732Z
+              - objectMappingId: e1d5cb80-65e2-4f92-ae2e-9588f61cc4cd
+                objectType: IDENTITY
+                jsonPath: $.name
+                sourceValue: SailPoint Support
+                targetValue: john.doe
+                enabled: false
+                created: 2024-03-19T23:18:06.238Z
+                modified: 2024-03-19T23:18:06.238Z
+              schema:
+                items:
+                  $ref: '#/components/schemas/ObjectMappingResponse'
+                type: array
+          description: List of existing object mappings between current org and source
+            org.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - sp:config-object-mapping:read
+        - sp:config-object-mapping:manage
+      summary: Gets list of object mappings
+      tags:
+      - Configuration Hub
+    post:
+      description: |-
+        This creates an object mapping between current org and source org.
+        The request will need the following security scope:
+        - sp:config-object-mapping:manage
+      operationId: createObjectMapping
+      parameters:
+      - description: The name of the source org.
+        example: source-org
+        in: path
+        name: sourceOrg
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              objectType: GOVERNANCE_GROUP
+              jsonPath: $.description
+              sourceValue: Sample Governance Group
+              targetValue: Sample Governance Group - Updated
+              enabled: true
+            schema:
+              $ref: '#/components/schemas/ObjectMappingRequest'
+        description: The object mapping request body.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                objectMappingId: 3d6e0144-963f-4bd6-8d8d-d77b4e507ce4
+                objectType: GOVERNANCE_GROUP
+                jsonPath: $.description
+                sourceValue: Sample Governance Group
+                targetValue: Sample Governance Group - Updated
+                enabled: true
+                created: 2024-03-19T23:18:53.732Z
+                modified: 2024-03-19T23:18:53.732Z
+              schema:
+                $ref: '#/components/schemas/ObjectMappingResponse'
+          description: The created object mapping between current org and source org.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - sp:config-object-mapping:manage
+      summary: Creates an object mapping
+      tags:
+      - Configuration Hub
+  /configuration-hub/object-mappings/{sourceOrg}/{objectMappingId}:
+    delete:
+      description: |-
+        This deletes an existing object mapping.
+        The request will need the following security scope:
+        - sp:config-object-mapping:manage
+      operationId: deleteObjectMapping
+      parameters:
+      - description: The name of the source org.
+        example: source-org
+        in: path
+        name: sourceOrg
+        required: true
+        schema:
+          type: string
+      - description: The id of the object mapping to be deleted.
+        example: 3d6e0144-963f-4bd6-8d8d-d77b4e507ce4
+        in: path
+        name: objectMappingId
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - sp:config-object-mapping:manage
+      summary: Deletes an object mapping
+      tags:
+      - Configuration Hub
+  /configuration-hub/object-mappings/{sourceOrg}/bulk-create:
+    post:
+      description: |-
+        This creates a set of object mappings (Max 25) between current org and source org.
+        The request will need the following security scope:
+        - sp:config-object-mapping:manage
+      operationId: createObjectMappings
+      parameters:
+      - description: The name of the source org.
+        example: source-org
+        in: path
+        name: sourceOrg
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              newObjectsMappings:
+              - objectType: SOURCE
+                jsonPath: $.name
+                sourceValue: Original SOURCE Name
+                targetValue: New SOURCE Name
+                enabled: true
+              - objectType: IDENTITY
+                jsonPath: $.name
+                sourceValue: Original IDENTITY Name
+                targetValue: 'New IDENTITY Name '
+                enabled: true
+            schema:
+              $ref: '#/components/schemas/ObjectMappingBulkCreateRequest'
+        description: The bulk create object mapping request body.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                addedObjects:
+                - objectMappingId: 603b1a61-d03d-4ed1-864f-a508fbd1995d
+                  objectType: SOURCE
+                  jsonPath: $.name
+                  sourceValue: Original SOURCE Name
+                  targetValue: New SOURCE Name
+                  enabled: true
+                  created: 2024-03-25T15:50:41.314Z
+                  modified: 2024-03-25T15:50:41.299Z
+                - objectMappingId: 00bece34-f50d-4227-8878-76f620b5a971
+                  objectType: IDENTITY
+                  jsonPath: $.name
+                  sourceValue: Original IDENTITY Name
+                  targetValue: 'New IDENTITY Name '
+                  enabled: true
+                  created: 2024-03-25T15:50:41.316Z
+                  modified: 2024-03-25T15:50:41.316Z
+              schema:
+                $ref: '#/components/schemas/ObjectMappingBulkCreateResponse'
+          description: The created object mapping between current org and source org.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - sp:config-object-mapping:manage
+      summary: Bulk creates object mappings
+      tags:
+      - Configuration Hub
+  /configuration-hub/object-mappings/{sourceOrg}/bulk-patch:
+    post:
+      description: |-
+        This updates a set of object mappings, only enabled and targetValue fields can be updated.
+        The request will need the following security scope:
+        - sp:config-object-mapping:manage
+      operationId: updateObjectMappings
+      parameters:
+      - description: The name of the source org.
+        example: source-org
+        in: path
+        name: sourceOrg
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              patches:
+                "603b1a61-d03d-4ed1-864f-a508fbd1995d":
+                - op: replace
+                  path: /enabled
+                  value: true
+                "00bece34-f50d-4227-8878-76f620b5a971":
+                - op: replace
+                  path: /targetValue
+                  value: New Target Value
+            schema:
+              $ref: '#/components/schemas/ObjectMappingBulkPatchRequest'
+        description: The object mapping request body.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                patchedObjects:
+                - objectMappingId: 603b1a61-d03d-4ed1-864f-a508fbd1995d
+                  objectType: SOURCE
+                  jsonPath: $.name
+                  sourceValue: Original SOURCE Name
+                  targetValue: New SOURCE Name
+                  enabled: true
+                  created: 2024-03-25T15:50:41.314Z
+                  modified: 2024-03-25T15:50:41.299Z
+                - objectMappingId: 00bece34-f50d-4227-8878-76f620b5a971
+                  objectType: IDENTITY
+                  jsonPath: $.name
+                  sourceValue: Original IDENTITY Name
+                  targetValue: 'New IDENTITY Name '
+                  enabled: true
+                  created: 2024-03-25T15:50:41.316Z
+                  modified: 2024-03-25T15:50:41.316Z
+              schema:
+                $ref: '#/components/schemas/ObjectMappingBulkPatchResponse'
+          description: The updated object mappings.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - sp:config-object-mapping:manage
+      summary: Bulk updates object mappings
+      tags:
+      - Configuration Hub
   /connectors/{scriptName}:
     delete:
       description: |-
@@ -41977,6 +42608,252 @@ components:
           example: SYS.GV_$TRANSACTION
           readOnly: true
           type: string
+      type: object
+    ObjectMappingResponse:
+      example:
+        created: 2024-03-19T23:18:53.732Z
+        targetValue: My New Governance Group Name
+        modified: 2024-03-19T23:18:53.732Z
+        jsonPath: $.name
+        sourceValue: My Governance Group Name
+        objectMappingId: 3d6e0144-963f-4bd6-8d8d-d77b4e507ce4
+        enabled: false
+        objectType: IDENTITY
+      properties:
+        objectMappingId:
+          description: Id of the object mapping
+          example: 3d6e0144-963f-4bd6-8d8d-d77b4e507ce4
+          type: string
+        objectType:
+          description: Type of the object the mapping value applies to
+          enum:
+          - ACCESS_PROFILE
+          - ACCESS_REQUEST_CONFIG
+          - ATTR_SYNC_SOURCE_CONFIG
+          - AUTH_ORG
+          - CAMPAIGN_FILTER
+          - ENTITLEMENT
+          - FORM_DEFINITION
+          - GOVERNANCE_GROUP
+          - IDENTITY
+          - IDENTITY_OBJECT_CONFIG
+          - IDENTITY_PROFILE
+          - LIFECYCLE_STATE
+          - NOTIFICATION_TEMPLATE
+          - PASSWORD_POLICY
+          - PASSWORD_SYNC_GROUP
+          - PUBLIC_IDENTITIES_CONFIG
+          - ROLE
+          - RULE
+          - SEGMENT
+          - SERVICE_DESK_INTEGRATION
+          - SOD_POLICY
+          - SOURCE
+          - TAG
+          - TRANSFORM
+          - TRIGGER_SUBSCRIPTION
+          - WORKFLOW
+          example: IDENTITY
+          type: string
+        jsonPath:
+          description: JSONPath expression denoting the path within the object where
+            the mapping value should be applied
+          example: $.name
+          type: string
+        sourceValue:
+          description: Original value at the jsonPath location within the object
+          example: My Governance Group Name
+          type: string
+        targetValue:
+          description: Value to be assigned at the jsonPath location within the object
+          example: My New Governance Group Name
+          type: string
+        enabled:
+          default: false
+          description: Whether or not this object mapping is enabled
+          example: false
+          type: boolean
+        created:
+          description: Object mapping creation timestamp
+          example: 2024-03-19T23:18:53.732Z
+          type: string
+        modified:
+          description: Object mapping latest update timestamp
+          example: 2024-03-19T23:18:53.732Z
+          type: string
+      title: Object Mapping Response
+      type: object
+    ObjectMappingRequest:
+      example:
+        targetValue: My New Governance Group Name
+        jsonPath: $.name
+        sourceValue: My Governance Group Name
+        enabled: false
+        objectType: IDENTITY
+      properties:
+        objectType:
+          description: "Type of the object the mapping value applies to, must be one\
+            \ from enum"
+          enum:
+          - ACCESS_PROFILE
+          - ACCESS_REQUEST_CONFIG
+          - ATTR_SYNC_SOURCE_CONFIG
+          - AUTH_ORG
+          - CAMPAIGN_FILTER
+          - ENTITLEMENT
+          - FORM_DEFINITION
+          - GOVERNANCE_GROUP
+          - IDENTITY
+          - IDENTITY_OBJECT_CONFIG
+          - IDENTITY_PROFILE
+          - LIFECYCLE_STATE
+          - NOTIFICATION_TEMPLATE
+          - PASSWORD_POLICY
+          - PASSWORD_SYNC_GROUP
+          - PUBLIC_IDENTITIES_CONFIG
+          - ROLE
+          - RULE
+          - SEGMENT
+          - SERVICE_DESK_INTEGRATION
+          - SOD_POLICY
+          - SOURCE
+          - TAG
+          - TRANSFORM
+          - TRIGGER_SUBSCRIPTION
+          - WORKFLOW
+          example: IDENTITY
+          type: string
+        jsonPath:
+          description: JSONPath expression denoting the path within the object where
+            the mapping value should be applied
+          example: $.name
+          type: string
+        sourceValue:
+          description: Original value at the jsonPath location within the object
+          example: My Governance Group Name
+          type: string
+        targetValue:
+          description: Value to be assigned at the jsonPath location within the object
+          example: My New Governance Group Name
+          type: string
+        enabled:
+          default: false
+          description: Whether or not this object mapping is enabled
+          example: false
+          type: boolean
+      required:
+      - jsonPath
+      - objectType
+      - sourceValue
+      - targetValue
+      title: Object Mapping Request
+      type: object
+    ObjectMappingBulkCreateRequest:
+      example:
+        newObjectMappings:
+        - targetValue: My New Governance Group Name
+          jsonPath: $.name
+          sourceValue: My Governance Group Name
+          enabled: false
+          objectType: IDENTITY
+        - targetValue: My New Governance Group Name
+          jsonPath: $.name
+          sourceValue: My Governance Group Name
+          enabled: false
+          objectType: IDENTITY
+      properties:
+        newObjectMappings:
+          items:
+            $ref: '#/components/schemas/ObjectMappingRequest'
+          type: array
+      required:
+      - newObjectMappings
+      title: Bulk Create Object Mapping Request
+      type: object
+    ObjectMappingBulkCreateResponse:
+      example:
+        addedObjects:
+        - created: 2024-03-19T23:18:53.732Z
+          targetValue: My New Governance Group Name
+          modified: 2024-03-19T23:18:53.732Z
+          jsonPath: $.name
+          sourceValue: My Governance Group Name
+          objectMappingId: 3d6e0144-963f-4bd6-8d8d-d77b4e507ce4
+          enabled: false
+          objectType: IDENTITY
+        - created: 2024-03-19T23:18:53.732Z
+          targetValue: My New Governance Group Name
+          modified: 2024-03-19T23:18:53.732Z
+          jsonPath: $.name
+          sourceValue: My Governance Group Name
+          objectMappingId: 3d6e0144-963f-4bd6-8d8d-d77b4e507ce4
+          enabled: false
+          objectType: IDENTITY
+      properties:
+        addedObjects:
+          items:
+            $ref: '#/components/schemas/ObjectMappingResponse'
+          type: array
+      title: Bulk Create Object Mapping Response
+      type: object
+    ObjectMappingBulkPatchRequest:
+      example:
+        patches:
+          "603b1a61-d03d-4ed1-864f-a508fbd1995d":
+          - op: replace
+            path: /enabled
+            value: true
+          "00bece34-f50d-4227-8878-76f620b5a971":
+          - op: replace
+            path: /targetValue
+            value: New Target Value
+      properties:
+        patches:
+          additionalProperties:
+            items:
+              $ref: '#/components/schemas/JsonPatchOperation'
+            type: array
+          description: Map of id of the object mapping to a JsonPatchOperation describing
+            what to patch on that object mapping.
+          example:
+            "603b1a61-d03d-4ed1-864f-a508fbd1995d":
+            - op: replace
+              path: /enabled
+              value: true
+            "00bece34-f50d-4227-8878-76f620b5a971":
+            - op: replace
+              path: /targetValue
+              value: New Target Value
+          type: object
+      required:
+      - patches
+      title: Bulk Update Object Mapping Request
+      type: object
+    ObjectMappingBulkPatchResponse:
+      example:
+        patchedObjects:
+        - created: 2024-03-19T23:18:53.732Z
+          targetValue: My New Governance Group Name
+          modified: 2024-03-19T23:18:53.732Z
+          jsonPath: $.name
+          sourceValue: My Governance Group Name
+          objectMappingId: 3d6e0144-963f-4bd6-8d8d-d77b4e507ce4
+          enabled: false
+          objectType: IDENTITY
+        - created: 2024-03-19T23:18:53.732Z
+          targetValue: My New Governance Group Name
+          modified: 2024-03-19T23:18:53.732Z
+          jsonPath: $.name
+          sourceValue: My Governance Group Name
+          objectMappingId: 3d6e0144-963f-4bd6-8d8d-d77b4e507ce4
+          enabled: false
+          objectType: IDENTITY
+      properties:
+        patchedObjects:
+          items:
+            $ref: '#/components/schemas/ObjectMappingResponse'
+          type: array
+      title: Bulk Update Object Mapping Response
       type: object
     ConnectorDetail:
       example:
