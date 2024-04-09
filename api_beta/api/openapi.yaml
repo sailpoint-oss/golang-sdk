@@ -321,8 +321,8 @@ tags:
 
     Refer to [Creating Custom Instruction Text](https://documentation.sailpoint.com/saas/help/pwd/pwd_reset.html#creating-custom-instruction-text) for more information about creating custom password instructions.
   name: Custom Password Instructions
-- description: "Use this API to retrieve all the available discovered apps for a given\
-    \ tenant id.      \n"
+- description: |
+    Use this API to retrieve all the available discovered apps for a given tenant id.
   name: Discovered Applications
 - description: |
     Use this API to implement and customize entitlement functionality.
@@ -881,6 +881,9 @@ tags:
   name: Source Usages
 - description: Import and export configuration for some objects between tenants.
   name: SP-Config
+- description: |
+    Use this API to leverage power of LLM to generate suggested entitlement description.
+  name: Suggested Entitlement Description
 - description: "Use this API to implement object tagging functionality. \nWith object\
     \ tagging functionality in place, any user in an organization can use tags as\
     \ a way to group objects together and find them more quickly when the user searches\
@@ -52568,6 +52571,764 @@ paths:
       summary: Update an icon
       tags:
       - Icons
+  /suggested-entitlement-description-batches/{batchId}/stats:
+    get:
+      description: |-
+        Submit Sed Batch Stats Request.
+        Submits batchId in the path param (e.g. {batchId}/stats). API responses with stats of the batchId.
+      operationId: getSedBatchStats
+      parameters:
+      - description: Batch Id
+        example: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
+        in: path
+        name: batchId
+        required: true
+        schema:
+          format: uuid
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SedBatchStats'
+          description: Stats of Sed batch.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:sed:read
+      summary: Submit Sed Batch Stats Request
+      tags:
+      - Suggested Entitlement Description
+  /suggested-entitlement-description-batches:
+    get:
+      description: |-
+        List Sed Batches.
+        API responses with Sed Batch Status
+      operationId: getSedBatches
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SedBatchStatus'
+          description: Status of batch
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:sed:read
+      summary: List Sed Batch Request
+      tags:
+      - Suggested Entitlement Description
+    post:
+      description: |-
+        Submit Sed Batch Request.
+        Request body has a list of entitlement Ids that user wants to have description generated by LLM. API responses with batchId that groups Ids together
+      operationId: submitSedBatchRequest
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/SedBatchRequest'
+        description: Sed Batch Request
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SedBatchResponse'
+          description: Sed Batch Response
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:sed:write
+      summary: Submit Sed Batch Request
+      tags:
+      - Suggested Entitlement Description
+  /suggested-entitlement-description-approvals:
+    post:
+      description: |-
+        Submit Bulk Approval Request for SED.
+        Request body takes list of SED Ids. API responses with list of SED Approval Status
+      operationId: submitSedApproval
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              items:
+                $ref: '#/components/schemas/SedApproval'
+              type: array
+        description: Sed Approval
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/SedApprovalStatus'
+                type: array
+          description: List of SED Approval Status
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:sed:write
+      summary: Submit Bulk Approval Request
+      tags:
+      - Suggested Entitlement Description
+  /suggested-entitlement-description-assignments:
+    post:
+      description: |-
+        Submit Assignment Request.
+        Request body has an assignee, and list of SED Ids that are assigned to that assignee API responses with batchId that groups all approval requests together
+      operationId: submitSedAssignment
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/SedAssignment'
+        description: Sed Assignment Request
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SedAssignmentResponse'
+          description: Sed Assignment Response
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:sed:write
+      summary: Submit Sed Assignment Request
+      tags:
+      - Suggested Entitlement Description
+  /suggested-entitlement-descriptions:
+    get:
+      description: List of Suggested Entitlement Description
+      operationId: listSeds
+      parameters:
+      - description: "Integer specifying the maximum number of records to return in\
+          \ a single API call. \nThe standard syntax described in [V3 API Standard\
+          \ Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results).\
+          \ If it is not specified, a default limit is used."
+        example: limit=0
+        in: query
+        name: limit
+        schema:
+          format: int64
+          type: integer
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **batchId**: *eq*
+
+          **status**: *eq, ne, in*
+
+          **displayName**: *eq, co*
+        example: displayName co "Read and Write"
+        in: query
+        name: filters
+        schema:
+          type: string
+      - description: "If `true` it will populate the `X-Total-Count` response header\
+          \ with the number of results that would be returned if `limit` and `offset`\
+          \ were ignored. \nThe standard syntax described in [V3 API Standard Collection\
+          \ Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results).\n\
+          Since requesting a total count can have a performance impact, it is recommended\
+          \ not to send `count=true` if that value will not be used."
+        example: count=true
+        in: query
+        name: count
+        schema:
+          type: boolean
+      - description: |-
+          If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored.
+          This parameter differs from the Coun parameter in that this one skip executing the actual query and always return an empty array.
+        example: count-only=true
+        in: query
+        name: count-only
+        schema:
+          type: boolean
+      - description: "By default, the ListSeds API will only return items that you\
+          \ have requested to be generated.  \nThis option will allow you to see all\
+          \ items that have been requested"
+        example: requested-by-anyone=true
+        in: query
+        name: requested-by-anyone
+        schema:
+          type: boolean
+      - description: Will limit records to items that are in "suggested" or "approved"
+          status
+        example: show-pending-status-only=true
+        in: query
+        name: show-pending-status-only
+        schema:
+          type: boolean
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Sed'
+                type: array
+          description: List of Suggested Entitlement Details
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:sed:read
+      summary: List Suggested Entitlement Description
+      tags:
+      - Suggested Entitlement Description
+    patch:
+      description: Patch Suggested Entitlement Description
+      operationId: patchSed
+      parameters:
+      - description: id is sed id
+        example: ebab396f-0af1-4050-89b7-dafc63ec70e7
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              items:
+                $ref: '#/components/schemas/SedPatch'
+              type: array
+        description: Sed Patch Request
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sed'
+          description: detail of patched sed
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:sed:write
+      summary: Patch Suggested Entitlement Description
+      tags:
+      - Suggested Entitlement Description
 components:
   examples:
     SlimCampaigns:
@@ -67609,6 +68370,241 @@ components:
         deletedBy:
           $ref: '#/components/schemas/VendorConnectorMapping_deletedBy'
       type: object
+    SedBatchStats:
+      description: Sed Batch Stats
+      example:
+        discoveredCount: 100
+        discoveryComplete: true
+        processedCount: 100
+        batchId: 016629d1-1d25-463f-97f3-0c6686846650
+        batchComplete: true
+      properties:
+        batchComplete:
+          default: false
+          description: batch complete
+          example: true
+          type: boolean
+        batchId:
+          description: batch Id
+          example: 016629d1-1d25-463f-97f3-0c6686846650
+          format: uuid
+          type: string
+        discoveredCount:
+          description: discovered count
+          example: 100
+          format: int64
+          type: integer
+        discoveryComplete:
+          default: false
+          description: discovery complete
+          example: true
+          type: boolean
+        processedCount:
+          description: processed count
+          example: 100
+          format: int64
+          type: integer
+      type: object
+    SedBatchStatus:
+      description: Sed Batch Status
+      example:
+        status: OK
+      properties:
+        status:
+          description: status of batch
+          example: OK
+          type: string
+      type: object
+    SedBatchRequest:
+      description: Sed Batch Request
+      example:
+        entitlements:
+        - 016629d1-1d25-463f-97f3-c6686846650
+        - 016629d1-1d25-463f-97f3-c6686846650
+      properties:
+        entitlements:
+          description: list of entitlement ids
+          items:
+            example: 016629d1-1d25-463f-97f3-c6686846650
+            type: string
+          type: array
+      type: object
+    SedBatchResponse:
+      description: Sed Batch Response
+      example:
+        batchId: 016629d1-1d25-463f-97f3-0c6686846650
+      properties:
+        batchId:
+          description: BatchId that groups all the ids together
+          example: 016629d1-1d25-463f-97f3-0c6686846650
+          format: uuid
+          type: string
+      type: object
+    SedApproval:
+      description: Sed Approval Request Body
+      example:
+        items: 016629d1-1d25-463f-97f3-c6686846650
+      properties:
+        items:
+          description: List of SED id's
+          example: 016629d1-1d25-463f-97f3-c6686846650
+          items:
+            format: uuid
+            type: string
+          type: array
+      type: object
+    SedApprovalStatus:
+      description: SED Approval Status
+      example:
+        id: 016629d1-1d25-463f-97f3-0c6686846650
+        failedReason: invalid status
+        status: SUCCESS
+      properties:
+        failedReason:
+          description: failed reason will be display if status is failed
+          example: invalid status
+          type: string
+        id:
+          description: Sed id
+          example: 016629d1-1d25-463f-97f3-0c6686846650
+          format: uuid
+          type: string
+        status:
+          description: SUCCESS | FAILED
+          example: SUCCESS
+          type: string
+      type: object
+    SedAssignment:
+      description: Sed Assignment
+      example:
+        assignee:
+          type: SOURCE_OWNER
+          value: 016629d1-1d25-463f-97f3-c6686846650
+        items:
+        - 016629d1-1d25-463f-97f3-0c6686846650
+        - 016629d1-1d25-463f-97f3-0c6686846650
+      properties:
+        assignee:
+          $ref: '#/components/schemas/SedAssignee'
+        items:
+          description: List of SED id's
+          items:
+            example: 016629d1-1d25-463f-97f3-0c6686846650
+            format: uuid
+            type: string
+          type: array
+      type: object
+    SedAssignmentResponse:
+      description: Sed Assignment Response
+      example:
+        batchId: 016629d1-1d25-463f-97f3-0c6686846650
+      properties:
+        batchId:
+          description: BatchId that groups all the ids together
+          example: 016629d1-1d25-463f-97f3-0c6686846650
+          format: uuid
+          type: string
+      type: object
+    Sed:
+      description: Suggested Entitlement Description
+      example:
+        approved_type: admin
+        sourceId: 103f567b93ee49b991c40f9412f87643
+        approved_when: 2000-01-23T04:56:07.000+00:00
+        displayName: AWS-Cloud-Billing
+        description: This entitlement allows automated processing of invoices in batches
+          on a scheduled basis to streamline accounts payable procedures.
+        type: group
+        Name: BatchInvoiceProcessing
+        approved_by: 2c918086-76de-afbf-0176-f6d28f65565a
+        suggestedDescription: This entitlement allows automated processing of invoices
+          in batches on a scheduled basis to streamline accounts payable
+        attribute: Role
+        id: ead281ee-12a9-40ac-9534-36b5d7d65d53
+        sourceName: IDN Salesforce
+        value: group
+        status: suggested
+      properties:
+        Name:
+          description: name of the entitlement
+          example: BatchInvoiceProcessing
+          type: string
+        approved_by:
+          description: entitlement approved by
+          example: 2c918086-76de-afbf-0176-f6d28f65565a
+          type: string
+        approved_type:
+          description: entitlement approved type
+          example: admin
+          type: string
+        approved_when:
+          description: entitlement approved then
+          format: date-time
+          type: string
+        attribute:
+          description: entitlement attribute
+          example: Role
+          type: string
+        description:
+          description: description of entitlement
+          example: This entitlement allows automated processing of invoices in batches
+            on a scheduled basis to streamline accounts payable procedures.
+          type: string
+        displayName:
+          description: entitlement display name
+          example: AWS-Cloud-Billing
+          type: string
+        id:
+          description: sed id
+          example: ead281ee-12a9-40ac-9534-36b5d7d65d53
+          format: uuid
+          type: string
+        sourceId:
+          description: entitlement source id
+          example: 103f567b93ee49b991c40f9412f87643
+          type: string
+        sourceName:
+          description: entitlement source name
+          example: IDN Salesforce
+          type: string
+        status:
+          description: entitlement status
+          example: suggested
+          type: string
+        suggestedDescription:
+          description: llm suggested entitlement description
+          example: This entitlement allows automated processing of invoices in batches
+            on a scheduled basis to streamline accounts payable
+          type: string
+        type:
+          description: entitlement type
+          example: group
+          type: string
+        value:
+          description: entitlement value
+          example: group
+          type: string
+      type: object
+    SedPatch:
+      description: Patch for Suggested Entitlement Description
+      example:
+        op: replace
+        path: status
+        value: approved
+      properties:
+        op:
+          description: desired operation
+          example: replace
+          type: string
+        path:
+          description: field to be patched
+          example: status
+          type: string
+        value:
+          description: value to replace with
+          example: approved
+          type: object
+      type: object
     ApprovalItemDetails:
       example:
         application: Active Directory
@@ -73260,6 +74256,36 @@ components:
       example: IDENTITY
       type: string
       x-go-package: github.com/sailpoint/sp-forms/domain
+    SedAssignee:
+      description: Sed Assignee
+      example:
+        type: SOURCE_OWNER
+        value: 016629d1-1d25-463f-97f3-c6686846650
+      properties:
+        type:
+          description: |-
+            Type of assignment
+            When value is PERSONA, the value MUST be SOURCE_OWNER or ENTITLEMENT_OWNER
+            IDENTITY SED_ASSIGNEE_IDENTITY_TYPE
+            GROUP SED_ASSIGNEE_GROUP_TYPE
+            SOURCE_OWNER SED_ASSIGNEE_SOURCE_OWNER_TYPE
+            ENTITLEMENT_OWNER SED_ASSIGNEE_ENTITLEMENT_OWNER_TYPE
+          enum:
+          - IDENTITY
+          - GROUP
+          - SOURCE_OWNER
+          - ENTITLEMENT_OWNER
+          example: SOURCE_OWNER
+          type: string
+        value:
+          description: |-
+            Identity or Group identifier
+            Empty when using source/entitlement owner personas
+          example: 016629d1-1d25-463f-97f3-c6686846650
+          type: string
+      required:
+      - type
+      type: object
     AccessItemRef:
       example:
         id: 2c938083633d259901633d2623ec0375

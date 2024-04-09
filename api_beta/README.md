@@ -486,6 +486,13 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**UpdateSource**](docs/SourcesAPI.md#updatesource) | **Patch** /sources/{id} | Update Source (Partial)
 *SourcesAPI* | [**UpdateSourceEntitlementRequestConfig**](docs/SourcesAPI.md#updatesourceentitlementrequestconfig) | **Put** /sources/{id}/entitlement-request-config | Update Source Entitlement Request Configuration
 *SourcesAPI* | [**UpdateSourceSchema**](docs/SourcesAPI.md#updatesourceschema) | **Patch** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Partial)
+*SuggestedEntitlementDescriptionAPI* | [**GetSedBatchStats**](docs/SuggestedEntitlementDescriptionAPI.md#getsedbatchstats) | **Get** /suggested-entitlement-description-batches/{batchId}/stats | Submit Sed Batch Stats Request
+*SuggestedEntitlementDescriptionAPI* | [**GetSedBatches**](docs/SuggestedEntitlementDescriptionAPI.md#getsedbatches) | **Get** /suggested-entitlement-description-batches | List Sed Batch Request
+*SuggestedEntitlementDescriptionAPI* | [**ListSeds**](docs/SuggestedEntitlementDescriptionAPI.md#listseds) | **Get** /suggested-entitlement-descriptions | List Suggested Entitlement Description
+*SuggestedEntitlementDescriptionAPI* | [**PatchSed**](docs/SuggestedEntitlementDescriptionAPI.md#patchsed) | **Patch** /suggested-entitlement-descriptions | Patch Suggested Entitlement Description
+*SuggestedEntitlementDescriptionAPI* | [**SubmitSedApproval**](docs/SuggestedEntitlementDescriptionAPI.md#submitsedapproval) | **Post** /suggested-entitlement-description-approvals | Submit Bulk Approval Request
+*SuggestedEntitlementDescriptionAPI* | [**SubmitSedAssignment**](docs/SuggestedEntitlementDescriptionAPI.md#submitsedassignment) | **Post** /suggested-entitlement-description-assignments | Submit Sed Assignment Request
+*SuggestedEntitlementDescriptionAPI* | [**SubmitSedBatchRequest**](docs/SuggestedEntitlementDescriptionAPI.md#submitsedbatchrequest) | **Post** /suggested-entitlement-description-batches | Submit Sed Batch Request
 *TaggedObjectsAPI* | [**DeleteTaggedObject**](docs/TaggedObjectsAPI.md#deletetaggedobject) | **Delete** /tagged-objects/{type}/{id} | Delete Tagged Object
 *TaggedObjectsAPI* | [**DeleteTagsToManyObject**](docs/TaggedObjectsAPI.md#deletetagstomanyobject) | **Post** /tagged-objects/bulk-remove | Remove Tags from Multiple Objects
 *TaggedObjectsAPI* | [**GetTaggedObject**](docs/TaggedObjectsAPI.md#gettaggedobject) | **Get** /tagged-objects/{type}/{id} | Get Tagged Object
@@ -1170,6 +1177,17 @@ Class | Method | HTTP request | Description
  - [SearchFormDefinitionsByTenant400Response](docs/SearchFormDefinitionsByTenant400Response.md)
  - [Section](docs/Section.md)
  - [SectionDetails](docs/SectionDetails.md)
+ - [Sed](docs/Sed.md)
+ - [SedApproval](docs/SedApproval.md)
+ - [SedApprovalStatus](docs/SedApprovalStatus.md)
+ - [SedAssignee](docs/SedAssignee.md)
+ - [SedAssignment](docs/SedAssignment.md)
+ - [SedAssignmentResponse](docs/SedAssignmentResponse.md)
+ - [SedBatchRequest](docs/SedBatchRequest.md)
+ - [SedBatchResponse](docs/SedBatchResponse.md)
+ - [SedBatchStats](docs/SedBatchStats.md)
+ - [SedBatchStatus](docs/SedBatchStatus.md)
+ - [SedPatch](docs/SedPatch.md)
  - [Segment](docs/Segment.md)
  - [Selector](docs/Selector.md)
  - [SelectorType](docs/SelectorType.md)

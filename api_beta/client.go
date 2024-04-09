@@ -168,6 +168,8 @@ type APIClient struct {
 
 	SourcesAPI *SourcesAPIService
 
+	SuggestedEntitlementDescriptionAPI *SuggestedEntitlementDescriptionAPIService
+
 	TaggedObjectsAPI *TaggedObjectsAPIService
 
 	TaskManagementAPI *TaskManagementAPIService
@@ -261,6 +263,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ServiceDeskIntegrationAPI = (*ServiceDeskIntegrationAPIService)(&c.common)
 	c.SourceUsagesAPI = (*SourceUsagesAPIService)(&c.common)
 	c.SourcesAPI = (*SourcesAPIService)(&c.common)
+	c.SuggestedEntitlementDescriptionAPI = (*SuggestedEntitlementDescriptionAPIService)(&c.common)
 	c.TaggedObjectsAPI = (*TaggedObjectsAPIService)(&c.common)
 	c.TaskManagementAPI = (*TaskManagementAPIService)(&c.common)
 	c.TenantAPI = (*TenantAPIService)(&c.common)
