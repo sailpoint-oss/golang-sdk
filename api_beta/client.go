@@ -68,6 +68,8 @@ type APIClient struct {
 
 	AccountsAPI *AccountsAPIService
 
+	ApprovalsAPI *ApprovalsAPIService
+
 	AuthProfileAPI *AuthProfileAPIService
 
 	CertificationCampaignsAPI *CertificationCampaignsAPIService
@@ -213,6 +215,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AccountAggregationsAPI = (*AccountAggregationsAPIService)(&c.common)
 	c.AccountUsagesAPI = (*AccountUsagesAPIService)(&c.common)
 	c.AccountsAPI = (*AccountsAPIService)(&c.common)
+	c.ApprovalsAPI = (*ApprovalsAPIService)(&c.common)
 	c.AuthProfileAPI = (*AuthProfileAPIService)(&c.common)
 	c.CertificationCampaignsAPI = (*CertificationCampaignsAPIService)(&c.common)
 	c.CertificationsAPI = (*CertificationsAPIService)(&c.common)
