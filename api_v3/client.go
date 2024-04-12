@@ -64,7 +64,7 @@ type APIClient struct {
 
 	AccountsAPI *AccountsAPIService
 
-	AuthUserAPI *AuthUserAPIService
+	AuthUsersAPI *AuthUsersAPIService
 
 	BrandingAPI *BrandingAPIService
 
@@ -109,6 +109,8 @@ type APIClient struct {
 	RequestableObjectsAPI *RequestableObjectsAPIService
 
 	RolesAPI *RolesAPIService
+
+	SODPoliciesAPI *SODPoliciesAPIService
 
 	SODPolicyAPI *SODPolicyAPIService
 
@@ -159,7 +161,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AccountActivitiesAPI = (*AccountActivitiesAPIService)(&c.common)
 	c.AccountUsagesAPI = (*AccountUsagesAPIService)(&c.common)
 	c.AccountsAPI = (*AccountsAPIService)(&c.common)
-	c.AuthUserAPI = (*AuthUserAPIService)(&c.common)
+	c.AuthUsersAPI = (*AuthUsersAPIService)(&c.common)
 	c.BrandingAPI = (*BrandingAPIService)(&c.common)
 	c.CertificationCampaignFiltersAPI = (*CertificationCampaignFiltersAPIService)(&c.common)
 	c.CertificationCampaignsAPI = (*CertificationCampaignsAPIService)(&c.common)
@@ -182,6 +184,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ReportsDataExtractionAPI = (*ReportsDataExtractionAPIService)(&c.common)
 	c.RequestableObjectsAPI = (*RequestableObjectsAPIService)(&c.common)
 	c.RolesAPI = (*RolesAPIService)(&c.common)
+	c.SODPoliciesAPI = (*SODPoliciesAPIService)(&c.common)
 	c.SODPolicyAPI = (*SODPolicyAPIService)(&c.common)
 	c.SODViolationsAPI = (*SODViolationsAPIService)(&c.common)
 	c.SavedSearchAPI = (*SavedSearchAPIService)(&c.common)

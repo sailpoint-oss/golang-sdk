@@ -1,7 +1,7 @@
 /*
 Identity Security Cloud V3 API
 
-Testing AuthUserAPIService
+Testing AuthUsersAPIService
 
 */
 
@@ -17,18 +17,18 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
-func Test_api_v3_AuthUserAPIService(t *testing.T) {
+func Test_api_v3_AuthUsersAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test AuthUserAPIService GetAuthUser", func(t *testing.T) {
+	t.Run("Test AuthUsersAPIService GetAuthUser", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.AuthUserAPI.GetAuthUser(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.API_V3.AuthUsersAPI.GetAuthUser(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -36,13 +36,13 @@ func Test_api_v3_AuthUserAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AuthUserAPIService PatchAuthUser", func(t *testing.T) {
+	t.Run("Test AuthUsersAPIService PatchAuthUser", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.AuthUserAPI.PatchAuthUser(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.API_V3.AuthUsersAPI.PatchAuthUser(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

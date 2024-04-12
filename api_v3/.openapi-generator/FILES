@@ -9,7 +9,7 @@ api_access_requests.go
 api_account_activities.go
 api_account_usages.go
 api_accounts.go
-api_auth_user.go
+api_auth_users.go
 api_branding.go
 api_certification_campaign_filters.go
 api_certification_campaigns.go
@@ -37,6 +37,7 @@ api_scheduled_search.go
 api_search.go
 api_segments.go
 api_service_desk_integration.go
+api_sod_policies.go
 api_sod_policy.go
 api_sod_violations.go
 api_source_usages.go
@@ -130,7 +131,7 @@ docs/AttributeDefinitionSchema.md
 docs/AttributeDefinitionType.md
 docs/AttributeRequest.md
 docs/AuthUser.md
-docs/AuthUserAPI.md
+docs/AuthUsersAPI.md
 docs/BaseAccess.md
 docs/BaseAccessAllOfOwner.md
 docs/BaseAccessProfile.md
@@ -440,6 +441,7 @@ docs/RoleMembershipSelector.md
 docs/RoleMembershipSelectorType.md
 docs/RoleSummary.md
 docs/RolesAPI.md
+docs/SODPoliciesAPI.md
 docs/SODPolicyAPI.md
 docs/SODViolationsAPI.md
 docs/SavedSearch.md
@@ -1063,7 +1065,7 @@ test/api_access_requests_test.go
 test/api_account_activities_test.go
 test/api_account_usages_test.go
 test/api_accounts_test.go
-test/api_auth_user_test.go
+test/api_auth_users_test.go
 test/api_branding_test.go
 test/api_certification_campaign_filters_test.go
 test/api_certification_campaigns_test.go
@@ -1091,6 +1093,7 @@ test/api_scheduled_search_test.go
 test/api_search_test.go
 test/api_segments_test.go
 test/api_service_desk_integration_test.go
+test/api_sod_policies_test.go
 test/api_sod_policy_test.go
 test/api_sod_violations_test.go
 test/api_source_usages_test.go

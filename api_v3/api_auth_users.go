@@ -20,12 +20,12 @@ import (
 )
 
 
-// AuthUserAPIService AuthUserAPI service
-type AuthUserAPIService service
+// AuthUsersAPIService AuthUsersAPI service
+type AuthUsersAPIService service
 
 type ApiGetAuthUserRequest struct {
 	ctx context.Context
-	ApiService *AuthUserAPIService
+	ApiService *AuthUsersAPIService
 	id string
 }
 
@@ -42,7 +42,7 @@ Return the specified user's authentication system details.
  @param id Identity ID
  @return ApiGetAuthUserRequest
 */
-func (a *AuthUserAPIService) GetAuthUser(ctx context.Context, id string) ApiGetAuthUserRequest {
+func (a *AuthUsersAPIService) GetAuthUser(ctx context.Context, id string) ApiGetAuthUserRequest {
 	return ApiGetAuthUserRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -52,7 +52,7 @@ func (a *AuthUserAPIService) GetAuthUser(ctx context.Context, id string) ApiGetA
 
 // Execute executes the request
 //  @return AuthUser
-func (a *AuthUserAPIService) GetAuthUserExecute(r ApiGetAuthUserRequest) (*AuthUser, *http.Response, error) {
+func (a *AuthUsersAPIService) GetAuthUserExecute(r ApiGetAuthUserRequest) (*AuthUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -60,7 +60,7 @@ func (a *AuthUserAPIService) GetAuthUserExecute(r ApiGetAuthUserRequest) (*AuthU
 		localVarReturnValue  *AuthUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthUserAPIService.GetAuthUser")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthUsersAPIService.GetAuthUser")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -193,7 +193,7 @@ func (a *AuthUserAPIService) GetAuthUserExecute(r ApiGetAuthUserRequest) (*AuthU
 
 type ApiPatchAuthUserRequest struct {
 	ctx context.Context
-	ApiService *AuthUserAPIService
+	ApiService *AuthUsersAPIService
 	id string
 	jsonPatchOperation *[]JsonPatchOperation
 }
@@ -221,7 +221,7 @@ A '400.1.1 Illegal update attempt' detail code indicates that you attempted to P
  @param id Identity ID
  @return ApiPatchAuthUserRequest
 */
-func (a *AuthUserAPIService) PatchAuthUser(ctx context.Context, id string) ApiPatchAuthUserRequest {
+func (a *AuthUsersAPIService) PatchAuthUser(ctx context.Context, id string) ApiPatchAuthUserRequest {
 	return ApiPatchAuthUserRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -231,7 +231,7 @@ func (a *AuthUserAPIService) PatchAuthUser(ctx context.Context, id string) ApiPa
 
 // Execute executes the request
 //  @return AuthUser
-func (a *AuthUserAPIService) PatchAuthUserExecute(r ApiPatchAuthUserRequest) (*AuthUser, *http.Response, error) {
+func (a *AuthUsersAPIService) PatchAuthUserExecute(r ApiPatchAuthUserRequest) (*AuthUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -239,7 +239,7 @@ func (a *AuthUserAPIService) PatchAuthUserExecute(r ApiPatchAuthUserRequest) (*A
 		localVarReturnValue  *AuthUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthUserAPIService.PatchAuthUser")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthUsersAPIService.PatchAuthUser")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

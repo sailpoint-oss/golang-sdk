@@ -1576,12 +1576,20 @@ paths:
       - Access Profiles
   /access-profiles/bulk-delete:
     post:
-      description: |-
-        This API initiates a bulk deletion of one or more Access Profiles.
-
-        By default, if any of the indicated Access Profiles are in use, no deletions will be performed and the **inUse** field of the response indicates the usages that must be removed first. If the request field **bestEffortOnly** is **true**, however, usages are reported in the **inUse** response field but all other indicated Access Profiles will be deleted.
-
-        A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. In addition, a SOURCE_SUBADMIN may only use this API to delete Access Profiles which are associated with Sources they are able to administer.
+      description: "This endpoint initiates a bulk deletion of one or more access\
+        \ profiles.\nWhen the request is successful, the endpoint returns the bulk\
+        \ delete's task result ID.  To follow the task, you can use [Get Task Status\
+        \ by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status), which\
+        \ will return the task result's status and information. \nThis endpoint can\
+        \ only bulk delete up to a limit of 50 access profiles per request. \nBy default,\
+        \ if any of the indicated access profiles are in use, no deletions will be\
+        \ performed and the **inUse** field of the response indicates the usages that\
+        \ must be removed first. If the request field **bestEffortOnly** is **true**,\
+        \ however, usages are reported in the **inUse** response field but all other\
+        \ indicated access profiles will be deleted.\nA token with API, ORG_ADMIN,\
+        \ SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this endpoint.\
+        \ In addition, a SOURCE_SUBADMIN can only use this endpoint to delete access\
+        \ profiles associated with sources they're able to administer."
       operationId: deleteAccessProfilesInBulk
       requestBody:
         content:
@@ -32786,11 +32794,16 @@ paths:
       - Roles
   /roles/bulk-delete:
     post:
-      description: |-
-        This API initiates a bulk deletion of one or more Roles.
-
-        A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Roles included in the request are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
-      operationId: bulkDeleteRoles
+      description: "This endpoint initiates a bulk deletion of one or more roles.\n\
+        When the request is successful, the endpoint returns the bulk delete's task\
+        \ result ID.  To follow the task, you can use [Get Task Status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status),\
+        \ which will return the task result's status and information. \nThis endpoint\
+        \ can only bulk delete up to a limit of 50 roles per request. \nA token with\
+        \ API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call\
+        \ this endpoint. In addition, a token with ROLE_SUBADMIN authority can only\
+        \ call this endpoint if all roles included in the request are associated with\
+        \ sources with management workgroups the ROLE_SUBADMIN is a member of."
+      operationId: deleteBulkRoles
       requestBody:
         content:
           application/json:
@@ -44090,7 +44103,7 @@ paths:
         - idn:sod-policy:read
       summary: List SOD policies
       tags:
-      - SOD Policy
+      - SOD Policies
     post:
       deprecated: true
       description: |-
@@ -44301,7 +44314,7 @@ paths:
         - idn:sod-policy:write
       summary: Create SOD policy
       tags:
-      - SOD Policy
+      - SOD Policies
   /sod-policies/{id}:
     delete:
       deprecated: true
@@ -44408,7 +44421,7 @@ paths:
         - idn:sod-policy:write
       summary: Delete SOD policy by ID
       tags:
-      - SOD Policy
+      - SOD Policies
     get:
       deprecated: true
       description: |-
@@ -44579,7 +44592,7 @@ paths:
         - idn:sod-policy:read
       summary: Get SOD policy by ID
       tags:
-      - SOD Policy
+      - SOD Policies
     patch:
       deprecated: true
       description: |-
@@ -44794,7 +44807,7 @@ paths:
         - idn:sod-policy:write
       summary: Patch a SOD policy
       tags:
-      - SOD Policy
+      - SOD Policies
     put:
       deprecated: true
       description: |-
@@ -45039,7 +45052,7 @@ paths:
         - idn:sod-policy:write
       summary: Update SOD policy by ID
       tags:
-      - SOD Policy
+      - SOD Policies
   /sod-policies/{id}/schedule:
     delete:
       deprecated: true
@@ -45137,7 +45150,7 @@ paths:
         - idn:sod-policy:write
       summary: Delete SOD policy schedule
       tags:
-      - SOD Policy
+      - SOD Policies
     get:
       deprecated: true
       description: |-
@@ -45220,7 +45233,7 @@ paths:
         - idn:sod-policy:read
       summary: Get SOD policy schedule
       tags:
-      - SOD Policy
+      - SOD Policies
     put:
       deprecated: true
       description: |-
@@ -45309,7 +45322,7 @@ paths:
         - idn:sod-policy:write
       summary: Update SOD Policy schedule
       tags:
-      - SOD Policy
+      - SOD Policies
   /sod-policies/{id}/violation-report/run:
     post:
       deprecated: true
@@ -45416,7 +45429,7 @@ paths:
         - idn:sod-violation:write
       summary: Runs SOD policy violation report
       tags:
-      - SOD Policy
+      - SOD Policies
   /sod-policies/{id}/violation-report:
     get:
       deprecated: true
@@ -45523,7 +45536,7 @@ paths:
         - idn:sod-violation:read
       summary: Get SOD violation report status
       tags:
-      - SOD Policy
+      - SOD Policies
   /sod-violations/predict:
     post:
       deprecated: true

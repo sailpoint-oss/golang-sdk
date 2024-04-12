@@ -398,30 +398,30 @@ Class | Method | HTTP request | Description
 *RoleInsightsAPI* | [**GetRoleInsightsEntitlementsChanges**](docs/RoleInsightsAPI.md#getroleinsightsentitlementschanges) | **Get** /role-insights/{insightId}/entitlement-changes | Get entitlement insights for a role
 *RoleInsightsAPI* | [**GetRoleInsightsRequests**](docs/RoleInsightsAPI.md#getroleinsightsrequests) | **Get** /role-insights/requests/{id} | Returns metadata from prior request.
 *RoleInsightsAPI* | [**GetRoleInsightsSummary**](docs/RoleInsightsAPI.md#getroleinsightssummary) | **Get** /role-insights/summary | Get role insights summary information
-*RolesAPI* | [**BulkDeleteRoles**](docs/RolesAPI.md#bulkdeleteroles) | **Post** /roles/bulk-delete | Delete Role(s)
 *RolesAPI* | [**CreateRole**](docs/RolesAPI.md#createrole) | **Post** /roles | Create a Role
+*RolesAPI* | [**DeleteBulkRoles**](docs/RolesAPI.md#deletebulkroles) | **Post** /roles/bulk-delete | Delete Role(s)
 *RolesAPI* | [**DeleteRole**](docs/RolesAPI.md#deleterole) | **Delete** /roles/{id} | Delete a Role
 *RolesAPI* | [**GetRole**](docs/RolesAPI.md#getrole) | **Get** /roles/{id} | Get a Role
 *RolesAPI* | [**GetRoleAssignedIdentities**](docs/RolesAPI.md#getroleassignedidentities) | **Get** /roles/{id}/assigned-identities | Identities assigned a Role
 *RolesAPI* | [**GetRoleEntitlements**](docs/RolesAPI.md#getroleentitlements) | **Get** /roles/{id}/entitlements | List role&#39;s Entitlements
 *RolesAPI* | [**ListRoles**](docs/RolesAPI.md#listroles) | **Get** /roles | List Roles
 *RolesAPI* | [**PatchRole**](docs/RolesAPI.md#patchrole) | **Patch** /roles/{id} | Patch a specified Role
-*SODPolicyAPI* | [**CreateSodPolicy**](docs/SODPolicyAPI.md#createsodpolicy) | **Post** /sod-policies | Create SOD policy
-*SODPolicyAPI* | [**DeleteSodPolicy**](docs/SODPolicyAPI.md#deletesodpolicy) | **Delete** /sod-policies/{id} | Delete SOD policy by ID
-*SODPolicyAPI* | [**DeleteSodPolicySchedule**](docs/SODPolicyAPI.md#deletesodpolicyschedule) | **Delete** /sod-policies/{id}/schedule | Delete SOD policy schedule
+*SODPoliciesAPI* | [**CreateSodPolicy**](docs/SODPoliciesAPI.md#createsodpolicy) | **Post** /sod-policies | Create SOD policy
+*SODPoliciesAPI* | [**DeleteSodPolicy**](docs/SODPoliciesAPI.md#deletesodpolicy) | **Delete** /sod-policies/{id} | Delete SOD policy by ID
+*SODPoliciesAPI* | [**DeleteSodPolicySchedule**](docs/SODPoliciesAPI.md#deletesodpolicyschedule) | **Delete** /sod-policies/{id}/schedule | Delete SOD policy schedule
+*SODPoliciesAPI* | [**GetSodPolicy**](docs/SODPoliciesAPI.md#getsodpolicy) | **Get** /sod-policies/{id} | Get SOD policy by ID
+*SODPoliciesAPI* | [**GetSodPolicySchedule**](docs/SODPoliciesAPI.md#getsodpolicyschedule) | **Get** /sod-policies/{id}/schedule | Get SOD policy schedule
+*SODPoliciesAPI* | [**GetSodViolationReportStatus**](docs/SODPoliciesAPI.md#getsodviolationreportstatus) | **Get** /sod-policies/{id}/violation-report | Get SOD violation report status
+*SODPoliciesAPI* | [**ListSodPolicies**](docs/SODPoliciesAPI.md#listsodpolicies) | **Get** /sod-policies | List SOD policies
+*SODPoliciesAPI* | [**PatchSodPolicy**](docs/SODPoliciesAPI.md#patchsodpolicy) | **Patch** /sod-policies/{id} | Patch a SOD policy
+*SODPoliciesAPI* | [**PutPolicySchedule**](docs/SODPoliciesAPI.md#putpolicyschedule) | **Put** /sod-policies/{id}/schedule | Update SOD Policy schedule
+*SODPoliciesAPI* | [**PutSodPolicy**](docs/SODPoliciesAPI.md#putsodpolicy) | **Put** /sod-policies/{id} | Update SOD policy by ID
+*SODPoliciesAPI* | [**StartSodPolicy**](docs/SODPoliciesAPI.md#startsodpolicy) | **Post** /sod-policies/{id}/violation-report/run | Runs SOD policy violation report
 *SODPolicyAPI* | [**GetCustomViolationReport**](docs/SODPolicyAPI.md#getcustomviolationreport) | **Get** /sod-violation-report/{reportResultId}/download/{fileName} | Download custom violation report
 *SODPolicyAPI* | [**GetDefaultViolationReport**](docs/SODPolicyAPI.md#getdefaultviolationreport) | **Get** /sod-violation-report/{reportResultId}/download | Download violation report
 *SODPolicyAPI* | [**GetSodAllReportRunStatus**](docs/SODPolicyAPI.md#getsodallreportrunstatus) | **Get** /sod-violation-report | Get multi-report run task status
-*SODPolicyAPI* | [**GetSodPolicy**](docs/SODPolicyAPI.md#getsodpolicy) | **Get** /sod-policies/{id} | Get SOD policy by ID
-*SODPolicyAPI* | [**GetSodPolicySchedule**](docs/SODPolicyAPI.md#getsodpolicyschedule) | **Get** /sod-policies/{id}/schedule | Get SOD policy schedule
 *SODPolicyAPI* | [**GetSodViolationReportRunStatus**](docs/SODPolicyAPI.md#getsodviolationreportrunstatus) | **Get** /sod-policies/sod-violation-report-status/{reportResultId} | Get violation report run status
-*SODPolicyAPI* | [**GetSodViolationReportStatus**](docs/SODPolicyAPI.md#getsodviolationreportstatus) | **Get** /sod-policies/{id}/violation-report | Get SOD violation report status
-*SODPolicyAPI* | [**ListSodPolicies**](docs/SODPolicyAPI.md#listsodpolicies) | **Get** /sod-policies | List SOD policies
-*SODPolicyAPI* | [**PatchSodPolicy**](docs/SODPolicyAPI.md#patchsodpolicy) | **Patch** /sod-policies/{id} | Patch a SOD policy
-*SODPolicyAPI* | [**PutPolicySchedule**](docs/SODPolicyAPI.md#putpolicyschedule) | **Put** /sod-policies/{id}/schedule | Update SOD Policy schedule
-*SODPolicyAPI* | [**PutSodPolicy**](docs/SODPolicyAPI.md#putsodpolicy) | **Put** /sod-policies/{id} | Update SOD policy by ID
 *SODPolicyAPI* | [**StartSodAllPoliciesForOrg**](docs/SODPolicyAPI.md#startsodallpoliciesfororg) | **Post** /sod-violation-report/run | Runs all policies for org
-*SODPolicyAPI* | [**StartSodPolicy**](docs/SODPolicyAPI.md#startsodpolicy) | **Post** /sod-policies/{id}/violation-report/run | Runs SOD policy violation report
 *SODViolationsAPI* | [**StartPredictSodViolations**](docs/SODViolationsAPI.md#startpredictsodviolations) | **Post** /sod-violations/predict | Predict SOD violations for identity.
 *SPConfigAPI* | [**ExportSpConfig**](docs/SPConfigAPI.md#exportspconfig) | **Post** /sp-config/export | Initiates configuration objects export job
 *SPConfigAPI* | [**GetSpConfigExport**](docs/SPConfigAPI.md#getspconfigexport) | **Get** /sp-config/export/{id}/download | Download export job result.

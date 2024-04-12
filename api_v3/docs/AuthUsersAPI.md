@@ -1,11 +1,11 @@
-# \AuthUserAPI
+# \AuthUsersAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetAuthUser**](AuthUserAPI.md#GetAuthUser) | **Get** /auth-users/{id} | Auth User Details
-[**PatchAuthUser**](AuthUserAPI.md#PatchAuthUser) | **Patch** /auth-users/{id} | Auth User Update
+[**GetAuthUser**](AuthUsersAPI.md#GetAuthUser) | **Get** /auth-users/{id} | Auth User Details
+[**PatchAuthUser**](AuthUsersAPI.md#PatchAuthUser) | **Patch** /auth-users/{id} | Auth User Update
 
 
 
@@ -34,13 +34,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthUserAPI.GetAuthUser(context.Background(), id).Execute()
+    resp, r, err := apiClient.AuthUsersAPI.GetAuthUser(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthUserAPI.GetAuthUser``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthUsersAPI.GetAuthUser``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetAuthUser`: AuthUser
-    fmt.Fprintf(os.Stdout, "Response from `AuthUserAPI.GetAuthUser`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AuthUsersAPI.GetAuthUser`: %v\n", resp)
 }
 ```
 
@@ -105,13 +105,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthUserAPI.PatchAuthUser(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+    resp, r, err := apiClient.AuthUsersAPI.PatchAuthUser(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthUserAPI.PatchAuthUser``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthUsersAPI.PatchAuthUser``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PatchAuthUser`: AuthUser
-    fmt.Fprintf(os.Stdout, "Response from `AuthUserAPI.PatchAuthUser`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AuthUsersAPI.PatchAuthUser`: %v\n", resp)
 }
 ```
 
