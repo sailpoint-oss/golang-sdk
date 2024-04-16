@@ -1,7 +1,7 @@
 /*
-IdentityNow Beta API
+Identity Security Cloud Beta API
 
-Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -41,6 +41,8 @@ Get managed cluster's log configuration.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of ManagedCluster to get log configuration for
  @return ApiGetClientLogConfigurationRequest
+
+Deprecated
 */
 func (a *ManagedClustersAPIService) GetClientLogConfiguration(ctx context.Context, id string) ApiGetClientLogConfigurationRequest {
 	return ApiGetClientLogConfigurationRequest{
@@ -52,6 +54,7 @@ func (a *ManagedClustersAPIService) GetClientLogConfiguration(ctx context.Contex
 
 // Execute executes the request
 //  @return ClientLogConfiguration
+// Deprecated
 func (a *ManagedClustersAPIService) GetClientLogConfigurationExecute(r ApiGetClientLogConfigurationRequest) (*ClientLogConfiguration, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -209,6 +212,8 @@ Retrieve a ManagedCluster by ID.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the ManagedCluster to get
  @return ApiGetManagedClusterRequest
+
+Deprecated
 */
 func (a *ManagedClustersAPIService) GetManagedCluster(ctx context.Context, id string) ApiGetManagedClusterRequest {
 	return ApiGetManagedClusterRequest{
@@ -220,6 +225,7 @@ func (a *ManagedClustersAPIService) GetManagedCluster(ctx context.Context, id st
 
 // Execute executes the request
 //  @return ManagedCluster
+// Deprecated
 func (a *ManagedClustersAPIService) GetManagedClusterExecute(r ApiGetManagedClusterRequest) (*ManagedCluster, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -403,6 +409,8 @@ Retrieve all Managed Clusters for the current Org, based on request context.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetManagedClustersRequest
+
+Deprecated
 */
 func (a *ManagedClustersAPIService) GetManagedClusters(ctx context.Context) ApiGetManagedClustersRequest {
 	return ApiGetManagedClustersRequest{
@@ -413,6 +421,7 @@ func (a *ManagedClustersAPIService) GetManagedClusters(ctx context.Context) ApiG
 
 // Execute executes the request
 //  @return []ManagedCluster
+// Deprecated
 func (a *ManagedClustersAPIService) GetManagedClustersExecute(r ApiGetManagedClustersRequest) ([]ManagedCluster, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -586,6 +595,8 @@ Update managed cluster's log configuration
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of ManagedCluster to update log configuration for
  @return ApiPutClientLogConfigurationRequest
+
+Deprecated
 */
 func (a *ManagedClustersAPIService) PutClientLogConfiguration(ctx context.Context, id string) ApiPutClientLogConfigurationRequest {
 	return ApiPutClientLogConfigurationRequest{
@@ -597,6 +608,7 @@ func (a *ManagedClustersAPIService) PutClientLogConfiguration(ctx context.Contex
 
 // Execute executes the request
 //  @return ClientLogConfiguration
+// Deprecated
 func (a *ManagedClustersAPIService) PutClientLogConfigurationExecute(r ApiPutClientLogConfigurationRequest) (*ClientLogConfiguration, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

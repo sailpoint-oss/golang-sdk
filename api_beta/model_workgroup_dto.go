@@ -1,7 +1,7 @@
 /*
-IdentityNow Beta API
+Identity Security Cloud Beta API
 
-Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -19,7 +19,7 @@ var _ MappedNullable = &WorkgroupDto{}
 
 // WorkgroupDto struct for WorkgroupDto
 type WorkgroupDto struct {
-	Owner *OwnerDto `json:"owner,omitempty"`
+	Owner *WorkgroupDtoOwner `json:"owner,omitempty"`
 	// Governance group ID.
 	Id *string `json:"id,omitempty"`
 	// Governance group name.
@@ -53,9 +53,9 @@ func NewWorkgroupDtoWithDefaults() *WorkgroupDto {
 }
 
 // GetOwner returns the Owner field value if set, zero value otherwise.
-func (o *WorkgroupDto) GetOwner() OwnerDto {
+func (o *WorkgroupDto) GetOwner() WorkgroupDtoOwner {
 	if o == nil || isNil(o.Owner) {
-		var ret OwnerDto
+		var ret WorkgroupDtoOwner
 		return ret
 	}
 	return *o.Owner
@@ -63,7 +63,7 @@ func (o *WorkgroupDto) GetOwner() OwnerDto {
 
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkgroupDto) GetOwnerOk() (*OwnerDto, bool) {
+func (o *WorkgroupDto) GetOwnerOk() (*WorkgroupDtoOwner, bool) {
 	if o == nil || isNil(o.Owner) {
 		return nil, false
 	}
@@ -79,8 +79,8 @@ func (o *WorkgroupDto) HasOwner() bool {
 	return false
 }
 
-// SetOwner gets a reference to the given OwnerDto and assigns it to the Owner field.
-func (o *WorkgroupDto) SetOwner(v OwnerDto) {
+// SetOwner gets a reference to the given WorkgroupDtoOwner and assigns it to the Owner field.
+func (o *WorkgroupDto) SetOwner(v WorkgroupDtoOwner) {
 	o.Owner = &v
 }
 

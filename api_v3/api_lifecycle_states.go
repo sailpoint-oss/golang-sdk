@@ -1,7 +1,7 @@
 /*
-IdentityNow V3 API
+Identity Security Cloud V3 API
 
-Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.0.0
 */
@@ -765,11 +765,11 @@ func (r ApiSetLifecycleStateRequest) Execute() (*SetLifecycleState200Response, *
 /*
 SetLifecycleState Set Lifecycle State
 
-This endpoint will set/update an identity's lifecycle state to the one provided and updates the corresponding Identity Profile.
+This endpoint will set/update an identity's lifecycle state to the one provided and updates the corresponding identity profile.
 A token with ORG_ADMIN or API authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param identityId The ID of the identity to update
+ @param identityId The ID of the identity to update.
  @return ApiSetLifecycleStateRequest
 */
 func (a *LifecycleStatesAPIService) SetLifecycleState(ctx context.Context, identityId string) ApiSetLifecycleStateRequest {

@@ -1,7 +1,7 @@
 /*
-IdentityNow Beta API
+Identity Security Cloud Beta API
 
-Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -23,60 +23,61 @@ import (
 // RolesAPIService RolesAPI service
 type RolesAPIService service
 
-type ApiBulkDeleteRolesRequest struct {
+type ApiCreateRoleRequest struct {
 	ctx context.Context
 	ApiService *RolesAPIService
-	roleBulkDeleteRequest *RoleBulkDeleteRequest
+	role *Role
 }
 
-func (r ApiBulkDeleteRolesRequest) RoleBulkDeleteRequest(roleBulkDeleteRequest RoleBulkDeleteRequest) ApiBulkDeleteRolesRequest {
-	r.roleBulkDeleteRequest = &roleBulkDeleteRequest
+func (r ApiCreateRoleRequest) Role(role Role) ApiCreateRoleRequest {
+	r.role = &role
 	return r
 }
 
-func (r ApiBulkDeleteRolesRequest) Execute() (*TaskResultDto, *http.Response, error) {
-	return r.ApiService.BulkDeleteRolesExecute(r)
+func (r ApiCreateRoleRequest) Execute() (*Role, *http.Response, error) {
+	return r.ApiService.CreateRoleExecute(r)
 }
 
 /*
-BulkDeleteRoles Delete Role(s)
+CreateRole Create a Role
 
-This API initiates a bulk deletion of one or more Roles.
-
-A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Roles included in the request are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
+This API creates a role.
+You must have a token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority to call this API. 
+In addition, a ROLE_SUBADMIN may not create a role including an access profile if that access profile is associated with a source the ROLE_SUBADMIN is not associated with themselves. 
+The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing roles. However, any new roles as well as any updates to existing descriptions will be limited to 2000 characters.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiBulkDeleteRolesRequest
+ @return ApiCreateRoleRequest
 */
-func (a *RolesAPIService) BulkDeleteRoles(ctx context.Context) ApiBulkDeleteRolesRequest {
-	return ApiBulkDeleteRolesRequest{
+func (a *RolesAPIService) CreateRole(ctx context.Context) ApiCreateRoleRequest {
+	return ApiCreateRoleRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return TaskResultDto
-func (a *RolesAPIService) BulkDeleteRolesExecute(r ApiBulkDeleteRolesRequest) (*TaskResultDto, *http.Response, error) {
+//  @return Role
+func (a *RolesAPIService) CreateRoleExecute(r ApiCreateRoleRequest) (*Role, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *TaskResultDto
+		localVarReturnValue  *Role
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesAPIService.BulkDeleteRoles")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesAPIService.CreateRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/roles/bulk-delete"
+	localVarPath := localBasePath + "/roles"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.roleBulkDeleteRequest == nil {
-		return localVarReturnValue, nil, reportError("roleBulkDeleteRequest is required and must be specified")
+	if r.role == nil {
+		return localVarReturnValue, nil, reportError("role is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -97,7 +98,7 @@ func (a *RolesAPIService) BulkDeleteRolesExecute(r ApiBulkDeleteRolesRequest) (*
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.roleBulkDeleteRequest
+	localVarPostBody = r.role
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -189,61 +190,61 @@ func (a *RolesAPIService) BulkDeleteRolesExecute(r ApiBulkDeleteRolesRequest) (*
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCreateRoleRequest struct {
+type ApiDeleteBulkRolesRequest struct {
 	ctx context.Context
 	ApiService *RolesAPIService
-	role *Role
+	roleBulkDeleteRequest *RoleBulkDeleteRequest
 }
 
-func (r ApiCreateRoleRequest) Role(role Role) ApiCreateRoleRequest {
-	r.role = &role
+func (r ApiDeleteBulkRolesRequest) RoleBulkDeleteRequest(roleBulkDeleteRequest RoleBulkDeleteRequest) ApiDeleteBulkRolesRequest {
+	r.roleBulkDeleteRequest = &roleBulkDeleteRequest
 	return r
 }
 
-func (r ApiCreateRoleRequest) Execute() (*Role, *http.Response, error) {
-	return r.ApiService.CreateRoleExecute(r)
+func (r ApiDeleteBulkRolesRequest) Execute() (*TaskResultDto, *http.Response, error) {
+	return r.ApiService.DeleteBulkRolesExecute(r)
 }
 
 /*
-CreateRole Create a Role
+DeleteBulkRoles Delete Role(s)
 
-This API creates a role.
-You must have a token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority to call this API. 
-In addition, a ROLE_SUBADMIN may not create a role including an access profile if that access profile is associated with a source the ROLE_SUBADMIN is not associated with themselves. 
-The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing roles. However, any new roles as well as any updates to existing descriptions will be limited to 2000 characters.
+This endpoint initiates a bulk deletion of one or more roles.
+When the request is successful, the endpoint returns the bulk delete's task result ID.  To follow the task, you can use [Get Task Status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status), which will return the task result's status and information. 
+This endpoint can only bulk delete up to a limit of 50 roles per request. 
+A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this endpoint. In addition, a token with ROLE_SUBADMIN authority can only call this endpoint if all roles included in the request are associated with sources with management workgroups the ROLE_SUBADMIN is a member of.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateRoleRequest
+ @return ApiDeleteBulkRolesRequest
 */
-func (a *RolesAPIService) CreateRole(ctx context.Context) ApiCreateRoleRequest {
-	return ApiCreateRoleRequest{
+func (a *RolesAPIService) DeleteBulkRoles(ctx context.Context) ApiDeleteBulkRolesRequest {
+	return ApiDeleteBulkRolesRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return Role
-func (a *RolesAPIService) CreateRoleExecute(r ApiCreateRoleRequest) (*Role, *http.Response, error) {
+//  @return TaskResultDto
+func (a *RolesAPIService) DeleteBulkRolesExecute(r ApiDeleteBulkRolesRequest) (*TaskResultDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Role
+		localVarReturnValue  *TaskResultDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesAPIService.CreateRole")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesAPIService.DeleteBulkRoles")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/roles"
+	localVarPath := localBasePath + "/roles/bulk-delete"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.role == nil {
-		return localVarReturnValue, nil, reportError("role is required and must be specified")
+	if r.roleBulkDeleteRequest == nil {
+		return localVarReturnValue, nil, reportError("roleBulkDeleteRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -264,7 +265,7 @@ func (a *RolesAPIService) CreateRoleExecute(r ApiCreateRoleRequest) (*Role, *htt
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.role
+	localVarPostBody = r.roleBulkDeleteRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1360,11 +1361,11 @@ func (r ApiPatchRoleRequest) Execute() (*Role, *http.Response, error) {
 /*
 PatchRole Patch a specified Role
 
-This API updates an existing Role using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
-
-The following fields are patchable: **name**, **description**, **enabled**, **owner**, **accessProfiles**, **membership**, **requestable**, **accessRequestConfig**, **revokeRequestConfig**, **segments**
-A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
+This API updates an existing role using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
+The following fields are patchable: * name * description * enabled * owner * accessProfiles * membership * requestable * accessRequestConfig * revokeRequestConfig * segments
+A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all access profiles included in the role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
 The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing roles, however, any new roles as well as any updates to existing descriptions will be limited to 2000 characters.
+When you use this API to modify a role's membership identities, you can only modify up to a limit of 500 membership identities at a time. 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Role to patch

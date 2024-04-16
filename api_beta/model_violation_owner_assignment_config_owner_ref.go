@@ -1,7 +1,7 @@
 /*
-IdentityNow Beta API
+Identity Security Cloud Beta API
 
-Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -23,7 +23,7 @@ type ViolationOwnerAssignmentConfigOwnerRef struct {
 	Type *string `json:"type,omitempty"`
 	// Owner's identity ID.
 	Id *string `json:"id,omitempty"`
-	// Owner's display name.
+	// Owner's name.
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

@@ -1,7 +1,7 @@
 /*
-IdentityNow Beta API
+Identity Security Cloud Beta API
 
-Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -44,7 +44,7 @@ var (
 	queryDescape    = strings.NewReplacer( "%5B", "[", "%5D", "]" )
 )
 
-// APIClient manages communication with the IdentityNow Beta API API v3.1.0-beta
+// APIClient manages communication with the Identity Security Cloud Beta API API v3.1.0-beta
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
@@ -68,6 +68,8 @@ type APIClient struct {
 
 	AccountsAPI *AccountsAPIService
 
+	ApprovalsAPI *ApprovalsAPIService
+
 	AuthProfileAPI *AuthProfileAPIService
 
 	CertificationCampaignsAPI *CertificationCampaignsAPIService
@@ -81,6 +83,8 @@ type APIClient struct {
 	CustomFormsAPI *CustomFormsAPIService
 
 	CustomPasswordInstructionsAPI *CustomPasswordInstructionsAPIService
+
+	DiscoveredApplicationsAPI *DiscoveredApplicationsAPIService
 
 	EntitlementsAPI *EntitlementsAPIService
 
@@ -120,6 +124,10 @@ type APIClient struct {
 
 	ManagedClustersAPI *ManagedClustersAPIService
 
+	ManualDiscoverApplicationsAPI *ManualDiscoverApplicationsAPIService
+
+	ManualDiscoverApplicationsTemplateAPI *ManualDiscoverApplicationsTemplateAPIService
+
 	NonEmployeeLifecycleManagementAPI *NonEmployeeLifecycleManagementAPIService
 
 	NotificationsAPI *NotificationsAPIService
@@ -146,6 +154,8 @@ type APIClient struct {
 
 	RolesAPI *RolesAPIService
 
+	SODPoliciesAPI *SODPoliciesAPIService
+
 	SODPolicyAPI *SODPolicyAPIService
 
 	SODViolationsAPI *SODViolationsAPIService
@@ -162,6 +172,8 @@ type APIClient struct {
 
 	SourcesAPI *SourcesAPIService
 
+	SuggestedEntitlementDescriptionAPI *SuggestedEntitlementDescriptionAPIService
+
 	TaggedObjectsAPI *TaggedObjectsAPIService
 
 	TaskManagementAPI *TaskManagementAPIService
@@ -171,6 +183,8 @@ type APIClient struct {
 	TransformsAPI *TransformsAPIService
 
 	TriggersAPI *TriggersAPIService
+
+	VendorConnectorMappingsAPI *VendorConnectorMappingsAPIService
 
 	WorkItemsAPI *WorkItemsAPIService
 
@@ -203,6 +217,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AccountAggregationsAPI = (*AccountAggregationsAPIService)(&c.common)
 	c.AccountUsagesAPI = (*AccountUsagesAPIService)(&c.common)
 	c.AccountsAPI = (*AccountsAPIService)(&c.common)
+	c.ApprovalsAPI = (*ApprovalsAPIService)(&c.common)
 	c.AuthProfileAPI = (*AuthProfileAPIService)(&c.common)
 	c.CertificationCampaignsAPI = (*CertificationCampaignsAPIService)(&c.common)
 	c.CertificationsAPI = (*CertificationsAPIService)(&c.common)
@@ -210,6 +225,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ConnectorsAPI = (*ConnectorsAPIService)(&c.common)
 	c.CustomFormsAPI = (*CustomFormsAPIService)(&c.common)
 	c.CustomPasswordInstructionsAPI = (*CustomPasswordInstructionsAPIService)(&c.common)
+	c.DiscoveredApplicationsAPI = (*DiscoveredApplicationsAPIService)(&c.common)
 	c.EntitlementsAPI = (*EntitlementsAPIService)(&c.common)
 	c.GovernanceGroupsAPI = (*GovernanceGroupsAPIService)(&c.common)
 	c.IAIAccessRequestRecommendationsAPI = (*IAIAccessRequestRecommendationsAPIService)(&c.common)
@@ -229,6 +245,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.MFAControllerAPI = (*MFAControllerAPIService)(&c.common)
 	c.ManagedClientsAPI = (*ManagedClientsAPIService)(&c.common)
 	c.ManagedClustersAPI = (*ManagedClustersAPIService)(&c.common)
+	c.ManualDiscoverApplicationsAPI = (*ManualDiscoverApplicationsAPIService)(&c.common)
+	c.ManualDiscoverApplicationsTemplateAPI = (*ManualDiscoverApplicationsTemplateAPIService)(&c.common)
 	c.NonEmployeeLifecycleManagementAPI = (*NonEmployeeLifecycleManagementAPIService)(&c.common)
 	c.NotificationsAPI = (*NotificationsAPIService)(&c.common)
 	c.OAuthClientsAPI = (*OAuthClientsAPIService)(&c.common)
@@ -242,6 +260,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.RequestableObjectsAPI = (*RequestableObjectsAPIService)(&c.common)
 	c.RoleInsightsAPI = (*RoleInsightsAPIService)(&c.common)
 	c.RolesAPI = (*RolesAPIService)(&c.common)
+	c.SODPoliciesAPI = (*SODPoliciesAPIService)(&c.common)
 	c.SODPolicyAPI = (*SODPolicyAPIService)(&c.common)
 	c.SODViolationsAPI = (*SODViolationsAPIService)(&c.common)
 	c.SPConfigAPI = (*SPConfigAPIService)(&c.common)
@@ -250,11 +269,13 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ServiceDeskIntegrationAPI = (*ServiceDeskIntegrationAPIService)(&c.common)
 	c.SourceUsagesAPI = (*SourceUsagesAPIService)(&c.common)
 	c.SourcesAPI = (*SourcesAPIService)(&c.common)
+	c.SuggestedEntitlementDescriptionAPI = (*SuggestedEntitlementDescriptionAPIService)(&c.common)
 	c.TaggedObjectsAPI = (*TaggedObjectsAPIService)(&c.common)
 	c.TaskManagementAPI = (*TaskManagementAPIService)(&c.common)
 	c.TenantAPI = (*TenantAPIService)(&c.common)
 	c.TransformsAPI = (*TransformsAPIService)(&c.common)
 	c.TriggersAPI = (*TriggersAPIService)(&c.common)
+	c.VendorConnectorMappingsAPI = (*VendorConnectorMappingsAPIService)(&c.common)
 	c.WorkItemsAPI = (*WorkItemsAPIService)(&c.common)
 	c.WorkReassignmentAPI = (*WorkReassignmentAPIService)(&c.common)
 	c.WorkflowsAPI = (*WorkflowsAPIService)(&c.common)

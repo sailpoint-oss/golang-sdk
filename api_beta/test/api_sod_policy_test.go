@@ -1,5 +1,5 @@
 /*
-IdentityNow Beta API
+Identity Security Cloud Beta API
 
 Testing SODPolicyAPIService
 
@@ -21,44 +21,6 @@ func Test_api_beta_SODPolicyAPIService(t *testing.T) {
 
 	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
-
-	t.Run("Test SODPolicyAPIService CreateSodPolicy", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.Beta.SODPolicyAPI.CreateSodPolicy(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test SODPolicyAPIService DeleteSodPolicy", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		httpRes, err := apiClient.Beta.SODPolicyAPI.DeleteSodPolicy(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test SODPolicyAPIService DeleteSodPolicySchedule", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		httpRes, err := apiClient.Beta.SODPolicyAPI.DeleteSodPolicySchedule(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
 
 	t.Run("Test SODPolicyAPIService GetCustomViolationReport", func(t *testing.T) {
 
@@ -101,34 +63,6 @@ func Test_api_beta_SODPolicyAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SODPolicyAPIService GetSodPolicy", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.Beta.SODPolicyAPI.GetSodPolicy(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test SODPolicyAPIService GetSodPolicySchedule", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.Beta.SODPolicyAPI.GetSodPolicySchedule(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test SODPolicyAPIService GetSodViolationReportRunStatus", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -143,93 +77,11 @@ func Test_api_beta_SODPolicyAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SODPolicyAPIService GetSodViolationReportStatus", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.Beta.SODPolicyAPI.GetSodViolationReportStatus(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test SODPolicyAPIService ListSodPolicies", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.Beta.SODPolicyAPI.ListSodPolicies(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test SODPolicyAPIService PatchSodPolicy", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.Beta.SODPolicyAPI.PatchSodPolicy(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test SODPolicyAPIService PutPolicySchedule", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.Beta.SODPolicyAPI.PutPolicySchedule(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test SODPolicyAPIService PutSodPolicy", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.Beta.SODPolicyAPI.PutSodPolicy(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test SODPolicyAPIService StartSodAllPoliciesForOrg", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.Beta.SODPolicyAPI.StartSodAllPoliciesForOrg(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test SODPolicyAPIService StartSodPolicy", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.Beta.SODPolicyAPI.StartSodPolicy(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

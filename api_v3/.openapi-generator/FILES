@@ -9,12 +9,13 @@ api_access_requests.go
 api_account_activities.go
 api_account_usages.go
 api_accounts.go
-api_auth_user.go
+api_auth_users.go
 api_branding.go
 api_certification_campaign_filters.go
 api_certification_campaigns.go
 api_certification_summaries.go
 api_certifications.go
+api_configuration_hub.go
 api_connectors.go
 api_global_tenant_security_settings.go
 api_identity_profiles.go
@@ -36,6 +37,7 @@ api_scheduled_search.go
 api_search.go
 api_segments.go
 api_service_desk_integration.go
+api_sod_policies.go
 api_sod_policy.go
 api_sod_violations.go
 api_source_usages.go
@@ -129,7 +131,7 @@ docs/AttributeDefinitionSchema.md
 docs/AttributeDefinitionType.md
 docs/AttributeRequest.md
 docs/AuthUser.md
-docs/AuthUserAPI.md
+docs/AuthUsersAPI.md
 docs/BaseAccess.md
 docs/BaseAccessAllOfOwner.md
 docs/BaseAccessProfile.md
@@ -188,6 +190,7 @@ docs/CompletedApprovalRequesterComment.md
 docs/CompletedApprovalReviewerComment.md
 docs/CompletedApprovalState.md
 docs/CompletionStatus.md
+docs/ConfigurationHubAPI.md
 docs/ConflictingAccessCriteria.md
 docs/ConnectorDetail.md
 docs/ConnectorsAPI.md
@@ -325,6 +328,12 @@ docs/NonEmployeeSourceWithCloudExternalId.md
 docs/NonEmployeeSourceWithNECount.md
 docs/OAuthClientsAPI.md
 docs/ObjectImportResult.md
+docs/ObjectMappingBulkCreateRequest.md
+docs/ObjectMappingBulkCreateResponse.md
+docs/ObjectMappingBulkPatchRequest.md
+docs/ObjectMappingBulkPatchResponse.md
+docs/ObjectMappingRequest.md
+docs/ObjectMappingResponse.md
 docs/Operation.md
 docs/OriginalRequest.md
 docs/OrphanUncorrelatedReportArguments.md
@@ -432,6 +441,7 @@ docs/RoleMembershipSelector.md
 docs/RoleMembershipSelectorType.md
 docs/RoleSummary.md
 docs/RolesAPI.md
+docs/SODPoliciesAPI.md
 docs/SODPolicyAPI.md
 docs/SODViolationsAPI.md
 docs/SavedSearch.md
@@ -827,6 +837,12 @@ model_non_employee_source_request_body.go
 model_non_employee_source_with_cloud_external_id.go
 model_non_employee_source_with_ne_count.go
 model_object_import_result.go
+model_object_mapping_bulk_create_request.go
+model_object_mapping_bulk_create_response.go
+model_object_mapping_bulk_patch_request.go
+model_object_mapping_bulk_patch_response.go
+model_object_mapping_request.go
+model_object_mapping_response.go
 model_operation.go
 model_original_request.go
 model_orphan_uncorrelated_report_arguments.go
@@ -1049,12 +1065,13 @@ test/api_access_requests_test.go
 test/api_account_activities_test.go
 test/api_account_usages_test.go
 test/api_accounts_test.go
-test/api_auth_user_test.go
+test/api_auth_users_test.go
 test/api_branding_test.go
 test/api_certification_campaign_filters_test.go
 test/api_certification_campaigns_test.go
 test/api_certification_summaries_test.go
 test/api_certifications_test.go
+test/api_configuration_hub_test.go
 test/api_connectors_test.go
 test/api_global_tenant_security_settings_test.go
 test/api_identity_profiles_test.go
@@ -1076,6 +1093,7 @@ test/api_scheduled_search_test.go
 test/api_search_test.go
 test/api_segments_test.go
 test/api_service_desk_integration_test.go
+test/api_sod_policies_test.go
 test/api_sod_policy_test.go
 test/api_sod_violations_test.go
 test/api_source_usages_test.go

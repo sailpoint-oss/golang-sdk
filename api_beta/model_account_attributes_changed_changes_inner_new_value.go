@@ -1,7 +1,7 @@
 /*
-IdentityNow Beta API
+Identity Security Cloud Beta API
 
-Use these APIs to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+Use these APIs to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. These APIs are in beta and are subject to change. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
 
 API version: 3.1.0-beta
 */
@@ -17,15 +17,15 @@ import (
 
 // AccountAttributesChangedChangesInnerNewValue - The new value of the attribute.
 type AccountAttributesChangedChangesInnerNewValue struct {
-	ArrayOfstring *[]*string
+	ArrayOf*string *[]*string
 	Bool *bool
 	String *string
 }
 
 // []*stringAsAccountAttributesChangedChangesInnerNewValue is a convenience function that returns []*string wrapped in AccountAttributesChangedChangesInnerNewValue
-func ArrayOfstringAsAccountAttributesChangedChangesInnerNewValue(v *[]*string) AccountAttributesChangedChangesInnerNewValue {
+func ArrayOf*stringAsAccountAttributesChangedChangesInnerNewValue(v *[]*string) AccountAttributesChangedChangesInnerNewValue {
 	return AccountAttributesChangedChangesInnerNewValue{
-		ArrayOfstring: v,
+		ArrayOf*string: v,
 	}
 }
 
@@ -53,17 +53,17 @@ func (dst *AccountAttributesChangedChangesInnerNewValue) UnmarshalJSON(data []by
 	}
 
 	match := 0
-	// try to unmarshal data into ArrayOfstring
-	err = newStrictDecoder(data).Decode(&dst.ArrayOfstring)
+	// try to unmarshal data into ArrayOf*string
+	err = newStrictDecoder(data).Decode(&dst.ArrayOf*string)
 	if err == nil {
-		jsonArrayOfstring, _ := json.Marshal(dst.ArrayOfstring)
-		if string(jsonArrayOfstring) == "{}" { // empty struct
-			dst.ArrayOfstring = nil
+		jsonArrayOf*string, _ := json.Marshal(dst.ArrayOf*string)
+		if string(jsonArrayOf*string) == "{}" { // empty struct
+			dst.ArrayOf*string = nil
 		} else {
 			match++
 		}
 	} else {
-		dst.ArrayOfstring = nil
+		dst.ArrayOf*string = nil
 	}
 
 	// try to unmarshal data into Bool
@@ -94,7 +94,7 @@ func (dst *AccountAttributesChangedChangesInnerNewValue) UnmarshalJSON(data []by
 
 	if match > 1 { // more than 1 match
 		// reset to nil
-		dst.ArrayOfstring = nil
+		dst.ArrayOf*string = nil
 		dst.Bool = nil
 		dst.String = nil
 
@@ -108,8 +108,8 @@ func (dst *AccountAttributesChangedChangesInnerNewValue) UnmarshalJSON(data []by
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src AccountAttributesChangedChangesInnerNewValue) MarshalJSON() ([]byte, error) {
-	if src.ArrayOfstring != nil {
-		return json.Marshal(&src.ArrayOfstring)
+	if src.ArrayOf*string != nil {
+		return json.Marshal(&src.ArrayOf*string)
 	}
 
 	if src.Bool != nil {
@@ -128,8 +128,8 @@ func (obj *AccountAttributesChangedChangesInnerNewValue) GetActualInstance() (in
 	if obj == nil {
 		return nil
 	}
-	if obj.ArrayOfstring != nil {
-		return obj.ArrayOfstring
+	if obj.ArrayOf*string != nil {
+		return obj.ArrayOf*string
 	}
 
 	if obj.Bool != nil {

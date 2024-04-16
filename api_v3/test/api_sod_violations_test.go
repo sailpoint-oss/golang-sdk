@@ -1,5 +1,5 @@
 /*
-IdentityNow V3 API
+Identity Security Cloud V3 API
 
 Testing SODViolationsAPIService
 

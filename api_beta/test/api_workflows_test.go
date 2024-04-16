@@ -1,5 +1,5 @@
 /*
-IdentityNow Beta API
+Identity Security Cloud Beta API
 
 Testing WorkflowsAPIService
 
