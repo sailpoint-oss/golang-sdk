@@ -11343,6 +11343,572 @@ paths:
       summary: Bulk updates object mappings
       tags:
       - Configuration Hub
+  /configuration-hub/backups/uploads:
+    get:
+      description: |-
+        Returns a list of the current uploaded backups associated with the current tenant.
+        A filter "status" can be added to only return the Completed, Failed, or Successful uploads
+      operationId: getUploadedBackups
+      parameters:
+      - description: Filter listed uploaded backups by status of operation
+        example: COMPLETE
+        in: query
+        name: status
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - jobId: 3d0fe04b-57df-4a46-a83b-8f04b0f9d10b
+                status: FAILED
+                type: BACKUP
+                tenant: someTenant
+                message: "com.sailpoint.sp.config.exception.IncorrectBackupUploadFormatException:\
+                  \ Uploaded backup file could not be parsed to correct format."
+                requesterName: support
+                fileExists: false
+                created: 2024-04-04T17:29:16.904Z
+                modified: 2024-04-04T17:29:17.076Z
+                name: dfs
+                userCanDelete: false
+                isPartial: false
+                backupType: UPLOADED
+                hydrationStatus: NOT_HYDRATED
+                totalObjectCount: 0
+              - jobId: 281d421c-0643-4004-9fe5-29a95d2f73df
+                status: COMPLETE
+                type: BACKUP
+                tenant: someTenant
+                requesterName: support
+                fileExists: true
+                created: 2024-03-07T21:11:00.375Z
+                modified: 2024-03-07T21:11:25.046Z
+                completed: 2024-03-07T21:11:00.66Z
+                name: test1
+                userCanDelete: false
+                isPartial: false
+                backupType: UPLOADED
+                hydrationStatus: HYDRATED
+                totalObjectCount: 64
+              - jobId: 4831ad5c-f6cf-42a6-a191-8c4abec30006
+                status: COMPLETE
+                type: BACKUP
+                tenant: someTenant
+                requesterName: support
+                fileExists: true
+                created: 2024-02-26T18:19:26.312Z
+                modified: 2024-02-26T18:19:40.773Z
+                completed: 2024-02-26T18:19:26.545Z
+                name: testing Daniel
+                userCanDelete: false
+                isPartial: false
+                backupType: UPLOADED
+                hydrationStatus: HYDRATED
+                totalObjectCount: 64
+              - jobId: 2ea830f3-2b14-4772-8a20-3d006742e419
+                status: COMPLETE
+                type: BACKUP
+                tenant: someTenant
+                requesterName: support
+                fileExists: true
+                created: 2024-02-20T22:08:31.064Z
+                modified: 2024-02-20T22:13:15.662Z
+                completed: 2024-02-20T22:08:31.689Z
+                name: something new
+                userCanDelete: false
+                isPartial: false
+                backupType: UPLOADED
+                hydrationStatus: HYDRATED
+                totalObjectCount: 2
+              - jobId: 473b5cef-90e4-4cb3-ad43-7671c17d3a46
+                status: COMPLETE
+                type: BACKUP
+                tenant: someTenant
+                requesterName: support
+                fileExists: true
+                created: 2024-02-19T21:30:07.947Z
+                modified: 2024-02-19T21:31:01.65Z
+                completed: 2024-02-19T21:30:08.195Z
+                name: test upload
+                userCanDelete: false
+                isPartial: false
+                backupType: UPLOADED
+                hydrationStatus: HYDRATED
+                totalObjectCount: 2
+              - jobId: 09491993-9cb6-49a7-8d37-8bef54d33502
+                status: COMPLETE
+                type: BACKUP
+                tenant: someTenant
+                requesterName: support
+                fileExists: true
+                created: 2024-02-19T19:54:15.373Z
+                modified: 2024-02-19T20:39:00.341Z
+                completed: 2024-02-19T19:54:15.605Z
+                name: Testing Daniel
+                userCanDelete: false
+                isPartial: false
+                backupType: UPLOADED
+                hydrationStatus: HYDRATED
+                totalObjectCount: 2
+              schema:
+                items:
+                  $ref: '#/components/schemas/UploadsResponse'
+                type: array
+          description: List of existing uploaded backups.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - sp:config-backups:read
+      summary: Gets list of Uploaded backups
+      tags:
+      - Configuration Hub
+    post:
+      description: |-
+        This post will upload a JSON backup file into a tenant. Configuration files can be managed and deployed via Configuration Hub by uploading a json file which contains configuration data. The JSON file should be the same as the one used by our import endpoints. The object types that currently support by upload file functionality are the same as the ones supported by our regular backup functionality. here: [SaaS Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects).
+
+        The request will need the following security scope:
+        - sp:config:manage
+      operationId: importUploadedBackup
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/importUploadedBackup_request'
+        description: |
+          The body will consist of "data" which should contain the json file and name wish should be the name you want to assign to the uploaded file"
+
+          __Example__
+
+              data: "uploaded.json",
+              name: "A_NEW_UPLOADED_BACKUP"
+
+          __Sample Upload File__
+
+              {
+                "version": 1,
+                "tenant": "a-sample-tenant",
+                "objects":
+                [
+                  {
+                    "version": 1,
+                    "self":
+                      {
+                        "id": "0a59c7196d2917f8aa6d29686e6600fb",
+                        "type": "SOURCE",
+                        "name": "Extended Form"
+                      },
+                    "object":
+                      {
+                        "id": "0a59c7196d2917f8aa6d29686e6600fb",
+                        "name": "Extended Form",
+                        "type": "DelimitedFile",
+                        "connectorClass": "sailpoint.connector.DelimitedFileConnector",
+                        "connectorScriptName": "delimited-file-angularsc",
+                        "description": "Migrated app - Extended Form (original ID: 0a59c7196d2917f8aa6d29686e6600fb)",
+                        "deleteThreshold": 10,
+                        "provisionAsCsv": false,
+                        "owner":
+                          {
+                            "type": "IDENTITY",
+                            "id": "0a59c7196d2917f8816d29685fed00c3",
+                            "name": "slpt.services"
+                          },
+                        "connectorAttributes":
+                          {
+                            "beforemoveAccount": "Do Nothing",
+                            "beforemoverAccount": "Do Nothing",
+                            "busApp": "false",
+                            "file": "Empty",
+                            "filetransport": "local",
+                            "filterEmptyRecords": "true",
+                            "group.filetransport": "local",
+                            "group.filterEmptyRecords": "true",
+                            "group.partitionMode": "auto",
+                            "hasHeader": "true",
+                            "indexColumn": "ID",
+                            "isCaseInsensitiveMerge": "false",
+                            "isSortedByIndexColumn": "false",
+                            "loaProcess": "Do Nothing",
+                            "ltdProcess": "Do Nothing",
+                            "mergeRows": "false",
+                            "moverProcess": "Do Nothing",
+                            "moverRevocation": "Do Nothing",
+                            "nativeChangeDetectionAttributeScope": "entitlements",
+                            "nativeChangeDetectionEnabled": "false",
+                            "nativeChangeProcess": "Do Nothing",
+                            "parseType": "delimited",
+                            "partitionMode": "auto",
+                            "policyType": "Do Nothing",
+                            "rehireProcess": "Do Nothing",
+                            "reverseleaverProcess": "Do Nothing",
+                            "rtwloaProcess": "Do Nothing",
+                            "rtwltdProcess": "Do Nothing",
+                            "stopIfLineHasWrongColumnLength": "false",
+                            "templateApplication": "DelimitedFile Template",
+                            "terminationProcess": "Do Nothing"
+                          },
+                        "schemas":
+                          [],
+                        "provisioningPolicies":
+                          [],
+                        "features":
+                          [
+                            "DIRECT_PERMISSIONS",
+                            "NO_RANDOM_ACCESS",
+                            "DISCOVER_SCHEMA"
+                          ]
+                      }
+                  }
+                ]
+            }
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadsRequest'
+          description: Upload job accepted and queued for processing.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: |
+            Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - sp:config-backups:manage
+      summary: Uploads a backup file
+      tags:
+      - Configuration Hub
+  /configuration-hub/backups/uploads/{id}:
+    delete:
+      description: |-
+        This deletes an Uploaded backup based on job ID.
+        On success, this endpoint will return an empty response.
+        The job id can be obtained from the response after a successful upload, or the list uploads endpoint.
+        The following scopes are required to access this endpoint: sp:config:manage
+      operationId: deleteUploadedBackup
+      parameters:
+      - description: The id of the uploaded backup.
+        example: 3d0fe04b-57df-4a46-a83b-8f04b0f9d10b
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - sp:config-backups:manage
+        - sp:config-backups:read
+      summary: Deletes an uploaded backup file
+      tags:
+      - Configuration Hub
+    get:
+      description: |-
+        Returns all the information and status of an upload job.
+        - sp:config-backups:read
+      operationId: getUploadedBackup
+      parameters:
+      - description: The id of the uploaded backup.
+        example: 3d0fe04b-57df-4a46-a83b-8f04b0f9d10b
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                jobId: 2ea830f3-2b14-4772-8a20-3d006742e419
+                status: COMPLETE
+                type: BACKUP
+                tenant: someTenant
+                requesterName: support
+                fileExists: true
+                created: 2024-02-20T22:08:31.064Z
+                modified: 2024-02-20T22:13:15.662Z
+                completed: 2024-02-20T22:08:31.689Z
+                name: something new
+                userCanDelete: false
+                isPartial: false
+                backupType: UPLOADED
+                hydrationStatus: HYDRATED
+                totalObjectCount: 2
+              schema:
+                items:
+                  $ref: ../../schemas/configuration-hub/UploadsResponse.yaml
+                type: object
+          description: List of existing uploaded backups.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - sp:config-backups:read
+      summary: Get an uploaded backup's information
+      tags:
+      - Configuration Hub
   /connectors/{scriptName}:
     delete:
       description: |-
@@ -42881,6 +43447,192 @@ components:
           type: array
       title: Bulk Update Object Mapping Response
       type: object
+    UploadsResponse:
+      example:
+        jobId: 3469b87d-48ca-439a-868f-2160001da8c1
+        userCanDelete: false
+        requesterName: support
+        created: 2021-05-11T22:23:16Z
+        name: A_NEW_UPLOADED_BACKUP
+        modified: 2021-05-11T22:23:16Z
+        isPartial: false
+        type: BACKUP
+        hydrationStatus: NOT_HYDRATED
+        tenant: uploaderTenant
+        status: COMPLETE
+        backupType: UPLOADED
+      properties:
+        jobId:
+          description: Unique id assigned to this job.
+          example: 3469b87d-48ca-439a-868f-2160001da8c1
+          type: string
+        status:
+          description: Status of the job.
+          enum:
+          - NOT_STARTED
+          - IN_PROGRESS
+          - COMPLETE
+          - CANCELLED
+          - FAILED
+          example: COMPLETE
+          type: string
+        type:
+          description: "Type of the job, either Backup or Draft."
+          enum:
+          - BACKUP
+          - DRAFT
+          example: BACKUP
+          type: string
+        tenant:
+          description: The name of the tenant performing the upload
+          example: uploaderTenant
+          type: string
+        requesterName:
+          description: The name of the requester.
+          example: support
+          type: string
+        created:
+          description: The time the job was started.
+          example: 2021-05-11T22:23:16Z
+          format: date-time
+          type: string
+        modified:
+          description: The time of the last update to the job.
+          example: 2021-05-11T22:23:16Z
+          format: date-time
+          type: string
+        name:
+          description: The name assigned to the upload file in the request body.
+          example: A_NEW_UPLOADED_BACKUP
+          type: string
+        userCanDelete:
+          default: true
+          description: "Is the job a regular backup job, if so is the user allowed\
+            \ to delete the backup file. Since this is an upload job it remains as\
+            \ false."
+          example: false
+          type: boolean
+        isPartial:
+          default: false
+          description: "Is the job a regular backup job, if so is it partial. Since\
+            \ this is an upload job it remains as false."
+          example: false
+          type: boolean
+        backupType:
+          description: What kind of backup is this being treated as.
+          enum:
+          - UPLOADED
+          - AUTOMATED
+          - MANUAL
+          example: UPLOADED
+          type: string
+        hydrationStatus:
+          description: have the objects contained in the upload file been hydrated.
+          enum:
+          - HYDRATED
+          - NOT_HYDRATED
+          example: NOT_HYDRATED
+          type: string
+      required:
+      - created
+      - jobId
+      - modified
+      - status
+      - type
+      type: object
+    UploadsRequest:
+      example:
+        jobId: 3469b87d-48ca-439a-868f-2160001da8c1
+        userCanDelete: false
+        requesterName: support
+        created: 2021-05-11T22:23:16Z
+        name: A_NEW_UPLOADED_BACKUP
+        modified: 2021-05-11T22:23:16Z
+        isPartial: false
+        type: BACKUP
+        hydrationStatus: NOT_HYDRATED
+        tenant: uploaderTenant
+        status: COMPLETE
+        backupType: UPLOADED
+      properties:
+        jobId:
+          description: Unique id assigned to this job.
+          example: 3469b87d-48ca-439a-868f-2160001da8c1
+          type: string
+        status:
+          description: Status of the job.
+          enum:
+          - NOT_STARTED
+          - IN_PROGRESS
+          - COMPLETE
+          - CANCELLED
+          - FAILED
+          example: COMPLETE
+          type: string
+        type:
+          description: "Type of the job, either Backup or Draft."
+          enum:
+          - BACKUP
+          - DRAFT
+          example: BACKUP
+          type: string
+        tenant:
+          description: The name of the tenant performing the upload
+          example: uploaderTenant
+          type: string
+        requesterName:
+          description: The name of the requester.
+          example: support
+          type: string
+        created:
+          description: The time the job was started.
+          example: 2021-05-11T22:23:16Z
+          format: date-time
+          type: string
+        modified:
+          description: The time of the last update to the job.
+          example: 2021-05-11T22:23:16Z
+          format: date-time
+          type: string
+        name:
+          description: The name assigned to the upload file in the request body.
+          example: A_NEW_UPLOADED_BACKUP
+          type: string
+        userCanDelete:
+          default: true
+          description: "Is the job a regular backup job, if so is the user allowed\
+            \ to delete the backup file. Since this is an upload job it remains as\
+            \ false."
+          example: false
+          type: boolean
+        isPartial:
+          default: false
+          description: "Is the job a regular backup job, if so is it partial. Since\
+            \ this is an upload job it remains as false."
+          example: false
+          type: boolean
+        backupType:
+          description: What kind of backup is this being treated as.
+          enum:
+          - UPLOADED
+          - AUTOMATED
+          - MANUAL
+          example: UPLOADED
+          type: string
+        hydrationStatus:
+          description: have the objects contained in the upload file been hydrated.
+          enum:
+          - HYDRATED
+          - NOT_HYDRATED
+          example: NOT_HYDRATED
+          type: string
+      required:
+      - created
+      - jobId
+      - modified
+      - status
+      - type
+      type: object
     ConnectorDetail:
       example:
         applicationXml: |
@@ -52662,6 +53414,19 @@ components:
           description: The number of filters returned
           example: 2
           type: integer
+      type: object
+    importUploadedBackup_request:
+      properties:
+        data:
+          description: JSON file containing the objects to be imported.
+          format: binary
+          type: string
+        name:
+          description: Name that will be assigned to the uploaded file.
+          type: string
+      required:
+      - data
+      - name
       type: object
     putSourceConfig_request:
       properties:

@@ -277,6 +277,7 @@ docs/IdentityWithNewAccess1.md
 docs/IdentityWithNewAccessAccessRefsInner.md
 docs/ImportNonEmployeeRecordsInBulkRequest.md
 docs/ImportObject.md
+docs/ImportUploadedBackupRequest.md
 docs/Index.md
 docs/InnerHit.md
 docs/JsonPatchOperation.md
@@ -540,6 +541,8 @@ docs/TransformsAPI.md
 docs/TypeAheadQuery.md
 docs/TypedReference.md
 docs/UpdateDetail.md
+docs/UploadsRequest.md
+docs/UploadsResponse.md
 docs/UsageType.md
 docs/V3ConnectorDto.md
 docs/V3CreateConnectorDto.md
@@ -789,6 +792,7 @@ model_identity_with_new_access_1.go
 model_identity_with_new_access_access_refs_inner.go
 model_import_non_employee_records_in_bulk_request.go
 model_import_object.go
+model_import_uploaded_backup_request.go
 model_index.go
 model_inner_hit.go
 model_json_patch_operation.go
@@ -1027,6 +1031,8 @@ model_transform_read.go
 model_type_ahead_query.go
 model_typed_reference.go
 model_update_detail.go
+model_uploads_request.go
+model_uploads_response.go
 model_usage_type.go
 model_v3_connector_dto.go
 model_v3_create_connector_dto.go

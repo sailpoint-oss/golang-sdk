@@ -163,7 +163,11 @@ Class | Method | HTTP request | Description
 *ConfigurationHubAPI* | [**CreateObjectMapping**](docs/ConfigurationHubAPI.md#createobjectmapping) | **Post** /configuration-hub/object-mappings/{sourceOrg} | Creates an object mapping
 *ConfigurationHubAPI* | [**CreateObjectMappings**](docs/ConfigurationHubAPI.md#createobjectmappings) | **Post** /configuration-hub/object-mappings/{sourceOrg}/bulk-create | Bulk creates object mappings
 *ConfigurationHubAPI* | [**DeleteObjectMapping**](docs/ConfigurationHubAPI.md#deleteobjectmapping) | **Delete** /configuration-hub/object-mappings/{sourceOrg}/{objectMappingId} | Deletes an object mapping
+*ConfigurationHubAPI* | [**DeleteUploadedBackup**](docs/ConfigurationHubAPI.md#deleteuploadedbackup) | **Delete** /configuration-hub/backups/uploads/{id} | Deletes an uploaded backup file
 *ConfigurationHubAPI* | [**GetObjectMappings**](docs/ConfigurationHubAPI.md#getobjectmappings) | **Get** /configuration-hub/object-mappings/{sourceOrg} | Gets list of object mappings
+*ConfigurationHubAPI* | [**GetUploadedBackup**](docs/ConfigurationHubAPI.md#getuploadedbackup) | **Get** /configuration-hub/backups/uploads/{id} | Get an uploaded backup&#39;s information
+*ConfigurationHubAPI* | [**GetUploadedBackups**](docs/ConfigurationHubAPI.md#getuploadedbackups) | **Get** /configuration-hub/backups/uploads | Gets list of Uploaded backups
+*ConfigurationHubAPI* | [**ImportUploadedBackup**](docs/ConfigurationHubAPI.md#importuploadedbackup) | **Post** /configuration-hub/backups/uploads | Uploads a backup file
 *ConfigurationHubAPI* | [**UpdateObjectMappings**](docs/ConfigurationHubAPI.md#updateobjectmappings) | **Post** /configuration-hub/object-mappings/{sourceOrg}/bulk-patch | Bulk updates object mappings
 *ConnectorsAPI* | [**CreateCustomConnector**](docs/ConnectorsAPI.md#createcustomconnector) | **Post** /connectors | Create custom connector
 *ConnectorsAPI* | [**DeleteCustomConnector**](docs/ConnectorsAPI.md#deletecustomconnector) | **Delete** /connectors/{scriptName} | 
@@ -600,6 +604,7 @@ Class | Method | HTTP request | Description
  - [IdentityWithNewAccessAccessRefsInner](docs/IdentityWithNewAccessAccessRefsInner.md)
  - [ImportNonEmployeeRecordsInBulkRequest](docs/ImportNonEmployeeRecordsInBulkRequest.md)
  - [ImportObject](docs/ImportObject.md)
+ - [ImportUploadedBackupRequest](docs/ImportUploadedBackupRequest.md)
  - [Index](docs/Index.md)
  - [InnerHit](docs/InnerHit.md)
  - [JsonPatchOperation](docs/JsonPatchOperation.md)
@@ -838,6 +843,8 @@ Class | Method | HTTP request | Description
  - [TypeAheadQuery](docs/TypeAheadQuery.md)
  - [TypedReference](docs/TypedReference.md)
  - [UpdateDetail](docs/UpdateDetail.md)
+ - [UploadsRequest](docs/UploadsRequest.md)
+ - [UploadsResponse](docs/UploadsResponse.md)
  - [UsageType](docs/UsageType.md)
  - [V3ConnectorDto](docs/V3ConnectorDto.md)
  - [V3CreateConnectorDto](docs/V3CreateConnectorDto.md)
