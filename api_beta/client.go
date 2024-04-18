@@ -172,6 +172,8 @@ type APIClient struct {
 
 	SourcesAPI *SourcesAPIService
 
+	SourcesAggregationAPI *SourcesAggregationAPIService
+
 	SuggestedEntitlementDescriptionAPI *SuggestedEntitlementDescriptionAPIService
 
 	TaggedObjectsAPI *TaggedObjectsAPIService
@@ -269,6 +271,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ServiceDeskIntegrationAPI = (*ServiceDeskIntegrationAPIService)(&c.common)
 	c.SourceUsagesAPI = (*SourceUsagesAPIService)(&c.common)
 	c.SourcesAPI = (*SourcesAPIService)(&c.common)
+	c.SourcesAggregationAPI = (*SourcesAggregationAPIService)(&c.common)
 	c.SuggestedEntitlementDescriptionAPI = (*SuggestedEntitlementDescriptionAPIService)(&c.common)
 	c.TaggedObjectsAPI = (*TaggedObjectsAPIService)(&c.common)
 	c.TaskManagementAPI = (*TaskManagementAPIService)(&c.common)

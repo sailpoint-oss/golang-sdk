@@ -40121,6 +40121,96 @@ paths:
       summary: Update Source Entitlement Request Configuration
       tags:
       - Sources
+  /sources/{id}/load-accounts:
+    post:
+      description: "Starts an account aggregation on the specified source. \nIf the\
+        \ target source is a direct connection, then the request body must be empty.\n\
+        If the target source is a delimited file source, then the CSV file needs to\
+        \ be included in the request body. You will also need to set the Content-Type\
+        \ header to `multipart/form-data`."
+      operationId: importAccounts
+      parameters:
+      - description: Source Id
+        example: ef38f94347e94562b5bb8424a56397d8
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/importAccounts_request'
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoadAccountsTask'
+          description: Aggregate Accounts Task
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:account:create
+      summary: Account Aggregation
+      tags:
+      - Sources > Aggregation
   /task-status/{id}:
     get:
       description: Get a TaskStatus for a task by task ID.
@@ -65521,6 +65611,91 @@ components:
         accessRequestConfig:
           $ref: '#/components/schemas/EntitlementAccessRequestConfig'
       type: object
+    LoadAccountsTask:
+      example:
+        task:
+          created: 2000-01-23T04:56:07.000+00:00
+          description: Aggregate from the specified application
+          completed: 2000-01-23T04:56:07.000+00:00
+          type: QUARTZ
+          launched: 2000-01-23T04:56:07.000+00:00
+          parentName: Audit Report
+          name: Cloud Account Aggregation
+          messages: []
+          progress: Initializing...
+          attributes:
+            appId: c31386cb18bb403cbb6df4c86294ff82
+            optimizedAggregation: enabled
+          returns:
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_APPLICATIONS
+            attributeName: applications
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_TOTAL
+            attributeName: total
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_OPTIMIZED
+            attributeName: optimizedAggregation
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_IGNORED
+            attributeName: ignored
+          - displayLabel: TASK_OUT_UNCHANGED_ACCOUNTS
+            attributeName: optimized
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CREATED
+            attributeName: created
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_UPDATED
+            attributeName: updated
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_DELETED
+            attributeName: deleted
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGER_CHANGES
+            attributeName: managerChanges
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_BUSINESS_ROLE_CHANGES
+            attributeName: detectedRoleChanges
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_EXCEPTION_CHANGES
+            attributeName: exceptionChanges
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICIES
+            attributeName: policies
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICY_VIOLATIONS
+            attributeName: policyViolations
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICY_NOTIFICATIONS
+            attributeName: policyNotifications
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCORES_CHANGED
+            attributeName: scoresChanged
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SNAPSHOTS_CREATED
+            attributeName: snapshotsCreated
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_CREATED
+            attributeName: scopesCreated
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_CORRELATED
+            attributeName: scopesCorrelated
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_SELECTED
+            attributeName: scopesSelected
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_DORMANT
+            attributeName: scopesDormant
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_UNSCOPED_IDENTITIES
+            attributeName: unscopedIdentities
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CERTIFICATIONS_CREATED
+            attributeName: certificationsCreated
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CERTIFICATIONS_DELETED
+            attributeName: certificationsDeleted
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_APPLICATIONS_GENERATED
+            attributeName: applicationsGenerated
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGED_ATTRIBUTES_PROMOTED
+            attributeName: managedAttributesCreated
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGED_ATTRIBUTES_PROMOTED_BY_APP
+            attributeName: managedAttributesCreatedByApplication
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_IDENTITYENTITLEMENTS_CREATED
+            attributeName: identityEntitlementsCreated
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_GROUPS_CREATED
+            attributeName: groupsCreated
+          id: ef38f94347e94562b5bb8424a56397d8
+          completionStatus: Success
+          launcher: John Doe
+        success: true
+      properties:
+        success:
+          default: true
+          description: The status of the result
+          example: true
+          type: boolean
+        task:
+          $ref: '#/components/schemas/LoadAccountsTask_task'
+      type: object
     TaskStatus:
       description: Details and current status of a specific task
       example:
@@ -76894,6 +77069,15 @@ components:
           type: string
           example: null
       type: object
+    importAccounts_request:
+      properties:
+        file:
+          format: binary
+          type: string
+        disableOptimization:
+          example: true
+          type: boolean
+      type: object
     createDomainDkim_405_response:
       properties:
         errorName:
@@ -78468,6 +78652,255 @@ components:
           description: Human-readable display name of the management workgroup
           example: My Management Workgroup
           type: string
+      type: object
+    LoadAccountsTask_task_messages_inner:
+      properties:
+        type:
+          description: Type of the message.
+          enum:
+          - INFO
+          - WARN
+          - ERROR
+          example: WARN
+          type: string
+        error:
+          default: false
+          description: Flag whether message is an error.
+          example: false
+          type: boolean
+        warning:
+          default: false
+          description: Flag whether message is a warning.
+          example: true
+          type: boolean
+        key:
+          description: Message string identifier.
+          example: This aggregation failed because the currently running aggregation
+            must complete before the next one can start.
+          type: string
+        localizedText:
+          description: Message context with the locale based language.
+          example: This aggregation failed because the currently running aggregation
+            must complete before the next one can start.
+          type: string
+      type: object
+    LoadAccountsTask_task_attributes:
+      additionalProperties:
+        type: object
+      description: Extra attributes map(dictionary) for the task.
+      example:
+        appId: c31386cb18bb403cbb6df4c86294ff82
+        optimizedAggregation: enabled
+      properties:
+        appId:
+          description: The id of the source
+          example: c31386cb18bb403cbb6df4c86294ff82
+          type: string
+        optimizedAggregation:
+          description: The indicator if the aggregation process was enabled/disabled
+            for the aggregation job
+          example: enabled
+          type: object
+      type: object
+    LoadAccountsTask_task:
+      example:
+        created: 2000-01-23T04:56:07.000+00:00
+        description: Aggregate from the specified application
+        completed: 2000-01-23T04:56:07.000+00:00
+        type: QUARTZ
+        launched: 2000-01-23T04:56:07.000+00:00
+        parentName: Audit Report
+        name: Cloud Account Aggregation
+        messages: []
+        progress: Initializing...
+        attributes:
+          appId: c31386cb18bb403cbb6df4c86294ff82
+          optimizedAggregation: enabled
+        returns:
+        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_APPLICATIONS
+          attributeName: applications
+        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_TOTAL
+          attributeName: total
+        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_OPTIMIZED
+          attributeName: optimizedAggregation
+        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_IGNORED
+          attributeName: ignored
+        - displayLabel: TASK_OUT_UNCHANGED_ACCOUNTS
+          attributeName: optimized
+        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CREATED
+          attributeName: created
+        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_UPDATED
+          attributeName: updated
+        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_DELETED
+          attributeName: deleted
+        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGER_CHANGES
+          attributeName: managerChanges
+        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_BUSINESS_ROLE_CHANGES
+          attributeName: detectedRoleChanges
+        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_EXCEPTION_CHANGES
+          attributeName: exceptionChanges
+        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICIES
+          attributeName: policies
+        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICY_VIOLATIONS
+          attributeName: policyViolations
+        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICY_NOTIFICATIONS
+          attributeName: policyNotifications
+        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCORES_CHANGED
+          attributeName: scoresChanged
+        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SNAPSHOTS_CREATED
+          attributeName: snapshotsCreated
+        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_CREATED
+          attributeName: scopesCreated
+        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_CORRELATED
+          attributeName: scopesCorrelated
+        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_SELECTED
+          attributeName: scopesSelected
+        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_DORMANT
+          attributeName: scopesDormant
+        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_UNSCOPED_IDENTITIES
+          attributeName: unscopedIdentities
+        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CERTIFICATIONS_CREATED
+          attributeName: certificationsCreated
+        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CERTIFICATIONS_DELETED
+          attributeName: certificationsDeleted
+        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_APPLICATIONS_GENERATED
+          attributeName: applicationsGenerated
+        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGED_ATTRIBUTES_PROMOTED
+          attributeName: managedAttributesCreated
+        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGED_ATTRIBUTES_PROMOTED_BY_APP
+          attributeName: managedAttributesCreatedByApplication
+        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_IDENTITYENTITLEMENTS_CREATED
+          attributeName: identityEntitlementsCreated
+        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_GROUPS_CREATED
+          attributeName: groupsCreated
+        id: ef38f94347e94562b5bb8424a56397d8
+        completionStatus: Success
+        launcher: John Doe
+      properties:
+        id:
+          description: System-generated unique ID of the task this taskStatus represents
+          example: ef38f94347e94562b5bb8424a56397d8
+          type: string
+        type:
+          description: Type of task this task represents
+          example: QUARTZ
+          type: string
+        name:
+          description: The name of the aggregation process
+          example: Cloud Account Aggregation
+          type: string
+        description:
+          description: The description of the task
+          example: Aggregate from the specified application
+          type: string
+        launcher:
+          description: The user who initiated the task
+          example: John Doe
+          type: string
+        created:
+          description: The Task creation date
+          format: date-time
+          type: string
+        launched:
+          description: The task start date
+          format: date-time
+          nullable: true
+          type: string
+        completed:
+          description: The task completion date
+          format: date-time
+          nullable: true
+          type: string
+        completionStatus:
+          description: Task completion status.
+          enum:
+          - SUCCESS
+          - WARNING
+          - ERROR
+          - TERMINATED
+          - TEMP_ERROR
+          example: Success
+          nullable: true
+          type: string
+        parentName:
+          description: Name of the parent task if exists.
+          example: Audit Report
+          nullable: true
+          type: string
+        messages:
+          description: List of the messages dedicated to the report.  From task definition
+            perspective here usually should be warnings or errors.
+          example: []
+          items:
+            $ref: '#/components/schemas/LoadAccountsTask_task_messages_inner'
+          type: array
+        progress:
+          description: Current task state.
+          example: Initializing...
+          nullable: true
+          type: string
+        attributes:
+          $ref: '#/components/schemas/LoadAccountsTask_task_attributes'
+        returns:
+          description: Return values from the task
+          example:
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_APPLICATIONS
+            attributeName: applications
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_TOTAL
+            attributeName: total
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_OPTIMIZED
+            attributeName: optimizedAggregation
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_IGNORED
+            attributeName: ignored
+          - displayLabel: TASK_OUT_UNCHANGED_ACCOUNTS
+            attributeName: optimized
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CREATED
+            attributeName: created
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_UPDATED
+            attributeName: updated
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_DELETED
+            attributeName: deleted
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGER_CHANGES
+            attributeName: managerChanges
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_BUSINESS_ROLE_CHANGES
+            attributeName: detectedRoleChanges
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_EXCEPTION_CHANGES
+            attributeName: exceptionChanges
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICIES
+            attributeName: policies
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICY_VIOLATIONS
+            attributeName: policyViolations
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICY_NOTIFICATIONS
+            attributeName: policyNotifications
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCORES_CHANGED
+            attributeName: scoresChanged
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SNAPSHOTS_CREATED
+            attributeName: snapshotsCreated
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_CREATED
+            attributeName: scopesCreated
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_CORRELATED
+            attributeName: scopesCorrelated
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_SELECTED
+            attributeName: scopesSelected
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_DORMANT
+            attributeName: scopesDormant
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_UNSCOPED_IDENTITIES
+            attributeName: unscopedIdentities
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CERTIFICATIONS_CREATED
+            attributeName: certificationsCreated
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CERTIFICATIONS_DELETED
+            attributeName: certificationsDeleted
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_APPLICATIONS_GENERATED
+            attributeName: applicationsGenerated
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGED_ATTRIBUTES_PROMOTED
+            attributeName: managedAttributesCreated
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGED_ATTRIBUTES_PROMOTED_BY_APP
+            attributeName: managedAttributesCreatedByApplication
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_IDENTITYENTITLEMENTS_CREATED
+            attributeName: identityEntitlementsCreated
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_GROUPS_CREATED
+            attributeName: groupsCreated
+          type: object
       type: object
     TaggedObject_objectRef:
       example:

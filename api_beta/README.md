@@ -489,6 +489,7 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**UpdateSource**](docs/SourcesAPI.md#updatesource) | **Patch** /sources/{id} | Update Source (Partial)
 *SourcesAPI* | [**UpdateSourceEntitlementRequestConfig**](docs/SourcesAPI.md#updatesourceentitlementrequestconfig) | **Put** /sources/{id}/entitlement-request-config | Update Source Entitlement Request Configuration
 *SourcesAPI* | [**UpdateSourceSchema**](docs/SourcesAPI.md#updatesourceschema) | **Patch** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Partial)
+*SourcesAggregationAPI* | [**ImportAccounts**](docs/SourcesAggregationAPI.md#importaccounts) | **Post** /sources/{id}/load-accounts | Account Aggregation
 *SuggestedEntitlementDescriptionAPI* | [**GetSedBatchStats**](docs/SuggestedEntitlementDescriptionAPI.md#getsedbatchstats) | **Get** /suggested-entitlement-description-batches/{batchId}/stats | Submit Sed Batch Stats Request
 *SuggestedEntitlementDescriptionAPI* | [**GetSedBatches**](docs/SuggestedEntitlementDescriptionAPI.md#getsedbatches) | **Get** /suggested-entitlement-description-batches | List Sed Batch Request
 *SuggestedEntitlementDescriptionAPI* | [**ListSeds**](docs/SuggestedEntitlementDescriptionAPI.md#listseds) | **Get** /suggested-entitlement-descriptions | List Suggested Entitlement Description
@@ -932,6 +933,7 @@ Class | Method | HTTP request | Description
  - [IdentitySyncPayload](docs/IdentitySyncPayload.md)
  - [IdentityWithNewAccess](docs/IdentityWithNewAccess.md)
  - [IdentityWithNewAccessAccessRefsInner](docs/IdentityWithNewAccessAccessRefsInner.md)
+ - [ImportAccountsRequest](docs/ImportAccountsRequest.md)
  - [ImportEntitlementsRequest](docs/ImportEntitlementsRequest.md)
  - [ImportFormDefinitions202Response](docs/ImportFormDefinitions202Response.md)
  - [ImportFormDefinitions202ResponseErrorsInner](docs/ImportFormDefinitions202ResponseErrorsInner.md)
@@ -962,6 +964,10 @@ Class | Method | HTTP request | Description
  - [ListIdentityAccessItems200ResponseInner](docs/ListIdentityAccessItems200ResponseInner.md)
  - [ListPredefinedSelectOptionsResponse](docs/ListPredefinedSelectOptionsResponse.md)
  - [ListWorkgroupMembers200ResponseInner](docs/ListWorkgroupMembers200ResponseInner.md)
+ - [LoadAccountsTask](docs/LoadAccountsTask.md)
+ - [LoadAccountsTaskTask](docs/LoadAccountsTaskTask.md)
+ - [LoadAccountsTaskTaskAttributes](docs/LoadAccountsTaskTaskAttributes.md)
+ - [LoadAccountsTaskTaskMessagesInner](docs/LoadAccountsTaskTaskMessagesInner.md)
  - [LoadEntitlementTask](docs/LoadEntitlementTask.md)
  - [LocaleOrigin](docs/LocaleOrigin.md)
  - [LocalizedMessage](docs/LocalizedMessage.md)
