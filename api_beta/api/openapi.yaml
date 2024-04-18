@@ -4215,6 +4215,20 @@ paths:
           **sourceId**: *eq, in, sw*
 
           **uncorrelated**: *eq*
+
+          **entitlements**: *eq*
+
+          **identity.name**: *eq, in, sw*
+
+          **identity.correlated**: *eq*
+
+          **identity.identityState**: *eq, in*
+
+          **source.displayableName**: *eq, in*
+
+          **source.authoritative**: *eq*
+
+          **source.connectionType**: *eq, in*
         example: identityId eq "2c9180858082150f0180893dbaf44201"
         in: query
         name: filters
@@ -4223,7 +4237,7 @@ paths:
       - description: |-
           Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
 
-          Sorting is supported for the following fields: **id, name, created, modified, sourceId, identityId, identity.id, nativeIdentity, uuid, manuallyCorrelated, identity.name**
+          Sorting is supported for the following fields: **id, name, created, modified, sourceId, identityId, identity.id, nativeIdentity, uuid, manuallyCorrelated, entitlements, identity.name, identity.identityState, identity.correlated, source.displayableName, source.authoritative, source.connectionType**
         example: "id,name"
         in: query
         name: sorters
