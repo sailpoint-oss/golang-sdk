@@ -77609,6 +77609,9 @@ components:
       - example: New description
         title: string
         type: string
+      - example: true
+        title: boolean
+        type: boolean
       - example: 300
         title: integer
         type: integer
