@@ -481,10 +481,11 @@ docs/InvocationStatusType.md
 docs/JsonPatch.md
 docs/JsonPatchOperation.md
 docs/JsonPatchOperationValue.md
-docs/KbaAnswerRequest.md
 docs/KbaAnswerRequestItem.md
+docs/KbaAnswerResponseItem.md
 docs/KbaAuthResponse.md
 docs/KbaAuthResponseItem.md
+docs/KbaQuestion.md
 docs/LatestOutlierSummary.md
 docs/License.md
 docs/LifecycleState.md
@@ -1316,10 +1317,11 @@ model_invocation_status_type.go
 model_json_patch.go
 model_json_patch_operation.go
 model_json_patch_operation_value.go
-model_kba_answer_request.go
 model_kba_answer_request_item.go
+model_kba_answer_response_item.go
 model_kba_auth_response.go
 model_kba_auth_response_item.go
+model_kba_question.go
 model_latest_outlier_summary.go
 model_license.go
 model_lifecycle_state.go

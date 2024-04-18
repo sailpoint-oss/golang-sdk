@@ -6,8 +6,10 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**DeleteMFAConfig**](MFAConfigurationAPI.md#DeleteMFAConfig) | **Delete** /mfa/{method}/delete | Delete MFA method configuration
 [**GetMFADuoConfig**](MFAConfigurationAPI.md#GetMFADuoConfig) | **Get** /mfa/duo-web/config | Configuration of Duo MFA method
+[**GetMFAKbaConfig**](MFAConfigurationAPI.md#GetMFAKbaConfig) | **Get** /mfa/kba/config | Configuration of KBA MFA method
 [**GetMFAOktaConfig**](MFAConfigurationAPI.md#GetMFAOktaConfig) | **Get** /mfa/okta-verify/config | Configuration of Okta MFA method
 [**SetMFADuoConfig**](MFAConfigurationAPI.md#SetMFADuoConfig) | **Put** /mfa/duo-web/config | Set Duo MFA configuration
+[**SetMFAKBAConfig**](MFAConfigurationAPI.md#SetMFAKBAConfig) | **Post** /mfa/kba/config/answers | Set MFA KBA configuration
 [**SetMFAOktaConfig**](MFAConfigurationAPI.md#SetMFAOktaConfig) | **Put** /mfa/okta-verify/config | Set Okta MFA configuration
 [**TestMFAConfig**](MFAConfigurationAPI.md#TestMFAConfig) | **Get** /mfa/{method}/test | MFA method&#39;s test configuration
 
@@ -144,6 +146,72 @@ Other parameters are passed through a pointer to a apiGetMFADuoConfigRequest str
 [[Back to README]](../README.md)
 
 
+## GetMFAKbaConfig
+
+> []KbaQuestion GetMFAKbaConfig(ctx).AllLanguages(allLanguages).Execute()
+
+Configuration of KBA MFA method
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    allLanguages := false // bool | Indicator whether the question text should be returned in all configured languages    * If true, the question text is returned in all languages that it is configured in.    * If false, the question text is returned in the user locale if available, else for the default locale.     * If not passed, it behaves the same way as passing this parameter as false (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MFAConfigurationAPI.GetMFAKbaConfig(context.Background()).AllLanguages(allLanguages).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.GetMFAKbaConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetMFAKbaConfig`: []KbaQuestion
+    fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationAPI.GetMFAKbaConfig`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetMFAKbaConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **allLanguages** | **bool** | Indicator whether the question text should be returned in all configured languages    * If true, the question text is returned in all languages that it is configured in.    * If false, the question text is returned in the user locale if available, else for the default locale.     * If not passed, it behaves the same way as passing this parameter as false | 
+
+### Return type
+
+[**[]KbaQuestion**](KbaQuestion.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetMFAOktaConfig
 
 > MfaOktaConfig GetMFAOktaConfig(ctx).Execute()
@@ -256,6 +324,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**MfaDuoConfig**](MfaDuoConfig.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SetMFAKBAConfig
+
+> []KbaAnswerResponseItem SetMFAKBAConfig(ctx).KbaAnswerRequestItem(kbaAnswerRequestItem).Execute()
+
+Set MFA KBA configuration
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    kbaAnswerRequestItem := []openapiclient.KbaAnswerRequestItem{*openapiclient.NewKbaAnswerRequestItem("c54fee53-2d63-4fc5-9259-3e93b9994135", "Your answer")} // []KbaAnswerRequestItem | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MFAConfigurationAPI.SetMFAKBAConfig(context.Background()).KbaAnswerRequestItem(kbaAnswerRequestItem).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.SetMFAKBAConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SetMFAKBAConfig`: []KbaAnswerResponseItem
+    fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationAPI.SetMFAKBAConfig`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetMFAKBAConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **kbaAnswerRequestItem** | [**[]KbaAnswerRequestItem**](KbaAnswerRequestItem.md) |  | 
+
+### Return type
+
+[**[]KbaAnswerResponseItem**](KbaAnswerResponseItem.md)
 
 ### Authorization
 

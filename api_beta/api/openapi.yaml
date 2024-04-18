@@ -22154,6 +22154,207 @@ paths:
       summary: Set Duo MFA configuration
       tags:
       - MFA Configuration
+  /mfa/kba/config:
+    get:
+      description: This API returns the KBA configuration for MFA. A token with USER
+        or ORG_ADMIN authority is required to call this API.
+      operationId: getMFAKbaConfig
+      parameters:
+      - description: "Indicator whether the question text should be returned in all\
+          \ configured languages\n   * If true, the question text is returned in all\
+          \ languages that it is configured in.\n   * If false, the question text\
+          \ is returned in the user locale if available, else for the default locale.\
+          \ \n   * If not passed, it behaves the same way as passing this parameter\
+          \ as false"
+        example: allLanguages=true
+        in: query
+        name: allLanguages
+        required: false
+        schema:
+          type: boolean
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - id: 143cfd3b-c23f-426b-ae5f-d3db06fa5919
+                text: MFA new question -1 ?
+                hasAnswer: false
+                numAnswers: 0
+              - id: "173421"
+                text: What is your alphanumeric PIN?
+                hasAnswer: false
+                numAnswers: 3
+              schema:
+                items:
+                  $ref: '#/components/schemas/KbaQuestion'
+                type: array
+          description: The configuration for KBA MFA method.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:mfa-kba:read
+      summary: Configuration of KBA MFA method
+      tags:
+      - MFA Configuration
+  /mfa/kba/config/answers:
+    post:
+      description: |-
+        This API sets answers to challenge questions.  Any configured questions omitted from the request are removed from user KBA configuration.
+        A token with USER authority is required to call this API.
+      operationId: setMFAKBAConfig
+      requestBody:
+        content:
+          application/json:
+            example:
+            - id: "173423"
+              answer: 822cd15d6c15aa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a0859a2fea34
+            - id: c54fee53-2d63-4fc5-9259-3e93b9994135
+              answer: 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08
+            schema:
+              items:
+                $ref: '#/components/schemas/KbaAnswerRequestItem'
+              type: array
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - id: 143cfd3b-c23f-426b-ae5f-d3db06fa5919
+                question: "[{\"text\":\"Nouvelle question MFA -1 ?\",\"locale\":\"\
+                  fr\"},{\"text\":\"MFA new question -1 ?\",\"locale\":\"\"}]"
+                hasAnswer: false
+              - id: "173421"
+                question: "[{\"text\":\"What is your alphanumeric PIN?\",\"locale\"\
+                  :\"\"}]"
+                hasAnswer: true
+              - id: c54fee53-2d63-4fc5-9259-3e93b9994135
+                question: "[{\"text\":\"Nouvelle question MFA - 2 ?\",\"locale\":\"\
+                  fr\"},{\"text\":\"MFA new question - 2 ?\",\"locale\":\"\"}]"
+                hasAnswer: true
+              schema:
+                items:
+                  $ref: '#/components/schemas/KbaAnswerResponseItem'
+                type: array
+          description: The new KBA configuration for the user.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:mfa-kba:authenticate
+      summary: Set MFA KBA configuration
+      tags:
+      - MFA Configuration
   /mfa/{method}/test:
     get:
       description: |-
@@ -22608,13 +22809,14 @@ paths:
         content:
           application/json:
             example:
-              answers:
-              - questionId: 089899f13a8f4da7824996191587bab9
-                answer: Your answer
-              - questionId: 067899f13a8f4da7824996191587bab9
-                answer: Your answer1
+            - id: "173423"
+              answer: 822cd15d6c15aa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a0859a2fea34
+            - id: c54fee53-2d63-4fc5-9259-3e93b9994135
+              answer: 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08
             schema:
-              $ref: '#/components/schemas/KbaAnswerRequest'
+              items:
+                $ref: '#/components/schemas/KbaAnswerRequestItem'
+              type: array
         required: true
       responses:
         "200":
@@ -61103,6 +61305,92 @@ components:
           nullable: true
           type: object
       type: object
+    KbaQuestion:
+      description: KBA Configuration
+      example:
+        hasAnswer: true
+        numAnswers: 5
+        id: 143cfd3b-c23f-426b-ae5f-d3db06fa5919
+        text: "[{\"text\":\"Nouvelle question MFA -1 ?\",\"locale\":\"fr\"},{\"text\"\
+          :\"MFA new question -1 ?\",\"locale\":\"\"}]"
+      properties:
+        id:
+          description: KBA Question Id
+          example: 143cfd3b-c23f-426b-ae5f-d3db06fa5919
+          nullable: false
+          type: string
+        text:
+          description: KBA Question description
+          example: "[{\"text\":\"Nouvelle question MFA -1 ?\",\"locale\":\"fr\"},{\"\
+            text\":\"MFA new question -1 ?\",\"locale\":\"\"}]"
+          nullable: false
+          type: string
+        hasAnswer:
+          description: Denotes whether the KBA question has an answer configured for
+            any user in the tenant
+          example: true
+          nullable: false
+          type: boolean
+        numAnswers:
+          description: Denotes the number of KBA configurations for this question
+          example: 5
+          format: int32
+          nullable: false
+          type: integer
+      required:
+      - hasAnswer
+      - id
+      - numAnswers
+      - text
+      type: object
+    KbaAnswerRequestItem:
+      example:
+        answer: Your answer
+        id: c54fee53-2d63-4fc5-9259-3e93b9994135
+      properties:
+        id:
+          description: Question Id
+          example: c54fee53-2d63-4fc5-9259-3e93b9994135
+          nullable: false
+          type: string
+        answer:
+          description: An answer for the KBA question
+          example: Your answer
+          nullable: false
+          type: string
+      required:
+      - answer
+      - id
+      type: object
+    KbaAnswerResponseItem:
+      example:
+        hasAnswer: true
+        question: "[{\"text\":\"Nouvelle question MFA -1 ?\",\"locale\":\"fr\"},{\"\
+          text\":\"MFA new question -1 ?\",\"locale\":\"\"}]"
+        id: c54fee53-2d63-4fc5-9259-3e93b9994135
+      properties:
+        id:
+          description: Question Id
+          example: c54fee53-2d63-4fc5-9259-3e93b9994135
+          nullable: false
+          type: string
+        question:
+          description: Question description
+          example: "[{\"text\":\"Nouvelle question MFA -1 ?\",\"locale\":\"fr\"},{\"\
+            text\":\"MFA new question -1 ?\",\"locale\":\"\"}]"
+          nullable: false
+          type: string
+        hasAnswer:
+          description: Denotes whether the KBA question has an answer configured for
+            the current user
+          example: true
+          nullable: false
+          type: boolean
+      required:
+      - hasAnswer
+      - id
+      - question
+      type: object
     MfaConfigTestResponse:
       description: Response model for configuration test of a given MFA method
       example:
@@ -61194,28 +61482,6 @@ components:
           type: string
       required:
       - requestId
-      type: object
-    KbaAnswerRequest:
-      example:
-        answers:
-        - questionId: 089899f13a8f4da7824996191587bab9
-          answer: Your answer
-        - questionId: 067899f13a8f4da7824996191587bab9
-          answer: Your answer1
-      properties:
-        answers:
-          description: Kba answers
-          example:
-          - questionId: 089899f13a8f4da7824996191587bab9
-            answer: Your answer
-          - questionId: 067899f13a8f4da7824996191587bab9
-            answer: Your answer1
-          items:
-            $ref: '#/components/schemas/KbaAnswerRequestItem'
-          nullable: false
-          type: array
-      required:
-      - answers
       type: object
     KbaAuthResponse:
       example:
@@ -71869,22 +72135,6 @@ components:
           description: What reference object does this ID correspond to
           example: AccessRequestId
           type: string
-      type: object
-    KbaAnswerRequestItem:
-      properties:
-        questionId:
-          description: Question Id
-          example: 089899f13a8f4da7824996191587bab9
-          nullable: false
-          type: string
-        answer:
-          description: An answer for the KBA question
-          example: Your answer
-          nullable: false
-          type: string
-      required:
-      - answer
-      - questionId
       type: object
     KbaAuthResponseItem:
       properties:
