@@ -2543,6 +2543,7 @@ type ApiSearchFormElementDataByElementIDRequest struct {
 	formElementID string
 	limit *int64
 	filters *string
+	query *string
 }
 
 // Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
@@ -2551,9 +2552,15 @@ func (r ApiSearchFormElementDataByElementIDRequest) Limit(limit int64) ApiSearch
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  **label**: *eq, ne, in*  **subLabel**: *eq, ne, in*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the &#x60;in&#x60; operator. The &#x60;not&#x60; composite operator must be used in front of the field. For example, the following is valid: &#x60;not value in (\&quot;ID01\&quot;)&#x60;
 func (r ApiSearchFormElementDataByElementIDRequest) Filters(filters string) ApiSearchFormElementDataByElementIDRequest {
 	r.filters = &filters
+	return r
+}
+
+// String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \&quot;starts with\&quot; filter against  several fields.
+func (r ApiSearchFormElementDataByElementIDRequest) Query(query string) ApiSearchFormElementDataByElementIDRequest {
+	r.query = &query
 	return r
 }
 
@@ -2612,6 +2619,9 @@ func (a *CustomFormsAPIService) SearchFormElementDataByElementIDExecute(r ApiSea
 	}
 	if r.filters != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "")
+	}
+	if r.query != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "query", r.query, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3054,13 +3064,13 @@ func (r ApiShowPreviewDataSourceRequest) Limit(limit int64) ApiShowPreviewDataSo
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, gt, sw, in*  **label**: *eq, gt, sw, in*  **subLabel**: *eq, gt, sw, in*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the &#x60;in&#x60; operator. The &#x60;not&#x60; composite operator must be used in front of the field. For example, the following is valid: &#x60;not value in (\&quot;ID01\&quot;)&#x60;
 func (r ApiShowPreviewDataSourceRequest) Filters(filters string) ApiShowPreviewDataSourceRequest {
 	r.filters = &filters
 	return r
 }
 
-// Query  String specifying to query against
+// String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \&quot;starts with\&quot; filter against  several fields.
 func (r ApiShowPreviewDataSourceRequest) Query(query string) ApiShowPreviewDataSourceRequest {
 	r.query = &query
 	return r

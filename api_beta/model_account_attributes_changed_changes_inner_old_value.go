@@ -17,15 +17,15 @@ import (
 
 // AccountAttributesChangedChangesInnerOldValue - The previous value of the attribute.
 type AccountAttributesChangedChangesInnerOldValue struct {
-	ArrayOf*string *[]*string
+	ArrayOfstring *[]*string
 	Bool *bool
 	String *string
 }
 
 // []*stringAsAccountAttributesChangedChangesInnerOldValue is a convenience function that returns []*string wrapped in AccountAttributesChangedChangesInnerOldValue
-func ArrayOf*stringAsAccountAttributesChangedChangesInnerOldValue(v *[]*string) AccountAttributesChangedChangesInnerOldValue {
+func ArrayOfstringAsAccountAttributesChangedChangesInnerOldValue(v *[]*string) AccountAttributesChangedChangesInnerOldValue {
 	return AccountAttributesChangedChangesInnerOldValue{
-		ArrayOf*string: v,
+		ArrayOfstring: v,
 	}
 }
 
@@ -53,17 +53,17 @@ func (dst *AccountAttributesChangedChangesInnerOldValue) UnmarshalJSON(data []by
 	}
 
 	match := 0
-	// try to unmarshal data into ArrayOf*string
-	err = newStrictDecoder(data).Decode(&dst.ArrayOf*string)
+	// try to unmarshal data into ArrayOfstring
+	err = newStrictDecoder(data).Decode(&dst.ArrayOfstring)
 	if err == nil {
-		jsonArrayOf*string, _ := json.Marshal(dst.ArrayOf*string)
-		if string(jsonArrayOf*string) == "{}" { // empty struct
-			dst.ArrayOf*string = nil
+		jsonArrayOfstring, _ := json.Marshal(dst.ArrayOfstring)
+		if string(jsonArrayOfstring) == "{}" { // empty struct
+			dst.ArrayOfstring = nil
 		} else {
 			match++
 		}
 	} else {
-		dst.ArrayOf*string = nil
+		dst.ArrayOfstring = nil
 	}
 
 	// try to unmarshal data into Bool
@@ -94,7 +94,7 @@ func (dst *AccountAttributesChangedChangesInnerOldValue) UnmarshalJSON(data []by
 
 	if match > 1 { // more than 1 match
 		// reset to nil
-		dst.ArrayOf*string = nil
+		dst.ArrayOfstring = nil
 		dst.Bool = nil
 		dst.String = nil
 
@@ -108,8 +108,8 @@ func (dst *AccountAttributesChangedChangesInnerOldValue) UnmarshalJSON(data []by
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src AccountAttributesChangedChangesInnerOldValue) MarshalJSON() ([]byte, error) {
-	if src.ArrayOf*string != nil {
-		return json.Marshal(&src.ArrayOf*string)
+	if src.ArrayOfstring != nil {
+		return json.Marshal(&src.ArrayOfstring)
 	}
 
 	if src.Bool != nil {
@@ -128,8 +128,8 @@ func (obj *AccountAttributesChangedChangesInnerOldValue) GetActualInstance() (in
 	if obj == nil {
 		return nil
 	}
-	if obj.ArrayOf*string != nil {
-		return obj.ArrayOf*string
+	if obj.ArrayOfstring != nil {
+		return obj.ArrayOfstring
 	}
 
 	if obj.Bool != nil {

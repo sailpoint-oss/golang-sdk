@@ -522,11 +522,11 @@ func (a *MFAControllerAPIService) SendDuoVerifyRequestExecute(r ApiSendDuoVerify
 type ApiSendKbaAnswersRequest struct {
 	ctx context.Context
 	ApiService *MFAControllerAPIService
-	kbaAnswerRequest *KbaAnswerRequest
+	kbaAnswerRequestItem *[]KbaAnswerRequestItem
 }
 
-func (r ApiSendKbaAnswersRequest) KbaAnswerRequest(kbaAnswerRequest KbaAnswerRequest) ApiSendKbaAnswersRequest {
-	r.kbaAnswerRequest = &kbaAnswerRequest
+func (r ApiSendKbaAnswersRequest) KbaAnswerRequestItem(kbaAnswerRequestItem []KbaAnswerRequestItem) ApiSendKbaAnswersRequest {
+	r.kbaAnswerRequestItem = &kbaAnswerRequestItem
 	return r
 }
 
@@ -569,8 +569,8 @@ func (a *MFAControllerAPIService) SendKbaAnswersExecute(r ApiSendKbaAnswersReque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.kbaAnswerRequest == nil {
-		return localVarReturnValue, nil, reportError("kbaAnswerRequest is required and must be specified")
+	if r.kbaAnswerRequestItem == nil {
+		return localVarReturnValue, nil, reportError("kbaAnswerRequestItem is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -591,7 +591,7 @@ func (a *MFAControllerAPIService) SendKbaAnswersExecute(r ApiSendKbaAnswersReque
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.kbaAnswerRequest
+	localVarPostBody = r.kbaAnswerRequestItem
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

@@ -296,8 +296,10 @@ Class | Method | HTTP request | Description
 *LifecycleStatesAPI* | [**UpdateLifecycleStates**](docs/LifecycleStatesAPI.md#updatelifecyclestates) | **Patch** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Update Lifecycle State
 *MFAConfigurationAPI* | [**DeleteMFAConfig**](docs/MFAConfigurationAPI.md#deletemfaconfig) | **Delete** /mfa/{method}/delete | Delete MFA method configuration
 *MFAConfigurationAPI* | [**GetMFADuoConfig**](docs/MFAConfigurationAPI.md#getmfaduoconfig) | **Get** /mfa/duo-web/config | Configuration of Duo MFA method
+*MFAConfigurationAPI* | [**GetMFAKbaConfig**](docs/MFAConfigurationAPI.md#getmfakbaconfig) | **Get** /mfa/kba/config | Configuration of KBA MFA method
 *MFAConfigurationAPI* | [**GetMFAOktaConfig**](docs/MFAConfigurationAPI.md#getmfaoktaconfig) | **Get** /mfa/okta-verify/config | Configuration of Okta MFA method
 *MFAConfigurationAPI* | [**SetMFADuoConfig**](docs/MFAConfigurationAPI.md#setmfaduoconfig) | **Put** /mfa/duo-web/config | Set Duo MFA configuration
+*MFAConfigurationAPI* | [**SetMFAKBAConfig**](docs/MFAConfigurationAPI.md#setmfakbaconfig) | **Post** /mfa/kba/config/answers | Set MFA KBA configuration
 *MFAConfigurationAPI* | [**SetMFAOktaConfig**](docs/MFAConfigurationAPI.md#setmfaoktaconfig) | **Put** /mfa/okta-verify/config | Set Okta MFA configuration
 *MFAConfigurationAPI* | [**TestMFAConfig**](docs/MFAConfigurationAPI.md#testmfaconfig) | **Get** /mfa/{method}/test | MFA method&#39;s test configuration
 *MFAControllerAPI* | [**CreateSendToken**](docs/MFAControllerAPI.md#createsendtoken) | **Post** /mfa/token/send | Create and send user token
@@ -490,6 +492,7 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**UpdateSource**](docs/SourcesAPI.md#updatesource) | **Patch** /sources/{id} | Update Source (Partial)
 *SourcesAPI* | [**UpdateSourceEntitlementRequestConfig**](docs/SourcesAPI.md#updatesourceentitlementrequestconfig) | **Put** /sources/{id}/entitlement-request-config | Update Source Entitlement Request Configuration
 *SourcesAPI* | [**UpdateSourceSchema**](docs/SourcesAPI.md#updatesourceschema) | **Patch** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Partial)
+*SourcesAggregationAPI* | [**ImportAccounts**](docs/SourcesAggregationAPI.md#importaccounts) | **Post** /sources/{id}/load-accounts | Account Aggregation
 *SuggestedEntitlementDescriptionAPI* | [**GetSedBatchStats**](docs/SuggestedEntitlementDescriptionAPI.md#getsedbatchstats) | **Get** /suggested-entitlement-description-batches/{batchId}/stats | Submit Sed Batch Stats Request
 *SuggestedEntitlementDescriptionAPI* | [**GetSedBatches**](docs/SuggestedEntitlementDescriptionAPI.md#getsedbatches) | **Get** /suggested-entitlement-description-batches | List Sed Batch Request
 *SuggestedEntitlementDescriptionAPI* | [**ListSeds**](docs/SuggestedEntitlementDescriptionAPI.md#listseds) | **Get** /suggested-entitlement-descriptions | List Suggested Entitlement Description
@@ -933,6 +936,7 @@ Class | Method | HTTP request | Description
  - [IdentitySyncPayload](docs/IdentitySyncPayload.md)
  - [IdentityWithNewAccess](docs/IdentityWithNewAccess.md)
  - [IdentityWithNewAccessAccessRefsInner](docs/IdentityWithNewAccessAccessRefsInner.md)
+ - [ImportAccountsRequest](docs/ImportAccountsRequest.md)
  - [ImportEntitlementsRequest](docs/ImportEntitlementsRequest.md)
  - [ImportFormDefinitions202Response](docs/ImportFormDefinitions202Response.md)
  - [ImportFormDefinitions202ResponseErrorsInner](docs/ImportFormDefinitions202ResponseErrorsInner.md)
@@ -946,10 +950,11 @@ Class | Method | HTTP request | Description
  - [JsonPatch](docs/JsonPatch.md)
  - [JsonPatchOperation](docs/JsonPatchOperation.md)
  - [JsonPatchOperationValue](docs/JsonPatchOperationValue.md)
- - [KbaAnswerRequest](docs/KbaAnswerRequest.md)
  - [KbaAnswerRequestItem](docs/KbaAnswerRequestItem.md)
+ - [KbaAnswerResponseItem](docs/KbaAnswerResponseItem.md)
  - [KbaAuthResponse](docs/KbaAuthResponse.md)
  - [KbaAuthResponseItem](docs/KbaAuthResponseItem.md)
+ - [KbaQuestion](docs/KbaQuestion.md)
  - [LatestOutlierSummary](docs/LatestOutlierSummary.md)
  - [License](docs/License.md)
  - [LifecycleState](docs/LifecycleState.md)
@@ -963,6 +968,10 @@ Class | Method | HTTP request | Description
  - [ListIdentityAccessItems200ResponseInner](docs/ListIdentityAccessItems200ResponseInner.md)
  - [ListPredefinedSelectOptionsResponse](docs/ListPredefinedSelectOptionsResponse.md)
  - [ListWorkgroupMembers200ResponseInner](docs/ListWorkgroupMembers200ResponseInner.md)
+ - [LoadAccountsTask](docs/LoadAccountsTask.md)
+ - [LoadAccountsTaskTask](docs/LoadAccountsTaskTask.md)
+ - [LoadAccountsTaskTaskAttributes](docs/LoadAccountsTaskTaskAttributes.md)
+ - [LoadAccountsTaskTaskMessagesInner](docs/LoadAccountsTaskTaskMessagesInner.md)
  - [LoadEntitlementTask](docs/LoadEntitlementTask.md)
  - [LocaleOrigin](docs/LocaleOrigin.md)
  - [LocalizedMessage](docs/LocalizedMessage.md)

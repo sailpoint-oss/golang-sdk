@@ -36,7 +36,7 @@ type _PatchPotentialRoleRequestInner PatchPotentialRoleRequestInner
 // will change when the set of required properties is changed
 func NewPatchPotentialRoleRequestInner(op string, path string) *PatchPotentialRoleRequestInner {
 	this := PatchPotentialRoleRequestInner{}
-	this.Op = op
+	this.Op = &op
 	this.Path = path
 	return &this
 }

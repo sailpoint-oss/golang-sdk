@@ -21,7 +21,7 @@ var _ MappedNullable = &KbaAnswerRequestItem{}
 // KbaAnswerRequestItem struct for KbaAnswerRequestItem
 type KbaAnswerRequestItem struct {
 	// Question Id
-	QuestionId string `json:"questionId"`
+	Id string `json:"id"`
 	// An answer for the KBA question
 	Answer string `json:"answer"`
 	AdditionalProperties map[string]interface{}
@@ -33,9 +33,9 @@ type _KbaAnswerRequestItem KbaAnswerRequestItem
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKbaAnswerRequestItem(questionId string, answer string) *KbaAnswerRequestItem {
+func NewKbaAnswerRequestItem(id string, answer string) *KbaAnswerRequestItem {
 	this := KbaAnswerRequestItem{}
-	this.QuestionId = questionId
+	this.Id = id
 	this.Answer = answer
 	return &this
 }
@@ -48,28 +48,28 @@ func NewKbaAnswerRequestItemWithDefaults() *KbaAnswerRequestItem {
 	return &this
 }
 
-// GetQuestionId returns the QuestionId field value
-func (o *KbaAnswerRequestItem) GetQuestionId() string {
+// GetId returns the Id field value
+func (o *KbaAnswerRequestItem) GetId() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.QuestionId
+	return o.Id
 }
 
-// GetQuestionIdOk returns a tuple with the QuestionId field value
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *KbaAnswerRequestItem) GetQuestionIdOk() (*string, bool) {
+func (o *KbaAnswerRequestItem) GetIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.QuestionId, true
+	return &o.Id, true
 }
 
-// SetQuestionId sets field value
-func (o *KbaAnswerRequestItem) SetQuestionId(v string) {
-	o.QuestionId = v
+// SetId sets field value
+func (o *KbaAnswerRequestItem) SetId(v string) {
+	o.Id = v
 }
 
 // GetAnswer returns the Answer field value
@@ -106,7 +106,7 @@ func (o KbaAnswerRequestItem) MarshalJSON() ([]byte, error) {
 
 func (o KbaAnswerRequestItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["questionId"] = o.QuestionId
+	toSerialize["id"] = o.Id
 	toSerialize["answer"] = o.Answer
 
 	for key, value := range o.AdditionalProperties {
@@ -121,7 +121,7 @@ func (o *KbaAnswerRequestItem) UnmarshalJSON(bytes []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"questionId",
+		"id",
 		"answer",
 	}
 
@@ -148,7 +148,7 @@ func (o *KbaAnswerRequestItem) UnmarshalJSON(bytes []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "questionId")
+		delete(additionalProperties, "id")
 		delete(additionalProperties, "answer")
 		o.AdditionalProperties = additionalProperties
 	}

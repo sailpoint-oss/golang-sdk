@@ -62,6 +62,7 @@ api_sod_policy.go
 api_sod_violations.go
 api_source_usages.go
 api_sources.go
+api_sources_aggregation.go
 api_sp_config.go
 api_suggested_entitlement_description.go
 api_tagged_objects.go
@@ -466,6 +467,7 @@ docs/IdentitySyncJob.md
 docs/IdentitySyncPayload.md
 docs/IdentityWithNewAccess.md
 docs/IdentityWithNewAccessAccessRefsInner.md
+docs/ImportAccountsRequest.md
 docs/ImportEntitlementsRequest.md
 docs/ImportFormDefinitions202Response.md
 docs/ImportFormDefinitions202ResponseErrorsInner.md
@@ -479,10 +481,11 @@ docs/InvocationStatusType.md
 docs/JsonPatch.md
 docs/JsonPatchOperation.md
 docs/JsonPatchOperationValue.md
-docs/KbaAnswerRequest.md
 docs/KbaAnswerRequestItem.md
+docs/KbaAnswerResponseItem.md
 docs/KbaAuthResponse.md
 docs/KbaAuthResponseItem.md
+docs/KbaQuestion.md
 docs/LatestOutlierSummary.md
 docs/License.md
 docs/LifecycleState.md
@@ -497,6 +500,10 @@ docs/ListFormInstancesByTenantResponse.md
 docs/ListIdentityAccessItems200ResponseInner.md
 docs/ListPredefinedSelectOptionsResponse.md
 docs/ListWorkgroupMembers200ResponseInner.md
+docs/LoadAccountsTask.md
+docs/LoadAccountsTaskTask.md
+docs/LoadAccountsTaskTaskAttributes.md
+docs/LoadAccountsTaskTaskMessagesInner.md
 docs/LoadEntitlementTask.md
 docs/LocaleOrigin.md
 docs/LocalizedMessage.md
@@ -821,6 +828,7 @@ docs/SourceUsage.md
 docs/SourceUsageStatus.md
 docs/SourceUsagesAPI.md
 docs/SourcesAPI.md
+docs/SourcesAggregationAPI.md
 docs/SpConfigExportJob.md
 docs/SpConfigExportJobStatus.md
 docs/SpConfigExportResults.md
@@ -1295,6 +1303,7 @@ model_identity_sync_job.go
 model_identity_sync_payload.go
 model_identity_with_new_access.go
 model_identity_with_new_access_access_refs_inner.go
+model_import_accounts_request.go
 model_import_entitlements_request.go
 model_import_form_definitions_202_response.go
 model_import_form_definitions_202_response_errors_inner.go
@@ -1308,10 +1317,11 @@ model_invocation_status_type.go
 model_json_patch.go
 model_json_patch_operation.go
 model_json_patch_operation_value.go
-model_kba_answer_request.go
 model_kba_answer_request_item.go
+model_kba_answer_response_item.go
 model_kba_auth_response.go
 model_kba_auth_response_item.go
+model_kba_question.go
 model_latest_outlier_summary.go
 model_license.go
 model_lifecycle_state.go
@@ -1325,6 +1335,10 @@ model_list_form_instances_by_tenant_response.go
 model_list_identity_access_items_200_response_inner.go
 model_list_predefined_select_options_response.go
 model_list_workgroup_members_200_response_inner.go
+model_load_accounts_task.go
+model_load_accounts_task_task.go
+model_load_accounts_task_task_attributes.go
+model_load_accounts_task_task_messages_inner.go
 model_load_entitlement_task.go
 model_locale_origin.go
 model_localized_message.go
@@ -1781,6 +1795,7 @@ test/api_sod_policies_test.go
 test/api_sod_policy_test.go
 test/api_sod_violations_test.go
 test/api_source_usages_test.go
+test/api_sources_aggregation_test.go
 test/api_sources_test.go
 test/api_sp_config_test.go
 test/api_suggested_entitlement_description_test.go
