@@ -60,6 +60,18 @@ func Test_api_beta_MFAConfigurationAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test MFAConfigurationAPIService GetMFAKbaConfig", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.API_BETA.MFAConfigurationAPI.GetMFAKbaConfig(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test MFAConfigurationAPIService GetMFAOktaConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -89,6 +101,18 @@ func Test_api_beta_MFAConfigurationAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.Beta.MFAConfigurationAPI.SetMFAKBAConfig(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MFAConfigurationAPIService SetMFAKBAConfig", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.API_BETA.MFAConfigurationAPI.SetMFAKBAConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

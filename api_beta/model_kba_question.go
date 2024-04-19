@@ -200,7 +200,11 @@ func (o *KbaQuestion) UnmarshalJSON(bytes []byte) (err error) {
 	varKbaQuestion := _KbaQuestion{}
 
 	if err = json.Unmarshal(bytes, &varKbaQuestion); err == nil {
+<<<<<<< HEAD
 			*o = KbaQuestion(varKbaQuestion)
+=======
+	*o = KbaQuestion(varKbaQuestion)
+>>>>>>> main
 }
 
 	additionalProperties := make(map[string]interface{})
