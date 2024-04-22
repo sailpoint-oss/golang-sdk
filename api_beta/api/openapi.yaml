@@ -64156,9 +64156,11 @@ components:
         includeCommonAccess: true
     RoleMiningPotentialRoleProvisionRequest:
       example:
+        includeIdentities: true
         roleName: Finance - Accounting
-        roleDescription: General access for accounting department
         ownerId: 2b568c65bc3c4c57a43bd97e3a8e41
+        roleDescription: General access for accounting department
+        directlyAssignedEntitlements: false
       properties:
         roleName:
           description: Name of the new role being created
@@ -64172,6 +64174,18 @@ components:
           description: ID of the identity that will own this role
           example: 2b568c65bc3c4c57a43bd97e3a8e41
           type: string
+        includeIdentities:
+          default: false
+          description: "When true, create access requests for the identities associated\
+            \ with the potential role"
+          example: true
+          type: boolean
+        directlyAssignedEntitlements:
+          default: false
+          description: "When true, assign entitlements directly to the role; otherwise,\
+            \ create access profiles containing the entitlements"
+          example: false
+          type: boolean
       type: object
     RoleMiningSessionDraftRoleDto:
       example:
