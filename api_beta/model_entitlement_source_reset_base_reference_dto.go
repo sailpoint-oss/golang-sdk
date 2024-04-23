@@ -174,7 +174,7 @@ func (o *EntitlementSourceResetBaseReferenceDto) UnmarshalJSON(bytes []byte) (er
 	varEntitlementSourceResetBaseReferenceDto := _EntitlementSourceResetBaseReferenceDto{}
 
 	if err = json.Unmarshal(bytes, &varEntitlementSourceResetBaseReferenceDto); err == nil {
-	*o = EntitlementSourceResetBaseReferenceDto(varEntitlementSourceResetBaseReferenceDto)
+			*o = EntitlementSourceResetBaseReferenceDto(varEntitlementSourceResetBaseReferenceDto)
 }
 
 	additionalProperties := make(map[string]interface{})

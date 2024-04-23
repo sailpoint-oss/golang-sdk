@@ -231,7 +231,7 @@ func (o *ProvisioningCriteriaLevel2) UnmarshalJSON(bytes []byte) (err error) {
 	varProvisioningCriteriaLevel2 := _ProvisioningCriteriaLevel2{}
 
 	if err = json.Unmarshal(bytes, &varProvisioningCriteriaLevel2); err == nil {
-	*o = ProvisioningCriteriaLevel2(varProvisioningCriteriaLevel2)
+			*o = ProvisioningCriteriaLevel2(varProvisioningCriteriaLevel2)
 }
 
 	additionalProperties := make(map[string]interface{})

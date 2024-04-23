@@ -137,7 +137,7 @@ func (o *ApprovalReference) UnmarshalJSON(bytes []byte) (err error) {
 	varApprovalReference := _ApprovalReference{}
 
 	if err = json.Unmarshal(bytes, &varApprovalReference); err == nil {
-	*o = ApprovalReference(varApprovalReference)
+			*o = ApprovalReference(varApprovalReference)
 }
 
 	additionalProperties := make(map[string]interface{})

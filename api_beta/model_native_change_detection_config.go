@@ -297,7 +297,7 @@ func (o *NativeChangeDetectionConfig) UnmarshalJSON(bytes []byte) (err error) {
 	varNativeChangeDetectionConfig := _NativeChangeDetectionConfig{}
 
 	if err = json.Unmarshal(bytes, &varNativeChangeDetectionConfig); err == nil {
-	*o = NativeChangeDetectionConfig(varNativeChangeDetectionConfig)
+			*o = NativeChangeDetectionConfig(varNativeChangeDetectionConfig)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -283,7 +283,7 @@ func (o *ApprovalDto) UnmarshalJSON(bytes []byte) (err error) {
 	varApprovalDto := _ApprovalDto{}
 
 	if err = json.Unmarshal(bytes, &varApprovalDto); err == nil {
-	*o = ApprovalDto(varApprovalDto)
+			*o = ApprovalDto(varApprovalDto)
 }
 
 	additionalProperties := make(map[string]interface{})

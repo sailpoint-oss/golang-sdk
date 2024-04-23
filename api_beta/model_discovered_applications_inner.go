@@ -323,7 +323,7 @@ func (o *DiscoveredApplicationsInner) UnmarshalJSON(bytes []byte) (err error) {
 	varDiscoveredApplicationsInner := _DiscoveredApplicationsInner{}
 
 	if err = json.Unmarshal(bytes, &varDiscoveredApplicationsInner); err == nil {
-	*o = DiscoveredApplicationsInner(varDiscoveredApplicationsInner)
+			*o = DiscoveredApplicationsInner(varDiscoveredApplicationsInner)
 }
 
 	additionalProperties := make(map[string]interface{})

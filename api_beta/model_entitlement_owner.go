@@ -174,7 +174,7 @@ func (o *EntitlementOwner) UnmarshalJSON(bytes []byte) (err error) {
 	varEntitlementOwner := _EntitlementOwner{}
 
 	if err = json.Unmarshal(bytes, &varEntitlementOwner); err == nil {
-	*o = EntitlementOwner(varEntitlementOwner)
+			*o = EntitlementOwner(varEntitlementOwner)
 }
 
 	additionalProperties := make(map[string]interface{})

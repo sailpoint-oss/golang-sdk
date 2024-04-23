@@ -136,7 +136,7 @@ func (o *ContextAttributeDto) UnmarshalJSON(bytes []byte) (err error) {
 	varContextAttributeDto := _ContextAttributeDto{}
 
 	if err = json.Unmarshal(bytes, &varContextAttributeDto); err == nil {
-	*o = ContextAttributeDto(varContextAttributeDto)
+			*o = ContextAttributeDto(varContextAttributeDto)
 }
 
 	additionalProperties := make(map[string]interface{})

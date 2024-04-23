@@ -137,7 +137,7 @@ func (o *RequestOnBehalfOfConfig) UnmarshalJSON(bytes []byte) (err error) {
 	varRequestOnBehalfOfConfig := _RequestOnBehalfOfConfig{}
 
 	if err = json.Unmarshal(bytes, &varRequestOnBehalfOfConfig); err == nil {
-	*o = RequestOnBehalfOfConfig(varRequestOnBehalfOfConfig)
+			*o = RequestOnBehalfOfConfig(varRequestOnBehalfOfConfig)
 }
 
 	additionalProperties := make(map[string]interface{})

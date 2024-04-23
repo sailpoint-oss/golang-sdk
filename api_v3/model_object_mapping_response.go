@@ -363,7 +363,7 @@ func (o *ObjectMappingResponse) UnmarshalJSON(bytes []byte) (err error) {
 	varObjectMappingResponse := _ObjectMappingResponse{}
 
 	if err = json.Unmarshal(bytes, &varObjectMappingResponse); err == nil {
-	*o = ObjectMappingResponse(varObjectMappingResponse)
+			*o = ObjectMappingResponse(varObjectMappingResponse)
 }
 
 	additionalProperties := make(map[string]interface{})

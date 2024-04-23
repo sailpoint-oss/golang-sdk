@@ -174,7 +174,7 @@ func (o *SedApprovalStatus) UnmarshalJSON(bytes []byte) (err error) {
 	varSedApprovalStatus := _SedApprovalStatus{}
 
 	if err = json.Unmarshal(bytes, &varSedApprovalStatus); err == nil {
-	*o = SedApprovalStatus(varSedApprovalStatus)
+			*o = SedApprovalStatus(varSedApprovalStatus)
 }
 
 	additionalProperties := make(map[string]interface{})

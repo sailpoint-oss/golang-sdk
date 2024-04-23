@@ -211,7 +211,7 @@ func (o *CampaignTemplateOwnerRef) UnmarshalJSON(bytes []byte) (err error) {
 	varCampaignTemplateOwnerRef := _CampaignTemplateOwnerRef{}
 
 	if err = json.Unmarshal(bytes, &varCampaignTemplateOwnerRef); err == nil {
-	*o = CampaignTemplateOwnerRef(varCampaignTemplateOwnerRef)
+			*o = CampaignTemplateOwnerRef(varCampaignTemplateOwnerRef)
 }
 
 	additionalProperties := make(map[string]interface{})

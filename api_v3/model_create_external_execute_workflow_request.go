@@ -100,7 +100,7 @@ func (o *CreateExternalExecuteWorkflowRequest) UnmarshalJSON(bytes []byte) (err 
 	varCreateExternalExecuteWorkflowRequest := _CreateExternalExecuteWorkflowRequest{}
 
 	if err = json.Unmarshal(bytes, &varCreateExternalExecuteWorkflowRequest); err == nil {
-	*o = CreateExternalExecuteWorkflowRequest(varCreateExternalExecuteWorkflowRequest)
+			*o = CreateExternalExecuteWorkflowRequest(varCreateExternalExecuteWorkflowRequest)
 }
 
 	additionalProperties := make(map[string]interface{})

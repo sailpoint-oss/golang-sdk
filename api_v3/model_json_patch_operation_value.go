@@ -20,7 +20,7 @@ type JsonPatchOperationValue struct {
 	ArrayOfArrayInner *[]ArrayInner
 	Bool *bool
 	Int32 *int32
-	MapmapOfStringinterface *map[string]interface{}
+	MapmapOfStringAny *map[string]interface{}
 	String *string
 }
 
@@ -46,9 +46,9 @@ func Int32AsJsonPatchOperationValue(v *int32) JsonPatchOperationValue {
 }
 
 // map[string]interface{}AsJsonPatchOperationValue is a convenience function that returns map[string]interface{} wrapped in JsonPatchOperationValue
-func MapmapOfStringinterfaceAsJsonPatchOperationValue(v *map[string]interface{}) JsonPatchOperationValue {
+func MapmapOfStringAnyAsJsonPatchOperationValue(v *map[string]interface{}) JsonPatchOperationValue {
 	return JsonPatchOperationValue{
-		MapmapOfStringinterface: v,
+		MapmapOfStringAny: v,
 	}
 }
 
@@ -103,17 +103,17 @@ func (dst *JsonPatchOperationValue) UnmarshalJSON(data []byte) error {
 		dst.Int32 = nil
 	}
 
-	// try to unmarshal data into MapmapOfStringinterface
-	err = newStrictDecoder(data).Decode(&dst.MapmapOfStringinterface)
+	// try to unmarshal data into MapmapOfStringAny
+	err = newStrictDecoder(data).Decode(&dst.MapmapOfStringAny)
 	if err == nil {
-		jsonMapmapOfStringinterface, _ := json.Marshal(dst.MapmapOfStringinterface)
-		if string(jsonMapmapOfStringinterface) == "{}" { // empty struct
-			dst.MapmapOfStringinterface = nil
+		jsonMapmapOfStringAny, _ := json.Marshal(dst.MapmapOfStringAny)
+		if string(jsonMapmapOfStringAny) == "{}" { // empty struct
+			dst.MapmapOfStringAny = nil
 		} else {
 			match++
 		}
 	} else {
-		dst.MapmapOfStringinterface = nil
+		dst.MapmapOfStringAny = nil
 	}
 
 	// try to unmarshal data into String
@@ -134,7 +134,7 @@ func (dst *JsonPatchOperationValue) UnmarshalJSON(data []byte) error {
 		dst.ArrayOfArrayInner = nil
 		dst.Bool = nil
 		dst.Int32 = nil
-		dst.MapmapOfStringinterface = nil
+		dst.MapmapOfStringAny = nil
 		dst.String = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(JsonPatchOperationValue)")
@@ -159,8 +159,8 @@ func (src JsonPatchOperationValue) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.Int32)
 	}
 
-	if src.MapmapOfStringinterface != nil {
-		return json.Marshal(&src.MapmapOfStringinterface)
+	if src.MapmapOfStringAny != nil {
+		return json.Marshal(&src.MapmapOfStringAny)
 	}
 
 	if src.String != nil {
@@ -187,8 +187,8 @@ func (obj *JsonPatchOperationValue) GetActualInstance() (interface{}) {
 		return obj.Int32
 	}
 
-	if obj.MapmapOfStringinterface != nil {
-		return obj.MapmapOfStringinterface
+	if obj.MapmapOfStringAny != nil {
+		return obj.MapmapOfStringAny
 	}
 
 	if obj.String != nil {

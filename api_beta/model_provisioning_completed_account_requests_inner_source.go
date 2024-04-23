@@ -145,7 +145,7 @@ func (o ProvisioningCompletedAccountRequestsInnerSource) ToMap() (map[string]int
 }
 
 func (o *ProvisioningCompletedAccountRequestsInnerSource) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -171,7 +171,7 @@ func (o *ProvisioningCompletedAccountRequestsInnerSource) UnmarshalJSON(bytes []
 	varProvisioningCompletedAccountRequestsInnerSource := _ProvisioningCompletedAccountRequestsInnerSource{}
 
 	if err = json.Unmarshal(bytes, &varProvisioningCompletedAccountRequestsInnerSource); err == nil {
-	*o = ProvisioningCompletedAccountRequestsInnerSource(varProvisioningCompletedAccountRequestsInnerSource)
+			*o = ProvisioningCompletedAccountRequestsInnerSource(varProvisioningCompletedAccountRequestsInnerSource)
 }
 
 	additionalProperties := make(map[string]interface{})

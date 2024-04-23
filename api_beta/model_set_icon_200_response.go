@@ -100,7 +100,7 @@ func (o *SetIcon200Response) UnmarshalJSON(bytes []byte) (err error) {
 	varSetIcon200Response := _SetIcon200Response{}
 
 	if err = json.Unmarshal(bytes, &varSetIcon200Response); err == nil {
-	*o = SetIcon200Response(varSetIcon200Response)
+			*o = SetIcon200Response(varSetIcon200Response)
 }
 
 	additionalProperties := make(map[string]interface{})

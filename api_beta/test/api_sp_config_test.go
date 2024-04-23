@@ -14,19 +14,19 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func Test_api_beta_SPConfigAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sailpoint.NewDefaultConfiguration()
+	apiClient := sailpoint.NewAPIClient(configuration)
 
 	t.Run("Test SPConfigAPIService ExportSpConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.SPConfigAPI.ExportSpConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.SPConfigAPI.ExportSpConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_beta_SPConfigAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.SPConfigAPI.GetSpConfigExport(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.SPConfigAPI.GetSpConfigExport(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -54,7 +54,7 @@ func Test_api_beta_SPConfigAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.SPConfigAPI.GetSpConfigExportStatus(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.SPConfigAPI.GetSpConfigExportStatus(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -68,7 +68,7 @@ func Test_api_beta_SPConfigAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.SPConfigAPI.GetSpConfigImport(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.SPConfigAPI.GetSpConfigImport(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -82,7 +82,7 @@ func Test_api_beta_SPConfigAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.SPConfigAPI.GetSpConfigImportStatus(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.SPConfigAPI.GetSpConfigImportStatus(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -94,7 +94,7 @@ func Test_api_beta_SPConfigAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.SPConfigAPI.ImportSpConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.SPConfigAPI.ImportSpConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -106,7 +106,7 @@ func Test_api_beta_SPConfigAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.SPConfigAPI.ListSpConfigObjects(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.SPConfigAPI.ListSpConfigObjects(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -137,7 +137,7 @@ func (o *License) UnmarshalJSON(bytes []byte) (err error) {
 	varLicense := _License{}
 
 	if err = json.Unmarshal(bytes, &varLicense); err == nil {
-	*o = License(varLicense)
+			*o = License(varLicense)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -88,7 +88,7 @@ func (o CampaignEnded) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *CampaignEnded) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -112,7 +112,7 @@ func (o *CampaignEnded) UnmarshalJSON(bytes []byte) (err error) {
 	varCampaignEnded := _CampaignEnded{}
 
 	if err = json.Unmarshal(bytes, &varCampaignEnded); err == nil {
-	*o = CampaignEnded(varCampaignEnded)
+			*o = CampaignEnded(varCampaignEnded)
 }
 
 	additionalProperties := make(map[string]interface{})

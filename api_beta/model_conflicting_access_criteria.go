@@ -135,7 +135,7 @@ func (o *ConflictingAccessCriteria) UnmarshalJSON(bytes []byte) (err error) {
 	varConflictingAccessCriteria := _ConflictingAccessCriteria{}
 
 	if err = json.Unmarshal(bytes, &varConflictingAccessCriteria); err == nil {
-	*o = ConflictingAccessCriteria(varConflictingAccessCriteria)
+			*o = ConflictingAccessCriteria(varConflictingAccessCriteria)
 }
 
 	additionalProperties := make(map[string]interface{})

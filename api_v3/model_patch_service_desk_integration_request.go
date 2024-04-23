@@ -100,7 +100,7 @@ func (o *PatchServiceDeskIntegrationRequest) UnmarshalJSON(bytes []byte) (err er
 	varPatchServiceDeskIntegrationRequest := _PatchServiceDeskIntegrationRequest{}
 
 	if err = json.Unmarshal(bytes, &varPatchServiceDeskIntegrationRequest); err == nil {
-	*o = PatchServiceDeskIntegrationRequest(varPatchServiceDeskIntegrationRequest)
+			*o = PatchServiceDeskIntegrationRequest(varPatchServiceDeskIntegrationRequest)
 }
 
 	additionalProperties := make(map[string]interface{})

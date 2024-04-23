@@ -100,7 +100,7 @@ func (o *SedBatchResponse) UnmarshalJSON(bytes []byte) (err error) {
 	varSedBatchResponse := _SedBatchResponse{}
 
 	if err = json.Unmarshal(bytes, &varSedBatchResponse); err == nil {
-	*o = SedBatchResponse(varSedBatchResponse)
+			*o = SedBatchResponse(varSedBatchResponse)
 }
 
 	additionalProperties := make(map[string]interface{})

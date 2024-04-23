@@ -137,7 +137,7 @@ func (o *IdentityDocumentAllOfSource) UnmarshalJSON(bytes []byte) (err error) {
 	varIdentityDocumentAllOfSource := _IdentityDocumentAllOfSource{}
 
 	if err = json.Unmarshal(bytes, &varIdentityDocumentAllOfSource); err == nil {
-	*o = IdentityDocumentAllOfSource(varIdentityDocumentAllOfSource)
+			*o = IdentityDocumentAllOfSource(varIdentityDocumentAllOfSource)
 }
 
 	additionalProperties := make(map[string]interface{})

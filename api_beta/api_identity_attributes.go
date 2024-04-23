@@ -761,25 +761,25 @@ func (a *IdentityAttributesAPIService) ListIdentityAttributesExecute(r ApiListId
 	localVarFormParams := url.Values{}
 
 	if r.includeSystem != nil {
-		parameterAddToQuery(localVarQueryParams, "includeSystem", r.includeSystem, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeSystem", r.includeSystem, "")
 	} else {
 		var defaultValue bool = false
 		r.includeSystem = &defaultValue
 	}
 	if r.includeSilent != nil {
-		parameterAddToQuery(localVarQueryParams, "includeSilent", r.includeSilent, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeSilent", r.includeSilent, "")
 	} else {
 		var defaultValue bool = false
 		r.includeSilent = &defaultValue
 	}
 	if r.searchableOnly != nil {
-		parameterAddToQuery(localVarQueryParams, "searchableOnly", r.searchableOnly, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "searchableOnly", r.searchableOnly, "")
 	} else {
 		var defaultValue bool = false
 		r.searchableOnly = &defaultValue
 	}
 	if r.count != nil {
-		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "")
 	} else {
 		var defaultValue bool = false
 		r.count = &defaultValue

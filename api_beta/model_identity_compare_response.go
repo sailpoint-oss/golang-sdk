@@ -100,7 +100,7 @@ func (o *IdentityCompareResponse) UnmarshalJSON(bytes []byte) (err error) {
 	varIdentityCompareResponse := _IdentityCompareResponse{}
 
 	if err = json.Unmarshal(bytes, &varIdentityCompareResponse); err == nil {
-	*o = IdentityCompareResponse(varIdentityCompareResponse)
+			*o = IdentityCompareResponse(varIdentityCompareResponse)
 }
 
 	additionalProperties := make(map[string]interface{})

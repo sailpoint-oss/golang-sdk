@@ -719,7 +719,7 @@ func (o *IdentityCertificationDto) UnmarshalJSON(bytes []byte) (err error) {
 	varIdentityCertificationDto := _IdentityCertificationDto{}
 
 	if err = json.Unmarshal(bytes, &varIdentityCertificationDto); err == nil {
-	*o = IdentityCertificationDto(varIdentityCertificationDto)
+			*o = IdentityCertificationDto(varIdentityCertificationDto)
 }
 
 	additionalProperties := make(map[string]interface{})

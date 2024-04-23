@@ -138,7 +138,7 @@ func (o *SpConfigUrl) UnmarshalJSON(bytes []byte) (err error) {
 	varSpConfigUrl := _SpConfigUrl{}
 
 	if err = json.Unmarshal(bytes, &varSpConfigUrl); err == nil {
-	*o = SpConfigUrl(varSpConfigUrl)
+			*o = SpConfigUrl(varSpConfigUrl)
 }
 
 	additionalProperties := make(map[string]interface{})

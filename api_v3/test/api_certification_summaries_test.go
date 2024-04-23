@@ -14,13 +14,13 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func Test_api_v3_CertificationSummariesAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sailpoint.NewDefaultConfiguration()
+	apiClient := sailpoint.NewAPIClient(configuration)
 
 	t.Run("Test CertificationSummariesAPIService GetIdentityAccessSummaries", func(t *testing.T) {
 
@@ -29,7 +29,7 @@ func Test_api_v3_CertificationSummariesAPIService(t *testing.T) {
 		var id string
 		var type_ string
 
-		resp, httpRes, err := apiClient.API_V3.CertificationSummariesAPI.GetIdentityAccessSummaries(context.Background(), id, type_).Execute()
+		resp, httpRes, err := apiClient.V3.CertificationSummariesAPI.GetIdentityAccessSummaries(context.Background(), id, type_).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -43,7 +43,7 @@ func Test_api_v3_CertificationSummariesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.CertificationSummariesAPI.GetIdentityDecisionSummary(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.CertificationSummariesAPI.GetIdentityDecisionSummary(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -57,7 +57,7 @@ func Test_api_v3_CertificationSummariesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.CertificationSummariesAPI.GetIdentitySummaries(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.CertificationSummariesAPI.GetIdentitySummaries(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -72,7 +72,7 @@ func Test_api_v3_CertificationSummariesAPIService(t *testing.T) {
 		var id string
 		var identitySummaryId string
 
-		resp, httpRes, err := apiClient.API_V3.CertificationSummariesAPI.GetIdentitySummary(context.Background(), id, identitySummaryId).Execute()
+		resp, httpRes, err := apiClient.V3.CertificationSummariesAPI.GetIdentitySummary(context.Background(), id, identitySummaryId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

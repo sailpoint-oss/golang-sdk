@@ -142,7 +142,7 @@ func (o *VendorConnectorMappingDeletedAt) UnmarshalJSON(bytes []byte) (err error
 	varVendorConnectorMappingDeletedAt := _VendorConnectorMappingDeletedAt{}
 
 	if err = json.Unmarshal(bytes, &varVendorConnectorMappingDeletedAt); err == nil {
-	*o = VendorConnectorMappingDeletedAt(varVendorConnectorMappingDeletedAt)
+			*o = VendorConnectorMappingDeletedAt(varVendorConnectorMappingDeletedAt)
 }
 
 	additionalProperties := make(map[string]interface{})

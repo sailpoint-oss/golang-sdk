@@ -305,7 +305,7 @@ func (o *WorkItemsForm) UnmarshalJSON(bytes []byte) (err error) {
 	varWorkItemsForm := _WorkItemsForm{}
 
 	if err = json.Unmarshal(bytes, &varWorkItemsForm); err == nil {
-	*o = WorkItemsForm(varWorkItemsForm)
+			*o = WorkItemsForm(varWorkItemsForm)
 }
 
 	additionalProperties := make(map[string]interface{})

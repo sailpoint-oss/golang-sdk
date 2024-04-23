@@ -174,7 +174,7 @@ func (o *BulkIdentitiesAccountsResponse) UnmarshalJSON(bytes []byte) (err error)
 	varBulkIdentitiesAccountsResponse := _BulkIdentitiesAccountsResponse{}
 
 	if err = json.Unmarshal(bytes, &varBulkIdentitiesAccountsResponse); err == nil {
-	*o = BulkIdentitiesAccountsResponse(varBulkIdentitiesAccountsResponse)
+			*o = BulkIdentitiesAccountsResponse(varBulkIdentitiesAccountsResponse)
 }
 
 	additionalProperties := make(map[string]interface{})

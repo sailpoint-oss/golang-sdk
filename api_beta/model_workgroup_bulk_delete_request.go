@@ -100,7 +100,7 @@ func (o *WorkgroupBulkDeleteRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varWorkgroupBulkDeleteRequest := _WorkgroupBulkDeleteRequest{}
 
 	if err = json.Unmarshal(bytes, &varWorkgroupBulkDeleteRequest); err == nil {
-	*o = WorkgroupBulkDeleteRequest(varWorkgroupBulkDeleteRequest)
+			*o = WorkgroupBulkDeleteRequest(varWorkgroupBulkDeleteRequest)
 }
 
 	additionalProperties := make(map[string]interface{})

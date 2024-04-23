@@ -100,7 +100,7 @@ func (o *SedAssignmentResponse) UnmarshalJSON(bytes []byte) (err error) {
 	varSedAssignmentResponse := _SedAssignmentResponse{}
 
 	if err = json.Unmarshal(bytes, &varSedAssignmentResponse); err == nil {
-	*o = SedAssignmentResponse(varSedAssignmentResponse)
+			*o = SedAssignmentResponse(varSedAssignmentResponse)
 }
 
 	additionalProperties := make(map[string]interface{})

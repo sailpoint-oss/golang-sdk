@@ -174,7 +174,7 @@ func (o *FullcampaignAllOfSearchCampaignInfoReviewer) UnmarshalJSON(bytes []byte
 	varFullcampaignAllOfSearchCampaignInfoReviewer := _FullcampaignAllOfSearchCampaignInfoReviewer{}
 
 	if err = json.Unmarshal(bytes, &varFullcampaignAllOfSearchCampaignInfoReviewer); err == nil {
-	*o = FullcampaignAllOfSearchCampaignInfoReviewer(varFullcampaignAllOfSearchCampaignInfoReviewer)
+			*o = FullcampaignAllOfSearchCampaignInfoReviewer(varFullcampaignAllOfSearchCampaignInfoReviewer)
 }
 
 	additionalProperties := make(map[string]interface{})

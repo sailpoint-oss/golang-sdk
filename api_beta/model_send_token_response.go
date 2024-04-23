@@ -194,7 +194,7 @@ func (o *SendTokenResponse) UnmarshalJSON(bytes []byte) (err error) {
 	varSendTokenResponse := _SendTokenResponse{}
 
 	if err = json.Unmarshal(bytes, &varSendTokenResponse); err == nil {
-	*o = SendTokenResponse(varSendTokenResponse)
+			*o = SendTokenResponse(varSendTokenResponse)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -137,7 +137,7 @@ func (o *ManualDiscoverApplicationsTemplate) UnmarshalJSON(bytes []byte) (err er
 	varManualDiscoverApplicationsTemplate := _ManualDiscoverApplicationsTemplate{}
 
 	if err = json.Unmarshal(bytes, &varManualDiscoverApplicationsTemplate); err == nil {
-	*o = ManualDiscoverApplicationsTemplate(varManualDiscoverApplicationsTemplate)
+			*o = ManualDiscoverApplicationsTemplate(varManualDiscoverApplicationsTemplate)
 }
 
 	additionalProperties := make(map[string]interface{})

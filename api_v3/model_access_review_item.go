@@ -329,7 +329,7 @@ func (o *AccessReviewItem) UnmarshalJSON(bytes []byte) (err error) {
 	varAccessReviewItem := _AccessReviewItem{}
 
 	if err = json.Unmarshal(bytes, &varAccessReviewItem); err == nil {
-	*o = AccessReviewItem(varAccessReviewItem)
+			*o = AccessReviewItem(varAccessReviewItem)
 }
 
 	additionalProperties := make(map[string]interface{})

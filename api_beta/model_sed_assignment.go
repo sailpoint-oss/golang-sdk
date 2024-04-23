@@ -136,7 +136,7 @@ func (o *SedAssignment) UnmarshalJSON(bytes []byte) (err error) {
 	varSedAssignment := _SedAssignment{}
 
 	if err = json.Unmarshal(bytes, &varSedAssignment); err == nil {
-	*o = SedAssignment(varSedAssignment)
+			*o = SedAssignment(varSedAssignment)
 }
 
 	additionalProperties := make(map[string]interface{})

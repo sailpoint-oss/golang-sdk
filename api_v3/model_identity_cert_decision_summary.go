@@ -655,7 +655,7 @@ func (o *IdentityCertDecisionSummary) UnmarshalJSON(bytes []byte) (err error) {
 	varIdentityCertDecisionSummary := _IdentityCertDecisionSummary{}
 
 	if err = json.Unmarshal(bytes, &varIdentityCertDecisionSummary); err == nil {
-	*o = IdentityCertDecisionSummary(varIdentityCertDecisionSummary)
+			*o = IdentityCertDecisionSummary(varIdentityCertDecisionSummary)
 }
 
 	additionalProperties := make(map[string]interface{})

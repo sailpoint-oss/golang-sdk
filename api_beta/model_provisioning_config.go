@@ -249,7 +249,7 @@ func (o *ProvisioningConfig) UnmarshalJSON(bytes []byte) (err error) {
 	varProvisioningConfig := _ProvisioningConfig{}
 
 	if err = json.Unmarshal(bytes, &varProvisioningConfig); err == nil {
-	*o = ProvisioningConfig(varProvisioningConfig)
+			*o = ProvisioningConfig(varProvisioningConfig)
 }
 
 	additionalProperties := make(map[string]interface{})

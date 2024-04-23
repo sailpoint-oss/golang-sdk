@@ -174,7 +174,7 @@ func (o *FeatureValueDto) UnmarshalJSON(bytes []byte) (err error) {
 	varFeatureValueDto := _FeatureValueDto{}
 
 	if err = json.Unmarshal(bytes, &varFeatureValueDto); err == nil {
-	*o = FeatureValueDto(varFeatureValueDto)
+			*o = FeatureValueDto(varFeatureValueDto)
 }
 
 	additionalProperties := make(map[string]interface{})

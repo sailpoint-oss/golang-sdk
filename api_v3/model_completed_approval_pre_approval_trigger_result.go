@@ -211,7 +211,7 @@ func (o *CompletedApprovalPreApprovalTriggerResult) UnmarshalJSON(bytes []byte) 
 	varCompletedApprovalPreApprovalTriggerResult := _CompletedApprovalPreApprovalTriggerResult{}
 
 	if err = json.Unmarshal(bytes, &varCompletedApprovalPreApprovalTriggerResult); err == nil {
-	*o = CompletedApprovalPreApprovalTriggerResult(varCompletedApprovalPreApprovalTriggerResult)
+			*o = CompletedApprovalPreApprovalTriggerResult(varCompletedApprovalPreApprovalTriggerResult)
 }
 
 	additionalProperties := make(map[string]interface{})

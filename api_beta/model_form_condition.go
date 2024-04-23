@@ -174,7 +174,7 @@ func (o *FormCondition) UnmarshalJSON(bytes []byte) (err error) {
 	varFormCondition := _FormCondition{}
 
 	if err = json.Unmarshal(bytes, &varFormCondition); err == nil {
-	*o = FormCondition(varFormCondition)
+			*o = FormCondition(varFormCondition)
 }
 
 	additionalProperties := make(map[string]interface{})

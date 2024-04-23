@@ -117,7 +117,7 @@ func (o CancelAccessRequest) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *CancelAccessRequest) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -142,7 +142,7 @@ func (o *CancelAccessRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varCancelAccessRequest := _CancelAccessRequest{}
 
 	if err = json.Unmarshal(bytes, &varCancelAccessRequest); err == nil {
-	*o = CancelAccessRequest(varCancelAccessRequest)
+			*o = CancelAccessRequest(varCancelAccessRequest)
 }
 
 	additionalProperties := make(map[string]interface{})

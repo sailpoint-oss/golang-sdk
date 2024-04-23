@@ -137,7 +137,7 @@ func (o *AccountToggleRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varAccountToggleRequest := _AccountToggleRequest{}
 
 	if err = json.Unmarshal(bytes, &varAccountToggleRequest); err == nil {
-	*o = AccountToggleRequest(varAccountToggleRequest)
+			*o = AccountToggleRequest(varAccountToggleRequest)
 }
 
 	additionalProperties := make(map[string]interface{})

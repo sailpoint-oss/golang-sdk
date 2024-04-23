@@ -14,13 +14,13 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func Test_api_v3_SODPolicyAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sailpoint.NewDefaultConfiguration()
+	apiClient := sailpoint.NewAPIClient(configuration)
 
 	t.Run("Test SODPolicyAPIService GetCustomViolationReport", func(t *testing.T) {
 
@@ -29,7 +29,7 @@ func Test_api_v3_SODPolicyAPIService(t *testing.T) {
 		var reportResultId string
 		var fileName string
 
-		resp, httpRes, err := apiClient.API_V3.SODPolicyAPI.GetCustomViolationReport(context.Background(), reportResultId, fileName).Execute()
+		resp, httpRes, err := apiClient.V3.SODPolicyAPI.GetCustomViolationReport(context.Background(), reportResultId, fileName).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -43,7 +43,7 @@ func Test_api_v3_SODPolicyAPIService(t *testing.T) {
 
 		var reportResultId string
 
-		resp, httpRes, err := apiClient.API_V3.SODPolicyAPI.GetDefaultViolationReport(context.Background(), reportResultId).Execute()
+		resp, httpRes, err := apiClient.V3.SODPolicyAPI.GetDefaultViolationReport(context.Background(), reportResultId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -55,7 +55,7 @@ func Test_api_v3_SODPolicyAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.SODPolicyAPI.GetSodAllReportRunStatus(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.SODPolicyAPI.GetSodAllReportRunStatus(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -67,7 +67,7 @@ func Test_api_v3_SODPolicyAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.SODPolicyAPI.StartSodAllPoliciesForOrg(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.SODPolicyAPI.StartSodAllPoliciesForOrg(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

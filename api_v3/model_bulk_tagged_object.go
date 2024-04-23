@@ -177,7 +177,7 @@ func (o *BulkTaggedObject) UnmarshalJSON(bytes []byte) (err error) {
 	varBulkTaggedObject := _BulkTaggedObject{}
 
 	if err = json.Unmarshal(bytes, &varBulkTaggedObject); err == nil {
-	*o = BulkTaggedObject(varBulkTaggedObject)
+			*o = BulkTaggedObject(varBulkTaggedObject)
 }
 
 	additionalProperties := make(map[string]interface{})

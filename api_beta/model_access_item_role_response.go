@@ -248,7 +248,7 @@ func (o *AccessItemRoleResponse) UnmarshalJSON(bytes []byte) (err error) {
 	varAccessItemRoleResponse := _AccessItemRoleResponse{}
 
 	if err = json.Unmarshal(bytes, &varAccessItemRoleResponse); err == nil {
-	*o = AccessItemRoleResponse(varAccessItemRoleResponse)
+			*o = AccessItemRoleResponse(varAccessItemRoleResponse)
 }
 
 	additionalProperties := make(map[string]interface{})

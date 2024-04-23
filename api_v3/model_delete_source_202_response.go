@@ -174,7 +174,7 @@ func (o *DeleteSource202Response) UnmarshalJSON(bytes []byte) (err error) {
 	varDeleteSource202Response := _DeleteSource202Response{}
 
 	if err = json.Unmarshal(bytes, &varDeleteSource202Response); err == nil {
-	*o = DeleteSource202Response(varDeleteSource202Response)
+			*o = DeleteSource202Response(varDeleteSource202Response)
 }
 
 	additionalProperties := make(map[string]interface{})

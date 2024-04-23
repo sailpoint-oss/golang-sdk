@@ -136,7 +136,7 @@ func (o *ImportAccountsRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varImportAccountsRequest := _ImportAccountsRequest{}
 
 	if err = json.Unmarshal(bytes, &varImportAccountsRequest); err == nil {
-	*o = ImportAccountsRequest(varImportAccountsRequest)
+			*o = ImportAccountsRequest(varImportAccountsRequest)
 }
 
 	additionalProperties := make(map[string]interface{})

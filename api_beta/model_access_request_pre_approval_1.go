@@ -145,7 +145,7 @@ func (o AccessRequestPreApproval1) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *AccessRequestPreApproval1) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -171,7 +171,7 @@ func (o *AccessRequestPreApproval1) UnmarshalJSON(bytes []byte) (err error) {
 	varAccessRequestPreApproval1 := _AccessRequestPreApproval1{}
 
 	if err = json.Unmarshal(bytes, &varAccessRequestPreApproval1); err == nil {
-	*o = AccessRequestPreApproval1(varAccessRequestPreApproval1)
+			*o = AccessRequestPreApproval1(varAccessRequestPreApproval1)
 }
 
 	additionalProperties := make(map[string]interface{})

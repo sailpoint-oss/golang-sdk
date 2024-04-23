@@ -582,7 +582,7 @@ func (o *Sed) UnmarshalJSON(bytes []byte) (err error) {
 	varSed := _Sed{}
 
 	if err = json.Unmarshal(bytes, &varSed); err == nil {
-	*o = Sed(varSed)
+			*o = Sed(varSed)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -243,12 +243,12 @@ func (a *ReportsDataExtractionAPIService) GetReportExecute(r ApiGetReportRequest
 		return localVarReturnValue, nil, reportError("fileFormat is required and must be specified")
 	}
 
-	parameterAddToQuery(localVarQueryParams, "fileFormat", r.fileFormat, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "fileFormat", r.fileFormat, "")
 	if r.name != nil {
-		parameterAddToQuery(localVarQueryParams, "name", r.name, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.auditable != nil {
-		parameterAddToQuery(localVarQueryParams, "auditable", r.auditable, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "auditable", r.auditable, "")
 	} else {
 		var defaultValue bool = false
 		r.auditable = &defaultValue
@@ -429,7 +429,7 @@ func (a *ReportsDataExtractionAPIService) GetReportResultExecute(r ApiGetReportR
 	localVarFormParams := url.Values{}
 
 	if r.completed != nil {
-		parameterAddToQuery(localVarQueryParams, "completed", r.completed, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "completed", r.completed, "")
 	} else {
 		var defaultValue bool = false
 		r.completed = &defaultValue

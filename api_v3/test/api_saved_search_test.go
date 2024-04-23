@@ -14,19 +14,19 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func Test_api_v3_SavedSearchAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sailpoint.NewDefaultConfiguration()
+	apiClient := sailpoint.NewAPIClient(configuration)
 
 	t.Run("Test SavedSearchAPIService CreateSavedSearch", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.SavedSearchAPI.CreateSavedSearch(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.SavedSearchAPI.CreateSavedSearch(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_v3_SavedSearchAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_V3.SavedSearchAPI.DeleteSavedSearch(context.Background(), id).Execute()
+		httpRes, err := apiClient.V3.SavedSearchAPI.DeleteSavedSearch(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -53,7 +53,7 @@ func Test_api_v3_SavedSearchAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_V3.SavedSearchAPI.ExecuteSavedSearch(context.Background(), id).Execute()
+		httpRes, err := apiClient.V3.SavedSearchAPI.ExecuteSavedSearch(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -66,7 +66,7 @@ func Test_api_v3_SavedSearchAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.SavedSearchAPI.GetSavedSearch(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.SavedSearchAPI.GetSavedSearch(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -78,7 +78,7 @@ func Test_api_v3_SavedSearchAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.SavedSearchAPI.ListSavedSearches(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.SavedSearchAPI.ListSavedSearches(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -92,7 +92,7 @@ func Test_api_v3_SavedSearchAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.SavedSearchAPI.PutSavedSearch(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.SavedSearchAPI.PutSavedSearch(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

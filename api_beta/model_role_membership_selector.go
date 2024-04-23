@@ -183,7 +183,7 @@ func (o *RoleMembershipSelector) UnmarshalJSON(bytes []byte) (err error) {
 	varRoleMembershipSelector := _RoleMembershipSelector{}
 
 	if err = json.Unmarshal(bytes, &varRoleMembershipSelector); err == nil {
-	*o = RoleMembershipSelector(varRoleMembershipSelector)
+			*o = RoleMembershipSelector(varRoleMembershipSelector)
 }
 
 	additionalProperties := make(map[string]interface{})

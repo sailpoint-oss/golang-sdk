@@ -99,7 +99,7 @@ func (o *ObjectMappingBulkCreateResponse) UnmarshalJSON(bytes []byte) (err error
 	varObjectMappingBulkCreateResponse := _ObjectMappingBulkCreateResponse{}
 
 	if err = json.Unmarshal(bytes, &varObjectMappingBulkCreateResponse); err == nil {
-	*o = ObjectMappingBulkCreateResponse(varObjectMappingBulkCreateResponse)
+			*o = ObjectMappingBulkCreateResponse(varObjectMappingBulkCreateResponse)
 }
 
 	additionalProperties := make(map[string]interface{})

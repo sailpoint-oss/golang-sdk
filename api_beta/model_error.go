@@ -173,7 +173,7 @@ func (o *Error) UnmarshalJSON(bytes []byte) (err error) {
 	varError := _Error{}
 
 	if err = json.Unmarshal(bytes, &varError); err == nil {
-	*o = Error(varError)
+			*o = Error(varError)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -220,7 +220,7 @@ func (o AccountUncorrelatedAccount) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *AccountUncorrelatedAccount) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -247,7 +247,7 @@ func (o *AccountUncorrelatedAccount) UnmarshalJSON(bytes []byte) (err error) {
 	varAccountUncorrelatedAccount := _AccountUncorrelatedAccount{}
 
 	if err = json.Unmarshal(bytes, &varAccountUncorrelatedAccount); err == nil {
-	*o = AccountUncorrelatedAccount(varAccountUncorrelatedAccount)
+			*o = AccountUncorrelatedAccount(varAccountUncorrelatedAccount)
 }
 
 	additionalProperties := make(map[string]interface{})

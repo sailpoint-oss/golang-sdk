@@ -193,7 +193,7 @@ func (o *ErrorMessageDto) UnmarshalJSON(bytes []byte) (err error) {
 	varErrorMessageDto := _ErrorMessageDto{}
 
 	if err = json.Unmarshal(bytes, &varErrorMessageDto); err == nil {
-	*o = ErrorMessageDto(varErrorMessageDto)
+			*o = ErrorMessageDto(varErrorMessageDto)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -244,7 +244,7 @@ func (o *WorkgroupDtoOwner) UnmarshalJSON(bytes []byte) (err error) {
 	varWorkgroupDtoOwner := _WorkgroupDtoOwner{}
 
 	if err = json.Unmarshal(bytes, &varWorkgroupDtoOwner); err == nil {
-	*o = WorkgroupDtoOwner(varWorkgroupDtoOwner)
+			*o = WorkgroupDtoOwner(varWorkgroupDtoOwner)
 }
 
 	additionalProperties := make(map[string]interface{})

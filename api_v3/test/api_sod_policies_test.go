@@ -14,19 +14,19 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func Test_api_v3_SODPoliciesAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sailpoint.NewDefaultConfiguration()
+	apiClient := sailpoint.NewAPIClient(configuration)
 
 	t.Run("Test SODPoliciesAPIService CreateSodPolicy", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.SODPoliciesAPI.CreateSodPolicy(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.SODPoliciesAPI.CreateSodPolicy(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_v3_SODPoliciesAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_V3.SODPoliciesAPI.DeleteSodPolicy(context.Background(), id).Execute()
+		httpRes, err := apiClient.V3.SODPoliciesAPI.DeleteSodPolicy(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -53,7 +53,7 @@ func Test_api_v3_SODPoliciesAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_V3.SODPoliciesAPI.DeleteSodPolicySchedule(context.Background(), id).Execute()
+		httpRes, err := apiClient.V3.SODPoliciesAPI.DeleteSodPolicySchedule(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -66,7 +66,7 @@ func Test_api_v3_SODPoliciesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.SODPoliciesAPI.GetSodPolicy(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.SODPoliciesAPI.GetSodPolicy(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -80,7 +80,7 @@ func Test_api_v3_SODPoliciesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.SODPoliciesAPI.GetSodPolicySchedule(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.SODPoliciesAPI.GetSodPolicySchedule(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -94,7 +94,7 @@ func Test_api_v3_SODPoliciesAPIService(t *testing.T) {
 
 		var reportResultId string
 
-		resp, httpRes, err := apiClient.API_V3.SODPoliciesAPI.GetSodViolationReportRunStatus(context.Background(), reportResultId).Execute()
+		resp, httpRes, err := apiClient.V3.SODPoliciesAPI.GetSodViolationReportRunStatus(context.Background(), reportResultId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -108,7 +108,7 @@ func Test_api_v3_SODPoliciesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.SODPoliciesAPI.GetSodViolationReportStatus(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.SODPoliciesAPI.GetSodViolationReportStatus(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -120,7 +120,7 @@ func Test_api_v3_SODPoliciesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.SODPoliciesAPI.ListSodPolicies(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.SODPoliciesAPI.ListSodPolicies(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -134,7 +134,7 @@ func Test_api_v3_SODPoliciesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.SODPoliciesAPI.PatchSodPolicy(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.SODPoliciesAPI.PatchSodPolicy(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -148,7 +148,7 @@ func Test_api_v3_SODPoliciesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.SODPoliciesAPI.PutPolicySchedule(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.SODPoliciesAPI.PutPolicySchedule(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -162,7 +162,7 @@ func Test_api_v3_SODPoliciesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.SODPoliciesAPI.PutSodPolicy(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.SODPoliciesAPI.PutSodPolicy(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -176,7 +176,7 @@ func Test_api_v3_SODPoliciesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.SODPoliciesAPI.StartEvaluateSodPolicy(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.SODPoliciesAPI.StartEvaluateSodPolicy(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -190,7 +190,7 @@ func Test_api_v3_SODPoliciesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.SODPoliciesAPI.StartSodPolicy(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.SODPoliciesAPI.StartSodPolicy(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -137,7 +137,7 @@ func (o *LoadAccountsTaskTaskAttributes) UnmarshalJSON(bytes []byte) (err error)
 	varLoadAccountsTaskTaskAttributes := _LoadAccountsTaskTaskAttributes{}
 
 	if err = json.Unmarshal(bytes, &varLoadAccountsTaskTaskAttributes); err == nil {
-	*o = LoadAccountsTaskTaskAttributes(varLoadAccountsTaskTaskAttributes)
+			*o = LoadAccountsTaskTaskAttributes(varLoadAccountsTaskTaskAttributes)
 }
 
 	additionalProperties := make(map[string]interface{})

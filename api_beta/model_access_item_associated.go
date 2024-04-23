@@ -246,7 +246,7 @@ func (o *AccessItemAssociated) UnmarshalJSON(bytes []byte) (err error) {
 	varAccessItemAssociated := _AccessItemAssociated{}
 
 	if err = json.Unmarshal(bytes, &varAccessItemAssociated); err == nil {
-	*o = AccessItemAssociated(varAccessItemAssociated)
+			*o = AccessItemAssociated(varAccessItemAssociated)
 }
 
 	additionalProperties := make(map[string]interface{})

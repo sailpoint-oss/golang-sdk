@@ -174,7 +174,7 @@ func (o *IdentityWithNewAccessAccessRefsInner) UnmarshalJSON(bytes []byte) (err 
 	varIdentityWithNewAccessAccessRefsInner := _IdentityWithNewAccessAccessRefsInner{}
 
 	if err = json.Unmarshal(bytes, &varIdentityWithNewAccessAccessRefsInner); err == nil {
-	*o = IdentityWithNewAccessAccessRefsInner(varIdentityWithNewAccessAccessRefsInner)
+			*o = IdentityWithNewAccessAccessRefsInner(varIdentityWithNewAccessAccessRefsInner)
 }
 
 	additionalProperties := make(map[string]interface{})

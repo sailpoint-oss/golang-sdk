@@ -135,7 +135,7 @@ func (o *ExceptionAccessCriteria) UnmarshalJSON(bytes []byte) (err error) {
 	varExceptionAccessCriteria := _ExceptionAccessCriteria{}
 
 	if err = json.Unmarshal(bytes, &varExceptionAccessCriteria); err == nil {
-	*o = ExceptionAccessCriteria(varExceptionAccessCriteria)
+			*o = ExceptionAccessCriteria(varExceptionAccessCriteria)
 }
 
 	additionalProperties := make(map[string]interface{})

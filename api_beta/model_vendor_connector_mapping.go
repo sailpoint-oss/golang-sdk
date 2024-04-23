@@ -433,7 +433,7 @@ func (o *VendorConnectorMapping) UnmarshalJSON(bytes []byte) (err error) {
 	varVendorConnectorMapping := _VendorConnectorMapping{}
 
 	if err = json.Unmarshal(bytes, &varVendorConnectorMapping); err == nil {
-	*o = VendorConnectorMapping(varVendorConnectorMapping)
+			*o = VendorConnectorMapping(varVendorConnectorMapping)
 }
 
 	additionalProperties := make(map[string]interface{})

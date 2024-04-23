@@ -240,7 +240,7 @@ func (o *ExpressionChildrenInner) UnmarshalJSON(bytes []byte) (err error) {
 	varExpressionChildrenInner := _ExpressionChildrenInner{}
 
 	if err = json.Unmarshal(bytes, &varExpressionChildrenInner); err == nil {
-	*o = ExpressionChildrenInner(varExpressionChildrenInner)
+			*o = ExpressionChildrenInner(varExpressionChildrenInner)
 }
 
 	additionalProperties := make(map[string]interface{})

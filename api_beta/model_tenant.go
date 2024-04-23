@@ -319,7 +319,7 @@ func (o *Tenant) UnmarshalJSON(bytes []byte) (err error) {
 	varTenant := _Tenant{}
 
 	if err = json.Unmarshal(bytes, &varTenant); err == nil {
-	*o = Tenant(varTenant)
+			*o = Tenant(varTenant)
 }
 
 	additionalProperties := make(map[string]interface{})

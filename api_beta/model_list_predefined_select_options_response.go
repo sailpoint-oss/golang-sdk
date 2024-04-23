@@ -100,7 +100,7 @@ func (o *ListPredefinedSelectOptionsResponse) UnmarshalJSON(bytes []byte) (err e
 	varListPredefinedSelectOptionsResponse := _ListPredefinedSelectOptionsResponse{}
 
 	if err = json.Unmarshal(bytes, &varListPredefinedSelectOptionsResponse); err == nil {
-	*o = ListPredefinedSelectOptionsResponse(varListPredefinedSelectOptionsResponse)
+			*o = ListPredefinedSelectOptionsResponse(varListPredefinedSelectOptionsResponse)
 }
 
 	additionalProperties := make(map[string]interface{})

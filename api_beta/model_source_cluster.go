@@ -145,7 +145,7 @@ func (o SourceCluster) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *SourceCluster) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -171,7 +171,7 @@ func (o *SourceCluster) UnmarshalJSON(bytes []byte) (err error) {
 	varSourceCluster := _SourceCluster{}
 
 	if err = json.Unmarshal(bytes, &varSourceCluster); err == nil {
-	*o = SourceCluster(varSourceCluster)
+			*o = SourceCluster(varSourceCluster)
 }
 
 	additionalProperties := make(map[string]interface{})

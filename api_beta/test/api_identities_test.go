@@ -14,13 +14,13 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func Test_api_beta_IdentitiesAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sailpoint.NewDefaultConfiguration()
+	apiClient := sailpoint.NewAPIClient(configuration)
 
 	t.Run("Test IdentitiesAPIService DeleteIdentity", func(t *testing.T) {
 
@@ -28,7 +28,7 @@ func Test_api_beta_IdentitiesAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_BETA.IdentitiesAPI.DeleteIdentity(context.Background(), id).Execute()
+		httpRes, err := apiClient.Beta.IdentitiesAPI.DeleteIdentity(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -41,7 +41,7 @@ func Test_api_beta_IdentitiesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.IdentitiesAPI.GetIdentity(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.IdentitiesAPI.GetIdentity(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -55,7 +55,7 @@ func Test_api_beta_IdentitiesAPIService(t *testing.T) {
 
 		var identityId string
 
-		resp, httpRes, err := apiClient.API_BETA.IdentitiesAPI.GetIdentityOwnershipDetails(context.Background(), identityId).Execute()
+		resp, httpRes, err := apiClient.Beta.IdentitiesAPI.GetIdentityOwnershipDetails(context.Background(), identityId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -70,7 +70,7 @@ func Test_api_beta_IdentitiesAPIService(t *testing.T) {
 		var identityId string
 		var assignmentId string
 
-		resp, httpRes, err := apiClient.API_BETA.IdentitiesAPI.GetRoleAssignment(context.Background(), identityId, assignmentId).Execute()
+		resp, httpRes, err := apiClient.Beta.IdentitiesAPI.GetRoleAssignment(context.Background(), identityId, assignmentId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -84,7 +84,7 @@ func Test_api_beta_IdentitiesAPIService(t *testing.T) {
 
 		var identityId string
 
-		resp, httpRes, err := apiClient.API_BETA.IdentitiesAPI.GetRoleAssignments(context.Background(), identityId).Execute()
+		resp, httpRes, err := apiClient.Beta.IdentitiesAPI.GetRoleAssignments(context.Background(), identityId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -96,7 +96,7 @@ func Test_api_beta_IdentitiesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.IdentitiesAPI.ListIdentities(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.IdentitiesAPI.ListIdentities(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -110,7 +110,7 @@ func Test_api_beta_IdentitiesAPIService(t *testing.T) {
 
 		var identityId string
 
-		httpRes, err := apiClient.API_BETA.IdentitiesAPI.ResetIdentity(context.Background(), identityId).Execute()
+		httpRes, err := apiClient.Beta.IdentitiesAPI.ResetIdentity(context.Background(), identityId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -121,7 +121,7 @@ func Test_api_beta_IdentitiesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.IdentitiesAPI.StartIdentityProcessing(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.IdentitiesAPI.StartIdentityProcessing(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -135,7 +135,7 @@ func Test_api_beta_IdentitiesAPIService(t *testing.T) {
 
 		var identityId string
 
-		resp, httpRes, err := apiClient.API_BETA.IdentitiesAPI.SynchronizeAttributesForIdentity(context.Background(), identityId).Execute()
+		resp, httpRes, err := apiClient.Beta.IdentitiesAPI.SynchronizeAttributesForIdentity(context.Background(), identityId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -137,7 +137,7 @@ func (o *PasswordInfoQueryDTO) UnmarshalJSON(bytes []byte) (err error) {
 	varPasswordInfoQueryDTO := _PasswordInfoQueryDTO{}
 
 	if err = json.Unmarshal(bytes, &varPasswordInfoQueryDTO); err == nil {
-	*o = PasswordInfoQueryDTO(varPasswordInfoQueryDTO)
+			*o = PasswordInfoQueryDTO(varPasswordInfoQueryDTO)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -21,6 +21,7 @@ var _ MappedNullable = &SearchArguments{}
 type SearchArguments struct {
 	// The ID of the scheduled search that triggered the saved search execution. 
 	ScheduleId *string `json:"scheduleId,omitempty"`
+	// The owner of the scheduled search being tested. 
 	Owner *TypedReference `json:"owner,omitempty"`
 	// The email recipients of the scheduled search being tested. 
 	Recipients []TypedReference `json:"recipients,omitempty"`
@@ -173,7 +174,7 @@ func (o *SearchArguments) UnmarshalJSON(bytes []byte) (err error) {
 	varSearchArguments := _SearchArguments{}
 
 	if err = json.Unmarshal(bytes, &varSearchArguments); err == nil {
-	*o = SearchArguments(varSearchArguments)
+			*o = SearchArguments(varSearchArguments)
 }
 
 	additionalProperties := make(map[string]interface{})

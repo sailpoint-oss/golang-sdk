@@ -102,4 +102,3 @@ func (v *NullableGetRoleAssignments200ResponseInner) UnmarshalJSON(src []byte) e
 	return json.Unmarshal(src, &v.value)
 }
 
-

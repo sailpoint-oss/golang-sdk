@@ -174,4 +174,3 @@ func (v *NullableGetHistoricalIdentityEvents200ResponseInner) UnmarshalJSON(src 
 	return json.Unmarshal(src, &v.value)
 }
 
-

@@ -120,7 +120,7 @@ func (a *SourcesAggregationAPIService) ImportAccountsExecute(r ApiImportAccounts
 		formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	}
 	if r.disableOptimization != nil {
-		parameterAddToQuery(localVarFormParams, "disableOptimization", r.disableOptimization, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "disableOptimization", r.disableOptimization, "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {

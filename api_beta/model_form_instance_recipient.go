@@ -137,7 +137,7 @@ func (o *FormInstanceRecipient) UnmarshalJSON(bytes []byte) (err error) {
 	varFormInstanceRecipient := _FormInstanceRecipient{}
 
 	if err = json.Unmarshal(bytes, &varFormInstanceRecipient); err == nil {
-	*o = FormInstanceRecipient(varFormInstanceRecipient)
+			*o = FormInstanceRecipient(varFormInstanceRecipient)
 }
 
 	additionalProperties := make(map[string]interface{})

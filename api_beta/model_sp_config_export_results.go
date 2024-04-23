@@ -284,7 +284,7 @@ func (o *SpConfigExportResults) UnmarshalJSON(bytes []byte) (err error) {
 	varSpConfigExportResults := _SpConfigExportResults{}
 
 	if err = json.Unmarshal(bytes, &varSpConfigExportResults); err == nil {
-	*o = SpConfigExportResults(varSpConfigExportResults)
+			*o = SpConfigExportResults(varSpConfigExportResults)
 }
 
 	additionalProperties := make(map[string]interface{})

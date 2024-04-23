@@ -174,7 +174,7 @@ func (o *AccessProfileBulkDeleteResponse) UnmarshalJSON(bytes []byte) (err error
 	varAccessProfileBulkDeleteResponse := _AccessProfileBulkDeleteResponse{}
 
 	if err = json.Unmarshal(bytes, &varAccessProfileBulkDeleteResponse); err == nil {
-	*o = AccessProfileBulkDeleteResponse(varAccessProfileBulkDeleteResponse)
+			*o = AccessProfileBulkDeleteResponse(varAccessProfileBulkDeleteResponse)
 }
 
 	additionalProperties := make(map[string]interface{})

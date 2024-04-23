@@ -174,7 +174,7 @@ func (o *SedPatch) UnmarshalJSON(bytes []byte) (err error) {
 	varSedPatch := _SedPatch{}
 
 	if err = json.Unmarshal(bytes, &varSedPatch); err == nil {
-	*o = SedPatch(varSedPatch)
+			*o = SedPatch(varSedPatch)
 }
 
 	additionalProperties := make(map[string]interface{})

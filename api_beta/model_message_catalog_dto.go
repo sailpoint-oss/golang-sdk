@@ -137,7 +137,7 @@ func (o *MessageCatalogDto) UnmarshalJSON(bytes []byte) (err error) {
 	varMessageCatalogDto := _MessageCatalogDto{}
 
 	if err = json.Unmarshal(bytes, &varMessageCatalogDto); err == nil {
-	*o = MessageCatalogDto(varMessageCatalogDto)
+			*o = MessageCatalogDto(varMessageCatalogDto)
 }
 
 	additionalProperties := make(map[string]interface{})

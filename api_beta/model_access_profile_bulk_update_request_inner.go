@@ -137,7 +137,7 @@ func (o *AccessProfileBulkUpdateRequestInner) UnmarshalJSON(bytes []byte) (err e
 	varAccessProfileBulkUpdateRequestInner := _AccessProfileBulkUpdateRequestInner{}
 
 	if err = json.Unmarshal(bytes, &varAccessProfileBulkUpdateRequestInner); err == nil {
-	*o = AccessProfileBulkUpdateRequestInner(varAccessProfileBulkUpdateRequestInner)
+			*o = AccessProfileBulkUpdateRequestInner(varAccessProfileBulkUpdateRequestInner)
 }
 
 	additionalProperties := make(map[string]interface{})

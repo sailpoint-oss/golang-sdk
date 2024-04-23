@@ -174,7 +174,7 @@ func (o *BulkWorkgroupMembersRequestInner) UnmarshalJSON(bytes []byte) (err erro
 	varBulkWorkgroupMembersRequestInner := _BulkWorkgroupMembersRequestInner{}
 
 	if err = json.Unmarshal(bytes, &varBulkWorkgroupMembersRequestInner); err == nil {
-	*o = BulkWorkgroupMembersRequestInner(varBulkWorkgroupMembersRequestInner)
+			*o = BulkWorkgroupMembersRequestInner(varBulkWorkgroupMembersRequestInner)
 }
 
 	additionalProperties := make(map[string]interface{})

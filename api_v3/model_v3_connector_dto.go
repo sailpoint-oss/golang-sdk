@@ -364,7 +364,7 @@ func (o *V3ConnectorDto) UnmarshalJSON(bytes []byte) (err error) {
 	varV3ConnectorDto := _V3ConnectorDto{}
 
 	if err = json.Unmarshal(bytes, &varV3ConnectorDto); err == nil {
-	*o = V3ConnectorDto(varV3ConnectorDto)
+			*o = V3ConnectorDto(varV3ConnectorDto)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -137,7 +137,7 @@ func (o *ManagedClusterQueue) UnmarshalJSON(bytes []byte) (err error) {
 	varManagedClusterQueue := _ManagedClusterQueue{}
 
 	if err = json.Unmarshal(bytes, &varManagedClusterQueue); err == nil {
-	*o = ManagedClusterQueue(varManagedClusterQueue)
+			*o = ManagedClusterQueue(varManagedClusterQueue)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -137,7 +137,7 @@ func (o *EntityCreatedByDTO) UnmarshalJSON(bytes []byte) (err error) {
 	varEntityCreatedByDTO := _EntityCreatedByDTO{}
 
 	if err = json.Unmarshal(bytes, &varEntityCreatedByDTO); err == nil {
-	*o = EntityCreatedByDTO(varEntityCreatedByDTO)
+			*o = EntityCreatedByDTO(varEntityCreatedByDTO)
 }
 
 	additionalProperties := make(map[string]interface{})

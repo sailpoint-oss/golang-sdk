@@ -322,7 +322,7 @@ func (o *ConnectorDetail) UnmarshalJSON(bytes []byte) (err error) {
 	varConnectorDetail := _ConnectorDetail{}
 
 	if err = json.Unmarshal(bytes, &varConnectorDetail); err == nil {
-	*o = ConnectorDetail(varConnectorDetail)
+			*o = ConnectorDetail(varConnectorDetail)
 }
 
 	additionalProperties := make(map[string]interface{})

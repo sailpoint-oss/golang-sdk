@@ -137,7 +137,7 @@ func (o *BaseAccessProfile) UnmarshalJSON(bytes []byte) (err error) {
 	varBaseAccessProfile := _BaseAccessProfile{}
 
 	if err = json.Unmarshal(bytes, &varBaseAccessProfile); err == nil {
-	*o = BaseAccessProfile(varBaseAccessProfile)
+			*o = BaseAccessProfile(varBaseAccessProfile)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -14,13 +14,13 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func Test_api_beta_SuggestedEntitlementDescriptionAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sailpoint.NewDefaultConfiguration()
+	apiClient := sailpoint.NewAPIClient(configuration)
 
 	t.Run("Test SuggestedEntitlementDescriptionAPIService GetSedBatchStats", func(t *testing.T) {
 
@@ -28,7 +28,7 @@ func Test_api_beta_SuggestedEntitlementDescriptionAPIService(t *testing.T) {
 
 		var batchId string
 
-		resp, httpRes, err := apiClient.API_BETA.SuggestedEntitlementDescriptionAPI.GetSedBatchStats(context.Background(), batchId).Execute()
+		resp, httpRes, err := apiClient.Beta.SuggestedEntitlementDescriptionAPI.GetSedBatchStats(context.Background(), batchId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_beta_SuggestedEntitlementDescriptionAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.SuggestedEntitlementDescriptionAPI.GetSedBatches(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.SuggestedEntitlementDescriptionAPI.GetSedBatches(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -52,7 +52,7 @@ func Test_api_beta_SuggestedEntitlementDescriptionAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.SuggestedEntitlementDescriptionAPI.ListSeds(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.SuggestedEntitlementDescriptionAPI.ListSeds(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -66,7 +66,7 @@ func Test_api_beta_SuggestedEntitlementDescriptionAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.SuggestedEntitlementDescriptionAPI.PatchSed(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.Beta.SuggestedEntitlementDescriptionAPI.PatchSed(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -78,7 +78,7 @@ func Test_api_beta_SuggestedEntitlementDescriptionAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.SuggestedEntitlementDescriptionAPI.SubmitSedApproval(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.SuggestedEntitlementDescriptionAPI.SubmitSedApproval(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -90,7 +90,7 @@ func Test_api_beta_SuggestedEntitlementDescriptionAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.SuggestedEntitlementDescriptionAPI.SubmitSedAssignment(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.SuggestedEntitlementDescriptionAPI.SubmitSedAssignment(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -102,7 +102,7 @@ func Test_api_beta_SuggestedEntitlementDescriptionAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.SuggestedEntitlementDescriptionAPI.SubmitSedBatchRequest(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Beta.SuggestedEntitlementDescriptionAPI.SubmitSedBatchRequest(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

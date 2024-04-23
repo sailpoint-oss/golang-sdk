@@ -174,7 +174,7 @@ func (o *AccessProfileSourceRef) UnmarshalJSON(bytes []byte) (err error) {
 	varAccessProfileSourceRef := _AccessProfileSourceRef{}
 
 	if err = json.Unmarshal(bytes, &varAccessProfileSourceRef); err == nil {
-	*o = AccessProfileSourceRef(varAccessProfileSourceRef)
+			*o = AccessProfileSourceRef(varAccessProfileSourceRef)
 }
 
 	additionalProperties := make(map[string]interface{})

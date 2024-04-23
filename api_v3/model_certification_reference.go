@@ -209,7 +209,7 @@ func (o *CertificationReference) UnmarshalJSON(bytes []byte) (err error) {
 	varCertificationReference := _CertificationReference{}
 
 	if err = json.Unmarshal(bytes, &varCertificationReference); err == nil {
-	*o = CertificationReference(varCertificationReference)
+			*o = CertificationReference(varCertificationReference)
 }
 
 	additionalProperties := make(map[string]interface{})

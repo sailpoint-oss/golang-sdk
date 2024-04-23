@@ -245,7 +245,7 @@ func (o *AccessRequestConfig) UnmarshalJSON(bytes []byte) (err error) {
 	varAccessRequestConfig := _AccessRequestConfig{}
 
 	if err = json.Unmarshal(bytes, &varAccessRequestConfig); err == nil {
-	*o = AccessRequestConfig(varAccessRequestConfig)
+			*o = AccessRequestConfig(varAccessRequestConfig)
 }
 
 	additionalProperties := make(map[string]interface{})

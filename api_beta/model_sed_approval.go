@@ -100,7 +100,7 @@ func (o *SedApproval) UnmarshalJSON(bytes []byte) (err error) {
 	varSedApproval := _SedApproval{}
 
 	if err = json.Unmarshal(bytes, &varSedApproval); err == nil {
-	*o = SedApproval(varSedApproval)
+			*o = SedApproval(varSedApproval)
 }
 
 	additionalProperties := make(map[string]interface{})

@@ -135,7 +135,7 @@ func (o *AccessRequestContext) UnmarshalJSON(bytes []byte) (err error) {
 	varAccessRequestContext := _AccessRequestContext{}
 
 	if err = json.Unmarshal(bytes, &varAccessRequestContext); err == nil {
-	*o = AccessRequestContext(varAccessRequestContext)
+			*o = AccessRequestContext(varAccessRequestContext)
 }
 
 	additionalProperties := make(map[string]interface{})

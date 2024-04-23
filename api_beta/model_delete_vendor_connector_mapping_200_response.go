@@ -100,7 +100,7 @@ func (o *DeleteVendorConnectorMapping200Response) UnmarshalJSON(bytes []byte) (e
 	varDeleteVendorConnectorMapping200Response := _DeleteVendorConnectorMapping200Response{}
 
 	if err = json.Unmarshal(bytes, &varDeleteVendorConnectorMapping200Response); err == nil {
-	*o = DeleteVendorConnectorMapping200Response(varDeleteVendorConnectorMapping200Response)
+			*o = DeleteVendorConnectorMapping200Response(varDeleteVendorConnectorMapping200Response)
 }
 
 	additionalProperties := make(map[string]interface{})
