@@ -30680,17 +30680,20 @@ paths:
           type: string
       - description: Boolean determining whether common access entitlements will be
           included or not
+        example: true
         explode: true
         in: query
         name: includeCommonAccess
         required: false
         schema:
+          default: true
           type: boolean
         style: form
       - description: "Sort results using the standard syntax described in [V3 API\
           \ Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)\n\
-          \nSorting is supported for the following fields: **popularity**\n\nThe default\
-          \ sort is **popularity** in descending order. "
+          \nSorting is supported for the following fields: **popularity, entitlementName,\
+          \ applicationName**\n\nThe default sort is **popularity** in descending\
+          \ order. "
         example: popularity
         explode: true
         in: query
@@ -30793,6 +30796,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
         "500":
           content:
             application/json:
@@ -30810,6 +30821,8 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth: []
       summary: Retrieves entitlements for a potential role in a role mining session
       tags:
       - IAI Role Mining
