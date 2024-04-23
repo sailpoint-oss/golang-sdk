@@ -837,7 +837,6 @@ Class | Method | HTTP request | Description
  - [SourceBeforeProvisioningRule](docs/SourceBeforeProvisioningRule.md)
  - [SourceCluster](docs/SourceCluster.md)
  - [SourceClusterDto](docs/SourceClusterDto.md)
- - [SourceFeature](docs/SourceFeature.md)
  - [SourceHealthDto](docs/SourceHealthDto.md)
  - [SourceManagementWorkgroup](docs/SourceManagementWorkgroup.md)
  - [SourceManagerCorrelationMapping](docs/SourceManagerCorrelationMapping.md)

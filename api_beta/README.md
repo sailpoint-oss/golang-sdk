@@ -1255,7 +1255,6 @@ Class | Method | HTTP request | Description
  - [SourceDeleted](docs/SourceDeleted.md)
  - [SourceDeletedActor](docs/SourceDeletedActor.md)
  - [SourceEntitlementRequestConfig](docs/SourceEntitlementRequestConfig.md)
- - [SourceFeature](docs/SourceFeature.md)
  - [SourceManagementWorkgroup](docs/SourceManagementWorkgroup.md)
  - [SourceManagerCorrelationRule](docs/SourceManagerCorrelationRule.md)
  - [SourceOwner](docs/SourceOwner.md)

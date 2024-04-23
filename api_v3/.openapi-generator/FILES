@@ -524,7 +524,6 @@ docs/SourceAccountCorrelationRule.md
 docs/SourceBeforeProvisioningRule.md
 docs/SourceCluster.md
 docs/SourceClusterDto.md
-docs/SourceFeature.md
 docs/SourceHealthDto.md
 docs/SourceManagementWorkgroup.md
 docs/SourceManagerCorrelationMapping.md
@@ -1033,7 +1032,6 @@ model_source_account_correlation_rule.go
 model_source_before_provisioning_rule.go
 model_source_cluster.go
 model_source_cluster_dto.go
-model_source_feature.go
 model_source_health_dto.go
 model_source_management_workgroup.go
 model_source_manager_correlation_mapping.go

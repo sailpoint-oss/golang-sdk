@@ -814,7 +814,6 @@ docs/SourceCreatedActor.md
 docs/SourceDeleted.md
 docs/SourceDeletedActor.md
 docs/SourceEntitlementRequestConfig.md
-docs/SourceFeature.md
 docs/SourceManagementWorkgroup.md
 docs/SourceManagerCorrelationRule.md
 docs/SourceOwner.md
@@ -1623,7 +1622,6 @@ model_source_created_actor.go
 model_source_deleted.go
 model_source_deleted_actor.go
 model_source_entitlement_request_config.go
-model_source_feature.go
 model_source_management_workgroup.go
 model_source_manager_correlation_rule.go
 model_source_owner.go
