@@ -22,7 +22,7 @@ type LoadAccountsTaskTaskAttributes struct {
 	// The id of the source
 	AppId *string `json:"appId,omitempty"`
 	// The indicator if the aggregation process was enabled/disabled for the aggregation job
-	OptimizedAggregation map[string]interface{} `json:"optimizedAggregation,omitempty"`
+	OptimizedAggregation *string `json:"optimizedAggregation,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -78,19 +78,19 @@ func (o *LoadAccountsTaskTaskAttributes) SetAppId(v string) {
 }
 
 // GetOptimizedAggregation returns the OptimizedAggregation field value if set, zero value otherwise.
-func (o *LoadAccountsTaskTaskAttributes) GetOptimizedAggregation() map[string]interface{} {
+func (o *LoadAccountsTaskTaskAttributes) GetOptimizedAggregation() string {
 	if o == nil || isNil(o.OptimizedAggregation) {
-		var ret map[string]interface{}
+		var ret string
 		return ret
 	}
-	return o.OptimizedAggregation
+	return *o.OptimizedAggregation
 }
 
 // GetOptimizedAggregationOk returns a tuple with the OptimizedAggregation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LoadAccountsTaskTaskAttributes) GetOptimizedAggregationOk() (map[string]interface{}, bool) {
+func (o *LoadAccountsTaskTaskAttributes) GetOptimizedAggregationOk() (*string, bool) {
 	if o == nil || isNil(o.OptimizedAggregation) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.OptimizedAggregation, true
 }
@@ -104,9 +104,9 @@ func (o *LoadAccountsTaskTaskAttributes) HasOptimizedAggregation() bool {
 	return false
 }
 
-// SetOptimizedAggregation gets a reference to the given map[string]interface{} and assigns it to the OptimizedAggregation field.
-func (o *LoadAccountsTaskTaskAttributes) SetOptimizedAggregation(v map[string]interface{}) {
-	o.OptimizedAggregation = v
+// SetOptimizedAggregation gets a reference to the given string and assigns it to the OptimizedAggregation field.
+func (o *LoadAccountsTaskTaskAttributes) SetOptimizedAggregation(v string) {
+	o.OptimizedAggregation = &v
 }
 
 func (o LoadAccountsTaskTaskAttributes) MarshalJSON() ([]byte, error) {

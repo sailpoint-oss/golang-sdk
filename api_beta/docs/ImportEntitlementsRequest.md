@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CsvFile** | ***os.File** |  | 
+**CsvFile** | Pointer to ***os.File** | The CSV file containing the source entitlements to aggregate. | [optional] 
 
 ## Methods
 
 ### NewImportEntitlementsRequest
 
-`func NewImportEntitlementsRequest(csvFile *os.File, ) *ImportEntitlementsRequest`
+`func NewImportEntitlementsRequest() *ImportEntitlementsRequest`
 
 NewImportEntitlementsRequest instantiates a new ImportEntitlementsRequest object
 This constructor will assign default values to properties that have it defined,
@@ -44,6 +44,11 @@ and a boolean to check if the value has been set.
 
 SetCsvFile sets CsvFile field to given value.
 
+### HasCsvFile
+
+`func (o *ImportEntitlementsRequest) HasCsvFile() bool`
+
+HasCsvFile returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

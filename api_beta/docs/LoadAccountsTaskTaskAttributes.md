@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AppId** | Pointer to **string** | The id of the source | [optional] 
-**OptimizedAggregation** | Pointer to **map[string]interface{}** | The indicator if the aggregation process was enabled/disabled for the aggregation job | [optional] 
+**OptimizedAggregation** | Pointer to **string** | The indicator if the aggregation process was enabled/disabled for the aggregation job | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasAppId returns a boolean if a field has been set.
 
 ### GetOptimizedAggregation
 
-`func (o *LoadAccountsTaskTaskAttributes) GetOptimizedAggregation() map[string]interface{}`
+`func (o *LoadAccountsTaskTaskAttributes) GetOptimizedAggregation() string`
 
 GetOptimizedAggregation returns the OptimizedAggregation field if non-nil, zero value otherwise.
 
 ### GetOptimizedAggregationOk
 
-`func (o *LoadAccountsTaskTaskAttributes) GetOptimizedAggregationOk() (*map[string]interface{}, bool)`
+`func (o *LoadAccountsTaskTaskAttributes) GetOptimizedAggregationOk() (*string, bool)`
 
 GetOptimizedAggregationOk returns a tuple with the OptimizedAggregation field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOptimizedAggregation
 
-`func (o *LoadAccountsTaskTaskAttributes) SetOptimizedAggregation(v map[string]interface{})`
+`func (o *LoadAccountsTaskTaskAttributes) SetOptimizedAggregation(v string)`
 
 SetOptimizedAggregation sets OptimizedAggregation field to given value.
 

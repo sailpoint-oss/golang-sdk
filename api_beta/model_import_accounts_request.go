@@ -20,7 +20,9 @@ var _ MappedNullable = &ImportAccountsRequest{}
 
 // ImportAccountsRequest struct for ImportAccountsRequest
 type ImportAccountsRequest struct {
+	// The CSV file containing the source accounts to aggregate.
 	File **os.File `json:"file,omitempty"`
+	// Use this flag to reprocess every account whether or not the data has changed.
 	DisableOptimization *bool `json:"disableOptimization,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -33,6 +35,8 @@ type _ImportAccountsRequest ImportAccountsRequest
 // will change when the set of required properties is changed
 func NewImportAccountsRequest() *ImportAccountsRequest {
 	this := ImportAccountsRequest{}
+	var disableOptimization bool = false
+	this.DisableOptimization = &disableOptimization
 	return &this
 }
 
@@ -41,6 +45,8 @@ func NewImportAccountsRequest() *ImportAccountsRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewImportAccountsRequestWithDefaults() *ImportAccountsRequest {
 	this := ImportAccountsRequest{}
+	var disableOptimization bool = false
+	this.DisableOptimization = &disableOptimization
 	return &this
 }
 

@@ -62,7 +62,6 @@ api_sod_policy.go
 api_sod_violations.go
 api_source_usages.go
 api_sources.go
-api_sources_aggregation.go
 api_sp_config.go
 api_suggested_entitlement_description.go
 api_tagged_objects.go
@@ -504,7 +503,9 @@ docs/LoadAccountsTask.md
 docs/LoadAccountsTaskTask.md
 docs/LoadAccountsTaskTaskAttributes.md
 docs/LoadAccountsTaskTaskMessagesInner.md
+docs/LoadAccountsTaskTaskReturnsInner.md
 docs/LoadEntitlementTask.md
+docs/LoadEntitlementTaskReturnsInner.md
 docs/LocaleOrigin.md
 docs/LocalizedMessage.md
 docs/LookupStep.md
@@ -769,6 +770,7 @@ docs/SegmentsAPI.md
 docs/Selector.md
 docs/SelectorType.md
 docs/SelfImportExportDto.md
+docs/SendManualDiscoverApplicationsCsvTemplateRequest.md
 docs/SendTestNotificationRequestDto.md
 docs/SendTokenRequest.md
 docs/SendTokenResponse.md
@@ -827,7 +829,6 @@ docs/SourceUsage.md
 docs/SourceUsageStatus.md
 docs/SourceUsagesAPI.md
 docs/SourcesAPI.md
-docs/SourcesAggregationAPI.md
 docs/SpConfigExportJob.md
 docs/SpConfigExportJobStatus.md
 docs/SpConfigExportResults.md
@@ -1338,7 +1339,9 @@ model_load_accounts_task.go
 model_load_accounts_task_task.go
 model_load_accounts_task_task_attributes.go
 model_load_accounts_task_task_messages_inner.go
+model_load_accounts_task_task_returns_inner.go
 model_load_entitlement_task.go
+model_load_entitlement_task_returns_inner.go
 model_locale_origin.go
 model_localized_message.go
 model_lookup_step.go
@@ -1578,6 +1581,7 @@ model_segment.go
 model_selector.go
 model_selector_type.go
 model_self_import_export_dto.go
+model_send_manual_discover_applications_csv_template_request.go
 model_send_test_notification_request_dto.go
 model_send_token_request.go
 model_send_token_response.go
@@ -1793,7 +1797,6 @@ test/api_sod_policies_test.go
 test/api_sod_policy_test.go
 test/api_sod_violations_test.go
 test/api_source_usages_test.go
-test/api_sources_aggregation_test.go
 test/api_sources_test.go
 test/api_sp_config_test.go
 test/api_suggested_entitlement_description_test.go

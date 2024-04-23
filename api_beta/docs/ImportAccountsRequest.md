@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**File** | Pointer to ***os.File** |  | [optional] 
-**DisableOptimization** | Pointer to **bool** |  | [optional] 
+**File** | Pointer to ***os.File** | The CSV file containing the source accounts to aggregate. | [optional] 
+**DisableOptimization** | Pointer to **bool** | Use this flag to reprocess every account whether or not the data has changed. | [optional] [default to false]
 
 ## Methods
 

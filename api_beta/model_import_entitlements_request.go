@@ -13,7 +13,6 @@ package api_beta
 import (
 	"encoding/json"
 	"os"
-	"fmt"
 )
 
 // checks if the ImportEntitlementsRequest type satisfies the MappedNullable interface at compile time
@@ -21,7 +20,8 @@ var _ MappedNullable = &ImportEntitlementsRequest{}
 
 // ImportEntitlementsRequest struct for ImportEntitlementsRequest
 type ImportEntitlementsRequest struct {
-	CsvFile *os.File `json:"csvFile"`
+	// The CSV file containing the source entitlements to aggregate.
+	CsvFile **os.File `json:"csvFile,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -31,9 +31,8 @@ type _ImportEntitlementsRequest ImportEntitlementsRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewImportEntitlementsRequest(csvFile *os.File) *ImportEntitlementsRequest {
+func NewImportEntitlementsRequest() *ImportEntitlementsRequest {
 	this := ImportEntitlementsRequest{}
-	this.CsvFile = csvFile
 	return &this
 }
 
@@ -45,28 +44,36 @@ func NewImportEntitlementsRequestWithDefaults() *ImportEntitlementsRequest {
 	return &this
 }
 
-// GetCsvFile returns the CsvFile field value
+// GetCsvFile returns the CsvFile field value if set, zero value otherwise.
 func (o *ImportEntitlementsRequest) GetCsvFile() *os.File {
-	if o == nil {
+	if o == nil || isNil(o.CsvFile) {
 		var ret *os.File
 		return ret
 	}
-
-	return o.CsvFile
+	return *o.CsvFile
 }
 
-// GetCsvFileOk returns a tuple with the CsvFile field value
+// GetCsvFileOk returns a tuple with the CsvFile field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImportEntitlementsRequest) GetCsvFileOk() (**os.File, bool) {
-	if o == nil {
+	if o == nil || isNil(o.CsvFile) {
 		return nil, false
 	}
-	return &o.CsvFile, true
+	return o.CsvFile, true
 }
 
-// SetCsvFile sets field value
+// HasCsvFile returns a boolean if a field has been set.
+func (o *ImportEntitlementsRequest) HasCsvFile() bool {
+	if o != nil && !isNil(o.CsvFile) {
+		return true
+	}
+
+	return false
+}
+
+// SetCsvFile gets a reference to the given *os.File and assigns it to the CsvFile field.
 func (o *ImportEntitlementsRequest) SetCsvFile(v *os.File) {
-	o.CsvFile = v
+	o.CsvFile = &v
 }
 
 func (o ImportEntitlementsRequest) MarshalJSON() ([]byte, error) {
@@ -79,7 +86,9 @@ func (o ImportEntitlementsRequest) MarshalJSON() ([]byte, error) {
 
 func (o ImportEntitlementsRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["csvFile"] = o.CsvFile
+	if !isNil(o.CsvFile) {
+		toSerialize["csvFile"] = o.CsvFile
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -89,27 +98,6 @@ func (o ImportEntitlementsRequest) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *ImportEntitlementsRequest) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"csvFile",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
 	varImportEntitlementsRequest := _ImportEntitlementsRequest{}
 
 	if err = json.Unmarshal(bytes, &varImportEntitlementsRequest); err == nil {

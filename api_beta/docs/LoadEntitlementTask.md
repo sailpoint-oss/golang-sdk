@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | The description of the task | [optional] 
 **Launcher** | Pointer to **string** | The user who initiated the task | [optional] 
 **Created** | Pointer to **time.Time** | The creation date of the task | [optional] 
-**Returns** | Pointer to **map[string]interface{}** | Return values from the task | [optional] 
+**Returns** | Pointer to [**[]LoadEntitlementTaskReturnsInner**](LoadEntitlementTaskReturnsInner.md) | Return values from the task | [optional] 
 
 ## Methods
 
@@ -183,20 +183,20 @@ HasCreated returns a boolean if a field has been set.
 
 ### GetReturns
 
-`func (o *LoadEntitlementTask) GetReturns() map[string]interface{}`
+`func (o *LoadEntitlementTask) GetReturns() []LoadEntitlementTaskReturnsInner`
 
 GetReturns returns the Returns field if non-nil, zero value otherwise.
 
 ### GetReturnsOk
 
-`func (o *LoadEntitlementTask) GetReturnsOk() (*map[string]interface{}, bool)`
+`func (o *LoadEntitlementTask) GetReturnsOk() (*[]LoadEntitlementTaskReturnsInner, bool)`
 
 GetReturnsOk returns a tuple with the Returns field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReturns
 
-`func (o *LoadEntitlementTask) SetReturns(v map[string]interface{})`
+`func (o *LoadEntitlementTask) SetReturns(v []LoadEntitlementTaskReturnsInner)`
 
 SetReturns sets Returns field to given value.
 

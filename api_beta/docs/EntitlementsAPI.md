@@ -179,7 +179,7 @@ import (
 
 func main() {
     id := "ef38f94347e94562b5bb8424a56397d8" // string | Source Id
-    csvFile := os.NewFile(1234, "some_file") // *os.File | 
+    csvFile := os.NewFile(1234, "some_file") // *os.File | The CSV file containing the source entitlements to aggregate. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -209,7 +209,7 @@ Other parameters are passed through a pointer to a apiImportEntitlementsRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **csvFile** | ***os.File** |  | 
+ **csvFile** | ***os.File** | The CSV file containing the source entitlements to aggregate. | 
 
 ### Return type
 

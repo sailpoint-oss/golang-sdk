@@ -470,6 +470,7 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**GetSourceEntitlementRequestConfig**](docs/SourcesAPI.md#getsourceentitlementrequestconfig) | **Get** /sources/{id}/entitlement-request-config | Get Source Entitlement Request Configuration
 *SourcesAPI* | [**GetSourceEntitlementsSchema**](docs/SourcesAPI.md#getsourceentitlementsschema) | **Get** /sources/{id}/schemas/entitlements | Downloads source entitlements schema template
 *SourcesAPI* | [**GetSourceSchema**](docs/SourcesAPI.md#getsourceschema) | **Get** /sources/{sourceId}/schemas/{schemaId} | Get Source Schema by ID
+*SourcesAPI* | [**ImportAccounts**](docs/SourcesAPI.md#importaccounts) | **Post** /sources/{id}/load-accounts | Account Aggregation
 *SourcesAPI* | [**ImportSourceAccountsSchema**](docs/SourcesAPI.md#importsourceaccountsschema) | **Post** /sources/{id}/schemas/accounts | Uploads source accounts schema template
 *SourcesAPI* | [**ImportSourceConnectorFile**](docs/SourcesAPI.md#importsourceconnectorfile) | **Post** /sources/{sourceId}/upload-connector-file | Upload connector file to source
 *SourcesAPI* | [**ImportSourceEntitlementsSchema**](docs/SourcesAPI.md#importsourceentitlementsschema) | **Post** /sources/{id}/schemas/entitlements | Uploads source entitlements schema template
@@ -491,7 +492,6 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**UpdateSource**](docs/SourcesAPI.md#updatesource) | **Patch** /sources/{id} | Update Source (Partial)
 *SourcesAPI* | [**UpdateSourceEntitlementRequestConfig**](docs/SourcesAPI.md#updatesourceentitlementrequestconfig) | **Put** /sources/{id}/entitlement-request-config | Update Source Entitlement Request Configuration
 *SourcesAPI* | [**UpdateSourceSchema**](docs/SourcesAPI.md#updatesourceschema) | **Patch** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Partial)
-*SourcesAggregationAPI* | [**ImportAccounts**](docs/SourcesAggregationAPI.md#importaccounts) | **Post** /sources/{id}/load-accounts | Account Aggregation
 *SuggestedEntitlementDescriptionAPI* | [**GetSedBatchStats**](docs/SuggestedEntitlementDescriptionAPI.md#getsedbatchstats) | **Get** /suggested-entitlement-description-batches/{batchId}/stats | Submit Sed Batch Stats Request
 *SuggestedEntitlementDescriptionAPI* | [**GetSedBatches**](docs/SuggestedEntitlementDescriptionAPI.md#getsedbatches) | **Get** /suggested-entitlement-description-batches | List Sed Batch Request
 *SuggestedEntitlementDescriptionAPI* | [**ListSeds**](docs/SuggestedEntitlementDescriptionAPI.md#listseds) | **Get** /suggested-entitlement-descriptions | List Suggested Entitlement Description
@@ -971,7 +971,9 @@ Class | Method | HTTP request | Description
  - [LoadAccountsTaskTask](docs/LoadAccountsTaskTask.md)
  - [LoadAccountsTaskTaskAttributes](docs/LoadAccountsTaskTaskAttributes.md)
  - [LoadAccountsTaskTaskMessagesInner](docs/LoadAccountsTaskTaskMessagesInner.md)
+ - [LoadAccountsTaskTaskReturnsInner](docs/LoadAccountsTaskTaskReturnsInner.md)
  - [LoadEntitlementTask](docs/LoadEntitlementTask.md)
+ - [LoadEntitlementTaskReturnsInner](docs/LoadEntitlementTaskReturnsInner.md)
  - [LocaleOrigin](docs/LocaleOrigin.md)
  - [LocalizedMessage](docs/LocalizedMessage.md)
  - [LookupStep](docs/LookupStep.md)
@@ -1211,6 +1213,7 @@ Class | Method | HTTP request | Description
  - [Selector](docs/Selector.md)
  - [SelectorType](docs/SelectorType.md)
  - [SelfImportExportDto](docs/SelfImportExportDto.md)
+ - [SendManualDiscoverApplicationsCsvTemplateRequest](docs/SendManualDiscoverApplicationsCsvTemplateRequest.md)
  - [SendTestNotificationRequestDto](docs/SendTestNotificationRequestDto.md)
  - [SendTokenRequest](docs/SendTokenRequest.md)
  - [SendTokenResponse](docs/SendTokenResponse.md)

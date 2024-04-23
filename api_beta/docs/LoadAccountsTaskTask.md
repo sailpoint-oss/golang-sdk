@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **Messages** | Pointer to [**[]LoadAccountsTaskTaskMessagesInner**](LoadAccountsTaskTaskMessagesInner.md) | List of the messages dedicated to the report.  From task definition perspective here usually should be warnings or errors. | [optional] 
 **Progress** | Pointer to **NullableString** | Current task state. | [optional] 
 **Attributes** | Pointer to [**LoadAccountsTaskTaskAttributes**](LoadAccountsTaskTaskAttributes.md) |  | [optional] 
-**Returns** | Pointer to **map[string]interface{}** | Return values from the task | [optional] 
+**Returns** | Pointer to [**[]LoadAccountsTaskTaskReturnsInner**](LoadAccountsTaskTaskReturnsInner.md) | Return values from the task | [optional] 
 
 ## Methods
 
@@ -415,20 +415,20 @@ HasAttributes returns a boolean if a field has been set.
 
 ### GetReturns
 
-`func (o *LoadAccountsTaskTask) GetReturns() map[string]interface{}`
+`func (o *LoadAccountsTaskTask) GetReturns() []LoadAccountsTaskTaskReturnsInner`
 
 GetReturns returns the Returns field if non-nil, zero value otherwise.
 
 ### GetReturnsOk
 
-`func (o *LoadAccountsTaskTask) GetReturnsOk() (*map[string]interface{}, bool)`
+`func (o *LoadAccountsTaskTask) GetReturnsOk() (*[]LoadAccountsTaskTaskReturnsInner, bool)`
 
 GetReturnsOk returns a tuple with the Returns field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReturns
 
-`func (o *LoadAccountsTaskTask) SetReturns(v map[string]interface{})`
+`func (o *LoadAccountsTaskTask) SetReturns(v []LoadAccountsTaskTaskReturnsInner)`
 
 SetReturns sets Returns field to given value.
 

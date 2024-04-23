@@ -12479,13 +12479,13 @@ paths:
       - Entitlements
   /entitlements/aggregate/sources/{id}:
     post:
-      description: "Starts an entitlement aggregation on the specified source. \n\
+      description: "Starts an entitlement aggregation on the specified source. \n\n\
         If the target source is a direct connection, then the request body must be\
         \ empty. You will also need to make sure the Content-Type header is not set.\
         \ If you set the Content-Type header without specifying a body, then you will\
-        \ receive a 500 error.\nIf the target source is a delimited file source, then\
-        \ the CSV file needs to be included in the request body. You will also need\
-        \ to set the Content-Type header to `multipart/form-data`."
+        \ receive a 500 error.\n\nIf the target source is a delimited file source,\
+        \ then the CSV file needs to be included in the request body. You will also\
+        \ need to set the Content-Type header to `multipart/form-data`."
       operationId: importEntitlements
       parameters:
       - description: Source Id
@@ -40338,10 +40338,9 @@ paths:
       - Sources
   /sources/{id}/load-accounts:
     post:
-      description: "Starts an account aggregation on the specified source. \nIf the\
-        \ target source is a direct connection, then the request body must be empty.\n\
-        If the target source is a delimited file source, then the CSV file needs to\
-        \ be included in the request body. You will also need to set the Content-Type\
+      description: "Starts an account aggregation on the specified source. \n\nIf\
+        \ the target source is a delimited file source, then the CSV file needs to\
+        \ be included in the request body.\n\nYou will also need to set the Content-Type\
         \ header to `multipart/form-data`."
       operationId: importAccounts
       parameters:
@@ -40425,7 +40424,7 @@ paths:
         - idn:account:create
       summary: Account Aggregation
       tags:
-      - Sources > Aggregation
+      - Sources
   /task-status/{id}:
     get:
       description: Get a TaskStatus for a task by task ID.
@@ -52396,7 +52395,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/importEntitlements_request'
+              $ref: '#/components/schemas/sendManualDiscoverApplicationsCsvTemplate_request'
       responses:
         "200":
           content:
@@ -58698,7 +58697,9 @@ components:
             attributeName: groupsUpdated
           - displayLabel: TASK_OUT_ACCOUNT_GROUP_AGGREGATION_DELETED
             attributeName: groupsDeleted
-          type: object
+          items:
+            $ref: '#/components/schemas/LoadEntitlementTask_returns_inner'
+          type: array
       type: object
     PasswordDigitTokenReset:
       example:
@@ -66043,62 +66044,118 @@ components:
             appId: c31386cb18bb403cbb6df4c86294ff82
             optimizedAggregation: enabled
           returns:
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_APPLICATIONS
-            attributeName: applications
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_TOTAL
-            attributeName: total
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_OPTIMIZED
-            attributeName: optimizedAggregation
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_IGNORED
-            attributeName: ignored
-          - displayLabel: TASK_OUT_UNCHANGED_ACCOUNTS
-            attributeName: optimized
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CREATED
-            attributeName: created
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_UPDATED
-            attributeName: updated
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_DELETED
-            attributeName: deleted
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGER_CHANGES
-            attributeName: managerChanges
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_BUSINESS_ROLE_CHANGES
-            attributeName: detectedRoleChanges
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_EXCEPTION_CHANGES
-            attributeName: exceptionChanges
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICIES
-            attributeName: policies
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICY_VIOLATIONS
-            attributeName: policyViolations
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICY_NOTIFICATIONS
-            attributeName: policyNotifications
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCORES_CHANGED
-            attributeName: scoresChanged
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SNAPSHOTS_CREATED
-            attributeName: snapshotsCreated
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_CREATED
-            attributeName: scopesCreated
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_CORRELATED
-            attributeName: scopesCorrelated
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_SELECTED
-            attributeName: scopesSelected
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_DORMANT
-            attributeName: scopesDormant
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_UNSCOPED_IDENTITIES
-            attributeName: unscopedIdentities
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CERTIFICATIONS_CREATED
-            attributeName: certificationsCreated
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CERTIFICATIONS_DELETED
-            attributeName: certificationsDeleted
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_APPLICATIONS_GENERATED
-            attributeName: applicationsGenerated
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGED_ATTRIBUTES_PROMOTED
-            attributeName: managedAttributesCreated
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGED_ATTRIBUTES_PROMOTED_BY_APP
-            attributeName: managedAttributesCreatedByApplication
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_IDENTITYENTITLEMENTS_CREATED
-            attributeName: identityEntitlementsCreated
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_GROUPS_CREATED
-            attributeName: groupsCreated
+          - - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_APPLICATIONS
+              attributeName: applications
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_TOTAL
+              attributeName: total
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_OPTIMIZED
+              attributeName: optimizedAggregation
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_IGNORED
+              attributeName: ignored
+            - displayLabel: TASK_OUT_UNCHANGED_ACCOUNTS
+              attributeName: optimized
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CREATED
+              attributeName: created
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_UPDATED
+              attributeName: updated
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_DELETED
+              attributeName: deleted
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGER_CHANGES
+              attributeName: managerChanges
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_BUSINESS_ROLE_CHANGES
+              attributeName: detectedRoleChanges
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_EXCEPTION_CHANGES
+              attributeName: exceptionChanges
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICIES
+              attributeName: policies
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICY_VIOLATIONS
+              attributeName: policyViolations
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICY_NOTIFICATIONS
+              attributeName: policyNotifications
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCORES_CHANGED
+              attributeName: scoresChanged
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SNAPSHOTS_CREATED
+              attributeName: snapshotsCreated
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_CREATED
+              attributeName: scopesCreated
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_CORRELATED
+              attributeName: scopesCorrelated
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_SELECTED
+              attributeName: scopesSelected
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_DORMANT
+              attributeName: scopesDormant
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_UNSCOPED_IDENTITIES
+              attributeName: unscopedIdentities
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CERTIFICATIONS_CREATED
+              attributeName: certificationsCreated
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CERTIFICATIONS_DELETED
+              attributeName: certificationsDeleted
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_APPLICATIONS_GENERATED
+              attributeName: applicationsGenerated
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGED_ATTRIBUTES_PROMOTED
+              attributeName: managedAttributesCreated
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGED_ATTRIBUTES_PROMOTED_BY_APP
+              attributeName: managedAttributesCreatedByApplication
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_IDENTITYENTITLEMENTS_CREATED
+              attributeName: identityEntitlementsCreated
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_GROUPS_CREATED
+              attributeName: groupsCreated
+          - - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_APPLICATIONS
+              attributeName: applications
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_TOTAL
+              attributeName: total
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_OPTIMIZED
+              attributeName: optimizedAggregation
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_IGNORED
+              attributeName: ignored
+            - displayLabel: TASK_OUT_UNCHANGED_ACCOUNTS
+              attributeName: optimized
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CREATED
+              attributeName: created
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_UPDATED
+              attributeName: updated
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_DELETED
+              attributeName: deleted
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGER_CHANGES
+              attributeName: managerChanges
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_BUSINESS_ROLE_CHANGES
+              attributeName: detectedRoleChanges
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_EXCEPTION_CHANGES
+              attributeName: exceptionChanges
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICIES
+              attributeName: policies
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICY_VIOLATIONS
+              attributeName: policyViolations
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICY_NOTIFICATIONS
+              attributeName: policyNotifications
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCORES_CHANGED
+              attributeName: scoresChanged
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SNAPSHOTS_CREATED
+              attributeName: snapshotsCreated
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_CREATED
+              attributeName: scopesCreated
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_CORRELATED
+              attributeName: scopesCorrelated
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_SELECTED
+              attributeName: scopesSelected
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_DORMANT
+              attributeName: scopesDormant
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_UNSCOPED_IDENTITIES
+              attributeName: unscopedIdentities
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CERTIFICATIONS_CREATED
+              attributeName: certificationsCreated
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CERTIFICATIONS_DELETED
+              attributeName: certificationsDeleted
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_APPLICATIONS_GENERATED
+              attributeName: applicationsGenerated
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGED_ATTRIBUTES_PROMOTED
+              attributeName: managedAttributesCreated
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGED_ATTRIBUTES_PROMOTED_BY_APP
+              attributeName: managedAttributesCreatedByApplication
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_IDENTITYENTITLEMENTS_CREATED
+              attributeName: identityEntitlementsCreated
+            - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_GROUPS_CREATED
+              attributeName: groupsCreated
           id: ef38f94347e94562b5bb8424a56397d8
           completionStatus: Success
           launcher: John Doe
@@ -77384,10 +77441,9 @@ components:
     importEntitlements_request:
       properties:
         csvFile:
+          description: The CSV file containing the source entitlements to aggregate.
           format: binary
           type: string
-      required:
-      - csvFile
       type: object
     listIdentityAccessItems_200_response_inner:
       oneOf:
@@ -77489,9 +77545,13 @@ components:
     importAccounts_request:
       properties:
         file:
+          description: The CSV file containing the source accounts to aggregate.
           format: binary
           type: string
         disableOptimization:
+          default: false
+          description: Use this flag to reprocess every account whether or not the
+            data has changed.
           example: true
           type: boolean
       type: object
@@ -77976,6 +78036,14 @@ components:
           x-go-name: File
       required:
       - file
+      type: object
+    sendManualDiscoverApplicationsCsvTemplate_request:
+      properties:
+        csvFile:
+          format: binary
+          type: string
+      required:
+      - csvFile
       type: object
     deleteVendorConnectorMapping_200_response:
       example:
@@ -78695,6 +78763,17 @@ components:
       - line
       - message
       type: object
+    LoadEntitlementTask_returns_inner:
+      properties:
+        displayLabel:
+          description: The display label for the return value
+          example: TASK_OUT_ACCOUNT_GROUP_AGGREGATION_APPLICATIONS
+          type: string
+        attributeName:
+          description: The attribute name for the return value
+          example: applications
+          type: string
+      type: object
     AccessItemAssociated_accessItem:
       example:
         id: 8c190e6787aa4ed9a90bd9d5344523fb
@@ -79117,7 +79196,75 @@ components:
           description: The indicator if the aggregation process was enabled/disabled
             for the aggregation job
           example: enabled
-          type: object
+          type: string
+      type: object
+    LoadAccountsTask_task_returns_inner:
+      example:
+      - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_APPLICATIONS
+        attributeName: applications
+      - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_TOTAL
+        attributeName: total
+      - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_OPTIMIZED
+        attributeName: optimizedAggregation
+      - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_IGNORED
+        attributeName: ignored
+      - displayLabel: TASK_OUT_UNCHANGED_ACCOUNTS
+        attributeName: optimized
+      - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CREATED
+        attributeName: created
+      - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_UPDATED
+        attributeName: updated
+      - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_DELETED
+        attributeName: deleted
+      - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGER_CHANGES
+        attributeName: managerChanges
+      - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_BUSINESS_ROLE_CHANGES
+        attributeName: detectedRoleChanges
+      - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_EXCEPTION_CHANGES
+        attributeName: exceptionChanges
+      - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICIES
+        attributeName: policies
+      - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICY_VIOLATIONS
+        attributeName: policyViolations
+      - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICY_NOTIFICATIONS
+        attributeName: policyNotifications
+      - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCORES_CHANGED
+        attributeName: scoresChanged
+      - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SNAPSHOTS_CREATED
+        attributeName: snapshotsCreated
+      - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_CREATED
+        attributeName: scopesCreated
+      - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_CORRELATED
+        attributeName: scopesCorrelated
+      - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_SELECTED
+        attributeName: scopesSelected
+      - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_DORMANT
+        attributeName: scopesDormant
+      - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_UNSCOPED_IDENTITIES
+        attributeName: unscopedIdentities
+      - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CERTIFICATIONS_CREATED
+        attributeName: certificationsCreated
+      - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CERTIFICATIONS_DELETED
+        attributeName: certificationsDeleted
+      - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_APPLICATIONS_GENERATED
+        attributeName: applicationsGenerated
+      - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGED_ATTRIBUTES_PROMOTED
+        attributeName: managedAttributesCreated
+      - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGED_ATTRIBUTES_PROMOTED_BY_APP
+        attributeName: managedAttributesCreatedByApplication
+      - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_IDENTITYENTITLEMENTS_CREATED
+        attributeName: identityEntitlementsCreated
+      - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_GROUPS_CREATED
+        attributeName: groupsCreated
+      properties:
+        displayLabel:
+          description: The display label of the return value
+          example: TASK_OUT_ACCOUNT_AGGREGATION_APPLICATIONS
+          type: string
+        attributeName:
+          description: The attribute name of the return value
+          example: applications
+          type: string
       type: object
     LoadAccountsTask_task:
       example:
@@ -79134,62 +79281,118 @@ components:
           appId: c31386cb18bb403cbb6df4c86294ff82
           optimizedAggregation: enabled
         returns:
-        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_APPLICATIONS
-          attributeName: applications
-        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_TOTAL
-          attributeName: total
-        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_OPTIMIZED
-          attributeName: optimizedAggregation
-        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_IGNORED
-          attributeName: ignored
-        - displayLabel: TASK_OUT_UNCHANGED_ACCOUNTS
-          attributeName: optimized
-        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CREATED
-          attributeName: created
-        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_UPDATED
-          attributeName: updated
-        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_DELETED
-          attributeName: deleted
-        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGER_CHANGES
-          attributeName: managerChanges
-        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_BUSINESS_ROLE_CHANGES
-          attributeName: detectedRoleChanges
-        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_EXCEPTION_CHANGES
-          attributeName: exceptionChanges
-        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICIES
-          attributeName: policies
-        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICY_VIOLATIONS
-          attributeName: policyViolations
-        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICY_NOTIFICATIONS
-          attributeName: policyNotifications
-        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCORES_CHANGED
-          attributeName: scoresChanged
-        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SNAPSHOTS_CREATED
-          attributeName: snapshotsCreated
-        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_CREATED
-          attributeName: scopesCreated
-        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_CORRELATED
-          attributeName: scopesCorrelated
-        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_SELECTED
-          attributeName: scopesSelected
-        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_DORMANT
-          attributeName: scopesDormant
-        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_UNSCOPED_IDENTITIES
-          attributeName: unscopedIdentities
-        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CERTIFICATIONS_CREATED
-          attributeName: certificationsCreated
-        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CERTIFICATIONS_DELETED
-          attributeName: certificationsDeleted
-        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_APPLICATIONS_GENERATED
-          attributeName: applicationsGenerated
-        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGED_ATTRIBUTES_PROMOTED
-          attributeName: managedAttributesCreated
-        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGED_ATTRIBUTES_PROMOTED_BY_APP
-          attributeName: managedAttributesCreatedByApplication
-        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_IDENTITYENTITLEMENTS_CREATED
-          attributeName: identityEntitlementsCreated
-        - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_GROUPS_CREATED
-          attributeName: groupsCreated
+        - - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_APPLICATIONS
+            attributeName: applications
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_TOTAL
+            attributeName: total
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_OPTIMIZED
+            attributeName: optimizedAggregation
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_IGNORED
+            attributeName: ignored
+          - displayLabel: TASK_OUT_UNCHANGED_ACCOUNTS
+            attributeName: optimized
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CREATED
+            attributeName: created
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_UPDATED
+            attributeName: updated
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_DELETED
+            attributeName: deleted
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGER_CHANGES
+            attributeName: managerChanges
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_BUSINESS_ROLE_CHANGES
+            attributeName: detectedRoleChanges
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_EXCEPTION_CHANGES
+            attributeName: exceptionChanges
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICIES
+            attributeName: policies
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICY_VIOLATIONS
+            attributeName: policyViolations
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICY_NOTIFICATIONS
+            attributeName: policyNotifications
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCORES_CHANGED
+            attributeName: scoresChanged
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SNAPSHOTS_CREATED
+            attributeName: snapshotsCreated
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_CREATED
+            attributeName: scopesCreated
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_CORRELATED
+            attributeName: scopesCorrelated
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_SELECTED
+            attributeName: scopesSelected
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_DORMANT
+            attributeName: scopesDormant
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_UNSCOPED_IDENTITIES
+            attributeName: unscopedIdentities
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CERTIFICATIONS_CREATED
+            attributeName: certificationsCreated
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CERTIFICATIONS_DELETED
+            attributeName: certificationsDeleted
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_APPLICATIONS_GENERATED
+            attributeName: applicationsGenerated
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGED_ATTRIBUTES_PROMOTED
+            attributeName: managedAttributesCreated
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGED_ATTRIBUTES_PROMOTED_BY_APP
+            attributeName: managedAttributesCreatedByApplication
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_IDENTITYENTITLEMENTS_CREATED
+            attributeName: identityEntitlementsCreated
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_GROUPS_CREATED
+            attributeName: groupsCreated
+        - - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_APPLICATIONS
+            attributeName: applications
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_TOTAL
+            attributeName: total
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_OPTIMIZED
+            attributeName: optimizedAggregation
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_IGNORED
+            attributeName: ignored
+          - displayLabel: TASK_OUT_UNCHANGED_ACCOUNTS
+            attributeName: optimized
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CREATED
+            attributeName: created
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_UPDATED
+            attributeName: updated
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_DELETED
+            attributeName: deleted
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGER_CHANGES
+            attributeName: managerChanges
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_BUSINESS_ROLE_CHANGES
+            attributeName: detectedRoleChanges
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_EXCEPTION_CHANGES
+            attributeName: exceptionChanges
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICIES
+            attributeName: policies
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICY_VIOLATIONS
+            attributeName: policyViolations
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICY_NOTIFICATIONS
+            attributeName: policyNotifications
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCORES_CHANGED
+            attributeName: scoresChanged
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SNAPSHOTS_CREATED
+            attributeName: snapshotsCreated
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_CREATED
+            attributeName: scopesCreated
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_CORRELATED
+            attributeName: scopesCorrelated
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_SELECTED
+            attributeName: scopesSelected
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_DORMANT
+            attributeName: scopesDormant
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_UNSCOPED_IDENTITIES
+            attributeName: unscopedIdentities
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CERTIFICATIONS_CREATED
+            attributeName: certificationsCreated
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CERTIFICATIONS_DELETED
+            attributeName: certificationsDeleted
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_APPLICATIONS_GENERATED
+            attributeName: applicationsGenerated
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGED_ATTRIBUTES_PROMOTED
+            attributeName: managedAttributesCreated
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGED_ATTRIBUTES_PROMOTED_BY_APP
+            attributeName: managedAttributesCreatedByApplication
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_IDENTITYENTITLEMENTS_CREATED
+            attributeName: identityEntitlementsCreated
+          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_GROUPS_CREATED
+            attributeName: groupsCreated
         id: ef38f94347e94562b5bb8424a56397d8
         completionStatus: Success
         launcher: John Doe
@@ -79260,64 +79463,9 @@ components:
           $ref: '#/components/schemas/LoadAccountsTask_task_attributes'
         returns:
           description: Return values from the task
-          example:
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_APPLICATIONS
-            attributeName: applications
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_TOTAL
-            attributeName: total
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_OPTIMIZED
-            attributeName: optimizedAggregation
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_IGNORED
-            attributeName: ignored
-          - displayLabel: TASK_OUT_UNCHANGED_ACCOUNTS
-            attributeName: optimized
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CREATED
-            attributeName: created
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_UPDATED
-            attributeName: updated
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_DELETED
-            attributeName: deleted
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGER_CHANGES
-            attributeName: managerChanges
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_BUSINESS_ROLE_CHANGES
-            attributeName: detectedRoleChanges
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_EXCEPTION_CHANGES
-            attributeName: exceptionChanges
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICIES
-            attributeName: policies
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICY_VIOLATIONS
-            attributeName: policyViolations
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_POLICY_NOTIFICATIONS
-            attributeName: policyNotifications
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCORES_CHANGED
-            attributeName: scoresChanged
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SNAPSHOTS_CREATED
-            attributeName: snapshotsCreated
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_CREATED
-            attributeName: scopesCreated
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_CORRELATED
-            attributeName: scopesCorrelated
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_SELECTED
-            attributeName: scopesSelected
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_SCOPES_DORMANT
-            attributeName: scopesDormant
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_UNSCOPED_IDENTITIES
-            attributeName: unscopedIdentities
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CERTIFICATIONS_CREATED
-            attributeName: certificationsCreated
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_CERTIFICATIONS_DELETED
-            attributeName: certificationsDeleted
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_APPLICATIONS_GENERATED
-            attributeName: applicationsGenerated
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGED_ATTRIBUTES_PROMOTED
-            attributeName: managedAttributesCreated
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_MANAGED_ATTRIBUTES_PROMOTED_BY_APP
-            attributeName: managedAttributesCreatedByApplication
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_IDENTITYENTITLEMENTS_CREATED
-            attributeName: identityEntitlementsCreated
-          - displayLabel: TASK_OUT_ACCOUNT_AGGREGATION_GROUPS_CREATED
-            attributeName: groupsCreated
-          type: object
+          items:
+            $ref: '#/components/schemas/LoadAccountsTask_task_returns_inner'
+          type: array
       type: object
     TaggedObject_objectRef:
       example:

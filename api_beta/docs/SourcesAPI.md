@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**GetSourceEntitlementRequestConfig**](SourcesAPI.md#GetSourceEntitlementRequestConfig) | **Get** /sources/{id}/entitlement-request-config | Get Source Entitlement Request Configuration
 [**GetSourceEntitlementsSchema**](SourcesAPI.md#GetSourceEntitlementsSchema) | **Get** /sources/{id}/schemas/entitlements | Downloads source entitlements schema template
 [**GetSourceSchema**](SourcesAPI.md#GetSourceSchema) | **Get** /sources/{sourceId}/schemas/{schemaId} | Get Source Schema by ID
+[**ImportAccounts**](SourcesAPI.md#ImportAccounts) | **Post** /sources/{id}/load-accounts | Account Aggregation
 [**ImportSourceAccountsSchema**](SourcesAPI.md#ImportSourceAccountsSchema) | **Post** /sources/{id}/schemas/accounts | Uploads source accounts schema template
 [**ImportSourceConnectorFile**](SourcesAPI.md#ImportSourceConnectorFile) | **Post** /sources/{sourceId}/upload-connector-file | Upload connector file to source
 [**ImportSourceEntitlementsSchema**](SourcesAPI.md#ImportSourceEntitlementsSchema) | **Post** /sources/{id}/schemas/entitlements | Uploads source entitlements schema template
@@ -1148,6 +1149,80 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ImportAccounts
+
+> LoadAccountsTask ImportAccounts(ctx, id).File(file).DisableOptimization(disableOptimization).Execute()
+
+Account Aggregation
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    id := "ef38f94347e94562b5bb8424a56397d8" // string | Source Id
+    file := os.NewFile(1234, "some_file") // *os.File | The CSV file containing the source accounts to aggregate. (optional)
+    disableOptimization := true // bool | Use this flag to reprocess every account whether or not the data has changed. (optional) (default to false)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesAPI.ImportAccounts(context.Background(), id).File(file).DisableOptimization(disableOptimization).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ImportAccounts``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ImportAccounts`: LoadAccountsTask
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.ImportAccounts`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Source Id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiImportAccountsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **file** | ***os.File** | The CSV file containing the source accounts to aggregate. | 
+ **disableOptimization** | **bool** | Use this flag to reprocess every account whether or not the data has changed. | [default to false]
+
+### Return type
+
+[**LoadAccountsTask**](LoadAccountsTask.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

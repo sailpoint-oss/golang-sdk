@@ -46,7 +46,7 @@ type LoadAccountsTaskTask struct {
 	Progress NullableString `json:"progress,omitempty"`
 	Attributes *LoadAccountsTaskTaskAttributes `json:"attributes,omitempty"`
 	// Return values from the task
-	Returns map[string]interface{} `json:"returns,omitempty"`
+	Returns []LoadAccountsTaskTaskReturnsInner `json:"returns,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -536,9 +536,9 @@ func (o *LoadAccountsTaskTask) SetAttributes(v LoadAccountsTaskTaskAttributes) {
 }
 
 // GetReturns returns the Returns field value if set, zero value otherwise.
-func (o *LoadAccountsTaskTask) GetReturns() map[string]interface{} {
+func (o *LoadAccountsTaskTask) GetReturns() []LoadAccountsTaskTaskReturnsInner {
 	if o == nil || isNil(o.Returns) {
-		var ret map[string]interface{}
+		var ret []LoadAccountsTaskTaskReturnsInner
 		return ret
 	}
 	return o.Returns
@@ -546,9 +546,9 @@ func (o *LoadAccountsTaskTask) GetReturns() map[string]interface{} {
 
 // GetReturnsOk returns a tuple with the Returns field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LoadAccountsTaskTask) GetReturnsOk() (map[string]interface{}, bool) {
+func (o *LoadAccountsTaskTask) GetReturnsOk() ([]LoadAccountsTaskTaskReturnsInner, bool) {
 	if o == nil || isNil(o.Returns) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.Returns, true
 }
@@ -562,8 +562,8 @@ func (o *LoadAccountsTaskTask) HasReturns() bool {
 	return false
 }
 
-// SetReturns gets a reference to the given map[string]interface{} and assigns it to the Returns field.
-func (o *LoadAccountsTaskTask) SetReturns(v map[string]interface{}) {
+// SetReturns gets a reference to the given []LoadAccountsTaskTaskReturnsInner and assigns it to the Returns field.
+func (o *LoadAccountsTaskTask) SetReturns(v []LoadAccountsTaskTaskReturnsInner) {
 	o.Returns = v
 }
 

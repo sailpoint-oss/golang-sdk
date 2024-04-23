@@ -33,7 +33,7 @@ type LoadEntitlementTask struct {
 	// The creation date of the task
 	Created *time.Time `json:"created,omitempty"`
 	// Return values from the task
-	Returns map[string]interface{} `json:"returns,omitempty"`
+	Returns []LoadEntitlementTaskReturnsInner `json:"returns,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -249,9 +249,9 @@ func (o *LoadEntitlementTask) SetCreated(v time.Time) {
 }
 
 // GetReturns returns the Returns field value if set, zero value otherwise.
-func (o *LoadEntitlementTask) GetReturns() map[string]interface{} {
+func (o *LoadEntitlementTask) GetReturns() []LoadEntitlementTaskReturnsInner {
 	if o == nil || isNil(o.Returns) {
-		var ret map[string]interface{}
+		var ret []LoadEntitlementTaskReturnsInner
 		return ret
 	}
 	return o.Returns
@@ -259,9 +259,9 @@ func (o *LoadEntitlementTask) GetReturns() map[string]interface{} {
 
 // GetReturnsOk returns a tuple with the Returns field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LoadEntitlementTask) GetReturnsOk() (map[string]interface{}, bool) {
+func (o *LoadEntitlementTask) GetReturnsOk() ([]LoadEntitlementTaskReturnsInner, bool) {
 	if o == nil || isNil(o.Returns) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.Returns, true
 }
@@ -275,8 +275,8 @@ func (o *LoadEntitlementTask) HasReturns() bool {
 	return false
 }
 
-// SetReturns gets a reference to the given map[string]interface{} and assigns it to the Returns field.
-func (o *LoadEntitlementTask) SetReturns(v map[string]interface{}) {
+// SetReturns gets a reference to the given []LoadEntitlementTaskReturnsInner and assigns it to the Returns field.
+func (o *LoadEntitlementTask) SetReturns(v []LoadEntitlementTaskReturnsInner) {
 	o.Returns = v
 }
 

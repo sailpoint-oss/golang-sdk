@@ -367,6 +367,7 @@ type ApiImportEntitlementsRequest struct {
 	csvFile *os.File
 }
 
+// The CSV file containing the source entitlements to aggregate.
 func (r ApiImportEntitlementsRequest) CsvFile(csvFile *os.File) ApiImportEntitlementsRequest {
 	r.csvFile = csvFile
 	return r
@@ -380,7 +381,9 @@ func (r ApiImportEntitlementsRequest) Execute() (*LoadEntitlementTask, *http.Res
 ImportEntitlements Aggregate Entitlements
 
 Starts an entitlement aggregation on the specified source. 
+
 If the target source is a direct connection, then the request body must be empty. You will also need to make sure the Content-Type header is not set. If you set the Content-Type header without specifying a body, then you will receive a 500 error.
+
 If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -416,9 +419,6 @@ func (a *EntitlementsAPIService) ImportEntitlementsExecute(r ApiImportEntitlemen
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.csvFile == nil {
-		return localVarReturnValue, nil, reportError("csvFile is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}
