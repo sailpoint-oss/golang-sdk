@@ -20,6 +20,8 @@ api_connectors.go
 api_global_tenant_security_settings.go
 api_identity_profiles.go
 api_lifecycle_states.go
+api_managed_clients.go
+api_managed_clusters.go
 api_non_employee_lifecycle_management.go
 api_o_auth_clients.go
 api_password_configuration.go
@@ -179,6 +181,7 @@ docs/CertificationReference.md
 docs/CertificationSummariesAPI.md
 docs/CertificationTask.md
 docs/CertificationsAPI.md
+docs/ClientLogConfiguration.md
 docs/ClientType.md
 docs/Column.md
 docs/Comment.md
@@ -280,6 +283,7 @@ docs/ImportObject.md
 docs/ImportUploadedBackupRequest.md
 docs/Index.md
 docs/InnerHit.md
+docs/JsonPatch.md
 docs/JsonPatchOperation.md
 docs/JsonPatchOperationValue.md
 docs/LifecycleState.md
@@ -290,6 +294,20 @@ docs/ListAccessProfiles429Response.md
 docs/ListCampaignFilters200Response.md
 docs/ListCompleteWorkflowLibrary200ResponseInner.md
 docs/LocaleOrigin.md
+docs/ManagedClient.md
+docs/ManagedClientRequest.md
+docs/ManagedClientStatus.md
+docs/ManagedClientStatusCode.md
+docs/ManagedClientType.md
+docs/ManagedClientsAPI.md
+docs/ManagedCluster.md
+docs/ManagedClusterAttributes.md
+docs/ManagedClusterKeyPair.md
+docs/ManagedClusterQueue.md
+docs/ManagedClusterRedis.md
+docs/ManagedClusterRequest.md
+docs/ManagedClusterTypes.md
+docs/ManagedClustersAPI.md
 docs/ManagerCorrelationMapping.md
 docs/ManualWorkItemDetails.md
 docs/ManualWorkItemDetailsCurrentOwner.md
@@ -519,6 +537,7 @@ docs/SourceUsageStatus.md
 docs/SourceUsagesAPI.md
 docs/SourcesAPI.md
 docs/SpConfigMessage.md
+docs/StandardLevel.md
 docs/SubSearchAggregationSpecification.md
 docs/TaggedObject.md
 docs/TaggedObjectDto.md
@@ -698,6 +717,7 @@ model_certification_identity_summary.go
 model_certification_phase.go
 model_certification_reference.go
 model_certification_task.go
+model_client_log_configuration.go
 model_client_type.go
 model_column.go
 model_comment.go
@@ -795,6 +815,7 @@ model_import_object.go
 model_import_uploaded_backup_request.go
 model_index.go
 model_inner_hit.go
+model_json_patch.go
 model_json_patch_operation.go
 model_json_patch_operation_value.go
 model_lifecycle_state.go
@@ -804,6 +825,18 @@ model_list_access_profiles_429_response.go
 model_list_campaign_filters_200_response.go
 model_list_complete_workflow_library_200_response_inner.go
 model_locale_origin.go
+model_managed_client.go
+model_managed_client_request.go
+model_managed_client_status.go
+model_managed_client_status_code.go
+model_managed_client_type.go
+model_managed_cluster.go
+model_managed_cluster_attributes.go
+model_managed_cluster_key_pair.go
+model_managed_cluster_queue.go
+model_managed_cluster_redis.go
+model_managed_cluster_request.go
+model_managed_cluster_types.go
 model_manager_correlation_mapping.go
 model_manual_work_item_details.go
 model_manual_work_item_details_current_owner.go
@@ -1011,6 +1044,7 @@ model_source_schemas_inner.go
 model_source_usage.go
 model_source_usage_status.go
 model_sp_config_message.go
+model_standard_level.go
 model_sub_search_aggregation_specification.go
 model_tagged_object.go
 model_tagged_object_dto.go
@@ -1082,6 +1116,8 @@ test/api_connectors_test.go
 test/api_global_tenant_security_settings_test.go
 test/api_identity_profiles_test.go
 test/api_lifecycle_states_test.go
+test/api_managed_clients_test.go
+test/api_managed_clusters_test.go
 test/api_non_employee_lifecycle_management_test.go
 test/api_o_auth_clients_test.go
 test/api_password_configuration_test.go

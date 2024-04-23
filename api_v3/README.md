@@ -198,6 +198,17 @@ Class | Method | HTTP request | Description
 *LifecycleStatesAPI* | [**ListLifecycleStates**](docs/LifecycleStatesAPI.md#listlifecyclestates) | **Get** /identity-profiles/{identity-profile-id}/lifecycle-states | Lists LifecycleStates
 *LifecycleStatesAPI* | [**SetLifecycleState**](docs/LifecycleStatesAPI.md#setlifecyclestate) | **Post** /identities/{identity-id}/set-lifecycle-state | Set Lifecycle State
 *LifecycleStatesAPI* | [**UpdateLifecycleStates**](docs/LifecycleStatesAPI.md#updatelifecyclestates) | **Patch** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Update Lifecycle State
+*ManagedClientsAPI* | [**CreateManagedClient**](docs/ManagedClientsAPI.md#createmanagedclient) | **Post** /managed-clients | Create a new Managed Client
+*ManagedClientsAPI* | [**DeleteManagedClient**](docs/ManagedClientsAPI.md#deletemanagedclient) | **Delete** /managed-clients/{id} | Delete a Managed Client
+*ManagedClientsAPI* | [**GetManagedClient**](docs/ManagedClientsAPI.md#getmanagedclient) | **Get** /managed-clients/{id} | Get a Managed Client
+*ManagedClientsAPI* | [**GetManagedClientStatus**](docs/ManagedClientsAPI.md#getmanagedclientstatus) | **Get** /managed-clients/{id}/status | Get Managed Client Status.
+*ManagedClientsAPI* | [**GetManagedClients**](docs/ManagedClientsAPI.md#getmanagedclients) | **Get** /managed-clients | Get Managed Clients
+*ManagedClientsAPI* | [**UpdateManagedClient**](docs/ManagedClientsAPI.md#updatemanagedclient) | **Patch** /managed-clients/{id} | Update a Managed Client
+*ManagedClustersAPI* | [**CreateManagedCluster**](docs/ManagedClustersAPI.md#createmanagedcluster) | **Post** /managed-clusters | Create a new Managed Cluster
+*ManagedClustersAPI* | [**DeleteManagedCluster**](docs/ManagedClustersAPI.md#deletemanagedcluster) | **Delete** /managed-clusters/{id} | Delete a Managed Cluster
+*ManagedClustersAPI* | [**GetManagedCluster**](docs/ManagedClustersAPI.md#getmanagedcluster) | **Get** /managed-clusters/{id} | Get a specified Managed Cluster.
+*ManagedClustersAPI* | [**GetManagedClusters**](docs/ManagedClustersAPI.md#getmanagedclusters) | **Get** /managed-clusters | Retrieve all Managed Clusters.
+*ManagedClustersAPI* | [**UpdateManagedCluster**](docs/ManagedClustersAPI.md#updatemanagedcluster) | **Patch** /managed-clusters/{id} | Update a Managed Cluster
 *NonEmployeeLifecycleManagementAPI* | [**ApproveNonEmployeeRequest**](docs/NonEmployeeLifecycleManagementAPI.md#approvenonemployeerequest) | **Post** /non-employee-approvals/{id}/approve | Approve a Non-Employee Request
 *NonEmployeeLifecycleManagementAPI* | [**CreateNonEmployeeRecord**](docs/NonEmployeeLifecycleManagementAPI.md#createnonemployeerecord) | **Post** /non-employee-records | Create Non-Employee Record
 *NonEmployeeLifecycleManagementAPI* | [**CreateNonEmployeeRequest**](docs/NonEmployeeLifecycleManagementAPI.md#createnonemployeerequest) | **Post** /non-employee-requests | Create Non-Employee Request
@@ -510,6 +521,7 @@ Class | Method | HTTP request | Description
  - [CertificationPhase](docs/CertificationPhase.md)
  - [CertificationReference](docs/CertificationReference.md)
  - [CertificationTask](docs/CertificationTask.md)
+ - [ClientLogConfiguration](docs/ClientLogConfiguration.md)
  - [ClientType](docs/ClientType.md)
  - [Column](docs/Column.md)
  - [Comment](docs/Comment.md)
@@ -607,6 +619,7 @@ Class | Method | HTTP request | Description
  - [ImportUploadedBackupRequest](docs/ImportUploadedBackupRequest.md)
  - [Index](docs/Index.md)
  - [InnerHit](docs/InnerHit.md)
+ - [JsonPatch](docs/JsonPatch.md)
  - [JsonPatchOperation](docs/JsonPatchOperation.md)
  - [JsonPatchOperationValue](docs/JsonPatchOperationValue.md)
  - [LifecycleState](docs/LifecycleState.md)
@@ -616,6 +629,18 @@ Class | Method | HTTP request | Description
  - [ListCampaignFilters200Response](docs/ListCampaignFilters200Response.md)
  - [ListCompleteWorkflowLibrary200ResponseInner](docs/ListCompleteWorkflowLibrary200ResponseInner.md)
  - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [ManagedClient](docs/ManagedClient.md)
+ - [ManagedClientRequest](docs/ManagedClientRequest.md)
+ - [ManagedClientStatus](docs/ManagedClientStatus.md)
+ - [ManagedClientStatusCode](docs/ManagedClientStatusCode.md)
+ - [ManagedClientType](docs/ManagedClientType.md)
+ - [ManagedCluster](docs/ManagedCluster.md)
+ - [ManagedClusterAttributes](docs/ManagedClusterAttributes.md)
+ - [ManagedClusterKeyPair](docs/ManagedClusterKeyPair.md)
+ - [ManagedClusterQueue](docs/ManagedClusterQueue.md)
+ - [ManagedClusterRedis](docs/ManagedClusterRedis.md)
+ - [ManagedClusterRequest](docs/ManagedClusterRequest.md)
+ - [ManagedClusterTypes](docs/ManagedClusterTypes.md)
  - [ManagerCorrelationMapping](docs/ManagerCorrelationMapping.md)
  - [ManualWorkItemDetails](docs/ManualWorkItemDetails.md)
  - [ManualWorkItemDetailsCurrentOwner](docs/ManualWorkItemDetailsCurrentOwner.md)
@@ -823,6 +848,7 @@ Class | Method | HTTP request | Description
  - [SourceUsage](docs/SourceUsage.md)
  - [SourceUsageStatus](docs/SourceUsageStatus.md)
  - [SpConfigMessage](docs/SpConfigMessage.md)
+ - [StandardLevel](docs/StandardLevel.md)
  - [SubSearchAggregationSpecification](docs/SubSearchAggregationSpecification.md)
  - [TaggedObject](docs/TaggedObject.md)
  - [TaggedObjectDto](docs/TaggedObjectDto.md)

@@ -461,6 +461,10 @@ tags:
     \ to [Setting Up Lifecycle States](https://documentation.sailpoint.com/saas/help/provisioning/lifecycle.html)\
     \ for more information about lifecycle states.\n"
   name: Lifecycle States
+- description: Read and create operations for client data and statuses
+  name: Managed Clients
+- description: "Read and create pperations for client Clusters, including Log Configuration"
+  name: Managed Clusters
 - description: "Use this API to implement non-employee lifecycle management functionality.\
     \ \nWith this functionality in place, administrators can create non-employee records\
     \ and configure them for use in their organizations. \nThis allows organizations\
@@ -14841,6 +14845,1108 @@ paths:
       summary: Process identities under profile
       tags:
       - Identity Profiles
+  /managed-clients:
+    get:
+      description: Get a list of Managed Clients.
+      operationId: getManagedClients
+      parameters:
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq*
+
+          **name**: *eq*
+
+          **clientId**: *eq*
+
+          **clusterId**: *eq*
+        example: name eq "client name"
+        in: query
+        name: filters
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ManagedClient'
+                type: array
+          description: Responds with a list of ManagedClient based on the query params
+            provided
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:remote-client:read
+        - idn:remote-client:manage
+      summary: Get Managed Clients
+      tags:
+      - Managed Clients
+    post:
+      description: |-
+        Create a new Managed Client.
+        The API returns a result that includes the Managed Client ID.
+      operationId: createManagedClient
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ManagedClientRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagedClient'
+          description: The created ManagedClient
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:remote-client:manage
+      summary: Create a new Managed Client
+      tags:
+      - Managed Clients
+  /managed-clients/{id}:
+    delete:
+      description: Delete an existing Managed Client.
+      operationId: deleteManagedClient
+      parameters:
+      - description: The Managed Client ID
+        example: aClientId
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:remote-client:manage
+      summary: Delete a Managed Client
+      tags:
+      - Managed Clients
+    get:
+      description: Get a Managed Client.
+      operationId: getManagedClient
+      parameters:
+      - description: The Managed Client ID
+        example: aClientId
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagedClient'
+          description: Responds with a Managed Client
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:remote-client:read
+        - idn:remote-client:manage
+        - idn:managed-client-status:read
+        - idn:managed-client-status:manage
+      summary: Get a Managed Client
+      tags:
+      - Managed Clients
+    patch:
+      description: Update an existing Managed Client.
+      operationId: updateManagedClient
+      parameters:
+      - description: The Managed Client ID
+        example: aClientId
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/JsonPatch'
+        description: The JSONPatch payload used to update the schema.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagedClient'
+          description: The updated Managed Client
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:remote-client:manage
+      summary: Update a Managed Client
+      tags:
+      - Managed Clients
+  /managed-clients/{id}/status:
+    get:
+      description: Retrieve the Status of a Managed Client by ID.
+      operationId: getManagedClientStatus
+      parameters:
+      - description: ID of the Managed Client to get Status of
+        in: path
+        name: id
+        required: true
+        schema:
+          example: aClientId
+          type: string
+      - description: Type of the Managed Client to get Status of
+        in: query
+        name: type
+        required: true
+        schema:
+          $ref: '#/components/schemas/ManagedClientType'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagedClientStatus'
+          description: Responds with the Status of the Managed Client with the given
+            ID and Type.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:managed-client-status:read
+      summary: Get Managed Client Status.
+      tags:
+      - Managed Clients
+  /managed-clusters:
+    get:
+      description: "Retrieve all Managed Clusters for the current Org, based on request\
+        \ context."
+      operationId: getManagedClusters
+      parameters:
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **operational**: *eq*
+        example: operational eq "operation"
+        in: query
+        name: filters
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ManagedCluster'
+                type: array
+          description: Responds with a list of ManagedCluster.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:remote-client:read
+        - idn:remote-client:manage
+      summary: Retrieve all Managed Clusters.
+      tags:
+      - Managed Clusters
+    post:
+      description: |-
+        Create a new Managed Cluster.
+        The API returns a result that includes the Managed Cluster ID.
+      operationId: createManagedCluster
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ManagedClusterRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagedCluster'
+          description: The created ManagedClient
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:remote-client:manage
+      summary: Create a new Managed Cluster
+      tags:
+      - Managed Clusters
+  /managed-clusters/{id}:
+    delete:
+      description: Delete an existing Managed Cluster.
+      operationId: deleteManagedCluster
+      parameters:
+      - description: The Managed Cluster ID
+        example: aClusterId
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: Flag to determine the need to delete a cluster with clients
+        example: false
+        in: query
+        name: removeClients
+        required: false
+        schema:
+          default: false
+          type: boolean
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:remote-client:manage
+      summary: Delete a Managed Cluster
+      tags:
+      - Managed Clusters
+    get:
+      description: Retrieve a ManagedCluster by ID.
+      operationId: getManagedCluster
+      parameters:
+      - description: ID of the ManagedCluster to get
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: aClusterId
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagedCluster'
+          description: Responds with ManagedCluster having the given ID.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:remote-client:read
+        - idn:remote-client:manage
+      summary: Get a specified Managed Cluster.
+      tags:
+      - Managed Clusters
+    patch:
+      description: Update an existing Managed Cluster.
+      operationId: updateManagedCluster
+      parameters:
+      - description: The Managed Cluster ID
+        example: aClusterId
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/JsonPatch'
+        description: The JSONPatch payload used to update the schema.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagedCluster'
+          description: The updated Managed Cluster
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:remote-client:manage
+      summary: Update a Managed Cluster
+      tags:
+      - Managed Clusters
   /non-employee-records:
     get:
       description: |-
@@ -44242,6 +45348,496 @@ components:
             $ref: '#/components/schemas/IdentityAttributeTransform'
           type: array
       type: object
+    ManagedClient:
+      description: Managed Client
+      example:
+        clusterType: idn
+        clientId: 00be54a2-bb6d-402f-9159-beb2d5319347
+        vaVersion: va-megapod-useast1-610-1621372012
+        ipAddress: 123.456.78.90
+        description: A short description of the ManagedClient
+        sinceLastSeen: "15000"
+        alertKey: CLIENT_STATUS_NOT_CONFIGURED
+        clusterId: e1ff7bb24c934240bbf55e1aa39e41c5
+        secret: ef878e15eaa8c8d3e2fa52f41125e2a0eeadadc6a14f931a33ad3e1b62d56381
+        type: VA
+        vaDownloadUrl: aUrl
+        createdAt: 2023-08-04T20:48:01.865Z
+        lastSeen: 2020-01-01T00:00:00Z
+        provisionStatus: PROVISIONED
+        ccId: 2248
+        name: aName
+        id: 2c9180878eaf4204018eb019c3570003
+        status: NORMAL
+        updatedAt: 2023-08-04T20:48:01.865Z
+      properties:
+        id:
+          description: ManagedClient ID
+          example: 2c9180878eaf4204018eb019c3570003
+          nullable: true
+          readOnly: true
+          type: string
+        alertKey:
+          description: ManagedClient alert key
+          example: CLIENT_STATUS_NOT_CONFIGURED
+          nullable: true
+          readOnly: true
+          type: string
+        ccId:
+          description: Previous CC ID to be used in data migration. (This field will
+            be deleted after CC migration!)
+          example: 2248
+          format: int64
+          nullable: true
+          type: integer
+        clientId:
+          description: The client ID used in API management
+          example: 00be54a2-bb6d-402f-9159-beb2d5319347
+          type: string
+        clusterId:
+          description: Cluster ID that the ManagedClient is linked to
+          example: e1ff7bb24c934240bbf55e1aa39e41c5
+          type: string
+        description:
+          default: ""
+          description: ManagedClient description
+          example: A short description of the ManagedClient
+          type: string
+        ipAddress:
+          description: The public IP address of the ManagedClient
+          example: 123.456.78.90
+          nullable: true
+          readOnly: true
+          type: string
+        lastSeen:
+          description: When the ManagedClient was last seen by the server
+          example: 2020-01-01T00:00:00Z
+          format: date-time
+          nullable: true
+          readOnly: true
+          type: string
+        name:
+          default: VA-$clientId
+          description: ManagedClient name
+          example: aName
+          nullable: true
+          type: string
+        sinceLastSeen:
+          description: Milliseconds since the ManagedClient has polled the server
+          example: "15000"
+          nullable: true
+          readOnly: true
+          type: string
+        status:
+          description: Status of the ManagedClient
+          enum:
+          - NORMAL
+          - UNDEFINED
+          - NOT_CONFIGURED
+          - CONFIGURING
+          - WARNING
+          - ERROR
+          - FAILED
+          - null
+          example: NORMAL
+          nullable: true
+          readOnly: true
+          type: string
+        type:
+          description: "Type of the ManagedClient (VA, CCG)"
+          example: VA
+          type: string
+        clusterType:
+          description: Cluster Type of the ManagedClient
+          enum:
+          - null
+          - idn
+          - iai
+          - spConnectCluster
+          - sqsCluster
+          - das-rc
+          - das-pc
+          - das-dc
+          example: idn
+          nullable: true
+          readOnly: true
+          type: string
+        vaDownloadUrl:
+          description: ManagedClient VA download URL
+          example: aUrl
+          nullable: true
+          readOnly: true
+          type: string
+        vaVersion:
+          description: Version that the ManagedClient's VA is running
+          example: va-megapod-useast1-610-1621372012
+          nullable: true
+          readOnly: true
+          type: string
+        secret:
+          description: Client's apiKey
+          example: ef878e15eaa8c8d3e2fa52f41125e2a0eeadadc6a14f931a33ad3e1b62d56381
+          nullable: true
+          type: string
+        createdAt:
+          description: The date/time this ManagedClient was created
+          example: 2023-08-04T20:48:01.865Z
+          format: date-time
+          nullable: true
+          type: string
+        updatedAt:
+          description: The date/time this ManagedClient was last updated
+          example: 2023-08-04T20:48:01.865Z
+          format: date-time
+          nullable: true
+          type: string
+        provisionStatus:
+          description: The provisioning status of the ManagedClient
+          enum:
+          - null
+          - PROVISIONED
+          - DRAFT
+          example: PROVISIONED
+          nullable: true
+          readOnly: true
+          type: string
+      required:
+      - clientId
+      - clusterId
+      - description
+      - type
+      type: object
+    ManagedClientRequest:
+      description: Managed Client Request
+      example:
+        name: aName
+        description: A short description of the ManagedClient
+        clusterId: aClusterId
+        type: VA
+      properties:
+        clusterId:
+          description: Cluster ID that the ManagedClient is linked to
+          example: aClusterId
+          type: string
+        description:
+          description: description for the ManagedClient to create
+          example: A short description of the ManagedClient
+          nullable: true
+          type: string
+        name:
+          description: name for the ManagedClient to create
+          example: aName
+          nullable: true
+          type: string
+        type:
+          description: "Type of the ManagedClient (VA, CCG) to create"
+          example: VA
+          nullable: true
+          type: string
+      required:
+      - clusterId
+      type: object
+    JsonPatch:
+      description: "A JSONPatch document as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      example:
+        operations:
+        - op: replace
+          path: /description
+          value: New description
+        - op: replace
+          path: /description
+          value: New description
+      properties:
+        operations:
+          description: Operations to be applied
+          items:
+            $ref: '#/components/schemas/JsonPatchOperation'
+          type: array
+      type: object
+    ManagedClientType:
+      description: Managed Client type
+      enum:
+      - CCG
+      - VA
+      - INTERNAL
+      - IIQ_HARVESTER
+      - null
+      example: CCG
+      nullable: true
+      type: string
+    ManagedClientStatus:
+      description: Managed Client Status
+      example:
+        body:
+          alertKey: ""
+          id: "5678"
+          clusterId: "1234"
+          ccg_etag: ccg_etag123xyz456
+          ccg_pin: NONE
+          cookbook_etag: 20210420125956-20210511144538
+          hostname: megapod-useast1-secret-hostname.sailpoint.com
+          internal_ip: 127.0.0.1
+          lastSeen: "1620843964604"
+          sinceSeen: "14708"
+          sinceSeenMillis: "14708"
+          localDev: false
+          stacktrace: ""
+          state: null
+          status: NORMAL
+          uuid: null
+          product: idn
+          va_version: null
+          platform_version: "2"
+          os_version: 2345.3.1
+          os_type: flatcar
+          hypervisor: unknown
+        type: CCG
+        status: NORMAL
+        timestamp: 2020-01-01T00:00:00Z
+      properties:
+        body:
+          description: ManagedClientStatus body information
+          example:
+            alertKey: ""
+            id: "5678"
+            clusterId: "1234"
+            ccg_etag: ccg_etag123xyz456
+            ccg_pin: NONE
+            cookbook_etag: 20210420125956-20210511144538
+            hostname: megapod-useast1-secret-hostname.sailpoint.com
+            internal_ip: 127.0.0.1
+            lastSeen: "1620843964604"
+            sinceSeen: "14708"
+            sinceSeenMillis: "14708"
+            localDev: false
+            stacktrace: ""
+            state: null
+            status: NORMAL
+            uuid: null
+            product: idn
+            va_version: null
+            platform_version: "2"
+            os_version: 2345.3.1
+            os_type: flatcar
+            hypervisor: unknown
+          type: object
+        status:
+          $ref: '#/components/schemas/ManagedClientStatusCode'
+        type:
+          $ref: '#/components/schemas/ManagedClientType'
+        timestamp:
+          description: timestamp on the Client Status update
+          example: 2020-01-01T00:00:00Z
+          format: date-time
+          type: string
+      required:
+      - body
+      - status
+      - timestamp
+      - type
+      type: object
+    ManagedCluster:
+      description: Managed Cluster
+      example:
+        pod: megapod-useast1
+        configuration:
+          clusterExternalId: e1ff7bb24c934240bbf55e1aa39e41c5
+          clusterType: sqsCluster
+          gmtOffset: "-5"
+        description: A short description of the managed cluster.
+        publicKeyCertificate: '-----BEGIN CERTIFICATE-----TCCAb2gAwIBAgIBADANBgkqhkiG9w0BAQsFADAuMQ0wCwYDVQQD-----END
+          CERTIFICATE-----'
+        publicKey: '-----BEGIN PUBLIC KEY-----jANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3WgnsxP52MDgBTfHR+5n4-----END
+          PUBLIC KEY-----'
+        type: idn
+        redis:
+          redisHost: megapod-useast1-shared-redis.cloud.sailpoint.com
+          redisPort: 6379
+        createdAt: 2023-08-04T20:48:01.865Z
+        clientType: CCG
+        id: e1ff7bb24c934240bbf55e1aa39e41c5
+        pinnedConfig: false
+        updatedAt: 2023-08-04T20:48:01.865Z
+        publicKeyThumbprint: obc6pLiulGbtZ
+        org: denali
+        logConfiguration:
+          durationMinutes: 120
+          rootLevel: INFO
+          clientId: aClientId
+          expiration: 2020-12-15T19:13:36.079Z
+          logLevels: INFO
+        operational: false
+        alertKey: LIMITED_RESOURCES
+        clientIds:
+        - "1244"
+        - "1245"
+        serviceCount: 6
+        ccgVersion: v01
+        ccId: "1533"
+        name: Managed Cluster Name
+        keyPair:
+          publicKeyThumbprint: 6CMlaJIV44-xJxcB3CJBjDUUn54
+          publicKeyCertificate: '-----BEGIN CERTIFICATE-----****-----END CERTIFICATE-----'
+          publicKey: '-----BEGIN PUBLIC KEY-----******-----END PUBLIC KEY-----'
+        attributes:
+          keystore: /u3+7QAAAAIAAAABAAAAAQAvL3Byb3h5LWNsdXN0ZXIvMmM5MTgwODc3Yjg3MW
+          queue:
+            name: megapod-useast1-denali-lwt-cluster-1533
+            region: us-east-1
+        status: NORMAL
+      properties:
+        id:
+          description: ManagedCluster ID
+          example: e1ff7bb24c934240bbf55e1aa39e41c5
+          type: string
+        name:
+          description: ManagedCluster name
+          example: Managed Cluster Name
+          type: string
+        pod:
+          description: ManagedCluster pod
+          example: megapod-useast1
+          type: string
+        org:
+          description: ManagedCluster org
+          example: denali
+          type: string
+        type:
+          $ref: '#/components/schemas/ManagedClusterTypes'
+        configuration:
+          additionalProperties:
+            type: string
+          description: ManagedProcess configuration map
+          example:
+            clusterExternalId: e1ff7bb24c934240bbf55e1aa39e41c5
+            clusterType: sqsCluster
+            gmtOffset: "-5"
+          type: object
+        keyPair:
+          $ref: '#/components/schemas/ManagedClusterKeyPair'
+        attributes:
+          $ref: '#/components/schemas/ManagedClusterAttributes'
+        description:
+          default: q
+          description: ManagedCluster description
+          example: A short description of the managed cluster.
+          type: string
+        redis:
+          $ref: '#/components/schemas/ManagedClusterRedis'
+        clientType:
+          $ref: '#/components/schemas/ManagedClientType'
+        ccgVersion:
+          description: CCG version used by the ManagedCluster
+          example: v01
+          type: string
+        pinnedConfig:
+          default: false
+          description: boolean flag indiacting whether or not the cluster configuration
+            is pinned
+          example: false
+          type: boolean
+        logConfiguration:
+          $ref: '#/components/schemas/ClientLogConfiguration'
+        operational:
+          default: false
+          description: Whether or not the cluster is operational or not
+          example: false
+          type: boolean
+        status:
+          description: Cluster status
+          example: NORMAL
+          type: string
+        publicKeyCertificate:
+          description: Public key certificate
+          example: '-----BEGIN CERTIFICATE-----TCCAb2gAwIBAgIBADANBgkqhkiG9w0BAQsFADAuMQ0wCwYDVQQD-----END
+            CERTIFICATE-----'
+          nullable: true
+          type: string
+        publicKeyThumbprint:
+          description: Public key thumbprint
+          example: obc6pLiulGbtZ
+          nullable: true
+          type: string
+        publicKey:
+          description: Public key
+          example: '-----BEGIN PUBLIC KEY-----jANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3WgnsxP52MDgBTfHR+5n4-----END
+            PUBLIC KEY-----'
+          nullable: true
+          type: string
+        alertKey:
+          description: Key describing any immediate cluster alerts
+          example: LIMITED_RESOURCES
+          type: string
+        clientIds:
+          description: List of clients in a cluster
+          example:
+          - "1244"
+          - "1245"
+          items:
+            type: string
+          type: array
+        serviceCount:
+          default: 0
+          description: Number of services bound to a cluster
+          example: 6
+          format: int32
+          type: integer
+        ccId:
+          default: "0"
+          description: "CC ID only used in calling CC, will be removed without notice\
+            \ when Migration to CEGS is finished"
+          example: "1533"
+          type: string
+        createdAt:
+          description: The date/time this cluster was created
+          example: 2023-08-04T20:48:01.865Z
+          format: date-time
+          nullable: true
+          type: string
+        updatedAt:
+          description: The date/time this cluster was last updated
+          example: 2023-08-04T20:48:01.865Z
+          format: date-time
+          nullable: true
+          type: string
+      required:
+      - ccgVersion
+      - clientType
+      - id
+      type: object
+    ManagedClusterRequest:
+      description: Request to create Managed Cluster
+      example:
+        configuration:
+          clusterExternalId: externalId
+          ccgVersion: 77.0.0
+        name: Managed Cluster Name
+        description: A short description of the managed cluster.
+        type: idn
+      properties:
+        name:
+          description: ManagedCluster name
+          example: Managed Cluster Name
+          nullable: false
+          type: string
+        type:
+          $ref: '#/components/schemas/ManagedClusterTypes'
+        configuration:
+          additionalProperties:
+            type: string
+          description: ManagedProcess configuration map
+          example:
+            clusterExternalId: externalId
+            ccgVersion: 77.0.0
+          type: object
+        description:
+          description: ManagedCluster description
+          example: A short description of the managed cluster.
+          nullable: true
+          type: string
+      required:
+      - name
+      type: object
     NonEmployeeRecord:
       example:
         sourceId: 2c91808568c529c60168cca6f90c1313
@@ -50319,6 +51915,120 @@ components:
         transformDefinition:
           $ref: '#/components/schemas/TransformDefinition'
       type: object
+    ManagedClientStatusCode:
+      description: Status of a Managed Client
+      enum:
+      - NORMAL
+      - UNDEFINED
+      - NOT_CONFIGURED
+      - CONFIGURING
+      - WARNING
+      - ERROR
+      - FAILED
+      example: NORMAL
+      type: string
+    ManagedClusterTypes:
+      description: The Type of Cluster
+      enum:
+      - idn
+      - iai
+      example: idn
+      type: string
+    ManagedClusterKeyPair:
+      description: Managed Cluster key pair for Cluster
+      example:
+        publicKeyThumbprint: 6CMlaJIV44-xJxcB3CJBjDUUn54
+        publicKeyCertificate: '-----BEGIN CERTIFICATE-----****-----END CERTIFICATE-----'
+        publicKey: '-----BEGIN PUBLIC KEY-----******-----END PUBLIC KEY-----'
+      properties:
+        publicKey:
+          description: ManagedCluster publicKey
+          example: '-----BEGIN PUBLIC KEY-----******-----END PUBLIC KEY-----'
+          nullable: true
+          type: string
+        publicKeyThumbprint:
+          description: ManagedCluster publicKeyThumbprint
+          example: 6CMlaJIV44-xJxcB3CJBjDUUn54
+          nullable: true
+          type: string
+        publicKeyCertificate:
+          description: ManagedCluster publicKeyCertificate
+          example: '-----BEGIN CERTIFICATE-----****-----END CERTIFICATE-----'
+          nullable: true
+          type: string
+      type: object
+    ManagedClusterAttributes:
+      description: "Managed Cluster Attributes for Cluster Configuration. Supported\
+        \ Cluster Types [sqsCluster, spConnectCluster]"
+      example:
+        keystore: /u3+7QAAAAIAAAABAAAAAQAvL3Byb3h5LWNsdXN0ZXIvMmM5MTgwODc3Yjg3MW
+        queue:
+          name: megapod-useast1-denali-lwt-cluster-1533
+          region: us-east-1
+      properties:
+        queue:
+          $ref: '#/components/schemas/ManagedClusterQueue'
+        keystore:
+          description: ManagedCluster keystore for spConnectCluster type
+          example: /u3+7QAAAAIAAAABAAAAAQAvL3Byb3h5LWNsdXN0ZXIvMmM5MTgwODc3Yjg3MW
+          nullable: true
+          type: string
+      type: object
+    ManagedClusterRedis:
+      description: Managed Cluster Redis Configuration
+      example:
+        redisHost: megapod-useast1-shared-redis.cloud.sailpoint.com
+        redisPort: 6379
+      properties:
+        redisHost:
+          description: ManagedCluster redisHost
+          example: megapod-useast1-shared-redis.cloud.sailpoint.com
+          type: string
+        redisPort:
+          description: ManagedCluster redisPort
+          example: 6379
+          format: int32
+          type: integer
+      type: object
+    ClientLogConfiguration:
+      description: Client Runtime Logging Configuration
+      example:
+        durationMinutes: 120
+        rootLevel: INFO
+        clientId: aClientId
+        expiration: 2020-12-15T19:13:36.079Z
+        logLevels: INFO
+      nullable: true
+      properties:
+        clientId:
+          description: Log configuration's client ID
+          example: aClientId
+          type: string
+        durationMinutes:
+          description: Duration in minutes for log configuration to remain in effect
+            before resetting to defaults
+          example: 120
+          format: int32
+          maximum: 1440
+          minimum: 5
+          type: integer
+        expiration:
+          description: Expiration date-time of the log configuration request
+          example: 2020-12-15T19:13:36.079Z
+          format: date-time
+          type: string
+        rootLevel:
+          $ref: '#/components/schemas/StandardLevel'
+        logLevels:
+          additionalProperties:
+            $ref: '#/components/schemas/StandardLevel'
+          description: Mapping of identifiers to Standard Log Level values
+          example: INFO
+          type: object
+      required:
+      - durationMinutes
+      - rootLevel
+      type: object
     NonEmployeeSourceLite:
       properties:
         id:
@@ -52490,6 +54200,39 @@ components:
             sourceName: MySource
             sourceId: 2c9180877a826e68017a8c0b03da1a53
           type: object
+      type: object
+    ManagedClusterQueue:
+      description: Managed Cluster key pair for Cluster
+      example:
+        name: megapod-useast1-denali-lwt-cluster-1533
+        region: us-east-1
+      properties:
+        name:
+          description: ManagedCluster queue name
+          example: megapod-useast1-denali-lwt-cluster-1533
+          type: string
+        region:
+          description: ManagedCluster queue aws region
+          example: us-east-1
+          type: string
+      type: object
+    StandardLevel:
+      description: Standard Log4j log level
+      enum:
+      - "false"
+      - FATAL
+      - ERROR
+      - WARN
+      - INFO
+      - DEBUG
+      - TRACE
+      example: INFO
+      type: string
+    LogLevelSpec:
+      additionalProperties:
+        $ref: '#/components/schemas/StandardLevel'
+      description: Mapping of identifiers to Standard Log Level values
+      example: INFO
       type: object
     NonEmployeeIdentityDtoType:
       description: Identifies if the identity is a normal identity or a governance
