@@ -171,11 +171,7 @@ func (o *KbaAnswerResponseItem) UnmarshalJSON(bytes []byte) (err error) {
 	varKbaAnswerResponseItem := _KbaAnswerResponseItem{}
 
 	if err = json.Unmarshal(bytes, &varKbaAnswerResponseItem); err == nil {
-<<<<<<< HEAD
 			*o = KbaAnswerResponseItem(varKbaAnswerResponseItem)
-=======
-	*o = KbaAnswerResponseItem(varKbaAnswerResponseItem)
->>>>>>> main
 }
 
 	additionalProperties := make(map[string]interface{})

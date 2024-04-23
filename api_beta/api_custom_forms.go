@@ -2623,9 +2623,6 @@ func (a *CustomFormsAPIService) SearchFormElementDataByElementIDExecute(r ApiSea
 	if r.query != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "query", r.query, "")
 	}
-	if r.query != nil {
-		parameterAddToQuery(localVarQueryParams, "query", r.query, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

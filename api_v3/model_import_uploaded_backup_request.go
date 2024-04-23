@@ -143,11 +143,7 @@ func (o *ImportUploadedBackupRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varImportUploadedBackupRequest := _ImportUploadedBackupRequest{}
 
 	if err = json.Unmarshal(bytes, &varImportUploadedBackupRequest); err == nil {
-<<<<<<< HEAD
 			*o = ImportUploadedBackupRequest(varImportUploadedBackupRequest)
-=======
-	*o = ImportUploadedBackupRequest(varImportUploadedBackupRequest)
->>>>>>> main
 }
 
 	additionalProperties := make(map[string]interface{})
