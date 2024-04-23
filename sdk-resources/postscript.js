@@ -290,7 +290,9 @@ const fixFiles = function (myArray) {
       }
     } else if (
       file.includes(`\\golang-sdk\\api_v3\\docs`) ||
-      file.includes(`\\golang-sdk\\api_beta\\docs`)
+      file.includes(`\\golang-sdk\\api_beta\\docs`) ||
+      file.includes(`/golang-sdk/api_v3/docs`) ||
+      file.includes(`/golang-sdk/api_beta/docs`)
     ) {
       if (file.includes("Index.md")) {
         if (fs.existsSync(file)) {
