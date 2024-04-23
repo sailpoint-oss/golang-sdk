@@ -57,6 +57,14 @@
 
 * `PREFER_UUID` (value: `"PREFER_UUID"`)
 
+* `ARM_SECURITY_EXTRACT` (value: `"ARM_SECURITY_EXTRACT"`)
+
+* `ARM_UTILIZATION_EXTRACT` (value: `"ARM_UTILIZATION_EXTRACT"`)
+
+* `ARM_CHANGELOG_EXTRACT` (value: `"ARM_CHANGELOG_EXTRACT"`)
+
+* `USES_UUID` (value: `"USES_UUID"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
