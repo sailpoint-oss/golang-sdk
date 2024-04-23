@@ -57262,6 +57262,7 @@ components:
               firstName: SailPoint
               lastName: Support
               displayName: SailPoint Support
+            nullable: true
             type: object
           authoritative:
             description: Indicates if this account is from an authoritative source
@@ -66336,6 +66337,8 @@ components:
           - upper
           - usernameGenerator
           - uuid
+          - displayName
+          - rfc5646
           example: dateFormat
           externalDocs:
             description: Transform Operations
