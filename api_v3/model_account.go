@@ -296,7 +296,6 @@ func (o *Account) SetIdentityId(v string) {
 }
 
 // GetAttributes returns the Attributes field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
 func (o *Account) GetAttributes() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
@@ -308,9 +307,8 @@ func (o *Account) GetAttributes() map[string]interface{} {
 
 // GetAttributesOk returns a tuple with the Attributes field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Account) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil {
 		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
@@ -722,9 +720,7 @@ func (o Account) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.IdentityId) {
 		toSerialize["identityId"] = o.IdentityId
 	}
-	if o.Attributes != nil {
-		toSerialize["attributes"] = o.Attributes
-	}
+	toSerialize["attributes"] = o.Attributes
 	toSerialize["authoritative"] = o.Authoritative
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()

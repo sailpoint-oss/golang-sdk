@@ -236,16 +236,6 @@ and a boolean to check if the value has been set.
 SetAttributes sets Attributes field to given value.
 
 
-### SetAttributesNil
-
-`func (o *Account) SetAttributesNil(b bool)`
-
- SetAttributesNil sets the value for Attributes to be an explicit nil
-
-### UnsetAttributes
-`func (o *Account) UnsetAttributes()`
-
-UnsetAttributes ensures that no value is present for Attributes, not even an explicit nil
 ### GetAuthoritative
 
 `func (o *Account) GetAuthoritative() bool`
