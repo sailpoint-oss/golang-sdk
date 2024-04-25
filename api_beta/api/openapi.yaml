@@ -40421,7 +40421,7 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:account:create
+        - idn:account:manage
       summary: Account Aggregation
       tags:
       - Sources
