@@ -118,7 +118,7 @@ Class | Method | HTTP request | Description
 *AccountsAPI* | [**GetAccountEntitlements**](docs/AccountsAPI.md#getaccountentitlements) | **Get** /accounts/{id}/entitlements | Account Entitlements
 *AccountsAPI* | [**ListAccounts**](docs/AccountsAPI.md#listaccounts) | **Get** /accounts | Accounts List
 *AccountsAPI* | [**PutAccount**](docs/AccountsAPI.md#putaccount) | **Put** /accounts/{id} | Update Account
-*AccountsAPI* | [**ReloadAccount**](docs/AccountsAPI.md#reloadaccount) | **Post** /accounts/{id}/reload | Reload Account
+*AccountsAPI* | [**SubmitReloadAccount**](docs/AccountsAPI.md#submitreloadaccount) | **Post** /accounts/{id}/reload | Reload Account
 *AccountsAPI* | [**UnlockAccount**](docs/AccountsAPI.md#unlockaccount) | **Post** /accounts/{id}/unlock | Unlock Account
 *AccountsAPI* | [**UpdateAccount**](docs/AccountsAPI.md#updateaccount) | **Patch** /accounts/{id} | Update Account
 *ApprovalsAPI* | [**GetApproval**](docs/ApprovalsAPI.md#getapproval) | **Get** /generic-approvals/{id} | Get an approval

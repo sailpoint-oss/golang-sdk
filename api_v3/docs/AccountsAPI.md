@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**GetAccountEntitlements**](AccountsAPI.md#GetAccountEntitlements) | **Get** /accounts/{id}/entitlements | Account Entitlements
 [**ListAccounts**](AccountsAPI.md#ListAccounts) | **Get** /accounts | Accounts List
 [**PutAccount**](AccountsAPI.md#PutAccount) | **Put** /accounts/{id} | Update Account
-[**ReloadAccount**](AccountsAPI.md#ReloadAccount) | **Post** /accounts/{id}/reload | Reload Account
+[**SubmitReloadAccount**](AccountsAPI.md#SubmitReloadAccount) | **Post** /accounts/{id}/reload | Reload Account
 [**UnlockAccount**](AccountsAPI.md#UnlockAccount) | **Post** /accounts/{id}/unlock | Unlock Account
 [**UpdateAccount**](AccountsAPI.md#UpdateAccount) | **Patch** /accounts/{id} | Update Account
 
@@ -590,9 +590,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReloadAccount
+## SubmitReloadAccount
 
-> AccountsAsyncResult ReloadAccount(ctx, id).Execute()
+> AccountsAsyncResult SubmitReloadAccount(ctx, id).Execute()
 
 Reload Account
 
@@ -615,13 +615,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsAPI.ReloadAccount(context.Background(), id).Execute()
+    resp, r, err := apiClient.AccountsAPI.SubmitReloadAccount(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.ReloadAccount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.SubmitReloadAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReloadAccount`: AccountsAsyncResult
-    fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.ReloadAccount`: %v\n", resp)
+    // response from `SubmitReloadAccount`: AccountsAsyncResult
+    fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.SubmitReloadAccount`: %v\n", resp)
 }
 ```
 
@@ -635,7 +635,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiReloadAccountRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiSubmitReloadAccountRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

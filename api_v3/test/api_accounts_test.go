@@ -130,13 +130,13 @@ func Test_api_v3_AccountsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AccountsAPIService ReloadAccount", func(t *testing.T) {
+	t.Run("Test AccountsAPIService SubmitReloadAccount", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.AccountsAPI.ReloadAccount(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.API_V3.AccountsAPI.SubmitReloadAccount(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

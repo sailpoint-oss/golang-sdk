@@ -4147,8 +4147,8 @@ paths:
       - IAI Access Request Recommendations
   /accounts:
     get:
-      description: "This returns a list of accounts.  \nA token with ORG_ADMIN authority\
-        \ is required to call this API."
+      description: "This returns a list of accounts.  \nA token with ORG_ADMIN, SOURCE_ADMIN,\
+        \ SOURCE_SUBADMIN, or HELPDESK authority is required to call this API."
       operationId: listAccounts
       parameters:
       - description: "Determines whether Slim, or increased level of detail is provided\
@@ -4373,7 +4373,8 @@ paths:
         \ actually provision the account on the target source, which means that if\
         \ the account doesn't also exist on the target source, an aggregation between\
         \ the source and your tenant will remove it from your tenant. \nA token with\
-        \ ORG_ADMIN authority is required to call this API."
+        \ ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call\
+        \ this API."
       operationId: createAccount
       requestBody:
         content:
@@ -4459,9 +4460,9 @@ paths:
         \ IdentityNow.  To avoid this scenario, it is recommended that you [disable\
         \ accounts](https://developer.sailpoint.com/idn/api/v3/disable-account) rather\
         \ than delete them. This will also allow you to reenable the accounts in the\
-        \ future. \nA token with ORG_ADMIN authority is required to call this API.\n\
-        >**NOTE:** You can only delete accounts from sources of the \"DelimitedFile\"\
-        \ type.**"
+        \ future. \nA token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority\
+        \ is required to call this API.\n>**NOTE:** You can only delete accounts from\
+        \ sources of the \"DelimitedFile\" type.**"
       operationId: deleteAccount
       parameters:
       - description: Account ID.
@@ -4560,7 +4561,8 @@ paths:
       - Accounts
     get:
       description: "Use this API to return the details for a single account by its\
-        \ ID.  \nA token with ORG_ADMIN authority is required to call this API."
+        \ ID.  \nA token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK\
+        \ authority is required to call this API."
       operationId: getAccount
       parameters:
       - description: Account ID.
@@ -4776,9 +4778,9 @@ paths:
     put:
       description: "Use this API to update an account with a PUT request. \nThis endpoint\
         \ submits an account update task and returns the task ID.  \nA token with\
-        \ ORG_ADMIN authority is required to call this API.\n>**NOTE: You can only\
-        \ use this PUT endpoint to update accounts from sources of the \"DelimitedFile\"\
-        \ type.**"
+        \ ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call\
+        \ this API.\n>**NOTE: You can only use this PUT endpoint to update accounts\
+        \ from sources of the \"DelimitedFile\" type.**"
       operationId: putAccount
       parameters:
       - description: Account ID.
@@ -4884,7 +4886,8 @@ paths:
   /accounts/{id}/entitlements:
     get:
       description: "This API returns entitlements of the account.  \nA token with\
-        \ ORG_ADMIN authority is required to call this API."
+        \ ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required\
+        \ to call this API."
       operationId: getAccountEntitlements
       parameters:
       - description: The account id
@@ -5024,9 +5027,10 @@ paths:
   /accounts/{id}/reload:
     post:
       description: "This API asynchronously reloads the account directly from the\
-        \ connector and performs a one-time aggregation process.  \nA token with ORG_ADMIN\
-        \ authority is required to call this API."
-      operationId: reloadAccount
+        \ connector and performs a one-time aggregation process.  \nA token with ORG_ADMIN,\
+        \ SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call\
+        \ this API."
+      operationId: submitReloadAccount
       parameters:
       - description: The account id
         example: ef38f94347e94562b5bb8424a56397d8
@@ -5125,7 +5129,8 @@ paths:
   /accounts/{id}/enable:
     post:
       description: "This API submits a task to enable account and returns the task\
-        \ ID.  \nA token with ORG_ADMIN authority is required to call this API."
+        \ ID.  \nA token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK\
+        \ authority is required to call this API."
       operationId: enableAccount
       parameters:
       - description: The account id
@@ -5231,7 +5236,8 @@ paths:
   /accounts/{id}/disable:
     post:
       description: "This API submits a task to disable the account and returns the\
-        \ task ID.  \nA token with ORG_ADMIN authority is required to call this API."
+        \ task ID.  \nA token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK\
+        \ authority is required to call this API."
       operationId: disableAccount
       parameters:
       - description: The account id
@@ -5339,7 +5345,8 @@ paths:
       description: "This API submits a task to unlock an account and returns the task\
         \ ID.  \nTo use this endpoint to unlock an account that has the `forceProvisioning`\
         \ option set to true, the `idn:accounts-provisioning:manage` scope is required.\
-        \ \nA token with ORG_ADMIN authority is required to call this API."
+        \ \nA token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority\
+        \ is required to call this API."
       operationId: unlockAccount
       parameters:
       - description: The account ID.
@@ -40342,10 +40349,11 @@ paths:
       - Sources
   /sources/{id}/load-accounts:
     post:
-      description: "Starts an account aggregation on the specified source. \n\nIf\
-        \ the target source is a delimited file source, then the CSV file needs to\
-        \ be included in the request body.\n\nYou will also need to set the Content-Type\
-        \ header to `multipart/form-data`."
+      description: "Starts an account aggregation on the specified source. \nIf the\
+        \ target source is a delimited file source, then the CSV file needs to be\
+        \ included in the request body.\nYou will also need to set the Content-Type\
+        \ header to `multipart/form-data`.\nA token with ORG_ADMIN, SOURCE_ADMIN,\
+        \ or SOURCE_SUBADMIN authority is required to call this API."
       operationId: importAccounts
       parameters:
       - description: Source Id
@@ -40425,7 +40433,7 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:account:manage
+        - idn:accounts:manage
       summary: Account Aggregation
       tags:
       - Sources

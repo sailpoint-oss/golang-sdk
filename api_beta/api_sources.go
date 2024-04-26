@@ -2724,10 +2724,9 @@ func (r ApiImportAccountsRequest) Execute() (*LoadAccountsTask, *http.Response, 
 ImportAccounts Account Aggregation
 
 Starts an account aggregation on the specified source. 
-
 If the target source is a delimited file source, then the CSV file needs to be included in the request body.
-
 You will also need to set the Content-Type header to `multipart/form-data`.
+A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Source Id
