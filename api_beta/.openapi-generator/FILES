@@ -183,6 +183,7 @@ docs/ActivateCampaignOptions.md
 docs/AdminReviewReassign.md
 docs/AdminReviewReassignReassignTo.md
 docs/Approval.md
+docs/ApprovalBatch.md
 docs/ApprovalComment.md
 docs/ApprovalDescription.md
 docs/ApprovalDto.md
@@ -1043,6 +1044,7 @@ model_activate_campaign_options.go
 model_admin_review_reassign.go
 model_admin_review_reassign_reassign_to.go
 model_approval.go
+model_approval_batch.go
 model_approval_comment.go
 model_approval_description.go
 model_approval_dto.go

@@ -4,9 +4,9 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetApproval**](ApprovalsAPI.md#GetApproval) | **Get** /approvals/{id} | Get an approval
-[**GetApprovals**](ApprovalsAPI.md#GetApprovals) | **Get** /approvals | Get Approvals
-[**PatchApproval**](ApprovalsAPI.md#PatchApproval) | **Patch** /approvals/{id} | Change an approval
+[**GetApproval**](ApprovalsAPI.md#GetApproval) | **Get** /generic-approvals/{id} | Get an approval
+[**GetApprovals**](ApprovalsAPI.md#GetApprovals) | **Get** /generic-approvals | Get Approvals
+[**PatchApproval**](ApprovalsAPI.md#PatchApproval) | **Patch** /generic-approvals/{id} | Change an approval
 
 
 

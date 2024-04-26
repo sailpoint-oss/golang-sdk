@@ -9,10 +9,10 @@ Name | Type | Description | Notes
 **CreatedDate** | Pointer to **string** | Date the approval was created | [optional] 
 **Type** | Pointer to **string** | Type of approval | [optional] 
 **Name** | Pointer to [**[]ApprovalName**](ApprovalName.md) | The name of the approval for a given locale | [optional] 
-**BatchRequest** | Pointer to **map[string]interface{}** | The name of the approval for a given locale | [optional] 
+**BatchRequest** | Pointer to [**ApprovalBatch**](ApprovalBatch.md) | The name of the approval for a given locale | [optional] 
 **Description** | Pointer to [**[]ApprovalDescription**](ApprovalDescription.md) | The description of the approval for a given locale | [optional] 
 **Priority** | Pointer to **string** | The priority of the approval | [optional] 
-**Requester** | Pointer to **map[string]interface{}** | Object representation of the requester of the approval | [optional] 
+**Requester** | Pointer to [**ApprovalIdentity**](ApprovalIdentity.md) | Object representation of the requester of the approval | [optional] 
 **Comments** | Pointer to [**[]ApprovalComment**](ApprovalComment.md) | Object representation of a comment on the approval | [optional] 
 **ApprovedBy** | Pointer to [**[]ApprovalIdentity**](ApprovalIdentity.md) | Array of approvers who have approved the approval | [optional] 
 **RejectedBy** | Pointer to [**[]ApprovalIdentity**](ApprovalIdentity.md) | Array of approvers who have rejected the approval | [optional] 
@@ -168,20 +168,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetBatchRequest
 
-`func (o *Approval) GetBatchRequest() map[string]interface{}`
+`func (o *Approval) GetBatchRequest() ApprovalBatch`
 
 GetBatchRequest returns the BatchRequest field if non-nil, zero value otherwise.
 
 ### GetBatchRequestOk
 
-`func (o *Approval) GetBatchRequestOk() (*map[string]interface{}, bool)`
+`func (o *Approval) GetBatchRequestOk() (*ApprovalBatch, bool)`
 
 GetBatchRequestOk returns a tuple with the BatchRequest field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBatchRequest
 
-`func (o *Approval) SetBatchRequest(v map[string]interface{})`
+`func (o *Approval) SetBatchRequest(v ApprovalBatch)`
 
 SetBatchRequest sets BatchRequest field to given value.
 
@@ -243,20 +243,20 @@ HasPriority returns a boolean if a field has been set.
 
 ### GetRequester
 
-`func (o *Approval) GetRequester() map[string]interface{}`
+`func (o *Approval) GetRequester() ApprovalIdentity`
 
 GetRequester returns the Requester field if non-nil, zero value otherwise.
 
 ### GetRequesterOk
 
-`func (o *Approval) GetRequesterOk() (*map[string]interface{}, bool)`
+`func (o *Approval) GetRequesterOk() (*ApprovalIdentity, bool)`
 
 GetRequesterOk returns a tuple with the Requester field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequester
 
-`func (o *Approval) SetRequester(v map[string]interface{})`
+`func (o *Approval) SetRequester(v ApprovalIdentity)`
 
 SetRequester sets Requester field to given value.
 

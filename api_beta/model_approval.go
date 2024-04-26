@@ -30,13 +30,13 @@ type Approval struct {
 	// The name of the approval for a given locale
 	Name []ApprovalName `json:"name,omitempty"`
 	// The name of the approval for a given locale
-	BatchRequest map[string]interface{} `json:"batchRequest,omitempty"`
+	BatchRequest ApprovalBatch `json:"batchRequest,omitempty"`
 	// The description of the approval for a given locale
 	Description []ApprovalDescription `json:"description,omitempty"`
 	// The priority of the approval
 	Priority *string `json:"priority,omitempty"`
 	// Object representation of the requester of the approval
-	Requester map[string]interface{} `json:"requester,omitempty"`
+	Requester ApprovalIdentity `json:"requester,omitempty"`
 	// Object representation of a comment on the approval
 	Comments []ApprovalComment `json:"comments,omitempty"`
 	// Array of approvers who have approved the approval
@@ -236,9 +236,9 @@ func (o *Approval) SetName(v []ApprovalName) {
 }
 
 // GetBatchRequest returns the BatchRequest field value if set, zero value otherwise.
-func (o *Approval) GetBatchRequest() map[string]interface{} {
+func (o *Approval) GetBatchRequest() ApprovalBatch {
 	if o == nil || isNil(o.BatchRequest) {
-		var ret map[string]interface{}
+		var ret ApprovalBatch
 		return ret
 	}
 	return o.BatchRequest
@@ -246,9 +246,9 @@ func (o *Approval) GetBatchRequest() map[string]interface{} {
 
 // GetBatchRequestOk returns a tuple with the BatchRequest field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Approval) GetBatchRequestOk() (map[string]interface{}, bool) {
+func (o *Approval) GetBatchRequestOk() (ApprovalBatch, bool) {
 	if o == nil || isNil(o.BatchRequest) {
-		return map[string]interface{}{}, false
+		return ApprovalBatch{}, false
 	}
 	return o.BatchRequest, true
 }
@@ -262,8 +262,8 @@ func (o *Approval) HasBatchRequest() bool {
 	return false
 }
 
-// SetBatchRequest gets a reference to the given map[string]interface{} and assigns it to the BatchRequest field.
-func (o *Approval) SetBatchRequest(v map[string]interface{}) {
+// SetBatchRequest gets a reference to the given ApprovalBatch and assigns it to the BatchRequest field.
+func (o *Approval) SetBatchRequest(v ApprovalBatch) {
 	o.BatchRequest = v
 }
 
@@ -332,9 +332,9 @@ func (o *Approval) SetPriority(v string) {
 }
 
 // GetRequester returns the Requester field value if set, zero value otherwise.
-func (o *Approval) GetRequester() map[string]interface{} {
+func (o *Approval) GetRequester() ApprovalIdentity {
 	if o == nil || isNil(o.Requester) {
-		var ret map[string]interface{}
+		var ret ApprovalIdentity
 		return ret
 	}
 	return o.Requester
@@ -342,9 +342,9 @@ func (o *Approval) GetRequester() map[string]interface{} {
 
 // GetRequesterOk returns a tuple with the Requester field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Approval) GetRequesterOk() (map[string]interface{}, bool) {
+func (o *Approval) GetRequesterOk() (ApprovalIdentity, bool) {
 	if o == nil || isNil(o.Requester) {
-		return map[string]interface{}{}, false
+		return ApprovalIdentity{}, false
 	}
 	return o.Requester, true
 }
@@ -358,8 +358,8 @@ func (o *Approval) HasRequester() bool {
 	return false
 }
 
-// SetRequester gets a reference to the given map[string]interface{} and assigns it to the Requester field.
-func (o *Approval) SetRequester(v map[string]interface{}) {
+// SetRequester gets a reference to the given ApprovalIdentity and assigns it to the Requester field.
+func (o *Approval) SetRequester(v ApprovalIdentity) {
 	o.Requester = v
 }
 

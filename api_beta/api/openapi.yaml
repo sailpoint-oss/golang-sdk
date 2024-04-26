@@ -21538,12 +21538,14 @@ paths:
       summary: Get MAIL FROM Attributes
       tags:
       - Notifications
-  /approvals:
+  /generic-approvals:
     get:
       description: "Retrieve a list of approvals, which can be filtered by requester\
         \ ID, status, or reference type. \"Mine\" query parameter can be used and\
-        \ it will return all approvals for the current approver. \nAbsence of all\
-        \ query parameters will will default to mine=true."
+        \ it will return all approvals for the current approver. This endpoint is\
+        \ for generic approvals, different than the access-request-approval endpoint\
+        \ and does not include access-request-approvals. \nAbsence of all query parameters\
+        \ will will default to mine=true."
       operationId: getApprovals
       parameters:
       - description: Returns the list of approvals for the current caller
@@ -21642,9 +21644,11 @@ paths:
       summary: Get Approvals
       tags:
       - Approvals
-  /approvals/{id}:
+  /generic-approvals/{id}:
     get:
-      description: Retrieve a single approval for a given approval ID
+      description: "Retrieve a single approval for a given approval ID. This endpoint\
+        \ is for generic approvals, different than the access-request-approval endpoint\
+        \ and does not include access-request-approvals."
       operationId: getApproval
       parameters:
       - description: ID of the approval that is to be returned
@@ -61096,13 +61100,7 @@ components:
             $ref: '#/components/schemas/ApprovalName'
           type: array
         batchRequest:
-          description: The name of the approval for a given locale
-          example:
-            batchId: 38453251-6be2-5f8f-df93-5ce19e295837
-            batchSize: 100
-          items:
-            $ref: ../schemas/ApprovalBatch.yaml
-          type: object
+          $ref: '#/components/schemas/ApprovalBatch'
         description:
           description: The description of the approval for a given locale
           items:
@@ -61117,14 +61115,7 @@ components:
           example: HIGH
           type: string
         requester:
-          description: Object representation of the requester of the approval
-          example:
-            id: 85d173e7d57e496569df763231d6deb6a
-            type: IDENTITY
-            name: John Doe
-          items:
-            $ref: ../schemas/ApprovalIdentity.yaml
-          type: object
+          $ref: '#/components/schemas/ApprovalIdentity'
         comments:
           description: Object representation of a comment on the approval
           items:
@@ -72293,6 +72284,20 @@ components:
           description: What locale the name of the approval is using
           example: en_US
           type: string
+      type: object
+    ApprovalBatch:
+      description: Batch properties if an approval is sent via batching.
+      properties:
+        batchId:
+          description: ID of the batch
+          example: 38453251-6be2-5f8f-df93-5ce19e295837
+          type: string
+        batchSize:
+          description: How many approvals are going to be in this batch. Defaults
+            to 1 if not provided.
+          example: 100
+          format: int64
+          type: integer
       type: object
     ApprovalDescription:
       description: The description of what the approval is asking for

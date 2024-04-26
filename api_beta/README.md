@@ -121,9 +121,9 @@ Class | Method | HTTP request | Description
 *AccountsAPI* | [**ReloadAccount**](docs/AccountsAPI.md#reloadaccount) | **Post** /accounts/{id}/reload | Reload Account
 *AccountsAPI* | [**UnlockAccount**](docs/AccountsAPI.md#unlockaccount) | **Post** /accounts/{id}/unlock | Unlock Account
 *AccountsAPI* | [**UpdateAccount**](docs/AccountsAPI.md#updateaccount) | **Patch** /accounts/{id} | Update Account
-*ApprovalsAPI* | [**GetApproval**](docs/ApprovalsAPI.md#getapproval) | **Get** /approvals/{id} | Get an approval
-*ApprovalsAPI* | [**GetApprovals**](docs/ApprovalsAPI.md#getapprovals) | **Get** /approvals | Get Approvals
-*ApprovalsAPI* | [**PatchApproval**](docs/ApprovalsAPI.md#patchapproval) | **Patch** /approvals/{id} | Change an approval
+*ApprovalsAPI* | [**GetApproval**](docs/ApprovalsAPI.md#getapproval) | **Get** /generic-approvals/{id} | Get an approval
+*ApprovalsAPI* | [**GetApprovals**](docs/ApprovalsAPI.md#getapprovals) | **Get** /generic-approvals | Get Approvals
+*ApprovalsAPI* | [**PatchApproval**](docs/ApprovalsAPI.md#patchapproval) | **Patch** /generic-approvals/{id} | Change an approval
 *AuthProfileAPI* | [**GetProfileConfig**](docs/AuthProfileAPI.md#getprofileconfig) | **Get** /auth-profiles/{id} | Get Auth Profile.
 *AuthProfileAPI* | [**GetProfileConfigList**](docs/AuthProfileAPI.md#getprofileconfiglist) | **Get** /auth-profiles | Get list of Auth Profiles.
 *AuthProfileAPI* | [**PatchProfileConfig**](docs/AuthProfileAPI.md#patchprofileconfig) | **Patch** /auth-profiles/{id} | Patch a specified Auth Profile
@@ -675,6 +675,7 @@ Class | Method | HTTP request | Description
  - [AdminReviewReassign](docs/AdminReviewReassign.md)
  - [AdminReviewReassignReassignTo](docs/AdminReviewReassignReassignTo.md)
  - [Approval](docs/Approval.md)
+ - [ApprovalBatch](docs/ApprovalBatch.md)
  - [ApprovalComment](docs/ApprovalComment.md)
  - [ApprovalDescription](docs/ApprovalDescription.md)
  - [ApprovalDto](docs/ApprovalDto.md)

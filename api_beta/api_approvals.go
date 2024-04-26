@@ -36,7 +36,7 @@ func (r ApiGetApprovalRequest) Execute() (*Approval, *http.Response, error) {
 /*
 GetApproval Get an approval
 
-Retrieve a single approval for a given approval ID
+Retrieve a single approval for a given approval ID. This endpoint is for generic approvals, different than the access-request-approval endpoint and does not include access-request-approvals.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the approval that is to be returned
@@ -65,7 +65,7 @@ func (a *ApprovalsAPIService) GetApprovalExecute(r ApiGetApprovalRequest) (*Appr
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/approvals/{id}"
+	localVarPath := localBasePath + "/generic-approvals/{id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -213,7 +213,7 @@ func (r ApiGetApprovalsRequest) Execute() ([]Approval, *http.Response, error) {
 /*
 GetApprovals Get Approvals
 
-Retrieve a list of approvals, which can be filtered by requester ID, status, or reference type. "Mine" query parameter can be used and it will return all approvals for the current approver. 
+Retrieve a list of approvals, which can be filtered by requester ID, status, or reference type. "Mine" query parameter can be used and it will return all approvals for the current approver. This endpoint is for generic approvals, different than the access-request-approval endpoint and does not include access-request-approvals. 
 Absence of all query parameters will will default to mine=true.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -241,7 +241,7 @@ func (a *ApprovalsAPIService) GetApprovalsExecute(r ApiGetApprovalsRequest) ([]A
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/approvals"
+	localVarPath := localBasePath + "/generic-approvals"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -409,7 +409,7 @@ func (a *ApprovalsAPIService) PatchApprovalExecute(r ApiPatchApprovalRequest) (*
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/approvals/{id}"
+	localVarPath := localBasePath + "/generic-approvals/{id}"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
