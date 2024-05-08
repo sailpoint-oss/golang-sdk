@@ -376,6 +376,14 @@ tags:
   name: Certification Summaries
 - description: |
     Upload configurations and manage object mappings between tenants.
+
+    Configuration files can be managed and deployed using Configuration Hub by uploading a JSON file which contains configuration data.
+
+    The function of object mapping allows objects with varying names and IDs to be compared. While objects are compared, a user can replace a value in the source tenant with a new value. Object mapping also helps in locating referenced objects to the source object during the drafting process.
+
+    Refer to [Uploading a Configuration File](https://documentation.sailpoint.com/saas/help/confighub/config_hub.html#uploading-a-configuration-file) for more information about uploading Configuration Files
+
+    Refer to [Mapping Objects](https://documentation.sailpoint.com/saas/help/confighub/config_hub.html#mapping-objects) for more information about object mappings.
   name: Configuration Hub
 - description: |
     Use this API to implement connector functionality.
@@ -10743,6 +10751,7 @@ paths:
     get:
       description: |-
         This gets a list of existing object mappings between current org and source org.
+        Source org should be "default" when getting object mappings that are not associated to any particular org.
         The request will need the following security scope:
         - sp:config-object-mapping:read
       operationId: getObjectMappings
@@ -10865,6 +10874,7 @@ paths:
     post:
       description: |-
         This creates an object mapping between current org and source org.
+        Source org should be "default" when creating an object mapping that is not to be associated to any particular org.
         The request will need the following security scope:
         - sp:config-object-mapping:manage
       operationId: createObjectMapping
@@ -10989,6 +10999,7 @@ paths:
     delete:
       description: |-
         This deletes an existing object mapping.
+        Source org should be "default" when deleting an object mapping that is not associated to any particular org.
         The request will need the following security scope:
         - sp:config-object-mapping:manage
       operationId: deleteObjectMapping
@@ -11095,6 +11106,7 @@ paths:
     post:
       description: |-
         This creates a set of object mappings (Max 25) between current org and source org.
+        Source org should be "default" when creating object mappings that are not to be associated to any particular org.
         The request will need the following security scope:
         - sp:config-object-mapping:manage
       operationId: createObjectMappings
@@ -11234,6 +11246,7 @@ paths:
     post:
       description: |-
         This updates a set of object mappings, only enabled and targetValue fields can be updated.
+        Source org should be "default" when updating object mappings that are not associated to any particular org.
         The request will need the following security scope:
         - sp:config-object-mapping:manage
       operationId: updateObjectMappings

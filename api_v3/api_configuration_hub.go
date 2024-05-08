@@ -45,6 +45,7 @@ func (r ApiCreateObjectMappingRequest) Execute() (*ObjectMappingResponse, *http.
 CreateObjectMapping Creates an object mapping
 
 This creates an object mapping between current org and source org.
+Source org should be "default" when creating an object mapping that is not to be associated to any particular org.
 The request will need the following security scope:
 - sp:config-object-mapping:manage
 
@@ -227,6 +228,7 @@ func (r ApiCreateObjectMappingsRequest) Execute() (*ObjectMappingBulkCreateRespo
 CreateObjectMappings Bulk creates object mappings
 
 This creates a set of object mappings (Max 25) between current org and source org.
+Source org should be "default" when creating object mappings that are not to be associated to any particular org.
 The request will need the following security scope:
 - sp:config-object-mapping:manage
 
@@ -403,6 +405,7 @@ func (r ApiDeleteObjectMappingRequest) Execute() (*http.Response, error) {
 DeleteObjectMapping Deletes an object mapping
 
 This deletes an existing object mapping.
+Source org should be "default" when deleting an object mapping that is not associated to any particular org.
 The request will need the following security scope:
 - sp:config-object-mapping:manage
 
@@ -714,6 +717,7 @@ func (r ApiGetObjectMappingsRequest) Execute() ([]ObjectMappingResponse, *http.R
 GetObjectMappings Gets list of object mappings
 
 This gets a list of existing object mappings between current org and source org.
+Source org should be "default" when getting object mappings that are not associated to any particular org.
 The request will need the following security scope:
 - sp:config-object-mapping:read
 
@@ -1427,6 +1431,7 @@ func (r ApiUpdateObjectMappingsRequest) Execute() (*ObjectMappingBulkPatchRespon
 UpdateObjectMappings Bulk updates object mappings
 
 This updates a set of object mappings, only enabled and targetValue fields can be updated.
+Source org should be "default" when updating object mappings that are not associated to any particular org.
 The request will need the following security scope:
 - sp:config-object-mapping:manage
 
