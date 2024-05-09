@@ -70,6 +70,7 @@ api_task_management.go
 api_tenant.go
 api_transforms.go
 api_triggers.go
+api_ui_metadata.go
 api_vendor_connector_mappings.go
 api_work_items.go
 api_work_reassignment.go
@@ -872,6 +873,8 @@ docs/TenantAPI.md
 docs/TenantConfigurationDetails.md
 docs/TenantConfigurationRequest.md
 docs/TenantConfigurationResponse.md
+docs/TenantUiMetadataItemResponse.md
+docs/TenantUiMetadataItemUpdateRequest.md
 docs/TestExternalExecuteWorkflow200Response.md
 docs/TestExternalExecuteWorkflowRequest.md
 docs/TestInvocation.md
@@ -891,6 +894,7 @@ docs/TriggerExampleInput.md
 docs/TriggerExampleOutput.md
 docs/TriggerType.md
 docs/TriggersAPI.md
+docs/UIMetadataAPI.md
 docs/UpdateAccessProfilesInBulk412Response.md
 docs/UsageType.md
 docs/V3ConnectorDto.md
@@ -1678,6 +1682,8 @@ model_tenant.go
 model_tenant_configuration_details.go
 model_tenant_configuration_request.go
 model_tenant_configuration_response.go
+model_tenant_ui_metadata_item_response.go
+model_tenant_ui_metadata_item_update_request.go
 model_test_external_execute_workflow_200_response.go
 model_test_external_execute_workflow_request.go
 model_test_invocation.go
@@ -1812,6 +1818,7 @@ test/api_task_management_test.go
 test/api_tenant_test.go
 test/api_transforms_test.go
 test/api_triggers_test.go
+test/api_ui_metadata_test.go
 test/api_vendor_connector_mappings_test.go
 test/api_work_items_test.go
 test/api_work_reassignment_test.go

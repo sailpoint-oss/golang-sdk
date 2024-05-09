@@ -533,6 +533,8 @@ Class | Method | HTTP request | Description
 *TriggersAPI* | [**StartTestTriggerInvocation**](docs/TriggersAPI.md#starttesttriggerinvocation) | **Post** /trigger-invocations/test | Start a Test Invocation
 *TriggersAPI* | [**TestSubscriptionFilter**](docs/TriggersAPI.md#testsubscriptionfilter) | **Post** /trigger-subscriptions/validate-filter | Validate a Subscription Filter
 *TriggersAPI* | [**UpdateSubscription**](docs/TriggersAPI.md#updatesubscription) | **Put** /trigger-subscriptions/{id} | Update a Subscription
+*UIMetadataAPI* | [**GetTenantUiMetadata**](docs/UIMetadataAPI.md#gettenantuimetadata) | **Get** /ui-metadata/tenant | Get a tenant UI metadata
+*UIMetadataAPI* | [**SetTenantUiMetadata**](docs/UIMetadataAPI.md#settenantuimetadata) | **Put** /ui-metadata/tenant | Update tenant UI metadata
 *VendorConnectorMappingsAPI* | [**CreateVendorConnectorMapping**](docs/VendorConnectorMappingsAPI.md#createvendorconnectormapping) | **Post** /vendor-connector-mappings | Create a vendor connector mapping
 *VendorConnectorMappingsAPI* | [**DeleteVendorConnectorMapping**](docs/VendorConnectorMappingsAPI.md#deletevendorconnectormapping) | **Delete** /vendor-connector-mappings | Delete a vendor connector mapping
 *VendorConnectorMappingsAPI* | [**GetVendorConnectorMappings**](docs/VendorConnectorMappingsAPI.md#getvendorconnectormappings) | **Get** /vendor-connector-mappings | List vendor connector mappings
@@ -1311,6 +1313,8 @@ Class | Method | HTTP request | Description
  - [TenantConfigurationDetails](docs/TenantConfigurationDetails.md)
  - [TenantConfigurationRequest](docs/TenantConfigurationRequest.md)
  - [TenantConfigurationResponse](docs/TenantConfigurationResponse.md)
+ - [TenantUiMetadataItemResponse](docs/TenantUiMetadataItemResponse.md)
+ - [TenantUiMetadataItemUpdateRequest](docs/TenantUiMetadataItemUpdateRequest.md)
  - [TestExternalExecuteWorkflow200Response](docs/TestExternalExecuteWorkflow200Response.md)
  - [TestExternalExecuteWorkflowRequest](docs/TestExternalExecuteWorkflowRequest.md)
  - [TestInvocation](docs/TestInvocation.md)

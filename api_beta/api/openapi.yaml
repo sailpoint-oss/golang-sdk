@@ -974,9 +974,11 @@ tags:
     | [Source Account Created](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/source-account-created/) | idn:source-account-created | FIRE_AND_FORGET | After a source account is created. |
     | [Source Account Deleted](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/source-account-deleted/) | idn:source-account-deleted | FIRE_AND_FORGET | After a source account is deleted. |
     | [Source Account Updated](https://developer.sailpoint.com/docs/extensibility/event-triggers/triggers/source-account-updated/) | idn:source-account-updated | FIRE_AND_FORGET | After a source account is changed. |
-
-    Refer to [Event Triggers](https://developer.sailpoint.com/docs/extensibility/event-triggers/) for more information about event triggers.
   name: Triggers
+- description: |-
+    API for managing UI Metadata. Use this API to manage metadata about your User Interface.
+    For example you can set the iFrameWhitelist parameter to permit another domain to encapsulate IDN within an iframe or set the usernameEmptyText to change the placeholder text for Username on your tenant's login screen.
+  name: UI Metadata
 - description: |
     Use this API to manage mappings between various SaaS vendors and Identity Security Cloud (ISC) connectors.
   name: Vendor Connector Mappings
@@ -44493,6 +44495,195 @@ paths:
       summary: Start a Test Invocation
       tags:
       - Triggers
+  /ui-metadata/tenant:
+    get:
+      description: |-
+        This API endpoint retrieves UI metadata configured for your tenant.
+        A token with ORG_ADMIN authority is required to call this API.
+      operationId: getTenantUiMetadata
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantUiMetadataItemResponse'
+          description: A tenant UI metadata object
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth: []
+      summary: Get a tenant UI metadata
+      tags:
+      - UI Metadata
+    put:
+      description: |-
+        This API endpoint updates UI metadata for your tenant. These changes may require up to 5 minutes to take effect on the UI.
+        A token with ORG_ADMIN authority is required to call this API.
+      operationId: setTenantUiMetadata
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TenantUiMetadataItemUpdateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantUiMetadataItemResponse'
+          description: A tenant UI metadata object
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth: []
+      summary: Update tenant UI metadata
+      tags:
+      - UI Metadata
   /verified-from-addresses:
     get:
       description: Retrieve a list of sender email addresses and their verification
@@ -67966,6 +68157,60 @@ components:
           example:
             workflowId: 1234
           type: object
+      type: object
+    TenantUiMetadataItemResponse:
+      example:
+        usernameEmptyText: Please provide your work email address...
+        usernameLabel: Email
+        iframeWhiteList: http://example.com http://example2.com
+      properties:
+        iframeWhiteList:
+          description: "Parameter that organizational administrators can adjust to\
+            \ permit another domain to encapsulate IDN within an iframe. If you would\
+            \ like to reset the value use \"null\". It will only allow include into\
+            \ iframe non authenticated portions of the product, such as password reset."
+          example: http://example.com http://example2.com
+          nullable: true
+          type: string
+        usernameLabel:
+          description: Descriptor for the username input field. If you would like
+            to reset the value use "null".
+          example: Email
+          nullable: true
+          type: string
+        usernameEmptyText:
+          description: Placeholder text displayed in the username input field. If
+            you would like to reset the value use "null".
+          example: Please provide your work email address...
+          nullable: true
+          type: string
+      type: object
+    TenantUiMetadataItemUpdateRequest:
+      example:
+        usernameEmptyText: Please provide your work email address...
+        usernameLabel: Email
+        iframeWhiteList: http://example.com http://example2.com
+      properties:
+        iframeWhiteList:
+          description: "Parameter that organizational administrators can adjust to\
+            \ permit another domain to encapsulate IDN within an iframe. If you would\
+            \ like to reset the value use \"null\". It will only allow include into\
+            \ iframe non authenticated portions of the product, such as password reset."
+          example: http://example.com http://example2.com
+          nullable: true
+          type: string
+        usernameLabel:
+          description: Descriptor for the username input field. If you would like
+            to reset the value use "null".
+          example: Email
+          nullable: true
+          type: string
+        usernameEmptyText:
+          description: Placeholder text displayed in the username input field. If
+            you would like to reset the value use "null".
+          example: Please provide your work email address...
+          nullable: true
+          type: string
       type: object
     EmailStatusDto:
       example:
