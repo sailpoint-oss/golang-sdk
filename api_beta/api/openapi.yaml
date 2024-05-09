@@ -606,6 +606,17 @@ tags:
     Refer to [Managing Passwords](https://documentation.sailpoint.com/saas/user-help/accounts/passwords.html) for more information about password management.
   name: Password Management
 - description: |
+    Use these APIs to implement password policies functionality.
+    These APIs allow you to define the policy parameters for choosing passwords.
+
+    IdentityNow comes with a default policy that you can modify to define the password requirements your users must meet to log in to IdentityNow, such as requiring a minimum password length, including special characters, and disallowing certain patterns.
+    If you have licensed Password Management, you can create additional password policies beyond the default one to manage passwords for supported sources in your org.
+
+    In the Identity Security Cloud Admin panel, administrators can use the Password Mgmt dropdown menu to select Sync Groups.
+
+    Refer to [Managing Password Policies](https://documentation.sailpoint.com/saas/help/pwd/pwd_policies/pwd_policies.html) for more information about password policies.
+  name: Password Policies
+- description: |
     Use this API to implement password sync group functionality.
     With this functionality in place, administrators can group sources into password sync groups so that all their applications share the same password.
     This allows users to update the password for all the applications in a sync group if they want, rather than updating each password individually.
@@ -26490,6 +26501,710 @@ paths:
       summary: Update Password Sync Group by ID
       tags:
       - Password Sync Groups
+  /password-policies/{id}:
+    delete:
+      description: This API deletes the specified password policy. A token with ORG_ADMIN
+        authority is required to call this API.
+      operationId: deletePasswordPolicy
+      parameters:
+      - description: The ID of password policy to delete.
+        example: ff808081838d9e9d01838da6a03e0002
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:password-policy:write
+      summary: Delete Password Policy by ID
+      tags:
+      - Password Policies
+    get:
+      description: This API returns the password policy for the specified ID. A token
+        with ORG_ADMIN authority is required to call this API.
+      operationId: getPasswordPolicyById
+      parameters:
+      - description: The ID of password policy to retrieve.
+        example: ff808081838d9e9d01838da6a03e0005
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                description: Default Password Policy
+                id: 2c91808e7d976f3b017d9f5ceae440c8
+                name: Example PP
+                dateCreated: 1639056206564
+                lastUpdated: 1662385430753
+                firstExpirationReminder: 90
+                accountIdMinWordLength: 3
+                accountNameMinWordLength: 3
+                maxLength: 0
+                maxRepeatedChars: 4
+                minAlpha: 1
+                minCharacterTypes: -1
+                minLength: 8
+                minLower: 0
+                minNumeric: 1
+                minSpecial: 0
+                minUpper: 0
+                passwordExpiration: 90
+                defaultPolicy: true
+                enablePasswdExpiration: false
+                requireStrongAuthn: false
+                requireStrongAuthOffNetwork: false
+                requireStrongAuthUntrustedGeographies: false
+                useAccountAttributes: false
+                useDictionary: false
+                useIdentityAttributes: false
+                validateAgainstAccountId: true
+                validateAgainstAccountName: true
+                sourceIds:
+                - 2c91808382ffee0b01830de154f14034
+                - 2c91808582ffee0c01830de36511405f
+              schema:
+                $ref: '#/components/schemas/PasswordPolicyV3Dto'
+          description: Reference to the password policy.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:password-policy:read
+      summary: Get Password Policy by ID
+      tags:
+      - Password Policies
+    put:
+      description: This API updates the specified password policy. A token with ORG_ADMIN
+        authority is required to call this API.
+      operationId: setPasswordPolicy
+      parameters:
+      - description: The ID of password policy to update.
+        example: ff808081838d9e9d01838da6a03e0007
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              description: Password Policy after update.
+              id: 2c91808e7d976f3b017d9f5ceae440c8
+              name: Improved Password Policy
+              dateCreated: 1639056206564
+              lastUpdated: 1662385430753
+              firstExpirationReminder: 90
+              accountIdMinWordLength: 3
+              accountNameMinWordLength: 3
+              maxLength: 0
+              maxRepeatedChars: 4
+              minAlpha: 1
+              minCharacterTypes: -1
+              minLength: 8
+              minLower: 0
+              minNumeric: 1
+              minSpecial: 0
+              minUpper: 0
+              passwordExpiration: 90
+              defaultPolicy: false
+              enablePasswdExpiration: false
+              requireStrongAuthn: false
+              requireStrongAuthOffNetwork: false
+              requireStrongAuthUntrustedGeographies: false
+              useAccountAttributes: false
+              useDictionary: false
+              useIdentityAttributes: false
+              validateAgainstAccountId: true
+              validateAgainstAccountName: true
+              sourceIds:
+              - 2c91808382ffee0b01830de154f14034
+              - 2c91808582ffee0c01830de36511405f
+            schema:
+              $ref: '#/components/schemas/PasswordPolicyV3Dto'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                description: Password Policy after update.
+                id: 2c91808e7d976f3b017d9f5ceae440c8
+                name: Improved Password Policy
+                dateCreated: 1639056206564
+                lastUpdated: 1662385430753
+                firstExpirationReminder: 90
+                accountIdMinWordLength: 3
+                accountNameMinWordLength: 3
+                maxLength: 0
+                maxRepeatedChars: 4
+                minAlpha: 1
+                minCharacterTypes: -1
+                minLength: 8
+                minLower: 0
+                minNumeric: 1
+                minSpecial: 0
+                minUpper: 0
+                passwordExpiration: 90
+                defaultPolicy: false
+                enablePasswdExpiration: false
+                requireStrongAuthn: false
+                requireStrongAuthOffNetwork: false
+                requireStrongAuthUntrustedGeographies: false
+                useAccountAttributes: false
+                useDictionary: false
+                useIdentityAttributes: false
+                validateAgainstAccountId: true
+                validateAgainstAccountName: true
+                sourceIds:
+                - 2c91808382ffee0b01830de154f14034
+                - 2c91808582ffee0c01830de36511405f
+              schema:
+                $ref: '#/components/schemas/PasswordPolicyV3Dto'
+          description: Reference to the password policy.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:password-policy:write
+      summary: Update Password Policy by ID
+      tags:
+      - Password Policies
+  /password-policies:
+    get:
+      description: |-
+        This gets list of all Password Policies.
+        Requires role of ORG_ADMIN
+      operationId: listPasswordPolicies
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - description: Example Password Policy
+                id: 2c91808e7d976f3b017d9f5ceae440c8
+                name: Example PP
+                dateCreated: 1639056206564
+                lastUpdated: 1662385430753
+                firstExpirationReminder: 90
+                accountIdMinWordLength: 3
+                accountNameMinWordLength: 3
+                maxLength: 0
+                maxRepeatedChars: 4
+                minAlpha: 1
+                minCharacterTypes: -1
+                minLength: 8
+                minLower: 0
+                minNumeric: 1
+                minSpecial: 0
+                minUpper: 0
+                passwordExpiration: 90
+                defaultPolicy: false
+                enablePasswdExpiration: false
+                requireStrongAuthn: false
+                requireStrongAuthOffNetwork: false
+                requireStrongAuthUntrustedGeographies: false
+                useAccountAttributes: false
+                useDictionary: false
+                useIdentityAttributes: false
+                validateAgainstAccountId: true
+                validateAgainstAccountName: true
+                sourceIds:
+                - 2c91808382ffee0b01830de154f14034
+                - 2c91808582ffee0c01830de36511405f
+              - description: null
+                id: 2c91808780b8b8430180ff7a093f3bf2
+                name: Password Policy 1 test
+                dateCreated: 1653553629503
+                lastUpdated: null
+                firstExpirationReminder: null
+                accountIdMinWordLength: -1
+                accountNameMinWordLength: -1
+                maxLength: 0
+                maxRepeatedChars: -1
+                minAlpha: 1
+                minCharacterTypes: -1
+                minLength: 8
+                minLower: 0
+                minNumeric: 1
+                minSpecial: 0
+                minUpper: 0
+                passwordExpiration: 90
+                defaultPolicy: false
+                enablePasswdExpiration: false
+                requireStrongAuthn: false
+                requireStrongAuthOffNetwork: false
+                requireStrongAuthUntrustedGeographies: false
+                useAccountAttributes: false
+                useDictionary: false
+                useIdentityAttributes: true
+                validateAgainstAccountId: false
+                validateAgainstAccountName: false
+                sourceIds: []
+              schema:
+                items:
+                  $ref: '#/components/schemas/PasswordPolicyV3Dto'
+                type: array
+          description: List of all Password Policies.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:password-policy:read
+      summary: List Password Policies
+      tags:
+      - Password Policies
+    post:
+      description: This API creates the specified password policy. A token with ORG_ADMIN
+        authority is required to call this API.
+      operationId: createPasswordPolicy
+      requestBody:
+        content:
+          application/json:
+            example:
+              description: New Password Policy with high requirements to password
+                complexity.
+              id: null
+              name: High security Password Policy
+              dateCreated: 1639056206564
+              lastUpdated: 1662385430753
+              firstExpirationReminder: 90
+              accountIdMinWordLength: 3
+              accountNameMinWordLength: 3
+              maxLength: 0
+              maxRepeatedChars: 4
+              minAlpha: 1
+              minCharacterTypes: -1
+              minLength: 8
+              minLower: 0
+              minNumeric: 1
+              minSpecial: 0
+              minUpper: 0
+              passwordExpiration: 90
+              defaultPolicy: false
+              enablePasswdExpiration: false
+              requireStrongAuthn: false
+              requireStrongAuthOffNetwork: false
+              requireStrongAuthUntrustedGeographies: false
+              useAccountAttributes: false
+              useDictionary: false
+              useIdentityAttributes: false
+              validateAgainstAccountId: true
+              validateAgainstAccountName: true
+              sourceIds:
+              - 2c91808382ffee0b01830de154f14034
+              - 2c91808582ffee0c01830de36511405f
+            schema:
+              $ref: '#/components/schemas/PasswordPolicyV3Dto'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PasswordPolicyV3Dto'
+          description: Reference to the password policy.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:password-policy:write
+      summary: Create Password Policy
+      tags:
+      - Password Policies
   /password-org-config:
     get:
       description: "This API returns the password org config . Requires ORG_ADMIN,\
@@ -62807,6 +63522,202 @@ components:
           format: date-time
           nullable: true
           type: string
+      type: object
+    PasswordPolicyV3Dto:
+      example:
+        validateAgainstAccountName: true
+        minLength: 8
+        description: Information about the Password Policy
+        dateCrated: 2000-01-23T04:56:07.000+00:00
+        requireStrongAuthUntrustedGeographies: true
+        enablePasswdExpiration: true
+        minNumeric: 8
+        lastUpdated: 2000-01-23T04:56:07.000+00:00
+        validateAgainstAccountId: false
+        accountNameMinWordLength: 6
+        minUpper: 8
+        firstExpirationReminder: 45
+        id: 2c91808e7d976f3b017d9f5ceae440c8
+        requireStrongAuthn: true
+        useDictionary: false
+        minSpecial: 8
+        sourceIds:
+        - 2c91808382ffee0b01830de154f14034
+        - 2f98808382ffee0b01830de154f12134
+        passwordExpiration: 8
+        maxRepeatedChars: 3
+        minCharacterTypes: 5
+        minAlpha: 5
+        useAccountAttributes: false
+        accountIdMinWordLength: 4
+        minLower: 8
+        useIdentityAttributes: false
+        defaultPolicy: true
+        requireStrongAuthOffNetwork: true
+        name: PasswordPolicy Example
+        maxLength: 25
+      properties:
+        id:
+          description: The password policy Id.
+          example: 2c91808e7d976f3b017d9f5ceae440c8
+          type: string
+        description:
+          description: Description for current password policy.
+          example: Information about the Password Policy
+          type: string
+        name:
+          description: The name of the password policy.
+          example: PasswordPolicy Example
+          type: string
+        dateCrated:
+          description: Date the Password Policy was created.
+          format: date-time
+          type: string
+        lastUpdated:
+          description: Date the Password Policy was updated.
+          format: date-time
+          type: string
+        firstExpirationReminder:
+          description: The number of days before expiration remaninder.
+          example: 45
+          format: int64
+          type: integer
+        accountIdMinWordLength:
+          description: The minimun length of account Id. By default is equals to -1.
+          example: 4
+          format: int64
+          type: integer
+        accountNameMinWordLength:
+          description: The minimun length of account name. By default is equals to
+            -1.
+          example: 6
+          format: int64
+          type: integer
+        minAlpha:
+          description: Maximum alpha. By default is equals to 0.
+          example: 5
+          format: int64
+          type: integer
+        minCharacterTypes:
+          description: MinCharacterTypes. By default is equals to -1.
+          example: 5
+          format: int64
+          type: integer
+        maxLength:
+          description: Maximum length of the password.
+          example: 25
+          format: int64
+          type: integer
+        minLength:
+          description: Minimum length of the password. By default is equals to 0.
+          example: 8
+          format: int64
+          type: integer
+        maxRepeatedChars:
+          description: Maximum repetition of the same character in the password. By
+            default is equals to -1.
+          example: 3
+          format: int64
+          type: integer
+        minLower:
+          description: Minimum amount of lower case character in the password. By
+            default is equals to 0.
+          example: 8
+          format: int64
+          type: integer
+        minNumeric:
+          description: Minimum amount of numeric characters in the password. By default
+            is equals to 0.
+          example: 8
+          format: int64
+          type: integer
+        minSpecial:
+          description: Minimum amount of special symbols in the password. By default
+            is equals to 0.
+          example: 8
+          format: int64
+          type: integer
+        minUpper:
+          description: Minimum amount of upper case symbols in the password. By default
+            is equals to 0.
+          example: 8
+          format: int64
+          type: integer
+        passwordExpiration:
+          description: Number of days before current password expires. By default
+            is equals to 90.
+          example: 8
+          format: int64
+          type: integer
+        defaultPolicy:
+          default: false
+          description: Defines whether this policy is default or not. Default policy
+            is created automatically when an org is setup. This field is false by
+            default.
+          example: true
+          type: boolean
+        enablePasswdExpiration:
+          default: false
+          description: Defines whether this policy is enabled to expire or not. This
+            field is false by default.
+          example: true
+          type: boolean
+        requireStrongAuthn:
+          default: false
+          description: Defines whether this policy require strong Auth or not. This
+            field is false by default.
+          example: true
+          type: boolean
+        requireStrongAuthOffNetwork:
+          default: false
+          description: Defines whether this policy require strong Auth of network
+            or not. This field is false by default.
+          example: true
+          type: boolean
+        requireStrongAuthUntrustedGeographies:
+          default: false
+          description: Defines whether this policy require strong Auth for untrusted
+            geographies. This field is false by default.
+          example: true
+          type: boolean
+        useAccountAttributes:
+          default: false
+          description: Defines whether this policy uses account attributes or not.
+            This field is false by default.
+          example: false
+          type: boolean
+        useDictionary:
+          default: false
+          description: Defines whether this policy uses dictionary or not. This field
+            is false by default.
+          example: false
+          type: boolean
+        useIdentityAttributes:
+          default: false
+          description: Defines whether this policy uses identity attributes or not.
+            This field is false by default.
+          example: false
+          type: boolean
+        validateAgainstAccountId:
+          default: false
+          description: Defines whether this policy validate against account id or
+            not. This field is false by default.
+          example: false
+          type: boolean
+        validateAgainstAccountName:
+          default: false
+          description: Defines whether this policy validate against account name or
+            not. This field is false by default.
+          example: true
+          type: boolean
+        sourceIds:
+          description: List of sources IDs managed by this password policy.
+          example:
+          - 2c91808382ffee0b01830de154f14034
+          - 2f98808382ffee0b01830de154f12134
+          items:
+            type: string
+          type: array
       type: object
     PasswordOrgConfig:
       example:

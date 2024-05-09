@@ -142,6 +142,8 @@ type APIClient struct {
 
 	PasswordManagementAPI *PasswordManagementAPIService
 
+	PasswordPoliciesAPI *PasswordPoliciesAPIService
+
 	PasswordSyncGroupsAPI *PasswordSyncGroupsAPIService
 
 	PersonalAccessTokensAPI *PersonalAccessTokensAPIService
@@ -254,6 +256,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.PasswordConfigurationAPI = (*PasswordConfigurationAPIService)(&c.common)
 	c.PasswordDictionaryAPI = (*PasswordDictionaryAPIService)(&c.common)
 	c.PasswordManagementAPI = (*PasswordManagementAPIService)(&c.common)
+	c.PasswordPoliciesAPI = (*PasswordPoliciesAPIService)(&c.common)
 	c.PasswordSyncGroupsAPI = (*PasswordSyncGroupsAPIService)(&c.common)
 	c.PersonalAccessTokensAPI = (*PersonalAccessTokensAPIService)(&c.common)
 	c.PublicIdentitiesConfigAPI = (*PublicIdentitiesConfigAPIService)(&c.common)

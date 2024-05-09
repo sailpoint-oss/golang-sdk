@@ -255,6 +255,11 @@ Class | Method | HTTP request | Description
 *PasswordManagementAPI* | [**GetPasswordChangeStatus**](docs/PasswordManagementAPI.md#getpasswordchangestatus) | **Get** /password-change-status/{id} | Get Password Change Request Status
 *PasswordManagementAPI* | [**QueryPasswordInfo**](docs/PasswordManagementAPI.md#querypasswordinfo) | **Post** /query-password-info | Query Password Info
 *PasswordManagementAPI* | [**SetPassword**](docs/PasswordManagementAPI.md#setpassword) | **Post** /set-password | Set Identity&#39;s Password
+*PasswordPoliciesAPI* | [**CreatePasswordPolicy**](docs/PasswordPoliciesAPI.md#createpasswordpolicy) | **Post** /password-policies | Create Password Policy
+*PasswordPoliciesAPI* | [**DeletePasswordPolicy**](docs/PasswordPoliciesAPI.md#deletepasswordpolicy) | **Delete** /password-policies/{id} | Delete Password Policy by ID
+*PasswordPoliciesAPI* | [**GetPasswordPolicyById**](docs/PasswordPoliciesAPI.md#getpasswordpolicybyid) | **Get** /password-policies/{id} | Get Password Policy by ID
+*PasswordPoliciesAPI* | [**ListPasswordPolicies**](docs/PasswordPoliciesAPI.md#listpasswordpolicies) | **Get** /password-policies | List Password Policies
+*PasswordPoliciesAPI* | [**SetPasswordPolicy**](docs/PasswordPoliciesAPI.md#setpasswordpolicy) | **Put** /password-policies/{id} | Update Password Policy by ID
 *PasswordSyncGroupsAPI* | [**CreatePasswordSyncGroup**](docs/PasswordSyncGroupsAPI.md#createpasswordsyncgroup) | **Post** /password-sync-groups | Create Password Sync Group
 *PasswordSyncGroupsAPI* | [**DeletePasswordSyncGroup**](docs/PasswordSyncGroupsAPI.md#deletepasswordsyncgroup) | **Delete** /password-sync-groups/{id} | Delete Password Sync Group by ID
 *PasswordSyncGroupsAPI* | [**GetPasswordSyncGroup**](docs/PasswordSyncGroupsAPI.md#getpasswordsyncgroup) | **Get** /password-sync-groups/{id} | Get Password Sync Group by ID
@@ -698,6 +703,7 @@ Class | Method | HTTP request | Description
  - [PasswordInfoAccount](docs/PasswordInfoAccount.md)
  - [PasswordInfoQueryDTO](docs/PasswordInfoQueryDTO.md)
  - [PasswordOrgConfig](docs/PasswordOrgConfig.md)
+ - [PasswordPolicyV3Dto](docs/PasswordPolicyV3Dto.md)
  - [PasswordStatus](docs/PasswordStatus.md)
  - [PasswordSyncGroup](docs/PasswordSyncGroup.md)
  - [PatOwner](docs/PatOwner.md)
