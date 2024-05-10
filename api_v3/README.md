@@ -199,6 +199,20 @@ Class | Method | HTTP request | Description
 *LifecycleStatesAPI* | [**ListLifecycleStates**](docs/LifecycleStatesAPI.md#listlifecyclestates) | **Get** /identity-profiles/{identity-profile-id}/lifecycle-states | Lists LifecycleStates
 *LifecycleStatesAPI* | [**SetLifecycleState**](docs/LifecycleStatesAPI.md#setlifecyclestate) | **Post** /identities/{identity-id}/set-lifecycle-state | Set Lifecycle State
 *LifecycleStatesAPI* | [**UpdateLifecycleStates**](docs/LifecycleStatesAPI.md#updatelifecyclestates) | **Patch** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Update Lifecycle State
+*MFAConfigurationAPI* | [**DeleteMFAConfig**](docs/MFAConfigurationAPI.md#deletemfaconfig) | **Delete** /mfa/{method}/delete | Delete MFA method configuration
+*MFAConfigurationAPI* | [**GetMFADuoConfig**](docs/MFAConfigurationAPI.md#getmfaduoconfig) | **Get** /mfa/duo-web/config | Configuration of Duo MFA method
+*MFAConfigurationAPI* | [**GetMFAKbaConfig**](docs/MFAConfigurationAPI.md#getmfakbaconfig) | **Get** /mfa/kba/config | Configuration of KBA MFA method
+*MFAConfigurationAPI* | [**GetMFAOktaConfig**](docs/MFAConfigurationAPI.md#getmfaoktaconfig) | **Get** /mfa/okta-verify/config | Configuration of Okta MFA method
+*MFAConfigurationAPI* | [**SetMFADuoConfig**](docs/MFAConfigurationAPI.md#setmfaduoconfig) | **Put** /mfa/duo-web/config | Set Duo MFA configuration
+*MFAConfigurationAPI* | [**SetMFAKBAConfig**](docs/MFAConfigurationAPI.md#setmfakbaconfig) | **Post** /mfa/kba/config/answers | Set MFA KBA configuration
+*MFAConfigurationAPI* | [**SetMFAOktaConfig**](docs/MFAConfigurationAPI.md#setmfaoktaconfig) | **Put** /mfa/okta-verify/config | Set Okta MFA configuration
+*MFAConfigurationAPI* | [**TestMFAConfig**](docs/MFAConfigurationAPI.md#testmfaconfig) | **Get** /mfa/{method}/test | MFA method&#39;s test configuration
+*MFAControllerAPI* | [**CreateSendToken**](docs/MFAControllerAPI.md#createsendtoken) | **Post** /mfa/token/send | Create and send user token
+*MFAControllerAPI* | [**PingVerificationStatus**](docs/MFAControllerAPI.md#pingverificationstatus) | **Post** /mfa/{method}/poll | Polling MFA method by VerificationPollRequest
+*MFAControllerAPI* | [**SendDuoVerifyRequest**](docs/MFAControllerAPI.md#sendduoverifyrequest) | **Post** /mfa/duo-web/verify | Verifying authentication via Duo method
+*MFAControllerAPI* | [**SendKbaAnswers**](docs/MFAControllerAPI.md#sendkbaanswers) | **Post** /mfa/kba/authenticate | Authenticate KBA provided MFA method
+*MFAControllerAPI* | [**SendOktaVerifyRequest**](docs/MFAControllerAPI.md#sendoktaverifyrequest) | **Post** /mfa/okta-verify/verify | Verifying authentication via Okta method
+*MFAControllerAPI* | [**SendTokenAuthRequest**](docs/MFAControllerAPI.md#sendtokenauthrequest) | **Post** /mfa/token/authenticate | Authenticate Token provided MFA method
 *ManagedClientsAPI* | [**CreateManagedClient**](docs/ManagedClientsAPI.md#createmanagedclient) | **Post** /managed-clients | Create a new Managed Client
 *ManagedClientsAPI* | [**DeleteManagedClient**](docs/ManagedClientsAPI.md#deletemanagedclient) | **Delete** /managed-clients/{id} | Delete a Managed Client
 *ManagedClientsAPI* | [**GetManagedClient**](docs/ManagedClientsAPI.md#getmanagedclient) | **Get** /managed-clients/{id} | Get a Managed Client
@@ -560,6 +574,7 @@ Class | Method | HTTP request | Description
  - [DisplayReference](docs/DisplayReference.md)
  - [DocumentType](docs/DocumentType.md)
  - [DtoType](docs/DtoType.md)
+ - [DuoVerificationRequest](docs/DuoVerificationRequest.md)
  - [EmailNotificationOption](docs/EmailNotificationOption.md)
  - [Entitlement](docs/Entitlement.md)
  - [EntitlementDocument](docs/EntitlementDocument.md)
@@ -628,6 +643,11 @@ Class | Method | HTTP request | Description
  - [JsonPatch](docs/JsonPatch.md)
  - [JsonPatchOperation](docs/JsonPatchOperation.md)
  - [JsonPatchOperationValue](docs/JsonPatchOperationValue.md)
+ - [KbaAnswerRequestItem](docs/KbaAnswerRequestItem.md)
+ - [KbaAnswerResponseItem](docs/KbaAnswerResponseItem.md)
+ - [KbaAuthResponse](docs/KbaAuthResponse.md)
+ - [KbaAuthResponseItem](docs/KbaAuthResponseItem.md)
+ - [KbaQuestion](docs/KbaQuestion.md)
  - [LifecycleState](docs/LifecycleState.md)
  - [LifecyclestateDeleted](docs/LifecyclestateDeleted.md)
  - [ListAccessProfiles401Response](docs/ListAccessProfiles401Response.md)
@@ -654,6 +674,9 @@ Class | Method | HTTP request | Description
  - [ManualWorkItemState](docs/ManualWorkItemState.md)
  - [MetricAggregation](docs/MetricAggregation.md)
  - [MetricType](docs/MetricType.md)
+ - [MfaConfigTestResponse](docs/MfaConfigTestResponse.md)
+ - [MfaDuoConfig](docs/MfaDuoConfig.md)
+ - [MfaOktaConfig](docs/MfaOktaConfig.md)
  - [MultiPolicyRequest](docs/MultiPolicyRequest.md)
  - [NestedAggregation](docs/NestedAggregation.md)
  - [NetworkConfiguration](docs/NetworkConfiguration.md)
@@ -690,6 +713,7 @@ Class | Method | HTTP request | Description
  - [ObjectMappingBulkPatchResponse](docs/ObjectMappingBulkPatchResponse.md)
  - [ObjectMappingRequest](docs/ObjectMappingRequest.md)
  - [ObjectMappingResponse](docs/ObjectMappingResponse.md)
+ - [OktaVerificationRequest](docs/OktaVerificationRequest.md)
  - [Operation](docs/Operation.md)
  - [OriginalRequest](docs/OriginalRequest.md)
  - [OrphanUncorrelatedReportArguments](docs/OrphanUncorrelatedReportArguments.md)
@@ -818,6 +842,8 @@ Class | Method | HTTP request | Description
  - [SegmentVisibilityCriteria](docs/SegmentVisibilityCriteria.md)
  - [Selector](docs/Selector.md)
  - [SelectorType](docs/SelectorType.md)
+ - [SendTokenRequest](docs/SendTokenRequest.md)
+ - [SendTokenResponse](docs/SendTokenResponse.md)
  - [ServiceDeskIntegrationDto](docs/ServiceDeskIntegrationDto.md)
  - [ServiceDeskIntegrationTemplateDto](docs/ServiceDeskIntegrationTemplateDto.md)
  - [ServiceDeskIntegrationTemplateType](docs/ServiceDeskIntegrationTemplateType.md)
@@ -868,6 +894,8 @@ Class | Method | HTTP request | Description
  - [TestWorkflow200Response](docs/TestWorkflow200Response.md)
  - [TestWorkflowRequest](docs/TestWorkflowRequest.md)
  - [TextQuery](docs/TextQuery.md)
+ - [TokenAuthRequest](docs/TokenAuthRequest.md)
+ - [TokenAuthResponse](docs/TokenAuthResponse.md)
  - [Transform](docs/Transform.md)
  - [TransformDefinition](docs/TransformDefinition.md)
  - [TransformDefinitionAttributesValue](docs/TransformDefinitionAttributesValue.md)
@@ -881,6 +909,8 @@ Class | Method | HTTP request | Description
  - [V3ConnectorDto](docs/V3ConnectorDto.md)
  - [V3CreateConnectorDto](docs/V3CreateConnectorDto.md)
  - [Value](docs/Value.md)
+ - [VerificationPollRequest](docs/VerificationPollRequest.md)
+ - [VerificationResponse](docs/VerificationResponse.md)
  - [ViolationContext](docs/ViolationContext.md)
  - [ViolationContextPolicy](docs/ViolationContextPolicy.md)
  - [ViolationOwnerAssignmentConfig](docs/ViolationOwnerAssignmentConfig.md)

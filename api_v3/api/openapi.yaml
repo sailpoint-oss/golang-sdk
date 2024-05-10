@@ -473,6 +473,12 @@ tags:
   name: Managed Clients
 - description: "Read and create pperations for client Clusters, including Log Configuration"
   name: Managed Clusters
+- description: Configure and test multifactor authentication (MFA) methods
+  name: MFA Configuration
+- description: This API used for multifactor authentication functionality belong to
+    gov-multi-auth service. This controller allow you to verify authentication by
+    specified method
+  name: MFA Controller
 - description: "Use this API to implement non-employee lifecycle management functionality.\
     \ \nWith this functionality in place, administrators can create non-employee records\
     \ and configure them for use in their organizations. \nThis allows organizations\
@@ -16185,6 +16191,1270 @@ paths:
       summary: Update a Managed Cluster
       tags:
       - Managed Clusters
+  /mfa/okta-verify/config:
+    get:
+      description: This API returns the configuration of an Okta MFA method. A token
+        with ORG_ADMIN authority is required to call this API.
+      operationId: getMFAOktaConfig
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                mfaMethod: okta-verify
+                enabled: true
+                host: www.example.com
+                accessKey: d******Y
+                identityAttribute: email
+              schema:
+                $ref: '#/components/schemas/MfaOktaConfig'
+          description: The configuration of an Okta MFA method.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:mfa-configuration:read
+        - idn:mfa-configuration:manage
+      summary: Configuration of Okta MFA method
+      tags:
+      - MFA Configuration
+    put:
+      description: This API sets the configuration of an Okta MFA method. A token
+        with ORG_ADMIN authority is required to call this API.
+      operationId: setMFAOktaConfig
+      requestBody:
+        content:
+          application/json:
+            example:
+              mfaMethod: okta-verify
+              enabled: true
+              host: www.example.com
+              accessKey: dk778Y3QlA5UqocYpdU3rEkzrK2D497y
+              identityAttribute: email
+            schema:
+              $ref: '#/components/schemas/MfaOktaConfig'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                mfaMethod: okta-verify
+                enabled: true
+                host: www.example.com
+                accessKey: d******Y
+                identityAttribute: email
+              schema:
+                $ref: '#/components/schemas/MfaOktaConfig'
+          description: MFA configuration of an Okta MFA method.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:mfa-configuration:manage
+      summary: Set Okta MFA configuration
+      tags:
+      - MFA Configuration
+  /mfa/duo-web/config:
+    get:
+      description: This API returns the configuration of an Duo MFA method. A token
+        with ORG_ADMIN authority is required to call this API.
+      operationId: getMFADuoConfig
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                mfaMethod: duo-web
+                enabled: true
+                host: www.example.com
+                accessKey: d******Y
+                identityAttribute: email
+                configProperties:
+                  skey: 6******B
+                  ikey: Q123WE45R6TY7890ZXCV
+              schema:
+                $ref: '#/components/schemas/MfaDuoConfig'
+          description: The configuration of an Duo MFA method.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:mfa-configuration:read
+        - idn:mfa-configuration:manage
+      summary: Configuration of Duo MFA method
+      tags:
+      - MFA Configuration
+    put:
+      description: This API sets the configuration of an Duo MFA method. A token with
+        ORG_ADMIN authority is required to call this API.
+      operationId: setMFADuoConfig
+      requestBody:
+        content:
+          application/json:
+            example:
+              mfaMethod: duo-web
+              enabled: true
+              host: www.example.com
+              accessKey: qw123Y3QlA5UqocYpdU3rEkzrK2D497y
+              identityAttribute: email
+              configProperties:
+                skey: 12q3WERlcUHWJmiMqyCXI3uOF7EaDJTbdeOp6E2B
+                ikey: Q123WE45R6TY7890ZXCV
+            schema:
+              $ref: '#/components/schemas/MfaDuoConfig'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                mfaMethod: duo-web
+                enabled: true
+                host: www.example.com
+                accessKey: q******y
+                identityAttribute: email
+                configProperties:
+                  skey: 1******B
+                  ikey: Q123WE45R6TY7890ZXCV
+              schema:
+                $ref: '#/components/schemas/MfaDuoConfig'
+          description: MFA configuration of an Duo MFA method.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:mfa-configuration:manage
+      summary: Set Duo MFA configuration
+      tags:
+      - MFA Configuration
+  /mfa/kba/config:
+    get:
+      description: This API returns the KBA configuration for MFA. A token with USER
+        or ORG_ADMIN authority is required to call this API.
+      operationId: getMFAKbaConfig
+      parameters:
+      - description: "Indicator whether the question text should be returned in all\
+          \ configured languages\n   * If true, the question text is returned in all\
+          \ languages that it is configured in.\n   * If false, the question text\
+          \ is returned in the user locale if available, else for the default locale.\
+          \ \n   * If not passed, it behaves the same way as passing this parameter\
+          \ as false"
+        example: allLanguages=true
+        in: query
+        name: allLanguages
+        required: false
+        schema:
+          type: boolean
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - id: 143cfd3b-c23f-426b-ae5f-d3db06fa5919
+                text: MFA new question -1 ?
+                hasAnswer: false
+                numAnswers: 0
+              - id: "173421"
+                text: What is your alphanumeric PIN?
+                hasAnswer: false
+                numAnswers: 3
+              schema:
+                items:
+                  $ref: '#/components/schemas/KbaQuestion'
+                type: array
+          description: The configuration for KBA MFA method.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:mfa-kba:read
+      summary: Configuration of KBA MFA method
+      tags:
+      - MFA Configuration
+  /mfa/kba/config/answers:
+    post:
+      description: |-
+        This API sets answers to challenge questions.  Any configured questions omitted from the request are removed from user KBA configuration.
+        A token with USER authority is required to call this API.
+      operationId: setMFAKBAConfig
+      requestBody:
+        content:
+          application/json:
+            example:
+            - id: "173423"
+              answer: 822cd15d6c15aa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a0859a2fea34
+            - id: c54fee53-2d63-4fc5-9259-3e93b9994135
+              answer: 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08
+            schema:
+              items:
+                $ref: '#/components/schemas/KbaAnswerRequestItem'
+              type: array
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - id: 143cfd3b-c23f-426b-ae5f-d3db06fa5919
+                question: "[{\"text\":\"Nouvelle question MFA -1 ?\",\"locale\":\"\
+                  fr\"},{\"text\":\"MFA new question -1 ?\",\"locale\":\"\"}]"
+                hasAnswer: false
+              - id: "173421"
+                question: "[{\"text\":\"What is your alphanumeric PIN?\",\"locale\"\
+                  :\"\"}]"
+                hasAnswer: true
+              - id: c54fee53-2d63-4fc5-9259-3e93b9994135
+                question: "[{\"text\":\"Nouvelle question MFA - 2 ?\",\"locale\":\"\
+                  fr\"},{\"text\":\"MFA new question - 2 ?\",\"locale\":\"\"}]"
+                hasAnswer: true
+              schema:
+                items:
+                  $ref: '#/components/schemas/KbaAnswerResponseItem'
+                type: array
+          description: The new KBA configuration for the user.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:mfa-kba:authenticate
+      summary: Set MFA KBA configuration
+      tags:
+      - MFA Configuration
+  /mfa/{method}/test:
+    get:
+      description: |-
+        This API validates that the configuration is valid and will properly authenticate with the MFA provider identified by the method path parameter.
+        A token with ORG_ADMIN authority is required to call this API.
+      operationId: testMFAConfig
+      parameters:
+      - description: The name of the MFA method. The currently supported method names
+          are 'okta-verify' and 'duo-web'.
+        in: path
+        name: method
+        required: true
+        schema:
+          example: okta-verify
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                state: SUCCESS
+                error: null
+              schema:
+                $ref: '#/components/schemas/MfaConfigTestResponse'
+          description: The result of configuration test for the MFA provider.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:mfa-configuration:read
+        - idn:mfa-configuration:manage
+      summary: MFA method's test configuration
+      tags:
+      - MFA Configuration
+  /mfa/{method}/delete:
+    delete:
+      description: |-
+        This API removes the configuration for the specified MFA method.
+        A token with ORG_ADMIN authority is required to call this API.
+      operationId: deleteMFAConfig
+      parameters:
+      - description: The name of the MFA method. The currently supported method names
+          are 'okta-verify' and 'duo-web'.
+        in: path
+        name: method
+        required: true
+        schema:
+          example: okta-verify
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                mfaMethod: okta-verify
+                enabled: true
+                host: www.example.com
+                accessKey: d******Y
+                identityAttribute: email
+              schema:
+                $ref: '#/components/schemas/MfaOktaConfig'
+          description: MFA configuration of an MFA method.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:mfa-configuration:manage
+      summary: Delete MFA method configuration
+      tags:
+      - MFA Configuration
+  /mfa/okta-verify/verify:
+    post:
+      description: "This API Authenticates the user via Okta-Verify MFA method. Request\
+        \ requires a header called 'slpt-forwarding', and it must contain a remote\
+        \ IP Address of caller."
+      operationId: sendOktaVerifyRequest
+      requestBody:
+        content:
+          application/json:
+            example:
+              userId: example@mail.com
+            schema:
+              $ref: '#/components/schemas/OktaVerificationRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                requestId: 089899f13a8f4da7824996191587bab9
+                status: SUCCESS
+                error: ""
+              schema:
+                $ref: '#/components/schemas/VerificationResponse'
+          description: The status of verification request.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:mfa:verify
+      summary: Verifying authentication via Okta method
+      tags:
+      - MFA Controller
+  /mfa/duo-web/verify:
+    post:
+      description: This API Authenticates the user via Duo-Web MFA method.
+      operationId: sendDuoVerifyRequest
+      requestBody:
+        content:
+          application/json:
+            example:
+              userId: 2c9180947f0ef465017f215cbcfd004b
+              signedResponse: AUTH|d2lsbC5hbGJpbnxESTZNMFpHSThKQVRWTVpZN0M5VXwxNzAxMjUzMDg5|f1f5f8ced5b340f3d303b05d0efa0e43b6a8f970:APP|d2lsbC5hbGJpbnxESTZNMFpHSThKQVRWTVpZN0M5VXwxNzAxMjU2NjE5|cb44cf44353f5127edcae31b1da0355f87357db2
+            schema:
+              $ref: '#/components/schemas/DuoVerificationRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                requestId: 089899f13a8f4da7824996191587bab9
+                status: SUCCESS
+                error: ""
+              schema:
+                $ref: '#/components/schemas/VerificationResponse'
+          description: The status of verification request.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:mfa:verify
+      summary: Verifying authentication via Duo method
+      tags:
+      - MFA Controller
+  /mfa/{method}/poll:
+    post:
+      description: This API poll the VerificationPollRequest for the specified MFA
+        method. A token with ORG_ADMIN authority is required to call this API.
+      operationId: pingVerificationStatus
+      parameters:
+      - description: "The name of the MFA method. The currently supported method names\
+          \ are 'okta-verify', 'duo-web', 'kba','token', 'rsa'"
+        in: path
+        name: method
+        required: true
+        schema:
+          example: okta-verify
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              requestId: 089899f13a8f4da7824996191587bab9
+            schema:
+              $ref: '#/components/schemas/VerificationPollRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                requestId: 089899f13a8f4da7824996191587bab9
+                status: PENDING
+                error: ""
+              schema:
+                $ref: '#/components/schemas/VerificationResponse'
+          description: MFA VerificationPollRequest status an MFA method.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:mfa:poll
+      summary: Polling MFA method by VerificationPollRequest
+      tags:
+      - MFA Controller
+  /mfa/kba/authenticate:
+    post:
+      description: This API Authenticate user in KBA MFA method.
+      operationId: sendKbaAnswers
+      requestBody:
+        content:
+          application/json:
+            example:
+            - id: "173423"
+              answer: 822cd15d6c15aa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a0859a2fea34
+            - id: c54fee53-2d63-4fc5-9259-3e93b9994135
+              answer: 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08
+            schema:
+              items:
+                $ref: '#/components/schemas/KbaAnswerRequestItem'
+              type: array
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                kbaAuthResponseItem:
+                - questionId: 089899f13a8f4da7824996191587bab9
+                  IsVerified: false
+                - questionId: 089899f13a8f4da7824996191587bda8
+                  IsVerified: true
+                status: PENDING
+              schema:
+                $ref: '#/components/schemas/KbaAuthResponse'
+          description: KBA authenticated status.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:mfa-kba:authenticate
+      summary: Authenticate KBA provided MFA method
+      tags:
+      - MFA Controller
+  /mfa/token/authenticate:
+    post:
+      description: This API Authenticate user in Token MFA method.
+      operationId: sendTokenAuthRequest
+      requestBody:
+        content:
+          application/json:
+            example:
+              token: "12345"
+              userAlias: will.albin
+              deliveryType: EMAIL_WORK
+            schema:
+              $ref: '#/components/schemas/TokenAuthRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                status: PENDING
+              schema:
+                $ref: '#/components/schemas/TokenAuthResponse'
+          description: Token authenticated status.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:mfa:verify
+      summary: Authenticate Token provided MFA method
+      tags:
+      - MFA Controller
+  /mfa/token/send:
+    post:
+      description: This API send token request.
+      operationId: createSendToken
+      requestBody:
+        content:
+          application/json:
+            example:
+              userAlias: will.albin
+              deliveryType: EMAIL_WORK
+            schema:
+              $ref: '#/components/schemas/SendTokenRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                requestId: 089899f13a8f4da7824996191587bab9
+                status: SUCCESS
+                errorMessage: ""
+              schema:
+                $ref: '#/components/schemas/SendTokenResponse'
+          description: Token send status.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:mfa:send
+      summary: Create and send user token
+      tags:
+      - MFA Controller
   /non-employee-records:
     get:
       description: |-
@@ -46837,6 +48107,389 @@ components:
       required:
       - name
       type: object
+    MfaOktaConfig:
+      example:
+        accessKey: qw123Y3QlA5UqocYpdU3rEkzrK2D497y
+        host: example.com
+        mfaMethod: okta-verify
+        enabled: true
+        identityAttribute: email
+      properties:
+        mfaMethod:
+          description: Mfa method name
+          example: okta-verify
+          nullable: true
+          type: string
+        enabled:
+          default: false
+          description: If MFA method is enabled.
+          example: true
+          type: boolean
+        host:
+          description: The server host name or IP address of the MFA provider.
+          example: example.com
+          nullable: true
+          type: string
+        accessKey:
+          description: The secret key for authenticating requests to the MFA provider.
+          example: qw123Y3QlA5UqocYpdU3rEkzrK2D497y
+          nullable: true
+          type: string
+        identityAttribute:
+          description: Optional. The name of the attribute for mapping IdentityNow
+            identity to the MFA provider.
+          example: email
+          nullable: true
+          type: string
+      type: object
+    MfaDuoConfig:
+      example:
+        accessKey: qw123Y3QlA5UqocYpdU3rEkzrK2D497y
+        host: example.com
+        configProperties:
+          skey: qwERttyZx1CdlQye2Vwtbsjr3HKddy4BAiCXjc5x
+          ikey: Q123WE45R6TY7890ZXCV
+        mfaMethod: duo-web
+        enabled: true
+        identityAttribute: email
+      properties:
+        mfaMethod:
+          description: Mfa method name
+          example: duo-web
+          nullable: true
+          type: string
+        enabled:
+          default: false
+          description: If MFA method is enabled.
+          example: true
+          type: boolean
+        host:
+          description: The server host name or IP address of the MFA provider.
+          example: example.com
+          nullable: true
+          type: string
+        accessKey:
+          description: The secret key for authenticating requests to the MFA provider.
+          example: qw123Y3QlA5UqocYpdU3rEkzrK2D497y
+          nullable: true
+          type: string
+        identityAttribute:
+          description: Optional. The name of the attribute for mapping IdentityNow
+            identity to the MFA provider.
+          example: email
+          nullable: true
+          type: string
+        configProperties:
+          additionalProperties: true
+          description: A map with additional config properties for the given MFA method
+            - duo-web.
+          example:
+            skey: qwERttyZx1CdlQye2Vwtbsjr3HKddy4BAiCXjc5x
+            ikey: Q123WE45R6TY7890ZXCV
+          nullable: true
+          type: object
+      type: object
+    KbaQuestion:
+      description: KBA Configuration
+      example:
+        hasAnswer: true
+        numAnswers: 5
+        id: 143cfd3b-c23f-426b-ae5f-d3db06fa5919
+        text: "[{\"text\":\"Nouvelle question MFA -1 ?\",\"locale\":\"fr\"},{\"text\"\
+          :\"MFA new question -1 ?\",\"locale\":\"\"}]"
+      properties:
+        id:
+          description: KBA Question Id
+          example: 143cfd3b-c23f-426b-ae5f-d3db06fa5919
+          nullable: false
+          type: string
+        text:
+          description: KBA Question description
+          example: "[{\"text\":\"Nouvelle question MFA -1 ?\",\"locale\":\"fr\"},{\"\
+            text\":\"MFA new question -1 ?\",\"locale\":\"\"}]"
+          nullable: false
+          type: string
+        hasAnswer:
+          description: Denotes whether the KBA question has an answer configured for
+            any user in the tenant
+          example: true
+          nullable: false
+          type: boolean
+        numAnswers:
+          description: Denotes the number of KBA configurations for this question
+          example: 5
+          format: int32
+          nullable: false
+          type: integer
+      required:
+      - hasAnswer
+      - id
+      - numAnswers
+      - text
+      type: object
+    KbaAnswerRequestItem:
+      example:
+        answer: Your answer
+        id: c54fee53-2d63-4fc5-9259-3e93b9994135
+      properties:
+        id:
+          description: Question Id
+          example: c54fee53-2d63-4fc5-9259-3e93b9994135
+          nullable: false
+          type: string
+        answer:
+          description: An answer for the KBA question
+          example: Your answer
+          nullable: false
+          type: string
+      required:
+      - answer
+      - id
+      type: object
+    KbaAnswerResponseItem:
+      example:
+        hasAnswer: true
+        question: "[{\"text\":\"Nouvelle question MFA -1 ?\",\"locale\":\"fr\"},{\"\
+          text\":\"MFA new question -1 ?\",\"locale\":\"\"}]"
+        id: c54fee53-2d63-4fc5-9259-3e93b9994135
+      properties:
+        id:
+          description: Question Id
+          example: c54fee53-2d63-4fc5-9259-3e93b9994135
+          nullable: false
+          type: string
+        question:
+          description: Question description
+          example: "[{\"text\":\"Nouvelle question MFA -1 ?\",\"locale\":\"fr\"},{\"\
+            text\":\"MFA new question -1 ?\",\"locale\":\"\"}]"
+          nullable: false
+          type: string
+        hasAnswer:
+          description: Denotes whether the KBA question has an answer configured for
+            the current user
+          example: true
+          nullable: false
+          type: boolean
+      required:
+      - hasAnswer
+      - id
+      - question
+      type: object
+    MfaConfigTestResponse:
+      description: Response model for configuration test of a given MFA method
+      example:
+        state: SUCCESS
+        error: MFA Method is disabled.
+      properties:
+        state:
+          description: The configuration test result.
+          enum:
+          - SUCCESS
+          - FAILED
+          example: SUCCESS
+          readOnly: true
+          type: string
+        error:
+          description: The error message to indicate the failure of configuration
+            test.
+          example: MFA Method is disabled.
+          readOnly: true
+          type: string
+      type: object
+    OktaVerificationRequest:
+      example:
+        userId: example@mail.com
+      properties:
+        userId:
+          description: User identifier for Verification request. The value of the
+            user's attribute.
+          example: example@mail.com
+          nullable: false
+          type: string
+      required:
+      - userId
+      type: object
+    VerificationResponse:
+      example:
+        requestId: 089899f13a8f4da7824996191587bab9
+        error: Unable to connect DUO Service during verification
+        status: SUCCESS
+      properties:
+        requestId:
+          description: The verificationPollRequest request ID
+          example: 089899f13a8f4da7824996191587bab9
+          nullable: true
+          type: string
+        status:
+          description: MFA Authentication status
+          enum:
+          - PENDING
+          - SUCCESS
+          - FAILED
+          - LOCKOUT
+          - NOT_ENOUGH_DATA
+          example: SUCCESS
+          type: string
+        error:
+          description: Error messages from MFA verification request
+          example: Unable to connect DUO Service during verification
+          nullable: true
+          type: string
+      type: object
+    DuoVerificationRequest:
+      example:
+        signedResponse: AUTH|d2lsbC5hbGJpbnxESTZNMFpHSThKQVRWTVpZN0M5VXwxNzAxMjUzMDg5|f1f5f8ced5b340f3d303b05d0efa0e43b6a8f970:APP|d2lsbC5hbGJpbnxESTZNMFpHSThKQVRWTVpZN0M5VXwxNzAxMjU2NjE5|cb44cf44353f5127edcae31b1da0355f87357db2
+        userId: 2c9180947f0ef465017f215cbcfd004b
+      properties:
+        userId:
+          description: User id for Verification request.
+          example: 2c9180947f0ef465017f215cbcfd004b
+          nullable: false
+          type: string
+        signedResponse:
+          description: User id for Verification request.
+          example: AUTH|d2lsbC5hbGJpbnxESTZNMFpHSThKQVRWTVpZN0M5VXwxNzAxMjUzMDg5|f1f5f8ced5b340f3d303b05d0efa0e43b6a8f970:APP|d2lsbC5hbGJpbnxESTZNMFpHSThKQVRWTVpZN0M5VXwxNzAxMjU2NjE5|cb44cf44353f5127edcae31b1da0355f87357db2
+          nullable: false
+          type: string
+      required:
+      - signedResponse
+      - userId
+      type: object
+    VerificationPollRequest:
+      example:
+        requestId: 089899f13a8f4da7824996191587bab9
+      properties:
+        requestId:
+          description: Verification request Id
+          example: 089899f13a8f4da7824996191587bab9
+          nullable: false
+          type: string
+      required:
+      - requestId
+      type: object
+    KbaAuthResponse:
+      example:
+        kbaAuthResponseItems:
+        - questionId: 089899f13a8f4da7824996191587bab9
+          isVerified: false
+        status: PENDING
+      properties:
+        kbaAuthResponseItems:
+          example:
+          - questionId: 089899f13a8f4da7824996191587bab9
+            isVerified: false
+          items:
+            $ref: '#/components/schemas/KbaAuthResponseItem'
+          type: array
+        status:
+          description: MFA Authentication status
+          enum:
+          - PENDING
+          - SUCCESS
+          - FAILED
+          - LOCKOUT
+          - NOT_ENOUGH_DATA
+          example: PENDING
+          type: string
+      type: object
+    TokenAuthRequest:
+      example:
+        userAlias: will.albin
+        deliveryType: EMAIL_WORK
+        token: "12345"
+      properties:
+        token:
+          description: Token value
+          example: "12345"
+          nullable: false
+          type: string
+        userAlias:
+          description: User alias from table spt_identity field named 'name'
+          example: will.albin
+          nullable: false
+          type: string
+        deliveryType:
+          description: Token delivery type
+          enum:
+          - SMS_PERSONAL
+          - VOICE_PERSONAL
+          - SMS_WORK
+          - VOICE_WORK
+          - EMAIL_WORK
+          - EMAIL_PERSONAL
+          example: EMAIL_WORK
+          nullable: false
+          type: string
+      required:
+      - deliveryType
+      - token
+      - userAlias
+      type: object
+    TokenAuthResponse:
+      example:
+        status: PENDING
+      properties:
+        status:
+          description: MFA Authentication status
+          enum:
+          - PENDING
+          - SUCCESS
+          - FAILED
+          - LOCKOUT
+          - NOT_ENOUGH_DATA
+          example: PENDING
+          type: string
+      type: object
+    SendTokenRequest:
+      example:
+        userAlias: will.albin
+        deliveryType: EMAIL_WORK
+      properties:
+        userAlias:
+          description: User alias from table spt_identity field named 'name'
+          example: will.albin
+          nullable: false
+          type: string
+        deliveryType:
+          description: Token delivery type
+          enum:
+          - SMS_PERSONAL
+          - VOICE_PERSONAL
+          - SMS_WORK
+          - VOICE_WORK
+          - EMAIL_WORK
+          - EMAIL_PERSONAL
+          example: EMAIL_WORK
+          nullable: false
+          type: string
+      required:
+      - deliveryType
+      - userAlias
+      type: object
+    SendTokenResponse:
+      example:
+        requestId: 089899f13a8f4da7824996191587bab9
+        errorMessage: Unable to sent text message
+        status: SUCCESS
+      properties:
+        requestId:
+          description: The token request ID
+          example: 089899f13a8f4da7824996191587bab9
+          nullable: true
+          type: string
+        status:
+          description: Status of sending token
+          enum:
+          - SUCCESS
+          - FAILED
+          example: SUCCESS
+          type: string
+        errorMessage:
+          description: Error messages from token send request
+          example: Unable to sent text message
+          nullable: true
+          type: string
+      type: object
     NonEmployeeRecord:
       example:
         sourceId: 2c91808568c529c60168cca6f90c1313
@@ -53303,6 +54956,19 @@ components:
       required:
       - durationMinutes
       - rootLevel
+      type: object
+    KbaAuthResponseItem:
+      properties:
+        questionId:
+          description: The KBA question id
+          example: 089899f13a8f4da7824996191587bab9
+          nullable: true
+          type: string
+        isVerified:
+          description: Return true if verified
+          example: true
+          nullable: true
+          type: boolean
       type: object
     NonEmployeeSourceLite:
       properties:

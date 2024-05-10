@@ -22,6 +22,8 @@ api_identity_profiles.go
 api_lifecycle_states.go
 api_managed_clients.go
 api_managed_clusters.go
+api_mfa_configuration.go
+api_mfa_controller.go
 api_non_employee_lifecycle_management.go
 api_o_auth_clients.go
 api_password_configuration.go
@@ -217,6 +219,7 @@ docs/DeleteSource202Response.md
 docs/DisplayReference.md
 docs/DocumentType.md
 docs/DtoType.md
+docs/DuoVerificationRequest.md
 docs/EmailNotificationOption.md
 docs/Entitlement.md
 docs/EntitlementDocument.md
@@ -287,6 +290,11 @@ docs/InnerHit.md
 docs/JsonPatch.md
 docs/JsonPatchOperation.md
 docs/JsonPatchOperationValue.md
+docs/KbaAnswerRequestItem.md
+docs/KbaAnswerResponseItem.md
+docs/KbaAuthResponse.md
+docs/KbaAuthResponseItem.md
+docs/KbaQuestion.md
 docs/LifecycleState.md
 docs/LifecycleStatesAPI.md
 docs/LifecyclestateDeleted.md
@@ -295,6 +303,8 @@ docs/ListAccessProfiles429Response.md
 docs/ListCampaignFilters200Response.md
 docs/ListCompleteWorkflowLibrary200ResponseInner.md
 docs/LocaleOrigin.md
+docs/MFAConfigurationAPI.md
+docs/MFAControllerAPI.md
 docs/ManagedClient.md
 docs/ManagedClientRequest.md
 docs/ManagedClientStatus.md
@@ -316,6 +326,9 @@ docs/ManualWorkItemDetailsOriginalOwner.md
 docs/ManualWorkItemState.md
 docs/MetricAggregation.md
 docs/MetricType.md
+docs/MfaConfigTestResponse.md
+docs/MfaDuoConfig.md
+docs/MfaOktaConfig.md
 docs/MultiPolicyRequest.md
 docs/NestedAggregation.md
 docs/NetworkConfiguration.md
@@ -354,6 +367,7 @@ docs/ObjectMappingBulkPatchRequest.md
 docs/ObjectMappingBulkPatchResponse.md
 docs/ObjectMappingRequest.md
 docs/ObjectMappingResponse.md
+docs/OktaVerificationRequest.md
 docs/Operation.md
 docs/OriginalRequest.md
 docs/OrphanUncorrelatedReportArguments.md
@@ -500,6 +514,8 @@ docs/SegmentVisibilityCriteria.md
 docs/SegmentsAPI.md
 docs/Selector.md
 docs/SelectorType.md
+docs/SendTokenRequest.md
+docs/SendTokenResponse.md
 docs/ServiceDeskIntegrationAPI.md
 docs/ServiceDeskIntegrationDto.md
 docs/ServiceDeskIntegrationTemplateDto.md
@@ -554,6 +570,8 @@ docs/TestExternalExecuteWorkflowRequest.md
 docs/TestWorkflow200Response.md
 docs/TestWorkflowRequest.md
 docs/TextQuery.md
+docs/TokenAuthRequest.md
+docs/TokenAuthResponse.md
 docs/Transform.md
 docs/TransformDefinition.md
 docs/TransformDefinitionAttributesValue.md
@@ -568,6 +586,8 @@ docs/UsageType.md
 docs/V3ConnectorDto.md
 docs/V3CreateConnectorDto.md
 docs/Value.md
+docs/VerificationPollRequest.md
+docs/VerificationResponse.md
 docs/ViolationContext.md
 docs/ViolationContextPolicy.md
 docs/ViolationOwnerAssignmentConfig.md
@@ -752,6 +772,7 @@ model_delete_source_202_response.go
 model_display_reference.go
 model_document_type.go
 model_dto_type.go
+model_duo_verification_request.go
 model_email_notification_option.go
 model_entitlement.go
 model_entitlement_document.go
@@ -820,6 +841,11 @@ model_inner_hit.go
 model_json_patch.go
 model_json_patch_operation.go
 model_json_patch_operation_value.go
+model_kba_answer_request_item.go
+model_kba_answer_response_item.go
+model_kba_auth_response.go
+model_kba_auth_response_item.go
+model_kba_question.go
 model_lifecycle_state.go
 model_lifecyclestate_deleted.go
 model_list_access_profiles_401_response.go
@@ -846,6 +872,9 @@ model_manual_work_item_details_original_owner.go
 model_manual_work_item_state.go
 model_metric_aggregation.go
 model_metric_type.go
+model_mfa_config_test_response.go
+model_mfa_duo_config.go
+model_mfa_okta_config.go
 model_multi_policy_request.go
 model_nested_aggregation.go
 model_network_configuration.go
@@ -882,6 +911,7 @@ model_object_mapping_bulk_patch_request.go
 model_object_mapping_bulk_patch_response.go
 model_object_mapping_request.go
 model_object_mapping_response.go
+model_okta_verification_request.go
 model_operation.go
 model_original_request.go
 model_orphan_uncorrelated_report_arguments.go
@@ -1010,6 +1040,8 @@ model_segment.go
 model_segment_visibility_criteria.go
 model_selector.go
 model_selector_type.go
+model_send_token_request.go
+model_send_token_response.go
 model_service_desk_integration_dto.go
 model_service_desk_integration_template_dto.go
 model_service_desk_integration_template_type.go
@@ -1060,6 +1092,8 @@ model_test_external_execute_workflow_request.go
 model_test_workflow_200_response.go
 model_test_workflow_request.go
 model_text_query.go
+model_token_auth_request.go
+model_token_auth_response.go
 model_transform.go
 model_transform_definition.go
 model_transform_definition_attributes_value.go
@@ -1073,6 +1107,8 @@ model_usage_type.go
 model_v3_connector_dto.go
 model_v3_create_connector_dto.go
 model_value.go
+model_verification_poll_request.go
+model_verification_response.go
 model_violation_context.go
 model_violation_context_policy.go
 model_violation_owner_assignment_config.go
@@ -1120,6 +1156,8 @@ test/api_identity_profiles_test.go
 test/api_lifecycle_states_test.go
 test/api_managed_clients_test.go
 test/api_managed_clusters_test.go
+test/api_mfa_configuration_test.go
+test/api_mfa_controller_test.go
 test/api_non_employee_lifecycle_management_test.go
 test/api_o_auth_clients_test.go
 test/api_password_configuration_test.go

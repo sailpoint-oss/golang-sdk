@@ -86,6 +86,10 @@ type APIClient struct {
 
 	LifecycleStatesAPI *LifecycleStatesAPIService
 
+	MFAConfigurationAPI *MFAConfigurationAPIService
+
+	MFAControllerAPI *MFAControllerAPIService
+
 	ManagedClientsAPI *ManagedClientsAPIService
 
 	ManagedClustersAPI *ManagedClustersAPIService
@@ -178,6 +182,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.GlobalTenantSecuritySettingsAPI = (*GlobalTenantSecuritySettingsAPIService)(&c.common)
 	c.IdentityProfilesAPI = (*IdentityProfilesAPIService)(&c.common)
 	c.LifecycleStatesAPI = (*LifecycleStatesAPIService)(&c.common)
+	c.MFAConfigurationAPI = (*MFAConfigurationAPIService)(&c.common)
+	c.MFAControllerAPI = (*MFAControllerAPIService)(&c.common)
 	c.ManagedClientsAPI = (*ManagedClientsAPIService)(&c.common)
 	c.ManagedClustersAPI = (*ManagedClustersAPIService)(&c.common)
 	c.NonEmployeeLifecycleManagementAPI = (*NonEmployeeLifecycleManagementAPIService)(&c.common)
