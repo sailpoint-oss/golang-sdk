@@ -1,4 +1,4 @@
-# ListAccessProfiles429Response
+# ListAccessModelMetadataAttribute429Response
 
 ## Properties
 
@@ -8,45 +8,45 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewListAccessProfiles429Response
+### NewListAccessModelMetadataAttribute429Response
 
-`func NewListAccessProfiles429Response() *ListAccessProfiles429Response`
+`func NewListAccessModelMetadataAttribute429Response() *ListAccessModelMetadataAttribute429Response`
 
-NewListAccessProfiles429Response instantiates a new ListAccessProfiles429Response object
+NewListAccessModelMetadataAttribute429Response instantiates a new ListAccessModelMetadataAttribute429Response object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewListAccessProfiles429ResponseWithDefaults
+### NewListAccessModelMetadataAttribute429ResponseWithDefaults
 
-`func NewListAccessProfiles429ResponseWithDefaults() *ListAccessProfiles429Response`
+`func NewListAccessModelMetadataAttribute429ResponseWithDefaults() *ListAccessModelMetadataAttribute429Response`
 
-NewListAccessProfiles429ResponseWithDefaults instantiates a new ListAccessProfiles429Response object
+NewListAccessModelMetadataAttribute429ResponseWithDefaults instantiates a new ListAccessModelMetadataAttribute429Response object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetMessage
 
-`func (o *ListAccessProfiles429Response) GetMessage() map[string]interface{}`
+`func (o *ListAccessModelMetadataAttribute429Response) GetMessage() map[string]interface{}`
 
 GetMessage returns the Message field if non-nil, zero value otherwise.
 
 ### GetMessageOk
 
-`func (o *ListAccessProfiles429Response) GetMessageOk() (*map[string]interface{}, bool)`
+`func (o *ListAccessModelMetadataAttribute429Response) GetMessageOk() (*map[string]interface{}, bool)`
 
 GetMessageOk returns a tuple with the Message field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMessage
 
-`func (o *ListAccessProfiles429Response) SetMessage(v map[string]interface{})`
+`func (o *ListAccessModelMetadataAttribute429Response) SetMessage(v map[string]interface{})`
 
 SetMessage sets Message field to given value.
 
 ### HasMessage
 
-`func (o *ListAccessProfiles429Response) HasMessage() bool`
+`func (o *ListAccessModelMetadataAttribute429Response) HasMessage() bool`
 
 HasMessage returns a boolean if a field has been set.
 

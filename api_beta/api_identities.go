@@ -121,7 +121,7 @@ func (a *IdentitiesAPIService) DeleteIdentityExecute(r ApiDeleteIdentityRequest)
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -154,7 +154,7 @@ func (a *IdentitiesAPIService) DeleteIdentityExecute(r ApiDeleteIdentityRequest)
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -280,7 +280,7 @@ func (a *IdentitiesAPIService) GetIdentityExecute(r ApiGetIdentityRequest) (*Ide
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -313,7 +313,7 @@ func (a *IdentitiesAPIService) GetIdentityExecute(r ApiGetIdentityRequest) (*Ide
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -448,7 +448,7 @@ func (a *IdentitiesAPIService) GetIdentityOwnershipDetailsExecute(r ApiGetIdenti
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -481,7 +481,7 @@ func (a *IdentitiesAPIService) GetIdentityOwnershipDetailsExecute(r ApiGetIdenti
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -618,7 +618,7 @@ func (a *IdentitiesAPIService) GetRoleAssignmentExecute(r ApiGetRoleAssignmentRe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -651,7 +651,7 @@ func (a *IdentitiesAPIService) GetRoleAssignmentExecute(r ApiGetRoleAssignmentRe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -806,7 +806,7 @@ func (a *IdentitiesAPIService) GetRoleAssignmentsExecute(r ApiGetRoleAssignments
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -839,7 +839,7 @@ func (a *IdentitiesAPIService) GetRoleAssignmentsExecute(r ApiGetRoleAssignments
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1042,7 +1042,7 @@ func (a *IdentitiesAPIService) ListIdentitiesExecute(r ApiListIdentitiesRequest)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1064,7 +1064,7 @@ func (a *IdentitiesAPIService) ListIdentitiesExecute(r ApiListIdentitiesRequest)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1197,7 +1197,7 @@ func (a *IdentitiesAPIService) ResetIdentityExecute(r ApiResetIdentityRequest) (
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1230,7 +1230,7 @@ func (a *IdentitiesAPIService) ResetIdentityExecute(r ApiResetIdentityRequest) (
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1373,7 +1373,7 @@ func (a *IdentitiesAPIService) StartIdentityProcessingExecute(r ApiStartIdentity
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1406,7 +1406,7 @@ func (a *IdentitiesAPIService) StartIdentityProcessingExecute(r ApiStartIdentity
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1541,7 +1541,7 @@ func (a *IdentitiesAPIService) SynchronizeAttributesForIdentityExecute(r ApiSync
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1574,7 +1574,7 @@ func (a *IdentitiesAPIService) SynchronizeAttributesForIdentityExecute(r ApiSync
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

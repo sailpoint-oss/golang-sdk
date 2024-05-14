@@ -135,7 +135,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ApproveNonEmployeeRequestExec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -157,7 +157,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ApproveNonEmployeeRequestExec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -302,7 +302,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeRecordExecut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -324,7 +324,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeRecordExecut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -467,7 +467,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeRequestExecu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -489,7 +489,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeRequestExecu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -634,7 +634,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeSourceExecut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -656,7 +656,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeSourceExecut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -802,7 +802,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeSourceSchema
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -824,7 +824,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeSourceSchema
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -957,7 +957,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeRecordExecut
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -979,7 +979,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeRecordExecut
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1113,7 +1113,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeRecordInBulk
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1135,7 +1135,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeRecordInBulk
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1259,7 +1259,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeRequestExecu
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1292,7 +1292,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeRequestExecu
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1421,7 +1421,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeSchemaAttrib
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1443,7 +1443,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeSchemaAttrib
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1567,7 +1567,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeSourceExecut
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1589,7 +1589,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeSourceExecut
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1713,7 +1713,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeSourceSchema
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1735,7 +1735,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeSourceSchema
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1859,7 +1859,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ExportNonEmployeeRecordsExecu
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1892,7 +1892,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ExportNonEmployeeRecordsExecu
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2018,7 +2018,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ExportNonEmployeeSourceSchema
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2051,7 +2051,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ExportNonEmployeeSourceSchema
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2187,7 +2187,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeApprovalExecute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2209,7 +2209,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeApprovalExecute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2344,7 +2344,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeApprovalSummary
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2366,7 +2366,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeApprovalSummary
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2502,7 +2502,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeBulkUploadStatu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2524,7 +2524,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeBulkUploadStatu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2659,7 +2659,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRecordExecute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2681,7 +2681,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRecordExecute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2816,7 +2816,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRequestExecute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2849,7 +2849,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRequestExecute(
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2984,7 +2984,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRequestSummaryE
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3006,7 +3006,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRequestSummaryE
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3145,7 +3145,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSchemaAttribute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3167,7 +3167,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSchemaAttribute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3302,7 +3302,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSourceExecute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3324,7 +3324,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSourceExecute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3459,7 +3459,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSourceSchemaAtt
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3492,7 +3492,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSourceSchemaAtt
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3653,7 +3653,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ImportNonEmployeeRecordsInBul
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3686,7 +3686,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ImportNonEmployeeRecordsInBul
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3886,7 +3886,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeApprovalExecut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3908,7 +3908,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeApprovalExecut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4098,7 +4098,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeRecordsExecute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4120,7 +4120,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeRecordsExecute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4321,7 +4321,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeRequestsExecut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4343,7 +4343,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeRequestsExecut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4545,7 +4545,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeSourcesExecute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4567,7 +4567,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeSourcesExecute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4714,7 +4714,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeRecordExecute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4747,7 +4747,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeRecordExecute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4899,7 +4899,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeSchemaAttribu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -4932,7 +4932,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeSchemaAttribu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5079,7 +5079,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeSourceExecute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5101,7 +5101,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeSourceExecute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5247,7 +5247,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) RejectNonEmployeeRequestExecu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5269,7 +5269,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) RejectNonEmployeeRequestExecu
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5416,7 +5416,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) UpdateNonEmployeeRecordExecut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -5449,7 +5449,7 @@ func (a *NonEmployeeLifecycleManagementAPIService) UpdateNonEmployeeRecordExecut
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

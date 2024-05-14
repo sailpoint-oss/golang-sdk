@@ -124,7 +124,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) GetSedBatchStatsExecute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -157,7 +157,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) GetSedBatchStatsExecute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -289,7 +289,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) GetSedBatchesExecute(r ApiGe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -322,7 +322,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) GetSedBatchesExecute(r ApiGe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -513,7 +513,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) ListSedsExecute(r ApiListSed
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -546,7 +546,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) ListSedsExecute(r ApiListSed
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -693,7 +693,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) PatchSedExecute(r ApiPatchSe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -726,7 +726,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) PatchSedExecute(r ApiPatchSe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -870,7 +870,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedApprovalExecute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -903,7 +903,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedApprovalExecute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1047,7 +1047,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedAssignmentExecute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1080,7 +1080,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedAssignmentExecute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1221,7 +1221,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedBatchRequestExecute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
+			var v ListAccessModelMetadataAttribute401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1254,7 +1254,7 @@ func (a *SuggestedEntitlementDescriptionAPIService) SubmitSedBatchRequestExecute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

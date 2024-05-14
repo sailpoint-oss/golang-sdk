@@ -52,6 +52,8 @@ type APIClient struct {
 
 	// API Services
 
+	AccessModelMetadataAPI *AccessModelMetadataAPIService
+
 	AccessProfilesAPI *AccessProfilesAPIService
 
 	AccessRequestApprovalsAPI *AccessRequestApprovalsAPIService
@@ -213,6 +215,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
+	c.AccessModelMetadataAPI = (*AccessModelMetadataAPIService)(&c.common)
 	c.AccessProfilesAPI = (*AccessProfilesAPIService)(&c.common)
 	c.AccessRequestApprovalsAPI = (*AccessRequestApprovalsAPIService)(&c.common)
 	c.AccessRequestIdentityMetricsAPI = (*AccessRequestIdentityMetricsAPIService)(&c.common)

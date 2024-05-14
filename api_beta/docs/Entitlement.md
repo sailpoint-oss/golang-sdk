@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **DirectPermissions** | Pointer to [**[]PermissionDto**](PermissionDto.md) |  | [optional] 
 **Segments** | Pointer to **[]string** | List of IDs of segments, if any, to which this Entitlement is assigned. | [optional] 
 **ManuallyUpdatedFields** | Pointer to [**EntitlementManuallyUpdatedFields**](EntitlementManuallyUpdatedFields.md) |  | [optional] 
+**AccessModelMetadata** | Pointer to [**EntitlementAccessModelMetadata**](EntitlementAccessModelMetadata.md) |  | [optional] 
 
 ## Methods
 
@@ -495,6 +496,31 @@ SetManuallyUpdatedFields sets ManuallyUpdatedFields field to given value.
 `func (o *Entitlement) HasManuallyUpdatedFields() bool`
 
 HasManuallyUpdatedFields returns a boolean if a field has been set.
+
+### GetAccessModelMetadata
+
+`func (o *Entitlement) GetAccessModelMetadata() EntitlementAccessModelMetadata`
+
+GetAccessModelMetadata returns the AccessModelMetadata field if non-nil, zero value otherwise.
+
+### GetAccessModelMetadataOk
+
+`func (o *Entitlement) GetAccessModelMetadataOk() (*EntitlementAccessModelMetadata, bool)`
+
+GetAccessModelMetadataOk returns a tuple with the AccessModelMetadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessModelMetadata
+
+`func (o *Entitlement) SetAccessModelMetadata(v EntitlementAccessModelMetadata)`
+
+SetAccessModelMetadata sets AccessModelMetadata field to given value.
+
+### HasAccessModelMetadata
+
+`func (o *Entitlement) HasAccessModelMetadata() bool`
+
+HasAccessModelMetadata returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

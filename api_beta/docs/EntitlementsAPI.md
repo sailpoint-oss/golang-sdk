@@ -4,6 +4,8 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**CreateAccessModelMetadataForEntitlement**](EntitlementsAPI.md#CreateAccessModelMetadataForEntitlement) | **Post** /entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Add metadata to an entitlement.
+[**DeleteAccessModelMetadataFromEntitlement**](EntitlementsAPI.md#DeleteAccessModelMetadataFromEntitlement) | **Delete** /entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Remove metadata from an entitlement.
 [**GetEntitlement**](EntitlementsAPI.md#GetEntitlement) | **Get** /entitlements/{id} | Get an entitlement
 [**GetEntitlementRequestConfig**](EntitlementsAPI.md#GetEntitlementRequestConfig) | **Get** /entitlements/{id}/entitlement-request-config | Get Entitlement Request Config
 [**ImportEntitlements**](EntitlementsAPI.md#ImportEntitlements) | **Post** /entitlements/aggregate/sources/{id} | Aggregate Entitlements
@@ -15,6 +17,156 @@ Method | HTTP request | Description
 [**ResetSourceEntitlements**](EntitlementsAPI.md#ResetSourceEntitlements) | **Post** /entitlements/reset/sources/{id} | Reset Source Entitlements
 [**UpdateEntitlementsInBulk**](EntitlementsAPI.md#UpdateEntitlementsInBulk) | **Post** /entitlements/bulk-update | Bulk update an entitlement list
 
+
+
+## CreateAccessModelMetadataForEntitlement
+
+> Entitlement CreateAccessModelMetadataForEntitlement(ctx, id, attributeKey, attributeValue).Execute()
+
+Add metadata to an entitlement.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    id := "2c91808c74ff913f0175097daa9d59cd" // string | The entitlement id.
+    attributeKey := "iscPrivacy" // string | Technical name of the Attribute.
+    attributeValue := "public" // string | Technical name of the Attribute Value.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EntitlementsAPI.CreateAccessModelMetadataForEntitlement(context.Background(), id, attributeKey, attributeValue).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.CreateAccessModelMetadataForEntitlement``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateAccessModelMetadataForEntitlement`: Entitlement
+    fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.CreateAccessModelMetadataForEntitlement`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The entitlement id. | 
+**attributeKey** | **string** | Technical name of the Attribute. | 
+**attributeValue** | **string** | Technical name of the Attribute Value. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateAccessModelMetadataForEntitlementRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+[**Entitlement**](Entitlement.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteAccessModelMetadataFromEntitlement
+
+> DeleteAccessModelMetadataFromEntitlement(ctx, id, attributeKey, attributeValue).Execute()
+
+Remove metadata from an entitlement.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    id := "2c91808c74ff913f0175097daa9d59cd" // string | The entitlement id.
+    attributeKey := "iscPrivacy" // string | Technical name of the Attribute.
+    attributeValue := "public" // string | Technical name of the Attribute Value.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.EntitlementsAPI.DeleteAccessModelMetadataFromEntitlement(context.Background(), id, attributeKey, attributeValue).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.DeleteAccessModelMetadataFromEntitlement``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The entitlement id. | 
+**attributeKey** | **string** | Technical name of the Attribute. | 
+**attributeValue** | **string** | Technical name of the Attribute Value. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteAccessModelMetadataFromEntitlementRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## GetEntitlement

@@ -50,6 +50,7 @@ type Entitlement struct {
 	// List of IDs of segments, if any, to which this Entitlement is assigned.
 	Segments []string `json:"segments,omitempty"`
 	ManuallyUpdatedFields *EntitlementManuallyUpdatedFields `json:"manuallyUpdatedFields,omitempty"`
+	AccessModelMetadata *EntitlementAccessModelMetadata `json:"accessModelMetadata,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -649,6 +650,38 @@ func (o *Entitlement) SetManuallyUpdatedFields(v EntitlementManuallyUpdatedField
 	o.ManuallyUpdatedFields = &v
 }
 
+// GetAccessModelMetadata returns the AccessModelMetadata field value if set, zero value otherwise.
+func (o *Entitlement) GetAccessModelMetadata() EntitlementAccessModelMetadata {
+	if o == nil || isNil(o.AccessModelMetadata) {
+		var ret EntitlementAccessModelMetadata
+		return ret
+	}
+	return *o.AccessModelMetadata
+}
+
+// GetAccessModelMetadataOk returns a tuple with the AccessModelMetadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Entitlement) GetAccessModelMetadataOk() (*EntitlementAccessModelMetadata, bool) {
+	if o == nil || isNil(o.AccessModelMetadata) {
+		return nil, false
+	}
+	return o.AccessModelMetadata, true
+}
+
+// HasAccessModelMetadata returns a boolean if a field has been set.
+func (o *Entitlement) HasAccessModelMetadata() bool {
+	if o != nil && !isNil(o.AccessModelMetadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessModelMetadata gets a reference to the given EntitlementAccessModelMetadata and assigns it to the AccessModelMetadata field.
+func (o *Entitlement) SetAccessModelMetadata(v EntitlementAccessModelMetadata) {
+	o.AccessModelMetadata = &v
+}
+
 func (o Entitlement) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -710,6 +743,9 @@ func (o Entitlement) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.ManuallyUpdatedFields) {
 		toSerialize["manuallyUpdatedFields"] = o.ManuallyUpdatedFields
 	}
+	if !isNil(o.AccessModelMetadata) {
+		toSerialize["accessModelMetadata"] = o.AccessModelMetadata
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -745,6 +781,7 @@ func (o *Entitlement) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "directPermissions")
 		delete(additionalProperties, "segments")
 		delete(additionalProperties, "manuallyUpdatedFields")
+		delete(additionalProperties, "accessModelMetadata")
 		o.AdditionalProperties = additionalProperties
 	}
 

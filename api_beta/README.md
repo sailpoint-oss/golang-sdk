@@ -79,6 +79,10 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AccessModelMetadataAPI* | [**GetAccessModelMetadataAttribute**](docs/AccessModelMetadataAPI.md#getaccessmodelmetadataattribute) | **Get** /access-model-metadata/attributes/{key} | Get Access Model Metadata Attribute
+*AccessModelMetadataAPI* | [**GetAccessModelMetadataAttributeValue**](docs/AccessModelMetadataAPI.md#getaccessmodelmetadataattributevalue) | **Get** /access-model-metadata/attributes/{key}/values/{value} | Get Access Model Metadata Value
+*AccessModelMetadataAPI* | [**ListAccessModelMetadataAttribute**](docs/AccessModelMetadataAPI.md#listaccessmodelmetadataattribute) | **Get** /access-model-metadata/attributes | List Access Model Metadata Attributes
+*AccessModelMetadataAPI* | [**ListAccessModelMetadataAttributeValue**](docs/AccessModelMetadataAPI.md#listaccessmodelmetadataattributevalue) | **Get** /access-model-metadata/attributes/{key}/values | List Access Model Metadata Values
 *AccessProfilesAPI* | [**CreateAccessProfile**](docs/AccessProfilesAPI.md#createaccessprofile) | **Post** /access-profiles | Create an Access Profile
 *AccessProfilesAPI* | [**DeleteAccessProfile**](docs/AccessProfilesAPI.md#deleteaccessprofile) | **Delete** /access-profiles/{id} | Delete the specified Access Profile
 *AccessProfilesAPI* | [**DeleteAccessProfilesInBulk**](docs/AccessProfilesAPI.md#deleteaccessprofilesinbulk) | **Post** /access-profiles/bulk-delete | Delete Access Profile(s)
@@ -183,6 +187,8 @@ Class | Method | HTTP request | Description
 *CustomPasswordInstructionsAPI* | [**DeleteCustomPasswordInstructions**](docs/CustomPasswordInstructionsAPI.md#deletecustompasswordinstructions) | **Delete** /custom-password-instructions/{pageId} | Delete Custom Password Instructions by page ID
 *CustomPasswordInstructionsAPI* | [**GetCustomPasswordInstructions**](docs/CustomPasswordInstructionsAPI.md#getcustompasswordinstructions) | **Get** /custom-password-instructions/{pageId} | Get Custom Password Instructions by Page ID
 *DiscoveredApplicationsAPI* | [**GetDiscoveredApplications**](docs/DiscoveredApplicationsAPI.md#getdiscoveredapplications) | **Get** /discovered-applications | Retrieve discovered applications for tenant
+*EntitlementsAPI* | [**CreateAccessModelMetadataForEntitlement**](docs/EntitlementsAPI.md#createaccessmodelmetadataforentitlement) | **Post** /entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Add metadata to an entitlement.
+*EntitlementsAPI* | [**DeleteAccessModelMetadataFromEntitlement**](docs/EntitlementsAPI.md#deleteaccessmodelmetadatafromentitlement) | **Delete** /entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Remove metadata from an entitlement.
 *EntitlementsAPI* | [**GetEntitlement**](docs/EntitlementsAPI.md#getentitlement) | **Get** /entitlements/{id} | Get an entitlement
 *EntitlementsAPI* | [**GetEntitlementRequestConfig**](docs/EntitlementsAPI.md#getentitlementrequestconfig) | **Get** /entitlements/{id}/entitlement-request-config | Get Entitlement Request Config
 *EntitlementsAPI* | [**ImportEntitlements**](docs/EntitlementsAPI.md#importentitlements) | **Post** /entitlements/aggregate/sources/{id} | Aggregate Entitlements
@@ -707,9 +713,12 @@ Class | Method | HTTP request | Description
  - [AttrSyncSourceAttributeConfig](docs/AttrSyncSourceAttributeConfig.md)
  - [AttrSyncSourceConfig](docs/AttrSyncSourceConfig.md)
  - [AttributeChange](docs/AttributeChange.md)
+ - [AttributeDTO](docs/AttributeDTO.md)
+ - [AttributeDTOList](docs/AttributeDTOList.md)
  - [AttributeDefinition](docs/AttributeDefinition.md)
  - [AttributeDefinitionSchema](docs/AttributeDefinitionSchema.md)
  - [AttributeDefinitionType](docs/AttributeDefinitionType.md)
+ - [AttributeValueDTO](docs/AttributeValueDTO.md)
  - [AttributesChanged](docs/AttributesChanged.md)
  - [AuditDetails](docs/AuditDetails.md)
  - [AuthProfile](docs/AuthProfile.md)
@@ -820,6 +829,7 @@ Class | Method | HTTP request | Description
  - [EmailNotificationOption](docs/EmailNotificationOption.md)
  - [EmailStatusDto](docs/EmailStatusDto.md)
  - [Entitlement](docs/Entitlement.md)
+ - [EntitlementAccessModelMetadata](docs/EntitlementAccessModelMetadata.md)
  - [EntitlementAccessRequestConfig](docs/EntitlementAccessRequestConfig.md)
  - [EntitlementApprovalScheme](docs/EntitlementApprovalScheme.md)
  - [EntitlementBulkUpdateRequest](docs/EntitlementBulkUpdateRequest.md)
@@ -966,8 +976,8 @@ Class | Method | HTTP request | Description
  - [License](docs/License.md)
  - [LifecycleState](docs/LifecycleState.md)
  - [LifecycleStateDto](docs/LifecycleStateDto.md)
- - [ListAccessProfiles401Response](docs/ListAccessProfiles401Response.md)
- - [ListAccessProfiles429Response](docs/ListAccessProfiles429Response.md)
+ - [ListAccessModelMetadataAttribute401Response](docs/ListAccessModelMetadataAttribute401Response.md)
+ - [ListAccessModelMetadataAttribute429Response](docs/ListAccessModelMetadataAttribute429Response.md)
  - [ListCompleteWorkflowLibrary200ResponseInner](docs/ListCompleteWorkflowLibrary200ResponseInner.md)
  - [ListFormDefinitionsByTenantResponse](docs/ListFormDefinitionsByTenantResponse.md)
  - [ListFormElementDataByElementIDResponse](docs/ListFormElementDataByElementIDResponse.md)

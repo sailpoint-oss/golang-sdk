@@ -22,6 +22,37 @@ func Test_api_beta_EntitlementsAPIService(t *testing.T) {
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test EntitlementsAPIService CreateAccessModelMetadataForEntitlement", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+		var attributeKey string
+		var attributeValue string
+
+		resp, httpRes, err := apiClient.API_BETA.EntitlementsAPI.CreateAccessModelMetadataForEntitlement(context.Background(), id, attributeKey, attributeValue).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test EntitlementsAPIService DeleteAccessModelMetadataFromEntitlement", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+		var attributeKey string
+		var attributeValue string
+
+		httpRes, err := apiClient.API_BETA.EntitlementsAPI.DeleteAccessModelMetadataFromEntitlement(context.Background(), id, attributeKey, attributeValue).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test EntitlementsAPIService GetEntitlement", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

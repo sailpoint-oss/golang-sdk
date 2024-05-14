@@ -3,6 +3,7 @@
 .travis.yml
 README.md
 api/openapi.yaml
+api_access_model_metadata.go
 api_access_profiles.go
 api_access_request_approvals.go
 api_access_request_identity_metrics.go
@@ -97,6 +98,7 @@ docs/AccessItemRequester.md
 docs/AccessItemRequesterDto.md
 docs/AccessItemReviewedBy.md
 docs/AccessItemRoleResponse.md
+docs/AccessModelMetadataAPI.md
 docs/AccessProfile.md
 docs/AccessProfileApprovalScheme.md
 docs/AccessProfileBulkDeleteRequest.md
@@ -211,9 +213,12 @@ docs/AttrSyncSource.md
 docs/AttrSyncSourceAttributeConfig.md
 docs/AttrSyncSourceConfig.md
 docs/AttributeChange.md
+docs/AttributeDTO.md
+docs/AttributeDTOList.md
 docs/AttributeDefinition.md
 docs/AttributeDefinitionSchema.md
 docs/AttributeDefinitionType.md
+docs/AttributeValueDTO.md
 docs/AttributesChanged.md
 docs/AuditDetails.md
 docs/AuthProfile.md
@@ -332,6 +337,7 @@ docs/DuoVerificationRequest.md
 docs/EmailNotificationOption.md
 docs/EmailStatusDto.md
 docs/Entitlement.md
+docs/EntitlementAccessModelMetadata.md
 docs/EntitlementAccessRequestConfig.md
 docs/EntitlementApprovalScheme.md
 docs/EntitlementBulkUpdateRequest.md
@@ -493,8 +499,8 @@ docs/License.md
 docs/LifecycleState.md
 docs/LifecycleStateDto.md
 docs/LifecycleStatesAPI.md
-docs/ListAccessProfiles401Response.md
-docs/ListAccessProfiles429Response.md
+docs/ListAccessModelMetadataAttribute401Response.md
+docs/ListAccessModelMetadataAttribute429Response.md
 docs/ListCompleteWorkflowLibrary200ResponseInner.md
 docs/ListFormDefinitionsByTenantResponse.md
 docs/ListFormElementDataByElementIDResponse.md
@@ -1079,6 +1085,9 @@ model_attribute_change.go
 model_attribute_definition.go
 model_attribute_definition_schema.go
 model_attribute_definition_type.go
+model_attribute_dto.go
+model_attribute_dto_list.go
+model_attribute_value_dto.go
 model_attributes_changed.go
 model_audit_details.go
 model_auth_profile.go
@@ -1189,6 +1198,7 @@ model_duo_verification_request.go
 model_email_notification_option.go
 model_email_status_dto.go
 model_entitlement.go
+model_entitlement_access_model_metadata.go
 model_entitlement_access_request_config.go
 model_entitlement_approval_scheme.go
 model_entitlement_bulk_update_request.go
@@ -1335,8 +1345,8 @@ model_latest_outlier_summary.go
 model_license.go
 model_lifecycle_state.go
 model_lifecycle_state_dto.go
-model_list_access_profiles_401_response.go
-model_list_access_profiles_429_response.go
+model_list_access_model_metadata_attribute_401_response.go
+model_list_access_model_metadata_attribute_429_response.go
 model_list_complete_workflow_library_200_response_inner.go
 model_list_form_definitions_by_tenant_response.go
 model_list_form_element_data_by_element_id_response.go
@@ -1751,6 +1761,7 @@ model_workgroup_dto_owner.go
 model_workgroup_member_add_item.go
 model_workgroup_member_delete_item.go
 response.go
+test/api_access_model_metadata_test.go
 test/api_access_profiles_test.go
 test/api_access_request_approvals_test.go
 test/api_access_request_identity_metrics_test.go
