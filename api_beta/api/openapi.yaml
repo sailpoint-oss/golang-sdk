@@ -60346,21 +60346,22 @@ components:
       type: object
     IdentityHistoryResponse:
       example:
-        id: 2c9079b270a266a60170a2779fcb0007
-        displayName: Lahoma Wuckert
-        deletedDate: null
-        snapshot: 2007-03-01T13:00:00.000Z
+        accessItemCount:
+          app: 0
+          role: 2
+          entitlement: 4
+          accessProfile: 3
+          account: 1
+        deletedDate: 2007-03-01T13:00:00.000Z
+        displayName: Adam Zampa
         attributes:
           jobTitle: HR Manager
           location: NYC
-          firstname: Lahoma
-          lastname: Wuckert
+          firstname: Adam
+          lastname: Zampa
           department: HR
-        accessItemCount:
-          role: 2
-          accessProfile: 2
-          entitlement: 28
-          account: 3
+        id: bc693f07e7b645539626c25954c58554
+        snapshot: 2007-03-01T13:00:00.000Z
       properties:
         id:
           description: the identity ID
@@ -60380,13 +60381,25 @@ components:
           type: string
         accessItemCount:
           additionalProperties:
-            type: string
+            format: int32
+            type: integer
           description: A map containing the count of each access item
+          example:
+            app: 0
+            role: 2
+            entitlement: 4
+            accessProfile: 3
+            account: 1
           type: object
         attributes:
-          additionalProperties:
-            type: string
+          additionalProperties: true
           description: A map containing the identity attributes
+          example:
+            jobTitle: HR Manager
+            location: NYC
+            firstname: Adam
+            lastname: Zampa
+            department: HR
           type: object
       type: object
     AccessItemAccessProfileResponse:
