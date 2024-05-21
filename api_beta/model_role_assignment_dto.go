@@ -29,7 +29,7 @@ type RoleAssignmentDto struct {
 	Assigner *BaseReferenceDto `json:"assigner,omitempty"`
 	// Dimensions assigned related to this role
 	AssignedDimensions []BaseReferenceDto `json:"assignedDimensions,omitempty"`
-	AccessRequestContext *AccessRequestContext `json:"accessRequestContext,omitempty"`
+	AssignmentContext *AssignmentContextDto `json:"assignmentContext,omitempty"`
 	AccountTargets []RoleTargetDto `json:"accountTargets,omitempty"`
 	// Date that the assignment will be removed
 	RemoveDate *string `json:"removeDate,omitempty"`
@@ -247,36 +247,36 @@ func (o *RoleAssignmentDto) SetAssignedDimensions(v []BaseReferenceDto) {
 	o.AssignedDimensions = v
 }
 
-// GetAccessRequestContext returns the AccessRequestContext field value if set, zero value otherwise.
-func (o *RoleAssignmentDto) GetAccessRequestContext() AccessRequestContext {
-	if o == nil || isNil(o.AccessRequestContext) {
-		var ret AccessRequestContext
+// GetAssignmentContext returns the AssignmentContext field value if set, zero value otherwise.
+func (o *RoleAssignmentDto) GetAssignmentContext() AssignmentContextDto {
+	if o == nil || isNil(o.AssignmentContext) {
+		var ret AssignmentContextDto
 		return ret
 	}
-	return *o.AccessRequestContext
+	return *o.AssignmentContext
 }
 
-// GetAccessRequestContextOk returns a tuple with the AccessRequestContext field value if set, nil otherwise
+// GetAssignmentContextOk returns a tuple with the AssignmentContext field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleAssignmentDto) GetAccessRequestContextOk() (*AccessRequestContext, bool) {
-	if o == nil || isNil(o.AccessRequestContext) {
+func (o *RoleAssignmentDto) GetAssignmentContextOk() (*AssignmentContextDto, bool) {
+	if o == nil || isNil(o.AssignmentContext) {
 		return nil, false
 	}
-	return o.AccessRequestContext, true
+	return o.AssignmentContext, true
 }
 
-// HasAccessRequestContext returns a boolean if a field has been set.
-func (o *RoleAssignmentDto) HasAccessRequestContext() bool {
-	if o != nil && !isNil(o.AccessRequestContext) {
+// HasAssignmentContext returns a boolean if a field has been set.
+func (o *RoleAssignmentDto) HasAssignmentContext() bool {
+	if o != nil && !isNil(o.AssignmentContext) {
 		return true
 	}
 
 	return false
 }
 
-// SetAccessRequestContext gets a reference to the given AccessRequestContext and assigns it to the AccessRequestContext field.
-func (o *RoleAssignmentDto) SetAccessRequestContext(v AccessRequestContext) {
-	o.AccessRequestContext = &v
+// SetAssignmentContext gets a reference to the given AssignmentContextDto and assigns it to the AssignmentContext field.
+func (o *RoleAssignmentDto) SetAssignmentContext(v AssignmentContextDto) {
+	o.AssignmentContext = &v
 }
 
 // GetAccountTargets returns the AccountTargets field value if set, zero value otherwise.
@@ -371,8 +371,8 @@ func (o RoleAssignmentDto) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.AssignedDimensions) {
 		toSerialize["assignedDimensions"] = o.AssignedDimensions
 	}
-	if !isNil(o.AccessRequestContext) {
-		toSerialize["accessRequestContext"] = o.AccessRequestContext
+	if !isNil(o.AssignmentContext) {
+		toSerialize["assignmentContext"] = o.AssignmentContext
 	}
 	if !isNil(o.AccountTargets) {
 		toSerialize["accountTargets"] = o.AccountTargets
@@ -404,7 +404,7 @@ func (o *RoleAssignmentDto) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "assignmentSource")
 		delete(additionalProperties, "assigner")
 		delete(additionalProperties, "assignedDimensions")
-		delete(additionalProperties, "accessRequestContext")
+		delete(additionalProperties, "assignmentContext")
 		delete(additionalProperties, "accountTargets")
 		delete(additionalProperties, "removeDate")
 		o.AdditionalProperties = additionalProperties

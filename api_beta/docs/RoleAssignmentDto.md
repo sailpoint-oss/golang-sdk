@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **AssignmentSource** | Pointer to **string** | Source describing how this assignment was made | [optional] 
 **Assigner** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
 **AssignedDimensions** | Pointer to [**[]BaseReferenceDto**](BaseReferenceDto.md) | Dimensions assigned related to this role | [optional] 
-**AccessRequestContext** | Pointer to [**AccessRequestContext**](AccessRequestContext.md) |  | [optional] 
+**AssignmentContext** | Pointer to [**AssignmentContextDto**](AssignmentContextDto.md) |  | [optional] 
 **AccountTargets** | Pointer to [**[]RoleTargetDto**](RoleTargetDto.md) |  | [optional] 
 **RemoveDate** | Pointer to **string** | Date that the assignment will be removed | [optional] 
 
@@ -183,30 +183,30 @@ SetAssignedDimensions sets AssignedDimensions field to given value.
 
 HasAssignedDimensions returns a boolean if a field has been set.
 
-### GetAccessRequestContext
+### GetAssignmentContext
 
-`func (o *RoleAssignmentDto) GetAccessRequestContext() AccessRequestContext`
+`func (o *RoleAssignmentDto) GetAssignmentContext() AssignmentContextDto`
 
-GetAccessRequestContext returns the AccessRequestContext field if non-nil, zero value otherwise.
+GetAssignmentContext returns the AssignmentContext field if non-nil, zero value otherwise.
 
-### GetAccessRequestContextOk
+### GetAssignmentContextOk
 
-`func (o *RoleAssignmentDto) GetAccessRequestContextOk() (*AccessRequestContext, bool)`
+`func (o *RoleAssignmentDto) GetAssignmentContextOk() (*AssignmentContextDto, bool)`
 
-GetAccessRequestContextOk returns a tuple with the AccessRequestContext field if it's non-nil, zero value otherwise
+GetAssignmentContextOk returns a tuple with the AssignmentContext field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAccessRequestContext
+### SetAssignmentContext
 
-`func (o *RoleAssignmentDto) SetAccessRequestContext(v AccessRequestContext)`
+`func (o *RoleAssignmentDto) SetAssignmentContext(v AssignmentContextDto)`
 
-SetAccessRequestContext sets AccessRequestContext field to given value.
+SetAssignmentContext sets AssignmentContext field to given value.
 
-### HasAccessRequestContext
+### HasAssignmentContext
 
-`func (o *RoleAssignmentDto) HasAccessRequestContext() bool`
+`func (o *RoleAssignmentDto) HasAssignmentContext() bool`
 
-HasAccessRequestContext returns a boolean if a field has been set.
+HasAssignmentContext returns a boolean if a field has been set.
 
 ### GetAccountTargets
 

@@ -4,11 +4,11 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteIdentity**](IdentitiesAPI.md#DeleteIdentity) | **Delete** /identities/{id} | Deletes an identity.
+[**DeleteIdentity**](IdentitiesAPI.md#DeleteIdentity) | **Delete** /identities/{id} | Delete identity
 [**GetIdentity**](IdentitiesAPI.md#GetIdentity) | **Get** /identities/{id} | Identity Details
 [**GetIdentityOwnershipDetails**](IdentitiesAPI.md#GetIdentityOwnershipDetails) | **Get** /identities/{identityId}/ownership | Get ownership details
-[**GetRoleAssignment**](IdentitiesAPI.md#GetRoleAssignment) | **Get** /identities/{identityId}/role-assignments/{assignmentId} | Get role assignment
-[**GetRoleAssignments**](IdentitiesAPI.md#GetRoleAssignments) | **Get** /identities/{identityId}/role-assignments | Get role assignments
+[**GetRoleAssignment**](IdentitiesAPI.md#GetRoleAssignment) | **Get** /identities/{identityId}/role-assignments/{assignmentId} | Role assignment details
+[**GetRoleAssignments**](IdentitiesAPI.md#GetRoleAssignments) | **Get** /identities/{identityId}/role-assignments | List role assignments
 [**ListIdentities**](IdentitiesAPI.md#ListIdentities) | **Get** /identities | List Identities
 [**ResetIdentity**](IdentitiesAPI.md#ResetIdentity) | **Post** /identities/{id}/reset | Reset an identity
 [**StartIdentityProcessing**](IdentitiesAPI.md#StartIdentityProcessing) | **Post** /identities/process | Process a list of identityIds
@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 > DeleteIdentity(ctx, id).Execute()
 
-Deletes an identity.
+Delete identity
 
 
 
@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 
 > RoleAssignmentDto GetRoleAssignment(ctx, identityId, assignmentId).Execute()
 
-Get role assignment
+Role assignment details
 
 ### Example
 
@@ -299,7 +299,7 @@ Name | Type | Description  | Notes
 
 > []GetRoleAssignments200ResponseInner GetRoleAssignments(ctx, identityId).RoleId(roleId).RoleName(roleName).Execute()
 
-Get role assignments
+List role assignments
 
 
 

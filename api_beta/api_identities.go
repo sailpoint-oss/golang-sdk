@@ -34,7 +34,7 @@ func (r ApiDeleteIdentityRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteIdentity Deletes an identity.
+DeleteIdentity Delete identity
 
 The API returns successful response if the requested identity was deleted.
 
@@ -528,7 +528,7 @@ func (r ApiGetRoleAssignmentRequest) Execute() (*RoleAssignmentDto, *http.Respon
 }
 
 /*
-GetRoleAssignment Get role assignment
+GetRoleAssignment Role assignment details
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param identityId Identity Id
@@ -711,7 +711,7 @@ func (r ApiGetRoleAssignmentsRequest) Execute() ([]GetRoleAssignments200Response
 }
 
 /*
-GetRoleAssignments Get role assignments
+GetRoleAssignments List role assignments
 
 This returns either a list of Role Assignments when querying with either a Role Id or Role Name, or a list of Role Assignment References if querying with only identity Id.
 

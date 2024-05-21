@@ -15591,7 +15591,7 @@ paths:
       security:
       - UserContextAuth:
         - idn:identity:delete
-      summary: Deletes an identity.
+      summary: Delete identity
       tags:
       - Identities
     get:
@@ -15905,111 +15905,6 @@ paths:
       summary: Reset an identity
       tags:
       - Identities
-  /identities/{identityId}/role-assignments/{assignmentId}:
-    get:
-      operationId: getRoleAssignment
-      parameters:
-      - description: Identity Id
-        example: ef38f94347e94562b5bb8424a56397d8
-        in: path
-        name: identityId
-        required: true
-        schema:
-          type: string
-      - description: Assignment Id
-        example: 1cbb0705b38c4226b1334eadd8874086
-        in: path
-        name: assignmentId
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RoleAssignmentDto'
-          description: A role assignment object
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: Client Error - Returned if the request body is invalid.
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
-          description: "Unauthorized - Returned if there is no authorization header,\
-            \ or if the JWT token is expired."
-        "403":
-          content:
-            application/json:
-              examples:
-                "403":
-                  summary: An example of a 403 response object
-                  value:
-                    detailCode: 403 Forbidden
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: The server understood the request but refuses to authorize
-                        it.
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: "Forbidden - Returned if the user you are running as, doesn't\
-            \ have access to this end-point."
-        "404":
-          content:
-            application/json:
-              examples:
-                "404":
-                  summary: An example of a 404 response object
-                  value:
-                    detailCode: 404 Not found
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: The server did not find a current representation for the
-                        target resource.
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: Not Found - returned if the request URL refers to a resource
-            or object that does not exist
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
-          description: Too Many Requests - Returned in response to too many requests
-            in a given period of time - rate limited. The Retry-After header in the
-            response includes how long to wait before trying again.
-        "500":
-          content:
-            application/json:
-              examples:
-                "500":
-                  summary: An example of a 500 response object
-                  value:
-                    detailCode: 500.0 Internal Fault
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: An internal fault occurred.
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: Internal Server Error - Returned if there is an unexpected
-            error.
-      security:
-      - UserContextAuth:
-        - idn:identity:read
-      summary: Get role assignment
-      tags:
-      - Identities
   /identities/{identityId}/role-assignments:
     get:
       description: "This returns either a list of Role Assignments when querying with\
@@ -16124,7 +16019,112 @@ paths:
       security:
       - UserContextAuth:
         - idn:identity:read
-      summary: Get role assignments
+      summary: List role assignments
+      tags:
+      - Identities
+  /identities/{identityId}/role-assignments/{assignmentId}:
+    get:
+      operationId: getRoleAssignment
+      parameters:
+      - description: Identity Id
+        example: ef38f94347e94562b5bb8424a56397d8
+        in: path
+        name: identityId
+        required: true
+        schema:
+          type: string
+      - description: Assignment Id
+        example: 1cbb0705b38c4226b1334eadd8874086
+        in: path
+        name: assignmentId
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoleAssignmentDto'
+          description: A role assignment object
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:identity:read
+      summary: Role assignment details
       tags:
       - Identities
   /identity-attributes:
@@ -61037,32 +61037,53 @@ components:
           example: "null"
           type: string
       type: object
+    RoleAssignmentRef:
+      properties:
+        id:
+          description: Assignment Id
+          example: 1cbb0705b38c4226b1334eadd8874086
+          type: string
+        role:
+          $ref: '#/components/schemas/BaseReferenceDto'
+      type: object
     RoleAssignmentDto:
       example:
+        assignmentContext:
+          requested:
+            contextAttributes:
+            - attribute: location
+              value: Austin
+              derived: false
+            - attribute: location
+              value: Austin
+              derived: false
+          computedDate: Wed Feb 14 10:58:42
+          matched:
+          - matchedAttributes:
+            - attribute: location
+              value: Austin
+              derived: false
+            - attribute: location
+              value: Austin
+              derived: false
+            roleRef:
+              name: Github
+              id: ff8081814d977c21014da056804a0af3
+          - matchedAttributes:
+            - attribute: location
+              value: Austin
+              derived: false
+            - attribute: location
+              value: Austin
+              derived: false
+            roleRef:
+              name: Github
+              id: ff8081814d977c21014da056804a0af3
         removeDate: Wed Feb 14 10:58:42
         role:
           name: Github
           id: ff8081814d977c21014da056804a0af3
         comments: I'm a new Engineer and need this role to do my work
-        accessRequestContext:
-          assignedContext:
-          - matchedAttributes:
-            - attribute: location
-              value: Austin
-            - attribute: location
-              value: Austin
-            roleName: Engineer
-          - matchedAttributes:
-            - attribute: location
-              value: Austin
-            - attribute: location
-              value: Austin
-            roleName: Engineer
-          requestedContext:
-          - attribute: location
-            value: Austin
-          - attribute: location
-            value: Austin
         assigner:
           name: Github
           id: ff8081814d977c21014da056804a0af3
@@ -61115,8 +61136,8 @@ components:
           items:
             $ref: '#/components/schemas/BaseReferenceDto'
           type: array
-        accessRequestContext:
-          $ref: '#/components/schemas/AccessRequestContext'
+        assignmentContext:
+          $ref: '#/components/schemas/AssignmentContextDto'
         accountTargets:
           items:
             $ref: '#/components/schemas/RoleTargetDto'
@@ -61125,15 +61146,6 @@ components:
           description: Date that the assignment will be removed
           example: Wed Feb 14 10:58:42
           type: string
-      type: object
-    RoleAssignmentRef:
-      properties:
-        id:
-          description: Assignment Id
-          example: 1cbb0705b38c4226b1334eadd8874086
-          type: string
-        role:
-          $ref: '#/components/schemas/BaseReferenceDto'
       type: object
     IdentityAttribute:
       example:
@@ -73527,35 +73539,49 @@ components:
       - manuallyUpdated
       - stateName
       type: object
-    AccessRequestContext:
+    AssignmentContextDto:
       example:
-        assignedContext:
+        requested:
+          contextAttributes:
+          - attribute: location
+            value: Austin
+            derived: false
+          - attribute: location
+            value: Austin
+            derived: false
+        computedDate: Wed Feb 14 10:58:42
+        matched:
         - matchedAttributes:
           - attribute: location
             value: Austin
+            derived: false
           - attribute: location
             value: Austin
-          roleName: Engineer
+            derived: false
+          roleRef:
+            name: Github
+            id: ff8081814d977c21014da056804a0af3
         - matchedAttributes:
           - attribute: location
             value: Austin
+            derived: false
           - attribute: location
             value: Austin
-          roleName: Engineer
-        requestedContext:
-        - attribute: location
-          value: Austin
-        - attribute: location
-          value: Austin
+            derived: false
+          roleRef:
+            name: Github
+            id: ff8081814d977c21014da056804a0af3
       properties:
-        requestedContext:
-          items:
-            $ref: '#/components/schemas/ContextAttributeDto'
-          type: array
-        assignedContext:
+        requested:
+          $ref: '#/components/schemas/AccessRequestContext'
+        matched:
           items:
             $ref: '#/components/schemas/RoleMatchDto'
           type: array
+        computedDate:
+          description: Date that the assignment will was evaluated
+          example: Wed Feb 14 10:58:42
+          type: string
       type: object
     RoleTargetDto:
       example:
@@ -77902,31 +77928,36 @@ components:
             $ref: '#/components/schemas/ApprovalInfoResponse'
           type: array
       type: object
-    ContextAttributeDto:
+    AccessRequestContext:
       example:
-        attribute: location
-        value: Austin
+        contextAttributes:
+        - attribute: location
+          value: Austin
+          derived: false
+        - attribute: location
+          value: Austin
+          derived: false
       properties:
-        attribute:
-          description: The name of the attribute
-          example: location
-          type: string
-        value:
-          $ref: '#/components/schemas/ContextAttributeDto_value'
+        contextAttributes:
+          items:
+            $ref: '#/components/schemas/ContextAttributeDto'
+          type: array
       type: object
     RoleMatchDto:
       example:
         matchedAttributes:
         - attribute: location
           value: Austin
+          derived: false
         - attribute: location
           value: Austin
-        roleName: Engineer
+          derived: false
+        roleRef:
+          name: Github
+          id: ff8081814d977c21014da056804a0af3
       properties:
-        roleName:
-          description: The name of the role
-          example: Engineer
-          type: string
+        roleRef:
+          $ref: '#/components/schemas/BaseReferenceDto'
         matchedAttributes:
           items:
             $ref: '#/components/schemas/ContextAttributeDto'
@@ -78934,6 +78965,24 @@ components:
           description: the status of the approval request
           example: Approved
           type: string
+      type: object
+    ContextAttributeDto:
+      example:
+        attribute: location
+        value: Austin
+        derived: false
+      properties:
+        attribute:
+          description: The name of the attribute
+          example: location
+          type: string
+        value:
+          $ref: '#/components/schemas/ContextAttributeDto_value'
+        derived:
+          default: false
+          description: True if the attribute was derived.
+          example: false
+          type: boolean
       type: object
     IdentityAttributeTransform_1:
       description: Defines a transformation definition for an identity attribute.
@@ -83242,17 +83291,6 @@ components:
         value:
           type: string
       type: object
-    ContextAttributeDto_value:
-      description: The value of the attribute.  This can be either a string or a multi-valued
-        string
-      example: Austin
-      oneOf:
-      - example: Austin
-        type: string
-      - items:
-          example: "[Austin, Houston, Dallas]"
-          type: string
-        type: array
     AccessCriteria_criteriaList_inner:
       properties:
         type:
@@ -83350,6 +83388,17 @@ components:
         rightCriteria:
           $ref: '#/components/schemas/SodViolationContext_1_conflictingAccessCriteria_leftCriteria'
       type: object
+    ContextAttributeDto_value:
+      description: The value of the attribute.  This can be either a string or a multi-valued
+        string
+      example: Austin
+      oneOf:
+      - example: Austin
+        type: string
+      - items:
+          example: "[Austin, Houston, Dallas]"
+          type: string
+        type: array
     ExceptionCriteria_criteriaList_inner:
       allOf:
       - $ref: '#/components/schemas/ExceptionCriteriaAccess'

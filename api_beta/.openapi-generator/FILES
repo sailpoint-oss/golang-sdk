@@ -209,6 +209,7 @@ docs/ApprovalSummary.md
 docs/ApprovalsAPI.md
 docs/Argument.md
 docs/ArrayInner.md
+docs/AssignmentContextDto.md
 docs/AttrSyncSource.md
 docs/AttrSyncSourceAttributeConfig.md
 docs/AttrSyncSourceConfig.md
@@ -1078,6 +1079,7 @@ model_approval_status_dto_original_owner.go
 model_approval_summary.go
 model_argument.go
 model_array_inner.go
+model_assignment_context_dto.go
 model_attr_sync_source.go
 model_attr_sync_source_attribute_config.go
 model_attr_sync_source_config.go

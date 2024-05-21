@@ -4,8 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RequestedContext** | Pointer to [**[]ContextAttributeDto**](ContextAttributeDto.md) |  | [optional] 
-**AssignedContext** | Pointer to [**[]RoleMatchDto**](RoleMatchDto.md) |  | [optional] 
+**ContextAttributes** | Pointer to [**[]ContextAttributeDto**](ContextAttributeDto.md) |  | [optional] 
 
 ## Methods
 
@@ -26,55 +25,30 @@ NewAccessRequestContextWithDefaults instantiates a new AccessRequestContext obje
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetRequestedContext
+### GetContextAttributes
 
-`func (o *AccessRequestContext) GetRequestedContext() []ContextAttributeDto`
+`func (o *AccessRequestContext) GetContextAttributes() []ContextAttributeDto`
 
-GetRequestedContext returns the RequestedContext field if non-nil, zero value otherwise.
+GetContextAttributes returns the ContextAttributes field if non-nil, zero value otherwise.
 
-### GetRequestedContextOk
+### GetContextAttributesOk
 
-`func (o *AccessRequestContext) GetRequestedContextOk() (*[]ContextAttributeDto, bool)`
+`func (o *AccessRequestContext) GetContextAttributesOk() (*[]ContextAttributeDto, bool)`
 
-GetRequestedContextOk returns a tuple with the RequestedContext field if it's non-nil, zero value otherwise
+GetContextAttributesOk returns a tuple with the ContextAttributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetRequestedContext
+### SetContextAttributes
 
-`func (o *AccessRequestContext) SetRequestedContext(v []ContextAttributeDto)`
+`func (o *AccessRequestContext) SetContextAttributes(v []ContextAttributeDto)`
 
-SetRequestedContext sets RequestedContext field to given value.
+SetContextAttributes sets ContextAttributes field to given value.
 
-### HasRequestedContext
+### HasContextAttributes
 
-`func (o *AccessRequestContext) HasRequestedContext() bool`
+`func (o *AccessRequestContext) HasContextAttributes() bool`
 
-HasRequestedContext returns a boolean if a field has been set.
-
-### GetAssignedContext
-
-`func (o *AccessRequestContext) GetAssignedContext() []RoleMatchDto`
-
-GetAssignedContext returns the AssignedContext field if non-nil, zero value otherwise.
-
-### GetAssignedContextOk
-
-`func (o *AccessRequestContext) GetAssignedContextOk() (*[]RoleMatchDto, bool)`
-
-GetAssignedContextOk returns a tuple with the AssignedContext field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAssignedContext
-
-`func (o *AccessRequestContext) SetAssignedContext(v []RoleMatchDto)`
-
-SetAssignedContext sets AssignedContext field to given value.
-
-### HasAssignedContext
-
-`func (o *AccessRequestContext) HasAssignedContext() bool`
-
-HasAssignedContext returns a boolean if a field has been set.
+HasContextAttributes returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

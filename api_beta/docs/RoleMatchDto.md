@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RoleName** | Pointer to **string** | The name of the role | [optional] 
+**RoleRef** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
 **MatchedAttributes** | Pointer to [**[]ContextAttributeDto**](ContextAttributeDto.md) |  | [optional] 
 
 ## Methods
@@ -26,30 +26,30 @@ NewRoleMatchDtoWithDefaults instantiates a new RoleMatchDto object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetRoleName
+### GetRoleRef
 
-`func (o *RoleMatchDto) GetRoleName() string`
+`func (o *RoleMatchDto) GetRoleRef() BaseReferenceDto`
 
-GetRoleName returns the RoleName field if non-nil, zero value otherwise.
+GetRoleRef returns the RoleRef field if non-nil, zero value otherwise.
 
-### GetRoleNameOk
+### GetRoleRefOk
 
-`func (o *RoleMatchDto) GetRoleNameOk() (*string, bool)`
+`func (o *RoleMatchDto) GetRoleRefOk() (*BaseReferenceDto, bool)`
 
-GetRoleNameOk returns a tuple with the RoleName field if it's non-nil, zero value otherwise
+GetRoleRefOk returns a tuple with the RoleRef field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetRoleName
+### SetRoleRef
 
-`func (o *RoleMatchDto) SetRoleName(v string)`
+`func (o *RoleMatchDto) SetRoleRef(v BaseReferenceDto)`
 
-SetRoleName sets RoleName field to given value.
+SetRoleRef sets RoleRef field to given value.
 
-### HasRoleName
+### HasRoleRef
 
-`func (o *RoleMatchDto) HasRoleName() bool`
+`func (o *RoleMatchDto) HasRoleRef() bool`
 
-HasRoleName returns a boolean if a field has been set.
+HasRoleRef returns a boolean if a field has been set.
 
 ### GetMatchedAttributes
 

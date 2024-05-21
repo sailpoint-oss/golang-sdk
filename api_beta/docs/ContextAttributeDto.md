@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Attribute** | Pointer to **string** | The name of the attribute | [optional] 
 **Value** | Pointer to [**ContextAttributeDtoValue**](ContextAttributeDtoValue.md) |  | [optional] 
+**Derived** | Pointer to **bool** | True if the attribute was derived. | [optional] [default to false]
 
 ## Methods
 
@@ -75,6 +76,31 @@ SetValue sets Value field to given value.
 `func (o *ContextAttributeDto) HasValue() bool`
 
 HasValue returns a boolean if a field has been set.
+
+### GetDerived
+
+`func (o *ContextAttributeDto) GetDerived() bool`
+
+GetDerived returns the Derived field if non-nil, zero value otherwise.
+
+### GetDerivedOk
+
+`func (o *ContextAttributeDto) GetDerivedOk() (*bool, bool)`
+
+GetDerivedOk returns a tuple with the Derived field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDerived
+
+`func (o *ContextAttributeDto) SetDerived(v bool)`
+
+SetDerived sets Derived field to given value.
+
+### HasDerived
+
+`func (o *ContextAttributeDto) HasDerived() bool`
+
+HasDerived returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

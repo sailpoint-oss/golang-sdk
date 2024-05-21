@@ -22,6 +22,8 @@ type ContextAttributeDto struct {
 	// The name of the attribute
 	Attribute *string `json:"attribute,omitempty"`
 	Value *ContextAttributeDtoValue `json:"value,omitempty"`
+	// True if the attribute was derived.
+	Derived *bool `json:"derived,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -33,6 +35,8 @@ type _ContextAttributeDto ContextAttributeDto
 // will change when the set of required properties is changed
 func NewContextAttributeDto() *ContextAttributeDto {
 	this := ContextAttributeDto{}
+	var derived bool = false
+	this.Derived = &derived
 	return &this
 }
 
@@ -41,6 +45,8 @@ func NewContextAttributeDto() *ContextAttributeDto {
 // but it doesn't guarantee that properties required by API are set
 func NewContextAttributeDtoWithDefaults() *ContextAttributeDto {
 	this := ContextAttributeDto{}
+	var derived bool = false
+	this.Derived = &derived
 	return &this
 }
 
@@ -108,6 +114,38 @@ func (o *ContextAttributeDto) SetValue(v ContextAttributeDtoValue) {
 	o.Value = &v
 }
 
+// GetDerived returns the Derived field value if set, zero value otherwise.
+func (o *ContextAttributeDto) GetDerived() bool {
+	if o == nil || isNil(o.Derived) {
+		var ret bool
+		return ret
+	}
+	return *o.Derived
+}
+
+// GetDerivedOk returns a tuple with the Derived field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContextAttributeDto) GetDerivedOk() (*bool, bool) {
+	if o == nil || isNil(o.Derived) {
+		return nil, false
+	}
+	return o.Derived, true
+}
+
+// HasDerived returns a boolean if a field has been set.
+func (o *ContextAttributeDto) HasDerived() bool {
+	if o != nil && !isNil(o.Derived) {
+		return true
+	}
+
+	return false
+}
+
+// SetDerived gets a reference to the given bool and assigns it to the Derived field.
+func (o *ContextAttributeDto) SetDerived(v bool) {
+	o.Derived = &v
+}
+
 func (o ContextAttributeDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -123,6 +161,9 @@ func (o ContextAttributeDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !isNil(o.Value) {
 		toSerialize["value"] = o.Value
+	}
+	if !isNil(o.Derived) {
+		toSerialize["derived"] = o.Derived
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -144,6 +185,7 @@ func (o *ContextAttributeDto) UnmarshalJSON(bytes []byte) (err error) {
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "attribute")
 		delete(additionalProperties, "value")
+		delete(additionalProperties, "derived")
 		o.AdditionalProperties = additionalProperties
 	}
 

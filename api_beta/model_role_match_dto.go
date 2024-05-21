@@ -19,8 +19,7 @@ var _ MappedNullable = &RoleMatchDto{}
 
 // RoleMatchDto struct for RoleMatchDto
 type RoleMatchDto struct {
-	// The name of the role
-	RoleName *string `json:"roleName,omitempty"`
+	RoleRef *BaseReferenceDto `json:"roleRef,omitempty"`
 	MatchedAttributes []ContextAttributeDto `json:"matchedAttributes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -44,36 +43,36 @@ func NewRoleMatchDtoWithDefaults() *RoleMatchDto {
 	return &this
 }
 
-// GetRoleName returns the RoleName field value if set, zero value otherwise.
-func (o *RoleMatchDto) GetRoleName() string {
-	if o == nil || isNil(o.RoleName) {
-		var ret string
+// GetRoleRef returns the RoleRef field value if set, zero value otherwise.
+func (o *RoleMatchDto) GetRoleRef() BaseReferenceDto {
+	if o == nil || isNil(o.RoleRef) {
+		var ret BaseReferenceDto
 		return ret
 	}
-	return *o.RoleName
+	return *o.RoleRef
 }
 
-// GetRoleNameOk returns a tuple with the RoleName field value if set, nil otherwise
+// GetRoleRefOk returns a tuple with the RoleRef field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleMatchDto) GetRoleNameOk() (*string, bool) {
-	if o == nil || isNil(o.RoleName) {
+func (o *RoleMatchDto) GetRoleRefOk() (*BaseReferenceDto, bool) {
+	if o == nil || isNil(o.RoleRef) {
 		return nil, false
 	}
-	return o.RoleName, true
+	return o.RoleRef, true
 }
 
-// HasRoleName returns a boolean if a field has been set.
-func (o *RoleMatchDto) HasRoleName() bool {
-	if o != nil && !isNil(o.RoleName) {
+// HasRoleRef returns a boolean if a field has been set.
+func (o *RoleMatchDto) HasRoleRef() bool {
+	if o != nil && !isNil(o.RoleRef) {
 		return true
 	}
 
 	return false
 }
 
-// SetRoleName gets a reference to the given string and assigns it to the RoleName field.
-func (o *RoleMatchDto) SetRoleName(v string) {
-	o.RoleName = &v
+// SetRoleRef gets a reference to the given BaseReferenceDto and assigns it to the RoleRef field.
+func (o *RoleMatchDto) SetRoleRef(v BaseReferenceDto) {
+	o.RoleRef = &v
 }
 
 // GetMatchedAttributes returns the MatchedAttributes field value if set, zero value otherwise.
@@ -118,8 +117,8 @@ func (o RoleMatchDto) MarshalJSON() ([]byte, error) {
 
 func (o RoleMatchDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.RoleName) {
-		toSerialize["roleName"] = o.RoleName
+	if !isNil(o.RoleRef) {
+		toSerialize["roleRef"] = o.RoleRef
 	}
 	if !isNil(o.MatchedAttributes) {
 		toSerialize["matchedAttributes"] = o.MatchedAttributes
@@ -142,7 +141,7 @@ func (o *RoleMatchDto) UnmarshalJSON(bytes []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "roleName")
+		delete(additionalProperties, "roleRef")
 		delete(additionalProperties, "matchedAttributes")
 		o.AdditionalProperties = additionalProperties
 	}

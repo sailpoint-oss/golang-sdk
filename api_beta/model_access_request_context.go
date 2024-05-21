@@ -19,8 +19,7 @@ var _ MappedNullable = &AccessRequestContext{}
 
 // AccessRequestContext struct for AccessRequestContext
 type AccessRequestContext struct {
-	RequestedContext []ContextAttributeDto `json:"requestedContext,omitempty"`
-	AssignedContext []RoleMatchDto `json:"assignedContext,omitempty"`
+	ContextAttributes []ContextAttributeDto `json:"contextAttributes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -43,68 +42,36 @@ func NewAccessRequestContextWithDefaults() *AccessRequestContext {
 	return &this
 }
 
-// GetRequestedContext returns the RequestedContext field value if set, zero value otherwise.
-func (o *AccessRequestContext) GetRequestedContext() []ContextAttributeDto {
-	if o == nil || isNil(o.RequestedContext) {
+// GetContextAttributes returns the ContextAttributes field value if set, zero value otherwise.
+func (o *AccessRequestContext) GetContextAttributes() []ContextAttributeDto {
+	if o == nil || isNil(o.ContextAttributes) {
 		var ret []ContextAttributeDto
 		return ret
 	}
-	return o.RequestedContext
+	return o.ContextAttributes
 }
 
-// GetRequestedContextOk returns a tuple with the RequestedContext field value if set, nil otherwise
+// GetContextAttributesOk returns a tuple with the ContextAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessRequestContext) GetRequestedContextOk() ([]ContextAttributeDto, bool) {
-	if o == nil || isNil(o.RequestedContext) {
+func (o *AccessRequestContext) GetContextAttributesOk() ([]ContextAttributeDto, bool) {
+	if o == nil || isNil(o.ContextAttributes) {
 		return nil, false
 	}
-	return o.RequestedContext, true
+	return o.ContextAttributes, true
 }
 
-// HasRequestedContext returns a boolean if a field has been set.
-func (o *AccessRequestContext) HasRequestedContext() bool {
-	if o != nil && !isNil(o.RequestedContext) {
+// HasContextAttributes returns a boolean if a field has been set.
+func (o *AccessRequestContext) HasContextAttributes() bool {
+	if o != nil && !isNil(o.ContextAttributes) {
 		return true
 	}
 
 	return false
 }
 
-// SetRequestedContext gets a reference to the given []ContextAttributeDto and assigns it to the RequestedContext field.
-func (o *AccessRequestContext) SetRequestedContext(v []ContextAttributeDto) {
-	o.RequestedContext = v
-}
-
-// GetAssignedContext returns the AssignedContext field value if set, zero value otherwise.
-func (o *AccessRequestContext) GetAssignedContext() []RoleMatchDto {
-	if o == nil || isNil(o.AssignedContext) {
-		var ret []RoleMatchDto
-		return ret
-	}
-	return o.AssignedContext
-}
-
-// GetAssignedContextOk returns a tuple with the AssignedContext field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccessRequestContext) GetAssignedContextOk() ([]RoleMatchDto, bool) {
-	if o == nil || isNil(o.AssignedContext) {
-		return nil, false
-	}
-	return o.AssignedContext, true
-}
-
-// HasAssignedContext returns a boolean if a field has been set.
-func (o *AccessRequestContext) HasAssignedContext() bool {
-	if o != nil && !isNil(o.AssignedContext) {
-		return true
-	}
-
-	return false
-}
-
-// SetAssignedContext gets a reference to the given []RoleMatchDto and assigns it to the AssignedContext field.
-func (o *AccessRequestContext) SetAssignedContext(v []RoleMatchDto) {
-	o.AssignedContext = v
+// SetContextAttributes gets a reference to the given []ContextAttributeDto and assigns it to the ContextAttributes field.
+func (o *AccessRequestContext) SetContextAttributes(v []ContextAttributeDto) {
+	o.ContextAttributes = v
 }
 
 func (o AccessRequestContext) MarshalJSON() ([]byte, error) {
@@ -117,11 +84,8 @@ func (o AccessRequestContext) MarshalJSON() ([]byte, error) {
 
 func (o AccessRequestContext) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.RequestedContext) {
-		toSerialize["requestedContext"] = o.RequestedContext
-	}
-	if !isNil(o.AssignedContext) {
-		toSerialize["assignedContext"] = o.AssignedContext
+	if !isNil(o.ContextAttributes) {
+		toSerialize["contextAttributes"] = o.ContextAttributes
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -141,8 +105,7 @@ func (o *AccessRequestContext) UnmarshalJSON(bytes []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "requestedContext")
-		delete(additionalProperties, "assignedContext")
+		delete(additionalProperties, "contextAttributes")
 		o.AdditionalProperties = additionalProperties
 	}
 
