@@ -648,7 +648,7 @@ type ApiGetHistoricalIdentityEventsRequest struct {
 	count *bool
 }
 
-// The optional instant from which to return the access events
+// The optional instant until which access events are returned
 func (r ApiGetHistoricalIdentityEventsRequest) From(from string) ApiGetHistoricalIdentityEventsRequest {
 	r.from = &from
 	return r

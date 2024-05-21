@@ -277,7 +277,7 @@ import (
 
 func main() {
     id := "8c190e6787aa4ed9a90bd9d5344523fb" // string | The identity id
-    from := "2007-03-01T13:00:00Z" // string | The optional instant from which to return the access events (optional)
+    from := "2024-03-01T13:00:00Z" // string | The optional instant until which access events are returned (optional)
     eventTypes := []string{"Inner_example"} // []string | An optional list of event types to return.  If null or empty, all events are returned (optional)
     accessItemTypes := []string{"Inner_example"} // []string | An optional list of access item types (app, account, entitlement, etc...) to return.   If null or empty, all access items types are returned (optional)
     limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
@@ -312,7 +312,7 @@ Other parameters are passed through a pointer to a apiGetHistoricalIdentityEvent
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **from** | **string** | The optional instant from which to return the access events | 
+ **from** | **string** | The optional instant until which access events are returned | 
  **eventTypes** | **[]string** | An optional list of event types to return.  If null or empty, all events are returned | 
  **accessItemTypes** | **[]string** | An optional list of access item types (app, account, entitlement, etc...) to return.   If null or empty, all access items types are returned | 
  **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
