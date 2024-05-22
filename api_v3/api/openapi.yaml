@@ -59254,6 +59254,7 @@ components:
           description: Email of the owner
           example: mr.manager@example.com
           type: string
+      readOnly: true
       type: object
     AccessSummary_access:
       example:

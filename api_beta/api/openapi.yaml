@@ -80471,6 +80471,7 @@ components:
           description: Email of the owner
           example: mr.manager@example.com
           type: string
+      readOnly: true
       type: object
     Schedule_months:
       description: |
