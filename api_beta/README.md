@@ -503,6 +503,7 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**UpdateSource**](docs/SourcesAPI.md#updatesource) | **Patch** /sources/{id} | Update Source (Partial)
 *SourcesAPI* | [**UpdateSourceEntitlementRequestConfig**](docs/SourcesAPI.md#updatesourceentitlementrequestconfig) | **Put** /sources/{id}/entitlement-request-config | Update Source Entitlement Request Configuration
 *SourcesAPI* | [**UpdateSourceSchema**](docs/SourcesAPI.md#updatesourceschema) | **Patch** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Partial)
+*SourcesUncorrelatedAccountsAPI* | [**ImportUncorrelatedAccounts**](docs/SourcesUncorrelatedAccountsAPI.md#importuncorrelatedaccounts) | **Post** /sources/{id}/load-uncorrelated-accounts | Process Uncorrelated Accounts
 *SuggestedEntitlementDescriptionAPI* | [**GetSedBatchStats**](docs/SuggestedEntitlementDescriptionAPI.md#getsedbatchstats) | **Get** /suggested-entitlement-description-batches/{batchId}/stats | Submit Sed Batch Stats Request
 *SuggestedEntitlementDescriptionAPI* | [**GetSedBatches**](docs/SuggestedEntitlementDescriptionAPI.md#getsedbatches) | **Get** /suggested-entitlement-description-batches | List Sed Batch Request
 *SuggestedEntitlementDescriptionAPI* | [**ListSeds**](docs/SuggestedEntitlementDescriptionAPI.md#listseds) | **Get** /suggested-entitlement-descriptions | List Suggested Entitlement Description
@@ -993,6 +994,10 @@ Class | Method | HTTP request | Description
  - [LoadAccountsTaskTaskReturnsInner](docs/LoadAccountsTaskTaskReturnsInner.md)
  - [LoadEntitlementTask](docs/LoadEntitlementTask.md)
  - [LoadEntitlementTaskReturnsInner](docs/LoadEntitlementTaskReturnsInner.md)
+ - [LoadUncorrelatedAccountsTask](docs/LoadUncorrelatedAccountsTask.md)
+ - [LoadUncorrelatedAccountsTaskTask](docs/LoadUncorrelatedAccountsTaskTask.md)
+ - [LoadUncorrelatedAccountsTaskTaskAttributes](docs/LoadUncorrelatedAccountsTaskTaskAttributes.md)
+ - [LoadUncorrelatedAccountsTaskTaskMessagesInner](docs/LoadUncorrelatedAccountsTaskTaskMessagesInner.md)
  - [LocaleOrigin](docs/LocaleOrigin.md)
  - [LocalizedMessage](docs/LocalizedMessage.md)
  - [LookupStep](docs/LookupStep.md)
