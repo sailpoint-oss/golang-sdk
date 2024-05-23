@@ -1298,7 +1298,7 @@ type ApiListIdentityCertificationsRequest struct {
 	sorters *string
 }
 
-// The ID of reviewer identity. *me* indicates the current user.
+// Reviewer&#39;s identity. *me* indicates the current user.
 func (r ApiListIdentityCertificationsRequest) ReviewerIdentity(reviewerIdentity string) ApiListIdentityCertificationsRequest {
 	r.reviewerIdentity = &reviewerIdentity
 	return r
@@ -1339,9 +1339,9 @@ func (r ApiListIdentityCertificationsRequest) Execute() ([]IdentityCertification
 }
 
 /*
-ListIdentityCertifications Identity Campaign Certifications by IDs
+ListIdentityCertifications List Identity Campaign Certifications
 
-This API returns a list of identity campaign certifications that satisfy the given query parameters. Any authenticated token can call this API, but only certifications you are authorized to review will be returned. This API does not support requests for certifications assigned to Governance Groups.
+Use this API to get a list of identity campaign certifications for the specified query parameters. Any authenticated token can call this API, but only certifications you are authorized to review will be returned. This API does not support requests for certifications assigned to governance groups.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListIdentityCertificationsRequest

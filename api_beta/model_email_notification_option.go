@@ -38,6 +38,12 @@ type _EmailNotificationOption EmailNotificationOption
 // will change when the set of required properties is changed
 func NewEmailNotificationOption() *EmailNotificationOption {
 	this := EmailNotificationOption{}
+	var notifyManagers bool = false
+	this.NotifyManagers = &notifyManagers
+	var notifyAllAdmins bool = false
+	this.NotifyAllAdmins = &notifyAllAdmins
+	var notifySpecificUsers bool = false
+	this.NotifySpecificUsers = &notifySpecificUsers
 	return &this
 }
 
@@ -46,6 +52,12 @@ func NewEmailNotificationOption() *EmailNotificationOption {
 // but it doesn't guarantee that properties required by API are set
 func NewEmailNotificationOptionWithDefaults() *EmailNotificationOption {
 	this := EmailNotificationOption{}
+	var notifyManagers bool = false
+	this.NotifyManagers = &notifyManagers
+	var notifyAllAdmins bool = false
+	this.NotifyAllAdmins = &notifyAllAdmins
+	var notifySpecificUsers bool = false
+	this.NotifySpecificUsers = &notifySpecificUsers
 	return &this
 }
 

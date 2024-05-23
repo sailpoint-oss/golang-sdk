@@ -29,11 +29,11 @@ type LifecycleState struct {
 	Created *time.Time `json:"created,omitempty"`
 	// Last modification date of the Object
 	Modified *time.Time `json:"modified,omitempty"`
-	// Whether the lifecycle state is enabled or disabled.
+	// Indicates whether the lifecycle state is enabled or disabled.
 	Enabled *bool `json:"enabled,omitempty"`
-	// The technical name for lifecycle state. This is for internal use.
+	// The lifecycle state's technical name. This is for internal use.
 	TechnicalName string `json:"technicalName"`
-	// Lifecycle state description.
+	// Lifecycle state's description.
 	Description *string `json:"description,omitempty"`
 	// Number of identities that have the lifecycle state.
 	IdentityCount *int32 `json:"identityCount,omitempty"`
@@ -41,6 +41,8 @@ type LifecycleState struct {
 	AccountActions []AccountAction `json:"accountActions,omitempty"`
 	// List of unique access-profile IDs that are associated with the lifecycle state.
 	AccessProfileIds []string `json:"accessProfileIds,omitempty"`
+	// The lifecycle state's associated identity state. This field is generally 'null'.
+	IdentityState NullableString `json:"identityState,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -53,6 +55,8 @@ type _LifecycleState LifecycleState
 func NewLifecycleState(name string, technicalName string) *LifecycleState {
 	this := LifecycleState{}
 	this.Name = name
+	var enabled bool = false
+	this.Enabled = &enabled
 	this.TechnicalName = technicalName
 	return &this
 }
@@ -62,6 +66,8 @@ func NewLifecycleState(name string, technicalName string) *LifecycleState {
 // but it doesn't guarantee that properties required by API are set
 func NewLifecycleStateWithDefaults() *LifecycleState {
 	this := LifecycleState{}
+	var enabled bool = false
+	this.Enabled = &enabled
 	return &this
 }
 
@@ -401,6 +407,48 @@ func (o *LifecycleState) SetAccessProfileIds(v []string) {
 	o.AccessProfileIds = v
 }
 
+// GetIdentityState returns the IdentityState field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *LifecycleState) GetIdentityState() string {
+	if o == nil || isNil(o.IdentityState.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.IdentityState.Get()
+}
+
+// GetIdentityStateOk returns a tuple with the IdentityState field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *LifecycleState) GetIdentityStateOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.IdentityState.Get(), o.IdentityState.IsSet()
+}
+
+// HasIdentityState returns a boolean if a field has been set.
+func (o *LifecycleState) HasIdentityState() bool {
+	if o != nil && o.IdentityState.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIdentityState gets a reference to the given NullableString and assigns it to the IdentityState field.
+func (o *LifecycleState) SetIdentityState(v string) {
+	o.IdentityState.Set(&v)
+}
+// SetIdentityStateNil sets the value for IdentityState to be an explicit nil
+func (o *LifecycleState) SetIdentityStateNil() {
+	o.IdentityState.Set(nil)
+}
+
+// UnsetIdentityState ensures that no value is present for IdentityState, not even an explicit nil
+func (o *LifecycleState) UnsetIdentityState() {
+	o.IdentityState.Unset()
+}
+
 func (o LifecycleState) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -431,6 +479,9 @@ func (o LifecycleState) ToMap() (map[string]interface{}, error) {
 	}
 	if !isNil(o.AccessProfileIds) {
 		toSerialize["accessProfileIds"] = o.AccessProfileIds
+	}
+	if o.IdentityState.IsSet() {
+		toSerialize["identityState"] = o.IdentityState.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -483,6 +534,7 @@ func (o *LifecycleState) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "emailNotificationOption")
 		delete(additionalProperties, "accountActions")
 		delete(additionalProperties, "accessProfileIds")
+		delete(additionalProperties, "identityState")
 		o.AdditionalProperties = additionalProperties
 	}
 

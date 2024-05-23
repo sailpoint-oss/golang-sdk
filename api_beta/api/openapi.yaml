@@ -2331,24 +2331,27 @@ paths:
       - Access Profiles
   /access-requests:
     post:
-      description: "This submits the access request into IdentityNow, where it will\
-        \ follow any IdentityNow approval processes.\n\nAccess requests are processed\
-        \ asynchronously by IdentityNow.  A success response from this endpoint means\
-        \ the request\nhas been submitted to IDN and is queued for processing.  Because\
-        \ this endpoint is asynchronous, it will not return an error\nif you submit\
-        \ duplicate access requests in quick succession, or you submit an access request\
-        \ for access that is already in progress, approved, or rejected.\nIt is best\
-        \ practice to check for any existing access requests that reference the same\
-        \ access items before submitting a new access request.  This can\nbe accomplished\
-        \ by using the [access request status](https://developer.sailpoint.com/idn/api/v3/list-access-request-status)\
-        \ or the [pending access request approvals](https://developer.sailpoint.com/idn/api/v3/list-pending-approvals)\
-        \ endpoints.  You can also\nuse the [search API](https://developer.sailpoint.com/idn/api/v3/search)\
-        \ to check the existing access items that an identity has before submitting\n\
-        an access request to ensure you are not requesting access that is already\
-        \ granted.\n\nThere are two types of access request:\n\n__GRANT_ACCESS__\n\
-        * Can be requested for multiple identities in a single request.\n* Supports\
-        \ self request and request on behalf of other users. Refer to the [Get Access\
-        \ Request Configuration](https://developer.sailpoint.com/idn/api/v3/get-access-request-config)\
+      description: "Use this API to submit an access request in Identity Security\
+        \ Cloud (ISC), where it follows any ISC approval processes.\n\nAccess requests\
+        \ are processed asynchronously by ISC. A successful response from this endpoint\
+        \ means that the request\nhas been submitted to ISC and is queued for processing.\
+        \ Because this endpoint is asynchronous, it doesn't return an error\nif you\
+        \ submit duplicate access requests in quick succession or submit an access\
+        \ request for access that is already in progress, approved, or rejected.\n\
+        \nIt's best practice to check for any existing access requests that reference\
+        \ the same access items before submitting a new access request. This can\n\
+        be accomplished by using the [List Access Request Status](https://developer.sailpoint.com/idn/api/v3/list-access-request-status)\
+        \ or the [Pending Access Request Approvals](https://developer.sailpoint.com/idn/api/v3/list-pending-approvals)\
+        \ APIs. You can also\nuse the [Search API](https://developer.sailpoint.com/idn/api/v3/search)\
+        \ to check the existing access items an identity has before submitting\nan\
+        \ access request to ensure that you aren't requesting access that is already\
+        \ granted. If you use this API to request access that an identity already\
+        \ has, the API will ignore the request. \nThese ignored requests do not display\
+        \ when you use the [List Access Request Status](https://developer.sailpoint.com/idn/api/v3/list-access-request-status)\
+        \ API.\n\nThere are two types of access request:\n\n__GRANT_ACCESS__\n* Can\
+        \ be requested for multiple identities in a single request.\n* Supports self\
+        \ request and request on behalf of other users. Refer to the [Get Access Request\
+        \ Configuration](https://developer.sailpoint.com/idn/api/v3/get-access-request-config)\
         \ endpoint for request configuration options.  \n* Allows any authenticated\
         \ token (except API) to call this endpoint to request to grant access to themselves.\
         \ Depending on the configuration, a user can request access for others.\n\
@@ -2367,10 +2370,8 @@ paths:
         \ a `removeDate` if the access doesn't already have a sunset date. The `removeDate`\
         \ must be a future date, in the UTC timezone. \n* Allows a manager to request\
         \ to revoke access for direct employees. A token with ORG_ADMIN authority\
-        \ can also request to revoke access from anyone.\n\n>**Note:** There is no\
-        \ indication to the approver in the IdentityNow UI that the approval request\
-        \ is for a revoke action. Take this into consideration when calling this API.\n\
-        \nA token with API authority cannot be used to call this endpoint. \n"
+        \ can also request to revoke access from anyone.\n\nA token with API authority\
+        \ cannot be used to call this endpoint. \n"
       operationId: createAccessRequest
       requestBody:
         content:
@@ -2445,7 +2446,7 @@ paths:
       security:
       - UserContextAuth:
         - idn:access-request:create
-      summary: Submit an Access Request
+      summary: Submit Access Request
       tags:
       - Access Requests
   /access-requests/cancel:
@@ -2801,19 +2802,20 @@ paths:
   /access-request-status:
     get:
       description: |-
-        The Access Request Status API returns a list of access request statuses based on the specified query parameters.
+        Use this API to return a list of access request statuses based on the specified query parameters.
+        If an access request was made for access that an identity already has, the API ignores the access request.  These ignored requests do not display in the list of access request statuses.
         Any token with any authority can request their own status. A token with ORG_ADMIN authority is required to call this API to get a list of statuses for other users.
       operationId: listAccessRequestStatus
       parameters:
-      - description: Filter the results by the identity for which the requests were
-          made. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
+      - description: Filter the results by the identity the requests were made for.
+          *me* indicates the current user. Mutually exclusive with *regarding-identity*.
         example: 2c9180877b2b6ea4017b2c545f971429
         in: query
         name: requested-for
         required: false
         schema:
           type: string
-      - description: Filter the results by the identity that made the requests. *me*
+      - description: Filter the results by the identity twho made the requests. *me*
           indicates the current user. Mutually exclusive with *regarding-identity*.
         example: 2c9180877b2b6ea4017b2c545f971429
         in: query
@@ -2821,16 +2823,16 @@ paths:
         required: false
         schema:
           type: string
-      - description: Filter the results by the specified identity which is either
-          the requester or target of the requests. *me* indicates the current user.
-          Mutually exclusive with *requested-for* and *requested-by*.
+      - description: Filter the results by the specified identity who is either the
+          requester or target of the requests. *me* indicates the current user. Mutually
+          exclusive with *requested-for* and *requested-by*.
         example: 2c9180877b2b6ea4017b2c545f971429
         in: query
         name: regarding-identity
         required: false
         schema:
           type: string
-      - description: Filter the results by the specified identity which is the owner
+      - description: Filter the results by the specified identity who is the owner
           of the Identity Request Work Item. *me* indicates the current user.
         example: 2c9180877b2b6ea4017b2c545f971429
         in: query
@@ -2838,9 +2840,9 @@ paths:
         required: false
         schema:
           type: string
-      - description: If *true* it will populate the *X-Total-Count* response header
-          with the number of results that would be returned if *limit* and *offset*
-          were ignored.
+      - description: "If this is true, the *X-Total-Count* response header populates\
+          \ with the number of results that would be returned if limit and offset\
+          \ were ignored."
         example: false
         in: query
         name: count
@@ -2900,7 +2902,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/RequestedItemStatus'
                 type: array
-          description: List of requested item status.
+          description: List of requested item statuses.
         "400":
           content:
             application/json:
@@ -7417,8 +7419,10 @@ paths:
   /campaigns:
     get:
       deprecated: true
-      description: Gets campaigns and returns them in a list. Can provide increased
-        level of detail for each campaign if provided the correct query.
+      description: "Use this API to get a list of campaigns. The API can provide increased\
+        \ level of detail for each campaign for the correct provided query. Though\
+        \ this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-active-campaigns).\
+        \ - UserContextAuth: []"
       operationId: getActiveCampaigns
       parameters:
       - description: "Determines whether slim, or increased level of detail is provided\
@@ -7510,8 +7514,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/getActiveCampaigns_200_response_inner'
                 type: array
-          description: A list of campaign objects. By default list of SLIM campaigns
-            is returned.
+          description: "List of campaign objects. By default, the API returns a list\
+            \ of SLIM campaigns."
         "400":
           content:
             application/json:
@@ -7568,15 +7572,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      security:
-      - UserContextAuth: []
       summary: List Campaigns
       tags:
       - Certification Campaigns
     post:
       deprecated: true
-      description: Creates a new Certification Campaign with the information provided
-        in the request body.
+      description: "Use this API to create a certification campaign with the information\
+        \ provided in the request body. Though this Beta endpoint has been deprecated,\
+        \ you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/create-campaign)."
       operationId: createCampaign
       requestBody:
         content:
@@ -7608,8 +7611,8 @@ paths:
                   $ref: '#/components/examples/FullCampaignRoleComposition'
               schema:
                 $ref: '#/components/schemas/Campaign'
-          description: Indicates that the campaign requested was successfully created
-            and returns its representation.
+          description: "This response indicates that the requested campaign was successfully\
+            \ created, and the API returns its representation."
         "400":
           content:
             application/json:
@@ -7669,21 +7672,23 @@ paths:
       security:
       - UserContextAuth:
         - idn:campaign:create
-      summary: Create a campaign
+      summary: Create Campaign
       tags:
       - Certification Campaigns
   /campaigns/delete:
     post:
       deprecated: true
-      description: Deletes campaigns whose Ids are specified in the provided list
-        of campaign Ids. Authorized callers must be an ORG_ADMIN or a CERT_ADMIN.
+      description: "Use this API to delete certification campaigns whose IDs are specified\
+        \ in the provided list of campaign IDs. Though this Beta endpoint has been\
+        \ deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/delete-campaigns).\
+        \ Authorized callers must be ORG_ADMINs or CERT_ADMINs."
       operationId: deleteCampaigns
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/DeleteCampaignsRequest'
-        description: The ids of the campaigns to delete.
+        description: IDs of the campaigns to delete.
         required: true
       responses:
         "202":
@@ -7770,18 +7775,20 @@ paths:
       security:
       - UserContextAuth:
         - idn:campaign:delete
-      summary: Deletes Campaigns
+      summary: Delete Campaigns
       tags:
       - Certification Campaigns
   /campaigns/{id}:
     get:
       deprecated: true
-      description: "Retrieves information for an existing campaign using the campaign's\
-        \ ID. Authorized callers must be a reviewer for this campaign, an ORG_ADMIN,\
-        \ or a CERT_ADMIN."
+      description: "Use this API to get information for an existing certification\
+        \ campaign by the campaign's ID. Though this endpoint has been deprecated,\
+        \ you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign).\
+        \ Authorized callers must be reviewers for this campaign, ORG_ADMINs, or a\
+        \ CERT_ADMINs."
       operationId: getCampaign
       parameters:
-      - description: The ID of the campaign to be retrieved
+      - description: ID of the campaign to be retrieved.
         example: 2c91808571bcfcf80171c23e4b4221fc
         in: path
         name: id
@@ -7803,7 +7810,7 @@ paths:
                   $ref: '#/components/examples/SlimCampaignRoleComposition'
               schema:
                 $ref: '#/components/schemas/slimcampaign'
-          description: A campaign object
+          description: Campaign object.
         "400":
           content:
             application/json:
@@ -7880,16 +7887,17 @@ paths:
             error.
       security:
       - UserContextAuth: []
-      summary: Get a campaign
+      summary: Get Campaign
       tags:
       - Certification Campaigns
     patch:
       deprecated: true
-      description: "Allows updating individual fields on a campaign using the [JSON\
-        \ Patch](https://tools.ietf.org/html/rfc6902) standard."
+      description: "Use this API to update individual fields on a certification campaign,\
+        \ using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Though\
+        \ this endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/beta/update-campaign)."
       operationId: updateCampaign
       parameters:
-      - description: The ID of the campaign template being modified.
+      - description: ID of the campaign template being modified.
         example: 2c91808571bcfcf80171c23e4b4221fc
         in: path
         name: id
@@ -7914,7 +7922,7 @@ paths:
           A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
           The fields that can be patched differ based on the status of the campaign.
 
-          In the *STAGED* status, the following fields can be patched:
+          When the campaign is in the *STAGED* status, you can patch these fields:
           * name
           * description
           * recommendationsEnabled
@@ -7922,7 +7930,7 @@ paths:
           * emailNotificationEnabled
           * autoRevokeAllowed
 
-          In the *ACTIVE* status, the following fields can be patched:
+          When the campaign is in the *ACTIVE* status, you can patch these fields:
           * deadline
         required: true
       responses:
@@ -7940,8 +7948,8 @@ paths:
                   $ref: '#/components/examples/SlimCampaignRoleComposition'
               schema:
                 $ref: '#/components/schemas/slimcampaign'
-          description: "Indicates the PATCH operation succeeded, and returns the campaign's\
-            \ new representation."
+          description: "This response indicates that the PATCH operation succeeded,\
+            \ and the API returns the campaign's new representation."
         "400":
           content:
             application/json:
@@ -8027,11 +8035,11 @@ paths:
     post:
       deprecated: true
       description: |-
-        Submits a job to activate the campaign with the given Id. The campaign must be staged.
-        Requires roles of CERT_ADMIN and ORG_ADMIN
+        Use this API to submit a job to activate the certified campaign with the specified ID. The campaign must be staged. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-campaign).
+        Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
       operationId: startCampaign
       parameters:
-      - description: The campaign id
+      - description: Campaign ID.
         example: ef38f94347e94562b5bb8424a56397d8
         in: path
         name: id
@@ -8150,13 +8158,13 @@ paths:
 
         :::
 
-        Completes a certification campaign. This is provided to admins so that they
-        can complete a certification even if all items have not been completed.
+        Use this API to complete a certification campaign. This functionality is provided to admins so that they
+        can complete a certification even if all items have not been completed. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/complete-campaign).
 
-        Requires roles of CERT_ADMIN and ORG_ADMIN
+        Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
       operationId: completeCampaign
       parameters:
-      - description: The campaign id
+      - description: Campaign ID.
         example: ef38f94347e94562b5bb8424a56397d8
         in: path
         name: id
@@ -8263,11 +8271,11 @@ paths:
     post:
       deprecated: true
       description: |-
-        Kicks off remediation scan task for a certification campaign.
-        Requires roles of CERT_ADMIN and ORG_ADMIN
+        Use this API to run a remediation scan task for a certification campaign. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-campaign-remediation-scan).
+        Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
       operationId: startCampaignRemediationScan
       parameters:
-      - description: The ID of the campaign for which remediation scan is being run.
+      - description: ID of the campaign the remediation scan is being run for.
         in: path
         name: id
         required: true
@@ -8482,11 +8490,11 @@ paths:
     get:
       deprecated: true
       description: |-
-        Fetches all reports for a certification campaign by campaign ID.
-        Requires roles of CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN
+        Use this API to fetch all reports for a certification campaign by campaign ID. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-reports).
+        Calling this endpoint requires roles of CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
       operationId: getCampaignReports
       parameters:
-      - description: The ID of the campaign for which reports are being fetched.
+      - description: ID of the campaign whose reports are being fetched.
         in: path
         name: id
         required: true
@@ -8586,18 +8594,18 @@ paths:
     post:
       deprecated: true
       description: |-
-        Runs a report for a certification campaign.
-        Requires the following roles: CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
+        Use this API to run a report for a certification campaign. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-campaign-report).
+        Calling this endpoint requires the following roles: CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
       operationId: startCampaignReport
       parameters:
-      - description: The ID of the campaign for which report is being run.
+      - description: ID of the campaign the report is being run for.
         in: path
         name: id
         required: true
         schema:
           example: 2c91808571bcfcf80171c23e4b4221fc
           type: string
-      - description: The type of the report to run.
+      - description: Type of report to run.
         in: path
         name: type
         required: true
@@ -8695,8 +8703,8 @@ paths:
     get:
       deprecated: true
       description: |-
-        Fetches configuration for campaign reports. Currently it includes only one element - identity attributes defined as custom report columns.
-        Requires roles of CERT_ADMIN and ORG_ADMIN.
+        Use this API to fetch the configuration for certification campaign reports. The configuration includes only one element - identity attributes defined as custom report columns. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-reports-config).
+        Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
       operationId: getCampaignReportsConfig
       responses:
         "200":
@@ -8704,7 +8712,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CampaignReportsConfig'
-          description: Campaign Report Configuration
+          description: Campaign report configuration.
         "400":
           content:
             application/json:
@@ -8770,15 +8778,15 @@ paths:
     put:
       deprecated: true
       description: |-
-        Overwrites configuration for campaign reports.
-        Requires roles CERT_ADMIN and ORG_ADMIN.
+        Use this API to overwrite the configuration for campaign reports. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/set-campaign-reports-config).
+        Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
       operationId: setCampaignReportsConfig
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/CampaignReportsConfig'
-        description: Campaign Report Configuration
+        description: Campaign report configuration.
         required: true
       responses:
         "200":
@@ -8786,7 +8794,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CampaignReportsConfig'
-          description: The persisted Campaign Report Configuration
+          description: The persisted campaign report configuration.
         "400":
           content:
             application/json:
@@ -8852,11 +8860,11 @@ paths:
   /campaign-templates:
     get:
       deprecated: true
-      description: |-
-        Lists all CampaignTemplates. Scope can be reduced via standard V3 query params.
-
-        All CampaignTemplates matching the query params
-      operationId: listCampaignTemplates
+      description: "Use this API to get a list of all campaign templates. Scope can\
+        \ be reduced through standard V3 query params. Though this Beta endpoint has\
+        \ been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/list-campaign-templates).\n\
+        The endpoint returns all campaign templates matching the query parameters. "
+      operationId: getCampaignTemplates
       parameters:
       - description: |-
           Max number of results to return.
@@ -8930,7 +8938,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/CampaignTemplate'
                 type: array
-          description: List of campaign template objects
+          description: List of campaign template objects.
         "400":
           content:
             application/json:
@@ -8995,7 +9003,9 @@ paths:
       - Certification Campaigns
     post:
       deprecated: true
-      description: Create a campaign Template based on campaign.
+      description: "Use this API to create a campaign template based on campaign.\
+        \ Though this Beta endpoint has been deprecated, you can find its V3 equivalent\
+        \ [here](https://developer.sailpoint.com/docs/api/v3/create-campaign-template)."
       operationId: createCampaignTemplate
       requestBody:
         content:
@@ -9093,10 +9103,12 @@ paths:
   /campaign-templates/{id}:
     delete:
       deprecated: true
-      description: Deletes a campaign template by ID.
+      description: "Use this API to delete a certification campaign template by ID.\
+        \ Though this Beta endpoint has been deprecated, you can find its V3 equivalent\
+        \ [here](https://developer.sailpoint.com/docs/api/v3/delete-campaign-template)."
       operationId: deleteCampaignTemplate
       parameters:
-      - description: The ID of the campaign template being deleted.
+      - description: ID of the campaign template being deleted.
         example: 2c9180835d191a86015d28455b4a2329
         in: path
         name: id
@@ -9189,10 +9201,12 @@ paths:
       - Certification Campaigns
     get:
       deprecated: true
-      description: Fetches a campaign template by ID.
+      description: "Use this API to fetch a certification campaign template by ID.\
+        \ Though this Beta endpoint has been deprecated, you can find its V3 equivalent\
+        \ [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-template)."
       operationId: getCampaignTemplate
       parameters:
-      - description: The desired campaign template's ID.
+      - description: Requested campaign template's ID.
         example: 2c9180835d191a86015d28455b4a2329
         in: path
         name: id
@@ -9214,7 +9228,7 @@ paths:
                   $ref: '#/components/examples/CampaignTemplateRoleComposition'
               schema:
                 $ref: '#/components/schemas/CampaignTemplate'
-          description: The data for the campaign matching the given ID.
+          description: Data for the campaign matching the given ID.
         "400":
           content:
             application/json:
@@ -9297,11 +9311,13 @@ paths:
       - Certification Campaigns
     patch:
       deprecated: true
-      description: "Allows updating individual fields on a campaign template using\
-        \ the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard."
+      description: "Use this API to update individual fields on a certification campaign\
+        \ template, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.\
+        \ Though this Beta endpoint has been deprecated, you can find its V3 equivalent\
+        \ [here](https://developer.sailpoint.com/docs/api/v3/patch-campaign-template)."
       operationId: patchCampaignTemplate
       parameters:
-      - description: The ID of the campaign template being modified.
+      - description: ID of the campaign template being modified.
         example: 2c9180835d191a86015d28455b4a2329
         in: path
         name: id
@@ -9346,8 +9362,8 @@ paths:
                   $ref: '#/components/examples/CampaignTemplateRoleComposition'
               schema:
                 $ref: '#/components/schemas/CampaignTemplate'
-          description: "Indicates the PATCH operation succeeded, and returns the template's\
-            \ new representation."
+          description: "This response indicates that the PATCH operation succeeded,\
+            \ and the API returns the template's new representation."
         "400":
           content:
             application/json:
@@ -9432,14 +9448,15 @@ paths:
     post:
       deprecated: true
       description: |-
-        Generates a new campaign from a campaign template.
-        The campaign object contained in the template has special formatting applied to its name and description fields in order to determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation.
-        Placeholders consist of a percent sign followed by a letter indicating what should be inserted; for example, "%Y" will insert the current year; a campaign template named "Campaign for %y" would generate a campaign called "Campaign for 2020" (assuming the year at generation time is 2020).
+        Use this API to generate a new certification campaign from a campaign template.
+        The campaign object contained in the template has special formatting applied to its name and description fields that determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation.
+        Placeholders consist of a percent sign followed by a letter indicating what should be inserted. For example, "%Y" inserts the current year, and a campaign template named "Campaign for %y" generates a campaign called "Campaign for 2020" (assuming the year at generation time is 2020).
         Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html).
-        Requires roles ORG_ADMIN.
+        Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-generate-campaign-template).
+        Calling this endpoint requires the ORG_ADMIN role.
       operationId: startGenerateCampaignTemplate
       parameters:
-      - description: The ID of the campaign template to use for generation.
+      - description: ID of the campaign template to use for generation.
         example: 2c9180835d191a86015d28455b4a2329
         in: path
         name: id
@@ -9452,8 +9469,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CampaignReference'
-          description: "Indicates a campaign was successfully generated from this\
-            \ template, and returns a reference to the new campaign."
+          description: "This response indicates that a campaign was successfully generated\
+            \ from this template, and the API returns a reference to the new campaign."
         "400":
           content:
             application/json:
@@ -9519,11 +9536,12 @@ paths:
   /campaign-templates/{id}/schedule:
     delete:
       deprecated: true
-      description: Deletes the schedule for a campaign template. Returns a 404 if
-        there is no schedule set.
+      description: "Use this API to delete the schedule for a certification campaign\
+        \ template. The API returns a 404 if there is no schedule set. Though this\
+        \ Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/delete-campaign-template-schedule)."
       operationId: deleteCampaignTemplateSchedule
       parameters:
-      - description: The ID of the campaign template whose schedule is being deleted.
+      - description: ID of the campaign template whose schedule is being deleted.
         example: 04bedce387bd47b2ae1f86eb0bb36dee
         in: path
         name: id
@@ -9611,16 +9629,17 @@ paths:
       security:
       - UserContextAuth:
         - idn:campaign-template:run
-      summary: Deletes a Campaign Template's Schedule
+      summary: Delete Campaign Template Schedule
       tags:
       - Certification Campaigns
     get:
       deprecated: true
-      description: Gets the schedule for a campaign template. Returns a 404 if there
-        is no schedule set.
+      description: "Use this API to get the schedule for a certification campaign\
+        \ template. The API returns a 404 if there is no schedule set. Though this\
+        \ Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-template-schedule)."
       operationId: getCampaignTemplateSchedule
       parameters:
-      - description: The ID of the campaign template whose schedule is being fetched.
+      - description: ID of the campaign template whose schedule is being fetched.
         example: 04bedce387bd47b2ae1f86eb0bb36dee
         in: path
         name: id
@@ -9633,8 +9652,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Schedule'
-          description: The current schedule for the campaign template. See the PUT
-            endpoint documentation for more examples.
+          description: "Current schedule for the campaign template. See the [Set Campaign\
+            \ Template Schedule endpoint documentation](https://developer.sailpoint.com/docs/api/beta/set-campaign-template-schedule)\
+            \ for more examples."
         "400":
           content:
             application/json:
@@ -9712,16 +9732,18 @@ paths:
       security:
       - UserContextAuth:
         - idn:campaign-template:read
-      summary: Gets a Campaign Template's Schedule
+      summary: Get Campaign Template Schedule
       tags:
       - Certification Campaigns
     put:
       deprecated: true
-      description: "Sets the schedule for a campaign template. If a schedule already\
-        \ exists, it will be overwritten with the new one."
+      description: "Use this API to set the schedule for a certification campaign\
+        \ template. If a schedule already exists, the API overwrites it with the new\
+        \ one.  Though this Beta endpoint has been deprecated, you can find its V3\
+        \ equivalent [here](https://developer.sailpoint.com/docs/api/v3/set-campaign-template-schedule)."
       operationId: setCampaignTemplateSchedule
       parameters:
-      - description: The ID of the campaign template being scheduled.
+      - description: ID of the campaign template being scheduled.
         example: 04bedce387bd47b2ae1f86eb0bb36dee
         in: path
         name: id
@@ -9882,7 +9904,7 @@ paths:
       security:
       - UserContextAuth:
         - idn:campaign-template:run
-      summary: Sets a Campaign Template's Schedule
+      summary: Set Campaign Template Schedule
       tags:
       - Certification Campaigns
   /certifications/{id}/reassign-async:
@@ -17931,19 +17953,20 @@ paths:
       - Identity Profiles
   /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id}:
     get:
-      description: |
-        This endpoint returns a lifecycle state.
-
-        A token with ORG_ADMIN or API authority is required to call this API.
-      operationId: listLifecycleStates
+      description: "Use this endpoint to get a lifecycle state by its ID and its associated\
+        \ identity profile ID. \n\nA token with ORG_ADMIN or API authority is required\
+        \ to call this API.\n"
+      operationId: getLifecycleStates
       parameters:
-      - description: Identity Profile ID
+      - description: Identity Profile ID.
+        example: 2b838de9-db9b-abcf-e646-d4f274ad4238
         in: path
         name: identity-profile-id
         required: true
         schema:
           type: string
-      - description: Lifecycle State ID
+      - description: Lifecycle State ID.
+        example: ef38f94347e94562b5bb8424a56397d8
         in: path
         name: lifecycle-state-id
         required: true
@@ -17955,7 +17978,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/LifecycleState'
-          description: lifecycle-state
+          description: Requested lifecycle state.
         "400":
           content:
             application/json:
@@ -18012,23 +18035,25 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Lifecycle State
+      summary: Get Lifecycle State
       tags:
       - Lifecycle States
     patch:
       description: |
-        This API updates individual lifecycle state fields using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+        Use this endpoint to update individual lifecycle state fields, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
         A token with ORG_ADMIN or API authority is required to call this API.
       operationId: updateLifecycleStates
       parameters:
-      - description: Identity Profile ID
+      - description: Identity Profile ID.
+        example: 2b838de9-db9b-abcf-e646-d4f274ad4238
         in: path
         name: identity-profile-id
         required: true
         schema:
           type: string
-      - description: Lifecycle State ID
+      - description: Lifecycle State ID.
+        example: ef38f94347e94562b5bb8424a56397d8
         in: path
         name: lifecycle-state-id
         required: true
@@ -18083,7 +18108,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/LifecycleState'
-          description: Updated lifecycle-state.
+          description: Updated lifecycle state.
         "400":
           content:
             application/json:
@@ -33904,11 +33929,11 @@ paths:
       tags:
       - Roles
     post:
-      description: "This API creates a role.\nYou must have a token with API, ORG_ADMIN,\
-        \ ROLE_ADMIN, or ROLE_SUBADMIN authority to call this API. \nIn addition,\
+      description: "This API creates a role.\n\nYou must have a token with API, ORG_ADMIN,\
+        \ ROLE_ADMIN, or ROLE_SUBADMIN authority to call this API. \n\nIn addition,\
         \ a ROLE_SUBADMIN may not create a role including an access profile if that\
         \ access profile is associated with a source the ROLE_SUBADMIN is not associated\
-        \ with themselves. \nThe maximum supported length for the description field\
+        \ with themselves. \n\nThe maximum supported length for the description field\
         \ is 2000 characters. Longer descriptions will be preserved for existing roles.\
         \ However, any new roles as well as any updates to existing descriptions will\
         \ be limited to 2000 characters."
@@ -33993,6 +34018,7 @@ paths:
     delete:
       description: |-
         This API deletes a Role by its ID.
+
         A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
       operationId: deleteRole
       parameters:
@@ -34158,18 +34184,18 @@ paths:
       - Roles
     patch:
       description: "This API updates an existing role using [JSON Patch](https://tools.ietf.org/html/rfc6902)\
-        \ syntax.\nThe following fields are patchable: * name * description * enabled\
-        \ * owner * accessProfiles * membership * requestable * accessRequestConfig\
-        \ * revokeRequestConfig * segments\nA token with API, ORG_ADMIN, ROLE_ADMIN,\
+        \ syntax.\n\nThe following fields are patchable:\n\n* name\n* description\n\
+        * enabled\n* owner\n* accessProfiles\n* membership\n* requestable\n* accessRequestConfig\n\
+        * revokeRequestConfig\n* segments\n\nA token with API, ORG_ADMIN, ROLE_ADMIN,\
         \ or ROLE_SUBADMIN authority is required to call this API. In addition, a\
         \ token with ROLE_SUBADMIN authority may only call this API if all access\
         \ profiles included in the role are associated to Sources with management\
-        \ workgroups of which the ROLE_SUBADMIN is a member.\nThe maximum supported\
+        \ workgroups of which the ROLE_SUBADMIN is a member.\n\nThe maximum supported\
         \ length for the description field is 2000 characters. Longer descriptions\
         \ will be preserved for existing roles, however, any new roles as well as\
         \ any updates to existing descriptions will be limited to 2000 characters.\n\
-        When you use this API to modify a role's membership identities, you can only\
-        \ modify up to a limit of 500 membership identities at a time. "
+        \nWhen you use this API to modify a role's membership identities, you can\
+        \ only modify up to a limit of 500 membership identities at a time. "
       operationId: patchRole
       parameters:
       - description: ID of the Role to patch
@@ -37638,12 +37664,12 @@ paths:
   /sources/{id}:
     delete:
       description: |-
-        This end-point deletes a specific source in IdentityNow.
+        Use this API to delete a specific source in Identity Security Cloud (ISC).
+        The API removes all the accounts on the source first, and then it deletes the source. You can retrieve the actual task execution status with this method: GET `/task-status/{id}`
         A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
-        All of accounts on the source will be removed first, then the source will be deleted. Actual status of task execution can be retrieved via method GET `/task-status/{id}`
       operationId: delete
       parameters:
-      - description: The Source ID
+      - description: Source ID.
         example: 2c9180835d191a86015d28455b4a2329
         in: path
         name: id
@@ -37656,7 +37682,7 @@ paths:
             application/json:
               examples:
                 deleteSource:
-                  summary: Response returned when deleting a source
+                  summary: Response returned when a source is being deleted.
                   value:
                     type: TASK_RESULT
                     id: 2c91808779ecf55b0179f720942f181a
@@ -37747,11 +37773,11 @@ paths:
       - Sources
     get:
       description: |-
-        This end-point gets a specific source in IdentityNow.
+        Use this API to get a source by a specified ID in Identity Security Cloud (ISC).
         A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
       operationId: getSource
       parameters:
-      - description: The Source ID
+      - description: Source ID.
         example: 2c9180835d191a86015d28455b4a2329
         in: path
         name: id
@@ -37764,7 +37790,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Source'
-          description: A Source object
+          description: Source object.
         "400":
           content:
             application/json:
@@ -37847,10 +37873,10 @@ paths:
       - Sources
     patch:
       description: |
-        This API partially updates a source in IdentityNow, using a list of patch operations according to the
+        Use this API to partially update a source in Identity Security Cloud (ISC), using a list of patch operations according to the
         [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
-        Some fields are immutable and cannot be changed, such as:
+        These fields are immutable, so they cannot be changed:
         * id
         * type
         * authoritative
@@ -37865,7 +37891,7 @@ paths:
         A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or API authority is required to call this API.
       operationId: updateSource
       parameters:
-      - description: The Source id
+      - description: Source ID.
         example: 2c9180835d191a86015d28455b4a2329
         in: path
         name: id
@@ -37883,14 +37909,14 @@ paths:
                   path: /description
                   value: new description
               Edit the source cluster:
-                description: This example shows how to edit a source cluster by id.
+                description: This example shows how to edit a source cluster by ID.
                 value:
                 - op: replace
                   path: /cluster/id
                   value: 2c918087813a902001813f3f85736b45
               Edit source features:
                 description: This example illustrates how you can update source supported
-                  features
+                  features.
                 value:
                 - op: replace
                   path: /features
@@ -37899,9 +37925,9 @@ paths:
                   - PROVISIONING
                   - ENABLE
                   - AUTHENTICATE
-              Change a source description and cluster in One Call:
+              Change a source description and cluster in one call:
                 description: This example shows how multiple fields may be updated
-                  with a single patch call.
+                  with a single PATCH call.
                 value:
                 - op: replace
                   path: /description
@@ -37911,18 +37937,18 @@ paths:
                   value: 2c918087813a902001813f3f85736b45
               Add a filter string to the connector:
                 description: "This example shows how you can add a filter to incoming\
-                  \ accounts during the account aggregation process. In the example\
-                  \ below, any account that does not have an \"m\" or \"d\" in the\
-                  \ id will be aggregated."
+                  \ accounts during the account aggregation process. In the example,\
+                  \ any account that does not have an \"m\" or \"d\" in the ID will\
+                  \ be aggregated."
                 value:
                 - op: add
                   path: /connectorAttributes/filterString
                   value: '!( id.contains( "m" ) ) || !( id.contains( "d" ) )'
               Update connector attribute for specific operation type:
                 description: This example shows how you can update the 3rd object
-                  in the connection parameters operationType. This will change it
-                  from a standard group aggregation to a group aggregation on the
-                  "test" entitlement type
+                  in the connection parameter's `operationType`. This changes it from
+                  a standard group aggregation to a group aggregation on the "test"
+                  entitlement type.
                 value:
                 - op: replace
                   path: /connectorAttributes/connectionParameters/2/operationType
@@ -37933,7 +37959,7 @@ paths:
               type: array
         description: "A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902)\
           \ standard. Any password changes are submitted as plain-text and encrypted\
-          \ upon receipt in IdentityNow."
+          \ upon receipt in Identity Security Cloud (ISC)."
         required: true
       responses:
         "200":
@@ -37942,8 +37968,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Source'
           description: "Updated Source object. Any passwords will only show the the\
-            \ encrypted cipher-text, as they are not decrypt-able in IdentityNow cloud-based\
-            \ services, per IdentityNow security design."
+            \ encrypted cipher-text so that they are not decryptable in Identity Security\
+            \ Cloud cloud-based services, per ISC security design."
         "400":
           content:
             application/json:
@@ -38026,10 +38052,9 @@ paths:
       - Sources
     put:
       description: |
-        This API updates a source in IdentityNow, using a full object representation. In other words, the existing Source
-        configuration is completely replaced.
+        Use this API to update a source in Identity Security Cloud (ISC), using a full object representation. This means that when you use this API, it completely replaces the existing source configuration.
 
-        Some fields are immutable and cannot be changed, such as:
+        These fields are immutable, so they cannot be changed:
 
         * id
         * type
@@ -38043,7 +38068,7 @@ paths:
         A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
       operationId: putSource
       parameters:
-      - description: The Source id
+      - description: Source ID.
         example: 2c9180835d191a86015d28455b4a2329
         in: path
         name: id
@@ -38063,8 +38088,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Source'
           description: "Updated Source object. Any passwords will only show the the\
-            \ encrypted cipher-text, as they are not decrypt-able in IdentityNow cloud-based\
-            \ services, per IdentityNow security design."
+            \ encrypted cipher-text so that they aren't decryptable in Identity Security\
+            \ Cloud (ISC) cloud-based services, per ISC security design."
         "400":
           content:
             application/json:
@@ -40206,9 +40231,11 @@ paths:
       - Accounts
   /sources/{sourceId}/schemas:
     get:
-      operationId: listSourceSchemas
+      description: Use this API to list the schemas that exist on the specified source
+        in Identity Security Cloud (ISC).
+      operationId: getSourceSchemas
       parameters:
-      - description: The Source id.
+      - description: Source ID.
         example: 2c9180835d191a86015d28455b4a2329
         in: path
         name: sourceId
@@ -40222,6 +40249,9 @@ paths:
         name: include-types
         required: false
         schema:
+          enum:
+          - group
+          - user
           type: string
       responses:
         "200":
@@ -40231,7 +40261,13 @@ paths:
                 items:
                   $ref: '#/components/schemas/Schema'
                 type: array
-          description: The Schemas were successfully retrieved.
+          description: The schemas were successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
         "401":
           content:
             application/json:
@@ -40300,13 +40336,15 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Lists the Schemas that exist on the specified Source in IdentityNow.
+      summary: List Schemas on Source
       tags:
       - Sources
     post:
+      description: Use this API to create a new schema on the specified source in
+        Identity Security Cloud (ISC).
       operationId: createSourceSchema
       parameters:
-      - description: The Source id.
+      - description: Source ID.
         example: 2c9180835d191a86015d28455b4a2329
         in: path
         name: sourceId
@@ -40325,7 +40363,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Schema'
-          description: The Schema was successfully created on the specified Source.
+          description: The schema was successfully created on the specified source.
         "400":
           content:
             application/json:
@@ -40382,7 +40420,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Creates a new Schema on the specified Source in IdentityNow.
+      summary: Create Schema on Source
       tags:
       - Sources
   /sources/{sourceId}/schemas/{schemaId}:
@@ -49738,22 +49776,22 @@ paths:
       - Workflows
   /workflows/{id}/executions:
     get:
-      description: "This lists the executions for a given workflow. Workflow executions\
-        \ are available for up to 90 days before being archived. By default, you can\
-        \ get a maximum of 250 executions.  To get executions past the first 250 records,\
-        \ you can do the following: \n1. Use the [Get Workflows](https://developer.sailpoint.com/idn/api/beta/list-workflows)\
+      description: "Use this API to list a specified workflow's executions. Workflow\
+        \ executions are available for up to 90 days before being archived. By default,\
+        \ you can get a maximum of 250 executions.  To get executions past the first\
+        \ 250 records, you can do the following: \n1. Use the [Get Workflows](https://developer.sailpoint.com/idn/api/beta/list-workflows)\
         \ endpoint to get your workflows. \n2. Get your workflow ID from the response.\
         \ \n3. You can then do either of the following: \n\n  - Filter to find relevant\
         \ workflow executions.\n  For example, you can filter for failed workflow\
         \ executions: `GET /workflows/:workflowID/executions?filters=status eq \"\
-        Failed\"`\n\n  - You can paginate through results with the `offset` parameter.\
-        \ \n  For example, you can page through 50 executions per page and use that\
-        \ as a way to get to the records past the first 250. \n  Refer to [Paginating\
+        Failed\"`\n\n  - Paginate through results with the `offset` parameter. \n\
+        \  For example, you can page through 50 executions per page and use that as\
+        \ a way to get to the records past the first 250. \n  Refer to [Paginating\
         \ Results](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results)\
         \ for more information about the query parameters you can use to achieve pagination. "
-      operationId: listWorkflowExecutions
+      operationId: getWorkflowExecutions
       parameters:
-      - description: Id of the workflow
+      - description: Workflow ID.
         explode: false
         in: path
         name: id
@@ -49822,7 +49860,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/WorkflowExecution'
                 type: array
-          description: List of workflow executions for the given workflow
+          description: 'List of workflow executions for the specified workflow. '
         "400":
           content:
             application/json:
@@ -49905,12 +49943,13 @@ paths:
       - Workflows
   /workflow-executions/{id}:
     get:
-      description: "Get a single workflow execution.  Workflow executions are available\
-        \ for up to 90 days before being archived.  If you attempt to access a workflow\
-        \ execution that has been archived, you will receive a 404 Not Found."
+      description: "Use this API to get a single workflow execution. Workflow executions\
+        \ are available for up to 90 days before being archived. If you attempt to\
+        \ access a workflow execution that has been archived, you will receive a \"\
+        404 Not Found\" response."
       operationId: getWorkflowExecution
       parameters:
-      - description: Id of the workflow execution
+      - description: Workflow execution ID.
         explode: false
         in: path
         name: id
@@ -49927,7 +49966,7 @@ paths:
                 items:
                   $ref: ../schemas/WorkflowExecution.yaml
                 type: object
-          description: The workflow execution
+          description: Workflow execution.
         "400":
           content:
             application/json:
@@ -50005,7 +50044,7 @@ paths:
       security:
       - UserContextAuth:
         - sp:workflow:read
-      summary: Get a Workflow Execution
+      summary: Get Workflow Execution
       tags:
       - Workflows
   /workflow-executions/{id}/history:
@@ -50943,6 +50982,8 @@ paths:
           **id**: *eq, in, sw*
 
           **name**: *eq, sw, in*
+
+          **memberships.identityId**: *eq, in*
         example: name sw "Test"
         in: query
         name: filters
@@ -61599,18 +61640,17 @@ components:
         enabled: true
       properties:
         id:
-          description: lifecycle stat id.
+          description: Lifecycle state ID.
           example: 2c9180835d2e5168015d32f890ca1581
           readOnly: true
           type: string
         name:
-          description: Lifecycle-state name.
+          description: Lifecycle state name.
           example: Lifecycle Name
           readOnly: true
           type: string
         technicalName:
-          description: The technical name for lifecycle state. This is for internal
-            use.
+          description: Lifecycle state technical name. This is for internal use.
           example: lifecycleTechnicalName
           readOnly: true
           type: string
@@ -61631,7 +61671,8 @@ components:
           readOnly: true
           type: string
         enabled:
-          description: Whether the lifecycle state is enabled or disabled.
+          default: false
+          description: Indicates whether the lifecycle state is enabled or disabled.
           example: true
           type: boolean
         identityCount:
@@ -67044,16 +67085,16 @@ components:
         since: 2021-09-28T15:48:29.3801666300Z
       properties:
         id:
-          description: the id of the Source
+          description: Source ID.
           example: 2c91808568c529c60168cca6f90c1324
           readOnly: true
           type: string
         name:
-          description: Human-readable name of the source
+          description: Source's human-readable name.
           example: My Source
           type: string
         description:
-          description: Human-readable description of the source
+          description: Source's human-readable description.
           example: This is the corporate directory.
           type: string
         owner:
@@ -67071,7 +67112,7 @@ components:
         beforeProvisioningRule:
           $ref: '#/components/schemas/Source_beforeProvisioningRule'
         schemas:
-          description: List of references to Schema objects
+          description: List of references to schema objects.
           example:
           - type: CONNECTOR_SCHEMA
             id: 2c9180835d191a86015d28455b4b232a
@@ -67093,6 +67134,7 @@ components:
             name: Vendor Password Policy
           items:
             $ref: '#/components/schemas/Source_passwordPolicies_inner'
+          nullable: true
           type: array
         features:
           description: |-
@@ -67170,7 +67212,7 @@ components:
           type: array
         type:
           description: "Specifies the type of system being managed e.g. Active Directory,\
-            \ Workday, etc.. If you are creating a Delimited File source, you must\
+            \ Workday, etc.. If you are creating a delimited file source, you must\
             \ set the `provisionasCsv` query parameter to `true`. "
           example: OpenLDAP - Direct
           type: string
@@ -67179,13 +67221,13 @@ components:
           example: active-directory
           type: string
         connectorClass:
-          description: The fully qualified name of the Java class that implements
-            the connector interface.
+          description: Fully qualified name of the Java class that implements the
+            connector interface.
           example: sailpoint.connector.LDAPConnector
           type: string
         connectorAttributes:
-          description: Connector specific configuration; will differ from type to
-            type.
+          description: Connector specific configuration. This configuration will differ
+            from type to type.
           example:
             healthCheckTimeout: 30
             authSearchAttributes:
@@ -67201,59 +67243,72 @@ components:
           type: integer
         authoritative:
           default: false
-          description: When true indicates the source is referenced by an IdentityProfile.
+          description: "When this is true, it indicates that the source is referenced\
+            \ by an identity profile."
           example: false
           type: boolean
         managementWorkgroup:
           $ref: '#/components/schemas/Source_managementWorkgroup'
         healthy:
           default: false
-          description: When true indicates a healthy source
+          description: "When this is true, it indicates that the source is healthy."
           example: true
           type: boolean
         status:
-          description: "A status identifier, giving specific information on why a\
-            \ source is healthy or not"
+          description: 'Status identifier that gives specific information about why
+            a source is or isn''t healthy. '
+          enum:
+          - SOURCE_STATE_ERROR_CLUSTER
+          - SOURCE_STATE_ERROR_SOURCE
+          - SOURCE_STATE_ERROR_VA
+          - SOURCE_STATE_FAILURE_CLUSTER
+          - SOURCE_STATE_FAILURE_SOURCE
+          - SOURCE_STATE_HEALTHY
+          - SOURCE_STATE_UNCHECKED_CLUSTER
+          - SOURCE_STATE_UNCHECKED_CLUSTER_NO_SOURCES
+          - SOURCE_STATE_UNCHECKED_SOURCE
+          - SOURCE_STATE_UNCHECKED_SOURCE_NO_ACCOUNTS
           example: SOURCE_STATE_HEALTHY
           type: string
         since:
-          description: Timestamp showing when a source health check was last performed
+          description: Timestamp that shows when a source health check was last performed.
           example: 2021-09-28T15:48:29.3801666300Z
           type: string
         connectorId:
-          description: The id of connector
+          description: Connector ID
           example: active-directory
           type: string
         connectorName:
-          description: The name of the connector that was chosen on source creation
+          description: Name of the connector that was chosen during source creation.
           example: Active Directory
           type: string
         connectionType:
-          description: The type of connection (direct or file)
+          description: Type of connection (direct or file).
           example: file
           type: string
         connectorImplementationId:
-          description: The connector implementation id
+          description: Connector implementation ID.
           example: delimited-file
           type: string
         created:
-          description: The date-time when the source was created
+          description: Date-time when the source was created
           example: 2022-02-08T14:50:03.827Z
           format: date-time
           type: string
         modified:
-          description: The date-time when the source was last modified
+          description: Date-time when the source was last modified.
           example: 2024-01-23T18:08:50.897Z
           format: date-time
           type: string
         credentialProviderEnabled:
           default: false
-          description: Enables credential provider for this source. If credentialProvider
-            is turned on  then source can use credential provider(s) to fetch credentials.
+          description: "If this is true, it enables a credential provider for the\
+            \ source. If credentialProvider is turned on,  then the source can use\
+            \ credential provider(s) to fetch credentials."
           example: false
           type: boolean
         category:
-          description: "The category of source (e.g. null, CredentialProvider)"
+          description: "Source category (e.g. null, CredentialProvider)."
           example: CredentialProvider
           nullable: true
           type: string
@@ -69577,35 +69632,35 @@ components:
         status: Completed
       properties:
         id:
-          description: The workflow execution ID
+          description: Workflow execution ID.
           example: b393f4e2-4785-4d7f-ab27-3a6b8ded4c81
           type: string
         workflowId:
-          description: The workflow ID
+          description: Workflow ID.
           example: d201c5d9-d37b-4a2f-af14-66414f39d568
           type: string
         requestId:
-          description: This backend ID tracks a workflow request in the system. You
-            can provide this ID in a customer support ticket for debugging purposes.
+          description: Backend ID that tracks a workflow request in the system. Provide
+            this ID in a customer support ticket for debugging purposes.
           example: 41e12a74fa7b4a6a98ae47887b64acdb
           type: string
         startTime:
-          description: The date/time the workflow started
+          description: Date/time when the workflow started.
           example: 2022-02-07T20:13:29.356648026Z
           format: date-time
           type: string
         closeTime:
-          description: The date/time the workflow ended
+          description: Date/time when the workflow ended.
           example: 2022-02-07T20:13:31.682410165Z
           format: date-time
           type: string
         status:
-          description: The workflow execution status
+          description: Workflow execution status.
           enum:
           - Completed
           - Failed
           - Canceled
-          - Running
+          - Executing
           example: Completed
           type: string
       type: object
@@ -74003,16 +74058,19 @@ components:
         notifyAllAdmins: true
       properties:
         notifyManagers:
+          default: false
           description: "If true, then the manager is notified of the lifecycle state\
             \ change."
           example: true
           type: boolean
         notifyAllAdmins:
+          default: false
           description: "If true, then all the admins are notified of the lifecycle\
             \ state change."
           example: true
           type: boolean
         notifySpecificUsers:
+          default: false
           description: "If true, then the users specified in \"emailAddressList\"\
             \ below are notified of lifecycle state change."
           example: true
@@ -79609,17 +79667,17 @@ components:
         type: TASK_RESULT
       properties:
         type:
-          description: The type of object being referenced
+          description: Type of object being referenced.
           enum:
           - TASK_RESULT
           example: TASK_RESULT
           type: string
         id:
-          description: ID of the task result
+          description: Task result ID.
           example: 2c91808779ecf55b0179f720942f181a
           type: string
         name:
-          description: Human-readable display name of the task result (should be null/empty)
+          description: Task result's human-readable display name (this should be null/empty).
           type: string
           example: null
       type: object
@@ -81042,46 +81100,47 @@ components:
       - $ref: '#/components/schemas/EntityCreatedByDTO'
       - $ref: '#/components/schemas/NullableEntityCreatedByDTO'
     Source_owner:
-      description: Reference to an owning Identity Object
+      description: Reference to identity object who owns the source.
       example:
         name: MyName
         id: 2c91808568c529c60168cca6f90c1313
         type: IDENTITY
       properties:
         type:
-          description: The type of object being referenced
+          description: Type of object being referenced.
           enum:
           - IDENTITY
           example: IDENTITY
           type: string
         id:
-          description: ID of the identity
+          description: Owner identity's ID.
           example: 2c91808568c529c60168cca6f90c1313
           type: string
         name:
-          description: Human-readable display name of the identity
+          description: Owner identity's human-readable display name.
           example: MyName
           type: string
       type: object
     Source_cluster:
-      description: Reference to the associated Cluster
+      description: Reference to the source's associated cluster.
       example:
         name: Corporate Cluster
         id: 2c9180866166b5b0016167c32ef31a66
         type: CLUSTER
+      nullable: true
       properties:
         type:
-          description: The type of object being referenced
+          description: Type of object being referenced.
           enum:
           - CLUSTER
           example: CLUSTER
           type: string
         id:
-          description: ID of the cluster
+          description: Cluster ID.
           example: 2c9180866166b5b0016167c32ef31a66
           type: string
         name:
-          description: Human-readable display name of the cluster
+          description: Cluster's human-readable display name.
           example: Corporate Cluster
           type: string
       required:
@@ -81090,149 +81149,154 @@ components:
       - type
       type: object
     Source_accountCorrelationConfig:
-      description: Reference to an Account Correlation Config object
+      description: Reference to account correlation config object.
       example:
         name: "Directory [source-62867] Account Correlation"
         id: 2c9180855d191c59015d28583727245a
         type: ACCOUNT_CORRELATION_CONFIG
+      nullable: true
       properties:
         type:
-          description: The type of object being referenced
+          description: Type of object being referenced.
           enum:
           - ACCOUNT_CORRELATION_CONFIG
           example: ACCOUNT_CORRELATION_CONFIG
           type: string
         id:
-          description: ID of the account correlation config
+          description: Account correlation config ID.
           example: 2c9180855d191c59015d28583727245a
           type: string
         name:
-          description: Human-readable display name of the account correlation config
+          description: Account correlation config's human-readable display name.
           example: "Directory [source-62867] Account Correlation"
           type: string
       type: object
     Source_accountCorrelationRule:
-      description: "Reference to a Rule that can do COMPLEX correlation, should only\
-        \ be used when accountCorrelationConfig can't be used."
+      description: Reference to a rule that can do COMPLEX correlation. Only use this
+        rule when you can't use accountCorrelationConfig.
       example:
         name: Example Rule
         id: 2c918085708c274401708c2a8a760001
         type: RULE
+      nullable: true
       properties:
         type:
-          description: The type of object being referenced
+          description: Type of object being referenced.
           enum:
           - RULE
           example: RULE
           type: string
         id:
-          description: ID of the rule
+          description: Rule ID.
           example: 2c918085708c274401708c2a8a760001
           type: string
         name:
-          description: Human-readable display name of the rule
+          description: Rule's human-readable display name.
           example: Example Rule
           type: string
       type: object
     Source_managerCorrelationRule:
-      description: "Reference to the ManagerCorrelationRule, only used when a simple\
-        \ filter isn't sufficient."
+      description: Reference to the ManagerCorrelationRule. Only use this rule when
+        a simple filter isn't sufficient.
       example:
         name: Example Rule
         id: 2c918085708c274401708c2a8a760001
         type: RULE
+      nullable: true
       properties:
         type:
-          description: The type of object being referenced
+          description: Type of object being referenced.
           enum:
           - RULE
           example: RULE
           type: string
         id:
-          description: ID of the rule
+          description: Rule ID.
           example: 2c918085708c274401708c2a8a760001
           type: string
         name:
-          description: Human-readable display name of the rule
+          description: Rule's human-readable display name.
           example: Example Rule
           type: string
       type: object
     Source_beforeProvisioningRule:
-      description: Rule that runs on the CCG and allows for customization of provisioning
-        plans before the connector is called.
+      description: 'Rule that runs on the CCG and allows for customization of provisioning
+        plans before the API calls the connector. '
       example:
         name: Example Rule
         id: 2c918085708c274401708c2a8a760001
         type: RULE
+      nullable: true
       properties:
         type:
-          description: The type of object being referenced
+          description: Type of object being referenced.
           enum:
           - RULE
           example: RULE
           type: string
         id:
-          description: ID of the rule
+          description: Rule ID.
           example: 2c918085708c274401708c2a8a760001
           type: string
         name:
-          description: Human-readable display name of the rule
+          description: Rule's human-readable display name.
           example: Example Rule
           type: string
       type: object
     Source_schemas_inner:
       properties:
         type:
-          description: The type of object being referenced
+          description: Type of object being referenced.
           enum:
           - CONNECTOR_SCHEMA
           example: CONNECTOR_SCHEMA
           type: string
         id:
-          description: ID of the schema
+          description: Schema ID.
           example: 2c91808568c529c60168cca6f90c1777
           type: string
         name:
-          description: Human-readable display name of the schema
+          description: Schema's human-readable display name.
           example: MySchema
           type: string
       type: object
     Source_passwordPolicies_inner:
       properties:
         type:
-          description: The type of object being referenced
+          description: Type of object being referenced.
           enum:
           - PASSWORD_POLICY
           example: PASSWORD_POLICY
           type: string
         id:
-          description: ID of the policy
+          description: Policy ID.
           example: 2c91808568c529c60168cca6f90c1777
           type: string
         name:
-          description: Human-readable display name of the policy
+          description: Policy's human-readable display name.
           example: My Password Policy
           type: string
       type: object
     Source_managementWorkgroup:
-      description: Reference to Management Workgroup for this Source
+      description: Reference to management workgroup for the source.
       example:
         name: My Management Workgroup
         id: 2c91808568c529c60168cca6f90c2222
         type: GOVERNANCE_GROUP
+      nullable: true
       properties:
         type:
-          description: The type of object being referenced
+          description: Type of object being referenced.
           enum:
           - GOVERNANCE_GROUP
           example: GOVERNANCE_GROUP
           type: string
         id:
-          description: ID of the management workgroup
+          description: Management workgroup ID.
           example: 2c91808568c529c60168cca6f90c2222
           type: string
         name:
-          description: Human-readable display name of the management workgroup
+          description: Management workgroup's human-readable display name.
           example: My Management Workgroup
           type: string
       type: object

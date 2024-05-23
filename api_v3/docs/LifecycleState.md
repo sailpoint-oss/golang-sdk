@@ -8,13 +8,14 @@ Name | Type | Description | Notes
 **Name** | **string** | Name of the Object | 
 **Created** | Pointer to **time.Time** | Creation date of the Object | [optional] [readonly] 
 **Modified** | Pointer to **time.Time** | Last modification date of the Object | [optional] [readonly] 
-**Enabled** | Pointer to **bool** | Whether the lifecycle state is enabled or disabled. | [optional] 
-**TechnicalName** | **string** | The technical name for lifecycle state. This is for internal use. | 
-**Description** | Pointer to **string** | Lifecycle state description. | [optional] 
+**Enabled** | Pointer to **bool** | Indicates whether the lifecycle state is enabled or disabled. | [optional] [default to false]
+**TechnicalName** | **string** | The lifecycle state&#39;s technical name. This is for internal use. | 
+**Description** | Pointer to **string** | Lifecycle state&#39;s description. | [optional] 
 **IdentityCount** | Pointer to **int32** | Number of identities that have the lifecycle state. | [optional] [readonly] 
 **EmailNotificationOption** | Pointer to [**EmailNotificationOption**](EmailNotificationOption.md) |  | [optional] 
 **AccountActions** | Pointer to [**[]AccountAction**](AccountAction.md) |  | [optional] 
 **AccessProfileIds** | Pointer to **[]string** | List of unique access-profile IDs that are associated with the lifecycle state. | [optional] 
+**IdentityState** | Pointer to **NullableString** | The lifecycle state&#39;s associated identity state. This field is generally &#39;null&#39;. | [optional] 
 
 ## Methods
 
@@ -300,6 +301,41 @@ SetAccessProfileIds sets AccessProfileIds field to given value.
 
 HasAccessProfileIds returns a boolean if a field has been set.
 
+### GetIdentityState
+
+`func (o *LifecycleState) GetIdentityState() string`
+
+GetIdentityState returns the IdentityState field if non-nil, zero value otherwise.
+
+### GetIdentityStateOk
+
+`func (o *LifecycleState) GetIdentityStateOk() (*string, bool)`
+
+GetIdentityStateOk returns a tuple with the IdentityState field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdentityState
+
+`func (o *LifecycleState) SetIdentityState(v string)`
+
+SetIdentityState sets IdentityState field to given value.
+
+### HasIdentityState
+
+`func (o *LifecycleState) HasIdentityState() bool`
+
+HasIdentityState returns a boolean if a field has been set.
+
+### SetIdentityStateNil
+
+`func (o *LifecycleState) SetIdentityStateNil(b bool)`
+
+ SetIdentityStateNil sets the value for IdentityState to be an explicit nil
+
+### UnsetIdentityState
+`func (o *LifecycleState) UnsetIdentityState()`
+
+UnsetIdentityState ensures that no value is present for IdentityState, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

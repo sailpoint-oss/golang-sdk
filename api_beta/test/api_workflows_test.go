@@ -102,11 +102,13 @@ func Test_api_beta_WorkflowsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test WorkflowsAPIService ListCompleteWorkflowLibrary", func(t *testing.T) {
+	t.Run("Test WorkflowsAPIService GetWorkflowExecutions", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.WorkflowsAPI.ListCompleteWorkflowLibrary(context.Background()).Execute()
+		var id string
+
+		resp, httpRes, err := apiClient.API_BETA.WorkflowsAPI.GetWorkflowExecutions(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -114,13 +116,11 @@ func Test_api_beta_WorkflowsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test WorkflowsAPIService ListWorkflowExecutions", func(t *testing.T) {
+	t.Run("Test WorkflowsAPIService ListCompleteWorkflowLibrary", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id string
-
-		resp, httpRes, err := apiClient.API_BETA.WorkflowsAPI.ListWorkflowExecutions(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.API_BETA.WorkflowsAPI.ListCompleteWorkflowLibrary(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

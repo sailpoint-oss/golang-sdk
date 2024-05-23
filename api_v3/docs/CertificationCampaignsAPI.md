@@ -8,19 +8,19 @@ Method | HTTP request | Description
 [**CreateCampaign**](CertificationCampaignsAPI.md#CreateCampaign) | **Post** /campaigns | Create a campaign
 [**CreateCampaignTemplate**](CertificationCampaignsAPI.md#CreateCampaignTemplate) | **Post** /campaign-templates | Create a Campaign Template
 [**DeleteCampaignTemplate**](CertificationCampaignsAPI.md#DeleteCampaignTemplate) | **Delete** /campaign-templates/{id} | Delete a Campaign Template
-[**DeleteCampaignTemplateSchedule**](CertificationCampaignsAPI.md#DeleteCampaignTemplateSchedule) | **Delete** /campaign-templates/{id}/schedule | Deletes a Campaign Template&#39;s Schedule
-[**DeleteCampaigns**](CertificationCampaignsAPI.md#DeleteCampaigns) | **Post** /campaigns/delete | Deletes Campaigns
+[**DeleteCampaignTemplateSchedule**](CertificationCampaignsAPI.md#DeleteCampaignTemplateSchedule) | **Delete** /campaign-templates/{id}/schedule | Delete Campaign Template Schedule
+[**DeleteCampaigns**](CertificationCampaignsAPI.md#DeleteCampaigns) | **Post** /campaigns/delete | Delete Campaigns
 [**GetActiveCampaigns**](CertificationCampaignsAPI.md#GetActiveCampaigns) | **Get** /campaigns | List Campaigns
-[**GetCampaign**](CertificationCampaignsAPI.md#GetCampaign) | **Get** /campaigns/{id} | Get a campaign
+[**GetCampaign**](CertificationCampaignsAPI.md#GetCampaign) | **Get** /campaigns/{id} | Get Campaign
 [**GetCampaignReports**](CertificationCampaignsAPI.md#GetCampaignReports) | **Get** /campaigns/{id}/reports | Get Campaign Reports
 [**GetCampaignReportsConfig**](CertificationCampaignsAPI.md#GetCampaignReportsConfig) | **Get** /campaigns/reports-configuration | Get Campaign Reports Configuration
 [**GetCampaignTemplate**](CertificationCampaignsAPI.md#GetCampaignTemplate) | **Get** /campaign-templates/{id} | Get a Campaign Template
-[**GetCampaignTemplateSchedule**](CertificationCampaignsAPI.md#GetCampaignTemplateSchedule) | **Get** /campaign-templates/{id}/schedule | Gets a Campaign Template&#39;s Schedule
-[**ListCampaignTemplates**](CertificationCampaignsAPI.md#ListCampaignTemplates) | **Get** /campaign-templates | List Campaign Templates
+[**GetCampaignTemplateSchedule**](CertificationCampaignsAPI.md#GetCampaignTemplateSchedule) | **Get** /campaign-templates/{id}/schedule | Get Campaign Template Schedule
+[**GetCampaignTemplates**](CertificationCampaignsAPI.md#GetCampaignTemplates) | **Get** /campaign-templates | List Campaign Templates
 [**Move**](CertificationCampaignsAPI.md#Move) | **Post** /campaigns/{id}/reassign | Reassign Certifications
 [**PatchCampaignTemplate**](CertificationCampaignsAPI.md#PatchCampaignTemplate) | **Patch** /campaign-templates/{id} | Update a Campaign Template
 [**SetCampaignReportsConfig**](CertificationCampaignsAPI.md#SetCampaignReportsConfig) | **Put** /campaigns/reports-configuration | Set Campaign Reports Configuration
-[**SetCampaignTemplateSchedule**](CertificationCampaignsAPI.md#SetCampaignTemplateSchedule) | **Put** /campaign-templates/{id}/schedule | Sets a Campaign Template&#39;s Schedule
+[**SetCampaignTemplateSchedule**](CertificationCampaignsAPI.md#SetCampaignTemplateSchedule) | **Put** /campaign-templates/{id}/schedule | Set Campaign Template Schedule
 [**StartCampaign**](CertificationCampaignsAPI.md#StartCampaign) | **Post** /campaigns/{id}/activate | Activate a Campaign
 [**StartCampaignRemediationScan**](CertificationCampaignsAPI.md#StartCampaignRemediationScan) | **Post** /campaigns/{id}/run-remediation-scan | Run Campaign Remediation Scan
 [**StartCampaignReport**](CertificationCampaignsAPI.md#StartCampaignReport) | **Post** /campaigns/{id}/run-report/{type} | Run Campaign Report
@@ -50,7 +50,7 @@ import (
 )
 
 func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The campaign id
+    id := "ef38f94347e94562b5bb8424a56397d8" // string | Campaign ID.
     campaignCompleteOptions := *openapiclient.NewCampaignCompleteOptions() // CampaignCompleteOptions | Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -71,7 +71,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The campaign id | 
+**id** | **string** | Campaign ID. | 
 
 ### Other Parameters
 
@@ -255,7 +255,7 @@ import (
 )
 
 func main() {
-    id := "2c9180835d191a86015d28455b4a2329" // string | The ID of the campaign template being deleted.
+    id := "2c9180835d191a86015d28455b4a2329" // string | ID of the campaign template being deleted.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -273,7 +273,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the campaign template being deleted. | 
+**id** | **string** | ID of the campaign template being deleted. | 
 
 ### Other Parameters
 
@@ -306,7 +306,7 @@ Name | Type | Description  | Notes
 
 > DeleteCampaignTemplateSchedule(ctx, id).Execute()
 
-Deletes a Campaign Template's Schedule
+Delete Campaign Template Schedule
 
 
 
@@ -323,7 +323,7 @@ import (
 )
 
 func main() {
-    id := "04bedce387bd47b2ae1f86eb0bb36dee" // string | The ID of the campaign template whose schedule is being deleted.
+    id := "04bedce387bd47b2ae1f86eb0bb36dee" // string | ID of the campaign template whose schedule is being deleted.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -341,7 +341,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the campaign template whose schedule is being deleted. | 
+**id** | **string** | ID of the campaign template whose schedule is being deleted. | 
 
 ### Other Parameters
 
@@ -374,7 +374,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} DeleteCampaigns(ctx).CampaignsDeleteRequest(campaignsDeleteRequest).Execute()
 
-Deletes Campaigns
+Delete Campaigns
 
 
 
@@ -391,7 +391,7 @@ import (
 )
 
 func main() {
-    campaignsDeleteRequest := *openapiclient.NewCampaignsDeleteRequest() // CampaignsDeleteRequest | The ids of the campaigns to delete.
+    campaignsDeleteRequest := *openapiclient.NewCampaignsDeleteRequest() // CampaignsDeleteRequest | IDs of the campaigns to delete.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -416,7 +416,7 @@ Other parameters are passed through a pointer to a apiDeleteCampaignsRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignsDeleteRequest** | [**CampaignsDeleteRequest**](CampaignsDeleteRequest.md) | The ids of the campaigns to delete. | 
+ **campaignsDeleteRequest** | [**CampaignsDeleteRequest**](CampaignsDeleteRequest.md) | IDs of the campaigns to delete. | 
 
 ### Return type
 
@@ -516,7 +516,7 @@ Name | Type | Description  | Notes
 
 > SlimCampaign GetCampaign(ctx, id).Execute()
 
-Get a campaign
+Get Campaign
 
 
 
@@ -533,7 +533,7 @@ import (
 )
 
 func main() {
-    id := "2c91808571bcfcf80171c23e4b4221fc" // string | The ID of the campaign to be retrieved
+    id := "2c91808571bcfcf80171c23e4b4221fc" // string | ID of the campaign to be retrieved.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -553,7 +553,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the campaign to be retrieved | 
+**id** | **string** | ID of the campaign to be retrieved. | 
 
 ### Other Parameters
 
@@ -603,7 +603,7 @@ import (
 )
 
 func main() {
-    id := "2c91808571bcfcf80171c23e4b4221fc" // string | The ID of the campaign for which reports are being fetched.
+    id := "2c91808571bcfcf80171c23e4b4221fc" // string | ID of the campaign whose reports are being fetched.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -623,7 +623,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the campaign for which reports are being fetched. | 
+**id** | **string** | ID of the campaign whose reports are being fetched. | 
 
 ### Other Parameters
 
@@ -734,7 +734,7 @@ import (
 )
 
 func main() {
-    id := "2c9180835d191a86015d28455b4a2329" // string | The desired campaign template's ID.
+    id := "2c9180835d191a86015d28455b4a2329" // string | Requested campaign template's ID.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -754,7 +754,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The desired campaign template&#39;s ID. | 
+**id** | **string** | Requested campaign template&#39;s ID. | 
 
 ### Other Parameters
 
@@ -787,7 +787,7 @@ Name | Type | Description  | Notes
 
 > Schedule GetCampaignTemplateSchedule(ctx, id).Execute()
 
-Gets a Campaign Template's Schedule
+Get Campaign Template Schedule
 
 
 
@@ -804,7 +804,7 @@ import (
 )
 
 func main() {
-    id := "04bedce387bd47b2ae1f86eb0bb36dee" // string | The ID of the campaign template whose schedule is being fetched.
+    id := "04bedce387bd47b2ae1f86eb0bb36dee" // string | ID of the campaign template whose schedule is being fetched.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -824,7 +824,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the campaign template whose schedule is being fetched. | 
+**id** | **string** | ID of the campaign template whose schedule is being fetched. | 
 
 ### Other Parameters
 
@@ -853,9 +853,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListCampaignTemplates
+## GetCampaignTemplates
 
-> []CampaignTemplate ListCampaignTemplates(ctx).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Filters(filters).Execute()
+> []CampaignTemplate GetCampaignTemplates(ctx).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Filters(filters).Execute()
 
 List Campaign Templates
 
@@ -882,13 +882,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignsAPI.ListCampaignTemplates(context.Background()).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Filters(filters).Execute()
+    resp, r, err := apiClient.CertificationCampaignsAPI.GetCampaignTemplates(context.Background()).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Filters(filters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.ListCampaignTemplates``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetCampaignTemplates``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListCampaignTemplates`: []CampaignTemplate
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.ListCampaignTemplates`: %v\n", resp)
+    // response from `GetCampaignTemplates`: []CampaignTemplate
+    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.GetCampaignTemplates`: %v\n", resp)
 }
 ```
 
@@ -898,7 +898,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListCampaignTemplatesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetCampaignTemplatesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1020,7 +1020,7 @@ import (
 )
 
 func main() {
-    id := "2c9180835d191a86015d28455b4a2329" // string | The ID of the campaign template being modified.
+    id := "2c9180835d191a86015d28455b4a2329" // string | ID of the campaign template being modified.
     jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) 
 
     configuration := openapiclient.NewConfiguration()
@@ -1041,7 +1041,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the campaign template being modified. | 
+**id** | **string** | ID of the campaign template being modified. | 
 
 ### Other Parameters
 
@@ -1092,7 +1092,7 @@ import (
 )
 
 func main() {
-    campaignReportsConfig := *openapiclient.NewCampaignReportsConfig() // CampaignReportsConfig | Campaign Report Configuration
+    campaignReportsConfig := *openapiclient.NewCampaignReportsConfig() // CampaignReportsConfig | Campaign report configuration.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1117,7 +1117,7 @@ Other parameters are passed through a pointer to a apiSetCampaignReportsConfigRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignReportsConfig** | [**CampaignReportsConfig**](CampaignReportsConfig.md) | Campaign Report Configuration | 
+ **campaignReportsConfig** | [**CampaignReportsConfig**](CampaignReportsConfig.md) | Campaign report configuration. | 
 
 ### Return type
 
@@ -1141,7 +1141,7 @@ Name | Type | Description  | Notes
 
 > SetCampaignTemplateSchedule(ctx, id).Schedule(schedule).Execute()
 
-Sets a Campaign Template's Schedule
+Set Campaign Template Schedule
 
 
 
@@ -1158,7 +1158,7 @@ import (
 )
 
 func main() {
-    id := "04bedce387bd47b2ae1f86eb0bb36dee" // string | The ID of the campaign template being scheduled.
+    id := "04bedce387bd47b2ae1f86eb0bb36dee" // string | ID of the campaign template being scheduled.
     schedule := *openapiclient.NewSchedule("WEEKLY", *openapiclient.NewScheduleHours("LIST", []string{"Values_example"})) // Schedule |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -1177,7 +1177,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the campaign template being scheduled. | 
+**id** | **string** | ID of the campaign template being scheduled. | 
 
 ### Other Parameters
 
@@ -1228,7 +1228,7 @@ import (
 )
 
 func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The campaign id
+    id := "ef38f94347e94562b5bb8424a56397d8" // string | Campaign ID.
     activateCampaignOptions := *openapiclient.NewActivateCampaignOptions() // ActivateCampaignOptions | Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format. (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -1249,7 +1249,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The campaign id | 
+**id** | **string** | Campaign ID. | 
 
 ### Other Parameters
 
@@ -1300,7 +1300,7 @@ import (
 )
 
 func main() {
-    id := "2c91808571bcfcf80171c23e4b4221fc" // string | The ID of the campaign for which remediation scan is being run.
+    id := "2c91808571bcfcf80171c23e4b4221fc" // string | ID of the campaign the remediation scan is being run for.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1320,7 +1320,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the campaign for which remediation scan is being run. | 
+**id** | **string** | ID of the campaign the remediation scan is being run for. | 
 
 ### Other Parameters
 
@@ -1370,8 +1370,8 @@ import (
 )
 
 func main() {
-    id := "2c91808571bcfcf80171c23e4b4221fc" // string | The ID of the campaign for which report is being run.
-    type_ := openapiclient.ReportType("CAMPAIGN_COMPOSITION_REPORT") // ReportType | The type of the report to run.
+    id := "2c91808571bcfcf80171c23e4b4221fc" // string | ID of the campaign the report is being run for.
+    type_ := openapiclient.ReportType("CAMPAIGN_COMPOSITION_REPORT") // ReportType | Type of the report to run.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1391,8 +1391,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the campaign for which report is being run. | 
-**type_** | [**ReportType**](.md) | The type of the report to run. | 
+**id** | **string** | ID of the campaign the report is being run for. | 
+**type_** | [**ReportType**](.md) | Type of the report to run. | 
 
 ### Other Parameters
 
@@ -1443,7 +1443,7 @@ import (
 )
 
 func main() {
-    id := "2c9180835d191a86015d28455b4a2329" // string | The ID of the campaign template to use for generation.
+    id := "2c9180835d191a86015d28455b4a2329" // string | ID of the campaign template to use for generation.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1463,7 +1463,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the campaign template to use for generation. | 
+**id** | **string** | ID of the campaign template to use for generation. | 
 
 ### Other Parameters
 
@@ -1513,8 +1513,8 @@ import (
 )
 
 func main() {
-    id := "2c91808571bcfcf80171c23e4b4221fc" // string | The ID of the campaign template being modified.
-    jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  In the *STAGED* status, the following fields can be patched: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  In the *ACTIVE* status, the following fields can be patched: * deadline 
+    id := "2c91808571bcfcf80171c23e4b4221fc" // string | ID of the campaign template being modified.
+    jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1534,7 +1534,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the campaign template being modified. | 
+**id** | **string** | ID of the campaign template being modified. | 
 
 ### Other Parameters
 
@@ -1544,7 +1544,7 @@ Other parameters are passed through a pointer to a apiUpdateCampaignRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonPatchOperation** | [**[]JsonPatchOperation**](JsonPatchOperation.md) | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  In the *STAGED* status, the following fields can be patched: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  In the *ACTIVE* status, the following fields can be patched: * deadline  | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](JsonPatchOperation.md) | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline  | 
 
 ### Return type
 

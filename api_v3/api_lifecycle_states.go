@@ -30,7 +30,7 @@ type ApiCreateLifecycleStateRequest struct {
 	lifecycleState *LifecycleState
 }
 
-// Lifecycle State
+// Lifecycle state to be created.
 func (r ApiCreateLifecycleStateRequest) LifecycleState(lifecycleState LifecycleState) ApiCreateLifecycleStateRequest {
 	r.lifecycleState = &lifecycleState
 	return r
@@ -43,11 +43,11 @@ func (r ApiCreateLifecycleStateRequest) Execute() (*LifecycleState, *http.Respon
 /*
 CreateLifecycleState Create Lifecycle State
 
-This API creates a new Lifecycle State.
+Use this endpoint to create a lifecycle state.
 A token with ORG_ADMIN or API authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param identityProfileId Identity Profile ID
+ @param identityProfileId Identity profile ID.
  @return ApiCreateLifecycleStateRequest
 */
 func (a *LifecycleStatesAPIService) CreateLifecycleState(ctx context.Context, identityProfileId string) ApiCreateLifecycleStateRequest {
@@ -205,14 +205,14 @@ func (r ApiDeleteLifecycleStateRequest) Execute() (*LifecyclestateDeleted, *http
 }
 
 /*
-DeleteLifecycleState Delete Lifecycle State by ID
+DeleteLifecycleState Delete Lifecycle State
 
-This endpoint deletes the Lifecycle State using its ID.
+Use this endpoint to delete the lifecycle state by its ID. 
 A token with API, or ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param identityProfileId Identity Profile ID
- @param lifecycleStateId Lifecycle State ID
+ @param identityProfileId Identity profile ID.
+ @param lifecycleStateId Lifecycle state ID.
  @return ApiDeleteLifecycleStateRequest
 */
 func (a *LifecycleStatesAPIService) DeleteLifecycleState(ctx context.Context, identityProfileId string, lifecycleStateId string) ApiDeleteLifecycleStateRequest {
@@ -378,14 +378,14 @@ func (r ApiGetLifecycleStateRequest) Execute() (*LifecycleState, *http.Response,
 }
 
 /*
-GetLifecycleState Retrieves Lifecycle State
+GetLifecycleState Get Lifecycle State
 
-This endpoint retrieves a Lifecycle State.
+Use this endpoint to get a lifecycle state by its ID and its associated identity profile ID. 
 A token with ORG_ADMIN or API authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param identityProfileId Identity Profile ID
- @param lifecycleStateId Lifecycle State ID
+ @param identityProfileId Identity profile ID.
+ @param lifecycleStateId Lifecycle state ID.
  @return ApiGetLifecycleStateRequest
 */
 func (a *LifecycleStatesAPIService) GetLifecycleState(ctx context.Context, identityProfileId string, lifecycleStateId string) ApiGetLifecycleStateRequest {
@@ -539,7 +539,7 @@ func (a *LifecycleStatesAPIService) GetLifecycleStateExecute(r ApiGetLifecycleSt
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListLifecycleStatesRequest struct {
+type ApiGetLifecycleStatesRequest struct {
 	ctx context.Context
 	ApiService *LifecycleStatesAPIService
 	identityProfileId string
@@ -550,45 +550,45 @@ type ApiListLifecycleStatesRequest struct {
 }
 
 // Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-func (r ApiListLifecycleStatesRequest) Limit(limit int32) ApiListLifecycleStatesRequest {
+func (r ApiGetLifecycleStatesRequest) Limit(limit int32) ApiGetLifecycleStatesRequest {
 	r.limit = &limit
 	return r
 }
 
 // Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-func (r ApiListLifecycleStatesRequest) Offset(offset int32) ApiListLifecycleStatesRequest {
+func (r ApiGetLifecycleStatesRequest) Offset(offset int32) ApiGetLifecycleStatesRequest {
 	r.offset = &offset
 	return r
 }
 
 // If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-func (r ApiListLifecycleStatesRequest) Count(count bool) ApiListLifecycleStatesRequest {
+func (r ApiGetLifecycleStatesRequest) Count(count bool) ApiGetLifecycleStatesRequest {
 	r.count = &count
 	return r
 }
 
 // Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified**
-func (r ApiListLifecycleStatesRequest) Sorters(sorters string) ApiListLifecycleStatesRequest {
+func (r ApiGetLifecycleStatesRequest) Sorters(sorters string) ApiGetLifecycleStatesRequest {
 	r.sorters = &sorters
 	return r
 }
 
-func (r ApiListLifecycleStatesRequest) Execute() ([]LifecycleState, *http.Response, error) {
-	return r.ApiService.ListLifecycleStatesExecute(r)
+func (r ApiGetLifecycleStatesRequest) Execute() ([]LifecycleState, *http.Response, error) {
+	return r.ApiService.GetLifecycleStatesExecute(r)
 }
 
 /*
-ListLifecycleStates Lists LifecycleStates
+GetLifecycleStates Lists LifecycleStates
 
-This end-point lists all the LifecycleStates associated with IdentityProfiles.
+Use this endpoint to list all lifecycle states by their associated identity profiles. 
 A token with API, or ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param identityProfileId The IdentityProfile id
- @return ApiListLifecycleStatesRequest
+ @param identityProfileId Identity profile ID.
+ @return ApiGetLifecycleStatesRequest
 */
-func (a *LifecycleStatesAPIService) ListLifecycleStates(ctx context.Context, identityProfileId string) ApiListLifecycleStatesRequest {
-	return ApiListLifecycleStatesRequest{
+func (a *LifecycleStatesAPIService) GetLifecycleStates(ctx context.Context, identityProfileId string) ApiGetLifecycleStatesRequest {
+	return ApiGetLifecycleStatesRequest{
 		ApiService: a,
 		ctx: ctx,
 		identityProfileId: identityProfileId,
@@ -597,7 +597,7 @@ func (a *LifecycleStatesAPIService) ListLifecycleStates(ctx context.Context, ide
 
 // Execute executes the request
 //  @return []LifecycleState
-func (a *LifecycleStatesAPIService) ListLifecycleStatesExecute(r ApiListLifecycleStatesRequest) ([]LifecycleState, *http.Response, error) {
+func (a *LifecycleStatesAPIService) GetLifecycleStatesExecute(r ApiGetLifecycleStatesRequest) ([]LifecycleState, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -605,7 +605,7 @@ func (a *LifecycleStatesAPIService) ListLifecycleStatesExecute(r ApiListLifecycl
 		localVarReturnValue  []LifecycleState
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LifecycleStatesAPIService.ListLifecycleStates")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LifecycleStatesAPIService.GetLifecycleStates")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -765,7 +765,7 @@ func (r ApiSetLifecycleStateRequest) Execute() (*SetLifecycleState200Response, *
 /*
 SetLifecycleState Set Lifecycle State
 
-This endpoint will set/update an identity's lifecycle state to the one provided and updates the corresponding identity profile.
+Use this endpoint to set/update an identity's lifecycle state to the one provided and update the corresponding identity profile.
 A token with ORG_ADMIN or API authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -947,12 +947,12 @@ func (r ApiUpdateLifecycleStatesRequest) Execute() (*LifecycleState, *http.Respo
 /*
 UpdateLifecycleStates Update Lifecycle State
 
-This endpoint updates individual Lifecycle State fields using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+Use this endpoint to update individual lifecycle state fields, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 A token with ORG_ADMIN or API authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param identityProfileId Identity Profile ID
- @param lifecycleStateId Lifecycle State ID
+ @param identityProfileId Identity profile ID.
+ @param lifecycleStateId Lifecycle state ID.
  @return ApiUpdateLifecycleStatesRequest
 */
 func (a *LifecycleStatesAPIService) UpdateLifecycleStates(ctx context.Context, identityProfileId string, lifecycleStateId string) ApiUpdateLifecycleStatesRequest {

@@ -5,7 +5,7 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CancelAccessRequest**](AccessRequestsAPI.md#CancelAccessRequest) | **Post** /access-requests/cancel | Cancel Access Request
-[**CreateAccessRequest**](AccessRequestsAPI.md#CreateAccessRequest) | **Post** /access-requests | Submit an Access Request
+[**CreateAccessRequest**](AccessRequestsAPI.md#CreateAccessRequest) | **Post** /access-requests | Submit Access Request
 [**GetAccessRequestConfig**](AccessRequestsAPI.md#GetAccessRequestConfig) | **Get** /access-request-config | Get Access Request Configuration
 [**ListAccessRequestStatus**](AccessRequestsAPI.md#ListAccessRequestStatus) | **Get** /access-request-status | Access Request Status
 [**SetAccessRequestConfig**](AccessRequestsAPI.md#SetAccessRequestConfig) | **Put** /access-request-config | Update Access Request Configuration
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} CreateAccessRequest(ctx).AccessRequest(accessRequest).Execute()
 
-Submit an Access Request
+Submit Access Request
 
 
 
@@ -226,11 +226,11 @@ import (
 )
 
 func main() {
-    requestedFor := "2c9180877b2b6ea4017b2c545f971429" // string | Filter the results by the identity for which the requests were made. *me* indicates the current user. Mutually exclusive with *regarding-identity*. (optional)
-    requestedBy := "2c9180877b2b6ea4017b2c545f971429" // string | Filter the results by the identity that made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*. (optional)
-    regardingIdentity := "2c9180877b2b6ea4017b2c545f971429" // string | Filter the results by the specified identity which is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*. (optional)
-    assignedTo := "2c9180877b2b6ea4017b2c545f971429" // string | Filter the results by the specified identity which is the owner of the Identity Request Work Item. *me* indicates the current user. (optional)
-    count := false // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored. (optional) (default to false)
+    requestedFor := "2c9180877b2b6ea4017b2c545f971429" // string | Filter the results by the identity the requests were made for. *me* indicates the current user. Mutually exclusive with *regarding-identity*. (optional)
+    requestedBy := "2c9180877b2b6ea4017b2c545f971429" // string | Filter the results by the identity twho made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*. (optional)
+    regardingIdentity := "2c9180877b2b6ea4017b2c545f971429" // string | Filter the results by the specified identity who is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*. (optional)
+    assignedTo := "2c9180877b2b6ea4017b2c545f971429" // string | Filter the results by the specified identity who is the owner of the Identity Request Work Item. *me* indicates the current user. (optional)
+    count := false // bool | If this is true, the *X-Total-Count* response header populates with the number of results that would be returned if limit and offset were ignored. (optional) (default to false)
     limit := int32(100) // int32 | Max number of results to return. (optional) (default to 250)
     offset := int32(10) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified. (optional)
     filters := "accountActivityItemId eq "2c918086771c86df0177401efcdf54c0"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw* (optional)
@@ -259,11 +259,11 @@ Other parameters are passed through a pointer to a apiListAccessRequestStatusReq
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **requestedFor** | **string** | Filter the results by the identity for which the requests were made. *me* indicates the current user. Mutually exclusive with *regarding-identity*. | 
- **requestedBy** | **string** | Filter the results by the identity that made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*. | 
- **regardingIdentity** | **string** | Filter the results by the specified identity which is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*. | 
- **assignedTo** | **string** | Filter the results by the specified identity which is the owner of the Identity Request Work Item. *me* indicates the current user. | 
- **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored. | [default to false]
+ **requestedFor** | **string** | Filter the results by the identity the requests were made for. *me* indicates the current user. Mutually exclusive with *regarding-identity*. | 
+ **requestedBy** | **string** | Filter the results by the identity twho made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*. | 
+ **regardingIdentity** | **string** | Filter the results by the specified identity who is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*. | 
+ **assignedTo** | **string** | Filter the results by the specified identity who is the owner of the Identity Request Work Item. *me* indicates the current user. | 
+ **count** | **bool** | If this is true, the *X-Total-Count* response header populates with the number of results that would be returned if limit and offset were ignored. | [default to false]
  **limit** | **int32** | Max number of results to return. | [default to 250]
  **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified. | 
  **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw* | 

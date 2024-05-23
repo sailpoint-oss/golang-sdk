@@ -20,17 +20,17 @@ var _ MappedNullable = &WorkflowExecution{}
 
 // WorkflowExecution struct for WorkflowExecution
 type WorkflowExecution struct {
-	// The workflow execution ID
+	// Workflow execution ID.
 	Id *string `json:"id,omitempty"`
-	// The workflow ID
+	// Workflow ID.
 	WorkflowId *string `json:"workflowId,omitempty"`
-	// This backend ID tracks a workflow request in the system. You can provide this ID in a customer support ticket for debugging purposes.
+	// Backend ID that tracks a workflow request in the system. Provide this ID in a customer support ticket for debugging purposes.
 	RequestId *string `json:"requestId,omitempty"`
-	// The date/time the workflow started
+	// Date/time when the workflow started.
 	StartTime *time.Time `json:"startTime,omitempty"`
-	// The date/time the workflow ended
+	// Date/time when the workflow ended.
 	CloseTime *time.Time `json:"closeTime,omitempty"`
-	// The workflow execution status
+	// Workflow execution status.
 	Status *string `json:"status,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

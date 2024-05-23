@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | The type of object being referenced | [optional] 
-**Id** | Pointer to **string** | ID of the identity | [optional] 
-**Name** | Pointer to **string** | Human-readable display name of the identity | [optional] 
+**Type** | Pointer to **string** | Type of object being referenced. | [optional] 
+**Id** | Pointer to **string** | Owner identity&#39;s ID. | [optional] 
+**Name** | Pointer to **string** | Owner identity&#39;s human-readable display name. | [optional] 
 
 ## Methods
 

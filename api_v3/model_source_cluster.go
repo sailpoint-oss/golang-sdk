@@ -18,13 +18,13 @@ import (
 // checks if the SourceCluster type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SourceCluster{}
 
-// SourceCluster Reference to the associated Cluster
+// SourceCluster Reference to the source's associated cluster.
 type SourceCluster struct {
-	// The type of object being referenced
+	// Type of object being referenced.
 	Type string `json:"type"`
-	// ID of the cluster
+	// Cluster ID.
 	Id string `json:"id"`
-	// Human-readable display name of the cluster
+	// Cluster's human-readable display name.
 	Name string `json:"name"`
 	AdditionalProperties map[string]interface{}
 }

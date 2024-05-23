@@ -389,17 +389,19 @@ func (r ApiCreateAccessRequestRequest) Execute() (map[string]interface{}, *http.
 }
 
 /*
-CreateAccessRequest Submit an Access Request
+CreateAccessRequest Submit Access Request
 
-This submits the access request into IdentityNow, where it will follow any IdentityNow approval processes.
+Use this API to submit an access request in Identity Security Cloud (ISC), where it follows any ISC approval processes.
 
-Access requests are processed asynchronously by IdentityNow.  A success response from this endpoint means the request
-has been submitted to IDN and is queued for processing.  Because this endpoint is asynchronous, it will not return an error
-if you submit duplicate access requests in quick succession, or you submit an access request for access that is already in progress, approved, or rejected.
-It is best practice to check for any existing access requests that reference the same access items before submitting a new access request.  This can
-be accomplished by using the [access request status](https://developer.sailpoint.com/idn/api/v3/list-access-request-status) or the [pending access request approvals](https://developer.sailpoint.com/idn/api/v3/list-pending-approvals) endpoints.  You can also
-use the [search API](https://developer.sailpoint.com/idn/api/v3/search) to check the existing access items that an identity has before submitting
-an access request to ensure you are not requesting access that is already granted.
+Access requests are processed asynchronously by ISC. A successful response from this endpoint means that the request
+has been submitted to ISC and is queued for processing. Because this endpoint is asynchronous, it doesn't return an error
+if you submit duplicate access requests in quick succession or submit an access request for access that is already in progress, approved, or rejected.
+
+It's best practice to check for any existing access requests that reference the same access items before submitting a new access request. This can
+be accomplished by using the [List Access Request Status](https://developer.sailpoint.com/idn/api/v3/list-access-request-status) or the [Pending Access Request Approvals](https://developer.sailpoint.com/idn/api/v3/list-pending-approvals) APIs. You can also
+use the [Search API](https://developer.sailpoint.com/idn/api/v3/search) to check the existing access items an identity has before submitting
+an access request to ensure that you aren't requesting access that is already granted. If you use this API to request access that an identity already has, the API will ignore the request. 
+These ignored requests do not display when you use the [List Access Request Status](https://developer.sailpoint.com/idn/api/v3/list-access-request-status) API.
 
 There are two types of access request:
 
@@ -419,8 +421,6 @@ __REVOKE_ACCESS__
 * Revoke requests for entitlements are limited to 1 entitlement per access request currently.
 * [Roles, Access Profiles] You can specify a `removeDate` if the access doesn't already have a sunset date. The `removeDate` must be a future date, in the UTC timezone. 
 * Allows a manager to request to revoke access for direct employees. A token with ORG_ADMIN authority can also request to revoke access from anyone.
-
->**Note:** There is no indication to the approver in the IdentityNow UI that the approval request is for a revoke action. Take this into consideration when calling this API.
 
 A token with API authority cannot be used to call this endpoint. 
 
@@ -736,31 +736,31 @@ type ApiListAccessRequestStatusRequest struct {
 	sorters *string
 }
 
-// Filter the results by the identity for which the requests were made. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
+// Filter the results by the identity the requests were made for. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
 func (r ApiListAccessRequestStatusRequest) RequestedFor(requestedFor string) ApiListAccessRequestStatusRequest {
 	r.requestedFor = &requestedFor
 	return r
 }
 
-// Filter the results by the identity that made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
+// Filter the results by the identity twho made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
 func (r ApiListAccessRequestStatusRequest) RequestedBy(requestedBy string) ApiListAccessRequestStatusRequest {
 	r.requestedBy = &requestedBy
 	return r
 }
 
-// Filter the results by the specified identity which is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*.
+// Filter the results by the specified identity who is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*.
 func (r ApiListAccessRequestStatusRequest) RegardingIdentity(regardingIdentity string) ApiListAccessRequestStatusRequest {
 	r.regardingIdentity = &regardingIdentity
 	return r
 }
 
-// Filter the results by the specified identity which is the owner of the Identity Request Work Item. *me* indicates the current user.
+// Filter the results by the specified identity who is the owner of the Identity Request Work Item. *me* indicates the current user.
 func (r ApiListAccessRequestStatusRequest) AssignedTo(assignedTo string) ApiListAccessRequestStatusRequest {
 	r.assignedTo = &assignedTo
 	return r
 }
 
-// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+// If this is true, the *X-Total-Count* response header populates with the number of results that would be returned if limit and offset were ignored.
 func (r ApiListAccessRequestStatusRequest) Count(count bool) ApiListAccessRequestStatusRequest {
 	r.count = &count
 	return r
@@ -797,7 +797,8 @@ func (r ApiListAccessRequestStatusRequest) Execute() ([]RequestedItemStatus, *ht
 /*
 ListAccessRequestStatus Access Request Status
 
-The Access Request Status API returns a list of access request statuses based on the specified query parameters.
+Use this API to return a list of access request statuses based on the specified query parameters.
+If an access request was made for access that an identity already has, the API ignores the access request.  These ignored requests do not display in the list of access request statuses.
 Any token with any authority can request their own status. A token with ORG_ADMIN authority is required to call this API to get a list of statuses for other users.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

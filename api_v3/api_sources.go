@@ -398,13 +398,13 @@ func (r ApiCreateSourceSchemaRequest) Execute() (*Schema, *http.Response, error)
 }
 
 /*
-CreateSourceSchema Create Schema on a Source
+CreateSourceSchema Create Schema on Source
 
-Creates a new Schema on the specified Source in IdentityNow.
+Use this API to create a new schema on the specified source in Identity Security Cloud (ISC).
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param sourceId The Source id.
+ @param sourceId Source ID.
  @return ApiCreateSourceSchemaRequest
 */
 func (a *SourcesAPIService) CreateSourceSchema(ctx context.Context, sourceId string) ApiCreateSourceSchemaRequest {
@@ -725,12 +725,12 @@ func (r ApiDeleteSourceRequest) Execute() (*DeleteSource202Response, *http.Respo
 /*
 DeleteSource Delete Source by ID
 
-This end-point deletes a specific source in IdentityNow.
+Use this API to delete a specific source in Identity Security Cloud (ISC).
+The API removes all the accounts on the source first, and then it deletes the source. You can retrieve the actual task execution status with this method: GET `/task-status/{id}`
 A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
-All of accounts on the source will be removed first, then the source will be deleted. Actual status of task execution can be retrieved via method GET `/task-status/{id}`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The Source id
+ @param id Source ID.
  @return ApiDeleteSourceRequest
 */
 func (a *SourcesAPIService) DeleteSource(ctx context.Context, id string) ApiDeleteSourceRequest {
@@ -1554,11 +1554,11 @@ func (r ApiGetSourceRequest) Execute() (*Source, *http.Response, error) {
 /*
 GetSource Get Source by ID
 
-This end-point gets a specific source in IdentityNow.
+Use this API to get a source by a specified ID in Identity Security Cloud (ISC).
 A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The Source id
+ @param id Source ID.
  @return ApiGetSourceRequest
 */
 func (a *SourcesAPIService) GetSource(ctx context.Context, id string) ApiGetSourceRequest {
@@ -1932,6 +1932,185 @@ func (a *SourcesAPIService) GetSourceSchemaExecute(r ApiGetSourceSchemaRequest) 
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListAccessProfiles401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessProfiles429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetSourceSchemasRequest struct {
+	ctx context.Context
+	ApiService *SourcesAPIService
+	sourceId string
+	includeTypes *string
+}
+
+// If this is set to &#x60;group&#x60;, the API filters the account schema and only returns only group schemas. If this is set to &#x60;user&#x60;, the API returns the account schema for the source. 
+func (r ApiGetSourceSchemasRequest) IncludeTypes(includeTypes string) ApiGetSourceSchemasRequest {
+	r.includeTypes = &includeTypes
+	return r
+}
+
+func (r ApiGetSourceSchemasRequest) Execute() ([]Schema, *http.Response, error) {
+	return r.ApiService.GetSourceSchemasExecute(r)
+}
+
+/*
+GetSourceSchemas List Schemas on Source
+
+Use this API to list the schemas that exist on the specified source in Identity Security Cloud (ISC).
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param sourceId Source ID.
+ @return ApiGetSourceSchemasRequest
+*/
+func (a *SourcesAPIService) GetSourceSchemas(ctx context.Context, sourceId string) ApiGetSourceSchemasRequest {
+	return ApiGetSourceSchemasRequest{
+		ApiService: a,
+		ctx: ctx,
+		sourceId: sourceId,
+	}
+}
+
+// Execute executes the request
+//  @return []Schema
+func (a *SourcesAPIService) GetSourceSchemasExecute(r ApiGetSourceSchemasRequest) ([]Schema, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Schema
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.GetSourceSchemas")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/sources/{sourceId}/schemas"
+	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.sourceId, "sourceId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.includeTypes != nil {
+		parameterAddToQuery(localVarQueryParams, "include-types", r.includeTypes, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2777,185 +2956,6 @@ func (a *SourcesAPIService) ListProvisioningPoliciesExecute(r ApiListProvisionin
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListSourceSchemasRequest struct {
-	ctx context.Context
-	ApiService *SourcesAPIService
-	sourceId string
-	includeTypes *string
-}
-
-// If set to &#39;group&#39;, then the account schema is filtered and only group schemas are returned. Only a value of &#39;group&#39; is recognized.
-func (r ApiListSourceSchemasRequest) IncludeTypes(includeTypes string) ApiListSourceSchemasRequest {
-	r.includeTypes = &includeTypes
-	return r
-}
-
-func (r ApiListSourceSchemasRequest) Execute() ([]Schema, *http.Response, error) {
-	return r.ApiService.ListSourceSchemasExecute(r)
-}
-
-/*
-ListSourceSchemas List Schemas on a Source
-
-Lists the Schemas that exist on the specified Source in IdentityNow.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param sourceId The Source ID.
- @return ApiListSourceSchemasRequest
-*/
-func (a *SourcesAPIService) ListSourceSchemas(ctx context.Context, sourceId string) ApiListSourceSchemasRequest {
-	return ApiListSourceSchemasRequest{
-		ApiService: a,
-		ctx: ctx,
-		sourceId: sourceId,
-	}
-}
-
-// Execute executes the request
-//  @return []Schema
-func (a *SourcesAPIService) ListSourceSchemasExecute(r ApiListSourceSchemasRequest) ([]Schema, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []Schema
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.ListSourceSchemas")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/sources/{sourceId}/schemas"
-	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.sourceId, "sourceId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.includeTypes != nil {
-		parameterAddToQuery(localVarQueryParams, "include-types", r.includeTypes, "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiListSourcesRequest struct {
 	ctx context.Context
 	ApiService *SourcesAPIService
@@ -3395,10 +3395,9 @@ func (r ApiPutSourceRequest) Execute() (*Source, *http.Response, error) {
 /*
 PutSource Update Source (Full)
 
-This API updates a source in IdentityNow, using a full object representation. In other words, the existing Source
-configuration is completely replaced.
+Use this API to update a source in Identity Security Cloud (ISC), using a full object representation. This means that when you use this API, it completely replaces the existing source configuration.
 
-Some fields are immutable and cannot be changed, such as:
+These fields are immutable, so they cannot be changed:
 
 * id
 * type
@@ -3413,7 +3412,7 @@ A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required t
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The Source id
+ @param id Source ID.
  @return ApiPutSourceRequest
 */
 func (a *SourcesAPIService) PutSource(ctx context.Context, id string) ApiPutSourceRequest {
@@ -4137,7 +4136,7 @@ type ApiUpdateSourceRequest struct {
 	jsonPatchOperation *[]JsonPatchOperation
 }
 
-// A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in IdentityNow.
+// A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC).
 func (r ApiUpdateSourceRequest) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiUpdateSourceRequest {
 	r.jsonPatchOperation = &jsonPatchOperation
 	return r
@@ -4150,10 +4149,10 @@ func (r ApiUpdateSourceRequest) Execute() (*Source, *http.Response, error) {
 /*
 UpdateSource Update Source (Partial)
 
-This API partially updates a source in IdentityNow, using a list of patch operations according to the
+Use this API to partially update a source in Identity Security Cloud (ISC), using a list of patch operations according to the
 [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
-Some fields are immutable and cannot be changed, such as:
+These fields are immutable, so they cannot be changed:
 
 * id
 * type
@@ -4170,7 +4169,7 @@ A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or API authority is requi
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The Source id
+ @param id Source ID.
  @return ApiUpdateSourceRequest
 */
 func (a *SourcesAPIService) UpdateSource(ctx context.Context, id string) ApiUpdateSourceRequest {

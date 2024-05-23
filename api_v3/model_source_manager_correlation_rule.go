@@ -17,13 +17,13 @@ import (
 // checks if the SourceManagerCorrelationRule type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SourceManagerCorrelationRule{}
 
-// SourceManagerCorrelationRule Reference to the ManagerCorrelationRule, only used when a simple filter isn't sufficient.
+// SourceManagerCorrelationRule Reference to the ManagerCorrelationRule. Only use this rule when a simple filter isn't sufficient.
 type SourceManagerCorrelationRule struct {
-	// The type of object being referenced
+	// Type of object being referenced.
 	Type *string `json:"type,omitempty"`
-	// ID of the rule
+	// Rule ID.
 	Id *string `json:"id,omitempty"`
-	// Human-readable display name of the rule
+	// Rule's human-readable display name.
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

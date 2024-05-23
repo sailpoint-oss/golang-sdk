@@ -17,13 +17,13 @@ import (
 // checks if the SourceOwner type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SourceOwner{}
 
-// SourceOwner Reference to an owning Identity Object
+// SourceOwner Reference to identity object who owns the source.
 type SourceOwner struct {
-	// The type of object being referenced
+	// Type of object being referenced.
 	Type *string `json:"type,omitempty"`
-	// ID of the identity
+	// Owner identity's ID.
 	Id *string `json:"id,omitempty"`
-	// Human-readable display name of the identity
+	// Owner identity's human-readable display name.
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

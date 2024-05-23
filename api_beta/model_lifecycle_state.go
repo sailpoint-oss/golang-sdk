@@ -20,11 +20,11 @@ var _ MappedNullable = &LifecycleState{}
 
 // LifecycleState struct for LifecycleState
 type LifecycleState struct {
-	// lifecycle stat id.
+	// Lifecycle state ID.
 	Id *string `json:"id,omitempty"`
-	// Lifecycle-state name.
+	// Lifecycle state name.
 	Name *string `json:"name,omitempty"`
-	// The technical name for lifecycle state. This is for internal use.
+	// Lifecycle state technical name. This is for internal use.
 	TechnicalName *string `json:"technicalName,omitempty"`
 	// Lifecycle state description.
 	Description *string `json:"description,omitempty"`
@@ -32,7 +32,7 @@ type LifecycleState struct {
 	Created *time.Time `json:"created,omitempty"`
 	// Lifecycle state modified date.
 	Modified *time.Time `json:"modified,omitempty"`
-	// Whether the lifecycle state is enabled or disabled.
+	// Indicates whether the lifecycle state is enabled or disabled.
 	Enabled *bool `json:"enabled,omitempty"`
 	// Number of identities that have the lifecycle state.
 	IdentityCount *int32 `json:"identityCount,omitempty"`
@@ -51,6 +51,8 @@ type _LifecycleState LifecycleState
 // will change when the set of required properties is changed
 func NewLifecycleState() *LifecycleState {
 	this := LifecycleState{}
+	var enabled bool = false
+	this.Enabled = &enabled
 	return &this
 }
 
@@ -59,6 +61,8 @@ func NewLifecycleState() *LifecycleState {
 // but it doesn't guarantee that properties required by API are set
 func NewLifecycleStateWithDefaults() *LifecycleState {
 	this := LifecycleState{}
+	var enabled bool = false
+	this.Enabled = &enabled
 	return &this
 }
 

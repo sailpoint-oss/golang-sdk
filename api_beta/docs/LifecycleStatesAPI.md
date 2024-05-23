@@ -4,16 +4,16 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ListLifecycleStates**](LifecycleStatesAPI.md#ListLifecycleStates) | **Get** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Lifecycle State
+[**GetLifecycleStates**](LifecycleStatesAPI.md#GetLifecycleStates) | **Get** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Get Lifecycle State
 [**UpdateLifecycleStates**](LifecycleStatesAPI.md#UpdateLifecycleStates) | **Patch** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Update Lifecycle State
 
 
 
-## ListLifecycleStates
+## GetLifecycleStates
 
-> LifecycleState ListLifecycleStates(ctx, identityProfileId, lifecycleStateId).Execute()
+> LifecycleState GetLifecycleStates(ctx, identityProfileId, lifecycleStateId).Execute()
 
-Lifecycle State
+Get Lifecycle State
 
 
 
@@ -30,18 +30,18 @@ import (
 )
 
 func main() {
-    identityProfileId := "identityProfileId_example" // string | Identity Profile ID
-    lifecycleStateId := "lifecycleStateId_example" // string | Lifecycle State ID
+    identityProfileId := "2b838de9-db9b-abcf-e646-d4f274ad4238" // string | Identity Profile ID.
+    lifecycleStateId := "ef38f94347e94562b5bb8424a56397d8" // string | Lifecycle State ID.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LifecycleStatesAPI.ListLifecycleStates(context.Background(), identityProfileId, lifecycleStateId).Execute()
+    resp, r, err := apiClient.LifecycleStatesAPI.GetLifecycleStates(context.Background(), identityProfileId, lifecycleStateId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.ListLifecycleStates``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.GetLifecycleStates``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListLifecycleStates`: LifecycleState
-    fmt.Fprintf(os.Stdout, "Response from `LifecycleStatesAPI.ListLifecycleStates`: %v\n", resp)
+    // response from `GetLifecycleStates`: LifecycleState
+    fmt.Fprintf(os.Stdout, "Response from `LifecycleStatesAPI.GetLifecycleStates`: %v\n", resp)
 }
 ```
 
@@ -51,12 +51,12 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**identityProfileId** | **string** | Identity Profile ID | 
-**lifecycleStateId** | **string** | Lifecycle State ID | 
+**identityProfileId** | **string** | Identity Profile ID. | 
+**lifecycleStateId** | **string** | Lifecycle State ID. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListLifecycleStatesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetLifecycleStatesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -103,8 +103,8 @@ import (
 )
 
 func main() {
-    identityProfileId := "identityProfileId_example" // string | Identity Profile ID
-    lifecycleStateId := "lifecycleStateId_example" // string | Lifecycle State ID
+    identityProfileId := "2b838de9-db9b-abcf-e646-d4f274ad4238" // string | Identity Profile ID.
+    lifecycleStateId := "ef38f94347e94562b5bb8424a56397d8" // string | Lifecycle State ID.
     jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption 
 
     configuration := openapiclient.NewConfiguration()
@@ -125,8 +125,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**identityProfileId** | **string** | Identity Profile ID | 
-**lifecycleStateId** | **string** | Lifecycle State ID | 
+**identityProfileId** | **string** | Identity Profile ID. | 
+**lifecycleStateId** | **string** | Lifecycle State ID. | 
 
 ### Other Parameters
 

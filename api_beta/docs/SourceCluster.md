@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | The type of object being referenced | 
-**Id** | **string** | ID of the cluster | 
-**Name** | **string** | Human-readable display name of the cluster | 
+**Type** | **string** | Type of object being referenced. | 
+**Id** | **string** | Cluster ID. | 
+**Name** | **string** | Cluster&#39;s human-readable display name. | 
 
 ## Methods
 

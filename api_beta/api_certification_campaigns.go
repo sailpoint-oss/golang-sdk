@@ -51,14 +51,14 @@ This endpoint will return a content error if the campaign is **not past due**.
 
 :::
 
-Completes a certification campaign. This is provided to admins so that they
-can complete a certification even if all items have not been completed.
+Use this API to complete a certification campaign. This functionality is provided to admins so that they
+can complete a certification even if all items have not been completed. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/complete-campaign).
 
-Requires roles of CERT_ADMIN and ORG_ADMIN
+Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The campaign id
+ @param id Campaign ID.
  @return ApiCompleteCampaignRequest
 
 Deprecated
@@ -231,9 +231,9 @@ func (r ApiCreateCampaignRequest) Execute() (*Campaign, *http.Response, error) {
 }
 
 /*
-CreateCampaign Create a campaign
+CreateCampaign Create Campaign
 
-Creates a new Certification Campaign with the information provided in the request body.
+Use this API to create a certification campaign with the information provided in the request body. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/create-campaign).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateCampaignRequest
@@ -400,7 +400,7 @@ func (r ApiCreateCampaignTemplateRequest) Execute() (*CampaignTemplate, *http.Re
 /*
 CreateCampaignTemplate Create a Campaign Template
 
-Create a campaign Template based on campaign.
+Use this API to create a campaign template based on campaign. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/create-campaign-template).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateCampaignTemplateRequest
@@ -562,10 +562,10 @@ func (r ApiDeleteCampaignTemplateRequest) Execute() (*http.Response, error) {
 /*
 DeleteCampaignTemplate Delete a Campaign Template
 
-Deletes a campaign template by ID.
+Use this API to delete a certification campaign template by ID. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/delete-campaign-template).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The ID of the campaign template being deleted.
+ @param id ID of the campaign template being deleted.
  @return ApiDeleteCampaignTemplateRequest
 
 Deprecated
@@ -720,12 +720,12 @@ func (r ApiDeleteCampaignTemplateScheduleRequest) Execute() (*http.Response, err
 }
 
 /*
-DeleteCampaignTemplateSchedule Deletes a Campaign Template's Schedule
+DeleteCampaignTemplateSchedule Delete Campaign Template Schedule
 
-Deletes the schedule for a campaign template. Returns a 404 if there is no schedule set.
+Use this API to delete the schedule for a certification campaign template. The API returns a 404 if there is no schedule set. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/delete-campaign-template-schedule).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The ID of the campaign template whose schedule is being deleted.
+ @param id ID of the campaign template whose schedule is being deleted.
  @return ApiDeleteCampaignTemplateScheduleRequest
 
 Deprecated
@@ -875,7 +875,7 @@ type ApiDeleteCampaignsRequest struct {
 	deleteCampaignsRequest *DeleteCampaignsRequest
 }
 
-// The ids of the campaigns to delete.
+// IDs of the campaigns to delete.
 func (r ApiDeleteCampaignsRequest) DeleteCampaignsRequest(deleteCampaignsRequest DeleteCampaignsRequest) ApiDeleteCampaignsRequest {
 	r.deleteCampaignsRequest = &deleteCampaignsRequest
 	return r
@@ -886,9 +886,9 @@ func (r ApiDeleteCampaignsRequest) Execute() (map[string]interface{}, *http.Resp
 }
 
 /*
-DeleteCampaigns Deletes Campaigns
+DeleteCampaigns Delete Campaigns
 
-Deletes campaigns whose Ids are specified in the provided list of campaign Ids. Authorized callers must be an ORG_ADMIN or a CERT_ADMIN.
+Use this API to delete certification campaigns whose IDs are specified in the provided list of campaign IDs. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/delete-campaigns). Authorized callers must be ORG_ADMINs or CERT_ADMINs.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDeleteCampaignsRequest
@@ -1102,7 +1102,7 @@ func (r ApiGetActiveCampaignsRequest) Execute() ([]GetActiveCampaigns200Response
 /*
 GetActiveCampaigns List Campaigns
 
-Gets campaigns and returns them in a list. Can provide increased level of detail for each campaign if provided the correct query.
+Use this API to get a list of campaigns. The API can provide increased level of detail for each campaign for the correct provided query. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-active-campaigns). - UserContextAuth: []
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetActiveCampaignsRequest
@@ -1284,12 +1284,12 @@ func (r ApiGetCampaignRequest) Execute() (*Slimcampaign, *http.Response, error) 
 }
 
 /*
-GetCampaign Get a campaign
+GetCampaign Get Campaign
 
-Retrieves information for an existing campaign using the campaign's ID. Authorized callers must be a reviewer for this campaign, an ORG_ADMIN, or a CERT_ADMIN.
+Use this API to get information for an existing certification campaign by the campaign's ID. Though this endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign). Authorized callers must be reviewers for this campaign, ORG_ADMINs, or a CERT_ADMINs.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The ID of the campaign to be retrieved
+ @param id ID of the campaign to be retrieved.
  @return ApiGetCampaignRequest
 
 Deprecated
@@ -1457,11 +1457,11 @@ func (r ApiGetCampaignReportsRequest) Execute() ([]CampaignReport, *http.Respons
 /*
 GetCampaignReports Get Campaign Reports
 
-Fetches all reports for a certification campaign by campaign ID.
-Requires roles of CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN
+Use this API to fetch all reports for a certification campaign by campaign ID. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-reports).
+Calling this endpoint requires roles of CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The ID of the campaign for which reports are being fetched.
+ @param id ID of the campaign whose reports are being fetched.
  @return ApiGetCampaignReportsRequest
 
 Deprecated
@@ -1628,8 +1628,8 @@ func (r ApiGetCampaignReportsConfigRequest) Execute() (*CampaignReportsConfig, *
 /*
 GetCampaignReportsConfig Get Campaign Reports Configuration
 
-Fetches configuration for campaign reports. Currently it includes only one element - identity attributes defined as custom report columns.
-Requires roles of CERT_ADMIN and ORG_ADMIN.
+Use this API to fetch the configuration for certification campaign reports. The configuration includes only one element - identity attributes defined as custom report columns. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-reports-config).
+Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetCampaignReportsConfigRequest
@@ -1786,10 +1786,10 @@ func (r ApiGetCampaignTemplateRequest) Execute() (*CampaignTemplate, *http.Respo
 /*
 GetCampaignTemplate Get a Campaign Template
 
-Fetches a campaign template by ID.
+Use this API to fetch a certification campaign template by ID. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-template).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The desired campaign template's ID.
+ @param id Requested campaign template's ID.
  @return ApiGetCampaignTemplateRequest
 
 Deprecated
@@ -1955,12 +1955,12 @@ func (r ApiGetCampaignTemplateScheduleRequest) Execute() (*Schedule, *http.Respo
 }
 
 /*
-GetCampaignTemplateSchedule Gets a Campaign Template's Schedule
+GetCampaignTemplateSchedule Get Campaign Template Schedule
 
-Gets the schedule for a campaign template. Returns a 404 if there is no schedule set.
+Use this API to get the schedule for a certification campaign template. The API returns a 404 if there is no schedule set. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-template-schedule).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The ID of the campaign template whose schedule is being fetched.
+ @param id ID of the campaign template whose schedule is being fetched.
  @return ApiGetCampaignTemplateScheduleRequest
 
 Deprecated
@@ -2115,7 +2115,7 @@ func (a *CertificationCampaignsAPIService) GetCampaignTemplateScheduleExecute(r 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListCampaignTemplatesRequest struct {
+type ApiGetCampaignTemplatesRequest struct {
 	ctx context.Context
 	ApiService *CertificationCampaignsAPIService
 	limit *int32
@@ -2126,53 +2126,52 @@ type ApiListCampaignTemplatesRequest struct {
 }
 
 // Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-func (r ApiListCampaignTemplatesRequest) Limit(limit int32) ApiListCampaignTemplatesRequest {
+func (r ApiGetCampaignTemplatesRequest) Limit(limit int32) ApiGetCampaignTemplatesRequest {
 	r.limit = &limit
 	return r
 }
 
 // Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-func (r ApiListCampaignTemplatesRequest) Offset(offset int32) ApiListCampaignTemplatesRequest {
+func (r ApiGetCampaignTemplatesRequest) Offset(offset int32) ApiGetCampaignTemplatesRequest {
 	r.offset = &offset
 	return r
 }
 
 // If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-func (r ApiListCampaignTemplatesRequest) Count(count bool) ApiListCampaignTemplatesRequest {
+func (r ApiGetCampaignTemplatesRequest) Count(count bool) ApiGetCampaignTemplatesRequest {
 	r.count = &count
 	return r
 }
 
 // Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**
-func (r ApiListCampaignTemplatesRequest) Sorters(sorters string) ApiListCampaignTemplatesRequest {
+func (r ApiGetCampaignTemplatesRequest) Sorters(sorters string) ApiGetCampaignTemplatesRequest {
 	r.sorters = &sorters
 	return r
 }
 
 // Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, ge, gt, in, le, lt, ne, sw*  **id**: *eq, ge, gt, in, le, lt, ne, sw*
-func (r ApiListCampaignTemplatesRequest) Filters(filters string) ApiListCampaignTemplatesRequest {
+func (r ApiGetCampaignTemplatesRequest) Filters(filters string) ApiGetCampaignTemplatesRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r ApiListCampaignTemplatesRequest) Execute() ([]CampaignTemplate, *http.Response, error) {
-	return r.ApiService.ListCampaignTemplatesExecute(r)
+func (r ApiGetCampaignTemplatesRequest) Execute() ([]CampaignTemplate, *http.Response, error) {
+	return r.ApiService.GetCampaignTemplatesExecute(r)
 }
 
 /*
-ListCampaignTemplates List Campaign Templates
+GetCampaignTemplates List Campaign Templates
 
-Lists all CampaignTemplates. Scope can be reduced via standard V3 query params.
-
-All CampaignTemplates matching the query params
+Use this API to get a list of all campaign templates. Scope can be reduced through standard V3 query params. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/list-campaign-templates).
+The endpoint returns all campaign templates matching the query parameters. 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListCampaignTemplatesRequest
+ @return ApiGetCampaignTemplatesRequest
 
 Deprecated
 */
-func (a *CertificationCampaignsAPIService) ListCampaignTemplates(ctx context.Context) ApiListCampaignTemplatesRequest {
-	return ApiListCampaignTemplatesRequest{
+func (a *CertificationCampaignsAPIService) GetCampaignTemplates(ctx context.Context) ApiGetCampaignTemplatesRequest {
+	return ApiGetCampaignTemplatesRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2181,7 +2180,7 @@ func (a *CertificationCampaignsAPIService) ListCampaignTemplates(ctx context.Con
 // Execute executes the request
 //  @return []CampaignTemplate
 // Deprecated
-func (a *CertificationCampaignsAPIService) ListCampaignTemplatesExecute(r ApiListCampaignTemplatesRequest) ([]CampaignTemplate, *http.Response, error) {
+func (a *CertificationCampaignsAPIService) GetCampaignTemplatesExecute(r ApiGetCampaignTemplatesRequest) ([]CampaignTemplate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2189,7 +2188,7 @@ func (a *CertificationCampaignsAPIService) ListCampaignTemplatesExecute(r ApiLis
 		localVarReturnValue  []CampaignTemplate
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.ListCampaignTemplates")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.GetCampaignTemplates")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2534,10 +2533,10 @@ func (r ApiPatchCampaignTemplateRequest) Execute() (*CampaignTemplate, *http.Res
 /*
 PatchCampaignTemplate Update a Campaign Template
 
-Allows updating individual fields on a campaign template using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+Use this API to update individual fields on a certification campaign template, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/patch-campaign-template).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The ID of the campaign template being modified.
+ @param id ID of the campaign template being modified.
  @return ApiPatchCampaignTemplateRequest
 
 Deprecated
@@ -2703,7 +2702,7 @@ type ApiSetCampaignReportsConfigRequest struct {
 	campaignReportsConfig *CampaignReportsConfig
 }
 
-// Campaign Report Configuration
+// Campaign report configuration.
 func (r ApiSetCampaignReportsConfigRequest) CampaignReportsConfig(campaignReportsConfig CampaignReportsConfig) ApiSetCampaignReportsConfigRequest {
 	r.campaignReportsConfig = &campaignReportsConfig
 	return r
@@ -2716,8 +2715,8 @@ func (r ApiSetCampaignReportsConfigRequest) Execute() (*CampaignReportsConfig, *
 /*
 SetCampaignReportsConfig Set Campaign Reports Configuration
 
-Overwrites configuration for campaign reports.
-Requires roles CERT_ADMIN and ORG_ADMIN.
+Use this API to overwrite the configuration for campaign reports. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/set-campaign-reports-config).
+Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSetCampaignReportsConfigRequest
@@ -2883,12 +2882,12 @@ func (r ApiSetCampaignTemplateScheduleRequest) Execute() (*http.Response, error)
 }
 
 /*
-SetCampaignTemplateSchedule Sets a Campaign Template's Schedule
+SetCampaignTemplateSchedule Set Campaign Template Schedule
 
-Sets the schedule for a campaign template. If a schedule already exists, it will be overwritten with the new one.
+Use this API to set the schedule for a certification campaign template. If a schedule already exists, the API overwrites it with the new one.  Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/set-campaign-template-schedule).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The ID of the campaign template being scheduled.
+ @param id ID of the campaign template being scheduled.
  @return ApiSetCampaignTemplateScheduleRequest
 
 Deprecated
@@ -3054,11 +3053,11 @@ func (r ApiStartCampaignRequest) Execute() (map[string]interface{}, *http.Respon
 /*
 StartCampaign Activate a Campaign
 
-Submits a job to activate the campaign with the given Id. The campaign must be staged.
-Requires roles of CERT_ADMIN and ORG_ADMIN
+Use this API to submit a job to activate the certified campaign with the specified ID. The campaign must be staged. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-campaign).
+Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The campaign id
+ @param id Campaign ID.
  @return ApiStartCampaignRequest
 
 Deprecated
@@ -3228,11 +3227,11 @@ func (r ApiStartCampaignRemediationScanRequest) Execute() (map[string]interface{
 /*
 StartCampaignRemediationScan Run Campaign Remediation Scan
 
-Kicks off remediation scan task for a certification campaign.
-Requires roles of CERT_ADMIN and ORG_ADMIN
+Use this API to run a remediation scan task for a certification campaign. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-campaign-remediation-scan).
+Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The ID of the campaign for which remediation scan is being run.
+ @param id ID of the campaign the remediation scan is being run for.
  @return ApiStartCampaignRemediationScanRequest
 
 Deprecated
@@ -3401,12 +3400,12 @@ func (r ApiStartCampaignReportRequest) Execute() (map[string]interface{}, *http.
 /*
 StartCampaignReport Run Campaign Report
 
-Runs a report for a certification campaign.
-Requires the following roles: CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
+Use this API to run a report for a certification campaign. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-campaign-report).
+Calling this endpoint requires the following roles: CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The ID of the campaign for which report is being run.
- @param type_ The type of the report to run.
+ @param id ID of the campaign the report is being run for.
+ @param type_ Type of report to run.
  @return ApiStartCampaignReportRequest
 
 Deprecated
@@ -3576,14 +3575,15 @@ func (r ApiStartGenerateCampaignTemplateRequest) Execute() (*CampaignReference, 
 /*
 StartGenerateCampaignTemplate Generate a Campaign from Template
 
-Generates a new campaign from a campaign template.
-The campaign object contained in the template has special formatting applied to its name and description fields in order to determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation.
-Placeholders consist of a percent sign followed by a letter indicating what should be inserted; for example, "%Y" will insert the current year; a campaign template named "Campaign for %y" would generate a campaign called "Campaign for 2020" (assuming the year at generation time is 2020).
+Use this API to generate a new certification campaign from a campaign template.
+The campaign object contained in the template has special formatting applied to its name and description fields that determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation.
+Placeholders consist of a percent sign followed by a letter indicating what should be inserted. For example, "%Y" inserts the current year, and a campaign template named "Campaign for %y" generates a campaign called "Campaign for 2020" (assuming the year at generation time is 2020).
 Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html).
-Requires roles ORG_ADMIN.
+Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-generate-campaign-template).
+Calling this endpoint requires the ORG_ADMIN role.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The ID of the campaign template to use for generation.
+ @param id ID of the campaign template to use for generation.
  @return ApiStartGenerateCampaignTemplateRequest
 
 Deprecated
@@ -3734,7 +3734,7 @@ type ApiUpdateCampaignRequest struct {
 	requestBody *[]map[string]interface{}
 }
 
-// A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  In the *STAGED* status, the following fields can be patched: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  In the *ACTIVE* status, the following fields can be patched: * deadline 
+// A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline 
 func (r ApiUpdateCampaignRequest) RequestBody(requestBody []map[string]interface{}) ApiUpdateCampaignRequest {
 	r.requestBody = &requestBody
 	return r
@@ -3747,10 +3747,10 @@ func (r ApiUpdateCampaignRequest) Execute() (*Slimcampaign, *http.Response, erro
 /*
 UpdateCampaign Update a Campaign
 
-Allows updating individual fields on a campaign using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+Use this API to update individual fields on a certification campaign, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Though this endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/beta/update-campaign).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The ID of the campaign template being modified.
+ @param id ID of the campaign template being modified.
  @return ApiUpdateCampaignRequest
 
 Deprecated

@@ -10,10 +10,10 @@ Method | HTTP request | Description
 [**CreateWorkflowExternalTrigger**](WorkflowsAPI.md#CreateWorkflowExternalTrigger) | **Post** /workflows/{id}/external/oauth-clients | Generate External Trigger OAuth Client
 [**DeleteWorkflow**](WorkflowsAPI.md#DeleteWorkflow) | **Delete** /workflows/{id} | Delete Workflow By Id
 [**GetWorkflow**](WorkflowsAPI.md#GetWorkflow) | **Get** /workflows/{id} | Get Workflow By Id
-[**GetWorkflowExecution**](WorkflowsAPI.md#GetWorkflowExecution) | **Get** /workflow-executions/{id} | Get a Workflow Execution
+[**GetWorkflowExecution**](WorkflowsAPI.md#GetWorkflowExecution) | **Get** /workflow-executions/{id} | Get Workflow Execution
 [**GetWorkflowExecutionHistory**](WorkflowsAPI.md#GetWorkflowExecutionHistory) | **Get** /workflow-executions/{id}/history | Get Workflow Execution History
+[**GetWorkflowExecutions**](WorkflowsAPI.md#GetWorkflowExecutions) | **Get** /workflows/{id}/executions | List Workflow Executions
 [**ListCompleteWorkflowLibrary**](WorkflowsAPI.md#ListCompleteWorkflowLibrary) | **Get** /workflow-library | List Complete Workflow Library
-[**ListWorkflowExecutions**](WorkflowsAPI.md#ListWorkflowExecutions) | **Get** /workflows/{id}/executions | List Workflow Executions
 [**ListWorkflowLibraryActions**](WorkflowsAPI.md#ListWorkflowLibraryActions) | **Get** /workflow-library/actions | List Workflow Library Actions
 [**ListWorkflowLibraryOperators**](WorkflowsAPI.md#ListWorkflowLibraryOperators) | **Get** /workflow-library/operators | List Workflow Library Operators
 [**ListWorkflowLibraryTriggers**](WorkflowsAPI.md#ListWorkflowLibraryTriggers) | **Get** /workflow-library/triggers | List Workflow Library Triggers
@@ -443,7 +443,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} GetWorkflowExecution(ctx, id).Execute()
 
-Get a Workflow Execution
+Get Workflow Execution
 
 
 
@@ -460,7 +460,7 @@ import (
 )
 
 func main() {
-    id := "c17bea3a-574d-453c-9e04-4365fbf5af0b" // string | Id of the workflow execution
+    id := "c17bea3a-574d-453c-9e04-4365fbf5af0b" // string | Workflow execution ID.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -480,7 +480,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Id of the workflow execution | 
+**id** | **string** | Workflow execution ID. | 
 
 ### Other Parameters
 
@@ -579,6 +579,84 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetWorkflowExecutions
+
+> []WorkflowExecution GetWorkflowExecutions(ctx, id).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
+
+List Workflow Executions
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    id := "c17bea3a-574d-453c-9e04-4365fbf5af0b" // string | Workflow ID.
+    limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+    offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+    count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+    filters := "status eq "Failed"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **startTime**: *eq, lt, le, gt, ge*  **status**: *eq* (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.WorkflowsAPI.GetWorkflowExecutions(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.GetWorkflowExecutions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetWorkflowExecutions`: []WorkflowExecution
+    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.GetWorkflowExecutions`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Workflow ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetWorkflowExecutionsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
+ **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
+ **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
+ **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **startTime**: *eq, lt, le, gt, ge*  **status**: *eq* | 
+
+### Return type
+
+[**[]WorkflowExecution**](WorkflowExecution.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListCompleteWorkflowLibrary
 
 > []ListCompleteWorkflowLibrary200ResponseInner ListCompleteWorkflowLibrary(ctx).Limit(limit).Offset(offset).Execute()
@@ -632,84 +710,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]ListCompleteWorkflowLibrary200ResponseInner**](ListCompleteWorkflowLibrary200ResponseInner.md)
-
-### Authorization
-
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ListWorkflowExecutions
-
-> []WorkflowExecution ListWorkflowExecutions(ctx, id).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
-
-List Workflow Executions
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    id := "c17bea3a-574d-453c-9e04-4365fbf5af0b" // string | Id of the workflow
-    limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
-    offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-    count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-    filters := "status eq "Failed"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **startTime**: *eq, lt, le, gt, ge*  **status**: *eq* (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsAPI.ListWorkflowExecutions(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.ListWorkflowExecutions``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListWorkflowExecutions`: []WorkflowExecution
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.ListWorkflowExecutions`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Id of the workflow | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListWorkflowExecutionsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
- **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
- **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
- **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **startTime**: *eq, lt, le, gt, ge*  **status**: *eq* | 
-
-### Return type
-
-[**[]WorkflowExecution**](WorkflowExecution.md)
 
 ### Authorization
 

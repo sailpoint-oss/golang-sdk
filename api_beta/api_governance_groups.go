@@ -1278,7 +1278,7 @@ func (r ApiListWorkgroupsRequest) Count(count bool) ApiListWorkgroupsRequest {
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **name**: *eq, sw, in*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **name**: *eq, sw, in*  **memberships.identityId**: *eq, in*
 func (r ApiListWorkgroupsRequest) Filters(filters string) ApiListWorkgroupsRequest {
 	r.filters = &filters
 	return r

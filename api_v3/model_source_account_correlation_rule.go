@@ -17,13 +17,13 @@ import (
 // checks if the SourceAccountCorrelationRule type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SourceAccountCorrelationRule{}
 
-// SourceAccountCorrelationRule Reference to a Rule that can do COMPLEX correlation, should only be used when accountCorrelationConfig can't be used.
+// SourceAccountCorrelationRule Reference to a rule that can do COMPLEX correlation. Only use this rule when you can't use accountCorrelationConfig.
 type SourceAccountCorrelationRule struct {
-	// The type of object being referenced
+	// Type of object being referenced.
 	Type *string `json:"type,omitempty"`
-	// ID of the rule
+	// Rule ID.
 	Id *string `json:"id,omitempty"`
-	// Human-readable display name of the rule
+	// Rule's human-readable display name.
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

@@ -19,11 +19,11 @@ var _ MappedNullable = &SourcePasswordPoliciesInner{}
 
 // SourcePasswordPoliciesInner struct for SourcePasswordPoliciesInner
 type SourcePasswordPoliciesInner struct {
-	// The type of object being referenced
+	// Type of object being referenced.
 	Type *string `json:"type,omitempty"`
-	// ID of the policy
+	// Policy ID.
 	Id *string `json:"id,omitempty"`
-	// Human-readable display name of the policy
+	// Policy's human-readable display name.
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

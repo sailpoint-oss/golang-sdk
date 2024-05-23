@@ -23,32 +23,32 @@ import (
 // LifecycleStatesAPIService LifecycleStatesAPI service
 type LifecycleStatesAPIService service
 
-type ApiListLifecycleStatesRequest struct {
+type ApiGetLifecycleStatesRequest struct {
 	ctx context.Context
 	ApiService *LifecycleStatesAPIService
 	identityProfileId string
 	lifecycleStateId string
 }
 
-func (r ApiListLifecycleStatesRequest) Execute() (*LifecycleState, *http.Response, error) {
-	return r.ApiService.ListLifecycleStatesExecute(r)
+func (r ApiGetLifecycleStatesRequest) Execute() (*LifecycleState, *http.Response, error) {
+	return r.ApiService.GetLifecycleStatesExecute(r)
 }
 
 /*
-ListLifecycleStates Lifecycle State
+GetLifecycleStates Get Lifecycle State
 
-This endpoint returns a lifecycle state.
+Use this endpoint to get a lifecycle state by its ID and its associated identity profile ID. 
 
 A token with ORG_ADMIN or API authority is required to call this API.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param identityProfileId Identity Profile ID
- @param lifecycleStateId Lifecycle State ID
- @return ApiListLifecycleStatesRequest
+ @param identityProfileId Identity Profile ID.
+ @param lifecycleStateId Lifecycle State ID.
+ @return ApiGetLifecycleStatesRequest
 */
-func (a *LifecycleStatesAPIService) ListLifecycleStates(ctx context.Context, identityProfileId string, lifecycleStateId string) ApiListLifecycleStatesRequest {
-	return ApiListLifecycleStatesRequest{
+func (a *LifecycleStatesAPIService) GetLifecycleStates(ctx context.Context, identityProfileId string, lifecycleStateId string) ApiGetLifecycleStatesRequest {
+	return ApiGetLifecycleStatesRequest{
 		ApiService: a,
 		ctx: ctx,
 		identityProfileId: identityProfileId,
@@ -58,7 +58,7 @@ func (a *LifecycleStatesAPIService) ListLifecycleStates(ctx context.Context, ide
 
 // Execute executes the request
 //  @return LifecycleState
-func (a *LifecycleStatesAPIService) ListLifecycleStatesExecute(r ApiListLifecycleStatesRequest) (*LifecycleState, *http.Response, error) {
+func (a *LifecycleStatesAPIService) GetLifecycleStatesExecute(r ApiGetLifecycleStatesRequest) (*LifecycleState, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -66,7 +66,7 @@ func (a *LifecycleStatesAPIService) ListLifecycleStatesExecute(r ApiListLifecycl
 		localVarReturnValue  *LifecycleState
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LifecycleStatesAPIService.ListLifecycleStates")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LifecycleStatesAPIService.GetLifecycleStates")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -208,14 +208,14 @@ func (r ApiUpdateLifecycleStatesRequest) Execute() (*LifecycleState, *http.Respo
 /*
 UpdateLifecycleStates Update Lifecycle State
 
-This API updates individual lifecycle state fields using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+Use this endpoint to update individual lifecycle state fields, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
 A token with ORG_ADMIN or API authority is required to call this API.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param identityProfileId Identity Profile ID
- @param lifecycleStateId Lifecycle State ID
+ @param identityProfileId Identity Profile ID.
+ @param lifecycleStateId Lifecycle State ID.
  @return ApiUpdateLifecycleStatesRequest
 */
 func (a *LifecycleStatesAPIService) UpdateLifecycleStates(ctx context.Context, identityProfileId string, lifecycleStateId string) ApiUpdateLifecycleStatesRequest {

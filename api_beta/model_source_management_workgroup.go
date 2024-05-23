@@ -17,13 +17,13 @@ import (
 // checks if the SourceManagementWorkgroup type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SourceManagementWorkgroup{}
 
-// SourceManagementWorkgroup Reference to Management Workgroup for this Source
+// SourceManagementWorkgroup Reference to management workgroup for the source.
 type SourceManagementWorkgroup struct {
-	// The type of object being referenced
+	// Type of object being referenced.
 	Type *string `json:"type,omitempty"`
-	// ID of the management workgroup
+	// Management workgroup ID.
 	Id *string `json:"id,omitempty"`
-	// Human-readable display name of the management workgroup
+	// Management workgroup's human-readable display name.
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

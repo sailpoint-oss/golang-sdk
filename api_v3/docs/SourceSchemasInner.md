@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | The type of object being referenced | [optional] 
-**Id** | Pointer to **string** | ID of the schema | [optional] 
-**Name** | Pointer to **string** | Human-readable display name of the schema | [optional] 
+**Type** | Pointer to **string** | Type of object being referenced. | [optional] 
+**Id** | Pointer to **string** | Schema ID. | [optional] 
+**Name** | Pointer to **string** | Schema&#39;s human-readable display name. | [optional] 
 
 ## Methods
 

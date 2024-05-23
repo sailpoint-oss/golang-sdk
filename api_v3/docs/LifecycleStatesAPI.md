@@ -5,9 +5,9 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateLifecycleState**](LifecycleStatesAPI.md#CreateLifecycleState) | **Post** /identity-profiles/{identity-profile-id}/lifecycle-states | Create Lifecycle State
-[**DeleteLifecycleState**](LifecycleStatesAPI.md#DeleteLifecycleState) | **Delete** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Delete Lifecycle State by ID
-[**GetLifecycleState**](LifecycleStatesAPI.md#GetLifecycleState) | **Get** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Retrieves Lifecycle State
-[**ListLifecycleStates**](LifecycleStatesAPI.md#ListLifecycleStates) | **Get** /identity-profiles/{identity-profile-id}/lifecycle-states | Lists LifecycleStates
+[**DeleteLifecycleState**](LifecycleStatesAPI.md#DeleteLifecycleState) | **Delete** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Delete Lifecycle State
+[**GetLifecycleState**](LifecycleStatesAPI.md#GetLifecycleState) | **Get** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Get Lifecycle State
+[**GetLifecycleStates**](LifecycleStatesAPI.md#GetLifecycleStates) | **Get** /identity-profiles/{identity-profile-id}/lifecycle-states | Lists LifecycleStates
 [**SetLifecycleState**](LifecycleStatesAPI.md#SetLifecycleState) | **Post** /identities/{identity-id}/set-lifecycle-state | Set Lifecycle State
 [**UpdateLifecycleStates**](LifecycleStatesAPI.md#UpdateLifecycleStates) | **Patch** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Update Lifecycle State
 
@@ -34,8 +34,8 @@ import (
 )
 
 func main() {
-    identityProfileId := "ef38f94347e94562b5bb8424a56397d8" // string | Identity Profile ID
-    lifecycleState := *openapiclient.NewLifecycleState("aName", "Technical Name") // LifecycleState | Lifecycle State
+    identityProfileId := "2b838de9-db9b-abcf-e646-d4f274ad4238" // string | Identity profile ID.
+    lifecycleState := *openapiclient.NewLifecycleState("aName", "Technical Name") // LifecycleState | Lifecycle state to be created.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -55,7 +55,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**identityProfileId** | **string** | Identity Profile ID | 
+**identityProfileId** | **string** | Identity profile ID. | 
 
 ### Other Parameters
 
@@ -65,7 +65,7 @@ Other parameters are passed through a pointer to a apiCreateLifecycleStateReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **lifecycleState** | [**LifecycleState**](LifecycleState.md) | Lifecycle State | 
+ **lifecycleState** | [**LifecycleState**](LifecycleState.md) | Lifecycle state to be created. | 
 
 ### Return type
 
@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 
 > LifecyclestateDeleted DeleteLifecycleState(ctx, identityProfileId, lifecycleStateId).Execute()
 
-Delete Lifecycle State by ID
+Delete Lifecycle State
 
 
 
@@ -106,8 +106,8 @@ import (
 )
 
 func main() {
-    identityProfileId := "2b838de9-db9b-abcf-e646-d4f274ad4238" // string | Identity Profile ID
-    lifecycleStateId := "ef38f94347e94562b5bb8424a56397d8" // string | Lifecycle State ID
+    identityProfileId := "2b838de9-db9b-abcf-e646-d4f274ad4238" // string | Identity profile ID.
+    lifecycleStateId := "ef38f94347e94562b5bb8424a56397d8" // string | Lifecycle state ID.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -127,8 +127,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**identityProfileId** | **string** | Identity Profile ID | 
-**lifecycleStateId** | **string** | Lifecycle State ID | 
+**identityProfileId** | **string** | Identity profile ID. | 
+**lifecycleStateId** | **string** | Lifecycle state ID. | 
 
 ### Other Parameters
 
@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 
 > LifecycleState GetLifecycleState(ctx, identityProfileId, lifecycleStateId).Execute()
 
-Retrieves Lifecycle State
+Get Lifecycle State
 
 
 
@@ -179,8 +179,8 @@ import (
 )
 
 func main() {
-    identityProfileId := "2b838de9-db9b-abcf-e646-d4f274ad4238" // string | Identity Profile ID
-    lifecycleStateId := "ef38f94347e94562b5bb8424a56397d8" // string | Lifecycle State ID
+    identityProfileId := "2b838de9-db9b-abcf-e646-d4f274ad4238" // string | Identity profile ID.
+    lifecycleStateId := "ef38f94347e94562b5bb8424a56397d8" // string | Lifecycle state ID.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -200,8 +200,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**identityProfileId** | **string** | Identity Profile ID | 
-**lifecycleStateId** | **string** | Lifecycle State ID | 
+**identityProfileId** | **string** | Identity profile ID. | 
+**lifecycleStateId** | **string** | Lifecycle state ID. | 
 
 ### Other Parameters
 
@@ -231,9 +231,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListLifecycleStates
+## GetLifecycleStates
 
-> []LifecycleState ListLifecycleStates(ctx, identityProfileId).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Execute()
+> []LifecycleState GetLifecycleStates(ctx, identityProfileId).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Execute()
 
 Lists LifecycleStates
 
@@ -252,7 +252,7 @@ import (
 )
 
 func main() {
-    identityProfileId := "ef38f94347e94562b5bb8424a56397d8" // string | The IdentityProfile id
+    identityProfileId := "2b838de9-db9b-abcf-e646-d4f274ad4238" // string | Identity profile ID.
     limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
@@ -260,13 +260,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LifecycleStatesAPI.ListLifecycleStates(context.Background(), identityProfileId).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Execute()
+    resp, r, err := apiClient.LifecycleStatesAPI.GetLifecycleStates(context.Background(), identityProfileId).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.ListLifecycleStates``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.GetLifecycleStates``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListLifecycleStates`: []LifecycleState
-    fmt.Fprintf(os.Stdout, "Response from `LifecycleStatesAPI.ListLifecycleStates`: %v\n", resp)
+    // response from `GetLifecycleStates`: []LifecycleState
+    fmt.Fprintf(os.Stdout, "Response from `LifecycleStatesAPI.GetLifecycleStates`: %v\n", resp)
 }
 ```
 
@@ -276,11 +276,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**identityProfileId** | **string** | The IdentityProfile id | 
+**identityProfileId** | **string** | Identity profile ID. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListLifecycleStatesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetLifecycleStatesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -402,8 +402,8 @@ import (
 )
 
 func main() {
-    identityProfileId := "2b838de9-db9b-abcf-e646-d4f274ad4238" // string | Identity Profile ID
-    lifecycleStateId := "ef38f94347e94562b5bb8424a56397d8" // string | Lifecycle State ID
+    identityProfileId := "2b838de9-db9b-abcf-e646-d4f274ad4238" // string | Identity profile ID.
+    lifecycleStateId := "ef38f94347e94562b5bb8424a56397d8" // string | Lifecycle state ID.
     jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption 
 
     configuration := openapiclient.NewConfiguration()
@@ -424,8 +424,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**identityProfileId** | **string** | Identity Profile ID | 
-**lifecycleStateId** | **string** | Lifecycle State ID | 
+**identityProfileId** | **string** | Identity profile ID. | 
+**lifecycleStateId** | **string** | Lifecycle state ID. | 
 
 ### Other Parameters
 

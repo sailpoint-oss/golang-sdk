@@ -19,11 +19,11 @@ var _ MappedNullable = &SourceSchemasInner{}
 
 // SourceSchemasInner struct for SourceSchemasInner
 type SourceSchemasInner struct {
-	// The type of object being referenced
+	// Type of object being referenced.
 	Type *string `json:"type,omitempty"`
-	// ID of the schema
+	// Schema ID.
 	Id *string `json:"id,omitempty"`
-	// Human-readable display name of the schema
+	// Schema's human-readable display name.
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

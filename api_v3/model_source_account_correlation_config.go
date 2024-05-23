@@ -17,13 +17,13 @@ import (
 // checks if the SourceAccountCorrelationConfig type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SourceAccountCorrelationConfig{}
 
-// SourceAccountCorrelationConfig Reference to an Account Correlation Config object
+// SourceAccountCorrelationConfig Reference to account correlation config object.
 type SourceAccountCorrelationConfig struct {
-	// The type of object being referenced
+	// Type of object being referenced.
 	Type *string `json:"type,omitempty"`
-	// ID of the account correlation config
+	// Account correlation config ID.
 	Id *string `json:"id,omitempty"`
-	// Human-readable display name of the account correlation config
+	// Account correlation config's human-readable display name.
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

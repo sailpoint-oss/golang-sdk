@@ -17,13 +17,13 @@ import (
 // checks if the SourceBeforeProvisioningRule type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SourceBeforeProvisioningRule{}
 
-// SourceBeforeProvisioningRule Rule that runs on the CCG and allows for customization of provisioning plans before the connector is called.
+// SourceBeforeProvisioningRule Rule that runs on the CCG and allows for customization of provisioning plans before the API calls the connector. 
 type SourceBeforeProvisioningRule struct {
-	// The type of object being referenced
+	// Type of object being referenced.
 	Type *string `json:"type,omitempty"`
-	// ID of the rule
+	// Rule ID.
 	Id *string `json:"id,omitempty"`
-	// Human-readable display name of the rule
+	// Rule's human-readable display name.
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

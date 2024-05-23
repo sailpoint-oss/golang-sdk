@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateProvisioningPolicy**](SourcesAPI.md#CreateProvisioningPolicy) | **Post** /sources/{sourceId}/provisioning-policies | Create Provisioning Policy
 [**CreateSource**](SourcesAPI.md#CreateSource) | **Post** /sources | Creates a source in IdentityNow.
-[**CreateSourceSchema**](SourcesAPI.md#CreateSourceSchema) | **Post** /sources/{sourceId}/schemas | Create Schema on a Source
+[**CreateSourceSchema**](SourcesAPI.md#CreateSourceSchema) | **Post** /sources/{sourceId}/schemas | Create Schema on Source
 [**DeleteProvisioningPolicy**](SourcesAPI.md#DeleteProvisioningPolicy) | **Delete** /sources/{sourceId}/provisioning-policies/{usageType} | Delete Provisioning Policy by UsageType
 [**DeleteSource**](SourcesAPI.md#DeleteSource) | **Delete** /sources/{id} | Delete Source by ID
 [**DeleteSourceSchema**](SourcesAPI.md#DeleteSourceSchema) | **Delete** /sources/{sourceId}/schemas/{schemaId} | Delete Source Schema by ID
@@ -16,11 +16,11 @@ Method | HTTP request | Description
 [**GetSource**](SourcesAPI.md#GetSource) | **Get** /sources/{id} | Get Source by ID
 [**GetSourceHealth**](SourcesAPI.md#GetSourceHealth) | **Get** /sources/{sourceId}/source-health | Fetches source health by id
 [**GetSourceSchema**](SourcesAPI.md#GetSourceSchema) | **Get** /sources/{sourceId}/schemas/{schemaId} | Get Source Schema by ID
+[**GetSourceSchemas**](SourcesAPI.md#GetSourceSchemas) | **Get** /sources/{sourceId}/schemas | List Schemas on Source
 [**ImportAccountsSchema**](SourcesAPI.md#ImportAccountsSchema) | **Post** /sources/{id}/schemas/accounts | Uploads source accounts schema template
 [**ImportConnectorFile**](SourcesAPI.md#ImportConnectorFile) | **Post** /sources/{sourceId}/upload-connector-file | Upload connector file to source
 [**ImportEntitlementsSchema**](SourcesAPI.md#ImportEntitlementsSchema) | **Post** /sources/{id}/schemas/entitlements | Uploads source entitlements schema template
 [**ListProvisioningPolicies**](SourcesAPI.md#ListProvisioningPolicies) | **Get** /sources/{sourceId}/provisioning-policies | Lists ProvisioningPolicies
-[**ListSourceSchemas**](SourcesAPI.md#ListSourceSchemas) | **Get** /sources/{sourceId}/schemas | List Schemas on a Source
 [**ListSources**](SourcesAPI.md#ListSources) | **Get** /sources | Lists all sources in IdentityNow.
 [**PutProvisioningPolicy**](SourcesAPI.md#PutProvisioningPolicy) | **Put** /sources/{sourceId}/provisioning-policies/{usageType} | Update Provisioning Policy by UsageType
 [**PutSource**](SourcesAPI.md#PutSource) | **Put** /sources/{id} | Update Source (Full)
@@ -176,7 +176,7 @@ Name | Type | Description  | Notes
 
 > Schema CreateSourceSchema(ctx, sourceId).Schema(schema).Execute()
 
-Create Schema on a Source
+Create Schema on Source
 
 
 
@@ -193,7 +193,7 @@ import (
 )
 
 func main() {
-    sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source id.
+    sourceId := "2c9180835d191a86015d28455b4a2329" // string | Source ID.
     schema := *openapiclient.NewSchema() // Schema | 
 
     configuration := openapiclient.NewConfiguration()
@@ -214,7 +214,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**sourceId** | **string** | The Source id. | 
+**sourceId** | **string** | Source ID. | 
 
 ### Other Parameters
 
@@ -336,7 +336,7 @@ import (
 )
 
 func main() {
-    id := "2c9180835d191a86015d28455b4a2329" // string | The Source id
+    id := "2c9180835d191a86015d28455b4a2329" // string | Source ID.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -356,7 +356,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The Source id | 
+**id** | **string** | Source ID. | 
 
 ### Other Parameters
 
@@ -686,7 +686,7 @@ import (
 )
 
 func main() {
-    id := "2c9180835d191a86015d28455b4a2329" // string | The Source id
+    id := "2c9180835d191a86015d28455b4a2329" // string | Source ID.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -706,7 +706,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The Source id | 
+**id** | **string** | Source ID. | 
 
 ### Other Parameters
 
@@ -863,6 +863,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Schema**](Schema.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetSourceSchemas
+
+> []Schema GetSourceSchemas(ctx, sourceId).IncludeTypes(includeTypes).Execute()
+
+List Schemas on Source
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    sourceId := "2c9180835d191a86015d28455b4a2329" // string | Source ID.
+    includeTypes := "group" // string | If this is set to `group`, the API filters the account schema and only returns only group schemas. If this is set to `user`, the API returns the account schema for the source.  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesAPI.GetSourceSchemas(context.Background(), sourceId).IncludeTypes(includeTypes).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceSchemas``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetSourceSchemas`: []Schema
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetSourceSchemas`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | Source ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetSourceSchemasRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **includeTypes** | **string** | If this is set to &#x60;group&#x60;, the API filters the account schema and only returns only group schemas. If this is set to &#x60;user&#x60;, the API returns the account schema for the source.  | 
+
+### Return type
+
+[**[]Schema**](Schema.md)
 
 ### Authorization
 
@@ -1166,78 +1238,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListSourceSchemas
-
-> []Schema ListSourceSchemas(ctx, sourceId).IncludeTypes(includeTypes).Execute()
-
-List Schemas on a Source
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source ID.
-    includeTypes := "group" // string | If set to 'group', then the account schema is filtered and only group schemas are returned. Only a value of 'group' is recognized. (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.ListSourceSchemas(context.Background(), sourceId).IncludeTypes(includeTypes).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ListSourceSchemas``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListSourceSchemas`: []Schema
-    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.ListSourceSchemas`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**sourceId** | **string** | The Source ID. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListSourceSchemasRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **includeTypes** | **string** | If set to &#39;group&#39;, then the account schema is filtered and only group schemas are returned. Only a value of &#39;group&#39; is recognized. | 
-
-### Return type
-
-[**[]Schema**](Schema.md)
-
-### Authorization
-
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## ListSources
 
 > []Source ListSources(ctx).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).ForSubadmin(forSubadmin).Execute()
@@ -1410,7 +1410,7 @@ import (
 )
 
 func main() {
-    id := "2c9180835d191a86015d28455b4a2329" // string | The Source id
+    id := "2c9180835d191a86015d28455b4a2329" // string | Source ID.
     source := *openapiclient.NewSource("My Source", *openapiclient.NewSourceOwner(), "active-directory") // Source | 
 
     configuration := openapiclient.NewConfiguration()
@@ -1431,7 +1431,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The Source id | 
+**id** | **string** | Source ID. | 
 
 ### Other Parameters
 
@@ -1704,8 +1704,8 @@ import (
 )
 
 func main() {
-    id := "2c9180835d191a86015d28455b4a2329" // string | The Source id
-    jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in IdentityNow.
+    id := "2c9180835d191a86015d28455b4a2329" // string | Source ID.
+    jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC).
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1725,7 +1725,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The Source id | 
+**id** | **string** | Source ID. | 
 
 ### Other Parameters
 
@@ -1735,7 +1735,7 @@ Other parameters are passed through a pointer to a apiUpdateSourceRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonPatchOperation** | [**[]JsonPatchOperation**](JsonPatchOperation.md) | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in IdentityNow. | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](JsonPatchOperation.md) | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC). | 
 
 ### Return type
 

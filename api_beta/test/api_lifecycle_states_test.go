@@ -22,14 +22,14 @@ func Test_api_beta_LifecycleStatesAPIService(t *testing.T) {
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test LifecycleStatesAPIService ListLifecycleStates", func(t *testing.T) {
+	t.Run("Test LifecycleStatesAPIService GetLifecycleStates", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var identityProfileId string
 		var lifecycleStateId string
 
-		resp, httpRes, err := apiClient.API_BETA.LifecycleStatesAPI.ListLifecycleStates(context.Background(), identityProfileId, lifecycleStateId).Execute()
+		resp, httpRes, err := apiClient.API_BETA.LifecycleStatesAPI.GetLifecycleStates(context.Background(), identityProfileId, lifecycleStateId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

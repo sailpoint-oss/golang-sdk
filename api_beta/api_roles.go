@@ -42,8 +42,11 @@ func (r ApiCreateRoleRequest) Execute() (*Role, *http.Response, error) {
 CreateRole Create a Role
 
 This API creates a role.
+
 You must have a token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority to call this API. 
+
 In addition, a ROLE_SUBADMIN may not create a role including an access profile if that access profile is associated with a source the ROLE_SUBADMIN is not associated with themselves. 
+
 The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing roles. However, any new roles as well as any updates to existing descriptions will be limited to 2000 characters.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -371,6 +374,7 @@ func (r ApiDeleteRoleRequest) Execute() (*http.Response, error) {
 DeleteRole Delete a Role
 
 This API deletes a Role by its ID.
+
 A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1362,9 +1366,24 @@ func (r ApiPatchRoleRequest) Execute() (*Role, *http.Response, error) {
 PatchRole Patch a specified Role
 
 This API updates an existing role using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
-The following fields are patchable: * name * description * enabled * owner * accessProfiles * membership * requestable * accessRequestConfig * revokeRequestConfig * segments
+
+The following fields are patchable:
+
+* name
+* description
+* enabled
+* owner
+* accessProfiles
+* membership
+* requestable
+* accessRequestConfig
+* revokeRequestConfig
+* segments
+
 A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all access profiles included in the role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
+
 The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing roles, however, any new roles as well as any updates to existing descriptions will be limited to 2000 characters.
+
 When you use this API to modify a role's membership identities, you can only modify up to a limit of 500 membership identities at a time. 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

@@ -4,37 +4,37 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | the id of the Source | [optional] [readonly] 
-**Name** | **string** | Human-readable name of the source | 
-**Description** | Pointer to **string** | Human-readable description of the source | [optional] 
+**Id** | Pointer to **string** | Source ID. | [optional] [readonly] 
+**Name** | **string** | Source&#39;s human-readable name. | 
+**Description** | Pointer to **string** | Source&#39;s human-readable description. | [optional] 
 **Owner** | [**SourceOwner**](SourceOwner.md) |  | 
-**Cluster** | Pointer to [**SourceCluster**](SourceCluster.md) |  | [optional] 
-**AccountCorrelationConfig** | Pointer to [**SourceAccountCorrelationConfig**](SourceAccountCorrelationConfig.md) |  | [optional] 
-**AccountCorrelationRule** | Pointer to [**SourceAccountCorrelationRule**](SourceAccountCorrelationRule.md) |  | [optional] 
+**Cluster** | Pointer to [**NullableSourceCluster**](SourceCluster.md) |  | [optional] 
+**AccountCorrelationConfig** | Pointer to [**NullableSourceAccountCorrelationConfig**](SourceAccountCorrelationConfig.md) |  | [optional] 
+**AccountCorrelationRule** | Pointer to [**NullableSourceAccountCorrelationRule**](SourceAccountCorrelationRule.md) |  | [optional] 
 **ManagerCorrelationMapping** | Pointer to [**ManagerCorrelationMapping**](ManagerCorrelationMapping.md) |  | [optional] 
-**ManagerCorrelationRule** | Pointer to [**SourceManagerCorrelationRule**](SourceManagerCorrelationRule.md) |  | [optional] 
-**BeforeProvisioningRule** | Pointer to [**SourceBeforeProvisioningRule**](SourceBeforeProvisioningRule.md) |  | [optional] 
-**Schemas** | Pointer to [**[]SourceSchemasInner**](SourceSchemasInner.md) | List of references to Schema objects | [optional] 
+**ManagerCorrelationRule** | Pointer to [**NullableSourceManagerCorrelationRule**](SourceManagerCorrelationRule.md) |  | [optional] 
+**BeforeProvisioningRule** | Pointer to [**NullableSourceBeforeProvisioningRule**](SourceBeforeProvisioningRule.md) |  | [optional] 
+**Schemas** | Pointer to [**[]SourceSchemasInner**](SourceSchemasInner.md) | List of references to schema objects. | [optional] 
 **PasswordPolicies** | Pointer to [**[]SourcePasswordPoliciesInner**](SourcePasswordPoliciesInner.md) | List of references to the associated PasswordPolicy objects. | [optional] 
 **Features** | Pointer to **[]string** | Optional features that can be supported by a source. Modifying the features array may cause source configuration errors that are unsupportable. It is recommended to not modify this array for SailPoint supported connectors. * AUTHENTICATE: The source supports pass-through authentication. * COMPOSITE: The source supports composite source creation. * DIRECT_PERMISSIONS: The source supports returning DirectPermissions. * DISCOVER_SCHEMA: The source supports discovering schemas for users and groups. * ENABLE The source supports reading if an account is enabled or disabled. * MANAGER_LOOKUP: The source supports looking up managers as they are encountered in a feed. This is the opposite of NO_RANDOM_ACCESS. * NO_RANDOM_ACCESS: The source does not support random access and the getObject() methods should not be called and expected to perform. * PROXY: The source can serve as a proxy for another source. When an source has a proxy, all connector calls made with that source are redirected through the connector for the proxy source. * SEARCH * TEMPLATE * UNLOCK: The source supports reading if an account is locked or unlocked. * UNSTRUCTURED_TARGETS: The source supports returning unstructured Targets. * SHAREPOINT_TARGET: The source supports returning unstructured Target data for SharePoint. It will be typically used by AD, LDAP sources. * PROVISIONING: The source can both read and write accounts. Having this feature implies that the provision() method is implemented. It also means that direct and target permissions can also be provisioned if they can be returned by aggregation. * GROUP_PROVISIONING: The source can both read and write groups. Having this feature implies that the provision() method is implemented. * SYNC_PROVISIONING: The source can provision accounts synchronously. * PASSWORD: The source can provision password changes. Since sources can never read passwords, this is should only be used in conjunction with the PROVISIONING feature. * CURRENT_PASSWORD: Some source types support verification of the current password * ACCOUNT_ONLY_REQUEST: The source supports requesting accounts without entitlements. * ADDITIONAL_ACCOUNT_REQUEST: The source supports requesting additional accounts. * NO_AGGREGATION: A source that does not support aggregation. * GROUPS_HAVE_MEMBERS: The source models group memberships with a member attribute on the group object rather than a groups attribute on the account object. This effects the implementation of delta account aggregation. * NO_PERMISSIONS_PROVISIONING: Indicates that the connector cannot provision direct or target permissions for accounts. When DIRECT_PERMISSIONS and PROVISIONING features are present, it is assumed that the connector can also provision direct permissions. This feature disables that assumption and causes permission request to be converted to work items for accounts. * NO_GROUP_PERMISSIONS_PROVISIONING: Indicates that the connector cannot provision direct or target permissions for groups. When DIRECT_PERMISSIONS and PROVISIONING features are present, it is assumed that the connector can also provision direct permissions. This feature disables that assumption and causes permission request to be converted to work items for groups. * NO_UNSTRUCTURED_TARGETS_PROVISIONING: This string will be replaced by NO_GROUP_PERMISSIONS_PROVISIONING and NO_PERMISSIONS_PROVISIONING. * NO_DIRECT_PERMISSIONS_PROVISIONING: This string will be replaced by NO_GROUP_PERMISSIONS_PROVISIONING and NO_PERMISSIONS_PROVISIONING. * USES_UUID: Connectivity 2.0 flag used to indicate that the connector supports a compound naming structure. * PREFER_UUID: Used in ISC Provisioning AND Aggregation to decide if it should prefer account.uuid to account.nativeIdentity when data is read in through aggregation OR pushed out through provisioning. * ARM_SECURITY_EXTRACT: Indicates the application supports Security extracts for ARM * ARM_UTILIZATION_EXTRACT: Indicates the application supports Utilization extracts for ARM * ARM_CHANGELOG_EXTRACT: Indicates the application supports Change-log extracts for ARM | [optional] 
-**Type** | Pointer to **string** | Specifies the type of system being managed e.g. Active Directory, Workday, etc.. If you are creating a Delimited File source, you must set the &#x60;provisionasCsv&#x60; query parameter to &#x60;true&#x60;.  | [optional] 
+**Type** | Pointer to **string** | Specifies the type of system being managed e.g. Active Directory, Workday, etc.. If you are creating a delimited file source, you must set the &#x60;provisionasCsv&#x60; query parameter to &#x60;true&#x60;.  | [optional] 
 **Connector** | **string** | Connector script name. | 
-**ConnectorClass** | Pointer to **string** | The fully qualified name of the Java class that implements the connector interface. | [optional] 
-**ConnectorAttributes** | Pointer to **map[string]interface{}** | Connector specific configuration; will differ from type to type. | [optional] 
+**ConnectorClass** | Pointer to **string** | Fully qualified name of the Java class that implements the connector interface. | [optional] 
+**ConnectorAttributes** | Pointer to **map[string]interface{}** | Connector specific configuration. This configuration will differ from type to type. | [optional] 
 **DeleteThreshold** | Pointer to **int32** | Number from 0 to 100 that specifies when to skip the delete phase. | [optional] 
-**Authoritative** | Pointer to **bool** | When true indicates the source is referenced by an IdentityProfile. | [optional] [default to false]
-**ManagementWorkgroup** | Pointer to [**SourceManagementWorkgroup**](SourceManagementWorkgroup.md) |  | [optional] 
-**Healthy** | Pointer to **bool** | When true indicates a healthy source | [optional] [default to false]
-**Status** | Pointer to **string** | A status identifier, giving specific information on why a source is healthy or not | [optional] 
-**Since** | Pointer to **string** | Timestamp showing when a source health check was last performed | [optional] 
-**ConnectorId** | Pointer to **string** | The id of connector | [optional] 
-**ConnectorName** | Pointer to **string** | The name of the connector that was chosen on source creation | [optional] 
-**ConnectionType** | Pointer to **string** | The type of connection (direct or file) | [optional] 
-**ConnectorImplementationId** | Pointer to **string** | The connector implementation id | [optional] 
-**Created** | Pointer to **time.Time** | The date-time when the source was created | [optional] 
-**Modified** | Pointer to **time.Time** | The date-time when the source was last modified | [optional] 
-**CredentialProviderEnabled** | Pointer to **bool** | Enables credential provider for this source. If credentialProvider is turned on  then source can use credential provider(s) to fetch credentials. | [optional] [default to false]
-**Category** | Pointer to **NullableString** | The category of source (e.g. null, CredentialProvider) | [optional] 
+**Authoritative** | Pointer to **bool** | When this is true, it indicates that the source is referenced by an identity profile. | [optional] [default to false]
+**ManagementWorkgroup** | Pointer to [**NullableSourceManagementWorkgroup**](SourceManagementWorkgroup.md) |  | [optional] 
+**Healthy** | Pointer to **bool** | When this is true, it indicates that the source is healthy. | [optional] [default to false]
+**Status** | Pointer to **string** | Status identifier that gives specific information about why a source is or isn&#39;t healthy.  | [optional] 
+**Since** | Pointer to **string** | Timestamp that shows when a source health check was last performed. | [optional] 
+**ConnectorId** | Pointer to **string** | Connector ID | [optional] 
+**ConnectorName** | Pointer to **string** | Name of the connector that was chosen during source creation. | [optional] 
+**ConnectionType** | Pointer to **string** | Type of connection (direct or file). | [optional] 
+**ConnectorImplementationId** | Pointer to **string** | Connector implementation ID. | [optional] 
+**Created** | Pointer to **time.Time** | Date-time when the source was created | [optional] 
+**Modified** | Pointer to **time.Time** | Date-time when the source was last modified. | [optional] 
+**CredentialProviderEnabled** | Pointer to **bool** | If this is true, it enables a credential provider for the source. If credentialProvider is turned on,  then the source can use credential provider(s) to fetch credentials. | [optional] [default to false]
+**Category** | Pointer to **NullableString** | Source category (e.g. null, CredentialProvider). | [optional] 
 
 ## Methods
 
@@ -170,6 +170,16 @@ SetCluster sets Cluster field to given value.
 
 HasCluster returns a boolean if a field has been set.
 
+### SetClusterNil
+
+`func (o *Source) SetClusterNil(b bool)`
+
+ SetClusterNil sets the value for Cluster to be an explicit nil
+
+### UnsetCluster
+`func (o *Source) UnsetCluster()`
+
+UnsetCluster ensures that no value is present for Cluster, not even an explicit nil
 ### GetAccountCorrelationConfig
 
 `func (o *Source) GetAccountCorrelationConfig() SourceAccountCorrelationConfig`
@@ -195,6 +205,16 @@ SetAccountCorrelationConfig sets AccountCorrelationConfig field to given value.
 
 HasAccountCorrelationConfig returns a boolean if a field has been set.
 
+### SetAccountCorrelationConfigNil
+
+`func (o *Source) SetAccountCorrelationConfigNil(b bool)`
+
+ SetAccountCorrelationConfigNil sets the value for AccountCorrelationConfig to be an explicit nil
+
+### UnsetAccountCorrelationConfig
+`func (o *Source) UnsetAccountCorrelationConfig()`
+
+UnsetAccountCorrelationConfig ensures that no value is present for AccountCorrelationConfig, not even an explicit nil
 ### GetAccountCorrelationRule
 
 `func (o *Source) GetAccountCorrelationRule() SourceAccountCorrelationRule`
@@ -220,6 +240,16 @@ SetAccountCorrelationRule sets AccountCorrelationRule field to given value.
 
 HasAccountCorrelationRule returns a boolean if a field has been set.
 
+### SetAccountCorrelationRuleNil
+
+`func (o *Source) SetAccountCorrelationRuleNil(b bool)`
+
+ SetAccountCorrelationRuleNil sets the value for AccountCorrelationRule to be an explicit nil
+
+### UnsetAccountCorrelationRule
+`func (o *Source) UnsetAccountCorrelationRule()`
+
+UnsetAccountCorrelationRule ensures that no value is present for AccountCorrelationRule, not even an explicit nil
 ### GetManagerCorrelationMapping
 
 `func (o *Source) GetManagerCorrelationMapping() ManagerCorrelationMapping`
@@ -270,6 +300,16 @@ SetManagerCorrelationRule sets ManagerCorrelationRule field to given value.
 
 HasManagerCorrelationRule returns a boolean if a field has been set.
 
+### SetManagerCorrelationRuleNil
+
+`func (o *Source) SetManagerCorrelationRuleNil(b bool)`
+
+ SetManagerCorrelationRuleNil sets the value for ManagerCorrelationRule to be an explicit nil
+
+### UnsetManagerCorrelationRule
+`func (o *Source) UnsetManagerCorrelationRule()`
+
+UnsetManagerCorrelationRule ensures that no value is present for ManagerCorrelationRule, not even an explicit nil
 ### GetBeforeProvisioningRule
 
 `func (o *Source) GetBeforeProvisioningRule() SourceBeforeProvisioningRule`
@@ -295,6 +335,16 @@ SetBeforeProvisioningRule sets BeforeProvisioningRule field to given value.
 
 HasBeforeProvisioningRule returns a boolean if a field has been set.
 
+### SetBeforeProvisioningRuleNil
+
+`func (o *Source) SetBeforeProvisioningRuleNil(b bool)`
+
+ SetBeforeProvisioningRuleNil sets the value for BeforeProvisioningRule to be an explicit nil
+
+### UnsetBeforeProvisioningRule
+`func (o *Source) UnsetBeforeProvisioningRule()`
+
+UnsetBeforeProvisioningRule ensures that no value is present for BeforeProvisioningRule, not even an explicit nil
 ### GetSchemas
 
 `func (o *Source) GetSchemas() []SourceSchemasInner`
@@ -345,6 +395,16 @@ SetPasswordPolicies sets PasswordPolicies field to given value.
 
 HasPasswordPolicies returns a boolean if a field has been set.
 
+### SetPasswordPoliciesNil
+
+`func (o *Source) SetPasswordPoliciesNil(b bool)`
+
+ SetPasswordPoliciesNil sets the value for PasswordPolicies to be an explicit nil
+
+### UnsetPasswordPolicies
+`func (o *Source) UnsetPasswordPolicies()`
+
+UnsetPasswordPolicies ensures that no value is present for PasswordPolicies, not even an explicit nil
 ### GetFeatures
 
 `func (o *Source) GetFeatures() []string`
@@ -540,6 +600,16 @@ SetManagementWorkgroup sets ManagementWorkgroup field to given value.
 
 HasManagementWorkgroup returns a boolean if a field has been set.
 
+### SetManagementWorkgroupNil
+
+`func (o *Source) SetManagementWorkgroupNil(b bool)`
+
+ SetManagementWorkgroupNil sets the value for ManagementWorkgroup to be an explicit nil
+
+### UnsetManagementWorkgroup
+`func (o *Source) UnsetManagementWorkgroup()`
+
+UnsetManagementWorkgroup ensures that no value is present for ManagementWorkgroup, not even an explicit nil
 ### GetHealthy
 
 `func (o *Source) GetHealthy() bool`

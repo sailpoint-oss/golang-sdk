@@ -178,11 +178,11 @@ func Test_api_v3_CertificationCampaignsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test CertificationCampaignsAPIService ListCampaignTemplates", func(t *testing.T) {
+	t.Run("Test CertificationCampaignsAPIService GetCampaignTemplates", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.CertificationCampaignsAPI.ListCampaignTemplates(context.Background()).Execute()
+		resp, httpRes, err := apiClient.API_V3.CertificationCampaignsAPI.GetCampaignTemplates(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

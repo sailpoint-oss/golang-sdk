@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**GetPendingCertificationTasks**](CertificationsAPI.md#GetPendingCertificationTasks) | **Get** /certification-tasks | List of Pending Certification Tasks
 [**ListCertificationReviewers**](CertificationsAPI.md#ListCertificationReviewers) | **Get** /certifications/{id}/reviewers | List of Reviewers for certification
 [**ListIdentityAccessReviewItems**](CertificationsAPI.md#ListIdentityAccessReviewItems) | **Get** /certifications/{id}/access-review-items | List of Access Review Items
-[**ListIdentityCertifications**](CertificationsAPI.md#ListIdentityCertifications) | **Get** /certifications | Identity Campaign Certifications by IDs
+[**ListIdentityCertifications**](CertificationsAPI.md#ListIdentityCertifications) | **Get** /certifications | List Identity Campaign Certifications
 [**MakeIdentityDecision**](CertificationsAPI.md#MakeIdentityDecision) | **Post** /certifications/{id}/decide | Decide on a Certification Item
 [**ReassignIdentityCertifications**](CertificationsAPI.md#ReassignIdentityCertifications) | **Post** /certifications/{id}/reassign | Reassign Identities or Items
 [**SignOffIdentityCertification**](CertificationsAPI.md#SignOffIdentityCertification) | **Post** /certifications/{id}/sign-off | Finalize Identity Certification Decisions
@@ -483,7 +483,7 @@ Name | Type | Description  | Notes
 
 > []IdentityCertificationDto ListIdentityCertifications(ctx).ReviewerIdentity(reviewerIdentity).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
 
-Identity Campaign Certifications by IDs
+List Identity Campaign Certifications
 
 
 
@@ -500,7 +500,7 @@ import (
 )
 
 func main() {
-    reviewerIdentity := "me" // string | The ID of reviewer identity. *me* indicates the current user. (optional)
+    reviewerIdentity := "me" // string | Reviewer's identity. *me* indicates the current user. (optional)
     limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
@@ -530,7 +530,7 @@ Other parameters are passed through a pointer to a apiListIdentityCertifications
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **reviewerIdentity** | **string** | The ID of reviewer identity. *me* indicates the current user. | 
+ **reviewerIdentity** | **string** | Reviewer&#39;s identity. *me* indicates the current user. | 
  **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
  **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
  **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]

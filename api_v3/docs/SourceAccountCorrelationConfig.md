@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | The type of object being referenced | [optional] 
-**Id** | Pointer to **string** | ID of the account correlation config | [optional] 
-**Name** | Pointer to **string** | Human-readable display name of the account correlation config | [optional] 
+**Type** | Pointer to **string** | Type of object being referenced. | [optional] 
+**Id** | Pointer to **string** | Account correlation config ID. | [optional] 
+**Name** | Pointer to **string** | Account correlation config&#39;s human-readable display name. | [optional] 
 
 ## Methods
 

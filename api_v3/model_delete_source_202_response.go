@@ -19,11 +19,11 @@ var _ MappedNullable = &DeleteSource202Response{}
 
 // DeleteSource202Response struct for DeleteSource202Response
 type DeleteSource202Response struct {
-	// The type of object being referenced
+	// Type of object being referenced.
 	Type *string `json:"type,omitempty"`
-	// ID of the task result
+	// Task result ID.
 	Id *string `json:"id,omitempty"`
-	// Human-readable display name of the task result (should be null/empty)
+	// Task result's human-readable display name (this should be null/empty).
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
