@@ -41809,7 +41809,7 @@ paths:
         - idn:sources:manage
       summary: Process Uncorrelated Accounts
       tags:
-      - Sources > Uncorrelated Accounts
+      - Sources
   /task-status/{id}:
     get:
       description: Get a TaskStatus for a task by task ID.

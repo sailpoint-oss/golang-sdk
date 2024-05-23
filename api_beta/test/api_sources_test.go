@@ -297,6 +297,20 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test SourcesAPIService ImportUncorrelatedAccounts", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.API_BETA.SourcesAPI.ImportUncorrelatedAccounts(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test SourcesAPIService ListProvisioningPolicies", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

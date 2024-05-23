@@ -64,7 +64,6 @@ api_sod_policy.go
 api_sod_violations.go
 api_source_usages.go
 api_sources.go
-api_sources_uncorrelated_accounts.go
 api_sp_config.go
 api_suggested_entitlement_description.go
 api_tagged_objects.go
@@ -846,7 +845,6 @@ docs/SourceUsage.md
 docs/SourceUsageStatus.md
 docs/SourceUsagesAPI.md
 docs/SourcesAPI.md
-docs/SourcesUncorrelatedAccountsAPI.md
 docs/SpConfigExportJob.md
 docs/SpConfigExportJobStatus.md
 docs/SpConfigExportResults.md
@@ -1834,7 +1832,6 @@ test/api_sod_policy_test.go
 test/api_sod_violations_test.go
 test/api_source_usages_test.go
 test/api_sources_test.go
-test/api_sources_uncorrelated_accounts_test.go
 test/api_sp_config_test.go
 test/api_suggested_entitlement_description_test.go
 test/api_tagged_objects_test.go
