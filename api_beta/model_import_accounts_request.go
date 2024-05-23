@@ -23,7 +23,7 @@ type ImportAccountsRequest struct {
 	// The CSV file containing the source accounts to aggregate.
 	File **os.File `json:"file,omitempty"`
 	// Use this flag to reprocess every account whether or not the data has changed.
-	DisableOptimization *bool `json:"disableOptimization,omitempty"`
+	DisableOptimization *string `json:"disableOptimization,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -35,8 +35,6 @@ type _ImportAccountsRequest ImportAccountsRequest
 // will change when the set of required properties is changed
 func NewImportAccountsRequest() *ImportAccountsRequest {
 	this := ImportAccountsRequest{}
-	var disableOptimization bool = false
-	this.DisableOptimization = &disableOptimization
 	return &this
 }
 
@@ -45,8 +43,6 @@ func NewImportAccountsRequest() *ImportAccountsRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewImportAccountsRequestWithDefaults() *ImportAccountsRequest {
 	this := ImportAccountsRequest{}
-	var disableOptimization bool = false
-	this.DisableOptimization = &disableOptimization
 	return &this
 }
 
@@ -83,9 +79,9 @@ func (o *ImportAccountsRequest) SetFile(v *os.File) {
 }
 
 // GetDisableOptimization returns the DisableOptimization field value if set, zero value otherwise.
-func (o *ImportAccountsRequest) GetDisableOptimization() bool {
+func (o *ImportAccountsRequest) GetDisableOptimization() string {
 	if o == nil || isNil(o.DisableOptimization) {
-		var ret bool
+		var ret string
 		return ret
 	}
 	return *o.DisableOptimization
@@ -93,7 +89,7 @@ func (o *ImportAccountsRequest) GetDisableOptimization() bool {
 
 // GetDisableOptimizationOk returns a tuple with the DisableOptimization field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ImportAccountsRequest) GetDisableOptimizationOk() (*bool, bool) {
+func (o *ImportAccountsRequest) GetDisableOptimizationOk() (*string, bool) {
 	if o == nil || isNil(o.DisableOptimization) {
 		return nil, false
 	}
@@ -109,8 +105,8 @@ func (o *ImportAccountsRequest) HasDisableOptimization() bool {
 	return false
 }
 
-// SetDisableOptimization gets a reference to the given bool and assigns it to the DisableOptimization field.
-func (o *ImportAccountsRequest) SetDisableOptimization(v bool) {
+// SetDisableOptimization gets a reference to the given string and assigns it to the DisableOptimization field.
+func (o *ImportAccountsRequest) SetDisableOptimization(v string) {
 	o.DisableOptimization = &v
 }
 

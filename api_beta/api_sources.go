@@ -2701,7 +2701,7 @@ type ApiImportAccountsRequest struct {
 	ApiService *SourcesAPIService
 	id string
 	file *os.File
-	disableOptimization *bool
+	disableOptimization *string
 }
 
 // The CSV file containing the source accounts to aggregate.
@@ -2711,7 +2711,7 @@ func (r ApiImportAccountsRequest) File(file *os.File) ApiImportAccountsRequest {
 }
 
 // Use this flag to reprocess every account whether or not the data has changed.
-func (r ApiImportAccountsRequest) DisableOptimization(disableOptimization bool) ApiImportAccountsRequest {
+func (r ApiImportAccountsRequest) DisableOptimization(disableOptimization string) ApiImportAccountsRequest {
 	r.disableOptimization = &disableOptimization
 	return r
 }

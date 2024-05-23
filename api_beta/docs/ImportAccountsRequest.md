@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **File** | Pointer to ***os.File** | The CSV file containing the source accounts to aggregate. | [optional] 
-**DisableOptimization** | Pointer to **bool** | Use this flag to reprocess every account whether or not the data has changed. | [optional] [default to false]
+**DisableOptimization** | Pointer to **string** | Use this flag to reprocess every account whether or not the data has changed. | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasFile returns a boolean if a field has been set.
 
 ### GetDisableOptimization
 
-`func (o *ImportAccountsRequest) GetDisableOptimization() bool`
+`func (o *ImportAccountsRequest) GetDisableOptimization() string`
 
 GetDisableOptimization returns the DisableOptimization field if non-nil, zero value otherwise.
 
 ### GetDisableOptimizationOk
 
-`func (o *ImportAccountsRequest) GetDisableOptimizationOk() (*bool, bool)`
+`func (o *ImportAccountsRequest) GetDisableOptimizationOk() (*string, bool)`
 
 GetDisableOptimizationOk returns a tuple with the DisableOptimization field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDisableOptimization
 
-`func (o *ImportAccountsRequest) SetDisableOptimization(v bool)`
+`func (o *ImportAccountsRequest) SetDisableOptimization(v string)`
 
 SetDisableOptimization sets DisableOptimization field to given value.
 

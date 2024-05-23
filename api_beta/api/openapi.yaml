@@ -79630,11 +79630,10 @@ components:
           format: binary
           type: string
         disableOptimization:
-          default: false
           description: Use this flag to reprocess every account whether or not the
             data has changed.
-          example: true
-          type: boolean
+          example: "true"
+          type: string
       type: object
     createDomainDkim_405_response:
       properties:

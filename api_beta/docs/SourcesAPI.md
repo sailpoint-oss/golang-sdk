@@ -1180,7 +1180,7 @@ import (
 func main() {
     id := "ef38f94347e94562b5bb8424a56397d8" // string | Source Id
     file := os.NewFile(1234, "some_file") // *os.File | The CSV file containing the source accounts to aggregate. (optional)
-    disableOptimization := true // bool | Use this flag to reprocess every account whether or not the data has changed. (optional) (default to false)
+    disableOptimization := "disableOptimization_example" // string | Use this flag to reprocess every account whether or not the data has changed. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1211,7 +1211,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **file** | ***os.File** | The CSV file containing the source accounts to aggregate. | 
- **disableOptimization** | **bool** | Use this flag to reprocess every account whether or not the data has changed. | [default to false]
+ **disableOptimization** | **string** | Use this flag to reprocess every account whether or not the data has changed. | 
 
 ### Return type
 
