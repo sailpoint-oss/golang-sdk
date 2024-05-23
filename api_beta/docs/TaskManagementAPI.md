@@ -171,7 +171,7 @@ import (
 )
 
 func main() {
-    id := "anId" // string | Task ID of the TaskStatus to get
+    id := "00eebcf881994e419d72e757fd30dc0e" // string | Task ID.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -191,7 +191,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Task ID of the TaskStatus to get | 
+**id** | **string** | Task ID. | 
 
 ### Other Parameters
 
@@ -296,7 +296,7 @@ Name | Type | Description  | Notes
 
 ## UpdateTaskStatus
 
-> TaskStatus UpdateTaskStatus(ctx, id).JsonPatch(jsonPatch).Execute()
+> TaskStatus UpdateTaskStatus(ctx, id).JsonPatchOperation(jsonPatchOperation).Execute()
 
 Update task status by ID
 
@@ -315,12 +315,12 @@ import (
 )
 
 func main() {
-    id := "anId" // string | Task ID of the task whose TaskStatus to update
-    jsonPatch := *openapiclient.NewJsonPatch() // JsonPatch | 
+    id := "00eebcf881994e419d72e757fd30dc0e" // string | Task ID.
+    jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | The JSONPatch payload used to update the object.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaskManagementAPI.UpdateTaskStatus(context.Background(), id).JsonPatch(jsonPatch).Execute()
+    resp, r, err := apiClient.TaskManagementAPI.UpdateTaskStatus(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TaskManagementAPI.UpdateTaskStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -336,7 +336,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Task ID of the task whose TaskStatus to update | 
+**id** | **string** | Task ID. | 
 
 ### Other Parameters
 
@@ -346,7 +346,7 @@ Other parameters are passed through a pointer to a apiUpdateTaskStatusRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonPatch** | [**JsonPatch**](JsonPatch.md) |  | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](JsonPatchOperation.md) | The JSONPatch payload used to update the object. | 
 
 ### Return type
 

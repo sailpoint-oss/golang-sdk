@@ -100,7 +100,7 @@ import (
 )
 
 func main() {
-    id := "aClientId" // string | The Managed Client ID
+    id := "4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7" // string | Managed Client ID.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -118,7 +118,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The Managed Client ID | 
+**id** | **string** | Managed Client ID. | 
 
 ### Other Parameters
 
@@ -168,7 +168,7 @@ import (
 )
 
 func main() {
-    id := "aClientId" // string | The Managed Client ID
+    id := "4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7" // string | Managed Client ID.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -188,7 +188,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The Managed Client ID | 
+**id** | **string** | Managed Client ID. | 
 
 ### Other Parameters
 
@@ -363,7 +363,7 @@ Name | Type | Description  | Notes
 
 ## UpdateManagedClient
 
-> ManagedClient UpdateManagedClient(ctx, id).JsonPatch(jsonPatch).Execute()
+> ManagedClient UpdateManagedClient(ctx, id).JsonPatchOperation(jsonPatchOperation).Execute()
 
 Update a Managed Client
 
@@ -382,12 +382,12 @@ import (
 )
 
 func main() {
-    id := "aClientId" // string | The Managed Client ID
-    jsonPatch := *openapiclient.NewJsonPatch() // JsonPatch | The JSONPatch payload used to update the schema.
+    id := "4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7" // string | Managed Client ID.
+    jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | The JSONPatch payload used to update the object.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedClientsAPI.UpdateManagedClient(context.Background(), id).JsonPatch(jsonPatch).Execute()
+    resp, r, err := apiClient.ManagedClientsAPI.UpdateManagedClient(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsAPI.UpdateManagedClient``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -403,7 +403,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The Managed Client ID | 
+**id** | **string** | Managed Client ID. | 
 
 ### Other Parameters
 
@@ -413,7 +413,7 @@ Other parameters are passed through a pointer to a apiUpdateManagedClientRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonPatch** | [**JsonPatch**](JsonPatch.md) | The JSONPatch payload used to update the schema. | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](JsonPatchOperation.md) | The JSONPatch payload used to update the object. | 
 
 ### Return type
 

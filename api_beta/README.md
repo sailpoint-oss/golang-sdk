@@ -966,7 +966,6 @@ Class | Method | HTTP request | Description
  - [Invocation](docs/Invocation.md)
  - [InvocationStatus](docs/InvocationStatus.md)
  - [InvocationStatusType](docs/InvocationStatusType.md)
- - [JsonPatch](docs/JsonPatch.md)
  - [JsonPatchOperation](docs/JsonPatchOperation.md)
  - [JsonPatchOperationValue](docs/JsonPatchOperationValue.md)
  - [KbaAnswerRequestItem](docs/KbaAnswerRequestItem.md)

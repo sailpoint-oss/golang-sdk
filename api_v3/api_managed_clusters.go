@@ -211,7 +211,7 @@ DeleteManagedCluster Delete a Managed Cluster
 Delete an existing Managed Cluster.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The Managed Cluster ID
+ @param id Managed Cluster ID.
  @return ApiDeleteManagedClusterRequest
 */
 func (a *ManagedClustersAPIService) DeleteManagedCluster(ctx context.Context, id string) ApiDeleteManagedClusterRequest {
@@ -363,7 +363,7 @@ GetManagedCluster Get a specified Managed Cluster.
 Retrieve a ManagedCluster by ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the ManagedCluster to get
+ @param id ManagedCluster ID.
  @return ApiGetManagedClusterRequest
 */
 func (a *ManagedClustersAPIService) GetManagedCluster(ctx context.Context, id string) ApiGetManagedClusterRequest {
@@ -721,12 +721,12 @@ type ApiUpdateManagedClusterRequest struct {
 	ctx context.Context
 	ApiService *ManagedClustersAPIService
 	id string
-	jsonPatch *JsonPatch
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
-// The JSONPatch payload used to update the schema.
-func (r ApiUpdateManagedClusterRequest) JsonPatch(jsonPatch JsonPatch) ApiUpdateManagedClusterRequest {
-	r.jsonPatch = &jsonPatch
+// The JSONPatch payload used to update the object.
+func (r ApiUpdateManagedClusterRequest) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiUpdateManagedClusterRequest {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
@@ -740,7 +740,7 @@ UpdateManagedCluster Update a Managed Cluster
 Update an existing Managed Cluster.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The Managed Cluster ID
+ @param id Managed Cluster ID.
  @return ApiUpdateManagedClusterRequest
 */
 func (a *ManagedClustersAPIService) UpdateManagedCluster(ctx context.Context, id string) ApiUpdateManagedClusterRequest {
@@ -772,8 +772,8 @@ func (a *ManagedClustersAPIService) UpdateManagedClusterExecute(r ApiUpdateManag
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonPatch == nil {
-		return localVarReturnValue, nil, reportError("jsonPatch is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -794,7 +794,7 @@ func (a *ManagedClustersAPIService) UpdateManagedClusterExecute(r ApiUpdateManag
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonPatch
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

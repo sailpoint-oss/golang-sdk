@@ -287,7 +287,6 @@ docs/ImportObject.md
 docs/ImportUploadedBackupRequest.md
 docs/Index.md
 docs/InnerHit.md
-docs/JsonPatch.md
 docs/JsonPatchOperation.md
 docs/JsonPatchOperationValue.md
 docs/KbaAnswerRequestItem.md
@@ -838,7 +837,6 @@ model_import_object.go
 model_import_uploaded_backup_request.go
 model_index.go
 model_inner_hit.go
-model_json_patch.go
 model_json_patch_operation.go
 model_json_patch_operation_value.go
 model_kba_answer_request_item.go

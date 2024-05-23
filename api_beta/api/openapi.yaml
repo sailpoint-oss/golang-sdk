@@ -41815,13 +41815,13 @@ paths:
       description: Get a TaskStatus for a task by task ID.
       operationId: getTaskStatus
       parameters:
-      - description: Task ID of the TaskStatus to get
+      - description: Task ID.
+        example: 00eebcf881994e419d72e757fd30dc0e
         explode: false
         in: path
         name: id
         required: true
         schema:
-          example: anId
           type: string
         style: simple
       responses:
@@ -41881,23 +41881,34 @@ paths:
       tags:
       - Task Management
     patch:
-      description: Update a current TaskStatus for a task by task ID.
+      description: Update a current task status by task ID. Use this API to clear
+        a pending task by updating the completionStatus and completed attributes.
       operationId: updateTaskStatus
       parameters:
-      - description: Task ID of the task whose TaskStatus to update
+      - description: Task ID.
+        example: 00eebcf881994e419d72e757fd30dc0e
         explode: false
         in: path
         name: id
         required: true
         schema:
-          example: anId
           type: string
         style: simple
       requestBody:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/JsonPatch'
+              example:
+              - op: replace
+                path: /completionStatus
+                value: Error
+              - op: replace
+                path: /completed
+                value: 2024-05-17T19:33:16.470Z
+              items:
+                $ref: '#/components/schemas/JsonPatchOperation'
+              type: array
+        description: The JSONPatch payload used to update the object.
         required: true
       responses:
         "200":
@@ -41905,8 +41916,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TaskStatus'
-          description: Responds with the updated TaskStatus for the task with the
-            given task ID.
+          description: "This response indicates the PATCH operation succeeded, and\
+            \ the API returns the updated task object."
         "400":
           content:
             application/json:
@@ -68261,17 +68272,6 @@ components:
       - returns
       - type
       - uniqueName
-      type: object
-    JsonPatch:
-      description: "A JSONPatch document as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
-      example: "[\n  {\n\t  \"op\": \"replace\",\n\t  \"path\": \"/description\",\n\
-        \t  \"value\": \"A new description\"\n  }\n]"
-      properties:
-        operations:
-          description: Operations to be applied
-          items:
-            $ref: '#/components/schemas/JsonPatchOperation'
-          type: array
       type: object
     TaggedObject:
       example:

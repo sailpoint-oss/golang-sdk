@@ -487,7 +487,6 @@ docs/ImportSpConfigRequest.md
 docs/Invocation.md
 docs/InvocationStatus.md
 docs/InvocationStatusType.md
-docs/JsonPatch.md
 docs/JsonPatchOperation.md
 docs/JsonPatchOperationValue.md
 docs/KbaAnswerRequestItem.md
@@ -1339,7 +1338,6 @@ model_import_sp_config_request.go
 model_invocation.go
 model_invocation_status.go
 model_invocation_status_type.go
-model_json_patch.go
 model_json_patch_operation.go
 model_json_patch_operation_value.go
 model_kba_answer_request_item.go

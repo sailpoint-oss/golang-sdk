@@ -204,7 +204,7 @@ DeleteManagedClient Delete a Managed Client
 Delete an existing Managed Client.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The Managed Client ID
+ @param id Managed Client ID.
  @return ApiDeleteManagedClientRequest
 */
 func (a *ManagedClientsAPIService) DeleteManagedClient(ctx context.Context, id string) ApiDeleteManagedClientRequest {
@@ -350,7 +350,7 @@ GetManagedClient Get a Managed Client
 Get a Managed Client.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The Managed Client ID
+ @param id Managed Client ID.
  @return ApiGetManagedClientRequest
 */
 func (a *ManagedClientsAPIService) GetManagedClient(ctx context.Context, id string) ApiGetManagedClientRequest {
@@ -887,12 +887,12 @@ type ApiUpdateManagedClientRequest struct {
 	ctx context.Context
 	ApiService *ManagedClientsAPIService
 	id string
-	jsonPatch *JsonPatch
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
-// The JSONPatch payload used to update the schema.
-func (r ApiUpdateManagedClientRequest) JsonPatch(jsonPatch JsonPatch) ApiUpdateManagedClientRequest {
-	r.jsonPatch = &jsonPatch
+// The JSONPatch payload used to update the object.
+func (r ApiUpdateManagedClientRequest) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiUpdateManagedClientRequest {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
@@ -906,7 +906,7 @@ UpdateManagedClient Update a Managed Client
 Update an existing Managed Client.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The Managed Client ID
+ @param id Managed Client ID.
  @return ApiUpdateManagedClientRequest
 */
 func (a *ManagedClientsAPIService) UpdateManagedClient(ctx context.Context, id string) ApiUpdateManagedClientRequest {
@@ -938,8 +938,8 @@ func (a *ManagedClientsAPIService) UpdateManagedClientExecute(r ApiUpdateManaged
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonPatch == nil {
-		return localVarReturnValue, nil, reportError("jsonPatch is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -960,7 +960,7 @@ func (a *ManagedClientsAPIService) UpdateManagedClientExecute(r ApiUpdateManaged
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonPatch
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

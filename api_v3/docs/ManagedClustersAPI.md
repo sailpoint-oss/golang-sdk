@@ -99,7 +99,7 @@ import (
 )
 
 func main() {
-    id := "aClusterId" // string | The Managed Cluster ID
+    id := "2c9180897de347a2017de8859e8c5039" // string | Managed Cluster ID.
     removeClients := false // bool | Flag to determine the need to delete a cluster with clients (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
@@ -118,7 +118,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The Managed Cluster ID | 
+**id** | **string** | Managed Cluster ID. | 
 
 ### Other Parameters
 
@@ -169,7 +169,7 @@ import (
 )
 
 func main() {
-    id := "aClusterId" // string | ID of the ManagedCluster to get
+    id := "2c9180897de347a2017de8859e8c5039" // string | ManagedCluster ID.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -189,7 +189,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | ID of the ManagedCluster to get | 
+**id** | **string** | ManagedCluster ID. | 
 
 ### Other Parameters
 
@@ -292,7 +292,7 @@ Name | Type | Description  | Notes
 
 ## UpdateManagedCluster
 
-> ManagedCluster UpdateManagedCluster(ctx, id).JsonPatch(jsonPatch).Execute()
+> ManagedCluster UpdateManagedCluster(ctx, id).JsonPatchOperation(jsonPatchOperation).Execute()
 
 Update a Managed Cluster
 
@@ -311,12 +311,12 @@ import (
 )
 
 func main() {
-    id := "aClusterId" // string | The Managed Cluster ID
-    jsonPatch := *openapiclient.NewJsonPatch() // JsonPatch | The JSONPatch payload used to update the schema.
+    id := "2c9180897de347a2017de8859e8c5039" // string | Managed Cluster ID.
+    jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | The JSONPatch payload used to update the object.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedClustersAPI.UpdateManagedCluster(context.Background(), id).JsonPatch(jsonPatch).Execute()
+    resp, r, err := apiClient.ManagedClustersAPI.UpdateManagedCluster(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.UpdateManagedCluster``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -332,7 +332,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The Managed Cluster ID | 
+**id** | **string** | Managed Cluster ID. | 
 
 ### Other Parameters
 
@@ -342,7 +342,7 @@ Other parameters are passed through a pointer to a apiUpdateManagedClusterReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonPatch** | [**JsonPatch**](JsonPatch.md) | The JSONPatch payload used to update the schema. | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](JsonPatchOperation.md) | The JSONPatch payload used to update the object. | 
 
 ### Return type
 

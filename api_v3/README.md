@@ -640,7 +640,6 @@ Class | Method | HTTP request | Description
  - [ImportUploadedBackupRequest](docs/ImportUploadedBackupRequest.md)
  - [Index](docs/Index.md)
  - [InnerHit](docs/InnerHit.md)
- - [JsonPatch](docs/JsonPatch.md)
  - [JsonPatchOperation](docs/JsonPatchOperation.md)
  - [JsonPatchOperationValue](docs/JsonPatchOperationValue.md)
  - [KbaAnswerRequestItem](docs/KbaAnswerRequestItem.md)

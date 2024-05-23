@@ -3673,7 +3673,7 @@ paths:
       requestBody:
         content:
           application/json-patch+json:
-            example:
+            examples:
               Uncorrelate account:
                 description: Remove account from Identity
                 value:
@@ -15312,8 +15312,8 @@ paths:
       description: Delete an existing Managed Client.
       operationId: deleteManagedClient
       parameters:
-      - description: The Managed Client ID
-        example: aClientId
+      - description: Managed Client ID.
+        example: 4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7
         in: path
         name: id
         required: true
@@ -15389,8 +15389,8 @@ paths:
       description: Get a Managed Client.
       operationId: getManagedClient
       parameters:
-      - description: The Managed Client ID
-        example: aClientId
+      - description: Managed Client ID.
+        example: 4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7
         in: path
         name: id
         required: true
@@ -15490,8 +15490,8 @@ paths:
       description: Update an existing Managed Client.
       operationId: updateManagedClient
       parameters:
-      - description: The Managed Client ID
-        example: aClientId
+      - description: Managed Client ID.
+        example: 4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7
         in: path
         name: id
         required: true
@@ -15501,8 +15501,10 @@ paths:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/JsonPatch'
-        description: The JSONPatch payload used to update the schema.
+              items:
+                $ref: '#/components/schemas/JsonPatchOperation'
+              type: array
+        description: The JSONPatch payload used to update the object.
         required: true
       responses:
         "200":
@@ -15909,8 +15911,8 @@ paths:
       description: Delete an existing Managed Cluster.
       operationId: deleteManagedCluster
       parameters:
-      - description: The Managed Cluster ID
-        example: aClusterId
+      - description: Managed Cluster ID.
+        example: 2c9180897de347a2017de8859e8c5039
         in: path
         name: id
         required: true
@@ -15994,13 +15996,13 @@ paths:
       description: Retrieve a ManagedCluster by ID.
       operationId: getManagedCluster
       parameters:
-      - description: ID of the ManagedCluster to get
+      - description: ManagedCluster ID.
+        example: 2c9180897de347a2017de8859e8c5039
         explode: false
         in: path
         name: id
         required: true
         schema:
-          example: aClusterId
           type: string
         style: simple
       responses:
@@ -16095,8 +16097,8 @@ paths:
       description: Update an existing Managed Cluster.
       operationId: updateManagedCluster
       parameters:
-      - description: The Managed Cluster ID
-        example: aClusterId
+      - description: Managed Cluster ID.
+        example: 2c9180897de347a2017de8859e8c5039
         in: path
         name: id
         required: true
@@ -16106,8 +16108,10 @@ paths:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/JsonPatch'
-        description: The JSONPatch payload used to update the schema.
+              items:
+                $ref: '#/components/schemas/JsonPatchOperation'
+              type: array
+        description: The JSONPatch payload used to update the object.
         required: true
       responses:
         "200":
@@ -47810,23 +47814,6 @@ components:
           type: string
       required:
       - clusterId
-      type: object
-    JsonPatch:
-      description: "A JSONPatch document as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
-      example:
-        operations:
-        - op: replace
-          path: /description
-          value: New description
-        - op: replace
-          path: /description
-          value: New description
-      properties:
-        operations:
-          description: Operations to be applied
-          items:
-            $ref: '#/components/schemas/JsonPatchOperation'
-          type: array
       type: object
     ManagedClientType:
       description: Managed Client type

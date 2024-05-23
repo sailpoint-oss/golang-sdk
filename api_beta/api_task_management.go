@@ -346,7 +346,7 @@ GetTaskStatus Get task status by ID.
 Get a TaskStatus for a task by task ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Task ID of the TaskStatus to get
+ @param id Task ID.
  @return ApiGetTaskStatusRequest
 */
 func (a *TaskManagementAPIService) GetTaskStatus(ctx context.Context, id string) ApiGetTaskStatusRequest {
@@ -703,11 +703,12 @@ type ApiUpdateTaskStatusRequest struct {
 	ctx context.Context
 	ApiService *TaskManagementAPIService
 	id string
-	jsonPatch *JsonPatch
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
-func (r ApiUpdateTaskStatusRequest) JsonPatch(jsonPatch JsonPatch) ApiUpdateTaskStatusRequest {
-	r.jsonPatch = &jsonPatch
+// The JSONPatch payload used to update the object.
+func (r ApiUpdateTaskStatusRequest) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiUpdateTaskStatusRequest {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
@@ -718,10 +719,10 @@ func (r ApiUpdateTaskStatusRequest) Execute() (*TaskStatus, *http.Response, erro
 /*
 UpdateTaskStatus Update task status by ID
 
-Update a current TaskStatus for a task by task ID.
+Update a current task status by task ID. Use this API to clear a pending task by updating the completionStatus and completed attributes.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Task ID of the task whose TaskStatus to update
+ @param id Task ID.
  @return ApiUpdateTaskStatusRequest
 */
 func (a *TaskManagementAPIService) UpdateTaskStatus(ctx context.Context, id string) ApiUpdateTaskStatusRequest {
@@ -753,8 +754,8 @@ func (a *TaskManagementAPIService) UpdateTaskStatusExecute(r ApiUpdateTaskStatus
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jsonPatch == nil {
-		return localVarReturnValue, nil, reportError("jsonPatch is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -775,7 +776,7 @@ func (a *TaskManagementAPIService) UpdateTaskStatusExecute(r ApiUpdateTaskStatus
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.jsonPatch
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
