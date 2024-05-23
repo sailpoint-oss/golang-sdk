@@ -5332,7 +5332,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - UserContextAuth:
+        - idn:branding:read
       summary: List of branding items
       tags:
       - Branding
@@ -5411,7 +5412,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - UserContextAuth:
+        - idn:branding:manage
       summary: Create a branding item
       tags:
       - Branding
@@ -5508,7 +5510,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - UserContextAuth:
+        - idn:branding:manage
       summary: Delete a branding item
       tags:
       - Branding
@@ -5607,7 +5610,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - UserContextAuth:
+        - idn:branding:read
       summary: Get a branding item
       tags:
       - Branding
@@ -5712,7 +5716,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - UserContextAuth:
+        - idn:branding:manage
       summary: Update a branding item
       tags:
       - Branding

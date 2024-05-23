@@ -45239,7 +45239,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - UserContextAuth:
+        - idn:ui-access-metadata-page:read
       summary: Get a tenant UI metadata
       tags:
       - UI Metadata
@@ -45336,7 +45337,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - UserContextAuth:
+        - idn:ui-access-metadata-page:manage
       summary: Update tenant UI metadata
       tags:
       - UI Metadata
@@ -54636,7 +54638,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - UserContextAuth:
+        - idn:icons:manage
       summary: Delete an icon
       tags:
       - Icons
@@ -54747,7 +54750,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - UserContextAuth:
+        - idn:icons:manage
       summary: Update an icon
       tags:
       - Icons
