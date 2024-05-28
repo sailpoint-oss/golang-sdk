@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AllowRequestOnBehalfOfAnyoneByAnyone** | Pointer to **bool** | If anyone can request access for anyone. | [optional] 
-**AllowRequestOnBehalfOfEmployeeByManager** | Pointer to **bool** | If a manager can request access for his/her direct reports. | [optional] 
+**AllowRequestOnBehalfOfAnyoneByAnyone** | Pointer to **bool** | If this is true, anyone can request access for anyone. | [optional] [default to false]
+**AllowRequestOnBehalfOfEmployeeByManager** | Pointer to **bool** | If this is true, a manager can request access for his or her direct reports. | [optional] [default to false]
 
 ## Methods
 

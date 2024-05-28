@@ -19,9 +19,9 @@ var _ MappedNullable = &AccessRequestConfig{}
 
 // AccessRequestConfig struct for AccessRequestConfig
 type AccessRequestConfig struct {
-	// If true, then approvals must be processed by external system.
+	// If this is true, approvals must be processed by an external system. Also, if this is true, it blocks Request Center access requests and returns an error for any user who isn't an org admin.
 	ApprovalsMustBeExternal *bool `json:"approvalsMustBeExternal,omitempty"`
-	// If true and requester and reviewer are the same, then automatically approve the approval.
+	// If this is true and the requester and reviewer are the same, the request is automatically approved.
 	AutoApprovalEnabled *bool `json:"autoApprovalEnabled,omitempty"`
 	RequestOnBehalfOfConfig *RequestOnBehalfOfConfig `json:"requestOnBehalfOfConfig,omitempty"`
 	ApprovalReminderAndEscalationConfig *ApprovalReminderAndEscalationConfig `json:"approvalReminderAndEscalationConfig,omitempty"`
@@ -37,6 +37,10 @@ type _AccessRequestConfig AccessRequestConfig
 // will change when the set of required properties is changed
 func NewAccessRequestConfig() *AccessRequestConfig {
 	this := AccessRequestConfig{}
+	var approvalsMustBeExternal bool = false
+	this.ApprovalsMustBeExternal = &approvalsMustBeExternal
+	var autoApprovalEnabled bool = false
+	this.AutoApprovalEnabled = &autoApprovalEnabled
 	return &this
 }
 
@@ -45,6 +49,10 @@ func NewAccessRequestConfig() *AccessRequestConfig {
 // but it doesn't guarantee that properties required by API are set
 func NewAccessRequestConfigWithDefaults() *AccessRequestConfig {
 	this := AccessRequestConfig{}
+	var approvalsMustBeExternal bool = false
+	this.ApprovalsMustBeExternal = &approvalsMustBeExternal
+	var autoApprovalEnabled bool = false
+	this.AutoApprovalEnabled = &autoApprovalEnabled
 	return &this
 }
 

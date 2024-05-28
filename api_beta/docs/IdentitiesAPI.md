@@ -175,7 +175,7 @@ import (
 )
 
 func main() {
-    identityId := "ff8081814d2a8036014d701f3fbf53fa" // string | The identity id
+    identityId := "ff8081814d2a8036014d701f3fbf53fa" // string | Identity ID.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -195,7 +195,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**identityId** | **string** | The identity id | 
+**identityId** | **string** | Identity ID. | 
 
 ### Other Parameters
 

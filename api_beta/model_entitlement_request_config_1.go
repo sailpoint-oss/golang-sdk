@@ -19,13 +19,13 @@ var _ MappedNullable = &EntitlementRequestConfig1{}
 
 // EntitlementRequestConfig1 struct for EntitlementRequestConfig1
 type EntitlementRequestConfig1 struct {
-	// Flag for allowing entitlement request.
+	// If this is true, entitlement requests are allowed.
 	AllowEntitlementRequest *bool `json:"allowEntitlementRequest,omitempty"`
-	// Flag for requiring comments while submitting an entitlement request.
+	// If this is true, comments are required to submit entitlement requests.
 	RequestCommentsRequired *bool `json:"requestCommentsRequired,omitempty"`
-	// Flag for requiring comments while rejecting an entitlement request.
+	// If this is true, comments are required to reject entitlement requests.
 	DeniedCommentsRequired *bool `json:"deniedCommentsRequired,omitempty"`
-	// Approval schemes for granting entitlement request. This can be empty if no approval is needed. Multiple schemes must be comma-separated. The valid schemes are \"entitlementOwner\", \"sourceOwner\", \"manager\" and \"workgroup:{id}\". Multiple workgroups (governance groups) can be used. 
+	// Approval schemes for granting entitlement request. This can be empty if no approval is needed. Multiple schemes must be comma-separated. The valid schemes are \"entitlementOwner\", \"sourceOwner\", \"manager\" and \"workgroup:{id}\". You can use multiple governance groups (workgroups). 
 	GrantRequestApprovalSchemes NullableString `json:"grantRequestApprovalSchemes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -38,6 +38,8 @@ type _EntitlementRequestConfig1 EntitlementRequestConfig1
 // will change when the set of required properties is changed
 func NewEntitlementRequestConfig1() *EntitlementRequestConfig1 {
 	this := EntitlementRequestConfig1{}
+	var allowEntitlementRequest bool = false
+	this.AllowEntitlementRequest = &allowEntitlementRequest
 	var requestCommentsRequired bool = false
 	this.RequestCommentsRequired = &requestCommentsRequired
 	var deniedCommentsRequired bool = false
@@ -52,6 +54,8 @@ func NewEntitlementRequestConfig1() *EntitlementRequestConfig1 {
 // but it doesn't guarantee that properties required by API are set
 func NewEntitlementRequestConfig1WithDefaults() *EntitlementRequestConfig1 {
 	this := EntitlementRequestConfig1{}
+	var allowEntitlementRequest bool = false
+	this.AllowEntitlementRequest = &allowEntitlementRequest
 	var requestCommentsRequired bool = false
 	this.RequestCommentsRequired = &requestCommentsRequired
 	var deniedCommentsRequired bool = false

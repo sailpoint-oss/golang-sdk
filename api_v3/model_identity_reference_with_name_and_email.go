@@ -19,13 +19,13 @@ var _ MappedNullable = &IdentityReferenceWithNameAndEmail{}
 
 // IdentityReferenceWithNameAndEmail struct for IdentityReferenceWithNameAndEmail
 type IdentityReferenceWithNameAndEmail struct {
-	// The type can only be IDENTITY. This is read-only
+	// The type can only be IDENTITY. This is read-only.
 	Type *string `json:"type,omitempty"`
-	// Identity id.
+	// Identity ID.
 	Id *string `json:"id,omitempty"`
-	// Human-readable display name of identity. This is read-only
+	// Identity's human-readable display name. This is read-only.
 	Name *string `json:"name,omitempty"`
-	// Email address of identity. This is read-only
+	// Identity's email address. This is read-only.
 	Email *string `json:"email,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

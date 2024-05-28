@@ -361,10 +361,12 @@ func (r ApiGetIdentityOwnershipDetailsRequest) Execute() (*IdentityOwnershipAsso
 /*
 GetIdentityOwnershipDetails Get ownership details
 
-Get Ownership association details of an Identity
+Use this API to return an identity's owned objects that will cause problems for deleting the identity. 
+Use this API as a checklist of objects that you need to reassign to a different identity before you can delete the identity. 
+For a full list of objects owned by an identity, use the [Search API](https://developer.sailpoint.com/docs/api/v3/search-post/).  When you search for identities, the returned identities have a property, `owns`, that contains a more comprehensive list of identity's owned objects.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param identityId The identity id
+ @param identityId Identity ID.
  @return ApiGetIdentityOwnershipDetailsRequest
 */
 func (a *IdentitiesAPIService) GetIdentityOwnershipDetails(ctx context.Context, identityId string) ApiGetIdentityOwnershipDetailsRequest {

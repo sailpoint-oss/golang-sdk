@@ -15234,10 +15234,16 @@ paths:
       - Identities
   /identities/{identityId}/ownership:
     get:
-      description: Get Ownership association details of an Identity
+      description: "Use this API to return an identity's owned objects that will cause\
+        \ problems for deleting the identity. \nUse this API as a checklist of objects\
+        \ that you need to reassign to a different identity before you can delete\
+        \ the identity. \nFor a full list of objects owned by an identity, use the\
+        \ [Search API](https://developer.sailpoint.com/docs/api/v3/search-post/).\
+        \  When you search for identities, the returned identities have a property,\
+        \ `owns`, that contains a more comprehensive list of identity's owned objects."
       operationId: getIdentityOwnershipDetails
       parameters:
-      - description: The identity id
+      - description: Identity ID.
         example: ff8081814d2a8036014d701f3fbf53fa
         in: path
         name: identityId
@@ -15257,7 +15263,7 @@ paths:
                     type: ROLE
               schema:
                 $ref: '#/components/schemas/IdentityOwnershipAssociationDetails'
-          description: Ownership association details of an Identity.
+          description: Identity's ownership association details.
         "400":
           content:
             application/json:
@@ -58059,12 +58065,16 @@ components:
         approvalsMustBeExternal: true
       properties:
         approvalsMustBeExternal:
-          description: "If true, then approvals must be processed by external system."
+          default: false
+          description: "If this is true, approvals must be processed by an external\
+            \ system. Also, if this is true, it blocks Request Center access requests\
+            \ and returns an error for any user who isn't an org admin."
           example: true
           type: boolean
         autoApprovalEnabled:
-          description: "If true and requester and reviewer are the same, then automatically\
-            \ approve the approval."
+          default: false
+          description: "If this is true and the requester and reviewer are the same,\
+            \ the request is automatically approved."
           example: true
           type: boolean
         requestOnBehalfOfConfig:
@@ -60014,19 +60024,19 @@ components:
       nullable: true
       properties:
         type:
-          description: The type can only be IDENTITY. This is read-only
+          description: The type can only be IDENTITY. This is read-only.
           example: IDENTITY
           type: string
         id:
-          description: Identity id.
+          description: Identity ID.
           example: 5168015d32f890ca15812c9180835d2e
           type: string
         name:
-          description: Human-readable display name of identity. This is read-only
+          description: Identity's human-readable display name. This is read-only.
           example: Alison Ferguso
           type: string
         email:
-          description: Email address of identity. This is read-only
+          description: Identity's email address. This is read-only.
           example: alison.ferguso@identitysoon.com
           type: string
       type: object
@@ -72619,11 +72629,14 @@ components:
         allowRequestOnBehalfOfAnyoneByAnyone: true
       properties:
         allowRequestOnBehalfOfAnyoneByAnyone:
-          description: If anyone can request access for anyone.
+          default: false
+          description: "If this is true, anyone can request access for anyone."
           example: true
           type: boolean
         allowRequestOnBehalfOfEmployeeByManager:
-          description: If a manager can request access for his/her direct reports.
+          default: false
+          description: "If this is true, a manager can request access for his or her\
+            \ direct reports."
           example: true
           type: boolean
       type: object
@@ -72670,19 +72683,20 @@ components:
         grantRequestApprovalSchemes: "entitlementOwner, sourceOwner, manager, workgroup:2c918084660f45d6016617daa9210584"
       properties:
         allowEntitlementRequest:
-          description: Flag for allowing entitlement request.
+          default: false
+          description: "If this is true, entitlement requests are allowed."
           example: true
           type: boolean
         requestCommentsRequired:
           default: false
-          description: Flag for requiring comments while submitting an entitlement
-            request.
+          description: "If this is true, comments are required to submit entitlement\
+            \ requests."
           example: false
           type: boolean
         deniedCommentsRequired:
           default: false
-          description: Flag for requiring comments while rejecting an entitlement
-            request.
+          description: "If this is true, comments are required to reject entitlement\
+            \ requests."
           example: false
           type: boolean
         grantRequestApprovalSchemes:
@@ -72690,7 +72704,7 @@ components:
           description: |
             Approval schemes for granting entitlement request. This can be empty if no approval is needed.
             Multiple schemes must be comma-separated. The valid schemes are "entitlementOwner", "sourceOwner", "manager" and "workgroup:{id}".
-            Multiple workgroups (governance groups) can be used.
+            You can use multiple governance groups (workgroups).
           example: "entitlementOwner, sourceOwner, manager, workgroup:2c918084660f45d6016617daa9210584"
           nullable: true
           type: string
