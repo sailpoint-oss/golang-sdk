@@ -41763,7 +41763,7 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:accounts:manage
+        - idn:sources:manage
       summary: Account Aggregation
       tags:
       - Sources
