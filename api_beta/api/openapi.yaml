@@ -40232,9 +40232,9 @@ paths:
       security:
       - UserContextAuth:
         - idn:account:remove
-      summary: Remove All Accounts
+      summary: Remove All Accounts in a Source
       tags:
-      - Accounts
+      - Sources
   /sources/{sourceId}/schemas:
     get:
       description: Use this API to list the schemas that exist on the specified source

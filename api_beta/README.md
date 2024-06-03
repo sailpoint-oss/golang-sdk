@@ -111,7 +111,6 @@ Class | Method | HTTP request | Description
 *AccountsAPI* | [**CreateAccount**](docs/AccountsAPI.md#createaccount) | **Post** /accounts | Create Account
 *AccountsAPI* | [**DeleteAccount**](docs/AccountsAPI.md#deleteaccount) | **Delete** /accounts/{id} | Delete Account
 *AccountsAPI* | [**DeleteAccountAsync**](docs/AccountsAPI.md#deleteaccountasync) | **Post** /accounts/{id}/remove | Remove Account
-*AccountsAPI* | [**DeleteAccountsAsync**](docs/AccountsAPI.md#deleteaccountsasync) | **Post** /sources/{id}/remove-accounts | Remove All Accounts
 *AccountsAPI* | [**DisableAccount**](docs/AccountsAPI.md#disableaccount) | **Post** /accounts/{id}/disable | Disable Account
 *AccountsAPI* | [**DisableAccountForIdentity**](docs/AccountsAPI.md#disableaccountforidentity) | **Post** /identities-accounts/{id}/disable | Disable IDN Account for Identity
 *AccountsAPI* | [**DisableAccountsForIdentities**](docs/AccountsAPI.md#disableaccountsforidentities) | **Post** /identities-accounts/disable | Disable IDN Accounts for Identities
@@ -469,6 +468,7 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**CreateSource**](docs/SourcesAPI.md#createsource) | **Post** /sources | Creates a source in IdentityNow.
 *SourcesAPI* | [**CreateSourceSchema**](docs/SourcesAPI.md#createsourceschema) | **Post** /sources/{sourceId}/schemas | Create Schema on Source
 *SourcesAPI* | [**Delete**](docs/SourcesAPI.md#delete) | **Delete** /sources/{id} | Delete Source by ID
+*SourcesAPI* | [**DeleteAccountsAsync**](docs/SourcesAPI.md#deleteaccountsasync) | **Post** /sources/{id}/remove-accounts | Remove All Accounts in a Source
 *SourcesAPI* | [**DeleteNativeChangeDetectionConfig**](docs/SourcesAPI.md#deletenativechangedetectionconfig) | **Delete** /sources/{sourceId}/native-change-detection-config | Delete Native Change Detection Configuration
 *SourcesAPI* | [**DeleteProvisioningPolicy**](docs/SourcesAPI.md#deleteprovisioningpolicy) | **Delete** /sources/{sourceId}/provisioning-policies/{usageType} | Delete Provisioning Policy by UsageType
 *SourcesAPI* | [**DeleteSourceSchema**](docs/SourcesAPI.md#deletesourceschema) | **Delete** /sources/{sourceId}/schemas/{schemaId} | Delete Source Schema by ID
