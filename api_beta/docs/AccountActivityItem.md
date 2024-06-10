@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **SourceId** | Pointer to **string** | Id of Source to which account activity applies | [optional] 
 **AccountRequestInfo** | Pointer to [**NullableAccountRequestInfo**](AccountRequestInfo.md) |  | [optional] 
 **ClientMetadata** | Pointer to **map[string]string** | Arbitrary key-value pairs, if any were included in the corresponding access request item | [optional] 
-**RemoveDate** | Pointer to **NullableTime** | The date the role or access profile is no longer assigned to the specified identity. | [optional] 
+**RemoveDate** | Pointer to **NullableTime** | The date the role or access profile or entitlement is no longer assigned to the specified identity. | [optional] 
 
 ## Methods
 

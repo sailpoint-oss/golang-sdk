@@ -32,7 +32,7 @@ type ApprovalStatusDto struct {
 	ErrorMessages []ErrorMessageDto `json:"errorMessages,omitempty"`
 	// Comment, if any, provided by the approver.
 	Comment NullableString `json:"comment,omitempty"`
-	// The date the role or access profile is no longer assigned to the specified identity.
+	// The date the role or access profile or entitlement is no longer assigned to the specified identity.
 	RemoveDate NullableTime `json:"removeDate,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

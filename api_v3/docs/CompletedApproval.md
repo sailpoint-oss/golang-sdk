@@ -21,13 +21,13 @@ Name | Type | Description | Notes
 **ForwardHistory** | Pointer to [**[]ApprovalForwardHistory**](ApprovalForwardHistory.md) | The history of approval forward action. | [optional] 
 **CommentRequiredWhenRejected** | Pointer to **bool** | When true the rejector has to provide comments when rejecting | [optional] [default to false]
 **State** | Pointer to [**CompletedApprovalState**](CompletedApprovalState.md) |  | [optional] 
-**RemoveDate** | Pointer to **NullableTime** | The date the role or access profile is no longer assigned to the specified identity. | [optional] 
+**RemoveDate** | Pointer to **NullableTime** | The date the role or access profile or entitlement is no longer assigned to the specified identity. | [optional] 
 **RemoveDateUpdateRequested** | Pointer to **bool** | If true, then the request was to change the remove date or sunset date. | [optional] [default to false]
 **CurrentRemoveDate** | Pointer to **NullableTime** | The remove date or sunset date that was assigned at the time of the request. | [optional] 
 **SodViolationContext** | Pointer to [**SodViolationContextCheckCompleted**](SodViolationContextCheckCompleted.md) |  | [optional] 
 **PreApprovalTriggerResult** | Pointer to [**NullableCompletedApprovalPreApprovalTriggerResult**](CompletedApprovalPreApprovalTriggerResult.md) |  | [optional] 
 **ClientMetadata** | Pointer to **map[string]string** | Arbitrary key-value pairs provided during the request. | [optional] 
-**RequestedAccounts** | Pointer to **NullableString** |  | [optional] 
+**RequestedAccounts** | Pointer to **NullableString** | Information about the requested accounts | [optional] 
 
 ## Methods
 

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **Scheme** | Pointer to [**ApprovalScheme**](ApprovalScheme.md) |  | [optional] 
 **ErrorMessages** | Pointer to [**[]ErrorMessageDto**](ErrorMessageDto.md) | If the request failed, includes any error messages that were generated. | [optional] 
 **Comment** | Pointer to **NullableString** | Comment, if any, provided by the approver. | [optional] 
-**RemoveDate** | Pointer to **NullableTime** | The date the role or access profile is no longer assigned to the specified identity. | [optional] 
+**RemoveDate** | Pointer to **NullableTime** | The date the role or access profile or entitlement is no longer assigned to the specified identity. | [optional] 
 
 ## Methods
 

@@ -46,7 +46,7 @@ type CompletedApproval struct {
 	// When true the rejector has to provide comments when rejecting
 	CommentRequiredWhenRejected *bool `json:"commentRequiredWhenRejected,omitempty"`
 	State *CompletedApprovalState `json:"state,omitempty"`
-	// The date the role or access profile is no longer assigned to the specified identity.
+	// The date the role or access profile or entitlement is no longer assigned to the specified identity.
 	RemoveDate NullableTime `json:"removeDate,omitempty"`
 	// If true, then the request was to change the remove date or sunset date.
 	RemoveDateUpdateRequested *bool `json:"removeDateUpdateRequested,omitempty"`
@@ -56,6 +56,7 @@ type CompletedApproval struct {
 	PreApprovalTriggerResult NullableCompletedApprovalPreApprovalTriggerResult `json:"preApprovalTriggerResult,omitempty"`
 	// Arbitrary key-value pairs provided during the request.
 	ClientMetadata *map[string]string `json:"clientMetadata,omitempty"`
+	// Information about the requested accounts
 	RequestedAccounts NullableString `json:"requestedAccounts,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

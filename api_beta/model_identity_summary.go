@@ -38,6 +38,8 @@ type _IdentitySummary IdentitySummary
 // will change when the set of required properties is changed
 func NewIdentitySummary() *IdentitySummary {
 	this := IdentitySummary{}
+	var completed bool = false
+	this.Completed = &completed
 	return &this
 }
 
@@ -46,6 +48,8 @@ func NewIdentitySummary() *IdentitySummary {
 // but it doesn't guarantee that properties required by API are set
 func NewIdentitySummaryWithDefaults() *IdentitySummary {
 	this := IdentitySummary{}
+	var completed bool = false
+	this.Completed = &completed
 	return &this
 }
 

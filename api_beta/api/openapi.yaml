@@ -2363,15 +2363,14 @@ paths:
         \ provisioning. \n* Does not support self request. Only manager can request\
         \ to revoke access for their directly managed employees.\n* If a `removeDate`\
         \ is specified, then the access will be removed on that date and time only\
-        \ for roles and access profiles. Entitlements are currently unsupported for\
-        \ `removeDate`.\n* Roles, access profiles, and entitlements can be requested\
-        \ for revocation.\n* Revoke requests for entitlements are limited to 1 entitlement\
-        \ per access request currently.\n* [Roles, Access Profiles] You can specify\
-        \ a `removeDate` if the access doesn't already have a sunset date. The `removeDate`\
-        \ must be a future date, in the UTC timezone. \n* Allows a manager to request\
-        \ to revoke access for direct employees. A token with ORG_ADMIN authority\
-        \ can also request to revoke access from anyone.\n\nA token with API authority\
-        \ cannot be used to call this endpoint. \n"
+        \ for roles, access profiles and entitlements.\n* Roles, access profiles,\
+        \ and entitlements can be requested for revocation.\n* Revoke requests for\
+        \ entitlements are limited to 1 entitlement per access request currently.\n\
+        * You can specify a `removeDate` if the access doesn't already have a sunset\
+        \ date. The `removeDate` must be a future date, in the UTC timezone. \n* Allows\
+        \ a manager to request to revoke access for direct employees. A token with\
+        \ ORG_ADMIN authority can also request to revoke access from anyone.\n\nA\
+        \ token with API authority cannot be used to call this endpoint. \n"
       operationId: createAccessRequest
       requestBody:
         content:
@@ -58545,8 +58544,8 @@ components:
         actionInProcess:
           $ref: '#/components/schemas/PendingApprovalAction'
         removeDate:
-          description: The date the role or access profile is no longer assigned to
-            the specified identity.
+          description: The date the role or access profile or entitlement is no longer
+            assigned to the specified identity.
           example: 2020-07-11T00:00:00Z
           format: date-time
           type: string
@@ -58787,8 +58786,8 @@ components:
         state:
           $ref: '#/components/schemas/CompletedApprovalState'
         removeDate:
-          description: The date the role or access profile is no longer assigned to
-            the specified identity.
+          description: The date the role or access profile or entitlement is no longer
+            assigned to the specified identity.
           example: 2020-07-11T00:00:00Z
           format: date-time
           nullable: true
@@ -58819,6 +58818,7 @@ components:
             requestedAppId: 2c91808f7892918f0178b78da4a305a1
           type: object
         requestedAccounts:
+          description: Information about the requested accounts
           nullable: true
           type: string
       type: object
@@ -72611,11 +72611,10 @@ components:
           type: object
         removeDate:
           description: |
-            The date the role or access profile is no longer assigned to the specified identity. Also known as the expiration date.
+            The date the role or access profile or entitlement is no longer assigned to the specified identity. Also known as the expiration date.
             * Specify a date in the future.
             * The current SLA for the deprovisioning is 24 hours.
             * This date can be modified to either extend or decrease the duration of access item assignments for the specified identity. You can change the expiration date for requests for yourself or direct reports, but you cannot remove an expiration date on an already approved item. If the access request has not been approved, you can cancel it and submit a new one without the expiration. If it has already been approved, then you have to revoke the access and then re-request without the expiration.
-            * Currently it is not supported for entitlements.
           example: 2020-07-11T21:23:15Z
           format: date-time
           type: string
@@ -72809,8 +72808,8 @@ components:
           nullable: true
           type: string
         removeDate:
-          description: The date the role or access profile is no longer assigned to
-            the specified identity.
+          description: The date the role or access profile or entitlement is no longer
+            assigned to the specified identity.
           example: 2020-07-11T00:00:00Z
           format: date-time
           nullable: true
@@ -73364,6 +73363,7 @@ components:
           example: c15b9f5cca5a4e9599eaa0e64fa921bd
           type: string
         completed:
+          default: false
           description: Indicates if all access items for this summary have been decided
             on
           example: true
@@ -73471,8 +73471,8 @@ components:
           nullable: true
           type: object
         removeDate:
-          description: The date the role or access profile is no longer assigned to
-            the specified identity.
+          description: The date the role or access profile or entitlement is no longer
+            assigned to the specified identity.
           example: 2020-07-11T00:00:00Z
           format: date-time
           nullable: true

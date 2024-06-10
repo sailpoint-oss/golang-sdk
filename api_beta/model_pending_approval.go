@@ -44,7 +44,7 @@ type PendingApproval struct {
 	// When true the rejector has to provide comments when rejecting
 	CommentRequiredWhenRejected *bool `json:"commentRequiredWhenRejected,omitempty"`
 	ActionInProcess *PendingApprovalAction `json:"actionInProcess,omitempty"`
-	// The date the role or access profile is no longer assigned to the specified identity.
+	// The date the role or access profile or entitlement is no longer assigned to the specified identity.
 	RemoveDate *time.Time `json:"removeDate,omitempty"`
 	// If true, then the request is to change the remove date or sunset date.
 	RemoveDateUpdateRequested *bool `json:"removeDateUpdateRequested,omitempty"`

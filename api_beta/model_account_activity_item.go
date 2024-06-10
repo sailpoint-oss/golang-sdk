@@ -43,7 +43,7 @@ type AccountActivityItem struct {
 	AccountRequestInfo NullableAccountRequestInfo `json:"accountRequestInfo,omitempty"`
 	// Arbitrary key-value pairs, if any were included in the corresponding access request item
 	ClientMetadata map[string]string `json:"clientMetadata,omitempty"`
-	// The date the role or access profile is no longer assigned to the specified identity.
+	// The date the role or access profile or entitlement is no longer assigned to the specified identity.
 	RemoveDate NullableTime `json:"removeDate,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
