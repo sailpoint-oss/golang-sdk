@@ -59,6 +59,7 @@ api_roles.go
 api_search_attribute_configuration.go
 api_segments.go
 api_service_desk_integration.go
+api_sim_integrations.go
 api_sod_policies.go
 api_sod_policy.go
 api_sod_violations.go
@@ -487,6 +488,7 @@ docs/ImportSpConfigRequest.md
 docs/Invocation.md
 docs/InvocationStatus.md
 docs/InvocationStatusType.md
+docs/JsonPatch.md
 docs/JsonPatchOperation.md
 docs/JsonPatchOperationValue.md
 docs/KbaAnswerRequestItem.md
@@ -745,6 +747,7 @@ docs/RoleMiningSessionState.md
 docs/RoleMiningSessionStatus.md
 docs/RoleTargetDto.md
 docs/RolesAPI.md
+docs/SIMIntegrationsAPI.md
 docs/SODPoliciesAPI.md
 docs/SODPolicyAPI.md
 docs/SODViolationsAPI.md
@@ -796,6 +799,8 @@ docs/ServiceDeskIntegrationTemplateType.md
 docs/ServiceDeskSource.md
 docs/SetIcon200Response.md
 docs/SetIconRequest.md
+docs/SimIntegrationDetails.md
+docs/SimIntegrationDetailsAllOfBeforeProvisioningRule.md
 docs/Slimcampaign.md
 docs/SodExemptCriteria.md
 docs/SodExemptCriteria1.md
@@ -1338,6 +1343,7 @@ model_import_sp_config_request.go
 model_invocation.go
 model_invocation_status.go
 model_invocation_status_type.go
+model_json_patch.go
 model_json_patch_operation.go
 model_json_patch_operation_value.go
 model_kba_answer_request_item.go
@@ -1619,6 +1625,8 @@ model_service_desk_integration_template_type.go
 model_service_desk_source.go
 model_set_icon_200_response.go
 model_set_icon_request.go
+model_sim_integration_details.go
+model_sim_integration_details_all_of_before_provisioning_rule.go
 model_slimcampaign.go
 model_sod_exempt_criteria.go
 model_sod_exempt_criteria_1.go
@@ -1825,6 +1833,7 @@ test/api_roles_test.go
 test/api_search_attribute_configuration_test.go
 test/api_segments_test.go
 test/api_service_desk_integration_test.go
+test/api_sim_integrations_test.go
 test/api_sod_policies_test.go
 test/api_sod_policy_test.go
 test/api_sod_violations_test.go

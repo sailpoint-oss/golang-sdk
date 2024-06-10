@@ -418,6 +418,13 @@ Class | Method | HTTP request | Description
 *RolesAPI* | [**GetRoleEntitlements**](docs/RolesAPI.md#getroleentitlements) | **Get** /roles/{id}/entitlements | List role&#39;s Entitlements
 *RolesAPI* | [**ListRoles**](docs/RolesAPI.md#listroles) | **Get** /roles | List Roles
 *RolesAPI* | [**PatchRole**](docs/RolesAPI.md#patchrole) | **Patch** /roles/{id} | Patch a specified Role
+*SIMIntegrationsAPI* | [**CreateSIMIntegration**](docs/SIMIntegrationsAPI.md#createsimintegration) | **Post** /sim-integrations | Create new SIM integration
+*SIMIntegrationsAPI* | [**DeleteSIMIntegration**](docs/SIMIntegrationsAPI.md#deletesimintegration) | **Delete** /sim-integrations/{id} | Delete a SIM integration
+*SIMIntegrationsAPI* | [**GetSIMIntegration**](docs/SIMIntegrationsAPI.md#getsimintegration) | **Get** /sim-integrations/{id} | Get a SIM integration details.
+*SIMIntegrationsAPI* | [**GetSIMIntegrations**](docs/SIMIntegrationsAPI.md#getsimintegrations) | **Get** /sim-integrations | List the existing SIM integrations.
+*SIMIntegrationsAPI* | [**PatchBeforeProvisioningRule**](docs/SIMIntegrationsAPI.md#patchbeforeprovisioningrule) | **Patch** /sim-integrations/{id}/beforeProvisioningRule | Patch a SIM beforeProvisioningRule attribute.
+*SIMIntegrationsAPI* | [**PatchSIMAttributes**](docs/SIMIntegrationsAPI.md#patchsimattributes) | **Patch** /sim-integrations/{id} | Patch a SIM attribute.
+*SIMIntegrationsAPI* | [**PutSIMIntegration**](docs/SIMIntegrationsAPI.md#putsimintegration) | **Put** /sim-integrations/{id} | Update an existing SIM integration
 *SODPoliciesAPI* | [**CreateSodPolicy**](docs/SODPoliciesAPI.md#createsodpolicy) | **Post** /sod-policies | Create SOD policy
 *SODPoliciesAPI* | [**DeleteSodPolicy**](docs/SODPoliciesAPI.md#deletesodpolicy) | **Delete** /sod-policies/{id} | Delete SOD policy by ID
 *SODPoliciesAPI* | [**DeleteSodPolicySchedule**](docs/SODPoliciesAPI.md#deletesodpolicyschedule) | **Delete** /sod-policies/{id}/schedule | Delete SOD policy schedule
@@ -966,6 +973,7 @@ Class | Method | HTTP request | Description
  - [Invocation](docs/Invocation.md)
  - [InvocationStatus](docs/InvocationStatus.md)
  - [InvocationStatusType](docs/InvocationStatusType.md)
+ - [JsonPatch](docs/JsonPatch.md)
  - [JsonPatchOperation](docs/JsonPatchOperation.md)
  - [JsonPatchOperationValue](docs/JsonPatchOperationValue.md)
  - [KbaAnswerRequestItem](docs/KbaAnswerRequestItem.md)
@@ -1247,6 +1255,8 @@ Class | Method | HTTP request | Description
  - [ServiceDeskSource](docs/ServiceDeskSource.md)
  - [SetIcon200Response](docs/SetIcon200Response.md)
  - [SetIconRequest](docs/SetIconRequest.md)
+ - [SimIntegrationDetails](docs/SimIntegrationDetails.md)
+ - [SimIntegrationDetailsAllOfBeforeProvisioningRule](docs/SimIntegrationDetailsAllOfBeforeProvisioningRule.md)
  - [Slimcampaign](docs/Slimcampaign.md)
  - [SodExemptCriteria](docs/SodExemptCriteria.md)
  - [SodExemptCriteria1](docs/SodExemptCriteria1.md)

@@ -158,6 +158,8 @@ type APIClient struct {
 
 	RolesAPI *RolesAPIService
 
+	SIMIntegrationsAPI *SIMIntegrationsAPIService
+
 	SODPoliciesAPI *SODPoliciesAPIService
 
 	SODPolicyAPI *SODPolicyAPIService
@@ -268,6 +270,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.RequestableObjectsAPI = (*RequestableObjectsAPIService)(&c.common)
 	c.RoleInsightsAPI = (*RoleInsightsAPIService)(&c.common)
 	c.RolesAPI = (*RolesAPIService)(&c.common)
+	c.SIMIntegrationsAPI = (*SIMIntegrationsAPIService)(&c.common)
 	c.SODPoliciesAPI = (*SODPoliciesAPIService)(&c.common)
 	c.SODPolicyAPI = (*SODPolicyAPIService)(&c.common)
 	c.SODViolationsAPI = (*SODViolationsAPIService)(&c.common)

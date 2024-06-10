@@ -783,6 +783,15 @@ tags:
 
     - [Zendesk Service Desk](https://documentation.sailpoint.com/connectors/zendesk/help/integrating_zendesk_sd/introduction.html)
   name: Service Desk Integration
+- description: |
+    Use this API to administer IdentityNow's Service Integration Module, or SIM integration with ServiceNow, so that it converts IdentityNow provisioning actions into tickets in ServiceNow.
+
+    ServiceNow is a software platform that supports IT service management and automates common business processes for requesting and fulfilling service requests across a business enterprise.
+
+    You must have an IdentityNow ServiceNow ServiceDesk license to use this integration. Contact your Customer Success Manager for more information.
+
+    Service Desk integration for IdentityNow and in deprecation - not available for new implementation, as of July 21st, 2021. As per SailPoint’s [support policy](https://community.sailpoint.com/t5/Connector-Directory/SailPoint-Support-Policy-for-Connectivity/ta-p/79422), all existing SailPoint IdentityNow customers using this legacy integration will be supported until July 2022.
+  name: SIM Integrations
 - description: "Use this API to implement and manage \"separation of duties\" (SOD)\
     \ policies. \nWith SOD policy functionality in place, administrators can organize\
     \ the access in their tenants to prevent individuals from gaining conflicting\
@@ -36508,6 +36517,711 @@ paths:
       summary: Update the time check configuration
       tags:
       - Service Desk Integration
+  /sim-integrations:
+    get:
+      description: List the existing SIM integrations. A token with Org Admin or Service
+        Desk Admin authority is required to access this endpoint.
+      operationId: getSIMIntegrations
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceDeskIntegrationDto'
+          description: The DTO containing the details of the SIM integration
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:service-desk-admin:read
+      summary: List the existing SIM integrations.
+      tags:
+      - SIM Integrations
+    post:
+      description: Create a new SIM Integrations.  A token with Org Admin or Service
+        Desk Admin authority is required to access this endpoint.
+      operationId: createSIMIntegration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SimIntegrationDetails'
+        description: DTO containing the details of the SIM integration
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceDeskIntegrationDto'
+          description: details of the created integration
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:service-desk-admin:create
+      summary: Create new SIM integration
+      tags:
+      - SIM Integrations
+  /sim-integrations/{id}:
+    delete:
+      description: Get the details of a SIM integration. A token with Org Admin or
+        Service Desk Admin authority is required to access this endpoint.
+      operationId: deleteSIMIntegration
+      parameters:
+      - description: The id of the integration to delete.
+        example: 12345
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: No content response
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:service-desk-admin:write
+      summary: Delete a SIM integration
+      tags:
+      - SIM Integrations
+    get:
+      description: Get the details of a SIM integration. A token with Org Admin or
+        Service Desk Admin authority is required to access this endpoint.
+      operationId: getSIMIntegration
+      parameters:
+      - description: The id of the integration.
+        example: 12345
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceDeskIntegrationDto'
+          description: The DTO containing the details of the SIM integration
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:service-desk-admin:read
+      summary: Get a SIM integration details.
+      tags:
+      - SIM Integrations
+    patch:
+      description: Patch a SIM attribute given a JsonPatch object. A token with Org
+        Admin or Service Desk Admin authority is required to access this endpoint.
+      operationId: patchSIMAttributes
+      parameters:
+      - description: SIM integration id
+        example: 12345
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/JsonPatch'
+        description: The JsonPatch object that describes the changes of SIM
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceDeskIntegrationDto'
+          description: The updated DTO containing the details of the SIM integration.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:service-desk-admin:write
+      summary: Patch a SIM attribute.
+      tags:
+      - SIM Integrations
+    put:
+      description: Update an existing SIM integration.  A token with Org Admin or
+        Service Desk Admin authority is required to access this endpoint.
+      operationId: putSIMIntegration
+      parameters:
+      - description: The id of the integration.
+        example: 12345
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SimIntegrationDetails'
+        description: The full DTO of the integration containing the updated model
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceDeskIntegrationDto'
+          description: details of the updated integration
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:service-desk-admin:create
+      summary: Update an existing SIM integration
+      tags:
+      - SIM Integrations
+  /sim-integrations/{id}/beforeProvisioningRule:
+    patch:
+      description: Patch a SIM beforeProvisioningRule attribute given a JsonPatch
+        object. A token with Org Admin or Service Desk Admin authority is required
+        to access this endpoint.
+      operationId: patchBeforeProvisioningRule
+      parameters:
+      - description: SIM integration id
+        example: 12345
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/JsonPatch'
+        description: The JsonPatch object that describes the changes of SIM beforeProvisioningRule.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceDeskIntegrationDto'
+          description: The updated DTO containing the details of the SIM integration.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:service-desk-admin:write
+      summary: Patch a SIM beforeProvisioningRule attribute.
+      tags:
+      - SIM Integrations
   /sp-config/export:
     post:
       description: |-
@@ -66657,6 +67371,79 @@ components:
       - provisioningMaxStatusCheckDays
       - provisioningStatusCheckIntervalMinutes
       type: object
+    SimIntegrationDetails:
+      allOf:
+      - $ref: '#/components/schemas/BaseCommonDto'
+      - properties:
+          description:
+            description: The description of the integration
+            example: Integration description
+            nullable: false
+            type: string
+          type:
+            description: The integration type
+            example: ServiceNow Service Desk
+            nullable: false
+            type: string
+          attributes:
+            description: The attributes map containing the credentials used to configure
+              the integration.
+            example: "{\"uid\":\"Walter White\",\"firstname\":\"walter\",\"cloudStatus\"\
+              :\"UNREGISTERED\",\"displayName\":\"Walter White\",\"identificationNumber\"\
+              :\"942\",\"lastSyncDate\":1470348809380,\"email\":\"walter@gmail.com\"\
+              ,\"lastname\":\"white\"}"
+            nullable: true
+            type: object
+          sources:
+            description: The list of sources (managed resources)
+            example:
+            - 2c9180835d191a86015d28455b4a2329
+            - 2c5680835d191a85765d28455b4a9823
+            items:
+              type: string
+            nullable: false
+            type: array
+          cluster:
+            description: The cluster/proxy
+            example: xyzzy999
+            nullable: false
+            type: string
+          statusMap:
+            description: Custom mapping between the integration result and the provisioning
+              result
+            example:
+              closed_cancelled: Failed
+              closed_complete: Committed
+              closed_incomplete: Failed
+              closed_rejected: Failed
+              in_process: Queued
+              requested: Queued
+            type: object
+          request:
+            description: Request data to customize desc and body of the created ticket
+            example:
+              description: "SailPoint Access Request,"
+              req_description: "The Service Request created by SailPoint ServiceNow\
+                \ Service Integration Module (SIM).,"
+              req_short_description: "SailPoint New Access Request Created from IdentityNow,"
+              short_description: SailPoint Access Request $!plan.arguments.identityRequestId
+            type: object
+          beforeProvisioningRule:
+            $ref: '#/components/schemas/SimIntegrationDetails_allOf_beforeProvisioningRule'
+        type: object
+      title: Sim Integration Details
+      type: object
+    JsonPatch:
+      description: "A JSONPatch document as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      example: "[\n  {\n\t  \"op\": \"replace\",\n\t  \"path\": \"/description\",\n\
+        \t  \"value\": \"A new description\"\n  }\n]"
+      properties:
+        operations:
+          description: Operations to be applied
+          items:
+            $ref: '#/components/schemas/JsonPatchOperation'
+          type: array
+      type: object
     ExportPayload:
       allOf:
       - $ref: '#/components/schemas/ExportOptions'
@@ -75353,6 +76140,40 @@ components:
           example: Before Provisioning Airtable Rule
           type: string
       type: object
+    DtoType:
+      description: An enumeration of the types of DTOs supported within the IdentityNow
+        infrastructure.
+      enum:
+      - ACCOUNT_CORRELATION_CONFIG
+      - ACCESS_PROFILE
+      - ACCESS_REQUEST_APPROVAL
+      - ACCOUNT
+      - APPLICATION
+      - CAMPAIGN
+      - CAMPAIGN_FILTER
+      - CERTIFICATION
+      - CLUSTER
+      - CONNECTOR_SCHEMA
+      - ENTITLEMENT
+      - GOVERNANCE_GROUP
+      - IDENTITY
+      - IDENTITY_PROFILE
+      - IDENTITY_REQUEST
+      - LIFECYCLE_STATE
+      - PASSWORD_POLICY
+      - ROLE
+      - RULE
+      - SOD_POLICY
+      - SOURCE
+      - TAG
+      - TAG_CATEGORY
+      - TASK_RESULT
+      - REPORT_RESULT
+      - SOD_VIOLATION
+      - ACCOUNT_ACTIVITY
+      - WORKGROUP
+      example: IDENTITY
+      type: string
     ExportOptions:
       example:
         includeTypes:
@@ -78307,40 +79128,6 @@ components:
           nullable: true
           type: object
       type: object
-    DtoType:
-      description: An enumeration of the types of DTOs supported within the IdentityNow
-        infrastructure.
-      enum:
-      - ACCOUNT_CORRELATION_CONFIG
-      - ACCESS_PROFILE
-      - ACCESS_REQUEST_APPROVAL
-      - ACCOUNT
-      - APPLICATION
-      - CAMPAIGN
-      - CAMPAIGN_FILTER
-      - CERTIFICATION
-      - CLUSTER
-      - CONNECTOR_SCHEMA
-      - ENTITLEMENT
-      - GOVERNANCE_GROUP
-      - IDENTITY
-      - IDENTITY_PROFILE
-      - IDENTITY_REQUEST
-      - LIFECYCLE_STATE
-      - PASSWORD_POLICY
-      - ROLE
-      - RULE
-      - SOD_POLICY
-      - SOURCE
-      - TAG
-      - TAG_CATEGORY
-      - TASK_RESULT
-      - REPORT_RESULT
-      - SOD_VIOLATION
-      - ACCOUNT_ACTIVITY
-      - WORKGROUP
-      example: IDENTITY
-      type: string
     NonEmployeeSourceLiteWithSchemaAttributes:
       allOf:
       - $ref: '#/components/schemas/NonEmployeeSourceLite'
@@ -81113,6 +81900,21 @@ components:
       oneOf:
       - $ref: '#/components/schemas/EntityCreatedByDTO'
       - $ref: '#/components/schemas/NullableEntityCreatedByDTO'
+    SimIntegrationDetails_allOf_beforeProvisioningRule:
+      description: Before provisioning rule of integration
+      properties:
+        type:
+          $ref: '#/components/schemas/DtoType'
+        id:
+          description: ID of the rule
+          example: 2c918085708c274401708c2a8a760001
+          type: string
+        name:
+          description: Human-readable display name of the rule
+          example: Example Rule
+          type: string
+      type: object
+      example: null
     Source_owner:
       description: Reference to identity object who owns the source.
       example:
