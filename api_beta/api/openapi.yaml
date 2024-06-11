@@ -48427,7 +48427,7 @@ paths:
         - idn:sod-violation:read
       summary: Get violation report run status
       tags:
-      - SOD Policy
+      - SOD Policies
   /sod-violation-report/run:
     post:
       deprecated: true
@@ -48518,7 +48518,7 @@ paths:
         - idn:sod-violation:write
       summary: Runs all policies for org
       tags:
-      - SOD Policy
+      - SOD Policies
   /sod-violation-report:
     get:
       deprecated: true
@@ -48599,7 +48599,7 @@ paths:
         - idn:sod-violation:read
       summary: Get multi-report run task status
       tags:
-      - SOD Policy
+      - SOD Policies
   /sod-violation-report/{reportResultId}/download:
     get:
       deprecated: true
@@ -48703,7 +48703,7 @@ paths:
         - idn:sod-violation:read
       summary: Download violation report
       tags:
-      - SOD Policy
+      - SOD Policies
   /sod-violation-report/{reportResultId}/download/{fileName}:
     get:
       deprecated: true
@@ -48814,7 +48814,7 @@ paths:
         - idn:sod-violation:read
       summary: Download custom violation report
       tags:
-      - SOD Policy
+      - SOD Policies
   /work-items:
     get:
       description: "This gets a collection of work items belonging to either the specified\

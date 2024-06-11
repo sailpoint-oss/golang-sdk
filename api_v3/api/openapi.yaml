@@ -30882,7 +30882,7 @@ paths:
         - idn:sod-violation:write
       summary: Runs all policies for org
       tags:
-      - SOD Policy
+      - SOD Policies
   /sod-violation-report:
     get:
       description: This endpoint gets the status for a violation report for all policy
@@ -30961,7 +30961,7 @@ paths:
         - idn:sod-violation:read
       summary: Get multi-report run task status
       tags:
-      - SOD Policy
+      - SOD Policies
   /sod-violation-report/{reportResultId}/download:
     get:
       description: This allows to download a violation report for a given report reference.
@@ -31062,7 +31062,7 @@ paths:
         - idn:sod-violation:read
       summary: Download violation report
       tags:
-      - SOD Policy
+      - SOD Policies
   /sod-violation-report/{reportResultId}/download/{fileName}:
     get:
       description: This allows to download a specified named violation report for
@@ -31171,7 +31171,7 @@ paths:
         - idn:sod-violation:read
       summary: Download custom violation report
       tags:
-      - SOD Policy
+      - SOD Policies
   /sources:
     get:
       description: |-

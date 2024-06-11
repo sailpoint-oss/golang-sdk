@@ -61,7 +61,6 @@ api_segments.go
 api_service_desk_integration.go
 api_sim_integrations.go
 api_sod_policies.go
-api_sod_policy.go
 api_sod_violations.go
 api_source_usages.go
 api_sources.go
@@ -749,7 +748,6 @@ docs/RoleTargetDto.md
 docs/RolesAPI.md
 docs/SIMIntegrationsAPI.md
 docs/SODPoliciesAPI.md
-docs/SODPolicyAPI.md
 docs/SODViolationsAPI.md
 docs/SPConfigAPI.md
 docs/SavedSearchComplete.md
@@ -1837,7 +1835,6 @@ test/api_segments_test.go
 test/api_service_desk_integration_test.go
 test/api_sim_integrations_test.go
 test/api_sod_policies_test.go
-test/api_sod_policy_test.go
 test/api_sod_violations_test.go
 test/api_source_usages_test.go
 test/api_sources_test.go

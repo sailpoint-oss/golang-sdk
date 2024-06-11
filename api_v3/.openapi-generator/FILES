@@ -43,7 +43,6 @@ api_search.go
 api_segments.go
 api_service_desk_integration.go
 api_sod_policies.go
-api_sod_policy.go
 api_sod_violations.go
 api_source_usages.go
 api_sources.go
@@ -477,7 +476,6 @@ docs/RoleMembershipSelectorType.md
 docs/RoleSummary.md
 docs/RolesAPI.md
 docs/SODPoliciesAPI.md
-docs/SODPolicyAPI.md
 docs/SODViolationsAPI.md
 docs/SavedSearch.md
 docs/SavedSearchAPI.md
@@ -1177,7 +1175,6 @@ test/api_search_test.go
 test/api_segments_test.go
 test/api_service_desk_integration_test.go
 test/api_sod_policies_test.go
-test/api_sod_policy_test.go
 test/api_sod_violations_test.go
 test/api_source_usages_test.go
 test/api_sources_test.go
