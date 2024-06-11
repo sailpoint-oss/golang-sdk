@@ -527,6 +527,7 @@ docs/SodExemptCriteria.md
 docs/SodPolicy.md
 docs/SodPolicyConflictingAccessCriteria.md
 docs/SodPolicyDto.md
+docs/SodPolicyOwnerRef.md
 docs/SodPolicySchedule.md
 docs/SodRecipient.md
 docs/SodReportResultDto.md
@@ -1051,6 +1052,7 @@ model_sod_exempt_criteria.go
 model_sod_policy.go
 model_sod_policy_conflicting_access_criteria.go
 model_sod_policy_dto.go
+model_sod_policy_owner_ref.go
 model_sod_policy_schedule.go
 model_sod_recipient.go
 model_sod_report_result_dto.go

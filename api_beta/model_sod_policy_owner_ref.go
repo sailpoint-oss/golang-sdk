@@ -14,11 +14,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the ViolationOwnerAssignmentConfigOwnerRef type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ViolationOwnerAssignmentConfigOwnerRef{}
+// checks if the SodPolicyOwnerRef type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SodPolicyOwnerRef{}
 
-// ViolationOwnerAssignmentConfigOwnerRef The owner of the violation assignment config.
-type ViolationOwnerAssignmentConfigOwnerRef struct {
+// SodPolicyOwnerRef The owner of the SOD policy.
+type SodPolicyOwnerRef struct {
 	// Owner type.
 	Type *string `json:"type,omitempty"`
 	// Owner's ID.
@@ -28,27 +28,27 @@ type ViolationOwnerAssignmentConfigOwnerRef struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _ViolationOwnerAssignmentConfigOwnerRef ViolationOwnerAssignmentConfigOwnerRef
+type _SodPolicyOwnerRef SodPolicyOwnerRef
 
-// NewViolationOwnerAssignmentConfigOwnerRef instantiates a new ViolationOwnerAssignmentConfigOwnerRef object
+// NewSodPolicyOwnerRef instantiates a new SodPolicyOwnerRef object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewViolationOwnerAssignmentConfigOwnerRef() *ViolationOwnerAssignmentConfigOwnerRef {
-	this := ViolationOwnerAssignmentConfigOwnerRef{}
+func NewSodPolicyOwnerRef() *SodPolicyOwnerRef {
+	this := SodPolicyOwnerRef{}
 	return &this
 }
 
-// NewViolationOwnerAssignmentConfigOwnerRefWithDefaults instantiates a new ViolationOwnerAssignmentConfigOwnerRef object
+// NewSodPolicyOwnerRefWithDefaults instantiates a new SodPolicyOwnerRef object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewViolationOwnerAssignmentConfigOwnerRefWithDefaults() *ViolationOwnerAssignmentConfigOwnerRef {
-	this := ViolationOwnerAssignmentConfigOwnerRef{}
+func NewSodPolicyOwnerRefWithDefaults() *SodPolicyOwnerRef {
+	this := SodPolicyOwnerRef{}
 	return &this
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *ViolationOwnerAssignmentConfigOwnerRef) GetType() string {
+func (o *SodPolicyOwnerRef) GetType() string {
 	if o == nil || isNil(o.Type) {
 		var ret string
 		return ret
@@ -58,7 +58,7 @@ func (o *ViolationOwnerAssignmentConfigOwnerRef) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ViolationOwnerAssignmentConfigOwnerRef) GetTypeOk() (*string, bool) {
+func (o *SodPolicyOwnerRef) GetTypeOk() (*string, bool) {
 	if o == nil || isNil(o.Type) {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *ViolationOwnerAssignmentConfigOwnerRef) GetTypeOk() (*string, bool) {
 }
 
 // HasType returns a boolean if a field has been set.
-func (o *ViolationOwnerAssignmentConfigOwnerRef) HasType() bool {
+func (o *SodPolicyOwnerRef) HasType() bool {
 	if o != nil && !isNil(o.Type) {
 		return true
 	}
@@ -75,12 +75,12 @@ func (o *ViolationOwnerAssignmentConfigOwnerRef) HasType() bool {
 }
 
 // SetType gets a reference to the given string and assigns it to the Type field.
-func (o *ViolationOwnerAssignmentConfigOwnerRef) SetType(v string) {
+func (o *SodPolicyOwnerRef) SetType(v string) {
 	o.Type = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *ViolationOwnerAssignmentConfigOwnerRef) GetId() string {
+func (o *SodPolicyOwnerRef) GetId() string {
 	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
@@ -90,7 +90,7 @@ func (o *ViolationOwnerAssignmentConfigOwnerRef) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ViolationOwnerAssignmentConfigOwnerRef) GetIdOk() (*string, bool) {
+func (o *SodPolicyOwnerRef) GetIdOk() (*string, bool) {
 	if o == nil || isNil(o.Id) {
 		return nil, false
 	}
@@ -98,7 +98,7 @@ func (o *ViolationOwnerAssignmentConfigOwnerRef) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *ViolationOwnerAssignmentConfigOwnerRef) HasId() bool {
+func (o *SodPolicyOwnerRef) HasId() bool {
 	if o != nil && !isNil(o.Id) {
 		return true
 	}
@@ -107,12 +107,12 @@ func (o *ViolationOwnerAssignmentConfigOwnerRef) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *ViolationOwnerAssignmentConfigOwnerRef) SetId(v string) {
+func (o *SodPolicyOwnerRef) SetId(v string) {
 	o.Id = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *ViolationOwnerAssignmentConfigOwnerRef) GetName() string {
+func (o *SodPolicyOwnerRef) GetName() string {
 	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
@@ -122,7 +122,7 @@ func (o *ViolationOwnerAssignmentConfigOwnerRef) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ViolationOwnerAssignmentConfigOwnerRef) GetNameOk() (*string, bool) {
+func (o *SodPolicyOwnerRef) GetNameOk() (*string, bool) {
 	if o == nil || isNil(o.Name) {
 		return nil, false
 	}
@@ -130,7 +130,7 @@ func (o *ViolationOwnerAssignmentConfigOwnerRef) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *ViolationOwnerAssignmentConfigOwnerRef) HasName() bool {
+func (o *SodPolicyOwnerRef) HasName() bool {
 	if o != nil && !isNil(o.Name) {
 		return true
 	}
@@ -139,11 +139,11 @@ func (o *ViolationOwnerAssignmentConfigOwnerRef) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *ViolationOwnerAssignmentConfigOwnerRef) SetName(v string) {
+func (o *SodPolicyOwnerRef) SetName(v string) {
 	o.Name = &v
 }
 
-func (o ViolationOwnerAssignmentConfigOwnerRef) MarshalJSON() ([]byte, error) {
+func (o SodPolicyOwnerRef) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -151,7 +151,7 @@ func (o ViolationOwnerAssignmentConfigOwnerRef) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o ViolationOwnerAssignmentConfigOwnerRef) ToMap() (map[string]interface{}, error) {
+func (o SodPolicyOwnerRef) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -170,11 +170,11 @@ func (o ViolationOwnerAssignmentConfigOwnerRef) ToMap() (map[string]interface{},
 	return toSerialize, nil
 }
 
-func (o *ViolationOwnerAssignmentConfigOwnerRef) UnmarshalJSON(bytes []byte) (err error) {
-	varViolationOwnerAssignmentConfigOwnerRef := _ViolationOwnerAssignmentConfigOwnerRef{}
+func (o *SodPolicyOwnerRef) UnmarshalJSON(bytes []byte) (err error) {
+	varSodPolicyOwnerRef := _SodPolicyOwnerRef{}
 
-	if err = json.Unmarshal(bytes, &varViolationOwnerAssignmentConfigOwnerRef); err == nil {
-	*o = ViolationOwnerAssignmentConfigOwnerRef(varViolationOwnerAssignmentConfigOwnerRef)
+	if err = json.Unmarshal(bytes, &varSodPolicyOwnerRef); err == nil {
+	*o = SodPolicyOwnerRef(varSodPolicyOwnerRef)
 }
 
 	additionalProperties := make(map[string]interface{})
@@ -189,38 +189,38 @@ func (o *ViolationOwnerAssignmentConfigOwnerRef) UnmarshalJSON(bytes []byte) (er
 	return err
 }
 
-type NullableViolationOwnerAssignmentConfigOwnerRef struct {
-	value *ViolationOwnerAssignmentConfigOwnerRef
+type NullableSodPolicyOwnerRef struct {
+	value *SodPolicyOwnerRef
 	isSet bool
 }
 
-func (v NullableViolationOwnerAssignmentConfigOwnerRef) Get() *ViolationOwnerAssignmentConfigOwnerRef {
+func (v NullableSodPolicyOwnerRef) Get() *SodPolicyOwnerRef {
 	return v.value
 }
 
-func (v *NullableViolationOwnerAssignmentConfigOwnerRef) Set(val *ViolationOwnerAssignmentConfigOwnerRef) {
+func (v *NullableSodPolicyOwnerRef) Set(val *SodPolicyOwnerRef) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableViolationOwnerAssignmentConfigOwnerRef) IsSet() bool {
+func (v NullableSodPolicyOwnerRef) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableViolationOwnerAssignmentConfigOwnerRef) Unset() {
+func (v *NullableSodPolicyOwnerRef) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableViolationOwnerAssignmentConfigOwnerRef(val *ViolationOwnerAssignmentConfigOwnerRef) *NullableViolationOwnerAssignmentConfigOwnerRef {
-	return &NullableViolationOwnerAssignmentConfigOwnerRef{value: val, isSet: true}
+func NewNullableSodPolicyOwnerRef(val *SodPolicyOwnerRef) *NullableSodPolicyOwnerRef {
+	return &NullableSodPolicyOwnerRef{value: val, isSet: true}
 }
 
-func (v NullableViolationOwnerAssignmentConfigOwnerRef) MarshalJSON() ([]byte, error) {
+func (v NullableSodPolicyOwnerRef) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableViolationOwnerAssignmentConfigOwnerRef) UnmarshalJSON(src []byte) error {
+func (v *NullableSodPolicyOwnerRef) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AssignmentRule** | Pointer to **NullableString** | Details about the violations owner. MANAGER - identity&#39;s manager STATIC - Governance Group or Identity | [optional] 
-**OwnerRef** | Pointer to [**ViolationOwnerAssignmentConfigOwnerRef**](ViolationOwnerAssignmentConfigOwnerRef.md) |  | [optional] 
+**OwnerRef** | Pointer to [**NullableViolationOwnerAssignmentConfigOwnerRef**](ViolationOwnerAssignmentConfigOwnerRef.md) |  | [optional] 
 
 ## Methods
 
@@ -86,6 +86,16 @@ SetOwnerRef sets OwnerRef field to given value.
 
 HasOwnerRef returns a boolean if a field has been set.
 
+### SetOwnerRefNil
+
+`func (o *ViolationOwnerAssignmentConfig) SetOwnerRefNil(b bool)`
+
+ SetOwnerRefNil sets the value for OwnerRef to be an explicit nil
+
+### UnsetOwnerRef
+`func (o *ViolationOwnerAssignmentConfig) UnsetOwnerRef()`
+
+UnsetOwnerRef ensures that no value is present for OwnerRef, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

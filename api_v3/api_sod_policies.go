@@ -1185,6 +1185,7 @@ type ApiListSodPoliciesRequest struct {
 	offset *int32
 	count *bool
 	filters *string
+	sorters *string
 }
 
 // Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1205,9 +1206,15 @@ func (r ApiListSodPoliciesRequest) Count(count bool) ApiListSodPoliciesRequest {
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **name**: *eq*  **state**: *eq*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in*  **state**: *eq, in*
 func (r ApiListSodPoliciesRequest) Filters(filters string) ApiListSodPoliciesRequest {
 	r.filters = &filters
+	return r
+}
+
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, description**
+func (r ApiListSodPoliciesRequest) Sorters(sorters string) ApiListSodPoliciesRequest {
+	r.sorters = &sorters
 	return r
 }
 
@@ -1272,6 +1279,9 @@ func (a *SODPoliciesAPIService) ListSodPoliciesExecute(r ApiListSodPoliciesReque
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
+	}
+	if r.sorters != nil {
+		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

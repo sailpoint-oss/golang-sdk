@@ -1,4 +1,4 @@
-# ViolationOwnerAssignmentConfigOwnerRef
+# SodPolicyOwnerRef
 
 ## Properties
 
@@ -10,95 +10,95 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewViolationOwnerAssignmentConfigOwnerRef
+### NewSodPolicyOwnerRef
 
-`func NewViolationOwnerAssignmentConfigOwnerRef() *ViolationOwnerAssignmentConfigOwnerRef`
+`func NewSodPolicyOwnerRef() *SodPolicyOwnerRef`
 
-NewViolationOwnerAssignmentConfigOwnerRef instantiates a new ViolationOwnerAssignmentConfigOwnerRef object
+NewSodPolicyOwnerRef instantiates a new SodPolicyOwnerRef object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewViolationOwnerAssignmentConfigOwnerRefWithDefaults
+### NewSodPolicyOwnerRefWithDefaults
 
-`func NewViolationOwnerAssignmentConfigOwnerRefWithDefaults() *ViolationOwnerAssignmentConfigOwnerRef`
+`func NewSodPolicyOwnerRefWithDefaults() *SodPolicyOwnerRef`
 
-NewViolationOwnerAssignmentConfigOwnerRefWithDefaults instantiates a new ViolationOwnerAssignmentConfigOwnerRef object
+NewSodPolicyOwnerRefWithDefaults instantiates a new SodPolicyOwnerRef object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *ViolationOwnerAssignmentConfigOwnerRef) GetType() string`
+`func (o *SodPolicyOwnerRef) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *ViolationOwnerAssignmentConfigOwnerRef) GetTypeOk() (*string, bool)`
+`func (o *SodPolicyOwnerRef) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *ViolationOwnerAssignmentConfigOwnerRef) SetType(v string)`
+`func (o *SodPolicyOwnerRef) SetType(v string)`
 
 SetType sets Type field to given value.
 
 ### HasType
 
-`func (o *ViolationOwnerAssignmentConfigOwnerRef) HasType() bool`
+`func (o *SodPolicyOwnerRef) HasType() bool`
 
 HasType returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *ViolationOwnerAssignmentConfigOwnerRef) GetId() string`
+`func (o *SodPolicyOwnerRef) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *ViolationOwnerAssignmentConfigOwnerRef) GetIdOk() (*string, bool)`
+`func (o *SodPolicyOwnerRef) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *ViolationOwnerAssignmentConfigOwnerRef) SetId(v string)`
+`func (o *SodPolicyOwnerRef) SetId(v string)`
 
 SetId sets Id field to given value.
 
 ### HasId
 
-`func (o *ViolationOwnerAssignmentConfigOwnerRef) HasId() bool`
+`func (o *SodPolicyOwnerRef) HasId() bool`
 
 HasId returns a boolean if a field has been set.
 
 ### GetName
 
-`func (o *ViolationOwnerAssignmentConfigOwnerRef) GetName() string`
+`func (o *SodPolicyOwnerRef) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *ViolationOwnerAssignmentConfigOwnerRef) GetNameOk() (*string, bool)`
+`func (o *SodPolicyOwnerRef) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *ViolationOwnerAssignmentConfigOwnerRef) SetName(v string)`
+`func (o *SodPolicyOwnerRef) SetName(v string)`
 
 SetName sets Name field to given value.
 
 ### HasName
 
-`func (o *ViolationOwnerAssignmentConfigOwnerRef) HasName() bool`
+`func (o *SodPolicyOwnerRef) HasName() bool`
 
 HasName returns a boolean if a field has been set.
 

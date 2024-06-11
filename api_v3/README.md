@@ -854,6 +854,7 @@ Class | Method | HTTP request | Description
  - [SodPolicy](docs/SodPolicy.md)
  - [SodPolicyConflictingAccessCriteria](docs/SodPolicyConflictingAccessCriteria.md)
  - [SodPolicyDto](docs/SodPolicyDto.md)
+ - [SodPolicyOwnerRef](docs/SodPolicyOwnerRef.md)
  - [SodPolicySchedule](docs/SodPolicySchedule.md)
  - [SodRecipient](docs/SodRecipient.md)
  - [SodReportResultDto](docs/SodReportResultDto.md)

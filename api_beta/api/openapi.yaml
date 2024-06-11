@@ -42757,7 +42757,8 @@ paths:
       - Task Management
   /task-status:
     get:
-      description: Get a TaskStatus list.
+      description: |
+        Use this endpoint to get a list of **completed** tasks. To get a list of tasks **in-progress**, please use the [get pending tasks](https://developer.sailpoint.com/docs/api/beta/get-pending-tasks) endpoint.
       operationId: getTaskStatusList
       parameters:
       - description: |-
@@ -46618,16 +46619,27 @@ paths:
 
           Filtering is supported for the following fields and operators:
 
-          **id**: *eq*
+          **id**: *eq, in*
 
-          **name**: *eq*
+          **name**: *eq, in*
 
-          **state**: *eq*
+          **state**: *eq, in*
         example: id eq "bc693f07e7b645539626c25954c58554"
         in: query
         name: filters
         required: false
         schema:
+          type: string
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **id, name, created, modified, description**
+        example: "id,name"
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
           type: string
       responses:
         "200":
@@ -70038,7 +70050,10 @@ components:
         description: This policy ensures compliance of xyz
         violationOwnerAssignmentConfig:
           assignmentRule: MANAGER
-          ownerRef: null
+          ownerRef:
+            name: Support
+            id: 2c9180a46faadee4016fb4e018c20639
+            type: IDENTITY
         correctionAdvice: "Based on the role of the employee, managers should remove\
           \ access that is not required for their job function."
         type: GENERAL
@@ -70081,7 +70096,7 @@ components:
           nullable: true
           type: string
         ownerRef:
-          $ref: '#/components/schemas/OwnerDto'
+          $ref: '#/components/schemas/SodPolicy_ownerRef'
         externalPolicyReference:
           description: Optional external policy reference.
           example: XYZ policy
@@ -76044,10 +76059,6 @@ components:
       type: object
     OwnerDto:
       description: Owner's identity.
-      example:
-        name: Support
-        id: 2c9180a46faadee4016fb4e018c20639
-        type: IDENTITY
       properties:
         type:
           description: Owner's DTO type.
@@ -77779,7 +77790,10 @@ components:
     ViolationOwnerAssignmentConfig:
       example:
         assignmentRule: MANAGER
-        ownerRef: null
+        ownerRef:
+          name: Support
+          id: 2c9180a46faadee4016fb4e018c20639
+          type: IDENTITY
       properties:
         assignmentRule:
           description: |-
@@ -82785,6 +82799,29 @@ components:
       - op
       - path
       type: object
+    SodPolicy_ownerRef:
+      description: The owner of the SOD policy.
+      example:
+        name: Support
+        id: 2c9180a46faadee4016fb4e018c20639
+        type: IDENTITY
+      properties:
+        type:
+          description: Owner type.
+          enum:
+          - IDENTITY
+          - GOVERNANCE_GROUP
+          example: IDENTITY
+          type: string
+        id:
+          description: Owner's ID.
+          example: 2c9180a46faadee4016fb4e018c20639
+          type: string
+        name:
+          description: Owner's name.
+          example: Support
+          type: string
+      type: object
     SodPolicy_conflictingAccessCriteria:
       allOf:
       - $ref: '#/components/schemas/ConflictingAccessCriteria'
@@ -84519,10 +84556,31 @@ components:
       - status
       type: object
     ViolationOwnerAssignmentConfig_ownerRef:
-      allOf:
-      - $ref: '#/components/schemas/OwnerDto'
-      - nullable: true
-        type: object
+      description: The owner of the violation assignment config.
+      example:
+        name: Support
+        id: 2c9180a46faadee4016fb4e018c20639
+        type: IDENTITY
+      nullable: true
+      properties:
+        type:
+          description: Owner type.
+          enum:
+          - IDENTITY
+          - GOVERNANCE_GROUP
+          - MANAGER
+          - null
+          example: IDENTITY
+          type: string
+        id:
+          description: Owner's ID.
+          example: 2c9180a46faadee4016fb4e018c20639
+          type: string
+        name:
+          description: Owner's name.
+          example: Support
+          type: string
+      type: object
     Schedule_1_months:
       allOf:
       - $ref: '#/components/schemas/Selector'

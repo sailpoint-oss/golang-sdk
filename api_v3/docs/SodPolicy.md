@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Created** | Pointer to **time.Time** | The time when this SOD policy is created. | [optional] [readonly] 
 **Modified** | Pointer to **time.Time** | The time when this SOD policy is modified. | [optional] [readonly] 
 **Description** | Pointer to **NullableString** | Optional description of the SOD policy | [optional] 
-**OwnerRef** | Pointer to [**OwnerDto**](OwnerDto.md) |  | [optional] 
+**OwnerRef** | Pointer to [**SodPolicyOwnerRef**](SodPolicyOwnerRef.md) |  | [optional] 
 **ExternalPolicyReference** | Pointer to **NullableString** | Optional External Policy Reference | [optional] 
 **PolicyQuery** | Pointer to **string** | Search query of the SOD policy | [optional] 
 **CompensatingControls** | Pointer to **NullableString** | Optional compensating controls(Mitigating Controls) | [optional] 
@@ -179,20 +179,20 @@ HasDescription returns a boolean if a field has been set.
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetOwnerRef
 
-`func (o *SodPolicy) GetOwnerRef() OwnerDto`
+`func (o *SodPolicy) GetOwnerRef() SodPolicyOwnerRef`
 
 GetOwnerRef returns the OwnerRef field if non-nil, zero value otherwise.
 
 ### GetOwnerRefOk
 
-`func (o *SodPolicy) GetOwnerRefOk() (*OwnerDto, bool)`
+`func (o *SodPolicy) GetOwnerRefOk() (*SodPolicyOwnerRef, bool)`
 
 GetOwnerRefOk returns a tuple with the OwnerRef field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwnerRef
 
-`func (o *SodPolicy) SetOwnerRef(v OwnerDto)`
+`func (o *SodPolicy) SetOwnerRef(v SodPolicyOwnerRef)`
 
 SetOwnerRef sets OwnerRef field to given value.
 
