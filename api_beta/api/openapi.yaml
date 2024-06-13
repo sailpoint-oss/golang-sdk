@@ -2453,7 +2453,7 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:access-request:create
+        - idn:access-request:manage
       summary: Submit Access Request
       tags:
       - Access Requests
