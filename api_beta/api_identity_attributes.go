@@ -41,7 +41,7 @@ func (r ApiCreateIdentityAttributeRequest) Execute() (*IdentityAttribute, *http.
 /*
 CreateIdentityAttribute Create Identity Attribute
 
-This creates a new identity attribute.
+Use this API to create a new identity attribute.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateIdentityAttributeRequest
@@ -373,7 +373,7 @@ func (r ApiDeleteIdentityAttributesInBulkRequest) Execute() (*http.Response, err
 /*
 DeleteIdentityAttributesInBulk Bulk delete Identity Attributes
 
-This deletes identity attributes for a given set of names. Attributes that are currently mapped in an Identity Profile cannot be deleted.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.
+Use this API to bulk delete identity attributes for a given set of names. Attributes that are currently mapped in an identity profile cannot be deleted.  The `system` and `standard` properties must be set to 'false' before you can delete an identity attribute.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDeleteIdentityAttributesInBulkRequest
@@ -388,7 +388,7 @@ func (a *IdentityAttributesAPIService) DeleteIdentityAttributesInBulk(ctx contex
 // Execute executes the request
 func (a *IdentityAttributesAPIService) DeleteIdentityAttributesInBulkExecute(r ApiDeleteIdentityAttributesInBulkRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
@@ -696,19 +696,19 @@ type ApiListIdentityAttributesRequest struct {
 	count *bool
 }
 
-// Include \&quot;system\&quot; attributes in the response.
+// Include &#39;system&#39; attributes in the response.
 func (r ApiListIdentityAttributesRequest) IncludeSystem(includeSystem bool) ApiListIdentityAttributesRequest {
 	r.includeSystem = &includeSystem
 	return r
 }
 
-// Include \&quot;silent\&quot; attributes in the response.
+// Include &#39;silent&#39; attributes in the response.
 func (r ApiListIdentityAttributesRequest) IncludeSilent(includeSilent bool) ApiListIdentityAttributesRequest {
 	r.includeSilent = &includeSilent
 	return r
 }
 
-// Include only \&quot;searchable\&quot; attributes in the response.
+// Include only &#39;searchable&#39; attributes in the response.
 func (r ApiListIdentityAttributesRequest) SearchableOnly(searchableOnly bool) ApiListIdentityAttributesRequest {
 	r.searchableOnly = &searchableOnly
 	return r
@@ -727,7 +727,7 @@ func (r ApiListIdentityAttributesRequest) Execute() ([]IdentityAttribute, *http.
 /*
 ListIdentityAttributes List Identity Attributes
 
-This gets a collection of identity attributes.
+Use this API to get a collection of identity attributes.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListIdentityAttributesRequest

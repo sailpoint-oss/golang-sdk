@@ -12,7 +12,6 @@ package api_beta
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the IdentityAttribute type satisfies the MappedNullable interface at compile time
@@ -21,13 +20,13 @@ var _ MappedNullable = &IdentityAttribute{}
 // IdentityAttribute struct for IdentityAttribute
 type IdentityAttribute struct {
 	// Identity attribute's technical name.
-	Name string `json:"name"`
+	Name *string `json:"name,omitempty"`
 	// Identity attribute's business-friendly name.
 	DisplayName *string `json:"displayName,omitempty"`
 	// Indicates whether the attribute is 'standard' or 'default'.
 	Standard *bool `json:"standard,omitempty"`
 	// Identity attribute's type.
-	Type *string `json:"type,omitempty"`
+	Type NullableString `json:"type,omitempty"`
 	// Indicates whether the identity attribute is multi-valued.
 	Multi *bool `json:"multi,omitempty"`
 	// Indicates whether the identity attribute is searchable.
@@ -45,9 +44,8 @@ type _IdentityAttribute IdentityAttribute
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentityAttribute(name string) *IdentityAttribute {
+func NewIdentityAttribute() *IdentityAttribute {
 	this := IdentityAttribute{}
-	this.Name = name
 	var standard bool = false
 	this.Standard = &standard
 	var multi bool = false
@@ -75,28 +73,36 @@ func NewIdentityAttributeWithDefaults() *IdentityAttribute {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *IdentityAttribute) GetName() string {
-	if o == nil {
+	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityAttribute) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || isNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *IdentityAttribute) HasName() bool {
+	if o != nil && !isNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *IdentityAttribute) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
@@ -163,36 +169,46 @@ func (o *IdentityAttribute) SetStandard(v bool) {
 	o.Standard = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentityAttribute) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || isNil(o.Type.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Type
+	return *o.Type.Get()
 }
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *IdentityAttribute) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Type, true
+	return o.Type.Get(), o.Type.IsSet()
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *IdentityAttribute) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && o.Type.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
+// SetType gets a reference to the given NullableString and assigns it to the Type field.
 func (o *IdentityAttribute) SetType(v string) {
-	o.Type = &v
+	o.Type.Set(&v)
+}
+// SetTypeNil sets the value for Type to be an explicit nil
+func (o *IdentityAttribute) SetTypeNil() {
+	o.Type.Set(nil)
+}
+
+// UnsetType ensures that no value is present for Type, not even an explicit nil
+func (o *IdentityAttribute) UnsetType() {
+	o.Type.Unset()
 }
 
 // GetMulti returns the Multi field value if set, zero value otherwise.
@@ -333,15 +349,17 @@ func (o IdentityAttribute) MarshalJSON() ([]byte, error) {
 
 func (o IdentityAttribute) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
+	if !isNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	if !isNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
 	if !isNil(o.Standard) {
 		toSerialize["standard"] = o.Standard
 	}
-	if !isNil(o.Type) {
-		toSerialize["type"] = o.Type
+	if o.Type.IsSet() {
+		toSerialize["type"] = o.Type.Get()
 	}
 	if !isNil(o.Multi) {
 		toSerialize["multi"] = o.Multi
@@ -364,27 +382,6 @@ func (o IdentityAttribute) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *IdentityAttribute) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
 	varIdentityAttribute := _IdentityAttribute{}
 
 	if err = json.Unmarshal(bytes, &varIdentityAttribute); err == nil {

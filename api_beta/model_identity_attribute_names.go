@@ -17,9 +17,9 @@ import (
 // checks if the IdentityAttributeNames type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &IdentityAttributeNames{}
 
-// IdentityAttributeNames Identity Attribute IDs
+// IdentityAttributeNames Identity attribute IDs.
 type IdentityAttributeNames struct {
-	// List of identity attributes' technical names
+	// List of identity attributes' technical names.
 	Ids []string `json:"ids,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

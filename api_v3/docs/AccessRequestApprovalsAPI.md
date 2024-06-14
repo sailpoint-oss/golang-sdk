@@ -4,12 +4,12 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ApproveAccessRequest**](AccessRequestApprovalsAPI.md#ApproveAccessRequest) | **Post** /access-request-approvals/{approvalId}/approve | Approves an access request approval.
-[**ForwardAccessRequest**](AccessRequestApprovalsAPI.md#ForwardAccessRequest) | **Post** /access-request-approvals/{approvalId}/forward | Forwards an access request approval.
-[**GetAccessRequestApprovalSummary**](AccessRequestApprovalsAPI.md#GetAccessRequestApprovalSummary) | **Get** /access-request-approvals/approval-summary | Get the number of access-requests-approvals
+[**ApproveAccessRequest**](AccessRequestApprovalsAPI.md#ApproveAccessRequest) | **Post** /access-request-approvals/{approvalId}/approve | Approve Access Request Approval
+[**ForwardAccessRequest**](AccessRequestApprovalsAPI.md#ForwardAccessRequest) | **Post** /access-request-approvals/{approvalId}/forward | Forward Access Request Approval
+[**GetAccessRequestApprovalSummary**](AccessRequestApprovalsAPI.md#GetAccessRequestApprovalSummary) | **Get** /access-request-approvals/approval-summary | Get Access Requests Approvals Number
 [**ListCompletedApprovals**](AccessRequestApprovalsAPI.md#ListCompletedApprovals) | **Get** /access-request-approvals/completed | Completed Access Request Approvals List
 [**ListPendingApprovals**](AccessRequestApprovalsAPI.md#ListPendingApprovals) | **Get** /access-request-approvals/pending | Pending Access Request Approvals List
-[**RejectAccessRequest**](AccessRequestApprovalsAPI.md#RejectAccessRequest) | **Post** /access-request-approvals/{approvalId}/reject | Rejects an access request approval.
+[**RejectAccessRequest**](AccessRequestApprovalsAPI.md#RejectAccessRequest) | **Post** /access-request-approvals/{approvalId}/reject | Reject Access Request Approval
 
 
 
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 > map[string]interface{} ApproveAccessRequest(ctx, approvalId).CommentDto(commentDto).Execute()
 
-Approves an access request approval.
+Approve Access Request Approval
 
 
 
@@ -34,8 +34,8 @@ import (
 )
 
 func main() {
-    approvalId := "2c91808b7294bea301729568c68c002e" // string | The id of the approval.
-    commentDto := *openapiclient.NewCommentDto() // CommentDto | Reviewer's comment. (optional)
+    approvalId := "2c91808b7294bea301729568c68c002e" // string | Approval ID.
+    commentDto := *openapiclient.NewCommentDto() // CommentDto | Reviewer's comment.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -55,7 +55,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**approvalId** | **string** | The id of the approval. | 
+**approvalId** | **string** | Approval ID. | 
 
 ### Other Parameters
 
@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} ForwardAccessRequest(ctx, approvalId).ForwardApprovalDto(forwardApprovalDto).Execute()
 
-Forwards an access request approval.
+Forward Access Request Approval
 
 
 
@@ -106,7 +106,7 @@ import (
 )
 
 func main() {
-    approvalId := "2c91808b7294bea301729568c68c002e" // string | The id of the approval.
+    approvalId := "2c91808b7294bea301729568c68c002e" // string | Approval ID.
     forwardApprovalDto := *openapiclient.NewForwardApprovalDto("2c91808568c529c60168cca6f90c1314", "2c91808568c529c60168cca6f90c1313") // ForwardApprovalDto | Information about the forwarded approval.
 
     configuration := openapiclient.NewConfiguration()
@@ -127,7 +127,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**approvalId** | **string** | The id of the approval. | 
+**approvalId** | **string** | Approval ID. | 
 
 ### Other Parameters
 
@@ -161,7 +161,7 @@ Name | Type | Description  | Notes
 
 > ApprovalSummary GetAccessRequestApprovalSummary(ctx).OwnerId(ownerId).FromDate(fromDate).Execute()
 
-Get the number of access-requests-approvals
+Get Access Requests Approvals Number
 
 
 
@@ -178,8 +178,8 @@ import (
 )
 
 func main() {
-    ownerId := "2c91808568c529c60168cca6f90c1313" // string | The id of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value. (optional)
-    fromDate := "from-date=2020-03-19T19:59:11Z" // string | From date is the date and time from which the results will be shown. It should be in a valid ISO-8601 format (optional)
+    ownerId := "2c91808568c529c60168cca6f90c1313" // string | The ID of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value. (optional)
+    fromDate := "from-date=2020-03-19T19:59:11Z" // string | This is the date and time the results will be shown from. It must be in a valid ISO-8601 format. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -204,8 +204,8 @@ Other parameters are passed through a pointer to a apiGetAccessRequestApprovalSu
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ownerId** | **string** | The id of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value. | 
- **fromDate** | **string** | From date is the date and time from which the results will be shown. It should be in a valid ISO-8601 format | 
+ **ownerId** | **string** | The ID of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value. | 
+ **fromDate** | **string** | This is the date and time the results will be shown from. It must be in a valid ISO-8601 format. | 
 
 ### Return type
 
@@ -381,7 +381,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} RejectAccessRequest(ctx, approvalId).CommentDto(commentDto).Execute()
 
-Rejects an access request approval.
+Reject Access Request Approval
 
 
 
@@ -398,8 +398,8 @@ import (
 )
 
 func main() {
-    approvalId := "2c91808b7294bea301729568c68c002e" // string | The id of the approval.
-    commentDto := *openapiclient.NewCommentDto() // CommentDto | Reviewer's comment. (optional)
+    approvalId := "2c91808b7294bea301729568c68c002e" // string | Approval ID.
+    commentDto := *openapiclient.NewCommentDto() // CommentDto | Reviewer's comment.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -419,7 +419,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**approvalId** | **string** | The id of the approval. | 
+**approvalId** | **string** | Approval ID. | 
 
 ### Other Parameters
 

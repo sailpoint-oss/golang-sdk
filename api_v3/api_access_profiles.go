@@ -39,11 +39,11 @@ func (r ApiCreateAccessProfileRequest) Execute() (*AccessProfile, *http.Response
 }
 
 /*
-CreateAccessProfile Create an Access Profile
+CreateAccessProfile Create Access Profile
 
-This API creates an Access Profile.
-A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. In addition, a token with only ROLE_SUBADMIN or SOURCE_SUBADMIN authority must be associated with the Access Profile's Source.
-The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles, however, any new access profiles as well as any updates to existing descriptions will be limited to 2000 characters.
+Use this API to create an access profile.
+A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. In addition, a token with only ROLE_SUBADMIN or SOURCE_SUBADMIN authority must be associated with the access profile's Source.
+The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles. However, any new access profiles as well as any updates to existing descriptions are limited to 2000 characters.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateAccessProfileRequest
@@ -921,7 +921,7 @@ func (r ApiListAccessProfilesRequest) Count(count bool) ApiListAccessProfilesReq
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq*  **source.id**: *eq, in*  Composite operators supported: *and, or*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq*  **source.id**: *eq, in*  Composite operators supported: *and, or*  Filtering is not supported for access profiles and entitlements that have the &#39;+&#39; symbol in their names. 
 func (r ApiListAccessProfilesRequest) Filters(filters string) ApiListAccessProfilesRequest {
 	r.filters = &filters
 	return r
@@ -933,13 +933,13 @@ func (r ApiListAccessProfilesRequest) Sorters(sorters string) ApiListAccessProfi
 	return r
 }
 
-// If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error.
+// If present and not empty, additionally filters access profiles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error.
 func (r ApiListAccessProfilesRequest) ForSegmentIds(forSegmentIds string) ApiListAccessProfilesRequest {
 	r.forSegmentIds = &forSegmentIds
 	return r
 }
 
-// Whether or not the response list should contain unsegmented Access Profiles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.
+// Indicates whether the response list should contain unsegmented access profiles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.
 func (r ApiListAccessProfilesRequest) IncludeUnsegmented(includeUnsegmented bool) ApiListAccessProfilesRequest {
 	r.includeUnsegmented = &includeUnsegmented
 	return r
@@ -952,8 +952,7 @@ func (r ApiListAccessProfilesRequest) Execute() ([]AccessProfile, *http.Response
 /*
 ListAccessProfiles List Access Profiles
 
-This API returns a list of Access Profiles.
-
+Use this API to get a list of access profiles.
 A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

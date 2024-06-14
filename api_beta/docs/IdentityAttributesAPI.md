@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateIdentityAttribute**](IdentityAttributesAPI.md#CreateIdentityAttribute) | **Post** /identity-attributes | Create Identity Attribute
 [**DeleteIdentityAttribute**](IdentityAttributesAPI.md#DeleteIdentityAttribute) | **Delete** /identity-attributes/{name} | Delete Identity Attribute
-[**DeleteIdentityAttributesInBulk**](IdentityAttributesAPI.md#DeleteIdentityAttributesInBulk) | **Post** /identity-attributes/bulk-delete | Bulk delete Identity Attributes
+[**DeleteIdentityAttributesInBulk**](IdentityAttributesAPI.md#DeleteIdentityAttributesInBulk) | **Delete** /identity-attributes/bulk-delete | Bulk delete Identity Attributes
 [**GetIdentityAttribute**](IdentityAttributesAPI.md#GetIdentityAttribute) | **Get** /identity-attributes/{name} | Get Identity Attribute
 [**ListIdentityAttributes**](IdentityAttributesAPI.md#ListIdentityAttributes) | **Get** /identity-attributes | List Identity Attributes
 [**PutIdentityAttribute**](IdentityAttributesAPI.md#PutIdentityAttribute) | **Put** /identity-attributes/{name} | Update Identity Attribute
@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-    identityAttribute := *openapiclient.NewIdentityAttribute("uid") // IdentityAttribute | 
+    identityAttribute := *openapiclient.NewIdentityAttribute() // IdentityAttribute | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -302,9 +302,9 @@ import (
 )
 
 func main() {
-    includeSystem := false // bool | Include \"system\" attributes in the response. (optional) (default to false)
-    includeSilent := false // bool | Include \"silent\" attributes in the response. (optional) (default to false)
-    searchableOnly := false // bool | Include only \"searchable\" attributes in the response. (optional) (default to false)
+    includeSystem := false // bool | Include 'system' attributes in the response. (optional) (default to false)
+    includeSilent := false // bool | Include 'silent' attributes in the response. (optional) (default to false)
+    searchableOnly := false // bool | Include only 'searchable' attributes in the response. (optional) (default to false)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
@@ -330,9 +330,9 @@ Other parameters are passed through a pointer to a apiListIdentityAttributesRequ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **includeSystem** | **bool** | Include \&quot;system\&quot; attributes in the response. | [default to false]
- **includeSilent** | **bool** | Include \&quot;silent\&quot; attributes in the response. | [default to false]
- **searchableOnly** | **bool** | Include only \&quot;searchable\&quot; attributes in the response. | [default to false]
+ **includeSystem** | **bool** | Include &#39;system&#39; attributes in the response. | [default to false]
+ **includeSilent** | **bool** | Include &#39;silent&#39; attributes in the response. | [default to false]
+ **searchableOnly** | **bool** | Include only &#39;searchable&#39; attributes in the response. | [default to false]
  **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
 
 ### Return type
@@ -375,7 +375,7 @@ import (
 
 func main() {
     name := "displayName" // string | The attribute's technical name.
-    identityAttribute := *openapiclient.NewIdentityAttribute("uid") // IdentityAttribute | 
+    identityAttribute := *openapiclient.NewIdentityAttribute() // IdentityAttribute | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

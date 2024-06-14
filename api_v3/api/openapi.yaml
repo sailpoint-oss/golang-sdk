@@ -1050,8 +1050,7 @@ paths:
   /access-profiles:
     get:
       description: |-
-        This API returns a list of Access Profiles.
-
+        Use this API to get a list of access profiles.
         A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
       operationId: listAccessProfiles
       parameters:
@@ -1103,26 +1102,14 @@ paths:
         schema:
           default: false
           type: boolean
-      - description: |-
-          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
-
-          Filtering is supported for the following fields and operators:
-
-          **id**: *eq, in*
-
-          **name**: *eq, sw*
-
-          **created**: *gt, lt, ge, le*
-
-          **modified**: *gt, lt, ge, le*
-
-          **owner.id**: *eq, in*
-
-          **requestable**: *eq*
-
-          **source.id**: *eq, in*
-
-          Composite operators supported: *and, or*
+      - description: "Filter results using the standard syntax described in [V3 API\
+          \ Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)\n\
+          \nFiltering is supported for the following fields and operators:\n\n**id**:\
+          \ *eq, in*\n\n**name**: *eq, sw*\n\n**created**: *gt, lt, ge, le*\n\n**modified**:\
+          \ *gt, lt, ge, le*\n\n**owner.id**: *eq, in*\n\n**requestable**: *eq*\n\n\
+          **source.id**: *eq, in*\n\nComposite operators supported: *and, or*\n\n\
+          Filtering is not supported for access profiles and entitlements that have\
+          \ the '+' symbol in their names. "
         example: name eq "SailPoint Support"
         in: query
         name: filters
@@ -1141,7 +1128,7 @@ paths:
           format: comma-separated
           type: string
       - description: |-
-          If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs.
+          If present and not empty, additionally filters access profiles to those which are assigned to the Segment(s) with the specified IDs.
 
           If segmentation is currently unavailable, specifying this parameter results in an error.
         example: "0b5c9f25-83c6-4762-9073-e38f7bb2ae26,2e8d8180-24bc-4d21-91c6-7affdb473b0d"
@@ -1151,8 +1138,8 @@ paths:
         schema:
           format: comma-separated
           type: string
-      - description: "Whether or not the response list should contain unsegmented\
-          \ Access Profiles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented*\
+      - description: "Indicates whether the response list should contain unsegmented\
+          \ access profiles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented*\
           \ as false results in an error."
         example: false
         in: query
@@ -1169,7 +1156,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/AccessProfile'
                 type: array
-          description: List of Access Profiles
+          description: List of access profiles.
         "400":
           content:
             application/json:
@@ -1234,9 +1221,9 @@ paths:
       - Access Profiles
     post:
       description: |-
-        This API creates an Access Profile.
-        A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. In addition, a token with only ROLE_SUBADMIN or SOURCE_SUBADMIN authority must be associated with the Access Profile's Source.
-        The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles, however, any new access profiles as well as any updates to existing descriptions will be limited to 2000 characters.
+        Use this API to create an access profile.
+        A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. In addition, a token with only ROLE_SUBADMIN or SOURCE_SUBADMIN authority must be associated with the access profile's Source.
+        The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles. However, any new access profiles as well as any updates to existing descriptions are limited to 2000 characters.
       operationId: createAccessProfile
       requestBody:
         content:
@@ -1250,7 +1237,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AccessProfile'
-          description: Access Profile created
+          description: Access profile created.
         "400":
           content:
             application/json:
@@ -1310,7 +1297,7 @@ paths:
       security:
       - UserContextAuth:
         - idn:access-profile:manage
-      summary: Create an Access Profile
+      summary: Create Access Profile
       tags:
       - Access Profiles
   /access-profiles/{id}:
@@ -2786,11 +2773,11 @@ paths:
       - Access Request Approvals
   /access-request-approvals/{approvalId}/approve:
     post:
-      description: This endpoint approves an access request approval. Only the owner
-        of the approval and ORG_ADMIN users are allowed to perform this action.
+      description: Use this endpoint to approve an access request approval. Only the
+        owner of the approval and ORG_ADMIN users are allowed to perform this action.
       operationId: approveAccessRequest
       parameters:
-      - description: The id of the approval.
+      - description: Approval ID.
         example: 2c91808b7294bea301729568c68c002e
         in: path
         name: approvalId
@@ -2803,7 +2790,7 @@ paths:
             schema:
               $ref: '#/components/schemas/CommentDto'
         description: Reviewer's comment.
-        required: false
+        required: true
       responses:
         "202":
           content:
@@ -2886,16 +2873,16 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Approves an access request approval.
+      summary: Approve Access Request Approval
       tags:
       - Access Request Approvals
   /access-request-approvals/{approvalId}/reject:
     post:
-      description: This endpoint rejects an access request approval. Only the owner
+      description: Use this API to reject an access request approval. Only the owner
         of the approval and admin users are allowed to perform this action.
       operationId: rejectAccessRequest
       parameters:
-      - description: The id of the approval.
+      - description: Approval ID.
         example: 2c91808b7294bea301729568c68c002e
         in: path
         name: approvalId
@@ -2908,7 +2895,7 @@ paths:
             schema:
               $ref: '#/components/schemas/CommentDto'
         description: Reviewer's comment.
-        required: false
+        required: true
       responses:
         "202":
           content:
@@ -2991,17 +2978,18 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Rejects an access request approval.
+      summary: Reject Access Request Approval
       tags:
       - Access Request Approvals
   /access-request-approvals/{approvalId}/forward:
     post:
-      description: This endpoint forwards an access request approval to a new owner.
+      description: Use this API to forward an access request approval to a new owner.
         Only the owner of the approval and ORG_ADMIN users are allowed to perform
-        this action.
+        this action. Only the owner of the approval and ORG_ADMIN users are allowed
+        to perform this action.
       operationId: forwardAccessRequest
       parameters:
-      - description: The id of the approval.
+      - description: Approval ID.
         example: 2c91808b7294bea301729568c68c002e
         in: path
         name: approvalId
@@ -3097,18 +3085,18 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Forwards an access request approval.
+      summary: Forward Access Request Approval
       tags:
       - Access Request Approvals
   /access-request-approvals/approval-summary:
     get:
-      description: "This endpoint returns the number of pending, approved and rejected\
-        \ access requests approvals. See \"owner-id\" query parameter below for authorization\
-        \ info."
+      description: "Use this API to return the number of pending, approved and rejected\
+        \ access requests approvals. See the \"owner-id\" query parameter for authorization\
+        \ information. info."
       operationId: getAccessRequestApprovalSummary
       parameters:
       - description: |-
-          The id of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.
+          The ID of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.
              * ORG_ADMIN users can call this with any identity ID value.
              * ORG_ADMIN user can also fetch all the approvals in the org, when
           owner-id is not used.
@@ -3120,8 +3108,8 @@ paths:
         required: false
         schema:
           type: string
-      - description: From date is the date and time from which the results will be
-          shown. It should be in a valid ISO-8601 format
+      - description: This is the date and time the results will be shown from. It
+          must be in a valid ISO-8601 format.
         example: from-date=2020-03-19T19:59:11Z
         in: query
         name: from-date
@@ -3194,7 +3182,7 @@ paths:
       security:
       - UserContextAuth:
         - idn:access-request-approvals-summary:read
-      summary: Get the number of access-requests-approvals
+      summary: Get Access Requests Approvals Number
       tags:
       - Access Request Approvals
   /accounts:

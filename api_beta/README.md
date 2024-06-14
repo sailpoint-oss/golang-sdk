@@ -83,7 +83,7 @@ Class | Method | HTTP request | Description
 *AccessModelMetadataAPI* | [**GetAccessModelMetadataAttributeValue**](docs/AccessModelMetadataAPI.md#getaccessmodelmetadataattributevalue) | **Get** /access-model-metadata/attributes/{key}/values/{value} | Get Access Model Metadata Value
 *AccessModelMetadataAPI* | [**ListAccessModelMetadataAttribute**](docs/AccessModelMetadataAPI.md#listaccessmodelmetadataattribute) | **Get** /access-model-metadata/attributes | List Access Model Metadata Attributes
 *AccessModelMetadataAPI* | [**ListAccessModelMetadataAttributeValue**](docs/AccessModelMetadataAPI.md#listaccessmodelmetadataattributevalue) | **Get** /access-model-metadata/attributes/{key}/values | List Access Model Metadata Values
-*AccessProfilesAPI* | [**CreateAccessProfile**](docs/AccessProfilesAPI.md#createaccessprofile) | **Post** /access-profiles | Create an Access Profile
+*AccessProfilesAPI* | [**CreateAccessProfile**](docs/AccessProfilesAPI.md#createaccessprofile) | **Post** /access-profiles | Create Access Profile
 *AccessProfilesAPI* | [**DeleteAccessProfile**](docs/AccessProfilesAPI.md#deleteaccessprofile) | **Delete** /access-profiles/{id} | Delete the specified Access Profile
 *AccessProfilesAPI* | [**DeleteAccessProfilesInBulk**](docs/AccessProfilesAPI.md#deleteaccessprofilesinbulk) | **Post** /access-profiles/bulk-delete | Delete Access Profile(s)
 *AccessProfilesAPI* | [**GetAccessProfile**](docs/AccessProfilesAPI.md#getaccessprofile) | **Get** /access-profiles/{id} | Get an Access Profile
@@ -91,12 +91,12 @@ Class | Method | HTTP request | Description
 *AccessProfilesAPI* | [**ListAccessProfiles**](docs/AccessProfilesAPI.md#listaccessprofiles) | **Get** /access-profiles | List Access Profiles
 *AccessProfilesAPI* | [**PatchAccessProfile**](docs/AccessProfilesAPI.md#patchaccessprofile) | **Patch** /access-profiles/{id} | Patch a specified Access Profile
 *AccessProfilesAPI* | [**UpdateAccessProfilesInBulk**](docs/AccessProfilesAPI.md#updateaccessprofilesinbulk) | **Post** /access-profiles/bulk-update-requestable | Update Access Profile(s) requestable field.
-*AccessRequestApprovalsAPI* | [**ApproveAccessRequest**](docs/AccessRequestApprovalsAPI.md#approveaccessrequest) | **Post** /access-request-approvals/{approvalId}/approve | Approves an access request approval.
-*AccessRequestApprovalsAPI* | [**ForwardAccessRequest**](docs/AccessRequestApprovalsAPI.md#forwardaccessrequest) | **Post** /access-request-approvals/{approvalId}/forward | Forwards an access request approval to a new owner.
-*AccessRequestApprovalsAPI* | [**GetAccessRequestApprovalSummary**](docs/AccessRequestApprovalsAPI.md#getaccessrequestapprovalsummary) | **Get** /access-request-approvals/approval-summary | Get the number of pending, approved and rejected access requests approvals
+*AccessRequestApprovalsAPI* | [**ApproveAccessRequest**](docs/AccessRequestApprovalsAPI.md#approveaccessrequest) | **Post** /access-request-approvals/{approvalId}/approve | Approve Access Request Approval
+*AccessRequestApprovalsAPI* | [**ForwardAccessRequest**](docs/AccessRequestApprovalsAPI.md#forwardaccessrequest) | **Post** /access-request-approvals/{approvalId}/forward | Forward Access Request Approval
+*AccessRequestApprovalsAPI* | [**GetAccessRequestApprovalSummary**](docs/AccessRequestApprovalsAPI.md#getaccessrequestapprovalsummary) | **Get** /access-request-approvals/approval-summary | Get Access Requests Approvals Number
 *AccessRequestApprovalsAPI* | [**ListCompletedApprovals**](docs/AccessRequestApprovalsAPI.md#listcompletedapprovals) | **Get** /access-request-approvals/completed | Completed Access Request Approvals List
 *AccessRequestApprovalsAPI* | [**ListPendingApprovals**](docs/AccessRequestApprovalsAPI.md#listpendingapprovals) | **Get** /access-request-approvals/pending | Pending Access Request Approvals List
-*AccessRequestApprovalsAPI* | [**RejectAccessRequest**](docs/AccessRequestApprovalsAPI.md#rejectaccessrequest) | **Post** /access-request-approvals/{approvalId}/reject | Rejects an access request approval.
+*AccessRequestApprovalsAPI* | [**RejectAccessRequest**](docs/AccessRequestApprovalsAPI.md#rejectaccessrequest) | **Post** /access-request-approvals/{approvalId}/reject | Reject Access Request Approval
 *AccessRequestIdentityMetricsAPI* | [**GetAccessRequestIdentityMetrics**](docs/AccessRequestIdentityMetricsAPI.md#getaccessrequestidentitymetrics) | **Get** /access-request-identity-metrics/{identityId}/requested-objects/{requestedObjectId}/type/{type} | Return access request identity metrics
 *AccessRequestsAPI* | [**CancelAccessRequest**](docs/AccessRequestsAPI.md#cancelaccessrequest) | **Post** /access-requests/cancel | Cancel Access Request
 *AccessRequestsAPI* | [**CloseAccessRequest**](docs/AccessRequestsAPI.md#closeaccessrequest) | **Post** /access-requests/close | Close Access Request
@@ -270,7 +270,7 @@ Class | Method | HTTP request | Description
 *IdentitiesAPI* | [**SynchronizeAttributesForIdentity**](docs/IdentitiesAPI.md#synchronizeattributesforidentity) | **Post** /identities/{identityId}/synchronize-attributes | Attribute synchronization for single identity.
 *IdentityAttributesAPI* | [**CreateIdentityAttribute**](docs/IdentityAttributesAPI.md#createidentityattribute) | **Post** /identity-attributes | Create Identity Attribute
 *IdentityAttributesAPI* | [**DeleteIdentityAttribute**](docs/IdentityAttributesAPI.md#deleteidentityattribute) | **Delete** /identity-attributes/{name} | Delete Identity Attribute
-*IdentityAttributesAPI* | [**DeleteIdentityAttributesInBulk**](docs/IdentityAttributesAPI.md#deleteidentityattributesinbulk) | **Post** /identity-attributes/bulk-delete | Bulk delete Identity Attributes
+*IdentityAttributesAPI* | [**DeleteIdentityAttributesInBulk**](docs/IdentityAttributesAPI.md#deleteidentityattributesinbulk) | **Delete** /identity-attributes/bulk-delete | Bulk delete Identity Attributes
 *IdentityAttributesAPI* | [**GetIdentityAttribute**](docs/IdentityAttributesAPI.md#getidentityattribute) | **Get** /identity-attributes/{name} | Get Identity Attribute
 *IdentityAttributesAPI* | [**ListIdentityAttributes**](docs/IdentityAttributesAPI.md#listidentityattributes) | **Get** /identity-attributes | List Identity Attributes
 *IdentityAttributesAPI* | [**PutIdentityAttribute**](docs/IdentityAttributesAPI.md#putidentityattribute) | **Put** /identity-attributes/{name} | Update Identity Attribute

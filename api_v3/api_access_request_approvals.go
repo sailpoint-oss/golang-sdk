@@ -41,12 +41,12 @@ func (r ApiApproveAccessRequestRequest) Execute() (map[string]interface{}, *http
 }
 
 /*
-ApproveAccessRequest Approves an access request approval.
+ApproveAccessRequest Approve Access Request Approval
 
-This endpoint approves an access request approval. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.
+Use this endpoint to approve an access request approval. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param approvalId The id of the approval.
+ @param approvalId Approval ID.
  @return ApiApproveAccessRequestRequest
 */
 func (a *AccessRequestApprovalsAPIService) ApproveAccessRequest(ctx context.Context, approvalId string) ApiApproveAccessRequestRequest {
@@ -78,6 +78,9 @@ func (a *AccessRequestApprovalsAPIService) ApproveAccessRequestExecute(r ApiAppr
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.commentDto == nil {
+		return localVarReturnValue, nil, reportError("commentDto is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -218,12 +221,12 @@ func (r ApiForwardAccessRequestRequest) Execute() (map[string]interface{}, *http
 }
 
 /*
-ForwardAccessRequest Forwards an access request approval.
+ForwardAccessRequest Forward Access Request Approval
 
-This endpoint forwards an access request approval to a new owner. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.
+Use this API to forward an access request approval to a new owner. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param approvalId The id of the approval.
+ @param approvalId Approval ID.
  @return ApiForwardAccessRequestRequest
 */
 func (a *AccessRequestApprovalsAPIService) ForwardAccessRequest(ctx context.Context, approvalId string) ApiForwardAccessRequestRequest {
@@ -387,13 +390,13 @@ type ApiGetAccessRequestApprovalSummaryRequest struct {
 	fromDate *string
 }
 
-// The id of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value.
+// The ID of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value.
 func (r ApiGetAccessRequestApprovalSummaryRequest) OwnerId(ownerId string) ApiGetAccessRequestApprovalSummaryRequest {
 	r.ownerId = &ownerId
 	return r
 }
 
-// From date is the date and time from which the results will be shown. It should be in a valid ISO-8601 format
+// This is the date and time the results will be shown from. It must be in a valid ISO-8601 format.
 func (r ApiGetAccessRequestApprovalSummaryRequest) FromDate(fromDate string) ApiGetAccessRequestApprovalSummaryRequest {
 	r.fromDate = &fromDate
 	return r
@@ -404,9 +407,9 @@ func (r ApiGetAccessRequestApprovalSummaryRequest) Execute() (*ApprovalSummary, 
 }
 
 /*
-GetAccessRequestApprovalSummary Get the number of access-requests-approvals
+GetAccessRequestApprovalSummary Get Access Requests Approvals Number
 
-This endpoint returns the number of pending, approved and rejected access requests approvals. See "owner-id" query parameter below for authorization info.
+Use this API to return the number of pending, approved and rejected access requests approvals. See the "owner-id" query parameter for authorization information. info.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetAccessRequestApprovalSummaryRequest
@@ -1015,12 +1018,12 @@ func (r ApiRejectAccessRequestRequest) Execute() (map[string]interface{}, *http.
 }
 
 /*
-RejectAccessRequest Rejects an access request approval.
+RejectAccessRequest Reject Access Request Approval
 
-This endpoint rejects an access request approval. Only the owner of the approval and admin users are allowed to perform this action.
+Use this API to reject an access request approval. Only the owner of the approval and admin users are allowed to perform this action.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param approvalId The id of the approval.
+ @param approvalId Approval ID.
  @return ApiRejectAccessRequestRequest
 */
 func (a *AccessRequestApprovalsAPIService) RejectAccessRequest(ctx context.Context, approvalId string) ApiRejectAccessRequestRequest {
@@ -1052,6 +1055,9 @@ func (a *AccessRequestApprovalsAPIService) RejectAccessRequestExecute(r ApiRejec
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.commentDto == nil {
+		return localVarReturnValue, nil, reportError("commentDto is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

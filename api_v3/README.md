@@ -79,19 +79,19 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AccessProfilesAPI* | [**CreateAccessProfile**](docs/AccessProfilesAPI.md#createaccessprofile) | **Post** /access-profiles | Create an Access Profile
+*AccessProfilesAPI* | [**CreateAccessProfile**](docs/AccessProfilesAPI.md#createaccessprofile) | **Post** /access-profiles | Create Access Profile
 *AccessProfilesAPI* | [**DeleteAccessProfile**](docs/AccessProfilesAPI.md#deleteaccessprofile) | **Delete** /access-profiles/{id} | Delete the specified Access Profile
 *AccessProfilesAPI* | [**DeleteAccessProfilesInBulk**](docs/AccessProfilesAPI.md#deleteaccessprofilesinbulk) | **Post** /access-profiles/bulk-delete | Delete Access Profile(s)
 *AccessProfilesAPI* | [**GetAccessProfile**](docs/AccessProfilesAPI.md#getaccessprofile) | **Get** /access-profiles/{id} | Get an Access Profile
 *AccessProfilesAPI* | [**GetAccessProfileEntitlements**](docs/AccessProfilesAPI.md#getaccessprofileentitlements) | **Get** /access-profiles/{id}/entitlements | List Access Profile&#39;s Entitlements
 *AccessProfilesAPI* | [**ListAccessProfiles**](docs/AccessProfilesAPI.md#listaccessprofiles) | **Get** /access-profiles | List Access Profiles
 *AccessProfilesAPI* | [**PatchAccessProfile**](docs/AccessProfilesAPI.md#patchaccessprofile) | **Patch** /access-profiles/{id} | Patch a specified Access Profile
-*AccessRequestApprovalsAPI* | [**ApproveAccessRequest**](docs/AccessRequestApprovalsAPI.md#approveaccessrequest) | **Post** /access-request-approvals/{approvalId}/approve | Approves an access request approval.
-*AccessRequestApprovalsAPI* | [**ForwardAccessRequest**](docs/AccessRequestApprovalsAPI.md#forwardaccessrequest) | **Post** /access-request-approvals/{approvalId}/forward | Forwards an access request approval.
-*AccessRequestApprovalsAPI* | [**GetAccessRequestApprovalSummary**](docs/AccessRequestApprovalsAPI.md#getaccessrequestapprovalsummary) | **Get** /access-request-approvals/approval-summary | Get the number of access-requests-approvals
+*AccessRequestApprovalsAPI* | [**ApproveAccessRequest**](docs/AccessRequestApprovalsAPI.md#approveaccessrequest) | **Post** /access-request-approvals/{approvalId}/approve | Approve Access Request Approval
+*AccessRequestApprovalsAPI* | [**ForwardAccessRequest**](docs/AccessRequestApprovalsAPI.md#forwardaccessrequest) | **Post** /access-request-approvals/{approvalId}/forward | Forward Access Request Approval
+*AccessRequestApprovalsAPI* | [**GetAccessRequestApprovalSummary**](docs/AccessRequestApprovalsAPI.md#getaccessrequestapprovalsummary) | **Get** /access-request-approvals/approval-summary | Get Access Requests Approvals Number
 *AccessRequestApprovalsAPI* | [**ListCompletedApprovals**](docs/AccessRequestApprovalsAPI.md#listcompletedapprovals) | **Get** /access-request-approvals/completed | Completed Access Request Approvals List
 *AccessRequestApprovalsAPI* | [**ListPendingApprovals**](docs/AccessRequestApprovalsAPI.md#listpendingapprovals) | **Get** /access-request-approvals/pending | Pending Access Request Approvals List
-*AccessRequestApprovalsAPI* | [**RejectAccessRequest**](docs/AccessRequestApprovalsAPI.md#rejectaccessrequest) | **Post** /access-request-approvals/{approvalId}/reject | Rejects an access request approval.
+*AccessRequestApprovalsAPI* | [**RejectAccessRequest**](docs/AccessRequestApprovalsAPI.md#rejectaccessrequest) | **Post** /access-request-approvals/{approvalId}/reject | Reject Access Request Approval
 *AccessRequestsAPI* | [**CancelAccessRequest**](docs/AccessRequestsAPI.md#cancelaccessrequest) | **Post** /access-requests/cancel | Cancel Access Request
 *AccessRequestsAPI* | [**CreateAccessRequest**](docs/AccessRequestsAPI.md#createaccessrequest) | **Post** /access-requests | Submit Access Request
 *AccessRequestsAPI* | [**GetAccessRequestConfig**](docs/AccessRequestsAPI.md#getaccessrequestconfig) | **Get** /access-request-config | Get Access Request Configuration
