@@ -12093,6 +12093,7 @@ paths:
       security:
       - UserContextAuth:
         - idn:connector-config:delete
+      summary: Deletes connector by script name
       tags:
       - Connectors
     get:
@@ -12222,6 +12223,7 @@ paths:
       security:
       - UserContextAuth:
         - idn:connector-config:read
+      summary: Gets connector by script name
       tags:
       - Connectors
     patch:
@@ -12334,9 +12336,10 @@ paths:
       security:
       - UserContextAuth:
         - idn:connector-config:update
+      summary: Update connector by script name
       tags:
       - Connectors
-  /connectors/{scriptName}/list:
+  /connectors:
     get:
       description: |-
         Fetches list of connectors that have 'RELEASED' status using filtering and pagination.
@@ -12516,6 +12519,104 @@ paths:
       - UserContextAuth:
         - idn:connector-source-config:read
       summary: Gets connector list
+      tags:
+      - Connectors
+    post:
+      description: |-
+        Create custom connector.
+        A token with ORG_ADMIN authority is required to call this API.
+      operationId: createCustomConnector
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/V3CreateConnectorDto'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/V3ConnectorDto'
+          description: A Connector Dto object
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:connector-config:create
+      summary: Create custom connector
       tags:
       - Connectors
   /connectors/{scriptName}/source-config:
@@ -13416,105 +13517,6 @@ paths:
       security:
       - UserContextAuth:
         - idn:connector-config:update
-      tags:
-      - Connectors
-  /connectors:
-    post:
-      description: |-
-        Create custom connector.
-        A token with ORG_ADMIN authority is required to call this API.
-      operationId: createCustomConnector
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/V3CreateConnectorDto'
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/V3ConnectorDto'
-          description: A Connector Dto object
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: Client Error - Returned if the request body is invalid.
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listAccessProfiles_401_response'
-          description: "Unauthorized - Returned if there is no authorization header,\
-            \ or if the JWT token is expired."
-        "403":
-          content:
-            application/json:
-              examples:
-                "403":
-                  summary: An example of a 403 response object
-                  value:
-                    detailCode: 403 Forbidden
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: The server understood the request but refuses to authorize
-                        it.
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: "Forbidden - Returned if the user you are running as, doesn't\
-            \ have access to this end-point."
-        "404":
-          content:
-            application/json:
-              examples:
-                "404":
-                  summary: An example of a 404 response object
-                  value:
-                    detailCode: 404 Not found
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: The server did not find a current representation for the
-                        target resource.
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: Not Found - returned if the request URL refers to a resource
-            or object that does not exist
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listAccessProfiles_429_response'
-          description: Too Many Requests - Returned in response to too many requests
-            in a given period of time - rate limited. The Retry-After header in the
-            response includes how long to wait before trying again.
-        "500":
-          content:
-            application/json:
-              examples:
-                "500":
-                  summary: An example of a 500 response object
-                  value:
-                    detailCode: 500.0 Internal Fault
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: An internal fault occurred.
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: Internal Server Error - Returned if there is an unexpected
-            error.
-      security:
-      - UserContextAuth:
-        - idn:connector-config:create
-      summary: Create custom connector
       tags:
       - Connectors
   /identities/{identity-id}/set-lifecycle-state:
@@ -47302,6 +47304,7 @@ components:
         className:
           description: The connector class name.
           example: sailpoint.connector.OpenConnectorAdapter
+          nullable: true
           type: string
         features:
           description: The list of features supported by the connector
@@ -47337,43 +47340,6 @@ components:
           example: RELEASED
           type: string
       title: custom connector response object
-      type: object
-    UpdateDetail:
-      example:
-        updatedFiles:
-        - pod/org/connectorFiles/testconnector/test1.jar
-        scriptName: servicenow
-        message: "unsupported xsd version, please ensure latest xsd version http://www.sailpoint.com/xsd/sailpoint_form_2_0.xsd\
-          \ is used for source config"
-        status: ERROR
-      properties:
-        message:
-          description: The detailed message for an update. Typically the relevent
-            error message when status is error.
-          example: "unsupported xsd version, please ensure latest xsd version http://www.sailpoint.com/xsd/sailpoint_form_2_0.xsd\
-            \ is used for source config"
-          type: string
-        scriptName:
-          description: The connector script name
-          example: servicenow
-          type: string
-        updatedFiles:
-          description: The list of updated files supported by the connector
-          example:
-          - pod/org/connectorFiles/testconnector/test1.jar
-          items:
-            type: string
-          nullable: true
-          type: array
-        status:
-          description: The connector update status
-          enum:
-          - ERROR
-          - UPDATED
-          - UNCHANGED
-          - SKIPPED
-          example: ERROR
-          type: string
       type: object
     V3CreateConnectorDto:
       example:
@@ -47416,6 +47382,43 @@ components:
       - className
       - name
       title: custom connector create request
+      type: object
+    UpdateDetail:
+      example:
+        updatedFiles:
+        - pod/org/connectorFiles/testconnector/test1.jar
+        scriptName: servicenow
+        message: "unsupported xsd version, please ensure latest xsd version http://www.sailpoint.com/xsd/sailpoint_form_2_0.xsd\
+          \ is used for source config"
+        status: ERROR
+      properties:
+        message:
+          description: The detailed message for an update. Typically the relevent
+            error message when status is error.
+          example: "unsupported xsd version, please ensure latest xsd version http://www.sailpoint.com/xsd/sailpoint_form_2_0.xsd\
+            \ is used for source config"
+          type: string
+        scriptName:
+          description: The connector script name
+          example: servicenow
+          type: string
+        updatedFiles:
+          description: The list of updated files supported by the connector
+          example:
+          - pod/org/connectorFiles/testconnector/test1.jar
+          items:
+            type: string
+          nullable: true
+          type: array
+        status:
+          description: The connector update status
+          enum:
+          - ERROR
+          - UPDATED
+          - UNCHANGED
+          - SKIPPED
+          example: ERROR
+          type: string
       type: object
     LifecycleState:
       allOf:

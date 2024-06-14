@@ -26,7 +26,7 @@ type V3ConnectorDto struct {
 	// The connector script name
 	ScriptName *string `json:"scriptName,omitempty"`
 	// The connector class name.
-	ClassName *string `json:"className,omitempty"`
+	ClassName NullableString `json:"className,omitempty"`
 	// The list of features supported by the connector
 	Features []string `json:"features,omitempty"`
 	// true if the source is a direct connect source
@@ -157,36 +157,46 @@ func (o *V3ConnectorDto) SetScriptName(v string) {
 	o.ScriptName = &v
 }
 
-// GetClassName returns the ClassName field value if set, zero value otherwise.
+// GetClassName returns the ClassName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *V3ConnectorDto) GetClassName() string {
-	if o == nil || isNil(o.ClassName) {
+	if o == nil || isNil(o.ClassName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ClassName
+	return *o.ClassName.Get()
 }
 
 // GetClassNameOk returns a tuple with the ClassName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *V3ConnectorDto) GetClassNameOk() (*string, bool) {
-	if o == nil || isNil(o.ClassName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ClassName, true
+	return o.ClassName.Get(), o.ClassName.IsSet()
 }
 
 // HasClassName returns a boolean if a field has been set.
 func (o *V3ConnectorDto) HasClassName() bool {
-	if o != nil && !isNil(o.ClassName) {
+	if o != nil && o.ClassName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetClassName gets a reference to the given string and assigns it to the ClassName field.
+// SetClassName gets a reference to the given NullableString and assigns it to the ClassName field.
 func (o *V3ConnectorDto) SetClassName(v string) {
-	o.ClassName = &v
+	o.ClassName.Set(&v)
+}
+// SetClassNameNil sets the value for ClassName to be an explicit nil
+func (o *V3ConnectorDto) SetClassNameNil() {
+	o.ClassName.Set(nil)
+}
+
+// UnsetClassName ensures that no value is present for ClassName, not even an explicit nil
+func (o *V3ConnectorDto) UnsetClassName() {
+	o.ClassName.Unset()
 }
 
 // GetFeatures returns the Features field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -337,8 +347,8 @@ func (o V3ConnectorDto) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.ScriptName) {
 		toSerialize["scriptName"] = o.ScriptName
 	}
-	if !isNil(o.ClassName) {
-		toSerialize["className"] = o.ClassName
+	if o.ClassName.IsSet() {
+		toSerialize["className"] = o.ClassName.Get()
 	}
 	if o.Features != nil {
 		toSerialize["features"] = o.Features

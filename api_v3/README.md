@@ -170,10 +170,10 @@ Class | Method | HTTP request | Description
 *ConfigurationHubAPI* | [**ImportUploadedBackup**](docs/ConfigurationHubAPI.md#importuploadedbackup) | **Post** /configuration-hub/backups/uploads | Uploads a backup file
 *ConfigurationHubAPI* | [**UpdateObjectMappings**](docs/ConfigurationHubAPI.md#updateobjectmappings) | **Post** /configuration-hub/object-mappings/{sourceOrg}/bulk-patch | Bulk updates object mappings
 *ConnectorsAPI* | [**CreateCustomConnector**](docs/ConnectorsAPI.md#createcustomconnector) | **Post** /connectors | Create custom connector
-*ConnectorsAPI* | [**DeleteCustomConnector**](docs/ConnectorsAPI.md#deletecustomconnector) | **Delete** /connectors/{scriptName} | 
-*ConnectorsAPI* | [**GetConnector**](docs/ConnectorsAPI.md#getconnector) | **Get** /connectors/{scriptName} | 
+*ConnectorsAPI* | [**DeleteCustomConnector**](docs/ConnectorsAPI.md#deletecustomconnector) | **Delete** /connectors/{scriptName} | Deletes connector by script name
+*ConnectorsAPI* | [**GetConnector**](docs/ConnectorsAPI.md#getconnector) | **Get** /connectors/{scriptName} | Gets connector by script name
 *ConnectorsAPI* | [**GetConnectorCorrelationConfig**](docs/ConnectorsAPI.md#getconnectorcorrelationconfig) | **Get** /connectors/{scriptName}/correlation-config | 
-*ConnectorsAPI* | [**GetConnectorList**](docs/ConnectorsAPI.md#getconnectorlist) | **Get** /connectors/{scriptName}/list | Gets connector list
+*ConnectorsAPI* | [**GetConnectorList**](docs/ConnectorsAPI.md#getconnectorlist) | **Get** /connectors | Gets connector list
 *ConnectorsAPI* | [**GetConnectorSourceConfig**](docs/ConnectorsAPI.md#getconnectorsourceconfig) | **Get** /connectors/{scriptName}/source-config | 
 *ConnectorsAPI* | [**GetConnectorSourceTemplate**](docs/ConnectorsAPI.md#getconnectorsourcetemplate) | **Get** /connectors/{scriptName}/source-template | 
 *ConnectorsAPI* | [**GetConnectorTranslations**](docs/ConnectorsAPI.md#getconnectortranslations) | **Get** /connectors/{scriptName}/translations/{locale} | 
@@ -181,7 +181,7 @@ Class | Method | HTTP request | Description
 *ConnectorsAPI* | [**PutSourceConfig**](docs/ConnectorsAPI.md#putsourceconfig) | **Put** /connectors/{scriptName}/source-config | 
 *ConnectorsAPI* | [**PutSourceTemplate**](docs/ConnectorsAPI.md#putsourcetemplate) | **Put** /connectors/{scriptName}/source-template | 
 *ConnectorsAPI* | [**PutTranslations**](docs/ConnectorsAPI.md#puttranslations) | **Put** /connectors/{scriptName}/translations/{locale} | 
-*ConnectorsAPI* | [**UpdateConnector**](docs/ConnectorsAPI.md#updateconnector) | **Patch** /connectors/{scriptName} | 
+*ConnectorsAPI* | [**UpdateConnector**](docs/ConnectorsAPI.md#updateconnector) | **Patch** /connectors/{scriptName} | Update connector by script name
 *GlobalTenantSecuritySettingsAPI* | [**CreateAuthOrgNetworkConfig**](docs/GlobalTenantSecuritySettingsAPI.md#createauthorgnetworkconfig) | **Post** /auth-org/network-config | Create security network configuration.
 *GlobalTenantSecuritySettingsAPI* | [**GetAuthOrgNetworkConfig**](docs/GlobalTenantSecuritySettingsAPI.md#getauthorgnetworkconfig) | **Get** /auth-org/network-config | Get security network configuration.
 *GlobalTenantSecuritySettingsAPI* | [**PatchAuthOrgNetworkConfig**](docs/GlobalTenantSecuritySettingsAPI.md#patchauthorgnetworkconfig) | **Patch** /auth-org/network-config | Update security network configuration.

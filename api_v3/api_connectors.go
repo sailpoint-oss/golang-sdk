@@ -211,7 +211,7 @@ func (r ApiDeleteCustomConnectorRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteCustomConnector Method for DeleteCustomConnector
+DeleteCustomConnector Deletes connector by script name
 
 Delete a custom connector that using its script name.
 A token with ORG_ADMIN authority is required to call this API.
@@ -376,7 +376,7 @@ func (r ApiGetConnectorRequest) Execute() (*ConnectorDetail, *http.Response, err
 }
 
 /*
-GetConnector Method for GetConnector
+GetConnector Gets connector by script name
 
 Fetches a connector that using its script name.
 A token with ORG_ADMIN authority is required to call this API.
@@ -781,7 +781,7 @@ func (a *ConnectorsAPIService) GetConnectorListExecute(r ApiGetConnectorListRequ
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/connectors/{scriptName}/list"
+	localVarPath := localBasePath + "/connectors"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2214,7 +2214,7 @@ func (r ApiUpdateConnectorRequest) Execute() (*ConnectorDetail, *http.Response, 
 }
 
 /*
-UpdateConnector Method for UpdateConnector
+UpdateConnector Update connector by script name
 
 Patch a custom connector that using its script name.
 A token with ORG_ADMIN authority is required to call this API. The following fields are patchable: * connectorMetadata * applicationXml * correlationConfigXml * sourceConfigXml

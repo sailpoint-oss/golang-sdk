@@ -5,10 +5,10 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateCustomConnector**](ConnectorsAPI.md#CreateCustomConnector) | **Post** /connectors | Create custom connector
-[**DeleteCustomConnector**](ConnectorsAPI.md#DeleteCustomConnector) | **Delete** /connectors/{scriptName} | 
-[**GetConnector**](ConnectorsAPI.md#GetConnector) | **Get** /connectors/{scriptName} | 
+[**DeleteCustomConnector**](ConnectorsAPI.md#DeleteCustomConnector) | **Delete** /connectors/{scriptName} | Deletes connector by script name
+[**GetConnector**](ConnectorsAPI.md#GetConnector) | **Get** /connectors/{scriptName} | Gets connector by script name
 [**GetConnectorCorrelationConfig**](ConnectorsAPI.md#GetConnectorCorrelationConfig) | **Get** /connectors/{scriptName}/correlation-config | 
-[**GetConnectorList**](ConnectorsAPI.md#GetConnectorList) | **Get** /connectors/{scriptName}/list | Gets connector list
+[**GetConnectorList**](ConnectorsAPI.md#GetConnectorList) | **Get** /connectors | Gets connector list
 [**GetConnectorSourceConfig**](ConnectorsAPI.md#GetConnectorSourceConfig) | **Get** /connectors/{scriptName}/source-config | 
 [**GetConnectorSourceTemplate**](ConnectorsAPI.md#GetConnectorSourceTemplate) | **Get** /connectors/{scriptName}/source-template | 
 [**GetConnectorTranslations**](ConnectorsAPI.md#GetConnectorTranslations) | **Get** /connectors/{scriptName}/translations/{locale} | 
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 [**PutSourceConfig**](ConnectorsAPI.md#PutSourceConfig) | **Put** /connectors/{scriptName}/source-config | 
 [**PutSourceTemplate**](ConnectorsAPI.md#PutSourceTemplate) | **Put** /connectors/{scriptName}/source-template | 
 [**PutTranslations**](ConnectorsAPI.md#PutTranslations) | **Put** /connectors/{scriptName}/translations/{locale} | 
-[**UpdateConnector**](ConnectorsAPI.md#UpdateConnector) | **Patch** /connectors/{scriptName} | 
+[**UpdateConnector**](ConnectorsAPI.md#UpdateConnector) | **Patch** /connectors/{scriptName} | Update connector by script name
 
 
 
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 > DeleteCustomConnector(ctx, scriptName).Execute()
 
-
+Deletes connector by script name
 
 
 
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 > ConnectorDetail GetConnector(ctx, scriptName).Locale(locale).Execute()
 
-
+Gets connector by script name
 
 
 
@@ -876,7 +876,7 @@ Name | Type | Description  | Notes
 
 > ConnectorDetail UpdateConnector(ctx, scriptName).JsonPatchOperation(jsonPatchOperation).Execute()
 
-
+Update connector by script name
 
 
 

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | The connector name | [optional] 
 **Type** | Pointer to **string** | The connector type | [optional] 
 **ScriptName** | Pointer to **string** | The connector script name | [optional] 
-**ClassName** | Pointer to **string** | The connector class name. | [optional] 
+**ClassName** | Pointer to **NullableString** | The connector class name. | [optional] 
 **Features** | Pointer to **[]string** | The list of features supported by the connector | [optional] 
 **DirectConnect** | Pointer to **bool** | true if the source is a direct connect source | [optional] [default to false]
 **ConnectorMetadata** | Pointer to **map[string]interface{}** | A map containing metadata pertinent to the connector | [optional] 
@@ -132,6 +132,16 @@ SetClassName sets ClassName field to given value.
 
 HasClassName returns a boolean if a field has been set.
 
+### SetClassNameNil
+
+`func (o *V3ConnectorDto) SetClassNameNil(b bool)`
+
+ SetClassNameNil sets the value for ClassName to be an explicit nil
+
+### UnsetClassName
+`func (o *V3ConnectorDto) UnsetClassName()`
+
+UnsetClassName ensures that no value is present for ClassName, not even an explicit nil
 ### GetFeatures
 
 `func (o *V3ConnectorDto) GetFeatures() []string`
