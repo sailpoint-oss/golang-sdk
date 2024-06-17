@@ -6,8 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Application** | **string** | Id of the authoritative source to export related accounts e.g. identities | 
 **SourceName** | **string** | Name of the authoritative source for accounts export | 
-**DefaultS3Bucket** | **bool** | Use it to set default s3 bucket where generated report will be saved.  In case this argument is false and &#39;s3Bucket&#39; argument is null or absent there will be default s3Bucket assigned to the report. | 
-**S3Bucket** | Pointer to **string** | If you want to be specific you could use this argument with defaultS3Bucket &#x3D; false. | [optional] 
 **CorrelatedOnly** | **bool** | Boolean FLAG to specify if only correlated identities should be used in report processing | [default to false]
 **AuthoritativeSource** | **string** | Source Id to be checked on errors of identity profiles aggregation | 
 **SelectedFormats** | Pointer to **[]string** | Output report file formats. This are formats for calling get endpoint as a query parameter &#39;fileFormat&#39;.  In case report won&#39;t have this argument there will be [&#39;CSV&#39;, &#39;PDF&#39;] as default. | [optional] 
@@ -21,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewReportDetailsArguments
 
-`func NewReportDetailsArguments(application string, sourceName string, defaultS3Bucket bool, correlatedOnly bool, authoritativeSource string, query Query, ) *ReportDetailsArguments`
+`func NewReportDetailsArguments(application string, sourceName string, correlatedOnly bool, authoritativeSource string, query Query, ) *ReportDetailsArguments`
 
 NewReportDetailsArguments instantiates a new ReportDetailsArguments object
 This constructor will assign default values to properties that have it defined,
@@ -75,51 +73,6 @@ and a boolean to check if the value has been set.
 
 SetSourceName sets SourceName field to given value.
 
-
-### GetDefaultS3Bucket
-
-`func (o *ReportDetailsArguments) GetDefaultS3Bucket() bool`
-
-GetDefaultS3Bucket returns the DefaultS3Bucket field if non-nil, zero value otherwise.
-
-### GetDefaultS3BucketOk
-
-`func (o *ReportDetailsArguments) GetDefaultS3BucketOk() (*bool, bool)`
-
-GetDefaultS3BucketOk returns a tuple with the DefaultS3Bucket field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDefaultS3Bucket
-
-`func (o *ReportDetailsArguments) SetDefaultS3Bucket(v bool)`
-
-SetDefaultS3Bucket sets DefaultS3Bucket field to given value.
-
-
-### GetS3Bucket
-
-`func (o *ReportDetailsArguments) GetS3Bucket() string`
-
-GetS3Bucket returns the S3Bucket field if non-nil, zero value otherwise.
-
-### GetS3BucketOk
-
-`func (o *ReportDetailsArguments) GetS3BucketOk() (*string, bool)`
-
-GetS3BucketOk returns a tuple with the S3Bucket field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetS3Bucket
-
-`func (o *ReportDetailsArguments) SetS3Bucket(v string)`
-
-SetS3Bucket sets S3Bucket field to given value.
-
-### HasS3Bucket
-
-`func (o *ReportDetailsArguments) HasS3Bucket() bool`
-
-HasS3Bucket returns a boolean if a field has been set.
 
 ### GetCorrelatedOnly
 

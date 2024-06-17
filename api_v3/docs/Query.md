@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Query** | Pointer to **string** | The query using the Elasticsearch [Query String Query](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html#query-string) syntax from the Query DSL extended by SailPoint to support Nested queries. | [optional] 
-**Fields** | Pointer to **[]string** | The fields the query will be applied to.  Fields provide you with a simple way to add additional fields to search, without making the query too complicated.  For example, you can use the fields to specify that you want your query of \&quot;a*\&quot; to be applied to \&quot;name\&quot;, \&quot;firstName\&quot;, and the \&quot;source.name\&quot;.  The response will include all results matching the \&quot;a*\&quot; query found in those three fields.  A field&#39;s availability depends on the indices being searched.  For example, if you are searching \&quot;identities\&quot;, you can apply your search to the \&quot;firstName\&quot; field, but you couldn&#39;t use \&quot;firstName\&quot; with a search on \&quot;access profiles\&quot;.  Refer to the response schema for the respective lists of available fields.  | [optional] 
+**Fields** | Pointer to **string** | The fields the query will be applied to.  Fields provide you with a simple way to add additional fields to search, without making the query too complicated.  For example, you can use the fields to specify that you want your query of \&quot;a*\&quot; to be applied to \&quot;name\&quot;, \&quot;firstName\&quot;, and the \&quot;source.name\&quot;.  The response will include all results matching the \&quot;a*\&quot; query found in those three fields.  A field&#39;s availability depends on the indices being searched.  For example, if you are searching \&quot;identities\&quot;, you can apply your search to the \&quot;firstName\&quot; field, but you couldn&#39;t use \&quot;firstName\&quot; with a search on \&quot;access profiles\&quot;.  Refer to the response schema for the respective lists of available fields.  | [optional] 
 **TimeZone** | Pointer to **string** | The time zone to be applied to any range query related to dates. | [optional] 
 **InnerHit** | Pointer to [**InnerHit**](InnerHit.md) |  | [optional] 
 
@@ -55,20 +55,20 @@ HasQuery returns a boolean if a field has been set.
 
 ### GetFields
 
-`func (o *Query) GetFields() []string`
+`func (o *Query) GetFields() string`
 
 GetFields returns the Fields field if non-nil, zero value otherwise.
 
 ### GetFieldsOk
 
-`func (o *Query) GetFieldsOk() (*[]string, bool)`
+`func (o *Query) GetFieldsOk() (*string, bool)`
 
 GetFieldsOk returns a tuple with the Fields field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFields
 
-`func (o *Query) SetFields(v []string)`
+`func (o *Query) SetFields(v string)`
 
 SetFields sets Fields field to given value.
 

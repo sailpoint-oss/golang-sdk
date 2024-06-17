@@ -24,10 +24,6 @@ type AccountsExportReportArguments struct {
 	Application string `json:"application"`
 	// Name of the authoritative source for accounts export
 	SourceName string `json:"sourceName"`
-	// Use it to set default s3 bucket where generated report will be saved.  In case this argument is false and 's3Bucket' argument is null or absent there will be default s3Bucket assigned to the report.
-	DefaultS3Bucket bool `json:"defaultS3Bucket"`
-	// If you want to be specific you could use this argument with defaultS3Bucket = false.
-	S3Bucket *string `json:"s3Bucket,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -37,11 +33,10 @@ type _AccountsExportReportArguments AccountsExportReportArguments
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountsExportReportArguments(application string, sourceName string, defaultS3Bucket bool) *AccountsExportReportArguments {
+func NewAccountsExportReportArguments(application string, sourceName string) *AccountsExportReportArguments {
 	this := AccountsExportReportArguments{}
 	this.Application = application
 	this.SourceName = sourceName
-	this.DefaultS3Bucket = defaultS3Bucket
 	return &this
 }
 
@@ -101,62 +96,6 @@ func (o *AccountsExportReportArguments) SetSourceName(v string) {
 	o.SourceName = v
 }
 
-// GetDefaultS3Bucket returns the DefaultS3Bucket field value
-func (o *AccountsExportReportArguments) GetDefaultS3Bucket() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.DefaultS3Bucket
-}
-
-// GetDefaultS3BucketOk returns a tuple with the DefaultS3Bucket field value
-// and a boolean to check if the value has been set.
-func (o *AccountsExportReportArguments) GetDefaultS3BucketOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.DefaultS3Bucket, true
-}
-
-// SetDefaultS3Bucket sets field value
-func (o *AccountsExportReportArguments) SetDefaultS3Bucket(v bool) {
-	o.DefaultS3Bucket = v
-}
-
-// GetS3Bucket returns the S3Bucket field value if set, zero value otherwise.
-func (o *AccountsExportReportArguments) GetS3Bucket() string {
-	if o == nil || isNil(o.S3Bucket) {
-		var ret string
-		return ret
-	}
-	return *o.S3Bucket
-}
-
-// GetS3BucketOk returns a tuple with the S3Bucket field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccountsExportReportArguments) GetS3BucketOk() (*string, bool) {
-	if o == nil || isNil(o.S3Bucket) {
-		return nil, false
-	}
-	return o.S3Bucket, true
-}
-
-// HasS3Bucket returns a boolean if a field has been set.
-func (o *AccountsExportReportArguments) HasS3Bucket() bool {
-	if o != nil && !isNil(o.S3Bucket) {
-		return true
-	}
-
-	return false
-}
-
-// SetS3Bucket gets a reference to the given string and assigns it to the S3Bucket field.
-func (o *AccountsExportReportArguments) SetS3Bucket(v string) {
-	o.S3Bucket = &v
-}
-
 func (o AccountsExportReportArguments) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -169,10 +108,6 @@ func (o AccountsExportReportArguments) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["application"] = o.Application
 	toSerialize["sourceName"] = o.SourceName
-	toSerialize["defaultS3Bucket"] = o.DefaultS3Bucket
-	if !isNil(o.S3Bucket) {
-		toSerialize["s3Bucket"] = o.S3Bucket
-	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -188,7 +123,6 @@ func (o *AccountsExportReportArguments) UnmarshalJSON(bytes []byte) (err error) 
 	requiredProperties := []string{
 		"application",
 		"sourceName",
-		"defaultS3Bucket",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -216,8 +150,6 @@ func (o *AccountsExportReportArguments) UnmarshalJSON(bytes []byte) (err error) 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "application")
 		delete(additionalProperties, "sourceName")
-		delete(additionalProperties, "defaultS3Bucket")
-		delete(additionalProperties, "s3Bucket")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -40447,7 +40447,6 @@ components:
       value:
         reportType: IDENTITIES_DETAILS
         arguments:
-          defaultS3Bucket: true
           correlatedOnly: true
     identities-details-report-task-result:
       summary: Identities Details Report task result.
@@ -50477,8 +50476,7 @@ components:
         query:
           query: name:a*
           timeZone: America/Chicago
-          fields:
-          - name
+          fields: "[firstName,lastName,email]"
           innerHit:
             query: source.name:\"Active Directory\"
             type: access
@@ -50997,7 +50995,6 @@ components:
         arguments:
           application: 2c9180897e7742b2017e781782f705b9
           sourceName: DataScienceWorkday
-          defaultS3Bucket: true
       properties:
         reportType:
           description: Use this property to define what report should be processed
@@ -55555,8 +55552,7 @@ components:
       example:
         query: name:a*
         timeZone: America/Chicago
-        fields:
-        - name
+        fields: "[firstName,lastName,email]"
         innerHit:
           query: source.name:\"Active Directory\"
           type: access
@@ -55578,11 +55574,8 @@ components:
             \ but you couldn't use \"firstName\" with a search on \"access profiles\"\
             .  Refer to the response schema for the respective lists of available\
             \ fields. "
-          example:
-          - name
-          items:
-            type: string
-          type: array
+          example: "[firstName,lastName,email]"
+          type: string
         timeZone:
           description: The time zone to be applied to any range query related to dates.
           example: America/Chicago
@@ -55805,20 +55798,8 @@ components:
           description: Name of the authoritative source for accounts export
           example: DataScienceSourceName
           type: string
-        defaultS3Bucket:
-          description: Use it to set default s3 bucket where generated report will
-            be saved.  In case this argument is false and 's3Bucket' argument is null
-            or absent there will be default s3Bucket assigned to the report.
-          example: true
-          type: boolean
-        s3Bucket:
-          description: If you want to be specific you could use this argument with
-            defaultS3Bucket = false.
-          example: the-dev-bucket
-          type: string
       required:
       - application
-      - defaultS3Bucket
       - sourceName
       title: ACCOUNTS
       type: object
@@ -55831,20 +55812,8 @@ components:
             be used in report processing
           example: true
           type: boolean
-        defaultS3Bucket:
-          description: Use it to set default s3 bucket where generated report will
-            be saved.  In case this argument is false and 's3Bucket' argument is null
-            or absent there will be default s3Bucket assigned to the report.
-          example: true
-          type: boolean
-        s3Bucket:
-          description: If you want to be specific you could use this argument with
-            defaultS3Bucket = false.
-          example: the-dev-bucket
-          type: string
       required:
       - correlatedOnly
-      - defaultS3Bucket
       title: IDENTITIES_DETAILS
       type: object
     identities-report-arguments:
@@ -55856,19 +55825,6 @@ components:
             be used in report processing
           example: true
           type: boolean
-        defaultS3Bucket:
-          description: Use it to set default s3 bucket where generated report will
-            be saved.  In case this argument is false and 's3Bucket' argument is null
-            or absent there will be default s3Bucket assigned to the report.
-          example: true
-          type: boolean
-        s3Bucket:
-          description: If you want to be specific you could use this argument with
-            defaultS3Bucket = false.
-          example: the-dev-bucket
-          type: string
-      required:
-      - defaultS3Bucket
       title: IDENTITIES
       type: object
     identity-profile-identity-error-report-arguments:
@@ -55878,20 +55834,8 @@ components:
           description: Source Id to be checked on errors of identity profiles aggregation
           example: 1234sourceId5678902
           type: string
-        defaultS3Bucket:
-          description: Use it to set default s3 bucket where generated report will
-            be saved.  In case this argument is false and 's3Bucket' argument is null
-            or absent there will be default s3Bucket assigned to the report.
-          example: true
-          type: boolean
-        s3Bucket:
-          description: If you want to be specific you could use this argument with
-            defaultS3Bucket = false.
-          example: the-dev-bucket
-          type: string
       required:
       - authoritativeSource
-      - defaultS3Bucket
       title: IDENTITY_PROFILE_IDENTITY_ERROR
       type: object
     orphan-uncorrelated-report-arguments:
@@ -55910,19 +55854,6 @@ components:
             - PDF
             type: string
           type: array
-        defaultS3Bucket:
-          description: Use it to set default s3 bucket where generated report will
-            be saved.  In case this argument is false and 's3Bucket' argument is null
-            or absent there will be default s3Bucket assigned to the report.
-          example: true
-          type: boolean
-        s3Bucket:
-          description: If you want to be specific you could use this argument with
-            defaultS3Bucket = false.
-          example: the-dev-bucket
-          type: string
-      required:
-      - defaultS3Bucket
       title: ORPHAN_IDENTITIES & UNCORRELATED_ACCOUNTS
       type: object
     search-export-report-arguments:
@@ -55971,19 +55902,7 @@ components:
           items:
             type: string
           type: array
-        defaultS3Bucket:
-          description: Use it to set default s3 bucket where generated report will
-            be saved.  In case this argument is false and 's3Bucket' argument is null
-            or absent there will be default s3Bucket assigned to the report.
-          example: true
-          type: boolean
-        s3Bucket:
-          description: If you want to be specific you could use this argument with
-            defaultS3Bucket = false.
-          example: the-dev-bucket
-          type: string
       required:
-      - defaultS3Bucket
       - query
       title: SEARCH_EXPORT
       type: object
@@ -59417,7 +59336,6 @@ components:
       example:
         application: 2c9180897e7742b2017e781782f705b9
         sourceName: DataScienceWorkday
-        defaultS3Bucket: true
       oneOf:
       - $ref: '#/components/schemas/accounts-export-report-arguments'
       - $ref: '#/components/schemas/identities-details-report-arguments'

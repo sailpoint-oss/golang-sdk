@@ -22,10 +22,6 @@ var _ MappedNullable = &IdentitiesDetailsReportArguments{}
 type IdentitiesDetailsReportArguments struct {
 	// Boolean FLAG to specify if only correlated identities should be used in report processing
 	CorrelatedOnly bool `json:"correlatedOnly"`
-	// Use it to set default s3 bucket where generated report will be saved.  In case this argument is false and 's3Bucket' argument is null or absent there will be default s3Bucket assigned to the report.
-	DefaultS3Bucket bool `json:"defaultS3Bucket"`
-	// If you want to be specific you could use this argument with defaultS3Bucket = false.
-	S3Bucket *string `json:"s3Bucket,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -35,10 +31,9 @@ type _IdentitiesDetailsReportArguments IdentitiesDetailsReportArguments
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentitiesDetailsReportArguments(correlatedOnly bool, defaultS3Bucket bool) *IdentitiesDetailsReportArguments {
+func NewIdentitiesDetailsReportArguments(correlatedOnly bool) *IdentitiesDetailsReportArguments {
 	this := IdentitiesDetailsReportArguments{}
 	this.CorrelatedOnly = correlatedOnly
-	this.DefaultS3Bucket = defaultS3Bucket
 	return &this
 }
 
@@ -76,62 +71,6 @@ func (o *IdentitiesDetailsReportArguments) SetCorrelatedOnly(v bool) {
 	o.CorrelatedOnly = v
 }
 
-// GetDefaultS3Bucket returns the DefaultS3Bucket field value
-func (o *IdentitiesDetailsReportArguments) GetDefaultS3Bucket() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.DefaultS3Bucket
-}
-
-// GetDefaultS3BucketOk returns a tuple with the DefaultS3Bucket field value
-// and a boolean to check if the value has been set.
-func (o *IdentitiesDetailsReportArguments) GetDefaultS3BucketOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.DefaultS3Bucket, true
-}
-
-// SetDefaultS3Bucket sets field value
-func (o *IdentitiesDetailsReportArguments) SetDefaultS3Bucket(v bool) {
-	o.DefaultS3Bucket = v
-}
-
-// GetS3Bucket returns the S3Bucket field value if set, zero value otherwise.
-func (o *IdentitiesDetailsReportArguments) GetS3Bucket() string {
-	if o == nil || isNil(o.S3Bucket) {
-		var ret string
-		return ret
-	}
-	return *o.S3Bucket
-}
-
-// GetS3BucketOk returns a tuple with the S3Bucket field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *IdentitiesDetailsReportArguments) GetS3BucketOk() (*string, bool) {
-	if o == nil || isNil(o.S3Bucket) {
-		return nil, false
-	}
-	return o.S3Bucket, true
-}
-
-// HasS3Bucket returns a boolean if a field has been set.
-func (o *IdentitiesDetailsReportArguments) HasS3Bucket() bool {
-	if o != nil && !isNil(o.S3Bucket) {
-		return true
-	}
-
-	return false
-}
-
-// SetS3Bucket gets a reference to the given string and assigns it to the S3Bucket field.
-func (o *IdentitiesDetailsReportArguments) SetS3Bucket(v string) {
-	o.S3Bucket = &v
-}
-
 func (o IdentitiesDetailsReportArguments) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -143,10 +82,6 @@ func (o IdentitiesDetailsReportArguments) MarshalJSON() ([]byte, error) {
 func (o IdentitiesDetailsReportArguments) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["correlatedOnly"] = o.CorrelatedOnly
-	toSerialize["defaultS3Bucket"] = o.DefaultS3Bucket
-	if !isNil(o.S3Bucket) {
-		toSerialize["s3Bucket"] = o.S3Bucket
-	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -161,7 +96,6 @@ func (o *IdentitiesDetailsReportArguments) UnmarshalJSON(bytes []byte) (err erro
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"correlatedOnly",
-		"defaultS3Bucket",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -188,8 +122,6 @@ func (o *IdentitiesDetailsReportArguments) UnmarshalJSON(bytes []byte) (err erro
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "correlatedOnly")
-		delete(additionalProperties, "defaultS3Bucket")
-		delete(additionalProperties, "s3Bucket")
 		o.AdditionalProperties = additionalProperties
 	}
 

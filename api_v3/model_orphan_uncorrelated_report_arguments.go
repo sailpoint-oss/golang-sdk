@@ -12,7 +12,6 @@ package api_v3
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the OrphanUncorrelatedReportArguments type satisfies the MappedNullable interface at compile time
@@ -22,10 +21,6 @@ var _ MappedNullable = &OrphanUncorrelatedReportArguments{}
 type OrphanUncorrelatedReportArguments struct {
 	// Output report file formats. This are formats for calling get endpoint as a query parameter 'fileFormat'.  In case report won't have this argument there will be ['CSV', 'PDF'] as default.
 	SelectedFormats []string `json:"selectedFormats,omitempty"`
-	// Use it to set default s3 bucket where generated report will be saved.  In case this argument is false and 's3Bucket' argument is null or absent there will be default s3Bucket assigned to the report.
-	DefaultS3Bucket bool `json:"defaultS3Bucket"`
-	// If you want to be specific you could use this argument with defaultS3Bucket = false.
-	S3Bucket *string `json:"s3Bucket,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -35,9 +30,8 @@ type _OrphanUncorrelatedReportArguments OrphanUncorrelatedReportArguments
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrphanUncorrelatedReportArguments(defaultS3Bucket bool) *OrphanUncorrelatedReportArguments {
+func NewOrphanUncorrelatedReportArguments() *OrphanUncorrelatedReportArguments {
 	this := OrphanUncorrelatedReportArguments{}
-	this.DefaultS3Bucket = defaultS3Bucket
 	return &this
 }
 
@@ -81,62 +75,6 @@ func (o *OrphanUncorrelatedReportArguments) SetSelectedFormats(v []string) {
 	o.SelectedFormats = v
 }
 
-// GetDefaultS3Bucket returns the DefaultS3Bucket field value
-func (o *OrphanUncorrelatedReportArguments) GetDefaultS3Bucket() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.DefaultS3Bucket
-}
-
-// GetDefaultS3BucketOk returns a tuple with the DefaultS3Bucket field value
-// and a boolean to check if the value has been set.
-func (o *OrphanUncorrelatedReportArguments) GetDefaultS3BucketOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.DefaultS3Bucket, true
-}
-
-// SetDefaultS3Bucket sets field value
-func (o *OrphanUncorrelatedReportArguments) SetDefaultS3Bucket(v bool) {
-	o.DefaultS3Bucket = v
-}
-
-// GetS3Bucket returns the S3Bucket field value if set, zero value otherwise.
-func (o *OrphanUncorrelatedReportArguments) GetS3Bucket() string {
-	if o == nil || isNil(o.S3Bucket) {
-		var ret string
-		return ret
-	}
-	return *o.S3Bucket
-}
-
-// GetS3BucketOk returns a tuple with the S3Bucket field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrphanUncorrelatedReportArguments) GetS3BucketOk() (*string, bool) {
-	if o == nil || isNil(o.S3Bucket) {
-		return nil, false
-	}
-	return o.S3Bucket, true
-}
-
-// HasS3Bucket returns a boolean if a field has been set.
-func (o *OrphanUncorrelatedReportArguments) HasS3Bucket() bool {
-	if o != nil && !isNil(o.S3Bucket) {
-		return true
-	}
-
-	return false
-}
-
-// SetS3Bucket gets a reference to the given string and assigns it to the S3Bucket field.
-func (o *OrphanUncorrelatedReportArguments) SetS3Bucket(v string) {
-	o.S3Bucket = &v
-}
-
 func (o OrphanUncorrelatedReportArguments) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -150,10 +88,6 @@ func (o OrphanUncorrelatedReportArguments) ToMap() (map[string]interface{}, erro
 	if !isNil(o.SelectedFormats) {
 		toSerialize["selectedFormats"] = o.SelectedFormats
 	}
-	toSerialize["defaultS3Bucket"] = o.DefaultS3Bucket
-	if !isNil(o.S3Bucket) {
-		toSerialize["s3Bucket"] = o.S3Bucket
-	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -163,27 +97,6 @@ func (o OrphanUncorrelatedReportArguments) ToMap() (map[string]interface{}, erro
 }
 
 func (o *OrphanUncorrelatedReportArguments) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"defaultS3Bucket",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
 	varOrphanUncorrelatedReportArguments := _OrphanUncorrelatedReportArguments{}
 
 	if err = json.Unmarshal(bytes, &varOrphanUncorrelatedReportArguments); err == nil {
@@ -194,8 +107,6 @@ func (o *OrphanUncorrelatedReportArguments) UnmarshalJSON(bytes []byte) (err err
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "selectedFormats")
-		delete(additionalProperties, "defaultS3Bucket")
-		delete(additionalProperties, "s3Bucket")
 		o.AdditionalProperties = additionalProperties
 	}
 
