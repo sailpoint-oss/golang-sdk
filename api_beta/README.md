@@ -479,6 +479,7 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**DeleteNativeChangeDetectionConfig**](docs/SourcesAPI.md#deletenativechangedetectionconfig) | **Delete** /sources/{sourceId}/native-change-detection-config | Delete Native Change Detection Configuration
 *SourcesAPI* | [**DeleteProvisioningPolicy**](docs/SourcesAPI.md#deleteprovisioningpolicy) | **Delete** /sources/{sourceId}/provisioning-policies/{usageType} | Delete Provisioning Policy by UsageType
 *SourcesAPI* | [**DeleteSourceSchema**](docs/SourcesAPI.md#deletesourceschema) | **Delete** /sources/{sourceId}/schemas/{schemaId} | Delete Source Schema by ID
+*SourcesAPI* | [**GetCorrelationConfig**](docs/SourcesAPI.md#getcorrelationconfig) | **Get** /sources/{id}/correlation-config | Get Source Correlation Configuration
 *SourcesAPI* | [**GetNativeChangeDetectionConfig**](docs/SourcesAPI.md#getnativechangedetectionconfig) | **Get** /sources/{sourceId}/native-change-detection-config | Native Change Detection Configuration
 *SourcesAPI* | [**GetProvisioningPolicy**](docs/SourcesAPI.md#getprovisioningpolicy) | **Get** /sources/{sourceId}/provisioning-policies/{usageType} | Get Provisioning Policy by UsageType
 *SourcesAPI* | [**GetSource**](docs/SourcesAPI.md#getsource) | **Get** /sources/{id} | Get Source by ID
@@ -498,6 +499,7 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**ListSources**](docs/SourcesAPI.md#listsources) | **Get** /sources | Lists all sources in IdentityNow.
 *SourcesAPI* | [**PeekResourceObjects**](docs/SourcesAPI.md#peekresourceobjects) | **Post** /sources/{sourceId}/connector/peek-resource-objects | Peek source connector&#39;s resource objects
 *SourcesAPI* | [**PingCluster**](docs/SourcesAPI.md#pingcluster) | **Post** /sources/{sourceId}/connector/ping-cluster | Ping cluster for source connector
+*SourcesAPI* | [**PutCorrelationConfig**](docs/SourcesAPI.md#putcorrelationconfig) | **Put** /sources/{id}/correlation-config | Update Source Correlation Configuration
 *SourcesAPI* | [**PutNativeChangeDetectionConfig**](docs/SourcesAPI.md#putnativechangedetectionconfig) | **Put** /sources/{sourceId}/native-change-detection-config | Update Native Change Detection Configuration
 *SourcesAPI* | [**PutProvisioningPolicy**](docs/SourcesAPI.md#putprovisioningpolicy) | **Put** /sources/{sourceId}/provisioning-policies/{usageType} | Update Provisioning Policy by UsageType
 *SourcesAPI* | [**PutSource**](docs/SourcesAPI.md#putsource) | **Put** /sources/{id} | Update Source (Full)
@@ -815,6 +817,8 @@ Class | Method | HTTP request | Description
  - [ContextAttributeDto](docs/ContextAttributeDto.md)
  - [ContextAttributeDtoValue](docs/ContextAttributeDtoValue.md)
  - [CorrelatedGovernanceEvent](docs/CorrelatedGovernanceEvent.md)
+ - [CorrelationConfig](docs/CorrelationConfig.md)
+ - [CorrelationConfigAttributeAssignmentsInner](docs/CorrelationConfigAttributeAssignmentsInner.md)
  - [CreateDomainDkim405Response](docs/CreateDomainDkim405Response.md)
  - [CreateFormDefinitionFileRequestRequest](docs/CreateFormDefinitionFileRequestRequest.md)
  - [CreateFormDefinitionRequest](docs/CreateFormDefinitionRequest.md)

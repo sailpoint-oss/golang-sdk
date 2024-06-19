@@ -131,6 +131,20 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test SourcesAPIService GetCorrelationConfig", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.API_BETA.SourcesAPI.GetCorrelationConfig(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test SourcesAPIService GetNativeChangeDetectionConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -386,6 +400,20 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 		var sourceId string
 
 		resp, httpRes, err := apiClient.API_BETA.SourcesAPI.PingCluster(context.Background(), sourceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesAPIService PutCorrelationConfig", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.API_BETA.SourcesAPI.PutCorrelationConfig(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

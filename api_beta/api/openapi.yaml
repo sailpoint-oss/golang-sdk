@@ -42566,6 +42566,213 @@ paths:
       summary: Process Uncorrelated Accounts
       tags:
       - Sources
+  /sources/{id}/correlation-config:
+    get:
+      description: |-
+        This API returns the existing correlation configuration for a source specified by the given ID.
+        A token with ORG_ADMIN authority is required to call this API.
+      operationId: getCorrelationConfig
+      parameters:
+      - description: The source id
+        example: 2c9180835d191a86015d28455b4a2329
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CorrelationConfig'
+          description: Correlation configuration for a source
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:sources:read
+      summary: Get Source Correlation Configuration
+      tags:
+      - Sources
+    put:
+      description: "Replaces the correlation configuration for the source specified\
+        \ by the given ID with the configuration provided in the request body.\n \
+        \   \nA token with ORG_ADMIN authority is required to call this API."
+      operationId: putCorrelationConfig
+      parameters:
+      - description: The source id
+        example: 2c9180835d191a86015d28455b4a2329
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CorrelationConfig'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CorrelationConfig'
+          description: Updated correlation configuration for a source
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:sources:update
+      summary: Update Source Correlation Configuration
+      tags:
+      - Sources
   /task-status/{id}:
     get:
       description: Get a TaskStatus for a task by task ID.
@@ -68996,6 +69203,41 @@ components:
         task:
           $ref: '#/components/schemas/LoadUncorrelatedAccountsTask_task'
       type: object
+    CorrelationConfig:
+      description: Source configuration information that is used by correlation process.
+      example:
+        attributeAssignments:
+        - filterString: first_name == "John"
+          ignoreCase: false
+          complex: false
+          property: first_name
+          value: firstName
+          operation: EQ
+          matchMode: ANYWHERE
+        - filterString: first_name == "John"
+          ignoreCase: false
+          complex: false
+          property: first_name
+          value: firstName
+          operation: EQ
+          matchMode: ANYWHERE
+        name: "Source [source] Account Correlation"
+        id: 2c9180835d191a86015d28455b4a2329
+      properties:
+        id:
+          description: The ID of the correlation configuration.
+          example: 2c9180835d191a86015d28455b4a2329
+          type: string
+        name:
+          description: The name of the correlation configuration.
+          example: "Source [source] Account Correlation"
+          type: string
+        attributeAssignments:
+          description: The list of attribute assignments of the correlation configuration.
+          items:
+            $ref: '#/components/schemas/CorrelationConfig_attributeAssignments_inner'
+          type: array
+      type: object
     TaskStatus:
       description: Details and current status of a specific task
       example:
@@ -82691,6 +82933,54 @@ components:
           - displayLabel: TASK_OUT_ACCOUNT_CORRELATION_GROUPS_CREATED
             attributeName: groupsCreated
           type: object
+      type: object
+    CorrelationConfig_attributeAssignments_inner:
+      description: The attribute assignment of the correlation configuration.
+      example:
+        filterString: first_name == "John"
+        ignoreCase: false
+        complex: false
+        property: first_name
+        value: firstName
+        operation: EQ
+        matchMode: ANYWHERE
+      properties:
+        property:
+          description: The property of the attribute assignment.
+          example: first_name
+          type: string
+        value:
+          description: The value of the attribute assignment.
+          example: firstName
+          type: string
+        operation:
+          description: The operation of the attribute assignment.
+          enum:
+          - EQ
+          example: EQ
+          type: string
+        complex:
+          default: false
+          description: Whether or not the it's a complex attribute assignment.
+          example: false
+          type: boolean
+        ignoreCase:
+          default: false
+          description: Whether or not the attribute assignment should ignore case.
+          example: false
+          type: boolean
+        matchMode:
+          description: The match mode of the attribute assignment.
+          enum:
+          - ANYWHERE
+          - START
+          - END
+          example: ANYWHERE
+          type: string
+        filterString:
+          description: The filter string of the attribute assignment.
+          example: first_name == "John"
+          type: string
       type: object
     TaggedObject_objectRef:
       example:

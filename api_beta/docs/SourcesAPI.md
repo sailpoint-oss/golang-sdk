@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**DeleteNativeChangeDetectionConfig**](SourcesAPI.md#DeleteNativeChangeDetectionConfig) | **Delete** /sources/{sourceId}/native-change-detection-config | Delete Native Change Detection Configuration
 [**DeleteProvisioningPolicy**](SourcesAPI.md#DeleteProvisioningPolicy) | **Delete** /sources/{sourceId}/provisioning-policies/{usageType} | Delete Provisioning Policy by UsageType
 [**DeleteSourceSchema**](SourcesAPI.md#DeleteSourceSchema) | **Delete** /sources/{sourceId}/schemas/{schemaId} | Delete Source Schema by ID
+[**GetCorrelationConfig**](SourcesAPI.md#GetCorrelationConfig) | **Get** /sources/{id}/correlation-config | Get Source Correlation Configuration
 [**GetNativeChangeDetectionConfig**](SourcesAPI.md#GetNativeChangeDetectionConfig) | **Get** /sources/{sourceId}/native-change-detection-config | Native Change Detection Configuration
 [**GetProvisioningPolicy**](SourcesAPI.md#GetProvisioningPolicy) | **Get** /sources/{sourceId}/provisioning-policies/{usageType} | Get Provisioning Policy by UsageType
 [**GetSource**](SourcesAPI.md#GetSource) | **Get** /sources/{id} | Get Source by ID
@@ -31,6 +32,7 @@ Method | HTTP request | Description
 [**ListSources**](SourcesAPI.md#ListSources) | **Get** /sources | Lists all sources in IdentityNow.
 [**PeekResourceObjects**](SourcesAPI.md#PeekResourceObjects) | **Post** /sources/{sourceId}/connector/peek-resource-objects | Peek source connector&#39;s resource objects
 [**PingCluster**](SourcesAPI.md#PingCluster) | **Post** /sources/{sourceId}/connector/ping-cluster | Ping cluster for source connector
+[**PutCorrelationConfig**](SourcesAPI.md#PutCorrelationConfig) | **Put** /sources/{id}/correlation-config | Update Source Correlation Configuration
 [**PutNativeChangeDetectionConfig**](SourcesAPI.md#PutNativeChangeDetectionConfig) | **Put** /sources/{sourceId}/native-change-detection-config | Update Native Change Detection Configuration
 [**PutProvisioningPolicy**](SourcesAPI.md#PutProvisioningPolicy) | **Put** /sources/{sourceId}/provisioning-policies/{usageType} | Update Provisioning Policy by UsageType
 [**PutSource**](SourcesAPI.md#PutSource) | **Put** /sources/{id} | Update Source (Full)
@@ -592,6 +594,76 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetCorrelationConfig
+
+> CorrelationConfig GetCorrelationConfig(ctx, id).Execute()
+
+Get Source Correlation Configuration
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    id := "2c9180835d191a86015d28455b4a2329" // string | The source id
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesAPI.GetCorrelationConfig(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetCorrelationConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetCorrelationConfig`: CorrelationConfig
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetCorrelationConfig`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The source id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetCorrelationConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**CorrelationConfig**](CorrelationConfig.md)
 
 ### Authorization
 
@@ -1947,6 +2019,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PutCorrelationConfig
+
+> CorrelationConfig PutCorrelationConfig(ctx, id).CorrelationConfig(correlationConfig).Execute()
+
+Update Source Correlation Configuration
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    id := "2c9180835d191a86015d28455b4a2329" // string | The source id
+    correlationConfig := *openapiclient.NewCorrelationConfig() // CorrelationConfig | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesAPI.PutCorrelationConfig(context.Background(), id).CorrelationConfig(correlationConfig).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.PutCorrelationConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PutCorrelationConfig`: CorrelationConfig
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.PutCorrelationConfig`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The source id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPutCorrelationConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **correlationConfig** | [**CorrelationConfig**](CorrelationConfig.md) |  | 
+
+### Return type
+
+[**CorrelationConfig**](CorrelationConfig.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

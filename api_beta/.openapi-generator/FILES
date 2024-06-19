@@ -312,6 +312,8 @@ docs/ConnectorsAPI.md
 docs/ContextAttributeDto.md
 docs/ContextAttributeDtoValue.md
 docs/CorrelatedGovernanceEvent.md
+docs/CorrelationConfig.md
+docs/CorrelationConfigAttributeAssignmentsInner.md
 docs/CreateDomainDkim405Response.md
 docs/CreateFormDefinitionFileRequestRequest.md
 docs/CreateFormDefinitionRequest.md
@@ -1184,6 +1186,8 @@ model_connector_rule_validation_response_details_inner.go
 model_context_attribute_dto.go
 model_context_attribute_dto_value.go
 model_correlated_governance_event.go
+model_correlation_config.go
+model_correlation_config_attribute_assignments_inner.go
 model_create_domain_dkim_405_response.go
 model_create_form_definition_file_request_request.go
 model_create_form_definition_request.go
