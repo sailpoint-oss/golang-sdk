@@ -51,6 +51,22 @@ const fixFiles = function (myArray) {
       rawDataArra = fileOut.slice();
       fileOut = [];
     }
+
+    if (rawdata.includes("ArrayOfMapmapOfStringinterface{}") || rawdata.includes("MapmapOfStringinterface{}") || file.includes("model_workflow_library_action_example_output.go")) {
+      for (const line of rawDataArra) {
+        if (line.includes("ArrayOfMapmapOfStringinterface{}")) {
+          fileOut.push(line.replaceAll("ArrayOfMapmapOfStringinterface{}", "ArrayOfMapmapOfStringinterface"));
+          madeChange = true;
+        } else if (line.includes("MapmapOfStringinterface{}")) {
+          fileOut.push(line.replaceAll("MapmapOfStringinterface{}", "MapmapOfStringinterface"));
+          madeChange = true;
+        } else {
+          fileOut.push(line);
+        }
+      }
+      rawDataArra = fileOut.slice();
+      fileOut = [];
+    }
   
   
   
