@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**DeleteAccessModelMetadataFromEntitlement**](EntitlementsAPI.md#DeleteAccessModelMetadataFromEntitlement) | **Delete** /entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Remove metadata from an entitlement.
 [**GetEntitlement**](EntitlementsAPI.md#GetEntitlement) | **Get** /entitlements/{id} | Get an entitlement
 [**GetEntitlementRequestConfig**](EntitlementsAPI.md#GetEntitlementRequestConfig) | **Get** /entitlements/{id}/entitlement-request-config | Get Entitlement Request Config
-[**ImportEntitlements**](EntitlementsAPI.md#ImportEntitlements) | **Post** /entitlements/aggregate/sources/{id} | Aggregate Entitlements
+[**ImportEntitlementsBySource**](EntitlementsAPI.md#ImportEntitlementsBySource) | **Post** /entitlements/aggregate/sources/{id} | Aggregate Entitlements
 [**ListEntitlementChildren**](EntitlementsAPI.md#ListEntitlementChildren) | **Get** /entitlements/{id}/children | List of entitlements children
 [**ListEntitlementParents**](EntitlementsAPI.md#ListEntitlementParents) | **Get** /entitlements/{id}/parents | List of entitlements parents
 [**ListEntitlements**](EntitlementsAPI.md#ListEntitlements) | **Get** /entitlements | Gets a list of entitlements.
@@ -309,9 +309,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ImportEntitlements
+## ImportEntitlementsBySource
 
-> LoadEntitlementTask ImportEntitlements(ctx, id).CsvFile(csvFile).Execute()
+> LoadEntitlementTask ImportEntitlementsBySource(ctx, id).CsvFile(csvFile).Execute()
 
 Aggregate Entitlements
 
@@ -335,13 +335,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EntitlementsAPI.ImportEntitlements(context.Background(), id).CsvFile(csvFile).Execute()
+    resp, r, err := apiClient.EntitlementsAPI.ImportEntitlementsBySource(context.Background(), id).CsvFile(csvFile).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.ImportEntitlements``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.ImportEntitlementsBySource``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ImportEntitlements`: LoadEntitlementTask
-    fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.ImportEntitlements`: %v\n", resp)
+    // response from `ImportEntitlementsBySource`: LoadEntitlementTask
+    fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.ImportEntitlementsBySource`: %v\n", resp)
 }
 ```
 
@@ -355,7 +355,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiImportEntitlementsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiImportEntitlementsBySourceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

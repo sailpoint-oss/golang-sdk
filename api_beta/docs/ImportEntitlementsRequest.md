@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CsvFile** | Pointer to ***os.File** | The CSV file containing the source entitlements to aggregate. | [optional] 
+**File** | Pointer to ***os.File** | The CSV file containing the source entitlements to aggregate. | [optional] 
 
 ## Methods
 
@@ -25,30 +25,30 @@ NewImportEntitlementsRequestWithDefaults instantiates a new ImportEntitlementsRe
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetCsvFile
+### GetFile
 
-`func (o *ImportEntitlementsRequest) GetCsvFile() *os.File`
+`func (o *ImportEntitlementsRequest) GetFile() *os.File`
 
-GetCsvFile returns the CsvFile field if non-nil, zero value otherwise.
+GetFile returns the File field if non-nil, zero value otherwise.
 
-### GetCsvFileOk
+### GetFileOk
 
-`func (o *ImportEntitlementsRequest) GetCsvFileOk() (**os.File, bool)`
+`func (o *ImportEntitlementsRequest) GetFileOk() (**os.File, bool)`
 
-GetCsvFileOk returns a tuple with the CsvFile field if it's non-nil, zero value otherwise
+GetFileOk returns a tuple with the File field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCsvFile
+### SetFile
 
-`func (o *ImportEntitlementsRequest) SetCsvFile(v *os.File)`
+`func (o *ImportEntitlementsRequest) SetFile(v *os.File)`
 
-SetCsvFile sets CsvFile field to given value.
+SetFile sets File field to given value.
 
-### HasCsvFile
+### HasFile
 
-`func (o *ImportEntitlementsRequest) HasCsvFile() bool`
+`func (o *ImportEntitlementsRequest) HasFile() bool`
 
-HasCsvFile returns a boolean if a field has been set.
+HasFile returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

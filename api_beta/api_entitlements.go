@@ -679,7 +679,7 @@ func (a *EntitlementsAPIService) GetEntitlementRequestConfigExecute(r ApiGetEnti
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiImportEntitlementsRequest struct {
+type ApiImportEntitlementsBySourceRequest struct {
 	ctx context.Context
 	ApiService *EntitlementsAPIService
 	id string
@@ -687,19 +687,19 @@ type ApiImportEntitlementsRequest struct {
 }
 
 // The CSV file containing the source entitlements to aggregate.
-func (r ApiImportEntitlementsRequest) CsvFile(csvFile *os.File) ApiImportEntitlementsRequest {
+func (r ApiImportEntitlementsBySourceRequest) CsvFile(csvFile *os.File) ApiImportEntitlementsBySourceRequest {
 	r.csvFile = csvFile
 	return r
 }
 
-func (r ApiImportEntitlementsRequest) Execute() (*LoadEntitlementTask, *http.Response, error) {
-	return r.ApiService.ImportEntitlementsExecute(r)
+func (r ApiImportEntitlementsBySourceRequest) Execute() (*LoadEntitlementTask, *http.Response, error) {
+	return r.ApiService.ImportEntitlementsBySourceExecute(r)
 }
 
 /*
-ImportEntitlements Aggregate Entitlements
+ImportEntitlementsBySource Aggregate Entitlements
 
-Starts an entitlement aggregation on the specified source. 
+Starts an entitlement aggregation on the specified source. Though this endpoint has been deprecated, you can find its Beta equivalent [here](https://developer.sailpoint.com/docs/api/beta/import-entitlements).
 
 If the target source is a direct connection, then the request body must be empty. You will also need to make sure the Content-Type header is not set. If you set the Content-Type header without specifying a body, then you will receive a 500 error.
 
@@ -707,10 +707,12 @@ If the target source is a delimited file source, then the CSV file needs to be i
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Source Id
- @return ApiImportEntitlementsRequest
+ @return ApiImportEntitlementsBySourceRequest
+
+Deprecated
 */
-func (a *EntitlementsAPIService) ImportEntitlements(ctx context.Context, id string) ApiImportEntitlementsRequest {
-	return ApiImportEntitlementsRequest{
+func (a *EntitlementsAPIService) ImportEntitlementsBySource(ctx context.Context, id string) ApiImportEntitlementsBySourceRequest {
+	return ApiImportEntitlementsBySourceRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -719,7 +721,8 @@ func (a *EntitlementsAPIService) ImportEntitlements(ctx context.Context, id stri
 
 // Execute executes the request
 //  @return LoadEntitlementTask
-func (a *EntitlementsAPIService) ImportEntitlementsExecute(r ApiImportEntitlementsRequest) (*LoadEntitlementTask, *http.Response, error) {
+// Deprecated
+func (a *EntitlementsAPIService) ImportEntitlementsBySourceExecute(r ApiImportEntitlementsBySourceRequest) (*LoadEntitlementTask, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -727,7 +730,7 @@ func (a *EntitlementsAPIService) ImportEntitlementsExecute(r ApiImportEntitlemen
 		localVarReturnValue  *LoadEntitlementTask
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.ImportEntitlements")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.ImportEntitlementsBySource")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

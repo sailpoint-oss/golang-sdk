@@ -190,7 +190,7 @@ Class | Method | HTTP request | Description
 *EntitlementsAPI* | [**DeleteAccessModelMetadataFromEntitlement**](docs/EntitlementsAPI.md#deleteaccessmodelmetadatafromentitlement) | **Delete** /entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Remove metadata from an entitlement.
 *EntitlementsAPI* | [**GetEntitlement**](docs/EntitlementsAPI.md#getentitlement) | **Get** /entitlements/{id} | Get an entitlement
 *EntitlementsAPI* | [**GetEntitlementRequestConfig**](docs/EntitlementsAPI.md#getentitlementrequestconfig) | **Get** /entitlements/{id}/entitlement-request-config | Get Entitlement Request Config
-*EntitlementsAPI* | [**ImportEntitlements**](docs/EntitlementsAPI.md#importentitlements) | **Post** /entitlements/aggregate/sources/{id} | Aggregate Entitlements
+*EntitlementsAPI* | [**ImportEntitlementsBySource**](docs/EntitlementsAPI.md#importentitlementsbysource) | **Post** /entitlements/aggregate/sources/{id} | Aggregate Entitlements
 *EntitlementsAPI* | [**ListEntitlementChildren**](docs/EntitlementsAPI.md#listentitlementchildren) | **Get** /entitlements/{id}/children | List of entitlements children
 *EntitlementsAPI* | [**ListEntitlementParents**](docs/EntitlementsAPI.md#listentitlementparents) | **Get** /entitlements/{id}/parents | List of entitlements parents
 *EntitlementsAPI* | [**ListEntitlements**](docs/EntitlementsAPI.md#listentitlements) | **Get** /entitlements | Gets a list of entitlements.
@@ -491,6 +491,7 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**GetSourceSchema**](docs/SourcesAPI.md#getsourceschema) | **Get** /sources/{sourceId}/schemas/{schemaId} | Get Source Schema by ID
 *SourcesAPI* | [**GetSourceSchemas**](docs/SourcesAPI.md#getsourceschemas) | **Get** /sources/{sourceId}/schemas | List Schemas on Source
 *SourcesAPI* | [**ImportAccounts**](docs/SourcesAPI.md#importaccounts) | **Post** /sources/{id}/load-accounts | Account Aggregation
+*SourcesAPI* | [**ImportEntitlements**](docs/SourcesAPI.md#importentitlements) | **Post** /sources/{id}/load-entitlements | Entitlement Aggregation
 *SourcesAPI* | [**ImportSourceAccountsSchema**](docs/SourcesAPI.md#importsourceaccountsschema) | **Post** /sources/{id}/schemas/accounts | Uploads source accounts schema template
 *SourcesAPI* | [**ImportSourceConnectorFile**](docs/SourcesAPI.md#importsourceconnectorfile) | **Post** /sources/{sourceId}/upload-connector-file | Upload connector file to source
 *SourcesAPI* | [**ImportSourceEntitlementsSchema**](docs/SourcesAPI.md#importsourceentitlementsschema) | **Post** /sources/{id}/schemas/entitlements | Uploads source entitlements schema template
@@ -967,6 +968,7 @@ Class | Method | HTTP request | Description
  - [IdentityWithNewAccess](docs/IdentityWithNewAccess.md)
  - [IdentityWithNewAccessAccessRefsInner](docs/IdentityWithNewAccessAccessRefsInner.md)
  - [ImportAccountsRequest](docs/ImportAccountsRequest.md)
+ - [ImportEntitlementsBySourceRequest](docs/ImportEntitlementsBySourceRequest.md)
  - [ImportEntitlementsRequest](docs/ImportEntitlementsRequest.md)
  - [ImportFormDefinitions202Response](docs/ImportFormDefinitions202Response.md)
  - [ImportFormDefinitions202ResponseErrorsInner](docs/ImportFormDefinitions202ResponseErrorsInner.md)
