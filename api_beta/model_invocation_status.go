@@ -25,6 +25,8 @@ type InvocationStatus struct {
 	Id string `json:"id"`
 	// Trigger ID
 	TriggerId string `json:"triggerId"`
+	// Subscription name
+	SubscriptionName string `json:"subscriptionName"`
 	// Subscription ID
 	SubscriptionId string `json:"subscriptionId"`
 	Type InvocationStatusType `json:"type"`
@@ -43,10 +45,11 @@ type _InvocationStatus InvocationStatus
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInvocationStatus(id string, triggerId string, subscriptionId string, type_ InvocationStatusType, created time.Time, startInvocationInput StartInvocationInput) *InvocationStatus {
+func NewInvocationStatus(id string, triggerId string, subscriptionName string, subscriptionId string, type_ InvocationStatusType, created time.Time, startInvocationInput StartInvocationInput) *InvocationStatus {
 	this := InvocationStatus{}
 	this.Id = id
 	this.TriggerId = triggerId
+	this.SubscriptionName = subscriptionName
 	this.SubscriptionId = subscriptionId
 	this.Type = type_
 	this.Created = created
@@ -108,6 +111,30 @@ func (o *InvocationStatus) GetTriggerIdOk() (*string, bool) {
 // SetTriggerId sets field value
 func (o *InvocationStatus) SetTriggerId(v string) {
 	o.TriggerId = v
+}
+
+// GetSubscriptionName returns the SubscriptionName field value
+func (o *InvocationStatus) GetSubscriptionName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.SubscriptionName
+}
+
+// GetSubscriptionNameOk returns a tuple with the SubscriptionName field value
+// and a boolean to check if the value has been set.
+func (o *InvocationStatus) GetSubscriptionNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SubscriptionName, true
+}
+
+// SetSubscriptionName sets field value
+func (o *InvocationStatus) SetSubscriptionName(v string) {
+	o.SubscriptionName = v
 }
 
 // GetSubscriptionId returns the SubscriptionId field value
@@ -282,6 +309,7 @@ func (o InvocationStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["triggerId"] = o.TriggerId
+	toSerialize["subscriptionName"] = o.SubscriptionName
 	toSerialize["subscriptionId"] = o.SubscriptionId
 	toSerialize["type"] = o.Type
 	toSerialize["created"] = o.Created
@@ -307,6 +335,7 @@ func (o *InvocationStatus) UnmarshalJSON(bytes []byte) (err error) {
 	requiredProperties := []string{
 		"id",
 		"triggerId",
+		"subscriptionName",
 		"subscriptionId",
 		"type",
 		"created",
@@ -338,6 +367,7 @@ func (o *InvocationStatus) UnmarshalJSON(bytes []byte) (err error) {
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "triggerId")
+		delete(additionalProperties, "subscriptionName")
 		delete(additionalProperties, "subscriptionId")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "created")

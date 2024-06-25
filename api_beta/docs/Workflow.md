@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **Enabled** | Pointer to **bool** | Enable or disable the workflow.  Workflows cannot be created in an enabled state. | [optional] [default to false]
 **Trigger** | Pointer to [**WorkflowTrigger**](WorkflowTrigger.md) |  | [optional] 
 **Id** | Pointer to **string** | Workflow ID. This is a UUID generated upon creation. | [optional] 
+**Modified** | Pointer to **time.Time** | The date and time the workflow was modified. | [optional] 
+**ModifiedBy** | Pointer to [**WorkflowModifiedBy**](WorkflowModifiedBy.md) |  | [optional] 
 **ExecutionCount** | Pointer to **int32** | The number of times this workflow has been executed. | [optional] 
 **FailureCount** | Pointer to **int32** | The number of times this workflow has failed during execution. | [optional] 
 **Created** | Pointer to **time.Time** | The date and time the workflow was created. | [optional] 
@@ -209,6 +211,56 @@ SetId sets Id field to given value.
 `func (o *Workflow) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetModified
+
+`func (o *Workflow) GetModified() time.Time`
+
+GetModified returns the Modified field if non-nil, zero value otherwise.
+
+### GetModifiedOk
+
+`func (o *Workflow) GetModifiedOk() (*time.Time, bool)`
+
+GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetModified
+
+`func (o *Workflow) SetModified(v time.Time)`
+
+SetModified sets Modified field to given value.
+
+### HasModified
+
+`func (o *Workflow) HasModified() bool`
+
+HasModified returns a boolean if a field has been set.
+
+### GetModifiedBy
+
+`func (o *Workflow) GetModifiedBy() WorkflowModifiedBy`
+
+GetModifiedBy returns the ModifiedBy field if non-nil, zero value otherwise.
+
+### GetModifiedByOk
+
+`func (o *Workflow) GetModifiedByOk() (*WorkflowModifiedBy, bool)`
+
+GetModifiedByOk returns a tuple with the ModifiedBy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetModifiedBy
+
+`func (o *Workflow) SetModifiedBy(v WorkflowModifiedBy)`
+
+SetModifiedBy sets ModifiedBy field to given value.
+
+### HasModifiedBy
+
+`func (o *Workflow) HasModifiedBy() bool`
+
+HasModifiedBy returns a boolean if a field has been set.
 
 ### GetExecutionCount
 

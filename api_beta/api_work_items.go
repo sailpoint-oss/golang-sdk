@@ -922,7 +922,7 @@ func (r ApiGetCountWorkItemsRequest) OwnerId(ownerId string) ApiGetCountWorkItem
 	return r
 }
 
-func (r ApiGetCountWorkItemsRequest) Execute() ([]WorkItemsCount, *http.Response, error) {
+func (r ApiGetCountWorkItemsRequest) Execute() (*WorkItemsCount, *http.Response, error) {
 	return r.ApiService.GetCountWorkItemsExecute(r)
 }
 
@@ -942,13 +942,13 @@ func (a *WorkItemsAPIService) GetCountWorkItems(ctx context.Context) ApiGetCount
 }
 
 // Execute executes the request
-//  @return []WorkItemsCount
-func (a *WorkItemsAPIService) GetCountWorkItemsExecute(r ApiGetCountWorkItemsRequest) ([]WorkItemsCount, *http.Response, error) {
+//  @return WorkItemsCount
+func (a *WorkItemsAPIService) GetCountWorkItemsExecute(r ApiGetCountWorkItemsRequest) (*WorkItemsCount, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []WorkItemsCount
+		localVarReturnValue  *WorkItemsCount
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsAPIService.GetCountWorkItems")
@@ -1208,7 +1208,7 @@ func (r ApiGetWorkItemsSummaryRequest) OwnerId(ownerId string) ApiGetWorkItemsSu
 	return r
 }
 
-func (r ApiGetWorkItemsSummaryRequest) Execute() ([]WorkItemsSummary, *http.Response, error) {
+func (r ApiGetWorkItemsSummaryRequest) Execute() (*WorkItemsSummary, *http.Response, error) {
 	return r.ApiService.GetWorkItemsSummaryExecute(r)
 }
 
@@ -1228,13 +1228,13 @@ func (a *WorkItemsAPIService) GetWorkItemsSummary(ctx context.Context) ApiGetWor
 }
 
 // Execute executes the request
-//  @return []WorkItemsSummary
-func (a *WorkItemsAPIService) GetWorkItemsSummaryExecute(r ApiGetWorkItemsSummaryRequest) ([]WorkItemsSummary, *http.Response, error) {
+//  @return WorkItemsSummary
+func (a *WorkItemsAPIService) GetWorkItemsSummaryExecute(r ApiGetWorkItemsSummaryRequest) (*WorkItemsSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []WorkItemsSummary
+		localVarReturnValue  *WorkItemsSummary
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsAPIService.GetWorkItemsSummary")

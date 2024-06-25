@@ -23,6 +23,8 @@ type FormOwner struct {
 	Type *string `json:"type,omitempty"`
 	// Unique identifier of the form's owner.
 	Id *string `json:"id,omitempty"`
+	// Name of the form's owner.
+	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -109,6 +111,38 @@ func (o *FormOwner) SetId(v string) {
 	o.Id = &v
 }
 
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *FormOwner) GetName() string {
+	if o == nil || isNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormOwner) GetNameOk() (*string, bool) {
+	if o == nil || isNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *FormOwner) HasName() bool {
+	if o != nil && !isNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *FormOwner) SetName(v string) {
+	o.Name = &v
+}
+
 func (o FormOwner) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -124,6 +158,9 @@ func (o FormOwner) ToMap() (map[string]interface{}, error) {
 	}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
+	}
+	if !isNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -145,6 +182,7 @@ func (o *FormOwner) UnmarshalJSON(bytes []byte) (err error) {
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
 		o.AdditionalProperties = additionalProperties
 	}
 

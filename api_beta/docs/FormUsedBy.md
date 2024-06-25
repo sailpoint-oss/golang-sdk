@@ -4,8 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | FormUsedByType value.  WORKFLOW FormUsedByTypeWorkflow SOURCE FormUsedByTypeSource | [optional] 
+**Type** | Pointer to **string** | FormUsedByType value.  WORKFLOW FormUsedByTypeWorkflow SOURCE FormUsedByTypeSource MySailPoint FormUsedByType | [optional] 
 **Id** | Pointer to **string** | Unique identifier of the system using the form. | [optional] 
+**Name** | Pointer to **string** | Name of the system using the form. | [optional] 
 
 ## Methods
 
@@ -75,6 +76,31 @@ SetId sets Id field to given value.
 `func (o *FormUsedBy) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetName
+
+`func (o *FormUsedBy) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *FormUsedBy) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *FormUsedBy) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *FormUsedBy) HasName() bool`
+
+HasName returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

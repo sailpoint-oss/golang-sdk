@@ -35,6 +35,14 @@ type Account struct {
 	SourceName string `json:"sourceName"`
 	// The unique ID of the identity this account is correlated to
 	IdentityId *string `json:"identityId,omitempty"`
+	// The lifecycle state of the identity this account is correlated to
+	CloudLifecycleState NullableString `json:"cloudLifecycleState,omitempty"`
+	// The identity state of the identity this account is correlated to
+	IdentityState NullableString `json:"identityState,omitempty"`
+	// The connection type of the source this account is from
+	ConnectionType *string `json:"connectionType,omitempty"`
+	// The type of the account
+	Type NullableString `json:"type,omitempty"`
 	// The account attributes that are aggregated
 	Attributes map[string]interface{} `json:"attributes"`
 	// Indicates if this account is from an authoritative source
@@ -57,10 +65,14 @@ type Account struct {
 	ManuallyCorrelated bool `json:"manuallyCorrelated"`
 	// Indicates if the account has entitlements
 	HasEntitlements bool `json:"hasEntitlements"`
-	Identity *BaseReferenceDto `json:"identity,omitempty"`
-	SourceOwner *BaseReferenceDto `json:"sourceOwner,omitempty"`
+	Identity *AccountAllOfIdentity `json:"identity,omitempty"`
+	SourceOwner *AccountAllOfSourceOwner `json:"sourceOwner,omitempty"`
 	// A string list containing the owning source's features
 	Features NullableString `json:"features,omitempty"`
+	// The origin of the account either aggregated or provisioned
+	Origin NullableString `json:"origin,omitempty"`
+	OwnerIdentity NullableAccountAllOfOwnerIdentity `json:"ownerIdentity,omitempty"`
+	OwnerGroup NullableAccountAllOfOwnerGroup `json:"ownerGroup,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -293,6 +305,164 @@ func (o *Account) HasIdentityId() bool {
 // SetIdentityId gets a reference to the given string and assigns it to the IdentityId field.
 func (o *Account) SetIdentityId(v string) {
 	o.IdentityId = &v
+}
+
+// GetCloudLifecycleState returns the CloudLifecycleState field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Account) GetCloudLifecycleState() string {
+	if o == nil || isNil(o.CloudLifecycleState.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.CloudLifecycleState.Get()
+}
+
+// GetCloudLifecycleStateOk returns a tuple with the CloudLifecycleState field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Account) GetCloudLifecycleStateOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CloudLifecycleState.Get(), o.CloudLifecycleState.IsSet()
+}
+
+// HasCloudLifecycleState returns a boolean if a field has been set.
+func (o *Account) HasCloudLifecycleState() bool {
+	if o != nil && o.CloudLifecycleState.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudLifecycleState gets a reference to the given NullableString and assigns it to the CloudLifecycleState field.
+func (o *Account) SetCloudLifecycleState(v string) {
+	o.CloudLifecycleState.Set(&v)
+}
+// SetCloudLifecycleStateNil sets the value for CloudLifecycleState to be an explicit nil
+func (o *Account) SetCloudLifecycleStateNil() {
+	o.CloudLifecycleState.Set(nil)
+}
+
+// UnsetCloudLifecycleState ensures that no value is present for CloudLifecycleState, not even an explicit nil
+func (o *Account) UnsetCloudLifecycleState() {
+	o.CloudLifecycleState.Unset()
+}
+
+// GetIdentityState returns the IdentityState field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Account) GetIdentityState() string {
+	if o == nil || isNil(o.IdentityState.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.IdentityState.Get()
+}
+
+// GetIdentityStateOk returns a tuple with the IdentityState field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Account) GetIdentityStateOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.IdentityState.Get(), o.IdentityState.IsSet()
+}
+
+// HasIdentityState returns a boolean if a field has been set.
+func (o *Account) HasIdentityState() bool {
+	if o != nil && o.IdentityState.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIdentityState gets a reference to the given NullableString and assigns it to the IdentityState field.
+func (o *Account) SetIdentityState(v string) {
+	o.IdentityState.Set(&v)
+}
+// SetIdentityStateNil sets the value for IdentityState to be an explicit nil
+func (o *Account) SetIdentityStateNil() {
+	o.IdentityState.Set(nil)
+}
+
+// UnsetIdentityState ensures that no value is present for IdentityState, not even an explicit nil
+func (o *Account) UnsetIdentityState() {
+	o.IdentityState.Unset()
+}
+
+// GetConnectionType returns the ConnectionType field value if set, zero value otherwise.
+func (o *Account) GetConnectionType() string {
+	if o == nil || isNil(o.ConnectionType) {
+		var ret string
+		return ret
+	}
+	return *o.ConnectionType
+}
+
+// GetConnectionTypeOk returns a tuple with the ConnectionType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Account) GetConnectionTypeOk() (*string, bool) {
+	if o == nil || isNil(o.ConnectionType) {
+		return nil, false
+	}
+	return o.ConnectionType, true
+}
+
+// HasConnectionType returns a boolean if a field has been set.
+func (o *Account) HasConnectionType() bool {
+	if o != nil && !isNil(o.ConnectionType) {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectionType gets a reference to the given string and assigns it to the ConnectionType field.
+func (o *Account) SetConnectionType(v string) {
+	o.ConnectionType = &v
+}
+
+// GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Account) GetType() string {
+	if o == nil || isNil(o.Type.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Type.Get()
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Account) GetTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Type.Get(), o.Type.IsSet()
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *Account) HasType() bool {
+	if o != nil && o.Type.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given NullableString and assigns it to the Type field.
+func (o *Account) SetType(v string) {
+	o.Type.Set(&v)
+}
+// SetTypeNil sets the value for Type to be an explicit nil
+func (o *Account) SetTypeNil() {
+	o.Type.Set(nil)
+}
+
+// UnsetType ensures that no value is present for Type, not even an explicit nil
+func (o *Account) UnsetType() {
+	o.Type.Unset()
 }
 
 // GetAttributes returns the Attributes field value
@@ -598,9 +768,9 @@ func (o *Account) SetHasEntitlements(v bool) {
 }
 
 // GetIdentity returns the Identity field value if set, zero value otherwise.
-func (o *Account) GetIdentity() BaseReferenceDto {
+func (o *Account) GetIdentity() AccountAllOfIdentity {
 	if o == nil || isNil(o.Identity) {
-		var ret BaseReferenceDto
+		var ret AccountAllOfIdentity
 		return ret
 	}
 	return *o.Identity
@@ -608,7 +778,7 @@ func (o *Account) GetIdentity() BaseReferenceDto {
 
 // GetIdentityOk returns a tuple with the Identity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Account) GetIdentityOk() (*BaseReferenceDto, bool) {
+func (o *Account) GetIdentityOk() (*AccountAllOfIdentity, bool) {
 	if o == nil || isNil(o.Identity) {
 		return nil, false
 	}
@@ -624,15 +794,15 @@ func (o *Account) HasIdentity() bool {
 	return false
 }
 
-// SetIdentity gets a reference to the given BaseReferenceDto and assigns it to the Identity field.
-func (o *Account) SetIdentity(v BaseReferenceDto) {
+// SetIdentity gets a reference to the given AccountAllOfIdentity and assigns it to the Identity field.
+func (o *Account) SetIdentity(v AccountAllOfIdentity) {
 	o.Identity = &v
 }
 
 // GetSourceOwner returns the SourceOwner field value if set, zero value otherwise.
-func (o *Account) GetSourceOwner() BaseReferenceDto {
+func (o *Account) GetSourceOwner() AccountAllOfSourceOwner {
 	if o == nil || isNil(o.SourceOwner) {
-		var ret BaseReferenceDto
+		var ret AccountAllOfSourceOwner
 		return ret
 	}
 	return *o.SourceOwner
@@ -640,7 +810,7 @@ func (o *Account) GetSourceOwner() BaseReferenceDto {
 
 // GetSourceOwnerOk returns a tuple with the SourceOwner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Account) GetSourceOwnerOk() (*BaseReferenceDto, bool) {
+func (o *Account) GetSourceOwnerOk() (*AccountAllOfSourceOwner, bool) {
 	if o == nil || isNil(o.SourceOwner) {
 		return nil, false
 	}
@@ -656,8 +826,8 @@ func (o *Account) HasSourceOwner() bool {
 	return false
 }
 
-// SetSourceOwner gets a reference to the given BaseReferenceDto and assigns it to the SourceOwner field.
-func (o *Account) SetSourceOwner(v BaseReferenceDto) {
+// SetSourceOwner gets a reference to the given AccountAllOfSourceOwner and assigns it to the SourceOwner field.
+func (o *Account) SetSourceOwner(v AccountAllOfSourceOwner) {
 	o.SourceOwner = &v
 }
 
@@ -703,6 +873,132 @@ func (o *Account) UnsetFeatures() {
 	o.Features.Unset()
 }
 
+// GetOrigin returns the Origin field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Account) GetOrigin() string {
+	if o == nil || isNil(o.Origin.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Origin.Get()
+}
+
+// GetOriginOk returns a tuple with the Origin field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Account) GetOriginOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Origin.Get(), o.Origin.IsSet()
+}
+
+// HasOrigin returns a boolean if a field has been set.
+func (o *Account) HasOrigin() bool {
+	if o != nil && o.Origin.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOrigin gets a reference to the given NullableString and assigns it to the Origin field.
+func (o *Account) SetOrigin(v string) {
+	o.Origin.Set(&v)
+}
+// SetOriginNil sets the value for Origin to be an explicit nil
+func (o *Account) SetOriginNil() {
+	o.Origin.Set(nil)
+}
+
+// UnsetOrigin ensures that no value is present for Origin, not even an explicit nil
+func (o *Account) UnsetOrigin() {
+	o.Origin.Unset()
+}
+
+// GetOwnerIdentity returns the OwnerIdentity field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Account) GetOwnerIdentity() AccountAllOfOwnerIdentity {
+	if o == nil || isNil(o.OwnerIdentity.Get()) {
+		var ret AccountAllOfOwnerIdentity
+		return ret
+	}
+	return *o.OwnerIdentity.Get()
+}
+
+// GetOwnerIdentityOk returns a tuple with the OwnerIdentity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Account) GetOwnerIdentityOk() (*AccountAllOfOwnerIdentity, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.OwnerIdentity.Get(), o.OwnerIdentity.IsSet()
+}
+
+// HasOwnerIdentity returns a boolean if a field has been set.
+func (o *Account) HasOwnerIdentity() bool {
+	if o != nil && o.OwnerIdentity.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOwnerIdentity gets a reference to the given NullableAccountAllOfOwnerIdentity and assigns it to the OwnerIdentity field.
+func (o *Account) SetOwnerIdentity(v AccountAllOfOwnerIdentity) {
+	o.OwnerIdentity.Set(&v)
+}
+// SetOwnerIdentityNil sets the value for OwnerIdentity to be an explicit nil
+func (o *Account) SetOwnerIdentityNil() {
+	o.OwnerIdentity.Set(nil)
+}
+
+// UnsetOwnerIdentity ensures that no value is present for OwnerIdentity, not even an explicit nil
+func (o *Account) UnsetOwnerIdentity() {
+	o.OwnerIdentity.Unset()
+}
+
+// GetOwnerGroup returns the OwnerGroup field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Account) GetOwnerGroup() AccountAllOfOwnerGroup {
+	if o == nil || isNil(o.OwnerGroup.Get()) {
+		var ret AccountAllOfOwnerGroup
+		return ret
+	}
+	return *o.OwnerGroup.Get()
+}
+
+// GetOwnerGroupOk returns a tuple with the OwnerGroup field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Account) GetOwnerGroupOk() (*AccountAllOfOwnerGroup, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.OwnerGroup.Get(), o.OwnerGroup.IsSet()
+}
+
+// HasOwnerGroup returns a boolean if a field has been set.
+func (o *Account) HasOwnerGroup() bool {
+	if o != nil && o.OwnerGroup.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOwnerGroup gets a reference to the given NullableAccountAllOfOwnerGroup and assigns it to the OwnerGroup field.
+func (o *Account) SetOwnerGroup(v AccountAllOfOwnerGroup) {
+	o.OwnerGroup.Set(&v)
+}
+// SetOwnerGroupNil sets the value for OwnerGroup to be an explicit nil
+func (o *Account) SetOwnerGroupNil() {
+	o.OwnerGroup.Set(nil)
+}
+
+// UnsetOwnerGroup ensures that no value is present for OwnerGroup, not even an explicit nil
+func (o *Account) UnsetOwnerGroup() {
+	o.OwnerGroup.Unset()
+}
+
 func (o Account) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -721,6 +1017,18 @@ func (o Account) ToMap() (map[string]interface{}, error) {
 	toSerialize["sourceName"] = o.SourceName
 	if !isNil(o.IdentityId) {
 		toSerialize["identityId"] = o.IdentityId
+	}
+	if o.CloudLifecycleState.IsSet() {
+		toSerialize["cloudLifecycleState"] = o.CloudLifecycleState.Get()
+	}
+	if o.IdentityState.IsSet() {
+		toSerialize["identityState"] = o.IdentityState.Get()
+	}
+	if !isNil(o.ConnectionType) {
+		toSerialize["connectionType"] = o.ConnectionType
+	}
+	if o.Type.IsSet() {
+		toSerialize["type"] = o.Type.Get()
 	}
 	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes
@@ -747,6 +1055,15 @@ func (o Account) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Features.IsSet() {
 		toSerialize["features"] = o.Features.Get()
+	}
+	if o.Origin.IsSet() {
+		toSerialize["origin"] = o.Origin.Get()
+	}
+	if o.OwnerIdentity.IsSet() {
+		toSerialize["ownerIdentity"] = o.OwnerIdentity.Get()
+	}
+	if o.OwnerGroup.IsSet() {
+		toSerialize["ownerGroup"] = o.OwnerGroup.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -805,6 +1122,10 @@ func (o *Account) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "sourceId")
 		delete(additionalProperties, "sourceName")
 		delete(additionalProperties, "identityId")
+		delete(additionalProperties, "cloudLifecycleState")
+		delete(additionalProperties, "identityState")
+		delete(additionalProperties, "connectionType")
+		delete(additionalProperties, "type")
 		delete(additionalProperties, "attributes")
 		delete(additionalProperties, "authoritative")
 		delete(additionalProperties, "description")
@@ -819,6 +1140,9 @@ func (o *Account) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "identity")
 		delete(additionalProperties, "sourceOwner")
 		delete(additionalProperties, "features")
+		delete(additionalProperties, "origin")
+		delete(additionalProperties, "ownerIdentity")
+		delete(additionalProperties, "ownerGroup")
 		o.AdditionalProperties = additionalProperties
 	}
 

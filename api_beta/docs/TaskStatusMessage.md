@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | **string** | Type of the message | 
-**LocalizedText** | [**LocalizedMessage**](LocalizedMessage.md) |  | 
+**LocalizedText** | [**NullableLocalizedMessage**](LocalizedMessage.md) |  | 
 **Key** | **string** | Key of the message | 
 **Parameters** | **[]map[string]interface{}** | Message parameters for internationalization | 
 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewTaskStatusMessage
 
-`func NewTaskStatusMessage(type_ string, localizedText LocalizedMessage, key string, parameters []map[string]interface{}, ) *TaskStatusMessage`
+`func NewTaskStatusMessage(type_ string, localizedText NullableLocalizedMessage, key string, parameters []map[string]interface{}, ) *TaskStatusMessage`
 
 NewTaskStatusMessage instantiates a new TaskStatusMessage object
 This constructor will assign default values to properties that have it defined,
@@ -68,6 +68,16 @@ and a boolean to check if the value has been set.
 SetLocalizedText sets LocalizedText field to given value.
 
 
+### SetLocalizedTextNil
+
+`func (o *TaskStatusMessage) SetLocalizedTextNil(b bool)`
+
+ SetLocalizedTextNil sets the value for LocalizedText to be an explicit nil
+
+### UnsetLocalizedText
+`func (o *TaskStatusMessage) UnsetLocalizedText()`
+
+UnsetLocalizedText ensures that no value is present for LocalizedText, not even an explicit nil
 ### GetKey
 
 `func (o *TaskStatusMessage) GetKey() string`
@@ -108,6 +118,16 @@ and a boolean to check if the value has been set.
 SetParameters sets Parameters field to given value.
 
 
+### SetParametersNil
+
+`func (o *TaskStatusMessage) SetParametersNil(b bool)`
+
+ SetParametersNil sets the value for Parameters to be an explicit nil
+
+### UnsetParameters
+`func (o *TaskStatusMessage) UnsetParameters()`
+
+UnsetParameters ensures that no value is present for Parameters, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

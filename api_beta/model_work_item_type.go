@@ -20,40 +20,40 @@ type WorkItemType string
 
 // List of WorkItemType
 const (
-	WORKITEMTYPE_UNKNOWN WorkItemType = "UNKNOWN"
-	WORKITEMTYPE_GENERIC WorkItemType = "GENERIC"
-	WORKITEMTYPE_CERTIFICATION WorkItemType = "CERTIFICATION"
-	WORKITEMTYPE_REMEDIATION WorkItemType = "REMEDIATION"
-	WORKITEMTYPE_DELEGATION WorkItemType = "DELEGATION"
-	WORKITEMTYPE_APPROVAL WorkItemType = "APPROVAL"
-	WORKITEMTYPE_VIOLATIONREVIEW WorkItemType = "VIOLATIONREVIEW"
-	WORKITEMTYPE_FORM WorkItemType = "FORM"
-	WORKITEMTYPE_POLICYVIOLATION WorkItemType = "POLICYVIOLATION"
-	WORKITEMTYPE_CHALLENGE WorkItemType = "CHALLENGE"
-	WORKITEMTYPE_IMPACTANALYSIS WorkItemType = "IMPACTANALYSIS"
-	WORKITEMTYPE_SIGNOFF WorkItemType = "SIGNOFF"
-	WORKITEMTYPE_EVENT WorkItemType = "EVENT"
-	WORKITEMTYPE_MANUALACTION WorkItemType = "MANUALACTION"
-	WORKITEMTYPE_TEST WorkItemType = "TEST"
+	WORKITEMTYPE_UNKNOWN WorkItemType = "Unknown"
+	WORKITEMTYPE_GENERIC WorkItemType = "Generic"
+	WORKITEMTYPE_CERTIFICATION WorkItemType = "Certification"
+	WORKITEMTYPE_REMEDIATION WorkItemType = "Remediation"
+	WORKITEMTYPE_DELEGATION WorkItemType = "Delegation"
+	WORKITEMTYPE_APPROVAL WorkItemType = "Approval"
+	WORKITEMTYPE_VIOLATION_REVIEW WorkItemType = "ViolationReview"
+	WORKITEMTYPE_FORM WorkItemType = "Form"
+	WORKITEMTYPE_POLICY_VIOLATION WorkItemType = "PolicyViolation"
+	WORKITEMTYPE_CHALLENGE WorkItemType = "Challenge"
+	WORKITEMTYPE_IMPACT_ANALYSIS WorkItemType = "ImpactAnalysis"
+	WORKITEMTYPE_SIGNOFF WorkItemType = "Signoff"
+	WORKITEMTYPE_EVENT WorkItemType = "Event"
+	WORKITEMTYPE_MANUAL_ACTION WorkItemType = "ManualAction"
+	WORKITEMTYPE_TEST WorkItemType = "Test"
 )
 
 // All allowed values of WorkItemType enum
 var AllowedWorkItemTypeEnumValues = []WorkItemType{
-	"UNKNOWN",
-	"GENERIC",
-	"CERTIFICATION",
-	"REMEDIATION",
-	"DELEGATION",
-	"APPROVAL",
-	"VIOLATIONREVIEW",
-	"FORM",
-	"POLICYVIOLATION",
-	"CHALLENGE",
-	"IMPACTANALYSIS",
-	"SIGNOFF",
-	"EVENT",
-	"MANUALACTION",
-	"TEST",
+	"Unknown",
+	"Generic",
+	"Certification",
+	"Remediation",
+	"Delegation",
+	"Approval",
+	"ViolationReview",
+	"Form",
+	"PolicyViolation",
+	"Challenge",
+	"ImpactAnalysis",
+	"Signoff",
+	"Event",
+	"ManualAction",
+	"Test",
 }
 
 func (v *WorkItemType) UnmarshalJSON(src []byte) error {

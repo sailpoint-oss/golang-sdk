@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **FormElements** | Pointer to [**[]FormElement**](FormElement.md) | FormElements is the configuration of the form, this would be a repeat of the fields from the form-config | [optional] 
 **FormErrors** | Pointer to [**[]FormError**](FormError.md) | FormErrors is an array of form validation errors from the last time the form instance was transitioned to the SUBMITTED state. If the form instance had validation errors then it would be moved to the IN PROGRESS state where the client can retrieve these errors | [optional] 
 **FormInput** | Pointer to **map[string]map[string]interface{}** | FormInput is an object of form input labels to value | [optional] 
-**Id** | Pointer to **string** | FormInstanceID is a unique guid identifying this form instance | [optional] 
+**Id** | Pointer to **string** | Unique guid identifying this form instance | [optional] 
 **Modified** | Pointer to **time.Time** | Modified is the last date the form instance was modified | [optional] 
 **Recipients** | Pointer to [**[]FormInstanceRecipient**](FormInstanceRecipient.md) | Recipients references to the recipient of a form. The recipients are those who are responsible for filling out a form and completing it | [optional] 
 **StandAloneForm** | Pointer to **bool** | StandAloneForm is a boolean flag to indicate if this form should be available for users to complete via the standalone form UI or should this only be available to be completed by as an embedded form | [optional] [default to false]
@@ -264,6 +264,16 @@ SetFormInput sets FormInput field to given value.
 
 HasFormInput returns a boolean if a field has been set.
 
+### SetFormInputNil
+
+`func (o *FormInstanceResponse) SetFormInputNil(b bool)`
+
+ SetFormInputNil sets the value for FormInput to be an explicit nil
+
+### UnsetFormInput
+`func (o *FormInstanceResponse) UnsetFormInput()`
+
+UnsetFormInput ensures that no value is present for FormInput, not even an explicit nil
 ### GetId
 
 `func (o *FormInstanceResponse) GetId() string`

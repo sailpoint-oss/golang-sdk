@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Form element identifier. | [optional] 
-**ElementType** | Pointer to **string** | FormElementType value.  TEXT FormElementTypeText TOGGLE FormElementTypeToggle TEXTAREA FormElementTypeTextArea HIDDEN FormElementTypeHidden PHONE FormElementTypePhone EMAIL FormElementTypeEmail SELECT FormElementTypeSelect DATE FormElementTypeDate SECTION FormElementTypeSection COLUMNS FormElementTypeColumns | [optional] 
+**ElementType** | Pointer to **string** | FormElementType value.  TEXT FormElementTypeText TOGGLE FormElementTypeToggle TEXTAREA FormElementTypeTextArea HIDDEN FormElementTypeHidden PHONE FormElementTypePhone EMAIL FormElementTypeEmail SELECT FormElementTypeSelect DATE FormElementTypeDate SECTION FormElementTypeSection COLUMN_SET FormElementTypeColumns IMAGE FormElementTypeImage DESCRIPTION FormElementTypeDescription | [optional] 
 **Config** | Pointer to **map[string]map[string]interface{}** | Config object. | [optional] 
 **Key** | Pointer to **string** | Technical key. | [optional] 
-**Validations** | Pointer to **map[string]interface{}** | Set of FormElementValidation items. | [optional] 
+**Validations** | Pointer to [**[]FormElementValidationsSet**](FormElementValidationsSet.md) |  | [optional] 
 
 ## Methods
 
@@ -131,20 +131,20 @@ HasKey returns a boolean if a field has been set.
 
 ### GetValidations
 
-`func (o *FormElement) GetValidations() map[string]interface{}`
+`func (o *FormElement) GetValidations() []FormElementValidationsSet`
 
 GetValidations returns the Validations field if non-nil, zero value otherwise.
 
 ### GetValidationsOk
 
-`func (o *FormElement) GetValidationsOk() (*map[string]interface{}, bool)`
+`func (o *FormElement) GetValidationsOk() (*[]FormElementValidationsSet, bool)`
 
 GetValidationsOk returns a tuple with the Validations field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValidations
 
-`func (o *FormElement) SetValidations(v map[string]interface{})`
+`func (o *FormElement) SetValidations(v []FormElementValidationsSet)`
 
 SetValidations sets Validations field to given value.
 
@@ -154,6 +154,16 @@ SetValidations sets Validations field to given value.
 
 HasValidations returns a boolean if a field has been set.
 
+### SetValidationsNil
+
+`func (o *FormElement) SetValidationsNil(b bool)`
+
+ SetValidationsNil sets the value for Validations to be an explicit nil
+
+### UnsetValidations
+`func (o *FormElement) UnsetValidations()`
+
+UnsetValidations ensures that no value is present for Validations, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

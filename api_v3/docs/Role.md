@@ -19,6 +19,8 @@ Name | Type | Description | Notes
 **AccessRequestConfig** | Pointer to [**RequestabilityForRole**](RequestabilityForRole.md) |  | [optional] 
 **RevocationRequestConfig** | Pointer to [**RevocabilityForRole**](RevocabilityForRole.md) |  | [optional] 
 **Segments** | Pointer to **[]string** | List of IDs of segments, if any, to which this Role is assigned. | [optional] 
+**Dimensional** | Pointer to **NullableBool** |  | [optional] 
+**DimensionRefs** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -454,6 +456,76 @@ HasSegments returns a boolean if a field has been set.
 `func (o *Role) UnsetSegments()`
 
 UnsetSegments ensures that no value is present for Segments, not even an explicit nil
+### GetDimensional
+
+`func (o *Role) GetDimensional() bool`
+
+GetDimensional returns the Dimensional field if non-nil, zero value otherwise.
+
+### GetDimensionalOk
+
+`func (o *Role) GetDimensionalOk() (*bool, bool)`
+
+GetDimensionalOk returns a tuple with the Dimensional field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDimensional
+
+`func (o *Role) SetDimensional(v bool)`
+
+SetDimensional sets Dimensional field to given value.
+
+### HasDimensional
+
+`func (o *Role) HasDimensional() bool`
+
+HasDimensional returns a boolean if a field has been set.
+
+### SetDimensionalNil
+
+`func (o *Role) SetDimensionalNil(b bool)`
+
+ SetDimensionalNil sets the value for Dimensional to be an explicit nil
+
+### UnsetDimensional
+`func (o *Role) UnsetDimensional()`
+
+UnsetDimensional ensures that no value is present for Dimensional, not even an explicit nil
+### GetDimensionRefs
+
+`func (o *Role) GetDimensionRefs() string`
+
+GetDimensionRefs returns the DimensionRefs field if non-nil, zero value otherwise.
+
+### GetDimensionRefsOk
+
+`func (o *Role) GetDimensionRefsOk() (*string, bool)`
+
+GetDimensionRefsOk returns a tuple with the DimensionRefs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDimensionRefs
+
+`func (o *Role) SetDimensionRefs(v string)`
+
+SetDimensionRefs sets DimensionRefs field to given value.
+
+### HasDimensionRefs
+
+`func (o *Role) HasDimensionRefs() bool`
+
+HasDimensionRefs returns a boolean if a field has been set.
+
+### SetDimensionRefsNil
+
+`func (o *Role) SetDimensionRefsNil(b bool)`
+
+ SetDimensionRefsNil sets the value for DimensionRefs to be an explicit nil
+
+### UnsetDimensionRefs
+`func (o *Role) UnsetDimensionRefs()`
+
+UnsetDimensionRefs ensures that no value is present for DimensionRefs, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

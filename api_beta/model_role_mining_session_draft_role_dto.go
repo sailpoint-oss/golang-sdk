@@ -20,6 +20,8 @@ var _ MappedNullable = &RoleMiningSessionDraftRoleDto{}
 
 // RoleMiningSessionDraftRoleDto struct for RoleMiningSessionDraftRoleDto
 type RoleMiningSessionDraftRoleDto struct {
+	// Name of the draft role
+	Name *string `json:"name,omitempty"`
 	// Draft role description
 	Description *string `json:"description,omitempty"`
 	// The list of identities for this role mining session.
@@ -30,9 +32,13 @@ type RoleMiningSessionDraftRoleDto struct {
 	ExcludedEntitlements []string `json:"excludedEntitlements,omitempty"`
 	// Last modified date
 	Modified *time.Time `json:"modified,omitempty"`
-	// Name of the draft role
-	Name *string `json:"name,omitempty"`
 	Type *RoleMiningRoleType `json:"type,omitempty"`
+	// Id of the potential draft role
+	Id *string `json:"id,omitempty"`
+	// The date-time when this potential draft role was created.
+	CreatedDate *time.Time `json:"createdDate,omitempty"`
+	// The date-time when this potential draft role was modified.
+	ModifiedDate *time.Time `json:"modifiedDate,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -53,6 +59,38 @@ func NewRoleMiningSessionDraftRoleDto() *RoleMiningSessionDraftRoleDto {
 func NewRoleMiningSessionDraftRoleDtoWithDefaults() *RoleMiningSessionDraftRoleDto {
 	this := RoleMiningSessionDraftRoleDto{}
 	return &this
+}
+
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *RoleMiningSessionDraftRoleDto) GetName() string {
+	if o == nil || isNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RoleMiningSessionDraftRoleDto) GetNameOk() (*string, bool) {
+	if o == nil || isNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *RoleMiningSessionDraftRoleDto) HasName() bool {
+	if o != nil && !isNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *RoleMiningSessionDraftRoleDto) SetName(v string) {
+	o.Name = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -215,38 +253,6 @@ func (o *RoleMiningSessionDraftRoleDto) SetModified(v time.Time) {
 	o.Modified = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *RoleMiningSessionDraftRoleDto) GetName() string {
-	if o == nil || isNil(o.Name) {
-		var ret string
-		return ret
-	}
-	return *o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RoleMiningSessionDraftRoleDto) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
-		return nil, false
-	}
-	return o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *RoleMiningSessionDraftRoleDto) HasName() bool {
-	if o != nil && !isNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *RoleMiningSessionDraftRoleDto) SetName(v string) {
-	o.Name = &v
-}
-
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *RoleMiningSessionDraftRoleDto) GetType() RoleMiningRoleType {
 	if o == nil || isNil(o.Type) {
@@ -279,6 +285,102 @@ func (o *RoleMiningSessionDraftRoleDto) SetType(v RoleMiningRoleType) {
 	o.Type = &v
 }
 
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *RoleMiningSessionDraftRoleDto) GetId() string {
+	if o == nil || isNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RoleMiningSessionDraftRoleDto) GetIdOk() (*string, bool) {
+	if o == nil || isNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *RoleMiningSessionDraftRoleDto) HasId() bool {
+	if o != nil && !isNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *RoleMiningSessionDraftRoleDto) SetId(v string) {
+	o.Id = &v
+}
+
+// GetCreatedDate returns the CreatedDate field value if set, zero value otherwise.
+func (o *RoleMiningSessionDraftRoleDto) GetCreatedDate() time.Time {
+	if o == nil || isNil(o.CreatedDate) {
+		var ret time.Time
+		return ret
+	}
+	return *o.CreatedDate
+}
+
+// GetCreatedDateOk returns a tuple with the CreatedDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RoleMiningSessionDraftRoleDto) GetCreatedDateOk() (*time.Time, bool) {
+	if o == nil || isNil(o.CreatedDate) {
+		return nil, false
+	}
+	return o.CreatedDate, true
+}
+
+// HasCreatedDate returns a boolean if a field has been set.
+func (o *RoleMiningSessionDraftRoleDto) HasCreatedDate() bool {
+	if o != nil && !isNil(o.CreatedDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedDate gets a reference to the given time.Time and assigns it to the CreatedDate field.
+func (o *RoleMiningSessionDraftRoleDto) SetCreatedDate(v time.Time) {
+	o.CreatedDate = &v
+}
+
+// GetModifiedDate returns the ModifiedDate field value if set, zero value otherwise.
+func (o *RoleMiningSessionDraftRoleDto) GetModifiedDate() time.Time {
+	if o == nil || isNil(o.ModifiedDate) {
+		var ret time.Time
+		return ret
+	}
+	return *o.ModifiedDate
+}
+
+// GetModifiedDateOk returns a tuple with the ModifiedDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RoleMiningSessionDraftRoleDto) GetModifiedDateOk() (*time.Time, bool) {
+	if o == nil || isNil(o.ModifiedDate) {
+		return nil, false
+	}
+	return o.ModifiedDate, true
+}
+
+// HasModifiedDate returns a boolean if a field has been set.
+func (o *RoleMiningSessionDraftRoleDto) HasModifiedDate() bool {
+	if o != nil && !isNil(o.ModifiedDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetModifiedDate gets a reference to the given time.Time and assigns it to the ModifiedDate field.
+func (o *RoleMiningSessionDraftRoleDto) SetModifiedDate(v time.Time) {
+	o.ModifiedDate = &v
+}
+
 func (o RoleMiningSessionDraftRoleDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -289,6 +391,9 @@ func (o RoleMiningSessionDraftRoleDto) MarshalJSON() ([]byte, error) {
 
 func (o RoleMiningSessionDraftRoleDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !isNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -304,11 +409,17 @@ func (o RoleMiningSessionDraftRoleDto) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
+	}
+	if !isNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !isNil(o.CreatedDate) {
+		toSerialize["createdDate"] = o.CreatedDate
+	}
+	if !isNil(o.ModifiedDate) {
+		toSerialize["modifiedDate"] = o.ModifiedDate
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -328,13 +439,16 @@ func (o *RoleMiningSessionDraftRoleDto) UnmarshalJSON(bytes []byte) (err error) 
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "identityIds")
 		delete(additionalProperties, "entitlementIds")
 		delete(additionalProperties, "excludedEntitlements")
 		delete(additionalProperties, "modified")
-		delete(additionalProperties, "name")
 		delete(additionalProperties, "type")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "createdDate")
+		delete(additionalProperties, "modifiedDate")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -31,6 +31,9 @@ type Workflow struct {
 	Trigger *WorkflowTrigger `json:"trigger,omitempty"`
 	// Workflow ID. This is a UUID generated upon creation.
 	Id *string `json:"id,omitempty"`
+	// The date and time the workflow was modified.
+	Modified *time.Time `json:"modified,omitempty"`
+	ModifiedBy *WorkflowModifiedBy `json:"modifiedBy,omitempty"`
 	// The number of times this workflow has been executed.
 	ExecutionCount *int32 `json:"executionCount,omitempty"`
 	// The number of times this workflow has failed during execution.
@@ -288,6 +291,70 @@ func (o *Workflow) SetId(v string) {
 	o.Id = &v
 }
 
+// GetModified returns the Modified field value if set, zero value otherwise.
+func (o *Workflow) GetModified() time.Time {
+	if o == nil || isNil(o.Modified) {
+		var ret time.Time
+		return ret
+	}
+	return *o.Modified
+}
+
+// GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Workflow) GetModifiedOk() (*time.Time, bool) {
+	if o == nil || isNil(o.Modified) {
+		return nil, false
+	}
+	return o.Modified, true
+}
+
+// HasModified returns a boolean if a field has been set.
+func (o *Workflow) HasModified() bool {
+	if o != nil && !isNil(o.Modified) {
+		return true
+	}
+
+	return false
+}
+
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *Workflow) SetModified(v time.Time) {
+	o.Modified = &v
+}
+
+// GetModifiedBy returns the ModifiedBy field value if set, zero value otherwise.
+func (o *Workflow) GetModifiedBy() WorkflowModifiedBy {
+	if o == nil || isNil(o.ModifiedBy) {
+		var ret WorkflowModifiedBy
+		return ret
+	}
+	return *o.ModifiedBy
+}
+
+// GetModifiedByOk returns a tuple with the ModifiedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Workflow) GetModifiedByOk() (*WorkflowModifiedBy, bool) {
+	if o == nil || isNil(o.ModifiedBy) {
+		return nil, false
+	}
+	return o.ModifiedBy, true
+}
+
+// HasModifiedBy returns a boolean if a field has been set.
+func (o *Workflow) HasModifiedBy() bool {
+	if o != nil && !isNil(o.ModifiedBy) {
+		return true
+	}
+
+	return false
+}
+
+// SetModifiedBy gets a reference to the given WorkflowModifiedBy and assigns it to the ModifiedBy field.
+func (o *Workflow) SetModifiedBy(v WorkflowModifiedBy) {
+	o.ModifiedBy = &v
+}
+
 // GetExecutionCount returns the ExecutionCount field value if set, zero value otherwise.
 func (o *Workflow) GetExecutionCount() int32 {
 	if o == nil || isNil(o.ExecutionCount) {
@@ -447,6 +514,12 @@ func (o Workflow) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
+	if !isNil(o.Modified) {
+		toSerialize["modified"] = o.Modified
+	}
+	if !isNil(o.ModifiedBy) {
+		toSerialize["modifiedBy"] = o.ModifiedBy
+	}
 	if !isNil(o.ExecutionCount) {
 		toSerialize["executionCount"] = o.ExecutionCount
 	}
@@ -484,6 +557,8 @@ func (o *Workflow) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "enabled")
 		delete(additionalProperties, "trigger")
 		delete(additionalProperties, "id")
+		delete(additionalProperties, "modified")
+		delete(additionalProperties, "modifiedBy")
 		delete(additionalProperties, "executionCount")
 		delete(additionalProperties, "failureCount")
 		delete(additionalProperties, "created")

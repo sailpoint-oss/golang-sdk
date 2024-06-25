@@ -73,7 +73,7 @@ Other parameters are passed through a pointer to a apiGetProfileConfigRequest st
 
 ## GetProfileConfigList
 
-> AuthProfileSummary GetProfileConfigList(ctx).Execute()
+> []AuthProfileSummary GetProfileConfigList(ctx).Execute()
 
 Get list of Auth Profiles.
 
@@ -100,7 +100,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthProfileAPI.GetProfileConfigList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetProfileConfigList`: AuthProfileSummary
+    // response from `GetProfileConfigList`: []AuthProfileSummary
     fmt.Fprintf(os.Stdout, "Response from `AuthProfileAPI.GetProfileConfigList`: %v\n", resp)
 }
 ```
@@ -116,7 +116,7 @@ Other parameters are passed through a pointer to a apiGetProfileConfigListReques
 
 ### Return type
 
-[**AuthProfileSummary**](AuthProfileSummary.md)
+[**[]AuthProfileSummary**](AuthProfileSummary.md)
 
 ### Authorization
 

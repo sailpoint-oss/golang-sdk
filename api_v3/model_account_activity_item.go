@@ -26,7 +26,7 @@ type AccountActivityItem struct {
 	Name *string `json:"name,omitempty"`
 	// Date and time item was requested
 	Requested *time.Time `json:"requested,omitempty"`
-	ApprovalStatus *WorkItemState `json:"approvalStatus,omitempty"`
+	ApprovalStatus *AccountActivityApprovalStatus `json:"approvalStatus,omitempty"`
 	ProvisioningStatus *ProvisioningState `json:"provisioningStatus,omitempty"`
 	RequesterComment NullableComment `json:"requesterComment,omitempty"`
 	ReviewerIdentitySummary NullableIdentitySummary `json:"reviewerIdentitySummary,omitempty"`
@@ -164,9 +164,9 @@ func (o *AccountActivityItem) SetRequested(v time.Time) {
 }
 
 // GetApprovalStatus returns the ApprovalStatus field value if set, zero value otherwise.
-func (o *AccountActivityItem) GetApprovalStatus() WorkItemState {
+func (o *AccountActivityItem) GetApprovalStatus() AccountActivityApprovalStatus {
 	if o == nil || isNil(o.ApprovalStatus) {
-		var ret WorkItemState
+		var ret AccountActivityApprovalStatus
 		return ret
 	}
 	return *o.ApprovalStatus
@@ -174,7 +174,7 @@ func (o *AccountActivityItem) GetApprovalStatus() WorkItemState {
 
 // GetApprovalStatusOk returns a tuple with the ApprovalStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountActivityItem) GetApprovalStatusOk() (*WorkItemState, bool) {
+func (o *AccountActivityItem) GetApprovalStatusOk() (*AccountActivityApprovalStatus, bool) {
 	if o == nil || isNil(o.ApprovalStatus) {
 		return nil, false
 	}
@@ -190,8 +190,8 @@ func (o *AccountActivityItem) HasApprovalStatus() bool {
 	return false
 }
 
-// SetApprovalStatus gets a reference to the given WorkItemState and assigns it to the ApprovalStatus field.
-func (o *AccountActivityItem) SetApprovalStatus(v WorkItemState) {
+// SetApprovalStatus gets a reference to the given AccountActivityApprovalStatus and assigns it to the ApprovalStatus field.
+func (o *AccountActivityItem) SetApprovalStatus(v AccountActivityApprovalStatus) {
 	o.ApprovalStatus = &v
 }
 

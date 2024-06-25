@@ -3,35 +3,35 @@
 ## Enum
 
 
-* `UNKNOWN` (value: `"UNKNOWN"`)
+* `UNKNOWN` (value: `"Unknown"`)
 
-* `GENERIC` (value: `"GENERIC"`)
+* `GENERIC` (value: `"Generic"`)
 
-* `CERTIFICATION` (value: `"CERTIFICATION"`)
+* `CERTIFICATION` (value: `"Certification"`)
 
-* `REMEDIATION` (value: `"REMEDIATION"`)
+* `REMEDIATION` (value: `"Remediation"`)
 
-* `DELEGATION` (value: `"DELEGATION"`)
+* `DELEGATION` (value: `"Delegation"`)
 
-* `APPROVAL` (value: `"APPROVAL"`)
+* `APPROVAL` (value: `"Approval"`)
 
-* `VIOLATIONREVIEW` (value: `"VIOLATIONREVIEW"`)
+* `VIOLATION_REVIEW` (value: `"ViolationReview"`)
 
-* `FORM` (value: `"FORM"`)
+* `FORM` (value: `"Form"`)
 
-* `POLICYVIOLATION` (value: `"POLICYVIOLATION"`)
+* `POLICY_VIOLATION` (value: `"PolicyViolation"`)
 
-* `CHALLENGE` (value: `"CHALLENGE"`)
+* `CHALLENGE` (value: `"Challenge"`)
 
-* `IMPACTANALYSIS` (value: `"IMPACTANALYSIS"`)
+* `IMPACT_ANALYSIS` (value: `"ImpactAnalysis"`)
 
-* `SIGNOFF` (value: `"SIGNOFF"`)
+* `SIGNOFF` (value: `"Signoff"`)
 
-* `EVENT` (value: `"EVENT"`)
+* `EVENT` (value: `"Event"`)
 
-* `MANUALACTION` (value: `"MANUALACTION"`)
+* `MANUAL_ACTION` (value: `"ManualAction"`)
 
-* `TEST` (value: `"TEST"`)
+* `TEST` (value: `"Test"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

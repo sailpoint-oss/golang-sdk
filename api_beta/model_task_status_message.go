@@ -22,7 +22,7 @@ var _ MappedNullable = &TaskStatusMessage{}
 type TaskStatusMessage struct {
 	// Type of the message
 	Type string `json:"type"`
-	LocalizedText LocalizedMessage `json:"localizedText"`
+	LocalizedText NullableLocalizedMessage `json:"localizedText"`
 	// Key of the message
 	Key string `json:"key"`
 	// Message parameters for internationalization
@@ -36,7 +36,7 @@ type _TaskStatusMessage TaskStatusMessage
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTaskStatusMessage(type_ string, localizedText LocalizedMessage, key string, parameters []map[string]interface{}) *TaskStatusMessage {
+func NewTaskStatusMessage(type_ string, localizedText NullableLocalizedMessage, key string, parameters []map[string]interface{}) *TaskStatusMessage {
 	this := TaskStatusMessage{}
 	this.Type = type_
 	this.LocalizedText = localizedText
@@ -78,27 +78,29 @@ func (o *TaskStatusMessage) SetType(v string) {
 }
 
 // GetLocalizedText returns the LocalizedText field value
+// If the value is explicit nil, the zero value for LocalizedMessage will be returned
 func (o *TaskStatusMessage) GetLocalizedText() LocalizedMessage {
-	if o == nil {
+	if o == nil || o.LocalizedText.Get() == nil {
 		var ret LocalizedMessage
 		return ret
 	}
 
-	return o.LocalizedText
+	return *o.LocalizedText.Get()
 }
 
 // GetLocalizedTextOk returns a tuple with the LocalizedText field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaskStatusMessage) GetLocalizedTextOk() (*LocalizedMessage, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.LocalizedText, true
+	return o.LocalizedText.Get(), o.LocalizedText.IsSet()
 }
 
 // SetLocalizedText sets field value
 func (o *TaskStatusMessage) SetLocalizedText(v LocalizedMessage) {
-	o.LocalizedText = v
+	o.LocalizedText.Set(&v)
 }
 
 // GetKey returns the Key field value
@@ -126,6 +128,7 @@ func (o *TaskStatusMessage) SetKey(v string) {
 }
 
 // GetParameters returns the Parameters field value
+// If the value is explicit nil, the zero value for []map[string]interface{} will be returned
 func (o *TaskStatusMessage) GetParameters() []map[string]interface{} {
 	if o == nil {
 		var ret []map[string]interface{}
@@ -137,8 +140,9 @@ func (o *TaskStatusMessage) GetParameters() []map[string]interface{} {
 
 // GetParametersOk returns a tuple with the Parameters field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaskStatusMessage) GetParametersOk() ([]map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || isNil(o.Parameters) {
 		return nil, false
 	}
 	return o.Parameters, true
@@ -160,9 +164,11 @@ func (o TaskStatusMessage) MarshalJSON() ([]byte, error) {
 func (o TaskStatusMessage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
-	toSerialize["localizedText"] = o.LocalizedText
+	toSerialize["localizedText"] = o.LocalizedText.Get()
 	toSerialize["key"] = o.Key
-	toSerialize["parameters"] = o.Parameters
+	if o.Parameters != nil {
+		toSerialize["parameters"] = o.Parameters
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value

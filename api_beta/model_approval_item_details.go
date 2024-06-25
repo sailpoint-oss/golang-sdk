@@ -22,16 +22,16 @@ type ApprovalItemDetails struct {
 	// The approval item's ID
 	Id *string `json:"id,omitempty"`
 	// The account referenced by the approval item
-	Account *string `json:"account,omitempty"`
+	Account NullableString `json:"account,omitempty"`
 	// The name of the application/source
 	Application *string `json:"application,omitempty"`
 	// The attribute's name
-	Name *string `json:"name,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	// The attribute's operation
 	Operation *string `json:"operation,omitempty"`
 	// The attribute's value
-	Value *string `json:"value,omitempty"`
-	State *WorkItemState `json:"state,omitempty"`
+	Value NullableString `json:"value,omitempty"`
+	State NullableWorkItemState `json:"state,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -86,36 +86,46 @@ func (o *ApprovalItemDetails) SetId(v string) {
 	o.Id = &v
 }
 
-// GetAccount returns the Account field value if set, zero value otherwise.
+// GetAccount returns the Account field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApprovalItemDetails) GetAccount() string {
-	if o == nil || isNil(o.Account) {
+	if o == nil || isNil(o.Account.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Account
+	return *o.Account.Get()
 }
 
 // GetAccountOk returns a tuple with the Account field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApprovalItemDetails) GetAccountOk() (*string, bool) {
-	if o == nil || isNil(o.Account) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Account, true
+	return o.Account.Get(), o.Account.IsSet()
 }
 
 // HasAccount returns a boolean if a field has been set.
 func (o *ApprovalItemDetails) HasAccount() bool {
-	if o != nil && !isNil(o.Account) {
+	if o != nil && o.Account.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAccount gets a reference to the given string and assigns it to the Account field.
+// SetAccount gets a reference to the given NullableString and assigns it to the Account field.
 func (o *ApprovalItemDetails) SetAccount(v string) {
-	o.Account = &v
+	o.Account.Set(&v)
+}
+// SetAccountNil sets the value for Account to be an explicit nil
+func (o *ApprovalItemDetails) SetAccountNil() {
+	o.Account.Set(nil)
+}
+
+// UnsetAccount ensures that no value is present for Account, not even an explicit nil
+func (o *ApprovalItemDetails) UnsetAccount() {
+	o.Account.Unset()
 }
 
 // GetApplication returns the Application field value if set, zero value otherwise.
@@ -150,36 +160,46 @@ func (o *ApprovalItemDetails) SetApplication(v string) {
 	o.Application = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApprovalItemDetails) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || isNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApprovalItemDetails) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *ApprovalItemDetails) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *ApprovalItemDetails) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *ApprovalItemDetails) SetNameNil() {
+	o.Name.Set(nil)
+}
+
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *ApprovalItemDetails) UnsetName() {
+	o.Name.Unset()
 }
 
 // GetOperation returns the Operation field value if set, zero value otherwise.
@@ -214,68 +234,88 @@ func (o *ApprovalItemDetails) SetOperation(v string) {
 	o.Operation = &v
 }
 
-// GetValue returns the Value field value if set, zero value otherwise.
+// GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApprovalItemDetails) GetValue() string {
-	if o == nil || isNil(o.Value) {
+	if o == nil || isNil(o.Value.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Value
+	return *o.Value.Get()
 }
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApprovalItemDetails) GetValueOk() (*string, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Value, true
+	return o.Value.Get(), o.Value.IsSet()
 }
 
 // HasValue returns a boolean if a field has been set.
 func (o *ApprovalItemDetails) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && o.Value.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetValue gets a reference to the given string and assigns it to the Value field.
+// SetValue gets a reference to the given NullableString and assigns it to the Value field.
 func (o *ApprovalItemDetails) SetValue(v string) {
-	o.Value = &v
+	o.Value.Set(&v)
+}
+// SetValueNil sets the value for Value to be an explicit nil
+func (o *ApprovalItemDetails) SetValueNil() {
+	o.Value.Set(nil)
 }
 
-// GetState returns the State field value if set, zero value otherwise.
+// UnsetValue ensures that no value is present for Value, not even an explicit nil
+func (o *ApprovalItemDetails) UnsetValue() {
+	o.Value.Unset()
+}
+
+// GetState returns the State field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApprovalItemDetails) GetState() WorkItemState {
-	if o == nil || isNil(o.State) {
+	if o == nil || isNil(o.State.Get()) {
 		var ret WorkItemState
 		return ret
 	}
-	return *o.State
+	return *o.State.Get()
 }
 
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApprovalItemDetails) GetStateOk() (*WorkItemState, bool) {
-	if o == nil || isNil(o.State) {
+	if o == nil {
 		return nil, false
 	}
-	return o.State, true
+	return o.State.Get(), o.State.IsSet()
 }
 
 // HasState returns a boolean if a field has been set.
 func (o *ApprovalItemDetails) HasState() bool {
-	if o != nil && !isNil(o.State) {
+	if o != nil && o.State.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetState gets a reference to the given WorkItemState and assigns it to the State field.
+// SetState gets a reference to the given NullableWorkItemState and assigns it to the State field.
 func (o *ApprovalItemDetails) SetState(v WorkItemState) {
-	o.State = &v
+	o.State.Set(&v)
+}
+// SetStateNil sets the value for State to be an explicit nil
+func (o *ApprovalItemDetails) SetStateNil() {
+	o.State.Set(nil)
+}
+
+// UnsetState ensures that no value is present for State, not even an explicit nil
+func (o *ApprovalItemDetails) UnsetState() {
+	o.State.Unset()
 }
 
 func (o ApprovalItemDetails) MarshalJSON() ([]byte, error) {
@@ -291,23 +331,23 @@ func (o ApprovalItemDetails) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Account) {
-		toSerialize["account"] = o.Account
+	if o.Account.IsSet() {
+		toSerialize["account"] = o.Account.Get()
 	}
 	if !isNil(o.Application) {
 		toSerialize["application"] = o.Application
 	}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
 	if !isNil(o.Operation) {
 		toSerialize["operation"] = o.Operation
 	}
-	if !isNil(o.Value) {
-		toSerialize["value"] = o.Value
+	if o.Value.IsSet() {
+		toSerialize["value"] = o.Value.Get()
 	}
-	if !isNil(o.State) {
-		toSerialize["state"] = o.State
+	if o.State.IsSet() {
+		toSerialize["state"] = o.State.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

@@ -19,6 +19,8 @@ var _ MappedNullable = &WorkflowLibraryFormFields{}
 
 // WorkflowLibraryFormFields struct for WorkflowLibraryFormFields
 type WorkflowLibraryFormFields struct {
+	// Description of the form field
+	Description *string `json:"description,omitempty"`
 	// Describes the form field in the UI
 	HelpText *string `json:"helpText,omitempty"`
 	// A human readable name for this form field in the UI
@@ -28,7 +30,7 @@ type WorkflowLibraryFormFields struct {
 	// Denotes if this field is a required attribute
 	Required *bool `json:"required,omitempty"`
 	// The type of the form field
-	Type map[string]interface{} `json:"type,omitempty"`
+	Type NullableString `json:"type,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -49,6 +51,38 @@ func NewWorkflowLibraryFormFields() *WorkflowLibraryFormFields {
 func NewWorkflowLibraryFormFieldsWithDefaults() *WorkflowLibraryFormFields {
 	this := WorkflowLibraryFormFields{}
 	return &this
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *WorkflowLibraryFormFields) GetDescription() string {
+	if o == nil || isNil(o.Description) {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkflowLibraryFormFields) GetDescriptionOk() (*string, bool) {
+	if o == nil || isNil(o.Description) {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *WorkflowLibraryFormFields) HasDescription() bool {
+	if o != nil && !isNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *WorkflowLibraryFormFields) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetHelpText returns the HelpText field value if set, zero value otherwise.
@@ -180,36 +214,45 @@ func (o *WorkflowLibraryFormFields) SetRequired(v bool) {
 }
 
 // GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *WorkflowLibraryFormFields) GetType() map[string]interface{} {
-	if o == nil {
-		var ret map[string]interface{}
+func (o *WorkflowLibraryFormFields) GetType() string {
+	if o == nil || isNil(o.Type.Get()) {
+		var ret string
 		return ret
 	}
-	return o.Type
+	return *o.Type.Get()
 }
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *WorkflowLibraryFormFields) GetTypeOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Type) {
-		return map[string]interface{}{}, false
+func (o *WorkflowLibraryFormFields) GetTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
 	}
-	return o.Type, true
+	return o.Type.Get(), o.Type.IsSet()
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *WorkflowLibraryFormFields) HasType() bool {
-	if o != nil && isNil(o.Type) {
+	if o != nil && o.Type.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetType gets a reference to the given map[string]interface{} and assigns it to the Type field.
-func (o *WorkflowLibraryFormFields) SetType(v map[string]interface{}) {
-	o.Type = v
+// SetType gets a reference to the given NullableString and assigns it to the Type field.
+func (o *WorkflowLibraryFormFields) SetType(v string) {
+	o.Type.Set(&v)
+}
+// SetTypeNil sets the value for Type to be an explicit nil
+func (o *WorkflowLibraryFormFields) SetTypeNil() {
+	o.Type.Set(nil)
+}
+
+// UnsetType ensures that no value is present for Type, not even an explicit nil
+func (o *WorkflowLibraryFormFields) UnsetType() {
+	o.Type.Unset()
 }
 
 func (o WorkflowLibraryFormFields) MarshalJSON() ([]byte, error) {
@@ -222,6 +265,9 @@ func (o WorkflowLibraryFormFields) MarshalJSON() ([]byte, error) {
 
 func (o WorkflowLibraryFormFields) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !isNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
 	if !isNil(o.HelpText) {
 		toSerialize["helpText"] = o.HelpText
 	}
@@ -234,8 +280,8 @@ func (o WorkflowLibraryFormFields) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Required) {
 		toSerialize["required"] = o.Required
 	}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
+	if o.Type.IsSet() {
+		toSerialize["type"] = o.Type.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -255,6 +301,7 @@ func (o *WorkflowLibraryFormFields) UnmarshalJSON(bytes []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+		delete(additionalProperties, "description")
 		delete(additionalProperties, "helpText")
 		delete(additionalProperties, "label")
 		delete(additionalProperties, "name")

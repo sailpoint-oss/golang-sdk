@@ -89,6 +89,7 @@ docs/Account.md
 docs/AccountAction.md
 docs/AccountActivitiesAPI.md
 docs/AccountActivity.md
+docs/AccountActivityApprovalStatus.md
 docs/AccountActivityDocument.md
 docs/AccountActivityItem.md
 docs/AccountActivityItemOperation.md
@@ -447,6 +448,7 @@ docs/RequestedItemStatusCancelledRequestDetails.md
 docs/RequestedItemStatusPreApprovalTriggerDetails.md
 docs/RequestedItemStatusProvisioningDetails.md
 docs/RequestedItemStatusRequestState.md
+docs/RequestedItemStatusRequestedFor.md
 docs/RequestedItemStatusRequesterComment.md
 docs/RequestedItemStatusSodViolationContext.md
 docs/ReviewDecision.md
@@ -651,6 +653,7 @@ model_access_type.go
 model_account.go
 model_account_action.go
 model_account_activity.go
+model_account_activity_approval_status.go
 model_account_activity_document.go
 model_account_activity_item.go
 model_account_activity_item_operation.go
@@ -980,6 +983,7 @@ model_requested_item_status_cancelled_request_details.go
 model_requested_item_status_pre_approval_trigger_details.go
 model_requested_item_status_provisioning_details.go
 model_requested_item_status_request_state.go
+model_requested_item_status_requested_for.go
 model_requested_item_status_requester_comment.go
 model_requested_item_status_sod_violation_context.go
 model_review_decision.go

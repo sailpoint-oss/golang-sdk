@@ -32,8 +32,7 @@ type CompletedApproval struct {
 	RequestCreated *time.Time `json:"requestCreated,omitempty"`
 	RequestType NullableAccessRequestType `json:"requestType,omitempty"`
 	Requester *AccessItemRequesterDto `json:"requester,omitempty"`
-	// Identities access was requested for.
-	RequestedFor []AccessItemRequestedForDto `json:"requestedFor,omitempty"`
+	RequestedFor *RequestedItemStatusRequestedFor `json:"requestedFor,omitempty"`
 	ReviewedBy *CompletedApprovalReviewedBy `json:"reviewedBy,omitempty"`
 	Owner *AccessItemOwnerDto `json:"owner,omitempty"`
 	RequestedObject *RequestableObjectReference `json:"requestedObject,omitempty"`
@@ -52,7 +51,7 @@ type CompletedApproval struct {
 	RemoveDateUpdateRequested *bool `json:"removeDateUpdateRequested,omitempty"`
 	// The remove date or sunset date that was assigned at the time of the request.
 	CurrentRemoveDate NullableTime `json:"currentRemoveDate,omitempty"`
-	SodViolationContext *SodViolationContextCheckCompleted1 `json:"sodViolationContext,omitempty"`
+	SodViolationContext NullableSodViolationContextCheckCompleted1 `json:"sodViolationContext,omitempty"`
 	PreApprovalTriggerResult NullableCompletedApprovalPreApprovalTriggerResult `json:"preApprovalTriggerResult,omitempty"`
 	// Arbitrary key-value pairs provided during the request.
 	ClientMetadata *map[string]string `json:"clientMetadata,omitempty"`
@@ -323,17 +322,17 @@ func (o *CompletedApproval) SetRequester(v AccessItemRequesterDto) {
 }
 
 // GetRequestedFor returns the RequestedFor field value if set, zero value otherwise.
-func (o *CompletedApproval) GetRequestedFor() []AccessItemRequestedForDto {
+func (o *CompletedApproval) GetRequestedFor() RequestedItemStatusRequestedFor {
 	if o == nil || isNil(o.RequestedFor) {
-		var ret []AccessItemRequestedForDto
+		var ret RequestedItemStatusRequestedFor
 		return ret
 	}
-	return o.RequestedFor
+	return *o.RequestedFor
 }
 
 // GetRequestedForOk returns a tuple with the RequestedFor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CompletedApproval) GetRequestedForOk() ([]AccessItemRequestedForDto, bool) {
+func (o *CompletedApproval) GetRequestedForOk() (*RequestedItemStatusRequestedFor, bool) {
 	if o == nil || isNil(o.RequestedFor) {
 		return nil, false
 	}
@@ -349,9 +348,9 @@ func (o *CompletedApproval) HasRequestedFor() bool {
 	return false
 }
 
-// SetRequestedFor gets a reference to the given []AccessItemRequestedForDto and assigns it to the RequestedFor field.
-func (o *CompletedApproval) SetRequestedFor(v []AccessItemRequestedForDto) {
-	o.RequestedFor = v
+// SetRequestedFor gets a reference to the given RequestedItemStatusRequestedFor and assigns it to the RequestedFor field.
+func (o *CompletedApproval) SetRequestedFor(v RequestedItemStatusRequestedFor) {
+	o.RequestedFor = &v
 }
 
 // GetReviewedBy returns the ReviewedBy field value if set, zero value otherwise.
@@ -768,36 +767,46 @@ func (o *CompletedApproval) UnsetCurrentRemoveDate() {
 	o.CurrentRemoveDate.Unset()
 }
 
-// GetSodViolationContext returns the SodViolationContext field value if set, zero value otherwise.
+// GetSodViolationContext returns the SodViolationContext field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CompletedApproval) GetSodViolationContext() SodViolationContextCheckCompleted1 {
-	if o == nil || isNil(o.SodViolationContext) {
+	if o == nil || isNil(o.SodViolationContext.Get()) {
 		var ret SodViolationContextCheckCompleted1
 		return ret
 	}
-	return *o.SodViolationContext
+	return *o.SodViolationContext.Get()
 }
 
 // GetSodViolationContextOk returns a tuple with the SodViolationContext field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CompletedApproval) GetSodViolationContextOk() (*SodViolationContextCheckCompleted1, bool) {
-	if o == nil || isNil(o.SodViolationContext) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SodViolationContext, true
+	return o.SodViolationContext.Get(), o.SodViolationContext.IsSet()
 }
 
 // HasSodViolationContext returns a boolean if a field has been set.
 func (o *CompletedApproval) HasSodViolationContext() bool {
-	if o != nil && !isNil(o.SodViolationContext) {
+	if o != nil && o.SodViolationContext.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSodViolationContext gets a reference to the given SodViolationContextCheckCompleted1 and assigns it to the SodViolationContext field.
+// SetSodViolationContext gets a reference to the given NullableSodViolationContextCheckCompleted1 and assigns it to the SodViolationContext field.
 func (o *CompletedApproval) SetSodViolationContext(v SodViolationContextCheckCompleted1) {
-	o.SodViolationContext = &v
+	o.SodViolationContext.Set(&v)
+}
+// SetSodViolationContextNil sets the value for SodViolationContext to be an explicit nil
+func (o *CompletedApproval) SetSodViolationContextNil() {
+	o.SodViolationContext.Set(nil)
+}
+
+// UnsetSodViolationContext ensures that no value is present for SodViolationContext, not even an explicit nil
+func (o *CompletedApproval) UnsetSodViolationContext() {
+	o.SodViolationContext.Unset()
 }
 
 // GetPreApprovalTriggerResult returns the PreApprovalTriggerResult field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -986,8 +995,8 @@ func (o CompletedApproval) ToMap() (map[string]interface{}, error) {
 	if o.CurrentRemoveDate.IsSet() {
 		toSerialize["currentRemoveDate"] = o.CurrentRemoveDate.Get()
 	}
-	if !isNil(o.SodViolationContext) {
-		toSerialize["sodViolationContext"] = o.SodViolationContext
+	if o.SodViolationContext.IsSet() {
+		toSerialize["sodViolationContext"] = o.SodViolationContext.Get()
 	}
 	if o.PreApprovalTriggerResult.IsSet() {
 		toSerialize["preApprovalTriggerResult"] = o.PreApprovalTriggerResult.Get()

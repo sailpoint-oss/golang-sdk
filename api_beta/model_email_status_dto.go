@@ -19,8 +19,9 @@ var _ MappedNullable = &EmailStatusDto{}
 
 // EmailStatusDto struct for EmailStatusDto
 type EmailStatusDto struct {
-	Id *string `json:"id,omitempty"`
+	Id NullableString `json:"id,omitempty"`
 	Email *string `json:"email,omitempty"`
+	IsVerifiedByDomain *bool `json:"isVerifiedByDomain,omitempty"`
 	VerificationStatus *string `json:"verificationStatus,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -44,36 +45,46 @@ func NewEmailStatusDtoWithDefaults() *EmailStatusDto {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EmailStatusDto) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || isNil(o.Id.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Id
+	return *o.Id.Get()
 }
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EmailStatusDto) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return o.Id.Get(), o.Id.IsSet()
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *EmailStatusDto) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && o.Id.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId gets a reference to the given NullableString and assigns it to the Id field.
 func (o *EmailStatusDto) SetId(v string) {
-	o.Id = &v
+	o.Id.Set(&v)
+}
+// SetIdNil sets the value for Id to be an explicit nil
+func (o *EmailStatusDto) SetIdNil() {
+	o.Id.Set(nil)
+}
+
+// UnsetId ensures that no value is present for Id, not even an explicit nil
+func (o *EmailStatusDto) UnsetId() {
+	o.Id.Unset()
 }
 
 // GetEmail returns the Email field value if set, zero value otherwise.
@@ -106,6 +117,38 @@ func (o *EmailStatusDto) HasEmail() bool {
 // SetEmail gets a reference to the given string and assigns it to the Email field.
 func (o *EmailStatusDto) SetEmail(v string) {
 	o.Email = &v
+}
+
+// GetIsVerifiedByDomain returns the IsVerifiedByDomain field value if set, zero value otherwise.
+func (o *EmailStatusDto) GetIsVerifiedByDomain() bool {
+	if o == nil || isNil(o.IsVerifiedByDomain) {
+		var ret bool
+		return ret
+	}
+	return *o.IsVerifiedByDomain
+}
+
+// GetIsVerifiedByDomainOk returns a tuple with the IsVerifiedByDomain field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EmailStatusDto) GetIsVerifiedByDomainOk() (*bool, bool) {
+	if o == nil || isNil(o.IsVerifiedByDomain) {
+		return nil, false
+	}
+	return o.IsVerifiedByDomain, true
+}
+
+// HasIsVerifiedByDomain returns a boolean if a field has been set.
+func (o *EmailStatusDto) HasIsVerifiedByDomain() bool {
+	if o != nil && !isNil(o.IsVerifiedByDomain) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsVerifiedByDomain gets a reference to the given bool and assigns it to the IsVerifiedByDomain field.
+func (o *EmailStatusDto) SetIsVerifiedByDomain(v bool) {
+	o.IsVerifiedByDomain = &v
 }
 
 // GetVerificationStatus returns the VerificationStatus field value if set, zero value otherwise.
@@ -150,11 +193,14 @@ func (o EmailStatusDto) MarshalJSON() ([]byte, error) {
 
 func (o EmailStatusDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
+	if o.Id.IsSet() {
+		toSerialize["id"] = o.Id.Get()
 	}
 	if !isNil(o.Email) {
 		toSerialize["email"] = o.Email
+	}
+	if !isNil(o.IsVerifiedByDomain) {
+		toSerialize["isVerifiedByDomain"] = o.IsVerifiedByDomain
 	}
 	if !isNil(o.VerificationStatus) {
 		toSerialize["verificationStatus"] = o.VerificationStatus
@@ -179,6 +225,7 @@ func (o *EmailStatusDto) UnmarshalJSON(bytes []byte) (err error) {
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "email")
+		delete(additionalProperties, "isVerifiedByDomain")
 		delete(additionalProperties, "verificationStatus")
 		o.AdditionalProperties = additionalProperties
 	}

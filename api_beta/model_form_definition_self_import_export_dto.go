@@ -14,41 +14,41 @@ import (
 	"encoding/json"
 )
 
-// checks if the AccessItemRequestedFor type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AccessItemRequestedFor{}
+// checks if the FormDefinitionSelfImportExportDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FormDefinitionSelfImportExportDto{}
 
-// AccessItemRequestedFor Identity the access item is requested for.
-type AccessItemRequestedFor struct {
-	// DTO type of identity the access item is requested for.
+// FormDefinitionSelfImportExportDto Self block for imported/exported object.
+type FormDefinitionSelfImportExportDto struct {
+	// Imported/exported object's DTO type.
 	Type *string `json:"type,omitempty"`
-	// ID of identity the access item is requested for.
+	// Imported/exported object's ID.
 	Id *string `json:"id,omitempty"`
-	// Human-readable display name of identity the access item is requested for.
+	// Imported/exported object's display name.
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _AccessItemRequestedFor AccessItemRequestedFor
+type _FormDefinitionSelfImportExportDto FormDefinitionSelfImportExportDto
 
-// NewAccessItemRequestedFor instantiates a new AccessItemRequestedFor object
+// NewFormDefinitionSelfImportExportDto instantiates a new FormDefinitionSelfImportExportDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccessItemRequestedFor() *AccessItemRequestedFor {
-	this := AccessItemRequestedFor{}
+func NewFormDefinitionSelfImportExportDto() *FormDefinitionSelfImportExportDto {
+	this := FormDefinitionSelfImportExportDto{}
 	return &this
 }
 
-// NewAccessItemRequestedForWithDefaults instantiates a new AccessItemRequestedFor object
+// NewFormDefinitionSelfImportExportDtoWithDefaults instantiates a new FormDefinitionSelfImportExportDto object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewAccessItemRequestedForWithDefaults() *AccessItemRequestedFor {
-	this := AccessItemRequestedFor{}
+func NewFormDefinitionSelfImportExportDtoWithDefaults() *FormDefinitionSelfImportExportDto {
+	this := FormDefinitionSelfImportExportDto{}
 	return &this
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *AccessItemRequestedFor) GetType() string {
+func (o *FormDefinitionSelfImportExportDto) GetType() string {
 	if o == nil || isNil(o.Type) {
 		var ret string
 		return ret
@@ -58,7 +58,7 @@ func (o *AccessItemRequestedFor) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessItemRequestedFor) GetTypeOk() (*string, bool) {
+func (o *FormDefinitionSelfImportExportDto) GetTypeOk() (*string, bool) {
 	if o == nil || isNil(o.Type) {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *AccessItemRequestedFor) GetTypeOk() (*string, bool) {
 }
 
 // HasType returns a boolean if a field has been set.
-func (o *AccessItemRequestedFor) HasType() bool {
+func (o *FormDefinitionSelfImportExportDto) HasType() bool {
 	if o != nil && !isNil(o.Type) {
 		return true
 	}
@@ -75,12 +75,12 @@ func (o *AccessItemRequestedFor) HasType() bool {
 }
 
 // SetType gets a reference to the given string and assigns it to the Type field.
-func (o *AccessItemRequestedFor) SetType(v string) {
+func (o *FormDefinitionSelfImportExportDto) SetType(v string) {
 	o.Type = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *AccessItemRequestedFor) GetId() string {
+func (o *FormDefinitionSelfImportExportDto) GetId() string {
 	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
@@ -90,7 +90,7 @@ func (o *AccessItemRequestedFor) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessItemRequestedFor) GetIdOk() (*string, bool) {
+func (o *FormDefinitionSelfImportExportDto) GetIdOk() (*string, bool) {
 	if o == nil || isNil(o.Id) {
 		return nil, false
 	}
@@ -98,7 +98,7 @@ func (o *AccessItemRequestedFor) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *AccessItemRequestedFor) HasId() bool {
+func (o *FormDefinitionSelfImportExportDto) HasId() bool {
 	if o != nil && !isNil(o.Id) {
 		return true
 	}
@@ -107,12 +107,12 @@ func (o *AccessItemRequestedFor) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *AccessItemRequestedFor) SetId(v string) {
+func (o *FormDefinitionSelfImportExportDto) SetId(v string) {
 	o.Id = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *AccessItemRequestedFor) GetName() string {
+func (o *FormDefinitionSelfImportExportDto) GetName() string {
 	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
@@ -122,7 +122,7 @@ func (o *AccessItemRequestedFor) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessItemRequestedFor) GetNameOk() (*string, bool) {
+func (o *FormDefinitionSelfImportExportDto) GetNameOk() (*string, bool) {
 	if o == nil || isNil(o.Name) {
 		return nil, false
 	}
@@ -130,7 +130,7 @@ func (o *AccessItemRequestedFor) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *AccessItemRequestedFor) HasName() bool {
+func (o *FormDefinitionSelfImportExportDto) HasName() bool {
 	if o != nil && !isNil(o.Name) {
 		return true
 	}
@@ -139,11 +139,11 @@ func (o *AccessItemRequestedFor) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *AccessItemRequestedFor) SetName(v string) {
+func (o *FormDefinitionSelfImportExportDto) SetName(v string) {
 	o.Name = &v
 }
 
-func (o AccessItemRequestedFor) MarshalJSON() ([]byte, error) {
+func (o FormDefinitionSelfImportExportDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -151,7 +151,7 @@ func (o AccessItemRequestedFor) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o AccessItemRequestedFor) ToMap() (map[string]interface{}, error) {
+func (o FormDefinitionSelfImportExportDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -170,11 +170,11 @@ func (o AccessItemRequestedFor) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccessItemRequestedFor) UnmarshalJSON(bytes []byte) (err error) {
-	varAccessItemRequestedFor := _AccessItemRequestedFor{}
+func (o *FormDefinitionSelfImportExportDto) UnmarshalJSON(bytes []byte) (err error) {
+	varFormDefinitionSelfImportExportDto := _FormDefinitionSelfImportExportDto{}
 
-	if err = json.Unmarshal(bytes, &varAccessItemRequestedFor); err == nil {
-	*o = AccessItemRequestedFor(varAccessItemRequestedFor)
+	if err = json.Unmarshal(bytes, &varFormDefinitionSelfImportExportDto); err == nil {
+	*o = FormDefinitionSelfImportExportDto(varFormDefinitionSelfImportExportDto)
 }
 
 	additionalProperties := make(map[string]interface{})
@@ -189,38 +189,38 @@ func (o *AccessItemRequestedFor) UnmarshalJSON(bytes []byte) (err error) {
 	return err
 }
 
-type NullableAccessItemRequestedFor struct {
-	value *AccessItemRequestedFor
+type NullableFormDefinitionSelfImportExportDto struct {
+	value *FormDefinitionSelfImportExportDto
 	isSet bool
 }
 
-func (v NullableAccessItemRequestedFor) Get() *AccessItemRequestedFor {
+func (v NullableFormDefinitionSelfImportExportDto) Get() *FormDefinitionSelfImportExportDto {
 	return v.value
 }
 
-func (v *NullableAccessItemRequestedFor) Set(val *AccessItemRequestedFor) {
+func (v *NullableFormDefinitionSelfImportExportDto) Set(val *FormDefinitionSelfImportExportDto) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableAccessItemRequestedFor) IsSet() bool {
+func (v NullableFormDefinitionSelfImportExportDto) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableAccessItemRequestedFor) Unset() {
+func (v *NullableFormDefinitionSelfImportExportDto) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableAccessItemRequestedFor(val *AccessItemRequestedFor) *NullableAccessItemRequestedFor {
-	return &NullableAccessItemRequestedFor{value: val, isSet: true}
+func NewNullableFormDefinitionSelfImportExportDto(val *FormDefinitionSelfImportExportDto) *NullableFormDefinitionSelfImportExportDto {
+	return &NullableFormDefinitionSelfImportExportDto{value: val, isSet: true}
 }
 
-func (v NullableAccessItemRequestedFor) MarshalJSON() ([]byte, error) {
+func (v NullableFormDefinitionSelfImportExportDto) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableAccessItemRequestedFor) UnmarshalJSON(src []byte) error {
+func (v *NullableFormDefinitionSelfImportExportDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

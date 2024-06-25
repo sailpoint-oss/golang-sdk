@@ -20,7 +20,7 @@ var _ MappedNullable = &Value{}
 // Value struct for Value
 type Value struct {
 	// The type of attribute value
-	Type *string `json:"type,omitempty"`
+	Type NullableString `json:"type,omitempty"`
 	// The attribute value
 	Value *string `json:"value,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -45,36 +45,46 @@ func NewValueWithDefaults() *Value {
 	return &this
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Value) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || isNil(o.Type.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Type
+	return *o.Type.Get()
 }
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Value) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Type, true
+	return o.Type.Get(), o.Type.IsSet()
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *Value) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && o.Type.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
+// SetType gets a reference to the given NullableString and assigns it to the Type field.
 func (o *Value) SetType(v string) {
-	o.Type = &v
+	o.Type.Set(&v)
+}
+// SetTypeNil sets the value for Type to be an explicit nil
+func (o *Value) SetTypeNil() {
+	o.Type.Set(nil)
+}
+
+// UnsetType ensures that no value is present for Type, not even an explicit nil
+func (o *Value) UnsetType() {
+	o.Type.Unset()
 }
 
 // GetValue returns the Value field value if set, zero value otherwise.
@@ -119,8 +129,8 @@ func (o Value) MarshalJSON() ([]byte, error) {
 
 func (o Value) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Type) {
-		toSerialize["type"] = o.Type
+	if o.Type.IsSet() {
+		toSerialize["type"] = o.Type.Get()
 	}
 	if !isNil(o.Value) {
 		toSerialize["value"] = o.Value

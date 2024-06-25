@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | Unique ID of the common access item | [optional] 
 **Access** | Pointer to [**CommonAccessItemAccess**](CommonAccessItemAccess.md) |  | [optional] 
 **Status** | Pointer to **string** | CONFIRMED or DENIED | [optional] 
+**CommonAccessType** | Pointer to **string** |  | [optional] 
 **LastUpdated** | Pointer to **time.Time** |  | [optional] [readonly] 
 **ReviewedByUser** | Pointer to **bool** | true if user has confirmed or denied status | [optional] 
 **LastReviewed** | Pointer to **NullableTime** |  | [optional] [readonly] 
@@ -105,6 +106,31 @@ SetStatus sets Status field to given value.
 `func (o *CommonAccessResponse) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### GetCommonAccessType
+
+`func (o *CommonAccessResponse) GetCommonAccessType() string`
+
+GetCommonAccessType returns the CommonAccessType field if non-nil, zero value otherwise.
+
+### GetCommonAccessTypeOk
+
+`func (o *CommonAccessResponse) GetCommonAccessTypeOk() (*string, bool)`
+
+GetCommonAccessTypeOk returns a tuple with the CommonAccessType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCommonAccessType
+
+`func (o *CommonAccessResponse) SetCommonAccessType(v string)`
+
+SetCommonAccessType sets CommonAccessType field to given value.
+
+### HasCommonAccessType
+
+`func (o *CommonAccessResponse) HasCommonAccessType() bool`
+
+HasCommonAccessType returns a boolean if a field has been set.
 
 ### GetLastUpdated
 

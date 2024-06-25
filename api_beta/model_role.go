@@ -45,6 +45,8 @@ type Role struct {
 	RevocationRequestConfig *RevocabilityForRole `json:"revocationRequestConfig,omitempty"`
 	// List of IDs of segments, if any, to which this Role is assigned.
 	Segments []string `json:"segments,omitempty"`
+	Dimensional NullableBool `json:"dimensional,omitempty"`
+	DimensionRefs NullableString `json:"dimensionRefs,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -564,6 +566,90 @@ func (o *Role) SetSegments(v []string) {
 	o.Segments = v
 }
 
+// GetDimensional returns the Dimensional field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Role) GetDimensional() bool {
+	if o == nil || isNil(o.Dimensional.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.Dimensional.Get()
+}
+
+// GetDimensionalOk returns a tuple with the Dimensional field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Role) GetDimensionalOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Dimensional.Get(), o.Dimensional.IsSet()
+}
+
+// HasDimensional returns a boolean if a field has been set.
+func (o *Role) HasDimensional() bool {
+	if o != nil && o.Dimensional.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDimensional gets a reference to the given NullableBool and assigns it to the Dimensional field.
+func (o *Role) SetDimensional(v bool) {
+	o.Dimensional.Set(&v)
+}
+// SetDimensionalNil sets the value for Dimensional to be an explicit nil
+func (o *Role) SetDimensionalNil() {
+	o.Dimensional.Set(nil)
+}
+
+// UnsetDimensional ensures that no value is present for Dimensional, not even an explicit nil
+func (o *Role) UnsetDimensional() {
+	o.Dimensional.Unset()
+}
+
+// GetDimensionRefs returns the DimensionRefs field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Role) GetDimensionRefs() string {
+	if o == nil || isNil(o.DimensionRefs.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.DimensionRefs.Get()
+}
+
+// GetDimensionRefsOk returns a tuple with the DimensionRefs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Role) GetDimensionRefsOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DimensionRefs.Get(), o.DimensionRefs.IsSet()
+}
+
+// HasDimensionRefs returns a boolean if a field has been set.
+func (o *Role) HasDimensionRefs() bool {
+	if o != nil && o.DimensionRefs.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDimensionRefs gets a reference to the given NullableString and assigns it to the DimensionRefs field.
+func (o *Role) SetDimensionRefs(v string) {
+	o.DimensionRefs.Set(&v)
+}
+// SetDimensionRefsNil sets the value for DimensionRefs to be an explicit nil
+func (o *Role) SetDimensionRefsNil() {
+	o.DimensionRefs.Set(nil)
+}
+
+// UnsetDimensionRefs ensures that no value is present for DimensionRefs, not even an explicit nil
+func (o *Role) UnsetDimensionRefs() {
+	o.DimensionRefs.Unset()
+}
+
 func (o Role) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -610,6 +696,12 @@ func (o Role) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Segments != nil {
 		toSerialize["segments"] = o.Segments
+	}
+	if o.Dimensional.IsSet() {
+		toSerialize["dimensional"] = o.Dimensional.Get()
+	}
+	if o.DimensionRefs.IsSet() {
+		toSerialize["dimensionRefs"] = o.DimensionRefs.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -666,6 +758,8 @@ func (o *Role) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "accessRequestConfig")
 		delete(additionalProperties, "revocationRequestConfig")
 		delete(additionalProperties, "segments")
+		delete(additionalProperties, "dimensional")
+		delete(additionalProperties, "dimensionRefs")
 		o.AdditionalProperties = additionalProperties
 	}
 

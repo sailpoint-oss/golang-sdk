@@ -3311,7 +3311,7 @@ func (r ApiGetRoleMiningSessionsRequest) Count(count bool) ApiGetRoleMiningSessi
 	return r
 }
 
-func (r ApiGetRoleMiningSessionsRequest) Execute() ([]RoleMiningSessionDto, *http.Response, error) {
+func (r ApiGetRoleMiningSessionsRequest) Execute() ([]RoleMiningSessionResponse, *http.Response, error) {
 	return r.ApiService.GetRoleMiningSessionsExecute(r)
 }
 
@@ -3331,13 +3331,13 @@ func (a *IAIRoleMiningAPIService) GetRoleMiningSessions(ctx context.Context) Api
 }
 
 // Execute executes the request
-//  @return []RoleMiningSessionDto
-func (a *IAIRoleMiningAPIService) GetRoleMiningSessionsExecute(r ApiGetRoleMiningSessionsRequest) ([]RoleMiningSessionDto, *http.Response, error) {
+//  @return []RoleMiningSessionResponse
+func (a *IAIRoleMiningAPIService) GetRoleMiningSessionsExecute(r ApiGetRoleMiningSessionsRequest) ([]RoleMiningSessionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []RoleMiningSessionDto
+		localVarReturnValue  []RoleMiningSessionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.GetRoleMiningSessions")

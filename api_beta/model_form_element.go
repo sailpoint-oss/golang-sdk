@@ -21,14 +21,13 @@ var _ MappedNullable = &FormElement{}
 type FormElement struct {
 	// Form element identifier.
 	Id *string `json:"id,omitempty"`
-	// FormElementType value.  TEXT FormElementTypeText TOGGLE FormElementTypeToggle TEXTAREA FormElementTypeTextArea HIDDEN FormElementTypeHidden PHONE FormElementTypePhone EMAIL FormElementTypeEmail SELECT FormElementTypeSelect DATE FormElementTypeDate SECTION FormElementTypeSection COLUMNS FormElementTypeColumns
+	// FormElementType value.  TEXT FormElementTypeText TOGGLE FormElementTypeToggle TEXTAREA FormElementTypeTextArea HIDDEN FormElementTypeHidden PHONE FormElementTypePhone EMAIL FormElementTypeEmail SELECT FormElementTypeSelect DATE FormElementTypeDate SECTION FormElementTypeSection COLUMN_SET FormElementTypeColumns IMAGE FormElementTypeImage DESCRIPTION FormElementTypeDescription
 	ElementType *string `json:"elementType,omitempty"`
 	// Config object.
 	Config map[string]map[string]interface{} `json:"config,omitempty"`
 	// Technical key.
 	Key *string `json:"key,omitempty"`
-	// Set of FormElementValidation items.
-	Validations map[string]interface{} `json:"validations,omitempty"`
+	Validations []FormElementValidationsSet `json:"validations,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -179,10 +178,10 @@ func (o *FormElement) SetKey(v string) {
 	o.Key = &v
 }
 
-// GetValidations returns the Validations field value if set, zero value otherwise.
-func (o *FormElement) GetValidations() map[string]interface{} {
-	if o == nil || isNil(o.Validations) {
-		var ret map[string]interface{}
+// GetValidations returns the Validations field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *FormElement) GetValidations() []FormElementValidationsSet {
+	if o == nil {
+		var ret []FormElementValidationsSet
 		return ret
 	}
 	return o.Validations
@@ -190,24 +189,25 @@ func (o *FormElement) GetValidations() map[string]interface{} {
 
 // GetValidationsOk returns a tuple with the Validations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormElement) GetValidationsOk() (map[string]interface{}, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *FormElement) GetValidationsOk() ([]FormElementValidationsSet, bool) {
 	if o == nil || isNil(o.Validations) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.Validations, true
 }
 
 // HasValidations returns a boolean if a field has been set.
 func (o *FormElement) HasValidations() bool {
-	if o != nil && !isNil(o.Validations) {
+	if o != nil && isNil(o.Validations) {
 		return true
 	}
 
 	return false
 }
 
-// SetValidations gets a reference to the given map[string]interface{} and assigns it to the Validations field.
-func (o *FormElement) SetValidations(v map[string]interface{}) {
+// SetValidations gets a reference to the given []FormElementValidationsSet and assigns it to the Validations field.
+func (o *FormElement) SetValidations(v []FormElementValidationsSet) {
 	o.Validations = v
 }
 
@@ -233,7 +233,7 @@ func (o FormElement) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Key) {
 		toSerialize["key"] = o.Key
 	}
-	if !isNil(o.Validations) {
+	if o.Validations != nil {
 		toSerialize["validations"] = o.Validations
 	}
 

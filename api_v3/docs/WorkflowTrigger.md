@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | **string** | The trigger type | 
+**DisplayName** | Pointer to **NullableString** |  | [optional] 
 **Attributes** | [**WorkflowTriggerAttributes**](WorkflowTriggerAttributes.md) |  | 
 
 ## Methods
@@ -46,6 +47,41 @@ and a boolean to check if the value has been set.
 SetType sets Type field to given value.
 
 
+### GetDisplayName
+
+`func (o *WorkflowTrigger) GetDisplayName() string`
+
+GetDisplayName returns the DisplayName field if non-nil, zero value otherwise.
+
+### GetDisplayNameOk
+
+`func (o *WorkflowTrigger) GetDisplayNameOk() (*string, bool)`
+
+GetDisplayNameOk returns a tuple with the DisplayName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisplayName
+
+`func (o *WorkflowTrigger) SetDisplayName(v string)`
+
+SetDisplayName sets DisplayName field to given value.
+
+### HasDisplayName
+
+`func (o *WorkflowTrigger) HasDisplayName() bool`
+
+HasDisplayName returns a boolean if a field has been set.
+
+### SetDisplayNameNil
+
+`func (o *WorkflowTrigger) SetDisplayNameNil(b bool)`
+
+ SetDisplayNameNil sets the value for DisplayName to be an explicit nil
+
+### UnsetDisplayName
+`func (o *WorkflowTrigger) UnsetDisplayName()`
+
+UnsetDisplayName ensures that no value is present for DisplayName, not even an explicit nil
 ### GetAttributes
 
 `func (o *WorkflowTrigger) GetAttributes() WorkflowTriggerAttributes`

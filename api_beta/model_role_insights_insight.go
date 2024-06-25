@@ -27,6 +27,7 @@ type RoleInsightsInsight struct {
 	IdentitiesImpacted *int32 `json:"identitiesImpacted,omitempty"`
 	// The total number of identities.
 	TotalNumberOfIdentities *int32 `json:"totalNumberOfIdentities,omitempty"`
+	ImpactedIdentityNames NullableString `json:"impactedIdentityNames,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -177,6 +178,48 @@ func (o *RoleInsightsInsight) SetTotalNumberOfIdentities(v int32) {
 	o.TotalNumberOfIdentities = &v
 }
 
+// GetImpactedIdentityNames returns the ImpactedIdentityNames field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *RoleInsightsInsight) GetImpactedIdentityNames() string {
+	if o == nil || isNil(o.ImpactedIdentityNames.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ImpactedIdentityNames.Get()
+}
+
+// GetImpactedIdentityNamesOk returns a tuple with the ImpactedIdentityNames field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *RoleInsightsInsight) GetImpactedIdentityNamesOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ImpactedIdentityNames.Get(), o.ImpactedIdentityNames.IsSet()
+}
+
+// HasImpactedIdentityNames returns a boolean if a field has been set.
+func (o *RoleInsightsInsight) HasImpactedIdentityNames() bool {
+	if o != nil && o.ImpactedIdentityNames.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetImpactedIdentityNames gets a reference to the given NullableString and assigns it to the ImpactedIdentityNames field.
+func (o *RoleInsightsInsight) SetImpactedIdentityNames(v string) {
+	o.ImpactedIdentityNames.Set(&v)
+}
+// SetImpactedIdentityNamesNil sets the value for ImpactedIdentityNames to be an explicit nil
+func (o *RoleInsightsInsight) SetImpactedIdentityNamesNil() {
+	o.ImpactedIdentityNames.Set(nil)
+}
+
+// UnsetImpactedIdentityNames ensures that no value is present for ImpactedIdentityNames, not even an explicit nil
+func (o *RoleInsightsInsight) UnsetImpactedIdentityNames() {
+	o.ImpactedIdentityNames.Unset()
+}
+
 func (o RoleInsightsInsight) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -198,6 +241,9 @@ func (o RoleInsightsInsight) ToMap() (map[string]interface{}, error) {
 	}
 	if !isNil(o.TotalNumberOfIdentities) {
 		toSerialize["totalNumberOfIdentities"] = o.TotalNumberOfIdentities
+	}
+	if o.ImpactedIdentityNames.IsSet() {
+		toSerialize["impactedIdentityNames"] = o.ImpactedIdentityNames.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -221,6 +267,7 @@ func (o *RoleInsightsInsight) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "identitiesWithAccess")
 		delete(additionalProperties, "identitiesImpacted")
 		delete(additionalProperties, "totalNumberOfIdentities")
+		delete(additionalProperties, "impactedIdentityNames")
 		o.AdditionalProperties = additionalProperties
 	}
 

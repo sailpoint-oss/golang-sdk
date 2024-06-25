@@ -3,17 +3,17 @@
 ## Enum
 
 
-* `FINISHED` (value: `"FINISHED"`)
+* `FINISHED` (value: `"Finished"`)
 
-* `REJECTED` (value: `"REJECTED"`)
+* `REJECTED` (value: `"Rejected"`)
 
-* `RETURNED` (value: `"RETURNED"`)
+* `RETURNED` (value: `"Returned"`)
 
-* `EXPIRED` (value: `"EXPIRED"`)
+* `EXPIRED` (value: `"Expired"`)
 
-* `PENDING` (value: `"PENDING"`)
+* `PENDING` (value: `"Pending"`)
 
-* `CANCELED` (value: `"CANCELED"`)
+* `CANCELED` (value: `"Canceled"`)
 
 * `NULL` (value: `"null"`)
 

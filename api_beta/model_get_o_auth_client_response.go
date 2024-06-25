@@ -53,6 +53,8 @@ type GetOAuthClientResponse struct {
 	Created time.Time `json:"created"`
 	// The date and time, down to the millisecond, when the API Client was last updated
 	Modified time.Time `json:"modified"`
+	Secret NullableString `json:"secret,omitempty"`
+	Metadata NullableString `json:"metadata,omitempty"`
 	// The date and time, down to the millisecond, when this API Client was last used to generate an access token. This timestamp does not get updated on every API Client usage, but only once a day. This property can be useful for identifying which API Clients are no longer actively used and can be removed.
 	LastUsed NullableTime `json:"lastUsed,omitempty"`
 	// Scopes of the API Client.
@@ -513,6 +515,90 @@ func (o *GetOAuthClientResponse) SetModified(v time.Time) {
 	o.Modified = v
 }
 
+// GetSecret returns the Secret field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GetOAuthClientResponse) GetSecret() string {
+	if o == nil || isNil(o.Secret.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Secret.Get()
+}
+
+// GetSecretOk returns a tuple with the Secret field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GetOAuthClientResponse) GetSecretOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Secret.Get(), o.Secret.IsSet()
+}
+
+// HasSecret returns a boolean if a field has been set.
+func (o *GetOAuthClientResponse) HasSecret() bool {
+	if o != nil && o.Secret.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSecret gets a reference to the given NullableString and assigns it to the Secret field.
+func (o *GetOAuthClientResponse) SetSecret(v string) {
+	o.Secret.Set(&v)
+}
+// SetSecretNil sets the value for Secret to be an explicit nil
+func (o *GetOAuthClientResponse) SetSecretNil() {
+	o.Secret.Set(nil)
+}
+
+// UnsetSecret ensures that no value is present for Secret, not even an explicit nil
+func (o *GetOAuthClientResponse) UnsetSecret() {
+	o.Secret.Unset()
+}
+
+// GetMetadata returns the Metadata field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GetOAuthClientResponse) GetMetadata() string {
+	if o == nil || isNil(o.Metadata.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Metadata.Get()
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GetOAuthClientResponse) GetMetadataOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Metadata.Get(), o.Metadata.IsSet()
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *GetOAuthClientResponse) HasMetadata() bool {
+	if o != nil && o.Metadata.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given NullableString and assigns it to the Metadata field.
+func (o *GetOAuthClientResponse) SetMetadata(v string) {
+	o.Metadata.Set(&v)
+}
+// SetMetadataNil sets the value for Metadata to be an explicit nil
+func (o *GetOAuthClientResponse) SetMetadataNil() {
+	o.Metadata.Set(nil)
+}
+
+// UnsetMetadata ensures that no value is present for Metadata, not even an explicit nil
+func (o *GetOAuthClientResponse) UnsetMetadata() {
+	o.Metadata.Unset()
+}
+
 // GetLastUsed returns the LastUsed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GetOAuthClientResponse) GetLastUsed() time.Time {
 	if o == nil || isNil(o.LastUsed.Get()) {
@@ -610,6 +696,12 @@ func (o GetOAuthClientResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["claimsSupported"] = o.ClaimsSupported
 	toSerialize["created"] = o.Created
 	toSerialize["modified"] = o.Modified
+	if o.Secret.IsSet() {
+		toSerialize["secret"] = o.Secret.Get()
+	}
+	if o.Metadata.IsSet() {
+		toSerialize["metadata"] = o.Metadata.Get()
+	}
 	if o.LastUsed.IsSet() {
 		toSerialize["lastUsed"] = o.LastUsed.Get()
 	}
@@ -689,6 +781,8 @@ func (o *GetOAuthClientResponse) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "claimsSupported")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "modified")
+		delete(additionalProperties, "secret")
+		delete(additionalProperties, "metadata")
 		delete(additionalProperties, "lastUsed")
 		delete(additionalProperties, "scope")
 		o.AdditionalProperties = additionalProperties

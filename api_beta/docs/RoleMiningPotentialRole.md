@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedBy** | Pointer to [**EntityCreatedByDTO**](EntityCreatedByDTO.md) |  | [optional] 
+**CreatedBy** | Pointer to [**RoleMiningSessionResponseCreatedBy**](RoleMiningSessionResponseCreatedBy.md) |  | [optional] 
 **Density** | Pointer to **int32** | The density of a potential role. | [optional] 
-**Description** | Pointer to **string** | The description of a potential role. | [optional] 
+**Description** | Pointer to **NullableString** | The description of a potential role. | [optional] 
 **EntitlementCount** | Pointer to **int32** | The number of entitlements in a potential role. | [optional] 
 **ExcludedEntitlements** | Pointer to **[]string** | The list of entitlement ids to be excluded. | [optional] 
 **Freshness** | Pointer to **int32** | The freshness of a potential role. | [optional] 
@@ -16,10 +16,13 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Name of the potential role. | [optional] 
 **ProvisionState** | Pointer to [**RoleMiningPotentialRoleProvisionState**](RoleMiningPotentialRoleProvisionState.md) |  | [optional] 
 **Quality** | Pointer to **int32** | The quality of a potential role. | [optional] 
-**RoleId** | Pointer to **string** | The roleId of a potential role. | [optional] 
+**RoleId** | Pointer to **NullableString** | The roleId of a potential role. | [optional] 
 **Saved** | Pointer to **bool** | The potential role&#39;s saved status. | [optional] 
 **Session** | Pointer to [**RoleMiningSessionParametersDto**](RoleMiningSessionParametersDto.md) |  | [optional] 
 **Type** | Pointer to [**RoleMiningRoleType**](RoleMiningRoleType.md) |  | [optional] 
+**Id** | Pointer to **string** | Id of the potential role | [optional] 
+**CreatedDate** | Pointer to **time.Time** | The date-time when this potential role was created. | [optional] 
+**ModifiedDate** | Pointer to **time.Time** | The date-time when this potential role was modified. | [optional] 
 
 ## Methods
 
@@ -42,20 +45,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCreatedBy
 
-`func (o *RoleMiningPotentialRole) GetCreatedBy() EntityCreatedByDTO`
+`func (o *RoleMiningPotentialRole) GetCreatedBy() RoleMiningSessionResponseCreatedBy`
 
 GetCreatedBy returns the CreatedBy field if non-nil, zero value otherwise.
 
 ### GetCreatedByOk
 
-`func (o *RoleMiningPotentialRole) GetCreatedByOk() (*EntityCreatedByDTO, bool)`
+`func (o *RoleMiningPotentialRole) GetCreatedByOk() (*RoleMiningSessionResponseCreatedBy, bool)`
 
 GetCreatedByOk returns a tuple with the CreatedBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedBy
 
-`func (o *RoleMiningPotentialRole) SetCreatedBy(v EntityCreatedByDTO)`
+`func (o *RoleMiningPotentialRole) SetCreatedBy(v RoleMiningSessionResponseCreatedBy)`
 
 SetCreatedBy sets CreatedBy field to given value.
 
@@ -115,6 +118,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *RoleMiningPotentialRole) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *RoleMiningPotentialRole) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetEntitlementCount
 
 `func (o *RoleMiningPotentialRole) GetEntitlementCount() int32`
@@ -165,6 +178,16 @@ SetExcludedEntitlements sets ExcludedEntitlements field to given value.
 
 HasExcludedEntitlements returns a boolean if a field has been set.
 
+### SetExcludedEntitlementsNil
+
+`func (o *RoleMiningPotentialRole) SetExcludedEntitlementsNil(b bool)`
+
+ SetExcludedEntitlementsNil sets the value for ExcludedEntitlements to be an explicit nil
+
+### UnsetExcludedEntitlements
+`func (o *RoleMiningPotentialRole) UnsetExcludedEntitlements()`
+
+UnsetExcludedEntitlements ensures that no value is present for ExcludedEntitlements, not even an explicit nil
 ### GetFreshness
 
 `func (o *RoleMiningPotentialRole) GetFreshness() int32`
@@ -240,6 +263,16 @@ SetIdentityDistribution sets IdentityDistribution field to given value.
 
 HasIdentityDistribution returns a boolean if a field has been set.
 
+### SetIdentityDistributionNil
+
+`func (o *RoleMiningPotentialRole) SetIdentityDistributionNil(b bool)`
+
+ SetIdentityDistributionNil sets the value for IdentityDistribution to be an explicit nil
+
+### UnsetIdentityDistribution
+`func (o *RoleMiningPotentialRole) UnsetIdentityDistribution()`
+
+UnsetIdentityDistribution ensures that no value is present for IdentityDistribution, not even an explicit nil
 ### GetIdentityIds
 
 `func (o *RoleMiningPotentialRole) GetIdentityIds() []string`
@@ -365,6 +398,16 @@ SetRoleId sets RoleId field to given value.
 
 HasRoleId returns a boolean if a field has been set.
 
+### SetRoleIdNil
+
+`func (o *RoleMiningPotentialRole) SetRoleIdNil(b bool)`
+
+ SetRoleIdNil sets the value for RoleId to be an explicit nil
+
+### UnsetRoleId
+`func (o *RoleMiningPotentialRole) UnsetRoleId()`
+
+UnsetRoleId ensures that no value is present for RoleId, not even an explicit nil
 ### GetSaved
 
 `func (o *RoleMiningPotentialRole) GetSaved() bool`
@@ -439,6 +482,81 @@ SetType sets Type field to given value.
 `func (o *RoleMiningPotentialRole) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### GetId
+
+`func (o *RoleMiningPotentialRole) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *RoleMiningPotentialRole) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *RoleMiningPotentialRole) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *RoleMiningPotentialRole) HasId() bool`
+
+HasId returns a boolean if a field has been set.
+
+### GetCreatedDate
+
+`func (o *RoleMiningPotentialRole) GetCreatedDate() time.Time`
+
+GetCreatedDate returns the CreatedDate field if non-nil, zero value otherwise.
+
+### GetCreatedDateOk
+
+`func (o *RoleMiningPotentialRole) GetCreatedDateOk() (*time.Time, bool)`
+
+GetCreatedDateOk returns a tuple with the CreatedDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedDate
+
+`func (o *RoleMiningPotentialRole) SetCreatedDate(v time.Time)`
+
+SetCreatedDate sets CreatedDate field to given value.
+
+### HasCreatedDate
+
+`func (o *RoleMiningPotentialRole) HasCreatedDate() bool`
+
+HasCreatedDate returns a boolean if a field has been set.
+
+### GetModifiedDate
+
+`func (o *RoleMiningPotentialRole) GetModifiedDate() time.Time`
+
+GetModifiedDate returns the ModifiedDate field if non-nil, zero value otherwise.
+
+### GetModifiedDateOk
+
+`func (o *RoleMiningPotentialRole) GetModifiedDateOk() (*time.Time, bool)`
+
+GetModifiedDateOk returns a tuple with the ModifiedDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetModifiedDate
+
+`func (o *RoleMiningPotentialRole) SetModifiedDate(v time.Time)`
+
+SetModifiedDate sets ModifiedDate field to given value.
+
+### HasModifiedDate
+
+`func (o *RoleMiningPotentialRole) HasModifiedDate() bool`
+
+HasModifiedDate returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

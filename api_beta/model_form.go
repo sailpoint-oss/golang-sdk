@@ -20,16 +20,16 @@ var _ MappedNullable = &Form{}
 // Form struct for Form
 type Form struct {
 	// ID of the form
-	Id *string `json:"id,omitempty"`
+	Id NullableString `json:"id,omitempty"`
 	// Name of the form
-	Name *string `json:"name,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	// The form title
 	Title *string `json:"title,omitempty"`
 	// The form subtitle.
 	Subtitle *string `json:"subtitle,omitempty"`
 	// The name of the user that should be shown this form
 	TargetUser *string `json:"targetUser,omitempty"`
-	Sections *SectionDetails `json:"sections,omitempty"`
+	Sections []SectionDetails `json:"sections,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -52,68 +52,88 @@ func NewFormWithDefaults() *Form {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Form) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || isNil(o.Id.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Id
+	return *o.Id.Get()
 }
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Form) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return o.Id.Get(), o.Id.IsSet()
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Form) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && o.Id.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId gets a reference to the given NullableString and assigns it to the Id field.
 func (o *Form) SetId(v string) {
-	o.Id = &v
+	o.Id.Set(&v)
+}
+// SetIdNil sets the value for Id to be an explicit nil
+func (o *Form) SetIdNil() {
+	o.Id.Set(nil)
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// UnsetId ensures that no value is present for Id, not even an explicit nil
+func (o *Form) UnsetId() {
+	o.Id.Unset()
+}
+
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Form) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || isNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Form) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *Form) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *Form) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *Form) SetNameNil() {
+	o.Name.Set(nil)
+}
+
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *Form) UnsetName() {
+	o.Name.Unset()
 }
 
 // GetTitle returns the Title field value if set, zero value otherwise.
@@ -213,17 +233,17 @@ func (o *Form) SetTargetUser(v string) {
 }
 
 // GetSections returns the Sections field value if set, zero value otherwise.
-func (o *Form) GetSections() SectionDetails {
+func (o *Form) GetSections() []SectionDetails {
 	if o == nil || isNil(o.Sections) {
-		var ret SectionDetails
+		var ret []SectionDetails
 		return ret
 	}
-	return *o.Sections
+	return o.Sections
 }
 
 // GetSectionsOk returns a tuple with the Sections field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Form) GetSectionsOk() (*SectionDetails, bool) {
+func (o *Form) GetSectionsOk() ([]SectionDetails, bool) {
 	if o == nil || isNil(o.Sections) {
 		return nil, false
 	}
@@ -239,9 +259,9 @@ func (o *Form) HasSections() bool {
 	return false
 }
 
-// SetSections gets a reference to the given SectionDetails and assigns it to the Sections field.
-func (o *Form) SetSections(v SectionDetails) {
-	o.Sections = &v
+// SetSections gets a reference to the given []SectionDetails and assigns it to the Sections field.
+func (o *Form) SetSections(v []SectionDetails) {
+	o.Sections = v
 }
 
 func (o Form) MarshalJSON() ([]byte, error) {
@@ -254,11 +274,11 @@ func (o Form) MarshalJSON() ([]byte, error) {
 
 func (o Form) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
+	if o.Id.IsSet() {
+		toSerialize["id"] = o.Id.Get()
 	}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
 	if !isNil(o.Title) {
 		toSerialize["title"] = o.Title

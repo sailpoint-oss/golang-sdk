@@ -12,6 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the RoleMiningPotentialRoleSummary type satisfies the MappedNullable interface at compile time
@@ -40,6 +41,13 @@ type RoleMiningPotentialRoleSummary struct {
 	// The quality metric (0-100) of this potential role. Higher quality values indicate this potential role has high density and freshness.
 	Quality *int32 `json:"quality,omitempty"`
 	Type *RoleMiningRoleType `json:"type,omitempty"`
+	CreatedBy *RoleMiningPotentialRoleSummaryCreatedBy `json:"createdBy,omitempty"`
+	// The date-time when this potential role was created.
+	CreatedDate *time.Time `json:"createdDate,omitempty"`
+	// The potential role's saved status
+	Saved *bool `json:"saved,omitempty"`
+	// Description of the potential role
+	Description NullableString `json:"description,omitempty"`
 	Session *RoleMiningSessionParametersDto `json:"session,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -52,6 +60,8 @@ type _RoleMiningPotentialRoleSummary RoleMiningPotentialRoleSummary
 // will change when the set of required properties is changed
 func NewRoleMiningPotentialRoleSummary() *RoleMiningPotentialRoleSummary {
 	this := RoleMiningPotentialRoleSummary{}
+	var saved bool = false
+	this.Saved = &saved
 	return &this
 }
 
@@ -60,6 +70,8 @@ func NewRoleMiningPotentialRoleSummary() *RoleMiningPotentialRoleSummary {
 // but it doesn't guarantee that properties required by API are set
 func NewRoleMiningPotentialRoleSummaryWithDefaults() *RoleMiningPotentialRoleSummary {
 	this := RoleMiningPotentialRoleSummary{}
+	var saved bool = false
+	this.Saved = &saved
 	return &this
 }
 
@@ -457,6 +469,144 @@ func (o *RoleMiningPotentialRoleSummary) SetType(v RoleMiningRoleType) {
 	o.Type = &v
 }
 
+// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
+func (o *RoleMiningPotentialRoleSummary) GetCreatedBy() RoleMiningPotentialRoleSummaryCreatedBy {
+	if o == nil || isNil(o.CreatedBy) {
+		var ret RoleMiningPotentialRoleSummaryCreatedBy
+		return ret
+	}
+	return *o.CreatedBy
+}
+
+// GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RoleMiningPotentialRoleSummary) GetCreatedByOk() (*RoleMiningPotentialRoleSummaryCreatedBy, bool) {
+	if o == nil || isNil(o.CreatedBy) {
+		return nil, false
+	}
+	return o.CreatedBy, true
+}
+
+// HasCreatedBy returns a boolean if a field has been set.
+func (o *RoleMiningPotentialRoleSummary) HasCreatedBy() bool {
+	if o != nil && !isNil(o.CreatedBy) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedBy gets a reference to the given RoleMiningPotentialRoleSummaryCreatedBy and assigns it to the CreatedBy field.
+func (o *RoleMiningPotentialRoleSummary) SetCreatedBy(v RoleMiningPotentialRoleSummaryCreatedBy) {
+	o.CreatedBy = &v
+}
+
+// GetCreatedDate returns the CreatedDate field value if set, zero value otherwise.
+func (o *RoleMiningPotentialRoleSummary) GetCreatedDate() time.Time {
+	if o == nil || isNil(o.CreatedDate) {
+		var ret time.Time
+		return ret
+	}
+	return *o.CreatedDate
+}
+
+// GetCreatedDateOk returns a tuple with the CreatedDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RoleMiningPotentialRoleSummary) GetCreatedDateOk() (*time.Time, bool) {
+	if o == nil || isNil(o.CreatedDate) {
+		return nil, false
+	}
+	return o.CreatedDate, true
+}
+
+// HasCreatedDate returns a boolean if a field has been set.
+func (o *RoleMiningPotentialRoleSummary) HasCreatedDate() bool {
+	if o != nil && !isNil(o.CreatedDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedDate gets a reference to the given time.Time and assigns it to the CreatedDate field.
+func (o *RoleMiningPotentialRoleSummary) SetCreatedDate(v time.Time) {
+	o.CreatedDate = &v
+}
+
+// GetSaved returns the Saved field value if set, zero value otherwise.
+func (o *RoleMiningPotentialRoleSummary) GetSaved() bool {
+	if o == nil || isNil(o.Saved) {
+		var ret bool
+		return ret
+	}
+	return *o.Saved
+}
+
+// GetSavedOk returns a tuple with the Saved field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RoleMiningPotentialRoleSummary) GetSavedOk() (*bool, bool) {
+	if o == nil || isNil(o.Saved) {
+		return nil, false
+	}
+	return o.Saved, true
+}
+
+// HasSaved returns a boolean if a field has been set.
+func (o *RoleMiningPotentialRoleSummary) HasSaved() bool {
+	if o != nil && !isNil(o.Saved) {
+		return true
+	}
+
+	return false
+}
+
+// SetSaved gets a reference to the given bool and assigns it to the Saved field.
+func (o *RoleMiningPotentialRoleSummary) SetSaved(v bool) {
+	o.Saved = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *RoleMiningPotentialRoleSummary) GetDescription() string {
+	if o == nil || isNil(o.Description.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Description.Get()
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *RoleMiningPotentialRoleSummary) GetDescriptionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Description.Get(), o.Description.IsSet()
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *RoleMiningPotentialRoleSummary) HasDescription() bool {
+	if o != nil && o.Description.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+func (o *RoleMiningPotentialRoleSummary) SetDescription(v string) {
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *RoleMiningPotentialRoleSummary) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *RoleMiningPotentialRoleSummary) UnsetDescription() {
+	o.Description.Unset()
+}
+
 // GetSession returns the Session field value if set, zero value otherwise.
 func (o *RoleMiningPotentialRoleSummary) GetSession() RoleMiningSessionParametersDto {
 	if o == nil || isNil(o.Session) {
@@ -535,6 +685,18 @@ func (o RoleMiningPotentialRoleSummary) ToMap() (map[string]interface{}, error) 
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
+	if !isNil(o.CreatedBy) {
+		toSerialize["createdBy"] = o.CreatedBy
+	}
+	if !isNil(o.CreatedDate) {
+		toSerialize["createdDate"] = o.CreatedDate
+	}
+	if !isNil(o.Saved) {
+		toSerialize["saved"] = o.Saved
+	}
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
+	}
 	if !isNil(o.Session) {
 		toSerialize["session"] = o.Session
 	}
@@ -568,6 +730,10 @@ func (o *RoleMiningPotentialRoleSummary) UnmarshalJSON(bytes []byte) (err error)
 		delete(additionalProperties, "freshness")
 		delete(additionalProperties, "quality")
 		delete(additionalProperties, "type")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "createdDate")
+		delete(additionalProperties, "saved")
+		delete(additionalProperties, "description")
 		delete(additionalProperties, "session")
 		o.AdditionalProperties = additionalProperties
 	}

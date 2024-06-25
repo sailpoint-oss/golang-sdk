@@ -20,23 +20,23 @@ type WorkItemState string
 
 // List of WorkItemState
 const (
-	WORKITEMSTATE_FINISHED WorkItemState = "FINISHED"
-	WORKITEMSTATE_REJECTED WorkItemState = "REJECTED"
-	WORKITEMSTATE_RETURNED WorkItemState = "RETURNED"
-	WORKITEMSTATE_EXPIRED WorkItemState = "EXPIRED"
-	WORKITEMSTATE_PENDING WorkItemState = "PENDING"
-	WORKITEMSTATE_CANCELED WorkItemState = "CANCELED"
+	WORKITEMSTATE_FINISHED WorkItemState = "Finished"
+	WORKITEMSTATE_REJECTED WorkItemState = "Rejected"
+	WORKITEMSTATE_RETURNED WorkItemState = "Returned"
+	WORKITEMSTATE_EXPIRED WorkItemState = "Expired"
+	WORKITEMSTATE_PENDING WorkItemState = "Pending"
+	WORKITEMSTATE_CANCELED WorkItemState = "Canceled"
 	WORKITEMSTATE_NULL WorkItemState = "null"
 )
 
 // All allowed values of WorkItemState enum
 var AllowedWorkItemStateEnumValues = []WorkItemState{
-	"FINISHED",
-	"REJECTED",
-	"RETURNED",
-	"EXPIRED",
-	"PENDING",
-	"CANCELED",
+	"Finished",
+	"Rejected",
+	"Returned",
+	"Expired",
+	"Pending",
+	"Canceled",
 	"null",
 }
 

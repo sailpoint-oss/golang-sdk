@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | Governance group description. | [optional] 
 **MemberCount** | Pointer to **int64** | Number of members in the governance group. | [optional] [readonly] 
 **ConnectionCount** | Pointer to **int64** | Number of connections in the governance group. | [optional] [readonly] 
+**Created** | Pointer to **time.Time** |  | [optional] 
+**Modified** | Pointer to **time.Time** |  | [optional] 
 
 ## Methods
 
@@ -179,6 +181,56 @@ SetConnectionCount sets ConnectionCount field to given value.
 `func (o *WorkgroupDto) HasConnectionCount() bool`
 
 HasConnectionCount returns a boolean if a field has been set.
+
+### GetCreated
+
+`func (o *WorkgroupDto) GetCreated() time.Time`
+
+GetCreated returns the Created field if non-nil, zero value otherwise.
+
+### GetCreatedOk
+
+`func (o *WorkgroupDto) GetCreatedOk() (*time.Time, bool)`
+
+GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreated
+
+`func (o *WorkgroupDto) SetCreated(v time.Time)`
+
+SetCreated sets Created field to given value.
+
+### HasCreated
+
+`func (o *WorkgroupDto) HasCreated() bool`
+
+HasCreated returns a boolean if a field has been set.
+
+### GetModified
+
+`func (o *WorkgroupDto) GetModified() time.Time`
+
+GetModified returns the Modified field if non-nil, zero value otherwise.
+
+### GetModifiedOk
+
+`func (o *WorkgroupDto) GetModifiedOk() (*time.Time, bool)`
+
+GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetModified
+
+`func (o *WorkgroupDto) SetModified(v time.Time)`
+
+SetModified sets Modified field to given value.
+
+### HasModified
+
+`func (o *WorkgroupDto) HasModified() bool`
+
+HasModified returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Cluster** | Pointer to [**NullableSourceCluster**](SourceCluster.md) |  | [optional] 
 **AccountCorrelationConfig** | Pointer to [**NullableSourceAccountCorrelationConfig**](SourceAccountCorrelationConfig.md) |  | [optional] 
 **AccountCorrelationRule** | Pointer to [**NullableSourceAccountCorrelationRule**](SourceAccountCorrelationRule.md) |  | [optional] 
-**ManagerCorrelationMapping** | Pointer to [**ManagerCorrelationMapping**](ManagerCorrelationMapping.md) |  | [optional] 
+**ManagerCorrelationMapping** | Pointer to [**NullableManagerCorrelationMapping**](ManagerCorrelationMapping.md) |  | [optional] 
 **ManagerCorrelationRule** | Pointer to [**NullableSourceManagerCorrelationRule**](SourceManagerCorrelationRule.md) |  | [optional] 
 **BeforeProvisioningRule** | Pointer to [**NullableSourceBeforeProvisioningRule**](SourceBeforeProvisioningRule.md) |  | [optional] 
 **Schemas** | Pointer to [**[]SourceSchemasInner**](SourceSchemasInner.md) | List of references to schema objects. | [optional] 
@@ -275,6 +275,16 @@ SetManagerCorrelationMapping sets ManagerCorrelationMapping field to given value
 
 HasManagerCorrelationMapping returns a boolean if a field has been set.
 
+### SetManagerCorrelationMappingNil
+
+`func (o *Source) SetManagerCorrelationMappingNil(b bool)`
+
+ SetManagerCorrelationMappingNil sets the value for ManagerCorrelationMapping to be an explicit nil
+
+### UnsetManagerCorrelationMapping
+`func (o *Source) UnsetManagerCorrelationMapping()`
+
+UnsetManagerCorrelationMapping ensures that no value is present for ManagerCorrelationMapping, not even an explicit nil
 ### GetManagerCorrelationRule
 
 `func (o *Source) GetManagerCorrelationRule() SourceManagerCorrelationRule`

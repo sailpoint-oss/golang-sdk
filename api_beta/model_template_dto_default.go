@@ -43,6 +43,8 @@ type TemplateDtoDefault struct {
 	ReplyTo NullableString `json:"replyTo,omitempty"`
 	// The description of the default template
 	Description NullableString `json:"description,omitempty"`
+	SlackTemplate NullableTemplateSlack `json:"slackTemplate,omitempty"`
+	TeamsTemplate NullableTemplateTeams `json:"teamsTemplate,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -483,6 +485,90 @@ func (o *TemplateDtoDefault) UnsetDescription() {
 	o.Description.Unset()
 }
 
+// GetSlackTemplate returns the SlackTemplate field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TemplateDtoDefault) GetSlackTemplate() TemplateSlack {
+	if o == nil || isNil(o.SlackTemplate.Get()) {
+		var ret TemplateSlack
+		return ret
+	}
+	return *o.SlackTemplate.Get()
+}
+
+// GetSlackTemplateOk returns a tuple with the SlackTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TemplateDtoDefault) GetSlackTemplateOk() (*TemplateSlack, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SlackTemplate.Get(), o.SlackTemplate.IsSet()
+}
+
+// HasSlackTemplate returns a boolean if a field has been set.
+func (o *TemplateDtoDefault) HasSlackTemplate() bool {
+	if o != nil && o.SlackTemplate.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSlackTemplate gets a reference to the given NullableTemplateSlack and assigns it to the SlackTemplate field.
+func (o *TemplateDtoDefault) SetSlackTemplate(v TemplateSlack) {
+	o.SlackTemplate.Set(&v)
+}
+// SetSlackTemplateNil sets the value for SlackTemplate to be an explicit nil
+func (o *TemplateDtoDefault) SetSlackTemplateNil() {
+	o.SlackTemplate.Set(nil)
+}
+
+// UnsetSlackTemplate ensures that no value is present for SlackTemplate, not even an explicit nil
+func (o *TemplateDtoDefault) UnsetSlackTemplate() {
+	o.SlackTemplate.Unset()
+}
+
+// GetTeamsTemplate returns the TeamsTemplate field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TemplateDtoDefault) GetTeamsTemplate() TemplateTeams {
+	if o == nil || isNil(o.TeamsTemplate.Get()) {
+		var ret TemplateTeams
+		return ret
+	}
+	return *o.TeamsTemplate.Get()
+}
+
+// GetTeamsTemplateOk returns a tuple with the TeamsTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TemplateDtoDefault) GetTeamsTemplateOk() (*TemplateTeams, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.TeamsTemplate.Get(), o.TeamsTemplate.IsSet()
+}
+
+// HasTeamsTemplate returns a boolean if a field has been set.
+func (o *TemplateDtoDefault) HasTeamsTemplate() bool {
+	if o != nil && o.TeamsTemplate.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTeamsTemplate gets a reference to the given NullableTemplateTeams and assigns it to the TeamsTemplate field.
+func (o *TemplateDtoDefault) SetTeamsTemplate(v TemplateTeams) {
+	o.TeamsTemplate.Set(&v)
+}
+// SetTeamsTemplateNil sets the value for TeamsTemplate to be an explicit nil
+func (o *TemplateDtoDefault) SetTeamsTemplateNil() {
+	o.TeamsTemplate.Set(nil)
+}
+
+// UnsetTeamsTemplate ensures that no value is present for TeamsTemplate, not even an explicit nil
+func (o *TemplateDtoDefault) UnsetTeamsTemplate() {
+	o.TeamsTemplate.Unset()
+}
+
 func (o TemplateDtoDefault) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -526,6 +612,12 @@ func (o TemplateDtoDefault) ToMap() (map[string]interface{}, error) {
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
+	if o.SlackTemplate.IsSet() {
+		toSerialize["slackTemplate"] = o.SlackTemplate.Get()
+	}
+	if o.TeamsTemplate.IsSet() {
+		toSerialize["teamsTemplate"] = o.TeamsTemplate.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -555,6 +647,8 @@ func (o *TemplateDtoDefault) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "from")
 		delete(additionalProperties, "replyTo")
 		delete(additionalProperties, "description")
+		delete(additionalProperties, "slackTemplate")
+		delete(additionalProperties, "teamsTemplate")
 		o.AdditionalProperties = additionalProperties
 	}
 

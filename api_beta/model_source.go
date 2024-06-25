@@ -31,7 +31,7 @@ type Source struct {
 	Cluster NullableSourceCluster `json:"cluster,omitempty"`
 	AccountCorrelationConfig NullableSourceAccountCorrelationConfig `json:"accountCorrelationConfig,omitempty"`
 	AccountCorrelationRule NullableSourceAccountCorrelationRule `json:"accountCorrelationRule,omitempty"`
-	ManagerCorrelationMapping *ManagerCorrelationMapping `json:"managerCorrelationMapping,omitempty"`
+	ManagerCorrelationMapping NullableManagerCorrelationMapping `json:"managerCorrelationMapping,omitempty"`
 	ManagerCorrelationRule NullableSourceManagerCorrelationRule `json:"managerCorrelationRule,omitempty"`
 	BeforeProvisioningRule NullableSourceBeforeProvisioningRule `json:"beforeProvisioningRule,omitempty"`
 	// List of references to schema objects.
@@ -350,36 +350,46 @@ func (o *Source) UnsetAccountCorrelationRule() {
 	o.AccountCorrelationRule.Unset()
 }
 
-// GetManagerCorrelationMapping returns the ManagerCorrelationMapping field value if set, zero value otherwise.
+// GetManagerCorrelationMapping returns the ManagerCorrelationMapping field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Source) GetManagerCorrelationMapping() ManagerCorrelationMapping {
-	if o == nil || isNil(o.ManagerCorrelationMapping) {
+	if o == nil || isNil(o.ManagerCorrelationMapping.Get()) {
 		var ret ManagerCorrelationMapping
 		return ret
 	}
-	return *o.ManagerCorrelationMapping
+	return *o.ManagerCorrelationMapping.Get()
 }
 
 // GetManagerCorrelationMappingOk returns a tuple with the ManagerCorrelationMapping field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Source) GetManagerCorrelationMappingOk() (*ManagerCorrelationMapping, bool) {
-	if o == nil || isNil(o.ManagerCorrelationMapping) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ManagerCorrelationMapping, true
+	return o.ManagerCorrelationMapping.Get(), o.ManagerCorrelationMapping.IsSet()
 }
 
 // HasManagerCorrelationMapping returns a boolean if a field has been set.
 func (o *Source) HasManagerCorrelationMapping() bool {
-	if o != nil && !isNil(o.ManagerCorrelationMapping) {
+	if o != nil && o.ManagerCorrelationMapping.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetManagerCorrelationMapping gets a reference to the given ManagerCorrelationMapping and assigns it to the ManagerCorrelationMapping field.
+// SetManagerCorrelationMapping gets a reference to the given NullableManagerCorrelationMapping and assigns it to the ManagerCorrelationMapping field.
 func (o *Source) SetManagerCorrelationMapping(v ManagerCorrelationMapping) {
-	o.ManagerCorrelationMapping = &v
+	o.ManagerCorrelationMapping.Set(&v)
+}
+// SetManagerCorrelationMappingNil sets the value for ManagerCorrelationMapping to be an explicit nil
+func (o *Source) SetManagerCorrelationMappingNil() {
+	o.ManagerCorrelationMapping.Set(nil)
+}
+
+// UnsetManagerCorrelationMapping ensures that no value is present for ManagerCorrelationMapping, not even an explicit nil
+func (o *Source) UnsetManagerCorrelationMapping() {
+	o.ManagerCorrelationMapping.Unset()
 }
 
 // GetManagerCorrelationRule returns the ManagerCorrelationRule field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1176,8 +1186,8 @@ func (o Source) ToMap() (map[string]interface{}, error) {
 	if o.AccountCorrelationRule.IsSet() {
 		toSerialize["accountCorrelationRule"] = o.AccountCorrelationRule.Get()
 	}
-	if !isNil(o.ManagerCorrelationMapping) {
-		toSerialize["managerCorrelationMapping"] = o.ManagerCorrelationMapping
+	if o.ManagerCorrelationMapping.IsSet() {
+		toSerialize["managerCorrelationMapping"] = o.ManagerCorrelationMapping.Get()
 	}
 	if o.ManagerCorrelationRule.IsSet() {
 		toSerialize["managerCorrelationRule"] = o.ManagerCorrelationRule.Get()

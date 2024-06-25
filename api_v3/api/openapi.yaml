@@ -43758,20 +43758,8 @@ components:
           id: 2c7180a46faadee4016fb4e018c20648
           type: IDENTITY
         requestedFor:
-        - name: Robert Robinson
-          id: 2c4180a46faadee4016fb4e018c20626
-          type: IDENTITY
-        - name: Robert Robinson
-          id: 2c4180a46faadee4016fb4e018c20626
-          type: IDENTITY
-        - name: Robert Robinson
-          id: 2c4180a46faadee4016fb4e018c20626
-          type: IDENTITY
-        - name: Robert Robinson
-          id: 2c4180a46faadee4016fb4e018c20626
-          type: IDENTITY
-        - name: Robert Robinson
-          id: 2c4180a46faadee4016fb4e018c20626
+          name: William Wilson
+          id: 2c9180835d191a86015d28455b4b232a
           type: IDENTITY
         removeDate: 2019-10-23T00:00:00Z
         clientMetadata:
@@ -43956,12 +43944,7 @@ components:
         requester:
           $ref: '#/components/schemas/AccessItemRequester'
         requestedFor:
-          description: Identities access was requested for.
-          items:
-            $ref: '#/components/schemas/AccessItemRequestedFor'
-          maxItems: 10
-          minItems: 1
-          type: array
+          $ref: '#/components/schemas/RequestedItemStatus_requestedFor'
         requesterComment:
           $ref: '#/components/schemas/RequestedItemStatus_requesterComment'
         sodViolationContext:
@@ -49569,15 +49552,16 @@ components:
         validateAgainstAccountName: true
         minLength: 8
         description: Information about the Password Policy
-        dateCrated: 2000-01-23T04:56:07.000+00:00
         requireStrongAuthUntrustedGeographies: true
         enablePasswdExpiration: true
         minNumeric: 8
         lastUpdated: 2000-01-23T04:56:07.000+00:00
         validateAgainstAccountId: false
+        dateCreated: 2000-01-23T04:56:07.000+00:00
         accountNameMinWordLength: 6
         minUpper: 8
         firstExpirationReminder: 45
+        modified: modified
         id: 2c91808e7d976f3b017d9f5ceae440c8
         requireStrongAuthn: true
         useDictionary: false
@@ -49589,6 +49573,7 @@ components:
         maxRepeatedChars: 3
         minCharacterTypes: 5
         minAlpha: 5
+        created: created
         useAccountAttributes: false
         accountIdMinWordLength: 4
         minLower: 8
@@ -49605,18 +49590,20 @@ components:
         description:
           description: Description for current password policy.
           example: Information about the Password Policy
+          nullable: true
           type: string
         name:
           description: The name of the password policy.
           example: PasswordPolicy Example
           type: string
-        dateCrated:
+        dateCreated:
           description: Date the Password Policy was created.
           format: date-time
           type: string
         lastUpdated:
           description: Date the Password Policy was updated.
           format: date-time
+          nullable: true
           type: string
         firstExpirationReminder:
           description: The number of days before expiration remaninder.
@@ -49751,6 +49738,12 @@ components:
             not. This field is false by default.
           example: true
           type: boolean
+        created:
+          nullable: true
+          type: string
+        modified:
+          nullable: true
+          type: string
         sourceIds:
           description: List of sources IDs managed by this password policy.
           example:
@@ -50021,7 +50014,9 @@ components:
         - name: "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local"
           id: 2c91809773dee32014e13e122092014e
           type: ENTITLEMENT
+        dimensional: true
         created: 2021-03-01T22:32:58.104Z
+        dimensionRefs: dimensionRefs
         description: Urna amet cursus pellentesque nisl orci maximus lorem nisl euismod
           fusce morbi placerat adipiscing maecenas nisi tristique et metus et lacus
           sed morbi nunc nisl maximus magna arcu varius sollicitudin elementum enim
@@ -50195,6 +50190,12 @@ components:
             type: string
           nullable: true
           type: array
+        dimensional:
+          nullable: true
+          type: boolean
+        dimensionRefs:
+          nullable: true
+          type: string
       required:
       - name
       - owner
@@ -51847,6 +51848,11 @@ components:
             example: 2022-01-10T16:06:16.636381447Z
             format: date-time
             type: string
+          modified:
+            description: The date and time the workflow was modified.
+            example: 2023-12-05T15:18:27.699132301Z
+            format: date-time
+            type: string
           creator:
             $ref: '#/components/schemas/Workflow_allOf_creator'
         type: object
@@ -51875,6 +51881,7 @@ components:
             success:
               type: success
         trigger:
+          displayName: displayName
           attributes: null
           type: EVENT
         enabled: false
@@ -52550,7 +52557,7 @@ components:
           type: string
         approvalStatus:
           allOf:
-          - $ref: '#/components/schemas/WorkItemState'
+          - $ref: '#/components/schemas/AccountActivityApprovalStatus'
           - nullable: true
             type: object
         provisioningStatus:
@@ -53669,29 +53676,6 @@ components:
           example: William Wilson
           type: string
       type: object
-    AccessItemRequestedFor:
-      description: Identity the access item is requested for.
-      example:
-        name: Robert Robinson
-        id: 2c4180a46faadee4016fb4e018c20626
-        type: IDENTITY
-      properties:
-        type:
-          description: DTO type of identity the access item is requested for.
-          enum:
-          - IDENTITY
-          example: IDENTITY
-          type: string
-        id:
-          description: ID of identity the access item is requested for.
-          example: 2c4180a46faadee4016fb4e018c20626
-          type: string
-        name:
-          description: Human-readable display name of identity the access item is
-            requested for.
-          example: Robert Robinson
-          type: string
-      type: object
     SodViolationContextCheckCompleted:
       description: An object referencing a completed SOD violation check
       example:
@@ -53863,6 +53847,29 @@ components:
             \ phase, this will be empty if there are no manual work items."
           example: approvalDetails
           nullable: true
+          type: string
+      type: object
+    AccessItemRequestedFor:
+      description: Identity the access item is requested for.
+      example:
+        name: Robert Robinson
+        id: 2c4180a46faadee4016fb4e018c20626
+        type: IDENTITY
+      properties:
+        type:
+          description: DTO type of identity the access item is requested for.
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        id:
+          description: ID of identity the access item is requested for.
+          example: 2c4180a46faadee4016fb4e018c20626
+          type: string
+        name:
+          description: Human-readable display name of identity the access item is
+            requested for.
+          example: Robert Robinson
           type: string
       type: object
     RequestableObjectReference:
@@ -56183,6 +56190,7 @@ components:
     WorkflowTrigger:
       description: The trigger that starts the workflow
       example:
+        displayName: displayName
         attributes: null
         type: EVENT
       properties:
@@ -56193,6 +56201,9 @@ components:
           - EXTERNAL
           - SCHEDULED
           example: EVENT
+          type: string
+        displayName:
+          nullable: true
           type: string
         attributes:
           $ref: '#/components/schemas/WorkflowTrigger_attributes'
@@ -56496,14 +56507,15 @@ components:
     WorkItemState:
       description: The state of a work item
       enum:
-      - FINISHED
-      - REJECTED
-      - RETURNED
-      - EXPIRED
-      - PENDING
-      - CANCELED
+      - Finished
+      - Rejected
+      - Returned
+      - Expired
+      - Pending
+      - Canceled
       - null
-      example: FINISHED
+      example: Pending
+      nullable: true
       type: string
     BaseSegment:
       properties:
@@ -56668,6 +56680,19 @@ components:
           example: Admin Access
           type: string
       type: object
+    AccountActivityApprovalStatus:
+      description: The state of an approval status
+      enum:
+      - FINISHED
+      - REJECTED
+      - RETURNED
+      - EXPIRED
+      - PENDING
+      - CANCELED
+      - null
+      example: PENDING
+      nullable: true
+      type: string
     ProvisioningState:
       description: Provisioning state of an account activity item
       enum:
@@ -59023,6 +59048,29 @@ components:
       - $ref: '#/components/schemas/CancelledRequestDetails'
       - nullable: true
         type: object
+    RequestedItemStatus_requestedFor:
+      description: Identity access was requested for.
+      example:
+        name: William Wilson
+        id: 2c9180835d191a86015d28455b4b232a
+        type: IDENTITY
+      properties:
+        type:
+          description: Type of the object to which this reference applies
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        id:
+          description: ID of the object to which this reference applies
+          example: 2c9180835d191a86015d28455b4b232a
+          type: string
+        name:
+          description: Human-readable display name of the object to which this reference
+            applies
+          example: William Wilson
+          type: string
+      type: object
     RequestedItemStatus_requesterComment:
       allOf:
       - $ref: '#/components/schemas/CommentDto'

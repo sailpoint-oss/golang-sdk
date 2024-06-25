@@ -19,10 +19,12 @@ var _ MappedNullable = &FormUsedBy{}
 
 // FormUsedBy struct for FormUsedBy
 type FormUsedBy struct {
-	// FormUsedByType value.  WORKFLOW FormUsedByTypeWorkflow SOURCE FormUsedByTypeSource
+	// FormUsedByType value.  WORKFLOW FormUsedByTypeWorkflow SOURCE FormUsedByTypeSource MySailPoint FormUsedByType
 	Type *string `json:"type,omitempty"`
 	// Unique identifier of the system using the form.
 	Id *string `json:"id,omitempty"`
+	// Name of the system using the form.
+	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -109,6 +111,38 @@ func (o *FormUsedBy) SetId(v string) {
 	o.Id = &v
 }
 
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *FormUsedBy) GetName() string {
+	if o == nil || isNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormUsedBy) GetNameOk() (*string, bool) {
+	if o == nil || isNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *FormUsedBy) HasName() bool {
+	if o != nil && !isNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *FormUsedBy) SetName(v string) {
+	o.Name = &v
+}
+
 func (o FormUsedBy) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -124,6 +158,9 @@ func (o FormUsedBy) ToMap() (map[string]interface{}, error) {
 	}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
+	}
+	if !isNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -145,6 +182,7 @@ func (o *FormUsedBy) UnmarshalJSON(bytes []byte) (err error) {
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
 		o.AdditionalProperties = additionalProperties
 	}
 

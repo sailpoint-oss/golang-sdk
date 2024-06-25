@@ -38,6 +38,8 @@ type SpConfigObject struct {
 	ReferenceExtractors []string `json:"referenceExtractors,omitempty"`
 	// If true, this type of object will be JWS signed and cannot be modified before import.
 	SignatureRequired *bool `json:"signatureRequired,omitempty"`
+	LegacyObject *bool `json:"legacyObject,omitempty"`
+	OnePerTenant *bool `json:"onePerTenant,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -51,6 +53,10 @@ func NewSpConfigObject() *SpConfigObject {
 	this := SpConfigObject{}
 	var signatureRequired bool = false
 	this.SignatureRequired = &signatureRequired
+	var legacyObject bool = false
+	this.LegacyObject = &legacyObject
+	var onePerTenant bool = false
+	this.OnePerTenant = &onePerTenant
 	return &this
 }
 
@@ -61,6 +67,10 @@ func NewSpConfigObjectWithDefaults() *SpConfigObject {
 	this := SpConfigObject{}
 	var signatureRequired bool = false
 	this.SignatureRequired = &signatureRequired
+	var legacyObject bool = false
+	this.LegacyObject = &legacyObject
+	var onePerTenant bool = false
+	this.OnePerTenant = &onePerTenant
 	return &this
 }
 
@@ -417,6 +427,70 @@ func (o *SpConfigObject) SetSignatureRequired(v bool) {
 	o.SignatureRequired = &v
 }
 
+// GetLegacyObject returns the LegacyObject field value if set, zero value otherwise.
+func (o *SpConfigObject) GetLegacyObject() bool {
+	if o == nil || isNil(o.LegacyObject) {
+		var ret bool
+		return ret
+	}
+	return *o.LegacyObject
+}
+
+// GetLegacyObjectOk returns a tuple with the LegacyObject field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SpConfigObject) GetLegacyObjectOk() (*bool, bool) {
+	if o == nil || isNil(o.LegacyObject) {
+		return nil, false
+	}
+	return o.LegacyObject, true
+}
+
+// HasLegacyObject returns a boolean if a field has been set.
+func (o *SpConfigObject) HasLegacyObject() bool {
+	if o != nil && !isNil(o.LegacyObject) {
+		return true
+	}
+
+	return false
+}
+
+// SetLegacyObject gets a reference to the given bool and assigns it to the LegacyObject field.
+func (o *SpConfigObject) SetLegacyObject(v bool) {
+	o.LegacyObject = &v
+}
+
+// GetOnePerTenant returns the OnePerTenant field value if set, zero value otherwise.
+func (o *SpConfigObject) GetOnePerTenant() bool {
+	if o == nil || isNil(o.OnePerTenant) {
+		var ret bool
+		return ret
+	}
+	return *o.OnePerTenant
+}
+
+// GetOnePerTenantOk returns a tuple with the OnePerTenant field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SpConfigObject) GetOnePerTenantOk() (*bool, bool) {
+	if o == nil || isNil(o.OnePerTenant) {
+		return nil, false
+	}
+	return o.OnePerTenant, true
+}
+
+// HasOnePerTenant returns a boolean if a field has been set.
+func (o *SpConfigObject) HasOnePerTenant() bool {
+	if o != nil && !isNil(o.OnePerTenant) {
+		return true
+	}
+
+	return false
+}
+
+// SetOnePerTenant gets a reference to the given bool and assigns it to the OnePerTenant field.
+func (o *SpConfigObject) SetOnePerTenant(v bool) {
+	o.OnePerTenant = &v
+}
+
 func (o SpConfigObject) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -460,6 +534,12 @@ func (o SpConfigObject) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.SignatureRequired) {
 		toSerialize["signatureRequired"] = o.SignatureRequired
 	}
+	if !isNil(o.LegacyObject) {
+		toSerialize["legacyObject"] = o.LegacyObject
+	}
+	if !isNil(o.OnePerTenant) {
+		toSerialize["onePerTenant"] = o.OnePerTenant
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -489,6 +569,8 @@ func (o *SpConfigObject) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "importLimit")
 		delete(additionalProperties, "referenceExtractors")
 		delete(additionalProperties, "signatureRequired")
+		delete(additionalProperties, "legacyObject")
+		delete(additionalProperties, "onePerTenant")
 		o.AdditionalProperties = additionalProperties
 	}
 

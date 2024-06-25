@@ -12,6 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the WorkgroupDto type satisfies the MappedNullable interface at compile time
@@ -30,6 +31,8 @@ type WorkgroupDto struct {
 	MemberCount *int64 `json:"memberCount,omitempty"`
 	// Number of connections in the governance group.
 	ConnectionCount *int64 `json:"connectionCount,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
+	Modified *time.Time `json:"modified,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -244,6 +247,70 @@ func (o *WorkgroupDto) SetConnectionCount(v int64) {
 	o.ConnectionCount = &v
 }
 
+// GetCreated returns the Created field value if set, zero value otherwise.
+func (o *WorkgroupDto) GetCreated() time.Time {
+	if o == nil || isNil(o.Created) {
+		var ret time.Time
+		return ret
+	}
+	return *o.Created
+}
+
+// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkgroupDto) GetCreatedOk() (*time.Time, bool) {
+	if o == nil || isNil(o.Created) {
+		return nil, false
+	}
+	return o.Created, true
+}
+
+// HasCreated returns a boolean if a field has been set.
+func (o *WorkgroupDto) HasCreated() bool {
+	if o != nil && !isNil(o.Created) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *WorkgroupDto) SetCreated(v time.Time) {
+	o.Created = &v
+}
+
+// GetModified returns the Modified field value if set, zero value otherwise.
+func (o *WorkgroupDto) GetModified() time.Time {
+	if o == nil || isNil(o.Modified) {
+		var ret time.Time
+		return ret
+	}
+	return *o.Modified
+}
+
+// GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkgroupDto) GetModifiedOk() (*time.Time, bool) {
+	if o == nil || isNil(o.Modified) {
+		return nil, false
+	}
+	return o.Modified, true
+}
+
+// HasModified returns a boolean if a field has been set.
+func (o *WorkgroupDto) HasModified() bool {
+	if o != nil && !isNil(o.Modified) {
+		return true
+	}
+
+	return false
+}
+
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *WorkgroupDto) SetModified(v time.Time) {
+	o.Modified = &v
+}
+
 func (o WorkgroupDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -266,6 +333,12 @@ func (o WorkgroupDto) ToMap() (map[string]interface{}, error) {
 	}
 	// skip: memberCount is readOnly
 	// skip: connectionCount is readOnly
+	if !isNil(o.Created) {
+		toSerialize["created"] = o.Created
+	}
+	if !isNil(o.Modified) {
+		toSerialize["modified"] = o.Modified
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -290,6 +363,8 @@ func (o *WorkgroupDto) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "memberCount")
 		delete(additionalProperties, "connectionCount")
+		delete(additionalProperties, "created")
+		delete(additionalProperties, "modified")
 		o.AdditionalProperties = additionalProperties
 	}
 

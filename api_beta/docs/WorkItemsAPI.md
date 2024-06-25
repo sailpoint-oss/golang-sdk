@@ -443,7 +443,7 @@ Name | Type | Description  | Notes
 
 ## GetCountWorkItems
 
-> []WorkItemsCount GetCountWorkItems(ctx).OwnerId(ownerId).Execute()
+> WorkItemsCount GetCountWorkItems(ctx).OwnerId(ownerId).Execute()
 
 Count Work Items
 
@@ -471,7 +471,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetCountWorkItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetCountWorkItems`: []WorkItemsCount
+    // response from `GetCountWorkItems`: WorkItemsCount
     fmt.Fprintf(os.Stdout, "Response from `WorkItemsAPI.GetCountWorkItems`: %v\n", resp)
 }
 ```
@@ -491,7 +491,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]WorkItemsCount**](WorkItemsCount.md)
+[**WorkItemsCount**](WorkItemsCount.md)
 
 ### Authorization
 
@@ -581,7 +581,7 @@ Name | Type | Description  | Notes
 
 ## GetWorkItemsSummary
 
-> []WorkItemsSummary GetWorkItemsSummary(ctx).OwnerId(ownerId).Execute()
+> WorkItemsSummary GetWorkItemsSummary(ctx).OwnerId(ownerId).Execute()
 
 Work Items Summary
 
@@ -609,7 +609,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetWorkItemsSummary``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetWorkItemsSummary`: []WorkItemsSummary
+    // response from `GetWorkItemsSummary`: WorkItemsSummary
     fmt.Fprintf(os.Stdout, "Response from `WorkItemsAPI.GetWorkItemsSummary`: %v\n", resp)
 }
 ```
@@ -629,7 +629,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]WorkItemsSummary**](WorkItemsSummary.md)
+[**WorkItemsSummary**](WorkItemsSummary.md)
 
 ### Authorization
 

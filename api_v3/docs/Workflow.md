@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **ExecutionCount** | Pointer to **int32** | The number of times this workflow has been executed. | [optional] 
 **FailureCount** | Pointer to **int32** | The number of times this workflow has failed during execution. | [optional] 
 **Created** | Pointer to **time.Time** | The date and time the workflow was created. | [optional] 
+**Modified** | Pointer to **time.Time** | The date and time the workflow was modified. | [optional] 
 **Creator** | Pointer to [**WorkflowAllOfCreator**](WorkflowAllOfCreator.md) |  | [optional] 
 
 ## Methods
@@ -284,6 +285,31 @@ SetCreated sets Created field to given value.
 `func (o *Workflow) HasCreated() bool`
 
 HasCreated returns a boolean if a field has been set.
+
+### GetModified
+
+`func (o *Workflow) GetModified() time.Time`
+
+GetModified returns the Modified field if non-nil, zero value otherwise.
+
+### GetModifiedOk
+
+`func (o *Workflow) GetModifiedOk() (*time.Time, bool)`
+
+GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetModified
+
+`func (o *Workflow) SetModified(v time.Time)`
+
+SetModified sets Modified field to given value.
+
+### HasModified
+
+`func (o *Workflow) HasModified() bool`
+
+HasModified returns a boolean if a field has been set.
 
 ### GetCreator
 

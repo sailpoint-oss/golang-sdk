@@ -22,10 +22,10 @@ type Expression struct {
 	// Operator for the expression
 	Operator *string `json:"operator,omitempty"`
 	// Name for the attribute
-	Attribute *string `json:"attribute,omitempty"`
-	Value *Value `json:"value,omitempty"`
+	Attribute NullableString `json:"attribute,omitempty"`
+	Value NullableValue `json:"value,omitempty"`
 	// List of expressions
-	Children []Value `json:"children,omitempty"`
+	Children []Children `json:"children,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -80,74 +80,94 @@ func (o *Expression) SetOperator(v string) {
 	o.Operator = &v
 }
 
-// GetAttribute returns the Attribute field value if set, zero value otherwise.
+// GetAttribute returns the Attribute field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Expression) GetAttribute() string {
-	if o == nil || isNil(o.Attribute) {
+	if o == nil || isNil(o.Attribute.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Attribute
+	return *o.Attribute.Get()
 }
 
 // GetAttributeOk returns a tuple with the Attribute field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Expression) GetAttributeOk() (*string, bool) {
-	if o == nil || isNil(o.Attribute) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Attribute, true
+	return o.Attribute.Get(), o.Attribute.IsSet()
 }
 
 // HasAttribute returns a boolean if a field has been set.
 func (o *Expression) HasAttribute() bool {
-	if o != nil && !isNil(o.Attribute) {
+	if o != nil && o.Attribute.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAttribute gets a reference to the given string and assigns it to the Attribute field.
+// SetAttribute gets a reference to the given NullableString and assigns it to the Attribute field.
 func (o *Expression) SetAttribute(v string) {
-	o.Attribute = &v
+	o.Attribute.Set(&v)
+}
+// SetAttributeNil sets the value for Attribute to be an explicit nil
+func (o *Expression) SetAttributeNil() {
+	o.Attribute.Set(nil)
 }
 
-// GetValue returns the Value field value if set, zero value otherwise.
+// UnsetAttribute ensures that no value is present for Attribute, not even an explicit nil
+func (o *Expression) UnsetAttribute() {
+	o.Attribute.Unset()
+}
+
+// GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Expression) GetValue() Value {
-	if o == nil || isNil(o.Value) {
+	if o == nil || isNil(o.Value.Get()) {
 		var ret Value
 		return ret
 	}
-	return *o.Value
+	return *o.Value.Get()
 }
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Expression) GetValueOk() (*Value, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Value, true
+	return o.Value.Get(), o.Value.IsSet()
 }
 
 // HasValue returns a boolean if a field has been set.
 func (o *Expression) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && o.Value.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetValue gets a reference to the given Value and assigns it to the Value field.
+// SetValue gets a reference to the given NullableValue and assigns it to the Value field.
 func (o *Expression) SetValue(v Value) {
-	o.Value = &v
+	o.Value.Set(&v)
+}
+// SetValueNil sets the value for Value to be an explicit nil
+func (o *Expression) SetValueNil() {
+	o.Value.Set(nil)
 }
 
-// GetChildren returns the Children field value if set, zero value otherwise.
-func (o *Expression) GetChildren() []Value {
-	if o == nil || isNil(o.Children) {
-		var ret []Value
+// UnsetValue ensures that no value is present for Value, not even an explicit nil
+func (o *Expression) UnsetValue() {
+	o.Value.Unset()
+}
+
+// GetChildren returns the Children field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Expression) GetChildren() []Children {
+	if o == nil {
+		var ret []Children
 		return ret
 	}
 	return o.Children
@@ -155,7 +175,8 @@ func (o *Expression) GetChildren() []Value {
 
 // GetChildrenOk returns a tuple with the Children field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Expression) GetChildrenOk() ([]Value, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Expression) GetChildrenOk() ([]Children, bool) {
 	if o == nil || isNil(o.Children) {
 		return nil, false
 	}
@@ -164,15 +185,15 @@ func (o *Expression) GetChildrenOk() ([]Value, bool) {
 
 // HasChildren returns a boolean if a field has been set.
 func (o *Expression) HasChildren() bool {
-	if o != nil && !isNil(o.Children) {
+	if o != nil && isNil(o.Children) {
 		return true
 	}
 
 	return false
 }
 
-// SetChildren gets a reference to the given []Value and assigns it to the Children field.
-func (o *Expression) SetChildren(v []Value) {
+// SetChildren gets a reference to the given []Children and assigns it to the Children field.
+func (o *Expression) SetChildren(v []Children) {
 	o.Children = v
 }
 
@@ -189,13 +210,13 @@ func (o Expression) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Operator) {
 		toSerialize["operator"] = o.Operator
 	}
-	if !isNil(o.Attribute) {
-		toSerialize["attribute"] = o.Attribute
+	if o.Attribute.IsSet() {
+		toSerialize["attribute"] = o.Attribute.Get()
 	}
-	if !isNil(o.Value) {
-		toSerialize["value"] = o.Value
+	if o.Value.IsSet() {
+		toSerialize["value"] = o.Value.Get()
 	}
-	if !isNil(o.Children) {
+	if o.Children != nil {
 		toSerialize["children"] = o.Children
 	}
 

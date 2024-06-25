@@ -27,7 +27,7 @@ Method | HTTP request | Description
 
 ## CreateFormDefinition
 
-> FormDefinitionResponse CreateFormDefinition(ctx).Body(body).Execute()
+> FormDefinitionResponse CreateFormDefinition(ctx).CreateFormDefinitionRequest(createFormDefinitionRequest).Execute()
 
 Creates a form definition.
 
@@ -44,11 +44,11 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewCreateFormDefinitionRequest("My form", *openapiclient.NewFormOwner()) // CreateFormDefinitionRequest | Body is the request payload to create form definition request (optional)
+    createFormDefinitionRequest := *openapiclient.NewCreateFormDefinitionRequest("My form", *openapiclient.NewFormOwner()) // CreateFormDefinitionRequest | Body is the request payload to create form definition request (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomFormsAPI.CreateFormDefinition(context.Background()).Body(body).Execute()
+    resp, r, err := apiClient.CustomFormsAPI.CreateFormDefinition(context.Background()).CreateFormDefinitionRequest(createFormDefinitionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.CreateFormDefinition``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -69,7 +69,7 @@ Other parameters are passed through a pointer to a apiCreateFormDefinitionReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**CreateFormDefinitionRequest**](CreateFormDefinitionRequest.md) | Body is the request payload to create form definition request | 
+ **createFormDefinitionRequest** | [**CreateFormDefinitionRequest**](CreateFormDefinitionRequest.md) | Body is the request payload to create form definition request | 
 
 ### Return type
 
@@ -732,7 +732,7 @@ import (
 )
 
 func main() {
-    body := []openapiclient.ExportFormDefinitionsByTenant200ResponseInner{*openapiclient.NewExportFormDefinitionsByTenant200ResponseInner()} // []ExportFormDefinitionsByTenant200ResponseInner | Body is the request payload to import form definitions (optional)
+    body := []openapiclient.ImportFormDefinitionsRequestInner{*openapiclient.NewImportFormDefinitionsRequestInner()} // []ImportFormDefinitionsRequestInner | Body is the request payload to import form definitions (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -757,7 +757,7 @@ Other parameters are passed through a pointer to a apiImportFormDefinitionsReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**[]ExportFormDefinitionsByTenant200ResponseInner**](ExportFormDefinitionsByTenant200ResponseInner.md) | Body is the request payload to import form definitions | 
+ **body** | [**[]ImportFormDefinitionsRequestInner**](ImportFormDefinitionsRequestInner.md) | Body is the request payload to import form definitions | 
 
 ### Return type
 
@@ -1074,7 +1074,7 @@ Name | Type | Description  | Notes
 
 ## SearchFormInstancesByTenant
 
-> ListFormInstancesByTenantResponse SearchFormInstancesByTenant(ctx).Execute()
+> []FormInstanceResponse SearchFormInstancesByTenant(ctx).Execute()
 
 List form instances by tenant.
 
@@ -1101,7 +1101,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.SearchFormInstancesByTenant``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SearchFormInstancesByTenant`: ListFormInstancesByTenantResponse
+    // response from `SearchFormInstancesByTenant`: []FormInstanceResponse
     fmt.Fprintf(os.Stdout, "Response from `CustomFormsAPI.SearchFormInstancesByTenant`: %v\n", resp)
 }
 ```
@@ -1117,7 +1117,7 @@ Other parameters are passed through a pointer to a apiSearchFormInstancesByTenan
 
 ### Return type
 
-[**ListFormInstancesByTenantResponse**](ListFormInstancesByTenantResponse.md)
+[**[]FormInstanceResponse**](FormInstanceResponse.md)
 
 ### Authorization
 

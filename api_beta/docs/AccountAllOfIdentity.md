@@ -1,104 +1,104 @@
-# AccessItemRequestedFor
+# AccountAllOfIdentity
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | DTO type of identity the access item is requested for. | [optional] 
-**Id** | Pointer to **string** | ID of identity the access item is requested for. | [optional] 
-**Name** | Pointer to **string** | Human-readable display name of identity the access item is requested for. | [optional] 
+**Type** | Pointer to **string** | The type of object being referenced | [optional] 
+**Id** | Pointer to **string** | ID of the identity | [optional] 
+**Name** | Pointer to **string** | Human-readable display name of the identity | [optional] 
 
 ## Methods
 
-### NewAccessItemRequestedFor
+### NewAccountAllOfIdentity
 
-`func NewAccessItemRequestedFor() *AccessItemRequestedFor`
+`func NewAccountAllOfIdentity() *AccountAllOfIdentity`
 
-NewAccessItemRequestedFor instantiates a new AccessItemRequestedFor object
+NewAccountAllOfIdentity instantiates a new AccountAllOfIdentity object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewAccessItemRequestedForWithDefaults
+### NewAccountAllOfIdentityWithDefaults
 
-`func NewAccessItemRequestedForWithDefaults() *AccessItemRequestedFor`
+`func NewAccountAllOfIdentityWithDefaults() *AccountAllOfIdentity`
 
-NewAccessItemRequestedForWithDefaults instantiates a new AccessItemRequestedFor object
+NewAccountAllOfIdentityWithDefaults instantiates a new AccountAllOfIdentity object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *AccessItemRequestedFor) GetType() string`
+`func (o *AccountAllOfIdentity) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *AccessItemRequestedFor) GetTypeOk() (*string, bool)`
+`func (o *AccountAllOfIdentity) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *AccessItemRequestedFor) SetType(v string)`
+`func (o *AccountAllOfIdentity) SetType(v string)`
 
 SetType sets Type field to given value.
 
 ### HasType
 
-`func (o *AccessItemRequestedFor) HasType() bool`
+`func (o *AccountAllOfIdentity) HasType() bool`
 
 HasType returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *AccessItemRequestedFor) GetId() string`
+`func (o *AccountAllOfIdentity) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *AccessItemRequestedFor) GetIdOk() (*string, bool)`
+`func (o *AccountAllOfIdentity) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *AccessItemRequestedFor) SetId(v string)`
+`func (o *AccountAllOfIdentity) SetId(v string)`
 
 SetId sets Id field to given value.
 
 ### HasId
 
-`func (o *AccessItemRequestedFor) HasId() bool`
+`func (o *AccountAllOfIdentity) HasId() bool`
 
 HasId returns a boolean if a field has been set.
 
 ### GetName
 
-`func (o *AccessItemRequestedFor) GetName() string`
+`func (o *AccountAllOfIdentity) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *AccessItemRequestedFor) GetNameOk() (*string, bool)`
+`func (o *AccountAllOfIdentity) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *AccessItemRequestedFor) SetName(v string)`
+`func (o *AccountAllOfIdentity) SetName(v string)`
 
 SetName sets Name field to given value.
 
 ### HasName
 
-`func (o *AccessItemRequestedFor) HasName() bool`
+`func (o *AccountAllOfIdentity) HasName() bool`
 
 HasName returns a boolean if a field has been set.
 

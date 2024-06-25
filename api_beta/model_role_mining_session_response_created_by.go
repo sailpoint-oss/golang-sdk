@@ -15,29 +15,29 @@ import (
 	"fmt"
 )
 
-// RoleMiningSessionDtoCreatedBy - The session created by details
-type RoleMiningSessionDtoCreatedBy struct {
+// RoleMiningSessionResponseCreatedBy - The session created by details
+type RoleMiningSessionResponseCreatedBy struct {
 	EntityCreatedByDTO *EntityCreatedByDTO
 	String *string
 }
 
-// EntityCreatedByDTOAsRoleMiningSessionDtoCreatedBy is a convenience function that returns EntityCreatedByDTO wrapped in RoleMiningSessionDtoCreatedBy
-func EntityCreatedByDTOAsRoleMiningSessionDtoCreatedBy(v *EntityCreatedByDTO) RoleMiningSessionDtoCreatedBy {
-	return RoleMiningSessionDtoCreatedBy{
+// EntityCreatedByDTOAsRoleMiningSessionResponseCreatedBy is a convenience function that returns EntityCreatedByDTO wrapped in RoleMiningSessionResponseCreatedBy
+func EntityCreatedByDTOAsRoleMiningSessionResponseCreatedBy(v *EntityCreatedByDTO) RoleMiningSessionResponseCreatedBy {
+	return RoleMiningSessionResponseCreatedBy{
 		EntityCreatedByDTO: v,
 	}
 }
 
-// stringAsRoleMiningSessionDtoCreatedBy is a convenience function that returns string wrapped in RoleMiningSessionDtoCreatedBy
-func StringAsRoleMiningSessionDtoCreatedBy(v *string) RoleMiningSessionDtoCreatedBy {
-	return RoleMiningSessionDtoCreatedBy{
+// stringAsRoleMiningSessionResponseCreatedBy is a convenience function that returns string wrapped in RoleMiningSessionResponseCreatedBy
+func StringAsRoleMiningSessionResponseCreatedBy(v *string) RoleMiningSessionResponseCreatedBy {
+	return RoleMiningSessionResponseCreatedBy{
 		String: v,
 	}
 }
 
 
 // Unmarshal JSON data into one of the pointers in the struct
-func (dst *RoleMiningSessionDtoCreatedBy) UnmarshalJSON(data []byte) error {
+func (dst *RoleMiningSessionResponseCreatedBy) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
 	// try to unmarshal data into EntityCreatedByDTO
@@ -71,16 +71,16 @@ func (dst *RoleMiningSessionDtoCreatedBy) UnmarshalJSON(data []byte) error {
 		dst.EntityCreatedByDTO = nil
 		dst.String = nil
 
-		return fmt.Errorf("data matches more than one schema in oneOf(RoleMiningSessionDtoCreatedBy)")
+		return fmt.Errorf("data matches more than one schema in oneOf(RoleMiningSessionResponseCreatedBy)")
 	} else if match == 1 {
 		return nil // exactly one match
 	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(RoleMiningSessionDtoCreatedBy)")
+		return fmt.Errorf("data failed to match schemas in oneOf(RoleMiningSessionResponseCreatedBy)")
 	}
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src RoleMiningSessionDtoCreatedBy) MarshalJSON() ([]byte, error) {
+func (src RoleMiningSessionResponseCreatedBy) MarshalJSON() ([]byte, error) {
 	if src.EntityCreatedByDTO != nil {
 		return json.Marshal(&src.EntityCreatedByDTO)
 	}
@@ -93,7 +93,7 @@ func (src RoleMiningSessionDtoCreatedBy) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *RoleMiningSessionDtoCreatedBy) GetActualInstance() (interface{}) {
+func (obj *RoleMiningSessionResponseCreatedBy) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -109,38 +109,38 @@ func (obj *RoleMiningSessionDtoCreatedBy) GetActualInstance() (interface{}) {
 	return nil
 }
 
-type NullableRoleMiningSessionDtoCreatedBy struct {
-	value *RoleMiningSessionDtoCreatedBy
+type NullableRoleMiningSessionResponseCreatedBy struct {
+	value *RoleMiningSessionResponseCreatedBy
 	isSet bool
 }
 
-func (v NullableRoleMiningSessionDtoCreatedBy) Get() *RoleMiningSessionDtoCreatedBy {
+func (v NullableRoleMiningSessionResponseCreatedBy) Get() *RoleMiningSessionResponseCreatedBy {
 	return v.value
 }
 
-func (v *NullableRoleMiningSessionDtoCreatedBy) Set(val *RoleMiningSessionDtoCreatedBy) {
+func (v *NullableRoleMiningSessionResponseCreatedBy) Set(val *RoleMiningSessionResponseCreatedBy) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableRoleMiningSessionDtoCreatedBy) IsSet() bool {
+func (v NullableRoleMiningSessionResponseCreatedBy) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableRoleMiningSessionDtoCreatedBy) Unset() {
+func (v *NullableRoleMiningSessionResponseCreatedBy) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableRoleMiningSessionDtoCreatedBy(val *RoleMiningSessionDtoCreatedBy) *NullableRoleMiningSessionDtoCreatedBy {
-	return &NullableRoleMiningSessionDtoCreatedBy{value: val, isSet: true}
+func NewNullableRoleMiningSessionResponseCreatedBy(val *RoleMiningSessionResponseCreatedBy) *NullableRoleMiningSessionResponseCreatedBy {
+	return &NullableRoleMiningSessionResponseCreatedBy{value: val, isSet: true}
 }
 
-func (v NullableRoleMiningSessionDtoCreatedBy) MarshalJSON() ([]byte, error) {
+func (v NullableRoleMiningSessionResponseCreatedBy) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableRoleMiningSessionDtoCreatedBy) UnmarshalJSON(src []byte) error {
+func (v *NullableRoleMiningSessionResponseCreatedBy) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

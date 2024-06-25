@@ -37,7 +37,7 @@ type FormInstanceResponse struct {
 	FormErrors []FormError `json:"formErrors,omitempty"`
 	// FormInput is an object of form input labels to value
 	FormInput map[string]map[string]interface{} `json:"formInput,omitempty"`
-	// FormInstanceID is a unique guid identifying this form instance
+	// Unique guid identifying this form instance
 	Id *string `json:"id,omitempty"`
 	// Modified is the last date the form instance was modified
 	Modified *time.Time `json:"modified,omitempty"`
@@ -331,9 +331,9 @@ func (o *FormInstanceResponse) SetFormErrors(v []FormError) {
 	o.FormErrors = v
 }
 
-// GetFormInput returns the FormInput field value if set, zero value otherwise.
+// GetFormInput returns the FormInput field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *FormInstanceResponse) GetFormInput() map[string]map[string]interface{} {
-	if o == nil || isNil(o.FormInput) {
+	if o == nil {
 		var ret map[string]map[string]interface{}
 		return ret
 	}
@@ -342,6 +342,7 @@ func (o *FormInstanceResponse) GetFormInput() map[string]map[string]interface{} 
 
 // GetFormInputOk returns a tuple with the FormInput field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *FormInstanceResponse) GetFormInputOk() (map[string]map[string]interface{}, bool) {
 	if o == nil || isNil(o.FormInput) {
 		return map[string]map[string]interface{}{}, false
@@ -351,7 +352,7 @@ func (o *FormInstanceResponse) GetFormInputOk() (map[string]map[string]interface
 
 // HasFormInput returns a boolean if a field has been set.
 func (o *FormInstanceResponse) HasFormInput() bool {
-	if o != nil && !isNil(o.FormInput) {
+	if o != nil && isNil(o.FormInput) {
 		return true
 	}
 
@@ -589,7 +590,7 @@ func (o FormInstanceResponse) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.FormErrors) {
 		toSerialize["formErrors"] = o.FormErrors
 	}
-	if !isNil(o.FormInput) {
+	if o.FormInput != nil {
 		toSerialize["formInput"] = o.FormInput
 	}
 	if !isNil(o.Id) {

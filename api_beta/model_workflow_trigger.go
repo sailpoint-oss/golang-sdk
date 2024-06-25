@@ -22,6 +22,7 @@ var _ MappedNullable = &WorkflowTrigger{}
 type WorkflowTrigger struct {
 	// The trigger type
 	Type string `json:"type"`
+	DisplayName NullableString `json:"displayName,omitempty"`
 	// Workflow Trigger Attributes.
 	Attributes map[string]interface{} `json:"attributes"`
 	AdditionalProperties map[string]interface{}
@@ -72,6 +73,48 @@ func (o *WorkflowTrigger) SetType(v string) {
 	o.Type = v
 }
 
+// GetDisplayName returns the DisplayName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *WorkflowTrigger) GetDisplayName() string {
+	if o == nil || isNil(o.DisplayName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.DisplayName.Get()
+}
+
+// GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *WorkflowTrigger) GetDisplayNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DisplayName.Get(), o.DisplayName.IsSet()
+}
+
+// HasDisplayName returns a boolean if a field has been set.
+func (o *WorkflowTrigger) HasDisplayName() bool {
+	if o != nil && o.DisplayName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDisplayName gets a reference to the given NullableString and assigns it to the DisplayName field.
+func (o *WorkflowTrigger) SetDisplayName(v string) {
+	o.DisplayName.Set(&v)
+}
+// SetDisplayNameNil sets the value for DisplayName to be an explicit nil
+func (o *WorkflowTrigger) SetDisplayNameNil() {
+	o.DisplayName.Set(nil)
+}
+
+// UnsetDisplayName ensures that no value is present for DisplayName, not even an explicit nil
+func (o *WorkflowTrigger) UnsetDisplayName() {
+	o.DisplayName.Unset()
+}
+
 // GetAttributes returns the Attributes field value
 func (o *WorkflowTrigger) GetAttributes() map[string]interface{} {
 	if o == nil {
@@ -107,6 +150,9 @@ func (o WorkflowTrigger) MarshalJSON() ([]byte, error) {
 func (o WorkflowTrigger) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
+	if o.DisplayName.IsSet() {
+		toSerialize["displayName"] = o.DisplayName.Get()
+	}
 	toSerialize["attributes"] = o.Attributes
 
 	for key, value := range o.AdditionalProperties {
@@ -149,6 +195,7 @@ func (o *WorkflowTrigger) UnmarshalJSON(bytes []byte) (err error) {
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
+		delete(additionalProperties, "displayName")
 		delete(additionalProperties, "attributes")
 		o.AdditionalProperties = additionalProperties
 	}

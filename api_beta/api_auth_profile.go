@@ -192,7 +192,7 @@ type ApiGetProfileConfigListRequest struct {
 	ApiService *AuthProfileAPIService
 }
 
-func (r ApiGetProfileConfigListRequest) Execute() (*AuthProfileSummary, *http.Response, error) {
+func (r ApiGetProfileConfigListRequest) Execute() ([]AuthProfileSummary, *http.Response, error) {
 	return r.ApiService.GetProfileConfigListExecute(r)
 }
 
@@ -212,13 +212,13 @@ func (a *AuthProfileAPIService) GetProfileConfigList(ctx context.Context) ApiGet
 }
 
 // Execute executes the request
-//  @return AuthProfileSummary
-func (a *AuthProfileAPIService) GetProfileConfigListExecute(r ApiGetProfileConfigListRequest) (*AuthProfileSummary, *http.Response, error) {
+//  @return []AuthProfileSummary
+func (a *AuthProfileAPIService) GetProfileConfigListExecute(r ApiGetProfileConfigListRequest) ([]AuthProfileSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *AuthProfileSummary
+		localVarReturnValue  []AuthProfileSummary
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthProfileAPIService.GetProfileConfigList")

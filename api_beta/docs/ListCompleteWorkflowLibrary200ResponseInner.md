@@ -9,8 +9,13 @@ Name | Type | Description | Notes
 **Type** | Pointer to **string** | Operator type | [optional] 
 **Description** | Pointer to **string** | Description of the operator | [optional] 
 **FormFields** | Pointer to [**[]WorkflowLibraryFormFields**](WorkflowLibraryFormFields.md) | One or more inputs that the operator accepts | [optional] 
+**ExampleOutput** | Pointer to [**WorkflowLibraryActionExampleOutput**](WorkflowLibraryActionExampleOutput.md) |  | [optional] 
+**Deprecated** | Pointer to **bool** |  | [optional] 
+**DeprecatedBy** | Pointer to **time.Time** |  | [optional] 
+**VersionNumber** | Pointer to **int32** | Version number | [optional] 
+**IsSimulationEnabled** | Pointer to **bool** |  | [optional] 
 **IsDynamicSchema** | Pointer to **bool** | Determines whether the dynamic output schema is returned in place of the action&#39;s output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields. | [optional] 
-**OutputSchema** | Pointer to **map[string]interface{}** | Defines the output schema, if any, that this action produces. | [optional] 
+**OutputSchema** | Pointer to **map[string]interface{}** | Example output schema | [optional] 
 **InputExample** | Pointer to **map[string]interface{}** | Example trigger payload if applicable | [optional] 
 
 ## Methods
@@ -156,6 +161,141 @@ SetFormFields sets FormFields field to given value.
 `func (o *ListCompleteWorkflowLibrary200ResponseInner) HasFormFields() bool`
 
 HasFormFields returns a boolean if a field has been set.
+
+### SetFormFieldsNil
+
+`func (o *ListCompleteWorkflowLibrary200ResponseInner) SetFormFieldsNil(b bool)`
+
+ SetFormFieldsNil sets the value for FormFields to be an explicit nil
+
+### UnsetFormFields
+`func (o *ListCompleteWorkflowLibrary200ResponseInner) UnsetFormFields()`
+
+UnsetFormFields ensures that no value is present for FormFields, not even an explicit nil
+### GetExampleOutput
+
+`func (o *ListCompleteWorkflowLibrary200ResponseInner) GetExampleOutput() WorkflowLibraryActionExampleOutput`
+
+GetExampleOutput returns the ExampleOutput field if non-nil, zero value otherwise.
+
+### GetExampleOutputOk
+
+`func (o *ListCompleteWorkflowLibrary200ResponseInner) GetExampleOutputOk() (*WorkflowLibraryActionExampleOutput, bool)`
+
+GetExampleOutputOk returns a tuple with the ExampleOutput field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExampleOutput
+
+`func (o *ListCompleteWorkflowLibrary200ResponseInner) SetExampleOutput(v WorkflowLibraryActionExampleOutput)`
+
+SetExampleOutput sets ExampleOutput field to given value.
+
+### HasExampleOutput
+
+`func (o *ListCompleteWorkflowLibrary200ResponseInner) HasExampleOutput() bool`
+
+HasExampleOutput returns a boolean if a field has been set.
+
+### GetDeprecated
+
+`func (o *ListCompleteWorkflowLibrary200ResponseInner) GetDeprecated() bool`
+
+GetDeprecated returns the Deprecated field if non-nil, zero value otherwise.
+
+### GetDeprecatedOk
+
+`func (o *ListCompleteWorkflowLibrary200ResponseInner) GetDeprecatedOk() (*bool, bool)`
+
+GetDeprecatedOk returns a tuple with the Deprecated field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeprecated
+
+`func (o *ListCompleteWorkflowLibrary200ResponseInner) SetDeprecated(v bool)`
+
+SetDeprecated sets Deprecated field to given value.
+
+### HasDeprecated
+
+`func (o *ListCompleteWorkflowLibrary200ResponseInner) HasDeprecated() bool`
+
+HasDeprecated returns a boolean if a field has been set.
+
+### GetDeprecatedBy
+
+`func (o *ListCompleteWorkflowLibrary200ResponseInner) GetDeprecatedBy() time.Time`
+
+GetDeprecatedBy returns the DeprecatedBy field if non-nil, zero value otherwise.
+
+### GetDeprecatedByOk
+
+`func (o *ListCompleteWorkflowLibrary200ResponseInner) GetDeprecatedByOk() (*time.Time, bool)`
+
+GetDeprecatedByOk returns a tuple with the DeprecatedBy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeprecatedBy
+
+`func (o *ListCompleteWorkflowLibrary200ResponseInner) SetDeprecatedBy(v time.Time)`
+
+SetDeprecatedBy sets DeprecatedBy field to given value.
+
+### HasDeprecatedBy
+
+`func (o *ListCompleteWorkflowLibrary200ResponseInner) HasDeprecatedBy() bool`
+
+HasDeprecatedBy returns a boolean if a field has been set.
+
+### GetVersionNumber
+
+`func (o *ListCompleteWorkflowLibrary200ResponseInner) GetVersionNumber() int32`
+
+GetVersionNumber returns the VersionNumber field if non-nil, zero value otherwise.
+
+### GetVersionNumberOk
+
+`func (o *ListCompleteWorkflowLibrary200ResponseInner) GetVersionNumberOk() (*int32, bool)`
+
+GetVersionNumberOk returns a tuple with the VersionNumber field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVersionNumber
+
+`func (o *ListCompleteWorkflowLibrary200ResponseInner) SetVersionNumber(v int32)`
+
+SetVersionNumber sets VersionNumber field to given value.
+
+### HasVersionNumber
+
+`func (o *ListCompleteWorkflowLibrary200ResponseInner) HasVersionNumber() bool`
+
+HasVersionNumber returns a boolean if a field has been set.
+
+### GetIsSimulationEnabled
+
+`func (o *ListCompleteWorkflowLibrary200ResponseInner) GetIsSimulationEnabled() bool`
+
+GetIsSimulationEnabled returns the IsSimulationEnabled field if non-nil, zero value otherwise.
+
+### GetIsSimulationEnabledOk
+
+`func (o *ListCompleteWorkflowLibrary200ResponseInner) GetIsSimulationEnabledOk() (*bool, bool)`
+
+GetIsSimulationEnabledOk returns a tuple with the IsSimulationEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsSimulationEnabled
+
+`func (o *ListCompleteWorkflowLibrary200ResponseInner) SetIsSimulationEnabled(v bool)`
+
+SetIsSimulationEnabled sets IsSimulationEnabled field to given value.
+
+### HasIsSimulationEnabled
+
+`func (o *ListCompleteWorkflowLibrary200ResponseInner) HasIsSimulationEnabled() bool`
+
+HasIsSimulationEnabled returns a boolean if a field has been set.
 
 ### GetIsDynamicSchema
 

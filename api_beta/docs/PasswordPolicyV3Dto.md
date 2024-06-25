@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | The password policy Id. | [optional] 
-**Description** | Pointer to **string** | Description for current password policy. | [optional] 
+**Description** | Pointer to **NullableString** | Description for current password policy. | [optional] 
 **Name** | Pointer to **string** | The name of the password policy. | [optional] 
-**DateCrated** | Pointer to **time.Time** | Date the Password Policy was created. | [optional] 
-**LastUpdated** | Pointer to **time.Time** | Date the Password Policy was updated. | [optional] 
+**DateCreated** | Pointer to **time.Time** | Date the Password Policy was created. | [optional] 
+**LastUpdated** | Pointer to **NullableTime** | Date the Password Policy was updated. | [optional] 
 **FirstExpirationReminder** | Pointer to **int64** | The number of days before expiration remaninder. | [optional] 
 **AccountIdMinWordLength** | Pointer to **int64** | The minimun length of account Id. By default is equals to -1. | [optional] 
 **AccountNameMinWordLength** | Pointer to **int64** | The minimun length of account name. By default is equals to -1. | [optional] 
@@ -32,6 +32,8 @@ Name | Type | Description | Notes
 **UseIdentityAttributes** | Pointer to **bool** | Defines whether this policy uses identity attributes or not. This field is false by default. | [optional] [default to false]
 **ValidateAgainstAccountId** | Pointer to **bool** | Defines whether this policy validate against account id or not. This field is false by default. | [optional] [default to false]
 **ValidateAgainstAccountName** | Pointer to **bool** | Defines whether this policy validate against account name or not. This field is false by default. | [optional] [default to false]
+**Created** | Pointer to **NullableString** |  | [optional] 
+**Modified** | Pointer to **NullableString** |  | [optional] 
 **SourceIds** | Pointer to **[]string** | List of sources IDs managed by this password policy. | [optional] 
 
 ## Methods
@@ -103,6 +105,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *PasswordPolicyV3Dto) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *PasswordPolicyV3Dto) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetName
 
 `func (o *PasswordPolicyV3Dto) GetName() string`
@@ -128,30 +140,30 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
-### GetDateCrated
+### GetDateCreated
 
-`func (o *PasswordPolicyV3Dto) GetDateCrated() time.Time`
+`func (o *PasswordPolicyV3Dto) GetDateCreated() time.Time`
 
-GetDateCrated returns the DateCrated field if non-nil, zero value otherwise.
+GetDateCreated returns the DateCreated field if non-nil, zero value otherwise.
 
-### GetDateCratedOk
+### GetDateCreatedOk
 
-`func (o *PasswordPolicyV3Dto) GetDateCratedOk() (*time.Time, bool)`
+`func (o *PasswordPolicyV3Dto) GetDateCreatedOk() (*time.Time, bool)`
 
-GetDateCratedOk returns a tuple with the DateCrated field if it's non-nil, zero value otherwise
+GetDateCreatedOk returns a tuple with the DateCreated field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDateCrated
+### SetDateCreated
 
-`func (o *PasswordPolicyV3Dto) SetDateCrated(v time.Time)`
+`func (o *PasswordPolicyV3Dto) SetDateCreated(v time.Time)`
 
-SetDateCrated sets DateCrated field to given value.
+SetDateCreated sets DateCreated field to given value.
 
-### HasDateCrated
+### HasDateCreated
 
-`func (o *PasswordPolicyV3Dto) HasDateCrated() bool`
+`func (o *PasswordPolicyV3Dto) HasDateCreated() bool`
 
-HasDateCrated returns a boolean if a field has been set.
+HasDateCreated returns a boolean if a field has been set.
 
 ### GetLastUpdated
 
@@ -178,6 +190,16 @@ SetLastUpdated sets LastUpdated field to given value.
 
 HasLastUpdated returns a boolean if a field has been set.
 
+### SetLastUpdatedNil
+
+`func (o *PasswordPolicyV3Dto) SetLastUpdatedNil(b bool)`
+
+ SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
+
+### UnsetLastUpdated
+`func (o *PasswordPolicyV3Dto) UnsetLastUpdated()`
+
+UnsetLastUpdated ensures that no value is present for LastUpdated, not even an explicit nil
 ### GetFirstExpirationReminder
 
 `func (o *PasswordPolicyV3Dto) GetFirstExpirationReminder() int64`
@@ -753,6 +775,76 @@ SetValidateAgainstAccountName sets ValidateAgainstAccountName field to given val
 
 HasValidateAgainstAccountName returns a boolean if a field has been set.
 
+### GetCreated
+
+`func (o *PasswordPolicyV3Dto) GetCreated() string`
+
+GetCreated returns the Created field if non-nil, zero value otherwise.
+
+### GetCreatedOk
+
+`func (o *PasswordPolicyV3Dto) GetCreatedOk() (*string, bool)`
+
+GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreated
+
+`func (o *PasswordPolicyV3Dto) SetCreated(v string)`
+
+SetCreated sets Created field to given value.
+
+### HasCreated
+
+`func (o *PasswordPolicyV3Dto) HasCreated() bool`
+
+HasCreated returns a boolean if a field has been set.
+
+### SetCreatedNil
+
+`func (o *PasswordPolicyV3Dto) SetCreatedNil(b bool)`
+
+ SetCreatedNil sets the value for Created to be an explicit nil
+
+### UnsetCreated
+`func (o *PasswordPolicyV3Dto) UnsetCreated()`
+
+UnsetCreated ensures that no value is present for Created, not even an explicit nil
+### GetModified
+
+`func (o *PasswordPolicyV3Dto) GetModified() string`
+
+GetModified returns the Modified field if non-nil, zero value otherwise.
+
+### GetModifiedOk
+
+`func (o *PasswordPolicyV3Dto) GetModifiedOk() (*string, bool)`
+
+GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetModified
+
+`func (o *PasswordPolicyV3Dto) SetModified(v string)`
+
+SetModified sets Modified field to given value.
+
+### HasModified
+
+`func (o *PasswordPolicyV3Dto) HasModified() bool`
+
+HasModified returns a boolean if a field has been set.
+
+### SetModifiedNil
+
+`func (o *PasswordPolicyV3Dto) SetModifiedNil(b bool)`
+
+ SetModifiedNil sets the value for Modified to be an explicit nil
+
+### UnsetModified
+`func (o *PasswordPolicyV3Dto) UnsetModified()`
+
+UnsetModified ensures that no value is present for Modified, not even an explicit nil
 ### GetSourceIds
 
 `func (o *PasswordPolicyV3Dto) GetSourceIds() []string`

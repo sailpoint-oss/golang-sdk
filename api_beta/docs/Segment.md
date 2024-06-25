@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Modified** | Pointer to **time.Time** | The time when the segment is modified. | [optional] 
 **Description** | Pointer to **string** | The segment&#39;s optional description. | [optional] 
 **Owner** | Pointer to [**NullableOwnerReferenceSegments**](OwnerReferenceSegments.md) |  | [optional] 
-**VisibilityCriteria** | Pointer to [**VisibilityCriteria**](VisibilityCriteria.md) |  | [optional] 
+**VisibilityCriteria** | Pointer to [**NullableVisibilityCriteria**](VisibilityCriteria.md) |  | [optional] 
 **Active** | Pointer to **bool** | This boolean indicates whether the segment is currently active. Inactive segments have no effect. | [optional] [default to false]
 
 ## Methods
@@ -217,6 +217,16 @@ SetVisibilityCriteria sets VisibilityCriteria field to given value.
 
 HasVisibilityCriteria returns a boolean if a field has been set.
 
+### SetVisibilityCriteriaNil
+
+`func (o *Segment) SetVisibilityCriteriaNil(b bool)`
+
+ SetVisibilityCriteriaNil sets the value for VisibilityCriteria to be an explicit nil
+
+### UnsetVisibilityCriteria
+`func (o *Segment) UnsetVisibilityCriteria()`
+
+UnsetVisibilityCriteria ensures that no value is present for VisibilityCriteria, not even an explicit nil
 ### GetActive
 
 `func (o *Segment) GetActive() bool`

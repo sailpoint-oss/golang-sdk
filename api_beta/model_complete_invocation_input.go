@@ -19,7 +19,7 @@ var _ MappedNullable = &CompleteInvocationInput{}
 
 // CompleteInvocationInput struct for CompleteInvocationInput
 type CompleteInvocationInput struct {
-	LocalizedError *LocalizedMessage `json:"localizedError,omitempty"`
+	LocalizedError NullableLocalizedMessage `json:"localizedError,omitempty"`
 	// Trigger output that completed the invocation. Its schema is defined in the trigger definition.
 	Output map[string]interface{} `json:"output,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -44,41 +44,51 @@ func NewCompleteInvocationInputWithDefaults() *CompleteInvocationInput {
 	return &this
 }
 
-// GetLocalizedError returns the LocalizedError field value if set, zero value otherwise.
+// GetLocalizedError returns the LocalizedError field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CompleteInvocationInput) GetLocalizedError() LocalizedMessage {
-	if o == nil || isNil(o.LocalizedError) {
+	if o == nil || isNil(o.LocalizedError.Get()) {
 		var ret LocalizedMessage
 		return ret
 	}
-	return *o.LocalizedError
+	return *o.LocalizedError.Get()
 }
 
 // GetLocalizedErrorOk returns a tuple with the LocalizedError field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CompleteInvocationInput) GetLocalizedErrorOk() (*LocalizedMessage, bool) {
-	if o == nil || isNil(o.LocalizedError) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LocalizedError, true
+	return o.LocalizedError.Get(), o.LocalizedError.IsSet()
 }
 
 // HasLocalizedError returns a boolean if a field has been set.
 func (o *CompleteInvocationInput) HasLocalizedError() bool {
-	if o != nil && !isNil(o.LocalizedError) {
+	if o != nil && o.LocalizedError.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLocalizedError gets a reference to the given LocalizedMessage and assigns it to the LocalizedError field.
+// SetLocalizedError gets a reference to the given NullableLocalizedMessage and assigns it to the LocalizedError field.
 func (o *CompleteInvocationInput) SetLocalizedError(v LocalizedMessage) {
-	o.LocalizedError = &v
+	o.LocalizedError.Set(&v)
+}
+// SetLocalizedErrorNil sets the value for LocalizedError to be an explicit nil
+func (o *CompleteInvocationInput) SetLocalizedErrorNil() {
+	o.LocalizedError.Set(nil)
 }
 
-// GetOutput returns the Output field value if set, zero value otherwise.
+// UnsetLocalizedError ensures that no value is present for LocalizedError, not even an explicit nil
+func (o *CompleteInvocationInput) UnsetLocalizedError() {
+	o.LocalizedError.Unset()
+}
+
+// GetOutput returns the Output field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CompleteInvocationInput) GetOutput() map[string]interface{} {
-	if o == nil || isNil(o.Output) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -87,6 +97,7 @@ func (o *CompleteInvocationInput) GetOutput() map[string]interface{} {
 
 // GetOutputOk returns a tuple with the Output field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CompleteInvocationInput) GetOutputOk() (map[string]interface{}, bool) {
 	if o == nil || isNil(o.Output) {
 		return map[string]interface{}{}, false
@@ -96,7 +107,7 @@ func (o *CompleteInvocationInput) GetOutputOk() (map[string]interface{}, bool) {
 
 // HasOutput returns a boolean if a field has been set.
 func (o *CompleteInvocationInput) HasOutput() bool {
-	if o != nil && !isNil(o.Output) {
+	if o != nil && isNil(o.Output) {
 		return true
 	}
 
@@ -118,10 +129,10 @@ func (o CompleteInvocationInput) MarshalJSON() ([]byte, error) {
 
 func (o CompleteInvocationInput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.LocalizedError) {
-		toSerialize["localizedError"] = o.LocalizedError
+	if o.LocalizedError.IsSet() {
+		toSerialize["localizedError"] = o.LocalizedError.Get()
 	}
-	if !isNil(o.Output) {
+	if o.Output != nil {
 		toSerialize["output"] = o.Output
 	}
 

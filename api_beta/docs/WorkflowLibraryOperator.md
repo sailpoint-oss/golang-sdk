@@ -8,6 +8,10 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Operator friendly name | [optional] 
 **Type** | Pointer to **string** | Operator type | [optional] 
 **Description** | Pointer to **string** | Description of the operator | [optional] 
+**IsDynamicSchema** | Pointer to **bool** | Determines whether the dynamic output schema is returned in place of the action&#39;s output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields. | [optional] 
+**Deprecated** | Pointer to **bool** |  | [optional] 
+**DeprecatedBy** | Pointer to **time.Time** |  | [optional] 
+**IsSimulationEnabled** | Pointer to **bool** |  | [optional] 
 **FormFields** | Pointer to [**[]WorkflowLibraryFormFields**](WorkflowLibraryFormFields.md) | One or more inputs that the operator accepts | [optional] 
 
 ## Methods
@@ -129,6 +133,106 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### GetIsDynamicSchema
+
+`func (o *WorkflowLibraryOperator) GetIsDynamicSchema() bool`
+
+GetIsDynamicSchema returns the IsDynamicSchema field if non-nil, zero value otherwise.
+
+### GetIsDynamicSchemaOk
+
+`func (o *WorkflowLibraryOperator) GetIsDynamicSchemaOk() (*bool, bool)`
+
+GetIsDynamicSchemaOk returns a tuple with the IsDynamicSchema field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsDynamicSchema
+
+`func (o *WorkflowLibraryOperator) SetIsDynamicSchema(v bool)`
+
+SetIsDynamicSchema sets IsDynamicSchema field to given value.
+
+### HasIsDynamicSchema
+
+`func (o *WorkflowLibraryOperator) HasIsDynamicSchema() bool`
+
+HasIsDynamicSchema returns a boolean if a field has been set.
+
+### GetDeprecated
+
+`func (o *WorkflowLibraryOperator) GetDeprecated() bool`
+
+GetDeprecated returns the Deprecated field if non-nil, zero value otherwise.
+
+### GetDeprecatedOk
+
+`func (o *WorkflowLibraryOperator) GetDeprecatedOk() (*bool, bool)`
+
+GetDeprecatedOk returns a tuple with the Deprecated field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeprecated
+
+`func (o *WorkflowLibraryOperator) SetDeprecated(v bool)`
+
+SetDeprecated sets Deprecated field to given value.
+
+### HasDeprecated
+
+`func (o *WorkflowLibraryOperator) HasDeprecated() bool`
+
+HasDeprecated returns a boolean if a field has been set.
+
+### GetDeprecatedBy
+
+`func (o *WorkflowLibraryOperator) GetDeprecatedBy() time.Time`
+
+GetDeprecatedBy returns the DeprecatedBy field if non-nil, zero value otherwise.
+
+### GetDeprecatedByOk
+
+`func (o *WorkflowLibraryOperator) GetDeprecatedByOk() (*time.Time, bool)`
+
+GetDeprecatedByOk returns a tuple with the DeprecatedBy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeprecatedBy
+
+`func (o *WorkflowLibraryOperator) SetDeprecatedBy(v time.Time)`
+
+SetDeprecatedBy sets DeprecatedBy field to given value.
+
+### HasDeprecatedBy
+
+`func (o *WorkflowLibraryOperator) HasDeprecatedBy() bool`
+
+HasDeprecatedBy returns a boolean if a field has been set.
+
+### GetIsSimulationEnabled
+
+`func (o *WorkflowLibraryOperator) GetIsSimulationEnabled() bool`
+
+GetIsSimulationEnabled returns the IsSimulationEnabled field if non-nil, zero value otherwise.
+
+### GetIsSimulationEnabledOk
+
+`func (o *WorkflowLibraryOperator) GetIsSimulationEnabledOk() (*bool, bool)`
+
+GetIsSimulationEnabledOk returns a tuple with the IsSimulationEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsSimulationEnabled
+
+`func (o *WorkflowLibraryOperator) SetIsSimulationEnabled(v bool)`
+
+SetIsSimulationEnabled sets IsSimulationEnabled field to given value.
+
+### HasIsSimulationEnabled
+
+`func (o *WorkflowLibraryOperator) HasIsSimulationEnabled() bool`
+
+HasIsSimulationEnabled returns a boolean if a field has been set.
+
 ### GetFormFields
 
 `func (o *WorkflowLibraryOperator) GetFormFields() []WorkflowLibraryFormFields`
@@ -154,6 +258,16 @@ SetFormFields sets FormFields field to given value.
 
 HasFormFields returns a boolean if a field has been set.
 
+### SetFormFieldsNil
+
+`func (o *WorkflowLibraryOperator) SetFormFieldsNil(b bool)`
+
+ SetFormFieldsNil sets the value for FormFields to be an explicit nil
+
+### UnsetFormFields
+`func (o *WorkflowLibraryOperator) UnsetFormFields()`
+
+UnsetFormFields ensures that no value is present for FormFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

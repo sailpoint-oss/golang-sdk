@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **RequestCreated** | Pointer to **time.Time** | When the access-request was created. | [optional] 
 **RequestType** | Pointer to [**NullableAccessRequestType**](AccessRequestType.md) |  | [optional] 
 **Requester** | Pointer to [**AccessItemRequesterDto**](AccessItemRequesterDto.md) |  | [optional] 
-**RequestedFor** | Pointer to [**[]AccessItemRequestedForDto**](AccessItemRequestedForDto.md) | Identities access was requested for. | [optional] 
+**RequestedFor** | Pointer to [**RequestedItemStatusRequestedFor**](RequestedItemStatusRequestedFor.md) |  | [optional] 
 **ReviewedBy** | Pointer to [**CompletedApprovalReviewedBy**](CompletedApprovalReviewedBy.md) |  | [optional] 
 **Owner** | Pointer to [**AccessItemOwnerDto**](AccessItemOwnerDto.md) |  | [optional] 
 **RequestedObject** | Pointer to [**RequestableObjectReference**](RequestableObjectReference.md) |  | [optional] 
@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **RemoveDate** | Pointer to **NullableTime** | The date the role or access profile or entitlement is no longer assigned to the specified identity. | [optional] 
 **RemoveDateUpdateRequested** | Pointer to **bool** | If true, then the request was to change the remove date or sunset date. | [optional] [default to false]
 **CurrentRemoveDate** | Pointer to **NullableTime** | The remove date or sunset date that was assigned at the time of the request. | [optional] 
-**SodViolationContext** | Pointer to [**SodViolationContextCheckCompleted1**](SodViolationContextCheckCompleted1.md) |  | [optional] 
+**SodViolationContext** | Pointer to [**NullableSodViolationContextCheckCompleted1**](SodViolationContextCheckCompleted1.md) |  | [optional] 
 **PreApprovalTriggerResult** | Pointer to [**NullableCompletedApprovalPreApprovalTriggerResult**](CompletedApprovalPreApprovalTriggerResult.md) |  | [optional] 
 **ClientMetadata** | Pointer to **map[string]string** | Arbitrary key-value pairs provided during the request. | [optional] 
 **RequestedAccounts** | Pointer to **NullableString** | Information about the requested accounts | [optional] 
@@ -235,20 +235,20 @@ HasRequester returns a boolean if a field has been set.
 
 ### GetRequestedFor
 
-`func (o *CompletedApproval) GetRequestedFor() []AccessItemRequestedForDto`
+`func (o *CompletedApproval) GetRequestedFor() RequestedItemStatusRequestedFor`
 
 GetRequestedFor returns the RequestedFor field if non-nil, zero value otherwise.
 
 ### GetRequestedForOk
 
-`func (o *CompletedApproval) GetRequestedForOk() (*[]AccessItemRequestedForDto, bool)`
+`func (o *CompletedApproval) GetRequestedForOk() (*RequestedItemStatusRequestedFor, bool)`
 
 GetRequestedForOk returns a tuple with the RequestedFor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedFor
 
-`func (o *CompletedApproval) SetRequestedFor(v []AccessItemRequestedForDto)`
+`func (o *CompletedApproval) SetRequestedFor(v RequestedItemStatusRequestedFor)`
 
 SetRequestedFor sets RequestedFor field to given value.
 
@@ -613,6 +613,16 @@ SetSodViolationContext sets SodViolationContext field to given value.
 
 HasSodViolationContext returns a boolean if a field has been set.
 
+### SetSodViolationContextNil
+
+`func (o *CompletedApproval) SetSodViolationContextNil(b bool)`
+
+ SetSodViolationContextNil sets the value for SodViolationContext to be an explicit nil
+
+### UnsetSodViolationContext
+`func (o *CompletedApproval) UnsetSodViolationContext()`
+
+UnsetSodViolationContext ensures that no value is present for SodViolationContext, not even an explicit nil
 ### GetPreApprovalTriggerResult
 
 `func (o *CompletedApproval) GetPreApprovalTriggerResult() CompletedApprovalPreApprovalTriggerResult`

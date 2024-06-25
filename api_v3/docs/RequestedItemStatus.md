@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **Modified** | Pointer to **NullableTime** | When the request was last modified. | [optional] 
 **Created** | Pointer to **time.Time** | When the request was created. | [optional] 
 **Requester** | Pointer to [**AccessItemRequester**](AccessItemRequester.md) |  | [optional] 
-**RequestedFor** | Pointer to [**[]AccessItemRequestedFor**](AccessItemRequestedFor.md) | Identities access was requested for. | [optional] 
+**RequestedFor** | Pointer to [**RequestedItemStatusRequestedFor**](RequestedItemStatusRequestedFor.md) |  | [optional] 
 **RequesterComment** | Pointer to [**RequestedItemStatusRequesterComment**](RequestedItemStatusRequesterComment.md) |  | [optional] 
 **SodViolationContext** | Pointer to [**RequestedItemStatusSodViolationContext**](RequestedItemStatusSodViolationContext.md) |  | [optional] 
 **ProvisioningDetails** | Pointer to [**RequestedItemStatusProvisioningDetails**](RequestedItemStatusProvisioningDetails.md) |  | [optional] 
@@ -409,20 +409,20 @@ HasRequester returns a boolean if a field has been set.
 
 ### GetRequestedFor
 
-`func (o *RequestedItemStatus) GetRequestedFor() []AccessItemRequestedFor`
+`func (o *RequestedItemStatus) GetRequestedFor() RequestedItemStatusRequestedFor`
 
 GetRequestedFor returns the RequestedFor field if non-nil, zero value otherwise.
 
 ### GetRequestedForOk
 
-`func (o *RequestedItemStatus) GetRequestedForOk() (*[]AccessItemRequestedFor, bool)`
+`func (o *RequestedItemStatus) GetRequestedForOk() (*RequestedItemStatusRequestedFor, bool)`
 
 GetRequestedForOk returns a tuple with the RequestedFor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedFor
 
-`func (o *RequestedItemStatus) SetRequestedFor(v []AccessItemRequestedFor)`
+`func (o *RequestedItemStatus) SetRequestedFor(v RequestedItemStatusRequestedFor)`
 
 SetRequestedFor sets RequestedFor field to given value.
 

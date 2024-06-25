@@ -30,11 +30,9 @@ type RoleMiningSessionDto struct {
 	PotentialRoleCount *int32 `json:"potentialRoleCount,omitempty"`
 	// Number of potential roles ready
 	PotentialRolesReadyCount *int32 `json:"potentialRolesReadyCount,omitempty"`
-	Status *RoleMiningSessionStatus `json:"status,omitempty"`
 	Type *RoleMiningRoleType `json:"type,omitempty"`
 	// The id of the user who will receive an email about the role mining session
 	EmailRecipientId NullableString `json:"emailRecipientId,omitempty"`
-	CreatedBy *RoleMiningSessionDtoCreatedBy `json:"createdBy,omitempty"`
 	// Number of identities in the population which meet the search criteria or identity list provided
 	IdentityCount *int32 `json:"identityCount,omitempty"`
 	// The session's saved status
@@ -289,38 +287,6 @@ func (o *RoleMiningSessionDto) SetPotentialRolesReadyCount(v int32) {
 	o.PotentialRolesReadyCount = &v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *RoleMiningSessionDto) GetStatus() RoleMiningSessionStatus {
-	if o == nil || isNil(o.Status) {
-		var ret RoleMiningSessionStatus
-		return ret
-	}
-	return *o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RoleMiningSessionDto) GetStatusOk() (*RoleMiningSessionStatus, bool) {
-	if o == nil || isNil(o.Status) {
-		return nil, false
-	}
-	return o.Status, true
-}
-
-// HasStatus returns a boolean if a field has been set.
-func (o *RoleMiningSessionDto) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given RoleMiningSessionStatus and assigns it to the Status field.
-func (o *RoleMiningSessionDto) SetStatus(v RoleMiningSessionStatus) {
-	o.Status = &v
-}
-
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *RoleMiningSessionDto) GetType() RoleMiningRoleType {
 	if o == nil || isNil(o.Type) {
@@ -393,38 +359,6 @@ func (o *RoleMiningSessionDto) SetEmailRecipientIdNil() {
 // UnsetEmailRecipientId ensures that no value is present for EmailRecipientId, not even an explicit nil
 func (o *RoleMiningSessionDto) UnsetEmailRecipientId() {
 	o.EmailRecipientId.Unset()
-}
-
-// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
-func (o *RoleMiningSessionDto) GetCreatedBy() RoleMiningSessionDtoCreatedBy {
-	if o == nil || isNil(o.CreatedBy) {
-		var ret RoleMiningSessionDtoCreatedBy
-		return ret
-	}
-	return *o.CreatedBy
-}
-
-// GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RoleMiningSessionDto) GetCreatedByOk() (*RoleMiningSessionDtoCreatedBy, bool) {
-	if o == nil || isNil(o.CreatedBy) {
-		return nil, false
-	}
-	return o.CreatedBy, true
-}
-
-// HasCreatedBy returns a boolean if a field has been set.
-func (o *RoleMiningSessionDto) HasCreatedBy() bool {
-	if o != nil && !isNil(o.CreatedBy) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedBy gets a reference to the given RoleMiningSessionDtoCreatedBy and assigns it to the CreatedBy field.
-func (o *RoleMiningSessionDto) SetCreatedBy(v RoleMiningSessionDtoCreatedBy) {
-	o.CreatedBy = &v
 }
 
 // GetIdentityCount returns the IdentityCount field value if set, zero value otherwise.
@@ -561,17 +495,11 @@ func (o RoleMiningSessionDto) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.PotentialRolesReadyCount) {
 		toSerialize["potentialRolesReadyCount"] = o.PotentialRolesReadyCount
 	}
-	if !isNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
 	if o.EmailRecipientId.IsSet() {
 		toSerialize["emailRecipientId"] = o.EmailRecipientId.Get()
-	}
-	if !isNil(o.CreatedBy) {
-		toSerialize["createdBy"] = o.CreatedBy
 	}
 	if !isNil(o.IdentityCount) {
 		toSerialize["identityCount"] = o.IdentityCount
@@ -606,10 +534,8 @@ func (o *RoleMiningSessionDto) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "minNumIdentitiesInPotentialRole")
 		delete(additionalProperties, "potentialRoleCount")
 		delete(additionalProperties, "potentialRolesReadyCount")
-		delete(additionalProperties, "status")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "emailRecipientId")
-		delete(additionalProperties, "createdBy")
 		delete(additionalProperties, "identityCount")
 		delete(additionalProperties, "saved")
 		delete(additionalProperties, "name")

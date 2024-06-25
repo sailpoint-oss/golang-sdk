@@ -26,6 +26,8 @@ type RoleInsight struct {
 	NumberOfUpdates *int32 `json:"numberOfUpdates,omitempty"`
 	// The date-time insights were last created for this role.
 	CreatedDate *time.Time `json:"createdDate,omitempty"`
+	// The date-time insights were last modified for this role.
+	ModifiedDate NullableTime `json:"modifiedDate,omitempty"`
 	Role *RoleInsightsRole `json:"role,omitempty"`
 	Insight *RoleInsightsInsight `json:"insight,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -146,6 +148,48 @@ func (o *RoleInsight) SetCreatedDate(v time.Time) {
 	o.CreatedDate = &v
 }
 
+// GetModifiedDate returns the ModifiedDate field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *RoleInsight) GetModifiedDate() time.Time {
+	if o == nil || isNil(o.ModifiedDate.Get()) {
+		var ret time.Time
+		return ret
+	}
+	return *o.ModifiedDate.Get()
+}
+
+// GetModifiedDateOk returns a tuple with the ModifiedDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *RoleInsight) GetModifiedDateOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ModifiedDate.Get(), o.ModifiedDate.IsSet()
+}
+
+// HasModifiedDate returns a boolean if a field has been set.
+func (o *RoleInsight) HasModifiedDate() bool {
+	if o != nil && o.ModifiedDate.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetModifiedDate gets a reference to the given NullableTime and assigns it to the ModifiedDate field.
+func (o *RoleInsight) SetModifiedDate(v time.Time) {
+	o.ModifiedDate.Set(&v)
+}
+// SetModifiedDateNil sets the value for ModifiedDate to be an explicit nil
+func (o *RoleInsight) SetModifiedDateNil() {
+	o.ModifiedDate.Set(nil)
+}
+
+// UnsetModifiedDate ensures that no value is present for ModifiedDate, not even an explicit nil
+func (o *RoleInsight) UnsetModifiedDate() {
+	o.ModifiedDate.Unset()
+}
+
 // GetRole returns the Role field value if set, zero value otherwise.
 func (o *RoleInsight) GetRole() RoleInsightsRole {
 	if o == nil || isNil(o.Role) {
@@ -229,6 +273,9 @@ func (o RoleInsight) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.CreatedDate) {
 		toSerialize["createdDate"] = o.CreatedDate
 	}
+	if o.ModifiedDate.IsSet() {
+		toSerialize["modifiedDate"] = o.ModifiedDate.Get()
+	}
 	if !isNil(o.Role) {
 		toSerialize["role"] = o.Role
 	}
@@ -256,6 +303,7 @@ func (o *RoleInsight) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "numberOfUpdates")
 		delete(additionalProperties, "createdDate")
+		delete(additionalProperties, "modifiedDate")
 		delete(additionalProperties, "role")
 		delete(additionalProperties, "insight")
 		o.AdditionalProperties = additionalProperties

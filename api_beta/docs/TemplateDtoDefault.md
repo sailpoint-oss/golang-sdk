@@ -15,6 +15,8 @@ Name | Type | Description | Notes
 **From** | Pointer to **NullableString** | The \&quot;From:\&quot; address of the default template | [optional] 
 **ReplyTo** | Pointer to **NullableString** | The \&quot;Reply To\&quot; field of the default template | [optional] 
 **Description** | Pointer to **NullableString** | The description of the default template | [optional] 
+**SlackTemplate** | Pointer to [**NullableTemplateSlack**](TemplateSlack.md) |  | [optional] 
+**TeamsTemplate** | Pointer to [**NullableTemplateTeams**](TemplateTeams.md) |  | [optional] 
 
 ## Methods
 
@@ -370,6 +372,76 @@ HasDescription returns a boolean if a field has been set.
 `func (o *TemplateDtoDefault) UnsetDescription()`
 
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
+### GetSlackTemplate
+
+`func (o *TemplateDtoDefault) GetSlackTemplate() TemplateSlack`
+
+GetSlackTemplate returns the SlackTemplate field if non-nil, zero value otherwise.
+
+### GetSlackTemplateOk
+
+`func (o *TemplateDtoDefault) GetSlackTemplateOk() (*TemplateSlack, bool)`
+
+GetSlackTemplateOk returns a tuple with the SlackTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSlackTemplate
+
+`func (o *TemplateDtoDefault) SetSlackTemplate(v TemplateSlack)`
+
+SetSlackTemplate sets SlackTemplate field to given value.
+
+### HasSlackTemplate
+
+`func (o *TemplateDtoDefault) HasSlackTemplate() bool`
+
+HasSlackTemplate returns a boolean if a field has been set.
+
+### SetSlackTemplateNil
+
+`func (o *TemplateDtoDefault) SetSlackTemplateNil(b bool)`
+
+ SetSlackTemplateNil sets the value for SlackTemplate to be an explicit nil
+
+### UnsetSlackTemplate
+`func (o *TemplateDtoDefault) UnsetSlackTemplate()`
+
+UnsetSlackTemplate ensures that no value is present for SlackTemplate, not even an explicit nil
+### GetTeamsTemplate
+
+`func (o *TemplateDtoDefault) GetTeamsTemplate() TemplateTeams`
+
+GetTeamsTemplate returns the TeamsTemplate field if non-nil, zero value otherwise.
+
+### GetTeamsTemplateOk
+
+`func (o *TemplateDtoDefault) GetTeamsTemplateOk() (*TemplateTeams, bool)`
+
+GetTeamsTemplateOk returns a tuple with the TeamsTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTeamsTemplate
+
+`func (o *TemplateDtoDefault) SetTeamsTemplate(v TemplateTeams)`
+
+SetTeamsTemplate sets TeamsTemplate field to given value.
+
+### HasTeamsTemplate
+
+`func (o *TemplateDtoDefault) HasTeamsTemplate() bool`
+
+HasTeamsTemplate returns a boolean if a field has been set.
+
+### SetTeamsTemplateNil
+
+`func (o *TemplateDtoDefault) SetTeamsTemplateNil(b bool)`
+
+ SetTeamsTemplateNil sets the value for TeamsTemplate to be an explicit nil
+
+### UnsetTeamsTemplate
+`func (o *TemplateDtoDefault) UnsetTeamsTemplate()`
+
+UnsetTeamsTemplate ensures that no value is present for TeamsTemplate, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

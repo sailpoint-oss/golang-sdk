@@ -15,6 +15,8 @@ Name | Type | Description | Notes
 **ImportLimit** | Pointer to **int32** | Pagination limit imposed by the target service for this object type. | [optional] 
 **ReferenceExtractors** | Pointer to **[]string** | List of json paths within an exported object of this type that represent references that need to be resolved. | [optional] 
 **SignatureRequired** | Pointer to **bool** | If true, this type of object will be JWS signed and cannot be modified before import. | [optional] [default to false]
+**LegacyObject** | Pointer to **bool** |  | [optional] [default to false]
+**OnePerTenant** | Pointer to **bool** |  | [optional] [default to false]
 
 ## Methods
 
@@ -319,6 +321,56 @@ SetSignatureRequired sets SignatureRequired field to given value.
 `func (o *SpConfigObject) HasSignatureRequired() bool`
 
 HasSignatureRequired returns a boolean if a field has been set.
+
+### GetLegacyObject
+
+`func (o *SpConfigObject) GetLegacyObject() bool`
+
+GetLegacyObject returns the LegacyObject field if non-nil, zero value otherwise.
+
+### GetLegacyObjectOk
+
+`func (o *SpConfigObject) GetLegacyObjectOk() (*bool, bool)`
+
+GetLegacyObjectOk returns a tuple with the LegacyObject field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLegacyObject
+
+`func (o *SpConfigObject) SetLegacyObject(v bool)`
+
+SetLegacyObject sets LegacyObject field to given value.
+
+### HasLegacyObject
+
+`func (o *SpConfigObject) HasLegacyObject() bool`
+
+HasLegacyObject returns a boolean if a field has been set.
+
+### GetOnePerTenant
+
+`func (o *SpConfigObject) GetOnePerTenant() bool`
+
+GetOnePerTenant returns the OnePerTenant field if non-nil, zero value otherwise.
+
+### GetOnePerTenantOk
+
+`func (o *SpConfigObject) GetOnePerTenantOk() (*bool, bool)`
+
+GetOnePerTenantOk returns a tuple with the OnePerTenant field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOnePerTenant
+
+`func (o *SpConfigObject) SetOnePerTenant(v bool)`
+
+SetOnePerTenant sets OnePerTenant field to given value.
+
+### HasOnePerTenant
+
+`func (o *SpConfigObject) HasOnePerTenant() bool`
+
+HasOnePerTenant returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

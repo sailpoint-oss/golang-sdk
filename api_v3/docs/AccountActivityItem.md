@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | Item id | [optional] 
 **Name** | Pointer to **string** | Human-readable display name of item | [optional] 
 **Requested** | Pointer to **time.Time** | Date and time item was requested | [optional] 
-**ApprovalStatus** | Pointer to [**WorkItemState**](WorkItemState.md) |  | [optional] 
+**ApprovalStatus** | Pointer to [**AccountActivityApprovalStatus**](AccountActivityApprovalStatus.md) |  | [optional] 
 **ProvisioningStatus** | Pointer to [**ProvisioningState**](ProvisioningState.md) |  | [optional] 
 **RequesterComment** | Pointer to [**NullableComment**](Comment.md) |  | [optional] 
 **ReviewerIdentitySummary** | Pointer to [**NullableIdentitySummary**](IdentitySummary.md) |  | [optional] 
@@ -117,20 +117,20 @@ HasRequested returns a boolean if a field has been set.
 
 ### GetApprovalStatus
 
-`func (o *AccountActivityItem) GetApprovalStatus() WorkItemState`
+`func (o *AccountActivityItem) GetApprovalStatus() AccountActivityApprovalStatus`
 
 GetApprovalStatus returns the ApprovalStatus field if non-nil, zero value otherwise.
 
 ### GetApprovalStatusOk
 
-`func (o *AccountActivityItem) GetApprovalStatusOk() (*WorkItemState, bool)`
+`func (o *AccountActivityItem) GetApprovalStatusOk() (*AccountActivityApprovalStatus, bool)`
 
 GetApprovalStatusOk returns a tuple with the ApprovalStatus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApprovalStatus
 
-`func (o *AccountActivityItem) SetApprovalStatus(v WorkItemState)`
+`func (o *AccountActivityItem) SetApprovalStatus(v AccountActivityApprovalStatus)`
 
 SetApprovalStatus sets ApprovalStatus field to given value.
 

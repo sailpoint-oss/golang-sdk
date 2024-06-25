@@ -25,6 +25,7 @@ type CommonAccessResponse struct {
 	Access *CommonAccessItemAccess `json:"access,omitempty"`
 	// CONFIRMED or DENIED
 	Status *string `json:"status,omitempty"`
+	CommonAccessType *string `json:"commonAccessType,omitempty"`
 	LastUpdated *time.Time `json:"lastUpdated,omitempty"`
 	// true if user has confirmed or denied status
 	ReviewedByUser *bool `json:"reviewedByUser,omitempty"`
@@ -150,6 +151,38 @@ func (o *CommonAccessResponse) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *CommonAccessResponse) SetStatus(v string) {
 	o.Status = &v
+}
+
+// GetCommonAccessType returns the CommonAccessType field value if set, zero value otherwise.
+func (o *CommonAccessResponse) GetCommonAccessType() string {
+	if o == nil || isNil(o.CommonAccessType) {
+		var ret string
+		return ret
+	}
+	return *o.CommonAccessType
+}
+
+// GetCommonAccessTypeOk returns a tuple with the CommonAccessType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CommonAccessResponse) GetCommonAccessTypeOk() (*string, bool) {
+	if o == nil || isNil(o.CommonAccessType) {
+		return nil, false
+	}
+	return o.CommonAccessType, true
+}
+
+// HasCommonAccessType returns a boolean if a field has been set.
+func (o *CommonAccessResponse) HasCommonAccessType() bool {
+	if o != nil && !isNil(o.CommonAccessType) {
+		return true
+	}
+
+	return false
+}
+
+// SetCommonAccessType gets a reference to the given string and assigns it to the CommonAccessType field.
+func (o *CommonAccessResponse) SetCommonAccessType(v string) {
+	o.CommonAccessType = &v
 }
 
 // GetLastUpdated returns the LastUpdated field value if set, zero value otherwise.
@@ -309,6 +342,9 @@ func (o CommonAccessResponse) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
+	if !isNil(o.CommonAccessType) {
+		toSerialize["commonAccessType"] = o.CommonAccessType
+	}
 	// skip: lastUpdated is readOnly
 	if !isNil(o.ReviewedByUser) {
 		toSerialize["reviewedByUser"] = o.ReviewedByUser
@@ -340,6 +376,7 @@ func (o *CommonAccessResponse) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "access")
 		delete(additionalProperties, "status")
+		delete(additionalProperties, "commonAccessType")
 		delete(additionalProperties, "lastUpdated")
 		delete(additionalProperties, "reviewedByUser")
 		delete(additionalProperties, "lastReviewed")

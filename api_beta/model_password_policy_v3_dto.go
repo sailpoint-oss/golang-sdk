@@ -23,13 +23,13 @@ type PasswordPolicyV3Dto struct {
 	// The password policy Id.
 	Id *string `json:"id,omitempty"`
 	// Description for current password policy.
-	Description *string `json:"description,omitempty"`
+	Description NullableString `json:"description,omitempty"`
 	// The name of the password policy.
 	Name *string `json:"name,omitempty"`
 	// Date the Password Policy was created.
-	DateCrated *time.Time `json:"dateCrated,omitempty"`
+	DateCreated *time.Time `json:"dateCreated,omitempty"`
 	// Date the Password Policy was updated.
-	LastUpdated *time.Time `json:"lastUpdated,omitempty"`
+	LastUpdated NullableTime `json:"lastUpdated,omitempty"`
 	// The number of days before expiration remaninder.
 	FirstExpirationReminder *int64 `json:"firstExpirationReminder,omitempty"`
 	// The minimun length of account Id. By default is equals to -1.
@@ -76,6 +76,8 @@ type PasswordPolicyV3Dto struct {
 	ValidateAgainstAccountId *bool `json:"validateAgainstAccountId,omitempty"`
 	// Defines whether this policy validate against account name or not. This field is false by default.
 	ValidateAgainstAccountName *bool `json:"validateAgainstAccountName,omitempty"`
+	Created NullableString `json:"created,omitempty"`
+	Modified NullableString `json:"modified,omitempty"`
 	// List of sources IDs managed by this password policy.
 	SourceIds []string `json:"sourceIds,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -172,36 +174,46 @@ func (o *PasswordPolicyV3Dto) SetId(v string) {
 	o.Id = &v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PasswordPolicyV3Dto) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || isNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Description
+	return *o.Description.Get()
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PasswordPolicyV3Dto) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *PasswordPolicyV3Dto) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && o.Description.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given string and assigns it to the Description field.
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
 func (o *PasswordPolicyV3Dto) SetDescription(v string) {
-	o.Description = &v
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *PasswordPolicyV3Dto) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *PasswordPolicyV3Dto) UnsetDescription() {
+	o.Description.Unset()
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -236,68 +248,78 @@ func (o *PasswordPolicyV3Dto) SetName(v string) {
 	o.Name = &v
 }
 
-// GetDateCrated returns the DateCrated field value if set, zero value otherwise.
-func (o *PasswordPolicyV3Dto) GetDateCrated() time.Time {
-	if o == nil || isNil(o.DateCrated) {
+// GetDateCreated returns the DateCreated field value if set, zero value otherwise.
+func (o *PasswordPolicyV3Dto) GetDateCreated() time.Time {
+	if o == nil || isNil(o.DateCreated) {
 		var ret time.Time
 		return ret
 	}
-	return *o.DateCrated
+	return *o.DateCreated
 }
 
-// GetDateCratedOk returns a tuple with the DateCrated field value if set, nil otherwise
+// GetDateCreatedOk returns a tuple with the DateCreated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PasswordPolicyV3Dto) GetDateCratedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.DateCrated) {
+func (o *PasswordPolicyV3Dto) GetDateCreatedOk() (*time.Time, bool) {
+	if o == nil || isNil(o.DateCreated) {
 		return nil, false
 	}
-	return o.DateCrated, true
+	return o.DateCreated, true
 }
 
-// HasDateCrated returns a boolean if a field has been set.
-func (o *PasswordPolicyV3Dto) HasDateCrated() bool {
-	if o != nil && !isNil(o.DateCrated) {
+// HasDateCreated returns a boolean if a field has been set.
+func (o *PasswordPolicyV3Dto) HasDateCreated() bool {
+	if o != nil && !isNil(o.DateCreated) {
 		return true
 	}
 
 	return false
 }
 
-// SetDateCrated gets a reference to the given time.Time and assigns it to the DateCrated field.
-func (o *PasswordPolicyV3Dto) SetDateCrated(v time.Time) {
-	o.DateCrated = &v
+// SetDateCreated gets a reference to the given time.Time and assigns it to the DateCreated field.
+func (o *PasswordPolicyV3Dto) SetDateCreated(v time.Time) {
+	o.DateCreated = &v
 }
 
-// GetLastUpdated returns the LastUpdated field value if set, zero value otherwise.
+// GetLastUpdated returns the LastUpdated field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PasswordPolicyV3Dto) GetLastUpdated() time.Time {
-	if o == nil || isNil(o.LastUpdated) {
+	if o == nil || isNil(o.LastUpdated.Get()) {
 		var ret time.Time
 		return ret
 	}
-	return *o.LastUpdated
+	return *o.LastUpdated.Get()
 }
 
 // GetLastUpdatedOk returns a tuple with the LastUpdated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PasswordPolicyV3Dto) GetLastUpdatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.LastUpdated) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LastUpdated, true
+	return o.LastUpdated.Get(), o.LastUpdated.IsSet()
 }
 
 // HasLastUpdated returns a boolean if a field has been set.
 func (o *PasswordPolicyV3Dto) HasLastUpdated() bool {
-	if o != nil && !isNil(o.LastUpdated) {
+	if o != nil && o.LastUpdated.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLastUpdated gets a reference to the given time.Time and assigns it to the LastUpdated field.
+// SetLastUpdated gets a reference to the given NullableTime and assigns it to the LastUpdated field.
 func (o *PasswordPolicyV3Dto) SetLastUpdated(v time.Time) {
-	o.LastUpdated = &v
+	o.LastUpdated.Set(&v)
+}
+// SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil
+func (o *PasswordPolicyV3Dto) SetLastUpdatedNil() {
+	o.LastUpdated.Set(nil)
+}
+
+// UnsetLastUpdated ensures that no value is present for LastUpdated, not even an explicit nil
+func (o *PasswordPolicyV3Dto) UnsetLastUpdated() {
+	o.LastUpdated.Unset()
 }
 
 // GetFirstExpirationReminder returns the FirstExpirationReminder field value if set, zero value otherwise.
@@ -1036,6 +1058,90 @@ func (o *PasswordPolicyV3Dto) SetValidateAgainstAccountName(v bool) {
 	o.ValidateAgainstAccountName = &v
 }
 
+// GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PasswordPolicyV3Dto) GetCreated() string {
+	if o == nil || isNil(o.Created.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Created.Get()
+}
+
+// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PasswordPolicyV3Dto) GetCreatedOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Created.Get(), o.Created.IsSet()
+}
+
+// HasCreated returns a boolean if a field has been set.
+func (o *PasswordPolicyV3Dto) HasCreated() bool {
+	if o != nil && o.Created.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCreated gets a reference to the given NullableString and assigns it to the Created field.
+func (o *PasswordPolicyV3Dto) SetCreated(v string) {
+	o.Created.Set(&v)
+}
+// SetCreatedNil sets the value for Created to be an explicit nil
+func (o *PasswordPolicyV3Dto) SetCreatedNil() {
+	o.Created.Set(nil)
+}
+
+// UnsetCreated ensures that no value is present for Created, not even an explicit nil
+func (o *PasswordPolicyV3Dto) UnsetCreated() {
+	o.Created.Unset()
+}
+
+// GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PasswordPolicyV3Dto) GetModified() string {
+	if o == nil || isNil(o.Modified.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Modified.Get()
+}
+
+// GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PasswordPolicyV3Dto) GetModifiedOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Modified.Get(), o.Modified.IsSet()
+}
+
+// HasModified returns a boolean if a field has been set.
+func (o *PasswordPolicyV3Dto) HasModified() bool {
+	if o != nil && o.Modified.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetModified gets a reference to the given NullableString and assigns it to the Modified field.
+func (o *PasswordPolicyV3Dto) SetModified(v string) {
+	o.Modified.Set(&v)
+}
+// SetModifiedNil sets the value for Modified to be an explicit nil
+func (o *PasswordPolicyV3Dto) SetModifiedNil() {
+	o.Modified.Set(nil)
+}
+
+// UnsetModified ensures that no value is present for Modified, not even an explicit nil
+func (o *PasswordPolicyV3Dto) UnsetModified() {
+	o.Modified.Unset()
+}
+
 // GetSourceIds returns the SourceIds field value if set, zero value otherwise.
 func (o *PasswordPolicyV3Dto) GetSourceIds() []string {
 	if o == nil || isNil(o.SourceIds) {
@@ -1081,17 +1187,17 @@ func (o PasswordPolicyV3Dto) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.DateCrated) {
-		toSerialize["dateCrated"] = o.DateCrated
+	if !isNil(o.DateCreated) {
+		toSerialize["dateCreated"] = o.DateCreated
 	}
-	if !isNil(o.LastUpdated) {
-		toSerialize["lastUpdated"] = o.LastUpdated
+	if o.LastUpdated.IsSet() {
+		toSerialize["lastUpdated"] = o.LastUpdated.Get()
 	}
 	if !isNil(o.FirstExpirationReminder) {
 		toSerialize["firstExpirationReminder"] = o.FirstExpirationReminder
@@ -1162,6 +1268,12 @@ func (o PasswordPolicyV3Dto) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.ValidateAgainstAccountName) {
 		toSerialize["validateAgainstAccountName"] = o.ValidateAgainstAccountName
 	}
+	if o.Created.IsSet() {
+		toSerialize["created"] = o.Created.Get()
+	}
+	if o.Modified.IsSet() {
+		toSerialize["modified"] = o.Modified.Get()
+	}
 	if !isNil(o.SourceIds) {
 		toSerialize["sourceIds"] = o.SourceIds
 	}
@@ -1186,7 +1298,7 @@ func (o *PasswordPolicyV3Dto) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "name")
-		delete(additionalProperties, "dateCrated")
+		delete(additionalProperties, "dateCreated")
 		delete(additionalProperties, "lastUpdated")
 		delete(additionalProperties, "firstExpirationReminder")
 		delete(additionalProperties, "accountIdMinWordLength")
@@ -1211,6 +1323,8 @@ func (o *PasswordPolicyV3Dto) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "useIdentityAttributes")
 		delete(additionalProperties, "validateAgainstAccountId")
 		delete(additionalProperties, "validateAgainstAccountName")
+		delete(additionalProperties, "created")
+		delete(additionalProperties, "modified")
 		delete(additionalProperties, "sourceIds")
 		o.AdditionalProperties = additionalProperties
 	}

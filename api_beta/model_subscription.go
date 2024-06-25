@@ -32,7 +32,7 @@ type Subscription struct {
 	TriggerName string `json:"triggerName"`
 	Type SubscriptionType `json:"type"`
 	// Deadline for completing REQUEST_RESPONSE trigger invocation, represented in ISO-8601 duration format.
-	ResponseDeadline string `json:"responseDeadline"`
+	ResponseDeadline *string `json:"responseDeadline,omitempty"`
 	HttpConfig *HttpConfig `json:"httpConfig,omitempty"`
 	EventBridgeConfig *EventBridgeConfig `json:"eventBridgeConfig,omitempty"`
 	// Whether subscription should receive real-time trigger invocations or not. Test trigger invocations are always enabled regardless of this option.
@@ -48,14 +48,15 @@ type _Subscription Subscription
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSubscription(id string, name string, triggerId string, triggerName string, type_ SubscriptionType, responseDeadline string, enabled bool) *Subscription {
+func NewSubscription(id string, name string, triggerId string, triggerName string, type_ SubscriptionType, enabled bool) *Subscription {
 	this := Subscription{}
 	this.Id = id
 	this.Name = name
 	this.TriggerId = triggerId
 	this.TriggerName = triggerName
 	this.Type = type_
-	this.ResponseDeadline = responseDeadline
+	var responseDeadline string = "PT1H"
+	this.ResponseDeadline = &responseDeadline
 	this.Enabled = enabled
 	return &this
 }
@@ -66,7 +67,7 @@ func NewSubscription(id string, name string, triggerId string, triggerName strin
 func NewSubscriptionWithDefaults() *Subscription {
 	this := Subscription{}
 	var responseDeadline string = "PT1H"
-	this.ResponseDeadline = responseDeadline
+	this.ResponseDeadline = &responseDeadline
 	var enabled bool = true
 	this.Enabled = enabled
 	return &this
@@ -224,28 +225,36 @@ func (o *Subscription) SetType(v SubscriptionType) {
 	o.Type = v
 }
 
-// GetResponseDeadline returns the ResponseDeadline field value
+// GetResponseDeadline returns the ResponseDeadline field value if set, zero value otherwise.
 func (o *Subscription) GetResponseDeadline() string {
-	if o == nil {
+	if o == nil || isNil(o.ResponseDeadline) {
 		var ret string
 		return ret
 	}
-
-	return o.ResponseDeadline
+	return *o.ResponseDeadline
 }
 
-// GetResponseDeadlineOk returns a tuple with the ResponseDeadline field value
+// GetResponseDeadlineOk returns a tuple with the ResponseDeadline field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Subscription) GetResponseDeadlineOk() (*string, bool) {
-	if o == nil {
+	if o == nil || isNil(o.ResponseDeadline) {
 		return nil, false
 	}
-	return &o.ResponseDeadline, true
+	return o.ResponseDeadline, true
 }
 
-// SetResponseDeadline sets field value
+// HasResponseDeadline returns a boolean if a field has been set.
+func (o *Subscription) HasResponseDeadline() bool {
+	if o != nil && !isNil(o.ResponseDeadline) {
+		return true
+	}
+
+	return false
+}
+
+// SetResponseDeadline gets a reference to the given string and assigns it to the ResponseDeadline field.
 func (o *Subscription) SetResponseDeadline(v string) {
-	o.ResponseDeadline = v
+	o.ResponseDeadline = &v
 }
 
 // GetHttpConfig returns the HttpConfig field value if set, zero value otherwise.
@@ -386,7 +395,9 @@ func (o Subscription) ToMap() (map[string]interface{}, error) {
 	toSerialize["triggerId"] = o.TriggerId
 	toSerialize["triggerName"] = o.TriggerName
 	toSerialize["type"] = o.Type
-	toSerialize["responseDeadline"] = o.ResponseDeadline
+	if !isNil(o.ResponseDeadline) {
+		toSerialize["responseDeadline"] = o.ResponseDeadline
+	}
 	if !isNil(o.HttpConfig) {
 		toSerialize["httpConfig"] = o.HttpConfig
 	}
@@ -415,7 +426,6 @@ func (o *Subscription) UnmarshalJSON(bytes []byte) (err error) {
 		"triggerId",
 		"triggerName",
 		"type",
-		"responseDeadline",
 		"enabled",
 	}
 

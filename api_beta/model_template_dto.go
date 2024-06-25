@@ -51,6 +51,8 @@ type TemplateDto struct {
 	Created *time.Time `json:"created,omitempty"`
 	// The time when this template was last modified. This is auto-generated.
 	Modified *time.Time `json:"modified,omitempty"`
+	SlackTemplate NullableString `json:"slackTemplate,omitempty"`
+	TeamsTemplate NullableString `json:"teamsTemplate,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -526,6 +528,90 @@ func (o *TemplateDto) SetModified(v time.Time) {
 	o.Modified = &v
 }
 
+// GetSlackTemplate returns the SlackTemplate field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TemplateDto) GetSlackTemplate() string {
+	if o == nil || isNil(o.SlackTemplate.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.SlackTemplate.Get()
+}
+
+// GetSlackTemplateOk returns a tuple with the SlackTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TemplateDto) GetSlackTemplateOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SlackTemplate.Get(), o.SlackTemplate.IsSet()
+}
+
+// HasSlackTemplate returns a boolean if a field has been set.
+func (o *TemplateDto) HasSlackTemplate() bool {
+	if o != nil && o.SlackTemplate.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSlackTemplate gets a reference to the given NullableString and assigns it to the SlackTemplate field.
+func (o *TemplateDto) SetSlackTemplate(v string) {
+	o.SlackTemplate.Set(&v)
+}
+// SetSlackTemplateNil sets the value for SlackTemplate to be an explicit nil
+func (o *TemplateDto) SetSlackTemplateNil() {
+	o.SlackTemplate.Set(nil)
+}
+
+// UnsetSlackTemplate ensures that no value is present for SlackTemplate, not even an explicit nil
+func (o *TemplateDto) UnsetSlackTemplate() {
+	o.SlackTemplate.Unset()
+}
+
+// GetTeamsTemplate returns the TeamsTemplate field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TemplateDto) GetTeamsTemplate() string {
+	if o == nil || isNil(o.TeamsTemplate.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.TeamsTemplate.Get()
+}
+
+// GetTeamsTemplateOk returns a tuple with the TeamsTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TemplateDto) GetTeamsTemplateOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.TeamsTemplate.Get(), o.TeamsTemplate.IsSet()
+}
+
+// HasTeamsTemplate returns a boolean if a field has been set.
+func (o *TemplateDto) HasTeamsTemplate() bool {
+	if o != nil && o.TeamsTemplate.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTeamsTemplate gets a reference to the given NullableString and assigns it to the TeamsTemplate field.
+func (o *TemplateDto) SetTeamsTemplate(v string) {
+	o.TeamsTemplate.Set(&v)
+}
+// SetTeamsTemplateNil sets the value for TeamsTemplate to be an explicit nil
+func (o *TemplateDto) SetTeamsTemplateNil() {
+	o.TeamsTemplate.Set(nil)
+}
+
+// UnsetTeamsTemplate ensures that no value is present for TeamsTemplate, not even an explicit nil
+func (o *TemplateDto) UnsetTeamsTemplate() {
+	o.TeamsTemplate.Unset()
+}
+
 func (o TemplateDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -571,6 +657,12 @@ func (o TemplateDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !isNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
+	}
+	if o.SlackTemplate.IsSet() {
+		toSerialize["slackTemplate"] = o.SlackTemplate.Get()
+	}
+	if o.TeamsTemplate.IsSet() {
+		toSerialize["teamsTemplate"] = o.TeamsTemplate.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -627,6 +719,8 @@ func (o *TemplateDto) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "modified")
+		delete(additionalProperties, "slackTemplate")
+		delete(additionalProperties, "teamsTemplate")
 		o.AdditionalProperties = additionalProperties
 	}
 

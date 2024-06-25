@@ -31,7 +31,7 @@ type Segment struct {
 	// The segment's optional description.
 	Description *string `json:"description,omitempty"`
 	Owner NullableOwnerReferenceSegments `json:"owner,omitempty"`
-	VisibilityCriteria *VisibilityCriteria `json:"visibilityCriteria,omitempty"`
+	VisibilityCriteria NullableVisibilityCriteria `json:"visibilityCriteria,omitempty"`
 	// This boolean indicates whether the segment is currently active. Inactive segments have no effect.
 	Active *bool `json:"active,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -262,36 +262,46 @@ func (o *Segment) UnsetOwner() {
 	o.Owner.Unset()
 }
 
-// GetVisibilityCriteria returns the VisibilityCriteria field value if set, zero value otherwise.
+// GetVisibilityCriteria returns the VisibilityCriteria field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Segment) GetVisibilityCriteria() VisibilityCriteria {
-	if o == nil || isNil(o.VisibilityCriteria) {
+	if o == nil || isNil(o.VisibilityCriteria.Get()) {
 		var ret VisibilityCriteria
 		return ret
 	}
-	return *o.VisibilityCriteria
+	return *o.VisibilityCriteria.Get()
 }
 
 // GetVisibilityCriteriaOk returns a tuple with the VisibilityCriteria field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Segment) GetVisibilityCriteriaOk() (*VisibilityCriteria, bool) {
-	if o == nil || isNil(o.VisibilityCriteria) {
+	if o == nil {
 		return nil, false
 	}
-	return o.VisibilityCriteria, true
+	return o.VisibilityCriteria.Get(), o.VisibilityCriteria.IsSet()
 }
 
 // HasVisibilityCriteria returns a boolean if a field has been set.
 func (o *Segment) HasVisibilityCriteria() bool {
-	if o != nil && !isNil(o.VisibilityCriteria) {
+	if o != nil && o.VisibilityCriteria.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetVisibilityCriteria gets a reference to the given VisibilityCriteria and assigns it to the VisibilityCriteria field.
+// SetVisibilityCriteria gets a reference to the given NullableVisibilityCriteria and assigns it to the VisibilityCriteria field.
 func (o *Segment) SetVisibilityCriteria(v VisibilityCriteria) {
-	o.VisibilityCriteria = &v
+	o.VisibilityCriteria.Set(&v)
+}
+// SetVisibilityCriteriaNil sets the value for VisibilityCriteria to be an explicit nil
+func (o *Segment) SetVisibilityCriteriaNil() {
+	o.VisibilityCriteria.Set(nil)
+}
+
+// UnsetVisibilityCriteria ensures that no value is present for VisibilityCriteria, not even an explicit nil
+func (o *Segment) UnsetVisibilityCriteria() {
+	o.VisibilityCriteria.Unset()
 }
 
 // GetActive returns the Active field value if set, zero value otherwise.
@@ -354,8 +364,8 @@ func (o Segment) ToMap() (map[string]interface{}, error) {
 	if o.Owner.IsSet() {
 		toSerialize["owner"] = o.Owner.Get()
 	}
-	if !isNil(o.VisibilityCriteria) {
-		toSerialize["visibilityCriteria"] = o.VisibilityCriteria
+	if o.VisibilityCriteria.IsSet() {
+		toSerialize["visibilityCriteria"] = o.VisibilityCriteria.Get()
 	}
 	if !isNil(o.Active) {
 		toSerialize["active"] = o.Active

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | Identity attribute&#39;s technical name. | [optional] 
+**Name** | **string** | Identity attribute&#39;s technical name. | 
 **DisplayName** | Pointer to **string** | Identity attribute&#39;s business-friendly name. | [optional] 
 **Standard** | Pointer to **bool** | Indicates whether the attribute is &#39;standard&#39; or &#39;default&#39;. | [optional] [default to false]
 **Type** | Pointer to **NullableString** | Identity attribute&#39;s type. | [optional] 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewIdentityAttribute
 
-`func NewIdentityAttribute() *IdentityAttribute`
+`func NewIdentityAttribute(name string, ) *IdentityAttribute`
 
 NewIdentityAttribute instantiates a new IdentityAttribute object
 This constructor will assign default values to properties that have it defined,
@@ -51,11 +51,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *IdentityAttribute) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetDisplayName
 

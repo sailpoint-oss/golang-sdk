@@ -1401,7 +1401,7 @@ Name | Type | Description  | Notes
 
 ## GetRoleMiningSessions
 
-> []RoleMiningSessionDto GetRoleMiningSessions(ctx).Filters(filters).Sorters(sorters).Offset(offset).Limit(limit).Count(count).Execute()
+> []RoleMiningSessionResponse GetRoleMiningSessions(ctx).Filters(filters).Sorters(sorters).Offset(offset).Limit(limit).Count(count).Execute()
 
 Retrieves all role mining sessions
 
@@ -1433,7 +1433,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetRoleMiningSessions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetRoleMiningSessions`: []RoleMiningSessionDto
+    // response from `GetRoleMiningSessions`: []RoleMiningSessionResponse
     fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.GetRoleMiningSessions`: %v\n", resp)
 }
 ```
@@ -1457,7 +1457,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]RoleMiningSessionDto**](RoleMiningSessionDto.md)
+[**[]RoleMiningSessionResponse**](RoleMiningSessionResponse.md)
 
 ### Authorization
 

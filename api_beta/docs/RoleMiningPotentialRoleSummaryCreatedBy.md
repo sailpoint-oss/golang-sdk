@@ -1,4 +1,4 @@
-# RoleMiningSessionDtoCreatedBy
+# RoleMiningPotentialRoleSummaryCreatedBy
 
 ## Properties
 
@@ -9,70 +9,70 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewRoleMiningSessionDtoCreatedBy
+### NewRoleMiningPotentialRoleSummaryCreatedBy
 
-`func NewRoleMiningSessionDtoCreatedBy() *RoleMiningSessionDtoCreatedBy`
+`func NewRoleMiningPotentialRoleSummaryCreatedBy() *RoleMiningPotentialRoleSummaryCreatedBy`
 
-NewRoleMiningSessionDtoCreatedBy instantiates a new RoleMiningSessionDtoCreatedBy object
+NewRoleMiningPotentialRoleSummaryCreatedBy instantiates a new RoleMiningPotentialRoleSummaryCreatedBy object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewRoleMiningSessionDtoCreatedByWithDefaults
+### NewRoleMiningPotentialRoleSummaryCreatedByWithDefaults
 
-`func NewRoleMiningSessionDtoCreatedByWithDefaults() *RoleMiningSessionDtoCreatedBy`
+`func NewRoleMiningPotentialRoleSummaryCreatedByWithDefaults() *RoleMiningPotentialRoleSummaryCreatedBy`
 
-NewRoleMiningSessionDtoCreatedByWithDefaults instantiates a new RoleMiningSessionDtoCreatedBy object
+NewRoleMiningPotentialRoleSummaryCreatedByWithDefaults instantiates a new RoleMiningPotentialRoleSummaryCreatedBy object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *RoleMiningSessionDtoCreatedBy) GetId() string`
+`func (o *RoleMiningPotentialRoleSummaryCreatedBy) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *RoleMiningSessionDtoCreatedBy) GetIdOk() (*string, bool)`
+`func (o *RoleMiningPotentialRoleSummaryCreatedBy) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *RoleMiningSessionDtoCreatedBy) SetId(v string)`
+`func (o *RoleMiningPotentialRoleSummaryCreatedBy) SetId(v string)`
 
 SetId sets Id field to given value.
 
 ### HasId
 
-`func (o *RoleMiningSessionDtoCreatedBy) HasId() bool`
+`func (o *RoleMiningPotentialRoleSummaryCreatedBy) HasId() bool`
 
 HasId returns a boolean if a field has been set.
 
 ### GetDisplayName
 
-`func (o *RoleMiningSessionDtoCreatedBy) GetDisplayName() string`
+`func (o *RoleMiningPotentialRoleSummaryCreatedBy) GetDisplayName() string`
 
 GetDisplayName returns the DisplayName field if non-nil, zero value otherwise.
 
 ### GetDisplayNameOk
 
-`func (o *RoleMiningSessionDtoCreatedBy) GetDisplayNameOk() (*string, bool)`
+`func (o *RoleMiningPotentialRoleSummaryCreatedBy) GetDisplayNameOk() (*string, bool)`
 
 GetDisplayNameOk returns a tuple with the DisplayName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDisplayName
 
-`func (o *RoleMiningSessionDtoCreatedBy) SetDisplayName(v string)`
+`func (o *RoleMiningPotentialRoleSummaryCreatedBy) SetDisplayName(v string)`
 
 SetDisplayName sets DisplayName field to given value.
 
 ### HasDisplayName
 
-`func (o *RoleMiningSessionDtoCreatedBy) HasDisplayName() bool`
+`func (o *RoleMiningPotentialRoleSummaryCreatedBy) HasDisplayName() bool`
 
 HasDisplayName returns a boolean if a field has been set.
 
