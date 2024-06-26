@@ -11,6 +11,8 @@ Method | HTTP request | Description
 [**GetRoleAssignments**](IdentitiesAPI.md#GetRoleAssignments) | **Get** /identities/{identityId}/role-assignments | List role assignments
 [**ListIdentities**](IdentitiesAPI.md#ListIdentities) | **Get** /identities | List Identities
 [**ResetIdentity**](IdentitiesAPI.md#ResetIdentity) | **Post** /identities/{id}/reset | Reset an identity
+[**SendIdentityVerificationAccountToken**](IdentitiesAPI.md#SendIdentityVerificationAccountToken) | **Post** /identities/{id}/verification/account/send | Send password reset email
+[**StartIdentitiesInvite**](IdentitiesAPI.md#StartIdentitiesInvite) | **Post** /identities/invite | Invite identities to register
 [**StartIdentityProcessing**](IdentitiesAPI.md#StartIdentityProcessing) | **Post** /identities/process | Process a list of identityIds
 [**SynchronizeAttributesForIdentity**](IdentitiesAPI.md#SynchronizeAttributesForIdentity) | **Post** /identities/{identityId}/synchronize-attributes | Attribute synchronization for single identity.
 
@@ -506,6 +508,136 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SendIdentityVerificationAccountToken
+
+> SendIdentityVerificationAccountToken(ctx).SendAccountVerificationRequest(sendAccountVerificationRequest).Execute()
+
+Send password reset email
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    sendAccountVerificationRequest := *openapiclient.NewSendAccountVerificationRequest("EMAIL_WORK") // SendAccountVerificationRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.IdentitiesAPI.SendIdentityVerificationAccountToken(context.Background()).SendAccountVerificationRequest(sendAccountVerificationRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.SendIdentityVerificationAccountToken``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSendIdentityVerificationAccountTokenRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sendAccountVerificationRequest** | [**SendAccountVerificationRequest**](SendAccountVerificationRequest.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StartIdentitiesInvite
+
+> TaskStatus StartIdentitiesInvite(ctx).InviteIdentitiesRequest(inviteIdentitiesRequest).Execute()
+
+Invite identities to register
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    inviteIdentitiesRequest := *openapiclient.NewInviteIdentitiesRequest() // InviteIdentitiesRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.IdentitiesAPI.StartIdentitiesInvite(context.Background()).InviteIdentitiesRequest(inviteIdentitiesRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.StartIdentitiesInvite``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StartIdentitiesInvite`: TaskStatus
+    fmt.Fprintf(os.Stdout, "Response from `IdentitiesAPI.StartIdentitiesInvite`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStartIdentitiesInviteRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **inviteIdentitiesRequest** | [**InviteIdentitiesRequest**](InviteIdentitiesRequest.md) |  | 
+
+### Return type
+
+[**TaskStatus**](TaskStatus.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

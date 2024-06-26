@@ -496,6 +496,7 @@ docs/ImportNonEmployeeRecordsInBulkRequest.md
 docs/ImportObject.md
 docs/ImportOptions.md
 docs/ImportSpConfigRequest.md
+docs/InviteIdentitiesRequest.md
 docs/Invocation.md
 docs/InvocationStatus.md
 docs/InvocationStatusType.md
@@ -799,6 +800,7 @@ docs/SegmentsAPI.md
 docs/Selector.md
 docs/SelectorType.md
 docs/SelfImportExportDto.md
+docs/SendAccountVerificationRequest.md
 docs/SendManualDiscoverApplicationsCsvTemplateRequest.md
 docs/SendTestNotificationRequestDto.md
 docs/SendTokenRequest.md
@@ -1372,6 +1374,7 @@ model_import_non_employee_records_in_bulk_request.go
 model_import_object.go
 model_import_options.go
 model_import_sp_config_request.go
+model_invite_identities_request.go
 model_invocation.go
 model_invocation_status.go
 model_invocation_status_type.go
@@ -1648,6 +1651,7 @@ model_segment.go
 model_selector.go
 model_selector_type.go
 model_self_import_export_dto.go
+model_send_account_verification_request.go
 model_send_manual_discover_applications_csv_template_request.go
 model_send_test_notification_request_dto.go
 model_send_token_request.go

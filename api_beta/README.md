@@ -266,6 +266,8 @@ Class | Method | HTTP request | Description
 *IdentitiesAPI* | [**GetRoleAssignments**](docs/IdentitiesAPI.md#getroleassignments) | **Get** /identities/{identityId}/role-assignments | List role assignments
 *IdentitiesAPI* | [**ListIdentities**](docs/IdentitiesAPI.md#listidentities) | **Get** /identities | List Identities
 *IdentitiesAPI* | [**ResetIdentity**](docs/IdentitiesAPI.md#resetidentity) | **Post** /identities/{id}/reset | Reset an identity
+*IdentitiesAPI* | [**SendIdentityVerificationAccountToken**](docs/IdentitiesAPI.md#sendidentityverificationaccounttoken) | **Post** /identities/{id}/verification/account/send | Send password reset email
+*IdentitiesAPI* | [**StartIdentitiesInvite**](docs/IdentitiesAPI.md#startidentitiesinvite) | **Post** /identities/invite | Invite identities to register
 *IdentitiesAPI* | [**StartIdentityProcessing**](docs/IdentitiesAPI.md#startidentityprocessing) | **Post** /identities/process | Process a list of identityIds
 *IdentitiesAPI* | [**SynchronizeAttributesForIdentity**](docs/IdentitiesAPI.md#synchronizeattributesforidentity) | **Post** /identities/{identityId}/synchronize-attributes | Attribute synchronization for single identity.
 *IdentityAttributesAPI* | [**CreateIdentityAttribute**](docs/IdentityAttributesAPI.md#createidentityattribute) | **Post** /identity-attributes | Create Identity Attribute
@@ -985,6 +987,7 @@ Class | Method | HTTP request | Description
  - [ImportObject](docs/ImportObject.md)
  - [ImportOptions](docs/ImportOptions.md)
  - [ImportSpConfigRequest](docs/ImportSpConfigRequest.md)
+ - [InviteIdentitiesRequest](docs/InviteIdentitiesRequest.md)
  - [Invocation](docs/Invocation.md)
  - [InvocationStatus](docs/InvocationStatus.md)
  - [InvocationStatusType](docs/InvocationStatusType.md)
@@ -1261,6 +1264,7 @@ Class | Method | HTTP request | Description
  - [Selector](docs/Selector.md)
  - [SelectorType](docs/SelectorType.md)
  - [SelfImportExportDto](docs/SelfImportExportDto.md)
+ - [SendAccountVerificationRequest](docs/SendAccountVerificationRequest.md)
  - [SendManualDiscoverApplicationsCsvTemplateRequest](docs/SendManualDiscoverApplicationsCsvTemplateRequest.md)
  - [SendTestNotificationRequestDto](docs/SendTestNotificationRequestDto.md)
  - [SendTokenRequest](docs/SendTokenRequest.md)

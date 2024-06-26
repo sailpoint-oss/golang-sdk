@@ -117,6 +117,29 @@ func Test_api_beta_IdentitiesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test IdentitiesAPIService SendIdentityVerificationAccountToken", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.API_BETA.IdentitiesAPI.SendIdentityVerificationAccountToken(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test IdentitiesAPIService StartIdentitiesInvite", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.API_BETA.IdentitiesAPI.StartIdentitiesInvite(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test IdentitiesAPIService StartIdentityProcessing", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
