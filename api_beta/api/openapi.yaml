@@ -18169,7 +18169,8 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:identity-profile:refresh
+        - idn:identity-profile:read
+        - idn:identity-profile:manage
       summary: Process identities under profile
       tags:
       - Identity Profiles
