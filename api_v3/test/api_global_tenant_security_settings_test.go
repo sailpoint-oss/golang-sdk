@@ -34,6 +34,18 @@ func Test_api_v3_GlobalTenantSecuritySettingsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test GlobalTenantSecuritySettingsAPIService GetAuthOrgLockoutConfig", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.API_V3.GlobalTenantSecuritySettingsAPI.GetAuthOrgLockoutConfig(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test GlobalTenantSecuritySettingsAPIService GetAuthOrgNetworkConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -46,11 +58,71 @@ func Test_api_v3_GlobalTenantSecuritySettingsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test GlobalTenantSecuritySettingsAPIService GetAuthOrgServiceProviderConfig", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.API_V3.GlobalTenantSecuritySettingsAPI.GetAuthOrgServiceProviderConfig(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GlobalTenantSecuritySettingsAPIService GetAuthOrgSessionConfig", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.API_V3.GlobalTenantSecuritySettingsAPI.GetAuthOrgSessionConfig(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GlobalTenantSecuritySettingsAPIService PatchAuthOrgLockoutConfig", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.API_V3.GlobalTenantSecuritySettingsAPI.PatchAuthOrgLockoutConfig(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test GlobalTenantSecuritySettingsAPIService PatchAuthOrgNetworkConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.GlobalTenantSecuritySettingsAPI.PatchAuthOrgNetworkConfig(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GlobalTenantSecuritySettingsAPIService PatchAuthOrgServiceProviderConfig", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.API_V3.GlobalTenantSecuritySettingsAPI.PatchAuthOrgServiceProviderConfig(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GlobalTenantSecuritySettingsAPIService PatchAuthOrgSessionConfig", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.API_V3.GlobalTenantSecuritySettingsAPI.PatchAuthOrgSessionConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

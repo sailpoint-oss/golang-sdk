@@ -183,8 +183,14 @@ Class | Method | HTTP request | Description
 *ConnectorsAPI* | [**PutTranslations**](docs/ConnectorsAPI.md#puttranslations) | **Put** /connectors/{scriptName}/translations/{locale} | 
 *ConnectorsAPI* | [**UpdateConnector**](docs/ConnectorsAPI.md#updateconnector) | **Patch** /connectors/{scriptName} | Update connector by script name
 *GlobalTenantSecuritySettingsAPI* | [**CreateAuthOrgNetworkConfig**](docs/GlobalTenantSecuritySettingsAPI.md#createauthorgnetworkconfig) | **Post** /auth-org/network-config | Create security network configuration.
+*GlobalTenantSecuritySettingsAPI* | [**GetAuthOrgLockoutConfig**](docs/GlobalTenantSecuritySettingsAPI.md#getauthorglockoutconfig) | **Get** /auth-org/lockout-config | Get Auth Org Lockout Configuration.
 *GlobalTenantSecuritySettingsAPI* | [**GetAuthOrgNetworkConfig**](docs/GlobalTenantSecuritySettingsAPI.md#getauthorgnetworkconfig) | **Get** /auth-org/network-config | Get security network configuration.
+*GlobalTenantSecuritySettingsAPI* | [**GetAuthOrgServiceProviderConfig**](docs/GlobalTenantSecuritySettingsAPI.md#getauthorgserviceproviderconfig) | **Get** /auth-org/service-provider-config | Get Service Provider Configuration.
+*GlobalTenantSecuritySettingsAPI* | [**GetAuthOrgSessionConfig**](docs/GlobalTenantSecuritySettingsAPI.md#getauthorgsessionconfig) | **Get** /auth-org/session-config | Get Auth Org Session Configuration.
+*GlobalTenantSecuritySettingsAPI* | [**PatchAuthOrgLockoutConfig**](docs/GlobalTenantSecuritySettingsAPI.md#patchauthorglockoutconfig) | **Patch** /auth-org/lockout-config | Update Auth Org Lockout Configuration
 *GlobalTenantSecuritySettingsAPI* | [**PatchAuthOrgNetworkConfig**](docs/GlobalTenantSecuritySettingsAPI.md#patchauthorgnetworkconfig) | **Patch** /auth-org/network-config | Update security network configuration.
+*GlobalTenantSecuritySettingsAPI* | [**PatchAuthOrgServiceProviderConfig**](docs/GlobalTenantSecuritySettingsAPI.md#patchauthorgserviceproviderconfig) | **Patch** /auth-org/service-provider-config | Update Service Provider Configuration
+*GlobalTenantSecuritySettingsAPI* | [**PatchAuthOrgSessionConfig**](docs/GlobalTenantSecuritySettingsAPI.md#patchauthorgsessionconfig) | **Patch** /auth-org/session-config | Update Auth Org Session Configuration
 *IdentityProfilesAPI* | [**DeleteIdentityProfile**](docs/IdentityProfilesAPI.md#deleteidentityprofile) | **Delete** /identity-profiles/{identity-profile-id} | Delete an Identity Profile
 *IdentityProfilesAPI* | [**DeleteIdentityProfiles**](docs/IdentityProfilesAPI.md#deleteidentityprofiles) | **Post** /identity-profiles/bulk-delete | Delete Identity Profiles
 *IdentityProfilesAPI* | [**ExportIdentityProfiles**](docs/IdentityProfilesAPI.md#exportidentityprofiles) | **Get** /identity-profiles/export | Export Identity Profiles
@@ -600,6 +606,7 @@ Class | Method | HTTP request | Description
  - [Expression](docs/Expression.md)
  - [ExpressionChildrenInner](docs/ExpressionChildrenInner.md)
  - [ExternalAttributes](docs/ExternalAttributes.md)
+ - [FederationProtocolDetails](docs/FederationProtocolDetails.md)
  - [FieldDetailsDto](docs/FieldDetailsDto.md)
  - [Filter](docs/Filter.md)
  - [FilterAggregation](docs/FilterAggregation.md)
@@ -636,11 +643,13 @@ Class | Method | HTTP request | Description
  - [IdentityWithNewAccess](docs/IdentityWithNewAccess.md)
  - [IdentityWithNewAccess1](docs/IdentityWithNewAccess1.md)
  - [IdentityWithNewAccessAccessRefsInner](docs/IdentityWithNewAccessAccessRefsInner.md)
+ - [IdpDetails](docs/IdpDetails.md)
  - [ImportNonEmployeeRecordsInBulkRequest](docs/ImportNonEmployeeRecordsInBulkRequest.md)
  - [ImportObject](docs/ImportObject.md)
  - [ImportUploadedBackupRequest](docs/ImportUploadedBackupRequest.md)
  - [Index](docs/Index.md)
  - [InnerHit](docs/InnerHit.md)
+ - [JITConfiguration](docs/JITConfiguration.md)
  - [JsonPatchOperation](docs/JsonPatchOperation.md)
  - [JsonPatchOperationValue](docs/JsonPatchOperationValue.md)
  - [KbaAnswerRequestItem](docs/KbaAnswerRequestItem.md)
@@ -655,6 +664,7 @@ Class | Method | HTTP request | Description
  - [ListCampaignFilters200Response](docs/ListCampaignFilters200Response.md)
  - [ListCompleteWorkflowLibrary200ResponseInner](docs/ListCompleteWorkflowLibrary200ResponseInner.md)
  - [LocaleOrigin](docs/LocaleOrigin.md)
+ - [LockoutConfiguration](docs/LockoutConfiguration.md)
  - [ManagedClient](docs/ManagedClient.md)
  - [ManagedClientRequest](docs/ManagedClientRequest.md)
  - [ManagedClientStatus](docs/ManagedClientStatus.md)
@@ -849,6 +859,9 @@ Class | Method | HTTP request | Description
  - [ServiceDeskIntegrationTemplateDto](docs/ServiceDeskIntegrationTemplateDto.md)
  - [ServiceDeskIntegrationTemplateType](docs/ServiceDeskIntegrationTemplateType.md)
  - [ServiceDeskSource](docs/ServiceDeskSource.md)
+ - [ServiceProviderConfiguration](docs/ServiceProviderConfiguration.md)
+ - [ServiceProviderConfigurationFederationProtocolDetailsInner](docs/ServiceProviderConfigurationFederationProtocolDetailsInner.md)
+ - [SessionConfiguration](docs/SessionConfiguration.md)
  - [SetLifecycleState200Response](docs/SetLifecycleState200Response.md)
  - [SetLifecycleStateRequest](docs/SetLifecycleStateRequest.md)
  - [SlimCampaign](docs/SlimCampaign.md)
@@ -882,6 +895,7 @@ Class | Method | HTTP request | Description
  - [SourceUsage](docs/SourceUsage.md)
  - [SourceUsageStatus](docs/SourceUsageStatus.md)
  - [SpConfigMessage](docs/SpConfigMessage.md)
+ - [SpDetails](docs/SpDetails.md)
  - [StandardLevel](docs/StandardLevel.md)
  - [SubSearchAggregationSpecification](docs/SubSearchAggregationSpecification.md)
  - [TaggedObject](docs/TaggedObject.md)

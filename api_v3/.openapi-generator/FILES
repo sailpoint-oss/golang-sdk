@@ -244,6 +244,7 @@ docs/ExpansionItem.md
 docs/Expression.md
 docs/ExpressionChildrenInner.md
 docs/ExternalAttributes.md
+docs/FederationProtocolDetails.md
 docs/FieldDetailsDto.md
 docs/Filter.md
 docs/FilterAggregation.md
@@ -282,11 +283,13 @@ docs/IdentitySummary.md
 docs/IdentityWithNewAccess.md
 docs/IdentityWithNewAccess1.md
 docs/IdentityWithNewAccessAccessRefsInner.md
+docs/IdpDetails.md
 docs/ImportNonEmployeeRecordsInBulkRequest.md
 docs/ImportObject.md
 docs/ImportUploadedBackupRequest.md
 docs/Index.md
 docs/InnerHit.md
+docs/JITConfiguration.md
 docs/JsonPatchOperation.md
 docs/JsonPatchOperationValue.md
 docs/KbaAnswerRequestItem.md
@@ -302,6 +305,7 @@ docs/ListAccessProfiles429Response.md
 docs/ListCampaignFilters200Response.md
 docs/ListCompleteWorkflowLibrary200ResponseInner.md
 docs/LocaleOrigin.md
+docs/LockoutConfiguration.md
 docs/MFAConfigurationAPI.md
 docs/MFAControllerAPI.md
 docs/ManagedClient.md
@@ -520,6 +524,9 @@ docs/ServiceDeskIntegrationDto.md
 docs/ServiceDeskIntegrationTemplateDto.md
 docs/ServiceDeskIntegrationTemplateType.md
 docs/ServiceDeskSource.md
+docs/ServiceProviderConfiguration.md
+docs/ServiceProviderConfigurationFederationProtocolDetailsInner.md
+docs/SessionConfiguration.md
 docs/SetLifecycleState200Response.md
 docs/SetLifecycleStateRequest.md
 docs/SlimCampaign.md
@@ -555,6 +562,7 @@ docs/SourceUsageStatus.md
 docs/SourceUsagesAPI.md
 docs/SourcesAPI.md
 docs/SpConfigMessage.md
+docs/SpDetails.md
 docs/StandardLevel.md
 docs/SubSearchAggregationSpecification.md
 docs/TaggedObject.md
@@ -798,6 +806,7 @@ model_expansion_item.go
 model_expression.go
 model_expression_children_inner.go
 model_external_attributes.go
+model_federation_protocol_details.go
 model_field_details_dto.go
 model_filter.go
 model_filter_aggregation.go
@@ -834,11 +843,13 @@ model_identity_summary.go
 model_identity_with_new_access.go
 model_identity_with_new_access_1.go
 model_identity_with_new_access_access_refs_inner.go
+model_idp_details.go
 model_import_non_employee_records_in_bulk_request.go
 model_import_object.go
 model_import_uploaded_backup_request.go
 model_index.go
 model_inner_hit.go
+model_jit_configuration.go
 model_json_patch_operation.go
 model_json_patch_operation_value.go
 model_kba_answer_request_item.go
@@ -853,6 +864,7 @@ model_list_access_profiles_429_response.go
 model_list_campaign_filters_200_response.go
 model_list_complete_workflow_library_200_response_inner.go
 model_locale_origin.go
+model_lockout_configuration.go
 model_managed_client.go
 model_managed_client_request.go
 model_managed_client_status.go
@@ -1047,6 +1059,9 @@ model_service_desk_integration_dto.go
 model_service_desk_integration_template_dto.go
 model_service_desk_integration_template_type.go
 model_service_desk_source.go
+model_service_provider_configuration.go
+model_service_provider_configuration_federation_protocol_details_inner.go
+model_session_configuration.go
 model_set_lifecycle_state_200_response.go
 model_set_lifecycle_state_request.go
 model_slim_campaign.go
@@ -1080,6 +1095,7 @@ model_source_schemas_inner.go
 model_source_usage.go
 model_source_usage_status.go
 model_sp_config_message.go
+model_sp_details.go
 model_standard_level.go
 model_sub_search_aggregation_specification.go
 model_tagged_object.go
