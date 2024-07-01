@@ -765,11 +765,11 @@ func (r ApiSetLifecycleStateRequest) Execute() (*SetLifecycleState200Response, *
 /*
 SetLifecycleState Set Lifecycle State
 
-Use this endpoint to set/update an identity's lifecycle state to the one provided and update the corresponding identity profile.
-A token with ORG_ADMIN or API authority is required to call this API.
+Use this API to set/update an identity's lifecycle state to the one provided and update the corresponding identity profile.
+A token with ORG_ADMIN or API authority and the appropriate user context is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param identityId The ID of the identity to update.
+ @param identityId ID of the identity to update.
  @return ApiSetLifecycleStateRequest
 */
 func (a *LifecycleStatesAPIService) SetLifecycleState(ctx context.Context, identityId string) ApiSetLifecycleStateRequest {

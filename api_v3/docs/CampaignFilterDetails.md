@@ -4,18 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Id of the campaign filter | [optional] 
-**Name** | **string** | This is campaign filter&#39;s name. | 
-**Description** | **string** | This is campaign filter&#39;s description. | 
-**Owner** | **NullableString** | The owner of this filter. This field is automatically populated at creation time with the current user. | 
-**Mode** | **map[string]interface{}** | The mode/type of Filter, where it is of INCLUSION or EXCLUSION type. INCLUSION type will include the data in generated campaign  as per specified in criteria, whereas EXCLUSION type will exclude the the data in generated campaign as per specified in criteria. | 
+**Name** | **string** | Campaign filter name. | 
+**Description** | Pointer to **string** | Campaign filter description. | [optional] 
+**Owner** | **NullableString** | Owner of the filter. This field automatically populates at creation time with the current user. | 
+**Mode** | **map[string]interface{}** | Mode/type of filter, either the INCLUSION or EXCLUSION type. The INCLUSION type includes the data in generated campaigns  as per specified in the criteria, whereas the EXCLUSION type excludes the data in generated campaigns as per specified in criteria. | 
 **CriteriaList** | Pointer to [**[]CampaignFilterDetailsCriteriaListInner**](CampaignFilterDetailsCriteriaListInner.md) | List of criteria. | [optional] 
 
 ## Methods
 
 ### NewCampaignFilterDetails
 
-`func NewCampaignFilterDetails(name string, description string, owner NullableString, mode map[string]interface{}, ) *CampaignFilterDetails`
+`func NewCampaignFilterDetails(name string, owner NullableString, mode map[string]interface{}, ) *CampaignFilterDetails`
 
 NewCampaignFilterDetails instantiates a new CampaignFilterDetails object
 This constructor will assign default values to properties that have it defined,
@@ -29,31 +28,6 @@ will change when the set of required properties is changed
 NewCampaignFilterDetailsWithDefaults instantiates a new CampaignFilterDetails object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *CampaignFilterDetails) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *CampaignFilterDetails) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *CampaignFilterDetails) SetId(v string)`
-
-SetId sets Id field to given value.
-
-### HasId
-
-`func (o *CampaignFilterDetails) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetName
 
@@ -94,6 +68,11 @@ and a boolean to check if the value has been set.
 
 SetDescription sets Description field to given value.
 
+### HasDescription
+
+`func (o *CampaignFilterDetails) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetOwner
 

@@ -20,15 +20,13 @@ var _ MappedNullable = &CampaignFilterDetails{}
 
 // CampaignFilterDetails Campaign Filter Details
 type CampaignFilterDetails struct {
-	// Id of the campaign filter
-	Id *string `json:"id,omitempty"`
-	// This is campaign filter's name.
+	// Campaign filter name.
 	Name string `json:"name"`
-	// This is campaign filter's description.
-	Description string `json:"description"`
-	// The owner of this filter. This field is automatically populated at creation time with the current user.
+	// Campaign filter description.
+	Description *string `json:"description,omitempty"`
+	// Owner of the filter. This field automatically populates at creation time with the current user.
 	Owner NullableString `json:"owner"`
-	// The mode/type of Filter, where it is of INCLUSION or EXCLUSION type. INCLUSION type will include the data in generated campaign  as per specified in criteria, whereas EXCLUSION type will exclude the the data in generated campaign as per specified in criteria.
+	// Mode/type of filter, either the INCLUSION or EXCLUSION type. The INCLUSION type includes the data in generated campaigns  as per specified in the criteria, whereas the EXCLUSION type excludes the data in generated campaigns as per specified in criteria.
 	Mode map[string]interface{} `json:"mode"`
 	// List of criteria.
 	CriteriaList []CampaignFilterDetailsCriteriaListInner `json:"criteriaList,omitempty"`
@@ -41,10 +39,9 @@ type _CampaignFilterDetails CampaignFilterDetails
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCampaignFilterDetails(name string, description string, owner NullableString, mode map[string]interface{}) *CampaignFilterDetails {
+func NewCampaignFilterDetails(name string, owner NullableString, mode map[string]interface{}) *CampaignFilterDetails {
 	this := CampaignFilterDetails{}
 	this.Name = name
-	this.Description = description
 	this.Owner = owner
 	this.Mode = mode
 	return &this
@@ -56,38 +53,6 @@ func NewCampaignFilterDetails(name string, description string, owner NullableStr
 func NewCampaignFilterDetailsWithDefaults() *CampaignFilterDetails {
 	this := CampaignFilterDetails{}
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *CampaignFilterDetails) GetId() string {
-	if o == nil || isNil(o.Id) {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CampaignFilterDetails) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *CampaignFilterDetails) HasId() bool {
-	if o != nil && !isNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *CampaignFilterDetails) SetId(v string) {
-	o.Id = &v
 }
 
 // GetName returns the Name field value
@@ -114,28 +79,36 @@ func (o *CampaignFilterDetails) SetName(v string) {
 	o.Name = v
 }
 
-// GetDescription returns the Description field value
+// GetDescription returns the Description field value if set, zero value otherwise.
 func (o *CampaignFilterDetails) GetDescription() string {
-	if o == nil {
+	if o == nil || isNil(o.Description) {
 		var ret string
 		return ret
 	}
-
-	return o.Description
+	return *o.Description
 }
 
-// GetDescriptionOk returns a tuple with the Description field value
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CampaignFilterDetails) GetDescriptionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || isNil(o.Description) {
 		return nil, false
 	}
-	return &o.Description, true
+	return o.Description, true
 }
 
-// SetDescription sets field value
+// HasDescription returns a boolean if a field has been set.
+func (o *CampaignFilterDetails) HasDescription() bool {
+	if o != nil && !isNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *CampaignFilterDetails) SetDescription(v string) {
-	o.Description = v
+	o.Description = &v
 }
 
 // GetOwner returns the Owner field value
@@ -230,11 +203,10 @@ func (o CampaignFilterDetails) MarshalJSON() ([]byte, error) {
 
 func (o CampaignFilterDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
 	toSerialize["name"] = o.Name
-	toSerialize["description"] = o.Description
+	if !isNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
 	toSerialize["owner"] = o.Owner.Get()
 	toSerialize["mode"] = o.Mode
 	if !isNil(o.CriteriaList) {
@@ -254,7 +226,6 @@ func (o *CampaignFilterDetails) UnmarshalJSON(bytes []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"name",
-		"description",
 		"owner",
 		"mode",
 	}
@@ -282,7 +253,6 @@ func (o *CampaignFilterDetails) UnmarshalJSON(bytes []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "owner")

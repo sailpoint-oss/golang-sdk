@@ -7784,10 +7784,8 @@ paths:
       - Certification Campaigns
   /campaign-filters:
     get:
-      description: |-
-        Lists all Campaign Filters. Scope can be reduced via standard V3 query params.
-
-        All Campaign Filters matching the query params
+      description: Use this API to list all campaign filters. You can reduce scope
+        with standard V3 query parameters.
       operationId: listCampaignFilters
       parameters:
       - description: |-
@@ -7816,9 +7814,9 @@ paths:
           format: int32
           minimum: 0
           type: integer
-      - description: "If true, include system filters in the count and results, exclude\
-          \ them otherwise. If not provided any value for it then by default it is\
-          \ true."
+      - description: "If this is true, the API includes system filters in the count\
+          \ and results. Otherwise it excludes them. If no value is provided, the\
+          \ default is true. "
         example: true
         in: query
         name: includeSystemFilters
@@ -7869,7 +7867,7 @@ paths:
                 count: 2
               schema:
                 $ref: '#/components/schemas/listCampaignFilters_200_response'
-          description: List of campaign filter objects
+          description: List of campaign filter objects.
         "400":
           content:
             application/json:
@@ -7933,7 +7931,8 @@ paths:
       tags:
       - Certification Campaign Filters
     post:
-      description: Create a campaign Filter based on filter details and criteria.
+      description: Use this API to create a campaign filter based on filter details
+        and criteria.
       operationId: createCampaignFilter
       requestBody:
         content:
@@ -8007,7 +8006,7 @@ paths:
       security:
       - UserContextAuth:
         - idn:campaign-filter:create
-      summary: Create a Campaign Filter
+      summary: Create Campaign Filter
       tags:
       - Certification Campaign Filters
   /campaign-filters/{id}:
@@ -14159,11 +14158,11 @@ paths:
   /identities/{identity-id}/set-lifecycle-state:
     post:
       description: |-
-        Use this endpoint to set/update an identity's lifecycle state to the one provided and update the corresponding identity profile.
-        A token with ORG_ADMIN or API authority is required to call this API.
+        Use this API to set/update an identity's lifecycle state to the one provided and update the corresponding identity profile.
+        A token with ORG_ADMIN or API authority and the appropriate user context is required to call this API.
       operationId: setLifecycleState
       parameters:
-      - description: The ID of the identity to update.
+      - description: ID of the identity to update.
         example: 2c9180857893f1290178944561990364
         in: path
         name: identity-id
@@ -32389,6 +32388,19 @@ paths:
                 - op: replace
                   path: /connectorAttributes/connectionParameters/2/operationType
                   value: Group Aggregation-test
+              Enable notifications for new account provisioning on a source:
+                description: This example shows how you can configure and enable email
+                  notifications that will send when new accounts are provisioned on
+                  a source.
+                value:
+                - op: replace
+                  path: /connectorAttributes/accountCreateNotification
+                  value:
+                    notifyList:
+                    - Distribution.list@demo.com
+                    notifyAccountOwner: true
+                    enabled: true
+                    notifyAccountOwnerAltEmail: false
             schema:
               items:
                 $ref: '#/components/schemas/JsonPatchOperation'
@@ -45870,9 +45882,8 @@ components:
         owner: SailPoint Support
         mode: INCLUSION
         name: Identity Attribute Campaign Filter
-        description: Campaign filter to certify data based on specified property of
-          Identity Attribute.
-        id: e9f9a1397b842fd5a65842087040d3ac
+        description: Campaign filter to certify data based on an identity attribute's
+          specified property.
         criteriaList:
         - type: IDENTITY_ATTRIBUTE
           property: displayName
@@ -45885,30 +45896,26 @@ components:
           suppressMatchedItems: false
           children: null
       properties:
-        id:
-          description: Id of the campaign filter
-          example: e9f9a1397b842fd5a65842087040d3ac
-          type: string
         name:
-          description: This is campaign filter's name.
+          description: Campaign filter name.
           example: Identity Attribute Campaign Filter
           type: string
         description:
-          description: This is campaign filter's description.
-          example: Campaign filter to certify data based on specified property of
-            Identity Attribute.
+          description: Campaign filter description.
+          example: Campaign filter to certify data based on an identity attribute's
+            specified property.
           type: string
         owner:
-          description: The owner of this filter. This field is automatically populated
-            at creation time with the current user.
+          description: Owner of the filter. This field automatically populates at
+            creation time with the current user.
           example: SailPoint Support
           nullable: true
           type: string
         mode:
-          description: "The mode/type of Filter, where it is of INCLUSION or EXCLUSION\
-            \ type. INCLUSION type will include the data in generated campaign  as\
-            \ per specified in criteria, whereas EXCLUSION type will exclude the the\
-            \ data in generated campaign as per specified in criteria."
+          description: "Mode/type of filter, either the INCLUSION or EXCLUSION type.\
+            \ The INCLUSION type includes the data in generated campaigns  as per\
+            \ specified in the criteria, whereas the EXCLUSION type excludes the data\
+            \ in generated campaigns as per specified in criteria."
           enum:
           - INCLUSION
           - EXCLUSION
@@ -45931,7 +45938,6 @@ components:
             $ref: '#/components/schemas/CampaignFilterDetails_criteriaList_inner'
           type: array
       required:
-      - description
       - mode
       - name
       - owner
@@ -58966,9 +58972,8 @@ components:
         - owner: SailPoint Support
           mode: INCLUSION
           name: Identity Attribute Campaign Filter
-          description: Campaign filter to certify data based on specified property
-            of Identity Attribute.
-          id: e9f9a1397b842fd5a65842087040d3ac
+          description: Campaign filter to certify data based on an identity attribute's
+            specified property.
           criteriaList:
           - type: IDENTITY_ATTRIBUTE
             property: displayName
@@ -58983,9 +58988,8 @@ components:
         - owner: SailPoint Support
           mode: INCLUSION
           name: Identity Attribute Campaign Filter
-          description: Campaign filter to certify data based on specified property
-            of Identity Attribute.
-          id: e9f9a1397b842fd5a65842087040d3ac
+          description: Campaign filter to certify data based on an identity attribute's
+            specified property.
           criteriaList:
           - type: IDENTITY_ATTRIBUTE
             property: displayName
@@ -58999,12 +59003,12 @@ components:
             children: null
       properties:
         items:
-          description: The list of campaign filters
+          description: List of campaign filters.
           items:
             $ref: '#/components/schemas/CampaignFilterDetails'
           type: array
         count:
-          description: The number of filters returned
+          description: Number of filters returned.
           example: 2
           type: integer
       type: object
@@ -59051,7 +59055,7 @@ components:
     setLifecycleState_request:
       properties:
         lifecycleStateId:
-          description: The ID of the lifecycle state to set.
+          description: ID of the lifecycle state to set.
           example: 2c9180877a86e408017a8c19fefe046c
           type: string
       type: object
@@ -59060,9 +59064,9 @@ components:
         accountActivityId: 2c9180837ab5b716017ab7c6c9ef1e20
       properties:
         accountActivityId:
-          description: "The ID of the IdentityRequest object that is generated when\
-            \ the workflow launches. To follow the IdentityRequest, you can provide\
-            \ this ID with a [Get Account Activity request](https://developer.sailpoint.com/docs/api/v3/get-account-activity/).\
+          description: "ID of the IdentityRequest object that is generated when the\
+            \ workflow launches. To follow the IdentityRequest, you can provide this\
+            \ ID with a [Get Account Activity request](https://developer.sailpoint.com/docs/api/v3/get-account-activity/).\
             \ The response will contain relevant information about the IdentityRequest,\
             \ such as its status."
           example: 2c9180837ab5b716017ab7c6c9ef1e20
@@ -60132,12 +60136,12 @@ components:
           - nullable: true
             type: object
         property:
-          description: The specified key from the Type of criteria.
+          description: Specified key from the type of criteria.
           example: displayName
           nullable: true
           type: string
         value:
-          description: The value for the specified key from the Type of Criteria
+          description: Value for the specified key from the type of criteria.
           example: Allie
           nullable: true
           type: string

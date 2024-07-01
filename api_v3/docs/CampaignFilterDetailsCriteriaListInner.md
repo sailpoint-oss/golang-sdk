@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**CriteriaType**](CriteriaType.md) |  | 
 **Operation** | [**Operation**](Operation.md) |  | 
-**Property** | **NullableString** | The specified key from the Type of criteria. | 
-**Value** | **NullableString** | The value for the specified key from the Type of Criteria | 
+**Property** | **NullableString** | Specified key from the type of criteria. | 
+**Value** | **NullableString** | Value for the specified key from the type of criteria. | 
 
 ## Methods
 

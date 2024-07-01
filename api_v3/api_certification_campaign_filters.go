@@ -39,9 +39,9 @@ func (r ApiCreateCampaignFilterRequest) Execute() (*CampaignFilterDetails, *http
 }
 
 /*
-CreateCampaignFilter Create a Campaign Filter
+CreateCampaignFilter Create Campaign Filter
 
-Create a campaign Filter based on filter details and criteria.
+Use this API to create a campaign filter based on filter details and criteria.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateCampaignFilterRequest
@@ -540,7 +540,7 @@ func (r ApiListCampaignFiltersRequest) Start(start int32) ApiListCampaignFilters
 	return r
 }
 
-// If true, include system filters in the count and results, exclude them otherwise. If not provided any value for it then by default it is true.
+// If this is true, the API includes system filters in the count and results. Otherwise it excludes them. If no value is provided, the default is true. 
 func (r ApiListCampaignFiltersRequest) IncludeSystemFilters(includeSystemFilters bool) ApiListCampaignFiltersRequest {
 	r.includeSystemFilters = &includeSystemFilters
 	return r
@@ -553,9 +553,7 @@ func (r ApiListCampaignFiltersRequest) Execute() (*ListCampaignFilters200Respons
 /*
 ListCampaignFilters List Campaign Filters
 
-Lists all Campaign Filters. Scope can be reduced via standard V3 query params.
-
-All Campaign Filters matching the query params
+Use this API to list all campaign filters. You can reduce scope with standard V3 query parameters.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListCampaignFiltersRequest

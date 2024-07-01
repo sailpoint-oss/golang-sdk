@@ -330,7 +330,7 @@ import (
 )
 
 func main() {
-    identityId := "2c9180857893f1290178944561990364" // string | The ID of the identity to update.
+    identityId := "2c9180857893f1290178944561990364" // string | ID of the identity to update.
     setLifecycleStateRequest := *openapiclient.NewSetLifecycleStateRequest() // SetLifecycleStateRequest | 
 
     configuration := openapiclient.NewConfiguration()
@@ -351,7 +351,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**identityId** | **string** | The ID of the identity to update. | 
+**identityId** | **string** | ID of the identity to update. | 
 
 ### Other Parameters
 

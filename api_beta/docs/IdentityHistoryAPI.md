@@ -13,7 +13,7 @@ Method | HTTP request | Description
 [**GetIdentityStartDate**](IdentityHistoryAPI.md#GetIdentityStartDate) | **Get** /historical-identities/{id}/start-date | Gets the start date of the identity
 [**ListHistoricalIdentities**](IdentityHistoryAPI.md#ListHistoricalIdentities) | **Get** /historical-identities | Lists all the identities
 [**ListIdentityAccessItems**](IdentityHistoryAPI.md#ListIdentityAccessItems) | **Get** /historical-identities/{id}/access-items | Gets a list of access items for the identity filtered by item type
-[**ListIdentitySnapshotAccessItems**](IdentityHistoryAPI.md#ListIdentitySnapshotAccessItems) | **Get** /historical-identities/{id}/snapshots/{date}/access-items | Gets the list of identity access items at a given date filterd by item type
+[**ListIdentitySnapshotAccessItems**](IdentityHistoryAPI.md#ListIdentitySnapshotAccessItems) | **Get** /historical-identities/{id}/snapshots/{date}/access-items | Get Identity Access Items Snapshot
 [**ListIdentitySnapshots**](IdentityHistoryAPI.md#ListIdentitySnapshots) | **Get** /historical-identities/{id}/snapshots | Lists all the snapshots for the identity
 
 
@@ -712,7 +712,7 @@ Name | Type | Description  | Notes
 
 > []ListIdentityAccessItems200ResponseInner ListIdentitySnapshotAccessItems(ctx, id, date).Type_(type_).Execute()
 
-Gets the list of identity access items at a given date filterd by item type
+Get Identity Access Items Snapshot
 
 
 
@@ -729,9 +729,9 @@ import (
 )
 
 func main() {
-    id := "8c190e6787aa4ed9a90bd9d5344523fb" // string | The identity id
-    date := "2007-03-01T13:00:00Z" // string | The specified date
-    type_ := "account" // string | The access item type (optional)
+    id := "8c190e6787aa4ed9a90bd9d5344523fb" // string | Identity ID.
+    date := "2007-03-01T13:00:00Z" // string | Specified date.
+    type_ := "account" // string | Access item type. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -751,8 +751,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The identity id | 
-**date** | **string** | The specified date | 
+**id** | **string** | Identity ID. | 
+**date** | **string** | Specified date. | 
 
 ### Other Parameters
 
@@ -763,7 +763,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **type_** | **string** | The access item type | 
+ **type_** | **string** | Access item type. | 
 
 ### Return type
 

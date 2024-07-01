@@ -22,9 +22,9 @@ var _ MappedNullable = &CampaignFilterDetailsCriteriaListInner{}
 type CampaignFilterDetailsCriteriaListInner struct {
 	Type CriteriaType `json:"type"`
 	Operation Operation `json:"operation"`
-	// The specified key from the Type of criteria.
+	// Specified key from the type of criteria.
 	Property NullableString `json:"property"`
-	// The value for the specified key from the Type of Criteria
+	// Value for the specified key from the type of criteria.
 	Value NullableString `json:"value"`
 	AdditionalProperties map[string]interface{}
 }

@@ -19,7 +19,7 @@ var _ MappedNullable = &SetLifecycleStateRequest{}
 
 // SetLifecycleStateRequest struct for SetLifecycleStateRequest
 type SetLifecycleStateRequest struct {
-	// The ID of the lifecycle state to set.
+	// ID of the lifecycle state to set.
 	LifecycleStateId *string `json:"lifecycleStateId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

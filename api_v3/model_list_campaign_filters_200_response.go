@@ -19,9 +19,9 @@ var _ MappedNullable = &ListCampaignFilters200Response{}
 
 // ListCampaignFilters200Response struct for ListCampaignFilters200Response
 type ListCampaignFilters200Response struct {
-	// The list of campaign filters
+	// List of campaign filters.
 	Items []CampaignFilterDetails `json:"items,omitempty"`
-	// The number of filters returned
+	// Number of filters returned.
 	Count *int32 `json:"count,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

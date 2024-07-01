@@ -118,7 +118,7 @@ Class | Method | HTTP request | Description
 *BrandingAPI* | [**GetBranding**](docs/BrandingAPI.md#getbranding) | **Get** /brandings/{name} | Get a branding item
 *BrandingAPI* | [**GetBrandingList**](docs/BrandingAPI.md#getbrandinglist) | **Get** /brandings | List of branding items
 *BrandingAPI* | [**SetBrandingItem**](docs/BrandingAPI.md#setbrandingitem) | **Put** /brandings/{name} | Update a branding item
-*CertificationCampaignFiltersAPI* | [**CreateCampaignFilter**](docs/CertificationCampaignFiltersAPI.md#createcampaignfilter) | **Post** /campaign-filters | Create a Campaign Filter
+*CertificationCampaignFiltersAPI* | [**CreateCampaignFilter**](docs/CertificationCampaignFiltersAPI.md#createcampaignfilter) | **Post** /campaign-filters | Create Campaign Filter
 *CertificationCampaignFiltersAPI* | [**DeleteCampaignFilters**](docs/CertificationCampaignFiltersAPI.md#deletecampaignfilters) | **Post** /campaign-filters/delete | Deletes Campaign Filters
 *CertificationCampaignFiltersAPI* | [**GetCampaignFilterById**](docs/CertificationCampaignFiltersAPI.md#getcampaignfilterbyid) | **Get** /campaign-filters/{id} | Get Campaign Filter by ID
 *CertificationCampaignFiltersAPI* | [**ListCampaignFilters**](docs/CertificationCampaignFiltersAPI.md#listcampaignfilters) | **Get** /campaign-filters | List Campaign Filters

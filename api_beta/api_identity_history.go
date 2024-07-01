@@ -1801,7 +1801,7 @@ type ApiListIdentitySnapshotAccessItemsRequest struct {
 	type_ *string
 }
 
-// The access item type
+// Access item type.
 func (r ApiListIdentitySnapshotAccessItemsRequest) Type_(type_ string) ApiListIdentitySnapshotAccessItemsRequest {
 	r.type_ = &type_
 	return r
@@ -1812,13 +1812,13 @@ func (r ApiListIdentitySnapshotAccessItemsRequest) Execute() ([]ListIdentityAcce
 }
 
 /*
-ListIdentitySnapshotAccessItems Gets the list of identity access items at a given date filterd by item type
+ListIdentitySnapshotAccessItems Get Identity Access Items Snapshot
 
-This method retrieves the list of identity access items at a given date filterd by item type Requires authorization scope of 'idn:identity-history:read' 
+Use this API to get a list of identity access items at a specified date, filtered by item type.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The identity id
- @param date The specified date
+ @param id Identity ID.
+ @param date Specified date.
  @return ApiListIdentitySnapshotAccessItemsRequest
 */
 func (a *IdentityHistoryAPIService) ListIdentitySnapshotAccessItems(ctx context.Context, id string, date string) ApiListIdentitySnapshotAccessItemsRequest {
@@ -1930,6 +1930,17 @@ func (a *IdentityHistoryAPIService) ListIdentitySnapshotAccessItemsExecute(r Api
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

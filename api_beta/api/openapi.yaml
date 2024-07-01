@@ -14006,25 +14006,25 @@ paths:
       - Identity History
   /historical-identities/{id}/snapshots/{date}/access-items:
     get:
-      description: 'This method retrieves the list of identity access items at a given
-        date filterd by item type Requires authorization scope of ''idn:identity-history:read'' '
+      description: "Use this API to get a list of identity access items at a specified\
+        \ date, filtered by item type."
       operationId: listIdentitySnapshotAccessItems
       parameters:
-      - description: The identity id
+      - description: Identity ID.
         example: 8c190e6787aa4ed9a90bd9d5344523fb
         in: path
         name: id
         required: true
         schema:
           type: string
-      - description: The specified date
+      - description: Specified date.
         example: 2007-03-01T13:00:00Z
         in: path
         name: date
         required: true
         schema:
           type: string
-      - description: The access item type
+      - description: Access item type.
         example: account
         in: query
         name: type
@@ -14086,7 +14086,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/listIdentityAccessItems_200_response_inner'
                 type: array
-          description: The identity object.
+          description: Identity object.
         "400":
           content:
             application/json:
@@ -14136,6 +14136,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
         "500":
           content:
             application/json:
@@ -14153,8 +14161,10 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Gets the list of identity access items at a given date filterd by item
-        type
+      security:
+      - UserContextAuth:
+        - idn:identity-history:read
+      summary: Get Identity Access Items Snapshot
       tags:
       - Identity History
   /common-access:
@@ -38884,6 +38894,19 @@ paths:
                 - op: replace
                   path: /connectorAttributes/connectionParameters/2/operationType
                   value: Group Aggregation-test
+              Enable notifications for new account provisioning on a source:
+                description: This example shows how you can configure and enable email
+                  notifications that will send when new accounts are provisioned on
+                  a source.
+                value:
+                - op: replace
+                  path: /connectorAttributes/accountCreateNotification
+                  value:
+                    notifyList:
+                    - Distribution.list@demo.com
+                    notifyAccountOwner: true
+                    enabled: true
+                    notifyAccountOwnerAltEmail: false
             schema:
               items:
                 $ref: '#/components/schemas/JsonPatchOperation'

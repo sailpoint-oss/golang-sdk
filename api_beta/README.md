@@ -285,7 +285,7 @@ Class | Method | HTTP request | Description
 *IdentityHistoryAPI* | [**GetIdentityStartDate**](docs/IdentityHistoryAPI.md#getidentitystartdate) | **Get** /historical-identities/{id}/start-date | Gets the start date of the identity
 *IdentityHistoryAPI* | [**ListHistoricalIdentities**](docs/IdentityHistoryAPI.md#listhistoricalidentities) | **Get** /historical-identities | Lists all the identities
 *IdentityHistoryAPI* | [**ListIdentityAccessItems**](docs/IdentityHistoryAPI.md#listidentityaccessitems) | **Get** /historical-identities/{id}/access-items | Gets a list of access items for the identity filtered by item type
-*IdentityHistoryAPI* | [**ListIdentitySnapshotAccessItems**](docs/IdentityHistoryAPI.md#listidentitysnapshotaccessitems) | **Get** /historical-identities/{id}/snapshots/{date}/access-items | Gets the list of identity access items at a given date filterd by item type
+*IdentityHistoryAPI* | [**ListIdentitySnapshotAccessItems**](docs/IdentityHistoryAPI.md#listidentitysnapshotaccessitems) | **Get** /historical-identities/{id}/snapshots/{date}/access-items | Get Identity Access Items Snapshot
 *IdentityHistoryAPI* | [**ListIdentitySnapshots**](docs/IdentityHistoryAPI.md#listidentitysnapshots) | **Get** /historical-identities/{id}/snapshots | Lists all the snapshots for the identity
 *IdentityProfilesAPI* | [**CreateIdentityProfile**](docs/IdentityProfilesAPI.md#createidentityprofile) | **Post** /identity-profiles | Create an Identity Profile
 *IdentityProfilesAPI* | [**DeleteIdentityProfile**](docs/IdentityProfilesAPI.md#deleteidentityprofile) | **Delete** /identity-profiles/{identity-profile-id} | Delete an Identity Profile

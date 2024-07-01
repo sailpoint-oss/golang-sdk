@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | Pointer to [**[]CampaignFilterDetails**](CampaignFilterDetails.md) | The list of campaign filters | [optional] 
-**Count** | Pointer to **int32** | The number of filters returned | [optional] 
+**Items** | Pointer to [**[]CampaignFilterDetails**](CampaignFilterDetails.md) | List of campaign filters. | [optional] 
+**Count** | Pointer to **int32** | Number of filters returned. | [optional] 
 
 ## Methods
 
