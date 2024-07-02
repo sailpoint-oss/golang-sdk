@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-    identityAttribute := *openapiclient.NewIdentityAttribute("uid") // IdentityAttribute | 
+    identityAttribute := *openapiclient.NewIdentityAttribute("costCenter") // IdentityAttribute | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -375,7 +375,7 @@ import (
 
 func main() {
     name := "displayName" // string | The attribute's technical name.
-    identityAttribute := *openapiclient.NewIdentityAttribute("uid") // IdentityAttribute | 
+    identityAttribute := *openapiclient.NewIdentityAttribute("costCenter") // IdentityAttribute | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

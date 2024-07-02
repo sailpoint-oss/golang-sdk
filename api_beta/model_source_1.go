@@ -19,9 +19,9 @@ var _ MappedNullable = &Source1{}
 
 // Source1 struct for Source1
 type Source1 struct {
-	// Source type.
+	// Attribute mapping type.
 	Type *string `json:"type,omitempty"`
-	// Source properties.
+	// Attribute mapping properties.
 	Properties map[string]interface{} `json:"properties,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

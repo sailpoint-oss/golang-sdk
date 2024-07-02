@@ -41,7 +41,7 @@ func (r ApiCreateIdentityAttributeRequest) Execute() (*IdentityAttribute, *http.
 /*
 CreateIdentityAttribute Create Identity Attribute
 
-Use this API to create a new identity attribute.
+Use this API to create a new identity attribute.   A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateIdentityAttributeRequest
@@ -211,7 +211,7 @@ func (r ApiDeleteIdentityAttributeRequest) Execute() (*http.Response, error) {
 /*
 DeleteIdentityAttribute Delete Identity Attribute
 
-This deletes an identity attribute with the given name.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.
+This deletes an identity attribute with the given name.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.   A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param name The attribute's technical name.
@@ -373,7 +373,7 @@ func (r ApiDeleteIdentityAttributesInBulkRequest) Execute() (*http.Response, err
 /*
 DeleteIdentityAttributesInBulk Bulk delete Identity Attributes
 
-Use this API to bulk delete identity attributes for a given set of names. Attributes that are currently mapped in an identity profile cannot be deleted.  The `system` and `standard` properties must be set to 'false' before you can delete an identity attribute.
+Use this API to bulk delete identity attributes for a given set of names. Attributes that are currently mapped in an identity profile cannot be deleted.  The `system` and `standard` properties must be set to 'false' before you can delete an identity attribute.   A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDeleteIdentityAttributesInBulkRequest
@@ -911,7 +911,7 @@ func (r ApiPutIdentityAttributeRequest) Execute() (*IdentityAttribute, *http.Res
 /*
 PutIdentityAttribute Update Identity Attribute
 
-This updates an existing identity attribute.  Making an attribute searchable requires that the `system`, `standard`, and `multi` properties be set to false.
+This updates an existing identity attribute.  Making an attribute searchable requires that the `system`, `standard`, and `multi` properties be set to false.   A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param name The attribute's technical name.

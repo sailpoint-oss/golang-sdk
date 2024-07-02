@@ -16490,12 +16490,13 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:identity-profile-attribute-list:read
+        - idn:identity-profile-attribute:read
       summary: List Identity Attributes
       tags:
       - Identity Attributes
     post:
-      description: Use this API to create a new identity attribute.
+      description: Use this API to create a new identity attribute.   A token with
+        ORG_ADMIN authority is required to call this API.
       operationId: createIdentityAttribute
       requestBody:
         content:
@@ -16586,7 +16587,7 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:identity-profile-attribute:create
+        - idn:identity-profile-attribute:manage
       summary: Create Identity Attribute
       tags:
       - Identity Attributes
@@ -16594,7 +16595,7 @@ paths:
     delete:
       description: This deletes an identity attribute with the given name.  The `system`
         and `standard` properties must be set to false before you can delete an identity
-        attribute.
+        attribute.   A token with ORG_ADMIN authority is required to call this API.
       operationId: deleteIdentityAttribute
       parameters:
       - description: The attribute's technical name.
@@ -16684,7 +16685,7 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:identity-profile-attribute:delete
+        - idn:identity-profile-attribute:manage
       summary: Delete Identity Attribute
       tags:
       - Identity Attributes
@@ -16789,7 +16790,8 @@ paths:
     put:
       description: "This updates an existing identity attribute.  Making an attribute\
         \ searchable requires that the `system`, `standard`, and `multi` properties\
-        \ be set to false."
+        \ be set to false.   A token with ORG_ADMIN authority is required to call\
+        \ this API."
       operationId: putIdentityAttribute
       parameters:
       - description: The attribute's technical name.
@@ -16888,7 +16890,7 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:identity-profile-attribute:create
+        - idn:identity-profile-attribute:manage
       summary: Update Identity Attribute
       tags:
       - Identity Attributes
@@ -16897,7 +16899,8 @@ paths:
       description: Use this API to bulk delete identity attributes for a given set
         of names. Attributes that are currently mapped in an identity profile cannot
         be deleted.  The `system` and `standard` properties must be set to 'false'
-        before you can delete an identity attribute.
+        before you can delete an identity attribute.   A token with ORG_ADMIN authority
+        is required to call this API.
       operationId: deleteIdentityAttributesInBulk
       requestBody:
         content:
@@ -16985,7 +16988,7 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:identity-profile-attribute-bulk:delete
+        - idn:identity-profile-attribute:manage
       summary: Bulk delete Identity Attributes
       tags:
       - Identity Attributes
@@ -62826,35 +62829,35 @@ components:
       type: object
     IdentityAttribute:
       example:
-        standard: true
+        standard: false
         system: false
         sources:
         - type: rule
           properties:
-            attribute: null
-            sourceName: Employees
+            ruleType: IdentityAttribute
+            ruleName: Cloud Promote Identity Attribute
         - type: rule
           properties:
-            attribute: null
-            sourceName: Employees
-        displayName: Identity Security Cloud Username
-        name: uid
+            ruleType: IdentityAttribute
+            ruleName: Cloud Promote Identity Attribute
+        displayName: Cost Center
+        name: costCenter
         type: string
-        searchable: true
+        searchable: false
         multi: false
       properties:
         name:
           description: Identity attribute's technical name.
-          example: uid
+          example: costCenter
           type: string
         displayName:
           description: Identity attribute's business-friendly name.
-          example: Identity Security Cloud Username
+          example: Cost Center
           type: string
         standard:
           default: false
           description: Indicates whether the attribute is 'standard' or 'default'.
-          example: true
+          example: false
           type: boolean
         type:
           description: Identity attribute's type.
@@ -62869,7 +62872,7 @@ components:
         searchable:
           default: false
           description: Indicates whether the identity attribute is searchable.
-          example: true
+          example: false
           type: boolean
         system:
           default: false
@@ -75564,18 +75567,18 @@ components:
       example:
         type: rule
         properties:
-          attribute: null
-          sourceName: Employees
+          ruleType: IdentityAttribute
+          ruleName: Cloud Promote Identity Attribute
       properties:
         type:
-          description: Source type.
+          description: Attribute mapping type.
           example: rule
           type: string
         properties:
-          description: Source properties.
+          description: Attribute mapping properties.
           example:
-            attribute: null
-            sourceName: Employees
+            ruleType: IdentityAttribute
+            ruleName: Cloud Promote Identity Attribute
           type: object
       type: object
     SelfImportExportDto:
