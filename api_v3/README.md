@@ -522,6 +522,7 @@ Class | Method | HTTP request | Description
  - [BucketAggregation](docs/BucketAggregation.md)
  - [BucketType](docs/BucketType.md)
  - [BulkTaggedObject](docs/BulkTaggedObject.md)
+ - [BulkTaggedObjectResponse](docs/BulkTaggedObjectResponse.md)
  - [Campaign](docs/Campaign.md)
  - [CampaignAlert](docs/CampaignAlert.md)
  - [CampaignAllOfFilter](docs/CampaignAllOfFilter.md)

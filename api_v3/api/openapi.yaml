@@ -35447,7 +35447,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BulkTaggedObject'
+                items:
+                  $ref: '#/components/schemas/BulkTaggedObjectResponse'
+                type: array
           description: Request succeeded.
         "400":
           content:
@@ -52593,6 +52595,32 @@ components:
           - MERGE
           example: MERGE
           type: string
+      type: object
+    BulkTaggedObjectResponse:
+      example:
+        objectRefs:
+        - name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+        - name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+        tags:
+        - BU_FINANCE
+        - PCI
+      properties:
+        objectRefs:
+          items:
+            $ref: '#/components/schemas/TaggedObjectDto'
+          type: array
+        tags:
+          description: Label to be applied to an Object
+          example:
+          - BU_FINANCE
+          - PCI
+          items:
+            type: string
+          type: array
       type: object
     TransformRead:
       allOf:

@@ -514,7 +514,7 @@ Name | Type | Description  | Notes
 
 ## SetTagsToManyObjects
 
-> BulkTaggedObject SetTagsToManyObjects(ctx).BulkTaggedObject(bulkTaggedObject).Execute()
+> []BulkTaggedObjectResponse SetTagsToManyObjects(ctx).BulkTaggedObject(bulkTaggedObject).Execute()
 
 Tag Multiple Objects
 
@@ -542,7 +542,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.SetTagsToManyObjects``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SetTagsToManyObjects`: BulkTaggedObject
+    // response from `SetTagsToManyObjects`: []BulkTaggedObjectResponse
     fmt.Fprintf(os.Stdout, "Response from `TaggedObjectsAPI.SetTagsToManyObjects`: %v\n", resp)
 }
 ```
@@ -562,7 +562,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BulkTaggedObject**](BulkTaggedObject.md)
+[**[]BulkTaggedObjectResponse**](BulkTaggedObjectResponse.md)
 
 ### Authorization
 

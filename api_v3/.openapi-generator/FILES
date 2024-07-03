@@ -154,6 +154,7 @@ docs/BrandingItemCreate.md
 docs/BucketAggregation.md
 docs/BucketType.md
 docs/BulkTaggedObject.md
+docs/BulkTaggedObjectResponse.md
 docs/Campaign.md
 docs/CampaignAlert.md
 docs/CampaignAllOfFilter.md
@@ -722,6 +723,7 @@ model_branding_item_create.go
 model_bucket_aggregation.go
 model_bucket_type.go
 model_bulk_tagged_object.go
+model_bulk_tagged_object_response.go
 model_campaign.go
 model_campaign_alert.go
 model_campaign_all_of_filter.go

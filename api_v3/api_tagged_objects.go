@@ -1241,7 +1241,7 @@ func (r ApiSetTagsToManyObjectsRequest) BulkTaggedObject(bulkTaggedObject BulkTa
 	return r
 }
 
-func (r ApiSetTagsToManyObjectsRequest) Execute() (*BulkTaggedObject, *http.Response, error) {
+func (r ApiSetTagsToManyObjectsRequest) Execute() ([]BulkTaggedObjectResponse, *http.Response, error) {
 	return r.ApiService.SetTagsToManyObjectsExecute(r)
 }
 
@@ -1263,13 +1263,13 @@ func (a *TaggedObjectsAPIService) SetTagsToManyObjects(ctx context.Context) ApiS
 }
 
 // Execute executes the request
-//  @return BulkTaggedObject
-func (a *TaggedObjectsAPIService) SetTagsToManyObjectsExecute(r ApiSetTagsToManyObjectsRequest) (*BulkTaggedObject, *http.Response, error) {
+//  @return []BulkTaggedObjectResponse
+func (a *TaggedObjectsAPIService) SetTagsToManyObjectsExecute(r ApiSetTagsToManyObjectsRequest) ([]BulkTaggedObjectResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *BulkTaggedObject
+		localVarReturnValue  []BulkTaggedObjectResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaggedObjectsAPIService.SetTagsToManyObjects")
