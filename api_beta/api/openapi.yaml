@@ -205,6 +205,9 @@ tags:
     Refer to [Managing User Accounts](https://documentation.sailpoint.com/saas/help/common/users/user_access.html#managing-user-accounts) for more information about accounts.
   name: Accounts
 - description: |
+    Use this API to discover applications within your Okta connector and receive connector recommendations by manually uploading application names.
+  name: Application Discovery
+- description: |
     Auth Profile - Represents authentication configuration for an Identity Profile. This object gets created when an Identity Profile is created.
 
     APIs can be used to retrieve and update Auth Profiles.
@@ -333,9 +336,6 @@ tags:
 
     Refer to [Creating Custom Instruction Text](https://documentation.sailpoint.com/saas/help/pwd/pwd_reset.html#creating-custom-instruction-text) for more information about creating custom password instructions.
   name: Custom Password Instructions
-- description: |
-    Use this API to retrieve all the available discovered apps for a given tenant id.
-  name: Discovered Applications
 - description: |
     Use this API to implement and customize entitlement functionality.
     With this functionality in place, administrators can view entitlements and configure them for use throughout Identity Security Cloud in certifications, access profiles, and roles.
@@ -481,12 +481,6 @@ tags:
 - description: "Operations for accessing and managing client Clusters, including Log\
     \ Configuration"
   name: Managed Clusters
-- description: |
-    Use this API to manually upload application names to be correlated to an ISC connector.
-  name: Manual Discover Applications
-- description: |
-    Use this API to download the CSV template to send to the application discovery service.
-  name: Manual Discover Applications Template
 - description: Configure and test multifactor authentication (MFA) methods
   name: MFA Configuration
 - description: This API used for multifactor authentication functionality belong to
@@ -1000,9 +994,6 @@ tags:
     API for managing UI Metadata. Use this API to manage metadata about your User Interface.
     For example you can set the iFrameWhitelist parameter to permit another domain to encapsulate IDN within an iframe or set the usernameEmptyText to change the placeholder text for Username on your tenant's login screen.
   name: UI Metadata
-- description: |
-    Use this API to manage mappings between various SaaS vendors and Identity Security Cloud (ISC) connectors.
-  name: Vendor Connector Mappings
 - description: |
     Use this API to implement work item functionality.
     With this functionality in place, users can manage their work items (tasks).
@@ -55338,94 +55329,20 @@ paths:
       summary: Return access request identity metrics
       tags:
       - Access Request Identity Metrics
-  /manual-discover-applications:
-    post:
-      description: This API allows for the upload of a CSV file containing application
-        data to be manually correlated to potential IDN connector(s).
-      operationId: sendManualDiscoverApplicationsCsvTemplate
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/sendManualDiscoverApplicationsCsvTemplate_request'
-      responses:
-        "200":
-          content:
-            multipart/form-data:
-              schema:
-                $ref: '#/components/schemas/ManualDiscoverApplications'
-          description: The CSV has been successfully processed.
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: Client Error - Returned if the request body is invalid.
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
-          description: "Unauthorized - Returned if there is no authorization header,\
-            \ or if the JWT token is expired."
-        "403":
-          content:
-            application/json:
-              examples:
-                "403":
-                  summary: An example of a 403 response object
-                  value:
-                    detailCode: 403 Forbidden
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: The server understood the request but refuses to authorize
-                        it.
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: "Forbidden - Returned if the user you are running as, doesn't\
-            \ have access to this end-point."
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
-          description: Too Many Requests - Returned in response to too many requests
-            in a given period of time - rate limited. The Retry-After header in the
-            response includes how long to wait before trying again.
-        "500":
-          content:
-            application/json:
-              examples:
-                "500":
-                  summary: An example of a 500 response object
-                  value:
-                    detailCode: 500.0 Internal Fault
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: An internal fault occurred.
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: Internal Server Error - Returned if there is an unexpected
-            error.
-      security:
-      - UserContextAuth:
-        - idn:application-discovery:write
-      summary: CSV Upload to discover applications
-      tags:
-      - Manual Discover Applications
   /manual-discover-applications-template:
     get:
       description: |
-        Allows the user to download an example CSV file with two columns `application_name` and `domain`. The CSV file contains a single row with the values 'Example Application' and 'Example Description'.
+        This endpoint allows the user to download an example CSV file with two columns `application_name` and `description`.  The CSV file contains a single row with the values 'Example Application' and 'Example Description'.
+
+        The downloaded template is specifically designed for use with the `/manual-discover-applications` endpoint.
       operationId: getManualDiscoverApplicationsCsvTemplate
       responses:
         "200":
           content:
             text/csv:
+              example: |
+                application_name,description
+                Example Application,Example Description
               schema:
                 $ref: '#/components/schemas/ManualDiscoverApplicationsTemplate'
           description: A CSV file download was successful.
@@ -55490,7 +55407,83 @@ paths:
         - idn:application-discovery:read
       summary: CSV template download for discovery
       tags:
-      - Manual Discover Applications Template
+      - Application Discovery
+  /manual-discover-applications:
+    post:
+      description: "This endpoint supports uploading a CSV file with application data\
+        \ for manual correlation to specific IDN connectors. \nIf a suitable IDN connector\
+        \ is unavailable, the system will recommend generic connectors instead."
+      operationId: sendManualDiscoverApplicationsCsvTemplate
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ManualDiscoverApplications'
+      responses:
+        "200":
+          description: The CSV has been successfully processed.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:application-discovery:write
+      summary: CSV Upload to discover applications
+      tags:
+      - Application Discovery
   /discovered-applications:
     get:
       description: |
@@ -55613,7 +55606,7 @@ paths:
         - idn:application-discovery:read
       summary: Retrieve discovered applications for tenant
       tags:
-      - Discovered Applications
+      - Application Discovery
   /vendor-connector-mappings:
     delete:
       description: |
@@ -55828,7 +55821,7 @@ paths:
         - idn:application-discovery:read
       summary: List vendor connector mappings
       tags:
-      - Vendor Connector Mappings
+      - Application Discovery
     post:
       description: |
         Creates a new mapping between a SaaS vendor and an IDN connector to establish correlation paths.
@@ -73238,12 +73231,21 @@ components:
           x-go-name: Results
       type: object
       x-go-package: github.com/sailpoint/sp-forms/domain
-    ManualDiscoverApplications:
+    ManualDiscoverApplicationsTemplate:
       example:
-        file: |-
-          application_name,description
-          "Sample App","This is a sample description for Sample App."
-          "Another App","Description for Another App."
+        application_name: Example Application
+        description: Example Description
+      properties:
+        application_name:
+          description: Name of the example application.
+          example: Example Application
+          type: string
+        description:
+          description: Description of the example application.
+          example: Example Description
+          type: string
+      type: object
+    ManualDiscoverApplications:
       properties:
         file:
           description: The CSV file to upload containing `application_name` and `description`
@@ -73256,20 +73258,6 @@ components:
           type: string
       required:
       - file
-      type: object
-    ManualDiscoverApplicationsTemplate:
-      example:
-        application_name: Example Application
-        domain: Example Description
-      properties:
-        application_name:
-          description: Name of the example application.
-          example: Example Application
-          type: string
-        domain:
-          description: Description of the example application's domain.
-          example: Example Description
-          type: string
       type: object
     DiscoveredApplications:
       description: An array of discovered applications for a given tenant
@@ -82218,14 +82206,6 @@ components:
           x-go-name: File
       required:
       - file
-      type: object
-    sendManualDiscoverApplicationsCsvTemplate_request:
-      properties:
-        csvFile:
-          format: binary
-          type: string
-      required:
-      - csvFile
       type: object
     deleteVendorConnectorMapping_200_response:
       example:

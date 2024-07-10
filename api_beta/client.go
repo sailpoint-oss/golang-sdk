@@ -70,6 +70,8 @@ type APIClient struct {
 
 	AccountsAPI *AccountsAPIService
 
+	ApplicationDiscoveryAPI *ApplicationDiscoveryAPIService
+
 	ApprovalsAPI *ApprovalsAPIService
 
 	AuthProfileAPI *AuthProfileAPIService
@@ -85,8 +87,6 @@ type APIClient struct {
 	CustomFormsAPI *CustomFormsAPIService
 
 	CustomPasswordInstructionsAPI *CustomPasswordInstructionsAPIService
-
-	DiscoveredApplicationsAPI *DiscoveredApplicationsAPIService
 
 	EntitlementsAPI *EntitlementsAPIService
 
@@ -125,10 +125,6 @@ type APIClient struct {
 	ManagedClientsAPI *ManagedClientsAPIService
 
 	ManagedClustersAPI *ManagedClustersAPIService
-
-	ManualDiscoverApplicationsAPI *ManualDiscoverApplicationsAPIService
-
-	ManualDiscoverApplicationsTemplateAPI *ManualDiscoverApplicationsTemplateAPIService
 
 	NonEmployeeLifecycleManagementAPI *NonEmployeeLifecycleManagementAPIService
 
@@ -224,6 +220,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AccountAggregationsAPI = (*AccountAggregationsAPIService)(&c.common)
 	c.AccountUsagesAPI = (*AccountUsagesAPIService)(&c.common)
 	c.AccountsAPI = (*AccountsAPIService)(&c.common)
+	c.ApplicationDiscoveryAPI = (*ApplicationDiscoveryAPIService)(&c.common)
 	c.ApprovalsAPI = (*ApprovalsAPIService)(&c.common)
 	c.AuthProfileAPI = (*AuthProfileAPIService)(&c.common)
 	c.CertificationCampaignsAPI = (*CertificationCampaignsAPIService)(&c.common)
@@ -232,7 +229,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ConnectorsAPI = (*ConnectorsAPIService)(&c.common)
 	c.CustomFormsAPI = (*CustomFormsAPIService)(&c.common)
 	c.CustomPasswordInstructionsAPI = (*CustomPasswordInstructionsAPIService)(&c.common)
-	c.DiscoveredApplicationsAPI = (*DiscoveredApplicationsAPIService)(&c.common)
 	c.EntitlementsAPI = (*EntitlementsAPIService)(&c.common)
 	c.GovernanceGroupsAPI = (*GovernanceGroupsAPIService)(&c.common)
 	c.IAIAccessRequestRecommendationsAPI = (*IAIAccessRequestRecommendationsAPIService)(&c.common)
@@ -252,8 +248,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.MFAControllerAPI = (*MFAControllerAPIService)(&c.common)
 	c.ManagedClientsAPI = (*ManagedClientsAPIService)(&c.common)
 	c.ManagedClustersAPI = (*ManagedClustersAPIService)(&c.common)
-	c.ManualDiscoverApplicationsAPI = (*ManualDiscoverApplicationsAPIService)(&c.common)
-	c.ManualDiscoverApplicationsTemplateAPI = (*ManualDiscoverApplicationsTemplateAPIService)(&c.common)
 	c.NonEmployeeLifecycleManagementAPI = (*NonEmployeeLifecycleManagementAPIService)(&c.common)
 	c.NotificationsAPI = (*NotificationsAPIService)(&c.common)
 	c.OAuthClientsAPI = (*OAuthClientsAPIService)(&c.common)

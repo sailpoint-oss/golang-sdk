@@ -12,6 +12,7 @@ api_account_activities.go
 api_account_aggregations.go
 api_account_usages.go
 api_accounts.go
+api_application_discovery.go
 api_approvals.go
 api_auth_profile.go
 api_certification_campaigns.go
@@ -20,7 +21,6 @@ api_connector_rule_management.go
 api_connectors.go
 api_custom_forms.go
 api_custom_password_instructions.go
-api_discovered_applications.go
 api_entitlements.go
 api_governance_groups.go
 api_iai_access_request_recommendations.go
@@ -38,8 +38,6 @@ api_identity_profiles.go
 api_lifecycle_states.go
 api_managed_clients.go
 api_managed_clusters.go
-api_manual_discover_applications.go
-api_manual_discover_applications_template.go
 api_mfa_configuration.go
 api_mfa_controller.go
 api_non_employee_lifecycle_management.go
@@ -190,6 +188,7 @@ docs/AccountsCollectedForAggregationStats.md
 docs/ActivateCampaignOptions.md
 docs/AdminReviewReassign.md
 docs/AdminReviewReassignReassignTo.md
+docs/ApplicationDiscoveryAPI.md
 docs/Approval.md
 docs/ApprovalBatch.md
 docs/ApprovalComment.md
@@ -335,7 +334,6 @@ docs/Delete202Response.md
 docs/DeleteCampaignsRequest.md
 docs/DeleteNonEmployeeRecordInBulkRequest.md
 docs/DeleteVendorConnectorMapping200Response.md
-docs/DiscoveredApplicationsAPI.md
 docs/DiscoveredApplicationsInner.md
 docs/DkimAttributes.md
 docs/DomainAddress.md
@@ -554,9 +552,7 @@ docs/ManagedClusterTypes.md
 docs/ManagedClustersAPI.md
 docs/ManagerCorrelationMapping.md
 docs/ManualDiscoverApplications.md
-docs/ManualDiscoverApplicationsAPI.md
 docs/ManualDiscoverApplicationsTemplate.md
-docs/ManualDiscoverApplicationsTemplateAPI.md
 docs/ManualWorkItemDetails.md
 docs/ManualWorkItemDetailsCurrentOwner.md
 docs/ManualWorkItemDetailsOriginalOwner.md
@@ -801,7 +797,6 @@ docs/Selector.md
 docs/SelectorType.md
 docs/SelfImportExportDto.md
 docs/SendAccountVerificationRequest.md
-docs/SendManualDiscoverApplicationsCsvTemplateRequest.md
 docs/SendTestNotificationRequestDto.md
 docs/SendTokenRequest.md
 docs/SendTokenResponse.md
@@ -1652,7 +1647,6 @@ model_selector.go
 model_selector_type.go
 model_self_import_export_dto.go
 model_send_account_verification_request.go
-model_send_manual_discover_applications_csv_template_request.go
 model_send_test_notification_request_dto.go
 model_send_token_request.go
 model_send_token_response.go
@@ -1832,6 +1826,7 @@ test/api_account_activities_test.go
 test/api_account_aggregations_test.go
 test/api_account_usages_test.go
 test/api_accounts_test.go
+test/api_application_discovery_test.go
 test/api_approvals_test.go
 test/api_auth_profile_test.go
 test/api_certification_campaigns_test.go
@@ -1840,7 +1835,6 @@ test/api_connector_rule_management_test.go
 test/api_connectors_test.go
 test/api_custom_forms_test.go
 test/api_custom_password_instructions_test.go
-test/api_discovered_applications_test.go
 test/api_entitlements_test.go
 test/api_governance_groups_test.go
 test/api_iai_access_request_recommendations_test.go
@@ -1858,8 +1852,6 @@ test/api_identity_profiles_test.go
 test/api_lifecycle_states_test.go
 test/api_managed_clients_test.go
 test/api_managed_clusters_test.go
-test/api_manual_discover_applications_template_test.go
-test/api_manual_discover_applications_test.go
 test/api_mfa_configuration_test.go
 test/api_mfa_controller_test.go
 test/api_non_employee_lifecycle_management_test.go

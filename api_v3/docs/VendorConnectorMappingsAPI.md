@@ -1,6 +1,6 @@
 # \VendorConnectorMappingsAPI
 
-All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
+All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ApplicationName** | Pointer to **string** | Name of the example application. | [optional] 
-**Description** | Pointer to **string** | Description of the example application. | [optional] 
+**ApplicationName** | Pointer to **string** | Name of the application. | [optional] 
+**Description** | Pointer to **string** | Description of the application. | [optional] 
 
 ## Methods
 

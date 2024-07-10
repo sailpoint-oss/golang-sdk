@@ -124,6 +124,10 @@ Class | Method | HTTP request | Description
 *AccountsAPI* | [**SubmitReloadAccount**](docs/AccountsAPI.md#submitreloadaccount) | **Post** /accounts/{id}/reload | Reload Account
 *AccountsAPI* | [**UnlockAccount**](docs/AccountsAPI.md#unlockaccount) | **Post** /accounts/{id}/unlock | Unlock Account
 *AccountsAPI* | [**UpdateAccount**](docs/AccountsAPI.md#updateaccount) | **Patch** /accounts/{id} | Update Account
+*ApplicationDiscoveryAPI* | [**GetDiscoveredApplications**](docs/ApplicationDiscoveryAPI.md#getdiscoveredapplications) | **Get** /discovered-applications | Retrieve discovered applications for tenant
+*ApplicationDiscoveryAPI* | [**GetManualDiscoverApplicationsCsvTemplate**](docs/ApplicationDiscoveryAPI.md#getmanualdiscoverapplicationscsvtemplate) | **Get** /manual-discover-applications-template | CSV template download for discovery
+*ApplicationDiscoveryAPI* | [**GetVendorConnectorMappings**](docs/ApplicationDiscoveryAPI.md#getvendorconnectormappings) | **Get** /vendor-connector-mappings | List vendor connector mappings
+*ApplicationDiscoveryAPI* | [**SendManualDiscoverApplicationsCsvTemplate**](docs/ApplicationDiscoveryAPI.md#sendmanualdiscoverapplicationscsvtemplate) | **Post** /manual-discover-applications | CSV Upload to discover applications
 *ApprovalsAPI* | [**GetApproval**](docs/ApprovalsAPI.md#getapproval) | **Get** /generic-approvals/{id} | Get an approval
 *ApprovalsAPI* | [**GetApprovals**](docs/ApprovalsAPI.md#getapprovals) | **Get** /generic-approvals | Get Approvals
 *ApprovalsAPI* | [**PatchApproval**](docs/ApprovalsAPI.md#patchapproval) | **Patch** /generic-approvals/{id} | Change an approval
@@ -185,7 +189,6 @@ Class | Method | HTTP request | Description
 *CustomPasswordInstructionsAPI* | [**CreateCustomPasswordInstructions**](docs/CustomPasswordInstructionsAPI.md#createcustompasswordinstructions) | **Post** /custom-password-instructions | Create Custom Password Instructions
 *CustomPasswordInstructionsAPI* | [**DeleteCustomPasswordInstructions**](docs/CustomPasswordInstructionsAPI.md#deletecustompasswordinstructions) | **Delete** /custom-password-instructions/{pageId} | Delete Custom Password Instructions by page ID
 *CustomPasswordInstructionsAPI* | [**GetCustomPasswordInstructions**](docs/CustomPasswordInstructionsAPI.md#getcustompasswordinstructions) | **Get** /custom-password-instructions/{pageId} | Get Custom Password Instructions by Page ID
-*DiscoveredApplicationsAPI* | [**GetDiscoveredApplications**](docs/DiscoveredApplicationsAPI.md#getdiscoveredapplications) | **Get** /discovered-applications | Retrieve discovered applications for tenant
 *EntitlementsAPI* | [**CreateAccessModelMetadataForEntitlement**](docs/EntitlementsAPI.md#createaccessmodelmetadataforentitlement) | **Post** /entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Add metadata to an entitlement.
 *EntitlementsAPI* | [**DeleteAccessModelMetadataFromEntitlement**](docs/EntitlementsAPI.md#deleteaccessmodelmetadatafromentitlement) | **Delete** /entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Remove metadata from an entitlement.
 *EntitlementsAPI* | [**GetEntitlement**](docs/EntitlementsAPI.md#getentitlement) | **Get** /entitlements/{id} | Get an entitlement
@@ -320,8 +323,6 @@ Class | Method | HTTP request | Description
 *ManagedClustersAPI* | [**GetManagedCluster**](docs/ManagedClustersAPI.md#getmanagedcluster) | **Get** /managed-clusters/{id} | Get a specified ManagedCluster.
 *ManagedClustersAPI* | [**GetManagedClusters**](docs/ManagedClustersAPI.md#getmanagedclusters) | **Get** /managed-clusters | Retrieve all Managed Clusters.
 *ManagedClustersAPI* | [**PutClientLogConfiguration**](docs/ManagedClustersAPI.md#putclientlogconfiguration) | **Put** /managed-clusters/{id}/log-config | Update managed cluster&#39;s log configuration
-*ManualDiscoverApplicationsAPI* | [**SendManualDiscoverApplicationsCsvTemplate**](docs/ManualDiscoverApplicationsAPI.md#sendmanualdiscoverapplicationscsvtemplate) | **Post** /manual-discover-applications | CSV Upload to discover applications
-*ManualDiscoverApplicationsTemplateAPI* | [**GetManualDiscoverApplicationsCsvTemplate**](docs/ManualDiscoverApplicationsTemplateAPI.md#getmanualdiscoverapplicationscsvtemplate) | **Get** /manual-discover-applications-template | CSV template download for discovery
 *NonEmployeeLifecycleManagementAPI* | [**ApproveNonEmployeeRequest**](docs/NonEmployeeLifecycleManagementAPI.md#approvenonemployeerequest) | **Post** /non-employee-approvals/{id}/approve | Approve a Non-Employee Request
 *NonEmployeeLifecycleManagementAPI* | [**CreateNonEmployeeRecord**](docs/NonEmployeeLifecycleManagementAPI.md#createnonemployeerecord) | **Post** /non-employee-records | Create Non-Employee Record
 *NonEmployeeLifecycleManagementAPI* | [**CreateNonEmployeeRequest**](docs/NonEmployeeLifecycleManagementAPI.md#createnonemployeerequest) | **Post** /non-employee-requests | Create Non-Employee Request
@@ -556,7 +557,6 @@ Class | Method | HTTP request | Description
 *UIMetadataAPI* | [**SetTenantUiMetadata**](docs/UIMetadataAPI.md#settenantuimetadata) | **Put** /ui-metadata/tenant | Update tenant UI metadata
 *VendorConnectorMappingsAPI* | [**CreateVendorConnectorMapping**](docs/VendorConnectorMappingsAPI.md#createvendorconnectormapping) | **Post** /vendor-connector-mappings | Create a vendor connector mapping
 *VendorConnectorMappingsAPI* | [**DeleteVendorConnectorMapping**](docs/VendorConnectorMappingsAPI.md#deletevendorconnectormapping) | **Delete** /vendor-connector-mappings | Delete a vendor connector mapping
-*VendorConnectorMappingsAPI* | [**GetVendorConnectorMappings**](docs/VendorConnectorMappingsAPI.md#getvendorconnectormappings) | **Get** /vendor-connector-mappings | List vendor connector mappings
 *WorkItemsAPI* | [**ApproveApprovalItem**](docs/WorkItemsAPI.md#approveapprovalitem) | **Post** /work-items/{id}/approve/{approvalItemId} | Approve an Approval Item
 *WorkItemsAPI* | [**ApproveApprovalItemsInBulk**](docs/WorkItemsAPI.md#approveapprovalitemsinbulk) | **Post** /work-items/bulk-approve/{id} | Bulk approve Approval Items
 *WorkItemsAPI* | [**CompleteWorkItem**](docs/WorkItemsAPI.md#completeworkitem) | **Post** /work-items/{id} | Complete a Work Item
@@ -1265,7 +1265,6 @@ Class | Method | HTTP request | Description
  - [SelectorType](docs/SelectorType.md)
  - [SelfImportExportDto](docs/SelfImportExportDto.md)
  - [SendAccountVerificationRequest](docs/SendAccountVerificationRequest.md)
- - [SendManualDiscoverApplicationsCsvTemplateRequest](docs/SendManualDiscoverApplicationsCsvTemplateRequest.md)
  - [SendTestNotificationRequestDto](docs/SendTestNotificationRequestDto.md)
  - [SendTokenRequest](docs/SendTokenRequest.md)
  - [SendTokenResponse](docs/SendTokenResponse.md)

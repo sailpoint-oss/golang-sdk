@@ -111,6 +111,10 @@ Class | Method | HTTP request | Description
 *AccountsAPI* | [**SubmitReloadAccount**](docs/AccountsAPI.md#submitreloadaccount) | **Post** /accounts/{id}/reload | Reload Account
 *AccountsAPI* | [**UnlockAccount**](docs/AccountsAPI.md#unlockaccount) | **Post** /accounts/{id}/unlock | Unlock Account
 *AccountsAPI* | [**UpdateAccount**](docs/AccountsAPI.md#updateaccount) | **Patch** /accounts/{id} | Update Account
+*ApplicationDiscoveryAPI* | [**GetDiscoveredApplications**](docs/ApplicationDiscoveryAPI.md#getdiscoveredapplications) | **Get** /discovered-applications | Retrieve discovered applications for tenant
+*ApplicationDiscoveryAPI* | [**GetManualDiscoverApplicationsCsvTemplate**](docs/ApplicationDiscoveryAPI.md#getmanualdiscoverapplicationscsvtemplate) | **Get** /manual-discover-applications-template | CSV template download for discovery
+*ApplicationDiscoveryAPI* | [**GetVendorConnectorMappings**](docs/ApplicationDiscoveryAPI.md#getvendorconnectormappings) | **Get** /vendor-connector-mappings | List vendor connector mappings
+*ApplicationDiscoveryAPI* | [**SendManualDiscoverApplicationsCsvTemplate**](docs/ApplicationDiscoveryAPI.md#sendmanualdiscoverapplicationscsvtemplate) | **Post** /manual-discover-applications | CSV Upload to discover applications
 *AuthUsersAPI* | [**GetAuthUser**](docs/AuthUsersAPI.md#getauthuser) | **Get** /auth-users/{id} | Auth User Details
 *AuthUsersAPI* | [**PatchAuthUser**](docs/AuthUsersAPI.md#patchauthuser) | **Patch** /auth-users/{id} | Auth User Update
 *BrandingAPI* | [**CreateBrandingItem**](docs/BrandingAPI.md#createbrandingitem) | **Post** /brandings | Create a branding item
@@ -394,6 +398,8 @@ Class | Method | HTTP request | Description
 *TransformsAPI* | [**GetTransform**](docs/TransformsAPI.md#gettransform) | **Get** /transforms/{id} | Transform by ID
 *TransformsAPI* | [**ListTransforms**](docs/TransformsAPI.md#listtransforms) | **Get** /transforms | List transforms
 *TransformsAPI* | [**UpdateTransform**](docs/TransformsAPI.md#updatetransform) | **Put** /transforms/{id} | Update a transform
+*VendorConnectorMappingsAPI* | [**CreateVendorConnectorMapping**](docs/VendorConnectorMappingsAPI.md#createvendorconnectormapping) | **Post** /vendor-connector-mappings | Create a vendor connector mapping
+*VendorConnectorMappingsAPI* | [**DeleteVendorConnectorMapping**](docs/VendorConnectorMappingsAPI.md#deletevendorconnectormapping) | **Delete** /vendor-connector-mappings | Delete a vendor connector mapping
 *WorkItemsAPI* | [**ApproveApprovalItem**](docs/WorkItemsAPI.md#approveapprovalitem) | **Post** /work-items/{id}/approve/{approvalItemId} | Approve an Approval Item
 *WorkItemsAPI* | [**ApproveApprovalItemsInBulk**](docs/WorkItemsAPI.md#approveapprovalitemsinbulk) | **Post** /work-items/bulk-approve/{id} | Bulk approve Approval Items
 *WorkItemsAPI* | [**CompleteWorkItem**](docs/WorkItemsAPI.md#completeworkitem) | **Post** /work-items/{id} | Complete a Work Item
@@ -579,6 +585,8 @@ Class | Method | HTTP request | Description
  - [DataAccessPoliciesInner](docs/DataAccessPoliciesInner.md)
  - [DeleteNonEmployeeRecordsInBulkRequest](docs/DeleteNonEmployeeRecordsInBulkRequest.md)
  - [DeleteSource202Response](docs/DeleteSource202Response.md)
+ - [DeleteVendorConnectorMapping200Response](docs/DeleteVendorConnectorMapping200Response.md)
+ - [DiscoveredApplicationsInner](docs/DiscoveredApplicationsInner.md)
  - [DisplayReference](docs/DisplayReference.md)
  - [DocumentType](docs/DocumentType.md)
  - [DtoType](docs/DtoType.md)
@@ -618,6 +626,7 @@ Class | Method | HTTP request | Description
  - [GetActiveCampaigns200ResponseInner](docs/GetActiveCampaigns200ResponseInner.md)
  - [GetOAuthClientResponse](docs/GetOAuthClientResponse.md)
  - [GetPersonalAccessTokenResponse](docs/GetPersonalAccessTokenResponse.md)
+ - [GetVendorConnectorMappings405Response](docs/GetVendorConnectorMappings405Response.md)
  - [GrantType](docs/GrantType.md)
  - [IdentitiesDetailsReportArguments](docs/IdentitiesDetailsReportArguments.md)
  - [IdentitiesReportArguments](docs/IdentitiesReportArguments.md)
@@ -679,6 +688,8 @@ Class | Method | HTTP request | Description
  - [ManagedClusterRequest](docs/ManagedClusterRequest.md)
  - [ManagedClusterTypes](docs/ManagedClusterTypes.md)
  - [ManagerCorrelationMapping](docs/ManagerCorrelationMapping.md)
+ - [ManualDiscoverApplications](docs/ManualDiscoverApplications.md)
+ - [ManualDiscoverApplicationsTemplate](docs/ManualDiscoverApplicationsTemplate.md)
  - [ManualWorkItemDetails](docs/ManualWorkItemDetails.md)
  - [ManualWorkItemDetailsCurrentOwner](docs/ManualWorkItemDetailsCurrentOwner.md)
  - [ManualWorkItemDetailsOriginalOwner](docs/ManualWorkItemDetailsOriginalOwner.md)
@@ -926,6 +937,11 @@ Class | Method | HTTP request | Description
  - [V3ConnectorDto](docs/V3ConnectorDto.md)
  - [V3CreateConnectorDto](docs/V3CreateConnectorDto.md)
  - [Value](docs/Value.md)
+ - [VendorConnectorMapping](docs/VendorConnectorMapping.md)
+ - [VendorConnectorMappingDeletedAt](docs/VendorConnectorMappingDeletedAt.md)
+ - [VendorConnectorMappingDeletedBy](docs/VendorConnectorMappingDeletedBy.md)
+ - [VendorConnectorMappingUpdatedAt](docs/VendorConnectorMappingUpdatedAt.md)
+ - [VendorConnectorMappingUpdatedBy](docs/VendorConnectorMappingUpdatedBy.md)
  - [VerificationPollRequest](docs/VerificationPollRequest.md)
  - [VerificationResponse](docs/VerificationResponse.md)
  - [ViolationContext](docs/ViolationContext.md)
