@@ -638,7 +638,7 @@ Name | Type | Description  | Notes
 
 ## ListIdentityAccessItems
 
-> []ListIdentityAccessItems200ResponseInner ListIdentityAccessItems(ctx, id).Type_(type_).Execute()
+> []ListIdentityAccessItems200ResponseInner ListIdentityAccessItems(ctx, id).Type_(type_).Filters(filters).Sorters(sorters).Query(query).Execute()
 
 Gets a list of access items for the identity filtered by item type
 
@@ -658,11 +658,14 @@ import (
 
 func main() {
     id := "8c190e6787aa4ed9a90bd9d5344523fb" // string | The identity id
-    type_ := "account" // string | The type of access item for the identity. If not provided, it defaults to account (optional)
+    type_ := "account" // string | The type of access item for the identity. If not provided, it defaults to account.  Types of access items: **accessProfile, account, app, entitlement, role** (optional)
+    filters := "source eq "DataScienceDataset"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **source**: *eq*  **standalone**: *eq*  **privileged**: *eq*  **attribute**: *eq*  **cloudGoverned**: *eq* (optional)
+    sorters := "name" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, value, standalone, privileged, attribute, source, cloudGoverned, removeDate, nativeIdentity, entitlementCount** (optional)
+    query := "Dr. Arden" // string | This param is used to search if certain fields of the access item contain the string provided.  Searching is supported for the following fields depending on the type:  Access Profiles: **name, description**  Accounts: **name, nativeIdentity**  Apps: **name**  Entitlements: **name, value, description**  Roles: **name, description** (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityHistoryAPI.ListIdentityAccessItems(context.Background(), id).Type_(type_).Execute()
+    resp, r, err := apiClient.IdentityHistoryAPI.ListIdentityAccessItems(context.Background(), id).Type_(type_).Filters(filters).Sorters(sorters).Query(query).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.ListIdentityAccessItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -688,7 +691,10 @@ Other parameters are passed through a pointer to a apiListIdentityAccessItemsReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **type_** | **string** | The type of access item for the identity. If not provided, it defaults to account | 
+ **type_** | **string** | The type of access item for the identity. If not provided, it defaults to account.  Types of access items: **accessProfile, account, app, entitlement, role** | 
+ **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **source**: *eq*  **standalone**: *eq*  **privileged**: *eq*  **attribute**: *eq*  **cloudGoverned**: *eq* | 
+ **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, value, standalone, privileged, attribute, source, cloudGoverned, removeDate, nativeIdentity, entitlementCount** | 
+ **query** | **string** | This param is used to search if certain fields of the access item contain the string provided.  Searching is supported for the following fields depending on the type:  Access Profiles: **name, description**  Accounts: **name, nativeIdentity**  Apps: **name**  Entitlements: **name, value, description**  Roles: **name, description** | 
 
 ### Return type
 

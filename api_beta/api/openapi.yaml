@@ -13481,11 +13481,61 @@ paths:
         required: true
         schema:
           type: string
-      - description: "The type of access item for the identity. If not provided, it\
-          \ defaults to account"
+      - description: |-
+          The type of access item for the identity. If not provided, it defaults to account.
+
+          Types of access items: **accessProfile, account, app, entitlement, role**
         example: account
         in: query
         name: type
+        schema:
+          type: string
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **source**: *eq*
+
+          **standalone**: *eq*
+
+          **privileged**: *eq*
+
+          **attribute**: *eq*
+
+          **cloudGoverned**: *eq*
+        example: source eq "DataScienceDataset"
+        in: query
+        name: filters
+        schema:
+          type: string
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **name, value, standalone, privileged, attribute, source, cloudGoverned, removeDate, nativeIdentity, entitlementCount**
+        example: name
+        in: query
+        name: sorters
+        schema:
+          format: comma-separated
+          type: string
+      - description: |-
+          This param is used to search if certain fields of the access item contain the string provided.
+
+          Searching is supported for the following fields depending on the type:
+
+          Access Profiles: **name, description**
+
+          Accounts: **name, nativeIdentity**
+
+          Apps: **name**
+
+          Entitlements: **name, value, description**
+
+          Roles: **name, description**
+        example: Dr. Arden
+        in: query
+        name: query
         schema:
           type: string
       responses:
@@ -13498,13 +13548,15 @@ paths:
                   value:
                   - accessType: accessProfile
                     id: 2c918087763e69d901763e72e97f006f
-                    name: sample
                     sourceName: DataScienceDataset
                     sourceId: 2793o32dwd
                     description: AccessProfile - Workday/Citizenship access
                     displayName: Dr. Arden Rogahn MD
                     entitlementCount: 12
                     appDisplayName: AppName
+                    removeDate: 2024-07-01T06:00:00.00Z
+                    standalone: false
+                    revocable: true
                 Account:
                   description: An account response
                   value:
@@ -13521,6 +13573,7 @@ paths:
                   - accessType: app
                     id: 2c918087763e69d901763e72e97f006f
                     name: appName
+                    appRoleId: 2c918087763e69d901763e72e97f006f
                 Entitlement:
                   description: An entitlement event
                   value:
@@ -13533,6 +13586,9 @@ paths:
                     sourceId: 2793o32dwd
                     description: Entitlement - Workday/Citizenship access
                     displayName: Dr. Arden Rogahn MD
+                    standalone: true
+                    privileged: false
+                    cloudGoverned: false
                 Role:
                   description: A role response
                   value:
@@ -13540,6 +13596,8 @@ paths:
                     id: 2c918087763e69d901763e72e97f006f
                     name: sample
                     description: Role - Workday/Citizenship access
+                    removeDate: 2024-07-01T06:00:00.00Z
+                    revocable: true
               schema:
                 items:
                   $ref: '#/components/schemas/listIdentityAccessItems_200_response_inner'
@@ -13594,6 +13652,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
         "500":
           content:
             application/json:
@@ -13611,6 +13677,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth:
+        - idn:identity-history:read
       summary: Gets a list of access items for the identity filtered by item type
       tags:
       - Identity History
@@ -61905,9 +61974,25 @@ components:
           example: "12"
           type: string
         appDisplayName:
-          description: the name of app
+          description: the name of
           example: AppName
           type: string
+        removeDate:
+          description: the date the access profile is no longer assigned to the specified
+            identity
+          example: 2024-07-01T06:00:00.00Z
+          type: string
+        standalone:
+          description: indicates whether the access profile is standalone
+          example: false
+          type: boolean
+        revocable:
+          description: indicates whether the access profile is
+          example: true
+          type: boolean
+      required:
+      - revocable
+      - standalone
       type: object
     AccessItemAccountResponse:
       properties:
@@ -61951,12 +62036,16 @@ components:
           example: 2c918087763e69d901763e72e97f006f
           type: string
         displayName:
-          description: the access profile display name
+          description: the access item display name
           example: Display Name
           type: string
         sourceName:
           description: the associated source name if it exists
           example: appName
+          type: string
+        appRoleId:
+          description: the app role id
+          example: 2c918087763e69d901763e72e97f006f
           type: string
       type: object
     AccessItemEntitlementResponse:
@@ -61997,6 +62086,22 @@ components:
           description: the display name of the identity
           example: Dr. Arden Rogahn MD
           type: string
+        standalone:
+          description: indicates whether the entitlement is standalone
+          example: true
+          type: boolean
+        privileged:
+          description: indicates whether the entitlement is privileged
+          example: false
+          type: boolean
+        cloudGoverned:
+          description: indicates whether the entitlement is cloud governed
+          example: true
+          type: boolean
+      required:
+      - cloudGoverned
+      - privileged
+      - standalone
       type: object
     AccessItemRoleResponse:
       properties:
@@ -62020,6 +62125,16 @@ components:
           description: the associated source name if it exists
           example: Source Name
           type: string
+        removeDate:
+          description: the date the role is no longer assigned to the specified identity
+          example: 2024-07-01T06:00:00.00Z
+          type: string
+        revocable:
+          description: indicates whether the role is revocable
+          example: true
+          type: boolean
+      required:
+      - revocable
       type: object
     IdentitySnapshotSummaryResponse:
       example:

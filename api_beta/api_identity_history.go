@@ -1631,11 +1631,32 @@ type ApiListIdentityAccessItemsRequest struct {
 	ApiService *IdentityHistoryAPIService
 	id string
 	type_ *string
+	filters *string
+	sorters *string
+	query *string
 }
 
-// The type of access item for the identity. If not provided, it defaults to account
+// The type of access item for the identity. If not provided, it defaults to account.  Types of access items: **accessProfile, account, app, entitlement, role**
 func (r ApiListIdentityAccessItemsRequest) Type_(type_ string) ApiListIdentityAccessItemsRequest {
 	r.type_ = &type_
+	return r
+}
+
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **source**: *eq*  **standalone**: *eq*  **privileged**: *eq*  **attribute**: *eq*  **cloudGoverned**: *eq*
+func (r ApiListIdentityAccessItemsRequest) Filters(filters string) ApiListIdentityAccessItemsRequest {
+	r.filters = &filters
+	return r
+}
+
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, value, standalone, privileged, attribute, source, cloudGoverned, removeDate, nativeIdentity, entitlementCount**
+func (r ApiListIdentityAccessItemsRequest) Sorters(sorters string) ApiListIdentityAccessItemsRequest {
+	r.sorters = &sorters
+	return r
+}
+
+// This param is used to search if certain fields of the access item contain the string provided.  Searching is supported for the following fields depending on the type:  Access Profiles: **name, description**  Accounts: **name, nativeIdentity**  Apps: **name**  Entitlements: **name, value, description**  Roles: **name, description**
+func (r ApiListIdentityAccessItemsRequest) Query(query string) ApiListIdentityAccessItemsRequest {
+	r.query = &query
 	return r
 }
 
@@ -1684,6 +1705,15 @@ func (a *IdentityHistoryAPIService) ListIdentityAccessItemsExecute(r ApiListIden
 
 	if r.type_ != nil {
 		parameterAddToQuery(localVarQueryParams, "type", r.type_, "")
+	}
+	if r.filters != nil {
+		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
+	}
+	if r.sorters != nil {
+		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
+	}
+	if r.query != nil {
+		parameterAddToQuery(localVarQueryParams, "query", r.query, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1759,6 +1789,17 @@ func (a *IdentityHistoryAPIService) ListIdentityAccessItemsExecute(r ApiListIden
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessModelMetadataAttribute429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

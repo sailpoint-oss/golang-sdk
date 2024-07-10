@@ -12,6 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the AccessItemAccessProfileResponse type satisfies the MappedNullable interface at compile time
@@ -35,8 +36,14 @@ type AccessItemAccessProfileResponse struct {
 	DisplayName *string `json:"displayName,omitempty"`
 	// the number of entitlements the access profile will create
 	EntitlementCount *string `json:"entitlementCount,omitempty"`
-	// the name of app
+	// the name of
 	AppDisplayName *string `json:"appDisplayName,omitempty"`
+	// the date the access profile is no longer assigned to the specified identity
+	RemoveDate *string `json:"removeDate,omitempty"`
+	// indicates whether the access profile is standalone
+	Standalone bool `json:"standalone"`
+	// indicates whether the access profile is
+	Revocable bool `json:"revocable"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -46,8 +53,10 @@ type _AccessItemAccessProfileResponse AccessItemAccessProfileResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccessItemAccessProfileResponse() *AccessItemAccessProfileResponse {
+func NewAccessItemAccessProfileResponse(standalone bool, revocable bool) *AccessItemAccessProfileResponse {
 	this := AccessItemAccessProfileResponse{}
+	this.Standalone = standalone
+	this.Revocable = revocable
 	return &this
 }
 
@@ -347,6 +356,86 @@ func (o *AccessItemAccessProfileResponse) SetAppDisplayName(v string) {
 	o.AppDisplayName = &v
 }
 
+// GetRemoveDate returns the RemoveDate field value if set, zero value otherwise.
+func (o *AccessItemAccessProfileResponse) GetRemoveDate() string {
+	if o == nil || isNil(o.RemoveDate) {
+		var ret string
+		return ret
+	}
+	return *o.RemoveDate
+}
+
+// GetRemoveDateOk returns a tuple with the RemoveDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccessItemAccessProfileResponse) GetRemoveDateOk() (*string, bool) {
+	if o == nil || isNil(o.RemoveDate) {
+		return nil, false
+	}
+	return o.RemoveDate, true
+}
+
+// HasRemoveDate returns a boolean if a field has been set.
+func (o *AccessItemAccessProfileResponse) HasRemoveDate() bool {
+	if o != nil && !isNil(o.RemoveDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetRemoveDate gets a reference to the given string and assigns it to the RemoveDate field.
+func (o *AccessItemAccessProfileResponse) SetRemoveDate(v string) {
+	o.RemoveDate = &v
+}
+
+// GetStandalone returns the Standalone field value
+func (o *AccessItemAccessProfileResponse) GetStandalone() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.Standalone
+}
+
+// GetStandaloneOk returns a tuple with the Standalone field value
+// and a boolean to check if the value has been set.
+func (o *AccessItemAccessProfileResponse) GetStandaloneOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Standalone, true
+}
+
+// SetStandalone sets field value
+func (o *AccessItemAccessProfileResponse) SetStandalone(v bool) {
+	o.Standalone = v
+}
+
+// GetRevocable returns the Revocable field value
+func (o *AccessItemAccessProfileResponse) GetRevocable() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.Revocable
+}
+
+// GetRevocableOk returns a tuple with the Revocable field value
+// and a boolean to check if the value has been set.
+func (o *AccessItemAccessProfileResponse) GetRevocableOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Revocable, true
+}
+
+// SetRevocable sets field value
+func (o *AccessItemAccessProfileResponse) SetRevocable(v bool) {
+	o.Revocable = v
+}
+
 func (o AccessItemAccessProfileResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -384,6 +473,11 @@ func (o AccessItemAccessProfileResponse) ToMap() (map[string]interface{}, error)
 	if !isNil(o.AppDisplayName) {
 		toSerialize["appDisplayName"] = o.AppDisplayName
 	}
+	if !isNil(o.RemoveDate) {
+		toSerialize["removeDate"] = o.RemoveDate
+	}
+	toSerialize["standalone"] = o.Standalone
+	toSerialize["revocable"] = o.Revocable
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -393,6 +487,28 @@ func (o AccessItemAccessProfileResponse) ToMap() (map[string]interface{}, error)
 }
 
 func (o *AccessItemAccessProfileResponse) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"standalone",
+		"revocable",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varAccessItemAccessProfileResponse := _AccessItemAccessProfileResponse{}
 
 	if err = json.Unmarshal(bytes, &varAccessItemAccessProfileResponse); err == nil {
@@ -411,6 +527,9 @@ func (o *AccessItemAccessProfileResponse) UnmarshalJSON(bytes []byte) (err error
 		delete(additionalProperties, "displayName")
 		delete(additionalProperties, "entitlementCount")
 		delete(additionalProperties, "appDisplayName")
+		delete(additionalProperties, "removeDate")
+		delete(additionalProperties, "standalone")
+		delete(additionalProperties, "revocable")
 		o.AdditionalProperties = additionalProperties
 	}
 

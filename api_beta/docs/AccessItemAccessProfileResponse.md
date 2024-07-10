@@ -12,13 +12,16 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | the description for the access profile | [optional] 
 **DisplayName** | Pointer to **string** | the display name of the identity | [optional] 
 **EntitlementCount** | Pointer to **string** | the number of entitlements the access profile will create | [optional] 
-**AppDisplayName** | Pointer to **string** | the name of app | [optional] 
+**AppDisplayName** | Pointer to **string** | the name of | [optional] 
+**RemoveDate** | Pointer to **string** | the date the access profile is no longer assigned to the specified identity | [optional] 
+**Standalone** | **bool** | indicates whether the access profile is standalone | 
+**Revocable** | **bool** | indicates whether the access profile is | 
 
 ## Methods
 
 ### NewAccessItemAccessProfileResponse
 
-`func NewAccessItemAccessProfileResponse() *AccessItemAccessProfileResponse`
+`func NewAccessItemAccessProfileResponse(standalone bool, revocable bool, ) *AccessItemAccessProfileResponse`
 
 NewAccessItemAccessProfileResponse instantiates a new AccessItemAccessProfileResponse object
 This constructor will assign default values to properties that have it defined,
@@ -257,6 +260,71 @@ SetAppDisplayName sets AppDisplayName field to given value.
 `func (o *AccessItemAccessProfileResponse) HasAppDisplayName() bool`
 
 HasAppDisplayName returns a boolean if a field has been set.
+
+### GetRemoveDate
+
+`func (o *AccessItemAccessProfileResponse) GetRemoveDate() string`
+
+GetRemoveDate returns the RemoveDate field if non-nil, zero value otherwise.
+
+### GetRemoveDateOk
+
+`func (o *AccessItemAccessProfileResponse) GetRemoveDateOk() (*string, bool)`
+
+GetRemoveDateOk returns a tuple with the RemoveDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRemoveDate
+
+`func (o *AccessItemAccessProfileResponse) SetRemoveDate(v string)`
+
+SetRemoveDate sets RemoveDate field to given value.
+
+### HasRemoveDate
+
+`func (o *AccessItemAccessProfileResponse) HasRemoveDate() bool`
+
+HasRemoveDate returns a boolean if a field has been set.
+
+### GetStandalone
+
+`func (o *AccessItemAccessProfileResponse) GetStandalone() bool`
+
+GetStandalone returns the Standalone field if non-nil, zero value otherwise.
+
+### GetStandaloneOk
+
+`func (o *AccessItemAccessProfileResponse) GetStandaloneOk() (*bool, bool)`
+
+GetStandaloneOk returns a tuple with the Standalone field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStandalone
+
+`func (o *AccessItemAccessProfileResponse) SetStandalone(v bool)`
+
+SetStandalone sets Standalone field to given value.
+
+
+### GetRevocable
+
+`func (o *AccessItemAccessProfileResponse) GetRevocable() bool`
+
+GetRevocable returns the Revocable field if non-nil, zero value otherwise.
+
+### GetRevocableOk
+
+`func (o *AccessItemAccessProfileResponse) GetRevocableOk() (*bool, bool)`
+
+GetRevocableOk returns a tuple with the Revocable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRevocable
+
+`func (o *AccessItemAccessProfileResponse) SetRevocable(v bool)`
+
+SetRevocable sets Revocable field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

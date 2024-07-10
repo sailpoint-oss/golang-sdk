@@ -23,10 +23,12 @@ type AccessItemAppResponse struct {
 	AccessType *string `json:"accessType,omitempty"`
 	// the access item id
 	Id *string `json:"id,omitempty"`
-	// the access profile display name
+	// the access item display name
 	DisplayName *string `json:"displayName,omitempty"`
 	// the associated source name if it exists
 	SourceName *string `json:"sourceName,omitempty"`
+	// the app role id
+	AppRoleId *string `json:"appRoleId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -177,6 +179,38 @@ func (o *AccessItemAppResponse) SetSourceName(v string) {
 	o.SourceName = &v
 }
 
+// GetAppRoleId returns the AppRoleId field value if set, zero value otherwise.
+func (o *AccessItemAppResponse) GetAppRoleId() string {
+	if o == nil || isNil(o.AppRoleId) {
+		var ret string
+		return ret
+	}
+	return *o.AppRoleId
+}
+
+// GetAppRoleIdOk returns a tuple with the AppRoleId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccessItemAppResponse) GetAppRoleIdOk() (*string, bool) {
+	if o == nil || isNil(o.AppRoleId) {
+		return nil, false
+	}
+	return o.AppRoleId, true
+}
+
+// HasAppRoleId returns a boolean if a field has been set.
+func (o *AccessItemAppResponse) HasAppRoleId() bool {
+	if o != nil && !isNil(o.AppRoleId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAppRoleId gets a reference to the given string and assigns it to the AppRoleId field.
+func (o *AccessItemAppResponse) SetAppRoleId(v string) {
+	o.AppRoleId = &v
+}
+
 func (o AccessItemAppResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -198,6 +232,9 @@ func (o AccessItemAppResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !isNil(o.SourceName) {
 		toSerialize["sourceName"] = o.SourceName
+	}
+	if !isNil(o.AppRoleId) {
+		toSerialize["appRoleId"] = o.AppRoleId
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -221,6 +258,7 @@ func (o *AccessItemAppResponse) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "displayName")
 		delete(additionalProperties, "sourceName")
+		delete(additionalProperties, "appRoleId")
 		o.AdditionalProperties = additionalProperties
 	}
 

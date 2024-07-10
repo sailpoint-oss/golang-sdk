@@ -12,6 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the AccessItemEntitlementResponse type satisfies the MappedNullable interface at compile time
@@ -37,6 +38,12 @@ type AccessItemEntitlementResponse struct {
 	Description *string `json:"description,omitempty"`
 	// the display name of the identity
 	DisplayName *string `json:"displayName,omitempty"`
+	// indicates whether the entitlement is standalone
+	Standalone bool `json:"standalone"`
+	// indicates whether the entitlement is privileged
+	Privileged bool `json:"privileged"`
+	// indicates whether the entitlement is cloud governed
+	CloudGoverned bool `json:"cloudGoverned"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -46,8 +53,11 @@ type _AccessItemEntitlementResponse AccessItemEntitlementResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccessItemEntitlementResponse() *AccessItemEntitlementResponse {
+func NewAccessItemEntitlementResponse(standalone bool, privileged bool, cloudGoverned bool) *AccessItemEntitlementResponse {
 	this := AccessItemEntitlementResponse{}
+	this.Standalone = standalone
+	this.Privileged = privileged
+	this.CloudGoverned = cloudGoverned
 	return &this
 }
 
@@ -347,6 +357,78 @@ func (o *AccessItemEntitlementResponse) SetDisplayName(v string) {
 	o.DisplayName = &v
 }
 
+// GetStandalone returns the Standalone field value
+func (o *AccessItemEntitlementResponse) GetStandalone() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.Standalone
+}
+
+// GetStandaloneOk returns a tuple with the Standalone field value
+// and a boolean to check if the value has been set.
+func (o *AccessItemEntitlementResponse) GetStandaloneOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Standalone, true
+}
+
+// SetStandalone sets field value
+func (o *AccessItemEntitlementResponse) SetStandalone(v bool) {
+	o.Standalone = v
+}
+
+// GetPrivileged returns the Privileged field value
+func (o *AccessItemEntitlementResponse) GetPrivileged() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.Privileged
+}
+
+// GetPrivilegedOk returns a tuple with the Privileged field value
+// and a boolean to check if the value has been set.
+func (o *AccessItemEntitlementResponse) GetPrivilegedOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Privileged, true
+}
+
+// SetPrivileged sets field value
+func (o *AccessItemEntitlementResponse) SetPrivileged(v bool) {
+	o.Privileged = v
+}
+
+// GetCloudGoverned returns the CloudGoverned field value
+func (o *AccessItemEntitlementResponse) GetCloudGoverned() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.CloudGoverned
+}
+
+// GetCloudGovernedOk returns a tuple with the CloudGoverned field value
+// and a boolean to check if the value has been set.
+func (o *AccessItemEntitlementResponse) GetCloudGovernedOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CloudGoverned, true
+}
+
+// SetCloudGoverned sets field value
+func (o *AccessItemEntitlementResponse) SetCloudGoverned(v bool) {
+	o.CloudGoverned = v
+}
+
 func (o AccessItemEntitlementResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -384,6 +466,9 @@ func (o AccessItemEntitlementResponse) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
+	toSerialize["standalone"] = o.Standalone
+	toSerialize["privileged"] = o.Privileged
+	toSerialize["cloudGoverned"] = o.CloudGoverned
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -393,6 +478,29 @@ func (o AccessItemEntitlementResponse) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *AccessItemEntitlementResponse) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"standalone",
+		"privileged",
+		"cloudGoverned",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varAccessItemEntitlementResponse := _AccessItemEntitlementResponse{}
 
 	if err = json.Unmarshal(bytes, &varAccessItemEntitlementResponse); err == nil {
@@ -411,6 +519,9 @@ func (o *AccessItemEntitlementResponse) UnmarshalJSON(bytes []byte) (err error) 
 		delete(additionalProperties, "sourceId")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "displayName")
+		delete(additionalProperties, "standalone")
+		delete(additionalProperties, "privileged")
+		delete(additionalProperties, "cloudGoverned")
 		o.AdditionalProperties = additionalProperties
 	}
 
