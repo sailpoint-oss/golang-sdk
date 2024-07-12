@@ -514,7 +514,7 @@ Name | Type | Description  | Notes
 
 ## GetCampaign
 
-> SlimCampaign GetCampaign(ctx, id).Execute()
+> GetActiveCampaigns200ResponseInner GetCampaign(ctx, id).Detail(detail).Execute()
 
 Get Campaign
 
@@ -534,15 +534,16 @@ import (
 
 func main() {
     id := "2c91808571bcfcf80171c23e4b4221fc" // string | ID of the campaign to be retrieved.
+    detail := "FULL" // string | Determines whether slim, or increased level of detail is provided for each campaign in the returned list. Slim is the default behavior. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignsAPI.GetCampaign(context.Background(), id).Execute()
+    resp, r, err := apiClient.CertificationCampaignsAPI.GetCampaign(context.Background(), id).Detail(detail).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetCampaign``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetCampaign`: SlimCampaign
+    // response from `GetCampaign`: GetActiveCampaigns200ResponseInner
     fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.GetCampaign`: %v\n", resp)
 }
 ```
@@ -563,10 +564,11 @@ Other parameters are passed through a pointer to a apiGetCampaignRequest struct 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **detail** | **string** | Determines whether slim, or increased level of detail is provided for each campaign in the returned list. Slim is the default behavior. | 
 
 ### Return type
 
-[**SlimCampaign**](SlimCampaign.md)
+[**GetActiveCampaigns200ResponseInner**](GetActiveCampaigns200ResponseInner.md)
 
 ### Authorization
 

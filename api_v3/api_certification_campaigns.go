@@ -1256,9 +1256,16 @@ type ApiGetCampaignRequest struct {
 	ctx context.Context
 	ApiService *CertificationCampaignsAPIService
 	id string
+	detail *string
 }
 
-func (r ApiGetCampaignRequest) Execute() (*SlimCampaign, *http.Response, error) {
+// Determines whether slim, or increased level of detail is provided for each campaign in the returned list. Slim is the default behavior.
+func (r ApiGetCampaignRequest) Detail(detail string) ApiGetCampaignRequest {
+	r.detail = &detail
+	return r
+}
+
+func (r ApiGetCampaignRequest) Execute() (*GetActiveCampaigns200ResponseInner, *http.Response, error) {
 	return r.ApiService.GetCampaignExecute(r)
 }
 
@@ -1280,13 +1287,13 @@ func (a *CertificationCampaignsAPIService) GetCampaign(ctx context.Context, id s
 }
 
 // Execute executes the request
-//  @return SlimCampaign
-func (a *CertificationCampaignsAPIService) GetCampaignExecute(r ApiGetCampaignRequest) (*SlimCampaign, *http.Response, error) {
+//  @return GetActiveCampaigns200ResponseInner
+func (a *CertificationCampaignsAPIService) GetCampaignExecute(r ApiGetCampaignRequest) (*GetActiveCampaigns200ResponseInner, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SlimCampaign
+		localVarReturnValue  *GetActiveCampaigns200ResponseInner
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.GetCampaign")
@@ -1301,6 +1308,9 @@ func (a *CertificationCampaignsAPIService) GetCampaignExecute(r ApiGetCampaignRe
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.detail != nil {
+		parameterAddToQuery(localVarQueryParams, "detail", r.detail, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

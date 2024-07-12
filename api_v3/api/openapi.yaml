@@ -6516,7 +6516,8 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:campaign-list:read
+        - idn:campaign:read
+        - idn:campaign:manage
       summary: List Campaigns
       tags:
       - Certification Campaigns
@@ -6632,6 +6633,17 @@ paths:
         required: true
         schema:
           type: string
+      - description: "Determines whether slim, or increased level of detail is provided\
+          \ for each campaign in the returned list. Slim is the default behavior."
+        example: FULL
+        in: query
+        name: detail
+        required: false
+        schema:
+          enum:
+          - SLIM
+          - FULL
+          type: string
       responses:
         "200":
           content:
@@ -6646,7 +6658,7 @@ paths:
                 RoleComposition:
                   $ref: '#/components/examples/SlimCampaignRoleComposition'
               schema:
-                $ref: '#/components/schemas/SlimCampaign'
+                $ref: '#/components/schemas/getActiveCampaigns_200_response_inner'
           description: Requested campaign object.
         "400":
           content:
@@ -6723,7 +6735,9 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - UserContextAuth:
+        - idn:campaign:read
+        - idn:campaign:manage
       summary: Get Campaign
       tags:
       - Certification Campaigns
