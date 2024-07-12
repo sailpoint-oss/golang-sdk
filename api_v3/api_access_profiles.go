@@ -695,7 +695,7 @@ func (r ApiGetAccessProfileEntitlementsRequest) Count(count bool) ApiGetAccessPr
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **attribute**: *eq, sw*  **value**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **source.id**: *eq, in*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **attribute**: *eq, sw*  **value**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **source.id**: *eq, in*  Filtering is not supported for access profiles and entitlements that have the &#39;+&#39; symbol in their names. 
 func (r ApiGetAccessProfileEntitlementsRequest) Filters(filters string) ApiGetAccessProfileEntitlementsRequest {
 	r.filters = &filters
 	return r
@@ -714,12 +714,12 @@ func (r ApiGetAccessProfileEntitlementsRequest) Execute() ([]Entitlement, *http.
 /*
 GetAccessProfileEntitlements List Access Profile's Entitlements
 
-This API lists the Entitlements associated with a given Access Profile
-
-A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to invoke this API. In addition, a token with SOURCE_SUBADMIN authority must have access to the Source associated with the given Access Profile
+Use this API to get a list of an access profile's entitlements. 
+A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. In addition, a token with SOURCE_SUBADMIN authority must have access to the source associated with the specified access profile.
+>**Note:** When you filter for access profiles that have the '+' symbol in their names, the response is blank. 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the containing Access Profile
+ @param id ID of the access profile containing the entitlements.
  @return ApiGetAccessProfileEntitlementsRequest
 */
 func (a *AccessProfilesAPIService) GetAccessProfileEntitlements(ctx context.Context, id string) ApiGetAccessProfileEntitlementsRequest {
@@ -897,7 +897,7 @@ type ApiListAccessProfilesRequest struct {
 	includeUnsegmented *bool
 }
 
-// If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity&#39;s ID.  A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin.
+// If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID, or the special value **me**, which is shorthand for the calling identity&#39;s ID.  A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an identity that is not a subadmin.
 func (r ApiListAccessProfilesRequest) ForSubadmin(forSubadmin string) ApiListAccessProfilesRequest {
 	r.forSubadmin = &forSubadmin
 	return r
@@ -933,7 +933,7 @@ func (r ApiListAccessProfilesRequest) Sorters(sorters string) ApiListAccessProfi
 	return r
 }
 
-// If present and not empty, additionally filters access profiles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error.
+// If present and not empty, additionally filters access profiles to those which are assigned to the segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error.
 func (r ApiListAccessProfilesRequest) ForSegmentIds(forSegmentIds string) ApiListAccessProfilesRequest {
 	r.forSegmentIds = &forSegmentIds
 	return r
@@ -954,6 +954,7 @@ ListAccessProfiles List Access Profiles
 
 Use this API to get a list of access profiles.
 A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+>**Note:** When you filter for access profiles that have the '+' symbol in their names, the response is blank. 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListAccessProfilesRequest

@@ -775,7 +775,8 @@ func (r ApiGenerateIdentityPreviewRequest) Execute() (*IdentityPreviewResponse, 
 /*
 GenerateIdentityPreview Generate Identity Profile Preview
 
-This generates a non-persisted IdentityDetails object that will represent as the preview of the identities attribute when the given policy's attribute config is applied.
+Use this API to generate a non-persisted `IdentityDetails` object that represents a preview of the identity attributes with a specified policy's attribute config applied.
+This API supports the `accountAttribute`, `rule`, and `reference` transform types. 
 A token with ORG_ADMIN authority is required to call this API to generate an identity preview.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

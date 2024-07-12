@@ -1052,15 +1052,16 @@ tags:
 paths:
   /access-profiles:
     get:
-      description: |-
-        Use this API to get a list of access profiles.
-        A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+      description: "Use this API to get a list of access profiles.\nA token with API,\
+        \ ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority\
+        \ is required to call this API.\n>**Note:** When you filter for access profiles\
+        \ that have the '+' symbol in their names, the response is blank. "
       operationId: listAccessProfiles
       parameters:
       - description: |-
-          If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID.
+          If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID, or the special value **me**, which is shorthand for the calling identity's ID.
 
-          A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin.
+          A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an identity that is not a subadmin.
         example: 8c190e6787aa4ed9a90bd9d5344523fb
         in: query
         name: for-subadmin
@@ -1131,7 +1132,7 @@ paths:
           format: comma-separated
           type: string
       - description: |-
-          If present and not empty, additionally filters access profiles to those which are assigned to the Segment(s) with the specified IDs.
+          If present and not empty, additionally filters access profiles to those which are assigned to the segment(s) with the specified IDs.
 
           If segmentation is currently unavailable, specifying this parameter results in an error.
         example: "0b5c9f25-83c6-4762-9073-e38f7bb2ae26,2e8d8180-24bc-4d21-91c6-7affdb473b0d"
@@ -1772,13 +1773,15 @@ paths:
       - Access Profiles
   /access-profiles/{id}/entitlements:
     get:
-      description: |-
-        This API lists the Entitlements associated with a given Access Profile
-
-        A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to invoke this API. In addition, a token with SOURCE_SUBADMIN authority must have access to the Source associated with the given Access Profile
+      description: "Use this API to get a list of an access profile's entitlements.\
+        \ \nA token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority\
+        \ is required to call this API. In addition, a token with SOURCE_SUBADMIN\
+        \ authority must have access to the source associated with the specified access\
+        \ profile.\n>**Note:** When you filter for access profiles that have the '+'\
+        \ symbol in their names, the response is blank. "
       operationId: getAccessProfileEntitlements
       parameters:
-      - description: ID of the containing Access Profile
+      - description: ID of the access profile containing the entitlements.
         in: path
         name: id
         required: true
@@ -1823,26 +1826,14 @@ paths:
         schema:
           default: false
           type: boolean
-      - description: |-
-          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
-
-          Filtering is supported for the following fields and operators:
-
-          **id**: *eq, in*
-
-          **name**: *eq, sw*
-
-          **attribute**: *eq, sw*
-
-          **value**: *eq, sw*
-
-          **created**: *gt, lt, ge, le*
-
-          **modified**: *gt, lt, ge, le*
-
-          **owner.id**: *eq, in*
-
-          **source.id**: *eq, in*
+      - description: "Filter results using the standard syntax described in [V3 API\
+          \ Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)\n\
+          \nFiltering is supported for the following fields and operators:\n\n**id**:\
+          \ *eq, in*\n\n**name**: *eq, sw*\n\n**attribute**: *eq, sw*\n\n**value**:\
+          \ *eq, sw*\n\n**created**: *gt, lt, ge, le*\n\n**modified**: *gt, lt, ge,\
+          \ le*\n\n**owner.id**: *eq, in*\n\n**source.id**: *eq, in*\n\nFiltering\
+          \ is not supported for access profiles and entitlements that have the '+'\
+          \ symbol in their names. "
         example: attribute eq "memberOf"
         in: query
         name: filters
@@ -1868,7 +1859,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Entitlement'
                 type: array
-          description: List of Entitlements
+          description: List of entitlements.
         "400":
           content:
             application/json:
@@ -3653,9 +3644,19 @@ paths:
       tags:
       - Accounts
     patch:
-      description: |-
-        This updates account details. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
-        This endpoint supports updating an account's correlation. The identityId and manuallyCorrelated fields can be modified for any account. The attributes fields can be modified just for flat file accounts.  To re-assign an account from one identity to another, replace the current identityId with a new value.  If the account you're assigning was provisioned by IdentityNow, it's possible IdentityNow could create a new account  for the previous identity as soon as the account is moved. If the account you're assigning is authoritative,  this will cause the previous identity to become uncorrelated and could even result in its deletion. All accounts that are reassigned will be set to manuallyCorrelated: true unless otherwise specified
+      description: "Use this API to update account details.  A token with ORG_ADMIN,\
+        \ SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.\n\
+        This API supports updating an account's correlation. You can modify only the\
+        \ `identityId` and `manuallyCorrelated` fields for any flat file account.\
+        \  To reassign an account from one identity to another, replace the current\
+        \ `identityId` with a new value.  If the account you're assigning was provisioned\
+        \ by Identity Security Cloud (ISC), it's possible for ISC to create a new\
+        \ account  for the previous identity as soon as the account is moved. If the\
+        \ account you're assigning is authoritative,  this causes the previous identity\
+        \ to become uncorrelated and can even result in its deletion. All accounts\
+        \ that are reassigned will be set to `manuallyCorrelated: true` unless you\
+        \ specify otherwise.\n>**Note:** The `attributes` field can only be modified\
+        \ for flat file accounts. "
       operationId: updateAccount
       parameters:
       - description: Account ID.
@@ -3699,7 +3700,7 @@ paths:
                   path: /attributes/familyName
             schema:
               items:
-                $ref: '#/components/schemas/JsonPatchOperation'
+                type: object
               type: array
         description: "A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902)\
           \ standard."
