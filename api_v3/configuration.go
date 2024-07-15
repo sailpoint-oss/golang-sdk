@@ -100,7 +100,7 @@ ClientId: 		  clientId,
 		TokenURL:		  tokenURL,
 		Token:			  token,
 		DefaultHeader:    make(map[string]string),
-		UserAgent:        "OpenAPI-Generator/2.0.6/go",
+		UserAgent:        "OpenAPI-Generator/2.0.7/go",
 		Debug:            false,
 		Servers:          ServerConfigurations{
 			{
