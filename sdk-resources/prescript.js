@@ -41,7 +41,7 @@ const fixFiles = function (myArray) {
       fileOut = [];
     }
 
-    if (file.includes(path.join("schemas","WorkflowTrigger.yaml"))) {
+    if (file.includes(path.join("schemas","WorkflowTrigger.yaml")) || file.includes(path.join("schemas","workflows","WorkflowTrigger.yaml"))) {
       for (let line of rawDataArra) {
         if (line.includes('oneOf')) {
           line = line.replaceAll("oneOf:", "type: object")
