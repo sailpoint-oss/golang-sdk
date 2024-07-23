@@ -343,6 +343,11 @@ Class | Method | HTTP request | Description
 *SearchAPI* | [**SearchCount**](docs/SearchAPI.md#searchcount) | **Post** /search/count | Count Documents Satisfying a Query
 *SearchAPI* | [**SearchGet**](docs/SearchAPI.md#searchget) | **Get** /search/{index}/{id} | Get a Document by ID
 *SearchAPI* | [**SearchPost**](docs/SearchAPI.md#searchpost) | **Post** /search | Perform Search
+*SearchAttributeConfigurationAPI* | [**CreateSearchAttributeConfig**](docs/SearchAttributeConfigurationAPI.md#createsearchattributeconfig) | **Post** /accounts/search-attribute-config | Configure/create search attributes in IdentityNow.
+*SearchAttributeConfigurationAPI* | [**DeleteSearchAttributeConfig**](docs/SearchAttributeConfigurationAPI.md#deletesearchattributeconfig) | **Delete** /accounts/search-attribute-config/{name} | Delete search attribute in IdentityNow.
+*SearchAttributeConfigurationAPI* | [**GetSearchAttributeConfig**](docs/SearchAttributeConfigurationAPI.md#getsearchattributeconfig) | **Get** /accounts/search-attribute-config | Retrieve attribute list in IdentityNow.
+*SearchAttributeConfigurationAPI* | [**GetSingleSearchAttributeConfig**](docs/SearchAttributeConfigurationAPI.md#getsinglesearchattributeconfig) | **Get** /accounts/search-attribute-config/{name} | Get specific attribute in IdentityNow.
+*SearchAttributeConfigurationAPI* | [**PatchSearchAttributeConfig**](docs/SearchAttributeConfigurationAPI.md#patchsearchattributeconfig) | **Patch** /accounts/search-attribute-config/{name} | Update search attribute in IdentityNow.
 *SegmentsAPI* | [**CreateSegment**](docs/SegmentsAPI.md#createsegment) | **Post** /segments | Create Segment
 *SegmentsAPI* | [**DeleteSegment**](docs/SegmentsAPI.md#deletesegment) | **Delete** /segments/{id} | Delete Segment by ID
 *SegmentsAPI* | [**GetSegment**](docs/SegmentsAPI.md#getsegment) | **Get** /segments/{id} | Get Segment by ID
@@ -853,6 +858,7 @@ Class | Method | HTTP request | Description
  - [Search](docs/Search.md)
  - [SearchAggregationSpecification](docs/SearchAggregationSpecification.md)
  - [SearchArguments](docs/SearchArguments.md)
+ - [SearchAttributeConfig](docs/SearchAttributeConfig.md)
  - [SearchExportReportArguments](docs/SearchExportReportArguments.md)
  - [SearchFilterType](docs/SearchFilterType.md)
  - [SearchSchedule](docs/SearchSchedule.md)

@@ -41,6 +41,7 @@ api_roles.go
 api_saved_search.go
 api_scheduled_search.go
 api_search.go
+api_search_attribute_configuration.go
 api_segments.go
 api_service_desk_integration.go
 api_sod_policies.go
@@ -513,6 +514,8 @@ docs/Search.md
 docs/SearchAPI.md
 docs/SearchAggregationSpecification.md
 docs/SearchArguments.md
+docs/SearchAttributeConfig.md
+docs/SearchAttributeConfigurationAPI.md
 docs/SearchExportReportArguments.md
 docs/SearchFilterType.md
 docs/SearchSchedule.md
@@ -1058,6 +1061,7 @@ model_schema.go
 model_search.go
 model_search_aggregation_specification.go
 model_search_arguments.go
+model_search_attribute_config.go
 model_search_export_report_arguments.go
 model_search_filter_type.go
 model_search_schedule.go
@@ -1210,6 +1214,7 @@ test/api_requestable_objects_test.go
 test/api_roles_test.go
 test/api_saved_search_test.go
 test/api_scheduled_search_test.go
+test/api_search_attribute_configuration_test.go
 test/api_search_test.go
 test/api_segments_test.go
 test/api_service_desk_integration_test.go

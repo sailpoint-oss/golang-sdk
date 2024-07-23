@@ -132,6 +132,8 @@ type APIClient struct {
 
 	SearchAPI *SearchAPIService
 
+	SearchAttributeConfigurationAPI *SearchAttributeConfigurationAPIService
+
 	SegmentsAPI *SegmentsAPIService
 
 	ServiceDeskIntegrationAPI *ServiceDeskIntegrationAPIService
@@ -207,6 +209,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.SavedSearchAPI = (*SavedSearchAPIService)(&c.common)
 	c.ScheduledSearchAPI = (*ScheduledSearchAPIService)(&c.common)
 	c.SearchAPI = (*SearchAPIService)(&c.common)
+	c.SearchAttributeConfigurationAPI = (*SearchAttributeConfigurationAPIService)(&c.common)
 	c.SegmentsAPI = (*SegmentsAPIService)(&c.common)
 	c.ServiceDeskIntegrationAPI = (*ServiceDeskIntegrationAPIService)(&c.common)
 	c.SourceUsagesAPI = (*SourceUsagesAPIService)(&c.common)
