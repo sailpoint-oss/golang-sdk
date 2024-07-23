@@ -49684,7 +49684,7 @@ paths:
       summary: Count Work Items
       tags:
       - Work Items
-  /work-items/count/completed:
+  /work-items/completed/count:
     get:
       description: "This gets a count of completed work items belonging to either\
         \ the specified user(admin required), or the current user."

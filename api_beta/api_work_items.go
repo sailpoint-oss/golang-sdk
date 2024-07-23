@@ -815,7 +815,7 @@ func (a *WorkItemsAPIService) GetCountCompletedWorkItemsExecute(r ApiGetCountCom
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/work-items/count/completed"
+	localVarPath := localBasePath + "/work-items/completed/count"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

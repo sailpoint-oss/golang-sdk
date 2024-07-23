@@ -53300,7 +53300,7 @@ components:
               type: success
         trigger:
           displayName: displayName
-          attributes: null
+          attributes: "{}"
           type: EVENT
         enabled: false
       properties:
@@ -57790,7 +57790,7 @@ components:
       description: The trigger that starts the workflow
       example:
         displayName: displayName
-        attributes: null
+        attributes: "{}"
         type: EVENT
       properties:
         type:
@@ -57805,7 +57805,8 @@ components:
           nullable: true
           type: string
         attributes:
-          $ref: '#/components/schemas/WorkflowTrigger_attributes'
+          description: Workflow Trigger Attributes.
+          type: object
       required:
       - attributes
       - type
@@ -59154,51 +59155,6 @@ components:
       - BOOLEAN
       example: STRING
       type: string
-    EventAttributes:
-      description: Attributes related to an IdentityNow ETS event
-      properties:
-        id:
-          description: The unique ID of the trigger
-          example: idn:identity-attributes-changed
-          type: string
-        filter.$:
-          description: JSON path expression that will limit which events the trigger
-            will fire on
-          example: "$.changes[?(@.attribute == 'manager')]"
-          type: string
-      required:
-      - id
-      title: Event Trigger Attributes
-      type: object
-    ExternalAttributes:
-      description: Attributes related to an external trigger
-      properties:
-        name:
-          description: A unique name for the external trigger
-          example: search-and-notify
-          type: string
-        description:
-          description: Additonal context about the external trigger
-          example: Run a search and notify the results
-          type: string
-      required:
-      - name
-      title: External Trigger Attributes
-      type: object
-    ScheduledAttributes:
-      description: Attributes related to a scheduled trigger
-      properties:
-        cronString:
-          description: A valid CRON expression
-          example: 0 * */3 */5 *
-          externalDocs:
-            description: CRON expression editor
-            url: https://crontab.guru/
-          type: string
-      required:
-      - cronString
-      title: Scheduled Trigger Attributes
-      type: object
     DocumentType:
       description: |-
         Enum representing the currently supported document types.
@@ -61568,12 +61524,6 @@ components:
           example: group
           type: string
       type: object
-    WorkflowTrigger_attributes:
-      description: Workflow Trigger Attributes.
-      oneOf:
-      - $ref: '#/components/schemas/EventAttributes'
-      - $ref: '#/components/schemas/ExternalAttributes'
-      - $ref: '#/components/schemas/ScheduledAttributes'
     BaseAccess_allOf_owner:
       description: Owner's identity.
       properties:

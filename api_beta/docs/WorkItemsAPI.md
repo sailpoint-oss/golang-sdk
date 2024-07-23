@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**CompleteWorkItem**](WorkItemsAPI.md#CompleteWorkItem) | **Post** /work-items/{id} | Complete a Work Item
 [**ForwardWorkItem**](WorkItemsAPI.md#ForwardWorkItem) | **Post** /work-items/{id}/forward | Forward a Work Item
 [**GetCompletedWorkItems**](WorkItemsAPI.md#GetCompletedWorkItems) | **Get** /work-items/completed | Completed Work Items
-[**GetCountCompletedWorkItems**](WorkItemsAPI.md#GetCountCompletedWorkItems) | **Get** /work-items/count/completed | Count Completed Work Items
+[**GetCountCompletedWorkItems**](WorkItemsAPI.md#GetCountCompletedWorkItems) | **Get** /work-items/completed/count | Count Completed Work Items
 [**GetCountWorkItems**](WorkItemsAPI.md#GetCountWorkItems) | **Get** /work-items/count | Count Work Items
 [**GetWorkItem**](WorkItemsAPI.md#GetWorkItem) | **Get** /work-items/{id} | Get a Work Item
 [**GetWorkItemsSummary**](WorkItemsAPI.md#GetWorkItemsSummary) | **Get** /work-items/summary | Work Items Summary

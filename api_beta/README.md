@@ -562,7 +562,7 @@ Class | Method | HTTP request | Description
 *WorkItemsAPI* | [**CompleteWorkItem**](docs/WorkItemsAPI.md#completeworkitem) | **Post** /work-items/{id} | Complete a Work Item
 *WorkItemsAPI* | [**ForwardWorkItem**](docs/WorkItemsAPI.md#forwardworkitem) | **Post** /work-items/{id}/forward | Forward a Work Item
 *WorkItemsAPI* | [**GetCompletedWorkItems**](docs/WorkItemsAPI.md#getcompletedworkitems) | **Get** /work-items/completed | Completed Work Items
-*WorkItemsAPI* | [**GetCountCompletedWorkItems**](docs/WorkItemsAPI.md#getcountcompletedworkitems) | **Get** /work-items/count/completed | Count Completed Work Items
+*WorkItemsAPI* | [**GetCountCompletedWorkItems**](docs/WorkItemsAPI.md#getcountcompletedworkitems) | **Get** /work-items/completed/count | Count Completed Work Items
 *WorkItemsAPI* | [**GetCountWorkItems**](docs/WorkItemsAPI.md#getcountworkitems) | **Get** /work-items/count | Count Work Items
 *WorkItemsAPI* | [**GetWorkItem**](docs/WorkItemsAPI.md#getworkitem) | **Get** /work-items/{id} | Get a Work Item
 *WorkItemsAPI* | [**GetWorkItemsSummary**](docs/WorkItemsAPI.md#getworkitemssummary) | **Get** /work-items/summary | Work Items Summary
