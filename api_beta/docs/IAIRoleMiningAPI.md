@@ -15,17 +15,17 @@ Method | HTTP request | Description
 [**GetEntitlementsPotentialRole**](IAIRoleMiningAPI.md#GetEntitlementsPotentialRole) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/entitlement-popularities | Retrieves entitlements for a potential role in a role mining session
 [**GetExcludedEntitlementsPotentialRole**](IAIRoleMiningAPI.md#GetExcludedEntitlementsPotentialRole) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/excluded-entitlements | Retrieves excluded entitlements for a potential role in a role mining session
 [**GetIdentitiesPotentialRole**](IAIRoleMiningAPI.md#GetIdentitiesPotentialRole) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/identities | Retrieves identities for a potential role in a role mining session
-[**GetPotentialRole**](IAIRoleMiningAPI.md#GetPotentialRole) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Retrieves a specific potential role
+[**GetPotentialRole**](IAIRoleMiningAPI.md#GetPotentialRole) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Retrieve potential role in session
 [**GetPotentialRoleApplications**](IAIRoleMiningAPI.md#GetPotentialRoleApplications) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}/applications | Retrieves the applications of a potential role for a role mining session
 [**GetPotentialRoleSourceIdentityUsage**](IAIRoleMiningAPI.md#GetPotentialRoleSourceIdentityUsage) | **Get** /role-mining-potential-roles/{potentialRoleId}/sources/{sourceId}/identityUsage | Retrieves potential role source usage
-[**GetPotentialRoleSummaries**](IAIRoleMiningAPI.md#GetPotentialRoleSummaries) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries | Retrieves all potential role summaries
+[**GetPotentialRoleSummaries**](IAIRoleMiningAPI.md#GetPotentialRoleSummaries) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries | Retrieve session&#39;s potential role summaries
 [**GetRoleMiningPotentialRole**](IAIRoleMiningAPI.md#GetRoleMiningPotentialRole) | **Get** /role-mining-potential-roles/{potentialRoleId} | Retrieves a specific potential role
 [**GetRoleMiningSession**](IAIRoleMiningAPI.md#GetRoleMiningSession) | **Get** /role-mining-sessions/{sessionId} | Get a role mining session
 [**GetRoleMiningSessionStatus**](IAIRoleMiningAPI.md#GetRoleMiningSessionStatus) | **Get** /role-mining-sessions/{sessionId}/status | Get role mining session status state
 [**GetRoleMiningSessions**](IAIRoleMiningAPI.md#GetRoleMiningSessions) | **Get** /role-mining-sessions | Retrieves all role mining sessions
 [**GetSavedPotentialRoles**](IAIRoleMiningAPI.md#GetSavedPotentialRoles) | **Get** /role-mining-potential-roles/saved | Retrieves all saved potential roles
-[**PatchPotentialRole**](IAIRoleMiningAPI.md#PatchPotentialRole) | **Patch** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Update a potential role
-[**PatchPotentialRole_0**](IAIRoleMiningAPI.md#PatchPotentialRole_0) | **Patch** /role-mining-potential-roles/{potentialRoleId} | Update a potential role
+[**PatchPotentialRole**](IAIRoleMiningAPI.md#PatchPotentialRole) | **Patch** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Update a potential role in session
+[**PatchRoleMiningPotentialRole**](IAIRoleMiningAPI.md#PatchRoleMiningPotentialRole) | **Patch** /role-mining-potential-roles/{potentialRoleId} | Update a potential role
 [**PatchRoleMiningSession**](IAIRoleMiningAPI.md#PatchRoleMiningSession) | **Patch** /role-mining-sessions/{sessionId} | Patch a role mining session
 [**UpdateEntitlementsPotentialRole**](IAIRoleMiningAPI.md#UpdateEntitlementsPotentialRole) | **Post** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/edit-entitlements | Edit entitlements for a potential role to exclude some entitlements
 
@@ -880,7 +880,7 @@ Name | Type | Description  | Notes
 
 > RoleMiningPotentialRole GetPotentialRole(ctx, sessionId, potentialRoleId).Execute()
 
-Retrieves a specific potential role
+Retrieve potential role in session
 
 
 
@@ -1113,7 +1113,7 @@ Name | Type | Description  | Notes
 
 > []RoleMiningPotentialRoleSummary GetPotentialRoleSummaries(ctx, sessionId).Sorters(sorters).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
 
-Retrieves all potential role summaries
+Retrieve session's potential role summaries
 
 
 
@@ -1549,7 +1549,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} PatchPotentialRole(ctx, sessionId, potentialRoleId).PatchPotentialRoleRequestInner(patchPotentialRoleRequestInner).Execute()
 
-Update a potential role
+Update a potential role in session
 
 
 
@@ -1620,9 +1620,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PatchPotentialRole_0
+## PatchRoleMiningPotentialRole
 
-> map[string]interface{} PatchPotentialRole_0(ctx, sessionId, potentialRoleId).PatchPotentialRoleRequestInner(patchPotentialRoleRequestInner).Execute()
+> map[string]interface{} PatchRoleMiningPotentialRole(ctx, potentialRoleId).PatchPotentialRoleRequestInner(patchPotentialRoleRequestInner).Execute()
 
 Update a potential role
 
@@ -1641,19 +1641,18 @@ import (
 )
 
 func main() {
-    sessionId := "8c190e67-87aa-4ed9-a90b-d9d5344523fb" // string | The role mining session id
     potentialRoleId := "8c190e67-87aa-4ed9-a90b-d9d5344523fb" // string | The potential role summary id
     patchPotentialRoleRequestInner := []openapiclient.PatchPotentialRoleRequestInner{*openapiclient.NewPatchPotentialRoleRequestInner("replace", "/description")} // []PatchPotentialRoleRequestInner | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningAPI.PatchPotentialRole_0(context.Background(), sessionId, potentialRoleId).PatchPotentialRoleRequestInner(patchPotentialRoleRequestInner).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.PatchRoleMiningPotentialRole(context.Background(), potentialRoleId).PatchPotentialRoleRequestInner(patchPotentialRoleRequestInner).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.PatchPotentialRole_0``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.PatchRoleMiningPotentialRole``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchPotentialRole_0`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.PatchPotentialRole_0`: %v\n", resp)
+    // response from `PatchRoleMiningPotentialRole`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.PatchRoleMiningPotentialRole`: %v\n", resp)
 }
 ```
 
@@ -1663,17 +1662,15 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**sessionId** | **string** | The role mining session id | 
 **potentialRoleId** | **string** | The potential role summary id | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPatchPotentialRole_1Request struct via the builder pattern
+Other parameters are passed through a pointer to a apiPatchRoleMiningPotentialRoleRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
 
  **patchPotentialRoleRequestInner** | [**[]PatchPotentialRoleRequestInner**](PatchPotentialRoleRequestInner.md) |  | 
 

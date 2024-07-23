@@ -2036,7 +2036,7 @@ func (r ApiGetPotentialRoleRequest) Execute() (*RoleMiningPotentialRole, *http.R
 }
 
 /*
-GetPotentialRole Retrieves a specific potential role
+GetPotentialRole Retrieve potential role in session
 
 This method returns a specific potential role for a role mining session.
 
@@ -2630,7 +2630,7 @@ func (r ApiGetPotentialRoleSummariesRequest) Execute() ([]RoleMiningPotentialRol
 }
 
 /*
-GetPotentialRoleSummaries Retrieves all potential role summaries
+GetPotentialRoleSummaries Retrieve session's potential role summaries
 
 This method returns the potential role summaries for a role mining session.
 
@@ -3703,9 +3703,9 @@ func (r ApiPatchPotentialRoleRequest) Execute() (map[string]interface{}, *http.R
 }
 
 /*
-PatchPotentialRole Update a potential role
+PatchPotentialRole Update a potential role in session
 
-The method updates an existing potential role using.
+This method updates an existing potential role using the role mining session id and the potential role summary id.
 
 The following fields can be modified:
 
@@ -3880,27 +3880,26 @@ func (a *IAIRoleMiningAPIService) PatchPotentialRoleExecute(r ApiPatchPotentialR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPatchPotentialRole_0Request struct {
+type ApiPatchRoleMiningPotentialRoleRequest struct {
 	ctx context.Context
 	ApiService *IAIRoleMiningAPIService
-	sessionId string
 	potentialRoleId string
 	patchPotentialRoleRequestInner *[]PatchPotentialRoleRequestInner
 }
 
-func (r ApiPatchPotentialRole_0Request) PatchPotentialRoleRequestInner(patchPotentialRoleRequestInner []PatchPotentialRoleRequestInner) ApiPatchPotentialRole_0Request {
+func (r ApiPatchRoleMiningPotentialRoleRequest) PatchPotentialRoleRequestInner(patchPotentialRoleRequestInner []PatchPotentialRoleRequestInner) ApiPatchRoleMiningPotentialRoleRequest {
 	r.patchPotentialRoleRequestInner = &patchPotentialRoleRequestInner
 	return r
 }
 
-func (r ApiPatchPotentialRole_0Request) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.PatchPotentialRole_1Execute(r)
+func (r ApiPatchRoleMiningPotentialRoleRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.PatchRoleMiningPotentialRoleExecute(r)
 }
 
 /*
-PatchPotentialRole_0 Update a potential role
+PatchRoleMiningPotentialRole Update a potential role
 
-The method updates an existing potential role using.
+This method updates an existing potential role.
 
 The following fields can be modified:
 
@@ -3915,22 +3914,20 @@ The following fields can be modified:
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param sessionId The role mining session id
  @param potentialRoleId The potential role summary id
- @return ApiPatchPotentialRole_0Request
+ @return ApiPatchRoleMiningPotentialRoleRequest
 */
-func (a *IAIRoleMiningAPIService) PatchPotentialRole_1(ctx context.Context, sessionId string, potentialRoleId string) ApiPatchPotentialRole_0Request {
-	return ApiPatchPotentialRole_0Request{
+func (a *IAIRoleMiningAPIService) PatchRoleMiningPotentialRole(ctx context.Context, potentialRoleId string) ApiPatchRoleMiningPotentialRoleRequest {
+	return ApiPatchRoleMiningPotentialRoleRequest{
 		ApiService: a,
 		ctx: ctx,
-		sessionId: sessionId,
 		potentialRoleId: potentialRoleId,
 	}
 }
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *IAIRoleMiningAPIService) PatchPotentialRole_1Execute(r ApiPatchPotentialRole_0Request) (map[string]interface{}, *http.Response, error) {
+func (a *IAIRoleMiningAPIService) PatchRoleMiningPotentialRoleExecute(r ApiPatchRoleMiningPotentialRoleRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -3938,13 +3935,12 @@ func (a *IAIRoleMiningAPIService) PatchPotentialRole_1Execute(r ApiPatchPotentia
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.PatchPotentialRole_1")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.PatchRoleMiningPotentialRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/role-mining-potential-roles/{potentialRoleId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"sessionId"+"}", url.PathEscape(parameterValueToString(r.sessionId, "sessionId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"potentialRoleId"+"}", url.PathEscape(parameterValueToString(r.potentialRoleId, "potentialRoleId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
