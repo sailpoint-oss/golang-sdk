@@ -485,6 +485,7 @@ docs/IdentitySyncPayload.md
 docs/IdentityWithNewAccess.md
 docs/IdentityWithNewAccessAccessRefsInner.md
 docs/ImportAccountsRequest.md
+docs/ImportAccountsRequest1.md
 docs/ImportEntitlementsBySourceRequest.md
 docs/ImportEntitlementsRequest.md
 docs/ImportFormDefinitions202Response.md
@@ -1360,6 +1361,7 @@ model_identity_sync_payload.go
 model_identity_with_new_access.go
 model_identity_with_new_access_access_refs_inner.go
 model_import_accounts_request.go
+model_import_accounts_request_1.go
 model_import_entitlements_by_source_request.go
 model_import_entitlements_request.go
 model_import_form_definitions_202_response.go

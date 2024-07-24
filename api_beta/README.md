@@ -978,6 +978,7 @@ Class | Method | HTTP request | Description
  - [IdentityWithNewAccess](docs/IdentityWithNewAccess.md)
  - [IdentityWithNewAccessAccessRefsInner](docs/IdentityWithNewAccessAccessRefsInner.md)
  - [ImportAccountsRequest](docs/ImportAccountsRequest.md)
+ - [ImportAccountsRequest1](docs/ImportAccountsRequest1.md)
  - [ImportEntitlementsBySourceRequest](docs/ImportEntitlementsBySourceRequest.md)
  - [ImportEntitlementsRequest](docs/ImportEntitlementsRequest.md)
  - [ImportFormDefinitions202Response](docs/ImportFormDefinitions202Response.md)

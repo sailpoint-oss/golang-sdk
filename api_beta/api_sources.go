@@ -3275,7 +3275,7 @@ func (a *SourcesAPIService) ImportAccountsExecute(r ApiImportAccountsRequest) (*
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"multipart/form-data"}
+	localVarHTTPContentTypes := []string{"multipart/form-data", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)

@@ -42703,6 +42703,9 @@ paths:
           multipart/form-data:
             schema:
               $ref: '#/components/schemas/importAccounts_request'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/importAccounts_request_1'
       responses:
         "202":
           content:
@@ -81684,6 +81687,24 @@ components:
         disableOptimization:
           description: Use this flag to reprocess every account whether or not the
             data has changed.
+          enum:
+          - "true"
+          - "false"
+          example: "true"
+          type: string
+      type: object
+    importAccounts_request_1:
+      description: "This content type is provided for compatibility with services\
+        \ that don't support multipart/form-data, such as SailPoint Workflows. This\
+        \ content type does not support files, so it can only be used for direct connect\
+        \ sources."
+      properties:
+        disableOptimization:
+          description: Use this flag to reprocess every account whether or not the
+            data has changed.
+          enum:
+          - "true"
+          - "false"
           example: "true"
           type: string
       type: object
