@@ -39,6 +39,7 @@ type Workflow struct {
 	Created *time.Time `json:"created,omitempty"`
 	// The date and time the workflow was modified.
 	Modified *time.Time `json:"modified,omitempty"`
+	ModifiedBy *WorkflowModifiedBy `json:"modifiedBy,omitempty"`
 	Creator *WorkflowAllOfCreator `json:"creator,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -418,6 +419,38 @@ func (o *Workflow) SetModified(v time.Time) {
 	o.Modified = &v
 }
 
+// GetModifiedBy returns the ModifiedBy field value if set, zero value otherwise.
+func (o *Workflow) GetModifiedBy() WorkflowModifiedBy {
+	if o == nil || isNil(o.ModifiedBy) {
+		var ret WorkflowModifiedBy
+		return ret
+	}
+	return *o.ModifiedBy
+}
+
+// GetModifiedByOk returns a tuple with the ModifiedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Workflow) GetModifiedByOk() (*WorkflowModifiedBy, bool) {
+	if o == nil || isNil(o.ModifiedBy) {
+		return nil, false
+	}
+	return o.ModifiedBy, true
+}
+
+// HasModifiedBy returns a boolean if a field has been set.
+func (o *Workflow) HasModifiedBy() bool {
+	if o != nil && !isNil(o.ModifiedBy) {
+		return true
+	}
+
+	return false
+}
+
+// SetModifiedBy gets a reference to the given WorkflowModifiedBy and assigns it to the ModifiedBy field.
+func (o *Workflow) SetModifiedBy(v WorkflowModifiedBy) {
+	o.ModifiedBy = &v
+}
+
 // GetCreator returns the Creator field value if set, zero value otherwise.
 func (o *Workflow) GetCreator() WorkflowAllOfCreator {
 	if o == nil || isNil(o.Creator) {
@@ -493,6 +526,9 @@ func (o Workflow) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
+	if !isNil(o.ModifiedBy) {
+		toSerialize["modifiedBy"] = o.ModifiedBy
+	}
 	if !isNil(o.Creator) {
 		toSerialize["creator"] = o.Creator
 	}
@@ -525,6 +561,7 @@ func (o *Workflow) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "failureCount")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "modified")
+		delete(additionalProperties, "modifiedBy")
 		delete(additionalProperties, "creator")
 		o.AdditionalProperties = additionalProperties
 	}

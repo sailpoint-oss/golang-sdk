@@ -7611,7 +7611,7 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:campaign:update
+        - idn:campaign:manage
       summary: Activate a Campaign
       tags:
       - Certification Campaigns
@@ -42668,6 +42668,28 @@ components:
               to
             example: 2c9180835d2e5168015d32f890ca1581
             type: string
+          cloudLifecycleState:
+            description: The lifecycle state of the identity this account is correlated
+              to
+            example: active
+            nullable: true
+            type: string
+          identityState:
+            description: The identity state of the identity this account is correlated
+              to
+            example: ACTIVE
+            nullable: true
+            type: string
+          connectionType:
+            description: The connection type of the source this account is from
+            example: direct
+            nullable: true
+            type: string
+          type:
+            description: The type of the account
+            example: NON_HUMAN
+            nullable: true
+            type: string
           attributes:
             additionalProperties: true
             description: The account attributes that are aggregated
@@ -42725,12 +42747,25 @@ components:
           identity:
             $ref: '#/components/schemas/BaseReferenceDto'
           sourceOwner:
-            $ref: '#/components/schemas/BaseReferenceDto'
+            $ref: '#/components/schemas/Account_allOf_sourceOwner'
           features:
             description: A string list containing the owning source's features
             example: ENABLE
             nullable: true
             type: string
+          origin:
+            description: The origin of the account either aggregated or provisioned
+            enum:
+            - AGGREGATED
+            - PROVISIONED
+            - null
+            example: AGGREGATED
+            nullable: true
+            type: string
+          ownerIdentity:
+            $ref: '#/components/schemas/Account_allOf_ownerIdentity'
+          ownerGroup:
+            $ref: '#/components/schemas/Account_allOf_ownerGroup'
         required:
         - attributes
         - authoritative
@@ -44601,6 +44636,7 @@ components:
           description: 'Status identifier that gives specific information about why
             a source is or isn''t healthy. '
           enum:
+          - SOURCE_STATE_ERROR_ACCOUNT_FILE_IMPORT
           - SOURCE_STATE_ERROR_CLUSTER
           - SOURCE_STATE_ERROR_SOURCE
           - SOURCE_STATE_ERROR_VA
@@ -45985,25 +46021,38 @@ components:
       type: object
     CompletedApproval:
       example:
+        requestedFor:
+          name: William Wilson
+          id: 2c9180835d191a86015d28455b4b232a
+          type: IDENTITY
+        requestedAccounts: requestedAccounts
+        requesterComment: null
+        assignmentContext: "{}"
+        modified: 2018-07-25T20:22:28.104Z
+        id: id12345
+        forwardHistory:
+        - forwarderName: William Wilson
+          reassignmentType: AUTOMATIC_REASSIGNMENT
+          modified: 2019-08-23T18:52:57.398Z
+          oldApproverName: Frank Mir
+          newApproverName: Al Volta
+          comment: Forwarding from Frank to Al
+        - forwarderName: William Wilson
+          reassignmentType: AUTOMATIC_REASSIGNMENT
+          modified: 2019-08-23T18:52:57.398Z
+          oldApproverName: Frank Mir
+          newApproverName: Al Volta
+          comment: Forwarding from Frank to Al
+        state: APPROVED
+        removeDateUpdateRequested: true
+        preApprovalTriggerResult:
+          date: 2022-06-07T19:18:40.748Z
+          decision: APPROVED
+          comment: This request was autoapproved by our automated ETS subscriber
+          reviewer: Automated AR Approval
         requester:
           name: William Wilson
           id: 2c7180a46faadee4016fb4e018c20648
-          type: IDENTITY
-        requestedFor:
-        - name: Robert Robinson
-          id: 2c4180a46faadee4016fb4e018c20626
-          type: IDENTITY
-        - name: Robert Robinson
-          id: 2c4180a46faadee4016fb4e018c20626
-          type: IDENTITY
-        - name: Robert Robinson
-          id: 2c4180a46faadee4016fb4e018c20626
-          type: IDENTITY
-        - name: Robert Robinson
-          id: 2c4180a46faadee4016fb4e018c20626
-          type: IDENTITY
-        - name: Robert Robinson
-          id: 2c4180a46faadee4016fb4e018c20626
           type: IDENTITY
         owner:
           name: Support
@@ -46014,7 +46063,6 @@ components:
         clientMetadata:
           requestedAppName: test-app
           requestedAppId: 2c91808f7892918f0178b78da4a305a1
-        requestedAccounts: requestedAccounts
         requestType: GRANT_ACCESS
         commentRequiredWhenRejected: true
         created: 2017-07-11T18:45:37.098Z
@@ -46031,7 +46079,6 @@ components:
             id: 2c9180847e25f377017e2ae8cae4650b
             type: IDENTITY
           comment: This is a comment.
-        requesterComment: null
         currentRemoveDate: 2020-07-11T00:00:00Z
         reviewedBy:
           name: Allen Albertson
@@ -46114,28 +46161,6 @@ components:
           uuid: f73d16e9-a038-46c5-b217-1246e15fdbdd
         requestCreated: 2017-07-11T18:45:35.098Z
         name: aName
-        modified: 2018-07-25T20:22:28.104Z
-        id: id12345
-        forwardHistory:
-        - forwarderName: William Wilson
-          reassignmentType: AUTOMATIC_REASSIGNMENT
-          modified: 2019-08-23T18:52:57.398Z
-          oldApproverName: Frank Mir
-          newApproverName: Al Volta
-          comment: Forwarding from Frank to Al
-        - forwarderName: William Wilson
-          reassignmentType: AUTOMATIC_REASSIGNMENT
-          modified: 2019-08-23T18:52:57.398Z
-          oldApproverName: Frank Mir
-          newApproverName: Al Volta
-          comment: Forwarding from Frank to Al
-        state: APPROVED
-        removeDateUpdateRequested: true
-        preApprovalTriggerResult:
-          date: 2022-06-07T19:18:40.748Z
-          decision: APPROVED
-          comment: This request was autoapproved by our automated ETS subscriber
-          reviewer: Automated AR Approval
       properties:
         id:
           description: The approval id.
@@ -46165,12 +46190,7 @@ components:
         requester:
           $ref: '#/components/schemas/AccessItemRequester'
         requestedFor:
-          description: Identities access was requested for.
-          items:
-            $ref: '#/components/schemas/AccessItemRequestedFor'
-          maxItems: 10
-          minItems: 1
-          type: array
+          $ref: '#/components/schemas/RequestedItemStatus_requestedFor'
         reviewedBy:
           $ref: '#/components/schemas/AccessItemReviewedBy'
         owner:
@@ -46234,6 +46254,9 @@ components:
           description: Information about the requested accounts
           nullable: true
           type: string
+        assignmentContext:
+          nullable: true
+          type: object
       type: object
     CommentDto:
       example:
@@ -49570,6 +49593,7 @@ components:
       example:
         clusterType: idn
         clientId: 00be54a2-bb6d-402f-9159-beb2d5319347
+        apiGatewayBaseUrl: apiGatewayBaseUrl
         vaVersion: va-megapod-useast1-610-1621372012
         ipAddress: 123.456.78.90
         description: A short description of the ManagedClient
@@ -49582,6 +49606,7 @@ components:
         createdAt: 2023-08-04T20:48:01.865Z
         lastSeen: 2020-01-01T00:00:00Z
         provisionStatus: PROVISIONED
+        cookbook: cookbook
         ccId: 2248
         name: aName
         id: 2c9180878eaf4204018eb019c3570003
@@ -49599,6 +49624,12 @@ components:
           example: CLIENT_STATUS_NOT_CONFIGURED
           nullable: true
           readOnly: true
+          type: string
+        apiGatewayBaseUrl:
+          nullable: true
+          type: string
+        cookbook:
+          nullable: true
           type: string
         ccId:
           description: Previous CC ID to be used in data migration. (This field will
@@ -50998,11 +51029,13 @@ components:
     GetOAuthClientResponse:
       example:
         internal: false
+        metadata: metadata
         created: 2017-07-11T18:45:37.098Z
         businessName: Acme-Solar
         description: "An API client used for the authorization_code, refresh_token,\
           \ and client_credentials flows"
         refreshTokenValiditySeconds: 86400
+        secret: secret
         type: CONFIDENTIAL
         redirectUris:
         - http://localhost:12345
@@ -51112,6 +51145,12 @@ components:
             \ was last updated"
           example: 2018-06-25T20:22:28.104Z
           format: date-time
+          type: string
+        secret:
+          nullable: true
+          type: string
+        metadata:
+          nullable: true
           type: string
         lastUsed:
           description: "The date and time, down to the millisecond, when this API\
@@ -53799,6 +53838,8 @@ components:
             example: 2023-12-05T15:18:27.699132301Z
             format: date-time
             type: string
+          modifiedBy:
+            $ref: '#/components/schemas/WorkflowModifiedBy'
           creator:
             $ref: '#/components/schemas/Workflow_allOf_creator'
         type: object
@@ -54018,22 +54059,29 @@ components:
               type: string
           title: sp:create-campaign
           type: object
+        exampleOutput: null
+        deprecated: true
+        isSimulationEnabled: true
         name: Create Certification Campaign
         description: Generates a certification campaign.
         id: sp:create-campaign
         formFields:
         - helpText: The name to give to this certification campaign.
           name: name
+          description: First value to compare
           label: Campaign Name
           type: text
           required: false
         - helpText: The name to give to this certification campaign.
           name: name
+          description: First value to compare
           label: Campaign Name
           type: text
           required: false
+        deprecatedBy: 2000-01-23T04:56:07.000+00:00
         type: ACTION
         isDynamicSchema: false
+        versionNumber: 0
       properties:
         id:
           description: Action ID. This is a static namespaced ID for the action
@@ -54055,7 +54103,20 @@ components:
           description: One or more inputs that the action accepts
           items:
             $ref: '#/components/schemas/WorkflowLibraryFormFields'
+          nullable: true
           type: array
+        exampleOutput:
+          $ref: '#/components/schemas/WorkflowLibraryAction_exampleOutput'
+        deprecated:
+          type: boolean
+        deprecatedBy:
+          format: date-time
+          type: string
+        versionNumber:
+          description: Version number
+          type: integer
+        isSimulationEnabled:
+          type: boolean
         isDynamicSchema:
           default: false
           description: "Determines whether the dynamic output schema is returned in\
@@ -54159,9 +54220,13 @@ components:
       type: object
     WorkflowLibraryTrigger:
       example:
+        outputSchema: "{}"
+        deprecated: true
+        isSimulationEnabled: true
         name: Identity Attributes Changed
         description: One or more identity attributes changed.
         id: idn:identity-attributes-changed
+        deprecatedBy: 2000-01-23T04:56:07.000+00:00
         formFields: []
         type: EVENT
         isDynamicSchema: false
@@ -54198,6 +54263,16 @@ components:
           - SCHEDULED
           - EXTERNAL
           example: EVENT
+          type: string
+        deprecated:
+          type: boolean
+        deprecatedBy:
+          format: date-time
+          type: string
+        isSimulationEnabled:
+          type: boolean
+        outputSchema:
+          description: Example output schema
           type: object
         name:
           description: Trigger Name
@@ -54254,10 +54329,13 @@ components:
       type: object
     WorkflowLibraryOperator:
       example:
+        deprecated: true
+        isSimulationEnabled: true
         name: Compare Boolean Values
         description: Compare two boolean values and decide what happens based on the
           result.
         id: sp:compare-boolean
+        deprecatedBy: 2000-01-23T04:56:07.000+00:00
         formFields:
         - description: Enter the JSONPath to a value from the input to compare to
             Variable B.
@@ -54288,6 +54366,7 @@ components:
           required: false
           type: text
         type: OPERATOR
+        isDynamicSchema: false
       properties:
         id:
           description: Operator ID.
@@ -54306,6 +54385,20 @@ components:
           example: Compare two boolean values and decide what happens based on the
             result.
           type: string
+        isDynamicSchema:
+          description: "Determines whether the dynamic output schema is returned in\
+            \ place of the action's output schema. The dynamic schema lists non-static\
+            \ properties, like properties of a workflow form where each form has different\
+            \ fields. These will be provided dynamically based on available form fields."
+          example: false
+          type: boolean
+        deprecated:
+          type: boolean
+        deprecatedBy:
+          format: date-time
+          type: string
+        isSimulationEnabled:
+          type: boolean
         formFields:
           description: One or more inputs that the operator accepts
           example:
@@ -54339,6 +54432,7 @@ components:
             type: text
           items:
             $ref: '#/components/schemas/WorkflowLibraryFormFields'
+          nullable: true
           type: array
       title: Workflow Operator
       type: object
@@ -55787,6 +55881,7 @@ components:
             locale: en-US
         state: SUCCESS
         uuid: f73d16e9-a038-46c5-b217-1246e15fdbdd
+      nullable: true
       properties:
         state:
           description: The status of SOD violation check
@@ -58273,6 +58368,22 @@ components:
           nullable: true
           type: string
       type: object
+    WorkflowModifiedBy:
+      properties:
+        type:
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        id:
+          description: Identity ID
+          example: 2c9180a46faadee4016fb4e018c20639
+          type: string
+        name:
+          description: Human-readable display name of identity.
+          example: Thomas Edison
+          type: string
+      type: object
     WorkflowDefinition:
       description: The map of steps that the workflow will execute.
       example:
@@ -58343,10 +58454,15 @@ components:
       example:
         helpText: The name to give to this certification campaign.
         name: name
+        description: First value to compare
         label: Campaign Name
         type: text
         required: false
       properties:
+        description:
+          description: Description of the form field
+          example: First value to compare
+          type: string
         helpText:
           description: Describes the form field in the UI
           example: The name to give to this certification campaign.
@@ -58380,6 +58496,7 @@ components:
           - multiType
           - duration
           - toggle
+          - formPicker
           - identityPicker
           - governanceGroupPicker
           - string
@@ -58389,9 +58506,11 @@ components:
           - keyValuePairs
           - emailPicker
           - advancedToggle
+          - variableCreator
+          - htmlEditor
           example: text
           nullable: true
-          type: object
+          type: string
       type: object
     BaseAccess:
       allOf:
@@ -60470,6 +60589,68 @@ components:
           type: string
       type: object
       example: null
+    Account_allOf_sourceOwner:
+      description: The owner of this object.
+      nullable: true
+      properties:
+        type:
+          description: Type of owner object.
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        id:
+          description: Identity id
+          example: 4c5c8534e99445de98eef6c75e25eb01
+          type: string
+        name:
+          description: Human-readable display name of the owner.
+          example: John Cavender
+          type: string
+      type: object
+      example: null
+    Account_allOf_ownerIdentity:
+      description: "The identity who owns this account, typically used for non-human\
+        \ accounts"
+      nullable: true
+      properties:
+        type:
+          description: The type of object being referenced
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        id:
+          description: ID of the identity
+          example: 2c918084660f45d6016617daa9210584
+          type: string
+        name:
+          description: Human-readable display name of the identity
+          example: Adam Kennedy
+          type: string
+      type: object
+      example: null
+    Account_allOf_ownerGroup:
+      description: "The governance group who owns this account, typically used for\
+        \ non-human accounts"
+      nullable: true
+      properties:
+        type:
+          description: The type of object being referenced
+          enum:
+          - GOVERNANCE_GROUP
+          example: GOVERNANCE_GROUP
+          type: string
+        id:
+          description: ID of the governance group
+          example: 8d3e0094e99445de98eef6c75e25jc04
+          type: string
+        name:
+          description: Human-readable display name of the governance group
+          example: GovGroup AX17Z
+          type: string
+      type: object
+      example: null
     Campaign_allOf_filter:
       description: Determines which items will be included in this campaign. The default
         campaign filter is used if this field is left blank.
@@ -61672,6 +61853,13 @@ components:
           example: William Wilson
           type: string
       type: object
+    WorkflowLibraryAction_exampleOutput:
+      oneOf:
+      - description: Example output
+        type: object
+      - items:
+          type: object
+        type: array
     DiscoveredApplications_inner:
       properties:
         id:

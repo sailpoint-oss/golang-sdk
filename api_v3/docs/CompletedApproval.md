@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **RequestCreated** | Pointer to **time.Time** | When the access-request was created. | [optional] 
 **RequestType** | Pointer to [**NullableAccessRequestType**](AccessRequestType.md) |  | [optional] 
 **Requester** | Pointer to [**AccessItemRequester**](AccessItemRequester.md) |  | [optional] 
-**RequestedFor** | Pointer to [**[]AccessItemRequestedFor**](AccessItemRequestedFor.md) | Identities access was requested for. | [optional] 
+**RequestedFor** | Pointer to [**RequestedItemStatusRequestedFor**](RequestedItemStatusRequestedFor.md) |  | [optional] 
 **ReviewedBy** | Pointer to [**AccessItemReviewedBy**](AccessItemReviewedBy.md) |  | [optional] 
 **Owner** | Pointer to [**OwnerDto**](OwnerDto.md) |  | [optional] 
 **RequestedObject** | Pointer to [**RequestableObjectReference**](RequestableObjectReference.md) |  | [optional] 
@@ -24,10 +24,11 @@ Name | Type | Description | Notes
 **RemoveDate** | Pointer to **NullableTime** | The date the role or access profile or entitlement is no longer assigned to the specified identity. | [optional] 
 **RemoveDateUpdateRequested** | Pointer to **bool** | If true, then the request was to change the remove date or sunset date. | [optional] [default to false]
 **CurrentRemoveDate** | Pointer to **NullableTime** | The remove date or sunset date that was assigned at the time of the request. | [optional] 
-**SodViolationContext** | Pointer to [**SodViolationContextCheckCompleted**](SodViolationContextCheckCompleted.md) |  | [optional] 
+**SodViolationContext** | Pointer to [**NullableSodViolationContextCheckCompleted**](SodViolationContextCheckCompleted.md) |  | [optional] 
 **PreApprovalTriggerResult** | Pointer to [**NullableCompletedApprovalPreApprovalTriggerResult**](CompletedApprovalPreApprovalTriggerResult.md) |  | [optional] 
 **ClientMetadata** | Pointer to **map[string]string** | Arbitrary key-value pairs provided during the request. | [optional] 
 **RequestedAccounts** | Pointer to **NullableString** | Information about the requested accounts | [optional] 
+**AssignmentContext** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
@@ -235,20 +236,20 @@ HasRequester returns a boolean if a field has been set.
 
 ### GetRequestedFor
 
-`func (o *CompletedApproval) GetRequestedFor() []AccessItemRequestedFor`
+`func (o *CompletedApproval) GetRequestedFor() RequestedItemStatusRequestedFor`
 
 GetRequestedFor returns the RequestedFor field if non-nil, zero value otherwise.
 
 ### GetRequestedForOk
 
-`func (o *CompletedApproval) GetRequestedForOk() (*[]AccessItemRequestedFor, bool)`
+`func (o *CompletedApproval) GetRequestedForOk() (*RequestedItemStatusRequestedFor, bool)`
 
 GetRequestedForOk returns a tuple with the RequestedFor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedFor
 
-`func (o *CompletedApproval) SetRequestedFor(v []AccessItemRequestedFor)`
+`func (o *CompletedApproval) SetRequestedFor(v RequestedItemStatusRequestedFor)`
 
 SetRequestedFor sets RequestedFor field to given value.
 
@@ -603,6 +604,16 @@ SetSodViolationContext sets SodViolationContext field to given value.
 
 HasSodViolationContext returns a boolean if a field has been set.
 
+### SetSodViolationContextNil
+
+`func (o *CompletedApproval) SetSodViolationContextNil(b bool)`
+
+ SetSodViolationContextNil sets the value for SodViolationContext to be an explicit nil
+
+### UnsetSodViolationContext
+`func (o *CompletedApproval) UnsetSodViolationContext()`
+
+UnsetSodViolationContext ensures that no value is present for SodViolationContext, not even an explicit nil
 ### GetPreApprovalTriggerResult
 
 `func (o *CompletedApproval) GetPreApprovalTriggerResult() CompletedApprovalPreApprovalTriggerResult`
@@ -698,6 +709,41 @@ HasRequestedAccounts returns a boolean if a field has been set.
 `func (o *CompletedApproval) UnsetRequestedAccounts()`
 
 UnsetRequestedAccounts ensures that no value is present for RequestedAccounts, not even an explicit nil
+### GetAssignmentContext
+
+`func (o *CompletedApproval) GetAssignmentContext() map[string]interface{}`
+
+GetAssignmentContext returns the AssignmentContext field if non-nil, zero value otherwise.
+
+### GetAssignmentContextOk
+
+`func (o *CompletedApproval) GetAssignmentContextOk() (*map[string]interface{}, bool)`
+
+GetAssignmentContextOk returns a tuple with the AssignmentContext field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAssignmentContext
+
+`func (o *CompletedApproval) SetAssignmentContext(v map[string]interface{})`
+
+SetAssignmentContext sets AssignmentContext field to given value.
+
+### HasAssignmentContext
+
+`func (o *CompletedApproval) HasAssignmentContext() bool`
+
+HasAssignmentContext returns a boolean if a field has been set.
+
+### SetAssignmentContextNil
+
+`func (o *CompletedApproval) SetAssignmentContextNil(b bool)`
+
+ SetAssignmentContextNil sets the value for AssignmentContext to be an explicit nil
+
+### UnsetAssignmentContext
+`func (o *CompletedApproval) UnsetAssignmentContext()`
+
+UnsetAssignmentContext ensures that no value is present for AssignmentContext, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

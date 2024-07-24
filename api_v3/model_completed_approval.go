@@ -32,8 +32,7 @@ type CompletedApproval struct {
 	RequestCreated *time.Time `json:"requestCreated,omitempty"`
 	RequestType NullableAccessRequestType `json:"requestType,omitempty"`
 	Requester *AccessItemRequester `json:"requester,omitempty"`
-	// Identities access was requested for.
-	RequestedFor []AccessItemRequestedFor `json:"requestedFor,omitempty"`
+	RequestedFor *RequestedItemStatusRequestedFor `json:"requestedFor,omitempty"`
 	ReviewedBy *AccessItemReviewedBy `json:"reviewedBy,omitempty"`
 	Owner *OwnerDto `json:"owner,omitempty"`
 	RequestedObject *RequestableObjectReference `json:"requestedObject,omitempty"`
@@ -52,12 +51,13 @@ type CompletedApproval struct {
 	RemoveDateUpdateRequested *bool `json:"removeDateUpdateRequested,omitempty"`
 	// The remove date or sunset date that was assigned at the time of the request.
 	CurrentRemoveDate NullableTime `json:"currentRemoveDate,omitempty"`
-	SodViolationContext *SodViolationContextCheckCompleted `json:"sodViolationContext,omitempty"`
+	SodViolationContext NullableSodViolationContextCheckCompleted `json:"sodViolationContext,omitempty"`
 	PreApprovalTriggerResult NullableCompletedApprovalPreApprovalTriggerResult `json:"preApprovalTriggerResult,omitempty"`
 	// Arbitrary key-value pairs provided during the request.
 	ClientMetadata *map[string]string `json:"clientMetadata,omitempty"`
 	// Information about the requested accounts
 	RequestedAccounts NullableString `json:"requestedAccounts,omitempty"`
+	AssignmentContext map[string]interface{} `json:"assignmentContext,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -323,17 +323,17 @@ func (o *CompletedApproval) SetRequester(v AccessItemRequester) {
 }
 
 // GetRequestedFor returns the RequestedFor field value if set, zero value otherwise.
-func (o *CompletedApproval) GetRequestedFor() []AccessItemRequestedFor {
+func (o *CompletedApproval) GetRequestedFor() RequestedItemStatusRequestedFor {
 	if o == nil || isNil(o.RequestedFor) {
-		var ret []AccessItemRequestedFor
+		var ret RequestedItemStatusRequestedFor
 		return ret
 	}
-	return o.RequestedFor
+	return *o.RequestedFor
 }
 
 // GetRequestedForOk returns a tuple with the RequestedFor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CompletedApproval) GetRequestedForOk() ([]AccessItemRequestedFor, bool) {
+func (o *CompletedApproval) GetRequestedForOk() (*RequestedItemStatusRequestedFor, bool) {
 	if o == nil || isNil(o.RequestedFor) {
 		return nil, false
 	}
@@ -349,9 +349,9 @@ func (o *CompletedApproval) HasRequestedFor() bool {
 	return false
 }
 
-// SetRequestedFor gets a reference to the given []AccessItemRequestedFor and assigns it to the RequestedFor field.
-func (o *CompletedApproval) SetRequestedFor(v []AccessItemRequestedFor) {
-	o.RequestedFor = v
+// SetRequestedFor gets a reference to the given RequestedItemStatusRequestedFor and assigns it to the RequestedFor field.
+func (o *CompletedApproval) SetRequestedFor(v RequestedItemStatusRequestedFor) {
+	o.RequestedFor = &v
 }
 
 // GetReviewedBy returns the ReviewedBy field value if set, zero value otherwise.
@@ -758,36 +758,46 @@ func (o *CompletedApproval) UnsetCurrentRemoveDate() {
 	o.CurrentRemoveDate.Unset()
 }
 
-// GetSodViolationContext returns the SodViolationContext field value if set, zero value otherwise.
+// GetSodViolationContext returns the SodViolationContext field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CompletedApproval) GetSodViolationContext() SodViolationContextCheckCompleted {
-	if o == nil || isNil(o.SodViolationContext) {
+	if o == nil || isNil(o.SodViolationContext.Get()) {
 		var ret SodViolationContextCheckCompleted
 		return ret
 	}
-	return *o.SodViolationContext
+	return *o.SodViolationContext.Get()
 }
 
 // GetSodViolationContextOk returns a tuple with the SodViolationContext field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CompletedApproval) GetSodViolationContextOk() (*SodViolationContextCheckCompleted, bool) {
-	if o == nil || isNil(o.SodViolationContext) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SodViolationContext, true
+	return o.SodViolationContext.Get(), o.SodViolationContext.IsSet()
 }
 
 // HasSodViolationContext returns a boolean if a field has been set.
 func (o *CompletedApproval) HasSodViolationContext() bool {
-	if o != nil && !isNil(o.SodViolationContext) {
+	if o != nil && o.SodViolationContext.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSodViolationContext gets a reference to the given SodViolationContextCheckCompleted and assigns it to the SodViolationContext field.
+// SetSodViolationContext gets a reference to the given NullableSodViolationContextCheckCompleted and assigns it to the SodViolationContext field.
 func (o *CompletedApproval) SetSodViolationContext(v SodViolationContextCheckCompleted) {
-	o.SodViolationContext = &v
+	o.SodViolationContext.Set(&v)
+}
+// SetSodViolationContextNil sets the value for SodViolationContext to be an explicit nil
+func (o *CompletedApproval) SetSodViolationContextNil() {
+	o.SodViolationContext.Set(nil)
+}
+
+// UnsetSodViolationContext ensures that no value is present for SodViolationContext, not even an explicit nil
+func (o *CompletedApproval) UnsetSodViolationContext() {
+	o.SodViolationContext.Unset()
 }
 
 // GetPreApprovalTriggerResult returns the PreApprovalTriggerResult field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -906,6 +916,39 @@ func (o *CompletedApproval) UnsetRequestedAccounts() {
 	o.RequestedAccounts.Unset()
 }
 
+// GetAssignmentContext returns the AssignmentContext field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CompletedApproval) GetAssignmentContext() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.AssignmentContext
+}
+
+// GetAssignmentContextOk returns a tuple with the AssignmentContext field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CompletedApproval) GetAssignmentContextOk() (map[string]interface{}, bool) {
+	if o == nil || isNil(o.AssignmentContext) {
+		return map[string]interface{}{}, false
+	}
+	return o.AssignmentContext, true
+}
+
+// HasAssignmentContext returns a boolean if a field has been set.
+func (o *CompletedApproval) HasAssignmentContext() bool {
+	if o != nil && isNil(o.AssignmentContext) {
+		return true
+	}
+
+	return false
+}
+
+// SetAssignmentContext gets a reference to the given map[string]interface{} and assigns it to the AssignmentContext field.
+func (o *CompletedApproval) SetAssignmentContext(v map[string]interface{}) {
+	o.AssignmentContext = v
+}
+
 func (o CompletedApproval) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -976,8 +1019,8 @@ func (o CompletedApproval) ToMap() (map[string]interface{}, error) {
 	if o.CurrentRemoveDate.IsSet() {
 		toSerialize["currentRemoveDate"] = o.CurrentRemoveDate.Get()
 	}
-	if !isNil(o.SodViolationContext) {
-		toSerialize["sodViolationContext"] = o.SodViolationContext
+	if o.SodViolationContext.IsSet() {
+		toSerialize["sodViolationContext"] = o.SodViolationContext.Get()
 	}
 	if o.PreApprovalTriggerResult.IsSet() {
 		toSerialize["preApprovalTriggerResult"] = o.PreApprovalTriggerResult.Get()
@@ -987,6 +1030,9 @@ func (o CompletedApproval) ToMap() (map[string]interface{}, error) {
 	}
 	if o.RequestedAccounts.IsSet() {
 		toSerialize["requestedAccounts"] = o.RequestedAccounts.Get()
+	}
+	if o.AssignmentContext != nil {
+		toSerialize["assignmentContext"] = o.AssignmentContext
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -1030,6 +1076,7 @@ func (o *CompletedApproval) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "preApprovalTriggerResult")
 		delete(additionalProperties, "clientMetadata")
 		delete(additionalProperties, "requestedAccounts")
+		delete(additionalProperties, "assignmentContext")
 		o.AdditionalProperties = additionalProperties
 	}
 

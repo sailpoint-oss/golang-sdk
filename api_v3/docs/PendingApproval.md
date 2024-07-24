@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **RemoveDate** | Pointer to **time.Time** | The date the role or access profile or entitlement is no longer assigned to the specified identity. | [optional] 
 **RemoveDateUpdateRequested** | Pointer to **bool** | If true, then the request is to change the remove date or sunset date. | [optional] [default to false]
 **CurrentRemoveDate** | Pointer to **time.Time** | The remove date or sunset date that was assigned at the time of the request. | [optional] 
-**SodViolationContext** | Pointer to [**SodViolationContextCheckCompleted**](SodViolationContextCheckCompleted.md) |  | [optional] 
+**SodViolationContext** | Pointer to [**NullableSodViolationContextCheckCompleted**](SodViolationContextCheckCompleted.md) |  | [optional] 
 
 ## Methods
 
@@ -528,6 +528,16 @@ SetSodViolationContext sets SodViolationContext field to given value.
 
 HasSodViolationContext returns a boolean if a field has been set.
 
+### SetSodViolationContextNil
+
+`func (o *PendingApproval) SetSodViolationContextNil(b bool)`
+
+ SetSodViolationContextNil sets the value for SodViolationContext to be an explicit nil
+
+### UnsetSodViolationContext
+`func (o *PendingApproval) UnsetSodViolationContext()`
+
+UnsetSodViolationContext ensures that no value is present for SodViolationContext, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

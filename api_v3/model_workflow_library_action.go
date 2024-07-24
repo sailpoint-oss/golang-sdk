@@ -12,6 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the WorkflowLibraryAction type satisfies the MappedNullable interface at compile time
@@ -29,6 +30,12 @@ type WorkflowLibraryAction struct {
 	Description *string `json:"description,omitempty"`
 	// One or more inputs that the action accepts
 	FormFields []WorkflowLibraryFormFields `json:"formFields,omitempty"`
+	ExampleOutput *WorkflowLibraryActionExampleOutput `json:"exampleOutput,omitempty"`
+	Deprecated *bool `json:"deprecated,omitempty"`
+	DeprecatedBy *time.Time `json:"deprecatedBy,omitempty"`
+	// Version number
+	VersionNumber *int32 `json:"versionNumber,omitempty"`
+	IsSimulationEnabled *bool `json:"isSimulationEnabled,omitempty"`
 	// Determines whether the dynamic output schema is returned in place of the action's output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields.
 	IsDynamicSchema *bool `json:"isDynamicSchema,omitempty"`
 	// Defines the output schema, if any, that this action produces.
@@ -187,9 +194,9 @@ func (o *WorkflowLibraryAction) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetFormFields returns the FormFields field value if set, zero value otherwise.
+// GetFormFields returns the FormFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WorkflowLibraryAction) GetFormFields() []WorkflowLibraryFormFields {
-	if o == nil || isNil(o.FormFields) {
+	if o == nil {
 		var ret []WorkflowLibraryFormFields
 		return ret
 	}
@@ -198,6 +205,7 @@ func (o *WorkflowLibraryAction) GetFormFields() []WorkflowLibraryFormFields {
 
 // GetFormFieldsOk returns a tuple with the FormFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WorkflowLibraryAction) GetFormFieldsOk() ([]WorkflowLibraryFormFields, bool) {
 	if o == nil || isNil(o.FormFields) {
 		return nil, false
@@ -207,7 +215,7 @@ func (o *WorkflowLibraryAction) GetFormFieldsOk() ([]WorkflowLibraryFormFields, 
 
 // HasFormFields returns a boolean if a field has been set.
 func (o *WorkflowLibraryAction) HasFormFields() bool {
-	if o != nil && !isNil(o.FormFields) {
+	if o != nil && isNil(o.FormFields) {
 		return true
 	}
 
@@ -217,6 +225,166 @@ func (o *WorkflowLibraryAction) HasFormFields() bool {
 // SetFormFields gets a reference to the given []WorkflowLibraryFormFields and assigns it to the FormFields field.
 func (o *WorkflowLibraryAction) SetFormFields(v []WorkflowLibraryFormFields) {
 	o.FormFields = v
+}
+
+// GetExampleOutput returns the ExampleOutput field value if set, zero value otherwise.
+func (o *WorkflowLibraryAction) GetExampleOutput() WorkflowLibraryActionExampleOutput {
+	if o == nil || isNil(o.ExampleOutput) {
+		var ret WorkflowLibraryActionExampleOutput
+		return ret
+	}
+	return *o.ExampleOutput
+}
+
+// GetExampleOutputOk returns a tuple with the ExampleOutput field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkflowLibraryAction) GetExampleOutputOk() (*WorkflowLibraryActionExampleOutput, bool) {
+	if o == nil || isNil(o.ExampleOutput) {
+		return nil, false
+	}
+	return o.ExampleOutput, true
+}
+
+// HasExampleOutput returns a boolean if a field has been set.
+func (o *WorkflowLibraryAction) HasExampleOutput() bool {
+	if o != nil && !isNil(o.ExampleOutput) {
+		return true
+	}
+
+	return false
+}
+
+// SetExampleOutput gets a reference to the given WorkflowLibraryActionExampleOutput and assigns it to the ExampleOutput field.
+func (o *WorkflowLibraryAction) SetExampleOutput(v WorkflowLibraryActionExampleOutput) {
+	o.ExampleOutput = &v
+}
+
+// GetDeprecated returns the Deprecated field value if set, zero value otherwise.
+func (o *WorkflowLibraryAction) GetDeprecated() bool {
+	if o == nil || isNil(o.Deprecated) {
+		var ret bool
+		return ret
+	}
+	return *o.Deprecated
+}
+
+// GetDeprecatedOk returns a tuple with the Deprecated field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkflowLibraryAction) GetDeprecatedOk() (*bool, bool) {
+	if o == nil || isNil(o.Deprecated) {
+		return nil, false
+	}
+	return o.Deprecated, true
+}
+
+// HasDeprecated returns a boolean if a field has been set.
+func (o *WorkflowLibraryAction) HasDeprecated() bool {
+	if o != nil && !isNil(o.Deprecated) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeprecated gets a reference to the given bool and assigns it to the Deprecated field.
+func (o *WorkflowLibraryAction) SetDeprecated(v bool) {
+	o.Deprecated = &v
+}
+
+// GetDeprecatedBy returns the DeprecatedBy field value if set, zero value otherwise.
+func (o *WorkflowLibraryAction) GetDeprecatedBy() time.Time {
+	if o == nil || isNil(o.DeprecatedBy) {
+		var ret time.Time
+		return ret
+	}
+	return *o.DeprecatedBy
+}
+
+// GetDeprecatedByOk returns a tuple with the DeprecatedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkflowLibraryAction) GetDeprecatedByOk() (*time.Time, bool) {
+	if o == nil || isNil(o.DeprecatedBy) {
+		return nil, false
+	}
+	return o.DeprecatedBy, true
+}
+
+// HasDeprecatedBy returns a boolean if a field has been set.
+func (o *WorkflowLibraryAction) HasDeprecatedBy() bool {
+	if o != nil && !isNil(o.DeprecatedBy) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeprecatedBy gets a reference to the given time.Time and assigns it to the DeprecatedBy field.
+func (o *WorkflowLibraryAction) SetDeprecatedBy(v time.Time) {
+	o.DeprecatedBy = &v
+}
+
+// GetVersionNumber returns the VersionNumber field value if set, zero value otherwise.
+func (o *WorkflowLibraryAction) GetVersionNumber() int32 {
+	if o == nil || isNil(o.VersionNumber) {
+		var ret int32
+		return ret
+	}
+	return *o.VersionNumber
+}
+
+// GetVersionNumberOk returns a tuple with the VersionNumber field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkflowLibraryAction) GetVersionNumberOk() (*int32, bool) {
+	if o == nil || isNil(o.VersionNumber) {
+		return nil, false
+	}
+	return o.VersionNumber, true
+}
+
+// HasVersionNumber returns a boolean if a field has been set.
+func (o *WorkflowLibraryAction) HasVersionNumber() bool {
+	if o != nil && !isNil(o.VersionNumber) {
+		return true
+	}
+
+	return false
+}
+
+// SetVersionNumber gets a reference to the given int32 and assigns it to the VersionNumber field.
+func (o *WorkflowLibraryAction) SetVersionNumber(v int32) {
+	o.VersionNumber = &v
+}
+
+// GetIsSimulationEnabled returns the IsSimulationEnabled field value if set, zero value otherwise.
+func (o *WorkflowLibraryAction) GetIsSimulationEnabled() bool {
+	if o == nil || isNil(o.IsSimulationEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.IsSimulationEnabled
+}
+
+// GetIsSimulationEnabledOk returns a tuple with the IsSimulationEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkflowLibraryAction) GetIsSimulationEnabledOk() (*bool, bool) {
+	if o == nil || isNil(o.IsSimulationEnabled) {
+		return nil, false
+	}
+	return o.IsSimulationEnabled, true
+}
+
+// HasIsSimulationEnabled returns a boolean if a field has been set.
+func (o *WorkflowLibraryAction) HasIsSimulationEnabled() bool {
+	if o != nil && !isNil(o.IsSimulationEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsSimulationEnabled gets a reference to the given bool and assigns it to the IsSimulationEnabled field.
+func (o *WorkflowLibraryAction) SetIsSimulationEnabled(v bool) {
+	o.IsSimulationEnabled = &v
 }
 
 // GetIsDynamicSchema returns the IsDynamicSchema field value if set, zero value otherwise.
@@ -305,8 +473,23 @@ func (o WorkflowLibraryAction) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.FormFields) {
+	if o.FormFields != nil {
 		toSerialize["formFields"] = o.FormFields
+	}
+	if !isNil(o.ExampleOutput) {
+		toSerialize["exampleOutput"] = o.ExampleOutput
+	}
+	if !isNil(o.Deprecated) {
+		toSerialize["deprecated"] = o.Deprecated
+	}
+	if !isNil(o.DeprecatedBy) {
+		toSerialize["deprecatedBy"] = o.DeprecatedBy
+	}
+	if !isNil(o.VersionNumber) {
+		toSerialize["versionNumber"] = o.VersionNumber
+	}
+	if !isNil(o.IsSimulationEnabled) {
+		toSerialize["isSimulationEnabled"] = o.IsSimulationEnabled
 	}
 	if !isNil(o.IsDynamicSchema) {
 		toSerialize["isDynamicSchema"] = o.IsDynamicSchema
@@ -337,6 +520,11 @@ func (o *WorkflowLibraryAction) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "formFields")
+		delete(additionalProperties, "exampleOutput")
+		delete(additionalProperties, "deprecated")
+		delete(additionalProperties, "deprecatedBy")
+		delete(additionalProperties, "versionNumber")
+		delete(additionalProperties, "isSimulationEnabled")
 		delete(additionalProperties, "isDynamicSchema")
 		delete(additionalProperties, "outputSchema")
 		o.AdditionalProperties = additionalProperties

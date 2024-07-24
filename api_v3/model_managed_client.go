@@ -25,6 +25,8 @@ type ManagedClient struct {
 	Id NullableString `json:"id,omitempty"`
 	// ManagedClient alert key
 	AlertKey NullableString `json:"alertKey,omitempty"`
+	ApiGatewayBaseUrl NullableString `json:"apiGatewayBaseUrl,omitempty"`
+	Cookbook NullableString `json:"cookbook,omitempty"`
 	// Previous CC ID to be used in data migration. (This field will be deleted after CC migration!)
 	CcId NullableInt64 `json:"ccId,omitempty"`
 	// The client ID used in API management
@@ -173,6 +175,90 @@ func (o *ManagedClient) SetAlertKeyNil() {
 // UnsetAlertKey ensures that no value is present for AlertKey, not even an explicit nil
 func (o *ManagedClient) UnsetAlertKey() {
 	o.AlertKey.Unset()
+}
+
+// GetApiGatewayBaseUrl returns the ApiGatewayBaseUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ManagedClient) GetApiGatewayBaseUrl() string {
+	if o == nil || isNil(o.ApiGatewayBaseUrl.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ApiGatewayBaseUrl.Get()
+}
+
+// GetApiGatewayBaseUrlOk returns a tuple with the ApiGatewayBaseUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ManagedClient) GetApiGatewayBaseUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ApiGatewayBaseUrl.Get(), o.ApiGatewayBaseUrl.IsSet()
+}
+
+// HasApiGatewayBaseUrl returns a boolean if a field has been set.
+func (o *ManagedClient) HasApiGatewayBaseUrl() bool {
+	if o != nil && o.ApiGatewayBaseUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetApiGatewayBaseUrl gets a reference to the given NullableString and assigns it to the ApiGatewayBaseUrl field.
+func (o *ManagedClient) SetApiGatewayBaseUrl(v string) {
+	o.ApiGatewayBaseUrl.Set(&v)
+}
+// SetApiGatewayBaseUrlNil sets the value for ApiGatewayBaseUrl to be an explicit nil
+func (o *ManagedClient) SetApiGatewayBaseUrlNil() {
+	o.ApiGatewayBaseUrl.Set(nil)
+}
+
+// UnsetApiGatewayBaseUrl ensures that no value is present for ApiGatewayBaseUrl, not even an explicit nil
+func (o *ManagedClient) UnsetApiGatewayBaseUrl() {
+	o.ApiGatewayBaseUrl.Unset()
+}
+
+// GetCookbook returns the Cookbook field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ManagedClient) GetCookbook() string {
+	if o == nil || isNil(o.Cookbook.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Cookbook.Get()
+}
+
+// GetCookbookOk returns a tuple with the Cookbook field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ManagedClient) GetCookbookOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Cookbook.Get(), o.Cookbook.IsSet()
+}
+
+// HasCookbook returns a boolean if a field has been set.
+func (o *ManagedClient) HasCookbook() bool {
+	if o != nil && o.Cookbook.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCookbook gets a reference to the given NullableString and assigns it to the Cookbook field.
+func (o *ManagedClient) SetCookbook(v string) {
+	o.Cookbook.Set(&v)
+}
+// SetCookbookNil sets the value for Cookbook to be an explicit nil
+func (o *ManagedClient) SetCookbookNil() {
+	o.Cookbook.Set(nil)
+}
+
+// UnsetCookbook ensures that no value is present for Cookbook, not even an explicit nil
+func (o *ManagedClient) UnsetCookbook() {
+	o.Cookbook.Unset()
 }
 
 // GetCcId returns the CcId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -833,6 +919,12 @@ func (o ManagedClient) ToMap() (map[string]interface{}, error) {
 	if o.AlertKey.IsSet() {
 		toSerialize["alertKey"] = o.AlertKey.Get()
 	}
+	if o.ApiGatewayBaseUrl.IsSet() {
+		toSerialize["apiGatewayBaseUrl"] = o.ApiGatewayBaseUrl.Get()
+	}
+	if o.Cookbook.IsSet() {
+		toSerialize["cookbook"] = o.Cookbook.Get()
+	}
 	if o.CcId.IsSet() {
 		toSerialize["ccId"] = o.CcId.Get()
 	}
@@ -920,6 +1012,8 @@ func (o *ManagedClient) UnmarshalJSON(bytes []byte) (err error) {
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "alertKey")
+		delete(additionalProperties, "apiGatewayBaseUrl")
+		delete(additionalProperties, "cookbook")
 		delete(additionalProperties, "ccId")
 		delete(additionalProperties, "clientId")
 		delete(additionalProperties, "clusterId")

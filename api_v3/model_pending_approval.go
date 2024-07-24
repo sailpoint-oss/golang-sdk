@@ -50,7 +50,7 @@ type PendingApproval struct {
 	RemoveDateUpdateRequested *bool `json:"removeDateUpdateRequested,omitempty"`
 	// The remove date or sunset date that was assigned at the time of the request.
 	CurrentRemoveDate *time.Time `json:"currentRemoveDate,omitempty"`
-	SodViolationContext *SodViolationContextCheckCompleted `json:"sodViolationContext,omitempty"`
+	SodViolationContext NullableSodViolationContextCheckCompleted `json:"sodViolationContext,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -667,36 +667,46 @@ func (o *PendingApproval) SetCurrentRemoveDate(v time.Time) {
 	o.CurrentRemoveDate = &v
 }
 
-// GetSodViolationContext returns the SodViolationContext field value if set, zero value otherwise.
+// GetSodViolationContext returns the SodViolationContext field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PendingApproval) GetSodViolationContext() SodViolationContextCheckCompleted {
-	if o == nil || isNil(o.SodViolationContext) {
+	if o == nil || isNil(o.SodViolationContext.Get()) {
 		var ret SodViolationContextCheckCompleted
 		return ret
 	}
-	return *o.SodViolationContext
+	return *o.SodViolationContext.Get()
 }
 
 // GetSodViolationContextOk returns a tuple with the SodViolationContext field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PendingApproval) GetSodViolationContextOk() (*SodViolationContextCheckCompleted, bool) {
-	if o == nil || isNil(o.SodViolationContext) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SodViolationContext, true
+	return o.SodViolationContext.Get(), o.SodViolationContext.IsSet()
 }
 
 // HasSodViolationContext returns a boolean if a field has been set.
 func (o *PendingApproval) HasSodViolationContext() bool {
-	if o != nil && !isNil(o.SodViolationContext) {
+	if o != nil && o.SodViolationContext.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSodViolationContext gets a reference to the given SodViolationContextCheckCompleted and assigns it to the SodViolationContext field.
+// SetSodViolationContext gets a reference to the given NullableSodViolationContextCheckCompleted and assigns it to the SodViolationContext field.
 func (o *PendingApproval) SetSodViolationContext(v SodViolationContextCheckCompleted) {
-	o.SodViolationContext = &v
+	o.SodViolationContext.Set(&v)
+}
+// SetSodViolationContextNil sets the value for SodViolationContext to be an explicit nil
+func (o *PendingApproval) SetSodViolationContextNil() {
+	o.SodViolationContext.Set(nil)
+}
+
+// UnsetSodViolationContext ensures that no value is present for SodViolationContext, not even an explicit nil
+func (o *PendingApproval) UnsetSodViolationContext() {
+	o.SodViolationContext.Unset()
 }
 
 func (o PendingApproval) MarshalJSON() ([]byte, error) {
@@ -763,8 +773,8 @@ func (o PendingApproval) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.CurrentRemoveDate) {
 		toSerialize["currentRemoveDate"] = o.CurrentRemoveDate
 	}
-	if !isNil(o.SodViolationContext) {
-		toSerialize["sodViolationContext"] = o.SodViolationContext
+	if o.SodViolationContext.IsSet() {
+		toSerialize["sodViolationContext"] = o.SodViolationContext.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

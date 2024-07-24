@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **NullableString** | ManagedClient ID | [optional] [readonly] 
 **AlertKey** | Pointer to **NullableString** | ManagedClient alert key | [optional] [readonly] 
+**ApiGatewayBaseUrl** | Pointer to **NullableString** |  | [optional] 
+**Cookbook** | Pointer to **NullableString** |  | [optional] 
 **CcId** | Pointer to **NullableInt64** | Previous CC ID to be used in data migration. (This field will be deleted after CC migration!) | [optional] 
 **ClientId** | **string** | The client ID used in API management | 
 **ClusterId** | **string** | Cluster ID that the ManagedClient is linked to | 
@@ -113,6 +115,76 @@ HasAlertKey returns a boolean if a field has been set.
 `func (o *ManagedClient) UnsetAlertKey()`
 
 UnsetAlertKey ensures that no value is present for AlertKey, not even an explicit nil
+### GetApiGatewayBaseUrl
+
+`func (o *ManagedClient) GetApiGatewayBaseUrl() string`
+
+GetApiGatewayBaseUrl returns the ApiGatewayBaseUrl field if non-nil, zero value otherwise.
+
+### GetApiGatewayBaseUrlOk
+
+`func (o *ManagedClient) GetApiGatewayBaseUrlOk() (*string, bool)`
+
+GetApiGatewayBaseUrlOk returns a tuple with the ApiGatewayBaseUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApiGatewayBaseUrl
+
+`func (o *ManagedClient) SetApiGatewayBaseUrl(v string)`
+
+SetApiGatewayBaseUrl sets ApiGatewayBaseUrl field to given value.
+
+### HasApiGatewayBaseUrl
+
+`func (o *ManagedClient) HasApiGatewayBaseUrl() bool`
+
+HasApiGatewayBaseUrl returns a boolean if a field has been set.
+
+### SetApiGatewayBaseUrlNil
+
+`func (o *ManagedClient) SetApiGatewayBaseUrlNil(b bool)`
+
+ SetApiGatewayBaseUrlNil sets the value for ApiGatewayBaseUrl to be an explicit nil
+
+### UnsetApiGatewayBaseUrl
+`func (o *ManagedClient) UnsetApiGatewayBaseUrl()`
+
+UnsetApiGatewayBaseUrl ensures that no value is present for ApiGatewayBaseUrl, not even an explicit nil
+### GetCookbook
+
+`func (o *ManagedClient) GetCookbook() string`
+
+GetCookbook returns the Cookbook field if non-nil, zero value otherwise.
+
+### GetCookbookOk
+
+`func (o *ManagedClient) GetCookbookOk() (*string, bool)`
+
+GetCookbookOk returns a tuple with the Cookbook field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCookbook
+
+`func (o *ManagedClient) SetCookbook(v string)`
+
+SetCookbook sets Cookbook field to given value.
+
+### HasCookbook
+
+`func (o *ManagedClient) HasCookbook() bool`
+
+HasCookbook returns a boolean if a field has been set.
+
+### SetCookbookNil
+
+`func (o *ManagedClient) SetCookbookNil(b bool)`
+
+ SetCookbookNil sets the value for Cookbook to be an explicit nil
+
+### UnsetCookbook
+`func (o *ManagedClient) UnsetCookbook()`
+
+UnsetCookbook ensures that no value is present for Cookbook, not even an explicit nil
 ### GetCcId
 
 `func (o *ManagedClient) GetCcId() int64`

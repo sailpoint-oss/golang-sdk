@@ -57,6 +57,7 @@ type CompletedApproval struct {
 	ClientMetadata *map[string]string `json:"clientMetadata,omitempty"`
 	// Information about the requested accounts
 	RequestedAccounts NullableString `json:"requestedAccounts,omitempty"`
+	AssignmentContext map[string]interface{} `json:"assignmentContext,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -925,6 +926,39 @@ func (o *CompletedApproval) UnsetRequestedAccounts() {
 	o.RequestedAccounts.Unset()
 }
 
+// GetAssignmentContext returns the AssignmentContext field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CompletedApproval) GetAssignmentContext() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.AssignmentContext
+}
+
+// GetAssignmentContextOk returns a tuple with the AssignmentContext field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CompletedApproval) GetAssignmentContextOk() (map[string]interface{}, bool) {
+	if o == nil || isNil(o.AssignmentContext) {
+		return map[string]interface{}{}, false
+	}
+	return o.AssignmentContext, true
+}
+
+// HasAssignmentContext returns a boolean if a field has been set.
+func (o *CompletedApproval) HasAssignmentContext() bool {
+	if o != nil && isNil(o.AssignmentContext) {
+		return true
+	}
+
+	return false
+}
+
+// SetAssignmentContext gets a reference to the given map[string]interface{} and assigns it to the AssignmentContext field.
+func (o *CompletedApproval) SetAssignmentContext(v map[string]interface{}) {
+	o.AssignmentContext = v
+}
+
 func (o CompletedApproval) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1007,6 +1041,9 @@ func (o CompletedApproval) ToMap() (map[string]interface{}, error) {
 	if o.RequestedAccounts.IsSet() {
 		toSerialize["requestedAccounts"] = o.RequestedAccounts.Get()
 	}
+	if o.AssignmentContext != nil {
+		toSerialize["assignmentContext"] = o.AssignmentContext
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -1049,6 +1086,7 @@ func (o *CompletedApproval) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "preApprovalTriggerResult")
 		delete(additionalProperties, "clientMetadata")
 		delete(additionalProperties, "requestedAccounts")
+		delete(additionalProperties, "assignmentContext")
 		o.AdditionalProperties = additionalProperties
 	}
 
