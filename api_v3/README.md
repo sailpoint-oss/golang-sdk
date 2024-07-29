@@ -195,6 +195,7 @@ Class | Method | HTTP request | Description
 *GlobalTenantSecuritySettingsAPI* | [**PatchAuthOrgNetworkConfig**](docs/GlobalTenantSecuritySettingsAPI.md#patchauthorgnetworkconfig) | **Patch** /auth-org/network-config | Update security network configuration.
 *GlobalTenantSecuritySettingsAPI* | [**PatchAuthOrgServiceProviderConfig**](docs/GlobalTenantSecuritySettingsAPI.md#patchauthorgserviceproviderconfig) | **Patch** /auth-org/service-provider-config | Update Service Provider Configuration
 *GlobalTenantSecuritySettingsAPI* | [**PatchAuthOrgSessionConfig**](docs/GlobalTenantSecuritySettingsAPI.md#patchauthorgsessionconfig) | **Patch** /auth-org/session-config | Update Auth Org Session Configuration
+*IdentityProfilesAPI* | [**CreateIdentityProfile**](docs/IdentityProfilesAPI.md#createidentityprofile) | **Post** /identity-profiles | Create an Identity Profile
 *IdentityProfilesAPI* | [**DeleteIdentityProfile**](docs/IdentityProfilesAPI.md#deleteidentityprofile) | **Delete** /identity-profiles/{identity-profile-id} | Delete an Identity Profile
 *IdentityProfilesAPI* | [**DeleteIdentityProfiles**](docs/IdentityProfilesAPI.md#deleteidentityprofiles) | **Post** /identity-profiles/bulk-delete | Delete Identity Profiles
 *IdentityProfilesAPI* | [**ExportIdentityProfiles**](docs/IdentityProfilesAPI.md#exportidentityprofiles) | **Get** /identity-profiles/export | Export Identity Profiles
@@ -202,7 +203,9 @@ Class | Method | HTTP request | Description
 *IdentityProfilesAPI* | [**GetIdentityProfile**](docs/IdentityProfilesAPI.md#getidentityprofile) | **Get** /identity-profiles/{identity-profile-id} | Get single Identity Profile
 *IdentityProfilesAPI* | [**ImportIdentityProfiles**](docs/IdentityProfilesAPI.md#importidentityprofiles) | **Post** /identity-profiles/import | Import Identity Profiles
 *IdentityProfilesAPI* | [**ListIdentityProfiles**](docs/IdentityProfilesAPI.md#listidentityprofiles) | **Get** /identity-profiles | Identity Profiles List
+*IdentityProfilesAPI* | [**ShowIdentityPreview**](docs/IdentityProfilesAPI.md#showidentitypreview) | **Post** /identity-profiles/identity-preview | Generate Identity Profile Preview
 *IdentityProfilesAPI* | [**SyncIdentityProfile**](docs/IdentityProfilesAPI.md#syncidentityprofile) | **Post** /identity-profiles/{identity-profile-id}/process-identities | Process identities under profile
+*IdentityProfilesAPI* | [**UpdateIdentityProfile**](docs/IdentityProfilesAPI.md#updateidentityprofile) | **Patch** /identity-profiles/{identity-profile-id} | Update the Identity Profile
 *LifecycleStatesAPI* | [**CreateLifecycleState**](docs/LifecycleStatesAPI.md#createlifecyclestate) | **Post** /identity-profiles/{identity-profile-id}/lifecycle-states | Create Lifecycle State
 *LifecycleStatesAPI* | [**DeleteLifecycleState**](docs/LifecycleStatesAPI.md#deletelifecyclestate) | **Delete** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Delete Lifecycle State
 *LifecycleStatesAPI* | [**GetLifecycleState**](docs/LifecycleStatesAPI.md#getlifecyclestate) | **Get** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Get Lifecycle State
@@ -639,6 +642,7 @@ Class | Method | HTTP request | Description
  - [IdentityAccess](docs/IdentityAccess.md)
  - [IdentityAttribute](docs/IdentityAttribute.md)
  - [IdentityAttributeConfig](docs/IdentityAttributeConfig.md)
+ - [IdentityAttributePreview](docs/IdentityAttributePreview.md)
  - [IdentityAttributeTransform](docs/IdentityAttributeTransform.md)
  - [IdentityCertDecisionSummary](docs/IdentityCertDecisionSummary.md)
  - [IdentityCertificationDto](docs/IdentityCertificationDto.md)
@@ -647,6 +651,9 @@ Class | Method | HTTP request | Description
  - [IdentityDocumentAllOfManager](docs/IdentityDocumentAllOfManager.md)
  - [IdentityDocumentAllOfSource](docs/IdentityDocumentAllOfSource.md)
  - [IdentityExceptionReportReference](docs/IdentityExceptionReportReference.md)
+ - [IdentityPreviewRequest](docs/IdentityPreviewRequest.md)
+ - [IdentityPreviewResponse](docs/IdentityPreviewResponse.md)
+ - [IdentityPreviewResponseIdentity](docs/IdentityPreviewResponseIdentity.md)
  - [IdentityProfile](docs/IdentityProfile.md)
  - [IdentityProfileAllOfAuthoritativeSource](docs/IdentityProfileAllOfAuthoritativeSource.md)
  - [IdentityProfileAllOfOwner](docs/IdentityProfileAllOfOwner.md)

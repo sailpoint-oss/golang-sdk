@@ -294,11 +294,11 @@ Class | Method | HTTP request | Description
 *IdentityProfilesAPI* | [**DeleteIdentityProfile**](docs/IdentityProfilesAPI.md#deleteidentityprofile) | **Delete** /identity-profiles/{identity-profile-id} | Delete an Identity Profile
 *IdentityProfilesAPI* | [**DeleteIdentityProfiles**](docs/IdentityProfilesAPI.md#deleteidentityprofiles) | **Post** /identity-profiles/bulk-delete | Delete Identity Profiles
 *IdentityProfilesAPI* | [**ExportIdentityProfiles**](docs/IdentityProfilesAPI.md#exportidentityprofiles) | **Get** /identity-profiles/export | Export Identity Profiles
-*IdentityProfilesAPI* | [**GenerateIdentityPreview**](docs/IdentityProfilesAPI.md#generateidentitypreview) | **Post** /identity-profiles/identity-preview | Generate Identity Profile Preview
 *IdentityProfilesAPI* | [**GetDefaultIdentityAttributeConfig**](docs/IdentityProfilesAPI.md#getdefaultidentityattributeconfig) | **Get** /identity-profiles/{identity-profile-id}/default-identity-attribute-config | Default identity attribute config
 *IdentityProfilesAPI* | [**GetIdentityProfile**](docs/IdentityProfilesAPI.md#getidentityprofile) | **Get** /identity-profiles/{identity-profile-id} | Gets a single Identity Profile
 *IdentityProfilesAPI* | [**ImportIdentityProfiles**](docs/IdentityProfilesAPI.md#importidentityprofiles) | **Post** /identity-profiles/import | Import Identity Profiles
-*IdentityProfilesAPI* | [**ListIdentityProfiles**](docs/IdentityProfilesAPI.md#listidentityprofiles) | **Get** /identity-profiles | Identity Profiles list
+*IdentityProfilesAPI* | [**ListIdentityProfiles**](docs/IdentityProfilesAPI.md#listidentityprofiles) | **Get** /identity-profiles | Identity Profiles List
+*IdentityProfilesAPI* | [**ShowGenerateIdentityPreview**](docs/IdentityProfilesAPI.md#showgenerateidentitypreview) | **Post** /identity-profiles/identity-preview | Generate Identity Profile Preview
 *IdentityProfilesAPI* | [**SyncIdentityProfile**](docs/IdentityProfilesAPI.md#syncidentityprofile) | **Post** /identity-profiles/{identity-profile-id}/process-identities | Process identities under profile
 *IdentityProfilesAPI* | [**UpdateIdentityProfile**](docs/IdentityProfilesAPI.md#updateidentityprofile) | **Patch** /identity-profiles/{identity-profile-id} | Update the Identity Profile
 *LifecycleStatesAPI* | [**GetLifecycleStates**](docs/LifecycleStatesAPI.md#getlifecyclestates) | **Get** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Get Lifecycle State

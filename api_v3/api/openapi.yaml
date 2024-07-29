@@ -15515,6 +15515,87 @@ paths:
       summary: Identity Profiles List
       tags:
       - Identity Profiles
+    post:
+      description: |-
+        This creates an Identity Profile.
+
+        A token with ORG_ADMIN authority is required to call this API to create an Identity Profile.
+      operationId: createIdentityProfile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdentityProfile'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityProfile'
+          description: The created Identity Profile
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:identity-profile:manage
+      summary: Create an Identity Profile
+      tags:
+      - Identity Profiles
   /identity-profiles/bulk-delete:
     post:
       description: |-
@@ -15827,6 +15908,90 @@ paths:
       summary: Import Identity Profiles
       tags:
       - Identity Profiles
+  /identity-profiles/identity-preview:
+    post:
+      description: |-
+        Use this API to generate a non-persisted preview of the identity object after applying `IdentityAttributeConfig` sent in request body.
+        This API only allows `accountAttribute`, `reference` and `rule` transform types in the `IdentityAttributeConfig` sent in the request body.
+        A token with ORG_ADMIN authority is required to call this API to generate an identity preview.
+      operationId: showIdentityPreview
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdentityPreviewRequest'
+        description: Identity Preview request body.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityPreviewResponse'
+          description: A preview of the identity attributes after applying identity
+            attributes config sent in request body.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:identity-profile:manage
+      summary: Generate Identity Profile Preview
+      tags:
+      - Identity Profiles
   /identity-profiles/{identity-profile-id}:
     delete:
       description: |-
@@ -15938,6 +16103,7 @@ paths:
     get:
       description: |-
         This returns a single Identity Profile based on ID.
+
         A token with ORG_ADMIN or API authority is required to call this API.
       operationId: getIdentityProfile
       parameters:
@@ -16034,6 +16200,141 @@ paths:
       - UserContextAuth:
         - idn:identity-profile:read
       summary: Get single Identity Profile
+      tags:
+      - Identity Profiles
+    patch:
+      description: |-
+        This updates the specified Identity Profile.
+
+        A token with ORG_ADMIN authority is required to call this API to update the Identity Profile.
+
+        Some fields of the Schema cannot be updated. These fields are listed below:
+        * id
+        * name
+        * created
+        * modified
+        * identityCount
+        * identityRefreshRequired
+        * Authoritative Source and Identity Attribute Configuration cannot be modified at once.
+      operationId: updateIdentityProfile
+      parameters:
+      - description: The Identity Profile ID
+        example: ef38f94347e94562b5bb8424a56397d8
+        in: path
+        name: identity-profile-id
+        required: true
+        schema:
+          format: uuid
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            examples:
+              add-attribute-transform:
+                summary: Add an attribute transform
+                value:
+                - op: add
+                  path: /identityAttributeConfig/attributeTransforms/0
+                  value:
+                    identityAttributeName: location
+                    transformDefinition:
+                      type: accountAttribute
+                      attributes:
+                        sourceName: Employees
+                        attributeName: location
+                        sourceId: 2c91808878b7d63b0178c66ffcdc4ce4
+            schema:
+              items:
+                $ref: '#/components/schemas/JsonPatchOperation'
+              type: array
+        description: "A list of Identity Profile update operations according to the\
+          \ [JSON Patch](https://tools.ietf.org/html/rfc6902) standard."
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityProfile'
+          description: The updated Identity Profile.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:identity-profile:manage
+      summary: Update the Identity Profile
       tags:
       - Identity Profiles
   /identity-profiles/{identity-profile-id}/default-identity-attribute-config:
@@ -49555,6 +49856,91 @@ components:
       - warnings
       title: Import Object Response Body
       type: object
+    IdentityPreviewRequest:
+      example:
+        identityId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        identityAttributeConfig:
+        - attributeTransforms:
+          - transformDefinition:
+              attributes:
+                attributeName: e-mail
+                sourceName: MySource
+                sourceId: 2c9180877a826e68017a8c0b03da1a53
+              type: accountAttribute
+            identityAttributeName: email
+          - transformDefinition:
+              attributes:
+                attributeName: e-mail
+                sourceName: MySource
+                sourceId: 2c9180877a826e68017a8c0b03da1a53
+              type: accountAttribute
+            identityAttributeName: email
+          enabled: true
+        - attributeTransforms:
+          - transformDefinition:
+              attributes:
+                attributeName: e-mail
+                sourceName: MySource
+                sourceId: 2c9180877a826e68017a8c0b03da1a53
+              type: accountAttribute
+            identityAttributeName: email
+          - transformDefinition:
+              attributes:
+                attributeName: e-mail
+                sourceName: MySource
+                sourceId: 2c9180877a826e68017a8c0b03da1a53
+              type: accountAttribute
+            identityAttributeName: email
+          enabled: true
+      properties:
+        identityId:
+          description: The Identity id
+          format: uuid
+          type: string
+        identityAttributeConfig:
+          items:
+            $ref: '#/components/schemas/IdentityAttributeConfig'
+          type: array
+      type: object
+    IdentityPreviewResponse:
+      example:
+        identity:
+          name: Michael Michaels
+          id: 2c7180a46faadee4016fb4e018c20642
+          type: IDENTITY
+        previewAttributes:
+        - errorMessages:
+          - localeOrigin: DEFAULT
+            text: The request was syntactically correct but its content is semantically
+              invalid.
+            locale: en-US
+          - localeOrigin: DEFAULT
+            text: The request was syntactically correct but its content is semantically
+              invalid.
+            locale: en-US
+          name: email
+          value: email@mail.com
+          previousValue: oldEmail@mail.com
+        - errorMessages:
+          - localeOrigin: DEFAULT
+            text: The request was syntactically correct but its content is semantically
+              invalid.
+            locale: en-US
+          - localeOrigin: DEFAULT
+            text: The request was syntactically correct but its content is semantically
+              invalid.
+            locale: en-US
+          name: email
+          value: email@mail.com
+          previousValue: oldEmail@mail.com
+      properties:
+        identity:
+          $ref: '#/components/schemas/IdentityPreviewResponse_identity'
+        previewAttributes:
+          items:
+            $ref: '#/components/schemas/IdentityAttributePreview'
+          type: array
+      type: object
     IdentityAttributeConfig:
       description: Defines all the identity attribute mapping configurations. This
         defines how to generate or collect data for each identity attributes in identity
@@ -57091,6 +57477,38 @@ components:
           example: HR Active Directory
           type: string
       type: object
+    IdentityAttributePreview:
+      example:
+        errorMessages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        name: email
+        value: email@mail.com
+        previousValue: oldEmail@mail.com
+      properties:
+        name:
+          description: Name of the attribute that is being previewed.
+          example: email
+          type: string
+        value:
+          description: Value that was derived during the preview.
+          example: email@mail.com
+          type: object
+        previousValue:
+          description: The value of the attribute before the preview.
+          example: oldEmail@mail.com
+          type: object
+        errorMessages:
+          items:
+            $ref: '#/components/schemas/ErrorMessageDto'
+          type: array
+      type: object
     IdentityAttributeTransform:
       description: Defines a transformation definition for an identity attribute.
       example:
@@ -61655,6 +62073,28 @@ components:
         name:
           description: Exported object's display name.
           example: HR Active Directory
+          type: string
+      type: object
+    IdentityPreviewResponse_identity:
+      description: Identity's basic details.
+      example:
+        name: Michael Michaels
+        id: 2c7180a46faadee4016fb4e018c20642
+        type: IDENTITY
+      properties:
+        type:
+          description: Identity's DTO type.
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        id:
+          description: Identity ID.
+          example: 2c7180a46faadee4016fb4e018c20642
+          type: string
+        name:
+          description: Identity's display name.
+          example: Michael Michaels
           type: string
       type: object
     SavedSearchDetail_filters:

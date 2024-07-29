@@ -271,6 +271,7 @@ docs/IdentitiesReportArguments.md
 docs/IdentityAccess.md
 docs/IdentityAttribute.md
 docs/IdentityAttributeConfig.md
+docs/IdentityAttributePreview.md
 docs/IdentityAttributeTransform.md
 docs/IdentityCertDecisionSummary.md
 docs/IdentityCertificationDto.md
@@ -279,6 +280,9 @@ docs/IdentityDocumentAllOfIdentityProfile.md
 docs/IdentityDocumentAllOfManager.md
 docs/IdentityDocumentAllOfSource.md
 docs/IdentityExceptionReportReference.md
+docs/IdentityPreviewRequest.md
+docs/IdentityPreviewResponse.md
+docs/IdentityPreviewResponseIdentity.md
 docs/IdentityProfile.md
 docs/IdentityProfileAllOfAuthoritativeSource.md
 docs/IdentityProfileAllOfOwner.md
@@ -847,6 +851,7 @@ model_identities_report_arguments.go
 model_identity_access.go
 model_identity_attribute.go
 model_identity_attribute_config.go
+model_identity_attribute_preview.go
 model_identity_attribute_transform.go
 model_identity_cert_decision_summary.go
 model_identity_certification_dto.go
@@ -855,6 +860,9 @@ model_identity_document_all_of_identity_profile.go
 model_identity_document_all_of_manager.go
 model_identity_document_all_of_source.go
 model_identity_exception_report_reference.go
+model_identity_preview_request.go
+model_identity_preview_response.go
+model_identity_preview_response_identity.go
 model_identity_profile.go
 model_identity_profile_all_of_authoritative_source.go
 model_identity_profile_all_of_owner.go

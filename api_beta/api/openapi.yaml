@@ -17190,12 +17190,13 @@ paths:
       - UserContextAuth:
         - idn:identity-profile:read
         - idn:identity-profile:manage
-      summary: Identity Profiles list
+      summary: Identity Profiles List
       tags:
       - Identity Profiles
     post:
       description: |-
-        This creates an Identity Profile
+        This creates an Identity Profile.
+
         A token with ORG_ADMIN authority is required to call this API to create an Identity Profile.
       operationId: createIdentityProfile
       requestBody:
@@ -17604,12 +17605,11 @@ paths:
       - Identity Profiles
   /identity-profiles/identity-preview:
     post:
-      description: "Use this API to generate a non-persisted `IdentityDetails` object\
-        \ that represents a preview of the identity attributes with a specified policy's\
-        \ attribute config applied.\nThis API supports the `accountAttribute`, `rule`,\
-        \ and `reference` transform types. \nA token with ORG_ADMIN authority is required\
-        \ to call this API to generate an identity preview."
-      operationId: generateIdentityPreview
+      description: |-
+        Use this API to generate a non-persisted preview of the identity object after applying `IdentityAttributeConfig` sent in request body.
+        This API only allows `accountAttribute`, `reference` and `rule` transform types in the `IdentityAttributeConfig` sent in the request body.
+        A token with ORG_ADMIN authority is required to call this API to generate an identity preview.
+      operationId: showGenerateIdentityPreview
       requestBody:
         content:
           application/json:
@@ -17623,8 +17623,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/IdentityPreviewResponse'
-          description: Object representing the preview object with all of the identity
-            attributes using the current mappings.
+          description: A preview of the identity attributes after applying identity
+            attributes config sent in request body.
         "400":
           content:
             application/json:
@@ -17798,6 +17798,7 @@ paths:
     get:
       description: |-
         This returns a single Identity Profile based on ID.
+
         A token with ORG_ADMIN or API authority is required to call this API.
       operationId: getIdentityProfile
       parameters:
@@ -17900,11 +17901,17 @@ paths:
     patch:
       description: |-
         This updates the specified Identity Profile.
-        A token with ORG_ADMIN authority is required to call this API to update the Identity Profile. Some fields of the Schema cannot be updated. These fields are listed below.
+
+        A token with ORG_ADMIN authority is required to call this API to update the Identity Profile.
+
+        Some fields of the Schema cannot be updated. These fields are listed below:
         * id
         * name
         * created
         * modified
+        * identityCount
+        * identityRefreshRequired
+        * Authoritative Source and Identity Attribute Configuration cannot be modified at once.
       operationId: updateIdentityProfile
       parameters:
       - description: The Identity Profile ID
