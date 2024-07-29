@@ -20,7 +20,7 @@ var _ MappedNullable = &FormElementDynamicDataSource{}
 // FormElementDynamicDataSource struct for FormElementDynamicDataSource
 type FormElementDynamicDataSource struct {
 	Config *FormElementDynamicDataSourceConfig `json:"config,omitempty"`
-	// DataSourceType is a FormElementDataSourceType value STATIC FormElementDataSourceTypeStatic INTERNAL FormElementDataSourceTypeInternal SEARCH FormElementDataSourceTypeSearch
+	// DataSourceType is a FormElementDataSourceType value STATIC FormElementDataSourceTypeStatic INTERNAL FormElementDataSourceTypeInternal SEARCH FormElementDataSourceTypeSearch FORM_INPUT FormElementDataSourceTypeFormInput
 	DataSourceType *string `json:"dataSourceType,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

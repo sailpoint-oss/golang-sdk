@@ -169,6 +169,7 @@ Class | Method | HTTP request | Description
 *ConnectorRuleManagementAPI* | [**ValidateConnectorRule**](docs/ConnectorRuleManagementAPI.md#validateconnectorrule) | **Post** /connector-rules/validate | Validate Connector Rule
 *ConnectorsAPI* | [**GetConnectorList**](docs/ConnectorsAPI.md#getconnectorlist) | **Get** /connectors | Gets connector list
 *CustomFormsAPI* | [**CreateFormDefinition**](docs/CustomFormsAPI.md#createformdefinition) | **Post** /form-definitions | Creates a form definition.
+*CustomFormsAPI* | [**CreateFormDefinitionByTemplate**](docs/CustomFormsAPI.md#createformdefinitionbytemplate) | **Post** /form-definitions/template | Create a form definition by template.
 *CustomFormsAPI* | [**CreateFormDefinitionDynamicSchema**](docs/CustomFormsAPI.md#createformdefinitiondynamicschema) | **Post** /form-definitions/forms-action-dynamic-schema | Generate JSON Schema dynamically.
 *CustomFormsAPI* | [**CreateFormDefinitionFileRequest**](docs/CustomFormsAPI.md#createformdefinitionfilerequest) | **Post** /form-definitions/{formDefinitionID}/upload | Upload new form definition file.
 *CustomFormsAPI* | [**CreateFormInstance**](docs/CustomFormsAPI.md#createforminstance) | **Post** /form-instances | Creates a form instance.

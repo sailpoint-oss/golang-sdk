@@ -54083,6 +54083,87 @@ paths:
       tags:
       - Custom Forms
       x-codegen-request-body-name: Body
+  /form-definitions/template:
+    post:
+      operationId: createFormDefinitionByTemplate
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: my form
+              description: my form description
+              owner:
+                type: IDENTITY
+                id: 00000000-0000-0000-0000-000000000000
+              formElements:
+              - id: "000000000000"
+                elementType: SECTION
+                config:
+                  alignment: LEFT
+                  description: "elementType must be 'SECTION' for the root formElements,\
+                    \  child formElements must be within the 'config' attribute"
+                  label: Section
+                  labelStyle: h2
+                  showLabel: true
+                  formElements:
+                  - id: "0000000000000"
+                    key: textField
+                    elementType: TEXT
+                    config:
+                      default: ""
+                      description: ""
+                      helpText: form element type text
+                      label: Text Field
+                      placeholder: ""
+                      required: false
+                    validations: []
+            schema:
+              $ref: '#/components/schemas/CreateFormDefinitionRequest'
+        description: Body is the request payload to create form definition request
+        required: false
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormDefinitionResponse'
+          description: Returns a new form definition
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+          description: An error with the request occurred
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+          description: An error with the authorization occurred
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+          description: An error with the user permissions occurred
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Too many requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+          description: An internal server error occurred
+      security:
+      - UserContextAuth:
+        - sp:forms:manage
+      summary: Create a form definition by template.
+      tags:
+      - Custom Forms
   /form-definitions/{formDefinitionID}/upload:
     post:
       description: "Parameter `{formDefinitionID}` should match a form definition\
@@ -79522,16 +79603,19 @@ components:
             STATIC FormElementDataSourceTypeStatic
             INTERNAL FormElementDataSourceTypeInternal
             SEARCH FormElementDataSourceTypeSearch
+            FORM_INPUT FormElementDataSourceTypeFormInput
           enum:
           - STATIC
           - INTERNAL
           - SEARCH
+          - FORM_INPUT
           example: STATIC
           type: string
           x-go-enum-desc: |-
             STATIC FormElementDataSourceTypeStatic
             INTERNAL FormElementDataSourceTypeInternal
             SEARCH FormElementDataSourceTypeSearch
+            FORM_INPUT FormElementDataSourceTypeFormInput
           x-go-name: DataSourceType
       type: object
       x-go-package: github.com/sailpoint/sp-forms/domain

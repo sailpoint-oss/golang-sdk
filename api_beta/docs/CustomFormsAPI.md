@@ -5,6 +5,7 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateFormDefinition**](CustomFormsAPI.md#CreateFormDefinition) | **Post** /form-definitions | Creates a form definition.
+[**CreateFormDefinitionByTemplate**](CustomFormsAPI.md#CreateFormDefinitionByTemplate) | **Post** /form-definitions/template | Create a form definition by template.
 [**CreateFormDefinitionDynamicSchema**](CustomFormsAPI.md#CreateFormDefinitionDynamicSchema) | **Post** /form-definitions/forms-action-dynamic-schema | Generate JSON Schema dynamically.
 [**CreateFormDefinitionFileRequest**](CustomFormsAPI.md#CreateFormDefinitionFileRequest) | **Post** /form-definitions/{formDefinitionID}/upload | Upload new form definition file.
 [**CreateFormInstance**](CustomFormsAPI.md#CreateFormInstance) | **Post** /form-instances | Creates a form instance.
@@ -65,6 +66,70 @@ func main() {
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiCreateFormDefinitionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createFormDefinitionRequest** | [**CreateFormDefinitionRequest**](CreateFormDefinitionRequest.md) | Body is the request payload to create form definition request | 
+
+### Return type
+
+[**FormDefinitionResponse**](FormDefinitionResponse.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateFormDefinitionByTemplate
+
+> FormDefinitionResponse CreateFormDefinitionByTemplate(ctx).CreateFormDefinitionRequest(createFormDefinitionRequest).Execute()
+
+Create a form definition by template.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    createFormDefinitionRequest := *openapiclient.NewCreateFormDefinitionRequest("My form", *openapiclient.NewFormOwner()) // CreateFormDefinitionRequest | Body is the request payload to create form definition request (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CustomFormsAPI.CreateFormDefinitionByTemplate(context.Background()).CreateFormDefinitionRequest(createFormDefinitionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsAPI.CreateFormDefinitionByTemplate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateFormDefinitionByTemplate`: FormDefinitionResponse
+    fmt.Fprintf(os.Stdout, "Response from `CustomFormsAPI.CreateFormDefinitionByTemplate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateFormDefinitionByTemplateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
