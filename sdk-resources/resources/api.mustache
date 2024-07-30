@@ -132,6 +132,16 @@ func (a *{{{classname}}}Service) {{nickname}}Execute(r {{#structPrefix}}{{&class
 	{{#allParams}}
 	{{#required}}
 	{{^isPathParam}}
+	{{#headerParams}}
+	{{#required}}
+	
+	if r.{{paramName}} == nil {
+		header{{paramName}} := {{{defaultValue}}}
+		r.{{paramName}} = &header{{paramName}}
+	}
+	
+	{{/required}}
+	{{/headerParams}}
 	if r.{{paramName}} == nil {
 		return {{#returnType}}localVarReturnValue, {{/returnType}}nil, reportError("{{paramName}} is required and must be specified")
 	}
@@ -245,11 +255,11 @@ func (a *{{{classname}}}Service) {{nickname}}Execute(r {{#structPrefix}}{{&class
 	}
 {{#headerParams}}
 	{{#required}}
-	parameterAddToQuery(localVarQueryParams, "{{baseName}}", r.{{paramName}}, "{{collectionFormat}}")
+		parameterAddToQuery(localVarHeaderParams, "{{baseName}}", r.{{paramName}}, "{{collectionFormat}}")
 	{{/required}}
 	{{^required}}
 	if r.{{paramName}} != nil {
-		parameterAddToQuery(localVarQueryParams, "{{baseName}}", r.{{paramName}}, "{{collectionFormat}}")
+		parameterAddToQuery(localVarHeaderParams, "{{baseName}}", r.{{paramName}}, "{{collectionFormat}}")
 	}
 	{{/required}}
 {{/headerParams}}

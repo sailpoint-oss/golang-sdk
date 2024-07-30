@@ -132,3 +132,34 @@ func Test_beta(t *testing.T) {
 	})
 
 }
+
+func Test_v2024(t *testing.T) {
+
+	configuration := NewDefaultConfiguration()
+	configuration.Experimental = true
+	apiClient := NewAPIClient(configuration)
+
+	t.Run("Test List Accounts", func(t *testing.T) {
+
+		resp, r, err := apiClient.V2024.AccountsAPI.ListAccounts(context.TODO()).Execute()
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "during test`: %v\n", err)
+		}
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, r.StatusCode)
+
+	})
+
+	t.Run("Test Experimental Identities API", func(t *testing.T) {
+
+		resp, r, err := apiClient.V2024.IdentitiesAPI.ListIdentities(context.TODO()).Execute()
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "during test`: %v\n", err)
+		}
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, r.StatusCode)
+
+	})
+}
