@@ -419,6 +419,7 @@ Class | Method | HTTP request | Description
 *WorkItemsAPI* | [**ListWorkItems**](docs/WorkItemsAPI.md#listworkitems) | **Get** /work-items | List Work Items
 *WorkItemsAPI* | [**RejectApprovalItem**](docs/WorkItemsAPI.md#rejectapprovalitem) | **Post** /work-items/{id}/reject/{approvalItemId} | Reject an Approval Item
 *WorkItemsAPI* | [**RejectApprovalItemsInBulk**](docs/WorkItemsAPI.md#rejectapprovalitemsinbulk) | **Post** /work-items/bulk-reject/{id} | Bulk reject Approval Items
+*WorkItemsAPI* | [**SendWorkItemForward**](docs/WorkItemsAPI.md#sendworkitemforward) | **Post** /work-items/{id}/forward | Forward a Work Item
 *WorkItemsAPI* | [**SubmitAccountSelection**](docs/WorkItemsAPI.md#submitaccountselection) | **Post** /work-items/{id}/submit-account-selection | Submit Account Selections
 *WorkflowsAPI* | [**CancelWorkflowExecution**](docs/WorkflowsAPI.md#cancelworkflowexecution) | **Post** /workflow-executions/{id}/cancel | Cancel Workflow Execution by ID
 *WorkflowsAPI* | [**CreateExternalExecuteWorkflow**](docs/WorkflowsAPI.md#createexternalexecuteworkflow) | **Post** /workflows/execute/external/{id} | Execute Workflow via External Trigger
@@ -963,6 +964,7 @@ Class | Method | HTTP request | Description
  - [ViolationOwnerAssignmentConfigOwnerRef](docs/ViolationOwnerAssignmentConfigOwnerRef.md)
  - [ViolationPrediction](docs/ViolationPrediction.md)
  - [VisibilityCriteria](docs/VisibilityCriteria.md)
+ - [WorkItemForward](docs/WorkItemForward.md)
  - [WorkItemState](docs/WorkItemState.md)
  - [WorkItemStateManualWorkItems](docs/WorkItemStateManualWorkItems.md)
  - [WorkItemTypeManualWorkItems](docs/WorkItemTypeManualWorkItems.md)

@@ -624,6 +624,7 @@ docs/ViolationOwnerAssignmentConfig.md
 docs/ViolationOwnerAssignmentConfigOwnerRef.md
 docs/ViolationPrediction.md
 docs/VisibilityCriteria.md
+docs/WorkItemForward.md
 docs/WorkItemState.md
 docs/WorkItemStateManualWorkItems.md
 docs/WorkItemTypeManualWorkItems.md
@@ -1172,6 +1173,7 @@ model_violation_owner_assignment_config.go
 model_violation_owner_assignment_config_owner_ref.go
 model_violation_prediction.go
 model_visibility_criteria.go
+model_work_item_forward.go
 model_work_item_state.go
 model_work_item_state_manual_work_items.go
 model_work_item_type_manual_work_items.go
