@@ -55,9 +55,6 @@ type CompletedApproval struct {
 	PreApprovalTriggerResult NullableCompletedApprovalPreApprovalTriggerResult `json:"preApprovalTriggerResult,omitempty"`
 	// Arbitrary key-value pairs provided during the request.
 	ClientMetadata *map[string]string `json:"clientMetadata,omitempty"`
-	// Information about the requested accounts
-	RequestedAccounts NullableString `json:"requestedAccounts,omitempty"`
-	AssignmentContext map[string]interface{} `json:"assignmentContext,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -884,81 +881,6 @@ func (o *CompletedApproval) SetClientMetadata(v map[string]string) {
 	o.ClientMetadata = &v
 }
 
-// GetRequestedAccounts returns the RequestedAccounts field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CompletedApproval) GetRequestedAccounts() string {
-	if o == nil || isNil(o.RequestedAccounts.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.RequestedAccounts.Get()
-}
-
-// GetRequestedAccountsOk returns a tuple with the RequestedAccounts field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CompletedApproval) GetRequestedAccountsOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.RequestedAccounts.Get(), o.RequestedAccounts.IsSet()
-}
-
-// HasRequestedAccounts returns a boolean if a field has been set.
-func (o *CompletedApproval) HasRequestedAccounts() bool {
-	if o != nil && o.RequestedAccounts.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetRequestedAccounts gets a reference to the given NullableString and assigns it to the RequestedAccounts field.
-func (o *CompletedApproval) SetRequestedAccounts(v string) {
-	o.RequestedAccounts.Set(&v)
-}
-// SetRequestedAccountsNil sets the value for RequestedAccounts to be an explicit nil
-func (o *CompletedApproval) SetRequestedAccountsNil() {
-	o.RequestedAccounts.Set(nil)
-}
-
-// UnsetRequestedAccounts ensures that no value is present for RequestedAccounts, not even an explicit nil
-func (o *CompletedApproval) UnsetRequestedAccounts() {
-	o.RequestedAccounts.Unset()
-}
-
-// GetAssignmentContext returns the AssignmentContext field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CompletedApproval) GetAssignmentContext() map[string]interface{} {
-	if o == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.AssignmentContext
-}
-
-// GetAssignmentContextOk returns a tuple with the AssignmentContext field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CompletedApproval) GetAssignmentContextOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.AssignmentContext) {
-		return map[string]interface{}{}, false
-	}
-	return o.AssignmentContext, true
-}
-
-// HasAssignmentContext returns a boolean if a field has been set.
-func (o *CompletedApproval) HasAssignmentContext() bool {
-	if o != nil && isNil(o.AssignmentContext) {
-		return true
-	}
-
-	return false
-}
-
-// SetAssignmentContext gets a reference to the given map[string]interface{} and assigns it to the AssignmentContext field.
-func (o *CompletedApproval) SetAssignmentContext(v map[string]interface{}) {
-	o.AssignmentContext = v
-}
-
 func (o CompletedApproval) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1038,12 +960,6 @@ func (o CompletedApproval) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.ClientMetadata) {
 		toSerialize["clientMetadata"] = o.ClientMetadata
 	}
-	if o.RequestedAccounts.IsSet() {
-		toSerialize["requestedAccounts"] = o.RequestedAccounts.Get()
-	}
-	if o.AssignmentContext != nil {
-		toSerialize["assignmentContext"] = o.AssignmentContext
-	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -1085,8 +1001,6 @@ func (o *CompletedApproval) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "sodViolationContext")
 		delete(additionalProperties, "preApprovalTriggerResult")
 		delete(additionalProperties, "clientMetadata")
-		delete(additionalProperties, "requestedAccounts")
-		delete(additionalProperties, "assignmentContext")
 		o.AdditionalProperties = additionalProperties
 	}
 

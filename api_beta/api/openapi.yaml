@@ -60025,44 +60025,13 @@ components:
       type: object
     CompletedApproval:
       example:
-        requestedFor:
-          name: William Wilson
-          id: 2c9180835d191a86015d28455b4b232a
-          type: IDENTITY
-        requestedAccounts: requestedAccounts
-        requesterComment:
-          created: 2017-07-11T18:45:37.098Z
-          author:
-            name: john.doe
-            id: 2c9180847e25f377017e2ae8cae4650b
-            type: IDENTITY
-          comment: This is a comment.
-        assignmentContext: "{}"
-        modified: 2018-07-25T20:22:28.104Z
-        id: 2c938083633d259901633d25c68c00fa
-        forwardHistory:
-        - forwarderName: William Wilson
-          reassignmentType: AUTOMATIC_REASSIGNMENT
-          modified: 2019-08-23T18:52:57.398Z
-          oldApproverName: Frank Mir
-          newApproverName: Al Volta
-          comment: Forwarding from Frank to Al
-        - forwarderName: William Wilson
-          reassignmentType: AUTOMATIC_REASSIGNMENT
-          modified: 2019-08-23T18:52:57.398Z
-          oldApproverName: Frank Mir
-          newApproverName: Al Volta
-          comment: Forwarding from Frank to Al
-        state: APPROVED
-        removeDateUpdateRequested: true
-        preApprovalTriggerResult:
-          date: 2022-06-07T19:18:40.748Z
-          decision: APPROVED
-          comment: This request was autoapproved by our automated ETS subscriber
-          reviewer: Automated AR Approval
         requester:
           name: William Wilson
           id: 2c7180a46faadee4016fb4e018c20648
+          type: IDENTITY
+        requestedFor:
+          name: William Wilson
+          id: 2c9180835d191a86015d28455b4b232a
           type: IDENTITY
         owner:
           name: Support
@@ -60084,6 +60053,13 @@ components:
             type: IDENTITY
           comment: This is a comment.
         - created: 2017-07-11T18:45:37.098Z
+          author:
+            name: john.doe
+            id: 2c9180847e25f377017e2ae8cae4650b
+            type: IDENTITY
+          comment: This is a comment.
+        requesterComment:
+          created: 2017-07-11T18:45:37.098Z
           author:
             name: john.doe
             id: 2c9180847e25f377017e2ae8cae4650b
@@ -60171,6 +60147,28 @@ components:
           uuid: f73d16e9-a038-46c5-b217-1246e15fdbdd
         requestCreated: 2017-07-11T18:45:35.098Z
         name: Approval Name
+        modified: 2018-07-25T20:22:28.104Z
+        id: 2c938083633d259901633d25c68c00fa
+        forwardHistory:
+        - forwarderName: William Wilson
+          reassignmentType: AUTOMATIC_REASSIGNMENT
+          modified: 2019-08-23T18:52:57.398Z
+          oldApproverName: Frank Mir
+          newApproverName: Al Volta
+          comment: Forwarding from Frank to Al
+        - forwarderName: William Wilson
+          reassignmentType: AUTOMATIC_REASSIGNMENT
+          modified: 2019-08-23T18:52:57.398Z
+          oldApproverName: Frank Mir
+          newApproverName: Al Volta
+          comment: Forwarding from Frank to Al
+        state: APPROVED
+        removeDateUpdateRequested: true
+        preApprovalTriggerResult:
+          date: 2022-06-07T19:18:40.748Z
+          decision: APPROVED
+          comment: This request was autoapproved by our automated ETS subscriber
+          reviewer: Automated AR Approval
       properties:
         id:
           description: The approval id.
@@ -60259,13 +60257,6 @@ components:
           example:
             requestedAppName: test-app
             requestedAppId: 2c91808f7892918f0178b78da4a305a1
-          type: object
-        requestedAccounts:
-          description: Information about the requested accounts
-          nullable: true
-          type: string
-        assignmentContext:
-          nullable: true
           type: object
       type: object
     CommentDto:
