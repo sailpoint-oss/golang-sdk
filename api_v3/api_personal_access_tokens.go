@@ -539,6 +539,7 @@ func (r ApiPatchPersonalAccessTokenRequest) Execute() (*GetPersonalAccessTokenRe
 PatchPersonalAccessToken Patch Personal Access Token
 
 This performs a targeted update to the field(s) of a Personal Access Token.
+Changing scopes for a Personal Access Token does not impact existing bearer tokens. You will need to create a new bearer token to have the new scopes. Please note that it can take up to 20 minutes for scope changes to be seen on new bearer tokens.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The Personal Access Token id
