@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 
 ## DeleteTagsToManyObject
 
-> DeleteTagsToManyObject(ctx).BulkTaggedObject(bulkTaggedObject).Execute()
+> DeleteTagsToManyObject(ctx).BulkRemoveTaggedObject(bulkRemoveTaggedObject).Execute()
 
 Remove Tags from Multiple Objects
 
@@ -107,11 +107,11 @@ import (
 )
 
 func main() {
-    bulkTaggedObject := *openapiclient.NewBulkTaggedObject() // BulkTaggedObject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
+    bulkRemoveTaggedObject := *openapiclient.NewBulkRemoveTaggedObject() // BulkRemoveTaggedObject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.TaggedObjectsAPI.DeleteTagsToManyObject(context.Background()).BulkTaggedObject(bulkTaggedObject).Execute()
+    r, err := apiClient.TaggedObjectsAPI.DeleteTagsToManyObject(context.Background()).BulkRemoveTaggedObject(bulkRemoveTaggedObject).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.DeleteTagsToManyObject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -130,7 +130,7 @@ Other parameters are passed through a pointer to a apiDeleteTagsToManyObjectRequ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bulkTaggedObject** | [**BulkTaggedObject**](BulkTaggedObject.md) | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. | 
+ **bulkRemoveTaggedObject** | [**BulkRemoveTaggedObject**](BulkRemoveTaggedObject.md) | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. | 
 
 ### Return type
 
@@ -514,7 +514,7 @@ Name | Type | Description  | Notes
 
 ## SetTagsToManyObjects
 
-> []BulkTaggedObjectResponse SetTagsToManyObjects(ctx).BulkTaggedObject(bulkTaggedObject).Execute()
+> []BulkTaggedObjectResponse SetTagsToManyObjects(ctx).BulkAddTaggedObject(bulkAddTaggedObject).Execute()
 
 Tag Multiple Objects
 
@@ -533,11 +533,11 @@ import (
 )
 
 func main() {
-    bulkTaggedObject := *openapiclient.NewBulkTaggedObject() // BulkTaggedObject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
+    bulkAddTaggedObject := *openapiclient.NewBulkAddTaggedObject() // BulkAddTaggedObject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaggedObjectsAPI.SetTagsToManyObjects(context.Background()).BulkTaggedObject(bulkTaggedObject).Execute()
+    resp, r, err := apiClient.TaggedObjectsAPI.SetTagsToManyObjects(context.Background()).BulkAddTaggedObject(bulkAddTaggedObject).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.SetTagsToManyObjects``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -558,7 +558,7 @@ Other parameters are passed through a pointer to a apiSetTagsToManyObjectsReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bulkTaggedObject** | [**BulkTaggedObject**](BulkTaggedObject.md) | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. | 
+ **bulkAddTaggedObject** | [**BulkAddTaggedObject**](BulkAddTaggedObject.md) | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. | 
 
 ### Return type
 

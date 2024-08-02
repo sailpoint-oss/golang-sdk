@@ -36262,7 +36262,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/BulkTaggedObject'
+              $ref: '#/components/schemas/BulkAddTaggedObject'
         description: "Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN,\
           \ ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE."
         required: true
@@ -36348,7 +36348,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/BulkTaggedObject'
+              $ref: '#/components/schemas/BulkRemoveTaggedObject'
         description: "Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN,\
           \ ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE."
         required: true
@@ -54192,7 +54192,7 @@ components:
             type: string
           type: array
       type: object
-    BulkTaggedObject:
+    BulkAddTaggedObject:
       example:
         objectRefs:
         - name: William Wilson
@@ -54231,6 +54231,32 @@ components:
           type: string
       type: object
     BulkTaggedObjectResponse:
+      example:
+        objectRefs:
+        - name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+        - name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+        tags:
+        - BU_FINANCE
+        - PCI
+      properties:
+        objectRefs:
+          items:
+            $ref: '#/components/schemas/TaggedObjectDto'
+          type: array
+        tags:
+          description: Label to be applied to an Object
+          example:
+          - BU_FINANCE
+          - PCI
+          items:
+            type: string
+          type: array
+      type: object
+    BulkRemoveTaggedObject:
       example:
         objectRefs:
         - name: William Wilson

@@ -14,11 +14,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the BulkTaggedObject type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &BulkTaggedObject{}
+// checks if the BulkAddTaggedObject type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BulkAddTaggedObject{}
 
-// BulkTaggedObject struct for BulkTaggedObject
-type BulkTaggedObject struct {
+// BulkAddTaggedObject struct for BulkAddTaggedObject
+type BulkAddTaggedObject struct {
 	ObjectRefs []TaggedObjectDto `json:"objectRefs,omitempty"`
 	// Label to be applied to an Object
 	Tags []string `json:"tags,omitempty"`
@@ -27,31 +27,31 @@ type BulkTaggedObject struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _BulkTaggedObject BulkTaggedObject
+type _BulkAddTaggedObject BulkAddTaggedObject
 
-// NewBulkTaggedObject instantiates a new BulkTaggedObject object
+// NewBulkAddTaggedObject instantiates a new BulkAddTaggedObject object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBulkTaggedObject() *BulkTaggedObject {
-	this := BulkTaggedObject{}
+func NewBulkAddTaggedObject() *BulkAddTaggedObject {
+	this := BulkAddTaggedObject{}
 	var operation string = "APPEND"
 	this.Operation = &operation
 	return &this
 }
 
-// NewBulkTaggedObjectWithDefaults instantiates a new BulkTaggedObject object
+// NewBulkAddTaggedObjectWithDefaults instantiates a new BulkAddTaggedObject object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewBulkTaggedObjectWithDefaults() *BulkTaggedObject {
-	this := BulkTaggedObject{}
+func NewBulkAddTaggedObjectWithDefaults() *BulkAddTaggedObject {
+	this := BulkAddTaggedObject{}
 	var operation string = "APPEND"
 	this.Operation = &operation
 	return &this
 }
 
 // GetObjectRefs returns the ObjectRefs field value if set, zero value otherwise.
-func (o *BulkTaggedObject) GetObjectRefs() []TaggedObjectDto {
+func (o *BulkAddTaggedObject) GetObjectRefs() []TaggedObjectDto {
 	if o == nil || isNil(o.ObjectRefs) {
 		var ret []TaggedObjectDto
 		return ret
@@ -61,7 +61,7 @@ func (o *BulkTaggedObject) GetObjectRefs() []TaggedObjectDto {
 
 // GetObjectRefsOk returns a tuple with the ObjectRefs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BulkTaggedObject) GetObjectRefsOk() ([]TaggedObjectDto, bool) {
+func (o *BulkAddTaggedObject) GetObjectRefsOk() ([]TaggedObjectDto, bool) {
 	if o == nil || isNil(o.ObjectRefs) {
 		return nil, false
 	}
@@ -69,7 +69,7 @@ func (o *BulkTaggedObject) GetObjectRefsOk() ([]TaggedObjectDto, bool) {
 }
 
 // HasObjectRefs returns a boolean if a field has been set.
-func (o *BulkTaggedObject) HasObjectRefs() bool {
+func (o *BulkAddTaggedObject) HasObjectRefs() bool {
 	if o != nil && !isNil(o.ObjectRefs) {
 		return true
 	}
@@ -78,12 +78,12 @@ func (o *BulkTaggedObject) HasObjectRefs() bool {
 }
 
 // SetObjectRefs gets a reference to the given []TaggedObjectDto and assigns it to the ObjectRefs field.
-func (o *BulkTaggedObject) SetObjectRefs(v []TaggedObjectDto) {
+func (o *BulkAddTaggedObject) SetObjectRefs(v []TaggedObjectDto) {
 	o.ObjectRefs = v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
-func (o *BulkTaggedObject) GetTags() []string {
+func (o *BulkAddTaggedObject) GetTags() []string {
 	if o == nil || isNil(o.Tags) {
 		var ret []string
 		return ret
@@ -93,7 +93,7 @@ func (o *BulkTaggedObject) GetTags() []string {
 
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BulkTaggedObject) GetTagsOk() ([]string, bool) {
+func (o *BulkAddTaggedObject) GetTagsOk() ([]string, bool) {
 	if o == nil || isNil(o.Tags) {
 		return nil, false
 	}
@@ -101,7 +101,7 @@ func (o *BulkTaggedObject) GetTagsOk() ([]string, bool) {
 }
 
 // HasTags returns a boolean if a field has been set.
-func (o *BulkTaggedObject) HasTags() bool {
+func (o *BulkAddTaggedObject) HasTags() bool {
 	if o != nil && !isNil(o.Tags) {
 		return true
 	}
@@ -110,12 +110,12 @@ func (o *BulkTaggedObject) HasTags() bool {
 }
 
 // SetTags gets a reference to the given []string and assigns it to the Tags field.
-func (o *BulkTaggedObject) SetTags(v []string) {
+func (o *BulkAddTaggedObject) SetTags(v []string) {
 	o.Tags = v
 }
 
 // GetOperation returns the Operation field value if set, zero value otherwise.
-func (o *BulkTaggedObject) GetOperation() string {
+func (o *BulkAddTaggedObject) GetOperation() string {
 	if o == nil || isNil(o.Operation) {
 		var ret string
 		return ret
@@ -125,7 +125,7 @@ func (o *BulkTaggedObject) GetOperation() string {
 
 // GetOperationOk returns a tuple with the Operation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BulkTaggedObject) GetOperationOk() (*string, bool) {
+func (o *BulkAddTaggedObject) GetOperationOk() (*string, bool) {
 	if o == nil || isNil(o.Operation) {
 		return nil, false
 	}
@@ -133,7 +133,7 @@ func (o *BulkTaggedObject) GetOperationOk() (*string, bool) {
 }
 
 // HasOperation returns a boolean if a field has been set.
-func (o *BulkTaggedObject) HasOperation() bool {
+func (o *BulkAddTaggedObject) HasOperation() bool {
 	if o != nil && !isNil(o.Operation) {
 		return true
 	}
@@ -142,11 +142,11 @@ func (o *BulkTaggedObject) HasOperation() bool {
 }
 
 // SetOperation gets a reference to the given string and assigns it to the Operation field.
-func (o *BulkTaggedObject) SetOperation(v string) {
+func (o *BulkAddTaggedObject) SetOperation(v string) {
 	o.Operation = &v
 }
 
-func (o BulkTaggedObject) MarshalJSON() ([]byte, error) {
+func (o BulkAddTaggedObject) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -154,7 +154,7 @@ func (o BulkTaggedObject) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o BulkTaggedObject) ToMap() (map[string]interface{}, error) {
+func (o BulkAddTaggedObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.ObjectRefs) {
 		toSerialize["objectRefs"] = o.ObjectRefs
@@ -173,11 +173,11 @@ func (o BulkTaggedObject) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *BulkTaggedObject) UnmarshalJSON(bytes []byte) (err error) {
-	varBulkTaggedObject := _BulkTaggedObject{}
+func (o *BulkAddTaggedObject) UnmarshalJSON(bytes []byte) (err error) {
+	varBulkAddTaggedObject := _BulkAddTaggedObject{}
 
-	if err = json.Unmarshal(bytes, &varBulkTaggedObject); err == nil {
-	*o = BulkTaggedObject(varBulkTaggedObject)
+	if err = json.Unmarshal(bytes, &varBulkAddTaggedObject); err == nil {
+	*o = BulkAddTaggedObject(varBulkAddTaggedObject)
 }
 
 	additionalProperties := make(map[string]interface{})
@@ -192,38 +192,38 @@ func (o *BulkTaggedObject) UnmarshalJSON(bytes []byte) (err error) {
 	return err
 }
 
-type NullableBulkTaggedObject struct {
-	value *BulkTaggedObject
+type NullableBulkAddTaggedObject struct {
+	value *BulkAddTaggedObject
 	isSet bool
 }
 
-func (v NullableBulkTaggedObject) Get() *BulkTaggedObject {
+func (v NullableBulkAddTaggedObject) Get() *BulkAddTaggedObject {
 	return v.value
 }
 
-func (v *NullableBulkTaggedObject) Set(val *BulkTaggedObject) {
+func (v *NullableBulkAddTaggedObject) Set(val *BulkAddTaggedObject) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableBulkTaggedObject) IsSet() bool {
+func (v NullableBulkAddTaggedObject) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableBulkTaggedObject) Unset() {
+func (v *NullableBulkAddTaggedObject) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableBulkTaggedObject(val *BulkTaggedObject) *NullableBulkTaggedObject {
-	return &NullableBulkTaggedObject{value: val, isSet: true}
+func NewNullableBulkAddTaggedObject(val *BulkAddTaggedObject) *NullableBulkAddTaggedObject {
+	return &NullableBulkAddTaggedObject{value: val, isSet: true}
 }
 
-func (v NullableBulkTaggedObject) MarshalJSON() ([]byte, error) {
+func (v NullableBulkAddTaggedObject) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableBulkTaggedObject) UnmarshalJSON(src []byte) error {
+func (v *NullableBulkAddTaggedObject) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -1,4 +1,4 @@
-# BulkTaggedObject
+# BulkAddTaggedObject
 
 ## Properties
 
@@ -10,95 +10,95 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewBulkTaggedObject
+### NewBulkAddTaggedObject
 
-`func NewBulkTaggedObject() *BulkTaggedObject`
+`func NewBulkAddTaggedObject() *BulkAddTaggedObject`
 
-NewBulkTaggedObject instantiates a new BulkTaggedObject object
+NewBulkAddTaggedObject instantiates a new BulkAddTaggedObject object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewBulkTaggedObjectWithDefaults
+### NewBulkAddTaggedObjectWithDefaults
 
-`func NewBulkTaggedObjectWithDefaults() *BulkTaggedObject`
+`func NewBulkAddTaggedObjectWithDefaults() *BulkAddTaggedObject`
 
-NewBulkTaggedObjectWithDefaults instantiates a new BulkTaggedObject object
+NewBulkAddTaggedObjectWithDefaults instantiates a new BulkAddTaggedObject object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetObjectRefs
 
-`func (o *BulkTaggedObject) GetObjectRefs() []TaggedObjectDto`
+`func (o *BulkAddTaggedObject) GetObjectRefs() []TaggedObjectDto`
 
 GetObjectRefs returns the ObjectRefs field if non-nil, zero value otherwise.
 
 ### GetObjectRefsOk
 
-`func (o *BulkTaggedObject) GetObjectRefsOk() (*[]TaggedObjectDto, bool)`
+`func (o *BulkAddTaggedObject) GetObjectRefsOk() (*[]TaggedObjectDto, bool)`
 
 GetObjectRefsOk returns a tuple with the ObjectRefs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetObjectRefs
 
-`func (o *BulkTaggedObject) SetObjectRefs(v []TaggedObjectDto)`
+`func (o *BulkAddTaggedObject) SetObjectRefs(v []TaggedObjectDto)`
 
 SetObjectRefs sets ObjectRefs field to given value.
 
 ### HasObjectRefs
 
-`func (o *BulkTaggedObject) HasObjectRefs() bool`
+`func (o *BulkAddTaggedObject) HasObjectRefs() bool`
 
 HasObjectRefs returns a boolean if a field has been set.
 
 ### GetTags
 
-`func (o *BulkTaggedObject) GetTags() []string`
+`func (o *BulkAddTaggedObject) GetTags() []string`
 
 GetTags returns the Tags field if non-nil, zero value otherwise.
 
 ### GetTagsOk
 
-`func (o *BulkTaggedObject) GetTagsOk() (*[]string, bool)`
+`func (o *BulkAddTaggedObject) GetTagsOk() (*[]string, bool)`
 
 GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTags
 
-`func (o *BulkTaggedObject) SetTags(v []string)`
+`func (o *BulkAddTaggedObject) SetTags(v []string)`
 
 SetTags sets Tags field to given value.
 
 ### HasTags
 
-`func (o *BulkTaggedObject) HasTags() bool`
+`func (o *BulkAddTaggedObject) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
 
 ### GetOperation
 
-`func (o *BulkTaggedObject) GetOperation() string`
+`func (o *BulkAddTaggedObject) GetOperation() string`
 
 GetOperation returns the Operation field if non-nil, zero value otherwise.
 
 ### GetOperationOk
 
-`func (o *BulkTaggedObject) GetOperationOk() (*string, bool)`
+`func (o *BulkAddTaggedObject) GetOperationOk() (*string, bool)`
 
 GetOperationOk returns a tuple with the Operation field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOperation
 
-`func (o *BulkTaggedObject) SetOperation(v string)`
+`func (o *BulkAddTaggedObject) SetOperation(v string)`
 
 SetOperation sets Operation field to given value.
 
 ### HasOperation
 
-`func (o *BulkTaggedObject) HasOperation() bool`
+`func (o *BulkAddTaggedObject) HasOperation() bool`
 
 HasOperation returns a boolean if a field has been set.
 
