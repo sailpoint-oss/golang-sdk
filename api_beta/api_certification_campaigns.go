@@ -54,7 +54,7 @@ This endpoint will return a content error if the campaign is **not past due**.
 Use this API to complete a certification campaign. This functionality is provided to admins so that they
 can complete a certification even if all items have not been completed. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/complete-campaign).
 
-Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
+A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -235,6 +235,9 @@ CreateCampaign Create Campaign
 
 Use this API to create a certification campaign with the information provided in the request body. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/create-campaign).
 
+A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
+
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateCampaignRequest
 
@@ -402,6 +405,9 @@ CreateCampaignTemplate Create a Campaign Template
 
 Use this API to create a campaign template based on campaign. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/create-campaign-template).
 
+A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
+
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateCampaignTemplateRequest
 
@@ -564,6 +570,9 @@ DeleteCampaignTemplate Delete a Campaign Template
 
 Use this API to delete a certification campaign template by ID. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/delete-campaign-template).
 
+A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
+
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the campaign template being deleted.
  @return ApiDeleteCampaignTemplateRequest
@@ -723,6 +732,9 @@ func (r ApiDeleteCampaignTemplateScheduleRequest) Execute() (*http.Response, err
 DeleteCampaignTemplateSchedule Delete Campaign Template Schedule
 
 Use this API to delete the schedule for a certification campaign template. The API returns a 404 if there is no schedule set. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/delete-campaign-template-schedule).
+
+A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the campaign template whose schedule is being deleted.
@@ -888,7 +900,10 @@ func (r ApiDeleteCampaignsRequest) Execute() (map[string]interface{}, *http.Resp
 /*
 DeleteCampaigns Delete Campaigns
 
-Use this API to delete certification campaigns whose IDs are specified in the provided list of campaign IDs. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/delete-campaigns). Authorized callers must be ORG_ADMINs or CERT_ADMINs.
+Use this API to delete certification campaigns whose IDs are specified in the provided list of campaign IDs. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/delete-campaigns).
+
+A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDeleteCampaignsRequest
@@ -1102,7 +1117,10 @@ func (r ApiGetActiveCampaignsRequest) Execute() ([]GetActiveCampaigns200Response
 /*
 GetActiveCampaigns List Campaigns
 
-Use this API to get a list of campaigns. The API can provide increased level of detail for each campaign for the correct provided query. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-active-campaigns). - UserContextAuth: []
+Use this API to get a list of campaigns. The API can provide increased level of detail for each campaign for the correct provided query. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-active-campaigns).
+
+A token with ORG_ADMIN, CERT_ADMIN or REPORT_ADMIN authority is required to call this API.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetActiveCampaignsRequest
@@ -1286,7 +1304,10 @@ func (r ApiGetCampaignRequest) Execute() (*Slimcampaign, *http.Response, error) 
 /*
 GetCampaign Get Campaign
 
-Use this API to get information for an existing certification campaign by the campaign's ID. Though this endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign). Authorized callers must be reviewers for this campaign, ORG_ADMINs, or a CERT_ADMINs.
+Use this API to get information for an existing certification campaign by the campaign's ID. Though this endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign).
+
+A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the campaign to be retrieved.
@@ -1458,7 +1479,9 @@ func (r ApiGetCampaignReportsRequest) Execute() ([]CampaignReport, *http.Respons
 GetCampaignReports Get Campaign Reports
 
 Use this API to fetch all reports for a certification campaign by campaign ID. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-reports).
-Calling this endpoint requires roles of CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
+
+A token with ORG_ADMIN, CERT_ADMIN or REPORT_ADMIN authority is required to call this API.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the campaign whose reports are being fetched.
@@ -1629,7 +1652,9 @@ func (r ApiGetCampaignReportsConfigRequest) Execute() (*CampaignReportsConfig, *
 GetCampaignReportsConfig Get Campaign Reports Configuration
 
 Use this API to fetch the configuration for certification campaign reports. The configuration includes only one element - identity attributes defined as custom report columns. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-reports-config).
-Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
+
+A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetCampaignReportsConfigRequest
@@ -1787,6 +1812,9 @@ func (r ApiGetCampaignTemplateRequest) Execute() (*CampaignTemplate, *http.Respo
 GetCampaignTemplate Get a Campaign Template
 
 Use this API to fetch a certification campaign template by ID. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-template).
+
+A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Requested campaign template's ID.
@@ -1958,6 +1986,9 @@ func (r ApiGetCampaignTemplateScheduleRequest) Execute() (*Schedule, *http.Respo
 GetCampaignTemplateSchedule Get Campaign Template Schedule
 
 Use this API to get the schedule for a certification campaign template. The API returns a 404 if there is no schedule set. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-template-schedule).
+
+A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the campaign template whose schedule is being fetched.
@@ -2163,7 +2194,11 @@ func (r ApiGetCampaignTemplatesRequest) Execute() ([]CampaignTemplate, *http.Res
 GetCampaignTemplates List Campaign Templates
 
 Use this API to get a list of all campaign templates. Scope can be reduced through standard V3 query params. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/list-campaign-templates).
-The endpoint returns all campaign templates matching the query parameters. 
+
+The endpoint returns all campaign templates matching the query parameters.
+
+A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetCampaignTemplatesRequest
@@ -2350,7 +2385,10 @@ func (r ApiMoveRequest) Execute() (*CertificationTask, *http.Response, error) {
 /*
 Move Reassign Certifications
 
-This API reassigns the specified certifications from one identity to another. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
+This API reassigns the specified certifications from one identity to another.  Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/move).
+
+A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The certification campaign ID
@@ -2535,6 +2573,9 @@ PatchCampaignTemplate Update a Campaign Template
 
 Use this API to update individual fields on a certification campaign template, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/patch-campaign-template).
 
+A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
+
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the campaign template being modified.
  @return ApiPatchCampaignTemplateRequest
@@ -2716,7 +2757,9 @@ func (r ApiSetCampaignReportsConfigRequest) Execute() (*CampaignReportsConfig, *
 SetCampaignReportsConfig Set Campaign Reports Configuration
 
 Use this API to overwrite the configuration for campaign reports. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/set-campaign-reports-config).
-Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
+
+A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSetCampaignReportsConfigRequest
@@ -2884,7 +2927,11 @@ func (r ApiSetCampaignTemplateScheduleRequest) Execute() (*http.Response, error)
 /*
 SetCampaignTemplateSchedule Set Campaign Template Schedule
 
-Use this API to set the schedule for a certification campaign template. If a schedule already exists, the API overwrites it with the new one.  Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/set-campaign-template-schedule).
+Use this API to set the schedule for a certification campaign template. If a schedule already exists, the API overwrites it with the new one. 
+Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/set-campaign-template-schedule).
+
+A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the campaign template being scheduled.
@@ -3054,7 +3101,9 @@ func (r ApiStartCampaignRequest) Execute() (map[string]interface{}, *http.Respon
 StartCampaign Activate a Campaign
 
 Use this API to submit a job to activate the certified campaign with the specified ID. The campaign must be staged. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-campaign).
-Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
+
+A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Campaign ID.
@@ -3228,7 +3277,9 @@ func (r ApiStartCampaignRemediationScanRequest) Execute() (map[string]interface{
 StartCampaignRemediationScan Run Campaign Remediation Scan
 
 Use this API to run a remediation scan task for a certification campaign. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-campaign-remediation-scan).
-Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
+
+A token with ORG_ADMIN, CERT_ADMIN or REPORT_ADMIN authority is required to call this API.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the campaign the remediation scan is being run for.
@@ -3401,7 +3452,9 @@ func (r ApiStartCampaignReportRequest) Execute() (map[string]interface{}, *http.
 StartCampaignReport Run Campaign Report
 
 Use this API to run a report for a certification campaign. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-campaign-report).
-Calling this endpoint requires the following roles: CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
+
+A token with ORG_ADMIN, CERT_ADMIN or REPORT_ADMIN authority is required to call this API.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the campaign the report is being run for.
@@ -3576,11 +3629,21 @@ func (r ApiStartGenerateCampaignTemplateRequest) Execute() (*CampaignReference, 
 StartGenerateCampaignTemplate Generate a Campaign from Template
 
 Use this API to generate a new certification campaign from a campaign template.
-The campaign object contained in the template has special formatting applied to its name and description fields that determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation.
-Placeholders consist of a percent sign followed by a letter indicating what should be inserted. For example, "%Y" inserts the current year, and a campaign template named "Campaign for %y" generates a campaign called "Campaign for 2020" (assuming the year at generation time is 2020).
+
+The campaign object contained in the template has special formatting applied to its name and description
+fields that determine the generated campaign's name/description. Placeholders in those fields are
+formatted with the current date and time upon generation.
+
+Placeholders consist of a percent sign followed by a letter indicating what should be inserted. For
+example, "%Y" inserts the current year, and a campaign template named "Campaign for %y" generates a
+campaign called "Campaign for 2020" (assuming the year at generation time is 2020).
+
 Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html).
+
 Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-generate-campaign-template).
-Calling this endpoint requires the ORG_ADMIN role.
+
+A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the campaign template to use for generation.
@@ -3748,6 +3811,9 @@ func (r ApiUpdateCampaignRequest) Execute() (*Slimcampaign, *http.Response, erro
 UpdateCampaign Update a Campaign
 
 Use this API to update individual fields on a certification campaign, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Though this endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/beta/update-campaign).
+
+A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the campaign template being modified.
