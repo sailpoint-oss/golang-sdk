@@ -81,6 +81,7 @@ type Configuration struct {
 	DefaultHeader    map[string]string `json:"defaultHeader,omitempty"`
 	UserAgent        string            `json:"userAgent,omitempty"`
 	Debug            bool              `json:"debug,omitempty"`
+	Experimental     bool              `json:"experimental,omitempty"`
 	Servers          ServerConfigurations
 	OperationServers map[string]ServerConfigurations
 	HTTPClient       *retryablehttp.Client
@@ -92,7 +93,7 @@ ClientId 		 string
 }
 
 // NewConfiguration returns a new Configuration object
-func NewConfiguration(clientId string, clientSecret string, baseURL string, tokenURL string, token string) *Configuration {
+func NewConfiguration(clientId string, clientSecret string, baseURL string, tokenURL string, token string, experimental bool) *Configuration {
 	cfg := &Configuration{
 ClientId: 		  clientId,
 		ClientSecret:	  clientSecret,
@@ -102,6 +103,7 @@ ClientId: 		  clientId,
 		DefaultHeader:    make(map[string]string),
 		UserAgent:        "OpenAPI-Generator/2.0.8/go",
 		Debug:            false,
+		Experimental:	  experimental,
 		Servers:          ServerConfigurations{
 			{
 				URL: baseURL,
