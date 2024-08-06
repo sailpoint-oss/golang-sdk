@@ -68,6 +68,7 @@ type Configuration struct {
 	DefaultHeader       map[string]string `json:"defaultHeader,omitempty"`
 	UserAgent           string            `json:"userAgent,omitempty"`
 	Debug               bool              `json:"debug,omitempty"`
+	Experimental        bool              `json:"experimental,omitempty"`
 	HTTPClient          *retryablehttp.Client
 	ClientConfiguration ClientConfiguration
 }
