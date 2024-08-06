@@ -5026,19 +5026,18 @@ paths:
       tags:
       - Accounts
     patch:
-      description: "Use this API to update account details.  A token with ORG_ADMIN,\
+      description: "Use this API to update account details. \nA token with ORG_ADMIN,\
         \ SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.\n\
-        This API supports updating an account's correlation. You can modify only the\
-        \ `identityId` and `manuallyCorrelated` fields for any flat file account.\
-        \  To reassign an account from one identity to another, replace the current\
-        \ `identityId` with a new value.  If the account you're assigning was provisioned\
-        \ by Identity Security Cloud (ISC), it's possible for ISC to create a new\
-        \ account  for the previous identity as soon as the account is moved. If the\
-        \ account you're assigning is authoritative,  this causes the previous identity\
-        \ to become uncorrelated and can even result in its deletion. All accounts\
-        \ that are reassigned will be set to `manuallyCorrelated: true` unless you\
-        \ specify otherwise.\n>**Note:** The `attributes` field can only be modified\
-        \ for flat file accounts. "
+        \nThis API supports updating an account's correlation by modifying the `identityId`\
+        \ and `manuallyCorrelated` fields. \nTo reassign an account from one identity\
+        \ to another, replace the current `identityId` with a new value. \nIf the\
+        \ account you're assigning was provisioned by Identity Security Cloud (ISC),\
+        \ it's possible for ISC to create a new account \nfor the previous identity\
+        \ as soon as the account is moved. If the account you're assigning is authoritative,\
+        \ \nthis causes the previous identity to become uncorrelated and can even\
+        \ result in its deletion.\nAll accounts that are reassigned will be set to\
+        \ `manuallyCorrelated: true` unless you specify otherwise.\n\n>**Note:** The\
+        \ `attributes` field can only be modified for flat file accounts. \n"
       operationId: updateAccount
       parameters:
       - description: Account ID.
@@ -5176,11 +5175,11 @@ paths:
       tags:
       - Accounts
     put:
-      description: "Use this API to update an account with a PUT request. \nThis endpoint\
-        \ submits an account update task and returns the task ID.  \nA token with\
-        \ ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call\
-        \ this API.\n>**NOTE: You can only use this PUT endpoint to update accounts\
-        \ from sources of the \"DelimitedFile\" type.**"
+      description: "Use this API to update an account with a PUT request. \n\nThis\
+        \ endpoint submits an account update task and returns the task ID.  \n\nA\
+        \ token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required\
+        \ to call this API.\n\n>**Note: You can only use this PUT endpoint to update\
+        \ accounts from flat file sources.**\n"
       operationId: putAccount
       parameters:
       - description: Account ID.
@@ -7422,10 +7421,10 @@ paths:
   /campaigns:
     get:
       deprecated: true
-      description: "Use this API to get a list of campaigns. The API can provide increased\
-        \ level of detail for each campaign for the correct provided query. Though\
-        \ this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-active-campaigns).\
-        \ - UserContextAuth: []"
+      description: |
+        Use this API to get a list of campaigns. The API can provide increased level of detail for each campaign for the correct provided query. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-active-campaigns).
+
+        A token with ORG_ADMIN, CERT_ADMIN or REPORT_ADMIN authority is required to call this API.
       operationId: getActiveCampaigns
       parameters:
       - description: "Determines whether slim, or increased level of detail is provided\
@@ -7575,14 +7574,21 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth:
+        - idn:campaign:read
+        - idn:campaign:manage
+        - idn:campaign-report:read
+        - idn:campaign-report:manage
       summary: List Campaigns
       tags:
       - Certification Campaigns
     post:
       deprecated: true
-      description: "Use this API to create a certification campaign with the information\
-        \ provided in the request body. Though this Beta endpoint has been deprecated,\
-        \ you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/create-campaign)."
+      description: |
+        Use this API to create a certification campaign with the information provided in the request body. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/create-campaign).
+
+        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: createCampaign
       requestBody:
         content:
@@ -7674,17 +7680,17 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:campaign:create
+        - idn:campaign:manage
       summary: Create Campaign
       tags:
       - Certification Campaigns
   /campaigns/delete:
     post:
       deprecated: true
-      description: "Use this API to delete certification campaigns whose IDs are specified\
-        \ in the provided list of campaign IDs. Though this Beta endpoint has been\
-        \ deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/delete-campaigns).\
-        \ Authorized callers must be ORG_ADMINs or CERT_ADMINs."
+      description: |
+        Use this API to delete certification campaigns whose IDs are specified in the provided list of campaign IDs. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/delete-campaigns).
+
+        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: deleteCampaigns
       requestBody:
         content:
@@ -7777,18 +7783,17 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:campaign:delete
+        - idn:campaign:manage
       summary: Delete Campaigns
       tags:
       - Certification Campaigns
   /campaigns/{id}:
     get:
       deprecated: true
-      description: "Use this API to get information for an existing certification\
-        \ campaign by the campaign's ID. Though this endpoint has been deprecated,\
-        \ you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign).\
-        \ Authorized callers must be reviewers for this campaign, ORG_ADMINs, or a\
-        \ CERT_ADMINs."
+      description: |
+        Use this API to get information for an existing certification campaign by the campaign's ID. Though this endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign).
+
+        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: getCampaign
       parameters:
       - description: ID of the campaign to be retrieved.
@@ -7889,15 +7894,18 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - UserContextAuth:
+        - idn:campaign:read
+        - idn:campaign:manage
       summary: Get Campaign
       tags:
       - Certification Campaigns
     patch:
       deprecated: true
-      description: "Use this API to update individual fields on a certification campaign,\
-        \ using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Though\
-        \ this endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/beta/update-campaign)."
+      description: |
+        Use this API to update individual fields on a certification campaign, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Though this endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/beta/update-campaign).
+
+        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: updateCampaign
       parameters:
       - description: ID of the campaign template being modified.
@@ -8029,17 +8037,18 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:campaign:update
         - idn:campaign:read
+        - idn:campaign:manage
       summary: Update a Campaign
       tags:
       - Certification Campaigns
   /campaigns/{id}/activate:
     post:
       deprecated: true
-      description: |-
+      description: |
         Use this API to submit a job to activate the certified campaign with the specified ID. The campaign must be staged. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-campaign).
-        Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
+
+        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: startCampaign
       parameters:
       - description: Campaign ID.
@@ -8145,7 +8154,7 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:campaign:update
+        - idn:campaign:manage
       summary: Activate a Campaign
       tags:
       - Certification Campaigns
@@ -8164,7 +8173,7 @@ paths:
         Use this API to complete a certification campaign. This functionality is provided to admins so that they
         can complete a certification even if all items have not been completed. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/complete-campaign).
 
-        Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
+        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: completeCampaign
       parameters:
       - description: Campaign ID.
@@ -8266,16 +8275,17 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:campaign:update
+        - idn:campaign:manage
       summary: Complete a Campaign
       tags:
       - Certification Campaigns
   /campaigns/{id}/run-remediation-scan:
     post:
       deprecated: true
-      description: |-
+      description: |
         Use this API to run a remediation scan task for a certification campaign. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-campaign-remediation-scan).
-        Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
+
+        A token with ORG_ADMIN, CERT_ADMIN or REPORT_ADMIN authority is required to call this API.
       operationId: startCampaignRemediationScan
       parameters:
       - description: ID of the campaign the remediation scan is being run for.
@@ -8369,16 +8379,17 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:campaign-report:run
+        - idn:campaign-report:manage
       summary: Run Campaign Remediation Scan
       tags:
       - Certification Campaigns
   /campaigns/{id}/reassign:
     post:
       deprecated: true
-      description: This API reassigns the specified certifications from one identity
-        to another. A token with ORG_ADMIN or CERT_ADMIN authority is required to
-        call this API.
+      description: |
+        This API reassigns the specified certifications from one identity to another.  Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/move).
+
+        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: move
       parameters:
       - description: The certification campaign ID
@@ -8485,16 +8496,17 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:certification:write
+        - idn:campaign:manage
       summary: Reassign Certifications
       tags:
       - Certification Campaigns
   /campaigns/{id}/reports:
     get:
       deprecated: true
-      description: |-
+      description: |
         Use this API to fetch all reports for a certification campaign by campaign ID. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-reports).
-        Calling this endpoint requires roles of CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
+
+        A token with ORG_ADMIN, CERT_ADMIN or REPORT_ADMIN authority is required to call this API.
       operationId: getCampaignReports
       parameters:
       - description: ID of the campaign whose reports are being fetched.
@@ -8590,15 +8602,17 @@ paths:
       security:
       - UserContextAuth:
         - idn:campaign-report:read
+        - idn:campaign-report:manage
       summary: Get Campaign Reports
       tags:
       - Certification Campaigns
   /campaigns/{id}/run-report/{type}:
     post:
       deprecated: true
-      description: |-
+      description: |
         Use this API to run a report for a certification campaign. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-campaign-report).
-        Calling this endpoint requires the following roles: CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
+
+        A token with ORG_ADMIN, CERT_ADMIN or REPORT_ADMIN authority is required to call this API.
       operationId: startCampaignReport
       parameters:
       - description: ID of the campaign the report is being run for.
@@ -8698,16 +8712,17 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:campaign-report:run
+        - idn:campaign-report:manage
       summary: Run Campaign Report
       tags:
       - Certification Campaigns
   /campaigns/reports-configuration:
     get:
       deprecated: true
-      description: |-
+      description: |
         Use this API to fetch the configuration for certification campaign reports. The configuration includes only one element - identity attributes defined as custom report columns. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-reports-config).
-        Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
+
+        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: getCampaignReportsConfig
       responses:
         "200":
@@ -8774,15 +8789,17 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:campaign-reports-config:read
+        - idn:campaign:read
+        - idn:campaign:manage
       summary: Get Campaign Reports Configuration
       tags:
       - Certification Campaigns
     put:
       deprecated: true
-      description: |-
+      description: |
         Use this API to overwrite the configuration for campaign reports. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/set-campaign-reports-config).
-        Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
+
+        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: setCampaignReportsConfig
       requestBody:
         content:
@@ -8856,17 +8873,19 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:campaign-reports-config:write
+        - idn:campaign:manage
       summary: Set Campaign Reports Configuration
       tags:
       - Certification Campaigns
   /campaign-templates:
     get:
       deprecated: true
-      description: "Use this API to get a list of all campaign templates. Scope can\
-        \ be reduced through standard V3 query params. Though this Beta endpoint has\
-        \ been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/list-campaign-templates).\n\
-        The endpoint returns all campaign templates matching the query parameters. "
+      description: |
+        Use this API to get a list of all campaign templates. Scope can be reduced through standard V3 query params. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/list-campaign-templates).
+
+        The endpoint returns all campaign templates matching the query parameters.
+
+        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: getCampaignTemplates
       parameters:
       - description: |-
@@ -9000,15 +9019,17 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:campaign-template-list:read
+        - idn:campaign-template:read
+        - idn:campaign-template:manage
       summary: List Campaign Templates
       tags:
       - Certification Campaigns
     post:
       deprecated: true
-      description: "Use this API to create a campaign template based on campaign.\
-        \ Though this Beta endpoint has been deprecated, you can find its V3 equivalent\
-        \ [here](https://developer.sailpoint.com/docs/api/v3/create-campaign-template)."
+      description: |
+        Use this API to create a campaign template based on campaign. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/create-campaign-template).
+
+        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: createCampaignTemplate
       requestBody:
         content:
@@ -9099,16 +9120,17 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:campaign-template:create
+        - idn:campaign-template:manage
       summary: Create a Campaign Template
       tags:
       - Certification Campaigns
   /campaign-templates/{id}:
     delete:
       deprecated: true
-      description: "Use this API to delete a certification campaign template by ID.\
-        \ Though this Beta endpoint has been deprecated, you can find its V3 equivalent\
-        \ [here](https://developer.sailpoint.com/docs/api/v3/delete-campaign-template)."
+      description: |
+        Use this API to delete a certification campaign template by ID. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/delete-campaign-template).
+
+        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: deleteCampaignTemplate
       parameters:
       - description: ID of the campaign template being deleted.
@@ -9198,15 +9220,16 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:campaign-template:delete
+        - idn:campaign-template:manage
       summary: Delete a Campaign Template
       tags:
       - Certification Campaigns
     get:
       deprecated: true
-      description: "Use this API to fetch a certification campaign template by ID.\
-        \ Though this Beta endpoint has been deprecated, you can find its V3 equivalent\
-        \ [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-template)."
+      description: |
+        Use this API to fetch a certification campaign template by ID. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-template).
+
+        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: getCampaignTemplate
       parameters:
       - description: Requested campaign template's ID.
@@ -9309,15 +9332,16 @@ paths:
       security:
       - UserContextAuth:
         - idn:campaign-template:read
+        - idn:campaign-template:manage
       summary: Get a Campaign Template
       tags:
       - Certification Campaigns
     patch:
       deprecated: true
-      description: "Use this API to update individual fields on a certification campaign\
-        \ template, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.\
-        \ Though this Beta endpoint has been deprecated, you can find its V3 equivalent\
-        \ [here](https://developer.sailpoint.com/docs/api/v3/patch-campaign-template)."
+      description: |
+        Use this API to update individual fields on a certification campaign template, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/patch-campaign-template).
+
+        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: patchCampaignTemplate
       parameters:
       - description: ID of the campaign template being modified.
@@ -9443,20 +9467,29 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:campaign-template:update
+        - idn:campaign-template:manage
       summary: Update a Campaign Template
       tags:
       - Certification Campaigns
   /campaign-templates/{id}/generate:
     post:
       deprecated: true
-      description: |-
+      description: |
         Use this API to generate a new certification campaign from a campaign template.
-        The campaign object contained in the template has special formatting applied to its name and description fields that determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation.
-        Placeholders consist of a percent sign followed by a letter indicating what should be inserted. For example, "%Y" inserts the current year, and a campaign template named "Campaign for %y" generates a campaign called "Campaign for 2020" (assuming the year at generation time is 2020).
+
+        The campaign object contained in the template has special formatting applied to its name and description
+        fields that determine the generated campaign's name/description. Placeholders in those fields are
+        formatted with the current date and time upon generation.
+
+        Placeholders consist of a percent sign followed by a letter indicating what should be inserted. For
+        example, "%Y" inserts the current year, and a campaign template named "Campaign for %y" generates a
+        campaign called "Campaign for 2020" (assuming the year at generation time is 2020).
+
         Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html).
+
         Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-generate-campaign-template).
-        Calling this endpoint requires the ORG_ADMIN role.
+
+        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: startGenerateCampaignTemplate
       parameters:
       - description: ID of the campaign template to use for generation.
@@ -9532,16 +9565,17 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:campaign-template:run
+        - idn:campaign-template:manage
       summary: Generate a Campaign from Template
       tags:
       - Certification Campaigns
   /campaign-templates/{id}/schedule:
     delete:
       deprecated: true
-      description: "Use this API to delete the schedule for a certification campaign\
-        \ template. The API returns a 404 if there is no schedule set. Though this\
-        \ Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/delete-campaign-template-schedule)."
+      description: |
+        Use this API to delete the schedule for a certification campaign template. The API returns a 404 if there is no schedule set. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/delete-campaign-template-schedule).
+
+        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: deleteCampaignTemplateSchedule
       parameters:
       - description: ID of the campaign template whose schedule is being deleted.
@@ -9630,16 +9664,16 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
-        - idn:campaign-template:run
+      - UserContextAuth: []
       summary: Delete Campaign Template Schedule
       tags:
       - Certification Campaigns
     get:
       deprecated: true
-      description: "Use this API to get the schedule for a certification campaign\
-        \ template. The API returns a 404 if there is no schedule set. Though this\
-        \ Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-template-schedule)."
+      description: |
+        Use this API to get the schedule for a certification campaign template. The API returns a 404 if there is no schedule set. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-template-schedule).
+
+        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: getCampaignTemplateSchedule
       parameters:
       - description: ID of the campaign template whose schedule is being fetched.
@@ -9733,8 +9767,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
-        - idn:campaign-template:read
+      - UserContextAuth: []
       summary: Get Campaign Template Schedule
       tags:
       - Certification Campaigns
@@ -9742,8 +9775,10 @@ paths:
       deprecated: true
       description: "Use this API to set the schedule for a certification campaign\
         \ template. If a schedule already exists, the API overwrites it with the new\
-        \ one.  Though this Beta endpoint has been deprecated, you can find its V3\
-        \ equivalent [here](https://developer.sailpoint.com/docs/api/v3/set-campaign-template-schedule)."
+        \ one. \nThough this Beta endpoint has been deprecated, you can find its V3\
+        \ equivalent [here](https://developer.sailpoint.com/docs/api/v3/set-campaign-template-schedule).\n\
+        \nA token with ORG_ADMIN or CERT_ADMIN authority is required to call this\
+        \ API.\n"
       operationId: setCampaignTemplateSchedule
       parameters:
       - description: ID of the campaign template being scheduled.
@@ -9905,8 +9940,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
-        - idn:campaign-template:run
+      - UserContextAuth: []
       summary: Set Campaign Template Schedule
       tags:
       - Certification Campaigns
@@ -60025,44 +60059,13 @@ components:
       type: object
     CompletedApproval:
       example:
-        requestedFor:
-          name: William Wilson
-          id: 2c9180835d191a86015d28455b4b232a
-          type: IDENTITY
-        requestedAccounts: requestedAccounts
-        requesterComment:
-          created: 2017-07-11T18:45:37.098Z
-          author:
-            name: john.doe
-            id: 2c9180847e25f377017e2ae8cae4650b
-            type: IDENTITY
-          comment: This is a comment.
-        assignmentContext: "{}"
-        modified: 2018-07-25T20:22:28.104Z
-        id: 2c938083633d259901633d25c68c00fa
-        forwardHistory:
-        - forwarderName: William Wilson
-          reassignmentType: AUTOMATIC_REASSIGNMENT
-          modified: 2019-08-23T18:52:57.398Z
-          oldApproverName: Frank Mir
-          newApproverName: Al Volta
-          comment: Forwarding from Frank to Al
-        - forwarderName: William Wilson
-          reassignmentType: AUTOMATIC_REASSIGNMENT
-          modified: 2019-08-23T18:52:57.398Z
-          oldApproverName: Frank Mir
-          newApproverName: Al Volta
-          comment: Forwarding from Frank to Al
-        state: APPROVED
-        removeDateUpdateRequested: true
-        preApprovalTriggerResult:
-          date: 2022-06-07T19:18:40.748Z
-          decision: APPROVED
-          comment: This request was autoapproved by our automated ETS subscriber
-          reviewer: Automated AR Approval
         requester:
           name: William Wilson
           id: 2c7180a46faadee4016fb4e018c20648
+          type: IDENTITY
+        requestedFor:
+          name: William Wilson
+          id: 2c9180835d191a86015d28455b4b232a
           type: IDENTITY
         owner:
           name: Support
@@ -60084,6 +60087,13 @@ components:
             type: IDENTITY
           comment: This is a comment.
         - created: 2017-07-11T18:45:37.098Z
+          author:
+            name: john.doe
+            id: 2c9180847e25f377017e2ae8cae4650b
+            type: IDENTITY
+          comment: This is a comment.
+        requesterComment:
+          created: 2017-07-11T18:45:37.098Z
           author:
             name: john.doe
             id: 2c9180847e25f377017e2ae8cae4650b
@@ -60171,6 +60181,28 @@ components:
           uuid: f73d16e9-a038-46c5-b217-1246e15fdbdd
         requestCreated: 2017-07-11T18:45:35.098Z
         name: Approval Name
+        modified: 2018-07-25T20:22:28.104Z
+        id: 2c938083633d259901633d25c68c00fa
+        forwardHistory:
+        - forwarderName: William Wilson
+          reassignmentType: AUTOMATIC_REASSIGNMENT
+          modified: 2019-08-23T18:52:57.398Z
+          oldApproverName: Frank Mir
+          newApproverName: Al Volta
+          comment: Forwarding from Frank to Al
+        - forwarderName: William Wilson
+          reassignmentType: AUTOMATIC_REASSIGNMENT
+          modified: 2019-08-23T18:52:57.398Z
+          oldApproverName: Frank Mir
+          newApproverName: Al Volta
+          comment: Forwarding from Frank to Al
+        state: APPROVED
+        removeDateUpdateRequested: true
+        preApprovalTriggerResult:
+          date: 2022-06-07T19:18:40.748Z
+          decision: APPROVED
+          comment: This request was autoapproved by our automated ETS subscriber
+          reviewer: Automated AR Approval
       properties:
         id:
           description: The approval id.
@@ -60259,13 +60291,6 @@ components:
           example:
             requestedAppName: test-app
             requestedAppId: 2c91808f7892918f0178b78da4a305a1
-          type: object
-        requestedAccounts:
-          description: Information about the requested accounts
-          nullable: true
-          type: string
-        assignmentContext:
-          nullable: true
           type: object
       type: object
     CommentDto:

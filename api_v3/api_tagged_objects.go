@@ -176,12 +176,12 @@ func (a *TaggedObjectsAPIService) DeleteTaggedObjectExecute(r ApiDeleteTaggedObj
 type ApiDeleteTagsToManyObjectRequest struct {
 	ctx context.Context
 	ApiService *TaggedObjectsAPIService
-	bulkTaggedObject *BulkTaggedObject
+	bulkRemoveTaggedObject *BulkRemoveTaggedObject
 }
 
 // Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
-func (r ApiDeleteTagsToManyObjectRequest) BulkTaggedObject(bulkTaggedObject BulkTaggedObject) ApiDeleteTagsToManyObjectRequest {
-	r.bulkTaggedObject = &bulkTaggedObject
+func (r ApiDeleteTagsToManyObjectRequest) BulkRemoveTaggedObject(bulkRemoveTaggedObject BulkRemoveTaggedObject) ApiDeleteTagsToManyObjectRequest {
+	r.bulkRemoveTaggedObject = &bulkRemoveTaggedObject
 	return r
 }
 
@@ -224,8 +224,8 @@ func (a *TaggedObjectsAPIService) DeleteTagsToManyObjectExecute(r ApiDeleteTagsT
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.bulkTaggedObject == nil {
-		return nil, reportError("bulkTaggedObject is required and must be specified")
+	if r.bulkRemoveTaggedObject == nil {
+		return nil, reportError("bulkRemoveTaggedObject is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -246,7 +246,7 @@ func (a *TaggedObjectsAPIService) DeleteTagsToManyObjectExecute(r ApiDeleteTagsT
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.bulkTaggedObject
+	localVarPostBody = r.bulkRemoveTaggedObject
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -1232,12 +1232,12 @@ func (a *TaggedObjectsAPIService) SetTagToObjectExecute(r ApiSetTagToObjectReque
 type ApiSetTagsToManyObjectsRequest struct {
 	ctx context.Context
 	ApiService *TaggedObjectsAPIService
-	bulkTaggedObject *BulkTaggedObject
+	bulkAddTaggedObject *BulkAddTaggedObject
 }
 
 // Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
-func (r ApiSetTagsToManyObjectsRequest) BulkTaggedObject(bulkTaggedObject BulkTaggedObject) ApiSetTagsToManyObjectsRequest {
-	r.bulkTaggedObject = &bulkTaggedObject
+func (r ApiSetTagsToManyObjectsRequest) BulkAddTaggedObject(bulkAddTaggedObject BulkAddTaggedObject) ApiSetTagsToManyObjectsRequest {
+	r.bulkAddTaggedObject = &bulkAddTaggedObject
 	return r
 }
 
@@ -1282,8 +1282,8 @@ func (a *TaggedObjectsAPIService) SetTagsToManyObjectsExecute(r ApiSetTagsToMany
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.bulkTaggedObject == nil {
-		return localVarReturnValue, nil, reportError("bulkTaggedObject is required and must be specified")
+	if r.bulkAddTaggedObject == nil {
+		return localVarReturnValue, nil, reportError("bulkAddTaggedObject is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1304,7 +1304,7 @@ func (a *TaggedObjectsAPIService) SetTagsToManyObjectsExecute(r ApiSetTagsToMany
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.bulkTaggedObject
+	localVarPostBody = r.bulkAddTaggedObject
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

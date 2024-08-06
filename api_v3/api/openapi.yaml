@@ -3644,19 +3644,18 @@ paths:
       tags:
       - Accounts
     patch:
-      description: "Use this API to update account details.  A token with ORG_ADMIN,\
+      description: "Use this API to update account details. \nA token with ORG_ADMIN,\
         \ SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.\n\
-        This API supports updating an account's correlation. You can modify only the\
-        \ `identityId` and `manuallyCorrelated` fields for any flat file account.\
-        \  To reassign an account from one identity to another, replace the current\
-        \ `identityId` with a new value.  If the account you're assigning was provisioned\
-        \ by Identity Security Cloud (ISC), it's possible for ISC to create a new\
-        \ account  for the previous identity as soon as the account is moved. If the\
-        \ account you're assigning is authoritative,  this causes the previous identity\
-        \ to become uncorrelated and can even result in its deletion. All accounts\
-        \ that are reassigned will be set to `manuallyCorrelated: true` unless you\
-        \ specify otherwise.\n>**Note:** The `attributes` field can only be modified\
-        \ for flat file accounts. "
+        \nThis API supports updating an account's correlation by modifying the `identityId`\
+        \ and `manuallyCorrelated` fields. \nTo reassign an account from one identity\
+        \ to another, replace the current `identityId` with a new value. \nIf the\
+        \ account you're assigning was provisioned by Identity Security Cloud (ISC),\
+        \ it's possible for ISC to create a new account \nfor the previous identity\
+        \ as soon as the account is moved. If the account you're assigning is authoritative,\
+        \ \nthis causes the previous identity to become uncorrelated and can even\
+        \ result in its deletion.\nAll accounts that are reassigned will be set to\
+        \ `manuallyCorrelated: true` unless you specify otherwise.\n\n>**Note:** The\
+        \ `attributes` field can only be modified for flat file accounts. \n"
       operationId: updateAccount
       parameters:
       - description: Account ID.
@@ -3794,11 +3793,11 @@ paths:
       tags:
       - Accounts
     put:
-      description: "Use this API to update an account with a PUT request. \nThis endpoint\
-        \ submits an account update task and returns the task ID. \nA token with ORG_ADMIN,\
-        \ SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.\n\
-        >**NOTE: You can only use this PUT endpoint to update accounts from sources\
-        \ of the \"DelimitedFile\" type.**"
+      description: "Use this API to update an account with a PUT request. \n\nThis\
+        \ endpoint submits an account update task and returns the task ID. \n\nA token\
+        \ with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to\
+        \ call this API.\n\n>**Note: You can only use this PUT endpoint to update\
+        \ accounts from flat file sources.**\n"
       operationId: putAccount
       parameters:
       - description: Account ID.
@@ -6869,8 +6868,10 @@ paths:
       - Branding
   /campaigns:
     get:
-      description: 'Use this API to get a list of campaigns. This API can provide
-        increased level of detail for each campaign for the correct provided query. '
+      description: |
+        Use this API to get a list of campaigns. This API can provide increased level of detail for each campaign for the correct provided query.
+
+        A token with ORG_ADMIN, CERT_ADMIN or REPORT_ADMIN authority is required to call this API.
       operationId: getActiveCampaigns
       parameters:
       - description: "Determines whether slim, or increased level of detail is provided\
@@ -7024,12 +7025,16 @@ paths:
       - UserContextAuth:
         - idn:campaign:read
         - idn:campaign:manage
+        - idn:campaign-report:read
+        - idn:campaign-report:manage
       summary: List Campaigns
       tags:
       - Certification Campaigns
     post:
-      description: Use this API to create a certification campaign with the information
-        provided in the request body.
+      description: |
+        Use this API to create a certification campaign with the information provided in the request body.
+
+        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: createCampaign
       requestBody:
         content:
@@ -7121,15 +7126,16 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:campaign:create
+        - idn:campaign:manage
       summary: Create a campaign
       tags:
       - Certification Campaigns
   /campaigns/{id}:
     get:
-      description: "Use this API to get information for an existing certification\
-        \ campaign by the campaign's ID.  Authorized callers must be reviewers for\
-        \ this campaign, ORG_ADMINs, or a CERT_ADMINs."
+      description: |
+        Use this API to get information for an existing certification campaign by the campaign's ID.
+
+        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: getCampaign
       parameters:
       - description: ID of the campaign to be retrieved.
@@ -7248,8 +7254,10 @@ paths:
       tags:
       - Certification Campaigns
     patch:
-      description: "Use this API to update individual fields on a certification campaign,\
-        \ using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard."
+      description: |
+        Use this API to update individual fields on a certification campaign, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+
+        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: updateCampaign
       parameters:
       - description: ID of the campaign template being modified.
@@ -7381,16 +7389,17 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:campaign:update
         - idn:campaign:read
+        - idn:campaign:manage
       summary: Update a Campaign
       tags:
       - Certification Campaigns
   /campaigns/{id}/reassign:
     post:
-      description: This API reassigns the specified certifications from one identity
-        to another. A token with ORG_ADMIN or CERT_ADMIN authority is required to
-        call this API.
+      description: |
+        This API reassigns the specified certifications from one identity to another.
+
+        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: move
       parameters:
       - description: The certification campaign ID
@@ -7497,15 +7506,15 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:certification:write
+        - idn:campaign:manage
       summary: Reassign Certifications
       tags:
       - Certification Campaigns
   /campaigns/{id}/activate:
     post:
-      description: |-
-        Use this API to submit a job to activate the certified campaign with the specified ID. The campaign must be staged.
-        Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
+      description: "Use this API to submit a job to activate the certified campaign\
+        \ with the specified ID. The campaign must be staged.\n\nA token with ORG_ADMIN\
+        \ or CERT_ADMIN authority is required to call this API. \n"
       operationId: startCampaign
       parameters:
       - description: Campaign ID.
@@ -7629,7 +7638,7 @@ paths:
         Use this API to complete a certification campaign. This functionality is provided to admins so that they
         can complete a certification even if all items have not been completed.
 
-        Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
+        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: completeCampaign
       parameters:
       - description: Campaign ID.
@@ -7731,15 +7740,16 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:campaign:update
+        - idn:campaign:manage
       summary: Complete a Campaign
       tags:
       - Certification Campaigns
   /campaigns/delete:
     post:
-      description: Use this API to delete certification campaigns whose IDs are specified
-        in the provided list of campaign IDs.  Authorized callers must be ORG_ADMINs
-        or CERT_ADMINs.
+      description: |
+        Use this API to delete certification campaigns whose IDs are specified in the provided list of campaign IDs.
+
+        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: deleteCampaigns
       requestBody:
         content:
@@ -7832,15 +7842,16 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:campaign:delete
+        - idn:campaign:manage
       summary: Delete Campaigns
       tags:
       - Certification Campaigns
   /campaigns/{id}/run-remediation-scan:
     post:
-      description: |-
+      description: |
         Use this API to run a remediation scan task for a certification campaign.
-        Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
+
+        A token with ORG_ADMIN, CERT_ADMIN or REPORT_ADMIN authority is required to call this API.
       operationId: startCampaignRemediationScan
       parameters:
       - description: ID of the campaign the remediation scan is being run for.
@@ -7934,15 +7945,16 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:campaign-report:run
+        - idn:campaign-report:manage
       summary: Run Campaign Remediation Scan
       tags:
       - Certification Campaigns
   /campaigns/{id}/reports:
     get:
-      description: |-
+      description: |
         Use this API to fetch all reports for a certification campaign by campaign ID.
-        Calling this endpoint requires roles of CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
+
+        A token with ORG_ADMIN, CERT_ADMIN or REPORT_ADMIN authority is required to call this API.
       operationId: getCampaignReports
       parameters:
       - description: ID of the campaign whose reports are being fetched.
@@ -8038,14 +8050,16 @@ paths:
       security:
       - UserContextAuth:
         - idn:campaign-report:read
+        - idn:campaign-report:manage
       summary: Get Campaign Reports
       tags:
       - Certification Campaigns
   /campaigns/{id}/run-report/{type}:
     post:
-      description: |-
+      description: |
         Use this API to run a report for a certification campaign.
-        Calling this endpoint requires the following roles: CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
+
+        A token with ORG_ADMIN, CERT_ADMIN or REPORT_ADMIN authority is required to call this API.
       operationId: startCampaignReport
       parameters:
       - description: ID of the campaign the report is being run for.
@@ -8145,7 +8159,7 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:campaign-report:run
+        - idn:campaign-report:manage
       summary: Run Campaign Report
       tags:
       - Certification Campaigns
@@ -8153,8 +8167,8 @@ paths:
     get:
       description: "Use this API to fetch the configuration for certification campaign\
         \ reports. The configuration includes only one element - identity attributes\
-        \ defined as custom report columns. \nCalling this endpoint requires roles\
-        \ of CERT_ADMIN and ORG_ADMIN."
+        \ defined as custom report columns. \n\nA token with ORG_ADMIN or CERT_ADMIN\
+        \ authority is required to call this API.\n"
       operationId: getCampaignReportsConfig
       responses:
         "200":
@@ -8221,13 +8235,15 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:campaign-reports-config:read
+        - idn:campaign:read
+        - idn:campaign:manage
       summary: Get Campaign Reports Configuration
       tags:
       - Certification Campaigns
     put:
       description: "Use this API to overwrite the configuration for campaign reports.\
-        \ \nCalling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN."
+        \ \n\nA token with ORG_ADMIN or CERT_ADMIN authority is required to call this\
+        \ API.\n"
       operationId: setCampaignReportsConfig
       requestBody:
         content:
@@ -8301,7 +8317,7 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:campaign-reports-config:write
+        - idn:campaign:manage
       summary: Set Campaign Reports Configuration
       tags:
       - Certification Campaigns
@@ -8826,8 +8842,9 @@ paths:
   /campaign-templates:
     get:
       description: "Use this API to get a list of all campaign templates. Scope can\
-        \ be reduced through standard V3 query params.\nThe API returns all campaign\
-        \ templates matching the query parameters. "
+        \ be reduced through standard V3 query params.\n\nThe API returns all campaign\
+        \ templates matching the query parameters. \n\nA token with ORG_ADMIN or CERT_ADMIN\
+        \ authority is required to call this API.\n"
       operationId: getCampaignTemplates
       parameters:
       - description: |-
@@ -8961,13 +8978,16 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:campaign-template-list:read
+        - idn:campaign-template:read
+        - idn:campaign-template:manage
       summary: List Campaign Templates
       tags:
       - Certification Campaigns
     post:
-      description: Use this API to create a certification campaign template based
-        on campaign.
+      description: |
+        Use this API to create a certification campaign template based on campaign.
+
+        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: createCampaignTemplate
       requestBody:
         content:
@@ -9058,13 +9078,16 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:campaign-template:create
+        - idn:campaign-template:manage
       summary: Create a Campaign Template
       tags:
       - Certification Campaigns
   /campaign-templates/{id}:
     delete:
-      description: Use this API to delete a certification campaign template by ID.
+      description: |
+        Use this API to delete a certification campaign template by ID.
+
+        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: deleteCampaignTemplate
       parameters:
       - description: ID of the campaign template being deleted.
@@ -9154,12 +9177,15 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:campaign-template:delete
+        - idn:campaign-template:manage
       summary: Delete a Campaign Template
       tags:
       - Certification Campaigns
     get:
-      description: Use this API to fetch a certification campaign template by ID.
+      description: |
+        Use this API to fetch a certification campaign template by ID.
+
+        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: getCampaignTemplate
       parameters:
       - description: Requested campaign template's ID.
@@ -9262,12 +9288,15 @@ paths:
       security:
       - UserContextAuth:
         - idn:campaign-template:read
+        - idn:campaign-template:manage
       summary: Get a Campaign Template
       tags:
       - Certification Campaigns
     patch:
-      description: "Use this API to update individual fields on a certification campaign\
-        \ template, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard."
+      description: |
+        Use this API to update individual fields on a certification campaign template, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+
+        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: patchCampaignTemplate
       parameters:
       - description: ID of the campaign template being modified.
@@ -9393,14 +9422,16 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:campaign-template:update
+        - idn:campaign-template:manage
       summary: Update a Campaign Template
       tags:
       - Certification Campaigns
   /campaign-templates/{id}/schedule:
     delete:
-      description: Use this API to delete the schedule for a certification campaign
-        template. The API returns a 404 if there is no schedule set.
+      description: |
+        Use this API to delete the schedule for a certification campaign template. The API returns a 404 if there is no schedule set.
+
+        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: deleteCampaignTemplateSchedule
       parameters:
       - description: ID of the campaign template whose schedule is being deleted.
@@ -9489,14 +9520,15 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
-        - idn:campaign-template:run
+      - UserContextAuth: []
       summary: Delete Campaign Template Schedule
       tags:
       - Certification Campaigns
     get:
-      description: Use this API to get the schedule for a certification campaign template.
-        The API returns a 404 if there is no schedule set.
+      description: |
+        Use this API to get the schedule for a certification campaign template. The API returns a 404 if there is no schedule set.
+
+        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: getCampaignTemplateSchedule
       parameters:
       - description: ID of the campaign template whose schedule is being fetched.
@@ -9590,15 +9622,15 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
-        - idn:campaign-template:read
+      - UserContextAuth: []
       summary: Get Campaign Template Schedule
       tags:
       - Certification Campaigns
     put:
-      description: "Use this API to set the schedule for a certification campaign\
-        \ template. If a schedule already exists, the API overwrites it with the new\
-        \ one. "
+      description: |
+        Use this API to set the schedule for a certification campaign template. If a schedule already exists, the API overwrites it with the new one.
+
+        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: setCampaignTemplateSchedule
       parameters:
       - description: ID of the campaign template being scheduled.
@@ -9760,19 +9792,26 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
-        - idn:campaign-template:run
+      - UserContextAuth: []
       summary: Set Campaign Template Schedule
       tags:
       - Certification Campaigns
   /campaign-templates/{id}/generate:
     post:
-      description: |-
+      description: |
         Use this API to generate a new certification campaign from a campaign template.
-        The campaign object contained in the template has special formatting applied to its name and description fields that determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation.
-        Placeholders consist of a percent sign followed by a letter indicating what should be inserted. For example, "%Y" inserts the current year, and a campaign template named "Campaign for %y" generates a campaign called "Campaign for 2020" (assuming the year at generation time is 2020).
+
+        The campaign object contained in the template has special formatting applied to its name and description
+        fields that determine the generated campaign's name/description. Placeholders in those fields are
+        formatted with the current date and time upon generation.
+
+        Placeholders consist of a percent sign followed by a letter indicating what should be inserted. For
+        example, "%Y" inserts the current year, and a campaign template named "Campaign for %y" generates a
+        campaign called "Campaign for 2020" (assuming the year at generation time is 2020).
+
         Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html).
-        Calling this endpoint requires the ORG_ADMIN role.
+
+        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: startGenerateCampaignTemplate
       parameters:
       - description: ID of the campaign template to use for generation.
@@ -9848,7 +9887,7 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:campaign-template:run
+        - idn:campaign-template:manage
       summary: Generate a Campaign from Template
       tags:
       - Certification Campaigns
@@ -24049,8 +24088,9 @@ paths:
       tags:
       - Personal Access Tokens
     patch:
-      description: This performs a targeted update to the field(s) of a Personal Access
-        Token.
+      description: |-
+        This performs a targeted update to the field(s) of a Personal Access Token.
+        Changing scopes for a Personal Access Token does not impact existing bearer tokens. You will need to create a new bearer token to have the new scopes. Please note that it can take up to 20 minutes for scope changes to be seen on new bearer tokens.
       operationId: patchPersonalAccessToken
       parameters:
       - description: The Personal Access Token id
@@ -36262,7 +36302,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/BulkTaggedObject'
+              $ref: '#/components/schemas/BulkAddTaggedObject'
         description: "Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN,\
           \ ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE."
         required: true
@@ -36348,7 +36388,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/BulkTaggedObject'
+              $ref: '#/components/schemas/BulkRemoveTaggedObject'
         description: "Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN,\
           \ ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE."
         required: true
@@ -37749,6 +37789,92 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       summary: Complete a Work Item
+      tags:
+      - Work Items
+  /work-items/{id}/forward:
+    post:
+      description: "This API forwards a work item to a new owner. Either an admin,\
+        \ or the owning/current user must make this request. Accessible to work-item\
+        \ Owner, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN,\
+        \ SOURCE_SUBADMIN."
+      operationId: sendWorkItemForward
+      parameters:
+      - description: The ID of the work item
+        example: ef38f94347e94562b5bb8424a56397d8
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkItemForward'
+        required: true
+      responses:
+        "200":
+          description: "Success, but no data is returned."
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:work-item:update
+      summary: Forward a Work Item
       tags:
       - Work Items
   /work-items/{id}/approve/{approvalItemId}:
@@ -46322,38 +46448,13 @@ components:
       type: object
     CompletedApproval:
       example:
-        requestedFor:
-          name: William Wilson
-          id: 2c9180835d191a86015d28455b4b232a
-          type: IDENTITY
-        requestedAccounts: requestedAccounts
-        requesterComment: null
-        assignmentContext: "{}"
-        modified: 2018-07-25T20:22:28.104Z
-        id: id12345
-        forwardHistory:
-        - forwarderName: William Wilson
-          reassignmentType: AUTOMATIC_REASSIGNMENT
-          modified: 2019-08-23T18:52:57.398Z
-          oldApproverName: Frank Mir
-          newApproverName: Al Volta
-          comment: Forwarding from Frank to Al
-        - forwarderName: William Wilson
-          reassignmentType: AUTOMATIC_REASSIGNMENT
-          modified: 2019-08-23T18:52:57.398Z
-          oldApproverName: Frank Mir
-          newApproverName: Al Volta
-          comment: Forwarding from Frank to Al
-        state: APPROVED
-        removeDateUpdateRequested: true
-        preApprovalTriggerResult:
-          date: 2022-06-07T19:18:40.748Z
-          decision: APPROVED
-          comment: This request was autoapproved by our automated ETS subscriber
-          reviewer: Automated AR Approval
         requester:
           name: William Wilson
           id: 2c7180a46faadee4016fb4e018c20648
+          type: IDENTITY
+        requestedFor:
+          name: William Wilson
+          id: 2c9180835d191a86015d28455b4b232a
           type: IDENTITY
         owner:
           name: Support
@@ -46380,6 +46481,7 @@ components:
             id: 2c9180847e25f377017e2ae8cae4650b
             type: IDENTITY
           comment: This is a comment.
+        requesterComment: null
         currentRemoveDate: 2020-07-11T00:00:00Z
         reviewedBy:
           name: Allen Albertson
@@ -46462,6 +46564,28 @@ components:
           uuid: f73d16e9-a038-46c5-b217-1246e15fdbdd
         requestCreated: 2017-07-11T18:45:35.098Z
         name: aName
+        modified: 2018-07-25T20:22:28.104Z
+        id: id12345
+        forwardHistory:
+        - forwarderName: William Wilson
+          reassignmentType: AUTOMATIC_REASSIGNMENT
+          modified: 2019-08-23T18:52:57.398Z
+          oldApproverName: Frank Mir
+          newApproverName: Al Volta
+          comment: Forwarding from Frank to Al
+        - forwarderName: William Wilson
+          reassignmentType: AUTOMATIC_REASSIGNMENT
+          modified: 2019-08-23T18:52:57.398Z
+          oldApproverName: Frank Mir
+          newApproverName: Al Volta
+          comment: Forwarding from Frank to Al
+        state: APPROVED
+        removeDateUpdateRequested: true
+        preApprovalTriggerResult:
+          date: 2022-06-07T19:18:40.748Z
+          decision: APPROVED
+          comment: This request was autoapproved by our automated ETS subscriber
+          reviewer: Automated AR Approval
       properties:
         id:
           description: The approval id.
@@ -46550,13 +46674,6 @@ components:
           example:
             requestedAppName: test-app
             requestedAppId: 2c91808f7892918f0178b78da4a305a1
-          type: object
-        requestedAccounts:
-          description: Information about the requested accounts
-          nullable: true
-          type: string
-        assignmentContext:
-          nullable: true
           type: object
       type: object
     CommentDto:
@@ -54115,7 +54232,7 @@ components:
             type: string
           type: array
       type: object
-    BulkTaggedObject:
+    BulkAddTaggedObject:
       example:
         objectRefs:
         - name: William Wilson
@@ -54179,6 +54296,32 @@ components:
             type: string
           type: array
       type: object
+    BulkRemoveTaggedObject:
+      example:
+        objectRefs:
+        - name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+        - name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+        tags:
+        - BU_FINANCE
+        - PCI
+      properties:
+        objectRefs:
+          items:
+            $ref: '#/components/schemas/TaggedObjectDto'
+          type: array
+        tags:
+          description: Label to be applied to an Object
+          example:
+          - BU_FINANCE
+          - PCI
+          items:
+            type: string
+          type: array
+      type: object
     TransformRead:
       allOf:
       - $ref: '#/components/schemas/Transform'
@@ -54197,6 +54340,29 @@ components:
         - id
         - internal
         type: object
+    WorkItemForward:
+      example:
+        targetOwnerId: 2c9180835d2e5168015d32f890ca1581
+        comment: I'm going on vacation.
+        sendNotifications: true
+      properties:
+        targetOwnerId:
+          description: The ID of the identity to forward this work item to.
+          example: 2c9180835d2e5168015d32f890ca1581
+          type: string
+        comment:
+          description: Comments to send to the target owner
+          example: I'm going on vacation.
+          type: string
+        sendNotifications:
+          default: true
+          description: "If true, send a notification to the target owner."
+          example: true
+          type: boolean
+      required:
+      - comment
+      - targetOwnerId
+      type: object
     Workflow:
       allOf:
       - properties:

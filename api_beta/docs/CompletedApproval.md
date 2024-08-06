@@ -27,8 +27,6 @@ Name | Type | Description | Notes
 **SodViolationContext** | Pointer to [**NullableSodViolationContextCheckCompleted1**](SodViolationContextCheckCompleted1.md) |  | [optional] 
 **PreApprovalTriggerResult** | Pointer to [**NullableCompletedApprovalPreApprovalTriggerResult**](CompletedApprovalPreApprovalTriggerResult.md) |  | [optional] 
 **ClientMetadata** | Pointer to **map[string]string** | Arbitrary key-value pairs provided during the request. | [optional] 
-**RequestedAccounts** | Pointer to **NullableString** | Information about the requested accounts | [optional] 
-**AssignmentContext** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
@@ -684,76 +682,6 @@ SetClientMetadata sets ClientMetadata field to given value.
 
 HasClientMetadata returns a boolean if a field has been set.
 
-### GetRequestedAccounts
-
-`func (o *CompletedApproval) GetRequestedAccounts() string`
-
-GetRequestedAccounts returns the RequestedAccounts field if non-nil, zero value otherwise.
-
-### GetRequestedAccountsOk
-
-`func (o *CompletedApproval) GetRequestedAccountsOk() (*string, bool)`
-
-GetRequestedAccountsOk returns a tuple with the RequestedAccounts field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRequestedAccounts
-
-`func (o *CompletedApproval) SetRequestedAccounts(v string)`
-
-SetRequestedAccounts sets RequestedAccounts field to given value.
-
-### HasRequestedAccounts
-
-`func (o *CompletedApproval) HasRequestedAccounts() bool`
-
-HasRequestedAccounts returns a boolean if a field has been set.
-
-### SetRequestedAccountsNil
-
-`func (o *CompletedApproval) SetRequestedAccountsNil(b bool)`
-
- SetRequestedAccountsNil sets the value for RequestedAccounts to be an explicit nil
-
-### UnsetRequestedAccounts
-`func (o *CompletedApproval) UnsetRequestedAccounts()`
-
-UnsetRequestedAccounts ensures that no value is present for RequestedAccounts, not even an explicit nil
-### GetAssignmentContext
-
-`func (o *CompletedApproval) GetAssignmentContext() map[string]interface{}`
-
-GetAssignmentContext returns the AssignmentContext field if non-nil, zero value otherwise.
-
-### GetAssignmentContextOk
-
-`func (o *CompletedApproval) GetAssignmentContextOk() (*map[string]interface{}, bool)`
-
-GetAssignmentContextOk returns a tuple with the AssignmentContext field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAssignmentContext
-
-`func (o *CompletedApproval) SetAssignmentContext(v map[string]interface{})`
-
-SetAssignmentContext sets AssignmentContext field to given value.
-
-### HasAssignmentContext
-
-`func (o *CompletedApproval) HasAssignmentContext() bool`
-
-HasAssignmentContext returns a boolean if a field has been set.
-
-### SetAssignmentContextNil
-
-`func (o *CompletedApproval) SetAssignmentContextNil(b bool)`
-
- SetAssignmentContextNil sets the value for AssignmentContext to be an explicit nil
-
-### UnsetAssignmentContext
-`func (o *CompletedApproval) UnsetAssignmentContext()`
-
-UnsetAssignmentContext ensures that no value is present for AssignmentContext, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
