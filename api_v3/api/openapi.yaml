@@ -5327,7 +5327,7 @@ paths:
     patch:
       description: |-
         This API updates an existing network configuration for an org using PATCH
-         Requires security scope of:  'sp:auth-org:update'
+         Requires security scope of:  'sp:auth-org:manage'
       operationId: patchAuthOrgNetworkConfig
       requestBody:
         content:
@@ -5437,13 +5437,13 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - sp:auth-org:update
+        - sp:auth-org:manage
       summary: Update security network configuration.
       tags:
       - Global Tenant Security Settings
     post:
       description: "This API returns the details of an org's network auth configuration.\
-        \ Requires security scope of: 'sp:auth-org:create'"
+        \ Requires security scope of: 'sp:auth-org:manage'"
       operationId: createAuthOrgNetworkConfig
       requestBody:
         content:
@@ -5540,7 +5540,7 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - sp:auth-org:create
+        - sp:auth-org:manage
       summary: Create security network configuration.
       tags:
       - Global Tenant Security Settings

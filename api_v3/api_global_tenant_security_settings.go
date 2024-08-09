@@ -41,7 +41,7 @@ func (r ApiCreateAuthOrgNetworkConfigRequest) Execute() (*NetworkConfiguration, 
 /*
 CreateAuthOrgNetworkConfig Create security network configuration.
 
-This API returns the details of an org's network auth configuration. Requires security scope of: 'sp:auth-org:create'
+This API returns the details of an org's network auth configuration. Requires security scope of: 'sp:auth-org:manage'
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateAuthOrgNetworkConfigRequest
@@ -1051,7 +1051,7 @@ func (r ApiPatchAuthOrgNetworkConfigRequest) Execute() (*NetworkConfiguration, *
 PatchAuthOrgNetworkConfig Update security network configuration.
 
 This API updates an existing network configuration for an org using PATCH
- Requires security scope of:  'sp:auth-org:update'
+ Requires security scope of:  'sp:auth-org:manage'
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPatchAuthOrgNetworkConfigRequest
