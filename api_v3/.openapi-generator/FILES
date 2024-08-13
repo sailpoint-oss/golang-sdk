@@ -226,7 +226,6 @@ docs/DataAccessPoliciesInner.md
 docs/DeleteNonEmployeeRecordsInBulkRequest.md
 docs/DeleteSource202Response.md
 docs/DeleteVendorConnectorMapping200Response.md
-docs/DiscoveredApplicationsInner.md
 docs/DisplayReference.md
 docs/DocumentType.md
 docs/DtoType.md
@@ -261,7 +260,9 @@ docs/FilterType.md
 docs/FormDetails.md
 docs/FormItemDetails.md
 docs/ForwardApprovalDto.md
+docs/FullDiscoveredApplicationsInner.md
 docs/GetActiveCampaigns200ResponseInner.md
+docs/GetDiscoveredApplications200ResponseInner.md
 docs/GetOAuthClientResponse.md
 docs/GetPersonalAccessTokenResponse.md
 docs/GetVendorConnectorMappings405Response.md
@@ -547,6 +548,7 @@ docs/SessionConfiguration.md
 docs/SetLifecycleState200Response.md
 docs/SetLifecycleStateRequest.md
 docs/SlimCampaign.md
+docs/SlimDiscoveredApplicationsInner.md
 docs/SodExemptCriteria.md
 docs/SodPolicy.md
 docs/SodPolicyConflictingAccessCriteria.md
@@ -809,7 +811,6 @@ model_data_access_policies_inner.go
 model_delete_non_employee_records_in_bulk_request.go
 model_delete_source_202_response.go
 model_delete_vendor_connector_mapping_200_response.go
-model_discovered_applications_inner.go
 model_display_reference.go
 model_document_type.go
 model_dto_type.go
@@ -844,7 +845,9 @@ model_filter_type.go
 model_form_details.go
 model_form_item_details.go
 model_forward_approval_dto.go
+model_full_discovered_applications_inner.go
 model_get_active_campaigns_200_response_inner.go
+model_get_discovered_applications_200_response_inner.go
 model_get_o_auth_client_response.go
 model_get_personal_access_token_response.go
 model_get_vendor_connector_mappings_405_response.go
@@ -1102,6 +1105,7 @@ model_session_configuration.go
 model_set_lifecycle_state_200_response.go
 model_set_lifecycle_state_request.go
 model_slim_campaign.go
+model_slim_discovered_applications_inner.go
 model_sod_exempt_criteria.go
 model_sod_policy.go
 model_sod_policy_conflicting_access_criteria.go

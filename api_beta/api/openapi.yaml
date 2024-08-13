@@ -55656,11 +55656,26 @@ paths:
           format: int32
           minimum: 0
           type: integer
+      - description: "Determines whether slim, or increased level of detail is provided\
+          \ for each discovered application in the returned list. SLIM is the default\
+          \ behavior."
+        example: FULL
+        in: query
+        name: detail
+        schema:
+          enum:
+          - SLIM
+          - FULL
+          type: string
       - description: "Filter results using the standard syntax described in [V3 API\
           \ Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)\n\
           \  \n  \nFiltering is supported for the following fields and operators:\n\
-          \n**name**: *eq, sw, co*\n\n**description**: *eq, sw, co*\n"
-        example: name eq "Okta" and description co "Okta"
+          \n**name**: *eq, sw, co*\n\n**description**: *eq, sw, co*\n\n**createdAtStart**:\
+          \ *eq, le, ge*\n\n**createdAtEnd**: *eq, le, ge*\n\n**discoveredAtStart**:\
+          \ *eq, le, ge*\n\n**discoveredAtEnd**: *eq, le, ge*\n\n**discoverySource**:\
+          \ *eq, in*\n"
+        example: "name eq \"Okta\" and description co \"Okta\" and discoverySource\
+          \ in (\"csv\", \"Okta Saas\")"
         in: query
         name: filter
         required: false
@@ -55681,11 +55696,17 @@ paths:
         "200":
           content:
             application/json:
+              examples:
+                Slim Discovered Application:
+                  $ref: '#/components/examples/SlimDiscoveredApplications'
+                Discovered Application:
+                  $ref: '#/components/examples/FullDiscoveredApplications'
               schema:
                 items:
-                  $ref: '#/components/schemas/DiscoveredApplications'
+                  $ref: '#/components/schemas/getDiscoveredApplications_200_response_inner'
                 type: array
-          description: Successfully retrieved list of discovered applications.
+          description: "List of discovered applications. By default, the API returns\
+            \ a list of SLIM discovered applications."
         "400":
           content:
             application/json:
@@ -57739,6 +57760,88 @@ components:
         - reassignedToId: 279de502e5dc43f4854e1b96f57c578f
           reassignedFromId: 31d9c631f5574571a935aaa48a6255df
           reassignmentType: AUTOMATIC_REASSIGNMENT
+    SlimDiscoveredApplications:
+      description: List of discovered applications
+      value:
+      - id: app-123
+        name: Example App
+        discoverySource: csv
+        discoveredVendor: Example Vendor
+        description: An application for managing examples.
+        recommendedConnectors:
+        - ConnectorA
+        - ConnectorB
+        discoveredAt: 2023-07-01T12:00:00Z
+        createdAt: 2024-06-01T12:00:00Z
+        status: ACTIVE
+      - id: app-456
+        name: Sample Tracker
+        discoverySource: Okta SaaS
+        discoveredVendor: Sample Vendor
+        description: A tool for monitoring and managing samples.
+        recommendedConnectors:
+        - ConnectorC
+        - ConnectorD
+        discoveredAt: 2023-08-15T08:00:00Z
+        createdAt: 2024-05-20T08:00:00Z
+        status: ACTIVE
+      - id: app-789
+        name: Demo Manager
+        discoverySource: Okta SaaS
+        discoveredVendor: Demo Provider
+        description: Software to demonstrate basic functionalities.
+        recommendedConnectors:
+        - ConnectorE
+        - ConnectorF
+        discoveredAt: 2023-09-10T15:00:00Z
+        createdAt: 2024-07-03T15:00:00Z
+        status: ACTIVE
+    FullDiscoveredApplications:
+      description: List of discovered applications with their respective associated
+        sources
+      value:
+      - id: app-123
+        name: Example App
+        discoverySource: csv
+        discoveredVendor: Example Vendor
+        description: An application for managing examples.
+        recommendedConnectors:
+        - ConnectorA
+        - ConnectorB
+        discoveredAt: 2023-07-01T12:00:00Z
+        createdAt: 2024-06-01T12:00:00Z
+        status: ACTIVE
+        associatedSources:
+        - e0cc5d7d-bf7f-4f81-b2af-8885b09d9923
+      - id: app-456
+        name: Sample Tracker
+        discoverySource: Okta SaaS
+        discoveredVendor: Sample Vendor
+        description: A tool for monitoring and managing samples.
+        recommendedConnectors:
+        - ConnectorC
+        - ConnectorD
+        discoveredAt: 2023-08-15T08:00:00Z
+        createdAt: 2024-05-20T08:00:00Z
+        status: ACTIVE
+        associatedSources:
+        - a3b159f2-5f09-43c9-b40e-a6f317aa5b8f
+        - e0cc5d7d-bf7f-4f81-b2af-8885b09d9923
+      - id: app-789
+        name: Demo Manager
+        discoverySource: Okta SaaS
+        discoveredVendor: Demo Provider
+        description: Software to demonstrate basic functionalities.
+        recommendedConnectors:
+        - ConnectorE
+        - ConnectorF
+        discoveredAt: 2023-09-10T15:00:00Z
+        createdAt: 2024-07-03T15:00:00Z
+        status: ACTIVE
+        associatedSources:
+        - 4e2d7605-833f-4c34-8d03-5b2c7d2f4f66
+        - f9b7e2ce-aced-4117-a95f-4ffad8b33989
+        - a3b159f2-5f09-43c9-b40e-a6f317aa5b8f
   parameters:
     limit50:
       description: |-
@@ -73395,20 +73498,22 @@ components:
       required:
       - file
       type: object
-    DiscoveredApplications:
-      description: An array of discovered applications for a given tenant
+    SlimDiscoveredApplications:
+      description: List of discovered applications
       example:
-      - id: app-123
-        name: ExampleApp
-        discoverySource: CSV
-        discoveredVendor: ExampleVendor
-        description: An application for managing examples.
-        recommendedConnectors:
-        - ConnectorA
-        - ConnectorB
-        discoveredTimestamp: 2023-01-01T12:00:00Z
+      - $ref: ../schemas/discovered-applications/examples/SlimDiscoveredApplications.yaml
       items:
-        $ref: '#/components/schemas/DiscoveredApplications_inner'
+        $ref: '#/components/schemas/SlimDiscoveredApplications_inner'
+      title: Slim Discovered Application
+      type: array
+    FullDiscoveredApplications:
+      description: List of discovered applications with their respective associated
+        sources
+      example:
+      - $ref: ../schemas/discovered-applications/examples/FullDiscoveredApplications.yaml
+      items:
+        $ref: '#/components/schemas/FullDiscoveredApplications_inner'
+      title: Discovered Application
       type: array
     VendorConnectorMapping:
       example:
@@ -82365,6 +82470,10 @@ components:
       required:
       - file
       type: object
+    getDiscoveredApplications_200_response_inner:
+      oneOf:
+      - $ref: '#/components/schemas/SlimDiscoveredApplications'
+      - $ref: '#/components/schemas/FullDiscoveredApplications'
     deleteVendorConnectorMapping_200_response:
       example:
         count: 1
@@ -84463,7 +84572,7 @@ components:
           x-go-name: FormDefinitionID
       type: object
       x-go-name: Attributes
-    DiscoveredApplications_inner:
+    SlimDiscoveredApplications_inner:
       properties:
         id:
           description: Unique identifier for the discovered application.
@@ -84475,7 +84584,7 @@ components:
           type: string
         discoverySource:
           description: Source from which the application was discovered.
-          example: CSV
+          example: csv
           type: string
         discoveredVendor:
           description: The vendor associated with the discovered application.
@@ -84493,12 +84602,90 @@ components:
           items:
             type: string
           type: array
-        discoveredTimestamp:
-          description: "The timestamp when the application was discovered, in ISO\
-            \ 8601 format."
+        discoveredAt:
+          description: "The timestamp when the application was last received via an\
+            \ entitlement aggregation invocation  or a manual csv upload, in ISO 8601\
+            \ format."
           example: 2023-01-01T12:00:00Z
           format: date-time
           type: string
+        createdAt:
+          description: "The timestamp when the application was first discovered, in\
+            \ ISO 8601 format."
+          example: 2023-01-01T12:00:00Z
+          format: date-time
+          type: string
+        status:
+          description: |-
+            The status of an application within the discovery source.
+
+            By default this field is set to "ACTIVE" when the application is discovered.
+
+            If an application has been deleted from within the discovery source, the status will be set to "INACTIVE".
+          example: ACTIVE
+          type: string
+      type: object
+    FullDiscoveredApplications_inner:
+      properties:
+        id:
+          description: Unique identifier for the discovered application.
+          format: uuid
+          type: string
+        name:
+          description: Name of the discovered application.
+          example: ExampleApp
+          type: string
+        discoverySource:
+          description: Source from which the application was discovered.
+          example: csv
+          type: string
+        discoveredVendor:
+          description: The vendor associated with the discovered application.
+          example: ExampleVendor
+          type: string
+        description:
+          description: A brief description of the discovered application.
+          example: An application for managing examples.
+          type: string
+        recommendedConnectors:
+          description: List of recommended connectors for the application.
+          example:
+          - ConnectorA
+          - ConnectorB
+          items:
+            type: string
+          type: array
+        discoveredAt:
+          description: "The timestamp when the application was last received via an\
+            \ entitlement aggregation invocation  or a manual csv upload, in ISO 8601\
+            \ format."
+          example: 2023-01-01T12:00:00Z
+          format: date-time
+          type: string
+        createdAt:
+          description: "The timestamp when the application was first discovered, in\
+            \ ISO 8601 format."
+          example: 2023-01-01T12:00:00Z
+          format: date-time
+          type: string
+        status:
+          description: |-
+            The status of an application within the discovery source.
+
+            By default this field is set to "ACTIVE" when the application is discovered.
+
+            If an application has been deleted from within the discovery source, the status will be set to "INACTIVE".
+          example: ACTIVE
+          type: string
+        associatedSources:
+          description: List of associated sources related to this discovered application.
+          example:
+          - e0cc5d7d-bf7f-4f81-b2af-8885b09d9923
+          - a0303682-5e4a-44f7-bdc2-6ce6112549c1
+          items:
+            format: uuid
+            type: string
+          type: array
       type: object
     VendorConnectorMapping_updatedAt:
       description: An object representing the nullable timestamp of the last update.

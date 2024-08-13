@@ -334,7 +334,6 @@ docs/Delete202Response.md
 docs/DeleteCampaignsRequest.md
 docs/DeleteNonEmployeeRecordInBulkRequest.md
 docs/DeleteVendorConnectorMapping200Response.md
-docs/DiscoveredApplicationsInner.md
 docs/DkimAttributes.md
 docs/DomainAddress.md
 docs/DomainStatusDto.md
@@ -400,6 +399,7 @@ docs/FormItemDetails.md
 docs/FormOwner.md
 docs/FormUsedBy.md
 docs/ForwardApprovalDto.md
+docs/FullDiscoveredApplicationsInner.md
 docs/Fullcampaign.md
 docs/FullcampaignAllOfFilter.md
 docs/FullcampaignAllOfRoleCompositionCampaignInfo.md
@@ -409,6 +409,7 @@ docs/FullcampaignAllOfSearchCampaignInfoReviewer.md
 docs/FullcampaignAllOfSourceOwnerCampaignInfo.md
 docs/FullcampaignAllOfSourcesWithOrphanEntitlements.md
 docs/GetActiveCampaigns200ResponseInner.md
+docs/GetDiscoveredApplications200ResponseInner.md
 docs/GetFormDefinitionByKey400Response.md
 docs/GetHistoricalIdentityEvents200ResponseInner.md
 docs/GetOAuthClientResponse.md
@@ -810,6 +811,7 @@ docs/SetIcon200Response.md
 docs/SetIconRequest.md
 docs/SimIntegrationDetails.md
 docs/SimIntegrationDetailsAllOfBeforeProvisioningRule.md
+docs/SlimDiscoveredApplicationsInner.md
 docs/Slimcampaign.md
 docs/SodExemptCriteria.md
 docs/SodExemptCriteria1.md
@@ -1224,7 +1226,6 @@ model_delete_202_response.go
 model_delete_campaigns_request.go
 model_delete_non_employee_record_in_bulk_request.go
 model_delete_vendor_connector_mapping_200_response.go
-model_discovered_applications_inner.go
 model_dkim_attributes.go
 model_domain_address.go
 model_domain_status_dto.go
@@ -1289,6 +1290,7 @@ model_form_item_details.go
 model_form_owner.go
 model_form_used_by.go
 model_forward_approval_dto.go
+model_full_discovered_applications_inner.go
 model_fullcampaign.go
 model_fullcampaign_all_of_filter.go
 model_fullcampaign_all_of_role_composition_campaign_info.go
@@ -1298,6 +1300,7 @@ model_fullcampaign_all_of_search_campaign_info_reviewer.go
 model_fullcampaign_all_of_source_owner_campaign_info.go
 model_fullcampaign_all_of_sources_with_orphan_entitlements.go
 model_get_active_campaigns_200_response_inner.go
+model_get_discovered_applications_200_response_inner.go
 model_get_form_definition_by_key_400_response.go
 model_get_historical_identity_events_200_response_inner.go
 model_get_o_auth_client_response.go
@@ -1660,6 +1663,7 @@ model_set_icon_200_response.go
 model_set_icon_request.go
 model_sim_integration_details.go
 model_sim_integration_details_all_of_before_provisioning_rule.go
+model_slim_discovered_applications_inner.go
 model_slimcampaign.go
 model_sod_exempt_criteria.go
 model_sod_exempt_criteria_1.go

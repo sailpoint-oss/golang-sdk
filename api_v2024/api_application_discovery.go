@@ -28,6 +28,7 @@ type ApiGetDiscoveredApplicationsRequest struct {
 	ApiService *ApplicationDiscoveryAPIService
 	limit *int32
 	offset *int32
+	detail *string
 	filter *string
 	sorters *string
 }
@@ -44,7 +45,13 @@ func (r ApiGetDiscoveredApplicationsRequest) Offset(offset int32) ApiGetDiscover
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)       Filtering is supported for the following fields and operators:  **name**: *eq, sw, co*  **description**: *eq, sw, co* 
+// Determines whether slim, or increased level of detail is provided for each discovered application in the returned list. SLIM is the default behavior.
+func (r ApiGetDiscoveredApplicationsRequest) Detail(detail string) ApiGetDiscoveredApplicationsRequest {
+	r.detail = &detail
+	return r
+}
+
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)       Filtering is supported for the following fields and operators:  **name**: *eq, sw, co*  **description**: *eq, sw, co*  **createdAtStart**: *eq, le, ge*  **createdAtEnd**: *eq, le, ge*  **discoveredAtStart**: *eq, le, ge*  **discoveredAtEnd**: *eq, le, ge*  **discoverySource**: *eq, in* 
 func (r ApiGetDiscoveredApplicationsRequest) Filter(filter string) ApiGetDiscoveredApplicationsRequest {
 	r.filter = &filter
 	return r
@@ -56,7 +63,7 @@ func (r ApiGetDiscoveredApplicationsRequest) Sorters(sorters string) ApiGetDisco
 	return r
 }
 
-func (r ApiGetDiscoveredApplicationsRequest) Execute() ([][]DiscoveredApplicationsInner, *http.Response, error) {
+func (r ApiGetDiscoveredApplicationsRequest) Execute() ([]GetDiscoveredApplications200ResponseInner, *http.Response, error) {
 	return r.ApiService.GetDiscoveredApplicationsExecute(r)
 }
 
@@ -77,13 +84,13 @@ func (a *ApplicationDiscoveryAPIService) GetDiscoveredApplications(ctx context.C
 }
 
 // Execute executes the request
-//  @return [][]DiscoveredApplicationsInner
-func (a *ApplicationDiscoveryAPIService) GetDiscoveredApplicationsExecute(r ApiGetDiscoveredApplicationsRequest) ([][]DiscoveredApplicationsInner, *http.Response, error) {
+//  @return []GetDiscoveredApplications200ResponseInner
+func (a *ApplicationDiscoveryAPIService) GetDiscoveredApplicationsExecute(r ApiGetDiscoveredApplicationsRequest) ([]GetDiscoveredApplications200ResponseInner, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  [][]DiscoveredApplicationsInner
+		localVarReturnValue  []GetDiscoveredApplications200ResponseInner
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationDiscoveryAPIService.GetDiscoveredApplications")
@@ -108,6 +115,9 @@ func (a *ApplicationDiscoveryAPIService) GetDiscoveredApplicationsExecute(r ApiG
 	} else {
 		var defaultValue int32 = 0
 		r.offset = &defaultValue
+	}
+	if r.detail != nil {
+		parameterAddToQuery(localVarQueryParams, "detail", r.detail, "")
 	}
 	if r.filter != nil {
 		parameterAddToQuery(localVarQueryParams, "filter", r.filter, "")
