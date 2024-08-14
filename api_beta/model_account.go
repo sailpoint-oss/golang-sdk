@@ -40,7 +40,7 @@ type Account struct {
 	// The identity state of the identity this account is correlated to
 	IdentityState NullableString `json:"identityState,omitempty"`
 	// The connection type of the source this account is from
-	ConnectionType *string `json:"connectionType,omitempty"`
+	ConnectionType NullableString `json:"connectionType,omitempty"`
 	// The type of the account
 	Type NullableString `json:"type,omitempty"`
 	// The account attributes that are aggregated
@@ -66,7 +66,7 @@ type Account struct {
 	// Indicates if the account has entitlements
 	HasEntitlements bool `json:"hasEntitlements"`
 	Identity *AccountAllOfIdentity `json:"identity,omitempty"`
-	SourceOwner *AccountAllOfSourceOwner `json:"sourceOwner,omitempty"`
+	SourceOwner NullableAccountAllOfSourceOwner `json:"sourceOwner,omitempty"`
 	// A string list containing the owning source's features
 	Features NullableString `json:"features,omitempty"`
 	// The origin of the account either aggregated or provisioned
@@ -391,36 +391,46 @@ func (o *Account) UnsetIdentityState() {
 	o.IdentityState.Unset()
 }
 
-// GetConnectionType returns the ConnectionType field value if set, zero value otherwise.
+// GetConnectionType returns the ConnectionType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Account) GetConnectionType() string {
-	if o == nil || isNil(o.ConnectionType) {
+	if o == nil || isNil(o.ConnectionType.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ConnectionType
+	return *o.ConnectionType.Get()
 }
 
 // GetConnectionTypeOk returns a tuple with the ConnectionType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Account) GetConnectionTypeOk() (*string, bool) {
-	if o == nil || isNil(o.ConnectionType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ConnectionType, true
+	return o.ConnectionType.Get(), o.ConnectionType.IsSet()
 }
 
 // HasConnectionType returns a boolean if a field has been set.
 func (o *Account) HasConnectionType() bool {
-	if o != nil && !isNil(o.ConnectionType) {
+	if o != nil && o.ConnectionType.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetConnectionType gets a reference to the given string and assigns it to the ConnectionType field.
+// SetConnectionType gets a reference to the given NullableString and assigns it to the ConnectionType field.
 func (o *Account) SetConnectionType(v string) {
-	o.ConnectionType = &v
+	o.ConnectionType.Set(&v)
+}
+// SetConnectionTypeNil sets the value for ConnectionType to be an explicit nil
+func (o *Account) SetConnectionTypeNil() {
+	o.ConnectionType.Set(nil)
+}
+
+// UnsetConnectionType ensures that no value is present for ConnectionType, not even an explicit nil
+func (o *Account) UnsetConnectionType() {
+	o.ConnectionType.Unset()
 }
 
 // GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -799,36 +809,46 @@ func (o *Account) SetIdentity(v AccountAllOfIdentity) {
 	o.Identity = &v
 }
 
-// GetSourceOwner returns the SourceOwner field value if set, zero value otherwise.
+// GetSourceOwner returns the SourceOwner field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Account) GetSourceOwner() AccountAllOfSourceOwner {
-	if o == nil || isNil(o.SourceOwner) {
+	if o == nil || isNil(o.SourceOwner.Get()) {
 		var ret AccountAllOfSourceOwner
 		return ret
 	}
-	return *o.SourceOwner
+	return *o.SourceOwner.Get()
 }
 
 // GetSourceOwnerOk returns a tuple with the SourceOwner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Account) GetSourceOwnerOk() (*AccountAllOfSourceOwner, bool) {
-	if o == nil || isNil(o.SourceOwner) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SourceOwner, true
+	return o.SourceOwner.Get(), o.SourceOwner.IsSet()
 }
 
 // HasSourceOwner returns a boolean if a field has been set.
 func (o *Account) HasSourceOwner() bool {
-	if o != nil && !isNil(o.SourceOwner) {
+	if o != nil && o.SourceOwner.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSourceOwner gets a reference to the given AccountAllOfSourceOwner and assigns it to the SourceOwner field.
+// SetSourceOwner gets a reference to the given NullableAccountAllOfSourceOwner and assigns it to the SourceOwner field.
 func (o *Account) SetSourceOwner(v AccountAllOfSourceOwner) {
-	o.SourceOwner = &v
+	o.SourceOwner.Set(&v)
+}
+// SetSourceOwnerNil sets the value for SourceOwner to be an explicit nil
+func (o *Account) SetSourceOwnerNil() {
+	o.SourceOwner.Set(nil)
+}
+
+// UnsetSourceOwner ensures that no value is present for SourceOwner, not even an explicit nil
+func (o *Account) UnsetSourceOwner() {
+	o.SourceOwner.Unset()
 }
 
 // GetFeatures returns the Features field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1024,8 +1044,8 @@ func (o Account) ToMap() (map[string]interface{}, error) {
 	if o.IdentityState.IsSet() {
 		toSerialize["identityState"] = o.IdentityState.Get()
 	}
-	if !isNil(o.ConnectionType) {
-		toSerialize["connectionType"] = o.ConnectionType
+	if o.ConnectionType.IsSet() {
+		toSerialize["connectionType"] = o.ConnectionType.Get()
 	}
 	if o.Type.IsSet() {
 		toSerialize["type"] = o.Type.Get()
@@ -1050,8 +1070,8 @@ func (o Account) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Identity) {
 		toSerialize["identity"] = o.Identity
 	}
-	if !isNil(o.SourceOwner) {
-		toSerialize["sourceOwner"] = o.SourceOwner
+	if o.SourceOwner.IsSet() {
+		toSerialize["sourceOwner"] = o.SourceOwner.Get()
 	}
 	if o.Features.IsSet() {
 		toSerialize["features"] = o.Features.Get()

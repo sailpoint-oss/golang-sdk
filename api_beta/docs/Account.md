@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **IdentityId** | Pointer to **string** | The unique ID of the identity this account is correlated to | [optional] 
 **CloudLifecycleState** | Pointer to **NullableString** | The lifecycle state of the identity this account is correlated to | [optional] 
 **IdentityState** | Pointer to **NullableString** | The identity state of the identity this account is correlated to | [optional] 
-**ConnectionType** | Pointer to **string** | The connection type of the source this account is from | [optional] 
+**ConnectionType** | Pointer to **NullableString** | The connection type of the source this account is from | [optional] 
 **Type** | Pointer to **NullableString** | The type of the account | [optional] 
 **Attributes** | **map[string]interface{}** | The account attributes that are aggregated | 
 **Authoritative** | **bool** | Indicates if this account is from an authoritative source | 
@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **ManuallyCorrelated** | **bool** | Indicates if the account has been manually correlated to an identity | 
 **HasEntitlements** | **bool** | Indicates if the account has entitlements | 
 **Identity** | Pointer to [**AccountAllOfIdentity**](AccountAllOfIdentity.md) |  | [optional] 
-**SourceOwner** | Pointer to [**AccountAllOfSourceOwner**](AccountAllOfSourceOwner.md) |  | [optional] 
+**SourceOwner** | Pointer to [**NullableAccountAllOfSourceOwner**](AccountAllOfSourceOwner.md) |  | [optional] 
 **Features** | Pointer to **NullableString** | A string list containing the owning source&#39;s features | [optional] 
 **Origin** | Pointer to **NullableString** | The origin of the account either aggregated or provisioned | [optional] 
 **OwnerIdentity** | Pointer to [**NullableAccountAllOfOwnerIdentity**](AccountAllOfOwnerIdentity.md) |  | [optional] 
@@ -307,6 +307,16 @@ SetConnectionType sets ConnectionType field to given value.
 
 HasConnectionType returns a boolean if a field has been set.
 
+### SetConnectionTypeNil
+
+`func (o *Account) SetConnectionTypeNil(b bool)`
+
+ SetConnectionTypeNil sets the value for ConnectionType to be an explicit nil
+
+### UnsetConnectionType
+`func (o *Account) UnsetConnectionType()`
+
+UnsetConnectionType ensures that no value is present for ConnectionType, not even an explicit nil
 ### GetType
 
 `func (o *Account) GetType() string`
@@ -652,6 +662,16 @@ SetSourceOwner sets SourceOwner field to given value.
 
 HasSourceOwner returns a boolean if a field has been set.
 
+### SetSourceOwnerNil
+
+`func (o *Account) SetSourceOwnerNil(b bool)`
+
+ SetSourceOwnerNil sets the value for SourceOwner to be an explicit nil
+
+### UnsetSourceOwner
+`func (o *Account) UnsetSourceOwner()`
+
+UnsetSourceOwner ensures that no value is present for SourceOwner, not even an explicit nil
 ### GetFeatures
 
 `func (o *Account) GetFeatures() string`
