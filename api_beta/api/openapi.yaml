@@ -11616,9 +11616,12 @@ paths:
         Any authenticated token can call this API.
       operationId: listEntitlements
       parameters:
-      - description: "The account ID. If specified, returns only entitlements associated\
+      - deprecated: true
+        description: "The account ID. If specified, returns only entitlements associated\
           \ with the given Account. Cannot be specified with the **filters**, **segmented-for-identity**,\
-          \ **for-segment-ids**, or **include-unsegmented** param(s)."
+          \ **for-segment-ids**, or **include-unsegmented** param(s). This parameter\
+          \ is deprecated. Please use [Account Entitlements API](https://developer.sailpoint.com/apis/beta/#operation/getAccountEntitlements)\
+          \ to get account entitlements."
         example: ef38f94347e94562b5bb8424a56397d8
         in: query
         name: account-id

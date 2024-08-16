@@ -1333,7 +1333,8 @@ type ApiListEntitlementsRequest struct {
 	filters *string
 }
 
-// The account ID. If specified, returns only entitlements associated with the given Account. Cannot be specified with the **filters**, **segmented-for-identity**, **for-segment-ids**, or **include-unsegmented** param(s).
+// The account ID. If specified, returns only entitlements associated with the given Account. Cannot be specified with the **filters**, **segmented-for-identity**, **for-segment-ids**, or **include-unsegmented** param(s). This parameter is deprecated. Please use [Account Entitlements API](https://developer.sailpoint.com/apis/beta/#operation/getAccountEntitlements) to get account entitlements.
+// Deprecated
 func (r ApiListEntitlementsRequest) AccountId(accountId string) ApiListEntitlementsRequest {
 	r.accountId = &accountId
 	return r
