@@ -399,7 +399,7 @@ docs/FormItemDetails.md
 docs/FormOwner.md
 docs/FormUsedBy.md
 docs/ForwardApprovalDto.md
-docs/FullDiscoveredApplicationsInner.md
+docs/FullDiscoveredApplications.md
 docs/Fullcampaign.md
 docs/FullcampaignAllOfFilter.md
 docs/FullcampaignAllOfRoleCompositionCampaignInfo.md
@@ -811,7 +811,7 @@ docs/SetIcon200Response.md
 docs/SetIconRequest.md
 docs/SimIntegrationDetails.md
 docs/SimIntegrationDetailsAllOfBeforeProvisioningRule.md
-docs/SlimDiscoveredApplicationsInner.md
+docs/SlimDiscoveredApplications.md
 docs/Slimcampaign.md
 docs/SodExemptCriteria.md
 docs/SodExemptCriteria1.md
@@ -1290,7 +1290,7 @@ model_form_item_details.go
 model_form_owner.go
 model_form_used_by.go
 model_forward_approval_dto.go
-model_full_discovered_applications_inner.go
+model_full_discovered_applications.go
 model_fullcampaign.go
 model_fullcampaign_all_of_filter.go
 model_fullcampaign_all_of_role_composition_campaign_info.go
@@ -1663,7 +1663,7 @@ model_set_icon_200_response.go
 model_set_icon_request.go
 model_sim_integration_details.go
 model_sim_integration_details_all_of_before_provisioning_rule.go
-model_slim_discovered_applications_inner.go
+model_slim_discovered_applications.go
 model_slimcampaign.go
 model_sod_exempt_criteria.go
 model_sod_exempt_criteria_1.go

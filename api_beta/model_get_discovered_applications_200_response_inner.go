@@ -17,21 +17,21 @@ import (
 
 // GetDiscoveredApplications200ResponseInner - struct for GetDiscoveredApplications200ResponseInner
 type GetDiscoveredApplications200ResponseInner struct {
-	ArrayOfFullDiscoveredApplicationsInner *[]FullDiscoveredApplicationsInner
-	ArrayOfSlimDiscoveredApplicationsInner *[]SlimDiscoveredApplicationsInner
+	FullDiscoveredApplications *FullDiscoveredApplications
+	SlimDiscoveredApplications *SlimDiscoveredApplications
 }
 
-// []FullDiscoveredApplicationsInnerAsGetDiscoveredApplications200ResponseInner is a convenience function that returns []FullDiscoveredApplicationsInner wrapped in GetDiscoveredApplications200ResponseInner
-func ArrayOfFullDiscoveredApplicationsInnerAsGetDiscoveredApplications200ResponseInner(v *[]FullDiscoveredApplicationsInner) GetDiscoveredApplications200ResponseInner {
+// FullDiscoveredApplicationsAsGetDiscoveredApplications200ResponseInner is a convenience function that returns FullDiscoveredApplications wrapped in GetDiscoveredApplications200ResponseInner
+func FullDiscoveredApplicationsAsGetDiscoveredApplications200ResponseInner(v *FullDiscoveredApplications) GetDiscoveredApplications200ResponseInner {
 	return GetDiscoveredApplications200ResponseInner{
-		ArrayOfFullDiscoveredApplicationsInner: v,
+		FullDiscoveredApplications: v,
 	}
 }
 
-// []SlimDiscoveredApplicationsInnerAsGetDiscoveredApplications200ResponseInner is a convenience function that returns []SlimDiscoveredApplicationsInner wrapped in GetDiscoveredApplications200ResponseInner
-func ArrayOfSlimDiscoveredApplicationsInnerAsGetDiscoveredApplications200ResponseInner(v *[]SlimDiscoveredApplicationsInner) GetDiscoveredApplications200ResponseInner {
+// SlimDiscoveredApplicationsAsGetDiscoveredApplications200ResponseInner is a convenience function that returns SlimDiscoveredApplications wrapped in GetDiscoveredApplications200ResponseInner
+func SlimDiscoveredApplicationsAsGetDiscoveredApplications200ResponseInner(v *SlimDiscoveredApplications) GetDiscoveredApplications200ResponseInner {
 	return GetDiscoveredApplications200ResponseInner{
-		ArrayOfSlimDiscoveredApplicationsInner: v,
+		SlimDiscoveredApplications: v,
 	}
 }
 
@@ -40,36 +40,36 @@ func ArrayOfSlimDiscoveredApplicationsInnerAsGetDiscoveredApplications200Respons
 func (dst *GetDiscoveredApplications200ResponseInner) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
-	// try to unmarshal data into ArrayOfFullDiscoveredApplicationsInner
-	err = newStrictDecoder(data).Decode(&dst.ArrayOfFullDiscoveredApplicationsInner)
+	// try to unmarshal data into FullDiscoveredApplications
+	err = newStrictDecoder(data).Decode(&dst.FullDiscoveredApplications)
 	if err == nil {
-		jsonArrayOfFullDiscoveredApplicationsInner, _ := json.Marshal(dst.ArrayOfFullDiscoveredApplicationsInner)
-		if string(jsonArrayOfFullDiscoveredApplicationsInner) == "{}" { // empty struct
-			dst.ArrayOfFullDiscoveredApplicationsInner = nil
+		jsonFullDiscoveredApplications, _ := json.Marshal(dst.FullDiscoveredApplications)
+		if string(jsonFullDiscoveredApplications) == "{}" { // empty struct
+			dst.FullDiscoveredApplications = nil
 		} else {
 			match++
 		}
 	} else {
-		dst.ArrayOfFullDiscoveredApplicationsInner = nil
+		dst.FullDiscoveredApplications = nil
 	}
 
-	// try to unmarshal data into ArrayOfSlimDiscoveredApplicationsInner
-	err = newStrictDecoder(data).Decode(&dst.ArrayOfSlimDiscoveredApplicationsInner)
+	// try to unmarshal data into SlimDiscoveredApplications
+	err = newStrictDecoder(data).Decode(&dst.SlimDiscoveredApplications)
 	if err == nil {
-		jsonArrayOfSlimDiscoveredApplicationsInner, _ := json.Marshal(dst.ArrayOfSlimDiscoveredApplicationsInner)
-		if string(jsonArrayOfSlimDiscoveredApplicationsInner) == "{}" { // empty struct
-			dst.ArrayOfSlimDiscoveredApplicationsInner = nil
+		jsonSlimDiscoveredApplications, _ := json.Marshal(dst.SlimDiscoveredApplications)
+		if string(jsonSlimDiscoveredApplications) == "{}" { // empty struct
+			dst.SlimDiscoveredApplications = nil
 		} else {
 			match++
 		}
 	} else {
-		dst.ArrayOfSlimDiscoveredApplicationsInner = nil
+		dst.SlimDiscoveredApplications = nil
 	}
 
 	if match > 1 { // more than 1 match
 		// reset to nil
-		dst.ArrayOfFullDiscoveredApplicationsInner = nil
-		dst.ArrayOfSlimDiscoveredApplicationsInner = nil
+		dst.FullDiscoveredApplications = nil
+		dst.SlimDiscoveredApplications = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(GetDiscoveredApplications200ResponseInner)")
 	} else if match == 1 {
@@ -81,12 +81,12 @@ func (dst *GetDiscoveredApplications200ResponseInner) UnmarshalJSON(data []byte)
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src GetDiscoveredApplications200ResponseInner) MarshalJSON() ([]byte, error) {
-	if src.ArrayOfFullDiscoveredApplicationsInner != nil {
-		return json.Marshal(&src.ArrayOfFullDiscoveredApplicationsInner)
+	if src.FullDiscoveredApplications != nil {
+		return json.Marshal(&src.FullDiscoveredApplications)
 	}
 
-	if src.ArrayOfSlimDiscoveredApplicationsInner != nil {
-		return json.Marshal(&src.ArrayOfSlimDiscoveredApplicationsInner)
+	if src.SlimDiscoveredApplications != nil {
+		return json.Marshal(&src.SlimDiscoveredApplications)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -97,12 +97,12 @@ func (obj *GetDiscoveredApplications200ResponseInner) GetActualInstance() (inter
 	if obj == nil {
 		return nil
 	}
-	if obj.ArrayOfFullDiscoveredApplicationsInner != nil {
-		return obj.ArrayOfFullDiscoveredApplicationsInner
+	if obj.FullDiscoveredApplications != nil {
+		return obj.FullDiscoveredApplications
 	}
 
-	if obj.ArrayOfSlimDiscoveredApplicationsInner != nil {
-		return obj.ArrayOfSlimDiscoveredApplicationsInner
+	if obj.SlimDiscoveredApplications != nil {
+		return obj.SlimDiscoveredApplications
 	}
 
 	// all schemas are nil

@@ -88835,22 +88835,124 @@ components:
           type: object
       type: object
     SlimDiscoveredApplications:
-      description: List of discovered applications
-      example:
-      - $ref: ../schemas/discovered-applications/examples/SlimDiscoveredApplications.yaml
-      items:
-        $ref: '#/components/schemas/SlimDiscoveredApplications_inner'
+      description: Discovered applications
+      properties:
+        id:
+          description: Unique identifier for the discovered application.
+          format: uuid
+          type: string
+        name:
+          description: Name of the discovered application.
+          example: ExampleApp
+          type: string
+        discoverySource:
+          description: Source from which the application was discovered.
+          example: csv
+          type: string
+        discoveredVendor:
+          description: The vendor associated with the discovered application.
+          example: ExampleVendor
+          type: string
+        description:
+          description: A brief description of the discovered application.
+          example: An application for managing examples.
+          type: string
+        recommendedConnectors:
+          description: List of recommended connectors for the application.
+          example:
+          - ConnectorA
+          - ConnectorB
+          items:
+            type: string
+          type: array
+        discoveredAt:
+          description: "The timestamp when the application was last received via an\
+            \ entitlement aggregation invocation  or a manual csv upload, in ISO 8601\
+            \ format."
+          example: 2023-01-01T12:00:00Z
+          format: date-time
+          type: string
+        createdAt:
+          description: "The timestamp when the application was first discovered, in\
+            \ ISO 8601 format."
+          example: 2023-01-01T12:00:00Z
+          format: date-time
+          type: string
+        status:
+          description: |-
+            The status of an application within the discovery source.
+
+            By default this field is set to "ACTIVE" when the application is discovered.
+
+            If an application has been deleted from within the discovery source, the status will be set to "INACTIVE".
+          example: ACTIVE
+          type: string
       title: Slim Discovered Application
-      type: array
+      type: object
     FullDiscoveredApplications:
-      description: List of discovered applications with their respective associated
-        sources
-      example:
-      - $ref: ../schemas/discovered-applications/examples/FullDiscoveredApplications.yaml
-      items:
-        $ref: '#/components/schemas/FullDiscoveredApplications_inner'
+      description: Discovered applications with their respective associated sources
+      properties:
+        id:
+          description: Unique identifier for the discovered application.
+          format: uuid
+          type: string
+        name:
+          description: Name of the discovered application.
+          example: ExampleApp
+          type: string
+        discoverySource:
+          description: Source from which the application was discovered.
+          example: csv
+          type: string
+        discoveredVendor:
+          description: The vendor associated with the discovered application.
+          example: ExampleVendor
+          type: string
+        description:
+          description: A brief description of the discovered application.
+          example: An application for managing examples.
+          type: string
+        recommendedConnectors:
+          description: List of recommended connectors for the application.
+          example:
+          - ConnectorA
+          - ConnectorB
+          items:
+            type: string
+          type: array
+        discoveredAt:
+          description: "The timestamp when the application was last received via an\
+            \ entitlement aggregation invocation  or a manual csv upload, in ISO 8601\
+            \ format."
+          example: 2023-01-01T12:00:00Z
+          format: date-time
+          type: string
+        createdAt:
+          description: "The timestamp when the application was first discovered, in\
+            \ ISO 8601 format."
+          example: 2023-01-01T12:00:00Z
+          format: date-time
+          type: string
+        status:
+          description: |-
+            The status of an application within the discovery source.
+
+            By default this field is set to "ACTIVE" when the application is discovered.
+
+            If an application has been deleted from within the discovery source, the status will be set to "INACTIVE".
+          example: ACTIVE
+          type: string
+        associatedSources:
+          description: List of associated sources related to this discovered application.
+          example:
+          - e0cc5d7d-bf7f-4f81-b2af-8885b09d9923
+          - a0303682-5e4a-44f7-bdc2-6ce6112549c1
+          items:
+            format: uuid
+            type: string
+          type: array
       title: Discovered Application
-      type: array
+      type: object
     ManualDiscoverApplicationsTemplate:
       example:
         application_name: Example Application
@@ -101805,121 +101907,6 @@ components:
           x-go-name: FormDefinitionID
       type: object
       x-go-name: Attributes
-    SlimDiscoveredApplications_inner:
-      properties:
-        id:
-          description: Unique identifier for the discovered application.
-          format: uuid
-          type: string
-        name:
-          description: Name of the discovered application.
-          example: ExampleApp
-          type: string
-        discoverySource:
-          description: Source from which the application was discovered.
-          example: csv
-          type: string
-        discoveredVendor:
-          description: The vendor associated with the discovered application.
-          example: ExampleVendor
-          type: string
-        description:
-          description: A brief description of the discovered application.
-          example: An application for managing examples.
-          type: string
-        recommendedConnectors:
-          description: List of recommended connectors for the application.
-          example:
-          - ConnectorA
-          - ConnectorB
-          items:
-            type: string
-          type: array
-        discoveredAt:
-          description: "The timestamp when the application was last received via an\
-            \ entitlement aggregation invocation  or a manual csv upload, in ISO 8601\
-            \ format."
-          example: 2023-01-01T12:00:00Z
-          format: date-time
-          type: string
-        createdAt:
-          description: "The timestamp when the application was first discovered, in\
-            \ ISO 8601 format."
-          example: 2023-01-01T12:00:00Z
-          format: date-time
-          type: string
-        status:
-          description: |-
-            The status of an application within the discovery source.
-
-            By default this field is set to "ACTIVE" when the application is discovered.
-
-            If an application has been deleted from within the discovery source, the status will be set to "INACTIVE".
-          example: ACTIVE
-          type: string
-      type: object
-    FullDiscoveredApplications_inner:
-      properties:
-        id:
-          description: Unique identifier for the discovered application.
-          format: uuid
-          type: string
-        name:
-          description: Name of the discovered application.
-          example: ExampleApp
-          type: string
-        discoverySource:
-          description: Source from which the application was discovered.
-          example: csv
-          type: string
-        discoveredVendor:
-          description: The vendor associated with the discovered application.
-          example: ExampleVendor
-          type: string
-        description:
-          description: A brief description of the discovered application.
-          example: An application for managing examples.
-          type: string
-        recommendedConnectors:
-          description: List of recommended connectors for the application.
-          example:
-          - ConnectorA
-          - ConnectorB
-          items:
-            type: string
-          type: array
-        discoveredAt:
-          description: "The timestamp when the application was last received via an\
-            \ entitlement aggregation invocation  or a manual csv upload, in ISO 8601\
-            \ format."
-          example: 2023-01-01T12:00:00Z
-          format: date-time
-          type: string
-        createdAt:
-          description: "The timestamp when the application was first discovered, in\
-            \ ISO 8601 format."
-          example: 2023-01-01T12:00:00Z
-          format: date-time
-          type: string
-        status:
-          description: |-
-            The status of an application within the discovery source.
-
-            By default this field is set to "ACTIVE" when the application is discovered.
-
-            If an application has been deleted from within the discovery source, the status will be set to "INACTIVE".
-          example: ACTIVE
-          type: string
-        associatedSources:
-          description: List of associated sources related to this discovered application.
-          example:
-          - e0cc5d7d-bf7f-4f81-b2af-8885b09d9923
-          - a0303682-5e4a-44f7-bdc2-6ce6112549c1
-          items:
-            format: uuid
-            type: string
-          type: array
-      type: object
     VendorConnectorMapping_updatedAt:
       description: An object representing the nullable timestamp of the last update.
       example:

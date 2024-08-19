@@ -480,7 +480,7 @@ docs/FormItemDetails.md
 docs/FormOwner.md
 docs/FormUsedBy.md
 docs/ForwardApprovalDto.md
-docs/FullDiscoveredApplicationsInner.md
+docs/FullDiscoveredApplications.md
 docs/GetActiveCampaigns200ResponseInner.md
 docs/GetDiscoveredApplications200ResponseInner.md
 docs/GetHistoricalIdentityEvents200ResponseInner.md
@@ -950,7 +950,7 @@ docs/SetLifecycleStateRequest.md
 docs/SimIntegrationDetails.md
 docs/SimIntegrationDetailsAllOfBeforeProvisioningRule.md
 docs/SlimCampaign.md
-docs/SlimDiscoveredApplicationsInner.md
+docs/SlimDiscoveredApplications.md
 docs/SodExemptCriteria.md
 docs/SodPolicy.md
 docs/SodPolicyConflictingAccessCriteria.md
@@ -1500,7 +1500,7 @@ model_form_item_details.go
 model_form_owner.go
 model_form_used_by.go
 model_forward_approval_dto.go
-model_full_discovered_applications_inner.go
+model_full_discovered_applications.go
 model_get_active_campaigns_200_response_inner.go
 model_get_discovered_applications_200_response_inner.go
 model_get_historical_identity_events_200_response_inner.go
@@ -1927,7 +1927,7 @@ model_set_lifecycle_state_request.go
 model_sim_integration_details.go
 model_sim_integration_details_all_of_before_provisioning_rule.go
 model_slim_campaign.go
-model_slim_discovered_applications_inner.go
+model_slim_discovered_applications.go
 model_sod_exempt_criteria.go
 model_sod_policy.go
 model_sod_policy_conflicting_access_criteria.go

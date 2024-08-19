@@ -1,4 +1,4 @@
-# SlimDiscoveredApplicationsInner
+# FullDiscoveredApplications
 
 ## Properties
 
@@ -13,250 +13,276 @@ Name | Type | Description | Notes
 **DiscoveredAt** | Pointer to **time.Time** | The timestamp when the application was last received via an entitlement aggregation invocation  or a manual csv upload, in ISO 8601 format. | [optional] 
 **CreatedAt** | Pointer to **time.Time** | The timestamp when the application was first discovered, in ISO 8601 format. | [optional] 
 **Status** | Pointer to **string** | The status of an application within the discovery source.  By default this field is set to \&quot;ACTIVE\&quot; when the application is discovered.  If an application has been deleted from within the discovery source, the status will be set to \&quot;INACTIVE\&quot;. | [optional] 
+**AssociatedSources** | Pointer to **[]string** | List of associated sources related to this discovered application. | [optional] 
 
 ## Methods
 
-### NewSlimDiscoveredApplicationsInner
+### NewFullDiscoveredApplications
 
-`func NewSlimDiscoveredApplicationsInner() *SlimDiscoveredApplicationsInner`
+`func NewFullDiscoveredApplications() *FullDiscoveredApplications`
 
-NewSlimDiscoveredApplicationsInner instantiates a new SlimDiscoveredApplicationsInner object
+NewFullDiscoveredApplications instantiates a new FullDiscoveredApplications object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewSlimDiscoveredApplicationsInnerWithDefaults
+### NewFullDiscoveredApplicationsWithDefaults
 
-`func NewSlimDiscoveredApplicationsInnerWithDefaults() *SlimDiscoveredApplicationsInner`
+`func NewFullDiscoveredApplicationsWithDefaults() *FullDiscoveredApplications`
 
-NewSlimDiscoveredApplicationsInnerWithDefaults instantiates a new SlimDiscoveredApplicationsInner object
+NewFullDiscoveredApplicationsWithDefaults instantiates a new FullDiscoveredApplications object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *SlimDiscoveredApplicationsInner) GetId() string`
+`func (o *FullDiscoveredApplications) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *SlimDiscoveredApplicationsInner) GetIdOk() (*string, bool)`
+`func (o *FullDiscoveredApplications) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *SlimDiscoveredApplicationsInner) SetId(v string)`
+`func (o *FullDiscoveredApplications) SetId(v string)`
 
 SetId sets Id field to given value.
 
 ### HasId
 
-`func (o *SlimDiscoveredApplicationsInner) HasId() bool`
+`func (o *FullDiscoveredApplications) HasId() bool`
 
 HasId returns a boolean if a field has been set.
 
 ### GetName
 
-`func (o *SlimDiscoveredApplicationsInner) GetName() string`
+`func (o *FullDiscoveredApplications) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *SlimDiscoveredApplicationsInner) GetNameOk() (*string, bool)`
+`func (o *FullDiscoveredApplications) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *SlimDiscoveredApplicationsInner) SetName(v string)`
+`func (o *FullDiscoveredApplications) SetName(v string)`
 
 SetName sets Name field to given value.
 
 ### HasName
 
-`func (o *SlimDiscoveredApplicationsInner) HasName() bool`
+`func (o *FullDiscoveredApplications) HasName() bool`
 
 HasName returns a boolean if a field has been set.
 
 ### GetDiscoverySource
 
-`func (o *SlimDiscoveredApplicationsInner) GetDiscoverySource() string`
+`func (o *FullDiscoveredApplications) GetDiscoverySource() string`
 
 GetDiscoverySource returns the DiscoverySource field if non-nil, zero value otherwise.
 
 ### GetDiscoverySourceOk
 
-`func (o *SlimDiscoveredApplicationsInner) GetDiscoverySourceOk() (*string, bool)`
+`func (o *FullDiscoveredApplications) GetDiscoverySourceOk() (*string, bool)`
 
 GetDiscoverySourceOk returns a tuple with the DiscoverySource field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDiscoverySource
 
-`func (o *SlimDiscoveredApplicationsInner) SetDiscoverySource(v string)`
+`func (o *FullDiscoveredApplications) SetDiscoverySource(v string)`
 
 SetDiscoverySource sets DiscoverySource field to given value.
 
 ### HasDiscoverySource
 
-`func (o *SlimDiscoveredApplicationsInner) HasDiscoverySource() bool`
+`func (o *FullDiscoveredApplications) HasDiscoverySource() bool`
 
 HasDiscoverySource returns a boolean if a field has been set.
 
 ### GetDiscoveredVendor
 
-`func (o *SlimDiscoveredApplicationsInner) GetDiscoveredVendor() string`
+`func (o *FullDiscoveredApplications) GetDiscoveredVendor() string`
 
 GetDiscoveredVendor returns the DiscoveredVendor field if non-nil, zero value otherwise.
 
 ### GetDiscoveredVendorOk
 
-`func (o *SlimDiscoveredApplicationsInner) GetDiscoveredVendorOk() (*string, bool)`
+`func (o *FullDiscoveredApplications) GetDiscoveredVendorOk() (*string, bool)`
 
 GetDiscoveredVendorOk returns a tuple with the DiscoveredVendor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDiscoveredVendor
 
-`func (o *SlimDiscoveredApplicationsInner) SetDiscoveredVendor(v string)`
+`func (o *FullDiscoveredApplications) SetDiscoveredVendor(v string)`
 
 SetDiscoveredVendor sets DiscoveredVendor field to given value.
 
 ### HasDiscoveredVendor
 
-`func (o *SlimDiscoveredApplicationsInner) HasDiscoveredVendor() bool`
+`func (o *FullDiscoveredApplications) HasDiscoveredVendor() bool`
 
 HasDiscoveredVendor returns a boolean if a field has been set.
 
 ### GetDescription
 
-`func (o *SlimDiscoveredApplicationsInner) GetDescription() string`
+`func (o *FullDiscoveredApplications) GetDescription() string`
 
 GetDescription returns the Description field if non-nil, zero value otherwise.
 
 ### GetDescriptionOk
 
-`func (o *SlimDiscoveredApplicationsInner) GetDescriptionOk() (*string, bool)`
+`func (o *FullDiscoveredApplications) GetDescriptionOk() (*string, bool)`
 
 GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDescription
 
-`func (o *SlimDiscoveredApplicationsInner) SetDescription(v string)`
+`func (o *FullDiscoveredApplications) SetDescription(v string)`
 
 SetDescription sets Description field to given value.
 
 ### HasDescription
 
-`func (o *SlimDiscoveredApplicationsInner) HasDescription() bool`
+`func (o *FullDiscoveredApplications) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
 
 ### GetRecommendedConnectors
 
-`func (o *SlimDiscoveredApplicationsInner) GetRecommendedConnectors() []string`
+`func (o *FullDiscoveredApplications) GetRecommendedConnectors() []string`
 
 GetRecommendedConnectors returns the RecommendedConnectors field if non-nil, zero value otherwise.
 
 ### GetRecommendedConnectorsOk
 
-`func (o *SlimDiscoveredApplicationsInner) GetRecommendedConnectorsOk() (*[]string, bool)`
+`func (o *FullDiscoveredApplications) GetRecommendedConnectorsOk() (*[]string, bool)`
 
 GetRecommendedConnectorsOk returns a tuple with the RecommendedConnectors field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRecommendedConnectors
 
-`func (o *SlimDiscoveredApplicationsInner) SetRecommendedConnectors(v []string)`
+`func (o *FullDiscoveredApplications) SetRecommendedConnectors(v []string)`
 
 SetRecommendedConnectors sets RecommendedConnectors field to given value.
 
 ### HasRecommendedConnectors
 
-`func (o *SlimDiscoveredApplicationsInner) HasRecommendedConnectors() bool`
+`func (o *FullDiscoveredApplications) HasRecommendedConnectors() bool`
 
 HasRecommendedConnectors returns a boolean if a field has been set.
 
 ### GetDiscoveredAt
 
-`func (o *SlimDiscoveredApplicationsInner) GetDiscoveredAt() time.Time`
+`func (o *FullDiscoveredApplications) GetDiscoveredAt() time.Time`
 
 GetDiscoveredAt returns the DiscoveredAt field if non-nil, zero value otherwise.
 
 ### GetDiscoveredAtOk
 
-`func (o *SlimDiscoveredApplicationsInner) GetDiscoveredAtOk() (*time.Time, bool)`
+`func (o *FullDiscoveredApplications) GetDiscoveredAtOk() (*time.Time, bool)`
 
 GetDiscoveredAtOk returns a tuple with the DiscoveredAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDiscoveredAt
 
-`func (o *SlimDiscoveredApplicationsInner) SetDiscoveredAt(v time.Time)`
+`func (o *FullDiscoveredApplications) SetDiscoveredAt(v time.Time)`
 
 SetDiscoveredAt sets DiscoveredAt field to given value.
 
 ### HasDiscoveredAt
 
-`func (o *SlimDiscoveredApplicationsInner) HasDiscoveredAt() bool`
+`func (o *FullDiscoveredApplications) HasDiscoveredAt() bool`
 
 HasDiscoveredAt returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
-`func (o *SlimDiscoveredApplicationsInner) GetCreatedAt() time.Time`
+`func (o *FullDiscoveredApplications) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *SlimDiscoveredApplicationsInner) GetCreatedAtOk() (*time.Time, bool)`
+`func (o *FullDiscoveredApplications) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *SlimDiscoveredApplicationsInner) SetCreatedAt(v time.Time)`
+`func (o *FullDiscoveredApplications) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
 ### HasCreatedAt
 
-`func (o *SlimDiscoveredApplicationsInner) HasCreatedAt() bool`
+`func (o *FullDiscoveredApplications) HasCreatedAt() bool`
 
 HasCreatedAt returns a boolean if a field has been set.
 
 ### GetStatus
 
-`func (o *SlimDiscoveredApplicationsInner) GetStatus() string`
+`func (o *FullDiscoveredApplications) GetStatus() string`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *SlimDiscoveredApplicationsInner) GetStatusOk() (*string, bool)`
+`func (o *FullDiscoveredApplications) GetStatusOk() (*string, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *SlimDiscoveredApplicationsInner) SetStatus(v string)`
+`func (o *FullDiscoveredApplications) SetStatus(v string)`
 
 SetStatus sets Status field to given value.
 
 ### HasStatus
 
-`func (o *SlimDiscoveredApplicationsInner) HasStatus() bool`
+`func (o *FullDiscoveredApplications) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### GetAssociatedSources
+
+`func (o *FullDiscoveredApplications) GetAssociatedSources() []string`
+
+GetAssociatedSources returns the AssociatedSources field if non-nil, zero value otherwise.
+
+### GetAssociatedSourcesOk
+
+`func (o *FullDiscoveredApplications) GetAssociatedSourcesOk() (*[]string, bool)`
+
+GetAssociatedSourcesOk returns a tuple with the AssociatedSources field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAssociatedSources
+
+`func (o *FullDiscoveredApplications) SetAssociatedSources(v []string)`
+
+SetAssociatedSources sets AssociatedSources field to given value.
+
+### HasAssociatedSources
+
+`func (o *FullDiscoveredApplications) HasAssociatedSources() bool`
+
+HasAssociatedSources returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
