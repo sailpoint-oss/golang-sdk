@@ -76495,6 +76495,7 @@ components:
           $ref: '#/components/schemas/ManagedClusterTypes'
         configuration:
           additionalProperties:
+            nullable: true
             type: string
           description: ManagedProcess configuration map
           example:
