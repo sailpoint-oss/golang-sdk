@@ -9957,7 +9957,7 @@ paths:
 
           **phase**: *eq*
 
-          **completed**: *eq, ne*
+          **completed**: *eq*
         example: id eq "ef38f94347e94562b5bb8424a56397d8"
         in: query
         name: filters
@@ -47750,7 +47750,7 @@ components:
           - CORRELATED
           - UNCORRELATED
           example: CORRELATED
-          type: object
+          type: string
         mandatoryCommentRequirement:
           description: "Determines whether comments are required for decisions during\
             \ certification reviews. You can require comments for all decisions, revoke-only\

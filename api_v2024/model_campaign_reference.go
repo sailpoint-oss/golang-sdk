@@ -31,7 +31,7 @@ type CampaignReference struct {
 	// The description of the campaign set by the admin who created it.
 	Description NullableString `json:"description"`
 	// The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source).
-	CorrelatedStatus map[string]interface{} `json:"correlatedStatus"`
+	CorrelatedStatus string `json:"correlatedStatus"`
 	// Determines whether comments are required for decisions during certification reviews. You can require comments for all decisions, revoke-only decisions, or no decisions. By default, comments are not required for decisions.
 	MandatoryCommentRequirement string `json:"mandatoryCommentRequirement"`
 	AdditionalProperties map[string]interface{}
@@ -43,7 +43,7 @@ type _CampaignReference CampaignReference
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCampaignReference(id string, name string, type_ string, campaignType string, description NullableString, correlatedStatus map[string]interface{}, mandatoryCommentRequirement string) *CampaignReference {
+func NewCampaignReference(id string, name string, type_ string, campaignType string, description NullableString, correlatedStatus string, mandatoryCommentRequirement string) *CampaignReference {
 	this := CampaignReference{}
 	this.Id = id
 	this.Name = name
@@ -186,9 +186,9 @@ func (o *CampaignReference) SetDescription(v string) {
 }
 
 // GetCorrelatedStatus returns the CorrelatedStatus field value
-func (o *CampaignReference) GetCorrelatedStatus() map[string]interface{} {
+func (o *CampaignReference) GetCorrelatedStatus() string {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret string
 		return ret
 	}
 
@@ -197,15 +197,15 @@ func (o *CampaignReference) GetCorrelatedStatus() map[string]interface{} {
 
 // GetCorrelatedStatusOk returns a tuple with the CorrelatedStatus field value
 // and a boolean to check if the value has been set.
-func (o *CampaignReference) GetCorrelatedStatusOk() (map[string]interface{}, bool) {
+func (o *CampaignReference) GetCorrelatedStatusOk() (*string, bool) {
 	if o == nil {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.CorrelatedStatus, true
+	return &o.CorrelatedStatus, true
 }
 
 // SetCorrelatedStatus sets field value
-func (o *CampaignReference) SetCorrelatedStatus(v map[string]interface{}) {
+func (o *CampaignReference) SetCorrelatedStatus(v string) {
 	o.CorrelatedStatus = v
 }
 

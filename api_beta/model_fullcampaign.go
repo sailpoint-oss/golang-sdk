@@ -40,7 +40,7 @@ type Fullcampaign struct {
 	// The campaign's current status.
 	Status *string `json:"status,omitempty"`
 	// The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source).
-	CorrelatedStatus map[string]interface{} `json:"correlatedStatus,omitempty"`
+	CorrelatedStatus *string `json:"correlatedStatus,omitempty"`
 	// Created time of the campaign
 	Created *time.Time `json:"created,omitempty"`
 	// The total number of certifications in this campaign.
@@ -367,19 +367,19 @@ func (o *Fullcampaign) SetStatus(v string) {
 }
 
 // GetCorrelatedStatus returns the CorrelatedStatus field value if set, zero value otherwise.
-func (o *Fullcampaign) GetCorrelatedStatus() map[string]interface{} {
+func (o *Fullcampaign) GetCorrelatedStatus() string {
 	if o == nil || isNil(o.CorrelatedStatus) {
-		var ret map[string]interface{}
+		var ret string
 		return ret
 	}
-	return o.CorrelatedStatus
+	return *o.CorrelatedStatus
 }
 
 // GetCorrelatedStatusOk returns a tuple with the CorrelatedStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Fullcampaign) GetCorrelatedStatusOk() (map[string]interface{}, bool) {
+func (o *Fullcampaign) GetCorrelatedStatusOk() (*string, bool) {
 	if o == nil || isNil(o.CorrelatedStatus) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.CorrelatedStatus, true
 }
@@ -393,9 +393,9 @@ func (o *Fullcampaign) HasCorrelatedStatus() bool {
 	return false
 }
 
-// SetCorrelatedStatus gets a reference to the given map[string]interface{} and assigns it to the CorrelatedStatus field.
-func (o *Fullcampaign) SetCorrelatedStatus(v map[string]interface{}) {
-	o.CorrelatedStatus = v
+// SetCorrelatedStatus gets a reference to the given string and assigns it to the CorrelatedStatus field.
+func (o *Fullcampaign) SetCorrelatedStatus(v string) {
+	o.CorrelatedStatus = &v
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.

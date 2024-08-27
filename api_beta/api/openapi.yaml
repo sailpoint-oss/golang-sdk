@@ -58255,7 +58255,7 @@ components:
             - CORRELATED
             - UNCORRELATED
             example: CORRELATED
-            type: object
+            type: string
           filter:
             $ref: '#/components/schemas/fullcampaign_allOf_filter'
           sunsetCommentsRequired:
@@ -61129,7 +61129,7 @@ components:
             - CORRELATED
             - UNCORRELATED
             example: CORRELATED
-            type: object
+            type: string
           filter:
             $ref: '#/components/schemas/fullcampaign_allOf_filter'
           sunsetCommentsRequired:
@@ -61468,7 +61468,7 @@ components:
           - CORRELATED
           - UNCORRELATED
           example: CORRELATED
-          type: object
+          type: string
         mandatoryCommentRequirement:
           description: "Determines whether comments are required for decisions during\
             \ certification reviews. You can require comments for all decisions, revoke-only\

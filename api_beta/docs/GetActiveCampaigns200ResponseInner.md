@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **AutoRevokeAllowed** | Pointer to **bool** | Allows auto revoke for this campaign | [optional] [default to false]
 **RecommendationsEnabled** | Pointer to **bool** | Enables IAI for this campaign. Accepts true even if the IAI product feature is off. If IAI is turned off then campaigns generated from this template will indicate false. The real value will then be returned if IAI is ever enabled for the org in the future. | [optional] [default to false]
 **Status** | Pointer to **string** | The campaign&#39;s current status. | [optional] [readonly] 
-**CorrelatedStatus** | Pointer to **map[string]interface{}** | The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source). | [optional] 
+**CorrelatedStatus** | Pointer to **string** | The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source). | [optional] 
 **Created** | Pointer to **time.Time** | Created time of the campaign | [optional] [readonly] 
 **TotalCertifications** | Pointer to **int32** | The total number of certifications in this campaign. | [optional] [readonly] 
 **CompletedCertifications** | Pointer to **int32** | The number of completed certifications in this campaign. | [optional] [readonly] 
@@ -258,20 +258,20 @@ HasStatus returns a boolean if a field has been set.
 
 ### GetCorrelatedStatus
 
-`func (o *GetActiveCampaigns200ResponseInner) GetCorrelatedStatus() map[string]interface{}`
+`func (o *GetActiveCampaigns200ResponseInner) GetCorrelatedStatus() string`
 
 GetCorrelatedStatus returns the CorrelatedStatus field if non-nil, zero value otherwise.
 
 ### GetCorrelatedStatusOk
 
-`func (o *GetActiveCampaigns200ResponseInner) GetCorrelatedStatusOk() (*map[string]interface{}, bool)`
+`func (o *GetActiveCampaigns200ResponseInner) GetCorrelatedStatusOk() (*string, bool)`
 
 GetCorrelatedStatusOk returns a tuple with the CorrelatedStatus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCorrelatedStatus
 
-`func (o *GetActiveCampaigns200ResponseInner) SetCorrelatedStatus(v map[string]interface{})`
+`func (o *GetActiveCampaigns200ResponseInner) SetCorrelatedStatus(v string)`
 
 SetCorrelatedStatus sets CorrelatedStatus field to given value.
 

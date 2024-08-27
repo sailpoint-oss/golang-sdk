@@ -1322,7 +1322,7 @@ func (r ApiListIdentityCertificationsRequest) Count(count bool) ApiListIdentityC
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **campaign.id**: *eq, in*  **phase**: *eq*  **completed**: *eq, ne*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **campaign.id**: *eq, in*  **phase**: *eq*  **completed**: *eq*
 func (r ApiListIdentityCertificationsRequest) Filters(filters string) ApiListIdentityCertificationsRequest {
 	r.filters = &filters
 	return r
