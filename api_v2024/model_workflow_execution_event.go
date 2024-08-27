@@ -21,7 +21,7 @@ var _ MappedNullable = &WorkflowExecutionEvent{}
 // WorkflowExecutionEvent struct for WorkflowExecutionEvent
 type WorkflowExecutionEvent struct {
 	// The type of event
-	Type map[string]interface{} `json:"type,omitempty"`
+	Type *string `json:"type,omitempty"`
 	// The date-time when the event occurred
 	Timestamp *time.Time `json:"timestamp,omitempty"`
 	// Additional attributes associated with the event
@@ -49,19 +49,19 @@ func NewWorkflowExecutionEventWithDefaults() *WorkflowExecutionEvent {
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *WorkflowExecutionEvent) GetType() map[string]interface{} {
+func (o *WorkflowExecutionEvent) GetType() string {
 	if o == nil || isNil(o.Type) {
-		var ret map[string]interface{}
+		var ret string
 		return ret
 	}
-	return o.Type
+	return *o.Type
 }
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkflowExecutionEvent) GetTypeOk() (map[string]interface{}, bool) {
+func (o *WorkflowExecutionEvent) GetTypeOk() (*string, bool) {
 	if o == nil || isNil(o.Type) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.Type, true
 }
@@ -75,9 +75,9 @@ func (o *WorkflowExecutionEvent) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given map[string]interface{} and assigns it to the Type field.
-func (o *WorkflowExecutionEvent) SetType(v map[string]interface{}) {
-	o.Type = v
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *WorkflowExecutionEvent) SetType(v string) {
+	o.Type = &v
 }
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise.

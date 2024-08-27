@@ -80348,8 +80348,12 @@ components:
           - ActivityTaskStarted
           - ActivityTaskCompleted
           - ActivityTaskFailed
+          - StartChildWorkflowExecutionInitiated
+          - ChildWorkflowExecutionStarted
+          - ChildWorkflowExecutionCompleted
+          - ChildWorkflowExecutionFailed
           example: WorkflowTaskScheduled
-          type: object
+          type: string
         timestamp:
           description: The date-time when the event occurred
           example: 2022-02-07T20:13:31.640618296Z
