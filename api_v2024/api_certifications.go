@@ -2061,7 +2061,13 @@ func (r ApiSubmitReassignCertsAsyncRequest) Execute() (*CertificationTask, *http
 /*
 SubmitReassignCertsAsync Reassign Certifications Asynchronously
 
-This API initiates a task to reassign up to 500 identities or items in an identity campaign certification to another reviewer. The `certification-tasks` API can be used to get an updated status on the task and determine when the reassignment is complete. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.
+This API initiates a task to reassign up to 500 identities or items in an identity campaign certification to another
+reviewer. The `certification-tasks` API can be used to get an updated status on the task and determine when the
+reassignment is complete. 
+
+A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for
+this certification can also call this API.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The identity campaign certification ID
