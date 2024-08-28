@@ -51,7 +51,7 @@ func NewVendorConnectorMappingDeletedByWithDefaults() *VendorConnectorMappingDel
 
 // GetString returns the String field value if set, zero value otherwise.
 func (o *VendorConnectorMappingDeletedBy) GetString() string {
-	if o == nil || isNil(o.String) {
+	if o == nil || IsNil(o.String) {
 		var ret string
 		return ret
 	}
@@ -61,7 +61,7 @@ func (o *VendorConnectorMappingDeletedBy) GetString() string {
 // GetStringOk returns a tuple with the String field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VendorConnectorMappingDeletedBy) GetStringOk() (*string, bool) {
-	if o == nil || isNil(o.String) {
+	if o == nil || IsNil(o.String) {
 		return nil, false
 	}
 	return o.String, true
@@ -69,7 +69,7 @@ func (o *VendorConnectorMappingDeletedBy) GetStringOk() (*string, bool) {
 
 // HasString returns a boolean if a field has been set.
 func (o *VendorConnectorMappingDeletedBy) HasString() bool {
-	if o != nil && !isNil(o.String) {
+	if o != nil && !IsNil(o.String) {
 		return true
 	}
 
@@ -83,7 +83,7 @@ func (o *VendorConnectorMappingDeletedBy) SetString(v string) {
 
 // GetValid returns the Valid field value if set, zero value otherwise.
 func (o *VendorConnectorMappingDeletedBy) GetValid() bool {
-	if o == nil || isNil(o.Valid) {
+	if o == nil || IsNil(o.Valid) {
 		var ret bool
 		return ret
 	}
@@ -93,7 +93,7 @@ func (o *VendorConnectorMappingDeletedBy) GetValid() bool {
 // GetValidOk returns a tuple with the Valid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VendorConnectorMappingDeletedBy) GetValidOk() (*bool, bool) {
-	if o == nil || isNil(o.Valid) {
+	if o == nil || IsNil(o.Valid) {
 		return nil, false
 	}
 	return o.Valid, true
@@ -101,7 +101,7 @@ func (o *VendorConnectorMappingDeletedBy) GetValidOk() (*bool, bool) {
 
 // HasValid returns a boolean if a field has been set.
 func (o *VendorConnectorMappingDeletedBy) HasValid() bool {
-	if o != nil && !isNil(o.Valid) {
+	if o != nil && !IsNil(o.Valid) {
 		return true
 	}
 
@@ -123,10 +123,10 @@ func (o VendorConnectorMappingDeletedBy) MarshalJSON() ([]byte, error) {
 
 func (o VendorConnectorMappingDeletedBy) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.String) {
+	if !IsNil(o.String) {
 		toSerialize["String"] = o.String
 	}
-	if !isNil(o.Valid) {
+	if !IsNil(o.Valid) {
 		toSerialize["Valid"] = o.Valid
 	}
 
@@ -137,16 +137,20 @@ func (o VendorConnectorMappingDeletedBy) ToMap() (map[string]interface{}, error)
 	return toSerialize, nil
 }
 
-func (o *VendorConnectorMappingDeletedBy) UnmarshalJSON(bytes []byte) (err error) {
+func (o *VendorConnectorMappingDeletedBy) UnmarshalJSON(data []byte) (err error) {
 	varVendorConnectorMappingDeletedBy := _VendorConnectorMappingDeletedBy{}
 
-	if err = json.Unmarshal(bytes, &varVendorConnectorMappingDeletedBy); err == nil {
+	err = json.Unmarshal(data, &varVendorConnectorMappingDeletedBy)
+
+	if err != nil {
+		return err
+	}
+
 	*o = VendorConnectorMappingDeletedBy(varVendorConnectorMappingDeletedBy)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "String")
 		delete(additionalProperties, "Valid")
 		o.AdditionalProperties = additionalProperties

@@ -47,7 +47,7 @@ func NewAdminReviewReassignReassignToWithDefaults() *AdminReviewReassignReassign
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *AdminReviewReassignReassignTo) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *AdminReviewReassignReassignTo) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AdminReviewReassignReassignTo) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -65,7 +65,7 @@ func (o *AdminReviewReassignReassignTo) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *AdminReviewReassignReassignTo) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *AdminReviewReassignReassignTo) SetId(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *AdminReviewReassignReassignTo) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *AdminReviewReassignReassignTo) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AdminReviewReassignReassignTo) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -97,7 +97,7 @@ func (o *AdminReviewReassignReassignTo) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *AdminReviewReassignReassignTo) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o AdminReviewReassignReassignTo) MarshalJSON() ([]byte, error) {
 
 func (o AdminReviewReassignReassignTo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
 
@@ -133,16 +133,20 @@ func (o AdminReviewReassignReassignTo) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AdminReviewReassignReassignTo) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AdminReviewReassignReassignTo) UnmarshalJSON(data []byte) (err error) {
 	varAdminReviewReassignReassignTo := _AdminReviewReassignReassignTo{}
 
-	if err = json.Unmarshal(bytes, &varAdminReviewReassignReassignTo); err == nil {
+	err = json.Unmarshal(data, &varAdminReviewReassignReassignTo)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AdminReviewReassignReassignTo(varAdminReviewReassignReassignTo)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "type")
 		o.AdditionalProperties = additionalProperties

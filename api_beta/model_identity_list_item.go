@@ -59,7 +59,7 @@ func NewIdentityListItemWithDefaults() *IdentityListItem {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *IdentityListItem) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -69,7 +69,7 @@ func (o *IdentityListItem) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityListItem) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -77,7 +77,7 @@ func (o *IdentityListItem) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *IdentityListItem) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -91,7 +91,7 @@ func (o *IdentityListItem) SetId(v string) {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *IdentityListItem) GetDisplayName() string {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -101,7 +101,7 @@ func (o *IdentityListItem) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityListItem) GetDisplayNameOk() (*string, bool) {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -109,7 +109,7 @@ func (o *IdentityListItem) GetDisplayNameOk() (*string, bool) {
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *IdentityListItem) HasDisplayName() bool {
-	if o != nil && !isNil(o.DisplayName) {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -123,7 +123,7 @@ func (o *IdentityListItem) SetDisplayName(v string) {
 
 // GetFirstName returns the FirstName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentityListItem) GetFirstName() string {
-	if o == nil || isNil(o.FirstName.Get()) {
+	if o == nil || IsNil(o.FirstName.Get()) {
 		var ret string
 		return ret
 	}
@@ -165,7 +165,7 @@ func (o *IdentityListItem) UnsetFirstName() {
 
 // GetLastName returns the LastName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentityListItem) GetLastName() string {
-	if o == nil || isNil(o.LastName.Get()) {
+	if o == nil || IsNil(o.LastName.Get()) {
 		var ret string
 		return ret
 	}
@@ -207,7 +207,7 @@ func (o *IdentityListItem) UnsetLastName() {
 
 // GetActive returns the Active field value if set, zero value otherwise.
 func (o *IdentityListItem) GetActive() bool {
-	if o == nil || isNil(o.Active) {
+	if o == nil || IsNil(o.Active) {
 		var ret bool
 		return ret
 	}
@@ -217,7 +217,7 @@ func (o *IdentityListItem) GetActive() bool {
 // GetActiveOk returns a tuple with the Active field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityListItem) GetActiveOk() (*bool, bool) {
-	if o == nil || isNil(o.Active) {
+	if o == nil || IsNil(o.Active) {
 		return nil, false
 	}
 	return o.Active, true
@@ -225,7 +225,7 @@ func (o *IdentityListItem) GetActiveOk() (*bool, bool) {
 
 // HasActive returns a boolean if a field has been set.
 func (o *IdentityListItem) HasActive() bool {
-	if o != nil && !isNil(o.Active) {
+	if o != nil && !IsNil(o.Active) {
 		return true
 	}
 
@@ -239,7 +239,7 @@ func (o *IdentityListItem) SetActive(v bool) {
 
 // GetDeletedDate returns the DeletedDate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentityListItem) GetDeletedDate() string {
-	if o == nil || isNil(o.DeletedDate.Get()) {
+	if o == nil || IsNil(o.DeletedDate.Get()) {
 		var ret string
 		return ret
 	}
@@ -289,10 +289,10 @@ func (o IdentityListItem) MarshalJSON() ([]byte, error) {
 
 func (o IdentityListItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.DisplayName) {
+	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
 	if o.FirstName.IsSet() {
@@ -301,7 +301,7 @@ func (o IdentityListItem) ToMap() (map[string]interface{}, error) {
 	if o.LastName.IsSet() {
 		toSerialize["lastName"] = o.LastName.Get()
 	}
-	if !isNil(o.Active) {
+	if !IsNil(o.Active) {
 		toSerialize["active"] = o.Active
 	}
 	if o.DeletedDate.IsSet() {
@@ -315,16 +315,20 @@ func (o IdentityListItem) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *IdentityListItem) UnmarshalJSON(bytes []byte) (err error) {
+func (o *IdentityListItem) UnmarshalJSON(data []byte) (err error) {
 	varIdentityListItem := _IdentityListItem{}
 
-	if err = json.Unmarshal(bytes, &varIdentityListItem); err == nil {
+	err = json.Unmarshal(data, &varIdentityListItem)
+
+	if err != nil {
+		return err
+	}
+
 	*o = IdentityListItem(varIdentityListItem)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "displayName")
 		delete(additionalProperties, "firstName")

@@ -47,7 +47,7 @@ func NewEntitlementApprovalSchemeWithDefaults() *EntitlementApprovalScheme {
 
 // GetApproverType returns the ApproverType field value if set, zero value otherwise.
 func (o *EntitlementApprovalScheme) GetApproverType() string {
-	if o == nil || isNil(o.ApproverType) {
+	if o == nil || IsNil(o.ApproverType) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *EntitlementApprovalScheme) GetApproverType() string {
 // GetApproverTypeOk returns a tuple with the ApproverType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntitlementApprovalScheme) GetApproverTypeOk() (*string, bool) {
-	if o == nil || isNil(o.ApproverType) {
+	if o == nil || IsNil(o.ApproverType) {
 		return nil, false
 	}
 	return o.ApproverType, true
@@ -65,7 +65,7 @@ func (o *EntitlementApprovalScheme) GetApproverTypeOk() (*string, bool) {
 
 // HasApproverType returns a boolean if a field has been set.
 func (o *EntitlementApprovalScheme) HasApproverType() bool {
-	if o != nil && !isNil(o.ApproverType) {
+	if o != nil && !IsNil(o.ApproverType) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *EntitlementApprovalScheme) SetApproverType(v string) {
 
 // GetApproverId returns the ApproverId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EntitlementApprovalScheme) GetApproverId() string {
-	if o == nil || isNil(o.ApproverId.Get()) {
+	if o == nil || IsNil(o.ApproverId.Get()) {
 		var ret string
 		return ret
 	}
@@ -129,7 +129,7 @@ func (o EntitlementApprovalScheme) MarshalJSON() ([]byte, error) {
 
 func (o EntitlementApprovalScheme) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ApproverType) {
+	if !IsNil(o.ApproverType) {
 		toSerialize["approverType"] = o.ApproverType
 	}
 	if o.ApproverId.IsSet() {
@@ -143,16 +143,20 @@ func (o EntitlementApprovalScheme) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *EntitlementApprovalScheme) UnmarshalJSON(bytes []byte) (err error) {
+func (o *EntitlementApprovalScheme) UnmarshalJSON(data []byte) (err error) {
 	varEntitlementApprovalScheme := _EntitlementApprovalScheme{}
 
-	if err = json.Unmarshal(bytes, &varEntitlementApprovalScheme); err == nil {
+	err = json.Unmarshal(data, &varEntitlementApprovalScheme)
+
+	if err != nil {
+		return err
+	}
+
 	*o = EntitlementApprovalScheme(varEntitlementApprovalScheme)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "approverType")
 		delete(additionalProperties, "approverId")
 		o.AdditionalProperties = additionalProperties

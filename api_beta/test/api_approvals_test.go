@@ -19,7 +19,7 @@ import (
 
 func Test_api_beta_ApprovalsAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test ApprovalsAPIService GetApproval", func(t *testing.T) {
@@ -28,7 +28,7 @@ func Test_api_beta_ApprovalsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.ApprovalsAPI.GetApproval(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.ApprovalsAPI.GetApproval(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_beta_ApprovalsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.ApprovalsAPI.GetApprovals(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ApprovalsAPI.GetApprovals(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -52,7 +52,7 @@ func Test_api_beta_ApprovalsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.ApprovalsAPI.PatchApproval(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ApprovalsAPI.PatchApproval(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

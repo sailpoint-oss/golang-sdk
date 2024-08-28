@@ -53,7 +53,7 @@ func NewStatusResponseWithDefaults() *StatusResponse {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *StatusResponse) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -63,7 +63,7 @@ func (o *StatusResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StatusResponse) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -71,7 +71,7 @@ func (o *StatusResponse) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *StatusResponse) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o *StatusResponse) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *StatusResponse) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -95,7 +95,7 @@ func (o *StatusResponse) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StatusResponse) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -103,7 +103,7 @@ func (o *StatusResponse) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *StatusResponse) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -117,7 +117,7 @@ func (o *StatusResponse) SetName(v string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *StatusResponse) GetStatus() string {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -127,7 +127,7 @@ func (o *StatusResponse) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StatusResponse) GetStatusOk() (*string, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -135,7 +135,7 @@ func (o *StatusResponse) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *StatusResponse) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -149,7 +149,7 @@ func (o *StatusResponse) SetStatus(v string) {
 
 // GetElapsedMillis returns the ElapsedMillis field value if set, zero value otherwise.
 func (o *StatusResponse) GetElapsedMillis() int32 {
-	if o == nil || isNil(o.ElapsedMillis) {
+	if o == nil || IsNil(o.ElapsedMillis) {
 		var ret int32
 		return ret
 	}
@@ -159,7 +159,7 @@ func (o *StatusResponse) GetElapsedMillis() int32 {
 // GetElapsedMillisOk returns a tuple with the ElapsedMillis field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StatusResponse) GetElapsedMillisOk() (*int32, bool) {
-	if o == nil || isNil(o.ElapsedMillis) {
+	if o == nil || IsNil(o.ElapsedMillis) {
 		return nil, false
 	}
 	return o.ElapsedMillis, true
@@ -167,7 +167,7 @@ func (o *StatusResponse) GetElapsedMillisOk() (*int32, bool) {
 
 // HasElapsedMillis returns a boolean if a field has been set.
 func (o *StatusResponse) HasElapsedMillis() bool {
-	if o != nil && !isNil(o.ElapsedMillis) {
+	if o != nil && !IsNil(o.ElapsedMillis) {
 		return true
 	}
 
@@ -181,7 +181,7 @@ func (o *StatusResponse) SetElapsedMillis(v int32) {
 
 // GetDetails returns the Details field value if set, zero value otherwise.
 func (o *StatusResponse) GetDetails() map[string]interface{} {
-	if o == nil || isNil(o.Details) {
+	if o == nil || IsNil(o.Details) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -191,7 +191,7 @@ func (o *StatusResponse) GetDetails() map[string]interface{} {
 // GetDetailsOk returns a tuple with the Details field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StatusResponse) GetDetailsOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Details) {
+	if o == nil || IsNil(o.Details) {
 		return map[string]interface{}{}, false
 	}
 	return o.Details, true
@@ -199,7 +199,7 @@ func (o *StatusResponse) GetDetailsOk() (map[string]interface{}, bool) {
 
 // HasDetails returns a boolean if a field has been set.
 func (o *StatusResponse) HasDetails() bool {
-	if o != nil && !isNil(o.Details) {
+	if o != nil && !IsNil(o.Details) {
 		return true
 	}
 
@@ -221,11 +221,21 @@ func (o StatusResponse) MarshalJSON() ([]byte, error) {
 
 func (o StatusResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
-	// skip: name is readOnly
-	// skip: status is readOnly
-	// skip: elapsedMillis is readOnly
-	// skip: details is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.ElapsedMillis) {
+		toSerialize["elapsedMillis"] = o.ElapsedMillis
+	}
+	if !IsNil(o.Details) {
+		toSerialize["details"] = o.Details
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -234,16 +244,20 @@ func (o StatusResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *StatusResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *StatusResponse) UnmarshalJSON(data []byte) (err error) {
 	varStatusResponse := _StatusResponse{}
 
-	if err = json.Unmarshal(bytes, &varStatusResponse); err == nil {
+	err = json.Unmarshal(data, &varStatusResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = StatusResponse(varStatusResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "status")

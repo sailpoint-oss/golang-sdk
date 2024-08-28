@@ -51,7 +51,7 @@ func NewAccessItemRemovedWithDefaults() *AccessItemRemoved {
 
 // GetAccessItem returns the AccessItem field value if set, zero value otherwise.
 func (o *AccessItemRemoved) GetAccessItem() AccessItemAssociatedAccessItem {
-	if o == nil || isNil(o.AccessItem) {
+	if o == nil || IsNil(o.AccessItem) {
 		var ret AccessItemAssociatedAccessItem
 		return ret
 	}
@@ -61,7 +61,7 @@ func (o *AccessItemRemoved) GetAccessItem() AccessItemAssociatedAccessItem {
 // GetAccessItemOk returns a tuple with the AccessItem field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemRemoved) GetAccessItemOk() (*AccessItemAssociatedAccessItem, bool) {
-	if o == nil || isNil(o.AccessItem) {
+	if o == nil || IsNil(o.AccessItem) {
 		return nil, false
 	}
 	return o.AccessItem, true
@@ -69,7 +69,7 @@ func (o *AccessItemRemoved) GetAccessItemOk() (*AccessItemAssociatedAccessItem, 
 
 // HasAccessItem returns a boolean if a field has been set.
 func (o *AccessItemRemoved) HasAccessItem() bool {
-	if o != nil && !isNil(o.AccessItem) {
+	if o != nil && !IsNil(o.AccessItem) {
 		return true
 	}
 
@@ -83,7 +83,7 @@ func (o *AccessItemRemoved) SetAccessItem(v AccessItemAssociatedAccessItem) {
 
 // GetIdentityId returns the IdentityId field value if set, zero value otherwise.
 func (o *AccessItemRemoved) GetIdentityId() string {
-	if o == nil || isNil(o.IdentityId) {
+	if o == nil || IsNil(o.IdentityId) {
 		var ret string
 		return ret
 	}
@@ -93,7 +93,7 @@ func (o *AccessItemRemoved) GetIdentityId() string {
 // GetIdentityIdOk returns a tuple with the IdentityId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemRemoved) GetIdentityIdOk() (*string, bool) {
-	if o == nil || isNil(o.IdentityId) {
+	if o == nil || IsNil(o.IdentityId) {
 		return nil, false
 	}
 	return o.IdentityId, true
@@ -101,7 +101,7 @@ func (o *AccessItemRemoved) GetIdentityIdOk() (*string, bool) {
 
 // HasIdentityId returns a boolean if a field has been set.
 func (o *AccessItemRemoved) HasIdentityId() bool {
-	if o != nil && !isNil(o.IdentityId) {
+	if o != nil && !IsNil(o.IdentityId) {
 		return true
 	}
 
@@ -115,7 +115,7 @@ func (o *AccessItemRemoved) SetIdentityId(v string) {
 
 // GetEventType returns the EventType field value if set, zero value otherwise.
 func (o *AccessItemRemoved) GetEventType() string {
-	if o == nil || isNil(o.EventType) {
+	if o == nil || IsNil(o.EventType) {
 		var ret string
 		return ret
 	}
@@ -125,7 +125,7 @@ func (o *AccessItemRemoved) GetEventType() string {
 // GetEventTypeOk returns a tuple with the EventType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemRemoved) GetEventTypeOk() (*string, bool) {
-	if o == nil || isNil(o.EventType) {
+	if o == nil || IsNil(o.EventType) {
 		return nil, false
 	}
 	return o.EventType, true
@@ -133,7 +133,7 @@ func (o *AccessItemRemoved) GetEventTypeOk() (*string, bool) {
 
 // HasEventType returns a boolean if a field has been set.
 func (o *AccessItemRemoved) HasEventType() bool {
-	if o != nil && !isNil(o.EventType) {
+	if o != nil && !IsNil(o.EventType) {
 		return true
 	}
 
@@ -147,7 +147,7 @@ func (o *AccessItemRemoved) SetEventType(v string) {
 
 // GetDt returns the Dt field value if set, zero value otherwise.
 func (o *AccessItemRemoved) GetDt() string {
-	if o == nil || isNil(o.Dt) {
+	if o == nil || IsNil(o.Dt) {
 		var ret string
 		return ret
 	}
@@ -157,7 +157,7 @@ func (o *AccessItemRemoved) GetDt() string {
 // GetDtOk returns a tuple with the Dt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemRemoved) GetDtOk() (*string, bool) {
-	if o == nil || isNil(o.Dt) {
+	if o == nil || IsNil(o.Dt) {
 		return nil, false
 	}
 	return o.Dt, true
@@ -165,7 +165,7 @@ func (o *AccessItemRemoved) GetDtOk() (*string, bool) {
 
 // HasDt returns a boolean if a field has been set.
 func (o *AccessItemRemoved) HasDt() bool {
-	if o != nil && !isNil(o.Dt) {
+	if o != nil && !IsNil(o.Dt) {
 		return true
 	}
 
@@ -179,7 +179,7 @@ func (o *AccessItemRemoved) SetDt(v string) {
 
 // GetGovernanceEvent returns the GovernanceEvent field value if set, zero value otherwise.
 func (o *AccessItemRemoved) GetGovernanceEvent() CorrelatedGovernanceEvent {
-	if o == nil || isNil(o.GovernanceEvent) {
+	if o == nil || IsNil(o.GovernanceEvent) {
 		var ret CorrelatedGovernanceEvent
 		return ret
 	}
@@ -189,7 +189,7 @@ func (o *AccessItemRemoved) GetGovernanceEvent() CorrelatedGovernanceEvent {
 // GetGovernanceEventOk returns a tuple with the GovernanceEvent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemRemoved) GetGovernanceEventOk() (*CorrelatedGovernanceEvent, bool) {
-	if o == nil || isNil(o.GovernanceEvent) {
+	if o == nil || IsNil(o.GovernanceEvent) {
 		return nil, false
 	}
 	return o.GovernanceEvent, true
@@ -197,7 +197,7 @@ func (o *AccessItemRemoved) GetGovernanceEventOk() (*CorrelatedGovernanceEvent, 
 
 // HasGovernanceEvent returns a boolean if a field has been set.
 func (o *AccessItemRemoved) HasGovernanceEvent() bool {
-	if o != nil && !isNil(o.GovernanceEvent) {
+	if o != nil && !IsNil(o.GovernanceEvent) {
 		return true
 	}
 
@@ -219,19 +219,19 @@ func (o AccessItemRemoved) MarshalJSON() ([]byte, error) {
 
 func (o AccessItemRemoved) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AccessItem) {
+	if !IsNil(o.AccessItem) {
 		toSerialize["accessItem"] = o.AccessItem
 	}
-	if !isNil(o.IdentityId) {
+	if !IsNil(o.IdentityId) {
 		toSerialize["identityId"] = o.IdentityId
 	}
-	if !isNil(o.EventType) {
+	if !IsNil(o.EventType) {
 		toSerialize["eventType"] = o.EventType
 	}
-	if !isNil(o.Dt) {
+	if !IsNil(o.Dt) {
 		toSerialize["dt"] = o.Dt
 	}
-	if !isNil(o.GovernanceEvent) {
+	if !IsNil(o.GovernanceEvent) {
 		toSerialize["governanceEvent"] = o.GovernanceEvent
 	}
 
@@ -242,16 +242,20 @@ func (o AccessItemRemoved) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccessItemRemoved) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccessItemRemoved) UnmarshalJSON(data []byte) (err error) {
 	varAccessItemRemoved := _AccessItemRemoved{}
 
-	if err = json.Unmarshal(bytes, &varAccessItemRemoved); err == nil {
+	err = json.Unmarshal(data, &varAccessItemRemoved)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessItemRemoved(varAccessItemRemoved)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "accessItem")
 		delete(additionalProperties, "identityId")
 		delete(additionalProperties, "eventType")

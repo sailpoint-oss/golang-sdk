@@ -47,7 +47,7 @@ func NewValueWithDefaults() *Value {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *Value) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *Value) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Value) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -65,7 +65,7 @@ func (o *Value) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *Value) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *Value) SetType(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *Value) GetValue() string {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *Value) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Value) GetValueOk() (*string, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -97,7 +97,7 @@ func (o *Value) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *Value) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o Value) MarshalJSON() ([]byte, error) {
 
 func (o Value) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Value) {
+	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
 
@@ -133,16 +133,20 @@ func (o Value) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Value) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Value) UnmarshalJSON(data []byte) (err error) {
 	varValue := _Value{}
 
-	if err = json.Unmarshal(bytes, &varValue); err == nil {
+	err = json.Unmarshal(data, &varValue)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Value(varValue)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "value")
 		o.AdditionalProperties = additionalProperties

@@ -45,7 +45,7 @@ func NewSodPolicyConflictingAccessCriteriaWithDefaults() *SodPolicyConflictingAc
 
 // GetLeftCriteria returns the LeftCriteria field value if set, zero value otherwise.
 func (o *SodPolicyConflictingAccessCriteria) GetLeftCriteria() AccessCriteria {
-	if o == nil || isNil(o.LeftCriteria) {
+	if o == nil || IsNil(o.LeftCriteria) {
 		var ret AccessCriteria
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *SodPolicyConflictingAccessCriteria) GetLeftCriteria() AccessCriteria {
 // GetLeftCriteriaOk returns a tuple with the LeftCriteria field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SodPolicyConflictingAccessCriteria) GetLeftCriteriaOk() (*AccessCriteria, bool) {
-	if o == nil || isNil(o.LeftCriteria) {
+	if o == nil || IsNil(o.LeftCriteria) {
 		return nil, false
 	}
 	return o.LeftCriteria, true
@@ -63,7 +63,7 @@ func (o *SodPolicyConflictingAccessCriteria) GetLeftCriteriaOk() (*AccessCriteri
 
 // HasLeftCriteria returns a boolean if a field has been set.
 func (o *SodPolicyConflictingAccessCriteria) HasLeftCriteria() bool {
-	if o != nil && !isNil(o.LeftCriteria) {
+	if o != nil && !IsNil(o.LeftCriteria) {
 		return true
 	}
 
@@ -77,7 +77,7 @@ func (o *SodPolicyConflictingAccessCriteria) SetLeftCriteria(v AccessCriteria) {
 
 // GetRightCriteria returns the RightCriteria field value if set, zero value otherwise.
 func (o *SodPolicyConflictingAccessCriteria) GetRightCriteria() AccessCriteria {
-	if o == nil || isNil(o.RightCriteria) {
+	if o == nil || IsNil(o.RightCriteria) {
 		var ret AccessCriteria
 		return ret
 	}
@@ -87,7 +87,7 @@ func (o *SodPolicyConflictingAccessCriteria) GetRightCriteria() AccessCriteria {
 // GetRightCriteriaOk returns a tuple with the RightCriteria field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SodPolicyConflictingAccessCriteria) GetRightCriteriaOk() (*AccessCriteria, bool) {
-	if o == nil || isNil(o.RightCriteria) {
+	if o == nil || IsNil(o.RightCriteria) {
 		return nil, false
 	}
 	return o.RightCriteria, true
@@ -95,7 +95,7 @@ func (o *SodPolicyConflictingAccessCriteria) GetRightCriteriaOk() (*AccessCriter
 
 // HasRightCriteria returns a boolean if a field has been set.
 func (o *SodPolicyConflictingAccessCriteria) HasRightCriteria() bool {
-	if o != nil && !isNil(o.RightCriteria) {
+	if o != nil && !IsNil(o.RightCriteria) {
 		return true
 	}
 
@@ -117,10 +117,10 @@ func (o SodPolicyConflictingAccessCriteria) MarshalJSON() ([]byte, error) {
 
 func (o SodPolicyConflictingAccessCriteria) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.LeftCriteria) {
+	if !IsNil(o.LeftCriteria) {
 		toSerialize["leftCriteria"] = o.LeftCriteria
 	}
-	if !isNil(o.RightCriteria) {
+	if !IsNil(o.RightCriteria) {
 		toSerialize["rightCriteria"] = o.RightCriteria
 	}
 
@@ -131,16 +131,20 @@ func (o SodPolicyConflictingAccessCriteria) ToMap() (map[string]interface{}, err
 	return toSerialize, nil
 }
 
-func (o *SodPolicyConflictingAccessCriteria) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SodPolicyConflictingAccessCriteria) UnmarshalJSON(data []byte) (err error) {
 	varSodPolicyConflictingAccessCriteria := _SodPolicyConflictingAccessCriteria{}
 
-	if err = json.Unmarshal(bytes, &varSodPolicyConflictingAccessCriteria); err == nil {
+	err = json.Unmarshal(data, &varSodPolicyConflictingAccessCriteria)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SodPolicyConflictingAccessCriteria(varSodPolicyConflictingAccessCriteria)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "leftCriteria")
 		delete(additionalProperties, "rightCriteria")
 		o.AdditionalProperties = additionalProperties

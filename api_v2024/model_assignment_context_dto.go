@@ -47,7 +47,7 @@ func NewAssignmentContextDtoWithDefaults() *AssignmentContextDto {
 
 // GetRequested returns the Requested field value if set, zero value otherwise.
 func (o *AssignmentContextDto) GetRequested() AccessRequestContext {
-	if o == nil || isNil(o.Requested) {
+	if o == nil || IsNil(o.Requested) {
 		var ret AccessRequestContext
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *AssignmentContextDto) GetRequested() AccessRequestContext {
 // GetRequestedOk returns a tuple with the Requested field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AssignmentContextDto) GetRequestedOk() (*AccessRequestContext, bool) {
-	if o == nil || isNil(o.Requested) {
+	if o == nil || IsNil(o.Requested) {
 		return nil, false
 	}
 	return o.Requested, true
@@ -65,7 +65,7 @@ func (o *AssignmentContextDto) GetRequestedOk() (*AccessRequestContext, bool) {
 
 // HasRequested returns a boolean if a field has been set.
 func (o *AssignmentContextDto) HasRequested() bool {
-	if o != nil && !isNil(o.Requested) {
+	if o != nil && !IsNil(o.Requested) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *AssignmentContextDto) SetRequested(v AccessRequestContext) {
 
 // GetMatched returns the Matched field value if set, zero value otherwise.
 func (o *AssignmentContextDto) GetMatched() []RoleMatchDto {
-	if o == nil || isNil(o.Matched) {
+	if o == nil || IsNil(o.Matched) {
 		var ret []RoleMatchDto
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *AssignmentContextDto) GetMatched() []RoleMatchDto {
 // GetMatchedOk returns a tuple with the Matched field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AssignmentContextDto) GetMatchedOk() ([]RoleMatchDto, bool) {
-	if o == nil || isNil(o.Matched) {
+	if o == nil || IsNil(o.Matched) {
 		return nil, false
 	}
 	return o.Matched, true
@@ -97,7 +97,7 @@ func (o *AssignmentContextDto) GetMatchedOk() ([]RoleMatchDto, bool) {
 
 // HasMatched returns a boolean if a field has been set.
 func (o *AssignmentContextDto) HasMatched() bool {
-	if o != nil && !isNil(o.Matched) {
+	if o != nil && !IsNil(o.Matched) {
 		return true
 	}
 
@@ -111,7 +111,7 @@ func (o *AssignmentContextDto) SetMatched(v []RoleMatchDto) {
 
 // GetComputedDate returns the ComputedDate field value if set, zero value otherwise.
 func (o *AssignmentContextDto) GetComputedDate() string {
-	if o == nil || isNil(o.ComputedDate) {
+	if o == nil || IsNil(o.ComputedDate) {
 		var ret string
 		return ret
 	}
@@ -121,7 +121,7 @@ func (o *AssignmentContextDto) GetComputedDate() string {
 // GetComputedDateOk returns a tuple with the ComputedDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AssignmentContextDto) GetComputedDateOk() (*string, bool) {
-	if o == nil || isNil(o.ComputedDate) {
+	if o == nil || IsNil(o.ComputedDate) {
 		return nil, false
 	}
 	return o.ComputedDate, true
@@ -129,7 +129,7 @@ func (o *AssignmentContextDto) GetComputedDateOk() (*string, bool) {
 
 // HasComputedDate returns a boolean if a field has been set.
 func (o *AssignmentContextDto) HasComputedDate() bool {
-	if o != nil && !isNil(o.ComputedDate) {
+	if o != nil && !IsNil(o.ComputedDate) {
 		return true
 	}
 
@@ -151,13 +151,13 @@ func (o AssignmentContextDto) MarshalJSON() ([]byte, error) {
 
 func (o AssignmentContextDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Requested) {
+	if !IsNil(o.Requested) {
 		toSerialize["requested"] = o.Requested
 	}
-	if !isNil(o.Matched) {
+	if !IsNil(o.Matched) {
 		toSerialize["matched"] = o.Matched
 	}
-	if !isNil(o.ComputedDate) {
+	if !IsNil(o.ComputedDate) {
 		toSerialize["computedDate"] = o.ComputedDate
 	}
 
@@ -168,16 +168,20 @@ func (o AssignmentContextDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AssignmentContextDto) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AssignmentContextDto) UnmarshalJSON(data []byte) (err error) {
 	varAssignmentContextDto := _AssignmentContextDto{}
 
-	if err = json.Unmarshal(bytes, &varAssignmentContextDto); err == nil {
+	err = json.Unmarshal(data, &varAssignmentContextDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AssignmentContextDto(varAssignmentContextDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "requested")
 		delete(additionalProperties, "matched")
 		delete(additionalProperties, "computedDate")

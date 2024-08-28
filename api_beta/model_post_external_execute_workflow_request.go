@@ -45,7 +45,7 @@ func NewPostExternalExecuteWorkflowRequestWithDefaults() *PostExternalExecuteWor
 
 // GetInput returns the Input field value if set, zero value otherwise.
 func (o *PostExternalExecuteWorkflowRequest) GetInput() map[string]interface{} {
-	if o == nil || isNil(o.Input) {
+	if o == nil || IsNil(o.Input) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *PostExternalExecuteWorkflowRequest) GetInput() map[string]interface{} {
 // GetInputOk returns a tuple with the Input field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PostExternalExecuteWorkflowRequest) GetInputOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Input) {
+	if o == nil || IsNil(o.Input) {
 		return map[string]interface{}{}, false
 	}
 	return o.Input, true
@@ -63,7 +63,7 @@ func (o *PostExternalExecuteWorkflowRequest) GetInputOk() (map[string]interface{
 
 // HasInput returns a boolean if a field has been set.
 func (o *PostExternalExecuteWorkflowRequest) HasInput() bool {
-	if o != nil && !isNil(o.Input) {
+	if o != nil && !IsNil(o.Input) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o PostExternalExecuteWorkflowRequest) MarshalJSON() ([]byte, error) {
 
 func (o PostExternalExecuteWorkflowRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Input) {
+	if !IsNil(o.Input) {
 		toSerialize["input"] = o.Input
 	}
 
@@ -96,16 +96,20 @@ func (o PostExternalExecuteWorkflowRequest) ToMap() (map[string]interface{}, err
 	return toSerialize, nil
 }
 
-func (o *PostExternalExecuteWorkflowRequest) UnmarshalJSON(bytes []byte) (err error) {
+func (o *PostExternalExecuteWorkflowRequest) UnmarshalJSON(data []byte) (err error) {
 	varPostExternalExecuteWorkflowRequest := _PostExternalExecuteWorkflowRequest{}
 
-	if err = json.Unmarshal(bytes, &varPostExternalExecuteWorkflowRequest); err == nil {
+	err = json.Unmarshal(data, &varPostExternalExecuteWorkflowRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = PostExternalExecuteWorkflowRequest(varPostExternalExecuteWorkflowRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "input")
 		o.AdditionalProperties = additionalProperties
 	}

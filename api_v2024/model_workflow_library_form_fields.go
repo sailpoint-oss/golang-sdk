@@ -59,7 +59,7 @@ func NewWorkflowLibraryFormFieldsWithDefaults() *WorkflowLibraryFormFields {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *WorkflowLibraryFormFields) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -69,7 +69,7 @@ func (o *WorkflowLibraryFormFields) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowLibraryFormFields) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -77,7 +77,7 @@ func (o *WorkflowLibraryFormFields) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *WorkflowLibraryFormFields) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -91,7 +91,7 @@ func (o *WorkflowLibraryFormFields) SetDescription(v string) {
 
 // GetHelpText returns the HelpText field value if set, zero value otherwise.
 func (o *WorkflowLibraryFormFields) GetHelpText() string {
-	if o == nil || isNil(o.HelpText) {
+	if o == nil || IsNil(o.HelpText) {
 		var ret string
 		return ret
 	}
@@ -101,7 +101,7 @@ func (o *WorkflowLibraryFormFields) GetHelpText() string {
 // GetHelpTextOk returns a tuple with the HelpText field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowLibraryFormFields) GetHelpTextOk() (*string, bool) {
-	if o == nil || isNil(o.HelpText) {
+	if o == nil || IsNil(o.HelpText) {
 		return nil, false
 	}
 	return o.HelpText, true
@@ -109,7 +109,7 @@ func (o *WorkflowLibraryFormFields) GetHelpTextOk() (*string, bool) {
 
 // HasHelpText returns a boolean if a field has been set.
 func (o *WorkflowLibraryFormFields) HasHelpText() bool {
-	if o != nil && !isNil(o.HelpText) {
+	if o != nil && !IsNil(o.HelpText) {
 		return true
 	}
 
@@ -123,7 +123,7 @@ func (o *WorkflowLibraryFormFields) SetHelpText(v string) {
 
 // GetLabel returns the Label field value if set, zero value otherwise.
 func (o *WorkflowLibraryFormFields) GetLabel() string {
-	if o == nil || isNil(o.Label) {
+	if o == nil || IsNil(o.Label) {
 		var ret string
 		return ret
 	}
@@ -133,7 +133,7 @@ func (o *WorkflowLibraryFormFields) GetLabel() string {
 // GetLabelOk returns a tuple with the Label field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowLibraryFormFields) GetLabelOk() (*string, bool) {
-	if o == nil || isNil(o.Label) {
+	if o == nil || IsNil(o.Label) {
 		return nil, false
 	}
 	return o.Label, true
@@ -141,7 +141,7 @@ func (o *WorkflowLibraryFormFields) GetLabelOk() (*string, bool) {
 
 // HasLabel returns a boolean if a field has been set.
 func (o *WorkflowLibraryFormFields) HasLabel() bool {
-	if o != nil && !isNil(o.Label) {
+	if o != nil && !IsNil(o.Label) {
 		return true
 	}
 
@@ -155,7 +155,7 @@ func (o *WorkflowLibraryFormFields) SetLabel(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *WorkflowLibraryFormFields) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -165,7 +165,7 @@ func (o *WorkflowLibraryFormFields) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowLibraryFormFields) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -173,7 +173,7 @@ func (o *WorkflowLibraryFormFields) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *WorkflowLibraryFormFields) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -187,7 +187,7 @@ func (o *WorkflowLibraryFormFields) SetName(v string) {
 
 // GetRequired returns the Required field value if set, zero value otherwise.
 func (o *WorkflowLibraryFormFields) GetRequired() bool {
-	if o == nil || isNil(o.Required) {
+	if o == nil || IsNil(o.Required) {
 		var ret bool
 		return ret
 	}
@@ -197,7 +197,7 @@ func (o *WorkflowLibraryFormFields) GetRequired() bool {
 // GetRequiredOk returns a tuple with the Required field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowLibraryFormFields) GetRequiredOk() (*bool, bool) {
-	if o == nil || isNil(o.Required) {
+	if o == nil || IsNil(o.Required) {
 		return nil, false
 	}
 	return o.Required, true
@@ -205,7 +205,7 @@ func (o *WorkflowLibraryFormFields) GetRequiredOk() (*bool, bool) {
 
 // HasRequired returns a boolean if a field has been set.
 func (o *WorkflowLibraryFormFields) HasRequired() bool {
-	if o != nil && !isNil(o.Required) {
+	if o != nil && !IsNil(o.Required) {
 		return true
 	}
 
@@ -219,7 +219,7 @@ func (o *WorkflowLibraryFormFields) SetRequired(v bool) {
 
 // GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WorkflowLibraryFormFields) GetType() string {
-	if o == nil || isNil(o.Type.Get()) {
+	if o == nil || IsNil(o.Type.Get()) {
 		var ret string
 		return ret
 	}
@@ -269,19 +269,19 @@ func (o WorkflowLibraryFormFields) MarshalJSON() ([]byte, error) {
 
 func (o WorkflowLibraryFormFields) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.HelpText) {
+	if !IsNil(o.HelpText) {
 		toSerialize["helpText"] = o.HelpText
 	}
-	if !isNil(o.Label) {
+	if !IsNil(o.Label) {
 		toSerialize["label"] = o.Label
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Required) {
+	if !IsNil(o.Required) {
 		toSerialize["required"] = o.Required
 	}
 	if o.Type.IsSet() {
@@ -295,16 +295,20 @@ func (o WorkflowLibraryFormFields) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *WorkflowLibraryFormFields) UnmarshalJSON(bytes []byte) (err error) {
+func (o *WorkflowLibraryFormFields) UnmarshalJSON(data []byte) (err error) {
 	varWorkflowLibraryFormFields := _WorkflowLibraryFormFields{}
 
-	if err = json.Unmarshal(bytes, &varWorkflowLibraryFormFields); err == nil {
+	err = json.Unmarshal(data, &varWorkflowLibraryFormFields)
+
+	if err != nil {
+		return err
+	}
+
 	*o = WorkflowLibraryFormFields(varWorkflowLibraryFormFields)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "helpText")
 		delete(additionalProperties, "label")

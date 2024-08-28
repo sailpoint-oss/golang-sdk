@@ -49,7 +49,7 @@ func NewTenantUiMetadataItemUpdateRequestWithDefaults() *TenantUiMetadataItemUpd
 
 // GetIframeWhiteList returns the IframeWhiteList field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TenantUiMetadataItemUpdateRequest) GetIframeWhiteList() string {
-	if o == nil || isNil(o.IframeWhiteList.Get()) {
+	if o == nil || IsNil(o.IframeWhiteList.Get()) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *TenantUiMetadataItemUpdateRequest) UnsetIframeWhiteList() {
 
 // GetUsernameLabel returns the UsernameLabel field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TenantUiMetadataItemUpdateRequest) GetUsernameLabel() string {
-	if o == nil || isNil(o.UsernameLabel.Get()) {
+	if o == nil || IsNil(o.UsernameLabel.Get()) {
 		var ret string
 		return ret
 	}
@@ -133,7 +133,7 @@ func (o *TenantUiMetadataItemUpdateRequest) UnsetUsernameLabel() {
 
 // GetUsernameEmptyText returns the UsernameEmptyText field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TenantUiMetadataItemUpdateRequest) GetUsernameEmptyText() string {
-	if o == nil || isNil(o.UsernameEmptyText.Get()) {
+	if o == nil || IsNil(o.UsernameEmptyText.Get()) {
 		var ret string
 		return ret
 	}
@@ -200,16 +200,20 @@ func (o TenantUiMetadataItemUpdateRequest) ToMap() (map[string]interface{}, erro
 	return toSerialize, nil
 }
 
-func (o *TenantUiMetadataItemUpdateRequest) UnmarshalJSON(bytes []byte) (err error) {
+func (o *TenantUiMetadataItemUpdateRequest) UnmarshalJSON(data []byte) (err error) {
 	varTenantUiMetadataItemUpdateRequest := _TenantUiMetadataItemUpdateRequest{}
 
-	if err = json.Unmarshal(bytes, &varTenantUiMetadataItemUpdateRequest); err == nil {
+	err = json.Unmarshal(data, &varTenantUiMetadataItemUpdateRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = TenantUiMetadataItemUpdateRequest(varTenantUiMetadataItemUpdateRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "iframeWhiteList")
 		delete(additionalProperties, "usernameLabel")
 		delete(additionalProperties, "usernameEmptyText")

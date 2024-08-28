@@ -104,7 +104,7 @@ func (o *TemplateDto) SetKey(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *TemplateDto) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -114,7 +114,7 @@ func (o *TemplateDto) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateDto) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -122,7 +122,7 @@ func (o *TemplateDto) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *TemplateDto) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -184,7 +184,7 @@ func (o *TemplateDto) SetLocale(v string) {
 
 // GetSubject returns the Subject field value if set, zero value otherwise.
 func (o *TemplateDto) GetSubject() string {
-	if o == nil || isNil(o.Subject) {
+	if o == nil || IsNil(o.Subject) {
 		var ret string
 		return ret
 	}
@@ -194,7 +194,7 @@ func (o *TemplateDto) GetSubject() string {
 // GetSubjectOk returns a tuple with the Subject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateDto) GetSubjectOk() (*string, bool) {
-	if o == nil || isNil(o.Subject) {
+	if o == nil || IsNil(o.Subject) {
 		return nil, false
 	}
 	return o.Subject, true
@@ -202,7 +202,7 @@ func (o *TemplateDto) GetSubjectOk() (*string, bool) {
 
 // HasSubject returns a boolean if a field has been set.
 func (o *TemplateDto) HasSubject() bool {
-	if o != nil && !isNil(o.Subject) {
+	if o != nil && !IsNil(o.Subject) {
 		return true
 	}
 
@@ -217,7 +217,7 @@ func (o *TemplateDto) SetSubject(v string) {
 // GetHeader returns the Header field value if set, zero value otherwise (both if not set or set to explicit null).
 // Deprecated
 func (o *TemplateDto) GetHeader() string {
-	if o == nil || isNil(o.Header.Get()) {
+	if o == nil || IsNil(o.Header.Get()) {
 		var ret string
 		return ret
 	}
@@ -261,7 +261,7 @@ func (o *TemplateDto) UnsetHeader() {
 
 // GetBody returns the Body field value if set, zero value otherwise.
 func (o *TemplateDto) GetBody() string {
-	if o == nil || isNil(o.Body) {
+	if o == nil || IsNil(o.Body) {
 		var ret string
 		return ret
 	}
@@ -271,7 +271,7 @@ func (o *TemplateDto) GetBody() string {
 // GetBodyOk returns a tuple with the Body field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateDto) GetBodyOk() (*string, bool) {
-	if o == nil || isNil(o.Body) {
+	if o == nil || IsNil(o.Body) {
 		return nil, false
 	}
 	return o.Body, true
@@ -279,7 +279,7 @@ func (o *TemplateDto) GetBodyOk() (*string, bool) {
 
 // HasBody returns a boolean if a field has been set.
 func (o *TemplateDto) HasBody() bool {
-	if o != nil && !isNil(o.Body) {
+	if o != nil && !IsNil(o.Body) {
 		return true
 	}
 
@@ -294,7 +294,7 @@ func (o *TemplateDto) SetBody(v string) {
 // GetFooter returns the Footer field value if set, zero value otherwise (both if not set or set to explicit null).
 // Deprecated
 func (o *TemplateDto) GetFooter() string {
-	if o == nil || isNil(o.Footer.Get()) {
+	if o == nil || IsNil(o.Footer.Get()) {
 		var ret string
 		return ret
 	}
@@ -338,7 +338,7 @@ func (o *TemplateDto) UnsetFooter() {
 
 // GetFrom returns the From field value if set, zero value otherwise.
 func (o *TemplateDto) GetFrom() string {
-	if o == nil || isNil(o.From) {
+	if o == nil || IsNil(o.From) {
 		var ret string
 		return ret
 	}
@@ -348,7 +348,7 @@ func (o *TemplateDto) GetFrom() string {
 // GetFromOk returns a tuple with the From field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateDto) GetFromOk() (*string, bool) {
-	if o == nil || isNil(o.From) {
+	if o == nil || IsNil(o.From) {
 		return nil, false
 	}
 	return o.From, true
@@ -356,7 +356,7 @@ func (o *TemplateDto) GetFromOk() (*string, bool) {
 
 // HasFrom returns a boolean if a field has been set.
 func (o *TemplateDto) HasFrom() bool {
-	if o != nil && !isNil(o.From) {
+	if o != nil && !IsNil(o.From) {
 		return true
 	}
 
@@ -370,7 +370,7 @@ func (o *TemplateDto) SetFrom(v string) {
 
 // GetReplyTo returns the ReplyTo field value if set, zero value otherwise.
 func (o *TemplateDto) GetReplyTo() string {
-	if o == nil || isNil(o.ReplyTo) {
+	if o == nil || IsNil(o.ReplyTo) {
 		var ret string
 		return ret
 	}
@@ -380,7 +380,7 @@ func (o *TemplateDto) GetReplyTo() string {
 // GetReplyToOk returns a tuple with the ReplyTo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateDto) GetReplyToOk() (*string, bool) {
-	if o == nil || isNil(o.ReplyTo) {
+	if o == nil || IsNil(o.ReplyTo) {
 		return nil, false
 	}
 	return o.ReplyTo, true
@@ -388,7 +388,7 @@ func (o *TemplateDto) GetReplyToOk() (*string, bool) {
 
 // HasReplyTo returns a boolean if a field has been set.
 func (o *TemplateDto) HasReplyTo() bool {
-	if o != nil && !isNil(o.ReplyTo) {
+	if o != nil && !IsNil(o.ReplyTo) {
 		return true
 	}
 
@@ -402,7 +402,7 @@ func (o *TemplateDto) SetReplyTo(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *TemplateDto) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -412,7 +412,7 @@ func (o *TemplateDto) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateDto) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -420,7 +420,7 @@ func (o *TemplateDto) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *TemplateDto) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -434,7 +434,7 @@ func (o *TemplateDto) SetDescription(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *TemplateDto) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -444,7 +444,7 @@ func (o *TemplateDto) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateDto) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -452,7 +452,7 @@ func (o *TemplateDto) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *TemplateDto) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -466,7 +466,7 @@ func (o *TemplateDto) SetId(v string) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *TemplateDto) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -476,7 +476,7 @@ func (o *TemplateDto) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateDto) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -484,7 +484,7 @@ func (o *TemplateDto) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *TemplateDto) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -498,7 +498,7 @@ func (o *TemplateDto) SetCreated(v time.Time) {
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *TemplateDto) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		var ret time.Time
 		return ret
 	}
@@ -508,7 +508,7 @@ func (o *TemplateDto) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateDto) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -516,7 +516,7 @@ func (o *TemplateDto) GetModifiedOk() (*time.Time, bool) {
 
 // HasModified returns a boolean if a field has been set.
 func (o *TemplateDto) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -530,7 +530,7 @@ func (o *TemplateDto) SetModified(v time.Time) {
 
 // GetSlackTemplate returns the SlackTemplate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateDto) GetSlackTemplate() string {
-	if o == nil || isNil(o.SlackTemplate.Get()) {
+	if o == nil || IsNil(o.SlackTemplate.Get()) {
 		var ret string
 		return ret
 	}
@@ -572,7 +572,7 @@ func (o *TemplateDto) UnsetSlackTemplate() {
 
 // GetTeamsTemplate returns the TeamsTemplate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateDto) GetTeamsTemplate() string {
-	if o == nil || isNil(o.TeamsTemplate.Get()) {
+	if o == nil || IsNil(o.TeamsTemplate.Get()) {
 		var ret string
 		return ret
 	}
@@ -623,39 +623,39 @@ func (o TemplateDto) MarshalJSON() ([]byte, error) {
 func (o TemplateDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["key"] = o.Key
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 	toSerialize["medium"] = o.Medium
 	toSerialize["locale"] = o.Locale
-	if !isNil(o.Subject) {
+	if !IsNil(o.Subject) {
 		toSerialize["subject"] = o.Subject
 	}
 	if o.Header.IsSet() {
 		toSerialize["header"] = o.Header.Get()
 	}
-	if !isNil(o.Body) {
+	if !IsNil(o.Body) {
 		toSerialize["body"] = o.Body
 	}
 	if o.Footer.IsSet() {
 		toSerialize["footer"] = o.Footer.Get()
 	}
-	if !isNil(o.From) {
+	if !IsNil(o.From) {
 		toSerialize["from"] = o.From
 	}
-	if !isNil(o.ReplyTo) {
+	if !IsNil(o.ReplyTo) {
 		toSerialize["replyTo"] = o.ReplyTo
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Created) {
+	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
-	if !isNil(o.Modified) {
+	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
 	if o.SlackTemplate.IsSet() {
@@ -672,8 +672,8 @@ func (o TemplateDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *TemplateDto) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *TemplateDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -684,7 +684,7 @@ func (o *TemplateDto) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -698,13 +698,17 @@ func (o *TemplateDto) UnmarshalJSON(bytes []byte) (err error) {
 
 	varTemplateDto := _TemplateDto{}
 
-	if err = json.Unmarshal(bytes, &varTemplateDto); err == nil {
+	err = json.Unmarshal(data, &varTemplateDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = TemplateDto(varTemplateDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "key")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "medium")

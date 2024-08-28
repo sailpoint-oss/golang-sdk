@@ -45,7 +45,7 @@ func NewRoleMatchDtoWithDefaults() *RoleMatchDto {
 
 // GetRoleRef returns the RoleRef field value if set, zero value otherwise.
 func (o *RoleMatchDto) GetRoleRef() BaseReferenceDto1 {
-	if o == nil || isNil(o.RoleRef) {
+	if o == nil || IsNil(o.RoleRef) {
 		var ret BaseReferenceDto1
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *RoleMatchDto) GetRoleRef() BaseReferenceDto1 {
 // GetRoleRefOk returns a tuple with the RoleRef field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMatchDto) GetRoleRefOk() (*BaseReferenceDto1, bool) {
-	if o == nil || isNil(o.RoleRef) {
+	if o == nil || IsNil(o.RoleRef) {
 		return nil, false
 	}
 	return o.RoleRef, true
@@ -63,7 +63,7 @@ func (o *RoleMatchDto) GetRoleRefOk() (*BaseReferenceDto1, bool) {
 
 // HasRoleRef returns a boolean if a field has been set.
 func (o *RoleMatchDto) HasRoleRef() bool {
-	if o != nil && !isNil(o.RoleRef) {
+	if o != nil && !IsNil(o.RoleRef) {
 		return true
 	}
 
@@ -77,7 +77,7 @@ func (o *RoleMatchDto) SetRoleRef(v BaseReferenceDto1) {
 
 // GetMatchedAttributes returns the MatchedAttributes field value if set, zero value otherwise.
 func (o *RoleMatchDto) GetMatchedAttributes() []ContextAttributeDto {
-	if o == nil || isNil(o.MatchedAttributes) {
+	if o == nil || IsNil(o.MatchedAttributes) {
 		var ret []ContextAttributeDto
 		return ret
 	}
@@ -87,7 +87,7 @@ func (o *RoleMatchDto) GetMatchedAttributes() []ContextAttributeDto {
 // GetMatchedAttributesOk returns a tuple with the MatchedAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMatchDto) GetMatchedAttributesOk() ([]ContextAttributeDto, bool) {
-	if o == nil || isNil(o.MatchedAttributes) {
+	if o == nil || IsNil(o.MatchedAttributes) {
 		return nil, false
 	}
 	return o.MatchedAttributes, true
@@ -95,7 +95,7 @@ func (o *RoleMatchDto) GetMatchedAttributesOk() ([]ContextAttributeDto, bool) {
 
 // HasMatchedAttributes returns a boolean if a field has been set.
 func (o *RoleMatchDto) HasMatchedAttributes() bool {
-	if o != nil && !isNil(o.MatchedAttributes) {
+	if o != nil && !IsNil(o.MatchedAttributes) {
 		return true
 	}
 
@@ -117,10 +117,10 @@ func (o RoleMatchDto) MarshalJSON() ([]byte, error) {
 
 func (o RoleMatchDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.RoleRef) {
+	if !IsNil(o.RoleRef) {
 		toSerialize["roleRef"] = o.RoleRef
 	}
-	if !isNil(o.MatchedAttributes) {
+	if !IsNil(o.MatchedAttributes) {
 		toSerialize["matchedAttributes"] = o.MatchedAttributes
 	}
 
@@ -131,16 +131,20 @@ func (o RoleMatchDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *RoleMatchDto) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RoleMatchDto) UnmarshalJSON(data []byte) (err error) {
 	varRoleMatchDto := _RoleMatchDto{}
 
-	if err = json.Unmarshal(bytes, &varRoleMatchDto); err == nil {
+	err = json.Unmarshal(data, &varRoleMatchDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RoleMatchDto(varRoleMatchDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "roleRef")
 		delete(additionalProperties, "matchedAttributes")
 		o.AdditionalProperties = additionalProperties

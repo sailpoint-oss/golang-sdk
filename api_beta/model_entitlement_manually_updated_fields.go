@@ -55,7 +55,7 @@ func NewEntitlementManuallyUpdatedFieldsWithDefaults() *EntitlementManuallyUpdat
 
 // GetDISPLAY_NAME returns the DISPLAY_NAME field value if set, zero value otherwise.
 func (o *EntitlementManuallyUpdatedFields) GetDISPLAY_NAME() bool {
-	if o == nil || isNil(o.DISPLAY_NAME) {
+	if o == nil || IsNil(o.DISPLAY_NAME) {
 		var ret bool
 		return ret
 	}
@@ -65,7 +65,7 @@ func (o *EntitlementManuallyUpdatedFields) GetDISPLAY_NAME() bool {
 // GetDISPLAY_NAMEOk returns a tuple with the DISPLAY_NAME field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntitlementManuallyUpdatedFields) GetDISPLAY_NAMEOk() (*bool, bool) {
-	if o == nil || isNil(o.DISPLAY_NAME) {
+	if o == nil || IsNil(o.DISPLAY_NAME) {
 		return nil, false
 	}
 	return o.DISPLAY_NAME, true
@@ -73,7 +73,7 @@ func (o *EntitlementManuallyUpdatedFields) GetDISPLAY_NAMEOk() (*bool, bool) {
 
 // HasDISPLAY_NAME returns a boolean if a field has been set.
 func (o *EntitlementManuallyUpdatedFields) HasDISPLAY_NAME() bool {
-	if o != nil && !isNil(o.DISPLAY_NAME) {
+	if o != nil && !IsNil(o.DISPLAY_NAME) {
 		return true
 	}
 
@@ -87,7 +87,7 @@ func (o *EntitlementManuallyUpdatedFields) SetDISPLAY_NAME(v bool) {
 
 // GetDESCRIPTION returns the DESCRIPTION field value if set, zero value otherwise.
 func (o *EntitlementManuallyUpdatedFields) GetDESCRIPTION() bool {
-	if o == nil || isNil(o.DESCRIPTION) {
+	if o == nil || IsNil(o.DESCRIPTION) {
 		var ret bool
 		return ret
 	}
@@ -97,7 +97,7 @@ func (o *EntitlementManuallyUpdatedFields) GetDESCRIPTION() bool {
 // GetDESCRIPTIONOk returns a tuple with the DESCRIPTION field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntitlementManuallyUpdatedFields) GetDESCRIPTIONOk() (*bool, bool) {
-	if o == nil || isNil(o.DESCRIPTION) {
+	if o == nil || IsNil(o.DESCRIPTION) {
 		return nil, false
 	}
 	return o.DESCRIPTION, true
@@ -105,7 +105,7 @@ func (o *EntitlementManuallyUpdatedFields) GetDESCRIPTIONOk() (*bool, bool) {
 
 // HasDESCRIPTION returns a boolean if a field has been set.
 func (o *EntitlementManuallyUpdatedFields) HasDESCRIPTION() bool {
-	if o != nil && !isNil(o.DESCRIPTION) {
+	if o != nil && !IsNil(o.DESCRIPTION) {
 		return true
 	}
 
@@ -127,10 +127,10 @@ func (o EntitlementManuallyUpdatedFields) MarshalJSON() ([]byte, error) {
 
 func (o EntitlementManuallyUpdatedFields) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.DISPLAY_NAME) {
+	if !IsNil(o.DISPLAY_NAME) {
 		toSerialize["DISPLAY_NAME"] = o.DISPLAY_NAME
 	}
-	if !isNil(o.DESCRIPTION) {
+	if !IsNil(o.DESCRIPTION) {
 		toSerialize["DESCRIPTION"] = o.DESCRIPTION
 	}
 
@@ -141,16 +141,20 @@ func (o EntitlementManuallyUpdatedFields) ToMap() (map[string]interface{}, error
 	return toSerialize, nil
 }
 
-func (o *EntitlementManuallyUpdatedFields) UnmarshalJSON(bytes []byte) (err error) {
+func (o *EntitlementManuallyUpdatedFields) UnmarshalJSON(data []byte) (err error) {
 	varEntitlementManuallyUpdatedFields := _EntitlementManuallyUpdatedFields{}
 
-	if err = json.Unmarshal(bytes, &varEntitlementManuallyUpdatedFields); err == nil {
+	err = json.Unmarshal(data, &varEntitlementManuallyUpdatedFields)
+
+	if err != nil {
+		return err
+	}
+
 	*o = EntitlementManuallyUpdatedFields(varEntitlementManuallyUpdatedFields)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "DISPLAY_NAME")
 		delete(additionalProperties, "DESCRIPTION")
 		o.AdditionalProperties = additionalProperties

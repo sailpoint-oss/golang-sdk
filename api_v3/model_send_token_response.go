@@ -49,7 +49,7 @@ func NewSendTokenResponseWithDefaults() *SendTokenResponse {
 
 // GetRequestId returns the RequestId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SendTokenResponse) GetRequestId() string {
-	if o == nil || isNil(o.RequestId.Get()) {
+	if o == nil || IsNil(o.RequestId.Get()) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *SendTokenResponse) UnsetRequestId() {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *SendTokenResponse) GetStatus() string {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -101,7 +101,7 @@ func (o *SendTokenResponse) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SendTokenResponse) GetStatusOk() (*string, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -109,7 +109,7 @@ func (o *SendTokenResponse) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *SendTokenResponse) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -123,7 +123,7 @@ func (o *SendTokenResponse) SetStatus(v string) {
 
 // GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SendTokenResponse) GetErrorMessage() string {
-	if o == nil || isNil(o.ErrorMessage.Get()) {
+	if o == nil || IsNil(o.ErrorMessage.Get()) {
 		var ret string
 		return ret
 	}
@@ -176,7 +176,7 @@ func (o SendTokenResponse) ToMap() (map[string]interface{}, error) {
 	if o.RequestId.IsSet() {
 		toSerialize["requestId"] = o.RequestId.Get()
 	}
-	if !isNil(o.Status) {
+	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
 	if o.ErrorMessage.IsSet() {
@@ -190,16 +190,20 @@ func (o SendTokenResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SendTokenResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SendTokenResponse) UnmarshalJSON(data []byte) (err error) {
 	varSendTokenResponse := _SendTokenResponse{}
 
-	if err = json.Unmarshal(bytes, &varSendTokenResponse); err == nil {
+	err = json.Unmarshal(data, &varSendTokenResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SendTokenResponse(varSendTokenResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "requestId")
 		delete(additionalProperties, "status")
 		delete(additionalProperties, "errorMessage")

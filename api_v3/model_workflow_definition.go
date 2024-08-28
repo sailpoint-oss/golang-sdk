@@ -47,7 +47,7 @@ func NewWorkflowDefinitionWithDefaults() *WorkflowDefinition {
 
 // GetStart returns the Start field value if set, zero value otherwise.
 func (o *WorkflowDefinition) GetStart() string {
-	if o == nil || isNil(o.Start) {
+	if o == nil || IsNil(o.Start) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *WorkflowDefinition) GetStart() string {
 // GetStartOk returns a tuple with the Start field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowDefinition) GetStartOk() (*string, bool) {
-	if o == nil || isNil(o.Start) {
+	if o == nil || IsNil(o.Start) {
 		return nil, false
 	}
 	return o.Start, true
@@ -65,7 +65,7 @@ func (o *WorkflowDefinition) GetStartOk() (*string, bool) {
 
 // HasStart returns a boolean if a field has been set.
 func (o *WorkflowDefinition) HasStart() bool {
-	if o != nil && !isNil(o.Start) {
+	if o != nil && !IsNil(o.Start) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *WorkflowDefinition) SetStart(v string) {
 
 // GetSteps returns the Steps field value if set, zero value otherwise.
 func (o *WorkflowDefinition) GetSteps() map[string]interface{} {
-	if o == nil || isNil(o.Steps) {
+	if o == nil || IsNil(o.Steps) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *WorkflowDefinition) GetSteps() map[string]interface{} {
 // GetStepsOk returns a tuple with the Steps field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowDefinition) GetStepsOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Steps) {
+	if o == nil || IsNil(o.Steps) {
 		return map[string]interface{}{}, false
 	}
 	return o.Steps, true
@@ -97,7 +97,7 @@ func (o *WorkflowDefinition) GetStepsOk() (map[string]interface{}, bool) {
 
 // HasSteps returns a boolean if a field has been set.
 func (o *WorkflowDefinition) HasSteps() bool {
-	if o != nil && !isNil(o.Steps) {
+	if o != nil && !IsNil(o.Steps) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o WorkflowDefinition) MarshalJSON() ([]byte, error) {
 
 func (o WorkflowDefinition) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Start) {
+	if !IsNil(o.Start) {
 		toSerialize["start"] = o.Start
 	}
-	if !isNil(o.Steps) {
+	if !IsNil(o.Steps) {
 		toSerialize["steps"] = o.Steps
 	}
 
@@ -133,16 +133,20 @@ func (o WorkflowDefinition) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *WorkflowDefinition) UnmarshalJSON(bytes []byte) (err error) {
+func (o *WorkflowDefinition) UnmarshalJSON(data []byte) (err error) {
 	varWorkflowDefinition := _WorkflowDefinition{}
 
-	if err = json.Unmarshal(bytes, &varWorkflowDefinition); err == nil {
+	err = json.Unmarshal(data, &varWorkflowDefinition)
+
+	if err != nil {
+		return err
+	}
+
 	*o = WorkflowDefinition(varWorkflowDefinition)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "start")
 		delete(additionalProperties, "steps")
 		o.AdditionalProperties = additionalProperties

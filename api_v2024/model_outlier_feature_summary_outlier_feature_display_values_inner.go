@@ -49,7 +49,7 @@ func NewOutlierFeatureSummaryOutlierFeatureDisplayValuesInnerWithDefaults() *Out
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) GetDisplayName() string {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) GetDisplayName()
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) GetDisplayNameOk() (*string, bool) {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -67,7 +67,7 @@ func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) GetDisplayNameOk
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) HasDisplayName() bool {
-	if o != nil && !isNil(o.DisplayName) {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) SetDisplayName(v
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) GetValue() string {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) GetValue() strin
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) GetValueOk() (*string, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -99,7 +99,7 @@ func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) GetValueOk() (*s
 
 // HasValue returns a boolean if a field has been set.
 func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) SetValue(v strin
 
 // GetValueType returns the ValueType field value if set, zero value otherwise.
 func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) GetValueType() string {
-	if o == nil || isNil(o.ValueType) {
+	if o == nil || IsNil(o.ValueType) {
 		var ret string
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) GetValueType() s
 // GetValueTypeOk returns a tuple with the ValueType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) GetValueTypeOk() (*string, bool) {
-	if o == nil || isNil(o.ValueType) {
+	if o == nil || IsNil(o.ValueType) {
 		return nil, false
 	}
 	return o.ValueType, true
@@ -131,7 +131,7 @@ func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) GetValueTypeOk()
 
 // HasValueType returns a boolean if a field has been set.
 func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) HasValueType() bool {
-	if o != nil && !isNil(o.ValueType) {
+	if o != nil && !IsNil(o.ValueType) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) MarshalJSON() ([]
 
 func (o OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.DisplayName) {
+	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
-	if !isNil(o.Value) {
+	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
-	if !isNil(o.ValueType) {
+	if !IsNil(o.ValueType) {
 		toSerialize["valueType"] = o.ValueType
 	}
 
@@ -170,16 +170,20 @@ func (o OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) ToMap() (map[stri
 	return toSerialize, nil
 }
 
-func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) UnmarshalJSON(bytes []byte) (err error) {
+func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) UnmarshalJSON(data []byte) (err error) {
 	varOutlierFeatureSummaryOutlierFeatureDisplayValuesInner := _OutlierFeatureSummaryOutlierFeatureDisplayValuesInner{}
 
-	if err = json.Unmarshal(bytes, &varOutlierFeatureSummaryOutlierFeatureDisplayValuesInner); err == nil {
+	err = json.Unmarshal(data, &varOutlierFeatureSummaryOutlierFeatureDisplayValuesInner)
+
+	if err != nil {
+		return err
+	}
+
 	*o = OutlierFeatureSummaryOutlierFeatureDisplayValuesInner(varOutlierFeatureSummaryOutlierFeatureDisplayValuesInner)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "displayName")
 		delete(additionalProperties, "value")
 		delete(additionalProperties, "valueType")

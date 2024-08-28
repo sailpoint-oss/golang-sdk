@@ -12,6 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
@@ -55,7 +56,11 @@ func (dst *IdentityAccess) UnmarshalJSON(data []byte) error {
 		if string(jsonAccessProfileEntitlement) == "{}" { // empty struct
 			dst.AccessProfileEntitlement = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.AccessProfileEntitlement); err != nil {
+				dst.AccessProfileEntitlement = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.AccessProfileEntitlement = nil
@@ -68,7 +73,11 @@ func (dst *IdentityAccess) UnmarshalJSON(data []byte) error {
 		if string(jsonAccessProfileRole) == "{}" { // empty struct
 			dst.AccessProfileRole = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.AccessProfileRole); err != nil {
+				dst.AccessProfileRole = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.AccessProfileRole = nil
@@ -81,7 +90,11 @@ func (dst *IdentityAccess) UnmarshalJSON(data []byte) error {
 		if string(jsonAccessProfileSummary) == "{}" { // empty struct
 			dst.AccessProfileSummary = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.AccessProfileSummary); err != nil {
+				dst.AccessProfileSummary = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.AccessProfileSummary = nil

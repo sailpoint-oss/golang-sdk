@@ -67,7 +67,7 @@ func NewNativeChangeDetectionConfigWithDefaults() *NativeChangeDetectionConfig {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *NativeChangeDetectionConfig) GetEnabled() bool {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -77,7 +77,7 @@ func (o *NativeChangeDetectionConfig) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NativeChangeDetectionConfig) GetEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -85,7 +85,7 @@ func (o *NativeChangeDetectionConfig) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *NativeChangeDetectionConfig) HasEnabled() bool {
-	if o != nil && !isNil(o.Enabled) {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -99,7 +99,7 @@ func (o *NativeChangeDetectionConfig) SetEnabled(v bool) {
 
 // GetOperations returns the Operations field value if set, zero value otherwise.
 func (o *NativeChangeDetectionConfig) GetOperations() []string {
-	if o == nil || isNil(o.Operations) {
+	if o == nil || IsNil(o.Operations) {
 		var ret []string
 		return ret
 	}
@@ -109,7 +109,7 @@ func (o *NativeChangeDetectionConfig) GetOperations() []string {
 // GetOperationsOk returns a tuple with the Operations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NativeChangeDetectionConfig) GetOperationsOk() ([]string, bool) {
-	if o == nil || isNil(o.Operations) {
+	if o == nil || IsNil(o.Operations) {
 		return nil, false
 	}
 	return o.Operations, true
@@ -117,7 +117,7 @@ func (o *NativeChangeDetectionConfig) GetOperationsOk() ([]string, bool) {
 
 // HasOperations returns a boolean if a field has been set.
 func (o *NativeChangeDetectionConfig) HasOperations() bool {
-	if o != nil && !isNil(o.Operations) {
+	if o != nil && !IsNil(o.Operations) {
 		return true
 	}
 
@@ -131,7 +131,7 @@ func (o *NativeChangeDetectionConfig) SetOperations(v []string) {
 
 // GetAllEntitlements returns the AllEntitlements field value if set, zero value otherwise.
 func (o *NativeChangeDetectionConfig) GetAllEntitlements() bool {
-	if o == nil || isNil(o.AllEntitlements) {
+	if o == nil || IsNil(o.AllEntitlements) {
 		var ret bool
 		return ret
 	}
@@ -141,7 +141,7 @@ func (o *NativeChangeDetectionConfig) GetAllEntitlements() bool {
 // GetAllEntitlementsOk returns a tuple with the AllEntitlements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NativeChangeDetectionConfig) GetAllEntitlementsOk() (*bool, bool) {
-	if o == nil || isNil(o.AllEntitlements) {
+	if o == nil || IsNil(o.AllEntitlements) {
 		return nil, false
 	}
 	return o.AllEntitlements, true
@@ -149,7 +149,7 @@ func (o *NativeChangeDetectionConfig) GetAllEntitlementsOk() (*bool, bool) {
 
 // HasAllEntitlements returns a boolean if a field has been set.
 func (o *NativeChangeDetectionConfig) HasAllEntitlements() bool {
-	if o != nil && !isNil(o.AllEntitlements) {
+	if o != nil && !IsNil(o.AllEntitlements) {
 		return true
 	}
 
@@ -163,7 +163,7 @@ func (o *NativeChangeDetectionConfig) SetAllEntitlements(v bool) {
 
 // GetAllNonEntitlementAttributes returns the AllNonEntitlementAttributes field value if set, zero value otherwise.
 func (o *NativeChangeDetectionConfig) GetAllNonEntitlementAttributes() bool {
-	if o == nil || isNil(o.AllNonEntitlementAttributes) {
+	if o == nil || IsNil(o.AllNonEntitlementAttributes) {
 		var ret bool
 		return ret
 	}
@@ -173,7 +173,7 @@ func (o *NativeChangeDetectionConfig) GetAllNonEntitlementAttributes() bool {
 // GetAllNonEntitlementAttributesOk returns a tuple with the AllNonEntitlementAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NativeChangeDetectionConfig) GetAllNonEntitlementAttributesOk() (*bool, bool) {
-	if o == nil || isNil(o.AllNonEntitlementAttributes) {
+	if o == nil || IsNil(o.AllNonEntitlementAttributes) {
 		return nil, false
 	}
 	return o.AllNonEntitlementAttributes, true
@@ -181,7 +181,7 @@ func (o *NativeChangeDetectionConfig) GetAllNonEntitlementAttributesOk() (*bool,
 
 // HasAllNonEntitlementAttributes returns a boolean if a field has been set.
 func (o *NativeChangeDetectionConfig) HasAllNonEntitlementAttributes() bool {
-	if o != nil && !isNil(o.AllNonEntitlementAttributes) {
+	if o != nil && !IsNil(o.AllNonEntitlementAttributes) {
 		return true
 	}
 
@@ -195,7 +195,7 @@ func (o *NativeChangeDetectionConfig) SetAllNonEntitlementAttributes(v bool) {
 
 // GetSelectedEntitlements returns the SelectedEntitlements field value if set, zero value otherwise.
 func (o *NativeChangeDetectionConfig) GetSelectedEntitlements() []string {
-	if o == nil || isNil(o.SelectedEntitlements) {
+	if o == nil || IsNil(o.SelectedEntitlements) {
 		var ret []string
 		return ret
 	}
@@ -205,7 +205,7 @@ func (o *NativeChangeDetectionConfig) GetSelectedEntitlements() []string {
 // GetSelectedEntitlementsOk returns a tuple with the SelectedEntitlements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NativeChangeDetectionConfig) GetSelectedEntitlementsOk() ([]string, bool) {
-	if o == nil || isNil(o.SelectedEntitlements) {
+	if o == nil || IsNil(o.SelectedEntitlements) {
 		return nil, false
 	}
 	return o.SelectedEntitlements, true
@@ -213,7 +213,7 @@ func (o *NativeChangeDetectionConfig) GetSelectedEntitlementsOk() ([]string, boo
 
 // HasSelectedEntitlements returns a boolean if a field has been set.
 func (o *NativeChangeDetectionConfig) HasSelectedEntitlements() bool {
-	if o != nil && !isNil(o.SelectedEntitlements) {
+	if o != nil && !IsNil(o.SelectedEntitlements) {
 		return true
 	}
 
@@ -227,7 +227,7 @@ func (o *NativeChangeDetectionConfig) SetSelectedEntitlements(v []string) {
 
 // GetSelectedNonEntitlementAttributes returns the SelectedNonEntitlementAttributes field value if set, zero value otherwise.
 func (o *NativeChangeDetectionConfig) GetSelectedNonEntitlementAttributes() []string {
-	if o == nil || isNil(o.SelectedNonEntitlementAttributes) {
+	if o == nil || IsNil(o.SelectedNonEntitlementAttributes) {
 		var ret []string
 		return ret
 	}
@@ -237,7 +237,7 @@ func (o *NativeChangeDetectionConfig) GetSelectedNonEntitlementAttributes() []st
 // GetSelectedNonEntitlementAttributesOk returns a tuple with the SelectedNonEntitlementAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NativeChangeDetectionConfig) GetSelectedNonEntitlementAttributesOk() ([]string, bool) {
-	if o == nil || isNil(o.SelectedNonEntitlementAttributes) {
+	if o == nil || IsNil(o.SelectedNonEntitlementAttributes) {
 		return nil, false
 	}
 	return o.SelectedNonEntitlementAttributes, true
@@ -245,7 +245,7 @@ func (o *NativeChangeDetectionConfig) GetSelectedNonEntitlementAttributesOk() ([
 
 // HasSelectedNonEntitlementAttributes returns a boolean if a field has been set.
 func (o *NativeChangeDetectionConfig) HasSelectedNonEntitlementAttributes() bool {
-	if o != nil && !isNil(o.SelectedNonEntitlementAttributes) {
+	if o != nil && !IsNil(o.SelectedNonEntitlementAttributes) {
 		return true
 	}
 
@@ -267,22 +267,22 @@ func (o NativeChangeDetectionConfig) MarshalJSON() ([]byte, error) {
 
 func (o NativeChangeDetectionConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Enabled) {
+	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if !isNil(o.Operations) {
+	if !IsNil(o.Operations) {
 		toSerialize["operations"] = o.Operations
 	}
-	if !isNil(o.AllEntitlements) {
+	if !IsNil(o.AllEntitlements) {
 		toSerialize["allEntitlements"] = o.AllEntitlements
 	}
-	if !isNil(o.AllNonEntitlementAttributes) {
+	if !IsNil(o.AllNonEntitlementAttributes) {
 		toSerialize["allNonEntitlementAttributes"] = o.AllNonEntitlementAttributes
 	}
-	if !isNil(o.SelectedEntitlements) {
+	if !IsNil(o.SelectedEntitlements) {
 		toSerialize["selectedEntitlements"] = o.SelectedEntitlements
 	}
-	if !isNil(o.SelectedNonEntitlementAttributes) {
+	if !IsNil(o.SelectedNonEntitlementAttributes) {
 		toSerialize["selectedNonEntitlementAttributes"] = o.SelectedNonEntitlementAttributes
 	}
 
@@ -293,16 +293,20 @@ func (o NativeChangeDetectionConfig) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *NativeChangeDetectionConfig) UnmarshalJSON(bytes []byte) (err error) {
+func (o *NativeChangeDetectionConfig) UnmarshalJSON(data []byte) (err error) {
 	varNativeChangeDetectionConfig := _NativeChangeDetectionConfig{}
 
-	if err = json.Unmarshal(bytes, &varNativeChangeDetectionConfig); err == nil {
+	err = json.Unmarshal(data, &varNativeChangeDetectionConfig)
+
+	if err != nil {
+		return err
+	}
+
 	*o = NativeChangeDetectionConfig(varNativeChangeDetectionConfig)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "enabled")
 		delete(additionalProperties, "operations")
 		delete(additionalProperties, "allEntitlements")

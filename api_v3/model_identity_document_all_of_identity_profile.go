@@ -47,7 +47,7 @@ func NewIdentityDocumentAllOfIdentityProfileWithDefaults() *IdentityDocumentAllO
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *IdentityDocumentAllOfIdentityProfile) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *IdentityDocumentAllOfIdentityProfile) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityDocumentAllOfIdentityProfile) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -65,7 +65,7 @@ func (o *IdentityDocumentAllOfIdentityProfile) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *IdentityDocumentAllOfIdentityProfile) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *IdentityDocumentAllOfIdentityProfile) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *IdentityDocumentAllOfIdentityProfile) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *IdentityDocumentAllOfIdentityProfile) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityDocumentAllOfIdentityProfile) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -97,7 +97,7 @@ func (o *IdentityDocumentAllOfIdentityProfile) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *IdentityDocumentAllOfIdentityProfile) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o IdentityDocumentAllOfIdentityProfile) MarshalJSON() ([]byte, error) {
 
 func (o IdentityDocumentAllOfIdentityProfile) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 
@@ -133,16 +133,20 @@ func (o IdentityDocumentAllOfIdentityProfile) ToMap() (map[string]interface{}, e
 	return toSerialize, nil
 }
 
-func (o *IdentityDocumentAllOfIdentityProfile) UnmarshalJSON(bytes []byte) (err error) {
+func (o *IdentityDocumentAllOfIdentityProfile) UnmarshalJSON(data []byte) (err error) {
 	varIdentityDocumentAllOfIdentityProfile := _IdentityDocumentAllOfIdentityProfile{}
 
-	if err = json.Unmarshal(bytes, &varIdentityDocumentAllOfIdentityProfile); err == nil {
+	err = json.Unmarshal(data, &varIdentityDocumentAllOfIdentityProfile)
+
+	if err != nil {
+		return err
+	}
+
 	*o = IdentityDocumentAllOfIdentityProfile(varIdentityDocumentAllOfIdentityProfile)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		o.AdditionalProperties = additionalProperties

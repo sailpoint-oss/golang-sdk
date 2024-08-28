@@ -51,7 +51,7 @@ func NewNonEmployeeRequestSummaryWithDefaults() *NonEmployeeRequestSummary {
 
 // GetApproved returns the Approved field value if set, zero value otherwise.
 func (o *NonEmployeeRequestSummary) GetApproved() float32 {
-	if o == nil || isNil(o.Approved) {
+	if o == nil || IsNil(o.Approved) {
 		var ret float32
 		return ret
 	}
@@ -61,7 +61,7 @@ func (o *NonEmployeeRequestSummary) GetApproved() float32 {
 // GetApprovedOk returns a tuple with the Approved field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeRequestSummary) GetApprovedOk() (*float32, bool) {
-	if o == nil || isNil(o.Approved) {
+	if o == nil || IsNil(o.Approved) {
 		return nil, false
 	}
 	return o.Approved, true
@@ -69,7 +69,7 @@ func (o *NonEmployeeRequestSummary) GetApprovedOk() (*float32, bool) {
 
 // HasApproved returns a boolean if a field has been set.
 func (o *NonEmployeeRequestSummary) HasApproved() bool {
-	if o != nil && !isNil(o.Approved) {
+	if o != nil && !IsNil(o.Approved) {
 		return true
 	}
 
@@ -83,7 +83,7 @@ func (o *NonEmployeeRequestSummary) SetApproved(v float32) {
 
 // GetRejected returns the Rejected field value if set, zero value otherwise.
 func (o *NonEmployeeRequestSummary) GetRejected() float32 {
-	if o == nil || isNil(o.Rejected) {
+	if o == nil || IsNil(o.Rejected) {
 		var ret float32
 		return ret
 	}
@@ -93,7 +93,7 @@ func (o *NonEmployeeRequestSummary) GetRejected() float32 {
 // GetRejectedOk returns a tuple with the Rejected field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeRequestSummary) GetRejectedOk() (*float32, bool) {
-	if o == nil || isNil(o.Rejected) {
+	if o == nil || IsNil(o.Rejected) {
 		return nil, false
 	}
 	return o.Rejected, true
@@ -101,7 +101,7 @@ func (o *NonEmployeeRequestSummary) GetRejectedOk() (*float32, bool) {
 
 // HasRejected returns a boolean if a field has been set.
 func (o *NonEmployeeRequestSummary) HasRejected() bool {
-	if o != nil && !isNil(o.Rejected) {
+	if o != nil && !IsNil(o.Rejected) {
 		return true
 	}
 
@@ -115,7 +115,7 @@ func (o *NonEmployeeRequestSummary) SetRejected(v float32) {
 
 // GetPending returns the Pending field value if set, zero value otherwise.
 func (o *NonEmployeeRequestSummary) GetPending() float32 {
-	if o == nil || isNil(o.Pending) {
+	if o == nil || IsNil(o.Pending) {
 		var ret float32
 		return ret
 	}
@@ -125,7 +125,7 @@ func (o *NonEmployeeRequestSummary) GetPending() float32 {
 // GetPendingOk returns a tuple with the Pending field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeRequestSummary) GetPendingOk() (*float32, bool) {
-	if o == nil || isNil(o.Pending) {
+	if o == nil || IsNil(o.Pending) {
 		return nil, false
 	}
 	return o.Pending, true
@@ -133,7 +133,7 @@ func (o *NonEmployeeRequestSummary) GetPendingOk() (*float32, bool) {
 
 // HasPending returns a boolean if a field has been set.
 func (o *NonEmployeeRequestSummary) HasPending() bool {
-	if o != nil && !isNil(o.Pending) {
+	if o != nil && !IsNil(o.Pending) {
 		return true
 	}
 
@@ -147,7 +147,7 @@ func (o *NonEmployeeRequestSummary) SetPending(v float32) {
 
 // GetNonEmployeeCount returns the NonEmployeeCount field value if set, zero value otherwise.
 func (o *NonEmployeeRequestSummary) GetNonEmployeeCount() float32 {
-	if o == nil || isNil(o.NonEmployeeCount) {
+	if o == nil || IsNil(o.NonEmployeeCount) {
 		var ret float32
 		return ret
 	}
@@ -157,7 +157,7 @@ func (o *NonEmployeeRequestSummary) GetNonEmployeeCount() float32 {
 // GetNonEmployeeCountOk returns a tuple with the NonEmployeeCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeRequestSummary) GetNonEmployeeCountOk() (*float32, bool) {
-	if o == nil || isNil(o.NonEmployeeCount) {
+	if o == nil || IsNil(o.NonEmployeeCount) {
 		return nil, false
 	}
 	return o.NonEmployeeCount, true
@@ -165,7 +165,7 @@ func (o *NonEmployeeRequestSummary) GetNonEmployeeCountOk() (*float32, bool) {
 
 // HasNonEmployeeCount returns a boolean if a field has been set.
 func (o *NonEmployeeRequestSummary) HasNonEmployeeCount() bool {
-	if o != nil && !isNil(o.NonEmployeeCount) {
+	if o != nil && !IsNil(o.NonEmployeeCount) {
 		return true
 	}
 
@@ -187,16 +187,16 @@ func (o NonEmployeeRequestSummary) MarshalJSON() ([]byte, error) {
 
 func (o NonEmployeeRequestSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Approved) {
+	if !IsNil(o.Approved) {
 		toSerialize["approved"] = o.Approved
 	}
-	if !isNil(o.Rejected) {
+	if !IsNil(o.Rejected) {
 		toSerialize["rejected"] = o.Rejected
 	}
-	if !isNil(o.Pending) {
+	if !IsNil(o.Pending) {
 		toSerialize["pending"] = o.Pending
 	}
-	if !isNil(o.NonEmployeeCount) {
+	if !IsNil(o.NonEmployeeCount) {
 		toSerialize["nonEmployeeCount"] = o.NonEmployeeCount
 	}
 
@@ -207,16 +207,20 @@ func (o NonEmployeeRequestSummary) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *NonEmployeeRequestSummary) UnmarshalJSON(bytes []byte) (err error) {
+func (o *NonEmployeeRequestSummary) UnmarshalJSON(data []byte) (err error) {
 	varNonEmployeeRequestSummary := _NonEmployeeRequestSummary{}
 
-	if err = json.Unmarshal(bytes, &varNonEmployeeRequestSummary); err == nil {
+	err = json.Unmarshal(data, &varNonEmployeeRequestSummary)
+
+	if err != nil {
+		return err
+	}
+
 	*o = NonEmployeeRequestSummary(varNonEmployeeRequestSummary)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "approved")
 		delete(additionalProperties, "rejected")
 		delete(additionalProperties, "pending")

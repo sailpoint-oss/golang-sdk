@@ -53,7 +53,7 @@ func NewWorkgroupDtoOwnerWithDefaults() *WorkgroupDtoOwner {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *WorkgroupDtoOwner) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -63,7 +63,7 @@ func (o *WorkgroupDtoOwner) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkgroupDtoOwner) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -71,7 +71,7 @@ func (o *WorkgroupDtoOwner) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *WorkgroupDtoOwner) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o *WorkgroupDtoOwner) SetType(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *WorkgroupDtoOwner) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -95,7 +95,7 @@ func (o *WorkgroupDtoOwner) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkgroupDtoOwner) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -103,7 +103,7 @@ func (o *WorkgroupDtoOwner) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *WorkgroupDtoOwner) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -117,7 +117,7 @@ func (o *WorkgroupDtoOwner) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *WorkgroupDtoOwner) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -127,7 +127,7 @@ func (o *WorkgroupDtoOwner) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkgroupDtoOwner) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -135,7 +135,7 @@ func (o *WorkgroupDtoOwner) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *WorkgroupDtoOwner) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -149,7 +149,7 @@ func (o *WorkgroupDtoOwner) SetName(v string) {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *WorkgroupDtoOwner) GetDisplayName() string {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -159,7 +159,7 @@ func (o *WorkgroupDtoOwner) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkgroupDtoOwner) GetDisplayNameOk() (*string, bool) {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -167,7 +167,7 @@ func (o *WorkgroupDtoOwner) GetDisplayNameOk() (*string, bool) {
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *WorkgroupDtoOwner) HasDisplayName() bool {
-	if o != nil && !isNil(o.DisplayName) {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -181,7 +181,7 @@ func (o *WorkgroupDtoOwner) SetDisplayName(v string) {
 
 // GetEmailAddress returns the EmailAddress field value if set, zero value otherwise.
 func (o *WorkgroupDtoOwner) GetEmailAddress() string {
-	if o == nil || isNil(o.EmailAddress) {
+	if o == nil || IsNil(o.EmailAddress) {
 		var ret string
 		return ret
 	}
@@ -191,7 +191,7 @@ func (o *WorkgroupDtoOwner) GetEmailAddress() string {
 // GetEmailAddressOk returns a tuple with the EmailAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkgroupDtoOwner) GetEmailAddressOk() (*string, bool) {
-	if o == nil || isNil(o.EmailAddress) {
+	if o == nil || IsNil(o.EmailAddress) {
 		return nil, false
 	}
 	return o.EmailAddress, true
@@ -199,7 +199,7 @@ func (o *WorkgroupDtoOwner) GetEmailAddressOk() (*string, bool) {
 
 // HasEmailAddress returns a boolean if a field has been set.
 func (o *WorkgroupDtoOwner) HasEmailAddress() bool {
-	if o != nil && !isNil(o.EmailAddress) {
+	if o != nil && !IsNil(o.EmailAddress) {
 		return true
 	}
 
@@ -221,17 +221,21 @@ func (o WorkgroupDtoOwner) MarshalJSON() ([]byte, error) {
 
 func (o WorkgroupDtoOwner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	// skip: displayName is readOnly
-	// skip: emailAddress is readOnly
+	if !IsNil(o.DisplayName) {
+		toSerialize["displayName"] = o.DisplayName
+	}
+	if !IsNil(o.EmailAddress) {
+		toSerialize["emailAddress"] = o.EmailAddress
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -240,16 +244,20 @@ func (o WorkgroupDtoOwner) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *WorkgroupDtoOwner) UnmarshalJSON(bytes []byte) (err error) {
+func (o *WorkgroupDtoOwner) UnmarshalJSON(data []byte) (err error) {
 	varWorkgroupDtoOwner := _WorkgroupDtoOwner{}
 
-	if err = json.Unmarshal(bytes, &varWorkgroupDtoOwner); err == nil {
+	err = json.Unmarshal(data, &varWorkgroupDtoOwner)
+
+	if err != nil {
+		return err
+	}
+
 	*o = WorkgroupDtoOwner(varWorkgroupDtoOwner)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")

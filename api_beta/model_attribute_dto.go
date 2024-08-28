@@ -62,7 +62,7 @@ func NewAttributeDTOWithDefaults() *AttributeDTO {
 
 // GetKey returns the Key field value if set, zero value otherwise.
 func (o *AttributeDTO) GetKey() string {
-	if o == nil || isNil(o.Key) {
+	if o == nil || IsNil(o.Key) {
 		var ret string
 		return ret
 	}
@@ -72,7 +72,7 @@ func (o *AttributeDTO) GetKey() string {
 // GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AttributeDTO) GetKeyOk() (*string, bool) {
-	if o == nil || isNil(o.Key) {
+	if o == nil || IsNil(o.Key) {
 		return nil, false
 	}
 	return o.Key, true
@@ -80,7 +80,7 @@ func (o *AttributeDTO) GetKeyOk() (*string, bool) {
 
 // HasKey returns a boolean if a field has been set.
 func (o *AttributeDTO) HasKey() bool {
-	if o != nil && !isNil(o.Key) {
+	if o != nil && !IsNil(o.Key) {
 		return true
 	}
 
@@ -94,7 +94,7 @@ func (o *AttributeDTO) SetKey(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *AttributeDTO) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -104,7 +104,7 @@ func (o *AttributeDTO) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AttributeDTO) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -112,7 +112,7 @@ func (o *AttributeDTO) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *AttributeDTO) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -126,7 +126,7 @@ func (o *AttributeDTO) SetName(v string) {
 
 // GetMultiselect returns the Multiselect field value if set, zero value otherwise.
 func (o *AttributeDTO) GetMultiselect() bool {
-	if o == nil || isNil(o.Multiselect) {
+	if o == nil || IsNil(o.Multiselect) {
 		var ret bool
 		return ret
 	}
@@ -136,7 +136,7 @@ func (o *AttributeDTO) GetMultiselect() bool {
 // GetMultiselectOk returns a tuple with the Multiselect field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AttributeDTO) GetMultiselectOk() (*bool, bool) {
-	if o == nil || isNil(o.Multiselect) {
+	if o == nil || IsNil(o.Multiselect) {
 		return nil, false
 	}
 	return o.Multiselect, true
@@ -144,7 +144,7 @@ func (o *AttributeDTO) GetMultiselectOk() (*bool, bool) {
 
 // HasMultiselect returns a boolean if a field has been set.
 func (o *AttributeDTO) HasMultiselect() bool {
-	if o != nil && !isNil(o.Multiselect) {
+	if o != nil && !IsNil(o.Multiselect) {
 		return true
 	}
 
@@ -158,7 +158,7 @@ func (o *AttributeDTO) SetMultiselect(v bool) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *AttributeDTO) GetStatus() string {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -168,7 +168,7 @@ func (o *AttributeDTO) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AttributeDTO) GetStatusOk() (*string, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -176,7 +176,7 @@ func (o *AttributeDTO) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *AttributeDTO) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -190,7 +190,7 @@ func (o *AttributeDTO) SetStatus(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *AttributeDTO) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -200,7 +200,7 @@ func (o *AttributeDTO) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AttributeDTO) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -208,7 +208,7 @@ func (o *AttributeDTO) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *AttributeDTO) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -233,7 +233,7 @@ func (o *AttributeDTO) GetObjectTypes() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AttributeDTO) GetObjectTypesOk() ([]string, bool) {
-	if o == nil || isNil(o.ObjectTypes) {
+	if o == nil || IsNil(o.ObjectTypes) {
 		return nil, false
 	}
 	return o.ObjectTypes, true
@@ -241,7 +241,7 @@ func (o *AttributeDTO) GetObjectTypesOk() ([]string, bool) {
 
 // HasObjectTypes returns a boolean if a field has been set.
 func (o *AttributeDTO) HasObjectTypes() bool {
-	if o != nil && isNil(o.ObjectTypes) {
+	if o != nil && !IsNil(o.ObjectTypes) {
 		return true
 	}
 
@@ -255,7 +255,7 @@ func (o *AttributeDTO) SetObjectTypes(v []string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *AttributeDTO) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -265,7 +265,7 @@ func (o *AttributeDTO) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AttributeDTO) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -273,7 +273,7 @@ func (o *AttributeDTO) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *AttributeDTO) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -298,7 +298,7 @@ func (o *AttributeDTO) GetValues() []AttributeValueDTO {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AttributeDTO) GetValuesOk() ([]AttributeValueDTO, bool) {
-	if o == nil || isNil(o.Values) {
+	if o == nil || IsNil(o.Values) {
 		return nil, false
 	}
 	return o.Values, true
@@ -306,7 +306,7 @@ func (o *AttributeDTO) GetValuesOk() ([]AttributeValueDTO, bool) {
 
 // HasValues returns a boolean if a field has been set.
 func (o *AttributeDTO) HasValues() bool {
-	if o != nil && isNil(o.Values) {
+	if o != nil && !IsNil(o.Values) {
 		return true
 	}
 
@@ -328,25 +328,25 @@ func (o AttributeDTO) MarshalJSON() ([]byte, error) {
 
 func (o AttributeDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Key) {
+	if !IsNil(o.Key) {
 		toSerialize["key"] = o.Key
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Multiselect) {
+	if !IsNil(o.Multiselect) {
 		toSerialize["multiselect"] = o.Multiselect
 	}
-	if !isNil(o.Status) {
+	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
 	if o.ObjectTypes != nil {
 		toSerialize["objectTypes"] = o.ObjectTypes
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 	if o.Values != nil {
@@ -360,16 +360,20 @@ func (o AttributeDTO) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AttributeDTO) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AttributeDTO) UnmarshalJSON(data []byte) (err error) {
 	varAttributeDTO := _AttributeDTO{}
 
-	if err = json.Unmarshal(bytes, &varAttributeDTO); err == nil {
+	err = json.Unmarshal(data, &varAttributeDTO)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AttributeDTO(varAttributeDTO)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "key")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "multiselect")

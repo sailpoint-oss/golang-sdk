@@ -78,7 +78,7 @@ func (o *TestInvocation) SetTriggerId(v string) {
 
 // GetInput returns the Input field value if set, zero value otherwise.
 func (o *TestInvocation) GetInput() map[string]interface{} {
-	if o == nil || isNil(o.Input) {
+	if o == nil || IsNil(o.Input) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -88,7 +88,7 @@ func (o *TestInvocation) GetInput() map[string]interface{} {
 // GetInputOk returns a tuple with the Input field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TestInvocation) GetInputOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Input) {
+	if o == nil || IsNil(o.Input) {
 		return map[string]interface{}{}, false
 	}
 	return o.Input, true
@@ -96,7 +96,7 @@ func (o *TestInvocation) GetInputOk() (map[string]interface{}, bool) {
 
 // HasInput returns a boolean if a field has been set.
 func (o *TestInvocation) HasInput() bool {
-	if o != nil && !isNil(o.Input) {
+	if o != nil && !IsNil(o.Input) {
 		return true
 	}
 
@@ -134,7 +134,7 @@ func (o *TestInvocation) SetContentJson(v map[string]interface{}) {
 
 // GetSubscriptionIds returns the SubscriptionIds field value if set, zero value otherwise.
 func (o *TestInvocation) GetSubscriptionIds() []string {
-	if o == nil || isNil(o.SubscriptionIds) {
+	if o == nil || IsNil(o.SubscriptionIds) {
 		var ret []string
 		return ret
 	}
@@ -144,7 +144,7 @@ func (o *TestInvocation) GetSubscriptionIds() []string {
 // GetSubscriptionIdsOk returns a tuple with the SubscriptionIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TestInvocation) GetSubscriptionIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.SubscriptionIds) {
+	if o == nil || IsNil(o.SubscriptionIds) {
 		return nil, false
 	}
 	return o.SubscriptionIds, true
@@ -152,7 +152,7 @@ func (o *TestInvocation) GetSubscriptionIdsOk() ([]string, bool) {
 
 // HasSubscriptionIds returns a boolean if a field has been set.
 func (o *TestInvocation) HasSubscriptionIds() bool {
-	if o != nil && !isNil(o.SubscriptionIds) {
+	if o != nil && !IsNil(o.SubscriptionIds) {
 		return true
 	}
 
@@ -175,11 +175,11 @@ func (o TestInvocation) MarshalJSON() ([]byte, error) {
 func (o TestInvocation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["triggerId"] = o.TriggerId
-	if !isNil(o.Input) {
+	if !IsNil(o.Input) {
 		toSerialize["input"] = o.Input
 	}
 	toSerialize["contentJson"] = o.ContentJson
-	if !isNil(o.SubscriptionIds) {
+	if !IsNil(o.SubscriptionIds) {
 		toSerialize["subscriptionIds"] = o.SubscriptionIds
 	}
 
@@ -190,8 +190,8 @@ func (o TestInvocation) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *TestInvocation) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *TestInvocation) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -201,7 +201,7 @@ func (o *TestInvocation) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -215,13 +215,17 @@ func (o *TestInvocation) UnmarshalJSON(bytes []byte) (err error) {
 
 	varTestInvocation := _TestInvocation{}
 
-	if err = json.Unmarshal(bytes, &varTestInvocation); err == nil {
+	err = json.Unmarshal(data, &varTestInvocation)
+
+	if err != nil {
+		return err
+	}
+
 	*o = TestInvocation(varTestInvocation)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "triggerId")
 		delete(additionalProperties, "input")
 		delete(additionalProperties, "contentJson")

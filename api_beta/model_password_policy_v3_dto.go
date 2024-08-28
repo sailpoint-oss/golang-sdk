@@ -144,7 +144,7 @@ func NewPasswordPolicyV3DtoWithDefaults() *PasswordPolicyV3Dto {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *PasswordPolicyV3Dto) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -154,7 +154,7 @@ func (o *PasswordPolicyV3Dto) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicyV3Dto) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -162,7 +162,7 @@ func (o *PasswordPolicyV3Dto) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *PasswordPolicyV3Dto) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -176,7 +176,7 @@ func (o *PasswordPolicyV3Dto) SetId(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PasswordPolicyV3Dto) GetDescription() string {
-	if o == nil || isNil(o.Description.Get()) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
@@ -218,7 +218,7 @@ func (o *PasswordPolicyV3Dto) UnsetDescription() {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PasswordPolicyV3Dto) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -228,7 +228,7 @@ func (o *PasswordPolicyV3Dto) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicyV3Dto) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -236,7 +236,7 @@ func (o *PasswordPolicyV3Dto) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PasswordPolicyV3Dto) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -250,7 +250,7 @@ func (o *PasswordPolicyV3Dto) SetName(v string) {
 
 // GetDateCreated returns the DateCreated field value if set, zero value otherwise.
 func (o *PasswordPolicyV3Dto) GetDateCreated() time.Time {
-	if o == nil || isNil(o.DateCreated) {
+	if o == nil || IsNil(o.DateCreated) {
 		var ret time.Time
 		return ret
 	}
@@ -260,7 +260,7 @@ func (o *PasswordPolicyV3Dto) GetDateCreated() time.Time {
 // GetDateCreatedOk returns a tuple with the DateCreated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicyV3Dto) GetDateCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.DateCreated) {
+	if o == nil || IsNil(o.DateCreated) {
 		return nil, false
 	}
 	return o.DateCreated, true
@@ -268,7 +268,7 @@ func (o *PasswordPolicyV3Dto) GetDateCreatedOk() (*time.Time, bool) {
 
 // HasDateCreated returns a boolean if a field has been set.
 func (o *PasswordPolicyV3Dto) HasDateCreated() bool {
-	if o != nil && !isNil(o.DateCreated) {
+	if o != nil && !IsNil(o.DateCreated) {
 		return true
 	}
 
@@ -282,7 +282,7 @@ func (o *PasswordPolicyV3Dto) SetDateCreated(v time.Time) {
 
 // GetLastUpdated returns the LastUpdated field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PasswordPolicyV3Dto) GetLastUpdated() time.Time {
-	if o == nil || isNil(o.LastUpdated.Get()) {
+	if o == nil || IsNil(o.LastUpdated.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -324,7 +324,7 @@ func (o *PasswordPolicyV3Dto) UnsetLastUpdated() {
 
 // GetFirstExpirationReminder returns the FirstExpirationReminder field value if set, zero value otherwise.
 func (o *PasswordPolicyV3Dto) GetFirstExpirationReminder() int64 {
-	if o == nil || isNil(o.FirstExpirationReminder) {
+	if o == nil || IsNil(o.FirstExpirationReminder) {
 		var ret int64
 		return ret
 	}
@@ -334,7 +334,7 @@ func (o *PasswordPolicyV3Dto) GetFirstExpirationReminder() int64 {
 // GetFirstExpirationReminderOk returns a tuple with the FirstExpirationReminder field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicyV3Dto) GetFirstExpirationReminderOk() (*int64, bool) {
-	if o == nil || isNil(o.FirstExpirationReminder) {
+	if o == nil || IsNil(o.FirstExpirationReminder) {
 		return nil, false
 	}
 	return o.FirstExpirationReminder, true
@@ -342,7 +342,7 @@ func (o *PasswordPolicyV3Dto) GetFirstExpirationReminderOk() (*int64, bool) {
 
 // HasFirstExpirationReminder returns a boolean if a field has been set.
 func (o *PasswordPolicyV3Dto) HasFirstExpirationReminder() bool {
-	if o != nil && !isNil(o.FirstExpirationReminder) {
+	if o != nil && !IsNil(o.FirstExpirationReminder) {
 		return true
 	}
 
@@ -356,7 +356,7 @@ func (o *PasswordPolicyV3Dto) SetFirstExpirationReminder(v int64) {
 
 // GetAccountIdMinWordLength returns the AccountIdMinWordLength field value if set, zero value otherwise.
 func (o *PasswordPolicyV3Dto) GetAccountIdMinWordLength() int64 {
-	if o == nil || isNil(o.AccountIdMinWordLength) {
+	if o == nil || IsNil(o.AccountIdMinWordLength) {
 		var ret int64
 		return ret
 	}
@@ -366,7 +366,7 @@ func (o *PasswordPolicyV3Dto) GetAccountIdMinWordLength() int64 {
 // GetAccountIdMinWordLengthOk returns a tuple with the AccountIdMinWordLength field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicyV3Dto) GetAccountIdMinWordLengthOk() (*int64, bool) {
-	if o == nil || isNil(o.AccountIdMinWordLength) {
+	if o == nil || IsNil(o.AccountIdMinWordLength) {
 		return nil, false
 	}
 	return o.AccountIdMinWordLength, true
@@ -374,7 +374,7 @@ func (o *PasswordPolicyV3Dto) GetAccountIdMinWordLengthOk() (*int64, bool) {
 
 // HasAccountIdMinWordLength returns a boolean if a field has been set.
 func (o *PasswordPolicyV3Dto) HasAccountIdMinWordLength() bool {
-	if o != nil && !isNil(o.AccountIdMinWordLength) {
+	if o != nil && !IsNil(o.AccountIdMinWordLength) {
 		return true
 	}
 
@@ -388,7 +388,7 @@ func (o *PasswordPolicyV3Dto) SetAccountIdMinWordLength(v int64) {
 
 // GetAccountNameMinWordLength returns the AccountNameMinWordLength field value if set, zero value otherwise.
 func (o *PasswordPolicyV3Dto) GetAccountNameMinWordLength() int64 {
-	if o == nil || isNil(o.AccountNameMinWordLength) {
+	if o == nil || IsNil(o.AccountNameMinWordLength) {
 		var ret int64
 		return ret
 	}
@@ -398,7 +398,7 @@ func (o *PasswordPolicyV3Dto) GetAccountNameMinWordLength() int64 {
 // GetAccountNameMinWordLengthOk returns a tuple with the AccountNameMinWordLength field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicyV3Dto) GetAccountNameMinWordLengthOk() (*int64, bool) {
-	if o == nil || isNil(o.AccountNameMinWordLength) {
+	if o == nil || IsNil(o.AccountNameMinWordLength) {
 		return nil, false
 	}
 	return o.AccountNameMinWordLength, true
@@ -406,7 +406,7 @@ func (o *PasswordPolicyV3Dto) GetAccountNameMinWordLengthOk() (*int64, bool) {
 
 // HasAccountNameMinWordLength returns a boolean if a field has been set.
 func (o *PasswordPolicyV3Dto) HasAccountNameMinWordLength() bool {
-	if o != nil && !isNil(o.AccountNameMinWordLength) {
+	if o != nil && !IsNil(o.AccountNameMinWordLength) {
 		return true
 	}
 
@@ -420,7 +420,7 @@ func (o *PasswordPolicyV3Dto) SetAccountNameMinWordLength(v int64) {
 
 // GetMinAlpha returns the MinAlpha field value if set, zero value otherwise.
 func (o *PasswordPolicyV3Dto) GetMinAlpha() int64 {
-	if o == nil || isNil(o.MinAlpha) {
+	if o == nil || IsNil(o.MinAlpha) {
 		var ret int64
 		return ret
 	}
@@ -430,7 +430,7 @@ func (o *PasswordPolicyV3Dto) GetMinAlpha() int64 {
 // GetMinAlphaOk returns a tuple with the MinAlpha field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicyV3Dto) GetMinAlphaOk() (*int64, bool) {
-	if o == nil || isNil(o.MinAlpha) {
+	if o == nil || IsNil(o.MinAlpha) {
 		return nil, false
 	}
 	return o.MinAlpha, true
@@ -438,7 +438,7 @@ func (o *PasswordPolicyV3Dto) GetMinAlphaOk() (*int64, bool) {
 
 // HasMinAlpha returns a boolean if a field has been set.
 func (o *PasswordPolicyV3Dto) HasMinAlpha() bool {
-	if o != nil && !isNil(o.MinAlpha) {
+	if o != nil && !IsNil(o.MinAlpha) {
 		return true
 	}
 
@@ -452,7 +452,7 @@ func (o *PasswordPolicyV3Dto) SetMinAlpha(v int64) {
 
 // GetMinCharacterTypes returns the MinCharacterTypes field value if set, zero value otherwise.
 func (o *PasswordPolicyV3Dto) GetMinCharacterTypes() int64 {
-	if o == nil || isNil(o.MinCharacterTypes) {
+	if o == nil || IsNil(o.MinCharacterTypes) {
 		var ret int64
 		return ret
 	}
@@ -462,7 +462,7 @@ func (o *PasswordPolicyV3Dto) GetMinCharacterTypes() int64 {
 // GetMinCharacterTypesOk returns a tuple with the MinCharacterTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicyV3Dto) GetMinCharacterTypesOk() (*int64, bool) {
-	if o == nil || isNil(o.MinCharacterTypes) {
+	if o == nil || IsNil(o.MinCharacterTypes) {
 		return nil, false
 	}
 	return o.MinCharacterTypes, true
@@ -470,7 +470,7 @@ func (o *PasswordPolicyV3Dto) GetMinCharacterTypesOk() (*int64, bool) {
 
 // HasMinCharacterTypes returns a boolean if a field has been set.
 func (o *PasswordPolicyV3Dto) HasMinCharacterTypes() bool {
-	if o != nil && !isNil(o.MinCharacterTypes) {
+	if o != nil && !IsNil(o.MinCharacterTypes) {
 		return true
 	}
 
@@ -484,7 +484,7 @@ func (o *PasswordPolicyV3Dto) SetMinCharacterTypes(v int64) {
 
 // GetMaxLength returns the MaxLength field value if set, zero value otherwise.
 func (o *PasswordPolicyV3Dto) GetMaxLength() int64 {
-	if o == nil || isNil(o.MaxLength) {
+	if o == nil || IsNil(o.MaxLength) {
 		var ret int64
 		return ret
 	}
@@ -494,7 +494,7 @@ func (o *PasswordPolicyV3Dto) GetMaxLength() int64 {
 // GetMaxLengthOk returns a tuple with the MaxLength field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicyV3Dto) GetMaxLengthOk() (*int64, bool) {
-	if o == nil || isNil(o.MaxLength) {
+	if o == nil || IsNil(o.MaxLength) {
 		return nil, false
 	}
 	return o.MaxLength, true
@@ -502,7 +502,7 @@ func (o *PasswordPolicyV3Dto) GetMaxLengthOk() (*int64, bool) {
 
 // HasMaxLength returns a boolean if a field has been set.
 func (o *PasswordPolicyV3Dto) HasMaxLength() bool {
-	if o != nil && !isNil(o.MaxLength) {
+	if o != nil && !IsNil(o.MaxLength) {
 		return true
 	}
 
@@ -516,7 +516,7 @@ func (o *PasswordPolicyV3Dto) SetMaxLength(v int64) {
 
 // GetMinLength returns the MinLength field value if set, zero value otherwise.
 func (o *PasswordPolicyV3Dto) GetMinLength() int64 {
-	if o == nil || isNil(o.MinLength) {
+	if o == nil || IsNil(o.MinLength) {
 		var ret int64
 		return ret
 	}
@@ -526,7 +526,7 @@ func (o *PasswordPolicyV3Dto) GetMinLength() int64 {
 // GetMinLengthOk returns a tuple with the MinLength field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicyV3Dto) GetMinLengthOk() (*int64, bool) {
-	if o == nil || isNil(o.MinLength) {
+	if o == nil || IsNil(o.MinLength) {
 		return nil, false
 	}
 	return o.MinLength, true
@@ -534,7 +534,7 @@ func (o *PasswordPolicyV3Dto) GetMinLengthOk() (*int64, bool) {
 
 // HasMinLength returns a boolean if a field has been set.
 func (o *PasswordPolicyV3Dto) HasMinLength() bool {
-	if o != nil && !isNil(o.MinLength) {
+	if o != nil && !IsNil(o.MinLength) {
 		return true
 	}
 
@@ -548,7 +548,7 @@ func (o *PasswordPolicyV3Dto) SetMinLength(v int64) {
 
 // GetMaxRepeatedChars returns the MaxRepeatedChars field value if set, zero value otherwise.
 func (o *PasswordPolicyV3Dto) GetMaxRepeatedChars() int64 {
-	if o == nil || isNil(o.MaxRepeatedChars) {
+	if o == nil || IsNil(o.MaxRepeatedChars) {
 		var ret int64
 		return ret
 	}
@@ -558,7 +558,7 @@ func (o *PasswordPolicyV3Dto) GetMaxRepeatedChars() int64 {
 // GetMaxRepeatedCharsOk returns a tuple with the MaxRepeatedChars field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicyV3Dto) GetMaxRepeatedCharsOk() (*int64, bool) {
-	if o == nil || isNil(o.MaxRepeatedChars) {
+	if o == nil || IsNil(o.MaxRepeatedChars) {
 		return nil, false
 	}
 	return o.MaxRepeatedChars, true
@@ -566,7 +566,7 @@ func (o *PasswordPolicyV3Dto) GetMaxRepeatedCharsOk() (*int64, bool) {
 
 // HasMaxRepeatedChars returns a boolean if a field has been set.
 func (o *PasswordPolicyV3Dto) HasMaxRepeatedChars() bool {
-	if o != nil && !isNil(o.MaxRepeatedChars) {
+	if o != nil && !IsNil(o.MaxRepeatedChars) {
 		return true
 	}
 
@@ -580,7 +580,7 @@ func (o *PasswordPolicyV3Dto) SetMaxRepeatedChars(v int64) {
 
 // GetMinLower returns the MinLower field value if set, zero value otherwise.
 func (o *PasswordPolicyV3Dto) GetMinLower() int64 {
-	if o == nil || isNil(o.MinLower) {
+	if o == nil || IsNil(o.MinLower) {
 		var ret int64
 		return ret
 	}
@@ -590,7 +590,7 @@ func (o *PasswordPolicyV3Dto) GetMinLower() int64 {
 // GetMinLowerOk returns a tuple with the MinLower field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicyV3Dto) GetMinLowerOk() (*int64, bool) {
-	if o == nil || isNil(o.MinLower) {
+	if o == nil || IsNil(o.MinLower) {
 		return nil, false
 	}
 	return o.MinLower, true
@@ -598,7 +598,7 @@ func (o *PasswordPolicyV3Dto) GetMinLowerOk() (*int64, bool) {
 
 // HasMinLower returns a boolean if a field has been set.
 func (o *PasswordPolicyV3Dto) HasMinLower() bool {
-	if o != nil && !isNil(o.MinLower) {
+	if o != nil && !IsNil(o.MinLower) {
 		return true
 	}
 
@@ -612,7 +612,7 @@ func (o *PasswordPolicyV3Dto) SetMinLower(v int64) {
 
 // GetMinNumeric returns the MinNumeric field value if set, zero value otherwise.
 func (o *PasswordPolicyV3Dto) GetMinNumeric() int64 {
-	if o == nil || isNil(o.MinNumeric) {
+	if o == nil || IsNil(o.MinNumeric) {
 		var ret int64
 		return ret
 	}
@@ -622,7 +622,7 @@ func (o *PasswordPolicyV3Dto) GetMinNumeric() int64 {
 // GetMinNumericOk returns a tuple with the MinNumeric field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicyV3Dto) GetMinNumericOk() (*int64, bool) {
-	if o == nil || isNil(o.MinNumeric) {
+	if o == nil || IsNil(o.MinNumeric) {
 		return nil, false
 	}
 	return o.MinNumeric, true
@@ -630,7 +630,7 @@ func (o *PasswordPolicyV3Dto) GetMinNumericOk() (*int64, bool) {
 
 // HasMinNumeric returns a boolean if a field has been set.
 func (o *PasswordPolicyV3Dto) HasMinNumeric() bool {
-	if o != nil && !isNil(o.MinNumeric) {
+	if o != nil && !IsNil(o.MinNumeric) {
 		return true
 	}
 
@@ -644,7 +644,7 @@ func (o *PasswordPolicyV3Dto) SetMinNumeric(v int64) {
 
 // GetMinSpecial returns the MinSpecial field value if set, zero value otherwise.
 func (o *PasswordPolicyV3Dto) GetMinSpecial() int64 {
-	if o == nil || isNil(o.MinSpecial) {
+	if o == nil || IsNil(o.MinSpecial) {
 		var ret int64
 		return ret
 	}
@@ -654,7 +654,7 @@ func (o *PasswordPolicyV3Dto) GetMinSpecial() int64 {
 // GetMinSpecialOk returns a tuple with the MinSpecial field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicyV3Dto) GetMinSpecialOk() (*int64, bool) {
-	if o == nil || isNil(o.MinSpecial) {
+	if o == nil || IsNil(o.MinSpecial) {
 		return nil, false
 	}
 	return o.MinSpecial, true
@@ -662,7 +662,7 @@ func (o *PasswordPolicyV3Dto) GetMinSpecialOk() (*int64, bool) {
 
 // HasMinSpecial returns a boolean if a field has been set.
 func (o *PasswordPolicyV3Dto) HasMinSpecial() bool {
-	if o != nil && !isNil(o.MinSpecial) {
+	if o != nil && !IsNil(o.MinSpecial) {
 		return true
 	}
 
@@ -676,7 +676,7 @@ func (o *PasswordPolicyV3Dto) SetMinSpecial(v int64) {
 
 // GetMinUpper returns the MinUpper field value if set, zero value otherwise.
 func (o *PasswordPolicyV3Dto) GetMinUpper() int64 {
-	if o == nil || isNil(o.MinUpper) {
+	if o == nil || IsNil(o.MinUpper) {
 		var ret int64
 		return ret
 	}
@@ -686,7 +686,7 @@ func (o *PasswordPolicyV3Dto) GetMinUpper() int64 {
 // GetMinUpperOk returns a tuple with the MinUpper field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicyV3Dto) GetMinUpperOk() (*int64, bool) {
-	if o == nil || isNil(o.MinUpper) {
+	if o == nil || IsNil(o.MinUpper) {
 		return nil, false
 	}
 	return o.MinUpper, true
@@ -694,7 +694,7 @@ func (o *PasswordPolicyV3Dto) GetMinUpperOk() (*int64, bool) {
 
 // HasMinUpper returns a boolean if a field has been set.
 func (o *PasswordPolicyV3Dto) HasMinUpper() bool {
-	if o != nil && !isNil(o.MinUpper) {
+	if o != nil && !IsNil(o.MinUpper) {
 		return true
 	}
 
@@ -708,7 +708,7 @@ func (o *PasswordPolicyV3Dto) SetMinUpper(v int64) {
 
 // GetPasswordExpiration returns the PasswordExpiration field value if set, zero value otherwise.
 func (o *PasswordPolicyV3Dto) GetPasswordExpiration() int64 {
-	if o == nil || isNil(o.PasswordExpiration) {
+	if o == nil || IsNil(o.PasswordExpiration) {
 		var ret int64
 		return ret
 	}
@@ -718,7 +718,7 @@ func (o *PasswordPolicyV3Dto) GetPasswordExpiration() int64 {
 // GetPasswordExpirationOk returns a tuple with the PasswordExpiration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicyV3Dto) GetPasswordExpirationOk() (*int64, bool) {
-	if o == nil || isNil(o.PasswordExpiration) {
+	if o == nil || IsNil(o.PasswordExpiration) {
 		return nil, false
 	}
 	return o.PasswordExpiration, true
@@ -726,7 +726,7 @@ func (o *PasswordPolicyV3Dto) GetPasswordExpirationOk() (*int64, bool) {
 
 // HasPasswordExpiration returns a boolean if a field has been set.
 func (o *PasswordPolicyV3Dto) HasPasswordExpiration() bool {
-	if o != nil && !isNil(o.PasswordExpiration) {
+	if o != nil && !IsNil(o.PasswordExpiration) {
 		return true
 	}
 
@@ -740,7 +740,7 @@ func (o *PasswordPolicyV3Dto) SetPasswordExpiration(v int64) {
 
 // GetDefaultPolicy returns the DefaultPolicy field value if set, zero value otherwise.
 func (o *PasswordPolicyV3Dto) GetDefaultPolicy() bool {
-	if o == nil || isNil(o.DefaultPolicy) {
+	if o == nil || IsNil(o.DefaultPolicy) {
 		var ret bool
 		return ret
 	}
@@ -750,7 +750,7 @@ func (o *PasswordPolicyV3Dto) GetDefaultPolicy() bool {
 // GetDefaultPolicyOk returns a tuple with the DefaultPolicy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicyV3Dto) GetDefaultPolicyOk() (*bool, bool) {
-	if o == nil || isNil(o.DefaultPolicy) {
+	if o == nil || IsNil(o.DefaultPolicy) {
 		return nil, false
 	}
 	return o.DefaultPolicy, true
@@ -758,7 +758,7 @@ func (o *PasswordPolicyV3Dto) GetDefaultPolicyOk() (*bool, bool) {
 
 // HasDefaultPolicy returns a boolean if a field has been set.
 func (o *PasswordPolicyV3Dto) HasDefaultPolicy() bool {
-	if o != nil && !isNil(o.DefaultPolicy) {
+	if o != nil && !IsNil(o.DefaultPolicy) {
 		return true
 	}
 
@@ -772,7 +772,7 @@ func (o *PasswordPolicyV3Dto) SetDefaultPolicy(v bool) {
 
 // GetEnablePasswdExpiration returns the EnablePasswdExpiration field value if set, zero value otherwise.
 func (o *PasswordPolicyV3Dto) GetEnablePasswdExpiration() bool {
-	if o == nil || isNil(o.EnablePasswdExpiration) {
+	if o == nil || IsNil(o.EnablePasswdExpiration) {
 		var ret bool
 		return ret
 	}
@@ -782,7 +782,7 @@ func (o *PasswordPolicyV3Dto) GetEnablePasswdExpiration() bool {
 // GetEnablePasswdExpirationOk returns a tuple with the EnablePasswdExpiration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicyV3Dto) GetEnablePasswdExpirationOk() (*bool, bool) {
-	if o == nil || isNil(o.EnablePasswdExpiration) {
+	if o == nil || IsNil(o.EnablePasswdExpiration) {
 		return nil, false
 	}
 	return o.EnablePasswdExpiration, true
@@ -790,7 +790,7 @@ func (o *PasswordPolicyV3Dto) GetEnablePasswdExpirationOk() (*bool, bool) {
 
 // HasEnablePasswdExpiration returns a boolean if a field has been set.
 func (o *PasswordPolicyV3Dto) HasEnablePasswdExpiration() bool {
-	if o != nil && !isNil(o.EnablePasswdExpiration) {
+	if o != nil && !IsNil(o.EnablePasswdExpiration) {
 		return true
 	}
 
@@ -804,7 +804,7 @@ func (o *PasswordPolicyV3Dto) SetEnablePasswdExpiration(v bool) {
 
 // GetRequireStrongAuthn returns the RequireStrongAuthn field value if set, zero value otherwise.
 func (o *PasswordPolicyV3Dto) GetRequireStrongAuthn() bool {
-	if o == nil || isNil(o.RequireStrongAuthn) {
+	if o == nil || IsNil(o.RequireStrongAuthn) {
 		var ret bool
 		return ret
 	}
@@ -814,7 +814,7 @@ func (o *PasswordPolicyV3Dto) GetRequireStrongAuthn() bool {
 // GetRequireStrongAuthnOk returns a tuple with the RequireStrongAuthn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicyV3Dto) GetRequireStrongAuthnOk() (*bool, bool) {
-	if o == nil || isNil(o.RequireStrongAuthn) {
+	if o == nil || IsNil(o.RequireStrongAuthn) {
 		return nil, false
 	}
 	return o.RequireStrongAuthn, true
@@ -822,7 +822,7 @@ func (o *PasswordPolicyV3Dto) GetRequireStrongAuthnOk() (*bool, bool) {
 
 // HasRequireStrongAuthn returns a boolean if a field has been set.
 func (o *PasswordPolicyV3Dto) HasRequireStrongAuthn() bool {
-	if o != nil && !isNil(o.RequireStrongAuthn) {
+	if o != nil && !IsNil(o.RequireStrongAuthn) {
 		return true
 	}
 
@@ -836,7 +836,7 @@ func (o *PasswordPolicyV3Dto) SetRequireStrongAuthn(v bool) {
 
 // GetRequireStrongAuthOffNetwork returns the RequireStrongAuthOffNetwork field value if set, zero value otherwise.
 func (o *PasswordPolicyV3Dto) GetRequireStrongAuthOffNetwork() bool {
-	if o == nil || isNil(o.RequireStrongAuthOffNetwork) {
+	if o == nil || IsNil(o.RequireStrongAuthOffNetwork) {
 		var ret bool
 		return ret
 	}
@@ -846,7 +846,7 @@ func (o *PasswordPolicyV3Dto) GetRequireStrongAuthOffNetwork() bool {
 // GetRequireStrongAuthOffNetworkOk returns a tuple with the RequireStrongAuthOffNetwork field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicyV3Dto) GetRequireStrongAuthOffNetworkOk() (*bool, bool) {
-	if o == nil || isNil(o.RequireStrongAuthOffNetwork) {
+	if o == nil || IsNil(o.RequireStrongAuthOffNetwork) {
 		return nil, false
 	}
 	return o.RequireStrongAuthOffNetwork, true
@@ -854,7 +854,7 @@ func (o *PasswordPolicyV3Dto) GetRequireStrongAuthOffNetworkOk() (*bool, bool) {
 
 // HasRequireStrongAuthOffNetwork returns a boolean if a field has been set.
 func (o *PasswordPolicyV3Dto) HasRequireStrongAuthOffNetwork() bool {
-	if o != nil && !isNil(o.RequireStrongAuthOffNetwork) {
+	if o != nil && !IsNil(o.RequireStrongAuthOffNetwork) {
 		return true
 	}
 
@@ -868,7 +868,7 @@ func (o *PasswordPolicyV3Dto) SetRequireStrongAuthOffNetwork(v bool) {
 
 // GetRequireStrongAuthUntrustedGeographies returns the RequireStrongAuthUntrustedGeographies field value if set, zero value otherwise.
 func (o *PasswordPolicyV3Dto) GetRequireStrongAuthUntrustedGeographies() bool {
-	if o == nil || isNil(o.RequireStrongAuthUntrustedGeographies) {
+	if o == nil || IsNil(o.RequireStrongAuthUntrustedGeographies) {
 		var ret bool
 		return ret
 	}
@@ -878,7 +878,7 @@ func (o *PasswordPolicyV3Dto) GetRequireStrongAuthUntrustedGeographies() bool {
 // GetRequireStrongAuthUntrustedGeographiesOk returns a tuple with the RequireStrongAuthUntrustedGeographies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicyV3Dto) GetRequireStrongAuthUntrustedGeographiesOk() (*bool, bool) {
-	if o == nil || isNil(o.RequireStrongAuthUntrustedGeographies) {
+	if o == nil || IsNil(o.RequireStrongAuthUntrustedGeographies) {
 		return nil, false
 	}
 	return o.RequireStrongAuthUntrustedGeographies, true
@@ -886,7 +886,7 @@ func (o *PasswordPolicyV3Dto) GetRequireStrongAuthUntrustedGeographiesOk() (*boo
 
 // HasRequireStrongAuthUntrustedGeographies returns a boolean if a field has been set.
 func (o *PasswordPolicyV3Dto) HasRequireStrongAuthUntrustedGeographies() bool {
-	if o != nil && !isNil(o.RequireStrongAuthUntrustedGeographies) {
+	if o != nil && !IsNil(o.RequireStrongAuthUntrustedGeographies) {
 		return true
 	}
 
@@ -900,7 +900,7 @@ func (o *PasswordPolicyV3Dto) SetRequireStrongAuthUntrustedGeographies(v bool) {
 
 // GetUseAccountAttributes returns the UseAccountAttributes field value if set, zero value otherwise.
 func (o *PasswordPolicyV3Dto) GetUseAccountAttributes() bool {
-	if o == nil || isNil(o.UseAccountAttributes) {
+	if o == nil || IsNil(o.UseAccountAttributes) {
 		var ret bool
 		return ret
 	}
@@ -910,7 +910,7 @@ func (o *PasswordPolicyV3Dto) GetUseAccountAttributes() bool {
 // GetUseAccountAttributesOk returns a tuple with the UseAccountAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicyV3Dto) GetUseAccountAttributesOk() (*bool, bool) {
-	if o == nil || isNil(o.UseAccountAttributes) {
+	if o == nil || IsNil(o.UseAccountAttributes) {
 		return nil, false
 	}
 	return o.UseAccountAttributes, true
@@ -918,7 +918,7 @@ func (o *PasswordPolicyV3Dto) GetUseAccountAttributesOk() (*bool, bool) {
 
 // HasUseAccountAttributes returns a boolean if a field has been set.
 func (o *PasswordPolicyV3Dto) HasUseAccountAttributes() bool {
-	if o != nil && !isNil(o.UseAccountAttributes) {
+	if o != nil && !IsNil(o.UseAccountAttributes) {
 		return true
 	}
 
@@ -932,7 +932,7 @@ func (o *PasswordPolicyV3Dto) SetUseAccountAttributes(v bool) {
 
 // GetUseDictionary returns the UseDictionary field value if set, zero value otherwise.
 func (o *PasswordPolicyV3Dto) GetUseDictionary() bool {
-	if o == nil || isNil(o.UseDictionary) {
+	if o == nil || IsNil(o.UseDictionary) {
 		var ret bool
 		return ret
 	}
@@ -942,7 +942,7 @@ func (o *PasswordPolicyV3Dto) GetUseDictionary() bool {
 // GetUseDictionaryOk returns a tuple with the UseDictionary field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicyV3Dto) GetUseDictionaryOk() (*bool, bool) {
-	if o == nil || isNil(o.UseDictionary) {
+	if o == nil || IsNil(o.UseDictionary) {
 		return nil, false
 	}
 	return o.UseDictionary, true
@@ -950,7 +950,7 @@ func (o *PasswordPolicyV3Dto) GetUseDictionaryOk() (*bool, bool) {
 
 // HasUseDictionary returns a boolean if a field has been set.
 func (o *PasswordPolicyV3Dto) HasUseDictionary() bool {
-	if o != nil && !isNil(o.UseDictionary) {
+	if o != nil && !IsNil(o.UseDictionary) {
 		return true
 	}
 
@@ -964,7 +964,7 @@ func (o *PasswordPolicyV3Dto) SetUseDictionary(v bool) {
 
 // GetUseIdentityAttributes returns the UseIdentityAttributes field value if set, zero value otherwise.
 func (o *PasswordPolicyV3Dto) GetUseIdentityAttributes() bool {
-	if o == nil || isNil(o.UseIdentityAttributes) {
+	if o == nil || IsNil(o.UseIdentityAttributes) {
 		var ret bool
 		return ret
 	}
@@ -974,7 +974,7 @@ func (o *PasswordPolicyV3Dto) GetUseIdentityAttributes() bool {
 // GetUseIdentityAttributesOk returns a tuple with the UseIdentityAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicyV3Dto) GetUseIdentityAttributesOk() (*bool, bool) {
-	if o == nil || isNil(o.UseIdentityAttributes) {
+	if o == nil || IsNil(o.UseIdentityAttributes) {
 		return nil, false
 	}
 	return o.UseIdentityAttributes, true
@@ -982,7 +982,7 @@ func (o *PasswordPolicyV3Dto) GetUseIdentityAttributesOk() (*bool, bool) {
 
 // HasUseIdentityAttributes returns a boolean if a field has been set.
 func (o *PasswordPolicyV3Dto) HasUseIdentityAttributes() bool {
-	if o != nil && !isNil(o.UseIdentityAttributes) {
+	if o != nil && !IsNil(o.UseIdentityAttributes) {
 		return true
 	}
 
@@ -996,7 +996,7 @@ func (o *PasswordPolicyV3Dto) SetUseIdentityAttributes(v bool) {
 
 // GetValidateAgainstAccountId returns the ValidateAgainstAccountId field value if set, zero value otherwise.
 func (o *PasswordPolicyV3Dto) GetValidateAgainstAccountId() bool {
-	if o == nil || isNil(o.ValidateAgainstAccountId) {
+	if o == nil || IsNil(o.ValidateAgainstAccountId) {
 		var ret bool
 		return ret
 	}
@@ -1006,7 +1006,7 @@ func (o *PasswordPolicyV3Dto) GetValidateAgainstAccountId() bool {
 // GetValidateAgainstAccountIdOk returns a tuple with the ValidateAgainstAccountId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicyV3Dto) GetValidateAgainstAccountIdOk() (*bool, bool) {
-	if o == nil || isNil(o.ValidateAgainstAccountId) {
+	if o == nil || IsNil(o.ValidateAgainstAccountId) {
 		return nil, false
 	}
 	return o.ValidateAgainstAccountId, true
@@ -1014,7 +1014,7 @@ func (o *PasswordPolicyV3Dto) GetValidateAgainstAccountIdOk() (*bool, bool) {
 
 // HasValidateAgainstAccountId returns a boolean if a field has been set.
 func (o *PasswordPolicyV3Dto) HasValidateAgainstAccountId() bool {
-	if o != nil && !isNil(o.ValidateAgainstAccountId) {
+	if o != nil && !IsNil(o.ValidateAgainstAccountId) {
 		return true
 	}
 
@@ -1028,7 +1028,7 @@ func (o *PasswordPolicyV3Dto) SetValidateAgainstAccountId(v bool) {
 
 // GetValidateAgainstAccountName returns the ValidateAgainstAccountName field value if set, zero value otherwise.
 func (o *PasswordPolicyV3Dto) GetValidateAgainstAccountName() bool {
-	if o == nil || isNil(o.ValidateAgainstAccountName) {
+	if o == nil || IsNil(o.ValidateAgainstAccountName) {
 		var ret bool
 		return ret
 	}
@@ -1038,7 +1038,7 @@ func (o *PasswordPolicyV3Dto) GetValidateAgainstAccountName() bool {
 // GetValidateAgainstAccountNameOk returns a tuple with the ValidateAgainstAccountName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicyV3Dto) GetValidateAgainstAccountNameOk() (*bool, bool) {
-	if o == nil || isNil(o.ValidateAgainstAccountName) {
+	if o == nil || IsNil(o.ValidateAgainstAccountName) {
 		return nil, false
 	}
 	return o.ValidateAgainstAccountName, true
@@ -1046,7 +1046,7 @@ func (o *PasswordPolicyV3Dto) GetValidateAgainstAccountNameOk() (*bool, bool) {
 
 // HasValidateAgainstAccountName returns a boolean if a field has been set.
 func (o *PasswordPolicyV3Dto) HasValidateAgainstAccountName() bool {
-	if o != nil && !isNil(o.ValidateAgainstAccountName) {
+	if o != nil && !IsNil(o.ValidateAgainstAccountName) {
 		return true
 	}
 
@@ -1060,7 +1060,7 @@ func (o *PasswordPolicyV3Dto) SetValidateAgainstAccountName(v bool) {
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PasswordPolicyV3Dto) GetCreated() string {
-	if o == nil || isNil(o.Created.Get()) {
+	if o == nil || IsNil(o.Created.Get()) {
 		var ret string
 		return ret
 	}
@@ -1102,7 +1102,7 @@ func (o *PasswordPolicyV3Dto) UnsetCreated() {
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PasswordPolicyV3Dto) GetModified() string {
-	if o == nil || isNil(o.Modified.Get()) {
+	if o == nil || IsNil(o.Modified.Get()) {
 		var ret string
 		return ret
 	}
@@ -1144,7 +1144,7 @@ func (o *PasswordPolicyV3Dto) UnsetModified() {
 
 // GetSourceIds returns the SourceIds field value if set, zero value otherwise.
 func (o *PasswordPolicyV3Dto) GetSourceIds() []string {
-	if o == nil || isNil(o.SourceIds) {
+	if o == nil || IsNil(o.SourceIds) {
 		var ret []string
 		return ret
 	}
@@ -1154,7 +1154,7 @@ func (o *PasswordPolicyV3Dto) GetSourceIds() []string {
 // GetSourceIdsOk returns a tuple with the SourceIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicyV3Dto) GetSourceIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.SourceIds) {
+	if o == nil || IsNil(o.SourceIds) {
 		return nil, false
 	}
 	return o.SourceIds, true
@@ -1162,7 +1162,7 @@ func (o *PasswordPolicyV3Dto) GetSourceIdsOk() ([]string, bool) {
 
 // HasSourceIds returns a boolean if a field has been set.
 func (o *PasswordPolicyV3Dto) HasSourceIds() bool {
-	if o != nil && !isNil(o.SourceIds) {
+	if o != nil && !IsNil(o.SourceIds) {
 		return true
 	}
 
@@ -1184,88 +1184,88 @@ func (o PasswordPolicyV3Dto) MarshalJSON() ([]byte, error) {
 
 func (o PasswordPolicyV3Dto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.DateCreated) {
+	if !IsNil(o.DateCreated) {
 		toSerialize["dateCreated"] = o.DateCreated
 	}
 	if o.LastUpdated.IsSet() {
 		toSerialize["lastUpdated"] = o.LastUpdated.Get()
 	}
-	if !isNil(o.FirstExpirationReminder) {
+	if !IsNil(o.FirstExpirationReminder) {
 		toSerialize["firstExpirationReminder"] = o.FirstExpirationReminder
 	}
-	if !isNil(o.AccountIdMinWordLength) {
+	if !IsNil(o.AccountIdMinWordLength) {
 		toSerialize["accountIdMinWordLength"] = o.AccountIdMinWordLength
 	}
-	if !isNil(o.AccountNameMinWordLength) {
+	if !IsNil(o.AccountNameMinWordLength) {
 		toSerialize["accountNameMinWordLength"] = o.AccountNameMinWordLength
 	}
-	if !isNil(o.MinAlpha) {
+	if !IsNil(o.MinAlpha) {
 		toSerialize["minAlpha"] = o.MinAlpha
 	}
-	if !isNil(o.MinCharacterTypes) {
+	if !IsNil(o.MinCharacterTypes) {
 		toSerialize["minCharacterTypes"] = o.MinCharacterTypes
 	}
-	if !isNil(o.MaxLength) {
+	if !IsNil(o.MaxLength) {
 		toSerialize["maxLength"] = o.MaxLength
 	}
-	if !isNil(o.MinLength) {
+	if !IsNil(o.MinLength) {
 		toSerialize["minLength"] = o.MinLength
 	}
-	if !isNil(o.MaxRepeatedChars) {
+	if !IsNil(o.MaxRepeatedChars) {
 		toSerialize["maxRepeatedChars"] = o.MaxRepeatedChars
 	}
-	if !isNil(o.MinLower) {
+	if !IsNil(o.MinLower) {
 		toSerialize["minLower"] = o.MinLower
 	}
-	if !isNil(o.MinNumeric) {
+	if !IsNil(o.MinNumeric) {
 		toSerialize["minNumeric"] = o.MinNumeric
 	}
-	if !isNil(o.MinSpecial) {
+	if !IsNil(o.MinSpecial) {
 		toSerialize["minSpecial"] = o.MinSpecial
 	}
-	if !isNil(o.MinUpper) {
+	if !IsNil(o.MinUpper) {
 		toSerialize["minUpper"] = o.MinUpper
 	}
-	if !isNil(o.PasswordExpiration) {
+	if !IsNil(o.PasswordExpiration) {
 		toSerialize["passwordExpiration"] = o.PasswordExpiration
 	}
-	if !isNil(o.DefaultPolicy) {
+	if !IsNil(o.DefaultPolicy) {
 		toSerialize["defaultPolicy"] = o.DefaultPolicy
 	}
-	if !isNil(o.EnablePasswdExpiration) {
+	if !IsNil(o.EnablePasswdExpiration) {
 		toSerialize["enablePasswdExpiration"] = o.EnablePasswdExpiration
 	}
-	if !isNil(o.RequireStrongAuthn) {
+	if !IsNil(o.RequireStrongAuthn) {
 		toSerialize["requireStrongAuthn"] = o.RequireStrongAuthn
 	}
-	if !isNil(o.RequireStrongAuthOffNetwork) {
+	if !IsNil(o.RequireStrongAuthOffNetwork) {
 		toSerialize["requireStrongAuthOffNetwork"] = o.RequireStrongAuthOffNetwork
 	}
-	if !isNil(o.RequireStrongAuthUntrustedGeographies) {
+	if !IsNil(o.RequireStrongAuthUntrustedGeographies) {
 		toSerialize["requireStrongAuthUntrustedGeographies"] = o.RequireStrongAuthUntrustedGeographies
 	}
-	if !isNil(o.UseAccountAttributes) {
+	if !IsNil(o.UseAccountAttributes) {
 		toSerialize["useAccountAttributes"] = o.UseAccountAttributes
 	}
-	if !isNil(o.UseDictionary) {
+	if !IsNil(o.UseDictionary) {
 		toSerialize["useDictionary"] = o.UseDictionary
 	}
-	if !isNil(o.UseIdentityAttributes) {
+	if !IsNil(o.UseIdentityAttributes) {
 		toSerialize["useIdentityAttributes"] = o.UseIdentityAttributes
 	}
-	if !isNil(o.ValidateAgainstAccountId) {
+	if !IsNil(o.ValidateAgainstAccountId) {
 		toSerialize["validateAgainstAccountId"] = o.ValidateAgainstAccountId
 	}
-	if !isNil(o.ValidateAgainstAccountName) {
+	if !IsNil(o.ValidateAgainstAccountName) {
 		toSerialize["validateAgainstAccountName"] = o.ValidateAgainstAccountName
 	}
 	if o.Created.IsSet() {
@@ -1274,7 +1274,7 @@ func (o PasswordPolicyV3Dto) ToMap() (map[string]interface{}, error) {
 	if o.Modified.IsSet() {
 		toSerialize["modified"] = o.Modified.Get()
 	}
-	if !isNil(o.SourceIds) {
+	if !IsNil(o.SourceIds) {
 		toSerialize["sourceIds"] = o.SourceIds
 	}
 
@@ -1285,16 +1285,20 @@ func (o PasswordPolicyV3Dto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *PasswordPolicyV3Dto) UnmarshalJSON(bytes []byte) (err error) {
+func (o *PasswordPolicyV3Dto) UnmarshalJSON(data []byte) (err error) {
 	varPasswordPolicyV3Dto := _PasswordPolicyV3Dto{}
 
-	if err = json.Unmarshal(bytes, &varPasswordPolicyV3Dto); err == nil {
+	err = json.Unmarshal(data, &varPasswordPolicyV3Dto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = PasswordPolicyV3Dto(varPasswordPolicyV3Dto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "name")

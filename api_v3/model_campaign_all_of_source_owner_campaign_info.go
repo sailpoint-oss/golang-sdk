@@ -45,7 +45,7 @@ func NewCampaignAllOfSourceOwnerCampaignInfoWithDefaults() *CampaignAllOfSourceO
 
 // GetSourceIds returns the SourceIds field value if set, zero value otherwise.
 func (o *CampaignAllOfSourceOwnerCampaignInfo) GetSourceIds() []string {
-	if o == nil || isNil(o.SourceIds) {
+	if o == nil || IsNil(o.SourceIds) {
 		var ret []string
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *CampaignAllOfSourceOwnerCampaignInfo) GetSourceIds() []string {
 // GetSourceIdsOk returns a tuple with the SourceIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CampaignAllOfSourceOwnerCampaignInfo) GetSourceIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.SourceIds) {
+	if o == nil || IsNil(o.SourceIds) {
 		return nil, false
 	}
 	return o.SourceIds, true
@@ -63,7 +63,7 @@ func (o *CampaignAllOfSourceOwnerCampaignInfo) GetSourceIdsOk() ([]string, bool)
 
 // HasSourceIds returns a boolean if a field has been set.
 func (o *CampaignAllOfSourceOwnerCampaignInfo) HasSourceIds() bool {
-	if o != nil && !isNil(o.SourceIds) {
+	if o != nil && !IsNil(o.SourceIds) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o CampaignAllOfSourceOwnerCampaignInfo) MarshalJSON() ([]byte, error) {
 
 func (o CampaignAllOfSourceOwnerCampaignInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.SourceIds) {
+	if !IsNil(o.SourceIds) {
 		toSerialize["sourceIds"] = o.SourceIds
 	}
 
@@ -96,16 +96,20 @@ func (o CampaignAllOfSourceOwnerCampaignInfo) ToMap() (map[string]interface{}, e
 	return toSerialize, nil
 }
 
-func (o *CampaignAllOfSourceOwnerCampaignInfo) UnmarshalJSON(bytes []byte) (err error) {
+func (o *CampaignAllOfSourceOwnerCampaignInfo) UnmarshalJSON(data []byte) (err error) {
 	varCampaignAllOfSourceOwnerCampaignInfo := _CampaignAllOfSourceOwnerCampaignInfo{}
 
-	if err = json.Unmarshal(bytes, &varCampaignAllOfSourceOwnerCampaignInfo); err == nil {
+	err = json.Unmarshal(data, &varCampaignAllOfSourceOwnerCampaignInfo)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CampaignAllOfSourceOwnerCampaignInfo(varCampaignAllOfSourceOwnerCampaignInfo)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "sourceIds")
 		o.AdditionalProperties = additionalProperties
 	}

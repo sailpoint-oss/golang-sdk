@@ -19,7 +19,7 @@ import (
 
 func Test_api_beta_IAIMessageCatalogsAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test IAIMessageCatalogsAPIService GetMessageCatalogs", func(t *testing.T) {
@@ -28,7 +28,7 @@ func Test_api_beta_IAIMessageCatalogsAPIService(t *testing.T) {
 
 		var catalogId string
 
-		resp, httpRes, err := apiClient.API_BETA.IAIMessageCatalogsAPI.GetMessageCatalogs(context.Background(), catalogId).Execute()
+		resp, httpRes, err := apiClient.IAIMessageCatalogsAPI.GetMessageCatalogs(context.Background(), catalogId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -48,7 +48,7 @@ func NewAccessRequestRecommendationActionItemResponseDtoWithDefaults() *AccessRe
 
 // GetIdentityId returns the IdentityId field value if set, zero value otherwise.
 func (o *AccessRequestRecommendationActionItemResponseDto) GetIdentityId() string {
-	if o == nil || isNil(o.IdentityId) {
+	if o == nil || IsNil(o.IdentityId) {
 		var ret string
 		return ret
 	}
@@ -58,7 +58,7 @@ func (o *AccessRequestRecommendationActionItemResponseDto) GetIdentityId() strin
 // GetIdentityIdOk returns a tuple with the IdentityId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestRecommendationActionItemResponseDto) GetIdentityIdOk() (*string, bool) {
-	if o == nil || isNil(o.IdentityId) {
+	if o == nil || IsNil(o.IdentityId) {
 		return nil, false
 	}
 	return o.IdentityId, true
@@ -66,7 +66,7 @@ func (o *AccessRequestRecommendationActionItemResponseDto) GetIdentityIdOk() (*s
 
 // HasIdentityId returns a boolean if a field has been set.
 func (o *AccessRequestRecommendationActionItemResponseDto) HasIdentityId() bool {
-	if o != nil && !isNil(o.IdentityId) {
+	if o != nil && !IsNil(o.IdentityId) {
 		return true
 	}
 
@@ -80,7 +80,7 @@ func (o *AccessRequestRecommendationActionItemResponseDto) SetIdentityId(v strin
 
 // GetAccess returns the Access field value if set, zero value otherwise.
 func (o *AccessRequestRecommendationActionItemResponseDto) GetAccess() AccessRequestRecommendationItem {
-	if o == nil || isNil(o.Access) {
+	if o == nil || IsNil(o.Access) {
 		var ret AccessRequestRecommendationItem
 		return ret
 	}
@@ -90,7 +90,7 @@ func (o *AccessRequestRecommendationActionItemResponseDto) GetAccess() AccessReq
 // GetAccessOk returns a tuple with the Access field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestRecommendationActionItemResponseDto) GetAccessOk() (*AccessRequestRecommendationItem, bool) {
-	if o == nil || isNil(o.Access) {
+	if o == nil || IsNil(o.Access) {
 		return nil, false
 	}
 	return o.Access, true
@@ -98,7 +98,7 @@ func (o *AccessRequestRecommendationActionItemResponseDto) GetAccessOk() (*Acces
 
 // HasAccess returns a boolean if a field has been set.
 func (o *AccessRequestRecommendationActionItemResponseDto) HasAccess() bool {
-	if o != nil && !isNil(o.Access) {
+	if o != nil && !IsNil(o.Access) {
 		return true
 	}
 
@@ -112,7 +112,7 @@ func (o *AccessRequestRecommendationActionItemResponseDto) SetAccess(v AccessReq
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise.
 func (o *AccessRequestRecommendationActionItemResponseDto) GetTimestamp() time.Time {
-	if o == nil || isNil(o.Timestamp) {
+	if o == nil || IsNil(o.Timestamp) {
 		var ret time.Time
 		return ret
 	}
@@ -122,7 +122,7 @@ func (o *AccessRequestRecommendationActionItemResponseDto) GetTimestamp() time.T
 // GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestRecommendationActionItemResponseDto) GetTimestampOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Timestamp) {
+	if o == nil || IsNil(o.Timestamp) {
 		return nil, false
 	}
 	return o.Timestamp, true
@@ -130,7 +130,7 @@ func (o *AccessRequestRecommendationActionItemResponseDto) GetTimestampOk() (*ti
 
 // HasTimestamp returns a boolean if a field has been set.
 func (o *AccessRequestRecommendationActionItemResponseDto) HasTimestamp() bool {
-	if o != nil && !isNil(o.Timestamp) {
+	if o != nil && !IsNil(o.Timestamp) {
 		return true
 	}
 
@@ -152,13 +152,13 @@ func (o AccessRequestRecommendationActionItemResponseDto) MarshalJSON() ([]byte,
 
 func (o AccessRequestRecommendationActionItemResponseDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.IdentityId) {
+	if !IsNil(o.IdentityId) {
 		toSerialize["identityId"] = o.IdentityId
 	}
-	if !isNil(o.Access) {
+	if !IsNil(o.Access) {
 		toSerialize["access"] = o.Access
 	}
-	if !isNil(o.Timestamp) {
+	if !IsNil(o.Timestamp) {
 		toSerialize["timestamp"] = o.Timestamp
 	}
 
@@ -169,16 +169,20 @@ func (o AccessRequestRecommendationActionItemResponseDto) ToMap() (map[string]in
 	return toSerialize, nil
 }
 
-func (o *AccessRequestRecommendationActionItemResponseDto) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccessRequestRecommendationActionItemResponseDto) UnmarshalJSON(data []byte) (err error) {
 	varAccessRequestRecommendationActionItemResponseDto := _AccessRequestRecommendationActionItemResponseDto{}
 
-	if err = json.Unmarshal(bytes, &varAccessRequestRecommendationActionItemResponseDto); err == nil {
+	err = json.Unmarshal(data, &varAccessRequestRecommendationActionItemResponseDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessRequestRecommendationActionItemResponseDto(varAccessRequestRecommendationActionItemResponseDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "identityId")
 		delete(additionalProperties, "access")
 		delete(additionalProperties, "timestamp")

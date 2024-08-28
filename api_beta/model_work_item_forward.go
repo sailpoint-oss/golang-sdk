@@ -104,7 +104,7 @@ func (o *WorkItemForward) SetComment(v string) {
 
 // GetSendNotifications returns the SendNotifications field value if set, zero value otherwise.
 func (o *WorkItemForward) GetSendNotifications() bool {
-	if o == nil || isNil(o.SendNotifications) {
+	if o == nil || IsNil(o.SendNotifications) {
 		var ret bool
 		return ret
 	}
@@ -114,7 +114,7 @@ func (o *WorkItemForward) GetSendNotifications() bool {
 // GetSendNotificationsOk returns a tuple with the SendNotifications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkItemForward) GetSendNotificationsOk() (*bool, bool) {
-	if o == nil || isNil(o.SendNotifications) {
+	if o == nil || IsNil(o.SendNotifications) {
 		return nil, false
 	}
 	return o.SendNotifications, true
@@ -122,7 +122,7 @@ func (o *WorkItemForward) GetSendNotificationsOk() (*bool, bool) {
 
 // HasSendNotifications returns a boolean if a field has been set.
 func (o *WorkItemForward) HasSendNotifications() bool {
-	if o != nil && !isNil(o.SendNotifications) {
+	if o != nil && !IsNil(o.SendNotifications) {
 		return true
 	}
 
@@ -146,7 +146,7 @@ func (o WorkItemForward) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["targetOwnerId"] = o.TargetOwnerId
 	toSerialize["comment"] = o.Comment
-	if !isNil(o.SendNotifications) {
+	if !IsNil(o.SendNotifications) {
 		toSerialize["sendNotifications"] = o.SendNotifications
 	}
 
@@ -157,8 +157,8 @@ func (o WorkItemForward) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *WorkItemForward) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *WorkItemForward) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -168,7 +168,7 @@ func (o *WorkItemForward) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -182,13 +182,17 @@ func (o *WorkItemForward) UnmarshalJSON(bytes []byte) (err error) {
 
 	varWorkItemForward := _WorkItemForward{}
 
-	if err = json.Unmarshal(bytes, &varWorkItemForward); err == nil {
+	err = json.Unmarshal(data, &varWorkItemForward)
+
+	if err != nil {
+		return err
+	}
+
 	*o = WorkItemForward(varWorkItemForward)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "targetOwnerId")
 		delete(additionalProperties, "comment")
 		delete(additionalProperties, "sendNotifications")

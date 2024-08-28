@@ -51,7 +51,7 @@ func NewExceptionCriteriaCriteriaListInnerWithDefaults() *ExceptionCriteriaCrite
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *ExceptionCriteriaCriteriaListInner) GetType() map[string]interface{} {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -61,7 +61,7 @@ func (o *ExceptionCriteriaCriteriaListInner) GetType() map[string]interface{} {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExceptionCriteriaCriteriaListInner) GetTypeOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return map[string]interface{}{}, false
 	}
 	return o.Type, true
@@ -69,7 +69,7 @@ func (o *ExceptionCriteriaCriteriaListInner) GetTypeOk() (map[string]interface{}
 
 // HasType returns a boolean if a field has been set.
 func (o *ExceptionCriteriaCriteriaListInner) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -83,7 +83,7 @@ func (o *ExceptionCriteriaCriteriaListInner) SetType(v map[string]interface{}) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ExceptionCriteriaCriteriaListInner) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -93,7 +93,7 @@ func (o *ExceptionCriteriaCriteriaListInner) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExceptionCriteriaCriteriaListInner) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -101,7 +101,7 @@ func (o *ExceptionCriteriaCriteriaListInner) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ExceptionCriteriaCriteriaListInner) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -115,7 +115,7 @@ func (o *ExceptionCriteriaCriteriaListInner) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ExceptionCriteriaCriteriaListInner) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -125,7 +125,7 @@ func (o *ExceptionCriteriaCriteriaListInner) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExceptionCriteriaCriteriaListInner) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -133,7 +133,7 @@ func (o *ExceptionCriteriaCriteriaListInner) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ExceptionCriteriaCriteriaListInner) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -147,7 +147,7 @@ func (o *ExceptionCriteriaCriteriaListInner) SetName(v string) {
 
 // GetExisting returns the Existing field value if set, zero value otherwise.
 func (o *ExceptionCriteriaCriteriaListInner) GetExisting() bool {
-	if o == nil || isNil(o.Existing) {
+	if o == nil || IsNil(o.Existing) {
 		var ret bool
 		return ret
 	}
@@ -157,7 +157,7 @@ func (o *ExceptionCriteriaCriteriaListInner) GetExisting() bool {
 // GetExistingOk returns a tuple with the Existing field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExceptionCriteriaCriteriaListInner) GetExistingOk() (*bool, bool) {
-	if o == nil || isNil(o.Existing) {
+	if o == nil || IsNil(o.Existing) {
 		return nil, false
 	}
 	return o.Existing, true
@@ -165,7 +165,7 @@ func (o *ExceptionCriteriaCriteriaListInner) GetExistingOk() (*bool, bool) {
 
 // HasExisting returns a boolean if a field has been set.
 func (o *ExceptionCriteriaCriteriaListInner) HasExisting() bool {
-	if o != nil && !isNil(o.Existing) {
+	if o != nil && !IsNil(o.Existing) {
 		return true
 	}
 
@@ -187,16 +187,16 @@ func (o ExceptionCriteriaCriteriaListInner) MarshalJSON() ([]byte, error) {
 
 func (o ExceptionCriteriaCriteriaListInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Existing) {
+	if !IsNil(o.Existing) {
 		toSerialize["existing"] = o.Existing
 	}
 
@@ -207,16 +207,20 @@ func (o ExceptionCriteriaCriteriaListInner) ToMap() (map[string]interface{}, err
 	return toSerialize, nil
 }
 
-func (o *ExceptionCriteriaCriteriaListInner) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ExceptionCriteriaCriteriaListInner) UnmarshalJSON(data []byte) (err error) {
 	varExceptionCriteriaCriteriaListInner := _ExceptionCriteriaCriteriaListInner{}
 
-	if err = json.Unmarshal(bytes, &varExceptionCriteriaCriteriaListInner); err == nil {
+	err = json.Unmarshal(data, &varExceptionCriteriaCriteriaListInner)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ExceptionCriteriaCriteriaListInner(varExceptionCriteriaCriteriaListInner)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")

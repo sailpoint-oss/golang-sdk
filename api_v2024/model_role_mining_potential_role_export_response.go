@@ -50,7 +50,7 @@ func NewRoleMiningPotentialRoleExportResponseWithDefaults() *RoleMiningPotential
 
 // GetMinEntitlementPopularity returns the MinEntitlementPopularity field value if set, zero value otherwise.
 func (o *RoleMiningPotentialRoleExportResponse) GetMinEntitlementPopularity() int32 {
-	if o == nil || isNil(o.MinEntitlementPopularity) {
+	if o == nil || IsNil(o.MinEntitlementPopularity) {
 		var ret int32
 		return ret
 	}
@@ -60,7 +60,7 @@ func (o *RoleMiningPotentialRoleExportResponse) GetMinEntitlementPopularity() in
 // GetMinEntitlementPopularityOk returns a tuple with the MinEntitlementPopularity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningPotentialRoleExportResponse) GetMinEntitlementPopularityOk() (*int32, bool) {
-	if o == nil || isNil(o.MinEntitlementPopularity) {
+	if o == nil || IsNil(o.MinEntitlementPopularity) {
 		return nil, false
 	}
 	return o.MinEntitlementPopularity, true
@@ -68,7 +68,7 @@ func (o *RoleMiningPotentialRoleExportResponse) GetMinEntitlementPopularityOk() 
 
 // HasMinEntitlementPopularity returns a boolean if a field has been set.
 func (o *RoleMiningPotentialRoleExportResponse) HasMinEntitlementPopularity() bool {
-	if o != nil && !isNil(o.MinEntitlementPopularity) {
+	if o != nil && !IsNil(o.MinEntitlementPopularity) {
 		return true
 	}
 
@@ -82,7 +82,7 @@ func (o *RoleMiningPotentialRoleExportResponse) SetMinEntitlementPopularity(v in
 
 // GetIncludeCommonAccess returns the IncludeCommonAccess field value if set, zero value otherwise.
 func (o *RoleMiningPotentialRoleExportResponse) GetIncludeCommonAccess() bool {
-	if o == nil || isNil(o.IncludeCommonAccess) {
+	if o == nil || IsNil(o.IncludeCommonAccess) {
 		var ret bool
 		return ret
 	}
@@ -92,7 +92,7 @@ func (o *RoleMiningPotentialRoleExportResponse) GetIncludeCommonAccess() bool {
 // GetIncludeCommonAccessOk returns a tuple with the IncludeCommonAccess field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningPotentialRoleExportResponse) GetIncludeCommonAccessOk() (*bool, bool) {
-	if o == nil || isNil(o.IncludeCommonAccess) {
+	if o == nil || IsNil(o.IncludeCommonAccess) {
 		return nil, false
 	}
 	return o.IncludeCommonAccess, true
@@ -100,7 +100,7 @@ func (o *RoleMiningPotentialRoleExportResponse) GetIncludeCommonAccessOk() (*boo
 
 // HasIncludeCommonAccess returns a boolean if a field has been set.
 func (o *RoleMiningPotentialRoleExportResponse) HasIncludeCommonAccess() bool {
-	if o != nil && !isNil(o.IncludeCommonAccess) {
+	if o != nil && !IsNil(o.IncludeCommonAccess) {
 		return true
 	}
 
@@ -114,7 +114,7 @@ func (o *RoleMiningPotentialRoleExportResponse) SetIncludeCommonAccess(v bool) {
 
 // GetExportId returns the ExportId field value if set, zero value otherwise.
 func (o *RoleMiningPotentialRoleExportResponse) GetExportId() string {
-	if o == nil || isNil(o.ExportId) {
+	if o == nil || IsNil(o.ExportId) {
 		var ret string
 		return ret
 	}
@@ -124,7 +124,7 @@ func (o *RoleMiningPotentialRoleExportResponse) GetExportId() string {
 // GetExportIdOk returns a tuple with the ExportId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningPotentialRoleExportResponse) GetExportIdOk() (*string, bool) {
-	if o == nil || isNil(o.ExportId) {
+	if o == nil || IsNil(o.ExportId) {
 		return nil, false
 	}
 	return o.ExportId, true
@@ -132,7 +132,7 @@ func (o *RoleMiningPotentialRoleExportResponse) GetExportIdOk() (*string, bool) 
 
 // HasExportId returns a boolean if a field has been set.
 func (o *RoleMiningPotentialRoleExportResponse) HasExportId() bool {
-	if o != nil && !isNil(o.ExportId) {
+	if o != nil && !IsNil(o.ExportId) {
 		return true
 	}
 
@@ -146,7 +146,7 @@ func (o *RoleMiningPotentialRoleExportResponse) SetExportId(v string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *RoleMiningPotentialRoleExportResponse) GetStatus() RoleMiningPotentialRoleExportState {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret RoleMiningPotentialRoleExportState
 		return ret
 	}
@@ -156,7 +156,7 @@ func (o *RoleMiningPotentialRoleExportResponse) GetStatus() RoleMiningPotentialR
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningPotentialRoleExportResponse) GetStatusOk() (*RoleMiningPotentialRoleExportState, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -164,7 +164,7 @@ func (o *RoleMiningPotentialRoleExportResponse) GetStatusOk() (*RoleMiningPotent
 
 // HasStatus returns a boolean if a field has been set.
 func (o *RoleMiningPotentialRoleExportResponse) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -186,16 +186,16 @@ func (o RoleMiningPotentialRoleExportResponse) MarshalJSON() ([]byte, error) {
 
 func (o RoleMiningPotentialRoleExportResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.MinEntitlementPopularity) {
+	if !IsNil(o.MinEntitlementPopularity) {
 		toSerialize["minEntitlementPopularity"] = o.MinEntitlementPopularity
 	}
-	if !isNil(o.IncludeCommonAccess) {
+	if !IsNil(o.IncludeCommonAccess) {
 		toSerialize["includeCommonAccess"] = o.IncludeCommonAccess
 	}
-	if !isNil(o.ExportId) {
+	if !IsNil(o.ExportId) {
 		toSerialize["exportId"] = o.ExportId
 	}
-	if !isNil(o.Status) {
+	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
 
@@ -206,16 +206,20 @@ func (o RoleMiningPotentialRoleExportResponse) ToMap() (map[string]interface{}, 
 	return toSerialize, nil
 }
 
-func (o *RoleMiningPotentialRoleExportResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RoleMiningPotentialRoleExportResponse) UnmarshalJSON(data []byte) (err error) {
 	varRoleMiningPotentialRoleExportResponse := _RoleMiningPotentialRoleExportResponse{}
 
-	if err = json.Unmarshal(bytes, &varRoleMiningPotentialRoleExportResponse); err == nil {
+	err = json.Unmarshal(data, &varRoleMiningPotentialRoleExportResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RoleMiningPotentialRoleExportResponse(varRoleMiningPotentialRoleExportResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "minEntitlementPopularity")
 		delete(additionalProperties, "includeCommonAccess")
 		delete(additionalProperties, "exportId")

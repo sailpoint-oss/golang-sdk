@@ -19,14 +19,14 @@ import (
 
 func Test_api_v2024_RolesAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test RolesAPIService CreateRole", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.RolesAPI.CreateRole(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RolesAPI.CreateRole(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -38,7 +38,7 @@ func Test_api_v2024_RolesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.RolesAPI.DeleteBulkRoles(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RolesAPI.DeleteBulkRoles(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -52,7 +52,7 @@ func Test_api_v2024_RolesAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_V2024.RolesAPI.DeleteRole(context.Background(), id).Execute()
+		httpRes, err := apiClient.RolesAPI.DeleteRole(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -65,7 +65,7 @@ func Test_api_v2024_RolesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.RolesAPI.GetRole(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.RolesAPI.GetRole(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -79,7 +79,7 @@ func Test_api_v2024_RolesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.RolesAPI.GetRoleAssignedIdentities(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.RolesAPI.GetRoleAssignedIdentities(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -93,7 +93,7 @@ func Test_api_v2024_RolesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.RolesAPI.GetRoleEntitlements(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.RolesAPI.GetRoleEntitlements(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -105,7 +105,7 @@ func Test_api_v2024_RolesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.RolesAPI.ListRoles(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RolesAPI.ListRoles(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -119,7 +119,7 @@ func Test_api_v2024_RolesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.RolesAPI.PatchRole(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.RolesAPI.PatchRole(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

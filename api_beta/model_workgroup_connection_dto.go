@@ -46,7 +46,7 @@ func NewWorkgroupConnectionDtoWithDefaults() *WorkgroupConnectionDto {
 
 // GetObject returns the Object field value if set, zero value otherwise.
 func (o *WorkgroupConnectionDto) GetObject() ConnectedObject {
-	if o == nil || isNil(o.Object) {
+	if o == nil || IsNil(o.Object) {
 		var ret ConnectedObject
 		return ret
 	}
@@ -56,7 +56,7 @@ func (o *WorkgroupConnectionDto) GetObject() ConnectedObject {
 // GetObjectOk returns a tuple with the Object field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkgroupConnectionDto) GetObjectOk() (*ConnectedObject, bool) {
-	if o == nil || isNil(o.Object) {
+	if o == nil || IsNil(o.Object) {
 		return nil, false
 	}
 	return o.Object, true
@@ -64,7 +64,7 @@ func (o *WorkgroupConnectionDto) GetObjectOk() (*ConnectedObject, bool) {
 
 // HasObject returns a boolean if a field has been set.
 func (o *WorkgroupConnectionDto) HasObject() bool {
-	if o != nil && !isNil(o.Object) {
+	if o != nil && !IsNil(o.Object) {
 		return true
 	}
 
@@ -78,7 +78,7 @@ func (o *WorkgroupConnectionDto) SetObject(v ConnectedObject) {
 
 // GetConnectionType returns the ConnectionType field value if set, zero value otherwise.
 func (o *WorkgroupConnectionDto) GetConnectionType() string {
-	if o == nil || isNil(o.ConnectionType) {
+	if o == nil || IsNil(o.ConnectionType) {
 		var ret string
 		return ret
 	}
@@ -88,7 +88,7 @@ func (o *WorkgroupConnectionDto) GetConnectionType() string {
 // GetConnectionTypeOk returns a tuple with the ConnectionType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkgroupConnectionDto) GetConnectionTypeOk() (*string, bool) {
-	if o == nil || isNil(o.ConnectionType) {
+	if o == nil || IsNil(o.ConnectionType) {
 		return nil, false
 	}
 	return o.ConnectionType, true
@@ -96,7 +96,7 @@ func (o *WorkgroupConnectionDto) GetConnectionTypeOk() (*string, bool) {
 
 // HasConnectionType returns a boolean if a field has been set.
 func (o *WorkgroupConnectionDto) HasConnectionType() bool {
-	if o != nil && !isNil(o.ConnectionType) {
+	if o != nil && !IsNil(o.ConnectionType) {
 		return true
 	}
 
@@ -118,10 +118,10 @@ func (o WorkgroupConnectionDto) MarshalJSON() ([]byte, error) {
 
 func (o WorkgroupConnectionDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Object) {
+	if !IsNil(o.Object) {
 		toSerialize["object"] = o.Object
 	}
-	if !isNil(o.ConnectionType) {
+	if !IsNil(o.ConnectionType) {
 		toSerialize["connectionType"] = o.ConnectionType
 	}
 
@@ -132,16 +132,20 @@ func (o WorkgroupConnectionDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *WorkgroupConnectionDto) UnmarshalJSON(bytes []byte) (err error) {
+func (o *WorkgroupConnectionDto) UnmarshalJSON(data []byte) (err error) {
 	varWorkgroupConnectionDto := _WorkgroupConnectionDto{}
 
-	if err = json.Unmarshal(bytes, &varWorkgroupConnectionDto); err == nil {
+	err = json.Unmarshal(data, &varWorkgroupConnectionDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = WorkgroupConnectionDto(varWorkgroupConnectionDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "object")
 		delete(additionalProperties, "connectionType")
 		o.AdditionalProperties = additionalProperties

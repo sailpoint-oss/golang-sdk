@@ -46,7 +46,7 @@ func NewImportEntitlementsRequestWithDefaults() *ImportEntitlementsRequest {
 
 // GetFile returns the File field value if set, zero value otherwise.
 func (o *ImportEntitlementsRequest) GetFile() *os.File {
-	if o == nil || isNil(o.File) {
+	if o == nil || IsNil(o.File) {
 		var ret *os.File
 		return ret
 	}
@@ -56,7 +56,7 @@ func (o *ImportEntitlementsRequest) GetFile() *os.File {
 // GetFileOk returns a tuple with the File field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImportEntitlementsRequest) GetFileOk() (**os.File, bool) {
-	if o == nil || isNil(o.File) {
+	if o == nil || IsNil(o.File) {
 		return nil, false
 	}
 	return o.File, true
@@ -64,7 +64,7 @@ func (o *ImportEntitlementsRequest) GetFileOk() (**os.File, bool) {
 
 // HasFile returns a boolean if a field has been set.
 func (o *ImportEntitlementsRequest) HasFile() bool {
-	if o != nil && !isNil(o.File) {
+	if o != nil && !IsNil(o.File) {
 		return true
 	}
 
@@ -86,7 +86,7 @@ func (o ImportEntitlementsRequest) MarshalJSON() ([]byte, error) {
 
 func (o ImportEntitlementsRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.File) {
+	if !IsNil(o.File) {
 		toSerialize["file"] = o.File
 	}
 
@@ -97,16 +97,20 @@ func (o ImportEntitlementsRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ImportEntitlementsRequest) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ImportEntitlementsRequest) UnmarshalJSON(data []byte) (err error) {
 	varImportEntitlementsRequest := _ImportEntitlementsRequest{}
 
-	if err = json.Unmarshal(bytes, &varImportEntitlementsRequest); err == nil {
+	err = json.Unmarshal(data, &varImportEntitlementsRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ImportEntitlementsRequest(varImportEntitlementsRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "file")
 		o.AdditionalProperties = additionalProperties
 	}

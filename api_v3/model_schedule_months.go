@@ -100,7 +100,7 @@ func (o *ScheduleMonths) SetValues(v []string) {
 
 // GetInterval returns the Interval field value if set, zero value otherwise.
 func (o *ScheduleMonths) GetInterval() int64 {
-	if o == nil || isNil(o.Interval) {
+	if o == nil || IsNil(o.Interval) {
 		var ret int64
 		return ret
 	}
@@ -110,7 +110,7 @@ func (o *ScheduleMonths) GetInterval() int64 {
 // GetIntervalOk returns a tuple with the Interval field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ScheduleMonths) GetIntervalOk() (*int64, bool) {
-	if o == nil || isNil(o.Interval) {
+	if o == nil || IsNil(o.Interval) {
 		return nil, false
 	}
 	return o.Interval, true
@@ -118,7 +118,7 @@ func (o *ScheduleMonths) GetIntervalOk() (*int64, bool) {
 
 // HasInterval returns a boolean if a field has been set.
 func (o *ScheduleMonths) HasInterval() bool {
-	if o != nil && !isNil(o.Interval) {
+	if o != nil && !IsNil(o.Interval) {
 		return true
 	}
 
@@ -142,7 +142,7 @@ func (o ScheduleMonths) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["values"] = o.Values
-	if !isNil(o.Interval) {
+	if !IsNil(o.Interval) {
 		toSerialize["interval"] = o.Interval
 	}
 
@@ -153,8 +153,8 @@ func (o ScheduleMonths) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ScheduleMonths) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *ScheduleMonths) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -164,7 +164,7 @@ func (o *ScheduleMonths) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -178,13 +178,17 @@ func (o *ScheduleMonths) UnmarshalJSON(bytes []byte) (err error) {
 
 	varScheduleMonths := _ScheduleMonths{}
 
-	if err = json.Unmarshal(bytes, &varScheduleMonths); err == nil {
+	err = json.Unmarshal(data, &varScheduleMonths)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ScheduleMonths(varScheduleMonths)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "values")
 		delete(additionalProperties, "interval")

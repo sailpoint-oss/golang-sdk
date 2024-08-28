@@ -57,7 +57,7 @@ func NewDkimAttributesWithDefaults() *DkimAttributes {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *DkimAttributes) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -67,7 +67,7 @@ func (o *DkimAttributes) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DkimAttributes) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -75,7 +75,7 @@ func (o *DkimAttributes) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *DkimAttributes) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -89,7 +89,7 @@ func (o *DkimAttributes) SetId(v string) {
 
 // GetAddress returns the Address field value if set, zero value otherwise.
 func (o *DkimAttributes) GetAddress() string {
-	if o == nil || isNil(o.Address) {
+	if o == nil || IsNil(o.Address) {
 		var ret string
 		return ret
 	}
@@ -99,7 +99,7 @@ func (o *DkimAttributes) GetAddress() string {
 // GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DkimAttributes) GetAddressOk() (*string, bool) {
-	if o == nil || isNil(o.Address) {
+	if o == nil || IsNil(o.Address) {
 		return nil, false
 	}
 	return o.Address, true
@@ -107,7 +107,7 @@ func (o *DkimAttributes) GetAddressOk() (*string, bool) {
 
 // HasAddress returns a boolean if a field has been set.
 func (o *DkimAttributes) HasAddress() bool {
-	if o != nil && !isNil(o.Address) {
+	if o != nil && !IsNil(o.Address) {
 		return true
 	}
 
@@ -121,7 +121,7 @@ func (o *DkimAttributes) SetAddress(v string) {
 
 // GetDkimEnabled returns the DkimEnabled field value if set, zero value otherwise.
 func (o *DkimAttributes) GetDkimEnabled() bool {
-	if o == nil || isNil(o.DkimEnabled) {
+	if o == nil || IsNil(o.DkimEnabled) {
 		var ret bool
 		return ret
 	}
@@ -131,7 +131,7 @@ func (o *DkimAttributes) GetDkimEnabled() bool {
 // GetDkimEnabledOk returns a tuple with the DkimEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DkimAttributes) GetDkimEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.DkimEnabled) {
+	if o == nil || IsNil(o.DkimEnabled) {
 		return nil, false
 	}
 	return o.DkimEnabled, true
@@ -139,7 +139,7 @@ func (o *DkimAttributes) GetDkimEnabledOk() (*bool, bool) {
 
 // HasDkimEnabled returns a boolean if a field has been set.
 func (o *DkimAttributes) HasDkimEnabled() bool {
-	if o != nil && !isNil(o.DkimEnabled) {
+	if o != nil && !IsNil(o.DkimEnabled) {
 		return true
 	}
 
@@ -153,7 +153,7 @@ func (o *DkimAttributes) SetDkimEnabled(v bool) {
 
 // GetDkimTokens returns the DkimTokens field value if set, zero value otherwise.
 func (o *DkimAttributes) GetDkimTokens() []string {
-	if o == nil || isNil(o.DkimTokens) {
+	if o == nil || IsNil(o.DkimTokens) {
 		var ret []string
 		return ret
 	}
@@ -163,7 +163,7 @@ func (o *DkimAttributes) GetDkimTokens() []string {
 // GetDkimTokensOk returns a tuple with the DkimTokens field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DkimAttributes) GetDkimTokensOk() ([]string, bool) {
-	if o == nil || isNil(o.DkimTokens) {
+	if o == nil || IsNil(o.DkimTokens) {
 		return nil, false
 	}
 	return o.DkimTokens, true
@@ -171,7 +171,7 @@ func (o *DkimAttributes) GetDkimTokensOk() ([]string, bool) {
 
 // HasDkimTokens returns a boolean if a field has been set.
 func (o *DkimAttributes) HasDkimTokens() bool {
-	if o != nil && !isNil(o.DkimTokens) {
+	if o != nil && !IsNil(o.DkimTokens) {
 		return true
 	}
 
@@ -185,7 +185,7 @@ func (o *DkimAttributes) SetDkimTokens(v []string) {
 
 // GetDkimVerificationStatus returns the DkimVerificationStatus field value if set, zero value otherwise.
 func (o *DkimAttributes) GetDkimVerificationStatus() string {
-	if o == nil || isNil(o.DkimVerificationStatus) {
+	if o == nil || IsNil(o.DkimVerificationStatus) {
 		var ret string
 		return ret
 	}
@@ -195,7 +195,7 @@ func (o *DkimAttributes) GetDkimVerificationStatus() string {
 // GetDkimVerificationStatusOk returns a tuple with the DkimVerificationStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DkimAttributes) GetDkimVerificationStatusOk() (*string, bool) {
-	if o == nil || isNil(o.DkimVerificationStatus) {
+	if o == nil || IsNil(o.DkimVerificationStatus) {
 		return nil, false
 	}
 	return o.DkimVerificationStatus, true
@@ -203,7 +203,7 @@ func (o *DkimAttributes) GetDkimVerificationStatusOk() (*string, bool) {
 
 // HasDkimVerificationStatus returns a boolean if a field has been set.
 func (o *DkimAttributes) HasDkimVerificationStatus() bool {
-	if o != nil && !isNil(o.DkimVerificationStatus) {
+	if o != nil && !IsNil(o.DkimVerificationStatus) {
 		return true
 	}
 
@@ -225,19 +225,19 @@ func (o DkimAttributes) MarshalJSON() ([]byte, error) {
 
 func (o DkimAttributes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Address) {
+	if !IsNil(o.Address) {
 		toSerialize["address"] = o.Address
 	}
-	if !isNil(o.DkimEnabled) {
+	if !IsNil(o.DkimEnabled) {
 		toSerialize["dkimEnabled"] = o.DkimEnabled
 	}
-	if !isNil(o.DkimTokens) {
+	if !IsNil(o.DkimTokens) {
 		toSerialize["dkimTokens"] = o.DkimTokens
 	}
-	if !isNil(o.DkimVerificationStatus) {
+	if !IsNil(o.DkimVerificationStatus) {
 		toSerialize["dkimVerificationStatus"] = o.DkimVerificationStatus
 	}
 
@@ -248,16 +248,20 @@ func (o DkimAttributes) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *DkimAttributes) UnmarshalJSON(bytes []byte) (err error) {
+func (o *DkimAttributes) UnmarshalJSON(data []byte) (err error) {
 	varDkimAttributes := _DkimAttributes{}
 
-	if err = json.Unmarshal(bytes, &varDkimAttributes); err == nil {
+	err = json.Unmarshal(data, &varDkimAttributes)
+
+	if err != nil {
+		return err
+	}
+
 	*o = DkimAttributes(varDkimAttributes)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "address")
 		delete(additionalProperties, "dkimEnabled")

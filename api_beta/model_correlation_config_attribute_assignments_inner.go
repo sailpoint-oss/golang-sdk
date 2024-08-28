@@ -65,7 +65,7 @@ func NewCorrelationConfigAttributeAssignmentsInnerWithDefaults() *CorrelationCon
 
 // GetProperty returns the Property field value if set, zero value otherwise.
 func (o *CorrelationConfigAttributeAssignmentsInner) GetProperty() string {
-	if o == nil || isNil(o.Property) {
+	if o == nil || IsNil(o.Property) {
 		var ret string
 		return ret
 	}
@@ -75,7 +75,7 @@ func (o *CorrelationConfigAttributeAssignmentsInner) GetProperty() string {
 // GetPropertyOk returns a tuple with the Property field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CorrelationConfigAttributeAssignmentsInner) GetPropertyOk() (*string, bool) {
-	if o == nil || isNil(o.Property) {
+	if o == nil || IsNil(o.Property) {
 		return nil, false
 	}
 	return o.Property, true
@@ -83,7 +83,7 @@ func (o *CorrelationConfigAttributeAssignmentsInner) GetPropertyOk() (*string, b
 
 // HasProperty returns a boolean if a field has been set.
 func (o *CorrelationConfigAttributeAssignmentsInner) HasProperty() bool {
-	if o != nil && !isNil(o.Property) {
+	if o != nil && !IsNil(o.Property) {
 		return true
 	}
 
@@ -97,7 +97,7 @@ func (o *CorrelationConfigAttributeAssignmentsInner) SetProperty(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *CorrelationConfigAttributeAssignmentsInner) GetValue() string {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -107,7 +107,7 @@ func (o *CorrelationConfigAttributeAssignmentsInner) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CorrelationConfigAttributeAssignmentsInner) GetValueOk() (*string, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -115,7 +115,7 @@ func (o *CorrelationConfigAttributeAssignmentsInner) GetValueOk() (*string, bool
 
 // HasValue returns a boolean if a field has been set.
 func (o *CorrelationConfigAttributeAssignmentsInner) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -129,7 +129,7 @@ func (o *CorrelationConfigAttributeAssignmentsInner) SetValue(v string) {
 
 // GetOperation returns the Operation field value if set, zero value otherwise.
 func (o *CorrelationConfigAttributeAssignmentsInner) GetOperation() string {
-	if o == nil || isNil(o.Operation) {
+	if o == nil || IsNil(o.Operation) {
 		var ret string
 		return ret
 	}
@@ -139,7 +139,7 @@ func (o *CorrelationConfigAttributeAssignmentsInner) GetOperation() string {
 // GetOperationOk returns a tuple with the Operation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CorrelationConfigAttributeAssignmentsInner) GetOperationOk() (*string, bool) {
-	if o == nil || isNil(o.Operation) {
+	if o == nil || IsNil(o.Operation) {
 		return nil, false
 	}
 	return o.Operation, true
@@ -147,7 +147,7 @@ func (o *CorrelationConfigAttributeAssignmentsInner) GetOperationOk() (*string, 
 
 // HasOperation returns a boolean if a field has been set.
 func (o *CorrelationConfigAttributeAssignmentsInner) HasOperation() bool {
-	if o != nil && !isNil(o.Operation) {
+	if o != nil && !IsNil(o.Operation) {
 		return true
 	}
 
@@ -161,7 +161,7 @@ func (o *CorrelationConfigAttributeAssignmentsInner) SetOperation(v string) {
 
 // GetComplex returns the Complex field value if set, zero value otherwise.
 func (o *CorrelationConfigAttributeAssignmentsInner) GetComplex() bool {
-	if o == nil || isNil(o.Complex) {
+	if o == nil || IsNil(o.Complex) {
 		var ret bool
 		return ret
 	}
@@ -171,7 +171,7 @@ func (o *CorrelationConfigAttributeAssignmentsInner) GetComplex() bool {
 // GetComplexOk returns a tuple with the Complex field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CorrelationConfigAttributeAssignmentsInner) GetComplexOk() (*bool, bool) {
-	if o == nil || isNil(o.Complex) {
+	if o == nil || IsNil(o.Complex) {
 		return nil, false
 	}
 	return o.Complex, true
@@ -179,7 +179,7 @@ func (o *CorrelationConfigAttributeAssignmentsInner) GetComplexOk() (*bool, bool
 
 // HasComplex returns a boolean if a field has been set.
 func (o *CorrelationConfigAttributeAssignmentsInner) HasComplex() bool {
-	if o != nil && !isNil(o.Complex) {
+	if o != nil && !IsNil(o.Complex) {
 		return true
 	}
 
@@ -193,7 +193,7 @@ func (o *CorrelationConfigAttributeAssignmentsInner) SetComplex(v bool) {
 
 // GetIgnoreCase returns the IgnoreCase field value if set, zero value otherwise.
 func (o *CorrelationConfigAttributeAssignmentsInner) GetIgnoreCase() bool {
-	if o == nil || isNil(o.IgnoreCase) {
+	if o == nil || IsNil(o.IgnoreCase) {
 		var ret bool
 		return ret
 	}
@@ -203,7 +203,7 @@ func (o *CorrelationConfigAttributeAssignmentsInner) GetIgnoreCase() bool {
 // GetIgnoreCaseOk returns a tuple with the IgnoreCase field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CorrelationConfigAttributeAssignmentsInner) GetIgnoreCaseOk() (*bool, bool) {
-	if o == nil || isNil(o.IgnoreCase) {
+	if o == nil || IsNil(o.IgnoreCase) {
 		return nil, false
 	}
 	return o.IgnoreCase, true
@@ -211,7 +211,7 @@ func (o *CorrelationConfigAttributeAssignmentsInner) GetIgnoreCaseOk() (*bool, b
 
 // HasIgnoreCase returns a boolean if a field has been set.
 func (o *CorrelationConfigAttributeAssignmentsInner) HasIgnoreCase() bool {
-	if o != nil && !isNil(o.IgnoreCase) {
+	if o != nil && !IsNil(o.IgnoreCase) {
 		return true
 	}
 
@@ -225,7 +225,7 @@ func (o *CorrelationConfigAttributeAssignmentsInner) SetIgnoreCase(v bool) {
 
 // GetMatchMode returns the MatchMode field value if set, zero value otherwise.
 func (o *CorrelationConfigAttributeAssignmentsInner) GetMatchMode() string {
-	if o == nil || isNil(o.MatchMode) {
+	if o == nil || IsNil(o.MatchMode) {
 		var ret string
 		return ret
 	}
@@ -235,7 +235,7 @@ func (o *CorrelationConfigAttributeAssignmentsInner) GetMatchMode() string {
 // GetMatchModeOk returns a tuple with the MatchMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CorrelationConfigAttributeAssignmentsInner) GetMatchModeOk() (*string, bool) {
-	if o == nil || isNil(o.MatchMode) {
+	if o == nil || IsNil(o.MatchMode) {
 		return nil, false
 	}
 	return o.MatchMode, true
@@ -243,7 +243,7 @@ func (o *CorrelationConfigAttributeAssignmentsInner) GetMatchModeOk() (*string, 
 
 // HasMatchMode returns a boolean if a field has been set.
 func (o *CorrelationConfigAttributeAssignmentsInner) HasMatchMode() bool {
-	if o != nil && !isNil(o.MatchMode) {
+	if o != nil && !IsNil(o.MatchMode) {
 		return true
 	}
 
@@ -257,7 +257,7 @@ func (o *CorrelationConfigAttributeAssignmentsInner) SetMatchMode(v string) {
 
 // GetFilterString returns the FilterString field value if set, zero value otherwise.
 func (o *CorrelationConfigAttributeAssignmentsInner) GetFilterString() string {
-	if o == nil || isNil(o.FilterString) {
+	if o == nil || IsNil(o.FilterString) {
 		var ret string
 		return ret
 	}
@@ -267,7 +267,7 @@ func (o *CorrelationConfigAttributeAssignmentsInner) GetFilterString() string {
 // GetFilterStringOk returns a tuple with the FilterString field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CorrelationConfigAttributeAssignmentsInner) GetFilterStringOk() (*string, bool) {
-	if o == nil || isNil(o.FilterString) {
+	if o == nil || IsNil(o.FilterString) {
 		return nil, false
 	}
 	return o.FilterString, true
@@ -275,7 +275,7 @@ func (o *CorrelationConfigAttributeAssignmentsInner) GetFilterStringOk() (*strin
 
 // HasFilterString returns a boolean if a field has been set.
 func (o *CorrelationConfigAttributeAssignmentsInner) HasFilterString() bool {
-	if o != nil && !isNil(o.FilterString) {
+	if o != nil && !IsNil(o.FilterString) {
 		return true
 	}
 
@@ -297,25 +297,25 @@ func (o CorrelationConfigAttributeAssignmentsInner) MarshalJSON() ([]byte, error
 
 func (o CorrelationConfigAttributeAssignmentsInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Property) {
+	if !IsNil(o.Property) {
 		toSerialize["property"] = o.Property
 	}
-	if !isNil(o.Value) {
+	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
-	if !isNil(o.Operation) {
+	if !IsNil(o.Operation) {
 		toSerialize["operation"] = o.Operation
 	}
-	if !isNil(o.Complex) {
+	if !IsNil(o.Complex) {
 		toSerialize["complex"] = o.Complex
 	}
-	if !isNil(o.IgnoreCase) {
+	if !IsNil(o.IgnoreCase) {
 		toSerialize["ignoreCase"] = o.IgnoreCase
 	}
-	if !isNil(o.MatchMode) {
+	if !IsNil(o.MatchMode) {
 		toSerialize["matchMode"] = o.MatchMode
 	}
-	if !isNil(o.FilterString) {
+	if !IsNil(o.FilterString) {
 		toSerialize["filterString"] = o.FilterString
 	}
 
@@ -326,16 +326,20 @@ func (o CorrelationConfigAttributeAssignmentsInner) ToMap() (map[string]interfac
 	return toSerialize, nil
 }
 
-func (o *CorrelationConfigAttributeAssignmentsInner) UnmarshalJSON(bytes []byte) (err error) {
+func (o *CorrelationConfigAttributeAssignmentsInner) UnmarshalJSON(data []byte) (err error) {
 	varCorrelationConfigAttributeAssignmentsInner := _CorrelationConfigAttributeAssignmentsInner{}
 
-	if err = json.Unmarshal(bytes, &varCorrelationConfigAttributeAssignmentsInner); err == nil {
+	err = json.Unmarshal(data, &varCorrelationConfigAttributeAssignmentsInner)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CorrelationConfigAttributeAssignmentsInner(varCorrelationConfigAttributeAssignmentsInner)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "property")
 		delete(additionalProperties, "value")
 		delete(additionalProperties, "operation")

@@ -46,7 +46,7 @@ func NewFormElementDynamicDataSourceWithDefaults() *FormElementDynamicDataSource
 
 // GetConfig returns the Config field value if set, zero value otherwise.
 func (o *FormElementDynamicDataSource) GetConfig() FormElementDynamicDataSourceConfig {
-	if o == nil || isNil(o.Config) {
+	if o == nil || IsNil(o.Config) {
 		var ret FormElementDynamicDataSourceConfig
 		return ret
 	}
@@ -56,7 +56,7 @@ func (o *FormElementDynamicDataSource) GetConfig() FormElementDynamicDataSourceC
 // GetConfigOk returns a tuple with the Config field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormElementDynamicDataSource) GetConfigOk() (*FormElementDynamicDataSourceConfig, bool) {
-	if o == nil || isNil(o.Config) {
+	if o == nil || IsNil(o.Config) {
 		return nil, false
 	}
 	return o.Config, true
@@ -64,7 +64,7 @@ func (o *FormElementDynamicDataSource) GetConfigOk() (*FormElementDynamicDataSou
 
 // HasConfig returns a boolean if a field has been set.
 func (o *FormElementDynamicDataSource) HasConfig() bool {
-	if o != nil && !isNil(o.Config) {
+	if o != nil && !IsNil(o.Config) {
 		return true
 	}
 
@@ -78,7 +78,7 @@ func (o *FormElementDynamicDataSource) SetConfig(v FormElementDynamicDataSourceC
 
 // GetDataSourceType returns the DataSourceType field value if set, zero value otherwise.
 func (o *FormElementDynamicDataSource) GetDataSourceType() string {
-	if o == nil || isNil(o.DataSourceType) {
+	if o == nil || IsNil(o.DataSourceType) {
 		var ret string
 		return ret
 	}
@@ -88,7 +88,7 @@ func (o *FormElementDynamicDataSource) GetDataSourceType() string {
 // GetDataSourceTypeOk returns a tuple with the DataSourceType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormElementDynamicDataSource) GetDataSourceTypeOk() (*string, bool) {
-	if o == nil || isNil(o.DataSourceType) {
+	if o == nil || IsNil(o.DataSourceType) {
 		return nil, false
 	}
 	return o.DataSourceType, true
@@ -96,7 +96,7 @@ func (o *FormElementDynamicDataSource) GetDataSourceTypeOk() (*string, bool) {
 
 // HasDataSourceType returns a boolean if a field has been set.
 func (o *FormElementDynamicDataSource) HasDataSourceType() bool {
-	if o != nil && !isNil(o.DataSourceType) {
+	if o != nil && !IsNil(o.DataSourceType) {
 		return true
 	}
 
@@ -118,10 +118,10 @@ func (o FormElementDynamicDataSource) MarshalJSON() ([]byte, error) {
 
 func (o FormElementDynamicDataSource) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Config) {
+	if !IsNil(o.Config) {
 		toSerialize["config"] = o.Config
 	}
-	if !isNil(o.DataSourceType) {
+	if !IsNil(o.DataSourceType) {
 		toSerialize["dataSourceType"] = o.DataSourceType
 	}
 
@@ -132,16 +132,20 @@ func (o FormElementDynamicDataSource) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *FormElementDynamicDataSource) UnmarshalJSON(bytes []byte) (err error) {
+func (o *FormElementDynamicDataSource) UnmarshalJSON(data []byte) (err error) {
 	varFormElementDynamicDataSource := _FormElementDynamicDataSource{}
 
-	if err = json.Unmarshal(bytes, &varFormElementDynamicDataSource); err == nil {
+	err = json.Unmarshal(data, &varFormElementDynamicDataSource)
+
+	if err != nil {
+		return err
+	}
+
 	*o = FormElementDynamicDataSource(varFormElementDynamicDataSource)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "config")
 		delete(additionalProperties, "dataSourceType")
 		o.AdditionalProperties = additionalProperties

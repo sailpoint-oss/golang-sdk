@@ -52,7 +52,7 @@ func NewAccountAggregationStatusWithDefaults() *AccountAggregationStatus {
 
 // GetStart returns the Start field value if set, zero value otherwise.
 func (o *AccountAggregationStatus) GetStart() time.Time {
-	if o == nil || isNil(o.Start) {
+	if o == nil || IsNil(o.Start) {
 		var ret time.Time
 		return ret
 	}
@@ -62,7 +62,7 @@ func (o *AccountAggregationStatus) GetStart() time.Time {
 // GetStartOk returns a tuple with the Start field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountAggregationStatus) GetStartOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Start) {
+	if o == nil || IsNil(o.Start) {
 		return nil, false
 	}
 	return o.Start, true
@@ -70,7 +70,7 @@ func (o *AccountAggregationStatus) GetStartOk() (*time.Time, bool) {
 
 // HasStart returns a boolean if a field has been set.
 func (o *AccountAggregationStatus) HasStart() bool {
-	if o != nil && !isNil(o.Start) {
+	if o != nil && !IsNil(o.Start) {
 		return true
 	}
 
@@ -84,7 +84,7 @@ func (o *AccountAggregationStatus) SetStart(v time.Time) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *AccountAggregationStatus) GetStatus() string {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -94,7 +94,7 @@ func (o *AccountAggregationStatus) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountAggregationStatus) GetStatusOk() (*string, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -102,7 +102,7 @@ func (o *AccountAggregationStatus) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *AccountAggregationStatus) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -116,7 +116,7 @@ func (o *AccountAggregationStatus) SetStatus(v string) {
 
 // GetTotalAccounts returns the TotalAccounts field value if set, zero value otherwise.
 func (o *AccountAggregationStatus) GetTotalAccounts() int32 {
-	if o == nil || isNil(o.TotalAccounts) {
+	if o == nil || IsNil(o.TotalAccounts) {
 		var ret int32
 		return ret
 	}
@@ -126,7 +126,7 @@ func (o *AccountAggregationStatus) GetTotalAccounts() int32 {
 // GetTotalAccountsOk returns a tuple with the TotalAccounts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountAggregationStatus) GetTotalAccountsOk() (*int32, bool) {
-	if o == nil || isNil(o.TotalAccounts) {
+	if o == nil || IsNil(o.TotalAccounts) {
 		return nil, false
 	}
 	return o.TotalAccounts, true
@@ -134,7 +134,7 @@ func (o *AccountAggregationStatus) GetTotalAccountsOk() (*int32, bool) {
 
 // HasTotalAccounts returns a boolean if a field has been set.
 func (o *AccountAggregationStatus) HasTotalAccounts() bool {
-	if o != nil && !isNil(o.TotalAccounts) {
+	if o != nil && !IsNil(o.TotalAccounts) {
 		return true
 	}
 
@@ -148,7 +148,7 @@ func (o *AccountAggregationStatus) SetTotalAccounts(v int32) {
 
 // GetProcessedAccounts returns the ProcessedAccounts field value if set, zero value otherwise.
 func (o *AccountAggregationStatus) GetProcessedAccounts() int32 {
-	if o == nil || isNil(o.ProcessedAccounts) {
+	if o == nil || IsNil(o.ProcessedAccounts) {
 		var ret int32
 		return ret
 	}
@@ -158,7 +158,7 @@ func (o *AccountAggregationStatus) GetProcessedAccounts() int32 {
 // GetProcessedAccountsOk returns a tuple with the ProcessedAccounts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountAggregationStatus) GetProcessedAccountsOk() (*int32, bool) {
-	if o == nil || isNil(o.ProcessedAccounts) {
+	if o == nil || IsNil(o.ProcessedAccounts) {
 		return nil, false
 	}
 	return o.ProcessedAccounts, true
@@ -166,7 +166,7 @@ func (o *AccountAggregationStatus) GetProcessedAccountsOk() (*int32, bool) {
 
 // HasProcessedAccounts returns a boolean if a field has been set.
 func (o *AccountAggregationStatus) HasProcessedAccounts() bool {
-	if o != nil && !isNil(o.ProcessedAccounts) {
+	if o != nil && !IsNil(o.ProcessedAccounts) {
 		return true
 	}
 
@@ -188,16 +188,16 @@ func (o AccountAggregationStatus) MarshalJSON() ([]byte, error) {
 
 func (o AccountAggregationStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Start) {
+	if !IsNil(o.Start) {
 		toSerialize["start"] = o.Start
 	}
-	if !isNil(o.Status) {
+	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if !isNil(o.TotalAccounts) {
+	if !IsNil(o.TotalAccounts) {
 		toSerialize["totalAccounts"] = o.TotalAccounts
 	}
-	if !isNil(o.ProcessedAccounts) {
+	if !IsNil(o.ProcessedAccounts) {
 		toSerialize["processedAccounts"] = o.ProcessedAccounts
 	}
 
@@ -208,16 +208,20 @@ func (o AccountAggregationStatus) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccountAggregationStatus) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccountAggregationStatus) UnmarshalJSON(data []byte) (err error) {
 	varAccountAggregationStatus := _AccountAggregationStatus{}
 
-	if err = json.Unmarshal(bytes, &varAccountAggregationStatus); err == nil {
+	err = json.Unmarshal(data, &varAccountAggregationStatus)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccountAggregationStatus(varAccountAggregationStatus)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "start")
 		delete(additionalProperties, "status")
 		delete(additionalProperties, "totalAccounts")

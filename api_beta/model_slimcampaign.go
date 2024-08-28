@@ -88,7 +88,7 @@ func NewSlimcampaignWithDefaults() *Slimcampaign {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Slimcampaign) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -98,7 +98,7 @@ func (o *Slimcampaign) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Slimcampaign) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -106,7 +106,7 @@ func (o *Slimcampaign) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *Slimcampaign) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -168,7 +168,7 @@ func (o *Slimcampaign) SetDescription(v string) {
 
 // GetDeadline returns the Deadline field value if set, zero value otherwise.
 func (o *Slimcampaign) GetDeadline() time.Time {
-	if o == nil || isNil(o.Deadline) {
+	if o == nil || IsNil(o.Deadline) {
 		var ret time.Time
 		return ret
 	}
@@ -178,7 +178,7 @@ func (o *Slimcampaign) GetDeadline() time.Time {
 // GetDeadlineOk returns a tuple with the Deadline field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Slimcampaign) GetDeadlineOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Deadline) {
+	if o == nil || IsNil(o.Deadline) {
 		return nil, false
 	}
 	return o.Deadline, true
@@ -186,7 +186,7 @@ func (o *Slimcampaign) GetDeadlineOk() (*time.Time, bool) {
 
 // HasDeadline returns a boolean if a field has been set.
 func (o *Slimcampaign) HasDeadline() bool {
-	if o != nil && !isNil(o.Deadline) {
+	if o != nil && !IsNil(o.Deadline) {
 		return true
 	}
 
@@ -224,7 +224,7 @@ func (o *Slimcampaign) SetType(v string) {
 
 // GetEmailNotificationEnabled returns the EmailNotificationEnabled field value if set, zero value otherwise.
 func (o *Slimcampaign) GetEmailNotificationEnabled() bool {
-	if o == nil || isNil(o.EmailNotificationEnabled) {
+	if o == nil || IsNil(o.EmailNotificationEnabled) {
 		var ret bool
 		return ret
 	}
@@ -234,7 +234,7 @@ func (o *Slimcampaign) GetEmailNotificationEnabled() bool {
 // GetEmailNotificationEnabledOk returns a tuple with the EmailNotificationEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Slimcampaign) GetEmailNotificationEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.EmailNotificationEnabled) {
+	if o == nil || IsNil(o.EmailNotificationEnabled) {
 		return nil, false
 	}
 	return o.EmailNotificationEnabled, true
@@ -242,7 +242,7 @@ func (o *Slimcampaign) GetEmailNotificationEnabledOk() (*bool, bool) {
 
 // HasEmailNotificationEnabled returns a boolean if a field has been set.
 func (o *Slimcampaign) HasEmailNotificationEnabled() bool {
-	if o != nil && !isNil(o.EmailNotificationEnabled) {
+	if o != nil && !IsNil(o.EmailNotificationEnabled) {
 		return true
 	}
 
@@ -256,7 +256,7 @@ func (o *Slimcampaign) SetEmailNotificationEnabled(v bool) {
 
 // GetAutoRevokeAllowed returns the AutoRevokeAllowed field value if set, zero value otherwise.
 func (o *Slimcampaign) GetAutoRevokeAllowed() bool {
-	if o == nil || isNil(o.AutoRevokeAllowed) {
+	if o == nil || IsNil(o.AutoRevokeAllowed) {
 		var ret bool
 		return ret
 	}
@@ -266,7 +266,7 @@ func (o *Slimcampaign) GetAutoRevokeAllowed() bool {
 // GetAutoRevokeAllowedOk returns a tuple with the AutoRevokeAllowed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Slimcampaign) GetAutoRevokeAllowedOk() (*bool, bool) {
-	if o == nil || isNil(o.AutoRevokeAllowed) {
+	if o == nil || IsNil(o.AutoRevokeAllowed) {
 		return nil, false
 	}
 	return o.AutoRevokeAllowed, true
@@ -274,7 +274,7 @@ func (o *Slimcampaign) GetAutoRevokeAllowedOk() (*bool, bool) {
 
 // HasAutoRevokeAllowed returns a boolean if a field has been set.
 func (o *Slimcampaign) HasAutoRevokeAllowed() bool {
-	if o != nil && !isNil(o.AutoRevokeAllowed) {
+	if o != nil && !IsNil(o.AutoRevokeAllowed) {
 		return true
 	}
 
@@ -288,7 +288,7 @@ func (o *Slimcampaign) SetAutoRevokeAllowed(v bool) {
 
 // GetRecommendationsEnabled returns the RecommendationsEnabled field value if set, zero value otherwise.
 func (o *Slimcampaign) GetRecommendationsEnabled() bool {
-	if o == nil || isNil(o.RecommendationsEnabled) {
+	if o == nil || IsNil(o.RecommendationsEnabled) {
 		var ret bool
 		return ret
 	}
@@ -298,7 +298,7 @@ func (o *Slimcampaign) GetRecommendationsEnabled() bool {
 // GetRecommendationsEnabledOk returns a tuple with the RecommendationsEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Slimcampaign) GetRecommendationsEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.RecommendationsEnabled) {
+	if o == nil || IsNil(o.RecommendationsEnabled) {
 		return nil, false
 	}
 	return o.RecommendationsEnabled, true
@@ -306,7 +306,7 @@ func (o *Slimcampaign) GetRecommendationsEnabledOk() (*bool, bool) {
 
 // HasRecommendationsEnabled returns a boolean if a field has been set.
 func (o *Slimcampaign) HasRecommendationsEnabled() bool {
-	if o != nil && !isNil(o.RecommendationsEnabled) {
+	if o != nil && !IsNil(o.RecommendationsEnabled) {
 		return true
 	}
 
@@ -320,7 +320,7 @@ func (o *Slimcampaign) SetRecommendationsEnabled(v bool) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *Slimcampaign) GetStatus() string {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -330,7 +330,7 @@ func (o *Slimcampaign) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Slimcampaign) GetStatusOk() (*string, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -338,7 +338,7 @@ func (o *Slimcampaign) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *Slimcampaign) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -352,7 +352,7 @@ func (o *Slimcampaign) SetStatus(v string) {
 
 // GetCorrelatedStatus returns the CorrelatedStatus field value if set, zero value otherwise.
 func (o *Slimcampaign) GetCorrelatedStatus() string {
-	if o == nil || isNil(o.CorrelatedStatus) {
+	if o == nil || IsNil(o.CorrelatedStatus) {
 		var ret string
 		return ret
 	}
@@ -362,7 +362,7 @@ func (o *Slimcampaign) GetCorrelatedStatus() string {
 // GetCorrelatedStatusOk returns a tuple with the CorrelatedStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Slimcampaign) GetCorrelatedStatusOk() (*string, bool) {
-	if o == nil || isNil(o.CorrelatedStatus) {
+	if o == nil || IsNil(o.CorrelatedStatus) {
 		return nil, false
 	}
 	return o.CorrelatedStatus, true
@@ -370,7 +370,7 @@ func (o *Slimcampaign) GetCorrelatedStatusOk() (*string, bool) {
 
 // HasCorrelatedStatus returns a boolean if a field has been set.
 func (o *Slimcampaign) HasCorrelatedStatus() bool {
-	if o != nil && !isNil(o.CorrelatedStatus) {
+	if o != nil && !IsNil(o.CorrelatedStatus) {
 		return true
 	}
 
@@ -384,7 +384,7 @@ func (o *Slimcampaign) SetCorrelatedStatus(v string) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *Slimcampaign) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -394,7 +394,7 @@ func (o *Slimcampaign) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Slimcampaign) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -402,7 +402,7 @@ func (o *Slimcampaign) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *Slimcampaign) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -416,7 +416,7 @@ func (o *Slimcampaign) SetCreated(v time.Time) {
 
 // GetTotalCertifications returns the TotalCertifications field value if set, zero value otherwise.
 func (o *Slimcampaign) GetTotalCertifications() int32 {
-	if o == nil || isNil(o.TotalCertifications) {
+	if o == nil || IsNil(o.TotalCertifications) {
 		var ret int32
 		return ret
 	}
@@ -426,7 +426,7 @@ func (o *Slimcampaign) GetTotalCertifications() int32 {
 // GetTotalCertificationsOk returns a tuple with the TotalCertifications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Slimcampaign) GetTotalCertificationsOk() (*int32, bool) {
-	if o == nil || isNil(o.TotalCertifications) {
+	if o == nil || IsNil(o.TotalCertifications) {
 		return nil, false
 	}
 	return o.TotalCertifications, true
@@ -434,7 +434,7 @@ func (o *Slimcampaign) GetTotalCertificationsOk() (*int32, bool) {
 
 // HasTotalCertifications returns a boolean if a field has been set.
 func (o *Slimcampaign) HasTotalCertifications() bool {
-	if o != nil && !isNil(o.TotalCertifications) {
+	if o != nil && !IsNil(o.TotalCertifications) {
 		return true
 	}
 
@@ -448,7 +448,7 @@ func (o *Slimcampaign) SetTotalCertifications(v int32) {
 
 // GetCompletedCertifications returns the CompletedCertifications field value if set, zero value otherwise.
 func (o *Slimcampaign) GetCompletedCertifications() int32 {
-	if o == nil || isNil(o.CompletedCertifications) {
+	if o == nil || IsNil(o.CompletedCertifications) {
 		var ret int32
 		return ret
 	}
@@ -458,7 +458,7 @@ func (o *Slimcampaign) GetCompletedCertifications() int32 {
 // GetCompletedCertificationsOk returns a tuple with the CompletedCertifications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Slimcampaign) GetCompletedCertificationsOk() (*int32, bool) {
-	if o == nil || isNil(o.CompletedCertifications) {
+	if o == nil || IsNil(o.CompletedCertifications) {
 		return nil, false
 	}
 	return o.CompletedCertifications, true
@@ -466,7 +466,7 @@ func (o *Slimcampaign) GetCompletedCertificationsOk() (*int32, bool) {
 
 // HasCompletedCertifications returns a boolean if a field has been set.
 func (o *Slimcampaign) HasCompletedCertifications() bool {
-	if o != nil && !isNil(o.CompletedCertifications) {
+	if o != nil && !IsNil(o.CompletedCertifications) {
 		return true
 	}
 
@@ -480,7 +480,7 @@ func (o *Slimcampaign) SetCompletedCertifications(v int32) {
 
 // GetAlerts returns the Alerts field value if set, zero value otherwise.
 func (o *Slimcampaign) GetAlerts() []CampaignAlert {
-	if o == nil || isNil(o.Alerts) {
+	if o == nil || IsNil(o.Alerts) {
 		var ret []CampaignAlert
 		return ret
 	}
@@ -490,7 +490,7 @@ func (o *Slimcampaign) GetAlerts() []CampaignAlert {
 // GetAlertsOk returns a tuple with the Alerts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Slimcampaign) GetAlertsOk() ([]CampaignAlert, bool) {
-	if o == nil || isNil(o.Alerts) {
+	if o == nil || IsNil(o.Alerts) {
 		return nil, false
 	}
 	return o.Alerts, true
@@ -498,7 +498,7 @@ func (o *Slimcampaign) GetAlertsOk() ([]CampaignAlert, bool) {
 
 // HasAlerts returns a boolean if a field has been set.
 func (o *Slimcampaign) HasAlerts() bool {
-	if o != nil && !isNil(o.Alerts) {
+	if o != nil && !IsNil(o.Alerts) {
 		return true
 	}
 
@@ -520,30 +520,42 @@ func (o Slimcampaign) MarshalJSON() ([]byte, error) {
 
 func (o Slimcampaign) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["name"] = o.Name
 	toSerialize["description"] = o.Description
-	if !isNil(o.Deadline) {
+	if !IsNil(o.Deadline) {
 		toSerialize["deadline"] = o.Deadline
 	}
 	toSerialize["type"] = o.Type
-	if !isNil(o.EmailNotificationEnabled) {
+	if !IsNil(o.EmailNotificationEnabled) {
 		toSerialize["emailNotificationEnabled"] = o.EmailNotificationEnabled
 	}
-	if !isNil(o.AutoRevokeAllowed) {
+	if !IsNil(o.AutoRevokeAllowed) {
 		toSerialize["autoRevokeAllowed"] = o.AutoRevokeAllowed
 	}
-	if !isNil(o.RecommendationsEnabled) {
+	if !IsNil(o.RecommendationsEnabled) {
 		toSerialize["recommendationsEnabled"] = o.RecommendationsEnabled
 	}
-	// skip: status is readOnly
-	if !isNil(o.CorrelatedStatus) {
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.CorrelatedStatus) {
 		toSerialize["correlatedStatus"] = o.CorrelatedStatus
 	}
-	// skip: created is readOnly
-	// skip: totalCertifications is readOnly
-	// skip: completedCertifications is readOnly
-	// skip: alerts is readOnly
+	if !IsNil(o.Created) {
+		toSerialize["created"] = o.Created
+	}
+	if !IsNil(o.TotalCertifications) {
+		toSerialize["totalCertifications"] = o.TotalCertifications
+	}
+	if !IsNil(o.CompletedCertifications) {
+		toSerialize["completedCertifications"] = o.CompletedCertifications
+	}
+	if !IsNil(o.Alerts) {
+		toSerialize["alerts"] = o.Alerts
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -552,8 +564,8 @@ func (o Slimcampaign) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Slimcampaign) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *Slimcampaign) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -564,7 +576,7 @@ func (o *Slimcampaign) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -578,13 +590,17 @@ func (o *Slimcampaign) UnmarshalJSON(bytes []byte) (err error) {
 
 	varSlimcampaign := _Slimcampaign{}
 
-	if err = json.Unmarshal(bytes, &varSlimcampaign); err == nil {
+	err = json.Unmarshal(data, &varSlimcampaign)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Slimcampaign(varSlimcampaign)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")

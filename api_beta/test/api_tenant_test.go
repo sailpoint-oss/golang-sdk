@@ -19,14 +19,14 @@ import (
 
 func Test_api_beta_TenantAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test TenantAPIService GetTenant", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.TenantAPI.GetTenant(context.Background()).Execute()
+		resp, httpRes, err := apiClient.TenantAPI.GetTenant(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

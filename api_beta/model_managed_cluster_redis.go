@@ -47,7 +47,7 @@ func NewManagedClusterRedisWithDefaults() *ManagedClusterRedis {
 
 // GetRedisHost returns the RedisHost field value if set, zero value otherwise.
 func (o *ManagedClusterRedis) GetRedisHost() string {
-	if o == nil || isNil(o.RedisHost) {
+	if o == nil || IsNil(o.RedisHost) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *ManagedClusterRedis) GetRedisHost() string {
 // GetRedisHostOk returns a tuple with the RedisHost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedClusterRedis) GetRedisHostOk() (*string, bool) {
-	if o == nil || isNil(o.RedisHost) {
+	if o == nil || IsNil(o.RedisHost) {
 		return nil, false
 	}
 	return o.RedisHost, true
@@ -65,7 +65,7 @@ func (o *ManagedClusterRedis) GetRedisHostOk() (*string, bool) {
 
 // HasRedisHost returns a boolean if a field has been set.
 func (o *ManagedClusterRedis) HasRedisHost() bool {
-	if o != nil && !isNil(o.RedisHost) {
+	if o != nil && !IsNil(o.RedisHost) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *ManagedClusterRedis) SetRedisHost(v string) {
 
 // GetRedisPort returns the RedisPort field value if set, zero value otherwise.
 func (o *ManagedClusterRedis) GetRedisPort() int32 {
-	if o == nil || isNil(o.RedisPort) {
+	if o == nil || IsNil(o.RedisPort) {
 		var ret int32
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *ManagedClusterRedis) GetRedisPort() int32 {
 // GetRedisPortOk returns a tuple with the RedisPort field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedClusterRedis) GetRedisPortOk() (*int32, bool) {
-	if o == nil || isNil(o.RedisPort) {
+	if o == nil || IsNil(o.RedisPort) {
 		return nil, false
 	}
 	return o.RedisPort, true
@@ -97,7 +97,7 @@ func (o *ManagedClusterRedis) GetRedisPortOk() (*int32, bool) {
 
 // HasRedisPort returns a boolean if a field has been set.
 func (o *ManagedClusterRedis) HasRedisPort() bool {
-	if o != nil && !isNil(o.RedisPort) {
+	if o != nil && !IsNil(o.RedisPort) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o ManagedClusterRedis) MarshalJSON() ([]byte, error) {
 
 func (o ManagedClusterRedis) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.RedisHost) {
+	if !IsNil(o.RedisHost) {
 		toSerialize["redisHost"] = o.RedisHost
 	}
-	if !isNil(o.RedisPort) {
+	if !IsNil(o.RedisPort) {
 		toSerialize["redisPort"] = o.RedisPort
 	}
 
@@ -133,16 +133,20 @@ func (o ManagedClusterRedis) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ManagedClusterRedis) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ManagedClusterRedis) UnmarshalJSON(data []byte) (err error) {
 	varManagedClusterRedis := _ManagedClusterRedis{}
 
-	if err = json.Unmarshal(bytes, &varManagedClusterRedis); err == nil {
+	err = json.Unmarshal(data, &varManagedClusterRedis)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ManagedClusterRedis(varManagedClusterRedis)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "redisHost")
 		delete(additionalProperties, "redisPort")
 		o.AdditionalProperties = additionalProperties

@@ -72,7 +72,7 @@ func NewSedWithDefaults() *Sed {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Sed) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -82,7 +82,7 @@ func (o *Sed) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Sed) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -90,7 +90,7 @@ func (o *Sed) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *Sed) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -104,7 +104,7 @@ func (o *Sed) SetName(v string) {
 
 // GetApprovedBy returns the ApprovedBy field value if set, zero value otherwise.
 func (o *Sed) GetApprovedBy() string {
-	if o == nil || isNil(o.ApprovedBy) {
+	if o == nil || IsNil(o.ApprovedBy) {
 		var ret string
 		return ret
 	}
@@ -114,7 +114,7 @@ func (o *Sed) GetApprovedBy() string {
 // GetApprovedByOk returns a tuple with the ApprovedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Sed) GetApprovedByOk() (*string, bool) {
-	if o == nil || isNil(o.ApprovedBy) {
+	if o == nil || IsNil(o.ApprovedBy) {
 		return nil, false
 	}
 	return o.ApprovedBy, true
@@ -122,7 +122,7 @@ func (o *Sed) GetApprovedByOk() (*string, bool) {
 
 // HasApprovedBy returns a boolean if a field has been set.
 func (o *Sed) HasApprovedBy() bool {
-	if o != nil && !isNil(o.ApprovedBy) {
+	if o != nil && !IsNil(o.ApprovedBy) {
 		return true
 	}
 
@@ -136,7 +136,7 @@ func (o *Sed) SetApprovedBy(v string) {
 
 // GetApprovedType returns the ApprovedType field value if set, zero value otherwise.
 func (o *Sed) GetApprovedType() string {
-	if o == nil || isNil(o.ApprovedType) {
+	if o == nil || IsNil(o.ApprovedType) {
 		var ret string
 		return ret
 	}
@@ -146,7 +146,7 @@ func (o *Sed) GetApprovedType() string {
 // GetApprovedTypeOk returns a tuple with the ApprovedType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Sed) GetApprovedTypeOk() (*string, bool) {
-	if o == nil || isNil(o.ApprovedType) {
+	if o == nil || IsNil(o.ApprovedType) {
 		return nil, false
 	}
 	return o.ApprovedType, true
@@ -154,7 +154,7 @@ func (o *Sed) GetApprovedTypeOk() (*string, bool) {
 
 // HasApprovedType returns a boolean if a field has been set.
 func (o *Sed) HasApprovedType() bool {
-	if o != nil && !isNil(o.ApprovedType) {
+	if o != nil && !IsNil(o.ApprovedType) {
 		return true
 	}
 
@@ -168,7 +168,7 @@ func (o *Sed) SetApprovedType(v string) {
 
 // GetApprovedWhen returns the ApprovedWhen field value if set, zero value otherwise.
 func (o *Sed) GetApprovedWhen() time.Time {
-	if o == nil || isNil(o.ApprovedWhen) {
+	if o == nil || IsNil(o.ApprovedWhen) {
 		var ret time.Time
 		return ret
 	}
@@ -178,7 +178,7 @@ func (o *Sed) GetApprovedWhen() time.Time {
 // GetApprovedWhenOk returns a tuple with the ApprovedWhen field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Sed) GetApprovedWhenOk() (*time.Time, bool) {
-	if o == nil || isNil(o.ApprovedWhen) {
+	if o == nil || IsNil(o.ApprovedWhen) {
 		return nil, false
 	}
 	return o.ApprovedWhen, true
@@ -186,7 +186,7 @@ func (o *Sed) GetApprovedWhenOk() (*time.Time, bool) {
 
 // HasApprovedWhen returns a boolean if a field has been set.
 func (o *Sed) HasApprovedWhen() bool {
-	if o != nil && !isNil(o.ApprovedWhen) {
+	if o != nil && !IsNil(o.ApprovedWhen) {
 		return true
 	}
 
@@ -200,7 +200,7 @@ func (o *Sed) SetApprovedWhen(v time.Time) {
 
 // GetAttribute returns the Attribute field value if set, zero value otherwise.
 func (o *Sed) GetAttribute() string {
-	if o == nil || isNil(o.Attribute) {
+	if o == nil || IsNil(o.Attribute) {
 		var ret string
 		return ret
 	}
@@ -210,7 +210,7 @@ func (o *Sed) GetAttribute() string {
 // GetAttributeOk returns a tuple with the Attribute field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Sed) GetAttributeOk() (*string, bool) {
-	if o == nil || isNil(o.Attribute) {
+	if o == nil || IsNil(o.Attribute) {
 		return nil, false
 	}
 	return o.Attribute, true
@@ -218,7 +218,7 @@ func (o *Sed) GetAttributeOk() (*string, bool) {
 
 // HasAttribute returns a boolean if a field has been set.
 func (o *Sed) HasAttribute() bool {
-	if o != nil && !isNil(o.Attribute) {
+	if o != nil && !IsNil(o.Attribute) {
 		return true
 	}
 
@@ -232,7 +232,7 @@ func (o *Sed) SetAttribute(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Sed) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -242,7 +242,7 @@ func (o *Sed) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Sed) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -250,7 +250,7 @@ func (o *Sed) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Sed) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -264,7 +264,7 @@ func (o *Sed) SetDescription(v string) {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *Sed) GetDisplayName() string {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -274,7 +274,7 @@ func (o *Sed) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Sed) GetDisplayNameOk() (*string, bool) {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -282,7 +282,7 @@ func (o *Sed) GetDisplayNameOk() (*string, bool) {
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *Sed) HasDisplayName() bool {
-	if o != nil && !isNil(o.DisplayName) {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -296,7 +296,7 @@ func (o *Sed) SetDisplayName(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Sed) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -306,7 +306,7 @@ func (o *Sed) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Sed) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -314,7 +314,7 @@ func (o *Sed) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *Sed) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -328,7 +328,7 @@ func (o *Sed) SetId(v string) {
 
 // GetSourceId returns the SourceId field value if set, zero value otherwise.
 func (o *Sed) GetSourceId() string {
-	if o == nil || isNil(o.SourceId) {
+	if o == nil || IsNil(o.SourceId) {
 		var ret string
 		return ret
 	}
@@ -338,7 +338,7 @@ func (o *Sed) GetSourceId() string {
 // GetSourceIdOk returns a tuple with the SourceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Sed) GetSourceIdOk() (*string, bool) {
-	if o == nil || isNil(o.SourceId) {
+	if o == nil || IsNil(o.SourceId) {
 		return nil, false
 	}
 	return o.SourceId, true
@@ -346,7 +346,7 @@ func (o *Sed) GetSourceIdOk() (*string, bool) {
 
 // HasSourceId returns a boolean if a field has been set.
 func (o *Sed) HasSourceId() bool {
-	if o != nil && !isNil(o.SourceId) {
+	if o != nil && !IsNil(o.SourceId) {
 		return true
 	}
 
@@ -360,7 +360,7 @@ func (o *Sed) SetSourceId(v string) {
 
 // GetSourceName returns the SourceName field value if set, zero value otherwise.
 func (o *Sed) GetSourceName() string {
-	if o == nil || isNil(o.SourceName) {
+	if o == nil || IsNil(o.SourceName) {
 		var ret string
 		return ret
 	}
@@ -370,7 +370,7 @@ func (o *Sed) GetSourceName() string {
 // GetSourceNameOk returns a tuple with the SourceName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Sed) GetSourceNameOk() (*string, bool) {
-	if o == nil || isNil(o.SourceName) {
+	if o == nil || IsNil(o.SourceName) {
 		return nil, false
 	}
 	return o.SourceName, true
@@ -378,7 +378,7 @@ func (o *Sed) GetSourceNameOk() (*string, bool) {
 
 // HasSourceName returns a boolean if a field has been set.
 func (o *Sed) HasSourceName() bool {
-	if o != nil && !isNil(o.SourceName) {
+	if o != nil && !IsNil(o.SourceName) {
 		return true
 	}
 
@@ -392,7 +392,7 @@ func (o *Sed) SetSourceName(v string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *Sed) GetStatus() string {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -402,7 +402,7 @@ func (o *Sed) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Sed) GetStatusOk() (*string, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -410,7 +410,7 @@ func (o *Sed) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *Sed) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -424,7 +424,7 @@ func (o *Sed) SetStatus(v string) {
 
 // GetSuggestedDescription returns the SuggestedDescription field value if set, zero value otherwise.
 func (o *Sed) GetSuggestedDescription() string {
-	if o == nil || isNil(o.SuggestedDescription) {
+	if o == nil || IsNil(o.SuggestedDescription) {
 		var ret string
 		return ret
 	}
@@ -434,7 +434,7 @@ func (o *Sed) GetSuggestedDescription() string {
 // GetSuggestedDescriptionOk returns a tuple with the SuggestedDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Sed) GetSuggestedDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.SuggestedDescription) {
+	if o == nil || IsNil(o.SuggestedDescription) {
 		return nil, false
 	}
 	return o.SuggestedDescription, true
@@ -442,7 +442,7 @@ func (o *Sed) GetSuggestedDescriptionOk() (*string, bool) {
 
 // HasSuggestedDescription returns a boolean if a field has been set.
 func (o *Sed) HasSuggestedDescription() bool {
-	if o != nil && !isNil(o.SuggestedDescription) {
+	if o != nil && !IsNil(o.SuggestedDescription) {
 		return true
 	}
 
@@ -456,7 +456,7 @@ func (o *Sed) SetSuggestedDescription(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *Sed) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -466,7 +466,7 @@ func (o *Sed) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Sed) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -474,7 +474,7 @@ func (o *Sed) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *Sed) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -488,7 +488,7 @@ func (o *Sed) SetType(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *Sed) GetValue() string {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -498,7 +498,7 @@ func (o *Sed) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Sed) GetValueOk() (*string, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -506,7 +506,7 @@ func (o *Sed) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *Sed) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -528,46 +528,46 @@ func (o Sed) MarshalJSON() ([]byte, error) {
 
 func (o Sed) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["Name"] = o.Name
 	}
-	if !isNil(o.ApprovedBy) {
+	if !IsNil(o.ApprovedBy) {
 		toSerialize["approved_by"] = o.ApprovedBy
 	}
-	if !isNil(o.ApprovedType) {
+	if !IsNil(o.ApprovedType) {
 		toSerialize["approved_type"] = o.ApprovedType
 	}
-	if !isNil(o.ApprovedWhen) {
+	if !IsNil(o.ApprovedWhen) {
 		toSerialize["approved_when"] = o.ApprovedWhen
 	}
-	if !isNil(o.Attribute) {
+	if !IsNil(o.Attribute) {
 		toSerialize["attribute"] = o.Attribute
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.DisplayName) {
+	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.SourceId) {
+	if !IsNil(o.SourceId) {
 		toSerialize["sourceId"] = o.SourceId
 	}
-	if !isNil(o.SourceName) {
+	if !IsNil(o.SourceName) {
 		toSerialize["sourceName"] = o.SourceName
 	}
-	if !isNil(o.Status) {
+	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if !isNil(o.SuggestedDescription) {
+	if !IsNil(o.SuggestedDescription) {
 		toSerialize["suggestedDescription"] = o.SuggestedDescription
 	}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Value) {
+	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
 
@@ -578,16 +578,20 @@ func (o Sed) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Sed) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Sed) UnmarshalJSON(data []byte) (err error) {
 	varSed := _Sed{}
 
-	if err = json.Unmarshal(bytes, &varSed); err == nil {
+	err = json.Unmarshal(data, &varSed)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Sed(varSed)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "Name")
 		delete(additionalProperties, "approved_by")
 		delete(additionalProperties, "approved_type")

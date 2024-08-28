@@ -89,8 +89,8 @@ func (o PutCorrelationConfigRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *PutCorrelationConfigRequest) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *PutCorrelationConfigRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -99,7 +99,7 @@ func (o *PutCorrelationConfigRequest) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -113,13 +113,17 @@ func (o *PutCorrelationConfigRequest) UnmarshalJSON(bytes []byte) (err error) {
 
 	varPutCorrelationConfigRequest := _PutCorrelationConfigRequest{}
 
-	if err = json.Unmarshal(bytes, &varPutCorrelationConfigRequest); err == nil {
+	err = json.Unmarshal(data, &varPutCorrelationConfigRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = PutCorrelationConfigRequest(varPutCorrelationConfigRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "file")
 		o.AdditionalProperties = additionalProperties
 	}

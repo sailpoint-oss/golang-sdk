@@ -50,7 +50,7 @@ func NewProvisioningCriteriaLevel3WithDefaults() *ProvisioningCriteriaLevel3 {
 
 // GetOperation returns the Operation field value if set, zero value otherwise.
 func (o *ProvisioningCriteriaLevel3) GetOperation() ProvisioningCriteriaOperation {
-	if o == nil || isNil(o.Operation) {
+	if o == nil || IsNil(o.Operation) {
 		var ret ProvisioningCriteriaOperation
 		return ret
 	}
@@ -60,7 +60,7 @@ func (o *ProvisioningCriteriaLevel3) GetOperation() ProvisioningCriteriaOperatio
 // GetOperationOk returns a tuple with the Operation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProvisioningCriteriaLevel3) GetOperationOk() (*ProvisioningCriteriaOperation, bool) {
-	if o == nil || isNil(o.Operation) {
+	if o == nil || IsNil(o.Operation) {
 		return nil, false
 	}
 	return o.Operation, true
@@ -68,7 +68,7 @@ func (o *ProvisioningCriteriaLevel3) GetOperationOk() (*ProvisioningCriteriaOper
 
 // HasOperation returns a boolean if a field has been set.
 func (o *ProvisioningCriteriaLevel3) HasOperation() bool {
-	if o != nil && !isNil(o.Operation) {
+	if o != nil && !IsNil(o.Operation) {
 		return true
 	}
 
@@ -82,7 +82,7 @@ func (o *ProvisioningCriteriaLevel3) SetOperation(v ProvisioningCriteriaOperatio
 
 // GetAttribute returns the Attribute field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProvisioningCriteriaLevel3) GetAttribute() string {
-	if o == nil || isNil(o.Attribute.Get()) {
+	if o == nil || IsNil(o.Attribute.Get()) {
 		var ret string
 		return ret
 	}
@@ -124,7 +124,7 @@ func (o *ProvisioningCriteriaLevel3) UnsetAttribute() {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *ProvisioningCriteriaLevel3) GetValue() string {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -134,7 +134,7 @@ func (o *ProvisioningCriteriaLevel3) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProvisioningCriteriaLevel3) GetValueOk() (*string, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -142,7 +142,7 @@ func (o *ProvisioningCriteriaLevel3) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *ProvisioningCriteriaLevel3) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -156,7 +156,7 @@ func (o *ProvisioningCriteriaLevel3) SetValue(v string) {
 
 // GetChildren returns the Children field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProvisioningCriteriaLevel3) GetChildren() string {
-	if o == nil || isNil(o.Children.Get()) {
+	if o == nil || IsNil(o.Children.Get()) {
 		var ret string
 		return ret
 	}
@@ -206,13 +206,13 @@ func (o ProvisioningCriteriaLevel3) MarshalJSON() ([]byte, error) {
 
 func (o ProvisioningCriteriaLevel3) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Operation) {
+	if !IsNil(o.Operation) {
 		toSerialize["operation"] = o.Operation
 	}
 	if o.Attribute.IsSet() {
 		toSerialize["attribute"] = o.Attribute.Get()
 	}
-	if !isNil(o.Value) {
+	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
 	if o.Children.IsSet() {
@@ -226,16 +226,20 @@ func (o ProvisioningCriteriaLevel3) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ProvisioningCriteriaLevel3) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ProvisioningCriteriaLevel3) UnmarshalJSON(data []byte) (err error) {
 	varProvisioningCriteriaLevel3 := _ProvisioningCriteriaLevel3{}
 
-	if err = json.Unmarshal(bytes, &varProvisioningCriteriaLevel3); err == nil {
+	err = json.Unmarshal(data, &varProvisioningCriteriaLevel3)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ProvisioningCriteriaLevel3(varProvisioningCriteriaLevel3)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "operation")
 		delete(additionalProperties, "attribute")
 		delete(additionalProperties, "value")

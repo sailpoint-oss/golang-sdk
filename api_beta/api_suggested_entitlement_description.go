@@ -445,22 +445,22 @@ func (a *SuggestedEntitlementDescriptionAPIService) ListSedsExecute(r ApiListSed
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
 	}
 	if r.filters != nil {
-		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "", "")
 	}
 	if r.count != nil {
-		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "", "")
 	}
 	if r.countOnly != nil {
-		parameterAddToQuery(localVarQueryParams, "count-only", r.countOnly, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count-only", r.countOnly, "", "")
 	}
 	if r.requestedByAnyone != nil {
-		parameterAddToQuery(localVarQueryParams, "requested-by-anyone", r.requestedByAnyone, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "requested-by-anyone", r.requestedByAnyone, "", "")
 	}
 	if r.showPendingStatusOnly != nil {
-		parameterAddToQuery(localVarQueryParams, "show-pending-status-only", r.showPendingStatusOnly, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "show-pending-status-only", r.showPendingStatusOnly, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

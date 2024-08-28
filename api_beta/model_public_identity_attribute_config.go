@@ -47,7 +47,7 @@ func NewPublicIdentityAttributeConfigWithDefaults() *PublicIdentityAttributeConf
 
 // GetKey returns the Key field value if set, zero value otherwise.
 func (o *PublicIdentityAttributeConfig) GetKey() string {
-	if o == nil || isNil(o.Key) {
+	if o == nil || IsNil(o.Key) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *PublicIdentityAttributeConfig) GetKey() string {
 // GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PublicIdentityAttributeConfig) GetKeyOk() (*string, bool) {
-	if o == nil || isNil(o.Key) {
+	if o == nil || IsNil(o.Key) {
 		return nil, false
 	}
 	return o.Key, true
@@ -65,7 +65,7 @@ func (o *PublicIdentityAttributeConfig) GetKeyOk() (*string, bool) {
 
 // HasKey returns a boolean if a field has been set.
 func (o *PublicIdentityAttributeConfig) HasKey() bool {
-	if o != nil && !isNil(o.Key) {
+	if o != nil && !IsNil(o.Key) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *PublicIdentityAttributeConfig) SetKey(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PublicIdentityAttributeConfig) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *PublicIdentityAttributeConfig) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PublicIdentityAttributeConfig) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -97,7 +97,7 @@ func (o *PublicIdentityAttributeConfig) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PublicIdentityAttributeConfig) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o PublicIdentityAttributeConfig) MarshalJSON() ([]byte, error) {
 
 func (o PublicIdentityAttributeConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Key) {
+	if !IsNil(o.Key) {
 		toSerialize["key"] = o.Key
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 
@@ -133,16 +133,20 @@ func (o PublicIdentityAttributeConfig) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *PublicIdentityAttributeConfig) UnmarshalJSON(bytes []byte) (err error) {
+func (o *PublicIdentityAttributeConfig) UnmarshalJSON(data []byte) (err error) {
 	varPublicIdentityAttributeConfig := _PublicIdentityAttributeConfig{}
 
-	if err = json.Unmarshal(bytes, &varPublicIdentityAttributeConfig); err == nil {
+	err = json.Unmarshal(data, &varPublicIdentityAttributeConfig)
+
+	if err != nil {
+		return err
+	}
+
 	*o = PublicIdentityAttributeConfig(varPublicIdentityAttributeConfig)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "key")
 		delete(additionalProperties, "name")
 		o.AdditionalProperties = additionalProperties

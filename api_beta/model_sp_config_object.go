@@ -76,7 +76,7 @@ func NewSpConfigObjectWithDefaults() *SpConfigObject {
 
 // GetObjectType returns the ObjectType field value if set, zero value otherwise.
 func (o *SpConfigObject) GetObjectType() string {
-	if o == nil || isNil(o.ObjectType) {
+	if o == nil || IsNil(o.ObjectType) {
 		var ret string
 		return ret
 	}
@@ -86,7 +86,7 @@ func (o *SpConfigObject) GetObjectType() string {
 // GetObjectTypeOk returns a tuple with the ObjectType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpConfigObject) GetObjectTypeOk() (*string, bool) {
-	if o == nil || isNil(o.ObjectType) {
+	if o == nil || IsNil(o.ObjectType) {
 		return nil, false
 	}
 	return o.ObjectType, true
@@ -94,7 +94,7 @@ func (o *SpConfigObject) GetObjectTypeOk() (*string, bool) {
 
 // HasObjectType returns a boolean if a field has been set.
 func (o *SpConfigObject) HasObjectType() bool {
-	if o != nil && !isNil(o.ObjectType) {
+	if o != nil && !IsNil(o.ObjectType) {
 		return true
 	}
 
@@ -108,7 +108,7 @@ func (o *SpConfigObject) SetObjectType(v string) {
 
 // GetResolveByIdUrl returns the ResolveByIdUrl field value if set, zero value otherwise.
 func (o *SpConfigObject) GetResolveByIdUrl() SpConfigUrl {
-	if o == nil || isNil(o.ResolveByIdUrl) {
+	if o == nil || IsNil(o.ResolveByIdUrl) {
 		var ret SpConfigUrl
 		return ret
 	}
@@ -118,7 +118,7 @@ func (o *SpConfigObject) GetResolveByIdUrl() SpConfigUrl {
 // GetResolveByIdUrlOk returns a tuple with the ResolveByIdUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpConfigObject) GetResolveByIdUrlOk() (*SpConfigUrl, bool) {
-	if o == nil || isNil(o.ResolveByIdUrl) {
+	if o == nil || IsNil(o.ResolveByIdUrl) {
 		return nil, false
 	}
 	return o.ResolveByIdUrl, true
@@ -126,7 +126,7 @@ func (o *SpConfigObject) GetResolveByIdUrlOk() (*SpConfigUrl, bool) {
 
 // HasResolveByIdUrl returns a boolean if a field has been set.
 func (o *SpConfigObject) HasResolveByIdUrl() bool {
-	if o != nil && !isNil(o.ResolveByIdUrl) {
+	if o != nil && !IsNil(o.ResolveByIdUrl) {
 		return true
 	}
 
@@ -140,7 +140,7 @@ func (o *SpConfigObject) SetResolveByIdUrl(v SpConfigUrl) {
 
 // GetResolveByNameUrl returns the ResolveByNameUrl field value if set, zero value otherwise.
 func (o *SpConfigObject) GetResolveByNameUrl() []SpConfigUrl {
-	if o == nil || isNil(o.ResolveByNameUrl) {
+	if o == nil || IsNil(o.ResolveByNameUrl) {
 		var ret []SpConfigUrl
 		return ret
 	}
@@ -150,7 +150,7 @@ func (o *SpConfigObject) GetResolveByNameUrl() []SpConfigUrl {
 // GetResolveByNameUrlOk returns a tuple with the ResolveByNameUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpConfigObject) GetResolveByNameUrlOk() ([]SpConfigUrl, bool) {
-	if o == nil || isNil(o.ResolveByNameUrl) {
+	if o == nil || IsNil(o.ResolveByNameUrl) {
 		return nil, false
 	}
 	return o.ResolveByNameUrl, true
@@ -158,7 +158,7 @@ func (o *SpConfigObject) GetResolveByNameUrlOk() ([]SpConfigUrl, bool) {
 
 // HasResolveByNameUrl returns a boolean if a field has been set.
 func (o *SpConfigObject) HasResolveByNameUrl() bool {
-	if o != nil && !isNil(o.ResolveByNameUrl) {
+	if o != nil && !IsNil(o.ResolveByNameUrl) {
 		return true
 	}
 
@@ -172,7 +172,7 @@ func (o *SpConfigObject) SetResolveByNameUrl(v []SpConfigUrl) {
 
 // GetExportUrl returns the ExportUrl field value if set, zero value otherwise.
 func (o *SpConfigObject) GetExportUrl() SpConfigUrl {
-	if o == nil || isNil(o.ExportUrl) {
+	if o == nil || IsNil(o.ExportUrl) {
 		var ret SpConfigUrl
 		return ret
 	}
@@ -182,7 +182,7 @@ func (o *SpConfigObject) GetExportUrl() SpConfigUrl {
 // GetExportUrlOk returns a tuple with the ExportUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpConfigObject) GetExportUrlOk() (*SpConfigUrl, bool) {
-	if o == nil || isNil(o.ExportUrl) {
+	if o == nil || IsNil(o.ExportUrl) {
 		return nil, false
 	}
 	return o.ExportUrl, true
@@ -190,7 +190,7 @@ func (o *SpConfigObject) GetExportUrlOk() (*SpConfigUrl, bool) {
 
 // HasExportUrl returns a boolean if a field has been set.
 func (o *SpConfigObject) HasExportUrl() bool {
-	if o != nil && !isNil(o.ExportUrl) {
+	if o != nil && !IsNil(o.ExportUrl) {
 		return true
 	}
 
@@ -204,7 +204,7 @@ func (o *SpConfigObject) SetExportUrl(v SpConfigUrl) {
 
 // GetExportRight returns the ExportRight field value if set, zero value otherwise.
 func (o *SpConfigObject) GetExportRight() string {
-	if o == nil || isNil(o.ExportRight) {
+	if o == nil || IsNil(o.ExportRight) {
 		var ret string
 		return ret
 	}
@@ -214,7 +214,7 @@ func (o *SpConfigObject) GetExportRight() string {
 // GetExportRightOk returns a tuple with the ExportRight field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpConfigObject) GetExportRightOk() (*string, bool) {
-	if o == nil || isNil(o.ExportRight) {
+	if o == nil || IsNil(o.ExportRight) {
 		return nil, false
 	}
 	return o.ExportRight, true
@@ -222,7 +222,7 @@ func (o *SpConfigObject) GetExportRightOk() (*string, bool) {
 
 // HasExportRight returns a boolean if a field has been set.
 func (o *SpConfigObject) HasExportRight() bool {
-	if o != nil && !isNil(o.ExportRight) {
+	if o != nil && !IsNil(o.ExportRight) {
 		return true
 	}
 
@@ -236,7 +236,7 @@ func (o *SpConfigObject) SetExportRight(v string) {
 
 // GetExportLimit returns the ExportLimit field value if set, zero value otherwise.
 func (o *SpConfigObject) GetExportLimit() int32 {
-	if o == nil || isNil(o.ExportLimit) {
+	if o == nil || IsNil(o.ExportLimit) {
 		var ret int32
 		return ret
 	}
@@ -246,7 +246,7 @@ func (o *SpConfigObject) GetExportLimit() int32 {
 // GetExportLimitOk returns a tuple with the ExportLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpConfigObject) GetExportLimitOk() (*int32, bool) {
-	if o == nil || isNil(o.ExportLimit) {
+	if o == nil || IsNil(o.ExportLimit) {
 		return nil, false
 	}
 	return o.ExportLimit, true
@@ -254,7 +254,7 @@ func (o *SpConfigObject) GetExportLimitOk() (*int32, bool) {
 
 // HasExportLimit returns a boolean if a field has been set.
 func (o *SpConfigObject) HasExportLimit() bool {
-	if o != nil && !isNil(o.ExportLimit) {
+	if o != nil && !IsNil(o.ExportLimit) {
 		return true
 	}
 
@@ -268,7 +268,7 @@ func (o *SpConfigObject) SetExportLimit(v int32) {
 
 // GetImportUrl returns the ImportUrl field value if set, zero value otherwise.
 func (o *SpConfigObject) GetImportUrl() SpConfigUrl {
-	if o == nil || isNil(o.ImportUrl) {
+	if o == nil || IsNil(o.ImportUrl) {
 		var ret SpConfigUrl
 		return ret
 	}
@@ -278,7 +278,7 @@ func (o *SpConfigObject) GetImportUrl() SpConfigUrl {
 // GetImportUrlOk returns a tuple with the ImportUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpConfigObject) GetImportUrlOk() (*SpConfigUrl, bool) {
-	if o == nil || isNil(o.ImportUrl) {
+	if o == nil || IsNil(o.ImportUrl) {
 		return nil, false
 	}
 	return o.ImportUrl, true
@@ -286,7 +286,7 @@ func (o *SpConfigObject) GetImportUrlOk() (*SpConfigUrl, bool) {
 
 // HasImportUrl returns a boolean if a field has been set.
 func (o *SpConfigObject) HasImportUrl() bool {
-	if o != nil && !isNil(o.ImportUrl) {
+	if o != nil && !IsNil(o.ImportUrl) {
 		return true
 	}
 
@@ -300,7 +300,7 @@ func (o *SpConfigObject) SetImportUrl(v SpConfigUrl) {
 
 // GetImportRight returns the ImportRight field value if set, zero value otherwise.
 func (o *SpConfigObject) GetImportRight() string {
-	if o == nil || isNil(o.ImportRight) {
+	if o == nil || IsNil(o.ImportRight) {
 		var ret string
 		return ret
 	}
@@ -310,7 +310,7 @@ func (o *SpConfigObject) GetImportRight() string {
 // GetImportRightOk returns a tuple with the ImportRight field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpConfigObject) GetImportRightOk() (*string, bool) {
-	if o == nil || isNil(o.ImportRight) {
+	if o == nil || IsNil(o.ImportRight) {
 		return nil, false
 	}
 	return o.ImportRight, true
@@ -318,7 +318,7 @@ func (o *SpConfigObject) GetImportRightOk() (*string, bool) {
 
 // HasImportRight returns a boolean if a field has been set.
 func (o *SpConfigObject) HasImportRight() bool {
-	if o != nil && !isNil(o.ImportRight) {
+	if o != nil && !IsNil(o.ImportRight) {
 		return true
 	}
 
@@ -332,7 +332,7 @@ func (o *SpConfigObject) SetImportRight(v string) {
 
 // GetImportLimit returns the ImportLimit field value if set, zero value otherwise.
 func (o *SpConfigObject) GetImportLimit() int32 {
-	if o == nil || isNil(o.ImportLimit) {
+	if o == nil || IsNil(o.ImportLimit) {
 		var ret int32
 		return ret
 	}
@@ -342,7 +342,7 @@ func (o *SpConfigObject) GetImportLimit() int32 {
 // GetImportLimitOk returns a tuple with the ImportLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpConfigObject) GetImportLimitOk() (*int32, bool) {
-	if o == nil || isNil(o.ImportLimit) {
+	if o == nil || IsNil(o.ImportLimit) {
 		return nil, false
 	}
 	return o.ImportLimit, true
@@ -350,7 +350,7 @@ func (o *SpConfigObject) GetImportLimitOk() (*int32, bool) {
 
 // HasImportLimit returns a boolean if a field has been set.
 func (o *SpConfigObject) HasImportLimit() bool {
-	if o != nil && !isNil(o.ImportLimit) {
+	if o != nil && !IsNil(o.ImportLimit) {
 		return true
 	}
 
@@ -375,7 +375,7 @@ func (o *SpConfigObject) GetReferenceExtractors() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SpConfigObject) GetReferenceExtractorsOk() ([]string, bool) {
-	if o == nil || isNil(o.ReferenceExtractors) {
+	if o == nil || IsNil(o.ReferenceExtractors) {
 		return nil, false
 	}
 	return o.ReferenceExtractors, true
@@ -383,7 +383,7 @@ func (o *SpConfigObject) GetReferenceExtractorsOk() ([]string, bool) {
 
 // HasReferenceExtractors returns a boolean if a field has been set.
 func (o *SpConfigObject) HasReferenceExtractors() bool {
-	if o != nil && isNil(o.ReferenceExtractors) {
+	if o != nil && !IsNil(o.ReferenceExtractors) {
 		return true
 	}
 
@@ -397,7 +397,7 @@ func (o *SpConfigObject) SetReferenceExtractors(v []string) {
 
 // GetSignatureRequired returns the SignatureRequired field value if set, zero value otherwise.
 func (o *SpConfigObject) GetSignatureRequired() bool {
-	if o == nil || isNil(o.SignatureRequired) {
+	if o == nil || IsNil(o.SignatureRequired) {
 		var ret bool
 		return ret
 	}
@@ -407,7 +407,7 @@ func (o *SpConfigObject) GetSignatureRequired() bool {
 // GetSignatureRequiredOk returns a tuple with the SignatureRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpConfigObject) GetSignatureRequiredOk() (*bool, bool) {
-	if o == nil || isNil(o.SignatureRequired) {
+	if o == nil || IsNil(o.SignatureRequired) {
 		return nil, false
 	}
 	return o.SignatureRequired, true
@@ -415,7 +415,7 @@ func (o *SpConfigObject) GetSignatureRequiredOk() (*bool, bool) {
 
 // HasSignatureRequired returns a boolean if a field has been set.
 func (o *SpConfigObject) HasSignatureRequired() bool {
-	if o != nil && !isNil(o.SignatureRequired) {
+	if o != nil && !IsNil(o.SignatureRequired) {
 		return true
 	}
 
@@ -429,7 +429,7 @@ func (o *SpConfigObject) SetSignatureRequired(v bool) {
 
 // GetLegacyObject returns the LegacyObject field value if set, zero value otherwise.
 func (o *SpConfigObject) GetLegacyObject() bool {
-	if o == nil || isNil(o.LegacyObject) {
+	if o == nil || IsNil(o.LegacyObject) {
 		var ret bool
 		return ret
 	}
@@ -439,7 +439,7 @@ func (o *SpConfigObject) GetLegacyObject() bool {
 // GetLegacyObjectOk returns a tuple with the LegacyObject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpConfigObject) GetLegacyObjectOk() (*bool, bool) {
-	if o == nil || isNil(o.LegacyObject) {
+	if o == nil || IsNil(o.LegacyObject) {
 		return nil, false
 	}
 	return o.LegacyObject, true
@@ -447,7 +447,7 @@ func (o *SpConfigObject) GetLegacyObjectOk() (*bool, bool) {
 
 // HasLegacyObject returns a boolean if a field has been set.
 func (o *SpConfigObject) HasLegacyObject() bool {
-	if o != nil && !isNil(o.LegacyObject) {
+	if o != nil && !IsNil(o.LegacyObject) {
 		return true
 	}
 
@@ -461,7 +461,7 @@ func (o *SpConfigObject) SetLegacyObject(v bool) {
 
 // GetOnePerTenant returns the OnePerTenant field value if set, zero value otherwise.
 func (o *SpConfigObject) GetOnePerTenant() bool {
-	if o == nil || isNil(o.OnePerTenant) {
+	if o == nil || IsNil(o.OnePerTenant) {
 		var ret bool
 		return ret
 	}
@@ -471,7 +471,7 @@ func (o *SpConfigObject) GetOnePerTenant() bool {
 // GetOnePerTenantOk returns a tuple with the OnePerTenant field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpConfigObject) GetOnePerTenantOk() (*bool, bool) {
-	if o == nil || isNil(o.OnePerTenant) {
+	if o == nil || IsNil(o.OnePerTenant) {
 		return nil, false
 	}
 	return o.OnePerTenant, true
@@ -479,7 +479,7 @@ func (o *SpConfigObject) GetOnePerTenantOk() (*bool, bool) {
 
 // HasOnePerTenant returns a boolean if a field has been set.
 func (o *SpConfigObject) HasOnePerTenant() bool {
-	if o != nil && !isNil(o.OnePerTenant) {
+	if o != nil && !IsNil(o.OnePerTenant) {
 		return true
 	}
 
@@ -501,43 +501,43 @@ func (o SpConfigObject) MarshalJSON() ([]byte, error) {
 
 func (o SpConfigObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ObjectType) {
+	if !IsNil(o.ObjectType) {
 		toSerialize["objectType"] = o.ObjectType
 	}
-	if !isNil(o.ResolveByIdUrl) {
+	if !IsNil(o.ResolveByIdUrl) {
 		toSerialize["resolveByIdUrl"] = o.ResolveByIdUrl
 	}
-	if !isNil(o.ResolveByNameUrl) {
+	if !IsNil(o.ResolveByNameUrl) {
 		toSerialize["resolveByNameUrl"] = o.ResolveByNameUrl
 	}
-	if !isNil(o.ExportUrl) {
+	if !IsNil(o.ExportUrl) {
 		toSerialize["exportUrl"] = o.ExportUrl
 	}
-	if !isNil(o.ExportRight) {
+	if !IsNil(o.ExportRight) {
 		toSerialize["exportRight"] = o.ExportRight
 	}
-	if !isNil(o.ExportLimit) {
+	if !IsNil(o.ExportLimit) {
 		toSerialize["exportLimit"] = o.ExportLimit
 	}
-	if !isNil(o.ImportUrl) {
+	if !IsNil(o.ImportUrl) {
 		toSerialize["importUrl"] = o.ImportUrl
 	}
-	if !isNil(o.ImportRight) {
+	if !IsNil(o.ImportRight) {
 		toSerialize["importRight"] = o.ImportRight
 	}
-	if !isNil(o.ImportLimit) {
+	if !IsNil(o.ImportLimit) {
 		toSerialize["importLimit"] = o.ImportLimit
 	}
 	if o.ReferenceExtractors != nil {
 		toSerialize["referenceExtractors"] = o.ReferenceExtractors
 	}
-	if !isNil(o.SignatureRequired) {
+	if !IsNil(o.SignatureRequired) {
 		toSerialize["signatureRequired"] = o.SignatureRequired
 	}
-	if !isNil(o.LegacyObject) {
+	if !IsNil(o.LegacyObject) {
 		toSerialize["legacyObject"] = o.LegacyObject
 	}
-	if !isNil(o.OnePerTenant) {
+	if !IsNil(o.OnePerTenant) {
 		toSerialize["onePerTenant"] = o.OnePerTenant
 	}
 
@@ -548,16 +548,20 @@ func (o SpConfigObject) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SpConfigObject) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SpConfigObject) UnmarshalJSON(data []byte) (err error) {
 	varSpConfigObject := _SpConfigObject{}
 
-	if err = json.Unmarshal(bytes, &varSpConfigObject); err == nil {
+	err = json.Unmarshal(data, &varSpConfigObject)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SpConfigObject(varSpConfigObject)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "objectType")
 		delete(additionalProperties, "resolveByIdUrl")
 		delete(additionalProperties, "resolveByNameUrl")

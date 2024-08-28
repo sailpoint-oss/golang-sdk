@@ -124,7 +124,7 @@ func (o *TypeAheadQuery) SetField(v string) {
 
 // GetNestedType returns the NestedType field value if set, zero value otherwise.
 func (o *TypeAheadQuery) GetNestedType() string {
-	if o == nil || isNil(o.NestedType) {
+	if o == nil || IsNil(o.NestedType) {
 		var ret string
 		return ret
 	}
@@ -134,7 +134,7 @@ func (o *TypeAheadQuery) GetNestedType() string {
 // GetNestedTypeOk returns a tuple with the NestedType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TypeAheadQuery) GetNestedTypeOk() (*string, bool) {
-	if o == nil || isNil(o.NestedType) {
+	if o == nil || IsNil(o.NestedType) {
 		return nil, false
 	}
 	return o.NestedType, true
@@ -142,7 +142,7 @@ func (o *TypeAheadQuery) GetNestedTypeOk() (*string, bool) {
 
 // HasNestedType returns a boolean if a field has been set.
 func (o *TypeAheadQuery) HasNestedType() bool {
-	if o != nil && !isNil(o.NestedType) {
+	if o != nil && !IsNil(o.NestedType) {
 		return true
 	}
 
@@ -156,7 +156,7 @@ func (o *TypeAheadQuery) SetNestedType(v string) {
 
 // GetMaxExpansions returns the MaxExpansions field value if set, zero value otherwise.
 func (o *TypeAheadQuery) GetMaxExpansions() int32 {
-	if o == nil || isNil(o.MaxExpansions) {
+	if o == nil || IsNil(o.MaxExpansions) {
 		var ret int32
 		return ret
 	}
@@ -166,7 +166,7 @@ func (o *TypeAheadQuery) GetMaxExpansions() int32 {
 // GetMaxExpansionsOk returns a tuple with the MaxExpansions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TypeAheadQuery) GetMaxExpansionsOk() (*int32, bool) {
-	if o == nil || isNil(o.MaxExpansions) {
+	if o == nil || IsNil(o.MaxExpansions) {
 		return nil, false
 	}
 	return o.MaxExpansions, true
@@ -174,7 +174,7 @@ func (o *TypeAheadQuery) GetMaxExpansionsOk() (*int32, bool) {
 
 // HasMaxExpansions returns a boolean if a field has been set.
 func (o *TypeAheadQuery) HasMaxExpansions() bool {
-	if o != nil && !isNil(o.MaxExpansions) {
+	if o != nil && !IsNil(o.MaxExpansions) {
 		return true
 	}
 
@@ -188,7 +188,7 @@ func (o *TypeAheadQuery) SetMaxExpansions(v int32) {
 
 // GetSize returns the Size field value if set, zero value otherwise.
 func (o *TypeAheadQuery) GetSize() int32 {
-	if o == nil || isNil(o.Size) {
+	if o == nil || IsNil(o.Size) {
 		var ret int32
 		return ret
 	}
@@ -198,7 +198,7 @@ func (o *TypeAheadQuery) GetSize() int32 {
 // GetSizeOk returns a tuple with the Size field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TypeAheadQuery) GetSizeOk() (*int32, bool) {
-	if o == nil || isNil(o.Size) {
+	if o == nil || IsNil(o.Size) {
 		return nil, false
 	}
 	return o.Size, true
@@ -206,7 +206,7 @@ func (o *TypeAheadQuery) GetSizeOk() (*int32, bool) {
 
 // HasSize returns a boolean if a field has been set.
 func (o *TypeAheadQuery) HasSize() bool {
-	if o != nil && !isNil(o.Size) {
+	if o != nil && !IsNil(o.Size) {
 		return true
 	}
 
@@ -220,7 +220,7 @@ func (o *TypeAheadQuery) SetSize(v int32) {
 
 // GetSort returns the Sort field value if set, zero value otherwise.
 func (o *TypeAheadQuery) GetSort() string {
-	if o == nil || isNil(o.Sort) {
+	if o == nil || IsNil(o.Sort) {
 		var ret string
 		return ret
 	}
@@ -230,7 +230,7 @@ func (o *TypeAheadQuery) GetSort() string {
 // GetSortOk returns a tuple with the Sort field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TypeAheadQuery) GetSortOk() (*string, bool) {
-	if o == nil || isNil(o.Sort) {
+	if o == nil || IsNil(o.Sort) {
 		return nil, false
 	}
 	return o.Sort, true
@@ -238,7 +238,7 @@ func (o *TypeAheadQuery) GetSortOk() (*string, bool) {
 
 // HasSort returns a boolean if a field has been set.
 func (o *TypeAheadQuery) HasSort() bool {
-	if o != nil && !isNil(o.Sort) {
+	if o != nil && !IsNil(o.Sort) {
 		return true
 	}
 
@@ -252,7 +252,7 @@ func (o *TypeAheadQuery) SetSort(v string) {
 
 // GetSortByValue returns the SortByValue field value if set, zero value otherwise.
 func (o *TypeAheadQuery) GetSortByValue() bool {
-	if o == nil || isNil(o.SortByValue) {
+	if o == nil || IsNil(o.SortByValue) {
 		var ret bool
 		return ret
 	}
@@ -262,7 +262,7 @@ func (o *TypeAheadQuery) GetSortByValue() bool {
 // GetSortByValueOk returns a tuple with the SortByValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TypeAheadQuery) GetSortByValueOk() (*bool, bool) {
-	if o == nil || isNil(o.SortByValue) {
+	if o == nil || IsNil(o.SortByValue) {
 		return nil, false
 	}
 	return o.SortByValue, true
@@ -270,7 +270,7 @@ func (o *TypeAheadQuery) GetSortByValueOk() (*bool, bool) {
 
 // HasSortByValue returns a boolean if a field has been set.
 func (o *TypeAheadQuery) HasSortByValue() bool {
-	if o != nil && !isNil(o.SortByValue) {
+	if o != nil && !IsNil(o.SortByValue) {
 		return true
 	}
 
@@ -294,19 +294,19 @@ func (o TypeAheadQuery) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["query"] = o.Query
 	toSerialize["field"] = o.Field
-	if !isNil(o.NestedType) {
+	if !IsNil(o.NestedType) {
 		toSerialize["nestedType"] = o.NestedType
 	}
-	if !isNil(o.MaxExpansions) {
+	if !IsNil(o.MaxExpansions) {
 		toSerialize["maxExpansions"] = o.MaxExpansions
 	}
-	if !isNil(o.Size) {
+	if !IsNil(o.Size) {
 		toSerialize["size"] = o.Size
 	}
-	if !isNil(o.Sort) {
+	if !IsNil(o.Sort) {
 		toSerialize["sort"] = o.Sort
 	}
-	if !isNil(o.SortByValue) {
+	if !IsNil(o.SortByValue) {
 		toSerialize["sortByValue"] = o.SortByValue
 	}
 
@@ -317,8 +317,8 @@ func (o TypeAheadQuery) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *TypeAheadQuery) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *TypeAheadQuery) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -328,7 +328,7 @@ func (o *TypeAheadQuery) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -342,13 +342,17 @@ func (o *TypeAheadQuery) UnmarshalJSON(bytes []byte) (err error) {
 
 	varTypeAheadQuery := _TypeAheadQuery{}
 
-	if err = json.Unmarshal(bytes, &varTypeAheadQuery); err == nil {
+	err = json.Unmarshal(data, &varTypeAheadQuery)
+
+	if err != nil {
+		return err
+	}
+
 	*o = TypeAheadQuery(varTypeAheadQuery)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "query")
 		delete(additionalProperties, "field")
 		delete(additionalProperties, "nestedType")

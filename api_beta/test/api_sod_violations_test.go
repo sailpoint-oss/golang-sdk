@@ -19,14 +19,14 @@ import (
 
 func Test_api_beta_SODViolationsAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test SODViolationsAPIService StartPredictSodViolations", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.SODViolationsAPI.StartPredictSodViolations(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SODViolationsAPI.StartPredictSodViolations(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

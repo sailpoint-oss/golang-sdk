@@ -47,7 +47,7 @@ func NewAppAllOfAccountWithDefaults() *AppAllOfAccount {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *AppAllOfAccount) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *AppAllOfAccount) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AppAllOfAccount) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -65,7 +65,7 @@ func (o *AppAllOfAccount) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *AppAllOfAccount) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *AppAllOfAccount) SetId(v string) {
 
 // GetAccountId returns the AccountId field value if set, zero value otherwise.
 func (o *AppAllOfAccount) GetAccountId() string {
-	if o == nil || isNil(o.AccountId) {
+	if o == nil || IsNil(o.AccountId) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *AppAllOfAccount) GetAccountId() string {
 // GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AppAllOfAccount) GetAccountIdOk() (*string, bool) {
-	if o == nil || isNil(o.AccountId) {
+	if o == nil || IsNil(o.AccountId) {
 		return nil, false
 	}
 	return o.AccountId, true
@@ -97,7 +97,7 @@ func (o *AppAllOfAccount) GetAccountIdOk() (*string, bool) {
 
 // HasAccountId returns a boolean if a field has been set.
 func (o *AppAllOfAccount) HasAccountId() bool {
-	if o != nil && !isNil(o.AccountId) {
+	if o != nil && !IsNil(o.AccountId) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o AppAllOfAccount) MarshalJSON() ([]byte, error) {
 
 func (o AppAllOfAccount) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.AccountId) {
+	if !IsNil(o.AccountId) {
 		toSerialize["accountId"] = o.AccountId
 	}
 
@@ -133,16 +133,20 @@ func (o AppAllOfAccount) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AppAllOfAccount) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AppAllOfAccount) UnmarshalJSON(data []byte) (err error) {
 	varAppAllOfAccount := _AppAllOfAccount{}
 
-	if err = json.Unmarshal(bytes, &varAppAllOfAccount); err == nil {
+	err = json.Unmarshal(data, &varAppAllOfAccount)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AppAllOfAccount(varAppAllOfAccount)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "accountId")
 		o.AdditionalProperties = additionalProperties

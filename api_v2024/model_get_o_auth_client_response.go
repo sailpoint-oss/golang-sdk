@@ -288,7 +288,7 @@ func (o *GetOAuthClientResponse) GetRedirectUris() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GetOAuthClientResponse) GetRedirectUrisOk() ([]string, bool) {
-	if o == nil || isNil(o.RedirectUris) {
+	if o == nil || IsNil(o.RedirectUris) {
 		return nil, false
 	}
 	return o.RedirectUris, true
@@ -517,7 +517,7 @@ func (o *GetOAuthClientResponse) SetModified(v time.Time) {
 
 // GetSecret returns the Secret field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GetOAuthClientResponse) GetSecret() string {
-	if o == nil || isNil(o.Secret.Get()) {
+	if o == nil || IsNil(o.Secret.Get()) {
 		var ret string
 		return ret
 	}
@@ -559,7 +559,7 @@ func (o *GetOAuthClientResponse) UnsetSecret() {
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GetOAuthClientResponse) GetMetadata() string {
-	if o == nil || isNil(o.Metadata.Get()) {
+	if o == nil || IsNil(o.Metadata.Get()) {
 		var ret string
 		return ret
 	}
@@ -601,7 +601,7 @@ func (o *GetOAuthClientResponse) UnsetMetadata() {
 
 // GetLastUsed returns the LastUsed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GetOAuthClientResponse) GetLastUsed() time.Time {
-	if o == nil || isNil(o.LastUsed.Get()) {
+	if o == nil || IsNil(o.LastUsed.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -656,7 +656,7 @@ func (o *GetOAuthClientResponse) GetScope() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GetOAuthClientResponse) GetScopeOk() ([]string, bool) {
-	if o == nil || isNil(o.Scope) {
+	if o == nil || IsNil(o.Scope) {
 		return nil, false
 	}
 	return o.Scope, true
@@ -716,8 +716,8 @@ func (o GetOAuthClientResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *GetOAuthClientResponse) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *GetOAuthClientResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -743,7 +743,7 @@ func (o *GetOAuthClientResponse) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -757,13 +757,17 @@ func (o *GetOAuthClientResponse) UnmarshalJSON(bytes []byte) (err error) {
 
 	varGetOAuthClientResponse := _GetOAuthClientResponse{}
 
-	if err = json.Unmarshal(bytes, &varGetOAuthClientResponse); err == nil {
+	err = json.Unmarshal(data, &varGetOAuthClientResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = GetOAuthClientResponse(varGetOAuthClientResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "businessName")
 		delete(additionalProperties, "homepageUrl")

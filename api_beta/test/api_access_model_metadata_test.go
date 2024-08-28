@@ -19,7 +19,7 @@ import (
 
 func Test_api_beta_AccessModelMetadataAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test AccessModelMetadataAPIService GetAccessModelMetadataAttribute", func(t *testing.T) {
@@ -28,7 +28,7 @@ func Test_api_beta_AccessModelMetadataAPIService(t *testing.T) {
 
 		var key string
 
-		resp, httpRes, err := apiClient.API_BETA.AccessModelMetadataAPI.GetAccessModelMetadataAttribute(context.Background(), key).Execute()
+		resp, httpRes, err := apiClient.AccessModelMetadataAPI.GetAccessModelMetadataAttribute(context.Background(), key).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -43,7 +43,7 @@ func Test_api_beta_AccessModelMetadataAPIService(t *testing.T) {
 		var key string
 		var value string
 
-		resp, httpRes, err := apiClient.API_BETA.AccessModelMetadataAPI.GetAccessModelMetadataAttributeValue(context.Background(), key, value).Execute()
+		resp, httpRes, err := apiClient.AccessModelMetadataAPI.GetAccessModelMetadataAttributeValue(context.Background(), key, value).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -55,7 +55,7 @@ func Test_api_beta_AccessModelMetadataAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.AccessModelMetadataAPI.ListAccessModelMetadataAttribute(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AccessModelMetadataAPI.ListAccessModelMetadataAttribute(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -69,7 +69,7 @@ func Test_api_beta_AccessModelMetadataAPIService(t *testing.T) {
 
 		var key string
 
-		resp, httpRes, err := apiClient.API_BETA.AccessModelMetadataAPI.ListAccessModelMetadataAttributeValue(context.Background(), key).Execute()
+		resp, httpRes, err := apiClient.AccessModelMetadataAPI.ListAccessModelMetadataAttributeValue(context.Background(), key).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

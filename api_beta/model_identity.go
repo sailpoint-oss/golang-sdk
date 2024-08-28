@@ -74,7 +74,7 @@ func NewIdentityWithDefaults() *Identity {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Identity) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -84,7 +84,7 @@ func (o *Identity) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Identity) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -92,7 +92,7 @@ func (o *Identity) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *Identity) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -130,7 +130,7 @@ func (o *Identity) SetName(v string) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *Identity) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -140,7 +140,7 @@ func (o *Identity) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Identity) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -148,7 +148,7 @@ func (o *Identity) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *Identity) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -162,7 +162,7 @@ func (o *Identity) SetCreated(v time.Time) {
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *Identity) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		var ret time.Time
 		return ret
 	}
@@ -172,7 +172,7 @@ func (o *Identity) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Identity) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -180,7 +180,7 @@ func (o *Identity) GetModifiedOk() (*time.Time, bool) {
 
 // HasModified returns a boolean if a field has been set.
 func (o *Identity) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -194,7 +194,7 @@ func (o *Identity) SetModified(v time.Time) {
 
 // GetAlias returns the Alias field value if set, zero value otherwise.
 func (o *Identity) GetAlias() string {
-	if o == nil || isNil(o.Alias) {
+	if o == nil || IsNil(o.Alias) {
 		var ret string
 		return ret
 	}
@@ -204,7 +204,7 @@ func (o *Identity) GetAlias() string {
 // GetAliasOk returns a tuple with the Alias field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Identity) GetAliasOk() (*string, bool) {
-	if o == nil || isNil(o.Alias) {
+	if o == nil || IsNil(o.Alias) {
 		return nil, false
 	}
 	return o.Alias, true
@@ -212,7 +212,7 @@ func (o *Identity) GetAliasOk() (*string, bool) {
 
 // HasAlias returns a boolean if a field has been set.
 func (o *Identity) HasAlias() bool {
-	if o != nil && !isNil(o.Alias) {
+	if o != nil && !IsNil(o.Alias) {
 		return true
 	}
 
@@ -226,7 +226,7 @@ func (o *Identity) SetAlias(v string) {
 
 // GetEmailAddress returns the EmailAddress field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Identity) GetEmailAddress() string {
-	if o == nil || isNil(o.EmailAddress.Get()) {
+	if o == nil || IsNil(o.EmailAddress.Get()) {
 		var ret string
 		return ret
 	}
@@ -268,7 +268,7 @@ func (o *Identity) UnsetEmailAddress() {
 
 // GetProcessingState returns the ProcessingState field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Identity) GetProcessingState() string {
-	if o == nil || isNil(o.ProcessingState.Get()) {
+	if o == nil || IsNil(o.ProcessingState.Get()) {
 		var ret string
 		return ret
 	}
@@ -310,7 +310,7 @@ func (o *Identity) UnsetProcessingState() {
 
 // GetIdentityStatus returns the IdentityStatus field value if set, zero value otherwise.
 func (o *Identity) GetIdentityStatus() string {
-	if o == nil || isNil(o.IdentityStatus) {
+	if o == nil || IsNil(o.IdentityStatus) {
 		var ret string
 		return ret
 	}
@@ -320,7 +320,7 @@ func (o *Identity) GetIdentityStatus() string {
 // GetIdentityStatusOk returns a tuple with the IdentityStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Identity) GetIdentityStatusOk() (*string, bool) {
-	if o == nil || isNil(o.IdentityStatus) {
+	if o == nil || IsNil(o.IdentityStatus) {
 		return nil, false
 	}
 	return o.IdentityStatus, true
@@ -328,7 +328,7 @@ func (o *Identity) GetIdentityStatusOk() (*string, bool) {
 
 // HasIdentityStatus returns a boolean if a field has been set.
 func (o *Identity) HasIdentityStatus() bool {
-	if o != nil && !isNil(o.IdentityStatus) {
+	if o != nil && !IsNil(o.IdentityStatus) {
 		return true
 	}
 
@@ -342,7 +342,7 @@ func (o *Identity) SetIdentityStatus(v string) {
 
 // GetManagerRef returns the ManagerRef field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Identity) GetManagerRef() IdentityDtoManagerRef {
-	if o == nil || isNil(o.ManagerRef.Get()) {
+	if o == nil || IsNil(o.ManagerRef.Get()) {
 		var ret IdentityDtoManagerRef
 		return ret
 	}
@@ -384,7 +384,7 @@ func (o *Identity) UnsetManagerRef() {
 
 // GetIsManager returns the IsManager field value if set, zero value otherwise.
 func (o *Identity) GetIsManager() bool {
-	if o == nil || isNil(o.IsManager) {
+	if o == nil || IsNil(o.IsManager) {
 		var ret bool
 		return ret
 	}
@@ -394,7 +394,7 @@ func (o *Identity) GetIsManager() bool {
 // GetIsManagerOk returns a tuple with the IsManager field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Identity) GetIsManagerOk() (*bool, bool) {
-	if o == nil || isNil(o.IsManager) {
+	if o == nil || IsNil(o.IsManager) {
 		return nil, false
 	}
 	return o.IsManager, true
@@ -402,7 +402,7 @@ func (o *Identity) GetIsManagerOk() (*bool, bool) {
 
 // HasIsManager returns a boolean if a field has been set.
 func (o *Identity) HasIsManager() bool {
-	if o != nil && !isNil(o.IsManager) {
+	if o != nil && !IsNil(o.IsManager) {
 		return true
 	}
 
@@ -416,7 +416,7 @@ func (o *Identity) SetIsManager(v bool) {
 
 // GetLastRefresh returns the LastRefresh field value if set, zero value otherwise.
 func (o *Identity) GetLastRefresh() time.Time {
-	if o == nil || isNil(o.LastRefresh) {
+	if o == nil || IsNil(o.LastRefresh) {
 		var ret time.Time
 		return ret
 	}
@@ -426,7 +426,7 @@ func (o *Identity) GetLastRefresh() time.Time {
 // GetLastRefreshOk returns a tuple with the LastRefresh field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Identity) GetLastRefreshOk() (*time.Time, bool) {
-	if o == nil || isNil(o.LastRefresh) {
+	if o == nil || IsNil(o.LastRefresh) {
 		return nil, false
 	}
 	return o.LastRefresh, true
@@ -434,7 +434,7 @@ func (o *Identity) GetLastRefreshOk() (*time.Time, bool) {
 
 // HasLastRefresh returns a boolean if a field has been set.
 func (o *Identity) HasLastRefresh() bool {
-	if o != nil && !isNil(o.LastRefresh) {
+	if o != nil && !IsNil(o.LastRefresh) {
 		return true
 	}
 
@@ -448,7 +448,7 @@ func (o *Identity) SetLastRefresh(v time.Time) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *Identity) GetAttributes() map[string]interface{} {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -458,7 +458,7 @@ func (o *Identity) GetAttributes() map[string]interface{} {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Identity) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
@@ -466,7 +466,7 @@ func (o *Identity) GetAttributesOk() (map[string]interface{}, bool) {
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *Identity) HasAttributes() bool {
-	if o != nil && !isNil(o.Attributes) {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -480,7 +480,7 @@ func (o *Identity) SetAttributes(v map[string]interface{}) {
 
 // GetLifecycleState returns the LifecycleState field value if set, zero value otherwise.
 func (o *Identity) GetLifecycleState() IdentityDtoLifecycleState {
-	if o == nil || isNil(o.LifecycleState) {
+	if o == nil || IsNil(o.LifecycleState) {
 		var ret IdentityDtoLifecycleState
 		return ret
 	}
@@ -490,7 +490,7 @@ func (o *Identity) GetLifecycleState() IdentityDtoLifecycleState {
 // GetLifecycleStateOk returns a tuple with the LifecycleState field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Identity) GetLifecycleStateOk() (*IdentityDtoLifecycleState, bool) {
-	if o == nil || isNil(o.LifecycleState) {
+	if o == nil || IsNil(o.LifecycleState) {
 		return nil, false
 	}
 	return o.LifecycleState, true
@@ -498,7 +498,7 @@ func (o *Identity) GetLifecycleStateOk() (*IdentityDtoLifecycleState, bool) {
 
 // HasLifecycleState returns a boolean if a field has been set.
 func (o *Identity) HasLifecycleState() bool {
-	if o != nil && !isNil(o.LifecycleState) {
+	if o != nil && !IsNil(o.LifecycleState) {
 		return true
 	}
 
@@ -520,11 +520,17 @@ func (o Identity) MarshalJSON() ([]byte, error) {
 
 func (o Identity) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["name"] = o.Name
-	// skip: created is readOnly
-	// skip: modified is readOnly
-	if !isNil(o.Alias) {
+	if !IsNil(o.Created) {
+		toSerialize["created"] = o.Created
+	}
+	if !IsNil(o.Modified) {
+		toSerialize["modified"] = o.Modified
+	}
+	if !IsNil(o.Alias) {
 		toSerialize["alias"] = o.Alias
 	}
 	if o.EmailAddress.IsSet() {
@@ -533,22 +539,22 @@ func (o Identity) ToMap() (map[string]interface{}, error) {
 	if o.ProcessingState.IsSet() {
 		toSerialize["processingState"] = o.ProcessingState.Get()
 	}
-	if !isNil(o.IdentityStatus) {
+	if !IsNil(o.IdentityStatus) {
 		toSerialize["identityStatus"] = o.IdentityStatus
 	}
 	if o.ManagerRef.IsSet() {
 		toSerialize["managerRef"] = o.ManagerRef.Get()
 	}
-	if !isNil(o.IsManager) {
+	if !IsNil(o.IsManager) {
 		toSerialize["isManager"] = o.IsManager
 	}
-	if !isNil(o.LastRefresh) {
+	if !IsNil(o.LastRefresh) {
 		toSerialize["lastRefresh"] = o.LastRefresh
 	}
-	if !isNil(o.Attributes) {
+	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
-	if !isNil(o.LifecycleState) {
+	if !IsNil(o.LifecycleState) {
 		toSerialize["lifecycleState"] = o.LifecycleState
 	}
 
@@ -559,8 +565,8 @@ func (o Identity) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Identity) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *Identity) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -569,7 +575,7 @@ func (o *Identity) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -583,13 +589,17 @@ func (o *Identity) UnmarshalJSON(bytes []byte) (err error) {
 
 	varIdentity := _Identity{}
 
-	if err = json.Unmarshal(bytes, &varIdentity); err == nil {
+	err = json.Unmarshal(data, &varIdentity)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Identity(varIdentity)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "created")

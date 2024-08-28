@@ -19,7 +19,7 @@ import (
 
 func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test SourcesAPIService CreateProvisioningPolicy", func(t *testing.T) {
@@ -28,7 +28,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		var sourceId string
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.CreateProvisioningPolicy(context.Background(), sourceId).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.CreateProvisioningPolicy(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.CreateSource(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.CreateSource(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -54,7 +54,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		var sourceId string
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.CreateSourceSchema(context.Background(), sourceId).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.CreateSourceSchema(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -68,7 +68,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.DeleteAccountsAsync(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.DeleteAccountsAsync(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -82,7 +82,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_V2024.SourcesAPI.DeleteNativeChangeDetectionConfig(context.Background(), id).Execute()
+		httpRes, err := apiClient.SourcesAPI.DeleteNativeChangeDetectionConfig(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -96,7 +96,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 		var sourceId string
 		var usageType UsageType
 
-		httpRes, err := apiClient.API_V2024.SourcesAPI.DeleteProvisioningPolicy(context.Background(), sourceId, usageType).Execute()
+		httpRes, err := apiClient.SourcesAPI.DeleteProvisioningPolicy(context.Background(), sourceId, usageType).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -109,7 +109,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.DeleteSource(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.DeleteSource(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -124,7 +124,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 		var sourceId string
 		var schemaId string
 
-		httpRes, err := apiClient.API_V2024.SourcesAPI.DeleteSourceSchema(context.Background(), sourceId, schemaId).Execute()
+		httpRes, err := apiClient.SourcesAPI.DeleteSourceSchema(context.Background(), sourceId, schemaId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -137,7 +137,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_V2024.SourcesAPI.GetAccountsSchema(context.Background(), id).Execute()
+		httpRes, err := apiClient.SourcesAPI.GetAccountsSchema(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -150,7 +150,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_V2024.SourcesAPI.GetEntitlementsSchema(context.Background(), id).Execute()
+		httpRes, err := apiClient.SourcesAPI.GetEntitlementsSchema(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -163,7 +163,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.GetNativeChangeDetectionConfig(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.GetNativeChangeDetectionConfig(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -178,7 +178,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 		var sourceId string
 		var usageType UsageType
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.GetProvisioningPolicy(context.Background(), sourceId, usageType).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.GetProvisioningPolicy(context.Background(), sourceId, usageType).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -192,7 +192,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.GetSource(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.GetSource(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -206,7 +206,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.GetSourceAttrSyncConfig(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.GetSourceAttrSyncConfig(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -220,7 +220,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.GetSourceConfig(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.GetSourceConfig(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -232,7 +232,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.GetSourceEntitlementRequestConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.GetSourceEntitlementRequestConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -246,7 +246,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		var sourceId string
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.GetSourceHealth(context.Background(), sourceId).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.GetSourceHealth(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -261,7 +261,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 		var sourceId string
 		var schemaId string
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.GetSourceSchema(context.Background(), sourceId, schemaId).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.GetSourceSchema(context.Background(), sourceId, schemaId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -275,7 +275,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		var sourceId string
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.GetSourceSchemas(context.Background(), sourceId).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.GetSourceSchemas(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -289,7 +289,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.ImportAccounts(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.ImportAccounts(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -303,7 +303,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.ImportAccountsSchema(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.ImportAccountsSchema(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -317,7 +317,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		var sourceId string
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.ImportConnectorFile(context.Background(), sourceId).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.ImportConnectorFile(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -331,7 +331,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.ImportEntitlementsSchema(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.ImportEntitlementsSchema(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -345,7 +345,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.ImportUncorrelatedAccounts(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.ImportUncorrelatedAccounts(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -359,7 +359,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		var sourceId string
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.ListProvisioningPolicies(context.Background(), sourceId).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.ListProvisioningPolicies(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -371,7 +371,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.ListSources(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.ListSources(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -385,7 +385,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		var sourceId string
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.PeekResourceObjects(context.Background(), sourceId).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.PeekResourceObjects(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -399,7 +399,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		var sourceId string
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.PingCluster(context.Background(), sourceId).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.PingCluster(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -413,7 +413,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.PutNativeChangeDetectionConfig(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.PutNativeChangeDetectionConfig(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -428,7 +428,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 		var sourceId string
 		var usageType UsageType
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.PutProvisioningPolicy(context.Background(), sourceId, usageType).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.PutProvisioningPolicy(context.Background(), sourceId, usageType).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -442,7 +442,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.PutSource(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.PutSource(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -456,7 +456,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.PutSourceAttrSyncConfig(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.PutSourceAttrSyncConfig(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -471,7 +471,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 		var sourceId string
 		var schemaId string
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.PutSourceSchema(context.Background(), sourceId, schemaId).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.PutSourceSchema(context.Background(), sourceId, schemaId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -485,7 +485,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.SyncAttributesForSource(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.SyncAttributesForSource(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -499,7 +499,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		var sourceId string
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.TestSourceConfiguration(context.Background(), sourceId).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.TestSourceConfiguration(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -513,7 +513,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		var sourceId string
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.TestSourceConnection(context.Background(), sourceId).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.TestSourceConnection(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -527,7 +527,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		var sourceId string
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.UpdateProvisioningPoliciesInBulk(context.Background(), sourceId).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.UpdateProvisioningPoliciesInBulk(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -542,7 +542,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 		var sourceId string
 		var usageType UsageType
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.UpdateProvisioningPolicy(context.Background(), sourceId, usageType).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.UpdateProvisioningPolicy(context.Background(), sourceId, usageType).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -556,7 +556,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.UpdateSource(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.UpdateSource(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -568,7 +568,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.UpdateSourceEntitlementRequestConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.UpdateSourceEntitlementRequestConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -583,7 +583,7 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 		var sourceId string
 		var schemaId string
 
-		resp, httpRes, err := apiClient.API_V2024.SourcesAPI.UpdateSourceSchema(context.Background(), sourceId, schemaId).Execute()
+		resp, httpRes, err := apiClient.SourcesAPI.UpdateSourceSchema(context.Background(), sourceId, schemaId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -144,8 +144,8 @@ func (o SpConfigMessage1) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SpConfigMessage1) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *SpConfigMessage1) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -156,7 +156,7 @@ func (o *SpConfigMessage1) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -170,13 +170,17 @@ func (o *SpConfigMessage1) UnmarshalJSON(bytes []byte) (err error) {
 
 	varSpConfigMessage1 := _SpConfigMessage1{}
 
-	if err = json.Unmarshal(bytes, &varSpConfigMessage1); err == nil {
+	err = json.Unmarshal(data, &varSpConfigMessage1)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SpConfigMessage1(varSpConfigMessage1)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "key")
 		delete(additionalProperties, "text")
 		delete(additionalProperties, "details")

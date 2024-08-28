@@ -52,7 +52,7 @@ func NewContextAttributeDtoWithDefaults() *ContextAttributeDto {
 
 // GetAttribute returns the Attribute field value if set, zero value otherwise.
 func (o *ContextAttributeDto) GetAttribute() string {
-	if o == nil || isNil(o.Attribute) {
+	if o == nil || IsNil(o.Attribute) {
 		var ret string
 		return ret
 	}
@@ -62,7 +62,7 @@ func (o *ContextAttributeDto) GetAttribute() string {
 // GetAttributeOk returns a tuple with the Attribute field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContextAttributeDto) GetAttributeOk() (*string, bool) {
-	if o == nil || isNil(o.Attribute) {
+	if o == nil || IsNil(o.Attribute) {
 		return nil, false
 	}
 	return o.Attribute, true
@@ -70,7 +70,7 @@ func (o *ContextAttributeDto) GetAttributeOk() (*string, bool) {
 
 // HasAttribute returns a boolean if a field has been set.
 func (o *ContextAttributeDto) HasAttribute() bool {
-	if o != nil && !isNil(o.Attribute) {
+	if o != nil && !IsNil(o.Attribute) {
 		return true
 	}
 
@@ -84,7 +84,7 @@ func (o *ContextAttributeDto) SetAttribute(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *ContextAttributeDto) GetValue() ContextAttributeDtoValue {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret ContextAttributeDtoValue
 		return ret
 	}
@@ -94,7 +94,7 @@ func (o *ContextAttributeDto) GetValue() ContextAttributeDtoValue {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContextAttributeDto) GetValueOk() (*ContextAttributeDtoValue, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -102,7 +102,7 @@ func (o *ContextAttributeDto) GetValueOk() (*ContextAttributeDtoValue, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *ContextAttributeDto) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -116,7 +116,7 @@ func (o *ContextAttributeDto) SetValue(v ContextAttributeDtoValue) {
 
 // GetDerived returns the Derived field value if set, zero value otherwise.
 func (o *ContextAttributeDto) GetDerived() bool {
-	if o == nil || isNil(o.Derived) {
+	if o == nil || IsNil(o.Derived) {
 		var ret bool
 		return ret
 	}
@@ -126,7 +126,7 @@ func (o *ContextAttributeDto) GetDerived() bool {
 // GetDerivedOk returns a tuple with the Derived field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContextAttributeDto) GetDerivedOk() (*bool, bool) {
-	if o == nil || isNil(o.Derived) {
+	if o == nil || IsNil(o.Derived) {
 		return nil, false
 	}
 	return o.Derived, true
@@ -134,7 +134,7 @@ func (o *ContextAttributeDto) GetDerivedOk() (*bool, bool) {
 
 // HasDerived returns a boolean if a field has been set.
 func (o *ContextAttributeDto) HasDerived() bool {
-	if o != nil && !isNil(o.Derived) {
+	if o != nil && !IsNil(o.Derived) {
 		return true
 	}
 
@@ -156,13 +156,13 @@ func (o ContextAttributeDto) MarshalJSON() ([]byte, error) {
 
 func (o ContextAttributeDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Attribute) {
+	if !IsNil(o.Attribute) {
 		toSerialize["attribute"] = o.Attribute
 	}
-	if !isNil(o.Value) {
+	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
-	if !isNil(o.Derived) {
+	if !IsNil(o.Derived) {
 		toSerialize["derived"] = o.Derived
 	}
 
@@ -173,16 +173,20 @@ func (o ContextAttributeDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ContextAttributeDto) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ContextAttributeDto) UnmarshalJSON(data []byte) (err error) {
 	varContextAttributeDto := _ContextAttributeDto{}
 
-	if err = json.Unmarshal(bytes, &varContextAttributeDto); err == nil {
+	err = json.Unmarshal(data, &varContextAttributeDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ContextAttributeDto(varContextAttributeDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "attribute")
 		delete(additionalProperties, "value")
 		delete(additionalProperties, "derived")

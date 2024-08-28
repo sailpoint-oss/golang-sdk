@@ -19,7 +19,7 @@ import (
 
 func Test_api_v2024_WorkflowsAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test WorkflowsAPIService CancelWorkflowExecution", func(t *testing.T) {
@@ -28,7 +28,7 @@ func Test_api_v2024_WorkflowsAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_V2024.WorkflowsAPI.CancelWorkflowExecution(context.Background(), id).Execute()
+		httpRes, err := apiClient.WorkflowsAPI.CancelWorkflowExecution(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -41,7 +41,7 @@ func Test_api_v2024_WorkflowsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.WorkflowsAPI.CreateExternalExecuteWorkflow(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.WorkflowsAPI.CreateExternalExecuteWorkflow(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -53,7 +53,7 @@ func Test_api_v2024_WorkflowsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.WorkflowsAPI.CreateWorkflow(context.Background()).Execute()
+		resp, httpRes, err := apiClient.WorkflowsAPI.CreateWorkflow(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -67,7 +67,7 @@ func Test_api_v2024_WorkflowsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.WorkflowsAPI.CreateWorkflowExternalTrigger(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.WorkflowsAPI.CreateWorkflowExternalTrigger(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -81,7 +81,7 @@ func Test_api_v2024_WorkflowsAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_V2024.WorkflowsAPI.DeleteWorkflow(context.Background(), id).Execute()
+		httpRes, err := apiClient.WorkflowsAPI.DeleteWorkflow(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -94,7 +94,7 @@ func Test_api_v2024_WorkflowsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.WorkflowsAPI.GetWorkflow(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.WorkflowsAPI.GetWorkflow(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -108,7 +108,7 @@ func Test_api_v2024_WorkflowsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.WorkflowsAPI.GetWorkflowExecution(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.WorkflowsAPI.GetWorkflowExecution(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -122,7 +122,7 @@ func Test_api_v2024_WorkflowsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.WorkflowsAPI.GetWorkflowExecutionHistory(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.WorkflowsAPI.GetWorkflowExecutionHistory(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -136,7 +136,7 @@ func Test_api_v2024_WorkflowsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.WorkflowsAPI.GetWorkflowExecutions(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.WorkflowsAPI.GetWorkflowExecutions(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -148,7 +148,7 @@ func Test_api_v2024_WorkflowsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.WorkflowsAPI.ListCompleteWorkflowLibrary(context.Background()).Execute()
+		resp, httpRes, err := apiClient.WorkflowsAPI.ListCompleteWorkflowLibrary(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -160,7 +160,7 @@ func Test_api_v2024_WorkflowsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.WorkflowsAPI.ListWorkflowLibraryActions(context.Background()).Execute()
+		resp, httpRes, err := apiClient.WorkflowsAPI.ListWorkflowLibraryActions(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -172,7 +172,7 @@ func Test_api_v2024_WorkflowsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.WorkflowsAPI.ListWorkflowLibraryOperators(context.Background()).Execute()
+		resp, httpRes, err := apiClient.WorkflowsAPI.ListWorkflowLibraryOperators(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -184,7 +184,7 @@ func Test_api_v2024_WorkflowsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.WorkflowsAPI.ListWorkflowLibraryTriggers(context.Background()).Execute()
+		resp, httpRes, err := apiClient.WorkflowsAPI.ListWorkflowLibraryTriggers(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -196,7 +196,7 @@ func Test_api_v2024_WorkflowsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.WorkflowsAPI.ListWorkflows(context.Background()).Execute()
+		resp, httpRes, err := apiClient.WorkflowsAPI.ListWorkflows(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -210,7 +210,7 @@ func Test_api_v2024_WorkflowsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.WorkflowsAPI.PatchWorkflow(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.WorkflowsAPI.PatchWorkflow(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -224,7 +224,7 @@ func Test_api_v2024_WorkflowsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.WorkflowsAPI.PutWorkflow(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.WorkflowsAPI.PutWorkflow(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -238,7 +238,7 @@ func Test_api_v2024_WorkflowsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.WorkflowsAPI.TestExternalExecuteWorkflow(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.WorkflowsAPI.TestExternalExecuteWorkflow(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -252,7 +252,7 @@ func Test_api_v2024_WorkflowsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.WorkflowsAPI.TestWorkflow(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.WorkflowsAPI.TestWorkflow(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

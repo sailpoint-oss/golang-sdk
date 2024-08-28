@@ -49,7 +49,7 @@ func NewCompleteCampaignOptionsWithDefaults() *CompleteCampaignOptions {
 
 // GetAutoCompleteAction returns the AutoCompleteAction field value if set, zero value otherwise.
 func (o *CompleteCampaignOptions) GetAutoCompleteAction() string {
-	if o == nil || isNil(o.AutoCompleteAction) {
+	if o == nil || IsNil(o.AutoCompleteAction) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *CompleteCampaignOptions) GetAutoCompleteAction() string {
 // GetAutoCompleteActionOk returns a tuple with the AutoCompleteAction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CompleteCampaignOptions) GetAutoCompleteActionOk() (*string, bool) {
-	if o == nil || isNil(o.AutoCompleteAction) {
+	if o == nil || IsNil(o.AutoCompleteAction) {
 		return nil, false
 	}
 	return o.AutoCompleteAction, true
@@ -67,7 +67,7 @@ func (o *CompleteCampaignOptions) GetAutoCompleteActionOk() (*string, bool) {
 
 // HasAutoCompleteAction returns a boolean if a field has been set.
 func (o *CompleteCampaignOptions) HasAutoCompleteAction() bool {
-	if o != nil && !isNil(o.AutoCompleteAction) {
+	if o != nil && !IsNil(o.AutoCompleteAction) {
 		return true
 	}
 
@@ -89,7 +89,7 @@ func (o CompleteCampaignOptions) MarshalJSON() ([]byte, error) {
 
 func (o CompleteCampaignOptions) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AutoCompleteAction) {
+	if !IsNil(o.AutoCompleteAction) {
 		toSerialize["autoCompleteAction"] = o.AutoCompleteAction
 	}
 
@@ -100,16 +100,20 @@ func (o CompleteCampaignOptions) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CompleteCampaignOptions) UnmarshalJSON(bytes []byte) (err error) {
+func (o *CompleteCampaignOptions) UnmarshalJSON(data []byte) (err error) {
 	varCompleteCampaignOptions := _CompleteCampaignOptions{}
 
-	if err = json.Unmarshal(bytes, &varCompleteCampaignOptions); err == nil {
+	err = json.Unmarshal(data, &varCompleteCampaignOptions)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CompleteCampaignOptions(varCompleteCampaignOptions)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "autoCompleteAction")
 		o.AdditionalProperties = additionalProperties
 	}

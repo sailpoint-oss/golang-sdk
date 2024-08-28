@@ -49,7 +49,7 @@ func NewAccountUnlockRequestWithDefaults() *AccountUnlockRequest {
 
 // GetExternalVerificationId returns the ExternalVerificationId field value if set, zero value otherwise.
 func (o *AccountUnlockRequest) GetExternalVerificationId() string {
-	if o == nil || isNil(o.ExternalVerificationId) {
+	if o == nil || IsNil(o.ExternalVerificationId) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *AccountUnlockRequest) GetExternalVerificationId() string {
 // GetExternalVerificationIdOk returns a tuple with the ExternalVerificationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountUnlockRequest) GetExternalVerificationIdOk() (*string, bool) {
-	if o == nil || isNil(o.ExternalVerificationId) {
+	if o == nil || IsNil(o.ExternalVerificationId) {
 		return nil, false
 	}
 	return o.ExternalVerificationId, true
@@ -67,7 +67,7 @@ func (o *AccountUnlockRequest) GetExternalVerificationIdOk() (*string, bool) {
 
 // HasExternalVerificationId returns a boolean if a field has been set.
 func (o *AccountUnlockRequest) HasExternalVerificationId() bool {
-	if o != nil && !isNil(o.ExternalVerificationId) {
+	if o != nil && !IsNil(o.ExternalVerificationId) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *AccountUnlockRequest) SetExternalVerificationId(v string) {
 
 // GetUnlockIDNAccount returns the UnlockIDNAccount field value if set, zero value otherwise.
 func (o *AccountUnlockRequest) GetUnlockIDNAccount() bool {
-	if o == nil || isNil(o.UnlockIDNAccount) {
+	if o == nil || IsNil(o.UnlockIDNAccount) {
 		var ret bool
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *AccountUnlockRequest) GetUnlockIDNAccount() bool {
 // GetUnlockIDNAccountOk returns a tuple with the UnlockIDNAccount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountUnlockRequest) GetUnlockIDNAccountOk() (*bool, bool) {
-	if o == nil || isNil(o.UnlockIDNAccount) {
+	if o == nil || IsNil(o.UnlockIDNAccount) {
 		return nil, false
 	}
 	return o.UnlockIDNAccount, true
@@ -99,7 +99,7 @@ func (o *AccountUnlockRequest) GetUnlockIDNAccountOk() (*bool, bool) {
 
 // HasUnlockIDNAccount returns a boolean if a field has been set.
 func (o *AccountUnlockRequest) HasUnlockIDNAccount() bool {
-	if o != nil && !isNil(o.UnlockIDNAccount) {
+	if o != nil && !IsNil(o.UnlockIDNAccount) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *AccountUnlockRequest) SetUnlockIDNAccount(v bool) {
 
 // GetForceProvisioning returns the ForceProvisioning field value if set, zero value otherwise.
 func (o *AccountUnlockRequest) GetForceProvisioning() bool {
-	if o == nil || isNil(o.ForceProvisioning) {
+	if o == nil || IsNil(o.ForceProvisioning) {
 		var ret bool
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *AccountUnlockRequest) GetForceProvisioning() bool {
 // GetForceProvisioningOk returns a tuple with the ForceProvisioning field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountUnlockRequest) GetForceProvisioningOk() (*bool, bool) {
-	if o == nil || isNil(o.ForceProvisioning) {
+	if o == nil || IsNil(o.ForceProvisioning) {
 		return nil, false
 	}
 	return o.ForceProvisioning, true
@@ -131,7 +131,7 @@ func (o *AccountUnlockRequest) GetForceProvisioningOk() (*bool, bool) {
 
 // HasForceProvisioning returns a boolean if a field has been set.
 func (o *AccountUnlockRequest) HasForceProvisioning() bool {
-	if o != nil && !isNil(o.ForceProvisioning) {
+	if o != nil && !IsNil(o.ForceProvisioning) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o AccountUnlockRequest) MarshalJSON() ([]byte, error) {
 
 func (o AccountUnlockRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ExternalVerificationId) {
+	if !IsNil(o.ExternalVerificationId) {
 		toSerialize["externalVerificationId"] = o.ExternalVerificationId
 	}
-	if !isNil(o.UnlockIDNAccount) {
+	if !IsNil(o.UnlockIDNAccount) {
 		toSerialize["unlockIDNAccount"] = o.UnlockIDNAccount
 	}
-	if !isNil(o.ForceProvisioning) {
+	if !IsNil(o.ForceProvisioning) {
 		toSerialize["forceProvisioning"] = o.ForceProvisioning
 	}
 
@@ -170,16 +170,20 @@ func (o AccountUnlockRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccountUnlockRequest) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccountUnlockRequest) UnmarshalJSON(data []byte) (err error) {
 	varAccountUnlockRequest := _AccountUnlockRequest{}
 
-	if err = json.Unmarshal(bytes, &varAccountUnlockRequest); err == nil {
+	err = json.Unmarshal(data, &varAccountUnlockRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccountUnlockRequest(varAccountUnlockRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "externalVerificationId")
 		delete(additionalProperties, "unlockIDNAccount")
 		delete(additionalProperties, "forceProvisioning")

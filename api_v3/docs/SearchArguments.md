@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ScheduleId** | Pointer to **string** | The ID of the scheduled search that triggered the saved search execution.  | [optional] 
-**Owner** | Pointer to [**TypedReference**](TypedReference.md) |  | [optional] 
+**Owner** | Pointer to [**TypedReference**](TypedReference.md) | The owner of the scheduled search being tested.  | [optional] 
 **Recipients** | Pointer to [**[]TypedReference**](TypedReference.md) | The email recipients of the scheduled search being tested.  | [optional] 
 
 ## Methods

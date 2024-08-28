@@ -49,7 +49,7 @@ func NewSearchAttributeConfigWithDefaults() *SearchAttributeConfig {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *SearchAttributeConfig) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *SearchAttributeConfig) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SearchAttributeConfig) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -67,7 +67,7 @@ func (o *SearchAttributeConfig) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *SearchAttributeConfig) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *SearchAttributeConfig) SetName(v string) {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *SearchAttributeConfig) GetDisplayName() string {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *SearchAttributeConfig) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SearchAttributeConfig) GetDisplayNameOk() (*string, bool) {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -99,7 +99,7 @@ func (o *SearchAttributeConfig) GetDisplayNameOk() (*string, bool) {
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *SearchAttributeConfig) HasDisplayName() bool {
-	if o != nil && !isNil(o.DisplayName) {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *SearchAttributeConfig) SetDisplayName(v string) {
 
 // GetApplicationAttributes returns the ApplicationAttributes field value if set, zero value otherwise.
 func (o *SearchAttributeConfig) GetApplicationAttributes() map[string]interface{} {
-	if o == nil || isNil(o.ApplicationAttributes) {
+	if o == nil || IsNil(o.ApplicationAttributes) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *SearchAttributeConfig) GetApplicationAttributes() map[string]interface{
 // GetApplicationAttributesOk returns a tuple with the ApplicationAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SearchAttributeConfig) GetApplicationAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.ApplicationAttributes) {
+	if o == nil || IsNil(o.ApplicationAttributes) {
 		return map[string]interface{}{}, false
 	}
 	return o.ApplicationAttributes, true
@@ -131,7 +131,7 @@ func (o *SearchAttributeConfig) GetApplicationAttributesOk() (map[string]interfa
 
 // HasApplicationAttributes returns a boolean if a field has been set.
 func (o *SearchAttributeConfig) HasApplicationAttributes() bool {
-	if o != nil && !isNil(o.ApplicationAttributes) {
+	if o != nil && !IsNil(o.ApplicationAttributes) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o SearchAttributeConfig) MarshalJSON() ([]byte, error) {
 
 func (o SearchAttributeConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.DisplayName) {
+	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
-	if !isNil(o.ApplicationAttributes) {
+	if !IsNil(o.ApplicationAttributes) {
 		toSerialize["applicationAttributes"] = o.ApplicationAttributes
 	}
 
@@ -170,16 +170,20 @@ func (o SearchAttributeConfig) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SearchAttributeConfig) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SearchAttributeConfig) UnmarshalJSON(data []byte) (err error) {
 	varSearchAttributeConfig := _SearchAttributeConfig{}
 
-	if err = json.Unmarshal(bytes, &varSearchAttributeConfig); err == nil {
+	err = json.Unmarshal(data, &varSearchAttributeConfig)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SearchAttributeConfig(varSearchAttributeConfig)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "displayName")
 		delete(additionalProperties, "applicationAttributes")

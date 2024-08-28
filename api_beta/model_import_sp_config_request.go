@@ -73,7 +73,7 @@ func (o *ImportSpConfigRequest) SetData(v *os.File) {
 
 // GetOptions returns the Options field value if set, zero value otherwise.
 func (o *ImportSpConfigRequest) GetOptions() ImportOptions {
-	if o == nil || isNil(o.Options) {
+	if o == nil || IsNil(o.Options) {
 		var ret ImportOptions
 		return ret
 	}
@@ -83,7 +83,7 @@ func (o *ImportSpConfigRequest) GetOptions() ImportOptions {
 // GetOptionsOk returns a tuple with the Options field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImportSpConfigRequest) GetOptionsOk() (*ImportOptions, bool) {
-	if o == nil || isNil(o.Options) {
+	if o == nil || IsNil(o.Options) {
 		return nil, false
 	}
 	return o.Options, true
@@ -91,7 +91,7 @@ func (o *ImportSpConfigRequest) GetOptionsOk() (*ImportOptions, bool) {
 
 // HasOptions returns a boolean if a field has been set.
 func (o *ImportSpConfigRequest) HasOptions() bool {
-	if o != nil && !isNil(o.Options) {
+	if o != nil && !IsNil(o.Options) {
 		return true
 	}
 
@@ -114,7 +114,7 @@ func (o ImportSpConfigRequest) MarshalJSON() ([]byte, error) {
 func (o ImportSpConfigRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["data"] = o.Data
-	if !isNil(o.Options) {
+	if !IsNil(o.Options) {
 		toSerialize["options"] = o.Options
 	}
 
@@ -125,8 +125,8 @@ func (o ImportSpConfigRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ImportSpConfigRequest) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *ImportSpConfigRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -135,7 +135,7 @@ func (o *ImportSpConfigRequest) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -149,13 +149,17 @@ func (o *ImportSpConfigRequest) UnmarshalJSON(bytes []byte) (err error) {
 
 	varImportSpConfigRequest := _ImportSpConfigRequest{}
 
-	if err = json.Unmarshal(bytes, &varImportSpConfigRequest); err == nil {
+	err = json.Unmarshal(data, &varImportSpConfigRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ImportSpConfigRequest(varImportSpConfigRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "data")
 		delete(additionalProperties, "options")
 		o.AdditionalProperties = additionalProperties

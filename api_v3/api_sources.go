@@ -269,7 +269,7 @@ func (a *SourcesAPIService) CreateSourceExecute(r ApiCreateSourceRequest) (*Sour
 	}
 
 	if r.provisionAsCsv != nil {
-		parameterAddToQuery(localVarQueryParams, "provisionAsCsv", r.provisionAsCsv, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "provisionAsCsv", r.provisionAsCsv, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1256,7 +1256,7 @@ func (a *SourcesAPIService) GetEntitlementsSchemaExecute(r ApiGetEntitlementsSch
 	localVarFormParams := url.Values{}
 
 	if r.schemaName != nil {
-		parameterAddToQuery(localVarQueryParams, "schemaName", r.schemaName, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "schemaName", r.schemaName, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2109,7 +2109,7 @@ func (a *SourcesAPIService) GetSourceSchemasExecute(r ApiGetSourceSchemasRequest
 	localVarFormParams := url.Values{}
 
 	if r.includeTypes != nil {
-		parameterAddToQuery(localVarQueryParams, "include-types", r.includeTypes, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include-types", r.includeTypes, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2662,7 +2662,7 @@ func (a *SourcesAPIService) ImportEntitlementsSchemaExecute(r ApiImportEntitleme
 	localVarFormParams := url.Values{}
 
 	if r.schemaName != nil {
-		parameterAddToQuery(localVarQueryParams, "schemaName", r.schemaName, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "schemaName", r.schemaName, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}
@@ -3045,31 +3045,31 @@ func (a *SourcesAPIService) ListSourcesExecute(r ApiListSourcesRequest) ([]Sourc
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
 	} else {
 		var defaultValue int32 = 250
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
-		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
 	} else {
 		var defaultValue int32 = 0
 		r.offset = &defaultValue
 	}
 	if r.count != nil {
-		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "", "")
 	} else {
 		var defaultValue bool = false
 		r.count = &defaultValue
 	}
 	if r.filters != nil {
-		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "", "")
 	}
 	if r.sorters != nil {
-		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "", "")
 	}
 	if r.forSubadmin != nil {
-		parameterAddToQuery(localVarQueryParams, "for-subadmin", r.forSubadmin, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "for-subadmin", r.forSubadmin, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

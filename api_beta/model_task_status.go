@@ -241,7 +241,7 @@ func (o *TaskStatus) SetLauncher(v string) {
 
 // GetTarget returns the Target field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaskStatus) GetTarget() Target {
-	if o == nil || isNil(o.Target.Get()) {
+	if o == nil || IsNil(o.Target.Get()) {
 		var ret Target
 		return ret
 	}
@@ -531,7 +531,7 @@ func (o *TaskStatus) SetPercentComplete(v int32) {
 
 // GetTaskDefinitionSummary returns the TaskDefinitionSummary field value if set, zero value otherwise.
 func (o *TaskStatus) GetTaskDefinitionSummary() TaskDefinitionSummary {
-	if o == nil || isNil(o.TaskDefinitionSummary) {
+	if o == nil || IsNil(o.TaskDefinitionSummary) {
 		var ret TaskDefinitionSummary
 		return ret
 	}
@@ -541,7 +541,7 @@ func (o *TaskStatus) GetTaskDefinitionSummary() TaskDefinitionSummary {
 // GetTaskDefinitionSummaryOk returns a tuple with the TaskDefinitionSummary field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TaskStatus) GetTaskDefinitionSummaryOk() (*TaskDefinitionSummary, bool) {
-	if o == nil || isNil(o.TaskDefinitionSummary) {
+	if o == nil || IsNil(o.TaskDefinitionSummary) {
 		return nil, false
 	}
 	return o.TaskDefinitionSummary, true
@@ -549,7 +549,7 @@ func (o *TaskStatus) GetTaskDefinitionSummaryOk() (*TaskDefinitionSummary, bool)
 
 // HasTaskDefinitionSummary returns a boolean if a field has been set.
 func (o *TaskStatus) HasTaskDefinitionSummary() bool {
-	if o != nil && !isNil(o.TaskDefinitionSummary) {
+	if o != nil && !IsNil(o.TaskDefinitionSummary) {
 		return true
 	}
 
@@ -590,7 +590,7 @@ func (o TaskStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize["attributes"] = o.Attributes
 	toSerialize["progress"] = o.Progress.Get()
 	toSerialize["percentComplete"] = o.PercentComplete
-	if !isNil(o.TaskDefinitionSummary) {
+	if !IsNil(o.TaskDefinitionSummary) {
 		toSerialize["taskDefinitionSummary"] = o.TaskDefinitionSummary
 	}
 
@@ -601,8 +601,8 @@ func (o TaskStatus) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *TaskStatus) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *TaskStatus) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -626,7 +626,7 @@ func (o *TaskStatus) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -640,13 +640,17 @@ func (o *TaskStatus) UnmarshalJSON(bytes []byte) (err error) {
 
 	varTaskStatus := _TaskStatus{}
 
-	if err = json.Unmarshal(bytes, &varTaskStatus); err == nil {
+	err = json.Unmarshal(data, &varTaskStatus)
+
+	if err != nil {
+		return err
+	}
+
 	*o = TaskStatus(varTaskStatus)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "uniqueName")

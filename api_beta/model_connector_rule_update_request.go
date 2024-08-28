@@ -84,7 +84,7 @@ func (o *ConnectorRuleUpdateRequest) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ConnectorRuleUpdateRequest) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -94,7 +94,7 @@ func (o *ConnectorRuleUpdateRequest) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConnectorRuleUpdateRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -102,7 +102,7 @@ func (o *ConnectorRuleUpdateRequest) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *ConnectorRuleUpdateRequest) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -140,7 +140,7 @@ func (o *ConnectorRuleUpdateRequest) SetType(v string) {
 
 // GetSignature returns the Signature field value if set, zero value otherwise.
 func (o *ConnectorRuleUpdateRequest) GetSignature() ConnectorRuleCreateRequestSignature {
-	if o == nil || isNil(o.Signature) {
+	if o == nil || IsNil(o.Signature) {
 		var ret ConnectorRuleCreateRequestSignature
 		return ret
 	}
@@ -150,7 +150,7 @@ func (o *ConnectorRuleUpdateRequest) GetSignature() ConnectorRuleCreateRequestSi
 // GetSignatureOk returns a tuple with the Signature field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConnectorRuleUpdateRequest) GetSignatureOk() (*ConnectorRuleCreateRequestSignature, bool) {
-	if o == nil || isNil(o.Signature) {
+	if o == nil || IsNil(o.Signature) {
 		return nil, false
 	}
 	return o.Signature, true
@@ -158,7 +158,7 @@ func (o *ConnectorRuleUpdateRequest) GetSignatureOk() (*ConnectorRuleCreateReque
 
 // HasSignature returns a boolean if a field has been set.
 func (o *ConnectorRuleUpdateRequest) HasSignature() bool {
-	if o != nil && !isNil(o.Signature) {
+	if o != nil && !IsNil(o.Signature) {
 		return true
 	}
 
@@ -207,7 +207,7 @@ func (o *ConnectorRuleUpdateRequest) GetAttributes() map[string]interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConnectorRuleUpdateRequest) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
@@ -215,7 +215,7 @@ func (o *ConnectorRuleUpdateRequest) GetAttributesOk() (map[string]interface{}, 
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *ConnectorRuleUpdateRequest) HasAttributes() bool {
-	if o != nil && isNil(o.Attributes) {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -262,11 +262,11 @@ func (o ConnectorRuleUpdateRequest) MarshalJSON() ([]byte, error) {
 func (o ConnectorRuleUpdateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 	toSerialize["type"] = o.Type
-	if !isNil(o.Signature) {
+	if !IsNil(o.Signature) {
 		toSerialize["signature"] = o.Signature
 	}
 	toSerialize["sourceCode"] = o.SourceCode
@@ -282,8 +282,8 @@ func (o ConnectorRuleUpdateRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ConnectorRuleUpdateRequest) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *ConnectorRuleUpdateRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -295,7 +295,7 @@ func (o *ConnectorRuleUpdateRequest) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -309,13 +309,17 @@ func (o *ConnectorRuleUpdateRequest) UnmarshalJSON(bytes []byte) (err error) {
 
 	varConnectorRuleUpdateRequest := _ConnectorRuleUpdateRequest{}
 
-	if err = json.Unmarshal(bytes, &varConnectorRuleUpdateRequest); err == nil {
+	err = json.Unmarshal(data, &varConnectorRuleUpdateRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ConnectorRuleUpdateRequest(varConnectorRuleUpdateRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "type")

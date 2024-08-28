@@ -45,7 +45,7 @@ func NewSedApprovalWithDefaults() *SedApproval {
 
 // GetItems returns the Items field value if set, zero value otherwise.
 func (o *SedApproval) GetItems() []string {
-	if o == nil || isNil(o.Items) {
+	if o == nil || IsNil(o.Items) {
 		var ret []string
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *SedApproval) GetItems() []string {
 // GetItemsOk returns a tuple with the Items field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SedApproval) GetItemsOk() ([]string, bool) {
-	if o == nil || isNil(o.Items) {
+	if o == nil || IsNil(o.Items) {
 		return nil, false
 	}
 	return o.Items, true
@@ -63,7 +63,7 @@ func (o *SedApproval) GetItemsOk() ([]string, bool) {
 
 // HasItems returns a boolean if a field has been set.
 func (o *SedApproval) HasItems() bool {
-	if o != nil && !isNil(o.Items) {
+	if o != nil && !IsNil(o.Items) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o SedApproval) MarshalJSON() ([]byte, error) {
 
 func (o SedApproval) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Items) {
+	if !IsNil(o.Items) {
 		toSerialize["items"] = o.Items
 	}
 
@@ -96,16 +96,20 @@ func (o SedApproval) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SedApproval) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SedApproval) UnmarshalJSON(data []byte) (err error) {
 	varSedApproval := _SedApproval{}
 
-	if err = json.Unmarshal(bytes, &varSedApproval); err == nil {
+	err = json.Unmarshal(data, &varSedApproval)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SedApproval(varSedApproval)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "items")
 		o.AdditionalProperties = additionalProperties
 	}

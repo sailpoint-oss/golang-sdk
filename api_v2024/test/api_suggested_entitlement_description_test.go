@@ -19,7 +19,7 @@ import (
 
 func Test_api_v2024_SuggestedEntitlementDescriptionAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test SuggestedEntitlementDescriptionAPIService GetSedBatchStats", func(t *testing.T) {
@@ -28,7 +28,7 @@ func Test_api_v2024_SuggestedEntitlementDescriptionAPIService(t *testing.T) {
 
 		var batchId string
 
-		resp, httpRes, err := apiClient.API_V2024.SuggestedEntitlementDescriptionAPI.GetSedBatchStats(context.Background(), batchId).Execute()
+		resp, httpRes, err := apiClient.SuggestedEntitlementDescriptionAPI.GetSedBatchStats(context.Background(), batchId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_v2024_SuggestedEntitlementDescriptionAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.SuggestedEntitlementDescriptionAPI.GetSedBatches(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SuggestedEntitlementDescriptionAPI.GetSedBatches(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -52,7 +52,7 @@ func Test_api_v2024_SuggestedEntitlementDescriptionAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.SuggestedEntitlementDescriptionAPI.ListSeds(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SuggestedEntitlementDescriptionAPI.ListSeds(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -66,7 +66,7 @@ func Test_api_v2024_SuggestedEntitlementDescriptionAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.SuggestedEntitlementDescriptionAPI.PatchSed(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SuggestedEntitlementDescriptionAPI.PatchSed(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -78,7 +78,7 @@ func Test_api_v2024_SuggestedEntitlementDescriptionAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.SuggestedEntitlementDescriptionAPI.SubmitSedApproval(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitSedApproval(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -90,7 +90,7 @@ func Test_api_v2024_SuggestedEntitlementDescriptionAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.SuggestedEntitlementDescriptionAPI.SubmitSedAssignment(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitSedAssignment(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -102,7 +102,7 @@ func Test_api_v2024_SuggestedEntitlementDescriptionAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.SuggestedEntitlementDescriptionAPI.SubmitSedBatchRequest(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SuggestedEntitlementDescriptionAPI.SubmitSedBatchRequest(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -128,7 +128,7 @@ func (o *GetPersonalAccessTokenResponse) GetScope() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GetPersonalAccessTokenResponse) GetScopeOk() ([]string, bool) {
-	if o == nil || isNil(o.Scope) {
+	if o == nil || IsNil(o.Scope) {
 		return nil, false
 	}
 	return o.Scope, true
@@ -189,7 +189,7 @@ func (o *GetPersonalAccessTokenResponse) SetCreated(v time.Time) {
 
 // GetLastUsed returns the LastUsed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GetPersonalAccessTokenResponse) GetLastUsed() time.Time {
-	if o == nil || isNil(o.LastUsed.Get()) {
+	if o == nil || IsNil(o.LastUsed.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -231,7 +231,7 @@ func (o *GetPersonalAccessTokenResponse) UnsetLastUsed() {
 
 // GetManaged returns the Managed field value if set, zero value otherwise.
 func (o *GetPersonalAccessTokenResponse) GetManaged() bool {
-	if o == nil || isNil(o.Managed) {
+	if o == nil || IsNil(o.Managed) {
 		var ret bool
 		return ret
 	}
@@ -241,7 +241,7 @@ func (o *GetPersonalAccessTokenResponse) GetManaged() bool {
 // GetManagedOk returns a tuple with the Managed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetPersonalAccessTokenResponse) GetManagedOk() (*bool, bool) {
-	if o == nil || isNil(o.Managed) {
+	if o == nil || IsNil(o.Managed) {
 		return nil, false
 	}
 	return o.Managed, true
@@ -249,7 +249,7 @@ func (o *GetPersonalAccessTokenResponse) GetManagedOk() (*bool, bool) {
 
 // HasManaged returns a boolean if a field has been set.
 func (o *GetPersonalAccessTokenResponse) HasManaged() bool {
-	if o != nil && !isNil(o.Managed) {
+	if o != nil && !IsNil(o.Managed) {
 		return true
 	}
 
@@ -281,7 +281,7 @@ func (o GetPersonalAccessTokenResponse) ToMap() (map[string]interface{}, error) 
 	if o.LastUsed.IsSet() {
 		toSerialize["lastUsed"] = o.LastUsed.Get()
 	}
-	if !isNil(o.Managed) {
+	if !IsNil(o.Managed) {
 		toSerialize["managed"] = o.Managed
 	}
 
@@ -292,8 +292,8 @@ func (o GetPersonalAccessTokenResponse) ToMap() (map[string]interface{}, error) 
 	return toSerialize, nil
 }
 
-func (o *GetPersonalAccessTokenResponse) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *GetPersonalAccessTokenResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -306,7 +306,7 @@ func (o *GetPersonalAccessTokenResponse) UnmarshalJSON(bytes []byte) (err error)
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -320,13 +320,17 @@ func (o *GetPersonalAccessTokenResponse) UnmarshalJSON(bytes []byte) (err error)
 
 	varGetPersonalAccessTokenResponse := _GetPersonalAccessTokenResponse{}
 
-	if err = json.Unmarshal(bytes, &varGetPersonalAccessTokenResponse); err == nil {
+	err = json.Unmarshal(data, &varGetPersonalAccessTokenResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = GetPersonalAccessTokenResponse(varGetPersonalAccessTokenResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "scope")

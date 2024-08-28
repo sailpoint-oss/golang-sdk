@@ -158,7 +158,7 @@ func (o *ObjectMappingRequest) SetTargetValue(v string) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *ObjectMappingRequest) GetEnabled() bool {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -168,7 +168,7 @@ func (o *ObjectMappingRequest) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ObjectMappingRequest) GetEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -176,7 +176,7 @@ func (o *ObjectMappingRequest) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *ObjectMappingRequest) HasEnabled() bool {
-	if o != nil && !isNil(o.Enabled) {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -202,7 +202,7 @@ func (o ObjectMappingRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["jsonPath"] = o.JsonPath
 	toSerialize["sourceValue"] = o.SourceValue
 	toSerialize["targetValue"] = o.TargetValue
-	if !isNil(o.Enabled) {
+	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
 
@@ -213,8 +213,8 @@ func (o ObjectMappingRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ObjectMappingRequest) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *ObjectMappingRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -226,7 +226,7 @@ func (o *ObjectMappingRequest) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -240,13 +240,17 @@ func (o *ObjectMappingRequest) UnmarshalJSON(bytes []byte) (err error) {
 
 	varObjectMappingRequest := _ObjectMappingRequest{}
 
-	if err = json.Unmarshal(bytes, &varObjectMappingRequest); err == nil {
+	err = json.Unmarshal(data, &varObjectMappingRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ObjectMappingRequest(varObjectMappingRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "objectType")
 		delete(additionalProperties, "jsonPath")
 		delete(additionalProperties, "sourceValue")

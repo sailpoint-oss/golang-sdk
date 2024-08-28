@@ -47,7 +47,7 @@ func NewSearchFormDefinitionsByTenant400ResponseWithDefaults() *SearchFormDefini
 
 // GetDetailCode returns the DetailCode field value if set, zero value otherwise.
 func (o *SearchFormDefinitionsByTenant400Response) GetDetailCode() string {
-	if o == nil || isNil(o.DetailCode) {
+	if o == nil || IsNil(o.DetailCode) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *SearchFormDefinitionsByTenant400Response) GetDetailCode() string {
 // GetDetailCodeOk returns a tuple with the DetailCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SearchFormDefinitionsByTenant400Response) GetDetailCodeOk() (*string, bool) {
-	if o == nil || isNil(o.DetailCode) {
+	if o == nil || IsNil(o.DetailCode) {
 		return nil, false
 	}
 	return o.DetailCode, true
@@ -65,7 +65,7 @@ func (o *SearchFormDefinitionsByTenant400Response) GetDetailCodeOk() (*string, b
 
 // HasDetailCode returns a boolean if a field has been set.
 func (o *SearchFormDefinitionsByTenant400Response) HasDetailCode() bool {
-	if o != nil && !isNil(o.DetailCode) {
+	if o != nil && !IsNil(o.DetailCode) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *SearchFormDefinitionsByTenant400Response) SetDetailCode(v string) {
 
 // GetMessages returns the Messages field value if set, zero value otherwise.
 func (o *SearchFormDefinitionsByTenant400Response) GetMessages() []ErrorMessage {
-	if o == nil || isNil(o.Messages) {
+	if o == nil || IsNil(o.Messages) {
 		var ret []ErrorMessage
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *SearchFormDefinitionsByTenant400Response) GetMessages() []ErrorMessage 
 // GetMessagesOk returns a tuple with the Messages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SearchFormDefinitionsByTenant400Response) GetMessagesOk() ([]ErrorMessage, bool) {
-	if o == nil || isNil(o.Messages) {
+	if o == nil || IsNil(o.Messages) {
 		return nil, false
 	}
 	return o.Messages, true
@@ -97,7 +97,7 @@ func (o *SearchFormDefinitionsByTenant400Response) GetMessagesOk() ([]ErrorMessa
 
 // HasMessages returns a boolean if a field has been set.
 func (o *SearchFormDefinitionsByTenant400Response) HasMessages() bool {
-	if o != nil && !isNil(o.Messages) {
+	if o != nil && !IsNil(o.Messages) {
 		return true
 	}
 
@@ -111,7 +111,7 @@ func (o *SearchFormDefinitionsByTenant400Response) SetMessages(v []ErrorMessage)
 
 // GetStatusCode returns the StatusCode field value if set, zero value otherwise.
 func (o *SearchFormDefinitionsByTenant400Response) GetStatusCode() int64 {
-	if o == nil || isNil(o.StatusCode) {
+	if o == nil || IsNil(o.StatusCode) {
 		var ret int64
 		return ret
 	}
@@ -121,7 +121,7 @@ func (o *SearchFormDefinitionsByTenant400Response) GetStatusCode() int64 {
 // GetStatusCodeOk returns a tuple with the StatusCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SearchFormDefinitionsByTenant400Response) GetStatusCodeOk() (*int64, bool) {
-	if o == nil || isNil(o.StatusCode) {
+	if o == nil || IsNil(o.StatusCode) {
 		return nil, false
 	}
 	return o.StatusCode, true
@@ -129,7 +129,7 @@ func (o *SearchFormDefinitionsByTenant400Response) GetStatusCodeOk() (*int64, bo
 
 // HasStatusCode returns a boolean if a field has been set.
 func (o *SearchFormDefinitionsByTenant400Response) HasStatusCode() bool {
-	if o != nil && !isNil(o.StatusCode) {
+	if o != nil && !IsNil(o.StatusCode) {
 		return true
 	}
 
@@ -143,7 +143,7 @@ func (o *SearchFormDefinitionsByTenant400Response) SetStatusCode(v int64) {
 
 // GetTrackingId returns the TrackingId field value if set, zero value otherwise.
 func (o *SearchFormDefinitionsByTenant400Response) GetTrackingId() string {
-	if o == nil || isNil(o.TrackingId) {
+	if o == nil || IsNil(o.TrackingId) {
 		var ret string
 		return ret
 	}
@@ -153,7 +153,7 @@ func (o *SearchFormDefinitionsByTenant400Response) GetTrackingId() string {
 // GetTrackingIdOk returns a tuple with the TrackingId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SearchFormDefinitionsByTenant400Response) GetTrackingIdOk() (*string, bool) {
-	if o == nil || isNil(o.TrackingId) {
+	if o == nil || IsNil(o.TrackingId) {
 		return nil, false
 	}
 	return o.TrackingId, true
@@ -161,7 +161,7 @@ func (o *SearchFormDefinitionsByTenant400Response) GetTrackingIdOk() (*string, b
 
 // HasTrackingId returns a boolean if a field has been set.
 func (o *SearchFormDefinitionsByTenant400Response) HasTrackingId() bool {
-	if o != nil && !isNil(o.TrackingId) {
+	if o != nil && !IsNil(o.TrackingId) {
 		return true
 	}
 
@@ -183,16 +183,16 @@ func (o SearchFormDefinitionsByTenant400Response) MarshalJSON() ([]byte, error) 
 
 func (o SearchFormDefinitionsByTenant400Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.DetailCode) {
+	if !IsNil(o.DetailCode) {
 		toSerialize["detailCode"] = o.DetailCode
 	}
-	if !isNil(o.Messages) {
+	if !IsNil(o.Messages) {
 		toSerialize["messages"] = o.Messages
 	}
-	if !isNil(o.StatusCode) {
+	if !IsNil(o.StatusCode) {
 		toSerialize["statusCode"] = o.StatusCode
 	}
-	if !isNil(o.TrackingId) {
+	if !IsNil(o.TrackingId) {
 		toSerialize["trackingId"] = o.TrackingId
 	}
 
@@ -203,16 +203,20 @@ func (o SearchFormDefinitionsByTenant400Response) ToMap() (map[string]interface{
 	return toSerialize, nil
 }
 
-func (o *SearchFormDefinitionsByTenant400Response) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SearchFormDefinitionsByTenant400Response) UnmarshalJSON(data []byte) (err error) {
 	varSearchFormDefinitionsByTenant400Response := _SearchFormDefinitionsByTenant400Response{}
 
-	if err = json.Unmarshal(bytes, &varSearchFormDefinitionsByTenant400Response); err == nil {
+	err = json.Unmarshal(data, &varSearchFormDefinitionsByTenant400Response)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SearchFormDefinitionsByTenant400Response(varSearchFormDefinitionsByTenant400Response)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "detailCode")
 		delete(additionalProperties, "messages")
 		delete(additionalProperties, "statusCode")

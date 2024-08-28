@@ -12,26 +12,27 @@ package api_beta
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
 // WorkflowLibraryActionExampleOutput - struct for WorkflowLibraryActionExampleOutput
 type WorkflowLibraryActionExampleOutput struct {
-	ArrayOfMapmapOfStringinterface *[]map[string]interface{}
-	MapmapOfStringinterface *map[string]interface{}
+	ArrayOfMapmapOfStringAny *[]map[string]interface{}
+	MapmapOfStringAny *map[string]interface{}
 }
 
 // []map[string]interface{}AsWorkflowLibraryActionExampleOutput is a convenience function that returns []map[string]interface{} wrapped in WorkflowLibraryActionExampleOutput
-func ArrayOfMapmapOfStringinterfaceAsWorkflowLibraryActionExampleOutput(v *[]map[string]interface{}) WorkflowLibraryActionExampleOutput {
+func ArrayOfMapmapOfStringAnyAsWorkflowLibraryActionExampleOutput(v *[]map[string]interface{}) WorkflowLibraryActionExampleOutput {
 	return WorkflowLibraryActionExampleOutput{
-		ArrayOfMapmapOfStringinterface: v,
+		ArrayOfMapmapOfStringAny: v,
 	}
 }
 
 // map[string]interface{}AsWorkflowLibraryActionExampleOutput is a convenience function that returns map[string]interface{} wrapped in WorkflowLibraryActionExampleOutput
-func MapmapOfStringinterfaceAsWorkflowLibraryActionExampleOutput(v *map[string]interface{}) WorkflowLibraryActionExampleOutput {
+func MapmapOfStringAnyAsWorkflowLibraryActionExampleOutput(v *map[string]interface{}) WorkflowLibraryActionExampleOutput {
 	return WorkflowLibraryActionExampleOutput{
-		MapmapOfStringinterface: v,
+		MapmapOfStringAny: v,
 	}
 }
 
@@ -40,36 +41,44 @@ func MapmapOfStringinterfaceAsWorkflowLibraryActionExampleOutput(v *map[string]i
 func (dst *WorkflowLibraryActionExampleOutput) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
-	// try to unmarshal data into ArrayOfMapmapOfStringinterface
-	err = newStrictDecoder(data).Decode(&dst.ArrayOfMapmapOfStringinterface)
+	// try to unmarshal data into ArrayOfMapmapOfStringAny
+	err = newStrictDecoder(data).Decode(&dst.ArrayOfMapmapOfStringAny)
 	if err == nil {
-		jsonArrayOfMapmapOfStringinterface, _ := json.Marshal(dst.ArrayOfMapmapOfStringinterface)
-		if string(jsonArrayOfMapmapOfStringinterface) == "{}" { // empty struct
-			dst.ArrayOfMapmapOfStringinterface = nil
+		jsonArrayOfMapmapOfStringAny, _ := json.Marshal(dst.ArrayOfMapmapOfStringAny)
+		if string(jsonArrayOfMapmapOfStringAny) == "{}" { // empty struct
+			dst.ArrayOfMapmapOfStringAny = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.ArrayOfMapmapOfStringAny); err != nil {
+				dst.ArrayOfMapmapOfStringAny = nil
+			} else {
+				match++
+			}
 		}
 	} else {
-		dst.ArrayOfMapmapOfStringinterface = nil
+		dst.ArrayOfMapmapOfStringAny = nil
 	}
 
-	// try to unmarshal data into MapmapOfStringinterface
-	err = newStrictDecoder(data).Decode(&dst.MapmapOfStringinterface)
+	// try to unmarshal data into MapmapOfStringAny
+	err = newStrictDecoder(data).Decode(&dst.MapmapOfStringAny)
 	if err == nil {
-		jsonMapmapOfStringinterface, _ := json.Marshal(dst.MapmapOfStringinterface)
-		if string(jsonMapmapOfStringinterface) == "{}" { // empty struct
-			dst.MapmapOfStringinterface = nil
+		jsonMapmapOfStringAny, _ := json.Marshal(dst.MapmapOfStringAny)
+		if string(jsonMapmapOfStringAny) == "{}" { // empty struct
+			dst.MapmapOfStringAny = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.MapmapOfStringAny); err != nil {
+				dst.MapmapOfStringAny = nil
+			} else {
+				match++
+			}
 		}
 	} else {
-		dst.MapmapOfStringinterface = nil
+		dst.MapmapOfStringAny = nil
 	}
 
 	if match > 1 { // more than 1 match
 		// reset to nil
-		dst.ArrayOfMapmapOfStringinterface = nil
-		dst.MapmapOfStringinterface = nil
+		dst.ArrayOfMapmapOfStringAny = nil
+		dst.MapmapOfStringAny = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(WorkflowLibraryActionExampleOutput)")
 	} else if match == 1 {
@@ -81,12 +90,12 @@ func (dst *WorkflowLibraryActionExampleOutput) UnmarshalJSON(data []byte) error 
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src WorkflowLibraryActionExampleOutput) MarshalJSON() ([]byte, error) {
-	if src.ArrayOfMapmapOfStringinterface != nil {
-		return json.Marshal(&src.ArrayOfMapmapOfStringinterface)
+	if src.ArrayOfMapmapOfStringAny != nil {
+		return json.Marshal(&src.ArrayOfMapmapOfStringAny)
 	}
 
-	if src.MapmapOfStringinterface != nil {
-		return json.Marshal(&src.MapmapOfStringinterface)
+	if src.MapmapOfStringAny != nil {
+		return json.Marshal(&src.MapmapOfStringAny)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -97,12 +106,12 @@ func (obj *WorkflowLibraryActionExampleOutput) GetActualInstance() (interface{})
 	if obj == nil {
 		return nil
 	}
-	if obj.ArrayOfMapmapOfStringinterface != nil {
-		return obj.ArrayOfMapmapOfStringinterface
+	if obj.ArrayOfMapmapOfStringAny != nil {
+		return obj.ArrayOfMapmapOfStringAny
 	}
 
-	if obj.MapmapOfStringinterface != nil {
-		return obj.MapmapOfStringinterface
+	if obj.MapmapOfStringAny != nil {
+		return obj.MapmapOfStringAny
 	}
 
 	// all schemas are nil

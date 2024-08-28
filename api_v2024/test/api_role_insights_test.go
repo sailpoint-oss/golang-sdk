@@ -19,14 +19,14 @@ import (
 
 func Test_api_v2024_RoleInsightsAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test RoleInsightsAPIService CreateRoleInsightRequests", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.RoleInsightsAPI.CreateRoleInsightRequests(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RoleInsightsAPI.CreateRoleInsightRequests(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_v2024_RoleInsightsAPIService(t *testing.T) {
 
 		var insightId string
 
-		resp, httpRes, err := apiClient.API_V2024.RoleInsightsAPI.DownloadRoleInsightsEntitlementsChanges(context.Background(), insightId).Execute()
+		resp, httpRes, err := apiClient.RoleInsightsAPI.DownloadRoleInsightsEntitlementsChanges(context.Background(), insightId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -55,7 +55,7 @@ func Test_api_v2024_RoleInsightsAPIService(t *testing.T) {
 		var insightId string
 		var entitlementId string
 
-		resp, httpRes, err := apiClient.API_V2024.RoleInsightsAPI.GetEntitlementChangesIdentities(context.Background(), insightId, entitlementId).Execute()
+		resp, httpRes, err := apiClient.RoleInsightsAPI.GetEntitlementChangesIdentities(context.Background(), insightId, entitlementId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -69,7 +69,7 @@ func Test_api_v2024_RoleInsightsAPIService(t *testing.T) {
 
 		var insightId string
 
-		resp, httpRes, err := apiClient.API_V2024.RoleInsightsAPI.GetRoleInsight(context.Background(), insightId).Execute()
+		resp, httpRes, err := apiClient.RoleInsightsAPI.GetRoleInsight(context.Background(), insightId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -81,7 +81,7 @@ func Test_api_v2024_RoleInsightsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.RoleInsightsAPI.GetRoleInsights(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RoleInsightsAPI.GetRoleInsights(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -95,7 +95,7 @@ func Test_api_v2024_RoleInsightsAPIService(t *testing.T) {
 
 		var insightId string
 
-		resp, httpRes, err := apiClient.API_V2024.RoleInsightsAPI.GetRoleInsightsCurrentEntitlements(context.Background(), insightId).Execute()
+		resp, httpRes, err := apiClient.RoleInsightsAPI.GetRoleInsightsCurrentEntitlements(context.Background(), insightId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -109,7 +109,7 @@ func Test_api_v2024_RoleInsightsAPIService(t *testing.T) {
 
 		var insightId string
 
-		resp, httpRes, err := apiClient.API_V2024.RoleInsightsAPI.GetRoleInsightsEntitlementsChanges(context.Background(), insightId).Execute()
+		resp, httpRes, err := apiClient.RoleInsightsAPI.GetRoleInsightsEntitlementsChanges(context.Background(), insightId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -123,7 +123,7 @@ func Test_api_v2024_RoleInsightsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.RoleInsightsAPI.GetRoleInsightsRequests(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.RoleInsightsAPI.GetRoleInsightsRequests(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -135,7 +135,7 @@ func Test_api_v2024_RoleInsightsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.RoleInsightsAPI.GetRoleInsightsSummary(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RoleInsightsAPI.GetRoleInsightsSummary(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

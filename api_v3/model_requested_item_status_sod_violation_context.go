@@ -48,7 +48,7 @@ func NewRequestedItemStatusSodViolationContextWithDefaults() *RequestedItemStatu
 
 // GetState returns the State field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RequestedItemStatusSodViolationContext) GetState() string {
-	if o == nil || isNil(o.State.Get()) {
+	if o == nil || IsNil(o.State.Get()) {
 		var ret string
 		return ret
 	}
@@ -90,7 +90,7 @@ func (o *RequestedItemStatusSodViolationContext) UnsetState() {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RequestedItemStatusSodViolationContext) GetUuid() string {
-	if o == nil || isNil(o.Uuid.Get()) {
+	if o == nil || IsNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -132,7 +132,7 @@ func (o *RequestedItemStatusSodViolationContext) UnsetUuid() {
 
 // GetViolationCheckResult returns the ViolationCheckResult field value if set, zero value otherwise.
 func (o *RequestedItemStatusSodViolationContext) GetViolationCheckResult() SodViolationCheckResult {
-	if o == nil || isNil(o.ViolationCheckResult) {
+	if o == nil || IsNil(o.ViolationCheckResult) {
 		var ret SodViolationCheckResult
 		return ret
 	}
@@ -142,7 +142,7 @@ func (o *RequestedItemStatusSodViolationContext) GetViolationCheckResult() SodVi
 // GetViolationCheckResultOk returns a tuple with the ViolationCheckResult field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestedItemStatusSodViolationContext) GetViolationCheckResultOk() (*SodViolationCheckResult, bool) {
-	if o == nil || isNil(o.ViolationCheckResult) {
+	if o == nil || IsNil(o.ViolationCheckResult) {
 		return nil, false
 	}
 	return o.ViolationCheckResult, true
@@ -150,7 +150,7 @@ func (o *RequestedItemStatusSodViolationContext) GetViolationCheckResultOk() (*S
 
 // HasViolationCheckResult returns a boolean if a field has been set.
 func (o *RequestedItemStatusSodViolationContext) HasViolationCheckResult() bool {
-	if o != nil && !isNil(o.ViolationCheckResult) {
+	if o != nil && !IsNil(o.ViolationCheckResult) {
 		return true
 	}
 
@@ -178,7 +178,7 @@ func (o RequestedItemStatusSodViolationContext) ToMap() (map[string]interface{},
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
-	if !isNil(o.ViolationCheckResult) {
+	if !IsNil(o.ViolationCheckResult) {
 		toSerialize["violationCheckResult"] = o.ViolationCheckResult
 	}
 
@@ -189,16 +189,20 @@ func (o RequestedItemStatusSodViolationContext) ToMap() (map[string]interface{},
 	return toSerialize, nil
 }
 
-func (o *RequestedItemStatusSodViolationContext) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RequestedItemStatusSodViolationContext) UnmarshalJSON(data []byte) (err error) {
 	varRequestedItemStatusSodViolationContext := _RequestedItemStatusSodViolationContext{}
 
-	if err = json.Unmarshal(bytes, &varRequestedItemStatusSodViolationContext); err == nil {
+	err = json.Unmarshal(data, &varRequestedItemStatusSodViolationContext)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RequestedItemStatusSodViolationContext(varRequestedItemStatusSodViolationContext)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "state")
 		delete(additionalProperties, "uuid")
 		delete(additionalProperties, "violationCheckResult")

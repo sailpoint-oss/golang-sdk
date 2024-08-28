@@ -58,7 +58,7 @@ func NewSearchExportReportArgumentsWithDefaults() *SearchExportReportArguments {
 
 // GetIndices returns the Indices field value if set, zero value otherwise.
 func (o *SearchExportReportArguments) GetIndices() []Index {
-	if o == nil || isNil(o.Indices) {
+	if o == nil || IsNil(o.Indices) {
 		var ret []Index
 		return ret
 	}
@@ -68,7 +68,7 @@ func (o *SearchExportReportArguments) GetIndices() []Index {
 // GetIndicesOk returns a tuple with the Indices field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SearchExportReportArguments) GetIndicesOk() ([]Index, bool) {
-	if o == nil || isNil(o.Indices) {
+	if o == nil || IsNil(o.Indices) {
 		return nil, false
 	}
 	return o.Indices, true
@@ -76,7 +76,7 @@ func (o *SearchExportReportArguments) GetIndicesOk() ([]Index, bool) {
 
 // HasIndices returns a boolean if a field has been set.
 func (o *SearchExportReportArguments) HasIndices() bool {
-	if o != nil && !isNil(o.Indices) {
+	if o != nil && !IsNil(o.Indices) {
 		return true
 	}
 
@@ -90,7 +90,7 @@ func (o *SearchExportReportArguments) SetIndices(v []Index) {
 
 // GetFilters returns the Filters field value if set, zero value otherwise.
 func (o *SearchExportReportArguments) GetFilters() map[string]Filter {
-	if o == nil || isNil(o.Filters) {
+	if o == nil || IsNil(o.Filters) {
 		var ret map[string]Filter
 		return ret
 	}
@@ -100,7 +100,7 @@ func (o *SearchExportReportArguments) GetFilters() map[string]Filter {
 // GetFiltersOk returns a tuple with the Filters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SearchExportReportArguments) GetFiltersOk() (*map[string]Filter, bool) {
-	if o == nil || isNil(o.Filters) {
+	if o == nil || IsNil(o.Filters) {
 		return nil, false
 	}
 	return o.Filters, true
@@ -108,7 +108,7 @@ func (o *SearchExportReportArguments) GetFiltersOk() (*map[string]Filter, bool) 
 
 // HasFilters returns a boolean if a field has been set.
 func (o *SearchExportReportArguments) HasFilters() bool {
-	if o != nil && !isNil(o.Filters) {
+	if o != nil && !IsNil(o.Filters) {
 		return true
 	}
 
@@ -146,7 +146,7 @@ func (o *SearchExportReportArguments) SetQuery(v Query) {
 
 // GetIncludeNested returns the IncludeNested field value if set, zero value otherwise.
 func (o *SearchExportReportArguments) GetIncludeNested() bool {
-	if o == nil || isNil(o.IncludeNested) {
+	if o == nil || IsNil(o.IncludeNested) {
 		var ret bool
 		return ret
 	}
@@ -156,7 +156,7 @@ func (o *SearchExportReportArguments) GetIncludeNested() bool {
 // GetIncludeNestedOk returns a tuple with the IncludeNested field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SearchExportReportArguments) GetIncludeNestedOk() (*bool, bool) {
-	if o == nil || isNil(o.IncludeNested) {
+	if o == nil || IsNil(o.IncludeNested) {
 		return nil, false
 	}
 	return o.IncludeNested, true
@@ -164,7 +164,7 @@ func (o *SearchExportReportArguments) GetIncludeNestedOk() (*bool, bool) {
 
 // HasIncludeNested returns a boolean if a field has been set.
 func (o *SearchExportReportArguments) HasIncludeNested() bool {
-	if o != nil && !isNil(o.IncludeNested) {
+	if o != nil && !IsNil(o.IncludeNested) {
 		return true
 	}
 
@@ -178,7 +178,7 @@ func (o *SearchExportReportArguments) SetIncludeNested(v bool) {
 
 // GetSort returns the Sort field value if set, zero value otherwise.
 func (o *SearchExportReportArguments) GetSort() []string {
-	if o == nil || isNil(o.Sort) {
+	if o == nil || IsNil(o.Sort) {
 		var ret []string
 		return ret
 	}
@@ -188,7 +188,7 @@ func (o *SearchExportReportArguments) GetSort() []string {
 // GetSortOk returns a tuple with the Sort field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SearchExportReportArguments) GetSortOk() ([]string, bool) {
-	if o == nil || isNil(o.Sort) {
+	if o == nil || IsNil(o.Sort) {
 		return nil, false
 	}
 	return o.Sort, true
@@ -196,7 +196,7 @@ func (o *SearchExportReportArguments) GetSortOk() ([]string, bool) {
 
 // HasSort returns a boolean if a field has been set.
 func (o *SearchExportReportArguments) HasSort() bool {
-	if o != nil && !isNil(o.Sort) {
+	if o != nil && !IsNil(o.Sort) {
 		return true
 	}
 
@@ -218,17 +218,17 @@ func (o SearchExportReportArguments) MarshalJSON() ([]byte, error) {
 
 func (o SearchExportReportArguments) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Indices) {
+	if !IsNil(o.Indices) {
 		toSerialize["indices"] = o.Indices
 	}
-	if !isNil(o.Filters) {
+	if !IsNil(o.Filters) {
 		toSerialize["filters"] = o.Filters
 	}
 	toSerialize["query"] = o.Query
-	if !isNil(o.IncludeNested) {
+	if !IsNil(o.IncludeNested) {
 		toSerialize["includeNested"] = o.IncludeNested
 	}
-	if !isNil(o.Sort) {
+	if !IsNil(o.Sort) {
 		toSerialize["sort"] = o.Sort
 	}
 
@@ -239,8 +239,8 @@ func (o SearchExportReportArguments) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SearchExportReportArguments) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *SearchExportReportArguments) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -249,7 +249,7 @@ func (o *SearchExportReportArguments) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -263,13 +263,17 @@ func (o *SearchExportReportArguments) UnmarshalJSON(bytes []byte) (err error) {
 
 	varSearchExportReportArguments := _SearchExportReportArguments{}
 
-	if err = json.Unmarshal(bytes, &varSearchExportReportArguments); err == nil {
+	err = json.Unmarshal(data, &varSearchExportReportArguments)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SearchExportReportArguments(varSearchExportReportArguments)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "indices")
 		delete(additionalProperties, "filters")
 		delete(additionalProperties, "query")

@@ -45,7 +45,7 @@ func NewRangeWithDefaults() *Range {
 
 // GetLower returns the Lower field value if set, zero value otherwise.
 func (o *Range) GetLower() Bound {
-	if o == nil || isNil(o.Lower) {
+	if o == nil || IsNil(o.Lower) {
 		var ret Bound
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *Range) GetLower() Bound {
 // GetLowerOk returns a tuple with the Lower field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Range) GetLowerOk() (*Bound, bool) {
-	if o == nil || isNil(o.Lower) {
+	if o == nil || IsNil(o.Lower) {
 		return nil, false
 	}
 	return o.Lower, true
@@ -63,7 +63,7 @@ func (o *Range) GetLowerOk() (*Bound, bool) {
 
 // HasLower returns a boolean if a field has been set.
 func (o *Range) HasLower() bool {
-	if o != nil && !isNil(o.Lower) {
+	if o != nil && !IsNil(o.Lower) {
 		return true
 	}
 
@@ -77,7 +77,7 @@ func (o *Range) SetLower(v Bound) {
 
 // GetUpper returns the Upper field value if set, zero value otherwise.
 func (o *Range) GetUpper() Bound {
-	if o == nil || isNil(o.Upper) {
+	if o == nil || IsNil(o.Upper) {
 		var ret Bound
 		return ret
 	}
@@ -87,7 +87,7 @@ func (o *Range) GetUpper() Bound {
 // GetUpperOk returns a tuple with the Upper field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Range) GetUpperOk() (*Bound, bool) {
-	if o == nil || isNil(o.Upper) {
+	if o == nil || IsNil(o.Upper) {
 		return nil, false
 	}
 	return o.Upper, true
@@ -95,7 +95,7 @@ func (o *Range) GetUpperOk() (*Bound, bool) {
 
 // HasUpper returns a boolean if a field has been set.
 func (o *Range) HasUpper() bool {
-	if o != nil && !isNil(o.Upper) {
+	if o != nil && !IsNil(o.Upper) {
 		return true
 	}
 
@@ -117,10 +117,10 @@ func (o Range) MarshalJSON() ([]byte, error) {
 
 func (o Range) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Lower) {
+	if !IsNil(o.Lower) {
 		toSerialize["lower"] = o.Lower
 	}
-	if !isNil(o.Upper) {
+	if !IsNil(o.Upper) {
 		toSerialize["upper"] = o.Upper
 	}
 
@@ -131,16 +131,20 @@ func (o Range) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Range) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Range) UnmarshalJSON(data []byte) (err error) {
 	varRange := _Range{}
 
-	if err = json.Unmarshal(bytes, &varRange); err == nil {
+	err = json.Unmarshal(data, &varRange)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Range(varRange)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "lower")
 		delete(additionalProperties, "upper")
 		o.AdditionalProperties = additionalProperties

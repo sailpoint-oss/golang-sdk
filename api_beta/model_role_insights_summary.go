@@ -56,7 +56,7 @@ func NewRoleInsightsSummaryWithDefaults() *RoleInsightsSummary {
 
 // GetNumberOfUpdates returns the NumberOfUpdates field value if set, zero value otherwise.
 func (o *RoleInsightsSummary) GetNumberOfUpdates() int32 {
-	if o == nil || isNil(o.NumberOfUpdates) {
+	if o == nil || IsNil(o.NumberOfUpdates) {
 		var ret int32
 		return ret
 	}
@@ -66,7 +66,7 @@ func (o *RoleInsightsSummary) GetNumberOfUpdates() int32 {
 // GetNumberOfUpdatesOk returns a tuple with the NumberOfUpdates field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleInsightsSummary) GetNumberOfUpdatesOk() (*int32, bool) {
-	if o == nil || isNil(o.NumberOfUpdates) {
+	if o == nil || IsNil(o.NumberOfUpdates) {
 		return nil, false
 	}
 	return o.NumberOfUpdates, true
@@ -74,7 +74,7 @@ func (o *RoleInsightsSummary) GetNumberOfUpdatesOk() (*int32, bool) {
 
 // HasNumberOfUpdates returns a boolean if a field has been set.
 func (o *RoleInsightsSummary) HasNumberOfUpdates() bool {
-	if o != nil && !isNil(o.NumberOfUpdates) {
+	if o != nil && !IsNil(o.NumberOfUpdates) {
 		return true
 	}
 
@@ -88,7 +88,7 @@ func (o *RoleInsightsSummary) SetNumberOfUpdates(v int32) {
 
 // GetLastGenerated returns the LastGenerated field value if set, zero value otherwise.
 func (o *RoleInsightsSummary) GetLastGenerated() time.Time {
-	if o == nil || isNil(o.LastGenerated) {
+	if o == nil || IsNil(o.LastGenerated) {
 		var ret time.Time
 		return ret
 	}
@@ -98,7 +98,7 @@ func (o *RoleInsightsSummary) GetLastGenerated() time.Time {
 // GetLastGeneratedOk returns a tuple with the LastGenerated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleInsightsSummary) GetLastGeneratedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.LastGenerated) {
+	if o == nil || IsNil(o.LastGenerated) {
 		return nil, false
 	}
 	return o.LastGenerated, true
@@ -106,7 +106,7 @@ func (o *RoleInsightsSummary) GetLastGeneratedOk() (*time.Time, bool) {
 
 // HasLastGenerated returns a boolean if a field has been set.
 func (o *RoleInsightsSummary) HasLastGenerated() bool {
-	if o != nil && !isNil(o.LastGenerated) {
+	if o != nil && !IsNil(o.LastGenerated) {
 		return true
 	}
 
@@ -120,7 +120,7 @@ func (o *RoleInsightsSummary) SetLastGenerated(v time.Time) {
 
 // GetEntitlementsIncludedInRoles returns the EntitlementsIncludedInRoles field value if set, zero value otherwise.
 func (o *RoleInsightsSummary) GetEntitlementsIncludedInRoles() int32 {
-	if o == nil || isNil(o.EntitlementsIncludedInRoles) {
+	if o == nil || IsNil(o.EntitlementsIncludedInRoles) {
 		var ret int32
 		return ret
 	}
@@ -130,7 +130,7 @@ func (o *RoleInsightsSummary) GetEntitlementsIncludedInRoles() int32 {
 // GetEntitlementsIncludedInRolesOk returns a tuple with the EntitlementsIncludedInRoles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleInsightsSummary) GetEntitlementsIncludedInRolesOk() (*int32, bool) {
-	if o == nil || isNil(o.EntitlementsIncludedInRoles) {
+	if o == nil || IsNil(o.EntitlementsIncludedInRoles) {
 		return nil, false
 	}
 	return o.EntitlementsIncludedInRoles, true
@@ -138,7 +138,7 @@ func (o *RoleInsightsSummary) GetEntitlementsIncludedInRolesOk() (*int32, bool) 
 
 // HasEntitlementsIncludedInRoles returns a boolean if a field has been set.
 func (o *RoleInsightsSummary) HasEntitlementsIncludedInRoles() bool {
-	if o != nil && !isNil(o.EntitlementsIncludedInRoles) {
+	if o != nil && !IsNil(o.EntitlementsIncludedInRoles) {
 		return true
 	}
 
@@ -152,7 +152,7 @@ func (o *RoleInsightsSummary) SetEntitlementsIncludedInRoles(v int32) {
 
 // GetTotalNumberOfEntitlements returns the TotalNumberOfEntitlements field value if set, zero value otherwise.
 func (o *RoleInsightsSummary) GetTotalNumberOfEntitlements() int32 {
-	if o == nil || isNil(o.TotalNumberOfEntitlements) {
+	if o == nil || IsNil(o.TotalNumberOfEntitlements) {
 		var ret int32
 		return ret
 	}
@@ -162,7 +162,7 @@ func (o *RoleInsightsSummary) GetTotalNumberOfEntitlements() int32 {
 // GetTotalNumberOfEntitlementsOk returns a tuple with the TotalNumberOfEntitlements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleInsightsSummary) GetTotalNumberOfEntitlementsOk() (*int32, bool) {
-	if o == nil || isNil(o.TotalNumberOfEntitlements) {
+	if o == nil || IsNil(o.TotalNumberOfEntitlements) {
 		return nil, false
 	}
 	return o.TotalNumberOfEntitlements, true
@@ -170,7 +170,7 @@ func (o *RoleInsightsSummary) GetTotalNumberOfEntitlementsOk() (*int32, bool) {
 
 // HasTotalNumberOfEntitlements returns a boolean if a field has been set.
 func (o *RoleInsightsSummary) HasTotalNumberOfEntitlements() bool {
-	if o != nil && !isNil(o.TotalNumberOfEntitlements) {
+	if o != nil && !IsNil(o.TotalNumberOfEntitlements) {
 		return true
 	}
 
@@ -184,7 +184,7 @@ func (o *RoleInsightsSummary) SetTotalNumberOfEntitlements(v int32) {
 
 // GetIdentitiesWithAccessViaRoles returns the IdentitiesWithAccessViaRoles field value if set, zero value otherwise.
 func (o *RoleInsightsSummary) GetIdentitiesWithAccessViaRoles() int32 {
-	if o == nil || isNil(o.IdentitiesWithAccessViaRoles) {
+	if o == nil || IsNil(o.IdentitiesWithAccessViaRoles) {
 		var ret int32
 		return ret
 	}
@@ -194,7 +194,7 @@ func (o *RoleInsightsSummary) GetIdentitiesWithAccessViaRoles() int32 {
 // GetIdentitiesWithAccessViaRolesOk returns a tuple with the IdentitiesWithAccessViaRoles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleInsightsSummary) GetIdentitiesWithAccessViaRolesOk() (*int32, bool) {
-	if o == nil || isNil(o.IdentitiesWithAccessViaRoles) {
+	if o == nil || IsNil(o.IdentitiesWithAccessViaRoles) {
 		return nil, false
 	}
 	return o.IdentitiesWithAccessViaRoles, true
@@ -202,7 +202,7 @@ func (o *RoleInsightsSummary) GetIdentitiesWithAccessViaRolesOk() (*int32, bool)
 
 // HasIdentitiesWithAccessViaRoles returns a boolean if a field has been set.
 func (o *RoleInsightsSummary) HasIdentitiesWithAccessViaRoles() bool {
-	if o != nil && !isNil(o.IdentitiesWithAccessViaRoles) {
+	if o != nil && !IsNil(o.IdentitiesWithAccessViaRoles) {
 		return true
 	}
 
@@ -216,7 +216,7 @@ func (o *RoleInsightsSummary) SetIdentitiesWithAccessViaRoles(v int32) {
 
 // GetTotalNumberOfIdentities returns the TotalNumberOfIdentities field value if set, zero value otherwise.
 func (o *RoleInsightsSummary) GetTotalNumberOfIdentities() int32 {
-	if o == nil || isNil(o.TotalNumberOfIdentities) {
+	if o == nil || IsNil(o.TotalNumberOfIdentities) {
 		var ret int32
 		return ret
 	}
@@ -226,7 +226,7 @@ func (o *RoleInsightsSummary) GetTotalNumberOfIdentities() int32 {
 // GetTotalNumberOfIdentitiesOk returns a tuple with the TotalNumberOfIdentities field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleInsightsSummary) GetTotalNumberOfIdentitiesOk() (*int32, bool) {
-	if o == nil || isNil(o.TotalNumberOfIdentities) {
+	if o == nil || IsNil(o.TotalNumberOfIdentities) {
 		return nil, false
 	}
 	return o.TotalNumberOfIdentities, true
@@ -234,7 +234,7 @@ func (o *RoleInsightsSummary) GetTotalNumberOfIdentitiesOk() (*int32, bool) {
 
 // HasTotalNumberOfIdentities returns a boolean if a field has been set.
 func (o *RoleInsightsSummary) HasTotalNumberOfIdentities() bool {
-	if o != nil && !isNil(o.TotalNumberOfIdentities) {
+	if o != nil && !IsNil(o.TotalNumberOfIdentities) {
 		return true
 	}
 
@@ -256,22 +256,22 @@ func (o RoleInsightsSummary) MarshalJSON() ([]byte, error) {
 
 func (o RoleInsightsSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.NumberOfUpdates) {
+	if !IsNil(o.NumberOfUpdates) {
 		toSerialize["numberOfUpdates"] = o.NumberOfUpdates
 	}
-	if !isNil(o.LastGenerated) {
+	if !IsNil(o.LastGenerated) {
 		toSerialize["lastGenerated"] = o.LastGenerated
 	}
-	if !isNil(o.EntitlementsIncludedInRoles) {
+	if !IsNil(o.EntitlementsIncludedInRoles) {
 		toSerialize["entitlementsIncludedInRoles"] = o.EntitlementsIncludedInRoles
 	}
-	if !isNil(o.TotalNumberOfEntitlements) {
+	if !IsNil(o.TotalNumberOfEntitlements) {
 		toSerialize["totalNumberOfEntitlements"] = o.TotalNumberOfEntitlements
 	}
-	if !isNil(o.IdentitiesWithAccessViaRoles) {
+	if !IsNil(o.IdentitiesWithAccessViaRoles) {
 		toSerialize["identitiesWithAccessViaRoles"] = o.IdentitiesWithAccessViaRoles
 	}
-	if !isNil(o.TotalNumberOfIdentities) {
+	if !IsNil(o.TotalNumberOfIdentities) {
 		toSerialize["totalNumberOfIdentities"] = o.TotalNumberOfIdentities
 	}
 
@@ -282,16 +282,20 @@ func (o RoleInsightsSummary) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *RoleInsightsSummary) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RoleInsightsSummary) UnmarshalJSON(data []byte) (err error) {
 	varRoleInsightsSummary := _RoleInsightsSummary{}
 
-	if err = json.Unmarshal(bytes, &varRoleInsightsSummary); err == nil {
+	err = json.Unmarshal(data, &varRoleInsightsSummary)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RoleInsightsSummary(varRoleInsightsSummary)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "numberOfUpdates")
 		delete(additionalProperties, "lastGenerated")
 		delete(additionalProperties, "entitlementsIncludedInRoles")

@@ -57,7 +57,7 @@ func NewMfaOktaConfigWithDefaults() *MfaOktaConfig {
 
 // GetMfaMethod returns the MfaMethod field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MfaOktaConfig) GetMfaMethod() string {
-	if o == nil || isNil(o.MfaMethod.Get()) {
+	if o == nil || IsNil(o.MfaMethod.Get()) {
 		var ret string
 		return ret
 	}
@@ -99,7 +99,7 @@ func (o *MfaOktaConfig) UnsetMfaMethod() {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *MfaOktaConfig) GetEnabled() bool {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -109,7 +109,7 @@ func (o *MfaOktaConfig) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MfaOktaConfig) GetEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -117,7 +117,7 @@ func (o *MfaOktaConfig) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *MfaOktaConfig) HasEnabled() bool {
-	if o != nil && !isNil(o.Enabled) {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -131,7 +131,7 @@ func (o *MfaOktaConfig) SetEnabled(v bool) {
 
 // GetHost returns the Host field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MfaOktaConfig) GetHost() string {
-	if o == nil || isNil(o.Host.Get()) {
+	if o == nil || IsNil(o.Host.Get()) {
 		var ret string
 		return ret
 	}
@@ -173,7 +173,7 @@ func (o *MfaOktaConfig) UnsetHost() {
 
 // GetAccessKey returns the AccessKey field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MfaOktaConfig) GetAccessKey() string {
-	if o == nil || isNil(o.AccessKey.Get()) {
+	if o == nil || IsNil(o.AccessKey.Get()) {
 		var ret string
 		return ret
 	}
@@ -215,7 +215,7 @@ func (o *MfaOktaConfig) UnsetAccessKey() {
 
 // GetIdentityAttribute returns the IdentityAttribute field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MfaOktaConfig) GetIdentityAttribute() string {
-	if o == nil || isNil(o.IdentityAttribute.Get()) {
+	if o == nil || IsNil(o.IdentityAttribute.Get()) {
 		var ret string
 		return ret
 	}
@@ -268,7 +268,7 @@ func (o MfaOktaConfig) ToMap() (map[string]interface{}, error) {
 	if o.MfaMethod.IsSet() {
 		toSerialize["mfaMethod"] = o.MfaMethod.Get()
 	}
-	if !isNil(o.Enabled) {
+	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
 	if o.Host.IsSet() {
@@ -288,16 +288,20 @@ func (o MfaOktaConfig) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *MfaOktaConfig) UnmarshalJSON(bytes []byte) (err error) {
+func (o *MfaOktaConfig) UnmarshalJSON(data []byte) (err error) {
 	varMfaOktaConfig := _MfaOktaConfig{}
 
-	if err = json.Unmarshal(bytes, &varMfaOktaConfig); err == nil {
+	err = json.Unmarshal(data, &varMfaOktaConfig)
+
+	if err != nil {
+		return err
+	}
+
 	*o = MfaOktaConfig(varMfaOktaConfig)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "mfaMethod")
 		delete(additionalProperties, "enabled")
 		delete(additionalProperties, "host")

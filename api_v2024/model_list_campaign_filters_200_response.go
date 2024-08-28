@@ -47,7 +47,7 @@ func NewListCampaignFilters200ResponseWithDefaults() *ListCampaignFilters200Resp
 
 // GetItems returns the Items field value if set, zero value otherwise.
 func (o *ListCampaignFilters200Response) GetItems() []CampaignFilterDetails {
-	if o == nil || isNil(o.Items) {
+	if o == nil || IsNil(o.Items) {
 		var ret []CampaignFilterDetails
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *ListCampaignFilters200Response) GetItems() []CampaignFilterDetails {
 // GetItemsOk returns a tuple with the Items field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ListCampaignFilters200Response) GetItemsOk() ([]CampaignFilterDetails, bool) {
-	if o == nil || isNil(o.Items) {
+	if o == nil || IsNil(o.Items) {
 		return nil, false
 	}
 	return o.Items, true
@@ -65,7 +65,7 @@ func (o *ListCampaignFilters200Response) GetItemsOk() ([]CampaignFilterDetails, 
 
 // HasItems returns a boolean if a field has been set.
 func (o *ListCampaignFilters200Response) HasItems() bool {
-	if o != nil && !isNil(o.Items) {
+	if o != nil && !IsNil(o.Items) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *ListCampaignFilters200Response) SetItems(v []CampaignFilterDetails) {
 
 // GetCount returns the Count field value if set, zero value otherwise.
 func (o *ListCampaignFilters200Response) GetCount() int32 {
-	if o == nil || isNil(o.Count) {
+	if o == nil || IsNil(o.Count) {
 		var ret int32
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *ListCampaignFilters200Response) GetCount() int32 {
 // GetCountOk returns a tuple with the Count field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ListCampaignFilters200Response) GetCountOk() (*int32, bool) {
-	if o == nil || isNil(o.Count) {
+	if o == nil || IsNil(o.Count) {
 		return nil, false
 	}
 	return o.Count, true
@@ -97,7 +97,7 @@ func (o *ListCampaignFilters200Response) GetCountOk() (*int32, bool) {
 
 // HasCount returns a boolean if a field has been set.
 func (o *ListCampaignFilters200Response) HasCount() bool {
-	if o != nil && !isNil(o.Count) {
+	if o != nil && !IsNil(o.Count) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o ListCampaignFilters200Response) MarshalJSON() ([]byte, error) {
 
 func (o ListCampaignFilters200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Items) {
+	if !IsNil(o.Items) {
 		toSerialize["items"] = o.Items
 	}
-	if !isNil(o.Count) {
+	if !IsNil(o.Count) {
 		toSerialize["count"] = o.Count
 	}
 
@@ -133,16 +133,20 @@ func (o ListCampaignFilters200Response) ToMap() (map[string]interface{}, error) 
 	return toSerialize, nil
 }
 
-func (o *ListCampaignFilters200Response) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ListCampaignFilters200Response) UnmarshalJSON(data []byte) (err error) {
 	varListCampaignFilters200Response := _ListCampaignFilters200Response{}
 
-	if err = json.Unmarshal(bytes, &varListCampaignFilters200Response); err == nil {
+	err = json.Unmarshal(data, &varListCampaignFilters200Response)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ListCampaignFilters200Response(varListCampaignFilters200Response)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "items")
 		delete(additionalProperties, "count")
 		o.AdditionalProperties = additionalProperties

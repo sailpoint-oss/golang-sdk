@@ -64,7 +64,7 @@ func NewWorkflowLibraryActionWithDefaults() *WorkflowLibraryAction {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *WorkflowLibraryAction) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -74,7 +74,7 @@ func (o *WorkflowLibraryAction) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowLibraryAction) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -82,7 +82,7 @@ func (o *WorkflowLibraryAction) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *WorkflowLibraryAction) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -96,7 +96,7 @@ func (o *WorkflowLibraryAction) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *WorkflowLibraryAction) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -106,7 +106,7 @@ func (o *WorkflowLibraryAction) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowLibraryAction) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -114,7 +114,7 @@ func (o *WorkflowLibraryAction) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *WorkflowLibraryAction) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -128,7 +128,7 @@ func (o *WorkflowLibraryAction) SetName(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *WorkflowLibraryAction) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -138,7 +138,7 @@ func (o *WorkflowLibraryAction) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowLibraryAction) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -146,7 +146,7 @@ func (o *WorkflowLibraryAction) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *WorkflowLibraryAction) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -160,7 +160,7 @@ func (o *WorkflowLibraryAction) SetType(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *WorkflowLibraryAction) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -170,7 +170,7 @@ func (o *WorkflowLibraryAction) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowLibraryAction) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -178,7 +178,7 @@ func (o *WorkflowLibraryAction) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *WorkflowLibraryAction) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -203,7 +203,7 @@ func (o *WorkflowLibraryAction) GetFormFields() []WorkflowLibraryFormFields {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WorkflowLibraryAction) GetFormFieldsOk() ([]WorkflowLibraryFormFields, bool) {
-	if o == nil || isNil(o.FormFields) {
+	if o == nil || IsNil(o.FormFields) {
 		return nil, false
 	}
 	return o.FormFields, true
@@ -211,7 +211,7 @@ func (o *WorkflowLibraryAction) GetFormFieldsOk() ([]WorkflowLibraryFormFields, 
 
 // HasFormFields returns a boolean if a field has been set.
 func (o *WorkflowLibraryAction) HasFormFields() bool {
-	if o != nil && isNil(o.FormFields) {
+	if o != nil && !IsNil(o.FormFields) {
 		return true
 	}
 
@@ -225,7 +225,7 @@ func (o *WorkflowLibraryAction) SetFormFields(v []WorkflowLibraryFormFields) {
 
 // GetExampleOutput returns the ExampleOutput field value if set, zero value otherwise.
 func (o *WorkflowLibraryAction) GetExampleOutput() WorkflowLibraryActionExampleOutput {
-	if o == nil || isNil(o.ExampleOutput) {
+	if o == nil || IsNil(o.ExampleOutput) {
 		var ret WorkflowLibraryActionExampleOutput
 		return ret
 	}
@@ -235,7 +235,7 @@ func (o *WorkflowLibraryAction) GetExampleOutput() WorkflowLibraryActionExampleO
 // GetExampleOutputOk returns a tuple with the ExampleOutput field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowLibraryAction) GetExampleOutputOk() (*WorkflowLibraryActionExampleOutput, bool) {
-	if o == nil || isNil(o.ExampleOutput) {
+	if o == nil || IsNil(o.ExampleOutput) {
 		return nil, false
 	}
 	return o.ExampleOutput, true
@@ -243,7 +243,7 @@ func (o *WorkflowLibraryAction) GetExampleOutputOk() (*WorkflowLibraryActionExam
 
 // HasExampleOutput returns a boolean if a field has been set.
 func (o *WorkflowLibraryAction) HasExampleOutput() bool {
-	if o != nil && !isNil(o.ExampleOutput) {
+	if o != nil && !IsNil(o.ExampleOutput) {
 		return true
 	}
 
@@ -257,7 +257,7 @@ func (o *WorkflowLibraryAction) SetExampleOutput(v WorkflowLibraryActionExampleO
 
 // GetDeprecated returns the Deprecated field value if set, zero value otherwise.
 func (o *WorkflowLibraryAction) GetDeprecated() bool {
-	if o == nil || isNil(o.Deprecated) {
+	if o == nil || IsNil(o.Deprecated) {
 		var ret bool
 		return ret
 	}
@@ -267,7 +267,7 @@ func (o *WorkflowLibraryAction) GetDeprecated() bool {
 // GetDeprecatedOk returns a tuple with the Deprecated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowLibraryAction) GetDeprecatedOk() (*bool, bool) {
-	if o == nil || isNil(o.Deprecated) {
+	if o == nil || IsNil(o.Deprecated) {
 		return nil, false
 	}
 	return o.Deprecated, true
@@ -275,7 +275,7 @@ func (o *WorkflowLibraryAction) GetDeprecatedOk() (*bool, bool) {
 
 // HasDeprecated returns a boolean if a field has been set.
 func (o *WorkflowLibraryAction) HasDeprecated() bool {
-	if o != nil && !isNil(o.Deprecated) {
+	if o != nil && !IsNil(o.Deprecated) {
 		return true
 	}
 
@@ -289,7 +289,7 @@ func (o *WorkflowLibraryAction) SetDeprecated(v bool) {
 
 // GetDeprecatedBy returns the DeprecatedBy field value if set, zero value otherwise.
 func (o *WorkflowLibraryAction) GetDeprecatedBy() time.Time {
-	if o == nil || isNil(o.DeprecatedBy) {
+	if o == nil || IsNil(o.DeprecatedBy) {
 		var ret time.Time
 		return ret
 	}
@@ -299,7 +299,7 @@ func (o *WorkflowLibraryAction) GetDeprecatedBy() time.Time {
 // GetDeprecatedByOk returns a tuple with the DeprecatedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowLibraryAction) GetDeprecatedByOk() (*time.Time, bool) {
-	if o == nil || isNil(o.DeprecatedBy) {
+	if o == nil || IsNil(o.DeprecatedBy) {
 		return nil, false
 	}
 	return o.DeprecatedBy, true
@@ -307,7 +307,7 @@ func (o *WorkflowLibraryAction) GetDeprecatedByOk() (*time.Time, bool) {
 
 // HasDeprecatedBy returns a boolean if a field has been set.
 func (o *WorkflowLibraryAction) HasDeprecatedBy() bool {
-	if o != nil && !isNil(o.DeprecatedBy) {
+	if o != nil && !IsNil(o.DeprecatedBy) {
 		return true
 	}
 
@@ -321,7 +321,7 @@ func (o *WorkflowLibraryAction) SetDeprecatedBy(v time.Time) {
 
 // GetVersionNumber returns the VersionNumber field value if set, zero value otherwise.
 func (o *WorkflowLibraryAction) GetVersionNumber() int32 {
-	if o == nil || isNil(o.VersionNumber) {
+	if o == nil || IsNil(o.VersionNumber) {
 		var ret int32
 		return ret
 	}
@@ -331,7 +331,7 @@ func (o *WorkflowLibraryAction) GetVersionNumber() int32 {
 // GetVersionNumberOk returns a tuple with the VersionNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowLibraryAction) GetVersionNumberOk() (*int32, bool) {
-	if o == nil || isNil(o.VersionNumber) {
+	if o == nil || IsNil(o.VersionNumber) {
 		return nil, false
 	}
 	return o.VersionNumber, true
@@ -339,7 +339,7 @@ func (o *WorkflowLibraryAction) GetVersionNumberOk() (*int32, bool) {
 
 // HasVersionNumber returns a boolean if a field has been set.
 func (o *WorkflowLibraryAction) HasVersionNumber() bool {
-	if o != nil && !isNil(o.VersionNumber) {
+	if o != nil && !IsNil(o.VersionNumber) {
 		return true
 	}
 
@@ -353,7 +353,7 @@ func (o *WorkflowLibraryAction) SetVersionNumber(v int32) {
 
 // GetIsSimulationEnabled returns the IsSimulationEnabled field value if set, zero value otherwise.
 func (o *WorkflowLibraryAction) GetIsSimulationEnabled() bool {
-	if o == nil || isNil(o.IsSimulationEnabled) {
+	if o == nil || IsNil(o.IsSimulationEnabled) {
 		var ret bool
 		return ret
 	}
@@ -363,7 +363,7 @@ func (o *WorkflowLibraryAction) GetIsSimulationEnabled() bool {
 // GetIsSimulationEnabledOk returns a tuple with the IsSimulationEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowLibraryAction) GetIsSimulationEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.IsSimulationEnabled) {
+	if o == nil || IsNil(o.IsSimulationEnabled) {
 		return nil, false
 	}
 	return o.IsSimulationEnabled, true
@@ -371,7 +371,7 @@ func (o *WorkflowLibraryAction) GetIsSimulationEnabledOk() (*bool, bool) {
 
 // HasIsSimulationEnabled returns a boolean if a field has been set.
 func (o *WorkflowLibraryAction) HasIsSimulationEnabled() bool {
-	if o != nil && !isNil(o.IsSimulationEnabled) {
+	if o != nil && !IsNil(o.IsSimulationEnabled) {
 		return true
 	}
 
@@ -385,7 +385,7 @@ func (o *WorkflowLibraryAction) SetIsSimulationEnabled(v bool) {
 
 // GetIsDynamicSchema returns the IsDynamicSchema field value if set, zero value otherwise.
 func (o *WorkflowLibraryAction) GetIsDynamicSchema() bool {
-	if o == nil || isNil(o.IsDynamicSchema) {
+	if o == nil || IsNil(o.IsDynamicSchema) {
 		var ret bool
 		return ret
 	}
@@ -395,7 +395,7 @@ func (o *WorkflowLibraryAction) GetIsDynamicSchema() bool {
 // GetIsDynamicSchemaOk returns a tuple with the IsDynamicSchema field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowLibraryAction) GetIsDynamicSchemaOk() (*bool, bool) {
-	if o == nil || isNil(o.IsDynamicSchema) {
+	if o == nil || IsNil(o.IsDynamicSchema) {
 		return nil, false
 	}
 	return o.IsDynamicSchema, true
@@ -403,7 +403,7 @@ func (o *WorkflowLibraryAction) GetIsDynamicSchemaOk() (*bool, bool) {
 
 // HasIsDynamicSchema returns a boolean if a field has been set.
 func (o *WorkflowLibraryAction) HasIsDynamicSchema() bool {
-	if o != nil && !isNil(o.IsDynamicSchema) {
+	if o != nil && !IsNil(o.IsDynamicSchema) {
 		return true
 	}
 
@@ -417,7 +417,7 @@ func (o *WorkflowLibraryAction) SetIsDynamicSchema(v bool) {
 
 // GetOutputSchema returns the OutputSchema field value if set, zero value otherwise.
 func (o *WorkflowLibraryAction) GetOutputSchema() map[string]interface{} {
-	if o == nil || isNil(o.OutputSchema) {
+	if o == nil || IsNil(o.OutputSchema) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -427,7 +427,7 @@ func (o *WorkflowLibraryAction) GetOutputSchema() map[string]interface{} {
 // GetOutputSchemaOk returns a tuple with the OutputSchema field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowLibraryAction) GetOutputSchemaOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.OutputSchema) {
+	if o == nil || IsNil(o.OutputSchema) {
 		return map[string]interface{}{}, false
 	}
 	return o.OutputSchema, true
@@ -435,7 +435,7 @@ func (o *WorkflowLibraryAction) GetOutputSchemaOk() (map[string]interface{}, boo
 
 // HasOutputSchema returns a boolean if a field has been set.
 func (o *WorkflowLibraryAction) HasOutputSchema() bool {
-	if o != nil && !isNil(o.OutputSchema) {
+	if o != nil && !IsNil(o.OutputSchema) {
 		return true
 	}
 
@@ -457,40 +457,40 @@ func (o WorkflowLibraryAction) MarshalJSON() ([]byte, error) {
 
 func (o WorkflowLibraryAction) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 	if o.FormFields != nil {
 		toSerialize["formFields"] = o.FormFields
 	}
-	if !isNil(o.ExampleOutput) {
+	if !IsNil(o.ExampleOutput) {
 		toSerialize["exampleOutput"] = o.ExampleOutput
 	}
-	if !isNil(o.Deprecated) {
+	if !IsNil(o.Deprecated) {
 		toSerialize["deprecated"] = o.Deprecated
 	}
-	if !isNil(o.DeprecatedBy) {
+	if !IsNil(o.DeprecatedBy) {
 		toSerialize["deprecatedBy"] = o.DeprecatedBy
 	}
-	if !isNil(o.VersionNumber) {
+	if !IsNil(o.VersionNumber) {
 		toSerialize["versionNumber"] = o.VersionNumber
 	}
-	if !isNil(o.IsSimulationEnabled) {
+	if !IsNil(o.IsSimulationEnabled) {
 		toSerialize["isSimulationEnabled"] = o.IsSimulationEnabled
 	}
-	if !isNil(o.IsDynamicSchema) {
+	if !IsNil(o.IsDynamicSchema) {
 		toSerialize["isDynamicSchema"] = o.IsDynamicSchema
 	}
-	if !isNil(o.OutputSchema) {
+	if !IsNil(o.OutputSchema) {
 		toSerialize["outputSchema"] = o.OutputSchema
 	}
 
@@ -501,16 +501,20 @@ func (o WorkflowLibraryAction) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *WorkflowLibraryAction) UnmarshalJSON(bytes []byte) (err error) {
+func (o *WorkflowLibraryAction) UnmarshalJSON(data []byte) (err error) {
 	varWorkflowLibraryAction := _WorkflowLibraryAction{}
 
-	if err = json.Unmarshal(bytes, &varWorkflowLibraryAction); err == nil {
+	err = json.Unmarshal(data, &varWorkflowLibraryAction)
+
+	if err != nil {
+		return err
+	}
+
 	*o = WorkflowLibraryAction(varWorkflowLibraryAction)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "type")

@@ -45,7 +45,7 @@ func NewSedBatchRequestWithDefaults() *SedBatchRequest {
 
 // GetEntitlements returns the Entitlements field value if set, zero value otherwise.
 func (o *SedBatchRequest) GetEntitlements() []string {
-	if o == nil || isNil(o.Entitlements) {
+	if o == nil || IsNil(o.Entitlements) {
 		var ret []string
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *SedBatchRequest) GetEntitlements() []string {
 // GetEntitlementsOk returns a tuple with the Entitlements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SedBatchRequest) GetEntitlementsOk() ([]string, bool) {
-	if o == nil || isNil(o.Entitlements) {
+	if o == nil || IsNil(o.Entitlements) {
 		return nil, false
 	}
 	return o.Entitlements, true
@@ -63,7 +63,7 @@ func (o *SedBatchRequest) GetEntitlementsOk() ([]string, bool) {
 
 // HasEntitlements returns a boolean if a field has been set.
 func (o *SedBatchRequest) HasEntitlements() bool {
-	if o != nil && !isNil(o.Entitlements) {
+	if o != nil && !IsNil(o.Entitlements) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o SedBatchRequest) MarshalJSON() ([]byte, error) {
 
 func (o SedBatchRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Entitlements) {
+	if !IsNil(o.Entitlements) {
 		toSerialize["entitlements"] = o.Entitlements
 	}
 
@@ -96,16 +96,20 @@ func (o SedBatchRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SedBatchRequest) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SedBatchRequest) UnmarshalJSON(data []byte) (err error) {
 	varSedBatchRequest := _SedBatchRequest{}
 
-	if err = json.Unmarshal(bytes, &varSedBatchRequest); err == nil {
+	err = json.Unmarshal(data, &varSedBatchRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SedBatchRequest(varSedBatchRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "entitlements")
 		o.AdditionalProperties = additionalProperties
 	}

@@ -50,7 +50,7 @@ func NewApprovalReminderAndEscalationConfigWithDefaults() *ApprovalReminderAndEs
 
 // GetDaysUntilEscalation returns the DaysUntilEscalation field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApprovalReminderAndEscalationConfig) GetDaysUntilEscalation() int32 {
-	if o == nil || isNil(o.DaysUntilEscalation.Get()) {
+	if o == nil || IsNil(o.DaysUntilEscalation.Get()) {
 		var ret int32
 		return ret
 	}
@@ -92,7 +92,7 @@ func (o *ApprovalReminderAndEscalationConfig) UnsetDaysUntilEscalation() {
 
 // GetDaysBetweenReminders returns the DaysBetweenReminders field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApprovalReminderAndEscalationConfig) GetDaysBetweenReminders() int32 {
-	if o == nil || isNil(o.DaysBetweenReminders.Get()) {
+	if o == nil || IsNil(o.DaysBetweenReminders.Get()) {
 		var ret int32
 		return ret
 	}
@@ -134,7 +134,7 @@ func (o *ApprovalReminderAndEscalationConfig) UnsetDaysBetweenReminders() {
 
 // GetMaxReminders returns the MaxReminders field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApprovalReminderAndEscalationConfig) GetMaxReminders() int32 {
-	if o == nil || isNil(o.MaxReminders.Get()) {
+	if o == nil || IsNil(o.MaxReminders.Get()) {
 		var ret int32
 		return ret
 	}
@@ -176,7 +176,7 @@ func (o *ApprovalReminderAndEscalationConfig) UnsetMaxReminders() {
 
 // GetFallbackApproverRef returns the FallbackApproverRef field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApprovalReminderAndEscalationConfig) GetFallbackApproverRef() IdentityReferenceWithNameAndEmail {
-	if o == nil || isNil(o.FallbackApproverRef.Get()) {
+	if o == nil || IsNil(o.FallbackApproverRef.Get()) {
 		var ret IdentityReferenceWithNameAndEmail
 		return ret
 	}
@@ -246,16 +246,20 @@ func (o ApprovalReminderAndEscalationConfig) ToMap() (map[string]interface{}, er
 	return toSerialize, nil
 }
 
-func (o *ApprovalReminderAndEscalationConfig) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ApprovalReminderAndEscalationConfig) UnmarshalJSON(data []byte) (err error) {
 	varApprovalReminderAndEscalationConfig := _ApprovalReminderAndEscalationConfig{}
 
-	if err = json.Unmarshal(bytes, &varApprovalReminderAndEscalationConfig); err == nil {
+	err = json.Unmarshal(data, &varApprovalReminderAndEscalationConfig)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ApprovalReminderAndEscalationConfig(varApprovalReminderAndEscalationConfig)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "daysUntilEscalation")
 		delete(additionalProperties, "daysBetweenReminders")
 		delete(additionalProperties, "maxReminders")

@@ -61,7 +61,7 @@ func NewRoleMiningPotentialRoleProvisionRequestWithDefaults() *RoleMiningPotenti
 
 // GetRoleName returns the RoleName field value if set, zero value otherwise.
 func (o *RoleMiningPotentialRoleProvisionRequest) GetRoleName() string {
-	if o == nil || isNil(o.RoleName) {
+	if o == nil || IsNil(o.RoleName) {
 		var ret string
 		return ret
 	}
@@ -71,7 +71,7 @@ func (o *RoleMiningPotentialRoleProvisionRequest) GetRoleName() string {
 // GetRoleNameOk returns a tuple with the RoleName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningPotentialRoleProvisionRequest) GetRoleNameOk() (*string, bool) {
-	if o == nil || isNil(o.RoleName) {
+	if o == nil || IsNil(o.RoleName) {
 		return nil, false
 	}
 	return o.RoleName, true
@@ -79,7 +79,7 @@ func (o *RoleMiningPotentialRoleProvisionRequest) GetRoleNameOk() (*string, bool
 
 // HasRoleName returns a boolean if a field has been set.
 func (o *RoleMiningPotentialRoleProvisionRequest) HasRoleName() bool {
-	if o != nil && !isNil(o.RoleName) {
+	if o != nil && !IsNil(o.RoleName) {
 		return true
 	}
 
@@ -93,7 +93,7 @@ func (o *RoleMiningPotentialRoleProvisionRequest) SetRoleName(v string) {
 
 // GetRoleDescription returns the RoleDescription field value if set, zero value otherwise.
 func (o *RoleMiningPotentialRoleProvisionRequest) GetRoleDescription() string {
-	if o == nil || isNil(o.RoleDescription) {
+	if o == nil || IsNil(o.RoleDescription) {
 		var ret string
 		return ret
 	}
@@ -103,7 +103,7 @@ func (o *RoleMiningPotentialRoleProvisionRequest) GetRoleDescription() string {
 // GetRoleDescriptionOk returns a tuple with the RoleDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningPotentialRoleProvisionRequest) GetRoleDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.RoleDescription) {
+	if o == nil || IsNil(o.RoleDescription) {
 		return nil, false
 	}
 	return o.RoleDescription, true
@@ -111,7 +111,7 @@ func (o *RoleMiningPotentialRoleProvisionRequest) GetRoleDescriptionOk() (*strin
 
 // HasRoleDescription returns a boolean if a field has been set.
 func (o *RoleMiningPotentialRoleProvisionRequest) HasRoleDescription() bool {
-	if o != nil && !isNil(o.RoleDescription) {
+	if o != nil && !IsNil(o.RoleDescription) {
 		return true
 	}
 
@@ -125,7 +125,7 @@ func (o *RoleMiningPotentialRoleProvisionRequest) SetRoleDescription(v string) {
 
 // GetOwnerId returns the OwnerId field value if set, zero value otherwise.
 func (o *RoleMiningPotentialRoleProvisionRequest) GetOwnerId() string {
-	if o == nil || isNil(o.OwnerId) {
+	if o == nil || IsNil(o.OwnerId) {
 		var ret string
 		return ret
 	}
@@ -135,7 +135,7 @@ func (o *RoleMiningPotentialRoleProvisionRequest) GetOwnerId() string {
 // GetOwnerIdOk returns a tuple with the OwnerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningPotentialRoleProvisionRequest) GetOwnerIdOk() (*string, bool) {
-	if o == nil || isNil(o.OwnerId) {
+	if o == nil || IsNil(o.OwnerId) {
 		return nil, false
 	}
 	return o.OwnerId, true
@@ -143,7 +143,7 @@ func (o *RoleMiningPotentialRoleProvisionRequest) GetOwnerIdOk() (*string, bool)
 
 // HasOwnerId returns a boolean if a field has been set.
 func (o *RoleMiningPotentialRoleProvisionRequest) HasOwnerId() bool {
-	if o != nil && !isNil(o.OwnerId) {
+	if o != nil && !IsNil(o.OwnerId) {
 		return true
 	}
 
@@ -157,7 +157,7 @@ func (o *RoleMiningPotentialRoleProvisionRequest) SetOwnerId(v string) {
 
 // GetIncludeIdentities returns the IncludeIdentities field value if set, zero value otherwise.
 func (o *RoleMiningPotentialRoleProvisionRequest) GetIncludeIdentities() bool {
-	if o == nil || isNil(o.IncludeIdentities) {
+	if o == nil || IsNil(o.IncludeIdentities) {
 		var ret bool
 		return ret
 	}
@@ -167,7 +167,7 @@ func (o *RoleMiningPotentialRoleProvisionRequest) GetIncludeIdentities() bool {
 // GetIncludeIdentitiesOk returns a tuple with the IncludeIdentities field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningPotentialRoleProvisionRequest) GetIncludeIdentitiesOk() (*bool, bool) {
-	if o == nil || isNil(o.IncludeIdentities) {
+	if o == nil || IsNil(o.IncludeIdentities) {
 		return nil, false
 	}
 	return o.IncludeIdentities, true
@@ -175,7 +175,7 @@ func (o *RoleMiningPotentialRoleProvisionRequest) GetIncludeIdentitiesOk() (*boo
 
 // HasIncludeIdentities returns a boolean if a field has been set.
 func (o *RoleMiningPotentialRoleProvisionRequest) HasIncludeIdentities() bool {
-	if o != nil && !isNil(o.IncludeIdentities) {
+	if o != nil && !IsNil(o.IncludeIdentities) {
 		return true
 	}
 
@@ -189,7 +189,7 @@ func (o *RoleMiningPotentialRoleProvisionRequest) SetIncludeIdentities(v bool) {
 
 // GetDirectlyAssignedEntitlements returns the DirectlyAssignedEntitlements field value if set, zero value otherwise.
 func (o *RoleMiningPotentialRoleProvisionRequest) GetDirectlyAssignedEntitlements() bool {
-	if o == nil || isNil(o.DirectlyAssignedEntitlements) {
+	if o == nil || IsNil(o.DirectlyAssignedEntitlements) {
 		var ret bool
 		return ret
 	}
@@ -199,7 +199,7 @@ func (o *RoleMiningPotentialRoleProvisionRequest) GetDirectlyAssignedEntitlement
 // GetDirectlyAssignedEntitlementsOk returns a tuple with the DirectlyAssignedEntitlements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningPotentialRoleProvisionRequest) GetDirectlyAssignedEntitlementsOk() (*bool, bool) {
-	if o == nil || isNil(o.DirectlyAssignedEntitlements) {
+	if o == nil || IsNil(o.DirectlyAssignedEntitlements) {
 		return nil, false
 	}
 	return o.DirectlyAssignedEntitlements, true
@@ -207,7 +207,7 @@ func (o *RoleMiningPotentialRoleProvisionRequest) GetDirectlyAssignedEntitlement
 
 // HasDirectlyAssignedEntitlements returns a boolean if a field has been set.
 func (o *RoleMiningPotentialRoleProvisionRequest) HasDirectlyAssignedEntitlements() bool {
-	if o != nil && !isNil(o.DirectlyAssignedEntitlements) {
+	if o != nil && !IsNil(o.DirectlyAssignedEntitlements) {
 		return true
 	}
 
@@ -229,19 +229,19 @@ func (o RoleMiningPotentialRoleProvisionRequest) MarshalJSON() ([]byte, error) {
 
 func (o RoleMiningPotentialRoleProvisionRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.RoleName) {
+	if !IsNil(o.RoleName) {
 		toSerialize["roleName"] = o.RoleName
 	}
-	if !isNil(o.RoleDescription) {
+	if !IsNil(o.RoleDescription) {
 		toSerialize["roleDescription"] = o.RoleDescription
 	}
-	if !isNil(o.OwnerId) {
+	if !IsNil(o.OwnerId) {
 		toSerialize["ownerId"] = o.OwnerId
 	}
-	if !isNil(o.IncludeIdentities) {
+	if !IsNil(o.IncludeIdentities) {
 		toSerialize["includeIdentities"] = o.IncludeIdentities
 	}
-	if !isNil(o.DirectlyAssignedEntitlements) {
+	if !IsNil(o.DirectlyAssignedEntitlements) {
 		toSerialize["directlyAssignedEntitlements"] = o.DirectlyAssignedEntitlements
 	}
 
@@ -252,16 +252,20 @@ func (o RoleMiningPotentialRoleProvisionRequest) ToMap() (map[string]interface{}
 	return toSerialize, nil
 }
 
-func (o *RoleMiningPotentialRoleProvisionRequest) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RoleMiningPotentialRoleProvisionRequest) UnmarshalJSON(data []byte) (err error) {
 	varRoleMiningPotentialRoleProvisionRequest := _RoleMiningPotentialRoleProvisionRequest{}
 
-	if err = json.Unmarshal(bytes, &varRoleMiningPotentialRoleProvisionRequest); err == nil {
+	err = json.Unmarshal(data, &varRoleMiningPotentialRoleProvisionRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RoleMiningPotentialRoleProvisionRequest(varRoleMiningPotentialRoleProvisionRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "roleName")
 		delete(additionalProperties, "roleDescription")
 		delete(additionalProperties, "ownerId")

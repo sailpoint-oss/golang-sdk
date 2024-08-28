@@ -55,7 +55,7 @@ func NewAccessRequestRecommendationItemDetailWithDefaults() *AccessRequestRecomm
 
 // GetIdentityId returns the IdentityId field value if set, zero value otherwise.
 func (o *AccessRequestRecommendationItemDetail) GetIdentityId() string {
-	if o == nil || isNil(o.IdentityId) {
+	if o == nil || IsNil(o.IdentityId) {
 		var ret string
 		return ret
 	}
@@ -65,7 +65,7 @@ func (o *AccessRequestRecommendationItemDetail) GetIdentityId() string {
 // GetIdentityIdOk returns a tuple with the IdentityId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestRecommendationItemDetail) GetIdentityIdOk() (*string, bool) {
-	if o == nil || isNil(o.IdentityId) {
+	if o == nil || IsNil(o.IdentityId) {
 		return nil, false
 	}
 	return o.IdentityId, true
@@ -73,7 +73,7 @@ func (o *AccessRequestRecommendationItemDetail) GetIdentityIdOk() (*string, bool
 
 // HasIdentityId returns a boolean if a field has been set.
 func (o *AccessRequestRecommendationItemDetail) HasIdentityId() bool {
-	if o != nil && !isNil(o.IdentityId) {
+	if o != nil && !IsNil(o.IdentityId) {
 		return true
 	}
 
@@ -87,7 +87,7 @@ func (o *AccessRequestRecommendationItemDetail) SetIdentityId(v string) {
 
 // GetAccess returns the Access field value if set, zero value otherwise.
 func (o *AccessRequestRecommendationItemDetail) GetAccess() AccessRequestRecommendationItemDetailAccess {
-	if o == nil || isNil(o.Access) {
+	if o == nil || IsNil(o.Access) {
 		var ret AccessRequestRecommendationItemDetailAccess
 		return ret
 	}
@@ -97,7 +97,7 @@ func (o *AccessRequestRecommendationItemDetail) GetAccess() AccessRequestRecomme
 // GetAccessOk returns a tuple with the Access field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestRecommendationItemDetail) GetAccessOk() (*AccessRequestRecommendationItemDetailAccess, bool) {
-	if o == nil || isNil(o.Access) {
+	if o == nil || IsNil(o.Access) {
 		return nil, false
 	}
 	return o.Access, true
@@ -105,7 +105,7 @@ func (o *AccessRequestRecommendationItemDetail) GetAccessOk() (*AccessRequestRec
 
 // HasAccess returns a boolean if a field has been set.
 func (o *AccessRequestRecommendationItemDetail) HasAccess() bool {
-	if o != nil && !isNil(o.Access) {
+	if o != nil && !IsNil(o.Access) {
 		return true
 	}
 
@@ -119,7 +119,7 @@ func (o *AccessRequestRecommendationItemDetail) SetAccess(v AccessRequestRecomme
 
 // GetIgnored returns the Ignored field value if set, zero value otherwise.
 func (o *AccessRequestRecommendationItemDetail) GetIgnored() bool {
-	if o == nil || isNil(o.Ignored) {
+	if o == nil || IsNil(o.Ignored) {
 		var ret bool
 		return ret
 	}
@@ -129,7 +129,7 @@ func (o *AccessRequestRecommendationItemDetail) GetIgnored() bool {
 // GetIgnoredOk returns a tuple with the Ignored field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestRecommendationItemDetail) GetIgnoredOk() (*bool, bool) {
-	if o == nil || isNil(o.Ignored) {
+	if o == nil || IsNil(o.Ignored) {
 		return nil, false
 	}
 	return o.Ignored, true
@@ -137,7 +137,7 @@ func (o *AccessRequestRecommendationItemDetail) GetIgnoredOk() (*bool, bool) {
 
 // HasIgnored returns a boolean if a field has been set.
 func (o *AccessRequestRecommendationItemDetail) HasIgnored() bool {
-	if o != nil && !isNil(o.Ignored) {
+	if o != nil && !IsNil(o.Ignored) {
 		return true
 	}
 
@@ -151,7 +151,7 @@ func (o *AccessRequestRecommendationItemDetail) SetIgnored(v bool) {
 
 // GetRequested returns the Requested field value if set, zero value otherwise.
 func (o *AccessRequestRecommendationItemDetail) GetRequested() bool {
-	if o == nil || isNil(o.Requested) {
+	if o == nil || IsNil(o.Requested) {
 		var ret bool
 		return ret
 	}
@@ -161,7 +161,7 @@ func (o *AccessRequestRecommendationItemDetail) GetRequested() bool {
 // GetRequestedOk returns a tuple with the Requested field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestRecommendationItemDetail) GetRequestedOk() (*bool, bool) {
-	if o == nil || isNil(o.Requested) {
+	if o == nil || IsNil(o.Requested) {
 		return nil, false
 	}
 	return o.Requested, true
@@ -169,7 +169,7 @@ func (o *AccessRequestRecommendationItemDetail) GetRequestedOk() (*bool, bool) {
 
 // HasRequested returns a boolean if a field has been set.
 func (o *AccessRequestRecommendationItemDetail) HasRequested() bool {
-	if o != nil && !isNil(o.Requested) {
+	if o != nil && !IsNil(o.Requested) {
 		return true
 	}
 
@@ -183,7 +183,7 @@ func (o *AccessRequestRecommendationItemDetail) SetRequested(v bool) {
 
 // GetViewed returns the Viewed field value if set, zero value otherwise.
 func (o *AccessRequestRecommendationItemDetail) GetViewed() bool {
-	if o == nil || isNil(o.Viewed) {
+	if o == nil || IsNil(o.Viewed) {
 		var ret bool
 		return ret
 	}
@@ -193,7 +193,7 @@ func (o *AccessRequestRecommendationItemDetail) GetViewed() bool {
 // GetViewedOk returns a tuple with the Viewed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestRecommendationItemDetail) GetViewedOk() (*bool, bool) {
-	if o == nil || isNil(o.Viewed) {
+	if o == nil || IsNil(o.Viewed) {
 		return nil, false
 	}
 	return o.Viewed, true
@@ -201,7 +201,7 @@ func (o *AccessRequestRecommendationItemDetail) GetViewedOk() (*bool, bool) {
 
 // HasViewed returns a boolean if a field has been set.
 func (o *AccessRequestRecommendationItemDetail) HasViewed() bool {
-	if o != nil && !isNil(o.Viewed) {
+	if o != nil && !IsNil(o.Viewed) {
 		return true
 	}
 
@@ -215,7 +215,7 @@ func (o *AccessRequestRecommendationItemDetail) SetViewed(v bool) {
 
 // GetMessages returns the Messages field value if set, zero value otherwise.
 func (o *AccessRequestRecommendationItemDetail) GetMessages() []AccessRecommendationMessage {
-	if o == nil || isNil(o.Messages) {
+	if o == nil || IsNil(o.Messages) {
 		var ret []AccessRecommendationMessage
 		return ret
 	}
@@ -225,7 +225,7 @@ func (o *AccessRequestRecommendationItemDetail) GetMessages() []AccessRecommenda
 // GetMessagesOk returns a tuple with the Messages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestRecommendationItemDetail) GetMessagesOk() ([]AccessRecommendationMessage, bool) {
-	if o == nil || isNil(o.Messages) {
+	if o == nil || IsNil(o.Messages) {
 		return nil, false
 	}
 	return o.Messages, true
@@ -233,7 +233,7 @@ func (o *AccessRequestRecommendationItemDetail) GetMessagesOk() ([]AccessRecomme
 
 // HasMessages returns a boolean if a field has been set.
 func (o *AccessRequestRecommendationItemDetail) HasMessages() bool {
-	if o != nil && !isNil(o.Messages) {
+	if o != nil && !IsNil(o.Messages) {
 		return true
 	}
 
@@ -247,7 +247,7 @@ func (o *AccessRequestRecommendationItemDetail) SetMessages(v []AccessRecommenda
 
 // GetTranslationMessages returns the TranslationMessages field value if set, zero value otherwise.
 func (o *AccessRequestRecommendationItemDetail) GetTranslationMessages() []TranslationMessage {
-	if o == nil || isNil(o.TranslationMessages) {
+	if o == nil || IsNil(o.TranslationMessages) {
 		var ret []TranslationMessage
 		return ret
 	}
@@ -257,7 +257,7 @@ func (o *AccessRequestRecommendationItemDetail) GetTranslationMessages() []Trans
 // GetTranslationMessagesOk returns a tuple with the TranslationMessages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestRecommendationItemDetail) GetTranslationMessagesOk() ([]TranslationMessage, bool) {
-	if o == nil || isNil(o.TranslationMessages) {
+	if o == nil || IsNil(o.TranslationMessages) {
 		return nil, false
 	}
 	return o.TranslationMessages, true
@@ -265,7 +265,7 @@ func (o *AccessRequestRecommendationItemDetail) GetTranslationMessagesOk() ([]Tr
 
 // HasTranslationMessages returns a boolean if a field has been set.
 func (o *AccessRequestRecommendationItemDetail) HasTranslationMessages() bool {
-	if o != nil && !isNil(o.TranslationMessages) {
+	if o != nil && !IsNil(o.TranslationMessages) {
 		return true
 	}
 
@@ -287,25 +287,25 @@ func (o AccessRequestRecommendationItemDetail) MarshalJSON() ([]byte, error) {
 
 func (o AccessRequestRecommendationItemDetail) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.IdentityId) {
+	if !IsNil(o.IdentityId) {
 		toSerialize["identityId"] = o.IdentityId
 	}
-	if !isNil(o.Access) {
+	if !IsNil(o.Access) {
 		toSerialize["access"] = o.Access
 	}
-	if !isNil(o.Ignored) {
+	if !IsNil(o.Ignored) {
 		toSerialize["ignored"] = o.Ignored
 	}
-	if !isNil(o.Requested) {
+	if !IsNil(o.Requested) {
 		toSerialize["requested"] = o.Requested
 	}
-	if !isNil(o.Viewed) {
+	if !IsNil(o.Viewed) {
 		toSerialize["viewed"] = o.Viewed
 	}
-	if !isNil(o.Messages) {
+	if !IsNil(o.Messages) {
 		toSerialize["messages"] = o.Messages
 	}
-	if !isNil(o.TranslationMessages) {
+	if !IsNil(o.TranslationMessages) {
 		toSerialize["translationMessages"] = o.TranslationMessages
 	}
 
@@ -316,16 +316,20 @@ func (o AccessRequestRecommendationItemDetail) ToMap() (map[string]interface{}, 
 	return toSerialize, nil
 }
 
-func (o *AccessRequestRecommendationItemDetail) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccessRequestRecommendationItemDetail) UnmarshalJSON(data []byte) (err error) {
 	varAccessRequestRecommendationItemDetail := _AccessRequestRecommendationItemDetail{}
 
-	if err = json.Unmarshal(bytes, &varAccessRequestRecommendationItemDetail); err == nil {
+	err = json.Unmarshal(data, &varAccessRequestRecommendationItemDetail)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessRequestRecommendationItemDetail(varAccessRequestRecommendationItemDetail)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "identityId")
 		delete(additionalProperties, "access")
 		delete(additionalProperties, "ignored")

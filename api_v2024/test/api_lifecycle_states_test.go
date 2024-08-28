@@ -19,7 +19,7 @@ import (
 
 func Test_api_v2024_LifecycleStatesAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test LifecycleStatesAPIService CreateLifecycleState", func(t *testing.T) {
@@ -28,7 +28,7 @@ func Test_api_v2024_LifecycleStatesAPIService(t *testing.T) {
 
 		var identityProfileId string
 
-		resp, httpRes, err := apiClient.API_V2024.LifecycleStatesAPI.CreateLifecycleState(context.Background(), identityProfileId).Execute()
+		resp, httpRes, err := apiClient.LifecycleStatesAPI.CreateLifecycleState(context.Background(), identityProfileId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -43,7 +43,7 @@ func Test_api_v2024_LifecycleStatesAPIService(t *testing.T) {
 		var identityProfileId string
 		var lifecycleStateId string
 
-		resp, httpRes, err := apiClient.API_V2024.LifecycleStatesAPI.DeleteLifecycleState(context.Background(), identityProfileId, lifecycleStateId).Execute()
+		resp, httpRes, err := apiClient.LifecycleStatesAPI.DeleteLifecycleState(context.Background(), identityProfileId, lifecycleStateId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -58,7 +58,7 @@ func Test_api_v2024_LifecycleStatesAPIService(t *testing.T) {
 		var identityProfileId string
 		var lifecycleStateId string
 
-		resp, httpRes, err := apiClient.API_V2024.LifecycleStatesAPI.GetLifecycleState(context.Background(), identityProfileId, lifecycleStateId).Execute()
+		resp, httpRes, err := apiClient.LifecycleStatesAPI.GetLifecycleState(context.Background(), identityProfileId, lifecycleStateId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -72,7 +72,7 @@ func Test_api_v2024_LifecycleStatesAPIService(t *testing.T) {
 
 		var identityProfileId string
 
-		resp, httpRes, err := apiClient.API_V2024.LifecycleStatesAPI.GetLifecycleStates(context.Background(), identityProfileId).Execute()
+		resp, httpRes, err := apiClient.LifecycleStatesAPI.GetLifecycleStates(context.Background(), identityProfileId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -86,7 +86,7 @@ func Test_api_v2024_LifecycleStatesAPIService(t *testing.T) {
 
 		var identityId string
 
-		resp, httpRes, err := apiClient.API_V2024.LifecycleStatesAPI.SetLifecycleState(context.Background(), identityId).Execute()
+		resp, httpRes, err := apiClient.LifecycleStatesAPI.SetLifecycleState(context.Background(), identityId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -101,7 +101,7 @@ func Test_api_v2024_LifecycleStatesAPIService(t *testing.T) {
 		var identityProfileId string
 		var lifecycleStateId string
 
-		resp, httpRes, err := apiClient.API_V2024.LifecycleStatesAPI.UpdateLifecycleStates(context.Background(), identityProfileId, lifecycleStateId).Execute()
+		resp, httpRes, err := apiClient.LifecycleStatesAPI.UpdateLifecycleStates(context.Background(), identityProfileId, lifecycleStateId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

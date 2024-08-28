@@ -21,6 +21,7 @@ var _ MappedNullable = &SearchArguments{}
 type SearchArguments struct {
 	// The ID of the scheduled search that triggered the saved search execution. 
 	ScheduleId *string `json:"scheduleId,omitempty"`
+	// The owner of the scheduled search being tested. 
 	Owner *TypedReference `json:"owner,omitempty"`
 	// The email recipients of the scheduled search being tested. 
 	Recipients []TypedReference `json:"recipients,omitempty"`
@@ -48,7 +49,7 @@ func NewSearchArgumentsWithDefaults() *SearchArguments {
 
 // GetScheduleId returns the ScheduleId field value if set, zero value otherwise.
 func (o *SearchArguments) GetScheduleId() string {
-	if o == nil || isNil(o.ScheduleId) {
+	if o == nil || IsNil(o.ScheduleId) {
 		var ret string
 		return ret
 	}
@@ -58,7 +59,7 @@ func (o *SearchArguments) GetScheduleId() string {
 // GetScheduleIdOk returns a tuple with the ScheduleId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SearchArguments) GetScheduleIdOk() (*string, bool) {
-	if o == nil || isNil(o.ScheduleId) {
+	if o == nil || IsNil(o.ScheduleId) {
 		return nil, false
 	}
 	return o.ScheduleId, true
@@ -66,7 +67,7 @@ func (o *SearchArguments) GetScheduleIdOk() (*string, bool) {
 
 // HasScheduleId returns a boolean if a field has been set.
 func (o *SearchArguments) HasScheduleId() bool {
-	if o != nil && !isNil(o.ScheduleId) {
+	if o != nil && !IsNil(o.ScheduleId) {
 		return true
 	}
 
@@ -80,7 +81,7 @@ func (o *SearchArguments) SetScheduleId(v string) {
 
 // GetOwner returns the Owner field value if set, zero value otherwise.
 func (o *SearchArguments) GetOwner() TypedReference {
-	if o == nil || isNil(o.Owner) {
+	if o == nil || IsNil(o.Owner) {
 		var ret TypedReference
 		return ret
 	}
@@ -90,7 +91,7 @@ func (o *SearchArguments) GetOwner() TypedReference {
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SearchArguments) GetOwnerOk() (*TypedReference, bool) {
-	if o == nil || isNil(o.Owner) {
+	if o == nil || IsNil(o.Owner) {
 		return nil, false
 	}
 	return o.Owner, true
@@ -98,7 +99,7 @@ func (o *SearchArguments) GetOwnerOk() (*TypedReference, bool) {
 
 // HasOwner returns a boolean if a field has been set.
 func (o *SearchArguments) HasOwner() bool {
-	if o != nil && !isNil(o.Owner) {
+	if o != nil && !IsNil(o.Owner) {
 		return true
 	}
 
@@ -112,7 +113,7 @@ func (o *SearchArguments) SetOwner(v TypedReference) {
 
 // GetRecipients returns the Recipients field value if set, zero value otherwise.
 func (o *SearchArguments) GetRecipients() []TypedReference {
-	if o == nil || isNil(o.Recipients) {
+	if o == nil || IsNil(o.Recipients) {
 		var ret []TypedReference
 		return ret
 	}
@@ -122,7 +123,7 @@ func (o *SearchArguments) GetRecipients() []TypedReference {
 // GetRecipientsOk returns a tuple with the Recipients field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SearchArguments) GetRecipientsOk() ([]TypedReference, bool) {
-	if o == nil || isNil(o.Recipients) {
+	if o == nil || IsNil(o.Recipients) {
 		return nil, false
 	}
 	return o.Recipients, true
@@ -130,7 +131,7 @@ func (o *SearchArguments) GetRecipientsOk() ([]TypedReference, bool) {
 
 // HasRecipients returns a boolean if a field has been set.
 func (o *SearchArguments) HasRecipients() bool {
-	if o != nil && !isNil(o.Recipients) {
+	if o != nil && !IsNil(o.Recipients) {
 		return true
 	}
 
@@ -152,13 +153,13 @@ func (o SearchArguments) MarshalJSON() ([]byte, error) {
 
 func (o SearchArguments) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ScheduleId) {
+	if !IsNil(o.ScheduleId) {
 		toSerialize["scheduleId"] = o.ScheduleId
 	}
-	if !isNil(o.Owner) {
+	if !IsNil(o.Owner) {
 		toSerialize["owner"] = o.Owner
 	}
-	if !isNil(o.Recipients) {
+	if !IsNil(o.Recipients) {
 		toSerialize["recipients"] = o.Recipients
 	}
 
@@ -169,16 +170,20 @@ func (o SearchArguments) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SearchArguments) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SearchArguments) UnmarshalJSON(data []byte) (err error) {
 	varSearchArguments := _SearchArguments{}
 
-	if err = json.Unmarshal(bytes, &varSearchArguments); err == nil {
+	err = json.Unmarshal(data, &varSearchArguments)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SearchArguments(varSearchArguments)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "scheduleId")
 		delete(additionalProperties, "owner")
 		delete(additionalProperties, "recipients")

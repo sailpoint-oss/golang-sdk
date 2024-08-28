@@ -73,7 +73,7 @@ func (o *TemplateBulkDeleteDto) SetKey(v string) {
 
 // GetMedium returns the Medium field value if set, zero value otherwise.
 func (o *TemplateBulkDeleteDto) GetMedium() string {
-	if o == nil || isNil(o.Medium) {
+	if o == nil || IsNil(o.Medium) {
 		var ret string
 		return ret
 	}
@@ -83,7 +83,7 @@ func (o *TemplateBulkDeleteDto) GetMedium() string {
 // GetMediumOk returns a tuple with the Medium field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateBulkDeleteDto) GetMediumOk() (*string, bool) {
-	if o == nil || isNil(o.Medium) {
+	if o == nil || IsNil(o.Medium) {
 		return nil, false
 	}
 	return o.Medium, true
@@ -91,7 +91,7 @@ func (o *TemplateBulkDeleteDto) GetMediumOk() (*string, bool) {
 
 // HasMedium returns a boolean if a field has been set.
 func (o *TemplateBulkDeleteDto) HasMedium() bool {
-	if o != nil && !isNil(o.Medium) {
+	if o != nil && !IsNil(o.Medium) {
 		return true
 	}
 
@@ -105,7 +105,7 @@ func (o *TemplateBulkDeleteDto) SetMedium(v string) {
 
 // GetLocale returns the Locale field value if set, zero value otherwise.
 func (o *TemplateBulkDeleteDto) GetLocale() string {
-	if o == nil || isNil(o.Locale) {
+	if o == nil || IsNil(o.Locale) {
 		var ret string
 		return ret
 	}
@@ -115,7 +115,7 @@ func (o *TemplateBulkDeleteDto) GetLocale() string {
 // GetLocaleOk returns a tuple with the Locale field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateBulkDeleteDto) GetLocaleOk() (*string, bool) {
-	if o == nil || isNil(o.Locale) {
+	if o == nil || IsNil(o.Locale) {
 		return nil, false
 	}
 	return o.Locale, true
@@ -123,7 +123,7 @@ func (o *TemplateBulkDeleteDto) GetLocaleOk() (*string, bool) {
 
 // HasLocale returns a boolean if a field has been set.
 func (o *TemplateBulkDeleteDto) HasLocale() bool {
-	if o != nil && !isNil(o.Locale) {
+	if o != nil && !IsNil(o.Locale) {
 		return true
 	}
 
@@ -146,10 +146,10 @@ func (o TemplateBulkDeleteDto) MarshalJSON() ([]byte, error) {
 func (o TemplateBulkDeleteDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["key"] = o.Key
-	if !isNil(o.Medium) {
+	if !IsNil(o.Medium) {
 		toSerialize["medium"] = o.Medium
 	}
-	if !isNil(o.Locale) {
+	if !IsNil(o.Locale) {
 		toSerialize["locale"] = o.Locale
 	}
 
@@ -160,8 +160,8 @@ func (o TemplateBulkDeleteDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *TemplateBulkDeleteDto) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *TemplateBulkDeleteDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -170,7 +170,7 @@ func (o *TemplateBulkDeleteDto) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -184,13 +184,17 @@ func (o *TemplateBulkDeleteDto) UnmarshalJSON(bytes []byte) (err error) {
 
 	varTemplateBulkDeleteDto := _TemplateBulkDeleteDto{}
 
-	if err = json.Unmarshal(bytes, &varTemplateBulkDeleteDto); err == nil {
+	err = json.Unmarshal(data, &varTemplateBulkDeleteDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = TemplateBulkDeleteDto(varTemplateBulkDeleteDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "key")
 		delete(additionalProperties, "medium")
 		delete(additionalProperties, "locale")

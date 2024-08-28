@@ -46,7 +46,7 @@ func NewConditionEffectWithDefaults() *ConditionEffect {
 
 // GetEffectType returns the EffectType field value if set, zero value otherwise.
 func (o *ConditionEffect) GetEffectType() string {
-	if o == nil || isNil(o.EffectType) {
+	if o == nil || IsNil(o.EffectType) {
 		var ret string
 		return ret
 	}
@@ -56,7 +56,7 @@ func (o *ConditionEffect) GetEffectType() string {
 // GetEffectTypeOk returns a tuple with the EffectType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConditionEffect) GetEffectTypeOk() (*string, bool) {
-	if o == nil || isNil(o.EffectType) {
+	if o == nil || IsNil(o.EffectType) {
 		return nil, false
 	}
 	return o.EffectType, true
@@ -64,7 +64,7 @@ func (o *ConditionEffect) GetEffectTypeOk() (*string, bool) {
 
 // HasEffectType returns a boolean if a field has been set.
 func (o *ConditionEffect) HasEffectType() bool {
-	if o != nil && !isNil(o.EffectType) {
+	if o != nil && !IsNil(o.EffectType) {
 		return true
 	}
 
@@ -78,7 +78,7 @@ func (o *ConditionEffect) SetEffectType(v string) {
 
 // GetConfig returns the Config field value if set, zero value otherwise.
 func (o *ConditionEffect) GetConfig() ConditionEffectConfig {
-	if o == nil || isNil(o.Config) {
+	if o == nil || IsNil(o.Config) {
 		var ret ConditionEffectConfig
 		return ret
 	}
@@ -88,7 +88,7 @@ func (o *ConditionEffect) GetConfig() ConditionEffectConfig {
 // GetConfigOk returns a tuple with the Config field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConditionEffect) GetConfigOk() (*ConditionEffectConfig, bool) {
-	if o == nil || isNil(o.Config) {
+	if o == nil || IsNil(o.Config) {
 		return nil, false
 	}
 	return o.Config, true
@@ -96,7 +96,7 @@ func (o *ConditionEffect) GetConfigOk() (*ConditionEffectConfig, bool) {
 
 // HasConfig returns a boolean if a field has been set.
 func (o *ConditionEffect) HasConfig() bool {
-	if o != nil && !isNil(o.Config) {
+	if o != nil && !IsNil(o.Config) {
 		return true
 	}
 
@@ -118,10 +118,10 @@ func (o ConditionEffect) MarshalJSON() ([]byte, error) {
 
 func (o ConditionEffect) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.EffectType) {
+	if !IsNil(o.EffectType) {
 		toSerialize["effectType"] = o.EffectType
 	}
-	if !isNil(o.Config) {
+	if !IsNil(o.Config) {
 		toSerialize["config"] = o.Config
 	}
 
@@ -132,16 +132,20 @@ func (o ConditionEffect) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ConditionEffect) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ConditionEffect) UnmarshalJSON(data []byte) (err error) {
 	varConditionEffect := _ConditionEffect{}
 
-	if err = json.Unmarshal(bytes, &varConditionEffect); err == nil {
+	err = json.Unmarshal(data, &varConditionEffect)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ConditionEffect(varConditionEffect)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "effectType")
 		delete(additionalProperties, "config")
 		o.AdditionalProperties = additionalProperties

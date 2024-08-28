@@ -59,7 +59,7 @@ func NewMfaDuoConfigWithDefaults() *MfaDuoConfig {
 
 // GetMfaMethod returns the MfaMethod field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MfaDuoConfig) GetMfaMethod() string {
-	if o == nil || isNil(o.MfaMethod.Get()) {
+	if o == nil || IsNil(o.MfaMethod.Get()) {
 		var ret string
 		return ret
 	}
@@ -101,7 +101,7 @@ func (o *MfaDuoConfig) UnsetMfaMethod() {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *MfaDuoConfig) GetEnabled() bool {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -111,7 +111,7 @@ func (o *MfaDuoConfig) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MfaDuoConfig) GetEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -119,7 +119,7 @@ func (o *MfaDuoConfig) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *MfaDuoConfig) HasEnabled() bool {
-	if o != nil && !isNil(o.Enabled) {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -133,7 +133,7 @@ func (o *MfaDuoConfig) SetEnabled(v bool) {
 
 // GetHost returns the Host field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MfaDuoConfig) GetHost() string {
-	if o == nil || isNil(o.Host.Get()) {
+	if o == nil || IsNil(o.Host.Get()) {
 		var ret string
 		return ret
 	}
@@ -175,7 +175,7 @@ func (o *MfaDuoConfig) UnsetHost() {
 
 // GetAccessKey returns the AccessKey field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MfaDuoConfig) GetAccessKey() string {
-	if o == nil || isNil(o.AccessKey.Get()) {
+	if o == nil || IsNil(o.AccessKey.Get()) {
 		var ret string
 		return ret
 	}
@@ -217,7 +217,7 @@ func (o *MfaDuoConfig) UnsetAccessKey() {
 
 // GetIdentityAttribute returns the IdentityAttribute field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MfaDuoConfig) GetIdentityAttribute() string {
-	if o == nil || isNil(o.IdentityAttribute.Get()) {
+	if o == nil || IsNil(o.IdentityAttribute.Get()) {
 		var ret string
 		return ret
 	}
@@ -270,7 +270,7 @@ func (o *MfaDuoConfig) GetConfigProperties() map[string]interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MfaDuoConfig) GetConfigPropertiesOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.ConfigProperties) {
+	if o == nil || IsNil(o.ConfigProperties) {
 		return map[string]interface{}{}, false
 	}
 	return o.ConfigProperties, true
@@ -278,7 +278,7 @@ func (o *MfaDuoConfig) GetConfigPropertiesOk() (map[string]interface{}, bool) {
 
 // HasConfigProperties returns a boolean if a field has been set.
 func (o *MfaDuoConfig) HasConfigProperties() bool {
-	if o != nil && isNil(o.ConfigProperties) {
+	if o != nil && !IsNil(o.ConfigProperties) {
 		return true
 	}
 
@@ -303,7 +303,7 @@ func (o MfaDuoConfig) ToMap() (map[string]interface{}, error) {
 	if o.MfaMethod.IsSet() {
 		toSerialize["mfaMethod"] = o.MfaMethod.Get()
 	}
-	if !isNil(o.Enabled) {
+	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
 	if o.Host.IsSet() {
@@ -326,16 +326,20 @@ func (o MfaDuoConfig) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *MfaDuoConfig) UnmarshalJSON(bytes []byte) (err error) {
+func (o *MfaDuoConfig) UnmarshalJSON(data []byte) (err error) {
 	varMfaDuoConfig := _MfaDuoConfig{}
 
-	if err = json.Unmarshal(bytes, &varMfaDuoConfig); err == nil {
+	err = json.Unmarshal(data, &varMfaDuoConfig)
+
+	if err != nil {
+		return err
+	}
+
 	*o = MfaDuoConfig(varMfaDuoConfig)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "mfaMethod")
 		delete(additionalProperties, "enabled")
 		delete(additionalProperties, "host")

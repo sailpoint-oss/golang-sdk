@@ -49,7 +49,7 @@ func NewSectionDetailsWithDefaults() *SectionDetails {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *SectionDetails) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *SectionDetails) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SectionDetails) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -67,7 +67,7 @@ func (o *SectionDetails) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *SectionDetails) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *SectionDetails) SetName(v string) {
 
 // GetLabel returns the Label field value if set, zero value otherwise.
 func (o *SectionDetails) GetLabel() string {
-	if o == nil || isNil(o.Label) {
+	if o == nil || IsNil(o.Label) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *SectionDetails) GetLabel() string {
 // GetLabelOk returns a tuple with the Label field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SectionDetails) GetLabelOk() (*string, bool) {
-	if o == nil || isNil(o.Label) {
+	if o == nil || IsNil(o.Label) {
 		return nil, false
 	}
 	return o.Label, true
@@ -99,7 +99,7 @@ func (o *SectionDetails) GetLabelOk() (*string, bool) {
 
 // HasLabel returns a boolean if a field has been set.
 func (o *SectionDetails) HasLabel() bool {
-	if o != nil && !isNil(o.Label) {
+	if o != nil && !IsNil(o.Label) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *SectionDetails) SetLabel(v string) {
 
 // GetFormItems returns the FormItems field value if set, zero value otherwise.
 func (o *SectionDetails) GetFormItems() []map[string]interface{} {
-	if o == nil || isNil(o.FormItems) {
+	if o == nil || IsNil(o.FormItems) {
 		var ret []map[string]interface{}
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *SectionDetails) GetFormItems() []map[string]interface{} {
 // GetFormItemsOk returns a tuple with the FormItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SectionDetails) GetFormItemsOk() ([]map[string]interface{}, bool) {
-	if o == nil || isNil(o.FormItems) {
+	if o == nil || IsNil(o.FormItems) {
 		return nil, false
 	}
 	return o.FormItems, true
@@ -131,7 +131,7 @@ func (o *SectionDetails) GetFormItemsOk() ([]map[string]interface{}, bool) {
 
 // HasFormItems returns a boolean if a field has been set.
 func (o *SectionDetails) HasFormItems() bool {
-	if o != nil && !isNil(o.FormItems) {
+	if o != nil && !IsNil(o.FormItems) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o SectionDetails) MarshalJSON() ([]byte, error) {
 
 func (o SectionDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Label) {
+	if !IsNil(o.Label) {
 		toSerialize["label"] = o.Label
 	}
-	if !isNil(o.FormItems) {
+	if !IsNil(o.FormItems) {
 		toSerialize["formItems"] = o.FormItems
 	}
 
@@ -170,16 +170,20 @@ func (o SectionDetails) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SectionDetails) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SectionDetails) UnmarshalJSON(data []byte) (err error) {
 	varSectionDetails := _SectionDetails{}
 
-	if err = json.Unmarshal(bytes, &varSectionDetails); err == nil {
+	err = json.Unmarshal(data, &varSectionDetails)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SectionDetails(varSectionDetails)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "label")
 		delete(additionalProperties, "formItems")

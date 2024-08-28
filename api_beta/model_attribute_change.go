@@ -49,7 +49,7 @@ func NewAttributeChangeWithDefaults() *AttributeChange {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *AttributeChange) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *AttributeChange) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AttributeChange) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -67,7 +67,7 @@ func (o *AttributeChange) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *AttributeChange) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *AttributeChange) SetName(v string) {
 
 // GetPreviousValue returns the PreviousValue field value if set, zero value otherwise.
 func (o *AttributeChange) GetPreviousValue() string {
-	if o == nil || isNil(o.PreviousValue) {
+	if o == nil || IsNil(o.PreviousValue) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *AttributeChange) GetPreviousValue() string {
 // GetPreviousValueOk returns a tuple with the PreviousValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AttributeChange) GetPreviousValueOk() (*string, bool) {
-	if o == nil || isNil(o.PreviousValue) {
+	if o == nil || IsNil(o.PreviousValue) {
 		return nil, false
 	}
 	return o.PreviousValue, true
@@ -99,7 +99,7 @@ func (o *AttributeChange) GetPreviousValueOk() (*string, bool) {
 
 // HasPreviousValue returns a boolean if a field has been set.
 func (o *AttributeChange) HasPreviousValue() bool {
-	if o != nil && !isNil(o.PreviousValue) {
+	if o != nil && !IsNil(o.PreviousValue) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *AttributeChange) SetPreviousValue(v string) {
 
 // GetNewValue returns the NewValue field value if set, zero value otherwise.
 func (o *AttributeChange) GetNewValue() string {
-	if o == nil || isNil(o.NewValue) {
+	if o == nil || IsNil(o.NewValue) {
 		var ret string
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *AttributeChange) GetNewValue() string {
 // GetNewValueOk returns a tuple with the NewValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AttributeChange) GetNewValueOk() (*string, bool) {
-	if o == nil || isNil(o.NewValue) {
+	if o == nil || IsNil(o.NewValue) {
 		return nil, false
 	}
 	return o.NewValue, true
@@ -131,7 +131,7 @@ func (o *AttributeChange) GetNewValueOk() (*string, bool) {
 
 // HasNewValue returns a boolean if a field has been set.
 func (o *AttributeChange) HasNewValue() bool {
-	if o != nil && !isNil(o.NewValue) {
+	if o != nil && !IsNil(o.NewValue) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o AttributeChange) MarshalJSON() ([]byte, error) {
 
 func (o AttributeChange) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.PreviousValue) {
+	if !IsNil(o.PreviousValue) {
 		toSerialize["previousValue"] = o.PreviousValue
 	}
-	if !isNil(o.NewValue) {
+	if !IsNil(o.NewValue) {
 		toSerialize["newValue"] = o.NewValue
 	}
 
@@ -170,16 +170,20 @@ func (o AttributeChange) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AttributeChange) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AttributeChange) UnmarshalJSON(data []byte) (err error) {
 	varAttributeChange := _AttributeChange{}
 
-	if err = json.Unmarshal(bytes, &varAttributeChange); err == nil {
+	err = json.Unmarshal(data, &varAttributeChange)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AttributeChange(varAttributeChange)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "previousValue")
 		delete(additionalProperties, "newValue")

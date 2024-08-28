@@ -55,7 +55,7 @@ func NewFieldDetailsWithDefaults() *FieldDetails {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *FieldDetails) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -65,7 +65,7 @@ func (o *FieldDetails) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FieldDetails) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -73,7 +73,7 @@ func (o *FieldDetails) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *FieldDetails) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -87,7 +87,7 @@ func (o *FieldDetails) SetName(v string) {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *FieldDetails) GetDisplayName() string {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -97,7 +97,7 @@ func (o *FieldDetails) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FieldDetails) GetDisplayNameOk() (*string, bool) {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -105,7 +105,7 @@ func (o *FieldDetails) GetDisplayNameOk() (*string, bool) {
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *FieldDetails) HasDisplayName() bool {
-	if o != nil && !isNil(o.DisplayName) {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -119,7 +119,7 @@ func (o *FieldDetails) SetDisplayName(v string) {
 
 // GetDisplayType returns the DisplayType field value if set, zero value otherwise.
 func (o *FieldDetails) GetDisplayType() string {
-	if o == nil || isNil(o.DisplayType) {
+	if o == nil || IsNil(o.DisplayType) {
 		var ret string
 		return ret
 	}
@@ -129,7 +129,7 @@ func (o *FieldDetails) GetDisplayType() string {
 // GetDisplayTypeOk returns a tuple with the DisplayType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FieldDetails) GetDisplayTypeOk() (*string, bool) {
-	if o == nil || isNil(o.DisplayType) {
+	if o == nil || IsNil(o.DisplayType) {
 		return nil, false
 	}
 	return o.DisplayType, true
@@ -137,7 +137,7 @@ func (o *FieldDetails) GetDisplayTypeOk() (*string, bool) {
 
 // HasDisplayType returns a boolean if a field has been set.
 func (o *FieldDetails) HasDisplayType() bool {
-	if o != nil && !isNil(o.DisplayType) {
+	if o != nil && !IsNil(o.DisplayType) {
 		return true
 	}
 
@@ -151,7 +151,7 @@ func (o *FieldDetails) SetDisplayType(v string) {
 
 // GetRequired returns the Required field value if set, zero value otherwise.
 func (o *FieldDetails) GetRequired() bool {
-	if o == nil || isNil(o.Required) {
+	if o == nil || IsNil(o.Required) {
 		var ret bool
 		return ret
 	}
@@ -161,7 +161,7 @@ func (o *FieldDetails) GetRequired() bool {
 // GetRequiredOk returns a tuple with the Required field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FieldDetails) GetRequiredOk() (*bool, bool) {
-	if o == nil || isNil(o.Required) {
+	if o == nil || IsNil(o.Required) {
 		return nil, false
 	}
 	return o.Required, true
@@ -169,7 +169,7 @@ func (o *FieldDetails) GetRequiredOk() (*bool, bool) {
 
 // HasRequired returns a boolean if a field has been set.
 func (o *FieldDetails) HasRequired() bool {
-	if o != nil && !isNil(o.Required) {
+	if o != nil && !IsNil(o.Required) {
 		return true
 	}
 
@@ -183,7 +183,7 @@ func (o *FieldDetails) SetRequired(v bool) {
 
 // GetAllowedValuesList returns the AllowedValuesList field value if set, zero value otherwise.
 func (o *FieldDetails) GetAllowedValuesList() []map[string]interface{} {
-	if o == nil || isNil(o.AllowedValuesList) {
+	if o == nil || IsNil(o.AllowedValuesList) {
 		var ret []map[string]interface{}
 		return ret
 	}
@@ -193,7 +193,7 @@ func (o *FieldDetails) GetAllowedValuesList() []map[string]interface{} {
 // GetAllowedValuesListOk returns a tuple with the AllowedValuesList field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FieldDetails) GetAllowedValuesListOk() ([]map[string]interface{}, bool) {
-	if o == nil || isNil(o.AllowedValuesList) {
+	if o == nil || IsNil(o.AllowedValuesList) {
 		return nil, false
 	}
 	return o.AllowedValuesList, true
@@ -201,7 +201,7 @@ func (o *FieldDetails) GetAllowedValuesListOk() ([]map[string]interface{}, bool)
 
 // HasAllowedValuesList returns a boolean if a field has been set.
 func (o *FieldDetails) HasAllowedValuesList() bool {
-	if o != nil && !isNil(o.AllowedValuesList) {
+	if o != nil && !IsNil(o.AllowedValuesList) {
 		return true
 	}
 
@@ -215,7 +215,7 @@ func (o *FieldDetails) SetAllowedValuesList(v []map[string]interface{}) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *FieldDetails) GetValue() map[string]interface{} {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -225,7 +225,7 @@ func (o *FieldDetails) GetValue() map[string]interface{} {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FieldDetails) GetValueOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		return map[string]interface{}{}, false
 	}
 	return o.Value, true
@@ -233,7 +233,7 @@ func (o *FieldDetails) GetValueOk() (map[string]interface{}, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *FieldDetails) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -255,22 +255,22 @@ func (o FieldDetails) MarshalJSON() ([]byte, error) {
 
 func (o FieldDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.DisplayName) {
+	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
-	if !isNil(o.DisplayType) {
+	if !IsNil(o.DisplayType) {
 		toSerialize["displayType"] = o.DisplayType
 	}
-	if !isNil(o.Required) {
+	if !IsNil(o.Required) {
 		toSerialize["required"] = o.Required
 	}
-	if !isNil(o.AllowedValuesList) {
+	if !IsNil(o.AllowedValuesList) {
 		toSerialize["allowedValuesList"] = o.AllowedValuesList
 	}
-	if !isNil(o.Value) {
+	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
 
@@ -281,16 +281,20 @@ func (o FieldDetails) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *FieldDetails) UnmarshalJSON(bytes []byte) (err error) {
+func (o *FieldDetails) UnmarshalJSON(data []byte) (err error) {
 	varFieldDetails := _FieldDetails{}
 
-	if err = json.Unmarshal(bytes, &varFieldDetails); err == nil {
+	err = json.Unmarshal(data, &varFieldDetails)
+
+	if err != nil {
+		return err
+	}
+
 	*o = FieldDetails(varFieldDetails)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "displayName")
 		delete(additionalProperties, "displayType")

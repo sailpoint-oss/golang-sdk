@@ -47,7 +47,7 @@ func NewIdentityExceptionReportReferenceWithDefaults() *IdentityExceptionReportR
 
 // GetTaskResultId returns the TaskResultId field value if set, zero value otherwise.
 func (o *IdentityExceptionReportReference) GetTaskResultId() string {
-	if o == nil || isNil(o.TaskResultId) {
+	if o == nil || IsNil(o.TaskResultId) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *IdentityExceptionReportReference) GetTaskResultId() string {
 // GetTaskResultIdOk returns a tuple with the TaskResultId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityExceptionReportReference) GetTaskResultIdOk() (*string, bool) {
-	if o == nil || isNil(o.TaskResultId) {
+	if o == nil || IsNil(o.TaskResultId) {
 		return nil, false
 	}
 	return o.TaskResultId, true
@@ -65,7 +65,7 @@ func (o *IdentityExceptionReportReference) GetTaskResultIdOk() (*string, bool) {
 
 // HasTaskResultId returns a boolean if a field has been set.
 func (o *IdentityExceptionReportReference) HasTaskResultId() bool {
-	if o != nil && !isNil(o.TaskResultId) {
+	if o != nil && !IsNil(o.TaskResultId) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *IdentityExceptionReportReference) SetTaskResultId(v string) {
 
 // GetReportName returns the ReportName field value if set, zero value otherwise.
 func (o *IdentityExceptionReportReference) GetReportName() string {
-	if o == nil || isNil(o.ReportName) {
+	if o == nil || IsNil(o.ReportName) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *IdentityExceptionReportReference) GetReportName() string {
 // GetReportNameOk returns a tuple with the ReportName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityExceptionReportReference) GetReportNameOk() (*string, bool) {
-	if o == nil || isNil(o.ReportName) {
+	if o == nil || IsNil(o.ReportName) {
 		return nil, false
 	}
 	return o.ReportName, true
@@ -97,7 +97,7 @@ func (o *IdentityExceptionReportReference) GetReportNameOk() (*string, bool) {
 
 // HasReportName returns a boolean if a field has been set.
 func (o *IdentityExceptionReportReference) HasReportName() bool {
-	if o != nil && !isNil(o.ReportName) {
+	if o != nil && !IsNil(o.ReportName) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o IdentityExceptionReportReference) MarshalJSON() ([]byte, error) {
 
 func (o IdentityExceptionReportReference) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.TaskResultId) {
+	if !IsNil(o.TaskResultId) {
 		toSerialize["taskResultId"] = o.TaskResultId
 	}
-	if !isNil(o.ReportName) {
+	if !IsNil(o.ReportName) {
 		toSerialize["reportName"] = o.ReportName
 	}
 
@@ -133,16 +133,20 @@ func (o IdentityExceptionReportReference) ToMap() (map[string]interface{}, error
 	return toSerialize, nil
 }
 
-func (o *IdentityExceptionReportReference) UnmarshalJSON(bytes []byte) (err error) {
+func (o *IdentityExceptionReportReference) UnmarshalJSON(data []byte) (err error) {
 	varIdentityExceptionReportReference := _IdentityExceptionReportReference{}
 
-	if err = json.Unmarshal(bytes, &varIdentityExceptionReportReference); err == nil {
+	err = json.Unmarshal(data, &varIdentityExceptionReportReference)
+
+	if err != nil {
+		return err
+	}
+
 	*o = IdentityExceptionReportReference(varIdentityExceptionReportReference)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "taskResultId")
 		delete(additionalProperties, "reportName")
 		o.AdditionalProperties = additionalProperties

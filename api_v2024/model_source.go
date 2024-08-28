@@ -114,7 +114,7 @@ func NewSourceWithDefaults() *Source {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Source) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -124,7 +124,7 @@ func (o *Source) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Source) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -132,7 +132,7 @@ func (o *Source) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *Source) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -170,7 +170,7 @@ func (o *Source) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Source) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -180,7 +180,7 @@ func (o *Source) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Source) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -188,7 +188,7 @@ func (o *Source) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Source) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -226,7 +226,7 @@ func (o *Source) SetOwner(v SourceOwner) {
 
 // GetCluster returns the Cluster field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Source) GetCluster() SourceCluster {
-	if o == nil || isNil(o.Cluster.Get()) {
+	if o == nil || IsNil(o.Cluster.Get()) {
 		var ret SourceCluster
 		return ret
 	}
@@ -268,7 +268,7 @@ func (o *Source) UnsetCluster() {
 
 // GetAccountCorrelationConfig returns the AccountCorrelationConfig field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Source) GetAccountCorrelationConfig() SourceAccountCorrelationConfig {
-	if o == nil || isNil(o.AccountCorrelationConfig.Get()) {
+	if o == nil || IsNil(o.AccountCorrelationConfig.Get()) {
 		var ret SourceAccountCorrelationConfig
 		return ret
 	}
@@ -310,7 +310,7 @@ func (o *Source) UnsetAccountCorrelationConfig() {
 
 // GetAccountCorrelationRule returns the AccountCorrelationRule field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Source) GetAccountCorrelationRule() SourceAccountCorrelationRule {
-	if o == nil || isNil(o.AccountCorrelationRule.Get()) {
+	if o == nil || IsNil(o.AccountCorrelationRule.Get()) {
 		var ret SourceAccountCorrelationRule
 		return ret
 	}
@@ -352,7 +352,7 @@ func (o *Source) UnsetAccountCorrelationRule() {
 
 // GetManagerCorrelationMapping returns the ManagerCorrelationMapping field value if set, zero value otherwise.
 func (o *Source) GetManagerCorrelationMapping() SourceManagerCorrelationMapping {
-	if o == nil || isNil(o.ManagerCorrelationMapping) {
+	if o == nil || IsNil(o.ManagerCorrelationMapping) {
 		var ret SourceManagerCorrelationMapping
 		return ret
 	}
@@ -362,7 +362,7 @@ func (o *Source) GetManagerCorrelationMapping() SourceManagerCorrelationMapping 
 // GetManagerCorrelationMappingOk returns a tuple with the ManagerCorrelationMapping field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Source) GetManagerCorrelationMappingOk() (*SourceManagerCorrelationMapping, bool) {
-	if o == nil || isNil(o.ManagerCorrelationMapping) {
+	if o == nil || IsNil(o.ManagerCorrelationMapping) {
 		return nil, false
 	}
 	return o.ManagerCorrelationMapping, true
@@ -370,7 +370,7 @@ func (o *Source) GetManagerCorrelationMappingOk() (*SourceManagerCorrelationMapp
 
 // HasManagerCorrelationMapping returns a boolean if a field has been set.
 func (o *Source) HasManagerCorrelationMapping() bool {
-	if o != nil && !isNil(o.ManagerCorrelationMapping) {
+	if o != nil && !IsNil(o.ManagerCorrelationMapping) {
 		return true
 	}
 
@@ -384,7 +384,7 @@ func (o *Source) SetManagerCorrelationMapping(v SourceManagerCorrelationMapping)
 
 // GetManagerCorrelationRule returns the ManagerCorrelationRule field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Source) GetManagerCorrelationRule() SourceManagerCorrelationRule {
-	if o == nil || isNil(o.ManagerCorrelationRule.Get()) {
+	if o == nil || IsNil(o.ManagerCorrelationRule.Get()) {
 		var ret SourceManagerCorrelationRule
 		return ret
 	}
@@ -426,7 +426,7 @@ func (o *Source) UnsetManagerCorrelationRule() {
 
 // GetBeforeProvisioningRule returns the BeforeProvisioningRule field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Source) GetBeforeProvisioningRule() SourceBeforeProvisioningRule {
-	if o == nil || isNil(o.BeforeProvisioningRule.Get()) {
+	if o == nil || IsNil(o.BeforeProvisioningRule.Get()) {
 		var ret SourceBeforeProvisioningRule
 		return ret
 	}
@@ -468,7 +468,7 @@ func (o *Source) UnsetBeforeProvisioningRule() {
 
 // GetSchemas returns the Schemas field value if set, zero value otherwise.
 func (o *Source) GetSchemas() []SourceSchemasInner {
-	if o == nil || isNil(o.Schemas) {
+	if o == nil || IsNil(o.Schemas) {
 		var ret []SourceSchemasInner
 		return ret
 	}
@@ -478,7 +478,7 @@ func (o *Source) GetSchemas() []SourceSchemasInner {
 // GetSchemasOk returns a tuple with the Schemas field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Source) GetSchemasOk() ([]SourceSchemasInner, bool) {
-	if o == nil || isNil(o.Schemas) {
+	if o == nil || IsNil(o.Schemas) {
 		return nil, false
 	}
 	return o.Schemas, true
@@ -486,7 +486,7 @@ func (o *Source) GetSchemasOk() ([]SourceSchemasInner, bool) {
 
 // HasSchemas returns a boolean if a field has been set.
 func (o *Source) HasSchemas() bool {
-	if o != nil && !isNil(o.Schemas) {
+	if o != nil && !IsNil(o.Schemas) {
 		return true
 	}
 
@@ -511,7 +511,7 @@ func (o *Source) GetPasswordPolicies() []SourcePasswordPoliciesInner {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Source) GetPasswordPoliciesOk() ([]SourcePasswordPoliciesInner, bool) {
-	if o == nil || isNil(o.PasswordPolicies) {
+	if o == nil || IsNil(o.PasswordPolicies) {
 		return nil, false
 	}
 	return o.PasswordPolicies, true
@@ -519,7 +519,7 @@ func (o *Source) GetPasswordPoliciesOk() ([]SourcePasswordPoliciesInner, bool) {
 
 // HasPasswordPolicies returns a boolean if a field has been set.
 func (o *Source) HasPasswordPolicies() bool {
-	if o != nil && isNil(o.PasswordPolicies) {
+	if o != nil && !IsNil(o.PasswordPolicies) {
 		return true
 	}
 
@@ -533,7 +533,7 @@ func (o *Source) SetPasswordPolicies(v []SourcePasswordPoliciesInner) {
 
 // GetFeatures returns the Features field value if set, zero value otherwise.
 func (o *Source) GetFeatures() []string {
-	if o == nil || isNil(o.Features) {
+	if o == nil || IsNil(o.Features) {
 		var ret []string
 		return ret
 	}
@@ -543,7 +543,7 @@ func (o *Source) GetFeatures() []string {
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Source) GetFeaturesOk() ([]string, bool) {
-	if o == nil || isNil(o.Features) {
+	if o == nil || IsNil(o.Features) {
 		return nil, false
 	}
 	return o.Features, true
@@ -551,7 +551,7 @@ func (o *Source) GetFeaturesOk() ([]string, bool) {
 
 // HasFeatures returns a boolean if a field has been set.
 func (o *Source) HasFeatures() bool {
-	if o != nil && !isNil(o.Features) {
+	if o != nil && !IsNil(o.Features) {
 		return true
 	}
 
@@ -565,7 +565,7 @@ func (o *Source) SetFeatures(v []string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *Source) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -575,7 +575,7 @@ func (o *Source) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Source) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -583,7 +583,7 @@ func (o *Source) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *Source) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -621,7 +621,7 @@ func (o *Source) SetConnector(v string) {
 
 // GetConnectorClass returns the ConnectorClass field value if set, zero value otherwise.
 func (o *Source) GetConnectorClass() string {
-	if o == nil || isNil(o.ConnectorClass) {
+	if o == nil || IsNil(o.ConnectorClass) {
 		var ret string
 		return ret
 	}
@@ -631,7 +631,7 @@ func (o *Source) GetConnectorClass() string {
 // GetConnectorClassOk returns a tuple with the ConnectorClass field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Source) GetConnectorClassOk() (*string, bool) {
-	if o == nil || isNil(o.ConnectorClass) {
+	if o == nil || IsNil(o.ConnectorClass) {
 		return nil, false
 	}
 	return o.ConnectorClass, true
@@ -639,7 +639,7 @@ func (o *Source) GetConnectorClassOk() (*string, bool) {
 
 // HasConnectorClass returns a boolean if a field has been set.
 func (o *Source) HasConnectorClass() bool {
-	if o != nil && !isNil(o.ConnectorClass) {
+	if o != nil && !IsNil(o.ConnectorClass) {
 		return true
 	}
 
@@ -653,7 +653,7 @@ func (o *Source) SetConnectorClass(v string) {
 
 // GetConnectorAttributes returns the ConnectorAttributes field value if set, zero value otherwise.
 func (o *Source) GetConnectorAttributes() map[string]interface{} {
-	if o == nil || isNil(o.ConnectorAttributes) {
+	if o == nil || IsNil(o.ConnectorAttributes) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -663,7 +663,7 @@ func (o *Source) GetConnectorAttributes() map[string]interface{} {
 // GetConnectorAttributesOk returns a tuple with the ConnectorAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Source) GetConnectorAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.ConnectorAttributes) {
+	if o == nil || IsNil(o.ConnectorAttributes) {
 		return map[string]interface{}{}, false
 	}
 	return o.ConnectorAttributes, true
@@ -671,7 +671,7 @@ func (o *Source) GetConnectorAttributesOk() (map[string]interface{}, bool) {
 
 // HasConnectorAttributes returns a boolean if a field has been set.
 func (o *Source) HasConnectorAttributes() bool {
-	if o != nil && !isNil(o.ConnectorAttributes) {
+	if o != nil && !IsNil(o.ConnectorAttributes) {
 		return true
 	}
 
@@ -685,7 +685,7 @@ func (o *Source) SetConnectorAttributes(v map[string]interface{}) {
 
 // GetDeleteThreshold returns the DeleteThreshold field value if set, zero value otherwise.
 func (o *Source) GetDeleteThreshold() int32 {
-	if o == nil || isNil(o.DeleteThreshold) {
+	if o == nil || IsNil(o.DeleteThreshold) {
 		var ret int32
 		return ret
 	}
@@ -695,7 +695,7 @@ func (o *Source) GetDeleteThreshold() int32 {
 // GetDeleteThresholdOk returns a tuple with the DeleteThreshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Source) GetDeleteThresholdOk() (*int32, bool) {
-	if o == nil || isNil(o.DeleteThreshold) {
+	if o == nil || IsNil(o.DeleteThreshold) {
 		return nil, false
 	}
 	return o.DeleteThreshold, true
@@ -703,7 +703,7 @@ func (o *Source) GetDeleteThresholdOk() (*int32, bool) {
 
 // HasDeleteThreshold returns a boolean if a field has been set.
 func (o *Source) HasDeleteThreshold() bool {
-	if o != nil && !isNil(o.DeleteThreshold) {
+	if o != nil && !IsNil(o.DeleteThreshold) {
 		return true
 	}
 
@@ -717,7 +717,7 @@ func (o *Source) SetDeleteThreshold(v int32) {
 
 // GetAuthoritative returns the Authoritative field value if set, zero value otherwise.
 func (o *Source) GetAuthoritative() bool {
-	if o == nil || isNil(o.Authoritative) {
+	if o == nil || IsNil(o.Authoritative) {
 		var ret bool
 		return ret
 	}
@@ -727,7 +727,7 @@ func (o *Source) GetAuthoritative() bool {
 // GetAuthoritativeOk returns a tuple with the Authoritative field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Source) GetAuthoritativeOk() (*bool, bool) {
-	if o == nil || isNil(o.Authoritative) {
+	if o == nil || IsNil(o.Authoritative) {
 		return nil, false
 	}
 	return o.Authoritative, true
@@ -735,7 +735,7 @@ func (o *Source) GetAuthoritativeOk() (*bool, bool) {
 
 // HasAuthoritative returns a boolean if a field has been set.
 func (o *Source) HasAuthoritative() bool {
-	if o != nil && !isNil(o.Authoritative) {
+	if o != nil && !IsNil(o.Authoritative) {
 		return true
 	}
 
@@ -749,7 +749,7 @@ func (o *Source) SetAuthoritative(v bool) {
 
 // GetManagementWorkgroup returns the ManagementWorkgroup field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Source) GetManagementWorkgroup() SourceManagementWorkgroup {
-	if o == nil || isNil(o.ManagementWorkgroup.Get()) {
+	if o == nil || IsNil(o.ManagementWorkgroup.Get()) {
 		var ret SourceManagementWorkgroup
 		return ret
 	}
@@ -791,7 +791,7 @@ func (o *Source) UnsetManagementWorkgroup() {
 
 // GetHealthy returns the Healthy field value if set, zero value otherwise.
 func (o *Source) GetHealthy() bool {
-	if o == nil || isNil(o.Healthy) {
+	if o == nil || IsNil(o.Healthy) {
 		var ret bool
 		return ret
 	}
@@ -801,7 +801,7 @@ func (o *Source) GetHealthy() bool {
 // GetHealthyOk returns a tuple with the Healthy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Source) GetHealthyOk() (*bool, bool) {
-	if o == nil || isNil(o.Healthy) {
+	if o == nil || IsNil(o.Healthy) {
 		return nil, false
 	}
 	return o.Healthy, true
@@ -809,7 +809,7 @@ func (o *Source) GetHealthyOk() (*bool, bool) {
 
 // HasHealthy returns a boolean if a field has been set.
 func (o *Source) HasHealthy() bool {
-	if o != nil && !isNil(o.Healthy) {
+	if o != nil && !IsNil(o.Healthy) {
 		return true
 	}
 
@@ -823,7 +823,7 @@ func (o *Source) SetHealthy(v bool) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *Source) GetStatus() string {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -833,7 +833,7 @@ func (o *Source) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Source) GetStatusOk() (*string, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -841,7 +841,7 @@ func (o *Source) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *Source) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -855,7 +855,7 @@ func (o *Source) SetStatus(v string) {
 
 // GetSince returns the Since field value if set, zero value otherwise.
 func (o *Source) GetSince() string {
-	if o == nil || isNil(o.Since) {
+	if o == nil || IsNil(o.Since) {
 		var ret string
 		return ret
 	}
@@ -865,7 +865,7 @@ func (o *Source) GetSince() string {
 // GetSinceOk returns a tuple with the Since field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Source) GetSinceOk() (*string, bool) {
-	if o == nil || isNil(o.Since) {
+	if o == nil || IsNil(o.Since) {
 		return nil, false
 	}
 	return o.Since, true
@@ -873,7 +873,7 @@ func (o *Source) GetSinceOk() (*string, bool) {
 
 // HasSince returns a boolean if a field has been set.
 func (o *Source) HasSince() bool {
-	if o != nil && !isNil(o.Since) {
+	if o != nil && !IsNil(o.Since) {
 		return true
 	}
 
@@ -887,7 +887,7 @@ func (o *Source) SetSince(v string) {
 
 // GetConnectorId returns the ConnectorId field value if set, zero value otherwise.
 func (o *Source) GetConnectorId() string {
-	if o == nil || isNil(o.ConnectorId) {
+	if o == nil || IsNil(o.ConnectorId) {
 		var ret string
 		return ret
 	}
@@ -897,7 +897,7 @@ func (o *Source) GetConnectorId() string {
 // GetConnectorIdOk returns a tuple with the ConnectorId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Source) GetConnectorIdOk() (*string, bool) {
-	if o == nil || isNil(o.ConnectorId) {
+	if o == nil || IsNil(o.ConnectorId) {
 		return nil, false
 	}
 	return o.ConnectorId, true
@@ -905,7 +905,7 @@ func (o *Source) GetConnectorIdOk() (*string, bool) {
 
 // HasConnectorId returns a boolean if a field has been set.
 func (o *Source) HasConnectorId() bool {
-	if o != nil && !isNil(o.ConnectorId) {
+	if o != nil && !IsNil(o.ConnectorId) {
 		return true
 	}
 
@@ -919,7 +919,7 @@ func (o *Source) SetConnectorId(v string) {
 
 // GetConnectorName returns the ConnectorName field value if set, zero value otherwise.
 func (o *Source) GetConnectorName() string {
-	if o == nil || isNil(o.ConnectorName) {
+	if o == nil || IsNil(o.ConnectorName) {
 		var ret string
 		return ret
 	}
@@ -929,7 +929,7 @@ func (o *Source) GetConnectorName() string {
 // GetConnectorNameOk returns a tuple with the ConnectorName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Source) GetConnectorNameOk() (*string, bool) {
-	if o == nil || isNil(o.ConnectorName) {
+	if o == nil || IsNil(o.ConnectorName) {
 		return nil, false
 	}
 	return o.ConnectorName, true
@@ -937,7 +937,7 @@ func (o *Source) GetConnectorNameOk() (*string, bool) {
 
 // HasConnectorName returns a boolean if a field has been set.
 func (o *Source) HasConnectorName() bool {
-	if o != nil && !isNil(o.ConnectorName) {
+	if o != nil && !IsNil(o.ConnectorName) {
 		return true
 	}
 
@@ -951,7 +951,7 @@ func (o *Source) SetConnectorName(v string) {
 
 // GetConnectionType returns the ConnectionType field value if set, zero value otherwise.
 func (o *Source) GetConnectionType() string {
-	if o == nil || isNil(o.ConnectionType) {
+	if o == nil || IsNil(o.ConnectionType) {
 		var ret string
 		return ret
 	}
@@ -961,7 +961,7 @@ func (o *Source) GetConnectionType() string {
 // GetConnectionTypeOk returns a tuple with the ConnectionType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Source) GetConnectionTypeOk() (*string, bool) {
-	if o == nil || isNil(o.ConnectionType) {
+	if o == nil || IsNil(o.ConnectionType) {
 		return nil, false
 	}
 	return o.ConnectionType, true
@@ -969,7 +969,7 @@ func (o *Source) GetConnectionTypeOk() (*string, bool) {
 
 // HasConnectionType returns a boolean if a field has been set.
 func (o *Source) HasConnectionType() bool {
-	if o != nil && !isNil(o.ConnectionType) {
+	if o != nil && !IsNil(o.ConnectionType) {
 		return true
 	}
 
@@ -983,7 +983,7 @@ func (o *Source) SetConnectionType(v string) {
 
 // GetConnectorImplementationId returns the ConnectorImplementationId field value if set, zero value otherwise.
 func (o *Source) GetConnectorImplementationId() string {
-	if o == nil || isNil(o.ConnectorImplementationId) {
+	if o == nil || IsNil(o.ConnectorImplementationId) {
 		var ret string
 		return ret
 	}
@@ -993,7 +993,7 @@ func (o *Source) GetConnectorImplementationId() string {
 // GetConnectorImplementationIdOk returns a tuple with the ConnectorImplementationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Source) GetConnectorImplementationIdOk() (*string, bool) {
-	if o == nil || isNil(o.ConnectorImplementationId) {
+	if o == nil || IsNil(o.ConnectorImplementationId) {
 		return nil, false
 	}
 	return o.ConnectorImplementationId, true
@@ -1001,7 +1001,7 @@ func (o *Source) GetConnectorImplementationIdOk() (*string, bool) {
 
 // HasConnectorImplementationId returns a boolean if a field has been set.
 func (o *Source) HasConnectorImplementationId() bool {
-	if o != nil && !isNil(o.ConnectorImplementationId) {
+	if o != nil && !IsNil(o.ConnectorImplementationId) {
 		return true
 	}
 
@@ -1015,7 +1015,7 @@ func (o *Source) SetConnectorImplementationId(v string) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *Source) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -1025,7 +1025,7 @@ func (o *Source) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Source) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -1033,7 +1033,7 @@ func (o *Source) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *Source) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -1047,7 +1047,7 @@ func (o *Source) SetCreated(v time.Time) {
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *Source) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		var ret time.Time
 		return ret
 	}
@@ -1057,7 +1057,7 @@ func (o *Source) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Source) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -1065,7 +1065,7 @@ func (o *Source) GetModifiedOk() (*time.Time, bool) {
 
 // HasModified returns a boolean if a field has been set.
 func (o *Source) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -1079,7 +1079,7 @@ func (o *Source) SetModified(v time.Time) {
 
 // GetCredentialProviderEnabled returns the CredentialProviderEnabled field value if set, zero value otherwise.
 func (o *Source) GetCredentialProviderEnabled() bool {
-	if o == nil || isNil(o.CredentialProviderEnabled) {
+	if o == nil || IsNil(o.CredentialProviderEnabled) {
 		var ret bool
 		return ret
 	}
@@ -1089,7 +1089,7 @@ func (o *Source) GetCredentialProviderEnabled() bool {
 // GetCredentialProviderEnabledOk returns a tuple with the CredentialProviderEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Source) GetCredentialProviderEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.CredentialProviderEnabled) {
+	if o == nil || IsNil(o.CredentialProviderEnabled) {
 		return nil, false
 	}
 	return o.CredentialProviderEnabled, true
@@ -1097,7 +1097,7 @@ func (o *Source) GetCredentialProviderEnabledOk() (*bool, bool) {
 
 // HasCredentialProviderEnabled returns a boolean if a field has been set.
 func (o *Source) HasCredentialProviderEnabled() bool {
-	if o != nil && !isNil(o.CredentialProviderEnabled) {
+	if o != nil && !IsNil(o.CredentialProviderEnabled) {
 		return true
 	}
 
@@ -1111,7 +1111,7 @@ func (o *Source) SetCredentialProviderEnabled(v bool) {
 
 // GetCategory returns the Category field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Source) GetCategory() string {
-	if o == nil || isNil(o.Category.Get()) {
+	if o == nil || IsNil(o.Category.Get()) {
 		var ret string
 		return ret
 	}
@@ -1161,9 +1161,11 @@ func (o Source) MarshalJSON() ([]byte, error) {
 
 func (o Source) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["name"] = o.Name
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 	toSerialize["owner"] = o.Owner
@@ -1176,7 +1178,7 @@ func (o Source) ToMap() (map[string]interface{}, error) {
 	if o.AccountCorrelationRule.IsSet() {
 		toSerialize["accountCorrelationRule"] = o.AccountCorrelationRule.Get()
 	}
-	if !isNil(o.ManagerCorrelationMapping) {
+	if !IsNil(o.ManagerCorrelationMapping) {
 		toSerialize["managerCorrelationMapping"] = o.ManagerCorrelationMapping
 	}
 	if o.ManagerCorrelationRule.IsSet() {
@@ -1185,62 +1187,62 @@ func (o Source) ToMap() (map[string]interface{}, error) {
 	if o.BeforeProvisioningRule.IsSet() {
 		toSerialize["beforeProvisioningRule"] = o.BeforeProvisioningRule.Get()
 	}
-	if !isNil(o.Schemas) {
+	if !IsNil(o.Schemas) {
 		toSerialize["schemas"] = o.Schemas
 	}
 	if o.PasswordPolicies != nil {
 		toSerialize["passwordPolicies"] = o.PasswordPolicies
 	}
-	if !isNil(o.Features) {
+	if !IsNil(o.Features) {
 		toSerialize["features"] = o.Features
 	}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
 	toSerialize["connector"] = o.Connector
-	if !isNil(o.ConnectorClass) {
+	if !IsNil(o.ConnectorClass) {
 		toSerialize["connectorClass"] = o.ConnectorClass
 	}
-	if !isNil(o.ConnectorAttributes) {
+	if !IsNil(o.ConnectorAttributes) {
 		toSerialize["connectorAttributes"] = o.ConnectorAttributes
 	}
-	if !isNil(o.DeleteThreshold) {
+	if !IsNil(o.DeleteThreshold) {
 		toSerialize["deleteThreshold"] = o.DeleteThreshold
 	}
-	if !isNil(o.Authoritative) {
+	if !IsNil(o.Authoritative) {
 		toSerialize["authoritative"] = o.Authoritative
 	}
 	if o.ManagementWorkgroup.IsSet() {
 		toSerialize["managementWorkgroup"] = o.ManagementWorkgroup.Get()
 	}
-	if !isNil(o.Healthy) {
+	if !IsNil(o.Healthy) {
 		toSerialize["healthy"] = o.Healthy
 	}
-	if !isNil(o.Status) {
+	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if !isNil(o.Since) {
+	if !IsNil(o.Since) {
 		toSerialize["since"] = o.Since
 	}
-	if !isNil(o.ConnectorId) {
+	if !IsNil(o.ConnectorId) {
 		toSerialize["connectorId"] = o.ConnectorId
 	}
-	if !isNil(o.ConnectorName) {
+	if !IsNil(o.ConnectorName) {
 		toSerialize["connectorName"] = o.ConnectorName
 	}
-	if !isNil(o.ConnectionType) {
+	if !IsNil(o.ConnectionType) {
 		toSerialize["connectionType"] = o.ConnectionType
 	}
-	if !isNil(o.ConnectorImplementationId) {
+	if !IsNil(o.ConnectorImplementationId) {
 		toSerialize["connectorImplementationId"] = o.ConnectorImplementationId
 	}
-	if !isNil(o.Created) {
+	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
-	if !isNil(o.Modified) {
+	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
-	if !isNil(o.CredentialProviderEnabled) {
+	if !IsNil(o.CredentialProviderEnabled) {
 		toSerialize["credentialProviderEnabled"] = o.CredentialProviderEnabled
 	}
 	if o.Category.IsSet() {
@@ -1254,8 +1256,8 @@ func (o Source) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Source) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *Source) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -1266,7 +1268,7 @@ func (o *Source) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -1280,13 +1282,17 @@ func (o *Source) UnmarshalJSON(bytes []byte) (err error) {
 
 	varSource := _Source{}
 
-	if err = json.Unmarshal(bytes, &varSource); err == nil {
+	err = json.Unmarshal(data, &varSource)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Source(varSource)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")

@@ -47,7 +47,7 @@ func NewAccessItemRefWithDefaults() *AccessItemRef {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *AccessItemRef) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *AccessItemRef) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemRef) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -65,7 +65,7 @@ func (o *AccessItemRef) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *AccessItemRef) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *AccessItemRef) SetId(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *AccessItemRef) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *AccessItemRef) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemRef) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -97,7 +97,7 @@ func (o *AccessItemRef) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *AccessItemRef) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o AccessItemRef) MarshalJSON() ([]byte, error) {
 
 func (o AccessItemRef) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
 
@@ -133,16 +133,20 @@ func (o AccessItemRef) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccessItemRef) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccessItemRef) UnmarshalJSON(data []byte) (err error) {
 	varAccessItemRef := _AccessItemRef{}
 
-	if err = json.Unmarshal(bytes, &varAccessItemRef); err == nil {
+	err = json.Unmarshal(data, &varAccessItemRef)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessItemRef(varAccessItemRef)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "type")
 		o.AdditionalProperties = additionalProperties

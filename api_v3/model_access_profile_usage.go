@@ -47,7 +47,7 @@ func NewAccessProfileUsageWithDefaults() *AccessProfileUsage {
 
 // GetAccessProfileId returns the AccessProfileId field value if set, zero value otherwise.
 func (o *AccessProfileUsage) GetAccessProfileId() string {
-	if o == nil || isNil(o.AccessProfileId) {
+	if o == nil || IsNil(o.AccessProfileId) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *AccessProfileUsage) GetAccessProfileId() string {
 // GetAccessProfileIdOk returns a tuple with the AccessProfileId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessProfileUsage) GetAccessProfileIdOk() (*string, bool) {
-	if o == nil || isNil(o.AccessProfileId) {
+	if o == nil || IsNil(o.AccessProfileId) {
 		return nil, false
 	}
 	return o.AccessProfileId, true
@@ -65,7 +65,7 @@ func (o *AccessProfileUsage) GetAccessProfileIdOk() (*string, bool) {
 
 // HasAccessProfileId returns a boolean if a field has been set.
 func (o *AccessProfileUsage) HasAccessProfileId() bool {
-	if o != nil && !isNil(o.AccessProfileId) {
+	if o != nil && !IsNil(o.AccessProfileId) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *AccessProfileUsage) SetAccessProfileId(v string) {
 
 // GetUsedBy returns the UsedBy field value if set, zero value otherwise.
 func (o *AccessProfileUsage) GetUsedBy() []AccessProfileUsageUsedByInner {
-	if o == nil || isNil(o.UsedBy) {
+	if o == nil || IsNil(o.UsedBy) {
 		var ret []AccessProfileUsageUsedByInner
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *AccessProfileUsage) GetUsedBy() []AccessProfileUsageUsedByInner {
 // GetUsedByOk returns a tuple with the UsedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessProfileUsage) GetUsedByOk() ([]AccessProfileUsageUsedByInner, bool) {
-	if o == nil || isNil(o.UsedBy) {
+	if o == nil || IsNil(o.UsedBy) {
 		return nil, false
 	}
 	return o.UsedBy, true
@@ -97,7 +97,7 @@ func (o *AccessProfileUsage) GetUsedByOk() ([]AccessProfileUsageUsedByInner, boo
 
 // HasUsedBy returns a boolean if a field has been set.
 func (o *AccessProfileUsage) HasUsedBy() bool {
-	if o != nil && !isNil(o.UsedBy) {
+	if o != nil && !IsNil(o.UsedBy) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o AccessProfileUsage) MarshalJSON() ([]byte, error) {
 
 func (o AccessProfileUsage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AccessProfileId) {
+	if !IsNil(o.AccessProfileId) {
 		toSerialize["accessProfileId"] = o.AccessProfileId
 	}
-	if !isNil(o.UsedBy) {
+	if !IsNil(o.UsedBy) {
 		toSerialize["usedBy"] = o.UsedBy
 	}
 
@@ -133,16 +133,20 @@ func (o AccessProfileUsage) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccessProfileUsage) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccessProfileUsage) UnmarshalJSON(data []byte) (err error) {
 	varAccessProfileUsage := _AccessProfileUsage{}
 
-	if err = json.Unmarshal(bytes, &varAccessProfileUsage); err == nil {
+	err = json.Unmarshal(data, &varAccessProfileUsage)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessProfileUsage(varAccessProfileUsage)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "accessProfileId")
 		delete(additionalProperties, "usedBy")
 		o.AdditionalProperties = additionalProperties

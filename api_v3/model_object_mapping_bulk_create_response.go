@@ -44,7 +44,7 @@ func NewObjectMappingBulkCreateResponseWithDefaults() *ObjectMappingBulkCreateRe
 
 // GetAddedObjects returns the AddedObjects field value if set, zero value otherwise.
 func (o *ObjectMappingBulkCreateResponse) GetAddedObjects() []ObjectMappingResponse {
-	if o == nil || isNil(o.AddedObjects) {
+	if o == nil || IsNil(o.AddedObjects) {
 		var ret []ObjectMappingResponse
 		return ret
 	}
@@ -54,7 +54,7 @@ func (o *ObjectMappingBulkCreateResponse) GetAddedObjects() []ObjectMappingRespo
 // GetAddedObjectsOk returns a tuple with the AddedObjects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ObjectMappingBulkCreateResponse) GetAddedObjectsOk() ([]ObjectMappingResponse, bool) {
-	if o == nil || isNil(o.AddedObjects) {
+	if o == nil || IsNil(o.AddedObjects) {
 		return nil, false
 	}
 	return o.AddedObjects, true
@@ -62,7 +62,7 @@ func (o *ObjectMappingBulkCreateResponse) GetAddedObjectsOk() ([]ObjectMappingRe
 
 // HasAddedObjects returns a boolean if a field has been set.
 func (o *ObjectMappingBulkCreateResponse) HasAddedObjects() bool {
-	if o != nil && !isNil(o.AddedObjects) {
+	if o != nil && !IsNil(o.AddedObjects) {
 		return true
 	}
 
@@ -84,7 +84,7 @@ func (o ObjectMappingBulkCreateResponse) MarshalJSON() ([]byte, error) {
 
 func (o ObjectMappingBulkCreateResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AddedObjects) {
+	if !IsNil(o.AddedObjects) {
 		toSerialize["addedObjects"] = o.AddedObjects
 	}
 
@@ -95,16 +95,20 @@ func (o ObjectMappingBulkCreateResponse) ToMap() (map[string]interface{}, error)
 	return toSerialize, nil
 }
 
-func (o *ObjectMappingBulkCreateResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ObjectMappingBulkCreateResponse) UnmarshalJSON(data []byte) (err error) {
 	varObjectMappingBulkCreateResponse := _ObjectMappingBulkCreateResponse{}
 
-	if err = json.Unmarshal(bytes, &varObjectMappingBulkCreateResponse); err == nil {
+	err = json.Unmarshal(data, &varObjectMappingBulkCreateResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ObjectMappingBulkCreateResponse(varObjectMappingBulkCreateResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "addedObjects")
 		o.AdditionalProperties = additionalProperties
 	}

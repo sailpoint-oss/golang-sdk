@@ -79,7 +79,7 @@ func (o *Schedule1) SetType(v ScheduleType) {
 
 // GetMonths returns the Months field value if set, zero value otherwise.
 func (o *Schedule1) GetMonths() Schedule1Months {
-	if o == nil || isNil(o.Months) {
+	if o == nil || IsNil(o.Months) {
 		var ret Schedule1Months
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *Schedule1) GetMonths() Schedule1Months {
 // GetMonthsOk returns a tuple with the Months field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Schedule1) GetMonthsOk() (*Schedule1Months, bool) {
-	if o == nil || isNil(o.Months) {
+	if o == nil || IsNil(o.Months) {
 		return nil, false
 	}
 	return o.Months, true
@@ -97,7 +97,7 @@ func (o *Schedule1) GetMonthsOk() (*Schedule1Months, bool) {
 
 // HasMonths returns a boolean if a field has been set.
 func (o *Schedule1) HasMonths() bool {
-	if o != nil && !isNil(o.Months) {
+	if o != nil && !IsNil(o.Months) {
 		return true
 	}
 
@@ -111,7 +111,7 @@ func (o *Schedule1) SetMonths(v Schedule1Months) {
 
 // GetDays returns the Days field value if set, zero value otherwise.
 func (o *Schedule1) GetDays() Schedule1Days {
-	if o == nil || isNil(o.Days) {
+	if o == nil || IsNil(o.Days) {
 		var ret Schedule1Days
 		return ret
 	}
@@ -121,7 +121,7 @@ func (o *Schedule1) GetDays() Schedule1Days {
 // GetDaysOk returns a tuple with the Days field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Schedule1) GetDaysOk() (*Schedule1Days, bool) {
-	if o == nil || isNil(o.Days) {
+	if o == nil || IsNil(o.Days) {
 		return nil, false
 	}
 	return o.Days, true
@@ -129,7 +129,7 @@ func (o *Schedule1) GetDaysOk() (*Schedule1Days, bool) {
 
 // HasDays returns a boolean if a field has been set.
 func (o *Schedule1) HasDays() bool {
-	if o != nil && !isNil(o.Days) {
+	if o != nil && !IsNil(o.Days) {
 		return true
 	}
 
@@ -167,7 +167,7 @@ func (o *Schedule1) SetHours(v Schedule1Hours) {
 
 // GetExpiration returns the Expiration field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Schedule1) GetExpiration() time.Time {
-	if o == nil || isNil(o.Expiration.Get()) {
+	if o == nil || IsNil(o.Expiration.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -209,7 +209,7 @@ func (o *Schedule1) UnsetExpiration() {
 
 // GetTimeZoneId returns the TimeZoneId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Schedule1) GetTimeZoneId() string {
-	if o == nil || isNil(o.TimeZoneId.Get()) {
+	if o == nil || IsNil(o.TimeZoneId.Get()) {
 		var ret string
 		return ret
 	}
@@ -260,10 +260,10 @@ func (o Schedule1) MarshalJSON() ([]byte, error) {
 func (o Schedule1) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
-	if !isNil(o.Months) {
+	if !IsNil(o.Months) {
 		toSerialize["months"] = o.Months
 	}
-	if !isNil(o.Days) {
+	if !IsNil(o.Days) {
 		toSerialize["days"] = o.Days
 	}
 	toSerialize["hours"] = o.Hours
@@ -281,8 +281,8 @@ func (o Schedule1) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Schedule1) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *Schedule1) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -292,7 +292,7 @@ func (o *Schedule1) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -306,13 +306,17 @@ func (o *Schedule1) UnmarshalJSON(bytes []byte) (err error) {
 
 	varSchedule1 := _Schedule1{}
 
-	if err = json.Unmarshal(bytes, &varSchedule1); err == nil {
+	err = json.Unmarshal(data, &varSchedule1)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Schedule1(varSchedule1)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "months")
 		delete(additionalProperties, "days")

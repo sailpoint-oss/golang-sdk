@@ -54,7 +54,7 @@ func NewNonEmployeeBulkUploadJobWithDefaults() *NonEmployeeBulkUploadJob {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *NonEmployeeBulkUploadJob) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -64,7 +64,7 @@ func (o *NonEmployeeBulkUploadJob) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeBulkUploadJob) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -72,7 +72,7 @@ func (o *NonEmployeeBulkUploadJob) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *NonEmployeeBulkUploadJob) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -86,7 +86,7 @@ func (o *NonEmployeeBulkUploadJob) SetId(v string) {
 
 // GetSourceId returns the SourceId field value if set, zero value otherwise.
 func (o *NonEmployeeBulkUploadJob) GetSourceId() string {
-	if o == nil || isNil(o.SourceId) {
+	if o == nil || IsNil(o.SourceId) {
 		var ret string
 		return ret
 	}
@@ -96,7 +96,7 @@ func (o *NonEmployeeBulkUploadJob) GetSourceId() string {
 // GetSourceIdOk returns a tuple with the SourceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeBulkUploadJob) GetSourceIdOk() (*string, bool) {
-	if o == nil || isNil(o.SourceId) {
+	if o == nil || IsNil(o.SourceId) {
 		return nil, false
 	}
 	return o.SourceId, true
@@ -104,7 +104,7 @@ func (o *NonEmployeeBulkUploadJob) GetSourceIdOk() (*string, bool) {
 
 // HasSourceId returns a boolean if a field has been set.
 func (o *NonEmployeeBulkUploadJob) HasSourceId() bool {
-	if o != nil && !isNil(o.SourceId) {
+	if o != nil && !IsNil(o.SourceId) {
 		return true
 	}
 
@@ -118,7 +118,7 @@ func (o *NonEmployeeBulkUploadJob) SetSourceId(v string) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *NonEmployeeBulkUploadJob) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -128,7 +128,7 @@ func (o *NonEmployeeBulkUploadJob) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeBulkUploadJob) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -136,7 +136,7 @@ func (o *NonEmployeeBulkUploadJob) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *NonEmployeeBulkUploadJob) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -150,7 +150,7 @@ func (o *NonEmployeeBulkUploadJob) SetCreated(v time.Time) {
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *NonEmployeeBulkUploadJob) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		var ret time.Time
 		return ret
 	}
@@ -160,7 +160,7 @@ func (o *NonEmployeeBulkUploadJob) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeBulkUploadJob) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -168,7 +168,7 @@ func (o *NonEmployeeBulkUploadJob) GetModifiedOk() (*time.Time, bool) {
 
 // HasModified returns a boolean if a field has been set.
 func (o *NonEmployeeBulkUploadJob) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -182,7 +182,7 @@ func (o *NonEmployeeBulkUploadJob) SetModified(v time.Time) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *NonEmployeeBulkUploadJob) GetStatus() string {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -192,7 +192,7 @@ func (o *NonEmployeeBulkUploadJob) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeBulkUploadJob) GetStatusOk() (*string, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -200,7 +200,7 @@ func (o *NonEmployeeBulkUploadJob) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *NonEmployeeBulkUploadJob) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -222,19 +222,19 @@ func (o NonEmployeeBulkUploadJob) MarshalJSON() ([]byte, error) {
 
 func (o NonEmployeeBulkUploadJob) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.SourceId) {
+	if !IsNil(o.SourceId) {
 		toSerialize["sourceId"] = o.SourceId
 	}
-	if !isNil(o.Created) {
+	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
-	if !isNil(o.Modified) {
+	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
-	if !isNil(o.Status) {
+	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
 
@@ -245,16 +245,20 @@ func (o NonEmployeeBulkUploadJob) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *NonEmployeeBulkUploadJob) UnmarshalJSON(bytes []byte) (err error) {
+func (o *NonEmployeeBulkUploadJob) UnmarshalJSON(data []byte) (err error) {
 	varNonEmployeeBulkUploadJob := _NonEmployeeBulkUploadJob{}
 
-	if err = json.Unmarshal(bytes, &varNonEmployeeBulkUploadJob); err == nil {
+	err = json.Unmarshal(data, &varNonEmployeeBulkUploadJob)
+
+	if err != nil {
+		return err
+	}
+
 	*o = NonEmployeeBulkUploadJob(varNonEmployeeBulkUploadJob)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "sourceId")
 		delete(additionalProperties, "created")

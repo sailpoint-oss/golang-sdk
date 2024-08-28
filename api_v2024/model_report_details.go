@@ -46,7 +46,7 @@ func NewReportDetailsWithDefaults() *ReportDetails {
 
 // GetReportType returns the ReportType field value if set, zero value otherwise.
 func (o *ReportDetails) GetReportType() string {
-	if o == nil || isNil(o.ReportType) {
+	if o == nil || IsNil(o.ReportType) {
 		var ret string
 		return ret
 	}
@@ -56,7 +56,7 @@ func (o *ReportDetails) GetReportType() string {
 // GetReportTypeOk returns a tuple with the ReportType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReportDetails) GetReportTypeOk() (*string, bool) {
-	if o == nil || isNil(o.ReportType) {
+	if o == nil || IsNil(o.ReportType) {
 		return nil, false
 	}
 	return o.ReportType, true
@@ -64,7 +64,7 @@ func (o *ReportDetails) GetReportTypeOk() (*string, bool) {
 
 // HasReportType returns a boolean if a field has been set.
 func (o *ReportDetails) HasReportType() bool {
-	if o != nil && !isNil(o.ReportType) {
+	if o != nil && !IsNil(o.ReportType) {
 		return true
 	}
 
@@ -78,7 +78,7 @@ func (o *ReportDetails) SetReportType(v string) {
 
 // GetArguments returns the Arguments field value if set, zero value otherwise.
 func (o *ReportDetails) GetArguments() ReportDetailsArguments {
-	if o == nil || isNil(o.Arguments) {
+	if o == nil || IsNil(o.Arguments) {
 		var ret ReportDetailsArguments
 		return ret
 	}
@@ -88,7 +88,7 @@ func (o *ReportDetails) GetArguments() ReportDetailsArguments {
 // GetArgumentsOk returns a tuple with the Arguments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReportDetails) GetArgumentsOk() (*ReportDetailsArguments, bool) {
-	if o == nil || isNil(o.Arguments) {
+	if o == nil || IsNil(o.Arguments) {
 		return nil, false
 	}
 	return o.Arguments, true
@@ -96,7 +96,7 @@ func (o *ReportDetails) GetArgumentsOk() (*ReportDetailsArguments, bool) {
 
 // HasArguments returns a boolean if a field has been set.
 func (o *ReportDetails) HasArguments() bool {
-	if o != nil && !isNil(o.Arguments) {
+	if o != nil && !IsNil(o.Arguments) {
 		return true
 	}
 
@@ -118,10 +118,10 @@ func (o ReportDetails) MarshalJSON() ([]byte, error) {
 
 func (o ReportDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ReportType) {
+	if !IsNil(o.ReportType) {
 		toSerialize["reportType"] = o.ReportType
 	}
-	if !isNil(o.Arguments) {
+	if !IsNil(o.Arguments) {
 		toSerialize["arguments"] = o.Arguments
 	}
 
@@ -132,16 +132,20 @@ func (o ReportDetails) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ReportDetails) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ReportDetails) UnmarshalJSON(data []byte) (err error) {
 	varReportDetails := _ReportDetails{}
 
-	if err = json.Unmarshal(bytes, &varReportDetails); err == nil {
+	err = json.Unmarshal(data, &varReportDetails)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ReportDetails(varReportDetails)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "reportType")
 		delete(additionalProperties, "arguments")
 		o.AdditionalProperties = additionalProperties

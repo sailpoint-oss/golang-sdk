@@ -46,7 +46,7 @@ func NewCampaignAlertWithDefaults() *CampaignAlert {
 
 // GetLevel returns the Level field value if set, zero value otherwise.
 func (o *CampaignAlert) GetLevel() string {
-	if o == nil || isNil(o.Level) {
+	if o == nil || IsNil(o.Level) {
 		var ret string
 		return ret
 	}
@@ -56,7 +56,7 @@ func (o *CampaignAlert) GetLevel() string {
 // GetLevelOk returns a tuple with the Level field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CampaignAlert) GetLevelOk() (*string, bool) {
-	if o == nil || isNil(o.Level) {
+	if o == nil || IsNil(o.Level) {
 		return nil, false
 	}
 	return o.Level, true
@@ -64,7 +64,7 @@ func (o *CampaignAlert) GetLevelOk() (*string, bool) {
 
 // HasLevel returns a boolean if a field has been set.
 func (o *CampaignAlert) HasLevel() bool {
-	if o != nil && !isNil(o.Level) {
+	if o != nil && !IsNil(o.Level) {
 		return true
 	}
 
@@ -78,7 +78,7 @@ func (o *CampaignAlert) SetLevel(v string) {
 
 // GetLocalizations returns the Localizations field value if set, zero value otherwise.
 func (o *CampaignAlert) GetLocalizations() []ErrorMessageDto {
-	if o == nil || isNil(o.Localizations) {
+	if o == nil || IsNil(o.Localizations) {
 		var ret []ErrorMessageDto
 		return ret
 	}
@@ -88,7 +88,7 @@ func (o *CampaignAlert) GetLocalizations() []ErrorMessageDto {
 // GetLocalizationsOk returns a tuple with the Localizations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CampaignAlert) GetLocalizationsOk() ([]ErrorMessageDto, bool) {
-	if o == nil || isNil(o.Localizations) {
+	if o == nil || IsNil(o.Localizations) {
 		return nil, false
 	}
 	return o.Localizations, true
@@ -96,7 +96,7 @@ func (o *CampaignAlert) GetLocalizationsOk() ([]ErrorMessageDto, bool) {
 
 // HasLocalizations returns a boolean if a field has been set.
 func (o *CampaignAlert) HasLocalizations() bool {
-	if o != nil && !isNil(o.Localizations) {
+	if o != nil && !IsNil(o.Localizations) {
 		return true
 	}
 
@@ -118,10 +118,10 @@ func (o CampaignAlert) MarshalJSON() ([]byte, error) {
 
 func (o CampaignAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Level) {
+	if !IsNil(o.Level) {
 		toSerialize["level"] = o.Level
 	}
-	if !isNil(o.Localizations) {
+	if !IsNil(o.Localizations) {
 		toSerialize["localizations"] = o.Localizations
 	}
 
@@ -132,16 +132,20 @@ func (o CampaignAlert) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CampaignAlert) UnmarshalJSON(bytes []byte) (err error) {
+func (o *CampaignAlert) UnmarshalJSON(data []byte) (err error) {
 	varCampaignAlert := _CampaignAlert{}
 
-	if err = json.Unmarshal(bytes, &varCampaignAlert); err == nil {
+	err = json.Unmarshal(data, &varCampaignAlert)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CampaignAlert(varCampaignAlert)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "level")
 		delete(additionalProperties, "localizations")
 		o.AdditionalProperties = additionalProperties

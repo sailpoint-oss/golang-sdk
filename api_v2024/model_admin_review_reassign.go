@@ -48,7 +48,7 @@ func NewAdminReviewReassignWithDefaults() *AdminReviewReassign {
 
 // GetCertificationIds returns the CertificationIds field value if set, zero value otherwise.
 func (o *AdminReviewReassign) GetCertificationIds() []string {
-	if o == nil || isNil(o.CertificationIds) {
+	if o == nil || IsNil(o.CertificationIds) {
 		var ret []string
 		return ret
 	}
@@ -58,7 +58,7 @@ func (o *AdminReviewReassign) GetCertificationIds() []string {
 // GetCertificationIdsOk returns a tuple with the CertificationIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AdminReviewReassign) GetCertificationIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.CertificationIds) {
+	if o == nil || IsNil(o.CertificationIds) {
 		return nil, false
 	}
 	return o.CertificationIds, true
@@ -66,7 +66,7 @@ func (o *AdminReviewReassign) GetCertificationIdsOk() ([]string, bool) {
 
 // HasCertificationIds returns a boolean if a field has been set.
 func (o *AdminReviewReassign) HasCertificationIds() bool {
-	if o != nil && !isNil(o.CertificationIds) {
+	if o != nil && !IsNil(o.CertificationIds) {
 		return true
 	}
 
@@ -80,7 +80,7 @@ func (o *AdminReviewReassign) SetCertificationIds(v []string) {
 
 // GetReassignTo returns the ReassignTo field value if set, zero value otherwise.
 func (o *AdminReviewReassign) GetReassignTo() AdminReviewReassignReassignTo {
-	if o == nil || isNil(o.ReassignTo) {
+	if o == nil || IsNil(o.ReassignTo) {
 		var ret AdminReviewReassignReassignTo
 		return ret
 	}
@@ -90,7 +90,7 @@ func (o *AdminReviewReassign) GetReassignTo() AdminReviewReassignReassignTo {
 // GetReassignToOk returns a tuple with the ReassignTo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AdminReviewReassign) GetReassignToOk() (*AdminReviewReassignReassignTo, bool) {
-	if o == nil || isNil(o.ReassignTo) {
+	if o == nil || IsNil(o.ReassignTo) {
 		return nil, false
 	}
 	return o.ReassignTo, true
@@ -98,7 +98,7 @@ func (o *AdminReviewReassign) GetReassignToOk() (*AdminReviewReassignReassignTo,
 
 // HasReassignTo returns a boolean if a field has been set.
 func (o *AdminReviewReassign) HasReassignTo() bool {
-	if o != nil && !isNil(o.ReassignTo) {
+	if o != nil && !IsNil(o.ReassignTo) {
 		return true
 	}
 
@@ -112,7 +112,7 @@ func (o *AdminReviewReassign) SetReassignTo(v AdminReviewReassignReassignTo) {
 
 // GetReason returns the Reason field value if set, zero value otherwise.
 func (o *AdminReviewReassign) GetReason() string {
-	if o == nil || isNil(o.Reason) {
+	if o == nil || IsNil(o.Reason) {
 		var ret string
 		return ret
 	}
@@ -122,7 +122,7 @@ func (o *AdminReviewReassign) GetReason() string {
 // GetReasonOk returns a tuple with the Reason field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AdminReviewReassign) GetReasonOk() (*string, bool) {
-	if o == nil || isNil(o.Reason) {
+	if o == nil || IsNil(o.Reason) {
 		return nil, false
 	}
 	return o.Reason, true
@@ -130,7 +130,7 @@ func (o *AdminReviewReassign) GetReasonOk() (*string, bool) {
 
 // HasReason returns a boolean if a field has been set.
 func (o *AdminReviewReassign) HasReason() bool {
-	if o != nil && !isNil(o.Reason) {
+	if o != nil && !IsNil(o.Reason) {
 		return true
 	}
 
@@ -152,13 +152,13 @@ func (o AdminReviewReassign) MarshalJSON() ([]byte, error) {
 
 func (o AdminReviewReassign) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.CertificationIds) {
+	if !IsNil(o.CertificationIds) {
 		toSerialize["certificationIds"] = o.CertificationIds
 	}
-	if !isNil(o.ReassignTo) {
+	if !IsNil(o.ReassignTo) {
 		toSerialize["reassignTo"] = o.ReassignTo
 	}
-	if !isNil(o.Reason) {
+	if !IsNil(o.Reason) {
 		toSerialize["reason"] = o.Reason
 	}
 
@@ -169,16 +169,20 @@ func (o AdminReviewReassign) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AdminReviewReassign) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AdminReviewReassign) UnmarshalJSON(data []byte) (err error) {
 	varAdminReviewReassign := _AdminReviewReassign{}
 
-	if err = json.Unmarshal(bytes, &varAdminReviewReassign); err == nil {
+	err = json.Unmarshal(data, &varAdminReviewReassign)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AdminReviewReassign(varAdminReviewReassign)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "certificationIds")
 		delete(additionalProperties, "reassignTo")
 		delete(additionalProperties, "reason")

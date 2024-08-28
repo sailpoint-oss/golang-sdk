@@ -63,7 +63,7 @@ func NewRoleMiningSessionDraftRoleDtoWithDefaults() *RoleMiningSessionDraftRoleD
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *RoleMiningSessionDraftRoleDto) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -73,7 +73,7 @@ func (o *RoleMiningSessionDraftRoleDto) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningSessionDraftRoleDto) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -81,7 +81,7 @@ func (o *RoleMiningSessionDraftRoleDto) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *RoleMiningSessionDraftRoleDto) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -95,7 +95,7 @@ func (o *RoleMiningSessionDraftRoleDto) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *RoleMiningSessionDraftRoleDto) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -105,7 +105,7 @@ func (o *RoleMiningSessionDraftRoleDto) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningSessionDraftRoleDto) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -113,7 +113,7 @@ func (o *RoleMiningSessionDraftRoleDto) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *RoleMiningSessionDraftRoleDto) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -127,7 +127,7 @@ func (o *RoleMiningSessionDraftRoleDto) SetDescription(v string) {
 
 // GetIdentityIds returns the IdentityIds field value if set, zero value otherwise.
 func (o *RoleMiningSessionDraftRoleDto) GetIdentityIds() []string {
-	if o == nil || isNil(o.IdentityIds) {
+	if o == nil || IsNil(o.IdentityIds) {
 		var ret []string
 		return ret
 	}
@@ -137,7 +137,7 @@ func (o *RoleMiningSessionDraftRoleDto) GetIdentityIds() []string {
 // GetIdentityIdsOk returns a tuple with the IdentityIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningSessionDraftRoleDto) GetIdentityIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.IdentityIds) {
+	if o == nil || IsNil(o.IdentityIds) {
 		return nil, false
 	}
 	return o.IdentityIds, true
@@ -145,7 +145,7 @@ func (o *RoleMiningSessionDraftRoleDto) GetIdentityIdsOk() ([]string, bool) {
 
 // HasIdentityIds returns a boolean if a field has been set.
 func (o *RoleMiningSessionDraftRoleDto) HasIdentityIds() bool {
-	if o != nil && !isNil(o.IdentityIds) {
+	if o != nil && !IsNil(o.IdentityIds) {
 		return true
 	}
 
@@ -159,7 +159,7 @@ func (o *RoleMiningSessionDraftRoleDto) SetIdentityIds(v []string) {
 
 // GetEntitlementIds returns the EntitlementIds field value if set, zero value otherwise.
 func (o *RoleMiningSessionDraftRoleDto) GetEntitlementIds() []string {
-	if o == nil || isNil(o.EntitlementIds) {
+	if o == nil || IsNil(o.EntitlementIds) {
 		var ret []string
 		return ret
 	}
@@ -169,7 +169,7 @@ func (o *RoleMiningSessionDraftRoleDto) GetEntitlementIds() []string {
 // GetEntitlementIdsOk returns a tuple with the EntitlementIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningSessionDraftRoleDto) GetEntitlementIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.EntitlementIds) {
+	if o == nil || IsNil(o.EntitlementIds) {
 		return nil, false
 	}
 	return o.EntitlementIds, true
@@ -177,7 +177,7 @@ func (o *RoleMiningSessionDraftRoleDto) GetEntitlementIdsOk() ([]string, bool) {
 
 // HasEntitlementIds returns a boolean if a field has been set.
 func (o *RoleMiningSessionDraftRoleDto) HasEntitlementIds() bool {
-	if o != nil && !isNil(o.EntitlementIds) {
+	if o != nil && !IsNil(o.EntitlementIds) {
 		return true
 	}
 
@@ -191,7 +191,7 @@ func (o *RoleMiningSessionDraftRoleDto) SetEntitlementIds(v []string) {
 
 // GetExcludedEntitlements returns the ExcludedEntitlements field value if set, zero value otherwise.
 func (o *RoleMiningSessionDraftRoleDto) GetExcludedEntitlements() []string {
-	if o == nil || isNil(o.ExcludedEntitlements) {
+	if o == nil || IsNil(o.ExcludedEntitlements) {
 		var ret []string
 		return ret
 	}
@@ -201,7 +201,7 @@ func (o *RoleMiningSessionDraftRoleDto) GetExcludedEntitlements() []string {
 // GetExcludedEntitlementsOk returns a tuple with the ExcludedEntitlements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningSessionDraftRoleDto) GetExcludedEntitlementsOk() ([]string, bool) {
-	if o == nil || isNil(o.ExcludedEntitlements) {
+	if o == nil || IsNil(o.ExcludedEntitlements) {
 		return nil, false
 	}
 	return o.ExcludedEntitlements, true
@@ -209,7 +209,7 @@ func (o *RoleMiningSessionDraftRoleDto) GetExcludedEntitlementsOk() ([]string, b
 
 // HasExcludedEntitlements returns a boolean if a field has been set.
 func (o *RoleMiningSessionDraftRoleDto) HasExcludedEntitlements() bool {
-	if o != nil && !isNil(o.ExcludedEntitlements) {
+	if o != nil && !IsNil(o.ExcludedEntitlements) {
 		return true
 	}
 
@@ -223,7 +223,7 @@ func (o *RoleMiningSessionDraftRoleDto) SetExcludedEntitlements(v []string) {
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *RoleMiningSessionDraftRoleDto) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		var ret time.Time
 		return ret
 	}
@@ -233,7 +233,7 @@ func (o *RoleMiningSessionDraftRoleDto) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningSessionDraftRoleDto) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -241,7 +241,7 @@ func (o *RoleMiningSessionDraftRoleDto) GetModifiedOk() (*time.Time, bool) {
 
 // HasModified returns a boolean if a field has been set.
 func (o *RoleMiningSessionDraftRoleDto) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -255,7 +255,7 @@ func (o *RoleMiningSessionDraftRoleDto) SetModified(v time.Time) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *RoleMiningSessionDraftRoleDto) GetType() RoleMiningRoleType {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret RoleMiningRoleType
 		return ret
 	}
@@ -265,7 +265,7 @@ func (o *RoleMiningSessionDraftRoleDto) GetType() RoleMiningRoleType {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningSessionDraftRoleDto) GetTypeOk() (*RoleMiningRoleType, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -273,7 +273,7 @@ func (o *RoleMiningSessionDraftRoleDto) GetTypeOk() (*RoleMiningRoleType, bool) 
 
 // HasType returns a boolean if a field has been set.
 func (o *RoleMiningSessionDraftRoleDto) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -287,7 +287,7 @@ func (o *RoleMiningSessionDraftRoleDto) SetType(v RoleMiningRoleType) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *RoleMiningSessionDraftRoleDto) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -297,7 +297,7 @@ func (o *RoleMiningSessionDraftRoleDto) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningSessionDraftRoleDto) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -305,7 +305,7 @@ func (o *RoleMiningSessionDraftRoleDto) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *RoleMiningSessionDraftRoleDto) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -319,7 +319,7 @@ func (o *RoleMiningSessionDraftRoleDto) SetId(v string) {
 
 // GetCreatedDate returns the CreatedDate field value if set, zero value otherwise.
 func (o *RoleMiningSessionDraftRoleDto) GetCreatedDate() time.Time {
-	if o == nil || isNil(o.CreatedDate) {
+	if o == nil || IsNil(o.CreatedDate) {
 		var ret time.Time
 		return ret
 	}
@@ -329,7 +329,7 @@ func (o *RoleMiningSessionDraftRoleDto) GetCreatedDate() time.Time {
 // GetCreatedDateOk returns a tuple with the CreatedDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningSessionDraftRoleDto) GetCreatedDateOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedDate) {
+	if o == nil || IsNil(o.CreatedDate) {
 		return nil, false
 	}
 	return o.CreatedDate, true
@@ -337,7 +337,7 @@ func (o *RoleMiningSessionDraftRoleDto) GetCreatedDateOk() (*time.Time, bool) {
 
 // HasCreatedDate returns a boolean if a field has been set.
 func (o *RoleMiningSessionDraftRoleDto) HasCreatedDate() bool {
-	if o != nil && !isNil(o.CreatedDate) {
+	if o != nil && !IsNil(o.CreatedDate) {
 		return true
 	}
 
@@ -351,7 +351,7 @@ func (o *RoleMiningSessionDraftRoleDto) SetCreatedDate(v time.Time) {
 
 // GetModifiedDate returns the ModifiedDate field value if set, zero value otherwise.
 func (o *RoleMiningSessionDraftRoleDto) GetModifiedDate() time.Time {
-	if o == nil || isNil(o.ModifiedDate) {
+	if o == nil || IsNil(o.ModifiedDate) {
 		var ret time.Time
 		return ret
 	}
@@ -361,7 +361,7 @@ func (o *RoleMiningSessionDraftRoleDto) GetModifiedDate() time.Time {
 // GetModifiedDateOk returns a tuple with the ModifiedDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningSessionDraftRoleDto) GetModifiedDateOk() (*time.Time, bool) {
-	if o == nil || isNil(o.ModifiedDate) {
+	if o == nil || IsNil(o.ModifiedDate) {
 		return nil, false
 	}
 	return o.ModifiedDate, true
@@ -369,7 +369,7 @@ func (o *RoleMiningSessionDraftRoleDto) GetModifiedDateOk() (*time.Time, bool) {
 
 // HasModifiedDate returns a boolean if a field has been set.
 func (o *RoleMiningSessionDraftRoleDto) HasModifiedDate() bool {
-	if o != nil && !isNil(o.ModifiedDate) {
+	if o != nil && !IsNil(o.ModifiedDate) {
 		return true
 	}
 
@@ -391,34 +391,34 @@ func (o RoleMiningSessionDraftRoleDto) MarshalJSON() ([]byte, error) {
 
 func (o RoleMiningSessionDraftRoleDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.IdentityIds) {
+	if !IsNil(o.IdentityIds) {
 		toSerialize["identityIds"] = o.IdentityIds
 	}
-	if !isNil(o.EntitlementIds) {
+	if !IsNil(o.EntitlementIds) {
 		toSerialize["entitlementIds"] = o.EntitlementIds
 	}
-	if !isNil(o.ExcludedEntitlements) {
+	if !IsNil(o.ExcludedEntitlements) {
 		toSerialize["excludedEntitlements"] = o.ExcludedEntitlements
 	}
-	if !isNil(o.Modified) {
+	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.CreatedDate) {
+	if !IsNil(o.CreatedDate) {
 		toSerialize["createdDate"] = o.CreatedDate
 	}
-	if !isNil(o.ModifiedDate) {
+	if !IsNil(o.ModifiedDate) {
 		toSerialize["modifiedDate"] = o.ModifiedDate
 	}
 
@@ -429,16 +429,20 @@ func (o RoleMiningSessionDraftRoleDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *RoleMiningSessionDraftRoleDto) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RoleMiningSessionDraftRoleDto) UnmarshalJSON(data []byte) (err error) {
 	varRoleMiningSessionDraftRoleDto := _RoleMiningSessionDraftRoleDto{}
 
-	if err = json.Unmarshal(bytes, &varRoleMiningSessionDraftRoleDto); err == nil {
+	err = json.Unmarshal(data, &varRoleMiningSessionDraftRoleDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RoleMiningSessionDraftRoleDto(varRoleMiningSessionDraftRoleDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "identityIds")

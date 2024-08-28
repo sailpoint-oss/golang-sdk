@@ -1097,7 +1097,7 @@ func (a *ConfigurationHubAPIService) GetUploadedBackupsExecute(r ApiGetUploadedB
 	localVarFormParams := url.Values{}
 
 	if r.status != nil {
-		parameterAddToQuery(localVarQueryParams, "status", r.status, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1318,7 +1318,7 @@ func (a *ConfigurationHubAPIService) ImportUploadedBackupExecute(r ApiImportUplo
 		dataLocalVarFile.Close()
 		formFiles = append(formFiles, formFile{fileBytes: dataLocalVarFileBytes, fileName: dataLocalVarFileName, formFileName: dataLocalVarFormFileName})
 	}
-	parameterAddToQuery(localVarFormParams, "name", r.name, "")
+	parameterAddToHeaderOrQuery(localVarFormParams, "name", r.name, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

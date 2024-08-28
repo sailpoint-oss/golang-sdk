@@ -45,7 +45,7 @@ func NewDataAccessImpactScoreWithDefaults() *DataAccessImpactScore {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *DataAccessImpactScore) GetValue() string {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *DataAccessImpactScore) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DataAccessImpactScore) GetValueOk() (*string, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -63,7 +63,7 @@ func (o *DataAccessImpactScore) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *DataAccessImpactScore) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o DataAccessImpactScore) MarshalJSON() ([]byte, error) {
 
 func (o DataAccessImpactScore) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Value) {
+	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
 
@@ -96,16 +96,20 @@ func (o DataAccessImpactScore) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *DataAccessImpactScore) UnmarshalJSON(bytes []byte) (err error) {
+func (o *DataAccessImpactScore) UnmarshalJSON(data []byte) (err error) {
 	varDataAccessImpactScore := _DataAccessImpactScore{}
 
-	if err = json.Unmarshal(bytes, &varDataAccessImpactScore); err == nil {
+	err = json.Unmarshal(data, &varDataAccessImpactScore)
+
+	if err != nil {
+		return err
+	}
+
 	*o = DataAccessImpactScore(varDataAccessImpactScore)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "value")
 		o.AdditionalProperties = additionalProperties
 	}

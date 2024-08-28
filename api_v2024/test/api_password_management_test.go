@@ -19,14 +19,14 @@ import (
 
 func Test_api_v2024_PasswordManagementAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test PasswordManagementAPIService GenerateDigitToken", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.PasswordManagementAPI.GenerateDigitToken(context.Background()).Execute()
+		resp, httpRes, err := apiClient.PasswordManagementAPI.GenerateDigitToken(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_v2024_PasswordManagementAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.PasswordManagementAPI.GetPasswordChangeStatus(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.PasswordManagementAPI.GetPasswordChangeStatus(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -52,7 +52,7 @@ func Test_api_v2024_PasswordManagementAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.PasswordManagementAPI.QueryPasswordInfo(context.Background()).Execute()
+		resp, httpRes, err := apiClient.PasswordManagementAPI.QueryPasswordInfo(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -64,7 +64,7 @@ func Test_api_v2024_PasswordManagementAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.PasswordManagementAPI.SetPassword(context.Background()).Execute()
+		resp, httpRes, err := apiClient.PasswordManagementAPI.SetPassword(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

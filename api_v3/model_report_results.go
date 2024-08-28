@@ -60,7 +60,7 @@ func NewReportResultsWithDefaults() *ReportResults {
 
 // GetReportType returns the ReportType field value if set, zero value otherwise.
 func (o *ReportResults) GetReportType() string {
-	if o == nil || isNil(o.ReportType) {
+	if o == nil || IsNil(o.ReportType) {
 		var ret string
 		return ret
 	}
@@ -70,7 +70,7 @@ func (o *ReportResults) GetReportType() string {
 // GetReportTypeOk returns a tuple with the ReportType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReportResults) GetReportTypeOk() (*string, bool) {
-	if o == nil || isNil(o.ReportType) {
+	if o == nil || IsNil(o.ReportType) {
 		return nil, false
 	}
 	return o.ReportType, true
@@ -78,7 +78,7 @@ func (o *ReportResults) GetReportTypeOk() (*string, bool) {
 
 // HasReportType returns a boolean if a field has been set.
 func (o *ReportResults) HasReportType() bool {
-	if o != nil && !isNil(o.ReportType) {
+	if o != nil && !IsNil(o.ReportType) {
 		return true
 	}
 
@@ -92,7 +92,7 @@ func (o *ReportResults) SetReportType(v string) {
 
 // GetTaskDefName returns the TaskDefName field value if set, zero value otherwise.
 func (o *ReportResults) GetTaskDefName() string {
-	if o == nil || isNil(o.TaskDefName) {
+	if o == nil || IsNil(o.TaskDefName) {
 		var ret string
 		return ret
 	}
@@ -102,7 +102,7 @@ func (o *ReportResults) GetTaskDefName() string {
 // GetTaskDefNameOk returns a tuple with the TaskDefName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReportResults) GetTaskDefNameOk() (*string, bool) {
-	if o == nil || isNil(o.TaskDefName) {
+	if o == nil || IsNil(o.TaskDefName) {
 		return nil, false
 	}
 	return o.TaskDefName, true
@@ -110,7 +110,7 @@ func (o *ReportResults) GetTaskDefNameOk() (*string, bool) {
 
 // HasTaskDefName returns a boolean if a field has been set.
 func (o *ReportResults) HasTaskDefName() bool {
-	if o != nil && !isNil(o.TaskDefName) {
+	if o != nil && !IsNil(o.TaskDefName) {
 		return true
 	}
 
@@ -124,7 +124,7 @@ func (o *ReportResults) SetTaskDefName(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ReportResults) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -134,7 +134,7 @@ func (o *ReportResults) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReportResults) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -142,7 +142,7 @@ func (o *ReportResults) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ReportResults) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -156,7 +156,7 @@ func (o *ReportResults) SetId(v string) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *ReportResults) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -166,7 +166,7 @@ func (o *ReportResults) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReportResults) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -174,7 +174,7 @@ func (o *ReportResults) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *ReportResults) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -188,7 +188,7 @@ func (o *ReportResults) SetCreated(v time.Time) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *ReportResults) GetStatus() string {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -198,7 +198,7 @@ func (o *ReportResults) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReportResults) GetStatusOk() (*string, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -206,7 +206,7 @@ func (o *ReportResults) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *ReportResults) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -220,7 +220,7 @@ func (o *ReportResults) SetStatus(v string) {
 
 // GetDuration returns the Duration field value if set, zero value otherwise.
 func (o *ReportResults) GetDuration() int64 {
-	if o == nil || isNil(o.Duration) {
+	if o == nil || IsNil(o.Duration) {
 		var ret int64
 		return ret
 	}
@@ -230,7 +230,7 @@ func (o *ReportResults) GetDuration() int64 {
 // GetDurationOk returns a tuple with the Duration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReportResults) GetDurationOk() (*int64, bool) {
-	if o == nil || isNil(o.Duration) {
+	if o == nil || IsNil(o.Duration) {
 		return nil, false
 	}
 	return o.Duration, true
@@ -238,7 +238,7 @@ func (o *ReportResults) GetDurationOk() (*int64, bool) {
 
 // HasDuration returns a boolean if a field has been set.
 func (o *ReportResults) HasDuration() bool {
-	if o != nil && !isNil(o.Duration) {
+	if o != nil && !IsNil(o.Duration) {
 		return true
 	}
 
@@ -252,7 +252,7 @@ func (o *ReportResults) SetDuration(v int64) {
 
 // GetRows returns the Rows field value if set, zero value otherwise.
 func (o *ReportResults) GetRows() int64 {
-	if o == nil || isNil(o.Rows) {
+	if o == nil || IsNil(o.Rows) {
 		var ret int64
 		return ret
 	}
@@ -262,7 +262,7 @@ func (o *ReportResults) GetRows() int64 {
 // GetRowsOk returns a tuple with the Rows field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReportResults) GetRowsOk() (*int64, bool) {
-	if o == nil || isNil(o.Rows) {
+	if o == nil || IsNil(o.Rows) {
 		return nil, false
 	}
 	return o.Rows, true
@@ -270,7 +270,7 @@ func (o *ReportResults) GetRowsOk() (*int64, bool) {
 
 // HasRows returns a boolean if a field has been set.
 func (o *ReportResults) HasRows() bool {
-	if o != nil && !isNil(o.Rows) {
+	if o != nil && !IsNil(o.Rows) {
 		return true
 	}
 
@@ -284,7 +284,7 @@ func (o *ReportResults) SetRows(v int64) {
 
 // GetAvailableFormats returns the AvailableFormats field value if set, zero value otherwise.
 func (o *ReportResults) GetAvailableFormats() []string {
-	if o == nil || isNil(o.AvailableFormats) {
+	if o == nil || IsNil(o.AvailableFormats) {
 		var ret []string
 		return ret
 	}
@@ -294,7 +294,7 @@ func (o *ReportResults) GetAvailableFormats() []string {
 // GetAvailableFormatsOk returns a tuple with the AvailableFormats field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReportResults) GetAvailableFormatsOk() ([]string, bool) {
-	if o == nil || isNil(o.AvailableFormats) {
+	if o == nil || IsNil(o.AvailableFormats) {
 		return nil, false
 	}
 	return o.AvailableFormats, true
@@ -302,7 +302,7 @@ func (o *ReportResults) GetAvailableFormatsOk() ([]string, bool) {
 
 // HasAvailableFormats returns a boolean if a field has been set.
 func (o *ReportResults) HasAvailableFormats() bool {
-	if o != nil && !isNil(o.AvailableFormats) {
+	if o != nil && !IsNil(o.AvailableFormats) {
 		return true
 	}
 
@@ -324,28 +324,28 @@ func (o ReportResults) MarshalJSON() ([]byte, error) {
 
 func (o ReportResults) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ReportType) {
+	if !IsNil(o.ReportType) {
 		toSerialize["reportType"] = o.ReportType
 	}
-	if !isNil(o.TaskDefName) {
+	if !IsNil(o.TaskDefName) {
 		toSerialize["taskDefName"] = o.TaskDefName
 	}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Created) {
+	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
-	if !isNil(o.Status) {
+	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if !isNil(o.Duration) {
+	if !IsNil(o.Duration) {
 		toSerialize["duration"] = o.Duration
 	}
-	if !isNil(o.Rows) {
+	if !IsNil(o.Rows) {
 		toSerialize["rows"] = o.Rows
 	}
-	if !isNil(o.AvailableFormats) {
+	if !IsNil(o.AvailableFormats) {
 		toSerialize["availableFormats"] = o.AvailableFormats
 	}
 
@@ -356,16 +356,20 @@ func (o ReportResults) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ReportResults) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ReportResults) UnmarshalJSON(data []byte) (err error) {
 	varReportResults := _ReportResults{}
 
-	if err = json.Unmarshal(bytes, &varReportResults); err == nil {
+	err = json.Unmarshal(data, &varReportResults)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ReportResults(varReportResults)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "reportType")
 		delete(additionalProperties, "taskDefName")
 		delete(additionalProperties, "id")

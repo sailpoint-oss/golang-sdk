@@ -48,7 +48,7 @@ func NewViolationContextPolicyWithDefaults() *ViolationContextPolicy {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *ViolationContextPolicy) GetType() map[string]interface{} {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -58,7 +58,7 @@ func (o *ViolationContextPolicy) GetType() map[string]interface{} {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ViolationContextPolicy) GetTypeOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return map[string]interface{}{}, false
 	}
 	return o.Type, true
@@ -66,7 +66,7 @@ func (o *ViolationContextPolicy) GetTypeOk() (map[string]interface{}, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *ViolationContextPolicy) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -80,7 +80,7 @@ func (o *ViolationContextPolicy) SetType(v map[string]interface{}) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ViolationContextPolicy) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -90,7 +90,7 @@ func (o *ViolationContextPolicy) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ViolationContextPolicy) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -98,7 +98,7 @@ func (o *ViolationContextPolicy) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ViolationContextPolicy) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -112,7 +112,7 @@ func (o *ViolationContextPolicy) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ViolationContextPolicy) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -122,7 +122,7 @@ func (o *ViolationContextPolicy) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ViolationContextPolicy) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -130,7 +130,7 @@ func (o *ViolationContextPolicy) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ViolationContextPolicy) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -152,13 +152,13 @@ func (o ViolationContextPolicy) MarshalJSON() ([]byte, error) {
 
 func (o ViolationContextPolicy) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 
@@ -169,16 +169,20 @@ func (o ViolationContextPolicy) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ViolationContextPolicy) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ViolationContextPolicy) UnmarshalJSON(data []byte) (err error) {
 	varViolationContextPolicy := _ViolationContextPolicy{}
 
-	if err = json.Unmarshal(bytes, &varViolationContextPolicy); err == nil {
+	err = json.Unmarshal(data, &varViolationContextPolicy)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ViolationContextPolicy(varViolationContextPolicy)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")

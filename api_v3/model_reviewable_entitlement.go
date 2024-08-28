@@ -100,7 +100,7 @@ func NewReviewableEntitlementWithDefaults() *ReviewableEntitlement {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ReviewableEntitlement) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -110,7 +110,7 @@ func (o *ReviewableEntitlement) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReviewableEntitlement) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -118,7 +118,7 @@ func (o *ReviewableEntitlement) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ReviewableEntitlement) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -132,7 +132,7 @@ func (o *ReviewableEntitlement) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ReviewableEntitlement) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -142,7 +142,7 @@ func (o *ReviewableEntitlement) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReviewableEntitlement) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -150,7 +150,7 @@ func (o *ReviewableEntitlement) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ReviewableEntitlement) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -164,7 +164,7 @@ func (o *ReviewableEntitlement) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ReviewableEntitlement) GetDescription() string {
-	if o == nil || isNil(o.Description.Get()) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
@@ -206,7 +206,7 @@ func (o *ReviewableEntitlement) UnsetDescription() {
 
 // GetPrivileged returns the Privileged field value if set, zero value otherwise.
 func (o *ReviewableEntitlement) GetPrivileged() bool {
-	if o == nil || isNil(o.Privileged) {
+	if o == nil || IsNil(o.Privileged) {
 		var ret bool
 		return ret
 	}
@@ -216,7 +216,7 @@ func (o *ReviewableEntitlement) GetPrivileged() bool {
 // GetPrivilegedOk returns a tuple with the Privileged field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReviewableEntitlement) GetPrivilegedOk() (*bool, bool) {
-	if o == nil || isNil(o.Privileged) {
+	if o == nil || IsNil(o.Privileged) {
 		return nil, false
 	}
 	return o.Privileged, true
@@ -224,7 +224,7 @@ func (o *ReviewableEntitlement) GetPrivilegedOk() (*bool, bool) {
 
 // HasPrivileged returns a boolean if a field has been set.
 func (o *ReviewableEntitlement) HasPrivileged() bool {
-	if o != nil && !isNil(o.Privileged) {
+	if o != nil && !IsNil(o.Privileged) {
 		return true
 	}
 
@@ -238,7 +238,7 @@ func (o *ReviewableEntitlement) SetPrivileged(v bool) {
 
 // GetOwner returns the Owner field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ReviewableEntitlement) GetOwner() IdentityReferenceWithNameAndEmail {
-	if o == nil || isNil(o.Owner.Get()) {
+	if o == nil || IsNil(o.Owner.Get()) {
 		var ret IdentityReferenceWithNameAndEmail
 		return ret
 	}
@@ -280,7 +280,7 @@ func (o *ReviewableEntitlement) UnsetOwner() {
 
 // GetAttributeName returns the AttributeName field value if set, zero value otherwise.
 func (o *ReviewableEntitlement) GetAttributeName() string {
-	if o == nil || isNil(o.AttributeName) {
+	if o == nil || IsNil(o.AttributeName) {
 		var ret string
 		return ret
 	}
@@ -290,7 +290,7 @@ func (o *ReviewableEntitlement) GetAttributeName() string {
 // GetAttributeNameOk returns a tuple with the AttributeName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReviewableEntitlement) GetAttributeNameOk() (*string, bool) {
-	if o == nil || isNil(o.AttributeName) {
+	if o == nil || IsNil(o.AttributeName) {
 		return nil, false
 	}
 	return o.AttributeName, true
@@ -298,7 +298,7 @@ func (o *ReviewableEntitlement) GetAttributeNameOk() (*string, bool) {
 
 // HasAttributeName returns a boolean if a field has been set.
 func (o *ReviewableEntitlement) HasAttributeName() bool {
-	if o != nil && !isNil(o.AttributeName) {
+	if o != nil && !IsNil(o.AttributeName) {
 		return true
 	}
 
@@ -312,7 +312,7 @@ func (o *ReviewableEntitlement) SetAttributeName(v string) {
 
 // GetAttributeValue returns the AttributeValue field value if set, zero value otherwise.
 func (o *ReviewableEntitlement) GetAttributeValue() string {
-	if o == nil || isNil(o.AttributeValue) {
+	if o == nil || IsNil(o.AttributeValue) {
 		var ret string
 		return ret
 	}
@@ -322,7 +322,7 @@ func (o *ReviewableEntitlement) GetAttributeValue() string {
 // GetAttributeValueOk returns a tuple with the AttributeValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReviewableEntitlement) GetAttributeValueOk() (*string, bool) {
-	if o == nil || isNil(o.AttributeValue) {
+	if o == nil || IsNil(o.AttributeValue) {
 		return nil, false
 	}
 	return o.AttributeValue, true
@@ -330,7 +330,7 @@ func (o *ReviewableEntitlement) GetAttributeValueOk() (*string, bool) {
 
 // HasAttributeValue returns a boolean if a field has been set.
 func (o *ReviewableEntitlement) HasAttributeValue() bool {
-	if o != nil && !isNil(o.AttributeValue) {
+	if o != nil && !IsNil(o.AttributeValue) {
 		return true
 	}
 
@@ -344,7 +344,7 @@ func (o *ReviewableEntitlement) SetAttributeValue(v string) {
 
 // GetSourceSchemaObjectType returns the SourceSchemaObjectType field value if set, zero value otherwise.
 func (o *ReviewableEntitlement) GetSourceSchemaObjectType() string {
-	if o == nil || isNil(o.SourceSchemaObjectType) {
+	if o == nil || IsNil(o.SourceSchemaObjectType) {
 		var ret string
 		return ret
 	}
@@ -354,7 +354,7 @@ func (o *ReviewableEntitlement) GetSourceSchemaObjectType() string {
 // GetSourceSchemaObjectTypeOk returns a tuple with the SourceSchemaObjectType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReviewableEntitlement) GetSourceSchemaObjectTypeOk() (*string, bool) {
-	if o == nil || isNil(o.SourceSchemaObjectType) {
+	if o == nil || IsNil(o.SourceSchemaObjectType) {
 		return nil, false
 	}
 	return o.SourceSchemaObjectType, true
@@ -362,7 +362,7 @@ func (o *ReviewableEntitlement) GetSourceSchemaObjectTypeOk() (*string, bool) {
 
 // HasSourceSchemaObjectType returns a boolean if a field has been set.
 func (o *ReviewableEntitlement) HasSourceSchemaObjectType() bool {
-	if o != nil && !isNil(o.SourceSchemaObjectType) {
+	if o != nil && !IsNil(o.SourceSchemaObjectType) {
 		return true
 	}
 
@@ -376,7 +376,7 @@ func (o *ReviewableEntitlement) SetSourceSchemaObjectType(v string) {
 
 // GetSourceName returns the SourceName field value if set, zero value otherwise.
 func (o *ReviewableEntitlement) GetSourceName() string {
-	if o == nil || isNil(o.SourceName) {
+	if o == nil || IsNil(o.SourceName) {
 		var ret string
 		return ret
 	}
@@ -386,7 +386,7 @@ func (o *ReviewableEntitlement) GetSourceName() string {
 // GetSourceNameOk returns a tuple with the SourceName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReviewableEntitlement) GetSourceNameOk() (*string, bool) {
-	if o == nil || isNil(o.SourceName) {
+	if o == nil || IsNil(o.SourceName) {
 		return nil, false
 	}
 	return o.SourceName, true
@@ -394,7 +394,7 @@ func (o *ReviewableEntitlement) GetSourceNameOk() (*string, bool) {
 
 // HasSourceName returns a boolean if a field has been set.
 func (o *ReviewableEntitlement) HasSourceName() bool {
-	if o != nil && !isNil(o.SourceName) {
+	if o != nil && !IsNil(o.SourceName) {
 		return true
 	}
 
@@ -408,7 +408,7 @@ func (o *ReviewableEntitlement) SetSourceName(v string) {
 
 // GetSourceType returns the SourceType field value if set, zero value otherwise.
 func (o *ReviewableEntitlement) GetSourceType() string {
-	if o == nil || isNil(o.SourceType) {
+	if o == nil || IsNil(o.SourceType) {
 		var ret string
 		return ret
 	}
@@ -418,7 +418,7 @@ func (o *ReviewableEntitlement) GetSourceType() string {
 // GetSourceTypeOk returns a tuple with the SourceType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReviewableEntitlement) GetSourceTypeOk() (*string, bool) {
-	if o == nil || isNil(o.SourceType) {
+	if o == nil || IsNil(o.SourceType) {
 		return nil, false
 	}
 	return o.SourceType, true
@@ -426,7 +426,7 @@ func (o *ReviewableEntitlement) GetSourceTypeOk() (*string, bool) {
 
 // HasSourceType returns a boolean if a field has been set.
 func (o *ReviewableEntitlement) HasSourceType() bool {
-	if o != nil && !isNil(o.SourceType) {
+	if o != nil && !IsNil(o.SourceType) {
 		return true
 	}
 
@@ -440,7 +440,7 @@ func (o *ReviewableEntitlement) SetSourceType(v string) {
 
 // GetSourceId returns the SourceId field value if set, zero value otherwise.
 func (o *ReviewableEntitlement) GetSourceId() string {
-	if o == nil || isNil(o.SourceId) {
+	if o == nil || IsNil(o.SourceId) {
 		var ret string
 		return ret
 	}
@@ -450,7 +450,7 @@ func (o *ReviewableEntitlement) GetSourceId() string {
 // GetSourceIdOk returns a tuple with the SourceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReviewableEntitlement) GetSourceIdOk() (*string, bool) {
-	if o == nil || isNil(o.SourceId) {
+	if o == nil || IsNil(o.SourceId) {
 		return nil, false
 	}
 	return o.SourceId, true
@@ -458,7 +458,7 @@ func (o *ReviewableEntitlement) GetSourceIdOk() (*string, bool) {
 
 // HasSourceId returns a boolean if a field has been set.
 func (o *ReviewableEntitlement) HasSourceId() bool {
-	if o != nil && !isNil(o.SourceId) {
+	if o != nil && !IsNil(o.SourceId) {
 		return true
 	}
 
@@ -472,7 +472,7 @@ func (o *ReviewableEntitlement) SetSourceId(v string) {
 
 // GetHasPermissions returns the HasPermissions field value if set, zero value otherwise.
 func (o *ReviewableEntitlement) GetHasPermissions() bool {
-	if o == nil || isNil(o.HasPermissions) {
+	if o == nil || IsNil(o.HasPermissions) {
 		var ret bool
 		return ret
 	}
@@ -482,7 +482,7 @@ func (o *ReviewableEntitlement) GetHasPermissions() bool {
 // GetHasPermissionsOk returns a tuple with the HasPermissions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReviewableEntitlement) GetHasPermissionsOk() (*bool, bool) {
-	if o == nil || isNil(o.HasPermissions) {
+	if o == nil || IsNil(o.HasPermissions) {
 		return nil, false
 	}
 	return o.HasPermissions, true
@@ -490,7 +490,7 @@ func (o *ReviewableEntitlement) GetHasPermissionsOk() (*bool, bool) {
 
 // HasHasPermissions returns a boolean if a field has been set.
 func (o *ReviewableEntitlement) HasHasPermissions() bool {
-	if o != nil && !isNil(o.HasPermissions) {
+	if o != nil && !IsNil(o.HasPermissions) {
 		return true
 	}
 
@@ -504,7 +504,7 @@ func (o *ReviewableEntitlement) SetHasPermissions(v bool) {
 
 // GetIsPermission returns the IsPermission field value if set, zero value otherwise.
 func (o *ReviewableEntitlement) GetIsPermission() bool {
-	if o == nil || isNil(o.IsPermission) {
+	if o == nil || IsNil(o.IsPermission) {
 		var ret bool
 		return ret
 	}
@@ -514,7 +514,7 @@ func (o *ReviewableEntitlement) GetIsPermission() bool {
 // GetIsPermissionOk returns a tuple with the IsPermission field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReviewableEntitlement) GetIsPermissionOk() (*bool, bool) {
-	if o == nil || isNil(o.IsPermission) {
+	if o == nil || IsNil(o.IsPermission) {
 		return nil, false
 	}
 	return o.IsPermission, true
@@ -522,7 +522,7 @@ func (o *ReviewableEntitlement) GetIsPermissionOk() (*bool, bool) {
 
 // HasIsPermission returns a boolean if a field has been set.
 func (o *ReviewableEntitlement) HasIsPermission() bool {
-	if o != nil && !isNil(o.IsPermission) {
+	if o != nil && !IsNil(o.IsPermission) {
 		return true
 	}
 
@@ -536,7 +536,7 @@ func (o *ReviewableEntitlement) SetIsPermission(v bool) {
 
 // GetRevocable returns the Revocable field value if set, zero value otherwise.
 func (o *ReviewableEntitlement) GetRevocable() bool {
-	if o == nil || isNil(o.Revocable) {
+	if o == nil || IsNil(o.Revocable) {
 		var ret bool
 		return ret
 	}
@@ -546,7 +546,7 @@ func (o *ReviewableEntitlement) GetRevocable() bool {
 // GetRevocableOk returns a tuple with the Revocable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReviewableEntitlement) GetRevocableOk() (*bool, bool) {
-	if o == nil || isNil(o.Revocable) {
+	if o == nil || IsNil(o.Revocable) {
 		return nil, false
 	}
 	return o.Revocable, true
@@ -554,7 +554,7 @@ func (o *ReviewableEntitlement) GetRevocableOk() (*bool, bool) {
 
 // HasRevocable returns a boolean if a field has been set.
 func (o *ReviewableEntitlement) HasRevocable() bool {
-	if o != nil && !isNil(o.Revocable) {
+	if o != nil && !IsNil(o.Revocable) {
 		return true
 	}
 
@@ -568,7 +568,7 @@ func (o *ReviewableEntitlement) SetRevocable(v bool) {
 
 // GetCloudGoverned returns the CloudGoverned field value if set, zero value otherwise.
 func (o *ReviewableEntitlement) GetCloudGoverned() bool {
-	if o == nil || isNil(o.CloudGoverned) {
+	if o == nil || IsNil(o.CloudGoverned) {
 		var ret bool
 		return ret
 	}
@@ -578,7 +578,7 @@ func (o *ReviewableEntitlement) GetCloudGoverned() bool {
 // GetCloudGovernedOk returns a tuple with the CloudGoverned field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReviewableEntitlement) GetCloudGovernedOk() (*bool, bool) {
-	if o == nil || isNil(o.CloudGoverned) {
+	if o == nil || IsNil(o.CloudGoverned) {
 		return nil, false
 	}
 	return o.CloudGoverned, true
@@ -586,7 +586,7 @@ func (o *ReviewableEntitlement) GetCloudGovernedOk() (*bool, bool) {
 
 // HasCloudGoverned returns a boolean if a field has been set.
 func (o *ReviewableEntitlement) HasCloudGoverned() bool {
-	if o != nil && !isNil(o.CloudGoverned) {
+	if o != nil && !IsNil(o.CloudGoverned) {
 		return true
 	}
 
@@ -600,7 +600,7 @@ func (o *ReviewableEntitlement) SetCloudGoverned(v bool) {
 
 // GetContainsDataAccess returns the ContainsDataAccess field value if set, zero value otherwise.
 func (o *ReviewableEntitlement) GetContainsDataAccess() bool {
-	if o == nil || isNil(o.ContainsDataAccess) {
+	if o == nil || IsNil(o.ContainsDataAccess) {
 		var ret bool
 		return ret
 	}
@@ -610,7 +610,7 @@ func (o *ReviewableEntitlement) GetContainsDataAccess() bool {
 // GetContainsDataAccessOk returns a tuple with the ContainsDataAccess field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReviewableEntitlement) GetContainsDataAccessOk() (*bool, bool) {
-	if o == nil || isNil(o.ContainsDataAccess) {
+	if o == nil || IsNil(o.ContainsDataAccess) {
 		return nil, false
 	}
 	return o.ContainsDataAccess, true
@@ -618,7 +618,7 @@ func (o *ReviewableEntitlement) GetContainsDataAccessOk() (*bool, bool) {
 
 // HasContainsDataAccess returns a boolean if a field has been set.
 func (o *ReviewableEntitlement) HasContainsDataAccess() bool {
-	if o != nil && !isNil(o.ContainsDataAccess) {
+	if o != nil && !IsNil(o.ContainsDataAccess) {
 		return true
 	}
 
@@ -632,7 +632,7 @@ func (o *ReviewableEntitlement) SetContainsDataAccess(v bool) {
 
 // GetDataAccess returns the DataAccess field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ReviewableEntitlement) GetDataAccess() DataAccess {
-	if o == nil || isNil(o.DataAccess.Get()) {
+	if o == nil || IsNil(o.DataAccess.Get()) {
 		var ret DataAccess
 		return ret
 	}
@@ -674,7 +674,7 @@ func (o *ReviewableEntitlement) UnsetDataAccess() {
 
 // GetAccount returns the Account field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ReviewableEntitlement) GetAccount() ReviewableEntitlementAccount {
-	if o == nil || isNil(o.Account.Get()) {
+	if o == nil || IsNil(o.Account.Get()) {
 		var ret ReviewableEntitlementAccount
 		return ret
 	}
@@ -724,52 +724,52 @@ func (o ReviewableEntitlement) MarshalJSON() ([]byte, error) {
 
 func (o ReviewableEntitlement) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
-	if !isNil(o.Privileged) {
+	if !IsNil(o.Privileged) {
 		toSerialize["privileged"] = o.Privileged
 	}
 	if o.Owner.IsSet() {
 		toSerialize["owner"] = o.Owner.Get()
 	}
-	if !isNil(o.AttributeName) {
+	if !IsNil(o.AttributeName) {
 		toSerialize["attributeName"] = o.AttributeName
 	}
-	if !isNil(o.AttributeValue) {
+	if !IsNil(o.AttributeValue) {
 		toSerialize["attributeValue"] = o.AttributeValue
 	}
-	if !isNil(o.SourceSchemaObjectType) {
+	if !IsNil(o.SourceSchemaObjectType) {
 		toSerialize["sourceSchemaObjectType"] = o.SourceSchemaObjectType
 	}
-	if !isNil(o.SourceName) {
+	if !IsNil(o.SourceName) {
 		toSerialize["sourceName"] = o.SourceName
 	}
-	if !isNil(o.SourceType) {
+	if !IsNil(o.SourceType) {
 		toSerialize["sourceType"] = o.SourceType
 	}
-	if !isNil(o.SourceId) {
+	if !IsNil(o.SourceId) {
 		toSerialize["sourceId"] = o.SourceId
 	}
-	if !isNil(o.HasPermissions) {
+	if !IsNil(o.HasPermissions) {
 		toSerialize["hasPermissions"] = o.HasPermissions
 	}
-	if !isNil(o.IsPermission) {
+	if !IsNil(o.IsPermission) {
 		toSerialize["isPermission"] = o.IsPermission
 	}
-	if !isNil(o.Revocable) {
+	if !IsNil(o.Revocable) {
 		toSerialize["revocable"] = o.Revocable
 	}
-	if !isNil(o.CloudGoverned) {
+	if !IsNil(o.CloudGoverned) {
 		toSerialize["cloudGoverned"] = o.CloudGoverned
 	}
-	if !isNil(o.ContainsDataAccess) {
+	if !IsNil(o.ContainsDataAccess) {
 		toSerialize["containsDataAccess"] = o.ContainsDataAccess
 	}
 	if o.DataAccess.IsSet() {
@@ -786,16 +786,20 @@ func (o ReviewableEntitlement) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ReviewableEntitlement) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ReviewableEntitlement) UnmarshalJSON(data []byte) (err error) {
 	varReviewableEntitlement := _ReviewableEntitlement{}
 
-	if err = json.Unmarshal(bytes, &varReviewableEntitlement); err == nil {
+	err = json.Unmarshal(data, &varReviewableEntitlement)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ReviewableEntitlement(varReviewableEntitlement)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")

@@ -52,7 +52,7 @@ func NewRoleIdentityWithDefaults() *RoleIdentity {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *RoleIdentity) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -62,7 +62,7 @@ func (o *RoleIdentity) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleIdentity) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -70,7 +70,7 @@ func (o *RoleIdentity) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *RoleIdentity) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -84,7 +84,7 @@ func (o *RoleIdentity) SetId(v string) {
 
 // GetAliasName returns the AliasName field value if set, zero value otherwise.
 func (o *RoleIdentity) GetAliasName() string {
-	if o == nil || isNil(o.AliasName) {
+	if o == nil || IsNil(o.AliasName) {
 		var ret string
 		return ret
 	}
@@ -94,7 +94,7 @@ func (o *RoleIdentity) GetAliasName() string {
 // GetAliasNameOk returns a tuple with the AliasName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleIdentity) GetAliasNameOk() (*string, bool) {
-	if o == nil || isNil(o.AliasName) {
+	if o == nil || IsNil(o.AliasName) {
 		return nil, false
 	}
 	return o.AliasName, true
@@ -102,7 +102,7 @@ func (o *RoleIdentity) GetAliasNameOk() (*string, bool) {
 
 // HasAliasName returns a boolean if a field has been set.
 func (o *RoleIdentity) HasAliasName() bool {
-	if o != nil && !isNil(o.AliasName) {
+	if o != nil && !IsNil(o.AliasName) {
 		return true
 	}
 
@@ -116,7 +116,7 @@ func (o *RoleIdentity) SetAliasName(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *RoleIdentity) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -126,7 +126,7 @@ func (o *RoleIdentity) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleIdentity) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -134,7 +134,7 @@ func (o *RoleIdentity) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *RoleIdentity) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -148,7 +148,7 @@ func (o *RoleIdentity) SetName(v string) {
 
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *RoleIdentity) GetEmail() string {
-	if o == nil || isNil(o.Email) {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
@@ -158,7 +158,7 @@ func (o *RoleIdentity) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleIdentity) GetEmailOk() (*string, bool) {
-	if o == nil || isNil(o.Email) {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
 	return o.Email, true
@@ -166,7 +166,7 @@ func (o *RoleIdentity) GetEmailOk() (*string, bool) {
 
 // HasEmail returns a boolean if a field has been set.
 func (o *RoleIdentity) HasEmail() bool {
-	if o != nil && !isNil(o.Email) {
+	if o != nil && !IsNil(o.Email) {
 		return true
 	}
 
@@ -180,7 +180,7 @@ func (o *RoleIdentity) SetEmail(v string) {
 
 // GetRoleAssignmentSource returns the RoleAssignmentSource field value if set, zero value otherwise.
 func (o *RoleIdentity) GetRoleAssignmentSource() RoleAssignmentSourceType {
-	if o == nil || isNil(o.RoleAssignmentSource) {
+	if o == nil || IsNil(o.RoleAssignmentSource) {
 		var ret RoleAssignmentSourceType
 		return ret
 	}
@@ -190,7 +190,7 @@ func (o *RoleIdentity) GetRoleAssignmentSource() RoleAssignmentSourceType {
 // GetRoleAssignmentSourceOk returns a tuple with the RoleAssignmentSource field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleIdentity) GetRoleAssignmentSourceOk() (*RoleAssignmentSourceType, bool) {
-	if o == nil || isNil(o.RoleAssignmentSource) {
+	if o == nil || IsNil(o.RoleAssignmentSource) {
 		return nil, false
 	}
 	return o.RoleAssignmentSource, true
@@ -198,7 +198,7 @@ func (o *RoleIdentity) GetRoleAssignmentSourceOk() (*RoleAssignmentSourceType, b
 
 // HasRoleAssignmentSource returns a boolean if a field has been set.
 func (o *RoleIdentity) HasRoleAssignmentSource() bool {
-	if o != nil && !isNil(o.RoleAssignmentSource) {
+	if o != nil && !IsNil(o.RoleAssignmentSource) {
 		return true
 	}
 
@@ -220,19 +220,19 @@ func (o RoleIdentity) MarshalJSON() ([]byte, error) {
 
 func (o RoleIdentity) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.AliasName) {
+	if !IsNil(o.AliasName) {
 		toSerialize["aliasName"] = o.AliasName
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Email) {
+	if !IsNil(o.Email) {
 		toSerialize["email"] = o.Email
 	}
-	if !isNil(o.RoleAssignmentSource) {
+	if !IsNil(o.RoleAssignmentSource) {
 		toSerialize["roleAssignmentSource"] = o.RoleAssignmentSource
 	}
 
@@ -243,16 +243,20 @@ func (o RoleIdentity) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *RoleIdentity) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RoleIdentity) UnmarshalJSON(data []byte) (err error) {
 	varRoleIdentity := _RoleIdentity{}
 
-	if err = json.Unmarshal(bytes, &varRoleIdentity); err == nil {
+	err = json.Unmarshal(data, &varRoleIdentity)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RoleIdentity(varRoleIdentity)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "aliasName")
 		delete(additionalProperties, "name")

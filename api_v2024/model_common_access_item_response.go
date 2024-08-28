@@ -51,7 +51,7 @@ func NewCommonAccessItemResponseWithDefaults() *CommonAccessItemResponse {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *CommonAccessItemResponse) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -61,7 +61,7 @@ func (o *CommonAccessItemResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CommonAccessItemResponse) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -69,7 +69,7 @@ func (o *CommonAccessItemResponse) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *CommonAccessItemResponse) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -83,7 +83,7 @@ func (o *CommonAccessItemResponse) SetId(v string) {
 
 // GetAccess returns the Access field value if set, zero value otherwise.
 func (o *CommonAccessItemResponse) GetAccess() CommonAccessItemAccess {
-	if o == nil || isNil(o.Access) {
+	if o == nil || IsNil(o.Access) {
 		var ret CommonAccessItemAccess
 		return ret
 	}
@@ -93,7 +93,7 @@ func (o *CommonAccessItemResponse) GetAccess() CommonAccessItemAccess {
 // GetAccessOk returns a tuple with the Access field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CommonAccessItemResponse) GetAccessOk() (*CommonAccessItemAccess, bool) {
-	if o == nil || isNil(o.Access) {
+	if o == nil || IsNil(o.Access) {
 		return nil, false
 	}
 	return o.Access, true
@@ -101,7 +101,7 @@ func (o *CommonAccessItemResponse) GetAccessOk() (*CommonAccessItemAccess, bool)
 
 // HasAccess returns a boolean if a field has been set.
 func (o *CommonAccessItemResponse) HasAccess() bool {
-	if o != nil && !isNil(o.Access) {
+	if o != nil && !IsNil(o.Access) {
 		return true
 	}
 
@@ -115,7 +115,7 @@ func (o *CommonAccessItemResponse) SetAccess(v CommonAccessItemAccess) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *CommonAccessItemResponse) GetStatus() CommonAccessItemState {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret CommonAccessItemState
 		return ret
 	}
@@ -125,7 +125,7 @@ func (o *CommonAccessItemResponse) GetStatus() CommonAccessItemState {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CommonAccessItemResponse) GetStatusOk() (*CommonAccessItemState, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -133,7 +133,7 @@ func (o *CommonAccessItemResponse) GetStatusOk() (*CommonAccessItemState, bool) 
 
 // HasStatus returns a boolean if a field has been set.
 func (o *CommonAccessItemResponse) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -147,7 +147,7 @@ func (o *CommonAccessItemResponse) SetStatus(v CommonAccessItemState) {
 
 // GetLastUpdated returns the LastUpdated field value if set, zero value otherwise.
 func (o *CommonAccessItemResponse) GetLastUpdated() string {
-	if o == nil || isNil(o.LastUpdated) {
+	if o == nil || IsNil(o.LastUpdated) {
 		var ret string
 		return ret
 	}
@@ -157,7 +157,7 @@ func (o *CommonAccessItemResponse) GetLastUpdated() string {
 // GetLastUpdatedOk returns a tuple with the LastUpdated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CommonAccessItemResponse) GetLastUpdatedOk() (*string, bool) {
-	if o == nil || isNil(o.LastUpdated) {
+	if o == nil || IsNil(o.LastUpdated) {
 		return nil, false
 	}
 	return o.LastUpdated, true
@@ -165,7 +165,7 @@ func (o *CommonAccessItemResponse) GetLastUpdatedOk() (*string, bool) {
 
 // HasLastUpdated returns a boolean if a field has been set.
 func (o *CommonAccessItemResponse) HasLastUpdated() bool {
-	if o != nil && !isNil(o.LastUpdated) {
+	if o != nil && !IsNil(o.LastUpdated) {
 		return true
 	}
 
@@ -179,7 +179,7 @@ func (o *CommonAccessItemResponse) SetLastUpdated(v string) {
 
 // GetReviewedByUser returns the ReviewedByUser field value if set, zero value otherwise.
 func (o *CommonAccessItemResponse) GetReviewedByUser() bool {
-	if o == nil || isNil(o.ReviewedByUser) {
+	if o == nil || IsNil(o.ReviewedByUser) {
 		var ret bool
 		return ret
 	}
@@ -189,7 +189,7 @@ func (o *CommonAccessItemResponse) GetReviewedByUser() bool {
 // GetReviewedByUserOk returns a tuple with the ReviewedByUser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CommonAccessItemResponse) GetReviewedByUserOk() (*bool, bool) {
-	if o == nil || isNil(o.ReviewedByUser) {
+	if o == nil || IsNil(o.ReviewedByUser) {
 		return nil, false
 	}
 	return o.ReviewedByUser, true
@@ -197,7 +197,7 @@ func (o *CommonAccessItemResponse) GetReviewedByUserOk() (*bool, bool) {
 
 // HasReviewedByUser returns a boolean if a field has been set.
 func (o *CommonAccessItemResponse) HasReviewedByUser() bool {
-	if o != nil && !isNil(o.ReviewedByUser) {
+	if o != nil && !IsNil(o.ReviewedByUser) {
 		return true
 	}
 
@@ -211,7 +211,7 @@ func (o *CommonAccessItemResponse) SetReviewedByUser(v bool) {
 
 // GetLastReviewed returns the LastReviewed field value if set, zero value otherwise.
 func (o *CommonAccessItemResponse) GetLastReviewed() string {
-	if o == nil || isNil(o.LastReviewed) {
+	if o == nil || IsNil(o.LastReviewed) {
 		var ret string
 		return ret
 	}
@@ -221,7 +221,7 @@ func (o *CommonAccessItemResponse) GetLastReviewed() string {
 // GetLastReviewedOk returns a tuple with the LastReviewed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CommonAccessItemResponse) GetLastReviewedOk() (*string, bool) {
-	if o == nil || isNil(o.LastReviewed) {
+	if o == nil || IsNil(o.LastReviewed) {
 		return nil, false
 	}
 	return o.LastReviewed, true
@@ -229,7 +229,7 @@ func (o *CommonAccessItemResponse) GetLastReviewedOk() (*string, bool) {
 
 // HasLastReviewed returns a boolean if a field has been set.
 func (o *CommonAccessItemResponse) HasLastReviewed() bool {
-	if o != nil && !isNil(o.LastReviewed) {
+	if o != nil && !IsNil(o.LastReviewed) {
 		return true
 	}
 
@@ -243,7 +243,7 @@ func (o *CommonAccessItemResponse) SetLastReviewed(v string) {
 
 // GetCreatedByUser returns the CreatedByUser field value if set, zero value otherwise.
 func (o *CommonAccessItemResponse) GetCreatedByUser() string {
-	if o == nil || isNil(o.CreatedByUser) {
+	if o == nil || IsNil(o.CreatedByUser) {
 		var ret string
 		return ret
 	}
@@ -253,7 +253,7 @@ func (o *CommonAccessItemResponse) GetCreatedByUser() string {
 // GetCreatedByUserOk returns a tuple with the CreatedByUser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CommonAccessItemResponse) GetCreatedByUserOk() (*string, bool) {
-	if o == nil || isNil(o.CreatedByUser) {
+	if o == nil || IsNil(o.CreatedByUser) {
 		return nil, false
 	}
 	return o.CreatedByUser, true
@@ -261,7 +261,7 @@ func (o *CommonAccessItemResponse) GetCreatedByUserOk() (*string, bool) {
 
 // HasCreatedByUser returns a boolean if a field has been set.
 func (o *CommonAccessItemResponse) HasCreatedByUser() bool {
-	if o != nil && !isNil(o.CreatedByUser) {
+	if o != nil && !IsNil(o.CreatedByUser) {
 		return true
 	}
 
@@ -283,25 +283,25 @@ func (o CommonAccessItemResponse) MarshalJSON() ([]byte, error) {
 
 func (o CommonAccessItemResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Access) {
+	if !IsNil(o.Access) {
 		toSerialize["access"] = o.Access
 	}
-	if !isNil(o.Status) {
+	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if !isNil(o.LastUpdated) {
+	if !IsNil(o.LastUpdated) {
 		toSerialize["lastUpdated"] = o.LastUpdated
 	}
-	if !isNil(o.ReviewedByUser) {
+	if !IsNil(o.ReviewedByUser) {
 		toSerialize["reviewedByUser"] = o.ReviewedByUser
 	}
-	if !isNil(o.LastReviewed) {
+	if !IsNil(o.LastReviewed) {
 		toSerialize["lastReviewed"] = o.LastReviewed
 	}
-	if !isNil(o.CreatedByUser) {
+	if !IsNil(o.CreatedByUser) {
 		toSerialize["createdByUser"] = o.CreatedByUser
 	}
 
@@ -312,16 +312,20 @@ func (o CommonAccessItemResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CommonAccessItemResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *CommonAccessItemResponse) UnmarshalJSON(data []byte) (err error) {
 	varCommonAccessItemResponse := _CommonAccessItemResponse{}
 
-	if err = json.Unmarshal(bytes, &varCommonAccessItemResponse); err == nil {
+	err = json.Unmarshal(data, &varCommonAccessItemResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CommonAccessItemResponse(varCommonAccessItemResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "access")
 		delete(additionalProperties, "status")

@@ -47,7 +47,7 @@ func NewAggregationsWithDefaults() *Aggregations {
 
 // GetNested returns the Nested field value if set, zero value otherwise.
 func (o *Aggregations) GetNested() NestedAggregation {
-	if o == nil || isNil(o.Nested) {
+	if o == nil || IsNil(o.Nested) {
 		var ret NestedAggregation
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *Aggregations) GetNested() NestedAggregation {
 // GetNestedOk returns a tuple with the Nested field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Aggregations) GetNestedOk() (*NestedAggregation, bool) {
-	if o == nil || isNil(o.Nested) {
+	if o == nil || IsNil(o.Nested) {
 		return nil, false
 	}
 	return o.Nested, true
@@ -65,7 +65,7 @@ func (o *Aggregations) GetNestedOk() (*NestedAggregation, bool) {
 
 // HasNested returns a boolean if a field has been set.
 func (o *Aggregations) HasNested() bool {
-	if o != nil && !isNil(o.Nested) {
+	if o != nil && !IsNil(o.Nested) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *Aggregations) SetNested(v NestedAggregation) {
 
 // GetMetric returns the Metric field value if set, zero value otherwise.
 func (o *Aggregations) GetMetric() MetricAggregation {
-	if o == nil || isNil(o.Metric) {
+	if o == nil || IsNil(o.Metric) {
 		var ret MetricAggregation
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *Aggregations) GetMetric() MetricAggregation {
 // GetMetricOk returns a tuple with the Metric field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Aggregations) GetMetricOk() (*MetricAggregation, bool) {
-	if o == nil || isNil(o.Metric) {
+	if o == nil || IsNil(o.Metric) {
 		return nil, false
 	}
 	return o.Metric, true
@@ -97,7 +97,7 @@ func (o *Aggregations) GetMetricOk() (*MetricAggregation, bool) {
 
 // HasMetric returns a boolean if a field has been set.
 func (o *Aggregations) HasMetric() bool {
-	if o != nil && !isNil(o.Metric) {
+	if o != nil && !IsNil(o.Metric) {
 		return true
 	}
 
@@ -111,7 +111,7 @@ func (o *Aggregations) SetMetric(v MetricAggregation) {
 
 // GetFilter returns the Filter field value if set, zero value otherwise.
 func (o *Aggregations) GetFilter() FilterAggregation {
-	if o == nil || isNil(o.Filter) {
+	if o == nil || IsNil(o.Filter) {
 		var ret FilterAggregation
 		return ret
 	}
@@ -121,7 +121,7 @@ func (o *Aggregations) GetFilter() FilterAggregation {
 // GetFilterOk returns a tuple with the Filter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Aggregations) GetFilterOk() (*FilterAggregation, bool) {
-	if o == nil || isNil(o.Filter) {
+	if o == nil || IsNil(o.Filter) {
 		return nil, false
 	}
 	return o.Filter, true
@@ -129,7 +129,7 @@ func (o *Aggregations) GetFilterOk() (*FilterAggregation, bool) {
 
 // HasFilter returns a boolean if a field has been set.
 func (o *Aggregations) HasFilter() bool {
-	if o != nil && !isNil(o.Filter) {
+	if o != nil && !IsNil(o.Filter) {
 		return true
 	}
 
@@ -143,7 +143,7 @@ func (o *Aggregations) SetFilter(v FilterAggregation) {
 
 // GetBucket returns the Bucket field value if set, zero value otherwise.
 func (o *Aggregations) GetBucket() BucketAggregation {
-	if o == nil || isNil(o.Bucket) {
+	if o == nil || IsNil(o.Bucket) {
 		var ret BucketAggregation
 		return ret
 	}
@@ -153,7 +153,7 @@ func (o *Aggregations) GetBucket() BucketAggregation {
 // GetBucketOk returns a tuple with the Bucket field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Aggregations) GetBucketOk() (*BucketAggregation, bool) {
-	if o == nil || isNil(o.Bucket) {
+	if o == nil || IsNil(o.Bucket) {
 		return nil, false
 	}
 	return o.Bucket, true
@@ -161,7 +161,7 @@ func (o *Aggregations) GetBucketOk() (*BucketAggregation, bool) {
 
 // HasBucket returns a boolean if a field has been set.
 func (o *Aggregations) HasBucket() bool {
-	if o != nil && !isNil(o.Bucket) {
+	if o != nil && !IsNil(o.Bucket) {
 		return true
 	}
 
@@ -183,16 +183,16 @@ func (o Aggregations) MarshalJSON() ([]byte, error) {
 
 func (o Aggregations) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Nested) {
+	if !IsNil(o.Nested) {
 		toSerialize["nested"] = o.Nested
 	}
-	if !isNil(o.Metric) {
+	if !IsNil(o.Metric) {
 		toSerialize["metric"] = o.Metric
 	}
-	if !isNil(o.Filter) {
+	if !IsNil(o.Filter) {
 		toSerialize["filter"] = o.Filter
 	}
-	if !isNil(o.Bucket) {
+	if !IsNil(o.Bucket) {
 		toSerialize["bucket"] = o.Bucket
 	}
 
@@ -203,16 +203,20 @@ func (o Aggregations) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Aggregations) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Aggregations) UnmarshalJSON(data []byte) (err error) {
 	varAggregations := _Aggregations{}
 
-	if err = json.Unmarshal(bytes, &varAggregations); err == nil {
+	err = json.Unmarshal(data, &varAggregations)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Aggregations(varAggregations)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "nested")
 		delete(additionalProperties, "metric")
 		delete(additionalProperties, "filter")

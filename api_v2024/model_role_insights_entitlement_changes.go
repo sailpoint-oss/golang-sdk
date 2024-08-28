@@ -56,7 +56,7 @@ func NewRoleInsightsEntitlementChangesWithDefaults() *RoleInsightsEntitlementCha
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *RoleInsightsEntitlementChanges) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -66,7 +66,7 @@ func (o *RoleInsightsEntitlementChanges) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleInsightsEntitlementChanges) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -74,7 +74,7 @@ func (o *RoleInsightsEntitlementChanges) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *RoleInsightsEntitlementChanges) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -88,7 +88,7 @@ func (o *RoleInsightsEntitlementChanges) SetName(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *RoleInsightsEntitlementChanges) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -98,7 +98,7 @@ func (o *RoleInsightsEntitlementChanges) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleInsightsEntitlementChanges) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -106,7 +106,7 @@ func (o *RoleInsightsEntitlementChanges) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *RoleInsightsEntitlementChanges) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -120,7 +120,7 @@ func (o *RoleInsightsEntitlementChanges) SetId(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *RoleInsightsEntitlementChanges) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -130,7 +130,7 @@ func (o *RoleInsightsEntitlementChanges) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleInsightsEntitlementChanges) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -138,7 +138,7 @@ func (o *RoleInsightsEntitlementChanges) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *RoleInsightsEntitlementChanges) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -152,7 +152,7 @@ func (o *RoleInsightsEntitlementChanges) SetDescription(v string) {
 
 // GetAttribute returns the Attribute field value if set, zero value otherwise.
 func (o *RoleInsightsEntitlementChanges) GetAttribute() string {
-	if o == nil || isNil(o.Attribute) {
+	if o == nil || IsNil(o.Attribute) {
 		var ret string
 		return ret
 	}
@@ -162,7 +162,7 @@ func (o *RoleInsightsEntitlementChanges) GetAttribute() string {
 // GetAttributeOk returns a tuple with the Attribute field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleInsightsEntitlementChanges) GetAttributeOk() (*string, bool) {
-	if o == nil || isNil(o.Attribute) {
+	if o == nil || IsNil(o.Attribute) {
 		return nil, false
 	}
 	return o.Attribute, true
@@ -170,7 +170,7 @@ func (o *RoleInsightsEntitlementChanges) GetAttributeOk() (*string, bool) {
 
 // HasAttribute returns a boolean if a field has been set.
 func (o *RoleInsightsEntitlementChanges) HasAttribute() bool {
-	if o != nil && !isNil(o.Attribute) {
+	if o != nil && !IsNil(o.Attribute) {
 		return true
 	}
 
@@ -184,7 +184,7 @@ func (o *RoleInsightsEntitlementChanges) SetAttribute(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *RoleInsightsEntitlementChanges) GetValue() string {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -194,7 +194,7 @@ func (o *RoleInsightsEntitlementChanges) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleInsightsEntitlementChanges) GetValueOk() (*string, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -202,7 +202,7 @@ func (o *RoleInsightsEntitlementChanges) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *RoleInsightsEntitlementChanges) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -216,7 +216,7 @@ func (o *RoleInsightsEntitlementChanges) SetValue(v string) {
 
 // GetSource returns the Source field value if set, zero value otherwise.
 func (o *RoleInsightsEntitlementChanges) GetSource() string {
-	if o == nil || isNil(o.Source) {
+	if o == nil || IsNil(o.Source) {
 		var ret string
 		return ret
 	}
@@ -226,7 +226,7 @@ func (o *RoleInsightsEntitlementChanges) GetSource() string {
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleInsightsEntitlementChanges) GetSourceOk() (*string, bool) {
-	if o == nil || isNil(o.Source) {
+	if o == nil || IsNil(o.Source) {
 		return nil, false
 	}
 	return o.Source, true
@@ -234,7 +234,7 @@ func (o *RoleInsightsEntitlementChanges) GetSourceOk() (*string, bool) {
 
 // HasSource returns a boolean if a field has been set.
 func (o *RoleInsightsEntitlementChanges) HasSource() bool {
-	if o != nil && !isNil(o.Source) {
+	if o != nil && !IsNil(o.Source) {
 		return true
 	}
 
@@ -248,7 +248,7 @@ func (o *RoleInsightsEntitlementChanges) SetSource(v string) {
 
 // GetInsight returns the Insight field value if set, zero value otherwise.
 func (o *RoleInsightsEntitlementChanges) GetInsight() RoleInsightsInsight {
-	if o == nil || isNil(o.Insight) {
+	if o == nil || IsNil(o.Insight) {
 		var ret RoleInsightsInsight
 		return ret
 	}
@@ -258,7 +258,7 @@ func (o *RoleInsightsEntitlementChanges) GetInsight() RoleInsightsInsight {
 // GetInsightOk returns a tuple with the Insight field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleInsightsEntitlementChanges) GetInsightOk() (*RoleInsightsInsight, bool) {
-	if o == nil || isNil(o.Insight) {
+	if o == nil || IsNil(o.Insight) {
 		return nil, false
 	}
 	return o.Insight, true
@@ -266,7 +266,7 @@ func (o *RoleInsightsEntitlementChanges) GetInsightOk() (*RoleInsightsInsight, b
 
 // HasInsight returns a boolean if a field has been set.
 func (o *RoleInsightsEntitlementChanges) HasInsight() bool {
-	if o != nil && !isNil(o.Insight) {
+	if o != nil && !IsNil(o.Insight) {
 		return true
 	}
 
@@ -288,25 +288,25 @@ func (o RoleInsightsEntitlementChanges) MarshalJSON() ([]byte, error) {
 
 func (o RoleInsightsEntitlementChanges) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.Attribute) {
+	if !IsNil(o.Attribute) {
 		toSerialize["attribute"] = o.Attribute
 	}
-	if !isNil(o.Value) {
+	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
-	if !isNil(o.Source) {
+	if !IsNil(o.Source) {
 		toSerialize["source"] = o.Source
 	}
-	if !isNil(o.Insight) {
+	if !IsNil(o.Insight) {
 		toSerialize["insight"] = o.Insight
 	}
 
@@ -317,16 +317,20 @@ func (o RoleInsightsEntitlementChanges) ToMap() (map[string]interface{}, error) 
 	return toSerialize, nil
 }
 
-func (o *RoleInsightsEntitlementChanges) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RoleInsightsEntitlementChanges) UnmarshalJSON(data []byte) (err error) {
 	varRoleInsightsEntitlementChanges := _RoleInsightsEntitlementChanges{}
 
-	if err = json.Unmarshal(bytes, &varRoleInsightsEntitlementChanges); err == nil {
+	err = json.Unmarshal(data, &varRoleInsightsEntitlementChanges)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RoleInsightsEntitlementChanges(varRoleInsightsEntitlementChanges)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "description")

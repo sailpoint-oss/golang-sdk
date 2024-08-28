@@ -63,7 +63,7 @@ func NewSourceHealthDtoWithDefaults() *SourceHealthDto {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *SourceHealthDto) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -73,7 +73,7 @@ func (o *SourceHealthDto) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SourceHealthDto) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -81,7 +81,7 @@ func (o *SourceHealthDto) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *SourceHealthDto) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -95,7 +95,7 @@ func (o *SourceHealthDto) SetId(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *SourceHealthDto) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -105,7 +105,7 @@ func (o *SourceHealthDto) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SourceHealthDto) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -113,7 +113,7 @@ func (o *SourceHealthDto) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *SourceHealthDto) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -127,7 +127,7 @@ func (o *SourceHealthDto) SetType(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *SourceHealthDto) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -137,7 +137,7 @@ func (o *SourceHealthDto) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SourceHealthDto) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -145,7 +145,7 @@ func (o *SourceHealthDto) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *SourceHealthDto) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -159,7 +159,7 @@ func (o *SourceHealthDto) SetName(v string) {
 
 // GetOrg returns the Org field value if set, zero value otherwise.
 func (o *SourceHealthDto) GetOrg() string {
-	if o == nil || isNil(o.Org) {
+	if o == nil || IsNil(o.Org) {
 		var ret string
 		return ret
 	}
@@ -169,7 +169,7 @@ func (o *SourceHealthDto) GetOrg() string {
 // GetOrgOk returns a tuple with the Org field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SourceHealthDto) GetOrgOk() (*string, bool) {
-	if o == nil || isNil(o.Org) {
+	if o == nil || IsNil(o.Org) {
 		return nil, false
 	}
 	return o.Org, true
@@ -177,7 +177,7 @@ func (o *SourceHealthDto) GetOrgOk() (*string, bool) {
 
 // HasOrg returns a boolean if a field has been set.
 func (o *SourceHealthDto) HasOrg() bool {
-	if o != nil && !isNil(o.Org) {
+	if o != nil && !IsNil(o.Org) {
 		return true
 	}
 
@@ -191,7 +191,7 @@ func (o *SourceHealthDto) SetOrg(v string) {
 
 // GetIsAuthoritative returns the IsAuthoritative field value if set, zero value otherwise.
 func (o *SourceHealthDto) GetIsAuthoritative() bool {
-	if o == nil || isNil(o.IsAuthoritative) {
+	if o == nil || IsNil(o.IsAuthoritative) {
 		var ret bool
 		return ret
 	}
@@ -201,7 +201,7 @@ func (o *SourceHealthDto) GetIsAuthoritative() bool {
 // GetIsAuthoritativeOk returns a tuple with the IsAuthoritative field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SourceHealthDto) GetIsAuthoritativeOk() (*bool, bool) {
-	if o == nil || isNil(o.IsAuthoritative) {
+	if o == nil || IsNil(o.IsAuthoritative) {
 		return nil, false
 	}
 	return o.IsAuthoritative, true
@@ -209,7 +209,7 @@ func (o *SourceHealthDto) GetIsAuthoritativeOk() (*bool, bool) {
 
 // HasIsAuthoritative returns a boolean if a field has been set.
 func (o *SourceHealthDto) HasIsAuthoritative() bool {
-	if o != nil && !isNil(o.IsAuthoritative) {
+	if o != nil && !IsNil(o.IsAuthoritative) {
 		return true
 	}
 
@@ -223,7 +223,7 @@ func (o *SourceHealthDto) SetIsAuthoritative(v bool) {
 
 // GetIsCluster returns the IsCluster field value if set, zero value otherwise.
 func (o *SourceHealthDto) GetIsCluster() bool {
-	if o == nil || isNil(o.IsCluster) {
+	if o == nil || IsNil(o.IsCluster) {
 		var ret bool
 		return ret
 	}
@@ -233,7 +233,7 @@ func (o *SourceHealthDto) GetIsCluster() bool {
 // GetIsClusterOk returns a tuple with the IsCluster field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SourceHealthDto) GetIsClusterOk() (*bool, bool) {
-	if o == nil || isNil(o.IsCluster) {
+	if o == nil || IsNil(o.IsCluster) {
 		return nil, false
 	}
 	return o.IsCluster, true
@@ -241,7 +241,7 @@ func (o *SourceHealthDto) GetIsClusterOk() (*bool, bool) {
 
 // HasIsCluster returns a boolean if a field has been set.
 func (o *SourceHealthDto) HasIsCluster() bool {
-	if o != nil && !isNil(o.IsCluster) {
+	if o != nil && !IsNil(o.IsCluster) {
 		return true
 	}
 
@@ -255,7 +255,7 @@ func (o *SourceHealthDto) SetIsCluster(v bool) {
 
 // GetHostname returns the Hostname field value if set, zero value otherwise.
 func (o *SourceHealthDto) GetHostname() string {
-	if o == nil || isNil(o.Hostname) {
+	if o == nil || IsNil(o.Hostname) {
 		var ret string
 		return ret
 	}
@@ -265,7 +265,7 @@ func (o *SourceHealthDto) GetHostname() string {
 // GetHostnameOk returns a tuple with the Hostname field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SourceHealthDto) GetHostnameOk() (*string, bool) {
-	if o == nil || isNil(o.Hostname) {
+	if o == nil || IsNil(o.Hostname) {
 		return nil, false
 	}
 	return o.Hostname, true
@@ -273,7 +273,7 @@ func (o *SourceHealthDto) GetHostnameOk() (*string, bool) {
 
 // HasHostname returns a boolean if a field has been set.
 func (o *SourceHealthDto) HasHostname() bool {
-	if o != nil && !isNil(o.Hostname) {
+	if o != nil && !IsNil(o.Hostname) {
 		return true
 	}
 
@@ -287,7 +287,7 @@ func (o *SourceHealthDto) SetHostname(v string) {
 
 // GetPod returns the Pod field value if set, zero value otherwise.
 func (o *SourceHealthDto) GetPod() string {
-	if o == nil || isNil(o.Pod) {
+	if o == nil || IsNil(o.Pod) {
 		var ret string
 		return ret
 	}
@@ -297,7 +297,7 @@ func (o *SourceHealthDto) GetPod() string {
 // GetPodOk returns a tuple with the Pod field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SourceHealthDto) GetPodOk() (*string, bool) {
-	if o == nil || isNil(o.Pod) {
+	if o == nil || IsNil(o.Pod) {
 		return nil, false
 	}
 	return o.Pod, true
@@ -305,7 +305,7 @@ func (o *SourceHealthDto) GetPodOk() (*string, bool) {
 
 // HasPod returns a boolean if a field has been set.
 func (o *SourceHealthDto) HasPod() bool {
-	if o != nil && !isNil(o.Pod) {
+	if o != nil && !IsNil(o.Pod) {
 		return true
 	}
 
@@ -319,7 +319,7 @@ func (o *SourceHealthDto) SetPod(v string) {
 
 // GetIqServiceVersion returns the IqServiceVersion field value if set, zero value otherwise.
 func (o *SourceHealthDto) GetIqServiceVersion() string {
-	if o == nil || isNil(o.IqServiceVersion) {
+	if o == nil || IsNil(o.IqServiceVersion) {
 		var ret string
 		return ret
 	}
@@ -329,7 +329,7 @@ func (o *SourceHealthDto) GetIqServiceVersion() string {
 // GetIqServiceVersionOk returns a tuple with the IqServiceVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SourceHealthDto) GetIqServiceVersionOk() (*string, bool) {
-	if o == nil || isNil(o.IqServiceVersion) {
+	if o == nil || IsNil(o.IqServiceVersion) {
 		return nil, false
 	}
 	return o.IqServiceVersion, true
@@ -337,7 +337,7 @@ func (o *SourceHealthDto) GetIqServiceVersionOk() (*string, bool) {
 
 // HasIqServiceVersion returns a boolean if a field has been set.
 func (o *SourceHealthDto) HasIqServiceVersion() bool {
-	if o != nil && !isNil(o.IqServiceVersion) {
+	if o != nil && !IsNil(o.IqServiceVersion) {
 		return true
 	}
 
@@ -351,7 +351,7 @@ func (o *SourceHealthDto) SetIqServiceVersion(v string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *SourceHealthDto) GetStatus() string {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -361,7 +361,7 @@ func (o *SourceHealthDto) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SourceHealthDto) GetStatusOk() (*string, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -369,7 +369,7 @@ func (o *SourceHealthDto) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *SourceHealthDto) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -391,32 +391,34 @@ func (o SourceHealthDto) MarshalJSON() ([]byte, error) {
 
 func (o SourceHealthDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
-	if !isNil(o.Type) {
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Org) {
+	if !IsNil(o.Org) {
 		toSerialize["org"] = o.Org
 	}
-	if !isNil(o.IsAuthoritative) {
+	if !IsNil(o.IsAuthoritative) {
 		toSerialize["isAuthoritative"] = o.IsAuthoritative
 	}
-	if !isNil(o.IsCluster) {
+	if !IsNil(o.IsCluster) {
 		toSerialize["isCluster"] = o.IsCluster
 	}
-	if !isNil(o.Hostname) {
+	if !IsNil(o.Hostname) {
 		toSerialize["hostname"] = o.Hostname
 	}
-	if !isNil(o.Pod) {
+	if !IsNil(o.Pod) {
 		toSerialize["pod"] = o.Pod
 	}
-	if !isNil(o.IqServiceVersion) {
+	if !IsNil(o.IqServiceVersion) {
 		toSerialize["iqServiceVersion"] = o.IqServiceVersion
 	}
-	if !isNil(o.Status) {
+	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
 
@@ -427,16 +429,20 @@ func (o SourceHealthDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SourceHealthDto) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SourceHealthDto) UnmarshalJSON(data []byte) (err error) {
 	varSourceHealthDto := _SourceHealthDto{}
 
-	if err = json.Unmarshal(bytes, &varSourceHealthDto); err == nil {
+	err = json.Unmarshal(data, &varSourceHealthDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SourceHealthDto(varSourceHealthDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "name")

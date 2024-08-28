@@ -174,8 +174,8 @@ func (o CampaignFilterDetailsCriteriaListInner) ToMap() (map[string]interface{},
 	return toSerialize, nil
 }
 
-func (o *CampaignFilterDetailsCriteriaListInner) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *CampaignFilterDetailsCriteriaListInner) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -187,7 +187,7 @@ func (o *CampaignFilterDetailsCriteriaListInner) UnmarshalJSON(bytes []byte) (er
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -201,13 +201,17 @@ func (o *CampaignFilterDetailsCriteriaListInner) UnmarshalJSON(bytes []byte) (er
 
 	varCampaignFilterDetailsCriteriaListInner := _CampaignFilterDetailsCriteriaListInner{}
 
-	if err = json.Unmarshal(bytes, &varCampaignFilterDetailsCriteriaListInner); err == nil {
+	err = json.Unmarshal(data, &varCampaignFilterDetailsCriteriaListInner)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CampaignFilterDetailsCriteriaListInner(varCampaignFilterDetailsCriteriaListInner)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "operation")
 		delete(additionalProperties, "property")

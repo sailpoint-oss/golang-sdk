@@ -47,7 +47,7 @@ func NewPasswordInfoQueryDTOWithDefaults() *PasswordInfoQueryDTO {
 
 // GetUserName returns the UserName field value if set, zero value otherwise.
 func (o *PasswordInfoQueryDTO) GetUserName() string {
-	if o == nil || isNil(o.UserName) {
+	if o == nil || IsNil(o.UserName) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *PasswordInfoQueryDTO) GetUserName() string {
 // GetUserNameOk returns a tuple with the UserName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordInfoQueryDTO) GetUserNameOk() (*string, bool) {
-	if o == nil || isNil(o.UserName) {
+	if o == nil || IsNil(o.UserName) {
 		return nil, false
 	}
 	return o.UserName, true
@@ -65,7 +65,7 @@ func (o *PasswordInfoQueryDTO) GetUserNameOk() (*string, bool) {
 
 // HasUserName returns a boolean if a field has been set.
 func (o *PasswordInfoQueryDTO) HasUserName() bool {
-	if o != nil && !isNil(o.UserName) {
+	if o != nil && !IsNil(o.UserName) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *PasswordInfoQueryDTO) SetUserName(v string) {
 
 // GetSourceName returns the SourceName field value if set, zero value otherwise.
 func (o *PasswordInfoQueryDTO) GetSourceName() string {
-	if o == nil || isNil(o.SourceName) {
+	if o == nil || IsNil(o.SourceName) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *PasswordInfoQueryDTO) GetSourceName() string {
 // GetSourceNameOk returns a tuple with the SourceName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordInfoQueryDTO) GetSourceNameOk() (*string, bool) {
-	if o == nil || isNil(o.SourceName) {
+	if o == nil || IsNil(o.SourceName) {
 		return nil, false
 	}
 	return o.SourceName, true
@@ -97,7 +97,7 @@ func (o *PasswordInfoQueryDTO) GetSourceNameOk() (*string, bool) {
 
 // HasSourceName returns a boolean if a field has been set.
 func (o *PasswordInfoQueryDTO) HasSourceName() bool {
-	if o != nil && !isNil(o.SourceName) {
+	if o != nil && !IsNil(o.SourceName) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o PasswordInfoQueryDTO) MarshalJSON() ([]byte, error) {
 
 func (o PasswordInfoQueryDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.UserName) {
+	if !IsNil(o.UserName) {
 		toSerialize["userName"] = o.UserName
 	}
-	if !isNil(o.SourceName) {
+	if !IsNil(o.SourceName) {
 		toSerialize["sourceName"] = o.SourceName
 	}
 
@@ -133,16 +133,20 @@ func (o PasswordInfoQueryDTO) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *PasswordInfoQueryDTO) UnmarshalJSON(bytes []byte) (err error) {
+func (o *PasswordInfoQueryDTO) UnmarshalJSON(data []byte) (err error) {
 	varPasswordInfoQueryDTO := _PasswordInfoQueryDTO{}
 
-	if err = json.Unmarshal(bytes, &varPasswordInfoQueryDTO); err == nil {
+	err = json.Unmarshal(data, &varPasswordInfoQueryDTO)
+
+	if err != nil {
+		return err
+	}
+
 	*o = PasswordInfoQueryDTO(varPasswordInfoQueryDTO)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "userName")
 		delete(additionalProperties, "sourceName")
 		o.AdditionalProperties = additionalProperties

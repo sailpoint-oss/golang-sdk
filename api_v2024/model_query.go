@@ -50,7 +50,7 @@ func NewQueryWithDefaults() *Query {
 
 // GetQuery returns the Query field value if set, zero value otherwise.
 func (o *Query) GetQuery() string {
-	if o == nil || isNil(o.Query) {
+	if o == nil || IsNil(o.Query) {
 		var ret string
 		return ret
 	}
@@ -60,7 +60,7 @@ func (o *Query) GetQuery() string {
 // GetQueryOk returns a tuple with the Query field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Query) GetQueryOk() (*string, bool) {
-	if o == nil || isNil(o.Query) {
+	if o == nil || IsNil(o.Query) {
 		return nil, false
 	}
 	return o.Query, true
@@ -68,7 +68,7 @@ func (o *Query) GetQueryOk() (*string, bool) {
 
 // HasQuery returns a boolean if a field has been set.
 func (o *Query) HasQuery() bool {
-	if o != nil && !isNil(o.Query) {
+	if o != nil && !IsNil(o.Query) {
 		return true
 	}
 
@@ -82,7 +82,7 @@ func (o *Query) SetQuery(v string) {
 
 // GetFields returns the Fields field value if set, zero value otherwise.
 func (o *Query) GetFields() string {
-	if o == nil || isNil(o.Fields) {
+	if o == nil || IsNil(o.Fields) {
 		var ret string
 		return ret
 	}
@@ -92,7 +92,7 @@ func (o *Query) GetFields() string {
 // GetFieldsOk returns a tuple with the Fields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Query) GetFieldsOk() (*string, bool) {
-	if o == nil || isNil(o.Fields) {
+	if o == nil || IsNil(o.Fields) {
 		return nil, false
 	}
 	return o.Fields, true
@@ -100,7 +100,7 @@ func (o *Query) GetFieldsOk() (*string, bool) {
 
 // HasFields returns a boolean if a field has been set.
 func (o *Query) HasFields() bool {
-	if o != nil && !isNil(o.Fields) {
+	if o != nil && !IsNil(o.Fields) {
 		return true
 	}
 
@@ -114,7 +114,7 @@ func (o *Query) SetFields(v string) {
 
 // GetTimeZone returns the TimeZone field value if set, zero value otherwise.
 func (o *Query) GetTimeZone() string {
-	if o == nil || isNil(o.TimeZone) {
+	if o == nil || IsNil(o.TimeZone) {
 		var ret string
 		return ret
 	}
@@ -124,7 +124,7 @@ func (o *Query) GetTimeZone() string {
 // GetTimeZoneOk returns a tuple with the TimeZone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Query) GetTimeZoneOk() (*string, bool) {
-	if o == nil || isNil(o.TimeZone) {
+	if o == nil || IsNil(o.TimeZone) {
 		return nil, false
 	}
 	return o.TimeZone, true
@@ -132,7 +132,7 @@ func (o *Query) GetTimeZoneOk() (*string, bool) {
 
 // HasTimeZone returns a boolean if a field has been set.
 func (o *Query) HasTimeZone() bool {
-	if o != nil && !isNil(o.TimeZone) {
+	if o != nil && !IsNil(o.TimeZone) {
 		return true
 	}
 
@@ -146,7 +146,7 @@ func (o *Query) SetTimeZone(v string) {
 
 // GetInnerHit returns the InnerHit field value if set, zero value otherwise.
 func (o *Query) GetInnerHit() InnerHit {
-	if o == nil || isNil(o.InnerHit) {
+	if o == nil || IsNil(o.InnerHit) {
 		var ret InnerHit
 		return ret
 	}
@@ -156,7 +156,7 @@ func (o *Query) GetInnerHit() InnerHit {
 // GetInnerHitOk returns a tuple with the InnerHit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Query) GetInnerHitOk() (*InnerHit, bool) {
-	if o == nil || isNil(o.InnerHit) {
+	if o == nil || IsNil(o.InnerHit) {
 		return nil, false
 	}
 	return o.InnerHit, true
@@ -164,7 +164,7 @@ func (o *Query) GetInnerHitOk() (*InnerHit, bool) {
 
 // HasInnerHit returns a boolean if a field has been set.
 func (o *Query) HasInnerHit() bool {
-	if o != nil && !isNil(o.InnerHit) {
+	if o != nil && !IsNil(o.InnerHit) {
 		return true
 	}
 
@@ -186,16 +186,16 @@ func (o Query) MarshalJSON() ([]byte, error) {
 
 func (o Query) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Query) {
+	if !IsNil(o.Query) {
 		toSerialize["query"] = o.Query
 	}
-	if !isNil(o.Fields) {
+	if !IsNil(o.Fields) {
 		toSerialize["fields"] = o.Fields
 	}
-	if !isNil(o.TimeZone) {
+	if !IsNil(o.TimeZone) {
 		toSerialize["timeZone"] = o.TimeZone
 	}
-	if !isNil(o.InnerHit) {
+	if !IsNil(o.InnerHit) {
 		toSerialize["innerHit"] = o.InnerHit
 	}
 
@@ -206,16 +206,20 @@ func (o Query) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Query) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Query) UnmarshalJSON(data []byte) (err error) {
 	varQuery := _Query{}
 
-	if err = json.Unmarshal(bytes, &varQuery); err == nil {
+	err = json.Unmarshal(data, &varQuery)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Query(varQuery)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "query")
 		delete(additionalProperties, "fields")
 		delete(additionalProperties, "timeZone")

@@ -57,7 +57,7 @@ func NewConnectorDetailWithDefaults() *ConnectorDetail {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ConnectorDetail) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -67,7 +67,7 @@ func (o *ConnectorDetail) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConnectorDetail) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -75,7 +75,7 @@ func (o *ConnectorDetail) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ConnectorDetail) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -89,7 +89,7 @@ func (o *ConnectorDetail) SetName(v string) {
 
 // GetSourceConfigXml returns the SourceConfigXml field value if set, zero value otherwise.
 func (o *ConnectorDetail) GetSourceConfigXml() string {
-	if o == nil || isNil(o.SourceConfigXml) {
+	if o == nil || IsNil(o.SourceConfigXml) {
 		var ret string
 		return ret
 	}
@@ -99,7 +99,7 @@ func (o *ConnectorDetail) GetSourceConfigXml() string {
 // GetSourceConfigXmlOk returns a tuple with the SourceConfigXml field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConnectorDetail) GetSourceConfigXmlOk() (*string, bool) {
-	if o == nil || isNil(o.SourceConfigXml) {
+	if o == nil || IsNil(o.SourceConfigXml) {
 		return nil, false
 	}
 	return o.SourceConfigXml, true
@@ -107,7 +107,7 @@ func (o *ConnectorDetail) GetSourceConfigXmlOk() (*string, bool) {
 
 // HasSourceConfigXml returns a boolean if a field has been set.
 func (o *ConnectorDetail) HasSourceConfigXml() bool {
-	if o != nil && !isNil(o.SourceConfigXml) {
+	if o != nil && !IsNil(o.SourceConfigXml) {
 		return true
 	}
 
@@ -121,7 +121,7 @@ func (o *ConnectorDetail) SetSourceConfigXml(v string) {
 
 // GetSourceConfig returns the SourceConfig field value if set, zero value otherwise.
 func (o *ConnectorDetail) GetSourceConfig() string {
-	if o == nil || isNil(o.SourceConfig) {
+	if o == nil || IsNil(o.SourceConfig) {
 		var ret string
 		return ret
 	}
@@ -131,7 +131,7 @@ func (o *ConnectorDetail) GetSourceConfig() string {
 // GetSourceConfigOk returns a tuple with the SourceConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConnectorDetail) GetSourceConfigOk() (*string, bool) {
-	if o == nil || isNil(o.SourceConfig) {
+	if o == nil || IsNil(o.SourceConfig) {
 		return nil, false
 	}
 	return o.SourceConfig, true
@@ -139,7 +139,7 @@ func (o *ConnectorDetail) GetSourceConfigOk() (*string, bool) {
 
 // HasSourceConfig returns a boolean if a field has been set.
 func (o *ConnectorDetail) HasSourceConfig() bool {
-	if o != nil && !isNil(o.SourceConfig) {
+	if o != nil && !IsNil(o.SourceConfig) {
 		return true
 	}
 
@@ -153,7 +153,7 @@ func (o *ConnectorDetail) SetSourceConfig(v string) {
 
 // GetDirectConnect returns the DirectConnect field value if set, zero value otherwise.
 func (o *ConnectorDetail) GetDirectConnect() bool {
-	if o == nil || isNil(o.DirectConnect) {
+	if o == nil || IsNil(o.DirectConnect) {
 		var ret bool
 		return ret
 	}
@@ -163,7 +163,7 @@ func (o *ConnectorDetail) GetDirectConnect() bool {
 // GetDirectConnectOk returns a tuple with the DirectConnect field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConnectorDetail) GetDirectConnectOk() (*bool, bool) {
-	if o == nil || isNil(o.DirectConnect) {
+	if o == nil || IsNil(o.DirectConnect) {
 		return nil, false
 	}
 	return o.DirectConnect, true
@@ -171,7 +171,7 @@ func (o *ConnectorDetail) GetDirectConnectOk() (*bool, bool) {
 
 // HasDirectConnect returns a boolean if a field has been set.
 func (o *ConnectorDetail) HasDirectConnect() bool {
-	if o != nil && !isNil(o.DirectConnect) {
+	if o != nil && !IsNil(o.DirectConnect) {
 		return true
 	}
 
@@ -185,7 +185,7 @@ func (o *ConnectorDetail) SetDirectConnect(v bool) {
 
 // GetFileUpload returns the FileUpload field value if set, zero value otherwise.
 func (o *ConnectorDetail) GetFileUpload() bool {
-	if o == nil || isNil(o.FileUpload) {
+	if o == nil || IsNil(o.FileUpload) {
 		var ret bool
 		return ret
 	}
@@ -195,7 +195,7 @@ func (o *ConnectorDetail) GetFileUpload() bool {
 // GetFileUploadOk returns a tuple with the FileUpload field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConnectorDetail) GetFileUploadOk() (*bool, bool) {
-	if o == nil || isNil(o.FileUpload) {
+	if o == nil || IsNil(o.FileUpload) {
 		return nil, false
 	}
 	return o.FileUpload, true
@@ -203,7 +203,7 @@ func (o *ConnectorDetail) GetFileUploadOk() (*bool, bool) {
 
 // HasFileUpload returns a boolean if a field has been set.
 func (o *ConnectorDetail) HasFileUpload() bool {
-	if o != nil && !isNil(o.FileUpload) {
+	if o != nil && !IsNil(o.FileUpload) {
 		return true
 	}
 
@@ -217,7 +217,7 @@ func (o *ConnectorDetail) SetFileUpload(v bool) {
 
 // GetUploadedFiles returns the UploadedFiles field value if set, zero value otherwise.
 func (o *ConnectorDetail) GetUploadedFiles() string {
-	if o == nil || isNil(o.UploadedFiles) {
+	if o == nil || IsNil(o.UploadedFiles) {
 		var ret string
 		return ret
 	}
@@ -227,7 +227,7 @@ func (o *ConnectorDetail) GetUploadedFiles() string {
 // GetUploadedFilesOk returns a tuple with the UploadedFiles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConnectorDetail) GetUploadedFilesOk() (*string, bool) {
-	if o == nil || isNil(o.UploadedFiles) {
+	if o == nil || IsNil(o.UploadedFiles) {
 		return nil, false
 	}
 	return o.UploadedFiles, true
@@ -235,7 +235,7 @@ func (o *ConnectorDetail) GetUploadedFilesOk() (*string, bool) {
 
 // HasUploadedFiles returns a boolean if a field has been set.
 func (o *ConnectorDetail) HasUploadedFiles() bool {
-	if o != nil && !isNil(o.UploadedFiles) {
+	if o != nil && !IsNil(o.UploadedFiles) {
 		return true
 	}
 
@@ -249,7 +249,7 @@ func (o *ConnectorDetail) SetUploadedFiles(v string) {
 
 // GetConnectorMetadata returns the ConnectorMetadata field value if set, zero value otherwise.
 func (o *ConnectorDetail) GetConnectorMetadata() map[string]interface{} {
-	if o == nil || isNil(o.ConnectorMetadata) {
+	if o == nil || IsNil(o.ConnectorMetadata) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -259,7 +259,7 @@ func (o *ConnectorDetail) GetConnectorMetadata() map[string]interface{} {
 // GetConnectorMetadataOk returns a tuple with the ConnectorMetadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConnectorDetail) GetConnectorMetadataOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.ConnectorMetadata) {
+	if o == nil || IsNil(o.ConnectorMetadata) {
 		return map[string]interface{}{}, false
 	}
 	return o.ConnectorMetadata, true
@@ -267,7 +267,7 @@ func (o *ConnectorDetail) GetConnectorMetadataOk() (map[string]interface{}, bool
 
 // HasConnectorMetadata returns a boolean if a field has been set.
 func (o *ConnectorDetail) HasConnectorMetadata() bool {
-	if o != nil && !isNil(o.ConnectorMetadata) {
+	if o != nil && !IsNil(o.ConnectorMetadata) {
 		return true
 	}
 
@@ -289,25 +289,25 @@ func (o ConnectorDetail) MarshalJSON() ([]byte, error) {
 
 func (o ConnectorDetail) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.SourceConfigXml) {
+	if !IsNil(o.SourceConfigXml) {
 		toSerialize["sourceConfigXml"] = o.SourceConfigXml
 	}
-	if !isNil(o.SourceConfig) {
+	if !IsNil(o.SourceConfig) {
 		toSerialize["sourceConfig"] = o.SourceConfig
 	}
-	if !isNil(o.DirectConnect) {
+	if !IsNil(o.DirectConnect) {
 		toSerialize["directConnect"] = o.DirectConnect
 	}
-	if !isNil(o.FileUpload) {
+	if !IsNil(o.FileUpload) {
 		toSerialize["fileUpload"] = o.FileUpload
 	}
-	if !isNil(o.UploadedFiles) {
+	if !IsNil(o.UploadedFiles) {
 		toSerialize["uploadedFiles"] = o.UploadedFiles
 	}
-	if !isNil(o.ConnectorMetadata) {
+	if !IsNil(o.ConnectorMetadata) {
 		toSerialize["connectorMetadata"] = o.ConnectorMetadata
 	}
 
@@ -318,16 +318,20 @@ func (o ConnectorDetail) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ConnectorDetail) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ConnectorDetail) UnmarshalJSON(data []byte) (err error) {
 	varConnectorDetail := _ConnectorDetail{}
 
-	if err = json.Unmarshal(bytes, &varConnectorDetail); err == nil {
+	err = json.Unmarshal(data, &varConnectorDetail)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ConnectorDetail(varConnectorDetail)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "sourceConfigXml")
 		delete(additionalProperties, "sourceConfig")

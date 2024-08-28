@@ -45,7 +45,7 @@ func NewCommonAccessItemRequestWithDefaults() *CommonAccessItemRequest {
 
 // GetAccess returns the Access field value if set, zero value otherwise.
 func (o *CommonAccessItemRequest) GetAccess() CommonAccessItemAccess {
-	if o == nil || isNil(o.Access) {
+	if o == nil || IsNil(o.Access) {
 		var ret CommonAccessItemAccess
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *CommonAccessItemRequest) GetAccess() CommonAccessItemAccess {
 // GetAccessOk returns a tuple with the Access field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CommonAccessItemRequest) GetAccessOk() (*CommonAccessItemAccess, bool) {
-	if o == nil || isNil(o.Access) {
+	if o == nil || IsNil(o.Access) {
 		return nil, false
 	}
 	return o.Access, true
@@ -63,7 +63,7 @@ func (o *CommonAccessItemRequest) GetAccessOk() (*CommonAccessItemAccess, bool) 
 
 // HasAccess returns a boolean if a field has been set.
 func (o *CommonAccessItemRequest) HasAccess() bool {
-	if o != nil && !isNil(o.Access) {
+	if o != nil && !IsNil(o.Access) {
 		return true
 	}
 
@@ -77,7 +77,7 @@ func (o *CommonAccessItemRequest) SetAccess(v CommonAccessItemAccess) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *CommonAccessItemRequest) GetStatus() CommonAccessItemState {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret CommonAccessItemState
 		return ret
 	}
@@ -87,7 +87,7 @@ func (o *CommonAccessItemRequest) GetStatus() CommonAccessItemState {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CommonAccessItemRequest) GetStatusOk() (*CommonAccessItemState, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -95,7 +95,7 @@ func (o *CommonAccessItemRequest) GetStatusOk() (*CommonAccessItemState, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *CommonAccessItemRequest) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -117,10 +117,10 @@ func (o CommonAccessItemRequest) MarshalJSON() ([]byte, error) {
 
 func (o CommonAccessItemRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Access) {
+	if !IsNil(o.Access) {
 		toSerialize["access"] = o.Access
 	}
-	if !isNil(o.Status) {
+	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
 
@@ -131,16 +131,20 @@ func (o CommonAccessItemRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CommonAccessItemRequest) UnmarshalJSON(bytes []byte) (err error) {
+func (o *CommonAccessItemRequest) UnmarshalJSON(data []byte) (err error) {
 	varCommonAccessItemRequest := _CommonAccessItemRequest{}
 
-	if err = json.Unmarshal(bytes, &varCommonAccessItemRequest); err == nil {
+	err = json.Unmarshal(data, &varCommonAccessItemRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CommonAccessItemRequest(varCommonAccessItemRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "access")
 		delete(additionalProperties, "status")
 		o.AdditionalProperties = additionalProperties

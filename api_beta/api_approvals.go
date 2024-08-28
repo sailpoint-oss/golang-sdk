@@ -248,13 +248,13 @@ func (a *ApprovalsAPIService) GetApprovalsExecute(r ApiGetApprovalsRequest) ([]A
 	localVarFormParams := url.Values{}
 
 	if r.mine != nil {
-		parameterAddToQuery(localVarQueryParams, "mine", r.mine, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "mine", r.mine, "", "")
 	}
 	if r.requesterId != nil {
-		parameterAddToQuery(localVarQueryParams, "requesterId", r.requesterId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "requesterId", r.requesterId, "", "")
 	}
 	if r.filters != nil {
-		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

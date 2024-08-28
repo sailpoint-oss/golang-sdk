@@ -49,7 +49,7 @@ func NewCorrelationConfigWithDefaults() *CorrelationConfig {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *CorrelationConfig) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *CorrelationConfig) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CorrelationConfig) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -67,7 +67,7 @@ func (o *CorrelationConfig) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *CorrelationConfig) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *CorrelationConfig) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *CorrelationConfig) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *CorrelationConfig) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CorrelationConfig) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -99,7 +99,7 @@ func (o *CorrelationConfig) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *CorrelationConfig) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *CorrelationConfig) SetName(v string) {
 
 // GetAttributeAssignments returns the AttributeAssignments field value if set, zero value otherwise.
 func (o *CorrelationConfig) GetAttributeAssignments() []CorrelationConfigAttributeAssignmentsInner {
-	if o == nil || isNil(o.AttributeAssignments) {
+	if o == nil || IsNil(o.AttributeAssignments) {
 		var ret []CorrelationConfigAttributeAssignmentsInner
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *CorrelationConfig) GetAttributeAssignments() []CorrelationConfigAttribu
 // GetAttributeAssignmentsOk returns a tuple with the AttributeAssignments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CorrelationConfig) GetAttributeAssignmentsOk() ([]CorrelationConfigAttributeAssignmentsInner, bool) {
-	if o == nil || isNil(o.AttributeAssignments) {
+	if o == nil || IsNil(o.AttributeAssignments) {
 		return nil, false
 	}
 	return o.AttributeAssignments, true
@@ -131,7 +131,7 @@ func (o *CorrelationConfig) GetAttributeAssignmentsOk() ([]CorrelationConfigAttr
 
 // HasAttributeAssignments returns a boolean if a field has been set.
 func (o *CorrelationConfig) HasAttributeAssignments() bool {
-	if o != nil && !isNil(o.AttributeAssignments) {
+	if o != nil && !IsNil(o.AttributeAssignments) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o CorrelationConfig) MarshalJSON() ([]byte, error) {
 
 func (o CorrelationConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.AttributeAssignments) {
+	if !IsNil(o.AttributeAssignments) {
 		toSerialize["attributeAssignments"] = o.AttributeAssignments
 	}
 
@@ -170,16 +170,20 @@ func (o CorrelationConfig) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CorrelationConfig) UnmarshalJSON(bytes []byte) (err error) {
+func (o *CorrelationConfig) UnmarshalJSON(data []byte) (err error) {
 	varCorrelationConfig := _CorrelationConfig{}
 
-	if err = json.Unmarshal(bytes, &varCorrelationConfig); err == nil {
+	err = json.Unmarshal(data, &varCorrelationConfig)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CorrelationConfig(varCorrelationConfig)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "attributeAssignments")

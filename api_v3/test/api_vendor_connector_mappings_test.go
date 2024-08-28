@@ -19,14 +19,14 @@ import (
 
 func Test_api_v3_VendorConnectorMappingsAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test VendorConnectorMappingsAPIService CreateVendorConnectorMapping", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.VendorConnectorMappingsAPI.CreateVendorConnectorMapping(context.Background()).Execute()
+		resp, httpRes, err := apiClient.VendorConnectorMappingsAPI.CreateVendorConnectorMapping(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -38,7 +38,7 @@ func Test_api_v3_VendorConnectorMappingsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.VendorConnectorMappingsAPI.DeleteVendorConnectorMapping(context.Background()).Execute()
+		resp, httpRes, err := apiClient.VendorConnectorMappingsAPI.DeleteVendorConnectorMapping(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

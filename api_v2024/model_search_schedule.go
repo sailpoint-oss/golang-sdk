@@ -23,9 +23,9 @@ var _ MappedNullable = &SearchSchedule{}
 type SearchSchedule struct {
 	// The ID of the saved search that will be executed.
 	SavedSearchId string `json:"savedSearchId"`
-	// A date-time in ISO-8601 format
+	// The date the scheduled search was initially created.
 	Created NullableTime `json:"created,omitempty"`
-	// A date-time in ISO-8601 format
+	// The last date the scheduled search was modified.
 	Modified NullableTime `json:"modified,omitempty"`
 	Schedule Schedule1 `json:"schedule"`
 	// A list of identities that should receive the scheduled search report via email.
@@ -99,7 +99,7 @@ func (o *SearchSchedule) SetSavedSearchId(v string) {
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SearchSchedule) GetCreated() time.Time {
-	if o == nil || isNil(o.Created.Get()) {
+	if o == nil || IsNil(o.Created.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -141,7 +141,7 @@ func (o *SearchSchedule) UnsetCreated() {
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SearchSchedule) GetModified() time.Time {
-	if o == nil || isNil(o.Modified.Get()) {
+	if o == nil || IsNil(o.Modified.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -231,7 +231,7 @@ func (o *SearchSchedule) SetRecipients(v []SearchScheduleRecipientsInner) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *SearchSchedule) GetEnabled() bool {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -241,7 +241,7 @@ func (o *SearchSchedule) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SearchSchedule) GetEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -249,7 +249,7 @@ func (o *SearchSchedule) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *SearchSchedule) HasEnabled() bool {
-	if o != nil && !isNil(o.Enabled) {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -263,7 +263,7 @@ func (o *SearchSchedule) SetEnabled(v bool) {
 
 // GetEmailEmptyResults returns the EmailEmptyResults field value if set, zero value otherwise.
 func (o *SearchSchedule) GetEmailEmptyResults() bool {
-	if o == nil || isNil(o.EmailEmptyResults) {
+	if o == nil || IsNil(o.EmailEmptyResults) {
 		var ret bool
 		return ret
 	}
@@ -273,7 +273,7 @@ func (o *SearchSchedule) GetEmailEmptyResults() bool {
 // GetEmailEmptyResultsOk returns a tuple with the EmailEmptyResults field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SearchSchedule) GetEmailEmptyResultsOk() (*bool, bool) {
-	if o == nil || isNil(o.EmailEmptyResults) {
+	if o == nil || IsNil(o.EmailEmptyResults) {
 		return nil, false
 	}
 	return o.EmailEmptyResults, true
@@ -281,7 +281,7 @@ func (o *SearchSchedule) GetEmailEmptyResultsOk() (*bool, bool) {
 
 // HasEmailEmptyResults returns a boolean if a field has been set.
 func (o *SearchSchedule) HasEmailEmptyResults() bool {
-	if o != nil && !isNil(o.EmailEmptyResults) {
+	if o != nil && !IsNil(o.EmailEmptyResults) {
 		return true
 	}
 
@@ -295,7 +295,7 @@ func (o *SearchSchedule) SetEmailEmptyResults(v bool) {
 
 // GetDisplayQueryDetails returns the DisplayQueryDetails field value if set, zero value otherwise.
 func (o *SearchSchedule) GetDisplayQueryDetails() bool {
-	if o == nil || isNil(o.DisplayQueryDetails) {
+	if o == nil || IsNil(o.DisplayQueryDetails) {
 		var ret bool
 		return ret
 	}
@@ -305,7 +305,7 @@ func (o *SearchSchedule) GetDisplayQueryDetails() bool {
 // GetDisplayQueryDetailsOk returns a tuple with the DisplayQueryDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SearchSchedule) GetDisplayQueryDetailsOk() (*bool, bool) {
-	if o == nil || isNil(o.DisplayQueryDetails) {
+	if o == nil || IsNil(o.DisplayQueryDetails) {
 		return nil, false
 	}
 	return o.DisplayQueryDetails, true
@@ -313,7 +313,7 @@ func (o *SearchSchedule) GetDisplayQueryDetailsOk() (*bool, bool) {
 
 // HasDisplayQueryDetails returns a boolean if a field has been set.
 func (o *SearchSchedule) HasDisplayQueryDetails() bool {
-	if o != nil && !isNil(o.DisplayQueryDetails) {
+	if o != nil && !IsNil(o.DisplayQueryDetails) {
 		return true
 	}
 
@@ -344,13 +344,13 @@ func (o SearchSchedule) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["schedule"] = o.Schedule
 	toSerialize["recipients"] = o.Recipients
-	if !isNil(o.Enabled) {
+	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if !isNil(o.EmailEmptyResults) {
+	if !IsNil(o.EmailEmptyResults) {
 		toSerialize["emailEmptyResults"] = o.EmailEmptyResults
 	}
-	if !isNil(o.DisplayQueryDetails) {
+	if !IsNil(o.DisplayQueryDetails) {
 		toSerialize["displayQueryDetails"] = o.DisplayQueryDetails
 	}
 
@@ -361,8 +361,8 @@ func (o SearchSchedule) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SearchSchedule) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *SearchSchedule) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -373,7 +373,7 @@ func (o *SearchSchedule) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -387,13 +387,17 @@ func (o *SearchSchedule) UnmarshalJSON(bytes []byte) (err error) {
 
 	varSearchSchedule := _SearchSchedule{}
 
-	if err = json.Unmarshal(bytes, &varSearchSchedule); err == nil {
+	err = json.Unmarshal(data, &varSearchSchedule)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SearchSchedule(varSearchSchedule)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "savedSearchId")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "modified")

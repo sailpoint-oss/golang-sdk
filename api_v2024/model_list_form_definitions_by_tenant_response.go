@@ -47,7 +47,7 @@ func NewListFormDefinitionsByTenantResponseWithDefaults() *ListFormDefinitionsBy
 
 // GetCount returns the Count field value if set, zero value otherwise.
 func (o *ListFormDefinitionsByTenantResponse) GetCount() int64 {
-	if o == nil || isNil(o.Count) {
+	if o == nil || IsNil(o.Count) {
 		var ret int64
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *ListFormDefinitionsByTenantResponse) GetCount() int64 {
 // GetCountOk returns a tuple with the Count field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ListFormDefinitionsByTenantResponse) GetCountOk() (*int64, bool) {
-	if o == nil || isNil(o.Count) {
+	if o == nil || IsNil(o.Count) {
 		return nil, false
 	}
 	return o.Count, true
@@ -65,7 +65,7 @@ func (o *ListFormDefinitionsByTenantResponse) GetCountOk() (*int64, bool) {
 
 // HasCount returns a boolean if a field has been set.
 func (o *ListFormDefinitionsByTenantResponse) HasCount() bool {
-	if o != nil && !isNil(o.Count) {
+	if o != nil && !IsNil(o.Count) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *ListFormDefinitionsByTenantResponse) SetCount(v int64) {
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *ListFormDefinitionsByTenantResponse) GetResults() []FormDefinitionResponse {
-	if o == nil || isNil(o.Results) {
+	if o == nil || IsNil(o.Results) {
 		var ret []FormDefinitionResponse
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *ListFormDefinitionsByTenantResponse) GetResults() []FormDefinitionRespo
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ListFormDefinitionsByTenantResponse) GetResultsOk() ([]FormDefinitionResponse, bool) {
-	if o == nil || isNil(o.Results) {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -97,7 +97,7 @@ func (o *ListFormDefinitionsByTenantResponse) GetResultsOk() ([]FormDefinitionRe
 
 // HasResults returns a boolean if a field has been set.
 func (o *ListFormDefinitionsByTenantResponse) HasResults() bool {
-	if o != nil && !isNil(o.Results) {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o ListFormDefinitionsByTenantResponse) MarshalJSON() ([]byte, error) {
 
 func (o ListFormDefinitionsByTenantResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Count) {
+	if !IsNil(o.Count) {
 		toSerialize["count"] = o.Count
 	}
-	if !isNil(o.Results) {
+	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
 
@@ -133,16 +133,20 @@ func (o ListFormDefinitionsByTenantResponse) ToMap() (map[string]interface{}, er
 	return toSerialize, nil
 }
 
-func (o *ListFormDefinitionsByTenantResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ListFormDefinitionsByTenantResponse) UnmarshalJSON(data []byte) (err error) {
 	varListFormDefinitionsByTenantResponse := _ListFormDefinitionsByTenantResponse{}
 
-	if err = json.Unmarshal(bytes, &varListFormDefinitionsByTenantResponse); err == nil {
+	err = json.Unmarshal(data, &varListFormDefinitionsByTenantResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ListFormDefinitionsByTenantResponse(varListFormDefinitionsByTenantResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "count")
 		delete(additionalProperties, "results")
 		o.AdditionalProperties = additionalProperties

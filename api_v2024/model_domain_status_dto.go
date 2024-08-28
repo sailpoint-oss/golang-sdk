@@ -53,7 +53,7 @@ func NewDomainStatusDtoWithDefaults() *DomainStatusDto {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *DomainStatusDto) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -63,7 +63,7 @@ func (o *DomainStatusDto) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DomainStatusDto) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -71,7 +71,7 @@ func (o *DomainStatusDto) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *DomainStatusDto) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o *DomainStatusDto) SetId(v string) {
 
 // GetDomain returns the Domain field value if set, zero value otherwise.
 func (o *DomainStatusDto) GetDomain() string {
-	if o == nil || isNil(o.Domain) {
+	if o == nil || IsNil(o.Domain) {
 		var ret string
 		return ret
 	}
@@ -95,7 +95,7 @@ func (o *DomainStatusDto) GetDomain() string {
 // GetDomainOk returns a tuple with the Domain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DomainStatusDto) GetDomainOk() (*string, bool) {
-	if o == nil || isNil(o.Domain) {
+	if o == nil || IsNil(o.Domain) {
 		return nil, false
 	}
 	return o.Domain, true
@@ -103,7 +103,7 @@ func (o *DomainStatusDto) GetDomainOk() (*string, bool) {
 
 // HasDomain returns a boolean if a field has been set.
 func (o *DomainStatusDto) HasDomain() bool {
-	if o != nil && !isNil(o.Domain) {
+	if o != nil && !IsNil(o.Domain) {
 		return true
 	}
 
@@ -117,7 +117,7 @@ func (o *DomainStatusDto) SetDomain(v string) {
 
 // GetDkimEnabled returns the DkimEnabled field value if set, zero value otherwise.
 func (o *DomainStatusDto) GetDkimEnabled() map[string]interface{} {
-	if o == nil || isNil(o.DkimEnabled) {
+	if o == nil || IsNil(o.DkimEnabled) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -127,7 +127,7 @@ func (o *DomainStatusDto) GetDkimEnabled() map[string]interface{} {
 // GetDkimEnabledOk returns a tuple with the DkimEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DomainStatusDto) GetDkimEnabledOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.DkimEnabled) {
+	if o == nil || IsNil(o.DkimEnabled) {
 		return map[string]interface{}{}, false
 	}
 	return o.DkimEnabled, true
@@ -135,7 +135,7 @@ func (o *DomainStatusDto) GetDkimEnabledOk() (map[string]interface{}, bool) {
 
 // HasDkimEnabled returns a boolean if a field has been set.
 func (o *DomainStatusDto) HasDkimEnabled() bool {
-	if o != nil && !isNil(o.DkimEnabled) {
+	if o != nil && !IsNil(o.DkimEnabled) {
 		return true
 	}
 
@@ -149,7 +149,7 @@ func (o *DomainStatusDto) SetDkimEnabled(v map[string]interface{}) {
 
 // GetDkimTokens returns the DkimTokens field value if set, zero value otherwise.
 func (o *DomainStatusDto) GetDkimTokens() []string {
-	if o == nil || isNil(o.DkimTokens) {
+	if o == nil || IsNil(o.DkimTokens) {
 		var ret []string
 		return ret
 	}
@@ -159,7 +159,7 @@ func (o *DomainStatusDto) GetDkimTokens() []string {
 // GetDkimTokensOk returns a tuple with the DkimTokens field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DomainStatusDto) GetDkimTokensOk() ([]string, bool) {
-	if o == nil || isNil(o.DkimTokens) {
+	if o == nil || IsNil(o.DkimTokens) {
 		return nil, false
 	}
 	return o.DkimTokens, true
@@ -167,7 +167,7 @@ func (o *DomainStatusDto) GetDkimTokensOk() ([]string, bool) {
 
 // HasDkimTokens returns a boolean if a field has been set.
 func (o *DomainStatusDto) HasDkimTokens() bool {
-	if o != nil && !isNil(o.DkimTokens) {
+	if o != nil && !IsNil(o.DkimTokens) {
 		return true
 	}
 
@@ -181,7 +181,7 @@ func (o *DomainStatusDto) SetDkimTokens(v []string) {
 
 // GetDkimVerificationStatus returns the DkimVerificationStatus field value if set, zero value otherwise.
 func (o *DomainStatusDto) GetDkimVerificationStatus() string {
-	if o == nil || isNil(o.DkimVerificationStatus) {
+	if o == nil || IsNil(o.DkimVerificationStatus) {
 		var ret string
 		return ret
 	}
@@ -191,7 +191,7 @@ func (o *DomainStatusDto) GetDkimVerificationStatus() string {
 // GetDkimVerificationStatusOk returns a tuple with the DkimVerificationStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DomainStatusDto) GetDkimVerificationStatusOk() (*string, bool) {
-	if o == nil || isNil(o.DkimVerificationStatus) {
+	if o == nil || IsNil(o.DkimVerificationStatus) {
 		return nil, false
 	}
 	return o.DkimVerificationStatus, true
@@ -199,7 +199,7 @@ func (o *DomainStatusDto) GetDkimVerificationStatusOk() (*string, bool) {
 
 // HasDkimVerificationStatus returns a boolean if a field has been set.
 func (o *DomainStatusDto) HasDkimVerificationStatus() bool {
-	if o != nil && !isNil(o.DkimVerificationStatus) {
+	if o != nil && !IsNil(o.DkimVerificationStatus) {
 		return true
 	}
 
@@ -221,19 +221,19 @@ func (o DomainStatusDto) MarshalJSON() ([]byte, error) {
 
 func (o DomainStatusDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Domain) {
+	if !IsNil(o.Domain) {
 		toSerialize["domain"] = o.Domain
 	}
-	if !isNil(o.DkimEnabled) {
+	if !IsNil(o.DkimEnabled) {
 		toSerialize["dkimEnabled"] = o.DkimEnabled
 	}
-	if !isNil(o.DkimTokens) {
+	if !IsNil(o.DkimTokens) {
 		toSerialize["dkimTokens"] = o.DkimTokens
 	}
-	if !isNil(o.DkimVerificationStatus) {
+	if !IsNil(o.DkimVerificationStatus) {
 		toSerialize["dkimVerificationStatus"] = o.DkimVerificationStatus
 	}
 
@@ -244,16 +244,20 @@ func (o DomainStatusDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *DomainStatusDto) UnmarshalJSON(bytes []byte) (err error) {
+func (o *DomainStatusDto) UnmarshalJSON(data []byte) (err error) {
 	varDomainStatusDto := _DomainStatusDto{}
 
-	if err = json.Unmarshal(bytes, &varDomainStatusDto); err == nil {
+	err = json.Unmarshal(data, &varDomainStatusDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = DomainStatusDto(varDomainStatusDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "domain")
 		delete(additionalProperties, "dkimEnabled")

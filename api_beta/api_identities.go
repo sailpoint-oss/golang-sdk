@@ -752,10 +752,10 @@ func (a *IdentitiesAPIService) GetRoleAssignmentsExecute(r ApiGetRoleAssignments
 	localVarFormParams := url.Values{}
 
 	if r.roleId != nil {
-		parameterAddToQuery(localVarQueryParams, "roleId", r.roleId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "roleId", r.roleId, "", "")
 	}
 	if r.roleName != nil {
-		parameterAddToQuery(localVarQueryParams, "roleName", r.roleName, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "roleName", r.roleName, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -964,31 +964,31 @@ func (a *IdentitiesAPIService) ListIdentitiesExecute(r ApiListIdentitiesRequest)
 	localVarFormParams := url.Values{}
 
 	if r.filters != nil {
-		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "", "")
 	}
 	if r.sorters != nil {
-		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "", "")
 	}
 	if r.defaultFilter != nil {
-		parameterAddToQuery(localVarQueryParams, "defaultFilter", r.defaultFilter, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "defaultFilter", r.defaultFilter, "", "")
 	} else {
 		var defaultValue string = "CORRELATED_ONLY"
 		r.defaultFilter = &defaultValue
 	}
 	if r.count != nil {
-		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "", "")
 	} else {
 		var defaultValue bool = false
 		r.count = &defaultValue
 	}
 	if r.limit != nil {
-		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
 	} else {
 		var defaultValue int32 = 250
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
-		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
 	} else {
 		var defaultValue int32 = 0
 		r.offset = &defaultValue

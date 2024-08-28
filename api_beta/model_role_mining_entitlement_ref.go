@@ -51,7 +51,7 @@ func NewRoleMiningEntitlementRefWithDefaults() *RoleMiningEntitlementRef {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *RoleMiningEntitlementRef) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -61,7 +61,7 @@ func (o *RoleMiningEntitlementRef) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningEntitlementRef) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -69,7 +69,7 @@ func (o *RoleMiningEntitlementRef) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *RoleMiningEntitlementRef) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -83,7 +83,7 @@ func (o *RoleMiningEntitlementRef) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *RoleMiningEntitlementRef) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -93,7 +93,7 @@ func (o *RoleMiningEntitlementRef) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningEntitlementRef) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -101,7 +101,7 @@ func (o *RoleMiningEntitlementRef) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *RoleMiningEntitlementRef) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -115,7 +115,7 @@ func (o *RoleMiningEntitlementRef) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleMiningEntitlementRef) GetDescription() string {
-	if o == nil || isNil(o.Description.Get()) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
@@ -157,7 +157,7 @@ func (o *RoleMiningEntitlementRef) UnsetDescription() {
 
 // GetAttribute returns the Attribute field value if set, zero value otherwise.
 func (o *RoleMiningEntitlementRef) GetAttribute() string {
-	if o == nil || isNil(o.Attribute) {
+	if o == nil || IsNil(o.Attribute) {
 		var ret string
 		return ret
 	}
@@ -167,7 +167,7 @@ func (o *RoleMiningEntitlementRef) GetAttribute() string {
 // GetAttributeOk returns a tuple with the Attribute field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningEntitlementRef) GetAttributeOk() (*string, bool) {
-	if o == nil || isNil(o.Attribute) {
+	if o == nil || IsNil(o.Attribute) {
 		return nil, false
 	}
 	return o.Attribute, true
@@ -175,7 +175,7 @@ func (o *RoleMiningEntitlementRef) GetAttributeOk() (*string, bool) {
 
 // HasAttribute returns a boolean if a field has been set.
 func (o *RoleMiningEntitlementRef) HasAttribute() bool {
-	if o != nil && !isNil(o.Attribute) {
+	if o != nil && !IsNil(o.Attribute) {
 		return true
 	}
 
@@ -197,16 +197,16 @@ func (o RoleMiningEntitlementRef) MarshalJSON() ([]byte, error) {
 
 func (o RoleMiningEntitlementRef) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
-	if !isNil(o.Attribute) {
+	if !IsNil(o.Attribute) {
 		toSerialize["attribute"] = o.Attribute
 	}
 
@@ -217,16 +217,20 @@ func (o RoleMiningEntitlementRef) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *RoleMiningEntitlementRef) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RoleMiningEntitlementRef) UnmarshalJSON(data []byte) (err error) {
 	varRoleMiningEntitlementRef := _RoleMiningEntitlementRef{}
 
-	if err = json.Unmarshal(bytes, &varRoleMiningEntitlementRef); err == nil {
+	err = json.Unmarshal(data, &varRoleMiningEntitlementRef)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RoleMiningEntitlementRef(varRoleMiningEntitlementRef)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")

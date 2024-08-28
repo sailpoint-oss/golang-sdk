@@ -47,7 +47,7 @@ func NewReferenceWithDefaults() *Reference {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Reference) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *Reference) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Reference) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -65,7 +65,7 @@ func (o *Reference) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *Reference) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *Reference) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Reference) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *Reference) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Reference) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -97,7 +97,7 @@ func (o *Reference) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *Reference) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o Reference) MarshalJSON() ([]byte, error) {
 
 func (o Reference) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 
@@ -133,16 +133,20 @@ func (o Reference) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Reference) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Reference) UnmarshalJSON(data []byte) (err error) {
 	varReference := _Reference{}
 
-	if err = json.Unmarshal(bytes, &varReference); err == nil {
+	err = json.Unmarshal(data, &varReference)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Reference(varReference)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		o.AdditionalProperties = additionalProperties

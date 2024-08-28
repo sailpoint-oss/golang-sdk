@@ -68,7 +68,7 @@ func NewSchemaWithDefaults() *Schema {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Schema) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -78,7 +78,7 @@ func (o *Schema) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Schema) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -86,7 +86,7 @@ func (o *Schema) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *Schema) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -100,7 +100,7 @@ func (o *Schema) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Schema) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -110,7 +110,7 @@ func (o *Schema) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Schema) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -118,7 +118,7 @@ func (o *Schema) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *Schema) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -132,7 +132,7 @@ func (o *Schema) SetName(v string) {
 
 // GetNativeObjectType returns the NativeObjectType field value if set, zero value otherwise.
 func (o *Schema) GetNativeObjectType() string {
-	if o == nil || isNil(o.NativeObjectType) {
+	if o == nil || IsNil(o.NativeObjectType) {
 		var ret string
 		return ret
 	}
@@ -142,7 +142,7 @@ func (o *Schema) GetNativeObjectType() string {
 // GetNativeObjectTypeOk returns a tuple with the NativeObjectType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Schema) GetNativeObjectTypeOk() (*string, bool) {
-	if o == nil || isNil(o.NativeObjectType) {
+	if o == nil || IsNil(o.NativeObjectType) {
 		return nil, false
 	}
 	return o.NativeObjectType, true
@@ -150,7 +150,7 @@ func (o *Schema) GetNativeObjectTypeOk() (*string, bool) {
 
 // HasNativeObjectType returns a boolean if a field has been set.
 func (o *Schema) HasNativeObjectType() bool {
-	if o != nil && !isNil(o.NativeObjectType) {
+	if o != nil && !IsNil(o.NativeObjectType) {
 		return true
 	}
 
@@ -164,7 +164,7 @@ func (o *Schema) SetNativeObjectType(v string) {
 
 // GetIdentityAttribute returns the IdentityAttribute field value if set, zero value otherwise.
 func (o *Schema) GetIdentityAttribute() string {
-	if o == nil || isNil(o.IdentityAttribute) {
+	if o == nil || IsNil(o.IdentityAttribute) {
 		var ret string
 		return ret
 	}
@@ -174,7 +174,7 @@ func (o *Schema) GetIdentityAttribute() string {
 // GetIdentityAttributeOk returns a tuple with the IdentityAttribute field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Schema) GetIdentityAttributeOk() (*string, bool) {
-	if o == nil || isNil(o.IdentityAttribute) {
+	if o == nil || IsNil(o.IdentityAttribute) {
 		return nil, false
 	}
 	return o.IdentityAttribute, true
@@ -182,7 +182,7 @@ func (o *Schema) GetIdentityAttributeOk() (*string, bool) {
 
 // HasIdentityAttribute returns a boolean if a field has been set.
 func (o *Schema) HasIdentityAttribute() bool {
-	if o != nil && !isNil(o.IdentityAttribute) {
+	if o != nil && !IsNil(o.IdentityAttribute) {
 		return true
 	}
 
@@ -196,7 +196,7 @@ func (o *Schema) SetIdentityAttribute(v string) {
 
 // GetDisplayAttribute returns the DisplayAttribute field value if set, zero value otherwise.
 func (o *Schema) GetDisplayAttribute() string {
-	if o == nil || isNil(o.DisplayAttribute) {
+	if o == nil || IsNil(o.DisplayAttribute) {
 		var ret string
 		return ret
 	}
@@ -206,7 +206,7 @@ func (o *Schema) GetDisplayAttribute() string {
 // GetDisplayAttributeOk returns a tuple with the DisplayAttribute field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Schema) GetDisplayAttributeOk() (*string, bool) {
-	if o == nil || isNil(o.DisplayAttribute) {
+	if o == nil || IsNil(o.DisplayAttribute) {
 		return nil, false
 	}
 	return o.DisplayAttribute, true
@@ -214,7 +214,7 @@ func (o *Schema) GetDisplayAttributeOk() (*string, bool) {
 
 // HasDisplayAttribute returns a boolean if a field has been set.
 func (o *Schema) HasDisplayAttribute() bool {
-	if o != nil && !isNil(o.DisplayAttribute) {
+	if o != nil && !IsNil(o.DisplayAttribute) {
 		return true
 	}
 
@@ -228,7 +228,7 @@ func (o *Schema) SetDisplayAttribute(v string) {
 
 // GetHierarchyAttribute returns the HierarchyAttribute field value if set, zero value otherwise.
 func (o *Schema) GetHierarchyAttribute() string {
-	if o == nil || isNil(o.HierarchyAttribute) {
+	if o == nil || IsNil(o.HierarchyAttribute) {
 		var ret string
 		return ret
 	}
@@ -238,7 +238,7 @@ func (o *Schema) GetHierarchyAttribute() string {
 // GetHierarchyAttributeOk returns a tuple with the HierarchyAttribute field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Schema) GetHierarchyAttributeOk() (*string, bool) {
-	if o == nil || isNil(o.HierarchyAttribute) {
+	if o == nil || IsNil(o.HierarchyAttribute) {
 		return nil, false
 	}
 	return o.HierarchyAttribute, true
@@ -246,7 +246,7 @@ func (o *Schema) GetHierarchyAttributeOk() (*string, bool) {
 
 // HasHierarchyAttribute returns a boolean if a field has been set.
 func (o *Schema) HasHierarchyAttribute() bool {
-	if o != nil && !isNil(o.HierarchyAttribute) {
+	if o != nil && !IsNil(o.HierarchyAttribute) {
 		return true
 	}
 
@@ -260,7 +260,7 @@ func (o *Schema) SetHierarchyAttribute(v string) {
 
 // GetIncludePermissions returns the IncludePermissions field value if set, zero value otherwise.
 func (o *Schema) GetIncludePermissions() bool {
-	if o == nil || isNil(o.IncludePermissions) {
+	if o == nil || IsNil(o.IncludePermissions) {
 		var ret bool
 		return ret
 	}
@@ -270,7 +270,7 @@ func (o *Schema) GetIncludePermissions() bool {
 // GetIncludePermissionsOk returns a tuple with the IncludePermissions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Schema) GetIncludePermissionsOk() (*bool, bool) {
-	if o == nil || isNil(o.IncludePermissions) {
+	if o == nil || IsNil(o.IncludePermissions) {
 		return nil, false
 	}
 	return o.IncludePermissions, true
@@ -278,7 +278,7 @@ func (o *Schema) GetIncludePermissionsOk() (*bool, bool) {
 
 // HasIncludePermissions returns a boolean if a field has been set.
 func (o *Schema) HasIncludePermissions() bool {
-	if o != nil && !isNil(o.IncludePermissions) {
+	if o != nil && !IsNil(o.IncludePermissions) {
 		return true
 	}
 
@@ -292,7 +292,7 @@ func (o *Schema) SetIncludePermissions(v bool) {
 
 // GetFeatures returns the Features field value if set, zero value otherwise.
 func (o *Schema) GetFeatures() []string {
-	if o == nil || isNil(o.Features) {
+	if o == nil || IsNil(o.Features) {
 		var ret []string
 		return ret
 	}
@@ -302,7 +302,7 @@ func (o *Schema) GetFeatures() []string {
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Schema) GetFeaturesOk() ([]string, bool) {
-	if o == nil || isNil(o.Features) {
+	if o == nil || IsNil(o.Features) {
 		return nil, false
 	}
 	return o.Features, true
@@ -310,7 +310,7 @@ func (o *Schema) GetFeaturesOk() ([]string, bool) {
 
 // HasFeatures returns a boolean if a field has been set.
 func (o *Schema) HasFeatures() bool {
-	if o != nil && !isNil(o.Features) {
+	if o != nil && !IsNil(o.Features) {
 		return true
 	}
 
@@ -324,7 +324,7 @@ func (o *Schema) SetFeatures(v []string) {
 
 // GetConfiguration returns the Configuration field value if set, zero value otherwise.
 func (o *Schema) GetConfiguration() map[string]interface{} {
-	if o == nil || isNil(o.Configuration) {
+	if o == nil || IsNil(o.Configuration) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -334,7 +334,7 @@ func (o *Schema) GetConfiguration() map[string]interface{} {
 // GetConfigurationOk returns a tuple with the Configuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Schema) GetConfigurationOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Configuration) {
+	if o == nil || IsNil(o.Configuration) {
 		return map[string]interface{}{}, false
 	}
 	return o.Configuration, true
@@ -342,7 +342,7 @@ func (o *Schema) GetConfigurationOk() (map[string]interface{}, bool) {
 
 // HasConfiguration returns a boolean if a field has been set.
 func (o *Schema) HasConfiguration() bool {
-	if o != nil && !isNil(o.Configuration) {
+	if o != nil && !IsNil(o.Configuration) {
 		return true
 	}
 
@@ -356,7 +356,7 @@ func (o *Schema) SetConfiguration(v map[string]interface{}) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *Schema) GetAttributes() []AttributeDefinition {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		var ret []AttributeDefinition
 		return ret
 	}
@@ -366,7 +366,7 @@ func (o *Schema) GetAttributes() []AttributeDefinition {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Schema) GetAttributesOk() ([]AttributeDefinition, bool) {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		return nil, false
 	}
 	return o.Attributes, true
@@ -374,7 +374,7 @@ func (o *Schema) GetAttributesOk() ([]AttributeDefinition, bool) {
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *Schema) HasAttributes() bool {
-	if o != nil && !isNil(o.Attributes) {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -388,7 +388,7 @@ func (o *Schema) SetAttributes(v []AttributeDefinition) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *Schema) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -398,7 +398,7 @@ func (o *Schema) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Schema) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -406,7 +406,7 @@ func (o *Schema) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *Schema) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -420,7 +420,7 @@ func (o *Schema) SetCreated(v time.Time) {
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *Schema) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		var ret time.Time
 		return ret
 	}
@@ -430,7 +430,7 @@ func (o *Schema) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Schema) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -438,7 +438,7 @@ func (o *Schema) GetModifiedOk() (*time.Time, bool) {
 
 // HasModified returns a boolean if a field has been set.
 func (o *Schema) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -460,40 +460,40 @@ func (o Schema) MarshalJSON() ([]byte, error) {
 
 func (o Schema) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.NativeObjectType) {
+	if !IsNil(o.NativeObjectType) {
 		toSerialize["nativeObjectType"] = o.NativeObjectType
 	}
-	if !isNil(o.IdentityAttribute) {
+	if !IsNil(o.IdentityAttribute) {
 		toSerialize["identityAttribute"] = o.IdentityAttribute
 	}
-	if !isNil(o.DisplayAttribute) {
+	if !IsNil(o.DisplayAttribute) {
 		toSerialize["displayAttribute"] = o.DisplayAttribute
 	}
-	if !isNil(o.HierarchyAttribute) {
+	if !IsNil(o.HierarchyAttribute) {
 		toSerialize["hierarchyAttribute"] = o.HierarchyAttribute
 	}
-	if !isNil(o.IncludePermissions) {
+	if !IsNil(o.IncludePermissions) {
 		toSerialize["includePermissions"] = o.IncludePermissions
 	}
-	if !isNil(o.Features) {
+	if !IsNil(o.Features) {
 		toSerialize["features"] = o.Features
 	}
-	if !isNil(o.Configuration) {
+	if !IsNil(o.Configuration) {
 		toSerialize["configuration"] = o.Configuration
 	}
-	if !isNil(o.Attributes) {
+	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
-	if !isNil(o.Created) {
+	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
-	if !isNil(o.Modified) {
+	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
 
@@ -504,16 +504,20 @@ func (o Schema) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Schema) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Schema) UnmarshalJSON(data []byte) (err error) {
 	varSchema := _Schema{}
 
-	if err = json.Unmarshal(bytes, &varSchema); err == nil {
+	err = json.Unmarshal(data, &varSchema)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Schema(varSchema)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "nativeObjectType")

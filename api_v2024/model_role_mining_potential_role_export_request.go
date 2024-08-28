@@ -47,7 +47,7 @@ func NewRoleMiningPotentialRoleExportRequestWithDefaults() *RoleMiningPotentialR
 
 // GetMinEntitlementPopularity returns the MinEntitlementPopularity field value if set, zero value otherwise.
 func (o *RoleMiningPotentialRoleExportRequest) GetMinEntitlementPopularity() int32 {
-	if o == nil || isNil(o.MinEntitlementPopularity) {
+	if o == nil || IsNil(o.MinEntitlementPopularity) {
 		var ret int32
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *RoleMiningPotentialRoleExportRequest) GetMinEntitlementPopularity() int
 // GetMinEntitlementPopularityOk returns a tuple with the MinEntitlementPopularity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningPotentialRoleExportRequest) GetMinEntitlementPopularityOk() (*int32, bool) {
-	if o == nil || isNil(o.MinEntitlementPopularity) {
+	if o == nil || IsNil(o.MinEntitlementPopularity) {
 		return nil, false
 	}
 	return o.MinEntitlementPopularity, true
@@ -65,7 +65,7 @@ func (o *RoleMiningPotentialRoleExportRequest) GetMinEntitlementPopularityOk() (
 
 // HasMinEntitlementPopularity returns a boolean if a field has been set.
 func (o *RoleMiningPotentialRoleExportRequest) HasMinEntitlementPopularity() bool {
-	if o != nil && !isNil(o.MinEntitlementPopularity) {
+	if o != nil && !IsNil(o.MinEntitlementPopularity) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *RoleMiningPotentialRoleExportRequest) SetMinEntitlementPopularity(v int
 
 // GetIncludeCommonAccess returns the IncludeCommonAccess field value if set, zero value otherwise.
 func (o *RoleMiningPotentialRoleExportRequest) GetIncludeCommonAccess() bool {
-	if o == nil || isNil(o.IncludeCommonAccess) {
+	if o == nil || IsNil(o.IncludeCommonAccess) {
 		var ret bool
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *RoleMiningPotentialRoleExportRequest) GetIncludeCommonAccess() bool {
 // GetIncludeCommonAccessOk returns a tuple with the IncludeCommonAccess field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningPotentialRoleExportRequest) GetIncludeCommonAccessOk() (*bool, bool) {
-	if o == nil || isNil(o.IncludeCommonAccess) {
+	if o == nil || IsNil(o.IncludeCommonAccess) {
 		return nil, false
 	}
 	return o.IncludeCommonAccess, true
@@ -97,7 +97,7 @@ func (o *RoleMiningPotentialRoleExportRequest) GetIncludeCommonAccessOk() (*bool
 
 // HasIncludeCommonAccess returns a boolean if a field has been set.
 func (o *RoleMiningPotentialRoleExportRequest) HasIncludeCommonAccess() bool {
-	if o != nil && !isNil(o.IncludeCommonAccess) {
+	if o != nil && !IsNil(o.IncludeCommonAccess) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o RoleMiningPotentialRoleExportRequest) MarshalJSON() ([]byte, error) {
 
 func (o RoleMiningPotentialRoleExportRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.MinEntitlementPopularity) {
+	if !IsNil(o.MinEntitlementPopularity) {
 		toSerialize["minEntitlementPopularity"] = o.MinEntitlementPopularity
 	}
-	if !isNil(o.IncludeCommonAccess) {
+	if !IsNil(o.IncludeCommonAccess) {
 		toSerialize["includeCommonAccess"] = o.IncludeCommonAccess
 	}
 
@@ -133,16 +133,20 @@ func (o RoleMiningPotentialRoleExportRequest) ToMap() (map[string]interface{}, e
 	return toSerialize, nil
 }
 
-func (o *RoleMiningPotentialRoleExportRequest) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RoleMiningPotentialRoleExportRequest) UnmarshalJSON(data []byte) (err error) {
 	varRoleMiningPotentialRoleExportRequest := _RoleMiningPotentialRoleExportRequest{}
 
-	if err = json.Unmarshal(bytes, &varRoleMiningPotentialRoleExportRequest); err == nil {
+	err = json.Unmarshal(data, &varRoleMiningPotentialRoleExportRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RoleMiningPotentialRoleExportRequest(varRoleMiningPotentialRoleExportRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "minEntitlementPopularity")
 		delete(additionalProperties, "includeCommonAccess")
 		o.AdditionalProperties = additionalProperties

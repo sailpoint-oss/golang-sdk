@@ -48,7 +48,7 @@ func NewErrorMessageDtoWithDefaults() *ErrorMessageDto {
 
 // GetLocale returns the Locale field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ErrorMessageDto) GetLocale() string {
-	if o == nil || isNil(o.Locale.Get()) {
+	if o == nil || IsNil(o.Locale.Get()) {
 		var ret string
 		return ret
 	}
@@ -90,7 +90,7 @@ func (o *ErrorMessageDto) UnsetLocale() {
 
 // GetLocaleOrigin returns the LocaleOrigin field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ErrorMessageDto) GetLocaleOrigin() LocaleOrigin {
-	if o == nil || isNil(o.LocaleOrigin.Get()) {
+	if o == nil || IsNil(o.LocaleOrigin.Get()) {
 		var ret LocaleOrigin
 		return ret
 	}
@@ -132,7 +132,7 @@ func (o *ErrorMessageDto) UnsetLocaleOrigin() {
 
 // GetText returns the Text field value if set, zero value otherwise.
 func (o *ErrorMessageDto) GetText() string {
-	if o == nil || isNil(o.Text) {
+	if o == nil || IsNil(o.Text) {
 		var ret string
 		return ret
 	}
@@ -142,7 +142,7 @@ func (o *ErrorMessageDto) GetText() string {
 // GetTextOk returns a tuple with the Text field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ErrorMessageDto) GetTextOk() (*string, bool) {
-	if o == nil || isNil(o.Text) {
+	if o == nil || IsNil(o.Text) {
 		return nil, false
 	}
 	return o.Text, true
@@ -150,7 +150,7 @@ func (o *ErrorMessageDto) GetTextOk() (*string, bool) {
 
 // HasText returns a boolean if a field has been set.
 func (o *ErrorMessageDto) HasText() bool {
-	if o != nil && !isNil(o.Text) {
+	if o != nil && !IsNil(o.Text) {
 		return true
 	}
 
@@ -178,7 +178,7 @@ func (o ErrorMessageDto) ToMap() (map[string]interface{}, error) {
 	if o.LocaleOrigin.IsSet() {
 		toSerialize["localeOrigin"] = o.LocaleOrigin.Get()
 	}
-	if !isNil(o.Text) {
+	if !IsNil(o.Text) {
 		toSerialize["text"] = o.Text
 	}
 
@@ -189,16 +189,20 @@ func (o ErrorMessageDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ErrorMessageDto) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ErrorMessageDto) UnmarshalJSON(data []byte) (err error) {
 	varErrorMessageDto := _ErrorMessageDto{}
 
-	if err = json.Unmarshal(bytes, &varErrorMessageDto); err == nil {
+	err = json.Unmarshal(data, &varErrorMessageDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ErrorMessageDto(varErrorMessageDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "locale")
 		delete(additionalProperties, "localeOrigin")
 		delete(additionalProperties, "text")

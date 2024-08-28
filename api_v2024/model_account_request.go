@@ -51,7 +51,7 @@ func NewAccountRequestWithDefaults() *AccountRequest {
 
 // GetAccountId returns the AccountId field value if set, zero value otherwise.
 func (o *AccountRequest) GetAccountId() string {
-	if o == nil || isNil(o.AccountId) {
+	if o == nil || IsNil(o.AccountId) {
 		var ret string
 		return ret
 	}
@@ -61,7 +61,7 @@ func (o *AccountRequest) GetAccountId() string {
 // GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountRequest) GetAccountIdOk() (*string, bool) {
-	if o == nil || isNil(o.AccountId) {
+	if o == nil || IsNil(o.AccountId) {
 		return nil, false
 	}
 	return o.AccountId, true
@@ -69,7 +69,7 @@ func (o *AccountRequest) GetAccountIdOk() (*string, bool) {
 
 // HasAccountId returns a boolean if a field has been set.
 func (o *AccountRequest) HasAccountId() bool {
-	if o != nil && !isNil(o.AccountId) {
+	if o != nil && !IsNil(o.AccountId) {
 		return true
 	}
 
@@ -83,7 +83,7 @@ func (o *AccountRequest) SetAccountId(v string) {
 
 // GetAttributeRequests returns the AttributeRequests field value if set, zero value otherwise.
 func (o *AccountRequest) GetAttributeRequests() []AttributeRequest {
-	if o == nil || isNil(o.AttributeRequests) {
+	if o == nil || IsNil(o.AttributeRequests) {
 		var ret []AttributeRequest
 		return ret
 	}
@@ -93,7 +93,7 @@ func (o *AccountRequest) GetAttributeRequests() []AttributeRequest {
 // GetAttributeRequestsOk returns a tuple with the AttributeRequests field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountRequest) GetAttributeRequestsOk() ([]AttributeRequest, bool) {
-	if o == nil || isNil(o.AttributeRequests) {
+	if o == nil || IsNil(o.AttributeRequests) {
 		return nil, false
 	}
 	return o.AttributeRequests, true
@@ -101,7 +101,7 @@ func (o *AccountRequest) GetAttributeRequestsOk() ([]AttributeRequest, bool) {
 
 // HasAttributeRequests returns a boolean if a field has been set.
 func (o *AccountRequest) HasAttributeRequests() bool {
-	if o != nil && !isNil(o.AttributeRequests) {
+	if o != nil && !IsNil(o.AttributeRequests) {
 		return true
 	}
 
@@ -115,7 +115,7 @@ func (o *AccountRequest) SetAttributeRequests(v []AttributeRequest) {
 
 // GetOp returns the Op field value if set, zero value otherwise.
 func (o *AccountRequest) GetOp() string {
-	if o == nil || isNil(o.Op) {
+	if o == nil || IsNil(o.Op) {
 		var ret string
 		return ret
 	}
@@ -125,7 +125,7 @@ func (o *AccountRequest) GetOp() string {
 // GetOpOk returns a tuple with the Op field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountRequest) GetOpOk() (*string, bool) {
-	if o == nil || isNil(o.Op) {
+	if o == nil || IsNil(o.Op) {
 		return nil, false
 	}
 	return o.Op, true
@@ -133,7 +133,7 @@ func (o *AccountRequest) GetOpOk() (*string, bool) {
 
 // HasOp returns a boolean if a field has been set.
 func (o *AccountRequest) HasOp() bool {
-	if o != nil && !isNil(o.Op) {
+	if o != nil && !IsNil(o.Op) {
 		return true
 	}
 
@@ -147,7 +147,7 @@ func (o *AccountRequest) SetOp(v string) {
 
 // GetProvisioningTarget returns the ProvisioningTarget field value if set, zero value otherwise.
 func (o *AccountRequest) GetProvisioningTarget() AccountSource {
-	if o == nil || isNil(o.ProvisioningTarget) {
+	if o == nil || IsNil(o.ProvisioningTarget) {
 		var ret AccountSource
 		return ret
 	}
@@ -157,7 +157,7 @@ func (o *AccountRequest) GetProvisioningTarget() AccountSource {
 // GetProvisioningTargetOk returns a tuple with the ProvisioningTarget field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountRequest) GetProvisioningTargetOk() (*AccountSource, bool) {
-	if o == nil || isNil(o.ProvisioningTarget) {
+	if o == nil || IsNil(o.ProvisioningTarget) {
 		return nil, false
 	}
 	return o.ProvisioningTarget, true
@@ -165,7 +165,7 @@ func (o *AccountRequest) GetProvisioningTargetOk() (*AccountSource, bool) {
 
 // HasProvisioningTarget returns a boolean if a field has been set.
 func (o *AccountRequest) HasProvisioningTarget() bool {
-	if o != nil && !isNil(o.ProvisioningTarget) {
+	if o != nil && !IsNil(o.ProvisioningTarget) {
 		return true
 	}
 
@@ -179,7 +179,7 @@ func (o *AccountRequest) SetProvisioningTarget(v AccountSource) {
 
 // GetResult returns the Result field value if set, zero value otherwise.
 func (o *AccountRequest) GetResult() AccountRequestResult {
-	if o == nil || isNil(o.Result) {
+	if o == nil || IsNil(o.Result) {
 		var ret AccountRequestResult
 		return ret
 	}
@@ -189,7 +189,7 @@ func (o *AccountRequest) GetResult() AccountRequestResult {
 // GetResultOk returns a tuple with the Result field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountRequest) GetResultOk() (*AccountRequestResult, bool) {
-	if o == nil || isNil(o.Result) {
+	if o == nil || IsNil(o.Result) {
 		return nil, false
 	}
 	return o.Result, true
@@ -197,7 +197,7 @@ func (o *AccountRequest) GetResultOk() (*AccountRequestResult, bool) {
 
 // HasResult returns a boolean if a field has been set.
 func (o *AccountRequest) HasResult() bool {
-	if o != nil && !isNil(o.Result) {
+	if o != nil && !IsNil(o.Result) {
 		return true
 	}
 
@@ -211,7 +211,7 @@ func (o *AccountRequest) SetResult(v AccountRequestResult) {
 
 // GetSource returns the Source field value if set, zero value otherwise.
 func (o *AccountRequest) GetSource() AccountSource {
-	if o == nil || isNil(o.Source) {
+	if o == nil || IsNil(o.Source) {
 		var ret AccountSource
 		return ret
 	}
@@ -221,7 +221,7 @@ func (o *AccountRequest) GetSource() AccountSource {
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountRequest) GetSourceOk() (*AccountSource, bool) {
-	if o == nil || isNil(o.Source) {
+	if o == nil || IsNil(o.Source) {
 		return nil, false
 	}
 	return o.Source, true
@@ -229,7 +229,7 @@ func (o *AccountRequest) GetSourceOk() (*AccountSource, bool) {
 
 // HasSource returns a boolean if a field has been set.
 func (o *AccountRequest) HasSource() bool {
-	if o != nil && !isNil(o.Source) {
+	if o != nil && !IsNil(o.Source) {
 		return true
 	}
 
@@ -251,22 +251,22 @@ func (o AccountRequest) MarshalJSON() ([]byte, error) {
 
 func (o AccountRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AccountId) {
+	if !IsNil(o.AccountId) {
 		toSerialize["accountId"] = o.AccountId
 	}
-	if !isNil(o.AttributeRequests) {
+	if !IsNil(o.AttributeRequests) {
 		toSerialize["attributeRequests"] = o.AttributeRequests
 	}
-	if !isNil(o.Op) {
+	if !IsNil(o.Op) {
 		toSerialize["op"] = o.Op
 	}
-	if !isNil(o.ProvisioningTarget) {
+	if !IsNil(o.ProvisioningTarget) {
 		toSerialize["provisioningTarget"] = o.ProvisioningTarget
 	}
-	if !isNil(o.Result) {
+	if !IsNil(o.Result) {
 		toSerialize["result"] = o.Result
 	}
-	if !isNil(o.Source) {
+	if !IsNil(o.Source) {
 		toSerialize["source"] = o.Source
 	}
 
@@ -277,16 +277,20 @@ func (o AccountRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccountRequest) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccountRequest) UnmarshalJSON(data []byte) (err error) {
 	varAccountRequest := _AccountRequest{}
 
-	if err = json.Unmarshal(bytes, &varAccountRequest); err == nil {
+	err = json.Unmarshal(data, &varAccountRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccountRequest(varAccountRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "accountId")
 		delete(additionalProperties, "attributeRequests")
 		delete(additionalProperties, "op")

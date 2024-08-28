@@ -47,7 +47,7 @@ func NewDataAccessCategoriesInnerWithDefaults() *DataAccessCategoriesInner {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *DataAccessCategoriesInner) GetValue() string {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *DataAccessCategoriesInner) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DataAccessCategoriesInner) GetValueOk() (*string, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -65,7 +65,7 @@ func (o *DataAccessCategoriesInner) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *DataAccessCategoriesInner) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *DataAccessCategoriesInner) SetValue(v string) {
 
 // GetMatchCount returns the MatchCount field value if set, zero value otherwise.
 func (o *DataAccessCategoriesInner) GetMatchCount() int32 {
-	if o == nil || isNil(o.MatchCount) {
+	if o == nil || IsNil(o.MatchCount) {
 		var ret int32
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *DataAccessCategoriesInner) GetMatchCount() int32 {
 // GetMatchCountOk returns a tuple with the MatchCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DataAccessCategoriesInner) GetMatchCountOk() (*int32, bool) {
-	if o == nil || isNil(o.MatchCount) {
+	if o == nil || IsNil(o.MatchCount) {
 		return nil, false
 	}
 	return o.MatchCount, true
@@ -97,7 +97,7 @@ func (o *DataAccessCategoriesInner) GetMatchCountOk() (*int32, bool) {
 
 // HasMatchCount returns a boolean if a field has been set.
 func (o *DataAccessCategoriesInner) HasMatchCount() bool {
-	if o != nil && !isNil(o.MatchCount) {
+	if o != nil && !IsNil(o.MatchCount) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o DataAccessCategoriesInner) MarshalJSON() ([]byte, error) {
 
 func (o DataAccessCategoriesInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Value) {
+	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
-	if !isNil(o.MatchCount) {
+	if !IsNil(o.MatchCount) {
 		toSerialize["matchCount"] = o.MatchCount
 	}
 
@@ -133,16 +133,20 @@ func (o DataAccessCategoriesInner) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *DataAccessCategoriesInner) UnmarshalJSON(bytes []byte) (err error) {
+func (o *DataAccessCategoriesInner) UnmarshalJSON(data []byte) (err error) {
 	varDataAccessCategoriesInner := _DataAccessCategoriesInner{}
 
-	if err = json.Unmarshal(bytes, &varDataAccessCategoriesInner); err == nil {
+	err = json.Unmarshal(data, &varDataAccessCategoriesInner)
+
+	if err != nil {
+		return err
+	}
+
 	*o = DataAccessCategoriesInner(varDataAccessCategoriesInner)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "value")
 		delete(additionalProperties, "matchCount")
 		o.AdditionalProperties = additionalProperties

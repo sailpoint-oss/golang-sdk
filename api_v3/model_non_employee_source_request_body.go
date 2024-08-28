@@ -130,7 +130,7 @@ func (o *NonEmployeeSourceRequestBody) SetOwner(v NonEmployeeIdnUserRequest) {
 
 // GetManagementWorkgroup returns the ManagementWorkgroup field value if set, zero value otherwise.
 func (o *NonEmployeeSourceRequestBody) GetManagementWorkgroup() string {
-	if o == nil || isNil(o.ManagementWorkgroup) {
+	if o == nil || IsNil(o.ManagementWorkgroup) {
 		var ret string
 		return ret
 	}
@@ -140,7 +140,7 @@ func (o *NonEmployeeSourceRequestBody) GetManagementWorkgroup() string {
 // GetManagementWorkgroupOk returns a tuple with the ManagementWorkgroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSourceRequestBody) GetManagementWorkgroupOk() (*string, bool) {
-	if o == nil || isNil(o.ManagementWorkgroup) {
+	if o == nil || IsNil(o.ManagementWorkgroup) {
 		return nil, false
 	}
 	return o.ManagementWorkgroup, true
@@ -148,7 +148,7 @@ func (o *NonEmployeeSourceRequestBody) GetManagementWorkgroupOk() (*string, bool
 
 // HasManagementWorkgroup returns a boolean if a field has been set.
 func (o *NonEmployeeSourceRequestBody) HasManagementWorkgroup() bool {
-	if o != nil && !isNil(o.ManagementWorkgroup) {
+	if o != nil && !IsNil(o.ManagementWorkgroup) {
 		return true
 	}
 
@@ -162,7 +162,7 @@ func (o *NonEmployeeSourceRequestBody) SetManagementWorkgroup(v string) {
 
 // GetApprovers returns the Approvers field value if set, zero value otherwise.
 func (o *NonEmployeeSourceRequestBody) GetApprovers() []NonEmployeeIdnUserRequest {
-	if o == nil || isNil(o.Approvers) {
+	if o == nil || IsNil(o.Approvers) {
 		var ret []NonEmployeeIdnUserRequest
 		return ret
 	}
@@ -172,7 +172,7 @@ func (o *NonEmployeeSourceRequestBody) GetApprovers() []NonEmployeeIdnUserReques
 // GetApproversOk returns a tuple with the Approvers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSourceRequestBody) GetApproversOk() ([]NonEmployeeIdnUserRequest, bool) {
-	if o == nil || isNil(o.Approvers) {
+	if o == nil || IsNil(o.Approvers) {
 		return nil, false
 	}
 	return o.Approvers, true
@@ -180,7 +180,7 @@ func (o *NonEmployeeSourceRequestBody) GetApproversOk() ([]NonEmployeeIdnUserReq
 
 // HasApprovers returns a boolean if a field has been set.
 func (o *NonEmployeeSourceRequestBody) HasApprovers() bool {
-	if o != nil && !isNil(o.Approvers) {
+	if o != nil && !IsNil(o.Approvers) {
 		return true
 	}
 
@@ -194,7 +194,7 @@ func (o *NonEmployeeSourceRequestBody) SetApprovers(v []NonEmployeeIdnUserReques
 
 // GetAccountManagers returns the AccountManagers field value if set, zero value otherwise.
 func (o *NonEmployeeSourceRequestBody) GetAccountManagers() []NonEmployeeIdnUserRequest {
-	if o == nil || isNil(o.AccountManagers) {
+	if o == nil || IsNil(o.AccountManagers) {
 		var ret []NonEmployeeIdnUserRequest
 		return ret
 	}
@@ -204,7 +204,7 @@ func (o *NonEmployeeSourceRequestBody) GetAccountManagers() []NonEmployeeIdnUser
 // GetAccountManagersOk returns a tuple with the AccountManagers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSourceRequestBody) GetAccountManagersOk() ([]NonEmployeeIdnUserRequest, bool) {
-	if o == nil || isNil(o.AccountManagers) {
+	if o == nil || IsNil(o.AccountManagers) {
 		return nil, false
 	}
 	return o.AccountManagers, true
@@ -212,7 +212,7 @@ func (o *NonEmployeeSourceRequestBody) GetAccountManagersOk() ([]NonEmployeeIdnU
 
 // HasAccountManagers returns a boolean if a field has been set.
 func (o *NonEmployeeSourceRequestBody) HasAccountManagers() bool {
-	if o != nil && !isNil(o.AccountManagers) {
+	if o != nil && !IsNil(o.AccountManagers) {
 		return true
 	}
 
@@ -237,13 +237,13 @@ func (o NonEmployeeSourceRequestBody) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	toSerialize["description"] = o.Description
 	toSerialize["owner"] = o.Owner
-	if !isNil(o.ManagementWorkgroup) {
+	if !IsNil(o.ManagementWorkgroup) {
 		toSerialize["managementWorkgroup"] = o.ManagementWorkgroup
 	}
-	if !isNil(o.Approvers) {
+	if !IsNil(o.Approvers) {
 		toSerialize["approvers"] = o.Approvers
 	}
-	if !isNil(o.AccountManagers) {
+	if !IsNil(o.AccountManagers) {
 		toSerialize["accountManagers"] = o.AccountManagers
 	}
 
@@ -254,8 +254,8 @@ func (o NonEmployeeSourceRequestBody) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *NonEmployeeSourceRequestBody) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *NonEmployeeSourceRequestBody) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -266,7 +266,7 @@ func (o *NonEmployeeSourceRequestBody) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -280,13 +280,17 @@ func (o *NonEmployeeSourceRequestBody) UnmarshalJSON(bytes []byte) (err error) {
 
 	varNonEmployeeSourceRequestBody := _NonEmployeeSourceRequestBody{}
 
-	if err = json.Unmarshal(bytes, &varNonEmployeeSourceRequestBody); err == nil {
+	err = json.Unmarshal(data, &varNonEmployeeSourceRequestBody)
+
+	if err != nil {
+		return err
+	}
+
 	*o = NonEmployeeSourceRequestBody(varNonEmployeeSourceRequestBody)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "owner")

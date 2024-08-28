@@ -47,7 +47,7 @@ func NewAccessCriteriaWithDefaults() *AccessCriteria {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *AccessCriteria) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *AccessCriteria) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessCriteria) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -65,7 +65,7 @@ func (o *AccessCriteria) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *AccessCriteria) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *AccessCriteria) SetName(v string) {
 
 // GetCriteriaList returns the CriteriaList field value if set, zero value otherwise.
 func (o *AccessCriteria) GetCriteriaList() []AccessCriteriaCriteriaListInner {
-	if o == nil || isNil(o.CriteriaList) {
+	if o == nil || IsNil(o.CriteriaList) {
 		var ret []AccessCriteriaCriteriaListInner
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *AccessCriteria) GetCriteriaList() []AccessCriteriaCriteriaListInner {
 // GetCriteriaListOk returns a tuple with the CriteriaList field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessCriteria) GetCriteriaListOk() ([]AccessCriteriaCriteriaListInner, bool) {
-	if o == nil || isNil(o.CriteriaList) {
+	if o == nil || IsNil(o.CriteriaList) {
 		return nil, false
 	}
 	return o.CriteriaList, true
@@ -97,7 +97,7 @@ func (o *AccessCriteria) GetCriteriaListOk() ([]AccessCriteriaCriteriaListInner,
 
 // HasCriteriaList returns a boolean if a field has been set.
 func (o *AccessCriteria) HasCriteriaList() bool {
-	if o != nil && !isNil(o.CriteriaList) {
+	if o != nil && !IsNil(o.CriteriaList) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o AccessCriteria) MarshalJSON() ([]byte, error) {
 
 func (o AccessCriteria) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.CriteriaList) {
+	if !IsNil(o.CriteriaList) {
 		toSerialize["criteriaList"] = o.CriteriaList
 	}
 
@@ -133,16 +133,20 @@ func (o AccessCriteria) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccessCriteria) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccessCriteria) UnmarshalJSON(data []byte) (err error) {
 	varAccessCriteria := _AccessCriteria{}
 
-	if err = json.Unmarshal(bytes, &varAccessCriteria); err == nil {
+	err = json.Unmarshal(data, &varAccessCriteria)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessCriteria(varAccessCriteria)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "criteriaList")
 		o.AdditionalProperties = additionalProperties

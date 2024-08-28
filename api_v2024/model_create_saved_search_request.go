@@ -68,7 +68,7 @@ func NewCreateSavedSearchRequestWithDefaults() *CreateSavedSearchRequest {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *CreateSavedSearchRequest) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -78,7 +78,7 @@ func (o *CreateSavedSearchRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateSavedSearchRequest) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -86,7 +86,7 @@ func (o *CreateSavedSearchRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *CreateSavedSearchRequest) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -100,7 +100,7 @@ func (o *CreateSavedSearchRequest) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateSavedSearchRequest) GetDescription() string {
-	if o == nil || isNil(o.Description.Get()) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
@@ -142,7 +142,7 @@ func (o *CreateSavedSearchRequest) UnsetDescription() {
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateSavedSearchRequest) GetCreated() time.Time {
-	if o == nil || isNil(o.Created.Get()) {
+	if o == nil || IsNil(o.Created.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -184,7 +184,7 @@ func (o *CreateSavedSearchRequest) UnsetCreated() {
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateSavedSearchRequest) GetModified() time.Time {
-	if o == nil || isNil(o.Modified.Get()) {
+	if o == nil || IsNil(o.Modified.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -250,7 +250,7 @@ func (o *CreateSavedSearchRequest) SetIndices(v []Index) {
 
 // GetColumns returns the Columns field value if set, zero value otherwise.
 func (o *CreateSavedSearchRequest) GetColumns() map[string][]Column {
-	if o == nil || isNil(o.Columns) {
+	if o == nil || IsNil(o.Columns) {
 		var ret map[string][]Column
 		return ret
 	}
@@ -260,7 +260,7 @@ func (o *CreateSavedSearchRequest) GetColumns() map[string][]Column {
 // GetColumnsOk returns a tuple with the Columns field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateSavedSearchRequest) GetColumnsOk() (*map[string][]Column, bool) {
-	if o == nil || isNil(o.Columns) {
+	if o == nil || IsNil(o.Columns) {
 		return nil, false
 	}
 	return o.Columns, true
@@ -268,7 +268,7 @@ func (o *CreateSavedSearchRequest) GetColumnsOk() (*map[string][]Column, bool) {
 
 // HasColumns returns a boolean if a field has been set.
 func (o *CreateSavedSearchRequest) HasColumns() bool {
-	if o != nil && !isNil(o.Columns) {
+	if o != nil && !IsNil(o.Columns) {
 		return true
 	}
 
@@ -317,7 +317,7 @@ func (o *CreateSavedSearchRequest) GetFields() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateSavedSearchRequest) GetFieldsOk() ([]string, bool) {
-	if o == nil || isNil(o.Fields) {
+	if o == nil || IsNil(o.Fields) {
 		return nil, false
 	}
 	return o.Fields, true
@@ -325,7 +325,7 @@ func (o *CreateSavedSearchRequest) GetFieldsOk() ([]string, bool) {
 
 // HasFields returns a boolean if a field has been set.
 func (o *CreateSavedSearchRequest) HasFields() bool {
-	if o != nil && isNil(o.Fields) {
+	if o != nil && !IsNil(o.Fields) {
 		return true
 	}
 
@@ -350,7 +350,7 @@ func (o *CreateSavedSearchRequest) GetOrderBy() map[string][]string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateSavedSearchRequest) GetOrderByOk() (*map[string][]string, bool) {
-	if o == nil || isNil(o.OrderBy) {
+	if o == nil || IsNil(o.OrderBy) {
 		return nil, false
 	}
 	return &o.OrderBy, true
@@ -358,7 +358,7 @@ func (o *CreateSavedSearchRequest) GetOrderByOk() (*map[string][]string, bool) {
 
 // HasOrderBy returns a boolean if a field has been set.
 func (o *CreateSavedSearchRequest) HasOrderBy() bool {
-	if o != nil && isNil(o.OrderBy) {
+	if o != nil && !IsNil(o.OrderBy) {
 		return true
 	}
 
@@ -383,7 +383,7 @@ func (o *CreateSavedSearchRequest) GetSort() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateSavedSearchRequest) GetSortOk() ([]string, bool) {
-	if o == nil || isNil(o.Sort) {
+	if o == nil || IsNil(o.Sort) {
 		return nil, false
 	}
 	return o.Sort, true
@@ -391,7 +391,7 @@ func (o *CreateSavedSearchRequest) GetSortOk() ([]string, bool) {
 
 // HasSort returns a boolean if a field has been set.
 func (o *CreateSavedSearchRequest) HasSort() bool {
-	if o != nil && isNil(o.Sort) {
+	if o != nil && !IsNil(o.Sort) {
 		return true
 	}
 
@@ -405,7 +405,7 @@ func (o *CreateSavedSearchRequest) SetSort(v []string) {
 
 // GetFilters returns the Filters field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateSavedSearchRequest) GetFilters() SavedSearchDetailFilters {
-	if o == nil || isNil(o.Filters.Get()) {
+	if o == nil || IsNil(o.Filters.Get()) {
 		var ret SavedSearchDetailFilters
 		return ret
 	}
@@ -455,7 +455,7 @@ func (o CreateSavedSearchRequest) MarshalJSON() ([]byte, error) {
 
 func (o CreateSavedSearchRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 	if o.Description.IsSet() {
@@ -468,7 +468,7 @@ func (o CreateSavedSearchRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["modified"] = o.Modified.Get()
 	}
 	toSerialize["indices"] = o.Indices
-	if !isNil(o.Columns) {
+	if !IsNil(o.Columns) {
 		toSerialize["columns"] = o.Columns
 	}
 	toSerialize["query"] = o.Query
@@ -492,8 +492,8 @@ func (o CreateSavedSearchRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CreateSavedSearchRequest) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *CreateSavedSearchRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -503,7 +503,7 @@ func (o *CreateSavedSearchRequest) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -517,13 +517,17 @@ func (o *CreateSavedSearchRequest) UnmarshalJSON(bytes []byte) (err error) {
 
 	varCreateSavedSearchRequest := _CreateSavedSearchRequest{}
 
-	if err = json.Unmarshal(bytes, &varCreateSavedSearchRequest); err == nil {
+	err = json.Unmarshal(data, &varCreateSavedSearchRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CreateSavedSearchRequest(varCreateSavedSearchRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "created")

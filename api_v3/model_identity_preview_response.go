@@ -45,7 +45,7 @@ func NewIdentityPreviewResponseWithDefaults() *IdentityPreviewResponse {
 
 // GetIdentity returns the Identity field value if set, zero value otherwise.
 func (o *IdentityPreviewResponse) GetIdentity() IdentityPreviewResponseIdentity {
-	if o == nil || isNil(o.Identity) {
+	if o == nil || IsNil(o.Identity) {
 		var ret IdentityPreviewResponseIdentity
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *IdentityPreviewResponse) GetIdentity() IdentityPreviewResponseIdentity 
 // GetIdentityOk returns a tuple with the Identity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityPreviewResponse) GetIdentityOk() (*IdentityPreviewResponseIdentity, bool) {
-	if o == nil || isNil(o.Identity) {
+	if o == nil || IsNil(o.Identity) {
 		return nil, false
 	}
 	return o.Identity, true
@@ -63,7 +63,7 @@ func (o *IdentityPreviewResponse) GetIdentityOk() (*IdentityPreviewResponseIdent
 
 // HasIdentity returns a boolean if a field has been set.
 func (o *IdentityPreviewResponse) HasIdentity() bool {
-	if o != nil && !isNil(o.Identity) {
+	if o != nil && !IsNil(o.Identity) {
 		return true
 	}
 
@@ -77,7 +77,7 @@ func (o *IdentityPreviewResponse) SetIdentity(v IdentityPreviewResponseIdentity)
 
 // GetPreviewAttributes returns the PreviewAttributes field value if set, zero value otherwise.
 func (o *IdentityPreviewResponse) GetPreviewAttributes() []IdentityAttributePreview {
-	if o == nil || isNil(o.PreviewAttributes) {
+	if o == nil || IsNil(o.PreviewAttributes) {
 		var ret []IdentityAttributePreview
 		return ret
 	}
@@ -87,7 +87,7 @@ func (o *IdentityPreviewResponse) GetPreviewAttributes() []IdentityAttributePrev
 // GetPreviewAttributesOk returns a tuple with the PreviewAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityPreviewResponse) GetPreviewAttributesOk() ([]IdentityAttributePreview, bool) {
-	if o == nil || isNil(o.PreviewAttributes) {
+	if o == nil || IsNil(o.PreviewAttributes) {
 		return nil, false
 	}
 	return o.PreviewAttributes, true
@@ -95,7 +95,7 @@ func (o *IdentityPreviewResponse) GetPreviewAttributesOk() ([]IdentityAttributeP
 
 // HasPreviewAttributes returns a boolean if a field has been set.
 func (o *IdentityPreviewResponse) HasPreviewAttributes() bool {
-	if o != nil && !isNil(o.PreviewAttributes) {
+	if o != nil && !IsNil(o.PreviewAttributes) {
 		return true
 	}
 
@@ -117,10 +117,10 @@ func (o IdentityPreviewResponse) MarshalJSON() ([]byte, error) {
 
 func (o IdentityPreviewResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Identity) {
+	if !IsNil(o.Identity) {
 		toSerialize["identity"] = o.Identity
 	}
-	if !isNil(o.PreviewAttributes) {
+	if !IsNil(o.PreviewAttributes) {
 		toSerialize["previewAttributes"] = o.PreviewAttributes
 	}
 
@@ -131,16 +131,20 @@ func (o IdentityPreviewResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *IdentityPreviewResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *IdentityPreviewResponse) UnmarshalJSON(data []byte) (err error) {
 	varIdentityPreviewResponse := _IdentityPreviewResponse{}
 
-	if err = json.Unmarshal(bytes, &varIdentityPreviewResponse); err == nil {
+	err = json.Unmarshal(data, &varIdentityPreviewResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = IdentityPreviewResponse(varIdentityPreviewResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "identity")
 		delete(additionalProperties, "previewAttributes")
 		o.AdditionalProperties = additionalProperties

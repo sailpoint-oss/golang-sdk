@@ -77,7 +77,7 @@ func NewAuthUserWithDefaults() *AuthUser {
 
 // GetTenant returns the Tenant field value if set, zero value otherwise.
 func (o *AuthUser) GetTenant() string {
-	if o == nil || isNil(o.Tenant) {
+	if o == nil || IsNil(o.Tenant) {
 		var ret string
 		return ret
 	}
@@ -87,7 +87,7 @@ func (o *AuthUser) GetTenant() string {
 // GetTenantOk returns a tuple with the Tenant field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthUser) GetTenantOk() (*string, bool) {
-	if o == nil || isNil(o.Tenant) {
+	if o == nil || IsNil(o.Tenant) {
 		return nil, false
 	}
 	return o.Tenant, true
@@ -95,7 +95,7 @@ func (o *AuthUser) GetTenantOk() (*string, bool) {
 
 // HasTenant returns a boolean if a field has been set.
 func (o *AuthUser) HasTenant() bool {
-	if o != nil && !isNil(o.Tenant) {
+	if o != nil && !IsNil(o.Tenant) {
 		return true
 	}
 
@@ -109,7 +109,7 @@ func (o *AuthUser) SetTenant(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *AuthUser) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -119,7 +119,7 @@ func (o *AuthUser) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthUser) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -127,7 +127,7 @@ func (o *AuthUser) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *AuthUser) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -141,7 +141,7 @@ func (o *AuthUser) SetId(v string) {
 
 // GetUid returns the Uid field value if set, zero value otherwise.
 func (o *AuthUser) GetUid() string {
-	if o == nil || isNil(o.Uid) {
+	if o == nil || IsNil(o.Uid) {
 		var ret string
 		return ret
 	}
@@ -151,7 +151,7 @@ func (o *AuthUser) GetUid() string {
 // GetUidOk returns a tuple with the Uid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthUser) GetUidOk() (*string, bool) {
-	if o == nil || isNil(o.Uid) {
+	if o == nil || IsNil(o.Uid) {
 		return nil, false
 	}
 	return o.Uid, true
@@ -159,7 +159,7 @@ func (o *AuthUser) GetUidOk() (*string, bool) {
 
 // HasUid returns a boolean if a field has been set.
 func (o *AuthUser) HasUid() bool {
-	if o != nil && !isNil(o.Uid) {
+	if o != nil && !IsNil(o.Uid) {
 		return true
 	}
 
@@ -173,7 +173,7 @@ func (o *AuthUser) SetUid(v string) {
 
 // GetProfile returns the Profile field value if set, zero value otherwise.
 func (o *AuthUser) GetProfile() string {
-	if o == nil || isNil(o.Profile) {
+	if o == nil || IsNil(o.Profile) {
 		var ret string
 		return ret
 	}
@@ -183,7 +183,7 @@ func (o *AuthUser) GetProfile() string {
 // GetProfileOk returns a tuple with the Profile field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthUser) GetProfileOk() (*string, bool) {
-	if o == nil || isNil(o.Profile) {
+	if o == nil || IsNil(o.Profile) {
 		return nil, false
 	}
 	return o.Profile, true
@@ -191,7 +191,7 @@ func (o *AuthUser) GetProfileOk() (*string, bool) {
 
 // HasProfile returns a boolean if a field has been set.
 func (o *AuthUser) HasProfile() bool {
-	if o != nil && !isNil(o.Profile) {
+	if o != nil && !IsNil(o.Profile) {
 		return true
 	}
 
@@ -205,7 +205,7 @@ func (o *AuthUser) SetProfile(v string) {
 
 // GetIdentificationNumber returns the IdentificationNumber field value if set, zero value otherwise.
 func (o *AuthUser) GetIdentificationNumber() string {
-	if o == nil || isNil(o.IdentificationNumber) {
+	if o == nil || IsNil(o.IdentificationNumber) {
 		var ret string
 		return ret
 	}
@@ -215,7 +215,7 @@ func (o *AuthUser) GetIdentificationNumber() string {
 // GetIdentificationNumberOk returns a tuple with the IdentificationNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthUser) GetIdentificationNumberOk() (*string, bool) {
-	if o == nil || isNil(o.IdentificationNumber) {
+	if o == nil || IsNil(o.IdentificationNumber) {
 		return nil, false
 	}
 	return o.IdentificationNumber, true
@@ -223,7 +223,7 @@ func (o *AuthUser) GetIdentificationNumberOk() (*string, bool) {
 
 // HasIdentificationNumber returns a boolean if a field has been set.
 func (o *AuthUser) HasIdentificationNumber() bool {
-	if o != nil && !isNil(o.IdentificationNumber) {
+	if o != nil && !IsNil(o.IdentificationNumber) {
 		return true
 	}
 
@@ -237,7 +237,7 @@ func (o *AuthUser) SetIdentificationNumber(v string) {
 
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *AuthUser) GetEmail() string {
-	if o == nil || isNil(o.Email) {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
@@ -247,7 +247,7 @@ func (o *AuthUser) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthUser) GetEmailOk() (*string, bool) {
-	if o == nil || isNil(o.Email) {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
 	return o.Email, true
@@ -255,7 +255,7 @@ func (o *AuthUser) GetEmailOk() (*string, bool) {
 
 // HasEmail returns a boolean if a field has been set.
 func (o *AuthUser) HasEmail() bool {
-	if o != nil && !isNil(o.Email) {
+	if o != nil && !IsNil(o.Email) {
 		return true
 	}
 
@@ -269,7 +269,7 @@ func (o *AuthUser) SetEmail(v string) {
 
 // GetPhone returns the Phone field value if set, zero value otherwise.
 func (o *AuthUser) GetPhone() string {
-	if o == nil || isNil(o.Phone) {
+	if o == nil || IsNil(o.Phone) {
 		var ret string
 		return ret
 	}
@@ -279,7 +279,7 @@ func (o *AuthUser) GetPhone() string {
 // GetPhoneOk returns a tuple with the Phone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthUser) GetPhoneOk() (*string, bool) {
-	if o == nil || isNil(o.Phone) {
+	if o == nil || IsNil(o.Phone) {
 		return nil, false
 	}
 	return o.Phone, true
@@ -287,7 +287,7 @@ func (o *AuthUser) GetPhoneOk() (*string, bool) {
 
 // HasPhone returns a boolean if a field has been set.
 func (o *AuthUser) HasPhone() bool {
-	if o != nil && !isNil(o.Phone) {
+	if o != nil && !IsNil(o.Phone) {
 		return true
 	}
 
@@ -301,7 +301,7 @@ func (o *AuthUser) SetPhone(v string) {
 
 // GetWorkPhone returns the WorkPhone field value if set, zero value otherwise.
 func (o *AuthUser) GetWorkPhone() string {
-	if o == nil || isNil(o.WorkPhone) {
+	if o == nil || IsNil(o.WorkPhone) {
 		var ret string
 		return ret
 	}
@@ -311,7 +311,7 @@ func (o *AuthUser) GetWorkPhone() string {
 // GetWorkPhoneOk returns a tuple with the WorkPhone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthUser) GetWorkPhoneOk() (*string, bool) {
-	if o == nil || isNil(o.WorkPhone) {
+	if o == nil || IsNil(o.WorkPhone) {
 		return nil, false
 	}
 	return o.WorkPhone, true
@@ -319,7 +319,7 @@ func (o *AuthUser) GetWorkPhoneOk() (*string, bool) {
 
 // HasWorkPhone returns a boolean if a field has been set.
 func (o *AuthUser) HasWorkPhone() bool {
-	if o != nil && !isNil(o.WorkPhone) {
+	if o != nil && !IsNil(o.WorkPhone) {
 		return true
 	}
 
@@ -333,7 +333,7 @@ func (o *AuthUser) SetWorkPhone(v string) {
 
 // GetPersonalEmail returns the PersonalEmail field value if set, zero value otherwise.
 func (o *AuthUser) GetPersonalEmail() string {
-	if o == nil || isNil(o.PersonalEmail) {
+	if o == nil || IsNil(o.PersonalEmail) {
 		var ret string
 		return ret
 	}
@@ -343,7 +343,7 @@ func (o *AuthUser) GetPersonalEmail() string {
 // GetPersonalEmailOk returns a tuple with the PersonalEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthUser) GetPersonalEmailOk() (*string, bool) {
-	if o == nil || isNil(o.PersonalEmail) {
+	if o == nil || IsNil(o.PersonalEmail) {
 		return nil, false
 	}
 	return o.PersonalEmail, true
@@ -351,7 +351,7 @@ func (o *AuthUser) GetPersonalEmailOk() (*string, bool) {
 
 // HasPersonalEmail returns a boolean if a field has been set.
 func (o *AuthUser) HasPersonalEmail() bool {
-	if o != nil && !isNil(o.PersonalEmail) {
+	if o != nil && !IsNil(o.PersonalEmail) {
 		return true
 	}
 
@@ -365,7 +365,7 @@ func (o *AuthUser) SetPersonalEmail(v string) {
 
 // GetFirstname returns the Firstname field value if set, zero value otherwise.
 func (o *AuthUser) GetFirstname() string {
-	if o == nil || isNil(o.Firstname) {
+	if o == nil || IsNil(o.Firstname) {
 		var ret string
 		return ret
 	}
@@ -375,7 +375,7 @@ func (o *AuthUser) GetFirstname() string {
 // GetFirstnameOk returns a tuple with the Firstname field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthUser) GetFirstnameOk() (*string, bool) {
-	if o == nil || isNil(o.Firstname) {
+	if o == nil || IsNil(o.Firstname) {
 		return nil, false
 	}
 	return o.Firstname, true
@@ -383,7 +383,7 @@ func (o *AuthUser) GetFirstnameOk() (*string, bool) {
 
 // HasFirstname returns a boolean if a field has been set.
 func (o *AuthUser) HasFirstname() bool {
-	if o != nil && !isNil(o.Firstname) {
+	if o != nil && !IsNil(o.Firstname) {
 		return true
 	}
 
@@ -397,7 +397,7 @@ func (o *AuthUser) SetFirstname(v string) {
 
 // GetLastname returns the Lastname field value if set, zero value otherwise.
 func (o *AuthUser) GetLastname() string {
-	if o == nil || isNil(o.Lastname) {
+	if o == nil || IsNil(o.Lastname) {
 		var ret string
 		return ret
 	}
@@ -407,7 +407,7 @@ func (o *AuthUser) GetLastname() string {
 // GetLastnameOk returns a tuple with the Lastname field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthUser) GetLastnameOk() (*string, bool) {
-	if o == nil || isNil(o.Lastname) {
+	if o == nil || IsNil(o.Lastname) {
 		return nil, false
 	}
 	return o.Lastname, true
@@ -415,7 +415,7 @@ func (o *AuthUser) GetLastnameOk() (*string, bool) {
 
 // HasLastname returns a boolean if a field has been set.
 func (o *AuthUser) HasLastname() bool {
-	if o != nil && !isNil(o.Lastname) {
+	if o != nil && !IsNil(o.Lastname) {
 		return true
 	}
 
@@ -429,7 +429,7 @@ func (o *AuthUser) SetLastname(v string) {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *AuthUser) GetDisplayName() string {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -439,7 +439,7 @@ func (o *AuthUser) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthUser) GetDisplayNameOk() (*string, bool) {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -447,7 +447,7 @@ func (o *AuthUser) GetDisplayNameOk() (*string, bool) {
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *AuthUser) HasDisplayName() bool {
-	if o != nil && !isNil(o.DisplayName) {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -461,7 +461,7 @@ func (o *AuthUser) SetDisplayName(v string) {
 
 // GetAlias returns the Alias field value if set, zero value otherwise.
 func (o *AuthUser) GetAlias() string {
-	if o == nil || isNil(o.Alias) {
+	if o == nil || IsNil(o.Alias) {
 		var ret string
 		return ret
 	}
@@ -471,7 +471,7 @@ func (o *AuthUser) GetAlias() string {
 // GetAliasOk returns a tuple with the Alias field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthUser) GetAliasOk() (*string, bool) {
-	if o == nil || isNil(o.Alias) {
+	if o == nil || IsNil(o.Alias) {
 		return nil, false
 	}
 	return o.Alias, true
@@ -479,7 +479,7 @@ func (o *AuthUser) GetAliasOk() (*string, bool) {
 
 // HasAlias returns a boolean if a field has been set.
 func (o *AuthUser) HasAlias() bool {
-	if o != nil && !isNil(o.Alias) {
+	if o != nil && !IsNil(o.Alias) {
 		return true
 	}
 
@@ -493,7 +493,7 @@ func (o *AuthUser) SetAlias(v string) {
 
 // GetLastPasswordChangeDate returns the LastPasswordChangeDate field value if set, zero value otherwise.
 func (o *AuthUser) GetLastPasswordChangeDate() string {
-	if o == nil || isNil(o.LastPasswordChangeDate) {
+	if o == nil || IsNil(o.LastPasswordChangeDate) {
 		var ret string
 		return ret
 	}
@@ -503,7 +503,7 @@ func (o *AuthUser) GetLastPasswordChangeDate() string {
 // GetLastPasswordChangeDateOk returns a tuple with the LastPasswordChangeDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthUser) GetLastPasswordChangeDateOk() (*string, bool) {
-	if o == nil || isNil(o.LastPasswordChangeDate) {
+	if o == nil || IsNil(o.LastPasswordChangeDate) {
 		return nil, false
 	}
 	return o.LastPasswordChangeDate, true
@@ -511,7 +511,7 @@ func (o *AuthUser) GetLastPasswordChangeDateOk() (*string, bool) {
 
 // HasLastPasswordChangeDate returns a boolean if a field has been set.
 func (o *AuthUser) HasLastPasswordChangeDate() bool {
-	if o != nil && !isNil(o.LastPasswordChangeDate) {
+	if o != nil && !IsNil(o.LastPasswordChangeDate) {
 		return true
 	}
 
@@ -525,7 +525,7 @@ func (o *AuthUser) SetLastPasswordChangeDate(v string) {
 
 // GetLastLoginTimestamp returns the LastLoginTimestamp field value if set, zero value otherwise.
 func (o *AuthUser) GetLastLoginTimestamp() int64 {
-	if o == nil || isNil(o.LastLoginTimestamp) {
+	if o == nil || IsNil(o.LastLoginTimestamp) {
 		var ret int64
 		return ret
 	}
@@ -535,7 +535,7 @@ func (o *AuthUser) GetLastLoginTimestamp() int64 {
 // GetLastLoginTimestampOk returns a tuple with the LastLoginTimestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthUser) GetLastLoginTimestampOk() (*int64, bool) {
-	if o == nil || isNil(o.LastLoginTimestamp) {
+	if o == nil || IsNil(o.LastLoginTimestamp) {
 		return nil, false
 	}
 	return o.LastLoginTimestamp, true
@@ -543,7 +543,7 @@ func (o *AuthUser) GetLastLoginTimestampOk() (*int64, bool) {
 
 // HasLastLoginTimestamp returns a boolean if a field has been set.
 func (o *AuthUser) HasLastLoginTimestamp() bool {
-	if o != nil && !isNil(o.LastLoginTimestamp) {
+	if o != nil && !IsNil(o.LastLoginTimestamp) {
 		return true
 	}
 
@@ -557,7 +557,7 @@ func (o *AuthUser) SetLastLoginTimestamp(v int64) {
 
 // GetCurrentLoginTimestamp returns the CurrentLoginTimestamp field value if set, zero value otherwise.
 func (o *AuthUser) GetCurrentLoginTimestamp() int64 {
-	if o == nil || isNil(o.CurrentLoginTimestamp) {
+	if o == nil || IsNil(o.CurrentLoginTimestamp) {
 		var ret int64
 		return ret
 	}
@@ -567,7 +567,7 @@ func (o *AuthUser) GetCurrentLoginTimestamp() int64 {
 // GetCurrentLoginTimestampOk returns a tuple with the CurrentLoginTimestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthUser) GetCurrentLoginTimestampOk() (*int64, bool) {
-	if o == nil || isNil(o.CurrentLoginTimestamp) {
+	if o == nil || IsNil(o.CurrentLoginTimestamp) {
 		return nil, false
 	}
 	return o.CurrentLoginTimestamp, true
@@ -575,7 +575,7 @@ func (o *AuthUser) GetCurrentLoginTimestampOk() (*int64, bool) {
 
 // HasCurrentLoginTimestamp returns a boolean if a field has been set.
 func (o *AuthUser) HasCurrentLoginTimestamp() bool {
-	if o != nil && !isNil(o.CurrentLoginTimestamp) {
+	if o != nil && !IsNil(o.CurrentLoginTimestamp) {
 		return true
 	}
 
@@ -589,7 +589,7 @@ func (o *AuthUser) SetCurrentLoginTimestamp(v int64) {
 
 // GetCapabilities returns the Capabilities field value if set, zero value otherwise.
 func (o *AuthUser) GetCapabilities() []string {
-	if o == nil || isNil(o.Capabilities) {
+	if o == nil || IsNil(o.Capabilities) {
 		var ret []string
 		return ret
 	}
@@ -599,7 +599,7 @@ func (o *AuthUser) GetCapabilities() []string {
 // GetCapabilitiesOk returns a tuple with the Capabilities field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthUser) GetCapabilitiesOk() ([]string, bool) {
-	if o == nil || isNil(o.Capabilities) {
+	if o == nil || IsNil(o.Capabilities) {
 		return nil, false
 	}
 	return o.Capabilities, true
@@ -607,7 +607,7 @@ func (o *AuthUser) GetCapabilitiesOk() ([]string, bool) {
 
 // HasCapabilities returns a boolean if a field has been set.
 func (o *AuthUser) HasCapabilities() bool {
-	if o != nil && !isNil(o.Capabilities) {
+	if o != nil && !IsNil(o.Capabilities) {
 		return true
 	}
 
@@ -629,55 +629,55 @@ func (o AuthUser) MarshalJSON() ([]byte, error) {
 
 func (o AuthUser) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Tenant) {
+	if !IsNil(o.Tenant) {
 		toSerialize["tenant"] = o.Tenant
 	}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Uid) {
+	if !IsNil(o.Uid) {
 		toSerialize["uid"] = o.Uid
 	}
-	if !isNil(o.Profile) {
+	if !IsNil(o.Profile) {
 		toSerialize["profile"] = o.Profile
 	}
-	if !isNil(o.IdentificationNumber) {
+	if !IsNil(o.IdentificationNumber) {
 		toSerialize["identificationNumber"] = o.IdentificationNumber
 	}
-	if !isNil(o.Email) {
+	if !IsNil(o.Email) {
 		toSerialize["email"] = o.Email
 	}
-	if !isNil(o.Phone) {
+	if !IsNil(o.Phone) {
 		toSerialize["phone"] = o.Phone
 	}
-	if !isNil(o.WorkPhone) {
+	if !IsNil(o.WorkPhone) {
 		toSerialize["workPhone"] = o.WorkPhone
 	}
-	if !isNil(o.PersonalEmail) {
+	if !IsNil(o.PersonalEmail) {
 		toSerialize["personalEmail"] = o.PersonalEmail
 	}
-	if !isNil(o.Firstname) {
+	if !IsNil(o.Firstname) {
 		toSerialize["firstname"] = o.Firstname
 	}
-	if !isNil(o.Lastname) {
+	if !IsNil(o.Lastname) {
 		toSerialize["lastname"] = o.Lastname
 	}
-	if !isNil(o.DisplayName) {
+	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
-	if !isNil(o.Alias) {
+	if !IsNil(o.Alias) {
 		toSerialize["alias"] = o.Alias
 	}
-	if !isNil(o.LastPasswordChangeDate) {
+	if !IsNil(o.LastPasswordChangeDate) {
 		toSerialize["lastPasswordChangeDate"] = o.LastPasswordChangeDate
 	}
-	if !isNil(o.LastLoginTimestamp) {
+	if !IsNil(o.LastLoginTimestamp) {
 		toSerialize["lastLoginTimestamp"] = o.LastLoginTimestamp
 	}
-	if !isNil(o.CurrentLoginTimestamp) {
+	if !IsNil(o.CurrentLoginTimestamp) {
 		toSerialize["currentLoginTimestamp"] = o.CurrentLoginTimestamp
 	}
-	if !isNil(o.Capabilities) {
+	if !IsNil(o.Capabilities) {
 		toSerialize["capabilities"] = o.Capabilities
 	}
 
@@ -688,16 +688,20 @@ func (o AuthUser) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AuthUser) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AuthUser) UnmarshalJSON(data []byte) (err error) {
 	varAuthUser := _AuthUser{}
 
-	if err = json.Unmarshal(bytes, &varAuthUser); err == nil {
+	err = json.Unmarshal(data, &varAuthUser)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AuthUser(varAuthUser)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "tenant")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "uid")

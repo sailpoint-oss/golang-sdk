@@ -47,7 +47,7 @@ func NewIdentityProfileExportedObjectWithDefaults() *IdentityProfileExportedObje
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *IdentityProfileExportedObject) GetVersion() int32 {
-	if o == nil || isNil(o.Version) {
+	if o == nil || IsNil(o.Version) {
 		var ret int32
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *IdentityProfileExportedObject) GetVersion() int32 {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProfileExportedObject) GetVersionOk() (*int32, bool) {
-	if o == nil || isNil(o.Version) {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -65,7 +65,7 @@ func (o *IdentityProfileExportedObject) GetVersionOk() (*int32, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *IdentityProfileExportedObject) HasVersion() bool {
-	if o != nil && !isNil(o.Version) {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *IdentityProfileExportedObject) SetVersion(v int32) {
 
 // GetSelf returns the Self field value if set, zero value otherwise.
 func (o *IdentityProfileExportedObject) GetSelf() IdentityProfileExportedObjectSelf {
-	if o == nil || isNil(o.Self) {
+	if o == nil || IsNil(o.Self) {
 		var ret IdentityProfileExportedObjectSelf
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *IdentityProfileExportedObject) GetSelf() IdentityProfileExportedObjectS
 // GetSelfOk returns a tuple with the Self field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProfileExportedObject) GetSelfOk() (*IdentityProfileExportedObjectSelf, bool) {
-	if o == nil || isNil(o.Self) {
+	if o == nil || IsNil(o.Self) {
 		return nil, false
 	}
 	return o.Self, true
@@ -97,7 +97,7 @@ func (o *IdentityProfileExportedObject) GetSelfOk() (*IdentityProfileExportedObj
 
 // HasSelf returns a boolean if a field has been set.
 func (o *IdentityProfileExportedObject) HasSelf() bool {
-	if o != nil && !isNil(o.Self) {
+	if o != nil && !IsNil(o.Self) {
 		return true
 	}
 
@@ -111,7 +111,7 @@ func (o *IdentityProfileExportedObject) SetSelf(v IdentityProfileExportedObjectS
 
 // GetObject returns the Object field value if set, zero value otherwise.
 func (o *IdentityProfileExportedObject) GetObject() IdentityProfile {
-	if o == nil || isNil(o.Object) {
+	if o == nil || IsNil(o.Object) {
 		var ret IdentityProfile
 		return ret
 	}
@@ -121,7 +121,7 @@ func (o *IdentityProfileExportedObject) GetObject() IdentityProfile {
 // GetObjectOk returns a tuple with the Object field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProfileExportedObject) GetObjectOk() (*IdentityProfile, bool) {
-	if o == nil || isNil(o.Object) {
+	if o == nil || IsNil(o.Object) {
 		return nil, false
 	}
 	return o.Object, true
@@ -129,7 +129,7 @@ func (o *IdentityProfileExportedObject) GetObjectOk() (*IdentityProfile, bool) {
 
 // HasObject returns a boolean if a field has been set.
 func (o *IdentityProfileExportedObject) HasObject() bool {
-	if o != nil && !isNil(o.Object) {
+	if o != nil && !IsNil(o.Object) {
 		return true
 	}
 
@@ -151,13 +151,13 @@ func (o IdentityProfileExportedObject) MarshalJSON() ([]byte, error) {
 
 func (o IdentityProfileExportedObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Version) {
+	if !IsNil(o.Version) {
 		toSerialize["version"] = o.Version
 	}
-	if !isNil(o.Self) {
+	if !IsNil(o.Self) {
 		toSerialize["self"] = o.Self
 	}
-	if !isNil(o.Object) {
+	if !IsNil(o.Object) {
 		toSerialize["object"] = o.Object
 	}
 
@@ -168,16 +168,20 @@ func (o IdentityProfileExportedObject) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *IdentityProfileExportedObject) UnmarshalJSON(bytes []byte) (err error) {
+func (o *IdentityProfileExportedObject) UnmarshalJSON(data []byte) (err error) {
 	varIdentityProfileExportedObject := _IdentityProfileExportedObject{}
 
-	if err = json.Unmarshal(bytes, &varIdentityProfileExportedObject); err == nil {
+	err = json.Unmarshal(data, &varIdentityProfileExportedObject)
+
+	if err != nil {
+		return err
+	}
+
 	*o = IdentityProfileExportedObject(varIdentityProfileExportedObject)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "version")
 		delete(additionalProperties, "self")
 		delete(additionalProperties, "object")

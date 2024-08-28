@@ -49,7 +49,7 @@ func NewRequestedItemStatusRequesterCommentWithDefaults() *RequestedItemStatusRe
 
 // GetComment returns the Comment field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RequestedItemStatusRequesterComment) GetComment() string {
-	if o == nil || isNil(o.Comment.Get()) {
+	if o == nil || IsNil(o.Comment.Get()) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *RequestedItemStatusRequesterComment) UnsetComment() {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *RequestedItemStatusRequesterComment) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -101,7 +101,7 @@ func (o *RequestedItemStatusRequesterComment) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestedItemStatusRequesterComment) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -109,7 +109,7 @@ func (o *RequestedItemStatusRequesterComment) GetCreatedOk() (*time.Time, bool) 
 
 // HasCreated returns a boolean if a field has been set.
 func (o *RequestedItemStatusRequesterComment) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -123,7 +123,7 @@ func (o *RequestedItemStatusRequesterComment) SetCreated(v time.Time) {
 
 // GetAuthor returns the Author field value if set, zero value otherwise.
 func (o *RequestedItemStatusRequesterComment) GetAuthor() CommentDtoAuthor {
-	if o == nil || isNil(o.Author) {
+	if o == nil || IsNil(o.Author) {
 		var ret CommentDtoAuthor
 		return ret
 	}
@@ -133,7 +133,7 @@ func (o *RequestedItemStatusRequesterComment) GetAuthor() CommentDtoAuthor {
 // GetAuthorOk returns a tuple with the Author field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestedItemStatusRequesterComment) GetAuthorOk() (*CommentDtoAuthor, bool) {
-	if o == nil || isNil(o.Author) {
+	if o == nil || IsNil(o.Author) {
 		return nil, false
 	}
 	return o.Author, true
@@ -141,7 +141,7 @@ func (o *RequestedItemStatusRequesterComment) GetAuthorOk() (*CommentDtoAuthor, 
 
 // HasAuthor returns a boolean if a field has been set.
 func (o *RequestedItemStatusRequesterComment) HasAuthor() bool {
-	if o != nil && !isNil(o.Author) {
+	if o != nil && !IsNil(o.Author) {
 		return true
 	}
 
@@ -166,10 +166,10 @@ func (o RequestedItemStatusRequesterComment) ToMap() (map[string]interface{}, er
 	if o.Comment.IsSet() {
 		toSerialize["comment"] = o.Comment.Get()
 	}
-	if !isNil(o.Created) {
+	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
-	if !isNil(o.Author) {
+	if !IsNil(o.Author) {
 		toSerialize["author"] = o.Author
 	}
 
@@ -180,16 +180,20 @@ func (o RequestedItemStatusRequesterComment) ToMap() (map[string]interface{}, er
 	return toSerialize, nil
 }
 
-func (o *RequestedItemStatusRequesterComment) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RequestedItemStatusRequesterComment) UnmarshalJSON(data []byte) (err error) {
 	varRequestedItemStatusRequesterComment := _RequestedItemStatusRequesterComment{}
 
-	if err = json.Unmarshal(bytes, &varRequestedItemStatusRequesterComment); err == nil {
+	err = json.Unmarshal(data, &varRequestedItemStatusRequesterComment)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RequestedItemStatusRequesterComment(varRequestedItemStatusRequesterComment)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "comment")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "author")

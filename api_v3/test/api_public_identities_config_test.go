@@ -19,14 +19,14 @@ import (
 
 func Test_api_v3_PublicIdentitiesConfigAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test PublicIdentitiesConfigAPIService GetPublicIdentityConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.PublicIdentitiesConfigAPI.GetPublicIdentityConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.PublicIdentitiesConfigAPI.GetPublicIdentityConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -38,7 +38,7 @@ func Test_api_v3_PublicIdentitiesConfigAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.PublicIdentitiesConfigAPI.UpdatePublicIdentityConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.PublicIdentitiesConfigAPI.UpdatePublicIdentityConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

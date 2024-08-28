@@ -84,7 +84,7 @@ func (o *CreatePersonalAccessTokenRequest) GetScope() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreatePersonalAccessTokenRequest) GetScopeOk() ([]string, bool) {
-	if o == nil || isNil(o.Scope) {
+	if o == nil || IsNil(o.Scope) {
 		return nil, false
 	}
 	return o.Scope, true
@@ -92,7 +92,7 @@ func (o *CreatePersonalAccessTokenRequest) GetScopeOk() ([]string, bool) {
 
 // HasScope returns a boolean if a field has been set.
 func (o *CreatePersonalAccessTokenRequest) HasScope() bool {
-	if o != nil && isNil(o.Scope) {
+	if o != nil && !IsNil(o.Scope) {
 		return true
 	}
 
@@ -126,8 +126,8 @@ func (o CreatePersonalAccessTokenRequest) ToMap() (map[string]interface{}, error
 	return toSerialize, nil
 }
 
-func (o *CreatePersonalAccessTokenRequest) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *CreatePersonalAccessTokenRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -136,7 +136,7 @@ func (o *CreatePersonalAccessTokenRequest) UnmarshalJSON(bytes []byte) (err erro
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -150,13 +150,17 @@ func (o *CreatePersonalAccessTokenRequest) UnmarshalJSON(bytes []byte) (err erro
 
 	varCreatePersonalAccessTokenRequest := _CreatePersonalAccessTokenRequest{}
 
-	if err = json.Unmarshal(bytes, &varCreatePersonalAccessTokenRequest); err == nil {
+	err = json.Unmarshal(data, &varCreatePersonalAccessTokenRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CreatePersonalAccessTokenRequest(varCreatePersonalAccessTokenRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "scope")
 		o.AdditionalProperties = additionalProperties

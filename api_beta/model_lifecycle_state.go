@@ -68,7 +68,7 @@ func NewLifecycleStateWithDefaults() *LifecycleState {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *LifecycleState) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -78,7 +78,7 @@ func (o *LifecycleState) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LifecycleState) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -86,7 +86,7 @@ func (o *LifecycleState) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *LifecycleState) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -100,7 +100,7 @@ func (o *LifecycleState) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *LifecycleState) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -110,7 +110,7 @@ func (o *LifecycleState) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LifecycleState) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -118,7 +118,7 @@ func (o *LifecycleState) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *LifecycleState) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -132,7 +132,7 @@ func (o *LifecycleState) SetName(v string) {
 
 // GetTechnicalName returns the TechnicalName field value if set, zero value otherwise.
 func (o *LifecycleState) GetTechnicalName() string {
-	if o == nil || isNil(o.TechnicalName) {
+	if o == nil || IsNil(o.TechnicalName) {
 		var ret string
 		return ret
 	}
@@ -142,7 +142,7 @@ func (o *LifecycleState) GetTechnicalName() string {
 // GetTechnicalNameOk returns a tuple with the TechnicalName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LifecycleState) GetTechnicalNameOk() (*string, bool) {
-	if o == nil || isNil(o.TechnicalName) {
+	if o == nil || IsNil(o.TechnicalName) {
 		return nil, false
 	}
 	return o.TechnicalName, true
@@ -150,7 +150,7 @@ func (o *LifecycleState) GetTechnicalNameOk() (*string, bool) {
 
 // HasTechnicalName returns a boolean if a field has been set.
 func (o *LifecycleState) HasTechnicalName() bool {
-	if o != nil && !isNil(o.TechnicalName) {
+	if o != nil && !IsNil(o.TechnicalName) {
 		return true
 	}
 
@@ -164,7 +164,7 @@ func (o *LifecycleState) SetTechnicalName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *LifecycleState) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -174,7 +174,7 @@ func (o *LifecycleState) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LifecycleState) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -182,7 +182,7 @@ func (o *LifecycleState) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *LifecycleState) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -196,7 +196,7 @@ func (o *LifecycleState) SetDescription(v string) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *LifecycleState) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -206,7 +206,7 @@ func (o *LifecycleState) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LifecycleState) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -214,7 +214,7 @@ func (o *LifecycleState) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *LifecycleState) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -228,7 +228,7 @@ func (o *LifecycleState) SetCreated(v time.Time) {
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *LifecycleState) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		var ret time.Time
 		return ret
 	}
@@ -238,7 +238,7 @@ func (o *LifecycleState) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LifecycleState) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -246,7 +246,7 @@ func (o *LifecycleState) GetModifiedOk() (*time.Time, bool) {
 
 // HasModified returns a boolean if a field has been set.
 func (o *LifecycleState) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -260,7 +260,7 @@ func (o *LifecycleState) SetModified(v time.Time) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *LifecycleState) GetEnabled() bool {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -270,7 +270,7 @@ func (o *LifecycleState) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LifecycleState) GetEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -278,7 +278,7 @@ func (o *LifecycleState) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *LifecycleState) HasEnabled() bool {
-	if o != nil && !isNil(o.Enabled) {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -292,7 +292,7 @@ func (o *LifecycleState) SetEnabled(v bool) {
 
 // GetIdentityCount returns the IdentityCount field value if set, zero value otherwise.
 func (o *LifecycleState) GetIdentityCount() int32 {
-	if o == nil || isNil(o.IdentityCount) {
+	if o == nil || IsNil(o.IdentityCount) {
 		var ret int32
 		return ret
 	}
@@ -302,7 +302,7 @@ func (o *LifecycleState) GetIdentityCount() int32 {
 // GetIdentityCountOk returns a tuple with the IdentityCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LifecycleState) GetIdentityCountOk() (*int32, bool) {
-	if o == nil || isNil(o.IdentityCount) {
+	if o == nil || IsNil(o.IdentityCount) {
 		return nil, false
 	}
 	return o.IdentityCount, true
@@ -310,7 +310,7 @@ func (o *LifecycleState) GetIdentityCountOk() (*int32, bool) {
 
 // HasIdentityCount returns a boolean if a field has been set.
 func (o *LifecycleState) HasIdentityCount() bool {
-	if o != nil && !isNil(o.IdentityCount) {
+	if o != nil && !IsNil(o.IdentityCount) {
 		return true
 	}
 
@@ -324,7 +324,7 @@ func (o *LifecycleState) SetIdentityCount(v int32) {
 
 // GetEmailNotificationOption returns the EmailNotificationOption field value if set, zero value otherwise.
 func (o *LifecycleState) GetEmailNotificationOption() EmailNotificationOption {
-	if o == nil || isNil(o.EmailNotificationOption) {
+	if o == nil || IsNil(o.EmailNotificationOption) {
 		var ret EmailNotificationOption
 		return ret
 	}
@@ -334,7 +334,7 @@ func (o *LifecycleState) GetEmailNotificationOption() EmailNotificationOption {
 // GetEmailNotificationOptionOk returns a tuple with the EmailNotificationOption field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LifecycleState) GetEmailNotificationOptionOk() (*EmailNotificationOption, bool) {
-	if o == nil || isNil(o.EmailNotificationOption) {
+	if o == nil || IsNil(o.EmailNotificationOption) {
 		return nil, false
 	}
 	return o.EmailNotificationOption, true
@@ -342,7 +342,7 @@ func (o *LifecycleState) GetEmailNotificationOptionOk() (*EmailNotificationOptio
 
 // HasEmailNotificationOption returns a boolean if a field has been set.
 func (o *LifecycleState) HasEmailNotificationOption() bool {
-	if o != nil && !isNil(o.EmailNotificationOption) {
+	if o != nil && !IsNil(o.EmailNotificationOption) {
 		return true
 	}
 
@@ -356,7 +356,7 @@ func (o *LifecycleState) SetEmailNotificationOption(v EmailNotificationOption) {
 
 // GetAccountActions returns the AccountActions field value if set, zero value otherwise.
 func (o *LifecycleState) GetAccountActions() []AccountAction {
-	if o == nil || isNil(o.AccountActions) {
+	if o == nil || IsNil(o.AccountActions) {
 		var ret []AccountAction
 		return ret
 	}
@@ -366,7 +366,7 @@ func (o *LifecycleState) GetAccountActions() []AccountAction {
 // GetAccountActionsOk returns a tuple with the AccountActions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LifecycleState) GetAccountActionsOk() ([]AccountAction, bool) {
-	if o == nil || isNil(o.AccountActions) {
+	if o == nil || IsNil(o.AccountActions) {
 		return nil, false
 	}
 	return o.AccountActions, true
@@ -374,7 +374,7 @@ func (o *LifecycleState) GetAccountActionsOk() ([]AccountAction, bool) {
 
 // HasAccountActions returns a boolean if a field has been set.
 func (o *LifecycleState) HasAccountActions() bool {
-	if o != nil && !isNil(o.AccountActions) {
+	if o != nil && !IsNil(o.AccountActions) {
 		return true
 	}
 
@@ -388,7 +388,7 @@ func (o *LifecycleState) SetAccountActions(v []AccountAction) {
 
 // GetAccessProfileIds returns the AccessProfileIds field value if set, zero value otherwise.
 func (o *LifecycleState) GetAccessProfileIds() []string {
-	if o == nil || isNil(o.AccessProfileIds) {
+	if o == nil || IsNil(o.AccessProfileIds) {
 		var ret []string
 		return ret
 	}
@@ -398,7 +398,7 @@ func (o *LifecycleState) GetAccessProfileIds() []string {
 // GetAccessProfileIdsOk returns a tuple with the AccessProfileIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LifecycleState) GetAccessProfileIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.AccessProfileIds) {
+	if o == nil || IsNil(o.AccessProfileIds) {
 		return nil, false
 	}
 	return o.AccessProfileIds, true
@@ -406,7 +406,7 @@ func (o *LifecycleState) GetAccessProfileIdsOk() ([]string, bool) {
 
 // HasAccessProfileIds returns a boolean if a field has been set.
 func (o *LifecycleState) HasAccessProfileIds() bool {
-	if o != nil && !isNil(o.AccessProfileIds) {
+	if o != nil && !IsNil(o.AccessProfileIds) {
 		return true
 	}
 
@@ -428,25 +428,37 @@ func (o LifecycleState) MarshalJSON() ([]byte, error) {
 
 func (o LifecycleState) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
-	// skip: name is readOnly
-	// skip: technicalName is readOnly
-	if !isNil(o.Description) {
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.TechnicalName) {
+		toSerialize["technicalName"] = o.TechnicalName
+	}
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	// skip: created is readOnly
-	// skip: modified is readOnly
-	if !isNil(o.Enabled) {
+	if !IsNil(o.Created) {
+		toSerialize["created"] = o.Created
+	}
+	if !IsNil(o.Modified) {
+		toSerialize["modified"] = o.Modified
+	}
+	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	// skip: identityCount is readOnly
-	if !isNil(o.EmailNotificationOption) {
+	if !IsNil(o.IdentityCount) {
+		toSerialize["identityCount"] = o.IdentityCount
+	}
+	if !IsNil(o.EmailNotificationOption) {
 		toSerialize["emailNotificationOption"] = o.EmailNotificationOption
 	}
-	if !isNil(o.AccountActions) {
+	if !IsNil(o.AccountActions) {
 		toSerialize["accountActions"] = o.AccountActions
 	}
-	if !isNil(o.AccessProfileIds) {
+	if !IsNil(o.AccessProfileIds) {
 		toSerialize["accessProfileIds"] = o.AccessProfileIds
 	}
 
@@ -457,16 +469,20 @@ func (o LifecycleState) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *LifecycleState) UnmarshalJSON(bytes []byte) (err error) {
+func (o *LifecycleState) UnmarshalJSON(data []byte) (err error) {
 	varLifecycleState := _LifecycleState{}
 
-	if err = json.Unmarshal(bytes, &varLifecycleState); err == nil {
+	err = json.Unmarshal(data, &varLifecycleState)
+
+	if err != nil {
+		return err
+	}
+
 	*o = LifecycleState(varLifecycleState)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "technicalName")

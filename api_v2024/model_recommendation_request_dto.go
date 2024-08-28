@@ -68,7 +68,7 @@ func NewRecommendationRequestDtoWithDefaults() *RecommendationRequestDto {
 
 // GetRequests returns the Requests field value if set, zero value otherwise.
 func (o *RecommendationRequestDto) GetRequests() []RecommendationRequest {
-	if o == nil || isNil(o.Requests) {
+	if o == nil || IsNil(o.Requests) {
 		var ret []RecommendationRequest
 		return ret
 	}
@@ -78,7 +78,7 @@ func (o *RecommendationRequestDto) GetRequests() []RecommendationRequest {
 // GetRequestsOk returns a tuple with the Requests field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RecommendationRequestDto) GetRequestsOk() ([]RecommendationRequest, bool) {
-	if o == nil || isNil(o.Requests) {
+	if o == nil || IsNil(o.Requests) {
 		return nil, false
 	}
 	return o.Requests, true
@@ -86,7 +86,7 @@ func (o *RecommendationRequestDto) GetRequestsOk() ([]RecommendationRequest, boo
 
 // HasRequests returns a boolean if a field has been set.
 func (o *RecommendationRequestDto) HasRequests() bool {
-	if o != nil && !isNil(o.Requests) {
+	if o != nil && !IsNil(o.Requests) {
 		return true
 	}
 
@@ -100,7 +100,7 @@ func (o *RecommendationRequestDto) SetRequests(v []RecommendationRequest) {
 
 // GetExcludeInterpretations returns the ExcludeInterpretations field value if set, zero value otherwise.
 func (o *RecommendationRequestDto) GetExcludeInterpretations() bool {
-	if o == nil || isNil(o.ExcludeInterpretations) {
+	if o == nil || IsNil(o.ExcludeInterpretations) {
 		var ret bool
 		return ret
 	}
@@ -110,7 +110,7 @@ func (o *RecommendationRequestDto) GetExcludeInterpretations() bool {
 // GetExcludeInterpretationsOk returns a tuple with the ExcludeInterpretations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RecommendationRequestDto) GetExcludeInterpretationsOk() (*bool, bool) {
-	if o == nil || isNil(o.ExcludeInterpretations) {
+	if o == nil || IsNil(o.ExcludeInterpretations) {
 		return nil, false
 	}
 	return o.ExcludeInterpretations, true
@@ -118,7 +118,7 @@ func (o *RecommendationRequestDto) GetExcludeInterpretationsOk() (*bool, bool) {
 
 // HasExcludeInterpretations returns a boolean if a field has been set.
 func (o *RecommendationRequestDto) HasExcludeInterpretations() bool {
-	if o != nil && !isNil(o.ExcludeInterpretations) {
+	if o != nil && !IsNil(o.ExcludeInterpretations) {
 		return true
 	}
 
@@ -132,7 +132,7 @@ func (o *RecommendationRequestDto) SetExcludeInterpretations(v bool) {
 
 // GetIncludeTranslationMessages returns the IncludeTranslationMessages field value if set, zero value otherwise.
 func (o *RecommendationRequestDto) GetIncludeTranslationMessages() bool {
-	if o == nil || isNil(o.IncludeTranslationMessages) {
+	if o == nil || IsNil(o.IncludeTranslationMessages) {
 		var ret bool
 		return ret
 	}
@@ -142,7 +142,7 @@ func (o *RecommendationRequestDto) GetIncludeTranslationMessages() bool {
 // GetIncludeTranslationMessagesOk returns a tuple with the IncludeTranslationMessages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RecommendationRequestDto) GetIncludeTranslationMessagesOk() (*bool, bool) {
-	if o == nil || isNil(o.IncludeTranslationMessages) {
+	if o == nil || IsNil(o.IncludeTranslationMessages) {
 		return nil, false
 	}
 	return o.IncludeTranslationMessages, true
@@ -150,7 +150,7 @@ func (o *RecommendationRequestDto) GetIncludeTranslationMessagesOk() (*bool, boo
 
 // HasIncludeTranslationMessages returns a boolean if a field has been set.
 func (o *RecommendationRequestDto) HasIncludeTranslationMessages() bool {
-	if o != nil && !isNil(o.IncludeTranslationMessages) {
+	if o != nil && !IsNil(o.IncludeTranslationMessages) {
 		return true
 	}
 
@@ -164,7 +164,7 @@ func (o *RecommendationRequestDto) SetIncludeTranslationMessages(v bool) {
 
 // GetIncludeDebugInformation returns the IncludeDebugInformation field value if set, zero value otherwise.
 func (o *RecommendationRequestDto) GetIncludeDebugInformation() bool {
-	if o == nil || isNil(o.IncludeDebugInformation) {
+	if o == nil || IsNil(o.IncludeDebugInformation) {
 		var ret bool
 		return ret
 	}
@@ -174,7 +174,7 @@ func (o *RecommendationRequestDto) GetIncludeDebugInformation() bool {
 // GetIncludeDebugInformationOk returns a tuple with the IncludeDebugInformation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RecommendationRequestDto) GetIncludeDebugInformationOk() (*bool, bool) {
-	if o == nil || isNil(o.IncludeDebugInformation) {
+	if o == nil || IsNil(o.IncludeDebugInformation) {
 		return nil, false
 	}
 	return o.IncludeDebugInformation, true
@@ -182,7 +182,7 @@ func (o *RecommendationRequestDto) GetIncludeDebugInformationOk() (*bool, bool) 
 
 // HasIncludeDebugInformation returns a boolean if a field has been set.
 func (o *RecommendationRequestDto) HasIncludeDebugInformation() bool {
-	if o != nil && !isNil(o.IncludeDebugInformation) {
+	if o != nil && !IsNil(o.IncludeDebugInformation) {
 		return true
 	}
 
@@ -196,7 +196,7 @@ func (o *RecommendationRequestDto) SetIncludeDebugInformation(v bool) {
 
 // GetPrescribeMode returns the PrescribeMode field value if set, zero value otherwise.
 func (o *RecommendationRequestDto) GetPrescribeMode() bool {
-	if o == nil || isNil(o.PrescribeMode) {
+	if o == nil || IsNil(o.PrescribeMode) {
 		var ret bool
 		return ret
 	}
@@ -206,7 +206,7 @@ func (o *RecommendationRequestDto) GetPrescribeMode() bool {
 // GetPrescribeModeOk returns a tuple with the PrescribeMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RecommendationRequestDto) GetPrescribeModeOk() (*bool, bool) {
-	if o == nil || isNil(o.PrescribeMode) {
+	if o == nil || IsNil(o.PrescribeMode) {
 		return nil, false
 	}
 	return o.PrescribeMode, true
@@ -214,7 +214,7 @@ func (o *RecommendationRequestDto) GetPrescribeModeOk() (*bool, bool) {
 
 // HasPrescribeMode returns a boolean if a field has been set.
 func (o *RecommendationRequestDto) HasPrescribeMode() bool {
-	if o != nil && !isNil(o.PrescribeMode) {
+	if o != nil && !IsNil(o.PrescribeMode) {
 		return true
 	}
 
@@ -236,19 +236,19 @@ func (o RecommendationRequestDto) MarshalJSON() ([]byte, error) {
 
 func (o RecommendationRequestDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Requests) {
+	if !IsNil(o.Requests) {
 		toSerialize["requests"] = o.Requests
 	}
-	if !isNil(o.ExcludeInterpretations) {
+	if !IsNil(o.ExcludeInterpretations) {
 		toSerialize["excludeInterpretations"] = o.ExcludeInterpretations
 	}
-	if !isNil(o.IncludeTranslationMessages) {
+	if !IsNil(o.IncludeTranslationMessages) {
 		toSerialize["includeTranslationMessages"] = o.IncludeTranslationMessages
 	}
-	if !isNil(o.IncludeDebugInformation) {
+	if !IsNil(o.IncludeDebugInformation) {
 		toSerialize["includeDebugInformation"] = o.IncludeDebugInformation
 	}
-	if !isNil(o.PrescribeMode) {
+	if !IsNil(o.PrescribeMode) {
 		toSerialize["prescribeMode"] = o.PrescribeMode
 	}
 
@@ -259,16 +259,20 @@ func (o RecommendationRequestDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *RecommendationRequestDto) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RecommendationRequestDto) UnmarshalJSON(data []byte) (err error) {
 	varRecommendationRequestDto := _RecommendationRequestDto{}
 
-	if err = json.Unmarshal(bytes, &varRecommendationRequestDto); err == nil {
+	err = json.Unmarshal(data, &varRecommendationRequestDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RecommendationRequestDto(varRecommendationRequestDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "requests")
 		delete(additionalProperties, "excludeInterpretations")
 		delete(additionalProperties, "includeTranslationMessages")

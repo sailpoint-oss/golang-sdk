@@ -48,7 +48,7 @@ func NewTemplateSlackAutoApprovalDataWithDefaults() *TemplateSlackAutoApprovalDa
 
 // GetIsAutoApproved returns the IsAutoApproved field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateSlackAutoApprovalData) GetIsAutoApproved() string {
-	if o == nil || isNil(o.IsAutoApproved.Get()) {
+	if o == nil || IsNil(o.IsAutoApproved.Get()) {
 		var ret string
 		return ret
 	}
@@ -90,7 +90,7 @@ func (o *TemplateSlackAutoApprovalData) UnsetIsAutoApproved() {
 
 // GetItemId returns the ItemId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateSlackAutoApprovalData) GetItemId() string {
-	if o == nil || isNil(o.ItemId.Get()) {
+	if o == nil || IsNil(o.ItemId.Get()) {
 		var ret string
 		return ret
 	}
@@ -132,7 +132,7 @@ func (o *TemplateSlackAutoApprovalData) UnsetItemId() {
 
 // GetItemType returns the ItemType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateSlackAutoApprovalData) GetItemType() string {
-	if o == nil || isNil(o.ItemType.Get()) {
+	if o == nil || IsNil(o.ItemType.Get()) {
 		var ret string
 		return ret
 	}
@@ -174,7 +174,7 @@ func (o *TemplateSlackAutoApprovalData) UnsetItemType() {
 
 // GetAutoApprovalMessageJSON returns the AutoApprovalMessageJSON field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateSlackAutoApprovalData) GetAutoApprovalMessageJSON() string {
-	if o == nil || isNil(o.AutoApprovalMessageJSON.Get()) {
+	if o == nil || IsNil(o.AutoApprovalMessageJSON.Get()) {
 		var ret string
 		return ret
 	}
@@ -216,7 +216,7 @@ func (o *TemplateSlackAutoApprovalData) UnsetAutoApprovalMessageJSON() {
 
 // GetAutoApprovalTitle returns the AutoApprovalTitle field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateSlackAutoApprovalData) GetAutoApprovalTitle() string {
-	if o == nil || isNil(o.AutoApprovalTitle.Get()) {
+	if o == nil || IsNil(o.AutoApprovalTitle.Get()) {
 		var ret string
 		return ret
 	}
@@ -289,16 +289,20 @@ func (o TemplateSlackAutoApprovalData) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *TemplateSlackAutoApprovalData) UnmarshalJSON(bytes []byte) (err error) {
+func (o *TemplateSlackAutoApprovalData) UnmarshalJSON(data []byte) (err error) {
 	varTemplateSlackAutoApprovalData := _TemplateSlackAutoApprovalData{}
 
-	if err = json.Unmarshal(bytes, &varTemplateSlackAutoApprovalData); err == nil {
+	err = json.Unmarshal(data, &varTemplateSlackAutoApprovalData)
+
+	if err != nil {
+		return err
+	}
+
 	*o = TemplateSlackAutoApprovalData(varTemplateSlackAutoApprovalData)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "isAutoApproved")
 		delete(additionalProperties, "itemId")
 		delete(additionalProperties, "itemType")

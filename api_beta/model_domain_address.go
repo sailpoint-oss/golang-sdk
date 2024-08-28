@@ -45,7 +45,7 @@ func NewDomainAddressWithDefaults() *DomainAddress {
 
 // GetDomain returns the Domain field value if set, zero value otherwise.
 func (o *DomainAddress) GetDomain() string {
-	if o == nil || isNil(o.Domain) {
+	if o == nil || IsNil(o.Domain) {
 		var ret string
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *DomainAddress) GetDomain() string {
 // GetDomainOk returns a tuple with the Domain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DomainAddress) GetDomainOk() (*string, bool) {
-	if o == nil || isNil(o.Domain) {
+	if o == nil || IsNil(o.Domain) {
 		return nil, false
 	}
 	return o.Domain, true
@@ -63,7 +63,7 @@ func (o *DomainAddress) GetDomainOk() (*string, bool) {
 
 // HasDomain returns a boolean if a field has been set.
 func (o *DomainAddress) HasDomain() bool {
-	if o != nil && !isNil(o.Domain) {
+	if o != nil && !IsNil(o.Domain) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o DomainAddress) MarshalJSON() ([]byte, error) {
 
 func (o DomainAddress) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Domain) {
+	if !IsNil(o.Domain) {
 		toSerialize["domain"] = o.Domain
 	}
 
@@ -96,16 +96,20 @@ func (o DomainAddress) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *DomainAddress) UnmarshalJSON(bytes []byte) (err error) {
+func (o *DomainAddress) UnmarshalJSON(data []byte) (err error) {
 	varDomainAddress := _DomainAddress{}
 
-	if err = json.Unmarshal(bytes, &varDomainAddress); err == nil {
+	err = json.Unmarshal(data, &varDomainAddress)
+
+	if err != nil {
+		return err
+	}
+
 	*o = DomainAddress(varDomainAddress)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "domain")
 		o.AdditionalProperties = additionalProperties
 	}

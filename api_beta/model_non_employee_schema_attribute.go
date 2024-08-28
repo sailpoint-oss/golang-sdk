@@ -67,7 +67,7 @@ func NewNonEmployeeSchemaAttributeWithDefaults() *NonEmployeeSchemaAttribute {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *NonEmployeeSchemaAttribute) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -77,7 +77,7 @@ func (o *NonEmployeeSchemaAttribute) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSchemaAttribute) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -85,7 +85,7 @@ func (o *NonEmployeeSchemaAttribute) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *NonEmployeeSchemaAttribute) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -99,7 +99,7 @@ func (o *NonEmployeeSchemaAttribute) SetId(v string) {
 
 // GetSystem returns the System field value if set, zero value otherwise.
 func (o *NonEmployeeSchemaAttribute) GetSystem() bool {
-	if o == nil || isNil(o.System) {
+	if o == nil || IsNil(o.System) {
 		var ret bool
 		return ret
 	}
@@ -109,7 +109,7 @@ func (o *NonEmployeeSchemaAttribute) GetSystem() bool {
 // GetSystemOk returns a tuple with the System field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSchemaAttribute) GetSystemOk() (*bool, bool) {
-	if o == nil || isNil(o.System) {
+	if o == nil || IsNil(o.System) {
 		return nil, false
 	}
 	return o.System, true
@@ -117,7 +117,7 @@ func (o *NonEmployeeSchemaAttribute) GetSystemOk() (*bool, bool) {
 
 // HasSystem returns a boolean if a field has been set.
 func (o *NonEmployeeSchemaAttribute) HasSystem() bool {
-	if o != nil && !isNil(o.System) {
+	if o != nil && !IsNil(o.System) {
 		return true
 	}
 
@@ -131,7 +131,7 @@ func (o *NonEmployeeSchemaAttribute) SetSystem(v bool) {
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *NonEmployeeSchemaAttribute) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		var ret time.Time
 		return ret
 	}
@@ -141,7 +141,7 @@ func (o *NonEmployeeSchemaAttribute) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSchemaAttribute) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -149,7 +149,7 @@ func (o *NonEmployeeSchemaAttribute) GetModifiedOk() (*time.Time, bool) {
 
 // HasModified returns a boolean if a field has been set.
 func (o *NonEmployeeSchemaAttribute) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -163,7 +163,7 @@ func (o *NonEmployeeSchemaAttribute) SetModified(v time.Time) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *NonEmployeeSchemaAttribute) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -173,7 +173,7 @@ func (o *NonEmployeeSchemaAttribute) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSchemaAttribute) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -181,7 +181,7 @@ func (o *NonEmployeeSchemaAttribute) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *NonEmployeeSchemaAttribute) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -267,7 +267,7 @@ func (o *NonEmployeeSchemaAttribute) SetTechnicalName(v string) {
 
 // GetHelpText returns the HelpText field value if set, zero value otherwise.
 func (o *NonEmployeeSchemaAttribute) GetHelpText() string {
-	if o == nil || isNil(o.HelpText) {
+	if o == nil || IsNil(o.HelpText) {
 		var ret string
 		return ret
 	}
@@ -277,7 +277,7 @@ func (o *NonEmployeeSchemaAttribute) GetHelpText() string {
 // GetHelpTextOk returns a tuple with the HelpText field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSchemaAttribute) GetHelpTextOk() (*string, bool) {
-	if o == nil || isNil(o.HelpText) {
+	if o == nil || IsNil(o.HelpText) {
 		return nil, false
 	}
 	return o.HelpText, true
@@ -285,7 +285,7 @@ func (o *NonEmployeeSchemaAttribute) GetHelpTextOk() (*string, bool) {
 
 // HasHelpText returns a boolean if a field has been set.
 func (o *NonEmployeeSchemaAttribute) HasHelpText() bool {
-	if o != nil && !isNil(o.HelpText) {
+	if o != nil && !IsNil(o.HelpText) {
 		return true
 	}
 
@@ -299,7 +299,7 @@ func (o *NonEmployeeSchemaAttribute) SetHelpText(v string) {
 
 // GetPlaceholder returns the Placeholder field value if set, zero value otherwise.
 func (o *NonEmployeeSchemaAttribute) GetPlaceholder() string {
-	if o == nil || isNil(o.Placeholder) {
+	if o == nil || IsNil(o.Placeholder) {
 		var ret string
 		return ret
 	}
@@ -309,7 +309,7 @@ func (o *NonEmployeeSchemaAttribute) GetPlaceholder() string {
 // GetPlaceholderOk returns a tuple with the Placeholder field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSchemaAttribute) GetPlaceholderOk() (*string, bool) {
-	if o == nil || isNil(o.Placeholder) {
+	if o == nil || IsNil(o.Placeholder) {
 		return nil, false
 	}
 	return o.Placeholder, true
@@ -317,7 +317,7 @@ func (o *NonEmployeeSchemaAttribute) GetPlaceholderOk() (*string, bool) {
 
 // HasPlaceholder returns a boolean if a field has been set.
 func (o *NonEmployeeSchemaAttribute) HasPlaceholder() bool {
-	if o != nil && !isNil(o.Placeholder) {
+	if o != nil && !IsNil(o.Placeholder) {
 		return true
 	}
 
@@ -331,7 +331,7 @@ func (o *NonEmployeeSchemaAttribute) SetPlaceholder(v string) {
 
 // GetRequired returns the Required field value if set, zero value otherwise.
 func (o *NonEmployeeSchemaAttribute) GetRequired() bool {
-	if o == nil || isNil(o.Required) {
+	if o == nil || IsNil(o.Required) {
 		var ret bool
 		return ret
 	}
@@ -341,7 +341,7 @@ func (o *NonEmployeeSchemaAttribute) GetRequired() bool {
 // GetRequiredOk returns a tuple with the Required field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSchemaAttribute) GetRequiredOk() (*bool, bool) {
-	if o == nil || isNil(o.Required) {
+	if o == nil || IsNil(o.Required) {
 		return nil, false
 	}
 	return o.Required, true
@@ -349,7 +349,7 @@ func (o *NonEmployeeSchemaAttribute) GetRequiredOk() (*bool, bool) {
 
 // HasRequired returns a boolean if a field has been set.
 func (o *NonEmployeeSchemaAttribute) HasRequired() bool {
-	if o != nil && !isNil(o.Required) {
+	if o != nil && !IsNil(o.Required) {
 		return true
 	}
 
@@ -371,28 +371,28 @@ func (o NonEmployeeSchemaAttribute) MarshalJSON() ([]byte, error) {
 
 func (o NonEmployeeSchemaAttribute) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.System) {
+	if !IsNil(o.System) {
 		toSerialize["system"] = o.System
 	}
-	if !isNil(o.Modified) {
+	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
-	if !isNil(o.Created) {
+	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
 	toSerialize["type"] = o.Type
 	toSerialize["label"] = o.Label
 	toSerialize["technicalName"] = o.TechnicalName
-	if !isNil(o.HelpText) {
+	if !IsNil(o.HelpText) {
 		toSerialize["helpText"] = o.HelpText
 	}
-	if !isNil(o.Placeholder) {
+	if !IsNil(o.Placeholder) {
 		toSerialize["placeholder"] = o.Placeholder
 	}
-	if !isNil(o.Required) {
+	if !IsNil(o.Required) {
 		toSerialize["required"] = o.Required
 	}
 
@@ -403,8 +403,8 @@ func (o NonEmployeeSchemaAttribute) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *NonEmployeeSchemaAttribute) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *NonEmployeeSchemaAttribute) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -415,7 +415,7 @@ func (o *NonEmployeeSchemaAttribute) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -429,13 +429,17 @@ func (o *NonEmployeeSchemaAttribute) UnmarshalJSON(bytes []byte) (err error) {
 
 	varNonEmployeeSchemaAttribute := _NonEmployeeSchemaAttribute{}
 
-	if err = json.Unmarshal(bytes, &varNonEmployeeSchemaAttribute); err == nil {
+	err = json.Unmarshal(data, &varNonEmployeeSchemaAttribute)
+
+	if err != nil {
+		return err
+	}
+
 	*o = NonEmployeeSchemaAttribute(varNonEmployeeSchemaAttribute)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "system")
 		delete(additionalProperties, "modified")

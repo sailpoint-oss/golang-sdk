@@ -49,7 +49,7 @@ func NewCancelledRequestDetailsWithDefaults() *CancelledRequestDetails {
 
 // GetComment returns the Comment field value if set, zero value otherwise.
 func (o *CancelledRequestDetails) GetComment() string {
-	if o == nil || isNil(o.Comment) {
+	if o == nil || IsNil(o.Comment) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *CancelledRequestDetails) GetComment() string {
 // GetCommentOk returns a tuple with the Comment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CancelledRequestDetails) GetCommentOk() (*string, bool) {
-	if o == nil || isNil(o.Comment) {
+	if o == nil || IsNil(o.Comment) {
 		return nil, false
 	}
 	return o.Comment, true
@@ -67,7 +67,7 @@ func (o *CancelledRequestDetails) GetCommentOk() (*string, bool) {
 
 // HasComment returns a boolean if a field has been set.
 func (o *CancelledRequestDetails) HasComment() bool {
-	if o != nil && !isNil(o.Comment) {
+	if o != nil && !IsNil(o.Comment) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *CancelledRequestDetails) SetComment(v string) {
 
 // GetOwner returns the Owner field value if set, zero value otherwise.
 func (o *CancelledRequestDetails) GetOwner() OwnerDto {
-	if o == nil || isNil(o.Owner) {
+	if o == nil || IsNil(o.Owner) {
 		var ret OwnerDto
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *CancelledRequestDetails) GetOwner() OwnerDto {
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CancelledRequestDetails) GetOwnerOk() (*OwnerDto, bool) {
-	if o == nil || isNil(o.Owner) {
+	if o == nil || IsNil(o.Owner) {
 		return nil, false
 	}
 	return o.Owner, true
@@ -99,7 +99,7 @@ func (o *CancelledRequestDetails) GetOwnerOk() (*OwnerDto, bool) {
 
 // HasOwner returns a boolean if a field has been set.
 func (o *CancelledRequestDetails) HasOwner() bool {
-	if o != nil && !isNil(o.Owner) {
+	if o != nil && !IsNil(o.Owner) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *CancelledRequestDetails) SetOwner(v OwnerDto) {
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *CancelledRequestDetails) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		var ret time.Time
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *CancelledRequestDetails) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CancelledRequestDetails) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -131,7 +131,7 @@ func (o *CancelledRequestDetails) GetModifiedOk() (*time.Time, bool) {
 
 // HasModified returns a boolean if a field has been set.
 func (o *CancelledRequestDetails) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o CancelledRequestDetails) MarshalJSON() ([]byte, error) {
 
 func (o CancelledRequestDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Comment) {
+	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if !isNil(o.Owner) {
+	if !IsNil(o.Owner) {
 		toSerialize["owner"] = o.Owner
 	}
-	if !isNil(o.Modified) {
+	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
 
@@ -170,16 +170,20 @@ func (o CancelledRequestDetails) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CancelledRequestDetails) UnmarshalJSON(bytes []byte) (err error) {
+func (o *CancelledRequestDetails) UnmarshalJSON(data []byte) (err error) {
 	varCancelledRequestDetails := _CancelledRequestDetails{}
 
-	if err = json.Unmarshal(bytes, &varCancelledRequestDetails); err == nil {
+	err = json.Unmarshal(data, &varCancelledRequestDetails)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CancelledRequestDetails(varCancelledRequestDetails)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "comment")
 		delete(additionalProperties, "owner")
 		delete(additionalProperties, "modified")

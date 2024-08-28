@@ -51,7 +51,7 @@ func NewPatchPotentialRoleRequestInnerWithDefaults() *PatchPotentialRoleRequestI
 
 // GetOp returns the Op field value if set, zero value otherwise.
 func (o *PatchPotentialRoleRequestInner) GetOp() string {
-	if o == nil || isNil(o.Op) {
+	if o == nil || IsNil(o.Op) {
 		var ret string
 		return ret
 	}
@@ -61,7 +61,7 @@ func (o *PatchPotentialRoleRequestInner) GetOp() string {
 // GetOpOk returns a tuple with the Op field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchPotentialRoleRequestInner) GetOpOk() (*string, bool) {
-	if o == nil || isNil(o.Op) {
+	if o == nil || IsNil(o.Op) {
 		return nil, false
 	}
 	return o.Op, true
@@ -69,7 +69,7 @@ func (o *PatchPotentialRoleRequestInner) GetOpOk() (*string, bool) {
 
 // HasOp returns a boolean if a field has been set.
 func (o *PatchPotentialRoleRequestInner) HasOp() bool {
-	if o != nil && !isNil(o.Op) {
+	if o != nil && !IsNil(o.Op) {
 		return true
 	}
 
@@ -107,7 +107,7 @@ func (o *PatchPotentialRoleRequestInner) SetPath(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *PatchPotentialRoleRequestInner) GetValue() JsonPatchOperationValue {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret JsonPatchOperationValue
 		return ret
 	}
@@ -117,7 +117,7 @@ func (o *PatchPotentialRoleRequestInner) GetValue() JsonPatchOperationValue {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchPotentialRoleRequestInner) GetValueOk() (*JsonPatchOperationValue, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -125,7 +125,7 @@ func (o *PatchPotentialRoleRequestInner) GetValueOk() (*JsonPatchOperationValue,
 
 // HasValue returns a boolean if a field has been set.
 func (o *PatchPotentialRoleRequestInner) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -147,11 +147,11 @@ func (o PatchPotentialRoleRequestInner) MarshalJSON() ([]byte, error) {
 
 func (o PatchPotentialRoleRequestInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Op) {
+	if !IsNil(o.Op) {
 		toSerialize["op"] = o.Op
 	}
 	toSerialize["path"] = o.Path
-	if !isNil(o.Value) {
+	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
 
@@ -162,8 +162,8 @@ func (o PatchPotentialRoleRequestInner) ToMap() (map[string]interface{}, error) 
 	return toSerialize, nil
 }
 
-func (o *PatchPotentialRoleRequestInner) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *PatchPotentialRoleRequestInner) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -173,7 +173,7 @@ func (o *PatchPotentialRoleRequestInner) UnmarshalJSON(bytes []byte) (err error)
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -187,13 +187,17 @@ func (o *PatchPotentialRoleRequestInner) UnmarshalJSON(bytes []byte) (err error)
 
 	varPatchPotentialRoleRequestInner := _PatchPotentialRoleRequestInner{}
 
-	if err = json.Unmarshal(bytes, &varPatchPotentialRoleRequestInner); err == nil {
+	err = json.Unmarshal(data, &varPatchPotentialRoleRequestInner)
+
+	if err != nil {
+		return err
+	}
+
 	*o = PatchPotentialRoleRequestInner(varPatchPotentialRoleRequestInner)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "op")
 		delete(additionalProperties, "path")
 		delete(additionalProperties, "value")

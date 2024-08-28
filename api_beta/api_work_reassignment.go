@@ -394,7 +394,7 @@ func (a *WorkReassignmentAPIService) GetEvaluateReassignmentConfigurationExecute
 	localVarFormParams := url.Values{}
 
 	if r.exclusionFilters != nil {
-		parameterAddToQuery(localVarQueryParams, "exclusionFilters", r.exclusionFilters, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclusionFilters", r.exclusionFilters, "", "csv")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

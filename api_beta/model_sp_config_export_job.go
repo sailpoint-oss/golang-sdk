@@ -257,8 +257,8 @@ func (o SpConfigExportJob) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SpConfigExportJob) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *SpConfigExportJob) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -273,7 +273,7 @@ func (o *SpConfigExportJob) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -287,13 +287,17 @@ func (o *SpConfigExportJob) UnmarshalJSON(bytes []byte) (err error) {
 
 	varSpConfigExportJob := _SpConfigExportJob{}
 
-	if err = json.Unmarshal(bytes, &varSpConfigExportJob); err == nil {
+	err = json.Unmarshal(data, &varSpConfigExportJob)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SpConfigExportJob(varSpConfigExportJob)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "jobId")
 		delete(additionalProperties, "status")
 		delete(additionalProperties, "type")

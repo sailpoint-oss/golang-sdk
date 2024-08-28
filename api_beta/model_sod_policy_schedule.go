@@ -60,7 +60,7 @@ func NewSodPolicyScheduleWithDefaults() *SodPolicySchedule {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *SodPolicySchedule) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -70,7 +70,7 @@ func (o *SodPolicySchedule) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SodPolicySchedule) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -78,7 +78,7 @@ func (o *SodPolicySchedule) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *SodPolicySchedule) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -92,7 +92,7 @@ func (o *SodPolicySchedule) SetName(v string) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *SodPolicySchedule) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -102,7 +102,7 @@ func (o *SodPolicySchedule) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SodPolicySchedule) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -110,7 +110,7 @@ func (o *SodPolicySchedule) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *SodPolicySchedule) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -124,7 +124,7 @@ func (o *SodPolicySchedule) SetCreated(v time.Time) {
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *SodPolicySchedule) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		var ret time.Time
 		return ret
 	}
@@ -134,7 +134,7 @@ func (o *SodPolicySchedule) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SodPolicySchedule) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -142,7 +142,7 @@ func (o *SodPolicySchedule) GetModifiedOk() (*time.Time, bool) {
 
 // HasModified returns a boolean if a field has been set.
 func (o *SodPolicySchedule) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -156,7 +156,7 @@ func (o *SodPolicySchedule) SetModified(v time.Time) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *SodPolicySchedule) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -166,7 +166,7 @@ func (o *SodPolicySchedule) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SodPolicySchedule) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -174,7 +174,7 @@ func (o *SodPolicySchedule) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *SodPolicySchedule) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -188,7 +188,7 @@ func (o *SodPolicySchedule) SetDescription(v string) {
 
 // GetSchedule returns the Schedule field value if set, zero value otherwise.
 func (o *SodPolicySchedule) GetSchedule() Schedule1 {
-	if o == nil || isNil(o.Schedule) {
+	if o == nil || IsNil(o.Schedule) {
 		var ret Schedule1
 		return ret
 	}
@@ -198,7 +198,7 @@ func (o *SodPolicySchedule) GetSchedule() Schedule1 {
 // GetScheduleOk returns a tuple with the Schedule field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SodPolicySchedule) GetScheduleOk() (*Schedule1, bool) {
-	if o == nil || isNil(o.Schedule) {
+	if o == nil || IsNil(o.Schedule) {
 		return nil, false
 	}
 	return o.Schedule, true
@@ -206,7 +206,7 @@ func (o *SodPolicySchedule) GetScheduleOk() (*Schedule1, bool) {
 
 // HasSchedule returns a boolean if a field has been set.
 func (o *SodPolicySchedule) HasSchedule() bool {
-	if o != nil && !isNil(o.Schedule) {
+	if o != nil && !IsNil(o.Schedule) {
 		return true
 	}
 
@@ -220,7 +220,7 @@ func (o *SodPolicySchedule) SetSchedule(v Schedule1) {
 
 // GetRecipients returns the Recipients field value if set, zero value otherwise.
 func (o *SodPolicySchedule) GetRecipients() []SodRecipient {
-	if o == nil || isNil(o.Recipients) {
+	if o == nil || IsNil(o.Recipients) {
 		var ret []SodRecipient
 		return ret
 	}
@@ -230,7 +230,7 @@ func (o *SodPolicySchedule) GetRecipients() []SodRecipient {
 // GetRecipientsOk returns a tuple with the Recipients field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SodPolicySchedule) GetRecipientsOk() ([]SodRecipient, bool) {
-	if o == nil || isNil(o.Recipients) {
+	if o == nil || IsNil(o.Recipients) {
 		return nil, false
 	}
 	return o.Recipients, true
@@ -238,7 +238,7 @@ func (o *SodPolicySchedule) GetRecipientsOk() ([]SodRecipient, bool) {
 
 // HasRecipients returns a boolean if a field has been set.
 func (o *SodPolicySchedule) HasRecipients() bool {
-	if o != nil && !isNil(o.Recipients) {
+	if o != nil && !IsNil(o.Recipients) {
 		return true
 	}
 
@@ -252,7 +252,7 @@ func (o *SodPolicySchedule) SetRecipients(v []SodRecipient) {
 
 // GetEmailEmptyResults returns the EmailEmptyResults field value if set, zero value otherwise.
 func (o *SodPolicySchedule) GetEmailEmptyResults() bool {
-	if o == nil || isNil(o.EmailEmptyResults) {
+	if o == nil || IsNil(o.EmailEmptyResults) {
 		var ret bool
 		return ret
 	}
@@ -262,7 +262,7 @@ func (o *SodPolicySchedule) GetEmailEmptyResults() bool {
 // GetEmailEmptyResultsOk returns a tuple with the EmailEmptyResults field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SodPolicySchedule) GetEmailEmptyResultsOk() (*bool, bool) {
-	if o == nil || isNil(o.EmailEmptyResults) {
+	if o == nil || IsNil(o.EmailEmptyResults) {
 		return nil, false
 	}
 	return o.EmailEmptyResults, true
@@ -270,7 +270,7 @@ func (o *SodPolicySchedule) GetEmailEmptyResultsOk() (*bool, bool) {
 
 // HasEmailEmptyResults returns a boolean if a field has been set.
 func (o *SodPolicySchedule) HasEmailEmptyResults() bool {
-	if o != nil && !isNil(o.EmailEmptyResults) {
+	if o != nil && !IsNil(o.EmailEmptyResults) {
 		return true
 	}
 
@@ -284,7 +284,7 @@ func (o *SodPolicySchedule) SetEmailEmptyResults(v bool) {
 
 // GetCreatorId returns the CreatorId field value if set, zero value otherwise.
 func (o *SodPolicySchedule) GetCreatorId() string {
-	if o == nil || isNil(o.CreatorId) {
+	if o == nil || IsNil(o.CreatorId) {
 		var ret string
 		return ret
 	}
@@ -294,7 +294,7 @@ func (o *SodPolicySchedule) GetCreatorId() string {
 // GetCreatorIdOk returns a tuple with the CreatorId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SodPolicySchedule) GetCreatorIdOk() (*string, bool) {
-	if o == nil || isNil(o.CreatorId) {
+	if o == nil || IsNil(o.CreatorId) {
 		return nil, false
 	}
 	return o.CreatorId, true
@@ -302,7 +302,7 @@ func (o *SodPolicySchedule) GetCreatorIdOk() (*string, bool) {
 
 // HasCreatorId returns a boolean if a field has been set.
 func (o *SodPolicySchedule) HasCreatorId() bool {
-	if o != nil && !isNil(o.CreatorId) {
+	if o != nil && !IsNil(o.CreatorId) {
 		return true
 	}
 
@@ -316,7 +316,7 @@ func (o *SodPolicySchedule) SetCreatorId(v string) {
 
 // GetModifierId returns the ModifierId field value if set, zero value otherwise.
 func (o *SodPolicySchedule) GetModifierId() string {
-	if o == nil || isNil(o.ModifierId) {
+	if o == nil || IsNil(o.ModifierId) {
 		var ret string
 		return ret
 	}
@@ -326,7 +326,7 @@ func (o *SodPolicySchedule) GetModifierId() string {
 // GetModifierIdOk returns a tuple with the ModifierId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SodPolicySchedule) GetModifierIdOk() (*string, bool) {
-	if o == nil || isNil(o.ModifierId) {
+	if o == nil || IsNil(o.ModifierId) {
 		return nil, false
 	}
 	return o.ModifierId, true
@@ -334,7 +334,7 @@ func (o *SodPolicySchedule) GetModifierIdOk() (*string, bool) {
 
 // HasModifierId returns a boolean if a field has been set.
 func (o *SodPolicySchedule) HasModifierId() bool {
-	if o != nil && !isNil(o.ModifierId) {
+	if o != nil && !IsNil(o.ModifierId) {
 		return true
 	}
 
@@ -356,31 +356,31 @@ func (o SodPolicySchedule) MarshalJSON() ([]byte, error) {
 
 func (o SodPolicySchedule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Created) {
+	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
-	if !isNil(o.Modified) {
+	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.Schedule) {
+	if !IsNil(o.Schedule) {
 		toSerialize["schedule"] = o.Schedule
 	}
-	if !isNil(o.Recipients) {
+	if !IsNil(o.Recipients) {
 		toSerialize["recipients"] = o.Recipients
 	}
-	if !isNil(o.EmailEmptyResults) {
+	if !IsNil(o.EmailEmptyResults) {
 		toSerialize["emailEmptyResults"] = o.EmailEmptyResults
 	}
-	if !isNil(o.CreatorId) {
+	if !IsNil(o.CreatorId) {
 		toSerialize["creatorId"] = o.CreatorId
 	}
-	if !isNil(o.ModifierId) {
+	if !IsNil(o.ModifierId) {
 		toSerialize["modifierId"] = o.ModifierId
 	}
 
@@ -391,16 +391,20 @@ func (o SodPolicySchedule) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SodPolicySchedule) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SodPolicySchedule) UnmarshalJSON(data []byte) (err error) {
 	varSodPolicySchedule := _SodPolicySchedule{}
 
-	if err = json.Unmarshal(bytes, &varSodPolicySchedule); err == nil {
+	err = json.Unmarshal(data, &varSodPolicySchedule)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SodPolicySchedule(varSodPolicySchedule)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "modified")

@@ -44,7 +44,7 @@ func NewTenantConfigurationRequestWithDefaults() *TenantConfigurationRequest {
 
 // GetConfigDetails returns the ConfigDetails field value if set, zero value otherwise.
 func (o *TenantConfigurationRequest) GetConfigDetails() TenantConfigurationDetails {
-	if o == nil || isNil(o.ConfigDetails) {
+	if o == nil || IsNil(o.ConfigDetails) {
 		var ret TenantConfigurationDetails
 		return ret
 	}
@@ -54,7 +54,7 @@ func (o *TenantConfigurationRequest) GetConfigDetails() TenantConfigurationDetai
 // GetConfigDetailsOk returns a tuple with the ConfigDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TenantConfigurationRequest) GetConfigDetailsOk() (*TenantConfigurationDetails, bool) {
-	if o == nil || isNil(o.ConfigDetails) {
+	if o == nil || IsNil(o.ConfigDetails) {
 		return nil, false
 	}
 	return o.ConfigDetails, true
@@ -62,7 +62,7 @@ func (o *TenantConfigurationRequest) GetConfigDetailsOk() (*TenantConfigurationD
 
 // HasConfigDetails returns a boolean if a field has been set.
 func (o *TenantConfigurationRequest) HasConfigDetails() bool {
-	if o != nil && !isNil(o.ConfigDetails) {
+	if o != nil && !IsNil(o.ConfigDetails) {
 		return true
 	}
 
@@ -84,7 +84,7 @@ func (o TenantConfigurationRequest) MarshalJSON() ([]byte, error) {
 
 func (o TenantConfigurationRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ConfigDetails) {
+	if !IsNil(o.ConfigDetails) {
 		toSerialize["configDetails"] = o.ConfigDetails
 	}
 
@@ -95,16 +95,20 @@ func (o TenantConfigurationRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *TenantConfigurationRequest) UnmarshalJSON(bytes []byte) (err error) {
+func (o *TenantConfigurationRequest) UnmarshalJSON(data []byte) (err error) {
 	varTenantConfigurationRequest := _TenantConfigurationRequest{}
 
-	if err = json.Unmarshal(bytes, &varTenantConfigurationRequest); err == nil {
+	err = json.Unmarshal(data, &varTenantConfigurationRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = TenantConfigurationRequest(varTenantConfigurationRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "configDetails")
 		o.AdditionalProperties = additionalProperties
 	}

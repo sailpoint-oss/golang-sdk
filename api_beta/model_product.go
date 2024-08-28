@@ -75,7 +75,7 @@ func NewProductWithDefaults() *Product {
 
 // GetProductName returns the ProductName field value if set, zero value otherwise.
 func (o *Product) GetProductName() string {
-	if o == nil || isNil(o.ProductName) {
+	if o == nil || IsNil(o.ProductName) {
 		var ret string
 		return ret
 	}
@@ -85,7 +85,7 @@ func (o *Product) GetProductName() string {
 // GetProductNameOk returns a tuple with the ProductName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Product) GetProductNameOk() (*string, bool) {
-	if o == nil || isNil(o.ProductName) {
+	if o == nil || IsNil(o.ProductName) {
 		return nil, false
 	}
 	return o.ProductName, true
@@ -93,7 +93,7 @@ func (o *Product) GetProductNameOk() (*string, bool) {
 
 // HasProductName returns a boolean if a field has been set.
 func (o *Product) HasProductName() bool {
-	if o != nil && !isNil(o.ProductName) {
+	if o != nil && !IsNil(o.ProductName) {
 		return true
 	}
 
@@ -107,7 +107,7 @@ func (o *Product) SetProductName(v string) {
 
 // GetUrl returns the Url field value if set, zero value otherwise.
 func (o *Product) GetUrl() string {
-	if o == nil || isNil(o.Url) {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
@@ -117,7 +117,7 @@ func (o *Product) GetUrl() string {
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Product) GetUrlOk() (*string, bool) {
-	if o == nil || isNil(o.Url) {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
 	return o.Url, true
@@ -125,7 +125,7 @@ func (o *Product) GetUrlOk() (*string, bool) {
 
 // HasUrl returns a boolean if a field has been set.
 func (o *Product) HasUrl() bool {
-	if o != nil && !isNil(o.Url) {
+	if o != nil && !IsNil(o.Url) {
 		return true
 	}
 
@@ -139,7 +139,7 @@ func (o *Product) SetUrl(v string) {
 
 // GetProductTenantId returns the ProductTenantId field value if set, zero value otherwise.
 func (o *Product) GetProductTenantId() string {
-	if o == nil || isNil(o.ProductTenantId) {
+	if o == nil || IsNil(o.ProductTenantId) {
 		var ret string
 		return ret
 	}
@@ -149,7 +149,7 @@ func (o *Product) GetProductTenantId() string {
 // GetProductTenantIdOk returns a tuple with the ProductTenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Product) GetProductTenantIdOk() (*string, bool) {
-	if o == nil || isNil(o.ProductTenantId) {
+	if o == nil || IsNil(o.ProductTenantId) {
 		return nil, false
 	}
 	return o.ProductTenantId, true
@@ -157,7 +157,7 @@ func (o *Product) GetProductTenantIdOk() (*string, bool) {
 
 // HasProductTenantId returns a boolean if a field has been set.
 func (o *Product) HasProductTenantId() bool {
-	if o != nil && !isNil(o.ProductTenantId) {
+	if o != nil && !IsNil(o.ProductTenantId) {
 		return true
 	}
 
@@ -171,7 +171,7 @@ func (o *Product) SetProductTenantId(v string) {
 
 // GetProductRegion returns the ProductRegion field value if set, zero value otherwise.
 func (o *Product) GetProductRegion() string {
-	if o == nil || isNil(o.ProductRegion) {
+	if o == nil || IsNil(o.ProductRegion) {
 		var ret string
 		return ret
 	}
@@ -181,7 +181,7 @@ func (o *Product) GetProductRegion() string {
 // GetProductRegionOk returns a tuple with the ProductRegion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Product) GetProductRegionOk() (*string, bool) {
-	if o == nil || isNil(o.ProductRegion) {
+	if o == nil || IsNil(o.ProductRegion) {
 		return nil, false
 	}
 	return o.ProductRegion, true
@@ -189,7 +189,7 @@ func (o *Product) GetProductRegionOk() (*string, bool) {
 
 // HasProductRegion returns a boolean if a field has been set.
 func (o *Product) HasProductRegion() bool {
-	if o != nil && !isNil(o.ProductRegion) {
+	if o != nil && !IsNil(o.ProductRegion) {
 		return true
 	}
 
@@ -203,7 +203,7 @@ func (o *Product) SetProductRegion(v string) {
 
 // GetProductRight returns the ProductRight field value if set, zero value otherwise.
 func (o *Product) GetProductRight() string {
-	if o == nil || isNil(o.ProductRight) {
+	if o == nil || IsNil(o.ProductRight) {
 		var ret string
 		return ret
 	}
@@ -213,7 +213,7 @@ func (o *Product) GetProductRight() string {
 // GetProductRightOk returns a tuple with the ProductRight field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Product) GetProductRightOk() (*string, bool) {
-	if o == nil || isNil(o.ProductRight) {
+	if o == nil || IsNil(o.ProductRight) {
 		return nil, false
 	}
 	return o.ProductRight, true
@@ -221,7 +221,7 @@ func (o *Product) GetProductRightOk() (*string, bool) {
 
 // HasProductRight returns a boolean if a field has been set.
 func (o *Product) HasProductRight() bool {
-	if o != nil && !isNil(o.ProductRight) {
+	if o != nil && !IsNil(o.ProductRight) {
 		return true
 	}
 
@@ -235,7 +235,7 @@ func (o *Product) SetProductRight(v string) {
 
 // GetApiUrl returns the ApiUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Product) GetApiUrl() string {
-	if o == nil || isNil(o.ApiUrl.Get()) {
+	if o == nil || IsNil(o.ApiUrl.Get()) {
 		var ret string
 		return ret
 	}
@@ -277,7 +277,7 @@ func (o *Product) UnsetApiUrl() {
 
 // GetLicenses returns the Licenses field value if set, zero value otherwise.
 func (o *Product) GetLicenses() []License {
-	if o == nil || isNil(o.Licenses) {
+	if o == nil || IsNil(o.Licenses) {
 		var ret []License
 		return ret
 	}
@@ -287,7 +287,7 @@ func (o *Product) GetLicenses() []License {
 // GetLicensesOk returns a tuple with the Licenses field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Product) GetLicensesOk() ([]License, bool) {
-	if o == nil || isNil(o.Licenses) {
+	if o == nil || IsNil(o.Licenses) {
 		return nil, false
 	}
 	return o.Licenses, true
@@ -295,7 +295,7 @@ func (o *Product) GetLicensesOk() ([]License, bool) {
 
 // HasLicenses returns a boolean if a field has been set.
 func (o *Product) HasLicenses() bool {
-	if o != nil && !isNil(o.Licenses) {
+	if o != nil && !IsNil(o.Licenses) {
 		return true
 	}
 
@@ -309,7 +309,7 @@ func (o *Product) SetLicenses(v []License) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *Product) GetAttributes() map[string]interface{} {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -319,7 +319,7 @@ func (o *Product) GetAttributes() map[string]interface{} {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Product) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
@@ -327,7 +327,7 @@ func (o *Product) GetAttributesOk() (map[string]interface{}, bool) {
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *Product) HasAttributes() bool {
-	if o != nil && !isNil(o.Attributes) {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -341,7 +341,7 @@ func (o *Product) SetAttributes(v map[string]interface{}) {
 
 // GetZone returns the Zone field value if set, zero value otherwise.
 func (o *Product) GetZone() string {
-	if o == nil || isNil(o.Zone) {
+	if o == nil || IsNil(o.Zone) {
 		var ret string
 		return ret
 	}
@@ -351,7 +351,7 @@ func (o *Product) GetZone() string {
 // GetZoneOk returns a tuple with the Zone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Product) GetZoneOk() (*string, bool) {
-	if o == nil || isNil(o.Zone) {
+	if o == nil || IsNil(o.Zone) {
 		return nil, false
 	}
 	return o.Zone, true
@@ -359,7 +359,7 @@ func (o *Product) GetZoneOk() (*string, bool) {
 
 // HasZone returns a boolean if a field has been set.
 func (o *Product) HasZone() bool {
-	if o != nil && !isNil(o.Zone) {
+	if o != nil && !IsNil(o.Zone) {
 		return true
 	}
 
@@ -373,7 +373,7 @@ func (o *Product) SetZone(v string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *Product) GetStatus() string {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -383,7 +383,7 @@ func (o *Product) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Product) GetStatusOk() (*string, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -391,7 +391,7 @@ func (o *Product) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *Product) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -405,7 +405,7 @@ func (o *Product) SetStatus(v string) {
 
 // GetStatusDateTime returns the StatusDateTime field value if set, zero value otherwise.
 func (o *Product) GetStatusDateTime() time.Time {
-	if o == nil || isNil(o.StatusDateTime) {
+	if o == nil || IsNil(o.StatusDateTime) {
 		var ret time.Time
 		return ret
 	}
@@ -415,7 +415,7 @@ func (o *Product) GetStatusDateTime() time.Time {
 // GetStatusDateTimeOk returns a tuple with the StatusDateTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Product) GetStatusDateTimeOk() (*time.Time, bool) {
-	if o == nil || isNil(o.StatusDateTime) {
+	if o == nil || IsNil(o.StatusDateTime) {
 		return nil, false
 	}
 	return o.StatusDateTime, true
@@ -423,7 +423,7 @@ func (o *Product) GetStatusDateTimeOk() (*time.Time, bool) {
 
 // HasStatusDateTime returns a boolean if a field has been set.
 func (o *Product) HasStatusDateTime() bool {
-	if o != nil && !isNil(o.StatusDateTime) {
+	if o != nil && !IsNil(o.StatusDateTime) {
 		return true
 	}
 
@@ -437,7 +437,7 @@ func (o *Product) SetStatusDateTime(v time.Time) {
 
 // GetReason returns the Reason field value if set, zero value otherwise.
 func (o *Product) GetReason() string {
-	if o == nil || isNil(o.Reason) {
+	if o == nil || IsNil(o.Reason) {
 		var ret string
 		return ret
 	}
@@ -447,7 +447,7 @@ func (o *Product) GetReason() string {
 // GetReasonOk returns a tuple with the Reason field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Product) GetReasonOk() (*string, bool) {
-	if o == nil || isNil(o.Reason) {
+	if o == nil || IsNil(o.Reason) {
 		return nil, false
 	}
 	return o.Reason, true
@@ -455,7 +455,7 @@ func (o *Product) GetReasonOk() (*string, bool) {
 
 // HasReason returns a boolean if a field has been set.
 func (o *Product) HasReason() bool {
-	if o != nil && !isNil(o.Reason) {
+	if o != nil && !IsNil(o.Reason) {
 		return true
 	}
 
@@ -469,7 +469,7 @@ func (o *Product) SetReason(v string) {
 
 // GetNotes returns the Notes field value if set, zero value otherwise.
 func (o *Product) GetNotes() string {
-	if o == nil || isNil(o.Notes) {
+	if o == nil || IsNil(o.Notes) {
 		var ret string
 		return ret
 	}
@@ -479,7 +479,7 @@ func (o *Product) GetNotes() string {
 // GetNotesOk returns a tuple with the Notes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Product) GetNotesOk() (*string, bool) {
-	if o == nil || isNil(o.Notes) {
+	if o == nil || IsNil(o.Notes) {
 		return nil, false
 	}
 	return o.Notes, true
@@ -487,7 +487,7 @@ func (o *Product) GetNotesOk() (*string, bool) {
 
 // HasNotes returns a boolean if a field has been set.
 func (o *Product) HasNotes() bool {
-	if o != nil && !isNil(o.Notes) {
+	if o != nil && !IsNil(o.Notes) {
 		return true
 	}
 
@@ -501,7 +501,7 @@ func (o *Product) SetNotes(v string) {
 
 // GetDateCreated returns the DateCreated field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Product) GetDateCreated() time.Time {
-	if o == nil || isNil(o.DateCreated.Get()) {
+	if o == nil || IsNil(o.DateCreated.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -543,7 +543,7 @@ func (o *Product) UnsetDateCreated() {
 
 // GetLastUpdated returns the LastUpdated field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Product) GetLastUpdated() time.Time {
-	if o == nil || isNil(o.LastUpdated.Get()) {
+	if o == nil || IsNil(o.LastUpdated.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -585,7 +585,7 @@ func (o *Product) UnsetLastUpdated() {
 
 // GetOrgType returns the OrgType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Product) GetOrgType() string {
-	if o == nil || isNil(o.OrgType.Get()) {
+	if o == nil || IsNil(o.OrgType.Get()) {
 		var ret string
 		return ret
 	}
@@ -635,43 +635,43 @@ func (o Product) MarshalJSON() ([]byte, error) {
 
 func (o Product) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ProductName) {
+	if !IsNil(o.ProductName) {
 		toSerialize["productName"] = o.ProductName
 	}
-	if !isNil(o.Url) {
+	if !IsNil(o.Url) {
 		toSerialize["url"] = o.Url
 	}
-	if !isNil(o.ProductTenantId) {
+	if !IsNil(o.ProductTenantId) {
 		toSerialize["productTenantId"] = o.ProductTenantId
 	}
-	if !isNil(o.ProductRegion) {
+	if !IsNil(o.ProductRegion) {
 		toSerialize["productRegion"] = o.ProductRegion
 	}
-	if !isNil(o.ProductRight) {
+	if !IsNil(o.ProductRight) {
 		toSerialize["productRight"] = o.ProductRight
 	}
 	if o.ApiUrl.IsSet() {
 		toSerialize["apiUrl"] = o.ApiUrl.Get()
 	}
-	if !isNil(o.Licenses) {
+	if !IsNil(o.Licenses) {
 		toSerialize["licenses"] = o.Licenses
 	}
-	if !isNil(o.Attributes) {
+	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
-	if !isNil(o.Zone) {
+	if !IsNil(o.Zone) {
 		toSerialize["zone"] = o.Zone
 	}
-	if !isNil(o.Status) {
+	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if !isNil(o.StatusDateTime) {
+	if !IsNil(o.StatusDateTime) {
 		toSerialize["statusDateTime"] = o.StatusDateTime
 	}
-	if !isNil(o.Reason) {
+	if !IsNil(o.Reason) {
 		toSerialize["reason"] = o.Reason
 	}
-	if !isNil(o.Notes) {
+	if !IsNil(o.Notes) {
 		toSerialize["notes"] = o.Notes
 	}
 	if o.DateCreated.IsSet() {
@@ -691,16 +691,20 @@ func (o Product) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Product) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Product) UnmarshalJSON(data []byte) (err error) {
 	varProduct := _Product{}
 
-	if err = json.Unmarshal(bytes, &varProduct); err == nil {
+	err = json.Unmarshal(data, &varProduct)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Product(varProduct)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "productName")
 		delete(additionalProperties, "url")
 		delete(additionalProperties, "productTenantId")

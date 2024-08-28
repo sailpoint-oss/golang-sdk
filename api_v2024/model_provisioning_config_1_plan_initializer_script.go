@@ -45,7 +45,7 @@ func NewProvisioningConfig1PlanInitializerScriptWithDefaults() *ProvisioningConf
 
 // GetSource returns the Source field value if set, zero value otherwise.
 func (o *ProvisioningConfig1PlanInitializerScript) GetSource() string {
-	if o == nil || isNil(o.Source) {
+	if o == nil || IsNil(o.Source) {
 		var ret string
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *ProvisioningConfig1PlanInitializerScript) GetSource() string {
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProvisioningConfig1PlanInitializerScript) GetSourceOk() (*string, bool) {
-	if o == nil || isNil(o.Source) {
+	if o == nil || IsNil(o.Source) {
 		return nil, false
 	}
 	return o.Source, true
@@ -63,7 +63,7 @@ func (o *ProvisioningConfig1PlanInitializerScript) GetSourceOk() (*string, bool)
 
 // HasSource returns a boolean if a field has been set.
 func (o *ProvisioningConfig1PlanInitializerScript) HasSource() bool {
-	if o != nil && !isNil(o.Source) {
+	if o != nil && !IsNil(o.Source) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o ProvisioningConfig1PlanInitializerScript) MarshalJSON() ([]byte, error) 
 
 func (o ProvisioningConfig1PlanInitializerScript) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Source) {
+	if !IsNil(o.Source) {
 		toSerialize["source"] = o.Source
 	}
 
@@ -96,16 +96,20 @@ func (o ProvisioningConfig1PlanInitializerScript) ToMap() (map[string]interface{
 	return toSerialize, nil
 }
 
-func (o *ProvisioningConfig1PlanInitializerScript) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ProvisioningConfig1PlanInitializerScript) UnmarshalJSON(data []byte) (err error) {
 	varProvisioningConfig1PlanInitializerScript := _ProvisioningConfig1PlanInitializerScript{}
 
-	if err = json.Unmarshal(bytes, &varProvisioningConfig1PlanInitializerScript); err == nil {
+	err = json.Unmarshal(data, &varProvisioningConfig1PlanInitializerScript)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ProvisioningConfig1PlanInitializerScript(varProvisioningConfig1PlanInitializerScript)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "source")
 		o.AdditionalProperties = additionalProperties
 	}

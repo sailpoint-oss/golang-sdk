@@ -12,6 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
@@ -52,7 +53,11 @@ func (dst *TriggerExampleOutput) UnmarshalJSON(data []byte) error {
 		if string(jsonAccessRequestDynamicApprover1) == "{}" { // empty struct
 			dst.AccessRequestDynamicApprover1 = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.AccessRequestDynamicApprover1); err != nil {
+				dst.AccessRequestDynamicApprover1 = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.AccessRequestDynamicApprover1 = nil
@@ -65,7 +70,11 @@ func (dst *TriggerExampleOutput) UnmarshalJSON(data []byte) error {
 		if string(jsonAccessRequestPreApproval1) == "{}" { // empty struct
 			dst.AccessRequestPreApproval1 = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.AccessRequestPreApproval1); err != nil {
+				dst.AccessRequestPreApproval1 = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.AccessRequestPreApproval1 = nil

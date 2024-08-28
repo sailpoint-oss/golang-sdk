@@ -45,7 +45,7 @@ func NewListFormElementDataByElementIDResponseWithDefaults() *ListFormElementDat
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *ListFormElementDataByElementIDResponse) GetResults() []FormElementDataSourceConfigOptions {
-	if o == nil || isNil(o.Results) {
+	if o == nil || IsNil(o.Results) {
 		var ret []FormElementDataSourceConfigOptions
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *ListFormElementDataByElementIDResponse) GetResults() []FormElementDataS
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ListFormElementDataByElementIDResponse) GetResultsOk() ([]FormElementDataSourceConfigOptions, bool) {
-	if o == nil || isNil(o.Results) {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -63,7 +63,7 @@ func (o *ListFormElementDataByElementIDResponse) GetResultsOk() ([]FormElementDa
 
 // HasResults returns a boolean if a field has been set.
 func (o *ListFormElementDataByElementIDResponse) HasResults() bool {
-	if o != nil && !isNil(o.Results) {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o ListFormElementDataByElementIDResponse) MarshalJSON() ([]byte, error) {
 
 func (o ListFormElementDataByElementIDResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Results) {
+	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
 
@@ -96,16 +96,20 @@ func (o ListFormElementDataByElementIDResponse) ToMap() (map[string]interface{},
 	return toSerialize, nil
 }
 
-func (o *ListFormElementDataByElementIDResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ListFormElementDataByElementIDResponse) UnmarshalJSON(data []byte) (err error) {
 	varListFormElementDataByElementIDResponse := _ListFormElementDataByElementIDResponse{}
 
-	if err = json.Unmarshal(bytes, &varListFormElementDataByElementIDResponse); err == nil {
+	err = json.Unmarshal(data, &varListFormElementDataByElementIDResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ListFormElementDataByElementIDResponse(varListFormElementDataByElementIDResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "results")
 		o.AdditionalProperties = additionalProperties
 	}

@@ -48,7 +48,7 @@ func NewErrorWithDefaults() *Error {
 
 // GetDetailCode returns the DetailCode field value if set, zero value otherwise.
 func (o *Error) GetDetailCode() string {
-	if o == nil || isNil(o.DetailCode) {
+	if o == nil || IsNil(o.DetailCode) {
 		var ret string
 		return ret
 	}
@@ -58,7 +58,7 @@ func (o *Error) GetDetailCode() string {
 // GetDetailCodeOk returns a tuple with the DetailCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Error) GetDetailCodeOk() (*string, bool) {
-	if o == nil || isNil(o.DetailCode) {
+	if o == nil || IsNil(o.DetailCode) {
 		return nil, false
 	}
 	return o.DetailCode, true
@@ -66,7 +66,7 @@ func (o *Error) GetDetailCodeOk() (*string, bool) {
 
 // HasDetailCode returns a boolean if a field has been set.
 func (o *Error) HasDetailCode() bool {
-	if o != nil && !isNil(o.DetailCode) {
+	if o != nil && !IsNil(o.DetailCode) {
 		return true
 	}
 
@@ -80,7 +80,7 @@ func (o *Error) SetDetailCode(v string) {
 
 // GetMessages returns the Messages field value if set, zero value otherwise.
 func (o *Error) GetMessages() []ErrorMessage {
-	if o == nil || isNil(o.Messages) {
+	if o == nil || IsNil(o.Messages) {
 		var ret []ErrorMessage
 		return ret
 	}
@@ -90,7 +90,7 @@ func (o *Error) GetMessages() []ErrorMessage {
 // GetMessagesOk returns a tuple with the Messages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Error) GetMessagesOk() ([]ErrorMessage, bool) {
-	if o == nil || isNil(o.Messages) {
+	if o == nil || IsNil(o.Messages) {
 		return nil, false
 	}
 	return o.Messages, true
@@ -98,7 +98,7 @@ func (o *Error) GetMessagesOk() ([]ErrorMessage, bool) {
 
 // HasMessages returns a boolean if a field has been set.
 func (o *Error) HasMessages() bool {
-	if o != nil && !isNil(o.Messages) {
+	if o != nil && !IsNil(o.Messages) {
 		return true
 	}
 
@@ -112,7 +112,7 @@ func (o *Error) SetMessages(v []ErrorMessage) {
 
 // GetTrackingId returns the TrackingId field value if set, zero value otherwise.
 func (o *Error) GetTrackingId() string {
-	if o == nil || isNil(o.TrackingId) {
+	if o == nil || IsNil(o.TrackingId) {
 		var ret string
 		return ret
 	}
@@ -122,7 +122,7 @@ func (o *Error) GetTrackingId() string {
 // GetTrackingIdOk returns a tuple with the TrackingId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Error) GetTrackingIdOk() (*string, bool) {
-	if o == nil || isNil(o.TrackingId) {
+	if o == nil || IsNil(o.TrackingId) {
 		return nil, false
 	}
 	return o.TrackingId, true
@@ -130,7 +130,7 @@ func (o *Error) GetTrackingIdOk() (*string, bool) {
 
 // HasTrackingId returns a boolean if a field has been set.
 func (o *Error) HasTrackingId() bool {
-	if o != nil && !isNil(o.TrackingId) {
+	if o != nil && !IsNil(o.TrackingId) {
 		return true
 	}
 
@@ -152,13 +152,13 @@ func (o Error) MarshalJSON() ([]byte, error) {
 
 func (o Error) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.DetailCode) {
+	if !IsNil(o.DetailCode) {
 		toSerialize["detailCode"] = o.DetailCode
 	}
-	if !isNil(o.Messages) {
+	if !IsNil(o.Messages) {
 		toSerialize["messages"] = o.Messages
 	}
-	if !isNil(o.TrackingId) {
+	if !IsNil(o.TrackingId) {
 		toSerialize["trackingId"] = o.TrackingId
 	}
 
@@ -169,16 +169,20 @@ func (o Error) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Error) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Error) UnmarshalJSON(data []byte) (err error) {
 	varError := _Error{}
 
-	if err = json.Unmarshal(bytes, &varError); err == nil {
+	err = json.Unmarshal(data, &varError)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Error(varError)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "detailCode")
 		delete(additionalProperties, "messages")
 		delete(additionalProperties, "trackingId")

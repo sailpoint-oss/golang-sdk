@@ -55,7 +55,7 @@ func (o *AttributeDTOList) GetAttributes() []AttributeDTO {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AttributeDTOList) GetAttributesOk() ([]AttributeDTO, bool) {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		return nil, false
 	}
 	return o.Attributes, true
@@ -63,7 +63,7 @@ func (o *AttributeDTOList) GetAttributesOk() ([]AttributeDTO, bool) {
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *AttributeDTOList) HasAttributes() bool {
-	if o != nil && isNil(o.Attributes) {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -96,16 +96,20 @@ func (o AttributeDTOList) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AttributeDTOList) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AttributeDTOList) UnmarshalJSON(data []byte) (err error) {
 	varAttributeDTOList := _AttributeDTOList{}
 
-	if err = json.Unmarshal(bytes, &varAttributeDTOList); err == nil {
+	err = json.Unmarshal(data, &varAttributeDTOList)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AttributeDTOList(varAttributeDTOList)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "attributes")
 		o.AdditionalProperties = additionalProperties
 	}

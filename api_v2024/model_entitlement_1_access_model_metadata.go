@@ -55,7 +55,7 @@ func (o *Entitlement1AccessModelMetadata) GetAttributes() []AttributeDTO {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Entitlement1AccessModelMetadata) GetAttributesOk() ([]AttributeDTO, bool) {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		return nil, false
 	}
 	return o.Attributes, true
@@ -63,7 +63,7 @@ func (o *Entitlement1AccessModelMetadata) GetAttributesOk() ([]AttributeDTO, boo
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *Entitlement1AccessModelMetadata) HasAttributes() bool {
-	if o != nil && isNil(o.Attributes) {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -96,16 +96,20 @@ func (o Entitlement1AccessModelMetadata) ToMap() (map[string]interface{}, error)
 	return toSerialize, nil
 }
 
-func (o *Entitlement1AccessModelMetadata) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Entitlement1AccessModelMetadata) UnmarshalJSON(data []byte) (err error) {
 	varEntitlement1AccessModelMetadata := _Entitlement1AccessModelMetadata{}
 
-	if err = json.Unmarshal(bytes, &varEntitlement1AccessModelMetadata); err == nil {
+	err = json.Unmarshal(data, &varEntitlement1AccessModelMetadata)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Entitlement1AccessModelMetadata(varEntitlement1AccessModelMetadata)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "attributes")
 		o.AdditionalProperties = additionalProperties
 	}

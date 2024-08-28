@@ -49,7 +49,7 @@ func NewFeatureValueDtoWithDefaults() *FeatureValueDto {
 
 // GetFeature returns the Feature field value if set, zero value otherwise.
 func (o *FeatureValueDto) GetFeature() string {
-	if o == nil || isNil(o.Feature) {
+	if o == nil || IsNil(o.Feature) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *FeatureValueDto) GetFeature() string {
 // GetFeatureOk returns a tuple with the Feature field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FeatureValueDto) GetFeatureOk() (*string, bool) {
-	if o == nil || isNil(o.Feature) {
+	if o == nil || IsNil(o.Feature) {
 		return nil, false
 	}
 	return o.Feature, true
@@ -67,7 +67,7 @@ func (o *FeatureValueDto) GetFeatureOk() (*string, bool) {
 
 // HasFeature returns a boolean if a field has been set.
 func (o *FeatureValueDto) HasFeature() bool {
-	if o != nil && !isNil(o.Feature) {
+	if o != nil && !IsNil(o.Feature) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *FeatureValueDto) SetFeature(v string) {
 
 // GetNumerator returns the Numerator field value if set, zero value otherwise.
 func (o *FeatureValueDto) GetNumerator() int32 {
-	if o == nil || isNil(o.Numerator) {
+	if o == nil || IsNil(o.Numerator) {
 		var ret int32
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *FeatureValueDto) GetNumerator() int32 {
 // GetNumeratorOk returns a tuple with the Numerator field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FeatureValueDto) GetNumeratorOk() (*int32, bool) {
-	if o == nil || isNil(o.Numerator) {
+	if o == nil || IsNil(o.Numerator) {
 		return nil, false
 	}
 	return o.Numerator, true
@@ -99,7 +99,7 @@ func (o *FeatureValueDto) GetNumeratorOk() (*int32, bool) {
 
 // HasNumerator returns a boolean if a field has been set.
 func (o *FeatureValueDto) HasNumerator() bool {
-	if o != nil && !isNil(o.Numerator) {
+	if o != nil && !IsNil(o.Numerator) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *FeatureValueDto) SetNumerator(v int32) {
 
 // GetDenominator returns the Denominator field value if set, zero value otherwise.
 func (o *FeatureValueDto) GetDenominator() int32 {
-	if o == nil || isNil(o.Denominator) {
+	if o == nil || IsNil(o.Denominator) {
 		var ret int32
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *FeatureValueDto) GetDenominator() int32 {
 // GetDenominatorOk returns a tuple with the Denominator field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FeatureValueDto) GetDenominatorOk() (*int32, bool) {
-	if o == nil || isNil(o.Denominator) {
+	if o == nil || IsNil(o.Denominator) {
 		return nil, false
 	}
 	return o.Denominator, true
@@ -131,7 +131,7 @@ func (o *FeatureValueDto) GetDenominatorOk() (*int32, bool) {
 
 // HasDenominator returns a boolean if a field has been set.
 func (o *FeatureValueDto) HasDenominator() bool {
-	if o != nil && !isNil(o.Denominator) {
+	if o != nil && !IsNil(o.Denominator) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o FeatureValueDto) MarshalJSON() ([]byte, error) {
 
 func (o FeatureValueDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Feature) {
+	if !IsNil(o.Feature) {
 		toSerialize["feature"] = o.Feature
 	}
-	if !isNil(o.Numerator) {
+	if !IsNil(o.Numerator) {
 		toSerialize["numerator"] = o.Numerator
 	}
-	if !isNil(o.Denominator) {
+	if !IsNil(o.Denominator) {
 		toSerialize["denominator"] = o.Denominator
 	}
 
@@ -170,16 +170,20 @@ func (o FeatureValueDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *FeatureValueDto) UnmarshalJSON(bytes []byte) (err error) {
+func (o *FeatureValueDto) UnmarshalJSON(data []byte) (err error) {
 	varFeatureValueDto := _FeatureValueDto{}
 
-	if err = json.Unmarshal(bytes, &varFeatureValueDto); err == nil {
+	err = json.Unmarshal(data, &varFeatureValueDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = FeatureValueDto(varFeatureValueDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "feature")
 		delete(additionalProperties, "numerator")
 		delete(additionalProperties, "denominator")

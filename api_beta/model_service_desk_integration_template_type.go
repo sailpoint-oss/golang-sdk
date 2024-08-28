@@ -52,7 +52,7 @@ func NewServiceDeskIntegrationTemplateTypeWithDefaults() *ServiceDeskIntegration
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ServiceDeskIntegrationTemplateType) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -62,7 +62,7 @@ func (o *ServiceDeskIntegrationTemplateType) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceDeskIntegrationTemplateType) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -70,7 +70,7 @@ func (o *ServiceDeskIntegrationTemplateType) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ServiceDeskIntegrationTemplateType) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -140,7 +140,7 @@ func (o ServiceDeskIntegrationTemplateType) MarshalJSON() ([]byte, error) {
 
 func (o ServiceDeskIntegrationTemplateType) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 	toSerialize["type"] = o.Type
@@ -153,8 +153,8 @@ func (o ServiceDeskIntegrationTemplateType) ToMap() (map[string]interface{}, err
 	return toSerialize, nil
 }
 
-func (o *ServiceDeskIntegrationTemplateType) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *ServiceDeskIntegrationTemplateType) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -164,7 +164,7 @@ func (o *ServiceDeskIntegrationTemplateType) UnmarshalJSON(bytes []byte) (err er
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -178,13 +178,17 @@ func (o *ServiceDeskIntegrationTemplateType) UnmarshalJSON(bytes []byte) (err er
 
 	varServiceDeskIntegrationTemplateType := _ServiceDeskIntegrationTemplateType{}
 
-	if err = json.Unmarshal(bytes, &varServiceDeskIntegrationTemplateType); err == nil {
+	err = json.Unmarshal(data, &varServiceDeskIntegrationTemplateType)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ServiceDeskIntegrationTemplateType(varServiceDeskIntegrationTemplateType)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "scriptName")

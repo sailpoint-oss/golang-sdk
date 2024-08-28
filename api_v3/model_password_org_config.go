@@ -67,7 +67,7 @@ func NewPasswordOrgConfigWithDefaults() *PasswordOrgConfig {
 
 // GetCustomInstructionsEnabled returns the CustomInstructionsEnabled field value if set, zero value otherwise.
 func (o *PasswordOrgConfig) GetCustomInstructionsEnabled() bool {
-	if o == nil || isNil(o.CustomInstructionsEnabled) {
+	if o == nil || IsNil(o.CustomInstructionsEnabled) {
 		var ret bool
 		return ret
 	}
@@ -77,7 +77,7 @@ func (o *PasswordOrgConfig) GetCustomInstructionsEnabled() bool {
 // GetCustomInstructionsEnabledOk returns a tuple with the CustomInstructionsEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordOrgConfig) GetCustomInstructionsEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.CustomInstructionsEnabled) {
+	if o == nil || IsNil(o.CustomInstructionsEnabled) {
 		return nil, false
 	}
 	return o.CustomInstructionsEnabled, true
@@ -85,7 +85,7 @@ func (o *PasswordOrgConfig) GetCustomInstructionsEnabledOk() (*bool, bool) {
 
 // HasCustomInstructionsEnabled returns a boolean if a field has been set.
 func (o *PasswordOrgConfig) HasCustomInstructionsEnabled() bool {
-	if o != nil && !isNil(o.CustomInstructionsEnabled) {
+	if o != nil && !IsNil(o.CustomInstructionsEnabled) {
 		return true
 	}
 
@@ -99,7 +99,7 @@ func (o *PasswordOrgConfig) SetCustomInstructionsEnabled(v bool) {
 
 // GetDigitTokenEnabled returns the DigitTokenEnabled field value if set, zero value otherwise.
 func (o *PasswordOrgConfig) GetDigitTokenEnabled() bool {
-	if o == nil || isNil(o.DigitTokenEnabled) {
+	if o == nil || IsNil(o.DigitTokenEnabled) {
 		var ret bool
 		return ret
 	}
@@ -109,7 +109,7 @@ func (o *PasswordOrgConfig) GetDigitTokenEnabled() bool {
 // GetDigitTokenEnabledOk returns a tuple with the DigitTokenEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordOrgConfig) GetDigitTokenEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.DigitTokenEnabled) {
+	if o == nil || IsNil(o.DigitTokenEnabled) {
 		return nil, false
 	}
 	return o.DigitTokenEnabled, true
@@ -117,7 +117,7 @@ func (o *PasswordOrgConfig) GetDigitTokenEnabledOk() (*bool, bool) {
 
 // HasDigitTokenEnabled returns a boolean if a field has been set.
 func (o *PasswordOrgConfig) HasDigitTokenEnabled() bool {
-	if o != nil && !isNil(o.DigitTokenEnabled) {
+	if o != nil && !IsNil(o.DigitTokenEnabled) {
 		return true
 	}
 
@@ -131,7 +131,7 @@ func (o *PasswordOrgConfig) SetDigitTokenEnabled(v bool) {
 
 // GetDigitTokenDurationMinutes returns the DigitTokenDurationMinutes field value if set, zero value otherwise.
 func (o *PasswordOrgConfig) GetDigitTokenDurationMinutes() int32 {
-	if o == nil || isNil(o.DigitTokenDurationMinutes) {
+	if o == nil || IsNil(o.DigitTokenDurationMinutes) {
 		var ret int32
 		return ret
 	}
@@ -141,7 +141,7 @@ func (o *PasswordOrgConfig) GetDigitTokenDurationMinutes() int32 {
 // GetDigitTokenDurationMinutesOk returns a tuple with the DigitTokenDurationMinutes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordOrgConfig) GetDigitTokenDurationMinutesOk() (*int32, bool) {
-	if o == nil || isNil(o.DigitTokenDurationMinutes) {
+	if o == nil || IsNil(o.DigitTokenDurationMinutes) {
 		return nil, false
 	}
 	return o.DigitTokenDurationMinutes, true
@@ -149,7 +149,7 @@ func (o *PasswordOrgConfig) GetDigitTokenDurationMinutesOk() (*int32, bool) {
 
 // HasDigitTokenDurationMinutes returns a boolean if a field has been set.
 func (o *PasswordOrgConfig) HasDigitTokenDurationMinutes() bool {
-	if o != nil && !isNil(o.DigitTokenDurationMinutes) {
+	if o != nil && !IsNil(o.DigitTokenDurationMinutes) {
 		return true
 	}
 
@@ -163,7 +163,7 @@ func (o *PasswordOrgConfig) SetDigitTokenDurationMinutes(v int32) {
 
 // GetDigitTokenLength returns the DigitTokenLength field value if set, zero value otherwise.
 func (o *PasswordOrgConfig) GetDigitTokenLength() int32 {
-	if o == nil || isNil(o.DigitTokenLength) {
+	if o == nil || IsNil(o.DigitTokenLength) {
 		var ret int32
 		return ret
 	}
@@ -173,7 +173,7 @@ func (o *PasswordOrgConfig) GetDigitTokenLength() int32 {
 // GetDigitTokenLengthOk returns a tuple with the DigitTokenLength field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordOrgConfig) GetDigitTokenLengthOk() (*int32, bool) {
-	if o == nil || isNil(o.DigitTokenLength) {
+	if o == nil || IsNil(o.DigitTokenLength) {
 		return nil, false
 	}
 	return o.DigitTokenLength, true
@@ -181,7 +181,7 @@ func (o *PasswordOrgConfig) GetDigitTokenLengthOk() (*int32, bool) {
 
 // HasDigitTokenLength returns a boolean if a field has been set.
 func (o *PasswordOrgConfig) HasDigitTokenLength() bool {
-	if o != nil && !isNil(o.DigitTokenLength) {
+	if o != nil && !IsNil(o.DigitTokenLength) {
 		return true
 	}
 
@@ -203,16 +203,16 @@ func (o PasswordOrgConfig) MarshalJSON() ([]byte, error) {
 
 func (o PasswordOrgConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.CustomInstructionsEnabled) {
+	if !IsNil(o.CustomInstructionsEnabled) {
 		toSerialize["customInstructionsEnabled"] = o.CustomInstructionsEnabled
 	}
-	if !isNil(o.DigitTokenEnabled) {
+	if !IsNil(o.DigitTokenEnabled) {
 		toSerialize["digitTokenEnabled"] = o.DigitTokenEnabled
 	}
-	if !isNil(o.DigitTokenDurationMinutes) {
+	if !IsNil(o.DigitTokenDurationMinutes) {
 		toSerialize["digitTokenDurationMinutes"] = o.DigitTokenDurationMinutes
 	}
-	if !isNil(o.DigitTokenLength) {
+	if !IsNil(o.DigitTokenLength) {
 		toSerialize["digitTokenLength"] = o.DigitTokenLength
 	}
 
@@ -223,16 +223,20 @@ func (o PasswordOrgConfig) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *PasswordOrgConfig) UnmarshalJSON(bytes []byte) (err error) {
+func (o *PasswordOrgConfig) UnmarshalJSON(data []byte) (err error) {
 	varPasswordOrgConfig := _PasswordOrgConfig{}
 
-	if err = json.Unmarshal(bytes, &varPasswordOrgConfig); err == nil {
+	err = json.Unmarshal(data, &varPasswordOrgConfig)
+
+	if err != nil {
+		return err
+	}
+
 	*o = PasswordOrgConfig(varPasswordOrgConfig)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "customInstructionsEnabled")
 		delete(additionalProperties, "digitTokenEnabled")
 		delete(additionalProperties, "digitTokenDurationMinutes")

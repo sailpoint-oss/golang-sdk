@@ -78,7 +78,7 @@ func NewCreateOAuthClientRequestWithDefaults() *CreateOAuthClientRequest {
 
 // GetBusinessName returns the BusinessName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateOAuthClientRequest) GetBusinessName() string {
-	if o == nil || isNil(o.BusinessName.Get()) {
+	if o == nil || IsNil(o.BusinessName.Get()) {
 		var ret string
 		return ret
 	}
@@ -120,7 +120,7 @@ func (o *CreateOAuthClientRequest) UnsetBusinessName() {
 
 // GetHomepageUrl returns the HomepageUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateOAuthClientRequest) GetHomepageUrl() string {
-	if o == nil || isNil(o.HomepageUrl.Get()) {
+	if o == nil || IsNil(o.HomepageUrl.Get()) {
 		var ret string
 		return ret
 	}
@@ -238,7 +238,7 @@ func (o *CreateOAuthClientRequest) SetAccessTokenValiditySeconds(v int32) {
 
 // GetRefreshTokenValiditySeconds returns the RefreshTokenValiditySeconds field value if set, zero value otherwise.
 func (o *CreateOAuthClientRequest) GetRefreshTokenValiditySeconds() int32 {
-	if o == nil || isNil(o.RefreshTokenValiditySeconds) {
+	if o == nil || IsNil(o.RefreshTokenValiditySeconds) {
 		var ret int32
 		return ret
 	}
@@ -248,7 +248,7 @@ func (o *CreateOAuthClientRequest) GetRefreshTokenValiditySeconds() int32 {
 // GetRefreshTokenValiditySecondsOk returns a tuple with the RefreshTokenValiditySeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateOAuthClientRequest) GetRefreshTokenValiditySecondsOk() (*int32, bool) {
-	if o == nil || isNil(o.RefreshTokenValiditySeconds) {
+	if o == nil || IsNil(o.RefreshTokenValiditySeconds) {
 		return nil, false
 	}
 	return o.RefreshTokenValiditySeconds, true
@@ -256,7 +256,7 @@ func (o *CreateOAuthClientRequest) GetRefreshTokenValiditySecondsOk() (*int32, b
 
 // HasRefreshTokenValiditySeconds returns a boolean if a field has been set.
 func (o *CreateOAuthClientRequest) HasRefreshTokenValiditySeconds() bool {
-	if o != nil && !isNil(o.RefreshTokenValiditySeconds) {
+	if o != nil && !IsNil(o.RefreshTokenValiditySeconds) {
 		return true
 	}
 
@@ -281,7 +281,7 @@ func (o *CreateOAuthClientRequest) GetRedirectUris() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateOAuthClientRequest) GetRedirectUrisOk() ([]string, bool) {
-	if o == nil || isNil(o.RedirectUris) {
+	if o == nil || IsNil(o.RedirectUris) {
 		return nil, false
 	}
 	return o.RedirectUris, true
@@ -289,7 +289,7 @@ func (o *CreateOAuthClientRequest) GetRedirectUrisOk() ([]string, bool) {
 
 // HasRedirectUris returns a boolean if a field has been set.
 func (o *CreateOAuthClientRequest) HasRedirectUris() bool {
-	if o != nil && isNil(o.RedirectUris) {
+	if o != nil && !IsNil(o.RedirectUris) {
 		return true
 	}
 
@@ -316,7 +316,7 @@ func (o *CreateOAuthClientRequest) GetGrantTypes() []GrantType {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateOAuthClientRequest) GetGrantTypesOk() ([]GrantType, bool) {
-	if o == nil || isNil(o.GrantTypes) {
+	if o == nil || IsNil(o.GrantTypes) {
 		return nil, false
 	}
 	return o.GrantTypes, true
@@ -353,7 +353,7 @@ func (o *CreateOAuthClientRequest) SetAccessType(v AccessType) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *CreateOAuthClientRequest) GetType() ClientType {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret ClientType
 		return ret
 	}
@@ -363,7 +363,7 @@ func (o *CreateOAuthClientRequest) GetType() ClientType {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateOAuthClientRequest) GetTypeOk() (*ClientType, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -371,7 +371,7 @@ func (o *CreateOAuthClientRequest) GetTypeOk() (*ClientType, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *CreateOAuthClientRequest) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -385,7 +385,7 @@ func (o *CreateOAuthClientRequest) SetType(v ClientType) {
 
 // GetInternal returns the Internal field value if set, zero value otherwise.
 func (o *CreateOAuthClientRequest) GetInternal() bool {
-	if o == nil || isNil(o.Internal) {
+	if o == nil || IsNil(o.Internal) {
 		var ret bool
 		return ret
 	}
@@ -395,7 +395,7 @@ func (o *CreateOAuthClientRequest) GetInternal() bool {
 // GetInternalOk returns a tuple with the Internal field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateOAuthClientRequest) GetInternalOk() (*bool, bool) {
-	if o == nil || isNil(o.Internal) {
+	if o == nil || IsNil(o.Internal) {
 		return nil, false
 	}
 	return o.Internal, true
@@ -403,7 +403,7 @@ func (o *CreateOAuthClientRequest) GetInternalOk() (*bool, bool) {
 
 // HasInternal returns a boolean if a field has been set.
 func (o *CreateOAuthClientRequest) HasInternal() bool {
-	if o != nil && !isNil(o.Internal) {
+	if o != nil && !IsNil(o.Internal) {
 		return true
 	}
 
@@ -441,7 +441,7 @@ func (o *CreateOAuthClientRequest) SetEnabled(v bool) {
 
 // GetStrongAuthSupported returns the StrongAuthSupported field value if set, zero value otherwise.
 func (o *CreateOAuthClientRequest) GetStrongAuthSupported() bool {
-	if o == nil || isNil(o.StrongAuthSupported) {
+	if o == nil || IsNil(o.StrongAuthSupported) {
 		var ret bool
 		return ret
 	}
@@ -451,7 +451,7 @@ func (o *CreateOAuthClientRequest) GetStrongAuthSupported() bool {
 // GetStrongAuthSupportedOk returns a tuple with the StrongAuthSupported field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateOAuthClientRequest) GetStrongAuthSupportedOk() (*bool, bool) {
-	if o == nil || isNil(o.StrongAuthSupported) {
+	if o == nil || IsNil(o.StrongAuthSupported) {
 		return nil, false
 	}
 	return o.StrongAuthSupported, true
@@ -459,7 +459,7 @@ func (o *CreateOAuthClientRequest) GetStrongAuthSupportedOk() (*bool, bool) {
 
 // HasStrongAuthSupported returns a boolean if a field has been set.
 func (o *CreateOAuthClientRequest) HasStrongAuthSupported() bool {
-	if o != nil && !isNil(o.StrongAuthSupported) {
+	if o != nil && !IsNil(o.StrongAuthSupported) {
 		return true
 	}
 
@@ -473,7 +473,7 @@ func (o *CreateOAuthClientRequest) SetStrongAuthSupported(v bool) {
 
 // GetClaimsSupported returns the ClaimsSupported field value if set, zero value otherwise.
 func (o *CreateOAuthClientRequest) GetClaimsSupported() bool {
-	if o == nil || isNil(o.ClaimsSupported) {
+	if o == nil || IsNil(o.ClaimsSupported) {
 		var ret bool
 		return ret
 	}
@@ -483,7 +483,7 @@ func (o *CreateOAuthClientRequest) GetClaimsSupported() bool {
 // GetClaimsSupportedOk returns a tuple with the ClaimsSupported field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateOAuthClientRequest) GetClaimsSupportedOk() (*bool, bool) {
-	if o == nil || isNil(o.ClaimsSupported) {
+	if o == nil || IsNil(o.ClaimsSupported) {
 		return nil, false
 	}
 	return o.ClaimsSupported, true
@@ -491,7 +491,7 @@ func (o *CreateOAuthClientRequest) GetClaimsSupportedOk() (*bool, bool) {
 
 // HasClaimsSupported returns a boolean if a field has been set.
 func (o *CreateOAuthClientRequest) HasClaimsSupported() bool {
-	if o != nil && !isNil(o.ClaimsSupported) {
+	if o != nil && !IsNil(o.ClaimsSupported) {
 		return true
 	}
 
@@ -516,7 +516,7 @@ func (o *CreateOAuthClientRequest) GetScope() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateOAuthClientRequest) GetScopeOk() ([]string, bool) {
-	if o == nil || isNil(o.Scope) {
+	if o == nil || IsNil(o.Scope) {
 		return nil, false
 	}
 	return o.Scope, true
@@ -524,7 +524,7 @@ func (o *CreateOAuthClientRequest) GetScopeOk() ([]string, bool) {
 
 // HasScope returns a boolean if a field has been set.
 func (o *CreateOAuthClientRequest) HasScope() bool {
-	if o != nil && isNil(o.Scope) {
+	if o != nil && !IsNil(o.Scope) {
 		return true
 	}
 
@@ -555,7 +555,7 @@ func (o CreateOAuthClientRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name.Get()
 	toSerialize["description"] = o.Description.Get()
 	toSerialize["accessTokenValiditySeconds"] = o.AccessTokenValiditySeconds
-	if !isNil(o.RefreshTokenValiditySeconds) {
+	if !IsNil(o.RefreshTokenValiditySeconds) {
 		toSerialize["refreshTokenValiditySeconds"] = o.RefreshTokenValiditySeconds
 	}
 	if o.RedirectUris != nil {
@@ -565,17 +565,17 @@ func (o CreateOAuthClientRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["grantTypes"] = o.GrantTypes
 	}
 	toSerialize["accessType"] = o.AccessType
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Internal) {
+	if !IsNil(o.Internal) {
 		toSerialize["internal"] = o.Internal
 	}
 	toSerialize["enabled"] = o.Enabled
-	if !isNil(o.StrongAuthSupported) {
+	if !IsNil(o.StrongAuthSupported) {
 		toSerialize["strongAuthSupported"] = o.StrongAuthSupported
 	}
-	if !isNil(o.ClaimsSupported) {
+	if !IsNil(o.ClaimsSupported) {
 		toSerialize["claimsSupported"] = o.ClaimsSupported
 	}
 	if o.Scope != nil {
@@ -589,8 +589,8 @@ func (o CreateOAuthClientRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CreateOAuthClientRequest) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *CreateOAuthClientRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -604,7 +604,7 @@ func (o *CreateOAuthClientRequest) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -618,13 +618,17 @@ func (o *CreateOAuthClientRequest) UnmarshalJSON(bytes []byte) (err error) {
 
 	varCreateOAuthClientRequest := _CreateOAuthClientRequest{}
 
-	if err = json.Unmarshal(bytes, &varCreateOAuthClientRequest); err == nil {
+	err = json.Unmarshal(data, &varCreateOAuthClientRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CreateOAuthClientRequest(varCreateOAuthClientRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "businessName")
 		delete(additionalProperties, "homepageUrl")
 		delete(additionalProperties, "name")

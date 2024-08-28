@@ -154,7 +154,7 @@ func (o *UploadsResponse) SetType(v string) {
 
 // GetTenant returns the Tenant field value if set, zero value otherwise.
 func (o *UploadsResponse) GetTenant() string {
-	if o == nil || isNil(o.Tenant) {
+	if o == nil || IsNil(o.Tenant) {
 		var ret string
 		return ret
 	}
@@ -164,7 +164,7 @@ func (o *UploadsResponse) GetTenant() string {
 // GetTenantOk returns a tuple with the Tenant field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UploadsResponse) GetTenantOk() (*string, bool) {
-	if o == nil || isNil(o.Tenant) {
+	if o == nil || IsNil(o.Tenant) {
 		return nil, false
 	}
 	return o.Tenant, true
@@ -172,7 +172,7 @@ func (o *UploadsResponse) GetTenantOk() (*string, bool) {
 
 // HasTenant returns a boolean if a field has been set.
 func (o *UploadsResponse) HasTenant() bool {
-	if o != nil && !isNil(o.Tenant) {
+	if o != nil && !IsNil(o.Tenant) {
 		return true
 	}
 
@@ -186,7 +186,7 @@ func (o *UploadsResponse) SetTenant(v string) {
 
 // GetRequesterName returns the RequesterName field value if set, zero value otherwise.
 func (o *UploadsResponse) GetRequesterName() string {
-	if o == nil || isNil(o.RequesterName) {
+	if o == nil || IsNil(o.RequesterName) {
 		var ret string
 		return ret
 	}
@@ -196,7 +196,7 @@ func (o *UploadsResponse) GetRequesterName() string {
 // GetRequesterNameOk returns a tuple with the RequesterName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UploadsResponse) GetRequesterNameOk() (*string, bool) {
-	if o == nil || isNil(o.RequesterName) {
+	if o == nil || IsNil(o.RequesterName) {
 		return nil, false
 	}
 	return o.RequesterName, true
@@ -204,7 +204,7 @@ func (o *UploadsResponse) GetRequesterNameOk() (*string, bool) {
 
 // HasRequesterName returns a boolean if a field has been set.
 func (o *UploadsResponse) HasRequesterName() bool {
-	if o != nil && !isNil(o.RequesterName) {
+	if o != nil && !IsNil(o.RequesterName) {
 		return true
 	}
 
@@ -266,7 +266,7 @@ func (o *UploadsResponse) SetModified(v time.Time) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *UploadsResponse) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -276,7 +276,7 @@ func (o *UploadsResponse) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UploadsResponse) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -284,7 +284,7 @@ func (o *UploadsResponse) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *UploadsResponse) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -298,7 +298,7 @@ func (o *UploadsResponse) SetName(v string) {
 
 // GetUserCanDelete returns the UserCanDelete field value if set, zero value otherwise.
 func (o *UploadsResponse) GetUserCanDelete() bool {
-	if o == nil || isNil(o.UserCanDelete) {
+	if o == nil || IsNil(o.UserCanDelete) {
 		var ret bool
 		return ret
 	}
@@ -308,7 +308,7 @@ func (o *UploadsResponse) GetUserCanDelete() bool {
 // GetUserCanDeleteOk returns a tuple with the UserCanDelete field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UploadsResponse) GetUserCanDeleteOk() (*bool, bool) {
-	if o == nil || isNil(o.UserCanDelete) {
+	if o == nil || IsNil(o.UserCanDelete) {
 		return nil, false
 	}
 	return o.UserCanDelete, true
@@ -316,7 +316,7 @@ func (o *UploadsResponse) GetUserCanDeleteOk() (*bool, bool) {
 
 // HasUserCanDelete returns a boolean if a field has been set.
 func (o *UploadsResponse) HasUserCanDelete() bool {
-	if o != nil && !isNil(o.UserCanDelete) {
+	if o != nil && !IsNil(o.UserCanDelete) {
 		return true
 	}
 
@@ -330,7 +330,7 @@ func (o *UploadsResponse) SetUserCanDelete(v bool) {
 
 // GetIsPartial returns the IsPartial field value if set, zero value otherwise.
 func (o *UploadsResponse) GetIsPartial() bool {
-	if o == nil || isNil(o.IsPartial) {
+	if o == nil || IsNil(o.IsPartial) {
 		var ret bool
 		return ret
 	}
@@ -340,7 +340,7 @@ func (o *UploadsResponse) GetIsPartial() bool {
 // GetIsPartialOk returns a tuple with the IsPartial field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UploadsResponse) GetIsPartialOk() (*bool, bool) {
-	if o == nil || isNil(o.IsPartial) {
+	if o == nil || IsNil(o.IsPartial) {
 		return nil, false
 	}
 	return o.IsPartial, true
@@ -348,7 +348,7 @@ func (o *UploadsResponse) GetIsPartialOk() (*bool, bool) {
 
 // HasIsPartial returns a boolean if a field has been set.
 func (o *UploadsResponse) HasIsPartial() bool {
-	if o != nil && !isNil(o.IsPartial) {
+	if o != nil && !IsNil(o.IsPartial) {
 		return true
 	}
 
@@ -362,7 +362,7 @@ func (o *UploadsResponse) SetIsPartial(v bool) {
 
 // GetBackupType returns the BackupType field value if set, zero value otherwise.
 func (o *UploadsResponse) GetBackupType() string {
-	if o == nil || isNil(o.BackupType) {
+	if o == nil || IsNil(o.BackupType) {
 		var ret string
 		return ret
 	}
@@ -372,7 +372,7 @@ func (o *UploadsResponse) GetBackupType() string {
 // GetBackupTypeOk returns a tuple with the BackupType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UploadsResponse) GetBackupTypeOk() (*string, bool) {
-	if o == nil || isNil(o.BackupType) {
+	if o == nil || IsNil(o.BackupType) {
 		return nil, false
 	}
 	return o.BackupType, true
@@ -380,7 +380,7 @@ func (o *UploadsResponse) GetBackupTypeOk() (*string, bool) {
 
 // HasBackupType returns a boolean if a field has been set.
 func (o *UploadsResponse) HasBackupType() bool {
-	if o != nil && !isNil(o.BackupType) {
+	if o != nil && !IsNil(o.BackupType) {
 		return true
 	}
 
@@ -394,7 +394,7 @@ func (o *UploadsResponse) SetBackupType(v string) {
 
 // GetHydrationStatus returns the HydrationStatus field value if set, zero value otherwise.
 func (o *UploadsResponse) GetHydrationStatus() string {
-	if o == nil || isNil(o.HydrationStatus) {
+	if o == nil || IsNil(o.HydrationStatus) {
 		var ret string
 		return ret
 	}
@@ -404,7 +404,7 @@ func (o *UploadsResponse) GetHydrationStatus() string {
 // GetHydrationStatusOk returns a tuple with the HydrationStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UploadsResponse) GetHydrationStatusOk() (*string, bool) {
-	if o == nil || isNil(o.HydrationStatus) {
+	if o == nil || IsNil(o.HydrationStatus) {
 		return nil, false
 	}
 	return o.HydrationStatus, true
@@ -412,7 +412,7 @@ func (o *UploadsResponse) GetHydrationStatusOk() (*string, bool) {
 
 // HasHydrationStatus returns a boolean if a field has been set.
 func (o *UploadsResponse) HasHydrationStatus() bool {
-	if o != nil && !isNil(o.HydrationStatus) {
+	if o != nil && !IsNil(o.HydrationStatus) {
 		return true
 	}
 
@@ -437,27 +437,27 @@ func (o UploadsResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["jobId"] = o.JobId
 	toSerialize["status"] = o.Status
 	toSerialize["type"] = o.Type
-	if !isNil(o.Tenant) {
+	if !IsNil(o.Tenant) {
 		toSerialize["tenant"] = o.Tenant
 	}
-	if !isNil(o.RequesterName) {
+	if !IsNil(o.RequesterName) {
 		toSerialize["requesterName"] = o.RequesterName
 	}
 	toSerialize["created"] = o.Created
 	toSerialize["modified"] = o.Modified
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.UserCanDelete) {
+	if !IsNil(o.UserCanDelete) {
 		toSerialize["userCanDelete"] = o.UserCanDelete
 	}
-	if !isNil(o.IsPartial) {
+	if !IsNil(o.IsPartial) {
 		toSerialize["isPartial"] = o.IsPartial
 	}
-	if !isNil(o.BackupType) {
+	if !IsNil(o.BackupType) {
 		toSerialize["backupType"] = o.BackupType
 	}
-	if !isNil(o.HydrationStatus) {
+	if !IsNil(o.HydrationStatus) {
 		toSerialize["hydrationStatus"] = o.HydrationStatus
 	}
 
@@ -468,8 +468,8 @@ func (o UploadsResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *UploadsResponse) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *UploadsResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -482,7 +482,7 @@ func (o *UploadsResponse) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -496,13 +496,17 @@ func (o *UploadsResponse) UnmarshalJSON(bytes []byte) (err error) {
 
 	varUploadsResponse := _UploadsResponse{}
 
-	if err = json.Unmarshal(bytes, &varUploadsResponse); err == nil {
+	err = json.Unmarshal(data, &varUploadsResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = UploadsResponse(varUploadsResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "jobId")
 		delete(additionalProperties, "status")
 		delete(additionalProperties, "type")

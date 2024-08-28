@@ -51,7 +51,7 @@ func NewRecommendationResponseWithDefaults() *RecommendationResponse {
 
 // GetRequest returns the Request field value if set, zero value otherwise.
 func (o *RecommendationResponse) GetRequest() RecommendationRequest {
-	if o == nil || isNil(o.Request) {
+	if o == nil || IsNil(o.Request) {
 		var ret RecommendationRequest
 		return ret
 	}
@@ -61,7 +61,7 @@ func (o *RecommendationResponse) GetRequest() RecommendationRequest {
 // GetRequestOk returns a tuple with the Request field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RecommendationResponse) GetRequestOk() (*RecommendationRequest, bool) {
-	if o == nil || isNil(o.Request) {
+	if o == nil || IsNil(o.Request) {
 		return nil, false
 	}
 	return o.Request, true
@@ -69,7 +69,7 @@ func (o *RecommendationResponse) GetRequestOk() (*RecommendationRequest, bool) {
 
 // HasRequest returns a boolean if a field has been set.
 func (o *RecommendationResponse) HasRequest() bool {
-	if o != nil && !isNil(o.Request) {
+	if o != nil && !IsNil(o.Request) {
 		return true
 	}
 
@@ -83,7 +83,7 @@ func (o *RecommendationResponse) SetRequest(v RecommendationRequest) {
 
 // GetRecommendation returns the Recommendation field value if set, zero value otherwise.
 func (o *RecommendationResponse) GetRecommendation() string {
-	if o == nil || isNil(o.Recommendation) {
+	if o == nil || IsNil(o.Recommendation) {
 		var ret string
 		return ret
 	}
@@ -93,7 +93,7 @@ func (o *RecommendationResponse) GetRecommendation() string {
 // GetRecommendationOk returns a tuple with the Recommendation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RecommendationResponse) GetRecommendationOk() (*string, bool) {
-	if o == nil || isNil(o.Recommendation) {
+	if o == nil || IsNil(o.Recommendation) {
 		return nil, false
 	}
 	return o.Recommendation, true
@@ -101,7 +101,7 @@ func (o *RecommendationResponse) GetRecommendationOk() (*string, bool) {
 
 // HasRecommendation returns a boolean if a field has been set.
 func (o *RecommendationResponse) HasRecommendation() bool {
-	if o != nil && !isNil(o.Recommendation) {
+	if o != nil && !IsNil(o.Recommendation) {
 		return true
 	}
 
@@ -115,7 +115,7 @@ func (o *RecommendationResponse) SetRecommendation(v string) {
 
 // GetInterpretations returns the Interpretations field value if set, zero value otherwise.
 func (o *RecommendationResponse) GetInterpretations() []string {
-	if o == nil || isNil(o.Interpretations) {
+	if o == nil || IsNil(o.Interpretations) {
 		var ret []string
 		return ret
 	}
@@ -125,7 +125,7 @@ func (o *RecommendationResponse) GetInterpretations() []string {
 // GetInterpretationsOk returns a tuple with the Interpretations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RecommendationResponse) GetInterpretationsOk() ([]string, bool) {
-	if o == nil || isNil(o.Interpretations) {
+	if o == nil || IsNil(o.Interpretations) {
 		return nil, false
 	}
 	return o.Interpretations, true
@@ -133,7 +133,7 @@ func (o *RecommendationResponse) GetInterpretationsOk() ([]string, bool) {
 
 // HasInterpretations returns a boolean if a field has been set.
 func (o *RecommendationResponse) HasInterpretations() bool {
-	if o != nil && !isNil(o.Interpretations) {
+	if o != nil && !IsNil(o.Interpretations) {
 		return true
 	}
 
@@ -147,7 +147,7 @@ func (o *RecommendationResponse) SetInterpretations(v []string) {
 
 // GetTranslationMessages returns the TranslationMessages field value if set, zero value otherwise.
 func (o *RecommendationResponse) GetTranslationMessages() []TranslationMessage {
-	if o == nil || isNil(o.TranslationMessages) {
+	if o == nil || IsNil(o.TranslationMessages) {
 		var ret []TranslationMessage
 		return ret
 	}
@@ -157,7 +157,7 @@ func (o *RecommendationResponse) GetTranslationMessages() []TranslationMessage {
 // GetTranslationMessagesOk returns a tuple with the TranslationMessages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RecommendationResponse) GetTranslationMessagesOk() ([]TranslationMessage, bool) {
-	if o == nil || isNil(o.TranslationMessages) {
+	if o == nil || IsNil(o.TranslationMessages) {
 		return nil, false
 	}
 	return o.TranslationMessages, true
@@ -165,7 +165,7 @@ func (o *RecommendationResponse) GetTranslationMessagesOk() ([]TranslationMessag
 
 // HasTranslationMessages returns a boolean if a field has been set.
 func (o *RecommendationResponse) HasTranslationMessages() bool {
-	if o != nil && !isNil(o.TranslationMessages) {
+	if o != nil && !IsNil(o.TranslationMessages) {
 		return true
 	}
 
@@ -179,7 +179,7 @@ func (o *RecommendationResponse) SetTranslationMessages(v []TranslationMessage) 
 
 // GetRecommenderCalculations returns the RecommenderCalculations field value if set, zero value otherwise.
 func (o *RecommendationResponse) GetRecommenderCalculations() RecommenderCalculations {
-	if o == nil || isNil(o.RecommenderCalculations) {
+	if o == nil || IsNil(o.RecommenderCalculations) {
 		var ret RecommenderCalculations
 		return ret
 	}
@@ -189,7 +189,7 @@ func (o *RecommendationResponse) GetRecommenderCalculations() RecommenderCalcula
 // GetRecommenderCalculationsOk returns a tuple with the RecommenderCalculations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RecommendationResponse) GetRecommenderCalculationsOk() (*RecommenderCalculations, bool) {
-	if o == nil || isNil(o.RecommenderCalculations) {
+	if o == nil || IsNil(o.RecommenderCalculations) {
 		return nil, false
 	}
 	return o.RecommenderCalculations, true
@@ -197,7 +197,7 @@ func (o *RecommendationResponse) GetRecommenderCalculationsOk() (*RecommenderCal
 
 // HasRecommenderCalculations returns a boolean if a field has been set.
 func (o *RecommendationResponse) HasRecommenderCalculations() bool {
-	if o != nil && !isNil(o.RecommenderCalculations) {
+	if o != nil && !IsNil(o.RecommenderCalculations) {
 		return true
 	}
 
@@ -219,19 +219,19 @@ func (o RecommendationResponse) MarshalJSON() ([]byte, error) {
 
 func (o RecommendationResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Request) {
+	if !IsNil(o.Request) {
 		toSerialize["request"] = o.Request
 	}
-	if !isNil(o.Recommendation) {
+	if !IsNil(o.Recommendation) {
 		toSerialize["recommendation"] = o.Recommendation
 	}
-	if !isNil(o.Interpretations) {
+	if !IsNil(o.Interpretations) {
 		toSerialize["interpretations"] = o.Interpretations
 	}
-	if !isNil(o.TranslationMessages) {
+	if !IsNil(o.TranslationMessages) {
 		toSerialize["translationMessages"] = o.TranslationMessages
 	}
-	if !isNil(o.RecommenderCalculations) {
+	if !IsNil(o.RecommenderCalculations) {
 		toSerialize["recommenderCalculations"] = o.RecommenderCalculations
 	}
 
@@ -242,16 +242,20 @@ func (o RecommendationResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *RecommendationResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RecommendationResponse) UnmarshalJSON(data []byte) (err error) {
 	varRecommendationResponse := _RecommendationResponse{}
 
-	if err = json.Unmarshal(bytes, &varRecommendationResponse); err == nil {
+	err = json.Unmarshal(data, &varRecommendationResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RecommendationResponse(varRecommendationResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "request")
 		delete(additionalProperties, "recommendation")
 		delete(additionalProperties, "interpretations")

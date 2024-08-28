@@ -19,14 +19,14 @@ import (
 
 func Test_api_v3_BrandingAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test BrandingAPIService CreateBrandingItem", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.BrandingAPI.CreateBrandingItem(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BrandingAPI.CreateBrandingItem(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_v3_BrandingAPIService(t *testing.T) {
 
 		var name string
 
-		httpRes, err := apiClient.API_V3.BrandingAPI.DeleteBranding(context.Background(), name).Execute()
+		httpRes, err := apiClient.BrandingAPI.DeleteBranding(context.Background(), name).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -53,7 +53,7 @@ func Test_api_v3_BrandingAPIService(t *testing.T) {
 
 		var name string
 
-		resp, httpRes, err := apiClient.API_V3.BrandingAPI.GetBranding(context.Background(), name).Execute()
+		resp, httpRes, err := apiClient.BrandingAPI.GetBranding(context.Background(), name).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -65,7 +65,7 @@ func Test_api_v3_BrandingAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.BrandingAPI.GetBrandingList(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BrandingAPI.GetBrandingList(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -79,7 +79,7 @@ func Test_api_v3_BrandingAPIService(t *testing.T) {
 
 		var name string
 
-		resp, httpRes, err := apiClient.API_V3.BrandingAPI.SetBrandingItem(context.Background(), name).Execute()
+		resp, httpRes, err := apiClient.BrandingAPI.SetBrandingItem(context.Background(), name).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

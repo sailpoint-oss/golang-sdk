@@ -45,7 +45,7 @@ func NewWorkItemsCountWithDefaults() *WorkItemsCount {
 
 // GetCount returns the Count field value if set, zero value otherwise.
 func (o *WorkItemsCount) GetCount() int32 {
-	if o == nil || isNil(o.Count) {
+	if o == nil || IsNil(o.Count) {
 		var ret int32
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *WorkItemsCount) GetCount() int32 {
 // GetCountOk returns a tuple with the Count field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkItemsCount) GetCountOk() (*int32, bool) {
-	if o == nil || isNil(o.Count) {
+	if o == nil || IsNil(o.Count) {
 		return nil, false
 	}
 	return o.Count, true
@@ -63,7 +63,7 @@ func (o *WorkItemsCount) GetCountOk() (*int32, bool) {
 
 // HasCount returns a boolean if a field has been set.
 func (o *WorkItemsCount) HasCount() bool {
-	if o != nil && !isNil(o.Count) {
+	if o != nil && !IsNil(o.Count) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o WorkItemsCount) MarshalJSON() ([]byte, error) {
 
 func (o WorkItemsCount) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Count) {
+	if !IsNil(o.Count) {
 		toSerialize["count"] = o.Count
 	}
 
@@ -96,16 +96,20 @@ func (o WorkItemsCount) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *WorkItemsCount) UnmarshalJSON(bytes []byte) (err error) {
+func (o *WorkItemsCount) UnmarshalJSON(data []byte) (err error) {
 	varWorkItemsCount := _WorkItemsCount{}
 
-	if err = json.Unmarshal(bytes, &varWorkItemsCount); err == nil {
+	err = json.Unmarshal(data, &varWorkItemsCount)
+
+	if err != nil {
+		return err
+	}
+
 	*o = WorkItemsCount(varWorkItemsCount)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "count")
 		o.AdditionalProperties = additionalProperties
 	}

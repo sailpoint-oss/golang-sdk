@@ -49,7 +49,7 @@ func NewFormConditionWithDefaults() *FormCondition {
 
 // GetRuleOperator returns the RuleOperator field value if set, zero value otherwise.
 func (o *FormCondition) GetRuleOperator() string {
-	if o == nil || isNil(o.RuleOperator) {
+	if o == nil || IsNil(o.RuleOperator) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *FormCondition) GetRuleOperator() string {
 // GetRuleOperatorOk returns a tuple with the RuleOperator field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormCondition) GetRuleOperatorOk() (*string, bool) {
-	if o == nil || isNil(o.RuleOperator) {
+	if o == nil || IsNil(o.RuleOperator) {
 		return nil, false
 	}
 	return o.RuleOperator, true
@@ -67,7 +67,7 @@ func (o *FormCondition) GetRuleOperatorOk() (*string, bool) {
 
 // HasRuleOperator returns a boolean if a field has been set.
 func (o *FormCondition) HasRuleOperator() bool {
-	if o != nil && !isNil(o.RuleOperator) {
+	if o != nil && !IsNil(o.RuleOperator) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *FormCondition) SetRuleOperator(v string) {
 
 // GetRules returns the Rules field value if set, zero value otherwise.
 func (o *FormCondition) GetRules() []ConditionRule {
-	if o == nil || isNil(o.Rules) {
+	if o == nil || IsNil(o.Rules) {
 		var ret []ConditionRule
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *FormCondition) GetRules() []ConditionRule {
 // GetRulesOk returns a tuple with the Rules field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormCondition) GetRulesOk() ([]ConditionRule, bool) {
-	if o == nil || isNil(o.Rules) {
+	if o == nil || IsNil(o.Rules) {
 		return nil, false
 	}
 	return o.Rules, true
@@ -99,7 +99,7 @@ func (o *FormCondition) GetRulesOk() ([]ConditionRule, bool) {
 
 // HasRules returns a boolean if a field has been set.
 func (o *FormCondition) HasRules() bool {
-	if o != nil && !isNil(o.Rules) {
+	if o != nil && !IsNil(o.Rules) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *FormCondition) SetRules(v []ConditionRule) {
 
 // GetEffects returns the Effects field value if set, zero value otherwise.
 func (o *FormCondition) GetEffects() []ConditionEffect {
-	if o == nil || isNil(o.Effects) {
+	if o == nil || IsNil(o.Effects) {
 		var ret []ConditionEffect
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *FormCondition) GetEffects() []ConditionEffect {
 // GetEffectsOk returns a tuple with the Effects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormCondition) GetEffectsOk() ([]ConditionEffect, bool) {
-	if o == nil || isNil(o.Effects) {
+	if o == nil || IsNil(o.Effects) {
 		return nil, false
 	}
 	return o.Effects, true
@@ -131,7 +131,7 @@ func (o *FormCondition) GetEffectsOk() ([]ConditionEffect, bool) {
 
 // HasEffects returns a boolean if a field has been set.
 func (o *FormCondition) HasEffects() bool {
-	if o != nil && !isNil(o.Effects) {
+	if o != nil && !IsNil(o.Effects) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o FormCondition) MarshalJSON() ([]byte, error) {
 
 func (o FormCondition) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.RuleOperator) {
+	if !IsNil(o.RuleOperator) {
 		toSerialize["ruleOperator"] = o.RuleOperator
 	}
-	if !isNil(o.Rules) {
+	if !IsNil(o.Rules) {
 		toSerialize["rules"] = o.Rules
 	}
-	if !isNil(o.Effects) {
+	if !IsNil(o.Effects) {
 		toSerialize["effects"] = o.Effects
 	}
 
@@ -170,16 +170,20 @@ func (o FormCondition) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *FormCondition) UnmarshalJSON(bytes []byte) (err error) {
+func (o *FormCondition) UnmarshalJSON(data []byte) (err error) {
 	varFormCondition := _FormCondition{}
 
-	if err = json.Unmarshal(bytes, &varFormCondition); err == nil {
+	err = json.Unmarshal(data, &varFormCondition)
+
+	if err != nil {
+		return err
+	}
+
 	*o = FormCondition(varFormCondition)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "ruleOperator")
 		delete(additionalProperties, "rules")
 		delete(additionalProperties, "effects")

@@ -45,7 +45,7 @@ func NewSodViolationContext1WithDefaults() *SodViolationContext1 {
 
 // GetPolicy returns the Policy field value if set, zero value otherwise.
 func (o *SodViolationContext1) GetPolicy() SodPolicyDto {
-	if o == nil || isNil(o.Policy) {
+	if o == nil || IsNil(o.Policy) {
 		var ret SodPolicyDto
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *SodViolationContext1) GetPolicy() SodPolicyDto {
 // GetPolicyOk returns a tuple with the Policy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SodViolationContext1) GetPolicyOk() (*SodPolicyDto, bool) {
-	if o == nil || isNil(o.Policy) {
+	if o == nil || IsNil(o.Policy) {
 		return nil, false
 	}
 	return o.Policy, true
@@ -63,7 +63,7 @@ func (o *SodViolationContext1) GetPolicyOk() (*SodPolicyDto, bool) {
 
 // HasPolicy returns a boolean if a field has been set.
 func (o *SodViolationContext1) HasPolicy() bool {
-	if o != nil && !isNil(o.Policy) {
+	if o != nil && !IsNil(o.Policy) {
 		return true
 	}
 
@@ -77,7 +77,7 @@ func (o *SodViolationContext1) SetPolicy(v SodPolicyDto) {
 
 // GetConflictingAccessCriteria returns the ConflictingAccessCriteria field value if set, zero value otherwise.
 func (o *SodViolationContext1) GetConflictingAccessCriteria() SodViolationContext1ConflictingAccessCriteria {
-	if o == nil || isNil(o.ConflictingAccessCriteria) {
+	if o == nil || IsNil(o.ConflictingAccessCriteria) {
 		var ret SodViolationContext1ConflictingAccessCriteria
 		return ret
 	}
@@ -87,7 +87,7 @@ func (o *SodViolationContext1) GetConflictingAccessCriteria() SodViolationContex
 // GetConflictingAccessCriteriaOk returns a tuple with the ConflictingAccessCriteria field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SodViolationContext1) GetConflictingAccessCriteriaOk() (*SodViolationContext1ConflictingAccessCriteria, bool) {
-	if o == nil || isNil(o.ConflictingAccessCriteria) {
+	if o == nil || IsNil(o.ConflictingAccessCriteria) {
 		return nil, false
 	}
 	return o.ConflictingAccessCriteria, true
@@ -95,7 +95,7 @@ func (o *SodViolationContext1) GetConflictingAccessCriteriaOk() (*SodViolationCo
 
 // HasConflictingAccessCriteria returns a boolean if a field has been set.
 func (o *SodViolationContext1) HasConflictingAccessCriteria() bool {
-	if o != nil && !isNil(o.ConflictingAccessCriteria) {
+	if o != nil && !IsNil(o.ConflictingAccessCriteria) {
 		return true
 	}
 
@@ -117,10 +117,10 @@ func (o SodViolationContext1) MarshalJSON() ([]byte, error) {
 
 func (o SodViolationContext1) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Policy) {
+	if !IsNil(o.Policy) {
 		toSerialize["policy"] = o.Policy
 	}
-	if !isNil(o.ConflictingAccessCriteria) {
+	if !IsNil(o.ConflictingAccessCriteria) {
 		toSerialize["conflictingAccessCriteria"] = o.ConflictingAccessCriteria
 	}
 
@@ -131,16 +131,20 @@ func (o SodViolationContext1) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SodViolationContext1) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SodViolationContext1) UnmarshalJSON(data []byte) (err error) {
 	varSodViolationContext1 := _SodViolationContext1{}
 
-	if err = json.Unmarshal(bytes, &varSodViolationContext1); err == nil {
+	err = json.Unmarshal(data, &varSodViolationContext1)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SodViolationContext1(varSodViolationContext1)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "policy")
 		delete(additionalProperties, "conflictingAccessCriteria")
 		o.AdditionalProperties = additionalProperties

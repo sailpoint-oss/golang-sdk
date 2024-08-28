@@ -49,7 +49,7 @@ func NewRoleMiningSessionScopeWithDefaults() *RoleMiningSessionScope {
 
 // GetIdentityIds returns the IdentityIds field value if set, zero value otherwise.
 func (o *RoleMiningSessionScope) GetIdentityIds() []string {
-	if o == nil || isNil(o.IdentityIds) {
+	if o == nil || IsNil(o.IdentityIds) {
 		var ret []string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *RoleMiningSessionScope) GetIdentityIds() []string {
 // GetIdentityIdsOk returns a tuple with the IdentityIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningSessionScope) GetIdentityIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.IdentityIds) {
+	if o == nil || IsNil(o.IdentityIds) {
 		return nil, false
 	}
 	return o.IdentityIds, true
@@ -67,7 +67,7 @@ func (o *RoleMiningSessionScope) GetIdentityIdsOk() ([]string, bool) {
 
 // HasIdentityIds returns a boolean if a field has been set.
 func (o *RoleMiningSessionScope) HasIdentityIds() bool {
-	if o != nil && !isNil(o.IdentityIds) {
+	if o != nil && !IsNil(o.IdentityIds) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *RoleMiningSessionScope) SetIdentityIds(v []string) {
 
 // GetCriteria returns the Criteria field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleMiningSessionScope) GetCriteria() string {
-	if o == nil || isNil(o.Criteria.Get()) {
+	if o == nil || IsNil(o.Criteria.Get()) {
 		var ret string
 		return ret
 	}
@@ -134,7 +134,7 @@ func (o *RoleMiningSessionScope) GetAttributeFilterCriteria() []map[string]inter
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RoleMiningSessionScope) GetAttributeFilterCriteriaOk() ([]map[string]interface{}, bool) {
-	if o == nil || isNil(o.AttributeFilterCriteria) {
+	if o == nil || IsNil(o.AttributeFilterCriteria) {
 		return nil, false
 	}
 	return o.AttributeFilterCriteria, true
@@ -142,7 +142,7 @@ func (o *RoleMiningSessionScope) GetAttributeFilterCriteriaOk() ([]map[string]in
 
 // HasAttributeFilterCriteria returns a boolean if a field has been set.
 func (o *RoleMiningSessionScope) HasAttributeFilterCriteria() bool {
-	if o != nil && isNil(o.AttributeFilterCriteria) {
+	if o != nil && !IsNil(o.AttributeFilterCriteria) {
 		return true
 	}
 
@@ -164,7 +164,7 @@ func (o RoleMiningSessionScope) MarshalJSON() ([]byte, error) {
 
 func (o RoleMiningSessionScope) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.IdentityIds) {
+	if !IsNil(o.IdentityIds) {
 		toSerialize["identityIds"] = o.IdentityIds
 	}
 	if o.Criteria.IsSet() {
@@ -181,16 +181,20 @@ func (o RoleMiningSessionScope) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *RoleMiningSessionScope) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RoleMiningSessionScope) UnmarshalJSON(data []byte) (err error) {
 	varRoleMiningSessionScope := _RoleMiningSessionScope{}
 
-	if err = json.Unmarshal(bytes, &varRoleMiningSessionScope); err == nil {
+	err = json.Unmarshal(data, &varRoleMiningSessionScope)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RoleMiningSessionScope(varRoleMiningSessionScope)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "identityIds")
 		delete(additionalProperties, "criteria")
 		delete(additionalProperties, "attributeFilterCriteria")

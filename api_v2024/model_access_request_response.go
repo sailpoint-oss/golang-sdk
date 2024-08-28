@@ -48,7 +48,7 @@ func NewAccessRequestResponseWithDefaults() *AccessRequestResponse {
 
 // GetRequesterId returns the RequesterId field value if set, zero value otherwise.
 func (o *AccessRequestResponse) GetRequesterId() string {
-	if o == nil || isNil(o.RequesterId) {
+	if o == nil || IsNil(o.RequesterId) {
 		var ret string
 		return ret
 	}
@@ -58,7 +58,7 @@ func (o *AccessRequestResponse) GetRequesterId() string {
 // GetRequesterIdOk returns a tuple with the RequesterId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestResponse) GetRequesterIdOk() (*string, bool) {
-	if o == nil || isNil(o.RequesterId) {
+	if o == nil || IsNil(o.RequesterId) {
 		return nil, false
 	}
 	return o.RequesterId, true
@@ -66,7 +66,7 @@ func (o *AccessRequestResponse) GetRequesterIdOk() (*string, bool) {
 
 // HasRequesterId returns a boolean if a field has been set.
 func (o *AccessRequestResponse) HasRequesterId() bool {
-	if o != nil && !isNil(o.RequesterId) {
+	if o != nil && !IsNil(o.RequesterId) {
 		return true
 	}
 
@@ -80,7 +80,7 @@ func (o *AccessRequestResponse) SetRequesterId(v string) {
 
 // GetRequesterName returns the RequesterName field value if set, zero value otherwise.
 func (o *AccessRequestResponse) GetRequesterName() string {
-	if o == nil || isNil(o.RequesterName) {
+	if o == nil || IsNil(o.RequesterName) {
 		var ret string
 		return ret
 	}
@@ -90,7 +90,7 @@ func (o *AccessRequestResponse) GetRequesterName() string {
 // GetRequesterNameOk returns a tuple with the RequesterName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestResponse) GetRequesterNameOk() (*string, bool) {
-	if o == nil || isNil(o.RequesterName) {
+	if o == nil || IsNil(o.RequesterName) {
 		return nil, false
 	}
 	return o.RequesterName, true
@@ -98,7 +98,7 @@ func (o *AccessRequestResponse) GetRequesterNameOk() (*string, bool) {
 
 // HasRequesterName returns a boolean if a field has been set.
 func (o *AccessRequestResponse) HasRequesterName() bool {
-	if o != nil && !isNil(o.RequesterName) {
+	if o != nil && !IsNil(o.RequesterName) {
 		return true
 	}
 
@@ -112,7 +112,7 @@ func (o *AccessRequestResponse) SetRequesterName(v string) {
 
 // GetItems returns the Items field value if set, zero value otherwise.
 func (o *AccessRequestResponse) GetItems() []AccessRequestItemResponse {
-	if o == nil || isNil(o.Items) {
+	if o == nil || IsNil(o.Items) {
 		var ret []AccessRequestItemResponse
 		return ret
 	}
@@ -122,7 +122,7 @@ func (o *AccessRequestResponse) GetItems() []AccessRequestItemResponse {
 // GetItemsOk returns a tuple with the Items field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestResponse) GetItemsOk() ([]AccessRequestItemResponse, bool) {
-	if o == nil || isNil(o.Items) {
+	if o == nil || IsNil(o.Items) {
 		return nil, false
 	}
 	return o.Items, true
@@ -130,7 +130,7 @@ func (o *AccessRequestResponse) GetItemsOk() ([]AccessRequestItemResponse, bool)
 
 // HasItems returns a boolean if a field has been set.
 func (o *AccessRequestResponse) HasItems() bool {
-	if o != nil && !isNil(o.Items) {
+	if o != nil && !IsNil(o.Items) {
 		return true
 	}
 
@@ -152,13 +152,13 @@ func (o AccessRequestResponse) MarshalJSON() ([]byte, error) {
 
 func (o AccessRequestResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.RequesterId) {
+	if !IsNil(o.RequesterId) {
 		toSerialize["requesterId"] = o.RequesterId
 	}
-	if !isNil(o.RequesterName) {
+	if !IsNil(o.RequesterName) {
 		toSerialize["requesterName"] = o.RequesterName
 	}
-	if !isNil(o.Items) {
+	if !IsNil(o.Items) {
 		toSerialize["items"] = o.Items
 	}
 
@@ -169,16 +169,20 @@ func (o AccessRequestResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccessRequestResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccessRequestResponse) UnmarshalJSON(data []byte) (err error) {
 	varAccessRequestResponse := _AccessRequestResponse{}
 
-	if err = json.Unmarshal(bytes, &varAccessRequestResponse); err == nil {
+	err = json.Unmarshal(data, &varAccessRequestResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessRequestResponse(varAccessRequestResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "requesterId")
 		delete(additionalProperties, "requesterName")
 		delete(additionalProperties, "items")

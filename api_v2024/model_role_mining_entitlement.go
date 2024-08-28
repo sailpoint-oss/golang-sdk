@@ -60,7 +60,7 @@ func NewRoleMiningEntitlementWithDefaults() *RoleMiningEntitlement {
 
 // GetEntitlementRef returns the EntitlementRef field value if set, zero value otherwise.
 func (o *RoleMiningEntitlement) GetEntitlementRef() RoleMiningEntitlementRef {
-	if o == nil || isNil(o.EntitlementRef) {
+	if o == nil || IsNil(o.EntitlementRef) {
 		var ret RoleMiningEntitlementRef
 		return ret
 	}
@@ -70,7 +70,7 @@ func (o *RoleMiningEntitlement) GetEntitlementRef() RoleMiningEntitlementRef {
 // GetEntitlementRefOk returns a tuple with the EntitlementRef field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningEntitlement) GetEntitlementRefOk() (*RoleMiningEntitlementRef, bool) {
-	if o == nil || isNil(o.EntitlementRef) {
+	if o == nil || IsNil(o.EntitlementRef) {
 		return nil, false
 	}
 	return o.EntitlementRef, true
@@ -78,7 +78,7 @@ func (o *RoleMiningEntitlement) GetEntitlementRefOk() (*RoleMiningEntitlementRef
 
 // HasEntitlementRef returns a boolean if a field has been set.
 func (o *RoleMiningEntitlement) HasEntitlementRef() bool {
-	if o != nil && !isNil(o.EntitlementRef) {
+	if o != nil && !IsNil(o.EntitlementRef) {
 		return true
 	}
 
@@ -92,7 +92,7 @@ func (o *RoleMiningEntitlement) SetEntitlementRef(v RoleMiningEntitlementRef) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *RoleMiningEntitlement) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -102,7 +102,7 @@ func (o *RoleMiningEntitlement) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningEntitlement) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -110,7 +110,7 @@ func (o *RoleMiningEntitlement) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *RoleMiningEntitlement) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -124,7 +124,7 @@ func (o *RoleMiningEntitlement) SetName(v string) {
 
 // GetApplicationName returns the ApplicationName field value if set, zero value otherwise.
 func (o *RoleMiningEntitlement) GetApplicationName() string {
-	if o == nil || isNil(o.ApplicationName) {
+	if o == nil || IsNil(o.ApplicationName) {
 		var ret string
 		return ret
 	}
@@ -134,7 +134,7 @@ func (o *RoleMiningEntitlement) GetApplicationName() string {
 // GetApplicationNameOk returns a tuple with the ApplicationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningEntitlement) GetApplicationNameOk() (*string, bool) {
-	if o == nil || isNil(o.ApplicationName) {
+	if o == nil || IsNil(o.ApplicationName) {
 		return nil, false
 	}
 	return o.ApplicationName, true
@@ -142,7 +142,7 @@ func (o *RoleMiningEntitlement) GetApplicationNameOk() (*string, bool) {
 
 // HasApplicationName returns a boolean if a field has been set.
 func (o *RoleMiningEntitlement) HasApplicationName() bool {
-	if o != nil && !isNil(o.ApplicationName) {
+	if o != nil && !IsNil(o.ApplicationName) {
 		return true
 	}
 
@@ -156,7 +156,7 @@ func (o *RoleMiningEntitlement) SetApplicationName(v string) {
 
 // GetIdentityCount returns the IdentityCount field value if set, zero value otherwise.
 func (o *RoleMiningEntitlement) GetIdentityCount() int32 {
-	if o == nil || isNil(o.IdentityCount) {
+	if o == nil || IsNil(o.IdentityCount) {
 		var ret int32
 		return ret
 	}
@@ -166,7 +166,7 @@ func (o *RoleMiningEntitlement) GetIdentityCount() int32 {
 // GetIdentityCountOk returns a tuple with the IdentityCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningEntitlement) GetIdentityCountOk() (*int32, bool) {
-	if o == nil || isNil(o.IdentityCount) {
+	if o == nil || IsNil(o.IdentityCount) {
 		return nil, false
 	}
 	return o.IdentityCount, true
@@ -174,7 +174,7 @@ func (o *RoleMiningEntitlement) GetIdentityCountOk() (*int32, bool) {
 
 // HasIdentityCount returns a boolean if a field has been set.
 func (o *RoleMiningEntitlement) HasIdentityCount() bool {
-	if o != nil && !isNil(o.IdentityCount) {
+	if o != nil && !IsNil(o.IdentityCount) {
 		return true
 	}
 
@@ -188,7 +188,7 @@ func (o *RoleMiningEntitlement) SetIdentityCount(v int32) {
 
 // GetPopularity returns the Popularity field value if set, zero value otherwise.
 func (o *RoleMiningEntitlement) GetPopularity() float32 {
-	if o == nil || isNil(o.Popularity) {
+	if o == nil || IsNil(o.Popularity) {
 		var ret float32
 		return ret
 	}
@@ -198,7 +198,7 @@ func (o *RoleMiningEntitlement) GetPopularity() float32 {
 // GetPopularityOk returns a tuple with the Popularity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningEntitlement) GetPopularityOk() (*float32, bool) {
-	if o == nil || isNil(o.Popularity) {
+	if o == nil || IsNil(o.Popularity) {
 		return nil, false
 	}
 	return o.Popularity, true
@@ -206,7 +206,7 @@ func (o *RoleMiningEntitlement) GetPopularityOk() (*float32, bool) {
 
 // HasPopularity returns a boolean if a field has been set.
 func (o *RoleMiningEntitlement) HasPopularity() bool {
-	if o != nil && !isNil(o.Popularity) {
+	if o != nil && !IsNil(o.Popularity) {
 		return true
 	}
 
@@ -220,7 +220,7 @@ func (o *RoleMiningEntitlement) SetPopularity(v float32) {
 
 // GetPopularityInOrg returns the PopularityInOrg field value if set, zero value otherwise.
 func (o *RoleMiningEntitlement) GetPopularityInOrg() float32 {
-	if o == nil || isNil(o.PopularityInOrg) {
+	if o == nil || IsNil(o.PopularityInOrg) {
 		var ret float32
 		return ret
 	}
@@ -230,7 +230,7 @@ func (o *RoleMiningEntitlement) GetPopularityInOrg() float32 {
 // GetPopularityInOrgOk returns a tuple with the PopularityInOrg field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningEntitlement) GetPopularityInOrgOk() (*float32, bool) {
-	if o == nil || isNil(o.PopularityInOrg) {
+	if o == nil || IsNil(o.PopularityInOrg) {
 		return nil, false
 	}
 	return o.PopularityInOrg, true
@@ -238,7 +238,7 @@ func (o *RoleMiningEntitlement) GetPopularityInOrgOk() (*float32, bool) {
 
 // HasPopularityInOrg returns a boolean if a field has been set.
 func (o *RoleMiningEntitlement) HasPopularityInOrg() bool {
-	if o != nil && !isNil(o.PopularityInOrg) {
+	if o != nil && !IsNil(o.PopularityInOrg) {
 		return true
 	}
 
@@ -252,7 +252,7 @@ func (o *RoleMiningEntitlement) SetPopularityInOrg(v float32) {
 
 // GetSourceId returns the SourceId field value if set, zero value otherwise.
 func (o *RoleMiningEntitlement) GetSourceId() string {
-	if o == nil || isNil(o.SourceId) {
+	if o == nil || IsNil(o.SourceId) {
 		var ret string
 		return ret
 	}
@@ -262,7 +262,7 @@ func (o *RoleMiningEntitlement) GetSourceId() string {
 // GetSourceIdOk returns a tuple with the SourceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningEntitlement) GetSourceIdOk() (*string, bool) {
-	if o == nil || isNil(o.SourceId) {
+	if o == nil || IsNil(o.SourceId) {
 		return nil, false
 	}
 	return o.SourceId, true
@@ -270,7 +270,7 @@ func (o *RoleMiningEntitlement) GetSourceIdOk() (*string, bool) {
 
 // HasSourceId returns a boolean if a field has been set.
 func (o *RoleMiningEntitlement) HasSourceId() bool {
-	if o != nil && !isNil(o.SourceId) {
+	if o != nil && !IsNil(o.SourceId) {
 		return true
 	}
 
@@ -284,7 +284,7 @@ func (o *RoleMiningEntitlement) SetSourceId(v string) {
 
 // GetActivitySourceState returns the ActivitySourceState field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleMiningEntitlement) GetActivitySourceState() string {
-	if o == nil || isNil(o.ActivitySourceState.Get()) {
+	if o == nil || IsNil(o.ActivitySourceState.Get()) {
 		var ret string
 		return ret
 	}
@@ -326,7 +326,7 @@ func (o *RoleMiningEntitlement) UnsetActivitySourceState() {
 
 // GetSourceUsagePercent returns the SourceUsagePercent field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleMiningEntitlement) GetSourceUsagePercent() float32 {
-	if o == nil || isNil(o.SourceUsagePercent.Get()) {
+	if o == nil || IsNil(o.SourceUsagePercent.Get()) {
 		var ret float32
 		return ret
 	}
@@ -376,25 +376,25 @@ func (o RoleMiningEntitlement) MarshalJSON() ([]byte, error) {
 
 func (o RoleMiningEntitlement) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.EntitlementRef) {
+	if !IsNil(o.EntitlementRef) {
 		toSerialize["entitlementRef"] = o.EntitlementRef
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.ApplicationName) {
+	if !IsNil(o.ApplicationName) {
 		toSerialize["applicationName"] = o.ApplicationName
 	}
-	if !isNil(o.IdentityCount) {
+	if !IsNil(o.IdentityCount) {
 		toSerialize["identityCount"] = o.IdentityCount
 	}
-	if !isNil(o.Popularity) {
+	if !IsNil(o.Popularity) {
 		toSerialize["popularity"] = o.Popularity
 	}
-	if !isNil(o.PopularityInOrg) {
+	if !IsNil(o.PopularityInOrg) {
 		toSerialize["popularityInOrg"] = o.PopularityInOrg
 	}
-	if !isNil(o.SourceId) {
+	if !IsNil(o.SourceId) {
 		toSerialize["sourceId"] = o.SourceId
 	}
 	if o.ActivitySourceState.IsSet() {
@@ -411,16 +411,20 @@ func (o RoleMiningEntitlement) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *RoleMiningEntitlement) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RoleMiningEntitlement) UnmarshalJSON(data []byte) (err error) {
 	varRoleMiningEntitlement := _RoleMiningEntitlement{}
 
-	if err = json.Unmarshal(bytes, &varRoleMiningEntitlement); err == nil {
+	err = json.Unmarshal(data, &varRoleMiningEntitlement)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RoleMiningEntitlement(varRoleMiningEntitlement)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "entitlementRef")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "applicationName")

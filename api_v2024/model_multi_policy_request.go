@@ -45,7 +45,7 @@ func NewMultiPolicyRequestWithDefaults() *MultiPolicyRequest {
 
 // GetFilteredPolicyList returns the FilteredPolicyList field value if set, zero value otherwise.
 func (o *MultiPolicyRequest) GetFilteredPolicyList() []string {
-	if o == nil || isNil(o.FilteredPolicyList) {
+	if o == nil || IsNil(o.FilteredPolicyList) {
 		var ret []string
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *MultiPolicyRequest) GetFilteredPolicyList() []string {
 // GetFilteredPolicyListOk returns a tuple with the FilteredPolicyList field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MultiPolicyRequest) GetFilteredPolicyListOk() ([]string, bool) {
-	if o == nil || isNil(o.FilteredPolicyList) {
+	if o == nil || IsNil(o.FilteredPolicyList) {
 		return nil, false
 	}
 	return o.FilteredPolicyList, true
@@ -63,7 +63,7 @@ func (o *MultiPolicyRequest) GetFilteredPolicyListOk() ([]string, bool) {
 
 // HasFilteredPolicyList returns a boolean if a field has been set.
 func (o *MultiPolicyRequest) HasFilteredPolicyList() bool {
-	if o != nil && !isNil(o.FilteredPolicyList) {
+	if o != nil && !IsNil(o.FilteredPolicyList) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o MultiPolicyRequest) MarshalJSON() ([]byte, error) {
 
 func (o MultiPolicyRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.FilteredPolicyList) {
+	if !IsNil(o.FilteredPolicyList) {
 		toSerialize["filteredPolicyList"] = o.FilteredPolicyList
 	}
 
@@ -96,16 +96,20 @@ func (o MultiPolicyRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *MultiPolicyRequest) UnmarshalJSON(bytes []byte) (err error) {
+func (o *MultiPolicyRequest) UnmarshalJSON(data []byte) (err error) {
 	varMultiPolicyRequest := _MultiPolicyRequest{}
 
-	if err = json.Unmarshal(bytes, &varMultiPolicyRequest); err == nil {
+	err = json.Unmarshal(data, &varMultiPolicyRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = MultiPolicyRequest(varMultiPolicyRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "filteredPolicyList")
 		o.AdditionalProperties = additionalProperties
 	}

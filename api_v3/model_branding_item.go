@@ -59,7 +59,7 @@ func NewBrandingItemWithDefaults() *BrandingItem {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *BrandingItem) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -69,7 +69,7 @@ func (o *BrandingItem) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BrandingItem) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -77,7 +77,7 @@ func (o *BrandingItem) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *BrandingItem) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -91,7 +91,7 @@ func (o *BrandingItem) SetName(v string) {
 
 // GetProductName returns the ProductName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BrandingItem) GetProductName() string {
-	if o == nil || isNil(o.ProductName.Get()) {
+	if o == nil || IsNil(o.ProductName.Get()) {
 		var ret string
 		return ret
 	}
@@ -133,7 +133,7 @@ func (o *BrandingItem) UnsetProductName() {
 
 // GetActionButtonColor returns the ActionButtonColor field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BrandingItem) GetActionButtonColor() string {
-	if o == nil || isNil(o.ActionButtonColor.Get()) {
+	if o == nil || IsNil(o.ActionButtonColor.Get()) {
 		var ret string
 		return ret
 	}
@@ -175,7 +175,7 @@ func (o *BrandingItem) UnsetActionButtonColor() {
 
 // GetActiveLinkColor returns the ActiveLinkColor field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BrandingItem) GetActiveLinkColor() string {
-	if o == nil || isNil(o.ActiveLinkColor.Get()) {
+	if o == nil || IsNil(o.ActiveLinkColor.Get()) {
 		var ret string
 		return ret
 	}
@@ -217,7 +217,7 @@ func (o *BrandingItem) UnsetActiveLinkColor() {
 
 // GetNavigationColor returns the NavigationColor field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BrandingItem) GetNavigationColor() string {
-	if o == nil || isNil(o.NavigationColor.Get()) {
+	if o == nil || IsNil(o.NavigationColor.Get()) {
 		var ret string
 		return ret
 	}
@@ -259,7 +259,7 @@ func (o *BrandingItem) UnsetNavigationColor() {
 
 // GetEmailFromAddress returns the EmailFromAddress field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BrandingItem) GetEmailFromAddress() string {
-	if o == nil || isNil(o.EmailFromAddress.Get()) {
+	if o == nil || IsNil(o.EmailFromAddress.Get()) {
 		var ret string
 		return ret
 	}
@@ -301,7 +301,7 @@ func (o *BrandingItem) UnsetEmailFromAddress() {
 
 // GetStandardLogoURL returns the StandardLogoURL field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BrandingItem) GetStandardLogoURL() string {
-	if o == nil || isNil(o.StandardLogoURL.Get()) {
+	if o == nil || IsNil(o.StandardLogoURL.Get()) {
 		var ret string
 		return ret
 	}
@@ -343,7 +343,7 @@ func (o *BrandingItem) UnsetStandardLogoURL() {
 
 // GetLoginInformationalMessage returns the LoginInformationalMessage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BrandingItem) GetLoginInformationalMessage() string {
-	if o == nil || isNil(o.LoginInformationalMessage.Get()) {
+	if o == nil || IsNil(o.LoginInformationalMessage.Get()) {
 		var ret string
 		return ret
 	}
@@ -393,7 +393,7 @@ func (o BrandingItem) MarshalJSON() ([]byte, error) {
 
 func (o BrandingItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 	if o.ProductName.IsSet() {
@@ -425,16 +425,20 @@ func (o BrandingItem) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *BrandingItem) UnmarshalJSON(bytes []byte) (err error) {
+func (o *BrandingItem) UnmarshalJSON(data []byte) (err error) {
 	varBrandingItem := _BrandingItem{}
 
-	if err = json.Unmarshal(bytes, &varBrandingItem); err == nil {
+	err = json.Unmarshal(data, &varBrandingItem)
+
+	if err != nil {
+		return err
+	}
+
 	*o = BrandingItem(varBrandingItem)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "productName")
 		delete(additionalProperties, "actionButtonColor")

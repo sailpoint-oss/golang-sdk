@@ -47,7 +47,7 @@ func NewAccessProfileApprovalSchemeWithDefaults() *AccessProfileApprovalScheme {
 
 // GetApproverType returns the ApproverType field value if set, zero value otherwise.
 func (o *AccessProfileApprovalScheme) GetApproverType() string {
-	if o == nil || isNil(o.ApproverType) {
+	if o == nil || IsNil(o.ApproverType) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *AccessProfileApprovalScheme) GetApproverType() string {
 // GetApproverTypeOk returns a tuple with the ApproverType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessProfileApprovalScheme) GetApproverTypeOk() (*string, bool) {
-	if o == nil || isNil(o.ApproverType) {
+	if o == nil || IsNil(o.ApproverType) {
 		return nil, false
 	}
 	return o.ApproverType, true
@@ -65,7 +65,7 @@ func (o *AccessProfileApprovalScheme) GetApproverTypeOk() (*string, bool) {
 
 // HasApproverType returns a boolean if a field has been set.
 func (o *AccessProfileApprovalScheme) HasApproverType() bool {
-	if o != nil && !isNil(o.ApproverType) {
+	if o != nil && !IsNil(o.ApproverType) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *AccessProfileApprovalScheme) SetApproverType(v string) {
 
 // GetApproverId returns the ApproverId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessProfileApprovalScheme) GetApproverId() string {
-	if o == nil || isNil(o.ApproverId.Get()) {
+	if o == nil || IsNil(o.ApproverId.Get()) {
 		var ret string
 		return ret
 	}
@@ -129,7 +129,7 @@ func (o AccessProfileApprovalScheme) MarshalJSON() ([]byte, error) {
 
 func (o AccessProfileApprovalScheme) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ApproverType) {
+	if !IsNil(o.ApproverType) {
 		toSerialize["approverType"] = o.ApproverType
 	}
 	if o.ApproverId.IsSet() {
@@ -143,16 +143,20 @@ func (o AccessProfileApprovalScheme) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccessProfileApprovalScheme) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccessProfileApprovalScheme) UnmarshalJSON(data []byte) (err error) {
 	varAccessProfileApprovalScheme := _AccessProfileApprovalScheme{}
 
-	if err = json.Unmarshal(bytes, &varAccessProfileApprovalScheme); err == nil {
+	err = json.Unmarshal(data, &varAccessProfileApprovalScheme)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessProfileApprovalScheme(varAccessProfileApprovalScheme)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "approverType")
 		delete(additionalProperties, "approverId")
 		o.AdditionalProperties = additionalProperties

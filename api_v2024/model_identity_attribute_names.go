@@ -45,7 +45,7 @@ func NewIdentityAttributeNamesWithDefaults() *IdentityAttributeNames {
 
 // GetIds returns the Ids field value if set, zero value otherwise.
 func (o *IdentityAttributeNames) GetIds() []string {
-	if o == nil || isNil(o.Ids) {
+	if o == nil || IsNil(o.Ids) {
 		var ret []string
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *IdentityAttributeNames) GetIds() []string {
 // GetIdsOk returns a tuple with the Ids field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityAttributeNames) GetIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.Ids) {
+	if o == nil || IsNil(o.Ids) {
 		return nil, false
 	}
 	return o.Ids, true
@@ -63,7 +63,7 @@ func (o *IdentityAttributeNames) GetIdsOk() ([]string, bool) {
 
 // HasIds returns a boolean if a field has been set.
 func (o *IdentityAttributeNames) HasIds() bool {
-	if o != nil && !isNil(o.Ids) {
+	if o != nil && !IsNil(o.Ids) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o IdentityAttributeNames) MarshalJSON() ([]byte, error) {
 
 func (o IdentityAttributeNames) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Ids) {
+	if !IsNil(o.Ids) {
 		toSerialize["ids"] = o.Ids
 	}
 
@@ -96,16 +96,20 @@ func (o IdentityAttributeNames) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *IdentityAttributeNames) UnmarshalJSON(bytes []byte) (err error) {
+func (o *IdentityAttributeNames) UnmarshalJSON(data []byte) (err error) {
 	varIdentityAttributeNames := _IdentityAttributeNames{}
 
-	if err = json.Unmarshal(bytes, &varIdentityAttributeNames); err == nil {
+	err = json.Unmarshal(data, &varIdentityAttributeNames)
+
+	if err != nil {
+		return err
+	}
+
 	*o = IdentityAttributeNames(varIdentityAttributeNames)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "ids")
 		o.AdditionalProperties = additionalProperties
 	}

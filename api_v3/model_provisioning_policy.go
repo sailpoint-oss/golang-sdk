@@ -75,7 +75,7 @@ func (o *ProvisioningPolicy) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ProvisioningPolicy) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -85,7 +85,7 @@ func (o *ProvisioningPolicy) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProvisioningPolicy) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -93,7 +93,7 @@ func (o *ProvisioningPolicy) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *ProvisioningPolicy) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -107,7 +107,7 @@ func (o *ProvisioningPolicy) SetDescription(v string) {
 
 // GetUsageType returns the UsageType field value if set, zero value otherwise.
 func (o *ProvisioningPolicy) GetUsageType() UsageType {
-	if o == nil || isNil(o.UsageType) {
+	if o == nil || IsNil(o.UsageType) {
 		var ret UsageType
 		return ret
 	}
@@ -117,7 +117,7 @@ func (o *ProvisioningPolicy) GetUsageType() UsageType {
 // GetUsageTypeOk returns a tuple with the UsageType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProvisioningPolicy) GetUsageTypeOk() (*UsageType, bool) {
-	if o == nil || isNil(o.UsageType) {
+	if o == nil || IsNil(o.UsageType) {
 		return nil, false
 	}
 	return o.UsageType, true
@@ -125,7 +125,7 @@ func (o *ProvisioningPolicy) GetUsageTypeOk() (*UsageType, bool) {
 
 // HasUsageType returns a boolean if a field has been set.
 func (o *ProvisioningPolicy) HasUsageType() bool {
-	if o != nil && !isNil(o.UsageType) {
+	if o != nil && !IsNil(o.UsageType) {
 		return true
 	}
 
@@ -139,7 +139,7 @@ func (o *ProvisioningPolicy) SetUsageType(v UsageType) {
 
 // GetFields returns the Fields field value if set, zero value otherwise.
 func (o *ProvisioningPolicy) GetFields() []FieldDetailsDto {
-	if o == nil || isNil(o.Fields) {
+	if o == nil || IsNil(o.Fields) {
 		var ret []FieldDetailsDto
 		return ret
 	}
@@ -149,7 +149,7 @@ func (o *ProvisioningPolicy) GetFields() []FieldDetailsDto {
 // GetFieldsOk returns a tuple with the Fields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProvisioningPolicy) GetFieldsOk() ([]FieldDetailsDto, bool) {
-	if o == nil || isNil(o.Fields) {
+	if o == nil || IsNil(o.Fields) {
 		return nil, false
 	}
 	return o.Fields, true
@@ -157,7 +157,7 @@ func (o *ProvisioningPolicy) GetFieldsOk() ([]FieldDetailsDto, bool) {
 
 // HasFields returns a boolean if a field has been set.
 func (o *ProvisioningPolicy) HasFields() bool {
-	if o != nil && !isNil(o.Fields) {
+	if o != nil && !IsNil(o.Fields) {
 		return true
 	}
 
@@ -180,13 +180,13 @@ func (o ProvisioningPolicy) MarshalJSON() ([]byte, error) {
 func (o ProvisioningPolicy) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.UsageType) {
+	if !IsNil(o.UsageType) {
 		toSerialize["usageType"] = o.UsageType
 	}
-	if !isNil(o.Fields) {
+	if !IsNil(o.Fields) {
 		toSerialize["fields"] = o.Fields
 	}
 
@@ -197,8 +197,8 @@ func (o ProvisioningPolicy) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ProvisioningPolicy) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *ProvisioningPolicy) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -207,7 +207,7 @@ func (o *ProvisioningPolicy) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -221,13 +221,17 @@ func (o *ProvisioningPolicy) UnmarshalJSON(bytes []byte) (err error) {
 
 	varProvisioningPolicy := _ProvisioningPolicy{}
 
-	if err = json.Unmarshal(bytes, &varProvisioningPolicy); err == nil {
+	err = json.Unmarshal(data, &varProvisioningPolicy)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ProvisioningPolicy(varProvisioningPolicy)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "usageType")

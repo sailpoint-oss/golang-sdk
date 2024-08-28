@@ -51,7 +51,7 @@ func NewConfigurationDetailsResponseWithDefaults() *ConfigurationDetailsResponse
 
 // GetConfigType returns the ConfigType field value if set, zero value otherwise.
 func (o *ConfigurationDetailsResponse) GetConfigType() ConfigTypeEnum {
-	if o == nil || isNil(o.ConfigType) {
+	if o == nil || IsNil(o.ConfigType) {
 		var ret ConfigTypeEnum
 		return ret
 	}
@@ -61,7 +61,7 @@ func (o *ConfigurationDetailsResponse) GetConfigType() ConfigTypeEnum {
 // GetConfigTypeOk returns a tuple with the ConfigType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConfigurationDetailsResponse) GetConfigTypeOk() (*ConfigTypeEnum, bool) {
-	if o == nil || isNil(o.ConfigType) {
+	if o == nil || IsNil(o.ConfigType) {
 		return nil, false
 	}
 	return o.ConfigType, true
@@ -69,7 +69,7 @@ func (o *ConfigurationDetailsResponse) GetConfigTypeOk() (*ConfigTypeEnum, bool)
 
 // HasConfigType returns a boolean if a field has been set.
 func (o *ConfigurationDetailsResponse) HasConfigType() bool {
-	if o != nil && !isNil(o.ConfigType) {
+	if o != nil && !IsNil(o.ConfigType) {
 		return true
 	}
 
@@ -83,7 +83,7 @@ func (o *ConfigurationDetailsResponse) SetConfigType(v ConfigTypeEnum) {
 
 // GetTargetIdentity returns the TargetIdentity field value if set, zero value otherwise.
 func (o *ConfigurationDetailsResponse) GetTargetIdentity() Identity1 {
-	if o == nil || isNil(o.TargetIdentity) {
+	if o == nil || IsNil(o.TargetIdentity) {
 		var ret Identity1
 		return ret
 	}
@@ -93,7 +93,7 @@ func (o *ConfigurationDetailsResponse) GetTargetIdentity() Identity1 {
 // GetTargetIdentityOk returns a tuple with the TargetIdentity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConfigurationDetailsResponse) GetTargetIdentityOk() (*Identity1, bool) {
-	if o == nil || isNil(o.TargetIdentity) {
+	if o == nil || IsNil(o.TargetIdentity) {
 		return nil, false
 	}
 	return o.TargetIdentity, true
@@ -101,7 +101,7 @@ func (o *ConfigurationDetailsResponse) GetTargetIdentityOk() (*Identity1, bool) 
 
 // HasTargetIdentity returns a boolean if a field has been set.
 func (o *ConfigurationDetailsResponse) HasTargetIdentity() bool {
-	if o != nil && !isNil(o.TargetIdentity) {
+	if o != nil && !IsNil(o.TargetIdentity) {
 		return true
 	}
 
@@ -115,7 +115,7 @@ func (o *ConfigurationDetailsResponse) SetTargetIdentity(v Identity1) {
 
 // GetStartDate returns the StartDate field value if set, zero value otherwise.
 func (o *ConfigurationDetailsResponse) GetStartDate() time.Time {
-	if o == nil || isNil(o.StartDate) {
+	if o == nil || IsNil(o.StartDate) {
 		var ret time.Time
 		return ret
 	}
@@ -125,7 +125,7 @@ func (o *ConfigurationDetailsResponse) GetStartDate() time.Time {
 // GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConfigurationDetailsResponse) GetStartDateOk() (*time.Time, bool) {
-	if o == nil || isNil(o.StartDate) {
+	if o == nil || IsNil(o.StartDate) {
 		return nil, false
 	}
 	return o.StartDate, true
@@ -133,7 +133,7 @@ func (o *ConfigurationDetailsResponse) GetStartDateOk() (*time.Time, bool) {
 
 // HasStartDate returns a boolean if a field has been set.
 func (o *ConfigurationDetailsResponse) HasStartDate() bool {
-	if o != nil && !isNil(o.StartDate) {
+	if o != nil && !IsNil(o.StartDate) {
 		return true
 	}
 
@@ -147,7 +147,7 @@ func (o *ConfigurationDetailsResponse) SetStartDate(v time.Time) {
 
 // GetEndDate returns the EndDate field value if set, zero value otherwise.
 func (o *ConfigurationDetailsResponse) GetEndDate() time.Time {
-	if o == nil || isNil(o.EndDate) {
+	if o == nil || IsNil(o.EndDate) {
 		var ret time.Time
 		return ret
 	}
@@ -157,7 +157,7 @@ func (o *ConfigurationDetailsResponse) GetEndDate() time.Time {
 // GetEndDateOk returns a tuple with the EndDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConfigurationDetailsResponse) GetEndDateOk() (*time.Time, bool) {
-	if o == nil || isNil(o.EndDate) {
+	if o == nil || IsNil(o.EndDate) {
 		return nil, false
 	}
 	return o.EndDate, true
@@ -165,7 +165,7 @@ func (o *ConfigurationDetailsResponse) GetEndDateOk() (*time.Time, bool) {
 
 // HasEndDate returns a boolean if a field has been set.
 func (o *ConfigurationDetailsResponse) HasEndDate() bool {
-	if o != nil && !isNil(o.EndDate) {
+	if o != nil && !IsNil(o.EndDate) {
 		return true
 	}
 
@@ -179,7 +179,7 @@ func (o *ConfigurationDetailsResponse) SetEndDate(v time.Time) {
 
 // GetAuditDetails returns the AuditDetails field value if set, zero value otherwise.
 func (o *ConfigurationDetailsResponse) GetAuditDetails() AuditDetails {
-	if o == nil || isNil(o.AuditDetails) {
+	if o == nil || IsNil(o.AuditDetails) {
 		var ret AuditDetails
 		return ret
 	}
@@ -189,7 +189,7 @@ func (o *ConfigurationDetailsResponse) GetAuditDetails() AuditDetails {
 // GetAuditDetailsOk returns a tuple with the AuditDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConfigurationDetailsResponse) GetAuditDetailsOk() (*AuditDetails, bool) {
-	if o == nil || isNil(o.AuditDetails) {
+	if o == nil || IsNil(o.AuditDetails) {
 		return nil, false
 	}
 	return o.AuditDetails, true
@@ -197,7 +197,7 @@ func (o *ConfigurationDetailsResponse) GetAuditDetailsOk() (*AuditDetails, bool)
 
 // HasAuditDetails returns a boolean if a field has been set.
 func (o *ConfigurationDetailsResponse) HasAuditDetails() bool {
-	if o != nil && !isNil(o.AuditDetails) {
+	if o != nil && !IsNil(o.AuditDetails) {
 		return true
 	}
 
@@ -219,19 +219,19 @@ func (o ConfigurationDetailsResponse) MarshalJSON() ([]byte, error) {
 
 func (o ConfigurationDetailsResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ConfigType) {
+	if !IsNil(o.ConfigType) {
 		toSerialize["configType"] = o.ConfigType
 	}
-	if !isNil(o.TargetIdentity) {
+	if !IsNil(o.TargetIdentity) {
 		toSerialize["targetIdentity"] = o.TargetIdentity
 	}
-	if !isNil(o.StartDate) {
+	if !IsNil(o.StartDate) {
 		toSerialize["startDate"] = o.StartDate
 	}
-	if !isNil(o.EndDate) {
+	if !IsNil(o.EndDate) {
 		toSerialize["endDate"] = o.EndDate
 	}
-	if !isNil(o.AuditDetails) {
+	if !IsNil(o.AuditDetails) {
 		toSerialize["auditDetails"] = o.AuditDetails
 	}
 
@@ -242,16 +242,20 @@ func (o ConfigurationDetailsResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ConfigurationDetailsResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ConfigurationDetailsResponse) UnmarshalJSON(data []byte) (err error) {
 	varConfigurationDetailsResponse := _ConfigurationDetailsResponse{}
 
-	if err = json.Unmarshal(bytes, &varConfigurationDetailsResponse); err == nil {
+	err = json.Unmarshal(data, &varConfigurationDetailsResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ConfigurationDetailsResponse(varConfigurationDetailsResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "configType")
 		delete(additionalProperties, "targetIdentity")
 		delete(additionalProperties, "startDate")

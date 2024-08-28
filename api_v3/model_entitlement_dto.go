@@ -69,7 +69,7 @@ func NewEntitlementDtoWithDefaults() *EntitlementDto {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *EntitlementDto) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -79,7 +79,7 @@ func (o *EntitlementDto) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntitlementDto) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -87,7 +87,7 @@ func (o *EntitlementDto) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *EntitlementDto) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -125,7 +125,7 @@ func (o *EntitlementDto) SetName(v string) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *EntitlementDto) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -135,7 +135,7 @@ func (o *EntitlementDto) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntitlementDto) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -143,7 +143,7 @@ func (o *EntitlementDto) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *EntitlementDto) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -157,7 +157,7 @@ func (o *EntitlementDto) SetCreated(v time.Time) {
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *EntitlementDto) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		var ret time.Time
 		return ret
 	}
@@ -167,7 +167,7 @@ func (o *EntitlementDto) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntitlementDto) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -175,7 +175,7 @@ func (o *EntitlementDto) GetModifiedOk() (*time.Time, bool) {
 
 // HasModified returns a boolean if a field has been set.
 func (o *EntitlementDto) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -189,7 +189,7 @@ func (o *EntitlementDto) SetModified(v time.Time) {
 
 // GetAttribute returns the Attribute field value if set, zero value otherwise.
 func (o *EntitlementDto) GetAttribute() string {
-	if o == nil || isNil(o.Attribute) {
+	if o == nil || IsNil(o.Attribute) {
 		var ret string
 		return ret
 	}
@@ -199,7 +199,7 @@ func (o *EntitlementDto) GetAttribute() string {
 // GetAttributeOk returns a tuple with the Attribute field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntitlementDto) GetAttributeOk() (*string, bool) {
-	if o == nil || isNil(o.Attribute) {
+	if o == nil || IsNil(o.Attribute) {
 		return nil, false
 	}
 	return o.Attribute, true
@@ -207,7 +207,7 @@ func (o *EntitlementDto) GetAttributeOk() (*string, bool) {
 
 // HasAttribute returns a boolean if a field has been set.
 func (o *EntitlementDto) HasAttribute() bool {
-	if o != nil && !isNil(o.Attribute) {
+	if o != nil && !IsNil(o.Attribute) {
 		return true
 	}
 
@@ -221,7 +221,7 @@ func (o *EntitlementDto) SetAttribute(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *EntitlementDto) GetValue() string {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -231,7 +231,7 @@ func (o *EntitlementDto) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntitlementDto) GetValueOk() (*string, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -239,7 +239,7 @@ func (o *EntitlementDto) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *EntitlementDto) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -253,7 +253,7 @@ func (o *EntitlementDto) SetValue(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *EntitlementDto) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -263,7 +263,7 @@ func (o *EntitlementDto) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntitlementDto) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -271,7 +271,7 @@ func (o *EntitlementDto) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *EntitlementDto) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -285,7 +285,7 @@ func (o *EntitlementDto) SetDescription(v string) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *EntitlementDto) GetAttributes() map[string]interface{} {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -295,7 +295,7 @@ func (o *EntitlementDto) GetAttributes() map[string]interface{} {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntitlementDto) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
@@ -303,7 +303,7 @@ func (o *EntitlementDto) GetAttributesOk() (map[string]interface{}, bool) {
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *EntitlementDto) HasAttributes() bool {
-	if o != nil && !isNil(o.Attributes) {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -317,7 +317,7 @@ func (o *EntitlementDto) SetAttributes(v map[string]interface{}) {
 
 // GetSourceSchemaObjectType returns the SourceSchemaObjectType field value if set, zero value otherwise.
 func (o *EntitlementDto) GetSourceSchemaObjectType() string {
-	if o == nil || isNil(o.SourceSchemaObjectType) {
+	if o == nil || IsNil(o.SourceSchemaObjectType) {
 		var ret string
 		return ret
 	}
@@ -327,7 +327,7 @@ func (o *EntitlementDto) GetSourceSchemaObjectType() string {
 // GetSourceSchemaObjectTypeOk returns a tuple with the SourceSchemaObjectType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntitlementDto) GetSourceSchemaObjectTypeOk() (*string, bool) {
-	if o == nil || isNil(o.SourceSchemaObjectType) {
+	if o == nil || IsNil(o.SourceSchemaObjectType) {
 		return nil, false
 	}
 	return o.SourceSchemaObjectType, true
@@ -335,7 +335,7 @@ func (o *EntitlementDto) GetSourceSchemaObjectTypeOk() (*string, bool) {
 
 // HasSourceSchemaObjectType returns a boolean if a field has been set.
 func (o *EntitlementDto) HasSourceSchemaObjectType() bool {
-	if o != nil && !isNil(o.SourceSchemaObjectType) {
+	if o != nil && !IsNil(o.SourceSchemaObjectType) {
 		return true
 	}
 
@@ -349,7 +349,7 @@ func (o *EntitlementDto) SetSourceSchemaObjectType(v string) {
 
 // GetPrivileged returns the Privileged field value if set, zero value otherwise.
 func (o *EntitlementDto) GetPrivileged() bool {
-	if o == nil || isNil(o.Privileged) {
+	if o == nil || IsNil(o.Privileged) {
 		var ret bool
 		return ret
 	}
@@ -359,7 +359,7 @@ func (o *EntitlementDto) GetPrivileged() bool {
 // GetPrivilegedOk returns a tuple with the Privileged field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntitlementDto) GetPrivilegedOk() (*bool, bool) {
-	if o == nil || isNil(o.Privileged) {
+	if o == nil || IsNil(o.Privileged) {
 		return nil, false
 	}
 	return o.Privileged, true
@@ -367,7 +367,7 @@ func (o *EntitlementDto) GetPrivilegedOk() (*bool, bool) {
 
 // HasPrivileged returns a boolean if a field has been set.
 func (o *EntitlementDto) HasPrivileged() bool {
-	if o != nil && !isNil(o.Privileged) {
+	if o != nil && !IsNil(o.Privileged) {
 		return true
 	}
 
@@ -381,7 +381,7 @@ func (o *EntitlementDto) SetPrivileged(v bool) {
 
 // GetCloudGoverned returns the CloudGoverned field value if set, zero value otherwise.
 func (o *EntitlementDto) GetCloudGoverned() bool {
-	if o == nil || isNil(o.CloudGoverned) {
+	if o == nil || IsNil(o.CloudGoverned) {
 		var ret bool
 		return ret
 	}
@@ -391,7 +391,7 @@ func (o *EntitlementDto) GetCloudGoverned() bool {
 // GetCloudGovernedOk returns a tuple with the CloudGoverned field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntitlementDto) GetCloudGovernedOk() (*bool, bool) {
-	if o == nil || isNil(o.CloudGoverned) {
+	if o == nil || IsNil(o.CloudGoverned) {
 		return nil, false
 	}
 	return o.CloudGoverned, true
@@ -399,7 +399,7 @@ func (o *EntitlementDto) GetCloudGovernedOk() (*bool, bool) {
 
 // HasCloudGoverned returns a boolean if a field has been set.
 func (o *EntitlementDto) HasCloudGoverned() bool {
-	if o != nil && !isNil(o.CloudGoverned) {
+	if o != nil && !IsNil(o.CloudGoverned) {
 		return true
 	}
 
@@ -413,7 +413,7 @@ func (o *EntitlementDto) SetCloudGoverned(v bool) {
 
 // GetSource returns the Source field value if set, zero value otherwise.
 func (o *EntitlementDto) GetSource() EntitlementSource {
-	if o == nil || isNil(o.Source) {
+	if o == nil || IsNil(o.Source) {
 		var ret EntitlementSource
 		return ret
 	}
@@ -423,7 +423,7 @@ func (o *EntitlementDto) GetSource() EntitlementSource {
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntitlementDto) GetSourceOk() (*EntitlementSource, bool) {
-	if o == nil || isNil(o.Source) {
+	if o == nil || IsNil(o.Source) {
 		return nil, false
 	}
 	return o.Source, true
@@ -431,7 +431,7 @@ func (o *EntitlementDto) GetSourceOk() (*EntitlementSource, bool) {
 
 // HasSource returns a boolean if a field has been set.
 func (o *EntitlementDto) HasSource() bool {
-	if o != nil && !isNil(o.Source) {
+	if o != nil && !IsNil(o.Source) {
 		return true
 	}
 
@@ -453,32 +453,38 @@ func (o EntitlementDto) MarshalJSON() ([]byte, error) {
 
 func (o EntitlementDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["name"] = o.Name
-	// skip: created is readOnly
-	// skip: modified is readOnly
-	if !isNil(o.Attribute) {
+	if !IsNil(o.Created) {
+		toSerialize["created"] = o.Created
+	}
+	if !IsNil(o.Modified) {
+		toSerialize["modified"] = o.Modified
+	}
+	if !IsNil(o.Attribute) {
 		toSerialize["attribute"] = o.Attribute
 	}
-	if !isNil(o.Value) {
+	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.Attributes) {
+	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
-	if !isNil(o.SourceSchemaObjectType) {
+	if !IsNil(o.SourceSchemaObjectType) {
 		toSerialize["sourceSchemaObjectType"] = o.SourceSchemaObjectType
 	}
-	if !isNil(o.Privileged) {
+	if !IsNil(o.Privileged) {
 		toSerialize["privileged"] = o.Privileged
 	}
-	if !isNil(o.CloudGoverned) {
+	if !IsNil(o.CloudGoverned) {
 		toSerialize["cloudGoverned"] = o.CloudGoverned
 	}
-	if !isNil(o.Source) {
+	if !IsNil(o.Source) {
 		toSerialize["source"] = o.Source
 	}
 
@@ -489,8 +495,8 @@ func (o EntitlementDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *EntitlementDto) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *EntitlementDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -499,7 +505,7 @@ func (o *EntitlementDto) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -513,13 +519,17 @@ func (o *EntitlementDto) UnmarshalJSON(bytes []byte) (err error) {
 
 	varEntitlementDto := _EntitlementDto{}
 
-	if err = json.Unmarshal(bytes, &varEntitlementDto); err == nil {
+	err = json.Unmarshal(data, &varEntitlementDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = EntitlementDto(varEntitlementDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "created")

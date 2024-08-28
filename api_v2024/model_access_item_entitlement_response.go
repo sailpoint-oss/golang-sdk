@@ -71,7 +71,7 @@ func NewAccessItemEntitlementResponseWithDefaults() *AccessItemEntitlementRespon
 
 // GetAccessType returns the AccessType field value if set, zero value otherwise.
 func (o *AccessItemEntitlementResponse) GetAccessType() string {
-	if o == nil || isNil(o.AccessType) {
+	if o == nil || IsNil(o.AccessType) {
 		var ret string
 		return ret
 	}
@@ -81,7 +81,7 @@ func (o *AccessItemEntitlementResponse) GetAccessType() string {
 // GetAccessTypeOk returns a tuple with the AccessType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemEntitlementResponse) GetAccessTypeOk() (*string, bool) {
-	if o == nil || isNil(o.AccessType) {
+	if o == nil || IsNil(o.AccessType) {
 		return nil, false
 	}
 	return o.AccessType, true
@@ -89,7 +89,7 @@ func (o *AccessItemEntitlementResponse) GetAccessTypeOk() (*string, bool) {
 
 // HasAccessType returns a boolean if a field has been set.
 func (o *AccessItemEntitlementResponse) HasAccessType() bool {
-	if o != nil && !isNil(o.AccessType) {
+	if o != nil && !IsNil(o.AccessType) {
 		return true
 	}
 
@@ -103,7 +103,7 @@ func (o *AccessItemEntitlementResponse) SetAccessType(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *AccessItemEntitlementResponse) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -113,7 +113,7 @@ func (o *AccessItemEntitlementResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemEntitlementResponse) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -121,7 +121,7 @@ func (o *AccessItemEntitlementResponse) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *AccessItemEntitlementResponse) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -135,7 +135,7 @@ func (o *AccessItemEntitlementResponse) SetId(v string) {
 
 // GetAttribute returns the Attribute field value if set, zero value otherwise.
 func (o *AccessItemEntitlementResponse) GetAttribute() string {
-	if o == nil || isNil(o.Attribute) {
+	if o == nil || IsNil(o.Attribute) {
 		var ret string
 		return ret
 	}
@@ -145,7 +145,7 @@ func (o *AccessItemEntitlementResponse) GetAttribute() string {
 // GetAttributeOk returns a tuple with the Attribute field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemEntitlementResponse) GetAttributeOk() (*string, bool) {
-	if o == nil || isNil(o.Attribute) {
+	if o == nil || IsNil(o.Attribute) {
 		return nil, false
 	}
 	return o.Attribute, true
@@ -153,7 +153,7 @@ func (o *AccessItemEntitlementResponse) GetAttributeOk() (*string, bool) {
 
 // HasAttribute returns a boolean if a field has been set.
 func (o *AccessItemEntitlementResponse) HasAttribute() bool {
-	if o != nil && !isNil(o.Attribute) {
+	if o != nil && !IsNil(o.Attribute) {
 		return true
 	}
 
@@ -167,7 +167,7 @@ func (o *AccessItemEntitlementResponse) SetAttribute(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *AccessItemEntitlementResponse) GetValue() string {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -177,7 +177,7 @@ func (o *AccessItemEntitlementResponse) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemEntitlementResponse) GetValueOk() (*string, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -185,7 +185,7 @@ func (o *AccessItemEntitlementResponse) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *AccessItemEntitlementResponse) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -199,7 +199,7 @@ func (o *AccessItemEntitlementResponse) SetValue(v string) {
 
 // GetEntitlementType returns the EntitlementType field value if set, zero value otherwise.
 func (o *AccessItemEntitlementResponse) GetEntitlementType() string {
-	if o == nil || isNil(o.EntitlementType) {
+	if o == nil || IsNil(o.EntitlementType) {
 		var ret string
 		return ret
 	}
@@ -209,7 +209,7 @@ func (o *AccessItemEntitlementResponse) GetEntitlementType() string {
 // GetEntitlementTypeOk returns a tuple with the EntitlementType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemEntitlementResponse) GetEntitlementTypeOk() (*string, bool) {
-	if o == nil || isNil(o.EntitlementType) {
+	if o == nil || IsNil(o.EntitlementType) {
 		return nil, false
 	}
 	return o.EntitlementType, true
@@ -217,7 +217,7 @@ func (o *AccessItemEntitlementResponse) GetEntitlementTypeOk() (*string, bool) {
 
 // HasEntitlementType returns a boolean if a field has been set.
 func (o *AccessItemEntitlementResponse) HasEntitlementType() bool {
-	if o != nil && !isNil(o.EntitlementType) {
+	if o != nil && !IsNil(o.EntitlementType) {
 		return true
 	}
 
@@ -231,7 +231,7 @@ func (o *AccessItemEntitlementResponse) SetEntitlementType(v string) {
 
 // GetSourceName returns the SourceName field value if set, zero value otherwise.
 func (o *AccessItemEntitlementResponse) GetSourceName() string {
-	if o == nil || isNil(o.SourceName) {
+	if o == nil || IsNil(o.SourceName) {
 		var ret string
 		return ret
 	}
@@ -241,7 +241,7 @@ func (o *AccessItemEntitlementResponse) GetSourceName() string {
 // GetSourceNameOk returns a tuple with the SourceName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemEntitlementResponse) GetSourceNameOk() (*string, bool) {
-	if o == nil || isNil(o.SourceName) {
+	if o == nil || IsNil(o.SourceName) {
 		return nil, false
 	}
 	return o.SourceName, true
@@ -249,7 +249,7 @@ func (o *AccessItemEntitlementResponse) GetSourceNameOk() (*string, bool) {
 
 // HasSourceName returns a boolean if a field has been set.
 func (o *AccessItemEntitlementResponse) HasSourceName() bool {
-	if o != nil && !isNil(o.SourceName) {
+	if o != nil && !IsNil(o.SourceName) {
 		return true
 	}
 
@@ -263,7 +263,7 @@ func (o *AccessItemEntitlementResponse) SetSourceName(v string) {
 
 // GetSourceId returns the SourceId field value if set, zero value otherwise.
 func (o *AccessItemEntitlementResponse) GetSourceId() string {
-	if o == nil || isNil(o.SourceId) {
+	if o == nil || IsNil(o.SourceId) {
 		var ret string
 		return ret
 	}
@@ -273,7 +273,7 @@ func (o *AccessItemEntitlementResponse) GetSourceId() string {
 // GetSourceIdOk returns a tuple with the SourceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemEntitlementResponse) GetSourceIdOk() (*string, bool) {
-	if o == nil || isNil(o.SourceId) {
+	if o == nil || IsNil(o.SourceId) {
 		return nil, false
 	}
 	return o.SourceId, true
@@ -281,7 +281,7 @@ func (o *AccessItemEntitlementResponse) GetSourceIdOk() (*string, bool) {
 
 // HasSourceId returns a boolean if a field has been set.
 func (o *AccessItemEntitlementResponse) HasSourceId() bool {
-	if o != nil && !isNil(o.SourceId) {
+	if o != nil && !IsNil(o.SourceId) {
 		return true
 	}
 
@@ -295,7 +295,7 @@ func (o *AccessItemEntitlementResponse) SetSourceId(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *AccessItemEntitlementResponse) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -305,7 +305,7 @@ func (o *AccessItemEntitlementResponse) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemEntitlementResponse) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -313,7 +313,7 @@ func (o *AccessItemEntitlementResponse) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *AccessItemEntitlementResponse) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -327,7 +327,7 @@ func (o *AccessItemEntitlementResponse) SetDescription(v string) {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *AccessItemEntitlementResponse) GetDisplayName() string {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -337,7 +337,7 @@ func (o *AccessItemEntitlementResponse) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemEntitlementResponse) GetDisplayNameOk() (*string, bool) {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -345,7 +345,7 @@ func (o *AccessItemEntitlementResponse) GetDisplayNameOk() (*string, bool) {
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *AccessItemEntitlementResponse) HasDisplayName() bool {
-	if o != nil && !isNil(o.DisplayName) {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -439,31 +439,31 @@ func (o AccessItemEntitlementResponse) MarshalJSON() ([]byte, error) {
 
 func (o AccessItemEntitlementResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AccessType) {
+	if !IsNil(o.AccessType) {
 		toSerialize["accessType"] = o.AccessType
 	}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Attribute) {
+	if !IsNil(o.Attribute) {
 		toSerialize["attribute"] = o.Attribute
 	}
-	if !isNil(o.Value) {
+	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
-	if !isNil(o.EntitlementType) {
+	if !IsNil(o.EntitlementType) {
 		toSerialize["entitlementType"] = o.EntitlementType
 	}
-	if !isNil(o.SourceName) {
+	if !IsNil(o.SourceName) {
 		toSerialize["sourceName"] = o.SourceName
 	}
-	if !isNil(o.SourceId) {
+	if !IsNil(o.SourceId) {
 		toSerialize["sourceId"] = o.SourceId
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.DisplayName) {
+	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
 	toSerialize["standalone"] = o.Standalone
@@ -477,8 +477,8 @@ func (o AccessItemEntitlementResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccessItemEntitlementResponse) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *AccessItemEntitlementResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -489,7 +489,7 @@ func (o *AccessItemEntitlementResponse) UnmarshalJSON(bytes []byte) (err error) 
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -503,13 +503,17 @@ func (o *AccessItemEntitlementResponse) UnmarshalJSON(bytes []byte) (err error) 
 
 	varAccessItemEntitlementResponse := _AccessItemEntitlementResponse{}
 
-	if err = json.Unmarshal(bytes, &varAccessItemEntitlementResponse); err == nil {
+	err = json.Unmarshal(data, &varAccessItemEntitlementResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessItemEntitlementResponse(varAccessItemEntitlementResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "accessType")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "attribute")

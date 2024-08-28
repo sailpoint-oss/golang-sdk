@@ -76,7 +76,7 @@ func (o *AccessConstraint) SetType(v string) {
 
 // GetIds returns the Ids field value if set, zero value otherwise.
 func (o *AccessConstraint) GetIds() []string {
-	if o == nil || isNil(o.Ids) {
+	if o == nil || IsNil(o.Ids) {
 		var ret []string
 		return ret
 	}
@@ -86,7 +86,7 @@ func (o *AccessConstraint) GetIds() []string {
 // GetIdsOk returns a tuple with the Ids field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessConstraint) GetIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.Ids) {
+	if o == nil || IsNil(o.Ids) {
 		return nil, false
 	}
 	return o.Ids, true
@@ -94,7 +94,7 @@ func (o *AccessConstraint) GetIdsOk() ([]string, bool) {
 
 // HasIds returns a boolean if a field has been set.
 func (o *AccessConstraint) HasIds() bool {
-	if o != nil && !isNil(o.Ids) {
+	if o != nil && !IsNil(o.Ids) {
 		return true
 	}
 
@@ -141,7 +141,7 @@ func (o AccessConstraint) MarshalJSON() ([]byte, error) {
 func (o AccessConstraint) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
-	if !isNil(o.Ids) {
+	if !IsNil(o.Ids) {
 		toSerialize["ids"] = o.Ids
 	}
 	toSerialize["operator"] = o.Operator
@@ -153,8 +153,8 @@ func (o AccessConstraint) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccessConstraint) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *AccessConstraint) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -164,7 +164,7 @@ func (o *AccessConstraint) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -178,13 +178,17 @@ func (o *AccessConstraint) UnmarshalJSON(bytes []byte) (err error) {
 
 	varAccessConstraint := _AccessConstraint{}
 
-	if err = json.Unmarshal(bytes, &varAccessConstraint); err == nil {
+	err = json.Unmarshal(data, &varAccessConstraint)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessConstraint(varAccessConstraint)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "ids")
 		delete(additionalProperties, "operator")

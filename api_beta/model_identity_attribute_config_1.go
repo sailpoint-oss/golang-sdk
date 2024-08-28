@@ -50,7 +50,7 @@ func NewIdentityAttributeConfig1WithDefaults() *IdentityAttributeConfig1 {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *IdentityAttributeConfig1) GetEnabled() bool {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -60,7 +60,7 @@ func (o *IdentityAttributeConfig1) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityAttributeConfig1) GetEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -68,7 +68,7 @@ func (o *IdentityAttributeConfig1) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *IdentityAttributeConfig1) HasEnabled() bool {
-	if o != nil && !isNil(o.Enabled) {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -82,7 +82,7 @@ func (o *IdentityAttributeConfig1) SetEnabled(v bool) {
 
 // GetAttributeTransforms returns the AttributeTransforms field value if set, zero value otherwise.
 func (o *IdentityAttributeConfig1) GetAttributeTransforms() []IdentityAttributeTransform1 {
-	if o == nil || isNil(o.AttributeTransforms) {
+	if o == nil || IsNil(o.AttributeTransforms) {
 		var ret []IdentityAttributeTransform1
 		return ret
 	}
@@ -92,7 +92,7 @@ func (o *IdentityAttributeConfig1) GetAttributeTransforms() []IdentityAttributeT
 // GetAttributeTransformsOk returns a tuple with the AttributeTransforms field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityAttributeConfig1) GetAttributeTransformsOk() ([]IdentityAttributeTransform1, bool) {
-	if o == nil || isNil(o.AttributeTransforms) {
+	if o == nil || IsNil(o.AttributeTransforms) {
 		return nil, false
 	}
 	return o.AttributeTransforms, true
@@ -100,7 +100,7 @@ func (o *IdentityAttributeConfig1) GetAttributeTransformsOk() ([]IdentityAttribu
 
 // HasAttributeTransforms returns a boolean if a field has been set.
 func (o *IdentityAttributeConfig1) HasAttributeTransforms() bool {
-	if o != nil && !isNil(o.AttributeTransforms) {
+	if o != nil && !IsNil(o.AttributeTransforms) {
 		return true
 	}
 
@@ -122,10 +122,10 @@ func (o IdentityAttributeConfig1) MarshalJSON() ([]byte, error) {
 
 func (o IdentityAttributeConfig1) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Enabled) {
+	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if !isNil(o.AttributeTransforms) {
+	if !IsNil(o.AttributeTransforms) {
 		toSerialize["attributeTransforms"] = o.AttributeTransforms
 	}
 
@@ -136,16 +136,20 @@ func (o IdentityAttributeConfig1) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *IdentityAttributeConfig1) UnmarshalJSON(bytes []byte) (err error) {
+func (o *IdentityAttributeConfig1) UnmarshalJSON(data []byte) (err error) {
 	varIdentityAttributeConfig1 := _IdentityAttributeConfig1{}
 
-	if err = json.Unmarshal(bytes, &varIdentityAttributeConfig1); err == nil {
+	err = json.Unmarshal(data, &varIdentityAttributeConfig1)
+
+	if err != nil {
+		return err
+	}
+
 	*o = IdentityAttributeConfig1(varIdentityAttributeConfig1)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "enabled")
 		delete(additionalProperties, "attributeTransforms")
 		o.AdditionalProperties = additionalProperties

@@ -45,7 +45,7 @@ func NewImportAccountsRequest1WithDefaults() *ImportAccountsRequest1 {
 
 // GetDisableOptimization returns the DisableOptimization field value if set, zero value otherwise.
 func (o *ImportAccountsRequest1) GetDisableOptimization() string {
-	if o == nil || isNil(o.DisableOptimization) {
+	if o == nil || IsNil(o.DisableOptimization) {
 		var ret string
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *ImportAccountsRequest1) GetDisableOptimization() string {
 // GetDisableOptimizationOk returns a tuple with the DisableOptimization field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImportAccountsRequest1) GetDisableOptimizationOk() (*string, bool) {
-	if o == nil || isNil(o.DisableOptimization) {
+	if o == nil || IsNil(o.DisableOptimization) {
 		return nil, false
 	}
 	return o.DisableOptimization, true
@@ -63,7 +63,7 @@ func (o *ImportAccountsRequest1) GetDisableOptimizationOk() (*string, bool) {
 
 // HasDisableOptimization returns a boolean if a field has been set.
 func (o *ImportAccountsRequest1) HasDisableOptimization() bool {
-	if o != nil && !isNil(o.DisableOptimization) {
+	if o != nil && !IsNil(o.DisableOptimization) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o ImportAccountsRequest1) MarshalJSON() ([]byte, error) {
 
 func (o ImportAccountsRequest1) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.DisableOptimization) {
+	if !IsNil(o.DisableOptimization) {
 		toSerialize["disableOptimization"] = o.DisableOptimization
 	}
 
@@ -96,16 +96,20 @@ func (o ImportAccountsRequest1) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ImportAccountsRequest1) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ImportAccountsRequest1) UnmarshalJSON(data []byte) (err error) {
 	varImportAccountsRequest1 := _ImportAccountsRequest1{}
 
-	if err = json.Unmarshal(bytes, &varImportAccountsRequest1); err == nil {
+	err = json.Unmarshal(data, &varImportAccountsRequest1)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ImportAccountsRequest1(varImportAccountsRequest1)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "disableOptimization")
 		o.AdditionalProperties = additionalProperties
 	}

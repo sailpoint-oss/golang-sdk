@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **LastSeen** | Pointer to **time.Time** | When the ManagedClient was last seen by the server | [optional] [readonly] 
 **Name** | Pointer to **string** | ManagedClient name | [optional] 
 **SinceLastSeen** | Pointer to **string** | Milliseconds since the ManagedClient has polled the server | [optional] [readonly] 
-**Status** | Pointer to [**ManagedClientStatusEnum**](ManagedClientStatusEnum.md) |  | [optional] [readonly] 
+**Status** | Pointer to [**ManagedClientStatusEnum**](ManagedClientStatusEnum.md) | Status of the ManagedClient | [optional] [readonly] 
 **Type** | **string** | Type of the ManagedClient (VA, CCG) | 
 **VaDownloadUrl** | Pointer to **string** | ManagedClient VA download URL | [optional] [readonly] 
 **VaVersion** | Pointer to **string** | Version that the ManagedClient&#39;s VA is running | [optional] [readonly] 

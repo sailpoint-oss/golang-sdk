@@ -47,7 +47,7 @@ func NewAccessProfileBulkDeleteRequestWithDefaults() *AccessProfileBulkDeleteReq
 
 // GetAccessProfileIds returns the AccessProfileIds field value if set, zero value otherwise.
 func (o *AccessProfileBulkDeleteRequest) GetAccessProfileIds() []string {
-	if o == nil || isNil(o.AccessProfileIds) {
+	if o == nil || IsNil(o.AccessProfileIds) {
 		var ret []string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *AccessProfileBulkDeleteRequest) GetAccessProfileIds() []string {
 // GetAccessProfileIdsOk returns a tuple with the AccessProfileIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessProfileBulkDeleteRequest) GetAccessProfileIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.AccessProfileIds) {
+	if o == nil || IsNil(o.AccessProfileIds) {
 		return nil, false
 	}
 	return o.AccessProfileIds, true
@@ -65,7 +65,7 @@ func (o *AccessProfileBulkDeleteRequest) GetAccessProfileIdsOk() ([]string, bool
 
 // HasAccessProfileIds returns a boolean if a field has been set.
 func (o *AccessProfileBulkDeleteRequest) HasAccessProfileIds() bool {
-	if o != nil && !isNil(o.AccessProfileIds) {
+	if o != nil && !IsNil(o.AccessProfileIds) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *AccessProfileBulkDeleteRequest) SetAccessProfileIds(v []string) {
 
 // GetBestEffortOnly returns the BestEffortOnly field value if set, zero value otherwise.
 func (o *AccessProfileBulkDeleteRequest) GetBestEffortOnly() bool {
-	if o == nil || isNil(o.BestEffortOnly) {
+	if o == nil || IsNil(o.BestEffortOnly) {
 		var ret bool
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *AccessProfileBulkDeleteRequest) GetBestEffortOnly() bool {
 // GetBestEffortOnlyOk returns a tuple with the BestEffortOnly field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessProfileBulkDeleteRequest) GetBestEffortOnlyOk() (*bool, bool) {
-	if o == nil || isNil(o.BestEffortOnly) {
+	if o == nil || IsNil(o.BestEffortOnly) {
 		return nil, false
 	}
 	return o.BestEffortOnly, true
@@ -97,7 +97,7 @@ func (o *AccessProfileBulkDeleteRequest) GetBestEffortOnlyOk() (*bool, bool) {
 
 // HasBestEffortOnly returns a boolean if a field has been set.
 func (o *AccessProfileBulkDeleteRequest) HasBestEffortOnly() bool {
-	if o != nil && !isNil(o.BestEffortOnly) {
+	if o != nil && !IsNil(o.BestEffortOnly) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o AccessProfileBulkDeleteRequest) MarshalJSON() ([]byte, error) {
 
 func (o AccessProfileBulkDeleteRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AccessProfileIds) {
+	if !IsNil(o.AccessProfileIds) {
 		toSerialize["accessProfileIds"] = o.AccessProfileIds
 	}
-	if !isNil(o.BestEffortOnly) {
+	if !IsNil(o.BestEffortOnly) {
 		toSerialize["bestEffortOnly"] = o.BestEffortOnly
 	}
 
@@ -133,16 +133,20 @@ func (o AccessProfileBulkDeleteRequest) ToMap() (map[string]interface{}, error) 
 	return toSerialize, nil
 }
 
-func (o *AccessProfileBulkDeleteRequest) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccessProfileBulkDeleteRequest) UnmarshalJSON(data []byte) (err error) {
 	varAccessProfileBulkDeleteRequest := _AccessProfileBulkDeleteRequest{}
 
-	if err = json.Unmarshal(bytes, &varAccessProfileBulkDeleteRequest); err == nil {
+	err = json.Unmarshal(data, &varAccessProfileBulkDeleteRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessProfileBulkDeleteRequest(varAccessProfileBulkDeleteRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "accessProfileIds")
 		delete(additionalProperties, "bestEffortOnly")
 		o.AdditionalProperties = additionalProperties

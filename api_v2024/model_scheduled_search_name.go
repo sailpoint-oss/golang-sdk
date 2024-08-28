@@ -47,7 +47,7 @@ func NewScheduledSearchNameWithDefaults() *ScheduledSearchName {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ScheduledSearchName) GetName() string {
-	if o == nil || isNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *ScheduledSearchName) UnsetName() {
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ScheduledSearchName) GetDescription() string {
-	if o == nil || isNil(o.Description.Get()) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
@@ -153,16 +153,20 @@ func (o ScheduledSearchName) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ScheduledSearchName) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ScheduledSearchName) UnmarshalJSON(data []byte) (err error) {
 	varScheduledSearchName := _ScheduledSearchName{}
 
-	if err = json.Unmarshal(bytes, &varScheduledSearchName); err == nil {
+	err = json.Unmarshal(data, &varScheduledSearchName)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ScheduledSearchName(varScheduledSearchName)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		o.AdditionalProperties = additionalProperties

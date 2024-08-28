@@ -19,7 +19,7 @@ import (
 
 func Test_api_beta_CertificationsAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test CertificationsAPIService GetIdentityCertificationItemPermissions", func(t *testing.T) {
@@ -29,7 +29,7 @@ func Test_api_beta_CertificationsAPIService(t *testing.T) {
 		var certificationId string
 		var itemId string
 
-		resp, httpRes, err := apiClient.API_BETA.CertificationsAPI.GetIdentityCertificationItemPermissions(context.Background(), certificationId, itemId).Execute()
+		resp, httpRes, err := apiClient.CertificationsAPI.GetIdentityCertificationItemPermissions(context.Background(), certificationId, itemId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -43,7 +43,7 @@ func Test_api_beta_CertificationsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.CertificationsAPI.GetIdentityCertificationPendingTasks(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.CertificationsAPI.GetIdentityCertificationPendingTasks(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -58,7 +58,7 @@ func Test_api_beta_CertificationsAPIService(t *testing.T) {
 		var id string
 		var taskId string
 
-		resp, httpRes, err := apiClient.API_BETA.CertificationsAPI.GetIdentityCertificationTaskStatus(context.Background(), id, taskId).Execute()
+		resp, httpRes, err := apiClient.CertificationsAPI.GetIdentityCertificationTaskStatus(context.Background(), id, taskId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -72,7 +72,7 @@ func Test_api_beta_CertificationsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.CertificationsAPI.ListCertificationReviewers(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.CertificationsAPI.ListCertificationReviewers(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -86,7 +86,7 @@ func Test_api_beta_CertificationsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.CertificationsAPI.SubmitReassignCertsAsync(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.CertificationsAPI.SubmitReassignCertsAsync(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

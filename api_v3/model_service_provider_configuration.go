@@ -63,7 +63,7 @@ func NewServiceProviderConfigurationWithDefaults() *ServiceProviderConfiguration
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *ServiceProviderConfiguration) GetEnabled() bool {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -73,7 +73,7 @@ func (o *ServiceProviderConfiguration) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceProviderConfiguration) GetEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -81,7 +81,7 @@ func (o *ServiceProviderConfiguration) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *ServiceProviderConfiguration) HasEnabled() bool {
-	if o != nil && !isNil(o.Enabled) {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -95,7 +95,7 @@ func (o *ServiceProviderConfiguration) SetEnabled(v bool) {
 
 // GetBypassIdp returns the BypassIdp field value if set, zero value otherwise.
 func (o *ServiceProviderConfiguration) GetBypassIdp() bool {
-	if o == nil || isNil(o.BypassIdp) {
+	if o == nil || IsNil(o.BypassIdp) {
 		var ret bool
 		return ret
 	}
@@ -105,7 +105,7 @@ func (o *ServiceProviderConfiguration) GetBypassIdp() bool {
 // GetBypassIdpOk returns a tuple with the BypassIdp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceProviderConfiguration) GetBypassIdpOk() (*bool, bool) {
-	if o == nil || isNil(o.BypassIdp) {
+	if o == nil || IsNil(o.BypassIdp) {
 		return nil, false
 	}
 	return o.BypassIdp, true
@@ -113,7 +113,7 @@ func (o *ServiceProviderConfiguration) GetBypassIdpOk() (*bool, bool) {
 
 // HasBypassIdp returns a boolean if a field has been set.
 func (o *ServiceProviderConfiguration) HasBypassIdp() bool {
-	if o != nil && !isNil(o.BypassIdp) {
+	if o != nil && !IsNil(o.BypassIdp) {
 		return true
 	}
 
@@ -127,7 +127,7 @@ func (o *ServiceProviderConfiguration) SetBypassIdp(v bool) {
 
 // GetSamlConfigurationValid returns the SamlConfigurationValid field value if set, zero value otherwise.
 func (o *ServiceProviderConfiguration) GetSamlConfigurationValid() bool {
-	if o == nil || isNil(o.SamlConfigurationValid) {
+	if o == nil || IsNil(o.SamlConfigurationValid) {
 		var ret bool
 		return ret
 	}
@@ -137,7 +137,7 @@ func (o *ServiceProviderConfiguration) GetSamlConfigurationValid() bool {
 // GetSamlConfigurationValidOk returns a tuple with the SamlConfigurationValid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceProviderConfiguration) GetSamlConfigurationValidOk() (*bool, bool) {
-	if o == nil || isNil(o.SamlConfigurationValid) {
+	if o == nil || IsNil(o.SamlConfigurationValid) {
 		return nil, false
 	}
 	return o.SamlConfigurationValid, true
@@ -145,7 +145,7 @@ func (o *ServiceProviderConfiguration) GetSamlConfigurationValidOk() (*bool, boo
 
 // HasSamlConfigurationValid returns a boolean if a field has been set.
 func (o *ServiceProviderConfiguration) HasSamlConfigurationValid() bool {
-	if o != nil && !isNil(o.SamlConfigurationValid) {
+	if o != nil && !IsNil(o.SamlConfigurationValid) {
 		return true
 	}
 
@@ -159,7 +159,7 @@ func (o *ServiceProviderConfiguration) SetSamlConfigurationValid(v bool) {
 
 // GetFederationProtocolDetails returns the FederationProtocolDetails field value if set, zero value otherwise.
 func (o *ServiceProviderConfiguration) GetFederationProtocolDetails() []ServiceProviderConfigurationFederationProtocolDetailsInner {
-	if o == nil || isNil(o.FederationProtocolDetails) {
+	if o == nil || IsNil(o.FederationProtocolDetails) {
 		var ret []ServiceProviderConfigurationFederationProtocolDetailsInner
 		return ret
 	}
@@ -169,7 +169,7 @@ func (o *ServiceProviderConfiguration) GetFederationProtocolDetails() []ServiceP
 // GetFederationProtocolDetailsOk returns a tuple with the FederationProtocolDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceProviderConfiguration) GetFederationProtocolDetailsOk() ([]ServiceProviderConfigurationFederationProtocolDetailsInner, bool) {
-	if o == nil || isNil(o.FederationProtocolDetails) {
+	if o == nil || IsNil(o.FederationProtocolDetails) {
 		return nil, false
 	}
 	return o.FederationProtocolDetails, true
@@ -177,7 +177,7 @@ func (o *ServiceProviderConfiguration) GetFederationProtocolDetailsOk() ([]Servi
 
 // HasFederationProtocolDetails returns a boolean if a field has been set.
 func (o *ServiceProviderConfiguration) HasFederationProtocolDetails() bool {
-	if o != nil && !isNil(o.FederationProtocolDetails) {
+	if o != nil && !IsNil(o.FederationProtocolDetails) {
 		return true
 	}
 
@@ -199,16 +199,16 @@ func (o ServiceProviderConfiguration) MarshalJSON() ([]byte, error) {
 
 func (o ServiceProviderConfiguration) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Enabled) {
+	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if !isNil(o.BypassIdp) {
+	if !IsNil(o.BypassIdp) {
 		toSerialize["bypassIdp"] = o.BypassIdp
 	}
-	if !isNil(o.SamlConfigurationValid) {
+	if !IsNil(o.SamlConfigurationValid) {
 		toSerialize["samlConfigurationValid"] = o.SamlConfigurationValid
 	}
-	if !isNil(o.FederationProtocolDetails) {
+	if !IsNil(o.FederationProtocolDetails) {
 		toSerialize["federationProtocolDetails"] = o.FederationProtocolDetails
 	}
 
@@ -219,16 +219,20 @@ func (o ServiceProviderConfiguration) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ServiceProviderConfiguration) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ServiceProviderConfiguration) UnmarshalJSON(data []byte) (err error) {
 	varServiceProviderConfiguration := _ServiceProviderConfiguration{}
 
-	if err = json.Unmarshal(bytes, &varServiceProviderConfiguration); err == nil {
+	err = json.Unmarshal(data, &varServiceProviderConfiguration)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ServiceProviderConfiguration(varServiceProviderConfiguration)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "enabled")
 		delete(additionalProperties, "bypassIdp")
 		delete(additionalProperties, "samlConfigurationValid")

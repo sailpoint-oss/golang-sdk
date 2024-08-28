@@ -75,7 +75,7 @@ func NewWorkItemsWithDefaults() *WorkItems {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *WorkItems) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -85,7 +85,7 @@ func (o *WorkItems) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkItems) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -93,7 +93,7 @@ func (o *WorkItems) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *WorkItems) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -107,7 +107,7 @@ func (o *WorkItems) SetId(v string) {
 
 // GetRequesterId returns the RequesterId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WorkItems) GetRequesterId() string {
-	if o == nil || isNil(o.RequesterId.Get()) {
+	if o == nil || IsNil(o.RequesterId.Get()) {
 		var ret string
 		return ret
 	}
@@ -149,7 +149,7 @@ func (o *WorkItems) UnsetRequesterId() {
 
 // GetRequesterDisplayName returns the RequesterDisplayName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WorkItems) GetRequesterDisplayName() string {
-	if o == nil || isNil(o.RequesterDisplayName.Get()) {
+	if o == nil || IsNil(o.RequesterDisplayName.Get()) {
 		var ret string
 		return ret
 	}
@@ -191,7 +191,7 @@ func (o *WorkItems) UnsetRequesterDisplayName() {
 
 // GetOwnerId returns the OwnerId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WorkItems) GetOwnerId() string {
-	if o == nil || isNil(o.OwnerId.Get()) {
+	if o == nil || IsNil(o.OwnerId.Get()) {
 		var ret string
 		return ret
 	}
@@ -233,7 +233,7 @@ func (o *WorkItems) UnsetOwnerId() {
 
 // GetOwnerName returns the OwnerName field value if set, zero value otherwise.
 func (o *WorkItems) GetOwnerName() string {
-	if o == nil || isNil(o.OwnerName) {
+	if o == nil || IsNil(o.OwnerName) {
 		var ret string
 		return ret
 	}
@@ -243,7 +243,7 @@ func (o *WorkItems) GetOwnerName() string {
 // GetOwnerNameOk returns a tuple with the OwnerName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkItems) GetOwnerNameOk() (*string, bool) {
-	if o == nil || isNil(o.OwnerName) {
+	if o == nil || IsNil(o.OwnerName) {
 		return nil, false
 	}
 	return o.OwnerName, true
@@ -251,7 +251,7 @@ func (o *WorkItems) GetOwnerNameOk() (*string, bool) {
 
 // HasOwnerName returns a boolean if a field has been set.
 func (o *WorkItems) HasOwnerName() bool {
-	if o != nil && !isNil(o.OwnerName) {
+	if o != nil && !IsNil(o.OwnerName) {
 		return true
 	}
 
@@ -265,7 +265,7 @@ func (o *WorkItems) SetOwnerName(v string) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *WorkItems) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -275,7 +275,7 @@ func (o *WorkItems) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkItems) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -283,7 +283,7 @@ func (o *WorkItems) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *WorkItems) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -297,7 +297,7 @@ func (o *WorkItems) SetCreated(v time.Time) {
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WorkItems) GetModified() time.Time {
-	if o == nil || isNil(o.Modified.Get()) {
+	if o == nil || IsNil(o.Modified.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -339,7 +339,7 @@ func (o *WorkItems) UnsetModified() {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *WorkItems) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -349,7 +349,7 @@ func (o *WorkItems) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkItems) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -357,7 +357,7 @@ func (o *WorkItems) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *WorkItems) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -371,7 +371,7 @@ func (o *WorkItems) SetDescription(v string) {
 
 // GetState returns the State field value if set, zero value otherwise.
 func (o *WorkItems) GetState() WorkItemStateManualWorkItems {
-	if o == nil || isNil(o.State) {
+	if o == nil || IsNil(o.State) {
 		var ret WorkItemStateManualWorkItems
 		return ret
 	}
@@ -381,7 +381,7 @@ func (o *WorkItems) GetState() WorkItemStateManualWorkItems {
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkItems) GetStateOk() (*WorkItemStateManualWorkItems, bool) {
-	if o == nil || isNil(o.State) {
+	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
 	return o.State, true
@@ -389,7 +389,7 @@ func (o *WorkItems) GetStateOk() (*WorkItemStateManualWorkItems, bool) {
 
 // HasState returns a boolean if a field has been set.
 func (o *WorkItems) HasState() bool {
-	if o != nil && !isNil(o.State) {
+	if o != nil && !IsNil(o.State) {
 		return true
 	}
 
@@ -403,7 +403,7 @@ func (o *WorkItems) SetState(v WorkItemStateManualWorkItems) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *WorkItems) GetType() WorkItemTypeManualWorkItems {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret WorkItemTypeManualWorkItems
 		return ret
 	}
@@ -413,7 +413,7 @@ func (o *WorkItems) GetType() WorkItemTypeManualWorkItems {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkItems) GetTypeOk() (*WorkItemTypeManualWorkItems, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -421,7 +421,7 @@ func (o *WorkItems) GetTypeOk() (*WorkItemTypeManualWorkItems, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *WorkItems) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -446,7 +446,7 @@ func (o *WorkItems) GetRemediationItems() []RemediationItemDetails {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WorkItems) GetRemediationItemsOk() ([]RemediationItemDetails, bool) {
-	if o == nil || isNil(o.RemediationItems) {
+	if o == nil || IsNil(o.RemediationItems) {
 		return nil, false
 	}
 	return o.RemediationItems, true
@@ -454,7 +454,7 @@ func (o *WorkItems) GetRemediationItemsOk() ([]RemediationItemDetails, bool) {
 
 // HasRemediationItems returns a boolean if a field has been set.
 func (o *WorkItems) HasRemediationItems() bool {
-	if o != nil && isNil(o.RemediationItems) {
+	if o != nil && !IsNil(o.RemediationItems) {
 		return true
 	}
 
@@ -479,7 +479,7 @@ func (o *WorkItems) GetApprovalItems() []ApprovalItemDetails {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WorkItems) GetApprovalItemsOk() ([]ApprovalItemDetails, bool) {
-	if o == nil || isNil(o.ApprovalItems) {
+	if o == nil || IsNil(o.ApprovalItems) {
 		return nil, false
 	}
 	return o.ApprovalItems, true
@@ -487,7 +487,7 @@ func (o *WorkItems) GetApprovalItemsOk() ([]ApprovalItemDetails, bool) {
 
 // HasApprovalItems returns a boolean if a field has been set.
 func (o *WorkItems) HasApprovalItems() bool {
-	if o != nil && isNil(o.ApprovalItems) {
+	if o != nil && !IsNil(o.ApprovalItems) {
 		return true
 	}
 
@@ -501,7 +501,7 @@ func (o *WorkItems) SetApprovalItems(v []ApprovalItemDetails) {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WorkItems) GetName() string {
-	if o == nil || isNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -543,7 +543,7 @@ func (o *WorkItems) UnsetName() {
 
 // GetCompleted returns the Completed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WorkItems) GetCompleted() time.Time {
-	if o == nil || isNil(o.Completed.Get()) {
+	if o == nil || IsNil(o.Completed.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -585,7 +585,7 @@ func (o *WorkItems) UnsetCompleted() {
 
 // GetNumItems returns the NumItems field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WorkItems) GetNumItems() int32 {
-	if o == nil || isNil(o.NumItems.Get()) {
+	if o == nil || IsNil(o.NumItems.Get()) {
 		var ret int32
 		return ret
 	}
@@ -627,7 +627,7 @@ func (o *WorkItems) UnsetNumItems() {
 
 // GetForm returns the Form field value if set, zero value otherwise.
 func (o *WorkItems) GetForm() WorkItemsForm {
-	if o == nil || isNil(o.Form) {
+	if o == nil || IsNil(o.Form) {
 		var ret WorkItemsForm
 		return ret
 	}
@@ -637,7 +637,7 @@ func (o *WorkItems) GetForm() WorkItemsForm {
 // GetFormOk returns a tuple with the Form field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkItems) GetFormOk() (*WorkItemsForm, bool) {
-	if o == nil || isNil(o.Form) {
+	if o == nil || IsNil(o.Form) {
 		return nil, false
 	}
 	return o.Form, true
@@ -645,7 +645,7 @@ func (o *WorkItems) GetFormOk() (*WorkItemsForm, bool) {
 
 // HasForm returns a boolean if a field has been set.
 func (o *WorkItems) HasForm() bool {
-	if o != nil && !isNil(o.Form) {
+	if o != nil && !IsNil(o.Form) {
 		return true
 	}
 
@@ -659,7 +659,7 @@ func (o *WorkItems) SetForm(v WorkItemsForm) {
 
 // GetErrors returns the Errors field value if set, zero value otherwise.
 func (o *WorkItems) GetErrors() []string {
-	if o == nil || isNil(o.Errors) {
+	if o == nil || IsNil(o.Errors) {
 		var ret []string
 		return ret
 	}
@@ -669,7 +669,7 @@ func (o *WorkItems) GetErrors() []string {
 // GetErrorsOk returns a tuple with the Errors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkItems) GetErrorsOk() ([]string, bool) {
-	if o == nil || isNil(o.Errors) {
+	if o == nil || IsNil(o.Errors) {
 		return nil, false
 	}
 	return o.Errors, true
@@ -677,7 +677,7 @@ func (o *WorkItems) GetErrorsOk() ([]string, bool) {
 
 // HasErrors returns a boolean if a field has been set.
 func (o *WorkItems) HasErrors() bool {
-	if o != nil && !isNil(o.Errors) {
+	if o != nil && !IsNil(o.Errors) {
 		return true
 	}
 
@@ -699,7 +699,7 @@ func (o WorkItems) MarshalJSON() ([]byte, error) {
 
 func (o WorkItems) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
 	if o.RequesterId.IsSet() {
@@ -711,22 +711,22 @@ func (o WorkItems) ToMap() (map[string]interface{}, error) {
 	if o.OwnerId.IsSet() {
 		toSerialize["ownerId"] = o.OwnerId.Get()
 	}
-	if !isNil(o.OwnerName) {
+	if !IsNil(o.OwnerName) {
 		toSerialize["ownerName"] = o.OwnerName
 	}
-	if !isNil(o.Created) {
+	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
 	if o.Modified.IsSet() {
 		toSerialize["modified"] = o.Modified.Get()
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.State) {
+	if !IsNil(o.State) {
 		toSerialize["state"] = o.State
 	}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
 	if o.RemediationItems != nil {
@@ -744,10 +744,10 @@ func (o WorkItems) ToMap() (map[string]interface{}, error) {
 	if o.NumItems.IsSet() {
 		toSerialize["numItems"] = o.NumItems.Get()
 	}
-	if !isNil(o.Form) {
+	if !IsNil(o.Form) {
 		toSerialize["form"] = o.Form
 	}
-	if !isNil(o.Errors) {
+	if !IsNil(o.Errors) {
 		toSerialize["errors"] = o.Errors
 	}
 
@@ -758,16 +758,20 @@ func (o WorkItems) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *WorkItems) UnmarshalJSON(bytes []byte) (err error) {
+func (o *WorkItems) UnmarshalJSON(data []byte) (err error) {
 	varWorkItems := _WorkItems{}
 
-	if err = json.Unmarshal(bytes, &varWorkItems); err == nil {
+	err = json.Unmarshal(data, &varWorkItems)
+
+	if err != nil {
+		return err
+	}
+
 	*o = WorkItems(varWorkItems)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "requesterId")
 		delete(additionalProperties, "requesterDisplayName")

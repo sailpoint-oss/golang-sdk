@@ -47,7 +47,7 @@ func NewSource1WithDefaults() *Source1 {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *Source1) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *Source1) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Source1) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -65,7 +65,7 @@ func (o *Source1) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *Source1) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *Source1) SetType(v string) {
 
 // GetProperties returns the Properties field value if set, zero value otherwise.
 func (o *Source1) GetProperties() map[string]interface{} {
-	if o == nil || isNil(o.Properties) {
+	if o == nil || IsNil(o.Properties) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *Source1) GetProperties() map[string]interface{} {
 // GetPropertiesOk returns a tuple with the Properties field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Source1) GetPropertiesOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Properties) {
+	if o == nil || IsNil(o.Properties) {
 		return map[string]interface{}{}, false
 	}
 	return o.Properties, true
@@ -97,7 +97,7 @@ func (o *Source1) GetPropertiesOk() (map[string]interface{}, bool) {
 
 // HasProperties returns a boolean if a field has been set.
 func (o *Source1) HasProperties() bool {
-	if o != nil && !isNil(o.Properties) {
+	if o != nil && !IsNil(o.Properties) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o Source1) MarshalJSON() ([]byte, error) {
 
 func (o Source1) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Properties) {
+	if !IsNil(o.Properties) {
 		toSerialize["properties"] = o.Properties
 	}
 
@@ -133,16 +133,20 @@ func (o Source1) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Source1) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Source1) UnmarshalJSON(data []byte) (err error) {
 	varSource1 := _Source1{}
 
-	if err = json.Unmarshal(bytes, &varSource1); err == nil {
+	err = json.Unmarshal(data, &varSource1)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Source1(varSource1)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "properties")
 		o.AdditionalProperties = additionalProperties

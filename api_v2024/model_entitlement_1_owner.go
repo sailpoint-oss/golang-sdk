@@ -49,7 +49,7 @@ func NewEntitlement1OwnerWithDefaults() *Entitlement1Owner {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Entitlement1Owner) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *Entitlement1Owner) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Entitlement1Owner) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -67,7 +67,7 @@ func (o *Entitlement1Owner) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *Entitlement1Owner) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *Entitlement1Owner) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Entitlement1Owner) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *Entitlement1Owner) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Entitlement1Owner) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -99,7 +99,7 @@ func (o *Entitlement1Owner) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *Entitlement1Owner) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *Entitlement1Owner) SetName(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *Entitlement1Owner) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *Entitlement1Owner) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Entitlement1Owner) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -131,7 +131,7 @@ func (o *Entitlement1Owner) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *Entitlement1Owner) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o Entitlement1Owner) MarshalJSON() ([]byte, error) {
 
 func (o Entitlement1Owner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
 
@@ -170,16 +170,20 @@ func (o Entitlement1Owner) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Entitlement1Owner) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Entitlement1Owner) UnmarshalJSON(data []byte) (err error) {
 	varEntitlement1Owner := _Entitlement1Owner{}
 
-	if err = json.Unmarshal(bytes, &varEntitlement1Owner); err == nil {
+	err = json.Unmarshal(data, &varEntitlement1Owner)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Entitlement1Owner(varEntitlement1Owner)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "type")

@@ -132,7 +132,7 @@ func (o *ManagedCluster) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ManagedCluster) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -142,7 +142,7 @@ func (o *ManagedCluster) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedCluster) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -150,7 +150,7 @@ func (o *ManagedCluster) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ManagedCluster) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -164,7 +164,7 @@ func (o *ManagedCluster) SetName(v string) {
 
 // GetPod returns the Pod field value if set, zero value otherwise.
 func (o *ManagedCluster) GetPod() string {
-	if o == nil || isNil(o.Pod) {
+	if o == nil || IsNil(o.Pod) {
 		var ret string
 		return ret
 	}
@@ -174,7 +174,7 @@ func (o *ManagedCluster) GetPod() string {
 // GetPodOk returns a tuple with the Pod field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedCluster) GetPodOk() (*string, bool) {
-	if o == nil || isNil(o.Pod) {
+	if o == nil || IsNil(o.Pod) {
 		return nil, false
 	}
 	return o.Pod, true
@@ -182,7 +182,7 @@ func (o *ManagedCluster) GetPodOk() (*string, bool) {
 
 // HasPod returns a boolean if a field has been set.
 func (o *ManagedCluster) HasPod() bool {
-	if o != nil && !isNil(o.Pod) {
+	if o != nil && !IsNil(o.Pod) {
 		return true
 	}
 
@@ -196,7 +196,7 @@ func (o *ManagedCluster) SetPod(v string) {
 
 // GetOrg returns the Org field value if set, zero value otherwise.
 func (o *ManagedCluster) GetOrg() string {
-	if o == nil || isNil(o.Org) {
+	if o == nil || IsNil(o.Org) {
 		var ret string
 		return ret
 	}
@@ -206,7 +206,7 @@ func (o *ManagedCluster) GetOrg() string {
 // GetOrgOk returns a tuple with the Org field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedCluster) GetOrgOk() (*string, bool) {
-	if o == nil || isNil(o.Org) {
+	if o == nil || IsNil(o.Org) {
 		return nil, false
 	}
 	return o.Org, true
@@ -214,7 +214,7 @@ func (o *ManagedCluster) GetOrgOk() (*string, bool) {
 
 // HasOrg returns a boolean if a field has been set.
 func (o *ManagedCluster) HasOrg() bool {
-	if o != nil && !isNil(o.Org) {
+	if o != nil && !IsNil(o.Org) {
 		return true
 	}
 
@@ -228,7 +228,7 @@ func (o *ManagedCluster) SetOrg(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *ManagedCluster) GetType() ManagedClusterTypes {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret ManagedClusterTypes
 		return ret
 	}
@@ -238,7 +238,7 @@ func (o *ManagedCluster) GetType() ManagedClusterTypes {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedCluster) GetTypeOk() (*ManagedClusterTypes, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -246,7 +246,7 @@ func (o *ManagedCluster) GetTypeOk() (*ManagedClusterTypes, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *ManagedCluster) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -260,7 +260,7 @@ func (o *ManagedCluster) SetType(v ManagedClusterTypes) {
 
 // GetConfiguration returns the Configuration field value if set, zero value otherwise.
 func (o *ManagedCluster) GetConfiguration() map[string]string {
-	if o == nil || isNil(o.Configuration) {
+	if o == nil || IsNil(o.Configuration) {
 		var ret map[string]string
 		return ret
 	}
@@ -270,7 +270,7 @@ func (o *ManagedCluster) GetConfiguration() map[string]string {
 // GetConfigurationOk returns a tuple with the Configuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedCluster) GetConfigurationOk() (*map[string]string, bool) {
-	if o == nil || isNil(o.Configuration) {
+	if o == nil || IsNil(o.Configuration) {
 		return nil, false
 	}
 	return o.Configuration, true
@@ -278,7 +278,7 @@ func (o *ManagedCluster) GetConfigurationOk() (*map[string]string, bool) {
 
 // HasConfiguration returns a boolean if a field has been set.
 func (o *ManagedCluster) HasConfiguration() bool {
-	if o != nil && !isNil(o.Configuration) {
+	if o != nil && !IsNil(o.Configuration) {
 		return true
 	}
 
@@ -292,7 +292,7 @@ func (o *ManagedCluster) SetConfiguration(v map[string]string) {
 
 // GetKeyPair returns the KeyPair field value if set, zero value otherwise.
 func (o *ManagedCluster) GetKeyPair() ManagedClusterKeyPair {
-	if o == nil || isNil(o.KeyPair) {
+	if o == nil || IsNil(o.KeyPair) {
 		var ret ManagedClusterKeyPair
 		return ret
 	}
@@ -302,7 +302,7 @@ func (o *ManagedCluster) GetKeyPair() ManagedClusterKeyPair {
 // GetKeyPairOk returns a tuple with the KeyPair field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedCluster) GetKeyPairOk() (*ManagedClusterKeyPair, bool) {
-	if o == nil || isNil(o.KeyPair) {
+	if o == nil || IsNil(o.KeyPair) {
 		return nil, false
 	}
 	return o.KeyPair, true
@@ -310,7 +310,7 @@ func (o *ManagedCluster) GetKeyPairOk() (*ManagedClusterKeyPair, bool) {
 
 // HasKeyPair returns a boolean if a field has been set.
 func (o *ManagedCluster) HasKeyPair() bool {
-	if o != nil && !isNil(o.KeyPair) {
+	if o != nil && !IsNil(o.KeyPair) {
 		return true
 	}
 
@@ -324,7 +324,7 @@ func (o *ManagedCluster) SetKeyPair(v ManagedClusterKeyPair) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *ManagedCluster) GetAttributes() ManagedClusterAttributes {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		var ret ManagedClusterAttributes
 		return ret
 	}
@@ -334,7 +334,7 @@ func (o *ManagedCluster) GetAttributes() ManagedClusterAttributes {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedCluster) GetAttributesOk() (*ManagedClusterAttributes, bool) {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		return nil, false
 	}
 	return o.Attributes, true
@@ -342,7 +342,7 @@ func (o *ManagedCluster) GetAttributesOk() (*ManagedClusterAttributes, bool) {
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *ManagedCluster) HasAttributes() bool {
-	if o != nil && !isNil(o.Attributes) {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -356,7 +356,7 @@ func (o *ManagedCluster) SetAttributes(v ManagedClusterAttributes) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ManagedCluster) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -366,7 +366,7 @@ func (o *ManagedCluster) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedCluster) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -374,7 +374,7 @@ func (o *ManagedCluster) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *ManagedCluster) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -388,7 +388,7 @@ func (o *ManagedCluster) SetDescription(v string) {
 
 // GetRedis returns the Redis field value if set, zero value otherwise.
 func (o *ManagedCluster) GetRedis() ManagedClusterRedis {
-	if o == nil || isNil(o.Redis) {
+	if o == nil || IsNil(o.Redis) {
 		var ret ManagedClusterRedis
 		return ret
 	}
@@ -398,7 +398,7 @@ func (o *ManagedCluster) GetRedis() ManagedClusterRedis {
 // GetRedisOk returns a tuple with the Redis field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedCluster) GetRedisOk() (*ManagedClusterRedis, bool) {
-	if o == nil || isNil(o.Redis) {
+	if o == nil || IsNil(o.Redis) {
 		return nil, false
 	}
 	return o.Redis, true
@@ -406,7 +406,7 @@ func (o *ManagedCluster) GetRedisOk() (*ManagedClusterRedis, bool) {
 
 // HasRedis returns a boolean if a field has been set.
 func (o *ManagedCluster) HasRedis() bool {
-	if o != nil && !isNil(o.Redis) {
+	if o != nil && !IsNil(o.Redis) {
 		return true
 	}
 
@@ -470,7 +470,7 @@ func (o *ManagedCluster) SetCcgVersion(v string) {
 
 // GetPinnedConfig returns the PinnedConfig field value if set, zero value otherwise.
 func (o *ManagedCluster) GetPinnedConfig() bool {
-	if o == nil || isNil(o.PinnedConfig) {
+	if o == nil || IsNil(o.PinnedConfig) {
 		var ret bool
 		return ret
 	}
@@ -480,7 +480,7 @@ func (o *ManagedCluster) GetPinnedConfig() bool {
 // GetPinnedConfigOk returns a tuple with the PinnedConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedCluster) GetPinnedConfigOk() (*bool, bool) {
-	if o == nil || isNil(o.PinnedConfig) {
+	if o == nil || IsNil(o.PinnedConfig) {
 		return nil, false
 	}
 	return o.PinnedConfig, true
@@ -488,7 +488,7 @@ func (o *ManagedCluster) GetPinnedConfigOk() (*bool, bool) {
 
 // HasPinnedConfig returns a boolean if a field has been set.
 func (o *ManagedCluster) HasPinnedConfig() bool {
-	if o != nil && !isNil(o.PinnedConfig) {
+	if o != nil && !IsNil(o.PinnedConfig) {
 		return true
 	}
 
@@ -502,7 +502,7 @@ func (o *ManagedCluster) SetPinnedConfig(v bool) {
 
 // GetLogConfiguration returns the LogConfiguration field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedCluster) GetLogConfiguration() ClientLogConfiguration {
-	if o == nil || isNil(o.LogConfiguration.Get()) {
+	if o == nil || IsNil(o.LogConfiguration.Get()) {
 		var ret ClientLogConfiguration
 		return ret
 	}
@@ -544,7 +544,7 @@ func (o *ManagedCluster) UnsetLogConfiguration() {
 
 // GetOperational returns the Operational field value if set, zero value otherwise.
 func (o *ManagedCluster) GetOperational() bool {
-	if o == nil || isNil(o.Operational) {
+	if o == nil || IsNil(o.Operational) {
 		var ret bool
 		return ret
 	}
@@ -554,7 +554,7 @@ func (o *ManagedCluster) GetOperational() bool {
 // GetOperationalOk returns a tuple with the Operational field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedCluster) GetOperationalOk() (*bool, bool) {
-	if o == nil || isNil(o.Operational) {
+	if o == nil || IsNil(o.Operational) {
 		return nil, false
 	}
 	return o.Operational, true
@@ -562,7 +562,7 @@ func (o *ManagedCluster) GetOperationalOk() (*bool, bool) {
 
 // HasOperational returns a boolean if a field has been set.
 func (o *ManagedCluster) HasOperational() bool {
-	if o != nil && !isNil(o.Operational) {
+	if o != nil && !IsNil(o.Operational) {
 		return true
 	}
 
@@ -576,7 +576,7 @@ func (o *ManagedCluster) SetOperational(v bool) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *ManagedCluster) GetStatus() string {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -586,7 +586,7 @@ func (o *ManagedCluster) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedCluster) GetStatusOk() (*string, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -594,7 +594,7 @@ func (o *ManagedCluster) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *ManagedCluster) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -608,7 +608,7 @@ func (o *ManagedCluster) SetStatus(v string) {
 
 // GetPublicKeyCertificate returns the PublicKeyCertificate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedCluster) GetPublicKeyCertificate() string {
-	if o == nil || isNil(o.PublicKeyCertificate.Get()) {
+	if o == nil || IsNil(o.PublicKeyCertificate.Get()) {
 		var ret string
 		return ret
 	}
@@ -650,7 +650,7 @@ func (o *ManagedCluster) UnsetPublicKeyCertificate() {
 
 // GetPublicKeyThumbprint returns the PublicKeyThumbprint field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedCluster) GetPublicKeyThumbprint() string {
-	if o == nil || isNil(o.PublicKeyThumbprint.Get()) {
+	if o == nil || IsNil(o.PublicKeyThumbprint.Get()) {
 		var ret string
 		return ret
 	}
@@ -692,7 +692,7 @@ func (o *ManagedCluster) UnsetPublicKeyThumbprint() {
 
 // GetPublicKey returns the PublicKey field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedCluster) GetPublicKey() string {
-	if o == nil || isNil(o.PublicKey.Get()) {
+	if o == nil || IsNil(o.PublicKey.Get()) {
 		var ret string
 		return ret
 	}
@@ -734,7 +734,7 @@ func (o *ManagedCluster) UnsetPublicKey() {
 
 // GetAlertKey returns the AlertKey field value if set, zero value otherwise.
 func (o *ManagedCluster) GetAlertKey() string {
-	if o == nil || isNil(o.AlertKey) {
+	if o == nil || IsNil(o.AlertKey) {
 		var ret string
 		return ret
 	}
@@ -744,7 +744,7 @@ func (o *ManagedCluster) GetAlertKey() string {
 // GetAlertKeyOk returns a tuple with the AlertKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedCluster) GetAlertKeyOk() (*string, bool) {
-	if o == nil || isNil(o.AlertKey) {
+	if o == nil || IsNil(o.AlertKey) {
 		return nil, false
 	}
 	return o.AlertKey, true
@@ -752,7 +752,7 @@ func (o *ManagedCluster) GetAlertKeyOk() (*string, bool) {
 
 // HasAlertKey returns a boolean if a field has been set.
 func (o *ManagedCluster) HasAlertKey() bool {
-	if o != nil && !isNil(o.AlertKey) {
+	if o != nil && !IsNil(o.AlertKey) {
 		return true
 	}
 
@@ -766,7 +766,7 @@ func (o *ManagedCluster) SetAlertKey(v string) {
 
 // GetClientIds returns the ClientIds field value if set, zero value otherwise.
 func (o *ManagedCluster) GetClientIds() []string {
-	if o == nil || isNil(o.ClientIds) {
+	if o == nil || IsNil(o.ClientIds) {
 		var ret []string
 		return ret
 	}
@@ -776,7 +776,7 @@ func (o *ManagedCluster) GetClientIds() []string {
 // GetClientIdsOk returns a tuple with the ClientIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedCluster) GetClientIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.ClientIds) {
+	if o == nil || IsNil(o.ClientIds) {
 		return nil, false
 	}
 	return o.ClientIds, true
@@ -784,7 +784,7 @@ func (o *ManagedCluster) GetClientIdsOk() ([]string, bool) {
 
 // HasClientIds returns a boolean if a field has been set.
 func (o *ManagedCluster) HasClientIds() bool {
-	if o != nil && !isNil(o.ClientIds) {
+	if o != nil && !IsNil(o.ClientIds) {
 		return true
 	}
 
@@ -798,7 +798,7 @@ func (o *ManagedCluster) SetClientIds(v []string) {
 
 // GetServiceCount returns the ServiceCount field value if set, zero value otherwise.
 func (o *ManagedCluster) GetServiceCount() int32 {
-	if o == nil || isNil(o.ServiceCount) {
+	if o == nil || IsNil(o.ServiceCount) {
 		var ret int32
 		return ret
 	}
@@ -808,7 +808,7 @@ func (o *ManagedCluster) GetServiceCount() int32 {
 // GetServiceCountOk returns a tuple with the ServiceCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedCluster) GetServiceCountOk() (*int32, bool) {
-	if o == nil || isNil(o.ServiceCount) {
+	if o == nil || IsNil(o.ServiceCount) {
 		return nil, false
 	}
 	return o.ServiceCount, true
@@ -816,7 +816,7 @@ func (o *ManagedCluster) GetServiceCountOk() (*int32, bool) {
 
 // HasServiceCount returns a boolean if a field has been set.
 func (o *ManagedCluster) HasServiceCount() bool {
-	if o != nil && !isNil(o.ServiceCount) {
+	if o != nil && !IsNil(o.ServiceCount) {
 		return true
 	}
 
@@ -830,7 +830,7 @@ func (o *ManagedCluster) SetServiceCount(v int32) {
 
 // GetCcId returns the CcId field value if set, zero value otherwise.
 func (o *ManagedCluster) GetCcId() string {
-	if o == nil || isNil(o.CcId) {
+	if o == nil || IsNil(o.CcId) {
 		var ret string
 		return ret
 	}
@@ -840,7 +840,7 @@ func (o *ManagedCluster) GetCcId() string {
 // GetCcIdOk returns a tuple with the CcId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedCluster) GetCcIdOk() (*string, bool) {
-	if o == nil || isNil(o.CcId) {
+	if o == nil || IsNil(o.CcId) {
 		return nil, false
 	}
 	return o.CcId, true
@@ -848,7 +848,7 @@ func (o *ManagedCluster) GetCcIdOk() (*string, bool) {
 
 // HasCcId returns a boolean if a field has been set.
 func (o *ManagedCluster) HasCcId() bool {
-	if o != nil && !isNil(o.CcId) {
+	if o != nil && !IsNil(o.CcId) {
 		return true
 	}
 
@@ -862,7 +862,7 @@ func (o *ManagedCluster) SetCcId(v string) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedCluster) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt.Get()) {
+	if o == nil || IsNil(o.CreatedAt.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -904,7 +904,7 @@ func (o *ManagedCluster) UnsetCreatedAt() {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedCluster) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt.Get()) {
+	if o == nil || IsNil(o.UpdatedAt.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -955,45 +955,45 @@ func (o ManagedCluster) MarshalJSON() ([]byte, error) {
 func (o ManagedCluster) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Pod) {
+	if !IsNil(o.Pod) {
 		toSerialize["pod"] = o.Pod
 	}
-	if !isNil(o.Org) {
+	if !IsNil(o.Org) {
 		toSerialize["org"] = o.Org
 	}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Configuration) {
+	if !IsNil(o.Configuration) {
 		toSerialize["configuration"] = o.Configuration
 	}
-	if !isNil(o.KeyPair) {
+	if !IsNil(o.KeyPair) {
 		toSerialize["keyPair"] = o.KeyPair
 	}
-	if !isNil(o.Attributes) {
+	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.Redis) {
+	if !IsNil(o.Redis) {
 		toSerialize["redis"] = o.Redis
 	}
 	toSerialize["clientType"] = o.ClientType.Get()
 	toSerialize["ccgVersion"] = o.CcgVersion
-	if !isNil(o.PinnedConfig) {
+	if !IsNil(o.PinnedConfig) {
 		toSerialize["pinnedConfig"] = o.PinnedConfig
 	}
 	if o.LogConfiguration.IsSet() {
 		toSerialize["logConfiguration"] = o.LogConfiguration.Get()
 	}
-	if !isNil(o.Operational) {
+	if !IsNil(o.Operational) {
 		toSerialize["operational"] = o.Operational
 	}
-	if !isNil(o.Status) {
+	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
 	if o.PublicKeyCertificate.IsSet() {
@@ -1005,16 +1005,16 @@ func (o ManagedCluster) ToMap() (map[string]interface{}, error) {
 	if o.PublicKey.IsSet() {
 		toSerialize["publicKey"] = o.PublicKey.Get()
 	}
-	if !isNil(o.AlertKey) {
+	if !IsNil(o.AlertKey) {
 		toSerialize["alertKey"] = o.AlertKey
 	}
-	if !isNil(o.ClientIds) {
+	if !IsNil(o.ClientIds) {
 		toSerialize["clientIds"] = o.ClientIds
 	}
-	if !isNil(o.ServiceCount) {
+	if !IsNil(o.ServiceCount) {
 		toSerialize["serviceCount"] = o.ServiceCount
 	}
-	if !isNil(o.CcId) {
+	if !IsNil(o.CcId) {
 		toSerialize["ccId"] = o.CcId
 	}
 	if o.CreatedAt.IsSet() {
@@ -1031,8 +1031,8 @@ func (o ManagedCluster) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ManagedCluster) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *ManagedCluster) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -1043,7 +1043,7 @@ func (o *ManagedCluster) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -1057,13 +1057,17 @@ func (o *ManagedCluster) UnmarshalJSON(bytes []byte) (err error) {
 
 	varManagedCluster := _ManagedCluster{}
 
-	if err = json.Unmarshal(bytes, &varManagedCluster); err == nil {
+	err = json.Unmarshal(data, &varManagedCluster)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ManagedCluster(varManagedCluster)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "pod")

@@ -80,7 +80,7 @@ func (o *CampaignAllOfSearchCampaignInfo) SetType(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *CampaignAllOfSearchCampaignInfo) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -90,7 +90,7 @@ func (o *CampaignAllOfSearchCampaignInfo) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CampaignAllOfSearchCampaignInfo) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -98,7 +98,7 @@ func (o *CampaignAllOfSearchCampaignInfo) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *CampaignAllOfSearchCampaignInfo) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -112,7 +112,7 @@ func (o *CampaignAllOfSearchCampaignInfo) SetDescription(v string) {
 
 // GetReviewer returns the Reviewer field value if set, zero value otherwise.
 func (o *CampaignAllOfSearchCampaignInfo) GetReviewer() CampaignAllOfSearchCampaignInfoReviewer {
-	if o == nil || isNil(o.Reviewer) {
+	if o == nil || IsNil(o.Reviewer) {
 		var ret CampaignAllOfSearchCampaignInfoReviewer
 		return ret
 	}
@@ -122,7 +122,7 @@ func (o *CampaignAllOfSearchCampaignInfo) GetReviewer() CampaignAllOfSearchCampa
 // GetReviewerOk returns a tuple with the Reviewer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CampaignAllOfSearchCampaignInfo) GetReviewerOk() (*CampaignAllOfSearchCampaignInfoReviewer, bool) {
-	if o == nil || isNil(o.Reviewer) {
+	if o == nil || IsNil(o.Reviewer) {
 		return nil, false
 	}
 	return o.Reviewer, true
@@ -130,7 +130,7 @@ func (o *CampaignAllOfSearchCampaignInfo) GetReviewerOk() (*CampaignAllOfSearchC
 
 // HasReviewer returns a boolean if a field has been set.
 func (o *CampaignAllOfSearchCampaignInfo) HasReviewer() bool {
-	if o != nil && !isNil(o.Reviewer) {
+	if o != nil && !IsNil(o.Reviewer) {
 		return true
 	}
 
@@ -144,7 +144,7 @@ func (o *CampaignAllOfSearchCampaignInfo) SetReviewer(v CampaignAllOfSearchCampa
 
 // GetQuery returns the Query field value if set, zero value otherwise.
 func (o *CampaignAllOfSearchCampaignInfo) GetQuery() string {
-	if o == nil || isNil(o.Query) {
+	if o == nil || IsNil(o.Query) {
 		var ret string
 		return ret
 	}
@@ -154,7 +154,7 @@ func (o *CampaignAllOfSearchCampaignInfo) GetQuery() string {
 // GetQueryOk returns a tuple with the Query field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CampaignAllOfSearchCampaignInfo) GetQueryOk() (*string, bool) {
-	if o == nil || isNil(o.Query) {
+	if o == nil || IsNil(o.Query) {
 		return nil, false
 	}
 	return o.Query, true
@@ -162,7 +162,7 @@ func (o *CampaignAllOfSearchCampaignInfo) GetQueryOk() (*string, bool) {
 
 // HasQuery returns a boolean if a field has been set.
 func (o *CampaignAllOfSearchCampaignInfo) HasQuery() bool {
-	if o != nil && !isNil(o.Query) {
+	if o != nil && !IsNil(o.Query) {
 		return true
 	}
 
@@ -176,7 +176,7 @@ func (o *CampaignAllOfSearchCampaignInfo) SetQuery(v string) {
 
 // GetIdentityIds returns the IdentityIds field value if set, zero value otherwise.
 func (o *CampaignAllOfSearchCampaignInfo) GetIdentityIds() []string {
-	if o == nil || isNil(o.IdentityIds) {
+	if o == nil || IsNil(o.IdentityIds) {
 		var ret []string
 		return ret
 	}
@@ -186,7 +186,7 @@ func (o *CampaignAllOfSearchCampaignInfo) GetIdentityIds() []string {
 // GetIdentityIdsOk returns a tuple with the IdentityIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CampaignAllOfSearchCampaignInfo) GetIdentityIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.IdentityIds) {
+	if o == nil || IsNil(o.IdentityIds) {
 		return nil, false
 	}
 	return o.IdentityIds, true
@@ -194,7 +194,7 @@ func (o *CampaignAllOfSearchCampaignInfo) GetIdentityIdsOk() ([]string, bool) {
 
 // HasIdentityIds returns a boolean if a field has been set.
 func (o *CampaignAllOfSearchCampaignInfo) HasIdentityIds() bool {
-	if o != nil && !isNil(o.IdentityIds) {
+	if o != nil && !IsNil(o.IdentityIds) {
 		return true
 	}
 
@@ -208,7 +208,7 @@ func (o *CampaignAllOfSearchCampaignInfo) SetIdentityIds(v []string) {
 
 // GetAccessConstraints returns the AccessConstraints field value if set, zero value otherwise.
 func (o *CampaignAllOfSearchCampaignInfo) GetAccessConstraints() []AccessConstraint {
-	if o == nil || isNil(o.AccessConstraints) {
+	if o == nil || IsNil(o.AccessConstraints) {
 		var ret []AccessConstraint
 		return ret
 	}
@@ -218,7 +218,7 @@ func (o *CampaignAllOfSearchCampaignInfo) GetAccessConstraints() []AccessConstra
 // GetAccessConstraintsOk returns a tuple with the AccessConstraints field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CampaignAllOfSearchCampaignInfo) GetAccessConstraintsOk() ([]AccessConstraint, bool) {
-	if o == nil || isNil(o.AccessConstraints) {
+	if o == nil || IsNil(o.AccessConstraints) {
 		return nil, false
 	}
 	return o.AccessConstraints, true
@@ -226,7 +226,7 @@ func (o *CampaignAllOfSearchCampaignInfo) GetAccessConstraintsOk() ([]AccessCons
 
 // HasAccessConstraints returns a boolean if a field has been set.
 func (o *CampaignAllOfSearchCampaignInfo) HasAccessConstraints() bool {
-	if o != nil && !isNil(o.AccessConstraints) {
+	if o != nil && !IsNil(o.AccessConstraints) {
 		return true
 	}
 
@@ -249,19 +249,19 @@ func (o CampaignAllOfSearchCampaignInfo) MarshalJSON() ([]byte, error) {
 func (o CampaignAllOfSearchCampaignInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.Reviewer) {
+	if !IsNil(o.Reviewer) {
 		toSerialize["reviewer"] = o.Reviewer
 	}
-	if !isNil(o.Query) {
+	if !IsNil(o.Query) {
 		toSerialize["query"] = o.Query
 	}
-	if !isNil(o.IdentityIds) {
+	if !IsNil(o.IdentityIds) {
 		toSerialize["identityIds"] = o.IdentityIds
 	}
-	if !isNil(o.AccessConstraints) {
+	if !IsNil(o.AccessConstraints) {
 		toSerialize["accessConstraints"] = o.AccessConstraints
 	}
 
@@ -272,8 +272,8 @@ func (o CampaignAllOfSearchCampaignInfo) ToMap() (map[string]interface{}, error)
 	return toSerialize, nil
 }
 
-func (o *CampaignAllOfSearchCampaignInfo) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *CampaignAllOfSearchCampaignInfo) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -282,7 +282,7 @@ func (o *CampaignAllOfSearchCampaignInfo) UnmarshalJSON(bytes []byte) (err error
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -296,13 +296,17 @@ func (o *CampaignAllOfSearchCampaignInfo) UnmarshalJSON(bytes []byte) (err error
 
 	varCampaignAllOfSearchCampaignInfo := _CampaignAllOfSearchCampaignInfo{}
 
-	if err = json.Unmarshal(bytes, &varCampaignAllOfSearchCampaignInfo); err == nil {
+	err = json.Unmarshal(data, &varCampaignAllOfSearchCampaignInfo)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CampaignAllOfSearchCampaignInfo(varCampaignAllOfSearchCampaignInfo)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "reviewer")

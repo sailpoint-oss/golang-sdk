@@ -50,7 +50,7 @@ func NewLoadAccountsTaskWithDefaults() *LoadAccountsTask {
 
 // GetSuccess returns the Success field value if set, zero value otherwise.
 func (o *LoadAccountsTask) GetSuccess() bool {
-	if o == nil || isNil(o.Success) {
+	if o == nil || IsNil(o.Success) {
 		var ret bool
 		return ret
 	}
@@ -60,7 +60,7 @@ func (o *LoadAccountsTask) GetSuccess() bool {
 // GetSuccessOk returns a tuple with the Success field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LoadAccountsTask) GetSuccessOk() (*bool, bool) {
-	if o == nil || isNil(o.Success) {
+	if o == nil || IsNil(o.Success) {
 		return nil, false
 	}
 	return o.Success, true
@@ -68,7 +68,7 @@ func (o *LoadAccountsTask) GetSuccessOk() (*bool, bool) {
 
 // HasSuccess returns a boolean if a field has been set.
 func (o *LoadAccountsTask) HasSuccess() bool {
-	if o != nil && !isNil(o.Success) {
+	if o != nil && !IsNil(o.Success) {
 		return true
 	}
 
@@ -82,7 +82,7 @@ func (o *LoadAccountsTask) SetSuccess(v bool) {
 
 // GetTask returns the Task field value if set, zero value otherwise.
 func (o *LoadAccountsTask) GetTask() LoadAccountsTaskTask {
-	if o == nil || isNil(o.Task) {
+	if o == nil || IsNil(o.Task) {
 		var ret LoadAccountsTaskTask
 		return ret
 	}
@@ -92,7 +92,7 @@ func (o *LoadAccountsTask) GetTask() LoadAccountsTaskTask {
 // GetTaskOk returns a tuple with the Task field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LoadAccountsTask) GetTaskOk() (*LoadAccountsTaskTask, bool) {
-	if o == nil || isNil(o.Task) {
+	if o == nil || IsNil(o.Task) {
 		return nil, false
 	}
 	return o.Task, true
@@ -100,7 +100,7 @@ func (o *LoadAccountsTask) GetTaskOk() (*LoadAccountsTaskTask, bool) {
 
 // HasTask returns a boolean if a field has been set.
 func (o *LoadAccountsTask) HasTask() bool {
-	if o != nil && !isNil(o.Task) {
+	if o != nil && !IsNil(o.Task) {
 		return true
 	}
 
@@ -122,10 +122,10 @@ func (o LoadAccountsTask) MarshalJSON() ([]byte, error) {
 
 func (o LoadAccountsTask) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Success) {
+	if !IsNil(o.Success) {
 		toSerialize["success"] = o.Success
 	}
-	if !isNil(o.Task) {
+	if !IsNil(o.Task) {
 		toSerialize["task"] = o.Task
 	}
 
@@ -136,16 +136,20 @@ func (o LoadAccountsTask) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *LoadAccountsTask) UnmarshalJSON(bytes []byte) (err error) {
+func (o *LoadAccountsTask) UnmarshalJSON(data []byte) (err error) {
 	varLoadAccountsTask := _LoadAccountsTask{}
 
-	if err = json.Unmarshal(bytes, &varLoadAccountsTask); err == nil {
+	err = json.Unmarshal(data, &varLoadAccountsTask)
+
+	if err != nil {
+		return err
+	}
+
 	*o = LoadAccountsTask(varLoadAccountsTask)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "success")
 		delete(additionalProperties, "task")
 		o.AdditionalProperties = additionalProperties

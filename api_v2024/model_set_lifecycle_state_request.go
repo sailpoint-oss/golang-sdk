@@ -45,7 +45,7 @@ func NewSetLifecycleStateRequestWithDefaults() *SetLifecycleStateRequest {
 
 // GetLifecycleStateId returns the LifecycleStateId field value if set, zero value otherwise.
 func (o *SetLifecycleStateRequest) GetLifecycleStateId() string {
-	if o == nil || isNil(o.LifecycleStateId) {
+	if o == nil || IsNil(o.LifecycleStateId) {
 		var ret string
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *SetLifecycleStateRequest) GetLifecycleStateId() string {
 // GetLifecycleStateIdOk returns a tuple with the LifecycleStateId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetLifecycleStateRequest) GetLifecycleStateIdOk() (*string, bool) {
-	if o == nil || isNil(o.LifecycleStateId) {
+	if o == nil || IsNil(o.LifecycleStateId) {
 		return nil, false
 	}
 	return o.LifecycleStateId, true
@@ -63,7 +63,7 @@ func (o *SetLifecycleStateRequest) GetLifecycleStateIdOk() (*string, bool) {
 
 // HasLifecycleStateId returns a boolean if a field has been set.
 func (o *SetLifecycleStateRequest) HasLifecycleStateId() bool {
-	if o != nil && !isNil(o.LifecycleStateId) {
+	if o != nil && !IsNil(o.LifecycleStateId) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o SetLifecycleStateRequest) MarshalJSON() ([]byte, error) {
 
 func (o SetLifecycleStateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.LifecycleStateId) {
+	if !IsNil(o.LifecycleStateId) {
 		toSerialize["lifecycleStateId"] = o.LifecycleStateId
 	}
 
@@ -96,16 +96,20 @@ func (o SetLifecycleStateRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SetLifecycleStateRequest) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SetLifecycleStateRequest) UnmarshalJSON(data []byte) (err error) {
 	varSetLifecycleStateRequest := _SetLifecycleStateRequest{}
 
-	if err = json.Unmarshal(bytes, &varSetLifecycleStateRequest); err == nil {
+	err = json.Unmarshal(data, &varSetLifecycleStateRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SetLifecycleStateRequest(varSetLifecycleStateRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "lifecycleStateId")
 		o.AdditionalProperties = additionalProperties
 	}

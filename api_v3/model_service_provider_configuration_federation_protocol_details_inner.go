@@ -12,6 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
@@ -47,7 +48,11 @@ func (dst *ServiceProviderConfigurationFederationProtocolDetailsInner) Unmarshal
 		if string(jsonIdpDetails) == "{}" { // empty struct
 			dst.IdpDetails = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.IdpDetails); err != nil {
+				dst.IdpDetails = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.IdpDetails = nil
@@ -60,7 +65,11 @@ func (dst *ServiceProviderConfigurationFederationProtocolDetailsInner) Unmarshal
 		if string(jsonSpDetails) == "{}" { // empty struct
 			dst.SpDetails = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.SpDetails); err != nil {
+				dst.SpDetails = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.SpDetails = nil

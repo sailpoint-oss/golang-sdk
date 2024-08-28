@@ -47,7 +47,7 @@ func NewQueryResultFilterWithDefaults() *QueryResultFilter {
 
 // GetIncludes returns the Includes field value if set, zero value otherwise.
 func (o *QueryResultFilter) GetIncludes() []string {
-	if o == nil || isNil(o.Includes) {
+	if o == nil || IsNil(o.Includes) {
 		var ret []string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *QueryResultFilter) GetIncludes() []string {
 // GetIncludesOk returns a tuple with the Includes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *QueryResultFilter) GetIncludesOk() ([]string, bool) {
-	if o == nil || isNil(o.Includes) {
+	if o == nil || IsNil(o.Includes) {
 		return nil, false
 	}
 	return o.Includes, true
@@ -65,7 +65,7 @@ func (o *QueryResultFilter) GetIncludesOk() ([]string, bool) {
 
 // HasIncludes returns a boolean if a field has been set.
 func (o *QueryResultFilter) HasIncludes() bool {
-	if o != nil && !isNil(o.Includes) {
+	if o != nil && !IsNil(o.Includes) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *QueryResultFilter) SetIncludes(v []string) {
 
 // GetExcludes returns the Excludes field value if set, zero value otherwise.
 func (o *QueryResultFilter) GetExcludes() []string {
-	if o == nil || isNil(o.Excludes) {
+	if o == nil || IsNil(o.Excludes) {
 		var ret []string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *QueryResultFilter) GetExcludes() []string {
 // GetExcludesOk returns a tuple with the Excludes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *QueryResultFilter) GetExcludesOk() ([]string, bool) {
-	if o == nil || isNil(o.Excludes) {
+	if o == nil || IsNil(o.Excludes) {
 		return nil, false
 	}
 	return o.Excludes, true
@@ -97,7 +97,7 @@ func (o *QueryResultFilter) GetExcludesOk() ([]string, bool) {
 
 // HasExcludes returns a boolean if a field has been set.
 func (o *QueryResultFilter) HasExcludes() bool {
-	if o != nil && !isNil(o.Excludes) {
+	if o != nil && !IsNil(o.Excludes) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o QueryResultFilter) MarshalJSON() ([]byte, error) {
 
 func (o QueryResultFilter) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Includes) {
+	if !IsNil(o.Includes) {
 		toSerialize["includes"] = o.Includes
 	}
-	if !isNil(o.Excludes) {
+	if !IsNil(o.Excludes) {
 		toSerialize["excludes"] = o.Excludes
 	}
 
@@ -133,16 +133,20 @@ func (o QueryResultFilter) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *QueryResultFilter) UnmarshalJSON(bytes []byte) (err error) {
+func (o *QueryResultFilter) UnmarshalJSON(data []byte) (err error) {
 	varQueryResultFilter := _QueryResultFilter{}
 
-	if err = json.Unmarshal(bytes, &varQueryResultFilter); err == nil {
+	err = json.Unmarshal(data, &varQueryResultFilter)
+
+	if err != nil {
+		return err
+	}
+
 	*o = QueryResultFilter(varQueryResultFilter)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "includes")
 		delete(additionalProperties, "excludes")
 		o.AdditionalProperties = additionalProperties

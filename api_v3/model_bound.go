@@ -77,7 +77,7 @@ func (o *Bound) SetValue(v string) {
 
 // GetInclusive returns the Inclusive field value if set, zero value otherwise.
 func (o *Bound) GetInclusive() bool {
-	if o == nil || isNil(o.Inclusive) {
+	if o == nil || IsNil(o.Inclusive) {
 		var ret bool
 		return ret
 	}
@@ -87,7 +87,7 @@ func (o *Bound) GetInclusive() bool {
 // GetInclusiveOk returns a tuple with the Inclusive field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Bound) GetInclusiveOk() (*bool, bool) {
-	if o == nil || isNil(o.Inclusive) {
+	if o == nil || IsNil(o.Inclusive) {
 		return nil, false
 	}
 	return o.Inclusive, true
@@ -95,7 +95,7 @@ func (o *Bound) GetInclusiveOk() (*bool, bool) {
 
 // HasInclusive returns a boolean if a field has been set.
 func (o *Bound) HasInclusive() bool {
-	if o != nil && !isNil(o.Inclusive) {
+	if o != nil && !IsNil(o.Inclusive) {
 		return true
 	}
 
@@ -118,7 +118,7 @@ func (o Bound) MarshalJSON() ([]byte, error) {
 func (o Bound) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["value"] = o.Value
-	if !isNil(o.Inclusive) {
+	if !IsNil(o.Inclusive) {
 		toSerialize["inclusive"] = o.Inclusive
 	}
 
@@ -129,8 +129,8 @@ func (o Bound) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Bound) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *Bound) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -139,7 +139,7 @@ func (o *Bound) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -153,13 +153,17 @@ func (o *Bound) UnmarshalJSON(bytes []byte) (err error) {
 
 	varBound := _Bound{}
 
-	if err = json.Unmarshal(bytes, &varBound); err == nil {
+	err = json.Unmarshal(data, &varBound)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Bound(varBound)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "value")
 		delete(additionalProperties, "inclusive")
 		o.AdditionalProperties = additionalProperties

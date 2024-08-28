@@ -53,7 +53,7 @@ func NewResourceObjectsResponseWithDefaults() *ResourceObjectsResponse {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ResourceObjectsResponse) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -63,7 +63,7 @@ func (o *ResourceObjectsResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceObjectsResponse) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -71,7 +71,7 @@ func (o *ResourceObjectsResponse) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ResourceObjectsResponse) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o *ResourceObjectsResponse) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ResourceObjectsResponse) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -95,7 +95,7 @@ func (o *ResourceObjectsResponse) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceObjectsResponse) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -103,7 +103,7 @@ func (o *ResourceObjectsResponse) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ResourceObjectsResponse) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -117,7 +117,7 @@ func (o *ResourceObjectsResponse) SetName(v string) {
 
 // GetObjectCount returns the ObjectCount field value if set, zero value otherwise.
 func (o *ResourceObjectsResponse) GetObjectCount() int32 {
-	if o == nil || isNil(o.ObjectCount) {
+	if o == nil || IsNil(o.ObjectCount) {
 		var ret int32
 		return ret
 	}
@@ -127,7 +127,7 @@ func (o *ResourceObjectsResponse) GetObjectCount() int32 {
 // GetObjectCountOk returns a tuple with the ObjectCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceObjectsResponse) GetObjectCountOk() (*int32, bool) {
-	if o == nil || isNil(o.ObjectCount) {
+	if o == nil || IsNil(o.ObjectCount) {
 		return nil, false
 	}
 	return o.ObjectCount, true
@@ -135,7 +135,7 @@ func (o *ResourceObjectsResponse) GetObjectCountOk() (*int32, bool) {
 
 // HasObjectCount returns a boolean if a field has been set.
 func (o *ResourceObjectsResponse) HasObjectCount() bool {
-	if o != nil && !isNil(o.ObjectCount) {
+	if o != nil && !IsNil(o.ObjectCount) {
 		return true
 	}
 
@@ -149,7 +149,7 @@ func (o *ResourceObjectsResponse) SetObjectCount(v int32) {
 
 // GetElapsedMillis returns the ElapsedMillis field value if set, zero value otherwise.
 func (o *ResourceObjectsResponse) GetElapsedMillis() int32 {
-	if o == nil || isNil(o.ElapsedMillis) {
+	if o == nil || IsNil(o.ElapsedMillis) {
 		var ret int32
 		return ret
 	}
@@ -159,7 +159,7 @@ func (o *ResourceObjectsResponse) GetElapsedMillis() int32 {
 // GetElapsedMillisOk returns a tuple with the ElapsedMillis field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceObjectsResponse) GetElapsedMillisOk() (*int32, bool) {
-	if o == nil || isNil(o.ElapsedMillis) {
+	if o == nil || IsNil(o.ElapsedMillis) {
 		return nil, false
 	}
 	return o.ElapsedMillis, true
@@ -167,7 +167,7 @@ func (o *ResourceObjectsResponse) GetElapsedMillisOk() (*int32, bool) {
 
 // HasElapsedMillis returns a boolean if a field has been set.
 func (o *ResourceObjectsResponse) HasElapsedMillis() bool {
-	if o != nil && !isNil(o.ElapsedMillis) {
+	if o != nil && !IsNil(o.ElapsedMillis) {
 		return true
 	}
 
@@ -181,7 +181,7 @@ func (o *ResourceObjectsResponse) SetElapsedMillis(v int32) {
 
 // GetResourceObjects returns the ResourceObjects field value if set, zero value otherwise.
 func (o *ResourceObjectsResponse) GetResourceObjects() []ResourceObject {
-	if o == nil || isNil(o.ResourceObjects) {
+	if o == nil || IsNil(o.ResourceObjects) {
 		var ret []ResourceObject
 		return ret
 	}
@@ -191,7 +191,7 @@ func (o *ResourceObjectsResponse) GetResourceObjects() []ResourceObject {
 // GetResourceObjectsOk returns a tuple with the ResourceObjects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceObjectsResponse) GetResourceObjectsOk() ([]ResourceObject, bool) {
-	if o == nil || isNil(o.ResourceObjects) {
+	if o == nil || IsNil(o.ResourceObjects) {
 		return nil, false
 	}
 	return o.ResourceObjects, true
@@ -199,7 +199,7 @@ func (o *ResourceObjectsResponse) GetResourceObjectsOk() ([]ResourceObject, bool
 
 // HasResourceObjects returns a boolean if a field has been set.
 func (o *ResourceObjectsResponse) HasResourceObjects() bool {
-	if o != nil && !isNil(o.ResourceObjects) {
+	if o != nil && !IsNil(o.ResourceObjects) {
 		return true
 	}
 
@@ -221,11 +221,21 @@ func (o ResourceObjectsResponse) MarshalJSON() ([]byte, error) {
 
 func (o ResourceObjectsResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
-	// skip: name is readOnly
-	// skip: objectCount is readOnly
-	// skip: elapsedMillis is readOnly
-	// skip: resourceObjects is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.ObjectCount) {
+		toSerialize["objectCount"] = o.ObjectCount
+	}
+	if !IsNil(o.ElapsedMillis) {
+		toSerialize["elapsedMillis"] = o.ElapsedMillis
+	}
+	if !IsNil(o.ResourceObjects) {
+		toSerialize["resourceObjects"] = o.ResourceObjects
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -234,16 +244,20 @@ func (o ResourceObjectsResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ResourceObjectsResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ResourceObjectsResponse) UnmarshalJSON(data []byte) (err error) {
 	varResourceObjectsResponse := _ResourceObjectsResponse{}
 
-	if err = json.Unmarshal(bytes, &varResourceObjectsResponse); err == nil {
+	err = json.Unmarshal(data, &varResourceObjectsResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ResourceObjectsResponse(varResourceObjectsResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "objectCount")

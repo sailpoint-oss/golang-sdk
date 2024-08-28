@@ -12,6 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
@@ -47,7 +48,11 @@ func (dst *GetDiscoveredApplications200ResponseInner) UnmarshalJSON(data []byte)
 		if string(jsonFullDiscoveredApplications) == "{}" { // empty struct
 			dst.FullDiscoveredApplications = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.FullDiscoveredApplications); err != nil {
+				dst.FullDiscoveredApplications = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.FullDiscoveredApplications = nil
@@ -60,7 +65,11 @@ func (dst *GetDiscoveredApplications200ResponseInner) UnmarshalJSON(data []byte)
 		if string(jsonSlimDiscoveredApplications) == "{}" { // empty struct
 			dst.SlimDiscoveredApplications = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.SlimDiscoveredApplications); err != nil {
+				dst.SlimDiscoveredApplications = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.SlimDiscoveredApplications = nil

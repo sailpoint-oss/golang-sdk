@@ -49,7 +49,7 @@ func NewFormDefinitionFileUploadResponseWithDefaults() *FormDefinitionFileUpload
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *FormDefinitionFileUploadResponse) GetCreated() string {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *FormDefinitionFileUploadResponse) GetCreated() string {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormDefinitionFileUploadResponse) GetCreatedOk() (*string, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -67,7 +67,7 @@ func (o *FormDefinitionFileUploadResponse) GetCreatedOk() (*string, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *FormDefinitionFileUploadResponse) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *FormDefinitionFileUploadResponse) SetCreated(v string) {
 
 // GetFileId returns the FileId field value if set, zero value otherwise.
 func (o *FormDefinitionFileUploadResponse) GetFileId() string {
-	if o == nil || isNil(o.FileId) {
+	if o == nil || IsNil(o.FileId) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *FormDefinitionFileUploadResponse) GetFileId() string {
 // GetFileIdOk returns a tuple with the FileId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormDefinitionFileUploadResponse) GetFileIdOk() (*string, bool) {
-	if o == nil || isNil(o.FileId) {
+	if o == nil || IsNil(o.FileId) {
 		return nil, false
 	}
 	return o.FileId, true
@@ -99,7 +99,7 @@ func (o *FormDefinitionFileUploadResponse) GetFileIdOk() (*string, bool) {
 
 // HasFileId returns a boolean if a field has been set.
 func (o *FormDefinitionFileUploadResponse) HasFileId() bool {
-	if o != nil && !isNil(o.FileId) {
+	if o != nil && !IsNil(o.FileId) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *FormDefinitionFileUploadResponse) SetFileId(v string) {
 
 // GetFormDefinitionId returns the FormDefinitionId field value if set, zero value otherwise.
 func (o *FormDefinitionFileUploadResponse) GetFormDefinitionId() string {
-	if o == nil || isNil(o.FormDefinitionId) {
+	if o == nil || IsNil(o.FormDefinitionId) {
 		var ret string
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *FormDefinitionFileUploadResponse) GetFormDefinitionId() string {
 // GetFormDefinitionIdOk returns a tuple with the FormDefinitionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormDefinitionFileUploadResponse) GetFormDefinitionIdOk() (*string, bool) {
-	if o == nil || isNil(o.FormDefinitionId) {
+	if o == nil || IsNil(o.FormDefinitionId) {
 		return nil, false
 	}
 	return o.FormDefinitionId, true
@@ -131,7 +131,7 @@ func (o *FormDefinitionFileUploadResponse) GetFormDefinitionIdOk() (*string, boo
 
 // HasFormDefinitionId returns a boolean if a field has been set.
 func (o *FormDefinitionFileUploadResponse) HasFormDefinitionId() bool {
-	if o != nil && !isNil(o.FormDefinitionId) {
+	if o != nil && !IsNil(o.FormDefinitionId) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o FormDefinitionFileUploadResponse) MarshalJSON() ([]byte, error) {
 
 func (o FormDefinitionFileUploadResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Created) {
+	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
-	if !isNil(o.FileId) {
+	if !IsNil(o.FileId) {
 		toSerialize["fileId"] = o.FileId
 	}
-	if !isNil(o.FormDefinitionId) {
+	if !IsNil(o.FormDefinitionId) {
 		toSerialize["formDefinitionId"] = o.FormDefinitionId
 	}
 
@@ -170,16 +170,20 @@ func (o FormDefinitionFileUploadResponse) ToMap() (map[string]interface{}, error
 	return toSerialize, nil
 }
 
-func (o *FormDefinitionFileUploadResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *FormDefinitionFileUploadResponse) UnmarshalJSON(data []byte) (err error) {
 	varFormDefinitionFileUploadResponse := _FormDefinitionFileUploadResponse{}
 
-	if err = json.Unmarshal(bytes, &varFormDefinitionFileUploadResponse); err == nil {
+	err = json.Unmarshal(data, &varFormDefinitionFileUploadResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = FormDefinitionFileUploadResponse(varFormDefinitionFileUploadResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "fileId")
 		delete(additionalProperties, "formDefinitionId")

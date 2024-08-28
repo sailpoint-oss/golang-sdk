@@ -58,7 +58,7 @@ func NewPublicIdentityWithDefaults() *PublicIdentity {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *PublicIdentity) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -68,7 +68,7 @@ func (o *PublicIdentity) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PublicIdentity) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -76,7 +76,7 @@ func (o *PublicIdentity) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *PublicIdentity) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -90,7 +90,7 @@ func (o *PublicIdentity) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PublicIdentity) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -100,7 +100,7 @@ func (o *PublicIdentity) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PublicIdentity) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -108,7 +108,7 @@ func (o *PublicIdentity) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PublicIdentity) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -122,7 +122,7 @@ func (o *PublicIdentity) SetName(v string) {
 
 // GetAlias returns the Alias field value if set, zero value otherwise.
 func (o *PublicIdentity) GetAlias() string {
-	if o == nil || isNil(o.Alias) {
+	if o == nil || IsNil(o.Alias) {
 		var ret string
 		return ret
 	}
@@ -132,7 +132,7 @@ func (o *PublicIdentity) GetAlias() string {
 // GetAliasOk returns a tuple with the Alias field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PublicIdentity) GetAliasOk() (*string, bool) {
-	if o == nil || isNil(o.Alias) {
+	if o == nil || IsNil(o.Alias) {
 		return nil, false
 	}
 	return o.Alias, true
@@ -140,7 +140,7 @@ func (o *PublicIdentity) GetAliasOk() (*string, bool) {
 
 // HasAlias returns a boolean if a field has been set.
 func (o *PublicIdentity) HasAlias() bool {
-	if o != nil && !isNil(o.Alias) {
+	if o != nil && !IsNil(o.Alias) {
 		return true
 	}
 
@@ -154,7 +154,7 @@ func (o *PublicIdentity) SetAlias(v string) {
 
 // GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PublicIdentity) GetEmail() string {
-	if o == nil || isNil(o.Email.Get()) {
+	if o == nil || IsNil(o.Email.Get()) {
 		var ret string
 		return ret
 	}
@@ -196,7 +196,7 @@ func (o *PublicIdentity) UnsetEmail() {
 
 // GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PublicIdentity) GetStatus() string {
-	if o == nil || isNil(o.Status.Get()) {
+	if o == nil || IsNil(o.Status.Get()) {
 		var ret string
 		return ret
 	}
@@ -238,7 +238,7 @@ func (o *PublicIdentity) UnsetStatus() {
 
 // GetIdentityState returns the IdentityState field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PublicIdentity) GetIdentityState() string {
-	if o == nil || isNil(o.IdentityState.Get()) {
+	if o == nil || IsNil(o.IdentityState.Get()) {
 		var ret string
 		return ret
 	}
@@ -280,7 +280,7 @@ func (o *PublicIdentity) UnsetIdentityState() {
 
 // GetManager returns the Manager field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PublicIdentity) GetManager() IdentityReference {
-	if o == nil || isNil(o.Manager.Get()) {
+	if o == nil || IsNil(o.Manager.Get()) {
 		var ret IdentityReference
 		return ret
 	}
@@ -322,7 +322,7 @@ func (o *PublicIdentity) UnsetManager() {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *PublicIdentity) GetAttributes() []IdentityAttribute1 {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		var ret []IdentityAttribute1
 		return ret
 	}
@@ -332,7 +332,7 @@ func (o *PublicIdentity) GetAttributes() []IdentityAttribute1 {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PublicIdentity) GetAttributesOk() ([]IdentityAttribute1, bool) {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		return nil, false
 	}
 	return o.Attributes, true
@@ -340,7 +340,7 @@ func (o *PublicIdentity) GetAttributesOk() ([]IdentityAttribute1, bool) {
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *PublicIdentity) HasAttributes() bool {
-	if o != nil && !isNil(o.Attributes) {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -362,13 +362,13 @@ func (o PublicIdentity) MarshalJSON() ([]byte, error) {
 
 func (o PublicIdentity) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Alias) {
+	if !IsNil(o.Alias) {
 		toSerialize["alias"] = o.Alias
 	}
 	if o.Email.IsSet() {
@@ -383,7 +383,7 @@ func (o PublicIdentity) ToMap() (map[string]interface{}, error) {
 	if o.Manager.IsSet() {
 		toSerialize["manager"] = o.Manager.Get()
 	}
-	if !isNil(o.Attributes) {
+	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
 
@@ -394,16 +394,20 @@ func (o PublicIdentity) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *PublicIdentity) UnmarshalJSON(bytes []byte) (err error) {
+func (o *PublicIdentity) UnmarshalJSON(data []byte) (err error) {
 	varPublicIdentity := _PublicIdentity{}
 
-	if err = json.Unmarshal(bytes, &varPublicIdentity); err == nil {
+	err = json.Unmarshal(data, &varPublicIdentity)
+
+	if err != nil {
+		return err
+	}
+
 	*o = PublicIdentity(varPublicIdentity)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "alias")

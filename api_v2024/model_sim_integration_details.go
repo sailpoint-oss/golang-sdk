@@ -69,7 +69,7 @@ func NewSimIntegrationDetailsWithDefaults() *SimIntegrationDetails {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *SimIntegrationDetails) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -79,7 +79,7 @@ func (o *SimIntegrationDetails) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SimIntegrationDetails) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -87,7 +87,7 @@ func (o *SimIntegrationDetails) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *SimIntegrationDetails) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -125,7 +125,7 @@ func (o *SimIntegrationDetails) SetName(v string) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *SimIntegrationDetails) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -135,7 +135,7 @@ func (o *SimIntegrationDetails) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SimIntegrationDetails) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -143,7 +143,7 @@ func (o *SimIntegrationDetails) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *SimIntegrationDetails) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -157,7 +157,7 @@ func (o *SimIntegrationDetails) SetCreated(v time.Time) {
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *SimIntegrationDetails) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		var ret time.Time
 		return ret
 	}
@@ -167,7 +167,7 @@ func (o *SimIntegrationDetails) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SimIntegrationDetails) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -175,7 +175,7 @@ func (o *SimIntegrationDetails) GetModifiedOk() (*time.Time, bool) {
 
 // HasModified returns a boolean if a field has been set.
 func (o *SimIntegrationDetails) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -189,7 +189,7 @@ func (o *SimIntegrationDetails) SetModified(v time.Time) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *SimIntegrationDetails) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -199,7 +199,7 @@ func (o *SimIntegrationDetails) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SimIntegrationDetails) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -207,7 +207,7 @@ func (o *SimIntegrationDetails) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *SimIntegrationDetails) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -221,7 +221,7 @@ func (o *SimIntegrationDetails) SetDescription(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *SimIntegrationDetails) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -231,7 +231,7 @@ func (o *SimIntegrationDetails) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SimIntegrationDetails) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -239,7 +239,7 @@ func (o *SimIntegrationDetails) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *SimIntegrationDetails) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -264,7 +264,7 @@ func (o *SimIntegrationDetails) GetAttributes() map[string]interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SimIntegrationDetails) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
@@ -272,7 +272,7 @@ func (o *SimIntegrationDetails) GetAttributesOk() (map[string]interface{}, bool)
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *SimIntegrationDetails) HasAttributes() bool {
-	if o != nil && isNil(o.Attributes) {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -286,7 +286,7 @@ func (o *SimIntegrationDetails) SetAttributes(v map[string]interface{}) {
 
 // GetSources returns the Sources field value if set, zero value otherwise.
 func (o *SimIntegrationDetails) GetSources() []string {
-	if o == nil || isNil(o.Sources) {
+	if o == nil || IsNil(o.Sources) {
 		var ret []string
 		return ret
 	}
@@ -296,7 +296,7 @@ func (o *SimIntegrationDetails) GetSources() []string {
 // GetSourcesOk returns a tuple with the Sources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SimIntegrationDetails) GetSourcesOk() ([]string, bool) {
-	if o == nil || isNil(o.Sources) {
+	if o == nil || IsNil(o.Sources) {
 		return nil, false
 	}
 	return o.Sources, true
@@ -304,7 +304,7 @@ func (o *SimIntegrationDetails) GetSourcesOk() ([]string, bool) {
 
 // HasSources returns a boolean if a field has been set.
 func (o *SimIntegrationDetails) HasSources() bool {
-	if o != nil && !isNil(o.Sources) {
+	if o != nil && !IsNil(o.Sources) {
 		return true
 	}
 
@@ -318,7 +318,7 @@ func (o *SimIntegrationDetails) SetSources(v []string) {
 
 // GetCluster returns the Cluster field value if set, zero value otherwise.
 func (o *SimIntegrationDetails) GetCluster() string {
-	if o == nil || isNil(o.Cluster) {
+	if o == nil || IsNil(o.Cluster) {
 		var ret string
 		return ret
 	}
@@ -328,7 +328,7 @@ func (o *SimIntegrationDetails) GetCluster() string {
 // GetClusterOk returns a tuple with the Cluster field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SimIntegrationDetails) GetClusterOk() (*string, bool) {
-	if o == nil || isNil(o.Cluster) {
+	if o == nil || IsNil(o.Cluster) {
 		return nil, false
 	}
 	return o.Cluster, true
@@ -336,7 +336,7 @@ func (o *SimIntegrationDetails) GetClusterOk() (*string, bool) {
 
 // HasCluster returns a boolean if a field has been set.
 func (o *SimIntegrationDetails) HasCluster() bool {
-	if o != nil && !isNil(o.Cluster) {
+	if o != nil && !IsNil(o.Cluster) {
 		return true
 	}
 
@@ -350,7 +350,7 @@ func (o *SimIntegrationDetails) SetCluster(v string) {
 
 // GetStatusMap returns the StatusMap field value if set, zero value otherwise.
 func (o *SimIntegrationDetails) GetStatusMap() map[string]interface{} {
-	if o == nil || isNil(o.StatusMap) {
+	if o == nil || IsNil(o.StatusMap) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -360,7 +360,7 @@ func (o *SimIntegrationDetails) GetStatusMap() map[string]interface{} {
 // GetStatusMapOk returns a tuple with the StatusMap field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SimIntegrationDetails) GetStatusMapOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.StatusMap) {
+	if o == nil || IsNil(o.StatusMap) {
 		return map[string]interface{}{}, false
 	}
 	return o.StatusMap, true
@@ -368,7 +368,7 @@ func (o *SimIntegrationDetails) GetStatusMapOk() (map[string]interface{}, bool) 
 
 // HasStatusMap returns a boolean if a field has been set.
 func (o *SimIntegrationDetails) HasStatusMap() bool {
-	if o != nil && !isNil(o.StatusMap) {
+	if o != nil && !IsNil(o.StatusMap) {
 		return true
 	}
 
@@ -382,7 +382,7 @@ func (o *SimIntegrationDetails) SetStatusMap(v map[string]interface{}) {
 
 // GetRequest returns the Request field value if set, zero value otherwise.
 func (o *SimIntegrationDetails) GetRequest() map[string]interface{} {
-	if o == nil || isNil(o.Request) {
+	if o == nil || IsNil(o.Request) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -392,7 +392,7 @@ func (o *SimIntegrationDetails) GetRequest() map[string]interface{} {
 // GetRequestOk returns a tuple with the Request field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SimIntegrationDetails) GetRequestOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Request) {
+	if o == nil || IsNil(o.Request) {
 		return map[string]interface{}{}, false
 	}
 	return o.Request, true
@@ -400,7 +400,7 @@ func (o *SimIntegrationDetails) GetRequestOk() (map[string]interface{}, bool) {
 
 // HasRequest returns a boolean if a field has been set.
 func (o *SimIntegrationDetails) HasRequest() bool {
-	if o != nil && !isNil(o.Request) {
+	if o != nil && !IsNil(o.Request) {
 		return true
 	}
 
@@ -414,7 +414,7 @@ func (o *SimIntegrationDetails) SetRequest(v map[string]interface{}) {
 
 // GetBeforeProvisioningRule returns the BeforeProvisioningRule field value if set, zero value otherwise.
 func (o *SimIntegrationDetails) GetBeforeProvisioningRule() SimIntegrationDetailsAllOfBeforeProvisioningRule {
-	if o == nil || isNil(o.BeforeProvisioningRule) {
+	if o == nil || IsNil(o.BeforeProvisioningRule) {
 		var ret SimIntegrationDetailsAllOfBeforeProvisioningRule
 		return ret
 	}
@@ -424,7 +424,7 @@ func (o *SimIntegrationDetails) GetBeforeProvisioningRule() SimIntegrationDetail
 // GetBeforeProvisioningRuleOk returns a tuple with the BeforeProvisioningRule field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SimIntegrationDetails) GetBeforeProvisioningRuleOk() (*SimIntegrationDetailsAllOfBeforeProvisioningRule, bool) {
-	if o == nil || isNil(o.BeforeProvisioningRule) {
+	if o == nil || IsNil(o.BeforeProvisioningRule) {
 		return nil, false
 	}
 	return o.BeforeProvisioningRule, true
@@ -432,7 +432,7 @@ func (o *SimIntegrationDetails) GetBeforeProvisioningRuleOk() (*SimIntegrationDe
 
 // HasBeforeProvisioningRule returns a boolean if a field has been set.
 func (o *SimIntegrationDetails) HasBeforeProvisioningRule() bool {
-	if o != nil && !isNil(o.BeforeProvisioningRule) {
+	if o != nil && !IsNil(o.BeforeProvisioningRule) {
 		return true
 	}
 
@@ -454,32 +454,38 @@ func (o SimIntegrationDetails) MarshalJSON() ([]byte, error) {
 
 func (o SimIntegrationDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["name"] = o.Name
-	// skip: created is readOnly
-	// skip: modified is readOnly
-	if !isNil(o.Description) {
+	if !IsNil(o.Created) {
+		toSerialize["created"] = o.Created
+	}
+	if !IsNil(o.Modified) {
+		toSerialize["modified"] = o.Modified
+	}
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
 	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes
 	}
-	if !isNil(o.Sources) {
+	if !IsNil(o.Sources) {
 		toSerialize["sources"] = o.Sources
 	}
-	if !isNil(o.Cluster) {
+	if !IsNil(o.Cluster) {
 		toSerialize["cluster"] = o.Cluster
 	}
-	if !isNil(o.StatusMap) {
+	if !IsNil(o.StatusMap) {
 		toSerialize["statusMap"] = o.StatusMap
 	}
-	if !isNil(o.Request) {
+	if !IsNil(o.Request) {
 		toSerialize["request"] = o.Request
 	}
-	if !isNil(o.BeforeProvisioningRule) {
+	if !IsNil(o.BeforeProvisioningRule) {
 		toSerialize["beforeProvisioningRule"] = o.BeforeProvisioningRule
 	}
 
@@ -490,8 +496,8 @@ func (o SimIntegrationDetails) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SimIntegrationDetails) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *SimIntegrationDetails) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -500,7 +506,7 @@ func (o *SimIntegrationDetails) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -514,13 +520,17 @@ func (o *SimIntegrationDetails) UnmarshalJSON(bytes []byte) (err error) {
 
 	varSimIntegrationDetails := _SimIntegrationDetails{}
 
-	if err = json.Unmarshal(bytes, &varSimIntegrationDetails); err == nil {
+	err = json.Unmarshal(data, &varSimIntegrationDetails)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SimIntegrationDetails(varSimIntegrationDetails)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "created")

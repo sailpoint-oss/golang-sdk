@@ -139,7 +139,7 @@ func (o *CreateFormInstanceRequest) SetFormDefinitionId(v string) {
 
 // GetFormInput returns the FormInput field value if set, zero value otherwise.
 func (o *CreateFormInstanceRequest) GetFormInput() map[string]interface{} {
-	if o == nil || isNil(o.FormInput) {
+	if o == nil || IsNil(o.FormInput) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -149,7 +149,7 @@ func (o *CreateFormInstanceRequest) GetFormInput() map[string]interface{} {
 // GetFormInputOk returns a tuple with the FormInput field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateFormInstanceRequest) GetFormInputOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.FormInput) {
+	if o == nil || IsNil(o.FormInput) {
 		return map[string]interface{}{}, false
 	}
 	return o.FormInput, true
@@ -157,7 +157,7 @@ func (o *CreateFormInstanceRequest) GetFormInputOk() (map[string]interface{}, bo
 
 // HasFormInput returns a boolean if a field has been set.
 func (o *CreateFormInstanceRequest) HasFormInput() bool {
-	if o != nil && !isNil(o.FormInput) {
+	if o != nil && !IsNil(o.FormInput) {
 		return true
 	}
 
@@ -195,7 +195,7 @@ func (o *CreateFormInstanceRequest) SetRecipients(v []FormInstanceRecipient) {
 
 // GetStandAloneForm returns the StandAloneForm field value if set, zero value otherwise.
 func (o *CreateFormInstanceRequest) GetStandAloneForm() bool {
-	if o == nil || isNil(o.StandAloneForm) {
+	if o == nil || IsNil(o.StandAloneForm) {
 		var ret bool
 		return ret
 	}
@@ -205,7 +205,7 @@ func (o *CreateFormInstanceRequest) GetStandAloneForm() bool {
 // GetStandAloneFormOk returns a tuple with the StandAloneForm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateFormInstanceRequest) GetStandAloneFormOk() (*bool, bool) {
-	if o == nil || isNil(o.StandAloneForm) {
+	if o == nil || IsNil(o.StandAloneForm) {
 		return nil, false
 	}
 	return o.StandAloneForm, true
@@ -213,7 +213,7 @@ func (o *CreateFormInstanceRequest) GetStandAloneFormOk() (*bool, bool) {
 
 // HasStandAloneForm returns a boolean if a field has been set.
 func (o *CreateFormInstanceRequest) HasStandAloneForm() bool {
-	if o != nil && !isNil(o.StandAloneForm) {
+	if o != nil && !IsNil(o.StandAloneForm) {
 		return true
 	}
 
@@ -227,7 +227,7 @@ func (o *CreateFormInstanceRequest) SetStandAloneForm(v bool) {
 
 // GetState returns the State field value if set, zero value otherwise.
 func (o *CreateFormInstanceRequest) GetState() string {
-	if o == nil || isNil(o.State) {
+	if o == nil || IsNil(o.State) {
 		var ret string
 		return ret
 	}
@@ -237,7 +237,7 @@ func (o *CreateFormInstanceRequest) GetState() string {
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateFormInstanceRequest) GetStateOk() (*string, bool) {
-	if o == nil || isNil(o.State) {
+	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
 	return o.State, true
@@ -245,7 +245,7 @@ func (o *CreateFormInstanceRequest) GetStateOk() (*string, bool) {
 
 // HasState returns a boolean if a field has been set.
 func (o *CreateFormInstanceRequest) HasState() bool {
-	if o != nil && !isNil(o.State) {
+	if o != nil && !IsNil(o.State) {
 		return true
 	}
 
@@ -259,7 +259,7 @@ func (o *CreateFormInstanceRequest) SetState(v string) {
 
 // GetTtl returns the Ttl field value if set, zero value otherwise.
 func (o *CreateFormInstanceRequest) GetTtl() int64 {
-	if o == nil || isNil(o.Ttl) {
+	if o == nil || IsNil(o.Ttl) {
 		var ret int64
 		return ret
 	}
@@ -269,7 +269,7 @@ func (o *CreateFormInstanceRequest) GetTtl() int64 {
 // GetTtlOk returns a tuple with the Ttl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateFormInstanceRequest) GetTtlOk() (*int64, bool) {
-	if o == nil || isNil(o.Ttl) {
+	if o == nil || IsNil(o.Ttl) {
 		return nil, false
 	}
 	return o.Ttl, true
@@ -277,7 +277,7 @@ func (o *CreateFormInstanceRequest) GetTtlOk() (*int64, bool) {
 
 // HasTtl returns a boolean if a field has been set.
 func (o *CreateFormInstanceRequest) HasTtl() bool {
-	if o != nil && !isNil(o.Ttl) {
+	if o != nil && !IsNil(o.Ttl) {
 		return true
 	}
 
@@ -302,17 +302,17 @@ func (o CreateFormInstanceRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["createdBy"] = o.CreatedBy
 	toSerialize["expire"] = o.Expire
 	toSerialize["formDefinitionId"] = o.FormDefinitionId
-	if !isNil(o.FormInput) {
+	if !IsNil(o.FormInput) {
 		toSerialize["formInput"] = o.FormInput
 	}
 	toSerialize["recipients"] = o.Recipients
-	if !isNil(o.StandAloneForm) {
+	if !IsNil(o.StandAloneForm) {
 		toSerialize["standAloneForm"] = o.StandAloneForm
 	}
-	if !isNil(o.State) {
+	if !IsNil(o.State) {
 		toSerialize["state"] = o.State
 	}
-	if !isNil(o.Ttl) {
+	if !IsNil(o.Ttl) {
 		toSerialize["ttl"] = o.Ttl
 	}
 
@@ -323,8 +323,8 @@ func (o CreateFormInstanceRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CreateFormInstanceRequest) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *CreateFormInstanceRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -336,7 +336,7 @@ func (o *CreateFormInstanceRequest) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -350,13 +350,17 @@ func (o *CreateFormInstanceRequest) UnmarshalJSON(bytes []byte) (err error) {
 
 	varCreateFormInstanceRequest := _CreateFormInstanceRequest{}
 
-	if err = json.Unmarshal(bytes, &varCreateFormInstanceRequest); err == nil {
+	err = json.Unmarshal(data, &varCreateFormInstanceRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CreateFormInstanceRequest(varCreateFormInstanceRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "createdBy")
 		delete(additionalProperties, "expire")
 		delete(additionalProperties, "formDefinitionId")

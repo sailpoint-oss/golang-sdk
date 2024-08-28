@@ -116,7 +116,7 @@ func (a *CustomPasswordInstructionsAPIService) CreateCustomPasswordInstructionsE
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-		parameterAddToQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.customPasswordInstruction
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -259,7 +259,7 @@ func (a *CustomPasswordInstructionsAPIService) DeleteCustomPasswordInstructionsE
 	}
 
 	if r.locale != nil {
-		parameterAddToQuery(localVarQueryParams, "locale", r.locale, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "locale", r.locale, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -278,7 +278,7 @@ func (a *CustomPasswordInstructionsAPIService) DeleteCustomPasswordInstructionsE
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-		parameterAddToQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -423,7 +423,7 @@ func (a *CustomPasswordInstructionsAPIService) GetCustomPasswordInstructionsExec
 	}
 
 	if r.locale != nil {
-		parameterAddToQuery(localVarQueryParams, "locale", r.locale, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "locale", r.locale, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -442,7 +442,7 @@ func (a *CustomPasswordInstructionsAPIService) GetCustomPasswordInstructionsExec
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-		parameterAddToQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

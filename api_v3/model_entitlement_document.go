@@ -158,7 +158,7 @@ func (o *EntitlementDocument) SetType(v DocumentType) {
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EntitlementDocument) GetModified() time.Time {
-	if o == nil || isNil(o.Modified.Get()) {
+	if o == nil || IsNil(o.Modified.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -200,7 +200,7 @@ func (o *EntitlementDocument) UnsetModified() {
 
 // GetSynced returns the Synced field value if set, zero value otherwise.
 func (o *EntitlementDocument) GetSynced() string {
-	if o == nil || isNil(o.Synced) {
+	if o == nil || IsNil(o.Synced) {
 		var ret string
 		return ret
 	}
@@ -210,7 +210,7 @@ func (o *EntitlementDocument) GetSynced() string {
 // GetSyncedOk returns a tuple with the Synced field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntitlementDocument) GetSyncedOk() (*string, bool) {
-	if o == nil || isNil(o.Synced) {
+	if o == nil || IsNil(o.Synced) {
 		return nil, false
 	}
 	return o.Synced, true
@@ -218,7 +218,7 @@ func (o *EntitlementDocument) GetSyncedOk() (*string, bool) {
 
 // HasSynced returns a boolean if a field has been set.
 func (o *EntitlementDocument) HasSynced() bool {
-	if o != nil && !isNil(o.Synced) {
+	if o != nil && !IsNil(o.Synced) {
 		return true
 	}
 
@@ -232,7 +232,7 @@ func (o *EntitlementDocument) SetSynced(v string) {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *EntitlementDocument) GetDisplayName() string {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -242,7 +242,7 @@ func (o *EntitlementDocument) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntitlementDocument) GetDisplayNameOk() (*string, bool) {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -250,7 +250,7 @@ func (o *EntitlementDocument) GetDisplayNameOk() (*string, bool) {
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *EntitlementDocument) HasDisplayName() bool {
-	if o != nil && !isNil(o.DisplayName) {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -264,7 +264,7 @@ func (o *EntitlementDocument) SetDisplayName(v string) {
 
 // GetSource returns the Source field value if set, zero value otherwise.
 func (o *EntitlementDocument) GetSource() EntitlementDocumentAllOfSource {
-	if o == nil || isNil(o.Source) {
+	if o == nil || IsNil(o.Source) {
 		var ret EntitlementDocumentAllOfSource
 		return ret
 	}
@@ -274,7 +274,7 @@ func (o *EntitlementDocument) GetSource() EntitlementDocumentAllOfSource {
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntitlementDocument) GetSourceOk() (*EntitlementDocumentAllOfSource, bool) {
-	if o == nil || isNil(o.Source) {
+	if o == nil || IsNil(o.Source) {
 		return nil, false
 	}
 	return o.Source, true
@@ -282,7 +282,7 @@ func (o *EntitlementDocument) GetSourceOk() (*EntitlementDocumentAllOfSource, bo
 
 // HasSource returns a boolean if a field has been set.
 func (o *EntitlementDocument) HasSource() bool {
-	if o != nil && !isNil(o.Source) {
+	if o != nil && !IsNil(o.Source) {
 		return true
 	}
 
@@ -296,7 +296,7 @@ func (o *EntitlementDocument) SetSource(v EntitlementDocumentAllOfSource) {
 
 // GetSegments returns the Segments field value if set, zero value otherwise.
 func (o *EntitlementDocument) GetSegments() []BaseSegment {
-	if o == nil || isNil(o.Segments) {
+	if o == nil || IsNil(o.Segments) {
 		var ret []BaseSegment
 		return ret
 	}
@@ -306,7 +306,7 @@ func (o *EntitlementDocument) GetSegments() []BaseSegment {
 // GetSegmentsOk returns a tuple with the Segments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntitlementDocument) GetSegmentsOk() ([]BaseSegment, bool) {
-	if o == nil || isNil(o.Segments) {
+	if o == nil || IsNil(o.Segments) {
 		return nil, false
 	}
 	return o.Segments, true
@@ -314,7 +314,7 @@ func (o *EntitlementDocument) GetSegmentsOk() ([]BaseSegment, bool) {
 
 // HasSegments returns a boolean if a field has been set.
 func (o *EntitlementDocument) HasSegments() bool {
-	if o != nil && !isNil(o.Segments) {
+	if o != nil && !IsNil(o.Segments) {
 		return true
 	}
 
@@ -328,7 +328,7 @@ func (o *EntitlementDocument) SetSegments(v []BaseSegment) {
 
 // GetSegmentCount returns the SegmentCount field value if set, zero value otherwise.
 func (o *EntitlementDocument) GetSegmentCount() int32 {
-	if o == nil || isNil(o.SegmentCount) {
+	if o == nil || IsNil(o.SegmentCount) {
 		var ret int32
 		return ret
 	}
@@ -338,7 +338,7 @@ func (o *EntitlementDocument) GetSegmentCount() int32 {
 // GetSegmentCountOk returns a tuple with the SegmentCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntitlementDocument) GetSegmentCountOk() (*int32, bool) {
-	if o == nil || isNil(o.SegmentCount) {
+	if o == nil || IsNil(o.SegmentCount) {
 		return nil, false
 	}
 	return o.SegmentCount, true
@@ -346,7 +346,7 @@ func (o *EntitlementDocument) GetSegmentCountOk() (*int32, bool) {
 
 // HasSegmentCount returns a boolean if a field has been set.
 func (o *EntitlementDocument) HasSegmentCount() bool {
-	if o != nil && !isNil(o.SegmentCount) {
+	if o != nil && !IsNil(o.SegmentCount) {
 		return true
 	}
 
@@ -360,7 +360,7 @@ func (o *EntitlementDocument) SetSegmentCount(v int32) {
 
 // GetRequestable returns the Requestable field value if set, zero value otherwise.
 func (o *EntitlementDocument) GetRequestable() bool {
-	if o == nil || isNil(o.Requestable) {
+	if o == nil || IsNil(o.Requestable) {
 		var ret bool
 		return ret
 	}
@@ -370,7 +370,7 @@ func (o *EntitlementDocument) GetRequestable() bool {
 // GetRequestableOk returns a tuple with the Requestable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntitlementDocument) GetRequestableOk() (*bool, bool) {
-	if o == nil || isNil(o.Requestable) {
+	if o == nil || IsNil(o.Requestable) {
 		return nil, false
 	}
 	return o.Requestable, true
@@ -378,7 +378,7 @@ func (o *EntitlementDocument) GetRequestableOk() (*bool, bool) {
 
 // HasRequestable returns a boolean if a field has been set.
 func (o *EntitlementDocument) HasRequestable() bool {
-	if o != nil && !isNil(o.Requestable) {
+	if o != nil && !IsNil(o.Requestable) {
 		return true
 	}
 
@@ -392,7 +392,7 @@ func (o *EntitlementDocument) SetRequestable(v bool) {
 
 // GetCloudGoverned returns the CloudGoverned field value if set, zero value otherwise.
 func (o *EntitlementDocument) GetCloudGoverned() bool {
-	if o == nil || isNil(o.CloudGoverned) {
+	if o == nil || IsNil(o.CloudGoverned) {
 		var ret bool
 		return ret
 	}
@@ -402,7 +402,7 @@ func (o *EntitlementDocument) GetCloudGoverned() bool {
 // GetCloudGovernedOk returns a tuple with the CloudGoverned field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntitlementDocument) GetCloudGovernedOk() (*bool, bool) {
-	if o == nil || isNil(o.CloudGoverned) {
+	if o == nil || IsNil(o.CloudGoverned) {
 		return nil, false
 	}
 	return o.CloudGoverned, true
@@ -410,7 +410,7 @@ func (o *EntitlementDocument) GetCloudGovernedOk() (*bool, bool) {
 
 // HasCloudGoverned returns a boolean if a field has been set.
 func (o *EntitlementDocument) HasCloudGoverned() bool {
-	if o != nil && !isNil(o.CloudGoverned) {
+	if o != nil && !IsNil(o.CloudGoverned) {
 		return true
 	}
 
@@ -424,7 +424,7 @@ func (o *EntitlementDocument) SetCloudGoverned(v bool) {
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EntitlementDocument) GetCreated() time.Time {
-	if o == nil || isNil(o.Created.Get()) {
+	if o == nil || IsNil(o.Created.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -466,7 +466,7 @@ func (o *EntitlementDocument) UnsetCreated() {
 
 // GetPrivileged returns the Privileged field value if set, zero value otherwise.
 func (o *EntitlementDocument) GetPrivileged() bool {
-	if o == nil || isNil(o.Privileged) {
+	if o == nil || IsNil(o.Privileged) {
 		var ret bool
 		return ret
 	}
@@ -476,7 +476,7 @@ func (o *EntitlementDocument) GetPrivileged() bool {
 // GetPrivilegedOk returns a tuple with the Privileged field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntitlementDocument) GetPrivilegedOk() (*bool, bool) {
-	if o == nil || isNil(o.Privileged) {
+	if o == nil || IsNil(o.Privileged) {
 		return nil, false
 	}
 	return o.Privileged, true
@@ -484,7 +484,7 @@ func (o *EntitlementDocument) GetPrivilegedOk() (*bool, bool) {
 
 // HasPrivileged returns a boolean if a field has been set.
 func (o *EntitlementDocument) HasPrivileged() bool {
-	if o != nil && !isNil(o.Privileged) {
+	if o != nil && !IsNil(o.Privileged) {
 		return true
 	}
 
@@ -498,7 +498,7 @@ func (o *EntitlementDocument) SetPrivileged(v bool) {
 
 // GetIdentityCount returns the IdentityCount field value if set, zero value otherwise.
 func (o *EntitlementDocument) GetIdentityCount() int32 {
-	if o == nil || isNil(o.IdentityCount) {
+	if o == nil || IsNil(o.IdentityCount) {
 		var ret int32
 		return ret
 	}
@@ -508,7 +508,7 @@ func (o *EntitlementDocument) GetIdentityCount() int32 {
 // GetIdentityCountOk returns a tuple with the IdentityCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntitlementDocument) GetIdentityCountOk() (*int32, bool) {
-	if o == nil || isNil(o.IdentityCount) {
+	if o == nil || IsNil(o.IdentityCount) {
 		return nil, false
 	}
 	return o.IdentityCount, true
@@ -516,7 +516,7 @@ func (o *EntitlementDocument) GetIdentityCountOk() (*int32, bool) {
 
 // HasIdentityCount returns a boolean if a field has been set.
 func (o *EntitlementDocument) HasIdentityCount() bool {
-	if o != nil && !isNil(o.IdentityCount) {
+	if o != nil && !IsNil(o.IdentityCount) {
 		return true
 	}
 
@@ -530,7 +530,7 @@ func (o *EntitlementDocument) SetIdentityCount(v int32) {
 
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *EntitlementDocument) GetTags() []string {
-	if o == nil || isNil(o.Tags) {
+	if o == nil || IsNil(o.Tags) {
 		var ret []string
 		return ret
 	}
@@ -540,7 +540,7 @@ func (o *EntitlementDocument) GetTags() []string {
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntitlementDocument) GetTagsOk() ([]string, bool) {
-	if o == nil || isNil(o.Tags) {
+	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
 	return o.Tags, true
@@ -548,7 +548,7 @@ func (o *EntitlementDocument) GetTagsOk() ([]string, bool) {
 
 // HasTags returns a boolean if a field has been set.
 func (o *EntitlementDocument) HasTags() bool {
-	if o != nil && !isNil(o.Tags) {
+	if o != nil && !IsNil(o.Tags) {
 		return true
 	}
 
@@ -576,37 +576,37 @@ func (o EntitlementDocument) ToMap() (map[string]interface{}, error) {
 	if o.Modified.IsSet() {
 		toSerialize["modified"] = o.Modified.Get()
 	}
-	if !isNil(o.Synced) {
+	if !IsNil(o.Synced) {
 		toSerialize["synced"] = o.Synced
 	}
-	if !isNil(o.DisplayName) {
+	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
-	if !isNil(o.Source) {
+	if !IsNil(o.Source) {
 		toSerialize["source"] = o.Source
 	}
-	if !isNil(o.Segments) {
+	if !IsNil(o.Segments) {
 		toSerialize["segments"] = o.Segments
 	}
-	if !isNil(o.SegmentCount) {
+	if !IsNil(o.SegmentCount) {
 		toSerialize["segmentCount"] = o.SegmentCount
 	}
-	if !isNil(o.Requestable) {
+	if !IsNil(o.Requestable) {
 		toSerialize["requestable"] = o.Requestable
 	}
-	if !isNil(o.CloudGoverned) {
+	if !IsNil(o.CloudGoverned) {
 		toSerialize["cloudGoverned"] = o.CloudGoverned
 	}
 	if o.Created.IsSet() {
 		toSerialize["created"] = o.Created.Get()
 	}
-	if !isNil(o.Privileged) {
+	if !IsNil(o.Privileged) {
 		toSerialize["privileged"] = o.Privileged
 	}
-	if !isNil(o.IdentityCount) {
+	if !IsNil(o.IdentityCount) {
 		toSerialize["identityCount"] = o.IdentityCount
 	}
-	if !isNil(o.Tags) {
+	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
 	}
 
@@ -617,8 +617,8 @@ func (o EntitlementDocument) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *EntitlementDocument) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *EntitlementDocument) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -629,7 +629,7 @@ func (o *EntitlementDocument) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -643,13 +643,17 @@ func (o *EntitlementDocument) UnmarshalJSON(bytes []byte) (err error) {
 
 	varEntitlementDocument := _EntitlementDocument{}
 
-	if err = json.Unmarshal(bytes, &varEntitlementDocument); err == nil {
+	err = json.Unmarshal(data, &varEntitlementDocument)
+
+	if err != nil {
+		return err
+	}
+
 	*o = EntitlementDocument(varEntitlementDocument)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "_type")

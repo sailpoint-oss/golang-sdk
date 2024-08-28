@@ -51,7 +51,7 @@ func NewCampaignTemplateOwnerRefWithDefaults() *CampaignTemplateOwnerRef {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *CampaignTemplateOwnerRef) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -61,7 +61,7 @@ func (o *CampaignTemplateOwnerRef) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CampaignTemplateOwnerRef) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -69,7 +69,7 @@ func (o *CampaignTemplateOwnerRef) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *CampaignTemplateOwnerRef) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -83,7 +83,7 @@ func (o *CampaignTemplateOwnerRef) SetId(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *CampaignTemplateOwnerRef) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -93,7 +93,7 @@ func (o *CampaignTemplateOwnerRef) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CampaignTemplateOwnerRef) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -101,7 +101,7 @@ func (o *CampaignTemplateOwnerRef) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *CampaignTemplateOwnerRef) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -115,7 +115,7 @@ func (o *CampaignTemplateOwnerRef) SetType(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *CampaignTemplateOwnerRef) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -125,7 +125,7 @@ func (o *CampaignTemplateOwnerRef) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CampaignTemplateOwnerRef) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -133,7 +133,7 @@ func (o *CampaignTemplateOwnerRef) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *CampaignTemplateOwnerRef) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -147,7 +147,7 @@ func (o *CampaignTemplateOwnerRef) SetName(v string) {
 
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *CampaignTemplateOwnerRef) GetEmail() string {
-	if o == nil || isNil(o.Email) {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
@@ -157,7 +157,7 @@ func (o *CampaignTemplateOwnerRef) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CampaignTemplateOwnerRef) GetEmailOk() (*string, bool) {
-	if o == nil || isNil(o.Email) {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
 	return o.Email, true
@@ -165,7 +165,7 @@ func (o *CampaignTemplateOwnerRef) GetEmailOk() (*string, bool) {
 
 // HasEmail returns a boolean if a field has been set.
 func (o *CampaignTemplateOwnerRef) HasEmail() bool {
-	if o != nil && !isNil(o.Email) {
+	if o != nil && !IsNil(o.Email) {
 		return true
 	}
 
@@ -187,16 +187,16 @@ func (o CampaignTemplateOwnerRef) MarshalJSON() ([]byte, error) {
 
 func (o CampaignTemplateOwnerRef) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Email) {
+	if !IsNil(o.Email) {
 		toSerialize["email"] = o.Email
 	}
 
@@ -207,16 +207,20 @@ func (o CampaignTemplateOwnerRef) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CampaignTemplateOwnerRef) UnmarshalJSON(bytes []byte) (err error) {
+func (o *CampaignTemplateOwnerRef) UnmarshalJSON(data []byte) (err error) {
 	varCampaignTemplateOwnerRef := _CampaignTemplateOwnerRef{}
 
-	if err = json.Unmarshal(bytes, &varCampaignTemplateOwnerRef); err == nil {
+	err = json.Unmarshal(data, &varCampaignTemplateOwnerRef)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CampaignTemplateOwnerRef(varCampaignTemplateOwnerRef)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "name")

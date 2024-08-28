@@ -158,7 +158,7 @@ func (o *CertificationSignedOffCertification) SetCreated(v time.Time) {
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CertificationSignedOffCertification) GetModified() time.Time {
-	if o == nil || isNil(o.Modified.Get()) {
+	if o == nil || IsNil(o.Modified.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -320,7 +320,7 @@ func (o *CertificationSignedOffCertification) SetReviewer(v Reviewer) {
 
 // GetReassignment returns the Reassignment field value if set, zero value otherwise.
 func (o *CertificationSignedOffCertification) GetReassignment() Reassignment {
-	if o == nil || isNil(o.Reassignment) {
+	if o == nil || IsNil(o.Reassignment) {
 		var ret Reassignment
 		return ret
 	}
@@ -330,7 +330,7 @@ func (o *CertificationSignedOffCertification) GetReassignment() Reassignment {
 // GetReassignmentOk returns a tuple with the Reassignment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificationSignedOffCertification) GetReassignmentOk() (*Reassignment, bool) {
-	if o == nil || isNil(o.Reassignment) {
+	if o == nil || IsNil(o.Reassignment) {
 		return nil, false
 	}
 	return o.Reassignment, true
@@ -338,7 +338,7 @@ func (o *CertificationSignedOffCertification) GetReassignmentOk() (*Reassignment
 
 // HasReassignment returns a boolean if a field has been set.
 func (o *CertificationSignedOffCertification) HasReassignment() bool {
-	if o != nil && !isNil(o.Reassignment) {
+	if o != nil && !IsNil(o.Reassignment) {
 		return true
 	}
 
@@ -376,7 +376,7 @@ func (o *CertificationSignedOffCertification) SetHasErrors(v bool) {
 
 // GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CertificationSignedOffCertification) GetErrorMessage() string {
-	if o == nil || isNil(o.ErrorMessage.Get()) {
+	if o == nil || IsNil(o.ErrorMessage.Get()) {
 		var ret string
 		return ret
 	}
@@ -557,7 +557,7 @@ func (o CertificationSignedOffCertification) ToMap() (map[string]interface{}, er
 	toSerialize["due"] = o.Due
 	toSerialize["signed"] = o.Signed
 	toSerialize["reviewer"] = o.Reviewer
-	if !isNil(o.Reassignment) {
+	if !IsNil(o.Reassignment) {
 		toSerialize["reassignment"] = o.Reassignment
 	}
 	toSerialize["hasErrors"] = o.HasErrors
@@ -577,8 +577,8 @@ func (o CertificationSignedOffCertification) ToMap() (map[string]interface{}, er
 	return toSerialize, nil
 }
 
-func (o *CertificationSignedOffCertification) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *CertificationSignedOffCertification) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -600,7 +600,7 @@ func (o *CertificationSignedOffCertification) UnmarshalJSON(bytes []byte) (err e
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -614,13 +614,17 @@ func (o *CertificationSignedOffCertification) UnmarshalJSON(bytes []byte) (err e
 
 	varCertificationSignedOffCertification := _CertificationSignedOffCertification{}
 
-	if err = json.Unmarshal(bytes, &varCertificationSignedOffCertification); err == nil {
+	err = json.Unmarshal(data, &varCertificationSignedOffCertification)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CertificationSignedOffCertification(varCertificationSignedOffCertification)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "created")

@@ -47,7 +47,7 @@ func NewRoleMembershipSelectorWithDefaults() *RoleMembershipSelector {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *RoleMembershipSelector) GetType() RoleMembershipSelectorType {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret RoleMembershipSelectorType
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *RoleMembershipSelector) GetType() RoleMembershipSelectorType {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMembershipSelector) GetTypeOk() (*RoleMembershipSelectorType, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -65,7 +65,7 @@ func (o *RoleMembershipSelector) GetTypeOk() (*RoleMembershipSelectorType, bool)
 
 // HasType returns a boolean if a field has been set.
 func (o *RoleMembershipSelector) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *RoleMembershipSelector) SetType(v RoleMembershipSelectorType) {
 
 // GetCriteria returns the Criteria field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleMembershipSelector) GetCriteria() RoleCriteriaLevel1 {
-	if o == nil || isNil(o.Criteria.Get()) {
+	if o == nil || IsNil(o.Criteria.Get()) {
 		var ret RoleCriteriaLevel1
 		return ret
 	}
@@ -132,7 +132,7 @@ func (o *RoleMembershipSelector) GetIdentities() []RoleMembershipIdentity {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RoleMembershipSelector) GetIdentitiesOk() ([]RoleMembershipIdentity, bool) {
-	if o == nil || isNil(o.Identities) {
+	if o == nil || IsNil(o.Identities) {
 		return nil, false
 	}
 	return o.Identities, true
@@ -140,7 +140,7 @@ func (o *RoleMembershipSelector) GetIdentitiesOk() ([]RoleMembershipIdentity, bo
 
 // HasIdentities returns a boolean if a field has been set.
 func (o *RoleMembershipSelector) HasIdentities() bool {
-	if o != nil && isNil(o.Identities) {
+	if o != nil && !IsNil(o.Identities) {
 		return true
 	}
 
@@ -162,7 +162,7 @@ func (o RoleMembershipSelector) MarshalJSON() ([]byte, error) {
 
 func (o RoleMembershipSelector) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
 	if o.Criteria.IsSet() {
@@ -179,16 +179,20 @@ func (o RoleMembershipSelector) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *RoleMembershipSelector) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RoleMembershipSelector) UnmarshalJSON(data []byte) (err error) {
 	varRoleMembershipSelector := _RoleMembershipSelector{}
 
-	if err = json.Unmarshal(bytes, &varRoleMembershipSelector); err == nil {
+	err = json.Unmarshal(data, &varRoleMembershipSelector)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RoleMembershipSelector(varRoleMembershipSelector)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "criteria")
 		delete(additionalProperties, "identities")

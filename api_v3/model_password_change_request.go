@@ -53,7 +53,7 @@ func NewPasswordChangeRequestWithDefaults() *PasswordChangeRequest {
 
 // GetIdentityId returns the IdentityId field value if set, zero value otherwise.
 func (o *PasswordChangeRequest) GetIdentityId() string {
-	if o == nil || isNil(o.IdentityId) {
+	if o == nil || IsNil(o.IdentityId) {
 		var ret string
 		return ret
 	}
@@ -63,7 +63,7 @@ func (o *PasswordChangeRequest) GetIdentityId() string {
 // GetIdentityIdOk returns a tuple with the IdentityId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordChangeRequest) GetIdentityIdOk() (*string, bool) {
-	if o == nil || isNil(o.IdentityId) {
+	if o == nil || IsNil(o.IdentityId) {
 		return nil, false
 	}
 	return o.IdentityId, true
@@ -71,7 +71,7 @@ func (o *PasswordChangeRequest) GetIdentityIdOk() (*string, bool) {
 
 // HasIdentityId returns a boolean if a field has been set.
 func (o *PasswordChangeRequest) HasIdentityId() bool {
-	if o != nil && !isNil(o.IdentityId) {
+	if o != nil && !IsNil(o.IdentityId) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o *PasswordChangeRequest) SetIdentityId(v string) {
 
 // GetEncryptedPassword returns the EncryptedPassword field value if set, zero value otherwise.
 func (o *PasswordChangeRequest) GetEncryptedPassword() string {
-	if o == nil || isNil(o.EncryptedPassword) {
+	if o == nil || IsNil(o.EncryptedPassword) {
 		var ret string
 		return ret
 	}
@@ -95,7 +95,7 @@ func (o *PasswordChangeRequest) GetEncryptedPassword() string {
 // GetEncryptedPasswordOk returns a tuple with the EncryptedPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordChangeRequest) GetEncryptedPasswordOk() (*string, bool) {
-	if o == nil || isNil(o.EncryptedPassword) {
+	if o == nil || IsNil(o.EncryptedPassword) {
 		return nil, false
 	}
 	return o.EncryptedPassword, true
@@ -103,7 +103,7 @@ func (o *PasswordChangeRequest) GetEncryptedPasswordOk() (*string, bool) {
 
 // HasEncryptedPassword returns a boolean if a field has been set.
 func (o *PasswordChangeRequest) HasEncryptedPassword() bool {
-	if o != nil && !isNil(o.EncryptedPassword) {
+	if o != nil && !IsNil(o.EncryptedPassword) {
 		return true
 	}
 
@@ -117,7 +117,7 @@ func (o *PasswordChangeRequest) SetEncryptedPassword(v string) {
 
 // GetPublicKeyId returns the PublicKeyId field value if set, zero value otherwise.
 func (o *PasswordChangeRequest) GetPublicKeyId() string {
-	if o == nil || isNil(o.PublicKeyId) {
+	if o == nil || IsNil(o.PublicKeyId) {
 		var ret string
 		return ret
 	}
@@ -127,7 +127,7 @@ func (o *PasswordChangeRequest) GetPublicKeyId() string {
 // GetPublicKeyIdOk returns a tuple with the PublicKeyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordChangeRequest) GetPublicKeyIdOk() (*string, bool) {
-	if o == nil || isNil(o.PublicKeyId) {
+	if o == nil || IsNil(o.PublicKeyId) {
 		return nil, false
 	}
 	return o.PublicKeyId, true
@@ -135,7 +135,7 @@ func (o *PasswordChangeRequest) GetPublicKeyIdOk() (*string, bool) {
 
 // HasPublicKeyId returns a boolean if a field has been set.
 func (o *PasswordChangeRequest) HasPublicKeyId() bool {
-	if o != nil && !isNil(o.PublicKeyId) {
+	if o != nil && !IsNil(o.PublicKeyId) {
 		return true
 	}
 
@@ -149,7 +149,7 @@ func (o *PasswordChangeRequest) SetPublicKeyId(v string) {
 
 // GetAccountId returns the AccountId field value if set, zero value otherwise.
 func (o *PasswordChangeRequest) GetAccountId() string {
-	if o == nil || isNil(o.AccountId) {
+	if o == nil || IsNil(o.AccountId) {
 		var ret string
 		return ret
 	}
@@ -159,7 +159,7 @@ func (o *PasswordChangeRequest) GetAccountId() string {
 // GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordChangeRequest) GetAccountIdOk() (*string, bool) {
-	if o == nil || isNil(o.AccountId) {
+	if o == nil || IsNil(o.AccountId) {
 		return nil, false
 	}
 	return o.AccountId, true
@@ -167,7 +167,7 @@ func (o *PasswordChangeRequest) GetAccountIdOk() (*string, bool) {
 
 // HasAccountId returns a boolean if a field has been set.
 func (o *PasswordChangeRequest) HasAccountId() bool {
-	if o != nil && !isNil(o.AccountId) {
+	if o != nil && !IsNil(o.AccountId) {
 		return true
 	}
 
@@ -181,7 +181,7 @@ func (o *PasswordChangeRequest) SetAccountId(v string) {
 
 // GetSourceId returns the SourceId field value if set, zero value otherwise.
 func (o *PasswordChangeRequest) GetSourceId() string {
-	if o == nil || isNil(o.SourceId) {
+	if o == nil || IsNil(o.SourceId) {
 		var ret string
 		return ret
 	}
@@ -191,7 +191,7 @@ func (o *PasswordChangeRequest) GetSourceId() string {
 // GetSourceIdOk returns a tuple with the SourceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordChangeRequest) GetSourceIdOk() (*string, bool) {
-	if o == nil || isNil(o.SourceId) {
+	if o == nil || IsNil(o.SourceId) {
 		return nil, false
 	}
 	return o.SourceId, true
@@ -199,7 +199,7 @@ func (o *PasswordChangeRequest) GetSourceIdOk() (*string, bool) {
 
 // HasSourceId returns a boolean if a field has been set.
 func (o *PasswordChangeRequest) HasSourceId() bool {
-	if o != nil && !isNil(o.SourceId) {
+	if o != nil && !IsNil(o.SourceId) {
 		return true
 	}
 
@@ -221,19 +221,19 @@ func (o PasswordChangeRequest) MarshalJSON() ([]byte, error) {
 
 func (o PasswordChangeRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.IdentityId) {
+	if !IsNil(o.IdentityId) {
 		toSerialize["identityId"] = o.IdentityId
 	}
-	if !isNil(o.EncryptedPassword) {
+	if !IsNil(o.EncryptedPassword) {
 		toSerialize["encryptedPassword"] = o.EncryptedPassword
 	}
-	if !isNil(o.PublicKeyId) {
+	if !IsNil(o.PublicKeyId) {
 		toSerialize["publicKeyId"] = o.PublicKeyId
 	}
-	if !isNil(o.AccountId) {
+	if !IsNil(o.AccountId) {
 		toSerialize["accountId"] = o.AccountId
 	}
-	if !isNil(o.SourceId) {
+	if !IsNil(o.SourceId) {
 		toSerialize["sourceId"] = o.SourceId
 	}
 
@@ -244,16 +244,20 @@ func (o PasswordChangeRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *PasswordChangeRequest) UnmarshalJSON(bytes []byte) (err error) {
+func (o *PasswordChangeRequest) UnmarshalJSON(data []byte) (err error) {
 	varPasswordChangeRequest := _PasswordChangeRequest{}
 
-	if err = json.Unmarshal(bytes, &varPasswordChangeRequest); err == nil {
+	err = json.Unmarshal(data, &varPasswordChangeRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = PasswordChangeRequest(varPasswordChangeRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "identityId")
 		delete(additionalProperties, "encryptedPassword")
 		delete(additionalProperties, "publicKeyId")

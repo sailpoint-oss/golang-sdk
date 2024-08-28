@@ -49,7 +49,7 @@ func NewCustomPasswordInstructionWithDefaults() *CustomPasswordInstruction {
 
 // GetPageId returns the PageId field value if set, zero value otherwise.
 func (o *CustomPasswordInstruction) GetPageId() string {
-	if o == nil || isNil(o.PageId) {
+	if o == nil || IsNil(o.PageId) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *CustomPasswordInstruction) GetPageId() string {
 // GetPageIdOk returns a tuple with the PageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomPasswordInstruction) GetPageIdOk() (*string, bool) {
-	if o == nil || isNil(o.PageId) {
+	if o == nil || IsNil(o.PageId) {
 		return nil, false
 	}
 	return o.PageId, true
@@ -67,7 +67,7 @@ func (o *CustomPasswordInstruction) GetPageIdOk() (*string, bool) {
 
 // HasPageId returns a boolean if a field has been set.
 func (o *CustomPasswordInstruction) HasPageId() bool {
-	if o != nil && !isNil(o.PageId) {
+	if o != nil && !IsNil(o.PageId) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *CustomPasswordInstruction) SetPageId(v string) {
 
 // GetPageContent returns the PageContent field value if set, zero value otherwise.
 func (o *CustomPasswordInstruction) GetPageContent() string {
-	if o == nil || isNil(o.PageContent) {
+	if o == nil || IsNil(o.PageContent) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *CustomPasswordInstruction) GetPageContent() string {
 // GetPageContentOk returns a tuple with the PageContent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomPasswordInstruction) GetPageContentOk() (*string, bool) {
-	if o == nil || isNil(o.PageContent) {
+	if o == nil || IsNil(o.PageContent) {
 		return nil, false
 	}
 	return o.PageContent, true
@@ -99,7 +99,7 @@ func (o *CustomPasswordInstruction) GetPageContentOk() (*string, bool) {
 
 // HasPageContent returns a boolean if a field has been set.
 func (o *CustomPasswordInstruction) HasPageContent() bool {
-	if o != nil && !isNil(o.PageContent) {
+	if o != nil && !IsNil(o.PageContent) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *CustomPasswordInstruction) SetPageContent(v string) {
 
 // GetLocale returns the Locale field value if set, zero value otherwise.
 func (o *CustomPasswordInstruction) GetLocale() string {
-	if o == nil || isNil(o.Locale) {
+	if o == nil || IsNil(o.Locale) {
 		var ret string
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *CustomPasswordInstruction) GetLocale() string {
 // GetLocaleOk returns a tuple with the Locale field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomPasswordInstruction) GetLocaleOk() (*string, bool) {
-	if o == nil || isNil(o.Locale) {
+	if o == nil || IsNil(o.Locale) {
 		return nil, false
 	}
 	return o.Locale, true
@@ -131,7 +131,7 @@ func (o *CustomPasswordInstruction) GetLocaleOk() (*string, bool) {
 
 // HasLocale returns a boolean if a field has been set.
 func (o *CustomPasswordInstruction) HasLocale() bool {
-	if o != nil && !isNil(o.Locale) {
+	if o != nil && !IsNil(o.Locale) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o CustomPasswordInstruction) MarshalJSON() ([]byte, error) {
 
 func (o CustomPasswordInstruction) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.PageId) {
+	if !IsNil(o.PageId) {
 		toSerialize["pageId"] = o.PageId
 	}
-	if !isNil(o.PageContent) {
+	if !IsNil(o.PageContent) {
 		toSerialize["pageContent"] = o.PageContent
 	}
-	if !isNil(o.Locale) {
+	if !IsNil(o.Locale) {
 		toSerialize["locale"] = o.Locale
 	}
 
@@ -170,16 +170,20 @@ func (o CustomPasswordInstruction) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CustomPasswordInstruction) UnmarshalJSON(bytes []byte) (err error) {
+func (o *CustomPasswordInstruction) UnmarshalJSON(data []byte) (err error) {
 	varCustomPasswordInstruction := _CustomPasswordInstruction{}
 
-	if err = json.Unmarshal(bytes, &varCustomPasswordInstruction); err == nil {
+	err = json.Unmarshal(data, &varCustomPasswordInstruction)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CustomPasswordInstruction(varCustomPasswordInstruction)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "pageId")
 		delete(additionalProperties, "pageContent")
 		delete(additionalProperties, "locale")

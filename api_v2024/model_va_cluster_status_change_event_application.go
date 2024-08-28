@@ -114,7 +114,7 @@ func (o *VAClusterStatusChangeEventApplication) GetAttributes() map[string]inter
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VAClusterStatusChangeEventApplication) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
@@ -148,8 +148,8 @@ func (o VAClusterStatusChangeEventApplication) ToMap() (map[string]interface{}, 
 	return toSerialize, nil
 }
 
-func (o *VAClusterStatusChangeEventApplication) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *VAClusterStatusChangeEventApplication) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -160,7 +160,7 @@ func (o *VAClusterStatusChangeEventApplication) UnmarshalJSON(bytes []byte) (err
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -174,13 +174,17 @@ func (o *VAClusterStatusChangeEventApplication) UnmarshalJSON(bytes []byte) (err
 
 	varVAClusterStatusChangeEventApplication := _VAClusterStatusChangeEventApplication{}
 
-	if err = json.Unmarshal(bytes, &varVAClusterStatusChangeEventApplication); err == nil {
+	err = json.Unmarshal(data, &varVAClusterStatusChangeEventApplication)
+
+	if err != nil {
+		return err
+	}
+
 	*o = VAClusterStatusChangeEventApplication(varVAClusterStatusChangeEventApplication)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "attributes")

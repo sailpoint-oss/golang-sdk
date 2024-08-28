@@ -58,7 +58,7 @@ func NewVendorConnectorMappingWithDefaults() *VendorConnectorMapping {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *VendorConnectorMapping) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -68,7 +68,7 @@ func (o *VendorConnectorMapping) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VendorConnectorMapping) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -76,7 +76,7 @@ func (o *VendorConnectorMapping) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *VendorConnectorMapping) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -90,7 +90,7 @@ func (o *VendorConnectorMapping) SetId(v string) {
 
 // GetVendor returns the Vendor field value if set, zero value otherwise.
 func (o *VendorConnectorMapping) GetVendor() string {
-	if o == nil || isNil(o.Vendor) {
+	if o == nil || IsNil(o.Vendor) {
 		var ret string
 		return ret
 	}
@@ -100,7 +100,7 @@ func (o *VendorConnectorMapping) GetVendor() string {
 // GetVendorOk returns a tuple with the Vendor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VendorConnectorMapping) GetVendorOk() (*string, bool) {
-	if o == nil || isNil(o.Vendor) {
+	if o == nil || IsNil(o.Vendor) {
 		return nil, false
 	}
 	return o.Vendor, true
@@ -108,7 +108,7 @@ func (o *VendorConnectorMapping) GetVendorOk() (*string, bool) {
 
 // HasVendor returns a boolean if a field has been set.
 func (o *VendorConnectorMapping) HasVendor() bool {
-	if o != nil && !isNil(o.Vendor) {
+	if o != nil && !IsNil(o.Vendor) {
 		return true
 	}
 
@@ -122,7 +122,7 @@ func (o *VendorConnectorMapping) SetVendor(v string) {
 
 // GetConnector returns the Connector field value if set, zero value otherwise.
 func (o *VendorConnectorMapping) GetConnector() string {
-	if o == nil || isNil(o.Connector) {
+	if o == nil || IsNil(o.Connector) {
 		var ret string
 		return ret
 	}
@@ -132,7 +132,7 @@ func (o *VendorConnectorMapping) GetConnector() string {
 // GetConnectorOk returns a tuple with the Connector field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VendorConnectorMapping) GetConnectorOk() (*string, bool) {
-	if o == nil || isNil(o.Connector) {
+	if o == nil || IsNil(o.Connector) {
 		return nil, false
 	}
 	return o.Connector, true
@@ -140,7 +140,7 @@ func (o *VendorConnectorMapping) GetConnectorOk() (*string, bool) {
 
 // HasConnector returns a boolean if a field has been set.
 func (o *VendorConnectorMapping) HasConnector() bool {
-	if o != nil && !isNil(o.Connector) {
+	if o != nil && !IsNil(o.Connector) {
 		return true
 	}
 
@@ -154,7 +154,7 @@ func (o *VendorConnectorMapping) SetConnector(v string) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *VendorConnectorMapping) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -164,7 +164,7 @@ func (o *VendorConnectorMapping) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VendorConnectorMapping) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -172,7 +172,7 @@ func (o *VendorConnectorMapping) GetCreatedAtOk() (*time.Time, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *VendorConnectorMapping) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -186,7 +186,7 @@ func (o *VendorConnectorMapping) SetCreatedAt(v time.Time) {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
 func (o *VendorConnectorMapping) GetCreatedBy() string {
-	if o == nil || isNil(o.CreatedBy) {
+	if o == nil || IsNil(o.CreatedBy) {
 		var ret string
 		return ret
 	}
@@ -196,7 +196,7 @@ func (o *VendorConnectorMapping) GetCreatedBy() string {
 // GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VendorConnectorMapping) GetCreatedByOk() (*string, bool) {
-	if o == nil || isNil(o.CreatedBy) {
+	if o == nil || IsNil(o.CreatedBy) {
 		return nil, false
 	}
 	return o.CreatedBy, true
@@ -204,7 +204,7 @@ func (o *VendorConnectorMapping) GetCreatedByOk() (*string, bool) {
 
 // HasCreatedBy returns a boolean if a field has been set.
 func (o *VendorConnectorMapping) HasCreatedBy() bool {
-	if o != nil && !isNil(o.CreatedBy) {
+	if o != nil && !IsNil(o.CreatedBy) {
 		return true
 	}
 
@@ -218,7 +218,7 @@ func (o *VendorConnectorMapping) SetCreatedBy(v string) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VendorConnectorMapping) GetUpdatedAt() VendorConnectorMappingUpdatedAt {
-	if o == nil || isNil(o.UpdatedAt.Get()) {
+	if o == nil || IsNil(o.UpdatedAt.Get()) {
 		var ret VendorConnectorMappingUpdatedAt
 		return ret
 	}
@@ -260,7 +260,7 @@ func (o *VendorConnectorMapping) UnsetUpdatedAt() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VendorConnectorMapping) GetUpdatedBy() VendorConnectorMappingUpdatedBy {
-	if o == nil || isNil(o.UpdatedBy.Get()) {
+	if o == nil || IsNil(o.UpdatedBy.Get()) {
 		var ret VendorConnectorMappingUpdatedBy
 		return ret
 	}
@@ -302,7 +302,7 @@ func (o *VendorConnectorMapping) UnsetUpdatedBy() {
 
 // GetDeletedAt returns the DeletedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VendorConnectorMapping) GetDeletedAt() VendorConnectorMappingDeletedAt {
-	if o == nil || isNil(o.DeletedAt.Get()) {
+	if o == nil || IsNil(o.DeletedAt.Get()) {
 		var ret VendorConnectorMappingDeletedAt
 		return ret
 	}
@@ -344,7 +344,7 @@ func (o *VendorConnectorMapping) UnsetDeletedAt() {
 
 // GetDeletedBy returns the DeletedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VendorConnectorMapping) GetDeletedBy() VendorConnectorMappingDeletedBy {
-	if o == nil || isNil(o.DeletedBy.Get()) {
+	if o == nil || IsNil(o.DeletedBy.Get()) {
 		var ret VendorConnectorMappingDeletedBy
 		return ret
 	}
@@ -394,19 +394,19 @@ func (o VendorConnectorMapping) MarshalJSON() ([]byte, error) {
 
 func (o VendorConnectorMapping) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Vendor) {
+	if !IsNil(o.Vendor) {
 		toSerialize["vendor"] = o.Vendor
 	}
-	if !isNil(o.Connector) {
+	if !IsNil(o.Connector) {
 		toSerialize["connector"] = o.Connector
 	}
-	if !isNil(o.CreatedAt) {
+	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !isNil(o.CreatedBy) {
+	if !IsNil(o.CreatedBy) {
 		toSerialize["createdBy"] = o.CreatedBy
 	}
 	if o.UpdatedAt.IsSet() {
@@ -429,16 +429,20 @@ func (o VendorConnectorMapping) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *VendorConnectorMapping) UnmarshalJSON(bytes []byte) (err error) {
+func (o *VendorConnectorMapping) UnmarshalJSON(data []byte) (err error) {
 	varVendorConnectorMapping := _VendorConnectorMapping{}
 
-	if err = json.Unmarshal(bytes, &varVendorConnectorMapping); err == nil {
+	err = json.Unmarshal(data, &varVendorConnectorMapping)
+
+	if err != nil {
+		return err
+	}
+
 	*o = VendorConnectorMapping(varVendorConnectorMapping)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "vendor")
 		delete(additionalProperties, "connector")

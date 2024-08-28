@@ -12,6 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
@@ -71,7 +72,11 @@ func (dst *AccessItemAssociatedAccessItem) UnmarshalJSON(data []byte) error {
 		if string(jsonAccessItemAccessProfileResponse) == "{}" { // empty struct
 			dst.AccessItemAccessProfileResponse = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.AccessItemAccessProfileResponse); err != nil {
+				dst.AccessItemAccessProfileResponse = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.AccessItemAccessProfileResponse = nil
@@ -84,7 +89,11 @@ func (dst *AccessItemAssociatedAccessItem) UnmarshalJSON(data []byte) error {
 		if string(jsonAccessItemAccountResponse) == "{}" { // empty struct
 			dst.AccessItemAccountResponse = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.AccessItemAccountResponse); err != nil {
+				dst.AccessItemAccountResponse = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.AccessItemAccountResponse = nil
@@ -97,7 +106,11 @@ func (dst *AccessItemAssociatedAccessItem) UnmarshalJSON(data []byte) error {
 		if string(jsonAccessItemAppResponse) == "{}" { // empty struct
 			dst.AccessItemAppResponse = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.AccessItemAppResponse); err != nil {
+				dst.AccessItemAppResponse = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.AccessItemAppResponse = nil
@@ -110,7 +123,11 @@ func (dst *AccessItemAssociatedAccessItem) UnmarshalJSON(data []byte) error {
 		if string(jsonAccessItemEntitlementResponse) == "{}" { // empty struct
 			dst.AccessItemEntitlementResponse = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.AccessItemEntitlementResponse); err != nil {
+				dst.AccessItemEntitlementResponse = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.AccessItemEntitlementResponse = nil
@@ -123,7 +140,11 @@ func (dst *AccessItemAssociatedAccessItem) UnmarshalJSON(data []byte) error {
 		if string(jsonAccessItemRoleResponse) == "{}" { // empty struct
 			dst.AccessItemRoleResponse = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.AccessItemRoleResponse); err != nil {
+				dst.AccessItemRoleResponse = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.AccessItemRoleResponse = nil

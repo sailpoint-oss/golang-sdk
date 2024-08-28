@@ -49,7 +49,7 @@ func NewFormElementDataSourceConfigOptionsWithDefaults() *FormElementDataSourceC
 
 // GetLabel returns the Label field value if set, zero value otherwise.
 func (o *FormElementDataSourceConfigOptions) GetLabel() string {
-	if o == nil || isNil(o.Label) {
+	if o == nil || IsNil(o.Label) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *FormElementDataSourceConfigOptions) GetLabel() string {
 // GetLabelOk returns a tuple with the Label field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormElementDataSourceConfigOptions) GetLabelOk() (*string, bool) {
-	if o == nil || isNil(o.Label) {
+	if o == nil || IsNil(o.Label) {
 		return nil, false
 	}
 	return o.Label, true
@@ -67,7 +67,7 @@ func (o *FormElementDataSourceConfigOptions) GetLabelOk() (*string, bool) {
 
 // HasLabel returns a boolean if a field has been set.
 func (o *FormElementDataSourceConfigOptions) HasLabel() bool {
-	if o != nil && !isNil(o.Label) {
+	if o != nil && !IsNil(o.Label) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *FormElementDataSourceConfigOptions) SetLabel(v string) {
 
 // GetSubLabel returns the SubLabel field value if set, zero value otherwise.
 func (o *FormElementDataSourceConfigOptions) GetSubLabel() string {
-	if o == nil || isNil(o.SubLabel) {
+	if o == nil || IsNil(o.SubLabel) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *FormElementDataSourceConfigOptions) GetSubLabel() string {
 // GetSubLabelOk returns a tuple with the SubLabel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormElementDataSourceConfigOptions) GetSubLabelOk() (*string, bool) {
-	if o == nil || isNil(o.SubLabel) {
+	if o == nil || IsNil(o.SubLabel) {
 		return nil, false
 	}
 	return o.SubLabel, true
@@ -99,7 +99,7 @@ func (o *FormElementDataSourceConfigOptions) GetSubLabelOk() (*string, bool) {
 
 // HasSubLabel returns a boolean if a field has been set.
 func (o *FormElementDataSourceConfigOptions) HasSubLabel() bool {
-	if o != nil && !isNil(o.SubLabel) {
+	if o != nil && !IsNil(o.SubLabel) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *FormElementDataSourceConfigOptions) SetSubLabel(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *FormElementDataSourceConfigOptions) GetValue() string {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *FormElementDataSourceConfigOptions) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormElementDataSourceConfigOptions) GetValueOk() (*string, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -131,7 +131,7 @@ func (o *FormElementDataSourceConfigOptions) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *FormElementDataSourceConfigOptions) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o FormElementDataSourceConfigOptions) MarshalJSON() ([]byte, error) {
 
 func (o FormElementDataSourceConfigOptions) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Label) {
+	if !IsNil(o.Label) {
 		toSerialize["label"] = o.Label
 	}
-	if !isNil(o.SubLabel) {
+	if !IsNil(o.SubLabel) {
 		toSerialize["subLabel"] = o.SubLabel
 	}
-	if !isNil(o.Value) {
+	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
 
@@ -170,16 +170,20 @@ func (o FormElementDataSourceConfigOptions) ToMap() (map[string]interface{}, err
 	return toSerialize, nil
 }
 
-func (o *FormElementDataSourceConfigOptions) UnmarshalJSON(bytes []byte) (err error) {
+func (o *FormElementDataSourceConfigOptions) UnmarshalJSON(data []byte) (err error) {
 	varFormElementDataSourceConfigOptions := _FormElementDataSourceConfigOptions{}
 
-	if err = json.Unmarshal(bytes, &varFormElementDataSourceConfigOptions); err == nil {
+	err = json.Unmarshal(data, &varFormElementDataSourceConfigOptions)
+
+	if err != nil {
+		return err
+	}
+
 	*o = FormElementDataSourceConfigOptions(varFormElementDataSourceConfigOptions)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "label")
 		delete(additionalProperties, "subLabel")
 		delete(additionalProperties, "value")

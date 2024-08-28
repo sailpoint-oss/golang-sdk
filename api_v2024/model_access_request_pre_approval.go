@@ -171,8 +171,8 @@ func (o AccessRequestPreApproval) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccessRequestPreApproval) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *AccessRequestPreApproval) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -184,7 +184,7 @@ func (o *AccessRequestPreApproval) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -198,13 +198,17 @@ func (o *AccessRequestPreApproval) UnmarshalJSON(bytes []byte) (err error) {
 
 	varAccessRequestPreApproval := _AccessRequestPreApproval{}
 
-	if err = json.Unmarshal(bytes, &varAccessRequestPreApproval); err == nil {
+	err = json.Unmarshal(data, &varAccessRequestPreApproval)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessRequestPreApproval(varAccessRequestPreApproval)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "accessRequestId")
 		delete(additionalProperties, "requestedFor")
 		delete(additionalProperties, "requestedItems")

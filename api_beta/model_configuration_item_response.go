@@ -46,7 +46,7 @@ func NewConfigurationItemResponseWithDefaults() *ConfigurationItemResponse {
 
 // GetIdentity returns the Identity field value if set, zero value otherwise.
 func (o *ConfigurationItemResponse) GetIdentity() Identity1 {
-	if o == nil || isNil(o.Identity) {
+	if o == nil || IsNil(o.Identity) {
 		var ret Identity1
 		return ret
 	}
@@ -56,7 +56,7 @@ func (o *ConfigurationItemResponse) GetIdentity() Identity1 {
 // GetIdentityOk returns a tuple with the Identity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConfigurationItemResponse) GetIdentityOk() (*Identity1, bool) {
-	if o == nil || isNil(o.Identity) {
+	if o == nil || IsNil(o.Identity) {
 		return nil, false
 	}
 	return o.Identity, true
@@ -64,7 +64,7 @@ func (o *ConfigurationItemResponse) GetIdentityOk() (*Identity1, bool) {
 
 // HasIdentity returns a boolean if a field has been set.
 func (o *ConfigurationItemResponse) HasIdentity() bool {
-	if o != nil && !isNil(o.Identity) {
+	if o != nil && !IsNil(o.Identity) {
 		return true
 	}
 
@@ -78,7 +78,7 @@ func (o *ConfigurationItemResponse) SetIdentity(v Identity1) {
 
 // GetConfigDetails returns the ConfigDetails field value if set, zero value otherwise.
 func (o *ConfigurationItemResponse) GetConfigDetails() []ConfigurationDetailsResponse {
-	if o == nil || isNil(o.ConfigDetails) {
+	if o == nil || IsNil(o.ConfigDetails) {
 		var ret []ConfigurationDetailsResponse
 		return ret
 	}
@@ -88,7 +88,7 @@ func (o *ConfigurationItemResponse) GetConfigDetails() []ConfigurationDetailsRes
 // GetConfigDetailsOk returns a tuple with the ConfigDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConfigurationItemResponse) GetConfigDetailsOk() ([]ConfigurationDetailsResponse, bool) {
-	if o == nil || isNil(o.ConfigDetails) {
+	if o == nil || IsNil(o.ConfigDetails) {
 		return nil, false
 	}
 	return o.ConfigDetails, true
@@ -96,7 +96,7 @@ func (o *ConfigurationItemResponse) GetConfigDetailsOk() ([]ConfigurationDetails
 
 // HasConfigDetails returns a boolean if a field has been set.
 func (o *ConfigurationItemResponse) HasConfigDetails() bool {
-	if o != nil && !isNil(o.ConfigDetails) {
+	if o != nil && !IsNil(o.ConfigDetails) {
 		return true
 	}
 
@@ -118,10 +118,10 @@ func (o ConfigurationItemResponse) MarshalJSON() ([]byte, error) {
 
 func (o ConfigurationItemResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Identity) {
+	if !IsNil(o.Identity) {
 		toSerialize["identity"] = o.Identity
 	}
-	if !isNil(o.ConfigDetails) {
+	if !IsNil(o.ConfigDetails) {
 		toSerialize["configDetails"] = o.ConfigDetails
 	}
 
@@ -132,16 +132,20 @@ func (o ConfigurationItemResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ConfigurationItemResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ConfigurationItemResponse) UnmarshalJSON(data []byte) (err error) {
 	varConfigurationItemResponse := _ConfigurationItemResponse{}
 
-	if err = json.Unmarshal(bytes, &varConfigurationItemResponse); err == nil {
+	err = json.Unmarshal(data, &varConfigurationItemResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ConfigurationItemResponse(varConfigurationItemResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "identity")
 		delete(additionalProperties, "configDetails")
 		o.AdditionalProperties = additionalProperties

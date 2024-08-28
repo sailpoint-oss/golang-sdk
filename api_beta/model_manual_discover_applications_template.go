@@ -47,7 +47,7 @@ func NewManualDiscoverApplicationsTemplateWithDefaults() *ManualDiscoverApplicat
 
 // GetApplicationName returns the ApplicationName field value if set, zero value otherwise.
 func (o *ManualDiscoverApplicationsTemplate) GetApplicationName() string {
-	if o == nil || isNil(o.ApplicationName) {
+	if o == nil || IsNil(o.ApplicationName) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *ManualDiscoverApplicationsTemplate) GetApplicationName() string {
 // GetApplicationNameOk returns a tuple with the ApplicationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManualDiscoverApplicationsTemplate) GetApplicationNameOk() (*string, bool) {
-	if o == nil || isNil(o.ApplicationName) {
+	if o == nil || IsNil(o.ApplicationName) {
 		return nil, false
 	}
 	return o.ApplicationName, true
@@ -65,7 +65,7 @@ func (o *ManualDiscoverApplicationsTemplate) GetApplicationNameOk() (*string, bo
 
 // HasApplicationName returns a boolean if a field has been set.
 func (o *ManualDiscoverApplicationsTemplate) HasApplicationName() bool {
-	if o != nil && !isNil(o.ApplicationName) {
+	if o != nil && !IsNil(o.ApplicationName) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *ManualDiscoverApplicationsTemplate) SetApplicationName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ManualDiscoverApplicationsTemplate) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *ManualDiscoverApplicationsTemplate) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManualDiscoverApplicationsTemplate) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -97,7 +97,7 @@ func (o *ManualDiscoverApplicationsTemplate) GetDescriptionOk() (*string, bool) 
 
 // HasDescription returns a boolean if a field has been set.
 func (o *ManualDiscoverApplicationsTemplate) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o ManualDiscoverApplicationsTemplate) MarshalJSON() ([]byte, error) {
 
 func (o ManualDiscoverApplicationsTemplate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ApplicationName) {
+	if !IsNil(o.ApplicationName) {
 		toSerialize["application_name"] = o.ApplicationName
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 
@@ -133,16 +133,20 @@ func (o ManualDiscoverApplicationsTemplate) ToMap() (map[string]interface{}, err
 	return toSerialize, nil
 }
 
-func (o *ManualDiscoverApplicationsTemplate) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ManualDiscoverApplicationsTemplate) UnmarshalJSON(data []byte) (err error) {
 	varManualDiscoverApplicationsTemplate := _ManualDiscoverApplicationsTemplate{}
 
-	if err = json.Unmarshal(bytes, &varManualDiscoverApplicationsTemplate); err == nil {
+	err = json.Unmarshal(data, &varManualDiscoverApplicationsTemplate)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ManualDiscoverApplicationsTemplate(varManualDiscoverApplicationsTemplate)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "application_name")
 		delete(additionalProperties, "description")
 		o.AdditionalProperties = additionalProperties

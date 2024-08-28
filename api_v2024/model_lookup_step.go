@@ -48,7 +48,7 @@ func NewLookupStepWithDefaults() *LookupStep {
 
 // GetReassignedToId returns the ReassignedToId field value if set, zero value otherwise.
 func (o *LookupStep) GetReassignedToId() string {
-	if o == nil || isNil(o.ReassignedToId) {
+	if o == nil || IsNil(o.ReassignedToId) {
 		var ret string
 		return ret
 	}
@@ -58,7 +58,7 @@ func (o *LookupStep) GetReassignedToId() string {
 // GetReassignedToIdOk returns a tuple with the ReassignedToId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LookupStep) GetReassignedToIdOk() (*string, bool) {
-	if o == nil || isNil(o.ReassignedToId) {
+	if o == nil || IsNil(o.ReassignedToId) {
 		return nil, false
 	}
 	return o.ReassignedToId, true
@@ -66,7 +66,7 @@ func (o *LookupStep) GetReassignedToIdOk() (*string, bool) {
 
 // HasReassignedToId returns a boolean if a field has been set.
 func (o *LookupStep) HasReassignedToId() bool {
-	if o != nil && !isNil(o.ReassignedToId) {
+	if o != nil && !IsNil(o.ReassignedToId) {
 		return true
 	}
 
@@ -80,7 +80,7 @@ func (o *LookupStep) SetReassignedToId(v string) {
 
 // GetReassignedFromId returns the ReassignedFromId field value if set, zero value otherwise.
 func (o *LookupStep) GetReassignedFromId() string {
-	if o == nil || isNil(o.ReassignedFromId) {
+	if o == nil || IsNil(o.ReassignedFromId) {
 		var ret string
 		return ret
 	}
@@ -90,7 +90,7 @@ func (o *LookupStep) GetReassignedFromId() string {
 // GetReassignedFromIdOk returns a tuple with the ReassignedFromId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LookupStep) GetReassignedFromIdOk() (*string, bool) {
-	if o == nil || isNil(o.ReassignedFromId) {
+	if o == nil || IsNil(o.ReassignedFromId) {
 		return nil, false
 	}
 	return o.ReassignedFromId, true
@@ -98,7 +98,7 @@ func (o *LookupStep) GetReassignedFromIdOk() (*string, bool) {
 
 // HasReassignedFromId returns a boolean if a field has been set.
 func (o *LookupStep) HasReassignedFromId() bool {
-	if o != nil && !isNil(o.ReassignedFromId) {
+	if o != nil && !IsNil(o.ReassignedFromId) {
 		return true
 	}
 
@@ -112,7 +112,7 @@ func (o *LookupStep) SetReassignedFromId(v string) {
 
 // GetReassignmentType returns the ReassignmentType field value if set, zero value otherwise.
 func (o *LookupStep) GetReassignmentType() ReassignmentTypeEnum {
-	if o == nil || isNil(o.ReassignmentType) {
+	if o == nil || IsNil(o.ReassignmentType) {
 		var ret ReassignmentTypeEnum
 		return ret
 	}
@@ -122,7 +122,7 @@ func (o *LookupStep) GetReassignmentType() ReassignmentTypeEnum {
 // GetReassignmentTypeOk returns a tuple with the ReassignmentType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LookupStep) GetReassignmentTypeOk() (*ReassignmentTypeEnum, bool) {
-	if o == nil || isNil(o.ReassignmentType) {
+	if o == nil || IsNil(o.ReassignmentType) {
 		return nil, false
 	}
 	return o.ReassignmentType, true
@@ -130,7 +130,7 @@ func (o *LookupStep) GetReassignmentTypeOk() (*ReassignmentTypeEnum, bool) {
 
 // HasReassignmentType returns a boolean if a field has been set.
 func (o *LookupStep) HasReassignmentType() bool {
-	if o != nil && !isNil(o.ReassignmentType) {
+	if o != nil && !IsNil(o.ReassignmentType) {
 		return true
 	}
 
@@ -152,13 +152,13 @@ func (o LookupStep) MarshalJSON() ([]byte, error) {
 
 func (o LookupStep) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ReassignedToId) {
+	if !IsNil(o.ReassignedToId) {
 		toSerialize["reassignedToId"] = o.ReassignedToId
 	}
-	if !isNil(o.ReassignedFromId) {
+	if !IsNil(o.ReassignedFromId) {
 		toSerialize["reassignedFromId"] = o.ReassignedFromId
 	}
-	if !isNil(o.ReassignmentType) {
+	if !IsNil(o.ReassignmentType) {
 		toSerialize["reassignmentType"] = o.ReassignmentType
 	}
 
@@ -169,16 +169,20 @@ func (o LookupStep) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *LookupStep) UnmarshalJSON(bytes []byte) (err error) {
+func (o *LookupStep) UnmarshalJSON(data []byte) (err error) {
 	varLookupStep := _LookupStep{}
 
-	if err = json.Unmarshal(bytes, &varLookupStep); err == nil {
+	err = json.Unmarshal(data, &varLookupStep)
+
+	if err != nil {
+		return err
+	}
+
 	*o = LookupStep(varLookupStep)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "reassignedToId")
 		delete(additionalProperties, "reassignedFromId")
 		delete(additionalProperties, "reassignmentType")

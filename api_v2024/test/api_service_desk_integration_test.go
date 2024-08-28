@@ -19,14 +19,14 @@ import (
 
 func Test_api_v2024_ServiceDeskIntegrationAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test ServiceDeskIntegrationAPIService CreateServiceDeskIntegration", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.ServiceDeskIntegrationAPI.CreateServiceDeskIntegration(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ServiceDeskIntegrationAPI.CreateServiceDeskIntegration(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_v2024_ServiceDeskIntegrationAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_V2024.ServiceDeskIntegrationAPI.DeleteServiceDeskIntegration(context.Background(), id).Execute()
+		httpRes, err := apiClient.ServiceDeskIntegrationAPI.DeleteServiceDeskIntegration(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -53,7 +53,7 @@ func Test_api_v2024_ServiceDeskIntegrationAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.ServiceDeskIntegrationAPI.GetServiceDeskIntegration(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.ServiceDeskIntegrationAPI.GetServiceDeskIntegration(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -67,7 +67,7 @@ func Test_api_v2024_ServiceDeskIntegrationAPIService(t *testing.T) {
 
 		var scriptName string
 
-		resp, httpRes, err := apiClient.API_V2024.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTemplate(context.Background(), scriptName).Execute()
+		resp, httpRes, err := apiClient.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTemplate(context.Background(), scriptName).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -79,7 +79,7 @@ func Test_api_v2024_ServiceDeskIntegrationAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTypes(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTypes(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -91,7 +91,7 @@ func Test_api_v2024_ServiceDeskIntegrationAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.ServiceDeskIntegrationAPI.GetServiceDeskIntegrations(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ServiceDeskIntegrationAPI.GetServiceDeskIntegrations(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -103,7 +103,7 @@ func Test_api_v2024_ServiceDeskIntegrationAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.ServiceDeskIntegrationAPI.GetStatusCheckDetails(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ServiceDeskIntegrationAPI.GetStatusCheckDetails(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -117,7 +117,7 @@ func Test_api_v2024_ServiceDeskIntegrationAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.ServiceDeskIntegrationAPI.PatchServiceDeskIntegration(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.ServiceDeskIntegrationAPI.PatchServiceDeskIntegration(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -131,7 +131,7 @@ func Test_api_v2024_ServiceDeskIntegrationAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.ServiceDeskIntegrationAPI.PutServiceDeskIntegration(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.ServiceDeskIntegrationAPI.PutServiceDeskIntegration(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -143,7 +143,7 @@ func Test_api_v2024_ServiceDeskIntegrationAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.ServiceDeskIntegrationAPI.UpdateStatusCheckDetails(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ServiceDeskIntegrationAPI.UpdateStatusCheckDetails(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

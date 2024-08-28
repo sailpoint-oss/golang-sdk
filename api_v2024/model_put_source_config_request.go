@@ -89,8 +89,8 @@ func (o PutSourceConfigRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *PutSourceConfigRequest) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *PutSourceConfigRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -99,7 +99,7 @@ func (o *PutSourceConfigRequest) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -113,13 +113,17 @@ func (o *PutSourceConfigRequest) UnmarshalJSON(bytes []byte) (err error) {
 
 	varPutSourceConfigRequest := _PutSourceConfigRequest{}
 
-	if err = json.Unmarshal(bytes, &varPutSourceConfigRequest); err == nil {
+	err = json.Unmarshal(data, &varPutSourceConfigRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = PutSourceConfigRequest(varPutSourceConfigRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "file")
 		o.AdditionalProperties = additionalProperties
 	}

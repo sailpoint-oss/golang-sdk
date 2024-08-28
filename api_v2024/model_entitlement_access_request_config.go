@@ -57,7 +57,7 @@ func NewEntitlementAccessRequestConfigWithDefaults() *EntitlementAccessRequestCo
 
 // GetApprovalSchemes returns the ApprovalSchemes field value if set, zero value otherwise.
 func (o *EntitlementAccessRequestConfig) GetApprovalSchemes() []EntitlementApprovalScheme {
-	if o == nil || isNil(o.ApprovalSchemes) {
+	if o == nil || IsNil(o.ApprovalSchemes) {
 		var ret []EntitlementApprovalScheme
 		return ret
 	}
@@ -67,7 +67,7 @@ func (o *EntitlementAccessRequestConfig) GetApprovalSchemes() []EntitlementAppro
 // GetApprovalSchemesOk returns a tuple with the ApprovalSchemes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntitlementAccessRequestConfig) GetApprovalSchemesOk() ([]EntitlementApprovalScheme, bool) {
-	if o == nil || isNil(o.ApprovalSchemes) {
+	if o == nil || IsNil(o.ApprovalSchemes) {
 		return nil, false
 	}
 	return o.ApprovalSchemes, true
@@ -75,7 +75,7 @@ func (o *EntitlementAccessRequestConfig) GetApprovalSchemesOk() ([]EntitlementAp
 
 // HasApprovalSchemes returns a boolean if a field has been set.
 func (o *EntitlementAccessRequestConfig) HasApprovalSchemes() bool {
-	if o != nil && !isNil(o.ApprovalSchemes) {
+	if o != nil && !IsNil(o.ApprovalSchemes) {
 		return true
 	}
 
@@ -89,7 +89,7 @@ func (o *EntitlementAccessRequestConfig) SetApprovalSchemes(v []EntitlementAppro
 
 // GetRequestCommentRequired returns the RequestCommentRequired field value if set, zero value otherwise.
 func (o *EntitlementAccessRequestConfig) GetRequestCommentRequired() bool {
-	if o == nil || isNil(o.RequestCommentRequired) {
+	if o == nil || IsNil(o.RequestCommentRequired) {
 		var ret bool
 		return ret
 	}
@@ -99,7 +99,7 @@ func (o *EntitlementAccessRequestConfig) GetRequestCommentRequired() bool {
 // GetRequestCommentRequiredOk returns a tuple with the RequestCommentRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntitlementAccessRequestConfig) GetRequestCommentRequiredOk() (*bool, bool) {
-	if o == nil || isNil(o.RequestCommentRequired) {
+	if o == nil || IsNil(o.RequestCommentRequired) {
 		return nil, false
 	}
 	return o.RequestCommentRequired, true
@@ -107,7 +107,7 @@ func (o *EntitlementAccessRequestConfig) GetRequestCommentRequiredOk() (*bool, b
 
 // HasRequestCommentRequired returns a boolean if a field has been set.
 func (o *EntitlementAccessRequestConfig) HasRequestCommentRequired() bool {
-	if o != nil && !isNil(o.RequestCommentRequired) {
+	if o != nil && !IsNil(o.RequestCommentRequired) {
 		return true
 	}
 
@@ -121,7 +121,7 @@ func (o *EntitlementAccessRequestConfig) SetRequestCommentRequired(v bool) {
 
 // GetDenialCommentRequired returns the DenialCommentRequired field value if set, zero value otherwise.
 func (o *EntitlementAccessRequestConfig) GetDenialCommentRequired() bool {
-	if o == nil || isNil(o.DenialCommentRequired) {
+	if o == nil || IsNil(o.DenialCommentRequired) {
 		var ret bool
 		return ret
 	}
@@ -131,7 +131,7 @@ func (o *EntitlementAccessRequestConfig) GetDenialCommentRequired() bool {
 // GetDenialCommentRequiredOk returns a tuple with the DenialCommentRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntitlementAccessRequestConfig) GetDenialCommentRequiredOk() (*bool, bool) {
-	if o == nil || isNil(o.DenialCommentRequired) {
+	if o == nil || IsNil(o.DenialCommentRequired) {
 		return nil, false
 	}
 	return o.DenialCommentRequired, true
@@ -139,7 +139,7 @@ func (o *EntitlementAccessRequestConfig) GetDenialCommentRequiredOk() (*bool, bo
 
 // HasDenialCommentRequired returns a boolean if a field has been set.
 func (o *EntitlementAccessRequestConfig) HasDenialCommentRequired() bool {
-	if o != nil && !isNil(o.DenialCommentRequired) {
+	if o != nil && !IsNil(o.DenialCommentRequired) {
 		return true
 	}
 
@@ -161,13 +161,13 @@ func (o EntitlementAccessRequestConfig) MarshalJSON() ([]byte, error) {
 
 func (o EntitlementAccessRequestConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ApprovalSchemes) {
+	if !IsNil(o.ApprovalSchemes) {
 		toSerialize["approvalSchemes"] = o.ApprovalSchemes
 	}
-	if !isNil(o.RequestCommentRequired) {
+	if !IsNil(o.RequestCommentRequired) {
 		toSerialize["requestCommentRequired"] = o.RequestCommentRequired
 	}
-	if !isNil(o.DenialCommentRequired) {
+	if !IsNil(o.DenialCommentRequired) {
 		toSerialize["denialCommentRequired"] = o.DenialCommentRequired
 	}
 
@@ -178,16 +178,20 @@ func (o EntitlementAccessRequestConfig) ToMap() (map[string]interface{}, error) 
 	return toSerialize, nil
 }
 
-func (o *EntitlementAccessRequestConfig) UnmarshalJSON(bytes []byte) (err error) {
+func (o *EntitlementAccessRequestConfig) UnmarshalJSON(data []byte) (err error) {
 	varEntitlementAccessRequestConfig := _EntitlementAccessRequestConfig{}
 
-	if err = json.Unmarshal(bytes, &varEntitlementAccessRequestConfig); err == nil {
+	err = json.Unmarshal(data, &varEntitlementAccessRequestConfig)
+
+	if err != nil {
+		return err
+	}
+
 	*o = EntitlementAccessRequestConfig(varEntitlementAccessRequestConfig)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "approvalSchemes")
 		delete(additionalProperties, "requestCommentRequired")
 		delete(additionalProperties, "denialCommentRequired")

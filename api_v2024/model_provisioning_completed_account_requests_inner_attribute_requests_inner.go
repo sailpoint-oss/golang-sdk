@@ -76,7 +76,7 @@ func (o *ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner) SetAtt
 
 // GetAttributeValue returns the AttributeValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner) GetAttributeValue() string {
-	if o == nil || isNil(o.AttributeValue.Get()) {
+	if o == nil || IsNil(o.AttributeValue.Get()) {
 		var ret string
 		return ret
 	}
@@ -163,8 +163,8 @@ func (o ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner) ToMap()
 	return toSerialize, nil
 }
 
-func (o *ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -174,7 +174,7 @@ func (o *ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner) Unmars
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -188,13 +188,17 @@ func (o *ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner) Unmars
 
 	varProvisioningCompletedAccountRequestsInnerAttributeRequestsInner := _ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner{}
 
-	if err = json.Unmarshal(bytes, &varProvisioningCompletedAccountRequestsInnerAttributeRequestsInner); err == nil {
+	err = json.Unmarshal(data, &varProvisioningCompletedAccountRequestsInnerAttributeRequestsInner)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner(varProvisioningCompletedAccountRequestsInnerAttributeRequestsInner)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "attributeName")
 		delete(additionalProperties, "attributeValue")
 		delete(additionalProperties, "operation")

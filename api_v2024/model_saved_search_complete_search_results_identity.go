@@ -144,8 +144,8 @@ func (o SavedSearchCompleteSearchResultsIdentity) ToMap() (map[string]interface{
 	return toSerialize, nil
 }
 
-func (o *SavedSearchCompleteSearchResultsIdentity) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *SavedSearchCompleteSearchResultsIdentity) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -156,7 +156,7 @@ func (o *SavedSearchCompleteSearchResultsIdentity) UnmarshalJSON(bytes []byte) (
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -170,13 +170,17 @@ func (o *SavedSearchCompleteSearchResultsIdentity) UnmarshalJSON(bytes []byte) (
 
 	varSavedSearchCompleteSearchResultsIdentity := _SavedSearchCompleteSearchResultsIdentity{}
 
-	if err = json.Unmarshal(bytes, &varSavedSearchCompleteSearchResultsIdentity); err == nil {
+	err = json.Unmarshal(data, &varSavedSearchCompleteSearchResultsIdentity)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SavedSearchCompleteSearchResultsIdentity(varSavedSearchCompleteSearchResultsIdentity)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "count")
 		delete(additionalProperties, "noun")
 		delete(additionalProperties, "preview")

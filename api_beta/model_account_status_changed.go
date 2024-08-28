@@ -51,7 +51,7 @@ func NewAccountStatusChangedWithDefaults() *AccountStatusChanged {
 
 // GetEventType returns the EventType field value if set, zero value otherwise.
 func (o *AccountStatusChanged) GetEventType() string {
-	if o == nil || isNil(o.EventType) {
+	if o == nil || IsNil(o.EventType) {
 		var ret string
 		return ret
 	}
@@ -61,7 +61,7 @@ func (o *AccountStatusChanged) GetEventType() string {
 // GetEventTypeOk returns a tuple with the EventType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountStatusChanged) GetEventTypeOk() (*string, bool) {
-	if o == nil || isNil(o.EventType) {
+	if o == nil || IsNil(o.EventType) {
 		return nil, false
 	}
 	return o.EventType, true
@@ -69,7 +69,7 @@ func (o *AccountStatusChanged) GetEventTypeOk() (*string, bool) {
 
 // HasEventType returns a boolean if a field has been set.
 func (o *AccountStatusChanged) HasEventType() bool {
-	if o != nil && !isNil(o.EventType) {
+	if o != nil && !IsNil(o.EventType) {
 		return true
 	}
 
@@ -83,7 +83,7 @@ func (o *AccountStatusChanged) SetEventType(v string) {
 
 // GetIdentityId returns the IdentityId field value if set, zero value otherwise.
 func (o *AccountStatusChanged) GetIdentityId() string {
-	if o == nil || isNil(o.IdentityId) {
+	if o == nil || IsNil(o.IdentityId) {
 		var ret string
 		return ret
 	}
@@ -93,7 +93,7 @@ func (o *AccountStatusChanged) GetIdentityId() string {
 // GetIdentityIdOk returns a tuple with the IdentityId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountStatusChanged) GetIdentityIdOk() (*string, bool) {
-	if o == nil || isNil(o.IdentityId) {
+	if o == nil || IsNil(o.IdentityId) {
 		return nil, false
 	}
 	return o.IdentityId, true
@@ -101,7 +101,7 @@ func (o *AccountStatusChanged) GetIdentityIdOk() (*string, bool) {
 
 // HasIdentityId returns a boolean if a field has been set.
 func (o *AccountStatusChanged) HasIdentityId() bool {
-	if o != nil && !isNil(o.IdentityId) {
+	if o != nil && !IsNil(o.IdentityId) {
 		return true
 	}
 
@@ -115,7 +115,7 @@ func (o *AccountStatusChanged) SetIdentityId(v string) {
 
 // GetDt returns the Dt field value if set, zero value otherwise.
 func (o *AccountStatusChanged) GetDt() string {
-	if o == nil || isNil(o.Dt) {
+	if o == nil || IsNil(o.Dt) {
 		var ret string
 		return ret
 	}
@@ -125,7 +125,7 @@ func (o *AccountStatusChanged) GetDt() string {
 // GetDtOk returns a tuple with the Dt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountStatusChanged) GetDtOk() (*string, bool) {
-	if o == nil || isNil(o.Dt) {
+	if o == nil || IsNil(o.Dt) {
 		return nil, false
 	}
 	return o.Dt, true
@@ -133,7 +133,7 @@ func (o *AccountStatusChanged) GetDtOk() (*string, bool) {
 
 // HasDt returns a boolean if a field has been set.
 func (o *AccountStatusChanged) HasDt() bool {
-	if o != nil && !isNil(o.Dt) {
+	if o != nil && !IsNil(o.Dt) {
 		return true
 	}
 
@@ -147,7 +147,7 @@ func (o *AccountStatusChanged) SetDt(v string) {
 
 // GetAccount returns the Account field value if set, zero value otherwise.
 func (o *AccountStatusChanged) GetAccount() AccountStatusChangedAccount {
-	if o == nil || isNil(o.Account) {
+	if o == nil || IsNil(o.Account) {
 		var ret AccountStatusChangedAccount
 		return ret
 	}
@@ -157,7 +157,7 @@ func (o *AccountStatusChanged) GetAccount() AccountStatusChangedAccount {
 // GetAccountOk returns a tuple with the Account field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountStatusChanged) GetAccountOk() (*AccountStatusChangedAccount, bool) {
-	if o == nil || isNil(o.Account) {
+	if o == nil || IsNil(o.Account) {
 		return nil, false
 	}
 	return o.Account, true
@@ -165,7 +165,7 @@ func (o *AccountStatusChanged) GetAccountOk() (*AccountStatusChangedAccount, boo
 
 // HasAccount returns a boolean if a field has been set.
 func (o *AccountStatusChanged) HasAccount() bool {
-	if o != nil && !isNil(o.Account) {
+	if o != nil && !IsNil(o.Account) {
 		return true
 	}
 
@@ -179,7 +179,7 @@ func (o *AccountStatusChanged) SetAccount(v AccountStatusChangedAccount) {
 
 // GetStatusChange returns the StatusChange field value if set, zero value otherwise.
 func (o *AccountStatusChanged) GetStatusChange() AccountStatusChangedStatusChange {
-	if o == nil || isNil(o.StatusChange) {
+	if o == nil || IsNil(o.StatusChange) {
 		var ret AccountStatusChangedStatusChange
 		return ret
 	}
@@ -189,7 +189,7 @@ func (o *AccountStatusChanged) GetStatusChange() AccountStatusChangedStatusChang
 // GetStatusChangeOk returns a tuple with the StatusChange field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountStatusChanged) GetStatusChangeOk() (*AccountStatusChangedStatusChange, bool) {
-	if o == nil || isNil(o.StatusChange) {
+	if o == nil || IsNil(o.StatusChange) {
 		return nil, false
 	}
 	return o.StatusChange, true
@@ -197,7 +197,7 @@ func (o *AccountStatusChanged) GetStatusChangeOk() (*AccountStatusChangedStatusC
 
 // HasStatusChange returns a boolean if a field has been set.
 func (o *AccountStatusChanged) HasStatusChange() bool {
-	if o != nil && !isNil(o.StatusChange) {
+	if o != nil && !IsNil(o.StatusChange) {
 		return true
 	}
 
@@ -219,19 +219,19 @@ func (o AccountStatusChanged) MarshalJSON() ([]byte, error) {
 
 func (o AccountStatusChanged) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.EventType) {
+	if !IsNil(o.EventType) {
 		toSerialize["eventType"] = o.EventType
 	}
-	if !isNil(o.IdentityId) {
+	if !IsNil(o.IdentityId) {
 		toSerialize["identityId"] = o.IdentityId
 	}
-	if !isNil(o.Dt) {
+	if !IsNil(o.Dt) {
 		toSerialize["dt"] = o.Dt
 	}
-	if !isNil(o.Account) {
+	if !IsNil(o.Account) {
 		toSerialize["account"] = o.Account
 	}
-	if !isNil(o.StatusChange) {
+	if !IsNil(o.StatusChange) {
 		toSerialize["statusChange"] = o.StatusChange
 	}
 
@@ -242,16 +242,20 @@ func (o AccountStatusChanged) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccountStatusChanged) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccountStatusChanged) UnmarshalJSON(data []byte) (err error) {
 	varAccountStatusChanged := _AccountStatusChanged{}
 
-	if err = json.Unmarshal(bytes, &varAccountStatusChanged); err == nil {
+	err = json.Unmarshal(data, &varAccountStatusChanged)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccountStatusChanged(varAccountStatusChanged)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "eventType")
 		delete(additionalProperties, "identityId")
 		delete(additionalProperties, "dt")

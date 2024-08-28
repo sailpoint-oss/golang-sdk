@@ -57,7 +57,7 @@ func NewManualWorkItemDetailsWithDefaults() *ManualWorkItemDetails {
 
 // GetForwarded returns the Forwarded field value if set, zero value otherwise.
 func (o *ManualWorkItemDetails) GetForwarded() bool {
-	if o == nil || isNil(o.Forwarded) {
+	if o == nil || IsNil(o.Forwarded) {
 		var ret bool
 		return ret
 	}
@@ -67,7 +67,7 @@ func (o *ManualWorkItemDetails) GetForwarded() bool {
 // GetForwardedOk returns a tuple with the Forwarded field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManualWorkItemDetails) GetForwardedOk() (*bool, bool) {
-	if o == nil || isNil(o.Forwarded) {
+	if o == nil || IsNil(o.Forwarded) {
 		return nil, false
 	}
 	return o.Forwarded, true
@@ -75,7 +75,7 @@ func (o *ManualWorkItemDetails) GetForwardedOk() (*bool, bool) {
 
 // HasForwarded returns a boolean if a field has been set.
 func (o *ManualWorkItemDetails) HasForwarded() bool {
-	if o != nil && !isNil(o.Forwarded) {
+	if o != nil && !IsNil(o.Forwarded) {
 		return true
 	}
 
@@ -89,7 +89,7 @@ func (o *ManualWorkItemDetails) SetForwarded(v bool) {
 
 // GetOriginalOwner returns the OriginalOwner field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManualWorkItemDetails) GetOriginalOwner() ManualWorkItemDetailsOriginalOwner {
-	if o == nil || isNil(o.OriginalOwner.Get()) {
+	if o == nil || IsNil(o.OriginalOwner.Get()) {
 		var ret ManualWorkItemDetailsOriginalOwner
 		return ret
 	}
@@ -131,7 +131,7 @@ func (o *ManualWorkItemDetails) UnsetOriginalOwner() {
 
 // GetCurrentOwner returns the CurrentOwner field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManualWorkItemDetails) GetCurrentOwner() ManualWorkItemDetailsCurrentOwner {
-	if o == nil || isNil(o.CurrentOwner.Get()) {
+	if o == nil || IsNil(o.CurrentOwner.Get()) {
 		var ret ManualWorkItemDetailsCurrentOwner
 		return ret
 	}
@@ -173,7 +173,7 @@ func (o *ManualWorkItemDetails) UnsetCurrentOwner() {
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *ManualWorkItemDetails) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		var ret time.Time
 		return ret
 	}
@@ -183,7 +183,7 @@ func (o *ManualWorkItemDetails) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManualWorkItemDetails) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -191,7 +191,7 @@ func (o *ManualWorkItemDetails) GetModifiedOk() (*time.Time, bool) {
 
 // HasModified returns a boolean if a field has been set.
 func (o *ManualWorkItemDetails) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -205,7 +205,7 @@ func (o *ManualWorkItemDetails) SetModified(v time.Time) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *ManualWorkItemDetails) GetStatus() ManualWorkItemState {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret ManualWorkItemState
 		return ret
 	}
@@ -215,7 +215,7 @@ func (o *ManualWorkItemDetails) GetStatus() ManualWorkItemState {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManualWorkItemDetails) GetStatusOk() (*ManualWorkItemState, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -223,7 +223,7 @@ func (o *ManualWorkItemDetails) GetStatusOk() (*ManualWorkItemState, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *ManualWorkItemDetails) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -248,7 +248,7 @@ func (o *ManualWorkItemDetails) GetForwardHistory() []ApprovalForwardHistory {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ManualWorkItemDetails) GetForwardHistoryOk() ([]ApprovalForwardHistory, bool) {
-	if o == nil || isNil(o.ForwardHistory) {
+	if o == nil || IsNil(o.ForwardHistory) {
 		return nil, false
 	}
 	return o.ForwardHistory, true
@@ -256,7 +256,7 @@ func (o *ManualWorkItemDetails) GetForwardHistoryOk() ([]ApprovalForwardHistory,
 
 // HasForwardHistory returns a boolean if a field has been set.
 func (o *ManualWorkItemDetails) HasForwardHistory() bool {
-	if o != nil && isNil(o.ForwardHistory) {
+	if o != nil && !IsNil(o.ForwardHistory) {
 		return true
 	}
 
@@ -278,7 +278,7 @@ func (o ManualWorkItemDetails) MarshalJSON() ([]byte, error) {
 
 func (o ManualWorkItemDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Forwarded) {
+	if !IsNil(o.Forwarded) {
 		toSerialize["forwarded"] = o.Forwarded
 	}
 	if o.OriginalOwner.IsSet() {
@@ -287,10 +287,10 @@ func (o ManualWorkItemDetails) ToMap() (map[string]interface{}, error) {
 	if o.CurrentOwner.IsSet() {
 		toSerialize["currentOwner"] = o.CurrentOwner.Get()
 	}
-	if !isNil(o.Modified) {
+	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
-	if !isNil(o.Status) {
+	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
 	if o.ForwardHistory != nil {
@@ -304,16 +304,20 @@ func (o ManualWorkItemDetails) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ManualWorkItemDetails) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ManualWorkItemDetails) UnmarshalJSON(data []byte) (err error) {
 	varManualWorkItemDetails := _ManualWorkItemDetails{}
 
-	if err = json.Unmarshal(bytes, &varManualWorkItemDetails); err == nil {
+	err = json.Unmarshal(data, &varManualWorkItemDetails)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ManualWorkItemDetails(varManualWorkItemDetails)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "forwarded")
 		delete(additionalProperties, "originalOwner")
 		delete(additionalProperties, "currentOwner")

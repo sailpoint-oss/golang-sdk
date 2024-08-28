@@ -56,7 +56,7 @@ func NewApprovalItemsWithDefaults() *ApprovalItems {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ApprovalItems) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -66,7 +66,7 @@ func (o *ApprovalItems) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalItems) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -74,7 +74,7 @@ func (o *ApprovalItems) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ApprovalItems) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -88,7 +88,7 @@ func (o *ApprovalItems) SetId(v string) {
 
 // GetAccount returns the Account field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApprovalItems) GetAccount() string {
-	if o == nil || isNil(o.Account.Get()) {
+	if o == nil || IsNil(o.Account.Get()) {
 		var ret string
 		return ret
 	}
@@ -130,7 +130,7 @@ func (o *ApprovalItems) UnsetAccount() {
 
 // GetApplication returns the Application field value if set, zero value otherwise.
 func (o *ApprovalItems) GetApplication() string {
-	if o == nil || isNil(o.Application) {
+	if o == nil || IsNil(o.Application) {
 		var ret string
 		return ret
 	}
@@ -140,7 +140,7 @@ func (o *ApprovalItems) GetApplication() string {
 // GetApplicationOk returns a tuple with the Application field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalItems) GetApplicationOk() (*string, bool) {
-	if o == nil || isNil(o.Application) {
+	if o == nil || IsNil(o.Application) {
 		return nil, false
 	}
 	return o.Application, true
@@ -148,7 +148,7 @@ func (o *ApprovalItems) GetApplicationOk() (*string, bool) {
 
 // HasApplication returns a boolean if a field has been set.
 func (o *ApprovalItems) HasApplication() bool {
-	if o != nil && !isNil(o.Application) {
+	if o != nil && !IsNil(o.Application) {
 		return true
 	}
 
@@ -162,7 +162,7 @@ func (o *ApprovalItems) SetApplication(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApprovalItems) GetName() string {
-	if o == nil || isNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -204,7 +204,7 @@ func (o *ApprovalItems) UnsetName() {
 
 // GetOperation returns the Operation field value if set, zero value otherwise.
 func (o *ApprovalItems) GetOperation() string {
-	if o == nil || isNil(o.Operation) {
+	if o == nil || IsNil(o.Operation) {
 		var ret string
 		return ret
 	}
@@ -214,7 +214,7 @@ func (o *ApprovalItems) GetOperation() string {
 // GetOperationOk returns a tuple with the Operation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalItems) GetOperationOk() (*string, bool) {
-	if o == nil || isNil(o.Operation) {
+	if o == nil || IsNil(o.Operation) {
 		return nil, false
 	}
 	return o.Operation, true
@@ -222,7 +222,7 @@ func (o *ApprovalItems) GetOperationOk() (*string, bool) {
 
 // HasOperation returns a boolean if a field has been set.
 func (o *ApprovalItems) HasOperation() bool {
-	if o != nil && !isNil(o.Operation) {
+	if o != nil && !IsNil(o.Operation) {
 		return true
 	}
 
@@ -236,7 +236,7 @@ func (o *ApprovalItems) SetOperation(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApprovalItems) GetValue() string {
-	if o == nil || isNil(o.Value.Get()) {
+	if o == nil || IsNil(o.Value.Get()) {
 		var ret string
 		return ret
 	}
@@ -278,7 +278,7 @@ func (o *ApprovalItems) UnsetValue() {
 
 // GetState returns the State field value if set, zero value otherwise.
 func (o *ApprovalItems) GetState() WorkItemState {
-	if o == nil || isNil(o.State) {
+	if o == nil || IsNil(o.State) {
 		var ret WorkItemState
 		return ret
 	}
@@ -288,7 +288,7 @@ func (o *ApprovalItems) GetState() WorkItemState {
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalItems) GetStateOk() (*WorkItemState, bool) {
-	if o == nil || isNil(o.State) {
+	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
 	return o.State, true
@@ -296,7 +296,7 @@ func (o *ApprovalItems) GetStateOk() (*WorkItemState, bool) {
 
 // HasState returns a boolean if a field has been set.
 func (o *ApprovalItems) HasState() bool {
-	if o != nil && !isNil(o.State) {
+	if o != nil && !IsNil(o.State) {
 		return true
 	}
 
@@ -318,25 +318,25 @@ func (o ApprovalItems) MarshalJSON() ([]byte, error) {
 
 func (o ApprovalItems) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
 	if o.Account.IsSet() {
 		toSerialize["account"] = o.Account.Get()
 	}
-	if !isNil(o.Application) {
+	if !IsNil(o.Application) {
 		toSerialize["application"] = o.Application
 	}
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
-	if !isNil(o.Operation) {
+	if !IsNil(o.Operation) {
 		toSerialize["operation"] = o.Operation
 	}
 	if o.Value.IsSet() {
 		toSerialize["value"] = o.Value.Get()
 	}
-	if !isNil(o.State) {
+	if !IsNil(o.State) {
 		toSerialize["state"] = o.State
 	}
 
@@ -347,16 +347,20 @@ func (o ApprovalItems) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ApprovalItems) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ApprovalItems) UnmarshalJSON(data []byte) (err error) {
 	varApprovalItems := _ApprovalItems{}
 
-	if err = json.Unmarshal(bytes, &varApprovalItems); err == nil {
+	err = json.Unmarshal(data, &varApprovalItems)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ApprovalItems(varApprovalItems)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "account")
 		delete(additionalProperties, "application")

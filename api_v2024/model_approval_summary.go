@@ -49,7 +49,7 @@ func NewApprovalSummaryWithDefaults() *ApprovalSummary {
 
 // GetPending returns the Pending field value if set, zero value otherwise.
 func (o *ApprovalSummary) GetPending() int32 {
-	if o == nil || isNil(o.Pending) {
+	if o == nil || IsNil(o.Pending) {
 		var ret int32
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *ApprovalSummary) GetPending() int32 {
 // GetPendingOk returns a tuple with the Pending field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalSummary) GetPendingOk() (*int32, bool) {
-	if o == nil || isNil(o.Pending) {
+	if o == nil || IsNil(o.Pending) {
 		return nil, false
 	}
 	return o.Pending, true
@@ -67,7 +67,7 @@ func (o *ApprovalSummary) GetPendingOk() (*int32, bool) {
 
 // HasPending returns a boolean if a field has been set.
 func (o *ApprovalSummary) HasPending() bool {
-	if o != nil && !isNil(o.Pending) {
+	if o != nil && !IsNil(o.Pending) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *ApprovalSummary) SetPending(v int32) {
 
 // GetApproved returns the Approved field value if set, zero value otherwise.
 func (o *ApprovalSummary) GetApproved() int32 {
-	if o == nil || isNil(o.Approved) {
+	if o == nil || IsNil(o.Approved) {
 		var ret int32
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *ApprovalSummary) GetApproved() int32 {
 // GetApprovedOk returns a tuple with the Approved field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalSummary) GetApprovedOk() (*int32, bool) {
-	if o == nil || isNil(o.Approved) {
+	if o == nil || IsNil(o.Approved) {
 		return nil, false
 	}
 	return o.Approved, true
@@ -99,7 +99,7 @@ func (o *ApprovalSummary) GetApprovedOk() (*int32, bool) {
 
 // HasApproved returns a boolean if a field has been set.
 func (o *ApprovalSummary) HasApproved() bool {
-	if o != nil && !isNil(o.Approved) {
+	if o != nil && !IsNil(o.Approved) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *ApprovalSummary) SetApproved(v int32) {
 
 // GetRejected returns the Rejected field value if set, zero value otherwise.
 func (o *ApprovalSummary) GetRejected() int32 {
-	if o == nil || isNil(o.Rejected) {
+	if o == nil || IsNil(o.Rejected) {
 		var ret int32
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *ApprovalSummary) GetRejected() int32 {
 // GetRejectedOk returns a tuple with the Rejected field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalSummary) GetRejectedOk() (*int32, bool) {
-	if o == nil || isNil(o.Rejected) {
+	if o == nil || IsNil(o.Rejected) {
 		return nil, false
 	}
 	return o.Rejected, true
@@ -131,7 +131,7 @@ func (o *ApprovalSummary) GetRejectedOk() (*int32, bool) {
 
 // HasRejected returns a boolean if a field has been set.
 func (o *ApprovalSummary) HasRejected() bool {
-	if o != nil && !isNil(o.Rejected) {
+	if o != nil && !IsNil(o.Rejected) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o ApprovalSummary) MarshalJSON() ([]byte, error) {
 
 func (o ApprovalSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Pending) {
+	if !IsNil(o.Pending) {
 		toSerialize["pending"] = o.Pending
 	}
-	if !isNil(o.Approved) {
+	if !IsNil(o.Approved) {
 		toSerialize["approved"] = o.Approved
 	}
-	if !isNil(o.Rejected) {
+	if !IsNil(o.Rejected) {
 		toSerialize["rejected"] = o.Rejected
 	}
 
@@ -170,16 +170,20 @@ func (o ApprovalSummary) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ApprovalSummary) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ApprovalSummary) UnmarshalJSON(data []byte) (err error) {
 	varApprovalSummary := _ApprovalSummary{}
 
-	if err = json.Unmarshal(bytes, &varApprovalSummary); err == nil {
+	err = json.Unmarshal(data, &varApprovalSummary)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ApprovalSummary(varApprovalSummary)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "pending")
 		delete(additionalProperties, "approved")
 		delete(additionalProperties, "rejected")

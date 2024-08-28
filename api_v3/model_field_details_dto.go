@@ -59,7 +59,7 @@ func NewFieldDetailsDtoWithDefaults() *FieldDetailsDto {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *FieldDetailsDto) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -69,7 +69,7 @@ func (o *FieldDetailsDto) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FieldDetailsDto) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -77,7 +77,7 @@ func (o *FieldDetailsDto) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *FieldDetailsDto) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -91,7 +91,7 @@ func (o *FieldDetailsDto) SetName(v string) {
 
 // GetTransform returns the Transform field value if set, zero value otherwise.
 func (o *FieldDetailsDto) GetTransform() map[string]interface{} {
-	if o == nil || isNil(o.Transform) {
+	if o == nil || IsNil(o.Transform) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -101,7 +101,7 @@ func (o *FieldDetailsDto) GetTransform() map[string]interface{} {
 // GetTransformOk returns a tuple with the Transform field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FieldDetailsDto) GetTransformOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Transform) {
+	if o == nil || IsNil(o.Transform) {
 		return map[string]interface{}{}, false
 	}
 	return o.Transform, true
@@ -109,7 +109,7 @@ func (o *FieldDetailsDto) GetTransformOk() (map[string]interface{}, bool) {
 
 // HasTransform returns a boolean if a field has been set.
 func (o *FieldDetailsDto) HasTransform() bool {
-	if o != nil && !isNil(o.Transform) {
+	if o != nil && !IsNil(o.Transform) {
 		return true
 	}
 
@@ -123,7 +123,7 @@ func (o *FieldDetailsDto) SetTransform(v map[string]interface{}) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *FieldDetailsDto) GetAttributes() map[string]interface{} {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -133,7 +133,7 @@ func (o *FieldDetailsDto) GetAttributes() map[string]interface{} {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FieldDetailsDto) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
@@ -141,7 +141,7 @@ func (o *FieldDetailsDto) GetAttributesOk() (map[string]interface{}, bool) {
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *FieldDetailsDto) HasAttributes() bool {
-	if o != nil && !isNil(o.Attributes) {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -155,7 +155,7 @@ func (o *FieldDetailsDto) SetAttributes(v map[string]interface{}) {
 
 // GetIsRequired returns the IsRequired field value if set, zero value otherwise.
 func (o *FieldDetailsDto) GetIsRequired() bool {
-	if o == nil || isNil(o.IsRequired) {
+	if o == nil || IsNil(o.IsRequired) {
 		var ret bool
 		return ret
 	}
@@ -165,7 +165,7 @@ func (o *FieldDetailsDto) GetIsRequired() bool {
 // GetIsRequiredOk returns a tuple with the IsRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FieldDetailsDto) GetIsRequiredOk() (*bool, bool) {
-	if o == nil || isNil(o.IsRequired) {
+	if o == nil || IsNil(o.IsRequired) {
 		return nil, false
 	}
 	return o.IsRequired, true
@@ -173,7 +173,7 @@ func (o *FieldDetailsDto) GetIsRequiredOk() (*bool, bool) {
 
 // HasIsRequired returns a boolean if a field has been set.
 func (o *FieldDetailsDto) HasIsRequired() bool {
-	if o != nil && !isNil(o.IsRequired) {
+	if o != nil && !IsNil(o.IsRequired) {
 		return true
 	}
 
@@ -187,7 +187,7 @@ func (o *FieldDetailsDto) SetIsRequired(v bool) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *FieldDetailsDto) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -197,7 +197,7 @@ func (o *FieldDetailsDto) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FieldDetailsDto) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -205,7 +205,7 @@ func (o *FieldDetailsDto) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *FieldDetailsDto) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -219,7 +219,7 @@ func (o *FieldDetailsDto) SetType(v string) {
 
 // GetIsMultiValued returns the IsMultiValued field value if set, zero value otherwise.
 func (o *FieldDetailsDto) GetIsMultiValued() bool {
-	if o == nil || isNil(o.IsMultiValued) {
+	if o == nil || IsNil(o.IsMultiValued) {
 		var ret bool
 		return ret
 	}
@@ -229,7 +229,7 @@ func (o *FieldDetailsDto) GetIsMultiValued() bool {
 // GetIsMultiValuedOk returns a tuple with the IsMultiValued field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FieldDetailsDto) GetIsMultiValuedOk() (*bool, bool) {
-	if o == nil || isNil(o.IsMultiValued) {
+	if o == nil || IsNil(o.IsMultiValued) {
 		return nil, false
 	}
 	return o.IsMultiValued, true
@@ -237,7 +237,7 @@ func (o *FieldDetailsDto) GetIsMultiValuedOk() (*bool, bool) {
 
 // HasIsMultiValued returns a boolean if a field has been set.
 func (o *FieldDetailsDto) HasIsMultiValued() bool {
-	if o != nil && !isNil(o.IsMultiValued) {
+	if o != nil && !IsNil(o.IsMultiValued) {
 		return true
 	}
 
@@ -259,20 +259,22 @@ func (o FieldDetailsDto) MarshalJSON() ([]byte, error) {
 
 func (o FieldDetailsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Transform) {
+	if !IsNil(o.Transform) {
 		toSerialize["transform"] = o.Transform
 	}
-	if !isNil(o.Attributes) {
+	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
-	// skip: isRequired is readOnly
-	if !isNil(o.Type) {
+	if !IsNil(o.IsRequired) {
+		toSerialize["isRequired"] = o.IsRequired
+	}
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.IsMultiValued) {
+	if !IsNil(o.IsMultiValued) {
 		toSerialize["isMultiValued"] = o.IsMultiValued
 	}
 
@@ -283,16 +285,20 @@ func (o FieldDetailsDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *FieldDetailsDto) UnmarshalJSON(bytes []byte) (err error) {
+func (o *FieldDetailsDto) UnmarshalJSON(data []byte) (err error) {
 	varFieldDetailsDto := _FieldDetailsDto{}
 
-	if err = json.Unmarshal(bytes, &varFieldDetailsDto); err == nil {
+	err = json.Unmarshal(data, &varFieldDetailsDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = FieldDetailsDto(varFieldDetailsDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "transform")
 		delete(additionalProperties, "attributes")

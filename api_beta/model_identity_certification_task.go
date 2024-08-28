@@ -51,7 +51,7 @@ func NewIdentityCertificationTaskWithDefaults() *IdentityCertificationTask {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *IdentityCertificationTask) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -61,7 +61,7 @@ func (o *IdentityCertificationTask) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertificationTask) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -69,7 +69,7 @@ func (o *IdentityCertificationTask) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *IdentityCertificationTask) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -83,7 +83,7 @@ func (o *IdentityCertificationTask) SetId(v string) {
 
 // GetCertificationId returns the CertificationId field value if set, zero value otherwise.
 func (o *IdentityCertificationTask) GetCertificationId() string {
-	if o == nil || isNil(o.CertificationId) {
+	if o == nil || IsNil(o.CertificationId) {
 		var ret string
 		return ret
 	}
@@ -93,7 +93,7 @@ func (o *IdentityCertificationTask) GetCertificationId() string {
 // GetCertificationIdOk returns a tuple with the CertificationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertificationTask) GetCertificationIdOk() (*string, bool) {
-	if o == nil || isNil(o.CertificationId) {
+	if o == nil || IsNil(o.CertificationId) {
 		return nil, false
 	}
 	return o.CertificationId, true
@@ -101,7 +101,7 @@ func (o *IdentityCertificationTask) GetCertificationIdOk() (*string, bool) {
 
 // HasCertificationId returns a boolean if a field has been set.
 func (o *IdentityCertificationTask) HasCertificationId() bool {
-	if o != nil && !isNil(o.CertificationId) {
+	if o != nil && !IsNil(o.CertificationId) {
 		return true
 	}
 
@@ -115,7 +115,7 @@ func (o *IdentityCertificationTask) SetCertificationId(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *IdentityCertificationTask) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -125,7 +125,7 @@ func (o *IdentityCertificationTask) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertificationTask) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -133,7 +133,7 @@ func (o *IdentityCertificationTask) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *IdentityCertificationTask) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -147,7 +147,7 @@ func (o *IdentityCertificationTask) SetType(v string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *IdentityCertificationTask) GetStatus() string {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -157,7 +157,7 @@ func (o *IdentityCertificationTask) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertificationTask) GetStatusOk() (*string, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -165,7 +165,7 @@ func (o *IdentityCertificationTask) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *IdentityCertificationTask) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -179,7 +179,7 @@ func (o *IdentityCertificationTask) SetStatus(v string) {
 
 // GetErrors returns the Errors field value if set, zero value otherwise.
 func (o *IdentityCertificationTask) GetErrors() []string {
-	if o == nil || isNil(o.Errors) {
+	if o == nil || IsNil(o.Errors) {
 		var ret []string
 		return ret
 	}
@@ -189,7 +189,7 @@ func (o *IdentityCertificationTask) GetErrors() []string {
 // GetErrorsOk returns a tuple with the Errors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertificationTask) GetErrorsOk() ([]string, bool) {
-	if o == nil || isNil(o.Errors) {
+	if o == nil || IsNil(o.Errors) {
 		return nil, false
 	}
 	return o.Errors, true
@@ -197,7 +197,7 @@ func (o *IdentityCertificationTask) GetErrorsOk() ([]string, bool) {
 
 // HasErrors returns a boolean if a field has been set.
 func (o *IdentityCertificationTask) HasErrors() bool {
-	if o != nil && !isNil(o.Errors) {
+	if o != nil && !IsNil(o.Errors) {
 		return true
 	}
 
@@ -219,19 +219,19 @@ func (o IdentityCertificationTask) MarshalJSON() ([]byte, error) {
 
 func (o IdentityCertificationTask) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.CertificationId) {
+	if !IsNil(o.CertificationId) {
 		toSerialize["certificationId"] = o.CertificationId
 	}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Status) {
+	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if !isNil(o.Errors) {
+	if !IsNil(o.Errors) {
 		toSerialize["errors"] = o.Errors
 	}
 
@@ -242,16 +242,20 @@ func (o IdentityCertificationTask) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *IdentityCertificationTask) UnmarshalJSON(bytes []byte) (err error) {
+func (o *IdentityCertificationTask) UnmarshalJSON(data []byte) (err error) {
 	varIdentityCertificationTask := _IdentityCertificationTask{}
 
-	if err = json.Unmarshal(bytes, &varIdentityCertificationTask); err == nil {
+	err = json.Unmarshal(data, &varIdentityCertificationTask)
+
+	if err != nil {
+		return err
+	}
+
 	*o = IdentityCertificationTask(varIdentityCertificationTask)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "certificationId")
 		delete(additionalProperties, "type")

@@ -47,7 +47,7 @@ func NewIdentityAssociationDetailsWithDefaults() *IdentityAssociationDetails {
 
 // GetMessage returns the Message field value if set, zero value otherwise.
 func (o *IdentityAssociationDetails) GetMessage() string {
-	if o == nil || isNil(o.Message) {
+	if o == nil || IsNil(o.Message) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *IdentityAssociationDetails) GetMessage() string {
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityAssociationDetails) GetMessageOk() (*string, bool) {
-	if o == nil || isNil(o.Message) {
+	if o == nil || IsNil(o.Message) {
 		return nil, false
 	}
 	return o.Message, true
@@ -65,7 +65,7 @@ func (o *IdentityAssociationDetails) GetMessageOk() (*string, bool) {
 
 // HasMessage returns a boolean if a field has been set.
 func (o *IdentityAssociationDetails) HasMessage() bool {
-	if o != nil && !isNil(o.Message) {
+	if o != nil && !IsNil(o.Message) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *IdentityAssociationDetails) SetMessage(v string) {
 
 // GetAssociationDetails returns the AssociationDetails field value if set, zero value otherwise.
 func (o *IdentityAssociationDetails) GetAssociationDetails() []IdentityAssociationDetailsAssociationDetailsInner {
-	if o == nil || isNil(o.AssociationDetails) {
+	if o == nil || IsNil(o.AssociationDetails) {
 		var ret []IdentityAssociationDetailsAssociationDetailsInner
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *IdentityAssociationDetails) GetAssociationDetails() []IdentityAssociati
 // GetAssociationDetailsOk returns a tuple with the AssociationDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityAssociationDetails) GetAssociationDetailsOk() ([]IdentityAssociationDetailsAssociationDetailsInner, bool) {
-	if o == nil || isNil(o.AssociationDetails) {
+	if o == nil || IsNil(o.AssociationDetails) {
 		return nil, false
 	}
 	return o.AssociationDetails, true
@@ -97,7 +97,7 @@ func (o *IdentityAssociationDetails) GetAssociationDetailsOk() ([]IdentityAssoci
 
 // HasAssociationDetails returns a boolean if a field has been set.
 func (o *IdentityAssociationDetails) HasAssociationDetails() bool {
-	if o != nil && !isNil(o.AssociationDetails) {
+	if o != nil && !IsNil(o.AssociationDetails) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o IdentityAssociationDetails) MarshalJSON() ([]byte, error) {
 
 func (o IdentityAssociationDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Message) {
+	if !IsNil(o.Message) {
 		toSerialize["message"] = o.Message
 	}
-	if !isNil(o.AssociationDetails) {
+	if !IsNil(o.AssociationDetails) {
 		toSerialize["associationDetails"] = o.AssociationDetails
 	}
 
@@ -133,16 +133,20 @@ func (o IdentityAssociationDetails) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *IdentityAssociationDetails) UnmarshalJSON(bytes []byte) (err error) {
+func (o *IdentityAssociationDetails) UnmarshalJSON(data []byte) (err error) {
 	varIdentityAssociationDetails := _IdentityAssociationDetails{}
 
-	if err = json.Unmarshal(bytes, &varIdentityAssociationDetails); err == nil {
+	err = json.Unmarshal(data, &varIdentityAssociationDetails)
+
+	if err != nil {
+		return err
+	}
+
 	*o = IdentityAssociationDetails(varIdentityAssociationDetails)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "message")
 		delete(additionalProperties, "associationDetails")
 		o.AdditionalProperties = additionalProperties

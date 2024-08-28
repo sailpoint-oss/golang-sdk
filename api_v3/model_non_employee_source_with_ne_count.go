@@ -62,7 +62,7 @@ func NewNonEmployeeSourceWithNECountWithDefaults() *NonEmployeeSourceWithNECount
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *NonEmployeeSourceWithNECount) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -72,7 +72,7 @@ func (o *NonEmployeeSourceWithNECount) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSourceWithNECount) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -80,7 +80,7 @@ func (o *NonEmployeeSourceWithNECount) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *NonEmployeeSourceWithNECount) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -94,7 +94,7 @@ func (o *NonEmployeeSourceWithNECount) SetId(v string) {
 
 // GetSourceId returns the SourceId field value if set, zero value otherwise.
 func (o *NonEmployeeSourceWithNECount) GetSourceId() string {
-	if o == nil || isNil(o.SourceId) {
+	if o == nil || IsNil(o.SourceId) {
 		var ret string
 		return ret
 	}
@@ -104,7 +104,7 @@ func (o *NonEmployeeSourceWithNECount) GetSourceId() string {
 // GetSourceIdOk returns a tuple with the SourceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSourceWithNECount) GetSourceIdOk() (*string, bool) {
-	if o == nil || isNil(o.SourceId) {
+	if o == nil || IsNil(o.SourceId) {
 		return nil, false
 	}
 	return o.SourceId, true
@@ -112,7 +112,7 @@ func (o *NonEmployeeSourceWithNECount) GetSourceIdOk() (*string, bool) {
 
 // HasSourceId returns a boolean if a field has been set.
 func (o *NonEmployeeSourceWithNECount) HasSourceId() bool {
-	if o != nil && !isNil(o.SourceId) {
+	if o != nil && !IsNil(o.SourceId) {
 		return true
 	}
 
@@ -126,7 +126,7 @@ func (o *NonEmployeeSourceWithNECount) SetSourceId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *NonEmployeeSourceWithNECount) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -136,7 +136,7 @@ func (o *NonEmployeeSourceWithNECount) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSourceWithNECount) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -144,7 +144,7 @@ func (o *NonEmployeeSourceWithNECount) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *NonEmployeeSourceWithNECount) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -158,7 +158,7 @@ func (o *NonEmployeeSourceWithNECount) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *NonEmployeeSourceWithNECount) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -168,7 +168,7 @@ func (o *NonEmployeeSourceWithNECount) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSourceWithNECount) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -176,7 +176,7 @@ func (o *NonEmployeeSourceWithNECount) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *NonEmployeeSourceWithNECount) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -190,7 +190,7 @@ func (o *NonEmployeeSourceWithNECount) SetDescription(v string) {
 
 // GetApprovers returns the Approvers field value if set, zero value otherwise.
 func (o *NonEmployeeSourceWithNECount) GetApprovers() []NonEmployeeIdentityReferenceWithId {
-	if o == nil || isNil(o.Approvers) {
+	if o == nil || IsNil(o.Approvers) {
 		var ret []NonEmployeeIdentityReferenceWithId
 		return ret
 	}
@@ -200,7 +200,7 @@ func (o *NonEmployeeSourceWithNECount) GetApprovers() []NonEmployeeIdentityRefer
 // GetApproversOk returns a tuple with the Approvers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSourceWithNECount) GetApproversOk() ([]NonEmployeeIdentityReferenceWithId, bool) {
-	if o == nil || isNil(o.Approvers) {
+	if o == nil || IsNil(o.Approvers) {
 		return nil, false
 	}
 	return o.Approvers, true
@@ -208,7 +208,7 @@ func (o *NonEmployeeSourceWithNECount) GetApproversOk() ([]NonEmployeeIdentityRe
 
 // HasApprovers returns a boolean if a field has been set.
 func (o *NonEmployeeSourceWithNECount) HasApprovers() bool {
-	if o != nil && !isNil(o.Approvers) {
+	if o != nil && !IsNil(o.Approvers) {
 		return true
 	}
 
@@ -222,7 +222,7 @@ func (o *NonEmployeeSourceWithNECount) SetApprovers(v []NonEmployeeIdentityRefer
 
 // GetAccountManagers returns the AccountManagers field value if set, zero value otherwise.
 func (o *NonEmployeeSourceWithNECount) GetAccountManagers() []NonEmployeeIdentityReferenceWithId {
-	if o == nil || isNil(o.AccountManagers) {
+	if o == nil || IsNil(o.AccountManagers) {
 		var ret []NonEmployeeIdentityReferenceWithId
 		return ret
 	}
@@ -232,7 +232,7 @@ func (o *NonEmployeeSourceWithNECount) GetAccountManagers() []NonEmployeeIdentit
 // GetAccountManagersOk returns a tuple with the AccountManagers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSourceWithNECount) GetAccountManagersOk() ([]NonEmployeeIdentityReferenceWithId, bool) {
-	if o == nil || isNil(o.AccountManagers) {
+	if o == nil || IsNil(o.AccountManagers) {
 		return nil, false
 	}
 	return o.AccountManagers, true
@@ -240,7 +240,7 @@ func (o *NonEmployeeSourceWithNECount) GetAccountManagersOk() ([]NonEmployeeIden
 
 // HasAccountManagers returns a boolean if a field has been set.
 func (o *NonEmployeeSourceWithNECount) HasAccountManagers() bool {
-	if o != nil && !isNil(o.AccountManagers) {
+	if o != nil && !IsNil(o.AccountManagers) {
 		return true
 	}
 
@@ -254,7 +254,7 @@ func (o *NonEmployeeSourceWithNECount) SetAccountManagers(v []NonEmployeeIdentit
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *NonEmployeeSourceWithNECount) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		var ret time.Time
 		return ret
 	}
@@ -264,7 +264,7 @@ func (o *NonEmployeeSourceWithNECount) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSourceWithNECount) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -272,7 +272,7 @@ func (o *NonEmployeeSourceWithNECount) GetModifiedOk() (*time.Time, bool) {
 
 // HasModified returns a boolean if a field has been set.
 func (o *NonEmployeeSourceWithNECount) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -286,7 +286,7 @@ func (o *NonEmployeeSourceWithNECount) SetModified(v time.Time) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *NonEmployeeSourceWithNECount) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -296,7 +296,7 @@ func (o *NonEmployeeSourceWithNECount) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSourceWithNECount) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -304,7 +304,7 @@ func (o *NonEmployeeSourceWithNECount) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *NonEmployeeSourceWithNECount) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -318,7 +318,7 @@ func (o *NonEmployeeSourceWithNECount) SetCreated(v time.Time) {
 
 // GetNonEmployeeCount returns the NonEmployeeCount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *NonEmployeeSourceWithNECount) GetNonEmployeeCount() int32 {
-	if o == nil || isNil(o.NonEmployeeCount.Get()) {
+	if o == nil || IsNil(o.NonEmployeeCount.Get()) {
 		var ret int32
 		return ret
 	}
@@ -368,28 +368,28 @@ func (o NonEmployeeSourceWithNECount) MarshalJSON() ([]byte, error) {
 
 func (o NonEmployeeSourceWithNECount) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.SourceId) {
+	if !IsNil(o.SourceId) {
 		toSerialize["sourceId"] = o.SourceId
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.Approvers) {
+	if !IsNil(o.Approvers) {
 		toSerialize["approvers"] = o.Approvers
 	}
-	if !isNil(o.AccountManagers) {
+	if !IsNil(o.AccountManagers) {
 		toSerialize["accountManagers"] = o.AccountManagers
 	}
-	if !isNil(o.Modified) {
+	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
-	if !isNil(o.Created) {
+	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
 	if o.NonEmployeeCount.IsSet() {
@@ -403,16 +403,20 @@ func (o NonEmployeeSourceWithNECount) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *NonEmployeeSourceWithNECount) UnmarshalJSON(bytes []byte) (err error) {
+func (o *NonEmployeeSourceWithNECount) UnmarshalJSON(data []byte) (err error) {
 	varNonEmployeeSourceWithNECount := _NonEmployeeSourceWithNECount{}
 
-	if err = json.Unmarshal(bytes, &varNonEmployeeSourceWithNECount); err == nil {
+	err = json.Unmarshal(data, &varNonEmployeeSourceWithNECount)
+
+	if err != nil {
+		return err
+	}
+
 	*o = NonEmployeeSourceWithNECount(varNonEmployeeSourceWithNECount)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "sourceId")
 		delete(additionalProperties, "name")

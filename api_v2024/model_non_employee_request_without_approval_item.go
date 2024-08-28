@@ -75,7 +75,7 @@ func NewNonEmployeeRequestWithoutApprovalItemWithDefaults() *NonEmployeeRequestW
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -85,7 +85,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -93,7 +93,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -107,7 +107,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) SetId(v string) {
 
 // GetRequester returns the Requester field value if set, zero value otherwise.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetRequester() NonEmployeeIdentityReferenceWithId {
-	if o == nil || isNil(o.Requester) {
+	if o == nil || IsNil(o.Requester) {
 		var ret NonEmployeeIdentityReferenceWithId
 		return ret
 	}
@@ -117,7 +117,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetRequester() NonEmployeeIdenti
 // GetRequesterOk returns a tuple with the Requester field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetRequesterOk() (*NonEmployeeIdentityReferenceWithId, bool) {
-	if o == nil || isNil(o.Requester) {
+	if o == nil || IsNil(o.Requester) {
 		return nil, false
 	}
 	return o.Requester, true
@@ -125,7 +125,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetRequesterOk() (*NonEmployeeId
 
 // HasRequester returns a boolean if a field has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) HasRequester() bool {
-	if o != nil && !isNil(o.Requester) {
+	if o != nil && !IsNil(o.Requester) {
 		return true
 	}
 
@@ -139,7 +139,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) SetRequester(v NonEmployeeIdenti
 
 // GetAccountName returns the AccountName field value if set, zero value otherwise.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetAccountName() string {
-	if o == nil || isNil(o.AccountName) {
+	if o == nil || IsNil(o.AccountName) {
 		var ret string
 		return ret
 	}
@@ -149,7 +149,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetAccountName() string {
 // GetAccountNameOk returns a tuple with the AccountName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetAccountNameOk() (*string, bool) {
-	if o == nil || isNil(o.AccountName) {
+	if o == nil || IsNil(o.AccountName) {
 		return nil, false
 	}
 	return o.AccountName, true
@@ -157,7 +157,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetAccountNameOk() (*string, boo
 
 // HasAccountName returns a boolean if a field has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) HasAccountName() bool {
-	if o != nil && !isNil(o.AccountName) {
+	if o != nil && !IsNil(o.AccountName) {
 		return true
 	}
 
@@ -171,7 +171,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) SetAccountName(v string) {
 
 // GetFirstName returns the FirstName field value if set, zero value otherwise.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetFirstName() string {
-	if o == nil || isNil(o.FirstName) {
+	if o == nil || IsNil(o.FirstName) {
 		var ret string
 		return ret
 	}
@@ -181,7 +181,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetFirstName() string {
 // GetFirstNameOk returns a tuple with the FirstName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetFirstNameOk() (*string, bool) {
-	if o == nil || isNil(o.FirstName) {
+	if o == nil || IsNil(o.FirstName) {
 		return nil, false
 	}
 	return o.FirstName, true
@@ -189,7 +189,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetFirstNameOk() (*string, bool)
 
 // HasFirstName returns a boolean if a field has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) HasFirstName() bool {
-	if o != nil && !isNil(o.FirstName) {
+	if o != nil && !IsNil(o.FirstName) {
 		return true
 	}
 
@@ -203,7 +203,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) SetFirstName(v string) {
 
 // GetLastName returns the LastName field value if set, zero value otherwise.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetLastName() string {
-	if o == nil || isNil(o.LastName) {
+	if o == nil || IsNil(o.LastName) {
 		var ret string
 		return ret
 	}
@@ -213,7 +213,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetLastName() string {
 // GetLastNameOk returns a tuple with the LastName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetLastNameOk() (*string, bool) {
-	if o == nil || isNil(o.LastName) {
+	if o == nil || IsNil(o.LastName) {
 		return nil, false
 	}
 	return o.LastName, true
@@ -221,7 +221,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetLastNameOk() (*string, bool) 
 
 // HasLastName returns a boolean if a field has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) HasLastName() bool {
-	if o != nil && !isNil(o.LastName) {
+	if o != nil && !IsNil(o.LastName) {
 		return true
 	}
 
@@ -235,7 +235,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) SetLastName(v string) {
 
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetEmail() string {
-	if o == nil || isNil(o.Email) {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
@@ -245,7 +245,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetEmailOk() (*string, bool) {
-	if o == nil || isNil(o.Email) {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
 	return o.Email, true
@@ -253,7 +253,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetEmailOk() (*string, bool) {
 
 // HasEmail returns a boolean if a field has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) HasEmail() bool {
-	if o != nil && !isNil(o.Email) {
+	if o != nil && !IsNil(o.Email) {
 		return true
 	}
 
@@ -267,7 +267,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) SetEmail(v string) {
 
 // GetPhone returns the Phone field value if set, zero value otherwise.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetPhone() string {
-	if o == nil || isNil(o.Phone) {
+	if o == nil || IsNil(o.Phone) {
 		var ret string
 		return ret
 	}
@@ -277,7 +277,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetPhone() string {
 // GetPhoneOk returns a tuple with the Phone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetPhoneOk() (*string, bool) {
-	if o == nil || isNil(o.Phone) {
+	if o == nil || IsNil(o.Phone) {
 		return nil, false
 	}
 	return o.Phone, true
@@ -285,7 +285,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetPhoneOk() (*string, bool) {
 
 // HasPhone returns a boolean if a field has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) HasPhone() bool {
-	if o != nil && !isNil(o.Phone) {
+	if o != nil && !IsNil(o.Phone) {
 		return true
 	}
 
@@ -299,7 +299,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) SetPhone(v string) {
 
 // GetManager returns the Manager field value if set, zero value otherwise.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetManager() string {
-	if o == nil || isNil(o.Manager) {
+	if o == nil || IsNil(o.Manager) {
 		var ret string
 		return ret
 	}
@@ -309,7 +309,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetManager() string {
 // GetManagerOk returns a tuple with the Manager field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetManagerOk() (*string, bool) {
-	if o == nil || isNil(o.Manager) {
+	if o == nil || IsNil(o.Manager) {
 		return nil, false
 	}
 	return o.Manager, true
@@ -317,7 +317,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetManagerOk() (*string, bool) {
 
 // HasManager returns a boolean if a field has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) HasManager() bool {
-	if o != nil && !isNil(o.Manager) {
+	if o != nil && !IsNil(o.Manager) {
 		return true
 	}
 
@@ -331,7 +331,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) SetManager(v string) {
 
 // GetNonEmployeeSource returns the NonEmployeeSource field value if set, zero value otherwise.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetNonEmployeeSource() NonEmployeeSourceLiteWithSchemaAttributes {
-	if o == nil || isNil(o.NonEmployeeSource) {
+	if o == nil || IsNil(o.NonEmployeeSource) {
 		var ret NonEmployeeSourceLiteWithSchemaAttributes
 		return ret
 	}
@@ -341,7 +341,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetNonEmployeeSource() NonEmploy
 // GetNonEmployeeSourceOk returns a tuple with the NonEmployeeSource field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetNonEmployeeSourceOk() (*NonEmployeeSourceLiteWithSchemaAttributes, bool) {
-	if o == nil || isNil(o.NonEmployeeSource) {
+	if o == nil || IsNil(o.NonEmployeeSource) {
 		return nil, false
 	}
 	return o.NonEmployeeSource, true
@@ -349,7 +349,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetNonEmployeeSourceOk() (*NonEm
 
 // HasNonEmployeeSource returns a boolean if a field has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) HasNonEmployeeSource() bool {
-	if o != nil && !isNil(o.NonEmployeeSource) {
+	if o != nil && !IsNil(o.NonEmployeeSource) {
 		return true
 	}
 
@@ -363,7 +363,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) SetNonEmployeeSource(v NonEmploy
 
 // GetData returns the Data field value if set, zero value otherwise.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetData() map[string]string {
-	if o == nil || isNil(o.Data) {
+	if o == nil || IsNil(o.Data) {
 		var ret map[string]string
 		return ret
 	}
@@ -373,7 +373,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetData() map[string]string {
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetDataOk() (*map[string]string, bool) {
-	if o == nil || isNil(o.Data) {
+	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
 	return o.Data, true
@@ -381,7 +381,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetDataOk() (*map[string]string,
 
 // HasData returns a boolean if a field has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) HasData() bool {
-	if o != nil && !isNil(o.Data) {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 
@@ -395,7 +395,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) SetData(v map[string]string) {
 
 // GetApprovalStatus returns the ApprovalStatus field value if set, zero value otherwise.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetApprovalStatus() ApprovalStatus {
-	if o == nil || isNil(o.ApprovalStatus) {
+	if o == nil || IsNil(o.ApprovalStatus) {
 		var ret ApprovalStatus
 		return ret
 	}
@@ -405,7 +405,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetApprovalStatus() ApprovalStat
 // GetApprovalStatusOk returns a tuple with the ApprovalStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetApprovalStatusOk() (*ApprovalStatus, bool) {
-	if o == nil || isNil(o.ApprovalStatus) {
+	if o == nil || IsNil(o.ApprovalStatus) {
 		return nil, false
 	}
 	return o.ApprovalStatus, true
@@ -413,7 +413,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetApprovalStatusOk() (*Approval
 
 // HasApprovalStatus returns a boolean if a field has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) HasApprovalStatus() bool {
-	if o != nil && !isNil(o.ApprovalStatus) {
+	if o != nil && !IsNil(o.ApprovalStatus) {
 		return true
 	}
 
@@ -427,7 +427,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) SetApprovalStatus(v ApprovalStat
 
 // GetComment returns the Comment field value if set, zero value otherwise.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetComment() string {
-	if o == nil || isNil(o.Comment) {
+	if o == nil || IsNil(o.Comment) {
 		var ret string
 		return ret
 	}
@@ -437,7 +437,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetComment() string {
 // GetCommentOk returns a tuple with the Comment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetCommentOk() (*string, bool) {
-	if o == nil || isNil(o.Comment) {
+	if o == nil || IsNil(o.Comment) {
 		return nil, false
 	}
 	return o.Comment, true
@@ -445,7 +445,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetCommentOk() (*string, bool) {
 
 // HasComment returns a boolean if a field has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) HasComment() bool {
-	if o != nil && !isNil(o.Comment) {
+	if o != nil && !IsNil(o.Comment) {
 		return true
 	}
 
@@ -459,7 +459,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) SetComment(v string) {
 
 // GetCompletionDate returns the CompletionDate field value if set, zero value otherwise.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetCompletionDate() time.Time {
-	if o == nil || isNil(o.CompletionDate) {
+	if o == nil || IsNil(o.CompletionDate) {
 		var ret time.Time
 		return ret
 	}
@@ -469,7 +469,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetCompletionDate() time.Time {
 // GetCompletionDateOk returns a tuple with the CompletionDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetCompletionDateOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CompletionDate) {
+	if o == nil || IsNil(o.CompletionDate) {
 		return nil, false
 	}
 	return o.CompletionDate, true
@@ -477,7 +477,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetCompletionDateOk() (*time.Tim
 
 // HasCompletionDate returns a boolean if a field has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) HasCompletionDate() bool {
-	if o != nil && !isNil(o.CompletionDate) {
+	if o != nil && !IsNil(o.CompletionDate) {
 		return true
 	}
 
@@ -491,7 +491,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) SetCompletionDate(v time.Time) {
 
 // GetStartDate returns the StartDate field value if set, zero value otherwise.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetStartDate() string {
-	if o == nil || isNil(o.StartDate) {
+	if o == nil || IsNil(o.StartDate) {
 		var ret string
 		return ret
 	}
@@ -501,7 +501,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetStartDate() string {
 // GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetStartDateOk() (*string, bool) {
-	if o == nil || isNil(o.StartDate) {
+	if o == nil || IsNil(o.StartDate) {
 		return nil, false
 	}
 	return o.StartDate, true
@@ -509,7 +509,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetStartDateOk() (*string, bool)
 
 // HasStartDate returns a boolean if a field has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) HasStartDate() bool {
-	if o != nil && !isNil(o.StartDate) {
+	if o != nil && !IsNil(o.StartDate) {
 		return true
 	}
 
@@ -523,7 +523,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) SetStartDate(v string) {
 
 // GetEndDate returns the EndDate field value if set, zero value otherwise.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetEndDate() string {
-	if o == nil || isNil(o.EndDate) {
+	if o == nil || IsNil(o.EndDate) {
 		var ret string
 		return ret
 	}
@@ -533,7 +533,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetEndDate() string {
 // GetEndDateOk returns a tuple with the EndDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetEndDateOk() (*string, bool) {
-	if o == nil || isNil(o.EndDate) {
+	if o == nil || IsNil(o.EndDate) {
 		return nil, false
 	}
 	return o.EndDate, true
@@ -541,7 +541,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetEndDateOk() (*string, bool) {
 
 // HasEndDate returns a boolean if a field has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) HasEndDate() bool {
-	if o != nil && !isNil(o.EndDate) {
+	if o != nil && !IsNil(o.EndDate) {
 		return true
 	}
 
@@ -555,7 +555,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) SetEndDate(v string) {
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		var ret time.Time
 		return ret
 	}
@@ -565,7 +565,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -573,7 +573,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetModifiedOk() (*time.Time, boo
 
 // HasModified returns a boolean if a field has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -587,7 +587,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) SetModified(v time.Time) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -597,7 +597,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -605,7 +605,7 @@ func (o *NonEmployeeRequestWithoutApprovalItem) GetCreatedOk() (*time.Time, bool
 
 // HasCreated returns a boolean if a field has been set.
 func (o *NonEmployeeRequestWithoutApprovalItem) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -627,55 +627,55 @@ func (o NonEmployeeRequestWithoutApprovalItem) MarshalJSON() ([]byte, error) {
 
 func (o NonEmployeeRequestWithoutApprovalItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Requester) {
+	if !IsNil(o.Requester) {
 		toSerialize["requester"] = o.Requester
 	}
-	if !isNil(o.AccountName) {
+	if !IsNil(o.AccountName) {
 		toSerialize["accountName"] = o.AccountName
 	}
-	if !isNil(o.FirstName) {
+	if !IsNil(o.FirstName) {
 		toSerialize["firstName"] = o.FirstName
 	}
-	if !isNil(o.LastName) {
+	if !IsNil(o.LastName) {
 		toSerialize["lastName"] = o.LastName
 	}
-	if !isNil(o.Email) {
+	if !IsNil(o.Email) {
 		toSerialize["email"] = o.Email
 	}
-	if !isNil(o.Phone) {
+	if !IsNil(o.Phone) {
 		toSerialize["phone"] = o.Phone
 	}
-	if !isNil(o.Manager) {
+	if !IsNil(o.Manager) {
 		toSerialize["manager"] = o.Manager
 	}
-	if !isNil(o.NonEmployeeSource) {
+	if !IsNil(o.NonEmployeeSource) {
 		toSerialize["nonEmployeeSource"] = o.NonEmployeeSource
 	}
-	if !isNil(o.Data) {
+	if !IsNil(o.Data) {
 		toSerialize["data"] = o.Data
 	}
-	if !isNil(o.ApprovalStatus) {
+	if !IsNil(o.ApprovalStatus) {
 		toSerialize["approvalStatus"] = o.ApprovalStatus
 	}
-	if !isNil(o.Comment) {
+	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if !isNil(o.CompletionDate) {
+	if !IsNil(o.CompletionDate) {
 		toSerialize["completionDate"] = o.CompletionDate
 	}
-	if !isNil(o.StartDate) {
+	if !IsNil(o.StartDate) {
 		toSerialize["startDate"] = o.StartDate
 	}
-	if !isNil(o.EndDate) {
+	if !IsNil(o.EndDate) {
 		toSerialize["endDate"] = o.EndDate
 	}
-	if !isNil(o.Modified) {
+	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
-	if !isNil(o.Created) {
+	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
 
@@ -686,16 +686,20 @@ func (o NonEmployeeRequestWithoutApprovalItem) ToMap() (map[string]interface{}, 
 	return toSerialize, nil
 }
 
-func (o *NonEmployeeRequestWithoutApprovalItem) UnmarshalJSON(bytes []byte) (err error) {
+func (o *NonEmployeeRequestWithoutApprovalItem) UnmarshalJSON(data []byte) (err error) {
 	varNonEmployeeRequestWithoutApprovalItem := _NonEmployeeRequestWithoutApprovalItem{}
 
-	if err = json.Unmarshal(bytes, &varNonEmployeeRequestWithoutApprovalItem); err == nil {
+	err = json.Unmarshal(data, &varNonEmployeeRequestWithoutApprovalItem)
+
+	if err != nil {
+		return err
+	}
+
 	*o = NonEmployeeRequestWithoutApprovalItem(varNonEmployeeRequestWithoutApprovalItem)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "requester")
 		delete(additionalProperties, "accountName")

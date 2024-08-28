@@ -58,7 +58,7 @@ func NewRecommenderCalculationsWithDefaults() *RecommenderCalculations {
 
 // GetIdentityId returns the IdentityId field value if set, zero value otherwise.
 func (o *RecommenderCalculations) GetIdentityId() string {
-	if o == nil || isNil(o.IdentityId) {
+	if o == nil || IsNil(o.IdentityId) {
 		var ret string
 		return ret
 	}
@@ -68,7 +68,7 @@ func (o *RecommenderCalculations) GetIdentityId() string {
 // GetIdentityIdOk returns a tuple with the IdentityId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RecommenderCalculations) GetIdentityIdOk() (*string, bool) {
-	if o == nil || isNil(o.IdentityId) {
+	if o == nil || IsNil(o.IdentityId) {
 		return nil, false
 	}
 	return o.IdentityId, true
@@ -76,7 +76,7 @@ func (o *RecommenderCalculations) GetIdentityIdOk() (*string, bool) {
 
 // HasIdentityId returns a boolean if a field has been set.
 func (o *RecommenderCalculations) HasIdentityId() bool {
-	if o != nil && !isNil(o.IdentityId) {
+	if o != nil && !IsNil(o.IdentityId) {
 		return true
 	}
 
@@ -90,7 +90,7 @@ func (o *RecommenderCalculations) SetIdentityId(v string) {
 
 // GetEntitlementId returns the EntitlementId field value if set, zero value otherwise.
 func (o *RecommenderCalculations) GetEntitlementId() string {
-	if o == nil || isNil(o.EntitlementId) {
+	if o == nil || IsNil(o.EntitlementId) {
 		var ret string
 		return ret
 	}
@@ -100,7 +100,7 @@ func (o *RecommenderCalculations) GetEntitlementId() string {
 // GetEntitlementIdOk returns a tuple with the EntitlementId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RecommenderCalculations) GetEntitlementIdOk() (*string, bool) {
-	if o == nil || isNil(o.EntitlementId) {
+	if o == nil || IsNil(o.EntitlementId) {
 		return nil, false
 	}
 	return o.EntitlementId, true
@@ -108,7 +108,7 @@ func (o *RecommenderCalculations) GetEntitlementIdOk() (*string, bool) {
 
 // HasEntitlementId returns a boolean if a field has been set.
 func (o *RecommenderCalculations) HasEntitlementId() bool {
-	if o != nil && !isNil(o.EntitlementId) {
+	if o != nil && !IsNil(o.EntitlementId) {
 		return true
 	}
 
@@ -122,7 +122,7 @@ func (o *RecommenderCalculations) SetEntitlementId(v string) {
 
 // GetRecommendation returns the Recommendation field value if set, zero value otherwise.
 func (o *RecommenderCalculations) GetRecommendation() string {
-	if o == nil || isNil(o.Recommendation) {
+	if o == nil || IsNil(o.Recommendation) {
 		var ret string
 		return ret
 	}
@@ -132,7 +132,7 @@ func (o *RecommenderCalculations) GetRecommendation() string {
 // GetRecommendationOk returns a tuple with the Recommendation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RecommenderCalculations) GetRecommendationOk() (*string, bool) {
-	if o == nil || isNil(o.Recommendation) {
+	if o == nil || IsNil(o.Recommendation) {
 		return nil, false
 	}
 	return o.Recommendation, true
@@ -140,7 +140,7 @@ func (o *RecommenderCalculations) GetRecommendationOk() (*string, bool) {
 
 // HasRecommendation returns a boolean if a field has been set.
 func (o *RecommenderCalculations) HasRecommendation() bool {
-	if o != nil && !isNil(o.Recommendation) {
+	if o != nil && !IsNil(o.Recommendation) {
 		return true
 	}
 
@@ -154,7 +154,7 @@ func (o *RecommenderCalculations) SetRecommendation(v string) {
 
 // GetOverallWeightedScore returns the OverallWeightedScore field value if set, zero value otherwise.
 func (o *RecommenderCalculations) GetOverallWeightedScore() float32 {
-	if o == nil || isNil(o.OverallWeightedScore) {
+	if o == nil || IsNil(o.OverallWeightedScore) {
 		var ret float32
 		return ret
 	}
@@ -164,7 +164,7 @@ func (o *RecommenderCalculations) GetOverallWeightedScore() float32 {
 // GetOverallWeightedScoreOk returns a tuple with the OverallWeightedScore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RecommenderCalculations) GetOverallWeightedScoreOk() (*float32, bool) {
-	if o == nil || isNil(o.OverallWeightedScore) {
+	if o == nil || IsNil(o.OverallWeightedScore) {
 		return nil, false
 	}
 	return o.OverallWeightedScore, true
@@ -172,7 +172,7 @@ func (o *RecommenderCalculations) GetOverallWeightedScoreOk() (*float32, bool) {
 
 // HasOverallWeightedScore returns a boolean if a field has been set.
 func (o *RecommenderCalculations) HasOverallWeightedScore() bool {
-	if o != nil && !isNil(o.OverallWeightedScore) {
+	if o != nil && !IsNil(o.OverallWeightedScore) {
 		return true
 	}
 
@@ -186,7 +186,7 @@ func (o *RecommenderCalculations) SetOverallWeightedScore(v float32) {
 
 // GetFeatureWeightedScores returns the FeatureWeightedScores field value if set, zero value otherwise.
 func (o *RecommenderCalculations) GetFeatureWeightedScores() map[string]float32 {
-	if o == nil || isNil(o.FeatureWeightedScores) {
+	if o == nil || IsNil(o.FeatureWeightedScores) {
 		var ret map[string]float32
 		return ret
 	}
@@ -196,7 +196,7 @@ func (o *RecommenderCalculations) GetFeatureWeightedScores() map[string]float32 
 // GetFeatureWeightedScoresOk returns a tuple with the FeatureWeightedScores field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RecommenderCalculations) GetFeatureWeightedScoresOk() (*map[string]float32, bool) {
-	if o == nil || isNil(o.FeatureWeightedScores) {
+	if o == nil || IsNil(o.FeatureWeightedScores) {
 		return nil, false
 	}
 	return o.FeatureWeightedScores, true
@@ -204,7 +204,7 @@ func (o *RecommenderCalculations) GetFeatureWeightedScoresOk() (*map[string]floa
 
 // HasFeatureWeightedScores returns a boolean if a field has been set.
 func (o *RecommenderCalculations) HasFeatureWeightedScores() bool {
-	if o != nil && !isNil(o.FeatureWeightedScores) {
+	if o != nil && !IsNil(o.FeatureWeightedScores) {
 		return true
 	}
 
@@ -218,7 +218,7 @@ func (o *RecommenderCalculations) SetFeatureWeightedScores(v map[string]float32)
 
 // GetThreshold returns the Threshold field value if set, zero value otherwise.
 func (o *RecommenderCalculations) GetThreshold() float32 {
-	if o == nil || isNil(o.Threshold) {
+	if o == nil || IsNil(o.Threshold) {
 		var ret float32
 		return ret
 	}
@@ -228,7 +228,7 @@ func (o *RecommenderCalculations) GetThreshold() float32 {
 // GetThresholdOk returns a tuple with the Threshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RecommenderCalculations) GetThresholdOk() (*float32, bool) {
-	if o == nil || isNil(o.Threshold) {
+	if o == nil || IsNil(o.Threshold) {
 		return nil, false
 	}
 	return o.Threshold, true
@@ -236,7 +236,7 @@ func (o *RecommenderCalculations) GetThresholdOk() (*float32, bool) {
 
 // HasThreshold returns a boolean if a field has been set.
 func (o *RecommenderCalculations) HasThreshold() bool {
-	if o != nil && !isNil(o.Threshold) {
+	if o != nil && !IsNil(o.Threshold) {
 		return true
 	}
 
@@ -250,7 +250,7 @@ func (o *RecommenderCalculations) SetThreshold(v float32) {
 
 // GetIdentityAttributes returns the IdentityAttributes field value if set, zero value otherwise.
 func (o *RecommenderCalculations) GetIdentityAttributes() map[string]RecommenderCalculationsIdentityAttributesValue {
-	if o == nil || isNil(o.IdentityAttributes) {
+	if o == nil || IsNil(o.IdentityAttributes) {
 		var ret map[string]RecommenderCalculationsIdentityAttributesValue
 		return ret
 	}
@@ -260,7 +260,7 @@ func (o *RecommenderCalculations) GetIdentityAttributes() map[string]Recommender
 // GetIdentityAttributesOk returns a tuple with the IdentityAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RecommenderCalculations) GetIdentityAttributesOk() (*map[string]RecommenderCalculationsIdentityAttributesValue, bool) {
-	if o == nil || isNil(o.IdentityAttributes) {
+	if o == nil || IsNil(o.IdentityAttributes) {
 		return nil, false
 	}
 	return o.IdentityAttributes, true
@@ -268,7 +268,7 @@ func (o *RecommenderCalculations) GetIdentityAttributesOk() (*map[string]Recomme
 
 // HasIdentityAttributes returns a boolean if a field has been set.
 func (o *RecommenderCalculations) HasIdentityAttributes() bool {
-	if o != nil && !isNil(o.IdentityAttributes) {
+	if o != nil && !IsNil(o.IdentityAttributes) {
 		return true
 	}
 
@@ -282,7 +282,7 @@ func (o *RecommenderCalculations) SetIdentityAttributes(v map[string]Recommender
 
 // GetFeatureValues returns the FeatureValues field value if set, zero value otherwise.
 func (o *RecommenderCalculations) GetFeatureValues() FeatureValueDto {
-	if o == nil || isNil(o.FeatureValues) {
+	if o == nil || IsNil(o.FeatureValues) {
 		var ret FeatureValueDto
 		return ret
 	}
@@ -292,7 +292,7 @@ func (o *RecommenderCalculations) GetFeatureValues() FeatureValueDto {
 // GetFeatureValuesOk returns a tuple with the FeatureValues field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RecommenderCalculations) GetFeatureValuesOk() (*FeatureValueDto, bool) {
-	if o == nil || isNil(o.FeatureValues) {
+	if o == nil || IsNil(o.FeatureValues) {
 		return nil, false
 	}
 	return o.FeatureValues, true
@@ -300,7 +300,7 @@ func (o *RecommenderCalculations) GetFeatureValuesOk() (*FeatureValueDto, bool) 
 
 // HasFeatureValues returns a boolean if a field has been set.
 func (o *RecommenderCalculations) HasFeatureValues() bool {
-	if o != nil && !isNil(o.FeatureValues) {
+	if o != nil && !IsNil(o.FeatureValues) {
 		return true
 	}
 
@@ -322,28 +322,28 @@ func (o RecommenderCalculations) MarshalJSON() ([]byte, error) {
 
 func (o RecommenderCalculations) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.IdentityId) {
+	if !IsNil(o.IdentityId) {
 		toSerialize["identityId"] = o.IdentityId
 	}
-	if !isNil(o.EntitlementId) {
+	if !IsNil(o.EntitlementId) {
 		toSerialize["entitlementId"] = o.EntitlementId
 	}
-	if !isNil(o.Recommendation) {
+	if !IsNil(o.Recommendation) {
 		toSerialize["recommendation"] = o.Recommendation
 	}
-	if !isNil(o.OverallWeightedScore) {
+	if !IsNil(o.OverallWeightedScore) {
 		toSerialize["overallWeightedScore"] = o.OverallWeightedScore
 	}
-	if !isNil(o.FeatureWeightedScores) {
+	if !IsNil(o.FeatureWeightedScores) {
 		toSerialize["featureWeightedScores"] = o.FeatureWeightedScores
 	}
-	if !isNil(o.Threshold) {
+	if !IsNil(o.Threshold) {
 		toSerialize["threshold"] = o.Threshold
 	}
-	if !isNil(o.IdentityAttributes) {
+	if !IsNil(o.IdentityAttributes) {
 		toSerialize["identityAttributes"] = o.IdentityAttributes
 	}
-	if !isNil(o.FeatureValues) {
+	if !IsNil(o.FeatureValues) {
 		toSerialize["featureValues"] = o.FeatureValues
 	}
 
@@ -354,16 +354,20 @@ func (o RecommenderCalculations) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *RecommenderCalculations) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RecommenderCalculations) UnmarshalJSON(data []byte) (err error) {
 	varRecommenderCalculations := _RecommenderCalculations{}
 
-	if err = json.Unmarshal(bytes, &varRecommenderCalculations); err == nil {
+	err = json.Unmarshal(data, &varRecommenderCalculations)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RecommenderCalculations(varRecommenderCalculations)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "identityId")
 		delete(additionalProperties, "entitlementId")
 		delete(additionalProperties, "recommendation")

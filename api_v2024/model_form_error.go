@@ -49,7 +49,7 @@ func NewFormErrorWithDefaults() *FormError {
 
 // GetKey returns the Key field value if set, zero value otherwise.
 func (o *FormError) GetKey() string {
-	if o == nil || isNil(o.Key) {
+	if o == nil || IsNil(o.Key) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *FormError) GetKey() string {
 // GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormError) GetKeyOk() (*string, bool) {
-	if o == nil || isNil(o.Key) {
+	if o == nil || IsNil(o.Key) {
 		return nil, false
 	}
 	return o.Key, true
@@ -67,7 +67,7 @@ func (o *FormError) GetKeyOk() (*string, bool) {
 
 // HasKey returns a boolean if a field has been set.
 func (o *FormError) HasKey() bool {
-	if o != nil && !isNil(o.Key) {
+	if o != nil && !IsNil(o.Key) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *FormError) SetKey(v string) {
 
 // GetMessages returns the Messages field value if set, zero value otherwise.
 func (o *FormError) GetMessages() []ErrorMessage {
-	if o == nil || isNil(o.Messages) {
+	if o == nil || IsNil(o.Messages) {
 		var ret []ErrorMessage
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *FormError) GetMessages() []ErrorMessage {
 // GetMessagesOk returns a tuple with the Messages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormError) GetMessagesOk() ([]ErrorMessage, bool) {
-	if o == nil || isNil(o.Messages) {
+	if o == nil || IsNil(o.Messages) {
 		return nil, false
 	}
 	return o.Messages, true
@@ -99,7 +99,7 @@ func (o *FormError) GetMessagesOk() ([]ErrorMessage, bool) {
 
 // HasMessages returns a boolean if a field has been set.
 func (o *FormError) HasMessages() bool {
-	if o != nil && !isNil(o.Messages) {
+	if o != nil && !IsNil(o.Messages) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *FormError) SetMessages(v []ErrorMessage) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *FormError) GetValue() map[string]interface{} {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *FormError) GetValue() map[string]interface{} {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormError) GetValueOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		return map[string]interface{}{}, false
 	}
 	return o.Value, true
@@ -131,7 +131,7 @@ func (o *FormError) GetValueOk() (map[string]interface{}, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *FormError) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o FormError) MarshalJSON() ([]byte, error) {
 
 func (o FormError) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Key) {
+	if !IsNil(o.Key) {
 		toSerialize["key"] = o.Key
 	}
-	if !isNil(o.Messages) {
+	if !IsNil(o.Messages) {
 		toSerialize["messages"] = o.Messages
 	}
-	if !isNil(o.Value) {
+	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
 
@@ -170,16 +170,20 @@ func (o FormError) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *FormError) UnmarshalJSON(bytes []byte) (err error) {
+func (o *FormError) UnmarshalJSON(data []byte) (err error) {
 	varFormError := _FormError{}
 
-	if err = json.Unmarshal(bytes, &varFormError); err == nil {
+	err = json.Unmarshal(data, &varFormError)
+
+	if err != nil {
+		return err
+	}
+
 	*o = FormError(varFormError)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "key")
 		delete(additionalProperties, "messages")
 		delete(additionalProperties, "value")

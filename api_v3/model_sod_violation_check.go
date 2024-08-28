@@ -74,7 +74,7 @@ func (o *SodViolationCheck) SetRequestId(v string) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *SodViolationCheck) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -84,7 +84,7 @@ func (o *SodViolationCheck) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SodViolationCheck) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -92,7 +92,7 @@ func (o *SodViolationCheck) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *SodViolationCheck) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -115,7 +115,9 @@ func (o SodViolationCheck) MarshalJSON() ([]byte, error) {
 func (o SodViolationCheck) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["requestId"] = o.RequestId
-	// skip: created is readOnly
+	if !IsNil(o.Created) {
+		toSerialize["created"] = o.Created
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -124,8 +126,8 @@ func (o SodViolationCheck) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SodViolationCheck) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *SodViolationCheck) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -134,7 +136,7 @@ func (o *SodViolationCheck) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -148,13 +150,17 @@ func (o *SodViolationCheck) UnmarshalJSON(bytes []byte) (err error) {
 
 	varSodViolationCheck := _SodViolationCheck{}
 
-	if err = json.Unmarshal(bytes, &varSodViolationCheck); err == nil {
+	err = json.Unmarshal(data, &varSodViolationCheck)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SodViolationCheck(varSodViolationCheck)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "requestId")
 		delete(additionalProperties, "created")
 		o.AdditionalProperties = additionalProperties

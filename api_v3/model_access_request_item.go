@@ -105,7 +105,7 @@ func (o *AccessRequestItem) SetId(v string) {
 
 // GetComment returns the Comment field value if set, zero value otherwise.
 func (o *AccessRequestItem) GetComment() string {
-	if o == nil || isNil(o.Comment) {
+	if o == nil || IsNil(o.Comment) {
 		var ret string
 		return ret
 	}
@@ -115,7 +115,7 @@ func (o *AccessRequestItem) GetComment() string {
 // GetCommentOk returns a tuple with the Comment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestItem) GetCommentOk() (*string, bool) {
-	if o == nil || isNil(o.Comment) {
+	if o == nil || IsNil(o.Comment) {
 		return nil, false
 	}
 	return o.Comment, true
@@ -123,7 +123,7 @@ func (o *AccessRequestItem) GetCommentOk() (*string, bool) {
 
 // HasComment returns a boolean if a field has been set.
 func (o *AccessRequestItem) HasComment() bool {
-	if o != nil && !isNil(o.Comment) {
+	if o != nil && !IsNil(o.Comment) {
 		return true
 	}
 
@@ -137,7 +137,7 @@ func (o *AccessRequestItem) SetComment(v string) {
 
 // GetClientMetadata returns the ClientMetadata field value if set, zero value otherwise.
 func (o *AccessRequestItem) GetClientMetadata() map[string]string {
-	if o == nil || isNil(o.ClientMetadata) {
+	if o == nil || IsNil(o.ClientMetadata) {
 		var ret map[string]string
 		return ret
 	}
@@ -147,7 +147,7 @@ func (o *AccessRequestItem) GetClientMetadata() map[string]string {
 // GetClientMetadataOk returns a tuple with the ClientMetadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestItem) GetClientMetadataOk() (*map[string]string, bool) {
-	if o == nil || isNil(o.ClientMetadata) {
+	if o == nil || IsNil(o.ClientMetadata) {
 		return nil, false
 	}
 	return o.ClientMetadata, true
@@ -155,7 +155,7 @@ func (o *AccessRequestItem) GetClientMetadataOk() (*map[string]string, bool) {
 
 // HasClientMetadata returns a boolean if a field has been set.
 func (o *AccessRequestItem) HasClientMetadata() bool {
-	if o != nil && !isNil(o.ClientMetadata) {
+	if o != nil && !IsNil(o.ClientMetadata) {
 		return true
 	}
 
@@ -169,7 +169,7 @@ func (o *AccessRequestItem) SetClientMetadata(v map[string]string) {
 
 // GetRemoveDate returns the RemoveDate field value if set, zero value otherwise.
 func (o *AccessRequestItem) GetRemoveDate() time.Time {
-	if o == nil || isNil(o.RemoveDate) {
+	if o == nil || IsNil(o.RemoveDate) {
 		var ret time.Time
 		return ret
 	}
@@ -179,7 +179,7 @@ func (o *AccessRequestItem) GetRemoveDate() time.Time {
 // GetRemoveDateOk returns a tuple with the RemoveDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestItem) GetRemoveDateOk() (*time.Time, bool) {
-	if o == nil || isNil(o.RemoveDate) {
+	if o == nil || IsNil(o.RemoveDate) {
 		return nil, false
 	}
 	return o.RemoveDate, true
@@ -187,7 +187,7 @@ func (o *AccessRequestItem) GetRemoveDateOk() (*time.Time, bool) {
 
 // HasRemoveDate returns a boolean if a field has been set.
 func (o *AccessRequestItem) HasRemoveDate() bool {
-	if o != nil && !isNil(o.RemoveDate) {
+	if o != nil && !IsNil(o.RemoveDate) {
 		return true
 	}
 
@@ -211,13 +211,13 @@ func (o AccessRequestItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["id"] = o.Id
-	if !isNil(o.Comment) {
+	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if !isNil(o.ClientMetadata) {
+	if !IsNil(o.ClientMetadata) {
 		toSerialize["clientMetadata"] = o.ClientMetadata
 	}
-	if !isNil(o.RemoveDate) {
+	if !IsNil(o.RemoveDate) {
 		toSerialize["removeDate"] = o.RemoveDate
 	}
 
@@ -228,8 +228,8 @@ func (o AccessRequestItem) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccessRequestItem) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *AccessRequestItem) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -239,7 +239,7 @@ func (o *AccessRequestItem) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -253,13 +253,17 @@ func (o *AccessRequestItem) UnmarshalJSON(bytes []byte) (err error) {
 
 	varAccessRequestItem := _AccessRequestItem{}
 
-	if err = json.Unmarshal(bytes, &varAccessRequestItem); err == nil {
+	err = json.Unmarshal(data, &varAccessRequestItem)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessRequestItem(varAccessRequestItem)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "comment")

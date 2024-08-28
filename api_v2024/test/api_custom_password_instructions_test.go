@@ -19,14 +19,14 @@ import (
 
 func Test_api_v2024_CustomPasswordInstructionsAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test CustomPasswordInstructionsAPIService CreateCustomPasswordInstructions", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.CustomPasswordInstructionsAPI.CreateCustomPasswordInstructions(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CustomPasswordInstructionsAPI.CreateCustomPasswordInstructions(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_v2024_CustomPasswordInstructionsAPIService(t *testing.T) {
 
 		var pageId string
 
-		httpRes, err := apiClient.API_V2024.CustomPasswordInstructionsAPI.DeleteCustomPasswordInstructions(context.Background(), pageId).Execute()
+		httpRes, err := apiClient.CustomPasswordInstructionsAPI.DeleteCustomPasswordInstructions(context.Background(), pageId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -53,7 +53,7 @@ func Test_api_v2024_CustomPasswordInstructionsAPIService(t *testing.T) {
 
 		var pageId string
 
-		resp, httpRes, err := apiClient.API_V2024.CustomPasswordInstructionsAPI.GetCustomPasswordInstructions(context.Background(), pageId).Execute()
+		resp, httpRes, err := apiClient.CustomPasswordInstructionsAPI.GetCustomPasswordInstructions(context.Background(), pageId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

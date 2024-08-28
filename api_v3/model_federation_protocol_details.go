@@ -47,7 +47,7 @@ func NewFederationProtocolDetailsWithDefaults() *FederationProtocolDetails {
 
 // GetRole returns the Role field value if set, zero value otherwise.
 func (o *FederationProtocolDetails) GetRole() string {
-	if o == nil || isNil(o.Role) {
+	if o == nil || IsNil(o.Role) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *FederationProtocolDetails) GetRole() string {
 // GetRoleOk returns a tuple with the Role field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FederationProtocolDetails) GetRoleOk() (*string, bool) {
-	if o == nil || isNil(o.Role) {
+	if o == nil || IsNil(o.Role) {
 		return nil, false
 	}
 	return o.Role, true
@@ -65,7 +65,7 @@ func (o *FederationProtocolDetails) GetRoleOk() (*string, bool) {
 
 // HasRole returns a boolean if a field has been set.
 func (o *FederationProtocolDetails) HasRole() bool {
-	if o != nil && !isNil(o.Role) {
+	if o != nil && !IsNil(o.Role) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *FederationProtocolDetails) SetRole(v string) {
 
 // GetEntityId returns the EntityId field value if set, zero value otherwise.
 func (o *FederationProtocolDetails) GetEntityId() string {
-	if o == nil || isNil(o.EntityId) {
+	if o == nil || IsNil(o.EntityId) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *FederationProtocolDetails) GetEntityId() string {
 // GetEntityIdOk returns a tuple with the EntityId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FederationProtocolDetails) GetEntityIdOk() (*string, bool) {
-	if o == nil || isNil(o.EntityId) {
+	if o == nil || IsNil(o.EntityId) {
 		return nil, false
 	}
 	return o.EntityId, true
@@ -97,7 +97,7 @@ func (o *FederationProtocolDetails) GetEntityIdOk() (*string, bool) {
 
 // HasEntityId returns a boolean if a field has been set.
 func (o *FederationProtocolDetails) HasEntityId() bool {
-	if o != nil && !isNil(o.EntityId) {
+	if o != nil && !IsNil(o.EntityId) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o FederationProtocolDetails) MarshalJSON() ([]byte, error) {
 
 func (o FederationProtocolDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Role) {
+	if !IsNil(o.Role) {
 		toSerialize["role"] = o.Role
 	}
-	if !isNil(o.EntityId) {
+	if !IsNil(o.EntityId) {
 		toSerialize["entityId"] = o.EntityId
 	}
 
@@ -133,16 +133,20 @@ func (o FederationProtocolDetails) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *FederationProtocolDetails) UnmarshalJSON(bytes []byte) (err error) {
+func (o *FederationProtocolDetails) UnmarshalJSON(data []byte) (err error) {
 	varFederationProtocolDetails := _FederationProtocolDetails{}
 
-	if err = json.Unmarshal(bytes, &varFederationProtocolDetails); err == nil {
+	err = json.Unmarshal(data, &varFederationProtocolDetails)
+
+	if err != nil {
+		return err
+	}
+
 	*o = FederationProtocolDetails(varFederationProtocolDetails)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "role")
 		delete(additionalProperties, "entityId")
 		o.AdditionalProperties = additionalProperties

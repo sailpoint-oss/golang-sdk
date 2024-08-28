@@ -46,7 +46,7 @@ func NewIdentityAttributeTransformWithDefaults() *IdentityAttributeTransform {
 
 // GetIdentityAttributeName returns the IdentityAttributeName field value if set, zero value otherwise.
 func (o *IdentityAttributeTransform) GetIdentityAttributeName() string {
-	if o == nil || isNil(o.IdentityAttributeName) {
+	if o == nil || IsNil(o.IdentityAttributeName) {
 		var ret string
 		return ret
 	}
@@ -56,7 +56,7 @@ func (o *IdentityAttributeTransform) GetIdentityAttributeName() string {
 // GetIdentityAttributeNameOk returns a tuple with the IdentityAttributeName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityAttributeTransform) GetIdentityAttributeNameOk() (*string, bool) {
-	if o == nil || isNil(o.IdentityAttributeName) {
+	if o == nil || IsNil(o.IdentityAttributeName) {
 		return nil, false
 	}
 	return o.IdentityAttributeName, true
@@ -64,7 +64,7 @@ func (o *IdentityAttributeTransform) GetIdentityAttributeNameOk() (*string, bool
 
 // HasIdentityAttributeName returns a boolean if a field has been set.
 func (o *IdentityAttributeTransform) HasIdentityAttributeName() bool {
-	if o != nil && !isNil(o.IdentityAttributeName) {
+	if o != nil && !IsNil(o.IdentityAttributeName) {
 		return true
 	}
 
@@ -78,7 +78,7 @@ func (o *IdentityAttributeTransform) SetIdentityAttributeName(v string) {
 
 // GetTransformDefinition returns the TransformDefinition field value if set, zero value otherwise.
 func (o *IdentityAttributeTransform) GetTransformDefinition() TransformDefinition {
-	if o == nil || isNil(o.TransformDefinition) {
+	if o == nil || IsNil(o.TransformDefinition) {
 		var ret TransformDefinition
 		return ret
 	}
@@ -88,7 +88,7 @@ func (o *IdentityAttributeTransform) GetTransformDefinition() TransformDefinitio
 // GetTransformDefinitionOk returns a tuple with the TransformDefinition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityAttributeTransform) GetTransformDefinitionOk() (*TransformDefinition, bool) {
-	if o == nil || isNil(o.TransformDefinition) {
+	if o == nil || IsNil(o.TransformDefinition) {
 		return nil, false
 	}
 	return o.TransformDefinition, true
@@ -96,7 +96,7 @@ func (o *IdentityAttributeTransform) GetTransformDefinitionOk() (*TransformDefin
 
 // HasTransformDefinition returns a boolean if a field has been set.
 func (o *IdentityAttributeTransform) HasTransformDefinition() bool {
-	if o != nil && !isNil(o.TransformDefinition) {
+	if o != nil && !IsNil(o.TransformDefinition) {
 		return true
 	}
 
@@ -118,10 +118,10 @@ func (o IdentityAttributeTransform) MarshalJSON() ([]byte, error) {
 
 func (o IdentityAttributeTransform) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.IdentityAttributeName) {
+	if !IsNil(o.IdentityAttributeName) {
 		toSerialize["identityAttributeName"] = o.IdentityAttributeName
 	}
-	if !isNil(o.TransformDefinition) {
+	if !IsNil(o.TransformDefinition) {
 		toSerialize["transformDefinition"] = o.TransformDefinition
 	}
 
@@ -132,16 +132,20 @@ func (o IdentityAttributeTransform) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *IdentityAttributeTransform) UnmarshalJSON(bytes []byte) (err error) {
+func (o *IdentityAttributeTransform) UnmarshalJSON(data []byte) (err error) {
 	varIdentityAttributeTransform := _IdentityAttributeTransform{}
 
-	if err = json.Unmarshal(bytes, &varIdentityAttributeTransform); err == nil {
+	err = json.Unmarshal(data, &varIdentityAttributeTransform)
+
+	if err != nil {
+		return err
+	}
+
 	*o = IdentityAttributeTransform(varIdentityAttributeTransform)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "identityAttributeName")
 		delete(additionalProperties, "transformDefinition")
 		o.AdditionalProperties = additionalProperties

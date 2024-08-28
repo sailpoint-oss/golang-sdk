@@ -51,7 +51,7 @@ func NewPeerGroupMemberWithDefaults() *PeerGroupMember {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *PeerGroupMember) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -61,7 +61,7 @@ func (o *PeerGroupMember) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PeerGroupMember) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -69,7 +69,7 @@ func (o *PeerGroupMember) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *PeerGroupMember) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -83,7 +83,7 @@ func (o *PeerGroupMember) SetId(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *PeerGroupMember) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -93,7 +93,7 @@ func (o *PeerGroupMember) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PeerGroupMember) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -101,7 +101,7 @@ func (o *PeerGroupMember) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *PeerGroupMember) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -115,7 +115,7 @@ func (o *PeerGroupMember) SetType(v string) {
 
 // GetPeerGroupId returns the PeerGroupId field value if set, zero value otherwise.
 func (o *PeerGroupMember) GetPeerGroupId() string {
-	if o == nil || isNil(o.PeerGroupId) {
+	if o == nil || IsNil(o.PeerGroupId) {
 		var ret string
 		return ret
 	}
@@ -125,7 +125,7 @@ func (o *PeerGroupMember) GetPeerGroupId() string {
 // GetPeerGroupIdOk returns a tuple with the PeerGroupId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PeerGroupMember) GetPeerGroupIdOk() (*string, bool) {
-	if o == nil || isNil(o.PeerGroupId) {
+	if o == nil || IsNil(o.PeerGroupId) {
 		return nil, false
 	}
 	return o.PeerGroupId, true
@@ -133,7 +133,7 @@ func (o *PeerGroupMember) GetPeerGroupIdOk() (*string, bool) {
 
 // HasPeerGroupId returns a boolean if a field has been set.
 func (o *PeerGroupMember) HasPeerGroupId() bool {
-	if o != nil && !isNil(o.PeerGroupId) {
+	if o != nil && !IsNil(o.PeerGroupId) {
 		return true
 	}
 
@@ -147,7 +147,7 @@ func (o *PeerGroupMember) SetPeerGroupId(v string) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *PeerGroupMember) GetAttributes() map[string]map[string]interface{} {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		var ret map[string]map[string]interface{}
 		return ret
 	}
@@ -157,7 +157,7 @@ func (o *PeerGroupMember) GetAttributes() map[string]map[string]interface{} {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PeerGroupMember) GetAttributesOk() (map[string]map[string]interface{}, bool) {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		return map[string]map[string]interface{}{}, false
 	}
 	return o.Attributes, true
@@ -165,7 +165,7 @@ func (o *PeerGroupMember) GetAttributesOk() (map[string]map[string]interface{}, 
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *PeerGroupMember) HasAttributes() bool {
-	if o != nil && !isNil(o.Attributes) {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -187,16 +187,16 @@ func (o PeerGroupMember) MarshalJSON() ([]byte, error) {
 
 func (o PeerGroupMember) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.PeerGroupId) {
+	if !IsNil(o.PeerGroupId) {
 		toSerialize["peer_group_id"] = o.PeerGroupId
 	}
-	if !isNil(o.Attributes) {
+	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
 
@@ -207,16 +207,20 @@ func (o PeerGroupMember) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *PeerGroupMember) UnmarshalJSON(bytes []byte) (err error) {
+func (o *PeerGroupMember) UnmarshalJSON(data []byte) (err error) {
 	varPeerGroupMember := _PeerGroupMember{}
 
-	if err = json.Unmarshal(bytes, &varPeerGroupMember); err == nil {
+	err = json.Unmarshal(data, &varPeerGroupMember)
+
+	if err != nil {
+		return err
+	}
+
 	*o = PeerGroupMember(varPeerGroupMember)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "peer_group_id")

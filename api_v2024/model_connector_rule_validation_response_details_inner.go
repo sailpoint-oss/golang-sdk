@@ -100,7 +100,7 @@ func (o *ConnectorRuleValidationResponseDetailsInner) SetColumn(v int32) {
 
 // GetMesssage returns the Messsage field value if set, zero value otherwise.
 func (o *ConnectorRuleValidationResponseDetailsInner) GetMesssage() string {
-	if o == nil || isNil(o.Messsage) {
+	if o == nil || IsNil(o.Messsage) {
 		var ret string
 		return ret
 	}
@@ -110,7 +110,7 @@ func (o *ConnectorRuleValidationResponseDetailsInner) GetMesssage() string {
 // GetMesssageOk returns a tuple with the Messsage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConnectorRuleValidationResponseDetailsInner) GetMesssageOk() (*string, bool) {
-	if o == nil || isNil(o.Messsage) {
+	if o == nil || IsNil(o.Messsage) {
 		return nil, false
 	}
 	return o.Messsage, true
@@ -118,7 +118,7 @@ func (o *ConnectorRuleValidationResponseDetailsInner) GetMesssageOk() (*string, 
 
 // HasMesssage returns a boolean if a field has been set.
 func (o *ConnectorRuleValidationResponseDetailsInner) HasMesssage() bool {
-	if o != nil && !isNil(o.Messsage) {
+	if o != nil && !IsNil(o.Messsage) {
 		return true
 	}
 
@@ -142,7 +142,7 @@ func (o ConnectorRuleValidationResponseDetailsInner) ToMap() (map[string]interfa
 	toSerialize := map[string]interface{}{}
 	toSerialize["line"] = o.Line
 	toSerialize["column"] = o.Column
-	if !isNil(o.Messsage) {
+	if !IsNil(o.Messsage) {
 		toSerialize["messsage"] = o.Messsage
 	}
 
@@ -153,8 +153,8 @@ func (o ConnectorRuleValidationResponseDetailsInner) ToMap() (map[string]interfa
 	return toSerialize, nil
 }
 
-func (o *ConnectorRuleValidationResponseDetailsInner) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *ConnectorRuleValidationResponseDetailsInner) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -164,7 +164,7 @@ func (o *ConnectorRuleValidationResponseDetailsInner) UnmarshalJSON(bytes []byte
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -178,13 +178,17 @@ func (o *ConnectorRuleValidationResponseDetailsInner) UnmarshalJSON(bytes []byte
 
 	varConnectorRuleValidationResponseDetailsInner := _ConnectorRuleValidationResponseDetailsInner{}
 
-	if err = json.Unmarshal(bytes, &varConnectorRuleValidationResponseDetailsInner); err == nil {
+	err = json.Unmarshal(data, &varConnectorRuleValidationResponseDetailsInner)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ConnectorRuleValidationResponseDetailsInner(varConnectorRuleValidationResponseDetailsInner)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "line")
 		delete(additionalProperties, "column")
 		delete(additionalProperties, "messsage")

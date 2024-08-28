@@ -53,7 +53,7 @@ func NewAccessItemAppResponseWithDefaults() *AccessItemAppResponse {
 
 // GetAccessType returns the AccessType field value if set, zero value otherwise.
 func (o *AccessItemAppResponse) GetAccessType() string {
-	if o == nil || isNil(o.AccessType) {
+	if o == nil || IsNil(o.AccessType) {
 		var ret string
 		return ret
 	}
@@ -63,7 +63,7 @@ func (o *AccessItemAppResponse) GetAccessType() string {
 // GetAccessTypeOk returns a tuple with the AccessType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemAppResponse) GetAccessTypeOk() (*string, bool) {
-	if o == nil || isNil(o.AccessType) {
+	if o == nil || IsNil(o.AccessType) {
 		return nil, false
 	}
 	return o.AccessType, true
@@ -71,7 +71,7 @@ func (o *AccessItemAppResponse) GetAccessTypeOk() (*string, bool) {
 
 // HasAccessType returns a boolean if a field has been set.
 func (o *AccessItemAppResponse) HasAccessType() bool {
-	if o != nil && !isNil(o.AccessType) {
+	if o != nil && !IsNil(o.AccessType) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o *AccessItemAppResponse) SetAccessType(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *AccessItemAppResponse) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -95,7 +95,7 @@ func (o *AccessItemAppResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemAppResponse) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -103,7 +103,7 @@ func (o *AccessItemAppResponse) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *AccessItemAppResponse) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -117,7 +117,7 @@ func (o *AccessItemAppResponse) SetId(v string) {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *AccessItemAppResponse) GetDisplayName() string {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -127,7 +127,7 @@ func (o *AccessItemAppResponse) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemAppResponse) GetDisplayNameOk() (*string, bool) {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -135,7 +135,7 @@ func (o *AccessItemAppResponse) GetDisplayNameOk() (*string, bool) {
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *AccessItemAppResponse) HasDisplayName() bool {
-	if o != nil && !isNil(o.DisplayName) {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -149,7 +149,7 @@ func (o *AccessItemAppResponse) SetDisplayName(v string) {
 
 // GetSourceName returns the SourceName field value if set, zero value otherwise.
 func (o *AccessItemAppResponse) GetSourceName() string {
-	if o == nil || isNil(o.SourceName) {
+	if o == nil || IsNil(o.SourceName) {
 		var ret string
 		return ret
 	}
@@ -159,7 +159,7 @@ func (o *AccessItemAppResponse) GetSourceName() string {
 // GetSourceNameOk returns a tuple with the SourceName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemAppResponse) GetSourceNameOk() (*string, bool) {
-	if o == nil || isNil(o.SourceName) {
+	if o == nil || IsNil(o.SourceName) {
 		return nil, false
 	}
 	return o.SourceName, true
@@ -167,7 +167,7 @@ func (o *AccessItemAppResponse) GetSourceNameOk() (*string, bool) {
 
 // HasSourceName returns a boolean if a field has been set.
 func (o *AccessItemAppResponse) HasSourceName() bool {
-	if o != nil && !isNil(o.SourceName) {
+	if o != nil && !IsNil(o.SourceName) {
 		return true
 	}
 
@@ -181,7 +181,7 @@ func (o *AccessItemAppResponse) SetSourceName(v string) {
 
 // GetAppRoleId returns the AppRoleId field value if set, zero value otherwise.
 func (o *AccessItemAppResponse) GetAppRoleId() string {
-	if o == nil || isNil(o.AppRoleId) {
+	if o == nil || IsNil(o.AppRoleId) {
 		var ret string
 		return ret
 	}
@@ -191,7 +191,7 @@ func (o *AccessItemAppResponse) GetAppRoleId() string {
 // GetAppRoleIdOk returns a tuple with the AppRoleId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemAppResponse) GetAppRoleIdOk() (*string, bool) {
-	if o == nil || isNil(o.AppRoleId) {
+	if o == nil || IsNil(o.AppRoleId) {
 		return nil, false
 	}
 	return o.AppRoleId, true
@@ -199,7 +199,7 @@ func (o *AccessItemAppResponse) GetAppRoleIdOk() (*string, bool) {
 
 // HasAppRoleId returns a boolean if a field has been set.
 func (o *AccessItemAppResponse) HasAppRoleId() bool {
-	if o != nil && !isNil(o.AppRoleId) {
+	if o != nil && !IsNil(o.AppRoleId) {
 		return true
 	}
 
@@ -221,19 +221,19 @@ func (o AccessItemAppResponse) MarshalJSON() ([]byte, error) {
 
 func (o AccessItemAppResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AccessType) {
+	if !IsNil(o.AccessType) {
 		toSerialize["accessType"] = o.AccessType
 	}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.DisplayName) {
+	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
-	if !isNil(o.SourceName) {
+	if !IsNil(o.SourceName) {
 		toSerialize["sourceName"] = o.SourceName
 	}
-	if !isNil(o.AppRoleId) {
+	if !IsNil(o.AppRoleId) {
 		toSerialize["appRoleId"] = o.AppRoleId
 	}
 
@@ -244,16 +244,20 @@ func (o AccessItemAppResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccessItemAppResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccessItemAppResponse) UnmarshalJSON(data []byte) (err error) {
 	varAccessItemAppResponse := _AccessItemAppResponse{}
 
-	if err = json.Unmarshal(bytes, &varAccessItemAppResponse); err == nil {
+	err = json.Unmarshal(data, &varAccessItemAppResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessItemAppResponse(varAccessItemAppResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "accessType")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "displayName")

@@ -46,7 +46,7 @@ func NewNonEmployeeRequestLiteWithDefaults() *NonEmployeeRequestLite {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *NonEmployeeRequestLite) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -56,7 +56,7 @@ func (o *NonEmployeeRequestLite) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeRequestLite) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -64,7 +64,7 @@ func (o *NonEmployeeRequestLite) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *NonEmployeeRequestLite) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -78,7 +78,7 @@ func (o *NonEmployeeRequestLite) SetId(v string) {
 
 // GetRequester returns the Requester field value if set, zero value otherwise.
 func (o *NonEmployeeRequestLite) GetRequester() NonEmployeeIdentityReferenceWithId {
-	if o == nil || isNil(o.Requester) {
+	if o == nil || IsNil(o.Requester) {
 		var ret NonEmployeeIdentityReferenceWithId
 		return ret
 	}
@@ -88,7 +88,7 @@ func (o *NonEmployeeRequestLite) GetRequester() NonEmployeeIdentityReferenceWith
 // GetRequesterOk returns a tuple with the Requester field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeRequestLite) GetRequesterOk() (*NonEmployeeIdentityReferenceWithId, bool) {
-	if o == nil || isNil(o.Requester) {
+	if o == nil || IsNil(o.Requester) {
 		return nil, false
 	}
 	return o.Requester, true
@@ -96,7 +96,7 @@ func (o *NonEmployeeRequestLite) GetRequesterOk() (*NonEmployeeIdentityReference
 
 // HasRequester returns a boolean if a field has been set.
 func (o *NonEmployeeRequestLite) HasRequester() bool {
-	if o != nil && !isNil(o.Requester) {
+	if o != nil && !IsNil(o.Requester) {
 		return true
 	}
 
@@ -118,10 +118,10 @@ func (o NonEmployeeRequestLite) MarshalJSON() ([]byte, error) {
 
 func (o NonEmployeeRequestLite) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Requester) {
+	if !IsNil(o.Requester) {
 		toSerialize["requester"] = o.Requester
 	}
 
@@ -132,16 +132,20 @@ func (o NonEmployeeRequestLite) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *NonEmployeeRequestLite) UnmarshalJSON(bytes []byte) (err error) {
+func (o *NonEmployeeRequestLite) UnmarshalJSON(data []byte) (err error) {
 	varNonEmployeeRequestLite := _NonEmployeeRequestLite{}
 
-	if err = json.Unmarshal(bytes, &varNonEmployeeRequestLite); err == nil {
+	err = json.Unmarshal(data, &varNonEmployeeRequestLite)
+
+	if err != nil {
+		return err
+	}
+
 	*o = NonEmployeeRequestLite(varNonEmployeeRequestLite)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "requester")
 		o.AdditionalProperties = additionalProperties

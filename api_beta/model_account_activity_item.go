@@ -69,7 +69,7 @@ func NewAccountActivityItemWithDefaults() *AccountActivityItem {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *AccountActivityItem) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -79,7 +79,7 @@ func (o *AccountActivityItem) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountActivityItem) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -87,7 +87,7 @@ func (o *AccountActivityItem) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *AccountActivityItem) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -101,7 +101,7 @@ func (o *AccountActivityItem) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *AccountActivityItem) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -111,7 +111,7 @@ func (o *AccountActivityItem) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountActivityItem) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -119,7 +119,7 @@ func (o *AccountActivityItem) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *AccountActivityItem) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -133,7 +133,7 @@ func (o *AccountActivityItem) SetName(v string) {
 
 // GetRequested returns the Requested field value if set, zero value otherwise.
 func (o *AccountActivityItem) GetRequested() time.Time {
-	if o == nil || isNil(o.Requested) {
+	if o == nil || IsNil(o.Requested) {
 		var ret time.Time
 		return ret
 	}
@@ -143,7 +143,7 @@ func (o *AccountActivityItem) GetRequested() time.Time {
 // GetRequestedOk returns a tuple with the Requested field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountActivityItem) GetRequestedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Requested) {
+	if o == nil || IsNil(o.Requested) {
 		return nil, false
 	}
 	return o.Requested, true
@@ -151,7 +151,7 @@ func (o *AccountActivityItem) GetRequestedOk() (*time.Time, bool) {
 
 // HasRequested returns a boolean if a field has been set.
 func (o *AccountActivityItem) HasRequested() bool {
-	if o != nil && !isNil(o.Requested) {
+	if o != nil && !IsNil(o.Requested) {
 		return true
 	}
 
@@ -165,7 +165,7 @@ func (o *AccountActivityItem) SetRequested(v time.Time) {
 
 // GetApprovalStatus returns the ApprovalStatus field value if set, zero value otherwise.
 func (o *AccountActivityItem) GetApprovalStatus() AccountActivityApprovalStatus {
-	if o == nil || isNil(o.ApprovalStatus) {
+	if o == nil || IsNil(o.ApprovalStatus) {
 		var ret AccountActivityApprovalStatus
 		return ret
 	}
@@ -175,7 +175,7 @@ func (o *AccountActivityItem) GetApprovalStatus() AccountActivityApprovalStatus 
 // GetApprovalStatusOk returns a tuple with the ApprovalStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountActivityItem) GetApprovalStatusOk() (*AccountActivityApprovalStatus, bool) {
-	if o == nil || isNil(o.ApprovalStatus) {
+	if o == nil || IsNil(o.ApprovalStatus) {
 		return nil, false
 	}
 	return o.ApprovalStatus, true
@@ -183,7 +183,7 @@ func (o *AccountActivityItem) GetApprovalStatusOk() (*AccountActivityApprovalSta
 
 // HasApprovalStatus returns a boolean if a field has been set.
 func (o *AccountActivityItem) HasApprovalStatus() bool {
-	if o != nil && !isNil(o.ApprovalStatus) {
+	if o != nil && !IsNil(o.ApprovalStatus) {
 		return true
 	}
 
@@ -197,7 +197,7 @@ func (o *AccountActivityItem) SetApprovalStatus(v AccountActivityApprovalStatus)
 
 // GetProvisioningStatus returns the ProvisioningStatus field value if set, zero value otherwise.
 func (o *AccountActivityItem) GetProvisioningStatus() ProvisioningState {
-	if o == nil || isNil(o.ProvisioningStatus) {
+	if o == nil || IsNil(o.ProvisioningStatus) {
 		var ret ProvisioningState
 		return ret
 	}
@@ -207,7 +207,7 @@ func (o *AccountActivityItem) GetProvisioningStatus() ProvisioningState {
 // GetProvisioningStatusOk returns a tuple with the ProvisioningStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountActivityItem) GetProvisioningStatusOk() (*ProvisioningState, bool) {
-	if o == nil || isNil(o.ProvisioningStatus) {
+	if o == nil || IsNil(o.ProvisioningStatus) {
 		return nil, false
 	}
 	return o.ProvisioningStatus, true
@@ -215,7 +215,7 @@ func (o *AccountActivityItem) GetProvisioningStatusOk() (*ProvisioningState, boo
 
 // HasProvisioningStatus returns a boolean if a field has been set.
 func (o *AccountActivityItem) HasProvisioningStatus() bool {
-	if o != nil && !isNil(o.ProvisioningStatus) {
+	if o != nil && !IsNil(o.ProvisioningStatus) {
 		return true
 	}
 
@@ -229,7 +229,7 @@ func (o *AccountActivityItem) SetProvisioningStatus(v ProvisioningState) {
 
 // GetRequesterComment returns the RequesterComment field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountActivityItem) GetRequesterComment() Comment {
-	if o == nil || isNil(o.RequesterComment.Get()) {
+	if o == nil || IsNil(o.RequesterComment.Get()) {
 		var ret Comment
 		return ret
 	}
@@ -271,7 +271,7 @@ func (o *AccountActivityItem) UnsetRequesterComment() {
 
 // GetReviewerIdentitySummary returns the ReviewerIdentitySummary field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountActivityItem) GetReviewerIdentitySummary() IdentitySummary {
-	if o == nil || isNil(o.ReviewerIdentitySummary.Get()) {
+	if o == nil || IsNil(o.ReviewerIdentitySummary.Get()) {
 		var ret IdentitySummary
 		return ret
 	}
@@ -313,7 +313,7 @@ func (o *AccountActivityItem) UnsetReviewerIdentitySummary() {
 
 // GetReviewerComment returns the ReviewerComment field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountActivityItem) GetReviewerComment() Comment {
-	if o == nil || isNil(o.ReviewerComment.Get()) {
+	if o == nil || IsNil(o.ReviewerComment.Get()) {
 		var ret Comment
 		return ret
 	}
@@ -355,7 +355,7 @@ func (o *AccountActivityItem) UnsetReviewerComment() {
 
 // GetOperation returns the Operation field value if set, zero value otherwise.
 func (o *AccountActivityItem) GetOperation() AccountActivityItemOperation {
-	if o == nil || isNil(o.Operation) {
+	if o == nil || IsNil(o.Operation) {
 		var ret AccountActivityItemOperation
 		return ret
 	}
@@ -365,7 +365,7 @@ func (o *AccountActivityItem) GetOperation() AccountActivityItemOperation {
 // GetOperationOk returns a tuple with the Operation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountActivityItem) GetOperationOk() (*AccountActivityItemOperation, bool) {
-	if o == nil || isNil(o.Operation) {
+	if o == nil || IsNil(o.Operation) {
 		return nil, false
 	}
 	return o.Operation, true
@@ -373,7 +373,7 @@ func (o *AccountActivityItem) GetOperationOk() (*AccountActivityItemOperation, b
 
 // HasOperation returns a boolean if a field has been set.
 func (o *AccountActivityItem) HasOperation() bool {
-	if o != nil && !isNil(o.Operation) {
+	if o != nil && !IsNil(o.Operation) {
 		return true
 	}
 
@@ -387,7 +387,7 @@ func (o *AccountActivityItem) SetOperation(v AccountActivityItemOperation) {
 
 // GetAttribute returns the Attribute field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountActivityItem) GetAttribute() string {
-	if o == nil || isNil(o.Attribute.Get()) {
+	if o == nil || IsNil(o.Attribute.Get()) {
 		var ret string
 		return ret
 	}
@@ -429,7 +429,7 @@ func (o *AccountActivityItem) UnsetAttribute() {
 
 // GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountActivityItem) GetValue() string {
-	if o == nil || isNil(o.Value.Get()) {
+	if o == nil || IsNil(o.Value.Get()) {
 		var ret string
 		return ret
 	}
@@ -471,7 +471,7 @@ func (o *AccountActivityItem) UnsetValue() {
 
 // GetNativeIdentity returns the NativeIdentity field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountActivityItem) GetNativeIdentity() string {
-	if o == nil || isNil(o.NativeIdentity.Get()) {
+	if o == nil || IsNil(o.NativeIdentity.Get()) {
 		var ret string
 		return ret
 	}
@@ -513,7 +513,7 @@ func (o *AccountActivityItem) UnsetNativeIdentity() {
 
 // GetSourceId returns the SourceId field value if set, zero value otherwise.
 func (o *AccountActivityItem) GetSourceId() string {
-	if o == nil || isNil(o.SourceId) {
+	if o == nil || IsNil(o.SourceId) {
 		var ret string
 		return ret
 	}
@@ -523,7 +523,7 @@ func (o *AccountActivityItem) GetSourceId() string {
 // GetSourceIdOk returns a tuple with the SourceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountActivityItem) GetSourceIdOk() (*string, bool) {
-	if o == nil || isNil(o.SourceId) {
+	if o == nil || IsNil(o.SourceId) {
 		return nil, false
 	}
 	return o.SourceId, true
@@ -531,7 +531,7 @@ func (o *AccountActivityItem) GetSourceIdOk() (*string, bool) {
 
 // HasSourceId returns a boolean if a field has been set.
 func (o *AccountActivityItem) HasSourceId() bool {
-	if o != nil && !isNil(o.SourceId) {
+	if o != nil && !IsNil(o.SourceId) {
 		return true
 	}
 
@@ -545,7 +545,7 @@ func (o *AccountActivityItem) SetSourceId(v string) {
 
 // GetAccountRequestInfo returns the AccountRequestInfo field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountActivityItem) GetAccountRequestInfo() AccountRequestInfo {
-	if o == nil || isNil(o.AccountRequestInfo.Get()) {
+	if o == nil || IsNil(o.AccountRequestInfo.Get()) {
 		var ret AccountRequestInfo
 		return ret
 	}
@@ -598,7 +598,7 @@ func (o *AccountActivityItem) GetClientMetadata() map[string]string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountActivityItem) GetClientMetadataOk() (*map[string]string, bool) {
-	if o == nil || isNil(o.ClientMetadata) {
+	if o == nil || IsNil(o.ClientMetadata) {
 		return nil, false
 	}
 	return &o.ClientMetadata, true
@@ -606,7 +606,7 @@ func (o *AccountActivityItem) GetClientMetadataOk() (*map[string]string, bool) {
 
 // HasClientMetadata returns a boolean if a field has been set.
 func (o *AccountActivityItem) HasClientMetadata() bool {
-	if o != nil && isNil(o.ClientMetadata) {
+	if o != nil && !IsNil(o.ClientMetadata) {
 		return true
 	}
 
@@ -620,7 +620,7 @@ func (o *AccountActivityItem) SetClientMetadata(v map[string]string) {
 
 // GetRemoveDate returns the RemoveDate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountActivityItem) GetRemoveDate() time.Time {
-	if o == nil || isNil(o.RemoveDate.Get()) {
+	if o == nil || IsNil(o.RemoveDate.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -670,19 +670,19 @@ func (o AccountActivityItem) MarshalJSON() ([]byte, error) {
 
 func (o AccountActivityItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Requested) {
+	if !IsNil(o.Requested) {
 		toSerialize["requested"] = o.Requested
 	}
-	if !isNil(o.ApprovalStatus) {
+	if !IsNil(o.ApprovalStatus) {
 		toSerialize["approvalStatus"] = o.ApprovalStatus
 	}
-	if !isNil(o.ProvisioningStatus) {
+	if !IsNil(o.ProvisioningStatus) {
 		toSerialize["provisioningStatus"] = o.ProvisioningStatus
 	}
 	if o.RequesterComment.IsSet() {
@@ -694,7 +694,7 @@ func (o AccountActivityItem) ToMap() (map[string]interface{}, error) {
 	if o.ReviewerComment.IsSet() {
 		toSerialize["reviewerComment"] = o.ReviewerComment.Get()
 	}
-	if !isNil(o.Operation) {
+	if !IsNil(o.Operation) {
 		toSerialize["operation"] = o.Operation
 	}
 	if o.Attribute.IsSet() {
@@ -706,7 +706,7 @@ func (o AccountActivityItem) ToMap() (map[string]interface{}, error) {
 	if o.NativeIdentity.IsSet() {
 		toSerialize["nativeIdentity"] = o.NativeIdentity.Get()
 	}
-	if !isNil(o.SourceId) {
+	if !IsNil(o.SourceId) {
 		toSerialize["sourceId"] = o.SourceId
 	}
 	if o.AccountRequestInfo.IsSet() {
@@ -726,16 +726,20 @@ func (o AccountActivityItem) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccountActivityItem) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccountActivityItem) UnmarshalJSON(data []byte) (err error) {
 	varAccountActivityItem := _AccountActivityItem{}
 
-	if err = json.Unmarshal(bytes, &varAccountActivityItem); err == nil {
+	err = json.Unmarshal(data, &varAccountActivityItem)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccountActivityItem(varAccountActivityItem)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "requested")

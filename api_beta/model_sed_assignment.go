@@ -46,7 +46,7 @@ func NewSedAssignmentWithDefaults() *SedAssignment {
 
 // GetAssignee returns the Assignee field value if set, zero value otherwise.
 func (o *SedAssignment) GetAssignee() SedAssignee {
-	if o == nil || isNil(o.Assignee) {
+	if o == nil || IsNil(o.Assignee) {
 		var ret SedAssignee
 		return ret
 	}
@@ -56,7 +56,7 @@ func (o *SedAssignment) GetAssignee() SedAssignee {
 // GetAssigneeOk returns a tuple with the Assignee field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SedAssignment) GetAssigneeOk() (*SedAssignee, bool) {
-	if o == nil || isNil(o.Assignee) {
+	if o == nil || IsNil(o.Assignee) {
 		return nil, false
 	}
 	return o.Assignee, true
@@ -64,7 +64,7 @@ func (o *SedAssignment) GetAssigneeOk() (*SedAssignee, bool) {
 
 // HasAssignee returns a boolean if a field has been set.
 func (o *SedAssignment) HasAssignee() bool {
-	if o != nil && !isNil(o.Assignee) {
+	if o != nil && !IsNil(o.Assignee) {
 		return true
 	}
 
@@ -78,7 +78,7 @@ func (o *SedAssignment) SetAssignee(v SedAssignee) {
 
 // GetItems returns the Items field value if set, zero value otherwise.
 func (o *SedAssignment) GetItems() []string {
-	if o == nil || isNil(o.Items) {
+	if o == nil || IsNil(o.Items) {
 		var ret []string
 		return ret
 	}
@@ -88,7 +88,7 @@ func (o *SedAssignment) GetItems() []string {
 // GetItemsOk returns a tuple with the Items field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SedAssignment) GetItemsOk() ([]string, bool) {
-	if o == nil || isNil(o.Items) {
+	if o == nil || IsNil(o.Items) {
 		return nil, false
 	}
 	return o.Items, true
@@ -96,7 +96,7 @@ func (o *SedAssignment) GetItemsOk() ([]string, bool) {
 
 // HasItems returns a boolean if a field has been set.
 func (o *SedAssignment) HasItems() bool {
-	if o != nil && !isNil(o.Items) {
+	if o != nil && !IsNil(o.Items) {
 		return true
 	}
 
@@ -118,10 +118,10 @@ func (o SedAssignment) MarshalJSON() ([]byte, error) {
 
 func (o SedAssignment) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Assignee) {
+	if !IsNil(o.Assignee) {
 		toSerialize["assignee"] = o.Assignee
 	}
-	if !isNil(o.Items) {
+	if !IsNil(o.Items) {
 		toSerialize["items"] = o.Items
 	}
 
@@ -132,16 +132,20 @@ func (o SedAssignment) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SedAssignment) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SedAssignment) UnmarshalJSON(data []byte) (err error) {
 	varSedAssignment := _SedAssignment{}
 
-	if err = json.Unmarshal(bytes, &varSedAssignment); err == nil {
+	err = json.Unmarshal(data, &varSedAssignment)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SedAssignment(varSedAssignment)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "assignee")
 		delete(additionalProperties, "items")
 		o.AdditionalProperties = additionalProperties

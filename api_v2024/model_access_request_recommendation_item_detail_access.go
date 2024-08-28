@@ -50,7 +50,7 @@ func NewAccessRequestRecommendationItemDetailAccessWithDefaults() *AccessRequest
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *AccessRequestRecommendationItemDetailAccess) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -60,7 +60,7 @@ func (o *AccessRequestRecommendationItemDetailAccess) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestRecommendationItemDetailAccess) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -68,7 +68,7 @@ func (o *AccessRequestRecommendationItemDetailAccess) GetIdOk() (*string, bool) 
 
 // HasId returns a boolean if a field has been set.
 func (o *AccessRequestRecommendationItemDetailAccess) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -82,7 +82,7 @@ func (o *AccessRequestRecommendationItemDetailAccess) SetId(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *AccessRequestRecommendationItemDetailAccess) GetType() AccessRequestRecommendationItemType {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret AccessRequestRecommendationItemType
 		return ret
 	}
@@ -92,7 +92,7 @@ func (o *AccessRequestRecommendationItemDetailAccess) GetType() AccessRequestRec
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestRecommendationItemDetailAccess) GetTypeOk() (*AccessRequestRecommendationItemType, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -100,7 +100,7 @@ func (o *AccessRequestRecommendationItemDetailAccess) GetTypeOk() (*AccessReques
 
 // HasType returns a boolean if a field has been set.
 func (o *AccessRequestRecommendationItemDetailAccess) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -114,7 +114,7 @@ func (o *AccessRequestRecommendationItemDetailAccess) SetType(v AccessRequestRec
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *AccessRequestRecommendationItemDetailAccess) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -124,7 +124,7 @@ func (o *AccessRequestRecommendationItemDetailAccess) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestRecommendationItemDetailAccess) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -132,7 +132,7 @@ func (o *AccessRequestRecommendationItemDetailAccess) GetNameOk() (*string, bool
 
 // HasName returns a boolean if a field has been set.
 func (o *AccessRequestRecommendationItemDetailAccess) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -146,7 +146,7 @@ func (o *AccessRequestRecommendationItemDetailAccess) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *AccessRequestRecommendationItemDetailAccess) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -156,7 +156,7 @@ func (o *AccessRequestRecommendationItemDetailAccess) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestRecommendationItemDetailAccess) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -164,7 +164,7 @@ func (o *AccessRequestRecommendationItemDetailAccess) GetDescriptionOk() (*strin
 
 // HasDescription returns a boolean if a field has been set.
 func (o *AccessRequestRecommendationItemDetailAccess) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -186,16 +186,16 @@ func (o AccessRequestRecommendationItemDetailAccess) MarshalJSON() ([]byte, erro
 
 func (o AccessRequestRecommendationItemDetailAccess) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 
@@ -206,16 +206,20 @@ func (o AccessRequestRecommendationItemDetailAccess) ToMap() (map[string]interfa
 	return toSerialize, nil
 }
 
-func (o *AccessRequestRecommendationItemDetailAccess) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccessRequestRecommendationItemDetailAccess) UnmarshalJSON(data []byte) (err error) {
 	varAccessRequestRecommendationItemDetailAccess := _AccessRequestRecommendationItemDetailAccess{}
 
-	if err = json.Unmarshal(bytes, &varAccessRequestRecommendationItemDetailAccess); err == nil {
+	err = json.Unmarshal(data, &varAccessRequestRecommendationItemDetailAccess)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessRequestRecommendationItemDetailAccess(varAccessRequestRecommendationItemDetailAccess)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "name")

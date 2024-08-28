@@ -73,7 +73,7 @@ func (o *SpConfigImportResults) SetResults(v map[string]ObjectImportResult1) {
 
 // GetExportJobId returns the ExportJobId field value if set, zero value otherwise.
 func (o *SpConfigImportResults) GetExportJobId() string {
-	if o == nil || isNil(o.ExportJobId) {
+	if o == nil || IsNil(o.ExportJobId) {
 		var ret string
 		return ret
 	}
@@ -83,7 +83,7 @@ func (o *SpConfigImportResults) GetExportJobId() string {
 // GetExportJobIdOk returns a tuple with the ExportJobId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpConfigImportResults) GetExportJobIdOk() (*string, bool) {
-	if o == nil || isNil(o.ExportJobId) {
+	if o == nil || IsNil(o.ExportJobId) {
 		return nil, false
 	}
 	return o.ExportJobId, true
@@ -91,7 +91,7 @@ func (o *SpConfigImportResults) GetExportJobIdOk() (*string, bool) {
 
 // HasExportJobId returns a boolean if a field has been set.
 func (o *SpConfigImportResults) HasExportJobId() bool {
-	if o != nil && !isNil(o.ExportJobId) {
+	if o != nil && !IsNil(o.ExportJobId) {
 		return true
 	}
 
@@ -114,7 +114,7 @@ func (o SpConfigImportResults) MarshalJSON() ([]byte, error) {
 func (o SpConfigImportResults) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["results"] = o.Results
-	if !isNil(o.ExportJobId) {
+	if !IsNil(o.ExportJobId) {
 		toSerialize["exportJobId"] = o.ExportJobId
 	}
 
@@ -125,8 +125,8 @@ func (o SpConfigImportResults) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SpConfigImportResults) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *SpConfigImportResults) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -135,7 +135,7 @@ func (o *SpConfigImportResults) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -149,13 +149,17 @@ func (o *SpConfigImportResults) UnmarshalJSON(bytes []byte) (err error) {
 
 	varSpConfigImportResults := _SpConfigImportResults{}
 
-	if err = json.Unmarshal(bytes, &varSpConfigImportResults); err == nil {
+	err = json.Unmarshal(data, &varSpConfigImportResults)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SpConfigImportResults(varSpConfigImportResults)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "results")
 		delete(additionalProperties, "exportJobId")
 		o.AdditionalProperties = additionalProperties

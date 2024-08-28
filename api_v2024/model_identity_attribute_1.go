@@ -49,7 +49,7 @@ func NewIdentityAttribute1WithDefaults() *IdentityAttribute1 {
 
 // GetKey returns the Key field value if set, zero value otherwise.
 func (o *IdentityAttribute1) GetKey() string {
-	if o == nil || isNil(o.Key) {
+	if o == nil || IsNil(o.Key) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *IdentityAttribute1) GetKey() string {
 // GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityAttribute1) GetKeyOk() (*string, bool) {
-	if o == nil || isNil(o.Key) {
+	if o == nil || IsNil(o.Key) {
 		return nil, false
 	}
 	return o.Key, true
@@ -67,7 +67,7 @@ func (o *IdentityAttribute1) GetKeyOk() (*string, bool) {
 
 // HasKey returns a boolean if a field has been set.
 func (o *IdentityAttribute1) HasKey() bool {
-	if o != nil && !isNil(o.Key) {
+	if o != nil && !IsNil(o.Key) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *IdentityAttribute1) SetKey(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *IdentityAttribute1) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *IdentityAttribute1) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityAttribute1) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -99,7 +99,7 @@ func (o *IdentityAttribute1) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *IdentityAttribute1) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *IdentityAttribute1) SetName(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *IdentityAttribute1) GetValue() string {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *IdentityAttribute1) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityAttribute1) GetValueOk() (*string, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -131,7 +131,7 @@ func (o *IdentityAttribute1) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *IdentityAttribute1) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o IdentityAttribute1) MarshalJSON() ([]byte, error) {
 
 func (o IdentityAttribute1) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Key) {
+	if !IsNil(o.Key) {
 		toSerialize["key"] = o.Key
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Value) {
+	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
 
@@ -170,16 +170,20 @@ func (o IdentityAttribute1) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *IdentityAttribute1) UnmarshalJSON(bytes []byte) (err error) {
+func (o *IdentityAttribute1) UnmarshalJSON(data []byte) (err error) {
 	varIdentityAttribute1 := _IdentityAttribute1{}
 
-	if err = json.Unmarshal(bytes, &varIdentityAttribute1); err == nil {
+	err = json.Unmarshal(data, &varIdentityAttribute1)
+
+	if err != nil {
+		return err
+	}
+
 	*o = IdentityAttribute1(varIdentityAttribute1)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "key")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "value")

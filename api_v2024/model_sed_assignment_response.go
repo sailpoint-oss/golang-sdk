@@ -45,7 +45,7 @@ func NewSedAssignmentResponseWithDefaults() *SedAssignmentResponse {
 
 // GetBatchId returns the BatchId field value if set, zero value otherwise.
 func (o *SedAssignmentResponse) GetBatchId() string {
-	if o == nil || isNil(o.BatchId) {
+	if o == nil || IsNil(o.BatchId) {
 		var ret string
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *SedAssignmentResponse) GetBatchId() string {
 // GetBatchIdOk returns a tuple with the BatchId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SedAssignmentResponse) GetBatchIdOk() (*string, bool) {
-	if o == nil || isNil(o.BatchId) {
+	if o == nil || IsNil(o.BatchId) {
 		return nil, false
 	}
 	return o.BatchId, true
@@ -63,7 +63,7 @@ func (o *SedAssignmentResponse) GetBatchIdOk() (*string, bool) {
 
 // HasBatchId returns a boolean if a field has been set.
 func (o *SedAssignmentResponse) HasBatchId() bool {
-	if o != nil && !isNil(o.BatchId) {
+	if o != nil && !IsNil(o.BatchId) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o SedAssignmentResponse) MarshalJSON() ([]byte, error) {
 
 func (o SedAssignmentResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.BatchId) {
+	if !IsNil(o.BatchId) {
 		toSerialize["batchId"] = o.BatchId
 	}
 
@@ -96,16 +96,20 @@ func (o SedAssignmentResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SedAssignmentResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SedAssignmentResponse) UnmarshalJSON(data []byte) (err error) {
 	varSedAssignmentResponse := _SedAssignmentResponse{}
 
-	if err = json.Unmarshal(bytes, &varSedAssignmentResponse); err == nil {
+	err = json.Unmarshal(data, &varSedAssignmentResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SedAssignmentResponse(varSedAssignmentResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "batchId")
 		o.AdditionalProperties = additionalProperties
 	}

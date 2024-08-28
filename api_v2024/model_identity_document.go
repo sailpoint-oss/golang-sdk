@@ -191,7 +191,7 @@ func (o *IdentityDocument) SetType(v DocumentType) {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *IdentityDocument) GetDisplayName() string {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -201,7 +201,7 @@ func (o *IdentityDocument) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityDocument) GetDisplayNameOk() (*string, bool) {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -209,7 +209,7 @@ func (o *IdentityDocument) GetDisplayNameOk() (*string, bool) {
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *IdentityDocument) HasDisplayName() bool {
-	if o != nil && !isNil(o.DisplayName) {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -223,7 +223,7 @@ func (o *IdentityDocument) SetDisplayName(v string) {
 
 // GetFirstName returns the FirstName field value if set, zero value otherwise.
 func (o *IdentityDocument) GetFirstName() string {
-	if o == nil || isNil(o.FirstName) {
+	if o == nil || IsNil(o.FirstName) {
 		var ret string
 		return ret
 	}
@@ -233,7 +233,7 @@ func (o *IdentityDocument) GetFirstName() string {
 // GetFirstNameOk returns a tuple with the FirstName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityDocument) GetFirstNameOk() (*string, bool) {
-	if o == nil || isNil(o.FirstName) {
+	if o == nil || IsNil(o.FirstName) {
 		return nil, false
 	}
 	return o.FirstName, true
@@ -241,7 +241,7 @@ func (o *IdentityDocument) GetFirstNameOk() (*string, bool) {
 
 // HasFirstName returns a boolean if a field has been set.
 func (o *IdentityDocument) HasFirstName() bool {
-	if o != nil && !isNil(o.FirstName) {
+	if o != nil && !IsNil(o.FirstName) {
 		return true
 	}
 
@@ -255,7 +255,7 @@ func (o *IdentityDocument) SetFirstName(v string) {
 
 // GetLastName returns the LastName field value if set, zero value otherwise.
 func (o *IdentityDocument) GetLastName() string {
-	if o == nil || isNil(o.LastName) {
+	if o == nil || IsNil(o.LastName) {
 		var ret string
 		return ret
 	}
@@ -265,7 +265,7 @@ func (o *IdentityDocument) GetLastName() string {
 // GetLastNameOk returns a tuple with the LastName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityDocument) GetLastNameOk() (*string, bool) {
-	if o == nil || isNil(o.LastName) {
+	if o == nil || IsNil(o.LastName) {
 		return nil, false
 	}
 	return o.LastName, true
@@ -273,7 +273,7 @@ func (o *IdentityDocument) GetLastNameOk() (*string, bool) {
 
 // HasLastName returns a boolean if a field has been set.
 func (o *IdentityDocument) HasLastName() bool {
-	if o != nil && !isNil(o.LastName) {
+	if o != nil && !IsNil(o.LastName) {
 		return true
 	}
 
@@ -287,7 +287,7 @@ func (o *IdentityDocument) SetLastName(v string) {
 
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *IdentityDocument) GetEmail() string {
-	if o == nil || isNil(o.Email) {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
@@ -297,7 +297,7 @@ func (o *IdentityDocument) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityDocument) GetEmailOk() (*string, bool) {
-	if o == nil || isNil(o.Email) {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
 	return o.Email, true
@@ -305,7 +305,7 @@ func (o *IdentityDocument) GetEmailOk() (*string, bool) {
 
 // HasEmail returns a boolean if a field has been set.
 func (o *IdentityDocument) HasEmail() bool {
-	if o != nil && !isNil(o.Email) {
+	if o != nil && !IsNil(o.Email) {
 		return true
 	}
 
@@ -319,7 +319,7 @@ func (o *IdentityDocument) SetEmail(v string) {
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentityDocument) GetCreated() time.Time {
-	if o == nil || isNil(o.Created.Get()) {
+	if o == nil || IsNil(o.Created.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -361,7 +361,7 @@ func (o *IdentityDocument) UnsetCreated() {
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentityDocument) GetModified() time.Time {
-	if o == nil || isNil(o.Modified.Get()) {
+	if o == nil || IsNil(o.Modified.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -403,7 +403,7 @@ func (o *IdentityDocument) UnsetModified() {
 
 // GetPhone returns the Phone field value if set, zero value otherwise.
 func (o *IdentityDocument) GetPhone() string {
-	if o == nil || isNil(o.Phone) {
+	if o == nil || IsNil(o.Phone) {
 		var ret string
 		return ret
 	}
@@ -413,7 +413,7 @@ func (o *IdentityDocument) GetPhone() string {
 // GetPhoneOk returns a tuple with the Phone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityDocument) GetPhoneOk() (*string, bool) {
-	if o == nil || isNil(o.Phone) {
+	if o == nil || IsNil(o.Phone) {
 		return nil, false
 	}
 	return o.Phone, true
@@ -421,7 +421,7 @@ func (o *IdentityDocument) GetPhoneOk() (*string, bool) {
 
 // HasPhone returns a boolean if a field has been set.
 func (o *IdentityDocument) HasPhone() bool {
-	if o != nil && !isNil(o.Phone) {
+	if o != nil && !IsNil(o.Phone) {
 		return true
 	}
 
@@ -435,7 +435,7 @@ func (o *IdentityDocument) SetPhone(v string) {
 
 // GetSynced returns the Synced field value if set, zero value otherwise.
 func (o *IdentityDocument) GetSynced() string {
-	if o == nil || isNil(o.Synced) {
+	if o == nil || IsNil(o.Synced) {
 		var ret string
 		return ret
 	}
@@ -445,7 +445,7 @@ func (o *IdentityDocument) GetSynced() string {
 // GetSyncedOk returns a tuple with the Synced field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityDocument) GetSyncedOk() (*string, bool) {
-	if o == nil || isNil(o.Synced) {
+	if o == nil || IsNil(o.Synced) {
 		return nil, false
 	}
 	return o.Synced, true
@@ -453,7 +453,7 @@ func (o *IdentityDocument) GetSyncedOk() (*string, bool) {
 
 // HasSynced returns a boolean if a field has been set.
 func (o *IdentityDocument) HasSynced() bool {
-	if o != nil && !isNil(o.Synced) {
+	if o != nil && !IsNil(o.Synced) {
 		return true
 	}
 
@@ -467,7 +467,7 @@ func (o *IdentityDocument) SetSynced(v string) {
 
 // GetInactive returns the Inactive field value if set, zero value otherwise.
 func (o *IdentityDocument) GetInactive() bool {
-	if o == nil || isNil(o.Inactive) {
+	if o == nil || IsNil(o.Inactive) {
 		var ret bool
 		return ret
 	}
@@ -477,7 +477,7 @@ func (o *IdentityDocument) GetInactive() bool {
 // GetInactiveOk returns a tuple with the Inactive field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityDocument) GetInactiveOk() (*bool, bool) {
-	if o == nil || isNil(o.Inactive) {
+	if o == nil || IsNil(o.Inactive) {
 		return nil, false
 	}
 	return o.Inactive, true
@@ -485,7 +485,7 @@ func (o *IdentityDocument) GetInactiveOk() (*bool, bool) {
 
 // HasInactive returns a boolean if a field has been set.
 func (o *IdentityDocument) HasInactive() bool {
-	if o != nil && !isNil(o.Inactive) {
+	if o != nil && !IsNil(o.Inactive) {
 		return true
 	}
 
@@ -499,7 +499,7 @@ func (o *IdentityDocument) SetInactive(v bool) {
 
 // GetProtected returns the Protected field value if set, zero value otherwise.
 func (o *IdentityDocument) GetProtected() bool {
-	if o == nil || isNil(o.Protected) {
+	if o == nil || IsNil(o.Protected) {
 		var ret bool
 		return ret
 	}
@@ -509,7 +509,7 @@ func (o *IdentityDocument) GetProtected() bool {
 // GetProtectedOk returns a tuple with the Protected field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityDocument) GetProtectedOk() (*bool, bool) {
-	if o == nil || isNil(o.Protected) {
+	if o == nil || IsNil(o.Protected) {
 		return nil, false
 	}
 	return o.Protected, true
@@ -517,7 +517,7 @@ func (o *IdentityDocument) GetProtectedOk() (*bool, bool) {
 
 // HasProtected returns a boolean if a field has been set.
 func (o *IdentityDocument) HasProtected() bool {
-	if o != nil && !isNil(o.Protected) {
+	if o != nil && !IsNil(o.Protected) {
 		return true
 	}
 
@@ -531,7 +531,7 @@ func (o *IdentityDocument) SetProtected(v bool) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *IdentityDocument) GetStatus() string {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -541,7 +541,7 @@ func (o *IdentityDocument) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityDocument) GetStatusOk() (*string, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -549,7 +549,7 @@ func (o *IdentityDocument) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *IdentityDocument) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -563,7 +563,7 @@ func (o *IdentityDocument) SetStatus(v string) {
 
 // GetEmployeeNumber returns the EmployeeNumber field value if set, zero value otherwise.
 func (o *IdentityDocument) GetEmployeeNumber() string {
-	if o == nil || isNil(o.EmployeeNumber) {
+	if o == nil || IsNil(o.EmployeeNumber) {
 		var ret string
 		return ret
 	}
@@ -573,7 +573,7 @@ func (o *IdentityDocument) GetEmployeeNumber() string {
 // GetEmployeeNumberOk returns a tuple with the EmployeeNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityDocument) GetEmployeeNumberOk() (*string, bool) {
-	if o == nil || isNil(o.EmployeeNumber) {
+	if o == nil || IsNil(o.EmployeeNumber) {
 		return nil, false
 	}
 	return o.EmployeeNumber, true
@@ -581,7 +581,7 @@ func (o *IdentityDocument) GetEmployeeNumberOk() (*string, bool) {
 
 // HasEmployeeNumber returns a boolean if a field has been set.
 func (o *IdentityDocument) HasEmployeeNumber() bool {
-	if o != nil && !isNil(o.EmployeeNumber) {
+	if o != nil && !IsNil(o.EmployeeNumber) {
 		return true
 	}
 
@@ -595,7 +595,7 @@ func (o *IdentityDocument) SetEmployeeNumber(v string) {
 
 // GetManager returns the Manager field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentityDocument) GetManager() IdentityDocumentAllOfManager {
-	if o == nil || isNil(o.Manager.Get()) {
+	if o == nil || IsNil(o.Manager.Get()) {
 		var ret IdentityDocumentAllOfManager
 		return ret
 	}
@@ -637,7 +637,7 @@ func (o *IdentityDocument) UnsetManager() {
 
 // GetIsManager returns the IsManager field value if set, zero value otherwise.
 func (o *IdentityDocument) GetIsManager() bool {
-	if o == nil || isNil(o.IsManager) {
+	if o == nil || IsNil(o.IsManager) {
 		var ret bool
 		return ret
 	}
@@ -647,7 +647,7 @@ func (o *IdentityDocument) GetIsManager() bool {
 // GetIsManagerOk returns a tuple with the IsManager field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityDocument) GetIsManagerOk() (*bool, bool) {
-	if o == nil || isNil(o.IsManager) {
+	if o == nil || IsNil(o.IsManager) {
 		return nil, false
 	}
 	return o.IsManager, true
@@ -655,7 +655,7 @@ func (o *IdentityDocument) GetIsManagerOk() (*bool, bool) {
 
 // HasIsManager returns a boolean if a field has been set.
 func (o *IdentityDocument) HasIsManager() bool {
-	if o != nil && !isNil(o.IsManager) {
+	if o != nil && !IsNil(o.IsManager) {
 		return true
 	}
 
@@ -669,7 +669,7 @@ func (o *IdentityDocument) SetIsManager(v bool) {
 
 // GetIdentityProfile returns the IdentityProfile field value if set, zero value otherwise.
 func (o *IdentityDocument) GetIdentityProfile() IdentityDocumentAllOfIdentityProfile {
-	if o == nil || isNil(o.IdentityProfile) {
+	if o == nil || IsNil(o.IdentityProfile) {
 		var ret IdentityDocumentAllOfIdentityProfile
 		return ret
 	}
@@ -679,7 +679,7 @@ func (o *IdentityDocument) GetIdentityProfile() IdentityDocumentAllOfIdentityPro
 // GetIdentityProfileOk returns a tuple with the IdentityProfile field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityDocument) GetIdentityProfileOk() (*IdentityDocumentAllOfIdentityProfile, bool) {
-	if o == nil || isNil(o.IdentityProfile) {
+	if o == nil || IsNil(o.IdentityProfile) {
 		return nil, false
 	}
 	return o.IdentityProfile, true
@@ -687,7 +687,7 @@ func (o *IdentityDocument) GetIdentityProfileOk() (*IdentityDocumentAllOfIdentit
 
 // HasIdentityProfile returns a boolean if a field has been set.
 func (o *IdentityDocument) HasIdentityProfile() bool {
-	if o != nil && !isNil(o.IdentityProfile) {
+	if o != nil && !IsNil(o.IdentityProfile) {
 		return true
 	}
 
@@ -701,7 +701,7 @@ func (o *IdentityDocument) SetIdentityProfile(v IdentityDocumentAllOfIdentityPro
 
 // GetSource returns the Source field value if set, zero value otherwise.
 func (o *IdentityDocument) GetSource() IdentityDocumentAllOfSource {
-	if o == nil || isNil(o.Source) {
+	if o == nil || IsNil(o.Source) {
 		var ret IdentityDocumentAllOfSource
 		return ret
 	}
@@ -711,7 +711,7 @@ func (o *IdentityDocument) GetSource() IdentityDocumentAllOfSource {
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityDocument) GetSourceOk() (*IdentityDocumentAllOfSource, bool) {
-	if o == nil || isNil(o.Source) {
+	if o == nil || IsNil(o.Source) {
 		return nil, false
 	}
 	return o.Source, true
@@ -719,7 +719,7 @@ func (o *IdentityDocument) GetSourceOk() (*IdentityDocumentAllOfSource, bool) {
 
 // HasSource returns a boolean if a field has been set.
 func (o *IdentityDocument) HasSource() bool {
-	if o != nil && !isNil(o.Source) {
+	if o != nil && !IsNil(o.Source) {
 		return true
 	}
 
@@ -733,7 +733,7 @@ func (o *IdentityDocument) SetSource(v IdentityDocumentAllOfSource) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *IdentityDocument) GetAttributes() map[string]interface{} {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -743,7 +743,7 @@ func (o *IdentityDocument) GetAttributes() map[string]interface{} {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityDocument) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
@@ -751,7 +751,7 @@ func (o *IdentityDocument) GetAttributesOk() (map[string]interface{}, bool) {
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *IdentityDocument) HasAttributes() bool {
-	if o != nil && !isNil(o.Attributes) {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -765,7 +765,7 @@ func (o *IdentityDocument) SetAttributes(v map[string]interface{}) {
 
 // GetProcessingState returns the ProcessingState field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentityDocument) GetProcessingState() string {
-	if o == nil || isNil(o.ProcessingState.Get()) {
+	if o == nil || IsNil(o.ProcessingState.Get()) {
 		var ret string
 		return ret
 	}
@@ -807,7 +807,7 @@ func (o *IdentityDocument) UnsetProcessingState() {
 
 // GetProcessingDetails returns the ProcessingDetails field value if set, zero value otherwise.
 func (o *IdentityDocument) GetProcessingDetails() ProcessingDetails {
-	if o == nil || isNil(o.ProcessingDetails) {
+	if o == nil || IsNil(o.ProcessingDetails) {
 		var ret ProcessingDetails
 		return ret
 	}
@@ -817,7 +817,7 @@ func (o *IdentityDocument) GetProcessingDetails() ProcessingDetails {
 // GetProcessingDetailsOk returns a tuple with the ProcessingDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityDocument) GetProcessingDetailsOk() (*ProcessingDetails, bool) {
-	if o == nil || isNil(o.ProcessingDetails) {
+	if o == nil || IsNil(o.ProcessingDetails) {
 		return nil, false
 	}
 	return o.ProcessingDetails, true
@@ -825,7 +825,7 @@ func (o *IdentityDocument) GetProcessingDetailsOk() (*ProcessingDetails, bool) {
 
 // HasProcessingDetails returns a boolean if a field has been set.
 func (o *IdentityDocument) HasProcessingDetails() bool {
-	if o != nil && !isNil(o.ProcessingDetails) {
+	if o != nil && !IsNil(o.ProcessingDetails) {
 		return true
 	}
 
@@ -839,7 +839,7 @@ func (o *IdentityDocument) SetProcessingDetails(v ProcessingDetails) {
 
 // GetAccounts returns the Accounts field value if set, zero value otherwise.
 func (o *IdentityDocument) GetAccounts() []BaseAccount {
-	if o == nil || isNil(o.Accounts) {
+	if o == nil || IsNil(o.Accounts) {
 		var ret []BaseAccount
 		return ret
 	}
@@ -849,7 +849,7 @@ func (o *IdentityDocument) GetAccounts() []BaseAccount {
 // GetAccountsOk returns a tuple with the Accounts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityDocument) GetAccountsOk() ([]BaseAccount, bool) {
-	if o == nil || isNil(o.Accounts) {
+	if o == nil || IsNil(o.Accounts) {
 		return nil, false
 	}
 	return o.Accounts, true
@@ -857,7 +857,7 @@ func (o *IdentityDocument) GetAccountsOk() ([]BaseAccount, bool) {
 
 // HasAccounts returns a boolean if a field has been set.
 func (o *IdentityDocument) HasAccounts() bool {
-	if o != nil && !isNil(o.Accounts) {
+	if o != nil && !IsNil(o.Accounts) {
 		return true
 	}
 
@@ -871,7 +871,7 @@ func (o *IdentityDocument) SetAccounts(v []BaseAccount) {
 
 // GetAccountCount returns the AccountCount field value if set, zero value otherwise.
 func (o *IdentityDocument) GetAccountCount() int32 {
-	if o == nil || isNil(o.AccountCount) {
+	if o == nil || IsNil(o.AccountCount) {
 		var ret int32
 		return ret
 	}
@@ -881,7 +881,7 @@ func (o *IdentityDocument) GetAccountCount() int32 {
 // GetAccountCountOk returns a tuple with the AccountCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityDocument) GetAccountCountOk() (*int32, bool) {
-	if o == nil || isNil(o.AccountCount) {
+	if o == nil || IsNil(o.AccountCount) {
 		return nil, false
 	}
 	return o.AccountCount, true
@@ -889,7 +889,7 @@ func (o *IdentityDocument) GetAccountCountOk() (*int32, bool) {
 
 // HasAccountCount returns a boolean if a field has been set.
 func (o *IdentityDocument) HasAccountCount() bool {
-	if o != nil && !isNil(o.AccountCount) {
+	if o != nil && !IsNil(o.AccountCount) {
 		return true
 	}
 
@@ -903,7 +903,7 @@ func (o *IdentityDocument) SetAccountCount(v int32) {
 
 // GetApps returns the Apps field value if set, zero value otherwise.
 func (o *IdentityDocument) GetApps() []App {
-	if o == nil || isNil(o.Apps) {
+	if o == nil || IsNil(o.Apps) {
 		var ret []App
 		return ret
 	}
@@ -913,7 +913,7 @@ func (o *IdentityDocument) GetApps() []App {
 // GetAppsOk returns a tuple with the Apps field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityDocument) GetAppsOk() ([]App, bool) {
-	if o == nil || isNil(o.Apps) {
+	if o == nil || IsNil(o.Apps) {
 		return nil, false
 	}
 	return o.Apps, true
@@ -921,7 +921,7 @@ func (o *IdentityDocument) GetAppsOk() ([]App, bool) {
 
 // HasApps returns a boolean if a field has been set.
 func (o *IdentityDocument) HasApps() bool {
-	if o != nil && !isNil(o.Apps) {
+	if o != nil && !IsNil(o.Apps) {
 		return true
 	}
 
@@ -935,7 +935,7 @@ func (o *IdentityDocument) SetApps(v []App) {
 
 // GetAppCount returns the AppCount field value if set, zero value otherwise.
 func (o *IdentityDocument) GetAppCount() int32 {
-	if o == nil || isNil(o.AppCount) {
+	if o == nil || IsNil(o.AppCount) {
 		var ret int32
 		return ret
 	}
@@ -945,7 +945,7 @@ func (o *IdentityDocument) GetAppCount() int32 {
 // GetAppCountOk returns a tuple with the AppCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityDocument) GetAppCountOk() (*int32, bool) {
-	if o == nil || isNil(o.AppCount) {
+	if o == nil || IsNil(o.AppCount) {
 		return nil, false
 	}
 	return o.AppCount, true
@@ -953,7 +953,7 @@ func (o *IdentityDocument) GetAppCountOk() (*int32, bool) {
 
 // HasAppCount returns a boolean if a field has been set.
 func (o *IdentityDocument) HasAppCount() bool {
-	if o != nil && !isNil(o.AppCount) {
+	if o != nil && !IsNil(o.AppCount) {
 		return true
 	}
 
@@ -967,7 +967,7 @@ func (o *IdentityDocument) SetAppCount(v int32) {
 
 // GetAccess returns the Access field value if set, zero value otherwise.
 func (o *IdentityDocument) GetAccess() []IdentityAccess {
-	if o == nil || isNil(o.Access) {
+	if o == nil || IsNil(o.Access) {
 		var ret []IdentityAccess
 		return ret
 	}
@@ -977,7 +977,7 @@ func (o *IdentityDocument) GetAccess() []IdentityAccess {
 // GetAccessOk returns a tuple with the Access field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityDocument) GetAccessOk() ([]IdentityAccess, bool) {
-	if o == nil || isNil(o.Access) {
+	if o == nil || IsNil(o.Access) {
 		return nil, false
 	}
 	return o.Access, true
@@ -985,7 +985,7 @@ func (o *IdentityDocument) GetAccessOk() ([]IdentityAccess, bool) {
 
 // HasAccess returns a boolean if a field has been set.
 func (o *IdentityDocument) HasAccess() bool {
-	if o != nil && !isNil(o.Access) {
+	if o != nil && !IsNil(o.Access) {
 		return true
 	}
 
@@ -999,7 +999,7 @@ func (o *IdentityDocument) SetAccess(v []IdentityAccess) {
 
 // GetAccessCount returns the AccessCount field value if set, zero value otherwise.
 func (o *IdentityDocument) GetAccessCount() int32 {
-	if o == nil || isNil(o.AccessCount) {
+	if o == nil || IsNil(o.AccessCount) {
 		var ret int32
 		return ret
 	}
@@ -1009,7 +1009,7 @@ func (o *IdentityDocument) GetAccessCount() int32 {
 // GetAccessCountOk returns a tuple with the AccessCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityDocument) GetAccessCountOk() (*int32, bool) {
-	if o == nil || isNil(o.AccessCount) {
+	if o == nil || IsNil(o.AccessCount) {
 		return nil, false
 	}
 	return o.AccessCount, true
@@ -1017,7 +1017,7 @@ func (o *IdentityDocument) GetAccessCountOk() (*int32, bool) {
 
 // HasAccessCount returns a boolean if a field has been set.
 func (o *IdentityDocument) HasAccessCount() bool {
-	if o != nil && !isNil(o.AccessCount) {
+	if o != nil && !IsNil(o.AccessCount) {
 		return true
 	}
 
@@ -1031,7 +1031,7 @@ func (o *IdentityDocument) SetAccessCount(v int32) {
 
 // GetEntitlementCount returns the EntitlementCount field value if set, zero value otherwise.
 func (o *IdentityDocument) GetEntitlementCount() int32 {
-	if o == nil || isNil(o.EntitlementCount) {
+	if o == nil || IsNil(o.EntitlementCount) {
 		var ret int32
 		return ret
 	}
@@ -1041,7 +1041,7 @@ func (o *IdentityDocument) GetEntitlementCount() int32 {
 // GetEntitlementCountOk returns a tuple with the EntitlementCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityDocument) GetEntitlementCountOk() (*int32, bool) {
-	if o == nil || isNil(o.EntitlementCount) {
+	if o == nil || IsNil(o.EntitlementCount) {
 		return nil, false
 	}
 	return o.EntitlementCount, true
@@ -1049,7 +1049,7 @@ func (o *IdentityDocument) GetEntitlementCountOk() (*int32, bool) {
 
 // HasEntitlementCount returns a boolean if a field has been set.
 func (o *IdentityDocument) HasEntitlementCount() bool {
-	if o != nil && !isNil(o.EntitlementCount) {
+	if o != nil && !IsNil(o.EntitlementCount) {
 		return true
 	}
 
@@ -1063,7 +1063,7 @@ func (o *IdentityDocument) SetEntitlementCount(v int32) {
 
 // GetRoleCount returns the RoleCount field value if set, zero value otherwise.
 func (o *IdentityDocument) GetRoleCount() int32 {
-	if o == nil || isNil(o.RoleCount) {
+	if o == nil || IsNil(o.RoleCount) {
 		var ret int32
 		return ret
 	}
@@ -1073,7 +1073,7 @@ func (o *IdentityDocument) GetRoleCount() int32 {
 // GetRoleCountOk returns a tuple with the RoleCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityDocument) GetRoleCountOk() (*int32, bool) {
-	if o == nil || isNil(o.RoleCount) {
+	if o == nil || IsNil(o.RoleCount) {
 		return nil, false
 	}
 	return o.RoleCount, true
@@ -1081,7 +1081,7 @@ func (o *IdentityDocument) GetRoleCountOk() (*int32, bool) {
 
 // HasRoleCount returns a boolean if a field has been set.
 func (o *IdentityDocument) HasRoleCount() bool {
-	if o != nil && !isNil(o.RoleCount) {
+	if o != nil && !IsNil(o.RoleCount) {
 		return true
 	}
 
@@ -1095,7 +1095,7 @@ func (o *IdentityDocument) SetRoleCount(v int32) {
 
 // GetAccessProfileCount returns the AccessProfileCount field value if set, zero value otherwise.
 func (o *IdentityDocument) GetAccessProfileCount() int32 {
-	if o == nil || isNil(o.AccessProfileCount) {
+	if o == nil || IsNil(o.AccessProfileCount) {
 		var ret int32
 		return ret
 	}
@@ -1105,7 +1105,7 @@ func (o *IdentityDocument) GetAccessProfileCount() int32 {
 // GetAccessProfileCountOk returns a tuple with the AccessProfileCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityDocument) GetAccessProfileCountOk() (*int32, bool) {
-	if o == nil || isNil(o.AccessProfileCount) {
+	if o == nil || IsNil(o.AccessProfileCount) {
 		return nil, false
 	}
 	return o.AccessProfileCount, true
@@ -1113,7 +1113,7 @@ func (o *IdentityDocument) GetAccessProfileCountOk() (*int32, bool) {
 
 // HasAccessProfileCount returns a boolean if a field has been set.
 func (o *IdentityDocument) HasAccessProfileCount() bool {
-	if o != nil && !isNil(o.AccessProfileCount) {
+	if o != nil && !IsNil(o.AccessProfileCount) {
 		return true
 	}
 
@@ -1127,7 +1127,7 @@ func (o *IdentityDocument) SetAccessProfileCount(v int32) {
 
 // GetOwns returns the Owns field value if set, zero value otherwise.
 func (o *IdentityDocument) GetOwns() []Owns {
-	if o == nil || isNil(o.Owns) {
+	if o == nil || IsNil(o.Owns) {
 		var ret []Owns
 		return ret
 	}
@@ -1137,7 +1137,7 @@ func (o *IdentityDocument) GetOwns() []Owns {
 // GetOwnsOk returns a tuple with the Owns field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityDocument) GetOwnsOk() ([]Owns, bool) {
-	if o == nil || isNil(o.Owns) {
+	if o == nil || IsNil(o.Owns) {
 		return nil, false
 	}
 	return o.Owns, true
@@ -1145,7 +1145,7 @@ func (o *IdentityDocument) GetOwnsOk() ([]Owns, bool) {
 
 // HasOwns returns a boolean if a field has been set.
 func (o *IdentityDocument) HasOwns() bool {
-	if o != nil && !isNil(o.Owns) {
+	if o != nil && !IsNil(o.Owns) {
 		return true
 	}
 
@@ -1159,7 +1159,7 @@ func (o *IdentityDocument) SetOwns(v []Owns) {
 
 // GetOwnsCount returns the OwnsCount field value if set, zero value otherwise.
 func (o *IdentityDocument) GetOwnsCount() int32 {
-	if o == nil || isNil(o.OwnsCount) {
+	if o == nil || IsNil(o.OwnsCount) {
 		var ret int32
 		return ret
 	}
@@ -1169,7 +1169,7 @@ func (o *IdentityDocument) GetOwnsCount() int32 {
 // GetOwnsCountOk returns a tuple with the OwnsCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityDocument) GetOwnsCountOk() (*int32, bool) {
-	if o == nil || isNil(o.OwnsCount) {
+	if o == nil || IsNil(o.OwnsCount) {
 		return nil, false
 	}
 	return o.OwnsCount, true
@@ -1177,7 +1177,7 @@ func (o *IdentityDocument) GetOwnsCountOk() (*int32, bool) {
 
 // HasOwnsCount returns a boolean if a field has been set.
 func (o *IdentityDocument) HasOwnsCount() bool {
-	if o != nil && !isNil(o.OwnsCount) {
+	if o != nil && !IsNil(o.OwnsCount) {
 		return true
 	}
 
@@ -1191,7 +1191,7 @@ func (o *IdentityDocument) SetOwnsCount(v int32) {
 
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *IdentityDocument) GetTags() []string {
-	if o == nil || isNil(o.Tags) {
+	if o == nil || IsNil(o.Tags) {
 		var ret []string
 		return ret
 	}
@@ -1201,7 +1201,7 @@ func (o *IdentityDocument) GetTags() []string {
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityDocument) GetTagsOk() ([]string, bool) {
-	if o == nil || isNil(o.Tags) {
+	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
 	return o.Tags, true
@@ -1209,7 +1209,7 @@ func (o *IdentityDocument) GetTagsOk() ([]string, bool) {
 
 // HasTags returns a boolean if a field has been set.
 func (o *IdentityDocument) HasTags() bool {
-	if o != nil && !isNil(o.Tags) {
+	if o != nil && !IsNil(o.Tags) {
 		return true
 	}
 
@@ -1234,16 +1234,16 @@ func (o IdentityDocument) ToMap() (map[string]interface{}, error) {
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
 	toSerialize["_type"] = o.Type
-	if !isNil(o.DisplayName) {
+	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
-	if !isNil(o.FirstName) {
+	if !IsNil(o.FirstName) {
 		toSerialize["firstName"] = o.FirstName
 	}
-	if !isNil(o.LastName) {
+	if !IsNil(o.LastName) {
 		toSerialize["lastName"] = o.LastName
 	}
-	if !isNil(o.Email) {
+	if !IsNil(o.Email) {
 		toSerialize["email"] = o.Email
 	}
 	if o.Created.IsSet() {
@@ -1252,79 +1252,79 @@ func (o IdentityDocument) ToMap() (map[string]interface{}, error) {
 	if o.Modified.IsSet() {
 		toSerialize["modified"] = o.Modified.Get()
 	}
-	if !isNil(o.Phone) {
+	if !IsNil(o.Phone) {
 		toSerialize["phone"] = o.Phone
 	}
-	if !isNil(o.Synced) {
+	if !IsNil(o.Synced) {
 		toSerialize["synced"] = o.Synced
 	}
-	if !isNil(o.Inactive) {
+	if !IsNil(o.Inactive) {
 		toSerialize["inactive"] = o.Inactive
 	}
-	if !isNil(o.Protected) {
+	if !IsNil(o.Protected) {
 		toSerialize["protected"] = o.Protected
 	}
-	if !isNil(o.Status) {
+	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if !isNil(o.EmployeeNumber) {
+	if !IsNil(o.EmployeeNumber) {
 		toSerialize["employeeNumber"] = o.EmployeeNumber
 	}
 	if o.Manager.IsSet() {
 		toSerialize["manager"] = o.Manager.Get()
 	}
-	if !isNil(o.IsManager) {
+	if !IsNil(o.IsManager) {
 		toSerialize["isManager"] = o.IsManager
 	}
-	if !isNil(o.IdentityProfile) {
+	if !IsNil(o.IdentityProfile) {
 		toSerialize["identityProfile"] = o.IdentityProfile
 	}
-	if !isNil(o.Source) {
+	if !IsNil(o.Source) {
 		toSerialize["source"] = o.Source
 	}
-	if !isNil(o.Attributes) {
+	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
 	if o.ProcessingState.IsSet() {
 		toSerialize["processingState"] = o.ProcessingState.Get()
 	}
-	if !isNil(o.ProcessingDetails) {
+	if !IsNil(o.ProcessingDetails) {
 		toSerialize["processingDetails"] = o.ProcessingDetails
 	}
-	if !isNil(o.Accounts) {
+	if !IsNil(o.Accounts) {
 		toSerialize["accounts"] = o.Accounts
 	}
-	if !isNil(o.AccountCount) {
+	if !IsNil(o.AccountCount) {
 		toSerialize["accountCount"] = o.AccountCount
 	}
-	if !isNil(o.Apps) {
+	if !IsNil(o.Apps) {
 		toSerialize["apps"] = o.Apps
 	}
-	if !isNil(o.AppCount) {
+	if !IsNil(o.AppCount) {
 		toSerialize["appCount"] = o.AppCount
 	}
-	if !isNil(o.Access) {
+	if !IsNil(o.Access) {
 		toSerialize["access"] = o.Access
 	}
-	if !isNil(o.AccessCount) {
+	if !IsNil(o.AccessCount) {
 		toSerialize["accessCount"] = o.AccessCount
 	}
-	if !isNil(o.EntitlementCount) {
+	if !IsNil(o.EntitlementCount) {
 		toSerialize["entitlementCount"] = o.EntitlementCount
 	}
-	if !isNil(o.RoleCount) {
+	if !IsNil(o.RoleCount) {
 		toSerialize["roleCount"] = o.RoleCount
 	}
-	if !isNil(o.AccessProfileCount) {
+	if !IsNil(o.AccessProfileCount) {
 		toSerialize["accessProfileCount"] = o.AccessProfileCount
 	}
-	if !isNil(o.Owns) {
+	if !IsNil(o.Owns) {
 		toSerialize["owns"] = o.Owns
 	}
-	if !isNil(o.OwnsCount) {
+	if !IsNil(o.OwnsCount) {
 		toSerialize["ownsCount"] = o.OwnsCount
 	}
-	if !isNil(o.Tags) {
+	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
 	}
 
@@ -1335,8 +1335,8 @@ func (o IdentityDocument) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *IdentityDocument) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *IdentityDocument) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -1347,7 +1347,7 @@ func (o *IdentityDocument) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -1361,13 +1361,17 @@ func (o *IdentityDocument) UnmarshalJSON(bytes []byte) (err error) {
 
 	varIdentityDocument := _IdentityDocument{}
 
-	if err = json.Unmarshal(bytes, &varIdentityDocument); err == nil {
+	err = json.Unmarshal(data, &varIdentityDocument)
+
+	if err != nil {
+		return err
+	}
+
 	*o = IdentityDocument(varIdentityDocument)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "_type")

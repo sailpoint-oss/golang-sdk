@@ -46,7 +46,7 @@ func NewReassignment1WithDefaults() *Reassignment1 {
 
 // GetFrom returns the From field value if set, zero value otherwise.
 func (o *Reassignment1) GetFrom() CertificationReference1 {
-	if o == nil || isNil(o.From) {
+	if o == nil || IsNil(o.From) {
 		var ret CertificationReference1
 		return ret
 	}
@@ -56,7 +56,7 @@ func (o *Reassignment1) GetFrom() CertificationReference1 {
 // GetFromOk returns a tuple with the From field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Reassignment1) GetFromOk() (*CertificationReference1, bool) {
-	if o == nil || isNil(o.From) {
+	if o == nil || IsNil(o.From) {
 		return nil, false
 	}
 	return o.From, true
@@ -64,7 +64,7 @@ func (o *Reassignment1) GetFromOk() (*CertificationReference1, bool) {
 
 // HasFrom returns a boolean if a field has been set.
 func (o *Reassignment1) HasFrom() bool {
-	if o != nil && !isNil(o.From) {
+	if o != nil && !IsNil(o.From) {
 		return true
 	}
 
@@ -78,7 +78,7 @@ func (o *Reassignment1) SetFrom(v CertificationReference1) {
 
 // GetComment returns the Comment field value if set, zero value otherwise.
 func (o *Reassignment1) GetComment() string {
-	if o == nil || isNil(o.Comment) {
+	if o == nil || IsNil(o.Comment) {
 		var ret string
 		return ret
 	}
@@ -88,7 +88,7 @@ func (o *Reassignment1) GetComment() string {
 // GetCommentOk returns a tuple with the Comment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Reassignment1) GetCommentOk() (*string, bool) {
-	if o == nil || isNil(o.Comment) {
+	if o == nil || IsNil(o.Comment) {
 		return nil, false
 	}
 	return o.Comment, true
@@ -96,7 +96,7 @@ func (o *Reassignment1) GetCommentOk() (*string, bool) {
 
 // HasComment returns a boolean if a field has been set.
 func (o *Reassignment1) HasComment() bool {
-	if o != nil && !isNil(o.Comment) {
+	if o != nil && !IsNil(o.Comment) {
 		return true
 	}
 
@@ -118,10 +118,10 @@ func (o Reassignment1) MarshalJSON() ([]byte, error) {
 
 func (o Reassignment1) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.From) {
+	if !IsNil(o.From) {
 		toSerialize["from"] = o.From
 	}
-	if !isNil(o.Comment) {
+	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
 
@@ -132,16 +132,20 @@ func (o Reassignment1) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Reassignment1) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Reassignment1) UnmarshalJSON(data []byte) (err error) {
 	varReassignment1 := _Reassignment1{}
 
-	if err = json.Unmarshal(bytes, &varReassignment1); err == nil {
+	err = json.Unmarshal(data, &varReassignment1)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Reassignment1(varReassignment1)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "from")
 		delete(additionalProperties, "comment")
 		o.AdditionalProperties = additionalProperties

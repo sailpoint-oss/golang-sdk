@@ -49,7 +49,7 @@ func NewCommentDtoWithDefaults() *CommentDto {
 
 // GetComment returns the Comment field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CommentDto) GetComment() string {
-	if o == nil || isNil(o.Comment.Get()) {
+	if o == nil || IsNil(o.Comment.Get()) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *CommentDto) UnsetComment() {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *CommentDto) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -101,7 +101,7 @@ func (o *CommentDto) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CommentDto) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -109,7 +109,7 @@ func (o *CommentDto) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *CommentDto) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -123,7 +123,7 @@ func (o *CommentDto) SetCreated(v time.Time) {
 
 // GetAuthor returns the Author field value if set, zero value otherwise.
 func (o *CommentDto) GetAuthor() CommentDtoAuthor {
-	if o == nil || isNil(o.Author) {
+	if o == nil || IsNil(o.Author) {
 		var ret CommentDtoAuthor
 		return ret
 	}
@@ -133,7 +133,7 @@ func (o *CommentDto) GetAuthor() CommentDtoAuthor {
 // GetAuthorOk returns a tuple with the Author field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CommentDto) GetAuthorOk() (*CommentDtoAuthor, bool) {
-	if o == nil || isNil(o.Author) {
+	if o == nil || IsNil(o.Author) {
 		return nil, false
 	}
 	return o.Author, true
@@ -141,7 +141,7 @@ func (o *CommentDto) GetAuthorOk() (*CommentDtoAuthor, bool) {
 
 // HasAuthor returns a boolean if a field has been set.
 func (o *CommentDto) HasAuthor() bool {
-	if o != nil && !isNil(o.Author) {
+	if o != nil && !IsNil(o.Author) {
 		return true
 	}
 
@@ -166,10 +166,10 @@ func (o CommentDto) ToMap() (map[string]interface{}, error) {
 	if o.Comment.IsSet() {
 		toSerialize["comment"] = o.Comment.Get()
 	}
-	if !isNil(o.Created) {
+	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
-	if !isNil(o.Author) {
+	if !IsNil(o.Author) {
 		toSerialize["author"] = o.Author
 	}
 
@@ -180,16 +180,20 @@ func (o CommentDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CommentDto) UnmarshalJSON(bytes []byte) (err error) {
+func (o *CommentDto) UnmarshalJSON(data []byte) (err error) {
 	varCommentDto := _CommentDto{}
 
-	if err = json.Unmarshal(bytes, &varCommentDto); err == nil {
+	err = json.Unmarshal(data, &varCommentDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CommentDto(varCommentDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "comment")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "author")

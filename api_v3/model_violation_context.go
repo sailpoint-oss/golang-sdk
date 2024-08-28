@@ -45,7 +45,7 @@ func NewViolationContextWithDefaults() *ViolationContext {
 
 // GetPolicy returns the Policy field value if set, zero value otherwise.
 func (o *ViolationContext) GetPolicy() ViolationContextPolicy {
-	if o == nil || isNil(o.Policy) {
+	if o == nil || IsNil(o.Policy) {
 		var ret ViolationContextPolicy
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *ViolationContext) GetPolicy() ViolationContextPolicy {
 // GetPolicyOk returns a tuple with the Policy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ViolationContext) GetPolicyOk() (*ViolationContextPolicy, bool) {
-	if o == nil || isNil(o.Policy) {
+	if o == nil || IsNil(o.Policy) {
 		return nil, false
 	}
 	return o.Policy, true
@@ -63,7 +63,7 @@ func (o *ViolationContext) GetPolicyOk() (*ViolationContextPolicy, bool) {
 
 // HasPolicy returns a boolean if a field has been set.
 func (o *ViolationContext) HasPolicy() bool {
-	if o != nil && !isNil(o.Policy) {
+	if o != nil && !IsNil(o.Policy) {
 		return true
 	}
 
@@ -77,7 +77,7 @@ func (o *ViolationContext) SetPolicy(v ViolationContextPolicy) {
 
 // GetConflictingAccessCriteria returns the ConflictingAccessCriteria field value if set, zero value otherwise.
 func (o *ViolationContext) GetConflictingAccessCriteria() ExceptionAccessCriteria {
-	if o == nil || isNil(o.ConflictingAccessCriteria) {
+	if o == nil || IsNil(o.ConflictingAccessCriteria) {
 		var ret ExceptionAccessCriteria
 		return ret
 	}
@@ -87,7 +87,7 @@ func (o *ViolationContext) GetConflictingAccessCriteria() ExceptionAccessCriteri
 // GetConflictingAccessCriteriaOk returns a tuple with the ConflictingAccessCriteria field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ViolationContext) GetConflictingAccessCriteriaOk() (*ExceptionAccessCriteria, bool) {
-	if o == nil || isNil(o.ConflictingAccessCriteria) {
+	if o == nil || IsNil(o.ConflictingAccessCriteria) {
 		return nil, false
 	}
 	return o.ConflictingAccessCriteria, true
@@ -95,7 +95,7 @@ func (o *ViolationContext) GetConflictingAccessCriteriaOk() (*ExceptionAccessCri
 
 // HasConflictingAccessCriteria returns a boolean if a field has been set.
 func (o *ViolationContext) HasConflictingAccessCriteria() bool {
-	if o != nil && !isNil(o.ConflictingAccessCriteria) {
+	if o != nil && !IsNil(o.ConflictingAccessCriteria) {
 		return true
 	}
 
@@ -117,10 +117,10 @@ func (o ViolationContext) MarshalJSON() ([]byte, error) {
 
 func (o ViolationContext) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Policy) {
+	if !IsNil(o.Policy) {
 		toSerialize["policy"] = o.Policy
 	}
-	if !isNil(o.ConflictingAccessCriteria) {
+	if !IsNil(o.ConflictingAccessCriteria) {
 		toSerialize["conflictingAccessCriteria"] = o.ConflictingAccessCriteria
 	}
 
@@ -131,16 +131,20 @@ func (o ViolationContext) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ViolationContext) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ViolationContext) UnmarshalJSON(data []byte) (err error) {
 	varViolationContext := _ViolationContext{}
 
-	if err = json.Unmarshal(bytes, &varViolationContext); err == nil {
+	err = json.Unmarshal(data, &varViolationContext)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ViolationContext(varViolationContext)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "policy")
 		delete(additionalProperties, "conflictingAccessCriteria")
 		o.AdditionalProperties = additionalProperties

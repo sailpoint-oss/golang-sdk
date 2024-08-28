@@ -19,14 +19,14 @@ import (
 
 func Test_api_v2024_SIMIntegrationsAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test SIMIntegrationsAPIService CreateSIMIntegration", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.SIMIntegrationsAPI.CreateSIMIntegration(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SIMIntegrationsAPI.CreateSIMIntegration(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_v2024_SIMIntegrationsAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_V2024.SIMIntegrationsAPI.DeleteSIMIntegration(context.Background(), id).Execute()
+		httpRes, err := apiClient.SIMIntegrationsAPI.DeleteSIMIntegration(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -53,7 +53,7 @@ func Test_api_v2024_SIMIntegrationsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.SIMIntegrationsAPI.GetSIMIntegration(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SIMIntegrationsAPI.GetSIMIntegration(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -65,7 +65,7 @@ func Test_api_v2024_SIMIntegrationsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.SIMIntegrationsAPI.GetSIMIntegrations(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SIMIntegrationsAPI.GetSIMIntegrations(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -79,7 +79,7 @@ func Test_api_v2024_SIMIntegrationsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.SIMIntegrationsAPI.PatchBeforeProvisioningRule(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SIMIntegrationsAPI.PatchBeforeProvisioningRule(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -93,7 +93,7 @@ func Test_api_v2024_SIMIntegrationsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.SIMIntegrationsAPI.PatchSIMAttributes(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SIMIntegrationsAPI.PatchSIMAttributes(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -107,7 +107,7 @@ func Test_api_v2024_SIMIntegrationsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.SIMIntegrationsAPI.PutSIMIntegration(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SIMIntegrationsAPI.PutSIMIntegration(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -51,7 +51,7 @@ func NewRoleMiningPotentialRoleSourceUsageWithDefaults() *RoleMiningPotentialRol
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *RoleMiningPotentialRoleSourceUsage) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -61,7 +61,7 @@ func (o *RoleMiningPotentialRoleSourceUsage) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningPotentialRoleSourceUsage) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -69,7 +69,7 @@ func (o *RoleMiningPotentialRoleSourceUsage) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *RoleMiningPotentialRoleSourceUsage) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -83,7 +83,7 @@ func (o *RoleMiningPotentialRoleSourceUsage) SetId(v string) {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *RoleMiningPotentialRoleSourceUsage) GetDisplayName() string {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -93,7 +93,7 @@ func (o *RoleMiningPotentialRoleSourceUsage) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningPotentialRoleSourceUsage) GetDisplayNameOk() (*string, bool) {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -101,7 +101,7 @@ func (o *RoleMiningPotentialRoleSourceUsage) GetDisplayNameOk() (*string, bool) 
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *RoleMiningPotentialRoleSourceUsage) HasDisplayName() bool {
-	if o != nil && !isNil(o.DisplayName) {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -115,7 +115,7 @@ func (o *RoleMiningPotentialRoleSourceUsage) SetDisplayName(v string) {
 
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *RoleMiningPotentialRoleSourceUsage) GetEmail() string {
-	if o == nil || isNil(o.Email) {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
@@ -125,7 +125,7 @@ func (o *RoleMiningPotentialRoleSourceUsage) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningPotentialRoleSourceUsage) GetEmailOk() (*string, bool) {
-	if o == nil || isNil(o.Email) {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
 	return o.Email, true
@@ -133,7 +133,7 @@ func (o *RoleMiningPotentialRoleSourceUsage) GetEmailOk() (*string, bool) {
 
 // HasEmail returns a boolean if a field has been set.
 func (o *RoleMiningPotentialRoleSourceUsage) HasEmail() bool {
-	if o != nil && !isNil(o.Email) {
+	if o != nil && !IsNil(o.Email) {
 		return true
 	}
 
@@ -147,7 +147,7 @@ func (o *RoleMiningPotentialRoleSourceUsage) SetEmail(v string) {
 
 // GetUsageCount returns the UsageCount field value if set, zero value otherwise.
 func (o *RoleMiningPotentialRoleSourceUsage) GetUsageCount() int32 {
-	if o == nil || isNil(o.UsageCount) {
+	if o == nil || IsNil(o.UsageCount) {
 		var ret int32
 		return ret
 	}
@@ -157,7 +157,7 @@ func (o *RoleMiningPotentialRoleSourceUsage) GetUsageCount() int32 {
 // GetUsageCountOk returns a tuple with the UsageCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningPotentialRoleSourceUsage) GetUsageCountOk() (*int32, bool) {
-	if o == nil || isNil(o.UsageCount) {
+	if o == nil || IsNil(o.UsageCount) {
 		return nil, false
 	}
 	return o.UsageCount, true
@@ -165,7 +165,7 @@ func (o *RoleMiningPotentialRoleSourceUsage) GetUsageCountOk() (*int32, bool) {
 
 // HasUsageCount returns a boolean if a field has been set.
 func (o *RoleMiningPotentialRoleSourceUsage) HasUsageCount() bool {
-	if o != nil && !isNil(o.UsageCount) {
+	if o != nil && !IsNil(o.UsageCount) {
 		return true
 	}
 
@@ -187,16 +187,16 @@ func (o RoleMiningPotentialRoleSourceUsage) MarshalJSON() ([]byte, error) {
 
 func (o RoleMiningPotentialRoleSourceUsage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.DisplayName) {
+	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
-	if !isNil(o.Email) {
+	if !IsNil(o.Email) {
 		toSerialize["email"] = o.Email
 	}
-	if !isNil(o.UsageCount) {
+	if !IsNil(o.UsageCount) {
 		toSerialize["usageCount"] = o.UsageCount
 	}
 
@@ -207,16 +207,20 @@ func (o RoleMiningPotentialRoleSourceUsage) ToMap() (map[string]interface{}, err
 	return toSerialize, nil
 }
 
-func (o *RoleMiningPotentialRoleSourceUsage) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RoleMiningPotentialRoleSourceUsage) UnmarshalJSON(data []byte) (err error) {
 	varRoleMiningPotentialRoleSourceUsage := _RoleMiningPotentialRoleSourceUsage{}
 
-	if err = json.Unmarshal(bytes, &varRoleMiningPotentialRoleSourceUsage); err == nil {
+	err = json.Unmarshal(data, &varRoleMiningPotentialRoleSourceUsage)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RoleMiningPotentialRoleSourceUsage(varRoleMiningPotentialRoleSourceUsage)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "displayName")
 		delete(additionalProperties, "email")

@@ -45,7 +45,7 @@ func NewJsonPatchWithDefaults() *JsonPatch {
 
 // GetOperations returns the Operations field value if set, zero value otherwise.
 func (o *JsonPatch) GetOperations() []JsonPatchOperation {
-	if o == nil || isNil(o.Operations) {
+	if o == nil || IsNil(o.Operations) {
 		var ret []JsonPatchOperation
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *JsonPatch) GetOperations() []JsonPatchOperation {
 // GetOperationsOk returns a tuple with the Operations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JsonPatch) GetOperationsOk() ([]JsonPatchOperation, bool) {
-	if o == nil || isNil(o.Operations) {
+	if o == nil || IsNil(o.Operations) {
 		return nil, false
 	}
 	return o.Operations, true
@@ -63,7 +63,7 @@ func (o *JsonPatch) GetOperationsOk() ([]JsonPatchOperation, bool) {
 
 // HasOperations returns a boolean if a field has been set.
 func (o *JsonPatch) HasOperations() bool {
-	if o != nil && !isNil(o.Operations) {
+	if o != nil && !IsNil(o.Operations) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o JsonPatch) MarshalJSON() ([]byte, error) {
 
 func (o JsonPatch) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Operations) {
+	if !IsNil(o.Operations) {
 		toSerialize["operations"] = o.Operations
 	}
 
@@ -96,16 +96,20 @@ func (o JsonPatch) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *JsonPatch) UnmarshalJSON(bytes []byte) (err error) {
+func (o *JsonPatch) UnmarshalJSON(data []byte) (err error) {
 	varJsonPatch := _JsonPatch{}
 
-	if err = json.Unmarshal(bytes, &varJsonPatch); err == nil {
+	err = json.Unmarshal(data, &varJsonPatch)
+
+	if err != nil {
+		return err
+	}
+
 	*o = JsonPatch(varJsonPatch)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "operations")
 		o.AdditionalProperties = additionalProperties
 	}

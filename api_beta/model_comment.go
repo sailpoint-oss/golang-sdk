@@ -52,7 +52,7 @@ func NewCommentWithDefaults() *Comment {
 
 // GetCommenterId returns the CommenterId field value if set, zero value otherwise.
 func (o *Comment) GetCommenterId() string {
-	if o == nil || isNil(o.CommenterId) {
+	if o == nil || IsNil(o.CommenterId) {
 		var ret string
 		return ret
 	}
@@ -62,7 +62,7 @@ func (o *Comment) GetCommenterId() string {
 // GetCommenterIdOk returns a tuple with the CommenterId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Comment) GetCommenterIdOk() (*string, bool) {
-	if o == nil || isNil(o.CommenterId) {
+	if o == nil || IsNil(o.CommenterId) {
 		return nil, false
 	}
 	return o.CommenterId, true
@@ -70,7 +70,7 @@ func (o *Comment) GetCommenterIdOk() (*string, bool) {
 
 // HasCommenterId returns a boolean if a field has been set.
 func (o *Comment) HasCommenterId() bool {
-	if o != nil && !isNil(o.CommenterId) {
+	if o != nil && !IsNil(o.CommenterId) {
 		return true
 	}
 
@@ -84,7 +84,7 @@ func (o *Comment) SetCommenterId(v string) {
 
 // GetCommenterName returns the CommenterName field value if set, zero value otherwise.
 func (o *Comment) GetCommenterName() string {
-	if o == nil || isNil(o.CommenterName) {
+	if o == nil || IsNil(o.CommenterName) {
 		var ret string
 		return ret
 	}
@@ -94,7 +94,7 @@ func (o *Comment) GetCommenterName() string {
 // GetCommenterNameOk returns a tuple with the CommenterName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Comment) GetCommenterNameOk() (*string, bool) {
-	if o == nil || isNil(o.CommenterName) {
+	if o == nil || IsNil(o.CommenterName) {
 		return nil, false
 	}
 	return o.CommenterName, true
@@ -102,7 +102,7 @@ func (o *Comment) GetCommenterNameOk() (*string, bool) {
 
 // HasCommenterName returns a boolean if a field has been set.
 func (o *Comment) HasCommenterName() bool {
-	if o != nil && !isNil(o.CommenterName) {
+	if o != nil && !IsNil(o.CommenterName) {
 		return true
 	}
 
@@ -116,7 +116,7 @@ func (o *Comment) SetCommenterName(v string) {
 
 // GetBody returns the Body field value if set, zero value otherwise.
 func (o *Comment) GetBody() string {
-	if o == nil || isNil(o.Body) {
+	if o == nil || IsNil(o.Body) {
 		var ret string
 		return ret
 	}
@@ -126,7 +126,7 @@ func (o *Comment) GetBody() string {
 // GetBodyOk returns a tuple with the Body field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Comment) GetBodyOk() (*string, bool) {
-	if o == nil || isNil(o.Body) {
+	if o == nil || IsNil(o.Body) {
 		return nil, false
 	}
 	return o.Body, true
@@ -134,7 +134,7 @@ func (o *Comment) GetBodyOk() (*string, bool) {
 
 // HasBody returns a boolean if a field has been set.
 func (o *Comment) HasBody() bool {
-	if o != nil && !isNil(o.Body) {
+	if o != nil && !IsNil(o.Body) {
 		return true
 	}
 
@@ -148,7 +148,7 @@ func (o *Comment) SetBody(v string) {
 
 // GetDate returns the Date field value if set, zero value otherwise.
 func (o *Comment) GetDate() time.Time {
-	if o == nil || isNil(o.Date) {
+	if o == nil || IsNil(o.Date) {
 		var ret time.Time
 		return ret
 	}
@@ -158,7 +158,7 @@ func (o *Comment) GetDate() time.Time {
 // GetDateOk returns a tuple with the Date field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Comment) GetDateOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Date) {
+	if o == nil || IsNil(o.Date) {
 		return nil, false
 	}
 	return o.Date, true
@@ -166,7 +166,7 @@ func (o *Comment) GetDateOk() (*time.Time, bool) {
 
 // HasDate returns a boolean if a field has been set.
 func (o *Comment) HasDate() bool {
-	if o != nil && !isNil(o.Date) {
+	if o != nil && !IsNil(o.Date) {
 		return true
 	}
 
@@ -188,16 +188,16 @@ func (o Comment) MarshalJSON() ([]byte, error) {
 
 func (o Comment) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.CommenterId) {
+	if !IsNil(o.CommenterId) {
 		toSerialize["commenterId"] = o.CommenterId
 	}
-	if !isNil(o.CommenterName) {
+	if !IsNil(o.CommenterName) {
 		toSerialize["commenterName"] = o.CommenterName
 	}
-	if !isNil(o.Body) {
+	if !IsNil(o.Body) {
 		toSerialize["body"] = o.Body
 	}
-	if !isNil(o.Date) {
+	if !IsNil(o.Date) {
 		toSerialize["date"] = o.Date
 	}
 
@@ -208,16 +208,20 @@ func (o Comment) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Comment) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Comment) UnmarshalJSON(data []byte) (err error) {
 	varComment := _Comment{}
 
-	if err = json.Unmarshal(bytes, &varComment); err == nil {
+	err = json.Unmarshal(data, &varComment)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Comment(varComment)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "commenterId")
 		delete(additionalProperties, "commenterName")
 		delete(additionalProperties, "body")

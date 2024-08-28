@@ -44,7 +44,7 @@ func NewRecommendationResponseDtoWithDefaults() *RecommendationResponseDto {
 
 // GetResponse returns the Response field value if set, zero value otherwise.
 func (o *RecommendationResponseDto) GetResponse() []RecommendationResponse {
-	if o == nil || isNil(o.Response) {
+	if o == nil || IsNil(o.Response) {
 		var ret []RecommendationResponse
 		return ret
 	}
@@ -54,7 +54,7 @@ func (o *RecommendationResponseDto) GetResponse() []RecommendationResponse {
 // GetResponseOk returns a tuple with the Response field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RecommendationResponseDto) GetResponseOk() ([]RecommendationResponse, bool) {
-	if o == nil || isNil(o.Response) {
+	if o == nil || IsNil(o.Response) {
 		return nil, false
 	}
 	return o.Response, true
@@ -62,7 +62,7 @@ func (o *RecommendationResponseDto) GetResponseOk() ([]RecommendationResponse, b
 
 // HasResponse returns a boolean if a field has been set.
 func (o *RecommendationResponseDto) HasResponse() bool {
-	if o != nil && !isNil(o.Response) {
+	if o != nil && !IsNil(o.Response) {
 		return true
 	}
 
@@ -84,7 +84,7 @@ func (o RecommendationResponseDto) MarshalJSON() ([]byte, error) {
 
 func (o RecommendationResponseDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Response) {
+	if !IsNil(o.Response) {
 		toSerialize["response"] = o.Response
 	}
 
@@ -95,16 +95,20 @@ func (o RecommendationResponseDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *RecommendationResponseDto) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RecommendationResponseDto) UnmarshalJSON(data []byte) (err error) {
 	varRecommendationResponseDto := _RecommendationResponseDto{}
 
-	if err = json.Unmarshal(bytes, &varRecommendationResponseDto); err == nil {
+	err = json.Unmarshal(data, &varRecommendationResponseDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RecommendationResponseDto(varRecommendationResponseDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "response")
 		o.AdditionalProperties = additionalProperties
 	}

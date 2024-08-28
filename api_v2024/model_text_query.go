@@ -110,7 +110,7 @@ func (o *TextQuery) SetFields(v []string) {
 
 // GetMatchAny returns the MatchAny field value if set, zero value otherwise.
 func (o *TextQuery) GetMatchAny() bool {
-	if o == nil || isNil(o.MatchAny) {
+	if o == nil || IsNil(o.MatchAny) {
 		var ret bool
 		return ret
 	}
@@ -120,7 +120,7 @@ func (o *TextQuery) GetMatchAny() bool {
 // GetMatchAnyOk returns a tuple with the MatchAny field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TextQuery) GetMatchAnyOk() (*bool, bool) {
-	if o == nil || isNil(o.MatchAny) {
+	if o == nil || IsNil(o.MatchAny) {
 		return nil, false
 	}
 	return o.MatchAny, true
@@ -128,7 +128,7 @@ func (o *TextQuery) GetMatchAnyOk() (*bool, bool) {
 
 // HasMatchAny returns a boolean if a field has been set.
 func (o *TextQuery) HasMatchAny() bool {
-	if o != nil && !isNil(o.MatchAny) {
+	if o != nil && !IsNil(o.MatchAny) {
 		return true
 	}
 
@@ -142,7 +142,7 @@ func (o *TextQuery) SetMatchAny(v bool) {
 
 // GetContains returns the Contains field value if set, zero value otherwise.
 func (o *TextQuery) GetContains() bool {
-	if o == nil || isNil(o.Contains) {
+	if o == nil || IsNil(o.Contains) {
 		var ret bool
 		return ret
 	}
@@ -152,7 +152,7 @@ func (o *TextQuery) GetContains() bool {
 // GetContainsOk returns a tuple with the Contains field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TextQuery) GetContainsOk() (*bool, bool) {
-	if o == nil || isNil(o.Contains) {
+	if o == nil || IsNil(o.Contains) {
 		return nil, false
 	}
 	return o.Contains, true
@@ -160,7 +160,7 @@ func (o *TextQuery) GetContainsOk() (*bool, bool) {
 
 // HasContains returns a boolean if a field has been set.
 func (o *TextQuery) HasContains() bool {
-	if o != nil && !isNil(o.Contains) {
+	if o != nil && !IsNil(o.Contains) {
 		return true
 	}
 
@@ -184,10 +184,10 @@ func (o TextQuery) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["terms"] = o.Terms
 	toSerialize["fields"] = o.Fields
-	if !isNil(o.MatchAny) {
+	if !IsNil(o.MatchAny) {
 		toSerialize["matchAny"] = o.MatchAny
 	}
-	if !isNil(o.Contains) {
+	if !IsNil(o.Contains) {
 		toSerialize["contains"] = o.Contains
 	}
 
@@ -198,8 +198,8 @@ func (o TextQuery) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *TextQuery) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *TextQuery) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -209,7 +209,7 @@ func (o *TextQuery) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -223,13 +223,17 @@ func (o *TextQuery) UnmarshalJSON(bytes []byte) (err error) {
 
 	varTextQuery := _TextQuery{}
 
-	if err = json.Unmarshal(bytes, &varTextQuery); err == nil {
+	err = json.Unmarshal(data, &varTextQuery)
+
+	if err != nil {
+		return err
+	}
+
 	*o = TextQuery(varTextQuery)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "terms")
 		delete(additionalProperties, "fields")
 		delete(additionalProperties, "matchAny")

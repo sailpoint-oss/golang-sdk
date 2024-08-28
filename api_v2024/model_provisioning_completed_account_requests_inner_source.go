@@ -144,8 +144,8 @@ func (o ProvisioningCompletedAccountRequestsInnerSource) ToMap() (map[string]int
 	return toSerialize, nil
 }
 
-func (o *ProvisioningCompletedAccountRequestsInnerSource) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *ProvisioningCompletedAccountRequestsInnerSource) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -156,7 +156,7 @@ func (o *ProvisioningCompletedAccountRequestsInnerSource) UnmarshalJSON(bytes []
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -170,13 +170,17 @@ func (o *ProvisioningCompletedAccountRequestsInnerSource) UnmarshalJSON(bytes []
 
 	varProvisioningCompletedAccountRequestsInnerSource := _ProvisioningCompletedAccountRequestsInnerSource{}
 
-	if err = json.Unmarshal(bytes, &varProvisioningCompletedAccountRequestsInnerSource); err == nil {
+	err = json.Unmarshal(data, &varProvisioningCompletedAccountRequestsInnerSource)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ProvisioningCompletedAccountRequestsInnerSource(varProvisioningCompletedAccountRequestsInnerSource)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "name")

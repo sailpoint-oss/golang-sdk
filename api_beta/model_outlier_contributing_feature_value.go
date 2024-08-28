@@ -12,6 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
@@ -47,7 +48,11 @@ func (dst *OutlierContributingFeatureValue) UnmarshalJSON(data []byte) error {
 		if string(jsonFloat32) == "{}" { // empty struct
 			dst.Float32 = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.Float32); err != nil {
+				dst.Float32 = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.Float32 = nil
@@ -60,7 +65,11 @@ func (dst *OutlierContributingFeatureValue) UnmarshalJSON(data []byte) error {
 		if string(jsonInt64) == "{}" { // empty struct
 			dst.Int64 = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.Int64); err != nil {
+				dst.Int64 = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.Int64 = nil

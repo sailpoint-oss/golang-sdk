@@ -55,7 +55,7 @@ func NewIdentityHistoryResponseWithDefaults() *IdentityHistoryResponse {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *IdentityHistoryResponse) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -65,7 +65,7 @@ func (o *IdentityHistoryResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityHistoryResponse) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -73,7 +73,7 @@ func (o *IdentityHistoryResponse) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *IdentityHistoryResponse) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -87,7 +87,7 @@ func (o *IdentityHistoryResponse) SetId(v string) {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *IdentityHistoryResponse) GetDisplayName() string {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -97,7 +97,7 @@ func (o *IdentityHistoryResponse) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityHistoryResponse) GetDisplayNameOk() (*string, bool) {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -105,7 +105,7 @@ func (o *IdentityHistoryResponse) GetDisplayNameOk() (*string, bool) {
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *IdentityHistoryResponse) HasDisplayName() bool {
-	if o != nil && !isNil(o.DisplayName) {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -119,7 +119,7 @@ func (o *IdentityHistoryResponse) SetDisplayName(v string) {
 
 // GetSnapshot returns the Snapshot field value if set, zero value otherwise.
 func (o *IdentityHistoryResponse) GetSnapshot() string {
-	if o == nil || isNil(o.Snapshot) {
+	if o == nil || IsNil(o.Snapshot) {
 		var ret string
 		return ret
 	}
@@ -129,7 +129,7 @@ func (o *IdentityHistoryResponse) GetSnapshot() string {
 // GetSnapshotOk returns a tuple with the Snapshot field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityHistoryResponse) GetSnapshotOk() (*string, bool) {
-	if o == nil || isNil(o.Snapshot) {
+	if o == nil || IsNil(o.Snapshot) {
 		return nil, false
 	}
 	return o.Snapshot, true
@@ -137,7 +137,7 @@ func (o *IdentityHistoryResponse) GetSnapshotOk() (*string, bool) {
 
 // HasSnapshot returns a boolean if a field has been set.
 func (o *IdentityHistoryResponse) HasSnapshot() bool {
-	if o != nil && !isNil(o.Snapshot) {
+	if o != nil && !IsNil(o.Snapshot) {
 		return true
 	}
 
@@ -151,7 +151,7 @@ func (o *IdentityHistoryResponse) SetSnapshot(v string) {
 
 // GetDeletedDate returns the DeletedDate field value if set, zero value otherwise.
 func (o *IdentityHistoryResponse) GetDeletedDate() string {
-	if o == nil || isNil(o.DeletedDate) {
+	if o == nil || IsNil(o.DeletedDate) {
 		var ret string
 		return ret
 	}
@@ -161,7 +161,7 @@ func (o *IdentityHistoryResponse) GetDeletedDate() string {
 // GetDeletedDateOk returns a tuple with the DeletedDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityHistoryResponse) GetDeletedDateOk() (*string, bool) {
-	if o == nil || isNil(o.DeletedDate) {
+	if o == nil || IsNil(o.DeletedDate) {
 		return nil, false
 	}
 	return o.DeletedDate, true
@@ -169,7 +169,7 @@ func (o *IdentityHistoryResponse) GetDeletedDateOk() (*string, bool) {
 
 // HasDeletedDate returns a boolean if a field has been set.
 func (o *IdentityHistoryResponse) HasDeletedDate() bool {
-	if o != nil && !isNil(o.DeletedDate) {
+	if o != nil && !IsNil(o.DeletedDate) {
 		return true
 	}
 
@@ -183,7 +183,7 @@ func (o *IdentityHistoryResponse) SetDeletedDate(v string) {
 
 // GetAccessItemCount returns the AccessItemCount field value if set, zero value otherwise.
 func (o *IdentityHistoryResponse) GetAccessItemCount() map[string]int32 {
-	if o == nil || isNil(o.AccessItemCount) {
+	if o == nil || IsNil(o.AccessItemCount) {
 		var ret map[string]int32
 		return ret
 	}
@@ -193,7 +193,7 @@ func (o *IdentityHistoryResponse) GetAccessItemCount() map[string]int32 {
 // GetAccessItemCountOk returns a tuple with the AccessItemCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityHistoryResponse) GetAccessItemCountOk() (*map[string]int32, bool) {
-	if o == nil || isNil(o.AccessItemCount) {
+	if o == nil || IsNil(o.AccessItemCount) {
 		return nil, false
 	}
 	return o.AccessItemCount, true
@@ -201,7 +201,7 @@ func (o *IdentityHistoryResponse) GetAccessItemCountOk() (*map[string]int32, boo
 
 // HasAccessItemCount returns a boolean if a field has been set.
 func (o *IdentityHistoryResponse) HasAccessItemCount() bool {
-	if o != nil && !isNil(o.AccessItemCount) {
+	if o != nil && !IsNil(o.AccessItemCount) {
 		return true
 	}
 
@@ -215,7 +215,7 @@ func (o *IdentityHistoryResponse) SetAccessItemCount(v map[string]int32) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *IdentityHistoryResponse) GetAttributes() map[string]interface{} {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -225,7 +225,7 @@ func (o *IdentityHistoryResponse) GetAttributes() map[string]interface{} {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityHistoryResponse) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
@@ -233,7 +233,7 @@ func (o *IdentityHistoryResponse) GetAttributesOk() (map[string]interface{}, boo
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *IdentityHistoryResponse) HasAttributes() bool {
-	if o != nil && !isNil(o.Attributes) {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -255,22 +255,22 @@ func (o IdentityHistoryResponse) MarshalJSON() ([]byte, error) {
 
 func (o IdentityHistoryResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.DisplayName) {
+	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
-	if !isNil(o.Snapshot) {
+	if !IsNil(o.Snapshot) {
 		toSerialize["snapshot"] = o.Snapshot
 	}
-	if !isNil(o.DeletedDate) {
+	if !IsNil(o.DeletedDate) {
 		toSerialize["deletedDate"] = o.DeletedDate
 	}
-	if !isNil(o.AccessItemCount) {
+	if !IsNil(o.AccessItemCount) {
 		toSerialize["accessItemCount"] = o.AccessItemCount
 	}
-	if !isNil(o.Attributes) {
+	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
 
@@ -281,16 +281,20 @@ func (o IdentityHistoryResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *IdentityHistoryResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *IdentityHistoryResponse) UnmarshalJSON(data []byte) (err error) {
 	varIdentityHistoryResponse := _IdentityHistoryResponse{}
 
-	if err = json.Unmarshal(bytes, &varIdentityHistoryResponse); err == nil {
+	err = json.Unmarshal(data, &varIdentityHistoryResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = IdentityHistoryResponse(varIdentityHistoryResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "displayName")
 		delete(additionalProperties, "snapshot")

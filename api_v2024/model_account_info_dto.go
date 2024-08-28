@@ -49,7 +49,7 @@ func NewAccountInfoDtoWithDefaults() *AccountInfoDto {
 
 // GetNativeIdentity returns the NativeIdentity field value if set, zero value otherwise.
 func (o *AccountInfoDto) GetNativeIdentity() string {
-	if o == nil || isNil(o.NativeIdentity) {
+	if o == nil || IsNil(o.NativeIdentity) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *AccountInfoDto) GetNativeIdentity() string {
 // GetNativeIdentityOk returns a tuple with the NativeIdentity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountInfoDto) GetNativeIdentityOk() (*string, bool) {
-	if o == nil || isNil(o.NativeIdentity) {
+	if o == nil || IsNil(o.NativeIdentity) {
 		return nil, false
 	}
 	return o.NativeIdentity, true
@@ -67,7 +67,7 @@ func (o *AccountInfoDto) GetNativeIdentityOk() (*string, bool) {
 
 // HasNativeIdentity returns a boolean if a field has been set.
 func (o *AccountInfoDto) HasNativeIdentity() bool {
-	if o != nil && !isNil(o.NativeIdentity) {
+	if o != nil && !IsNil(o.NativeIdentity) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *AccountInfoDto) SetNativeIdentity(v string) {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *AccountInfoDto) GetDisplayName() string {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *AccountInfoDto) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountInfoDto) GetDisplayNameOk() (*string, bool) {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -99,7 +99,7 @@ func (o *AccountInfoDto) GetDisplayNameOk() (*string, bool) {
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *AccountInfoDto) HasDisplayName() bool {
-	if o != nil && !isNil(o.DisplayName) {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *AccountInfoDto) SetDisplayName(v string) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise.
 func (o *AccountInfoDto) GetUuid() string {
-	if o == nil || isNil(o.Uuid) {
+	if o == nil || IsNil(o.Uuid) {
 		var ret string
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *AccountInfoDto) GetUuid() string {
 // GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountInfoDto) GetUuidOk() (*string, bool) {
-	if o == nil || isNil(o.Uuid) {
+	if o == nil || IsNil(o.Uuid) {
 		return nil, false
 	}
 	return o.Uuid, true
@@ -131,7 +131,7 @@ func (o *AccountInfoDto) GetUuidOk() (*string, bool) {
 
 // HasUuid returns a boolean if a field has been set.
 func (o *AccountInfoDto) HasUuid() bool {
-	if o != nil && !isNil(o.Uuid) {
+	if o != nil && !IsNil(o.Uuid) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o AccountInfoDto) MarshalJSON() ([]byte, error) {
 
 func (o AccountInfoDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.NativeIdentity) {
+	if !IsNil(o.NativeIdentity) {
 		toSerialize["nativeIdentity"] = o.NativeIdentity
 	}
-	if !isNil(o.DisplayName) {
+	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
-	if !isNil(o.Uuid) {
+	if !IsNil(o.Uuid) {
 		toSerialize["uuid"] = o.Uuid
 	}
 
@@ -170,16 +170,20 @@ func (o AccountInfoDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccountInfoDto) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccountInfoDto) UnmarshalJSON(data []byte) (err error) {
 	varAccountInfoDto := _AccountInfoDto{}
 
-	if err = json.Unmarshal(bytes, &varAccountInfoDto); err == nil {
+	err = json.Unmarshal(data, &varAccountInfoDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccountInfoDto(varAccountInfoDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "nativeIdentity")
 		delete(additionalProperties, "displayName")
 		delete(additionalProperties, "uuid")

@@ -71,7 +71,7 @@ func (o *ConnectorRuleCreateRequestSignature) SetInput(v []Argument) {
 
 // GetOutput returns the Output field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ConnectorRuleCreateRequestSignature) GetOutput() Argument {
-	if o == nil || isNil(o.Output.Get()) {
+	if o == nil || IsNil(o.Output.Get()) {
 		var ret Argument
 		return ret
 	}
@@ -133,8 +133,8 @@ func (o ConnectorRuleCreateRequestSignature) ToMap() (map[string]interface{}, er
 	return toSerialize, nil
 }
 
-func (o *ConnectorRuleCreateRequestSignature) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *ConnectorRuleCreateRequestSignature) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -143,7 +143,7 @@ func (o *ConnectorRuleCreateRequestSignature) UnmarshalJSON(bytes []byte) (err e
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -157,13 +157,17 @@ func (o *ConnectorRuleCreateRequestSignature) UnmarshalJSON(bytes []byte) (err e
 
 	varConnectorRuleCreateRequestSignature := _ConnectorRuleCreateRequestSignature{}
 
-	if err = json.Unmarshal(bytes, &varConnectorRuleCreateRequestSignature); err == nil {
+	err = json.Unmarshal(data, &varConnectorRuleCreateRequestSignature)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ConnectorRuleCreateRequestSignature(varConnectorRuleCreateRequestSignature)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "input")
 		delete(additionalProperties, "output")
 		o.AdditionalProperties = additionalProperties

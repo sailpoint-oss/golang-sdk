@@ -46,7 +46,7 @@ func NewImportFormDefinitionsRequestInnerWithDefaults() *ImportFormDefinitionsRe
 
 // GetObject returns the Object field value if set, zero value otherwise.
 func (o *ImportFormDefinitionsRequestInner) GetObject() FormDefinitionResponse {
-	if o == nil || isNil(o.Object) {
+	if o == nil || IsNil(o.Object) {
 		var ret FormDefinitionResponse
 		return ret
 	}
@@ -56,7 +56,7 @@ func (o *ImportFormDefinitionsRequestInner) GetObject() FormDefinitionResponse {
 // GetObjectOk returns a tuple with the Object field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImportFormDefinitionsRequestInner) GetObjectOk() (*FormDefinitionResponse, bool) {
-	if o == nil || isNil(o.Object) {
+	if o == nil || IsNil(o.Object) {
 		return nil, false
 	}
 	return o.Object, true
@@ -64,7 +64,7 @@ func (o *ImportFormDefinitionsRequestInner) GetObjectOk() (*FormDefinitionRespon
 
 // HasObject returns a boolean if a field has been set.
 func (o *ImportFormDefinitionsRequestInner) HasObject() bool {
-	if o != nil && !isNil(o.Object) {
+	if o != nil && !IsNil(o.Object) {
 		return true
 	}
 
@@ -78,7 +78,7 @@ func (o *ImportFormDefinitionsRequestInner) SetObject(v FormDefinitionResponse) 
 
 // GetSelf returns the Self field value if set, zero value otherwise.
 func (o *ImportFormDefinitionsRequestInner) GetSelf() string {
-	if o == nil || isNil(o.Self) {
+	if o == nil || IsNil(o.Self) {
 		var ret string
 		return ret
 	}
@@ -88,7 +88,7 @@ func (o *ImportFormDefinitionsRequestInner) GetSelf() string {
 // GetSelfOk returns a tuple with the Self field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImportFormDefinitionsRequestInner) GetSelfOk() (*string, bool) {
-	if o == nil || isNil(o.Self) {
+	if o == nil || IsNil(o.Self) {
 		return nil, false
 	}
 	return o.Self, true
@@ -96,7 +96,7 @@ func (o *ImportFormDefinitionsRequestInner) GetSelfOk() (*string, bool) {
 
 // HasSelf returns a boolean if a field has been set.
 func (o *ImportFormDefinitionsRequestInner) HasSelf() bool {
-	if o != nil && !isNil(o.Self) {
+	if o != nil && !IsNil(o.Self) {
 		return true
 	}
 
@@ -110,7 +110,7 @@ func (o *ImportFormDefinitionsRequestInner) SetSelf(v string) {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *ImportFormDefinitionsRequestInner) GetVersion() int32 {
-	if o == nil || isNil(o.Version) {
+	if o == nil || IsNil(o.Version) {
 		var ret int32
 		return ret
 	}
@@ -120,7 +120,7 @@ func (o *ImportFormDefinitionsRequestInner) GetVersion() int32 {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImportFormDefinitionsRequestInner) GetVersionOk() (*int32, bool) {
-	if o == nil || isNil(o.Version) {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -128,7 +128,7 @@ func (o *ImportFormDefinitionsRequestInner) GetVersionOk() (*int32, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *ImportFormDefinitionsRequestInner) HasVersion() bool {
-	if o != nil && !isNil(o.Version) {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -150,13 +150,13 @@ func (o ImportFormDefinitionsRequestInner) MarshalJSON() ([]byte, error) {
 
 func (o ImportFormDefinitionsRequestInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Object) {
+	if !IsNil(o.Object) {
 		toSerialize["object"] = o.Object
 	}
-	if !isNil(o.Self) {
+	if !IsNil(o.Self) {
 		toSerialize["self"] = o.Self
 	}
-	if !isNil(o.Version) {
+	if !IsNil(o.Version) {
 		toSerialize["version"] = o.Version
 	}
 
@@ -167,16 +167,20 @@ func (o ImportFormDefinitionsRequestInner) ToMap() (map[string]interface{}, erro
 	return toSerialize, nil
 }
 
-func (o *ImportFormDefinitionsRequestInner) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ImportFormDefinitionsRequestInner) UnmarshalJSON(data []byte) (err error) {
 	varImportFormDefinitionsRequestInner := _ImportFormDefinitionsRequestInner{}
 
-	if err = json.Unmarshal(bytes, &varImportFormDefinitionsRequestInner); err == nil {
+	err = json.Unmarshal(data, &varImportFormDefinitionsRequestInner)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ImportFormDefinitionsRequestInner(varImportFormDefinitionsRequestInner)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "object")
 		delete(additionalProperties, "self")
 		delete(additionalProperties, "version")

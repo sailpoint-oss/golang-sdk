@@ -50,7 +50,7 @@ func NewProvisioningCriteriaLevel1WithDefaults() *ProvisioningCriteriaLevel1 {
 
 // GetOperation returns the Operation field value if set, zero value otherwise.
 func (o *ProvisioningCriteriaLevel1) GetOperation() ProvisioningCriteriaOperation {
-	if o == nil || isNil(o.Operation) {
+	if o == nil || IsNil(o.Operation) {
 		var ret ProvisioningCriteriaOperation
 		return ret
 	}
@@ -60,7 +60,7 @@ func (o *ProvisioningCriteriaLevel1) GetOperation() ProvisioningCriteriaOperatio
 // GetOperationOk returns a tuple with the Operation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProvisioningCriteriaLevel1) GetOperationOk() (*ProvisioningCriteriaOperation, bool) {
-	if o == nil || isNil(o.Operation) {
+	if o == nil || IsNil(o.Operation) {
 		return nil, false
 	}
 	return o.Operation, true
@@ -68,7 +68,7 @@ func (o *ProvisioningCriteriaLevel1) GetOperationOk() (*ProvisioningCriteriaOper
 
 // HasOperation returns a boolean if a field has been set.
 func (o *ProvisioningCriteriaLevel1) HasOperation() bool {
-	if o != nil && !isNil(o.Operation) {
+	if o != nil && !IsNil(o.Operation) {
 		return true
 	}
 
@@ -82,7 +82,7 @@ func (o *ProvisioningCriteriaLevel1) SetOperation(v ProvisioningCriteriaOperatio
 
 // GetAttribute returns the Attribute field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProvisioningCriteriaLevel1) GetAttribute() string {
-	if o == nil || isNil(o.Attribute.Get()) {
+	if o == nil || IsNil(o.Attribute.Get()) {
 		var ret string
 		return ret
 	}
@@ -124,7 +124,7 @@ func (o *ProvisioningCriteriaLevel1) UnsetAttribute() {
 
 // GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProvisioningCriteriaLevel1) GetValue() string {
-	if o == nil || isNil(o.Value.Get()) {
+	if o == nil || IsNil(o.Value.Get()) {
 		var ret string
 		return ret
 	}
@@ -177,7 +177,7 @@ func (o *ProvisioningCriteriaLevel1) GetChildren() []ProvisioningCriteriaLevel2 
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProvisioningCriteriaLevel1) GetChildrenOk() ([]ProvisioningCriteriaLevel2, bool) {
-	if o == nil || isNil(o.Children) {
+	if o == nil || IsNil(o.Children) {
 		return nil, false
 	}
 	return o.Children, true
@@ -185,7 +185,7 @@ func (o *ProvisioningCriteriaLevel1) GetChildrenOk() ([]ProvisioningCriteriaLeve
 
 // HasChildren returns a boolean if a field has been set.
 func (o *ProvisioningCriteriaLevel1) HasChildren() bool {
-	if o != nil && isNil(o.Children) {
+	if o != nil && !IsNil(o.Children) {
 		return true
 	}
 
@@ -207,7 +207,7 @@ func (o ProvisioningCriteriaLevel1) MarshalJSON() ([]byte, error) {
 
 func (o ProvisioningCriteriaLevel1) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Operation) {
+	if !IsNil(o.Operation) {
 		toSerialize["operation"] = o.Operation
 	}
 	if o.Attribute.IsSet() {
@@ -227,16 +227,20 @@ func (o ProvisioningCriteriaLevel1) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ProvisioningCriteriaLevel1) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ProvisioningCriteriaLevel1) UnmarshalJSON(data []byte) (err error) {
 	varProvisioningCriteriaLevel1 := _ProvisioningCriteriaLevel1{}
 
-	if err = json.Unmarshal(bytes, &varProvisioningCriteriaLevel1); err == nil {
+	err = json.Unmarshal(data, &varProvisioningCriteriaLevel1)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ProvisioningCriteriaLevel1(varProvisioningCriteriaLevel1)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "operation")
 		delete(additionalProperties, "attribute")
 		delete(additionalProperties, "value")

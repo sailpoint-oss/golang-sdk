@@ -47,7 +47,7 @@ func NewIdentityOwnershipAssociationDetailsAssociationDetailsInnerWithDefaults()
 
 // GetAssociationType returns the AssociationType field value if set, zero value otherwise.
 func (o *IdentityOwnershipAssociationDetailsAssociationDetailsInner) GetAssociationType() string {
-	if o == nil || isNil(o.AssociationType) {
+	if o == nil || IsNil(o.AssociationType) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *IdentityOwnershipAssociationDetailsAssociationDetailsInner) GetAssociat
 // GetAssociationTypeOk returns a tuple with the AssociationType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityOwnershipAssociationDetailsAssociationDetailsInner) GetAssociationTypeOk() (*string, bool) {
-	if o == nil || isNil(o.AssociationType) {
+	if o == nil || IsNil(o.AssociationType) {
 		return nil, false
 	}
 	return o.AssociationType, true
@@ -65,7 +65,7 @@ func (o *IdentityOwnershipAssociationDetailsAssociationDetailsInner) GetAssociat
 
 // HasAssociationType returns a boolean if a field has been set.
 func (o *IdentityOwnershipAssociationDetailsAssociationDetailsInner) HasAssociationType() bool {
-	if o != nil && !isNil(o.AssociationType) {
+	if o != nil && !IsNil(o.AssociationType) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *IdentityOwnershipAssociationDetailsAssociationDetailsInner) SetAssociat
 
 // GetEntities returns the Entities field value if set, zero value otherwise.
 func (o *IdentityOwnershipAssociationDetailsAssociationDetailsInner) GetEntities() []IdentityEntities {
-	if o == nil || isNil(o.Entities) {
+	if o == nil || IsNil(o.Entities) {
 		var ret []IdentityEntities
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *IdentityOwnershipAssociationDetailsAssociationDetailsInner) GetEntities
 // GetEntitiesOk returns a tuple with the Entities field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityOwnershipAssociationDetailsAssociationDetailsInner) GetEntitiesOk() ([]IdentityEntities, bool) {
-	if o == nil || isNil(o.Entities) {
+	if o == nil || IsNil(o.Entities) {
 		return nil, false
 	}
 	return o.Entities, true
@@ -97,7 +97,7 @@ func (o *IdentityOwnershipAssociationDetailsAssociationDetailsInner) GetEntities
 
 // HasEntities returns a boolean if a field has been set.
 func (o *IdentityOwnershipAssociationDetailsAssociationDetailsInner) HasEntities() bool {
-	if o != nil && !isNil(o.Entities) {
+	if o != nil && !IsNil(o.Entities) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o IdentityOwnershipAssociationDetailsAssociationDetailsInner) MarshalJSON(
 
 func (o IdentityOwnershipAssociationDetailsAssociationDetailsInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AssociationType) {
+	if !IsNil(o.AssociationType) {
 		toSerialize["associationType"] = o.AssociationType
 	}
-	if !isNil(o.Entities) {
+	if !IsNil(o.Entities) {
 		toSerialize["entities"] = o.Entities
 	}
 
@@ -133,16 +133,20 @@ func (o IdentityOwnershipAssociationDetailsAssociationDetailsInner) ToMap() (map
 	return toSerialize, nil
 }
 
-func (o *IdentityOwnershipAssociationDetailsAssociationDetailsInner) UnmarshalJSON(bytes []byte) (err error) {
+func (o *IdentityOwnershipAssociationDetailsAssociationDetailsInner) UnmarshalJSON(data []byte) (err error) {
 	varIdentityOwnershipAssociationDetailsAssociationDetailsInner := _IdentityOwnershipAssociationDetailsAssociationDetailsInner{}
 
-	if err = json.Unmarshal(bytes, &varIdentityOwnershipAssociationDetailsAssociationDetailsInner); err == nil {
+	err = json.Unmarshal(data, &varIdentityOwnershipAssociationDetailsAssociationDetailsInner)
+
+	if err != nil {
+		return err
+	}
+
 	*o = IdentityOwnershipAssociationDetailsAssociationDetailsInner(varIdentityOwnershipAssociationDetailsAssociationDetailsInner)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "associationType")
 		delete(additionalProperties, "entities")
 		o.AdditionalProperties = additionalProperties

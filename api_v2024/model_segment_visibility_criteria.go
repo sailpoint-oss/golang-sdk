@@ -44,7 +44,7 @@ func NewSegmentVisibilityCriteriaWithDefaults() *SegmentVisibilityCriteria {
 
 // GetExpression returns the Expression field value if set, zero value otherwise.
 func (o *SegmentVisibilityCriteria) GetExpression() Expression {
-	if o == nil || isNil(o.Expression) {
+	if o == nil || IsNil(o.Expression) {
 		var ret Expression
 		return ret
 	}
@@ -54,7 +54,7 @@ func (o *SegmentVisibilityCriteria) GetExpression() Expression {
 // GetExpressionOk returns a tuple with the Expression field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SegmentVisibilityCriteria) GetExpressionOk() (*Expression, bool) {
-	if o == nil || isNil(o.Expression) {
+	if o == nil || IsNil(o.Expression) {
 		return nil, false
 	}
 	return o.Expression, true
@@ -62,7 +62,7 @@ func (o *SegmentVisibilityCriteria) GetExpressionOk() (*Expression, bool) {
 
 // HasExpression returns a boolean if a field has been set.
 func (o *SegmentVisibilityCriteria) HasExpression() bool {
-	if o != nil && !isNil(o.Expression) {
+	if o != nil && !IsNil(o.Expression) {
 		return true
 	}
 
@@ -84,7 +84,7 @@ func (o SegmentVisibilityCriteria) MarshalJSON() ([]byte, error) {
 
 func (o SegmentVisibilityCriteria) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Expression) {
+	if !IsNil(o.Expression) {
 		toSerialize["expression"] = o.Expression
 	}
 
@@ -95,16 +95,20 @@ func (o SegmentVisibilityCriteria) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SegmentVisibilityCriteria) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SegmentVisibilityCriteria) UnmarshalJSON(data []byte) (err error) {
 	varSegmentVisibilityCriteria := _SegmentVisibilityCriteria{}
 
-	if err = json.Unmarshal(bytes, &varSegmentVisibilityCriteria); err == nil {
+	err = json.Unmarshal(data, &varSegmentVisibilityCriteria)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SegmentVisibilityCriteria(varSegmentVisibilityCriteria)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "expression")
 		o.AdditionalProperties = additionalProperties
 	}

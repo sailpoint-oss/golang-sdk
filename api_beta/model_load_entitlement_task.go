@@ -58,7 +58,7 @@ func NewLoadEntitlementTaskWithDefaults() *LoadEntitlementTask {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *LoadEntitlementTask) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -68,7 +68,7 @@ func (o *LoadEntitlementTask) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LoadEntitlementTask) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -76,7 +76,7 @@ func (o *LoadEntitlementTask) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *LoadEntitlementTask) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -90,7 +90,7 @@ func (o *LoadEntitlementTask) SetId(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *LoadEntitlementTask) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -100,7 +100,7 @@ func (o *LoadEntitlementTask) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LoadEntitlementTask) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -108,7 +108,7 @@ func (o *LoadEntitlementTask) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *LoadEntitlementTask) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -122,7 +122,7 @@ func (o *LoadEntitlementTask) SetType(v string) {
 
 // GetUniqueName returns the UniqueName field value if set, zero value otherwise.
 func (o *LoadEntitlementTask) GetUniqueName() string {
-	if o == nil || isNil(o.UniqueName) {
+	if o == nil || IsNil(o.UniqueName) {
 		var ret string
 		return ret
 	}
@@ -132,7 +132,7 @@ func (o *LoadEntitlementTask) GetUniqueName() string {
 // GetUniqueNameOk returns a tuple with the UniqueName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LoadEntitlementTask) GetUniqueNameOk() (*string, bool) {
-	if o == nil || isNil(o.UniqueName) {
+	if o == nil || IsNil(o.UniqueName) {
 		return nil, false
 	}
 	return o.UniqueName, true
@@ -140,7 +140,7 @@ func (o *LoadEntitlementTask) GetUniqueNameOk() (*string, bool) {
 
 // HasUniqueName returns a boolean if a field has been set.
 func (o *LoadEntitlementTask) HasUniqueName() bool {
-	if o != nil && !isNil(o.UniqueName) {
+	if o != nil && !IsNil(o.UniqueName) {
 		return true
 	}
 
@@ -154,7 +154,7 @@ func (o *LoadEntitlementTask) SetUniqueName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *LoadEntitlementTask) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -164,7 +164,7 @@ func (o *LoadEntitlementTask) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LoadEntitlementTask) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -172,7 +172,7 @@ func (o *LoadEntitlementTask) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *LoadEntitlementTask) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -186,7 +186,7 @@ func (o *LoadEntitlementTask) SetDescription(v string) {
 
 // GetLauncher returns the Launcher field value if set, zero value otherwise.
 func (o *LoadEntitlementTask) GetLauncher() string {
-	if o == nil || isNil(o.Launcher) {
+	if o == nil || IsNil(o.Launcher) {
 		var ret string
 		return ret
 	}
@@ -196,7 +196,7 @@ func (o *LoadEntitlementTask) GetLauncher() string {
 // GetLauncherOk returns a tuple with the Launcher field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LoadEntitlementTask) GetLauncherOk() (*string, bool) {
-	if o == nil || isNil(o.Launcher) {
+	if o == nil || IsNil(o.Launcher) {
 		return nil, false
 	}
 	return o.Launcher, true
@@ -204,7 +204,7 @@ func (o *LoadEntitlementTask) GetLauncherOk() (*string, bool) {
 
 // HasLauncher returns a boolean if a field has been set.
 func (o *LoadEntitlementTask) HasLauncher() bool {
-	if o != nil && !isNil(o.Launcher) {
+	if o != nil && !IsNil(o.Launcher) {
 		return true
 	}
 
@@ -218,7 +218,7 @@ func (o *LoadEntitlementTask) SetLauncher(v string) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *LoadEntitlementTask) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -228,7 +228,7 @@ func (o *LoadEntitlementTask) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LoadEntitlementTask) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -236,7 +236,7 @@ func (o *LoadEntitlementTask) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *LoadEntitlementTask) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -250,7 +250,7 @@ func (o *LoadEntitlementTask) SetCreated(v time.Time) {
 
 // GetReturns returns the Returns field value if set, zero value otherwise.
 func (o *LoadEntitlementTask) GetReturns() []LoadEntitlementTaskReturnsInner {
-	if o == nil || isNil(o.Returns) {
+	if o == nil || IsNil(o.Returns) {
 		var ret []LoadEntitlementTaskReturnsInner
 		return ret
 	}
@@ -260,7 +260,7 @@ func (o *LoadEntitlementTask) GetReturns() []LoadEntitlementTaskReturnsInner {
 // GetReturnsOk returns a tuple with the Returns field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LoadEntitlementTask) GetReturnsOk() ([]LoadEntitlementTaskReturnsInner, bool) {
-	if o == nil || isNil(o.Returns) {
+	if o == nil || IsNil(o.Returns) {
 		return nil, false
 	}
 	return o.Returns, true
@@ -268,7 +268,7 @@ func (o *LoadEntitlementTask) GetReturnsOk() ([]LoadEntitlementTaskReturnsInner,
 
 // HasReturns returns a boolean if a field has been set.
 func (o *LoadEntitlementTask) HasReturns() bool {
-	if o != nil && !isNil(o.Returns) {
+	if o != nil && !IsNil(o.Returns) {
 		return true
 	}
 
@@ -290,25 +290,25 @@ func (o LoadEntitlementTask) MarshalJSON() ([]byte, error) {
 
 func (o LoadEntitlementTask) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.UniqueName) {
+	if !IsNil(o.UniqueName) {
 		toSerialize["uniqueName"] = o.UniqueName
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.Launcher) {
+	if !IsNil(o.Launcher) {
 		toSerialize["launcher"] = o.Launcher
 	}
-	if !isNil(o.Created) {
+	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
-	if !isNil(o.Returns) {
+	if !IsNil(o.Returns) {
 		toSerialize["returns"] = o.Returns
 	}
 
@@ -319,16 +319,20 @@ func (o LoadEntitlementTask) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *LoadEntitlementTask) UnmarshalJSON(bytes []byte) (err error) {
+func (o *LoadEntitlementTask) UnmarshalJSON(data []byte) (err error) {
 	varLoadEntitlementTask := _LoadEntitlementTask{}
 
-	if err = json.Unmarshal(bytes, &varLoadEntitlementTask); err == nil {
+	err = json.Unmarshal(data, &varLoadEntitlementTask)
+
+	if err != nil {
+		return err
+	}
+
 	*o = LoadEntitlementTask(varLoadEntitlementTask)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "uniqueName")

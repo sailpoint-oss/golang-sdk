@@ -19,7 +19,7 @@ import (
 
 func Test_api_beta_IdentitiesAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test IdentitiesAPIService DeleteIdentity", func(t *testing.T) {
@@ -28,7 +28,7 @@ func Test_api_beta_IdentitiesAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_BETA.IdentitiesAPI.DeleteIdentity(context.Background(), id).Execute()
+		httpRes, err := apiClient.IdentitiesAPI.DeleteIdentity(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -41,7 +41,7 @@ func Test_api_beta_IdentitiesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.IdentitiesAPI.GetIdentity(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.IdentitiesAPI.GetIdentity(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -55,7 +55,7 @@ func Test_api_beta_IdentitiesAPIService(t *testing.T) {
 
 		var identityId string
 
-		resp, httpRes, err := apiClient.API_BETA.IdentitiesAPI.GetIdentityOwnershipDetails(context.Background(), identityId).Execute()
+		resp, httpRes, err := apiClient.IdentitiesAPI.GetIdentityOwnershipDetails(context.Background(), identityId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -70,7 +70,7 @@ func Test_api_beta_IdentitiesAPIService(t *testing.T) {
 		var identityId string
 		var assignmentId string
 
-		resp, httpRes, err := apiClient.API_BETA.IdentitiesAPI.GetRoleAssignment(context.Background(), identityId, assignmentId).Execute()
+		resp, httpRes, err := apiClient.IdentitiesAPI.GetRoleAssignment(context.Background(), identityId, assignmentId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -84,7 +84,7 @@ func Test_api_beta_IdentitiesAPIService(t *testing.T) {
 
 		var identityId string
 
-		resp, httpRes, err := apiClient.API_BETA.IdentitiesAPI.GetRoleAssignments(context.Background(), identityId).Execute()
+		resp, httpRes, err := apiClient.IdentitiesAPI.GetRoleAssignments(context.Background(), identityId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -96,7 +96,7 @@ func Test_api_beta_IdentitiesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.IdentitiesAPI.ListIdentities(context.Background()).Execute()
+		resp, httpRes, err := apiClient.IdentitiesAPI.ListIdentities(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -110,7 +110,7 @@ func Test_api_beta_IdentitiesAPIService(t *testing.T) {
 
 		var identityId string
 
-		httpRes, err := apiClient.API_BETA.IdentitiesAPI.ResetIdentity(context.Background(), identityId).Execute()
+		httpRes, err := apiClient.IdentitiesAPI.ResetIdentity(context.Background(), identityId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -121,7 +121,7 @@ func Test_api_beta_IdentitiesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.API_BETA.IdentitiesAPI.SendIdentityVerificationAccountToken(context.Background()).Execute()
+		httpRes, err := apiClient.IdentitiesAPI.SendIdentityVerificationAccountToken(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -132,7 +132,7 @@ func Test_api_beta_IdentitiesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.IdentitiesAPI.StartIdentitiesInvite(context.Background()).Execute()
+		resp, httpRes, err := apiClient.IdentitiesAPI.StartIdentitiesInvite(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -144,7 +144,7 @@ func Test_api_beta_IdentitiesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.IdentitiesAPI.StartIdentityProcessing(context.Background()).Execute()
+		resp, httpRes, err := apiClient.IdentitiesAPI.StartIdentityProcessing(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -158,7 +158,7 @@ func Test_api_beta_IdentitiesAPIService(t *testing.T) {
 
 		var identityId string
 
-		resp, httpRes, err := apiClient.API_BETA.IdentitiesAPI.SynchronizeAttributesForIdentity(context.Background(), identityId).Execute()
+		resp, httpRes, err := apiClient.IdentitiesAPI.SynchronizeAttributesForIdentity(context.Background(), identityId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

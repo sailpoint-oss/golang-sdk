@@ -57,7 +57,7 @@ func NewWorkgroupDtoWithDefaults() *WorkgroupDto {
 
 // GetOwner returns the Owner field value if set, zero value otherwise.
 func (o *WorkgroupDto) GetOwner() WorkgroupDtoOwner {
-	if o == nil || isNil(o.Owner) {
+	if o == nil || IsNil(o.Owner) {
 		var ret WorkgroupDtoOwner
 		return ret
 	}
@@ -67,7 +67,7 @@ func (o *WorkgroupDto) GetOwner() WorkgroupDtoOwner {
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkgroupDto) GetOwnerOk() (*WorkgroupDtoOwner, bool) {
-	if o == nil || isNil(o.Owner) {
+	if o == nil || IsNil(o.Owner) {
 		return nil, false
 	}
 	return o.Owner, true
@@ -75,7 +75,7 @@ func (o *WorkgroupDto) GetOwnerOk() (*WorkgroupDtoOwner, bool) {
 
 // HasOwner returns a boolean if a field has been set.
 func (o *WorkgroupDto) HasOwner() bool {
-	if o != nil && !isNil(o.Owner) {
+	if o != nil && !IsNil(o.Owner) {
 		return true
 	}
 
@@ -89,7 +89,7 @@ func (o *WorkgroupDto) SetOwner(v WorkgroupDtoOwner) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *WorkgroupDto) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -99,7 +99,7 @@ func (o *WorkgroupDto) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkgroupDto) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -107,7 +107,7 @@ func (o *WorkgroupDto) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *WorkgroupDto) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -121,7 +121,7 @@ func (o *WorkgroupDto) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *WorkgroupDto) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -131,7 +131,7 @@ func (o *WorkgroupDto) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkgroupDto) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -139,7 +139,7 @@ func (o *WorkgroupDto) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *WorkgroupDto) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -153,7 +153,7 @@ func (o *WorkgroupDto) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *WorkgroupDto) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -163,7 +163,7 @@ func (o *WorkgroupDto) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkgroupDto) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -171,7 +171,7 @@ func (o *WorkgroupDto) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *WorkgroupDto) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -185,7 +185,7 @@ func (o *WorkgroupDto) SetDescription(v string) {
 
 // GetMemberCount returns the MemberCount field value if set, zero value otherwise.
 func (o *WorkgroupDto) GetMemberCount() int64 {
-	if o == nil || isNil(o.MemberCount) {
+	if o == nil || IsNil(o.MemberCount) {
 		var ret int64
 		return ret
 	}
@@ -195,7 +195,7 @@ func (o *WorkgroupDto) GetMemberCount() int64 {
 // GetMemberCountOk returns a tuple with the MemberCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkgroupDto) GetMemberCountOk() (*int64, bool) {
-	if o == nil || isNil(o.MemberCount) {
+	if o == nil || IsNil(o.MemberCount) {
 		return nil, false
 	}
 	return o.MemberCount, true
@@ -203,7 +203,7 @@ func (o *WorkgroupDto) GetMemberCountOk() (*int64, bool) {
 
 // HasMemberCount returns a boolean if a field has been set.
 func (o *WorkgroupDto) HasMemberCount() bool {
-	if o != nil && !isNil(o.MemberCount) {
+	if o != nil && !IsNil(o.MemberCount) {
 		return true
 	}
 
@@ -217,7 +217,7 @@ func (o *WorkgroupDto) SetMemberCount(v int64) {
 
 // GetConnectionCount returns the ConnectionCount field value if set, zero value otherwise.
 func (o *WorkgroupDto) GetConnectionCount() int64 {
-	if o == nil || isNil(o.ConnectionCount) {
+	if o == nil || IsNil(o.ConnectionCount) {
 		var ret int64
 		return ret
 	}
@@ -227,7 +227,7 @@ func (o *WorkgroupDto) GetConnectionCount() int64 {
 // GetConnectionCountOk returns a tuple with the ConnectionCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkgroupDto) GetConnectionCountOk() (*int64, bool) {
-	if o == nil || isNil(o.ConnectionCount) {
+	if o == nil || IsNil(o.ConnectionCount) {
 		return nil, false
 	}
 	return o.ConnectionCount, true
@@ -235,7 +235,7 @@ func (o *WorkgroupDto) GetConnectionCountOk() (*int64, bool) {
 
 // HasConnectionCount returns a boolean if a field has been set.
 func (o *WorkgroupDto) HasConnectionCount() bool {
-	if o != nil && !isNil(o.ConnectionCount) {
+	if o != nil && !IsNil(o.ConnectionCount) {
 		return true
 	}
 
@@ -249,7 +249,7 @@ func (o *WorkgroupDto) SetConnectionCount(v int64) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *WorkgroupDto) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -259,7 +259,7 @@ func (o *WorkgroupDto) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkgroupDto) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -267,7 +267,7 @@ func (o *WorkgroupDto) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *WorkgroupDto) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -281,7 +281,7 @@ func (o *WorkgroupDto) SetCreated(v time.Time) {
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *WorkgroupDto) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		var ret time.Time
 		return ret
 	}
@@ -291,7 +291,7 @@ func (o *WorkgroupDto) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkgroupDto) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -299,7 +299,7 @@ func (o *WorkgroupDto) GetModifiedOk() (*time.Time, bool) {
 
 // HasModified returns a boolean if a field has been set.
 func (o *WorkgroupDto) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -321,22 +321,28 @@ func (o WorkgroupDto) MarshalJSON() ([]byte, error) {
 
 func (o WorkgroupDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Owner) {
+	if !IsNil(o.Owner) {
 		toSerialize["owner"] = o.Owner
 	}
-	// skip: id is readOnly
-	if !isNil(o.Name) {
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	// skip: memberCount is readOnly
-	// skip: connectionCount is readOnly
-	if !isNil(o.Created) {
+	if !IsNil(o.MemberCount) {
+		toSerialize["memberCount"] = o.MemberCount
+	}
+	if !IsNil(o.ConnectionCount) {
+		toSerialize["connectionCount"] = o.ConnectionCount
+	}
+	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
-	if !isNil(o.Modified) {
+	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
 
@@ -347,16 +353,20 @@ func (o WorkgroupDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *WorkgroupDto) UnmarshalJSON(bytes []byte) (err error) {
+func (o *WorkgroupDto) UnmarshalJSON(data []byte) (err error) {
 	varWorkgroupDto := _WorkgroupDto{}
 
-	if err = json.Unmarshal(bytes, &varWorkgroupDto); err == nil {
+	err = json.Unmarshal(data, &varWorkgroupDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = WorkgroupDto(varWorkgroupDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "owner")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")

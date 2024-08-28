@@ -49,7 +49,7 @@ func NewAccessProfileBulkDeleteResponseWithDefaults() *AccessProfileBulkDeleteRe
 
 // GetTaskId returns the TaskId field value if set, zero value otherwise.
 func (o *AccessProfileBulkDeleteResponse) GetTaskId() string {
-	if o == nil || isNil(o.TaskId) {
+	if o == nil || IsNil(o.TaskId) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *AccessProfileBulkDeleteResponse) GetTaskId() string {
 // GetTaskIdOk returns a tuple with the TaskId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessProfileBulkDeleteResponse) GetTaskIdOk() (*string, bool) {
-	if o == nil || isNil(o.TaskId) {
+	if o == nil || IsNil(o.TaskId) {
 		return nil, false
 	}
 	return o.TaskId, true
@@ -67,7 +67,7 @@ func (o *AccessProfileBulkDeleteResponse) GetTaskIdOk() (*string, bool) {
 
 // HasTaskId returns a boolean if a field has been set.
 func (o *AccessProfileBulkDeleteResponse) HasTaskId() bool {
-	if o != nil && !isNil(o.TaskId) {
+	if o != nil && !IsNil(o.TaskId) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *AccessProfileBulkDeleteResponse) SetTaskId(v string) {
 
 // GetPending returns the Pending field value if set, zero value otherwise.
 func (o *AccessProfileBulkDeleteResponse) GetPending() []string {
-	if o == nil || isNil(o.Pending) {
+	if o == nil || IsNil(o.Pending) {
 		var ret []string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *AccessProfileBulkDeleteResponse) GetPending() []string {
 // GetPendingOk returns a tuple with the Pending field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessProfileBulkDeleteResponse) GetPendingOk() ([]string, bool) {
-	if o == nil || isNil(o.Pending) {
+	if o == nil || IsNil(o.Pending) {
 		return nil, false
 	}
 	return o.Pending, true
@@ -99,7 +99,7 @@ func (o *AccessProfileBulkDeleteResponse) GetPendingOk() ([]string, bool) {
 
 // HasPending returns a boolean if a field has been set.
 func (o *AccessProfileBulkDeleteResponse) HasPending() bool {
-	if o != nil && !isNil(o.Pending) {
+	if o != nil && !IsNil(o.Pending) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *AccessProfileBulkDeleteResponse) SetPending(v []string) {
 
 // GetInUse returns the InUse field value if set, zero value otherwise.
 func (o *AccessProfileBulkDeleteResponse) GetInUse() []AccessProfileUsage {
-	if o == nil || isNil(o.InUse) {
+	if o == nil || IsNil(o.InUse) {
 		var ret []AccessProfileUsage
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *AccessProfileBulkDeleteResponse) GetInUse() []AccessProfileUsage {
 // GetInUseOk returns a tuple with the InUse field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessProfileBulkDeleteResponse) GetInUseOk() ([]AccessProfileUsage, bool) {
-	if o == nil || isNil(o.InUse) {
+	if o == nil || IsNil(o.InUse) {
 		return nil, false
 	}
 	return o.InUse, true
@@ -131,7 +131,7 @@ func (o *AccessProfileBulkDeleteResponse) GetInUseOk() ([]AccessProfileUsage, bo
 
 // HasInUse returns a boolean if a field has been set.
 func (o *AccessProfileBulkDeleteResponse) HasInUse() bool {
-	if o != nil && !isNil(o.InUse) {
+	if o != nil && !IsNil(o.InUse) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o AccessProfileBulkDeleteResponse) MarshalJSON() ([]byte, error) {
 
 func (o AccessProfileBulkDeleteResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.TaskId) {
+	if !IsNil(o.TaskId) {
 		toSerialize["taskId"] = o.TaskId
 	}
-	if !isNil(o.Pending) {
+	if !IsNil(o.Pending) {
 		toSerialize["pending"] = o.Pending
 	}
-	if !isNil(o.InUse) {
+	if !IsNil(o.InUse) {
 		toSerialize["inUse"] = o.InUse
 	}
 
@@ -170,16 +170,20 @@ func (o AccessProfileBulkDeleteResponse) ToMap() (map[string]interface{}, error)
 	return toSerialize, nil
 }
 
-func (o *AccessProfileBulkDeleteResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccessProfileBulkDeleteResponse) UnmarshalJSON(data []byte) (err error) {
 	varAccessProfileBulkDeleteResponse := _AccessProfileBulkDeleteResponse{}
 
-	if err = json.Unmarshal(bytes, &varAccessProfileBulkDeleteResponse); err == nil {
+	err = json.Unmarshal(data, &varAccessProfileBulkDeleteResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessProfileBulkDeleteResponse(varAccessProfileBulkDeleteResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "taskId")
 		delete(additionalProperties, "pending")
 		delete(additionalProperties, "inUse")

@@ -12,6 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
@@ -47,7 +48,11 @@ func (dst *GetActiveCampaigns200ResponseInner) UnmarshalJSON(data []byte) error 
 		if string(jsonCampaign) == "{}" { // empty struct
 			dst.Campaign = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.Campaign); err != nil {
+				dst.Campaign = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.Campaign = nil
@@ -60,7 +65,11 @@ func (dst *GetActiveCampaigns200ResponseInner) UnmarshalJSON(data []byte) error 
 		if string(jsonSlimCampaign) == "{}" { // empty struct
 			dst.SlimCampaign = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.SlimCampaign); err != nil {
+				dst.SlimCampaign = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.SlimCampaign = nil

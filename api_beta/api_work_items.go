@@ -663,22 +663,22 @@ func (a *WorkItemsAPIService) GetCompletedWorkItemsExecute(r ApiGetCompletedWork
 	localVarFormParams := url.Values{}
 
 	if r.ownerId != nil {
-		parameterAddToQuery(localVarQueryParams, "ownerId", r.ownerId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ownerId", r.ownerId, "", "")
 	}
 	if r.limit != nil {
-		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
 	} else {
 		var defaultValue int32 = 250
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
-		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
 	} else {
 		var defaultValue int32 = 0
 		r.offset = &defaultValue
 	}
 	if r.count != nil {
-		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "", "")
 	} else {
 		var defaultValue bool = false
 		r.count = &defaultValue
@@ -822,7 +822,7 @@ func (a *WorkItemsAPIService) GetCountCompletedWorkItemsExecute(r ApiGetCountCom
 	localVarFormParams := url.Values{}
 
 	if r.ownerId != nil {
-		parameterAddToQuery(localVarQueryParams, "ownerId", r.ownerId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ownerId", r.ownerId, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -963,7 +963,7 @@ func (a *WorkItemsAPIService) GetCountWorkItemsExecute(r ApiGetCountWorkItemsReq
 	localVarFormParams := url.Values{}
 
 	if r.ownerId != nil {
-		parameterAddToQuery(localVarQueryParams, "ownerId", r.ownerId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ownerId", r.ownerId, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1108,7 +1108,7 @@ func (a *WorkItemsAPIService) GetWorkItemExecute(r ApiGetWorkItemRequest) ([]Wor
 	localVarFormParams := url.Values{}
 
 	if r.ownerId != nil {
-		parameterAddToQuery(localVarQueryParams, "ownerId", r.ownerId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ownerId", r.ownerId, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1249,7 +1249,7 @@ func (a *WorkItemsAPIService) GetWorkItemsSummaryExecute(r ApiGetWorkItemsSummar
 	localVarFormParams := url.Values{}
 
 	if r.ownerId != nil {
-		parameterAddToQuery(localVarQueryParams, "ownerId", r.ownerId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ownerId", r.ownerId, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1411,25 +1411,25 @@ func (a *WorkItemsAPIService) ListWorkItemsExecute(r ApiListWorkItemsRequest) ([
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
 	} else {
 		var defaultValue int32 = 250
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
-		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
 	} else {
 		var defaultValue int32 = 0
 		r.offset = &defaultValue
 	}
 	if r.count != nil {
-		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "", "")
 	} else {
 		var defaultValue bool = false
 		r.count = &defaultValue
 	}
 	if r.ownerId != nil {
-		parameterAddToQuery(localVarQueryParams, "ownerId", r.ownerId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ownerId", r.ownerId, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

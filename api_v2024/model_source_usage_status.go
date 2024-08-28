@@ -45,7 +45,7 @@ func NewSourceUsageStatusWithDefaults() *SourceUsageStatus {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *SourceUsageStatus) GetStatus() string {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *SourceUsageStatus) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SourceUsageStatus) GetStatusOk() (*string, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -63,7 +63,7 @@ func (o *SourceUsageStatus) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *SourceUsageStatus) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o SourceUsageStatus) MarshalJSON() ([]byte, error) {
 
 func (o SourceUsageStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Status) {
+	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
 
@@ -96,16 +96,20 @@ func (o SourceUsageStatus) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SourceUsageStatus) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SourceUsageStatus) UnmarshalJSON(data []byte) (err error) {
 	varSourceUsageStatus := _SourceUsageStatus{}
 
-	if err = json.Unmarshal(bytes, &varSourceUsageStatus); err == nil {
+	err = json.Unmarshal(data, &varSourceUsageStatus)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SourceUsageStatus(varSourceUsageStatus)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "status")
 		o.AdditionalProperties = additionalProperties
 	}

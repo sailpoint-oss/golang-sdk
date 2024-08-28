@@ -45,7 +45,7 @@ func NewIdentitiesAccountsBulkRequestWithDefaults() *IdentitiesAccountsBulkReque
 
 // GetIdentityIds returns the IdentityIds field value if set, zero value otherwise.
 func (o *IdentitiesAccountsBulkRequest) GetIdentityIds() []string {
-	if o == nil || isNil(o.IdentityIds) {
+	if o == nil || IsNil(o.IdentityIds) {
 		var ret []string
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *IdentitiesAccountsBulkRequest) GetIdentityIds() []string {
 // GetIdentityIdsOk returns a tuple with the IdentityIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentitiesAccountsBulkRequest) GetIdentityIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.IdentityIds) {
+	if o == nil || IsNil(o.IdentityIds) {
 		return nil, false
 	}
 	return o.IdentityIds, true
@@ -63,7 +63,7 @@ func (o *IdentitiesAccountsBulkRequest) GetIdentityIdsOk() ([]string, bool) {
 
 // HasIdentityIds returns a boolean if a field has been set.
 func (o *IdentitiesAccountsBulkRequest) HasIdentityIds() bool {
-	if o != nil && !isNil(o.IdentityIds) {
+	if o != nil && !IsNil(o.IdentityIds) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o IdentitiesAccountsBulkRequest) MarshalJSON() ([]byte, error) {
 
 func (o IdentitiesAccountsBulkRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.IdentityIds) {
+	if !IsNil(o.IdentityIds) {
 		toSerialize["identityIds"] = o.IdentityIds
 	}
 
@@ -96,16 +96,20 @@ func (o IdentitiesAccountsBulkRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *IdentitiesAccountsBulkRequest) UnmarshalJSON(bytes []byte) (err error) {
+func (o *IdentitiesAccountsBulkRequest) UnmarshalJSON(data []byte) (err error) {
 	varIdentitiesAccountsBulkRequest := _IdentitiesAccountsBulkRequest{}
 
-	if err = json.Unmarshal(bytes, &varIdentitiesAccountsBulkRequest); err == nil {
+	err = json.Unmarshal(data, &varIdentitiesAccountsBulkRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = IdentitiesAccountsBulkRequest(varIdentitiesAccountsBulkRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "identityIds")
 		o.AdditionalProperties = additionalProperties
 	}

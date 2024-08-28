@@ -59,7 +59,7 @@ func NewCertificationTaskWithDefaults() *CertificationTask {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *CertificationTask) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -69,7 +69,7 @@ func (o *CertificationTask) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificationTask) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -77,7 +77,7 @@ func (o *CertificationTask) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *CertificationTask) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -91,7 +91,7 @@ func (o *CertificationTask) SetId(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *CertificationTask) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -101,7 +101,7 @@ func (o *CertificationTask) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificationTask) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -109,7 +109,7 @@ func (o *CertificationTask) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *CertificationTask) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -123,7 +123,7 @@ func (o *CertificationTask) SetType(v string) {
 
 // GetTargetType returns the TargetType field value if set, zero value otherwise.
 func (o *CertificationTask) GetTargetType() string {
-	if o == nil || isNil(o.TargetType) {
+	if o == nil || IsNil(o.TargetType) {
 		var ret string
 		return ret
 	}
@@ -133,7 +133,7 @@ func (o *CertificationTask) GetTargetType() string {
 // GetTargetTypeOk returns a tuple with the TargetType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificationTask) GetTargetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.TargetType) {
+	if o == nil || IsNil(o.TargetType) {
 		return nil, false
 	}
 	return o.TargetType, true
@@ -141,7 +141,7 @@ func (o *CertificationTask) GetTargetTypeOk() (*string, bool) {
 
 // HasTargetType returns a boolean if a field has been set.
 func (o *CertificationTask) HasTargetType() bool {
-	if o != nil && !isNil(o.TargetType) {
+	if o != nil && !IsNil(o.TargetType) {
 		return true
 	}
 
@@ -155,7 +155,7 @@ func (o *CertificationTask) SetTargetType(v string) {
 
 // GetTargetId returns the TargetId field value if set, zero value otherwise.
 func (o *CertificationTask) GetTargetId() string {
-	if o == nil || isNil(o.TargetId) {
+	if o == nil || IsNil(o.TargetId) {
 		var ret string
 		return ret
 	}
@@ -165,7 +165,7 @@ func (o *CertificationTask) GetTargetId() string {
 // GetTargetIdOk returns a tuple with the TargetId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificationTask) GetTargetIdOk() (*string, bool) {
-	if o == nil || isNil(o.TargetId) {
+	if o == nil || IsNil(o.TargetId) {
 		return nil, false
 	}
 	return o.TargetId, true
@@ -173,7 +173,7 @@ func (o *CertificationTask) GetTargetIdOk() (*string, bool) {
 
 // HasTargetId returns a boolean if a field has been set.
 func (o *CertificationTask) HasTargetId() bool {
-	if o != nil && !isNil(o.TargetId) {
+	if o != nil && !IsNil(o.TargetId) {
 		return true
 	}
 
@@ -187,7 +187,7 @@ func (o *CertificationTask) SetTargetId(v string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *CertificationTask) GetStatus() string {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -197,7 +197,7 @@ func (o *CertificationTask) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificationTask) GetStatusOk() (*string, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -205,7 +205,7 @@ func (o *CertificationTask) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *CertificationTask) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -219,7 +219,7 @@ func (o *CertificationTask) SetStatus(v string) {
 
 // GetErrors returns the Errors field value if set, zero value otherwise.
 func (o *CertificationTask) GetErrors() []ErrorMessageDto {
-	if o == nil || isNil(o.Errors) {
+	if o == nil || IsNil(o.Errors) {
 		var ret []ErrorMessageDto
 		return ret
 	}
@@ -229,7 +229,7 @@ func (o *CertificationTask) GetErrors() []ErrorMessageDto {
 // GetErrorsOk returns a tuple with the Errors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificationTask) GetErrorsOk() ([]ErrorMessageDto, bool) {
-	if o == nil || isNil(o.Errors) {
+	if o == nil || IsNil(o.Errors) {
 		return nil, false
 	}
 	return o.Errors, true
@@ -237,7 +237,7 @@ func (o *CertificationTask) GetErrorsOk() ([]ErrorMessageDto, bool) {
 
 // HasErrors returns a boolean if a field has been set.
 func (o *CertificationTask) HasErrors() bool {
-	if o != nil && !isNil(o.Errors) {
+	if o != nil && !IsNil(o.Errors) {
 		return true
 	}
 
@@ -251,7 +251,7 @@ func (o *CertificationTask) SetErrors(v []ErrorMessageDto) {
 
 // GetReassignmentTrailDTOs returns the ReassignmentTrailDTOs field value if set, zero value otherwise.
 func (o *CertificationTask) GetReassignmentTrailDTOs() []ReassignmentTrailDTO {
-	if o == nil || isNil(o.ReassignmentTrailDTOs) {
+	if o == nil || IsNil(o.ReassignmentTrailDTOs) {
 		var ret []ReassignmentTrailDTO
 		return ret
 	}
@@ -261,7 +261,7 @@ func (o *CertificationTask) GetReassignmentTrailDTOs() []ReassignmentTrailDTO {
 // GetReassignmentTrailDTOsOk returns a tuple with the ReassignmentTrailDTOs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificationTask) GetReassignmentTrailDTOsOk() ([]ReassignmentTrailDTO, bool) {
-	if o == nil || isNil(o.ReassignmentTrailDTOs) {
+	if o == nil || IsNil(o.ReassignmentTrailDTOs) {
 		return nil, false
 	}
 	return o.ReassignmentTrailDTOs, true
@@ -269,7 +269,7 @@ func (o *CertificationTask) GetReassignmentTrailDTOsOk() ([]ReassignmentTrailDTO
 
 // HasReassignmentTrailDTOs returns a boolean if a field has been set.
 func (o *CertificationTask) HasReassignmentTrailDTOs() bool {
-	if o != nil && !isNil(o.ReassignmentTrailDTOs) {
+	if o != nil && !IsNil(o.ReassignmentTrailDTOs) {
 		return true
 	}
 
@@ -283,7 +283,7 @@ func (o *CertificationTask) SetReassignmentTrailDTOs(v []ReassignmentTrailDTO) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *CertificationTask) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -293,7 +293,7 @@ func (o *CertificationTask) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificationTask) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -301,7 +301,7 @@ func (o *CertificationTask) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *CertificationTask) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -323,28 +323,28 @@ func (o CertificationTask) MarshalJSON() ([]byte, error) {
 
 func (o CertificationTask) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.TargetType) {
+	if !IsNil(o.TargetType) {
 		toSerialize["targetType"] = o.TargetType
 	}
-	if !isNil(o.TargetId) {
+	if !IsNil(o.TargetId) {
 		toSerialize["targetId"] = o.TargetId
 	}
-	if !isNil(o.Status) {
+	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if !isNil(o.Errors) {
+	if !IsNil(o.Errors) {
 		toSerialize["errors"] = o.Errors
 	}
-	if !isNil(o.ReassignmentTrailDTOs) {
+	if !IsNil(o.ReassignmentTrailDTOs) {
 		toSerialize["reassignmentTrailDTOs"] = o.ReassignmentTrailDTOs
 	}
-	if !isNil(o.Created) {
+	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
 
@@ -355,16 +355,20 @@ func (o CertificationTask) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CertificationTask) UnmarshalJSON(bytes []byte) (err error) {
+func (o *CertificationTask) UnmarshalJSON(data []byte) (err error) {
 	varCertificationTask := _CertificationTask{}
 
-	if err = json.Unmarshal(bytes, &varCertificationTask); err == nil {
+	err = json.Unmarshal(data, &varCertificationTask)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CertificationTask(varCertificationTask)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "targetType")

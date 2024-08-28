@@ -5,6 +5,7 @@ go 1.19
 require (
 	github.com/stretchr/testify v1.8.3
 	golang.org/x/oauth2 v0.4.0
+	gopkg.in/validator.v2 v2.0.1
 )
 
 require (

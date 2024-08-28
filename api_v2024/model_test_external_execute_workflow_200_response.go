@@ -45,7 +45,7 @@ func NewTestExternalExecuteWorkflow200ResponseWithDefaults() *TestExternalExecut
 
 // GetPayload returns the Payload field value if set, zero value otherwise.
 func (o *TestExternalExecuteWorkflow200Response) GetPayload() map[string]interface{} {
-	if o == nil || isNil(o.Payload) {
+	if o == nil || IsNil(o.Payload) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *TestExternalExecuteWorkflow200Response) GetPayload() map[string]interfa
 // GetPayloadOk returns a tuple with the Payload field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TestExternalExecuteWorkflow200Response) GetPayloadOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Payload) {
+	if o == nil || IsNil(o.Payload) {
 		return map[string]interface{}{}, false
 	}
 	return o.Payload, true
@@ -63,7 +63,7 @@ func (o *TestExternalExecuteWorkflow200Response) GetPayloadOk() (map[string]inte
 
 // HasPayload returns a boolean if a field has been set.
 func (o *TestExternalExecuteWorkflow200Response) HasPayload() bool {
-	if o != nil && !isNil(o.Payload) {
+	if o != nil && !IsNil(o.Payload) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o TestExternalExecuteWorkflow200Response) MarshalJSON() ([]byte, error) {
 
 func (o TestExternalExecuteWorkflow200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Payload) {
+	if !IsNil(o.Payload) {
 		toSerialize["payload"] = o.Payload
 	}
 
@@ -96,16 +96,20 @@ func (o TestExternalExecuteWorkflow200Response) ToMap() (map[string]interface{},
 	return toSerialize, nil
 }
 
-func (o *TestExternalExecuteWorkflow200Response) UnmarshalJSON(bytes []byte) (err error) {
+func (o *TestExternalExecuteWorkflow200Response) UnmarshalJSON(data []byte) (err error) {
 	varTestExternalExecuteWorkflow200Response := _TestExternalExecuteWorkflow200Response{}
 
-	if err = json.Unmarshal(bytes, &varTestExternalExecuteWorkflow200Response); err == nil {
+	err = json.Unmarshal(data, &varTestExternalExecuteWorkflow200Response)
+
+	if err != nil {
+		return err
+	}
+
 	*o = TestExternalExecuteWorkflow200Response(varTestExternalExecuteWorkflow200Response)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "payload")
 		o.AdditionalProperties = additionalProperties
 	}

@@ -19,7 +19,7 @@ import (
 
 func Test_api_v2024_AccessRequestApprovalsAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test AccessRequestApprovalsAPIService ApproveAccessRequest", func(t *testing.T) {
@@ -28,7 +28,7 @@ func Test_api_v2024_AccessRequestApprovalsAPIService(t *testing.T) {
 
 		var approvalId string
 
-		resp, httpRes, err := apiClient.API_V2024.AccessRequestApprovalsAPI.ApproveAccessRequest(context.Background(), approvalId).Execute()
+		resp, httpRes, err := apiClient.AccessRequestApprovalsAPI.ApproveAccessRequest(context.Background(), approvalId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -42,7 +42,7 @@ func Test_api_v2024_AccessRequestApprovalsAPIService(t *testing.T) {
 
 		var approvalId string
 
-		resp, httpRes, err := apiClient.API_V2024.AccessRequestApprovalsAPI.ForwardAccessRequest(context.Background(), approvalId).Execute()
+		resp, httpRes, err := apiClient.AccessRequestApprovalsAPI.ForwardAccessRequest(context.Background(), approvalId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -54,7 +54,7 @@ func Test_api_v2024_AccessRequestApprovalsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.AccessRequestApprovalsAPI.GetAccessRequestApprovalSummary(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AccessRequestApprovalsAPI.GetAccessRequestApprovalSummary(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -66,7 +66,7 @@ func Test_api_v2024_AccessRequestApprovalsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.AccessRequestApprovalsAPI.ListCompletedApprovals(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AccessRequestApprovalsAPI.ListCompletedApprovals(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -78,7 +78,7 @@ func Test_api_v2024_AccessRequestApprovalsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.AccessRequestApprovalsAPI.ListPendingApprovals(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AccessRequestApprovalsAPI.ListPendingApprovals(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -92,7 +92,7 @@ func Test_api_v2024_AccessRequestApprovalsAPIService(t *testing.T) {
 
 		var approvalId string
 
-		resp, httpRes, err := apiClient.API_V2024.AccessRequestApprovalsAPI.RejectAccessRequest(context.Background(), approvalId).Execute()
+		resp, httpRes, err := apiClient.AccessRequestApprovalsAPI.RejectAccessRequest(context.Background(), approvalId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

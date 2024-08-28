@@ -47,7 +47,7 @@ func NewSourceManagerCorrelationMappingWithDefaults() *SourceManagerCorrelationM
 
 // GetAccountAttributeName returns the AccountAttributeName field value if set, zero value otherwise.
 func (o *SourceManagerCorrelationMapping) GetAccountAttributeName() string {
-	if o == nil || isNil(o.AccountAttributeName) {
+	if o == nil || IsNil(o.AccountAttributeName) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *SourceManagerCorrelationMapping) GetAccountAttributeName() string {
 // GetAccountAttributeNameOk returns a tuple with the AccountAttributeName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SourceManagerCorrelationMapping) GetAccountAttributeNameOk() (*string, bool) {
-	if o == nil || isNil(o.AccountAttributeName) {
+	if o == nil || IsNil(o.AccountAttributeName) {
 		return nil, false
 	}
 	return o.AccountAttributeName, true
@@ -65,7 +65,7 @@ func (o *SourceManagerCorrelationMapping) GetAccountAttributeNameOk() (*string, 
 
 // HasAccountAttributeName returns a boolean if a field has been set.
 func (o *SourceManagerCorrelationMapping) HasAccountAttributeName() bool {
-	if o != nil && !isNil(o.AccountAttributeName) {
+	if o != nil && !IsNil(o.AccountAttributeName) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *SourceManagerCorrelationMapping) SetAccountAttributeName(v string) {
 
 // GetIdentityAttributeName returns the IdentityAttributeName field value if set, zero value otherwise.
 func (o *SourceManagerCorrelationMapping) GetIdentityAttributeName() string {
-	if o == nil || isNil(o.IdentityAttributeName) {
+	if o == nil || IsNil(o.IdentityAttributeName) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *SourceManagerCorrelationMapping) GetIdentityAttributeName() string {
 // GetIdentityAttributeNameOk returns a tuple with the IdentityAttributeName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SourceManagerCorrelationMapping) GetIdentityAttributeNameOk() (*string, bool) {
-	if o == nil || isNil(o.IdentityAttributeName) {
+	if o == nil || IsNil(o.IdentityAttributeName) {
 		return nil, false
 	}
 	return o.IdentityAttributeName, true
@@ -97,7 +97,7 @@ func (o *SourceManagerCorrelationMapping) GetIdentityAttributeNameOk() (*string,
 
 // HasIdentityAttributeName returns a boolean if a field has been set.
 func (o *SourceManagerCorrelationMapping) HasIdentityAttributeName() bool {
-	if o != nil && !isNil(o.IdentityAttributeName) {
+	if o != nil && !IsNil(o.IdentityAttributeName) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o SourceManagerCorrelationMapping) MarshalJSON() ([]byte, error) {
 
 func (o SourceManagerCorrelationMapping) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AccountAttributeName) {
+	if !IsNil(o.AccountAttributeName) {
 		toSerialize["accountAttributeName"] = o.AccountAttributeName
 	}
-	if !isNil(o.IdentityAttributeName) {
+	if !IsNil(o.IdentityAttributeName) {
 		toSerialize["identityAttributeName"] = o.IdentityAttributeName
 	}
 
@@ -133,16 +133,20 @@ func (o SourceManagerCorrelationMapping) ToMap() (map[string]interface{}, error)
 	return toSerialize, nil
 }
 
-func (o *SourceManagerCorrelationMapping) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SourceManagerCorrelationMapping) UnmarshalJSON(data []byte) (err error) {
 	varSourceManagerCorrelationMapping := _SourceManagerCorrelationMapping{}
 
-	if err = json.Unmarshal(bytes, &varSourceManagerCorrelationMapping); err == nil {
+	err = json.Unmarshal(data, &varSourceManagerCorrelationMapping)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SourceManagerCorrelationMapping(varSourceManagerCorrelationMapping)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "accountAttributeName")
 		delete(additionalProperties, "identityAttributeName")
 		o.AdditionalProperties = additionalProperties

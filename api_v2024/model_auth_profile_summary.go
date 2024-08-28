@@ -47,7 +47,7 @@ func NewAuthProfileSummaryWithDefaults() *AuthProfileSummary {
 
 // GetTenant returns the Tenant field value if set, zero value otherwise.
 func (o *AuthProfileSummary) GetTenant() string {
-	if o == nil || isNil(o.Tenant) {
+	if o == nil || IsNil(o.Tenant) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *AuthProfileSummary) GetTenant() string {
 // GetTenantOk returns a tuple with the Tenant field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthProfileSummary) GetTenantOk() (*string, bool) {
-	if o == nil || isNil(o.Tenant) {
+	if o == nil || IsNil(o.Tenant) {
 		return nil, false
 	}
 	return o.Tenant, true
@@ -65,7 +65,7 @@ func (o *AuthProfileSummary) GetTenantOk() (*string, bool) {
 
 // HasTenant returns a boolean if a field has been set.
 func (o *AuthProfileSummary) HasTenant() bool {
-	if o != nil && !isNil(o.Tenant) {
+	if o != nil && !IsNil(o.Tenant) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *AuthProfileSummary) SetTenant(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *AuthProfileSummary) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *AuthProfileSummary) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthProfileSummary) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -97,7 +97,7 @@ func (o *AuthProfileSummary) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *AuthProfileSummary) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o AuthProfileSummary) MarshalJSON() ([]byte, error) {
 
 func (o AuthProfileSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Tenant) {
+	if !IsNil(o.Tenant) {
 		toSerialize["tenant"] = o.Tenant
 	}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
 
@@ -133,16 +133,20 @@ func (o AuthProfileSummary) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AuthProfileSummary) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AuthProfileSummary) UnmarshalJSON(data []byte) (err error) {
 	varAuthProfileSummary := _AuthProfileSummary{}
 
-	if err = json.Unmarshal(bytes, &varAuthProfileSummary); err == nil {
+	err = json.Unmarshal(data, &varAuthProfileSummary)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AuthProfileSummary(varAuthProfileSummary)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "tenant")
 		delete(additionalProperties, "id")
 		o.AdditionalProperties = additionalProperties

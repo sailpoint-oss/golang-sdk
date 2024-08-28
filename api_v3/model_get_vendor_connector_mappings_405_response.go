@@ -49,7 +49,7 @@ func NewGetVendorConnectorMappings405ResponseWithDefaults() *GetVendorConnectorM
 
 // GetErrorName returns the ErrorName field value if set, zero value otherwise.
 func (o *GetVendorConnectorMappings405Response) GetErrorName() map[string]interface{} {
-	if o == nil || isNil(o.ErrorName) {
+	if o == nil || IsNil(o.ErrorName) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *GetVendorConnectorMappings405Response) GetErrorName() map[string]interf
 // GetErrorNameOk returns a tuple with the ErrorName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetVendorConnectorMappings405Response) GetErrorNameOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.ErrorName) {
+	if o == nil || IsNil(o.ErrorName) {
 		return map[string]interface{}{}, false
 	}
 	return o.ErrorName, true
@@ -67,7 +67,7 @@ func (o *GetVendorConnectorMappings405Response) GetErrorNameOk() (map[string]int
 
 // HasErrorName returns a boolean if a field has been set.
 func (o *GetVendorConnectorMappings405Response) HasErrorName() bool {
-	if o != nil && !isNil(o.ErrorName) {
+	if o != nil && !IsNil(o.ErrorName) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *GetVendorConnectorMappings405Response) SetErrorName(v map[string]interf
 
 // GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise.
 func (o *GetVendorConnectorMappings405Response) GetErrorMessage() map[string]interface{} {
-	if o == nil || isNil(o.ErrorMessage) {
+	if o == nil || IsNil(o.ErrorMessage) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *GetVendorConnectorMappings405Response) GetErrorMessage() map[string]int
 // GetErrorMessageOk returns a tuple with the ErrorMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetVendorConnectorMappings405Response) GetErrorMessageOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.ErrorMessage) {
+	if o == nil || IsNil(o.ErrorMessage) {
 		return map[string]interface{}{}, false
 	}
 	return o.ErrorMessage, true
@@ -99,7 +99,7 @@ func (o *GetVendorConnectorMappings405Response) GetErrorMessageOk() (map[string]
 
 // HasErrorMessage returns a boolean if a field has been set.
 func (o *GetVendorConnectorMappings405Response) HasErrorMessage() bool {
-	if o != nil && !isNil(o.ErrorMessage) {
+	if o != nil && !IsNil(o.ErrorMessage) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *GetVendorConnectorMappings405Response) SetErrorMessage(v map[string]int
 
 // GetTrackingId returns the TrackingId field value if set, zero value otherwise.
 func (o *GetVendorConnectorMappings405Response) GetTrackingId() string {
-	if o == nil || isNil(o.TrackingId) {
+	if o == nil || IsNil(o.TrackingId) {
 		var ret string
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *GetVendorConnectorMappings405Response) GetTrackingId() string {
 // GetTrackingIdOk returns a tuple with the TrackingId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetVendorConnectorMappings405Response) GetTrackingIdOk() (*string, bool) {
-	if o == nil || isNil(o.TrackingId) {
+	if o == nil || IsNil(o.TrackingId) {
 		return nil, false
 	}
 	return o.TrackingId, true
@@ -131,7 +131,7 @@ func (o *GetVendorConnectorMappings405Response) GetTrackingIdOk() (*string, bool
 
 // HasTrackingId returns a boolean if a field has been set.
 func (o *GetVendorConnectorMappings405Response) HasTrackingId() bool {
-	if o != nil && !isNil(o.TrackingId) {
+	if o != nil && !IsNil(o.TrackingId) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o GetVendorConnectorMappings405Response) MarshalJSON() ([]byte, error) {
 
 func (o GetVendorConnectorMappings405Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ErrorName) {
+	if !IsNil(o.ErrorName) {
 		toSerialize["errorName"] = o.ErrorName
 	}
-	if !isNil(o.ErrorMessage) {
+	if !IsNil(o.ErrorMessage) {
 		toSerialize["errorMessage"] = o.ErrorMessage
 	}
-	if !isNil(o.TrackingId) {
+	if !IsNil(o.TrackingId) {
 		toSerialize["trackingId"] = o.TrackingId
 	}
 
@@ -170,16 +170,20 @@ func (o GetVendorConnectorMappings405Response) ToMap() (map[string]interface{}, 
 	return toSerialize, nil
 }
 
-func (o *GetVendorConnectorMappings405Response) UnmarshalJSON(bytes []byte) (err error) {
+func (o *GetVendorConnectorMappings405Response) UnmarshalJSON(data []byte) (err error) {
 	varGetVendorConnectorMappings405Response := _GetVendorConnectorMappings405Response{}
 
-	if err = json.Unmarshal(bytes, &varGetVendorConnectorMappings405Response); err == nil {
+	err = json.Unmarshal(data, &varGetVendorConnectorMappings405Response)
+
+	if err != nil {
+		return err
+	}
+
 	*o = GetVendorConnectorMappings405Response(varGetVendorConnectorMappings405Response)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "errorName")
 		delete(additionalProperties, "errorMessage")
 		delete(additionalProperties, "trackingId")

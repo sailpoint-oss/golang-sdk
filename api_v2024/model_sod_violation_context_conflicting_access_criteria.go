@@ -45,7 +45,7 @@ func NewSodViolationContextConflictingAccessCriteriaWithDefaults() *SodViolation
 
 // GetLeftCriteria returns the LeftCriteria field value if set, zero value otherwise.
 func (o *SodViolationContextConflictingAccessCriteria) GetLeftCriteria() SodViolationContextConflictingAccessCriteriaLeftCriteria {
-	if o == nil || isNil(o.LeftCriteria) {
+	if o == nil || IsNil(o.LeftCriteria) {
 		var ret SodViolationContextConflictingAccessCriteriaLeftCriteria
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *SodViolationContextConflictingAccessCriteria) GetLeftCriteria() SodViol
 // GetLeftCriteriaOk returns a tuple with the LeftCriteria field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SodViolationContextConflictingAccessCriteria) GetLeftCriteriaOk() (*SodViolationContextConflictingAccessCriteriaLeftCriteria, bool) {
-	if o == nil || isNil(o.LeftCriteria) {
+	if o == nil || IsNil(o.LeftCriteria) {
 		return nil, false
 	}
 	return o.LeftCriteria, true
@@ -63,7 +63,7 @@ func (o *SodViolationContextConflictingAccessCriteria) GetLeftCriteriaOk() (*Sod
 
 // HasLeftCriteria returns a boolean if a field has been set.
 func (o *SodViolationContextConflictingAccessCriteria) HasLeftCriteria() bool {
-	if o != nil && !isNil(o.LeftCriteria) {
+	if o != nil && !IsNil(o.LeftCriteria) {
 		return true
 	}
 
@@ -77,7 +77,7 @@ func (o *SodViolationContextConflictingAccessCriteria) SetLeftCriteria(v SodViol
 
 // GetRightCriteria returns the RightCriteria field value if set, zero value otherwise.
 func (o *SodViolationContextConflictingAccessCriteria) GetRightCriteria() SodViolationContextConflictingAccessCriteriaLeftCriteria {
-	if o == nil || isNil(o.RightCriteria) {
+	if o == nil || IsNil(o.RightCriteria) {
 		var ret SodViolationContextConflictingAccessCriteriaLeftCriteria
 		return ret
 	}
@@ -87,7 +87,7 @@ func (o *SodViolationContextConflictingAccessCriteria) GetRightCriteria() SodVio
 // GetRightCriteriaOk returns a tuple with the RightCriteria field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SodViolationContextConflictingAccessCriteria) GetRightCriteriaOk() (*SodViolationContextConflictingAccessCriteriaLeftCriteria, bool) {
-	if o == nil || isNil(o.RightCriteria) {
+	if o == nil || IsNil(o.RightCriteria) {
 		return nil, false
 	}
 	return o.RightCriteria, true
@@ -95,7 +95,7 @@ func (o *SodViolationContextConflictingAccessCriteria) GetRightCriteriaOk() (*So
 
 // HasRightCriteria returns a boolean if a field has been set.
 func (o *SodViolationContextConflictingAccessCriteria) HasRightCriteria() bool {
-	if o != nil && !isNil(o.RightCriteria) {
+	if o != nil && !IsNil(o.RightCriteria) {
 		return true
 	}
 
@@ -117,10 +117,10 @@ func (o SodViolationContextConflictingAccessCriteria) MarshalJSON() ([]byte, err
 
 func (o SodViolationContextConflictingAccessCriteria) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.LeftCriteria) {
+	if !IsNil(o.LeftCriteria) {
 		toSerialize["leftCriteria"] = o.LeftCriteria
 	}
-	if !isNil(o.RightCriteria) {
+	if !IsNil(o.RightCriteria) {
 		toSerialize["rightCriteria"] = o.RightCriteria
 	}
 
@@ -131,16 +131,20 @@ func (o SodViolationContextConflictingAccessCriteria) ToMap() (map[string]interf
 	return toSerialize, nil
 }
 
-func (o *SodViolationContextConflictingAccessCriteria) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SodViolationContextConflictingAccessCriteria) UnmarshalJSON(data []byte) (err error) {
 	varSodViolationContextConflictingAccessCriteria := _SodViolationContextConflictingAccessCriteria{}
 
-	if err = json.Unmarshal(bytes, &varSodViolationContextConflictingAccessCriteria); err == nil {
+	err = json.Unmarshal(data, &varSodViolationContextConflictingAccessCriteria)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SodViolationContextConflictingAccessCriteria(varSodViolationContextConflictingAccessCriteria)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "leftCriteria")
 		delete(additionalProperties, "rightCriteria")
 		o.AdditionalProperties = additionalProperties

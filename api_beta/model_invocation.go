@@ -51,7 +51,7 @@ func NewInvocationWithDefaults() *Invocation {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Invocation) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -61,7 +61,7 @@ func (o *Invocation) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Invocation) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -69,7 +69,7 @@ func (o *Invocation) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *Invocation) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -83,7 +83,7 @@ func (o *Invocation) SetId(v string) {
 
 // GetTriggerId returns the TriggerId field value if set, zero value otherwise.
 func (o *Invocation) GetTriggerId() string {
-	if o == nil || isNil(o.TriggerId) {
+	if o == nil || IsNil(o.TriggerId) {
 		var ret string
 		return ret
 	}
@@ -93,7 +93,7 @@ func (o *Invocation) GetTriggerId() string {
 // GetTriggerIdOk returns a tuple with the TriggerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Invocation) GetTriggerIdOk() (*string, bool) {
-	if o == nil || isNil(o.TriggerId) {
+	if o == nil || IsNil(o.TriggerId) {
 		return nil, false
 	}
 	return o.TriggerId, true
@@ -101,7 +101,7 @@ func (o *Invocation) GetTriggerIdOk() (*string, bool) {
 
 // HasTriggerId returns a boolean if a field has been set.
 func (o *Invocation) HasTriggerId() bool {
-	if o != nil && !isNil(o.TriggerId) {
+	if o != nil && !IsNil(o.TriggerId) {
 		return true
 	}
 
@@ -115,7 +115,7 @@ func (o *Invocation) SetTriggerId(v string) {
 
 // GetSecret returns the Secret field value if set, zero value otherwise.
 func (o *Invocation) GetSecret() string {
-	if o == nil || isNil(o.Secret) {
+	if o == nil || IsNil(o.Secret) {
 		var ret string
 		return ret
 	}
@@ -125,7 +125,7 @@ func (o *Invocation) GetSecret() string {
 // GetSecretOk returns a tuple with the Secret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Invocation) GetSecretOk() (*string, bool) {
-	if o == nil || isNil(o.Secret) {
+	if o == nil || IsNil(o.Secret) {
 		return nil, false
 	}
 	return o.Secret, true
@@ -133,7 +133,7 @@ func (o *Invocation) GetSecretOk() (*string, bool) {
 
 // HasSecret returns a boolean if a field has been set.
 func (o *Invocation) HasSecret() bool {
-	if o != nil && !isNil(o.Secret) {
+	if o != nil && !IsNil(o.Secret) {
 		return true
 	}
 
@@ -147,7 +147,7 @@ func (o *Invocation) SetSecret(v string) {
 
 // GetContentJson returns the ContentJson field value if set, zero value otherwise.
 func (o *Invocation) GetContentJson() map[string]interface{} {
-	if o == nil || isNil(o.ContentJson) {
+	if o == nil || IsNil(o.ContentJson) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -157,7 +157,7 @@ func (o *Invocation) GetContentJson() map[string]interface{} {
 // GetContentJsonOk returns a tuple with the ContentJson field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Invocation) GetContentJsonOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.ContentJson) {
+	if o == nil || IsNil(o.ContentJson) {
 		return map[string]interface{}{}, false
 	}
 	return o.ContentJson, true
@@ -165,7 +165,7 @@ func (o *Invocation) GetContentJsonOk() (map[string]interface{}, bool) {
 
 // HasContentJson returns a boolean if a field has been set.
 func (o *Invocation) HasContentJson() bool {
-	if o != nil && !isNil(o.ContentJson) {
+	if o != nil && !IsNil(o.ContentJson) {
 		return true
 	}
 
@@ -187,16 +187,16 @@ func (o Invocation) MarshalJSON() ([]byte, error) {
 
 func (o Invocation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.TriggerId) {
+	if !IsNil(o.TriggerId) {
 		toSerialize["triggerId"] = o.TriggerId
 	}
-	if !isNil(o.Secret) {
+	if !IsNil(o.Secret) {
 		toSerialize["secret"] = o.Secret
 	}
-	if !isNil(o.ContentJson) {
+	if !IsNil(o.ContentJson) {
 		toSerialize["contentJson"] = o.ContentJson
 	}
 
@@ -207,16 +207,20 @@ func (o Invocation) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Invocation) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Invocation) UnmarshalJSON(data []byte) (err error) {
 	varInvocation := _Invocation{}
 
-	if err = json.Unmarshal(bytes, &varInvocation); err == nil {
+	err = json.Unmarshal(data, &varInvocation)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Invocation(varInvocation)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "triggerId")
 		delete(additionalProperties, "secret")

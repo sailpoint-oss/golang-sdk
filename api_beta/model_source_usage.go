@@ -47,7 +47,7 @@ func NewSourceUsageWithDefaults() *SourceUsage {
 
 // GetDate returns the Date field value if set, zero value otherwise.
 func (o *SourceUsage) GetDate() string {
-	if o == nil || isNil(o.Date) {
+	if o == nil || IsNil(o.Date) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *SourceUsage) GetDate() string {
 // GetDateOk returns a tuple with the Date field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SourceUsage) GetDateOk() (*string, bool) {
-	if o == nil || isNil(o.Date) {
+	if o == nil || IsNil(o.Date) {
 		return nil, false
 	}
 	return o.Date, true
@@ -65,7 +65,7 @@ func (o *SourceUsage) GetDateOk() (*string, bool) {
 
 // HasDate returns a boolean if a field has been set.
 func (o *SourceUsage) HasDate() bool {
-	if o != nil && !isNil(o.Date) {
+	if o != nil && !IsNil(o.Date) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *SourceUsage) SetDate(v string) {
 
 // GetCount returns the Count field value if set, zero value otherwise.
 func (o *SourceUsage) GetCount() float32 {
-	if o == nil || isNil(o.Count) {
+	if o == nil || IsNil(o.Count) {
 		var ret float32
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *SourceUsage) GetCount() float32 {
 // GetCountOk returns a tuple with the Count field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SourceUsage) GetCountOk() (*float32, bool) {
-	if o == nil || isNil(o.Count) {
+	if o == nil || IsNil(o.Count) {
 		return nil, false
 	}
 	return o.Count, true
@@ -97,7 +97,7 @@ func (o *SourceUsage) GetCountOk() (*float32, bool) {
 
 // HasCount returns a boolean if a field has been set.
 func (o *SourceUsage) HasCount() bool {
-	if o != nil && !isNil(o.Count) {
+	if o != nil && !IsNil(o.Count) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o SourceUsage) MarshalJSON() ([]byte, error) {
 
 func (o SourceUsage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Date) {
+	if !IsNil(o.Date) {
 		toSerialize["date"] = o.Date
 	}
-	if !isNil(o.Count) {
+	if !IsNil(o.Count) {
 		toSerialize["count"] = o.Count
 	}
 
@@ -133,16 +133,20 @@ func (o SourceUsage) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SourceUsage) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SourceUsage) UnmarshalJSON(data []byte) (err error) {
 	varSourceUsage := _SourceUsage{}
 
-	if err = json.Unmarshal(bytes, &varSourceUsage); err == nil {
+	err = json.Unmarshal(data, &varSourceUsage)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SourceUsage(varSourceUsage)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "date")
 		delete(additionalProperties, "count")
 		o.AdditionalProperties = additionalProperties

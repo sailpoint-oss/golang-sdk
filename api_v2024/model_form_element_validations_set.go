@@ -44,7 +44,7 @@ func NewFormElementValidationsSetWithDefaults() *FormElementValidationsSet {
 
 // GetValidationType returns the ValidationType field value if set, zero value otherwise.
 func (o *FormElementValidationsSet) GetValidationType() string {
-	if o == nil || isNil(o.ValidationType) {
+	if o == nil || IsNil(o.ValidationType) {
 		var ret string
 		return ret
 	}
@@ -54,7 +54,7 @@ func (o *FormElementValidationsSet) GetValidationType() string {
 // GetValidationTypeOk returns a tuple with the ValidationType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormElementValidationsSet) GetValidationTypeOk() (*string, bool) {
-	if o == nil || isNil(o.ValidationType) {
+	if o == nil || IsNil(o.ValidationType) {
 		return nil, false
 	}
 	return o.ValidationType, true
@@ -62,7 +62,7 @@ func (o *FormElementValidationsSet) GetValidationTypeOk() (*string, bool) {
 
 // HasValidationType returns a boolean if a field has been set.
 func (o *FormElementValidationsSet) HasValidationType() bool {
-	if o != nil && !isNil(o.ValidationType) {
+	if o != nil && !IsNil(o.ValidationType) {
 		return true
 	}
 
@@ -84,7 +84,7 @@ func (o FormElementValidationsSet) MarshalJSON() ([]byte, error) {
 
 func (o FormElementValidationsSet) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ValidationType) {
+	if !IsNil(o.ValidationType) {
 		toSerialize["validationType"] = o.ValidationType
 	}
 
@@ -95,16 +95,20 @@ func (o FormElementValidationsSet) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *FormElementValidationsSet) UnmarshalJSON(bytes []byte) (err error) {
+func (o *FormElementValidationsSet) UnmarshalJSON(data []byte) (err error) {
 	varFormElementValidationsSet := _FormElementValidationsSet{}
 
-	if err = json.Unmarshal(bytes, &varFormElementValidationsSet); err == nil {
+	err = json.Unmarshal(data, &varFormElementValidationsSet)
+
+	if err != nil {
+		return err
+	}
+
 	*o = FormElementValidationsSet(varFormElementValidationsSet)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "validationType")
 		o.AdditionalProperties = additionalProperties
 	}

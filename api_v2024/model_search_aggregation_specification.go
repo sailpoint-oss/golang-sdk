@@ -48,7 +48,7 @@ func NewSearchAggregationSpecificationWithDefaults() *SearchAggregationSpecifica
 
 // GetNested returns the Nested field value if set, zero value otherwise.
 func (o *SearchAggregationSpecification) GetNested() NestedAggregation {
-	if o == nil || isNil(o.Nested) {
+	if o == nil || IsNil(o.Nested) {
 		var ret NestedAggregation
 		return ret
 	}
@@ -58,7 +58,7 @@ func (o *SearchAggregationSpecification) GetNested() NestedAggregation {
 // GetNestedOk returns a tuple with the Nested field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SearchAggregationSpecification) GetNestedOk() (*NestedAggregation, bool) {
-	if o == nil || isNil(o.Nested) {
+	if o == nil || IsNil(o.Nested) {
 		return nil, false
 	}
 	return o.Nested, true
@@ -66,7 +66,7 @@ func (o *SearchAggregationSpecification) GetNestedOk() (*NestedAggregation, bool
 
 // HasNested returns a boolean if a field has been set.
 func (o *SearchAggregationSpecification) HasNested() bool {
-	if o != nil && !isNil(o.Nested) {
+	if o != nil && !IsNil(o.Nested) {
 		return true
 	}
 
@@ -80,7 +80,7 @@ func (o *SearchAggregationSpecification) SetNested(v NestedAggregation) {
 
 // GetMetric returns the Metric field value if set, zero value otherwise.
 func (o *SearchAggregationSpecification) GetMetric() MetricAggregation {
-	if o == nil || isNil(o.Metric) {
+	if o == nil || IsNil(o.Metric) {
 		var ret MetricAggregation
 		return ret
 	}
@@ -90,7 +90,7 @@ func (o *SearchAggregationSpecification) GetMetric() MetricAggregation {
 // GetMetricOk returns a tuple with the Metric field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SearchAggregationSpecification) GetMetricOk() (*MetricAggregation, bool) {
-	if o == nil || isNil(o.Metric) {
+	if o == nil || IsNil(o.Metric) {
 		return nil, false
 	}
 	return o.Metric, true
@@ -98,7 +98,7 @@ func (o *SearchAggregationSpecification) GetMetricOk() (*MetricAggregation, bool
 
 // HasMetric returns a boolean if a field has been set.
 func (o *SearchAggregationSpecification) HasMetric() bool {
-	if o != nil && !isNil(o.Metric) {
+	if o != nil && !IsNil(o.Metric) {
 		return true
 	}
 
@@ -112,7 +112,7 @@ func (o *SearchAggregationSpecification) SetMetric(v MetricAggregation) {
 
 // GetFilter returns the Filter field value if set, zero value otherwise.
 func (o *SearchAggregationSpecification) GetFilter() FilterAggregation {
-	if o == nil || isNil(o.Filter) {
+	if o == nil || IsNil(o.Filter) {
 		var ret FilterAggregation
 		return ret
 	}
@@ -122,7 +122,7 @@ func (o *SearchAggregationSpecification) GetFilter() FilterAggregation {
 // GetFilterOk returns a tuple with the Filter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SearchAggregationSpecification) GetFilterOk() (*FilterAggregation, bool) {
-	if o == nil || isNil(o.Filter) {
+	if o == nil || IsNil(o.Filter) {
 		return nil, false
 	}
 	return o.Filter, true
@@ -130,7 +130,7 @@ func (o *SearchAggregationSpecification) GetFilterOk() (*FilterAggregation, bool
 
 // HasFilter returns a boolean if a field has been set.
 func (o *SearchAggregationSpecification) HasFilter() bool {
-	if o != nil && !isNil(o.Filter) {
+	if o != nil && !IsNil(o.Filter) {
 		return true
 	}
 
@@ -144,7 +144,7 @@ func (o *SearchAggregationSpecification) SetFilter(v FilterAggregation) {
 
 // GetBucket returns the Bucket field value if set, zero value otherwise.
 func (o *SearchAggregationSpecification) GetBucket() BucketAggregation {
-	if o == nil || isNil(o.Bucket) {
+	if o == nil || IsNil(o.Bucket) {
 		var ret BucketAggregation
 		return ret
 	}
@@ -154,7 +154,7 @@ func (o *SearchAggregationSpecification) GetBucket() BucketAggregation {
 // GetBucketOk returns a tuple with the Bucket field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SearchAggregationSpecification) GetBucketOk() (*BucketAggregation, bool) {
-	if o == nil || isNil(o.Bucket) {
+	if o == nil || IsNil(o.Bucket) {
 		return nil, false
 	}
 	return o.Bucket, true
@@ -162,7 +162,7 @@ func (o *SearchAggregationSpecification) GetBucketOk() (*BucketAggregation, bool
 
 // HasBucket returns a boolean if a field has been set.
 func (o *SearchAggregationSpecification) HasBucket() bool {
-	if o != nil && !isNil(o.Bucket) {
+	if o != nil && !IsNil(o.Bucket) {
 		return true
 	}
 
@@ -176,7 +176,7 @@ func (o *SearchAggregationSpecification) SetBucket(v BucketAggregation) {
 
 // GetSubAggregation returns the SubAggregation field value if set, zero value otherwise.
 func (o *SearchAggregationSpecification) GetSubAggregation() SubSearchAggregationSpecification {
-	if o == nil || isNil(o.SubAggregation) {
+	if o == nil || IsNil(o.SubAggregation) {
 		var ret SubSearchAggregationSpecification
 		return ret
 	}
@@ -186,7 +186,7 @@ func (o *SearchAggregationSpecification) GetSubAggregation() SubSearchAggregatio
 // GetSubAggregationOk returns a tuple with the SubAggregation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SearchAggregationSpecification) GetSubAggregationOk() (*SubSearchAggregationSpecification, bool) {
-	if o == nil || isNil(o.SubAggregation) {
+	if o == nil || IsNil(o.SubAggregation) {
 		return nil, false
 	}
 	return o.SubAggregation, true
@@ -194,7 +194,7 @@ func (o *SearchAggregationSpecification) GetSubAggregationOk() (*SubSearchAggreg
 
 // HasSubAggregation returns a boolean if a field has been set.
 func (o *SearchAggregationSpecification) HasSubAggregation() bool {
-	if o != nil && !isNil(o.SubAggregation) {
+	if o != nil && !IsNil(o.SubAggregation) {
 		return true
 	}
 
@@ -216,19 +216,19 @@ func (o SearchAggregationSpecification) MarshalJSON() ([]byte, error) {
 
 func (o SearchAggregationSpecification) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Nested) {
+	if !IsNil(o.Nested) {
 		toSerialize["nested"] = o.Nested
 	}
-	if !isNil(o.Metric) {
+	if !IsNil(o.Metric) {
 		toSerialize["metric"] = o.Metric
 	}
-	if !isNil(o.Filter) {
+	if !IsNil(o.Filter) {
 		toSerialize["filter"] = o.Filter
 	}
-	if !isNil(o.Bucket) {
+	if !IsNil(o.Bucket) {
 		toSerialize["bucket"] = o.Bucket
 	}
-	if !isNil(o.SubAggregation) {
+	if !IsNil(o.SubAggregation) {
 		toSerialize["subAggregation"] = o.SubAggregation
 	}
 
@@ -239,16 +239,20 @@ func (o SearchAggregationSpecification) ToMap() (map[string]interface{}, error) 
 	return toSerialize, nil
 }
 
-func (o *SearchAggregationSpecification) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SearchAggregationSpecification) UnmarshalJSON(data []byte) (err error) {
 	varSearchAggregationSpecification := _SearchAggregationSpecification{}
 
-	if err = json.Unmarshal(bytes, &varSearchAggregationSpecification); err == nil {
+	err = json.Unmarshal(data, &varSearchAggregationSpecification)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SearchAggregationSpecification(varSearchAggregationSpecification)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "nested")
 		delete(additionalProperties, "metric")
 		delete(additionalProperties, "filter")

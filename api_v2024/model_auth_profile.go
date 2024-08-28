@@ -69,7 +69,7 @@ func NewAuthProfileWithDefaults() *AuthProfile {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *AuthProfile) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -79,7 +79,7 @@ func (o *AuthProfile) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthProfile) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -87,7 +87,7 @@ func (o *AuthProfile) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *AuthProfile) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -101,7 +101,7 @@ func (o *AuthProfile) SetName(v string) {
 
 // GetOffNetwork returns the OffNetwork field value if set, zero value otherwise.
 func (o *AuthProfile) GetOffNetwork() bool {
-	if o == nil || isNil(o.OffNetwork) {
+	if o == nil || IsNil(o.OffNetwork) {
 		var ret bool
 		return ret
 	}
@@ -111,7 +111,7 @@ func (o *AuthProfile) GetOffNetwork() bool {
 // GetOffNetworkOk returns a tuple with the OffNetwork field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthProfile) GetOffNetworkOk() (*bool, bool) {
-	if o == nil || isNil(o.OffNetwork) {
+	if o == nil || IsNil(o.OffNetwork) {
 		return nil, false
 	}
 	return o.OffNetwork, true
@@ -119,7 +119,7 @@ func (o *AuthProfile) GetOffNetworkOk() (*bool, bool) {
 
 // HasOffNetwork returns a boolean if a field has been set.
 func (o *AuthProfile) HasOffNetwork() bool {
-	if o != nil && !isNil(o.OffNetwork) {
+	if o != nil && !IsNil(o.OffNetwork) {
 		return true
 	}
 
@@ -133,7 +133,7 @@ func (o *AuthProfile) SetOffNetwork(v bool) {
 
 // GetUntrustedGeography returns the UntrustedGeography field value if set, zero value otherwise.
 func (o *AuthProfile) GetUntrustedGeography() bool {
-	if o == nil || isNil(o.UntrustedGeography) {
+	if o == nil || IsNil(o.UntrustedGeography) {
 		var ret bool
 		return ret
 	}
@@ -143,7 +143,7 @@ func (o *AuthProfile) GetUntrustedGeography() bool {
 // GetUntrustedGeographyOk returns a tuple with the UntrustedGeography field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthProfile) GetUntrustedGeographyOk() (*bool, bool) {
-	if o == nil || isNil(o.UntrustedGeography) {
+	if o == nil || IsNil(o.UntrustedGeography) {
 		return nil, false
 	}
 	return o.UntrustedGeography, true
@@ -151,7 +151,7 @@ func (o *AuthProfile) GetUntrustedGeographyOk() (*bool, bool) {
 
 // HasUntrustedGeography returns a boolean if a field has been set.
 func (o *AuthProfile) HasUntrustedGeography() bool {
-	if o != nil && !isNil(o.UntrustedGeography) {
+	if o != nil && !IsNil(o.UntrustedGeography) {
 		return true
 	}
 
@@ -165,7 +165,7 @@ func (o *AuthProfile) SetUntrustedGeography(v bool) {
 
 // GetApplicationId returns the ApplicationId field value if set, zero value otherwise.
 func (o *AuthProfile) GetApplicationId() string {
-	if o == nil || isNil(o.ApplicationId) {
+	if o == nil || IsNil(o.ApplicationId) {
 		var ret string
 		return ret
 	}
@@ -175,7 +175,7 @@ func (o *AuthProfile) GetApplicationId() string {
 // GetApplicationIdOk returns a tuple with the ApplicationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthProfile) GetApplicationIdOk() (*string, bool) {
-	if o == nil || isNil(o.ApplicationId) {
+	if o == nil || IsNil(o.ApplicationId) {
 		return nil, false
 	}
 	return o.ApplicationId, true
@@ -183,7 +183,7 @@ func (o *AuthProfile) GetApplicationIdOk() (*string, bool) {
 
 // HasApplicationId returns a boolean if a field has been set.
 func (o *AuthProfile) HasApplicationId() bool {
-	if o != nil && !isNil(o.ApplicationId) {
+	if o != nil && !IsNil(o.ApplicationId) {
 		return true
 	}
 
@@ -197,7 +197,7 @@ func (o *AuthProfile) SetApplicationId(v string) {
 
 // GetApplicationName returns the ApplicationName field value if set, zero value otherwise.
 func (o *AuthProfile) GetApplicationName() string {
-	if o == nil || isNil(o.ApplicationName) {
+	if o == nil || IsNil(o.ApplicationName) {
 		var ret string
 		return ret
 	}
@@ -207,7 +207,7 @@ func (o *AuthProfile) GetApplicationName() string {
 // GetApplicationNameOk returns a tuple with the ApplicationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthProfile) GetApplicationNameOk() (*string, bool) {
-	if o == nil || isNil(o.ApplicationName) {
+	if o == nil || IsNil(o.ApplicationName) {
 		return nil, false
 	}
 	return o.ApplicationName, true
@@ -215,7 +215,7 @@ func (o *AuthProfile) GetApplicationNameOk() (*string, bool) {
 
 // HasApplicationName returns a boolean if a field has been set.
 func (o *AuthProfile) HasApplicationName() bool {
-	if o != nil && !isNil(o.ApplicationName) {
+	if o != nil && !IsNil(o.ApplicationName) {
 		return true
 	}
 
@@ -229,7 +229,7 @@ func (o *AuthProfile) SetApplicationName(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *AuthProfile) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -239,7 +239,7 @@ func (o *AuthProfile) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthProfile) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -247,7 +247,7 @@ func (o *AuthProfile) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *AuthProfile) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -261,7 +261,7 @@ func (o *AuthProfile) SetType(v string) {
 
 // GetStrongAuthLogin returns the StrongAuthLogin field value if set, zero value otherwise.
 func (o *AuthProfile) GetStrongAuthLogin() bool {
-	if o == nil || isNil(o.StrongAuthLogin) {
+	if o == nil || IsNil(o.StrongAuthLogin) {
 		var ret bool
 		return ret
 	}
@@ -271,7 +271,7 @@ func (o *AuthProfile) GetStrongAuthLogin() bool {
 // GetStrongAuthLoginOk returns a tuple with the StrongAuthLogin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthProfile) GetStrongAuthLoginOk() (*bool, bool) {
-	if o == nil || isNil(o.StrongAuthLogin) {
+	if o == nil || IsNil(o.StrongAuthLogin) {
 		return nil, false
 	}
 	return o.StrongAuthLogin, true
@@ -279,7 +279,7 @@ func (o *AuthProfile) GetStrongAuthLoginOk() (*bool, bool) {
 
 // HasStrongAuthLogin returns a boolean if a field has been set.
 func (o *AuthProfile) HasStrongAuthLogin() bool {
-	if o != nil && !isNil(o.StrongAuthLogin) {
+	if o != nil && !IsNil(o.StrongAuthLogin) {
 		return true
 	}
 
@@ -301,25 +301,25 @@ func (o AuthProfile) MarshalJSON() ([]byte, error) {
 
 func (o AuthProfile) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.OffNetwork) {
+	if !IsNil(o.OffNetwork) {
 		toSerialize["offNetwork"] = o.OffNetwork
 	}
-	if !isNil(o.UntrustedGeography) {
+	if !IsNil(o.UntrustedGeography) {
 		toSerialize["untrustedGeography"] = o.UntrustedGeography
 	}
-	if !isNil(o.ApplicationId) {
+	if !IsNil(o.ApplicationId) {
 		toSerialize["applicationId"] = o.ApplicationId
 	}
-	if !isNil(o.ApplicationName) {
+	if !IsNil(o.ApplicationName) {
 		toSerialize["applicationName"] = o.ApplicationName
 	}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.StrongAuthLogin) {
+	if !IsNil(o.StrongAuthLogin) {
 		toSerialize["strongAuthLogin"] = o.StrongAuthLogin
 	}
 
@@ -330,16 +330,20 @@ func (o AuthProfile) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AuthProfile) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AuthProfile) UnmarshalJSON(data []byte) (err error) {
 	varAuthProfile := _AuthProfile{}
 
-	if err = json.Unmarshal(bytes, &varAuthProfile); err == nil {
+	err = json.Unmarshal(data, &varAuthProfile)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AuthProfile(varAuthProfile)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "offNetwork")
 		delete(additionalProperties, "untrustedGeography")

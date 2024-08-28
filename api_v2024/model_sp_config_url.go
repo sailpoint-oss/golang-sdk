@@ -47,7 +47,7 @@ func NewSpConfigUrlWithDefaults() *SpConfigUrl {
 
 // GetUrl returns the Url field value if set, zero value otherwise.
 func (o *SpConfigUrl) GetUrl() string {
-	if o == nil || isNil(o.Url) {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *SpConfigUrl) GetUrl() string {
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpConfigUrl) GetUrlOk() (*string, bool) {
-	if o == nil || isNil(o.Url) {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
 	return o.Url, true
@@ -65,7 +65,7 @@ func (o *SpConfigUrl) GetUrlOk() (*string, bool) {
 
 // HasUrl returns a boolean if a field has been set.
 func (o *SpConfigUrl) HasUrl() bool {
-	if o != nil && !isNil(o.Url) {
+	if o != nil && !IsNil(o.Url) {
 		return true
 	}
 
@@ -90,7 +90,7 @@ func (o *SpConfigUrl) GetQuery() map[string]interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SpConfigUrl) GetQueryOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Query) {
+	if o == nil || IsNil(o.Query) {
 		return map[string]interface{}{}, false
 	}
 	return o.Query, true
@@ -98,7 +98,7 @@ func (o *SpConfigUrl) GetQueryOk() (map[string]interface{}, bool) {
 
 // HasQuery returns a boolean if a field has been set.
 func (o *SpConfigUrl) HasQuery() bool {
-	if o != nil && isNil(o.Query) {
+	if o != nil && !IsNil(o.Query) {
 		return true
 	}
 
@@ -120,7 +120,7 @@ func (o SpConfigUrl) MarshalJSON() ([]byte, error) {
 
 func (o SpConfigUrl) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Url) {
+	if !IsNil(o.Url) {
 		toSerialize["url"] = o.Url
 	}
 	if o.Query != nil {
@@ -134,16 +134,20 @@ func (o SpConfigUrl) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SpConfigUrl) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SpConfigUrl) UnmarshalJSON(data []byte) (err error) {
 	varSpConfigUrl := _SpConfigUrl{}
 
-	if err = json.Unmarshal(bytes, &varSpConfigUrl); err == nil {
+	err = json.Unmarshal(data, &varSpConfigUrl)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SpConfigUrl(varSpConfigUrl)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "url")
 		delete(additionalProperties, "query")
 		o.AdditionalProperties = additionalProperties

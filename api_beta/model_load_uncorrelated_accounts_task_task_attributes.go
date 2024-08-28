@@ -47,7 +47,7 @@ func NewLoadUncorrelatedAccountsTaskTaskAttributesWithDefaults() *LoadUncorrelat
 
 // GetQpocJobId returns the QpocJobId field value if set, zero value otherwise.
 func (o *LoadUncorrelatedAccountsTaskTaskAttributes) GetQpocJobId() string {
-	if o == nil || isNil(o.QpocJobId) {
+	if o == nil || IsNil(o.QpocJobId) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *LoadUncorrelatedAccountsTaskTaskAttributes) GetQpocJobId() string {
 // GetQpocJobIdOk returns a tuple with the QpocJobId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LoadUncorrelatedAccountsTaskTaskAttributes) GetQpocJobIdOk() (*string, bool) {
-	if o == nil || isNil(o.QpocJobId) {
+	if o == nil || IsNil(o.QpocJobId) {
 		return nil, false
 	}
 	return o.QpocJobId, true
@@ -65,7 +65,7 @@ func (o *LoadUncorrelatedAccountsTaskTaskAttributes) GetQpocJobIdOk() (*string, 
 
 // HasQpocJobId returns a boolean if a field has been set.
 func (o *LoadUncorrelatedAccountsTaskTaskAttributes) HasQpocJobId() bool {
-	if o != nil && !isNil(o.QpocJobId) {
+	if o != nil && !IsNil(o.QpocJobId) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *LoadUncorrelatedAccountsTaskTaskAttributes) SetQpocJobId(v string) {
 
 // GetTaskStartDelay returns the TaskStartDelay field value if set, zero value otherwise.
 func (o *LoadUncorrelatedAccountsTaskTaskAttributes) GetTaskStartDelay() map[string]interface{} {
-	if o == nil || isNil(o.TaskStartDelay) {
+	if o == nil || IsNil(o.TaskStartDelay) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *LoadUncorrelatedAccountsTaskTaskAttributes) GetTaskStartDelay() map[str
 // GetTaskStartDelayOk returns a tuple with the TaskStartDelay field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LoadUncorrelatedAccountsTaskTaskAttributes) GetTaskStartDelayOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.TaskStartDelay) {
+	if o == nil || IsNil(o.TaskStartDelay) {
 		return map[string]interface{}{}, false
 	}
 	return o.TaskStartDelay, true
@@ -97,7 +97,7 @@ func (o *LoadUncorrelatedAccountsTaskTaskAttributes) GetTaskStartDelayOk() (map[
 
 // HasTaskStartDelay returns a boolean if a field has been set.
 func (o *LoadUncorrelatedAccountsTaskTaskAttributes) HasTaskStartDelay() bool {
-	if o != nil && !isNil(o.TaskStartDelay) {
+	if o != nil && !IsNil(o.TaskStartDelay) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o LoadUncorrelatedAccountsTaskTaskAttributes) MarshalJSON() ([]byte, error
 
 func (o LoadUncorrelatedAccountsTaskTaskAttributes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.QpocJobId) {
+	if !IsNil(o.QpocJobId) {
 		toSerialize["qpocJobId"] = o.QpocJobId
 	}
-	if !isNil(o.TaskStartDelay) {
+	if !IsNil(o.TaskStartDelay) {
 		toSerialize["taskStartDelay"] = o.TaskStartDelay
 	}
 
@@ -133,16 +133,20 @@ func (o LoadUncorrelatedAccountsTaskTaskAttributes) ToMap() (map[string]interfac
 	return toSerialize, nil
 }
 
-func (o *LoadUncorrelatedAccountsTaskTaskAttributes) UnmarshalJSON(bytes []byte) (err error) {
+func (o *LoadUncorrelatedAccountsTaskTaskAttributes) UnmarshalJSON(data []byte) (err error) {
 	varLoadUncorrelatedAccountsTaskTaskAttributes := _LoadUncorrelatedAccountsTaskTaskAttributes{}
 
-	if err = json.Unmarshal(bytes, &varLoadUncorrelatedAccountsTaskTaskAttributes); err == nil {
+	err = json.Unmarshal(data, &varLoadUncorrelatedAccountsTaskTaskAttributes)
+
+	if err != nil {
+		return err
+	}
+
 	*o = LoadUncorrelatedAccountsTaskTaskAttributes(varLoadUncorrelatedAccountsTaskTaskAttributes)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "qpocJobId")
 		delete(additionalProperties, "taskStartDelay")
 		o.AdditionalProperties = additionalProperties

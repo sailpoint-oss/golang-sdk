@@ -12,6 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
@@ -47,7 +48,11 @@ func (dst *RoleMiningPotentialRoleSummaryCreatedBy) UnmarshalJSON(data []byte) e
 		if string(jsonEntityCreatedByDTO) == "{}" { // empty struct
 			dst.EntityCreatedByDTO = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.EntityCreatedByDTO); err != nil {
+				dst.EntityCreatedByDTO = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.EntityCreatedByDTO = nil
@@ -60,7 +65,11 @@ func (dst *RoleMiningPotentialRoleSummaryCreatedBy) UnmarshalJSON(data []byte) e
 		if string(jsonString) == "{}" { // empty struct
 			dst.String = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.String); err != nil {
+				dst.String = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.String = nil

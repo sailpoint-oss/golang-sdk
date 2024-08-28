@@ -48,7 +48,7 @@ func NewDisplayReferenceWithDefaults() *DisplayReference {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *DisplayReference) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -58,7 +58,7 @@ func (o *DisplayReference) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DisplayReference) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -66,7 +66,7 @@ func (o *DisplayReference) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *DisplayReference) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -80,7 +80,7 @@ func (o *DisplayReference) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *DisplayReference) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -90,7 +90,7 @@ func (o *DisplayReference) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DisplayReference) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -98,7 +98,7 @@ func (o *DisplayReference) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *DisplayReference) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -112,7 +112,7 @@ func (o *DisplayReference) SetName(v string) {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *DisplayReference) GetDisplayName() string {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -122,7 +122,7 @@ func (o *DisplayReference) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DisplayReference) GetDisplayNameOk() (*string, bool) {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -130,7 +130,7 @@ func (o *DisplayReference) GetDisplayNameOk() (*string, bool) {
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *DisplayReference) HasDisplayName() bool {
-	if o != nil && !isNil(o.DisplayName) {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -152,13 +152,13 @@ func (o DisplayReference) MarshalJSON() ([]byte, error) {
 
 func (o DisplayReference) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.DisplayName) {
+	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
 
@@ -169,16 +169,20 @@ func (o DisplayReference) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *DisplayReference) UnmarshalJSON(bytes []byte) (err error) {
+func (o *DisplayReference) UnmarshalJSON(data []byte) (err error) {
 	varDisplayReference := _DisplayReference{}
 
-	if err = json.Unmarshal(bytes, &varDisplayReference); err == nil {
+	err = json.Unmarshal(data, &varDisplayReference)
+
+	if err != nil {
+		return err
+	}
+
 	*o = DisplayReference(varDisplayReference)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "displayName")

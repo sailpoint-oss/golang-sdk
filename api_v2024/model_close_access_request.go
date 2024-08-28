@@ -89,7 +89,7 @@ func (o *CloseAccessRequest) SetAccessRequestIds(v []string) {
 
 // GetMessage returns the Message field value if set, zero value otherwise.
 func (o *CloseAccessRequest) GetMessage() string {
-	if o == nil || isNil(o.Message) {
+	if o == nil || IsNil(o.Message) {
 		var ret string
 		return ret
 	}
@@ -99,7 +99,7 @@ func (o *CloseAccessRequest) GetMessage() string {
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloseAccessRequest) GetMessageOk() (*string, bool) {
-	if o == nil || isNil(o.Message) {
+	if o == nil || IsNil(o.Message) {
 		return nil, false
 	}
 	return o.Message, true
@@ -107,7 +107,7 @@ func (o *CloseAccessRequest) GetMessageOk() (*string, bool) {
 
 // HasMessage returns a boolean if a field has been set.
 func (o *CloseAccessRequest) HasMessage() bool {
-	if o != nil && !isNil(o.Message) {
+	if o != nil && !IsNil(o.Message) {
 		return true
 	}
 
@@ -121,7 +121,7 @@ func (o *CloseAccessRequest) SetMessage(v string) {
 
 // GetExecutionStatus returns the ExecutionStatus field value if set, zero value otherwise.
 func (o *CloseAccessRequest) GetExecutionStatus() string {
-	if o == nil || isNil(o.ExecutionStatus) {
+	if o == nil || IsNil(o.ExecutionStatus) {
 		var ret string
 		return ret
 	}
@@ -131,7 +131,7 @@ func (o *CloseAccessRequest) GetExecutionStatus() string {
 // GetExecutionStatusOk returns a tuple with the ExecutionStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloseAccessRequest) GetExecutionStatusOk() (*string, bool) {
-	if o == nil || isNil(o.ExecutionStatus) {
+	if o == nil || IsNil(o.ExecutionStatus) {
 		return nil, false
 	}
 	return o.ExecutionStatus, true
@@ -139,7 +139,7 @@ func (o *CloseAccessRequest) GetExecutionStatusOk() (*string, bool) {
 
 // HasExecutionStatus returns a boolean if a field has been set.
 func (o *CloseAccessRequest) HasExecutionStatus() bool {
-	if o != nil && !isNil(o.ExecutionStatus) {
+	if o != nil && !IsNil(o.ExecutionStatus) {
 		return true
 	}
 
@@ -153,7 +153,7 @@ func (o *CloseAccessRequest) SetExecutionStatus(v string) {
 
 // GetCompletionStatus returns the CompletionStatus field value if set, zero value otherwise.
 func (o *CloseAccessRequest) GetCompletionStatus() string {
-	if o == nil || isNil(o.CompletionStatus) {
+	if o == nil || IsNil(o.CompletionStatus) {
 		var ret string
 		return ret
 	}
@@ -163,7 +163,7 @@ func (o *CloseAccessRequest) GetCompletionStatus() string {
 // GetCompletionStatusOk returns a tuple with the CompletionStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloseAccessRequest) GetCompletionStatusOk() (*string, bool) {
-	if o == nil || isNil(o.CompletionStatus) {
+	if o == nil || IsNil(o.CompletionStatus) {
 		return nil, false
 	}
 	return o.CompletionStatus, true
@@ -171,7 +171,7 @@ func (o *CloseAccessRequest) GetCompletionStatusOk() (*string, bool) {
 
 // HasCompletionStatus returns a boolean if a field has been set.
 func (o *CloseAccessRequest) HasCompletionStatus() bool {
-	if o != nil && !isNil(o.CompletionStatus) {
+	if o != nil && !IsNil(o.CompletionStatus) {
 		return true
 	}
 
@@ -194,13 +194,13 @@ func (o CloseAccessRequest) MarshalJSON() ([]byte, error) {
 func (o CloseAccessRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["accessRequestIds"] = o.AccessRequestIds
-	if !isNil(o.Message) {
+	if !IsNil(o.Message) {
 		toSerialize["message"] = o.Message
 	}
-	if !isNil(o.ExecutionStatus) {
+	if !IsNil(o.ExecutionStatus) {
 		toSerialize["executionStatus"] = o.ExecutionStatus
 	}
-	if !isNil(o.CompletionStatus) {
+	if !IsNil(o.CompletionStatus) {
 		toSerialize["completionStatus"] = o.CompletionStatus
 	}
 
@@ -211,8 +211,8 @@ func (o CloseAccessRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CloseAccessRequest) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *CloseAccessRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -221,7 +221,7 @@ func (o *CloseAccessRequest) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -235,13 +235,17 @@ func (o *CloseAccessRequest) UnmarshalJSON(bytes []byte) (err error) {
 
 	varCloseAccessRequest := _CloseAccessRequest{}
 
-	if err = json.Unmarshal(bytes, &varCloseAccessRequest); err == nil {
+	err = json.Unmarshal(data, &varCloseAccessRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CloseAccessRequest(varCloseAccessRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "accessRequestIds")
 		delete(additionalProperties, "message")
 		delete(additionalProperties, "executionStatus")

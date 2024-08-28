@@ -131,7 +131,7 @@ func (o *NonEmployeeSchemaAttributeBody) SetTechnicalName(v string) {
 
 // GetHelpText returns the HelpText field value if set, zero value otherwise.
 func (o *NonEmployeeSchemaAttributeBody) GetHelpText() string {
-	if o == nil || isNil(o.HelpText) {
+	if o == nil || IsNil(o.HelpText) {
 		var ret string
 		return ret
 	}
@@ -141,7 +141,7 @@ func (o *NonEmployeeSchemaAttributeBody) GetHelpText() string {
 // GetHelpTextOk returns a tuple with the HelpText field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSchemaAttributeBody) GetHelpTextOk() (*string, bool) {
-	if o == nil || isNil(o.HelpText) {
+	if o == nil || IsNil(o.HelpText) {
 		return nil, false
 	}
 	return o.HelpText, true
@@ -149,7 +149,7 @@ func (o *NonEmployeeSchemaAttributeBody) GetHelpTextOk() (*string, bool) {
 
 // HasHelpText returns a boolean if a field has been set.
 func (o *NonEmployeeSchemaAttributeBody) HasHelpText() bool {
-	if o != nil && !isNil(o.HelpText) {
+	if o != nil && !IsNil(o.HelpText) {
 		return true
 	}
 
@@ -163,7 +163,7 @@ func (o *NonEmployeeSchemaAttributeBody) SetHelpText(v string) {
 
 // GetPlaceholder returns the Placeholder field value if set, zero value otherwise.
 func (o *NonEmployeeSchemaAttributeBody) GetPlaceholder() string {
-	if o == nil || isNil(o.Placeholder) {
+	if o == nil || IsNil(o.Placeholder) {
 		var ret string
 		return ret
 	}
@@ -173,7 +173,7 @@ func (o *NonEmployeeSchemaAttributeBody) GetPlaceholder() string {
 // GetPlaceholderOk returns a tuple with the Placeholder field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSchemaAttributeBody) GetPlaceholderOk() (*string, bool) {
-	if o == nil || isNil(o.Placeholder) {
+	if o == nil || IsNil(o.Placeholder) {
 		return nil, false
 	}
 	return o.Placeholder, true
@@ -181,7 +181,7 @@ func (o *NonEmployeeSchemaAttributeBody) GetPlaceholderOk() (*string, bool) {
 
 // HasPlaceholder returns a boolean if a field has been set.
 func (o *NonEmployeeSchemaAttributeBody) HasPlaceholder() bool {
-	if o != nil && !isNil(o.Placeholder) {
+	if o != nil && !IsNil(o.Placeholder) {
 		return true
 	}
 
@@ -195,7 +195,7 @@ func (o *NonEmployeeSchemaAttributeBody) SetPlaceholder(v string) {
 
 // GetRequired returns the Required field value if set, zero value otherwise.
 func (o *NonEmployeeSchemaAttributeBody) GetRequired() bool {
-	if o == nil || isNil(o.Required) {
+	if o == nil || IsNil(o.Required) {
 		var ret bool
 		return ret
 	}
@@ -205,7 +205,7 @@ func (o *NonEmployeeSchemaAttributeBody) GetRequired() bool {
 // GetRequiredOk returns a tuple with the Required field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSchemaAttributeBody) GetRequiredOk() (*bool, bool) {
-	if o == nil || isNil(o.Required) {
+	if o == nil || IsNil(o.Required) {
 		return nil, false
 	}
 	return o.Required, true
@@ -213,7 +213,7 @@ func (o *NonEmployeeSchemaAttributeBody) GetRequiredOk() (*bool, bool) {
 
 // HasRequired returns a boolean if a field has been set.
 func (o *NonEmployeeSchemaAttributeBody) HasRequired() bool {
-	if o != nil && !isNil(o.Required) {
+	if o != nil && !IsNil(o.Required) {
 		return true
 	}
 
@@ -238,13 +238,13 @@ func (o NonEmployeeSchemaAttributeBody) ToMap() (map[string]interface{}, error) 
 	toSerialize["type"] = o.Type
 	toSerialize["label"] = o.Label
 	toSerialize["technicalName"] = o.TechnicalName
-	if !isNil(o.HelpText) {
+	if !IsNil(o.HelpText) {
 		toSerialize["helpText"] = o.HelpText
 	}
-	if !isNil(o.Placeholder) {
+	if !IsNil(o.Placeholder) {
 		toSerialize["placeholder"] = o.Placeholder
 	}
-	if !isNil(o.Required) {
+	if !IsNil(o.Required) {
 		toSerialize["required"] = o.Required
 	}
 
@@ -255,8 +255,8 @@ func (o NonEmployeeSchemaAttributeBody) ToMap() (map[string]interface{}, error) 
 	return toSerialize, nil
 }
 
-func (o *NonEmployeeSchemaAttributeBody) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *NonEmployeeSchemaAttributeBody) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -267,7 +267,7 @@ func (o *NonEmployeeSchemaAttributeBody) UnmarshalJSON(bytes []byte) (err error)
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -281,13 +281,17 @@ func (o *NonEmployeeSchemaAttributeBody) UnmarshalJSON(bytes []byte) (err error)
 
 	varNonEmployeeSchemaAttributeBody := _NonEmployeeSchemaAttributeBody{}
 
-	if err = json.Unmarshal(bytes, &varNonEmployeeSchemaAttributeBody); err == nil {
+	err = json.Unmarshal(data, &varNonEmployeeSchemaAttributeBody)
+
+	if err != nil {
+		return err
+	}
+
 	*o = NonEmployeeSchemaAttributeBody(varNonEmployeeSchemaAttributeBody)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "label")
 		delete(additionalProperties, "technicalName")

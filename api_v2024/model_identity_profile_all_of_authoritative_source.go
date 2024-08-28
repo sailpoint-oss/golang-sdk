@@ -49,7 +49,7 @@ func NewIdentityProfileAllOfAuthoritativeSourceWithDefaults() *IdentityProfileAl
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *IdentityProfileAllOfAuthoritativeSource) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *IdentityProfileAllOfAuthoritativeSource) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProfileAllOfAuthoritativeSource) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -67,7 +67,7 @@ func (o *IdentityProfileAllOfAuthoritativeSource) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *IdentityProfileAllOfAuthoritativeSource) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *IdentityProfileAllOfAuthoritativeSource) SetType(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *IdentityProfileAllOfAuthoritativeSource) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *IdentityProfileAllOfAuthoritativeSource) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProfileAllOfAuthoritativeSource) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -99,7 +99,7 @@ func (o *IdentityProfileAllOfAuthoritativeSource) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *IdentityProfileAllOfAuthoritativeSource) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *IdentityProfileAllOfAuthoritativeSource) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *IdentityProfileAllOfAuthoritativeSource) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *IdentityProfileAllOfAuthoritativeSource) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProfileAllOfAuthoritativeSource) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -131,7 +131,7 @@ func (o *IdentityProfileAllOfAuthoritativeSource) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *IdentityProfileAllOfAuthoritativeSource) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o IdentityProfileAllOfAuthoritativeSource) MarshalJSON() ([]byte, error) {
 
 func (o IdentityProfileAllOfAuthoritativeSource) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 
@@ -170,16 +170,20 @@ func (o IdentityProfileAllOfAuthoritativeSource) ToMap() (map[string]interface{}
 	return toSerialize, nil
 }
 
-func (o *IdentityProfileAllOfAuthoritativeSource) UnmarshalJSON(bytes []byte) (err error) {
+func (o *IdentityProfileAllOfAuthoritativeSource) UnmarshalJSON(data []byte) (err error) {
 	varIdentityProfileAllOfAuthoritativeSource := _IdentityProfileAllOfAuthoritativeSource{}
 
-	if err = json.Unmarshal(bytes, &varIdentityProfileAllOfAuthoritativeSource); err == nil {
+	err = json.Unmarshal(data, &varIdentityProfileAllOfAuthoritativeSource)
+
+	if err != nil {
+		return err
+	}
+
 	*o = IdentityProfileAllOfAuthoritativeSource(varIdentityProfileAllOfAuthoritativeSource)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")

@@ -47,7 +47,7 @@ func NewTemplateSlackCustomFieldsWithDefaults() *TemplateSlackCustomFields {
 
 // GetRequestType returns the RequestType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateSlackCustomFields) GetRequestType() string {
-	if o == nil || isNil(o.RequestType.Get()) {
+	if o == nil || IsNil(o.RequestType.Get()) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *TemplateSlackCustomFields) UnsetRequestType() {
 
 // GetContainsDeny returns the ContainsDeny field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateSlackCustomFields) GetContainsDeny() string {
-	if o == nil || isNil(o.ContainsDeny.Get()) {
+	if o == nil || IsNil(o.ContainsDeny.Get()) {
 		var ret string
 		return ret
 	}
@@ -131,7 +131,7 @@ func (o *TemplateSlackCustomFields) UnsetContainsDeny() {
 
 // GetCampaignId returns the CampaignId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateSlackCustomFields) GetCampaignId() string {
-	if o == nil || isNil(o.CampaignId.Get()) {
+	if o == nil || IsNil(o.CampaignId.Get()) {
 		var ret string
 		return ret
 	}
@@ -173,7 +173,7 @@ func (o *TemplateSlackCustomFields) UnsetCampaignId() {
 
 // GetCampaignStatus returns the CampaignStatus field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateSlackCustomFields) GetCampaignStatus() string {
-	if o == nil || isNil(o.CampaignStatus.Get()) {
+	if o == nil || IsNil(o.CampaignStatus.Get()) {
 		var ret string
 		return ret
 	}
@@ -243,16 +243,20 @@ func (o TemplateSlackCustomFields) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *TemplateSlackCustomFields) UnmarshalJSON(bytes []byte) (err error) {
+func (o *TemplateSlackCustomFields) UnmarshalJSON(data []byte) (err error) {
 	varTemplateSlackCustomFields := _TemplateSlackCustomFields{}
 
-	if err = json.Unmarshal(bytes, &varTemplateSlackCustomFields); err == nil {
+	err = json.Unmarshal(data, &varTemplateSlackCustomFields)
+
+	if err != nil {
+		return err
+	}
+
 	*o = TemplateSlackCustomFields(varTemplateSlackCustomFields)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "requestType")
 		delete(additionalProperties, "containsDeny")
 		delete(additionalProperties, "campaignId")

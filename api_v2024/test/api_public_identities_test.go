@@ -19,14 +19,14 @@ import (
 
 func Test_api_v2024_PublicIdentitiesAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test PublicIdentitiesAPIService GetPublicIdentities", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.PublicIdentitiesAPI.GetPublicIdentities(context.Background()).Execute()
+		resp, httpRes, err := apiClient.PublicIdentitiesAPI.GetPublicIdentities(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

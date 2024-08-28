@@ -56,7 +56,7 @@ func (o *Revocability) GetApprovalSchemes() []AccessProfileApprovalScheme {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Revocability) GetApprovalSchemesOk() ([]AccessProfileApprovalScheme, bool) {
-	if o == nil || isNil(o.ApprovalSchemes) {
+	if o == nil || IsNil(o.ApprovalSchemes) {
 		return nil, false
 	}
 	return o.ApprovalSchemes, true
@@ -64,7 +64,7 @@ func (o *Revocability) GetApprovalSchemesOk() ([]AccessProfileApprovalScheme, bo
 
 // HasApprovalSchemes returns a boolean if a field has been set.
 func (o *Revocability) HasApprovalSchemes() bool {
-	if o != nil && isNil(o.ApprovalSchemes) {
+	if o != nil && !IsNil(o.ApprovalSchemes) {
 		return true
 	}
 
@@ -97,16 +97,20 @@ func (o Revocability) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Revocability) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Revocability) UnmarshalJSON(data []byte) (err error) {
 	varRevocability := _Revocability{}
 
-	if err = json.Unmarshal(bytes, &varRevocability); err == nil {
+	err = json.Unmarshal(data, &varRevocability)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Revocability(varRevocability)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "approvalSchemes")
 		o.AdditionalProperties = additionalProperties
 	}

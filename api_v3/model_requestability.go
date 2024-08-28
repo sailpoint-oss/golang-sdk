@@ -57,7 +57,7 @@ func NewRequestabilityWithDefaults() *Requestability {
 
 // GetCommentsRequired returns the CommentsRequired field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Requestability) GetCommentsRequired() bool {
-	if o == nil || isNil(o.CommentsRequired.Get()) {
+	if o == nil || IsNil(o.CommentsRequired.Get()) {
 		var ret bool
 		return ret
 	}
@@ -99,7 +99,7 @@ func (o *Requestability) UnsetCommentsRequired() {
 
 // GetDenialCommentsRequired returns the DenialCommentsRequired field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Requestability) GetDenialCommentsRequired() bool {
-	if o == nil || isNil(o.DenialCommentsRequired.Get()) {
+	if o == nil || IsNil(o.DenialCommentsRequired.Get()) {
 		var ret bool
 		return ret
 	}
@@ -152,7 +152,7 @@ func (o *Requestability) GetApprovalSchemes() []AccessProfileApprovalScheme {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Requestability) GetApprovalSchemesOk() ([]AccessProfileApprovalScheme, bool) {
-	if o == nil || isNil(o.ApprovalSchemes) {
+	if o == nil || IsNil(o.ApprovalSchemes) {
 		return nil, false
 	}
 	return o.ApprovalSchemes, true
@@ -160,7 +160,7 @@ func (o *Requestability) GetApprovalSchemesOk() ([]AccessProfileApprovalScheme, 
 
 // HasApprovalSchemes returns a boolean if a field has been set.
 func (o *Requestability) HasApprovalSchemes() bool {
-	if o != nil && isNil(o.ApprovalSchemes) {
+	if o != nil && !IsNil(o.ApprovalSchemes) {
 		return true
 	}
 
@@ -199,16 +199,20 @@ func (o Requestability) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Requestability) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Requestability) UnmarshalJSON(data []byte) (err error) {
 	varRequestability := _Requestability{}
 
-	if err = json.Unmarshal(bytes, &varRequestability); err == nil {
+	err = json.Unmarshal(data, &varRequestability)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Requestability(varRequestability)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "commentsRequired")
 		delete(additionalProperties, "denialCommentsRequired")
 		delete(additionalProperties, "approvalSchemes")

@@ -19,14 +19,14 @@ import (
 
 func Test_api_v2024_ScheduledSearchAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test ScheduledSearchAPIService CreateScheduledSearch", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.ScheduledSearchAPI.CreateScheduledSearch(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ScheduledSearchAPI.CreateScheduledSearch(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_v2024_ScheduledSearchAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_V2024.ScheduledSearchAPI.DeleteScheduledSearch(context.Background(), id).Execute()
+		httpRes, err := apiClient.ScheduledSearchAPI.DeleteScheduledSearch(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -53,7 +53,7 @@ func Test_api_v2024_ScheduledSearchAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.ScheduledSearchAPI.GetScheduledSearch(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.ScheduledSearchAPI.GetScheduledSearch(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -65,7 +65,7 @@ func Test_api_v2024_ScheduledSearchAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.ScheduledSearchAPI.ListScheduledSearch(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ScheduledSearchAPI.ListScheduledSearch(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -79,7 +79,7 @@ func Test_api_v2024_ScheduledSearchAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_V2024.ScheduledSearchAPI.UnsubscribeScheduledSearch(context.Background(), id).Execute()
+		httpRes, err := apiClient.ScheduledSearchAPI.UnsubscribeScheduledSearch(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -92,7 +92,7 @@ func Test_api_v2024_ScheduledSearchAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.ScheduledSearchAPI.UpdateScheduledSearch(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.ScheduledSearchAPI.UpdateScheduledSearch(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

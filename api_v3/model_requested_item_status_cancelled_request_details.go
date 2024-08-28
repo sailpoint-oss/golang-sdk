@@ -49,7 +49,7 @@ func NewRequestedItemStatusCancelledRequestDetailsWithDefaults() *RequestedItemS
 
 // GetComment returns the Comment field value if set, zero value otherwise.
 func (o *RequestedItemStatusCancelledRequestDetails) GetComment() string {
-	if o == nil || isNil(o.Comment) {
+	if o == nil || IsNil(o.Comment) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *RequestedItemStatusCancelledRequestDetails) GetComment() string {
 // GetCommentOk returns a tuple with the Comment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestedItemStatusCancelledRequestDetails) GetCommentOk() (*string, bool) {
-	if o == nil || isNil(o.Comment) {
+	if o == nil || IsNil(o.Comment) {
 		return nil, false
 	}
 	return o.Comment, true
@@ -67,7 +67,7 @@ func (o *RequestedItemStatusCancelledRequestDetails) GetCommentOk() (*string, bo
 
 // HasComment returns a boolean if a field has been set.
 func (o *RequestedItemStatusCancelledRequestDetails) HasComment() bool {
-	if o != nil && !isNil(o.Comment) {
+	if o != nil && !IsNil(o.Comment) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *RequestedItemStatusCancelledRequestDetails) SetComment(v string) {
 
 // GetOwner returns the Owner field value if set, zero value otherwise.
 func (o *RequestedItemStatusCancelledRequestDetails) GetOwner() OwnerDto {
-	if o == nil || isNil(o.Owner) {
+	if o == nil || IsNil(o.Owner) {
 		var ret OwnerDto
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *RequestedItemStatusCancelledRequestDetails) GetOwner() OwnerDto {
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestedItemStatusCancelledRequestDetails) GetOwnerOk() (*OwnerDto, bool) {
-	if o == nil || isNil(o.Owner) {
+	if o == nil || IsNil(o.Owner) {
 		return nil, false
 	}
 	return o.Owner, true
@@ -99,7 +99,7 @@ func (o *RequestedItemStatusCancelledRequestDetails) GetOwnerOk() (*OwnerDto, bo
 
 // HasOwner returns a boolean if a field has been set.
 func (o *RequestedItemStatusCancelledRequestDetails) HasOwner() bool {
-	if o != nil && !isNil(o.Owner) {
+	if o != nil && !IsNil(o.Owner) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *RequestedItemStatusCancelledRequestDetails) SetOwner(v OwnerDto) {
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *RequestedItemStatusCancelledRequestDetails) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		var ret time.Time
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *RequestedItemStatusCancelledRequestDetails) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestedItemStatusCancelledRequestDetails) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -131,7 +131,7 @@ func (o *RequestedItemStatusCancelledRequestDetails) GetModifiedOk() (*time.Time
 
 // HasModified returns a boolean if a field has been set.
 func (o *RequestedItemStatusCancelledRequestDetails) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o RequestedItemStatusCancelledRequestDetails) MarshalJSON() ([]byte, error
 
 func (o RequestedItemStatusCancelledRequestDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Comment) {
+	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if !isNil(o.Owner) {
+	if !IsNil(o.Owner) {
 		toSerialize["owner"] = o.Owner
 	}
-	if !isNil(o.Modified) {
+	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
 
@@ -170,16 +170,20 @@ func (o RequestedItemStatusCancelledRequestDetails) ToMap() (map[string]interfac
 	return toSerialize, nil
 }
 
-func (o *RequestedItemStatusCancelledRequestDetails) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RequestedItemStatusCancelledRequestDetails) UnmarshalJSON(data []byte) (err error) {
 	varRequestedItemStatusCancelledRequestDetails := _RequestedItemStatusCancelledRequestDetails{}
 
-	if err = json.Unmarshal(bytes, &varRequestedItemStatusCancelledRequestDetails); err == nil {
+	err = json.Unmarshal(data, &varRequestedItemStatusCancelledRequestDetails)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RequestedItemStatusCancelledRequestDetails(varRequestedItemStatusCancelledRequestDetails)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "comment")
 		delete(additionalProperties, "owner")
 		delete(additionalProperties, "modified")

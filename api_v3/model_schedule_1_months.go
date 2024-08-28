@@ -99,7 +99,7 @@ func (o *Schedule1Months) SetValues(v []string) {
 
 // GetInterval returns the Interval field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Schedule1Months) GetInterval() int32 {
-	if o == nil || isNil(o.Interval.Get()) {
+	if o == nil || IsNil(o.Interval.Get()) {
 		var ret int32
 		return ret
 	}
@@ -162,8 +162,8 @@ func (o Schedule1Months) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Schedule1Months) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *Schedule1Months) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -173,7 +173,7 @@ func (o *Schedule1Months) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -187,13 +187,17 @@ func (o *Schedule1Months) UnmarshalJSON(bytes []byte) (err error) {
 
 	varSchedule1Months := _Schedule1Months{}
 
-	if err = json.Unmarshal(bytes, &varSchedule1Months); err == nil {
+	err = json.Unmarshal(data, &varSchedule1Months)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Schedule1Months(varSchedule1Months)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "values")
 		delete(additionalProperties, "interval")

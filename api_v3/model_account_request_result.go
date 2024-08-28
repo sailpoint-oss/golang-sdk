@@ -47,7 +47,7 @@ func NewAccountRequestResultWithDefaults() *AccountRequestResult {
 
 // GetErrors returns the Errors field value if set, zero value otherwise.
 func (o *AccountRequestResult) GetErrors() []string {
-	if o == nil || isNil(o.Errors) {
+	if o == nil || IsNil(o.Errors) {
 		var ret []string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *AccountRequestResult) GetErrors() []string {
 // GetErrorsOk returns a tuple with the Errors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountRequestResult) GetErrorsOk() ([]string, bool) {
-	if o == nil || isNil(o.Errors) {
+	if o == nil || IsNil(o.Errors) {
 		return nil, false
 	}
 	return o.Errors, true
@@ -65,7 +65,7 @@ func (o *AccountRequestResult) GetErrorsOk() ([]string, bool) {
 
 // HasErrors returns a boolean if a field has been set.
 func (o *AccountRequestResult) HasErrors() bool {
-	if o != nil && !isNil(o.Errors) {
+	if o != nil && !IsNil(o.Errors) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *AccountRequestResult) SetErrors(v []string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *AccountRequestResult) GetStatus() string {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *AccountRequestResult) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountRequestResult) GetStatusOk() (*string, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -97,7 +97,7 @@ func (o *AccountRequestResult) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *AccountRequestResult) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -111,7 +111,7 @@ func (o *AccountRequestResult) SetStatus(v string) {
 
 // GetTicketId returns the TicketId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountRequestResult) GetTicketId() string {
-	if o == nil || isNil(o.TicketId.Get()) {
+	if o == nil || IsNil(o.TicketId.Get()) {
 		var ret string
 		return ret
 	}
@@ -161,10 +161,10 @@ func (o AccountRequestResult) MarshalJSON() ([]byte, error) {
 
 func (o AccountRequestResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Errors) {
+	if !IsNil(o.Errors) {
 		toSerialize["errors"] = o.Errors
 	}
-	if !isNil(o.Status) {
+	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
 	if o.TicketId.IsSet() {
@@ -178,16 +178,20 @@ func (o AccountRequestResult) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccountRequestResult) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccountRequestResult) UnmarshalJSON(data []byte) (err error) {
 	varAccountRequestResult := _AccountRequestResult{}
 
-	if err = json.Unmarshal(bytes, &varAccountRequestResult); err == nil {
+	err = json.Unmarshal(data, &varAccountRequestResult)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccountRequestResult(varAccountRequestResult)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "errors")
 		delete(additionalProperties, "status")
 		delete(additionalProperties, "ticketId")

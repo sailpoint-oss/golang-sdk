@@ -45,7 +45,7 @@ func NewPreviewDataSourceResponseWithDefaults() *PreviewDataSourceResponse {
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *PreviewDataSourceResponse) GetResults() []FormElementDataSourceConfigOptions {
-	if o == nil || isNil(o.Results) {
+	if o == nil || IsNil(o.Results) {
 		var ret []FormElementDataSourceConfigOptions
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *PreviewDataSourceResponse) GetResults() []FormElementDataSourceConfigOp
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PreviewDataSourceResponse) GetResultsOk() ([]FormElementDataSourceConfigOptions, bool) {
-	if o == nil || isNil(o.Results) {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -63,7 +63,7 @@ func (o *PreviewDataSourceResponse) GetResultsOk() ([]FormElementDataSourceConfi
 
 // HasResults returns a boolean if a field has been set.
 func (o *PreviewDataSourceResponse) HasResults() bool {
-	if o != nil && !isNil(o.Results) {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o PreviewDataSourceResponse) MarshalJSON() ([]byte, error) {
 
 func (o PreviewDataSourceResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Results) {
+	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
 
@@ -96,16 +96,20 @@ func (o PreviewDataSourceResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *PreviewDataSourceResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *PreviewDataSourceResponse) UnmarshalJSON(data []byte) (err error) {
 	varPreviewDataSourceResponse := _PreviewDataSourceResponse{}
 
-	if err = json.Unmarshal(bytes, &varPreviewDataSourceResponse); err == nil {
+	err = json.Unmarshal(data, &varPreviewDataSourceResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = PreviewDataSourceResponse(varPreviewDataSourceResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "results")
 		o.AdditionalProperties = additionalProperties
 	}

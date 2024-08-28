@@ -287,7 +287,6 @@ docs/CompleteInvocationInput.md
 docs/CompletedApproval.md
 docs/CompletedApprovalPreApprovalTriggerResult.md
 docs/CompletedApprovalReviewedBy.md
-docs/CompletedApprovalReviewerComment.md
 docs/CompletedApprovalState.md
 docs/CompletionStatus.md
 docs/ConditionEffect.md
@@ -1183,7 +1182,6 @@ model_complete_invocation_input.go
 model_completed_approval.go
 model_completed_approval_pre_approval_trigger_result.go
 model_completed_approval_reviewed_by.go
-model_completed_approval_reviewer_comment.go
 model_completed_approval_state.go
 model_completion_status.go
 model_condition_effect.go

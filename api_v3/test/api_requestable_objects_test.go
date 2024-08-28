@@ -19,14 +19,14 @@ import (
 
 func Test_api_v3_RequestableObjectsAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test RequestableObjectsAPIService ListRequestableObjects", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.RequestableObjectsAPI.ListRequestableObjects(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RequestableObjectsAPI.ListRequestableObjects(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

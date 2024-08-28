@@ -48,7 +48,7 @@ func NewPublicIdentityConfigWithDefaults() *PublicIdentityConfig {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *PublicIdentityConfig) GetAttributes() []PublicIdentityAttributeConfig {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		var ret []PublicIdentityAttributeConfig
 		return ret
 	}
@@ -58,7 +58,7 @@ func (o *PublicIdentityConfig) GetAttributes() []PublicIdentityAttributeConfig {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PublicIdentityConfig) GetAttributesOk() ([]PublicIdentityAttributeConfig, bool) {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		return nil, false
 	}
 	return o.Attributes, true
@@ -66,7 +66,7 @@ func (o *PublicIdentityConfig) GetAttributesOk() ([]PublicIdentityAttributeConfi
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *PublicIdentityConfig) HasAttributes() bool {
-	if o != nil && !isNil(o.Attributes) {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -80,7 +80,7 @@ func (o *PublicIdentityConfig) SetAttributes(v []PublicIdentityAttributeConfig) 
 
 // GetModifiedBy returns the ModifiedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PublicIdentityConfig) GetModifiedBy() IdentityReference {
-	if o == nil || isNil(o.ModifiedBy.Get()) {
+	if o == nil || IsNil(o.ModifiedBy.Get()) {
 		var ret IdentityReference
 		return ret
 	}
@@ -122,7 +122,7 @@ func (o *PublicIdentityConfig) UnsetModifiedBy() {
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PublicIdentityConfig) GetModified() time.Time {
-	if o == nil || isNil(o.Modified.Get()) {
+	if o == nil || IsNil(o.Modified.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -172,7 +172,7 @@ func (o PublicIdentityConfig) MarshalJSON() ([]byte, error) {
 
 func (o PublicIdentityConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Attributes) {
+	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
 	if o.ModifiedBy.IsSet() {
@@ -189,16 +189,20 @@ func (o PublicIdentityConfig) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *PublicIdentityConfig) UnmarshalJSON(bytes []byte) (err error) {
+func (o *PublicIdentityConfig) UnmarshalJSON(data []byte) (err error) {
 	varPublicIdentityConfig := _PublicIdentityConfig{}
 
-	if err = json.Unmarshal(bytes, &varPublicIdentityConfig); err == nil {
+	err = json.Unmarshal(data, &varPublicIdentityConfig)
+
+	if err != nil {
+		return err
+	}
+
 	*o = PublicIdentityConfig(varPublicIdentityConfig)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "attributes")
 		delete(additionalProperties, "modifiedBy")
 		delete(additionalProperties, "modified")

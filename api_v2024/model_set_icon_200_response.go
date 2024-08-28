@@ -45,7 +45,7 @@ func NewSetIcon200ResponseWithDefaults() *SetIcon200Response {
 
 // GetIcon returns the Icon field value if set, zero value otherwise.
 func (o *SetIcon200Response) GetIcon() string {
-	if o == nil || isNil(o.Icon) {
+	if o == nil || IsNil(o.Icon) {
 		var ret string
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *SetIcon200Response) GetIcon() string {
 // GetIconOk returns a tuple with the Icon field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetIcon200Response) GetIconOk() (*string, bool) {
-	if o == nil || isNil(o.Icon) {
+	if o == nil || IsNil(o.Icon) {
 		return nil, false
 	}
 	return o.Icon, true
@@ -63,7 +63,7 @@ func (o *SetIcon200Response) GetIconOk() (*string, bool) {
 
 // HasIcon returns a boolean if a field has been set.
 func (o *SetIcon200Response) HasIcon() bool {
-	if o != nil && !isNil(o.Icon) {
+	if o != nil && !IsNil(o.Icon) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o SetIcon200Response) MarshalJSON() ([]byte, error) {
 
 func (o SetIcon200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Icon) {
+	if !IsNil(o.Icon) {
 		toSerialize["icon"] = o.Icon
 	}
 
@@ -96,16 +96,20 @@ func (o SetIcon200Response) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SetIcon200Response) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SetIcon200Response) UnmarshalJSON(data []byte) (err error) {
 	varSetIcon200Response := _SetIcon200Response{}
 
-	if err = json.Unmarshal(bytes, &varSetIcon200Response); err == nil {
+	err = json.Unmarshal(data, &varSetIcon200Response)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SetIcon200Response(varSetIcon200Response)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "icon")
 		o.AdditionalProperties = additionalProperties
 	}

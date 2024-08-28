@@ -55,7 +55,7 @@ func NewRequestOnBehalfOfConfigWithDefaults() *RequestOnBehalfOfConfig {
 
 // GetAllowRequestOnBehalfOfAnyoneByAnyone returns the AllowRequestOnBehalfOfAnyoneByAnyone field value if set, zero value otherwise.
 func (o *RequestOnBehalfOfConfig) GetAllowRequestOnBehalfOfAnyoneByAnyone() bool {
-	if o == nil || isNil(o.AllowRequestOnBehalfOfAnyoneByAnyone) {
+	if o == nil || IsNil(o.AllowRequestOnBehalfOfAnyoneByAnyone) {
 		var ret bool
 		return ret
 	}
@@ -65,7 +65,7 @@ func (o *RequestOnBehalfOfConfig) GetAllowRequestOnBehalfOfAnyoneByAnyone() bool
 // GetAllowRequestOnBehalfOfAnyoneByAnyoneOk returns a tuple with the AllowRequestOnBehalfOfAnyoneByAnyone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestOnBehalfOfConfig) GetAllowRequestOnBehalfOfAnyoneByAnyoneOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowRequestOnBehalfOfAnyoneByAnyone) {
+	if o == nil || IsNil(o.AllowRequestOnBehalfOfAnyoneByAnyone) {
 		return nil, false
 	}
 	return o.AllowRequestOnBehalfOfAnyoneByAnyone, true
@@ -73,7 +73,7 @@ func (o *RequestOnBehalfOfConfig) GetAllowRequestOnBehalfOfAnyoneByAnyoneOk() (*
 
 // HasAllowRequestOnBehalfOfAnyoneByAnyone returns a boolean if a field has been set.
 func (o *RequestOnBehalfOfConfig) HasAllowRequestOnBehalfOfAnyoneByAnyone() bool {
-	if o != nil && !isNil(o.AllowRequestOnBehalfOfAnyoneByAnyone) {
+	if o != nil && !IsNil(o.AllowRequestOnBehalfOfAnyoneByAnyone) {
 		return true
 	}
 
@@ -87,7 +87,7 @@ func (o *RequestOnBehalfOfConfig) SetAllowRequestOnBehalfOfAnyoneByAnyone(v bool
 
 // GetAllowRequestOnBehalfOfEmployeeByManager returns the AllowRequestOnBehalfOfEmployeeByManager field value if set, zero value otherwise.
 func (o *RequestOnBehalfOfConfig) GetAllowRequestOnBehalfOfEmployeeByManager() bool {
-	if o == nil || isNil(o.AllowRequestOnBehalfOfEmployeeByManager) {
+	if o == nil || IsNil(o.AllowRequestOnBehalfOfEmployeeByManager) {
 		var ret bool
 		return ret
 	}
@@ -97,7 +97,7 @@ func (o *RequestOnBehalfOfConfig) GetAllowRequestOnBehalfOfEmployeeByManager() b
 // GetAllowRequestOnBehalfOfEmployeeByManagerOk returns a tuple with the AllowRequestOnBehalfOfEmployeeByManager field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestOnBehalfOfConfig) GetAllowRequestOnBehalfOfEmployeeByManagerOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowRequestOnBehalfOfEmployeeByManager) {
+	if o == nil || IsNil(o.AllowRequestOnBehalfOfEmployeeByManager) {
 		return nil, false
 	}
 	return o.AllowRequestOnBehalfOfEmployeeByManager, true
@@ -105,7 +105,7 @@ func (o *RequestOnBehalfOfConfig) GetAllowRequestOnBehalfOfEmployeeByManagerOk()
 
 // HasAllowRequestOnBehalfOfEmployeeByManager returns a boolean if a field has been set.
 func (o *RequestOnBehalfOfConfig) HasAllowRequestOnBehalfOfEmployeeByManager() bool {
-	if o != nil && !isNil(o.AllowRequestOnBehalfOfEmployeeByManager) {
+	if o != nil && !IsNil(o.AllowRequestOnBehalfOfEmployeeByManager) {
 		return true
 	}
 
@@ -127,10 +127,10 @@ func (o RequestOnBehalfOfConfig) MarshalJSON() ([]byte, error) {
 
 func (o RequestOnBehalfOfConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AllowRequestOnBehalfOfAnyoneByAnyone) {
+	if !IsNil(o.AllowRequestOnBehalfOfAnyoneByAnyone) {
 		toSerialize["allowRequestOnBehalfOfAnyoneByAnyone"] = o.AllowRequestOnBehalfOfAnyoneByAnyone
 	}
-	if !isNil(o.AllowRequestOnBehalfOfEmployeeByManager) {
+	if !IsNil(o.AllowRequestOnBehalfOfEmployeeByManager) {
 		toSerialize["allowRequestOnBehalfOfEmployeeByManager"] = o.AllowRequestOnBehalfOfEmployeeByManager
 	}
 
@@ -141,16 +141,20 @@ func (o RequestOnBehalfOfConfig) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *RequestOnBehalfOfConfig) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RequestOnBehalfOfConfig) UnmarshalJSON(data []byte) (err error) {
 	varRequestOnBehalfOfConfig := _RequestOnBehalfOfConfig{}
 
-	if err = json.Unmarshal(bytes, &varRequestOnBehalfOfConfig); err == nil {
+	err = json.Unmarshal(data, &varRequestOnBehalfOfConfig)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RequestOnBehalfOfConfig(varRequestOnBehalfOfConfig)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "allowRequestOnBehalfOfAnyoneByAnyone")
 		delete(additionalProperties, "allowRequestOnBehalfOfEmployeeByManager")
 		o.AdditionalProperties = additionalProperties

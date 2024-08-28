@@ -47,7 +47,7 @@ func NewMfaConfigTestResponseWithDefaults() *MfaConfigTestResponse {
 
 // GetState returns the State field value if set, zero value otherwise.
 func (o *MfaConfigTestResponse) GetState() string {
-	if o == nil || isNil(o.State) {
+	if o == nil || IsNil(o.State) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *MfaConfigTestResponse) GetState() string {
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MfaConfigTestResponse) GetStateOk() (*string, bool) {
-	if o == nil || isNil(o.State) {
+	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
 	return o.State, true
@@ -65,7 +65,7 @@ func (o *MfaConfigTestResponse) GetStateOk() (*string, bool) {
 
 // HasState returns a boolean if a field has been set.
 func (o *MfaConfigTestResponse) HasState() bool {
-	if o != nil && !isNil(o.State) {
+	if o != nil && !IsNil(o.State) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *MfaConfigTestResponse) SetState(v string) {
 
 // GetError returns the Error field value if set, zero value otherwise.
 func (o *MfaConfigTestResponse) GetError() string {
-	if o == nil || isNil(o.Error) {
+	if o == nil || IsNil(o.Error) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *MfaConfigTestResponse) GetError() string {
 // GetErrorOk returns a tuple with the Error field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MfaConfigTestResponse) GetErrorOk() (*string, bool) {
-	if o == nil || isNil(o.Error) {
+	if o == nil || IsNil(o.Error) {
 		return nil, false
 	}
 	return o.Error, true
@@ -97,7 +97,7 @@ func (o *MfaConfigTestResponse) GetErrorOk() (*string, bool) {
 
 // HasError returns a boolean if a field has been set.
 func (o *MfaConfigTestResponse) HasError() bool {
-	if o != nil && !isNil(o.Error) {
+	if o != nil && !IsNil(o.Error) {
 		return true
 	}
 
@@ -119,8 +119,12 @@ func (o MfaConfigTestResponse) MarshalJSON() ([]byte, error) {
 
 func (o MfaConfigTestResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: state is readOnly
-	// skip: error is readOnly
+	if !IsNil(o.State) {
+		toSerialize["state"] = o.State
+	}
+	if !IsNil(o.Error) {
+		toSerialize["error"] = o.Error
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -129,16 +133,20 @@ func (o MfaConfigTestResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *MfaConfigTestResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *MfaConfigTestResponse) UnmarshalJSON(data []byte) (err error) {
 	varMfaConfigTestResponse := _MfaConfigTestResponse{}
 
-	if err = json.Unmarshal(bytes, &varMfaConfigTestResponse); err == nil {
+	err = json.Unmarshal(data, &varMfaConfigTestResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = MfaConfigTestResponse(varMfaConfigTestResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "state")
 		delete(additionalProperties, "error")
 		o.AdditionalProperties = additionalProperties

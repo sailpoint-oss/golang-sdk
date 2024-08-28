@@ -19,7 +19,7 @@ import (
 
 func Test_api_v2024_TriggersAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test TriggersAPIService CompleteTriggerInvocation", func(t *testing.T) {
@@ -28,7 +28,7 @@ func Test_api_v2024_TriggersAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_V2024.TriggersAPI.CompleteTriggerInvocation(context.Background(), id).Execute()
+		httpRes, err := apiClient.TriggersAPI.CompleteTriggerInvocation(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -39,7 +39,7 @@ func Test_api_v2024_TriggersAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.TriggersAPI.CreateSubscription(context.Background()).Execute()
+		resp, httpRes, err := apiClient.TriggersAPI.CreateSubscription(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -53,7 +53,7 @@ func Test_api_v2024_TriggersAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_V2024.TriggersAPI.DeleteSubscription(context.Background(), id).Execute()
+		httpRes, err := apiClient.TriggersAPI.DeleteSubscription(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -64,7 +64,7 @@ func Test_api_v2024_TriggersAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.TriggersAPI.ListSubscriptions(context.Background()).Execute()
+		resp, httpRes, err := apiClient.TriggersAPI.ListSubscriptions(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -76,7 +76,7 @@ func Test_api_v2024_TriggersAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.TriggersAPI.ListTriggerInvocationStatus(context.Background()).Execute()
+		resp, httpRes, err := apiClient.TriggersAPI.ListTriggerInvocationStatus(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -88,7 +88,7 @@ func Test_api_v2024_TriggersAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.TriggersAPI.ListTriggers(context.Background()).Execute()
+		resp, httpRes, err := apiClient.TriggersAPI.ListTriggers(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -102,7 +102,7 @@ func Test_api_v2024_TriggersAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.TriggersAPI.PatchSubscription(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.TriggersAPI.PatchSubscription(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -114,7 +114,7 @@ func Test_api_v2024_TriggersAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.TriggersAPI.StartTestTriggerInvocation(context.Background()).Execute()
+		resp, httpRes, err := apiClient.TriggersAPI.StartTestTriggerInvocation(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -126,7 +126,7 @@ func Test_api_v2024_TriggersAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.TriggersAPI.TestSubscriptionFilter(context.Background()).Execute()
+		resp, httpRes, err := apiClient.TriggersAPI.TestSubscriptionFilter(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -140,7 +140,7 @@ func Test_api_v2024_TriggersAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.TriggersAPI.UpdateSubscription(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.TriggersAPI.UpdateSubscription(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

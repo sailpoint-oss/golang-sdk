@@ -48,7 +48,7 @@ func NewDataAccessWithDefaults() *DataAccess {
 
 // GetPolicies returns the Policies field value if set, zero value otherwise.
 func (o *DataAccess) GetPolicies() []DataAccessPoliciesInner {
-	if o == nil || isNil(o.Policies) {
+	if o == nil || IsNil(o.Policies) {
 		var ret []DataAccessPoliciesInner
 		return ret
 	}
@@ -58,7 +58,7 @@ func (o *DataAccess) GetPolicies() []DataAccessPoliciesInner {
 // GetPoliciesOk returns a tuple with the Policies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DataAccess) GetPoliciesOk() ([]DataAccessPoliciesInner, bool) {
-	if o == nil || isNil(o.Policies) {
+	if o == nil || IsNil(o.Policies) {
 		return nil, false
 	}
 	return o.Policies, true
@@ -66,7 +66,7 @@ func (o *DataAccess) GetPoliciesOk() ([]DataAccessPoliciesInner, bool) {
 
 // HasPolicies returns a boolean if a field has been set.
 func (o *DataAccess) HasPolicies() bool {
-	if o != nil && !isNil(o.Policies) {
+	if o != nil && !IsNil(o.Policies) {
 		return true
 	}
 
@@ -80,7 +80,7 @@ func (o *DataAccess) SetPolicies(v []DataAccessPoliciesInner) {
 
 // GetCategories returns the Categories field value if set, zero value otherwise.
 func (o *DataAccess) GetCategories() []DataAccessCategoriesInner {
-	if o == nil || isNil(o.Categories) {
+	if o == nil || IsNil(o.Categories) {
 		var ret []DataAccessCategoriesInner
 		return ret
 	}
@@ -90,7 +90,7 @@ func (o *DataAccess) GetCategories() []DataAccessCategoriesInner {
 // GetCategoriesOk returns a tuple with the Categories field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DataAccess) GetCategoriesOk() ([]DataAccessCategoriesInner, bool) {
-	if o == nil || isNil(o.Categories) {
+	if o == nil || IsNil(o.Categories) {
 		return nil, false
 	}
 	return o.Categories, true
@@ -98,7 +98,7 @@ func (o *DataAccess) GetCategoriesOk() ([]DataAccessCategoriesInner, bool) {
 
 // HasCategories returns a boolean if a field has been set.
 func (o *DataAccess) HasCategories() bool {
-	if o != nil && !isNil(o.Categories) {
+	if o != nil && !IsNil(o.Categories) {
 		return true
 	}
 
@@ -112,7 +112,7 @@ func (o *DataAccess) SetCategories(v []DataAccessCategoriesInner) {
 
 // GetImpactScore returns the ImpactScore field value if set, zero value otherwise.
 func (o *DataAccess) GetImpactScore() DataAccessImpactScore {
-	if o == nil || isNil(o.ImpactScore) {
+	if o == nil || IsNil(o.ImpactScore) {
 		var ret DataAccessImpactScore
 		return ret
 	}
@@ -122,7 +122,7 @@ func (o *DataAccess) GetImpactScore() DataAccessImpactScore {
 // GetImpactScoreOk returns a tuple with the ImpactScore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DataAccess) GetImpactScoreOk() (*DataAccessImpactScore, bool) {
-	if o == nil || isNil(o.ImpactScore) {
+	if o == nil || IsNil(o.ImpactScore) {
 		return nil, false
 	}
 	return o.ImpactScore, true
@@ -130,7 +130,7 @@ func (o *DataAccess) GetImpactScoreOk() (*DataAccessImpactScore, bool) {
 
 // HasImpactScore returns a boolean if a field has been set.
 func (o *DataAccess) HasImpactScore() bool {
-	if o != nil && !isNil(o.ImpactScore) {
+	if o != nil && !IsNil(o.ImpactScore) {
 		return true
 	}
 
@@ -152,13 +152,13 @@ func (o DataAccess) MarshalJSON() ([]byte, error) {
 
 func (o DataAccess) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Policies) {
+	if !IsNil(o.Policies) {
 		toSerialize["policies"] = o.Policies
 	}
-	if !isNil(o.Categories) {
+	if !IsNil(o.Categories) {
 		toSerialize["categories"] = o.Categories
 	}
-	if !isNil(o.ImpactScore) {
+	if !IsNil(o.ImpactScore) {
 		toSerialize["impactScore"] = o.ImpactScore
 	}
 
@@ -169,16 +169,20 @@ func (o DataAccess) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *DataAccess) UnmarshalJSON(bytes []byte) (err error) {
+func (o *DataAccess) UnmarshalJSON(data []byte) (err error) {
 	varDataAccess := _DataAccess{}
 
-	if err = json.Unmarshal(bytes, &varDataAccess); err == nil {
+	err = json.Unmarshal(data, &varDataAccess)
+
+	if err != nil {
+		return err
+	}
+
 	*o = DataAccess(varDataAccess)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "policies")
 		delete(additionalProperties, "categories")
 		delete(additionalProperties, "impactScore")

@@ -77,7 +77,7 @@ func NewIdentityProfileWithDefaults() *IdentityProfile {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *IdentityProfile) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -87,7 +87,7 @@ func (o *IdentityProfile) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProfile) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -95,7 +95,7 @@ func (o *IdentityProfile) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *IdentityProfile) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -133,7 +133,7 @@ func (o *IdentityProfile) SetName(v string) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *IdentityProfile) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -143,7 +143,7 @@ func (o *IdentityProfile) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProfile) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -151,7 +151,7 @@ func (o *IdentityProfile) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *IdentityProfile) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -165,7 +165,7 @@ func (o *IdentityProfile) SetCreated(v time.Time) {
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *IdentityProfile) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		var ret time.Time
 		return ret
 	}
@@ -175,7 +175,7 @@ func (o *IdentityProfile) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProfile) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -183,7 +183,7 @@ func (o *IdentityProfile) GetModifiedOk() (*time.Time, bool) {
 
 // HasModified returns a boolean if a field has been set.
 func (o *IdentityProfile) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -197,7 +197,7 @@ func (o *IdentityProfile) SetModified(v time.Time) {
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentityProfile) GetDescription() string {
-	if o == nil || isNil(o.Description.Get()) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
@@ -239,7 +239,7 @@ func (o *IdentityProfile) UnsetDescription() {
 
 // GetOwner returns the Owner field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentityProfile) GetOwner() IdentityProfileAllOfOwner {
-	if o == nil || isNil(o.Owner.Get()) {
+	if o == nil || IsNil(o.Owner.Get()) {
 		var ret IdentityProfileAllOfOwner
 		return ret
 	}
@@ -281,7 +281,7 @@ func (o *IdentityProfile) UnsetOwner() {
 
 // GetPriority returns the Priority field value if set, zero value otherwise.
 func (o *IdentityProfile) GetPriority() int64 {
-	if o == nil || isNil(o.Priority) {
+	if o == nil || IsNil(o.Priority) {
 		var ret int64
 		return ret
 	}
@@ -291,7 +291,7 @@ func (o *IdentityProfile) GetPriority() int64 {
 // GetPriorityOk returns a tuple with the Priority field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProfile) GetPriorityOk() (*int64, bool) {
-	if o == nil || isNil(o.Priority) {
+	if o == nil || IsNil(o.Priority) {
 		return nil, false
 	}
 	return o.Priority, true
@@ -299,7 +299,7 @@ func (o *IdentityProfile) GetPriorityOk() (*int64, bool) {
 
 // HasPriority returns a boolean if a field has been set.
 func (o *IdentityProfile) HasPriority() bool {
-	if o != nil && !isNil(o.Priority) {
+	if o != nil && !IsNil(o.Priority) {
 		return true
 	}
 
@@ -337,7 +337,7 @@ func (o *IdentityProfile) SetAuthoritativeSource(v IdentityProfileAllOfAuthorita
 
 // GetIdentityRefreshRequired returns the IdentityRefreshRequired field value if set, zero value otherwise.
 func (o *IdentityProfile) GetIdentityRefreshRequired() bool {
-	if o == nil || isNil(o.IdentityRefreshRequired) {
+	if o == nil || IsNil(o.IdentityRefreshRequired) {
 		var ret bool
 		return ret
 	}
@@ -347,7 +347,7 @@ func (o *IdentityProfile) GetIdentityRefreshRequired() bool {
 // GetIdentityRefreshRequiredOk returns a tuple with the IdentityRefreshRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProfile) GetIdentityRefreshRequiredOk() (*bool, bool) {
-	if o == nil || isNil(o.IdentityRefreshRequired) {
+	if o == nil || IsNil(o.IdentityRefreshRequired) {
 		return nil, false
 	}
 	return o.IdentityRefreshRequired, true
@@ -355,7 +355,7 @@ func (o *IdentityProfile) GetIdentityRefreshRequiredOk() (*bool, bool) {
 
 // HasIdentityRefreshRequired returns a boolean if a field has been set.
 func (o *IdentityProfile) HasIdentityRefreshRequired() bool {
-	if o != nil && !isNil(o.IdentityRefreshRequired) {
+	if o != nil && !IsNil(o.IdentityRefreshRequired) {
 		return true
 	}
 
@@ -369,7 +369,7 @@ func (o *IdentityProfile) SetIdentityRefreshRequired(v bool) {
 
 // GetIdentityCount returns the IdentityCount field value if set, zero value otherwise.
 func (o *IdentityProfile) GetIdentityCount() int32 {
-	if o == nil || isNil(o.IdentityCount) {
+	if o == nil || IsNil(o.IdentityCount) {
 		var ret int32
 		return ret
 	}
@@ -379,7 +379,7 @@ func (o *IdentityProfile) GetIdentityCount() int32 {
 // GetIdentityCountOk returns a tuple with the IdentityCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProfile) GetIdentityCountOk() (*int32, bool) {
-	if o == nil || isNil(o.IdentityCount) {
+	if o == nil || IsNil(o.IdentityCount) {
 		return nil, false
 	}
 	return o.IdentityCount, true
@@ -387,7 +387,7 @@ func (o *IdentityProfile) GetIdentityCountOk() (*int32, bool) {
 
 // HasIdentityCount returns a boolean if a field has been set.
 func (o *IdentityProfile) HasIdentityCount() bool {
-	if o != nil && !isNil(o.IdentityCount) {
+	if o != nil && !IsNil(o.IdentityCount) {
 		return true
 	}
 
@@ -401,7 +401,7 @@ func (o *IdentityProfile) SetIdentityCount(v int32) {
 
 // GetIdentityAttributeConfig returns the IdentityAttributeConfig field value if set, zero value otherwise.
 func (o *IdentityProfile) GetIdentityAttributeConfig() IdentityAttributeConfig {
-	if o == nil || isNil(o.IdentityAttributeConfig) {
+	if o == nil || IsNil(o.IdentityAttributeConfig) {
 		var ret IdentityAttributeConfig
 		return ret
 	}
@@ -411,7 +411,7 @@ func (o *IdentityProfile) GetIdentityAttributeConfig() IdentityAttributeConfig {
 // GetIdentityAttributeConfigOk returns a tuple with the IdentityAttributeConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProfile) GetIdentityAttributeConfigOk() (*IdentityAttributeConfig, bool) {
-	if o == nil || isNil(o.IdentityAttributeConfig) {
+	if o == nil || IsNil(o.IdentityAttributeConfig) {
 		return nil, false
 	}
 	return o.IdentityAttributeConfig, true
@@ -419,7 +419,7 @@ func (o *IdentityProfile) GetIdentityAttributeConfigOk() (*IdentityAttributeConf
 
 // HasIdentityAttributeConfig returns a boolean if a field has been set.
 func (o *IdentityProfile) HasIdentityAttributeConfig() bool {
-	if o != nil && !isNil(o.IdentityAttributeConfig) {
+	if o != nil && !IsNil(o.IdentityAttributeConfig) {
 		return true
 	}
 
@@ -433,7 +433,7 @@ func (o *IdentityProfile) SetIdentityAttributeConfig(v IdentityAttributeConfig) 
 
 // GetIdentityExceptionReportReference returns the IdentityExceptionReportReference field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentityProfile) GetIdentityExceptionReportReference() IdentityExceptionReportReference {
-	if o == nil || isNil(o.IdentityExceptionReportReference.Get()) {
+	if o == nil || IsNil(o.IdentityExceptionReportReference.Get()) {
 		var ret IdentityExceptionReportReference
 		return ret
 	}
@@ -475,7 +475,7 @@ func (o *IdentityProfile) UnsetIdentityExceptionReportReference() {
 
 // GetHasTimeBasedAttr returns the HasTimeBasedAttr field value if set, zero value otherwise.
 func (o *IdentityProfile) GetHasTimeBasedAttr() bool {
-	if o == nil || isNil(o.HasTimeBasedAttr) {
+	if o == nil || IsNil(o.HasTimeBasedAttr) {
 		var ret bool
 		return ret
 	}
@@ -485,7 +485,7 @@ func (o *IdentityProfile) GetHasTimeBasedAttr() bool {
 // GetHasTimeBasedAttrOk returns a tuple with the HasTimeBasedAttr field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProfile) GetHasTimeBasedAttrOk() (*bool, bool) {
-	if o == nil || isNil(o.HasTimeBasedAttr) {
+	if o == nil || IsNil(o.HasTimeBasedAttr) {
 		return nil, false
 	}
 	return o.HasTimeBasedAttr, true
@@ -493,7 +493,7 @@ func (o *IdentityProfile) GetHasTimeBasedAttrOk() (*bool, bool) {
 
 // HasHasTimeBasedAttr returns a boolean if a field has been set.
 func (o *IdentityProfile) HasHasTimeBasedAttr() bool {
-	if o != nil && !isNil(o.HasTimeBasedAttr) {
+	if o != nil && !IsNil(o.HasTimeBasedAttr) {
 		return true
 	}
 
@@ -515,33 +515,39 @@ func (o IdentityProfile) MarshalJSON() ([]byte, error) {
 
 func (o IdentityProfile) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["name"] = o.Name
-	// skip: created is readOnly
-	// skip: modified is readOnly
+	if !IsNil(o.Created) {
+		toSerialize["created"] = o.Created
+	}
+	if !IsNil(o.Modified) {
+		toSerialize["modified"] = o.Modified
+	}
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
 	if o.Owner.IsSet() {
 		toSerialize["owner"] = o.Owner.Get()
 	}
-	if !isNil(o.Priority) {
+	if !IsNil(o.Priority) {
 		toSerialize["priority"] = o.Priority
 	}
 	toSerialize["authoritativeSource"] = o.AuthoritativeSource
-	if !isNil(o.IdentityRefreshRequired) {
+	if !IsNil(o.IdentityRefreshRequired) {
 		toSerialize["identityRefreshRequired"] = o.IdentityRefreshRequired
 	}
-	if !isNil(o.IdentityCount) {
+	if !IsNil(o.IdentityCount) {
 		toSerialize["identityCount"] = o.IdentityCount
 	}
-	if !isNil(o.IdentityAttributeConfig) {
+	if !IsNil(o.IdentityAttributeConfig) {
 		toSerialize["identityAttributeConfig"] = o.IdentityAttributeConfig
 	}
 	if o.IdentityExceptionReportReference.IsSet() {
 		toSerialize["identityExceptionReportReference"] = o.IdentityExceptionReportReference.Get()
 	}
-	if !isNil(o.HasTimeBasedAttr) {
+	if !IsNil(o.HasTimeBasedAttr) {
 		toSerialize["hasTimeBasedAttr"] = o.HasTimeBasedAttr
 	}
 
@@ -552,8 +558,8 @@ func (o IdentityProfile) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *IdentityProfile) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *IdentityProfile) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -563,7 +569,7 @@ func (o *IdentityProfile) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -577,13 +583,17 @@ func (o *IdentityProfile) UnmarshalJSON(bytes []byte) (err error) {
 
 	varIdentityProfile := _IdentityProfile{}
 
-	if err = json.Unmarshal(bytes, &varIdentityProfile); err == nil {
+	err = json.Unmarshal(data, &varIdentityProfile)
+
+	if err != nil {
+		return err
+	}
+
 	*o = IdentityProfile(varIdentityProfile)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "created")

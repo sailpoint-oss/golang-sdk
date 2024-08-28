@@ -101,7 +101,7 @@ func (o *IdentityAttribute) SetName(v string) {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *IdentityAttribute) GetDisplayName() string {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -111,7 +111,7 @@ func (o *IdentityAttribute) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityAttribute) GetDisplayNameOk() (*string, bool) {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -119,7 +119,7 @@ func (o *IdentityAttribute) GetDisplayNameOk() (*string, bool) {
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *IdentityAttribute) HasDisplayName() bool {
-	if o != nil && !isNil(o.DisplayName) {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -133,7 +133,7 @@ func (o *IdentityAttribute) SetDisplayName(v string) {
 
 // GetStandard returns the Standard field value if set, zero value otherwise.
 func (o *IdentityAttribute) GetStandard() bool {
-	if o == nil || isNil(o.Standard) {
+	if o == nil || IsNil(o.Standard) {
 		var ret bool
 		return ret
 	}
@@ -143,7 +143,7 @@ func (o *IdentityAttribute) GetStandard() bool {
 // GetStandardOk returns a tuple with the Standard field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityAttribute) GetStandardOk() (*bool, bool) {
-	if o == nil || isNil(o.Standard) {
+	if o == nil || IsNil(o.Standard) {
 		return nil, false
 	}
 	return o.Standard, true
@@ -151,7 +151,7 @@ func (o *IdentityAttribute) GetStandardOk() (*bool, bool) {
 
 // HasStandard returns a boolean if a field has been set.
 func (o *IdentityAttribute) HasStandard() bool {
-	if o != nil && !isNil(o.Standard) {
+	if o != nil && !IsNil(o.Standard) {
 		return true
 	}
 
@@ -165,7 +165,7 @@ func (o *IdentityAttribute) SetStandard(v bool) {
 
 // GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentityAttribute) GetType() string {
-	if o == nil || isNil(o.Type.Get()) {
+	if o == nil || IsNil(o.Type.Get()) {
 		var ret string
 		return ret
 	}
@@ -207,7 +207,7 @@ func (o *IdentityAttribute) UnsetType() {
 
 // GetMulti returns the Multi field value if set, zero value otherwise.
 func (o *IdentityAttribute) GetMulti() bool {
-	if o == nil || isNil(o.Multi) {
+	if o == nil || IsNil(o.Multi) {
 		var ret bool
 		return ret
 	}
@@ -217,7 +217,7 @@ func (o *IdentityAttribute) GetMulti() bool {
 // GetMultiOk returns a tuple with the Multi field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityAttribute) GetMultiOk() (*bool, bool) {
-	if o == nil || isNil(o.Multi) {
+	if o == nil || IsNil(o.Multi) {
 		return nil, false
 	}
 	return o.Multi, true
@@ -225,7 +225,7 @@ func (o *IdentityAttribute) GetMultiOk() (*bool, bool) {
 
 // HasMulti returns a boolean if a field has been set.
 func (o *IdentityAttribute) HasMulti() bool {
-	if o != nil && !isNil(o.Multi) {
+	if o != nil && !IsNil(o.Multi) {
 		return true
 	}
 
@@ -239,7 +239,7 @@ func (o *IdentityAttribute) SetMulti(v bool) {
 
 // GetSearchable returns the Searchable field value if set, zero value otherwise.
 func (o *IdentityAttribute) GetSearchable() bool {
-	if o == nil || isNil(o.Searchable) {
+	if o == nil || IsNil(o.Searchable) {
 		var ret bool
 		return ret
 	}
@@ -249,7 +249,7 @@ func (o *IdentityAttribute) GetSearchable() bool {
 // GetSearchableOk returns a tuple with the Searchable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityAttribute) GetSearchableOk() (*bool, bool) {
-	if o == nil || isNil(o.Searchable) {
+	if o == nil || IsNil(o.Searchable) {
 		return nil, false
 	}
 	return o.Searchable, true
@@ -257,7 +257,7 @@ func (o *IdentityAttribute) GetSearchableOk() (*bool, bool) {
 
 // HasSearchable returns a boolean if a field has been set.
 func (o *IdentityAttribute) HasSearchable() bool {
-	if o != nil && !isNil(o.Searchable) {
+	if o != nil && !IsNil(o.Searchable) {
 		return true
 	}
 
@@ -271,7 +271,7 @@ func (o *IdentityAttribute) SetSearchable(v bool) {
 
 // GetSystem returns the System field value if set, zero value otherwise.
 func (o *IdentityAttribute) GetSystem() bool {
-	if o == nil || isNil(o.System) {
+	if o == nil || IsNil(o.System) {
 		var ret bool
 		return ret
 	}
@@ -281,7 +281,7 @@ func (o *IdentityAttribute) GetSystem() bool {
 // GetSystemOk returns a tuple with the System field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityAttribute) GetSystemOk() (*bool, bool) {
-	if o == nil || isNil(o.System) {
+	if o == nil || IsNil(o.System) {
 		return nil, false
 	}
 	return o.System, true
@@ -289,7 +289,7 @@ func (o *IdentityAttribute) GetSystemOk() (*bool, bool) {
 
 // HasSystem returns a boolean if a field has been set.
 func (o *IdentityAttribute) HasSystem() bool {
-	if o != nil && !isNil(o.System) {
+	if o != nil && !IsNil(o.System) {
 		return true
 	}
 
@@ -303,7 +303,7 @@ func (o *IdentityAttribute) SetSystem(v bool) {
 
 // GetSources returns the Sources field value if set, zero value otherwise.
 func (o *IdentityAttribute) GetSources() []Source1 {
-	if o == nil || isNil(o.Sources) {
+	if o == nil || IsNil(o.Sources) {
 		var ret []Source1
 		return ret
 	}
@@ -313,7 +313,7 @@ func (o *IdentityAttribute) GetSources() []Source1 {
 // GetSourcesOk returns a tuple with the Sources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityAttribute) GetSourcesOk() ([]Source1, bool) {
-	if o == nil || isNil(o.Sources) {
+	if o == nil || IsNil(o.Sources) {
 		return nil, false
 	}
 	return o.Sources, true
@@ -321,7 +321,7 @@ func (o *IdentityAttribute) GetSourcesOk() ([]Source1, bool) {
 
 // HasSources returns a boolean if a field has been set.
 func (o *IdentityAttribute) HasSources() bool {
-	if o != nil && !isNil(o.Sources) {
+	if o != nil && !IsNil(o.Sources) {
 		return true
 	}
 
@@ -344,25 +344,25 @@ func (o IdentityAttribute) MarshalJSON() ([]byte, error) {
 func (o IdentityAttribute) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
-	if !isNil(o.DisplayName) {
+	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
-	if !isNil(o.Standard) {
+	if !IsNil(o.Standard) {
 		toSerialize["standard"] = o.Standard
 	}
 	if o.Type.IsSet() {
 		toSerialize["type"] = o.Type.Get()
 	}
-	if !isNil(o.Multi) {
+	if !IsNil(o.Multi) {
 		toSerialize["multi"] = o.Multi
 	}
-	if !isNil(o.Searchable) {
+	if !IsNil(o.Searchable) {
 		toSerialize["searchable"] = o.Searchable
 	}
-	if !isNil(o.System) {
+	if !IsNil(o.System) {
 		toSerialize["system"] = o.System
 	}
-	if !isNil(o.Sources) {
+	if !IsNil(o.Sources) {
 		toSerialize["sources"] = o.Sources
 	}
 
@@ -373,8 +373,8 @@ func (o IdentityAttribute) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *IdentityAttribute) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *IdentityAttribute) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -383,7 +383,7 @@ func (o *IdentityAttribute) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -397,13 +397,17 @@ func (o *IdentityAttribute) UnmarshalJSON(bytes []byte) (err error) {
 
 	varIdentityAttribute := _IdentityAttribute{}
 
-	if err = json.Unmarshal(bytes, &varIdentityAttribute); err == nil {
+	err = json.Unmarshal(data, &varIdentityAttribute)
+
+	if err != nil {
+		return err
+	}
+
 	*o = IdentityAttribute(varIdentityAttribute)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "displayName")
 		delete(additionalProperties, "standard")

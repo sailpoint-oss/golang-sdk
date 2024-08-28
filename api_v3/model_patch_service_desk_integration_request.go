@@ -45,7 +45,7 @@ func NewPatchServiceDeskIntegrationRequestWithDefaults() *PatchServiceDeskIntegr
 
 // GetOperations returns the Operations field value if set, zero value otherwise.
 func (o *PatchServiceDeskIntegrationRequest) GetOperations() []JsonPatchOperation {
-	if o == nil || isNil(o.Operations) {
+	if o == nil || IsNil(o.Operations) {
 		var ret []JsonPatchOperation
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *PatchServiceDeskIntegrationRequest) GetOperations() []JsonPatchOperatio
 // GetOperationsOk returns a tuple with the Operations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchServiceDeskIntegrationRequest) GetOperationsOk() ([]JsonPatchOperation, bool) {
-	if o == nil || isNil(o.Operations) {
+	if o == nil || IsNil(o.Operations) {
 		return nil, false
 	}
 	return o.Operations, true
@@ -63,7 +63,7 @@ func (o *PatchServiceDeskIntegrationRequest) GetOperationsOk() ([]JsonPatchOpera
 
 // HasOperations returns a boolean if a field has been set.
 func (o *PatchServiceDeskIntegrationRequest) HasOperations() bool {
-	if o != nil && !isNil(o.Operations) {
+	if o != nil && !IsNil(o.Operations) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o PatchServiceDeskIntegrationRequest) MarshalJSON() ([]byte, error) {
 
 func (o PatchServiceDeskIntegrationRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Operations) {
+	if !IsNil(o.Operations) {
 		toSerialize["operations"] = o.Operations
 	}
 
@@ -96,16 +96,20 @@ func (o PatchServiceDeskIntegrationRequest) ToMap() (map[string]interface{}, err
 	return toSerialize, nil
 }
 
-func (o *PatchServiceDeskIntegrationRequest) UnmarshalJSON(bytes []byte) (err error) {
+func (o *PatchServiceDeskIntegrationRequest) UnmarshalJSON(data []byte) (err error) {
 	varPatchServiceDeskIntegrationRequest := _PatchServiceDeskIntegrationRequest{}
 
-	if err = json.Unmarshal(bytes, &varPatchServiceDeskIntegrationRequest); err == nil {
+	err = json.Unmarshal(data, &varPatchServiceDeskIntegrationRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = PatchServiceDeskIntegrationRequest(varPatchServiceDeskIntegrationRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "operations")
 		o.AdditionalProperties = additionalProperties
 	}

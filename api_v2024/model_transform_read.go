@@ -122,7 +122,7 @@ func (o *TransformRead) GetAttributes() map[string]interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransformRead) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
@@ -206,8 +206,8 @@ func (o TransformRead) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *TransformRead) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *TransformRead) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -220,7 +220,7 @@ func (o *TransformRead) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -234,13 +234,17 @@ func (o *TransformRead) UnmarshalJSON(bytes []byte) (err error) {
 
 	varTransformRead := _TransformRead{}
 
-	if err = json.Unmarshal(bytes, &varTransformRead); err == nil {
+	err = json.Unmarshal(data, &varTransformRead)
+
+	if err != nil {
+		return err
+	}
+
 	*o = TransformRead(varTransformRead)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "attributes")

@@ -955,7 +955,7 @@ func (a *SPConfigAPIService) ImportSpConfigExecute(r ApiImportSpConfigRequest) (
 	}
 
 	if r.preview != nil {
-		parameterAddToQuery(localVarQueryParams, "preview", r.preview, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "preview", r.preview, "", "")
 	} else {
 		var defaultValue bool = false
 		r.preview = &defaultValue

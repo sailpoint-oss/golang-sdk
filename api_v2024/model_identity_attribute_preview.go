@@ -50,7 +50,7 @@ func NewIdentityAttributePreviewWithDefaults() *IdentityAttributePreview {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *IdentityAttributePreview) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -60,7 +60,7 @@ func (o *IdentityAttributePreview) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityAttributePreview) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -68,7 +68,7 @@ func (o *IdentityAttributePreview) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *IdentityAttributePreview) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -82,7 +82,7 @@ func (o *IdentityAttributePreview) SetName(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *IdentityAttributePreview) GetValue() map[string]interface{} {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -92,7 +92,7 @@ func (o *IdentityAttributePreview) GetValue() map[string]interface{} {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityAttributePreview) GetValueOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		return map[string]interface{}{}, false
 	}
 	return o.Value, true
@@ -100,7 +100,7 @@ func (o *IdentityAttributePreview) GetValueOk() (map[string]interface{}, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *IdentityAttributePreview) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -114,7 +114,7 @@ func (o *IdentityAttributePreview) SetValue(v map[string]interface{}) {
 
 // GetPreviousValue returns the PreviousValue field value if set, zero value otherwise.
 func (o *IdentityAttributePreview) GetPreviousValue() map[string]interface{} {
-	if o == nil || isNil(o.PreviousValue) {
+	if o == nil || IsNil(o.PreviousValue) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -124,7 +124,7 @@ func (o *IdentityAttributePreview) GetPreviousValue() map[string]interface{} {
 // GetPreviousValueOk returns a tuple with the PreviousValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityAttributePreview) GetPreviousValueOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.PreviousValue) {
+	if o == nil || IsNil(o.PreviousValue) {
 		return map[string]interface{}{}, false
 	}
 	return o.PreviousValue, true
@@ -132,7 +132,7 @@ func (o *IdentityAttributePreview) GetPreviousValueOk() (map[string]interface{},
 
 // HasPreviousValue returns a boolean if a field has been set.
 func (o *IdentityAttributePreview) HasPreviousValue() bool {
-	if o != nil && !isNil(o.PreviousValue) {
+	if o != nil && !IsNil(o.PreviousValue) {
 		return true
 	}
 
@@ -146,7 +146,7 @@ func (o *IdentityAttributePreview) SetPreviousValue(v map[string]interface{}) {
 
 // GetErrorMessages returns the ErrorMessages field value if set, zero value otherwise.
 func (o *IdentityAttributePreview) GetErrorMessages() []ErrorMessageDto {
-	if o == nil || isNil(o.ErrorMessages) {
+	if o == nil || IsNil(o.ErrorMessages) {
 		var ret []ErrorMessageDto
 		return ret
 	}
@@ -156,7 +156,7 @@ func (o *IdentityAttributePreview) GetErrorMessages() []ErrorMessageDto {
 // GetErrorMessagesOk returns a tuple with the ErrorMessages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityAttributePreview) GetErrorMessagesOk() ([]ErrorMessageDto, bool) {
-	if o == nil || isNil(o.ErrorMessages) {
+	if o == nil || IsNil(o.ErrorMessages) {
 		return nil, false
 	}
 	return o.ErrorMessages, true
@@ -164,7 +164,7 @@ func (o *IdentityAttributePreview) GetErrorMessagesOk() ([]ErrorMessageDto, bool
 
 // HasErrorMessages returns a boolean if a field has been set.
 func (o *IdentityAttributePreview) HasErrorMessages() bool {
-	if o != nil && !isNil(o.ErrorMessages) {
+	if o != nil && !IsNil(o.ErrorMessages) {
 		return true
 	}
 
@@ -186,16 +186,16 @@ func (o IdentityAttributePreview) MarshalJSON() ([]byte, error) {
 
 func (o IdentityAttributePreview) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Value) {
+	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
-	if !isNil(o.PreviousValue) {
+	if !IsNil(o.PreviousValue) {
 		toSerialize["previousValue"] = o.PreviousValue
 	}
-	if !isNil(o.ErrorMessages) {
+	if !IsNil(o.ErrorMessages) {
 		toSerialize["errorMessages"] = o.ErrorMessages
 	}
 
@@ -206,16 +206,20 @@ func (o IdentityAttributePreview) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *IdentityAttributePreview) UnmarshalJSON(bytes []byte) (err error) {
+func (o *IdentityAttributePreview) UnmarshalJSON(data []byte) (err error) {
 	varIdentityAttributePreview := _IdentityAttributePreview{}
 
-	if err = json.Unmarshal(bytes, &varIdentityAttributePreview); err == nil {
+	err = json.Unmarshal(data, &varIdentityAttributePreview)
+
+	if err != nil {
+		return err
+	}
+
 	*o = IdentityAttributePreview(varIdentityAttributePreview)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "value")
 		delete(additionalProperties, "previousValue")

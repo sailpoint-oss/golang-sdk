@@ -80,7 +80,7 @@ func (o *Schedule) SetType(v string) {
 
 // GetMonths returns the Months field value if set, zero value otherwise.
 func (o *Schedule) GetMonths() ScheduleMonths {
-	if o == nil || isNil(o.Months) {
+	if o == nil || IsNil(o.Months) {
 		var ret ScheduleMonths
 		return ret
 	}
@@ -90,7 +90,7 @@ func (o *Schedule) GetMonths() ScheduleMonths {
 // GetMonthsOk returns a tuple with the Months field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Schedule) GetMonthsOk() (*ScheduleMonths, bool) {
-	if o == nil || isNil(o.Months) {
+	if o == nil || IsNil(o.Months) {
 		return nil, false
 	}
 	return o.Months, true
@@ -98,7 +98,7 @@ func (o *Schedule) GetMonthsOk() (*ScheduleMonths, bool) {
 
 // HasMonths returns a boolean if a field has been set.
 func (o *Schedule) HasMonths() bool {
-	if o != nil && !isNil(o.Months) {
+	if o != nil && !IsNil(o.Months) {
 		return true
 	}
 
@@ -112,7 +112,7 @@ func (o *Schedule) SetMonths(v ScheduleMonths) {
 
 // GetDays returns the Days field value if set, zero value otherwise.
 func (o *Schedule) GetDays() ScheduleDays {
-	if o == nil || isNil(o.Days) {
+	if o == nil || IsNil(o.Days) {
 		var ret ScheduleDays
 		return ret
 	}
@@ -122,7 +122,7 @@ func (o *Schedule) GetDays() ScheduleDays {
 // GetDaysOk returns a tuple with the Days field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Schedule) GetDaysOk() (*ScheduleDays, bool) {
-	if o == nil || isNil(o.Days) {
+	if o == nil || IsNil(o.Days) {
 		return nil, false
 	}
 	return o.Days, true
@@ -130,7 +130,7 @@ func (o *Schedule) GetDaysOk() (*ScheduleDays, bool) {
 
 // HasDays returns a boolean if a field has been set.
 func (o *Schedule) HasDays() bool {
-	if o != nil && !isNil(o.Days) {
+	if o != nil && !IsNil(o.Days) {
 		return true
 	}
 
@@ -168,7 +168,7 @@ func (o *Schedule) SetHours(v ScheduleHours) {
 
 // GetExpiration returns the Expiration field value if set, zero value otherwise.
 func (o *Schedule) GetExpiration() time.Time {
-	if o == nil || isNil(o.Expiration) {
+	if o == nil || IsNil(o.Expiration) {
 		var ret time.Time
 		return ret
 	}
@@ -178,7 +178,7 @@ func (o *Schedule) GetExpiration() time.Time {
 // GetExpirationOk returns a tuple with the Expiration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Schedule) GetExpirationOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Expiration) {
+	if o == nil || IsNil(o.Expiration) {
 		return nil, false
 	}
 	return o.Expiration, true
@@ -186,7 +186,7 @@ func (o *Schedule) GetExpirationOk() (*time.Time, bool) {
 
 // HasExpiration returns a boolean if a field has been set.
 func (o *Schedule) HasExpiration() bool {
-	if o != nil && !isNil(o.Expiration) {
+	if o != nil && !IsNil(o.Expiration) {
 		return true
 	}
 
@@ -200,7 +200,7 @@ func (o *Schedule) SetExpiration(v time.Time) {
 
 // GetTimeZoneId returns the TimeZoneId field value if set, zero value otherwise.
 func (o *Schedule) GetTimeZoneId() string {
-	if o == nil || isNil(o.TimeZoneId) {
+	if o == nil || IsNil(o.TimeZoneId) {
 		var ret string
 		return ret
 	}
@@ -210,7 +210,7 @@ func (o *Schedule) GetTimeZoneId() string {
 // GetTimeZoneIdOk returns a tuple with the TimeZoneId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Schedule) GetTimeZoneIdOk() (*string, bool) {
-	if o == nil || isNil(o.TimeZoneId) {
+	if o == nil || IsNil(o.TimeZoneId) {
 		return nil, false
 	}
 	return o.TimeZoneId, true
@@ -218,7 +218,7 @@ func (o *Schedule) GetTimeZoneIdOk() (*string, bool) {
 
 // HasTimeZoneId returns a boolean if a field has been set.
 func (o *Schedule) HasTimeZoneId() bool {
-	if o != nil && !isNil(o.TimeZoneId) {
+	if o != nil && !IsNil(o.TimeZoneId) {
 		return true
 	}
 
@@ -241,17 +241,17 @@ func (o Schedule) MarshalJSON() ([]byte, error) {
 func (o Schedule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
-	if !isNil(o.Months) {
+	if !IsNil(o.Months) {
 		toSerialize["months"] = o.Months
 	}
-	if !isNil(o.Days) {
+	if !IsNil(o.Days) {
 		toSerialize["days"] = o.Days
 	}
 	toSerialize["hours"] = o.Hours
-	if !isNil(o.Expiration) {
+	if !IsNil(o.Expiration) {
 		toSerialize["expiration"] = o.Expiration
 	}
-	if !isNil(o.TimeZoneId) {
+	if !IsNil(o.TimeZoneId) {
 		toSerialize["timeZoneId"] = o.TimeZoneId
 	}
 
@@ -262,8 +262,8 @@ func (o Schedule) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Schedule) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *Schedule) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -273,7 +273,7 @@ func (o *Schedule) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -287,13 +287,17 @@ func (o *Schedule) UnmarshalJSON(bytes []byte) (err error) {
 
 	varSchedule := _Schedule{}
 
-	if err = json.Unmarshal(bytes, &varSchedule); err == nil {
+	err = json.Unmarshal(data, &varSchedule)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Schedule(varSchedule)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "months")
 		delete(additionalProperties, "days")

@@ -51,7 +51,7 @@ func NewUpdateDetailWithDefaults() *UpdateDetail {
 
 // GetMessage returns the Message field value if set, zero value otherwise.
 func (o *UpdateDetail) GetMessage() string {
-	if o == nil || isNil(o.Message) {
+	if o == nil || IsNil(o.Message) {
 		var ret string
 		return ret
 	}
@@ -61,7 +61,7 @@ func (o *UpdateDetail) GetMessage() string {
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateDetail) GetMessageOk() (*string, bool) {
-	if o == nil || isNil(o.Message) {
+	if o == nil || IsNil(o.Message) {
 		return nil, false
 	}
 	return o.Message, true
@@ -69,7 +69,7 @@ func (o *UpdateDetail) GetMessageOk() (*string, bool) {
 
 // HasMessage returns a boolean if a field has been set.
 func (o *UpdateDetail) HasMessage() bool {
-	if o != nil && !isNil(o.Message) {
+	if o != nil && !IsNil(o.Message) {
 		return true
 	}
 
@@ -83,7 +83,7 @@ func (o *UpdateDetail) SetMessage(v string) {
 
 // GetScriptName returns the ScriptName field value if set, zero value otherwise.
 func (o *UpdateDetail) GetScriptName() string {
-	if o == nil || isNil(o.ScriptName) {
+	if o == nil || IsNil(o.ScriptName) {
 		var ret string
 		return ret
 	}
@@ -93,7 +93,7 @@ func (o *UpdateDetail) GetScriptName() string {
 // GetScriptNameOk returns a tuple with the ScriptName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateDetail) GetScriptNameOk() (*string, bool) {
-	if o == nil || isNil(o.ScriptName) {
+	if o == nil || IsNil(o.ScriptName) {
 		return nil, false
 	}
 	return o.ScriptName, true
@@ -101,7 +101,7 @@ func (o *UpdateDetail) GetScriptNameOk() (*string, bool) {
 
 // HasScriptName returns a boolean if a field has been set.
 func (o *UpdateDetail) HasScriptName() bool {
-	if o != nil && !isNil(o.ScriptName) {
+	if o != nil && !IsNil(o.ScriptName) {
 		return true
 	}
 
@@ -126,7 +126,7 @@ func (o *UpdateDetail) GetUpdatedFiles() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateDetail) GetUpdatedFilesOk() ([]string, bool) {
-	if o == nil || isNil(o.UpdatedFiles) {
+	if o == nil || IsNil(o.UpdatedFiles) {
 		return nil, false
 	}
 	return o.UpdatedFiles, true
@@ -134,7 +134,7 @@ func (o *UpdateDetail) GetUpdatedFilesOk() ([]string, bool) {
 
 // HasUpdatedFiles returns a boolean if a field has been set.
 func (o *UpdateDetail) HasUpdatedFiles() bool {
-	if o != nil && isNil(o.UpdatedFiles) {
+	if o != nil && !IsNil(o.UpdatedFiles) {
 		return true
 	}
 
@@ -148,7 +148,7 @@ func (o *UpdateDetail) SetUpdatedFiles(v []string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *UpdateDetail) GetStatus() string {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -158,7 +158,7 @@ func (o *UpdateDetail) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateDetail) GetStatusOk() (*string, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -166,7 +166,7 @@ func (o *UpdateDetail) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *UpdateDetail) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -188,16 +188,16 @@ func (o UpdateDetail) MarshalJSON() ([]byte, error) {
 
 func (o UpdateDetail) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Message) {
+	if !IsNil(o.Message) {
 		toSerialize["message"] = o.Message
 	}
-	if !isNil(o.ScriptName) {
+	if !IsNil(o.ScriptName) {
 		toSerialize["scriptName"] = o.ScriptName
 	}
 	if o.UpdatedFiles != nil {
 		toSerialize["updatedFiles"] = o.UpdatedFiles
 	}
-	if !isNil(o.Status) {
+	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
 
@@ -208,16 +208,20 @@ func (o UpdateDetail) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *UpdateDetail) UnmarshalJSON(bytes []byte) (err error) {
+func (o *UpdateDetail) UnmarshalJSON(data []byte) (err error) {
 	varUpdateDetail := _UpdateDetail{}
 
-	if err = json.Unmarshal(bytes, &varUpdateDetail); err == nil {
+	err = json.Unmarshal(data, &varUpdateDetail)
+
+	if err != nil {
+		return err
+	}
+
 	*o = UpdateDetail(varUpdateDetail)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "message")
 		delete(additionalProperties, "scriptName")
 		delete(additionalProperties, "updatedFiles")

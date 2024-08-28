@@ -44,7 +44,7 @@ func NewFormElementPreviewRequestWithDefaults() *FormElementPreviewRequest {
 
 // GetDataSource returns the DataSource field value if set, zero value otherwise.
 func (o *FormElementPreviewRequest) GetDataSource() FormElementDynamicDataSource {
-	if o == nil || isNil(o.DataSource) {
+	if o == nil || IsNil(o.DataSource) {
 		var ret FormElementDynamicDataSource
 		return ret
 	}
@@ -54,7 +54,7 @@ func (o *FormElementPreviewRequest) GetDataSource() FormElementDynamicDataSource
 // GetDataSourceOk returns a tuple with the DataSource field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormElementPreviewRequest) GetDataSourceOk() (*FormElementDynamicDataSource, bool) {
-	if o == nil || isNil(o.DataSource) {
+	if o == nil || IsNil(o.DataSource) {
 		return nil, false
 	}
 	return o.DataSource, true
@@ -62,7 +62,7 @@ func (o *FormElementPreviewRequest) GetDataSourceOk() (*FormElementDynamicDataSo
 
 // HasDataSource returns a boolean if a field has been set.
 func (o *FormElementPreviewRequest) HasDataSource() bool {
-	if o != nil && !isNil(o.DataSource) {
+	if o != nil && !IsNil(o.DataSource) {
 		return true
 	}
 
@@ -84,7 +84,7 @@ func (o FormElementPreviewRequest) MarshalJSON() ([]byte, error) {
 
 func (o FormElementPreviewRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.DataSource) {
+	if !IsNil(o.DataSource) {
 		toSerialize["dataSource"] = o.DataSource
 	}
 
@@ -95,16 +95,20 @@ func (o FormElementPreviewRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *FormElementPreviewRequest) UnmarshalJSON(bytes []byte) (err error) {
+func (o *FormElementPreviewRequest) UnmarshalJSON(data []byte) (err error) {
 	varFormElementPreviewRequest := _FormElementPreviewRequest{}
 
-	if err = json.Unmarshal(bytes, &varFormElementPreviewRequest); err == nil {
+	err = json.Unmarshal(data, &varFormElementPreviewRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = FormElementPreviewRequest(varFormElementPreviewRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "dataSource")
 		o.AdditionalProperties = additionalProperties
 	}

@@ -50,7 +50,7 @@ func NewExpressionWithDefaults() *Expression {
 
 // GetOperator returns the Operator field value if set, zero value otherwise.
 func (o *Expression) GetOperator() string {
-	if o == nil || isNil(o.Operator) {
+	if o == nil || IsNil(o.Operator) {
 		var ret string
 		return ret
 	}
@@ -60,7 +60,7 @@ func (o *Expression) GetOperator() string {
 // GetOperatorOk returns a tuple with the Operator field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Expression) GetOperatorOk() (*string, bool) {
-	if o == nil || isNil(o.Operator) {
+	if o == nil || IsNil(o.Operator) {
 		return nil, false
 	}
 	return o.Operator, true
@@ -68,7 +68,7 @@ func (o *Expression) GetOperatorOk() (*string, bool) {
 
 // HasOperator returns a boolean if a field has been set.
 func (o *Expression) HasOperator() bool {
-	if o != nil && !isNil(o.Operator) {
+	if o != nil && !IsNil(o.Operator) {
 		return true
 	}
 
@@ -82,7 +82,7 @@ func (o *Expression) SetOperator(v string) {
 
 // GetAttribute returns the Attribute field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Expression) GetAttribute() string {
-	if o == nil || isNil(o.Attribute.Get()) {
+	if o == nil || IsNil(o.Attribute.Get()) {
 		var ret string
 		return ret
 	}
@@ -124,7 +124,7 @@ func (o *Expression) UnsetAttribute() {
 
 // GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Expression) GetValue() Value {
-	if o == nil || isNil(o.Value.Get()) {
+	if o == nil || IsNil(o.Value.Get()) {
 		var ret Value
 		return ret
 	}
@@ -177,7 +177,7 @@ func (o *Expression) GetChildren() []ExpressionChildrenInner {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Expression) GetChildrenOk() ([]ExpressionChildrenInner, bool) {
-	if o == nil || isNil(o.Children) {
+	if o == nil || IsNil(o.Children) {
 		return nil, false
 	}
 	return o.Children, true
@@ -185,7 +185,7 @@ func (o *Expression) GetChildrenOk() ([]ExpressionChildrenInner, bool) {
 
 // HasChildren returns a boolean if a field has been set.
 func (o *Expression) HasChildren() bool {
-	if o != nil && isNil(o.Children) {
+	if o != nil && !IsNil(o.Children) {
 		return true
 	}
 
@@ -207,7 +207,7 @@ func (o Expression) MarshalJSON() ([]byte, error) {
 
 func (o Expression) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Operator) {
+	if !IsNil(o.Operator) {
 		toSerialize["operator"] = o.Operator
 	}
 	if o.Attribute.IsSet() {
@@ -227,16 +227,20 @@ func (o Expression) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Expression) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Expression) UnmarshalJSON(data []byte) (err error) {
 	varExpression := _Expression{}
 
-	if err = json.Unmarshal(bytes, &varExpression); err == nil {
+	err = json.Unmarshal(data, &varExpression)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Expression(varExpression)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "operator")
 		delete(additionalProperties, "attribute")
 		delete(additionalProperties, "value")

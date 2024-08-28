@@ -19,7 +19,7 @@ import (
 
 func Test_api_v2024_TaggedObjectsAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test TaggedObjectsAPIService DeleteTaggedObject", func(t *testing.T) {
@@ -29,7 +29,7 @@ func Test_api_v2024_TaggedObjectsAPIService(t *testing.T) {
 		var type_ string
 		var id string
 
-		httpRes, err := apiClient.API_V2024.TaggedObjectsAPI.DeleteTaggedObject(context.Background(), type_, id).Execute()
+		httpRes, err := apiClient.TaggedObjectsAPI.DeleteTaggedObject(context.Background(), type_, id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -40,7 +40,7 @@ func Test_api_v2024_TaggedObjectsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.API_V2024.TaggedObjectsAPI.DeleteTagsToManyObject(context.Background()).Execute()
+		httpRes, err := apiClient.TaggedObjectsAPI.DeleteTagsToManyObject(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -54,7 +54,7 @@ func Test_api_v2024_TaggedObjectsAPIService(t *testing.T) {
 		var type_ string
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.TaggedObjectsAPI.GetTaggedObject(context.Background(), type_, id).Execute()
+		resp, httpRes, err := apiClient.TaggedObjectsAPI.GetTaggedObject(context.Background(), type_, id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -66,7 +66,7 @@ func Test_api_v2024_TaggedObjectsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.TaggedObjectsAPI.ListTaggedObjects(context.Background()).Execute()
+		resp, httpRes, err := apiClient.TaggedObjectsAPI.ListTaggedObjects(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -80,7 +80,7 @@ func Test_api_v2024_TaggedObjectsAPIService(t *testing.T) {
 
 		var type_ string
 
-		resp, httpRes, err := apiClient.API_V2024.TaggedObjectsAPI.ListTaggedObjectsByType(context.Background(), type_).Execute()
+		resp, httpRes, err := apiClient.TaggedObjectsAPI.ListTaggedObjectsByType(context.Background(), type_).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -95,7 +95,7 @@ func Test_api_v2024_TaggedObjectsAPIService(t *testing.T) {
 		var type_ string
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.TaggedObjectsAPI.PutTaggedObject(context.Background(), type_, id).Execute()
+		resp, httpRes, err := apiClient.TaggedObjectsAPI.PutTaggedObject(context.Background(), type_, id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -107,7 +107,7 @@ func Test_api_v2024_TaggedObjectsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.API_V2024.TaggedObjectsAPI.SetTagToObject(context.Background()).Execute()
+		httpRes, err := apiClient.TaggedObjectsAPI.SetTagToObject(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -118,7 +118,7 @@ func Test_api_v2024_TaggedObjectsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.TaggedObjectsAPI.SetTagsToManyObjects(context.Background()).Execute()
+		resp, httpRes, err := apiClient.TaggedObjectsAPI.SetTagsToManyObjects(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

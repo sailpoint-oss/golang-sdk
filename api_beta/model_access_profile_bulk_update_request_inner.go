@@ -47,7 +47,7 @@ func NewAccessProfileBulkUpdateRequestInnerWithDefaults() *AccessProfileBulkUpda
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *AccessProfileBulkUpdateRequestInner) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *AccessProfileBulkUpdateRequestInner) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessProfileBulkUpdateRequestInner) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -65,7 +65,7 @@ func (o *AccessProfileBulkUpdateRequestInner) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *AccessProfileBulkUpdateRequestInner) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *AccessProfileBulkUpdateRequestInner) SetId(v string) {
 
 // GetRequestable returns the Requestable field value if set, zero value otherwise.
 func (o *AccessProfileBulkUpdateRequestInner) GetRequestable() bool {
-	if o == nil || isNil(o.Requestable) {
+	if o == nil || IsNil(o.Requestable) {
 		var ret bool
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *AccessProfileBulkUpdateRequestInner) GetRequestable() bool {
 // GetRequestableOk returns a tuple with the Requestable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessProfileBulkUpdateRequestInner) GetRequestableOk() (*bool, bool) {
-	if o == nil || isNil(o.Requestable) {
+	if o == nil || IsNil(o.Requestable) {
 		return nil, false
 	}
 	return o.Requestable, true
@@ -97,7 +97,7 @@ func (o *AccessProfileBulkUpdateRequestInner) GetRequestableOk() (*bool, bool) {
 
 // HasRequestable returns a boolean if a field has been set.
 func (o *AccessProfileBulkUpdateRequestInner) HasRequestable() bool {
-	if o != nil && !isNil(o.Requestable) {
+	if o != nil && !IsNil(o.Requestable) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o AccessProfileBulkUpdateRequestInner) MarshalJSON() ([]byte, error) {
 
 func (o AccessProfileBulkUpdateRequestInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Requestable) {
+	if !IsNil(o.Requestable) {
 		toSerialize["requestable"] = o.Requestable
 	}
 
@@ -133,16 +133,20 @@ func (o AccessProfileBulkUpdateRequestInner) ToMap() (map[string]interface{}, er
 	return toSerialize, nil
 }
 
-func (o *AccessProfileBulkUpdateRequestInner) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccessProfileBulkUpdateRequestInner) UnmarshalJSON(data []byte) (err error) {
 	varAccessProfileBulkUpdateRequestInner := _AccessProfileBulkUpdateRequestInner{}
 
-	if err = json.Unmarshal(bytes, &varAccessProfileBulkUpdateRequestInner); err == nil {
+	err = json.Unmarshal(data, &varAccessProfileBulkUpdateRequestInner)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessProfileBulkUpdateRequestInner(varAccessProfileBulkUpdateRequestInner)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "requestable")
 		o.AdditionalProperties = additionalProperties

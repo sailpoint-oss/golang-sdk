@@ -64,7 +64,7 @@ func NewFullDiscoveredApplicationsWithDefaults() *FullDiscoveredApplications {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *FullDiscoveredApplications) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -74,7 +74,7 @@ func (o *FullDiscoveredApplications) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FullDiscoveredApplications) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -82,7 +82,7 @@ func (o *FullDiscoveredApplications) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *FullDiscoveredApplications) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -96,7 +96,7 @@ func (o *FullDiscoveredApplications) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *FullDiscoveredApplications) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -106,7 +106,7 @@ func (o *FullDiscoveredApplications) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FullDiscoveredApplications) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -114,7 +114,7 @@ func (o *FullDiscoveredApplications) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *FullDiscoveredApplications) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -128,7 +128,7 @@ func (o *FullDiscoveredApplications) SetName(v string) {
 
 // GetDiscoverySource returns the DiscoverySource field value if set, zero value otherwise.
 func (o *FullDiscoveredApplications) GetDiscoverySource() string {
-	if o == nil || isNil(o.DiscoverySource) {
+	if o == nil || IsNil(o.DiscoverySource) {
 		var ret string
 		return ret
 	}
@@ -138,7 +138,7 @@ func (o *FullDiscoveredApplications) GetDiscoverySource() string {
 // GetDiscoverySourceOk returns a tuple with the DiscoverySource field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FullDiscoveredApplications) GetDiscoverySourceOk() (*string, bool) {
-	if o == nil || isNil(o.DiscoverySource) {
+	if o == nil || IsNil(o.DiscoverySource) {
 		return nil, false
 	}
 	return o.DiscoverySource, true
@@ -146,7 +146,7 @@ func (o *FullDiscoveredApplications) GetDiscoverySourceOk() (*string, bool) {
 
 // HasDiscoverySource returns a boolean if a field has been set.
 func (o *FullDiscoveredApplications) HasDiscoverySource() bool {
-	if o != nil && !isNil(o.DiscoverySource) {
+	if o != nil && !IsNil(o.DiscoverySource) {
 		return true
 	}
 
@@ -160,7 +160,7 @@ func (o *FullDiscoveredApplications) SetDiscoverySource(v string) {
 
 // GetDiscoveredVendor returns the DiscoveredVendor field value if set, zero value otherwise.
 func (o *FullDiscoveredApplications) GetDiscoveredVendor() string {
-	if o == nil || isNil(o.DiscoveredVendor) {
+	if o == nil || IsNil(o.DiscoveredVendor) {
 		var ret string
 		return ret
 	}
@@ -170,7 +170,7 @@ func (o *FullDiscoveredApplications) GetDiscoveredVendor() string {
 // GetDiscoveredVendorOk returns a tuple with the DiscoveredVendor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FullDiscoveredApplications) GetDiscoveredVendorOk() (*string, bool) {
-	if o == nil || isNil(o.DiscoveredVendor) {
+	if o == nil || IsNil(o.DiscoveredVendor) {
 		return nil, false
 	}
 	return o.DiscoveredVendor, true
@@ -178,7 +178,7 @@ func (o *FullDiscoveredApplications) GetDiscoveredVendorOk() (*string, bool) {
 
 // HasDiscoveredVendor returns a boolean if a field has been set.
 func (o *FullDiscoveredApplications) HasDiscoveredVendor() bool {
-	if o != nil && !isNil(o.DiscoveredVendor) {
+	if o != nil && !IsNil(o.DiscoveredVendor) {
 		return true
 	}
 
@@ -192,7 +192,7 @@ func (o *FullDiscoveredApplications) SetDiscoveredVendor(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *FullDiscoveredApplications) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -202,7 +202,7 @@ func (o *FullDiscoveredApplications) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FullDiscoveredApplications) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -210,7 +210,7 @@ func (o *FullDiscoveredApplications) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *FullDiscoveredApplications) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -224,7 +224,7 @@ func (o *FullDiscoveredApplications) SetDescription(v string) {
 
 // GetRecommendedConnectors returns the RecommendedConnectors field value if set, zero value otherwise.
 func (o *FullDiscoveredApplications) GetRecommendedConnectors() []string {
-	if o == nil || isNil(o.RecommendedConnectors) {
+	if o == nil || IsNil(o.RecommendedConnectors) {
 		var ret []string
 		return ret
 	}
@@ -234,7 +234,7 @@ func (o *FullDiscoveredApplications) GetRecommendedConnectors() []string {
 // GetRecommendedConnectorsOk returns a tuple with the RecommendedConnectors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FullDiscoveredApplications) GetRecommendedConnectorsOk() ([]string, bool) {
-	if o == nil || isNil(o.RecommendedConnectors) {
+	if o == nil || IsNil(o.RecommendedConnectors) {
 		return nil, false
 	}
 	return o.RecommendedConnectors, true
@@ -242,7 +242,7 @@ func (o *FullDiscoveredApplications) GetRecommendedConnectorsOk() ([]string, boo
 
 // HasRecommendedConnectors returns a boolean if a field has been set.
 func (o *FullDiscoveredApplications) HasRecommendedConnectors() bool {
-	if o != nil && !isNil(o.RecommendedConnectors) {
+	if o != nil && !IsNil(o.RecommendedConnectors) {
 		return true
 	}
 
@@ -256,7 +256,7 @@ func (o *FullDiscoveredApplications) SetRecommendedConnectors(v []string) {
 
 // GetDiscoveredAt returns the DiscoveredAt field value if set, zero value otherwise.
 func (o *FullDiscoveredApplications) GetDiscoveredAt() time.Time {
-	if o == nil || isNil(o.DiscoveredAt) {
+	if o == nil || IsNil(o.DiscoveredAt) {
 		var ret time.Time
 		return ret
 	}
@@ -266,7 +266,7 @@ func (o *FullDiscoveredApplications) GetDiscoveredAt() time.Time {
 // GetDiscoveredAtOk returns a tuple with the DiscoveredAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FullDiscoveredApplications) GetDiscoveredAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.DiscoveredAt) {
+	if o == nil || IsNil(o.DiscoveredAt) {
 		return nil, false
 	}
 	return o.DiscoveredAt, true
@@ -274,7 +274,7 @@ func (o *FullDiscoveredApplications) GetDiscoveredAtOk() (*time.Time, bool) {
 
 // HasDiscoveredAt returns a boolean if a field has been set.
 func (o *FullDiscoveredApplications) HasDiscoveredAt() bool {
-	if o != nil && !isNil(o.DiscoveredAt) {
+	if o != nil && !IsNil(o.DiscoveredAt) {
 		return true
 	}
 
@@ -288,7 +288,7 @@ func (o *FullDiscoveredApplications) SetDiscoveredAt(v time.Time) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *FullDiscoveredApplications) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -298,7 +298,7 @@ func (o *FullDiscoveredApplications) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FullDiscoveredApplications) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -306,7 +306,7 @@ func (o *FullDiscoveredApplications) GetCreatedAtOk() (*time.Time, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *FullDiscoveredApplications) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -320,7 +320,7 @@ func (o *FullDiscoveredApplications) SetCreatedAt(v time.Time) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *FullDiscoveredApplications) GetStatus() string {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -330,7 +330,7 @@ func (o *FullDiscoveredApplications) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FullDiscoveredApplications) GetStatusOk() (*string, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -338,7 +338,7 @@ func (o *FullDiscoveredApplications) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *FullDiscoveredApplications) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -352,7 +352,7 @@ func (o *FullDiscoveredApplications) SetStatus(v string) {
 
 // GetAssociatedSources returns the AssociatedSources field value if set, zero value otherwise.
 func (o *FullDiscoveredApplications) GetAssociatedSources() []string {
-	if o == nil || isNil(o.AssociatedSources) {
+	if o == nil || IsNil(o.AssociatedSources) {
 		var ret []string
 		return ret
 	}
@@ -362,7 +362,7 @@ func (o *FullDiscoveredApplications) GetAssociatedSources() []string {
 // GetAssociatedSourcesOk returns a tuple with the AssociatedSources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FullDiscoveredApplications) GetAssociatedSourcesOk() ([]string, bool) {
-	if o == nil || isNil(o.AssociatedSources) {
+	if o == nil || IsNil(o.AssociatedSources) {
 		return nil, false
 	}
 	return o.AssociatedSources, true
@@ -370,7 +370,7 @@ func (o *FullDiscoveredApplications) GetAssociatedSourcesOk() ([]string, bool) {
 
 // HasAssociatedSources returns a boolean if a field has been set.
 func (o *FullDiscoveredApplications) HasAssociatedSources() bool {
-	if o != nil && !isNil(o.AssociatedSources) {
+	if o != nil && !IsNil(o.AssociatedSources) {
 		return true
 	}
 
@@ -392,34 +392,34 @@ func (o FullDiscoveredApplications) MarshalJSON() ([]byte, error) {
 
 func (o FullDiscoveredApplications) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.DiscoverySource) {
+	if !IsNil(o.DiscoverySource) {
 		toSerialize["discoverySource"] = o.DiscoverySource
 	}
-	if !isNil(o.DiscoveredVendor) {
+	if !IsNil(o.DiscoveredVendor) {
 		toSerialize["discoveredVendor"] = o.DiscoveredVendor
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.RecommendedConnectors) {
+	if !IsNil(o.RecommendedConnectors) {
 		toSerialize["recommendedConnectors"] = o.RecommendedConnectors
 	}
-	if !isNil(o.DiscoveredAt) {
+	if !IsNil(o.DiscoveredAt) {
 		toSerialize["discoveredAt"] = o.DiscoveredAt
 	}
-	if !isNil(o.CreatedAt) {
+	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !isNil(o.Status) {
+	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if !isNil(o.AssociatedSources) {
+	if !IsNil(o.AssociatedSources) {
 		toSerialize["associatedSources"] = o.AssociatedSources
 	}
 
@@ -430,16 +430,20 @@ func (o FullDiscoveredApplications) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *FullDiscoveredApplications) UnmarshalJSON(bytes []byte) (err error) {
+func (o *FullDiscoveredApplications) UnmarshalJSON(data []byte) (err error) {
 	varFullDiscoveredApplications := _FullDiscoveredApplications{}
 
-	if err = json.Unmarshal(bytes, &varFullDiscoveredApplications); err == nil {
+	err = json.Unmarshal(data, &varFullDiscoveredApplications)
+
+	if err != nil {
+		return err
+	}
+
 	*o = FullDiscoveredApplications(varFullDiscoveredApplications)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "discoverySource")

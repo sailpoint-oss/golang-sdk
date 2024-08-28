@@ -50,7 +50,7 @@ func NewConfigTypeWithDefaults() *ConfigType {
 
 // GetPriority returns the Priority field value if set, zero value otherwise.
 func (o *ConfigType) GetPriority() int32 {
-	if o == nil || isNil(o.Priority) {
+	if o == nil || IsNil(o.Priority) {
 		var ret int32
 		return ret
 	}
@@ -60,7 +60,7 @@ func (o *ConfigType) GetPriority() int32 {
 // GetPriorityOk returns a tuple with the Priority field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConfigType) GetPriorityOk() (*int32, bool) {
-	if o == nil || isNil(o.Priority) {
+	if o == nil || IsNil(o.Priority) {
 		return nil, false
 	}
 	return o.Priority, true
@@ -68,7 +68,7 @@ func (o *ConfigType) GetPriorityOk() (*int32, bool) {
 
 // HasPriority returns a boolean if a field has been set.
 func (o *ConfigType) HasPriority() bool {
-	if o != nil && !isNil(o.Priority) {
+	if o != nil && !IsNil(o.Priority) {
 		return true
 	}
 
@@ -82,7 +82,7 @@ func (o *ConfigType) SetPriority(v int32) {
 
 // GetInternalName returns the InternalName field value if set, zero value otherwise.
 func (o *ConfigType) GetInternalName() ConfigTypeEnumCamel {
-	if o == nil || isNil(o.InternalName) {
+	if o == nil || IsNil(o.InternalName) {
 		var ret ConfigTypeEnumCamel
 		return ret
 	}
@@ -92,7 +92,7 @@ func (o *ConfigType) GetInternalName() ConfigTypeEnumCamel {
 // GetInternalNameOk returns a tuple with the InternalName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConfigType) GetInternalNameOk() (*ConfigTypeEnumCamel, bool) {
-	if o == nil || isNil(o.InternalName) {
+	if o == nil || IsNil(o.InternalName) {
 		return nil, false
 	}
 	return o.InternalName, true
@@ -100,7 +100,7 @@ func (o *ConfigType) GetInternalNameOk() (*ConfigTypeEnumCamel, bool) {
 
 // HasInternalName returns a boolean if a field has been set.
 func (o *ConfigType) HasInternalName() bool {
-	if o != nil && !isNil(o.InternalName) {
+	if o != nil && !IsNil(o.InternalName) {
 		return true
 	}
 
@@ -114,7 +114,7 @@ func (o *ConfigType) SetInternalName(v ConfigTypeEnumCamel) {
 
 // GetInternalNameCamel returns the InternalNameCamel field value if set, zero value otherwise.
 func (o *ConfigType) GetInternalNameCamel() ConfigTypeEnum {
-	if o == nil || isNil(o.InternalNameCamel) {
+	if o == nil || IsNil(o.InternalNameCamel) {
 		var ret ConfigTypeEnum
 		return ret
 	}
@@ -124,7 +124,7 @@ func (o *ConfigType) GetInternalNameCamel() ConfigTypeEnum {
 // GetInternalNameCamelOk returns a tuple with the InternalNameCamel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConfigType) GetInternalNameCamelOk() (*ConfigTypeEnum, bool) {
-	if o == nil || isNil(o.InternalNameCamel) {
+	if o == nil || IsNil(o.InternalNameCamel) {
 		return nil, false
 	}
 	return o.InternalNameCamel, true
@@ -132,7 +132,7 @@ func (o *ConfigType) GetInternalNameCamelOk() (*ConfigTypeEnum, bool) {
 
 // HasInternalNameCamel returns a boolean if a field has been set.
 func (o *ConfigType) HasInternalNameCamel() bool {
-	if o != nil && !isNil(o.InternalNameCamel) {
+	if o != nil && !IsNil(o.InternalNameCamel) {
 		return true
 	}
 
@@ -146,7 +146,7 @@ func (o *ConfigType) SetInternalNameCamel(v ConfigTypeEnum) {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *ConfigType) GetDisplayName() string {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -156,7 +156,7 @@ func (o *ConfigType) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConfigType) GetDisplayNameOk() (*string, bool) {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -164,7 +164,7 @@ func (o *ConfigType) GetDisplayNameOk() (*string, bool) {
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *ConfigType) HasDisplayName() bool {
-	if o != nil && !isNil(o.DisplayName) {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -178,7 +178,7 @@ func (o *ConfigType) SetDisplayName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ConfigType) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -188,7 +188,7 @@ func (o *ConfigType) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConfigType) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -196,7 +196,7 @@ func (o *ConfigType) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *ConfigType) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -218,19 +218,19 @@ func (o ConfigType) MarshalJSON() ([]byte, error) {
 
 func (o ConfigType) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Priority) {
+	if !IsNil(o.Priority) {
 		toSerialize["priority"] = o.Priority
 	}
-	if !isNil(o.InternalName) {
+	if !IsNil(o.InternalName) {
 		toSerialize["internalName"] = o.InternalName
 	}
-	if !isNil(o.InternalNameCamel) {
+	if !IsNil(o.InternalNameCamel) {
 		toSerialize["internalNameCamel"] = o.InternalNameCamel
 	}
-	if !isNil(o.DisplayName) {
+	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 
@@ -241,16 +241,20 @@ func (o ConfigType) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ConfigType) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ConfigType) UnmarshalJSON(data []byte) (err error) {
 	varConfigType := _ConfigType{}
 
-	if err = json.Unmarshal(bytes, &varConfigType); err == nil {
+	err = json.Unmarshal(data, &varConfigType)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ConfigType(varConfigType)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "priority")
 		delete(additionalProperties, "internalName")
 		delete(additionalProperties, "internalNameCamel")

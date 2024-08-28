@@ -58,7 +58,7 @@ func NewAccessRequestConfigWithDefaults() *AccessRequestConfig {
 
 // GetApprovalsMustBeExternal returns the ApprovalsMustBeExternal field value if set, zero value otherwise.
 func (o *AccessRequestConfig) GetApprovalsMustBeExternal() bool {
-	if o == nil || isNil(o.ApprovalsMustBeExternal) {
+	if o == nil || IsNil(o.ApprovalsMustBeExternal) {
 		var ret bool
 		return ret
 	}
@@ -68,7 +68,7 @@ func (o *AccessRequestConfig) GetApprovalsMustBeExternal() bool {
 // GetApprovalsMustBeExternalOk returns a tuple with the ApprovalsMustBeExternal field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestConfig) GetApprovalsMustBeExternalOk() (*bool, bool) {
-	if o == nil || isNil(o.ApprovalsMustBeExternal) {
+	if o == nil || IsNil(o.ApprovalsMustBeExternal) {
 		return nil, false
 	}
 	return o.ApprovalsMustBeExternal, true
@@ -76,7 +76,7 @@ func (o *AccessRequestConfig) GetApprovalsMustBeExternalOk() (*bool, bool) {
 
 // HasApprovalsMustBeExternal returns a boolean if a field has been set.
 func (o *AccessRequestConfig) HasApprovalsMustBeExternal() bool {
-	if o != nil && !isNil(o.ApprovalsMustBeExternal) {
+	if o != nil && !IsNil(o.ApprovalsMustBeExternal) {
 		return true
 	}
 
@@ -90,7 +90,7 @@ func (o *AccessRequestConfig) SetApprovalsMustBeExternal(v bool) {
 
 // GetAutoApprovalEnabled returns the AutoApprovalEnabled field value if set, zero value otherwise.
 func (o *AccessRequestConfig) GetAutoApprovalEnabled() bool {
-	if o == nil || isNil(o.AutoApprovalEnabled) {
+	if o == nil || IsNil(o.AutoApprovalEnabled) {
 		var ret bool
 		return ret
 	}
@@ -100,7 +100,7 @@ func (o *AccessRequestConfig) GetAutoApprovalEnabled() bool {
 // GetAutoApprovalEnabledOk returns a tuple with the AutoApprovalEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestConfig) GetAutoApprovalEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.AutoApprovalEnabled) {
+	if o == nil || IsNil(o.AutoApprovalEnabled) {
 		return nil, false
 	}
 	return o.AutoApprovalEnabled, true
@@ -108,7 +108,7 @@ func (o *AccessRequestConfig) GetAutoApprovalEnabledOk() (*bool, bool) {
 
 // HasAutoApprovalEnabled returns a boolean if a field has been set.
 func (o *AccessRequestConfig) HasAutoApprovalEnabled() bool {
-	if o != nil && !isNil(o.AutoApprovalEnabled) {
+	if o != nil && !IsNil(o.AutoApprovalEnabled) {
 		return true
 	}
 
@@ -122,7 +122,7 @@ func (o *AccessRequestConfig) SetAutoApprovalEnabled(v bool) {
 
 // GetRequestOnBehalfOfConfig returns the RequestOnBehalfOfConfig field value if set, zero value otherwise.
 func (o *AccessRequestConfig) GetRequestOnBehalfOfConfig() RequestOnBehalfOfConfig {
-	if o == nil || isNil(o.RequestOnBehalfOfConfig) {
+	if o == nil || IsNil(o.RequestOnBehalfOfConfig) {
 		var ret RequestOnBehalfOfConfig
 		return ret
 	}
@@ -132,7 +132,7 @@ func (o *AccessRequestConfig) GetRequestOnBehalfOfConfig() RequestOnBehalfOfConf
 // GetRequestOnBehalfOfConfigOk returns a tuple with the RequestOnBehalfOfConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestConfig) GetRequestOnBehalfOfConfigOk() (*RequestOnBehalfOfConfig, bool) {
-	if o == nil || isNil(o.RequestOnBehalfOfConfig) {
+	if o == nil || IsNil(o.RequestOnBehalfOfConfig) {
 		return nil, false
 	}
 	return o.RequestOnBehalfOfConfig, true
@@ -140,7 +140,7 @@ func (o *AccessRequestConfig) GetRequestOnBehalfOfConfigOk() (*RequestOnBehalfOf
 
 // HasRequestOnBehalfOfConfig returns a boolean if a field has been set.
 func (o *AccessRequestConfig) HasRequestOnBehalfOfConfig() bool {
-	if o != nil && !isNil(o.RequestOnBehalfOfConfig) {
+	if o != nil && !IsNil(o.RequestOnBehalfOfConfig) {
 		return true
 	}
 
@@ -154,7 +154,7 @@ func (o *AccessRequestConfig) SetRequestOnBehalfOfConfig(v RequestOnBehalfOfConf
 
 // GetApprovalReminderAndEscalationConfig returns the ApprovalReminderAndEscalationConfig field value if set, zero value otherwise.
 func (o *AccessRequestConfig) GetApprovalReminderAndEscalationConfig() ApprovalReminderAndEscalationConfig {
-	if o == nil || isNil(o.ApprovalReminderAndEscalationConfig) {
+	if o == nil || IsNil(o.ApprovalReminderAndEscalationConfig) {
 		var ret ApprovalReminderAndEscalationConfig
 		return ret
 	}
@@ -164,7 +164,7 @@ func (o *AccessRequestConfig) GetApprovalReminderAndEscalationConfig() ApprovalR
 // GetApprovalReminderAndEscalationConfigOk returns a tuple with the ApprovalReminderAndEscalationConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestConfig) GetApprovalReminderAndEscalationConfigOk() (*ApprovalReminderAndEscalationConfig, bool) {
-	if o == nil || isNil(o.ApprovalReminderAndEscalationConfig) {
+	if o == nil || IsNil(o.ApprovalReminderAndEscalationConfig) {
 		return nil, false
 	}
 	return o.ApprovalReminderAndEscalationConfig, true
@@ -172,7 +172,7 @@ func (o *AccessRequestConfig) GetApprovalReminderAndEscalationConfigOk() (*Appro
 
 // HasApprovalReminderAndEscalationConfig returns a boolean if a field has been set.
 func (o *AccessRequestConfig) HasApprovalReminderAndEscalationConfig() bool {
-	if o != nil && !isNil(o.ApprovalReminderAndEscalationConfig) {
+	if o != nil && !IsNil(o.ApprovalReminderAndEscalationConfig) {
 		return true
 	}
 
@@ -186,7 +186,7 @@ func (o *AccessRequestConfig) SetApprovalReminderAndEscalationConfig(v ApprovalR
 
 // GetEntitlementRequestConfig returns the EntitlementRequestConfig field value if set, zero value otherwise.
 func (o *AccessRequestConfig) GetEntitlementRequestConfig() EntitlementRequestConfig1 {
-	if o == nil || isNil(o.EntitlementRequestConfig) {
+	if o == nil || IsNil(o.EntitlementRequestConfig) {
 		var ret EntitlementRequestConfig1
 		return ret
 	}
@@ -196,7 +196,7 @@ func (o *AccessRequestConfig) GetEntitlementRequestConfig() EntitlementRequestCo
 // GetEntitlementRequestConfigOk returns a tuple with the EntitlementRequestConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestConfig) GetEntitlementRequestConfigOk() (*EntitlementRequestConfig1, bool) {
-	if o == nil || isNil(o.EntitlementRequestConfig) {
+	if o == nil || IsNil(o.EntitlementRequestConfig) {
 		return nil, false
 	}
 	return o.EntitlementRequestConfig, true
@@ -204,7 +204,7 @@ func (o *AccessRequestConfig) GetEntitlementRequestConfigOk() (*EntitlementReque
 
 // HasEntitlementRequestConfig returns a boolean if a field has been set.
 func (o *AccessRequestConfig) HasEntitlementRequestConfig() bool {
-	if o != nil && !isNil(o.EntitlementRequestConfig) {
+	if o != nil && !IsNil(o.EntitlementRequestConfig) {
 		return true
 	}
 
@@ -226,19 +226,19 @@ func (o AccessRequestConfig) MarshalJSON() ([]byte, error) {
 
 func (o AccessRequestConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ApprovalsMustBeExternal) {
+	if !IsNil(o.ApprovalsMustBeExternal) {
 		toSerialize["approvalsMustBeExternal"] = o.ApprovalsMustBeExternal
 	}
-	if !isNil(o.AutoApprovalEnabled) {
+	if !IsNil(o.AutoApprovalEnabled) {
 		toSerialize["autoApprovalEnabled"] = o.AutoApprovalEnabled
 	}
-	if !isNil(o.RequestOnBehalfOfConfig) {
+	if !IsNil(o.RequestOnBehalfOfConfig) {
 		toSerialize["requestOnBehalfOfConfig"] = o.RequestOnBehalfOfConfig
 	}
-	if !isNil(o.ApprovalReminderAndEscalationConfig) {
+	if !IsNil(o.ApprovalReminderAndEscalationConfig) {
 		toSerialize["approvalReminderAndEscalationConfig"] = o.ApprovalReminderAndEscalationConfig
 	}
-	if !isNil(o.EntitlementRequestConfig) {
+	if !IsNil(o.EntitlementRequestConfig) {
 		toSerialize["entitlementRequestConfig"] = o.EntitlementRequestConfig
 	}
 
@@ -249,16 +249,20 @@ func (o AccessRequestConfig) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccessRequestConfig) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccessRequestConfig) UnmarshalJSON(data []byte) (err error) {
 	varAccessRequestConfig := _AccessRequestConfig{}
 
-	if err = json.Unmarshal(bytes, &varAccessRequestConfig); err == nil {
+	err = json.Unmarshal(data, &varAccessRequestConfig)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessRequestConfig(varAccessRequestConfig)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "approvalsMustBeExternal")
 		delete(additionalProperties, "autoApprovalEnabled")
 		delete(additionalProperties, "requestOnBehalfOfConfig")

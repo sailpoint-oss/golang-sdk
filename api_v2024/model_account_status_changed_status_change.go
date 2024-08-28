@@ -47,7 +47,7 @@ func NewAccountStatusChangedStatusChangeWithDefaults() *AccountStatusChangedStat
 
 // GetPreviousStatus returns the PreviousStatus field value if set, zero value otherwise.
 func (o *AccountStatusChangedStatusChange) GetPreviousStatus() string {
-	if o == nil || isNil(o.PreviousStatus) {
+	if o == nil || IsNil(o.PreviousStatus) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *AccountStatusChangedStatusChange) GetPreviousStatus() string {
 // GetPreviousStatusOk returns a tuple with the PreviousStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountStatusChangedStatusChange) GetPreviousStatusOk() (*string, bool) {
-	if o == nil || isNil(o.PreviousStatus) {
+	if o == nil || IsNil(o.PreviousStatus) {
 		return nil, false
 	}
 	return o.PreviousStatus, true
@@ -65,7 +65,7 @@ func (o *AccountStatusChangedStatusChange) GetPreviousStatusOk() (*string, bool)
 
 // HasPreviousStatus returns a boolean if a field has been set.
 func (o *AccountStatusChangedStatusChange) HasPreviousStatus() bool {
-	if o != nil && !isNil(o.PreviousStatus) {
+	if o != nil && !IsNil(o.PreviousStatus) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *AccountStatusChangedStatusChange) SetPreviousStatus(v string) {
 
 // GetNewStatus returns the NewStatus field value if set, zero value otherwise.
 func (o *AccountStatusChangedStatusChange) GetNewStatus() string {
-	if o == nil || isNil(o.NewStatus) {
+	if o == nil || IsNil(o.NewStatus) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *AccountStatusChangedStatusChange) GetNewStatus() string {
 // GetNewStatusOk returns a tuple with the NewStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountStatusChangedStatusChange) GetNewStatusOk() (*string, bool) {
-	if o == nil || isNil(o.NewStatus) {
+	if o == nil || IsNil(o.NewStatus) {
 		return nil, false
 	}
 	return o.NewStatus, true
@@ -97,7 +97,7 @@ func (o *AccountStatusChangedStatusChange) GetNewStatusOk() (*string, bool) {
 
 // HasNewStatus returns a boolean if a field has been set.
 func (o *AccountStatusChangedStatusChange) HasNewStatus() bool {
-	if o != nil && !isNil(o.NewStatus) {
+	if o != nil && !IsNil(o.NewStatus) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o AccountStatusChangedStatusChange) MarshalJSON() ([]byte, error) {
 
 func (o AccountStatusChangedStatusChange) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.PreviousStatus) {
+	if !IsNil(o.PreviousStatus) {
 		toSerialize["previousStatus"] = o.PreviousStatus
 	}
-	if !isNil(o.NewStatus) {
+	if !IsNil(o.NewStatus) {
 		toSerialize["newStatus"] = o.NewStatus
 	}
 
@@ -133,16 +133,20 @@ func (o AccountStatusChangedStatusChange) ToMap() (map[string]interface{}, error
 	return toSerialize, nil
 }
 
-func (o *AccountStatusChangedStatusChange) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccountStatusChangedStatusChange) UnmarshalJSON(data []byte) (err error) {
 	varAccountStatusChangedStatusChange := _AccountStatusChangedStatusChange{}
 
-	if err = json.Unmarshal(bytes, &varAccountStatusChangedStatusChange); err == nil {
+	err = json.Unmarshal(data, &varAccountStatusChangedStatusChange)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccountStatusChangedStatusChange(varAccountStatusChangedStatusChange)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "previousStatus")
 		delete(additionalProperties, "newStatus")
 		o.AdditionalProperties = additionalProperties

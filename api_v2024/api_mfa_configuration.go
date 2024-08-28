@@ -229,7 +229,7 @@ func (a *MFAConfigurationAPIService) GetMFAKbaConfigExecute(r ApiGetMFAKbaConfig
 	localVarFormParams := url.Values{}
 
 	if r.allLanguages != nil {
-		parameterAddToQuery(localVarQueryParams, "allLanguages", r.allLanguages, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "allLanguages", r.allLanguages, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
