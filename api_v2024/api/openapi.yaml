@@ -69925,7 +69925,7 @@ components:
             - CORRELATED
             - UNCORRELATED
             example: CORRELATED
-            type: object
+            type: string
           filter:
             $ref: '#/components/schemas/Campaign_allOf_filter'
           sunsetCommentsRequired:
