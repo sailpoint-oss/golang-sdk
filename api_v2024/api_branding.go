@@ -149,22 +149,22 @@ func (a *BrandingAPIService) CreateBrandingItemExecute(r ApiCreateBrandingItemRe
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToQuery(localVarFormParams, "name", r.name, "")
-	parameterAddToQuery(localVarFormParams, "productName", r.productName, "")
+	parameterAddToHeaderOrQuery(localVarFormParams, "name", r.name, "", "")
+	parameterAddToHeaderOrQuery(localVarFormParams, "productName", r.productName, "", "")
 	if r.actionButtonColor != nil {
-		parameterAddToQuery(localVarFormParams, "actionButtonColor", r.actionButtonColor, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "actionButtonColor", r.actionButtonColor, "", "")
 	}
 	if r.activeLinkColor != nil {
-		parameterAddToQuery(localVarFormParams, "activeLinkColor", r.activeLinkColor, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "activeLinkColor", r.activeLinkColor, "", "")
 	}
 	if r.navigationColor != nil {
-		parameterAddToQuery(localVarFormParams, "navigationColor", r.navigationColor, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "navigationColor", r.navigationColor, "", "")
 	}
 	if r.emailFromAddress != nil {
-		parameterAddToQuery(localVarFormParams, "emailFromAddress", r.emailFromAddress, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "emailFromAddress", r.emailFromAddress, "", "")
 	}
 	if r.loginInformationalMessage != nil {
-		parameterAddToQuery(localVarFormParams, "loginInformationalMessage", r.loginInformationalMessage, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "loginInformationalMessage", r.loginInformationalMessage, "", "")
 	}
 	var fileStandardLocalVarFormFileName string
 	var fileStandardLocalVarFileName     string
@@ -883,22 +883,22 @@ func (a *BrandingAPIService) SetBrandingItemExecute(r ApiSetBrandingItemRequest)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToQuery(localVarFormParams, "name", r.name2, "")
-	parameterAddToQuery(localVarFormParams, "productName", r.productName, "")
+	parameterAddToHeaderOrQuery(localVarFormParams, "name", r.name2, "", "")
+	parameterAddToHeaderOrQuery(localVarFormParams, "productName", r.productName, "", "")
 	if r.actionButtonColor != nil {
-		parameterAddToQuery(localVarFormParams, "actionButtonColor", r.actionButtonColor, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "actionButtonColor", r.actionButtonColor, "", "")
 	}
 	if r.activeLinkColor != nil {
-		parameterAddToQuery(localVarFormParams, "activeLinkColor", r.activeLinkColor, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "activeLinkColor", r.activeLinkColor, "", "")
 	}
 	if r.navigationColor != nil {
-		parameterAddToQuery(localVarFormParams, "navigationColor", r.navigationColor, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "navigationColor", r.navigationColor, "", "")
 	}
 	if r.emailFromAddress != nil {
-		parameterAddToQuery(localVarFormParams, "emailFromAddress", r.emailFromAddress, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "emailFromAddress", r.emailFromAddress, "", "")
 	}
 	if r.loginInformationalMessage != nil {
-		parameterAddToQuery(localVarFormParams, "loginInformationalMessage", r.loginInformationalMessage, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "loginInformationalMessage", r.loginInformationalMessage, "", "")
 	}
 	var fileStandardLocalVarFormFileName string
 	var fileStandardLocalVarFileName     string

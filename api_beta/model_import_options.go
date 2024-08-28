@@ -57,7 +57,7 @@ func NewImportOptionsWithDefaults() *ImportOptions {
 
 // GetExcludeTypes returns the ExcludeTypes field value if set, zero value otherwise.
 func (o *ImportOptions) GetExcludeTypes() []string {
-	if o == nil || isNil(o.ExcludeTypes) {
+	if o == nil || IsNil(o.ExcludeTypes) {
 		var ret []string
 		return ret
 	}
@@ -67,7 +67,7 @@ func (o *ImportOptions) GetExcludeTypes() []string {
 // GetExcludeTypesOk returns a tuple with the ExcludeTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImportOptions) GetExcludeTypesOk() ([]string, bool) {
-	if o == nil || isNil(o.ExcludeTypes) {
+	if o == nil || IsNil(o.ExcludeTypes) {
 		return nil, false
 	}
 	return o.ExcludeTypes, true
@@ -75,7 +75,7 @@ func (o *ImportOptions) GetExcludeTypesOk() ([]string, bool) {
 
 // HasExcludeTypes returns a boolean if a field has been set.
 func (o *ImportOptions) HasExcludeTypes() bool {
-	if o != nil && !isNil(o.ExcludeTypes) {
+	if o != nil && !IsNil(o.ExcludeTypes) {
 		return true
 	}
 
@@ -89,7 +89,7 @@ func (o *ImportOptions) SetExcludeTypes(v []string) {
 
 // GetIncludeTypes returns the IncludeTypes field value if set, zero value otherwise.
 func (o *ImportOptions) GetIncludeTypes() []string {
-	if o == nil || isNil(o.IncludeTypes) {
+	if o == nil || IsNil(o.IncludeTypes) {
 		var ret []string
 		return ret
 	}
@@ -99,7 +99,7 @@ func (o *ImportOptions) GetIncludeTypes() []string {
 // GetIncludeTypesOk returns a tuple with the IncludeTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImportOptions) GetIncludeTypesOk() ([]string, bool) {
-	if o == nil || isNil(o.IncludeTypes) {
+	if o == nil || IsNil(o.IncludeTypes) {
 		return nil, false
 	}
 	return o.IncludeTypes, true
@@ -107,7 +107,7 @@ func (o *ImportOptions) GetIncludeTypesOk() ([]string, bool) {
 
 // HasIncludeTypes returns a boolean if a field has been set.
 func (o *ImportOptions) HasIncludeTypes() bool {
-	if o != nil && !isNil(o.IncludeTypes) {
+	if o != nil && !IsNil(o.IncludeTypes) {
 		return true
 	}
 
@@ -121,7 +121,7 @@ func (o *ImportOptions) SetIncludeTypes(v []string) {
 
 // GetObjectOptions returns the ObjectOptions field value if set, zero value otherwise.
 func (o *ImportOptions) GetObjectOptions() map[string]ObjectExportImportOptions {
-	if o == nil || isNil(o.ObjectOptions) {
+	if o == nil || IsNil(o.ObjectOptions) {
 		var ret map[string]ObjectExportImportOptions
 		return ret
 	}
@@ -131,7 +131,7 @@ func (o *ImportOptions) GetObjectOptions() map[string]ObjectExportImportOptions 
 // GetObjectOptionsOk returns a tuple with the ObjectOptions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImportOptions) GetObjectOptionsOk() (*map[string]ObjectExportImportOptions, bool) {
-	if o == nil || isNil(o.ObjectOptions) {
+	if o == nil || IsNil(o.ObjectOptions) {
 		return nil, false
 	}
 	return o.ObjectOptions, true
@@ -139,7 +139,7 @@ func (o *ImportOptions) GetObjectOptionsOk() (*map[string]ObjectExportImportOpti
 
 // HasObjectOptions returns a boolean if a field has been set.
 func (o *ImportOptions) HasObjectOptions() bool {
-	if o != nil && !isNil(o.ObjectOptions) {
+	if o != nil && !IsNil(o.ObjectOptions) {
 		return true
 	}
 
@@ -153,7 +153,7 @@ func (o *ImportOptions) SetObjectOptions(v map[string]ObjectExportImportOptions)
 
 // GetDefaultReferences returns the DefaultReferences field value if set, zero value otherwise.
 func (o *ImportOptions) GetDefaultReferences() []string {
-	if o == nil || isNil(o.DefaultReferences) {
+	if o == nil || IsNil(o.DefaultReferences) {
 		var ret []string
 		return ret
 	}
@@ -163,7 +163,7 @@ func (o *ImportOptions) GetDefaultReferences() []string {
 // GetDefaultReferencesOk returns a tuple with the DefaultReferences field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImportOptions) GetDefaultReferencesOk() ([]string, bool) {
-	if o == nil || isNil(o.DefaultReferences) {
+	if o == nil || IsNil(o.DefaultReferences) {
 		return nil, false
 	}
 	return o.DefaultReferences, true
@@ -171,7 +171,7 @@ func (o *ImportOptions) GetDefaultReferencesOk() ([]string, bool) {
 
 // HasDefaultReferences returns a boolean if a field has been set.
 func (o *ImportOptions) HasDefaultReferences() bool {
-	if o != nil && !isNil(o.DefaultReferences) {
+	if o != nil && !IsNil(o.DefaultReferences) {
 		return true
 	}
 
@@ -185,7 +185,7 @@ func (o *ImportOptions) SetDefaultReferences(v []string) {
 
 // GetExcludeBackup returns the ExcludeBackup field value if set, zero value otherwise.
 func (o *ImportOptions) GetExcludeBackup() bool {
-	if o == nil || isNil(o.ExcludeBackup) {
+	if o == nil || IsNil(o.ExcludeBackup) {
 		var ret bool
 		return ret
 	}
@@ -195,7 +195,7 @@ func (o *ImportOptions) GetExcludeBackup() bool {
 // GetExcludeBackupOk returns a tuple with the ExcludeBackup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImportOptions) GetExcludeBackupOk() (*bool, bool) {
-	if o == nil || isNil(o.ExcludeBackup) {
+	if o == nil || IsNil(o.ExcludeBackup) {
 		return nil, false
 	}
 	return o.ExcludeBackup, true
@@ -203,7 +203,7 @@ func (o *ImportOptions) GetExcludeBackupOk() (*bool, bool) {
 
 // HasExcludeBackup returns a boolean if a field has been set.
 func (o *ImportOptions) HasExcludeBackup() bool {
-	if o != nil && !isNil(o.ExcludeBackup) {
+	if o != nil && !IsNil(o.ExcludeBackup) {
 		return true
 	}
 
@@ -225,19 +225,19 @@ func (o ImportOptions) MarshalJSON() ([]byte, error) {
 
 func (o ImportOptions) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ExcludeTypes) {
+	if !IsNil(o.ExcludeTypes) {
 		toSerialize["excludeTypes"] = o.ExcludeTypes
 	}
-	if !isNil(o.IncludeTypes) {
+	if !IsNil(o.IncludeTypes) {
 		toSerialize["includeTypes"] = o.IncludeTypes
 	}
-	if !isNil(o.ObjectOptions) {
+	if !IsNil(o.ObjectOptions) {
 		toSerialize["objectOptions"] = o.ObjectOptions
 	}
-	if !isNil(o.DefaultReferences) {
+	if !IsNil(o.DefaultReferences) {
 		toSerialize["defaultReferences"] = o.DefaultReferences
 	}
-	if !isNil(o.ExcludeBackup) {
+	if !IsNil(o.ExcludeBackup) {
 		toSerialize["excludeBackup"] = o.ExcludeBackup
 	}
 
@@ -248,16 +248,20 @@ func (o ImportOptions) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ImportOptions) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ImportOptions) UnmarshalJSON(data []byte) (err error) {
 	varImportOptions := _ImportOptions{}
 
-	if err = json.Unmarshal(bytes, &varImportOptions); err == nil {
+	err = json.Unmarshal(data, &varImportOptions)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ImportOptions(varImportOptions)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "excludeTypes")
 		delete(additionalProperties, "includeTypes")
 		delete(additionalProperties, "objectOptions")

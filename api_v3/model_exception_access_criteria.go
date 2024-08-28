@@ -45,7 +45,7 @@ func NewExceptionAccessCriteriaWithDefaults() *ExceptionAccessCriteria {
 
 // GetLeftCriteria returns the LeftCriteria field value if set, zero value otherwise.
 func (o *ExceptionAccessCriteria) GetLeftCriteria() ExceptionCriteria {
-	if o == nil || isNil(o.LeftCriteria) {
+	if o == nil || IsNil(o.LeftCriteria) {
 		var ret ExceptionCriteria
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *ExceptionAccessCriteria) GetLeftCriteria() ExceptionCriteria {
 // GetLeftCriteriaOk returns a tuple with the LeftCriteria field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExceptionAccessCriteria) GetLeftCriteriaOk() (*ExceptionCriteria, bool) {
-	if o == nil || isNil(o.LeftCriteria) {
+	if o == nil || IsNil(o.LeftCriteria) {
 		return nil, false
 	}
 	return o.LeftCriteria, true
@@ -63,7 +63,7 @@ func (o *ExceptionAccessCriteria) GetLeftCriteriaOk() (*ExceptionCriteria, bool)
 
 // HasLeftCriteria returns a boolean if a field has been set.
 func (o *ExceptionAccessCriteria) HasLeftCriteria() bool {
-	if o != nil && !isNil(o.LeftCriteria) {
+	if o != nil && !IsNil(o.LeftCriteria) {
 		return true
 	}
 
@@ -77,7 +77,7 @@ func (o *ExceptionAccessCriteria) SetLeftCriteria(v ExceptionCriteria) {
 
 // GetRightCriteria returns the RightCriteria field value if set, zero value otherwise.
 func (o *ExceptionAccessCriteria) GetRightCriteria() ExceptionCriteria {
-	if o == nil || isNil(o.RightCriteria) {
+	if o == nil || IsNil(o.RightCriteria) {
 		var ret ExceptionCriteria
 		return ret
 	}
@@ -87,7 +87,7 @@ func (o *ExceptionAccessCriteria) GetRightCriteria() ExceptionCriteria {
 // GetRightCriteriaOk returns a tuple with the RightCriteria field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExceptionAccessCriteria) GetRightCriteriaOk() (*ExceptionCriteria, bool) {
-	if o == nil || isNil(o.RightCriteria) {
+	if o == nil || IsNil(o.RightCriteria) {
 		return nil, false
 	}
 	return o.RightCriteria, true
@@ -95,7 +95,7 @@ func (o *ExceptionAccessCriteria) GetRightCriteriaOk() (*ExceptionCriteria, bool
 
 // HasRightCriteria returns a boolean if a field has been set.
 func (o *ExceptionAccessCriteria) HasRightCriteria() bool {
-	if o != nil && !isNil(o.RightCriteria) {
+	if o != nil && !IsNil(o.RightCriteria) {
 		return true
 	}
 
@@ -117,10 +117,10 @@ func (o ExceptionAccessCriteria) MarshalJSON() ([]byte, error) {
 
 func (o ExceptionAccessCriteria) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.LeftCriteria) {
+	if !IsNil(o.LeftCriteria) {
 		toSerialize["leftCriteria"] = o.LeftCriteria
 	}
-	if !isNil(o.RightCriteria) {
+	if !IsNil(o.RightCriteria) {
 		toSerialize["rightCriteria"] = o.RightCriteria
 	}
 
@@ -131,16 +131,20 @@ func (o ExceptionAccessCriteria) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ExceptionAccessCriteria) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ExceptionAccessCriteria) UnmarshalJSON(data []byte) (err error) {
 	varExceptionAccessCriteria := _ExceptionAccessCriteria{}
 
-	if err = json.Unmarshal(bytes, &varExceptionAccessCriteria); err == nil {
+	err = json.Unmarshal(data, &varExceptionAccessCriteria)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ExceptionAccessCriteria(varExceptionAccessCriteria)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "leftCriteria")
 		delete(additionalProperties, "rightCriteria")
 		o.AdditionalProperties = additionalProperties

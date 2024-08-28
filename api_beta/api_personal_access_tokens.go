@@ -405,10 +405,10 @@ func (a *PersonalAccessTokensAPIService) ListPersonalAccessTokensExecute(r ApiLi
 	localVarFormParams := url.Values{}
 
 	if r.ownerId != nil {
-		parameterAddToQuery(localVarQueryParams, "owner-id", r.ownerId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "owner-id", r.ownerId, "", "")
 	}
 	if r.filters != nil {
-		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

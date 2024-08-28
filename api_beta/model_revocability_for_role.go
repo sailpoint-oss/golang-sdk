@@ -57,7 +57,7 @@ func NewRevocabilityForRoleWithDefaults() *RevocabilityForRole {
 
 // GetCommentsRequired returns the CommentsRequired field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RevocabilityForRole) GetCommentsRequired() bool {
-	if o == nil || isNil(o.CommentsRequired.Get()) {
+	if o == nil || IsNil(o.CommentsRequired.Get()) {
 		var ret bool
 		return ret
 	}
@@ -99,7 +99,7 @@ func (o *RevocabilityForRole) UnsetCommentsRequired() {
 
 // GetDenialCommentsRequired returns the DenialCommentsRequired field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RevocabilityForRole) GetDenialCommentsRequired() bool {
-	if o == nil || isNil(o.DenialCommentsRequired.Get()) {
+	if o == nil || IsNil(o.DenialCommentsRequired.Get()) {
 		var ret bool
 		return ret
 	}
@@ -141,7 +141,7 @@ func (o *RevocabilityForRole) UnsetDenialCommentsRequired() {
 
 // GetApprovalSchemes returns the ApprovalSchemes field value if set, zero value otherwise.
 func (o *RevocabilityForRole) GetApprovalSchemes() []ApprovalSchemeForRole {
-	if o == nil || isNil(o.ApprovalSchemes) {
+	if o == nil || IsNil(o.ApprovalSchemes) {
 		var ret []ApprovalSchemeForRole
 		return ret
 	}
@@ -151,7 +151,7 @@ func (o *RevocabilityForRole) GetApprovalSchemes() []ApprovalSchemeForRole {
 // GetApprovalSchemesOk returns a tuple with the ApprovalSchemes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RevocabilityForRole) GetApprovalSchemesOk() ([]ApprovalSchemeForRole, bool) {
-	if o == nil || isNil(o.ApprovalSchemes) {
+	if o == nil || IsNil(o.ApprovalSchemes) {
 		return nil, false
 	}
 	return o.ApprovalSchemes, true
@@ -159,7 +159,7 @@ func (o *RevocabilityForRole) GetApprovalSchemesOk() ([]ApprovalSchemeForRole, b
 
 // HasApprovalSchemes returns a boolean if a field has been set.
 func (o *RevocabilityForRole) HasApprovalSchemes() bool {
-	if o != nil && !isNil(o.ApprovalSchemes) {
+	if o != nil && !IsNil(o.ApprovalSchemes) {
 		return true
 	}
 
@@ -187,7 +187,7 @@ func (o RevocabilityForRole) ToMap() (map[string]interface{}, error) {
 	if o.DenialCommentsRequired.IsSet() {
 		toSerialize["denialCommentsRequired"] = o.DenialCommentsRequired.Get()
 	}
-	if !isNil(o.ApprovalSchemes) {
+	if !IsNil(o.ApprovalSchemes) {
 		toSerialize["approvalSchemes"] = o.ApprovalSchemes
 	}
 
@@ -198,16 +198,20 @@ func (o RevocabilityForRole) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *RevocabilityForRole) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RevocabilityForRole) UnmarshalJSON(data []byte) (err error) {
 	varRevocabilityForRole := _RevocabilityForRole{}
 
-	if err = json.Unmarshal(bytes, &varRevocabilityForRole); err == nil {
+	err = json.Unmarshal(data, &varRevocabilityForRole)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RevocabilityForRole(varRevocabilityForRole)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "commentsRequired")
 		delete(additionalProperties, "denialCommentsRequired")
 		delete(additionalProperties, "approvalSchemes")

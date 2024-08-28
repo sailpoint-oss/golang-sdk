@@ -53,7 +53,7 @@ func NewFullcampaignAllOfRoleCompositionCampaignInfoWithDefaults() *Fullcampaign
 
 // GetReviewer returns the Reviewer field value if set, zero value otherwise.
 func (o *FullcampaignAllOfRoleCompositionCampaignInfo) GetReviewer() FullcampaignAllOfSearchCampaignInfoReviewer {
-	if o == nil || isNil(o.Reviewer) {
+	if o == nil || IsNil(o.Reviewer) {
 		var ret FullcampaignAllOfSearchCampaignInfoReviewer
 		return ret
 	}
@@ -63,7 +63,7 @@ func (o *FullcampaignAllOfRoleCompositionCampaignInfo) GetReviewer() Fullcampaig
 // GetReviewerOk returns a tuple with the Reviewer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FullcampaignAllOfRoleCompositionCampaignInfo) GetReviewerOk() (*FullcampaignAllOfSearchCampaignInfoReviewer, bool) {
-	if o == nil || isNil(o.Reviewer) {
+	if o == nil || IsNil(o.Reviewer) {
 		return nil, false
 	}
 	return o.Reviewer, true
@@ -71,7 +71,7 @@ func (o *FullcampaignAllOfRoleCompositionCampaignInfo) GetReviewerOk() (*Fullcam
 
 // HasReviewer returns a boolean if a field has been set.
 func (o *FullcampaignAllOfRoleCompositionCampaignInfo) HasReviewer() bool {
-	if o != nil && !isNil(o.Reviewer) {
+	if o != nil && !IsNil(o.Reviewer) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o *FullcampaignAllOfRoleCompositionCampaignInfo) SetReviewer(v Fullcampaig
 
 // GetRoleIds returns the RoleIds field value if set, zero value otherwise.
 func (o *FullcampaignAllOfRoleCompositionCampaignInfo) GetRoleIds() []string {
-	if o == nil || isNil(o.RoleIds) {
+	if o == nil || IsNil(o.RoleIds) {
 		var ret []string
 		return ret
 	}
@@ -95,7 +95,7 @@ func (o *FullcampaignAllOfRoleCompositionCampaignInfo) GetRoleIds() []string {
 // GetRoleIdsOk returns a tuple with the RoleIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FullcampaignAllOfRoleCompositionCampaignInfo) GetRoleIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.RoleIds) {
+	if o == nil || IsNil(o.RoleIds) {
 		return nil, false
 	}
 	return o.RoleIds, true
@@ -103,7 +103,7 @@ func (o *FullcampaignAllOfRoleCompositionCampaignInfo) GetRoleIdsOk() ([]string,
 
 // HasRoleIds returns a boolean if a field has been set.
 func (o *FullcampaignAllOfRoleCompositionCampaignInfo) HasRoleIds() bool {
-	if o != nil && !isNil(o.RoleIds) {
+	if o != nil && !IsNil(o.RoleIds) {
 		return true
 	}
 
@@ -141,7 +141,7 @@ func (o *FullcampaignAllOfRoleCompositionCampaignInfo) SetRemediatorRef(v Fullca
 
 // GetQuery returns the Query field value if set, zero value otherwise.
 func (o *FullcampaignAllOfRoleCompositionCampaignInfo) GetQuery() string {
-	if o == nil || isNil(o.Query) {
+	if o == nil || IsNil(o.Query) {
 		var ret string
 		return ret
 	}
@@ -151,7 +151,7 @@ func (o *FullcampaignAllOfRoleCompositionCampaignInfo) GetQuery() string {
 // GetQueryOk returns a tuple with the Query field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FullcampaignAllOfRoleCompositionCampaignInfo) GetQueryOk() (*string, bool) {
-	if o == nil || isNil(o.Query) {
+	if o == nil || IsNil(o.Query) {
 		return nil, false
 	}
 	return o.Query, true
@@ -159,7 +159,7 @@ func (o *FullcampaignAllOfRoleCompositionCampaignInfo) GetQueryOk() (*string, bo
 
 // HasQuery returns a boolean if a field has been set.
 func (o *FullcampaignAllOfRoleCompositionCampaignInfo) HasQuery() bool {
-	if o != nil && !isNil(o.Query) {
+	if o != nil && !IsNil(o.Query) {
 		return true
 	}
 
@@ -173,7 +173,7 @@ func (o *FullcampaignAllOfRoleCompositionCampaignInfo) SetQuery(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *FullcampaignAllOfRoleCompositionCampaignInfo) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -183,7 +183,7 @@ func (o *FullcampaignAllOfRoleCompositionCampaignInfo) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FullcampaignAllOfRoleCompositionCampaignInfo) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -191,7 +191,7 @@ func (o *FullcampaignAllOfRoleCompositionCampaignInfo) GetDescriptionOk() (*stri
 
 // HasDescription returns a boolean if a field has been set.
 func (o *FullcampaignAllOfRoleCompositionCampaignInfo) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -213,17 +213,17 @@ func (o FullcampaignAllOfRoleCompositionCampaignInfo) MarshalJSON() ([]byte, err
 
 func (o FullcampaignAllOfRoleCompositionCampaignInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Reviewer) {
+	if !IsNil(o.Reviewer) {
 		toSerialize["reviewer"] = o.Reviewer
 	}
-	if !isNil(o.RoleIds) {
+	if !IsNil(o.RoleIds) {
 		toSerialize["roleIds"] = o.RoleIds
 	}
 	toSerialize["remediatorRef"] = o.RemediatorRef
-	if !isNil(o.Query) {
+	if !IsNil(o.Query) {
 		toSerialize["query"] = o.Query
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 
@@ -234,8 +234,8 @@ func (o FullcampaignAllOfRoleCompositionCampaignInfo) ToMap() (map[string]interf
 	return toSerialize, nil
 }
 
-func (o *FullcampaignAllOfRoleCompositionCampaignInfo) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *FullcampaignAllOfRoleCompositionCampaignInfo) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -244,7 +244,7 @@ func (o *FullcampaignAllOfRoleCompositionCampaignInfo) UnmarshalJSON(bytes []byt
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -258,13 +258,17 @@ func (o *FullcampaignAllOfRoleCompositionCampaignInfo) UnmarshalJSON(bytes []byt
 
 	varFullcampaignAllOfRoleCompositionCampaignInfo := _FullcampaignAllOfRoleCompositionCampaignInfo{}
 
-	if err = json.Unmarshal(bytes, &varFullcampaignAllOfRoleCompositionCampaignInfo); err == nil {
+	err = json.Unmarshal(data, &varFullcampaignAllOfRoleCompositionCampaignInfo)
+
+	if err != nil {
+		return err
+	}
+
 	*o = FullcampaignAllOfRoleCompositionCampaignInfo(varFullcampaignAllOfRoleCompositionCampaignInfo)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "reviewer")
 		delete(additionalProperties, "roleIds")
 		delete(additionalProperties, "remediatorRef")

@@ -19,14 +19,14 @@ import (
 
 func Test_api_v3_PasswordSyncGroupsAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test PasswordSyncGroupsAPIService CreatePasswordSyncGroup", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.PasswordSyncGroupsAPI.CreatePasswordSyncGroup(context.Background()).Execute()
+		resp, httpRes, err := apiClient.PasswordSyncGroupsAPI.CreatePasswordSyncGroup(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_v3_PasswordSyncGroupsAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_V3.PasswordSyncGroupsAPI.DeletePasswordSyncGroup(context.Background(), id).Execute()
+		httpRes, err := apiClient.PasswordSyncGroupsAPI.DeletePasswordSyncGroup(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -53,7 +53,7 @@ func Test_api_v3_PasswordSyncGroupsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.PasswordSyncGroupsAPI.GetPasswordSyncGroup(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.PasswordSyncGroupsAPI.GetPasswordSyncGroup(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -65,7 +65,7 @@ func Test_api_v3_PasswordSyncGroupsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.PasswordSyncGroupsAPI.GetPasswordSyncGroups(context.Background()).Execute()
+		resp, httpRes, err := apiClient.PasswordSyncGroupsAPI.GetPasswordSyncGroups(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -79,7 +79,7 @@ func Test_api_v3_PasswordSyncGroupsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.PasswordSyncGroupsAPI.UpdatePasswordSyncGroup(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.PasswordSyncGroupsAPI.UpdatePasswordSyncGroup(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

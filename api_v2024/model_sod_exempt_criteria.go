@@ -54,7 +54,7 @@ func NewSodExemptCriteriaWithDefaults() *SodExemptCriteria {
 
 // GetExisting returns the Existing field value if set, zero value otherwise.
 func (o *SodExemptCriteria) GetExisting() bool {
-	if o == nil || isNil(o.Existing) {
+	if o == nil || IsNil(o.Existing) {
 		var ret bool
 		return ret
 	}
@@ -64,7 +64,7 @@ func (o *SodExemptCriteria) GetExisting() bool {
 // GetExistingOk returns a tuple with the Existing field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SodExemptCriteria) GetExistingOk() (*bool, bool) {
-	if o == nil || isNil(o.Existing) {
+	if o == nil || IsNil(o.Existing) {
 		return nil, false
 	}
 	return o.Existing, true
@@ -72,7 +72,7 @@ func (o *SodExemptCriteria) GetExistingOk() (*bool, bool) {
 
 // HasExisting returns a boolean if a field has been set.
 func (o *SodExemptCriteria) HasExisting() bool {
-	if o != nil && !isNil(o.Existing) {
+	if o != nil && !IsNil(o.Existing) {
 		return true
 	}
 
@@ -86,7 +86,7 @@ func (o *SodExemptCriteria) SetExisting(v bool) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *SodExemptCriteria) GetType() DtoType {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret DtoType
 		return ret
 	}
@@ -96,7 +96,7 @@ func (o *SodExemptCriteria) GetType() DtoType {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SodExemptCriteria) GetTypeOk() (*DtoType, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -104,7 +104,7 @@ func (o *SodExemptCriteria) GetTypeOk() (*DtoType, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *SodExemptCriteria) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -118,7 +118,7 @@ func (o *SodExemptCriteria) SetType(v DtoType) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *SodExemptCriteria) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -128,7 +128,7 @@ func (o *SodExemptCriteria) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SodExemptCriteria) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -136,7 +136,7 @@ func (o *SodExemptCriteria) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *SodExemptCriteria) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -150,7 +150,7 @@ func (o *SodExemptCriteria) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *SodExemptCriteria) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -160,7 +160,7 @@ func (o *SodExemptCriteria) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SodExemptCriteria) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -168,7 +168,7 @@ func (o *SodExemptCriteria) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *SodExemptCriteria) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -190,16 +190,16 @@ func (o SodExemptCriteria) MarshalJSON() ([]byte, error) {
 
 func (o SodExemptCriteria) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Existing) {
+	if !IsNil(o.Existing) {
 		toSerialize["existing"] = o.Existing
 	}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 
@@ -210,16 +210,20 @@ func (o SodExemptCriteria) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SodExemptCriteria) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SodExemptCriteria) UnmarshalJSON(data []byte) (err error) {
 	varSodExemptCriteria := _SodExemptCriteria{}
 
-	if err = json.Unmarshal(bytes, &varSodExemptCriteria); err == nil {
+	err = json.Unmarshal(data, &varSodExemptCriteria)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SodExemptCriteria(varSodExemptCriteria)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "existing")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "id")

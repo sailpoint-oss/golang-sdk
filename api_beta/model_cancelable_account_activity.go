@@ -63,7 +63,7 @@ func NewCancelableAccountActivityWithDefaults() *CancelableAccountActivity {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *CancelableAccountActivity) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -73,7 +73,7 @@ func (o *CancelableAccountActivity) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CancelableAccountActivity) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -81,7 +81,7 @@ func (o *CancelableAccountActivity) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *CancelableAccountActivity) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -95,7 +95,7 @@ func (o *CancelableAccountActivity) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *CancelableAccountActivity) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -105,7 +105,7 @@ func (o *CancelableAccountActivity) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CancelableAccountActivity) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -113,7 +113,7 @@ func (o *CancelableAccountActivity) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *CancelableAccountActivity) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -127,7 +127,7 @@ func (o *CancelableAccountActivity) SetName(v string) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *CancelableAccountActivity) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -137,7 +137,7 @@ func (o *CancelableAccountActivity) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CancelableAccountActivity) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -145,7 +145,7 @@ func (o *CancelableAccountActivity) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *CancelableAccountActivity) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -159,7 +159,7 @@ func (o *CancelableAccountActivity) SetCreated(v time.Time) {
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CancelableAccountActivity) GetModified() time.Time {
-	if o == nil || isNil(o.Modified.Get()) {
+	if o == nil || IsNil(o.Modified.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -201,7 +201,7 @@ func (o *CancelableAccountActivity) UnsetModified() {
 
 // GetCompleted returns the Completed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CancelableAccountActivity) GetCompleted() time.Time {
-	if o == nil || isNil(o.Completed.Get()) {
+	if o == nil || IsNil(o.Completed.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -243,7 +243,7 @@ func (o *CancelableAccountActivity) UnsetCompleted() {
 
 // GetCompletionStatus returns the CompletionStatus field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CancelableAccountActivity) GetCompletionStatus() CompletionStatus {
-	if o == nil || isNil(o.CompletionStatus.Get()) {
+	if o == nil || IsNil(o.CompletionStatus.Get()) {
 		var ret CompletionStatus
 		return ret
 	}
@@ -285,7 +285,7 @@ func (o *CancelableAccountActivity) UnsetCompletionStatus() {
 
 // GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CancelableAccountActivity) GetType() string {
-	if o == nil || isNil(o.Type.Get()) {
+	if o == nil || IsNil(o.Type.Get()) {
 		var ret string
 		return ret
 	}
@@ -327,7 +327,7 @@ func (o *CancelableAccountActivity) UnsetType() {
 
 // GetRequesterIdentitySummary returns the RequesterIdentitySummary field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CancelableAccountActivity) GetRequesterIdentitySummary() IdentitySummary {
-	if o == nil || isNil(o.RequesterIdentitySummary.Get()) {
+	if o == nil || IsNil(o.RequesterIdentitySummary.Get()) {
 		var ret IdentitySummary
 		return ret
 	}
@@ -369,7 +369,7 @@ func (o *CancelableAccountActivity) UnsetRequesterIdentitySummary() {
 
 // GetTargetIdentitySummary returns the TargetIdentitySummary field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CancelableAccountActivity) GetTargetIdentitySummary() IdentitySummary {
-	if o == nil || isNil(o.TargetIdentitySummary.Get()) {
+	if o == nil || IsNil(o.TargetIdentitySummary.Get()) {
 		var ret IdentitySummary
 		return ret
 	}
@@ -422,7 +422,7 @@ func (o *CancelableAccountActivity) GetErrors() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CancelableAccountActivity) GetErrorsOk() ([]string, bool) {
-	if o == nil || isNil(o.Errors) {
+	if o == nil || IsNil(o.Errors) {
 		return nil, false
 	}
 	return o.Errors, true
@@ -430,7 +430,7 @@ func (o *CancelableAccountActivity) GetErrorsOk() ([]string, bool) {
 
 // HasErrors returns a boolean if a field has been set.
 func (o *CancelableAccountActivity) HasErrors() bool {
-	if o != nil && isNil(o.Errors) {
+	if o != nil && !IsNil(o.Errors) {
 		return true
 	}
 
@@ -455,7 +455,7 @@ func (o *CancelableAccountActivity) GetWarnings() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CancelableAccountActivity) GetWarningsOk() ([]string, bool) {
-	if o == nil || isNil(o.Warnings) {
+	if o == nil || IsNil(o.Warnings) {
 		return nil, false
 	}
 	return o.Warnings, true
@@ -463,7 +463,7 @@ func (o *CancelableAccountActivity) GetWarningsOk() ([]string, bool) {
 
 // HasWarnings returns a boolean if a field has been set.
 func (o *CancelableAccountActivity) HasWarnings() bool {
-	if o != nil && isNil(o.Warnings) {
+	if o != nil && !IsNil(o.Warnings) {
 		return true
 	}
 
@@ -488,7 +488,7 @@ func (o *CancelableAccountActivity) GetItems() []AccountActivityItem {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CancelableAccountActivity) GetItemsOk() ([]AccountActivityItem, bool) {
-	if o == nil || isNil(o.Items) {
+	if o == nil || IsNil(o.Items) {
 		return nil, false
 	}
 	return o.Items, true
@@ -496,7 +496,7 @@ func (o *CancelableAccountActivity) GetItemsOk() ([]AccountActivityItem, bool) {
 
 // HasItems returns a boolean if a field has been set.
 func (o *CancelableAccountActivity) HasItems() bool {
-	if o != nil && isNil(o.Items) {
+	if o != nil && !IsNil(o.Items) {
 		return true
 	}
 
@@ -510,7 +510,7 @@ func (o *CancelableAccountActivity) SetItems(v []AccountActivityItem) {
 
 // GetExecutionStatus returns the ExecutionStatus field value if set, zero value otherwise.
 func (o *CancelableAccountActivity) GetExecutionStatus() ExecutionStatus {
-	if o == nil || isNil(o.ExecutionStatus) {
+	if o == nil || IsNil(o.ExecutionStatus) {
 		var ret ExecutionStatus
 		return ret
 	}
@@ -520,7 +520,7 @@ func (o *CancelableAccountActivity) GetExecutionStatus() ExecutionStatus {
 // GetExecutionStatusOk returns a tuple with the ExecutionStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CancelableAccountActivity) GetExecutionStatusOk() (*ExecutionStatus, bool) {
-	if o == nil || isNil(o.ExecutionStatus) {
+	if o == nil || IsNil(o.ExecutionStatus) {
 		return nil, false
 	}
 	return o.ExecutionStatus, true
@@ -528,7 +528,7 @@ func (o *CancelableAccountActivity) GetExecutionStatusOk() (*ExecutionStatus, bo
 
 // HasExecutionStatus returns a boolean if a field has been set.
 func (o *CancelableAccountActivity) HasExecutionStatus() bool {
-	if o != nil && !isNil(o.ExecutionStatus) {
+	if o != nil && !IsNil(o.ExecutionStatus) {
 		return true
 	}
 
@@ -553,7 +553,7 @@ func (o *CancelableAccountActivity) GetClientMetadata() map[string]string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CancelableAccountActivity) GetClientMetadataOk() (*map[string]string, bool) {
-	if o == nil || isNil(o.ClientMetadata) {
+	if o == nil || IsNil(o.ClientMetadata) {
 		return nil, false
 	}
 	return &o.ClientMetadata, true
@@ -561,7 +561,7 @@ func (o *CancelableAccountActivity) GetClientMetadataOk() (*map[string]string, b
 
 // HasClientMetadata returns a boolean if a field has been set.
 func (o *CancelableAccountActivity) HasClientMetadata() bool {
-	if o != nil && isNil(o.ClientMetadata) {
+	if o != nil && !IsNil(o.ClientMetadata) {
 		return true
 	}
 
@@ -575,7 +575,7 @@ func (o *CancelableAccountActivity) SetClientMetadata(v map[string]string) {
 
 // GetCancelable returns the Cancelable field value if set, zero value otherwise.
 func (o *CancelableAccountActivity) GetCancelable() bool {
-	if o == nil || isNil(o.Cancelable) {
+	if o == nil || IsNil(o.Cancelable) {
 		var ret bool
 		return ret
 	}
@@ -585,7 +585,7 @@ func (o *CancelableAccountActivity) GetCancelable() bool {
 // GetCancelableOk returns a tuple with the Cancelable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CancelableAccountActivity) GetCancelableOk() (*bool, bool) {
-	if o == nil || isNil(o.Cancelable) {
+	if o == nil || IsNil(o.Cancelable) {
 		return nil, false
 	}
 	return o.Cancelable, true
@@ -593,7 +593,7 @@ func (o *CancelableAccountActivity) GetCancelableOk() (*bool, bool) {
 
 // HasCancelable returns a boolean if a field has been set.
 func (o *CancelableAccountActivity) HasCancelable() bool {
-	if o != nil && !isNil(o.Cancelable) {
+	if o != nil && !IsNil(o.Cancelable) {
 		return true
 	}
 
@@ -607,7 +607,7 @@ func (o *CancelableAccountActivity) SetCancelable(v bool) {
 
 // GetCancelComment returns the CancelComment field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CancelableAccountActivity) GetCancelComment() Comment {
-	if o == nil || isNil(o.CancelComment.Get()) {
+	if o == nil || IsNil(o.CancelComment.Get()) {
 		var ret Comment
 		return ret
 	}
@@ -657,13 +657,13 @@ func (o CancelableAccountActivity) MarshalJSON() ([]byte, error) {
 
 func (o CancelableAccountActivity) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Created) {
+	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
 	if o.Modified.IsSet() {
@@ -693,13 +693,13 @@ func (o CancelableAccountActivity) ToMap() (map[string]interface{}, error) {
 	if o.Items != nil {
 		toSerialize["items"] = o.Items
 	}
-	if !isNil(o.ExecutionStatus) {
+	if !IsNil(o.ExecutionStatus) {
 		toSerialize["executionStatus"] = o.ExecutionStatus
 	}
 	if o.ClientMetadata != nil {
 		toSerialize["clientMetadata"] = o.ClientMetadata
 	}
-	if !isNil(o.Cancelable) {
+	if !IsNil(o.Cancelable) {
 		toSerialize["cancelable"] = o.Cancelable
 	}
 	if o.CancelComment.IsSet() {
@@ -713,16 +713,20 @@ func (o CancelableAccountActivity) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CancelableAccountActivity) UnmarshalJSON(bytes []byte) (err error) {
+func (o *CancelableAccountActivity) UnmarshalJSON(data []byte) (err error) {
 	varCancelableAccountActivity := _CancelableAccountActivity{}
 
-	if err = json.Unmarshal(bytes, &varCancelableAccountActivity); err == nil {
+	err = json.Unmarshal(data, &varCancelableAccountActivity)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CancelableAccountActivity(varCancelableAccountActivity)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "created")

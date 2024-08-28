@@ -51,7 +51,7 @@ func NewPasswordStatusWithDefaults() *PasswordStatus {
 
 // GetRequestId returns the RequestId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PasswordStatus) GetRequestId() string {
-	if o == nil || isNil(o.RequestId.Get()) {
+	if o == nil || IsNil(o.RequestId.Get()) {
 		var ret string
 		return ret
 	}
@@ -93,7 +93,7 @@ func (o *PasswordStatus) UnsetRequestId() {
 
 // GetState returns the State field value if set, zero value otherwise.
 func (o *PasswordStatus) GetState() string {
-	if o == nil || isNil(o.State) {
+	if o == nil || IsNil(o.State) {
 		var ret string
 		return ret
 	}
@@ -103,7 +103,7 @@ func (o *PasswordStatus) GetState() string {
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordStatus) GetStateOk() (*string, bool) {
-	if o == nil || isNil(o.State) {
+	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
 	return o.State, true
@@ -111,7 +111,7 @@ func (o *PasswordStatus) GetStateOk() (*string, bool) {
 
 // HasState returns a boolean if a field has been set.
 func (o *PasswordStatus) HasState() bool {
-	if o != nil && !isNil(o.State) {
+	if o != nil && !IsNil(o.State) {
 		return true
 	}
 
@@ -125,7 +125,7 @@ func (o *PasswordStatus) SetState(v string) {
 
 // GetErrors returns the Errors field value if set, zero value otherwise.
 func (o *PasswordStatus) GetErrors() []string {
-	if o == nil || isNil(o.Errors) {
+	if o == nil || IsNil(o.Errors) {
 		var ret []string
 		return ret
 	}
@@ -135,7 +135,7 @@ func (o *PasswordStatus) GetErrors() []string {
 // GetErrorsOk returns a tuple with the Errors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordStatus) GetErrorsOk() ([]string, bool) {
-	if o == nil || isNil(o.Errors) {
+	if o == nil || IsNil(o.Errors) {
 		return nil, false
 	}
 	return o.Errors, true
@@ -143,7 +143,7 @@ func (o *PasswordStatus) GetErrorsOk() ([]string, bool) {
 
 // HasErrors returns a boolean if a field has been set.
 func (o *PasswordStatus) HasErrors() bool {
-	if o != nil && !isNil(o.Errors) {
+	if o != nil && !IsNil(o.Errors) {
 		return true
 	}
 
@@ -157,7 +157,7 @@ func (o *PasswordStatus) SetErrors(v []string) {
 
 // GetSourceIds returns the SourceIds field value if set, zero value otherwise.
 func (o *PasswordStatus) GetSourceIds() []string {
-	if o == nil || isNil(o.SourceIds) {
+	if o == nil || IsNil(o.SourceIds) {
 		var ret []string
 		return ret
 	}
@@ -167,7 +167,7 @@ func (o *PasswordStatus) GetSourceIds() []string {
 // GetSourceIdsOk returns a tuple with the SourceIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordStatus) GetSourceIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.SourceIds) {
+	if o == nil || IsNil(o.SourceIds) {
 		return nil, false
 	}
 	return o.SourceIds, true
@@ -175,7 +175,7 @@ func (o *PasswordStatus) GetSourceIdsOk() ([]string, bool) {
 
 // HasSourceIds returns a boolean if a field has been set.
 func (o *PasswordStatus) HasSourceIds() bool {
-	if o != nil && !isNil(o.SourceIds) {
+	if o != nil && !IsNil(o.SourceIds) {
 		return true
 	}
 
@@ -200,13 +200,13 @@ func (o PasswordStatus) ToMap() (map[string]interface{}, error) {
 	if o.RequestId.IsSet() {
 		toSerialize["requestId"] = o.RequestId.Get()
 	}
-	if !isNil(o.State) {
+	if !IsNil(o.State) {
 		toSerialize["state"] = o.State
 	}
-	if !isNil(o.Errors) {
+	if !IsNil(o.Errors) {
 		toSerialize["errors"] = o.Errors
 	}
-	if !isNil(o.SourceIds) {
+	if !IsNil(o.SourceIds) {
 		toSerialize["sourceIds"] = o.SourceIds
 	}
 
@@ -217,16 +217,20 @@ func (o PasswordStatus) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *PasswordStatus) UnmarshalJSON(bytes []byte) (err error) {
+func (o *PasswordStatus) UnmarshalJSON(data []byte) (err error) {
 	varPasswordStatus := _PasswordStatus{}
 
-	if err = json.Unmarshal(bytes, &varPasswordStatus); err == nil {
+	err = json.Unmarshal(data, &varPasswordStatus)
+
+	if err != nil {
+		return err
+	}
+
 	*o = PasswordStatus(varPasswordStatus)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "requestId")
 		delete(additionalProperties, "state")
 		delete(additionalProperties, "errors")

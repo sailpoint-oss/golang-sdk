@@ -56,7 +56,7 @@ func (o *CampaignReportsConfig) GetIdentityAttributeColumns() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CampaignReportsConfig) GetIdentityAttributeColumnsOk() ([]string, bool) {
-	if o == nil || isNil(o.IdentityAttributeColumns) {
+	if o == nil || IsNil(o.IdentityAttributeColumns) {
 		return nil, false
 	}
 	return o.IdentityAttributeColumns, true
@@ -64,7 +64,7 @@ func (o *CampaignReportsConfig) GetIdentityAttributeColumnsOk() ([]string, bool)
 
 // HasIdentityAttributeColumns returns a boolean if a field has been set.
 func (o *CampaignReportsConfig) HasIdentityAttributeColumns() bool {
-	if o != nil && isNil(o.IdentityAttributeColumns) {
+	if o != nil && !IsNil(o.IdentityAttributeColumns) {
 		return true
 	}
 
@@ -97,16 +97,20 @@ func (o CampaignReportsConfig) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CampaignReportsConfig) UnmarshalJSON(bytes []byte) (err error) {
+func (o *CampaignReportsConfig) UnmarshalJSON(data []byte) (err error) {
 	varCampaignReportsConfig := _CampaignReportsConfig{}
 
-	if err = json.Unmarshal(bytes, &varCampaignReportsConfig); err == nil {
+	err = json.Unmarshal(data, &varCampaignReportsConfig)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CampaignReportsConfig(varCampaignReportsConfig)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "identityAttributeColumns")
 		o.AdditionalProperties = additionalProperties
 	}

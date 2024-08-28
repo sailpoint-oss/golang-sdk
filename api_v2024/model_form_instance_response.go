@@ -77,7 +77,7 @@ func NewFormInstanceResponseWithDefaults() *FormInstanceResponse {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *FormInstanceResponse) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -87,7 +87,7 @@ func (o *FormInstanceResponse) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormInstanceResponse) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -95,7 +95,7 @@ func (o *FormInstanceResponse) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *FormInstanceResponse) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -109,7 +109,7 @@ func (o *FormInstanceResponse) SetCreated(v time.Time) {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
 func (o *FormInstanceResponse) GetCreatedBy() FormInstanceCreatedBy {
-	if o == nil || isNil(o.CreatedBy) {
+	if o == nil || IsNil(o.CreatedBy) {
 		var ret FormInstanceCreatedBy
 		return ret
 	}
@@ -119,7 +119,7 @@ func (o *FormInstanceResponse) GetCreatedBy() FormInstanceCreatedBy {
 // GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormInstanceResponse) GetCreatedByOk() (*FormInstanceCreatedBy, bool) {
-	if o == nil || isNil(o.CreatedBy) {
+	if o == nil || IsNil(o.CreatedBy) {
 		return nil, false
 	}
 	return o.CreatedBy, true
@@ -127,7 +127,7 @@ func (o *FormInstanceResponse) GetCreatedByOk() (*FormInstanceCreatedBy, bool) {
 
 // HasCreatedBy returns a boolean if a field has been set.
 func (o *FormInstanceResponse) HasCreatedBy() bool {
-	if o != nil && !isNil(o.CreatedBy) {
+	if o != nil && !IsNil(o.CreatedBy) {
 		return true
 	}
 
@@ -141,7 +141,7 @@ func (o *FormInstanceResponse) SetCreatedBy(v FormInstanceCreatedBy) {
 
 // GetExpire returns the Expire field value if set, zero value otherwise.
 func (o *FormInstanceResponse) GetExpire() string {
-	if o == nil || isNil(o.Expire) {
+	if o == nil || IsNil(o.Expire) {
 		var ret string
 		return ret
 	}
@@ -151,7 +151,7 @@ func (o *FormInstanceResponse) GetExpire() string {
 // GetExpireOk returns a tuple with the Expire field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormInstanceResponse) GetExpireOk() (*string, bool) {
-	if o == nil || isNil(o.Expire) {
+	if o == nil || IsNil(o.Expire) {
 		return nil, false
 	}
 	return o.Expire, true
@@ -159,7 +159,7 @@ func (o *FormInstanceResponse) GetExpireOk() (*string, bool) {
 
 // HasExpire returns a boolean if a field has been set.
 func (o *FormInstanceResponse) HasExpire() bool {
-	if o != nil && !isNil(o.Expire) {
+	if o != nil && !IsNil(o.Expire) {
 		return true
 	}
 
@@ -173,7 +173,7 @@ func (o *FormInstanceResponse) SetExpire(v string) {
 
 // GetFormConditions returns the FormConditions field value if set, zero value otherwise.
 func (o *FormInstanceResponse) GetFormConditions() []FormCondition {
-	if o == nil || isNil(o.FormConditions) {
+	if o == nil || IsNil(o.FormConditions) {
 		var ret []FormCondition
 		return ret
 	}
@@ -183,7 +183,7 @@ func (o *FormInstanceResponse) GetFormConditions() []FormCondition {
 // GetFormConditionsOk returns a tuple with the FormConditions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormInstanceResponse) GetFormConditionsOk() ([]FormCondition, bool) {
-	if o == nil || isNil(o.FormConditions) {
+	if o == nil || IsNil(o.FormConditions) {
 		return nil, false
 	}
 	return o.FormConditions, true
@@ -191,7 +191,7 @@ func (o *FormInstanceResponse) GetFormConditionsOk() ([]FormCondition, bool) {
 
 // HasFormConditions returns a boolean if a field has been set.
 func (o *FormInstanceResponse) HasFormConditions() bool {
-	if o != nil && !isNil(o.FormConditions) {
+	if o != nil && !IsNil(o.FormConditions) {
 		return true
 	}
 
@@ -205,7 +205,7 @@ func (o *FormInstanceResponse) SetFormConditions(v []FormCondition) {
 
 // GetFormData returns the FormData field value if set, zero value otherwise.
 func (o *FormInstanceResponse) GetFormData() map[string]map[string]interface{} {
-	if o == nil || isNil(o.FormData) {
+	if o == nil || IsNil(o.FormData) {
 		var ret map[string]map[string]interface{}
 		return ret
 	}
@@ -215,7 +215,7 @@ func (o *FormInstanceResponse) GetFormData() map[string]map[string]interface{} {
 // GetFormDataOk returns a tuple with the FormData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormInstanceResponse) GetFormDataOk() (map[string]map[string]interface{}, bool) {
-	if o == nil || isNil(o.FormData) {
+	if o == nil || IsNil(o.FormData) {
 		return map[string]map[string]interface{}{}, false
 	}
 	return o.FormData, true
@@ -223,7 +223,7 @@ func (o *FormInstanceResponse) GetFormDataOk() (map[string]map[string]interface{
 
 // HasFormData returns a boolean if a field has been set.
 func (o *FormInstanceResponse) HasFormData() bool {
-	if o != nil && !isNil(o.FormData) {
+	if o != nil && !IsNil(o.FormData) {
 		return true
 	}
 
@@ -237,7 +237,7 @@ func (o *FormInstanceResponse) SetFormData(v map[string]map[string]interface{}) 
 
 // GetFormDefinitionId returns the FormDefinitionId field value if set, zero value otherwise.
 func (o *FormInstanceResponse) GetFormDefinitionId() string {
-	if o == nil || isNil(o.FormDefinitionId) {
+	if o == nil || IsNil(o.FormDefinitionId) {
 		var ret string
 		return ret
 	}
@@ -247,7 +247,7 @@ func (o *FormInstanceResponse) GetFormDefinitionId() string {
 // GetFormDefinitionIdOk returns a tuple with the FormDefinitionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormInstanceResponse) GetFormDefinitionIdOk() (*string, bool) {
-	if o == nil || isNil(o.FormDefinitionId) {
+	if o == nil || IsNil(o.FormDefinitionId) {
 		return nil, false
 	}
 	return o.FormDefinitionId, true
@@ -255,7 +255,7 @@ func (o *FormInstanceResponse) GetFormDefinitionIdOk() (*string, bool) {
 
 // HasFormDefinitionId returns a boolean if a field has been set.
 func (o *FormInstanceResponse) HasFormDefinitionId() bool {
-	if o != nil && !isNil(o.FormDefinitionId) {
+	if o != nil && !IsNil(o.FormDefinitionId) {
 		return true
 	}
 
@@ -269,7 +269,7 @@ func (o *FormInstanceResponse) SetFormDefinitionId(v string) {
 
 // GetFormElements returns the FormElements field value if set, zero value otherwise.
 func (o *FormInstanceResponse) GetFormElements() []FormElement {
-	if o == nil || isNil(o.FormElements) {
+	if o == nil || IsNil(o.FormElements) {
 		var ret []FormElement
 		return ret
 	}
@@ -279,7 +279,7 @@ func (o *FormInstanceResponse) GetFormElements() []FormElement {
 // GetFormElementsOk returns a tuple with the FormElements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormInstanceResponse) GetFormElementsOk() ([]FormElement, bool) {
-	if o == nil || isNil(o.FormElements) {
+	if o == nil || IsNil(o.FormElements) {
 		return nil, false
 	}
 	return o.FormElements, true
@@ -287,7 +287,7 @@ func (o *FormInstanceResponse) GetFormElementsOk() ([]FormElement, bool) {
 
 // HasFormElements returns a boolean if a field has been set.
 func (o *FormInstanceResponse) HasFormElements() bool {
-	if o != nil && !isNil(o.FormElements) {
+	if o != nil && !IsNil(o.FormElements) {
 		return true
 	}
 
@@ -301,7 +301,7 @@ func (o *FormInstanceResponse) SetFormElements(v []FormElement) {
 
 // GetFormErrors returns the FormErrors field value if set, zero value otherwise.
 func (o *FormInstanceResponse) GetFormErrors() []FormError {
-	if o == nil || isNil(o.FormErrors) {
+	if o == nil || IsNil(o.FormErrors) {
 		var ret []FormError
 		return ret
 	}
@@ -311,7 +311,7 @@ func (o *FormInstanceResponse) GetFormErrors() []FormError {
 // GetFormErrorsOk returns a tuple with the FormErrors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormInstanceResponse) GetFormErrorsOk() ([]FormError, bool) {
-	if o == nil || isNil(o.FormErrors) {
+	if o == nil || IsNil(o.FormErrors) {
 		return nil, false
 	}
 	return o.FormErrors, true
@@ -319,7 +319,7 @@ func (o *FormInstanceResponse) GetFormErrorsOk() ([]FormError, bool) {
 
 // HasFormErrors returns a boolean if a field has been set.
 func (o *FormInstanceResponse) HasFormErrors() bool {
-	if o != nil && !isNil(o.FormErrors) {
+	if o != nil && !IsNil(o.FormErrors) {
 		return true
 	}
 
@@ -344,7 +344,7 @@ func (o *FormInstanceResponse) GetFormInput() map[string]map[string]interface{} 
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *FormInstanceResponse) GetFormInputOk() (map[string]map[string]interface{}, bool) {
-	if o == nil || isNil(o.FormInput) {
+	if o == nil || IsNil(o.FormInput) {
 		return map[string]map[string]interface{}{}, false
 	}
 	return o.FormInput, true
@@ -352,7 +352,7 @@ func (o *FormInstanceResponse) GetFormInputOk() (map[string]map[string]interface
 
 // HasFormInput returns a boolean if a field has been set.
 func (o *FormInstanceResponse) HasFormInput() bool {
-	if o != nil && isNil(o.FormInput) {
+	if o != nil && !IsNil(o.FormInput) {
 		return true
 	}
 
@@ -366,7 +366,7 @@ func (o *FormInstanceResponse) SetFormInput(v map[string]map[string]interface{})
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *FormInstanceResponse) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -376,7 +376,7 @@ func (o *FormInstanceResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormInstanceResponse) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -384,7 +384,7 @@ func (o *FormInstanceResponse) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *FormInstanceResponse) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -398,7 +398,7 @@ func (o *FormInstanceResponse) SetId(v string) {
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *FormInstanceResponse) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		var ret time.Time
 		return ret
 	}
@@ -408,7 +408,7 @@ func (o *FormInstanceResponse) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormInstanceResponse) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -416,7 +416,7 @@ func (o *FormInstanceResponse) GetModifiedOk() (*time.Time, bool) {
 
 // HasModified returns a boolean if a field has been set.
 func (o *FormInstanceResponse) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -430,7 +430,7 @@ func (o *FormInstanceResponse) SetModified(v time.Time) {
 
 // GetRecipients returns the Recipients field value if set, zero value otherwise.
 func (o *FormInstanceResponse) GetRecipients() []FormInstanceRecipient {
-	if o == nil || isNil(o.Recipients) {
+	if o == nil || IsNil(o.Recipients) {
 		var ret []FormInstanceRecipient
 		return ret
 	}
@@ -440,7 +440,7 @@ func (o *FormInstanceResponse) GetRecipients() []FormInstanceRecipient {
 // GetRecipientsOk returns a tuple with the Recipients field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormInstanceResponse) GetRecipientsOk() ([]FormInstanceRecipient, bool) {
-	if o == nil || isNil(o.Recipients) {
+	if o == nil || IsNil(o.Recipients) {
 		return nil, false
 	}
 	return o.Recipients, true
@@ -448,7 +448,7 @@ func (o *FormInstanceResponse) GetRecipientsOk() ([]FormInstanceRecipient, bool)
 
 // HasRecipients returns a boolean if a field has been set.
 func (o *FormInstanceResponse) HasRecipients() bool {
-	if o != nil && !isNil(o.Recipients) {
+	if o != nil && !IsNil(o.Recipients) {
 		return true
 	}
 
@@ -462,7 +462,7 @@ func (o *FormInstanceResponse) SetRecipients(v []FormInstanceRecipient) {
 
 // GetStandAloneForm returns the StandAloneForm field value if set, zero value otherwise.
 func (o *FormInstanceResponse) GetStandAloneForm() bool {
-	if o == nil || isNil(o.StandAloneForm) {
+	if o == nil || IsNil(o.StandAloneForm) {
 		var ret bool
 		return ret
 	}
@@ -472,7 +472,7 @@ func (o *FormInstanceResponse) GetStandAloneForm() bool {
 // GetStandAloneFormOk returns a tuple with the StandAloneForm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormInstanceResponse) GetStandAloneFormOk() (*bool, bool) {
-	if o == nil || isNil(o.StandAloneForm) {
+	if o == nil || IsNil(o.StandAloneForm) {
 		return nil, false
 	}
 	return o.StandAloneForm, true
@@ -480,7 +480,7 @@ func (o *FormInstanceResponse) GetStandAloneFormOk() (*bool, bool) {
 
 // HasStandAloneForm returns a boolean if a field has been set.
 func (o *FormInstanceResponse) HasStandAloneForm() bool {
-	if o != nil && !isNil(o.StandAloneForm) {
+	if o != nil && !IsNil(o.StandAloneForm) {
 		return true
 	}
 
@@ -494,7 +494,7 @@ func (o *FormInstanceResponse) SetStandAloneForm(v bool) {
 
 // GetStandAloneFormUrl returns the StandAloneFormUrl field value if set, zero value otherwise.
 func (o *FormInstanceResponse) GetStandAloneFormUrl() string {
-	if o == nil || isNil(o.StandAloneFormUrl) {
+	if o == nil || IsNil(o.StandAloneFormUrl) {
 		var ret string
 		return ret
 	}
@@ -504,7 +504,7 @@ func (o *FormInstanceResponse) GetStandAloneFormUrl() string {
 // GetStandAloneFormUrlOk returns a tuple with the StandAloneFormUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormInstanceResponse) GetStandAloneFormUrlOk() (*string, bool) {
-	if o == nil || isNil(o.StandAloneFormUrl) {
+	if o == nil || IsNil(o.StandAloneFormUrl) {
 		return nil, false
 	}
 	return o.StandAloneFormUrl, true
@@ -512,7 +512,7 @@ func (o *FormInstanceResponse) GetStandAloneFormUrlOk() (*string, bool) {
 
 // HasStandAloneFormUrl returns a boolean if a field has been set.
 func (o *FormInstanceResponse) HasStandAloneFormUrl() bool {
-	if o != nil && !isNil(o.StandAloneFormUrl) {
+	if o != nil && !IsNil(o.StandAloneFormUrl) {
 		return true
 	}
 
@@ -526,7 +526,7 @@ func (o *FormInstanceResponse) SetStandAloneFormUrl(v string) {
 
 // GetState returns the State field value if set, zero value otherwise.
 func (o *FormInstanceResponse) GetState() string {
-	if o == nil || isNil(o.State) {
+	if o == nil || IsNil(o.State) {
 		var ret string
 		return ret
 	}
@@ -536,7 +536,7 @@ func (o *FormInstanceResponse) GetState() string {
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormInstanceResponse) GetStateOk() (*string, bool) {
-	if o == nil || isNil(o.State) {
+	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
 	return o.State, true
@@ -544,7 +544,7 @@ func (o *FormInstanceResponse) GetStateOk() (*string, bool) {
 
 // HasState returns a boolean if a field has been set.
 func (o *FormInstanceResponse) HasState() bool {
-	if o != nil && !isNil(o.State) {
+	if o != nil && !IsNil(o.State) {
 		return true
 	}
 
@@ -566,49 +566,49 @@ func (o FormInstanceResponse) MarshalJSON() ([]byte, error) {
 
 func (o FormInstanceResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Created) {
+	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
-	if !isNil(o.CreatedBy) {
+	if !IsNil(o.CreatedBy) {
 		toSerialize["createdBy"] = o.CreatedBy
 	}
-	if !isNil(o.Expire) {
+	if !IsNil(o.Expire) {
 		toSerialize["expire"] = o.Expire
 	}
-	if !isNil(o.FormConditions) {
+	if !IsNil(o.FormConditions) {
 		toSerialize["formConditions"] = o.FormConditions
 	}
-	if !isNil(o.FormData) {
+	if !IsNil(o.FormData) {
 		toSerialize["formData"] = o.FormData
 	}
-	if !isNil(o.FormDefinitionId) {
+	if !IsNil(o.FormDefinitionId) {
 		toSerialize["formDefinitionId"] = o.FormDefinitionId
 	}
-	if !isNil(o.FormElements) {
+	if !IsNil(o.FormElements) {
 		toSerialize["formElements"] = o.FormElements
 	}
-	if !isNil(o.FormErrors) {
+	if !IsNil(o.FormErrors) {
 		toSerialize["formErrors"] = o.FormErrors
 	}
 	if o.FormInput != nil {
 		toSerialize["formInput"] = o.FormInput
 	}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Modified) {
+	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
-	if !isNil(o.Recipients) {
+	if !IsNil(o.Recipients) {
 		toSerialize["recipients"] = o.Recipients
 	}
-	if !isNil(o.StandAloneForm) {
+	if !IsNil(o.StandAloneForm) {
 		toSerialize["standAloneForm"] = o.StandAloneForm
 	}
-	if !isNil(o.StandAloneFormUrl) {
+	if !IsNil(o.StandAloneFormUrl) {
 		toSerialize["standAloneFormUrl"] = o.StandAloneFormUrl
 	}
-	if !isNil(o.State) {
+	if !IsNil(o.State) {
 		toSerialize["state"] = o.State
 	}
 
@@ -619,16 +619,20 @@ func (o FormInstanceResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *FormInstanceResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *FormInstanceResponse) UnmarshalJSON(data []byte) (err error) {
 	varFormInstanceResponse := _FormInstanceResponse{}
 
-	if err = json.Unmarshal(bytes, &varFormInstanceResponse); err == nil {
+	err = json.Unmarshal(data, &varFormInstanceResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = FormInstanceResponse(varFormInstanceResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "createdBy")
 		delete(additionalProperties, "expire")

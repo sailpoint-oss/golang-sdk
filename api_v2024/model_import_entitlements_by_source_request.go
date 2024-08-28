@@ -46,7 +46,7 @@ func NewImportEntitlementsBySourceRequestWithDefaults() *ImportEntitlementsBySou
 
 // GetCsvFile returns the CsvFile field value if set, zero value otherwise.
 func (o *ImportEntitlementsBySourceRequest) GetCsvFile() *os.File {
-	if o == nil || isNil(o.CsvFile) {
+	if o == nil || IsNil(o.CsvFile) {
 		var ret *os.File
 		return ret
 	}
@@ -56,7 +56,7 @@ func (o *ImportEntitlementsBySourceRequest) GetCsvFile() *os.File {
 // GetCsvFileOk returns a tuple with the CsvFile field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImportEntitlementsBySourceRequest) GetCsvFileOk() (**os.File, bool) {
-	if o == nil || isNil(o.CsvFile) {
+	if o == nil || IsNil(o.CsvFile) {
 		return nil, false
 	}
 	return o.CsvFile, true
@@ -64,7 +64,7 @@ func (o *ImportEntitlementsBySourceRequest) GetCsvFileOk() (**os.File, bool) {
 
 // HasCsvFile returns a boolean if a field has been set.
 func (o *ImportEntitlementsBySourceRequest) HasCsvFile() bool {
-	if o != nil && !isNil(o.CsvFile) {
+	if o != nil && !IsNil(o.CsvFile) {
 		return true
 	}
 
@@ -86,7 +86,7 @@ func (o ImportEntitlementsBySourceRequest) MarshalJSON() ([]byte, error) {
 
 func (o ImportEntitlementsBySourceRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.CsvFile) {
+	if !IsNil(o.CsvFile) {
 		toSerialize["csvFile"] = o.CsvFile
 	}
 
@@ -97,16 +97,20 @@ func (o ImportEntitlementsBySourceRequest) ToMap() (map[string]interface{}, erro
 	return toSerialize, nil
 }
 
-func (o *ImportEntitlementsBySourceRequest) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ImportEntitlementsBySourceRequest) UnmarshalJSON(data []byte) (err error) {
 	varImportEntitlementsBySourceRequest := _ImportEntitlementsBySourceRequest{}
 
-	if err = json.Unmarshal(bytes, &varImportEntitlementsBySourceRequest); err == nil {
+	err = json.Unmarshal(data, &varImportEntitlementsBySourceRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ImportEntitlementsBySourceRequest(varImportEntitlementsBySourceRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "csvFile")
 		o.AdditionalProperties = additionalProperties
 	}

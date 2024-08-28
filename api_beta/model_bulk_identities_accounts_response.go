@@ -49,7 +49,7 @@ func NewBulkIdentitiesAccountsResponseWithDefaults() *BulkIdentitiesAccountsResp
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *BulkIdentitiesAccountsResponse) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *BulkIdentitiesAccountsResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BulkIdentitiesAccountsResponse) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -67,7 +67,7 @@ func (o *BulkIdentitiesAccountsResponse) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *BulkIdentitiesAccountsResponse) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *BulkIdentitiesAccountsResponse) SetId(v string) {
 
 // GetStatusCode returns the StatusCode field value if set, zero value otherwise.
 func (o *BulkIdentitiesAccountsResponse) GetStatusCode() int32 {
-	if o == nil || isNil(o.StatusCode) {
+	if o == nil || IsNil(o.StatusCode) {
 		var ret int32
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *BulkIdentitiesAccountsResponse) GetStatusCode() int32 {
 // GetStatusCodeOk returns a tuple with the StatusCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BulkIdentitiesAccountsResponse) GetStatusCodeOk() (*int32, bool) {
-	if o == nil || isNil(o.StatusCode) {
+	if o == nil || IsNil(o.StatusCode) {
 		return nil, false
 	}
 	return o.StatusCode, true
@@ -99,7 +99,7 @@ func (o *BulkIdentitiesAccountsResponse) GetStatusCodeOk() (*int32, bool) {
 
 // HasStatusCode returns a boolean if a field has been set.
 func (o *BulkIdentitiesAccountsResponse) HasStatusCode() bool {
-	if o != nil && !isNil(o.StatusCode) {
+	if o != nil && !IsNil(o.StatusCode) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *BulkIdentitiesAccountsResponse) SetStatusCode(v int32) {
 
 // GetMessage returns the Message field value if set, zero value otherwise.
 func (o *BulkIdentitiesAccountsResponse) GetMessage() string {
-	if o == nil || isNil(o.Message) {
+	if o == nil || IsNil(o.Message) {
 		var ret string
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *BulkIdentitiesAccountsResponse) GetMessage() string {
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BulkIdentitiesAccountsResponse) GetMessageOk() (*string, bool) {
-	if o == nil || isNil(o.Message) {
+	if o == nil || IsNil(o.Message) {
 		return nil, false
 	}
 	return o.Message, true
@@ -131,7 +131,7 @@ func (o *BulkIdentitiesAccountsResponse) GetMessageOk() (*string, bool) {
 
 // HasMessage returns a boolean if a field has been set.
 func (o *BulkIdentitiesAccountsResponse) HasMessage() bool {
-	if o != nil && !isNil(o.Message) {
+	if o != nil && !IsNil(o.Message) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o BulkIdentitiesAccountsResponse) MarshalJSON() ([]byte, error) {
 
 func (o BulkIdentitiesAccountsResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.StatusCode) {
+	if !IsNil(o.StatusCode) {
 		toSerialize["statusCode"] = o.StatusCode
 	}
-	if !isNil(o.Message) {
+	if !IsNil(o.Message) {
 		toSerialize["message"] = o.Message
 	}
 
@@ -170,16 +170,20 @@ func (o BulkIdentitiesAccountsResponse) ToMap() (map[string]interface{}, error) 
 	return toSerialize, nil
 }
 
-func (o *BulkIdentitiesAccountsResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *BulkIdentitiesAccountsResponse) UnmarshalJSON(data []byte) (err error) {
 	varBulkIdentitiesAccountsResponse := _BulkIdentitiesAccountsResponse{}
 
-	if err = json.Unmarshal(bytes, &varBulkIdentitiesAccountsResponse); err == nil {
+	err = json.Unmarshal(data, &varBulkIdentitiesAccountsResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = BulkIdentitiesAccountsResponse(varBulkIdentitiesAccountsResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "statusCode")
 		delete(additionalProperties, "message")

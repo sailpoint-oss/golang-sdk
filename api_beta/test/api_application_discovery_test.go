@@ -19,14 +19,14 @@ import (
 
 func Test_api_beta_ApplicationDiscoveryAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test ApplicationDiscoveryAPIService GetDiscoveredApplications", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.ApplicationDiscoveryAPI.GetDiscoveredApplications(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ApplicationDiscoveryAPI.GetDiscoveredApplications(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -38,7 +38,7 @@ func Test_api_beta_ApplicationDiscoveryAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.ApplicationDiscoveryAPI.GetManualDiscoverApplicationsCsvTemplate(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ApplicationDiscoveryAPI.GetManualDiscoverApplicationsCsvTemplate(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -50,7 +50,7 @@ func Test_api_beta_ApplicationDiscoveryAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.ApplicationDiscoveryAPI.GetVendorConnectorMappings(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ApplicationDiscoveryAPI.GetVendorConnectorMappings(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -62,7 +62,7 @@ func Test_api_beta_ApplicationDiscoveryAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.API_BETA.ApplicationDiscoveryAPI.SendManualDiscoverApplicationsCsvTemplate(context.Background()).Execute()
+		httpRes, err := apiClient.ApplicationDiscoveryAPI.SendManualDiscoverApplicationsCsvTemplate(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

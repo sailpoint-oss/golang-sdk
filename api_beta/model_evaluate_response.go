@@ -47,7 +47,7 @@ func NewEvaluateResponseWithDefaults() *EvaluateResponse {
 
 // GetReassignToId returns the ReassignToId field value if set, zero value otherwise.
 func (o *EvaluateResponse) GetReassignToId() string {
-	if o == nil || isNil(o.ReassignToId) {
+	if o == nil || IsNil(o.ReassignToId) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *EvaluateResponse) GetReassignToId() string {
 // GetReassignToIdOk returns a tuple with the ReassignToId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EvaluateResponse) GetReassignToIdOk() (*string, bool) {
-	if o == nil || isNil(o.ReassignToId) {
+	if o == nil || IsNil(o.ReassignToId) {
 		return nil, false
 	}
 	return o.ReassignToId, true
@@ -65,7 +65,7 @@ func (o *EvaluateResponse) GetReassignToIdOk() (*string, bool) {
 
 // HasReassignToId returns a boolean if a field has been set.
 func (o *EvaluateResponse) HasReassignToId() bool {
-	if o != nil && !isNil(o.ReassignToId) {
+	if o != nil && !IsNil(o.ReassignToId) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *EvaluateResponse) SetReassignToId(v string) {
 
 // GetLookupTrail returns the LookupTrail field value if set, zero value otherwise.
 func (o *EvaluateResponse) GetLookupTrail() []LookupStep {
-	if o == nil || isNil(o.LookupTrail) {
+	if o == nil || IsNil(o.LookupTrail) {
 		var ret []LookupStep
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *EvaluateResponse) GetLookupTrail() []LookupStep {
 // GetLookupTrailOk returns a tuple with the LookupTrail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EvaluateResponse) GetLookupTrailOk() ([]LookupStep, bool) {
-	if o == nil || isNil(o.LookupTrail) {
+	if o == nil || IsNil(o.LookupTrail) {
 		return nil, false
 	}
 	return o.LookupTrail, true
@@ -97,7 +97,7 @@ func (o *EvaluateResponse) GetLookupTrailOk() ([]LookupStep, bool) {
 
 // HasLookupTrail returns a boolean if a field has been set.
 func (o *EvaluateResponse) HasLookupTrail() bool {
-	if o != nil && !isNil(o.LookupTrail) {
+	if o != nil && !IsNil(o.LookupTrail) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o EvaluateResponse) MarshalJSON() ([]byte, error) {
 
 func (o EvaluateResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ReassignToId) {
+	if !IsNil(o.ReassignToId) {
 		toSerialize["reassignToId"] = o.ReassignToId
 	}
-	if !isNil(o.LookupTrail) {
+	if !IsNil(o.LookupTrail) {
 		toSerialize["lookupTrail"] = o.LookupTrail
 	}
 
@@ -133,16 +133,20 @@ func (o EvaluateResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *EvaluateResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *EvaluateResponse) UnmarshalJSON(data []byte) (err error) {
 	varEvaluateResponse := _EvaluateResponse{}
 
-	if err = json.Unmarshal(bytes, &varEvaluateResponse); err == nil {
+	err = json.Unmarshal(data, &varEvaluateResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = EvaluateResponse(varEvaluateResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "reassignToId")
 		delete(additionalProperties, "lookupTrail")
 		o.AdditionalProperties = additionalProperties

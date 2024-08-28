@@ -45,7 +45,7 @@ func NewTestWorkflow200ResponseWithDefaults() *TestWorkflow200Response {
 
 // GetWorkflowExecutionId returns the WorkflowExecutionId field value if set, zero value otherwise.
 func (o *TestWorkflow200Response) GetWorkflowExecutionId() string {
-	if o == nil || isNil(o.WorkflowExecutionId) {
+	if o == nil || IsNil(o.WorkflowExecutionId) {
 		var ret string
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *TestWorkflow200Response) GetWorkflowExecutionId() string {
 // GetWorkflowExecutionIdOk returns a tuple with the WorkflowExecutionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TestWorkflow200Response) GetWorkflowExecutionIdOk() (*string, bool) {
-	if o == nil || isNil(o.WorkflowExecutionId) {
+	if o == nil || IsNil(o.WorkflowExecutionId) {
 		return nil, false
 	}
 	return o.WorkflowExecutionId, true
@@ -63,7 +63,7 @@ func (o *TestWorkflow200Response) GetWorkflowExecutionIdOk() (*string, bool) {
 
 // HasWorkflowExecutionId returns a boolean if a field has been set.
 func (o *TestWorkflow200Response) HasWorkflowExecutionId() bool {
-	if o != nil && !isNil(o.WorkflowExecutionId) {
+	if o != nil && !IsNil(o.WorkflowExecutionId) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o TestWorkflow200Response) MarshalJSON() ([]byte, error) {
 
 func (o TestWorkflow200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.WorkflowExecutionId) {
+	if !IsNil(o.WorkflowExecutionId) {
 		toSerialize["workflowExecutionId"] = o.WorkflowExecutionId
 	}
 
@@ -96,16 +96,20 @@ func (o TestWorkflow200Response) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *TestWorkflow200Response) UnmarshalJSON(bytes []byte) (err error) {
+func (o *TestWorkflow200Response) UnmarshalJSON(data []byte) (err error) {
 	varTestWorkflow200Response := _TestWorkflow200Response{}
 
-	if err = json.Unmarshal(bytes, &varTestWorkflow200Response); err == nil {
+	err = json.Unmarshal(data, &varTestWorkflow200Response)
+
+	if err != nil {
+		return err
+	}
+
 	*o = TestWorkflow200Response(varTestWorkflow200Response)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "workflowExecutionId")
 		o.AdditionalProperties = additionalProperties
 	}

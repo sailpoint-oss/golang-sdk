@@ -51,7 +51,7 @@ func NewExportPayloadWithDefaults() *ExportPayload {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ExportPayload) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -61,7 +61,7 @@ func (o *ExportPayload) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExportPayload) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -69,7 +69,7 @@ func (o *ExportPayload) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *ExportPayload) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -83,7 +83,7 @@ func (o *ExportPayload) SetDescription(v string) {
 
 // GetExcludeTypes returns the ExcludeTypes field value if set, zero value otherwise.
 func (o *ExportPayload) GetExcludeTypes() []string {
-	if o == nil || isNil(o.ExcludeTypes) {
+	if o == nil || IsNil(o.ExcludeTypes) {
 		var ret []string
 		return ret
 	}
@@ -93,7 +93,7 @@ func (o *ExportPayload) GetExcludeTypes() []string {
 // GetExcludeTypesOk returns a tuple with the ExcludeTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExportPayload) GetExcludeTypesOk() ([]string, bool) {
-	if o == nil || isNil(o.ExcludeTypes) {
+	if o == nil || IsNil(o.ExcludeTypes) {
 		return nil, false
 	}
 	return o.ExcludeTypes, true
@@ -101,7 +101,7 @@ func (o *ExportPayload) GetExcludeTypesOk() ([]string, bool) {
 
 // HasExcludeTypes returns a boolean if a field has been set.
 func (o *ExportPayload) HasExcludeTypes() bool {
-	if o != nil && !isNil(o.ExcludeTypes) {
+	if o != nil && !IsNil(o.ExcludeTypes) {
 		return true
 	}
 
@@ -115,7 +115,7 @@ func (o *ExportPayload) SetExcludeTypes(v []string) {
 
 // GetIncludeTypes returns the IncludeTypes field value if set, zero value otherwise.
 func (o *ExportPayload) GetIncludeTypes() []string {
-	if o == nil || isNil(o.IncludeTypes) {
+	if o == nil || IsNil(o.IncludeTypes) {
 		var ret []string
 		return ret
 	}
@@ -125,7 +125,7 @@ func (o *ExportPayload) GetIncludeTypes() []string {
 // GetIncludeTypesOk returns a tuple with the IncludeTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExportPayload) GetIncludeTypesOk() ([]string, bool) {
-	if o == nil || isNil(o.IncludeTypes) {
+	if o == nil || IsNil(o.IncludeTypes) {
 		return nil, false
 	}
 	return o.IncludeTypes, true
@@ -133,7 +133,7 @@ func (o *ExportPayload) GetIncludeTypesOk() ([]string, bool) {
 
 // HasIncludeTypes returns a boolean if a field has been set.
 func (o *ExportPayload) HasIncludeTypes() bool {
-	if o != nil && !isNil(o.IncludeTypes) {
+	if o != nil && !IsNil(o.IncludeTypes) {
 		return true
 	}
 
@@ -147,7 +147,7 @@ func (o *ExportPayload) SetIncludeTypes(v []string) {
 
 // GetObjectOptions returns the ObjectOptions field value if set, zero value otherwise.
 func (o *ExportPayload) GetObjectOptions() map[string]ObjectExportImportOptions {
-	if o == nil || isNil(o.ObjectOptions) {
+	if o == nil || IsNil(o.ObjectOptions) {
 		var ret map[string]ObjectExportImportOptions
 		return ret
 	}
@@ -157,7 +157,7 @@ func (o *ExportPayload) GetObjectOptions() map[string]ObjectExportImportOptions 
 // GetObjectOptionsOk returns a tuple with the ObjectOptions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExportPayload) GetObjectOptionsOk() (*map[string]ObjectExportImportOptions, bool) {
-	if o == nil || isNil(o.ObjectOptions) {
+	if o == nil || IsNil(o.ObjectOptions) {
 		return nil, false
 	}
 	return o.ObjectOptions, true
@@ -165,7 +165,7 @@ func (o *ExportPayload) GetObjectOptionsOk() (*map[string]ObjectExportImportOpti
 
 // HasObjectOptions returns a boolean if a field has been set.
 func (o *ExportPayload) HasObjectOptions() bool {
-	if o != nil && !isNil(o.ObjectOptions) {
+	if o != nil && !IsNil(o.ObjectOptions) {
 		return true
 	}
 
@@ -187,16 +187,16 @@ func (o ExportPayload) MarshalJSON() ([]byte, error) {
 
 func (o ExportPayload) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.ExcludeTypes) {
+	if !IsNil(o.ExcludeTypes) {
 		toSerialize["excludeTypes"] = o.ExcludeTypes
 	}
-	if !isNil(o.IncludeTypes) {
+	if !IsNil(o.IncludeTypes) {
 		toSerialize["includeTypes"] = o.IncludeTypes
 	}
-	if !isNil(o.ObjectOptions) {
+	if !IsNil(o.ObjectOptions) {
 		toSerialize["objectOptions"] = o.ObjectOptions
 	}
 
@@ -207,16 +207,20 @@ func (o ExportPayload) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ExportPayload) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ExportPayload) UnmarshalJSON(data []byte) (err error) {
 	varExportPayload := _ExportPayload{}
 
-	if err = json.Unmarshal(bytes, &varExportPayload); err == nil {
+	err = json.Unmarshal(data, &varExportPayload)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ExportPayload(varExportPayload)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "excludeTypes")
 		delete(additionalProperties, "includeTypes")

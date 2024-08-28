@@ -66,7 +66,7 @@ func NewOutlierWithDefaults() *Outlier {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Outlier) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -76,7 +76,7 @@ func (o *Outlier) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Outlier) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -84,7 +84,7 @@ func (o *Outlier) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *Outlier) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -98,7 +98,7 @@ func (o *Outlier) SetId(v string) {
 
 // GetIdentityId returns the IdentityId field value if set, zero value otherwise.
 func (o *Outlier) GetIdentityId() string {
-	if o == nil || isNil(o.IdentityId) {
+	if o == nil || IsNil(o.IdentityId) {
 		var ret string
 		return ret
 	}
@@ -108,7 +108,7 @@ func (o *Outlier) GetIdentityId() string {
 // GetIdentityIdOk returns a tuple with the IdentityId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Outlier) GetIdentityIdOk() (*string, bool) {
-	if o == nil || isNil(o.IdentityId) {
+	if o == nil || IsNil(o.IdentityId) {
 		return nil, false
 	}
 	return o.IdentityId, true
@@ -116,7 +116,7 @@ func (o *Outlier) GetIdentityIdOk() (*string, bool) {
 
 // HasIdentityId returns a boolean if a field has been set.
 func (o *Outlier) HasIdentityId() bool {
-	if o != nil && !isNil(o.IdentityId) {
+	if o != nil && !IsNil(o.IdentityId) {
 		return true
 	}
 
@@ -130,7 +130,7 @@ func (o *Outlier) SetIdentityId(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *Outlier) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -140,7 +140,7 @@ func (o *Outlier) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Outlier) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -148,7 +148,7 @@ func (o *Outlier) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *Outlier) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -162,7 +162,7 @@ func (o *Outlier) SetType(v string) {
 
 // GetFirstDetectionDate returns the FirstDetectionDate field value if set, zero value otherwise.
 func (o *Outlier) GetFirstDetectionDate() time.Time {
-	if o == nil || isNil(o.FirstDetectionDate) {
+	if o == nil || IsNil(o.FirstDetectionDate) {
 		var ret time.Time
 		return ret
 	}
@@ -172,7 +172,7 @@ func (o *Outlier) GetFirstDetectionDate() time.Time {
 // GetFirstDetectionDateOk returns a tuple with the FirstDetectionDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Outlier) GetFirstDetectionDateOk() (*time.Time, bool) {
-	if o == nil || isNil(o.FirstDetectionDate) {
+	if o == nil || IsNil(o.FirstDetectionDate) {
 		return nil, false
 	}
 	return o.FirstDetectionDate, true
@@ -180,7 +180,7 @@ func (o *Outlier) GetFirstDetectionDateOk() (*time.Time, bool) {
 
 // HasFirstDetectionDate returns a boolean if a field has been set.
 func (o *Outlier) HasFirstDetectionDate() bool {
-	if o != nil && !isNil(o.FirstDetectionDate) {
+	if o != nil && !IsNil(o.FirstDetectionDate) {
 		return true
 	}
 
@@ -194,7 +194,7 @@ func (o *Outlier) SetFirstDetectionDate(v time.Time) {
 
 // GetLatestDetectionDate returns the LatestDetectionDate field value if set, zero value otherwise.
 func (o *Outlier) GetLatestDetectionDate() time.Time {
-	if o == nil || isNil(o.LatestDetectionDate) {
+	if o == nil || IsNil(o.LatestDetectionDate) {
 		var ret time.Time
 		return ret
 	}
@@ -204,7 +204,7 @@ func (o *Outlier) GetLatestDetectionDate() time.Time {
 // GetLatestDetectionDateOk returns a tuple with the LatestDetectionDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Outlier) GetLatestDetectionDateOk() (*time.Time, bool) {
-	if o == nil || isNil(o.LatestDetectionDate) {
+	if o == nil || IsNil(o.LatestDetectionDate) {
 		return nil, false
 	}
 	return o.LatestDetectionDate, true
@@ -212,7 +212,7 @@ func (o *Outlier) GetLatestDetectionDateOk() (*time.Time, bool) {
 
 // HasLatestDetectionDate returns a boolean if a field has been set.
 func (o *Outlier) HasLatestDetectionDate() bool {
-	if o != nil && !isNil(o.LatestDetectionDate) {
+	if o != nil && !IsNil(o.LatestDetectionDate) {
 		return true
 	}
 
@@ -226,7 +226,7 @@ func (o *Outlier) SetLatestDetectionDate(v time.Time) {
 
 // GetIgnored returns the Ignored field value if set, zero value otherwise.
 func (o *Outlier) GetIgnored() bool {
-	if o == nil || isNil(o.Ignored) {
+	if o == nil || IsNil(o.Ignored) {
 		var ret bool
 		return ret
 	}
@@ -236,7 +236,7 @@ func (o *Outlier) GetIgnored() bool {
 // GetIgnoredOk returns a tuple with the Ignored field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Outlier) GetIgnoredOk() (*bool, bool) {
-	if o == nil || isNil(o.Ignored) {
+	if o == nil || IsNil(o.Ignored) {
 		return nil, false
 	}
 	return o.Ignored, true
@@ -244,7 +244,7 @@ func (o *Outlier) GetIgnoredOk() (*bool, bool) {
 
 // HasIgnored returns a boolean if a field has been set.
 func (o *Outlier) HasIgnored() bool {
-	if o != nil && !isNil(o.Ignored) {
+	if o != nil && !IsNil(o.Ignored) {
 		return true
 	}
 
@@ -258,7 +258,7 @@ func (o *Outlier) SetIgnored(v bool) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *Outlier) GetAttributes() map[string]interface{} {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -268,7 +268,7 @@ func (o *Outlier) GetAttributes() map[string]interface{} {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Outlier) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
@@ -276,7 +276,7 @@ func (o *Outlier) GetAttributesOk() (map[string]interface{}, bool) {
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *Outlier) HasAttributes() bool {
-	if o != nil && !isNil(o.Attributes) {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -290,7 +290,7 @@ func (o *Outlier) SetAttributes(v map[string]interface{}) {
 
 // GetScore returns the Score field value if set, zero value otherwise.
 func (o *Outlier) GetScore() float32 {
-	if o == nil || isNil(o.Score) {
+	if o == nil || IsNil(o.Score) {
 		var ret float32
 		return ret
 	}
@@ -300,7 +300,7 @@ func (o *Outlier) GetScore() float32 {
 // GetScoreOk returns a tuple with the Score field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Outlier) GetScoreOk() (*float32, bool) {
-	if o == nil || isNil(o.Score) {
+	if o == nil || IsNil(o.Score) {
 		return nil, false
 	}
 	return o.Score, true
@@ -308,7 +308,7 @@ func (o *Outlier) GetScoreOk() (*float32, bool) {
 
 // HasScore returns a boolean if a field has been set.
 func (o *Outlier) HasScore() bool {
-	if o != nil && !isNil(o.Score) {
+	if o != nil && !IsNil(o.Score) {
 		return true
 	}
 
@@ -322,7 +322,7 @@ func (o *Outlier) SetScore(v float32) {
 
 // GetUnignoreType returns the UnignoreType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Outlier) GetUnignoreType() string {
-	if o == nil || isNil(o.UnignoreType.Get()) {
+	if o == nil || IsNil(o.UnignoreType.Get()) {
 		var ret string
 		return ret
 	}
@@ -364,7 +364,7 @@ func (o *Outlier) UnsetUnignoreType() {
 
 // GetUnignoreDate returns the UnignoreDate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Outlier) GetUnignoreDate() time.Time {
-	if o == nil || isNil(o.UnignoreDate.Get()) {
+	if o == nil || IsNil(o.UnignoreDate.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -406,7 +406,7 @@ func (o *Outlier) UnsetUnignoreDate() {
 
 // GetIgnoreDate returns the IgnoreDate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Outlier) GetIgnoreDate() time.Time {
-	if o == nil || isNil(o.IgnoreDate.Get()) {
+	if o == nil || IsNil(o.IgnoreDate.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -456,28 +456,28 @@ func (o Outlier) MarshalJSON() ([]byte, error) {
 
 func (o Outlier) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.IdentityId) {
+	if !IsNil(o.IdentityId) {
 		toSerialize["identityId"] = o.IdentityId
 	}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.FirstDetectionDate) {
+	if !IsNil(o.FirstDetectionDate) {
 		toSerialize["firstDetectionDate"] = o.FirstDetectionDate
 	}
-	if !isNil(o.LatestDetectionDate) {
+	if !IsNil(o.LatestDetectionDate) {
 		toSerialize["latestDetectionDate"] = o.LatestDetectionDate
 	}
-	if !isNil(o.Ignored) {
+	if !IsNil(o.Ignored) {
 		toSerialize["ignored"] = o.Ignored
 	}
-	if !isNil(o.Attributes) {
+	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
-	if !isNil(o.Score) {
+	if !IsNil(o.Score) {
 		toSerialize["score"] = o.Score
 	}
 	if o.UnignoreType.IsSet() {
@@ -497,16 +497,20 @@ func (o Outlier) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Outlier) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Outlier) UnmarshalJSON(data []byte) (err error) {
 	varOutlier := _Outlier{}
 
-	if err = json.Unmarshal(bytes, &varOutlier); err == nil {
+	err = json.Unmarshal(data, &varOutlier)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Outlier(varOutlier)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "identityId")
 		delete(additionalProperties, "type")

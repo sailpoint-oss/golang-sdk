@@ -52,7 +52,7 @@ func NewRoleInsightsInsightWithDefaults() *RoleInsightsInsight {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *RoleInsightsInsight) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -62,7 +62,7 @@ func (o *RoleInsightsInsight) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleInsightsInsight) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -70,7 +70,7 @@ func (o *RoleInsightsInsight) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *RoleInsightsInsight) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -84,7 +84,7 @@ func (o *RoleInsightsInsight) SetType(v string) {
 
 // GetIdentitiesWithAccess returns the IdentitiesWithAccess field value if set, zero value otherwise.
 func (o *RoleInsightsInsight) GetIdentitiesWithAccess() int32 {
-	if o == nil || isNil(o.IdentitiesWithAccess) {
+	if o == nil || IsNil(o.IdentitiesWithAccess) {
 		var ret int32
 		return ret
 	}
@@ -94,7 +94,7 @@ func (o *RoleInsightsInsight) GetIdentitiesWithAccess() int32 {
 // GetIdentitiesWithAccessOk returns a tuple with the IdentitiesWithAccess field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleInsightsInsight) GetIdentitiesWithAccessOk() (*int32, bool) {
-	if o == nil || isNil(o.IdentitiesWithAccess) {
+	if o == nil || IsNil(o.IdentitiesWithAccess) {
 		return nil, false
 	}
 	return o.IdentitiesWithAccess, true
@@ -102,7 +102,7 @@ func (o *RoleInsightsInsight) GetIdentitiesWithAccessOk() (*int32, bool) {
 
 // HasIdentitiesWithAccess returns a boolean if a field has been set.
 func (o *RoleInsightsInsight) HasIdentitiesWithAccess() bool {
-	if o != nil && !isNil(o.IdentitiesWithAccess) {
+	if o != nil && !IsNil(o.IdentitiesWithAccess) {
 		return true
 	}
 
@@ -116,7 +116,7 @@ func (o *RoleInsightsInsight) SetIdentitiesWithAccess(v int32) {
 
 // GetIdentitiesImpacted returns the IdentitiesImpacted field value if set, zero value otherwise.
 func (o *RoleInsightsInsight) GetIdentitiesImpacted() int32 {
-	if o == nil || isNil(o.IdentitiesImpacted) {
+	if o == nil || IsNil(o.IdentitiesImpacted) {
 		var ret int32
 		return ret
 	}
@@ -126,7 +126,7 @@ func (o *RoleInsightsInsight) GetIdentitiesImpacted() int32 {
 // GetIdentitiesImpactedOk returns a tuple with the IdentitiesImpacted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleInsightsInsight) GetIdentitiesImpactedOk() (*int32, bool) {
-	if o == nil || isNil(o.IdentitiesImpacted) {
+	if o == nil || IsNil(o.IdentitiesImpacted) {
 		return nil, false
 	}
 	return o.IdentitiesImpacted, true
@@ -134,7 +134,7 @@ func (o *RoleInsightsInsight) GetIdentitiesImpactedOk() (*int32, bool) {
 
 // HasIdentitiesImpacted returns a boolean if a field has been set.
 func (o *RoleInsightsInsight) HasIdentitiesImpacted() bool {
-	if o != nil && !isNil(o.IdentitiesImpacted) {
+	if o != nil && !IsNil(o.IdentitiesImpacted) {
 		return true
 	}
 
@@ -148,7 +148,7 @@ func (o *RoleInsightsInsight) SetIdentitiesImpacted(v int32) {
 
 // GetTotalNumberOfIdentities returns the TotalNumberOfIdentities field value if set, zero value otherwise.
 func (o *RoleInsightsInsight) GetTotalNumberOfIdentities() int32 {
-	if o == nil || isNil(o.TotalNumberOfIdentities) {
+	if o == nil || IsNil(o.TotalNumberOfIdentities) {
 		var ret int32
 		return ret
 	}
@@ -158,7 +158,7 @@ func (o *RoleInsightsInsight) GetTotalNumberOfIdentities() int32 {
 // GetTotalNumberOfIdentitiesOk returns a tuple with the TotalNumberOfIdentities field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleInsightsInsight) GetTotalNumberOfIdentitiesOk() (*int32, bool) {
-	if o == nil || isNil(o.TotalNumberOfIdentities) {
+	if o == nil || IsNil(o.TotalNumberOfIdentities) {
 		return nil, false
 	}
 	return o.TotalNumberOfIdentities, true
@@ -166,7 +166,7 @@ func (o *RoleInsightsInsight) GetTotalNumberOfIdentitiesOk() (*int32, bool) {
 
 // HasTotalNumberOfIdentities returns a boolean if a field has been set.
 func (o *RoleInsightsInsight) HasTotalNumberOfIdentities() bool {
-	if o != nil && !isNil(o.TotalNumberOfIdentities) {
+	if o != nil && !IsNil(o.TotalNumberOfIdentities) {
 		return true
 	}
 
@@ -180,7 +180,7 @@ func (o *RoleInsightsInsight) SetTotalNumberOfIdentities(v int32) {
 
 // GetImpactedIdentityNames returns the ImpactedIdentityNames field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleInsightsInsight) GetImpactedIdentityNames() string {
-	if o == nil || isNil(o.ImpactedIdentityNames.Get()) {
+	if o == nil || IsNil(o.ImpactedIdentityNames.Get()) {
 		var ret string
 		return ret
 	}
@@ -230,16 +230,16 @@ func (o RoleInsightsInsight) MarshalJSON() ([]byte, error) {
 
 func (o RoleInsightsInsight) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.IdentitiesWithAccess) {
+	if !IsNil(o.IdentitiesWithAccess) {
 		toSerialize["identitiesWithAccess"] = o.IdentitiesWithAccess
 	}
-	if !isNil(o.IdentitiesImpacted) {
+	if !IsNil(o.IdentitiesImpacted) {
 		toSerialize["identitiesImpacted"] = o.IdentitiesImpacted
 	}
-	if !isNil(o.TotalNumberOfIdentities) {
+	if !IsNil(o.TotalNumberOfIdentities) {
 		toSerialize["totalNumberOfIdentities"] = o.TotalNumberOfIdentities
 	}
 	if o.ImpactedIdentityNames.IsSet() {
@@ -253,16 +253,20 @@ func (o RoleInsightsInsight) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *RoleInsightsInsight) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RoleInsightsInsight) UnmarshalJSON(data []byte) (err error) {
 	varRoleInsightsInsight := _RoleInsightsInsight{}
 
-	if err = json.Unmarshal(bytes, &varRoleInsightsInsight); err == nil {
+	err = json.Unmarshal(data, &varRoleInsightsInsight)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RoleInsightsInsight(varRoleInsightsInsight)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "identitiesWithAccess")
 		delete(additionalProperties, "identitiesImpacted")

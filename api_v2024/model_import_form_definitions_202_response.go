@@ -47,7 +47,7 @@ func NewImportFormDefinitions202ResponseWithDefaults() *ImportFormDefinitions202
 
 // GetErrors returns the Errors field value if set, zero value otherwise.
 func (o *ImportFormDefinitions202Response) GetErrors() []ImportFormDefinitions202ResponseErrorsInner {
-	if o == nil || isNil(o.Errors) {
+	if o == nil || IsNil(o.Errors) {
 		var ret []ImportFormDefinitions202ResponseErrorsInner
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *ImportFormDefinitions202Response) GetErrors() []ImportFormDefinitions20
 // GetErrorsOk returns a tuple with the Errors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImportFormDefinitions202Response) GetErrorsOk() ([]ImportFormDefinitions202ResponseErrorsInner, bool) {
-	if o == nil || isNil(o.Errors) {
+	if o == nil || IsNil(o.Errors) {
 		return nil, false
 	}
 	return o.Errors, true
@@ -65,7 +65,7 @@ func (o *ImportFormDefinitions202Response) GetErrorsOk() ([]ImportFormDefinition
 
 // HasErrors returns a boolean if a field has been set.
 func (o *ImportFormDefinitions202Response) HasErrors() bool {
-	if o != nil && !isNil(o.Errors) {
+	if o != nil && !IsNil(o.Errors) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *ImportFormDefinitions202Response) SetErrors(v []ImportFormDefinitions20
 
 // GetImportedObjects returns the ImportedObjects field value if set, zero value otherwise.
 func (o *ImportFormDefinitions202Response) GetImportedObjects() []ExportFormDefinitionsByTenant200ResponseInner {
-	if o == nil || isNil(o.ImportedObjects) {
+	if o == nil || IsNil(o.ImportedObjects) {
 		var ret []ExportFormDefinitionsByTenant200ResponseInner
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *ImportFormDefinitions202Response) GetImportedObjects() []ExportFormDefi
 // GetImportedObjectsOk returns a tuple with the ImportedObjects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImportFormDefinitions202Response) GetImportedObjectsOk() ([]ExportFormDefinitionsByTenant200ResponseInner, bool) {
-	if o == nil || isNil(o.ImportedObjects) {
+	if o == nil || IsNil(o.ImportedObjects) {
 		return nil, false
 	}
 	return o.ImportedObjects, true
@@ -97,7 +97,7 @@ func (o *ImportFormDefinitions202Response) GetImportedObjectsOk() ([]ExportFormD
 
 // HasImportedObjects returns a boolean if a field has been set.
 func (o *ImportFormDefinitions202Response) HasImportedObjects() bool {
-	if o != nil && !isNil(o.ImportedObjects) {
+	if o != nil && !IsNil(o.ImportedObjects) {
 		return true
 	}
 
@@ -111,7 +111,7 @@ func (o *ImportFormDefinitions202Response) SetImportedObjects(v []ExportFormDefi
 
 // GetInfos returns the Infos field value if set, zero value otherwise.
 func (o *ImportFormDefinitions202Response) GetInfos() []ImportFormDefinitions202ResponseErrorsInner {
-	if o == nil || isNil(o.Infos) {
+	if o == nil || IsNil(o.Infos) {
 		var ret []ImportFormDefinitions202ResponseErrorsInner
 		return ret
 	}
@@ -121,7 +121,7 @@ func (o *ImportFormDefinitions202Response) GetInfos() []ImportFormDefinitions202
 // GetInfosOk returns a tuple with the Infos field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImportFormDefinitions202Response) GetInfosOk() ([]ImportFormDefinitions202ResponseErrorsInner, bool) {
-	if o == nil || isNil(o.Infos) {
+	if o == nil || IsNil(o.Infos) {
 		return nil, false
 	}
 	return o.Infos, true
@@ -129,7 +129,7 @@ func (o *ImportFormDefinitions202Response) GetInfosOk() ([]ImportFormDefinitions
 
 // HasInfos returns a boolean if a field has been set.
 func (o *ImportFormDefinitions202Response) HasInfos() bool {
-	if o != nil && !isNil(o.Infos) {
+	if o != nil && !IsNil(o.Infos) {
 		return true
 	}
 
@@ -143,7 +143,7 @@ func (o *ImportFormDefinitions202Response) SetInfos(v []ImportFormDefinitions202
 
 // GetWarnings returns the Warnings field value if set, zero value otherwise.
 func (o *ImportFormDefinitions202Response) GetWarnings() []ImportFormDefinitions202ResponseErrorsInner {
-	if o == nil || isNil(o.Warnings) {
+	if o == nil || IsNil(o.Warnings) {
 		var ret []ImportFormDefinitions202ResponseErrorsInner
 		return ret
 	}
@@ -153,7 +153,7 @@ func (o *ImportFormDefinitions202Response) GetWarnings() []ImportFormDefinitions
 // GetWarningsOk returns a tuple with the Warnings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImportFormDefinitions202Response) GetWarningsOk() ([]ImportFormDefinitions202ResponseErrorsInner, bool) {
-	if o == nil || isNil(o.Warnings) {
+	if o == nil || IsNil(o.Warnings) {
 		return nil, false
 	}
 	return o.Warnings, true
@@ -161,7 +161,7 @@ func (o *ImportFormDefinitions202Response) GetWarningsOk() ([]ImportFormDefiniti
 
 // HasWarnings returns a boolean if a field has been set.
 func (o *ImportFormDefinitions202Response) HasWarnings() bool {
-	if o != nil && !isNil(o.Warnings) {
+	if o != nil && !IsNil(o.Warnings) {
 		return true
 	}
 
@@ -183,16 +183,16 @@ func (o ImportFormDefinitions202Response) MarshalJSON() ([]byte, error) {
 
 func (o ImportFormDefinitions202Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Errors) {
+	if !IsNil(o.Errors) {
 		toSerialize["errors"] = o.Errors
 	}
-	if !isNil(o.ImportedObjects) {
+	if !IsNil(o.ImportedObjects) {
 		toSerialize["importedObjects"] = o.ImportedObjects
 	}
-	if !isNil(o.Infos) {
+	if !IsNil(o.Infos) {
 		toSerialize["infos"] = o.Infos
 	}
-	if !isNil(o.Warnings) {
+	if !IsNil(o.Warnings) {
 		toSerialize["warnings"] = o.Warnings
 	}
 
@@ -203,16 +203,20 @@ func (o ImportFormDefinitions202Response) ToMap() (map[string]interface{}, error
 	return toSerialize, nil
 }
 
-func (o *ImportFormDefinitions202Response) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ImportFormDefinitions202Response) UnmarshalJSON(data []byte) (err error) {
 	varImportFormDefinitions202Response := _ImportFormDefinitions202Response{}
 
-	if err = json.Unmarshal(bytes, &varImportFormDefinitions202Response); err == nil {
+	err = json.Unmarshal(data, &varImportFormDefinitions202Response)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ImportFormDefinitions202Response(varImportFormDefinitions202Response)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "errors")
 		delete(additionalProperties, "importedObjects")
 		delete(additionalProperties, "infos")

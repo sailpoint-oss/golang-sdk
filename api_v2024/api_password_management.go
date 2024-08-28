@@ -116,7 +116,7 @@ func (a *PasswordManagementAPIService) GenerateDigitTokenExecute(r ApiGenerateDi
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-		parameterAddToQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	// body params
 	localVarPostBody = r.passwordDigitTokenReset
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

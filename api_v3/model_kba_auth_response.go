@@ -46,7 +46,7 @@ func NewKbaAuthResponseWithDefaults() *KbaAuthResponse {
 
 // GetKbaAuthResponseItems returns the KbaAuthResponseItems field value if set, zero value otherwise.
 func (o *KbaAuthResponse) GetKbaAuthResponseItems() []KbaAuthResponseItem {
-	if o == nil || isNil(o.KbaAuthResponseItems) {
+	if o == nil || IsNil(o.KbaAuthResponseItems) {
 		var ret []KbaAuthResponseItem
 		return ret
 	}
@@ -56,7 +56,7 @@ func (o *KbaAuthResponse) GetKbaAuthResponseItems() []KbaAuthResponseItem {
 // GetKbaAuthResponseItemsOk returns a tuple with the KbaAuthResponseItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *KbaAuthResponse) GetKbaAuthResponseItemsOk() ([]KbaAuthResponseItem, bool) {
-	if o == nil || isNil(o.KbaAuthResponseItems) {
+	if o == nil || IsNil(o.KbaAuthResponseItems) {
 		return nil, false
 	}
 	return o.KbaAuthResponseItems, true
@@ -64,7 +64,7 @@ func (o *KbaAuthResponse) GetKbaAuthResponseItemsOk() ([]KbaAuthResponseItem, bo
 
 // HasKbaAuthResponseItems returns a boolean if a field has been set.
 func (o *KbaAuthResponse) HasKbaAuthResponseItems() bool {
-	if o != nil && !isNil(o.KbaAuthResponseItems) {
+	if o != nil && !IsNil(o.KbaAuthResponseItems) {
 		return true
 	}
 
@@ -78,7 +78,7 @@ func (o *KbaAuthResponse) SetKbaAuthResponseItems(v []KbaAuthResponseItem) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *KbaAuthResponse) GetStatus() string {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -88,7 +88,7 @@ func (o *KbaAuthResponse) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *KbaAuthResponse) GetStatusOk() (*string, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -96,7 +96,7 @@ func (o *KbaAuthResponse) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *KbaAuthResponse) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -118,10 +118,10 @@ func (o KbaAuthResponse) MarshalJSON() ([]byte, error) {
 
 func (o KbaAuthResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.KbaAuthResponseItems) {
+	if !IsNil(o.KbaAuthResponseItems) {
 		toSerialize["kbaAuthResponseItems"] = o.KbaAuthResponseItems
 	}
-	if !isNil(o.Status) {
+	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
 
@@ -132,16 +132,20 @@ func (o KbaAuthResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *KbaAuthResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *KbaAuthResponse) UnmarshalJSON(data []byte) (err error) {
 	varKbaAuthResponse := _KbaAuthResponse{}
 
-	if err = json.Unmarshal(bytes, &varKbaAuthResponse); err == nil {
+	err = json.Unmarshal(data, &varKbaAuthResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = KbaAuthResponse(varKbaAuthResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "kbaAuthResponseItems")
 		delete(additionalProperties, "status")
 		o.AdditionalProperties = additionalProperties

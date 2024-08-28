@@ -55,7 +55,7 @@ func NewResourceObjectsRequestWithDefaults() *ResourceObjectsRequest {
 
 // GetObjectType returns the ObjectType field value if set, zero value otherwise.
 func (o *ResourceObjectsRequest) GetObjectType() string {
-	if o == nil || isNil(o.ObjectType) {
+	if o == nil || IsNil(o.ObjectType) {
 		var ret string
 		return ret
 	}
@@ -65,7 +65,7 @@ func (o *ResourceObjectsRequest) GetObjectType() string {
 // GetObjectTypeOk returns a tuple with the ObjectType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceObjectsRequest) GetObjectTypeOk() (*string, bool) {
-	if o == nil || isNil(o.ObjectType) {
+	if o == nil || IsNil(o.ObjectType) {
 		return nil, false
 	}
 	return o.ObjectType, true
@@ -73,7 +73,7 @@ func (o *ResourceObjectsRequest) GetObjectTypeOk() (*string, bool) {
 
 // HasObjectType returns a boolean if a field has been set.
 func (o *ResourceObjectsRequest) HasObjectType() bool {
-	if o != nil && !isNil(o.ObjectType) {
+	if o != nil && !IsNil(o.ObjectType) {
 		return true
 	}
 
@@ -87,7 +87,7 @@ func (o *ResourceObjectsRequest) SetObjectType(v string) {
 
 // GetMaxCount returns the MaxCount field value if set, zero value otherwise.
 func (o *ResourceObjectsRequest) GetMaxCount() int32 {
-	if o == nil || isNil(o.MaxCount) {
+	if o == nil || IsNil(o.MaxCount) {
 		var ret int32
 		return ret
 	}
@@ -97,7 +97,7 @@ func (o *ResourceObjectsRequest) GetMaxCount() int32 {
 // GetMaxCountOk returns a tuple with the MaxCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceObjectsRequest) GetMaxCountOk() (*int32, bool) {
-	if o == nil || isNil(o.MaxCount) {
+	if o == nil || IsNil(o.MaxCount) {
 		return nil, false
 	}
 	return o.MaxCount, true
@@ -105,7 +105,7 @@ func (o *ResourceObjectsRequest) GetMaxCountOk() (*int32, bool) {
 
 // HasMaxCount returns a boolean if a field has been set.
 func (o *ResourceObjectsRequest) HasMaxCount() bool {
-	if o != nil && !isNil(o.MaxCount) {
+	if o != nil && !IsNil(o.MaxCount) {
 		return true
 	}
 
@@ -127,10 +127,10 @@ func (o ResourceObjectsRequest) MarshalJSON() ([]byte, error) {
 
 func (o ResourceObjectsRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ObjectType) {
+	if !IsNil(o.ObjectType) {
 		toSerialize["objectType"] = o.ObjectType
 	}
-	if !isNil(o.MaxCount) {
+	if !IsNil(o.MaxCount) {
 		toSerialize["maxCount"] = o.MaxCount
 	}
 
@@ -141,16 +141,20 @@ func (o ResourceObjectsRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ResourceObjectsRequest) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ResourceObjectsRequest) UnmarshalJSON(data []byte) (err error) {
 	varResourceObjectsRequest := _ResourceObjectsRequest{}
 
-	if err = json.Unmarshal(bytes, &varResourceObjectsRequest); err == nil {
+	err = json.Unmarshal(data, &varResourceObjectsRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ResourceObjectsRequest(varResourceObjectsRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "objectType")
 		delete(additionalProperties, "maxCount")
 		o.AdditionalProperties = additionalProperties

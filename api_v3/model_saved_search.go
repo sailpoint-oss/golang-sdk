@@ -79,7 +79,7 @@ func NewSavedSearchWithDefaults() *SavedSearch {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *SavedSearch) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *SavedSearch) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SavedSearch) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -97,7 +97,7 @@ func (o *SavedSearch) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *SavedSearch) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -111,7 +111,7 @@ func (o *SavedSearch) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SavedSearch) GetDescription() string {
-	if o == nil || isNil(o.Description.Get()) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
@@ -153,7 +153,7 @@ func (o *SavedSearch) UnsetDescription() {
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SavedSearch) GetCreated() time.Time {
-	if o == nil || isNil(o.Created.Get()) {
+	if o == nil || IsNil(o.Created.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -195,7 +195,7 @@ func (o *SavedSearch) UnsetCreated() {
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SavedSearch) GetModified() time.Time {
-	if o == nil || isNil(o.Modified.Get()) {
+	if o == nil || IsNil(o.Modified.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -261,7 +261,7 @@ func (o *SavedSearch) SetIndices(v []Index) {
 
 // GetColumns returns the Columns field value if set, zero value otherwise.
 func (o *SavedSearch) GetColumns() map[string][]Column {
-	if o == nil || isNil(o.Columns) {
+	if o == nil || IsNil(o.Columns) {
 		var ret map[string][]Column
 		return ret
 	}
@@ -271,7 +271,7 @@ func (o *SavedSearch) GetColumns() map[string][]Column {
 // GetColumnsOk returns a tuple with the Columns field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SavedSearch) GetColumnsOk() (*map[string][]Column, bool) {
-	if o == nil || isNil(o.Columns) {
+	if o == nil || IsNil(o.Columns) {
 		return nil, false
 	}
 	return o.Columns, true
@@ -279,7 +279,7 @@ func (o *SavedSearch) GetColumnsOk() (*map[string][]Column, bool) {
 
 // HasColumns returns a boolean if a field has been set.
 func (o *SavedSearch) HasColumns() bool {
-	if o != nil && !isNil(o.Columns) {
+	if o != nil && !IsNil(o.Columns) {
 		return true
 	}
 
@@ -328,7 +328,7 @@ func (o *SavedSearch) GetFields() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SavedSearch) GetFieldsOk() ([]string, bool) {
-	if o == nil || isNil(o.Fields) {
+	if o == nil || IsNil(o.Fields) {
 		return nil, false
 	}
 	return o.Fields, true
@@ -336,7 +336,7 @@ func (o *SavedSearch) GetFieldsOk() ([]string, bool) {
 
 // HasFields returns a boolean if a field has been set.
 func (o *SavedSearch) HasFields() bool {
-	if o != nil && isNil(o.Fields) {
+	if o != nil && !IsNil(o.Fields) {
 		return true
 	}
 
@@ -361,7 +361,7 @@ func (o *SavedSearch) GetOrderBy() map[string][]string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SavedSearch) GetOrderByOk() (*map[string][]string, bool) {
-	if o == nil || isNil(o.OrderBy) {
+	if o == nil || IsNil(o.OrderBy) {
 		return nil, false
 	}
 	return &o.OrderBy, true
@@ -369,7 +369,7 @@ func (o *SavedSearch) GetOrderByOk() (*map[string][]string, bool) {
 
 // HasOrderBy returns a boolean if a field has been set.
 func (o *SavedSearch) HasOrderBy() bool {
-	if o != nil && isNil(o.OrderBy) {
+	if o != nil && !IsNil(o.OrderBy) {
 		return true
 	}
 
@@ -394,7 +394,7 @@ func (o *SavedSearch) GetSort() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SavedSearch) GetSortOk() ([]string, bool) {
-	if o == nil || isNil(o.Sort) {
+	if o == nil || IsNil(o.Sort) {
 		return nil, false
 	}
 	return o.Sort, true
@@ -402,7 +402,7 @@ func (o *SavedSearch) GetSortOk() ([]string, bool) {
 
 // HasSort returns a boolean if a field has been set.
 func (o *SavedSearch) HasSort() bool {
-	if o != nil && isNil(o.Sort) {
+	if o != nil && !IsNil(o.Sort) {
 		return true
 	}
 
@@ -416,7 +416,7 @@ func (o *SavedSearch) SetSort(v []string) {
 
 // GetFilters returns the Filters field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SavedSearch) GetFilters() SavedSearchDetailFilters {
-	if o == nil || isNil(o.Filters.Get()) {
+	if o == nil || IsNil(o.Filters.Get()) {
 		var ret SavedSearchDetailFilters
 		return ret
 	}
@@ -458,7 +458,7 @@ func (o *SavedSearch) UnsetFilters() {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *SavedSearch) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -468,7 +468,7 @@ func (o *SavedSearch) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SavedSearch) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -476,7 +476,7 @@ func (o *SavedSearch) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *SavedSearch) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -490,7 +490,7 @@ func (o *SavedSearch) SetId(v string) {
 
 // GetOwner returns the Owner field value if set, zero value otherwise.
 func (o *SavedSearch) GetOwner() TypedReference {
-	if o == nil || isNil(o.Owner) {
+	if o == nil || IsNil(o.Owner) {
 		var ret TypedReference
 		return ret
 	}
@@ -500,7 +500,7 @@ func (o *SavedSearch) GetOwner() TypedReference {
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SavedSearch) GetOwnerOk() (*TypedReference, bool) {
-	if o == nil || isNil(o.Owner) {
+	if o == nil || IsNil(o.Owner) {
 		return nil, false
 	}
 	return o.Owner, true
@@ -508,7 +508,7 @@ func (o *SavedSearch) GetOwnerOk() (*TypedReference, bool) {
 
 // HasOwner returns a boolean if a field has been set.
 func (o *SavedSearch) HasOwner() bool {
-	if o != nil && !isNil(o.Owner) {
+	if o != nil && !IsNil(o.Owner) {
 		return true
 	}
 
@@ -522,7 +522,7 @@ func (o *SavedSearch) SetOwner(v TypedReference) {
 
 // GetOwnerId returns the OwnerId field value if set, zero value otherwise.
 func (o *SavedSearch) GetOwnerId() string {
-	if o == nil || isNil(o.OwnerId) {
+	if o == nil || IsNil(o.OwnerId) {
 		var ret string
 		return ret
 	}
@@ -532,7 +532,7 @@ func (o *SavedSearch) GetOwnerId() string {
 // GetOwnerIdOk returns a tuple with the OwnerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SavedSearch) GetOwnerIdOk() (*string, bool) {
-	if o == nil || isNil(o.OwnerId) {
+	if o == nil || IsNil(o.OwnerId) {
 		return nil, false
 	}
 	return o.OwnerId, true
@@ -540,7 +540,7 @@ func (o *SavedSearch) GetOwnerIdOk() (*string, bool) {
 
 // HasOwnerId returns a boolean if a field has been set.
 func (o *SavedSearch) HasOwnerId() bool {
-	if o != nil && !isNil(o.OwnerId) {
+	if o != nil && !IsNil(o.OwnerId) {
 		return true
 	}
 
@@ -554,7 +554,7 @@ func (o *SavedSearch) SetOwnerId(v string) {
 
 // GetPublic returns the Public field value if set, zero value otherwise.
 func (o *SavedSearch) GetPublic() bool {
-	if o == nil || isNil(o.Public) {
+	if o == nil || IsNil(o.Public) {
 		var ret bool
 		return ret
 	}
@@ -564,7 +564,7 @@ func (o *SavedSearch) GetPublic() bool {
 // GetPublicOk returns a tuple with the Public field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SavedSearch) GetPublicOk() (*bool, bool) {
-	if o == nil || isNil(o.Public) {
+	if o == nil || IsNil(o.Public) {
 		return nil, false
 	}
 	return o.Public, true
@@ -572,7 +572,7 @@ func (o *SavedSearch) GetPublicOk() (*bool, bool) {
 
 // HasPublic returns a boolean if a field has been set.
 func (o *SavedSearch) HasPublic() bool {
-	if o != nil && !isNil(o.Public) {
+	if o != nil && !IsNil(o.Public) {
 		return true
 	}
 
@@ -594,7 +594,7 @@ func (o SavedSearch) MarshalJSON() ([]byte, error) {
 
 func (o SavedSearch) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 	if o.Description.IsSet() {
@@ -607,7 +607,7 @@ func (o SavedSearch) ToMap() (map[string]interface{}, error) {
 		toSerialize["modified"] = o.Modified.Get()
 	}
 	toSerialize["indices"] = o.Indices
-	if !isNil(o.Columns) {
+	if !IsNil(o.Columns) {
 		toSerialize["columns"] = o.Columns
 	}
 	toSerialize["query"] = o.Query
@@ -623,16 +623,16 @@ func (o SavedSearch) ToMap() (map[string]interface{}, error) {
 	if o.Filters.IsSet() {
 		toSerialize["filters"] = o.Filters.Get()
 	}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Owner) {
+	if !IsNil(o.Owner) {
 		toSerialize["owner"] = o.Owner
 	}
-	if !isNil(o.OwnerId) {
+	if !IsNil(o.OwnerId) {
 		toSerialize["ownerId"] = o.OwnerId
 	}
-	if !isNil(o.Public) {
+	if !IsNil(o.Public) {
 		toSerialize["public"] = o.Public
 	}
 
@@ -643,8 +643,8 @@ func (o SavedSearch) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SavedSearch) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *SavedSearch) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -654,7 +654,7 @@ func (o *SavedSearch) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -668,13 +668,17 @@ func (o *SavedSearch) UnmarshalJSON(bytes []byte) (err error) {
 
 	varSavedSearch := _SavedSearch{}
 
-	if err = json.Unmarshal(bytes, &varSavedSearch); err == nil {
+	err = json.Unmarshal(data, &varSavedSearch)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SavedSearch(varSavedSearch)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "created")

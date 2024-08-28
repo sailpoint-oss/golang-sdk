@@ -53,7 +53,7 @@ func NewNonEmployeeSourceLiteWithSchemaAttributesWithDefaults() *NonEmployeeSour
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *NonEmployeeSourceLiteWithSchemaAttributes) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -63,7 +63,7 @@ func (o *NonEmployeeSourceLiteWithSchemaAttributes) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSourceLiteWithSchemaAttributes) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -71,7 +71,7 @@ func (o *NonEmployeeSourceLiteWithSchemaAttributes) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *NonEmployeeSourceLiteWithSchemaAttributes) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o *NonEmployeeSourceLiteWithSchemaAttributes) SetId(v string) {
 
 // GetSourceId returns the SourceId field value if set, zero value otherwise.
 func (o *NonEmployeeSourceLiteWithSchemaAttributes) GetSourceId() string {
-	if o == nil || isNil(o.SourceId) {
+	if o == nil || IsNil(o.SourceId) {
 		var ret string
 		return ret
 	}
@@ -95,7 +95,7 @@ func (o *NonEmployeeSourceLiteWithSchemaAttributes) GetSourceId() string {
 // GetSourceIdOk returns a tuple with the SourceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSourceLiteWithSchemaAttributes) GetSourceIdOk() (*string, bool) {
-	if o == nil || isNil(o.SourceId) {
+	if o == nil || IsNil(o.SourceId) {
 		return nil, false
 	}
 	return o.SourceId, true
@@ -103,7 +103,7 @@ func (o *NonEmployeeSourceLiteWithSchemaAttributes) GetSourceIdOk() (*string, bo
 
 // HasSourceId returns a boolean if a field has been set.
 func (o *NonEmployeeSourceLiteWithSchemaAttributes) HasSourceId() bool {
-	if o != nil && !isNil(o.SourceId) {
+	if o != nil && !IsNil(o.SourceId) {
 		return true
 	}
 
@@ -117,7 +117,7 @@ func (o *NonEmployeeSourceLiteWithSchemaAttributes) SetSourceId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *NonEmployeeSourceLiteWithSchemaAttributes) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -127,7 +127,7 @@ func (o *NonEmployeeSourceLiteWithSchemaAttributes) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSourceLiteWithSchemaAttributes) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -135,7 +135,7 @@ func (o *NonEmployeeSourceLiteWithSchemaAttributes) GetNameOk() (*string, bool) 
 
 // HasName returns a boolean if a field has been set.
 func (o *NonEmployeeSourceLiteWithSchemaAttributes) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -149,7 +149,7 @@ func (o *NonEmployeeSourceLiteWithSchemaAttributes) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *NonEmployeeSourceLiteWithSchemaAttributes) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -159,7 +159,7 @@ func (o *NonEmployeeSourceLiteWithSchemaAttributes) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSourceLiteWithSchemaAttributes) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -167,7 +167,7 @@ func (o *NonEmployeeSourceLiteWithSchemaAttributes) GetDescriptionOk() (*string,
 
 // HasDescription returns a boolean if a field has been set.
 func (o *NonEmployeeSourceLiteWithSchemaAttributes) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -181,7 +181,7 @@ func (o *NonEmployeeSourceLiteWithSchemaAttributes) SetDescription(v string) {
 
 // GetSchemaAttributes returns the SchemaAttributes field value if set, zero value otherwise.
 func (o *NonEmployeeSourceLiteWithSchemaAttributes) GetSchemaAttributes() []NonEmployeeSchemaAttribute {
-	if o == nil || isNil(o.SchemaAttributes) {
+	if o == nil || IsNil(o.SchemaAttributes) {
 		var ret []NonEmployeeSchemaAttribute
 		return ret
 	}
@@ -191,7 +191,7 @@ func (o *NonEmployeeSourceLiteWithSchemaAttributes) GetSchemaAttributes() []NonE
 // GetSchemaAttributesOk returns a tuple with the SchemaAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSourceLiteWithSchemaAttributes) GetSchemaAttributesOk() ([]NonEmployeeSchemaAttribute, bool) {
-	if o == nil || isNil(o.SchemaAttributes) {
+	if o == nil || IsNil(o.SchemaAttributes) {
 		return nil, false
 	}
 	return o.SchemaAttributes, true
@@ -199,7 +199,7 @@ func (o *NonEmployeeSourceLiteWithSchemaAttributes) GetSchemaAttributesOk() ([]N
 
 // HasSchemaAttributes returns a boolean if a field has been set.
 func (o *NonEmployeeSourceLiteWithSchemaAttributes) HasSchemaAttributes() bool {
-	if o != nil && !isNil(o.SchemaAttributes) {
+	if o != nil && !IsNil(o.SchemaAttributes) {
 		return true
 	}
 
@@ -221,19 +221,19 @@ func (o NonEmployeeSourceLiteWithSchemaAttributes) MarshalJSON() ([]byte, error)
 
 func (o NonEmployeeSourceLiteWithSchemaAttributes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.SourceId) {
+	if !IsNil(o.SourceId) {
 		toSerialize["sourceId"] = o.SourceId
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.SchemaAttributes) {
+	if !IsNil(o.SchemaAttributes) {
 		toSerialize["schemaAttributes"] = o.SchemaAttributes
 	}
 
@@ -244,16 +244,20 @@ func (o NonEmployeeSourceLiteWithSchemaAttributes) ToMap() (map[string]interface
 	return toSerialize, nil
 }
 
-func (o *NonEmployeeSourceLiteWithSchemaAttributes) UnmarshalJSON(bytes []byte) (err error) {
+func (o *NonEmployeeSourceLiteWithSchemaAttributes) UnmarshalJSON(data []byte) (err error) {
 	varNonEmployeeSourceLiteWithSchemaAttributes := _NonEmployeeSourceLiteWithSchemaAttributes{}
 
-	if err = json.Unmarshal(bytes, &varNonEmployeeSourceLiteWithSchemaAttributes); err == nil {
+	err = json.Unmarshal(data, &varNonEmployeeSourceLiteWithSchemaAttributes)
+
+	if err != nil {
+		return err
+	}
+
 	*o = NonEmployeeSourceLiteWithSchemaAttributes(varNonEmployeeSourceLiteWithSchemaAttributes)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "sourceId")
 		delete(additionalProperties, "name")

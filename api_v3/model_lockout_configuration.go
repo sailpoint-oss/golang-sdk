@@ -49,7 +49,7 @@ func NewLockoutConfigurationWithDefaults() *LockoutConfiguration {
 
 // GetMaximumAttempts returns the MaximumAttempts field value if set, zero value otherwise.
 func (o *LockoutConfiguration) GetMaximumAttempts() int32 {
-	if o == nil || isNil(o.MaximumAttempts) {
+	if o == nil || IsNil(o.MaximumAttempts) {
 		var ret int32
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *LockoutConfiguration) GetMaximumAttempts() int32 {
 // GetMaximumAttemptsOk returns a tuple with the MaximumAttempts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LockoutConfiguration) GetMaximumAttemptsOk() (*int32, bool) {
-	if o == nil || isNil(o.MaximumAttempts) {
+	if o == nil || IsNil(o.MaximumAttempts) {
 		return nil, false
 	}
 	return o.MaximumAttempts, true
@@ -67,7 +67,7 @@ func (o *LockoutConfiguration) GetMaximumAttemptsOk() (*int32, bool) {
 
 // HasMaximumAttempts returns a boolean if a field has been set.
 func (o *LockoutConfiguration) HasMaximumAttempts() bool {
-	if o != nil && !isNil(o.MaximumAttempts) {
+	if o != nil && !IsNil(o.MaximumAttempts) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *LockoutConfiguration) SetMaximumAttempts(v int32) {
 
 // GetLockoutDuration returns the LockoutDuration field value if set, zero value otherwise.
 func (o *LockoutConfiguration) GetLockoutDuration() int32 {
-	if o == nil || isNil(o.LockoutDuration) {
+	if o == nil || IsNil(o.LockoutDuration) {
 		var ret int32
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *LockoutConfiguration) GetLockoutDuration() int32 {
 // GetLockoutDurationOk returns a tuple with the LockoutDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LockoutConfiguration) GetLockoutDurationOk() (*int32, bool) {
-	if o == nil || isNil(o.LockoutDuration) {
+	if o == nil || IsNil(o.LockoutDuration) {
 		return nil, false
 	}
 	return o.LockoutDuration, true
@@ -99,7 +99,7 @@ func (o *LockoutConfiguration) GetLockoutDurationOk() (*int32, bool) {
 
 // HasLockoutDuration returns a boolean if a field has been set.
 func (o *LockoutConfiguration) HasLockoutDuration() bool {
-	if o != nil && !isNil(o.LockoutDuration) {
+	if o != nil && !IsNil(o.LockoutDuration) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *LockoutConfiguration) SetLockoutDuration(v int32) {
 
 // GetLockoutWindow returns the LockoutWindow field value if set, zero value otherwise.
 func (o *LockoutConfiguration) GetLockoutWindow() int32 {
-	if o == nil || isNil(o.LockoutWindow) {
+	if o == nil || IsNil(o.LockoutWindow) {
 		var ret int32
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *LockoutConfiguration) GetLockoutWindow() int32 {
 // GetLockoutWindowOk returns a tuple with the LockoutWindow field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LockoutConfiguration) GetLockoutWindowOk() (*int32, bool) {
-	if o == nil || isNil(o.LockoutWindow) {
+	if o == nil || IsNil(o.LockoutWindow) {
 		return nil, false
 	}
 	return o.LockoutWindow, true
@@ -131,7 +131,7 @@ func (o *LockoutConfiguration) GetLockoutWindowOk() (*int32, bool) {
 
 // HasLockoutWindow returns a boolean if a field has been set.
 func (o *LockoutConfiguration) HasLockoutWindow() bool {
-	if o != nil && !isNil(o.LockoutWindow) {
+	if o != nil && !IsNil(o.LockoutWindow) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o LockoutConfiguration) MarshalJSON() ([]byte, error) {
 
 func (o LockoutConfiguration) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.MaximumAttempts) {
+	if !IsNil(o.MaximumAttempts) {
 		toSerialize["maximumAttempts"] = o.MaximumAttempts
 	}
-	if !isNil(o.LockoutDuration) {
+	if !IsNil(o.LockoutDuration) {
 		toSerialize["lockoutDuration"] = o.LockoutDuration
 	}
-	if !isNil(o.LockoutWindow) {
+	if !IsNil(o.LockoutWindow) {
 		toSerialize["lockoutWindow"] = o.LockoutWindow
 	}
 
@@ -170,16 +170,20 @@ func (o LockoutConfiguration) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *LockoutConfiguration) UnmarshalJSON(bytes []byte) (err error) {
+func (o *LockoutConfiguration) UnmarshalJSON(data []byte) (err error) {
 	varLockoutConfiguration := _LockoutConfiguration{}
 
-	if err = json.Unmarshal(bytes, &varLockoutConfiguration); err == nil {
+	err = json.Unmarshal(data, &varLockoutConfiguration)
+
+	if err != nil {
+		return err
+	}
+
 	*o = LockoutConfiguration(varLockoutConfiguration)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "maximumAttempts")
 		delete(additionalProperties, "lockoutDuration")
 		delete(additionalProperties, "lockoutWindow")

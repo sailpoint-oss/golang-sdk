@@ -67,7 +67,7 @@ func NewCampaignTemplateWithDefaults() *CampaignTemplate {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *CampaignTemplate) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -77,7 +77,7 @@ func (o *CampaignTemplate) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CampaignTemplate) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -85,7 +85,7 @@ func (o *CampaignTemplate) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *CampaignTemplate) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -195,7 +195,7 @@ func (o *CampaignTemplate) SetModified(v time.Time) {
 
 // GetScheduled returns the Scheduled field value if set, zero value otherwise.
 func (o *CampaignTemplate) GetScheduled() bool {
-	if o == nil || isNil(o.Scheduled) {
+	if o == nil || IsNil(o.Scheduled) {
 		var ret bool
 		return ret
 	}
@@ -205,7 +205,7 @@ func (o *CampaignTemplate) GetScheduled() bool {
 // GetScheduledOk returns a tuple with the Scheduled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CampaignTemplate) GetScheduledOk() (*bool, bool) {
-	if o == nil || isNil(o.Scheduled) {
+	if o == nil || IsNil(o.Scheduled) {
 		return nil, false
 	}
 	return o.Scheduled, true
@@ -213,7 +213,7 @@ func (o *CampaignTemplate) GetScheduledOk() (*bool, bool) {
 
 // HasScheduled returns a boolean if a field has been set.
 func (o *CampaignTemplate) HasScheduled() bool {
-	if o != nil && !isNil(o.Scheduled) {
+	if o != nil && !IsNil(o.Scheduled) {
 		return true
 	}
 
@@ -227,7 +227,7 @@ func (o *CampaignTemplate) SetScheduled(v bool) {
 
 // GetOwnerRef returns the OwnerRef field value if set, zero value otherwise.
 func (o *CampaignTemplate) GetOwnerRef() CampaignTemplateOwnerRef {
-	if o == nil || isNil(o.OwnerRef) {
+	if o == nil || IsNil(o.OwnerRef) {
 		var ret CampaignTemplateOwnerRef
 		return ret
 	}
@@ -237,7 +237,7 @@ func (o *CampaignTemplate) GetOwnerRef() CampaignTemplateOwnerRef {
 // GetOwnerRefOk returns a tuple with the OwnerRef field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CampaignTemplate) GetOwnerRefOk() (*CampaignTemplateOwnerRef, bool) {
-	if o == nil || isNil(o.OwnerRef) {
+	if o == nil || IsNil(o.OwnerRef) {
 		return nil, false
 	}
 	return o.OwnerRef, true
@@ -245,7 +245,7 @@ func (o *CampaignTemplate) GetOwnerRefOk() (*CampaignTemplateOwnerRef, bool) {
 
 // HasOwnerRef returns a boolean if a field has been set.
 func (o *CampaignTemplate) HasOwnerRef() bool {
-	if o != nil && !isNil(o.OwnerRef) {
+	if o != nil && !IsNil(o.OwnerRef) {
 		return true
 	}
 
@@ -259,7 +259,7 @@ func (o *CampaignTemplate) SetOwnerRef(v CampaignTemplateOwnerRef) {
 
 // GetDeadlineDuration returns the DeadlineDuration field value if set, zero value otherwise.
 func (o *CampaignTemplate) GetDeadlineDuration() string {
-	if o == nil || isNil(o.DeadlineDuration) {
+	if o == nil || IsNil(o.DeadlineDuration) {
 		var ret string
 		return ret
 	}
@@ -269,7 +269,7 @@ func (o *CampaignTemplate) GetDeadlineDuration() string {
 // GetDeadlineDurationOk returns a tuple with the DeadlineDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CampaignTemplate) GetDeadlineDurationOk() (*string, bool) {
-	if o == nil || isNil(o.DeadlineDuration) {
+	if o == nil || IsNil(o.DeadlineDuration) {
 		return nil, false
 	}
 	return o.DeadlineDuration, true
@@ -277,7 +277,7 @@ func (o *CampaignTemplate) GetDeadlineDurationOk() (*string, bool) {
 
 // HasDeadlineDuration returns a boolean if a field has been set.
 func (o *CampaignTemplate) HasDeadlineDuration() bool {
-	if o != nil && !isNil(o.DeadlineDuration) {
+	if o != nil && !IsNil(o.DeadlineDuration) {
 		return true
 	}
 
@@ -323,18 +323,20 @@ func (o CampaignTemplate) MarshalJSON() ([]byte, error) {
 
 func (o CampaignTemplate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
 	toSerialize["name"] = o.Name
 	toSerialize["description"] = o.Description
-	// skip: created is readOnly
-	// skip: modified is readOnly
-	// skip: scheduled is readOnly
-	if !isNil(o.OwnerRef) {
+	toSerialize["created"] = o.Created
+	toSerialize["modified"] = o.Modified
+	if !IsNil(o.Scheduled) {
+		toSerialize["scheduled"] = o.Scheduled
+	}
+	if !IsNil(o.OwnerRef) {
 		toSerialize["ownerRef"] = o.OwnerRef
 	}
-	if !isNil(o.DeadlineDuration) {
+	if !IsNil(o.DeadlineDuration) {
 		toSerialize["deadlineDuration"] = o.DeadlineDuration
 	}
 	toSerialize["campaign"] = o.Campaign
@@ -346,8 +348,8 @@ func (o CampaignTemplate) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CampaignTemplate) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *CampaignTemplate) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -360,7 +362,7 @@ func (o *CampaignTemplate) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -374,13 +376,17 @@ func (o *CampaignTemplate) UnmarshalJSON(bytes []byte) (err error) {
 
 	varCampaignTemplate := _CampaignTemplate{}
 
-	if err = json.Unmarshal(bytes, &varCampaignTemplate); err == nil {
+	err = json.Unmarshal(data, &varCampaignTemplate)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CampaignTemplate(varCampaignTemplate)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")

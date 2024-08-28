@@ -47,7 +47,7 @@ func NewCommonAccessIDStatusWithDefaults() *CommonAccessIDStatus {
 
 // GetConfirmedIds returns the ConfirmedIds field value if set, zero value otherwise.
 func (o *CommonAccessIDStatus) GetConfirmedIds() []string {
-	if o == nil || isNil(o.ConfirmedIds) {
+	if o == nil || IsNil(o.ConfirmedIds) {
 		var ret []string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *CommonAccessIDStatus) GetConfirmedIds() []string {
 // GetConfirmedIdsOk returns a tuple with the ConfirmedIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CommonAccessIDStatus) GetConfirmedIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.ConfirmedIds) {
+	if o == nil || IsNil(o.ConfirmedIds) {
 		return nil, false
 	}
 	return o.ConfirmedIds, true
@@ -65,7 +65,7 @@ func (o *CommonAccessIDStatus) GetConfirmedIdsOk() ([]string, bool) {
 
 // HasConfirmedIds returns a boolean if a field has been set.
 func (o *CommonAccessIDStatus) HasConfirmedIds() bool {
-	if o != nil && !isNil(o.ConfirmedIds) {
+	if o != nil && !IsNil(o.ConfirmedIds) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *CommonAccessIDStatus) SetConfirmedIds(v []string) {
 
 // GetDeniedIds returns the DeniedIds field value if set, zero value otherwise.
 func (o *CommonAccessIDStatus) GetDeniedIds() []string {
-	if o == nil || isNil(o.DeniedIds) {
+	if o == nil || IsNil(o.DeniedIds) {
 		var ret []string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *CommonAccessIDStatus) GetDeniedIds() []string {
 // GetDeniedIdsOk returns a tuple with the DeniedIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CommonAccessIDStatus) GetDeniedIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.DeniedIds) {
+	if o == nil || IsNil(o.DeniedIds) {
 		return nil, false
 	}
 	return o.DeniedIds, true
@@ -97,7 +97,7 @@ func (o *CommonAccessIDStatus) GetDeniedIdsOk() ([]string, bool) {
 
 // HasDeniedIds returns a boolean if a field has been set.
 func (o *CommonAccessIDStatus) HasDeniedIds() bool {
-	if o != nil && !isNil(o.DeniedIds) {
+	if o != nil && !IsNil(o.DeniedIds) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o CommonAccessIDStatus) MarshalJSON() ([]byte, error) {
 
 func (o CommonAccessIDStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ConfirmedIds) {
+	if !IsNil(o.ConfirmedIds) {
 		toSerialize["confirmedIds"] = o.ConfirmedIds
 	}
-	if !isNil(o.DeniedIds) {
+	if !IsNil(o.DeniedIds) {
 		toSerialize["deniedIds"] = o.DeniedIds
 	}
 
@@ -133,16 +133,20 @@ func (o CommonAccessIDStatus) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CommonAccessIDStatus) UnmarshalJSON(bytes []byte) (err error) {
+func (o *CommonAccessIDStatus) UnmarshalJSON(data []byte) (err error) {
 	varCommonAccessIDStatus := _CommonAccessIDStatus{}
 
-	if err = json.Unmarshal(bytes, &varCommonAccessIDStatus); err == nil {
+	err = json.Unmarshal(data, &varCommonAccessIDStatus)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CommonAccessIDStatus(varCommonAccessIDStatus)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "confirmedIds")
 		delete(additionalProperties, "deniedIds")
 		o.AdditionalProperties = additionalProperties

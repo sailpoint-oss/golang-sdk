@@ -67,7 +67,7 @@ func NewWorkflowLibraryTriggerWithDefaults() *WorkflowLibraryTrigger {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *WorkflowLibraryTrigger) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -77,7 +77,7 @@ func (o *WorkflowLibraryTrigger) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowLibraryTrigger) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -85,7 +85,7 @@ func (o *WorkflowLibraryTrigger) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *WorkflowLibraryTrigger) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -99,7 +99,7 @@ func (o *WorkflowLibraryTrigger) SetId(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *WorkflowLibraryTrigger) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -109,7 +109,7 @@ func (o *WorkflowLibraryTrigger) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowLibraryTrigger) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -117,7 +117,7 @@ func (o *WorkflowLibraryTrigger) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *WorkflowLibraryTrigger) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -131,7 +131,7 @@ func (o *WorkflowLibraryTrigger) SetType(v string) {
 
 // GetDeprecated returns the Deprecated field value if set, zero value otherwise.
 func (o *WorkflowLibraryTrigger) GetDeprecated() bool {
-	if o == nil || isNil(o.Deprecated) {
+	if o == nil || IsNil(o.Deprecated) {
 		var ret bool
 		return ret
 	}
@@ -141,7 +141,7 @@ func (o *WorkflowLibraryTrigger) GetDeprecated() bool {
 // GetDeprecatedOk returns a tuple with the Deprecated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowLibraryTrigger) GetDeprecatedOk() (*bool, bool) {
-	if o == nil || isNil(o.Deprecated) {
+	if o == nil || IsNil(o.Deprecated) {
 		return nil, false
 	}
 	return o.Deprecated, true
@@ -149,7 +149,7 @@ func (o *WorkflowLibraryTrigger) GetDeprecatedOk() (*bool, bool) {
 
 // HasDeprecated returns a boolean if a field has been set.
 func (o *WorkflowLibraryTrigger) HasDeprecated() bool {
-	if o != nil && !isNil(o.Deprecated) {
+	if o != nil && !IsNil(o.Deprecated) {
 		return true
 	}
 
@@ -163,7 +163,7 @@ func (o *WorkflowLibraryTrigger) SetDeprecated(v bool) {
 
 // GetDeprecatedBy returns the DeprecatedBy field value if set, zero value otherwise.
 func (o *WorkflowLibraryTrigger) GetDeprecatedBy() time.Time {
-	if o == nil || isNil(o.DeprecatedBy) {
+	if o == nil || IsNil(o.DeprecatedBy) {
 		var ret time.Time
 		return ret
 	}
@@ -173,7 +173,7 @@ func (o *WorkflowLibraryTrigger) GetDeprecatedBy() time.Time {
 // GetDeprecatedByOk returns a tuple with the DeprecatedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowLibraryTrigger) GetDeprecatedByOk() (*time.Time, bool) {
-	if o == nil || isNil(o.DeprecatedBy) {
+	if o == nil || IsNil(o.DeprecatedBy) {
 		return nil, false
 	}
 	return o.DeprecatedBy, true
@@ -181,7 +181,7 @@ func (o *WorkflowLibraryTrigger) GetDeprecatedByOk() (*time.Time, bool) {
 
 // HasDeprecatedBy returns a boolean if a field has been set.
 func (o *WorkflowLibraryTrigger) HasDeprecatedBy() bool {
-	if o != nil && !isNil(o.DeprecatedBy) {
+	if o != nil && !IsNil(o.DeprecatedBy) {
 		return true
 	}
 
@@ -195,7 +195,7 @@ func (o *WorkflowLibraryTrigger) SetDeprecatedBy(v time.Time) {
 
 // GetIsSimulationEnabled returns the IsSimulationEnabled field value if set, zero value otherwise.
 func (o *WorkflowLibraryTrigger) GetIsSimulationEnabled() bool {
-	if o == nil || isNil(o.IsSimulationEnabled) {
+	if o == nil || IsNil(o.IsSimulationEnabled) {
 		var ret bool
 		return ret
 	}
@@ -205,7 +205,7 @@ func (o *WorkflowLibraryTrigger) GetIsSimulationEnabled() bool {
 // GetIsSimulationEnabledOk returns a tuple with the IsSimulationEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowLibraryTrigger) GetIsSimulationEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.IsSimulationEnabled) {
+	if o == nil || IsNil(o.IsSimulationEnabled) {
 		return nil, false
 	}
 	return o.IsSimulationEnabled, true
@@ -213,7 +213,7 @@ func (o *WorkflowLibraryTrigger) GetIsSimulationEnabledOk() (*bool, bool) {
 
 // HasIsSimulationEnabled returns a boolean if a field has been set.
 func (o *WorkflowLibraryTrigger) HasIsSimulationEnabled() bool {
-	if o != nil && !isNil(o.IsSimulationEnabled) {
+	if o != nil && !IsNil(o.IsSimulationEnabled) {
 		return true
 	}
 
@@ -227,7 +227,7 @@ func (o *WorkflowLibraryTrigger) SetIsSimulationEnabled(v bool) {
 
 // GetOutputSchema returns the OutputSchema field value if set, zero value otherwise.
 func (o *WorkflowLibraryTrigger) GetOutputSchema() map[string]interface{} {
-	if o == nil || isNil(o.OutputSchema) {
+	if o == nil || IsNil(o.OutputSchema) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -237,7 +237,7 @@ func (o *WorkflowLibraryTrigger) GetOutputSchema() map[string]interface{} {
 // GetOutputSchemaOk returns a tuple with the OutputSchema field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowLibraryTrigger) GetOutputSchemaOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.OutputSchema) {
+	if o == nil || IsNil(o.OutputSchema) {
 		return map[string]interface{}{}, false
 	}
 	return o.OutputSchema, true
@@ -245,7 +245,7 @@ func (o *WorkflowLibraryTrigger) GetOutputSchemaOk() (map[string]interface{}, bo
 
 // HasOutputSchema returns a boolean if a field has been set.
 func (o *WorkflowLibraryTrigger) HasOutputSchema() bool {
-	if o != nil && !isNil(o.OutputSchema) {
+	if o != nil && !IsNil(o.OutputSchema) {
 		return true
 	}
 
@@ -259,7 +259,7 @@ func (o *WorkflowLibraryTrigger) SetOutputSchema(v map[string]interface{}) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *WorkflowLibraryTrigger) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -269,7 +269,7 @@ func (o *WorkflowLibraryTrigger) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowLibraryTrigger) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -277,7 +277,7 @@ func (o *WorkflowLibraryTrigger) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *WorkflowLibraryTrigger) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -291,7 +291,7 @@ func (o *WorkflowLibraryTrigger) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *WorkflowLibraryTrigger) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -301,7 +301,7 @@ func (o *WorkflowLibraryTrigger) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowLibraryTrigger) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -309,7 +309,7 @@ func (o *WorkflowLibraryTrigger) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *WorkflowLibraryTrigger) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -323,7 +323,7 @@ func (o *WorkflowLibraryTrigger) SetDescription(v string) {
 
 // GetIsDynamicSchema returns the IsDynamicSchema field value if set, zero value otherwise.
 func (o *WorkflowLibraryTrigger) GetIsDynamicSchema() bool {
-	if o == nil || isNil(o.IsDynamicSchema) {
+	if o == nil || IsNil(o.IsDynamicSchema) {
 		var ret bool
 		return ret
 	}
@@ -333,7 +333,7 @@ func (o *WorkflowLibraryTrigger) GetIsDynamicSchema() bool {
 // GetIsDynamicSchemaOk returns a tuple with the IsDynamicSchema field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowLibraryTrigger) GetIsDynamicSchemaOk() (*bool, bool) {
-	if o == nil || isNil(o.IsDynamicSchema) {
+	if o == nil || IsNil(o.IsDynamicSchema) {
 		return nil, false
 	}
 	return o.IsDynamicSchema, true
@@ -341,7 +341,7 @@ func (o *WorkflowLibraryTrigger) GetIsDynamicSchemaOk() (*bool, bool) {
 
 // HasIsDynamicSchema returns a boolean if a field has been set.
 func (o *WorkflowLibraryTrigger) HasIsDynamicSchema() bool {
-	if o != nil && !isNil(o.IsDynamicSchema) {
+	if o != nil && !IsNil(o.IsDynamicSchema) {
 		return true
 	}
 
@@ -366,7 +366,7 @@ func (o *WorkflowLibraryTrigger) GetInputExample() map[string]interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WorkflowLibraryTrigger) GetInputExampleOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.InputExample) {
+	if o == nil || IsNil(o.InputExample) {
 		return map[string]interface{}{}, false
 	}
 	return o.InputExample, true
@@ -374,7 +374,7 @@ func (o *WorkflowLibraryTrigger) GetInputExampleOk() (map[string]interface{}, bo
 
 // HasInputExample returns a boolean if a field has been set.
 func (o *WorkflowLibraryTrigger) HasInputExample() bool {
-	if o != nil && isNil(o.InputExample) {
+	if o != nil && !IsNil(o.InputExample) {
 		return true
 	}
 
@@ -399,7 +399,7 @@ func (o *WorkflowLibraryTrigger) GetFormFields() []WorkflowLibraryFormFields {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WorkflowLibraryTrigger) GetFormFieldsOk() ([]WorkflowLibraryFormFields, bool) {
-	if o == nil || isNil(o.FormFields) {
+	if o == nil || IsNil(o.FormFields) {
 		return nil, false
 	}
 	return o.FormFields, true
@@ -407,7 +407,7 @@ func (o *WorkflowLibraryTrigger) GetFormFieldsOk() ([]WorkflowLibraryFormFields,
 
 // HasFormFields returns a boolean if a field has been set.
 func (o *WorkflowLibraryTrigger) HasFormFields() bool {
-	if o != nil && isNil(o.FormFields) {
+	if o != nil && !IsNil(o.FormFields) {
 		return true
 	}
 
@@ -429,31 +429,31 @@ func (o WorkflowLibraryTrigger) MarshalJSON() ([]byte, error) {
 
 func (o WorkflowLibraryTrigger) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Deprecated) {
+	if !IsNil(o.Deprecated) {
 		toSerialize["deprecated"] = o.Deprecated
 	}
-	if !isNil(o.DeprecatedBy) {
+	if !IsNil(o.DeprecatedBy) {
 		toSerialize["deprecatedBy"] = o.DeprecatedBy
 	}
-	if !isNil(o.IsSimulationEnabled) {
+	if !IsNil(o.IsSimulationEnabled) {
 		toSerialize["isSimulationEnabled"] = o.IsSimulationEnabled
 	}
-	if !isNil(o.OutputSchema) {
+	if !IsNil(o.OutputSchema) {
 		toSerialize["outputSchema"] = o.OutputSchema
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.IsDynamicSchema) {
+	if !IsNil(o.IsDynamicSchema) {
 		toSerialize["isDynamicSchema"] = o.IsDynamicSchema
 	}
 	if o.InputExample != nil {
@@ -470,16 +470,20 @@ func (o WorkflowLibraryTrigger) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *WorkflowLibraryTrigger) UnmarshalJSON(bytes []byte) (err error) {
+func (o *WorkflowLibraryTrigger) UnmarshalJSON(data []byte) (err error) {
 	varWorkflowLibraryTrigger := _WorkflowLibraryTrigger{}
 
-	if err = json.Unmarshal(bytes, &varWorkflowLibraryTrigger); err == nil {
+	err = json.Unmarshal(data, &varWorkflowLibraryTrigger)
+
+	if err != nil {
+		return err
+	}
+
 	*o = WorkflowLibraryTrigger(varWorkflowLibraryTrigger)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "deprecated")

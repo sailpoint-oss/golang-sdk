@@ -49,7 +49,7 @@ func NewTenantConfigurationDetailsWithDefaults() *TenantConfigurationDetails {
 
 // GetDisabled returns the Disabled field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TenantConfigurationDetails) GetDisabled() bool {
-	if o == nil || isNil(o.Disabled.Get()) {
+	if o == nil || IsNil(o.Disabled.Get()) {
 		var ret bool
 		return ret
 	}
@@ -110,16 +110,20 @@ func (o TenantConfigurationDetails) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *TenantConfigurationDetails) UnmarshalJSON(bytes []byte) (err error) {
+func (o *TenantConfigurationDetails) UnmarshalJSON(data []byte) (err error) {
 	varTenantConfigurationDetails := _TenantConfigurationDetails{}
 
-	if err = json.Unmarshal(bytes, &varTenantConfigurationDetails); err == nil {
+	err = json.Unmarshal(data, &varTenantConfigurationDetails)
+
+	if err != nil {
+		return err
+	}
+
 	*o = TenantConfigurationDetails(varTenantConfigurationDetails)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "disabled")
 		o.AdditionalProperties = additionalProperties
 	}

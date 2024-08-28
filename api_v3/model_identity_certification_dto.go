@@ -74,7 +74,7 @@ func NewIdentityCertificationDtoWithDefaults() *IdentityCertificationDto {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *IdentityCertificationDto) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -84,7 +84,7 @@ func (o *IdentityCertificationDto) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertificationDto) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -92,7 +92,7 @@ func (o *IdentityCertificationDto) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *IdentityCertificationDto) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -106,7 +106,7 @@ func (o *IdentityCertificationDto) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *IdentityCertificationDto) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -116,7 +116,7 @@ func (o *IdentityCertificationDto) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertificationDto) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -124,7 +124,7 @@ func (o *IdentityCertificationDto) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *IdentityCertificationDto) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -138,7 +138,7 @@ func (o *IdentityCertificationDto) SetName(v string) {
 
 // GetCampaign returns the Campaign field value if set, zero value otherwise.
 func (o *IdentityCertificationDto) GetCampaign() CampaignReference {
-	if o == nil || isNil(o.Campaign) {
+	if o == nil || IsNil(o.Campaign) {
 		var ret CampaignReference
 		return ret
 	}
@@ -148,7 +148,7 @@ func (o *IdentityCertificationDto) GetCampaign() CampaignReference {
 // GetCampaignOk returns a tuple with the Campaign field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertificationDto) GetCampaignOk() (*CampaignReference, bool) {
-	if o == nil || isNil(o.Campaign) {
+	if o == nil || IsNil(o.Campaign) {
 		return nil, false
 	}
 	return o.Campaign, true
@@ -156,7 +156,7 @@ func (o *IdentityCertificationDto) GetCampaignOk() (*CampaignReference, bool) {
 
 // HasCampaign returns a boolean if a field has been set.
 func (o *IdentityCertificationDto) HasCampaign() bool {
-	if o != nil && !isNil(o.Campaign) {
+	if o != nil && !IsNil(o.Campaign) {
 		return true
 	}
 
@@ -170,7 +170,7 @@ func (o *IdentityCertificationDto) SetCampaign(v CampaignReference) {
 
 // GetCompleted returns the Completed field value if set, zero value otherwise.
 func (o *IdentityCertificationDto) GetCompleted() bool {
-	if o == nil || isNil(o.Completed) {
+	if o == nil || IsNil(o.Completed) {
 		var ret bool
 		return ret
 	}
@@ -180,7 +180,7 @@ func (o *IdentityCertificationDto) GetCompleted() bool {
 // GetCompletedOk returns a tuple with the Completed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertificationDto) GetCompletedOk() (*bool, bool) {
-	if o == nil || isNil(o.Completed) {
+	if o == nil || IsNil(o.Completed) {
 		return nil, false
 	}
 	return o.Completed, true
@@ -188,7 +188,7 @@ func (o *IdentityCertificationDto) GetCompletedOk() (*bool, bool) {
 
 // HasCompleted returns a boolean if a field has been set.
 func (o *IdentityCertificationDto) HasCompleted() bool {
-	if o != nil && !isNil(o.Completed) {
+	if o != nil && !IsNil(o.Completed) {
 		return true
 	}
 
@@ -202,7 +202,7 @@ func (o *IdentityCertificationDto) SetCompleted(v bool) {
 
 // GetIdentitiesCompleted returns the IdentitiesCompleted field value if set, zero value otherwise.
 func (o *IdentityCertificationDto) GetIdentitiesCompleted() int32 {
-	if o == nil || isNil(o.IdentitiesCompleted) {
+	if o == nil || IsNil(o.IdentitiesCompleted) {
 		var ret int32
 		return ret
 	}
@@ -212,7 +212,7 @@ func (o *IdentityCertificationDto) GetIdentitiesCompleted() int32 {
 // GetIdentitiesCompletedOk returns a tuple with the IdentitiesCompleted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertificationDto) GetIdentitiesCompletedOk() (*int32, bool) {
-	if o == nil || isNil(o.IdentitiesCompleted) {
+	if o == nil || IsNil(o.IdentitiesCompleted) {
 		return nil, false
 	}
 	return o.IdentitiesCompleted, true
@@ -220,7 +220,7 @@ func (o *IdentityCertificationDto) GetIdentitiesCompletedOk() (*int32, bool) {
 
 // HasIdentitiesCompleted returns a boolean if a field has been set.
 func (o *IdentityCertificationDto) HasIdentitiesCompleted() bool {
-	if o != nil && !isNil(o.IdentitiesCompleted) {
+	if o != nil && !IsNil(o.IdentitiesCompleted) {
 		return true
 	}
 
@@ -234,7 +234,7 @@ func (o *IdentityCertificationDto) SetIdentitiesCompleted(v int32) {
 
 // GetIdentitiesTotal returns the IdentitiesTotal field value if set, zero value otherwise.
 func (o *IdentityCertificationDto) GetIdentitiesTotal() int32 {
-	if o == nil || isNil(o.IdentitiesTotal) {
+	if o == nil || IsNil(o.IdentitiesTotal) {
 		var ret int32
 		return ret
 	}
@@ -244,7 +244,7 @@ func (o *IdentityCertificationDto) GetIdentitiesTotal() int32 {
 // GetIdentitiesTotalOk returns a tuple with the IdentitiesTotal field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertificationDto) GetIdentitiesTotalOk() (*int32, bool) {
-	if o == nil || isNil(o.IdentitiesTotal) {
+	if o == nil || IsNil(o.IdentitiesTotal) {
 		return nil, false
 	}
 	return o.IdentitiesTotal, true
@@ -252,7 +252,7 @@ func (o *IdentityCertificationDto) GetIdentitiesTotalOk() (*int32, bool) {
 
 // HasIdentitiesTotal returns a boolean if a field has been set.
 func (o *IdentityCertificationDto) HasIdentitiesTotal() bool {
-	if o != nil && !isNil(o.IdentitiesTotal) {
+	if o != nil && !IsNil(o.IdentitiesTotal) {
 		return true
 	}
 
@@ -266,7 +266,7 @@ func (o *IdentityCertificationDto) SetIdentitiesTotal(v int32) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *IdentityCertificationDto) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -276,7 +276,7 @@ func (o *IdentityCertificationDto) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertificationDto) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -284,7 +284,7 @@ func (o *IdentityCertificationDto) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *IdentityCertificationDto) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -298,7 +298,7 @@ func (o *IdentityCertificationDto) SetCreated(v time.Time) {
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *IdentityCertificationDto) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		var ret time.Time
 		return ret
 	}
@@ -308,7 +308,7 @@ func (o *IdentityCertificationDto) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertificationDto) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -316,7 +316,7 @@ func (o *IdentityCertificationDto) GetModifiedOk() (*time.Time, bool) {
 
 // HasModified returns a boolean if a field has been set.
 func (o *IdentityCertificationDto) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -330,7 +330,7 @@ func (o *IdentityCertificationDto) SetModified(v time.Time) {
 
 // GetDecisionsMade returns the DecisionsMade field value if set, zero value otherwise.
 func (o *IdentityCertificationDto) GetDecisionsMade() int32 {
-	if o == nil || isNil(o.DecisionsMade) {
+	if o == nil || IsNil(o.DecisionsMade) {
 		var ret int32
 		return ret
 	}
@@ -340,7 +340,7 @@ func (o *IdentityCertificationDto) GetDecisionsMade() int32 {
 // GetDecisionsMadeOk returns a tuple with the DecisionsMade field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertificationDto) GetDecisionsMadeOk() (*int32, bool) {
-	if o == nil || isNil(o.DecisionsMade) {
+	if o == nil || IsNil(o.DecisionsMade) {
 		return nil, false
 	}
 	return o.DecisionsMade, true
@@ -348,7 +348,7 @@ func (o *IdentityCertificationDto) GetDecisionsMadeOk() (*int32, bool) {
 
 // HasDecisionsMade returns a boolean if a field has been set.
 func (o *IdentityCertificationDto) HasDecisionsMade() bool {
-	if o != nil && !isNil(o.DecisionsMade) {
+	if o != nil && !IsNil(o.DecisionsMade) {
 		return true
 	}
 
@@ -362,7 +362,7 @@ func (o *IdentityCertificationDto) SetDecisionsMade(v int32) {
 
 // GetDecisionsTotal returns the DecisionsTotal field value if set, zero value otherwise.
 func (o *IdentityCertificationDto) GetDecisionsTotal() int32 {
-	if o == nil || isNil(o.DecisionsTotal) {
+	if o == nil || IsNil(o.DecisionsTotal) {
 		var ret int32
 		return ret
 	}
@@ -372,7 +372,7 @@ func (o *IdentityCertificationDto) GetDecisionsTotal() int32 {
 // GetDecisionsTotalOk returns a tuple with the DecisionsTotal field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertificationDto) GetDecisionsTotalOk() (*int32, bool) {
-	if o == nil || isNil(o.DecisionsTotal) {
+	if o == nil || IsNil(o.DecisionsTotal) {
 		return nil, false
 	}
 	return o.DecisionsTotal, true
@@ -380,7 +380,7 @@ func (o *IdentityCertificationDto) GetDecisionsTotalOk() (*int32, bool) {
 
 // HasDecisionsTotal returns a boolean if a field has been set.
 func (o *IdentityCertificationDto) HasDecisionsTotal() bool {
-	if o != nil && !isNil(o.DecisionsTotal) {
+	if o != nil && !IsNil(o.DecisionsTotal) {
 		return true
 	}
 
@@ -394,7 +394,7 @@ func (o *IdentityCertificationDto) SetDecisionsTotal(v int32) {
 
 // GetDue returns the Due field value if set, zero value otherwise.
 func (o *IdentityCertificationDto) GetDue() time.Time {
-	if o == nil || isNil(o.Due) {
+	if o == nil || IsNil(o.Due) {
 		var ret time.Time
 		return ret
 	}
@@ -404,7 +404,7 @@ func (o *IdentityCertificationDto) GetDue() time.Time {
 // GetDueOk returns a tuple with the Due field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertificationDto) GetDueOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Due) {
+	if o == nil || IsNil(o.Due) {
 		return nil, false
 	}
 	return o.Due, true
@@ -412,7 +412,7 @@ func (o *IdentityCertificationDto) GetDueOk() (*time.Time, bool) {
 
 // HasDue returns a boolean if a field has been set.
 func (o *IdentityCertificationDto) HasDue() bool {
-	if o != nil && !isNil(o.Due) {
+	if o != nil && !IsNil(o.Due) {
 		return true
 	}
 
@@ -426,7 +426,7 @@ func (o *IdentityCertificationDto) SetDue(v time.Time) {
 
 // GetSigned returns the Signed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentityCertificationDto) GetSigned() time.Time {
-	if o == nil || isNil(o.Signed.Get()) {
+	if o == nil || IsNil(o.Signed.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -468,7 +468,7 @@ func (o *IdentityCertificationDto) UnsetSigned() {
 
 // GetReviewer returns the Reviewer field value if set, zero value otherwise.
 func (o *IdentityCertificationDto) GetReviewer() Reviewer {
-	if o == nil || isNil(o.Reviewer) {
+	if o == nil || IsNil(o.Reviewer) {
 		var ret Reviewer
 		return ret
 	}
@@ -478,7 +478,7 @@ func (o *IdentityCertificationDto) GetReviewer() Reviewer {
 // GetReviewerOk returns a tuple with the Reviewer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertificationDto) GetReviewerOk() (*Reviewer, bool) {
-	if o == nil || isNil(o.Reviewer) {
+	if o == nil || IsNil(o.Reviewer) {
 		return nil, false
 	}
 	return o.Reviewer, true
@@ -486,7 +486,7 @@ func (o *IdentityCertificationDto) GetReviewerOk() (*Reviewer, bool) {
 
 // HasReviewer returns a boolean if a field has been set.
 func (o *IdentityCertificationDto) HasReviewer() bool {
-	if o != nil && !isNil(o.Reviewer) {
+	if o != nil && !IsNil(o.Reviewer) {
 		return true
 	}
 
@@ -500,7 +500,7 @@ func (o *IdentityCertificationDto) SetReviewer(v Reviewer) {
 
 // GetReassignment returns the Reassignment field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentityCertificationDto) GetReassignment() Reassignment {
-	if o == nil || isNil(o.Reassignment.Get()) {
+	if o == nil || IsNil(o.Reassignment.Get()) {
 		var ret Reassignment
 		return ret
 	}
@@ -542,7 +542,7 @@ func (o *IdentityCertificationDto) UnsetReassignment() {
 
 // GetHasErrors returns the HasErrors field value if set, zero value otherwise.
 func (o *IdentityCertificationDto) GetHasErrors() bool {
-	if o == nil || isNil(o.HasErrors) {
+	if o == nil || IsNil(o.HasErrors) {
 		var ret bool
 		return ret
 	}
@@ -552,7 +552,7 @@ func (o *IdentityCertificationDto) GetHasErrors() bool {
 // GetHasErrorsOk returns a tuple with the HasErrors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertificationDto) GetHasErrorsOk() (*bool, bool) {
-	if o == nil || isNil(o.HasErrors) {
+	if o == nil || IsNil(o.HasErrors) {
 		return nil, false
 	}
 	return o.HasErrors, true
@@ -560,7 +560,7 @@ func (o *IdentityCertificationDto) GetHasErrorsOk() (*bool, bool) {
 
 // HasHasErrors returns a boolean if a field has been set.
 func (o *IdentityCertificationDto) HasHasErrors() bool {
-	if o != nil && !isNil(o.HasErrors) {
+	if o != nil && !IsNil(o.HasErrors) {
 		return true
 	}
 
@@ -574,7 +574,7 @@ func (o *IdentityCertificationDto) SetHasErrors(v bool) {
 
 // GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentityCertificationDto) GetErrorMessage() string {
-	if o == nil || isNil(o.ErrorMessage.Get()) {
+	if o == nil || IsNil(o.ErrorMessage.Get()) {
 		var ret string
 		return ret
 	}
@@ -616,7 +616,7 @@ func (o *IdentityCertificationDto) UnsetErrorMessage() {
 
 // GetPhase returns the Phase field value if set, zero value otherwise.
 func (o *IdentityCertificationDto) GetPhase() CertificationPhase {
-	if o == nil || isNil(o.Phase) {
+	if o == nil || IsNil(o.Phase) {
 		var ret CertificationPhase
 		return ret
 	}
@@ -626,7 +626,7 @@ func (o *IdentityCertificationDto) GetPhase() CertificationPhase {
 // GetPhaseOk returns a tuple with the Phase field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertificationDto) GetPhaseOk() (*CertificationPhase, bool) {
-	if o == nil || isNil(o.Phase) {
+	if o == nil || IsNil(o.Phase) {
 		return nil, false
 	}
 	return o.Phase, true
@@ -634,7 +634,7 @@ func (o *IdentityCertificationDto) GetPhaseOk() (*CertificationPhase, bool) {
 
 // HasPhase returns a boolean if a field has been set.
 func (o *IdentityCertificationDto) HasPhase() bool {
-	if o != nil && !isNil(o.Phase) {
+	if o != nil && !IsNil(o.Phase) {
 		return true
 	}
 
@@ -656,55 +656,55 @@ func (o IdentityCertificationDto) MarshalJSON() ([]byte, error) {
 
 func (o IdentityCertificationDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Campaign) {
+	if !IsNil(o.Campaign) {
 		toSerialize["campaign"] = o.Campaign
 	}
-	if !isNil(o.Completed) {
+	if !IsNil(o.Completed) {
 		toSerialize["completed"] = o.Completed
 	}
-	if !isNil(o.IdentitiesCompleted) {
+	if !IsNil(o.IdentitiesCompleted) {
 		toSerialize["identitiesCompleted"] = o.IdentitiesCompleted
 	}
-	if !isNil(o.IdentitiesTotal) {
+	if !IsNil(o.IdentitiesTotal) {
 		toSerialize["identitiesTotal"] = o.IdentitiesTotal
 	}
-	if !isNil(o.Created) {
+	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
-	if !isNil(o.Modified) {
+	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
-	if !isNil(o.DecisionsMade) {
+	if !IsNil(o.DecisionsMade) {
 		toSerialize["decisionsMade"] = o.DecisionsMade
 	}
-	if !isNil(o.DecisionsTotal) {
+	if !IsNil(o.DecisionsTotal) {
 		toSerialize["decisionsTotal"] = o.DecisionsTotal
 	}
-	if !isNil(o.Due) {
+	if !IsNil(o.Due) {
 		toSerialize["due"] = o.Due
 	}
 	if o.Signed.IsSet() {
 		toSerialize["signed"] = o.Signed.Get()
 	}
-	if !isNil(o.Reviewer) {
+	if !IsNil(o.Reviewer) {
 		toSerialize["reviewer"] = o.Reviewer
 	}
 	if o.Reassignment.IsSet() {
 		toSerialize["reassignment"] = o.Reassignment.Get()
 	}
-	if !isNil(o.HasErrors) {
+	if !IsNil(o.HasErrors) {
 		toSerialize["hasErrors"] = o.HasErrors
 	}
 	if o.ErrorMessage.IsSet() {
 		toSerialize["errorMessage"] = o.ErrorMessage.Get()
 	}
-	if !isNil(o.Phase) {
+	if !IsNil(o.Phase) {
 		toSerialize["phase"] = o.Phase
 	}
 
@@ -715,16 +715,20 @@ func (o IdentityCertificationDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *IdentityCertificationDto) UnmarshalJSON(bytes []byte) (err error) {
+func (o *IdentityCertificationDto) UnmarshalJSON(data []byte) (err error) {
 	varIdentityCertificationDto := _IdentityCertificationDto{}
 
-	if err = json.Unmarshal(bytes, &varIdentityCertificationDto); err == nil {
+	err = json.Unmarshal(data, &varIdentityCertificationDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = IdentityCertificationDto(varIdentityCertificationDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "campaign")

@@ -67,7 +67,7 @@ func NewEntitlementRequestConfig1WithDefaults() *EntitlementRequestConfig1 {
 
 // GetAllowEntitlementRequest returns the AllowEntitlementRequest field value if set, zero value otherwise.
 func (o *EntitlementRequestConfig1) GetAllowEntitlementRequest() bool {
-	if o == nil || isNil(o.AllowEntitlementRequest) {
+	if o == nil || IsNil(o.AllowEntitlementRequest) {
 		var ret bool
 		return ret
 	}
@@ -77,7 +77,7 @@ func (o *EntitlementRequestConfig1) GetAllowEntitlementRequest() bool {
 // GetAllowEntitlementRequestOk returns a tuple with the AllowEntitlementRequest field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntitlementRequestConfig1) GetAllowEntitlementRequestOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowEntitlementRequest) {
+	if o == nil || IsNil(o.AllowEntitlementRequest) {
 		return nil, false
 	}
 	return o.AllowEntitlementRequest, true
@@ -85,7 +85,7 @@ func (o *EntitlementRequestConfig1) GetAllowEntitlementRequestOk() (*bool, bool)
 
 // HasAllowEntitlementRequest returns a boolean if a field has been set.
 func (o *EntitlementRequestConfig1) HasAllowEntitlementRequest() bool {
-	if o != nil && !isNil(o.AllowEntitlementRequest) {
+	if o != nil && !IsNil(o.AllowEntitlementRequest) {
 		return true
 	}
 
@@ -99,7 +99,7 @@ func (o *EntitlementRequestConfig1) SetAllowEntitlementRequest(v bool) {
 
 // GetRequestCommentsRequired returns the RequestCommentsRequired field value if set, zero value otherwise.
 func (o *EntitlementRequestConfig1) GetRequestCommentsRequired() bool {
-	if o == nil || isNil(o.RequestCommentsRequired) {
+	if o == nil || IsNil(o.RequestCommentsRequired) {
 		var ret bool
 		return ret
 	}
@@ -109,7 +109,7 @@ func (o *EntitlementRequestConfig1) GetRequestCommentsRequired() bool {
 // GetRequestCommentsRequiredOk returns a tuple with the RequestCommentsRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntitlementRequestConfig1) GetRequestCommentsRequiredOk() (*bool, bool) {
-	if o == nil || isNil(o.RequestCommentsRequired) {
+	if o == nil || IsNil(o.RequestCommentsRequired) {
 		return nil, false
 	}
 	return o.RequestCommentsRequired, true
@@ -117,7 +117,7 @@ func (o *EntitlementRequestConfig1) GetRequestCommentsRequiredOk() (*bool, bool)
 
 // HasRequestCommentsRequired returns a boolean if a field has been set.
 func (o *EntitlementRequestConfig1) HasRequestCommentsRequired() bool {
-	if o != nil && !isNil(o.RequestCommentsRequired) {
+	if o != nil && !IsNil(o.RequestCommentsRequired) {
 		return true
 	}
 
@@ -131,7 +131,7 @@ func (o *EntitlementRequestConfig1) SetRequestCommentsRequired(v bool) {
 
 // GetDeniedCommentsRequired returns the DeniedCommentsRequired field value if set, zero value otherwise.
 func (o *EntitlementRequestConfig1) GetDeniedCommentsRequired() bool {
-	if o == nil || isNil(o.DeniedCommentsRequired) {
+	if o == nil || IsNil(o.DeniedCommentsRequired) {
 		var ret bool
 		return ret
 	}
@@ -141,7 +141,7 @@ func (o *EntitlementRequestConfig1) GetDeniedCommentsRequired() bool {
 // GetDeniedCommentsRequiredOk returns a tuple with the DeniedCommentsRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntitlementRequestConfig1) GetDeniedCommentsRequiredOk() (*bool, bool) {
-	if o == nil || isNil(o.DeniedCommentsRequired) {
+	if o == nil || IsNil(o.DeniedCommentsRequired) {
 		return nil, false
 	}
 	return o.DeniedCommentsRequired, true
@@ -149,7 +149,7 @@ func (o *EntitlementRequestConfig1) GetDeniedCommentsRequiredOk() (*bool, bool) 
 
 // HasDeniedCommentsRequired returns a boolean if a field has been set.
 func (o *EntitlementRequestConfig1) HasDeniedCommentsRequired() bool {
-	if o != nil && !isNil(o.DeniedCommentsRequired) {
+	if o != nil && !IsNil(o.DeniedCommentsRequired) {
 		return true
 	}
 
@@ -163,7 +163,7 @@ func (o *EntitlementRequestConfig1) SetDeniedCommentsRequired(v bool) {
 
 // GetGrantRequestApprovalSchemes returns the GrantRequestApprovalSchemes field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EntitlementRequestConfig1) GetGrantRequestApprovalSchemes() string {
-	if o == nil || isNil(o.GrantRequestApprovalSchemes.Get()) {
+	if o == nil || IsNil(o.GrantRequestApprovalSchemes.Get()) {
 		var ret string
 		return ret
 	}
@@ -213,13 +213,13 @@ func (o EntitlementRequestConfig1) MarshalJSON() ([]byte, error) {
 
 func (o EntitlementRequestConfig1) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AllowEntitlementRequest) {
+	if !IsNil(o.AllowEntitlementRequest) {
 		toSerialize["allowEntitlementRequest"] = o.AllowEntitlementRequest
 	}
-	if !isNil(o.RequestCommentsRequired) {
+	if !IsNil(o.RequestCommentsRequired) {
 		toSerialize["requestCommentsRequired"] = o.RequestCommentsRequired
 	}
-	if !isNil(o.DeniedCommentsRequired) {
+	if !IsNil(o.DeniedCommentsRequired) {
 		toSerialize["deniedCommentsRequired"] = o.DeniedCommentsRequired
 	}
 	if o.GrantRequestApprovalSchemes.IsSet() {
@@ -233,16 +233,20 @@ func (o EntitlementRequestConfig1) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *EntitlementRequestConfig1) UnmarshalJSON(bytes []byte) (err error) {
+func (o *EntitlementRequestConfig1) UnmarshalJSON(data []byte) (err error) {
 	varEntitlementRequestConfig1 := _EntitlementRequestConfig1{}
 
-	if err = json.Unmarshal(bytes, &varEntitlementRequestConfig1); err == nil {
+	err = json.Unmarshal(data, &varEntitlementRequestConfig1)
+
+	if err != nil {
+		return err
+	}
+
 	*o = EntitlementRequestConfig1(varEntitlementRequestConfig1)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "allowEntitlementRequest")
 		delete(additionalProperties, "requestCommentsRequired")
 		delete(additionalProperties, "deniedCommentsRequired")

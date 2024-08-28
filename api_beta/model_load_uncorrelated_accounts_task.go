@@ -50,7 +50,7 @@ func NewLoadUncorrelatedAccountsTaskWithDefaults() *LoadUncorrelatedAccountsTask
 
 // GetSuccess returns the Success field value if set, zero value otherwise.
 func (o *LoadUncorrelatedAccountsTask) GetSuccess() bool {
-	if o == nil || isNil(o.Success) {
+	if o == nil || IsNil(o.Success) {
 		var ret bool
 		return ret
 	}
@@ -60,7 +60,7 @@ func (o *LoadUncorrelatedAccountsTask) GetSuccess() bool {
 // GetSuccessOk returns a tuple with the Success field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LoadUncorrelatedAccountsTask) GetSuccessOk() (*bool, bool) {
-	if o == nil || isNil(o.Success) {
+	if o == nil || IsNil(o.Success) {
 		return nil, false
 	}
 	return o.Success, true
@@ -68,7 +68,7 @@ func (o *LoadUncorrelatedAccountsTask) GetSuccessOk() (*bool, bool) {
 
 // HasSuccess returns a boolean if a field has been set.
 func (o *LoadUncorrelatedAccountsTask) HasSuccess() bool {
-	if o != nil && !isNil(o.Success) {
+	if o != nil && !IsNil(o.Success) {
 		return true
 	}
 
@@ -82,7 +82,7 @@ func (o *LoadUncorrelatedAccountsTask) SetSuccess(v bool) {
 
 // GetTask returns the Task field value if set, zero value otherwise.
 func (o *LoadUncorrelatedAccountsTask) GetTask() LoadUncorrelatedAccountsTaskTask {
-	if o == nil || isNil(o.Task) {
+	if o == nil || IsNil(o.Task) {
 		var ret LoadUncorrelatedAccountsTaskTask
 		return ret
 	}
@@ -92,7 +92,7 @@ func (o *LoadUncorrelatedAccountsTask) GetTask() LoadUncorrelatedAccountsTaskTas
 // GetTaskOk returns a tuple with the Task field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LoadUncorrelatedAccountsTask) GetTaskOk() (*LoadUncorrelatedAccountsTaskTask, bool) {
-	if o == nil || isNil(o.Task) {
+	if o == nil || IsNil(o.Task) {
 		return nil, false
 	}
 	return o.Task, true
@@ -100,7 +100,7 @@ func (o *LoadUncorrelatedAccountsTask) GetTaskOk() (*LoadUncorrelatedAccountsTas
 
 // HasTask returns a boolean if a field has been set.
 func (o *LoadUncorrelatedAccountsTask) HasTask() bool {
-	if o != nil && !isNil(o.Task) {
+	if o != nil && !IsNil(o.Task) {
 		return true
 	}
 
@@ -122,10 +122,10 @@ func (o LoadUncorrelatedAccountsTask) MarshalJSON() ([]byte, error) {
 
 func (o LoadUncorrelatedAccountsTask) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Success) {
+	if !IsNil(o.Success) {
 		toSerialize["success"] = o.Success
 	}
-	if !isNil(o.Task) {
+	if !IsNil(o.Task) {
 		toSerialize["task"] = o.Task
 	}
 
@@ -136,16 +136,20 @@ func (o LoadUncorrelatedAccountsTask) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *LoadUncorrelatedAccountsTask) UnmarshalJSON(bytes []byte) (err error) {
+func (o *LoadUncorrelatedAccountsTask) UnmarshalJSON(data []byte) (err error) {
 	varLoadUncorrelatedAccountsTask := _LoadUncorrelatedAccountsTask{}
 
-	if err = json.Unmarshal(bytes, &varLoadUncorrelatedAccountsTask); err == nil {
+	err = json.Unmarshal(data, &varLoadUncorrelatedAccountsTask)
+
+	if err != nil {
+		return err
+	}
+
 	*o = LoadUncorrelatedAccountsTask(varLoadUncorrelatedAccountsTask)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "success")
 		delete(additionalProperties, "task")
 		o.AdditionalProperties = additionalProperties

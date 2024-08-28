@@ -46,7 +46,7 @@ func NewCompleteInvocationInputWithDefaults() *CompleteInvocationInput {
 
 // GetLocalizedError returns the LocalizedError field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CompleteInvocationInput) GetLocalizedError() LocalizedMessage {
-	if o == nil || isNil(o.LocalizedError.Get()) {
+	if o == nil || IsNil(o.LocalizedError.Get()) {
 		var ret LocalizedMessage
 		return ret
 	}
@@ -99,7 +99,7 @@ func (o *CompleteInvocationInput) GetOutput() map[string]interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CompleteInvocationInput) GetOutputOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Output) {
+	if o == nil || IsNil(o.Output) {
 		return map[string]interface{}{}, false
 	}
 	return o.Output, true
@@ -107,7 +107,7 @@ func (o *CompleteInvocationInput) GetOutputOk() (map[string]interface{}, bool) {
 
 // HasOutput returns a boolean if a field has been set.
 func (o *CompleteInvocationInput) HasOutput() bool {
-	if o != nil && isNil(o.Output) {
+	if o != nil && !IsNil(o.Output) {
 		return true
 	}
 
@@ -143,16 +143,20 @@ func (o CompleteInvocationInput) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CompleteInvocationInput) UnmarshalJSON(bytes []byte) (err error) {
+func (o *CompleteInvocationInput) UnmarshalJSON(data []byte) (err error) {
 	varCompleteInvocationInput := _CompleteInvocationInput{}
 
-	if err = json.Unmarshal(bytes, &varCompleteInvocationInput); err == nil {
+	err = json.Unmarshal(data, &varCompleteInvocationInput)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CompleteInvocationInput(varCompleteInvocationInput)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "localizedError")
 		delete(additionalProperties, "output")
 		o.AdditionalProperties = additionalProperties

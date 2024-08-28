@@ -124,7 +124,7 @@ func (o *AccountUncorrelated) SetAccount(v AccountUncorrelatedAccount) {
 
 // GetEntitlementCount returns the EntitlementCount field value if set, zero value otherwise.
 func (o *AccountUncorrelated) GetEntitlementCount() int32 {
-	if o == nil || isNil(o.EntitlementCount) {
+	if o == nil || IsNil(o.EntitlementCount) {
 		var ret int32
 		return ret
 	}
@@ -134,7 +134,7 @@ func (o *AccountUncorrelated) GetEntitlementCount() int32 {
 // GetEntitlementCountOk returns a tuple with the EntitlementCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountUncorrelated) GetEntitlementCountOk() (*int32, bool) {
-	if o == nil || isNil(o.EntitlementCount) {
+	if o == nil || IsNil(o.EntitlementCount) {
 		return nil, false
 	}
 	return o.EntitlementCount, true
@@ -142,7 +142,7 @@ func (o *AccountUncorrelated) GetEntitlementCountOk() (*int32, bool) {
 
 // HasEntitlementCount returns a boolean if a field has been set.
 func (o *AccountUncorrelated) HasEntitlementCount() bool {
-	if o != nil && !isNil(o.EntitlementCount) {
+	if o != nil && !IsNil(o.EntitlementCount) {
 		return true
 	}
 
@@ -167,7 +167,7 @@ func (o AccountUncorrelated) ToMap() (map[string]interface{}, error) {
 	toSerialize["identity"] = o.Identity
 	toSerialize["source"] = o.Source
 	toSerialize["account"] = o.Account
-	if !isNil(o.EntitlementCount) {
+	if !IsNil(o.EntitlementCount) {
 		toSerialize["entitlementCount"] = o.EntitlementCount
 	}
 
@@ -178,8 +178,8 @@ func (o AccountUncorrelated) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccountUncorrelated) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *AccountUncorrelated) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -190,7 +190,7 @@ func (o *AccountUncorrelated) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -204,13 +204,17 @@ func (o *AccountUncorrelated) UnmarshalJSON(bytes []byte) (err error) {
 
 	varAccountUncorrelated := _AccountUncorrelated{}
 
-	if err = json.Unmarshal(bytes, &varAccountUncorrelated); err == nil {
+	err = json.Unmarshal(data, &varAccountUncorrelated)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccountUncorrelated(varAccountUncorrelated)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "identity")
 		delete(additionalProperties, "source")
 		delete(additionalProperties, "account")

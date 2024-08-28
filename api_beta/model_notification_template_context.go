@@ -50,7 +50,7 @@ func NewNotificationTemplateContextWithDefaults() *NotificationTemplateContext {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *NotificationTemplateContext) GetAttributes() map[string]interface{} {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -60,7 +60,7 @@ func (o *NotificationTemplateContext) GetAttributes() map[string]interface{} {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationTemplateContext) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
@@ -68,7 +68,7 @@ func (o *NotificationTemplateContext) GetAttributesOk() (map[string]interface{},
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *NotificationTemplateContext) HasAttributes() bool {
-	if o != nil && !isNil(o.Attributes) {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -82,7 +82,7 @@ func (o *NotificationTemplateContext) SetAttributes(v map[string]interface{}) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *NotificationTemplateContext) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -92,7 +92,7 @@ func (o *NotificationTemplateContext) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationTemplateContext) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -100,7 +100,7 @@ func (o *NotificationTemplateContext) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *NotificationTemplateContext) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -114,7 +114,7 @@ func (o *NotificationTemplateContext) SetCreated(v time.Time) {
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *NotificationTemplateContext) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		var ret time.Time
 		return ret
 	}
@@ -124,7 +124,7 @@ func (o *NotificationTemplateContext) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationTemplateContext) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -132,7 +132,7 @@ func (o *NotificationTemplateContext) GetModifiedOk() (*time.Time, bool) {
 
 // HasModified returns a boolean if a field has been set.
 func (o *NotificationTemplateContext) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -154,13 +154,13 @@ func (o NotificationTemplateContext) MarshalJSON() ([]byte, error) {
 
 func (o NotificationTemplateContext) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Attributes) {
+	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
-	if !isNil(o.Created) {
+	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
-	if !isNil(o.Modified) {
+	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
 
@@ -171,16 +171,20 @@ func (o NotificationTemplateContext) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *NotificationTemplateContext) UnmarshalJSON(bytes []byte) (err error) {
+func (o *NotificationTemplateContext) UnmarshalJSON(data []byte) (err error) {
 	varNotificationTemplateContext := _NotificationTemplateContext{}
 
-	if err = json.Unmarshal(bytes, &varNotificationTemplateContext); err == nil {
+	err = json.Unmarshal(data, &varNotificationTemplateContext)
+
+	if err != nil {
+		return err
+	}
+
 	*o = NotificationTemplateContext(varNotificationTemplateContext)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "attributes")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "modified")

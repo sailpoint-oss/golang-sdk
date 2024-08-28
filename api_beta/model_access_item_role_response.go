@@ -59,7 +59,7 @@ func NewAccessItemRoleResponseWithDefaults() *AccessItemRoleResponse {
 
 // GetAccessType returns the AccessType field value if set, zero value otherwise.
 func (o *AccessItemRoleResponse) GetAccessType() string {
-	if o == nil || isNil(o.AccessType) {
+	if o == nil || IsNil(o.AccessType) {
 		var ret string
 		return ret
 	}
@@ -69,7 +69,7 @@ func (o *AccessItemRoleResponse) GetAccessType() string {
 // GetAccessTypeOk returns a tuple with the AccessType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemRoleResponse) GetAccessTypeOk() (*string, bool) {
-	if o == nil || isNil(o.AccessType) {
+	if o == nil || IsNil(o.AccessType) {
 		return nil, false
 	}
 	return o.AccessType, true
@@ -77,7 +77,7 @@ func (o *AccessItemRoleResponse) GetAccessTypeOk() (*string, bool) {
 
 // HasAccessType returns a boolean if a field has been set.
 func (o *AccessItemRoleResponse) HasAccessType() bool {
-	if o != nil && !isNil(o.AccessType) {
+	if o != nil && !IsNil(o.AccessType) {
 		return true
 	}
 
@@ -91,7 +91,7 @@ func (o *AccessItemRoleResponse) SetAccessType(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *AccessItemRoleResponse) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -101,7 +101,7 @@ func (o *AccessItemRoleResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemRoleResponse) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -109,7 +109,7 @@ func (o *AccessItemRoleResponse) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *AccessItemRoleResponse) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -123,7 +123,7 @@ func (o *AccessItemRoleResponse) SetId(v string) {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *AccessItemRoleResponse) GetDisplayName() string {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -133,7 +133,7 @@ func (o *AccessItemRoleResponse) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemRoleResponse) GetDisplayNameOk() (*string, bool) {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -141,7 +141,7 @@ func (o *AccessItemRoleResponse) GetDisplayNameOk() (*string, bool) {
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *AccessItemRoleResponse) HasDisplayName() bool {
-	if o != nil && !isNil(o.DisplayName) {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -155,7 +155,7 @@ func (o *AccessItemRoleResponse) SetDisplayName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *AccessItemRoleResponse) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -165,7 +165,7 @@ func (o *AccessItemRoleResponse) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemRoleResponse) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -173,7 +173,7 @@ func (o *AccessItemRoleResponse) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *AccessItemRoleResponse) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -187,7 +187,7 @@ func (o *AccessItemRoleResponse) SetDescription(v string) {
 
 // GetSourceName returns the SourceName field value if set, zero value otherwise.
 func (o *AccessItemRoleResponse) GetSourceName() string {
-	if o == nil || isNil(o.SourceName) {
+	if o == nil || IsNil(o.SourceName) {
 		var ret string
 		return ret
 	}
@@ -197,7 +197,7 @@ func (o *AccessItemRoleResponse) GetSourceName() string {
 // GetSourceNameOk returns a tuple with the SourceName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemRoleResponse) GetSourceNameOk() (*string, bool) {
-	if o == nil || isNil(o.SourceName) {
+	if o == nil || IsNil(o.SourceName) {
 		return nil, false
 	}
 	return o.SourceName, true
@@ -205,7 +205,7 @@ func (o *AccessItemRoleResponse) GetSourceNameOk() (*string, bool) {
 
 // HasSourceName returns a boolean if a field has been set.
 func (o *AccessItemRoleResponse) HasSourceName() bool {
-	if o != nil && !isNil(o.SourceName) {
+	if o != nil && !IsNil(o.SourceName) {
 		return true
 	}
 
@@ -219,7 +219,7 @@ func (o *AccessItemRoleResponse) SetSourceName(v string) {
 
 // GetRemoveDate returns the RemoveDate field value if set, zero value otherwise.
 func (o *AccessItemRoleResponse) GetRemoveDate() string {
-	if o == nil || isNil(o.RemoveDate) {
+	if o == nil || IsNil(o.RemoveDate) {
 		var ret string
 		return ret
 	}
@@ -229,7 +229,7 @@ func (o *AccessItemRoleResponse) GetRemoveDate() string {
 // GetRemoveDateOk returns a tuple with the RemoveDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemRoleResponse) GetRemoveDateOk() (*string, bool) {
-	if o == nil || isNil(o.RemoveDate) {
+	if o == nil || IsNil(o.RemoveDate) {
 		return nil, false
 	}
 	return o.RemoveDate, true
@@ -237,7 +237,7 @@ func (o *AccessItemRoleResponse) GetRemoveDateOk() (*string, bool) {
 
 // HasRemoveDate returns a boolean if a field has been set.
 func (o *AccessItemRoleResponse) HasRemoveDate() bool {
-	if o != nil && !isNil(o.RemoveDate) {
+	if o != nil && !IsNil(o.RemoveDate) {
 		return true
 	}
 
@@ -283,22 +283,22 @@ func (o AccessItemRoleResponse) MarshalJSON() ([]byte, error) {
 
 func (o AccessItemRoleResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AccessType) {
+	if !IsNil(o.AccessType) {
 		toSerialize["accessType"] = o.AccessType
 	}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.DisplayName) {
+	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.SourceName) {
+	if !IsNil(o.SourceName) {
 		toSerialize["sourceName"] = o.SourceName
 	}
-	if !isNil(o.RemoveDate) {
+	if !IsNil(o.RemoveDate) {
 		toSerialize["removeDate"] = o.RemoveDate
 	}
 	toSerialize["revocable"] = o.Revocable
@@ -310,8 +310,8 @@ func (o AccessItemRoleResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccessItemRoleResponse) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *AccessItemRoleResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -320,7 +320,7 @@ func (o *AccessItemRoleResponse) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -334,13 +334,17 @@ func (o *AccessItemRoleResponse) UnmarshalJSON(bytes []byte) (err error) {
 
 	varAccessItemRoleResponse := _AccessItemRoleResponse{}
 
-	if err = json.Unmarshal(bytes, &varAccessItemRoleResponse); err == nil {
+	err = json.Unmarshal(data, &varAccessItemRoleResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessItemRoleResponse(varAccessItemRoleResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "accessType")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "displayName")

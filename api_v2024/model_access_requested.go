@@ -50,7 +50,7 @@ func NewAccessRequestedWithDefaults() *AccessRequested {
 
 // GetAccessRequest returns the AccessRequest field value if set, zero value otherwise.
 func (o *AccessRequested) GetAccessRequest() AccessRequestResponse {
-	if o == nil || isNil(o.AccessRequest) {
+	if o == nil || IsNil(o.AccessRequest) {
 		var ret AccessRequestResponse
 		return ret
 	}
@@ -60,7 +60,7 @@ func (o *AccessRequested) GetAccessRequest() AccessRequestResponse {
 // GetAccessRequestOk returns a tuple with the AccessRequest field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequested) GetAccessRequestOk() (*AccessRequestResponse, bool) {
-	if o == nil || isNil(o.AccessRequest) {
+	if o == nil || IsNil(o.AccessRequest) {
 		return nil, false
 	}
 	return o.AccessRequest, true
@@ -68,7 +68,7 @@ func (o *AccessRequested) GetAccessRequestOk() (*AccessRequestResponse, bool) {
 
 // HasAccessRequest returns a boolean if a field has been set.
 func (o *AccessRequested) HasAccessRequest() bool {
-	if o != nil && !isNil(o.AccessRequest) {
+	if o != nil && !IsNil(o.AccessRequest) {
 		return true
 	}
 
@@ -82,7 +82,7 @@ func (o *AccessRequested) SetAccessRequest(v AccessRequestResponse) {
 
 // GetIdentityId returns the IdentityId field value if set, zero value otherwise.
 func (o *AccessRequested) GetIdentityId() string {
-	if o == nil || isNil(o.IdentityId) {
+	if o == nil || IsNil(o.IdentityId) {
 		var ret string
 		return ret
 	}
@@ -92,7 +92,7 @@ func (o *AccessRequested) GetIdentityId() string {
 // GetIdentityIdOk returns a tuple with the IdentityId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequested) GetIdentityIdOk() (*string, bool) {
-	if o == nil || isNil(o.IdentityId) {
+	if o == nil || IsNil(o.IdentityId) {
 		return nil, false
 	}
 	return o.IdentityId, true
@@ -100,7 +100,7 @@ func (o *AccessRequested) GetIdentityIdOk() (*string, bool) {
 
 // HasIdentityId returns a boolean if a field has been set.
 func (o *AccessRequested) HasIdentityId() bool {
-	if o != nil && !isNil(o.IdentityId) {
+	if o != nil && !IsNil(o.IdentityId) {
 		return true
 	}
 
@@ -114,7 +114,7 @@ func (o *AccessRequested) SetIdentityId(v string) {
 
 // GetEventType returns the EventType field value if set, zero value otherwise.
 func (o *AccessRequested) GetEventType() string {
-	if o == nil || isNil(o.EventType) {
+	if o == nil || IsNil(o.EventType) {
 		var ret string
 		return ret
 	}
@@ -124,7 +124,7 @@ func (o *AccessRequested) GetEventType() string {
 // GetEventTypeOk returns a tuple with the EventType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequested) GetEventTypeOk() (*string, bool) {
-	if o == nil || isNil(o.EventType) {
+	if o == nil || IsNil(o.EventType) {
 		return nil, false
 	}
 	return o.EventType, true
@@ -132,7 +132,7 @@ func (o *AccessRequested) GetEventTypeOk() (*string, bool) {
 
 // HasEventType returns a boolean if a field has been set.
 func (o *AccessRequested) HasEventType() bool {
-	if o != nil && !isNil(o.EventType) {
+	if o != nil && !IsNil(o.EventType) {
 		return true
 	}
 
@@ -146,7 +146,7 @@ func (o *AccessRequested) SetEventType(v string) {
 
 // GetDt returns the Dt field value if set, zero value otherwise.
 func (o *AccessRequested) GetDt() string {
-	if o == nil || isNil(o.Dt) {
+	if o == nil || IsNil(o.Dt) {
 		var ret string
 		return ret
 	}
@@ -156,7 +156,7 @@ func (o *AccessRequested) GetDt() string {
 // GetDtOk returns a tuple with the Dt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequested) GetDtOk() (*string, bool) {
-	if o == nil || isNil(o.Dt) {
+	if o == nil || IsNil(o.Dt) {
 		return nil, false
 	}
 	return o.Dt, true
@@ -164,7 +164,7 @@ func (o *AccessRequested) GetDtOk() (*string, bool) {
 
 // HasDt returns a boolean if a field has been set.
 func (o *AccessRequested) HasDt() bool {
-	if o != nil && !isNil(o.Dt) {
+	if o != nil && !IsNil(o.Dt) {
 		return true
 	}
 
@@ -186,16 +186,16 @@ func (o AccessRequested) MarshalJSON() ([]byte, error) {
 
 func (o AccessRequested) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AccessRequest) {
+	if !IsNil(o.AccessRequest) {
 		toSerialize["accessRequest"] = o.AccessRequest
 	}
-	if !isNil(o.IdentityId) {
+	if !IsNil(o.IdentityId) {
 		toSerialize["identityId"] = o.IdentityId
 	}
-	if !isNil(o.EventType) {
+	if !IsNil(o.EventType) {
 		toSerialize["eventType"] = o.EventType
 	}
-	if !isNil(o.Dt) {
+	if !IsNil(o.Dt) {
 		toSerialize["dt"] = o.Dt
 	}
 
@@ -206,16 +206,20 @@ func (o AccessRequested) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccessRequested) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccessRequested) UnmarshalJSON(data []byte) (err error) {
 	varAccessRequested := _AccessRequested{}
 
-	if err = json.Unmarshal(bytes, &varAccessRequested); err == nil {
+	err = json.Unmarshal(data, &varAccessRequested)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessRequested(varAccessRequested)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "accessRequest")
 		delete(additionalProperties, "identityId")
 		delete(additionalProperties, "eventType")

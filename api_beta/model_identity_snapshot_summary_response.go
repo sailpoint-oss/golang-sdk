@@ -45,7 +45,7 @@ func NewIdentitySnapshotSummaryResponseWithDefaults() *IdentitySnapshotSummaryRe
 
 // GetSnapshot returns the Snapshot field value if set, zero value otherwise.
 func (o *IdentitySnapshotSummaryResponse) GetSnapshot() string {
-	if o == nil || isNil(o.Snapshot) {
+	if o == nil || IsNil(o.Snapshot) {
 		var ret string
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *IdentitySnapshotSummaryResponse) GetSnapshot() string {
 // GetSnapshotOk returns a tuple with the Snapshot field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentitySnapshotSummaryResponse) GetSnapshotOk() (*string, bool) {
-	if o == nil || isNil(o.Snapshot) {
+	if o == nil || IsNil(o.Snapshot) {
 		return nil, false
 	}
 	return o.Snapshot, true
@@ -63,7 +63,7 @@ func (o *IdentitySnapshotSummaryResponse) GetSnapshotOk() (*string, bool) {
 
 // HasSnapshot returns a boolean if a field has been set.
 func (o *IdentitySnapshotSummaryResponse) HasSnapshot() bool {
-	if o != nil && !isNil(o.Snapshot) {
+	if o != nil && !IsNil(o.Snapshot) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o IdentitySnapshotSummaryResponse) MarshalJSON() ([]byte, error) {
 
 func (o IdentitySnapshotSummaryResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Snapshot) {
+	if !IsNil(o.Snapshot) {
 		toSerialize["snapshot"] = o.Snapshot
 	}
 
@@ -96,16 +96,20 @@ func (o IdentitySnapshotSummaryResponse) ToMap() (map[string]interface{}, error)
 	return toSerialize, nil
 }
 
-func (o *IdentitySnapshotSummaryResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *IdentitySnapshotSummaryResponse) UnmarshalJSON(data []byte) (err error) {
 	varIdentitySnapshotSummaryResponse := _IdentitySnapshotSummaryResponse{}
 
-	if err = json.Unmarshal(bytes, &varIdentitySnapshotSummaryResponse); err == nil {
+	err = json.Unmarshal(data, &varIdentitySnapshotSummaryResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = IdentitySnapshotSummaryResponse(varIdentitySnapshotSummaryResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "snapshot")
 		o.AdditionalProperties = additionalProperties
 	}

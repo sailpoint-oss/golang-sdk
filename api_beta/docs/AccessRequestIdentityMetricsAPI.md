@@ -22,26 +22,26 @@ Return access request identity metrics
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    identityId := "7025c863-c270-4ba6-beea-edf3cb091573" // string | Manager's identity ID.
-    requestedObjectId := "2db501be-f0fb-4cc5-a695-334133c52891" // string | Requested access item's ID.
-    type_ := "ENTITLEMENT" // string | Requested access item's type.
+	identityId := "7025c863-c270-4ba6-beea-edf3cb091573" // string | Manager's identity ID.
+	requestedObjectId := "2db501be-f0fb-4cc5-a695-334133c52891" // string | Requested access item's ID.
+	type_ := "ENTITLEMENT" // string | Requested access item's type.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestIdentityMetricsAPI.GetAccessRequestIdentityMetrics(context.Background(), identityId, requestedObjectId, type_).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestIdentityMetricsAPI.GetAccessRequestIdentityMetrics``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetAccessRequestIdentityMetrics`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `AccessRequestIdentityMetricsAPI.GetAccessRequestIdentityMetrics`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AccessRequestIdentityMetricsAPI.GetAccessRequestIdentityMetrics(context.Background(), identityId, requestedObjectId, type_).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestIdentityMetricsAPI.GetAccessRequestIdentityMetrics``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetAccessRequestIdentityMetrics`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `AccessRequestIdentityMetricsAPI.GetAccessRequestIdentityMetrics`: %v\n", resp)
 }
 ```
 

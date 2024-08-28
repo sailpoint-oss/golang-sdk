@@ -47,7 +47,7 @@ func NewLicenseWithDefaults() *License {
 
 // GetLicenseId returns the LicenseId field value if set, zero value otherwise.
 func (o *License) GetLicenseId() string {
-	if o == nil || isNil(o.LicenseId) {
+	if o == nil || IsNil(o.LicenseId) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *License) GetLicenseId() string {
 // GetLicenseIdOk returns a tuple with the LicenseId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *License) GetLicenseIdOk() (*string, bool) {
-	if o == nil || isNil(o.LicenseId) {
+	if o == nil || IsNil(o.LicenseId) {
 		return nil, false
 	}
 	return o.LicenseId, true
@@ -65,7 +65,7 @@ func (o *License) GetLicenseIdOk() (*string, bool) {
 
 // HasLicenseId returns a boolean if a field has been set.
 func (o *License) HasLicenseId() bool {
-	if o != nil && !isNil(o.LicenseId) {
+	if o != nil && !IsNil(o.LicenseId) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *License) SetLicenseId(v string) {
 
 // GetLegacyFeatureName returns the LegacyFeatureName field value if set, zero value otherwise.
 func (o *License) GetLegacyFeatureName() string {
-	if o == nil || isNil(o.LegacyFeatureName) {
+	if o == nil || IsNil(o.LegacyFeatureName) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *License) GetLegacyFeatureName() string {
 // GetLegacyFeatureNameOk returns a tuple with the LegacyFeatureName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *License) GetLegacyFeatureNameOk() (*string, bool) {
-	if o == nil || isNil(o.LegacyFeatureName) {
+	if o == nil || IsNil(o.LegacyFeatureName) {
 		return nil, false
 	}
 	return o.LegacyFeatureName, true
@@ -97,7 +97,7 @@ func (o *License) GetLegacyFeatureNameOk() (*string, bool) {
 
 // HasLegacyFeatureName returns a boolean if a field has been set.
 func (o *License) HasLegacyFeatureName() bool {
-	if o != nil && !isNil(o.LegacyFeatureName) {
+	if o != nil && !IsNil(o.LegacyFeatureName) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o License) MarshalJSON() ([]byte, error) {
 
 func (o License) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.LicenseId) {
+	if !IsNil(o.LicenseId) {
 		toSerialize["licenseId"] = o.LicenseId
 	}
-	if !isNil(o.LegacyFeatureName) {
+	if !IsNil(o.LegacyFeatureName) {
 		toSerialize["legacyFeatureName"] = o.LegacyFeatureName
 	}
 
@@ -133,16 +133,20 @@ func (o License) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *License) UnmarshalJSON(bytes []byte) (err error) {
+func (o *License) UnmarshalJSON(data []byte) (err error) {
 	varLicense := _License{}
 
-	if err = json.Unmarshal(bytes, &varLicense); err == nil {
+	err = json.Unmarshal(data, &varLicense)
+
+	if err != nil {
+		return err
+	}
+
 	*o = License(varLicense)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "licenseId")
 		delete(additionalProperties, "legacyFeatureName")
 		o.AdditionalProperties = additionalProperties

@@ -49,7 +49,7 @@ func NewRequestedItemStatusPreApprovalTriggerDetailsWithDefaults() *RequestedIte
 
 // GetComment returns the Comment field value if set, zero value otherwise.
 func (o *RequestedItemStatusPreApprovalTriggerDetails) GetComment() string {
-	if o == nil || isNil(o.Comment) {
+	if o == nil || IsNil(o.Comment) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *RequestedItemStatusPreApprovalTriggerDetails) GetComment() string {
 // GetCommentOk returns a tuple with the Comment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestedItemStatusPreApprovalTriggerDetails) GetCommentOk() (*string, bool) {
-	if o == nil || isNil(o.Comment) {
+	if o == nil || IsNil(o.Comment) {
 		return nil, false
 	}
 	return o.Comment, true
@@ -67,7 +67,7 @@ func (o *RequestedItemStatusPreApprovalTriggerDetails) GetCommentOk() (*string, 
 
 // HasComment returns a boolean if a field has been set.
 func (o *RequestedItemStatusPreApprovalTriggerDetails) HasComment() bool {
-	if o != nil && !isNil(o.Comment) {
+	if o != nil && !IsNil(o.Comment) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *RequestedItemStatusPreApprovalTriggerDetails) SetComment(v string) {
 
 // GetReviewer returns the Reviewer field value if set, zero value otherwise.
 func (o *RequestedItemStatusPreApprovalTriggerDetails) GetReviewer() string {
-	if o == nil || isNil(o.Reviewer) {
+	if o == nil || IsNil(o.Reviewer) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *RequestedItemStatusPreApprovalTriggerDetails) GetReviewer() string {
 // GetReviewerOk returns a tuple with the Reviewer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestedItemStatusPreApprovalTriggerDetails) GetReviewerOk() (*string, bool) {
-	if o == nil || isNil(o.Reviewer) {
+	if o == nil || IsNil(o.Reviewer) {
 		return nil, false
 	}
 	return o.Reviewer, true
@@ -99,7 +99,7 @@ func (o *RequestedItemStatusPreApprovalTriggerDetails) GetReviewerOk() (*string,
 
 // HasReviewer returns a boolean if a field has been set.
 func (o *RequestedItemStatusPreApprovalTriggerDetails) HasReviewer() bool {
-	if o != nil && !isNil(o.Reviewer) {
+	if o != nil && !IsNil(o.Reviewer) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *RequestedItemStatusPreApprovalTriggerDetails) SetReviewer(v string) {
 
 // GetDecision returns the Decision field value if set, zero value otherwise.
 func (o *RequestedItemStatusPreApprovalTriggerDetails) GetDecision() string {
-	if o == nil || isNil(o.Decision) {
+	if o == nil || IsNil(o.Decision) {
 		var ret string
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *RequestedItemStatusPreApprovalTriggerDetails) GetDecision() string {
 // GetDecisionOk returns a tuple with the Decision field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestedItemStatusPreApprovalTriggerDetails) GetDecisionOk() (*string, bool) {
-	if o == nil || isNil(o.Decision) {
+	if o == nil || IsNil(o.Decision) {
 		return nil, false
 	}
 	return o.Decision, true
@@ -131,7 +131,7 @@ func (o *RequestedItemStatusPreApprovalTriggerDetails) GetDecisionOk() (*string,
 
 // HasDecision returns a boolean if a field has been set.
 func (o *RequestedItemStatusPreApprovalTriggerDetails) HasDecision() bool {
-	if o != nil && !isNil(o.Decision) {
+	if o != nil && !IsNil(o.Decision) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o RequestedItemStatusPreApprovalTriggerDetails) MarshalJSON() ([]byte, err
 
 func (o RequestedItemStatusPreApprovalTriggerDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Comment) {
+	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if !isNil(o.Reviewer) {
+	if !IsNil(o.Reviewer) {
 		toSerialize["reviewer"] = o.Reviewer
 	}
-	if !isNil(o.Decision) {
+	if !IsNil(o.Decision) {
 		toSerialize["decision"] = o.Decision
 	}
 
@@ -170,16 +170,20 @@ func (o RequestedItemStatusPreApprovalTriggerDetails) ToMap() (map[string]interf
 	return toSerialize, nil
 }
 
-func (o *RequestedItemStatusPreApprovalTriggerDetails) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RequestedItemStatusPreApprovalTriggerDetails) UnmarshalJSON(data []byte) (err error) {
 	varRequestedItemStatusPreApprovalTriggerDetails := _RequestedItemStatusPreApprovalTriggerDetails{}
 
-	if err = json.Unmarshal(bytes, &varRequestedItemStatusPreApprovalTriggerDetails); err == nil {
+	err = json.Unmarshal(data, &varRequestedItemStatusPreApprovalTriggerDetails)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RequestedItemStatusPreApprovalTriggerDetails(varRequestedItemStatusPreApprovalTriggerDetails)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "comment")
 		delete(additionalProperties, "reviewer")
 		delete(additionalProperties, "decision")

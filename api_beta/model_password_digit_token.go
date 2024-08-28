@@ -47,7 +47,7 @@ func NewPasswordDigitTokenWithDefaults() *PasswordDigitToken {
 
 // GetDigitToken returns the DigitToken field value if set, zero value otherwise.
 func (o *PasswordDigitToken) GetDigitToken() string {
-	if o == nil || isNil(o.DigitToken) {
+	if o == nil || IsNil(o.DigitToken) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *PasswordDigitToken) GetDigitToken() string {
 // GetDigitTokenOk returns a tuple with the DigitToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordDigitToken) GetDigitTokenOk() (*string, bool) {
-	if o == nil || isNil(o.DigitToken) {
+	if o == nil || IsNil(o.DigitToken) {
 		return nil, false
 	}
 	return o.DigitToken, true
@@ -65,7 +65,7 @@ func (o *PasswordDigitToken) GetDigitTokenOk() (*string, bool) {
 
 // HasDigitToken returns a boolean if a field has been set.
 func (o *PasswordDigitToken) HasDigitToken() bool {
-	if o != nil && !isNil(o.DigitToken) {
+	if o != nil && !IsNil(o.DigitToken) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *PasswordDigitToken) SetDigitToken(v string) {
 
 // GetRequestId returns the RequestId field value if set, zero value otherwise.
 func (o *PasswordDigitToken) GetRequestId() string {
-	if o == nil || isNil(o.RequestId) {
+	if o == nil || IsNil(o.RequestId) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *PasswordDigitToken) GetRequestId() string {
 // GetRequestIdOk returns a tuple with the RequestId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordDigitToken) GetRequestIdOk() (*string, bool) {
-	if o == nil || isNil(o.RequestId) {
+	if o == nil || IsNil(o.RequestId) {
 		return nil, false
 	}
 	return o.RequestId, true
@@ -97,7 +97,7 @@ func (o *PasswordDigitToken) GetRequestIdOk() (*string, bool) {
 
 // HasRequestId returns a boolean if a field has been set.
 func (o *PasswordDigitToken) HasRequestId() bool {
-	if o != nil && !isNil(o.RequestId) {
+	if o != nil && !IsNil(o.RequestId) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o PasswordDigitToken) MarshalJSON() ([]byte, error) {
 
 func (o PasswordDigitToken) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.DigitToken) {
+	if !IsNil(o.DigitToken) {
 		toSerialize["digitToken"] = o.DigitToken
 	}
-	if !isNil(o.RequestId) {
+	if !IsNil(o.RequestId) {
 		toSerialize["requestId"] = o.RequestId
 	}
 
@@ -133,16 +133,20 @@ func (o PasswordDigitToken) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *PasswordDigitToken) UnmarshalJSON(bytes []byte) (err error) {
+func (o *PasswordDigitToken) UnmarshalJSON(data []byte) (err error) {
 	varPasswordDigitToken := _PasswordDigitToken{}
 
-	if err = json.Unmarshal(bytes, &varPasswordDigitToken); err == nil {
+	err = json.Unmarshal(data, &varPasswordDigitToken)
+
+	if err != nil {
+		return err
+	}
+
 	*o = PasswordDigitToken(varPasswordDigitToken)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "digitToken")
 		delete(additionalProperties, "requestId")
 		o.AdditionalProperties = additionalProperties

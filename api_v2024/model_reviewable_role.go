@@ -61,7 +61,7 @@ func NewReviewableRoleWithDefaults() *ReviewableRole {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ReviewableRole) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -71,7 +71,7 @@ func (o *ReviewableRole) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReviewableRole) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -79,7 +79,7 @@ func (o *ReviewableRole) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ReviewableRole) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -93,7 +93,7 @@ func (o *ReviewableRole) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ReviewableRole) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -103,7 +103,7 @@ func (o *ReviewableRole) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReviewableRole) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -111,7 +111,7 @@ func (o *ReviewableRole) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ReviewableRole) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -125,7 +125,7 @@ func (o *ReviewableRole) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ReviewableRole) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -135,7 +135,7 @@ func (o *ReviewableRole) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReviewableRole) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -143,7 +143,7 @@ func (o *ReviewableRole) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *ReviewableRole) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -157,7 +157,7 @@ func (o *ReviewableRole) SetDescription(v string) {
 
 // GetPrivileged returns the Privileged field value if set, zero value otherwise.
 func (o *ReviewableRole) GetPrivileged() bool {
-	if o == nil || isNil(o.Privileged) {
+	if o == nil || IsNil(o.Privileged) {
 		var ret bool
 		return ret
 	}
@@ -167,7 +167,7 @@ func (o *ReviewableRole) GetPrivileged() bool {
 // GetPrivilegedOk returns a tuple with the Privileged field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReviewableRole) GetPrivilegedOk() (*bool, bool) {
-	if o == nil || isNil(o.Privileged) {
+	if o == nil || IsNil(o.Privileged) {
 		return nil, false
 	}
 	return o.Privileged, true
@@ -175,7 +175,7 @@ func (o *ReviewableRole) GetPrivilegedOk() (*bool, bool) {
 
 // HasPrivileged returns a boolean if a field has been set.
 func (o *ReviewableRole) HasPrivileged() bool {
-	if o != nil && !isNil(o.Privileged) {
+	if o != nil && !IsNil(o.Privileged) {
 		return true
 	}
 
@@ -189,7 +189,7 @@ func (o *ReviewableRole) SetPrivileged(v bool) {
 
 // GetOwner returns the Owner field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ReviewableRole) GetOwner() IdentityReferenceWithNameAndEmail {
-	if o == nil || isNil(o.Owner.Get()) {
+	if o == nil || IsNil(o.Owner.Get()) {
 		var ret IdentityReferenceWithNameAndEmail
 		return ret
 	}
@@ -231,7 +231,7 @@ func (o *ReviewableRole) UnsetOwner() {
 
 // GetRevocable returns the Revocable field value if set, zero value otherwise.
 func (o *ReviewableRole) GetRevocable() bool {
-	if o == nil || isNil(o.Revocable) {
+	if o == nil || IsNil(o.Revocable) {
 		var ret bool
 		return ret
 	}
@@ -241,7 +241,7 @@ func (o *ReviewableRole) GetRevocable() bool {
 // GetRevocableOk returns a tuple with the Revocable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReviewableRole) GetRevocableOk() (*bool, bool) {
-	if o == nil || isNil(o.Revocable) {
+	if o == nil || IsNil(o.Revocable) {
 		return nil, false
 	}
 	return o.Revocable, true
@@ -249,7 +249,7 @@ func (o *ReviewableRole) GetRevocableOk() (*bool, bool) {
 
 // HasRevocable returns a boolean if a field has been set.
 func (o *ReviewableRole) HasRevocable() bool {
-	if o != nil && !isNil(o.Revocable) {
+	if o != nil && !IsNil(o.Revocable) {
 		return true
 	}
 
@@ -263,7 +263,7 @@ func (o *ReviewableRole) SetRevocable(v bool) {
 
 // GetEndDate returns the EndDate field value if set, zero value otherwise.
 func (o *ReviewableRole) GetEndDate() time.Time {
-	if o == nil || isNil(o.EndDate) {
+	if o == nil || IsNil(o.EndDate) {
 		var ret time.Time
 		return ret
 	}
@@ -273,7 +273,7 @@ func (o *ReviewableRole) GetEndDate() time.Time {
 // GetEndDateOk returns a tuple with the EndDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReviewableRole) GetEndDateOk() (*time.Time, bool) {
-	if o == nil || isNil(o.EndDate) {
+	if o == nil || IsNil(o.EndDate) {
 		return nil, false
 	}
 	return o.EndDate, true
@@ -281,7 +281,7 @@ func (o *ReviewableRole) GetEndDateOk() (*time.Time, bool) {
 
 // HasEndDate returns a boolean if a field has been set.
 func (o *ReviewableRole) HasEndDate() bool {
-	if o != nil && !isNil(o.EndDate) {
+	if o != nil && !IsNil(o.EndDate) {
 		return true
 	}
 
@@ -295,7 +295,7 @@ func (o *ReviewableRole) SetEndDate(v time.Time) {
 
 // GetAccessProfiles returns the AccessProfiles field value if set, zero value otherwise.
 func (o *ReviewableRole) GetAccessProfiles() []ReviewableAccessProfile {
-	if o == nil || isNil(o.AccessProfiles) {
+	if o == nil || IsNil(o.AccessProfiles) {
 		var ret []ReviewableAccessProfile
 		return ret
 	}
@@ -305,7 +305,7 @@ func (o *ReviewableRole) GetAccessProfiles() []ReviewableAccessProfile {
 // GetAccessProfilesOk returns a tuple with the AccessProfiles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReviewableRole) GetAccessProfilesOk() ([]ReviewableAccessProfile, bool) {
-	if o == nil || isNil(o.AccessProfiles) {
+	if o == nil || IsNil(o.AccessProfiles) {
 		return nil, false
 	}
 	return o.AccessProfiles, true
@@ -313,7 +313,7 @@ func (o *ReviewableRole) GetAccessProfilesOk() ([]ReviewableAccessProfile, bool)
 
 // HasAccessProfiles returns a boolean if a field has been set.
 func (o *ReviewableRole) HasAccessProfiles() bool {
-	if o != nil && !isNil(o.AccessProfiles) {
+	if o != nil && !IsNil(o.AccessProfiles) {
 		return true
 	}
 
@@ -327,7 +327,7 @@ func (o *ReviewableRole) SetAccessProfiles(v []ReviewableAccessProfile) {
 
 // GetEntitlements returns the Entitlements field value if set, zero value otherwise.
 func (o *ReviewableRole) GetEntitlements() []ReviewableEntitlement {
-	if o == nil || isNil(o.Entitlements) {
+	if o == nil || IsNil(o.Entitlements) {
 		var ret []ReviewableEntitlement
 		return ret
 	}
@@ -337,7 +337,7 @@ func (o *ReviewableRole) GetEntitlements() []ReviewableEntitlement {
 // GetEntitlementsOk returns a tuple with the Entitlements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReviewableRole) GetEntitlementsOk() ([]ReviewableEntitlement, bool) {
-	if o == nil || isNil(o.Entitlements) {
+	if o == nil || IsNil(o.Entitlements) {
 		return nil, false
 	}
 	return o.Entitlements, true
@@ -345,7 +345,7 @@ func (o *ReviewableRole) GetEntitlementsOk() ([]ReviewableEntitlement, bool) {
 
 // HasEntitlements returns a boolean if a field has been set.
 func (o *ReviewableRole) HasEntitlements() bool {
-	if o != nil && !isNil(o.Entitlements) {
+	if o != nil && !IsNil(o.Entitlements) {
 		return true
 	}
 
@@ -367,31 +367,31 @@ func (o ReviewableRole) MarshalJSON() ([]byte, error) {
 
 func (o ReviewableRole) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.Privileged) {
+	if !IsNil(o.Privileged) {
 		toSerialize["privileged"] = o.Privileged
 	}
 	if o.Owner.IsSet() {
 		toSerialize["owner"] = o.Owner.Get()
 	}
-	if !isNil(o.Revocable) {
+	if !IsNil(o.Revocable) {
 		toSerialize["revocable"] = o.Revocable
 	}
-	if !isNil(o.EndDate) {
+	if !IsNil(o.EndDate) {
 		toSerialize["endDate"] = o.EndDate
 	}
-	if !isNil(o.AccessProfiles) {
+	if !IsNil(o.AccessProfiles) {
 		toSerialize["accessProfiles"] = o.AccessProfiles
 	}
-	if !isNil(o.Entitlements) {
+	if !IsNil(o.Entitlements) {
 		toSerialize["entitlements"] = o.Entitlements
 	}
 
@@ -402,16 +402,20 @@ func (o ReviewableRole) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ReviewableRole) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ReviewableRole) UnmarshalJSON(data []byte) (err error) {
 	varReviewableRole := _ReviewableRole{}
 
-	if err = json.Unmarshal(bytes, &varReviewableRole); err == nil {
+	err = json.Unmarshal(data, &varReviewableRole)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ReviewableRole(varReviewableRole)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")

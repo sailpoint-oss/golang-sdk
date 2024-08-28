@@ -54,7 +54,7 @@ func NewRoleInsightWithDefaults() *RoleInsight {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *RoleInsight) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -64,7 +64,7 @@ func (o *RoleInsight) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleInsight) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -72,7 +72,7 @@ func (o *RoleInsight) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *RoleInsight) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -86,7 +86,7 @@ func (o *RoleInsight) SetId(v string) {
 
 // GetNumberOfUpdates returns the NumberOfUpdates field value if set, zero value otherwise.
 func (o *RoleInsight) GetNumberOfUpdates() int32 {
-	if o == nil || isNil(o.NumberOfUpdates) {
+	if o == nil || IsNil(o.NumberOfUpdates) {
 		var ret int32
 		return ret
 	}
@@ -96,7 +96,7 @@ func (o *RoleInsight) GetNumberOfUpdates() int32 {
 // GetNumberOfUpdatesOk returns a tuple with the NumberOfUpdates field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleInsight) GetNumberOfUpdatesOk() (*int32, bool) {
-	if o == nil || isNil(o.NumberOfUpdates) {
+	if o == nil || IsNil(o.NumberOfUpdates) {
 		return nil, false
 	}
 	return o.NumberOfUpdates, true
@@ -104,7 +104,7 @@ func (o *RoleInsight) GetNumberOfUpdatesOk() (*int32, bool) {
 
 // HasNumberOfUpdates returns a boolean if a field has been set.
 func (o *RoleInsight) HasNumberOfUpdates() bool {
-	if o != nil && !isNil(o.NumberOfUpdates) {
+	if o != nil && !IsNil(o.NumberOfUpdates) {
 		return true
 	}
 
@@ -118,7 +118,7 @@ func (o *RoleInsight) SetNumberOfUpdates(v int32) {
 
 // GetCreatedDate returns the CreatedDate field value if set, zero value otherwise.
 func (o *RoleInsight) GetCreatedDate() time.Time {
-	if o == nil || isNil(o.CreatedDate) {
+	if o == nil || IsNil(o.CreatedDate) {
 		var ret time.Time
 		return ret
 	}
@@ -128,7 +128,7 @@ func (o *RoleInsight) GetCreatedDate() time.Time {
 // GetCreatedDateOk returns a tuple with the CreatedDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleInsight) GetCreatedDateOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedDate) {
+	if o == nil || IsNil(o.CreatedDate) {
 		return nil, false
 	}
 	return o.CreatedDate, true
@@ -136,7 +136,7 @@ func (o *RoleInsight) GetCreatedDateOk() (*time.Time, bool) {
 
 // HasCreatedDate returns a boolean if a field has been set.
 func (o *RoleInsight) HasCreatedDate() bool {
-	if o != nil && !isNil(o.CreatedDate) {
+	if o != nil && !IsNil(o.CreatedDate) {
 		return true
 	}
 
@@ -150,7 +150,7 @@ func (o *RoleInsight) SetCreatedDate(v time.Time) {
 
 // GetModifiedDate returns the ModifiedDate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleInsight) GetModifiedDate() time.Time {
-	if o == nil || isNil(o.ModifiedDate.Get()) {
+	if o == nil || IsNil(o.ModifiedDate.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -192,7 +192,7 @@ func (o *RoleInsight) UnsetModifiedDate() {
 
 // GetRole returns the Role field value if set, zero value otherwise.
 func (o *RoleInsight) GetRole() RoleInsightsRole {
-	if o == nil || isNil(o.Role) {
+	if o == nil || IsNil(o.Role) {
 		var ret RoleInsightsRole
 		return ret
 	}
@@ -202,7 +202,7 @@ func (o *RoleInsight) GetRole() RoleInsightsRole {
 // GetRoleOk returns a tuple with the Role field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleInsight) GetRoleOk() (*RoleInsightsRole, bool) {
-	if o == nil || isNil(o.Role) {
+	if o == nil || IsNil(o.Role) {
 		return nil, false
 	}
 	return o.Role, true
@@ -210,7 +210,7 @@ func (o *RoleInsight) GetRoleOk() (*RoleInsightsRole, bool) {
 
 // HasRole returns a boolean if a field has been set.
 func (o *RoleInsight) HasRole() bool {
-	if o != nil && !isNil(o.Role) {
+	if o != nil && !IsNil(o.Role) {
 		return true
 	}
 
@@ -224,7 +224,7 @@ func (o *RoleInsight) SetRole(v RoleInsightsRole) {
 
 // GetInsight returns the Insight field value if set, zero value otherwise.
 func (o *RoleInsight) GetInsight() RoleInsightsInsight {
-	if o == nil || isNil(o.Insight) {
+	if o == nil || IsNil(o.Insight) {
 		var ret RoleInsightsInsight
 		return ret
 	}
@@ -234,7 +234,7 @@ func (o *RoleInsight) GetInsight() RoleInsightsInsight {
 // GetInsightOk returns a tuple with the Insight field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleInsight) GetInsightOk() (*RoleInsightsInsight, bool) {
-	if o == nil || isNil(o.Insight) {
+	if o == nil || IsNil(o.Insight) {
 		return nil, false
 	}
 	return o.Insight, true
@@ -242,7 +242,7 @@ func (o *RoleInsight) GetInsightOk() (*RoleInsightsInsight, bool) {
 
 // HasInsight returns a boolean if a field has been set.
 func (o *RoleInsight) HasInsight() bool {
-	if o != nil && !isNil(o.Insight) {
+	if o != nil && !IsNil(o.Insight) {
 		return true
 	}
 
@@ -264,22 +264,22 @@ func (o RoleInsight) MarshalJSON() ([]byte, error) {
 
 func (o RoleInsight) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.NumberOfUpdates) {
+	if !IsNil(o.NumberOfUpdates) {
 		toSerialize["numberOfUpdates"] = o.NumberOfUpdates
 	}
-	if !isNil(o.CreatedDate) {
+	if !IsNil(o.CreatedDate) {
 		toSerialize["createdDate"] = o.CreatedDate
 	}
 	if o.ModifiedDate.IsSet() {
 		toSerialize["modifiedDate"] = o.ModifiedDate.Get()
 	}
-	if !isNil(o.Role) {
+	if !IsNil(o.Role) {
 		toSerialize["role"] = o.Role
 	}
-	if !isNil(o.Insight) {
+	if !IsNil(o.Insight) {
 		toSerialize["insight"] = o.Insight
 	}
 
@@ -290,16 +290,20 @@ func (o RoleInsight) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *RoleInsight) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RoleInsight) UnmarshalJSON(data []byte) (err error) {
 	varRoleInsight := _RoleInsight{}
 
-	if err = json.Unmarshal(bytes, &varRoleInsight); err == nil {
+	err = json.Unmarshal(data, &varRoleInsight)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RoleInsight(varRoleInsight)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "numberOfUpdates")
 		delete(additionalProperties, "createdDate")

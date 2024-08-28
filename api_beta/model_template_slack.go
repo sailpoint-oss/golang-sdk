@@ -54,7 +54,7 @@ func NewTemplateSlackWithDefaults() *TemplateSlack {
 
 // GetKey returns the Key field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateSlack) GetKey() string {
-	if o == nil || isNil(o.Key.Get()) {
+	if o == nil || IsNil(o.Key.Get()) {
 		var ret string
 		return ret
 	}
@@ -96,7 +96,7 @@ func (o *TemplateSlack) UnsetKey() {
 
 // GetText returns the Text field value if set, zero value otherwise.
 func (o *TemplateSlack) GetText() string {
-	if o == nil || isNil(o.Text) {
+	if o == nil || IsNil(o.Text) {
 		var ret string
 		return ret
 	}
@@ -106,7 +106,7 @@ func (o *TemplateSlack) GetText() string {
 // GetTextOk returns a tuple with the Text field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateSlack) GetTextOk() (*string, bool) {
-	if o == nil || isNil(o.Text) {
+	if o == nil || IsNil(o.Text) {
 		return nil, false
 	}
 	return o.Text, true
@@ -114,7 +114,7 @@ func (o *TemplateSlack) GetTextOk() (*string, bool) {
 
 // HasText returns a boolean if a field has been set.
 func (o *TemplateSlack) HasText() bool {
-	if o != nil && !isNil(o.Text) {
+	if o != nil && !IsNil(o.Text) {
 		return true
 	}
 
@@ -128,7 +128,7 @@ func (o *TemplateSlack) SetText(v string) {
 
 // GetBlocks returns the Blocks field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateSlack) GetBlocks() string {
-	if o == nil || isNil(o.Blocks.Get()) {
+	if o == nil || IsNil(o.Blocks.Get()) {
 		var ret string
 		return ret
 	}
@@ -170,7 +170,7 @@ func (o *TemplateSlack) UnsetBlocks() {
 
 // GetAttachments returns the Attachments field value if set, zero value otherwise.
 func (o *TemplateSlack) GetAttachments() string {
-	if o == nil || isNil(o.Attachments) {
+	if o == nil || IsNil(o.Attachments) {
 		var ret string
 		return ret
 	}
@@ -180,7 +180,7 @@ func (o *TemplateSlack) GetAttachments() string {
 // GetAttachmentsOk returns a tuple with the Attachments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateSlack) GetAttachmentsOk() (*string, bool) {
-	if o == nil || isNil(o.Attachments) {
+	if o == nil || IsNil(o.Attachments) {
 		return nil, false
 	}
 	return o.Attachments, true
@@ -188,7 +188,7 @@ func (o *TemplateSlack) GetAttachmentsOk() (*string, bool) {
 
 // HasAttachments returns a boolean if a field has been set.
 func (o *TemplateSlack) HasAttachments() bool {
-	if o != nil && !isNil(o.Attachments) {
+	if o != nil && !IsNil(o.Attachments) {
 		return true
 	}
 
@@ -202,7 +202,7 @@ func (o *TemplateSlack) SetAttachments(v string) {
 
 // GetNotificationType returns the NotificationType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateSlack) GetNotificationType() string {
-	if o == nil || isNil(o.NotificationType.Get()) {
+	if o == nil || IsNil(o.NotificationType.Get()) {
 		var ret string
 		return ret
 	}
@@ -244,7 +244,7 @@ func (o *TemplateSlack) UnsetNotificationType() {
 
 // GetApprovalId returns the ApprovalId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateSlack) GetApprovalId() string {
-	if o == nil || isNil(o.ApprovalId.Get()) {
+	if o == nil || IsNil(o.ApprovalId.Get()) {
 		var ret string
 		return ret
 	}
@@ -286,7 +286,7 @@ func (o *TemplateSlack) UnsetApprovalId() {
 
 // GetRequestId returns the RequestId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateSlack) GetRequestId() string {
-	if o == nil || isNil(o.RequestId.Get()) {
+	if o == nil || IsNil(o.RequestId.Get()) {
 		var ret string
 		return ret
 	}
@@ -328,7 +328,7 @@ func (o *TemplateSlack) UnsetRequestId() {
 
 // GetRequestedById returns the RequestedById field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateSlack) GetRequestedById() string {
-	if o == nil || isNil(o.RequestedById.Get()) {
+	if o == nil || IsNil(o.RequestedById.Get()) {
 		var ret string
 		return ret
 	}
@@ -370,7 +370,7 @@ func (o *TemplateSlack) UnsetRequestedById() {
 
 // GetIsSubscription returns the IsSubscription field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateSlack) GetIsSubscription() bool {
-	if o == nil || isNil(o.IsSubscription.Get()) {
+	if o == nil || IsNil(o.IsSubscription.Get()) {
 		var ret bool
 		return ret
 	}
@@ -412,7 +412,7 @@ func (o *TemplateSlack) UnsetIsSubscription() {
 
 // GetAutoApprovalData returns the AutoApprovalData field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateSlack) GetAutoApprovalData() TemplateSlackAutoApprovalData {
-	if o == nil || isNil(o.AutoApprovalData.Get()) {
+	if o == nil || IsNil(o.AutoApprovalData.Get()) {
 		var ret TemplateSlackAutoApprovalData
 		return ret
 	}
@@ -454,7 +454,7 @@ func (o *TemplateSlack) UnsetAutoApprovalData() {
 
 // GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateSlack) GetCustomFields() TemplateSlackCustomFields {
-	if o == nil || isNil(o.CustomFields.Get()) {
+	if o == nil || IsNil(o.CustomFields.Get()) {
 		var ret TemplateSlackCustomFields
 		return ret
 	}
@@ -507,13 +507,13 @@ func (o TemplateSlack) ToMap() (map[string]interface{}, error) {
 	if o.Key.IsSet() {
 		toSerialize["key"] = o.Key.Get()
 	}
-	if !isNil(o.Text) {
+	if !IsNil(o.Text) {
 		toSerialize["text"] = o.Text
 	}
 	if o.Blocks.IsSet() {
 		toSerialize["blocks"] = o.Blocks.Get()
 	}
-	if !isNil(o.Attachments) {
+	if !IsNil(o.Attachments) {
 		toSerialize["attachments"] = o.Attachments
 	}
 	if o.NotificationType.IsSet() {
@@ -545,16 +545,20 @@ func (o TemplateSlack) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *TemplateSlack) UnmarshalJSON(bytes []byte) (err error) {
+func (o *TemplateSlack) UnmarshalJSON(data []byte) (err error) {
 	varTemplateSlack := _TemplateSlack{}
 
-	if err = json.Unmarshal(bytes, &varTemplateSlack); err == nil {
+	err = json.Unmarshal(data, &varTemplateSlack)
+
+	if err != nil {
+		return err
+	}
+
 	*o = TemplateSlack(varTemplateSlack)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "key")
 		delete(additionalProperties, "text")
 		delete(additionalProperties, "blocks")

@@ -54,7 +54,7 @@ func NewAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerWithD
 
 // GetApprovalComment returns the ApprovalComment field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner) GetApprovalComment() string {
-	if o == nil || isNil(o.ApprovalComment.Get()) {
+	if o == nil || IsNil(o.ApprovalComment.Get()) {
 		var ret string
 		return ret
 	}
@@ -190,8 +190,8 @@ func (o AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner) ToM
 	return toSerialize, nil
 }
 
-func (o *AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -202,7 +202,7 @@ func (o *AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner) Un
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -216,13 +216,17 @@ func (o *AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner) Un
 
 	varAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner := _AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner{}
 
-	if err = json.Unmarshal(bytes, &varAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner); err == nil {
+	err = json.Unmarshal(data, &varAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(varAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "approvalComment")
 		delete(additionalProperties, "approvalDecision")
 		delete(additionalProperties, "approverName")

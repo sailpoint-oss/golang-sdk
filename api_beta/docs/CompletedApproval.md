@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **Owner** | Pointer to [**AccessItemOwnerDto**](AccessItemOwnerDto.md) |  | [optional] 
 **RequestedObject** | Pointer to [**RequestableObjectReference**](RequestableObjectReference.md) |  | [optional] 
 **RequesterComment** | Pointer to [**CommentDto1**](CommentDto1.md) |  | [optional] 
-**ReviewerComment** | Pointer to [**NullableCompletedApprovalReviewerComment**](CompletedApprovalReviewerComment.md) |  | [optional] 
+**ReviewerComment** | Pointer to [**NullableCommentDto**](CommentDto.md) | The approval&#39;s reviewer&#39;s comment. | [optional] 
 **PreviousReviewersComments** | Pointer to [**[]CommentDto1**](CommentDto1.md) | The history of the previous reviewers comments. | [optional] 
 **ForwardHistory** | Pointer to [**[]ApprovalForwardHistory**](ApprovalForwardHistory.md) | The history of approval forward action. | [optional] 
 **CommentRequiredWhenRejected** | Pointer to **bool** | When true the rejector has to provide comments when rejecting | [optional] [default to false]
@@ -359,20 +359,20 @@ HasRequesterComment returns a boolean if a field has been set.
 
 ### GetReviewerComment
 
-`func (o *CompletedApproval) GetReviewerComment() CompletedApprovalReviewerComment`
+`func (o *CompletedApproval) GetReviewerComment() CommentDto`
 
 GetReviewerComment returns the ReviewerComment field if non-nil, zero value otherwise.
 
 ### GetReviewerCommentOk
 
-`func (o *CompletedApproval) GetReviewerCommentOk() (*CompletedApprovalReviewerComment, bool)`
+`func (o *CompletedApproval) GetReviewerCommentOk() (*CommentDto, bool)`
 
 GetReviewerCommentOk returns a tuple with the ReviewerComment field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReviewerComment
 
-`func (o *CompletedApproval) SetReviewerComment(v CompletedApprovalReviewerComment)`
+`func (o *CompletedApproval) SetReviewerComment(v CommentDto)`
 
 SetReviewerComment sets ReviewerComment field to given value.
 

@@ -54,7 +54,7 @@ func NewFormWithDefaults() *Form {
 
 // GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Form) GetId() string {
-	if o == nil || isNil(o.Id.Get()) {
+	if o == nil || IsNil(o.Id.Get()) {
 		var ret string
 		return ret
 	}
@@ -96,7 +96,7 @@ func (o *Form) UnsetId() {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Form) GetName() string {
-	if o == nil || isNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -138,7 +138,7 @@ func (o *Form) UnsetName() {
 
 // GetTitle returns the Title field value if set, zero value otherwise.
 func (o *Form) GetTitle() string {
-	if o == nil || isNil(o.Title) {
+	if o == nil || IsNil(o.Title) {
 		var ret string
 		return ret
 	}
@@ -148,7 +148,7 @@ func (o *Form) GetTitle() string {
 // GetTitleOk returns a tuple with the Title field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Form) GetTitleOk() (*string, bool) {
-	if o == nil || isNil(o.Title) {
+	if o == nil || IsNil(o.Title) {
 		return nil, false
 	}
 	return o.Title, true
@@ -156,7 +156,7 @@ func (o *Form) GetTitleOk() (*string, bool) {
 
 // HasTitle returns a boolean if a field has been set.
 func (o *Form) HasTitle() bool {
-	if o != nil && !isNil(o.Title) {
+	if o != nil && !IsNil(o.Title) {
 		return true
 	}
 
@@ -170,7 +170,7 @@ func (o *Form) SetTitle(v string) {
 
 // GetSubtitle returns the Subtitle field value if set, zero value otherwise.
 func (o *Form) GetSubtitle() string {
-	if o == nil || isNil(o.Subtitle) {
+	if o == nil || IsNil(o.Subtitle) {
 		var ret string
 		return ret
 	}
@@ -180,7 +180,7 @@ func (o *Form) GetSubtitle() string {
 // GetSubtitleOk returns a tuple with the Subtitle field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Form) GetSubtitleOk() (*string, bool) {
-	if o == nil || isNil(o.Subtitle) {
+	if o == nil || IsNil(o.Subtitle) {
 		return nil, false
 	}
 	return o.Subtitle, true
@@ -188,7 +188,7 @@ func (o *Form) GetSubtitleOk() (*string, bool) {
 
 // HasSubtitle returns a boolean if a field has been set.
 func (o *Form) HasSubtitle() bool {
-	if o != nil && !isNil(o.Subtitle) {
+	if o != nil && !IsNil(o.Subtitle) {
 		return true
 	}
 
@@ -202,7 +202,7 @@ func (o *Form) SetSubtitle(v string) {
 
 // GetTargetUser returns the TargetUser field value if set, zero value otherwise.
 func (o *Form) GetTargetUser() string {
-	if o == nil || isNil(o.TargetUser) {
+	if o == nil || IsNil(o.TargetUser) {
 		var ret string
 		return ret
 	}
@@ -212,7 +212,7 @@ func (o *Form) GetTargetUser() string {
 // GetTargetUserOk returns a tuple with the TargetUser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Form) GetTargetUserOk() (*string, bool) {
-	if o == nil || isNil(o.TargetUser) {
+	if o == nil || IsNil(o.TargetUser) {
 		return nil, false
 	}
 	return o.TargetUser, true
@@ -220,7 +220,7 @@ func (o *Form) GetTargetUserOk() (*string, bool) {
 
 // HasTargetUser returns a boolean if a field has been set.
 func (o *Form) HasTargetUser() bool {
-	if o != nil && !isNil(o.TargetUser) {
+	if o != nil && !IsNil(o.TargetUser) {
 		return true
 	}
 
@@ -234,7 +234,7 @@ func (o *Form) SetTargetUser(v string) {
 
 // GetSections returns the Sections field value if set, zero value otherwise.
 func (o *Form) GetSections() []SectionDetails {
-	if o == nil || isNil(o.Sections) {
+	if o == nil || IsNil(o.Sections) {
 		var ret []SectionDetails
 		return ret
 	}
@@ -244,7 +244,7 @@ func (o *Form) GetSections() []SectionDetails {
 // GetSectionsOk returns a tuple with the Sections field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Form) GetSectionsOk() ([]SectionDetails, bool) {
-	if o == nil || isNil(o.Sections) {
+	if o == nil || IsNil(o.Sections) {
 		return nil, false
 	}
 	return o.Sections, true
@@ -252,7 +252,7 @@ func (o *Form) GetSectionsOk() ([]SectionDetails, bool) {
 
 // HasSections returns a boolean if a field has been set.
 func (o *Form) HasSections() bool {
-	if o != nil && !isNil(o.Sections) {
+	if o != nil && !IsNil(o.Sections) {
 		return true
 	}
 
@@ -280,16 +280,16 @@ func (o Form) ToMap() (map[string]interface{}, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
-	if !isNil(o.Title) {
+	if !IsNil(o.Title) {
 		toSerialize["title"] = o.Title
 	}
-	if !isNil(o.Subtitle) {
+	if !IsNil(o.Subtitle) {
 		toSerialize["subtitle"] = o.Subtitle
 	}
-	if !isNil(o.TargetUser) {
+	if !IsNil(o.TargetUser) {
 		toSerialize["targetUser"] = o.TargetUser
 	}
-	if !isNil(o.Sections) {
+	if !IsNil(o.Sections) {
 		toSerialize["sections"] = o.Sections
 	}
 
@@ -300,16 +300,20 @@ func (o Form) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Form) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Form) UnmarshalJSON(data []byte) (err error) {
 	varForm := _Form{}
 
-	if err = json.Unmarshal(bytes, &varForm); err == nil {
+	err = json.Unmarshal(data, &varForm)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Form(varForm)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "title")

@@ -54,7 +54,7 @@ func NewSpConfigExportResultsWithDefaults() *SpConfigExportResults {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *SpConfigExportResults) GetVersion() int32 {
-	if o == nil || isNil(o.Version) {
+	if o == nil || IsNil(o.Version) {
 		var ret int32
 		return ret
 	}
@@ -64,7 +64,7 @@ func (o *SpConfigExportResults) GetVersion() int32 {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpConfigExportResults) GetVersionOk() (*int32, bool) {
-	if o == nil || isNil(o.Version) {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -72,7 +72,7 @@ func (o *SpConfigExportResults) GetVersionOk() (*int32, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *SpConfigExportResults) HasVersion() bool {
-	if o != nil && !isNil(o.Version) {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -86,7 +86,7 @@ func (o *SpConfigExportResults) SetVersion(v int32) {
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise.
 func (o *SpConfigExportResults) GetTimestamp() time.Time {
-	if o == nil || isNil(o.Timestamp) {
+	if o == nil || IsNil(o.Timestamp) {
 		var ret time.Time
 		return ret
 	}
@@ -96,7 +96,7 @@ func (o *SpConfigExportResults) GetTimestamp() time.Time {
 // GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpConfigExportResults) GetTimestampOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Timestamp) {
+	if o == nil || IsNil(o.Timestamp) {
 		return nil, false
 	}
 	return o.Timestamp, true
@@ -104,7 +104,7 @@ func (o *SpConfigExportResults) GetTimestampOk() (*time.Time, bool) {
 
 // HasTimestamp returns a boolean if a field has been set.
 func (o *SpConfigExportResults) HasTimestamp() bool {
-	if o != nil && !isNil(o.Timestamp) {
+	if o != nil && !IsNil(o.Timestamp) {
 		return true
 	}
 
@@ -118,7 +118,7 @@ func (o *SpConfigExportResults) SetTimestamp(v time.Time) {
 
 // GetTenant returns the Tenant field value if set, zero value otherwise.
 func (o *SpConfigExportResults) GetTenant() string {
-	if o == nil || isNil(o.Tenant) {
+	if o == nil || IsNil(o.Tenant) {
 		var ret string
 		return ret
 	}
@@ -128,7 +128,7 @@ func (o *SpConfigExportResults) GetTenant() string {
 // GetTenantOk returns a tuple with the Tenant field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpConfigExportResults) GetTenantOk() (*string, bool) {
-	if o == nil || isNil(o.Tenant) {
+	if o == nil || IsNil(o.Tenant) {
 		return nil, false
 	}
 	return o.Tenant, true
@@ -136,7 +136,7 @@ func (o *SpConfigExportResults) GetTenantOk() (*string, bool) {
 
 // HasTenant returns a boolean if a field has been set.
 func (o *SpConfigExportResults) HasTenant() bool {
-	if o != nil && !isNil(o.Tenant) {
+	if o != nil && !IsNil(o.Tenant) {
 		return true
 	}
 
@@ -150,7 +150,7 @@ func (o *SpConfigExportResults) SetTenant(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *SpConfigExportResults) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -160,7 +160,7 @@ func (o *SpConfigExportResults) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpConfigExportResults) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -168,7 +168,7 @@ func (o *SpConfigExportResults) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *SpConfigExportResults) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -182,7 +182,7 @@ func (o *SpConfigExportResults) SetDescription(v string) {
 
 // GetOptions returns the Options field value if set, zero value otherwise.
 func (o *SpConfigExportResults) GetOptions() ExportOptions {
-	if o == nil || isNil(o.Options) {
+	if o == nil || IsNil(o.Options) {
 		var ret ExportOptions
 		return ret
 	}
@@ -192,7 +192,7 @@ func (o *SpConfigExportResults) GetOptions() ExportOptions {
 // GetOptionsOk returns a tuple with the Options field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpConfigExportResults) GetOptionsOk() (*ExportOptions, bool) {
-	if o == nil || isNil(o.Options) {
+	if o == nil || IsNil(o.Options) {
 		return nil, false
 	}
 	return o.Options, true
@@ -200,7 +200,7 @@ func (o *SpConfigExportResults) GetOptionsOk() (*ExportOptions, bool) {
 
 // HasOptions returns a boolean if a field has been set.
 func (o *SpConfigExportResults) HasOptions() bool {
-	if o != nil && !isNil(o.Options) {
+	if o != nil && !IsNil(o.Options) {
 		return true
 	}
 
@@ -214,7 +214,7 @@ func (o *SpConfigExportResults) SetOptions(v ExportOptions) {
 
 // GetObjects returns the Objects field value if set, zero value otherwise.
 func (o *SpConfigExportResults) GetObjects() []ConfigObject {
-	if o == nil || isNil(o.Objects) {
+	if o == nil || IsNil(o.Objects) {
 		var ret []ConfigObject
 		return ret
 	}
@@ -224,7 +224,7 @@ func (o *SpConfigExportResults) GetObjects() []ConfigObject {
 // GetObjectsOk returns a tuple with the Objects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpConfigExportResults) GetObjectsOk() ([]ConfigObject, bool) {
-	if o == nil || isNil(o.Objects) {
+	if o == nil || IsNil(o.Objects) {
 		return nil, false
 	}
 	return o.Objects, true
@@ -232,7 +232,7 @@ func (o *SpConfigExportResults) GetObjectsOk() ([]ConfigObject, bool) {
 
 // HasObjects returns a boolean if a field has been set.
 func (o *SpConfigExportResults) HasObjects() bool {
-	if o != nil && !isNil(o.Objects) {
+	if o != nil && !IsNil(o.Objects) {
 		return true
 	}
 
@@ -254,22 +254,22 @@ func (o SpConfigExportResults) MarshalJSON() ([]byte, error) {
 
 func (o SpConfigExportResults) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Version) {
+	if !IsNil(o.Version) {
 		toSerialize["version"] = o.Version
 	}
-	if !isNil(o.Timestamp) {
+	if !IsNil(o.Timestamp) {
 		toSerialize["timestamp"] = o.Timestamp
 	}
-	if !isNil(o.Tenant) {
+	if !IsNil(o.Tenant) {
 		toSerialize["tenant"] = o.Tenant
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.Options) {
+	if !IsNil(o.Options) {
 		toSerialize["options"] = o.Options
 	}
-	if !isNil(o.Objects) {
+	if !IsNil(o.Objects) {
 		toSerialize["objects"] = o.Objects
 	}
 
@@ -280,16 +280,20 @@ func (o SpConfigExportResults) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SpConfigExportResults) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SpConfigExportResults) UnmarshalJSON(data []byte) (err error) {
 	varSpConfigExportResults := _SpConfigExportResults{}
 
-	if err = json.Unmarshal(bytes, &varSpConfigExportResults); err == nil {
+	err = json.Unmarshal(data, &varSpConfigExportResults)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SpConfigExportResults(varSpConfigExportResults)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "version")
 		delete(additionalProperties, "timestamp")
 		delete(additionalProperties, "tenant")

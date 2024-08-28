@@ -49,7 +49,7 @@ func NewSendTestNotificationRequestDtoWithDefaults() *SendTestNotificationReques
 
 // GetKey returns the Key field value if set, zero value otherwise.
 func (o *SendTestNotificationRequestDto) GetKey() string {
-	if o == nil || isNil(o.Key) {
+	if o == nil || IsNil(o.Key) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *SendTestNotificationRequestDto) GetKey() string {
 // GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SendTestNotificationRequestDto) GetKeyOk() (*string, bool) {
-	if o == nil || isNil(o.Key) {
+	if o == nil || IsNil(o.Key) {
 		return nil, false
 	}
 	return o.Key, true
@@ -67,7 +67,7 @@ func (o *SendTestNotificationRequestDto) GetKeyOk() (*string, bool) {
 
 // HasKey returns a boolean if a field has been set.
 func (o *SendTestNotificationRequestDto) HasKey() bool {
-	if o != nil && !isNil(o.Key) {
+	if o != nil && !IsNil(o.Key) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *SendTestNotificationRequestDto) SetKey(v string) {
 
 // GetMedium returns the Medium field value if set, zero value otherwise.
 func (o *SendTestNotificationRequestDto) GetMedium() string {
-	if o == nil || isNil(o.Medium) {
+	if o == nil || IsNil(o.Medium) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *SendTestNotificationRequestDto) GetMedium() string {
 // GetMediumOk returns a tuple with the Medium field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SendTestNotificationRequestDto) GetMediumOk() (*string, bool) {
-	if o == nil || isNil(o.Medium) {
+	if o == nil || IsNil(o.Medium) {
 		return nil, false
 	}
 	return o.Medium, true
@@ -99,7 +99,7 @@ func (o *SendTestNotificationRequestDto) GetMediumOk() (*string, bool) {
 
 // HasMedium returns a boolean if a field has been set.
 func (o *SendTestNotificationRequestDto) HasMedium() bool {
-	if o != nil && !isNil(o.Medium) {
+	if o != nil && !IsNil(o.Medium) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *SendTestNotificationRequestDto) SetMedium(v string) {
 
 // GetContext returns the Context field value if set, zero value otherwise.
 func (o *SendTestNotificationRequestDto) GetContext() map[string]interface{} {
-	if o == nil || isNil(o.Context) {
+	if o == nil || IsNil(o.Context) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *SendTestNotificationRequestDto) GetContext() map[string]interface{} {
 // GetContextOk returns a tuple with the Context field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SendTestNotificationRequestDto) GetContextOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Context) {
+	if o == nil || IsNil(o.Context) {
 		return map[string]interface{}{}, false
 	}
 	return o.Context, true
@@ -131,7 +131,7 @@ func (o *SendTestNotificationRequestDto) GetContextOk() (map[string]interface{},
 
 // HasContext returns a boolean if a field has been set.
 func (o *SendTestNotificationRequestDto) HasContext() bool {
-	if o != nil && !isNil(o.Context) {
+	if o != nil && !IsNil(o.Context) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o SendTestNotificationRequestDto) MarshalJSON() ([]byte, error) {
 
 func (o SendTestNotificationRequestDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Key) {
+	if !IsNil(o.Key) {
 		toSerialize["key"] = o.Key
 	}
-	if !isNil(o.Medium) {
+	if !IsNil(o.Medium) {
 		toSerialize["medium"] = o.Medium
 	}
-	if !isNil(o.Context) {
+	if !IsNil(o.Context) {
 		toSerialize["context"] = o.Context
 	}
 
@@ -170,16 +170,20 @@ func (o SendTestNotificationRequestDto) ToMap() (map[string]interface{}, error) 
 	return toSerialize, nil
 }
 
-func (o *SendTestNotificationRequestDto) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SendTestNotificationRequestDto) UnmarshalJSON(data []byte) (err error) {
 	varSendTestNotificationRequestDto := _SendTestNotificationRequestDto{}
 
-	if err = json.Unmarshal(bytes, &varSendTestNotificationRequestDto); err == nil {
+	err = json.Unmarshal(data, &varSendTestNotificationRequestDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SendTestNotificationRequestDto(varSendTestNotificationRequestDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "key")
 		delete(additionalProperties, "medium")
 		delete(additionalProperties, "context")

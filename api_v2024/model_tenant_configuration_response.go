@@ -45,7 +45,7 @@ func NewTenantConfigurationResponseWithDefaults() *TenantConfigurationResponse {
 
 // GetAuditDetails returns the AuditDetails field value if set, zero value otherwise.
 func (o *TenantConfigurationResponse) GetAuditDetails() AuditDetails {
-	if o == nil || isNil(o.AuditDetails) {
+	if o == nil || IsNil(o.AuditDetails) {
 		var ret AuditDetails
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *TenantConfigurationResponse) GetAuditDetails() AuditDetails {
 // GetAuditDetailsOk returns a tuple with the AuditDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TenantConfigurationResponse) GetAuditDetailsOk() (*AuditDetails, bool) {
-	if o == nil || isNil(o.AuditDetails) {
+	if o == nil || IsNil(o.AuditDetails) {
 		return nil, false
 	}
 	return o.AuditDetails, true
@@ -63,7 +63,7 @@ func (o *TenantConfigurationResponse) GetAuditDetailsOk() (*AuditDetails, bool) 
 
 // HasAuditDetails returns a boolean if a field has been set.
 func (o *TenantConfigurationResponse) HasAuditDetails() bool {
-	if o != nil && !isNil(o.AuditDetails) {
+	if o != nil && !IsNil(o.AuditDetails) {
 		return true
 	}
 
@@ -77,7 +77,7 @@ func (o *TenantConfigurationResponse) SetAuditDetails(v AuditDetails) {
 
 // GetConfigDetails returns the ConfigDetails field value if set, zero value otherwise.
 func (o *TenantConfigurationResponse) GetConfigDetails() TenantConfigurationDetails {
-	if o == nil || isNil(o.ConfigDetails) {
+	if o == nil || IsNil(o.ConfigDetails) {
 		var ret TenantConfigurationDetails
 		return ret
 	}
@@ -87,7 +87,7 @@ func (o *TenantConfigurationResponse) GetConfigDetails() TenantConfigurationDeta
 // GetConfigDetailsOk returns a tuple with the ConfigDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TenantConfigurationResponse) GetConfigDetailsOk() (*TenantConfigurationDetails, bool) {
-	if o == nil || isNil(o.ConfigDetails) {
+	if o == nil || IsNil(o.ConfigDetails) {
 		return nil, false
 	}
 	return o.ConfigDetails, true
@@ -95,7 +95,7 @@ func (o *TenantConfigurationResponse) GetConfigDetailsOk() (*TenantConfiguration
 
 // HasConfigDetails returns a boolean if a field has been set.
 func (o *TenantConfigurationResponse) HasConfigDetails() bool {
-	if o != nil && !isNil(o.ConfigDetails) {
+	if o != nil && !IsNil(o.ConfigDetails) {
 		return true
 	}
 
@@ -117,10 +117,10 @@ func (o TenantConfigurationResponse) MarshalJSON() ([]byte, error) {
 
 func (o TenantConfigurationResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AuditDetails) {
+	if !IsNil(o.AuditDetails) {
 		toSerialize["auditDetails"] = o.AuditDetails
 	}
-	if !isNil(o.ConfigDetails) {
+	if !IsNil(o.ConfigDetails) {
 		toSerialize["configDetails"] = o.ConfigDetails
 	}
 
@@ -131,16 +131,20 @@ func (o TenantConfigurationResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *TenantConfigurationResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *TenantConfigurationResponse) UnmarshalJSON(data []byte) (err error) {
 	varTenantConfigurationResponse := _TenantConfigurationResponse{}
 
-	if err = json.Unmarshal(bytes, &varTenantConfigurationResponse); err == nil {
+	err = json.Unmarshal(data, &varTenantConfigurationResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = TenantConfigurationResponse(varTenantConfigurationResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "auditDetails")
 		delete(additionalProperties, "configDetails")
 		o.AdditionalProperties = additionalProperties

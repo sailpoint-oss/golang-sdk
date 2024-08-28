@@ -51,7 +51,7 @@ func NewErrorResponseDtoWithDefaults() *ErrorResponseDto {
 
 // GetDetailCode returns the DetailCode field value if set, zero value otherwise.
 func (o *ErrorResponseDto) GetDetailCode() string {
-	if o == nil || isNil(o.DetailCode) {
+	if o == nil || IsNil(o.DetailCode) {
 		var ret string
 		return ret
 	}
@@ -61,7 +61,7 @@ func (o *ErrorResponseDto) GetDetailCode() string {
 // GetDetailCodeOk returns a tuple with the DetailCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ErrorResponseDto) GetDetailCodeOk() (*string, bool) {
-	if o == nil || isNil(o.DetailCode) {
+	if o == nil || IsNil(o.DetailCode) {
 		return nil, false
 	}
 	return o.DetailCode, true
@@ -69,7 +69,7 @@ func (o *ErrorResponseDto) GetDetailCodeOk() (*string, bool) {
 
 // HasDetailCode returns a boolean if a field has been set.
 func (o *ErrorResponseDto) HasDetailCode() bool {
-	if o != nil && !isNil(o.DetailCode) {
+	if o != nil && !IsNil(o.DetailCode) {
 		return true
 	}
 
@@ -83,7 +83,7 @@ func (o *ErrorResponseDto) SetDetailCode(v string) {
 
 // GetTrackingId returns the TrackingId field value if set, zero value otherwise.
 func (o *ErrorResponseDto) GetTrackingId() string {
-	if o == nil || isNil(o.TrackingId) {
+	if o == nil || IsNil(o.TrackingId) {
 		var ret string
 		return ret
 	}
@@ -93,7 +93,7 @@ func (o *ErrorResponseDto) GetTrackingId() string {
 // GetTrackingIdOk returns a tuple with the TrackingId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ErrorResponseDto) GetTrackingIdOk() (*string, bool) {
-	if o == nil || isNil(o.TrackingId) {
+	if o == nil || IsNil(o.TrackingId) {
 		return nil, false
 	}
 	return o.TrackingId, true
@@ -101,7 +101,7 @@ func (o *ErrorResponseDto) GetTrackingIdOk() (*string, bool) {
 
 // HasTrackingId returns a boolean if a field has been set.
 func (o *ErrorResponseDto) HasTrackingId() bool {
-	if o != nil && !isNil(o.TrackingId) {
+	if o != nil && !IsNil(o.TrackingId) {
 		return true
 	}
 
@@ -115,7 +115,7 @@ func (o *ErrorResponseDto) SetTrackingId(v string) {
 
 // GetMessages returns the Messages field value if set, zero value otherwise.
 func (o *ErrorResponseDto) GetMessages() []ErrorMessageDto {
-	if o == nil || isNil(o.Messages) {
+	if o == nil || IsNil(o.Messages) {
 		var ret []ErrorMessageDto
 		return ret
 	}
@@ -125,7 +125,7 @@ func (o *ErrorResponseDto) GetMessages() []ErrorMessageDto {
 // GetMessagesOk returns a tuple with the Messages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ErrorResponseDto) GetMessagesOk() ([]ErrorMessageDto, bool) {
-	if o == nil || isNil(o.Messages) {
+	if o == nil || IsNil(o.Messages) {
 		return nil, false
 	}
 	return o.Messages, true
@@ -133,7 +133,7 @@ func (o *ErrorResponseDto) GetMessagesOk() ([]ErrorMessageDto, bool) {
 
 // HasMessages returns a boolean if a field has been set.
 func (o *ErrorResponseDto) HasMessages() bool {
-	if o != nil && !isNil(o.Messages) {
+	if o != nil && !IsNil(o.Messages) {
 		return true
 	}
 
@@ -147,7 +147,7 @@ func (o *ErrorResponseDto) SetMessages(v []ErrorMessageDto) {
 
 // GetCauses returns the Causes field value if set, zero value otherwise.
 func (o *ErrorResponseDto) GetCauses() []ErrorMessageDto {
-	if o == nil || isNil(o.Causes) {
+	if o == nil || IsNil(o.Causes) {
 		var ret []ErrorMessageDto
 		return ret
 	}
@@ -157,7 +157,7 @@ func (o *ErrorResponseDto) GetCauses() []ErrorMessageDto {
 // GetCausesOk returns a tuple with the Causes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ErrorResponseDto) GetCausesOk() ([]ErrorMessageDto, bool) {
-	if o == nil || isNil(o.Causes) {
+	if o == nil || IsNil(o.Causes) {
 		return nil, false
 	}
 	return o.Causes, true
@@ -165,7 +165,7 @@ func (o *ErrorResponseDto) GetCausesOk() ([]ErrorMessageDto, bool) {
 
 // HasCauses returns a boolean if a field has been set.
 func (o *ErrorResponseDto) HasCauses() bool {
-	if o != nil && !isNil(o.Causes) {
+	if o != nil && !IsNil(o.Causes) {
 		return true
 	}
 
@@ -187,16 +187,16 @@ func (o ErrorResponseDto) MarshalJSON() ([]byte, error) {
 
 func (o ErrorResponseDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.DetailCode) {
+	if !IsNil(o.DetailCode) {
 		toSerialize["detailCode"] = o.DetailCode
 	}
-	if !isNil(o.TrackingId) {
+	if !IsNil(o.TrackingId) {
 		toSerialize["trackingId"] = o.TrackingId
 	}
-	if !isNil(o.Messages) {
+	if !IsNil(o.Messages) {
 		toSerialize["messages"] = o.Messages
 	}
-	if !isNil(o.Causes) {
+	if !IsNil(o.Causes) {
 		toSerialize["causes"] = o.Causes
 	}
 
@@ -207,16 +207,20 @@ func (o ErrorResponseDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ErrorResponseDto) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ErrorResponseDto) UnmarshalJSON(data []byte) (err error) {
 	varErrorResponseDto := _ErrorResponseDto{}
 
-	if err = json.Unmarshal(bytes, &varErrorResponseDto); err == nil {
+	err = json.Unmarshal(data, &varErrorResponseDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ErrorResponseDto(varErrorResponseDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "detailCode")
 		delete(additionalProperties, "trackingId")
 		delete(additionalProperties, "messages")

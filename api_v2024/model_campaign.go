@@ -40,7 +40,7 @@ type Campaign struct {
 	// The campaign's current status.
 	Status *string `json:"status,omitempty"`
 	// The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source).
-	CorrelatedStatus map[string]interface{} `json:"correlatedStatus,omitempty"`
+	CorrelatedStatus *string `json:"correlatedStatus,omitempty"`
 	// Created time of the campaign
 	Created *time.Time `json:"created,omitempty"`
 	// The total number of certifications in this campaign.
@@ -104,7 +104,7 @@ func NewCampaignWithDefaults() *Campaign {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Campaign) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -114,7 +114,7 @@ func (o *Campaign) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Campaign) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -122,7 +122,7 @@ func (o *Campaign) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *Campaign) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -184,7 +184,7 @@ func (o *Campaign) SetDescription(v string) {
 
 // GetDeadline returns the Deadline field value if set, zero value otherwise.
 func (o *Campaign) GetDeadline() time.Time {
-	if o == nil || isNil(o.Deadline) {
+	if o == nil || IsNil(o.Deadline) {
 		var ret time.Time
 		return ret
 	}
@@ -194,7 +194,7 @@ func (o *Campaign) GetDeadline() time.Time {
 // GetDeadlineOk returns a tuple with the Deadline field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Campaign) GetDeadlineOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Deadline) {
+	if o == nil || IsNil(o.Deadline) {
 		return nil, false
 	}
 	return o.Deadline, true
@@ -202,7 +202,7 @@ func (o *Campaign) GetDeadlineOk() (*time.Time, bool) {
 
 // HasDeadline returns a boolean if a field has been set.
 func (o *Campaign) HasDeadline() bool {
-	if o != nil && !isNil(o.Deadline) {
+	if o != nil && !IsNil(o.Deadline) {
 		return true
 	}
 
@@ -240,7 +240,7 @@ func (o *Campaign) SetType(v string) {
 
 // GetEmailNotificationEnabled returns the EmailNotificationEnabled field value if set, zero value otherwise.
 func (o *Campaign) GetEmailNotificationEnabled() bool {
-	if o == nil || isNil(o.EmailNotificationEnabled) {
+	if o == nil || IsNil(o.EmailNotificationEnabled) {
 		var ret bool
 		return ret
 	}
@@ -250,7 +250,7 @@ func (o *Campaign) GetEmailNotificationEnabled() bool {
 // GetEmailNotificationEnabledOk returns a tuple with the EmailNotificationEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Campaign) GetEmailNotificationEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.EmailNotificationEnabled) {
+	if o == nil || IsNil(o.EmailNotificationEnabled) {
 		return nil, false
 	}
 	return o.EmailNotificationEnabled, true
@@ -258,7 +258,7 @@ func (o *Campaign) GetEmailNotificationEnabledOk() (*bool, bool) {
 
 // HasEmailNotificationEnabled returns a boolean if a field has been set.
 func (o *Campaign) HasEmailNotificationEnabled() bool {
-	if o != nil && !isNil(o.EmailNotificationEnabled) {
+	if o != nil && !IsNil(o.EmailNotificationEnabled) {
 		return true
 	}
 
@@ -272,7 +272,7 @@ func (o *Campaign) SetEmailNotificationEnabled(v bool) {
 
 // GetAutoRevokeAllowed returns the AutoRevokeAllowed field value if set, zero value otherwise.
 func (o *Campaign) GetAutoRevokeAllowed() bool {
-	if o == nil || isNil(o.AutoRevokeAllowed) {
+	if o == nil || IsNil(o.AutoRevokeAllowed) {
 		var ret bool
 		return ret
 	}
@@ -282,7 +282,7 @@ func (o *Campaign) GetAutoRevokeAllowed() bool {
 // GetAutoRevokeAllowedOk returns a tuple with the AutoRevokeAllowed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Campaign) GetAutoRevokeAllowedOk() (*bool, bool) {
-	if o == nil || isNil(o.AutoRevokeAllowed) {
+	if o == nil || IsNil(o.AutoRevokeAllowed) {
 		return nil, false
 	}
 	return o.AutoRevokeAllowed, true
@@ -290,7 +290,7 @@ func (o *Campaign) GetAutoRevokeAllowedOk() (*bool, bool) {
 
 // HasAutoRevokeAllowed returns a boolean if a field has been set.
 func (o *Campaign) HasAutoRevokeAllowed() bool {
-	if o != nil && !isNil(o.AutoRevokeAllowed) {
+	if o != nil && !IsNil(o.AutoRevokeAllowed) {
 		return true
 	}
 
@@ -304,7 +304,7 @@ func (o *Campaign) SetAutoRevokeAllowed(v bool) {
 
 // GetRecommendationsEnabled returns the RecommendationsEnabled field value if set, zero value otherwise.
 func (o *Campaign) GetRecommendationsEnabled() bool {
-	if o == nil || isNil(o.RecommendationsEnabled) {
+	if o == nil || IsNil(o.RecommendationsEnabled) {
 		var ret bool
 		return ret
 	}
@@ -314,7 +314,7 @@ func (o *Campaign) GetRecommendationsEnabled() bool {
 // GetRecommendationsEnabledOk returns a tuple with the RecommendationsEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Campaign) GetRecommendationsEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.RecommendationsEnabled) {
+	if o == nil || IsNil(o.RecommendationsEnabled) {
 		return nil, false
 	}
 	return o.RecommendationsEnabled, true
@@ -322,7 +322,7 @@ func (o *Campaign) GetRecommendationsEnabledOk() (*bool, bool) {
 
 // HasRecommendationsEnabled returns a boolean if a field has been set.
 func (o *Campaign) HasRecommendationsEnabled() bool {
-	if o != nil && !isNil(o.RecommendationsEnabled) {
+	if o != nil && !IsNil(o.RecommendationsEnabled) {
 		return true
 	}
 
@@ -336,7 +336,7 @@ func (o *Campaign) SetRecommendationsEnabled(v bool) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *Campaign) GetStatus() string {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -346,7 +346,7 @@ func (o *Campaign) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Campaign) GetStatusOk() (*string, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -354,7 +354,7 @@ func (o *Campaign) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *Campaign) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -367,40 +367,40 @@ func (o *Campaign) SetStatus(v string) {
 }
 
 // GetCorrelatedStatus returns the CorrelatedStatus field value if set, zero value otherwise.
-func (o *Campaign) GetCorrelatedStatus() map[string]interface{} {
-	if o == nil || isNil(o.CorrelatedStatus) {
-		var ret map[string]interface{}
+func (o *Campaign) GetCorrelatedStatus() string {
+	if o == nil || IsNil(o.CorrelatedStatus) {
+		var ret string
 		return ret
 	}
-	return o.CorrelatedStatus
+	return *o.CorrelatedStatus
 }
 
 // GetCorrelatedStatusOk returns a tuple with the CorrelatedStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Campaign) GetCorrelatedStatusOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.CorrelatedStatus) {
-		return map[string]interface{}{}, false
+func (o *Campaign) GetCorrelatedStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.CorrelatedStatus) {
+		return nil, false
 	}
 	return o.CorrelatedStatus, true
 }
 
 // HasCorrelatedStatus returns a boolean if a field has been set.
 func (o *Campaign) HasCorrelatedStatus() bool {
-	if o != nil && !isNil(o.CorrelatedStatus) {
+	if o != nil && !IsNil(o.CorrelatedStatus) {
 		return true
 	}
 
 	return false
 }
 
-// SetCorrelatedStatus gets a reference to the given map[string]interface{} and assigns it to the CorrelatedStatus field.
-func (o *Campaign) SetCorrelatedStatus(v map[string]interface{}) {
-	o.CorrelatedStatus = v
+// SetCorrelatedStatus gets a reference to the given string and assigns it to the CorrelatedStatus field.
+func (o *Campaign) SetCorrelatedStatus(v string) {
+	o.CorrelatedStatus = &v
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *Campaign) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -410,7 +410,7 @@ func (o *Campaign) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Campaign) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -418,7 +418,7 @@ func (o *Campaign) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *Campaign) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -432,7 +432,7 @@ func (o *Campaign) SetCreated(v time.Time) {
 
 // GetTotalCertifications returns the TotalCertifications field value if set, zero value otherwise.
 func (o *Campaign) GetTotalCertifications() int32 {
-	if o == nil || isNil(o.TotalCertifications) {
+	if o == nil || IsNil(o.TotalCertifications) {
 		var ret int32
 		return ret
 	}
@@ -442,7 +442,7 @@ func (o *Campaign) GetTotalCertifications() int32 {
 // GetTotalCertificationsOk returns a tuple with the TotalCertifications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Campaign) GetTotalCertificationsOk() (*int32, bool) {
-	if o == nil || isNil(o.TotalCertifications) {
+	if o == nil || IsNil(o.TotalCertifications) {
 		return nil, false
 	}
 	return o.TotalCertifications, true
@@ -450,7 +450,7 @@ func (o *Campaign) GetTotalCertificationsOk() (*int32, bool) {
 
 // HasTotalCertifications returns a boolean if a field has been set.
 func (o *Campaign) HasTotalCertifications() bool {
-	if o != nil && !isNil(o.TotalCertifications) {
+	if o != nil && !IsNil(o.TotalCertifications) {
 		return true
 	}
 
@@ -464,7 +464,7 @@ func (o *Campaign) SetTotalCertifications(v int32) {
 
 // GetCompletedCertifications returns the CompletedCertifications field value if set, zero value otherwise.
 func (o *Campaign) GetCompletedCertifications() int32 {
-	if o == nil || isNil(o.CompletedCertifications) {
+	if o == nil || IsNil(o.CompletedCertifications) {
 		var ret int32
 		return ret
 	}
@@ -474,7 +474,7 @@ func (o *Campaign) GetCompletedCertifications() int32 {
 // GetCompletedCertificationsOk returns a tuple with the CompletedCertifications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Campaign) GetCompletedCertificationsOk() (*int32, bool) {
-	if o == nil || isNil(o.CompletedCertifications) {
+	if o == nil || IsNil(o.CompletedCertifications) {
 		return nil, false
 	}
 	return o.CompletedCertifications, true
@@ -482,7 +482,7 @@ func (o *Campaign) GetCompletedCertificationsOk() (*int32, bool) {
 
 // HasCompletedCertifications returns a boolean if a field has been set.
 func (o *Campaign) HasCompletedCertifications() bool {
-	if o != nil && !isNil(o.CompletedCertifications) {
+	if o != nil && !IsNil(o.CompletedCertifications) {
 		return true
 	}
 
@@ -496,7 +496,7 @@ func (o *Campaign) SetCompletedCertifications(v int32) {
 
 // GetAlerts returns the Alerts field value if set, zero value otherwise.
 func (o *Campaign) GetAlerts() []CampaignAlert {
-	if o == nil || isNil(o.Alerts) {
+	if o == nil || IsNil(o.Alerts) {
 		var ret []CampaignAlert
 		return ret
 	}
@@ -506,7 +506,7 @@ func (o *Campaign) GetAlerts() []CampaignAlert {
 // GetAlertsOk returns a tuple with the Alerts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Campaign) GetAlertsOk() ([]CampaignAlert, bool) {
-	if o == nil || isNil(o.Alerts) {
+	if o == nil || IsNil(o.Alerts) {
 		return nil, false
 	}
 	return o.Alerts, true
@@ -514,7 +514,7 @@ func (o *Campaign) GetAlertsOk() ([]CampaignAlert, bool) {
 
 // HasAlerts returns a boolean if a field has been set.
 func (o *Campaign) HasAlerts() bool {
-	if o != nil && !isNil(o.Alerts) {
+	if o != nil && !IsNil(o.Alerts) {
 		return true
 	}
 
@@ -528,7 +528,7 @@ func (o *Campaign) SetAlerts(v []CampaignAlert) {
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *Campaign) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		var ret time.Time
 		return ret
 	}
@@ -538,7 +538,7 @@ func (o *Campaign) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Campaign) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -546,7 +546,7 @@ func (o *Campaign) GetModifiedOk() (*time.Time, bool) {
 
 // HasModified returns a boolean if a field has been set.
 func (o *Campaign) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -560,7 +560,7 @@ func (o *Campaign) SetModified(v time.Time) {
 
 // GetFilter returns the Filter field value if set, zero value otherwise.
 func (o *Campaign) GetFilter() CampaignAllOfFilter {
-	if o == nil || isNil(o.Filter) {
+	if o == nil || IsNil(o.Filter) {
 		var ret CampaignAllOfFilter
 		return ret
 	}
@@ -570,7 +570,7 @@ func (o *Campaign) GetFilter() CampaignAllOfFilter {
 // GetFilterOk returns a tuple with the Filter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Campaign) GetFilterOk() (*CampaignAllOfFilter, bool) {
-	if o == nil || isNil(o.Filter) {
+	if o == nil || IsNil(o.Filter) {
 		return nil, false
 	}
 	return o.Filter, true
@@ -578,7 +578,7 @@ func (o *Campaign) GetFilterOk() (*CampaignAllOfFilter, bool) {
 
 // HasFilter returns a boolean if a field has been set.
 func (o *Campaign) HasFilter() bool {
-	if o != nil && !isNil(o.Filter) {
+	if o != nil && !IsNil(o.Filter) {
 		return true
 	}
 
@@ -592,7 +592,7 @@ func (o *Campaign) SetFilter(v CampaignAllOfFilter) {
 
 // GetSunsetCommentsRequired returns the SunsetCommentsRequired field value if set, zero value otherwise.
 func (o *Campaign) GetSunsetCommentsRequired() bool {
-	if o == nil || isNil(o.SunsetCommentsRequired) {
+	if o == nil || IsNil(o.SunsetCommentsRequired) {
 		var ret bool
 		return ret
 	}
@@ -602,7 +602,7 @@ func (o *Campaign) GetSunsetCommentsRequired() bool {
 // GetSunsetCommentsRequiredOk returns a tuple with the SunsetCommentsRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Campaign) GetSunsetCommentsRequiredOk() (*bool, bool) {
-	if o == nil || isNil(o.SunsetCommentsRequired) {
+	if o == nil || IsNil(o.SunsetCommentsRequired) {
 		return nil, false
 	}
 	return o.SunsetCommentsRequired, true
@@ -610,7 +610,7 @@ func (o *Campaign) GetSunsetCommentsRequiredOk() (*bool, bool) {
 
 // HasSunsetCommentsRequired returns a boolean if a field has been set.
 func (o *Campaign) HasSunsetCommentsRequired() bool {
-	if o != nil && !isNil(o.SunsetCommentsRequired) {
+	if o != nil && !IsNil(o.SunsetCommentsRequired) {
 		return true
 	}
 
@@ -624,7 +624,7 @@ func (o *Campaign) SetSunsetCommentsRequired(v bool) {
 
 // GetSourceOwnerCampaignInfo returns the SourceOwnerCampaignInfo field value if set, zero value otherwise.
 func (o *Campaign) GetSourceOwnerCampaignInfo() CampaignAllOfSourceOwnerCampaignInfo {
-	if o == nil || isNil(o.SourceOwnerCampaignInfo) {
+	if o == nil || IsNil(o.SourceOwnerCampaignInfo) {
 		var ret CampaignAllOfSourceOwnerCampaignInfo
 		return ret
 	}
@@ -634,7 +634,7 @@ func (o *Campaign) GetSourceOwnerCampaignInfo() CampaignAllOfSourceOwnerCampaign
 // GetSourceOwnerCampaignInfoOk returns a tuple with the SourceOwnerCampaignInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Campaign) GetSourceOwnerCampaignInfoOk() (*CampaignAllOfSourceOwnerCampaignInfo, bool) {
-	if o == nil || isNil(o.SourceOwnerCampaignInfo) {
+	if o == nil || IsNil(o.SourceOwnerCampaignInfo) {
 		return nil, false
 	}
 	return o.SourceOwnerCampaignInfo, true
@@ -642,7 +642,7 @@ func (o *Campaign) GetSourceOwnerCampaignInfoOk() (*CampaignAllOfSourceOwnerCamp
 
 // HasSourceOwnerCampaignInfo returns a boolean if a field has been set.
 func (o *Campaign) HasSourceOwnerCampaignInfo() bool {
-	if o != nil && !isNil(o.SourceOwnerCampaignInfo) {
+	if o != nil && !IsNil(o.SourceOwnerCampaignInfo) {
 		return true
 	}
 
@@ -656,7 +656,7 @@ func (o *Campaign) SetSourceOwnerCampaignInfo(v CampaignAllOfSourceOwnerCampaign
 
 // GetSearchCampaignInfo returns the SearchCampaignInfo field value if set, zero value otherwise.
 func (o *Campaign) GetSearchCampaignInfo() CampaignAllOfSearchCampaignInfo {
-	if o == nil || isNil(o.SearchCampaignInfo) {
+	if o == nil || IsNil(o.SearchCampaignInfo) {
 		var ret CampaignAllOfSearchCampaignInfo
 		return ret
 	}
@@ -666,7 +666,7 @@ func (o *Campaign) GetSearchCampaignInfo() CampaignAllOfSearchCampaignInfo {
 // GetSearchCampaignInfoOk returns a tuple with the SearchCampaignInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Campaign) GetSearchCampaignInfoOk() (*CampaignAllOfSearchCampaignInfo, bool) {
-	if o == nil || isNil(o.SearchCampaignInfo) {
+	if o == nil || IsNil(o.SearchCampaignInfo) {
 		return nil, false
 	}
 	return o.SearchCampaignInfo, true
@@ -674,7 +674,7 @@ func (o *Campaign) GetSearchCampaignInfoOk() (*CampaignAllOfSearchCampaignInfo, 
 
 // HasSearchCampaignInfo returns a boolean if a field has been set.
 func (o *Campaign) HasSearchCampaignInfo() bool {
-	if o != nil && !isNil(o.SearchCampaignInfo) {
+	if o != nil && !IsNil(o.SearchCampaignInfo) {
 		return true
 	}
 
@@ -688,7 +688,7 @@ func (o *Campaign) SetSearchCampaignInfo(v CampaignAllOfSearchCampaignInfo) {
 
 // GetRoleCompositionCampaignInfo returns the RoleCompositionCampaignInfo field value if set, zero value otherwise.
 func (o *Campaign) GetRoleCompositionCampaignInfo() CampaignAllOfRoleCompositionCampaignInfo {
-	if o == nil || isNil(o.RoleCompositionCampaignInfo) {
+	if o == nil || IsNil(o.RoleCompositionCampaignInfo) {
 		var ret CampaignAllOfRoleCompositionCampaignInfo
 		return ret
 	}
@@ -698,7 +698,7 @@ func (o *Campaign) GetRoleCompositionCampaignInfo() CampaignAllOfRoleComposition
 // GetRoleCompositionCampaignInfoOk returns a tuple with the RoleCompositionCampaignInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Campaign) GetRoleCompositionCampaignInfoOk() (*CampaignAllOfRoleCompositionCampaignInfo, bool) {
-	if o == nil || isNil(o.RoleCompositionCampaignInfo) {
+	if o == nil || IsNil(o.RoleCompositionCampaignInfo) {
 		return nil, false
 	}
 	return o.RoleCompositionCampaignInfo, true
@@ -706,7 +706,7 @@ func (o *Campaign) GetRoleCompositionCampaignInfoOk() (*CampaignAllOfRoleComposi
 
 // HasRoleCompositionCampaignInfo returns a boolean if a field has been set.
 func (o *Campaign) HasRoleCompositionCampaignInfo() bool {
-	if o != nil && !isNil(o.RoleCompositionCampaignInfo) {
+	if o != nil && !IsNil(o.RoleCompositionCampaignInfo) {
 		return true
 	}
 
@@ -720,7 +720,7 @@ func (o *Campaign) SetRoleCompositionCampaignInfo(v CampaignAllOfRoleComposition
 
 // GetSourcesWithOrphanEntitlements returns the SourcesWithOrphanEntitlements field value if set, zero value otherwise.
 func (o *Campaign) GetSourcesWithOrphanEntitlements() []CampaignAllOfSourcesWithOrphanEntitlements {
-	if o == nil || isNil(o.SourcesWithOrphanEntitlements) {
+	if o == nil || IsNil(o.SourcesWithOrphanEntitlements) {
 		var ret []CampaignAllOfSourcesWithOrphanEntitlements
 		return ret
 	}
@@ -730,7 +730,7 @@ func (o *Campaign) GetSourcesWithOrphanEntitlements() []CampaignAllOfSourcesWith
 // GetSourcesWithOrphanEntitlementsOk returns a tuple with the SourcesWithOrphanEntitlements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Campaign) GetSourcesWithOrphanEntitlementsOk() ([]CampaignAllOfSourcesWithOrphanEntitlements, bool) {
-	if o == nil || isNil(o.SourcesWithOrphanEntitlements) {
+	if o == nil || IsNil(o.SourcesWithOrphanEntitlements) {
 		return nil, false
 	}
 	return o.SourcesWithOrphanEntitlements, true
@@ -738,7 +738,7 @@ func (o *Campaign) GetSourcesWithOrphanEntitlementsOk() ([]CampaignAllOfSourcesW
 
 // HasSourcesWithOrphanEntitlements returns a boolean if a field has been set.
 func (o *Campaign) HasSourcesWithOrphanEntitlements() bool {
-	if o != nil && !isNil(o.SourcesWithOrphanEntitlements) {
+	if o != nil && !IsNil(o.SourcesWithOrphanEntitlements) {
 		return true
 	}
 
@@ -752,7 +752,7 @@ func (o *Campaign) SetSourcesWithOrphanEntitlements(v []CampaignAllOfSourcesWith
 
 // GetMandatoryCommentRequirement returns the MandatoryCommentRequirement field value if set, zero value otherwise.
 func (o *Campaign) GetMandatoryCommentRequirement() string {
-	if o == nil || isNil(o.MandatoryCommentRequirement) {
+	if o == nil || IsNil(o.MandatoryCommentRequirement) {
 		var ret string
 		return ret
 	}
@@ -762,7 +762,7 @@ func (o *Campaign) GetMandatoryCommentRequirement() string {
 // GetMandatoryCommentRequirementOk returns a tuple with the MandatoryCommentRequirement field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Campaign) GetMandatoryCommentRequirementOk() (*string, bool) {
-	if o == nil || isNil(o.MandatoryCommentRequirement) {
+	if o == nil || IsNil(o.MandatoryCommentRequirement) {
 		return nil, false
 	}
 	return o.MandatoryCommentRequirement, true
@@ -770,7 +770,7 @@ func (o *Campaign) GetMandatoryCommentRequirementOk() (*string, bool) {
 
 // HasMandatoryCommentRequirement returns a boolean if a field has been set.
 func (o *Campaign) HasMandatoryCommentRequirement() bool {
-	if o != nil && !isNil(o.MandatoryCommentRequirement) {
+	if o != nil && !IsNil(o.MandatoryCommentRequirement) {
 		return true
 	}
 
@@ -792,48 +792,64 @@ func (o Campaign) MarshalJSON() ([]byte, error) {
 
 func (o Campaign) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["name"] = o.Name
 	toSerialize["description"] = o.Description
-	if !isNil(o.Deadline) {
+	if !IsNil(o.Deadline) {
 		toSerialize["deadline"] = o.Deadline
 	}
 	toSerialize["type"] = o.Type
-	if !isNil(o.EmailNotificationEnabled) {
+	if !IsNil(o.EmailNotificationEnabled) {
 		toSerialize["emailNotificationEnabled"] = o.EmailNotificationEnabled
 	}
-	if !isNil(o.AutoRevokeAllowed) {
+	if !IsNil(o.AutoRevokeAllowed) {
 		toSerialize["autoRevokeAllowed"] = o.AutoRevokeAllowed
 	}
-	if !isNil(o.RecommendationsEnabled) {
+	if !IsNil(o.RecommendationsEnabled) {
 		toSerialize["recommendationsEnabled"] = o.RecommendationsEnabled
 	}
-	// skip: status is readOnly
-	if !isNil(o.CorrelatedStatus) {
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.CorrelatedStatus) {
 		toSerialize["correlatedStatus"] = o.CorrelatedStatus
 	}
-	// skip: created is readOnly
-	// skip: totalCertifications is readOnly
-	// skip: completedCertifications is readOnly
-	// skip: alerts is readOnly
-	// skip: modified is readOnly
-	if !isNil(o.Filter) {
+	if !IsNil(o.Created) {
+		toSerialize["created"] = o.Created
+	}
+	if !IsNil(o.TotalCertifications) {
+		toSerialize["totalCertifications"] = o.TotalCertifications
+	}
+	if !IsNil(o.CompletedCertifications) {
+		toSerialize["completedCertifications"] = o.CompletedCertifications
+	}
+	if !IsNil(o.Alerts) {
+		toSerialize["alerts"] = o.Alerts
+	}
+	if !IsNil(o.Modified) {
+		toSerialize["modified"] = o.Modified
+	}
+	if !IsNil(o.Filter) {
 		toSerialize["filter"] = o.Filter
 	}
-	if !isNil(o.SunsetCommentsRequired) {
+	if !IsNil(o.SunsetCommentsRequired) {
 		toSerialize["sunsetCommentsRequired"] = o.SunsetCommentsRequired
 	}
-	if !isNil(o.SourceOwnerCampaignInfo) {
+	if !IsNil(o.SourceOwnerCampaignInfo) {
 		toSerialize["sourceOwnerCampaignInfo"] = o.SourceOwnerCampaignInfo
 	}
-	if !isNil(o.SearchCampaignInfo) {
+	if !IsNil(o.SearchCampaignInfo) {
 		toSerialize["searchCampaignInfo"] = o.SearchCampaignInfo
 	}
-	if !isNil(o.RoleCompositionCampaignInfo) {
+	if !IsNil(o.RoleCompositionCampaignInfo) {
 		toSerialize["roleCompositionCampaignInfo"] = o.RoleCompositionCampaignInfo
 	}
-	// skip: sourcesWithOrphanEntitlements is readOnly
-	if !isNil(o.MandatoryCommentRequirement) {
+	if !IsNil(o.SourcesWithOrphanEntitlements) {
+		toSerialize["sourcesWithOrphanEntitlements"] = o.SourcesWithOrphanEntitlements
+	}
+	if !IsNil(o.MandatoryCommentRequirement) {
 		toSerialize["mandatoryCommentRequirement"] = o.MandatoryCommentRequirement
 	}
 
@@ -844,8 +860,8 @@ func (o Campaign) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Campaign) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *Campaign) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -856,7 +872,7 @@ func (o *Campaign) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -870,13 +886,17 @@ func (o *Campaign) UnmarshalJSON(bytes []byte) (err error) {
 
 	varCampaign := _Campaign{}
 
-	if err = json.Unmarshal(bytes, &varCampaign); err == nil {
+	err = json.Unmarshal(data, &varCampaign)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Campaign(varCampaign)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")

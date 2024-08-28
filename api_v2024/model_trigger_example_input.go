@@ -12,6 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
@@ -223,7 +224,11 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		if string(jsonAccessRequestDynamicApprover) == "{}" { // empty struct
 			dst.AccessRequestDynamicApprover = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.AccessRequestDynamicApprover); err != nil {
+				dst.AccessRequestDynamicApprover = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.AccessRequestDynamicApprover = nil
@@ -236,7 +241,11 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		if string(jsonAccessRequestPostApproval) == "{}" { // empty struct
 			dst.AccessRequestPostApproval = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.AccessRequestPostApproval); err != nil {
+				dst.AccessRequestPostApproval = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.AccessRequestPostApproval = nil
@@ -249,7 +258,11 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		if string(jsonAccessRequestPreApproval) == "{}" { // empty struct
 			dst.AccessRequestPreApproval = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.AccessRequestPreApproval); err != nil {
+				dst.AccessRequestPreApproval = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.AccessRequestPreApproval = nil
@@ -262,7 +275,11 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		if string(jsonAccountAggregationCompleted) == "{}" { // empty struct
 			dst.AccountAggregationCompleted = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.AccountAggregationCompleted); err != nil {
+				dst.AccountAggregationCompleted = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.AccountAggregationCompleted = nil
@@ -275,7 +292,11 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		if string(jsonAccountAttributesChanged) == "{}" { // empty struct
 			dst.AccountAttributesChanged = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.AccountAttributesChanged); err != nil {
+				dst.AccountAttributesChanged = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.AccountAttributesChanged = nil
@@ -288,7 +309,11 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		if string(jsonAccountCorrelated) == "{}" { // empty struct
 			dst.AccountCorrelated = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.AccountCorrelated); err != nil {
+				dst.AccountCorrelated = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.AccountCorrelated = nil
@@ -301,7 +326,11 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		if string(jsonAccountUncorrelated) == "{}" { // empty struct
 			dst.AccountUncorrelated = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.AccountUncorrelated); err != nil {
+				dst.AccountUncorrelated = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.AccountUncorrelated = nil
@@ -314,7 +343,11 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		if string(jsonAccountsCollectedForAggregation) == "{}" { // empty struct
 			dst.AccountsCollectedForAggregation = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.AccountsCollectedForAggregation); err != nil {
+				dst.AccountsCollectedForAggregation = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.AccountsCollectedForAggregation = nil
@@ -327,7 +360,11 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		if string(jsonCampaignActivated) == "{}" { // empty struct
 			dst.CampaignActivated = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.CampaignActivated); err != nil {
+				dst.CampaignActivated = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.CampaignActivated = nil
@@ -340,7 +377,11 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		if string(jsonCampaignEnded) == "{}" { // empty struct
 			dst.CampaignEnded = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.CampaignEnded); err != nil {
+				dst.CampaignEnded = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.CampaignEnded = nil
@@ -353,7 +394,11 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		if string(jsonCampaignGenerated) == "{}" { // empty struct
 			dst.CampaignGenerated = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.CampaignGenerated); err != nil {
+				dst.CampaignGenerated = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.CampaignGenerated = nil
@@ -366,7 +411,11 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		if string(jsonCertificationSignedOff) == "{}" { // empty struct
 			dst.CertificationSignedOff = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.CertificationSignedOff); err != nil {
+				dst.CertificationSignedOff = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.CertificationSignedOff = nil
@@ -379,7 +428,11 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		if string(jsonIdentityAttributesChanged) == "{}" { // empty struct
 			dst.IdentityAttributesChanged = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.IdentityAttributesChanged); err != nil {
+				dst.IdentityAttributesChanged = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.IdentityAttributesChanged = nil
@@ -392,7 +445,11 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		if string(jsonIdentityCreated) == "{}" { // empty struct
 			dst.IdentityCreated = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.IdentityCreated); err != nil {
+				dst.IdentityCreated = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.IdentityCreated = nil
@@ -405,7 +462,11 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		if string(jsonIdentityDeleted) == "{}" { // empty struct
 			dst.IdentityDeleted = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.IdentityDeleted); err != nil {
+				dst.IdentityDeleted = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.IdentityDeleted = nil
@@ -418,7 +479,11 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		if string(jsonProvisioningCompleted) == "{}" { // empty struct
 			dst.ProvisioningCompleted = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.ProvisioningCompleted); err != nil {
+				dst.ProvisioningCompleted = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.ProvisioningCompleted = nil
@@ -431,7 +496,11 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		if string(jsonSavedSearchComplete) == "{}" { // empty struct
 			dst.SavedSearchComplete = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.SavedSearchComplete); err != nil {
+				dst.SavedSearchComplete = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.SavedSearchComplete = nil
@@ -444,7 +513,11 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		if string(jsonSourceAccountCreated) == "{}" { // empty struct
 			dst.SourceAccountCreated = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.SourceAccountCreated); err != nil {
+				dst.SourceAccountCreated = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.SourceAccountCreated = nil
@@ -457,7 +530,11 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		if string(jsonSourceAccountDeleted) == "{}" { // empty struct
 			dst.SourceAccountDeleted = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.SourceAccountDeleted); err != nil {
+				dst.SourceAccountDeleted = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.SourceAccountDeleted = nil
@@ -470,7 +547,11 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		if string(jsonSourceAccountUpdated) == "{}" { // empty struct
 			dst.SourceAccountUpdated = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.SourceAccountUpdated); err != nil {
+				dst.SourceAccountUpdated = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.SourceAccountUpdated = nil
@@ -483,7 +564,11 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		if string(jsonSourceCreated) == "{}" { // empty struct
 			dst.SourceCreated = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.SourceCreated); err != nil {
+				dst.SourceCreated = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.SourceCreated = nil
@@ -496,7 +581,11 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		if string(jsonSourceDeleted) == "{}" { // empty struct
 			dst.SourceDeleted = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.SourceDeleted); err != nil {
+				dst.SourceDeleted = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.SourceDeleted = nil
@@ -509,7 +598,11 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		if string(jsonSourceUpdated) == "{}" { // empty struct
 			dst.SourceUpdated = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.SourceUpdated); err != nil {
+				dst.SourceUpdated = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.SourceUpdated = nil
@@ -522,7 +615,11 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		if string(jsonVAClusterStatusChangeEvent) == "{}" { // empty struct
 			dst.VAClusterStatusChangeEvent = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.VAClusterStatusChangeEvent); err != nil {
+				dst.VAClusterStatusChangeEvent = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.VAClusterStatusChangeEvent = nil

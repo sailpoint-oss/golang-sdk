@@ -76,7 +76,7 @@ func (o *ManagedClusterRequest) SetName(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *ManagedClusterRequest) GetType() ManagedClusterTypes {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret ManagedClusterTypes
 		return ret
 	}
@@ -86,7 +86,7 @@ func (o *ManagedClusterRequest) GetType() ManagedClusterTypes {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedClusterRequest) GetTypeOk() (*ManagedClusterTypes, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -94,7 +94,7 @@ func (o *ManagedClusterRequest) GetTypeOk() (*ManagedClusterTypes, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *ManagedClusterRequest) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -108,7 +108,7 @@ func (o *ManagedClusterRequest) SetType(v ManagedClusterTypes) {
 
 // GetConfiguration returns the Configuration field value if set, zero value otherwise.
 func (o *ManagedClusterRequest) GetConfiguration() map[string]string {
-	if o == nil || isNil(o.Configuration) {
+	if o == nil || IsNil(o.Configuration) {
 		var ret map[string]string
 		return ret
 	}
@@ -118,7 +118,7 @@ func (o *ManagedClusterRequest) GetConfiguration() map[string]string {
 // GetConfigurationOk returns a tuple with the Configuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedClusterRequest) GetConfigurationOk() (*map[string]string, bool) {
-	if o == nil || isNil(o.Configuration) {
+	if o == nil || IsNil(o.Configuration) {
 		return nil, false
 	}
 	return o.Configuration, true
@@ -126,7 +126,7 @@ func (o *ManagedClusterRequest) GetConfigurationOk() (*map[string]string, bool) 
 
 // HasConfiguration returns a boolean if a field has been set.
 func (o *ManagedClusterRequest) HasConfiguration() bool {
-	if o != nil && !isNil(o.Configuration) {
+	if o != nil && !IsNil(o.Configuration) {
 		return true
 	}
 
@@ -140,7 +140,7 @@ func (o *ManagedClusterRequest) SetConfiguration(v map[string]string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedClusterRequest) GetDescription() string {
-	if o == nil || isNil(o.Description.Get()) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
@@ -191,10 +191,10 @@ func (o ManagedClusterRequest) MarshalJSON() ([]byte, error) {
 func (o ManagedClusterRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Configuration) {
+	if !IsNil(o.Configuration) {
 		toSerialize["configuration"] = o.Configuration
 	}
 	if o.Description.IsSet() {
@@ -208,8 +208,8 @@ func (o ManagedClusterRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ManagedClusterRequest) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *ManagedClusterRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -218,7 +218,7 @@ func (o *ManagedClusterRequest) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -232,13 +232,17 @@ func (o *ManagedClusterRequest) UnmarshalJSON(bytes []byte) (err error) {
 
 	varManagedClusterRequest := _ManagedClusterRequest{}
 
-	if err = json.Unmarshal(bytes, &varManagedClusterRequest); err == nil {
+	err = json.Unmarshal(data, &varManagedClusterRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ManagedClusterRequest(varManagedClusterRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "configuration")

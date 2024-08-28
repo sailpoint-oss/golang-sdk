@@ -51,7 +51,7 @@ func NewAccessItemAssociatedWithDefaults() *AccessItemAssociated {
 
 // GetAccessItem returns the AccessItem field value if set, zero value otherwise.
 func (o *AccessItemAssociated) GetAccessItem() AccessItemAssociatedAccessItem {
-	if o == nil || isNil(o.AccessItem) {
+	if o == nil || IsNil(o.AccessItem) {
 		var ret AccessItemAssociatedAccessItem
 		return ret
 	}
@@ -61,7 +61,7 @@ func (o *AccessItemAssociated) GetAccessItem() AccessItemAssociatedAccessItem {
 // GetAccessItemOk returns a tuple with the AccessItem field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemAssociated) GetAccessItemOk() (*AccessItemAssociatedAccessItem, bool) {
-	if o == nil || isNil(o.AccessItem) {
+	if o == nil || IsNil(o.AccessItem) {
 		return nil, false
 	}
 	return o.AccessItem, true
@@ -69,7 +69,7 @@ func (o *AccessItemAssociated) GetAccessItemOk() (*AccessItemAssociatedAccessIte
 
 // HasAccessItem returns a boolean if a field has been set.
 func (o *AccessItemAssociated) HasAccessItem() bool {
-	if o != nil && !isNil(o.AccessItem) {
+	if o != nil && !IsNil(o.AccessItem) {
 		return true
 	}
 
@@ -83,7 +83,7 @@ func (o *AccessItemAssociated) SetAccessItem(v AccessItemAssociatedAccessItem) {
 
 // GetIdentityId returns the IdentityId field value if set, zero value otherwise.
 func (o *AccessItemAssociated) GetIdentityId() string {
-	if o == nil || isNil(o.IdentityId) {
+	if o == nil || IsNil(o.IdentityId) {
 		var ret string
 		return ret
 	}
@@ -93,7 +93,7 @@ func (o *AccessItemAssociated) GetIdentityId() string {
 // GetIdentityIdOk returns a tuple with the IdentityId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemAssociated) GetIdentityIdOk() (*string, bool) {
-	if o == nil || isNil(o.IdentityId) {
+	if o == nil || IsNil(o.IdentityId) {
 		return nil, false
 	}
 	return o.IdentityId, true
@@ -101,7 +101,7 @@ func (o *AccessItemAssociated) GetIdentityIdOk() (*string, bool) {
 
 // HasIdentityId returns a boolean if a field has been set.
 func (o *AccessItemAssociated) HasIdentityId() bool {
-	if o != nil && !isNil(o.IdentityId) {
+	if o != nil && !IsNil(o.IdentityId) {
 		return true
 	}
 
@@ -115,7 +115,7 @@ func (o *AccessItemAssociated) SetIdentityId(v string) {
 
 // GetEventType returns the EventType field value if set, zero value otherwise.
 func (o *AccessItemAssociated) GetEventType() string {
-	if o == nil || isNil(o.EventType) {
+	if o == nil || IsNil(o.EventType) {
 		var ret string
 		return ret
 	}
@@ -125,7 +125,7 @@ func (o *AccessItemAssociated) GetEventType() string {
 // GetEventTypeOk returns a tuple with the EventType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemAssociated) GetEventTypeOk() (*string, bool) {
-	if o == nil || isNil(o.EventType) {
+	if o == nil || IsNil(o.EventType) {
 		return nil, false
 	}
 	return o.EventType, true
@@ -133,7 +133,7 @@ func (o *AccessItemAssociated) GetEventTypeOk() (*string, bool) {
 
 // HasEventType returns a boolean if a field has been set.
 func (o *AccessItemAssociated) HasEventType() bool {
-	if o != nil && !isNil(o.EventType) {
+	if o != nil && !IsNil(o.EventType) {
 		return true
 	}
 
@@ -147,7 +147,7 @@ func (o *AccessItemAssociated) SetEventType(v string) {
 
 // GetDt returns the Dt field value if set, zero value otherwise.
 func (o *AccessItemAssociated) GetDt() string {
-	if o == nil || isNil(o.Dt) {
+	if o == nil || IsNil(o.Dt) {
 		var ret string
 		return ret
 	}
@@ -157,7 +157,7 @@ func (o *AccessItemAssociated) GetDt() string {
 // GetDtOk returns a tuple with the Dt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemAssociated) GetDtOk() (*string, bool) {
-	if o == nil || isNil(o.Dt) {
+	if o == nil || IsNil(o.Dt) {
 		return nil, false
 	}
 	return o.Dt, true
@@ -165,7 +165,7 @@ func (o *AccessItemAssociated) GetDtOk() (*string, bool) {
 
 // HasDt returns a boolean if a field has been set.
 func (o *AccessItemAssociated) HasDt() bool {
-	if o != nil && !isNil(o.Dt) {
+	if o != nil && !IsNil(o.Dt) {
 		return true
 	}
 
@@ -179,7 +179,7 @@ func (o *AccessItemAssociated) SetDt(v string) {
 
 // GetGovernanceEvent returns the GovernanceEvent field value if set, zero value otherwise.
 func (o *AccessItemAssociated) GetGovernanceEvent() CorrelatedGovernanceEvent {
-	if o == nil || isNil(o.GovernanceEvent) {
+	if o == nil || IsNil(o.GovernanceEvent) {
 		var ret CorrelatedGovernanceEvent
 		return ret
 	}
@@ -189,7 +189,7 @@ func (o *AccessItemAssociated) GetGovernanceEvent() CorrelatedGovernanceEvent {
 // GetGovernanceEventOk returns a tuple with the GovernanceEvent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemAssociated) GetGovernanceEventOk() (*CorrelatedGovernanceEvent, bool) {
-	if o == nil || isNil(o.GovernanceEvent) {
+	if o == nil || IsNil(o.GovernanceEvent) {
 		return nil, false
 	}
 	return o.GovernanceEvent, true
@@ -197,7 +197,7 @@ func (o *AccessItemAssociated) GetGovernanceEventOk() (*CorrelatedGovernanceEven
 
 // HasGovernanceEvent returns a boolean if a field has been set.
 func (o *AccessItemAssociated) HasGovernanceEvent() bool {
-	if o != nil && !isNil(o.GovernanceEvent) {
+	if o != nil && !IsNil(o.GovernanceEvent) {
 		return true
 	}
 
@@ -219,19 +219,19 @@ func (o AccessItemAssociated) MarshalJSON() ([]byte, error) {
 
 func (o AccessItemAssociated) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AccessItem) {
+	if !IsNil(o.AccessItem) {
 		toSerialize["accessItem"] = o.AccessItem
 	}
-	if !isNil(o.IdentityId) {
+	if !IsNil(o.IdentityId) {
 		toSerialize["identityId"] = o.IdentityId
 	}
-	if !isNil(o.EventType) {
+	if !IsNil(o.EventType) {
 		toSerialize["eventType"] = o.EventType
 	}
-	if !isNil(o.Dt) {
+	if !IsNil(o.Dt) {
 		toSerialize["dt"] = o.Dt
 	}
-	if !isNil(o.GovernanceEvent) {
+	if !IsNil(o.GovernanceEvent) {
 		toSerialize["governanceEvent"] = o.GovernanceEvent
 	}
 
@@ -242,16 +242,20 @@ func (o AccessItemAssociated) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccessItemAssociated) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccessItemAssociated) UnmarshalJSON(data []byte) (err error) {
 	varAccessItemAssociated := _AccessItemAssociated{}
 
-	if err = json.Unmarshal(bytes, &varAccessItemAssociated); err == nil {
+	err = json.Unmarshal(data, &varAccessItemAssociated)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessItemAssociated(varAccessItemAssociated)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "accessItem")
 		delete(additionalProperties, "identityId")
 		delete(additionalProperties, "eventType")

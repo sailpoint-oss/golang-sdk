@@ -49,7 +49,7 @@ func NewAppWithDefaults() *App {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *App) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *App) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *App) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -67,7 +67,7 @@ func (o *App) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *App) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *App) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *App) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *App) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *App) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -99,7 +99,7 @@ func (o *App) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *App) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *App) SetName(v string) {
 
 // GetSource returns the Source field value if set, zero value otherwise.
 func (o *App) GetSource() Reference {
-	if o == nil || isNil(o.Source) {
+	if o == nil || IsNil(o.Source) {
 		var ret Reference
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *App) GetSource() Reference {
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *App) GetSourceOk() (*Reference, bool) {
-	if o == nil || isNil(o.Source) {
+	if o == nil || IsNil(o.Source) {
 		return nil, false
 	}
 	return o.Source, true
@@ -131,7 +131,7 @@ func (o *App) GetSourceOk() (*Reference, bool) {
 
 // HasSource returns a boolean if a field has been set.
 func (o *App) HasSource() bool {
-	if o != nil && !isNil(o.Source) {
+	if o != nil && !IsNil(o.Source) {
 		return true
 	}
 
@@ -145,7 +145,7 @@ func (o *App) SetSource(v Reference) {
 
 // GetAccount returns the Account field value if set, zero value otherwise.
 func (o *App) GetAccount() AppAllOfAccount {
-	if o == nil || isNil(o.Account) {
+	if o == nil || IsNil(o.Account) {
 		var ret AppAllOfAccount
 		return ret
 	}
@@ -155,7 +155,7 @@ func (o *App) GetAccount() AppAllOfAccount {
 // GetAccountOk returns a tuple with the Account field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *App) GetAccountOk() (*AppAllOfAccount, bool) {
-	if o == nil || isNil(o.Account) {
+	if o == nil || IsNil(o.Account) {
 		return nil, false
 	}
 	return o.Account, true
@@ -163,7 +163,7 @@ func (o *App) GetAccountOk() (*AppAllOfAccount, bool) {
 
 // HasAccount returns a boolean if a field has been set.
 func (o *App) HasAccount() bool {
-	if o != nil && !isNil(o.Account) {
+	if o != nil && !IsNil(o.Account) {
 		return true
 	}
 
@@ -185,16 +185,16 @@ func (o App) MarshalJSON() ([]byte, error) {
 
 func (o App) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Source) {
+	if !IsNil(o.Source) {
 		toSerialize["source"] = o.Source
 	}
-	if !isNil(o.Account) {
+	if !IsNil(o.Account) {
 		toSerialize["account"] = o.Account
 	}
 
@@ -205,16 +205,20 @@ func (o App) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *App) UnmarshalJSON(bytes []byte) (err error) {
+func (o *App) UnmarshalJSON(data []byte) (err error) {
 	varApp := _App{}
 
-	if err = json.Unmarshal(bytes, &varApp); err == nil {
+	err = json.Unmarshal(data, &varApp)
+
+	if err != nil {
+		return err
+	}
+
 	*o = App(varApp)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "source")

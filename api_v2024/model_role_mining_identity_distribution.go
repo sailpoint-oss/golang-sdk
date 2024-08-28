@@ -46,7 +46,7 @@ func NewRoleMiningIdentityDistributionWithDefaults() *RoleMiningIdentityDistribu
 
 // GetAttributeName returns the AttributeName field value if set, zero value otherwise.
 func (o *RoleMiningIdentityDistribution) GetAttributeName() string {
-	if o == nil || isNil(o.AttributeName) {
+	if o == nil || IsNil(o.AttributeName) {
 		var ret string
 		return ret
 	}
@@ -56,7 +56,7 @@ func (o *RoleMiningIdentityDistribution) GetAttributeName() string {
 // GetAttributeNameOk returns a tuple with the AttributeName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningIdentityDistribution) GetAttributeNameOk() (*string, bool) {
-	if o == nil || isNil(o.AttributeName) {
+	if o == nil || IsNil(o.AttributeName) {
 		return nil, false
 	}
 	return o.AttributeName, true
@@ -64,7 +64,7 @@ func (o *RoleMiningIdentityDistribution) GetAttributeNameOk() (*string, bool) {
 
 // HasAttributeName returns a boolean if a field has been set.
 func (o *RoleMiningIdentityDistribution) HasAttributeName() bool {
-	if o != nil && !isNil(o.AttributeName) {
+	if o != nil && !IsNil(o.AttributeName) {
 		return true
 	}
 
@@ -78,7 +78,7 @@ func (o *RoleMiningIdentityDistribution) SetAttributeName(v string) {
 
 // GetDistribution returns the Distribution field value if set, zero value otherwise.
 func (o *RoleMiningIdentityDistribution) GetDistribution() []map[string]string {
-	if o == nil || isNil(o.Distribution) {
+	if o == nil || IsNil(o.Distribution) {
 		var ret []map[string]string
 		return ret
 	}
@@ -88,7 +88,7 @@ func (o *RoleMiningIdentityDistribution) GetDistribution() []map[string]string {
 // GetDistributionOk returns a tuple with the Distribution field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningIdentityDistribution) GetDistributionOk() ([]map[string]string, bool) {
-	if o == nil || isNil(o.Distribution) {
+	if o == nil || IsNil(o.Distribution) {
 		return nil, false
 	}
 	return o.Distribution, true
@@ -96,7 +96,7 @@ func (o *RoleMiningIdentityDistribution) GetDistributionOk() ([]map[string]strin
 
 // HasDistribution returns a boolean if a field has been set.
 func (o *RoleMiningIdentityDistribution) HasDistribution() bool {
-	if o != nil && !isNil(o.Distribution) {
+	if o != nil && !IsNil(o.Distribution) {
 		return true
 	}
 
@@ -118,10 +118,10 @@ func (o RoleMiningIdentityDistribution) MarshalJSON() ([]byte, error) {
 
 func (o RoleMiningIdentityDistribution) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AttributeName) {
+	if !IsNil(o.AttributeName) {
 		toSerialize["attributeName"] = o.AttributeName
 	}
-	if !isNil(o.Distribution) {
+	if !IsNil(o.Distribution) {
 		toSerialize["distribution"] = o.Distribution
 	}
 
@@ -132,16 +132,20 @@ func (o RoleMiningIdentityDistribution) ToMap() (map[string]interface{}, error) 
 	return toSerialize, nil
 }
 
-func (o *RoleMiningIdentityDistribution) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RoleMiningIdentityDistribution) UnmarshalJSON(data []byte) (err error) {
 	varRoleMiningIdentityDistribution := _RoleMiningIdentityDistribution{}
 
-	if err = json.Unmarshal(bytes, &varRoleMiningIdentityDistribution); err == nil {
+	err = json.Unmarshal(data, &varRoleMiningIdentityDistribution)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RoleMiningIdentityDistribution(varRoleMiningIdentityDistribution)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "attributeName")
 		delete(additionalProperties, "distribution")
 		o.AdditionalProperties = additionalProperties

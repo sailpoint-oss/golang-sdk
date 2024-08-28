@@ -154,7 +154,7 @@ func (o *AccountCorrelatedAccount) SetNativeIdentity(v string) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountCorrelatedAccount) GetUuid() string {
-	if o == nil || isNil(o.Uuid.Get()) {
+	if o == nil || IsNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -219,8 +219,8 @@ func (o AccountCorrelatedAccount) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccountCorrelatedAccount) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *AccountCorrelatedAccount) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -232,7 +232,7 @@ func (o *AccountCorrelatedAccount) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -246,13 +246,17 @@ func (o *AccountCorrelatedAccount) UnmarshalJSON(bytes []byte) (err error) {
 
 	varAccountCorrelatedAccount := _AccountCorrelatedAccount{}
 
-	if err = json.Unmarshal(bytes, &varAccountCorrelatedAccount); err == nil {
+	err = json.Unmarshal(data, &varAccountCorrelatedAccount)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccountCorrelatedAccount(varAccountCorrelatedAccount)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")

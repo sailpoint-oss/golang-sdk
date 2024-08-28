@@ -68,7 +68,7 @@ func NewReviewableEntitlementAccountWithDefaults() *ReviewableEntitlementAccount
 
 // GetNativeIdentity returns the NativeIdentity field value if set, zero value otherwise.
 func (o *ReviewableEntitlementAccount) GetNativeIdentity() string {
-	if o == nil || isNil(o.NativeIdentity) {
+	if o == nil || IsNil(o.NativeIdentity) {
 		var ret string
 		return ret
 	}
@@ -78,7 +78,7 @@ func (o *ReviewableEntitlementAccount) GetNativeIdentity() string {
 // GetNativeIdentityOk returns a tuple with the NativeIdentity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReviewableEntitlementAccount) GetNativeIdentityOk() (*string, bool) {
-	if o == nil || isNil(o.NativeIdentity) {
+	if o == nil || IsNil(o.NativeIdentity) {
 		return nil, false
 	}
 	return o.NativeIdentity, true
@@ -86,7 +86,7 @@ func (o *ReviewableEntitlementAccount) GetNativeIdentityOk() (*string, bool) {
 
 // HasNativeIdentity returns a boolean if a field has been set.
 func (o *ReviewableEntitlementAccount) HasNativeIdentity() bool {
-	if o != nil && !isNil(o.NativeIdentity) {
+	if o != nil && !IsNil(o.NativeIdentity) {
 		return true
 	}
 
@@ -100,7 +100,7 @@ func (o *ReviewableEntitlementAccount) SetNativeIdentity(v string) {
 
 // GetDisabled returns the Disabled field value if set, zero value otherwise.
 func (o *ReviewableEntitlementAccount) GetDisabled() bool {
-	if o == nil || isNil(o.Disabled) {
+	if o == nil || IsNil(o.Disabled) {
 		var ret bool
 		return ret
 	}
@@ -110,7 +110,7 @@ func (o *ReviewableEntitlementAccount) GetDisabled() bool {
 // GetDisabledOk returns a tuple with the Disabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReviewableEntitlementAccount) GetDisabledOk() (*bool, bool) {
-	if o == nil || isNil(o.Disabled) {
+	if o == nil || IsNil(o.Disabled) {
 		return nil, false
 	}
 	return o.Disabled, true
@@ -118,7 +118,7 @@ func (o *ReviewableEntitlementAccount) GetDisabledOk() (*bool, bool) {
 
 // HasDisabled returns a boolean if a field has been set.
 func (o *ReviewableEntitlementAccount) HasDisabled() bool {
-	if o != nil && !isNil(o.Disabled) {
+	if o != nil && !IsNil(o.Disabled) {
 		return true
 	}
 
@@ -132,7 +132,7 @@ func (o *ReviewableEntitlementAccount) SetDisabled(v bool) {
 
 // GetLocked returns the Locked field value if set, zero value otherwise.
 func (o *ReviewableEntitlementAccount) GetLocked() bool {
-	if o == nil || isNil(o.Locked) {
+	if o == nil || IsNil(o.Locked) {
 		var ret bool
 		return ret
 	}
@@ -142,7 +142,7 @@ func (o *ReviewableEntitlementAccount) GetLocked() bool {
 // GetLockedOk returns a tuple with the Locked field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReviewableEntitlementAccount) GetLockedOk() (*bool, bool) {
-	if o == nil || isNil(o.Locked) {
+	if o == nil || IsNil(o.Locked) {
 		return nil, false
 	}
 	return o.Locked, true
@@ -150,7 +150,7 @@ func (o *ReviewableEntitlementAccount) GetLockedOk() (*bool, bool) {
 
 // HasLocked returns a boolean if a field has been set.
 func (o *ReviewableEntitlementAccount) HasLocked() bool {
-	if o != nil && !isNil(o.Locked) {
+	if o != nil && !IsNil(o.Locked) {
 		return true
 	}
 
@@ -164,7 +164,7 @@ func (o *ReviewableEntitlementAccount) SetLocked(v bool) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *ReviewableEntitlementAccount) GetType() DtoType {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret DtoType
 		return ret
 	}
@@ -174,7 +174,7 @@ func (o *ReviewableEntitlementAccount) GetType() DtoType {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReviewableEntitlementAccount) GetTypeOk() (*DtoType, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -182,7 +182,7 @@ func (o *ReviewableEntitlementAccount) GetTypeOk() (*DtoType, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *ReviewableEntitlementAccount) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -196,7 +196,7 @@ func (o *ReviewableEntitlementAccount) SetType(v DtoType) {
 
 // GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ReviewableEntitlementAccount) GetId() string {
-	if o == nil || isNil(o.Id.Get()) {
+	if o == nil || IsNil(o.Id.Get()) {
 		var ret string
 		return ret
 	}
@@ -238,7 +238,7 @@ func (o *ReviewableEntitlementAccount) UnsetId() {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ReviewableEntitlementAccount) GetName() string {
-	if o == nil || isNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -280,7 +280,7 @@ func (o *ReviewableEntitlementAccount) UnsetName() {
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ReviewableEntitlementAccount) GetCreated() time.Time {
-	if o == nil || isNil(o.Created.Get()) {
+	if o == nil || IsNil(o.Created.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -322,7 +322,7 @@ func (o *ReviewableEntitlementAccount) UnsetCreated() {
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ReviewableEntitlementAccount) GetModified() time.Time {
-	if o == nil || isNil(o.Modified.Get()) {
+	if o == nil || IsNil(o.Modified.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -364,7 +364,7 @@ func (o *ReviewableEntitlementAccount) UnsetModified() {
 
 // GetActivityInsights returns the ActivityInsights field value if set, zero value otherwise.
 func (o *ReviewableEntitlementAccount) GetActivityInsights() ActivityInsights {
-	if o == nil || isNil(o.ActivityInsights) {
+	if o == nil || IsNil(o.ActivityInsights) {
 		var ret ActivityInsights
 		return ret
 	}
@@ -374,7 +374,7 @@ func (o *ReviewableEntitlementAccount) GetActivityInsights() ActivityInsights {
 // GetActivityInsightsOk returns a tuple with the ActivityInsights field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReviewableEntitlementAccount) GetActivityInsightsOk() (*ActivityInsights, bool) {
-	if o == nil || isNil(o.ActivityInsights) {
+	if o == nil || IsNil(o.ActivityInsights) {
 		return nil, false
 	}
 	return o.ActivityInsights, true
@@ -382,7 +382,7 @@ func (o *ReviewableEntitlementAccount) GetActivityInsightsOk() (*ActivityInsight
 
 // HasActivityInsights returns a boolean if a field has been set.
 func (o *ReviewableEntitlementAccount) HasActivityInsights() bool {
-	if o != nil && !isNil(o.ActivityInsights) {
+	if o != nil && !IsNil(o.ActivityInsights) {
 		return true
 	}
 
@@ -404,16 +404,16 @@ func (o ReviewableEntitlementAccount) MarshalJSON() ([]byte, error) {
 
 func (o ReviewableEntitlementAccount) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.NativeIdentity) {
+	if !IsNil(o.NativeIdentity) {
 		toSerialize["nativeIdentity"] = o.NativeIdentity
 	}
-	if !isNil(o.Disabled) {
+	if !IsNil(o.Disabled) {
 		toSerialize["disabled"] = o.Disabled
 	}
-	if !isNil(o.Locked) {
+	if !IsNil(o.Locked) {
 		toSerialize["locked"] = o.Locked
 	}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
 	if o.Id.IsSet() {
@@ -428,7 +428,7 @@ func (o ReviewableEntitlementAccount) ToMap() (map[string]interface{}, error) {
 	if o.Modified.IsSet() {
 		toSerialize["modified"] = o.Modified.Get()
 	}
-	if !isNil(o.ActivityInsights) {
+	if !IsNil(o.ActivityInsights) {
 		toSerialize["activityInsights"] = o.ActivityInsights
 	}
 
@@ -439,16 +439,20 @@ func (o ReviewableEntitlementAccount) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ReviewableEntitlementAccount) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ReviewableEntitlementAccount) UnmarshalJSON(data []byte) (err error) {
 	varReviewableEntitlementAccount := _ReviewableEntitlementAccount{}
 
-	if err = json.Unmarshal(bytes, &varReviewableEntitlementAccount); err == nil {
+	err = json.Unmarshal(data, &varReviewableEntitlementAccount)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ReviewableEntitlementAccount(varReviewableEntitlementAccount)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "nativeIdentity")
 		delete(additionalProperties, "disabled")
 		delete(additionalProperties, "locked")

@@ -45,7 +45,7 @@ func NewSedBatchStatusWithDefaults() *SedBatchStatus {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *SedBatchStatus) GetStatus() string {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *SedBatchStatus) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SedBatchStatus) GetStatusOk() (*string, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -63,7 +63,7 @@ func (o *SedBatchStatus) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *SedBatchStatus) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o SedBatchStatus) MarshalJSON() ([]byte, error) {
 
 func (o SedBatchStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Status) {
+	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
 
@@ -96,16 +96,20 @@ func (o SedBatchStatus) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SedBatchStatus) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SedBatchStatus) UnmarshalJSON(data []byte) (err error) {
 	varSedBatchStatus := _SedBatchStatus{}
 
-	if err = json.Unmarshal(bytes, &varSedBatchStatus); err == nil {
+	err = json.Unmarshal(data, &varSedBatchStatus)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SedBatchStatus(varSedBatchStatus)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "status")
 		o.AdditionalProperties = additionalProperties
 	}

@@ -73,7 +73,7 @@ func (o *IdentityAttributesChangedChangesInner) SetAttribute(v string) {
 
 // GetOldValue returns the OldValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentityAttributesChangedChangesInner) GetOldValue() IdentityAttributesChangedChangesInnerOldValue {
-	if o == nil || isNil(o.OldValue.Get()) {
+	if o == nil || IsNil(o.OldValue.Get()) {
 		var ret IdentityAttributesChangedChangesInnerOldValue
 		return ret
 	}
@@ -115,7 +115,7 @@ func (o *IdentityAttributesChangedChangesInner) UnsetOldValue() {
 
 // GetNewValue returns the NewValue field value if set, zero value otherwise.
 func (o *IdentityAttributesChangedChangesInner) GetNewValue() IdentityAttributesChangedChangesInnerNewValue {
-	if o == nil || isNil(o.NewValue) {
+	if o == nil || IsNil(o.NewValue) {
 		var ret IdentityAttributesChangedChangesInnerNewValue
 		return ret
 	}
@@ -125,7 +125,7 @@ func (o *IdentityAttributesChangedChangesInner) GetNewValue() IdentityAttributes
 // GetNewValueOk returns a tuple with the NewValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityAttributesChangedChangesInner) GetNewValueOk() (*IdentityAttributesChangedChangesInnerNewValue, bool) {
-	if o == nil || isNil(o.NewValue) {
+	if o == nil || IsNil(o.NewValue) {
 		return nil, false
 	}
 	return o.NewValue, true
@@ -133,7 +133,7 @@ func (o *IdentityAttributesChangedChangesInner) GetNewValueOk() (*IdentityAttrib
 
 // HasNewValue returns a boolean if a field has been set.
 func (o *IdentityAttributesChangedChangesInner) HasNewValue() bool {
-	if o != nil && !isNil(o.NewValue) {
+	if o != nil && !IsNil(o.NewValue) {
 		return true
 	}
 
@@ -159,7 +159,7 @@ func (o IdentityAttributesChangedChangesInner) ToMap() (map[string]interface{}, 
 	if o.OldValue.IsSet() {
 		toSerialize["oldValue"] = o.OldValue.Get()
 	}
-	if !isNil(o.NewValue) {
+	if !IsNil(o.NewValue) {
 		toSerialize["newValue"] = o.NewValue
 	}
 
@@ -170,8 +170,8 @@ func (o IdentityAttributesChangedChangesInner) ToMap() (map[string]interface{}, 
 	return toSerialize, nil
 }
 
-func (o *IdentityAttributesChangedChangesInner) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *IdentityAttributesChangedChangesInner) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -180,7 +180,7 @@ func (o *IdentityAttributesChangedChangesInner) UnmarshalJSON(bytes []byte) (err
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -194,13 +194,17 @@ func (o *IdentityAttributesChangedChangesInner) UnmarshalJSON(bytes []byte) (err
 
 	varIdentityAttributesChangedChangesInner := _IdentityAttributesChangedChangesInner{}
 
-	if err = json.Unmarshal(bytes, &varIdentityAttributesChangedChangesInner); err == nil {
+	err = json.Unmarshal(data, &varIdentityAttributesChangedChangesInner)
+
+	if err != nil {
+		return err
+	}
+
 	*o = IdentityAttributesChangedChangesInner(varIdentityAttributesChangedChangesInner)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "attribute")
 		delete(additionalProperties, "oldValue")
 		delete(additionalProperties, "newValue")

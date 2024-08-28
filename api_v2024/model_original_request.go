@@ -50,7 +50,7 @@ func NewOriginalRequestWithDefaults() *OriginalRequest {
 
 // GetAccountId returns the AccountId field value if set, zero value otherwise.
 func (o *OriginalRequest) GetAccountId() string {
-	if o == nil || isNil(o.AccountId) {
+	if o == nil || IsNil(o.AccountId) {
 		var ret string
 		return ret
 	}
@@ -60,7 +60,7 @@ func (o *OriginalRequest) GetAccountId() string {
 // GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OriginalRequest) GetAccountIdOk() (*string, bool) {
-	if o == nil || isNil(o.AccountId) {
+	if o == nil || IsNil(o.AccountId) {
 		return nil, false
 	}
 	return o.AccountId, true
@@ -68,7 +68,7 @@ func (o *OriginalRequest) GetAccountIdOk() (*string, bool) {
 
 // HasAccountId returns a boolean if a field has been set.
 func (o *OriginalRequest) HasAccountId() bool {
-	if o != nil && !isNil(o.AccountId) {
+	if o != nil && !IsNil(o.AccountId) {
 		return true
 	}
 
@@ -82,7 +82,7 @@ func (o *OriginalRequest) SetAccountId(v string) {
 
 // GetAttributeRequests returns the AttributeRequests field value if set, zero value otherwise.
 func (o *OriginalRequest) GetAttributeRequests() []AttributeRequest {
-	if o == nil || isNil(o.AttributeRequests) {
+	if o == nil || IsNil(o.AttributeRequests) {
 		var ret []AttributeRequest
 		return ret
 	}
@@ -92,7 +92,7 @@ func (o *OriginalRequest) GetAttributeRequests() []AttributeRequest {
 // GetAttributeRequestsOk returns a tuple with the AttributeRequests field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OriginalRequest) GetAttributeRequestsOk() ([]AttributeRequest, bool) {
-	if o == nil || isNil(o.AttributeRequests) {
+	if o == nil || IsNil(o.AttributeRequests) {
 		return nil, false
 	}
 	return o.AttributeRequests, true
@@ -100,7 +100,7 @@ func (o *OriginalRequest) GetAttributeRequestsOk() ([]AttributeRequest, bool) {
 
 // HasAttributeRequests returns a boolean if a field has been set.
 func (o *OriginalRequest) HasAttributeRequests() bool {
-	if o != nil && !isNil(o.AttributeRequests) {
+	if o != nil && !IsNil(o.AttributeRequests) {
 		return true
 	}
 
@@ -114,7 +114,7 @@ func (o *OriginalRequest) SetAttributeRequests(v []AttributeRequest) {
 
 // GetOp returns the Op field value if set, zero value otherwise.
 func (o *OriginalRequest) GetOp() string {
-	if o == nil || isNil(o.Op) {
+	if o == nil || IsNil(o.Op) {
 		var ret string
 		return ret
 	}
@@ -124,7 +124,7 @@ func (o *OriginalRequest) GetOp() string {
 // GetOpOk returns a tuple with the Op field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OriginalRequest) GetOpOk() (*string, bool) {
-	if o == nil || isNil(o.Op) {
+	if o == nil || IsNil(o.Op) {
 		return nil, false
 	}
 	return o.Op, true
@@ -132,7 +132,7 @@ func (o *OriginalRequest) GetOpOk() (*string, bool) {
 
 // HasOp returns a boolean if a field has been set.
 func (o *OriginalRequest) HasOp() bool {
-	if o != nil && !isNil(o.Op) {
+	if o != nil && !IsNil(o.Op) {
 		return true
 	}
 
@@ -146,7 +146,7 @@ func (o *OriginalRequest) SetOp(v string) {
 
 // GetSource returns the Source field value if set, zero value otherwise.
 func (o *OriginalRequest) GetSource() AccountSource {
-	if o == nil || isNil(o.Source) {
+	if o == nil || IsNil(o.Source) {
 		var ret AccountSource
 		return ret
 	}
@@ -156,7 +156,7 @@ func (o *OriginalRequest) GetSource() AccountSource {
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OriginalRequest) GetSourceOk() (*AccountSource, bool) {
-	if o == nil || isNil(o.Source) {
+	if o == nil || IsNil(o.Source) {
 		return nil, false
 	}
 	return o.Source, true
@@ -164,7 +164,7 @@ func (o *OriginalRequest) GetSourceOk() (*AccountSource, bool) {
 
 // HasSource returns a boolean if a field has been set.
 func (o *OriginalRequest) HasSource() bool {
-	if o != nil && !isNil(o.Source) {
+	if o != nil && !IsNil(o.Source) {
 		return true
 	}
 
@@ -186,16 +186,16 @@ func (o OriginalRequest) MarshalJSON() ([]byte, error) {
 
 func (o OriginalRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AccountId) {
+	if !IsNil(o.AccountId) {
 		toSerialize["accountId"] = o.AccountId
 	}
-	if !isNil(o.AttributeRequests) {
+	if !IsNil(o.AttributeRequests) {
 		toSerialize["attributeRequests"] = o.AttributeRequests
 	}
-	if !isNil(o.Op) {
+	if !IsNil(o.Op) {
 		toSerialize["op"] = o.Op
 	}
-	if !isNil(o.Source) {
+	if !IsNil(o.Source) {
 		toSerialize["source"] = o.Source
 	}
 
@@ -206,16 +206,20 @@ func (o OriginalRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *OriginalRequest) UnmarshalJSON(bytes []byte) (err error) {
+func (o *OriginalRequest) UnmarshalJSON(data []byte) (err error) {
 	varOriginalRequest := _OriginalRequest{}
 
-	if err = json.Unmarshal(bytes, &varOriginalRequest); err == nil {
+	err = json.Unmarshal(data, &varOriginalRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = OriginalRequest(varOriginalRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "accountId")
 		delete(additionalProperties, "attributeRequests")
 		delete(additionalProperties, "op")

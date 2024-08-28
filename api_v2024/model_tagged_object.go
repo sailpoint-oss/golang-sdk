@@ -46,7 +46,7 @@ func NewTaggedObjectWithDefaults() *TaggedObject {
 
 // GetObjectRef returns the ObjectRef field value if set, zero value otherwise.
 func (o *TaggedObject) GetObjectRef() TaggedObjectDto {
-	if o == nil || isNil(o.ObjectRef) {
+	if o == nil || IsNil(o.ObjectRef) {
 		var ret TaggedObjectDto
 		return ret
 	}
@@ -56,7 +56,7 @@ func (o *TaggedObject) GetObjectRef() TaggedObjectDto {
 // GetObjectRefOk returns a tuple with the ObjectRef field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TaggedObject) GetObjectRefOk() (*TaggedObjectDto, bool) {
-	if o == nil || isNil(o.ObjectRef) {
+	if o == nil || IsNil(o.ObjectRef) {
 		return nil, false
 	}
 	return o.ObjectRef, true
@@ -64,7 +64,7 @@ func (o *TaggedObject) GetObjectRefOk() (*TaggedObjectDto, bool) {
 
 // HasObjectRef returns a boolean if a field has been set.
 func (o *TaggedObject) HasObjectRef() bool {
-	if o != nil && !isNil(o.ObjectRef) {
+	if o != nil && !IsNil(o.ObjectRef) {
 		return true
 	}
 
@@ -78,7 +78,7 @@ func (o *TaggedObject) SetObjectRef(v TaggedObjectDto) {
 
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *TaggedObject) GetTags() []string {
-	if o == nil || isNil(o.Tags) {
+	if o == nil || IsNil(o.Tags) {
 		var ret []string
 		return ret
 	}
@@ -88,7 +88,7 @@ func (o *TaggedObject) GetTags() []string {
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TaggedObject) GetTagsOk() ([]string, bool) {
-	if o == nil || isNil(o.Tags) {
+	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
 	return o.Tags, true
@@ -96,7 +96,7 @@ func (o *TaggedObject) GetTagsOk() ([]string, bool) {
 
 // HasTags returns a boolean if a field has been set.
 func (o *TaggedObject) HasTags() bool {
-	if o != nil && !isNil(o.Tags) {
+	if o != nil && !IsNil(o.Tags) {
 		return true
 	}
 
@@ -118,10 +118,10 @@ func (o TaggedObject) MarshalJSON() ([]byte, error) {
 
 func (o TaggedObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ObjectRef) {
+	if !IsNil(o.ObjectRef) {
 		toSerialize["objectRef"] = o.ObjectRef
 	}
-	if !isNil(o.Tags) {
+	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
 	}
 
@@ -132,16 +132,20 @@ func (o TaggedObject) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *TaggedObject) UnmarshalJSON(bytes []byte) (err error) {
+func (o *TaggedObject) UnmarshalJSON(data []byte) (err error) {
 	varTaggedObject := _TaggedObject{}
 
-	if err = json.Unmarshal(bytes, &varTaggedObject); err == nil {
+	err = json.Unmarshal(data, &varTaggedObject)
+
+	if err != nil {
+		return err
+	}
+
 	*o = TaggedObject(varTaggedObject)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "objectRef")
 		delete(additionalProperties, "tags")
 		o.AdditionalProperties = additionalProperties

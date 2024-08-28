@@ -95,7 +95,7 @@ func NewManagedClientWithDefaults() *ManagedClient {
 
 // GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedClient) GetId() string {
-	if o == nil || isNil(o.Id.Get()) {
+	if o == nil || IsNil(o.Id.Get()) {
 		var ret string
 		return ret
 	}
@@ -137,7 +137,7 @@ func (o *ManagedClient) UnsetId() {
 
 // GetAlertKey returns the AlertKey field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedClient) GetAlertKey() string {
-	if o == nil || isNil(o.AlertKey.Get()) {
+	if o == nil || IsNil(o.AlertKey.Get()) {
 		var ret string
 		return ret
 	}
@@ -179,7 +179,7 @@ func (o *ManagedClient) UnsetAlertKey() {
 
 // GetApiGatewayBaseUrl returns the ApiGatewayBaseUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedClient) GetApiGatewayBaseUrl() string {
-	if o == nil || isNil(o.ApiGatewayBaseUrl.Get()) {
+	if o == nil || IsNil(o.ApiGatewayBaseUrl.Get()) {
 		var ret string
 		return ret
 	}
@@ -221,7 +221,7 @@ func (o *ManagedClient) UnsetApiGatewayBaseUrl() {
 
 // GetCookbook returns the Cookbook field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedClient) GetCookbook() string {
-	if o == nil || isNil(o.Cookbook.Get()) {
+	if o == nil || IsNil(o.Cookbook.Get()) {
 		var ret string
 		return ret
 	}
@@ -263,7 +263,7 @@ func (o *ManagedClient) UnsetCookbook() {
 
 // GetCcId returns the CcId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedClient) GetCcId() int64 {
-	if o == nil || isNil(o.CcId.Get()) {
+	if o == nil || IsNil(o.CcId.Get()) {
 		var ret int64
 		return ret
 	}
@@ -377,7 +377,7 @@ func (o *ManagedClient) SetDescription(v string) {
 
 // GetIpAddress returns the IpAddress field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedClient) GetIpAddress() string {
-	if o == nil || isNil(o.IpAddress.Get()) {
+	if o == nil || IsNil(o.IpAddress.Get()) {
 		var ret string
 		return ret
 	}
@@ -419,7 +419,7 @@ func (o *ManagedClient) UnsetIpAddress() {
 
 // GetLastSeen returns the LastSeen field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedClient) GetLastSeen() time.Time {
-	if o == nil || isNil(o.LastSeen.Get()) {
+	if o == nil || IsNil(o.LastSeen.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -461,7 +461,7 @@ func (o *ManagedClient) UnsetLastSeen() {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedClient) GetName() string {
-	if o == nil || isNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -503,7 +503,7 @@ func (o *ManagedClient) UnsetName() {
 
 // GetSinceLastSeen returns the SinceLastSeen field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedClient) GetSinceLastSeen() string {
-	if o == nil || isNil(o.SinceLastSeen.Get()) {
+	if o == nil || IsNil(o.SinceLastSeen.Get()) {
 		var ret string
 		return ret
 	}
@@ -545,7 +545,7 @@ func (o *ManagedClient) UnsetSinceLastSeen() {
 
 // GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedClient) GetStatus() string {
-	if o == nil || isNil(o.Status.Get()) {
+	if o == nil || IsNil(o.Status.Get()) {
 		var ret string
 		return ret
 	}
@@ -611,7 +611,7 @@ func (o *ManagedClient) SetType(v string) {
 
 // GetClusterType returns the ClusterType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedClient) GetClusterType() string {
-	if o == nil || isNil(o.ClusterType.Get()) {
+	if o == nil || IsNil(o.ClusterType.Get()) {
 		var ret string
 		return ret
 	}
@@ -653,7 +653,7 @@ func (o *ManagedClient) UnsetClusterType() {
 
 // GetVaDownloadUrl returns the VaDownloadUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedClient) GetVaDownloadUrl() string {
-	if o == nil || isNil(o.VaDownloadUrl.Get()) {
+	if o == nil || IsNil(o.VaDownloadUrl.Get()) {
 		var ret string
 		return ret
 	}
@@ -695,7 +695,7 @@ func (o *ManagedClient) UnsetVaDownloadUrl() {
 
 // GetVaVersion returns the VaVersion field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedClient) GetVaVersion() string {
-	if o == nil || isNil(o.VaVersion.Get()) {
+	if o == nil || IsNil(o.VaVersion.Get()) {
 		var ret string
 		return ret
 	}
@@ -737,7 +737,7 @@ func (o *ManagedClient) UnsetVaVersion() {
 
 // GetSecret returns the Secret field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedClient) GetSecret() string {
-	if o == nil || isNil(o.Secret.Get()) {
+	if o == nil || IsNil(o.Secret.Get()) {
 		var ret string
 		return ret
 	}
@@ -779,7 +779,7 @@ func (o *ManagedClient) UnsetSecret() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedClient) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt.Get()) {
+	if o == nil || IsNil(o.CreatedAt.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -821,7 +821,7 @@ func (o *ManagedClient) UnsetCreatedAt() {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedClient) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt.Get()) {
+	if o == nil || IsNil(o.UpdatedAt.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -863,7 +863,7 @@ func (o *ManagedClient) UnsetUpdatedAt() {
 
 // GetProvisionStatus returns the ProvisionStatus field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedClient) GetProvisionStatus() string {
-	if o == nil || isNil(o.ProvisionStatus.Get()) {
+	if o == nil || IsNil(o.ProvisionStatus.Get()) {
 		var ret string
 		return ret
 	}
@@ -976,8 +976,8 @@ func (o ManagedClient) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ManagedClient) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *ManagedClient) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -989,7 +989,7 @@ func (o *ManagedClient) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -1003,13 +1003,17 @@ func (o *ManagedClient) UnmarshalJSON(bytes []byte) (err error) {
 
 	varManagedClient := _ManagedClient{}
 
-	if err = json.Unmarshal(bytes, &varManagedClient); err == nil {
+	err = json.Unmarshal(data, &varManagedClient)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ManagedClient(varManagedClient)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "alertKey")
 		delete(additionalProperties, "apiGatewayBaseUrl")

@@ -49,7 +49,7 @@ func NewCommentDtoAuthorWithDefaults() *CommentDtoAuthor {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *CommentDtoAuthor) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *CommentDtoAuthor) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CommentDtoAuthor) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -67,7 +67,7 @@ func (o *CommentDtoAuthor) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *CommentDtoAuthor) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *CommentDtoAuthor) SetType(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *CommentDtoAuthor) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *CommentDtoAuthor) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CommentDtoAuthor) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -99,7 +99,7 @@ func (o *CommentDtoAuthor) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *CommentDtoAuthor) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *CommentDtoAuthor) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *CommentDtoAuthor) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *CommentDtoAuthor) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CommentDtoAuthor) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -131,7 +131,7 @@ func (o *CommentDtoAuthor) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *CommentDtoAuthor) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o CommentDtoAuthor) MarshalJSON() ([]byte, error) {
 
 func (o CommentDtoAuthor) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 
@@ -170,16 +170,20 @@ func (o CommentDtoAuthor) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CommentDtoAuthor) UnmarshalJSON(bytes []byte) (err error) {
+func (o *CommentDtoAuthor) UnmarshalJSON(data []byte) (err error) {
 	varCommentDtoAuthor := _CommentDtoAuthor{}
 
-	if err = json.Unmarshal(bytes, &varCommentDtoAuthor); err == nil {
+	err = json.Unmarshal(data, &varCommentDtoAuthor)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CommentDtoAuthor(varCommentDtoAuthor)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")

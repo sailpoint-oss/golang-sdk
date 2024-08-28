@@ -131,28 +131,28 @@ func (a *IdentityHistoryAPIService) CompareIdentitySnapshotsExecute(r ApiCompare
 	}
 
 	if r.snapshot1 != nil {
-		parameterAddToQuery(localVarQueryParams, "snapshot1", r.snapshot1, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "snapshot1", r.snapshot1, "", "")
 	}
 	if r.snapshot2 != nil {
-		parameterAddToQuery(localVarQueryParams, "snapshot2", r.snapshot2, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "snapshot2", r.snapshot2, "", "")
 	}
 	if r.accessItemTypes != nil {
-		parameterAddToQuery(localVarQueryParams, "accessItemTypes", r.accessItemTypes, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "accessItemTypes", r.accessItemTypes, "", "csv")
 	}
 	if r.limit != nil {
-		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
 	} else {
 		var defaultValue int32 = 250
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
-		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
 	} else {
 		var defaultValue int32 = 0
 		r.offset = &defaultValue
 	}
 	if r.count != nil {
-		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "", "")
 	} else {
 		var defaultValue bool = false
 		r.count = &defaultValue
@@ -174,7 +174,7 @@ func (a *IdentityHistoryAPIService) CompareIdentitySnapshotsExecute(r ApiCompare
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-		parameterAddToQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -378,28 +378,28 @@ func (a *IdentityHistoryAPIService) CompareIdentitySnapshotsAccessTypeExecute(r 
 	}
 
 	if r.accessAssociated != nil {
-		parameterAddToQuery(localVarQueryParams, "access-associated", r.accessAssociated, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "access-associated", r.accessAssociated, "", "")
 	}
 	if r.snapshot1 != nil {
-		parameterAddToQuery(localVarQueryParams, "snapshot1", r.snapshot1, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "snapshot1", r.snapshot1, "", "")
 	}
 	if r.snapshot2 != nil {
-		parameterAddToQuery(localVarQueryParams, "snapshot2", r.snapshot2, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "snapshot2", r.snapshot2, "", "")
 	}
 	if r.limit != nil {
-		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
 	} else {
 		var defaultValue int32 = 250
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
-		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
 	} else {
 		var defaultValue int32 = 0
 		r.offset = &defaultValue
 	}
 	if r.count != nil {
-		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "", "")
 	} else {
 		var defaultValue bool = false
 		r.count = &defaultValue
@@ -421,7 +421,7 @@ func (a *IdentityHistoryAPIService) CompareIdentitySnapshotsAccessTypeExecute(r 
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-		parameterAddToQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -595,7 +595,7 @@ func (a *IdentityHistoryAPIService) GetHistoricalIdentityExecute(r ApiGetHistori
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-		parameterAddToQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -795,28 +795,28 @@ func (a *IdentityHistoryAPIService) GetHistoricalIdentityEventsExecute(r ApiGetH
 	}
 
 	if r.from != nil {
-		parameterAddToQuery(localVarQueryParams, "from", r.from, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "", "")
 	}
 	if r.eventTypes != nil {
-		parameterAddToQuery(localVarQueryParams, "eventTypes", r.eventTypes, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "eventTypes", r.eventTypes, "", "csv")
 	}
 	if r.accessItemTypes != nil {
-		parameterAddToQuery(localVarQueryParams, "accessItemTypes", r.accessItemTypes, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "accessItemTypes", r.accessItemTypes, "", "csv")
 	}
 	if r.limit != nil {
-		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
 	} else {
 		var defaultValue int32 = 250
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
-		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
 	} else {
 		var defaultValue int32 = 0
 		r.offset = &defaultValue
 	}
 	if r.count != nil {
-		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "", "")
 	} else {
 		var defaultValue bool = false
 		r.count = &defaultValue
@@ -838,7 +838,7 @@ func (a *IdentityHistoryAPIService) GetHistoricalIdentityEventsExecute(r ApiGetH
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-		parameterAddToQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1027,7 +1027,7 @@ func (a *IdentityHistoryAPIService) GetIdentitySnapshotExecute(r ApiGetIdentityS
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-		parameterAddToQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1227,28 +1227,28 @@ func (a *IdentityHistoryAPIService) GetIdentitySnapshotSummaryExecute(r ApiGetId
 	}
 
 	if r.before != nil {
-		parameterAddToQuery(localVarQueryParams, "before", r.before, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "before", r.before, "", "")
 	}
 	if r.interval != nil {
-		parameterAddToQuery(localVarQueryParams, "interval", r.interval, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "interval", r.interval, "", "")
 	}
 	if r.timeZone != nil {
-		parameterAddToQuery(localVarQueryParams, "time-zone", r.timeZone, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "time-zone", r.timeZone, "", "")
 	}
 	if r.limit != nil {
-		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
 	} else {
 		var defaultValue int32 = 250
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
-		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
 	} else {
 		var defaultValue int32 = 0
 		r.offset = &defaultValue
 	}
 	if r.count != nil {
-		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "", "")
 	} else {
 		var defaultValue bool = false
 		r.count = &defaultValue
@@ -1270,7 +1270,7 @@ func (a *IdentityHistoryAPIService) GetIdentitySnapshotSummaryExecute(r ApiGetId
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-		parameterAddToQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1444,7 +1444,7 @@ func (a *IdentityHistoryAPIService) GetIdentityStartDateExecute(r ApiGetIdentity
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-		parameterAddToQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1633,22 +1633,22 @@ func (a *IdentityHistoryAPIService) ListHistoricalIdentitiesExecute(r ApiListHis
 	}
 
 	if r.startsWithQuery != nil {
-		parameterAddToQuery(localVarQueryParams, "starts-with-query", r.startsWithQuery, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "starts-with-query", r.startsWithQuery, "", "")
 	}
 	if r.isDeleted != nil {
-		parameterAddToQuery(localVarQueryParams, "is-deleted", r.isDeleted, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "is-deleted", r.isDeleted, "", "")
 	}
 	if r.isActive != nil {
-		parameterAddToQuery(localVarQueryParams, "is-active", r.isActive, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "is-active", r.isActive, "", "")
 	}
 	if r.limit != nil {
-		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
 	} else {
 		var defaultValue int32 = 250
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
-		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
 	} else {
 		var defaultValue int32 = 0
 		r.offset = &defaultValue
@@ -1670,7 +1670,7 @@ func (a *IdentityHistoryAPIService) ListHistoricalIdentitiesExecute(r ApiListHis
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-		parameterAddToQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1835,7 +1835,7 @@ func (a *IdentityHistoryAPIService) ListIdentityAccessItemsExecute(r ApiListIden
 	}
 
 	if r.type_ != nil {
-		parameterAddToQuery(localVarQueryParams, "type", r.type_, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1854,7 +1854,7 @@ func (a *IdentityHistoryAPIService) ListIdentityAccessItemsExecute(r ApiListIden
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-		parameterAddToQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2023,7 +2023,7 @@ func (a *IdentityHistoryAPIService) ListIdentitySnapshotAccessItemsExecute(r Api
 	}
 
 	if r.type_ != nil {
-		parameterAddToQuery(localVarQueryParams, "type", r.type_, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2042,7 +2042,7 @@ func (a *IdentityHistoryAPIService) ListIdentitySnapshotAccessItemsExecute(r Api
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-		parameterAddToQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2235,25 +2235,25 @@ func (a *IdentityHistoryAPIService) ListIdentitySnapshotsExecute(r ApiListIdenti
 	}
 
 	if r.start != nil {
-		parameterAddToQuery(localVarQueryParams, "start", r.start, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "", "")
 	}
 	if r.interval != nil {
-		parameterAddToQuery(localVarQueryParams, "interval", r.interval, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "interval", r.interval, "", "")
 	}
 	if r.limit != nil {
-		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
 	} else {
 		var defaultValue int32 = 250
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
-		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
 	} else {
 		var defaultValue int32 = 0
 		r.offset = &defaultValue
 	}
 	if r.count != nil {
-		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "", "")
 	} else {
 		var defaultValue bool = false
 		r.count = &defaultValue
@@ -2275,7 +2275,7 @@ func (a *IdentityHistoryAPIService) ListIdentitySnapshotsExecute(r ApiListIdenti
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-		parameterAddToQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "")
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-SailPoint-Experimental", r.xSailPointExperimental, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

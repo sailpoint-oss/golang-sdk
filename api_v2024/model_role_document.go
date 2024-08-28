@@ -166,7 +166,7 @@ func (o *RoleDocument) SetType(v DocumentType) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *RoleDocument) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -176,7 +176,7 @@ func (o *RoleDocument) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleDocument) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -184,7 +184,7 @@ func (o *RoleDocument) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *RoleDocument) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -198,7 +198,7 @@ func (o *RoleDocument) SetDescription(v string) {
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleDocument) GetCreated() time.Time {
-	if o == nil || isNil(o.Created.Get()) {
+	if o == nil || IsNil(o.Created.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -240,7 +240,7 @@ func (o *RoleDocument) UnsetCreated() {
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleDocument) GetModified() time.Time {
-	if o == nil || isNil(o.Modified.Get()) {
+	if o == nil || IsNil(o.Modified.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -282,7 +282,7 @@ func (o *RoleDocument) UnsetModified() {
 
 // GetSynced returns the Synced field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleDocument) GetSynced() time.Time {
-	if o == nil || isNil(o.Synced.Get()) {
+	if o == nil || IsNil(o.Synced.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -324,7 +324,7 @@ func (o *RoleDocument) UnsetSynced() {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *RoleDocument) GetEnabled() bool {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -334,7 +334,7 @@ func (o *RoleDocument) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleDocument) GetEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -342,7 +342,7 @@ func (o *RoleDocument) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *RoleDocument) HasEnabled() bool {
-	if o != nil && !isNil(o.Enabled) {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -356,7 +356,7 @@ func (o *RoleDocument) SetEnabled(v bool) {
 
 // GetRequestable returns the Requestable field value if set, zero value otherwise.
 func (o *RoleDocument) GetRequestable() bool {
-	if o == nil || isNil(o.Requestable) {
+	if o == nil || IsNil(o.Requestable) {
 		var ret bool
 		return ret
 	}
@@ -366,7 +366,7 @@ func (o *RoleDocument) GetRequestable() bool {
 // GetRequestableOk returns a tuple with the Requestable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleDocument) GetRequestableOk() (*bool, bool) {
-	if o == nil || isNil(o.Requestable) {
+	if o == nil || IsNil(o.Requestable) {
 		return nil, false
 	}
 	return o.Requestable, true
@@ -374,7 +374,7 @@ func (o *RoleDocument) GetRequestableOk() (*bool, bool) {
 
 // HasRequestable returns a boolean if a field has been set.
 func (o *RoleDocument) HasRequestable() bool {
-	if o != nil && !isNil(o.Requestable) {
+	if o != nil && !IsNil(o.Requestable) {
 		return true
 	}
 
@@ -388,7 +388,7 @@ func (o *RoleDocument) SetRequestable(v bool) {
 
 // GetRequestCommentsRequired returns the RequestCommentsRequired field value if set, zero value otherwise.
 func (o *RoleDocument) GetRequestCommentsRequired() bool {
-	if o == nil || isNil(o.RequestCommentsRequired) {
+	if o == nil || IsNil(o.RequestCommentsRequired) {
 		var ret bool
 		return ret
 	}
@@ -398,7 +398,7 @@ func (o *RoleDocument) GetRequestCommentsRequired() bool {
 // GetRequestCommentsRequiredOk returns a tuple with the RequestCommentsRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleDocument) GetRequestCommentsRequiredOk() (*bool, bool) {
-	if o == nil || isNil(o.RequestCommentsRequired) {
+	if o == nil || IsNil(o.RequestCommentsRequired) {
 		return nil, false
 	}
 	return o.RequestCommentsRequired, true
@@ -406,7 +406,7 @@ func (o *RoleDocument) GetRequestCommentsRequiredOk() (*bool, bool) {
 
 // HasRequestCommentsRequired returns a boolean if a field has been set.
 func (o *RoleDocument) HasRequestCommentsRequired() bool {
-	if o != nil && !isNil(o.RequestCommentsRequired) {
+	if o != nil && !IsNil(o.RequestCommentsRequired) {
 		return true
 	}
 
@@ -420,7 +420,7 @@ func (o *RoleDocument) SetRequestCommentsRequired(v bool) {
 
 // GetOwner returns the Owner field value if set, zero value otherwise.
 func (o *RoleDocument) GetOwner() BaseAccessAllOfOwner {
-	if o == nil || isNil(o.Owner) {
+	if o == nil || IsNil(o.Owner) {
 		var ret BaseAccessAllOfOwner
 		return ret
 	}
@@ -430,7 +430,7 @@ func (o *RoleDocument) GetOwner() BaseAccessAllOfOwner {
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleDocument) GetOwnerOk() (*BaseAccessAllOfOwner, bool) {
-	if o == nil || isNil(o.Owner) {
+	if o == nil || IsNil(o.Owner) {
 		return nil, false
 	}
 	return o.Owner, true
@@ -438,7 +438,7 @@ func (o *RoleDocument) GetOwnerOk() (*BaseAccessAllOfOwner, bool) {
 
 // HasOwner returns a boolean if a field has been set.
 func (o *RoleDocument) HasOwner() bool {
-	if o != nil && !isNil(o.Owner) {
+	if o != nil && !IsNil(o.Owner) {
 		return true
 	}
 
@@ -452,7 +452,7 @@ func (o *RoleDocument) SetOwner(v BaseAccessAllOfOwner) {
 
 // GetAccessProfiles returns the AccessProfiles field value if set, zero value otherwise.
 func (o *RoleDocument) GetAccessProfiles() []BaseAccessProfile {
-	if o == nil || isNil(o.AccessProfiles) {
+	if o == nil || IsNil(o.AccessProfiles) {
 		var ret []BaseAccessProfile
 		return ret
 	}
@@ -462,7 +462,7 @@ func (o *RoleDocument) GetAccessProfiles() []BaseAccessProfile {
 // GetAccessProfilesOk returns a tuple with the AccessProfiles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleDocument) GetAccessProfilesOk() ([]BaseAccessProfile, bool) {
-	if o == nil || isNil(o.AccessProfiles) {
+	if o == nil || IsNil(o.AccessProfiles) {
 		return nil, false
 	}
 	return o.AccessProfiles, true
@@ -470,7 +470,7 @@ func (o *RoleDocument) GetAccessProfilesOk() ([]BaseAccessProfile, bool) {
 
 // HasAccessProfiles returns a boolean if a field has been set.
 func (o *RoleDocument) HasAccessProfiles() bool {
-	if o != nil && !isNil(o.AccessProfiles) {
+	if o != nil && !IsNil(o.AccessProfiles) {
 		return true
 	}
 
@@ -484,7 +484,7 @@ func (o *RoleDocument) SetAccessProfiles(v []BaseAccessProfile) {
 
 // GetAccessProfileCount returns the AccessProfileCount field value if set, zero value otherwise.
 func (o *RoleDocument) GetAccessProfileCount() int32 {
-	if o == nil || isNil(o.AccessProfileCount) {
+	if o == nil || IsNil(o.AccessProfileCount) {
 		var ret int32
 		return ret
 	}
@@ -494,7 +494,7 @@ func (o *RoleDocument) GetAccessProfileCount() int32 {
 // GetAccessProfileCountOk returns a tuple with the AccessProfileCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleDocument) GetAccessProfileCountOk() (*int32, bool) {
-	if o == nil || isNil(o.AccessProfileCount) {
+	if o == nil || IsNil(o.AccessProfileCount) {
 		return nil, false
 	}
 	return o.AccessProfileCount, true
@@ -502,7 +502,7 @@ func (o *RoleDocument) GetAccessProfileCountOk() (*int32, bool) {
 
 // HasAccessProfileCount returns a boolean if a field has been set.
 func (o *RoleDocument) HasAccessProfileCount() bool {
-	if o != nil && !isNil(o.AccessProfileCount) {
+	if o != nil && !IsNil(o.AccessProfileCount) {
 		return true
 	}
 
@@ -516,7 +516,7 @@ func (o *RoleDocument) SetAccessProfileCount(v int32) {
 
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *RoleDocument) GetTags() []string {
-	if o == nil || isNil(o.Tags) {
+	if o == nil || IsNil(o.Tags) {
 		var ret []string
 		return ret
 	}
@@ -526,7 +526,7 @@ func (o *RoleDocument) GetTags() []string {
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleDocument) GetTagsOk() ([]string, bool) {
-	if o == nil || isNil(o.Tags) {
+	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
 	return o.Tags, true
@@ -534,7 +534,7 @@ func (o *RoleDocument) GetTagsOk() ([]string, bool) {
 
 // HasTags returns a boolean if a field has been set.
 func (o *RoleDocument) HasTags() bool {
-	if o != nil && !isNil(o.Tags) {
+	if o != nil && !IsNil(o.Tags) {
 		return true
 	}
 
@@ -548,7 +548,7 @@ func (o *RoleDocument) SetTags(v []string) {
 
 // GetSegments returns the Segments field value if set, zero value otherwise.
 func (o *RoleDocument) GetSegments() []BaseSegment {
-	if o == nil || isNil(o.Segments) {
+	if o == nil || IsNil(o.Segments) {
 		var ret []BaseSegment
 		return ret
 	}
@@ -558,7 +558,7 @@ func (o *RoleDocument) GetSegments() []BaseSegment {
 // GetSegmentsOk returns a tuple with the Segments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleDocument) GetSegmentsOk() ([]BaseSegment, bool) {
-	if o == nil || isNil(o.Segments) {
+	if o == nil || IsNil(o.Segments) {
 		return nil, false
 	}
 	return o.Segments, true
@@ -566,7 +566,7 @@ func (o *RoleDocument) GetSegmentsOk() ([]BaseSegment, bool) {
 
 // HasSegments returns a boolean if a field has been set.
 func (o *RoleDocument) HasSegments() bool {
-	if o != nil && !isNil(o.Segments) {
+	if o != nil && !IsNil(o.Segments) {
 		return true
 	}
 
@@ -580,7 +580,7 @@ func (o *RoleDocument) SetSegments(v []BaseSegment) {
 
 // GetSegmentCount returns the SegmentCount field value if set, zero value otherwise.
 func (o *RoleDocument) GetSegmentCount() int32 {
-	if o == nil || isNil(o.SegmentCount) {
+	if o == nil || IsNil(o.SegmentCount) {
 		var ret int32
 		return ret
 	}
@@ -590,7 +590,7 @@ func (o *RoleDocument) GetSegmentCount() int32 {
 // GetSegmentCountOk returns a tuple with the SegmentCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleDocument) GetSegmentCountOk() (*int32, bool) {
-	if o == nil || isNil(o.SegmentCount) {
+	if o == nil || IsNil(o.SegmentCount) {
 		return nil, false
 	}
 	return o.SegmentCount, true
@@ -598,7 +598,7 @@ func (o *RoleDocument) GetSegmentCountOk() (*int32, bool) {
 
 // HasSegmentCount returns a boolean if a field has been set.
 func (o *RoleDocument) HasSegmentCount() bool {
-	if o != nil && !isNil(o.SegmentCount) {
+	if o != nil && !IsNil(o.SegmentCount) {
 		return true
 	}
 
@@ -612,7 +612,7 @@ func (o *RoleDocument) SetSegmentCount(v int32) {
 
 // GetEntitlements returns the Entitlements field value if set, zero value otherwise.
 func (o *RoleDocument) GetEntitlements() []BaseEntitlement {
-	if o == nil || isNil(o.Entitlements) {
+	if o == nil || IsNil(o.Entitlements) {
 		var ret []BaseEntitlement
 		return ret
 	}
@@ -622,7 +622,7 @@ func (o *RoleDocument) GetEntitlements() []BaseEntitlement {
 // GetEntitlementsOk returns a tuple with the Entitlements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleDocument) GetEntitlementsOk() ([]BaseEntitlement, bool) {
-	if o == nil || isNil(o.Entitlements) {
+	if o == nil || IsNil(o.Entitlements) {
 		return nil, false
 	}
 	return o.Entitlements, true
@@ -630,7 +630,7 @@ func (o *RoleDocument) GetEntitlementsOk() ([]BaseEntitlement, bool) {
 
 // HasEntitlements returns a boolean if a field has been set.
 func (o *RoleDocument) HasEntitlements() bool {
-	if o != nil && !isNil(o.Entitlements) {
+	if o != nil && !IsNil(o.Entitlements) {
 		return true
 	}
 
@@ -644,7 +644,7 @@ func (o *RoleDocument) SetEntitlements(v []BaseEntitlement) {
 
 // GetEntitlementCount returns the EntitlementCount field value if set, zero value otherwise.
 func (o *RoleDocument) GetEntitlementCount() int32 {
-	if o == nil || isNil(o.EntitlementCount) {
+	if o == nil || IsNil(o.EntitlementCount) {
 		var ret int32
 		return ret
 	}
@@ -654,7 +654,7 @@ func (o *RoleDocument) GetEntitlementCount() int32 {
 // GetEntitlementCountOk returns a tuple with the EntitlementCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleDocument) GetEntitlementCountOk() (*int32, bool) {
-	if o == nil || isNil(o.EntitlementCount) {
+	if o == nil || IsNil(o.EntitlementCount) {
 		return nil, false
 	}
 	return o.EntitlementCount, true
@@ -662,7 +662,7 @@ func (o *RoleDocument) GetEntitlementCountOk() (*int32, bool) {
 
 // HasEntitlementCount returns a boolean if a field has been set.
 func (o *RoleDocument) HasEntitlementCount() bool {
-	if o != nil && !isNil(o.EntitlementCount) {
+	if o != nil && !IsNil(o.EntitlementCount) {
 		return true
 	}
 
@@ -687,7 +687,7 @@ func (o RoleDocument) ToMap() (map[string]interface{}, error) {
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
 	toSerialize["_type"] = o.Type
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 	if o.Created.IsSet() {
@@ -699,37 +699,37 @@ func (o RoleDocument) ToMap() (map[string]interface{}, error) {
 	if o.Synced.IsSet() {
 		toSerialize["synced"] = o.Synced.Get()
 	}
-	if !isNil(o.Enabled) {
+	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if !isNil(o.Requestable) {
+	if !IsNil(o.Requestable) {
 		toSerialize["requestable"] = o.Requestable
 	}
-	if !isNil(o.RequestCommentsRequired) {
+	if !IsNil(o.RequestCommentsRequired) {
 		toSerialize["requestCommentsRequired"] = o.RequestCommentsRequired
 	}
-	if !isNil(o.Owner) {
+	if !IsNil(o.Owner) {
 		toSerialize["owner"] = o.Owner
 	}
-	if !isNil(o.AccessProfiles) {
+	if !IsNil(o.AccessProfiles) {
 		toSerialize["accessProfiles"] = o.AccessProfiles
 	}
-	if !isNil(o.AccessProfileCount) {
+	if !IsNil(o.AccessProfileCount) {
 		toSerialize["accessProfileCount"] = o.AccessProfileCount
 	}
-	if !isNil(o.Tags) {
+	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
 	}
-	if !isNil(o.Segments) {
+	if !IsNil(o.Segments) {
 		toSerialize["segments"] = o.Segments
 	}
-	if !isNil(o.SegmentCount) {
+	if !IsNil(o.SegmentCount) {
 		toSerialize["segmentCount"] = o.SegmentCount
 	}
-	if !isNil(o.Entitlements) {
+	if !IsNil(o.Entitlements) {
 		toSerialize["entitlements"] = o.Entitlements
 	}
-	if !isNil(o.EntitlementCount) {
+	if !IsNil(o.EntitlementCount) {
 		toSerialize["entitlementCount"] = o.EntitlementCount
 	}
 
@@ -740,8 +740,8 @@ func (o RoleDocument) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *RoleDocument) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *RoleDocument) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -752,7 +752,7 @@ func (o *RoleDocument) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -766,13 +766,17 @@ func (o *RoleDocument) UnmarshalJSON(bytes []byte) (err error) {
 
 	varRoleDocument := _RoleDocument{}
 
-	if err = json.Unmarshal(bytes, &varRoleDocument); err == nil {
+	err = json.Unmarshal(data, &varRoleDocument)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RoleDocument(varRoleDocument)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "_type")

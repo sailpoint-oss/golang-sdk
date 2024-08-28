@@ -53,7 +53,7 @@ func NewFilterWithDefaults() *Filter {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *Filter) GetType() FilterType {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret FilterType
 		return ret
 	}
@@ -63,7 +63,7 @@ func (o *Filter) GetType() FilterType {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Filter) GetTypeOk() (*FilterType, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -71,7 +71,7 @@ func (o *Filter) GetTypeOk() (*FilterType, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *Filter) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o *Filter) SetType(v FilterType) {
 
 // GetRange returns the Range field value if set, zero value otherwise.
 func (o *Filter) GetRange() Range {
-	if o == nil || isNil(o.Range) {
+	if o == nil || IsNil(o.Range) {
 		var ret Range
 		return ret
 	}
@@ -95,7 +95,7 @@ func (o *Filter) GetRange() Range {
 // GetRangeOk returns a tuple with the Range field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Filter) GetRangeOk() (*Range, bool) {
-	if o == nil || isNil(o.Range) {
+	if o == nil || IsNil(o.Range) {
 		return nil, false
 	}
 	return o.Range, true
@@ -103,7 +103,7 @@ func (o *Filter) GetRangeOk() (*Range, bool) {
 
 // HasRange returns a boolean if a field has been set.
 func (o *Filter) HasRange() bool {
-	if o != nil && !isNil(o.Range) {
+	if o != nil && !IsNil(o.Range) {
 		return true
 	}
 
@@ -117,7 +117,7 @@ func (o *Filter) SetRange(v Range) {
 
 // GetTerms returns the Terms field value if set, zero value otherwise.
 func (o *Filter) GetTerms() []string {
-	if o == nil || isNil(o.Terms) {
+	if o == nil || IsNil(o.Terms) {
 		var ret []string
 		return ret
 	}
@@ -127,7 +127,7 @@ func (o *Filter) GetTerms() []string {
 // GetTermsOk returns a tuple with the Terms field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Filter) GetTermsOk() ([]string, bool) {
-	if o == nil || isNil(o.Terms) {
+	if o == nil || IsNil(o.Terms) {
 		return nil, false
 	}
 	return o.Terms, true
@@ -135,7 +135,7 @@ func (o *Filter) GetTermsOk() ([]string, bool) {
 
 // HasTerms returns a boolean if a field has been set.
 func (o *Filter) HasTerms() bool {
-	if o != nil && !isNil(o.Terms) {
+	if o != nil && !IsNil(o.Terms) {
 		return true
 	}
 
@@ -149,7 +149,7 @@ func (o *Filter) SetTerms(v []string) {
 
 // GetExclude returns the Exclude field value if set, zero value otherwise.
 func (o *Filter) GetExclude() bool {
-	if o == nil || isNil(o.Exclude) {
+	if o == nil || IsNil(o.Exclude) {
 		var ret bool
 		return ret
 	}
@@ -159,7 +159,7 @@ func (o *Filter) GetExclude() bool {
 // GetExcludeOk returns a tuple with the Exclude field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Filter) GetExcludeOk() (*bool, bool) {
-	if o == nil || isNil(o.Exclude) {
+	if o == nil || IsNil(o.Exclude) {
 		return nil, false
 	}
 	return o.Exclude, true
@@ -167,7 +167,7 @@ func (o *Filter) GetExcludeOk() (*bool, bool) {
 
 // HasExclude returns a boolean if a field has been set.
 func (o *Filter) HasExclude() bool {
-	if o != nil && !isNil(o.Exclude) {
+	if o != nil && !IsNil(o.Exclude) {
 		return true
 	}
 
@@ -189,16 +189,16 @@ func (o Filter) MarshalJSON() ([]byte, error) {
 
 func (o Filter) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Range) {
+	if !IsNil(o.Range) {
 		toSerialize["range"] = o.Range
 	}
-	if !isNil(o.Terms) {
+	if !IsNil(o.Terms) {
 		toSerialize["terms"] = o.Terms
 	}
-	if !isNil(o.Exclude) {
+	if !IsNil(o.Exclude) {
 		toSerialize["exclude"] = o.Exclude
 	}
 
@@ -209,16 +209,20 @@ func (o Filter) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Filter) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Filter) UnmarshalJSON(data []byte) (err error) {
 	varFilter := _Filter{}
 
-	if err = json.Unmarshal(bytes, &varFilter); err == nil {
+	err = json.Unmarshal(data, &varFilter)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Filter(varFilter)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "range")
 		delete(additionalProperties, "terms")

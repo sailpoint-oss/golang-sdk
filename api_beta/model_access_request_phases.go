@@ -56,7 +56,7 @@ func NewAccessRequestPhasesWithDefaults() *AccessRequestPhases {
 
 // GetStarted returns the Started field value if set, zero value otherwise.
 func (o *AccessRequestPhases) GetStarted() time.Time {
-	if o == nil || isNil(o.Started) {
+	if o == nil || IsNil(o.Started) {
 		var ret time.Time
 		return ret
 	}
@@ -66,7 +66,7 @@ func (o *AccessRequestPhases) GetStarted() time.Time {
 // GetStartedOk returns a tuple with the Started field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestPhases) GetStartedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Started) {
+	if o == nil || IsNil(o.Started) {
 		return nil, false
 	}
 	return o.Started, true
@@ -74,7 +74,7 @@ func (o *AccessRequestPhases) GetStartedOk() (*time.Time, bool) {
 
 // HasStarted returns a boolean if a field has been set.
 func (o *AccessRequestPhases) HasStarted() bool {
-	if o != nil && !isNil(o.Started) {
+	if o != nil && !IsNil(o.Started) {
 		return true
 	}
 
@@ -88,7 +88,7 @@ func (o *AccessRequestPhases) SetStarted(v time.Time) {
 
 // GetFinished returns the Finished field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessRequestPhases) GetFinished() time.Time {
-	if o == nil || isNil(o.Finished.Get()) {
+	if o == nil || IsNil(o.Finished.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -130,7 +130,7 @@ func (o *AccessRequestPhases) UnsetFinished() {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *AccessRequestPhases) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -140,7 +140,7 @@ func (o *AccessRequestPhases) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestPhases) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -148,7 +148,7 @@ func (o *AccessRequestPhases) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *AccessRequestPhases) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -162,7 +162,7 @@ func (o *AccessRequestPhases) SetName(v string) {
 
 // GetState returns the State field value if set, zero value otherwise.
 func (o *AccessRequestPhases) GetState() string {
-	if o == nil || isNil(o.State) {
+	if o == nil || IsNil(o.State) {
 		var ret string
 		return ret
 	}
@@ -172,7 +172,7 @@ func (o *AccessRequestPhases) GetState() string {
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestPhases) GetStateOk() (*string, bool) {
-	if o == nil || isNil(o.State) {
+	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
 	return o.State, true
@@ -180,7 +180,7 @@ func (o *AccessRequestPhases) GetStateOk() (*string, bool) {
 
 // HasState returns a boolean if a field has been set.
 func (o *AccessRequestPhases) HasState() bool {
-	if o != nil && !isNil(o.State) {
+	if o != nil && !IsNil(o.State) {
 		return true
 	}
 
@@ -194,7 +194,7 @@ func (o *AccessRequestPhases) SetState(v string) {
 
 // GetResult returns the Result field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessRequestPhases) GetResult() string {
-	if o == nil || isNil(o.Result.Get()) {
+	if o == nil || IsNil(o.Result.Get()) {
 		var ret string
 		return ret
 	}
@@ -236,7 +236,7 @@ func (o *AccessRequestPhases) UnsetResult() {
 
 // GetPhaseReference returns the PhaseReference field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessRequestPhases) GetPhaseReference() string {
-	if o == nil || isNil(o.PhaseReference.Get()) {
+	if o == nil || IsNil(o.PhaseReference.Get()) {
 		var ret string
 		return ret
 	}
@@ -286,16 +286,16 @@ func (o AccessRequestPhases) MarshalJSON() ([]byte, error) {
 
 func (o AccessRequestPhases) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Started) {
+	if !IsNil(o.Started) {
 		toSerialize["started"] = o.Started
 	}
 	if o.Finished.IsSet() {
 		toSerialize["finished"] = o.Finished.Get()
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.State) {
+	if !IsNil(o.State) {
 		toSerialize["state"] = o.State
 	}
 	if o.Result.IsSet() {
@@ -312,16 +312,20 @@ func (o AccessRequestPhases) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccessRequestPhases) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccessRequestPhases) UnmarshalJSON(data []byte) (err error) {
 	varAccessRequestPhases := _AccessRequestPhases{}
 
-	if err = json.Unmarshal(bytes, &varAccessRequestPhases); err == nil {
+	err = json.Unmarshal(data, &varAccessRequestPhases)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessRequestPhases(varAccessRequestPhases)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "started")
 		delete(additionalProperties, "finished")
 		delete(additionalProperties, "name")

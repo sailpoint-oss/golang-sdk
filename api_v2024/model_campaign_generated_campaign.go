@@ -165,7 +165,7 @@ func (o *CampaignGeneratedCampaign) SetCreated(v time.Time) {
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CampaignGeneratedCampaign) GetModified() string {
-	if o == nil || isNil(o.Modified.Get()) {
+	if o == nil || IsNil(o.Modified.Get()) {
 		var ret string
 		return ret
 	}
@@ -207,7 +207,7 @@ func (o *CampaignGeneratedCampaign) UnsetModified() {
 
 // GetDeadline returns the Deadline field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CampaignGeneratedCampaign) GetDeadline() string {
-	if o == nil || isNil(o.Deadline.Get()) {
+	if o == nil || IsNil(o.Deadline.Get()) {
 		var ret string
 		return ret
 	}
@@ -350,8 +350,8 @@ func (o CampaignGeneratedCampaign) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CampaignGeneratedCampaign) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *CampaignGeneratedCampaign) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -366,7 +366,7 @@ func (o *CampaignGeneratedCampaign) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -380,13 +380,17 @@ func (o *CampaignGeneratedCampaign) UnmarshalJSON(bytes []byte) (err error) {
 
 	varCampaignGeneratedCampaign := _CampaignGeneratedCampaign{}
 
-	if err = json.Unmarshal(bytes, &varCampaignGeneratedCampaign); err == nil {
+	err = json.Unmarshal(data, &varCampaignGeneratedCampaign)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CampaignGeneratedCampaign(varCampaignGeneratedCampaign)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")

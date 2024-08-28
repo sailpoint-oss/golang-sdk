@@ -47,7 +47,7 @@ func NewManagedClusterQueueWithDefaults() *ManagedClusterQueue {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ManagedClusterQueue) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *ManagedClusterQueue) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedClusterQueue) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -65,7 +65,7 @@ func (o *ManagedClusterQueue) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ManagedClusterQueue) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *ManagedClusterQueue) SetName(v string) {
 
 // GetRegion returns the Region field value if set, zero value otherwise.
 func (o *ManagedClusterQueue) GetRegion() string {
-	if o == nil || isNil(o.Region) {
+	if o == nil || IsNil(o.Region) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *ManagedClusterQueue) GetRegion() string {
 // GetRegionOk returns a tuple with the Region field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedClusterQueue) GetRegionOk() (*string, bool) {
-	if o == nil || isNil(o.Region) {
+	if o == nil || IsNil(o.Region) {
 		return nil, false
 	}
 	return o.Region, true
@@ -97,7 +97,7 @@ func (o *ManagedClusterQueue) GetRegionOk() (*string, bool) {
 
 // HasRegion returns a boolean if a field has been set.
 func (o *ManagedClusterQueue) HasRegion() bool {
-	if o != nil && !isNil(o.Region) {
+	if o != nil && !IsNil(o.Region) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o ManagedClusterQueue) MarshalJSON() ([]byte, error) {
 
 func (o ManagedClusterQueue) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Region) {
+	if !IsNil(o.Region) {
 		toSerialize["region"] = o.Region
 	}
 
@@ -133,16 +133,20 @@ func (o ManagedClusterQueue) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ManagedClusterQueue) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ManagedClusterQueue) UnmarshalJSON(data []byte) (err error) {
 	varManagedClusterQueue := _ManagedClusterQueue{}
 
-	if err = json.Unmarshal(bytes, &varManagedClusterQueue); err == nil {
+	err = json.Unmarshal(data, &varManagedClusterQueue)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ManagedClusterQueue(varManagedClusterQueue)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "region")
 		o.AdditionalProperties = additionalProperties

@@ -64,7 +64,7 @@ func (o *NetworkConfiguration) GetRange() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NetworkConfiguration) GetRangeOk() ([]string, bool) {
-	if o == nil || isNil(o.Range) {
+	if o == nil || IsNil(o.Range) {
 		return nil, false
 	}
 	return o.Range, true
@@ -72,7 +72,7 @@ func (o *NetworkConfiguration) GetRangeOk() ([]string, bool) {
 
 // HasRange returns a boolean if a field has been set.
 func (o *NetworkConfiguration) HasRange() bool {
-	if o != nil && isNil(o.Range) {
+	if o != nil && !IsNil(o.Range) {
 		return true
 	}
 
@@ -97,7 +97,7 @@ func (o *NetworkConfiguration) GetGeolocation() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NetworkConfiguration) GetGeolocationOk() ([]string, bool) {
-	if o == nil || isNil(o.Geolocation) {
+	if o == nil || IsNil(o.Geolocation) {
 		return nil, false
 	}
 	return o.Geolocation, true
@@ -105,7 +105,7 @@ func (o *NetworkConfiguration) GetGeolocationOk() ([]string, bool) {
 
 // HasGeolocation returns a boolean if a field has been set.
 func (o *NetworkConfiguration) HasGeolocation() bool {
-	if o != nil && isNil(o.Geolocation) {
+	if o != nil && !IsNil(o.Geolocation) {
 		return true
 	}
 
@@ -119,7 +119,7 @@ func (o *NetworkConfiguration) SetGeolocation(v []string) {
 
 // GetWhitelisted returns the Whitelisted field value if set, zero value otherwise.
 func (o *NetworkConfiguration) GetWhitelisted() bool {
-	if o == nil || isNil(o.Whitelisted) {
+	if o == nil || IsNil(o.Whitelisted) {
 		var ret bool
 		return ret
 	}
@@ -129,7 +129,7 @@ func (o *NetworkConfiguration) GetWhitelisted() bool {
 // GetWhitelistedOk returns a tuple with the Whitelisted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkConfiguration) GetWhitelistedOk() (*bool, bool) {
-	if o == nil || isNil(o.Whitelisted) {
+	if o == nil || IsNil(o.Whitelisted) {
 		return nil, false
 	}
 	return o.Whitelisted, true
@@ -137,7 +137,7 @@ func (o *NetworkConfiguration) GetWhitelistedOk() (*bool, bool) {
 
 // HasWhitelisted returns a boolean if a field has been set.
 func (o *NetworkConfiguration) HasWhitelisted() bool {
-	if o != nil && !isNil(o.Whitelisted) {
+	if o != nil && !IsNil(o.Whitelisted) {
 		return true
 	}
 
@@ -165,7 +165,7 @@ func (o NetworkConfiguration) ToMap() (map[string]interface{}, error) {
 	if o.Geolocation != nil {
 		toSerialize["geolocation"] = o.Geolocation
 	}
-	if !isNil(o.Whitelisted) {
+	if !IsNil(o.Whitelisted) {
 		toSerialize["whitelisted"] = o.Whitelisted
 	}
 
@@ -176,16 +176,20 @@ func (o NetworkConfiguration) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *NetworkConfiguration) UnmarshalJSON(bytes []byte) (err error) {
+func (o *NetworkConfiguration) UnmarshalJSON(data []byte) (err error) {
 	varNetworkConfiguration := _NetworkConfiguration{}
 
-	if err = json.Unmarshal(bytes, &varNetworkConfiguration); err == nil {
+	err = json.Unmarshal(data, &varNetworkConfiguration)
+
+	if err != nil {
+		return err
+	}
+
 	*o = NetworkConfiguration(varNetworkConfiguration)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "range")
 		delete(additionalProperties, "geolocation")
 		delete(additionalProperties, "whitelisted")

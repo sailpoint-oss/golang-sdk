@@ -49,7 +49,7 @@ func NewCreateDomainDkim405ResponseWithDefaults() *CreateDomainDkim405Response {
 
 // GetErrorName returns the ErrorName field value if set, zero value otherwise.
 func (o *CreateDomainDkim405Response) GetErrorName() map[string]interface{} {
-	if o == nil || isNil(o.ErrorName) {
+	if o == nil || IsNil(o.ErrorName) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *CreateDomainDkim405Response) GetErrorName() map[string]interface{} {
 // GetErrorNameOk returns a tuple with the ErrorName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateDomainDkim405Response) GetErrorNameOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.ErrorName) {
+	if o == nil || IsNil(o.ErrorName) {
 		return map[string]interface{}{}, false
 	}
 	return o.ErrorName, true
@@ -67,7 +67,7 @@ func (o *CreateDomainDkim405Response) GetErrorNameOk() (map[string]interface{}, 
 
 // HasErrorName returns a boolean if a field has been set.
 func (o *CreateDomainDkim405Response) HasErrorName() bool {
-	if o != nil && !isNil(o.ErrorName) {
+	if o != nil && !IsNil(o.ErrorName) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *CreateDomainDkim405Response) SetErrorName(v map[string]interface{}) {
 
 // GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise.
 func (o *CreateDomainDkim405Response) GetErrorMessage() map[string]interface{} {
-	if o == nil || isNil(o.ErrorMessage) {
+	if o == nil || IsNil(o.ErrorMessage) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *CreateDomainDkim405Response) GetErrorMessage() map[string]interface{} {
 // GetErrorMessageOk returns a tuple with the ErrorMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateDomainDkim405Response) GetErrorMessageOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.ErrorMessage) {
+	if o == nil || IsNil(o.ErrorMessage) {
 		return map[string]interface{}{}, false
 	}
 	return o.ErrorMessage, true
@@ -99,7 +99,7 @@ func (o *CreateDomainDkim405Response) GetErrorMessageOk() (map[string]interface{
 
 // HasErrorMessage returns a boolean if a field has been set.
 func (o *CreateDomainDkim405Response) HasErrorMessage() bool {
-	if o != nil && !isNil(o.ErrorMessage) {
+	if o != nil && !IsNil(o.ErrorMessage) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *CreateDomainDkim405Response) SetErrorMessage(v map[string]interface{}) 
 
 // GetTrackingId returns the TrackingId field value if set, zero value otherwise.
 func (o *CreateDomainDkim405Response) GetTrackingId() string {
-	if o == nil || isNil(o.TrackingId) {
+	if o == nil || IsNil(o.TrackingId) {
 		var ret string
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *CreateDomainDkim405Response) GetTrackingId() string {
 // GetTrackingIdOk returns a tuple with the TrackingId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateDomainDkim405Response) GetTrackingIdOk() (*string, bool) {
-	if o == nil || isNil(o.TrackingId) {
+	if o == nil || IsNil(o.TrackingId) {
 		return nil, false
 	}
 	return o.TrackingId, true
@@ -131,7 +131,7 @@ func (o *CreateDomainDkim405Response) GetTrackingIdOk() (*string, bool) {
 
 // HasTrackingId returns a boolean if a field has been set.
 func (o *CreateDomainDkim405Response) HasTrackingId() bool {
-	if o != nil && !isNil(o.TrackingId) {
+	if o != nil && !IsNil(o.TrackingId) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o CreateDomainDkim405Response) MarshalJSON() ([]byte, error) {
 
 func (o CreateDomainDkim405Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ErrorName) {
+	if !IsNil(o.ErrorName) {
 		toSerialize["errorName"] = o.ErrorName
 	}
-	if !isNil(o.ErrorMessage) {
+	if !IsNil(o.ErrorMessage) {
 		toSerialize["errorMessage"] = o.ErrorMessage
 	}
-	if !isNil(o.TrackingId) {
+	if !IsNil(o.TrackingId) {
 		toSerialize["trackingId"] = o.TrackingId
 	}
 
@@ -170,16 +170,20 @@ func (o CreateDomainDkim405Response) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CreateDomainDkim405Response) UnmarshalJSON(bytes []byte) (err error) {
+func (o *CreateDomainDkim405Response) UnmarshalJSON(data []byte) (err error) {
 	varCreateDomainDkim405Response := _CreateDomainDkim405Response{}
 
-	if err = json.Unmarshal(bytes, &varCreateDomainDkim405Response); err == nil {
+	err = json.Unmarshal(data, &varCreateDomainDkim405Response)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CreateDomainDkim405Response(varCreateDomainDkim405Response)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "errorName")
 		delete(additionalProperties, "errorMessage")
 		delete(additionalProperties, "trackingId")

@@ -50,7 +50,7 @@ func NewExceptionCriteriaAccessWithDefaults() *ExceptionCriteriaAccess {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *ExceptionCriteriaAccess) GetType() DtoType {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret DtoType
 		return ret
 	}
@@ -60,7 +60,7 @@ func (o *ExceptionCriteriaAccess) GetType() DtoType {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExceptionCriteriaAccess) GetTypeOk() (*DtoType, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -68,7 +68,7 @@ func (o *ExceptionCriteriaAccess) GetTypeOk() (*DtoType, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *ExceptionCriteriaAccess) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -82,7 +82,7 @@ func (o *ExceptionCriteriaAccess) SetType(v DtoType) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ExceptionCriteriaAccess) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -92,7 +92,7 @@ func (o *ExceptionCriteriaAccess) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExceptionCriteriaAccess) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -100,7 +100,7 @@ func (o *ExceptionCriteriaAccess) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ExceptionCriteriaAccess) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -114,7 +114,7 @@ func (o *ExceptionCriteriaAccess) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ExceptionCriteriaAccess) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -124,7 +124,7 @@ func (o *ExceptionCriteriaAccess) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExceptionCriteriaAccess) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -132,7 +132,7 @@ func (o *ExceptionCriteriaAccess) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ExceptionCriteriaAccess) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -146,7 +146,7 @@ func (o *ExceptionCriteriaAccess) SetName(v string) {
 
 // GetExisting returns the Existing field value if set, zero value otherwise.
 func (o *ExceptionCriteriaAccess) GetExisting() bool {
-	if o == nil || isNil(o.Existing) {
+	if o == nil || IsNil(o.Existing) {
 		var ret bool
 		return ret
 	}
@@ -156,7 +156,7 @@ func (o *ExceptionCriteriaAccess) GetExisting() bool {
 // GetExistingOk returns a tuple with the Existing field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExceptionCriteriaAccess) GetExistingOk() (*bool, bool) {
-	if o == nil || isNil(o.Existing) {
+	if o == nil || IsNil(o.Existing) {
 		return nil, false
 	}
 	return o.Existing, true
@@ -164,7 +164,7 @@ func (o *ExceptionCriteriaAccess) GetExistingOk() (*bool, bool) {
 
 // HasExisting returns a boolean if a field has been set.
 func (o *ExceptionCriteriaAccess) HasExisting() bool {
-	if o != nil && !isNil(o.Existing) {
+	if o != nil && !IsNil(o.Existing) {
 		return true
 	}
 
@@ -186,16 +186,16 @@ func (o ExceptionCriteriaAccess) MarshalJSON() ([]byte, error) {
 
 func (o ExceptionCriteriaAccess) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Existing) {
+	if !IsNil(o.Existing) {
 		toSerialize["existing"] = o.Existing
 	}
 
@@ -206,16 +206,20 @@ func (o ExceptionCriteriaAccess) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ExceptionCriteriaAccess) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ExceptionCriteriaAccess) UnmarshalJSON(data []byte) (err error) {
 	varExceptionCriteriaAccess := _ExceptionCriteriaAccess{}
 
-	if err = json.Unmarshal(bytes, &varExceptionCriteriaAccess); err == nil {
+	err = json.Unmarshal(data, &varExceptionCriteriaAccess)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ExceptionCriteriaAccess(varExceptionCriteriaAccess)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")

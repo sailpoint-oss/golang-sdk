@@ -99,7 +99,7 @@ func (o *JsonPatchOperation) SetPath(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *JsonPatchOperation) GetValue() JsonPatchOperationValue {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret JsonPatchOperationValue
 		return ret
 	}
@@ -109,7 +109,7 @@ func (o *JsonPatchOperation) GetValue() JsonPatchOperationValue {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JsonPatchOperation) GetValueOk() (*JsonPatchOperationValue, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -117,7 +117,7 @@ func (o *JsonPatchOperation) GetValueOk() (*JsonPatchOperationValue, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *JsonPatchOperation) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -141,7 +141,7 @@ func (o JsonPatchOperation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["op"] = o.Op
 	toSerialize["path"] = o.Path
-	if !isNil(o.Value) {
+	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
 
@@ -152,8 +152,8 @@ func (o JsonPatchOperation) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *JsonPatchOperation) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *JsonPatchOperation) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -163,7 +163,7 @@ func (o *JsonPatchOperation) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -177,13 +177,17 @@ func (o *JsonPatchOperation) UnmarshalJSON(bytes []byte) (err error) {
 
 	varJsonPatchOperation := _JsonPatchOperation{}
 
-	if err = json.Unmarshal(bytes, &varJsonPatchOperation); err == nil {
+	err = json.Unmarshal(data, &varJsonPatchOperation)
+
+	if err != nil {
+		return err
+	}
+
 	*o = JsonPatchOperation(varJsonPatchOperation)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "op")
 		delete(additionalProperties, "path")
 		delete(additionalProperties, "value")

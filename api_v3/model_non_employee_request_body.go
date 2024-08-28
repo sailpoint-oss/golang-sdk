@@ -242,7 +242,7 @@ func (o *NonEmployeeRequestBody) SetSourceId(v string) {
 
 // GetData returns the Data field value if set, zero value otherwise.
 func (o *NonEmployeeRequestBody) GetData() map[string]string {
-	if o == nil || isNil(o.Data) {
+	if o == nil || IsNil(o.Data) {
 		var ret map[string]string
 		return ret
 	}
@@ -252,7 +252,7 @@ func (o *NonEmployeeRequestBody) GetData() map[string]string {
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeRequestBody) GetDataOk() (*map[string]string, bool) {
-	if o == nil || isNil(o.Data) {
+	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
 	return o.Data, true
@@ -260,7 +260,7 @@ func (o *NonEmployeeRequestBody) GetDataOk() (*map[string]string, bool) {
 
 // HasData returns a boolean if a field has been set.
 func (o *NonEmployeeRequestBody) HasData() bool {
-	if o != nil && !isNil(o.Data) {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 
@@ -337,7 +337,7 @@ func (o NonEmployeeRequestBody) ToMap() (map[string]interface{}, error) {
 	toSerialize["phone"] = o.Phone
 	toSerialize["manager"] = o.Manager
 	toSerialize["sourceId"] = o.SourceId
-	if !isNil(o.Data) {
+	if !IsNil(o.Data) {
 		toSerialize["data"] = o.Data
 	}
 	toSerialize["startDate"] = o.StartDate
@@ -350,8 +350,8 @@ func (o NonEmployeeRequestBody) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *NonEmployeeRequestBody) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *NonEmployeeRequestBody) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -368,7 +368,7 @@ func (o *NonEmployeeRequestBody) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -382,13 +382,17 @@ func (o *NonEmployeeRequestBody) UnmarshalJSON(bytes []byte) (err error) {
 
 	varNonEmployeeRequestBody := _NonEmployeeRequestBody{}
 
-	if err = json.Unmarshal(bytes, &varNonEmployeeRequestBody); err == nil {
+	err = json.Unmarshal(data, &varNonEmployeeRequestBody)
+
+	if err != nil {
+		return err
+	}
+
 	*o = NonEmployeeRequestBody(varNonEmployeeRequestBody)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "accountName")
 		delete(additionalProperties, "firstName")
 		delete(additionalProperties, "lastName")

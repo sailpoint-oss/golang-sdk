@@ -19,14 +19,14 @@ import (
 
 func Test_api_v2024_SPConfigAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test SPConfigAPIService ExportSpConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.SPConfigAPI.ExportSpConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SPConfigAPI.ExportSpConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_v2024_SPConfigAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.SPConfigAPI.GetSpConfigExport(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SPConfigAPI.GetSpConfigExport(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -54,7 +54,7 @@ func Test_api_v2024_SPConfigAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.SPConfigAPI.GetSpConfigExportStatus(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SPConfigAPI.GetSpConfigExportStatus(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -68,7 +68,7 @@ func Test_api_v2024_SPConfigAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.SPConfigAPI.GetSpConfigImport(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SPConfigAPI.GetSpConfigImport(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -82,7 +82,7 @@ func Test_api_v2024_SPConfigAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.SPConfigAPI.GetSpConfigImportStatus(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SPConfigAPI.GetSpConfigImportStatus(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -94,7 +94,7 @@ func Test_api_v2024_SPConfigAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.SPConfigAPI.ImportSpConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SPConfigAPI.ImportSpConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -106,7 +106,7 @@ func Test_api_v2024_SPConfigAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.SPConfigAPI.ListSpConfigObjects(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SPConfigAPI.ListSpConfigObjects(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

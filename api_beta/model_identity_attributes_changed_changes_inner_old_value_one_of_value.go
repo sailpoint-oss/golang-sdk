@@ -12,6 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
@@ -63,7 +64,11 @@ func (dst *IdentityAttributesChangedChangesInnerOldValueOneOfValue) UnmarshalJSO
 		if string(jsonBool) == "{}" { // empty struct
 			dst.Bool = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.Bool); err != nil {
+				dst.Bool = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.Bool = nil
@@ -76,7 +81,11 @@ func (dst *IdentityAttributesChangedChangesInnerOldValueOneOfValue) UnmarshalJSO
 		if string(jsonFloat32) == "{}" { // empty struct
 			dst.Float32 = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.Float32); err != nil {
+				dst.Float32 = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.Float32 = nil
@@ -89,7 +98,11 @@ func (dst *IdentityAttributesChangedChangesInnerOldValueOneOfValue) UnmarshalJSO
 		if string(jsonInt32) == "{}" { // empty struct
 			dst.Int32 = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.Int32); err != nil {
+				dst.Int32 = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.Int32 = nil
@@ -102,7 +115,11 @@ func (dst *IdentityAttributesChangedChangesInnerOldValueOneOfValue) UnmarshalJSO
 		if string(jsonString) == "{}" { // empty struct
 			dst.String = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.String); err != nil {
+				dst.String = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.String = nil

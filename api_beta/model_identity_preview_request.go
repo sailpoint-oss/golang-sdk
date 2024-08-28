@@ -45,7 +45,7 @@ func NewIdentityPreviewRequestWithDefaults() *IdentityPreviewRequest {
 
 // GetIdentityId returns the IdentityId field value if set, zero value otherwise.
 func (o *IdentityPreviewRequest) GetIdentityId() string {
-	if o == nil || isNil(o.IdentityId) {
+	if o == nil || IsNil(o.IdentityId) {
 		var ret string
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *IdentityPreviewRequest) GetIdentityId() string {
 // GetIdentityIdOk returns a tuple with the IdentityId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityPreviewRequest) GetIdentityIdOk() (*string, bool) {
-	if o == nil || isNil(o.IdentityId) {
+	if o == nil || IsNil(o.IdentityId) {
 		return nil, false
 	}
 	return o.IdentityId, true
@@ -63,7 +63,7 @@ func (o *IdentityPreviewRequest) GetIdentityIdOk() (*string, bool) {
 
 // HasIdentityId returns a boolean if a field has been set.
 func (o *IdentityPreviewRequest) HasIdentityId() bool {
-	if o != nil && !isNil(o.IdentityId) {
+	if o != nil && !IsNil(o.IdentityId) {
 		return true
 	}
 
@@ -77,7 +77,7 @@ func (o *IdentityPreviewRequest) SetIdentityId(v string) {
 
 // GetIdentityAttributeConfig returns the IdentityAttributeConfig field value if set, zero value otherwise.
 func (o *IdentityPreviewRequest) GetIdentityAttributeConfig() IdentityAttributeConfig {
-	if o == nil || isNil(o.IdentityAttributeConfig) {
+	if o == nil || IsNil(o.IdentityAttributeConfig) {
 		var ret IdentityAttributeConfig
 		return ret
 	}
@@ -87,7 +87,7 @@ func (o *IdentityPreviewRequest) GetIdentityAttributeConfig() IdentityAttributeC
 // GetIdentityAttributeConfigOk returns a tuple with the IdentityAttributeConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityPreviewRequest) GetIdentityAttributeConfigOk() (*IdentityAttributeConfig, bool) {
-	if o == nil || isNil(o.IdentityAttributeConfig) {
+	if o == nil || IsNil(o.IdentityAttributeConfig) {
 		return nil, false
 	}
 	return o.IdentityAttributeConfig, true
@@ -95,7 +95,7 @@ func (o *IdentityPreviewRequest) GetIdentityAttributeConfigOk() (*IdentityAttrib
 
 // HasIdentityAttributeConfig returns a boolean if a field has been set.
 func (o *IdentityPreviewRequest) HasIdentityAttributeConfig() bool {
-	if o != nil && !isNil(o.IdentityAttributeConfig) {
+	if o != nil && !IsNil(o.IdentityAttributeConfig) {
 		return true
 	}
 
@@ -117,10 +117,10 @@ func (o IdentityPreviewRequest) MarshalJSON() ([]byte, error) {
 
 func (o IdentityPreviewRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.IdentityId) {
+	if !IsNil(o.IdentityId) {
 		toSerialize["identityId"] = o.IdentityId
 	}
-	if !isNil(o.IdentityAttributeConfig) {
+	if !IsNil(o.IdentityAttributeConfig) {
 		toSerialize["identityAttributeConfig"] = o.IdentityAttributeConfig
 	}
 
@@ -131,16 +131,20 @@ func (o IdentityPreviewRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *IdentityPreviewRequest) UnmarshalJSON(bytes []byte) (err error) {
+func (o *IdentityPreviewRequest) UnmarshalJSON(data []byte) (err error) {
 	varIdentityPreviewRequest := _IdentityPreviewRequest{}
 
-	if err = json.Unmarshal(bytes, &varIdentityPreviewRequest); err == nil {
+	err = json.Unmarshal(data, &varIdentityPreviewRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = IdentityPreviewRequest(varIdentityPreviewRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "identityId")
 		delete(additionalProperties, "identityAttributeConfig")
 		o.AdditionalProperties = additionalProperties

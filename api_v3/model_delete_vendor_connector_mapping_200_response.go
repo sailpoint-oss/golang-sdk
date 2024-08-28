@@ -45,7 +45,7 @@ func NewDeleteVendorConnectorMapping200ResponseWithDefaults() *DeleteVendorConne
 
 // GetCount returns the Count field value if set, zero value otherwise.
 func (o *DeleteVendorConnectorMapping200Response) GetCount() int32 {
-	if o == nil || isNil(o.Count) {
+	if o == nil || IsNil(o.Count) {
 		var ret int32
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *DeleteVendorConnectorMapping200Response) GetCount() int32 {
 // GetCountOk returns a tuple with the Count field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeleteVendorConnectorMapping200Response) GetCountOk() (*int32, bool) {
-	if o == nil || isNil(o.Count) {
+	if o == nil || IsNil(o.Count) {
 		return nil, false
 	}
 	return o.Count, true
@@ -63,7 +63,7 @@ func (o *DeleteVendorConnectorMapping200Response) GetCountOk() (*int32, bool) {
 
 // HasCount returns a boolean if a field has been set.
 func (o *DeleteVendorConnectorMapping200Response) HasCount() bool {
-	if o != nil && !isNil(o.Count) {
+	if o != nil && !IsNil(o.Count) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o DeleteVendorConnectorMapping200Response) MarshalJSON() ([]byte, error) {
 
 func (o DeleteVendorConnectorMapping200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Count) {
+	if !IsNil(o.Count) {
 		toSerialize["count"] = o.Count
 	}
 
@@ -96,16 +96,20 @@ func (o DeleteVendorConnectorMapping200Response) ToMap() (map[string]interface{}
 	return toSerialize, nil
 }
 
-func (o *DeleteVendorConnectorMapping200Response) UnmarshalJSON(bytes []byte) (err error) {
+func (o *DeleteVendorConnectorMapping200Response) UnmarshalJSON(data []byte) (err error) {
 	varDeleteVendorConnectorMapping200Response := _DeleteVendorConnectorMapping200Response{}
 
-	if err = json.Unmarshal(bytes, &varDeleteVendorConnectorMapping200Response); err == nil {
+	err = json.Unmarshal(data, &varDeleteVendorConnectorMapping200Response)
+
+	if err != nil {
+		return err
+	}
+
 	*o = DeleteVendorConnectorMapping200Response(varDeleteVendorConnectorMapping200Response)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "count")
 		o.AdditionalProperties = additionalProperties
 	}

@@ -19,7 +19,7 @@ import (
 
 func Test_api_v2024_CertificationsAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test CertificationsAPIService GetCertificationTask", func(t *testing.T) {
@@ -28,7 +28,7 @@ func Test_api_v2024_CertificationsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.CertificationsAPI.GetCertificationTask(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.CertificationsAPI.GetCertificationTask(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -42,7 +42,7 @@ func Test_api_v2024_CertificationsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.CertificationsAPI.GetIdentityCertification(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.CertificationsAPI.GetIdentityCertification(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -57,7 +57,7 @@ func Test_api_v2024_CertificationsAPIService(t *testing.T) {
 		var certificationId string
 		var itemId string
 
-		resp, httpRes, err := apiClient.API_V2024.CertificationsAPI.GetIdentityCertificationItemPermissions(context.Background(), certificationId, itemId).Execute()
+		resp, httpRes, err := apiClient.CertificationsAPI.GetIdentityCertificationItemPermissions(context.Background(), certificationId, itemId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -69,7 +69,7 @@ func Test_api_v2024_CertificationsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.CertificationsAPI.GetPendingCertificationTasks(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CertificationsAPI.GetPendingCertificationTasks(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -83,7 +83,7 @@ func Test_api_v2024_CertificationsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.CertificationsAPI.ListCertificationReviewers(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.CertificationsAPI.ListCertificationReviewers(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -97,7 +97,7 @@ func Test_api_v2024_CertificationsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.CertificationsAPI.ListIdentityAccessReviewItems(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.CertificationsAPI.ListIdentityAccessReviewItems(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -109,7 +109,7 @@ func Test_api_v2024_CertificationsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.CertificationsAPI.ListIdentityCertifications(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CertificationsAPI.ListIdentityCertifications(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -123,7 +123,7 @@ func Test_api_v2024_CertificationsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.CertificationsAPI.MakeIdentityDecision(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.CertificationsAPI.MakeIdentityDecision(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -137,7 +137,7 @@ func Test_api_v2024_CertificationsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.CertificationsAPI.ReassignIdentityCertifications(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.CertificationsAPI.ReassignIdentityCertifications(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -151,7 +151,7 @@ func Test_api_v2024_CertificationsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.CertificationsAPI.SignOffIdentityCertification(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.CertificationsAPI.SignOffIdentityCertification(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -165,7 +165,7 @@ func Test_api_v2024_CertificationsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.CertificationsAPI.SubmitReassignCertsAsync(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.CertificationsAPI.SubmitReassignCertsAsync(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

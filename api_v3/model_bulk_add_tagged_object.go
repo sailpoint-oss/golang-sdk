@@ -52,7 +52,7 @@ func NewBulkAddTaggedObjectWithDefaults() *BulkAddTaggedObject {
 
 // GetObjectRefs returns the ObjectRefs field value if set, zero value otherwise.
 func (o *BulkAddTaggedObject) GetObjectRefs() []TaggedObjectDto {
-	if o == nil || isNil(o.ObjectRefs) {
+	if o == nil || IsNil(o.ObjectRefs) {
 		var ret []TaggedObjectDto
 		return ret
 	}
@@ -62,7 +62,7 @@ func (o *BulkAddTaggedObject) GetObjectRefs() []TaggedObjectDto {
 // GetObjectRefsOk returns a tuple with the ObjectRefs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BulkAddTaggedObject) GetObjectRefsOk() ([]TaggedObjectDto, bool) {
-	if o == nil || isNil(o.ObjectRefs) {
+	if o == nil || IsNil(o.ObjectRefs) {
 		return nil, false
 	}
 	return o.ObjectRefs, true
@@ -70,7 +70,7 @@ func (o *BulkAddTaggedObject) GetObjectRefsOk() ([]TaggedObjectDto, bool) {
 
 // HasObjectRefs returns a boolean if a field has been set.
 func (o *BulkAddTaggedObject) HasObjectRefs() bool {
-	if o != nil && !isNil(o.ObjectRefs) {
+	if o != nil && !IsNil(o.ObjectRefs) {
 		return true
 	}
 
@@ -84,7 +84,7 @@ func (o *BulkAddTaggedObject) SetObjectRefs(v []TaggedObjectDto) {
 
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *BulkAddTaggedObject) GetTags() []string {
-	if o == nil || isNil(o.Tags) {
+	if o == nil || IsNil(o.Tags) {
 		var ret []string
 		return ret
 	}
@@ -94,7 +94,7 @@ func (o *BulkAddTaggedObject) GetTags() []string {
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BulkAddTaggedObject) GetTagsOk() ([]string, bool) {
-	if o == nil || isNil(o.Tags) {
+	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
 	return o.Tags, true
@@ -102,7 +102,7 @@ func (o *BulkAddTaggedObject) GetTagsOk() ([]string, bool) {
 
 // HasTags returns a boolean if a field has been set.
 func (o *BulkAddTaggedObject) HasTags() bool {
-	if o != nil && !isNil(o.Tags) {
+	if o != nil && !IsNil(o.Tags) {
 		return true
 	}
 
@@ -116,7 +116,7 @@ func (o *BulkAddTaggedObject) SetTags(v []string) {
 
 // GetOperation returns the Operation field value if set, zero value otherwise.
 func (o *BulkAddTaggedObject) GetOperation() string {
-	if o == nil || isNil(o.Operation) {
+	if o == nil || IsNil(o.Operation) {
 		var ret string
 		return ret
 	}
@@ -126,7 +126,7 @@ func (o *BulkAddTaggedObject) GetOperation() string {
 // GetOperationOk returns a tuple with the Operation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BulkAddTaggedObject) GetOperationOk() (*string, bool) {
-	if o == nil || isNil(o.Operation) {
+	if o == nil || IsNil(o.Operation) {
 		return nil, false
 	}
 	return o.Operation, true
@@ -134,7 +134,7 @@ func (o *BulkAddTaggedObject) GetOperationOk() (*string, bool) {
 
 // HasOperation returns a boolean if a field has been set.
 func (o *BulkAddTaggedObject) HasOperation() bool {
-	if o != nil && !isNil(o.Operation) {
+	if o != nil && !IsNil(o.Operation) {
 		return true
 	}
 
@@ -156,13 +156,13 @@ func (o BulkAddTaggedObject) MarshalJSON() ([]byte, error) {
 
 func (o BulkAddTaggedObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ObjectRefs) {
+	if !IsNil(o.ObjectRefs) {
 		toSerialize["objectRefs"] = o.ObjectRefs
 	}
-	if !isNil(o.Tags) {
+	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
 	}
-	if !isNil(o.Operation) {
+	if !IsNil(o.Operation) {
 		toSerialize["operation"] = o.Operation
 	}
 
@@ -173,16 +173,20 @@ func (o BulkAddTaggedObject) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *BulkAddTaggedObject) UnmarshalJSON(bytes []byte) (err error) {
+func (o *BulkAddTaggedObject) UnmarshalJSON(data []byte) (err error) {
 	varBulkAddTaggedObject := _BulkAddTaggedObject{}
 
-	if err = json.Unmarshal(bytes, &varBulkAddTaggedObject); err == nil {
+	err = json.Unmarshal(data, &varBulkAddTaggedObject)
+
+	if err != nil {
+		return err
+	}
+
 	*o = BulkAddTaggedObject(varBulkAddTaggedObject)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "objectRefs")
 		delete(additionalProperties, "tags")
 		delete(additionalProperties, "operation")

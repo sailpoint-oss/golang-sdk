@@ -44,7 +44,7 @@ func NewSourceEntitlementRequestConfigWithDefaults() *SourceEntitlementRequestCo
 
 // GetAccessRequestConfig returns the AccessRequestConfig field value if set, zero value otherwise.
 func (o *SourceEntitlementRequestConfig) GetAccessRequestConfig() EntitlementAccessRequestConfig {
-	if o == nil || isNil(o.AccessRequestConfig) {
+	if o == nil || IsNil(o.AccessRequestConfig) {
 		var ret EntitlementAccessRequestConfig
 		return ret
 	}
@@ -54,7 +54,7 @@ func (o *SourceEntitlementRequestConfig) GetAccessRequestConfig() EntitlementAcc
 // GetAccessRequestConfigOk returns a tuple with the AccessRequestConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SourceEntitlementRequestConfig) GetAccessRequestConfigOk() (*EntitlementAccessRequestConfig, bool) {
-	if o == nil || isNil(o.AccessRequestConfig) {
+	if o == nil || IsNil(o.AccessRequestConfig) {
 		return nil, false
 	}
 	return o.AccessRequestConfig, true
@@ -62,7 +62,7 @@ func (o *SourceEntitlementRequestConfig) GetAccessRequestConfigOk() (*Entitlemen
 
 // HasAccessRequestConfig returns a boolean if a field has been set.
 func (o *SourceEntitlementRequestConfig) HasAccessRequestConfig() bool {
-	if o != nil && !isNil(o.AccessRequestConfig) {
+	if o != nil && !IsNil(o.AccessRequestConfig) {
 		return true
 	}
 
@@ -84,7 +84,7 @@ func (o SourceEntitlementRequestConfig) MarshalJSON() ([]byte, error) {
 
 func (o SourceEntitlementRequestConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AccessRequestConfig) {
+	if !IsNil(o.AccessRequestConfig) {
 		toSerialize["accessRequestConfig"] = o.AccessRequestConfig
 	}
 
@@ -95,16 +95,20 @@ func (o SourceEntitlementRequestConfig) ToMap() (map[string]interface{}, error) 
 	return toSerialize, nil
 }
 
-func (o *SourceEntitlementRequestConfig) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SourceEntitlementRequestConfig) UnmarshalJSON(data []byte) (err error) {
 	varSourceEntitlementRequestConfig := _SourceEntitlementRequestConfig{}
 
-	if err = json.Unmarshal(bytes, &varSourceEntitlementRequestConfig); err == nil {
+	err = json.Unmarshal(data, &varSourceEntitlementRequestConfig)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SourceEntitlementRequestConfig(varSourceEntitlementRequestConfig)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "accessRequestConfig")
 		o.AdditionalProperties = additionalProperties
 	}

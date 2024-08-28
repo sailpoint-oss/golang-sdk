@@ -71,7 +71,7 @@ func NewLoadUncorrelatedAccountsTaskTaskWithDefaults() *LoadUncorrelatedAccounts
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *LoadUncorrelatedAccountsTaskTask) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -81,7 +81,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LoadUncorrelatedAccountsTaskTask) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -89,7 +89,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *LoadUncorrelatedAccountsTaskTask) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -103,7 +103,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) SetId(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *LoadUncorrelatedAccountsTaskTask) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -113,7 +113,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LoadUncorrelatedAccountsTaskTask) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -121,7 +121,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *LoadUncorrelatedAccountsTaskTask) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -135,7 +135,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) SetType(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *LoadUncorrelatedAccountsTaskTask) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -145,7 +145,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LoadUncorrelatedAccountsTaskTask) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -153,7 +153,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *LoadUncorrelatedAccountsTaskTask) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -167,7 +167,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *LoadUncorrelatedAccountsTaskTask) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -177,7 +177,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LoadUncorrelatedAccountsTaskTask) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -185,7 +185,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *LoadUncorrelatedAccountsTaskTask) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -199,7 +199,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) SetDescription(v string) {
 
 // GetLauncher returns the Launcher field value if set, zero value otherwise.
 func (o *LoadUncorrelatedAccountsTaskTask) GetLauncher() string {
-	if o == nil || isNil(o.Launcher) {
+	if o == nil || IsNil(o.Launcher) {
 		var ret string
 		return ret
 	}
@@ -209,7 +209,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) GetLauncher() string {
 // GetLauncherOk returns a tuple with the Launcher field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LoadUncorrelatedAccountsTaskTask) GetLauncherOk() (*string, bool) {
-	if o == nil || isNil(o.Launcher) {
+	if o == nil || IsNil(o.Launcher) {
 		return nil, false
 	}
 	return o.Launcher, true
@@ -217,7 +217,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) GetLauncherOk() (*string, bool) {
 
 // HasLauncher returns a boolean if a field has been set.
 func (o *LoadUncorrelatedAccountsTaskTask) HasLauncher() bool {
-	if o != nil && !isNil(o.Launcher) {
+	if o != nil && !IsNil(o.Launcher) {
 		return true
 	}
 
@@ -231,7 +231,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) SetLauncher(v string) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *LoadUncorrelatedAccountsTaskTask) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -241,7 +241,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LoadUncorrelatedAccountsTaskTask) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -249,7 +249,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *LoadUncorrelatedAccountsTaskTask) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -263,7 +263,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) SetCreated(v time.Time) {
 
 // GetLaunched returns the Launched field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *LoadUncorrelatedAccountsTaskTask) GetLaunched() time.Time {
-	if o == nil || isNil(o.Launched.Get()) {
+	if o == nil || IsNil(o.Launched.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -305,7 +305,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) UnsetLaunched() {
 
 // GetCompleted returns the Completed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *LoadUncorrelatedAccountsTaskTask) GetCompleted() time.Time {
-	if o == nil || isNil(o.Completed.Get()) {
+	if o == nil || IsNil(o.Completed.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -347,7 +347,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) UnsetCompleted() {
 
 // GetCompletionStatus returns the CompletionStatus field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *LoadUncorrelatedAccountsTaskTask) GetCompletionStatus() string {
-	if o == nil || isNil(o.CompletionStatus.Get()) {
+	if o == nil || IsNil(o.CompletionStatus.Get()) {
 		var ret string
 		return ret
 	}
@@ -389,7 +389,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) UnsetCompletionStatus() {
 
 // GetParentName returns the ParentName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *LoadUncorrelatedAccountsTaskTask) GetParentName() string {
-	if o == nil || isNil(o.ParentName.Get()) {
+	if o == nil || IsNil(o.ParentName.Get()) {
 		var ret string
 		return ret
 	}
@@ -431,7 +431,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) UnsetParentName() {
 
 // GetMessages returns the Messages field value if set, zero value otherwise.
 func (o *LoadUncorrelatedAccountsTaskTask) GetMessages() []LoadUncorrelatedAccountsTaskTaskMessagesInner {
-	if o == nil || isNil(o.Messages) {
+	if o == nil || IsNil(o.Messages) {
 		var ret []LoadUncorrelatedAccountsTaskTaskMessagesInner
 		return ret
 	}
@@ -441,7 +441,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) GetMessages() []LoadUncorrelatedAccou
 // GetMessagesOk returns a tuple with the Messages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LoadUncorrelatedAccountsTaskTask) GetMessagesOk() ([]LoadUncorrelatedAccountsTaskTaskMessagesInner, bool) {
-	if o == nil || isNil(o.Messages) {
+	if o == nil || IsNil(o.Messages) {
 		return nil, false
 	}
 	return o.Messages, true
@@ -449,7 +449,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) GetMessagesOk() ([]LoadUncorrelatedAc
 
 // HasMessages returns a boolean if a field has been set.
 func (o *LoadUncorrelatedAccountsTaskTask) HasMessages() bool {
-	if o != nil && !isNil(o.Messages) {
+	if o != nil && !IsNil(o.Messages) {
 		return true
 	}
 
@@ -463,7 +463,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) SetMessages(v []LoadUncorrelatedAccou
 
 // GetProgress returns the Progress field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *LoadUncorrelatedAccountsTaskTask) GetProgress() string {
-	if o == nil || isNil(o.Progress.Get()) {
+	if o == nil || IsNil(o.Progress.Get()) {
 		var ret string
 		return ret
 	}
@@ -505,7 +505,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) UnsetProgress() {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *LoadUncorrelatedAccountsTaskTask) GetAttributes() LoadUncorrelatedAccountsTaskTaskAttributes {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		var ret LoadUncorrelatedAccountsTaskTaskAttributes
 		return ret
 	}
@@ -515,7 +515,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) GetAttributes() LoadUncorrelatedAccou
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LoadUncorrelatedAccountsTaskTask) GetAttributesOk() (*LoadUncorrelatedAccountsTaskTaskAttributes, bool) {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		return nil, false
 	}
 	return o.Attributes, true
@@ -523,7 +523,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) GetAttributesOk() (*LoadUncorrelatedA
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *LoadUncorrelatedAccountsTaskTask) HasAttributes() bool {
-	if o != nil && !isNil(o.Attributes) {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -537,7 +537,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) SetAttributes(v LoadUncorrelatedAccou
 
 // GetReturns returns the Returns field value if set, zero value otherwise.
 func (o *LoadUncorrelatedAccountsTaskTask) GetReturns() map[string]interface{} {
-	if o == nil || isNil(o.Returns) {
+	if o == nil || IsNil(o.Returns) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -547,7 +547,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) GetReturns() map[string]interface{} {
 // GetReturnsOk returns a tuple with the Returns field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LoadUncorrelatedAccountsTaskTask) GetReturnsOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Returns) {
+	if o == nil || IsNil(o.Returns) {
 		return map[string]interface{}{}, false
 	}
 	return o.Returns, true
@@ -555,7 +555,7 @@ func (o *LoadUncorrelatedAccountsTaskTask) GetReturnsOk() (map[string]interface{
 
 // HasReturns returns a boolean if a field has been set.
 func (o *LoadUncorrelatedAccountsTaskTask) HasReturns() bool {
-	if o != nil && !isNil(o.Returns) {
+	if o != nil && !IsNil(o.Returns) {
 		return true
 	}
 
@@ -577,22 +577,22 @@ func (o LoadUncorrelatedAccountsTaskTask) MarshalJSON() ([]byte, error) {
 
 func (o LoadUncorrelatedAccountsTaskTask) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.Launcher) {
+	if !IsNil(o.Launcher) {
 		toSerialize["launcher"] = o.Launcher
 	}
-	if !isNil(o.Created) {
+	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
 	if o.Launched.IsSet() {
@@ -607,16 +607,16 @@ func (o LoadUncorrelatedAccountsTaskTask) ToMap() (map[string]interface{}, error
 	if o.ParentName.IsSet() {
 		toSerialize["parentName"] = o.ParentName.Get()
 	}
-	if !isNil(o.Messages) {
+	if !IsNil(o.Messages) {
 		toSerialize["messages"] = o.Messages
 	}
 	if o.Progress.IsSet() {
 		toSerialize["progress"] = o.Progress.Get()
 	}
-	if !isNil(o.Attributes) {
+	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
-	if !isNil(o.Returns) {
+	if !IsNil(o.Returns) {
 		toSerialize["returns"] = o.Returns
 	}
 
@@ -627,16 +627,20 @@ func (o LoadUncorrelatedAccountsTaskTask) ToMap() (map[string]interface{}, error
 	return toSerialize, nil
 }
 
-func (o *LoadUncorrelatedAccountsTaskTask) UnmarshalJSON(bytes []byte) (err error) {
+func (o *LoadUncorrelatedAccountsTaskTask) UnmarshalJSON(data []byte) (err error) {
 	varLoadUncorrelatedAccountsTaskTask := _LoadUncorrelatedAccountsTaskTask{}
 
-	if err = json.Unmarshal(bytes, &varLoadUncorrelatedAccountsTaskTask); err == nil {
+	err = json.Unmarshal(data, &varLoadUncorrelatedAccountsTaskTask)
+
+	if err != nil {
+		return err
+	}
+
 	*o = LoadUncorrelatedAccountsTaskTask(varLoadUncorrelatedAccountsTaskTask)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "name")

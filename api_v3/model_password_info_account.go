@@ -47,7 +47,7 @@ func NewPasswordInfoAccountWithDefaults() *PasswordInfoAccount {
 
 // GetAccountId returns the AccountId field value if set, zero value otherwise.
 func (o *PasswordInfoAccount) GetAccountId() string {
-	if o == nil || isNil(o.AccountId) {
+	if o == nil || IsNil(o.AccountId) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *PasswordInfoAccount) GetAccountId() string {
 // GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordInfoAccount) GetAccountIdOk() (*string, bool) {
-	if o == nil || isNil(o.AccountId) {
+	if o == nil || IsNil(o.AccountId) {
 		return nil, false
 	}
 	return o.AccountId, true
@@ -65,7 +65,7 @@ func (o *PasswordInfoAccount) GetAccountIdOk() (*string, bool) {
 
 // HasAccountId returns a boolean if a field has been set.
 func (o *PasswordInfoAccount) HasAccountId() bool {
-	if o != nil && !isNil(o.AccountId) {
+	if o != nil && !IsNil(o.AccountId) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *PasswordInfoAccount) SetAccountId(v string) {
 
 // GetAccountName returns the AccountName field value if set, zero value otherwise.
 func (o *PasswordInfoAccount) GetAccountName() string {
-	if o == nil || isNil(o.AccountName) {
+	if o == nil || IsNil(o.AccountName) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *PasswordInfoAccount) GetAccountName() string {
 // GetAccountNameOk returns a tuple with the AccountName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordInfoAccount) GetAccountNameOk() (*string, bool) {
-	if o == nil || isNil(o.AccountName) {
+	if o == nil || IsNil(o.AccountName) {
 		return nil, false
 	}
 	return o.AccountName, true
@@ -97,7 +97,7 @@ func (o *PasswordInfoAccount) GetAccountNameOk() (*string, bool) {
 
 // HasAccountName returns a boolean if a field has been set.
 func (o *PasswordInfoAccount) HasAccountName() bool {
-	if o != nil && !isNil(o.AccountName) {
+	if o != nil && !IsNil(o.AccountName) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o PasswordInfoAccount) MarshalJSON() ([]byte, error) {
 
 func (o PasswordInfoAccount) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AccountId) {
+	if !IsNil(o.AccountId) {
 		toSerialize["accountId"] = o.AccountId
 	}
-	if !isNil(o.AccountName) {
+	if !IsNil(o.AccountName) {
 		toSerialize["accountName"] = o.AccountName
 	}
 
@@ -133,16 +133,20 @@ func (o PasswordInfoAccount) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *PasswordInfoAccount) UnmarshalJSON(bytes []byte) (err error) {
+func (o *PasswordInfoAccount) UnmarshalJSON(data []byte) (err error) {
 	varPasswordInfoAccount := _PasswordInfoAccount{}
 
-	if err = json.Unmarshal(bytes, &varPasswordInfoAccount); err == nil {
+	err = json.Unmarshal(data, &varPasswordInfoAccount)
+
+	if err != nil {
+		return err
+	}
+
 	*o = PasswordInfoAccount(varPasswordInfoAccount)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "accountId")
 		delete(additionalProperties, "accountName")
 		o.AdditionalProperties = additionalProperties

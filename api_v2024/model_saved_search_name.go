@@ -47,7 +47,7 @@ func NewSavedSearchNameWithDefaults() *SavedSearchName {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *SavedSearchName) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *SavedSearchName) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SavedSearchName) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -65,7 +65,7 @@ func (o *SavedSearchName) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *SavedSearchName) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *SavedSearchName) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SavedSearchName) GetDescription() string {
-	if o == nil || isNil(o.Description.Get()) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
@@ -129,7 +129,7 @@ func (o SavedSearchName) MarshalJSON() ([]byte, error) {
 
 func (o SavedSearchName) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 	if o.Description.IsSet() {
@@ -143,16 +143,20 @@ func (o SavedSearchName) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SavedSearchName) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SavedSearchName) UnmarshalJSON(data []byte) (err error) {
 	varSavedSearchName := _SavedSearchName{}
 
-	if err = json.Unmarshal(bytes, &varSavedSearchName); err == nil {
+	err = json.Unmarshal(data, &varSavedSearchName)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SavedSearchName(varSavedSearchName)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		o.AdditionalProperties = additionalProperties

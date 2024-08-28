@@ -19,14 +19,14 @@ import (
 
 func Test_api_beta_UIMetadataAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test UIMetadataAPIService GetTenantUiMetadata", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.UIMetadataAPI.GetTenantUiMetadata(context.Background()).Execute()
+		resp, httpRes, err := apiClient.UIMetadataAPI.GetTenantUiMetadata(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -38,7 +38,7 @@ func Test_api_beta_UIMetadataAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.UIMetadataAPI.SetTenantUiMetadata(context.Background()).Execute()
+		resp, httpRes, err := apiClient.UIMetadataAPI.SetTenantUiMetadata(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

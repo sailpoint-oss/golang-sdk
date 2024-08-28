@@ -50,7 +50,7 @@ func NewOwnsWithDefaults() *Owns {
 
 // GetSources returns the Sources field value if set, zero value otherwise.
 func (o *Owns) GetSources() []Reference {
-	if o == nil || isNil(o.Sources) {
+	if o == nil || IsNil(o.Sources) {
 		var ret []Reference
 		return ret
 	}
@@ -60,7 +60,7 @@ func (o *Owns) GetSources() []Reference {
 // GetSourcesOk returns a tuple with the Sources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Owns) GetSourcesOk() ([]Reference, bool) {
-	if o == nil || isNil(o.Sources) {
+	if o == nil || IsNil(o.Sources) {
 		return nil, false
 	}
 	return o.Sources, true
@@ -68,7 +68,7 @@ func (o *Owns) GetSourcesOk() ([]Reference, bool) {
 
 // HasSources returns a boolean if a field has been set.
 func (o *Owns) HasSources() bool {
-	if o != nil && !isNil(o.Sources) {
+	if o != nil && !IsNil(o.Sources) {
 		return true
 	}
 
@@ -82,7 +82,7 @@ func (o *Owns) SetSources(v []Reference) {
 
 // GetEntitlements returns the Entitlements field value if set, zero value otherwise.
 func (o *Owns) GetEntitlements() []Reference {
-	if o == nil || isNil(o.Entitlements) {
+	if o == nil || IsNil(o.Entitlements) {
 		var ret []Reference
 		return ret
 	}
@@ -92,7 +92,7 @@ func (o *Owns) GetEntitlements() []Reference {
 // GetEntitlementsOk returns a tuple with the Entitlements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Owns) GetEntitlementsOk() ([]Reference, bool) {
-	if o == nil || isNil(o.Entitlements) {
+	if o == nil || IsNil(o.Entitlements) {
 		return nil, false
 	}
 	return o.Entitlements, true
@@ -100,7 +100,7 @@ func (o *Owns) GetEntitlementsOk() ([]Reference, bool) {
 
 // HasEntitlements returns a boolean if a field has been set.
 func (o *Owns) HasEntitlements() bool {
-	if o != nil && !isNil(o.Entitlements) {
+	if o != nil && !IsNil(o.Entitlements) {
 		return true
 	}
 
@@ -114,7 +114,7 @@ func (o *Owns) SetEntitlements(v []Reference) {
 
 // GetAccessProfiles returns the AccessProfiles field value if set, zero value otherwise.
 func (o *Owns) GetAccessProfiles() []Reference {
-	if o == nil || isNil(o.AccessProfiles) {
+	if o == nil || IsNil(o.AccessProfiles) {
 		var ret []Reference
 		return ret
 	}
@@ -124,7 +124,7 @@ func (o *Owns) GetAccessProfiles() []Reference {
 // GetAccessProfilesOk returns a tuple with the AccessProfiles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Owns) GetAccessProfilesOk() ([]Reference, bool) {
-	if o == nil || isNil(o.AccessProfiles) {
+	if o == nil || IsNil(o.AccessProfiles) {
 		return nil, false
 	}
 	return o.AccessProfiles, true
@@ -132,7 +132,7 @@ func (o *Owns) GetAccessProfilesOk() ([]Reference, bool) {
 
 // HasAccessProfiles returns a boolean if a field has been set.
 func (o *Owns) HasAccessProfiles() bool {
-	if o != nil && !isNil(o.AccessProfiles) {
+	if o != nil && !IsNil(o.AccessProfiles) {
 		return true
 	}
 
@@ -146,7 +146,7 @@ func (o *Owns) SetAccessProfiles(v []Reference) {
 
 // GetRoles returns the Roles field value if set, zero value otherwise.
 func (o *Owns) GetRoles() []Reference {
-	if o == nil || isNil(o.Roles) {
+	if o == nil || IsNil(o.Roles) {
 		var ret []Reference
 		return ret
 	}
@@ -156,7 +156,7 @@ func (o *Owns) GetRoles() []Reference {
 // GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Owns) GetRolesOk() ([]Reference, bool) {
-	if o == nil || isNil(o.Roles) {
+	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
 	return o.Roles, true
@@ -164,7 +164,7 @@ func (o *Owns) GetRolesOk() ([]Reference, bool) {
 
 // HasRoles returns a boolean if a field has been set.
 func (o *Owns) HasRoles() bool {
-	if o != nil && !isNil(o.Roles) {
+	if o != nil && !IsNil(o.Roles) {
 		return true
 	}
 
@@ -178,7 +178,7 @@ func (o *Owns) SetRoles(v []Reference) {
 
 // GetApps returns the Apps field value if set, zero value otherwise.
 func (o *Owns) GetApps() []Reference {
-	if o == nil || isNil(o.Apps) {
+	if o == nil || IsNil(o.Apps) {
 		var ret []Reference
 		return ret
 	}
@@ -188,7 +188,7 @@ func (o *Owns) GetApps() []Reference {
 // GetAppsOk returns a tuple with the Apps field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Owns) GetAppsOk() ([]Reference, bool) {
-	if o == nil || isNil(o.Apps) {
+	if o == nil || IsNil(o.Apps) {
 		return nil, false
 	}
 	return o.Apps, true
@@ -196,7 +196,7 @@ func (o *Owns) GetAppsOk() ([]Reference, bool) {
 
 // HasApps returns a boolean if a field has been set.
 func (o *Owns) HasApps() bool {
-	if o != nil && !isNil(o.Apps) {
+	if o != nil && !IsNil(o.Apps) {
 		return true
 	}
 
@@ -210,7 +210,7 @@ func (o *Owns) SetApps(v []Reference) {
 
 // GetGovernanceGroups returns the GovernanceGroups field value if set, zero value otherwise.
 func (o *Owns) GetGovernanceGroups() []Reference {
-	if o == nil || isNil(o.GovernanceGroups) {
+	if o == nil || IsNil(o.GovernanceGroups) {
 		var ret []Reference
 		return ret
 	}
@@ -220,7 +220,7 @@ func (o *Owns) GetGovernanceGroups() []Reference {
 // GetGovernanceGroupsOk returns a tuple with the GovernanceGroups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Owns) GetGovernanceGroupsOk() ([]Reference, bool) {
-	if o == nil || isNil(o.GovernanceGroups) {
+	if o == nil || IsNil(o.GovernanceGroups) {
 		return nil, false
 	}
 	return o.GovernanceGroups, true
@@ -228,7 +228,7 @@ func (o *Owns) GetGovernanceGroupsOk() ([]Reference, bool) {
 
 // HasGovernanceGroups returns a boolean if a field has been set.
 func (o *Owns) HasGovernanceGroups() bool {
-	if o != nil && !isNil(o.GovernanceGroups) {
+	if o != nil && !IsNil(o.GovernanceGroups) {
 		return true
 	}
 
@@ -242,7 +242,7 @@ func (o *Owns) SetGovernanceGroups(v []Reference) {
 
 // GetFallbackApprover returns the FallbackApprover field value if set, zero value otherwise.
 func (o *Owns) GetFallbackApprover() bool {
-	if o == nil || isNil(o.FallbackApprover) {
+	if o == nil || IsNil(o.FallbackApprover) {
 		var ret bool
 		return ret
 	}
@@ -252,7 +252,7 @@ func (o *Owns) GetFallbackApprover() bool {
 // GetFallbackApproverOk returns a tuple with the FallbackApprover field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Owns) GetFallbackApproverOk() (*bool, bool) {
-	if o == nil || isNil(o.FallbackApprover) {
+	if o == nil || IsNil(o.FallbackApprover) {
 		return nil, false
 	}
 	return o.FallbackApprover, true
@@ -260,7 +260,7 @@ func (o *Owns) GetFallbackApproverOk() (*bool, bool) {
 
 // HasFallbackApprover returns a boolean if a field has been set.
 func (o *Owns) HasFallbackApprover() bool {
-	if o != nil && !isNil(o.FallbackApprover) {
+	if o != nil && !IsNil(o.FallbackApprover) {
 		return true
 	}
 
@@ -282,25 +282,25 @@ func (o Owns) MarshalJSON() ([]byte, error) {
 
 func (o Owns) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Sources) {
+	if !IsNil(o.Sources) {
 		toSerialize["sources"] = o.Sources
 	}
-	if !isNil(o.Entitlements) {
+	if !IsNil(o.Entitlements) {
 		toSerialize["entitlements"] = o.Entitlements
 	}
-	if !isNil(o.AccessProfiles) {
+	if !IsNil(o.AccessProfiles) {
 		toSerialize["accessProfiles"] = o.AccessProfiles
 	}
-	if !isNil(o.Roles) {
+	if !IsNil(o.Roles) {
 		toSerialize["roles"] = o.Roles
 	}
-	if !isNil(o.Apps) {
+	if !IsNil(o.Apps) {
 		toSerialize["apps"] = o.Apps
 	}
-	if !isNil(o.GovernanceGroups) {
+	if !IsNil(o.GovernanceGroups) {
 		toSerialize["governanceGroups"] = o.GovernanceGroups
 	}
-	if !isNil(o.FallbackApprover) {
+	if !IsNil(o.FallbackApprover) {
 		toSerialize["fallbackApprover"] = o.FallbackApprover
 	}
 
@@ -311,16 +311,20 @@ func (o Owns) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Owns) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Owns) UnmarshalJSON(data []byte) (err error) {
 	varOwns := _Owns{}
 
-	if err = json.Unmarshal(bytes, &varOwns); err == nil {
+	err = json.Unmarshal(data, &varOwns)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Owns(varOwns)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "sources")
 		delete(additionalProperties, "entitlements")
 		delete(additionalProperties, "accessProfiles")

@@ -47,7 +47,7 @@ func NewTranslationMessageWithDefaults() *TranslationMessage {
 
 // GetKey returns the Key field value if set, zero value otherwise.
 func (o *TranslationMessage) GetKey() string {
-	if o == nil || isNil(o.Key) {
+	if o == nil || IsNil(o.Key) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *TranslationMessage) GetKey() string {
 // GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TranslationMessage) GetKeyOk() (*string, bool) {
-	if o == nil || isNil(o.Key) {
+	if o == nil || IsNil(o.Key) {
 		return nil, false
 	}
 	return o.Key, true
@@ -65,7 +65,7 @@ func (o *TranslationMessage) GetKeyOk() (*string, bool) {
 
 // HasKey returns a boolean if a field has been set.
 func (o *TranslationMessage) HasKey() bool {
-	if o != nil && !isNil(o.Key) {
+	if o != nil && !IsNil(o.Key) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *TranslationMessage) SetKey(v string) {
 
 // GetValues returns the Values field value if set, zero value otherwise.
 func (o *TranslationMessage) GetValues() []string {
-	if o == nil || isNil(o.Values) {
+	if o == nil || IsNil(o.Values) {
 		var ret []string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *TranslationMessage) GetValues() []string {
 // GetValuesOk returns a tuple with the Values field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TranslationMessage) GetValuesOk() ([]string, bool) {
-	if o == nil || isNil(o.Values) {
+	if o == nil || IsNil(o.Values) {
 		return nil, false
 	}
 	return o.Values, true
@@ -97,7 +97,7 @@ func (o *TranslationMessage) GetValuesOk() ([]string, bool) {
 
 // HasValues returns a boolean if a field has been set.
 func (o *TranslationMessage) HasValues() bool {
-	if o != nil && !isNil(o.Values) {
+	if o != nil && !IsNil(o.Values) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o TranslationMessage) MarshalJSON() ([]byte, error) {
 
 func (o TranslationMessage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Key) {
+	if !IsNil(o.Key) {
 		toSerialize["key"] = o.Key
 	}
-	if !isNil(o.Values) {
+	if !IsNil(o.Values) {
 		toSerialize["values"] = o.Values
 	}
 
@@ -133,16 +133,20 @@ func (o TranslationMessage) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *TranslationMessage) UnmarshalJSON(bytes []byte) (err error) {
+func (o *TranslationMessage) UnmarshalJSON(data []byte) (err error) {
 	varTranslationMessage := _TranslationMessage{}
 
-	if err = json.Unmarshal(bytes, &varTranslationMessage); err == nil {
+	err = json.Unmarshal(data, &varTranslationMessage)
+
+	if err != nil {
+		return err
+	}
+
 	*o = TranslationMessage(varTranslationMessage)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "key")
 		delete(additionalProperties, "values")
 		o.AdditionalProperties = additionalProperties

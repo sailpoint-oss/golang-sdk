@@ -47,7 +47,7 @@ func NewEntityCreatedByDTOWithDefaults() *EntityCreatedByDTO {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *EntityCreatedByDTO) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *EntityCreatedByDTO) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntityCreatedByDTO) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -65,7 +65,7 @@ func (o *EntityCreatedByDTO) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *EntityCreatedByDTO) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *EntityCreatedByDTO) SetId(v string) {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *EntityCreatedByDTO) GetDisplayName() string {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *EntityCreatedByDTO) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntityCreatedByDTO) GetDisplayNameOk() (*string, bool) {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -97,7 +97,7 @@ func (o *EntityCreatedByDTO) GetDisplayNameOk() (*string, bool) {
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *EntityCreatedByDTO) HasDisplayName() bool {
-	if o != nil && !isNil(o.DisplayName) {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o EntityCreatedByDTO) MarshalJSON() ([]byte, error) {
 
 func (o EntityCreatedByDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.DisplayName) {
+	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
 
@@ -133,16 +133,20 @@ func (o EntityCreatedByDTO) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *EntityCreatedByDTO) UnmarshalJSON(bytes []byte) (err error) {
+func (o *EntityCreatedByDTO) UnmarshalJSON(data []byte) (err error) {
 	varEntityCreatedByDTO := _EntityCreatedByDTO{}
 
-	if err = json.Unmarshal(bytes, &varEntityCreatedByDTO); err == nil {
+	err = json.Unmarshal(data, &varEntityCreatedByDTO)
+
+	if err != nil {
+		return err
+	}
+
 	*o = EntityCreatedByDTO(varEntityCreatedByDTO)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "displayName")
 		o.AdditionalProperties = additionalProperties

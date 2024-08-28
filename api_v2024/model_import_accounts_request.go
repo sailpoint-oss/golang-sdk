@@ -48,7 +48,7 @@ func NewImportAccountsRequestWithDefaults() *ImportAccountsRequest {
 
 // GetFile returns the File field value if set, zero value otherwise.
 func (o *ImportAccountsRequest) GetFile() *os.File {
-	if o == nil || isNil(o.File) {
+	if o == nil || IsNil(o.File) {
 		var ret *os.File
 		return ret
 	}
@@ -58,7 +58,7 @@ func (o *ImportAccountsRequest) GetFile() *os.File {
 // GetFileOk returns a tuple with the File field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImportAccountsRequest) GetFileOk() (**os.File, bool) {
-	if o == nil || isNil(o.File) {
+	if o == nil || IsNil(o.File) {
 		return nil, false
 	}
 	return o.File, true
@@ -66,7 +66,7 @@ func (o *ImportAccountsRequest) GetFileOk() (**os.File, bool) {
 
 // HasFile returns a boolean if a field has been set.
 func (o *ImportAccountsRequest) HasFile() bool {
-	if o != nil && !isNil(o.File) {
+	if o != nil && !IsNil(o.File) {
 		return true
 	}
 
@@ -80,7 +80,7 @@ func (o *ImportAccountsRequest) SetFile(v *os.File) {
 
 // GetDisableOptimization returns the DisableOptimization field value if set, zero value otherwise.
 func (o *ImportAccountsRequest) GetDisableOptimization() string {
-	if o == nil || isNil(o.DisableOptimization) {
+	if o == nil || IsNil(o.DisableOptimization) {
 		var ret string
 		return ret
 	}
@@ -90,7 +90,7 @@ func (o *ImportAccountsRequest) GetDisableOptimization() string {
 // GetDisableOptimizationOk returns a tuple with the DisableOptimization field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImportAccountsRequest) GetDisableOptimizationOk() (*string, bool) {
-	if o == nil || isNil(o.DisableOptimization) {
+	if o == nil || IsNil(o.DisableOptimization) {
 		return nil, false
 	}
 	return o.DisableOptimization, true
@@ -98,7 +98,7 @@ func (o *ImportAccountsRequest) GetDisableOptimizationOk() (*string, bool) {
 
 // HasDisableOptimization returns a boolean if a field has been set.
 func (o *ImportAccountsRequest) HasDisableOptimization() bool {
-	if o != nil && !isNil(o.DisableOptimization) {
+	if o != nil && !IsNil(o.DisableOptimization) {
 		return true
 	}
 
@@ -120,10 +120,10 @@ func (o ImportAccountsRequest) MarshalJSON() ([]byte, error) {
 
 func (o ImportAccountsRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.File) {
+	if !IsNil(o.File) {
 		toSerialize["file"] = o.File
 	}
-	if !isNil(o.DisableOptimization) {
+	if !IsNil(o.DisableOptimization) {
 		toSerialize["disableOptimization"] = o.DisableOptimization
 	}
 
@@ -134,16 +134,20 @@ func (o ImportAccountsRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ImportAccountsRequest) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ImportAccountsRequest) UnmarshalJSON(data []byte) (err error) {
 	varImportAccountsRequest := _ImportAccountsRequest{}
 
-	if err = json.Unmarshal(bytes, &varImportAccountsRequest); err == nil {
+	err = json.Unmarshal(data, &varImportAccountsRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ImportAccountsRequest(varImportAccountsRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "file")
 		delete(additionalProperties, "disableOptimization")
 		o.AdditionalProperties = additionalProperties

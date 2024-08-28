@@ -81,7 +81,7 @@ func NewBaseAccountWithDefaults() *BaseAccount {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *BaseAccount) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *BaseAccount) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BaseAccount) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -99,7 +99,7 @@ func (o *BaseAccount) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *BaseAccount) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *BaseAccount) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *BaseAccount) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *BaseAccount) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BaseAccount) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -131,7 +131,7 @@ func (o *BaseAccount) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *BaseAccount) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -145,7 +145,7 @@ func (o *BaseAccount) SetName(v string) {
 
 // GetAccountId returns the AccountId field value if set, zero value otherwise.
 func (o *BaseAccount) GetAccountId() string {
-	if o == nil || isNil(o.AccountId) {
+	if o == nil || IsNil(o.AccountId) {
 		var ret string
 		return ret
 	}
@@ -155,7 +155,7 @@ func (o *BaseAccount) GetAccountId() string {
 // GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BaseAccount) GetAccountIdOk() (*string, bool) {
-	if o == nil || isNil(o.AccountId) {
+	if o == nil || IsNil(o.AccountId) {
 		return nil, false
 	}
 	return o.AccountId, true
@@ -163,7 +163,7 @@ func (o *BaseAccount) GetAccountIdOk() (*string, bool) {
 
 // HasAccountId returns a boolean if a field has been set.
 func (o *BaseAccount) HasAccountId() bool {
-	if o != nil && !isNil(o.AccountId) {
+	if o != nil && !IsNil(o.AccountId) {
 		return true
 	}
 
@@ -177,7 +177,7 @@ func (o *BaseAccount) SetAccountId(v string) {
 
 // GetSource returns the Source field value if set, zero value otherwise.
 func (o *BaseAccount) GetSource() AccountSource {
-	if o == nil || isNil(o.Source) {
+	if o == nil || IsNil(o.Source) {
 		var ret AccountSource
 		return ret
 	}
@@ -187,7 +187,7 @@ func (o *BaseAccount) GetSource() AccountSource {
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BaseAccount) GetSourceOk() (*AccountSource, bool) {
-	if o == nil || isNil(o.Source) {
+	if o == nil || IsNil(o.Source) {
 		return nil, false
 	}
 	return o.Source, true
@@ -195,7 +195,7 @@ func (o *BaseAccount) GetSourceOk() (*AccountSource, bool) {
 
 // HasSource returns a boolean if a field has been set.
 func (o *BaseAccount) HasSource() bool {
-	if o != nil && !isNil(o.Source) {
+	if o != nil && !IsNil(o.Source) {
 		return true
 	}
 
@@ -209,7 +209,7 @@ func (o *BaseAccount) SetSource(v AccountSource) {
 
 // GetDisabled returns the Disabled field value if set, zero value otherwise.
 func (o *BaseAccount) GetDisabled() bool {
-	if o == nil || isNil(o.Disabled) {
+	if o == nil || IsNil(o.Disabled) {
 		var ret bool
 		return ret
 	}
@@ -219,7 +219,7 @@ func (o *BaseAccount) GetDisabled() bool {
 // GetDisabledOk returns a tuple with the Disabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BaseAccount) GetDisabledOk() (*bool, bool) {
-	if o == nil || isNil(o.Disabled) {
+	if o == nil || IsNil(o.Disabled) {
 		return nil, false
 	}
 	return o.Disabled, true
@@ -227,7 +227,7 @@ func (o *BaseAccount) GetDisabledOk() (*bool, bool) {
 
 // HasDisabled returns a boolean if a field has been set.
 func (o *BaseAccount) HasDisabled() bool {
-	if o != nil && !isNil(o.Disabled) {
+	if o != nil && !IsNil(o.Disabled) {
 		return true
 	}
 
@@ -241,7 +241,7 @@ func (o *BaseAccount) SetDisabled(v bool) {
 
 // GetLocked returns the Locked field value if set, zero value otherwise.
 func (o *BaseAccount) GetLocked() bool {
-	if o == nil || isNil(o.Locked) {
+	if o == nil || IsNil(o.Locked) {
 		var ret bool
 		return ret
 	}
@@ -251,7 +251,7 @@ func (o *BaseAccount) GetLocked() bool {
 // GetLockedOk returns a tuple with the Locked field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BaseAccount) GetLockedOk() (*bool, bool) {
-	if o == nil || isNil(o.Locked) {
+	if o == nil || IsNil(o.Locked) {
 		return nil, false
 	}
 	return o.Locked, true
@@ -259,7 +259,7 @@ func (o *BaseAccount) GetLockedOk() (*bool, bool) {
 
 // HasLocked returns a boolean if a field has been set.
 func (o *BaseAccount) HasLocked() bool {
-	if o != nil && !isNil(o.Locked) {
+	if o != nil && !IsNil(o.Locked) {
 		return true
 	}
 
@@ -273,7 +273,7 @@ func (o *BaseAccount) SetLocked(v bool) {
 
 // GetPrivileged returns the Privileged field value if set, zero value otherwise.
 func (o *BaseAccount) GetPrivileged() bool {
-	if o == nil || isNil(o.Privileged) {
+	if o == nil || IsNil(o.Privileged) {
 		var ret bool
 		return ret
 	}
@@ -283,7 +283,7 @@ func (o *BaseAccount) GetPrivileged() bool {
 // GetPrivilegedOk returns a tuple with the Privileged field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BaseAccount) GetPrivilegedOk() (*bool, bool) {
-	if o == nil || isNil(o.Privileged) {
+	if o == nil || IsNil(o.Privileged) {
 		return nil, false
 	}
 	return o.Privileged, true
@@ -291,7 +291,7 @@ func (o *BaseAccount) GetPrivilegedOk() (*bool, bool) {
 
 // HasPrivileged returns a boolean if a field has been set.
 func (o *BaseAccount) HasPrivileged() bool {
-	if o != nil && !isNil(o.Privileged) {
+	if o != nil && !IsNil(o.Privileged) {
 		return true
 	}
 
@@ -305,7 +305,7 @@ func (o *BaseAccount) SetPrivileged(v bool) {
 
 // GetManuallyCorrelated returns the ManuallyCorrelated field value if set, zero value otherwise.
 func (o *BaseAccount) GetManuallyCorrelated() bool {
-	if o == nil || isNil(o.ManuallyCorrelated) {
+	if o == nil || IsNil(o.ManuallyCorrelated) {
 		var ret bool
 		return ret
 	}
@@ -315,7 +315,7 @@ func (o *BaseAccount) GetManuallyCorrelated() bool {
 // GetManuallyCorrelatedOk returns a tuple with the ManuallyCorrelated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BaseAccount) GetManuallyCorrelatedOk() (*bool, bool) {
-	if o == nil || isNil(o.ManuallyCorrelated) {
+	if o == nil || IsNil(o.ManuallyCorrelated) {
 		return nil, false
 	}
 	return o.ManuallyCorrelated, true
@@ -323,7 +323,7 @@ func (o *BaseAccount) GetManuallyCorrelatedOk() (*bool, bool) {
 
 // HasManuallyCorrelated returns a boolean if a field has been set.
 func (o *BaseAccount) HasManuallyCorrelated() bool {
-	if o != nil && !isNil(o.ManuallyCorrelated) {
+	if o != nil && !IsNil(o.ManuallyCorrelated) {
 		return true
 	}
 
@@ -337,7 +337,7 @@ func (o *BaseAccount) SetManuallyCorrelated(v bool) {
 
 // GetPasswordLastSet returns the PasswordLastSet field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BaseAccount) GetPasswordLastSet() time.Time {
-	if o == nil || isNil(o.PasswordLastSet.Get()) {
+	if o == nil || IsNil(o.PasswordLastSet.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -390,7 +390,7 @@ func (o *BaseAccount) GetEntitlementAttributes() map[string]interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BaseAccount) GetEntitlementAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.EntitlementAttributes) {
+	if o == nil || IsNil(o.EntitlementAttributes) {
 		return map[string]interface{}{}, false
 	}
 	return o.EntitlementAttributes, true
@@ -398,7 +398,7 @@ func (o *BaseAccount) GetEntitlementAttributesOk() (map[string]interface{}, bool
 
 // HasEntitlementAttributes returns a boolean if a field has been set.
 func (o *BaseAccount) HasEntitlementAttributes() bool {
-	if o != nil && isNil(o.EntitlementAttributes) {
+	if o != nil && !IsNil(o.EntitlementAttributes) {
 		return true
 	}
 
@@ -412,7 +412,7 @@ func (o *BaseAccount) SetEntitlementAttributes(v map[string]interface{}) {
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BaseAccount) GetCreated() time.Time {
-	if o == nil || isNil(o.Created.Get()) {
+	if o == nil || IsNil(o.Created.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -462,28 +462,28 @@ func (o BaseAccount) MarshalJSON() ([]byte, error) {
 
 func (o BaseAccount) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.AccountId) {
+	if !IsNil(o.AccountId) {
 		toSerialize["accountId"] = o.AccountId
 	}
-	if !isNil(o.Source) {
+	if !IsNil(o.Source) {
 		toSerialize["source"] = o.Source
 	}
-	if !isNil(o.Disabled) {
+	if !IsNil(o.Disabled) {
 		toSerialize["disabled"] = o.Disabled
 	}
-	if !isNil(o.Locked) {
+	if !IsNil(o.Locked) {
 		toSerialize["locked"] = o.Locked
 	}
-	if !isNil(o.Privileged) {
+	if !IsNil(o.Privileged) {
 		toSerialize["privileged"] = o.Privileged
 	}
-	if !isNil(o.ManuallyCorrelated) {
+	if !IsNil(o.ManuallyCorrelated) {
 		toSerialize["manuallyCorrelated"] = o.ManuallyCorrelated
 	}
 	if o.PasswordLastSet.IsSet() {
@@ -503,16 +503,20 @@ func (o BaseAccount) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *BaseAccount) UnmarshalJSON(bytes []byte) (err error) {
+func (o *BaseAccount) UnmarshalJSON(data []byte) (err error) {
 	varBaseAccount := _BaseAccount{}
 
-	if err = json.Unmarshal(bytes, &varBaseAccount); err == nil {
+	err = json.Unmarshal(data, &varBaseAccount)
+
+	if err != nil {
+		return err
+	}
+
 	*o = BaseAccount(varBaseAccount)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "accountId")

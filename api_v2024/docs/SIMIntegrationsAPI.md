@@ -28,25 +28,25 @@ Create new SIM integration
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
-    simIntegrationDetails := *openapiclient.NewSimIntegrationDetails("aName") // SimIntegrationDetails | DTO containing the details of the SIM integration
+	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
+	simIntegrationDetails := *openapiclient.NewSimIntegrationDetails("aName") // SimIntegrationDetails | DTO containing the details of the SIM integration
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SIMIntegrationsAPI.CreateSIMIntegration(context.Background()).XSailPointExperimental(xSailPointExperimental).SimIntegrationDetails(simIntegrationDetails).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.CreateSIMIntegration``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateSIMIntegration`: ServiceDeskIntegrationDto1
-    fmt.Fprintf(os.Stdout, "Response from `SIMIntegrationsAPI.CreateSIMIntegration`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SIMIntegrationsAPI.CreateSIMIntegration(context.Background()).XSailPointExperimental(xSailPointExperimental).SimIntegrationDetails(simIntegrationDetails).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.CreateSIMIntegration``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateSIMIntegration`: ServiceDeskIntegrationDto1
+	fmt.Fprintf(os.Stdout, "Response from `SIMIntegrationsAPI.CreateSIMIntegration`: %v\n", resp)
 }
 ```
 
@@ -96,23 +96,23 @@ Delete a SIM integration
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := "12345" // string | The id of the integration to delete.
-    xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
+	id := "12345" // string | The id of the integration to delete.
+	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.SIMIntegrationsAPI.DeleteSIMIntegration(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.DeleteSIMIntegration``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.SIMIntegrationsAPI.DeleteSIMIntegration(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.DeleteSIMIntegration``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -166,25 +166,25 @@ Get a SIM integration details.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := "12345" // string | The id of the integration.
-    xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
+	id := "12345" // string | The id of the integration.
+	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SIMIntegrationsAPI.GetSIMIntegration(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.GetSIMIntegration``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetSIMIntegration`: ServiceDeskIntegrationDto1
-    fmt.Fprintf(os.Stdout, "Response from `SIMIntegrationsAPI.GetSIMIntegration`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SIMIntegrationsAPI.GetSIMIntegration(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.GetSIMIntegration``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetSIMIntegration`: ServiceDeskIntegrationDto1
+	fmt.Fprintf(os.Stdout, "Response from `SIMIntegrationsAPI.GetSIMIntegration`: %v\n", resp)
 }
 ```
 
@@ -238,24 +238,24 @@ List the existing SIM integrations.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
+	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SIMIntegrationsAPI.GetSIMIntegrations(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.GetSIMIntegrations``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetSIMIntegrations`: ServiceDeskIntegrationDto1
-    fmt.Fprintf(os.Stdout, "Response from `SIMIntegrationsAPI.GetSIMIntegrations`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SIMIntegrationsAPI.GetSIMIntegrations(context.Background()).XSailPointExperimental(xSailPointExperimental).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.GetSIMIntegrations``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetSIMIntegrations`: ServiceDeskIntegrationDto1
+	fmt.Fprintf(os.Stdout, "Response from `SIMIntegrationsAPI.GetSIMIntegrations`: %v\n", resp)
 }
 ```
 
@@ -304,26 +304,26 @@ Patch a SIM beforeProvisioningRule attribute.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := "12345" // string | SIM integration id
-    xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
-    jsonPatch := *openapiclient.NewJsonPatch() // JsonPatch | The JsonPatch object that describes the changes of SIM beforeProvisioningRule.
+	id := "12345" // string | SIM integration id
+	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
+	jsonPatch := *openapiclient.NewJsonPatch() // JsonPatch | The JsonPatch object that describes the changes of SIM beforeProvisioningRule.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SIMIntegrationsAPI.PatchBeforeProvisioningRule(context.Background(), id).XSailPointExperimental(xSailPointExperimental).JsonPatch(jsonPatch).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.PatchBeforeProvisioningRule``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PatchBeforeProvisioningRule`: ServiceDeskIntegrationDto1
-    fmt.Fprintf(os.Stdout, "Response from `SIMIntegrationsAPI.PatchBeforeProvisioningRule`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SIMIntegrationsAPI.PatchBeforeProvisioningRule(context.Background(), id).XSailPointExperimental(xSailPointExperimental).JsonPatch(jsonPatch).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.PatchBeforeProvisioningRule``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PatchBeforeProvisioningRule`: ServiceDeskIntegrationDto1
+	fmt.Fprintf(os.Stdout, "Response from `SIMIntegrationsAPI.PatchBeforeProvisioningRule`: %v\n", resp)
 }
 ```
 
@@ -378,26 +378,26 @@ Patch a SIM attribute.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := "12345" // string | SIM integration id
-    xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
-    jsonPatch := *openapiclient.NewJsonPatch() // JsonPatch | The JsonPatch object that describes the changes of SIM
+	id := "12345" // string | SIM integration id
+	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
+	jsonPatch := *openapiclient.NewJsonPatch() // JsonPatch | The JsonPatch object that describes the changes of SIM
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SIMIntegrationsAPI.PatchSIMAttributes(context.Background(), id).XSailPointExperimental(xSailPointExperimental).JsonPatch(jsonPatch).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.PatchSIMAttributes``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PatchSIMAttributes`: ServiceDeskIntegrationDto1
-    fmt.Fprintf(os.Stdout, "Response from `SIMIntegrationsAPI.PatchSIMAttributes`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SIMIntegrationsAPI.PatchSIMAttributes(context.Background(), id).XSailPointExperimental(xSailPointExperimental).JsonPatch(jsonPatch).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.PatchSIMAttributes``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PatchSIMAttributes`: ServiceDeskIntegrationDto1
+	fmt.Fprintf(os.Stdout, "Response from `SIMIntegrationsAPI.PatchSIMAttributes`: %v\n", resp)
 }
 ```
 
@@ -452,26 +452,26 @@ Update an existing SIM integration
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := "12345" // string | The id of the integration.
-    xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
-    simIntegrationDetails := *openapiclient.NewSimIntegrationDetails("aName") // SimIntegrationDetails | The full DTO of the integration containing the updated model
+	id := "12345" // string | The id of the integration.
+	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
+	simIntegrationDetails := *openapiclient.NewSimIntegrationDetails("aName") // SimIntegrationDetails | The full DTO of the integration containing the updated model
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SIMIntegrationsAPI.PutSIMIntegration(context.Background(), id).XSailPointExperimental(xSailPointExperimental).SimIntegrationDetails(simIntegrationDetails).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.PutSIMIntegration``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PutSIMIntegration`: ServiceDeskIntegrationDto1
-    fmt.Fprintf(os.Stdout, "Response from `SIMIntegrationsAPI.PutSIMIntegration`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SIMIntegrationsAPI.PutSIMIntegration(context.Background(), id).XSailPointExperimental(xSailPointExperimental).SimIntegrationDetails(simIntegrationDetails).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SIMIntegrationsAPI.PutSIMIntegration``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PutSIMIntegration`: ServiceDeskIntegrationDto1
+	fmt.Fprintf(os.Stdout, "Response from `SIMIntegrationsAPI.PutSIMIntegration`: %v\n", resp)
 }
 ```
 

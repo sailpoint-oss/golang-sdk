@@ -59,7 +59,7 @@ func NewRecommendationConfigDtoWithDefaults() *RecommendationConfigDto {
 
 // GetRecommenderFeatures returns the RecommenderFeatures field value if set, zero value otherwise.
 func (o *RecommendationConfigDto) GetRecommenderFeatures() []string {
-	if o == nil || isNil(o.RecommenderFeatures) {
+	if o == nil || IsNil(o.RecommenderFeatures) {
 		var ret []string
 		return ret
 	}
@@ -69,7 +69,7 @@ func (o *RecommendationConfigDto) GetRecommenderFeatures() []string {
 // GetRecommenderFeaturesOk returns a tuple with the RecommenderFeatures field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RecommendationConfigDto) GetRecommenderFeaturesOk() ([]string, bool) {
-	if o == nil || isNil(o.RecommenderFeatures) {
+	if o == nil || IsNil(o.RecommenderFeatures) {
 		return nil, false
 	}
 	return o.RecommenderFeatures, true
@@ -77,7 +77,7 @@ func (o *RecommendationConfigDto) GetRecommenderFeaturesOk() ([]string, bool) {
 
 // HasRecommenderFeatures returns a boolean if a field has been set.
 func (o *RecommendationConfigDto) HasRecommenderFeatures() bool {
-	if o != nil && !isNil(o.RecommenderFeatures) {
+	if o != nil && !IsNil(o.RecommenderFeatures) {
 		return true
 	}
 
@@ -91,7 +91,7 @@ func (o *RecommendationConfigDto) SetRecommenderFeatures(v []string) {
 
 // GetPeerGroupPercentageThreshold returns the PeerGroupPercentageThreshold field value if set, zero value otherwise.
 func (o *RecommendationConfigDto) GetPeerGroupPercentageThreshold() float32 {
-	if o == nil || isNil(o.PeerGroupPercentageThreshold) {
+	if o == nil || IsNil(o.PeerGroupPercentageThreshold) {
 		var ret float32
 		return ret
 	}
@@ -101,7 +101,7 @@ func (o *RecommendationConfigDto) GetPeerGroupPercentageThreshold() float32 {
 // GetPeerGroupPercentageThresholdOk returns a tuple with the PeerGroupPercentageThreshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RecommendationConfigDto) GetPeerGroupPercentageThresholdOk() (*float32, bool) {
-	if o == nil || isNil(o.PeerGroupPercentageThreshold) {
+	if o == nil || IsNil(o.PeerGroupPercentageThreshold) {
 		return nil, false
 	}
 	return o.PeerGroupPercentageThreshold, true
@@ -109,7 +109,7 @@ func (o *RecommendationConfigDto) GetPeerGroupPercentageThresholdOk() (*float32,
 
 // HasPeerGroupPercentageThreshold returns a boolean if a field has been set.
 func (o *RecommendationConfigDto) HasPeerGroupPercentageThreshold() bool {
-	if o != nil && !isNil(o.PeerGroupPercentageThreshold) {
+	if o != nil && !IsNil(o.PeerGroupPercentageThreshold) {
 		return true
 	}
 
@@ -123,7 +123,7 @@ func (o *RecommendationConfigDto) SetPeerGroupPercentageThreshold(v float32) {
 
 // GetRunAutoSelectOnce returns the RunAutoSelectOnce field value if set, zero value otherwise.
 func (o *RecommendationConfigDto) GetRunAutoSelectOnce() bool {
-	if o == nil || isNil(o.RunAutoSelectOnce) {
+	if o == nil || IsNil(o.RunAutoSelectOnce) {
 		var ret bool
 		return ret
 	}
@@ -133,7 +133,7 @@ func (o *RecommendationConfigDto) GetRunAutoSelectOnce() bool {
 // GetRunAutoSelectOnceOk returns a tuple with the RunAutoSelectOnce field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RecommendationConfigDto) GetRunAutoSelectOnceOk() (*bool, bool) {
-	if o == nil || isNil(o.RunAutoSelectOnce) {
+	if o == nil || IsNil(o.RunAutoSelectOnce) {
 		return nil, false
 	}
 	return o.RunAutoSelectOnce, true
@@ -141,7 +141,7 @@ func (o *RecommendationConfigDto) GetRunAutoSelectOnceOk() (*bool, bool) {
 
 // HasRunAutoSelectOnce returns a boolean if a field has been set.
 func (o *RecommendationConfigDto) HasRunAutoSelectOnce() bool {
-	if o != nil && !isNil(o.RunAutoSelectOnce) {
+	if o != nil && !IsNil(o.RunAutoSelectOnce) {
 		return true
 	}
 
@@ -155,7 +155,7 @@ func (o *RecommendationConfigDto) SetRunAutoSelectOnce(v bool) {
 
 // GetOnlyTuneThreshold returns the OnlyTuneThreshold field value if set, zero value otherwise.
 func (o *RecommendationConfigDto) GetOnlyTuneThreshold() bool {
-	if o == nil || isNil(o.OnlyTuneThreshold) {
+	if o == nil || IsNil(o.OnlyTuneThreshold) {
 		var ret bool
 		return ret
 	}
@@ -165,7 +165,7 @@ func (o *RecommendationConfigDto) GetOnlyTuneThreshold() bool {
 // GetOnlyTuneThresholdOk returns a tuple with the OnlyTuneThreshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RecommendationConfigDto) GetOnlyTuneThresholdOk() (*bool, bool) {
-	if o == nil || isNil(o.OnlyTuneThreshold) {
+	if o == nil || IsNil(o.OnlyTuneThreshold) {
 		return nil, false
 	}
 	return o.OnlyTuneThreshold, true
@@ -173,7 +173,7 @@ func (o *RecommendationConfigDto) GetOnlyTuneThresholdOk() (*bool, bool) {
 
 // HasOnlyTuneThreshold returns a boolean if a field has been set.
 func (o *RecommendationConfigDto) HasOnlyTuneThreshold() bool {
-	if o != nil && !isNil(o.OnlyTuneThreshold) {
+	if o != nil && !IsNil(o.OnlyTuneThreshold) {
 		return true
 	}
 
@@ -195,16 +195,16 @@ func (o RecommendationConfigDto) MarshalJSON() ([]byte, error) {
 
 func (o RecommendationConfigDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.RecommenderFeatures) {
+	if !IsNil(o.RecommenderFeatures) {
 		toSerialize["recommenderFeatures"] = o.RecommenderFeatures
 	}
-	if !isNil(o.PeerGroupPercentageThreshold) {
+	if !IsNil(o.PeerGroupPercentageThreshold) {
 		toSerialize["peerGroupPercentageThreshold"] = o.PeerGroupPercentageThreshold
 	}
-	if !isNil(o.RunAutoSelectOnce) {
+	if !IsNil(o.RunAutoSelectOnce) {
 		toSerialize["runAutoSelectOnce"] = o.RunAutoSelectOnce
 	}
-	if !isNil(o.OnlyTuneThreshold) {
+	if !IsNil(o.OnlyTuneThreshold) {
 		toSerialize["onlyTuneThreshold"] = o.OnlyTuneThreshold
 	}
 
@@ -215,16 +215,20 @@ func (o RecommendationConfigDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *RecommendationConfigDto) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RecommendationConfigDto) UnmarshalJSON(data []byte) (err error) {
 	varRecommendationConfigDto := _RecommendationConfigDto{}
 
-	if err = json.Unmarshal(bytes, &varRecommendationConfigDto); err == nil {
+	err = json.Unmarshal(data, &varRecommendationConfigDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RecommendationConfigDto(varRecommendationConfigDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "recommenderFeatures")
 		delete(additionalProperties, "peerGroupPercentageThreshold")
 		delete(additionalProperties, "runAutoSelectOnce")

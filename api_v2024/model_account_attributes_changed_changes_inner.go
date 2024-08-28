@@ -146,8 +146,8 @@ func (o AccountAttributesChangedChangesInner) ToMap() (map[string]interface{}, e
 	return toSerialize, nil
 }
 
-func (o *AccountAttributesChangedChangesInner) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *AccountAttributesChangedChangesInner) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -158,7 +158,7 @@ func (o *AccountAttributesChangedChangesInner) UnmarshalJSON(bytes []byte) (err 
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -172,13 +172,17 @@ func (o *AccountAttributesChangedChangesInner) UnmarshalJSON(bytes []byte) (err 
 
 	varAccountAttributesChangedChangesInner := _AccountAttributesChangedChangesInner{}
 
-	if err = json.Unmarshal(bytes, &varAccountAttributesChangedChangesInner); err == nil {
+	err = json.Unmarshal(data, &varAccountAttributesChangedChangesInner)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccountAttributesChangedChangesInner(varAccountAttributesChangedChangesInner)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "attribute")
 		delete(additionalProperties, "oldValue")
 		delete(additionalProperties, "newValue")

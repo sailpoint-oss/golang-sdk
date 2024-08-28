@@ -59,7 +59,7 @@ func NewCreateFormDefinitionRequestWithDefaults() *CreateFormDefinitionRequest {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *CreateFormDefinitionRequest) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -69,7 +69,7 @@ func (o *CreateFormDefinitionRequest) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateFormDefinitionRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -77,7 +77,7 @@ func (o *CreateFormDefinitionRequest) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *CreateFormDefinitionRequest) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -91,7 +91,7 @@ func (o *CreateFormDefinitionRequest) SetDescription(v string) {
 
 // GetFormConditions returns the FormConditions field value if set, zero value otherwise.
 func (o *CreateFormDefinitionRequest) GetFormConditions() []FormCondition {
-	if o == nil || isNil(o.FormConditions) {
+	if o == nil || IsNil(o.FormConditions) {
 		var ret []FormCondition
 		return ret
 	}
@@ -101,7 +101,7 @@ func (o *CreateFormDefinitionRequest) GetFormConditions() []FormCondition {
 // GetFormConditionsOk returns a tuple with the FormConditions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateFormDefinitionRequest) GetFormConditionsOk() ([]FormCondition, bool) {
-	if o == nil || isNil(o.FormConditions) {
+	if o == nil || IsNil(o.FormConditions) {
 		return nil, false
 	}
 	return o.FormConditions, true
@@ -109,7 +109,7 @@ func (o *CreateFormDefinitionRequest) GetFormConditionsOk() ([]FormCondition, bo
 
 // HasFormConditions returns a boolean if a field has been set.
 func (o *CreateFormDefinitionRequest) HasFormConditions() bool {
-	if o != nil && !isNil(o.FormConditions) {
+	if o != nil && !IsNil(o.FormConditions) {
 		return true
 	}
 
@@ -123,7 +123,7 @@ func (o *CreateFormDefinitionRequest) SetFormConditions(v []FormCondition) {
 
 // GetFormElements returns the FormElements field value if set, zero value otherwise.
 func (o *CreateFormDefinitionRequest) GetFormElements() []FormElement {
-	if o == nil || isNil(o.FormElements) {
+	if o == nil || IsNil(o.FormElements) {
 		var ret []FormElement
 		return ret
 	}
@@ -133,7 +133,7 @@ func (o *CreateFormDefinitionRequest) GetFormElements() []FormElement {
 // GetFormElementsOk returns a tuple with the FormElements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateFormDefinitionRequest) GetFormElementsOk() ([]FormElement, bool) {
-	if o == nil || isNil(o.FormElements) {
+	if o == nil || IsNil(o.FormElements) {
 		return nil, false
 	}
 	return o.FormElements, true
@@ -141,7 +141,7 @@ func (o *CreateFormDefinitionRequest) GetFormElementsOk() ([]FormElement, bool) 
 
 // HasFormElements returns a boolean if a field has been set.
 func (o *CreateFormDefinitionRequest) HasFormElements() bool {
-	if o != nil && !isNil(o.FormElements) {
+	if o != nil && !IsNil(o.FormElements) {
 		return true
 	}
 
@@ -155,7 +155,7 @@ func (o *CreateFormDefinitionRequest) SetFormElements(v []FormElement) {
 
 // GetFormInput returns the FormInput field value if set, zero value otherwise.
 func (o *CreateFormDefinitionRequest) GetFormInput() []FormDefinitionInput {
-	if o == nil || isNil(o.FormInput) {
+	if o == nil || IsNil(o.FormInput) {
 		var ret []FormDefinitionInput
 		return ret
 	}
@@ -165,7 +165,7 @@ func (o *CreateFormDefinitionRequest) GetFormInput() []FormDefinitionInput {
 // GetFormInputOk returns a tuple with the FormInput field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateFormDefinitionRequest) GetFormInputOk() ([]FormDefinitionInput, bool) {
-	if o == nil || isNil(o.FormInput) {
+	if o == nil || IsNil(o.FormInput) {
 		return nil, false
 	}
 	return o.FormInput, true
@@ -173,7 +173,7 @@ func (o *CreateFormDefinitionRequest) GetFormInputOk() ([]FormDefinitionInput, b
 
 // HasFormInput returns a boolean if a field has been set.
 func (o *CreateFormDefinitionRequest) HasFormInput() bool {
-	if o != nil && !isNil(o.FormInput) {
+	if o != nil && !IsNil(o.FormInput) {
 		return true
 	}
 
@@ -235,7 +235,7 @@ func (o *CreateFormDefinitionRequest) SetOwner(v FormOwner) {
 
 // GetUsedBy returns the UsedBy field value if set, zero value otherwise.
 func (o *CreateFormDefinitionRequest) GetUsedBy() []FormUsedBy {
-	if o == nil || isNil(o.UsedBy) {
+	if o == nil || IsNil(o.UsedBy) {
 		var ret []FormUsedBy
 		return ret
 	}
@@ -245,7 +245,7 @@ func (o *CreateFormDefinitionRequest) GetUsedBy() []FormUsedBy {
 // GetUsedByOk returns a tuple with the UsedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateFormDefinitionRequest) GetUsedByOk() ([]FormUsedBy, bool) {
-	if o == nil || isNil(o.UsedBy) {
+	if o == nil || IsNil(o.UsedBy) {
 		return nil, false
 	}
 	return o.UsedBy, true
@@ -253,7 +253,7 @@ func (o *CreateFormDefinitionRequest) GetUsedByOk() ([]FormUsedBy, bool) {
 
 // HasUsedBy returns a boolean if a field has been set.
 func (o *CreateFormDefinitionRequest) HasUsedBy() bool {
-	if o != nil && !isNil(o.UsedBy) {
+	if o != nil && !IsNil(o.UsedBy) {
 		return true
 	}
 
@@ -275,21 +275,21 @@ func (o CreateFormDefinitionRequest) MarshalJSON() ([]byte, error) {
 
 func (o CreateFormDefinitionRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.FormConditions) {
+	if !IsNil(o.FormConditions) {
 		toSerialize["formConditions"] = o.FormConditions
 	}
-	if !isNil(o.FormElements) {
+	if !IsNil(o.FormElements) {
 		toSerialize["formElements"] = o.FormElements
 	}
-	if !isNil(o.FormInput) {
+	if !IsNil(o.FormInput) {
 		toSerialize["formInput"] = o.FormInput
 	}
 	toSerialize["name"] = o.Name
 	toSerialize["owner"] = o.Owner
-	if !isNil(o.UsedBy) {
+	if !IsNil(o.UsedBy) {
 		toSerialize["usedBy"] = o.UsedBy
 	}
 
@@ -300,8 +300,8 @@ func (o CreateFormDefinitionRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CreateFormDefinitionRequest) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *CreateFormDefinitionRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -311,7 +311,7 @@ func (o *CreateFormDefinitionRequest) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -325,13 +325,17 @@ func (o *CreateFormDefinitionRequest) UnmarshalJSON(bytes []byte) (err error) {
 
 	varCreateFormDefinitionRequest := _CreateFormDefinitionRequest{}
 
-	if err = json.Unmarshal(bytes, &varCreateFormDefinitionRequest); err == nil {
+	err = json.Unmarshal(data, &varCreateFormDefinitionRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CreateFormDefinitionRequest(varCreateFormDefinitionRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "formConditions")
 		delete(additionalProperties, "formElements")

@@ -85,7 +85,7 @@ func (o *ProvisioningCompletedAccountRequestsInner) SetSource(v ProvisioningComp
 
 // GetAccountId returns the AccountId field value if set, zero value otherwise.
 func (o *ProvisioningCompletedAccountRequestsInner) GetAccountId() string {
-	if o == nil || isNil(o.AccountId) {
+	if o == nil || IsNil(o.AccountId) {
 		var ret string
 		return ret
 	}
@@ -95,7 +95,7 @@ func (o *ProvisioningCompletedAccountRequestsInner) GetAccountId() string {
 // GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProvisioningCompletedAccountRequestsInner) GetAccountIdOk() (*string, bool) {
-	if o == nil || isNil(o.AccountId) {
+	if o == nil || IsNil(o.AccountId) {
 		return nil, false
 	}
 	return o.AccountId, true
@@ -103,7 +103,7 @@ func (o *ProvisioningCompletedAccountRequestsInner) GetAccountIdOk() (*string, b
 
 // HasAccountId returns a boolean if a field has been set.
 func (o *ProvisioningCompletedAccountRequestsInner) HasAccountId() bool {
-	if o != nil && !isNil(o.AccountId) {
+	if o != nil && !IsNil(o.AccountId) {
 		return true
 	}
 
@@ -189,7 +189,7 @@ func (o *ProvisioningCompletedAccountRequestsInner) SetProvisioningTarget(v stri
 
 // GetTicketId returns the TicketId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProvisioningCompletedAccountRequestsInner) GetTicketId() string {
-	if o == nil || isNil(o.TicketId.Get()) {
+	if o == nil || IsNil(o.TicketId.Get()) {
 		var ret string
 		return ret
 	}
@@ -242,7 +242,7 @@ func (o *ProvisioningCompletedAccountRequestsInner) GetAttributeRequests() []Pro
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProvisioningCompletedAccountRequestsInner) GetAttributeRequestsOk() ([]ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner, bool) {
-	if o == nil || isNil(o.AttributeRequests) {
+	if o == nil || IsNil(o.AttributeRequests) {
 		return nil, false
 	}
 	return o.AttributeRequests, true
@@ -250,7 +250,7 @@ func (o *ProvisioningCompletedAccountRequestsInner) GetAttributeRequestsOk() ([]
 
 // HasAttributeRequests returns a boolean if a field has been set.
 func (o *ProvisioningCompletedAccountRequestsInner) HasAttributeRequests() bool {
-	if o != nil && isNil(o.AttributeRequests) {
+	if o != nil && !IsNil(o.AttributeRequests) {
 		return true
 	}
 
@@ -273,7 +273,7 @@ func (o ProvisioningCompletedAccountRequestsInner) MarshalJSON() ([]byte, error)
 func (o ProvisioningCompletedAccountRequestsInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["source"] = o.Source
-	if !isNil(o.AccountId) {
+	if !IsNil(o.AccountId) {
 		toSerialize["accountId"] = o.AccountId
 	}
 	toSerialize["accountOperation"] = o.AccountOperation
@@ -293,8 +293,8 @@ func (o ProvisioningCompletedAccountRequestsInner) ToMap() (map[string]interface
 	return toSerialize, nil
 }
 
-func (o *ProvisioningCompletedAccountRequestsInner) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *ProvisioningCompletedAccountRequestsInner) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -306,7 +306,7 @@ func (o *ProvisioningCompletedAccountRequestsInner) UnmarshalJSON(bytes []byte) 
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -320,13 +320,17 @@ func (o *ProvisioningCompletedAccountRequestsInner) UnmarshalJSON(bytes []byte) 
 
 	varProvisioningCompletedAccountRequestsInner := _ProvisioningCompletedAccountRequestsInner{}
 
-	if err = json.Unmarshal(bytes, &varProvisioningCompletedAccountRequestsInner); err == nil {
+	err = json.Unmarshal(data, &varProvisioningCompletedAccountRequestsInner)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ProvisioningCompletedAccountRequestsInner(varProvisioningCompletedAccountRequestsInner)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "source")
 		delete(additionalProperties, "accountId")
 		delete(additionalProperties, "accountOperation")

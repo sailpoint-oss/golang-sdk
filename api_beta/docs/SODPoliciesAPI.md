@@ -37,24 +37,24 @@ Create SOD policy
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    sodPolicy := *openapiclient.NewSodPolicy() // SodPolicy | 
+	sodPolicy := *openapiclient.NewSodPolicy() // SodPolicy | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPoliciesAPI.CreateSodPolicy(context.Background()).SodPolicy(sodPolicy).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.CreateSodPolicy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateSodPolicy`: SodPolicy
-    fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.CreateSodPolicy`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SODPoliciesAPI.CreateSodPolicy(context.Background()).SodPolicy(sodPolicy).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.CreateSodPolicy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateSodPolicy`: SodPolicy
+	fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.CreateSodPolicy`: %v\n", resp)
 }
 ```
 
@@ -103,23 +103,23 @@ Delete SOD policy by ID
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the SOD Policy to delete.
-    logical := true // bool | Indicates whether this is a soft delete (logical true) or a hard delete. (optional) (default to true)
+	id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the SOD Policy to delete.
+	logical := true // bool | Indicates whether this is a soft delete (logical true) or a hard delete. (optional) (default to true)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.SODPoliciesAPI.DeleteSodPolicy(context.Background(), id).Logical(logical).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.DeleteSodPolicy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.SODPoliciesAPI.DeleteSodPolicy(context.Background(), id).Logical(logical).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.DeleteSodPolicy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -173,22 +173,22 @@ Delete SOD policy schedule
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the SOD policy the schedule must be deleted for.
+	id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the SOD policy the schedule must be deleted for.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.SODPoliciesAPI.DeleteSodPolicySchedule(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.DeleteSodPolicySchedule``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.SODPoliciesAPI.DeleteSodPolicySchedule(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.DeleteSodPolicySchedule``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -241,25 +241,25 @@ Download custom violation report
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    reportResultId := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the report reference to download.
-    fileName := "custom-name" // string | Custom Name for the  file.
+	reportResultId := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the report reference to download.
+	fileName := "custom-name" // string | Custom Name for the  file.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPoliciesAPI.GetCustomViolationReport(context.Background(), reportResultId, fileName).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.GetCustomViolationReport``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetCustomViolationReport`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.GetCustomViolationReport`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SODPoliciesAPI.GetCustomViolationReport(context.Background(), reportResultId, fileName).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.GetCustomViolationReport``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetCustomViolationReport`: *os.File
+	fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.GetCustomViolationReport`: %v\n", resp)
 }
 ```
 
@@ -314,24 +314,24 @@ Download violation report
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    reportResultId := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the report reference to download.
+	reportResultId := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the report reference to download.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPoliciesAPI.GetDefaultViolationReport(context.Background(), reportResultId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.GetDefaultViolationReport``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetDefaultViolationReport`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.GetDefaultViolationReport`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SODPoliciesAPI.GetDefaultViolationReport(context.Background(), reportResultId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.GetDefaultViolationReport``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetDefaultViolationReport`: *os.File
+	fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.GetDefaultViolationReport`: %v\n", resp)
 }
 ```
 
@@ -384,23 +384,23 @@ Get multi-report run task status
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPoliciesAPI.GetSodAllReportRunStatus(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.GetSodAllReportRunStatus``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetSodAllReportRunStatus`: ReportResultReference
-    fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.GetSodAllReportRunStatus`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SODPoliciesAPI.GetSodAllReportRunStatus(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.GetSodAllReportRunStatus``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetSodAllReportRunStatus`: ReportResultReference
+	fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.GetSodAllReportRunStatus`: %v\n", resp)
 }
 ```
 
@@ -445,24 +445,24 @@ Get SOD policy by ID
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the object reference to retrieve.
+	id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the object reference to retrieve.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPoliciesAPI.GetSodPolicy(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.GetSodPolicy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetSodPolicy`: SodPolicy
-    fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.GetSodPolicy`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SODPoliciesAPI.GetSodPolicy(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.GetSodPolicy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetSodPolicy`: SodPolicy
+	fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.GetSodPolicy`: %v\n", resp)
 }
 ```
 
@@ -515,24 +515,24 @@ Get SOD policy schedule
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the object reference to retrieve.
+	id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the object reference to retrieve.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPoliciesAPI.GetSodPolicySchedule(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.GetSodPolicySchedule``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetSodPolicySchedule`: SodPolicySchedule
-    fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.GetSodPolicySchedule`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SODPoliciesAPI.GetSodPolicySchedule(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.GetSodPolicySchedule``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetSodPolicySchedule`: SodPolicySchedule
+	fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.GetSodPolicySchedule`: %v\n", resp)
 }
 ```
 
@@ -585,24 +585,24 @@ Get violation report run status
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    reportResultId := "2e8d8180-24bc-4d21-91c6-7affdb473b0d" // string | The ID of the report reference to retrieve.
+	reportResultId := "2e8d8180-24bc-4d21-91c6-7affdb473b0d" // string | The ID of the report reference to retrieve.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPoliciesAPI.GetSodViolationReportRunStatus(context.Background(), reportResultId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.GetSodViolationReportRunStatus``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetSodViolationReportRunStatus`: ReportResultReference
-    fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.GetSodViolationReportRunStatus`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SODPoliciesAPI.GetSodViolationReportRunStatus(context.Background(), reportResultId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.GetSodViolationReportRunStatus``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetSodViolationReportRunStatus`: ReportResultReference
+	fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.GetSodViolationReportRunStatus`: %v\n", resp)
 }
 ```
 
@@ -655,24 +655,24 @@ Get SOD violation report status
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the object reference to retrieve.
+	id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the object reference to retrieve.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPoliciesAPI.GetSodViolationReportStatus(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.GetSodViolationReportStatus``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetSodViolationReportStatus`: ReportResultReference
-    fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.GetSodViolationReportStatus`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SODPoliciesAPI.GetSodViolationReportStatus(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.GetSodViolationReportStatus``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetSodViolationReportStatus`: ReportResultReference
+	fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.GetSodViolationReportStatus`: %v\n", resp)
 }
 ```
 
@@ -725,28 +725,28 @@ List SOD policies
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
-    offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-    count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-    filters := "id eq "bc693f07e7b645539626c25954c58554"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in*  **state**: *eq, in* (optional)
-    sorters := "id,name" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, description** (optional)
+	limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+	offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+	count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+	filters := "id eq "bc693f07e7b645539626c25954c58554"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in*  **state**: *eq, in* (optional)
+	sorters := "id,name" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, description** (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPoliciesAPI.ListSodPolicies(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.ListSodPolicies``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListSodPolicies`: []SodPolicy
-    fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.ListSodPolicies`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SODPoliciesAPI.ListSodPolicies(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.ListSodPolicies``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListSodPolicies`: []SodPolicy
+	fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.ListSodPolicies`: %v\n", resp)
 }
 ```
 
@@ -799,25 +799,25 @@ Patch a SOD policy
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := "2c9180835d191a86015d28455b4a2329" // string | The ID of the SOD policy being modified.
-    requestBody := []map[string]interface{}{map[string]interface{}(123)} // []map[string]interface{} | A list of SOD Policy update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * ownerRef * externalPolicyReference * compensatingControls * correctionAdvice * state * tags * violationOwnerAssignmentConfig * scheduled * conflictingAccessCriteria 
+	id := "2c9180835d191a86015d28455b4a2329" // string | The ID of the SOD policy being modified.
+	requestBody := []map[string]interface{}{map[string]interface{}(123)} // []map[string]interface{} | A list of SOD Policy update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * ownerRef * externalPolicyReference * compensatingControls * correctionAdvice * state * tags * violationOwnerAssignmentConfig * scheduled * conflictingAccessCriteria 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPoliciesAPI.PatchSodPolicy(context.Background(), id).RequestBody(requestBody).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.PatchSodPolicy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PatchSodPolicy`: SodPolicy
-    fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.PatchSodPolicy`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SODPoliciesAPI.PatchSodPolicy(context.Background(), id).RequestBody(requestBody).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.PatchSodPolicy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PatchSodPolicy`: SodPolicy
+	fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.PatchSodPolicy`: %v\n", resp)
 }
 ```
 
@@ -871,25 +871,25 @@ Update SOD Policy schedule
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the SOD policy to update its schedule.
-    sodPolicySchedule := *openapiclient.NewSodPolicySchedule() // SodPolicySchedule | 
+	id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the SOD policy to update its schedule.
+	sodPolicySchedule := *openapiclient.NewSodPolicySchedule() // SodPolicySchedule | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPoliciesAPI.PutPolicySchedule(context.Background(), id).SodPolicySchedule(sodPolicySchedule).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.PutPolicySchedule``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PutPolicySchedule`: SodPolicySchedule
-    fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.PutPolicySchedule`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SODPoliciesAPI.PutPolicySchedule(context.Background(), id).SodPolicySchedule(sodPolicySchedule).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.PutPolicySchedule``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PutPolicySchedule`: SodPolicySchedule
+	fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.PutPolicySchedule`: %v\n", resp)
 }
 ```
 
@@ -943,25 +943,25 @@ Update SOD policy by ID
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the SOD policy to update.
-    sodPolicy := *openapiclient.NewSodPolicy() // SodPolicy | 
+	id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the SOD policy to update.
+	sodPolicy := *openapiclient.NewSodPolicy() // SodPolicy | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPoliciesAPI.PutSodPolicy(context.Background(), id).SodPolicy(sodPolicy).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.PutSodPolicy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PutSodPolicy`: SodPolicy
-    fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.PutSodPolicy`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SODPoliciesAPI.PutSodPolicy(context.Background(), id).SodPolicy(sodPolicy).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.PutSodPolicy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PutSodPolicy`: SodPolicy
+	fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.PutSodPolicy`: %v\n", resp)
 }
 ```
 
@@ -1015,24 +1015,24 @@ Runs all policies for org
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    multiPolicyRequest := *openapiclient.NewMultiPolicyRequest() // MultiPolicyRequest |  (optional)
+	multiPolicyRequest := *openapiclient.NewMultiPolicyRequest() // MultiPolicyRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPoliciesAPI.StartSodAllPoliciesForOrg(context.Background()).MultiPolicyRequest(multiPolicyRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.StartSodAllPoliciesForOrg``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StartSodAllPoliciesForOrg`: ReportResultReference
-    fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.StartSodAllPoliciesForOrg`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SODPoliciesAPI.StartSodAllPoliciesForOrg(context.Background()).MultiPolicyRequest(multiPolicyRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.StartSodAllPoliciesForOrg``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StartSodAllPoliciesForOrg`: ReportResultReference
+	fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.StartSodAllPoliciesForOrg`: %v\n", resp)
 }
 ```
 
@@ -1081,24 +1081,24 @@ Runs SOD policy violation report
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The SOD policy ID to run.
+	id := "ef38f94347e94562b5bb8424a56397d8" // string | The SOD policy ID to run.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPoliciesAPI.StartSodPolicy(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.StartSodPolicy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StartSodPolicy`: ReportResultReference
-    fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.StartSodPolicy`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SODPoliciesAPI.StartSodPolicy(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SODPoliciesAPI.StartSodPolicy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StartSodPolicy`: ReportResultReference
+	fmt.Fprintf(os.Stdout, "Response from `SODPoliciesAPI.StartSodPolicy`: %v\n", resp)
 }
 ```
 

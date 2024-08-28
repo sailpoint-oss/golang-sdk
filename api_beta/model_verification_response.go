@@ -49,7 +49,7 @@ func NewVerificationResponseWithDefaults() *VerificationResponse {
 
 // GetRequestId returns the RequestId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VerificationResponse) GetRequestId() string {
-	if o == nil || isNil(o.RequestId.Get()) {
+	if o == nil || IsNil(o.RequestId.Get()) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *VerificationResponse) UnsetRequestId() {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *VerificationResponse) GetStatus() string {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -101,7 +101,7 @@ func (o *VerificationResponse) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VerificationResponse) GetStatusOk() (*string, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -109,7 +109,7 @@ func (o *VerificationResponse) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *VerificationResponse) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -123,7 +123,7 @@ func (o *VerificationResponse) SetStatus(v string) {
 
 // GetError returns the Error field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VerificationResponse) GetError() string {
-	if o == nil || isNil(o.Error.Get()) {
+	if o == nil || IsNil(o.Error.Get()) {
 		var ret string
 		return ret
 	}
@@ -176,7 +176,7 @@ func (o VerificationResponse) ToMap() (map[string]interface{}, error) {
 	if o.RequestId.IsSet() {
 		toSerialize["requestId"] = o.RequestId.Get()
 	}
-	if !isNil(o.Status) {
+	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
 	if o.Error.IsSet() {
@@ -190,16 +190,20 @@ func (o VerificationResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *VerificationResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *VerificationResponse) UnmarshalJSON(data []byte) (err error) {
 	varVerificationResponse := _VerificationResponse{}
 
-	if err = json.Unmarshal(bytes, &varVerificationResponse); err == nil {
+	err = json.Unmarshal(data, &varVerificationResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = VerificationResponse(varVerificationResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "requestId")
 		delete(additionalProperties, "status")
 		delete(additionalProperties, "error")

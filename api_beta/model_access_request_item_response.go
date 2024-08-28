@@ -58,7 +58,7 @@ func NewAccessRequestItemResponseWithDefaults() *AccessRequestItemResponse {
 
 // GetOperation returns the Operation field value if set, zero value otherwise.
 func (o *AccessRequestItemResponse) GetOperation() string {
-	if o == nil || isNil(o.Operation) {
+	if o == nil || IsNil(o.Operation) {
 		var ret string
 		return ret
 	}
@@ -68,7 +68,7 @@ func (o *AccessRequestItemResponse) GetOperation() string {
 // GetOperationOk returns a tuple with the Operation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestItemResponse) GetOperationOk() (*string, bool) {
-	if o == nil || isNil(o.Operation) {
+	if o == nil || IsNil(o.Operation) {
 		return nil, false
 	}
 	return o.Operation, true
@@ -76,7 +76,7 @@ func (o *AccessRequestItemResponse) GetOperationOk() (*string, bool) {
 
 // HasOperation returns a boolean if a field has been set.
 func (o *AccessRequestItemResponse) HasOperation() bool {
-	if o != nil && !isNil(o.Operation) {
+	if o != nil && !IsNil(o.Operation) {
 		return true
 	}
 
@@ -90,7 +90,7 @@ func (o *AccessRequestItemResponse) SetOperation(v string) {
 
 // GetAccessItemType returns the AccessItemType field value if set, zero value otherwise.
 func (o *AccessRequestItemResponse) GetAccessItemType() string {
-	if o == nil || isNil(o.AccessItemType) {
+	if o == nil || IsNil(o.AccessItemType) {
 		var ret string
 		return ret
 	}
@@ -100,7 +100,7 @@ func (o *AccessRequestItemResponse) GetAccessItemType() string {
 // GetAccessItemTypeOk returns a tuple with the AccessItemType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestItemResponse) GetAccessItemTypeOk() (*string, bool) {
-	if o == nil || isNil(o.AccessItemType) {
+	if o == nil || IsNil(o.AccessItemType) {
 		return nil, false
 	}
 	return o.AccessItemType, true
@@ -108,7 +108,7 @@ func (o *AccessRequestItemResponse) GetAccessItemTypeOk() (*string, bool) {
 
 // HasAccessItemType returns a boolean if a field has been set.
 func (o *AccessRequestItemResponse) HasAccessItemType() bool {
-	if o != nil && !isNil(o.AccessItemType) {
+	if o != nil && !IsNil(o.AccessItemType) {
 		return true
 	}
 
@@ -122,7 +122,7 @@ func (o *AccessRequestItemResponse) SetAccessItemType(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *AccessRequestItemResponse) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -132,7 +132,7 @@ func (o *AccessRequestItemResponse) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestItemResponse) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -140,7 +140,7 @@ func (o *AccessRequestItemResponse) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *AccessRequestItemResponse) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -154,7 +154,7 @@ func (o *AccessRequestItemResponse) SetName(v string) {
 
 // GetDecision returns the Decision field value if set, zero value otherwise.
 func (o *AccessRequestItemResponse) GetDecision() string {
-	if o == nil || isNil(o.Decision) {
+	if o == nil || IsNil(o.Decision) {
 		var ret string
 		return ret
 	}
@@ -164,7 +164,7 @@ func (o *AccessRequestItemResponse) GetDecision() string {
 // GetDecisionOk returns a tuple with the Decision field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestItemResponse) GetDecisionOk() (*string, bool) {
-	if o == nil || isNil(o.Decision) {
+	if o == nil || IsNil(o.Decision) {
 		return nil, false
 	}
 	return o.Decision, true
@@ -172,7 +172,7 @@ func (o *AccessRequestItemResponse) GetDecisionOk() (*string, bool) {
 
 // HasDecision returns a boolean if a field has been set.
 func (o *AccessRequestItemResponse) HasDecision() bool {
-	if o != nil && !isNil(o.Decision) {
+	if o != nil && !IsNil(o.Decision) {
 		return true
 	}
 
@@ -186,7 +186,7 @@ func (o *AccessRequestItemResponse) SetDecision(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *AccessRequestItemResponse) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -196,7 +196,7 @@ func (o *AccessRequestItemResponse) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestItemResponse) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -204,7 +204,7 @@ func (o *AccessRequestItemResponse) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *AccessRequestItemResponse) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -218,7 +218,7 @@ func (o *AccessRequestItemResponse) SetDescription(v string) {
 
 // GetSourceId returns the SourceId field value if set, zero value otherwise.
 func (o *AccessRequestItemResponse) GetSourceId() string {
-	if o == nil || isNil(o.SourceId) {
+	if o == nil || IsNil(o.SourceId) {
 		var ret string
 		return ret
 	}
@@ -228,7 +228,7 @@ func (o *AccessRequestItemResponse) GetSourceId() string {
 // GetSourceIdOk returns a tuple with the SourceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestItemResponse) GetSourceIdOk() (*string, bool) {
-	if o == nil || isNil(o.SourceId) {
+	if o == nil || IsNil(o.SourceId) {
 		return nil, false
 	}
 	return o.SourceId, true
@@ -236,7 +236,7 @@ func (o *AccessRequestItemResponse) GetSourceIdOk() (*string, bool) {
 
 // HasSourceId returns a boolean if a field has been set.
 func (o *AccessRequestItemResponse) HasSourceId() bool {
-	if o != nil && !isNil(o.SourceId) {
+	if o != nil && !IsNil(o.SourceId) {
 		return true
 	}
 
@@ -250,7 +250,7 @@ func (o *AccessRequestItemResponse) SetSourceId(v string) {
 
 // GetSourceName returns the SourceName field value if set, zero value otherwise.
 func (o *AccessRequestItemResponse) GetSourceName() string {
-	if o == nil || isNil(o.SourceName) {
+	if o == nil || IsNil(o.SourceName) {
 		var ret string
 		return ret
 	}
@@ -260,7 +260,7 @@ func (o *AccessRequestItemResponse) GetSourceName() string {
 // GetSourceNameOk returns a tuple with the SourceName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestItemResponse) GetSourceNameOk() (*string, bool) {
-	if o == nil || isNil(o.SourceName) {
+	if o == nil || IsNil(o.SourceName) {
 		return nil, false
 	}
 	return o.SourceName, true
@@ -268,7 +268,7 @@ func (o *AccessRequestItemResponse) GetSourceNameOk() (*string, bool) {
 
 // HasSourceName returns a boolean if a field has been set.
 func (o *AccessRequestItemResponse) HasSourceName() bool {
-	if o != nil && !isNil(o.SourceName) {
+	if o != nil && !IsNil(o.SourceName) {
 		return true
 	}
 
@@ -282,7 +282,7 @@ func (o *AccessRequestItemResponse) SetSourceName(v string) {
 
 // GetApprovalInfos returns the ApprovalInfos field value if set, zero value otherwise.
 func (o *AccessRequestItemResponse) GetApprovalInfos() []ApprovalInfoResponse {
-	if o == nil || isNil(o.ApprovalInfos) {
+	if o == nil || IsNil(o.ApprovalInfos) {
 		var ret []ApprovalInfoResponse
 		return ret
 	}
@@ -292,7 +292,7 @@ func (o *AccessRequestItemResponse) GetApprovalInfos() []ApprovalInfoResponse {
 // GetApprovalInfosOk returns a tuple with the ApprovalInfos field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestItemResponse) GetApprovalInfosOk() ([]ApprovalInfoResponse, bool) {
-	if o == nil || isNil(o.ApprovalInfos) {
+	if o == nil || IsNil(o.ApprovalInfos) {
 		return nil, false
 	}
 	return o.ApprovalInfos, true
@@ -300,7 +300,7 @@ func (o *AccessRequestItemResponse) GetApprovalInfosOk() ([]ApprovalInfoResponse
 
 // HasApprovalInfos returns a boolean if a field has been set.
 func (o *AccessRequestItemResponse) HasApprovalInfos() bool {
-	if o != nil && !isNil(o.ApprovalInfos) {
+	if o != nil && !IsNil(o.ApprovalInfos) {
 		return true
 	}
 
@@ -322,28 +322,28 @@ func (o AccessRequestItemResponse) MarshalJSON() ([]byte, error) {
 
 func (o AccessRequestItemResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Operation) {
+	if !IsNil(o.Operation) {
 		toSerialize["operation"] = o.Operation
 	}
-	if !isNil(o.AccessItemType) {
+	if !IsNil(o.AccessItemType) {
 		toSerialize["accessItemType"] = o.AccessItemType
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Decision) {
+	if !IsNil(o.Decision) {
 		toSerialize["decision"] = o.Decision
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.SourceId) {
+	if !IsNil(o.SourceId) {
 		toSerialize["sourceId"] = o.SourceId
 	}
-	if !isNil(o.SourceName) {
+	if !IsNil(o.SourceName) {
 		toSerialize["sourceName"] = o.SourceName
 	}
-	if !isNil(o.ApprovalInfos) {
+	if !IsNil(o.ApprovalInfos) {
 		toSerialize["approvalInfos"] = o.ApprovalInfos
 	}
 
@@ -354,16 +354,20 @@ func (o AccessRequestItemResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccessRequestItemResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccessRequestItemResponse) UnmarshalJSON(data []byte) (err error) {
 	varAccessRequestItemResponse := _AccessRequestItemResponse{}
 
-	if err = json.Unmarshal(bytes, &varAccessRequestItemResponse); err == nil {
+	err = json.Unmarshal(data, &varAccessRequestItemResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessRequestItemResponse(varAccessRequestItemResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "operation")
 		delete(additionalProperties, "accessItemType")
 		delete(additionalProperties, "name")

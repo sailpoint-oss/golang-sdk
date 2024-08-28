@@ -12,6 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
@@ -60,7 +61,11 @@ func (dst *AccountAttributesChangedChangesInnerNewValue) UnmarshalJSON(data []by
 		if string(jsonArrayOfstring) == "{}" { // empty struct
 			dst.ArrayOfstring = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.ArrayOfstring); err != nil {
+				dst.ArrayOfstring = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.ArrayOfstring = nil
@@ -73,7 +78,11 @@ func (dst *AccountAttributesChangedChangesInnerNewValue) UnmarshalJSON(data []by
 		if string(jsonBool) == "{}" { // empty struct
 			dst.Bool = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.Bool); err != nil {
+				dst.Bool = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.Bool = nil
@@ -86,7 +95,11 @@ func (dst *AccountAttributesChangedChangesInnerNewValue) UnmarshalJSON(data []by
 		if string(jsonString) == "{}" { // empty struct
 			dst.String = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.String); err != nil {
+				dst.String = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.String = nil

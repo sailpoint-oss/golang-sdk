@@ -44,7 +44,7 @@ func NewRecommenderCalculationsIdentityAttributesValueWithDefaults() *Recommende
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *RecommenderCalculationsIdentityAttributesValue) GetValue() string {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -54,7 +54,7 @@ func (o *RecommenderCalculationsIdentityAttributesValue) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RecommenderCalculationsIdentityAttributesValue) GetValueOk() (*string, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -62,7 +62,7 @@ func (o *RecommenderCalculationsIdentityAttributesValue) GetValueOk() (*string, 
 
 // HasValue returns a boolean if a field has been set.
 func (o *RecommenderCalculationsIdentityAttributesValue) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -84,7 +84,7 @@ func (o RecommenderCalculationsIdentityAttributesValue) MarshalJSON() ([]byte, e
 
 func (o RecommenderCalculationsIdentityAttributesValue) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Value) {
+	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
 
@@ -95,16 +95,20 @@ func (o RecommenderCalculationsIdentityAttributesValue) ToMap() (map[string]inte
 	return toSerialize, nil
 }
 
-func (o *RecommenderCalculationsIdentityAttributesValue) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RecommenderCalculationsIdentityAttributesValue) UnmarshalJSON(data []byte) (err error) {
 	varRecommenderCalculationsIdentityAttributesValue := _RecommenderCalculationsIdentityAttributesValue{}
 
-	if err = json.Unmarshal(bytes, &varRecommenderCalculationsIdentityAttributesValue); err == nil {
+	err = json.Unmarshal(data, &varRecommenderCalculationsIdentityAttributesValue)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RecommenderCalculationsIdentityAttributesValue(varRecommenderCalculationsIdentityAttributesValue)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "value")
 		o.AdditionalProperties = additionalProperties
 	}

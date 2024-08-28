@@ -47,7 +47,7 @@ func NewApprovalBatchWithDefaults() *ApprovalBatch {
 
 // GetBatchId returns the BatchId field value if set, zero value otherwise.
 func (o *ApprovalBatch) GetBatchId() string {
-	if o == nil || isNil(o.BatchId) {
+	if o == nil || IsNil(o.BatchId) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *ApprovalBatch) GetBatchId() string {
 // GetBatchIdOk returns a tuple with the BatchId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalBatch) GetBatchIdOk() (*string, bool) {
-	if o == nil || isNil(o.BatchId) {
+	if o == nil || IsNil(o.BatchId) {
 		return nil, false
 	}
 	return o.BatchId, true
@@ -65,7 +65,7 @@ func (o *ApprovalBatch) GetBatchIdOk() (*string, bool) {
 
 // HasBatchId returns a boolean if a field has been set.
 func (o *ApprovalBatch) HasBatchId() bool {
-	if o != nil && !isNil(o.BatchId) {
+	if o != nil && !IsNil(o.BatchId) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *ApprovalBatch) SetBatchId(v string) {
 
 // GetBatchSize returns the BatchSize field value if set, zero value otherwise.
 func (o *ApprovalBatch) GetBatchSize() int64 {
-	if o == nil || isNil(o.BatchSize) {
+	if o == nil || IsNil(o.BatchSize) {
 		var ret int64
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *ApprovalBatch) GetBatchSize() int64 {
 // GetBatchSizeOk returns a tuple with the BatchSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalBatch) GetBatchSizeOk() (*int64, bool) {
-	if o == nil || isNil(o.BatchSize) {
+	if o == nil || IsNil(o.BatchSize) {
 		return nil, false
 	}
 	return o.BatchSize, true
@@ -97,7 +97,7 @@ func (o *ApprovalBatch) GetBatchSizeOk() (*int64, bool) {
 
 // HasBatchSize returns a boolean if a field has been set.
 func (o *ApprovalBatch) HasBatchSize() bool {
-	if o != nil && !isNil(o.BatchSize) {
+	if o != nil && !IsNil(o.BatchSize) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o ApprovalBatch) MarshalJSON() ([]byte, error) {
 
 func (o ApprovalBatch) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.BatchId) {
+	if !IsNil(o.BatchId) {
 		toSerialize["batchId"] = o.BatchId
 	}
-	if !isNil(o.BatchSize) {
+	if !IsNil(o.BatchSize) {
 		toSerialize["batchSize"] = o.BatchSize
 	}
 
@@ -133,16 +133,20 @@ func (o ApprovalBatch) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ApprovalBatch) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ApprovalBatch) UnmarshalJSON(data []byte) (err error) {
 	varApprovalBatch := _ApprovalBatch{}
 
-	if err = json.Unmarshal(bytes, &varApprovalBatch); err == nil {
+	err = json.Unmarshal(data, &varApprovalBatch)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ApprovalBatch(varApprovalBatch)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "batchId")
 		delete(additionalProperties, "batchSize")
 		o.AdditionalProperties = additionalProperties

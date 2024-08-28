@@ -50,7 +50,7 @@ func NewPreferencesDtoWithDefaults() *PreferencesDto {
 
 // GetKey returns the Key field value if set, zero value otherwise.
 func (o *PreferencesDto) GetKey() string {
-	if o == nil || isNil(o.Key) {
+	if o == nil || IsNil(o.Key) {
 		var ret string
 		return ret
 	}
@@ -60,7 +60,7 @@ func (o *PreferencesDto) GetKey() string {
 // GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PreferencesDto) GetKeyOk() (*string, bool) {
-	if o == nil || isNil(o.Key) {
+	if o == nil || IsNil(o.Key) {
 		return nil, false
 	}
 	return o.Key, true
@@ -68,7 +68,7 @@ func (o *PreferencesDto) GetKeyOk() (*string, bool) {
 
 // HasKey returns a boolean if a field has been set.
 func (o *PreferencesDto) HasKey() bool {
-	if o != nil && !isNil(o.Key) {
+	if o != nil && !IsNil(o.Key) {
 		return true
 	}
 
@@ -82,7 +82,7 @@ func (o *PreferencesDto) SetKey(v string) {
 
 // GetMediums returns the Mediums field value if set, zero value otherwise.
 func (o *PreferencesDto) GetMediums() []Medium {
-	if o == nil || isNil(o.Mediums) {
+	if o == nil || IsNil(o.Mediums) {
 		var ret []Medium
 		return ret
 	}
@@ -92,7 +92,7 @@ func (o *PreferencesDto) GetMediums() []Medium {
 // GetMediumsOk returns a tuple with the Mediums field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PreferencesDto) GetMediumsOk() ([]Medium, bool) {
-	if o == nil || isNil(o.Mediums) {
+	if o == nil || IsNil(o.Mediums) {
 		return nil, false
 	}
 	return o.Mediums, true
@@ -100,7 +100,7 @@ func (o *PreferencesDto) GetMediumsOk() ([]Medium, bool) {
 
 // HasMediums returns a boolean if a field has been set.
 func (o *PreferencesDto) HasMediums() bool {
-	if o != nil && !isNil(o.Mediums) {
+	if o != nil && !IsNil(o.Mediums) {
 		return true
 	}
 
@@ -114,7 +114,7 @@ func (o *PreferencesDto) SetMediums(v []Medium) {
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *PreferencesDto) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		var ret time.Time
 		return ret
 	}
@@ -124,7 +124,7 @@ func (o *PreferencesDto) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PreferencesDto) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -132,7 +132,7 @@ func (o *PreferencesDto) GetModifiedOk() (*time.Time, bool) {
 
 // HasModified returns a boolean if a field has been set.
 func (o *PreferencesDto) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -154,13 +154,13 @@ func (o PreferencesDto) MarshalJSON() ([]byte, error) {
 
 func (o PreferencesDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Key) {
+	if !IsNil(o.Key) {
 		toSerialize["key"] = o.Key
 	}
-	if !isNil(o.Mediums) {
+	if !IsNil(o.Mediums) {
 		toSerialize["mediums"] = o.Mediums
 	}
-	if !isNil(o.Modified) {
+	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
 
@@ -171,16 +171,20 @@ func (o PreferencesDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *PreferencesDto) UnmarshalJSON(bytes []byte) (err error) {
+func (o *PreferencesDto) UnmarshalJSON(data []byte) (err error) {
 	varPreferencesDto := _PreferencesDto{}
 
-	if err = json.Unmarshal(bytes, &varPreferencesDto); err == nil {
+	err = json.Unmarshal(data, &varPreferencesDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = PreferencesDto(varPreferencesDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "key")
 		delete(additionalProperties, "mediums")
 		delete(additionalProperties, "modified")

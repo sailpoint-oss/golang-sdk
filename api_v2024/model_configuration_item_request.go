@@ -53,7 +53,7 @@ func NewConfigurationItemRequestWithDefaults() *ConfigurationItemRequest {
 
 // GetReassignedFromId returns the ReassignedFromId field value if set, zero value otherwise.
 func (o *ConfigurationItemRequest) GetReassignedFromId() string {
-	if o == nil || isNil(o.ReassignedFromId) {
+	if o == nil || IsNil(o.ReassignedFromId) {
 		var ret string
 		return ret
 	}
@@ -63,7 +63,7 @@ func (o *ConfigurationItemRequest) GetReassignedFromId() string {
 // GetReassignedFromIdOk returns a tuple with the ReassignedFromId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConfigurationItemRequest) GetReassignedFromIdOk() (*string, bool) {
-	if o == nil || isNil(o.ReassignedFromId) {
+	if o == nil || IsNil(o.ReassignedFromId) {
 		return nil, false
 	}
 	return o.ReassignedFromId, true
@@ -71,7 +71,7 @@ func (o *ConfigurationItemRequest) GetReassignedFromIdOk() (*string, bool) {
 
 // HasReassignedFromId returns a boolean if a field has been set.
 func (o *ConfigurationItemRequest) HasReassignedFromId() bool {
-	if o != nil && !isNil(o.ReassignedFromId) {
+	if o != nil && !IsNil(o.ReassignedFromId) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o *ConfigurationItemRequest) SetReassignedFromId(v string) {
 
 // GetReassignedToId returns the ReassignedToId field value if set, zero value otherwise.
 func (o *ConfigurationItemRequest) GetReassignedToId() string {
-	if o == nil || isNil(o.ReassignedToId) {
+	if o == nil || IsNil(o.ReassignedToId) {
 		var ret string
 		return ret
 	}
@@ -95,7 +95,7 @@ func (o *ConfigurationItemRequest) GetReassignedToId() string {
 // GetReassignedToIdOk returns a tuple with the ReassignedToId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConfigurationItemRequest) GetReassignedToIdOk() (*string, bool) {
-	if o == nil || isNil(o.ReassignedToId) {
+	if o == nil || IsNil(o.ReassignedToId) {
 		return nil, false
 	}
 	return o.ReassignedToId, true
@@ -103,7 +103,7 @@ func (o *ConfigurationItemRequest) GetReassignedToIdOk() (*string, bool) {
 
 // HasReassignedToId returns a boolean if a field has been set.
 func (o *ConfigurationItemRequest) HasReassignedToId() bool {
-	if o != nil && !isNil(o.ReassignedToId) {
+	if o != nil && !IsNil(o.ReassignedToId) {
 		return true
 	}
 
@@ -117,7 +117,7 @@ func (o *ConfigurationItemRequest) SetReassignedToId(v string) {
 
 // GetConfigType returns the ConfigType field value if set, zero value otherwise.
 func (o *ConfigurationItemRequest) GetConfigType() ConfigTypeEnum {
-	if o == nil || isNil(o.ConfigType) {
+	if o == nil || IsNil(o.ConfigType) {
 		var ret ConfigTypeEnum
 		return ret
 	}
@@ -127,7 +127,7 @@ func (o *ConfigurationItemRequest) GetConfigType() ConfigTypeEnum {
 // GetConfigTypeOk returns a tuple with the ConfigType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConfigurationItemRequest) GetConfigTypeOk() (*ConfigTypeEnum, bool) {
-	if o == nil || isNil(o.ConfigType) {
+	if o == nil || IsNil(o.ConfigType) {
 		return nil, false
 	}
 	return o.ConfigType, true
@@ -135,7 +135,7 @@ func (o *ConfigurationItemRequest) GetConfigTypeOk() (*ConfigTypeEnum, bool) {
 
 // HasConfigType returns a boolean if a field has been set.
 func (o *ConfigurationItemRequest) HasConfigType() bool {
-	if o != nil && !isNil(o.ConfigType) {
+	if o != nil && !IsNil(o.ConfigType) {
 		return true
 	}
 
@@ -149,7 +149,7 @@ func (o *ConfigurationItemRequest) SetConfigType(v ConfigTypeEnum) {
 
 // GetStartDate returns the StartDate field value if set, zero value otherwise.
 func (o *ConfigurationItemRequest) GetStartDate() time.Time {
-	if o == nil || isNil(o.StartDate) {
+	if o == nil || IsNil(o.StartDate) {
 		var ret time.Time
 		return ret
 	}
@@ -159,7 +159,7 @@ func (o *ConfigurationItemRequest) GetStartDate() time.Time {
 // GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConfigurationItemRequest) GetStartDateOk() (*time.Time, bool) {
-	if o == nil || isNil(o.StartDate) {
+	if o == nil || IsNil(o.StartDate) {
 		return nil, false
 	}
 	return o.StartDate, true
@@ -167,7 +167,7 @@ func (o *ConfigurationItemRequest) GetStartDateOk() (*time.Time, bool) {
 
 // HasStartDate returns a boolean if a field has been set.
 func (o *ConfigurationItemRequest) HasStartDate() bool {
-	if o != nil && !isNil(o.StartDate) {
+	if o != nil && !IsNil(o.StartDate) {
 		return true
 	}
 
@@ -181,7 +181,7 @@ func (o *ConfigurationItemRequest) SetStartDate(v time.Time) {
 
 // GetEndDate returns the EndDate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ConfigurationItemRequest) GetEndDate() time.Time {
-	if o == nil || isNil(o.EndDate.Get()) {
+	if o == nil || IsNil(o.EndDate.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -231,16 +231,16 @@ func (o ConfigurationItemRequest) MarshalJSON() ([]byte, error) {
 
 func (o ConfigurationItemRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ReassignedFromId) {
+	if !IsNil(o.ReassignedFromId) {
 		toSerialize["reassignedFromId"] = o.ReassignedFromId
 	}
-	if !isNil(o.ReassignedToId) {
+	if !IsNil(o.ReassignedToId) {
 		toSerialize["reassignedToId"] = o.ReassignedToId
 	}
-	if !isNil(o.ConfigType) {
+	if !IsNil(o.ConfigType) {
 		toSerialize["configType"] = o.ConfigType
 	}
-	if !isNil(o.StartDate) {
+	if !IsNil(o.StartDate) {
 		toSerialize["startDate"] = o.StartDate
 	}
 	if o.EndDate.IsSet() {
@@ -254,16 +254,20 @@ func (o ConfigurationItemRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ConfigurationItemRequest) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ConfigurationItemRequest) UnmarshalJSON(data []byte) (err error) {
 	varConfigurationItemRequest := _ConfigurationItemRequest{}
 
-	if err = json.Unmarshal(bytes, &varConfigurationItemRequest); err == nil {
+	err = json.Unmarshal(data, &varConfigurationItemRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ConfigurationItemRequest(varConfigurationItemRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "reassignedFromId")
 		delete(additionalProperties, "reassignedToId")
 		delete(additionalProperties, "configType")

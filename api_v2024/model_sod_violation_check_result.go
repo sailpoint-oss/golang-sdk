@@ -49,7 +49,7 @@ func NewSodViolationCheckResultWithDefaults() *SodViolationCheckResult {
 
 // GetMessage returns the Message field value if set, zero value otherwise.
 func (o *SodViolationCheckResult) GetMessage() ErrorMessageDto {
-	if o == nil || isNil(o.Message) {
+	if o == nil || IsNil(o.Message) {
 		var ret ErrorMessageDto
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *SodViolationCheckResult) GetMessage() ErrorMessageDto {
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SodViolationCheckResult) GetMessageOk() (*ErrorMessageDto, bool) {
-	if o == nil || isNil(o.Message) {
+	if o == nil || IsNil(o.Message) {
 		return nil, false
 	}
 	return o.Message, true
@@ -67,7 +67,7 @@ func (o *SodViolationCheckResult) GetMessageOk() (*ErrorMessageDto, bool) {
 
 // HasMessage returns a boolean if a field has been set.
 func (o *SodViolationCheckResult) HasMessage() bool {
-	if o != nil && !isNil(o.Message) {
+	if o != nil && !IsNil(o.Message) {
 		return true
 	}
 
@@ -92,7 +92,7 @@ func (o *SodViolationCheckResult) GetClientMetadata() map[string]string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SodViolationCheckResult) GetClientMetadataOk() (*map[string]string, bool) {
-	if o == nil || isNil(o.ClientMetadata) {
+	if o == nil || IsNil(o.ClientMetadata) {
 		return nil, false
 	}
 	return &o.ClientMetadata, true
@@ -100,7 +100,7 @@ func (o *SodViolationCheckResult) GetClientMetadataOk() (*map[string]string, boo
 
 // HasClientMetadata returns a boolean if a field has been set.
 func (o *SodViolationCheckResult) HasClientMetadata() bool {
-	if o != nil && isNil(o.ClientMetadata) {
+	if o != nil && !IsNil(o.ClientMetadata) {
 		return true
 	}
 
@@ -125,7 +125,7 @@ func (o *SodViolationCheckResult) GetViolationContexts() []SodViolationContext {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SodViolationCheckResult) GetViolationContextsOk() ([]SodViolationContext, bool) {
-	if o == nil || isNil(o.ViolationContexts) {
+	if o == nil || IsNil(o.ViolationContexts) {
 		return nil, false
 	}
 	return o.ViolationContexts, true
@@ -133,7 +133,7 @@ func (o *SodViolationCheckResult) GetViolationContextsOk() ([]SodViolationContex
 
 // HasViolationContexts returns a boolean if a field has been set.
 func (o *SodViolationCheckResult) HasViolationContexts() bool {
-	if o != nil && isNil(o.ViolationContexts) {
+	if o != nil && !IsNil(o.ViolationContexts) {
 		return true
 	}
 
@@ -158,7 +158,7 @@ func (o *SodViolationCheckResult) GetViolatedPolicies() []SodPolicyDto {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SodViolationCheckResult) GetViolatedPoliciesOk() ([]SodPolicyDto, bool) {
-	if o == nil || isNil(o.ViolatedPolicies) {
+	if o == nil || IsNil(o.ViolatedPolicies) {
 		return nil, false
 	}
 	return o.ViolatedPolicies, true
@@ -166,7 +166,7 @@ func (o *SodViolationCheckResult) GetViolatedPoliciesOk() ([]SodPolicyDto, bool)
 
 // HasViolatedPolicies returns a boolean if a field has been set.
 func (o *SodViolationCheckResult) HasViolatedPolicies() bool {
-	if o != nil && isNil(o.ViolatedPolicies) {
+	if o != nil && !IsNil(o.ViolatedPolicies) {
 		return true
 	}
 
@@ -188,7 +188,7 @@ func (o SodViolationCheckResult) MarshalJSON() ([]byte, error) {
 
 func (o SodViolationCheckResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Message) {
+	if !IsNil(o.Message) {
 		toSerialize["message"] = o.Message
 	}
 	if o.ClientMetadata != nil {
@@ -208,16 +208,20 @@ func (o SodViolationCheckResult) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SodViolationCheckResult) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SodViolationCheckResult) UnmarshalJSON(data []byte) (err error) {
 	varSodViolationCheckResult := _SodViolationCheckResult{}
 
-	if err = json.Unmarshal(bytes, &varSodViolationCheckResult); err == nil {
+	err = json.Unmarshal(data, &varSodViolationCheckResult)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SodViolationCheckResult(varSodViolationCheckResult)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "message")
 		delete(additionalProperties, "clientMetadata")
 		delete(additionalProperties, "violationContexts")

@@ -45,7 +45,7 @@ func NewIdentityCompareResponseWithDefaults() *IdentityCompareResponse {
 
 // GetAccessItemDiff returns the AccessItemDiff field value if set, zero value otherwise.
 func (o *IdentityCompareResponse) GetAccessItemDiff() map[string]map[string]interface{} {
-	if o == nil || isNil(o.AccessItemDiff) {
+	if o == nil || IsNil(o.AccessItemDiff) {
 		var ret map[string]map[string]interface{}
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *IdentityCompareResponse) GetAccessItemDiff() map[string]map[string]inte
 // GetAccessItemDiffOk returns a tuple with the AccessItemDiff field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCompareResponse) GetAccessItemDiffOk() (map[string]map[string]interface{}, bool) {
-	if o == nil || isNil(o.AccessItemDiff) {
+	if o == nil || IsNil(o.AccessItemDiff) {
 		return map[string]map[string]interface{}{}, false
 	}
 	return o.AccessItemDiff, true
@@ -63,7 +63,7 @@ func (o *IdentityCompareResponse) GetAccessItemDiffOk() (map[string]map[string]i
 
 // HasAccessItemDiff returns a boolean if a field has been set.
 func (o *IdentityCompareResponse) HasAccessItemDiff() bool {
-	if o != nil && !isNil(o.AccessItemDiff) {
+	if o != nil && !IsNil(o.AccessItemDiff) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o IdentityCompareResponse) MarshalJSON() ([]byte, error) {
 
 func (o IdentityCompareResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AccessItemDiff) {
+	if !IsNil(o.AccessItemDiff) {
 		toSerialize["accessItemDiff"] = o.AccessItemDiff
 	}
 
@@ -96,16 +96,20 @@ func (o IdentityCompareResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *IdentityCompareResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *IdentityCompareResponse) UnmarshalJSON(data []byte) (err error) {
 	varIdentityCompareResponse := _IdentityCompareResponse{}
 
-	if err = json.Unmarshal(bytes, &varIdentityCompareResponse); err == nil {
+	err = json.Unmarshal(data, &varIdentityCompareResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = IdentityCompareResponse(varIdentityCompareResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "accessItemDiff")
 		o.AdditionalProperties = additionalProperties
 	}

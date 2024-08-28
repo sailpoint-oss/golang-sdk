@@ -47,7 +47,7 @@ func NewLoadAccountsTaskTaskAttributesWithDefaults() *LoadAccountsTaskTaskAttrib
 
 // GetAppId returns the AppId field value if set, zero value otherwise.
 func (o *LoadAccountsTaskTaskAttributes) GetAppId() string {
-	if o == nil || isNil(o.AppId) {
+	if o == nil || IsNil(o.AppId) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *LoadAccountsTaskTaskAttributes) GetAppId() string {
 // GetAppIdOk returns a tuple with the AppId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LoadAccountsTaskTaskAttributes) GetAppIdOk() (*string, bool) {
-	if o == nil || isNil(o.AppId) {
+	if o == nil || IsNil(o.AppId) {
 		return nil, false
 	}
 	return o.AppId, true
@@ -65,7 +65,7 @@ func (o *LoadAccountsTaskTaskAttributes) GetAppIdOk() (*string, bool) {
 
 // HasAppId returns a boolean if a field has been set.
 func (o *LoadAccountsTaskTaskAttributes) HasAppId() bool {
-	if o != nil && !isNil(o.AppId) {
+	if o != nil && !IsNil(o.AppId) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *LoadAccountsTaskTaskAttributes) SetAppId(v string) {
 
 // GetOptimizedAggregation returns the OptimizedAggregation field value if set, zero value otherwise.
 func (o *LoadAccountsTaskTaskAttributes) GetOptimizedAggregation() string {
-	if o == nil || isNil(o.OptimizedAggregation) {
+	if o == nil || IsNil(o.OptimizedAggregation) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *LoadAccountsTaskTaskAttributes) GetOptimizedAggregation() string {
 // GetOptimizedAggregationOk returns a tuple with the OptimizedAggregation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LoadAccountsTaskTaskAttributes) GetOptimizedAggregationOk() (*string, bool) {
-	if o == nil || isNil(o.OptimizedAggregation) {
+	if o == nil || IsNil(o.OptimizedAggregation) {
 		return nil, false
 	}
 	return o.OptimizedAggregation, true
@@ -97,7 +97,7 @@ func (o *LoadAccountsTaskTaskAttributes) GetOptimizedAggregationOk() (*string, b
 
 // HasOptimizedAggregation returns a boolean if a field has been set.
 func (o *LoadAccountsTaskTaskAttributes) HasOptimizedAggregation() bool {
-	if o != nil && !isNil(o.OptimizedAggregation) {
+	if o != nil && !IsNil(o.OptimizedAggregation) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o LoadAccountsTaskTaskAttributes) MarshalJSON() ([]byte, error) {
 
 func (o LoadAccountsTaskTaskAttributes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AppId) {
+	if !IsNil(o.AppId) {
 		toSerialize["appId"] = o.AppId
 	}
-	if !isNil(o.OptimizedAggregation) {
+	if !IsNil(o.OptimizedAggregation) {
 		toSerialize["optimizedAggregation"] = o.OptimizedAggregation
 	}
 
@@ -133,16 +133,20 @@ func (o LoadAccountsTaskTaskAttributes) ToMap() (map[string]interface{}, error) 
 	return toSerialize, nil
 }
 
-func (o *LoadAccountsTaskTaskAttributes) UnmarshalJSON(bytes []byte) (err error) {
+func (o *LoadAccountsTaskTaskAttributes) UnmarshalJSON(data []byte) (err error) {
 	varLoadAccountsTaskTaskAttributes := _LoadAccountsTaskTaskAttributes{}
 
-	if err = json.Unmarshal(bytes, &varLoadAccountsTaskTaskAttributes); err == nil {
+	err = json.Unmarshal(data, &varLoadAccountsTaskTaskAttributes)
+
+	if err != nil {
+		return err
+	}
+
 	*o = LoadAccountsTaskTaskAttributes(varLoadAccountsTaskTaskAttributes)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "appId")
 		delete(additionalProperties, "optimizedAggregation")
 		o.AdditionalProperties = additionalProperties

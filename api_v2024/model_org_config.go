@@ -62,7 +62,7 @@ func NewOrgConfigWithDefaults() *OrgConfig {
 
 // GetOrgName returns the OrgName field value if set, zero value otherwise.
 func (o *OrgConfig) GetOrgName() string {
-	if o == nil || isNil(o.OrgName) {
+	if o == nil || IsNil(o.OrgName) {
 		var ret string
 		return ret
 	}
@@ -72,7 +72,7 @@ func (o *OrgConfig) GetOrgName() string {
 // GetOrgNameOk returns a tuple with the OrgName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrgConfig) GetOrgNameOk() (*string, bool) {
-	if o == nil || isNil(o.OrgName) {
+	if o == nil || IsNil(o.OrgName) {
 		return nil, false
 	}
 	return o.OrgName, true
@@ -80,7 +80,7 @@ func (o *OrgConfig) GetOrgNameOk() (*string, bool) {
 
 // HasOrgName returns a boolean if a field has been set.
 func (o *OrgConfig) HasOrgName() bool {
-	if o != nil && !isNil(o.OrgName) {
+	if o != nil && !IsNil(o.OrgName) {
 		return true
 	}
 
@@ -94,7 +94,7 @@ func (o *OrgConfig) SetOrgName(v string) {
 
 // GetTimeZone returns the TimeZone field value if set, zero value otherwise.
 func (o *OrgConfig) GetTimeZone() string {
-	if o == nil || isNil(o.TimeZone) {
+	if o == nil || IsNil(o.TimeZone) {
 		var ret string
 		return ret
 	}
@@ -104,7 +104,7 @@ func (o *OrgConfig) GetTimeZone() string {
 // GetTimeZoneOk returns a tuple with the TimeZone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrgConfig) GetTimeZoneOk() (*string, bool) {
-	if o == nil || isNil(o.TimeZone) {
+	if o == nil || IsNil(o.TimeZone) {
 		return nil, false
 	}
 	return o.TimeZone, true
@@ -112,7 +112,7 @@ func (o *OrgConfig) GetTimeZoneOk() (*string, bool) {
 
 // HasTimeZone returns a boolean if a field has been set.
 func (o *OrgConfig) HasTimeZone() bool {
-	if o != nil && !isNil(o.TimeZone) {
+	if o != nil && !IsNil(o.TimeZone) {
 		return true
 	}
 
@@ -126,7 +126,7 @@ func (o *OrgConfig) SetTimeZone(v string) {
 
 // GetLcsChangeHonorsSourceEnableFeature returns the LcsChangeHonorsSourceEnableFeature field value if set, zero value otherwise.
 func (o *OrgConfig) GetLcsChangeHonorsSourceEnableFeature() bool {
-	if o == nil || isNil(o.LcsChangeHonorsSourceEnableFeature) {
+	if o == nil || IsNil(o.LcsChangeHonorsSourceEnableFeature) {
 		var ret bool
 		return ret
 	}
@@ -136,7 +136,7 @@ func (o *OrgConfig) GetLcsChangeHonorsSourceEnableFeature() bool {
 // GetLcsChangeHonorsSourceEnableFeatureOk returns a tuple with the LcsChangeHonorsSourceEnableFeature field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrgConfig) GetLcsChangeHonorsSourceEnableFeatureOk() (*bool, bool) {
-	if o == nil || isNil(o.LcsChangeHonorsSourceEnableFeature) {
+	if o == nil || IsNil(o.LcsChangeHonorsSourceEnableFeature) {
 		return nil, false
 	}
 	return o.LcsChangeHonorsSourceEnableFeature, true
@@ -144,7 +144,7 @@ func (o *OrgConfig) GetLcsChangeHonorsSourceEnableFeatureOk() (*bool, bool) {
 
 // HasLcsChangeHonorsSourceEnableFeature returns a boolean if a field has been set.
 func (o *OrgConfig) HasLcsChangeHonorsSourceEnableFeature() bool {
-	if o != nil && !isNil(o.LcsChangeHonorsSourceEnableFeature) {
+	if o != nil && !IsNil(o.LcsChangeHonorsSourceEnableFeature) {
 		return true
 	}
 
@@ -158,7 +158,7 @@ func (o *OrgConfig) SetLcsChangeHonorsSourceEnableFeature(v bool) {
 
 // GetArmCustomerId returns the ArmCustomerId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrgConfig) GetArmCustomerId() string {
-	if o == nil || isNil(o.ArmCustomerId.Get()) {
+	if o == nil || IsNil(o.ArmCustomerId.Get()) {
 		var ret string
 		return ret
 	}
@@ -200,7 +200,7 @@ func (o *OrgConfig) UnsetArmCustomerId() {
 
 // GetArmSapSystemIdMappings returns the ArmSapSystemIdMappings field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrgConfig) GetArmSapSystemIdMappings() string {
-	if o == nil || isNil(o.ArmSapSystemIdMappings.Get()) {
+	if o == nil || IsNil(o.ArmSapSystemIdMappings.Get()) {
 		var ret string
 		return ret
 	}
@@ -242,7 +242,7 @@ func (o *OrgConfig) UnsetArmSapSystemIdMappings() {
 
 // GetArmAuth returns the ArmAuth field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrgConfig) GetArmAuth() string {
-	if o == nil || isNil(o.ArmAuth.Get()) {
+	if o == nil || IsNil(o.ArmAuth.Get()) {
 		var ret string
 		return ret
 	}
@@ -284,7 +284,7 @@ func (o *OrgConfig) UnsetArmAuth() {
 
 // GetArmDb returns the ArmDb field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrgConfig) GetArmDb() string {
-	if o == nil || isNil(o.ArmDb.Get()) {
+	if o == nil || IsNil(o.ArmDb.Get()) {
 		var ret string
 		return ret
 	}
@@ -326,7 +326,7 @@ func (o *OrgConfig) UnsetArmDb() {
 
 // GetArmSsoUrl returns the ArmSsoUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrgConfig) GetArmSsoUrl() string {
-	if o == nil || isNil(o.ArmSsoUrl.Get()) {
+	if o == nil || IsNil(o.ArmSsoUrl.Get()) {
 		var ret string
 		return ret
 	}
@@ -368,7 +368,7 @@ func (o *OrgConfig) UnsetArmSsoUrl() {
 
 // GetIaiEnableCertificationRecommendations returns the IaiEnableCertificationRecommendations field value if set, zero value otherwise.
 func (o *OrgConfig) GetIaiEnableCertificationRecommendations() bool {
-	if o == nil || isNil(o.IaiEnableCertificationRecommendations) {
+	if o == nil || IsNil(o.IaiEnableCertificationRecommendations) {
 		var ret bool
 		return ret
 	}
@@ -378,7 +378,7 @@ func (o *OrgConfig) GetIaiEnableCertificationRecommendations() bool {
 // GetIaiEnableCertificationRecommendationsOk returns a tuple with the IaiEnableCertificationRecommendations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrgConfig) GetIaiEnableCertificationRecommendationsOk() (*bool, bool) {
-	if o == nil || isNil(o.IaiEnableCertificationRecommendations) {
+	if o == nil || IsNil(o.IaiEnableCertificationRecommendations) {
 		return nil, false
 	}
 	return o.IaiEnableCertificationRecommendations, true
@@ -386,7 +386,7 @@ func (o *OrgConfig) GetIaiEnableCertificationRecommendationsOk() (*bool, bool) {
 
 // HasIaiEnableCertificationRecommendations returns a boolean if a field has been set.
 func (o *OrgConfig) HasIaiEnableCertificationRecommendations() bool {
-	if o != nil && !isNil(o.IaiEnableCertificationRecommendations) {
+	if o != nil && !IsNil(o.IaiEnableCertificationRecommendations) {
 		return true
 	}
 
@@ -400,7 +400,7 @@ func (o *OrgConfig) SetIaiEnableCertificationRecommendations(v bool) {
 
 // GetSodReportConfigs returns the SodReportConfigs field value if set, zero value otherwise.
 func (o *OrgConfig) GetSodReportConfigs() []ReportConfigDTO {
-	if o == nil || isNil(o.SodReportConfigs) {
+	if o == nil || IsNil(o.SodReportConfigs) {
 		var ret []ReportConfigDTO
 		return ret
 	}
@@ -410,7 +410,7 @@ func (o *OrgConfig) GetSodReportConfigs() []ReportConfigDTO {
 // GetSodReportConfigsOk returns a tuple with the SodReportConfigs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrgConfig) GetSodReportConfigsOk() ([]ReportConfigDTO, bool) {
-	if o == nil || isNil(o.SodReportConfigs) {
+	if o == nil || IsNil(o.SodReportConfigs) {
 		return nil, false
 	}
 	return o.SodReportConfigs, true
@@ -418,7 +418,7 @@ func (o *OrgConfig) GetSodReportConfigsOk() ([]ReportConfigDTO, bool) {
 
 // HasSodReportConfigs returns a boolean if a field has been set.
 func (o *OrgConfig) HasSodReportConfigs() bool {
-	if o != nil && !isNil(o.SodReportConfigs) {
+	if o != nil && !IsNil(o.SodReportConfigs) {
 		return true
 	}
 
@@ -440,13 +440,13 @@ func (o OrgConfig) MarshalJSON() ([]byte, error) {
 
 func (o OrgConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.OrgName) {
+	if !IsNil(o.OrgName) {
 		toSerialize["orgName"] = o.OrgName
 	}
-	if !isNil(o.TimeZone) {
+	if !IsNil(o.TimeZone) {
 		toSerialize["timeZone"] = o.TimeZone
 	}
-	if !isNil(o.LcsChangeHonorsSourceEnableFeature) {
+	if !IsNil(o.LcsChangeHonorsSourceEnableFeature) {
 		toSerialize["lcsChangeHonorsSourceEnableFeature"] = o.LcsChangeHonorsSourceEnableFeature
 	}
 	if o.ArmCustomerId.IsSet() {
@@ -464,10 +464,10 @@ func (o OrgConfig) ToMap() (map[string]interface{}, error) {
 	if o.ArmSsoUrl.IsSet() {
 		toSerialize["armSsoUrl"] = o.ArmSsoUrl.Get()
 	}
-	if !isNil(o.IaiEnableCertificationRecommendations) {
+	if !IsNil(o.IaiEnableCertificationRecommendations) {
 		toSerialize["iaiEnableCertificationRecommendations"] = o.IaiEnableCertificationRecommendations
 	}
-	if !isNil(o.SodReportConfigs) {
+	if !IsNil(o.SodReportConfigs) {
 		toSerialize["sodReportConfigs"] = o.SodReportConfigs
 	}
 
@@ -478,16 +478,20 @@ func (o OrgConfig) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *OrgConfig) UnmarshalJSON(bytes []byte) (err error) {
+func (o *OrgConfig) UnmarshalJSON(data []byte) (err error) {
 	varOrgConfig := _OrgConfig{}
 
-	if err = json.Unmarshal(bytes, &varOrgConfig); err == nil {
+	err = json.Unmarshal(data, &varOrgConfig)
+
+	if err != nil {
+		return err
+	}
+
 	*o = OrgConfig(varOrgConfig)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "orgName")
 		delete(additionalProperties, "timeZone")
 		delete(additionalProperties, "lcsChangeHonorsSourceEnableFeature")

@@ -45,7 +45,7 @@ func NewRequestedItemStatusProvisioningDetailsWithDefaults() *RequestedItemStatu
 
 // GetOrderedSubPhaseReferences returns the OrderedSubPhaseReferences field value if set, zero value otherwise.
 func (o *RequestedItemStatusProvisioningDetails) GetOrderedSubPhaseReferences() string {
-	if o == nil || isNil(o.OrderedSubPhaseReferences) {
+	if o == nil || IsNil(o.OrderedSubPhaseReferences) {
 		var ret string
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *RequestedItemStatusProvisioningDetails) GetOrderedSubPhaseReferences() 
 // GetOrderedSubPhaseReferencesOk returns a tuple with the OrderedSubPhaseReferences field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestedItemStatusProvisioningDetails) GetOrderedSubPhaseReferencesOk() (*string, bool) {
-	if o == nil || isNil(o.OrderedSubPhaseReferences) {
+	if o == nil || IsNil(o.OrderedSubPhaseReferences) {
 		return nil, false
 	}
 	return o.OrderedSubPhaseReferences, true
@@ -63,7 +63,7 @@ func (o *RequestedItemStatusProvisioningDetails) GetOrderedSubPhaseReferencesOk(
 
 // HasOrderedSubPhaseReferences returns a boolean if a field has been set.
 func (o *RequestedItemStatusProvisioningDetails) HasOrderedSubPhaseReferences() bool {
-	if o != nil && !isNil(o.OrderedSubPhaseReferences) {
+	if o != nil && !IsNil(o.OrderedSubPhaseReferences) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o RequestedItemStatusProvisioningDetails) MarshalJSON() ([]byte, error) {
 
 func (o RequestedItemStatusProvisioningDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.OrderedSubPhaseReferences) {
+	if !IsNil(o.OrderedSubPhaseReferences) {
 		toSerialize["orderedSubPhaseReferences"] = o.OrderedSubPhaseReferences
 	}
 
@@ -96,16 +96,20 @@ func (o RequestedItemStatusProvisioningDetails) ToMap() (map[string]interface{},
 	return toSerialize, nil
 }
 
-func (o *RequestedItemStatusProvisioningDetails) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RequestedItemStatusProvisioningDetails) UnmarshalJSON(data []byte) (err error) {
 	varRequestedItemStatusProvisioningDetails := _RequestedItemStatusProvisioningDetails{}
 
-	if err = json.Unmarshal(bytes, &varRequestedItemStatusProvisioningDetails); err == nil {
+	err = json.Unmarshal(data, &varRequestedItemStatusProvisioningDetails)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RequestedItemStatusProvisioningDetails(varRequestedItemStatusProvisioningDetails)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "orderedSubPhaseReferences")
 		o.AdditionalProperties = additionalProperties
 	}

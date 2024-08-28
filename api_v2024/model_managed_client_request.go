@@ -77,7 +77,7 @@ func (o *ManagedClientRequest) SetClusterId(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedClientRequest) GetDescription() string {
-	if o == nil || isNil(o.Description.Get()) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
@@ -119,7 +119,7 @@ func (o *ManagedClientRequest) UnsetDescription() {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedClientRequest) GetName() string {
-	if o == nil || isNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -161,7 +161,7 @@ func (o *ManagedClientRequest) UnsetName() {
 
 // GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedClientRequest) GetType() string {
-	if o == nil || isNil(o.Type.Get()) {
+	if o == nil || IsNil(o.Type.Get()) {
 		var ret string
 		return ret
 	}
@@ -229,8 +229,8 @@ func (o ManagedClientRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ManagedClientRequest) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *ManagedClientRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -239,7 +239,7 @@ func (o *ManagedClientRequest) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -253,13 +253,17 @@ func (o *ManagedClientRequest) UnmarshalJSON(bytes []byte) (err error) {
 
 	varManagedClientRequest := _ManagedClientRequest{}
 
-	if err = json.Unmarshal(bytes, &varManagedClientRequest); err == nil {
+	err = json.Unmarshal(data, &varManagedClientRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ManagedClientRequest(varManagedClientRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "clusterId")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "name")

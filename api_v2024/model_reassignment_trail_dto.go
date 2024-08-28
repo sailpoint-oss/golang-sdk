@@ -49,7 +49,7 @@ func NewReassignmentTrailDTOWithDefaults() *ReassignmentTrailDTO {
 
 // GetPreviousOwner returns the PreviousOwner field value if set, zero value otherwise.
 func (o *ReassignmentTrailDTO) GetPreviousOwner() string {
-	if o == nil || isNil(o.PreviousOwner) {
+	if o == nil || IsNil(o.PreviousOwner) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *ReassignmentTrailDTO) GetPreviousOwner() string {
 // GetPreviousOwnerOk returns a tuple with the PreviousOwner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReassignmentTrailDTO) GetPreviousOwnerOk() (*string, bool) {
-	if o == nil || isNil(o.PreviousOwner) {
+	if o == nil || IsNil(o.PreviousOwner) {
 		return nil, false
 	}
 	return o.PreviousOwner, true
@@ -67,7 +67,7 @@ func (o *ReassignmentTrailDTO) GetPreviousOwnerOk() (*string, bool) {
 
 // HasPreviousOwner returns a boolean if a field has been set.
 func (o *ReassignmentTrailDTO) HasPreviousOwner() bool {
-	if o != nil && !isNil(o.PreviousOwner) {
+	if o != nil && !IsNil(o.PreviousOwner) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *ReassignmentTrailDTO) SetPreviousOwner(v string) {
 
 // GetNewOwner returns the NewOwner field value if set, zero value otherwise.
 func (o *ReassignmentTrailDTO) GetNewOwner() string {
-	if o == nil || isNil(o.NewOwner) {
+	if o == nil || IsNil(o.NewOwner) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *ReassignmentTrailDTO) GetNewOwner() string {
 // GetNewOwnerOk returns a tuple with the NewOwner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReassignmentTrailDTO) GetNewOwnerOk() (*string, bool) {
-	if o == nil || isNil(o.NewOwner) {
+	if o == nil || IsNil(o.NewOwner) {
 		return nil, false
 	}
 	return o.NewOwner, true
@@ -99,7 +99,7 @@ func (o *ReassignmentTrailDTO) GetNewOwnerOk() (*string, bool) {
 
 // HasNewOwner returns a boolean if a field has been set.
 func (o *ReassignmentTrailDTO) HasNewOwner() bool {
-	if o != nil && !isNil(o.NewOwner) {
+	if o != nil && !IsNil(o.NewOwner) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *ReassignmentTrailDTO) SetNewOwner(v string) {
 
 // GetReassignmentType returns the ReassignmentType field value if set, zero value otherwise.
 func (o *ReassignmentTrailDTO) GetReassignmentType() string {
-	if o == nil || isNil(o.ReassignmentType) {
+	if o == nil || IsNil(o.ReassignmentType) {
 		var ret string
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *ReassignmentTrailDTO) GetReassignmentType() string {
 // GetReassignmentTypeOk returns a tuple with the ReassignmentType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReassignmentTrailDTO) GetReassignmentTypeOk() (*string, bool) {
-	if o == nil || isNil(o.ReassignmentType) {
+	if o == nil || IsNil(o.ReassignmentType) {
 		return nil, false
 	}
 	return o.ReassignmentType, true
@@ -131,7 +131,7 @@ func (o *ReassignmentTrailDTO) GetReassignmentTypeOk() (*string, bool) {
 
 // HasReassignmentType returns a boolean if a field has been set.
 func (o *ReassignmentTrailDTO) HasReassignmentType() bool {
-	if o != nil && !isNil(o.ReassignmentType) {
+	if o != nil && !IsNil(o.ReassignmentType) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o ReassignmentTrailDTO) MarshalJSON() ([]byte, error) {
 
 func (o ReassignmentTrailDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.PreviousOwner) {
+	if !IsNil(o.PreviousOwner) {
 		toSerialize["previousOwner"] = o.PreviousOwner
 	}
-	if !isNil(o.NewOwner) {
+	if !IsNil(o.NewOwner) {
 		toSerialize["newOwner"] = o.NewOwner
 	}
-	if !isNil(o.ReassignmentType) {
+	if !IsNil(o.ReassignmentType) {
 		toSerialize["reassignmentType"] = o.ReassignmentType
 	}
 
@@ -170,16 +170,20 @@ func (o ReassignmentTrailDTO) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ReassignmentTrailDTO) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ReassignmentTrailDTO) UnmarshalJSON(data []byte) (err error) {
 	varReassignmentTrailDTO := _ReassignmentTrailDTO{}
 
-	if err = json.Unmarshal(bytes, &varReassignmentTrailDTO); err == nil {
+	err = json.Unmarshal(data, &varReassignmentTrailDTO)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ReassignmentTrailDTO(varReassignmentTrailDTO)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "previousOwner")
 		delete(additionalProperties, "newOwner")
 		delete(additionalProperties, "reassignmentType")

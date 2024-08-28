@@ -46,7 +46,7 @@ func NewRecommendationRequestWithDefaults() *RecommendationRequest {
 
 // GetIdentityId returns the IdentityId field value if set, zero value otherwise.
 func (o *RecommendationRequest) GetIdentityId() string {
-	if o == nil || isNil(o.IdentityId) {
+	if o == nil || IsNil(o.IdentityId) {
 		var ret string
 		return ret
 	}
@@ -56,7 +56,7 @@ func (o *RecommendationRequest) GetIdentityId() string {
 // GetIdentityIdOk returns a tuple with the IdentityId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RecommendationRequest) GetIdentityIdOk() (*string, bool) {
-	if o == nil || isNil(o.IdentityId) {
+	if o == nil || IsNil(o.IdentityId) {
 		return nil, false
 	}
 	return o.IdentityId, true
@@ -64,7 +64,7 @@ func (o *RecommendationRequest) GetIdentityIdOk() (*string, bool) {
 
 // HasIdentityId returns a boolean if a field has been set.
 func (o *RecommendationRequest) HasIdentityId() bool {
-	if o != nil && !isNil(o.IdentityId) {
+	if o != nil && !IsNil(o.IdentityId) {
 		return true
 	}
 
@@ -78,7 +78,7 @@ func (o *RecommendationRequest) SetIdentityId(v string) {
 
 // GetItem returns the Item field value if set, zero value otherwise.
 func (o *RecommendationRequest) GetItem() AccessItemRef {
-	if o == nil || isNil(o.Item) {
+	if o == nil || IsNil(o.Item) {
 		var ret AccessItemRef
 		return ret
 	}
@@ -88,7 +88,7 @@ func (o *RecommendationRequest) GetItem() AccessItemRef {
 // GetItemOk returns a tuple with the Item field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RecommendationRequest) GetItemOk() (*AccessItemRef, bool) {
-	if o == nil || isNil(o.Item) {
+	if o == nil || IsNil(o.Item) {
 		return nil, false
 	}
 	return o.Item, true
@@ -96,7 +96,7 @@ func (o *RecommendationRequest) GetItemOk() (*AccessItemRef, bool) {
 
 // HasItem returns a boolean if a field has been set.
 func (o *RecommendationRequest) HasItem() bool {
-	if o != nil && !isNil(o.Item) {
+	if o != nil && !IsNil(o.Item) {
 		return true
 	}
 
@@ -118,10 +118,10 @@ func (o RecommendationRequest) MarshalJSON() ([]byte, error) {
 
 func (o RecommendationRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.IdentityId) {
+	if !IsNil(o.IdentityId) {
 		toSerialize["identityId"] = o.IdentityId
 	}
-	if !isNil(o.Item) {
+	if !IsNil(o.Item) {
 		toSerialize["item"] = o.Item
 	}
 
@@ -132,16 +132,20 @@ func (o RecommendationRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *RecommendationRequest) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RecommendationRequest) UnmarshalJSON(data []byte) (err error) {
 	varRecommendationRequest := _RecommendationRequest{}
 
-	if err = json.Unmarshal(bytes, &varRecommendationRequest); err == nil {
+	err = json.Unmarshal(data, &varRecommendationRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RecommendationRequest(varRecommendationRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "identityId")
 		delete(additionalProperties, "item")
 		o.AdditionalProperties = additionalProperties

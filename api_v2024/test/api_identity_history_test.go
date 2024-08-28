@@ -19,7 +19,7 @@ import (
 
 func Test_api_v2024_IdentityHistoryAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test IdentityHistoryAPIService CompareIdentitySnapshots", func(t *testing.T) {
@@ -28,7 +28,7 @@ func Test_api_v2024_IdentityHistoryAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.IdentityHistoryAPI.CompareIdentitySnapshots(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.IdentityHistoryAPI.CompareIdentitySnapshots(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -43,7 +43,7 @@ func Test_api_v2024_IdentityHistoryAPIService(t *testing.T) {
 		var id string
 		var accessType string
 
-		resp, httpRes, err := apiClient.API_V2024.IdentityHistoryAPI.CompareIdentitySnapshotsAccessType(context.Background(), id, accessType).Execute()
+		resp, httpRes, err := apiClient.IdentityHistoryAPI.CompareIdentitySnapshotsAccessType(context.Background(), id, accessType).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -57,7 +57,7 @@ func Test_api_v2024_IdentityHistoryAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.IdentityHistoryAPI.GetHistoricalIdentity(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.IdentityHistoryAPI.GetHistoricalIdentity(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -71,7 +71,7 @@ func Test_api_v2024_IdentityHistoryAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.IdentityHistoryAPI.GetHistoricalIdentityEvents(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.IdentityHistoryAPI.GetHistoricalIdentityEvents(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -86,7 +86,7 @@ func Test_api_v2024_IdentityHistoryAPIService(t *testing.T) {
 		var id string
 		var date string
 
-		resp, httpRes, err := apiClient.API_V2024.IdentityHistoryAPI.GetIdentitySnapshot(context.Background(), id, date).Execute()
+		resp, httpRes, err := apiClient.IdentityHistoryAPI.GetIdentitySnapshot(context.Background(), id, date).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -100,7 +100,7 @@ func Test_api_v2024_IdentityHistoryAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.IdentityHistoryAPI.GetIdentitySnapshotSummary(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.IdentityHistoryAPI.GetIdentitySnapshotSummary(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -114,7 +114,7 @@ func Test_api_v2024_IdentityHistoryAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.IdentityHistoryAPI.GetIdentityStartDate(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.IdentityHistoryAPI.GetIdentityStartDate(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -126,7 +126,7 @@ func Test_api_v2024_IdentityHistoryAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.IdentityHistoryAPI.ListHistoricalIdentities(context.Background()).Execute()
+		resp, httpRes, err := apiClient.IdentityHistoryAPI.ListHistoricalIdentities(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -140,7 +140,7 @@ func Test_api_v2024_IdentityHistoryAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.IdentityHistoryAPI.ListIdentityAccessItems(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.IdentityHistoryAPI.ListIdentityAccessItems(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -155,7 +155,7 @@ func Test_api_v2024_IdentityHistoryAPIService(t *testing.T) {
 		var id string
 		var date string
 
-		resp, httpRes, err := apiClient.API_V2024.IdentityHistoryAPI.ListIdentitySnapshotAccessItems(context.Background(), id, date).Execute()
+		resp, httpRes, err := apiClient.IdentityHistoryAPI.ListIdentitySnapshotAccessItems(context.Background(), id, date).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -169,7 +169,7 @@ func Test_api_v2024_IdentityHistoryAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.IdentityHistoryAPI.ListIdentitySnapshots(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.IdentityHistoryAPI.ListIdentitySnapshots(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

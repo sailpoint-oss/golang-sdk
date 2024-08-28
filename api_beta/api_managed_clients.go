@@ -85,7 +85,7 @@ func (a *ManagedClientsAPIService) GetManagedClientStatusExecute(r ApiGetManaged
 		return localVarReturnValue, nil, reportError("type_ is required and must be specified")
 	}
 
-	parameterAddToQuery(localVarQueryParams, "type", r.type_, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

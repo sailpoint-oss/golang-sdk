@@ -56,7 +56,7 @@ func NewPasswordSyncGroupWithDefaults() *PasswordSyncGroup {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *PasswordSyncGroup) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -66,7 +66,7 @@ func (o *PasswordSyncGroup) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordSyncGroup) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -74,7 +74,7 @@ func (o *PasswordSyncGroup) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *PasswordSyncGroup) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -88,7 +88,7 @@ func (o *PasswordSyncGroup) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PasswordSyncGroup) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -98,7 +98,7 @@ func (o *PasswordSyncGroup) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordSyncGroup) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -106,7 +106,7 @@ func (o *PasswordSyncGroup) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PasswordSyncGroup) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -120,7 +120,7 @@ func (o *PasswordSyncGroup) SetName(v string) {
 
 // GetPasswordPolicyId returns the PasswordPolicyId field value if set, zero value otherwise.
 func (o *PasswordSyncGroup) GetPasswordPolicyId() string {
-	if o == nil || isNil(o.PasswordPolicyId) {
+	if o == nil || IsNil(o.PasswordPolicyId) {
 		var ret string
 		return ret
 	}
@@ -130,7 +130,7 @@ func (o *PasswordSyncGroup) GetPasswordPolicyId() string {
 // GetPasswordPolicyIdOk returns a tuple with the PasswordPolicyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordSyncGroup) GetPasswordPolicyIdOk() (*string, bool) {
-	if o == nil || isNil(o.PasswordPolicyId) {
+	if o == nil || IsNil(o.PasswordPolicyId) {
 		return nil, false
 	}
 	return o.PasswordPolicyId, true
@@ -138,7 +138,7 @@ func (o *PasswordSyncGroup) GetPasswordPolicyIdOk() (*string, bool) {
 
 // HasPasswordPolicyId returns a boolean if a field has been set.
 func (o *PasswordSyncGroup) HasPasswordPolicyId() bool {
-	if o != nil && !isNil(o.PasswordPolicyId) {
+	if o != nil && !IsNil(o.PasswordPolicyId) {
 		return true
 	}
 
@@ -152,7 +152,7 @@ func (o *PasswordSyncGroup) SetPasswordPolicyId(v string) {
 
 // GetSourceIds returns the SourceIds field value if set, zero value otherwise.
 func (o *PasswordSyncGroup) GetSourceIds() []string {
-	if o == nil || isNil(o.SourceIds) {
+	if o == nil || IsNil(o.SourceIds) {
 		var ret []string
 		return ret
 	}
@@ -162,7 +162,7 @@ func (o *PasswordSyncGroup) GetSourceIds() []string {
 // GetSourceIdsOk returns a tuple with the SourceIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordSyncGroup) GetSourceIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.SourceIds) {
+	if o == nil || IsNil(o.SourceIds) {
 		return nil, false
 	}
 	return o.SourceIds, true
@@ -170,7 +170,7 @@ func (o *PasswordSyncGroup) GetSourceIdsOk() ([]string, bool) {
 
 // HasSourceIds returns a boolean if a field has been set.
 func (o *PasswordSyncGroup) HasSourceIds() bool {
-	if o != nil && !isNil(o.SourceIds) {
+	if o != nil && !IsNil(o.SourceIds) {
 		return true
 	}
 
@@ -184,7 +184,7 @@ func (o *PasswordSyncGroup) SetSourceIds(v []string) {
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PasswordSyncGroup) GetCreated() time.Time {
-	if o == nil || isNil(o.Created.Get()) {
+	if o == nil || IsNil(o.Created.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -226,7 +226,7 @@ func (o *PasswordSyncGroup) UnsetCreated() {
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PasswordSyncGroup) GetModified() time.Time {
-	if o == nil || isNil(o.Modified.Get()) {
+	if o == nil || IsNil(o.Modified.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -276,16 +276,16 @@ func (o PasswordSyncGroup) MarshalJSON() ([]byte, error) {
 
 func (o PasswordSyncGroup) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.PasswordPolicyId) {
+	if !IsNil(o.PasswordPolicyId) {
 		toSerialize["passwordPolicyId"] = o.PasswordPolicyId
 	}
-	if !isNil(o.SourceIds) {
+	if !IsNil(o.SourceIds) {
 		toSerialize["sourceIds"] = o.SourceIds
 	}
 	if o.Created.IsSet() {
@@ -302,16 +302,20 @@ func (o PasswordSyncGroup) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *PasswordSyncGroup) UnmarshalJSON(bytes []byte) (err error) {
+func (o *PasswordSyncGroup) UnmarshalJSON(data []byte) (err error) {
 	varPasswordSyncGroup := _PasswordSyncGroup{}
 
-	if err = json.Unmarshal(bytes, &varPasswordSyncGroup); err == nil {
+	err = json.Unmarshal(data, &varPasswordSyncGroup)
+
+	if err != nil {
+		return err
+	}
+
 	*o = PasswordSyncGroup(varPasswordSyncGroup)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "passwordPolicyId")

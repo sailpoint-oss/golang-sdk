@@ -12,6 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
@@ -79,7 +80,11 @@ func (dst *ReportDetailsArguments) UnmarshalJSON(data []byte) error {
 		if string(jsonAccountsExportReportArguments) == "{}" { // empty struct
 			dst.AccountsExportReportArguments = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.AccountsExportReportArguments); err != nil {
+				dst.AccountsExportReportArguments = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.AccountsExportReportArguments = nil
@@ -92,7 +97,11 @@ func (dst *ReportDetailsArguments) UnmarshalJSON(data []byte) error {
 		if string(jsonIdentitiesDetailsReportArguments) == "{}" { // empty struct
 			dst.IdentitiesDetailsReportArguments = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.IdentitiesDetailsReportArguments); err != nil {
+				dst.IdentitiesDetailsReportArguments = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.IdentitiesDetailsReportArguments = nil
@@ -105,7 +114,11 @@ func (dst *ReportDetailsArguments) UnmarshalJSON(data []byte) error {
 		if string(jsonIdentitiesReportArguments) == "{}" { // empty struct
 			dst.IdentitiesReportArguments = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.IdentitiesReportArguments); err != nil {
+				dst.IdentitiesReportArguments = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.IdentitiesReportArguments = nil
@@ -118,7 +131,11 @@ func (dst *ReportDetailsArguments) UnmarshalJSON(data []byte) error {
 		if string(jsonIdentityProfileIdentityErrorReportArguments) == "{}" { // empty struct
 			dst.IdentityProfileIdentityErrorReportArguments = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.IdentityProfileIdentityErrorReportArguments); err != nil {
+				dst.IdentityProfileIdentityErrorReportArguments = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.IdentityProfileIdentityErrorReportArguments = nil
@@ -131,7 +148,11 @@ func (dst *ReportDetailsArguments) UnmarshalJSON(data []byte) error {
 		if string(jsonOrphanUncorrelatedReportArguments) == "{}" { // empty struct
 			dst.OrphanUncorrelatedReportArguments = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.OrphanUncorrelatedReportArguments); err != nil {
+				dst.OrphanUncorrelatedReportArguments = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.OrphanUncorrelatedReportArguments = nil
@@ -144,7 +165,11 @@ func (dst *ReportDetailsArguments) UnmarshalJSON(data []byte) error {
 		if string(jsonSearchExportReportArguments) == "{}" { // empty struct
 			dst.SearchExportReportArguments = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.SearchExportReportArguments); err != nil {
+				dst.SearchExportReportArguments = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.SearchExportReportArguments = nil

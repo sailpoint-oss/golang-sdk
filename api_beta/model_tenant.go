@@ -56,7 +56,7 @@ func NewTenantWithDefaults() *Tenant {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Tenant) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -66,7 +66,7 @@ func (o *Tenant) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Tenant) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -74,7 +74,7 @@ func (o *Tenant) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *Tenant) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -88,7 +88,7 @@ func (o *Tenant) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Tenant) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -98,7 +98,7 @@ func (o *Tenant) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Tenant) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -106,7 +106,7 @@ func (o *Tenant) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *Tenant) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -120,7 +120,7 @@ func (o *Tenant) SetName(v string) {
 
 // GetFullName returns the FullName field value if set, zero value otherwise.
 func (o *Tenant) GetFullName() string {
-	if o == nil || isNil(o.FullName) {
+	if o == nil || IsNil(o.FullName) {
 		var ret string
 		return ret
 	}
@@ -130,7 +130,7 @@ func (o *Tenant) GetFullName() string {
 // GetFullNameOk returns a tuple with the FullName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Tenant) GetFullNameOk() (*string, bool) {
-	if o == nil || isNil(o.FullName) {
+	if o == nil || IsNil(o.FullName) {
 		return nil, false
 	}
 	return o.FullName, true
@@ -138,7 +138,7 @@ func (o *Tenant) GetFullNameOk() (*string, bool) {
 
 // HasFullName returns a boolean if a field has been set.
 func (o *Tenant) HasFullName() bool {
-	if o != nil && !isNil(o.FullName) {
+	if o != nil && !IsNil(o.FullName) {
 		return true
 	}
 
@@ -152,7 +152,7 @@ func (o *Tenant) SetFullName(v string) {
 
 // GetPod returns the Pod field value if set, zero value otherwise.
 func (o *Tenant) GetPod() string {
-	if o == nil || isNil(o.Pod) {
+	if o == nil || IsNil(o.Pod) {
 		var ret string
 		return ret
 	}
@@ -162,7 +162,7 @@ func (o *Tenant) GetPod() string {
 // GetPodOk returns a tuple with the Pod field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Tenant) GetPodOk() (*string, bool) {
-	if o == nil || isNil(o.Pod) {
+	if o == nil || IsNil(o.Pod) {
 		return nil, false
 	}
 	return o.Pod, true
@@ -170,7 +170,7 @@ func (o *Tenant) GetPodOk() (*string, bool) {
 
 // HasPod returns a boolean if a field has been set.
 func (o *Tenant) HasPod() bool {
-	if o != nil && !isNil(o.Pod) {
+	if o != nil && !IsNil(o.Pod) {
 		return true
 	}
 
@@ -184,7 +184,7 @@ func (o *Tenant) SetPod(v string) {
 
 // GetRegion returns the Region field value if set, zero value otherwise.
 func (o *Tenant) GetRegion() string {
-	if o == nil || isNil(o.Region) {
+	if o == nil || IsNil(o.Region) {
 		var ret string
 		return ret
 	}
@@ -194,7 +194,7 @@ func (o *Tenant) GetRegion() string {
 // GetRegionOk returns a tuple with the Region field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Tenant) GetRegionOk() (*string, bool) {
-	if o == nil || isNil(o.Region) {
+	if o == nil || IsNil(o.Region) {
 		return nil, false
 	}
 	return o.Region, true
@@ -202,7 +202,7 @@ func (o *Tenant) GetRegionOk() (*string, bool) {
 
 // HasRegion returns a boolean if a field has been set.
 func (o *Tenant) HasRegion() bool {
-	if o != nil && !isNil(o.Region) {
+	if o != nil && !IsNil(o.Region) {
 		return true
 	}
 
@@ -216,7 +216,7 @@ func (o *Tenant) SetRegion(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Tenant) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -226,7 +226,7 @@ func (o *Tenant) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Tenant) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -234,7 +234,7 @@ func (o *Tenant) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Tenant) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -248,7 +248,7 @@ func (o *Tenant) SetDescription(v string) {
 
 // GetProducts returns the Products field value if set, zero value otherwise.
 func (o *Tenant) GetProducts() []Product {
-	if o == nil || isNil(o.Products) {
+	if o == nil || IsNil(o.Products) {
 		var ret []Product
 		return ret
 	}
@@ -258,7 +258,7 @@ func (o *Tenant) GetProducts() []Product {
 // GetProductsOk returns a tuple with the Products field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Tenant) GetProductsOk() ([]Product, bool) {
-	if o == nil || isNil(o.Products) {
+	if o == nil || IsNil(o.Products) {
 		return nil, false
 	}
 	return o.Products, true
@@ -266,7 +266,7 @@ func (o *Tenant) GetProductsOk() ([]Product, bool) {
 
 // HasProducts returns a boolean if a field has been set.
 func (o *Tenant) HasProducts() bool {
-	if o != nil && !isNil(o.Products) {
+	if o != nil && !IsNil(o.Products) {
 		return true
 	}
 
@@ -288,23 +288,25 @@ func (o Tenant) MarshalJSON() ([]byte, error) {
 
 func (o Tenant) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
-	if !isNil(o.Name) {
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.FullName) {
+	if !IsNil(o.FullName) {
 		toSerialize["fullName"] = o.FullName
 	}
-	if !isNil(o.Pod) {
+	if !IsNil(o.Pod) {
 		toSerialize["pod"] = o.Pod
 	}
-	if !isNil(o.Region) {
+	if !IsNil(o.Region) {
 		toSerialize["region"] = o.Region
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.Products) {
+	if !IsNil(o.Products) {
 		toSerialize["products"] = o.Products
 	}
 
@@ -315,16 +317,20 @@ func (o Tenant) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Tenant) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Tenant) UnmarshalJSON(data []byte) (err error) {
 	varTenant := _Tenant{}
 
-	if err = json.Unmarshal(bytes, &varTenant); err == nil {
+	err = json.Unmarshal(data, &varTenant)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Tenant(varTenant)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "fullName")

@@ -49,7 +49,7 @@ func NewSedPatchWithDefaults() *SedPatch {
 
 // GetOp returns the Op field value if set, zero value otherwise.
 func (o *SedPatch) GetOp() string {
-	if o == nil || isNil(o.Op) {
+	if o == nil || IsNil(o.Op) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *SedPatch) GetOp() string {
 // GetOpOk returns a tuple with the Op field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SedPatch) GetOpOk() (*string, bool) {
-	if o == nil || isNil(o.Op) {
+	if o == nil || IsNil(o.Op) {
 		return nil, false
 	}
 	return o.Op, true
@@ -67,7 +67,7 @@ func (o *SedPatch) GetOpOk() (*string, bool) {
 
 // HasOp returns a boolean if a field has been set.
 func (o *SedPatch) HasOp() bool {
-	if o != nil && !isNil(o.Op) {
+	if o != nil && !IsNil(o.Op) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *SedPatch) SetOp(v string) {
 
 // GetPath returns the Path field value if set, zero value otherwise.
 func (o *SedPatch) GetPath() string {
-	if o == nil || isNil(o.Path) {
+	if o == nil || IsNil(o.Path) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *SedPatch) GetPath() string {
 // GetPathOk returns a tuple with the Path field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SedPatch) GetPathOk() (*string, bool) {
-	if o == nil || isNil(o.Path) {
+	if o == nil || IsNil(o.Path) {
 		return nil, false
 	}
 	return o.Path, true
@@ -99,7 +99,7 @@ func (o *SedPatch) GetPathOk() (*string, bool) {
 
 // HasPath returns a boolean if a field has been set.
 func (o *SedPatch) HasPath() bool {
-	if o != nil && !isNil(o.Path) {
+	if o != nil && !IsNil(o.Path) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *SedPatch) SetPath(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *SedPatch) GetValue() map[string]interface{} {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *SedPatch) GetValue() map[string]interface{} {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SedPatch) GetValueOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		return map[string]interface{}{}, false
 	}
 	return o.Value, true
@@ -131,7 +131,7 @@ func (o *SedPatch) GetValueOk() (map[string]interface{}, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *SedPatch) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o SedPatch) MarshalJSON() ([]byte, error) {
 
 func (o SedPatch) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Op) {
+	if !IsNil(o.Op) {
 		toSerialize["op"] = o.Op
 	}
-	if !isNil(o.Path) {
+	if !IsNil(o.Path) {
 		toSerialize["path"] = o.Path
 	}
-	if !isNil(o.Value) {
+	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
 
@@ -170,16 +170,20 @@ func (o SedPatch) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SedPatch) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SedPatch) UnmarshalJSON(data []byte) (err error) {
 	varSedPatch := _SedPatch{}
 
-	if err = json.Unmarshal(bytes, &varSedPatch); err == nil {
+	err = json.Unmarshal(data, &varSedPatch)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SedPatch(varSedPatch)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "op")
 		delete(additionalProperties, "path")
 		delete(additionalProperties, "value")

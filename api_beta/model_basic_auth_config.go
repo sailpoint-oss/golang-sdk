@@ -47,7 +47,7 @@ func NewBasicAuthConfigWithDefaults() *BasicAuthConfig {
 
 // GetUserName returns the UserName field value if set, zero value otherwise.
 func (o *BasicAuthConfig) GetUserName() string {
-	if o == nil || isNil(o.UserName) {
+	if o == nil || IsNil(o.UserName) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *BasicAuthConfig) GetUserName() string {
 // GetUserNameOk returns a tuple with the UserName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BasicAuthConfig) GetUserNameOk() (*string, bool) {
-	if o == nil || isNil(o.UserName) {
+	if o == nil || IsNil(o.UserName) {
 		return nil, false
 	}
 	return o.UserName, true
@@ -65,7 +65,7 @@ func (o *BasicAuthConfig) GetUserNameOk() (*string, bool) {
 
 // HasUserName returns a boolean if a field has been set.
 func (o *BasicAuthConfig) HasUserName() bool {
-	if o != nil && !isNil(o.UserName) {
+	if o != nil && !IsNil(o.UserName) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *BasicAuthConfig) SetUserName(v string) {
 
 // GetPassword returns the Password field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BasicAuthConfig) GetPassword() string {
-	if o == nil || isNil(o.Password.Get()) {
+	if o == nil || IsNil(o.Password.Get()) {
 		var ret string
 		return ret
 	}
@@ -129,7 +129,7 @@ func (o BasicAuthConfig) MarshalJSON() ([]byte, error) {
 
 func (o BasicAuthConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.UserName) {
+	if !IsNil(o.UserName) {
 		toSerialize["userName"] = o.UserName
 	}
 	if o.Password.IsSet() {
@@ -143,16 +143,20 @@ func (o BasicAuthConfig) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *BasicAuthConfig) UnmarshalJSON(bytes []byte) (err error) {
+func (o *BasicAuthConfig) UnmarshalJSON(data []byte) (err error) {
 	varBasicAuthConfig := _BasicAuthConfig{}
 
-	if err = json.Unmarshal(bytes, &varBasicAuthConfig); err == nil {
+	err = json.Unmarshal(data, &varBasicAuthConfig)
+
+	if err != nil {
+		return err
+	}
+
 	*o = BasicAuthConfig(varBasicAuthConfig)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "userName")
 		delete(additionalProperties, "password")
 		o.AdditionalProperties = additionalProperties

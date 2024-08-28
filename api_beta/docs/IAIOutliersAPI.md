@@ -30,24 +30,24 @@ IAI Identity Outliers Export
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    type_ := "type__example" // string | Type of the identity outliers snapshot to filter on (optional)
+	type_ := "type__example" // string | Type of the identity outliers snapshot to filter on (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIOutliersAPI.ExportOutliersZip(context.Background()).Type_(type_).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.ExportOutliersZip``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ExportOutliersZip`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `IAIOutliersAPI.ExportOutliersZip`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.IAIOutliersAPI.ExportOutliersZip(context.Background()).Type_(type_).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.ExportOutliersZip``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ExportOutliersZip`: *os.File
+	fmt.Fprintf(os.Stdout, "Response from `IAIOutliersAPI.ExportOutliersZip`: %v\n", resp)
 }
 ```
 
@@ -96,28 +96,28 @@ IAI Identity Outliers Summary
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
-    offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-    type_ := "type__example" // string | Type of the identity outliers snapshot to filter on (optional)
-    filters := "snapshotDate ge "2022-02-07T20:13:29.356648026Z"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **snapshotDate**: *ge, le* (optional)
-    sorters := "snapshotDate" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **snapshotDate** (optional)
+	limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+	offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+	type_ := "type__example" // string | Type of the identity outliers snapshot to filter on (optional)
+	filters := "snapshotDate ge "2022-02-07T20:13:29.356648026Z"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **snapshotDate**: *ge, le* (optional)
+	sorters := "snapshotDate" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **snapshotDate** (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIOutliersAPI.GetIdentityOutlierSnapshots(context.Background()).Limit(limit).Offset(offset).Type_(type_).Filters(filters).Sorters(sorters).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.GetIdentityOutlierSnapshots``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetIdentityOutlierSnapshots`: []OutlierSummary
-    fmt.Fprintf(os.Stdout, "Response from `IAIOutliersAPI.GetIdentityOutlierSnapshots`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.IAIOutliersAPI.GetIdentityOutlierSnapshots(context.Background()).Limit(limit).Offset(offset).Type_(type_).Filters(filters).Sorters(sorters).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.GetIdentityOutlierSnapshots``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetIdentityOutlierSnapshots`: []OutlierSummary
+	fmt.Fprintf(os.Stdout, "Response from `IAIOutliersAPI.GetIdentityOutlierSnapshots`: %v\n", resp)
 }
 ```
 
@@ -170,29 +170,29 @@ IAI Get Identity Outliers
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
-    offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-    count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-    type_ := "LOW_SIMILARITY" // string | Type of the identity outliers snapshot to filter on (optional)
-    filters := "attributes.displayName sw "John" and certStatus eq "false"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **attributes**: *eq, sw, co, in*  **firstDetectionDate**: *ge, le*  **certStatus**: *eq*  **ignored**: *eq*  **score**: *ge, le* (optional)
-    sorters := "attributes.displayName,firstDetectionDate,-score" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **firstDetectionDate, attributes, score** (optional)
+	limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+	offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+	count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+	type_ := "LOW_SIMILARITY" // string | Type of the identity outliers snapshot to filter on (optional)
+	filters := "attributes.displayName sw "John" and certStatus eq "false"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **attributes**: *eq, sw, co, in*  **firstDetectionDate**: *ge, le*  **certStatus**: *eq*  **ignored**: *eq*  **score**: *ge, le* (optional)
+	sorters := "attributes.displayName,firstDetectionDate,-score" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **firstDetectionDate, attributes, score** (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIOutliersAPI.GetIdentityOutliers(context.Background()).Limit(limit).Offset(offset).Count(count).Type_(type_).Filters(filters).Sorters(sorters).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.GetIdentityOutliers``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetIdentityOutliers`: []Outlier
-    fmt.Fprintf(os.Stdout, "Response from `IAIOutliersAPI.GetIdentityOutliers`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.IAIOutliersAPI.GetIdentityOutliers(context.Background()).Limit(limit).Offset(offset).Count(count).Type_(type_).Filters(filters).Sorters(sorters).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.GetIdentityOutliers``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetIdentityOutliers`: []Outlier
+	fmt.Fprintf(os.Stdout, "Response from `IAIOutliersAPI.GetIdentityOutliers`: %v\n", resp)
 }
 ```
 
@@ -246,24 +246,24 @@ IAI Identity Outliers Latest Summary
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    type_ := "type__example" // string | Type of the identity outliers snapshot to filter on (optional)
+	type_ := "type__example" // string | Type of the identity outliers snapshot to filter on (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIOutliersAPI.GetLatestIdentityOutlierSnapshots(context.Background()).Type_(type_).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.GetLatestIdentityOutlierSnapshots``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetLatestIdentityOutlierSnapshots`: []LatestOutlierSummary
-    fmt.Fprintf(os.Stdout, "Response from `IAIOutliersAPI.GetLatestIdentityOutlierSnapshots`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.IAIOutliersAPI.GetLatestIdentityOutlierSnapshots(context.Background()).Type_(type_).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.GetLatestIdentityOutlierSnapshots``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetLatestIdentityOutlierSnapshots`: []LatestOutlierSummary
+	fmt.Fprintf(os.Stdout, "Response from `IAIOutliersAPI.GetLatestIdentityOutlierSnapshots`: %v\n", resp)
 }
 ```
 
@@ -312,24 +312,24 @@ Get identity outlier contibuting feature summary
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    outlierFeatureId := "04654b66-7561-4090-94f9-abee0722a1af" // string | Contributing feature id
+	outlierFeatureId := "04654b66-7561-4090-94f9-abee0722a1af" // string | Contributing feature id
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIOutliersAPI.GetOutlierContributingFeatureSummary(context.Background(), outlierFeatureId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.GetOutlierContributingFeatureSummary``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOutlierContributingFeatureSummary`: OutlierFeatureSummary
-    fmt.Fprintf(os.Stdout, "Response from `IAIOutliersAPI.GetOutlierContributingFeatureSummary`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.IAIOutliersAPI.GetOutlierContributingFeatureSummary(context.Background(), outlierFeatureId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.GetOutlierContributingFeatureSummary``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOutlierContributingFeatureSummary`: OutlierFeatureSummary
+	fmt.Fprintf(os.Stdout, "Response from `IAIOutliersAPI.GetOutlierContributingFeatureSummary`: %v\n", resp)
 }
 ```
 
@@ -382,29 +382,29 @@ Get identity outlier's contibuting features
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    outlierId := "2c918085842e69ae018432d22ccb212f" // string | The outlier id
-    limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
-    offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-    count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-    includeTranslationMessages := "include-translation-messages=" // string | Whether or not to include translation messages object in returned response (optional)
-    sorters := "importance" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **importance** (optional)
+	outlierId := "2c918085842e69ae018432d22ccb212f" // string | The outlier id
+	limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+	offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+	count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+	includeTranslationMessages := "include-translation-messages=" // string | Whether or not to include translation messages object in returned response (optional)
+	sorters := "importance" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **importance** (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIOutliersAPI.GetPeerGroupOutliersContributingFeatures(context.Background(), outlierId).Limit(limit).Offset(offset).Count(count).IncludeTranslationMessages(includeTranslationMessages).Sorters(sorters).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.GetPeerGroupOutliersContributingFeatures``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetPeerGroupOutliersContributingFeatures`: []OutlierContributingFeature
-    fmt.Fprintf(os.Stdout, "Response from `IAIOutliersAPI.GetPeerGroupOutliersContributingFeatures`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.IAIOutliersAPI.GetPeerGroupOutliersContributingFeatures(context.Background(), outlierId).Limit(limit).Offset(offset).Count(count).IncludeTranslationMessages(includeTranslationMessages).Sorters(sorters).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.GetPeerGroupOutliersContributingFeatures``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetPeerGroupOutliersContributingFeatures`: []OutlierContributingFeature
+	fmt.Fprintf(os.Stdout, "Response from `IAIOutliersAPI.GetPeerGroupOutliersContributingFeatures`: %v\n", resp)
 }
 ```
 
@@ -462,22 +462,22 @@ IAI Identity Outliers Ignore
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    requestBody := []string{"Property_example"} // []string | 
+	requestBody := []string{"Property_example"} // []string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.IAIOutliersAPI.IgnoreIdentityOutliers(context.Background()).RequestBody(requestBody).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.IgnoreIdentityOutliers``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.IAIOutliersAPI.IgnoreIdentityOutliers(context.Background()).RequestBody(requestBody).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.IgnoreIdentityOutliers``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -526,30 +526,30 @@ Gets a list of access items associated with each identity outlier contributing f
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    outlierId := "2c918085842e69ae018432d22ccb212f" // string | The outlier id
-    contributingFeatureName := "entitlement_count" // string | The name of contributing feature
-    limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
-    offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-    count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-    accessType := "ENTITLEMENT" // string | The type of access item for the identity outlier contributing feature. If not provided, it returns all (optional)
-    sorters := "displayName" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName** (optional)
+	outlierId := "2c918085842e69ae018432d22ccb212f" // string | The outlier id
+	contributingFeatureName := "entitlement_count" // string | The name of contributing feature
+	limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+	offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+	count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+	accessType := "ENTITLEMENT" // string | The type of access item for the identity outlier contributing feature. If not provided, it returns all (optional)
+	sorters := "displayName" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName** (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIOutliersAPI.ListOutliersContributingFeatureAccessItems(context.Background(), outlierId, contributingFeatureName).Limit(limit).Offset(offset).Count(count).AccessType(accessType).Sorters(sorters).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.ListOutliersContributingFeatureAccessItems``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListOutliersContributingFeatureAccessItems`: []OutliersContributingFeatureAccessItems
-    fmt.Fprintf(os.Stdout, "Response from `IAIOutliersAPI.ListOutliersContributingFeatureAccessItems`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.IAIOutliersAPI.ListOutliersContributingFeatureAccessItems(context.Background(), outlierId, contributingFeatureName).Limit(limit).Offset(offset).Count(count).AccessType(accessType).Sorters(sorters).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.ListOutliersContributingFeatureAccessItems``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListOutliersContributingFeatureAccessItems`: []OutliersContributingFeatureAccessItems
+	fmt.Fprintf(os.Stdout, "Response from `IAIOutliersAPI.ListOutliersContributingFeatureAccessItems`: %v\n", resp)
 }
 ```
 
@@ -609,22 +609,22 @@ IAI Identity Outliers Unignore
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    requestBody := []string{"Property_example"} // []string | 
+	requestBody := []string{"Property_example"} // []string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.IAIOutliersAPI.UnIgnoreIdentityOutliers(context.Background()).RequestBody(requestBody).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.UnIgnoreIdentityOutliers``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.IAIOutliersAPI.UnIgnoreIdentityOutliers(context.Background()).RequestBody(requestBody).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.UnIgnoreIdentityOutliers``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 

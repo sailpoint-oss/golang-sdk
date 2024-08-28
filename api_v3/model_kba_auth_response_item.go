@@ -47,7 +47,7 @@ func NewKbaAuthResponseItemWithDefaults() *KbaAuthResponseItem {
 
 // GetQuestionId returns the QuestionId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *KbaAuthResponseItem) GetQuestionId() string {
-	if o == nil || isNil(o.QuestionId.Get()) {
+	if o == nil || IsNil(o.QuestionId.Get()) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *KbaAuthResponseItem) UnsetQuestionId() {
 
 // GetIsVerified returns the IsVerified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *KbaAuthResponseItem) GetIsVerified() bool {
-	if o == nil || isNil(o.IsVerified.Get()) {
+	if o == nil || IsNil(o.IsVerified.Get()) {
 		var ret bool
 		return ret
 	}
@@ -153,16 +153,20 @@ func (o KbaAuthResponseItem) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *KbaAuthResponseItem) UnmarshalJSON(bytes []byte) (err error) {
+func (o *KbaAuthResponseItem) UnmarshalJSON(data []byte) (err error) {
 	varKbaAuthResponseItem := _KbaAuthResponseItem{}
 
-	if err = json.Unmarshal(bytes, &varKbaAuthResponseItem); err == nil {
+	err = json.Unmarshal(data, &varKbaAuthResponseItem)
+
+	if err != nil {
+		return err
+	}
+
 	*o = KbaAuthResponseItem(varKbaAuthResponseItem)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "questionId")
 		delete(additionalProperties, "isVerified")
 		o.AdditionalProperties = additionalProperties

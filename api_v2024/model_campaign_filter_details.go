@@ -81,7 +81,7 @@ func (o *CampaignFilterDetails) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *CampaignFilterDetails) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *CampaignFilterDetails) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CampaignFilterDetails) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -99,7 +99,7 @@ func (o *CampaignFilterDetails) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *CampaignFilterDetails) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -163,7 +163,7 @@ func (o *CampaignFilterDetails) SetMode(v map[string]interface{}) {
 
 // GetCriteriaList returns the CriteriaList field value if set, zero value otherwise.
 func (o *CampaignFilterDetails) GetCriteriaList() []CampaignFilterDetailsCriteriaListInner {
-	if o == nil || isNil(o.CriteriaList) {
+	if o == nil || IsNil(o.CriteriaList) {
 		var ret []CampaignFilterDetailsCriteriaListInner
 		return ret
 	}
@@ -173,7 +173,7 @@ func (o *CampaignFilterDetails) GetCriteriaList() []CampaignFilterDetailsCriteri
 // GetCriteriaListOk returns a tuple with the CriteriaList field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CampaignFilterDetails) GetCriteriaListOk() ([]CampaignFilterDetailsCriteriaListInner, bool) {
-	if o == nil || isNil(o.CriteriaList) {
+	if o == nil || IsNil(o.CriteriaList) {
 		return nil, false
 	}
 	return o.CriteriaList, true
@@ -181,7 +181,7 @@ func (o *CampaignFilterDetails) GetCriteriaListOk() ([]CampaignFilterDetailsCrit
 
 // HasCriteriaList returns a boolean if a field has been set.
 func (o *CampaignFilterDetails) HasCriteriaList() bool {
-	if o != nil && !isNil(o.CriteriaList) {
+	if o != nil && !IsNil(o.CriteriaList) {
 		return true
 	}
 
@@ -204,12 +204,12 @@ func (o CampaignFilterDetails) MarshalJSON() ([]byte, error) {
 func (o CampaignFilterDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 	toSerialize["owner"] = o.Owner.Get()
 	toSerialize["mode"] = o.Mode
-	if !isNil(o.CriteriaList) {
+	if !IsNil(o.CriteriaList) {
 		toSerialize["criteriaList"] = o.CriteriaList
 	}
 
@@ -220,8 +220,8 @@ func (o CampaignFilterDetails) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CampaignFilterDetails) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *CampaignFilterDetails) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -232,7 +232,7 @@ func (o *CampaignFilterDetails) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -246,13 +246,17 @@ func (o *CampaignFilterDetails) UnmarshalJSON(bytes []byte) (err error) {
 
 	varCampaignFilterDetails := _CampaignFilterDetails{}
 
-	if err = json.Unmarshal(bytes, &varCampaignFilterDetails); err == nil {
+	err = json.Unmarshal(data, &varCampaignFilterDetails)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CampaignFilterDetails(varCampaignFilterDetails)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "owner")

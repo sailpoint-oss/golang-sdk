@@ -47,7 +47,7 @@ func NewManagerCorrelationMappingWithDefaults() *ManagerCorrelationMapping {
 
 // GetAccountAttributeName returns the AccountAttributeName field value if set, zero value otherwise.
 func (o *ManagerCorrelationMapping) GetAccountAttributeName() string {
-	if o == nil || isNil(o.AccountAttributeName) {
+	if o == nil || IsNil(o.AccountAttributeName) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *ManagerCorrelationMapping) GetAccountAttributeName() string {
 // GetAccountAttributeNameOk returns a tuple with the AccountAttributeName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagerCorrelationMapping) GetAccountAttributeNameOk() (*string, bool) {
-	if o == nil || isNil(o.AccountAttributeName) {
+	if o == nil || IsNil(o.AccountAttributeName) {
 		return nil, false
 	}
 	return o.AccountAttributeName, true
@@ -65,7 +65,7 @@ func (o *ManagerCorrelationMapping) GetAccountAttributeNameOk() (*string, bool) 
 
 // HasAccountAttributeName returns a boolean if a field has been set.
 func (o *ManagerCorrelationMapping) HasAccountAttributeName() bool {
-	if o != nil && !isNil(o.AccountAttributeName) {
+	if o != nil && !IsNil(o.AccountAttributeName) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *ManagerCorrelationMapping) SetAccountAttributeName(v string) {
 
 // GetIdentityAttributeName returns the IdentityAttributeName field value if set, zero value otherwise.
 func (o *ManagerCorrelationMapping) GetIdentityAttributeName() string {
-	if o == nil || isNil(o.IdentityAttributeName) {
+	if o == nil || IsNil(o.IdentityAttributeName) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *ManagerCorrelationMapping) GetIdentityAttributeName() string {
 // GetIdentityAttributeNameOk returns a tuple with the IdentityAttributeName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagerCorrelationMapping) GetIdentityAttributeNameOk() (*string, bool) {
-	if o == nil || isNil(o.IdentityAttributeName) {
+	if o == nil || IsNil(o.IdentityAttributeName) {
 		return nil, false
 	}
 	return o.IdentityAttributeName, true
@@ -97,7 +97,7 @@ func (o *ManagerCorrelationMapping) GetIdentityAttributeNameOk() (*string, bool)
 
 // HasIdentityAttributeName returns a boolean if a field has been set.
 func (o *ManagerCorrelationMapping) HasIdentityAttributeName() bool {
-	if o != nil && !isNil(o.IdentityAttributeName) {
+	if o != nil && !IsNil(o.IdentityAttributeName) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o ManagerCorrelationMapping) MarshalJSON() ([]byte, error) {
 
 func (o ManagerCorrelationMapping) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AccountAttributeName) {
+	if !IsNil(o.AccountAttributeName) {
 		toSerialize["accountAttributeName"] = o.AccountAttributeName
 	}
-	if !isNil(o.IdentityAttributeName) {
+	if !IsNil(o.IdentityAttributeName) {
 		toSerialize["identityAttributeName"] = o.IdentityAttributeName
 	}
 
@@ -133,16 +133,20 @@ func (o ManagerCorrelationMapping) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ManagerCorrelationMapping) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ManagerCorrelationMapping) UnmarshalJSON(data []byte) (err error) {
 	varManagerCorrelationMapping := _ManagerCorrelationMapping{}
 
-	if err = json.Unmarshal(bytes, &varManagerCorrelationMapping); err == nil {
+	err = json.Unmarshal(data, &varManagerCorrelationMapping)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ManagerCorrelationMapping(varManagerCorrelationMapping)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "accountAttributeName")
 		delete(additionalProperties, "identityAttributeName")
 		o.AdditionalProperties = additionalProperties

@@ -57,7 +57,7 @@ func NewOutlierSummaryWithDefaults() *OutlierSummary {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *OutlierSummary) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -67,7 +67,7 @@ func (o *OutlierSummary) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutlierSummary) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -75,7 +75,7 @@ func (o *OutlierSummary) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *OutlierSummary) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -89,7 +89,7 @@ func (o *OutlierSummary) SetType(v string) {
 
 // GetSnapshotDate returns the SnapshotDate field value if set, zero value otherwise.
 func (o *OutlierSummary) GetSnapshotDate() time.Time {
-	if o == nil || isNil(o.SnapshotDate) {
+	if o == nil || IsNil(o.SnapshotDate) {
 		var ret time.Time
 		return ret
 	}
@@ -99,7 +99,7 @@ func (o *OutlierSummary) GetSnapshotDate() time.Time {
 // GetSnapshotDateOk returns a tuple with the SnapshotDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutlierSummary) GetSnapshotDateOk() (*time.Time, bool) {
-	if o == nil || isNil(o.SnapshotDate) {
+	if o == nil || IsNil(o.SnapshotDate) {
 		return nil, false
 	}
 	return o.SnapshotDate, true
@@ -107,7 +107,7 @@ func (o *OutlierSummary) GetSnapshotDateOk() (*time.Time, bool) {
 
 // HasSnapshotDate returns a boolean if a field has been set.
 func (o *OutlierSummary) HasSnapshotDate() bool {
-	if o != nil && !isNil(o.SnapshotDate) {
+	if o != nil && !IsNil(o.SnapshotDate) {
 		return true
 	}
 
@@ -121,7 +121,7 @@ func (o *OutlierSummary) SetSnapshotDate(v time.Time) {
 
 // GetTotalOutliers returns the TotalOutliers field value if set, zero value otherwise.
 func (o *OutlierSummary) GetTotalOutliers() int32 {
-	if o == nil || isNil(o.TotalOutliers) {
+	if o == nil || IsNil(o.TotalOutliers) {
 		var ret int32
 		return ret
 	}
@@ -131,7 +131,7 @@ func (o *OutlierSummary) GetTotalOutliers() int32 {
 // GetTotalOutliersOk returns a tuple with the TotalOutliers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutlierSummary) GetTotalOutliersOk() (*int32, bool) {
-	if o == nil || isNil(o.TotalOutliers) {
+	if o == nil || IsNil(o.TotalOutliers) {
 		return nil, false
 	}
 	return o.TotalOutliers, true
@@ -139,7 +139,7 @@ func (o *OutlierSummary) GetTotalOutliersOk() (*int32, bool) {
 
 // HasTotalOutliers returns a boolean if a field has been set.
 func (o *OutlierSummary) HasTotalOutliers() bool {
-	if o != nil && !isNil(o.TotalOutliers) {
+	if o != nil && !IsNil(o.TotalOutliers) {
 		return true
 	}
 
@@ -153,7 +153,7 @@ func (o *OutlierSummary) SetTotalOutliers(v int32) {
 
 // GetTotalIdentities returns the TotalIdentities field value if set, zero value otherwise.
 func (o *OutlierSummary) GetTotalIdentities() int32 {
-	if o == nil || isNil(o.TotalIdentities) {
+	if o == nil || IsNil(o.TotalIdentities) {
 		var ret int32
 		return ret
 	}
@@ -163,7 +163,7 @@ func (o *OutlierSummary) GetTotalIdentities() int32 {
 // GetTotalIdentitiesOk returns a tuple with the TotalIdentities field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutlierSummary) GetTotalIdentitiesOk() (*int32, bool) {
-	if o == nil || isNil(o.TotalIdentities) {
+	if o == nil || IsNil(o.TotalIdentities) {
 		return nil, false
 	}
 	return o.TotalIdentities, true
@@ -171,7 +171,7 @@ func (o *OutlierSummary) GetTotalIdentitiesOk() (*int32, bool) {
 
 // HasTotalIdentities returns a boolean if a field has been set.
 func (o *OutlierSummary) HasTotalIdentities() bool {
-	if o != nil && !isNil(o.TotalIdentities) {
+	if o != nil && !IsNil(o.TotalIdentities) {
 		return true
 	}
 
@@ -185,7 +185,7 @@ func (o *OutlierSummary) SetTotalIdentities(v int32) {
 
 // GetTotalIgnored returns the TotalIgnored field value if set, zero value otherwise.
 func (o *OutlierSummary) GetTotalIgnored() int32 {
-	if o == nil || isNil(o.TotalIgnored) {
+	if o == nil || IsNil(o.TotalIgnored) {
 		var ret int32
 		return ret
 	}
@@ -195,7 +195,7 @@ func (o *OutlierSummary) GetTotalIgnored() int32 {
 // GetTotalIgnoredOk returns a tuple with the TotalIgnored field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutlierSummary) GetTotalIgnoredOk() (*int32, bool) {
-	if o == nil || isNil(o.TotalIgnored) {
+	if o == nil || IsNil(o.TotalIgnored) {
 		return nil, false
 	}
 	return o.TotalIgnored, true
@@ -203,7 +203,7 @@ func (o *OutlierSummary) GetTotalIgnoredOk() (*int32, bool) {
 
 // HasTotalIgnored returns a boolean if a field has been set.
 func (o *OutlierSummary) HasTotalIgnored() bool {
-	if o != nil && !isNil(o.TotalIgnored) {
+	if o != nil && !IsNil(o.TotalIgnored) {
 		return true
 	}
 
@@ -225,19 +225,19 @@ func (o OutlierSummary) MarshalJSON() ([]byte, error) {
 
 func (o OutlierSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.SnapshotDate) {
+	if !IsNil(o.SnapshotDate) {
 		toSerialize["snapshotDate"] = o.SnapshotDate
 	}
-	if !isNil(o.TotalOutliers) {
+	if !IsNil(o.TotalOutliers) {
 		toSerialize["totalOutliers"] = o.TotalOutliers
 	}
-	if !isNil(o.TotalIdentities) {
+	if !IsNil(o.TotalIdentities) {
 		toSerialize["totalIdentities"] = o.TotalIdentities
 	}
-	if !isNil(o.TotalIgnored) {
+	if !IsNil(o.TotalIgnored) {
 		toSerialize["totalIgnored"] = o.TotalIgnored
 	}
 
@@ -248,16 +248,20 @@ func (o OutlierSummary) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *OutlierSummary) UnmarshalJSON(bytes []byte) (err error) {
+func (o *OutlierSummary) UnmarshalJSON(data []byte) (err error) {
 	varOutlierSummary := _OutlierSummary{}
 
-	if err = json.Unmarshal(bytes, &varOutlierSummary); err == nil {
+	err = json.Unmarshal(data, &varOutlierSummary)
+
+	if err != nil {
+		return err
+	}
+
 	*o = OutlierSummary(varOutlierSummary)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "snapshotDate")
 		delete(additionalProperties, "totalOutliers")

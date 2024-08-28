@@ -50,7 +50,7 @@ func NewWorkflowExecutionEventWithDefaults() *WorkflowExecutionEvent {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *WorkflowExecutionEvent) GetType() map[string]interface{} {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -60,7 +60,7 @@ func (o *WorkflowExecutionEvent) GetType() map[string]interface{} {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowExecutionEvent) GetTypeOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return map[string]interface{}{}, false
 	}
 	return o.Type, true
@@ -68,7 +68,7 @@ func (o *WorkflowExecutionEvent) GetTypeOk() (map[string]interface{}, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *WorkflowExecutionEvent) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -82,7 +82,7 @@ func (o *WorkflowExecutionEvent) SetType(v map[string]interface{}) {
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise.
 func (o *WorkflowExecutionEvent) GetTimestamp() time.Time {
-	if o == nil || isNil(o.Timestamp) {
+	if o == nil || IsNil(o.Timestamp) {
 		var ret time.Time
 		return ret
 	}
@@ -92,7 +92,7 @@ func (o *WorkflowExecutionEvent) GetTimestamp() time.Time {
 // GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowExecutionEvent) GetTimestampOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Timestamp) {
+	if o == nil || IsNil(o.Timestamp) {
 		return nil, false
 	}
 	return o.Timestamp, true
@@ -100,7 +100,7 @@ func (o *WorkflowExecutionEvent) GetTimestampOk() (*time.Time, bool) {
 
 // HasTimestamp returns a boolean if a field has been set.
 func (o *WorkflowExecutionEvent) HasTimestamp() bool {
-	if o != nil && !isNil(o.Timestamp) {
+	if o != nil && !IsNil(o.Timestamp) {
 		return true
 	}
 
@@ -114,7 +114,7 @@ func (o *WorkflowExecutionEvent) SetTimestamp(v time.Time) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *WorkflowExecutionEvent) GetAttributes() map[string]interface{} {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -124,7 +124,7 @@ func (o *WorkflowExecutionEvent) GetAttributes() map[string]interface{} {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowExecutionEvent) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
@@ -132,7 +132,7 @@ func (o *WorkflowExecutionEvent) GetAttributesOk() (map[string]interface{}, bool
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *WorkflowExecutionEvent) HasAttributes() bool {
-	if o != nil && !isNil(o.Attributes) {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -154,13 +154,13 @@ func (o WorkflowExecutionEvent) MarshalJSON() ([]byte, error) {
 
 func (o WorkflowExecutionEvent) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Timestamp) {
+	if !IsNil(o.Timestamp) {
 		toSerialize["timestamp"] = o.Timestamp
 	}
-	if !isNil(o.Attributes) {
+	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
 
@@ -171,16 +171,20 @@ func (o WorkflowExecutionEvent) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *WorkflowExecutionEvent) UnmarshalJSON(bytes []byte) (err error) {
+func (o *WorkflowExecutionEvent) UnmarshalJSON(data []byte) (err error) {
 	varWorkflowExecutionEvent := _WorkflowExecutionEvent{}
 
-	if err = json.Unmarshal(bytes, &varWorkflowExecutionEvent); err == nil {
+	err = json.Unmarshal(data, &varWorkflowExecutionEvent)
+
+	if err != nil {
+		return err
+	}
+
 	*o = WorkflowExecutionEvent(varWorkflowExecutionEvent)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "timestamp")
 		delete(additionalProperties, "attributes")

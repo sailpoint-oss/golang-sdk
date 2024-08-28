@@ -47,7 +47,7 @@ func NewAggregationResultWithDefaults() *AggregationResult {
 
 // GetAggregations returns the Aggregations field value if set, zero value otherwise.
 func (o *AggregationResult) GetAggregations() map[string]interface{} {
-	if o == nil || isNil(o.Aggregations) {
+	if o == nil || IsNil(o.Aggregations) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *AggregationResult) GetAggregations() map[string]interface{} {
 // GetAggregationsOk returns a tuple with the Aggregations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AggregationResult) GetAggregationsOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Aggregations) {
+	if o == nil || IsNil(o.Aggregations) {
 		return map[string]interface{}{}, false
 	}
 	return o.Aggregations, true
@@ -65,7 +65,7 @@ func (o *AggregationResult) GetAggregationsOk() (map[string]interface{}, bool) {
 
 // HasAggregations returns a boolean if a field has been set.
 func (o *AggregationResult) HasAggregations() bool {
-	if o != nil && !isNil(o.Aggregations) {
+	if o != nil && !IsNil(o.Aggregations) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *AggregationResult) SetAggregations(v map[string]interface{}) {
 
 // GetHits returns the Hits field value if set, zero value otherwise.
 func (o *AggregationResult) GetHits() []map[string]interface{} {
-	if o == nil || isNil(o.Hits) {
+	if o == nil || IsNil(o.Hits) {
 		var ret []map[string]interface{}
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *AggregationResult) GetHits() []map[string]interface{} {
 // GetHitsOk returns a tuple with the Hits field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AggregationResult) GetHitsOk() ([]map[string]interface{}, bool) {
-	if o == nil || isNil(o.Hits) {
+	if o == nil || IsNil(o.Hits) {
 		return nil, false
 	}
 	return o.Hits, true
@@ -97,7 +97,7 @@ func (o *AggregationResult) GetHitsOk() ([]map[string]interface{}, bool) {
 
 // HasHits returns a boolean if a field has been set.
 func (o *AggregationResult) HasHits() bool {
-	if o != nil && !isNil(o.Hits) {
+	if o != nil && !IsNil(o.Hits) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o AggregationResult) MarshalJSON() ([]byte, error) {
 
 func (o AggregationResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Aggregations) {
+	if !IsNil(o.Aggregations) {
 		toSerialize["aggregations"] = o.Aggregations
 	}
-	if !isNil(o.Hits) {
+	if !IsNil(o.Hits) {
 		toSerialize["hits"] = o.Hits
 	}
 
@@ -133,16 +133,20 @@ func (o AggregationResult) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AggregationResult) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AggregationResult) UnmarshalJSON(data []byte) (err error) {
 	varAggregationResult := _AggregationResult{}
 
-	if err = json.Unmarshal(bytes, &varAggregationResult); err == nil {
+	err = json.Unmarshal(data, &varAggregationResult)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AggregationResult(varAggregationResult)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "aggregations")
 		delete(additionalProperties, "hits")
 		o.AdditionalProperties = additionalProperties

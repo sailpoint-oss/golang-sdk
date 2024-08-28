@@ -61,7 +61,7 @@ func NewRoleMiningSessionParametersDtoWithDefaults() *RoleMiningSessionParameter
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *RoleMiningSessionParametersDto) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -71,7 +71,7 @@ func (o *RoleMiningSessionParametersDto) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningSessionParametersDto) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -79,7 +79,7 @@ func (o *RoleMiningSessionParametersDto) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *RoleMiningSessionParametersDto) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -93,7 +93,7 @@ func (o *RoleMiningSessionParametersDto) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleMiningSessionParametersDto) GetName() string {
-	if o == nil || isNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -135,7 +135,7 @@ func (o *RoleMiningSessionParametersDto) UnsetName() {
 
 // GetMinNumIdentitiesInPotentialRole returns the MinNumIdentitiesInPotentialRole field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleMiningSessionParametersDto) GetMinNumIdentitiesInPotentialRole() int32 {
-	if o == nil || isNil(o.MinNumIdentitiesInPotentialRole.Get()) {
+	if o == nil || IsNil(o.MinNumIdentitiesInPotentialRole.Get()) {
 		var ret int32
 		return ret
 	}
@@ -177,7 +177,7 @@ func (o *RoleMiningSessionParametersDto) UnsetMinNumIdentitiesInPotentialRole() 
 
 // GetPruneThreshold returns the PruneThreshold field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleMiningSessionParametersDto) GetPruneThreshold() int32 {
-	if o == nil || isNil(o.PruneThreshold.Get()) {
+	if o == nil || IsNil(o.PruneThreshold.Get()) {
 		var ret int32
 		return ret
 	}
@@ -219,7 +219,7 @@ func (o *RoleMiningSessionParametersDto) UnsetPruneThreshold() {
 
 // GetSaved returns the Saved field value if set, zero value otherwise.
 func (o *RoleMiningSessionParametersDto) GetSaved() bool {
-	if o == nil || isNil(o.Saved) {
+	if o == nil || IsNil(o.Saved) {
 		var ret bool
 		return ret
 	}
@@ -229,7 +229,7 @@ func (o *RoleMiningSessionParametersDto) GetSaved() bool {
 // GetSavedOk returns a tuple with the Saved field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningSessionParametersDto) GetSavedOk() (*bool, bool) {
-	if o == nil || isNil(o.Saved) {
+	if o == nil || IsNil(o.Saved) {
 		return nil, false
 	}
 	return o.Saved, true
@@ -237,7 +237,7 @@ func (o *RoleMiningSessionParametersDto) GetSavedOk() (*bool, bool) {
 
 // HasSaved returns a boolean if a field has been set.
 func (o *RoleMiningSessionParametersDto) HasSaved() bool {
-	if o != nil && !isNil(o.Saved) {
+	if o != nil && !IsNil(o.Saved) {
 		return true
 	}
 
@@ -251,7 +251,7 @@ func (o *RoleMiningSessionParametersDto) SetSaved(v bool) {
 
 // GetScope returns the Scope field value if set, zero value otherwise.
 func (o *RoleMiningSessionParametersDto) GetScope() RoleMiningSessionScope {
-	if o == nil || isNil(o.Scope) {
+	if o == nil || IsNil(o.Scope) {
 		var ret RoleMiningSessionScope
 		return ret
 	}
@@ -261,7 +261,7 @@ func (o *RoleMiningSessionParametersDto) GetScope() RoleMiningSessionScope {
 // GetScopeOk returns a tuple with the Scope field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningSessionParametersDto) GetScopeOk() (*RoleMiningSessionScope, bool) {
-	if o == nil || isNil(o.Scope) {
+	if o == nil || IsNil(o.Scope) {
 		return nil, false
 	}
 	return o.Scope, true
@@ -269,7 +269,7 @@ func (o *RoleMiningSessionParametersDto) GetScopeOk() (*RoleMiningSessionScope, 
 
 // HasScope returns a boolean if a field has been set.
 func (o *RoleMiningSessionParametersDto) HasScope() bool {
-	if o != nil && !isNil(o.Scope) {
+	if o != nil && !IsNil(o.Scope) {
 		return true
 	}
 
@@ -283,7 +283,7 @@ func (o *RoleMiningSessionParametersDto) SetScope(v RoleMiningSessionScope) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *RoleMiningSessionParametersDto) GetType() RoleMiningRoleType {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret RoleMiningRoleType
 		return ret
 	}
@@ -293,7 +293,7 @@ func (o *RoleMiningSessionParametersDto) GetType() RoleMiningRoleType {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningSessionParametersDto) GetTypeOk() (*RoleMiningRoleType, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -301,7 +301,7 @@ func (o *RoleMiningSessionParametersDto) GetTypeOk() (*RoleMiningRoleType, bool)
 
 // HasType returns a boolean if a field has been set.
 func (o *RoleMiningSessionParametersDto) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -315,7 +315,7 @@ func (o *RoleMiningSessionParametersDto) SetType(v RoleMiningRoleType) {
 
 // GetState returns the State field value if set, zero value otherwise.
 func (o *RoleMiningSessionParametersDto) GetState() RoleMiningSessionState {
-	if o == nil || isNil(o.State) {
+	if o == nil || IsNil(o.State) {
 		var ret RoleMiningSessionState
 		return ret
 	}
@@ -325,7 +325,7 @@ func (o *RoleMiningSessionParametersDto) GetState() RoleMiningSessionState {
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningSessionParametersDto) GetStateOk() (*RoleMiningSessionState, bool) {
-	if o == nil || isNil(o.State) {
+	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
 	return o.State, true
@@ -333,7 +333,7 @@ func (o *RoleMiningSessionParametersDto) GetStateOk() (*RoleMiningSessionState, 
 
 // HasState returns a boolean if a field has been set.
 func (o *RoleMiningSessionParametersDto) HasState() bool {
-	if o != nil && !isNil(o.State) {
+	if o != nil && !IsNil(o.State) {
 		return true
 	}
 
@@ -347,7 +347,7 @@ func (o *RoleMiningSessionParametersDto) SetState(v RoleMiningSessionState) {
 
 // GetScopingMethod returns the ScopingMethod field value if set, zero value otherwise.
 func (o *RoleMiningSessionParametersDto) GetScopingMethod() RoleMiningSessionScopingMethod {
-	if o == nil || isNil(o.ScopingMethod) {
+	if o == nil || IsNil(o.ScopingMethod) {
 		var ret RoleMiningSessionScopingMethod
 		return ret
 	}
@@ -357,7 +357,7 @@ func (o *RoleMiningSessionParametersDto) GetScopingMethod() RoleMiningSessionSco
 // GetScopingMethodOk returns a tuple with the ScopingMethod field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningSessionParametersDto) GetScopingMethodOk() (*RoleMiningSessionScopingMethod, bool) {
-	if o == nil || isNil(o.ScopingMethod) {
+	if o == nil || IsNil(o.ScopingMethod) {
 		return nil, false
 	}
 	return o.ScopingMethod, true
@@ -365,7 +365,7 @@ func (o *RoleMiningSessionParametersDto) GetScopingMethodOk() (*RoleMiningSessio
 
 // HasScopingMethod returns a boolean if a field has been set.
 func (o *RoleMiningSessionParametersDto) HasScopingMethod() bool {
-	if o != nil && !isNil(o.ScopingMethod) {
+	if o != nil && !IsNil(o.ScopingMethod) {
 		return true
 	}
 
@@ -387,7 +387,7 @@ func (o RoleMiningSessionParametersDto) MarshalJSON() ([]byte, error) {
 
 func (o RoleMiningSessionParametersDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
 	if o.Name.IsSet() {
@@ -399,19 +399,19 @@ func (o RoleMiningSessionParametersDto) ToMap() (map[string]interface{}, error) 
 	if o.PruneThreshold.IsSet() {
 		toSerialize["pruneThreshold"] = o.PruneThreshold.Get()
 	}
-	if !isNil(o.Saved) {
+	if !IsNil(o.Saved) {
 		toSerialize["saved"] = o.Saved
 	}
-	if !isNil(o.Scope) {
+	if !IsNil(o.Scope) {
 		toSerialize["scope"] = o.Scope
 	}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.State) {
+	if !IsNil(o.State) {
 		toSerialize["state"] = o.State
 	}
-	if !isNil(o.ScopingMethod) {
+	if !IsNil(o.ScopingMethod) {
 		toSerialize["scopingMethod"] = o.ScopingMethod
 	}
 
@@ -422,16 +422,20 @@ func (o RoleMiningSessionParametersDto) ToMap() (map[string]interface{}, error) 
 	return toSerialize, nil
 }
 
-func (o *RoleMiningSessionParametersDto) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RoleMiningSessionParametersDto) UnmarshalJSON(data []byte) (err error) {
 	varRoleMiningSessionParametersDto := _RoleMiningSessionParametersDto{}
 
-	if err = json.Unmarshal(bytes, &varRoleMiningSessionParametersDto); err == nil {
+	err = json.Unmarshal(data, &varRoleMiningSessionParametersDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RoleMiningSessionParametersDto(varRoleMiningSessionParametersDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "minNumIdentitiesInPotentialRole")

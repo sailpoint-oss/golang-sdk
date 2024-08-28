@@ -107,7 +107,7 @@ func (o *CreateWorkflowRequest) SetOwner(v WorkflowBodyOwner) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *CreateWorkflowRequest) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -117,7 +117,7 @@ func (o *CreateWorkflowRequest) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateWorkflowRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -125,7 +125,7 @@ func (o *CreateWorkflowRequest) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *CreateWorkflowRequest) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -139,7 +139,7 @@ func (o *CreateWorkflowRequest) SetDescription(v string) {
 
 // GetDefinition returns the Definition field value if set, zero value otherwise.
 func (o *CreateWorkflowRequest) GetDefinition() WorkflowDefinition {
-	if o == nil || isNil(o.Definition) {
+	if o == nil || IsNil(o.Definition) {
 		var ret WorkflowDefinition
 		return ret
 	}
@@ -149,7 +149,7 @@ func (o *CreateWorkflowRequest) GetDefinition() WorkflowDefinition {
 // GetDefinitionOk returns a tuple with the Definition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateWorkflowRequest) GetDefinitionOk() (*WorkflowDefinition, bool) {
-	if o == nil || isNil(o.Definition) {
+	if o == nil || IsNil(o.Definition) {
 		return nil, false
 	}
 	return o.Definition, true
@@ -157,7 +157,7 @@ func (o *CreateWorkflowRequest) GetDefinitionOk() (*WorkflowDefinition, bool) {
 
 // HasDefinition returns a boolean if a field has been set.
 func (o *CreateWorkflowRequest) HasDefinition() bool {
-	if o != nil && !isNil(o.Definition) {
+	if o != nil && !IsNil(o.Definition) {
 		return true
 	}
 
@@ -171,7 +171,7 @@ func (o *CreateWorkflowRequest) SetDefinition(v WorkflowDefinition) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *CreateWorkflowRequest) GetEnabled() bool {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -181,7 +181,7 @@ func (o *CreateWorkflowRequest) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateWorkflowRequest) GetEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -189,7 +189,7 @@ func (o *CreateWorkflowRequest) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *CreateWorkflowRequest) HasEnabled() bool {
-	if o != nil && !isNil(o.Enabled) {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -203,7 +203,7 @@ func (o *CreateWorkflowRequest) SetEnabled(v bool) {
 
 // GetTrigger returns the Trigger field value if set, zero value otherwise.
 func (o *CreateWorkflowRequest) GetTrigger() WorkflowTrigger {
-	if o == nil || isNil(o.Trigger) {
+	if o == nil || IsNil(o.Trigger) {
 		var ret WorkflowTrigger
 		return ret
 	}
@@ -213,7 +213,7 @@ func (o *CreateWorkflowRequest) GetTrigger() WorkflowTrigger {
 // GetTriggerOk returns a tuple with the Trigger field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateWorkflowRequest) GetTriggerOk() (*WorkflowTrigger, bool) {
-	if o == nil || isNil(o.Trigger) {
+	if o == nil || IsNil(o.Trigger) {
 		return nil, false
 	}
 	return o.Trigger, true
@@ -221,7 +221,7 @@ func (o *CreateWorkflowRequest) GetTriggerOk() (*WorkflowTrigger, bool) {
 
 // HasTrigger returns a boolean if a field has been set.
 func (o *CreateWorkflowRequest) HasTrigger() bool {
-	if o != nil && !isNil(o.Trigger) {
+	if o != nil && !IsNil(o.Trigger) {
 		return true
 	}
 
@@ -245,16 +245,16 @@ func (o CreateWorkflowRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	toSerialize["owner"] = o.Owner
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.Definition) {
+	if !IsNil(o.Definition) {
 		toSerialize["definition"] = o.Definition
 	}
-	if !isNil(o.Enabled) {
+	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if !isNil(o.Trigger) {
+	if !IsNil(o.Trigger) {
 		toSerialize["trigger"] = o.Trigger
 	}
 
@@ -265,8 +265,8 @@ func (o CreateWorkflowRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CreateWorkflowRequest) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *CreateWorkflowRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -276,7 +276,7 @@ func (o *CreateWorkflowRequest) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -290,13 +290,17 @@ func (o *CreateWorkflowRequest) UnmarshalJSON(bytes []byte) (err error) {
 
 	varCreateWorkflowRequest := _CreateWorkflowRequest{}
 
-	if err = json.Unmarshal(bytes, &varCreateWorkflowRequest); err == nil {
+	err = json.Unmarshal(data, &varCreateWorkflowRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CreateWorkflowRequest(varCreateWorkflowRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "owner")
 		delete(additionalProperties, "description")

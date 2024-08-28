@@ -45,7 +45,7 @@ func NewFormDefinitionDynamicSchemaResponseWithDefaults() *FormDefinitionDynamic
 
 // GetOutputSchema returns the OutputSchema field value if set, zero value otherwise.
 func (o *FormDefinitionDynamicSchemaResponse) GetOutputSchema() map[string]map[string]interface{} {
-	if o == nil || isNil(o.OutputSchema) {
+	if o == nil || IsNil(o.OutputSchema) {
 		var ret map[string]map[string]interface{}
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *FormDefinitionDynamicSchemaResponse) GetOutputSchema() map[string]map[s
 // GetOutputSchemaOk returns a tuple with the OutputSchema field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormDefinitionDynamicSchemaResponse) GetOutputSchemaOk() (map[string]map[string]interface{}, bool) {
-	if o == nil || isNil(o.OutputSchema) {
+	if o == nil || IsNil(o.OutputSchema) {
 		return map[string]map[string]interface{}{}, false
 	}
 	return o.OutputSchema, true
@@ -63,7 +63,7 @@ func (o *FormDefinitionDynamicSchemaResponse) GetOutputSchemaOk() (map[string]ma
 
 // HasOutputSchema returns a boolean if a field has been set.
 func (o *FormDefinitionDynamicSchemaResponse) HasOutputSchema() bool {
-	if o != nil && !isNil(o.OutputSchema) {
+	if o != nil && !IsNil(o.OutputSchema) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o FormDefinitionDynamicSchemaResponse) MarshalJSON() ([]byte, error) {
 
 func (o FormDefinitionDynamicSchemaResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.OutputSchema) {
+	if !IsNil(o.OutputSchema) {
 		toSerialize["outputSchema"] = o.OutputSchema
 	}
 
@@ -96,16 +96,20 @@ func (o FormDefinitionDynamicSchemaResponse) ToMap() (map[string]interface{}, er
 	return toSerialize, nil
 }
 
-func (o *FormDefinitionDynamicSchemaResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *FormDefinitionDynamicSchemaResponse) UnmarshalJSON(data []byte) (err error) {
 	varFormDefinitionDynamicSchemaResponse := _FormDefinitionDynamicSchemaResponse{}
 
-	if err = json.Unmarshal(bytes, &varFormDefinitionDynamicSchemaResponse); err == nil {
+	err = json.Unmarshal(data, &varFormDefinitionDynamicSchemaResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = FormDefinitionDynamicSchemaResponse(varFormDefinitionDynamicSchemaResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "outputSchema")
 		o.AdditionalProperties = additionalProperties
 	}

@@ -47,7 +47,7 @@ func NewCreateExternalExecuteWorkflow200ResponseWithDefaults() *CreateExternalEx
 
 // GetWorkflowExecutionId returns the WorkflowExecutionId field value if set, zero value otherwise.
 func (o *CreateExternalExecuteWorkflow200Response) GetWorkflowExecutionId() string {
-	if o == nil || isNil(o.WorkflowExecutionId) {
+	if o == nil || IsNil(o.WorkflowExecutionId) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *CreateExternalExecuteWorkflow200Response) GetWorkflowExecutionId() stri
 // GetWorkflowExecutionIdOk returns a tuple with the WorkflowExecutionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateExternalExecuteWorkflow200Response) GetWorkflowExecutionIdOk() (*string, bool) {
-	if o == nil || isNil(o.WorkflowExecutionId) {
+	if o == nil || IsNil(o.WorkflowExecutionId) {
 		return nil, false
 	}
 	return o.WorkflowExecutionId, true
@@ -65,7 +65,7 @@ func (o *CreateExternalExecuteWorkflow200Response) GetWorkflowExecutionIdOk() (*
 
 // HasWorkflowExecutionId returns a boolean if a field has been set.
 func (o *CreateExternalExecuteWorkflow200Response) HasWorkflowExecutionId() bool {
-	if o != nil && !isNil(o.WorkflowExecutionId) {
+	if o != nil && !IsNil(o.WorkflowExecutionId) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *CreateExternalExecuteWorkflow200Response) SetWorkflowExecutionId(v stri
 
 // GetMessage returns the Message field value if set, zero value otherwise.
 func (o *CreateExternalExecuteWorkflow200Response) GetMessage() string {
-	if o == nil || isNil(o.Message) {
+	if o == nil || IsNil(o.Message) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *CreateExternalExecuteWorkflow200Response) GetMessage() string {
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateExternalExecuteWorkflow200Response) GetMessageOk() (*string, bool) {
-	if o == nil || isNil(o.Message) {
+	if o == nil || IsNil(o.Message) {
 		return nil, false
 	}
 	return o.Message, true
@@ -97,7 +97,7 @@ func (o *CreateExternalExecuteWorkflow200Response) GetMessageOk() (*string, bool
 
 // HasMessage returns a boolean if a field has been set.
 func (o *CreateExternalExecuteWorkflow200Response) HasMessage() bool {
-	if o != nil && !isNil(o.Message) {
+	if o != nil && !IsNil(o.Message) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o CreateExternalExecuteWorkflow200Response) MarshalJSON() ([]byte, error) 
 
 func (o CreateExternalExecuteWorkflow200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.WorkflowExecutionId) {
+	if !IsNil(o.WorkflowExecutionId) {
 		toSerialize["workflowExecutionId"] = o.WorkflowExecutionId
 	}
-	if !isNil(o.Message) {
+	if !IsNil(o.Message) {
 		toSerialize["message"] = o.Message
 	}
 
@@ -133,16 +133,20 @@ func (o CreateExternalExecuteWorkflow200Response) ToMap() (map[string]interface{
 	return toSerialize, nil
 }
 
-func (o *CreateExternalExecuteWorkflow200Response) UnmarshalJSON(bytes []byte) (err error) {
+func (o *CreateExternalExecuteWorkflow200Response) UnmarshalJSON(data []byte) (err error) {
 	varCreateExternalExecuteWorkflow200Response := _CreateExternalExecuteWorkflow200Response{}
 
-	if err = json.Unmarshal(bytes, &varCreateExternalExecuteWorkflow200Response); err == nil {
+	err = json.Unmarshal(data, &varCreateExternalExecuteWorkflow200Response)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CreateExternalExecuteWorkflow200Response(varCreateExternalExecuteWorkflow200Response)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "workflowExecutionId")
 		delete(additionalProperties, "message")
 		o.AdditionalProperties = additionalProperties

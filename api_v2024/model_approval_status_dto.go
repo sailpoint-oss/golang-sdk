@@ -62,7 +62,7 @@ func NewApprovalStatusDtoWithDefaults() *ApprovalStatusDto {
 
 // GetForwarded returns the Forwarded field value if set, zero value otherwise.
 func (o *ApprovalStatusDto) GetForwarded() bool {
-	if o == nil || isNil(o.Forwarded) {
+	if o == nil || IsNil(o.Forwarded) {
 		var ret bool
 		return ret
 	}
@@ -72,7 +72,7 @@ func (o *ApprovalStatusDto) GetForwarded() bool {
 // GetForwardedOk returns a tuple with the Forwarded field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalStatusDto) GetForwardedOk() (*bool, bool) {
-	if o == nil || isNil(o.Forwarded) {
+	if o == nil || IsNil(o.Forwarded) {
 		return nil, false
 	}
 	return o.Forwarded, true
@@ -80,7 +80,7 @@ func (o *ApprovalStatusDto) GetForwardedOk() (*bool, bool) {
 
 // HasForwarded returns a boolean if a field has been set.
 func (o *ApprovalStatusDto) HasForwarded() bool {
-	if o != nil && !isNil(o.Forwarded) {
+	if o != nil && !IsNil(o.Forwarded) {
 		return true
 	}
 
@@ -94,7 +94,7 @@ func (o *ApprovalStatusDto) SetForwarded(v bool) {
 
 // GetOriginalOwner returns the OriginalOwner field value if set, zero value otherwise.
 func (o *ApprovalStatusDto) GetOriginalOwner() ApprovalStatusDtoOriginalOwner {
-	if o == nil || isNil(o.OriginalOwner) {
+	if o == nil || IsNil(o.OriginalOwner) {
 		var ret ApprovalStatusDtoOriginalOwner
 		return ret
 	}
@@ -104,7 +104,7 @@ func (o *ApprovalStatusDto) GetOriginalOwner() ApprovalStatusDtoOriginalOwner {
 // GetOriginalOwnerOk returns a tuple with the OriginalOwner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalStatusDto) GetOriginalOwnerOk() (*ApprovalStatusDtoOriginalOwner, bool) {
-	if o == nil || isNil(o.OriginalOwner) {
+	if o == nil || IsNil(o.OriginalOwner) {
 		return nil, false
 	}
 	return o.OriginalOwner, true
@@ -112,7 +112,7 @@ func (o *ApprovalStatusDto) GetOriginalOwnerOk() (*ApprovalStatusDtoOriginalOwne
 
 // HasOriginalOwner returns a boolean if a field has been set.
 func (o *ApprovalStatusDto) HasOriginalOwner() bool {
-	if o != nil && !isNil(o.OriginalOwner) {
+	if o != nil && !IsNil(o.OriginalOwner) {
 		return true
 	}
 
@@ -126,7 +126,7 @@ func (o *ApprovalStatusDto) SetOriginalOwner(v ApprovalStatusDtoOriginalOwner) {
 
 // GetCurrentOwner returns the CurrentOwner field value if set, zero value otherwise.
 func (o *ApprovalStatusDto) GetCurrentOwner() ApprovalStatusDtoCurrentOwner {
-	if o == nil || isNil(o.CurrentOwner) {
+	if o == nil || IsNil(o.CurrentOwner) {
 		var ret ApprovalStatusDtoCurrentOwner
 		return ret
 	}
@@ -136,7 +136,7 @@ func (o *ApprovalStatusDto) GetCurrentOwner() ApprovalStatusDtoCurrentOwner {
 // GetCurrentOwnerOk returns a tuple with the CurrentOwner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalStatusDto) GetCurrentOwnerOk() (*ApprovalStatusDtoCurrentOwner, bool) {
-	if o == nil || isNil(o.CurrentOwner) {
+	if o == nil || IsNil(o.CurrentOwner) {
 		return nil, false
 	}
 	return o.CurrentOwner, true
@@ -144,7 +144,7 @@ func (o *ApprovalStatusDto) GetCurrentOwnerOk() (*ApprovalStatusDtoCurrentOwner,
 
 // HasCurrentOwner returns a boolean if a field has been set.
 func (o *ApprovalStatusDto) HasCurrentOwner() bool {
-	if o != nil && !isNil(o.CurrentOwner) {
+	if o != nil && !IsNil(o.CurrentOwner) {
 		return true
 	}
 
@@ -158,7 +158,7 @@ func (o *ApprovalStatusDto) SetCurrentOwner(v ApprovalStatusDtoCurrentOwner) {
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApprovalStatusDto) GetModified() time.Time {
-	if o == nil || isNil(o.Modified.Get()) {
+	if o == nil || IsNil(o.Modified.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -200,7 +200,7 @@ func (o *ApprovalStatusDto) UnsetModified() {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *ApprovalStatusDto) GetStatus() ManualWorkItemState {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret ManualWorkItemState
 		return ret
 	}
@@ -210,7 +210,7 @@ func (o *ApprovalStatusDto) GetStatus() ManualWorkItemState {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalStatusDto) GetStatusOk() (*ManualWorkItemState, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -218,7 +218,7 @@ func (o *ApprovalStatusDto) GetStatusOk() (*ManualWorkItemState, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *ApprovalStatusDto) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -232,7 +232,7 @@ func (o *ApprovalStatusDto) SetStatus(v ManualWorkItemState) {
 
 // GetScheme returns the Scheme field value if set, zero value otherwise.
 func (o *ApprovalStatusDto) GetScheme() ApprovalScheme {
-	if o == nil || isNil(o.Scheme) {
+	if o == nil || IsNil(o.Scheme) {
 		var ret ApprovalScheme
 		return ret
 	}
@@ -242,7 +242,7 @@ func (o *ApprovalStatusDto) GetScheme() ApprovalScheme {
 // GetSchemeOk returns a tuple with the Scheme field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalStatusDto) GetSchemeOk() (*ApprovalScheme, bool) {
-	if o == nil || isNil(o.Scheme) {
+	if o == nil || IsNil(o.Scheme) {
 		return nil, false
 	}
 	return o.Scheme, true
@@ -250,7 +250,7 @@ func (o *ApprovalStatusDto) GetSchemeOk() (*ApprovalScheme, bool) {
 
 // HasScheme returns a boolean if a field has been set.
 func (o *ApprovalStatusDto) HasScheme() bool {
-	if o != nil && !isNil(o.Scheme) {
+	if o != nil && !IsNil(o.Scheme) {
 		return true
 	}
 
@@ -275,7 +275,7 @@ func (o *ApprovalStatusDto) GetErrorMessages() []ErrorMessageDto {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApprovalStatusDto) GetErrorMessagesOk() ([]ErrorMessageDto, bool) {
-	if o == nil || isNil(o.ErrorMessages) {
+	if o == nil || IsNil(o.ErrorMessages) {
 		return nil, false
 	}
 	return o.ErrorMessages, true
@@ -283,7 +283,7 @@ func (o *ApprovalStatusDto) GetErrorMessagesOk() ([]ErrorMessageDto, bool) {
 
 // HasErrorMessages returns a boolean if a field has been set.
 func (o *ApprovalStatusDto) HasErrorMessages() bool {
-	if o != nil && isNil(o.ErrorMessages) {
+	if o != nil && !IsNil(o.ErrorMessages) {
 		return true
 	}
 
@@ -297,7 +297,7 @@ func (o *ApprovalStatusDto) SetErrorMessages(v []ErrorMessageDto) {
 
 // GetComment returns the Comment field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApprovalStatusDto) GetComment() string {
-	if o == nil || isNil(o.Comment.Get()) {
+	if o == nil || IsNil(o.Comment.Get()) {
 		var ret string
 		return ret
 	}
@@ -339,7 +339,7 @@ func (o *ApprovalStatusDto) UnsetComment() {
 
 // GetRemoveDate returns the RemoveDate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApprovalStatusDto) GetRemoveDate() time.Time {
-	if o == nil || isNil(o.RemoveDate.Get()) {
+	if o == nil || IsNil(o.RemoveDate.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -389,22 +389,22 @@ func (o ApprovalStatusDto) MarshalJSON() ([]byte, error) {
 
 func (o ApprovalStatusDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Forwarded) {
+	if !IsNil(o.Forwarded) {
 		toSerialize["forwarded"] = o.Forwarded
 	}
-	if !isNil(o.OriginalOwner) {
+	if !IsNil(o.OriginalOwner) {
 		toSerialize["originalOwner"] = o.OriginalOwner
 	}
-	if !isNil(o.CurrentOwner) {
+	if !IsNil(o.CurrentOwner) {
 		toSerialize["currentOwner"] = o.CurrentOwner
 	}
 	if o.Modified.IsSet() {
 		toSerialize["modified"] = o.Modified.Get()
 	}
-	if !isNil(o.Status) {
+	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if !isNil(o.Scheme) {
+	if !IsNil(o.Scheme) {
 		toSerialize["scheme"] = o.Scheme
 	}
 	if o.ErrorMessages != nil {
@@ -424,16 +424,20 @@ func (o ApprovalStatusDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ApprovalStatusDto) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ApprovalStatusDto) UnmarshalJSON(data []byte) (err error) {
 	varApprovalStatusDto := _ApprovalStatusDto{}
 
-	if err = json.Unmarshal(bytes, &varApprovalStatusDto); err == nil {
+	err = json.Unmarshal(data, &varApprovalStatusDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ApprovalStatusDto(varApprovalStatusDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "forwarded")
 		delete(additionalProperties, "originalOwner")
 		delete(additionalProperties, "currentOwner")

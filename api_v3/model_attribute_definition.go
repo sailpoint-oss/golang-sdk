@@ -67,7 +67,7 @@ func NewAttributeDefinitionWithDefaults() *AttributeDefinition {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *AttributeDefinition) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -77,7 +77,7 @@ func (o *AttributeDefinition) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AttributeDefinition) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -85,7 +85,7 @@ func (o *AttributeDefinition) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *AttributeDefinition) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -99,7 +99,7 @@ func (o *AttributeDefinition) SetName(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *AttributeDefinition) GetType() AttributeDefinitionType {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret AttributeDefinitionType
 		return ret
 	}
@@ -109,7 +109,7 @@ func (o *AttributeDefinition) GetType() AttributeDefinitionType {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AttributeDefinition) GetTypeOk() (*AttributeDefinitionType, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -117,7 +117,7 @@ func (o *AttributeDefinition) GetTypeOk() (*AttributeDefinitionType, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *AttributeDefinition) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -131,7 +131,7 @@ func (o *AttributeDefinition) SetType(v AttributeDefinitionType) {
 
 // GetSchema returns the Schema field value if set, zero value otherwise.
 func (o *AttributeDefinition) GetSchema() AttributeDefinitionSchema {
-	if o == nil || isNil(o.Schema) {
+	if o == nil || IsNil(o.Schema) {
 		var ret AttributeDefinitionSchema
 		return ret
 	}
@@ -141,7 +141,7 @@ func (o *AttributeDefinition) GetSchema() AttributeDefinitionSchema {
 // GetSchemaOk returns a tuple with the Schema field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AttributeDefinition) GetSchemaOk() (*AttributeDefinitionSchema, bool) {
-	if o == nil || isNil(o.Schema) {
+	if o == nil || IsNil(o.Schema) {
 		return nil, false
 	}
 	return o.Schema, true
@@ -149,7 +149,7 @@ func (o *AttributeDefinition) GetSchemaOk() (*AttributeDefinitionSchema, bool) {
 
 // HasSchema returns a boolean if a field has been set.
 func (o *AttributeDefinition) HasSchema() bool {
-	if o != nil && !isNil(o.Schema) {
+	if o != nil && !IsNil(o.Schema) {
 		return true
 	}
 
@@ -163,7 +163,7 @@ func (o *AttributeDefinition) SetSchema(v AttributeDefinitionSchema) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *AttributeDefinition) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -173,7 +173,7 @@ func (o *AttributeDefinition) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AttributeDefinition) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -181,7 +181,7 @@ func (o *AttributeDefinition) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *AttributeDefinition) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -195,7 +195,7 @@ func (o *AttributeDefinition) SetDescription(v string) {
 
 // GetIsMulti returns the IsMulti field value if set, zero value otherwise.
 func (o *AttributeDefinition) GetIsMulti() bool {
-	if o == nil || isNil(o.IsMulti) {
+	if o == nil || IsNil(o.IsMulti) {
 		var ret bool
 		return ret
 	}
@@ -205,7 +205,7 @@ func (o *AttributeDefinition) GetIsMulti() bool {
 // GetIsMultiOk returns a tuple with the IsMulti field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AttributeDefinition) GetIsMultiOk() (*bool, bool) {
-	if o == nil || isNil(o.IsMulti) {
+	if o == nil || IsNil(o.IsMulti) {
 		return nil, false
 	}
 	return o.IsMulti, true
@@ -213,7 +213,7 @@ func (o *AttributeDefinition) GetIsMultiOk() (*bool, bool) {
 
 // HasIsMulti returns a boolean if a field has been set.
 func (o *AttributeDefinition) HasIsMulti() bool {
-	if o != nil && !isNil(o.IsMulti) {
+	if o != nil && !IsNil(o.IsMulti) {
 		return true
 	}
 
@@ -227,7 +227,7 @@ func (o *AttributeDefinition) SetIsMulti(v bool) {
 
 // GetIsEntitlement returns the IsEntitlement field value if set, zero value otherwise.
 func (o *AttributeDefinition) GetIsEntitlement() bool {
-	if o == nil || isNil(o.IsEntitlement) {
+	if o == nil || IsNil(o.IsEntitlement) {
 		var ret bool
 		return ret
 	}
@@ -237,7 +237,7 @@ func (o *AttributeDefinition) GetIsEntitlement() bool {
 // GetIsEntitlementOk returns a tuple with the IsEntitlement field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AttributeDefinition) GetIsEntitlementOk() (*bool, bool) {
-	if o == nil || isNil(o.IsEntitlement) {
+	if o == nil || IsNil(o.IsEntitlement) {
 		return nil, false
 	}
 	return o.IsEntitlement, true
@@ -245,7 +245,7 @@ func (o *AttributeDefinition) GetIsEntitlementOk() (*bool, bool) {
 
 // HasIsEntitlement returns a boolean if a field has been set.
 func (o *AttributeDefinition) HasIsEntitlement() bool {
-	if o != nil && !isNil(o.IsEntitlement) {
+	if o != nil && !IsNil(o.IsEntitlement) {
 		return true
 	}
 
@@ -259,7 +259,7 @@ func (o *AttributeDefinition) SetIsEntitlement(v bool) {
 
 // GetIsGroup returns the IsGroup field value if set, zero value otherwise.
 func (o *AttributeDefinition) GetIsGroup() bool {
-	if o == nil || isNil(o.IsGroup) {
+	if o == nil || IsNil(o.IsGroup) {
 		var ret bool
 		return ret
 	}
@@ -269,7 +269,7 @@ func (o *AttributeDefinition) GetIsGroup() bool {
 // GetIsGroupOk returns a tuple with the IsGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AttributeDefinition) GetIsGroupOk() (*bool, bool) {
-	if o == nil || isNil(o.IsGroup) {
+	if o == nil || IsNil(o.IsGroup) {
 		return nil, false
 	}
 	return o.IsGroup, true
@@ -277,7 +277,7 @@ func (o *AttributeDefinition) GetIsGroupOk() (*bool, bool) {
 
 // HasIsGroup returns a boolean if a field has been set.
 func (o *AttributeDefinition) HasIsGroup() bool {
-	if o != nil && !isNil(o.IsGroup) {
+	if o != nil && !IsNil(o.IsGroup) {
 		return true
 	}
 
@@ -299,25 +299,25 @@ func (o AttributeDefinition) MarshalJSON() ([]byte, error) {
 
 func (o AttributeDefinition) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Schema) {
+	if !IsNil(o.Schema) {
 		toSerialize["schema"] = o.Schema
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.IsMulti) {
+	if !IsNil(o.IsMulti) {
 		toSerialize["isMulti"] = o.IsMulti
 	}
-	if !isNil(o.IsEntitlement) {
+	if !IsNil(o.IsEntitlement) {
 		toSerialize["isEntitlement"] = o.IsEntitlement
 	}
-	if !isNil(o.IsGroup) {
+	if !IsNil(o.IsGroup) {
 		toSerialize["isGroup"] = o.IsGroup
 	}
 
@@ -328,16 +328,20 @@ func (o AttributeDefinition) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AttributeDefinition) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AttributeDefinition) UnmarshalJSON(data []byte) (err error) {
 	varAttributeDefinition := _AttributeDefinition{}
 
-	if err = json.Unmarshal(bytes, &varAttributeDefinition); err == nil {
+	err = json.Unmarshal(data, &varAttributeDefinition)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AttributeDefinition(varAttributeDefinition)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "schema")

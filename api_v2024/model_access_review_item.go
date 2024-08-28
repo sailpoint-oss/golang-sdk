@@ -54,7 +54,7 @@ func NewAccessReviewItemWithDefaults() *AccessReviewItem {
 
 // GetAccessSummary returns the AccessSummary field value if set, zero value otherwise.
 func (o *AccessReviewItem) GetAccessSummary() AccessSummary {
-	if o == nil || isNil(o.AccessSummary) {
+	if o == nil || IsNil(o.AccessSummary) {
 		var ret AccessSummary
 		return ret
 	}
@@ -64,7 +64,7 @@ func (o *AccessReviewItem) GetAccessSummary() AccessSummary {
 // GetAccessSummaryOk returns a tuple with the AccessSummary field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessReviewItem) GetAccessSummaryOk() (*AccessSummary, bool) {
-	if o == nil || isNil(o.AccessSummary) {
+	if o == nil || IsNil(o.AccessSummary) {
 		return nil, false
 	}
 	return o.AccessSummary, true
@@ -72,7 +72,7 @@ func (o *AccessReviewItem) GetAccessSummaryOk() (*AccessSummary, bool) {
 
 // HasAccessSummary returns a boolean if a field has been set.
 func (o *AccessReviewItem) HasAccessSummary() bool {
-	if o != nil && !isNil(o.AccessSummary) {
+	if o != nil && !IsNil(o.AccessSummary) {
 		return true
 	}
 
@@ -86,7 +86,7 @@ func (o *AccessReviewItem) SetAccessSummary(v AccessSummary) {
 
 // GetIdentitySummary returns the IdentitySummary field value if set, zero value otherwise.
 func (o *AccessReviewItem) GetIdentitySummary() CertificationIdentitySummary {
-	if o == nil || isNil(o.IdentitySummary) {
+	if o == nil || IsNil(o.IdentitySummary) {
 		var ret CertificationIdentitySummary
 		return ret
 	}
@@ -96,7 +96,7 @@ func (o *AccessReviewItem) GetIdentitySummary() CertificationIdentitySummary {
 // GetIdentitySummaryOk returns a tuple with the IdentitySummary field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessReviewItem) GetIdentitySummaryOk() (*CertificationIdentitySummary, bool) {
-	if o == nil || isNil(o.IdentitySummary) {
+	if o == nil || IsNil(o.IdentitySummary) {
 		return nil, false
 	}
 	return o.IdentitySummary, true
@@ -104,7 +104,7 @@ func (o *AccessReviewItem) GetIdentitySummaryOk() (*CertificationIdentitySummary
 
 // HasIdentitySummary returns a boolean if a field has been set.
 func (o *AccessReviewItem) HasIdentitySummary() bool {
-	if o != nil && !isNil(o.IdentitySummary) {
+	if o != nil && !IsNil(o.IdentitySummary) {
 		return true
 	}
 
@@ -118,7 +118,7 @@ func (o *AccessReviewItem) SetIdentitySummary(v CertificationIdentitySummary) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *AccessReviewItem) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -128,7 +128,7 @@ func (o *AccessReviewItem) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessReviewItem) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -136,7 +136,7 @@ func (o *AccessReviewItem) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *AccessReviewItem) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -150,7 +150,7 @@ func (o *AccessReviewItem) SetId(v string) {
 
 // GetCompleted returns the Completed field value if set, zero value otherwise.
 func (o *AccessReviewItem) GetCompleted() bool {
-	if o == nil || isNil(o.Completed) {
+	if o == nil || IsNil(o.Completed) {
 		var ret bool
 		return ret
 	}
@@ -160,7 +160,7 @@ func (o *AccessReviewItem) GetCompleted() bool {
 // GetCompletedOk returns a tuple with the Completed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessReviewItem) GetCompletedOk() (*bool, bool) {
-	if o == nil || isNil(o.Completed) {
+	if o == nil || IsNil(o.Completed) {
 		return nil, false
 	}
 	return o.Completed, true
@@ -168,7 +168,7 @@ func (o *AccessReviewItem) GetCompletedOk() (*bool, bool) {
 
 // HasCompleted returns a boolean if a field has been set.
 func (o *AccessReviewItem) HasCompleted() bool {
-	if o != nil && !isNil(o.Completed) {
+	if o != nil && !IsNil(o.Completed) {
 		return true
 	}
 
@@ -182,7 +182,7 @@ func (o *AccessReviewItem) SetCompleted(v bool) {
 
 // GetNewAccess returns the NewAccess field value if set, zero value otherwise.
 func (o *AccessReviewItem) GetNewAccess() bool {
-	if o == nil || isNil(o.NewAccess) {
+	if o == nil || IsNil(o.NewAccess) {
 		var ret bool
 		return ret
 	}
@@ -192,7 +192,7 @@ func (o *AccessReviewItem) GetNewAccess() bool {
 // GetNewAccessOk returns a tuple with the NewAccess field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessReviewItem) GetNewAccessOk() (*bool, bool) {
-	if o == nil || isNil(o.NewAccess) {
+	if o == nil || IsNil(o.NewAccess) {
 		return nil, false
 	}
 	return o.NewAccess, true
@@ -200,7 +200,7 @@ func (o *AccessReviewItem) GetNewAccessOk() (*bool, bool) {
 
 // HasNewAccess returns a boolean if a field has been set.
 func (o *AccessReviewItem) HasNewAccess() bool {
-	if o != nil && !isNil(o.NewAccess) {
+	if o != nil && !IsNil(o.NewAccess) {
 		return true
 	}
 
@@ -214,7 +214,7 @@ func (o *AccessReviewItem) SetNewAccess(v bool) {
 
 // GetDecision returns the Decision field value if set, zero value otherwise.
 func (o *AccessReviewItem) GetDecision() CertificationDecision {
-	if o == nil || isNil(o.Decision) {
+	if o == nil || IsNil(o.Decision) {
 		var ret CertificationDecision
 		return ret
 	}
@@ -224,7 +224,7 @@ func (o *AccessReviewItem) GetDecision() CertificationDecision {
 // GetDecisionOk returns a tuple with the Decision field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessReviewItem) GetDecisionOk() (*CertificationDecision, bool) {
-	if o == nil || isNil(o.Decision) {
+	if o == nil || IsNil(o.Decision) {
 		return nil, false
 	}
 	return o.Decision, true
@@ -232,7 +232,7 @@ func (o *AccessReviewItem) GetDecisionOk() (*CertificationDecision, bool) {
 
 // HasDecision returns a boolean if a field has been set.
 func (o *AccessReviewItem) HasDecision() bool {
-	if o != nil && !isNil(o.Decision) {
+	if o != nil && !IsNil(o.Decision) {
 		return true
 	}
 
@@ -246,7 +246,7 @@ func (o *AccessReviewItem) SetDecision(v CertificationDecision) {
 
 // GetComments returns the Comments field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessReviewItem) GetComments() string {
-	if o == nil || isNil(o.Comments.Get()) {
+	if o == nil || IsNil(o.Comments.Get()) {
 		var ret string
 		return ret
 	}
@@ -296,22 +296,22 @@ func (o AccessReviewItem) MarshalJSON() ([]byte, error) {
 
 func (o AccessReviewItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AccessSummary) {
+	if !IsNil(o.AccessSummary) {
 		toSerialize["accessSummary"] = o.AccessSummary
 	}
-	if !isNil(o.IdentitySummary) {
+	if !IsNil(o.IdentitySummary) {
 		toSerialize["identitySummary"] = o.IdentitySummary
 	}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Completed) {
+	if !IsNil(o.Completed) {
 		toSerialize["completed"] = o.Completed
 	}
-	if !isNil(o.NewAccess) {
+	if !IsNil(o.NewAccess) {
 		toSerialize["newAccess"] = o.NewAccess
 	}
-	if !isNil(o.Decision) {
+	if !IsNil(o.Decision) {
 		toSerialize["decision"] = o.Decision
 	}
 	if o.Comments.IsSet() {
@@ -325,16 +325,20 @@ func (o AccessReviewItem) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccessReviewItem) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccessReviewItem) UnmarshalJSON(data []byte) (err error) {
 	varAccessReviewItem := _AccessReviewItem{}
 
-	if err = json.Unmarshal(bytes, &varAccessReviewItem); err == nil {
+	err = json.Unmarshal(data, &varAccessReviewItem)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessReviewItem(varAccessReviewItem)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "accessSummary")
 		delete(additionalProperties, "identitySummary")
 		delete(additionalProperties, "id")

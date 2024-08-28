@@ -49,7 +49,7 @@ func NewWorkItemsSummaryWithDefaults() *WorkItemsSummary {
 
 // GetOpen returns the Open field value if set, zero value otherwise.
 func (o *WorkItemsSummary) GetOpen() int32 {
-	if o == nil || isNil(o.Open) {
+	if o == nil || IsNil(o.Open) {
 		var ret int32
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *WorkItemsSummary) GetOpen() int32 {
 // GetOpenOk returns a tuple with the Open field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkItemsSummary) GetOpenOk() (*int32, bool) {
-	if o == nil || isNil(o.Open) {
+	if o == nil || IsNil(o.Open) {
 		return nil, false
 	}
 	return o.Open, true
@@ -67,7 +67,7 @@ func (o *WorkItemsSummary) GetOpenOk() (*int32, bool) {
 
 // HasOpen returns a boolean if a field has been set.
 func (o *WorkItemsSummary) HasOpen() bool {
-	if o != nil && !isNil(o.Open) {
+	if o != nil && !IsNil(o.Open) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *WorkItemsSummary) SetOpen(v int32) {
 
 // GetCompleted returns the Completed field value if set, zero value otherwise.
 func (o *WorkItemsSummary) GetCompleted() int32 {
-	if o == nil || isNil(o.Completed) {
+	if o == nil || IsNil(o.Completed) {
 		var ret int32
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *WorkItemsSummary) GetCompleted() int32 {
 // GetCompletedOk returns a tuple with the Completed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkItemsSummary) GetCompletedOk() (*int32, bool) {
-	if o == nil || isNil(o.Completed) {
+	if o == nil || IsNil(o.Completed) {
 		return nil, false
 	}
 	return o.Completed, true
@@ -99,7 +99,7 @@ func (o *WorkItemsSummary) GetCompletedOk() (*int32, bool) {
 
 // HasCompleted returns a boolean if a field has been set.
 func (o *WorkItemsSummary) HasCompleted() bool {
-	if o != nil && !isNil(o.Completed) {
+	if o != nil && !IsNil(o.Completed) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *WorkItemsSummary) SetCompleted(v int32) {
 
 // GetTotal returns the Total field value if set, zero value otherwise.
 func (o *WorkItemsSummary) GetTotal() int32 {
-	if o == nil || isNil(o.Total) {
+	if o == nil || IsNil(o.Total) {
 		var ret int32
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *WorkItemsSummary) GetTotal() int32 {
 // GetTotalOk returns a tuple with the Total field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkItemsSummary) GetTotalOk() (*int32, bool) {
-	if o == nil || isNil(o.Total) {
+	if o == nil || IsNil(o.Total) {
 		return nil, false
 	}
 	return o.Total, true
@@ -131,7 +131,7 @@ func (o *WorkItemsSummary) GetTotalOk() (*int32, bool) {
 
 // HasTotal returns a boolean if a field has been set.
 func (o *WorkItemsSummary) HasTotal() bool {
-	if o != nil && !isNil(o.Total) {
+	if o != nil && !IsNil(o.Total) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o WorkItemsSummary) MarshalJSON() ([]byte, error) {
 
 func (o WorkItemsSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Open) {
+	if !IsNil(o.Open) {
 		toSerialize["open"] = o.Open
 	}
-	if !isNil(o.Completed) {
+	if !IsNil(o.Completed) {
 		toSerialize["completed"] = o.Completed
 	}
-	if !isNil(o.Total) {
+	if !IsNil(o.Total) {
 		toSerialize["total"] = o.Total
 	}
 
@@ -170,16 +170,20 @@ func (o WorkItemsSummary) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *WorkItemsSummary) UnmarshalJSON(bytes []byte) (err error) {
+func (o *WorkItemsSummary) UnmarshalJSON(data []byte) (err error) {
 	varWorkItemsSummary := _WorkItemsSummary{}
 
-	if err = json.Unmarshal(bytes, &varWorkItemsSummary); err == nil {
+	err = json.Unmarshal(data, &varWorkItemsSummary)
+
+	if err != nil {
+		return err
+	}
+
 	*o = WorkItemsSummary(varWorkItemsSummary)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "open")
 		delete(additionalProperties, "completed")
 		delete(additionalProperties, "total")

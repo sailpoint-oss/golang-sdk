@@ -50,7 +50,7 @@ func NewProcessingDetailsWithDefaults() *ProcessingDetails {
 
 // GetDate returns the Date field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProcessingDetails) GetDate() time.Time {
-	if o == nil || isNil(o.Date.Get()) {
+	if o == nil || IsNil(o.Date.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -92,7 +92,7 @@ func (o *ProcessingDetails) UnsetDate() {
 
 // GetStage returns the Stage field value if set, zero value otherwise.
 func (o *ProcessingDetails) GetStage() string {
-	if o == nil || isNil(o.Stage) {
+	if o == nil || IsNil(o.Stage) {
 		var ret string
 		return ret
 	}
@@ -102,7 +102,7 @@ func (o *ProcessingDetails) GetStage() string {
 // GetStageOk returns a tuple with the Stage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProcessingDetails) GetStageOk() (*string, bool) {
-	if o == nil || isNil(o.Stage) {
+	if o == nil || IsNil(o.Stage) {
 		return nil, false
 	}
 	return o.Stage, true
@@ -110,7 +110,7 @@ func (o *ProcessingDetails) GetStageOk() (*string, bool) {
 
 // HasStage returns a boolean if a field has been set.
 func (o *ProcessingDetails) HasStage() bool {
-	if o != nil && !isNil(o.Stage) {
+	if o != nil && !IsNil(o.Stage) {
 		return true
 	}
 
@@ -124,7 +124,7 @@ func (o *ProcessingDetails) SetStage(v string) {
 
 // GetRetryCount returns the RetryCount field value if set, zero value otherwise.
 func (o *ProcessingDetails) GetRetryCount() int32 {
-	if o == nil || isNil(o.RetryCount) {
+	if o == nil || IsNil(o.RetryCount) {
 		var ret int32
 		return ret
 	}
@@ -134,7 +134,7 @@ func (o *ProcessingDetails) GetRetryCount() int32 {
 // GetRetryCountOk returns a tuple with the RetryCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProcessingDetails) GetRetryCountOk() (*int32, bool) {
-	if o == nil || isNil(o.RetryCount) {
+	if o == nil || IsNil(o.RetryCount) {
 		return nil, false
 	}
 	return o.RetryCount, true
@@ -142,7 +142,7 @@ func (o *ProcessingDetails) GetRetryCountOk() (*int32, bool) {
 
 // HasRetryCount returns a boolean if a field has been set.
 func (o *ProcessingDetails) HasRetryCount() bool {
-	if o != nil && !isNil(o.RetryCount) {
+	if o != nil && !IsNil(o.RetryCount) {
 		return true
 	}
 
@@ -156,7 +156,7 @@ func (o *ProcessingDetails) SetRetryCount(v int32) {
 
 // GetStackTrace returns the StackTrace field value if set, zero value otherwise.
 func (o *ProcessingDetails) GetStackTrace() string {
-	if o == nil || isNil(o.StackTrace) {
+	if o == nil || IsNil(o.StackTrace) {
 		var ret string
 		return ret
 	}
@@ -166,7 +166,7 @@ func (o *ProcessingDetails) GetStackTrace() string {
 // GetStackTraceOk returns a tuple with the StackTrace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProcessingDetails) GetStackTraceOk() (*string, bool) {
-	if o == nil || isNil(o.StackTrace) {
+	if o == nil || IsNil(o.StackTrace) {
 		return nil, false
 	}
 	return o.StackTrace, true
@@ -174,7 +174,7 @@ func (o *ProcessingDetails) GetStackTraceOk() (*string, bool) {
 
 // HasStackTrace returns a boolean if a field has been set.
 func (o *ProcessingDetails) HasStackTrace() bool {
-	if o != nil && !isNil(o.StackTrace) {
+	if o != nil && !IsNil(o.StackTrace) {
 		return true
 	}
 
@@ -188,7 +188,7 @@ func (o *ProcessingDetails) SetStackTrace(v string) {
 
 // GetMessage returns the Message field value if set, zero value otherwise.
 func (o *ProcessingDetails) GetMessage() string {
-	if o == nil || isNil(o.Message) {
+	if o == nil || IsNil(o.Message) {
 		var ret string
 		return ret
 	}
@@ -198,7 +198,7 @@ func (o *ProcessingDetails) GetMessage() string {
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProcessingDetails) GetMessageOk() (*string, bool) {
-	if o == nil || isNil(o.Message) {
+	if o == nil || IsNil(o.Message) {
 		return nil, false
 	}
 	return o.Message, true
@@ -206,7 +206,7 @@ func (o *ProcessingDetails) GetMessageOk() (*string, bool) {
 
 // HasMessage returns a boolean if a field has been set.
 func (o *ProcessingDetails) HasMessage() bool {
-	if o != nil && !isNil(o.Message) {
+	if o != nil && !IsNil(o.Message) {
 		return true
 	}
 
@@ -231,16 +231,16 @@ func (o ProcessingDetails) ToMap() (map[string]interface{}, error) {
 	if o.Date.IsSet() {
 		toSerialize["date"] = o.Date.Get()
 	}
-	if !isNil(o.Stage) {
+	if !IsNil(o.Stage) {
 		toSerialize["stage"] = o.Stage
 	}
-	if !isNil(o.RetryCount) {
+	if !IsNil(o.RetryCount) {
 		toSerialize["retryCount"] = o.RetryCount
 	}
-	if !isNil(o.StackTrace) {
+	if !IsNil(o.StackTrace) {
 		toSerialize["stackTrace"] = o.StackTrace
 	}
-	if !isNil(o.Message) {
+	if !IsNil(o.Message) {
 		toSerialize["message"] = o.Message
 	}
 
@@ -251,16 +251,20 @@ func (o ProcessingDetails) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ProcessingDetails) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ProcessingDetails) UnmarshalJSON(data []byte) (err error) {
 	varProcessingDetails := _ProcessingDetails{}
 
-	if err = json.Unmarshal(bytes, &varProcessingDetails); err == nil {
+	err = json.Unmarshal(data, &varProcessingDetails)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ProcessingDetails(varProcessingDetails)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "date")
 		delete(additionalProperties, "stage")
 		delete(additionalProperties, "retryCount")

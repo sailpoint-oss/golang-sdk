@@ -47,7 +47,7 @@ func NewPermissionDtoWithDefaults() *PermissionDto {
 
 // GetRights returns the Rights field value if set, zero value otherwise.
 func (o *PermissionDto) GetRights() []string {
-	if o == nil || isNil(o.Rights) {
+	if o == nil || IsNil(o.Rights) {
 		var ret []string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *PermissionDto) GetRights() []string {
 // GetRightsOk returns a tuple with the Rights field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PermissionDto) GetRightsOk() ([]string, bool) {
-	if o == nil || isNil(o.Rights) {
+	if o == nil || IsNil(o.Rights) {
 		return nil, false
 	}
 	return o.Rights, true
@@ -65,7 +65,7 @@ func (o *PermissionDto) GetRightsOk() ([]string, bool) {
 
 // HasRights returns a boolean if a field has been set.
 func (o *PermissionDto) HasRights() bool {
-	if o != nil && !isNil(o.Rights) {
+	if o != nil && !IsNil(o.Rights) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *PermissionDto) SetRights(v []string) {
 
 // GetTarget returns the Target field value if set, zero value otherwise.
 func (o *PermissionDto) GetTarget() string {
-	if o == nil || isNil(o.Target) {
+	if o == nil || IsNil(o.Target) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *PermissionDto) GetTarget() string {
 // GetTargetOk returns a tuple with the Target field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PermissionDto) GetTargetOk() (*string, bool) {
-	if o == nil || isNil(o.Target) {
+	if o == nil || IsNil(o.Target) {
 		return nil, false
 	}
 	return o.Target, true
@@ -97,7 +97,7 @@ func (o *PermissionDto) GetTargetOk() (*string, bool) {
 
 // HasTarget returns a boolean if a field has been set.
 func (o *PermissionDto) HasTarget() bool {
-	if o != nil && !isNil(o.Target) {
+	if o != nil && !IsNil(o.Target) {
 		return true
 	}
 
@@ -119,8 +119,12 @@ func (o PermissionDto) MarshalJSON() ([]byte, error) {
 
 func (o PermissionDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: rights is readOnly
-	// skip: target is readOnly
+	if !IsNil(o.Rights) {
+		toSerialize["rights"] = o.Rights
+	}
+	if !IsNil(o.Target) {
+		toSerialize["target"] = o.Target
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -129,16 +133,20 @@ func (o PermissionDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *PermissionDto) UnmarshalJSON(bytes []byte) (err error) {
+func (o *PermissionDto) UnmarshalJSON(data []byte) (err error) {
 	varPermissionDto := _PermissionDto{}
 
-	if err = json.Unmarshal(bytes, &varPermissionDto); err == nil {
+	err = json.Unmarshal(data, &varPermissionDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = PermissionDto(varPermissionDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "rights")
 		delete(additionalProperties, "target")
 		o.AdditionalProperties = additionalProperties

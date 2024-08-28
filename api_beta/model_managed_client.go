@@ -45,6 +45,7 @@ type ManagedClient struct {
 	Name *string `json:"name,omitempty"`
 	// Milliseconds since the ManagedClient has polled the server
 	SinceLastSeen *string `json:"sinceLastSeen,omitempty"`
+	// Status of the ManagedClient
 	Status *ManagedClientStatusEnum `json:"status,omitempty"`
 	// Type of the ManagedClient (VA, CCG)
 	Type string `json:"type"`
@@ -82,7 +83,7 @@ func NewManagedClientWithDefaults() *ManagedClient {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ManagedClient) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -92,7 +93,7 @@ func (o *ManagedClient) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedClient) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -100,7 +101,7 @@ func (o *ManagedClient) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ManagedClient) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -114,7 +115,7 @@ func (o *ManagedClient) SetId(v string) {
 
 // GetAlertKey returns the AlertKey field value if set, zero value otherwise.
 func (o *ManagedClient) GetAlertKey() string {
-	if o == nil || isNil(o.AlertKey) {
+	if o == nil || IsNil(o.AlertKey) {
 		var ret string
 		return ret
 	}
@@ -124,7 +125,7 @@ func (o *ManagedClient) GetAlertKey() string {
 // GetAlertKeyOk returns a tuple with the AlertKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedClient) GetAlertKeyOk() (*string, bool) {
-	if o == nil || isNil(o.AlertKey) {
+	if o == nil || IsNil(o.AlertKey) {
 		return nil, false
 	}
 	return o.AlertKey, true
@@ -132,7 +133,7 @@ func (o *ManagedClient) GetAlertKeyOk() (*string, bool) {
 
 // HasAlertKey returns a boolean if a field has been set.
 func (o *ManagedClient) HasAlertKey() bool {
-	if o != nil && !isNil(o.AlertKey) {
+	if o != nil && !IsNil(o.AlertKey) {
 		return true
 	}
 
@@ -146,7 +147,7 @@ func (o *ManagedClient) SetAlertKey(v string) {
 
 // GetApiGatewayBaseUrl returns the ApiGatewayBaseUrl field value if set, zero value otherwise.
 func (o *ManagedClient) GetApiGatewayBaseUrl() string {
-	if o == nil || isNil(o.ApiGatewayBaseUrl) {
+	if o == nil || IsNil(o.ApiGatewayBaseUrl) {
 		var ret string
 		return ret
 	}
@@ -156,7 +157,7 @@ func (o *ManagedClient) GetApiGatewayBaseUrl() string {
 // GetApiGatewayBaseUrlOk returns a tuple with the ApiGatewayBaseUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedClient) GetApiGatewayBaseUrlOk() (*string, bool) {
-	if o == nil || isNil(o.ApiGatewayBaseUrl) {
+	if o == nil || IsNil(o.ApiGatewayBaseUrl) {
 		return nil, false
 	}
 	return o.ApiGatewayBaseUrl, true
@@ -164,7 +165,7 @@ func (o *ManagedClient) GetApiGatewayBaseUrlOk() (*string, bool) {
 
 // HasApiGatewayBaseUrl returns a boolean if a field has been set.
 func (o *ManagedClient) HasApiGatewayBaseUrl() bool {
-	if o != nil && !isNil(o.ApiGatewayBaseUrl) {
+	if o != nil && !IsNil(o.ApiGatewayBaseUrl) {
 		return true
 	}
 
@@ -178,7 +179,7 @@ func (o *ManagedClient) SetApiGatewayBaseUrl(v string) {
 
 // GetCcId returns the CcId field value if set, zero value otherwise.
 func (o *ManagedClient) GetCcId() int64 {
-	if o == nil || isNil(o.CcId) {
+	if o == nil || IsNil(o.CcId) {
 		var ret int64
 		return ret
 	}
@@ -188,7 +189,7 @@ func (o *ManagedClient) GetCcId() int64 {
 // GetCcIdOk returns a tuple with the CcId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedClient) GetCcIdOk() (*int64, bool) {
-	if o == nil || isNil(o.CcId) {
+	if o == nil || IsNil(o.CcId) {
 		return nil, false
 	}
 	return o.CcId, true
@@ -196,7 +197,7 @@ func (o *ManagedClient) GetCcIdOk() (*int64, bool) {
 
 // HasCcId returns a boolean if a field has been set.
 func (o *ManagedClient) HasCcId() bool {
-	if o != nil && !isNil(o.CcId) {
+	if o != nil && !IsNil(o.CcId) {
 		return true
 	}
 
@@ -258,7 +259,7 @@ func (o *ManagedClient) SetClusterId(v string) {
 
 // GetCookbook returns the Cookbook field value if set, zero value otherwise.
 func (o *ManagedClient) GetCookbook() string {
-	if o == nil || isNil(o.Cookbook) {
+	if o == nil || IsNil(o.Cookbook) {
 		var ret string
 		return ret
 	}
@@ -268,7 +269,7 @@ func (o *ManagedClient) GetCookbook() string {
 // GetCookbookOk returns a tuple with the Cookbook field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedClient) GetCookbookOk() (*string, bool) {
-	if o == nil || isNil(o.Cookbook) {
+	if o == nil || IsNil(o.Cookbook) {
 		return nil, false
 	}
 	return o.Cookbook, true
@@ -276,7 +277,7 @@ func (o *ManagedClient) GetCookbookOk() (*string, bool) {
 
 // HasCookbook returns a boolean if a field has been set.
 func (o *ManagedClient) HasCookbook() bool {
-	if o != nil && !isNil(o.Cookbook) {
+	if o != nil && !IsNil(o.Cookbook) {
 		return true
 	}
 
@@ -314,7 +315,7 @@ func (o *ManagedClient) SetDescription(v string) {
 
 // GetIpAddress returns the IpAddress field value if set, zero value otherwise.
 func (o *ManagedClient) GetIpAddress() string {
-	if o == nil || isNil(o.IpAddress) {
+	if o == nil || IsNil(o.IpAddress) {
 		var ret string
 		return ret
 	}
@@ -324,7 +325,7 @@ func (o *ManagedClient) GetIpAddress() string {
 // GetIpAddressOk returns a tuple with the IpAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedClient) GetIpAddressOk() (*string, bool) {
-	if o == nil || isNil(o.IpAddress) {
+	if o == nil || IsNil(o.IpAddress) {
 		return nil, false
 	}
 	return o.IpAddress, true
@@ -332,7 +333,7 @@ func (o *ManagedClient) GetIpAddressOk() (*string, bool) {
 
 // HasIpAddress returns a boolean if a field has been set.
 func (o *ManagedClient) HasIpAddress() bool {
-	if o != nil && !isNil(o.IpAddress) {
+	if o != nil && !IsNil(o.IpAddress) {
 		return true
 	}
 
@@ -346,7 +347,7 @@ func (o *ManagedClient) SetIpAddress(v string) {
 
 // GetLastSeen returns the LastSeen field value if set, zero value otherwise.
 func (o *ManagedClient) GetLastSeen() time.Time {
-	if o == nil || isNil(o.LastSeen) {
+	if o == nil || IsNil(o.LastSeen) {
 		var ret time.Time
 		return ret
 	}
@@ -356,7 +357,7 @@ func (o *ManagedClient) GetLastSeen() time.Time {
 // GetLastSeenOk returns a tuple with the LastSeen field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedClient) GetLastSeenOk() (*time.Time, bool) {
-	if o == nil || isNil(o.LastSeen) {
+	if o == nil || IsNil(o.LastSeen) {
 		return nil, false
 	}
 	return o.LastSeen, true
@@ -364,7 +365,7 @@ func (o *ManagedClient) GetLastSeenOk() (*time.Time, bool) {
 
 // HasLastSeen returns a boolean if a field has been set.
 func (o *ManagedClient) HasLastSeen() bool {
-	if o != nil && !isNil(o.LastSeen) {
+	if o != nil && !IsNil(o.LastSeen) {
 		return true
 	}
 
@@ -378,7 +379,7 @@ func (o *ManagedClient) SetLastSeen(v time.Time) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ManagedClient) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -388,7 +389,7 @@ func (o *ManagedClient) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedClient) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -396,7 +397,7 @@ func (o *ManagedClient) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ManagedClient) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -410,7 +411,7 @@ func (o *ManagedClient) SetName(v string) {
 
 // GetSinceLastSeen returns the SinceLastSeen field value if set, zero value otherwise.
 func (o *ManagedClient) GetSinceLastSeen() string {
-	if o == nil || isNil(o.SinceLastSeen) {
+	if o == nil || IsNil(o.SinceLastSeen) {
 		var ret string
 		return ret
 	}
@@ -420,7 +421,7 @@ func (o *ManagedClient) GetSinceLastSeen() string {
 // GetSinceLastSeenOk returns a tuple with the SinceLastSeen field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedClient) GetSinceLastSeenOk() (*string, bool) {
-	if o == nil || isNil(o.SinceLastSeen) {
+	if o == nil || IsNil(o.SinceLastSeen) {
 		return nil, false
 	}
 	return o.SinceLastSeen, true
@@ -428,7 +429,7 @@ func (o *ManagedClient) GetSinceLastSeenOk() (*string, bool) {
 
 // HasSinceLastSeen returns a boolean if a field has been set.
 func (o *ManagedClient) HasSinceLastSeen() bool {
-	if o != nil && !isNil(o.SinceLastSeen) {
+	if o != nil && !IsNil(o.SinceLastSeen) {
 		return true
 	}
 
@@ -442,7 +443,7 @@ func (o *ManagedClient) SetSinceLastSeen(v string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *ManagedClient) GetStatus() ManagedClientStatusEnum {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret ManagedClientStatusEnum
 		return ret
 	}
@@ -452,7 +453,7 @@ func (o *ManagedClient) GetStatus() ManagedClientStatusEnum {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedClient) GetStatusOk() (*ManagedClientStatusEnum, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -460,7 +461,7 @@ func (o *ManagedClient) GetStatusOk() (*ManagedClientStatusEnum, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *ManagedClient) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -498,7 +499,7 @@ func (o *ManagedClient) SetType(v string) {
 
 // GetVaDownloadUrl returns the VaDownloadUrl field value if set, zero value otherwise.
 func (o *ManagedClient) GetVaDownloadUrl() string {
-	if o == nil || isNil(o.VaDownloadUrl) {
+	if o == nil || IsNil(o.VaDownloadUrl) {
 		var ret string
 		return ret
 	}
@@ -508,7 +509,7 @@ func (o *ManagedClient) GetVaDownloadUrl() string {
 // GetVaDownloadUrlOk returns a tuple with the VaDownloadUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedClient) GetVaDownloadUrlOk() (*string, bool) {
-	if o == nil || isNil(o.VaDownloadUrl) {
+	if o == nil || IsNil(o.VaDownloadUrl) {
 		return nil, false
 	}
 	return o.VaDownloadUrl, true
@@ -516,7 +517,7 @@ func (o *ManagedClient) GetVaDownloadUrlOk() (*string, bool) {
 
 // HasVaDownloadUrl returns a boolean if a field has been set.
 func (o *ManagedClient) HasVaDownloadUrl() bool {
-	if o != nil && !isNil(o.VaDownloadUrl) {
+	if o != nil && !IsNil(o.VaDownloadUrl) {
 		return true
 	}
 
@@ -530,7 +531,7 @@ func (o *ManagedClient) SetVaDownloadUrl(v string) {
 
 // GetVaVersion returns the VaVersion field value if set, zero value otherwise.
 func (o *ManagedClient) GetVaVersion() string {
-	if o == nil || isNil(o.VaVersion) {
+	if o == nil || IsNil(o.VaVersion) {
 		var ret string
 		return ret
 	}
@@ -540,7 +541,7 @@ func (o *ManagedClient) GetVaVersion() string {
 // GetVaVersionOk returns a tuple with the VaVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedClient) GetVaVersionOk() (*string, bool) {
-	if o == nil || isNil(o.VaVersion) {
+	if o == nil || IsNil(o.VaVersion) {
 		return nil, false
 	}
 	return o.VaVersion, true
@@ -548,7 +549,7 @@ func (o *ManagedClient) GetVaVersionOk() (*string, bool) {
 
 // HasVaVersion returns a boolean if a field has been set.
 func (o *ManagedClient) HasVaVersion() bool {
-	if o != nil && !isNil(o.VaVersion) {
+	if o != nil && !IsNil(o.VaVersion) {
 		return true
 	}
 
@@ -562,7 +563,7 @@ func (o *ManagedClient) SetVaVersion(v string) {
 
 // GetSecret returns the Secret field value if set, zero value otherwise.
 func (o *ManagedClient) GetSecret() string {
-	if o == nil || isNil(o.Secret) {
+	if o == nil || IsNil(o.Secret) {
 		var ret string
 		return ret
 	}
@@ -572,7 +573,7 @@ func (o *ManagedClient) GetSecret() string {
 // GetSecretOk returns a tuple with the Secret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedClient) GetSecretOk() (*string, bool) {
-	if o == nil || isNil(o.Secret) {
+	if o == nil || IsNil(o.Secret) {
 		return nil, false
 	}
 	return o.Secret, true
@@ -580,7 +581,7 @@ func (o *ManagedClient) GetSecretOk() (*string, bool) {
 
 // HasSecret returns a boolean if a field has been set.
 func (o *ManagedClient) HasSecret() bool {
-	if o != nil && !isNil(o.Secret) {
+	if o != nil && !IsNil(o.Secret) {
 		return true
 	}
 
@@ -602,27 +603,47 @@ func (o ManagedClient) MarshalJSON() ([]byte, error) {
 
 func (o ManagedClient) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
-	// skip: alertKey is readOnly
-	// skip: apiGatewayBaseUrl is readOnly
-	if !isNil(o.CcId) {
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.AlertKey) {
+		toSerialize["alertKey"] = o.AlertKey
+	}
+	if !IsNil(o.ApiGatewayBaseUrl) {
+		toSerialize["apiGatewayBaseUrl"] = o.ApiGatewayBaseUrl
+	}
+	if !IsNil(o.CcId) {
 		toSerialize["ccId"] = o.CcId
 	}
 	toSerialize["clientId"] = o.ClientId
 	toSerialize["clusterId"] = o.ClusterId
-	// skip: cookbook is readOnly
+	if !IsNil(o.Cookbook) {
+		toSerialize["cookbook"] = o.Cookbook
+	}
 	toSerialize["description"] = o.Description
-	// skip: ipAddress is readOnly
-	// skip: lastSeen is readOnly
-	if !isNil(o.Name) {
+	if !IsNil(o.IpAddress) {
+		toSerialize["ipAddress"] = o.IpAddress
+	}
+	if !IsNil(o.LastSeen) {
+		toSerialize["lastSeen"] = o.LastSeen
+	}
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	// skip: sinceLastSeen is readOnly
-	// skip: status is readOnly
+	if !IsNil(o.SinceLastSeen) {
+		toSerialize["sinceLastSeen"] = o.SinceLastSeen
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
 	toSerialize["type"] = o.Type
-	// skip: vaDownloadUrl is readOnly
-	// skip: vaVersion is readOnly
-	if !isNil(o.Secret) {
+	if !IsNil(o.VaDownloadUrl) {
+		toSerialize["vaDownloadUrl"] = o.VaDownloadUrl
+	}
+	if !IsNil(o.VaVersion) {
+		toSerialize["vaVersion"] = o.VaVersion
+	}
+	if !IsNil(o.Secret) {
 		toSerialize["secret"] = o.Secret
 	}
 
@@ -633,8 +654,8 @@ func (o ManagedClient) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ManagedClient) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *ManagedClient) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -646,7 +667,7 @@ func (o *ManagedClient) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -660,13 +681,17 @@ func (o *ManagedClient) UnmarshalJSON(bytes []byte) (err error) {
 
 	varManagedClient := _ManagedClient{}
 
-	if err = json.Unmarshal(bytes, &varManagedClient); err == nil {
+	err = json.Unmarshal(data, &varManagedClient)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ManagedClient(varManagedClient)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "alertKey")
 		delete(additionalProperties, "apiGatewayBaseUrl")

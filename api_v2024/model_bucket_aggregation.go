@@ -83,7 +83,7 @@ func (o *BucketAggregation) SetName(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *BucketAggregation) GetType() BucketType {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret BucketType
 		return ret
 	}
@@ -93,7 +93,7 @@ func (o *BucketAggregation) GetType() BucketType {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BucketAggregation) GetTypeOk() (*BucketType, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -101,7 +101,7 @@ func (o *BucketAggregation) GetTypeOk() (*BucketType, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *BucketAggregation) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -139,7 +139,7 @@ func (o *BucketAggregation) SetField(v string) {
 
 // GetSize returns the Size field value if set, zero value otherwise.
 func (o *BucketAggregation) GetSize() int32 {
-	if o == nil || isNil(o.Size) {
+	if o == nil || IsNil(o.Size) {
 		var ret int32
 		return ret
 	}
@@ -149,7 +149,7 @@ func (o *BucketAggregation) GetSize() int32 {
 // GetSizeOk returns a tuple with the Size field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BucketAggregation) GetSizeOk() (*int32, bool) {
-	if o == nil || isNil(o.Size) {
+	if o == nil || IsNil(o.Size) {
 		return nil, false
 	}
 	return o.Size, true
@@ -157,7 +157,7 @@ func (o *BucketAggregation) GetSizeOk() (*int32, bool) {
 
 // HasSize returns a boolean if a field has been set.
 func (o *BucketAggregation) HasSize() bool {
-	if o != nil && !isNil(o.Size) {
+	if o != nil && !IsNil(o.Size) {
 		return true
 	}
 
@@ -171,7 +171,7 @@ func (o *BucketAggregation) SetSize(v int32) {
 
 // GetMinDocCount returns the MinDocCount field value if set, zero value otherwise.
 func (o *BucketAggregation) GetMinDocCount() int32 {
-	if o == nil || isNil(o.MinDocCount) {
+	if o == nil || IsNil(o.MinDocCount) {
 		var ret int32
 		return ret
 	}
@@ -181,7 +181,7 @@ func (o *BucketAggregation) GetMinDocCount() int32 {
 // GetMinDocCountOk returns a tuple with the MinDocCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BucketAggregation) GetMinDocCountOk() (*int32, bool) {
-	if o == nil || isNil(o.MinDocCount) {
+	if o == nil || IsNil(o.MinDocCount) {
 		return nil, false
 	}
 	return o.MinDocCount, true
@@ -189,7 +189,7 @@ func (o *BucketAggregation) GetMinDocCountOk() (*int32, bool) {
 
 // HasMinDocCount returns a boolean if a field has been set.
 func (o *BucketAggregation) HasMinDocCount() bool {
-	if o != nil && !isNil(o.MinDocCount) {
+	if o != nil && !IsNil(o.MinDocCount) {
 		return true
 	}
 
@@ -212,14 +212,14 @@ func (o BucketAggregation) MarshalJSON() ([]byte, error) {
 func (o BucketAggregation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
 	toSerialize["field"] = o.Field
-	if !isNil(o.Size) {
+	if !IsNil(o.Size) {
 		toSerialize["size"] = o.Size
 	}
-	if !isNil(o.MinDocCount) {
+	if !IsNil(o.MinDocCount) {
 		toSerialize["minDocCount"] = o.MinDocCount
 	}
 
@@ -230,8 +230,8 @@ func (o BucketAggregation) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *BucketAggregation) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *BucketAggregation) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -241,7 +241,7 @@ func (o *BucketAggregation) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -255,13 +255,17 @@ func (o *BucketAggregation) UnmarshalJSON(bytes []byte) (err error) {
 
 	varBucketAggregation := _BucketAggregation{}
 
-	if err = json.Unmarshal(bytes, &varBucketAggregation); err == nil {
+	err = json.Unmarshal(data, &varBucketAggregation)
+
+	if err != nil {
+		return err
+	}
+
 	*o = BucketAggregation(varBucketAggregation)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "field")

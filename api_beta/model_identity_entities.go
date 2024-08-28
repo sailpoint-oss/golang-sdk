@@ -44,7 +44,7 @@ func NewIdentityEntitiesWithDefaults() *IdentityEntities {
 
 // GetIdentityEntity returns the IdentityEntity field value if set, zero value otherwise.
 func (o *IdentityEntities) GetIdentityEntity() IdentityEntitiesIdentityEntity {
-	if o == nil || isNil(o.IdentityEntity) {
+	if o == nil || IsNil(o.IdentityEntity) {
 		var ret IdentityEntitiesIdentityEntity
 		return ret
 	}
@@ -54,7 +54,7 @@ func (o *IdentityEntities) GetIdentityEntity() IdentityEntitiesIdentityEntity {
 // GetIdentityEntityOk returns a tuple with the IdentityEntity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityEntities) GetIdentityEntityOk() (*IdentityEntitiesIdentityEntity, bool) {
-	if o == nil || isNil(o.IdentityEntity) {
+	if o == nil || IsNil(o.IdentityEntity) {
 		return nil, false
 	}
 	return o.IdentityEntity, true
@@ -62,7 +62,7 @@ func (o *IdentityEntities) GetIdentityEntityOk() (*IdentityEntitiesIdentityEntit
 
 // HasIdentityEntity returns a boolean if a field has been set.
 func (o *IdentityEntities) HasIdentityEntity() bool {
-	if o != nil && !isNil(o.IdentityEntity) {
+	if o != nil && !IsNil(o.IdentityEntity) {
 		return true
 	}
 
@@ -84,7 +84,7 @@ func (o IdentityEntities) MarshalJSON() ([]byte, error) {
 
 func (o IdentityEntities) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.IdentityEntity) {
+	if !IsNil(o.IdentityEntity) {
 		toSerialize["identityEntity"] = o.IdentityEntity
 	}
 
@@ -95,16 +95,20 @@ func (o IdentityEntities) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *IdentityEntities) UnmarshalJSON(bytes []byte) (err error) {
+func (o *IdentityEntities) UnmarshalJSON(data []byte) (err error) {
 	varIdentityEntities := _IdentityEntities{}
 
-	if err = json.Unmarshal(bytes, &varIdentityEntities); err == nil {
+	err = json.Unmarshal(data, &varIdentityEntities)
+
+	if err != nil {
+		return err
+	}
+
 	*o = IdentityEntities(varIdentityEntities)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "identityEntity")
 		o.AdditionalProperties = additionalProperties
 	}

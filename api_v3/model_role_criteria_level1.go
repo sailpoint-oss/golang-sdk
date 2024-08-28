@@ -49,7 +49,7 @@ func NewRoleCriteriaLevel1WithDefaults() *RoleCriteriaLevel1 {
 
 // GetOperation returns the Operation field value if set, zero value otherwise.
 func (o *RoleCriteriaLevel1) GetOperation() RoleCriteriaOperation {
-	if o == nil || isNil(o.Operation) {
+	if o == nil || IsNil(o.Operation) {
 		var ret RoleCriteriaOperation
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *RoleCriteriaLevel1) GetOperation() RoleCriteriaOperation {
 // GetOperationOk returns a tuple with the Operation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleCriteriaLevel1) GetOperationOk() (*RoleCriteriaOperation, bool) {
-	if o == nil || isNil(o.Operation) {
+	if o == nil || IsNil(o.Operation) {
 		return nil, false
 	}
 	return o.Operation, true
@@ -67,7 +67,7 @@ func (o *RoleCriteriaLevel1) GetOperationOk() (*RoleCriteriaOperation, bool) {
 
 // HasOperation returns a boolean if a field has been set.
 func (o *RoleCriteriaLevel1) HasOperation() bool {
-	if o != nil && !isNil(o.Operation) {
+	if o != nil && !IsNil(o.Operation) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *RoleCriteriaLevel1) SetOperation(v RoleCriteriaOperation) {
 
 // GetKey returns the Key field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleCriteriaLevel1) GetKey() RoleCriteriaKey {
-	if o == nil || isNil(o.Key.Get()) {
+	if o == nil || IsNil(o.Key.Get()) {
 		var ret RoleCriteriaKey
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *RoleCriteriaLevel1) UnsetKey() {
 
 // GetStringValue returns the StringValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleCriteriaLevel1) GetStringValue() string {
-	if o == nil || isNil(o.StringValue.Get()) {
+	if o == nil || IsNil(o.StringValue.Get()) {
 		var ret string
 		return ret
 	}
@@ -176,7 +176,7 @@ func (o *RoleCriteriaLevel1) GetChildren() []RoleCriteriaLevel2 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RoleCriteriaLevel1) GetChildrenOk() ([]RoleCriteriaLevel2, bool) {
-	if o == nil || isNil(o.Children) {
+	if o == nil || IsNil(o.Children) {
 		return nil, false
 	}
 	return o.Children, true
@@ -184,7 +184,7 @@ func (o *RoleCriteriaLevel1) GetChildrenOk() ([]RoleCriteriaLevel2, bool) {
 
 // HasChildren returns a boolean if a field has been set.
 func (o *RoleCriteriaLevel1) HasChildren() bool {
-	if o != nil && isNil(o.Children) {
+	if o != nil && !IsNil(o.Children) {
 		return true
 	}
 
@@ -206,7 +206,7 @@ func (o RoleCriteriaLevel1) MarshalJSON() ([]byte, error) {
 
 func (o RoleCriteriaLevel1) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Operation) {
+	if !IsNil(o.Operation) {
 		toSerialize["operation"] = o.Operation
 	}
 	if o.Key.IsSet() {
@@ -226,16 +226,20 @@ func (o RoleCriteriaLevel1) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *RoleCriteriaLevel1) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RoleCriteriaLevel1) UnmarshalJSON(data []byte) (err error) {
 	varRoleCriteriaLevel1 := _RoleCriteriaLevel1{}
 
-	if err = json.Unmarshal(bytes, &varRoleCriteriaLevel1); err == nil {
+	err = json.Unmarshal(data, &varRoleCriteriaLevel1)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RoleCriteriaLevel1(varRoleCriteriaLevel1)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "operation")
 		delete(additionalProperties, "key")
 		delete(additionalProperties, "stringValue")

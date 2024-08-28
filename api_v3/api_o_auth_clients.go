@@ -565,7 +565,7 @@ func (a *OAuthClientsAPIService) ListOauthClientsExecute(r ApiListOauthClientsRe
 	localVarFormParams := url.Values{}
 
 	if r.filters != nil {
-		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

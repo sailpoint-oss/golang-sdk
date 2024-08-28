@@ -47,7 +47,7 @@ func NewTransformDefinition1WithDefaults() *TransformDefinition1 {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *TransformDefinition1) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *TransformDefinition1) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransformDefinition1) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -65,7 +65,7 @@ func (o *TransformDefinition1) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *TransformDefinition1) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *TransformDefinition1) SetType(v string) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *TransformDefinition1) GetAttributes() map[string]TransformDefinition1AttributesValue {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		var ret map[string]TransformDefinition1AttributesValue
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *TransformDefinition1) GetAttributes() map[string]TransformDefinition1At
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransformDefinition1) GetAttributesOk() (*map[string]TransformDefinition1AttributesValue, bool) {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		return nil, false
 	}
 	return o.Attributes, true
@@ -97,7 +97,7 @@ func (o *TransformDefinition1) GetAttributesOk() (*map[string]TransformDefinitio
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *TransformDefinition1) HasAttributes() bool {
-	if o != nil && !isNil(o.Attributes) {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o TransformDefinition1) MarshalJSON() ([]byte, error) {
 
 func (o TransformDefinition1) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Attributes) {
+	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
 
@@ -133,16 +133,20 @@ func (o TransformDefinition1) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *TransformDefinition1) UnmarshalJSON(bytes []byte) (err error) {
+func (o *TransformDefinition1) UnmarshalJSON(data []byte) (err error) {
 	varTransformDefinition1 := _TransformDefinition1{}
 
-	if err = json.Unmarshal(bytes, &varTransformDefinition1); err == nil {
+	err = json.Unmarshal(data, &varTransformDefinition1)
+
+	if err != nil {
+		return err
+	}
+
 	*o = TransformDefinition1(varTransformDefinition1)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "attributes")
 		o.AdditionalProperties = additionalProperties

@@ -49,7 +49,7 @@ func NewAttributeRequestWithDefaults() *AttributeRequest {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *AttributeRequest) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *AttributeRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AttributeRequest) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -67,7 +67,7 @@ func (o *AttributeRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *AttributeRequest) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *AttributeRequest) SetName(v string) {
 
 // GetOp returns the Op field value if set, zero value otherwise.
 func (o *AttributeRequest) GetOp() string {
-	if o == nil || isNil(o.Op) {
+	if o == nil || IsNil(o.Op) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *AttributeRequest) GetOp() string {
 // GetOpOk returns a tuple with the Op field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AttributeRequest) GetOpOk() (*string, bool) {
-	if o == nil || isNil(o.Op) {
+	if o == nil || IsNil(o.Op) {
 		return nil, false
 	}
 	return o.Op, true
@@ -99,7 +99,7 @@ func (o *AttributeRequest) GetOpOk() (*string, bool) {
 
 // HasOp returns a boolean if a field has been set.
 func (o *AttributeRequest) HasOp() bool {
-	if o != nil && !isNil(o.Op) {
+	if o != nil && !IsNil(o.Op) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *AttributeRequest) SetOp(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *AttributeRequest) GetValue() string {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *AttributeRequest) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AttributeRequest) GetValueOk() (*string, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -131,7 +131,7 @@ func (o *AttributeRequest) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *AttributeRequest) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o AttributeRequest) MarshalJSON() ([]byte, error) {
 
 func (o AttributeRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Op) {
+	if !IsNil(o.Op) {
 		toSerialize["op"] = o.Op
 	}
-	if !isNil(o.Value) {
+	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
 
@@ -170,16 +170,20 @@ func (o AttributeRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AttributeRequest) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AttributeRequest) UnmarshalJSON(data []byte) (err error) {
 	varAttributeRequest := _AttributeRequest{}
 
-	if err = json.Unmarshal(bytes, &varAttributeRequest); err == nil {
+	err = json.Unmarshal(data, &varAttributeRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AttributeRequest(varAttributeRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "op")
 		delete(additionalProperties, "value")

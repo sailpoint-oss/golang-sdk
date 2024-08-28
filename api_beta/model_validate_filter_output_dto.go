@@ -61,7 +61,7 @@ func NewValidateFilterOutputDtoWithDefaults() *ValidateFilterOutputDto {
 
 // GetIsValid returns the IsValid field value if set, zero value otherwise.
 func (o *ValidateFilterOutputDto) GetIsValid() bool {
-	if o == nil || isNil(o.IsValid) {
+	if o == nil || IsNil(o.IsValid) {
 		var ret bool
 		return ret
 	}
@@ -71,7 +71,7 @@ func (o *ValidateFilterOutputDto) GetIsValid() bool {
 // GetIsValidOk returns a tuple with the IsValid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ValidateFilterOutputDto) GetIsValidOk() (*bool, bool) {
-	if o == nil || isNil(o.IsValid) {
+	if o == nil || IsNil(o.IsValid) {
 		return nil, false
 	}
 	return o.IsValid, true
@@ -79,7 +79,7 @@ func (o *ValidateFilterOutputDto) GetIsValidOk() (*bool, bool) {
 
 // HasIsValid returns a boolean if a field has been set.
 func (o *ValidateFilterOutputDto) HasIsValid() bool {
-	if o != nil && !isNil(o.IsValid) {
+	if o != nil && !IsNil(o.IsValid) {
 		return true
 	}
 
@@ -93,7 +93,7 @@ func (o *ValidateFilterOutputDto) SetIsValid(v bool) {
 
 // GetIsValidJSONPath returns the IsValidJSONPath field value if set, zero value otherwise.
 func (o *ValidateFilterOutputDto) GetIsValidJSONPath() bool {
-	if o == nil || isNil(o.IsValidJSONPath) {
+	if o == nil || IsNil(o.IsValidJSONPath) {
 		var ret bool
 		return ret
 	}
@@ -103,7 +103,7 @@ func (o *ValidateFilterOutputDto) GetIsValidJSONPath() bool {
 // GetIsValidJSONPathOk returns a tuple with the IsValidJSONPath field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ValidateFilterOutputDto) GetIsValidJSONPathOk() (*bool, bool) {
-	if o == nil || isNil(o.IsValidJSONPath) {
+	if o == nil || IsNil(o.IsValidJSONPath) {
 		return nil, false
 	}
 	return o.IsValidJSONPath, true
@@ -111,7 +111,7 @@ func (o *ValidateFilterOutputDto) GetIsValidJSONPathOk() (*bool, bool) {
 
 // HasIsValidJSONPath returns a boolean if a field has been set.
 func (o *ValidateFilterOutputDto) HasIsValidJSONPath() bool {
-	if o != nil && !isNil(o.IsValidJSONPath) {
+	if o != nil && !IsNil(o.IsValidJSONPath) {
 		return true
 	}
 
@@ -125,7 +125,7 @@ func (o *ValidateFilterOutputDto) SetIsValidJSONPath(v bool) {
 
 // GetIsPathExist returns the IsPathExist field value if set, zero value otherwise.
 func (o *ValidateFilterOutputDto) GetIsPathExist() bool {
-	if o == nil || isNil(o.IsPathExist) {
+	if o == nil || IsNil(o.IsPathExist) {
 		var ret bool
 		return ret
 	}
@@ -135,7 +135,7 @@ func (o *ValidateFilterOutputDto) GetIsPathExist() bool {
 // GetIsPathExistOk returns a tuple with the IsPathExist field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ValidateFilterOutputDto) GetIsPathExistOk() (*bool, bool) {
-	if o == nil || isNil(o.IsPathExist) {
+	if o == nil || IsNil(o.IsPathExist) {
 		return nil, false
 	}
 	return o.IsPathExist, true
@@ -143,7 +143,7 @@ func (o *ValidateFilterOutputDto) GetIsPathExistOk() (*bool, bool) {
 
 // HasIsPathExist returns a boolean if a field has been set.
 func (o *ValidateFilterOutputDto) HasIsPathExist() bool {
-	if o != nil && !isNil(o.IsPathExist) {
+	if o != nil && !IsNil(o.IsPathExist) {
 		return true
 	}
 
@@ -165,13 +165,13 @@ func (o ValidateFilterOutputDto) MarshalJSON() ([]byte, error) {
 
 func (o ValidateFilterOutputDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.IsValid) {
+	if !IsNil(o.IsValid) {
 		toSerialize["isValid"] = o.IsValid
 	}
-	if !isNil(o.IsValidJSONPath) {
+	if !IsNil(o.IsValidJSONPath) {
 		toSerialize["isValidJSONPath"] = o.IsValidJSONPath
 	}
-	if !isNil(o.IsPathExist) {
+	if !IsNil(o.IsPathExist) {
 		toSerialize["isPathExist"] = o.IsPathExist
 	}
 
@@ -182,16 +182,20 @@ func (o ValidateFilterOutputDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ValidateFilterOutputDto) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ValidateFilterOutputDto) UnmarshalJSON(data []byte) (err error) {
 	varValidateFilterOutputDto := _ValidateFilterOutputDto{}
 
-	if err = json.Unmarshal(bytes, &varValidateFilterOutputDto); err == nil {
+	err = json.Unmarshal(data, &varValidateFilterOutputDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ValidateFilterOutputDto(varValidateFilterOutputDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "isValid")
 		delete(additionalProperties, "isValidJSONPath")
 		delete(additionalProperties, "isPathExist")

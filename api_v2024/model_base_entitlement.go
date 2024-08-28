@@ -67,7 +67,7 @@ func NewBaseEntitlementWithDefaults() *BaseEntitlement {
 
 // GetHasPermissions returns the HasPermissions field value if set, zero value otherwise.
 func (o *BaseEntitlement) GetHasPermissions() bool {
-	if o == nil || isNil(o.HasPermissions) {
+	if o == nil || IsNil(o.HasPermissions) {
 		var ret bool
 		return ret
 	}
@@ -77,7 +77,7 @@ func (o *BaseEntitlement) GetHasPermissions() bool {
 // GetHasPermissionsOk returns a tuple with the HasPermissions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BaseEntitlement) GetHasPermissionsOk() (*bool, bool) {
-	if o == nil || isNil(o.HasPermissions) {
+	if o == nil || IsNil(o.HasPermissions) {
 		return nil, false
 	}
 	return o.HasPermissions, true
@@ -85,7 +85,7 @@ func (o *BaseEntitlement) GetHasPermissionsOk() (*bool, bool) {
 
 // HasHasPermissions returns a boolean if a field has been set.
 func (o *BaseEntitlement) HasHasPermissions() bool {
-	if o != nil && !isNil(o.HasPermissions) {
+	if o != nil && !IsNil(o.HasPermissions) {
 		return true
 	}
 
@@ -99,7 +99,7 @@ func (o *BaseEntitlement) SetHasPermissions(v bool) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *BaseEntitlement) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -109,7 +109,7 @@ func (o *BaseEntitlement) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BaseEntitlement) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -117,7 +117,7 @@ func (o *BaseEntitlement) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *BaseEntitlement) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -131,7 +131,7 @@ func (o *BaseEntitlement) SetDescription(v string) {
 
 // GetAttribute returns the Attribute field value if set, zero value otherwise.
 func (o *BaseEntitlement) GetAttribute() string {
-	if o == nil || isNil(o.Attribute) {
+	if o == nil || IsNil(o.Attribute) {
 		var ret string
 		return ret
 	}
@@ -141,7 +141,7 @@ func (o *BaseEntitlement) GetAttribute() string {
 // GetAttributeOk returns a tuple with the Attribute field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BaseEntitlement) GetAttributeOk() (*string, bool) {
-	if o == nil || isNil(o.Attribute) {
+	if o == nil || IsNil(o.Attribute) {
 		return nil, false
 	}
 	return o.Attribute, true
@@ -149,7 +149,7 @@ func (o *BaseEntitlement) GetAttributeOk() (*string, bool) {
 
 // HasAttribute returns a boolean if a field has been set.
 func (o *BaseEntitlement) HasAttribute() bool {
-	if o != nil && !isNil(o.Attribute) {
+	if o != nil && !IsNil(o.Attribute) {
 		return true
 	}
 
@@ -163,7 +163,7 @@ func (o *BaseEntitlement) SetAttribute(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *BaseEntitlement) GetValue() string {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -173,7 +173,7 @@ func (o *BaseEntitlement) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BaseEntitlement) GetValueOk() (*string, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -181,7 +181,7 @@ func (o *BaseEntitlement) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *BaseEntitlement) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -195,7 +195,7 @@ func (o *BaseEntitlement) SetValue(v string) {
 
 // GetSchema returns the Schema field value if set, zero value otherwise.
 func (o *BaseEntitlement) GetSchema() string {
-	if o == nil || isNil(o.Schema) {
+	if o == nil || IsNil(o.Schema) {
 		var ret string
 		return ret
 	}
@@ -205,7 +205,7 @@ func (o *BaseEntitlement) GetSchema() string {
 // GetSchemaOk returns a tuple with the Schema field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BaseEntitlement) GetSchemaOk() (*string, bool) {
-	if o == nil || isNil(o.Schema) {
+	if o == nil || IsNil(o.Schema) {
 		return nil, false
 	}
 	return o.Schema, true
@@ -213,7 +213,7 @@ func (o *BaseEntitlement) GetSchemaOk() (*string, bool) {
 
 // HasSchema returns a boolean if a field has been set.
 func (o *BaseEntitlement) HasSchema() bool {
-	if o != nil && !isNil(o.Schema) {
+	if o != nil && !IsNil(o.Schema) {
 		return true
 	}
 
@@ -227,7 +227,7 @@ func (o *BaseEntitlement) SetSchema(v string) {
 
 // GetPrivileged returns the Privileged field value if set, zero value otherwise.
 func (o *BaseEntitlement) GetPrivileged() bool {
-	if o == nil || isNil(o.Privileged) {
+	if o == nil || IsNil(o.Privileged) {
 		var ret bool
 		return ret
 	}
@@ -237,7 +237,7 @@ func (o *BaseEntitlement) GetPrivileged() bool {
 // GetPrivilegedOk returns a tuple with the Privileged field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BaseEntitlement) GetPrivilegedOk() (*bool, bool) {
-	if o == nil || isNil(o.Privileged) {
+	if o == nil || IsNil(o.Privileged) {
 		return nil, false
 	}
 	return o.Privileged, true
@@ -245,7 +245,7 @@ func (o *BaseEntitlement) GetPrivilegedOk() (*bool, bool) {
 
 // HasPrivileged returns a boolean if a field has been set.
 func (o *BaseEntitlement) HasPrivileged() bool {
-	if o != nil && !isNil(o.Privileged) {
+	if o != nil && !IsNil(o.Privileged) {
 		return true
 	}
 
@@ -259,7 +259,7 @@ func (o *BaseEntitlement) SetPrivileged(v bool) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *BaseEntitlement) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -269,7 +269,7 @@ func (o *BaseEntitlement) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BaseEntitlement) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -277,7 +277,7 @@ func (o *BaseEntitlement) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *BaseEntitlement) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -291,7 +291,7 @@ func (o *BaseEntitlement) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *BaseEntitlement) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -301,7 +301,7 @@ func (o *BaseEntitlement) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BaseEntitlement) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -309,7 +309,7 @@ func (o *BaseEntitlement) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *BaseEntitlement) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -331,28 +331,28 @@ func (o BaseEntitlement) MarshalJSON() ([]byte, error) {
 
 func (o BaseEntitlement) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.HasPermissions) {
+	if !IsNil(o.HasPermissions) {
 		toSerialize["hasPermissions"] = o.HasPermissions
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.Attribute) {
+	if !IsNil(o.Attribute) {
 		toSerialize["attribute"] = o.Attribute
 	}
-	if !isNil(o.Value) {
+	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
-	if !isNil(o.Schema) {
+	if !IsNil(o.Schema) {
 		toSerialize["schema"] = o.Schema
 	}
-	if !isNil(o.Privileged) {
+	if !IsNil(o.Privileged) {
 		toSerialize["privileged"] = o.Privileged
 	}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 
@@ -363,16 +363,20 @@ func (o BaseEntitlement) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *BaseEntitlement) UnmarshalJSON(bytes []byte) (err error) {
+func (o *BaseEntitlement) UnmarshalJSON(data []byte) (err error) {
 	varBaseEntitlement := _BaseEntitlement{}
 
-	if err = json.Unmarshal(bytes, &varBaseEntitlement); err == nil {
+	err = json.Unmarshal(data, &varBaseEntitlement)
+
+	if err != nil {
+		return err
+	}
+
 	*o = BaseEntitlement(varBaseEntitlement)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "hasPermissions")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "attribute")

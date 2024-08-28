@@ -75,7 +75,7 @@ func NewBaseAccessWithDefaults() *BaseAccess {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *BaseAccess) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -85,7 +85,7 @@ func (o *BaseAccess) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BaseAccess) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -93,7 +93,7 @@ func (o *BaseAccess) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *BaseAccess) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -107,7 +107,7 @@ func (o *BaseAccess) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *BaseAccess) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -117,7 +117,7 @@ func (o *BaseAccess) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BaseAccess) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -125,7 +125,7 @@ func (o *BaseAccess) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *BaseAccess) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -139,7 +139,7 @@ func (o *BaseAccess) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *BaseAccess) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -149,7 +149,7 @@ func (o *BaseAccess) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BaseAccess) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -157,7 +157,7 @@ func (o *BaseAccess) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *BaseAccess) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -171,7 +171,7 @@ func (o *BaseAccess) SetDescription(v string) {
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BaseAccess) GetCreated() time.Time {
-	if o == nil || isNil(o.Created.Get()) {
+	if o == nil || IsNil(o.Created.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -213,7 +213,7 @@ func (o *BaseAccess) UnsetCreated() {
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BaseAccess) GetModified() time.Time {
-	if o == nil || isNil(o.Modified.Get()) {
+	if o == nil || IsNil(o.Modified.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -255,7 +255,7 @@ func (o *BaseAccess) UnsetModified() {
 
 // GetSynced returns the Synced field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BaseAccess) GetSynced() time.Time {
-	if o == nil || isNil(o.Synced.Get()) {
+	if o == nil || IsNil(o.Synced.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -297,7 +297,7 @@ func (o *BaseAccess) UnsetSynced() {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *BaseAccess) GetEnabled() bool {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -307,7 +307,7 @@ func (o *BaseAccess) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BaseAccess) GetEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -315,7 +315,7 @@ func (o *BaseAccess) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *BaseAccess) HasEnabled() bool {
-	if o != nil && !isNil(o.Enabled) {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -329,7 +329,7 @@ func (o *BaseAccess) SetEnabled(v bool) {
 
 // GetRequestable returns the Requestable field value if set, zero value otherwise.
 func (o *BaseAccess) GetRequestable() bool {
-	if o == nil || isNil(o.Requestable) {
+	if o == nil || IsNil(o.Requestable) {
 		var ret bool
 		return ret
 	}
@@ -339,7 +339,7 @@ func (o *BaseAccess) GetRequestable() bool {
 // GetRequestableOk returns a tuple with the Requestable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BaseAccess) GetRequestableOk() (*bool, bool) {
-	if o == nil || isNil(o.Requestable) {
+	if o == nil || IsNil(o.Requestable) {
 		return nil, false
 	}
 	return o.Requestable, true
@@ -347,7 +347,7 @@ func (o *BaseAccess) GetRequestableOk() (*bool, bool) {
 
 // HasRequestable returns a boolean if a field has been set.
 func (o *BaseAccess) HasRequestable() bool {
-	if o != nil && !isNil(o.Requestable) {
+	if o != nil && !IsNil(o.Requestable) {
 		return true
 	}
 
@@ -361,7 +361,7 @@ func (o *BaseAccess) SetRequestable(v bool) {
 
 // GetRequestCommentsRequired returns the RequestCommentsRequired field value if set, zero value otherwise.
 func (o *BaseAccess) GetRequestCommentsRequired() bool {
-	if o == nil || isNil(o.RequestCommentsRequired) {
+	if o == nil || IsNil(o.RequestCommentsRequired) {
 		var ret bool
 		return ret
 	}
@@ -371,7 +371,7 @@ func (o *BaseAccess) GetRequestCommentsRequired() bool {
 // GetRequestCommentsRequiredOk returns a tuple with the RequestCommentsRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BaseAccess) GetRequestCommentsRequiredOk() (*bool, bool) {
-	if o == nil || isNil(o.RequestCommentsRequired) {
+	if o == nil || IsNil(o.RequestCommentsRequired) {
 		return nil, false
 	}
 	return o.RequestCommentsRequired, true
@@ -379,7 +379,7 @@ func (o *BaseAccess) GetRequestCommentsRequiredOk() (*bool, bool) {
 
 // HasRequestCommentsRequired returns a boolean if a field has been set.
 func (o *BaseAccess) HasRequestCommentsRequired() bool {
-	if o != nil && !isNil(o.RequestCommentsRequired) {
+	if o != nil && !IsNil(o.RequestCommentsRequired) {
 		return true
 	}
 
@@ -393,7 +393,7 @@ func (o *BaseAccess) SetRequestCommentsRequired(v bool) {
 
 // GetOwner returns the Owner field value if set, zero value otherwise.
 func (o *BaseAccess) GetOwner() BaseAccessAllOfOwner {
-	if o == nil || isNil(o.Owner) {
+	if o == nil || IsNil(o.Owner) {
 		var ret BaseAccessAllOfOwner
 		return ret
 	}
@@ -403,7 +403,7 @@ func (o *BaseAccess) GetOwner() BaseAccessAllOfOwner {
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BaseAccess) GetOwnerOk() (*BaseAccessAllOfOwner, bool) {
-	if o == nil || isNil(o.Owner) {
+	if o == nil || IsNil(o.Owner) {
 		return nil, false
 	}
 	return o.Owner, true
@@ -411,7 +411,7 @@ func (o *BaseAccess) GetOwnerOk() (*BaseAccessAllOfOwner, bool) {
 
 // HasOwner returns a boolean if a field has been set.
 func (o *BaseAccess) HasOwner() bool {
-	if o != nil && !isNil(o.Owner) {
+	if o != nil && !IsNil(o.Owner) {
 		return true
 	}
 
@@ -433,13 +433,13 @@ func (o BaseAccess) MarshalJSON() ([]byte, error) {
 
 func (o BaseAccess) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 	if o.Created.IsSet() {
@@ -451,16 +451,16 @@ func (o BaseAccess) ToMap() (map[string]interface{}, error) {
 	if o.Synced.IsSet() {
 		toSerialize["synced"] = o.Synced.Get()
 	}
-	if !isNil(o.Enabled) {
+	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if !isNil(o.Requestable) {
+	if !IsNil(o.Requestable) {
 		toSerialize["requestable"] = o.Requestable
 	}
-	if !isNil(o.RequestCommentsRequired) {
+	if !IsNil(o.RequestCommentsRequired) {
 		toSerialize["requestCommentsRequired"] = o.RequestCommentsRequired
 	}
-	if !isNil(o.Owner) {
+	if !IsNil(o.Owner) {
 		toSerialize["owner"] = o.Owner
 	}
 
@@ -471,16 +471,20 @@ func (o BaseAccess) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *BaseAccess) UnmarshalJSON(bytes []byte) (err error) {
+func (o *BaseAccess) UnmarshalJSON(data []byte) (err error) {
 	varBaseAccess := _BaseAccess{}
 
-	if err = json.Unmarshal(bytes, &varBaseAccess); err == nil {
+	err = json.Unmarshal(data, &varBaseAccess)
+
+	if err != nil {
+		return err
+	}
+
 	*o = BaseAccess(varBaseAccess)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")

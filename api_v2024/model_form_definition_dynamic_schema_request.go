@@ -52,7 +52,7 @@ func NewFormDefinitionDynamicSchemaRequestWithDefaults() *FormDefinitionDynamicS
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *FormDefinitionDynamicSchemaRequest) GetAttributes() FormDefinitionDynamicSchemaRequestAttributes {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		var ret FormDefinitionDynamicSchemaRequestAttributes
 		return ret
 	}
@@ -62,7 +62,7 @@ func (o *FormDefinitionDynamicSchemaRequest) GetAttributes() FormDefinitionDynam
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormDefinitionDynamicSchemaRequest) GetAttributesOk() (*FormDefinitionDynamicSchemaRequestAttributes, bool) {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		return nil, false
 	}
 	return o.Attributes, true
@@ -70,7 +70,7 @@ func (o *FormDefinitionDynamicSchemaRequest) GetAttributesOk() (*FormDefinitionD
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *FormDefinitionDynamicSchemaRequest) HasAttributes() bool {
-	if o != nil && !isNil(o.Attributes) {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -84,7 +84,7 @@ func (o *FormDefinitionDynamicSchemaRequest) SetAttributes(v FormDefinitionDynam
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *FormDefinitionDynamicSchemaRequest) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -94,7 +94,7 @@ func (o *FormDefinitionDynamicSchemaRequest) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormDefinitionDynamicSchemaRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -102,7 +102,7 @@ func (o *FormDefinitionDynamicSchemaRequest) GetDescriptionOk() (*string, bool) 
 
 // HasDescription returns a boolean if a field has been set.
 func (o *FormDefinitionDynamicSchemaRequest) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -116,7 +116,7 @@ func (o *FormDefinitionDynamicSchemaRequest) SetDescription(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *FormDefinitionDynamicSchemaRequest) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -126,7 +126,7 @@ func (o *FormDefinitionDynamicSchemaRequest) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormDefinitionDynamicSchemaRequest) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -134,7 +134,7 @@ func (o *FormDefinitionDynamicSchemaRequest) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *FormDefinitionDynamicSchemaRequest) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -148,7 +148,7 @@ func (o *FormDefinitionDynamicSchemaRequest) SetId(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *FormDefinitionDynamicSchemaRequest) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -158,7 +158,7 @@ func (o *FormDefinitionDynamicSchemaRequest) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormDefinitionDynamicSchemaRequest) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -166,7 +166,7 @@ func (o *FormDefinitionDynamicSchemaRequest) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *FormDefinitionDynamicSchemaRequest) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -180,7 +180,7 @@ func (o *FormDefinitionDynamicSchemaRequest) SetType(v string) {
 
 // GetVersionNumber returns the VersionNumber field value if set, zero value otherwise.
 func (o *FormDefinitionDynamicSchemaRequest) GetVersionNumber() int64 {
-	if o == nil || isNil(o.VersionNumber) {
+	if o == nil || IsNil(o.VersionNumber) {
 		var ret int64
 		return ret
 	}
@@ -190,7 +190,7 @@ func (o *FormDefinitionDynamicSchemaRequest) GetVersionNumber() int64 {
 // GetVersionNumberOk returns a tuple with the VersionNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormDefinitionDynamicSchemaRequest) GetVersionNumberOk() (*int64, bool) {
-	if o == nil || isNil(o.VersionNumber) {
+	if o == nil || IsNil(o.VersionNumber) {
 		return nil, false
 	}
 	return o.VersionNumber, true
@@ -198,7 +198,7 @@ func (o *FormDefinitionDynamicSchemaRequest) GetVersionNumberOk() (*int64, bool)
 
 // HasVersionNumber returns a boolean if a field has been set.
 func (o *FormDefinitionDynamicSchemaRequest) HasVersionNumber() bool {
-	if o != nil && !isNil(o.VersionNumber) {
+	if o != nil && !IsNil(o.VersionNumber) {
 		return true
 	}
 
@@ -220,19 +220,19 @@ func (o FormDefinitionDynamicSchemaRequest) MarshalJSON() ([]byte, error) {
 
 func (o FormDefinitionDynamicSchemaRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Attributes) {
+	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.VersionNumber) {
+	if !IsNil(o.VersionNumber) {
 		toSerialize["versionNumber"] = o.VersionNumber
 	}
 
@@ -243,16 +243,20 @@ func (o FormDefinitionDynamicSchemaRequest) ToMap() (map[string]interface{}, err
 	return toSerialize, nil
 }
 
-func (o *FormDefinitionDynamicSchemaRequest) UnmarshalJSON(bytes []byte) (err error) {
+func (o *FormDefinitionDynamicSchemaRequest) UnmarshalJSON(data []byte) (err error) {
 	varFormDefinitionDynamicSchemaRequest := _FormDefinitionDynamicSchemaRequest{}
 
-	if err = json.Unmarshal(bytes, &varFormDefinitionDynamicSchemaRequest); err == nil {
+	err = json.Unmarshal(data, &varFormDefinitionDynamicSchemaRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = FormDefinitionDynamicSchemaRequest(varFormDefinitionDynamicSchemaRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "attributes")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "id")

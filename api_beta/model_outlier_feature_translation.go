@@ -45,7 +45,7 @@ func NewOutlierFeatureTranslationWithDefaults() *OutlierFeatureTranslation {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *OutlierFeatureTranslation) GetDisplayName() TranslationMessage {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret TranslationMessage
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *OutlierFeatureTranslation) GetDisplayName() TranslationMessage {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutlierFeatureTranslation) GetDisplayNameOk() (*TranslationMessage, bool) {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -63,7 +63,7 @@ func (o *OutlierFeatureTranslation) GetDisplayNameOk() (*TranslationMessage, boo
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *OutlierFeatureTranslation) HasDisplayName() bool {
-	if o != nil && !isNil(o.DisplayName) {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -77,7 +77,7 @@ func (o *OutlierFeatureTranslation) SetDisplayName(v TranslationMessage) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *OutlierFeatureTranslation) GetDescription() TranslationMessage {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret TranslationMessage
 		return ret
 	}
@@ -87,7 +87,7 @@ func (o *OutlierFeatureTranslation) GetDescription() TranslationMessage {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutlierFeatureTranslation) GetDescriptionOk() (*TranslationMessage, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -95,7 +95,7 @@ func (o *OutlierFeatureTranslation) GetDescriptionOk() (*TranslationMessage, boo
 
 // HasDescription returns a boolean if a field has been set.
 func (o *OutlierFeatureTranslation) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -117,10 +117,10 @@ func (o OutlierFeatureTranslation) MarshalJSON() ([]byte, error) {
 
 func (o OutlierFeatureTranslation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.DisplayName) {
+	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 
@@ -131,16 +131,20 @@ func (o OutlierFeatureTranslation) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *OutlierFeatureTranslation) UnmarshalJSON(bytes []byte) (err error) {
+func (o *OutlierFeatureTranslation) UnmarshalJSON(data []byte) (err error) {
 	varOutlierFeatureTranslation := _OutlierFeatureTranslation{}
 
-	if err = json.Unmarshal(bytes, &varOutlierFeatureTranslation); err == nil {
+	err = json.Unmarshal(data, &varOutlierFeatureTranslation)
+
+	if err != nil {
+		return err
+	}
+
 	*o = OutlierFeatureTranslation(varOutlierFeatureTranslation)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "displayName")
 		delete(additionalProperties, "description")
 		o.AdditionalProperties = additionalProperties

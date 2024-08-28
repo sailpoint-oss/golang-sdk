@@ -19,7 +19,7 @@ import (
 
 func Test_api_v3_AuthUsersAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test AuthUsersAPIService GetAuthUser", func(t *testing.T) {
@@ -28,7 +28,7 @@ func Test_api_v3_AuthUsersAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.AuthUsersAPI.GetAuthUser(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.AuthUsersAPI.GetAuthUser(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -42,7 +42,7 @@ func Test_api_v3_AuthUsersAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.AuthUsersAPI.PatchAuthUser(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.AuthUsersAPI.PatchAuthUser(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

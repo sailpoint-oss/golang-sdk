@@ -19,14 +19,14 @@ import (
 
 func Test_api_v2024_ManagedClustersAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test ManagedClustersAPIService CreateManagedCluster", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.ManagedClustersAPI.CreateManagedCluster(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ManagedClustersAPI.CreateManagedCluster(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_v2024_ManagedClustersAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_V2024.ManagedClustersAPI.DeleteManagedCluster(context.Background(), id).Execute()
+		httpRes, err := apiClient.ManagedClustersAPI.DeleteManagedCluster(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -53,7 +53,7 @@ func Test_api_v2024_ManagedClustersAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.ManagedClustersAPI.GetManagedCluster(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.ManagedClustersAPI.GetManagedCluster(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -65,7 +65,7 @@ func Test_api_v2024_ManagedClustersAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.ManagedClustersAPI.GetManagedClusters(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ManagedClustersAPI.GetManagedClusters(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -79,7 +79,7 @@ func Test_api_v2024_ManagedClustersAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.ManagedClustersAPI.UpdateManagedCluster(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.ManagedClustersAPI.UpdateManagedCluster(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

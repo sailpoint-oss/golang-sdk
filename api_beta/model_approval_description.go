@@ -47,7 +47,7 @@ func NewApprovalDescriptionWithDefaults() *ApprovalDescription {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *ApprovalDescription) GetValue() string {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *ApprovalDescription) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalDescription) GetValueOk() (*string, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -65,7 +65,7 @@ func (o *ApprovalDescription) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *ApprovalDescription) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *ApprovalDescription) SetValue(v string) {
 
 // GetLocale returns the Locale field value if set, zero value otherwise.
 func (o *ApprovalDescription) GetLocale() string {
-	if o == nil || isNil(o.Locale) {
+	if o == nil || IsNil(o.Locale) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *ApprovalDescription) GetLocale() string {
 // GetLocaleOk returns a tuple with the Locale field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalDescription) GetLocaleOk() (*string, bool) {
-	if o == nil || isNil(o.Locale) {
+	if o == nil || IsNil(o.Locale) {
 		return nil, false
 	}
 	return o.Locale, true
@@ -97,7 +97,7 @@ func (o *ApprovalDescription) GetLocaleOk() (*string, bool) {
 
 // HasLocale returns a boolean if a field has been set.
 func (o *ApprovalDescription) HasLocale() bool {
-	if o != nil && !isNil(o.Locale) {
+	if o != nil && !IsNil(o.Locale) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o ApprovalDescription) MarshalJSON() ([]byte, error) {
 
 func (o ApprovalDescription) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Value) {
+	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
-	if !isNil(o.Locale) {
+	if !IsNil(o.Locale) {
 		toSerialize["locale"] = o.Locale
 	}
 
@@ -133,16 +133,20 @@ func (o ApprovalDescription) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ApprovalDescription) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ApprovalDescription) UnmarshalJSON(data []byte) (err error) {
 	varApprovalDescription := _ApprovalDescription{}
 
-	if err = json.Unmarshal(bytes, &varApprovalDescription); err == nil {
+	err = json.Unmarshal(data, &varApprovalDescription)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ApprovalDescription(varApprovalDescription)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "value")
 		delete(additionalProperties, "locale")
 		o.AdditionalProperties = additionalProperties

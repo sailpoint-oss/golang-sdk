@@ -62,7 +62,7 @@ func NewNonEmployeeSourceWithCloudExternalIdWithDefaults() *NonEmployeeSourceWit
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *NonEmployeeSourceWithCloudExternalId) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -72,7 +72,7 @@ func (o *NonEmployeeSourceWithCloudExternalId) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSourceWithCloudExternalId) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -80,7 +80,7 @@ func (o *NonEmployeeSourceWithCloudExternalId) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *NonEmployeeSourceWithCloudExternalId) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -94,7 +94,7 @@ func (o *NonEmployeeSourceWithCloudExternalId) SetId(v string) {
 
 // GetSourceId returns the SourceId field value if set, zero value otherwise.
 func (o *NonEmployeeSourceWithCloudExternalId) GetSourceId() string {
-	if o == nil || isNil(o.SourceId) {
+	if o == nil || IsNil(o.SourceId) {
 		var ret string
 		return ret
 	}
@@ -104,7 +104,7 @@ func (o *NonEmployeeSourceWithCloudExternalId) GetSourceId() string {
 // GetSourceIdOk returns a tuple with the SourceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSourceWithCloudExternalId) GetSourceIdOk() (*string, bool) {
-	if o == nil || isNil(o.SourceId) {
+	if o == nil || IsNil(o.SourceId) {
 		return nil, false
 	}
 	return o.SourceId, true
@@ -112,7 +112,7 @@ func (o *NonEmployeeSourceWithCloudExternalId) GetSourceIdOk() (*string, bool) {
 
 // HasSourceId returns a boolean if a field has been set.
 func (o *NonEmployeeSourceWithCloudExternalId) HasSourceId() bool {
-	if o != nil && !isNil(o.SourceId) {
+	if o != nil && !IsNil(o.SourceId) {
 		return true
 	}
 
@@ -126,7 +126,7 @@ func (o *NonEmployeeSourceWithCloudExternalId) SetSourceId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *NonEmployeeSourceWithCloudExternalId) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -136,7 +136,7 @@ func (o *NonEmployeeSourceWithCloudExternalId) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSourceWithCloudExternalId) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -144,7 +144,7 @@ func (o *NonEmployeeSourceWithCloudExternalId) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *NonEmployeeSourceWithCloudExternalId) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -158,7 +158,7 @@ func (o *NonEmployeeSourceWithCloudExternalId) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *NonEmployeeSourceWithCloudExternalId) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -168,7 +168,7 @@ func (o *NonEmployeeSourceWithCloudExternalId) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSourceWithCloudExternalId) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -176,7 +176,7 @@ func (o *NonEmployeeSourceWithCloudExternalId) GetDescriptionOk() (*string, bool
 
 // HasDescription returns a boolean if a field has been set.
 func (o *NonEmployeeSourceWithCloudExternalId) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -190,7 +190,7 @@ func (o *NonEmployeeSourceWithCloudExternalId) SetDescription(v string) {
 
 // GetApprovers returns the Approvers field value if set, zero value otherwise.
 func (o *NonEmployeeSourceWithCloudExternalId) GetApprovers() []NonEmployeeIdentityReferenceWithId {
-	if o == nil || isNil(o.Approvers) {
+	if o == nil || IsNil(o.Approvers) {
 		var ret []NonEmployeeIdentityReferenceWithId
 		return ret
 	}
@@ -200,7 +200,7 @@ func (o *NonEmployeeSourceWithCloudExternalId) GetApprovers() []NonEmployeeIdent
 // GetApproversOk returns a tuple with the Approvers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSourceWithCloudExternalId) GetApproversOk() ([]NonEmployeeIdentityReferenceWithId, bool) {
-	if o == nil || isNil(o.Approvers) {
+	if o == nil || IsNil(o.Approvers) {
 		return nil, false
 	}
 	return o.Approvers, true
@@ -208,7 +208,7 @@ func (o *NonEmployeeSourceWithCloudExternalId) GetApproversOk() ([]NonEmployeeId
 
 // HasApprovers returns a boolean if a field has been set.
 func (o *NonEmployeeSourceWithCloudExternalId) HasApprovers() bool {
-	if o != nil && !isNil(o.Approvers) {
+	if o != nil && !IsNil(o.Approvers) {
 		return true
 	}
 
@@ -222,7 +222,7 @@ func (o *NonEmployeeSourceWithCloudExternalId) SetApprovers(v []NonEmployeeIdent
 
 // GetAccountManagers returns the AccountManagers field value if set, zero value otherwise.
 func (o *NonEmployeeSourceWithCloudExternalId) GetAccountManagers() []NonEmployeeIdentityReferenceWithId {
-	if o == nil || isNil(o.AccountManagers) {
+	if o == nil || IsNil(o.AccountManagers) {
 		var ret []NonEmployeeIdentityReferenceWithId
 		return ret
 	}
@@ -232,7 +232,7 @@ func (o *NonEmployeeSourceWithCloudExternalId) GetAccountManagers() []NonEmploye
 // GetAccountManagersOk returns a tuple with the AccountManagers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSourceWithCloudExternalId) GetAccountManagersOk() ([]NonEmployeeIdentityReferenceWithId, bool) {
-	if o == nil || isNil(o.AccountManagers) {
+	if o == nil || IsNil(o.AccountManagers) {
 		return nil, false
 	}
 	return o.AccountManagers, true
@@ -240,7 +240,7 @@ func (o *NonEmployeeSourceWithCloudExternalId) GetAccountManagersOk() ([]NonEmpl
 
 // HasAccountManagers returns a boolean if a field has been set.
 func (o *NonEmployeeSourceWithCloudExternalId) HasAccountManagers() bool {
-	if o != nil && !isNil(o.AccountManagers) {
+	if o != nil && !IsNil(o.AccountManagers) {
 		return true
 	}
 
@@ -254,7 +254,7 @@ func (o *NonEmployeeSourceWithCloudExternalId) SetAccountManagers(v []NonEmploye
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *NonEmployeeSourceWithCloudExternalId) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		var ret time.Time
 		return ret
 	}
@@ -264,7 +264,7 @@ func (o *NonEmployeeSourceWithCloudExternalId) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSourceWithCloudExternalId) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -272,7 +272,7 @@ func (o *NonEmployeeSourceWithCloudExternalId) GetModifiedOk() (*time.Time, bool
 
 // HasModified returns a boolean if a field has been set.
 func (o *NonEmployeeSourceWithCloudExternalId) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -286,7 +286,7 @@ func (o *NonEmployeeSourceWithCloudExternalId) SetModified(v time.Time) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *NonEmployeeSourceWithCloudExternalId) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -296,7 +296,7 @@ func (o *NonEmployeeSourceWithCloudExternalId) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSourceWithCloudExternalId) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -304,7 +304,7 @@ func (o *NonEmployeeSourceWithCloudExternalId) GetCreatedOk() (*time.Time, bool)
 
 // HasCreated returns a boolean if a field has been set.
 func (o *NonEmployeeSourceWithCloudExternalId) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -318,7 +318,7 @@ func (o *NonEmployeeSourceWithCloudExternalId) SetCreated(v time.Time) {
 
 // GetCloudExternalId returns the CloudExternalId field value if set, zero value otherwise.
 func (o *NonEmployeeSourceWithCloudExternalId) GetCloudExternalId() string {
-	if o == nil || isNil(o.CloudExternalId) {
+	if o == nil || IsNil(o.CloudExternalId) {
 		var ret string
 		return ret
 	}
@@ -328,7 +328,7 @@ func (o *NonEmployeeSourceWithCloudExternalId) GetCloudExternalId() string {
 // GetCloudExternalIdOk returns a tuple with the CloudExternalId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSourceWithCloudExternalId) GetCloudExternalIdOk() (*string, bool) {
-	if o == nil || isNil(o.CloudExternalId) {
+	if o == nil || IsNil(o.CloudExternalId) {
 		return nil, false
 	}
 	return o.CloudExternalId, true
@@ -336,7 +336,7 @@ func (o *NonEmployeeSourceWithCloudExternalId) GetCloudExternalIdOk() (*string, 
 
 // HasCloudExternalId returns a boolean if a field has been set.
 func (o *NonEmployeeSourceWithCloudExternalId) HasCloudExternalId() bool {
-	if o != nil && !isNil(o.CloudExternalId) {
+	if o != nil && !IsNil(o.CloudExternalId) {
 		return true
 	}
 
@@ -358,31 +358,31 @@ func (o NonEmployeeSourceWithCloudExternalId) MarshalJSON() ([]byte, error) {
 
 func (o NonEmployeeSourceWithCloudExternalId) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.SourceId) {
+	if !IsNil(o.SourceId) {
 		toSerialize["sourceId"] = o.SourceId
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.Approvers) {
+	if !IsNil(o.Approvers) {
 		toSerialize["approvers"] = o.Approvers
 	}
-	if !isNil(o.AccountManagers) {
+	if !IsNil(o.AccountManagers) {
 		toSerialize["accountManagers"] = o.AccountManagers
 	}
-	if !isNil(o.Modified) {
+	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
-	if !isNil(o.Created) {
+	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
-	if !isNil(o.CloudExternalId) {
+	if !IsNil(o.CloudExternalId) {
 		toSerialize["cloudExternalId"] = o.CloudExternalId
 	}
 
@@ -393,16 +393,20 @@ func (o NonEmployeeSourceWithCloudExternalId) ToMap() (map[string]interface{}, e
 	return toSerialize, nil
 }
 
-func (o *NonEmployeeSourceWithCloudExternalId) UnmarshalJSON(bytes []byte) (err error) {
+func (o *NonEmployeeSourceWithCloudExternalId) UnmarshalJSON(data []byte) (err error) {
 	varNonEmployeeSourceWithCloudExternalId := _NonEmployeeSourceWithCloudExternalId{}
 
-	if err = json.Unmarshal(bytes, &varNonEmployeeSourceWithCloudExternalId); err == nil {
+	err = json.Unmarshal(data, &varNonEmployeeSourceWithCloudExternalId)
+
+	if err != nil {
+		return err
+	}
+
 	*o = NonEmployeeSourceWithCloudExternalId(varNonEmployeeSourceWithCloudExternalId)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "sourceId")
 		delete(additionalProperties, "name")

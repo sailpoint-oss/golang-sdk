@@ -64,7 +64,7 @@ func NewServiceDeskIntegrationTemplateDtoWithDefaults() *ServiceDeskIntegrationT
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ServiceDeskIntegrationTemplateDto) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -74,7 +74,7 @@ func (o *ServiceDeskIntegrationTemplateDto) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceDeskIntegrationTemplateDto) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -82,7 +82,7 @@ func (o *ServiceDeskIntegrationTemplateDto) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ServiceDeskIntegrationTemplateDto) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -120,7 +120,7 @@ func (o *ServiceDeskIntegrationTemplateDto) SetName(v string) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *ServiceDeskIntegrationTemplateDto) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -130,7 +130,7 @@ func (o *ServiceDeskIntegrationTemplateDto) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceDeskIntegrationTemplateDto) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -138,7 +138,7 @@ func (o *ServiceDeskIntegrationTemplateDto) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *ServiceDeskIntegrationTemplateDto) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -152,7 +152,7 @@ func (o *ServiceDeskIntegrationTemplateDto) SetCreated(v time.Time) {
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *ServiceDeskIntegrationTemplateDto) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		var ret time.Time
 		return ret
 	}
@@ -162,7 +162,7 @@ func (o *ServiceDeskIntegrationTemplateDto) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceDeskIntegrationTemplateDto) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -170,7 +170,7 @@ func (o *ServiceDeskIntegrationTemplateDto) GetModifiedOk() (*time.Time, bool) {
 
 // HasModified returns a boolean if a field has been set.
 func (o *ServiceDeskIntegrationTemplateDto) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -264,10 +264,16 @@ func (o ServiceDeskIntegrationTemplateDto) MarshalJSON() ([]byte, error) {
 
 func (o ServiceDeskIntegrationTemplateDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["name"] = o.Name
-	// skip: created is readOnly
-	// skip: modified is readOnly
+	if !IsNil(o.Created) {
+		toSerialize["created"] = o.Created
+	}
+	if !IsNil(o.Modified) {
+		toSerialize["modified"] = o.Modified
+	}
 	toSerialize["type"] = o.Type
 	toSerialize["attributes"] = o.Attributes
 	toSerialize["provisioningConfig"] = o.ProvisioningConfig
@@ -279,8 +285,8 @@ func (o ServiceDeskIntegrationTemplateDto) ToMap() (map[string]interface{}, erro
 	return toSerialize, nil
 }
 
-func (o *ServiceDeskIntegrationTemplateDto) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *ServiceDeskIntegrationTemplateDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -292,7 +298,7 @@ func (o *ServiceDeskIntegrationTemplateDto) UnmarshalJSON(bytes []byte) (err err
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -306,13 +312,17 @@ func (o *ServiceDeskIntegrationTemplateDto) UnmarshalJSON(bytes []byte) (err err
 
 	varServiceDeskIntegrationTemplateDto := _ServiceDeskIntegrationTemplateDto{}
 
-	if err = json.Unmarshal(bytes, &varServiceDeskIntegrationTemplateDto); err == nil {
+	err = json.Unmarshal(data, &varServiceDeskIntegrationTemplateDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ServiceDeskIntegrationTemplateDto(varServiceDeskIntegrationTemplateDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "created")

@@ -46,7 +46,7 @@ func NewNonEmployeeIdentityReferenceWithIdWithDefaults() *NonEmployeeIdentityRef
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *NonEmployeeIdentityReferenceWithId) GetType() NonEmployeeIdentityDtoType {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret NonEmployeeIdentityDtoType
 		return ret
 	}
@@ -56,7 +56,7 @@ func (o *NonEmployeeIdentityReferenceWithId) GetType() NonEmployeeIdentityDtoTyp
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeIdentityReferenceWithId) GetTypeOk() (*NonEmployeeIdentityDtoType, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -64,7 +64,7 @@ func (o *NonEmployeeIdentityReferenceWithId) GetTypeOk() (*NonEmployeeIdentityDt
 
 // HasType returns a boolean if a field has been set.
 func (o *NonEmployeeIdentityReferenceWithId) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -78,7 +78,7 @@ func (o *NonEmployeeIdentityReferenceWithId) SetType(v NonEmployeeIdentityDtoTyp
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *NonEmployeeIdentityReferenceWithId) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -88,7 +88,7 @@ func (o *NonEmployeeIdentityReferenceWithId) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeIdentityReferenceWithId) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -96,7 +96,7 @@ func (o *NonEmployeeIdentityReferenceWithId) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *NonEmployeeIdentityReferenceWithId) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -118,10 +118,10 @@ func (o NonEmployeeIdentityReferenceWithId) MarshalJSON() ([]byte, error) {
 
 func (o NonEmployeeIdentityReferenceWithId) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
 
@@ -132,16 +132,20 @@ func (o NonEmployeeIdentityReferenceWithId) ToMap() (map[string]interface{}, err
 	return toSerialize, nil
 }
 
-func (o *NonEmployeeIdentityReferenceWithId) UnmarshalJSON(bytes []byte) (err error) {
+func (o *NonEmployeeIdentityReferenceWithId) UnmarshalJSON(data []byte) (err error) {
 	varNonEmployeeIdentityReferenceWithId := _NonEmployeeIdentityReferenceWithId{}
 
-	if err = json.Unmarshal(bytes, &varNonEmployeeIdentityReferenceWithId); err == nil {
+	err = json.Unmarshal(data, &varNonEmployeeIdentityReferenceWithId)
+
+	if err != nil {
+		return err
+	}
+
 	*o = NonEmployeeIdentityReferenceWithId(varNonEmployeeIdentityReferenceWithId)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "id")
 		o.AdditionalProperties = additionalProperties

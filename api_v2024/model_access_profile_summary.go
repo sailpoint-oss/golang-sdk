@@ -53,7 +53,7 @@ func NewAccessProfileSummaryWithDefaults() *AccessProfileSummary {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *AccessProfileSummary) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -63,7 +63,7 @@ func (o *AccessProfileSummary) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessProfileSummary) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -71,7 +71,7 @@ func (o *AccessProfileSummary) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *AccessProfileSummary) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o *AccessProfileSummary) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *AccessProfileSummary) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -95,7 +95,7 @@ func (o *AccessProfileSummary) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessProfileSummary) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -103,7 +103,7 @@ func (o *AccessProfileSummary) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *AccessProfileSummary) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -117,7 +117,7 @@ func (o *AccessProfileSummary) SetName(v string) {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *AccessProfileSummary) GetDisplayName() string {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -127,7 +127,7 @@ func (o *AccessProfileSummary) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessProfileSummary) GetDisplayNameOk() (*string, bool) {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -135,7 +135,7 @@ func (o *AccessProfileSummary) GetDisplayNameOk() (*string, bool) {
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *AccessProfileSummary) HasDisplayName() bool {
-	if o != nil && !isNil(o.DisplayName) {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -149,7 +149,7 @@ func (o *AccessProfileSummary) SetDisplayName(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *AccessProfileSummary) GetType() DtoType {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret DtoType
 		return ret
 	}
@@ -159,7 +159,7 @@ func (o *AccessProfileSummary) GetType() DtoType {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessProfileSummary) GetTypeOk() (*DtoType, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -167,7 +167,7 @@ func (o *AccessProfileSummary) GetTypeOk() (*DtoType, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *AccessProfileSummary) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -181,7 +181,7 @@ func (o *AccessProfileSummary) SetType(v DtoType) {
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessProfileSummary) GetDescription() string {
-	if o == nil || isNil(o.Description.Get()) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
@@ -223,7 +223,7 @@ func (o *AccessProfileSummary) UnsetDescription() {
 
 // GetSource returns the Source field value if set, zero value otherwise.
 func (o *AccessProfileSummary) GetSource() Reference {
-	if o == nil || isNil(o.Source) {
+	if o == nil || IsNil(o.Source) {
 		var ret Reference
 		return ret
 	}
@@ -233,7 +233,7 @@ func (o *AccessProfileSummary) GetSource() Reference {
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessProfileSummary) GetSourceOk() (*Reference, bool) {
-	if o == nil || isNil(o.Source) {
+	if o == nil || IsNil(o.Source) {
 		return nil, false
 	}
 	return o.Source, true
@@ -241,7 +241,7 @@ func (o *AccessProfileSummary) GetSourceOk() (*Reference, bool) {
 
 // HasSource returns a boolean if a field has been set.
 func (o *AccessProfileSummary) HasSource() bool {
-	if o != nil && !isNil(o.Source) {
+	if o != nil && !IsNil(o.Source) {
 		return true
 	}
 
@@ -255,7 +255,7 @@ func (o *AccessProfileSummary) SetSource(v Reference) {
 
 // GetOwner returns the Owner field value if set, zero value otherwise.
 func (o *AccessProfileSummary) GetOwner() DisplayReference {
-	if o == nil || isNil(o.Owner) {
+	if o == nil || IsNil(o.Owner) {
 		var ret DisplayReference
 		return ret
 	}
@@ -265,7 +265,7 @@ func (o *AccessProfileSummary) GetOwner() DisplayReference {
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessProfileSummary) GetOwnerOk() (*DisplayReference, bool) {
-	if o == nil || isNil(o.Owner) {
+	if o == nil || IsNil(o.Owner) {
 		return nil, false
 	}
 	return o.Owner, true
@@ -273,7 +273,7 @@ func (o *AccessProfileSummary) GetOwnerOk() (*DisplayReference, bool) {
 
 // HasOwner returns a boolean if a field has been set.
 func (o *AccessProfileSummary) HasOwner() bool {
-	if o != nil && !isNil(o.Owner) {
+	if o != nil && !IsNil(o.Owner) {
 		return true
 	}
 
@@ -287,7 +287,7 @@ func (o *AccessProfileSummary) SetOwner(v DisplayReference) {
 
 // GetRevocable returns the Revocable field value if set, zero value otherwise.
 func (o *AccessProfileSummary) GetRevocable() bool {
-	if o == nil || isNil(o.Revocable) {
+	if o == nil || IsNil(o.Revocable) {
 		var ret bool
 		return ret
 	}
@@ -297,7 +297,7 @@ func (o *AccessProfileSummary) GetRevocable() bool {
 // GetRevocableOk returns a tuple with the Revocable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessProfileSummary) GetRevocableOk() (*bool, bool) {
-	if o == nil || isNil(o.Revocable) {
+	if o == nil || IsNil(o.Revocable) {
 		return nil, false
 	}
 	return o.Revocable, true
@@ -305,7 +305,7 @@ func (o *AccessProfileSummary) GetRevocableOk() (*bool, bool) {
 
 // HasRevocable returns a boolean if a field has been set.
 func (o *AccessProfileSummary) HasRevocable() bool {
-	if o != nil && !isNil(o.Revocable) {
+	if o != nil && !IsNil(o.Revocable) {
 		return true
 	}
 
@@ -327,28 +327,28 @@ func (o AccessProfileSummary) MarshalJSON() ([]byte, error) {
 
 func (o AccessProfileSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.DisplayName) {
+	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
-	if !isNil(o.Source) {
+	if !IsNil(o.Source) {
 		toSerialize["source"] = o.Source
 	}
-	if !isNil(o.Owner) {
+	if !IsNil(o.Owner) {
 		toSerialize["owner"] = o.Owner
 	}
-	if !isNil(o.Revocable) {
+	if !IsNil(o.Revocable) {
 		toSerialize["revocable"] = o.Revocable
 	}
 
@@ -359,16 +359,20 @@ func (o AccessProfileSummary) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccessProfileSummary) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccessProfileSummary) UnmarshalJSON(data []byte) (err error) {
 	varAccessProfileSummary := _AccessProfileSummary{}
 
-	if err = json.Unmarshal(bytes, &varAccessProfileSummary); err == nil {
+	err = json.Unmarshal(data, &varAccessProfileSummary)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessProfileSummary(varAccessProfileSummary)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "displayName")

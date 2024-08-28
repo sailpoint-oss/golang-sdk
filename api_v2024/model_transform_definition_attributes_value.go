@@ -15,39 +15,40 @@ import (
 	"fmt"
 )
 
+
 // TransformDefinitionAttributesValue struct for TransformDefinitionAttributesValue
 type TransformDefinitionAttributesValue struct {
-	mapvar *map[string]interface{}
-	stringvar *string
+	MapmapOfStringAny *map[string]interface{}
+	String *string
 }
 
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *TransformDefinitionAttributesValue) UnmarshalJSON(data []byte) error {
 	var err error
-	// try to unmarshal JSON data into mapvar
-	err = json.Unmarshal(data, &dst.mapvar);
+	// try to unmarshal JSON data into MapmapOfStringAny
+	err = json.Unmarshal(data, &dst.MapmapOfStringAny);
 	if err == nil {
-		jsonmapvar, _ := json.Marshal(dst.mapvar)
-		if string(jsonmapvar) == "{}" { // empty struct
-			dst.mapvar = nil
+		jsonMapmapOfStringAny, _ := json.Marshal(dst.MapmapOfStringAny)
+		if string(jsonMapmapOfStringAny) == "{}" { // empty struct
+			dst.MapmapOfStringAny = nil
 		} else {
-			return nil // data stored in dst.mapvar, return on the first match
+			return nil // data stored in dst.MapmapOfStringAny, return on the first match
 		}
 	} else {
-		dst.mapvar = nil
+		dst.MapmapOfStringAny = nil
 	}
 
-	// try to unmarshal JSON data into stringvar
-	err = json.Unmarshal(data, &dst.stringvar);
+	// try to unmarshal JSON data into String
+	err = json.Unmarshal(data, &dst.String);
 	if err == nil {
-		jsonstringvar, _ := json.Marshal(dst.stringvar)
-		if string(jsonstringvar) == "{}" { // empty struct
-			dst.stringvar = nil
+		jsonString, _ := json.Marshal(dst.String)
+		if string(jsonString) == "{}" { // empty struct
+			dst.String = nil
 		} else {
-			return nil // data stored in dst.stringvar, return on the first match
+			return nil // data stored in dst.String, return on the first match
 		}
 	} else {
-		dst.stringvar = nil
+		dst.String = nil
 	}
 
 	return fmt.Errorf("data failed to match schemas in anyOf(TransformDefinitionAttributesValue)")
@@ -55,16 +56,17 @@ func (dst *TransformDefinitionAttributesValue) UnmarshalJSON(data []byte) error 
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src *TransformDefinitionAttributesValue) MarshalJSON() ([]byte, error) {
-	if src.mapvar != nil {
-		return json.Marshal(&src.mapvar)
+	if src.MapmapOfStringAny != nil {
+		return json.Marshal(&src.MapmapOfStringAny)
 	}
 
-	if src.stringvar != nil {
-		return json.Marshal(&src.stringvar)
+	if src.String != nil {
+		return json.Marshal(&src.String)
 	}
 
 	return nil, nil // no data in anyOf schemas
 }
+
 
 type NullableTransformDefinitionAttributesValue struct {
 	value *TransformDefinitionAttributesValue

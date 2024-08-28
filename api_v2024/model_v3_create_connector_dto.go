@@ -84,7 +84,7 @@ func (o *V3CreateConnectorDto) SetName(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *V3CreateConnectorDto) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -94,7 +94,7 @@ func (o *V3CreateConnectorDto) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *V3CreateConnectorDto) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -102,7 +102,7 @@ func (o *V3CreateConnectorDto) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *V3CreateConnectorDto) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -140,7 +140,7 @@ func (o *V3CreateConnectorDto) SetClassName(v string) {
 
 // GetDirectConnect returns the DirectConnect field value if set, zero value otherwise.
 func (o *V3CreateConnectorDto) GetDirectConnect() bool {
-	if o == nil || isNil(o.DirectConnect) {
+	if o == nil || IsNil(o.DirectConnect) {
 		var ret bool
 		return ret
 	}
@@ -150,7 +150,7 @@ func (o *V3CreateConnectorDto) GetDirectConnect() bool {
 // GetDirectConnectOk returns a tuple with the DirectConnect field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *V3CreateConnectorDto) GetDirectConnectOk() (*bool, bool) {
-	if o == nil || isNil(o.DirectConnect) {
+	if o == nil || IsNil(o.DirectConnect) {
 		return nil, false
 	}
 	return o.DirectConnect, true
@@ -158,7 +158,7 @@ func (o *V3CreateConnectorDto) GetDirectConnectOk() (*bool, bool) {
 
 // HasDirectConnect returns a boolean if a field has been set.
 func (o *V3CreateConnectorDto) HasDirectConnect() bool {
-	if o != nil && !isNil(o.DirectConnect) {
+	if o != nil && !IsNil(o.DirectConnect) {
 		return true
 	}
 
@@ -172,7 +172,7 @@ func (o *V3CreateConnectorDto) SetDirectConnect(v bool) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *V3CreateConnectorDto) GetStatus() string {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -182,7 +182,7 @@ func (o *V3CreateConnectorDto) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *V3CreateConnectorDto) GetStatusOk() (*string, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -190,7 +190,7 @@ func (o *V3CreateConnectorDto) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *V3CreateConnectorDto) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -213,14 +213,14 @@ func (o V3CreateConnectorDto) MarshalJSON() ([]byte, error) {
 func (o V3CreateConnectorDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
 	toSerialize["className"] = o.ClassName
-	if !isNil(o.DirectConnect) {
+	if !IsNil(o.DirectConnect) {
 		toSerialize["directConnect"] = o.DirectConnect
 	}
-	if !isNil(o.Status) {
+	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
 
@@ -231,8 +231,8 @@ func (o V3CreateConnectorDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *V3CreateConnectorDto) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *V3CreateConnectorDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -242,7 +242,7 @@ func (o *V3CreateConnectorDto) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -256,13 +256,17 @@ func (o *V3CreateConnectorDto) UnmarshalJSON(bytes []byte) (err error) {
 
 	varV3CreateConnectorDto := _V3CreateConnectorDto{}
 
-	if err = json.Unmarshal(bytes, &varV3CreateConnectorDto); err == nil {
+	err = json.Unmarshal(data, &varV3CreateConnectorDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = V3CreateConnectorDto(varV3CreateConnectorDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "className")

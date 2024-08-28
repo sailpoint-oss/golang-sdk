@@ -47,7 +47,7 @@ func NewAccountActionWithDefaults() *AccountAction {
 
 // GetAction returns the Action field value if set, zero value otherwise.
 func (o *AccountAction) GetAction() string {
-	if o == nil || isNil(o.Action) {
+	if o == nil || IsNil(o.Action) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *AccountAction) GetAction() string {
 // GetActionOk returns a tuple with the Action field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountAction) GetActionOk() (*string, bool) {
-	if o == nil || isNil(o.Action) {
+	if o == nil || IsNil(o.Action) {
 		return nil, false
 	}
 	return o.Action, true
@@ -65,7 +65,7 @@ func (o *AccountAction) GetActionOk() (*string, bool) {
 
 // HasAction returns a boolean if a field has been set.
 func (o *AccountAction) HasAction() bool {
-	if o != nil && !isNil(o.Action) {
+	if o != nil && !IsNil(o.Action) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *AccountAction) SetAction(v string) {
 
 // GetSourceIds returns the SourceIds field value if set, zero value otherwise.
 func (o *AccountAction) GetSourceIds() []string {
-	if o == nil || isNil(o.SourceIds) {
+	if o == nil || IsNil(o.SourceIds) {
 		var ret []string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *AccountAction) GetSourceIds() []string {
 // GetSourceIdsOk returns a tuple with the SourceIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountAction) GetSourceIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.SourceIds) {
+	if o == nil || IsNil(o.SourceIds) {
 		return nil, false
 	}
 	return o.SourceIds, true
@@ -97,7 +97,7 @@ func (o *AccountAction) GetSourceIdsOk() ([]string, bool) {
 
 // HasSourceIds returns a boolean if a field has been set.
 func (o *AccountAction) HasSourceIds() bool {
-	if o != nil && !isNil(o.SourceIds) {
+	if o != nil && !IsNil(o.SourceIds) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o AccountAction) MarshalJSON() ([]byte, error) {
 
 func (o AccountAction) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Action) {
+	if !IsNil(o.Action) {
 		toSerialize["action"] = o.Action
 	}
-	if !isNil(o.SourceIds) {
+	if !IsNil(o.SourceIds) {
 		toSerialize["sourceIds"] = o.SourceIds
 	}
 
@@ -133,16 +133,20 @@ func (o AccountAction) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccountAction) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccountAction) UnmarshalJSON(data []byte) (err error) {
 	varAccountAction := _AccountAction{}
 
-	if err = json.Unmarshal(bytes, &varAccountAction); err == nil {
+	err = json.Unmarshal(data, &varAccountAction)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccountAction(varAccountAction)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "action")
 		delete(additionalProperties, "sourceIds")
 		o.AdditionalProperties = additionalProperties

@@ -100,7 +100,7 @@ func (o *FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef) SetId(v stri
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -110,7 +110,7 @@ func (o *FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef) GetName() st
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -118,7 +118,7 @@ func (o *FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef) GetNameOk() 
 
 // HasName returns a boolean if a field has been set.
 func (o *FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -142,7 +142,9 @@ func (o FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef) ToMap() (map[
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["id"] = o.Id
-	// skip: name is readOnly
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -151,8 +153,8 @@ func (o FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef) ToMap() (map[
 	return toSerialize, nil
 }
 
-func (o *FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -162,7 +164,7 @@ func (o *FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef) UnmarshalJSO
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -176,13 +178,17 @@ func (o *FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef) UnmarshalJSO
 
 	varFullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef := _FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef{}
 
-	if err = json.Unmarshal(bytes, &varFullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef); err == nil {
+	err = json.Unmarshal(data, &varFullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef)
+
+	if err != nil {
+		return err
+	}
+
 	*o = FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef(varFullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")

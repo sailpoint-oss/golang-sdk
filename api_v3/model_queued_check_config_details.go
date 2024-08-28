@@ -116,8 +116,8 @@ func (o QueuedCheckConfigDetails) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *QueuedCheckConfigDetails) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *QueuedCheckConfigDetails) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -127,7 +127,7 @@ func (o *QueuedCheckConfigDetails) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -141,13 +141,17 @@ func (o *QueuedCheckConfigDetails) UnmarshalJSON(bytes []byte) (err error) {
 
 	varQueuedCheckConfigDetails := _QueuedCheckConfigDetails{}
 
-	if err = json.Unmarshal(bytes, &varQueuedCheckConfigDetails); err == nil {
+	err = json.Unmarshal(data, &varQueuedCheckConfigDetails)
+
+	if err != nil {
+		return err
+	}
+
 	*o = QueuedCheckConfigDetails(varQueuedCheckConfigDetails)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "provisioningStatusCheckIntervalMinutes")
 		delete(additionalProperties, "provisioningMaxStatusCheckDays")
 		o.AdditionalProperties = additionalProperties

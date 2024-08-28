@@ -63,7 +63,7 @@ func NewEmailNotificationOptionWithDefaults() *EmailNotificationOption {
 
 // GetNotifyManagers returns the NotifyManagers field value if set, zero value otherwise.
 func (o *EmailNotificationOption) GetNotifyManagers() bool {
-	if o == nil || isNil(o.NotifyManagers) {
+	if o == nil || IsNil(o.NotifyManagers) {
 		var ret bool
 		return ret
 	}
@@ -73,7 +73,7 @@ func (o *EmailNotificationOption) GetNotifyManagers() bool {
 // GetNotifyManagersOk returns a tuple with the NotifyManagers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmailNotificationOption) GetNotifyManagersOk() (*bool, bool) {
-	if o == nil || isNil(o.NotifyManagers) {
+	if o == nil || IsNil(o.NotifyManagers) {
 		return nil, false
 	}
 	return o.NotifyManagers, true
@@ -81,7 +81,7 @@ func (o *EmailNotificationOption) GetNotifyManagersOk() (*bool, bool) {
 
 // HasNotifyManagers returns a boolean if a field has been set.
 func (o *EmailNotificationOption) HasNotifyManagers() bool {
-	if o != nil && !isNil(o.NotifyManagers) {
+	if o != nil && !IsNil(o.NotifyManagers) {
 		return true
 	}
 
@@ -95,7 +95,7 @@ func (o *EmailNotificationOption) SetNotifyManagers(v bool) {
 
 // GetNotifyAllAdmins returns the NotifyAllAdmins field value if set, zero value otherwise.
 func (o *EmailNotificationOption) GetNotifyAllAdmins() bool {
-	if o == nil || isNil(o.NotifyAllAdmins) {
+	if o == nil || IsNil(o.NotifyAllAdmins) {
 		var ret bool
 		return ret
 	}
@@ -105,7 +105,7 @@ func (o *EmailNotificationOption) GetNotifyAllAdmins() bool {
 // GetNotifyAllAdminsOk returns a tuple with the NotifyAllAdmins field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmailNotificationOption) GetNotifyAllAdminsOk() (*bool, bool) {
-	if o == nil || isNil(o.NotifyAllAdmins) {
+	if o == nil || IsNil(o.NotifyAllAdmins) {
 		return nil, false
 	}
 	return o.NotifyAllAdmins, true
@@ -113,7 +113,7 @@ func (o *EmailNotificationOption) GetNotifyAllAdminsOk() (*bool, bool) {
 
 // HasNotifyAllAdmins returns a boolean if a field has been set.
 func (o *EmailNotificationOption) HasNotifyAllAdmins() bool {
-	if o != nil && !isNil(o.NotifyAllAdmins) {
+	if o != nil && !IsNil(o.NotifyAllAdmins) {
 		return true
 	}
 
@@ -127,7 +127,7 @@ func (o *EmailNotificationOption) SetNotifyAllAdmins(v bool) {
 
 // GetNotifySpecificUsers returns the NotifySpecificUsers field value if set, zero value otherwise.
 func (o *EmailNotificationOption) GetNotifySpecificUsers() bool {
-	if o == nil || isNil(o.NotifySpecificUsers) {
+	if o == nil || IsNil(o.NotifySpecificUsers) {
 		var ret bool
 		return ret
 	}
@@ -137,7 +137,7 @@ func (o *EmailNotificationOption) GetNotifySpecificUsers() bool {
 // GetNotifySpecificUsersOk returns a tuple with the NotifySpecificUsers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmailNotificationOption) GetNotifySpecificUsersOk() (*bool, bool) {
-	if o == nil || isNil(o.NotifySpecificUsers) {
+	if o == nil || IsNil(o.NotifySpecificUsers) {
 		return nil, false
 	}
 	return o.NotifySpecificUsers, true
@@ -145,7 +145,7 @@ func (o *EmailNotificationOption) GetNotifySpecificUsersOk() (*bool, bool) {
 
 // HasNotifySpecificUsers returns a boolean if a field has been set.
 func (o *EmailNotificationOption) HasNotifySpecificUsers() bool {
-	if o != nil && !isNil(o.NotifySpecificUsers) {
+	if o != nil && !IsNil(o.NotifySpecificUsers) {
 		return true
 	}
 
@@ -159,7 +159,7 @@ func (o *EmailNotificationOption) SetNotifySpecificUsers(v bool) {
 
 // GetEmailAddressList returns the EmailAddressList field value if set, zero value otherwise.
 func (o *EmailNotificationOption) GetEmailAddressList() []string {
-	if o == nil || isNil(o.EmailAddressList) {
+	if o == nil || IsNil(o.EmailAddressList) {
 		var ret []string
 		return ret
 	}
@@ -169,7 +169,7 @@ func (o *EmailNotificationOption) GetEmailAddressList() []string {
 // GetEmailAddressListOk returns a tuple with the EmailAddressList field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmailNotificationOption) GetEmailAddressListOk() ([]string, bool) {
-	if o == nil || isNil(o.EmailAddressList) {
+	if o == nil || IsNil(o.EmailAddressList) {
 		return nil, false
 	}
 	return o.EmailAddressList, true
@@ -177,7 +177,7 @@ func (o *EmailNotificationOption) GetEmailAddressListOk() ([]string, bool) {
 
 // HasEmailAddressList returns a boolean if a field has been set.
 func (o *EmailNotificationOption) HasEmailAddressList() bool {
-	if o != nil && !isNil(o.EmailAddressList) {
+	if o != nil && !IsNil(o.EmailAddressList) {
 		return true
 	}
 
@@ -199,16 +199,16 @@ func (o EmailNotificationOption) MarshalJSON() ([]byte, error) {
 
 func (o EmailNotificationOption) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.NotifyManagers) {
+	if !IsNil(o.NotifyManagers) {
 		toSerialize["notifyManagers"] = o.NotifyManagers
 	}
-	if !isNil(o.NotifyAllAdmins) {
+	if !IsNil(o.NotifyAllAdmins) {
 		toSerialize["notifyAllAdmins"] = o.NotifyAllAdmins
 	}
-	if !isNil(o.NotifySpecificUsers) {
+	if !IsNil(o.NotifySpecificUsers) {
 		toSerialize["notifySpecificUsers"] = o.NotifySpecificUsers
 	}
-	if !isNil(o.EmailAddressList) {
+	if !IsNil(o.EmailAddressList) {
 		toSerialize["emailAddressList"] = o.EmailAddressList
 	}
 
@@ -219,16 +219,20 @@ func (o EmailNotificationOption) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *EmailNotificationOption) UnmarshalJSON(bytes []byte) (err error) {
+func (o *EmailNotificationOption) UnmarshalJSON(data []byte) (err error) {
 	varEmailNotificationOption := _EmailNotificationOption{}
 
-	if err = json.Unmarshal(bytes, &varEmailNotificationOption); err == nil {
+	err = json.Unmarshal(data, &varEmailNotificationOption)
+
+	if err != nil {
+		return err
+	}
+
 	*o = EmailNotificationOption(varEmailNotificationOption)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "notifyManagers")
 		delete(additionalProperties, "notifyAllAdmins")
 		delete(additionalProperties, "notifySpecificUsers")

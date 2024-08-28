@@ -153,7 +153,7 @@ func (o *EventDocument) SetDocumentType(v DocumentType) {
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EventDocument) GetCreated() time.Time {
-	if o == nil || isNil(o.Created.Get()) {
+	if o == nil || IsNil(o.Created.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -195,7 +195,7 @@ func (o *EventDocument) UnsetCreated() {
 
 // GetSynced returns the Synced field value if set, zero value otherwise.
 func (o *EventDocument) GetSynced() string {
-	if o == nil || isNil(o.Synced) {
+	if o == nil || IsNil(o.Synced) {
 		var ret string
 		return ret
 	}
@@ -205,7 +205,7 @@ func (o *EventDocument) GetSynced() string {
 // GetSyncedOk returns a tuple with the Synced field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EventDocument) GetSyncedOk() (*string, bool) {
-	if o == nil || isNil(o.Synced) {
+	if o == nil || IsNil(o.Synced) {
 		return nil, false
 	}
 	return o.Synced, true
@@ -213,7 +213,7 @@ func (o *EventDocument) GetSyncedOk() (*string, bool) {
 
 // HasSynced returns a boolean if a field has been set.
 func (o *EventDocument) HasSynced() bool {
-	if o != nil && !isNil(o.Synced) {
+	if o != nil && !IsNil(o.Synced) {
 		return true
 	}
 
@@ -227,7 +227,7 @@ func (o *EventDocument) SetSynced(v string) {
 
 // GetAction returns the Action field value if set, zero value otherwise.
 func (o *EventDocument) GetAction() string {
-	if o == nil || isNil(o.Action) {
+	if o == nil || IsNil(o.Action) {
 		var ret string
 		return ret
 	}
@@ -237,7 +237,7 @@ func (o *EventDocument) GetAction() string {
 // GetActionOk returns a tuple with the Action field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EventDocument) GetActionOk() (*string, bool) {
-	if o == nil || isNil(o.Action) {
+	if o == nil || IsNil(o.Action) {
 		return nil, false
 	}
 	return o.Action, true
@@ -245,7 +245,7 @@ func (o *EventDocument) GetActionOk() (*string, bool) {
 
 // HasAction returns a boolean if a field has been set.
 func (o *EventDocument) HasAction() bool {
-	if o != nil && !isNil(o.Action) {
+	if o != nil && !IsNil(o.Action) {
 		return true
 	}
 
@@ -259,7 +259,7 @@ func (o *EventDocument) SetAction(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *EventDocument) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -269,7 +269,7 @@ func (o *EventDocument) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EventDocument) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -277,7 +277,7 @@ func (o *EventDocument) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *EventDocument) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -291,7 +291,7 @@ func (o *EventDocument) SetType(v string) {
 
 // GetActor returns the Actor field value if set, zero value otherwise.
 func (o *EventDocument) GetActor() string {
-	if o == nil || isNil(o.Actor) {
+	if o == nil || IsNil(o.Actor) {
 		var ret string
 		return ret
 	}
@@ -301,7 +301,7 @@ func (o *EventDocument) GetActor() string {
 // GetActorOk returns a tuple with the Actor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EventDocument) GetActorOk() (*string, bool) {
-	if o == nil || isNil(o.Actor) {
+	if o == nil || IsNil(o.Actor) {
 		return nil, false
 	}
 	return o.Actor, true
@@ -309,7 +309,7 @@ func (o *EventDocument) GetActorOk() (*string, bool) {
 
 // HasActor returns a boolean if a field has been set.
 func (o *EventDocument) HasActor() bool {
-	if o != nil && !isNil(o.Actor) {
+	if o != nil && !IsNil(o.Actor) {
 		return true
 	}
 
@@ -323,7 +323,7 @@ func (o *EventDocument) SetActor(v string) {
 
 // GetTarget returns the Target field value if set, zero value otherwise.
 func (o *EventDocument) GetTarget() string {
-	if o == nil || isNil(o.Target) {
+	if o == nil || IsNil(o.Target) {
 		var ret string
 		return ret
 	}
@@ -333,7 +333,7 @@ func (o *EventDocument) GetTarget() string {
 // GetTargetOk returns a tuple with the Target field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EventDocument) GetTargetOk() (*string, bool) {
-	if o == nil || isNil(o.Target) {
+	if o == nil || IsNil(o.Target) {
 		return nil, false
 	}
 	return o.Target, true
@@ -341,7 +341,7 @@ func (o *EventDocument) GetTargetOk() (*string, bool) {
 
 // HasTarget returns a boolean if a field has been set.
 func (o *EventDocument) HasTarget() bool {
-	if o != nil && !isNil(o.Target) {
+	if o != nil && !IsNil(o.Target) {
 		return true
 	}
 
@@ -355,7 +355,7 @@ func (o *EventDocument) SetTarget(v string) {
 
 // GetStack returns the Stack field value if set, zero value otherwise.
 func (o *EventDocument) GetStack() string {
-	if o == nil || isNil(o.Stack) {
+	if o == nil || IsNil(o.Stack) {
 		var ret string
 		return ret
 	}
@@ -365,7 +365,7 @@ func (o *EventDocument) GetStack() string {
 // GetStackOk returns a tuple with the Stack field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EventDocument) GetStackOk() (*string, bool) {
-	if o == nil || isNil(o.Stack) {
+	if o == nil || IsNil(o.Stack) {
 		return nil, false
 	}
 	return o.Stack, true
@@ -373,7 +373,7 @@ func (o *EventDocument) GetStackOk() (*string, bool) {
 
 // HasStack returns a boolean if a field has been set.
 func (o *EventDocument) HasStack() bool {
-	if o != nil && !isNil(o.Stack) {
+	if o != nil && !IsNil(o.Stack) {
 		return true
 	}
 
@@ -387,7 +387,7 @@ func (o *EventDocument) SetStack(v string) {
 
 // GetTrackingNumber returns the TrackingNumber field value if set, zero value otherwise.
 func (o *EventDocument) GetTrackingNumber() string {
-	if o == nil || isNil(o.TrackingNumber) {
+	if o == nil || IsNil(o.TrackingNumber) {
 		var ret string
 		return ret
 	}
@@ -397,7 +397,7 @@ func (o *EventDocument) GetTrackingNumber() string {
 // GetTrackingNumberOk returns a tuple with the TrackingNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EventDocument) GetTrackingNumberOk() (*string, bool) {
-	if o == nil || isNil(o.TrackingNumber) {
+	if o == nil || IsNil(o.TrackingNumber) {
 		return nil, false
 	}
 	return o.TrackingNumber, true
@@ -405,7 +405,7 @@ func (o *EventDocument) GetTrackingNumberOk() (*string, bool) {
 
 // HasTrackingNumber returns a boolean if a field has been set.
 func (o *EventDocument) HasTrackingNumber() bool {
-	if o != nil && !isNil(o.TrackingNumber) {
+	if o != nil && !IsNil(o.TrackingNumber) {
 		return true
 	}
 
@@ -419,7 +419,7 @@ func (o *EventDocument) SetTrackingNumber(v string) {
 
 // GetIpAddress returns the IpAddress field value if set, zero value otherwise.
 func (o *EventDocument) GetIpAddress() string {
-	if o == nil || isNil(o.IpAddress) {
+	if o == nil || IsNil(o.IpAddress) {
 		var ret string
 		return ret
 	}
@@ -429,7 +429,7 @@ func (o *EventDocument) GetIpAddress() string {
 // GetIpAddressOk returns a tuple with the IpAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EventDocument) GetIpAddressOk() (*string, bool) {
-	if o == nil || isNil(o.IpAddress) {
+	if o == nil || IsNil(o.IpAddress) {
 		return nil, false
 	}
 	return o.IpAddress, true
@@ -437,7 +437,7 @@ func (o *EventDocument) GetIpAddressOk() (*string, bool) {
 
 // HasIpAddress returns a boolean if a field has been set.
 func (o *EventDocument) HasIpAddress() bool {
-	if o != nil && !isNil(o.IpAddress) {
+	if o != nil && !IsNil(o.IpAddress) {
 		return true
 	}
 
@@ -451,7 +451,7 @@ func (o *EventDocument) SetIpAddress(v string) {
 
 // GetDetails returns the Details field value if set, zero value otherwise.
 func (o *EventDocument) GetDetails() string {
-	if o == nil || isNil(o.Details) {
+	if o == nil || IsNil(o.Details) {
 		var ret string
 		return ret
 	}
@@ -461,7 +461,7 @@ func (o *EventDocument) GetDetails() string {
 // GetDetailsOk returns a tuple with the Details field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EventDocument) GetDetailsOk() (*string, bool) {
-	if o == nil || isNil(o.Details) {
+	if o == nil || IsNil(o.Details) {
 		return nil, false
 	}
 	return o.Details, true
@@ -469,7 +469,7 @@ func (o *EventDocument) GetDetailsOk() (*string, bool) {
 
 // HasDetails returns a boolean if a field has been set.
 func (o *EventDocument) HasDetails() bool {
-	if o != nil && !isNil(o.Details) {
+	if o != nil && !IsNil(o.Details) {
 		return true
 	}
 
@@ -483,7 +483,7 @@ func (o *EventDocument) SetDetails(v string) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *EventDocument) GetAttributes() map[string]interface{} {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -493,7 +493,7 @@ func (o *EventDocument) GetAttributes() map[string]interface{} {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EventDocument) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
@@ -501,7 +501,7 @@ func (o *EventDocument) GetAttributesOk() (map[string]interface{}, bool) {
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *EventDocument) HasAttributes() bool {
-	if o != nil && !isNil(o.Attributes) {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -515,7 +515,7 @@ func (o *EventDocument) SetAttributes(v map[string]interface{}) {
 
 // GetObjects returns the Objects field value if set, zero value otherwise.
 func (o *EventDocument) GetObjects() []string {
-	if o == nil || isNil(o.Objects) {
+	if o == nil || IsNil(o.Objects) {
 		var ret []string
 		return ret
 	}
@@ -525,7 +525,7 @@ func (o *EventDocument) GetObjects() []string {
 // GetObjectsOk returns a tuple with the Objects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EventDocument) GetObjectsOk() ([]string, bool) {
-	if o == nil || isNil(o.Objects) {
+	if o == nil || IsNil(o.Objects) {
 		return nil, false
 	}
 	return o.Objects, true
@@ -533,7 +533,7 @@ func (o *EventDocument) GetObjectsOk() ([]string, bool) {
 
 // HasObjects returns a boolean if a field has been set.
 func (o *EventDocument) HasObjects() bool {
-	if o != nil && !isNil(o.Objects) {
+	if o != nil && !IsNil(o.Objects) {
 		return true
 	}
 
@@ -547,7 +547,7 @@ func (o *EventDocument) SetObjects(v []string) {
 
 // GetOperation returns the Operation field value if set, zero value otherwise.
 func (o *EventDocument) GetOperation() string {
-	if o == nil || isNil(o.Operation) {
+	if o == nil || IsNil(o.Operation) {
 		var ret string
 		return ret
 	}
@@ -557,7 +557,7 @@ func (o *EventDocument) GetOperation() string {
 // GetOperationOk returns a tuple with the Operation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EventDocument) GetOperationOk() (*string, bool) {
-	if o == nil || isNil(o.Operation) {
+	if o == nil || IsNil(o.Operation) {
 		return nil, false
 	}
 	return o.Operation, true
@@ -565,7 +565,7 @@ func (o *EventDocument) GetOperationOk() (*string, bool) {
 
 // HasOperation returns a boolean if a field has been set.
 func (o *EventDocument) HasOperation() bool {
-	if o != nil && !isNil(o.Operation) {
+	if o != nil && !IsNil(o.Operation) {
 		return true
 	}
 
@@ -579,7 +579,7 @@ func (o *EventDocument) SetOperation(v string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *EventDocument) GetStatus() string {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -589,7 +589,7 @@ func (o *EventDocument) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EventDocument) GetStatusOk() (*string, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -597,7 +597,7 @@ func (o *EventDocument) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *EventDocument) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -611,7 +611,7 @@ func (o *EventDocument) SetStatus(v string) {
 
 // GetTechnicalName returns the TechnicalName field value if set, zero value otherwise.
 func (o *EventDocument) GetTechnicalName() string {
-	if o == nil || isNil(o.TechnicalName) {
+	if o == nil || IsNil(o.TechnicalName) {
 		var ret string
 		return ret
 	}
@@ -621,7 +621,7 @@ func (o *EventDocument) GetTechnicalName() string {
 // GetTechnicalNameOk returns a tuple with the TechnicalName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EventDocument) GetTechnicalNameOk() (*string, bool) {
-	if o == nil || isNil(o.TechnicalName) {
+	if o == nil || IsNil(o.TechnicalName) {
 		return nil, false
 	}
 	return o.TechnicalName, true
@@ -629,7 +629,7 @@ func (o *EventDocument) GetTechnicalNameOk() (*string, bool) {
 
 // HasTechnicalName returns a boolean if a field has been set.
 func (o *EventDocument) HasTechnicalName() bool {
-	if o != nil && !isNil(o.TechnicalName) {
+	if o != nil && !IsNil(o.TechnicalName) {
 		return true
 	}
 
@@ -657,46 +657,46 @@ func (o EventDocument) ToMap() (map[string]interface{}, error) {
 	if o.Created.IsSet() {
 		toSerialize["created"] = o.Created.Get()
 	}
-	if !isNil(o.Synced) {
+	if !IsNil(o.Synced) {
 		toSerialize["synced"] = o.Synced
 	}
-	if !isNil(o.Action) {
+	if !IsNil(o.Action) {
 		toSerialize["action"] = o.Action
 	}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Actor) {
+	if !IsNil(o.Actor) {
 		toSerialize["actor"] = o.Actor
 	}
-	if !isNil(o.Target) {
+	if !IsNil(o.Target) {
 		toSerialize["target"] = o.Target
 	}
-	if !isNil(o.Stack) {
+	if !IsNil(o.Stack) {
 		toSerialize["stack"] = o.Stack
 	}
-	if !isNil(o.TrackingNumber) {
+	if !IsNil(o.TrackingNumber) {
 		toSerialize["trackingNumber"] = o.TrackingNumber
 	}
-	if !isNil(o.IpAddress) {
+	if !IsNil(o.IpAddress) {
 		toSerialize["ipAddress"] = o.IpAddress
 	}
-	if !isNil(o.Details) {
+	if !IsNil(o.Details) {
 		toSerialize["details"] = o.Details
 	}
-	if !isNil(o.Attributes) {
+	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
-	if !isNil(o.Objects) {
+	if !IsNil(o.Objects) {
 		toSerialize["objects"] = o.Objects
 	}
-	if !isNil(o.Operation) {
+	if !IsNil(o.Operation) {
 		toSerialize["operation"] = o.Operation
 	}
-	if !isNil(o.Status) {
+	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if !isNil(o.TechnicalName) {
+	if !IsNil(o.TechnicalName) {
 		toSerialize["technicalName"] = o.TechnicalName
 	}
 
@@ -707,8 +707,8 @@ func (o EventDocument) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *EventDocument) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *EventDocument) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -719,7 +719,7 @@ func (o *EventDocument) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -733,13 +733,17 @@ func (o *EventDocument) UnmarshalJSON(bytes []byte) (err error) {
 
 	varEventDocument := _EventDocument{}
 
-	if err = json.Unmarshal(bytes, &varEventDocument); err == nil {
+	err = json.Unmarshal(data, &varEventDocument)
+
+	if err != nil {
+		return err
+	}
+
 	*o = EventDocument(varEventDocument)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "_type")

@@ -75,7 +75,7 @@ func NewIdentityCertDecisionSummaryWithDefaults() *IdentityCertDecisionSummary {
 
 // GetEntitlementDecisionsMade returns the EntitlementDecisionsMade field value if set, zero value otherwise.
 func (o *IdentityCertDecisionSummary) GetEntitlementDecisionsMade() int32 {
-	if o == nil || isNil(o.EntitlementDecisionsMade) {
+	if o == nil || IsNil(o.EntitlementDecisionsMade) {
 		var ret int32
 		return ret
 	}
@@ -85,7 +85,7 @@ func (o *IdentityCertDecisionSummary) GetEntitlementDecisionsMade() int32 {
 // GetEntitlementDecisionsMadeOk returns a tuple with the EntitlementDecisionsMade field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertDecisionSummary) GetEntitlementDecisionsMadeOk() (*int32, bool) {
-	if o == nil || isNil(o.EntitlementDecisionsMade) {
+	if o == nil || IsNil(o.EntitlementDecisionsMade) {
 		return nil, false
 	}
 	return o.EntitlementDecisionsMade, true
@@ -93,7 +93,7 @@ func (o *IdentityCertDecisionSummary) GetEntitlementDecisionsMadeOk() (*int32, b
 
 // HasEntitlementDecisionsMade returns a boolean if a field has been set.
 func (o *IdentityCertDecisionSummary) HasEntitlementDecisionsMade() bool {
-	if o != nil && !isNil(o.EntitlementDecisionsMade) {
+	if o != nil && !IsNil(o.EntitlementDecisionsMade) {
 		return true
 	}
 
@@ -107,7 +107,7 @@ func (o *IdentityCertDecisionSummary) SetEntitlementDecisionsMade(v int32) {
 
 // GetAccessProfileDecisionsMade returns the AccessProfileDecisionsMade field value if set, zero value otherwise.
 func (o *IdentityCertDecisionSummary) GetAccessProfileDecisionsMade() int32 {
-	if o == nil || isNil(o.AccessProfileDecisionsMade) {
+	if o == nil || IsNil(o.AccessProfileDecisionsMade) {
 		var ret int32
 		return ret
 	}
@@ -117,7 +117,7 @@ func (o *IdentityCertDecisionSummary) GetAccessProfileDecisionsMade() int32 {
 // GetAccessProfileDecisionsMadeOk returns a tuple with the AccessProfileDecisionsMade field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertDecisionSummary) GetAccessProfileDecisionsMadeOk() (*int32, bool) {
-	if o == nil || isNil(o.AccessProfileDecisionsMade) {
+	if o == nil || IsNil(o.AccessProfileDecisionsMade) {
 		return nil, false
 	}
 	return o.AccessProfileDecisionsMade, true
@@ -125,7 +125,7 @@ func (o *IdentityCertDecisionSummary) GetAccessProfileDecisionsMadeOk() (*int32,
 
 // HasAccessProfileDecisionsMade returns a boolean if a field has been set.
 func (o *IdentityCertDecisionSummary) HasAccessProfileDecisionsMade() bool {
-	if o != nil && !isNil(o.AccessProfileDecisionsMade) {
+	if o != nil && !IsNil(o.AccessProfileDecisionsMade) {
 		return true
 	}
 
@@ -139,7 +139,7 @@ func (o *IdentityCertDecisionSummary) SetAccessProfileDecisionsMade(v int32) {
 
 // GetRoleDecisionsMade returns the RoleDecisionsMade field value if set, zero value otherwise.
 func (o *IdentityCertDecisionSummary) GetRoleDecisionsMade() int32 {
-	if o == nil || isNil(o.RoleDecisionsMade) {
+	if o == nil || IsNil(o.RoleDecisionsMade) {
 		var ret int32
 		return ret
 	}
@@ -149,7 +149,7 @@ func (o *IdentityCertDecisionSummary) GetRoleDecisionsMade() int32 {
 // GetRoleDecisionsMadeOk returns a tuple with the RoleDecisionsMade field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertDecisionSummary) GetRoleDecisionsMadeOk() (*int32, bool) {
-	if o == nil || isNil(o.RoleDecisionsMade) {
+	if o == nil || IsNil(o.RoleDecisionsMade) {
 		return nil, false
 	}
 	return o.RoleDecisionsMade, true
@@ -157,7 +157,7 @@ func (o *IdentityCertDecisionSummary) GetRoleDecisionsMadeOk() (*int32, bool) {
 
 // HasRoleDecisionsMade returns a boolean if a field has been set.
 func (o *IdentityCertDecisionSummary) HasRoleDecisionsMade() bool {
-	if o != nil && !isNil(o.RoleDecisionsMade) {
+	if o != nil && !IsNil(o.RoleDecisionsMade) {
 		return true
 	}
 
@@ -171,7 +171,7 @@ func (o *IdentityCertDecisionSummary) SetRoleDecisionsMade(v int32) {
 
 // GetAccountDecisionsMade returns the AccountDecisionsMade field value if set, zero value otherwise.
 func (o *IdentityCertDecisionSummary) GetAccountDecisionsMade() int32 {
-	if o == nil || isNil(o.AccountDecisionsMade) {
+	if o == nil || IsNil(o.AccountDecisionsMade) {
 		var ret int32
 		return ret
 	}
@@ -181,7 +181,7 @@ func (o *IdentityCertDecisionSummary) GetAccountDecisionsMade() int32 {
 // GetAccountDecisionsMadeOk returns a tuple with the AccountDecisionsMade field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertDecisionSummary) GetAccountDecisionsMadeOk() (*int32, bool) {
-	if o == nil || isNil(o.AccountDecisionsMade) {
+	if o == nil || IsNil(o.AccountDecisionsMade) {
 		return nil, false
 	}
 	return o.AccountDecisionsMade, true
@@ -189,7 +189,7 @@ func (o *IdentityCertDecisionSummary) GetAccountDecisionsMadeOk() (*int32, bool)
 
 // HasAccountDecisionsMade returns a boolean if a field has been set.
 func (o *IdentityCertDecisionSummary) HasAccountDecisionsMade() bool {
-	if o != nil && !isNil(o.AccountDecisionsMade) {
+	if o != nil && !IsNil(o.AccountDecisionsMade) {
 		return true
 	}
 
@@ -203,7 +203,7 @@ func (o *IdentityCertDecisionSummary) SetAccountDecisionsMade(v int32) {
 
 // GetEntitlementDecisionsTotal returns the EntitlementDecisionsTotal field value if set, zero value otherwise.
 func (o *IdentityCertDecisionSummary) GetEntitlementDecisionsTotal() int32 {
-	if o == nil || isNil(o.EntitlementDecisionsTotal) {
+	if o == nil || IsNil(o.EntitlementDecisionsTotal) {
 		var ret int32
 		return ret
 	}
@@ -213,7 +213,7 @@ func (o *IdentityCertDecisionSummary) GetEntitlementDecisionsTotal() int32 {
 // GetEntitlementDecisionsTotalOk returns a tuple with the EntitlementDecisionsTotal field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertDecisionSummary) GetEntitlementDecisionsTotalOk() (*int32, bool) {
-	if o == nil || isNil(o.EntitlementDecisionsTotal) {
+	if o == nil || IsNil(o.EntitlementDecisionsTotal) {
 		return nil, false
 	}
 	return o.EntitlementDecisionsTotal, true
@@ -221,7 +221,7 @@ func (o *IdentityCertDecisionSummary) GetEntitlementDecisionsTotalOk() (*int32, 
 
 // HasEntitlementDecisionsTotal returns a boolean if a field has been set.
 func (o *IdentityCertDecisionSummary) HasEntitlementDecisionsTotal() bool {
-	if o != nil && !isNil(o.EntitlementDecisionsTotal) {
+	if o != nil && !IsNil(o.EntitlementDecisionsTotal) {
 		return true
 	}
 
@@ -235,7 +235,7 @@ func (o *IdentityCertDecisionSummary) SetEntitlementDecisionsTotal(v int32) {
 
 // GetAccessProfileDecisionsTotal returns the AccessProfileDecisionsTotal field value if set, zero value otherwise.
 func (o *IdentityCertDecisionSummary) GetAccessProfileDecisionsTotal() int32 {
-	if o == nil || isNil(o.AccessProfileDecisionsTotal) {
+	if o == nil || IsNil(o.AccessProfileDecisionsTotal) {
 		var ret int32
 		return ret
 	}
@@ -245,7 +245,7 @@ func (o *IdentityCertDecisionSummary) GetAccessProfileDecisionsTotal() int32 {
 // GetAccessProfileDecisionsTotalOk returns a tuple with the AccessProfileDecisionsTotal field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertDecisionSummary) GetAccessProfileDecisionsTotalOk() (*int32, bool) {
-	if o == nil || isNil(o.AccessProfileDecisionsTotal) {
+	if o == nil || IsNil(o.AccessProfileDecisionsTotal) {
 		return nil, false
 	}
 	return o.AccessProfileDecisionsTotal, true
@@ -253,7 +253,7 @@ func (o *IdentityCertDecisionSummary) GetAccessProfileDecisionsTotalOk() (*int32
 
 // HasAccessProfileDecisionsTotal returns a boolean if a field has been set.
 func (o *IdentityCertDecisionSummary) HasAccessProfileDecisionsTotal() bool {
-	if o != nil && !isNil(o.AccessProfileDecisionsTotal) {
+	if o != nil && !IsNil(o.AccessProfileDecisionsTotal) {
 		return true
 	}
 
@@ -267,7 +267,7 @@ func (o *IdentityCertDecisionSummary) SetAccessProfileDecisionsTotal(v int32) {
 
 // GetRoleDecisionsTotal returns the RoleDecisionsTotal field value if set, zero value otherwise.
 func (o *IdentityCertDecisionSummary) GetRoleDecisionsTotal() int32 {
-	if o == nil || isNil(o.RoleDecisionsTotal) {
+	if o == nil || IsNil(o.RoleDecisionsTotal) {
 		var ret int32
 		return ret
 	}
@@ -277,7 +277,7 @@ func (o *IdentityCertDecisionSummary) GetRoleDecisionsTotal() int32 {
 // GetRoleDecisionsTotalOk returns a tuple with the RoleDecisionsTotal field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertDecisionSummary) GetRoleDecisionsTotalOk() (*int32, bool) {
-	if o == nil || isNil(o.RoleDecisionsTotal) {
+	if o == nil || IsNil(o.RoleDecisionsTotal) {
 		return nil, false
 	}
 	return o.RoleDecisionsTotal, true
@@ -285,7 +285,7 @@ func (o *IdentityCertDecisionSummary) GetRoleDecisionsTotalOk() (*int32, bool) {
 
 // HasRoleDecisionsTotal returns a boolean if a field has been set.
 func (o *IdentityCertDecisionSummary) HasRoleDecisionsTotal() bool {
-	if o != nil && !isNil(o.RoleDecisionsTotal) {
+	if o != nil && !IsNil(o.RoleDecisionsTotal) {
 		return true
 	}
 
@@ -299,7 +299,7 @@ func (o *IdentityCertDecisionSummary) SetRoleDecisionsTotal(v int32) {
 
 // GetAccountDecisionsTotal returns the AccountDecisionsTotal field value if set, zero value otherwise.
 func (o *IdentityCertDecisionSummary) GetAccountDecisionsTotal() int32 {
-	if o == nil || isNil(o.AccountDecisionsTotal) {
+	if o == nil || IsNil(o.AccountDecisionsTotal) {
 		var ret int32
 		return ret
 	}
@@ -309,7 +309,7 @@ func (o *IdentityCertDecisionSummary) GetAccountDecisionsTotal() int32 {
 // GetAccountDecisionsTotalOk returns a tuple with the AccountDecisionsTotal field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertDecisionSummary) GetAccountDecisionsTotalOk() (*int32, bool) {
-	if o == nil || isNil(o.AccountDecisionsTotal) {
+	if o == nil || IsNil(o.AccountDecisionsTotal) {
 		return nil, false
 	}
 	return o.AccountDecisionsTotal, true
@@ -317,7 +317,7 @@ func (o *IdentityCertDecisionSummary) GetAccountDecisionsTotalOk() (*int32, bool
 
 // HasAccountDecisionsTotal returns a boolean if a field has been set.
 func (o *IdentityCertDecisionSummary) HasAccountDecisionsTotal() bool {
-	if o != nil && !isNil(o.AccountDecisionsTotal) {
+	if o != nil && !IsNil(o.AccountDecisionsTotal) {
 		return true
 	}
 
@@ -331,7 +331,7 @@ func (o *IdentityCertDecisionSummary) SetAccountDecisionsTotal(v int32) {
 
 // GetEntitlementsApproved returns the EntitlementsApproved field value if set, zero value otherwise.
 func (o *IdentityCertDecisionSummary) GetEntitlementsApproved() int32 {
-	if o == nil || isNil(o.EntitlementsApproved) {
+	if o == nil || IsNil(o.EntitlementsApproved) {
 		var ret int32
 		return ret
 	}
@@ -341,7 +341,7 @@ func (o *IdentityCertDecisionSummary) GetEntitlementsApproved() int32 {
 // GetEntitlementsApprovedOk returns a tuple with the EntitlementsApproved field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertDecisionSummary) GetEntitlementsApprovedOk() (*int32, bool) {
-	if o == nil || isNil(o.EntitlementsApproved) {
+	if o == nil || IsNil(o.EntitlementsApproved) {
 		return nil, false
 	}
 	return o.EntitlementsApproved, true
@@ -349,7 +349,7 @@ func (o *IdentityCertDecisionSummary) GetEntitlementsApprovedOk() (*int32, bool)
 
 // HasEntitlementsApproved returns a boolean if a field has been set.
 func (o *IdentityCertDecisionSummary) HasEntitlementsApproved() bool {
-	if o != nil && !isNil(o.EntitlementsApproved) {
+	if o != nil && !IsNil(o.EntitlementsApproved) {
 		return true
 	}
 
@@ -363,7 +363,7 @@ func (o *IdentityCertDecisionSummary) SetEntitlementsApproved(v int32) {
 
 // GetEntitlementsRevoked returns the EntitlementsRevoked field value if set, zero value otherwise.
 func (o *IdentityCertDecisionSummary) GetEntitlementsRevoked() int32 {
-	if o == nil || isNil(o.EntitlementsRevoked) {
+	if o == nil || IsNil(o.EntitlementsRevoked) {
 		var ret int32
 		return ret
 	}
@@ -373,7 +373,7 @@ func (o *IdentityCertDecisionSummary) GetEntitlementsRevoked() int32 {
 // GetEntitlementsRevokedOk returns a tuple with the EntitlementsRevoked field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertDecisionSummary) GetEntitlementsRevokedOk() (*int32, bool) {
-	if o == nil || isNil(o.EntitlementsRevoked) {
+	if o == nil || IsNil(o.EntitlementsRevoked) {
 		return nil, false
 	}
 	return o.EntitlementsRevoked, true
@@ -381,7 +381,7 @@ func (o *IdentityCertDecisionSummary) GetEntitlementsRevokedOk() (*int32, bool) 
 
 // HasEntitlementsRevoked returns a boolean if a field has been set.
 func (o *IdentityCertDecisionSummary) HasEntitlementsRevoked() bool {
-	if o != nil && !isNil(o.EntitlementsRevoked) {
+	if o != nil && !IsNil(o.EntitlementsRevoked) {
 		return true
 	}
 
@@ -395,7 +395,7 @@ func (o *IdentityCertDecisionSummary) SetEntitlementsRevoked(v int32) {
 
 // GetAccessProfilesApproved returns the AccessProfilesApproved field value if set, zero value otherwise.
 func (o *IdentityCertDecisionSummary) GetAccessProfilesApproved() int32 {
-	if o == nil || isNil(o.AccessProfilesApproved) {
+	if o == nil || IsNil(o.AccessProfilesApproved) {
 		var ret int32
 		return ret
 	}
@@ -405,7 +405,7 @@ func (o *IdentityCertDecisionSummary) GetAccessProfilesApproved() int32 {
 // GetAccessProfilesApprovedOk returns a tuple with the AccessProfilesApproved field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertDecisionSummary) GetAccessProfilesApprovedOk() (*int32, bool) {
-	if o == nil || isNil(o.AccessProfilesApproved) {
+	if o == nil || IsNil(o.AccessProfilesApproved) {
 		return nil, false
 	}
 	return o.AccessProfilesApproved, true
@@ -413,7 +413,7 @@ func (o *IdentityCertDecisionSummary) GetAccessProfilesApprovedOk() (*int32, boo
 
 // HasAccessProfilesApproved returns a boolean if a field has been set.
 func (o *IdentityCertDecisionSummary) HasAccessProfilesApproved() bool {
-	if o != nil && !isNil(o.AccessProfilesApproved) {
+	if o != nil && !IsNil(o.AccessProfilesApproved) {
 		return true
 	}
 
@@ -427,7 +427,7 @@ func (o *IdentityCertDecisionSummary) SetAccessProfilesApproved(v int32) {
 
 // GetAccessProfilesRevoked returns the AccessProfilesRevoked field value if set, zero value otherwise.
 func (o *IdentityCertDecisionSummary) GetAccessProfilesRevoked() int32 {
-	if o == nil || isNil(o.AccessProfilesRevoked) {
+	if o == nil || IsNil(o.AccessProfilesRevoked) {
 		var ret int32
 		return ret
 	}
@@ -437,7 +437,7 @@ func (o *IdentityCertDecisionSummary) GetAccessProfilesRevoked() int32 {
 // GetAccessProfilesRevokedOk returns a tuple with the AccessProfilesRevoked field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertDecisionSummary) GetAccessProfilesRevokedOk() (*int32, bool) {
-	if o == nil || isNil(o.AccessProfilesRevoked) {
+	if o == nil || IsNil(o.AccessProfilesRevoked) {
 		return nil, false
 	}
 	return o.AccessProfilesRevoked, true
@@ -445,7 +445,7 @@ func (o *IdentityCertDecisionSummary) GetAccessProfilesRevokedOk() (*int32, bool
 
 // HasAccessProfilesRevoked returns a boolean if a field has been set.
 func (o *IdentityCertDecisionSummary) HasAccessProfilesRevoked() bool {
-	if o != nil && !isNil(o.AccessProfilesRevoked) {
+	if o != nil && !IsNil(o.AccessProfilesRevoked) {
 		return true
 	}
 
@@ -459,7 +459,7 @@ func (o *IdentityCertDecisionSummary) SetAccessProfilesRevoked(v int32) {
 
 // GetRolesApproved returns the RolesApproved field value if set, zero value otherwise.
 func (o *IdentityCertDecisionSummary) GetRolesApproved() int32 {
-	if o == nil || isNil(o.RolesApproved) {
+	if o == nil || IsNil(o.RolesApproved) {
 		var ret int32
 		return ret
 	}
@@ -469,7 +469,7 @@ func (o *IdentityCertDecisionSummary) GetRolesApproved() int32 {
 // GetRolesApprovedOk returns a tuple with the RolesApproved field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertDecisionSummary) GetRolesApprovedOk() (*int32, bool) {
-	if o == nil || isNil(o.RolesApproved) {
+	if o == nil || IsNil(o.RolesApproved) {
 		return nil, false
 	}
 	return o.RolesApproved, true
@@ -477,7 +477,7 @@ func (o *IdentityCertDecisionSummary) GetRolesApprovedOk() (*int32, bool) {
 
 // HasRolesApproved returns a boolean if a field has been set.
 func (o *IdentityCertDecisionSummary) HasRolesApproved() bool {
-	if o != nil && !isNil(o.RolesApproved) {
+	if o != nil && !IsNil(o.RolesApproved) {
 		return true
 	}
 
@@ -491,7 +491,7 @@ func (o *IdentityCertDecisionSummary) SetRolesApproved(v int32) {
 
 // GetRolesRevoked returns the RolesRevoked field value if set, zero value otherwise.
 func (o *IdentityCertDecisionSummary) GetRolesRevoked() int32 {
-	if o == nil || isNil(o.RolesRevoked) {
+	if o == nil || IsNil(o.RolesRevoked) {
 		var ret int32
 		return ret
 	}
@@ -501,7 +501,7 @@ func (o *IdentityCertDecisionSummary) GetRolesRevoked() int32 {
 // GetRolesRevokedOk returns a tuple with the RolesRevoked field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertDecisionSummary) GetRolesRevokedOk() (*int32, bool) {
-	if o == nil || isNil(o.RolesRevoked) {
+	if o == nil || IsNil(o.RolesRevoked) {
 		return nil, false
 	}
 	return o.RolesRevoked, true
@@ -509,7 +509,7 @@ func (o *IdentityCertDecisionSummary) GetRolesRevokedOk() (*int32, bool) {
 
 // HasRolesRevoked returns a boolean if a field has been set.
 func (o *IdentityCertDecisionSummary) HasRolesRevoked() bool {
-	if o != nil && !isNil(o.RolesRevoked) {
+	if o != nil && !IsNil(o.RolesRevoked) {
 		return true
 	}
 
@@ -523,7 +523,7 @@ func (o *IdentityCertDecisionSummary) SetRolesRevoked(v int32) {
 
 // GetAccountsApproved returns the AccountsApproved field value if set, zero value otherwise.
 func (o *IdentityCertDecisionSummary) GetAccountsApproved() int32 {
-	if o == nil || isNil(o.AccountsApproved) {
+	if o == nil || IsNil(o.AccountsApproved) {
 		var ret int32
 		return ret
 	}
@@ -533,7 +533,7 @@ func (o *IdentityCertDecisionSummary) GetAccountsApproved() int32 {
 // GetAccountsApprovedOk returns a tuple with the AccountsApproved field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertDecisionSummary) GetAccountsApprovedOk() (*int32, bool) {
-	if o == nil || isNil(o.AccountsApproved) {
+	if o == nil || IsNil(o.AccountsApproved) {
 		return nil, false
 	}
 	return o.AccountsApproved, true
@@ -541,7 +541,7 @@ func (o *IdentityCertDecisionSummary) GetAccountsApprovedOk() (*int32, bool) {
 
 // HasAccountsApproved returns a boolean if a field has been set.
 func (o *IdentityCertDecisionSummary) HasAccountsApproved() bool {
-	if o != nil && !isNil(o.AccountsApproved) {
+	if o != nil && !IsNil(o.AccountsApproved) {
 		return true
 	}
 
@@ -555,7 +555,7 @@ func (o *IdentityCertDecisionSummary) SetAccountsApproved(v int32) {
 
 // GetAccountsRevoked returns the AccountsRevoked field value if set, zero value otherwise.
 func (o *IdentityCertDecisionSummary) GetAccountsRevoked() int32 {
-	if o == nil || isNil(o.AccountsRevoked) {
+	if o == nil || IsNil(o.AccountsRevoked) {
 		var ret int32
 		return ret
 	}
@@ -565,7 +565,7 @@ func (o *IdentityCertDecisionSummary) GetAccountsRevoked() int32 {
 // GetAccountsRevokedOk returns a tuple with the AccountsRevoked field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertDecisionSummary) GetAccountsRevokedOk() (*int32, bool) {
-	if o == nil || isNil(o.AccountsRevoked) {
+	if o == nil || IsNil(o.AccountsRevoked) {
 		return nil, false
 	}
 	return o.AccountsRevoked, true
@@ -573,7 +573,7 @@ func (o *IdentityCertDecisionSummary) GetAccountsRevokedOk() (*int32, bool) {
 
 // HasAccountsRevoked returns a boolean if a field has been set.
 func (o *IdentityCertDecisionSummary) HasAccountsRevoked() bool {
-	if o != nil && !isNil(o.AccountsRevoked) {
+	if o != nil && !IsNil(o.AccountsRevoked) {
 		return true
 	}
 
@@ -595,52 +595,52 @@ func (o IdentityCertDecisionSummary) MarshalJSON() ([]byte, error) {
 
 func (o IdentityCertDecisionSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.EntitlementDecisionsMade) {
+	if !IsNil(o.EntitlementDecisionsMade) {
 		toSerialize["entitlementDecisionsMade"] = o.EntitlementDecisionsMade
 	}
-	if !isNil(o.AccessProfileDecisionsMade) {
+	if !IsNil(o.AccessProfileDecisionsMade) {
 		toSerialize["accessProfileDecisionsMade"] = o.AccessProfileDecisionsMade
 	}
-	if !isNil(o.RoleDecisionsMade) {
+	if !IsNil(o.RoleDecisionsMade) {
 		toSerialize["roleDecisionsMade"] = o.RoleDecisionsMade
 	}
-	if !isNil(o.AccountDecisionsMade) {
+	if !IsNil(o.AccountDecisionsMade) {
 		toSerialize["accountDecisionsMade"] = o.AccountDecisionsMade
 	}
-	if !isNil(o.EntitlementDecisionsTotal) {
+	if !IsNil(o.EntitlementDecisionsTotal) {
 		toSerialize["entitlementDecisionsTotal"] = o.EntitlementDecisionsTotal
 	}
-	if !isNil(o.AccessProfileDecisionsTotal) {
+	if !IsNil(o.AccessProfileDecisionsTotal) {
 		toSerialize["accessProfileDecisionsTotal"] = o.AccessProfileDecisionsTotal
 	}
-	if !isNil(o.RoleDecisionsTotal) {
+	if !IsNil(o.RoleDecisionsTotal) {
 		toSerialize["roleDecisionsTotal"] = o.RoleDecisionsTotal
 	}
-	if !isNil(o.AccountDecisionsTotal) {
+	if !IsNil(o.AccountDecisionsTotal) {
 		toSerialize["accountDecisionsTotal"] = o.AccountDecisionsTotal
 	}
-	if !isNil(o.EntitlementsApproved) {
+	if !IsNil(o.EntitlementsApproved) {
 		toSerialize["entitlementsApproved"] = o.EntitlementsApproved
 	}
-	if !isNil(o.EntitlementsRevoked) {
+	if !IsNil(o.EntitlementsRevoked) {
 		toSerialize["entitlementsRevoked"] = o.EntitlementsRevoked
 	}
-	if !isNil(o.AccessProfilesApproved) {
+	if !IsNil(o.AccessProfilesApproved) {
 		toSerialize["accessProfilesApproved"] = o.AccessProfilesApproved
 	}
-	if !isNil(o.AccessProfilesRevoked) {
+	if !IsNil(o.AccessProfilesRevoked) {
 		toSerialize["accessProfilesRevoked"] = o.AccessProfilesRevoked
 	}
-	if !isNil(o.RolesApproved) {
+	if !IsNil(o.RolesApproved) {
 		toSerialize["rolesApproved"] = o.RolesApproved
 	}
-	if !isNil(o.RolesRevoked) {
+	if !IsNil(o.RolesRevoked) {
 		toSerialize["rolesRevoked"] = o.RolesRevoked
 	}
-	if !isNil(o.AccountsApproved) {
+	if !IsNil(o.AccountsApproved) {
 		toSerialize["accountsApproved"] = o.AccountsApproved
 	}
-	if !isNil(o.AccountsRevoked) {
+	if !IsNil(o.AccountsRevoked) {
 		toSerialize["accountsRevoked"] = o.AccountsRevoked
 	}
 
@@ -651,16 +651,20 @@ func (o IdentityCertDecisionSummary) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *IdentityCertDecisionSummary) UnmarshalJSON(bytes []byte) (err error) {
+func (o *IdentityCertDecisionSummary) UnmarshalJSON(data []byte) (err error) {
 	varIdentityCertDecisionSummary := _IdentityCertDecisionSummary{}
 
-	if err = json.Unmarshal(bytes, &varIdentityCertDecisionSummary); err == nil {
+	err = json.Unmarshal(data, &varIdentityCertDecisionSummary)
+
+	if err != nil {
+		return err
+	}
+
 	*o = IdentityCertDecisionSummary(varIdentityCertDecisionSummary)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "entitlementDecisionsMade")
 		delete(additionalProperties, "accessProfileDecisionsMade")
 		delete(additionalProperties, "roleDecisionsMade")

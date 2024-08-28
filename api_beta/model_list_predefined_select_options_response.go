@@ -45,7 +45,7 @@ func NewListPredefinedSelectOptionsResponseWithDefaults() *ListPredefinedSelectO
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *ListPredefinedSelectOptionsResponse) GetResults() []string {
-	if o == nil || isNil(o.Results) {
+	if o == nil || IsNil(o.Results) {
 		var ret []string
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *ListPredefinedSelectOptionsResponse) GetResults() []string {
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ListPredefinedSelectOptionsResponse) GetResultsOk() ([]string, bool) {
-	if o == nil || isNil(o.Results) {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -63,7 +63,7 @@ func (o *ListPredefinedSelectOptionsResponse) GetResultsOk() ([]string, bool) {
 
 // HasResults returns a boolean if a field has been set.
 func (o *ListPredefinedSelectOptionsResponse) HasResults() bool {
-	if o != nil && !isNil(o.Results) {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o ListPredefinedSelectOptionsResponse) MarshalJSON() ([]byte, error) {
 
 func (o ListPredefinedSelectOptionsResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Results) {
+	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
 
@@ -96,16 +96,20 @@ func (o ListPredefinedSelectOptionsResponse) ToMap() (map[string]interface{}, er
 	return toSerialize, nil
 }
 
-func (o *ListPredefinedSelectOptionsResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ListPredefinedSelectOptionsResponse) UnmarshalJSON(data []byte) (err error) {
 	varListPredefinedSelectOptionsResponse := _ListPredefinedSelectOptionsResponse{}
 
-	if err = json.Unmarshal(bytes, &varListPredefinedSelectOptionsResponse); err == nil {
+	err = json.Unmarshal(data, &varListPredefinedSelectOptionsResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ListPredefinedSelectOptionsResponse(varListPredefinedSelectOptionsResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "results")
 		o.AdditionalProperties = additionalProperties
 	}

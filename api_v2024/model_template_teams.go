@@ -54,7 +54,7 @@ func NewTemplateTeamsWithDefaults() *TemplateTeams {
 
 // GetKey returns the Key field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateTeams) GetKey() string {
-	if o == nil || isNil(o.Key.Get()) {
+	if o == nil || IsNil(o.Key.Get()) {
 		var ret string
 		return ret
 	}
@@ -96,7 +96,7 @@ func (o *TemplateTeams) UnsetKey() {
 
 // GetTitle returns the Title field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateTeams) GetTitle() string {
-	if o == nil || isNil(o.Title.Get()) {
+	if o == nil || IsNil(o.Title.Get()) {
 		var ret string
 		return ret
 	}
@@ -138,7 +138,7 @@ func (o *TemplateTeams) UnsetTitle() {
 
 // GetText returns the Text field value if set, zero value otherwise.
 func (o *TemplateTeams) GetText() string {
-	if o == nil || isNil(o.Text) {
+	if o == nil || IsNil(o.Text) {
 		var ret string
 		return ret
 	}
@@ -148,7 +148,7 @@ func (o *TemplateTeams) GetText() string {
 // GetTextOk returns a tuple with the Text field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateTeams) GetTextOk() (*string, bool) {
-	if o == nil || isNil(o.Text) {
+	if o == nil || IsNil(o.Text) {
 		return nil, false
 	}
 	return o.Text, true
@@ -156,7 +156,7 @@ func (o *TemplateTeams) GetTextOk() (*string, bool) {
 
 // HasText returns a boolean if a field has been set.
 func (o *TemplateTeams) HasText() bool {
-	if o != nil && !isNil(o.Text) {
+	if o != nil && !IsNil(o.Text) {
 		return true
 	}
 
@@ -170,7 +170,7 @@ func (o *TemplateTeams) SetText(v string) {
 
 // GetMessageJSON returns the MessageJSON field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateTeams) GetMessageJSON() string {
-	if o == nil || isNil(o.MessageJSON.Get()) {
+	if o == nil || IsNil(o.MessageJSON.Get()) {
 		var ret string
 		return ret
 	}
@@ -212,7 +212,7 @@ func (o *TemplateTeams) UnsetMessageJSON() {
 
 // GetIsSubscription returns the IsSubscription field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateTeams) GetIsSubscription() bool {
-	if o == nil || isNil(o.IsSubscription.Get()) {
+	if o == nil || IsNil(o.IsSubscription.Get()) {
 		var ret bool
 		return ret
 	}
@@ -254,7 +254,7 @@ func (o *TemplateTeams) UnsetIsSubscription() {
 
 // GetApprovalId returns the ApprovalId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateTeams) GetApprovalId() string {
-	if o == nil || isNil(o.ApprovalId.Get()) {
+	if o == nil || IsNil(o.ApprovalId.Get()) {
 		var ret string
 		return ret
 	}
@@ -296,7 +296,7 @@ func (o *TemplateTeams) UnsetApprovalId() {
 
 // GetRequestId returns the RequestId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateTeams) GetRequestId() string {
-	if o == nil || isNil(o.RequestId.Get()) {
+	if o == nil || IsNil(o.RequestId.Get()) {
 		var ret string
 		return ret
 	}
@@ -338,7 +338,7 @@ func (o *TemplateTeams) UnsetRequestId() {
 
 // GetRequestedById returns the RequestedById field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateTeams) GetRequestedById() string {
-	if o == nil || isNil(o.RequestedById.Get()) {
+	if o == nil || IsNil(o.RequestedById.Get()) {
 		var ret string
 		return ret
 	}
@@ -380,7 +380,7 @@ func (o *TemplateTeams) UnsetRequestedById() {
 
 // GetNotificationType returns the NotificationType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateTeams) GetNotificationType() string {
-	if o == nil || isNil(o.NotificationType.Get()) {
+	if o == nil || IsNil(o.NotificationType.Get()) {
 		var ret string
 		return ret
 	}
@@ -422,7 +422,7 @@ func (o *TemplateTeams) UnsetNotificationType() {
 
 // GetAutoApprovalData returns the AutoApprovalData field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateTeams) GetAutoApprovalData() TemplateSlackAutoApprovalData {
-	if o == nil || isNil(o.AutoApprovalData.Get()) {
+	if o == nil || IsNil(o.AutoApprovalData.Get()) {
 		var ret TemplateSlackAutoApprovalData
 		return ret
 	}
@@ -464,7 +464,7 @@ func (o *TemplateTeams) UnsetAutoApprovalData() {
 
 // GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateTeams) GetCustomFields() TemplateSlackCustomFields {
-	if o == nil || isNil(o.CustomFields.Get()) {
+	if o == nil || IsNil(o.CustomFields.Get()) {
 		var ret TemplateSlackCustomFields
 		return ret
 	}
@@ -520,7 +520,7 @@ func (o TemplateTeams) ToMap() (map[string]interface{}, error) {
 	if o.Title.IsSet() {
 		toSerialize["title"] = o.Title.Get()
 	}
-	if !isNil(o.Text) {
+	if !IsNil(o.Text) {
 		toSerialize["text"] = o.Text
 	}
 	if o.MessageJSON.IsSet() {
@@ -555,16 +555,20 @@ func (o TemplateTeams) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *TemplateTeams) UnmarshalJSON(bytes []byte) (err error) {
+func (o *TemplateTeams) UnmarshalJSON(data []byte) (err error) {
 	varTemplateTeams := _TemplateTeams{}
 
-	if err = json.Unmarshal(bytes, &varTemplateTeams); err == nil {
+	err = json.Unmarshal(data, &varTemplateTeams)
+
+	if err != nil {
+		return err
+	}
+
 	*o = TemplateTeams(varTemplateTeams)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "key")
 		delete(additionalProperties, "title")
 		delete(additionalProperties, "text")

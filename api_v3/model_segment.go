@@ -62,7 +62,7 @@ func NewSegmentWithDefaults() *Segment {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Segment) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -72,7 +72,7 @@ func (o *Segment) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Segment) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -80,7 +80,7 @@ func (o *Segment) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *Segment) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -94,7 +94,7 @@ func (o *Segment) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Segment) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -104,7 +104,7 @@ func (o *Segment) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Segment) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -112,7 +112,7 @@ func (o *Segment) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *Segment) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -126,7 +126,7 @@ func (o *Segment) SetName(v string) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *Segment) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -136,7 +136,7 @@ func (o *Segment) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Segment) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -144,7 +144,7 @@ func (o *Segment) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *Segment) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -158,7 +158,7 @@ func (o *Segment) SetCreated(v time.Time) {
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *Segment) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		var ret time.Time
 		return ret
 	}
@@ -168,7 +168,7 @@ func (o *Segment) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Segment) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -176,7 +176,7 @@ func (o *Segment) GetModifiedOk() (*time.Time, bool) {
 
 // HasModified returns a boolean if a field has been set.
 func (o *Segment) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -190,7 +190,7 @@ func (o *Segment) SetModified(v time.Time) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Segment) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -200,7 +200,7 @@ func (o *Segment) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Segment) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -208,7 +208,7 @@ func (o *Segment) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Segment) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -222,7 +222,7 @@ func (o *Segment) SetDescription(v string) {
 
 // GetOwner returns the Owner field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Segment) GetOwner() OwnerReferenceSegments {
-	if o == nil || isNil(o.Owner.Get()) {
+	if o == nil || IsNil(o.Owner.Get()) {
 		var ret OwnerReferenceSegments
 		return ret
 	}
@@ -264,7 +264,7 @@ func (o *Segment) UnsetOwner() {
 
 // GetVisibilityCriteria returns the VisibilityCriteria field value if set, zero value otherwise.
 func (o *Segment) GetVisibilityCriteria() SegmentVisibilityCriteria {
-	if o == nil || isNil(o.VisibilityCriteria) {
+	if o == nil || IsNil(o.VisibilityCriteria) {
 		var ret SegmentVisibilityCriteria
 		return ret
 	}
@@ -274,7 +274,7 @@ func (o *Segment) GetVisibilityCriteria() SegmentVisibilityCriteria {
 // GetVisibilityCriteriaOk returns a tuple with the VisibilityCriteria field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Segment) GetVisibilityCriteriaOk() (*SegmentVisibilityCriteria, bool) {
-	if o == nil || isNil(o.VisibilityCriteria) {
+	if o == nil || IsNil(o.VisibilityCriteria) {
 		return nil, false
 	}
 	return o.VisibilityCriteria, true
@@ -282,7 +282,7 @@ func (o *Segment) GetVisibilityCriteriaOk() (*SegmentVisibilityCriteria, bool) {
 
 // HasVisibilityCriteria returns a boolean if a field has been set.
 func (o *Segment) HasVisibilityCriteria() bool {
-	if o != nil && !isNil(o.VisibilityCriteria) {
+	if o != nil && !IsNil(o.VisibilityCriteria) {
 		return true
 	}
 
@@ -296,7 +296,7 @@ func (o *Segment) SetVisibilityCriteria(v SegmentVisibilityCriteria) {
 
 // GetActive returns the Active field value if set, zero value otherwise.
 func (o *Segment) GetActive() bool {
-	if o == nil || isNil(o.Active) {
+	if o == nil || IsNil(o.Active) {
 		var ret bool
 		return ret
 	}
@@ -306,7 +306,7 @@ func (o *Segment) GetActive() bool {
 // GetActiveOk returns a tuple with the Active field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Segment) GetActiveOk() (*bool, bool) {
-	if o == nil || isNil(o.Active) {
+	if o == nil || IsNil(o.Active) {
 		return nil, false
 	}
 	return o.Active, true
@@ -314,7 +314,7 @@ func (o *Segment) GetActiveOk() (*bool, bool) {
 
 // HasActive returns a boolean if a field has been set.
 func (o *Segment) HasActive() bool {
-	if o != nil && !isNil(o.Active) {
+	if o != nil && !IsNil(o.Active) {
 		return true
 	}
 
@@ -336,28 +336,28 @@ func (o Segment) MarshalJSON() ([]byte, error) {
 
 func (o Segment) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Created) {
+	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
-	if !isNil(o.Modified) {
+	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 	if o.Owner.IsSet() {
 		toSerialize["owner"] = o.Owner.Get()
 	}
-	if !isNil(o.VisibilityCriteria) {
+	if !IsNil(o.VisibilityCriteria) {
 		toSerialize["visibilityCriteria"] = o.VisibilityCriteria
 	}
-	if !isNil(o.Active) {
+	if !IsNil(o.Active) {
 		toSerialize["active"] = o.Active
 	}
 
@@ -368,16 +368,20 @@ func (o Segment) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Segment) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Segment) UnmarshalJSON(data []byte) (err error) {
 	varSegment := _Segment{}
 
-	if err = json.Unmarshal(bytes, &varSegment); err == nil {
+	err = json.Unmarshal(data, &varSegment)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Segment(varSegment)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "created")

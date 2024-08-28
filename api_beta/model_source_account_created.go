@@ -67,7 +67,7 @@ func NewSourceAccountCreatedWithDefaults() *SourceAccountCreated {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise.
 func (o *SourceAccountCreated) GetUuid() string {
-	if o == nil || isNil(o.Uuid) {
+	if o == nil || IsNil(o.Uuid) {
 		var ret string
 		return ret
 	}
@@ -77,7 +77,7 @@ func (o *SourceAccountCreated) GetUuid() string {
 // GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SourceAccountCreated) GetUuidOk() (*string, bool) {
-	if o == nil || isNil(o.Uuid) {
+	if o == nil || IsNil(o.Uuid) {
 		return nil, false
 	}
 	return o.Uuid, true
@@ -85,7 +85,7 @@ func (o *SourceAccountCreated) GetUuidOk() (*string, bool) {
 
 // HasUuid returns a boolean if a field has been set.
 func (o *SourceAccountCreated) HasUuid() bool {
-	if o != nil && !isNil(o.Uuid) {
+	if o != nil && !IsNil(o.Uuid) {
 		return true
 	}
 
@@ -275,7 +275,7 @@ func (o SourceAccountCreated) MarshalJSON() ([]byte, error) {
 
 func (o SourceAccountCreated) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Uuid) {
+	if !IsNil(o.Uuid) {
 		toSerialize["uuid"] = o.Uuid
 	}
 	toSerialize["id"] = o.Id
@@ -293,8 +293,8 @@ func (o SourceAccountCreated) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SourceAccountCreated) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *SourceAccountCreated) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -309,7 +309,7 @@ func (o *SourceAccountCreated) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -323,13 +323,17 @@ func (o *SourceAccountCreated) UnmarshalJSON(bytes []byte) (err error) {
 
 	varSourceAccountCreated := _SourceAccountCreated{}
 
-	if err = json.Unmarshal(bytes, &varSourceAccountCreated); err == nil {
+	err = json.Unmarshal(data, &varSourceAccountCreated)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SourceAccountCreated(varSourceAccountCreated)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "uuid")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "nativeIdentifier")

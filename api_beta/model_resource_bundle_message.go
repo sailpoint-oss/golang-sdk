@@ -47,7 +47,7 @@ func NewResourceBundleMessageWithDefaults() *ResourceBundleMessage {
 
 // GetKey returns the Key field value if set, zero value otherwise.
 func (o *ResourceBundleMessage) GetKey() string {
-	if o == nil || isNil(o.Key) {
+	if o == nil || IsNil(o.Key) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *ResourceBundleMessage) GetKey() string {
 // GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceBundleMessage) GetKeyOk() (*string, bool) {
-	if o == nil || isNil(o.Key) {
+	if o == nil || IsNil(o.Key) {
 		return nil, false
 	}
 	return o.Key, true
@@ -65,7 +65,7 @@ func (o *ResourceBundleMessage) GetKeyOk() (*string, bool) {
 
 // HasKey returns a boolean if a field has been set.
 func (o *ResourceBundleMessage) HasKey() bool {
-	if o != nil && !isNil(o.Key) {
+	if o != nil && !IsNil(o.Key) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *ResourceBundleMessage) SetKey(v string) {
 
 // GetFormat returns the Format field value if set, zero value otherwise.
 func (o *ResourceBundleMessage) GetFormat() string {
-	if o == nil || isNil(o.Format) {
+	if o == nil || IsNil(o.Format) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *ResourceBundleMessage) GetFormat() string {
 // GetFormatOk returns a tuple with the Format field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceBundleMessage) GetFormatOk() (*string, bool) {
-	if o == nil || isNil(o.Format) {
+	if o == nil || IsNil(o.Format) {
 		return nil, false
 	}
 	return o.Format, true
@@ -97,7 +97,7 @@ func (o *ResourceBundleMessage) GetFormatOk() (*string, bool) {
 
 // HasFormat returns a boolean if a field has been set.
 func (o *ResourceBundleMessage) HasFormat() bool {
-	if o != nil && !isNil(o.Format) {
+	if o != nil && !IsNil(o.Format) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o ResourceBundleMessage) MarshalJSON() ([]byte, error) {
 
 func (o ResourceBundleMessage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Key) {
+	if !IsNil(o.Key) {
 		toSerialize["key"] = o.Key
 	}
-	if !isNil(o.Format) {
+	if !IsNil(o.Format) {
 		toSerialize["format"] = o.Format
 	}
 
@@ -133,16 +133,20 @@ func (o ResourceBundleMessage) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ResourceBundleMessage) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ResourceBundleMessage) UnmarshalJSON(data []byte) (err error) {
 	varResourceBundleMessage := _ResourceBundleMessage{}
 
-	if err = json.Unmarshal(bytes, &varResourceBundleMessage); err == nil {
+	err = json.Unmarshal(data, &varResourceBundleMessage)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ResourceBundleMessage(varResourceBundleMessage)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "key")
 		delete(additionalProperties, "format")
 		o.AdditionalProperties = additionalProperties

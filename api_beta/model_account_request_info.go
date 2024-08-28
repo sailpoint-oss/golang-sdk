@@ -48,7 +48,7 @@ func NewAccountRequestInfoWithDefaults() *AccountRequestInfo {
 
 // GetRequestedObjectId returns the RequestedObjectId field value if set, zero value otherwise.
 func (o *AccountRequestInfo) GetRequestedObjectId() string {
-	if o == nil || isNil(o.RequestedObjectId) {
+	if o == nil || IsNil(o.RequestedObjectId) {
 		var ret string
 		return ret
 	}
@@ -58,7 +58,7 @@ func (o *AccountRequestInfo) GetRequestedObjectId() string {
 // GetRequestedObjectIdOk returns a tuple with the RequestedObjectId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountRequestInfo) GetRequestedObjectIdOk() (*string, bool) {
-	if o == nil || isNil(o.RequestedObjectId) {
+	if o == nil || IsNil(o.RequestedObjectId) {
 		return nil, false
 	}
 	return o.RequestedObjectId, true
@@ -66,7 +66,7 @@ func (o *AccountRequestInfo) GetRequestedObjectIdOk() (*string, bool) {
 
 // HasRequestedObjectId returns a boolean if a field has been set.
 func (o *AccountRequestInfo) HasRequestedObjectId() bool {
-	if o != nil && !isNil(o.RequestedObjectId) {
+	if o != nil && !IsNil(o.RequestedObjectId) {
 		return true
 	}
 
@@ -80,7 +80,7 @@ func (o *AccountRequestInfo) SetRequestedObjectId(v string) {
 
 // GetRequestedObjectName returns the RequestedObjectName field value if set, zero value otherwise.
 func (o *AccountRequestInfo) GetRequestedObjectName() string {
-	if o == nil || isNil(o.RequestedObjectName) {
+	if o == nil || IsNil(o.RequestedObjectName) {
 		var ret string
 		return ret
 	}
@@ -90,7 +90,7 @@ func (o *AccountRequestInfo) GetRequestedObjectName() string {
 // GetRequestedObjectNameOk returns a tuple with the RequestedObjectName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountRequestInfo) GetRequestedObjectNameOk() (*string, bool) {
-	if o == nil || isNil(o.RequestedObjectName) {
+	if o == nil || IsNil(o.RequestedObjectName) {
 		return nil, false
 	}
 	return o.RequestedObjectName, true
@@ -98,7 +98,7 @@ func (o *AccountRequestInfo) GetRequestedObjectNameOk() (*string, bool) {
 
 // HasRequestedObjectName returns a boolean if a field has been set.
 func (o *AccountRequestInfo) HasRequestedObjectName() bool {
-	if o != nil && !isNil(o.RequestedObjectName) {
+	if o != nil && !IsNil(o.RequestedObjectName) {
 		return true
 	}
 
@@ -112,7 +112,7 @@ func (o *AccountRequestInfo) SetRequestedObjectName(v string) {
 
 // GetRequestedObjectType returns the RequestedObjectType field value if set, zero value otherwise.
 func (o *AccountRequestInfo) GetRequestedObjectType() RequestableObjectType {
-	if o == nil || isNil(o.RequestedObjectType) {
+	if o == nil || IsNil(o.RequestedObjectType) {
 		var ret RequestableObjectType
 		return ret
 	}
@@ -122,7 +122,7 @@ func (o *AccountRequestInfo) GetRequestedObjectType() RequestableObjectType {
 // GetRequestedObjectTypeOk returns a tuple with the RequestedObjectType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountRequestInfo) GetRequestedObjectTypeOk() (*RequestableObjectType, bool) {
-	if o == nil || isNil(o.RequestedObjectType) {
+	if o == nil || IsNil(o.RequestedObjectType) {
 		return nil, false
 	}
 	return o.RequestedObjectType, true
@@ -130,7 +130,7 @@ func (o *AccountRequestInfo) GetRequestedObjectTypeOk() (*RequestableObjectType,
 
 // HasRequestedObjectType returns a boolean if a field has been set.
 func (o *AccountRequestInfo) HasRequestedObjectType() bool {
-	if o != nil && !isNil(o.RequestedObjectType) {
+	if o != nil && !IsNil(o.RequestedObjectType) {
 		return true
 	}
 
@@ -152,13 +152,13 @@ func (o AccountRequestInfo) MarshalJSON() ([]byte, error) {
 
 func (o AccountRequestInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.RequestedObjectId) {
+	if !IsNil(o.RequestedObjectId) {
 		toSerialize["requestedObjectId"] = o.RequestedObjectId
 	}
-	if !isNil(o.RequestedObjectName) {
+	if !IsNil(o.RequestedObjectName) {
 		toSerialize["requestedObjectName"] = o.RequestedObjectName
 	}
-	if !isNil(o.RequestedObjectType) {
+	if !IsNil(o.RequestedObjectType) {
 		toSerialize["requestedObjectType"] = o.RequestedObjectType
 	}
 
@@ -169,16 +169,20 @@ func (o AccountRequestInfo) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccountRequestInfo) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccountRequestInfo) UnmarshalJSON(data []byte) (err error) {
 	varAccountRequestInfo := _AccountRequestInfo{}
 
-	if err = json.Unmarshal(bytes, &varAccountRequestInfo); err == nil {
+	err = json.Unmarshal(data, &varAccountRequestInfo)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccountRequestInfo(varAccountRequestInfo)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "requestedObjectId")
 		delete(additionalProperties, "requestedObjectName")
 		delete(additionalProperties, "requestedObjectType")

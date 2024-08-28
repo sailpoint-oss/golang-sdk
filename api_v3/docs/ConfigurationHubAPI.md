@@ -30,25 +30,25 @@ Creates an object mapping
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    sourceOrg := "source-org" // string | The name of the source org.
-    objectMappingRequest := *openapiclient.NewObjectMappingRequest("IDENTITY", "$.name", "My Governance Group Name", "My New Governance Group Name") // ObjectMappingRequest | The object mapping request body.
+	sourceOrg := "source-org" // string | The name of the source org.
+	objectMappingRequest := *openapiclient.NewObjectMappingRequest("IDENTITY", "$.name", "My Governance Group Name", "My New Governance Group Name") // ObjectMappingRequest | The object mapping request body.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConfigurationHubAPI.CreateObjectMapping(context.Background(), sourceOrg).ObjectMappingRequest(objectMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.CreateObjectMapping``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateObjectMapping`: ObjectMappingResponse
-    fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.CreateObjectMapping`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ConfigurationHubAPI.CreateObjectMapping(context.Background(), sourceOrg).ObjectMappingRequest(objectMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.CreateObjectMapping``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateObjectMapping`: ObjectMappingResponse
+	fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.CreateObjectMapping`: %v\n", resp)
 }
 ```
 
@@ -102,25 +102,25 @@ Bulk creates object mappings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    sourceOrg := "source-org" // string | The name of the source org.
-    objectMappingBulkCreateRequest := *openapiclient.NewObjectMappingBulkCreateRequest([]openapiclient.ObjectMappingRequest{*openapiclient.NewObjectMappingRequest("IDENTITY", "$.name", "My Governance Group Name", "My New Governance Group Name")}) // ObjectMappingBulkCreateRequest | The bulk create object mapping request body.
+	sourceOrg := "source-org" // string | The name of the source org.
+	objectMappingBulkCreateRequest := *openapiclient.NewObjectMappingBulkCreateRequest([]openapiclient.ObjectMappingRequest{*openapiclient.NewObjectMappingRequest("IDENTITY", "$.name", "My Governance Group Name", "My New Governance Group Name")}) // ObjectMappingBulkCreateRequest | The bulk create object mapping request body.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConfigurationHubAPI.CreateObjectMappings(context.Background(), sourceOrg).ObjectMappingBulkCreateRequest(objectMappingBulkCreateRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.CreateObjectMappings``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateObjectMappings`: ObjectMappingBulkCreateResponse
-    fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.CreateObjectMappings`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ConfigurationHubAPI.CreateObjectMappings(context.Background(), sourceOrg).ObjectMappingBulkCreateRequest(objectMappingBulkCreateRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.CreateObjectMappings``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateObjectMappings`: ObjectMappingBulkCreateResponse
+	fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.CreateObjectMappings`: %v\n", resp)
 }
 ```
 
@@ -174,23 +174,23 @@ Deletes an object mapping
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    sourceOrg := "source-org" // string | The name of the source org.
-    objectMappingId := "3d6e0144-963f-4bd6-8d8d-d77b4e507ce4" // string | The id of the object mapping to be deleted.
+	sourceOrg := "source-org" // string | The name of the source org.
+	objectMappingId := "3d6e0144-963f-4bd6-8d8d-d77b4e507ce4" // string | The id of the object mapping to be deleted.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ConfigurationHubAPI.DeleteObjectMapping(context.Background(), sourceOrg, objectMappingId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.DeleteObjectMapping``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ConfigurationHubAPI.DeleteObjectMapping(context.Background(), sourceOrg, objectMappingId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.DeleteObjectMapping``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -245,22 +245,22 @@ Deletes an uploaded backup file
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := "3d0fe04b-57df-4a46-a83b-8f04b0f9d10b" // string | The id of the uploaded backup.
+	id := "3d0fe04b-57df-4a46-a83b-8f04b0f9d10b" // string | The id of the uploaded backup.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ConfigurationHubAPI.DeleteUploadedBackup(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.DeleteUploadedBackup``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ConfigurationHubAPI.DeleteUploadedBackup(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.DeleteUploadedBackup``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -313,24 +313,24 @@ Gets list of object mappings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    sourceOrg := "source-org" // string | The name of the source org.
+	sourceOrg := "source-org" // string | The name of the source org.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConfigurationHubAPI.GetObjectMappings(context.Background(), sourceOrg).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.GetObjectMappings``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetObjectMappings`: []ObjectMappingResponse
-    fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.GetObjectMappings`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ConfigurationHubAPI.GetObjectMappings(context.Background(), sourceOrg).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.GetObjectMappings``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetObjectMappings`: []ObjectMappingResponse
+	fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.GetObjectMappings`: %v\n", resp)
 }
 ```
 
@@ -383,24 +383,24 @@ Get an uploaded backup's information
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := "3d0fe04b-57df-4a46-a83b-8f04b0f9d10b" // string | The id of the uploaded backup.
+	id := "3d0fe04b-57df-4a46-a83b-8f04b0f9d10b" // string | The id of the uploaded backup.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConfigurationHubAPI.GetUploadedBackup(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.GetUploadedBackup``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetUploadedBackup`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.GetUploadedBackup`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ConfigurationHubAPI.GetUploadedBackup(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.GetUploadedBackup``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetUploadedBackup`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.GetUploadedBackup`: %v\n", resp)
 }
 ```
 
@@ -453,24 +453,24 @@ Gets list of Uploaded backups
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    status := "COMPLETE" // string | Filter listed uploaded backups by status of operation (optional)
+	status := "COMPLETE" // string | Filter listed uploaded backups by status of operation (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConfigurationHubAPI.GetUploadedBackups(context.Background()).Status(status).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.GetUploadedBackups``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetUploadedBackups`: []UploadsResponse
-    fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.GetUploadedBackups`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ConfigurationHubAPI.GetUploadedBackups(context.Background()).Status(status).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.GetUploadedBackups``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetUploadedBackups`: []UploadsResponse
+	fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.GetUploadedBackups`: %v\n", resp)
 }
 ```
 
@@ -519,25 +519,25 @@ Uploads a backup file
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    data := os.NewFile(1234, "some_file") // *os.File | JSON file containing the objects to be imported.
-    name := "name_example" // string | Name that will be assigned to the uploaded file.
+	data := os.NewFile(1234, "some_file") // *os.File | JSON file containing the objects to be imported.
+	name := "name_example" // string | Name that will be assigned to the uploaded file.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConfigurationHubAPI.ImportUploadedBackup(context.Background()).Data(data).Name(name).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.ImportUploadedBackup``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ImportUploadedBackup`: UploadsRequest
-    fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.ImportUploadedBackup`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ConfigurationHubAPI.ImportUploadedBackup(context.Background()).Data(data).Name(name).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.ImportUploadedBackup``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ImportUploadedBackup`: UploadsRequest
+	fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.ImportUploadedBackup`: %v\n", resp)
 }
 ```
 
@@ -587,25 +587,25 @@ Bulk updates object mappings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    sourceOrg := "source-org" // string | The name of the source org.
-    objectMappingBulkPatchRequest := *openapiclient.NewObjectMappingBulkPatchRequest(map[string][]openapiclient.JsonPatchOperation{"key": []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")}}) // ObjectMappingBulkPatchRequest | The object mapping request body.
+	sourceOrg := "source-org" // string | The name of the source org.
+	objectMappingBulkPatchRequest := *openapiclient.NewObjectMappingBulkPatchRequest(map[string][]openapiclient.JsonPatchOperation{"key": []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")}}) // ObjectMappingBulkPatchRequest | The object mapping request body.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConfigurationHubAPI.UpdateObjectMappings(context.Background(), sourceOrg).ObjectMappingBulkPatchRequest(objectMappingBulkPatchRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.UpdateObjectMappings``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateObjectMappings`: ObjectMappingBulkPatchResponse
-    fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.UpdateObjectMappings`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ConfigurationHubAPI.UpdateObjectMappings(context.Background(), sourceOrg).ObjectMappingBulkPatchRequest(objectMappingBulkPatchRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.UpdateObjectMappings``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateObjectMappings`: ObjectMappingBulkPatchResponse
+	fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.UpdateObjectMappings`: %v\n", resp)
 }
 ```
 

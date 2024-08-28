@@ -44,7 +44,7 @@ func NewAccessRequestContextWithDefaults() *AccessRequestContext {
 
 // GetContextAttributes returns the ContextAttributes field value if set, zero value otherwise.
 func (o *AccessRequestContext) GetContextAttributes() []ContextAttributeDto {
-	if o == nil || isNil(o.ContextAttributes) {
+	if o == nil || IsNil(o.ContextAttributes) {
 		var ret []ContextAttributeDto
 		return ret
 	}
@@ -54,7 +54,7 @@ func (o *AccessRequestContext) GetContextAttributes() []ContextAttributeDto {
 // GetContextAttributesOk returns a tuple with the ContextAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRequestContext) GetContextAttributesOk() ([]ContextAttributeDto, bool) {
-	if o == nil || isNil(o.ContextAttributes) {
+	if o == nil || IsNil(o.ContextAttributes) {
 		return nil, false
 	}
 	return o.ContextAttributes, true
@@ -62,7 +62,7 @@ func (o *AccessRequestContext) GetContextAttributesOk() ([]ContextAttributeDto, 
 
 // HasContextAttributes returns a boolean if a field has been set.
 func (o *AccessRequestContext) HasContextAttributes() bool {
-	if o != nil && !isNil(o.ContextAttributes) {
+	if o != nil && !IsNil(o.ContextAttributes) {
 		return true
 	}
 
@@ -84,7 +84,7 @@ func (o AccessRequestContext) MarshalJSON() ([]byte, error) {
 
 func (o AccessRequestContext) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ContextAttributes) {
+	if !IsNil(o.ContextAttributes) {
 		toSerialize["contextAttributes"] = o.ContextAttributes
 	}
 
@@ -95,16 +95,20 @@ func (o AccessRequestContext) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccessRequestContext) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccessRequestContext) UnmarshalJSON(data []byte) (err error) {
 	varAccessRequestContext := _AccessRequestContext{}
 
-	if err = json.Unmarshal(bytes, &varAccessRequestContext); err == nil {
+	err = json.Unmarshal(data, &varAccessRequestContext)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessRequestContext(varAccessRequestContext)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "contextAttributes")
 		o.AdditionalProperties = additionalProperties
 	}

@@ -56,7 +56,7 @@ func NewCorrelatedGovernanceEventWithDefaults() *CorrelatedGovernanceEvent {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *CorrelatedGovernanceEvent) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -66,7 +66,7 @@ func (o *CorrelatedGovernanceEvent) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CorrelatedGovernanceEvent) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -74,7 +74,7 @@ func (o *CorrelatedGovernanceEvent) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *CorrelatedGovernanceEvent) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -88,7 +88,7 @@ func (o *CorrelatedGovernanceEvent) SetName(v string) {
 
 // GetDt returns the Dt field value if set, zero value otherwise.
 func (o *CorrelatedGovernanceEvent) GetDt() string {
-	if o == nil || isNil(o.Dt) {
+	if o == nil || IsNil(o.Dt) {
 		var ret string
 		return ret
 	}
@@ -98,7 +98,7 @@ func (o *CorrelatedGovernanceEvent) GetDt() string {
 // GetDtOk returns a tuple with the Dt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CorrelatedGovernanceEvent) GetDtOk() (*string, bool) {
-	if o == nil || isNil(o.Dt) {
+	if o == nil || IsNil(o.Dt) {
 		return nil, false
 	}
 	return o.Dt, true
@@ -106,7 +106,7 @@ func (o *CorrelatedGovernanceEvent) GetDtOk() (*string, bool) {
 
 // HasDt returns a boolean if a field has been set.
 func (o *CorrelatedGovernanceEvent) HasDt() bool {
-	if o != nil && !isNil(o.Dt) {
+	if o != nil && !IsNil(o.Dt) {
 		return true
 	}
 
@@ -120,7 +120,7 @@ func (o *CorrelatedGovernanceEvent) SetDt(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *CorrelatedGovernanceEvent) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -130,7 +130,7 @@ func (o *CorrelatedGovernanceEvent) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CorrelatedGovernanceEvent) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -138,7 +138,7 @@ func (o *CorrelatedGovernanceEvent) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *CorrelatedGovernanceEvent) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -152,7 +152,7 @@ func (o *CorrelatedGovernanceEvent) SetType(v string) {
 
 // GetGovernanceId returns the GovernanceId field value if set, zero value otherwise.
 func (o *CorrelatedGovernanceEvent) GetGovernanceId() string {
-	if o == nil || isNil(o.GovernanceId) {
+	if o == nil || IsNil(o.GovernanceId) {
 		var ret string
 		return ret
 	}
@@ -162,7 +162,7 @@ func (o *CorrelatedGovernanceEvent) GetGovernanceId() string {
 // GetGovernanceIdOk returns a tuple with the GovernanceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CorrelatedGovernanceEvent) GetGovernanceIdOk() (*string, bool) {
-	if o == nil || isNil(o.GovernanceId) {
+	if o == nil || IsNil(o.GovernanceId) {
 		return nil, false
 	}
 	return o.GovernanceId, true
@@ -170,7 +170,7 @@ func (o *CorrelatedGovernanceEvent) GetGovernanceIdOk() (*string, bool) {
 
 // HasGovernanceId returns a boolean if a field has been set.
 func (o *CorrelatedGovernanceEvent) HasGovernanceId() bool {
-	if o != nil && !isNil(o.GovernanceId) {
+	if o != nil && !IsNil(o.GovernanceId) {
 		return true
 	}
 
@@ -184,7 +184,7 @@ func (o *CorrelatedGovernanceEvent) SetGovernanceId(v string) {
 
 // GetOwners returns the Owners field value if set, zero value otherwise.
 func (o *CorrelatedGovernanceEvent) GetOwners() []CertifierResponse {
-	if o == nil || isNil(o.Owners) {
+	if o == nil || IsNil(o.Owners) {
 		var ret []CertifierResponse
 		return ret
 	}
@@ -194,7 +194,7 @@ func (o *CorrelatedGovernanceEvent) GetOwners() []CertifierResponse {
 // GetOwnersOk returns a tuple with the Owners field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CorrelatedGovernanceEvent) GetOwnersOk() ([]CertifierResponse, bool) {
-	if o == nil || isNil(o.Owners) {
+	if o == nil || IsNil(o.Owners) {
 		return nil, false
 	}
 	return o.Owners, true
@@ -202,7 +202,7 @@ func (o *CorrelatedGovernanceEvent) GetOwnersOk() ([]CertifierResponse, bool) {
 
 // HasOwners returns a boolean if a field has been set.
 func (o *CorrelatedGovernanceEvent) HasOwners() bool {
-	if o != nil && !isNil(o.Owners) {
+	if o != nil && !IsNil(o.Owners) {
 		return true
 	}
 
@@ -216,7 +216,7 @@ func (o *CorrelatedGovernanceEvent) SetOwners(v []CertifierResponse) {
 
 // GetReviewers returns the Reviewers field value if set, zero value otherwise.
 func (o *CorrelatedGovernanceEvent) GetReviewers() []CertifierResponse {
-	if o == nil || isNil(o.Reviewers) {
+	if o == nil || IsNil(o.Reviewers) {
 		var ret []CertifierResponse
 		return ret
 	}
@@ -226,7 +226,7 @@ func (o *CorrelatedGovernanceEvent) GetReviewers() []CertifierResponse {
 // GetReviewersOk returns a tuple with the Reviewers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CorrelatedGovernanceEvent) GetReviewersOk() ([]CertifierResponse, bool) {
-	if o == nil || isNil(o.Reviewers) {
+	if o == nil || IsNil(o.Reviewers) {
 		return nil, false
 	}
 	return o.Reviewers, true
@@ -234,7 +234,7 @@ func (o *CorrelatedGovernanceEvent) GetReviewersOk() ([]CertifierResponse, bool)
 
 // HasReviewers returns a boolean if a field has been set.
 func (o *CorrelatedGovernanceEvent) HasReviewers() bool {
-	if o != nil && !isNil(o.Reviewers) {
+	if o != nil && !IsNil(o.Reviewers) {
 		return true
 	}
 
@@ -248,7 +248,7 @@ func (o *CorrelatedGovernanceEvent) SetReviewers(v []CertifierResponse) {
 
 // GetDecisionMaker returns the DecisionMaker field value if set, zero value otherwise.
 func (o *CorrelatedGovernanceEvent) GetDecisionMaker() CertifierResponse {
-	if o == nil || isNil(o.DecisionMaker) {
+	if o == nil || IsNil(o.DecisionMaker) {
 		var ret CertifierResponse
 		return ret
 	}
@@ -258,7 +258,7 @@ func (o *CorrelatedGovernanceEvent) GetDecisionMaker() CertifierResponse {
 // GetDecisionMakerOk returns a tuple with the DecisionMaker field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CorrelatedGovernanceEvent) GetDecisionMakerOk() (*CertifierResponse, bool) {
-	if o == nil || isNil(o.DecisionMaker) {
+	if o == nil || IsNil(o.DecisionMaker) {
 		return nil, false
 	}
 	return o.DecisionMaker, true
@@ -266,7 +266,7 @@ func (o *CorrelatedGovernanceEvent) GetDecisionMakerOk() (*CertifierResponse, bo
 
 // HasDecisionMaker returns a boolean if a field has been set.
 func (o *CorrelatedGovernanceEvent) HasDecisionMaker() bool {
-	if o != nil && !isNil(o.DecisionMaker) {
+	if o != nil && !IsNil(o.DecisionMaker) {
 		return true
 	}
 
@@ -288,25 +288,25 @@ func (o CorrelatedGovernanceEvent) MarshalJSON() ([]byte, error) {
 
 func (o CorrelatedGovernanceEvent) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Dt) {
+	if !IsNil(o.Dt) {
 		toSerialize["dt"] = o.Dt
 	}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.GovernanceId) {
+	if !IsNil(o.GovernanceId) {
 		toSerialize["governanceId"] = o.GovernanceId
 	}
-	if !isNil(o.Owners) {
+	if !IsNil(o.Owners) {
 		toSerialize["owners"] = o.Owners
 	}
-	if !isNil(o.Reviewers) {
+	if !IsNil(o.Reviewers) {
 		toSerialize["reviewers"] = o.Reviewers
 	}
-	if !isNil(o.DecisionMaker) {
+	if !IsNil(o.DecisionMaker) {
 		toSerialize["decisionMaker"] = o.DecisionMaker
 	}
 
@@ -317,16 +317,20 @@ func (o CorrelatedGovernanceEvent) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CorrelatedGovernanceEvent) UnmarshalJSON(bytes []byte) (err error) {
+func (o *CorrelatedGovernanceEvent) UnmarshalJSON(data []byte) (err error) {
 	varCorrelatedGovernanceEvent := _CorrelatedGovernanceEvent{}
 
-	if err = json.Unmarshal(bytes, &varCorrelatedGovernanceEvent); err == nil {
+	err = json.Unmarshal(data, &varCorrelatedGovernanceEvent)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CorrelatedGovernanceEvent(varCorrelatedGovernanceEvent)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "dt")
 		delete(additionalProperties, "type")

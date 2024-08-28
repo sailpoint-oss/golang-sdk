@@ -45,7 +45,7 @@ func NewSetLifecycleState200ResponseWithDefaults() *SetLifecycleState200Response
 
 // GetAccountActivityId returns the AccountActivityId field value if set, zero value otherwise.
 func (o *SetLifecycleState200Response) GetAccountActivityId() string {
-	if o == nil || isNil(o.AccountActivityId) {
+	if o == nil || IsNil(o.AccountActivityId) {
 		var ret string
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *SetLifecycleState200Response) GetAccountActivityId() string {
 // GetAccountActivityIdOk returns a tuple with the AccountActivityId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetLifecycleState200Response) GetAccountActivityIdOk() (*string, bool) {
-	if o == nil || isNil(o.AccountActivityId) {
+	if o == nil || IsNil(o.AccountActivityId) {
 		return nil, false
 	}
 	return o.AccountActivityId, true
@@ -63,7 +63,7 @@ func (o *SetLifecycleState200Response) GetAccountActivityIdOk() (*string, bool) 
 
 // HasAccountActivityId returns a boolean if a field has been set.
 func (o *SetLifecycleState200Response) HasAccountActivityId() bool {
-	if o != nil && !isNil(o.AccountActivityId) {
+	if o != nil && !IsNil(o.AccountActivityId) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o SetLifecycleState200Response) MarshalJSON() ([]byte, error) {
 
 func (o SetLifecycleState200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AccountActivityId) {
+	if !IsNil(o.AccountActivityId) {
 		toSerialize["accountActivityId"] = o.AccountActivityId
 	}
 
@@ -96,16 +96,20 @@ func (o SetLifecycleState200Response) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SetLifecycleState200Response) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SetLifecycleState200Response) UnmarshalJSON(data []byte) (err error) {
 	varSetLifecycleState200Response := _SetLifecycleState200Response{}
 
-	if err = json.Unmarshal(bytes, &varSetLifecycleState200Response); err == nil {
+	err = json.Unmarshal(data, &varSetLifecycleState200Response)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SetLifecycleState200Response(varSetLifecycleState200Response)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "accountActivityId")
 		o.AdditionalProperties = additionalProperties
 	}

@@ -73,7 +73,7 @@ func (o *SedAssignee) SetType(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *SedAssignee) GetValue() string {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -83,7 +83,7 @@ func (o *SedAssignee) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SedAssignee) GetValueOk() (*string, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -91,7 +91,7 @@ func (o *SedAssignee) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *SedAssignee) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -114,7 +114,7 @@ func (o SedAssignee) MarshalJSON() ([]byte, error) {
 func (o SedAssignee) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
-	if !isNil(o.Value) {
+	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
 
@@ -125,8 +125,8 @@ func (o SedAssignee) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SedAssignee) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *SedAssignee) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -135,7 +135,7 @@ func (o *SedAssignee) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -149,13 +149,17 @@ func (o *SedAssignee) UnmarshalJSON(bytes []byte) (err error) {
 
 	varSedAssignee := _SedAssignee{}
 
-	if err = json.Unmarshal(bytes, &varSedAssignee); err == nil {
+	err = json.Unmarshal(data, &varSedAssignee)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SedAssignee(varSedAssignee)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "value")
 		o.AdditionalProperties = additionalProperties

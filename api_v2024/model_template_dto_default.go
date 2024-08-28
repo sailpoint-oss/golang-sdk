@@ -69,7 +69,7 @@ func NewTemplateDtoDefaultWithDefaults() *TemplateDtoDefault {
 
 // GetKey returns the Key field value if set, zero value otherwise.
 func (o *TemplateDtoDefault) GetKey() string {
-	if o == nil || isNil(o.Key) {
+	if o == nil || IsNil(o.Key) {
 		var ret string
 		return ret
 	}
@@ -79,7 +79,7 @@ func (o *TemplateDtoDefault) GetKey() string {
 // GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateDtoDefault) GetKeyOk() (*string, bool) {
-	if o == nil || isNil(o.Key) {
+	if o == nil || IsNil(o.Key) {
 		return nil, false
 	}
 	return o.Key, true
@@ -87,7 +87,7 @@ func (o *TemplateDtoDefault) GetKeyOk() (*string, bool) {
 
 // HasKey returns a boolean if a field has been set.
 func (o *TemplateDtoDefault) HasKey() bool {
-	if o != nil && !isNil(o.Key) {
+	if o != nil && !IsNil(o.Key) {
 		return true
 	}
 
@@ -101,7 +101,7 @@ func (o *TemplateDtoDefault) SetKey(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *TemplateDtoDefault) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -111,7 +111,7 @@ func (o *TemplateDtoDefault) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateDtoDefault) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -119,7 +119,7 @@ func (o *TemplateDtoDefault) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *TemplateDtoDefault) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -133,7 +133,7 @@ func (o *TemplateDtoDefault) SetName(v string) {
 
 // GetMedium returns the Medium field value if set, zero value otherwise.
 func (o *TemplateDtoDefault) GetMedium() string {
-	if o == nil || isNil(o.Medium) {
+	if o == nil || IsNil(o.Medium) {
 		var ret string
 		return ret
 	}
@@ -143,7 +143,7 @@ func (o *TemplateDtoDefault) GetMedium() string {
 // GetMediumOk returns a tuple with the Medium field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateDtoDefault) GetMediumOk() (*string, bool) {
-	if o == nil || isNil(o.Medium) {
+	if o == nil || IsNil(o.Medium) {
 		return nil, false
 	}
 	return o.Medium, true
@@ -151,7 +151,7 @@ func (o *TemplateDtoDefault) GetMediumOk() (*string, bool) {
 
 // HasMedium returns a boolean if a field has been set.
 func (o *TemplateDtoDefault) HasMedium() bool {
-	if o != nil && !isNil(o.Medium) {
+	if o != nil && !IsNil(o.Medium) {
 		return true
 	}
 
@@ -165,7 +165,7 @@ func (o *TemplateDtoDefault) SetMedium(v string) {
 
 // GetLocale returns the Locale field value if set, zero value otherwise.
 func (o *TemplateDtoDefault) GetLocale() string {
-	if o == nil || isNil(o.Locale) {
+	if o == nil || IsNil(o.Locale) {
 		var ret string
 		return ret
 	}
@@ -175,7 +175,7 @@ func (o *TemplateDtoDefault) GetLocale() string {
 // GetLocaleOk returns a tuple with the Locale field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateDtoDefault) GetLocaleOk() (*string, bool) {
-	if o == nil || isNil(o.Locale) {
+	if o == nil || IsNil(o.Locale) {
 		return nil, false
 	}
 	return o.Locale, true
@@ -183,7 +183,7 @@ func (o *TemplateDtoDefault) GetLocaleOk() (*string, bool) {
 
 // HasLocale returns a boolean if a field has been set.
 func (o *TemplateDtoDefault) HasLocale() bool {
-	if o != nil && !isNil(o.Locale) {
+	if o != nil && !IsNil(o.Locale) {
 		return true
 	}
 
@@ -197,7 +197,7 @@ func (o *TemplateDtoDefault) SetLocale(v string) {
 
 // GetSubject returns the Subject field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateDtoDefault) GetSubject() string {
-	if o == nil || isNil(o.Subject.Get()) {
+	if o == nil || IsNil(o.Subject.Get()) {
 		var ret string
 		return ret
 	}
@@ -240,7 +240,7 @@ func (o *TemplateDtoDefault) UnsetSubject() {
 // GetHeader returns the Header field value if set, zero value otherwise (both if not set or set to explicit null).
 // Deprecated
 func (o *TemplateDtoDefault) GetHeader() string {
-	if o == nil || isNil(o.Header.Get()) {
+	if o == nil || IsNil(o.Header.Get()) {
 		var ret string
 		return ret
 	}
@@ -284,7 +284,7 @@ func (o *TemplateDtoDefault) UnsetHeader() {
 
 // GetBody returns the Body field value if set, zero value otherwise.
 func (o *TemplateDtoDefault) GetBody() string {
-	if o == nil || isNil(o.Body) {
+	if o == nil || IsNil(o.Body) {
 		var ret string
 		return ret
 	}
@@ -294,7 +294,7 @@ func (o *TemplateDtoDefault) GetBody() string {
 // GetBodyOk returns a tuple with the Body field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateDtoDefault) GetBodyOk() (*string, bool) {
-	if o == nil || isNil(o.Body) {
+	if o == nil || IsNil(o.Body) {
 		return nil, false
 	}
 	return o.Body, true
@@ -302,7 +302,7 @@ func (o *TemplateDtoDefault) GetBodyOk() (*string, bool) {
 
 // HasBody returns a boolean if a field has been set.
 func (o *TemplateDtoDefault) HasBody() bool {
-	if o != nil && !isNil(o.Body) {
+	if o != nil && !IsNil(o.Body) {
 		return true
 	}
 
@@ -317,7 +317,7 @@ func (o *TemplateDtoDefault) SetBody(v string) {
 // GetFooter returns the Footer field value if set, zero value otherwise (both if not set or set to explicit null).
 // Deprecated
 func (o *TemplateDtoDefault) GetFooter() string {
-	if o == nil || isNil(o.Footer.Get()) {
+	if o == nil || IsNil(o.Footer.Get()) {
 		var ret string
 		return ret
 	}
@@ -361,7 +361,7 @@ func (o *TemplateDtoDefault) UnsetFooter() {
 
 // GetFrom returns the From field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateDtoDefault) GetFrom() string {
-	if o == nil || isNil(o.From.Get()) {
+	if o == nil || IsNil(o.From.Get()) {
 		var ret string
 		return ret
 	}
@@ -403,7 +403,7 @@ func (o *TemplateDtoDefault) UnsetFrom() {
 
 // GetReplyTo returns the ReplyTo field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateDtoDefault) GetReplyTo() string {
-	if o == nil || isNil(o.ReplyTo.Get()) {
+	if o == nil || IsNil(o.ReplyTo.Get()) {
 		var ret string
 		return ret
 	}
@@ -445,7 +445,7 @@ func (o *TemplateDtoDefault) UnsetReplyTo() {
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateDtoDefault) GetDescription() string {
-	if o == nil || isNil(o.Description.Get()) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
@@ -487,7 +487,7 @@ func (o *TemplateDtoDefault) UnsetDescription() {
 
 // GetSlackTemplate returns the SlackTemplate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateDtoDefault) GetSlackTemplate() TemplateSlack {
-	if o == nil || isNil(o.SlackTemplate.Get()) {
+	if o == nil || IsNil(o.SlackTemplate.Get()) {
 		var ret TemplateSlack
 		return ret
 	}
@@ -529,7 +529,7 @@ func (o *TemplateDtoDefault) UnsetSlackTemplate() {
 
 // GetTeamsTemplate returns the TeamsTemplate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateDtoDefault) GetTeamsTemplate() TemplateTeams {
-	if o == nil || isNil(o.TeamsTemplate.Get()) {
+	if o == nil || IsNil(o.TeamsTemplate.Get()) {
 		var ret TemplateTeams
 		return ret
 	}
@@ -579,16 +579,16 @@ func (o TemplateDtoDefault) MarshalJSON() ([]byte, error) {
 
 func (o TemplateDtoDefault) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Key) {
+	if !IsNil(o.Key) {
 		toSerialize["key"] = o.Key
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Medium) {
+	if !IsNil(o.Medium) {
 		toSerialize["medium"] = o.Medium
 	}
-	if !isNil(o.Locale) {
+	if !IsNil(o.Locale) {
 		toSerialize["locale"] = o.Locale
 	}
 	if o.Subject.IsSet() {
@@ -597,7 +597,7 @@ func (o TemplateDtoDefault) ToMap() (map[string]interface{}, error) {
 	if o.Header.IsSet() {
 		toSerialize["header"] = o.Header.Get()
 	}
-	if !isNil(o.Body) {
+	if !IsNil(o.Body) {
 		toSerialize["body"] = o.Body
 	}
 	if o.Footer.IsSet() {
@@ -626,16 +626,20 @@ func (o TemplateDtoDefault) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *TemplateDtoDefault) UnmarshalJSON(bytes []byte) (err error) {
+func (o *TemplateDtoDefault) UnmarshalJSON(data []byte) (err error) {
 	varTemplateDtoDefault := _TemplateDtoDefault{}
 
-	if err = json.Unmarshal(bytes, &varTemplateDtoDefault); err == nil {
+	err = json.Unmarshal(data, &varTemplateDtoDefault)
+
+	if err != nil {
+		return err
+	}
+
 	*o = TemplateDtoDefault(varTemplateDtoDefault)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "key")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "medium")

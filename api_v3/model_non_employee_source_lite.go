@@ -51,7 +51,7 @@ func NewNonEmployeeSourceLiteWithDefaults() *NonEmployeeSourceLite {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *NonEmployeeSourceLite) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -61,7 +61,7 @@ func (o *NonEmployeeSourceLite) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSourceLite) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -69,7 +69,7 @@ func (o *NonEmployeeSourceLite) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *NonEmployeeSourceLite) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -83,7 +83,7 @@ func (o *NonEmployeeSourceLite) SetId(v string) {
 
 // GetSourceId returns the SourceId field value if set, zero value otherwise.
 func (o *NonEmployeeSourceLite) GetSourceId() string {
-	if o == nil || isNil(o.SourceId) {
+	if o == nil || IsNil(o.SourceId) {
 		var ret string
 		return ret
 	}
@@ -93,7 +93,7 @@ func (o *NonEmployeeSourceLite) GetSourceId() string {
 // GetSourceIdOk returns a tuple with the SourceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSourceLite) GetSourceIdOk() (*string, bool) {
-	if o == nil || isNil(o.SourceId) {
+	if o == nil || IsNil(o.SourceId) {
 		return nil, false
 	}
 	return o.SourceId, true
@@ -101,7 +101,7 @@ func (o *NonEmployeeSourceLite) GetSourceIdOk() (*string, bool) {
 
 // HasSourceId returns a boolean if a field has been set.
 func (o *NonEmployeeSourceLite) HasSourceId() bool {
-	if o != nil && !isNil(o.SourceId) {
+	if o != nil && !IsNil(o.SourceId) {
 		return true
 	}
 
@@ -115,7 +115,7 @@ func (o *NonEmployeeSourceLite) SetSourceId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *NonEmployeeSourceLite) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -125,7 +125,7 @@ func (o *NonEmployeeSourceLite) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSourceLite) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -133,7 +133,7 @@ func (o *NonEmployeeSourceLite) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *NonEmployeeSourceLite) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -147,7 +147,7 @@ func (o *NonEmployeeSourceLite) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *NonEmployeeSourceLite) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -157,7 +157,7 @@ func (o *NonEmployeeSourceLite) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeSourceLite) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -165,7 +165,7 @@ func (o *NonEmployeeSourceLite) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *NonEmployeeSourceLite) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -187,16 +187,16 @@ func (o NonEmployeeSourceLite) MarshalJSON() ([]byte, error) {
 
 func (o NonEmployeeSourceLite) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.SourceId) {
+	if !IsNil(o.SourceId) {
 		toSerialize["sourceId"] = o.SourceId
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 
@@ -207,16 +207,20 @@ func (o NonEmployeeSourceLite) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *NonEmployeeSourceLite) UnmarshalJSON(bytes []byte) (err error) {
+func (o *NonEmployeeSourceLite) UnmarshalJSON(data []byte) (err error) {
 	varNonEmployeeSourceLite := _NonEmployeeSourceLite{}
 
-	if err = json.Unmarshal(bytes, &varNonEmployeeSourceLite); err == nil {
+	err = json.Unmarshal(data, &varNonEmployeeSourceLite)
+
+	if err != nil {
+		return err
+	}
+
 	*o = NonEmployeeSourceLite(varNonEmployeeSourceLite)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "sourceId")
 		delete(additionalProperties, "name")

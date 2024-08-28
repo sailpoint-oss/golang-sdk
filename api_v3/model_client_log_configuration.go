@@ -56,7 +56,7 @@ func NewClientLogConfigurationWithDefaults() *ClientLogConfiguration {
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
 func (o *ClientLogConfiguration) GetClientId() string {
-	if o == nil || isNil(o.ClientId) {
+	if o == nil || IsNil(o.ClientId) {
 		var ret string
 		return ret
 	}
@@ -66,7 +66,7 @@ func (o *ClientLogConfiguration) GetClientId() string {
 // GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientLogConfiguration) GetClientIdOk() (*string, bool) {
-	if o == nil || isNil(o.ClientId) {
+	if o == nil || IsNil(o.ClientId) {
 		return nil, false
 	}
 	return o.ClientId, true
@@ -74,7 +74,7 @@ func (o *ClientLogConfiguration) GetClientIdOk() (*string, bool) {
 
 // HasClientId returns a boolean if a field has been set.
 func (o *ClientLogConfiguration) HasClientId() bool {
-	if o != nil && !isNil(o.ClientId) {
+	if o != nil && !IsNil(o.ClientId) {
 		return true
 	}
 
@@ -112,7 +112,7 @@ func (o *ClientLogConfiguration) SetDurationMinutes(v int32) {
 
 // GetExpiration returns the Expiration field value if set, zero value otherwise.
 func (o *ClientLogConfiguration) GetExpiration() time.Time {
-	if o == nil || isNil(o.Expiration) {
+	if o == nil || IsNil(o.Expiration) {
 		var ret time.Time
 		return ret
 	}
@@ -122,7 +122,7 @@ func (o *ClientLogConfiguration) GetExpiration() time.Time {
 // GetExpirationOk returns a tuple with the Expiration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientLogConfiguration) GetExpirationOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Expiration) {
+	if o == nil || IsNil(o.Expiration) {
 		return nil, false
 	}
 	return o.Expiration, true
@@ -130,7 +130,7 @@ func (o *ClientLogConfiguration) GetExpirationOk() (*time.Time, bool) {
 
 // HasExpiration returns a boolean if a field has been set.
 func (o *ClientLogConfiguration) HasExpiration() bool {
-	if o != nil && !isNil(o.Expiration) {
+	if o != nil && !IsNil(o.Expiration) {
 		return true
 	}
 
@@ -168,7 +168,7 @@ func (o *ClientLogConfiguration) SetRootLevel(v StandardLevel) {
 
 // GetLogLevels returns the LogLevels field value if set, zero value otherwise.
 func (o *ClientLogConfiguration) GetLogLevels() map[string]StandardLevel {
-	if o == nil || isNil(o.LogLevels) {
+	if o == nil || IsNil(o.LogLevels) {
 		var ret map[string]StandardLevel
 		return ret
 	}
@@ -178,7 +178,7 @@ func (o *ClientLogConfiguration) GetLogLevels() map[string]StandardLevel {
 // GetLogLevelsOk returns a tuple with the LogLevels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientLogConfiguration) GetLogLevelsOk() (*map[string]StandardLevel, bool) {
-	if o == nil || isNil(o.LogLevels) {
+	if o == nil || IsNil(o.LogLevels) {
 		return nil, false
 	}
 	return o.LogLevels, true
@@ -186,7 +186,7 @@ func (o *ClientLogConfiguration) GetLogLevelsOk() (*map[string]StandardLevel, bo
 
 // HasLogLevels returns a boolean if a field has been set.
 func (o *ClientLogConfiguration) HasLogLevels() bool {
-	if o != nil && !isNil(o.LogLevels) {
+	if o != nil && !IsNil(o.LogLevels) {
 		return true
 	}
 
@@ -208,15 +208,15 @@ func (o ClientLogConfiguration) MarshalJSON() ([]byte, error) {
 
 func (o ClientLogConfiguration) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ClientId) {
+	if !IsNil(o.ClientId) {
 		toSerialize["clientId"] = o.ClientId
 	}
 	toSerialize["durationMinutes"] = o.DurationMinutes
-	if !isNil(o.Expiration) {
+	if !IsNil(o.Expiration) {
 		toSerialize["expiration"] = o.Expiration
 	}
 	toSerialize["rootLevel"] = o.RootLevel
-	if !isNil(o.LogLevels) {
+	if !IsNil(o.LogLevels) {
 		toSerialize["logLevels"] = o.LogLevels
 	}
 
@@ -227,8 +227,8 @@ func (o ClientLogConfiguration) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ClientLogConfiguration) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *ClientLogConfiguration) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -238,7 +238,7 @@ func (o *ClientLogConfiguration) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -252,13 +252,17 @@ func (o *ClientLogConfiguration) UnmarshalJSON(bytes []byte) (err error) {
 
 	varClientLogConfiguration := _ClientLogConfiguration{}
 
-	if err = json.Unmarshal(bytes, &varClientLogConfiguration); err == nil {
+	err = json.Unmarshal(data, &varClientLogConfiguration)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ClientLogConfiguration(varClientLogConfiguration)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "clientId")
 		delete(additionalProperties, "durationMinutes")
 		delete(additionalProperties, "expiration")

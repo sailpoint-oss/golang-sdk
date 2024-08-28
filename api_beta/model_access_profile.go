@@ -79,7 +79,7 @@ func NewAccessProfileWithDefaults() *AccessProfile {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *AccessProfile) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *AccessProfile) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessProfile) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -97,7 +97,7 @@ func (o *AccessProfile) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *AccessProfile) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -135,7 +135,7 @@ func (o *AccessProfile) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessProfile) GetDescription() string {
-	if o == nil || isNil(o.Description.Get()) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
@@ -177,7 +177,7 @@ func (o *AccessProfile) UnsetDescription() {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *AccessProfile) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -187,7 +187,7 @@ func (o *AccessProfile) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessProfile) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -195,7 +195,7 @@ func (o *AccessProfile) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *AccessProfile) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -209,7 +209,7 @@ func (o *AccessProfile) SetCreated(v time.Time) {
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *AccessProfile) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		var ret time.Time
 		return ret
 	}
@@ -219,7 +219,7 @@ func (o *AccessProfile) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessProfile) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -227,7 +227,7 @@ func (o *AccessProfile) GetModifiedOk() (*time.Time, bool) {
 
 // HasModified returns a boolean if a field has been set.
 func (o *AccessProfile) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -241,7 +241,7 @@ func (o *AccessProfile) SetModified(v time.Time) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *AccessProfile) GetEnabled() bool {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -251,7 +251,7 @@ func (o *AccessProfile) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessProfile) GetEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -259,7 +259,7 @@ func (o *AccessProfile) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *AccessProfile) HasEnabled() bool {
-	if o != nil && !isNil(o.Enabled) {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -332,7 +332,7 @@ func (o *AccessProfile) GetEntitlements() []EntitlementRef {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessProfile) GetEntitlementsOk() ([]EntitlementRef, bool) {
-	if o == nil || isNil(o.Entitlements) {
+	if o == nil || IsNil(o.Entitlements) {
 		return nil, false
 	}
 	return o.Entitlements, true
@@ -340,7 +340,7 @@ func (o *AccessProfile) GetEntitlementsOk() ([]EntitlementRef, bool) {
 
 // HasEntitlements returns a boolean if a field has been set.
 func (o *AccessProfile) HasEntitlements() bool {
-	if o != nil && isNil(o.Entitlements) {
+	if o != nil && !IsNil(o.Entitlements) {
 		return true
 	}
 
@@ -354,7 +354,7 @@ func (o *AccessProfile) SetEntitlements(v []EntitlementRef) {
 
 // GetRequestable returns the Requestable field value if set, zero value otherwise.
 func (o *AccessProfile) GetRequestable() bool {
-	if o == nil || isNil(o.Requestable) {
+	if o == nil || IsNil(o.Requestable) {
 		var ret bool
 		return ret
 	}
@@ -364,7 +364,7 @@ func (o *AccessProfile) GetRequestable() bool {
 // GetRequestableOk returns a tuple with the Requestable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessProfile) GetRequestableOk() (*bool, bool) {
-	if o == nil || isNil(o.Requestable) {
+	if o == nil || IsNil(o.Requestable) {
 		return nil, false
 	}
 	return o.Requestable, true
@@ -372,7 +372,7 @@ func (o *AccessProfile) GetRequestableOk() (*bool, bool) {
 
 // HasRequestable returns a boolean if a field has been set.
 func (o *AccessProfile) HasRequestable() bool {
-	if o != nil && !isNil(o.Requestable) {
+	if o != nil && !IsNil(o.Requestable) {
 		return true
 	}
 
@@ -386,7 +386,7 @@ func (o *AccessProfile) SetRequestable(v bool) {
 
 // GetAccessRequestConfig returns the AccessRequestConfig field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessProfile) GetAccessRequestConfig() Requestability {
-	if o == nil || isNil(o.AccessRequestConfig.Get()) {
+	if o == nil || IsNil(o.AccessRequestConfig.Get()) {
 		var ret Requestability
 		return ret
 	}
@@ -428,7 +428,7 @@ func (o *AccessProfile) UnsetAccessRequestConfig() {
 
 // GetRevocationRequestConfig returns the RevocationRequestConfig field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessProfile) GetRevocationRequestConfig() Revocability {
-	if o == nil || isNil(o.RevocationRequestConfig.Get()) {
+	if o == nil || IsNil(o.RevocationRequestConfig.Get()) {
 		var ret Revocability
 		return ret
 	}
@@ -481,7 +481,7 @@ func (o *AccessProfile) GetSegments() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessProfile) GetSegmentsOk() ([]string, bool) {
-	if o == nil || isNil(o.Segments) {
+	if o == nil || IsNil(o.Segments) {
 		return nil, false
 	}
 	return o.Segments, true
@@ -489,7 +489,7 @@ func (o *AccessProfile) GetSegmentsOk() ([]string, bool) {
 
 // HasSegments returns a boolean if a field has been set.
 func (o *AccessProfile) HasSegments() bool {
-	if o != nil && isNil(o.Segments) {
+	if o != nil && !IsNil(o.Segments) {
 		return true
 	}
 
@@ -503,7 +503,7 @@ func (o *AccessProfile) SetSegments(v []string) {
 
 // GetProvisioningCriteria returns the ProvisioningCriteria field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessProfile) GetProvisioningCriteria() ProvisioningCriteriaLevel1 {
-	if o == nil || isNil(o.ProvisioningCriteria.Get()) {
+	if o == nil || IsNil(o.ProvisioningCriteria.Get()) {
 		var ret ProvisioningCriteriaLevel1
 		return ret
 	}
@@ -553,14 +553,20 @@ func (o AccessProfile) MarshalJSON() ([]byte, error) {
 
 func (o AccessProfile) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["name"] = o.Name
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
-	// skip: created is readOnly
-	// skip: modified is readOnly
-	if !isNil(o.Enabled) {
+	if !IsNil(o.Created) {
+		toSerialize["created"] = o.Created
+	}
+	if !IsNil(o.Modified) {
+		toSerialize["modified"] = o.Modified
+	}
+	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
 	toSerialize["owner"] = o.Owner
@@ -568,7 +574,7 @@ func (o AccessProfile) ToMap() (map[string]interface{}, error) {
 	if o.Entitlements != nil {
 		toSerialize["entitlements"] = o.Entitlements
 	}
-	if !isNil(o.Requestable) {
+	if !IsNil(o.Requestable) {
 		toSerialize["requestable"] = o.Requestable
 	}
 	if o.AccessRequestConfig.IsSet() {
@@ -591,8 +597,8 @@ func (o AccessProfile) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccessProfile) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *AccessProfile) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -603,7 +609,7 @@ func (o *AccessProfile) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -617,13 +623,17 @@ func (o *AccessProfile) UnmarshalJSON(bytes []byte) (err error) {
 
 	varAccessProfile := _AccessProfile{}
 
-	if err = json.Unmarshal(bytes, &varAccessProfile); err == nil {
+	err = json.Unmarshal(data, &varAccessProfile)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessProfile(varAccessProfile)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")

@@ -19,14 +19,14 @@ import (
 
 func Test_api_v3_MFAControllerAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test MFAControllerAPIService CreateSendToken", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.MFAControllerAPI.CreateSendToken(context.Background()).Execute()
+		resp, httpRes, err := apiClient.MFAControllerAPI.CreateSendToken(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_v3_MFAControllerAPIService(t *testing.T) {
 
 		var method string
 
-		resp, httpRes, err := apiClient.API_V3.MFAControllerAPI.PingVerificationStatus(context.Background(), method).Execute()
+		resp, httpRes, err := apiClient.MFAControllerAPI.PingVerificationStatus(context.Background(), method).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -52,7 +52,7 @@ func Test_api_v3_MFAControllerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.MFAControllerAPI.SendDuoVerifyRequest(context.Background()).Execute()
+		resp, httpRes, err := apiClient.MFAControllerAPI.SendDuoVerifyRequest(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -64,7 +64,7 @@ func Test_api_v3_MFAControllerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.MFAControllerAPI.SendKbaAnswers(context.Background()).Execute()
+		resp, httpRes, err := apiClient.MFAControllerAPI.SendKbaAnswers(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -76,7 +76,7 @@ func Test_api_v3_MFAControllerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.MFAControllerAPI.SendOktaVerifyRequest(context.Background()).Execute()
+		resp, httpRes, err := apiClient.MFAControllerAPI.SendOktaVerifyRequest(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -88,7 +88,7 @@ func Test_api_v3_MFAControllerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.MFAControllerAPI.SendTokenAuthRequest(context.Background()).Execute()
+		resp, httpRes, err := apiClient.MFAControllerAPI.SendTokenAuthRequest(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

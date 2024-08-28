@@ -52,7 +52,7 @@ func NewFormElementWithDefaults() *FormElement {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *FormElement) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -62,7 +62,7 @@ func (o *FormElement) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormElement) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -70,7 +70,7 @@ func (o *FormElement) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *FormElement) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -84,7 +84,7 @@ func (o *FormElement) SetId(v string) {
 
 // GetElementType returns the ElementType field value if set, zero value otherwise.
 func (o *FormElement) GetElementType() string {
-	if o == nil || isNil(o.ElementType) {
+	if o == nil || IsNil(o.ElementType) {
 		var ret string
 		return ret
 	}
@@ -94,7 +94,7 @@ func (o *FormElement) GetElementType() string {
 // GetElementTypeOk returns a tuple with the ElementType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormElement) GetElementTypeOk() (*string, bool) {
-	if o == nil || isNil(o.ElementType) {
+	if o == nil || IsNil(o.ElementType) {
 		return nil, false
 	}
 	return o.ElementType, true
@@ -102,7 +102,7 @@ func (o *FormElement) GetElementTypeOk() (*string, bool) {
 
 // HasElementType returns a boolean if a field has been set.
 func (o *FormElement) HasElementType() bool {
-	if o != nil && !isNil(o.ElementType) {
+	if o != nil && !IsNil(o.ElementType) {
 		return true
 	}
 
@@ -116,7 +116,7 @@ func (o *FormElement) SetElementType(v string) {
 
 // GetConfig returns the Config field value if set, zero value otherwise.
 func (o *FormElement) GetConfig() map[string]map[string]interface{} {
-	if o == nil || isNil(o.Config) {
+	if o == nil || IsNil(o.Config) {
 		var ret map[string]map[string]interface{}
 		return ret
 	}
@@ -126,7 +126,7 @@ func (o *FormElement) GetConfig() map[string]map[string]interface{} {
 // GetConfigOk returns a tuple with the Config field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormElement) GetConfigOk() (map[string]map[string]interface{}, bool) {
-	if o == nil || isNil(o.Config) {
+	if o == nil || IsNil(o.Config) {
 		return map[string]map[string]interface{}{}, false
 	}
 	return o.Config, true
@@ -134,7 +134,7 @@ func (o *FormElement) GetConfigOk() (map[string]map[string]interface{}, bool) {
 
 // HasConfig returns a boolean if a field has been set.
 func (o *FormElement) HasConfig() bool {
-	if o != nil && !isNil(o.Config) {
+	if o != nil && !IsNil(o.Config) {
 		return true
 	}
 
@@ -148,7 +148,7 @@ func (o *FormElement) SetConfig(v map[string]map[string]interface{}) {
 
 // GetKey returns the Key field value if set, zero value otherwise.
 func (o *FormElement) GetKey() string {
-	if o == nil || isNil(o.Key) {
+	if o == nil || IsNil(o.Key) {
 		var ret string
 		return ret
 	}
@@ -158,7 +158,7 @@ func (o *FormElement) GetKey() string {
 // GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormElement) GetKeyOk() (*string, bool) {
-	if o == nil || isNil(o.Key) {
+	if o == nil || IsNil(o.Key) {
 		return nil, false
 	}
 	return o.Key, true
@@ -166,7 +166,7 @@ func (o *FormElement) GetKeyOk() (*string, bool) {
 
 // HasKey returns a boolean if a field has been set.
 func (o *FormElement) HasKey() bool {
-	if o != nil && !isNil(o.Key) {
+	if o != nil && !IsNil(o.Key) {
 		return true
 	}
 
@@ -191,7 +191,7 @@ func (o *FormElement) GetValidations() []FormElementValidationsSet {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *FormElement) GetValidationsOk() ([]FormElementValidationsSet, bool) {
-	if o == nil || isNil(o.Validations) {
+	if o == nil || IsNil(o.Validations) {
 		return nil, false
 	}
 	return o.Validations, true
@@ -199,7 +199,7 @@ func (o *FormElement) GetValidationsOk() ([]FormElementValidationsSet, bool) {
 
 // HasValidations returns a boolean if a field has been set.
 func (o *FormElement) HasValidations() bool {
-	if o != nil && isNil(o.Validations) {
+	if o != nil && !IsNil(o.Validations) {
 		return true
 	}
 
@@ -221,16 +221,16 @@ func (o FormElement) MarshalJSON() ([]byte, error) {
 
 func (o FormElement) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.ElementType) {
+	if !IsNil(o.ElementType) {
 		toSerialize["elementType"] = o.ElementType
 	}
-	if !isNil(o.Config) {
+	if !IsNil(o.Config) {
 		toSerialize["config"] = o.Config
 	}
-	if !isNil(o.Key) {
+	if !IsNil(o.Key) {
 		toSerialize["key"] = o.Key
 	}
 	if o.Validations != nil {
@@ -244,16 +244,20 @@ func (o FormElement) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *FormElement) UnmarshalJSON(bytes []byte) (err error) {
+func (o *FormElement) UnmarshalJSON(data []byte) (err error) {
 	varFormElement := _FormElement{}
 
-	if err = json.Unmarshal(bytes, &varFormElement); err == nil {
+	err = json.Unmarshal(data, &varFormElement)
+
+	if err != nil {
+		return err
+	}
+
 	*o = FormElement(varFormElement)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "elementType")
 		delete(additionalProperties, "config")

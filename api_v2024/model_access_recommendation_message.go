@@ -45,7 +45,7 @@ func NewAccessRecommendationMessageWithDefaults() *AccessRecommendationMessage {
 
 // GetInterpretation returns the Interpretation field value if set, zero value otherwise.
 func (o *AccessRecommendationMessage) GetInterpretation() string {
-	if o == nil || isNil(o.Interpretation) {
+	if o == nil || IsNil(o.Interpretation) {
 		var ret string
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *AccessRecommendationMessage) GetInterpretation() string {
 // GetInterpretationOk returns a tuple with the Interpretation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessRecommendationMessage) GetInterpretationOk() (*string, bool) {
-	if o == nil || isNil(o.Interpretation) {
+	if o == nil || IsNil(o.Interpretation) {
 		return nil, false
 	}
 	return o.Interpretation, true
@@ -63,7 +63,7 @@ func (o *AccessRecommendationMessage) GetInterpretationOk() (*string, bool) {
 
 // HasInterpretation returns a boolean if a field has been set.
 func (o *AccessRecommendationMessage) HasInterpretation() bool {
-	if o != nil && !isNil(o.Interpretation) {
+	if o != nil && !IsNil(o.Interpretation) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o AccessRecommendationMessage) MarshalJSON() ([]byte, error) {
 
 func (o AccessRecommendationMessage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Interpretation) {
+	if !IsNil(o.Interpretation) {
 		toSerialize["interpretation"] = o.Interpretation
 	}
 
@@ -96,16 +96,20 @@ func (o AccessRecommendationMessage) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccessRecommendationMessage) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccessRecommendationMessage) UnmarshalJSON(data []byte) (err error) {
 	varAccessRecommendationMessage := _AccessRecommendationMessage{}
 
-	if err = json.Unmarshal(bytes, &varAccessRecommendationMessage); err == nil {
+	err = json.Unmarshal(data, &varAccessRecommendationMessage)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessRecommendationMessage(varAccessRecommendationMessage)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "interpretation")
 		o.AdditionalProperties = additionalProperties
 	}

@@ -57,7 +57,7 @@ func NewAccountStatusChangedAccountWithDefaults() *AccountStatusChangedAccount {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *AccountStatusChangedAccount) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -67,7 +67,7 @@ func (o *AccountStatusChangedAccount) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountStatusChangedAccount) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -75,7 +75,7 @@ func (o *AccountStatusChangedAccount) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *AccountStatusChangedAccount) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -89,7 +89,7 @@ func (o *AccountStatusChangedAccount) SetId(v string) {
 
 // GetNativeIdentity returns the NativeIdentity field value if set, zero value otherwise.
 func (o *AccountStatusChangedAccount) GetNativeIdentity() string {
-	if o == nil || isNil(o.NativeIdentity) {
+	if o == nil || IsNil(o.NativeIdentity) {
 		var ret string
 		return ret
 	}
@@ -99,7 +99,7 @@ func (o *AccountStatusChangedAccount) GetNativeIdentity() string {
 // GetNativeIdentityOk returns a tuple with the NativeIdentity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountStatusChangedAccount) GetNativeIdentityOk() (*string, bool) {
-	if o == nil || isNil(o.NativeIdentity) {
+	if o == nil || IsNil(o.NativeIdentity) {
 		return nil, false
 	}
 	return o.NativeIdentity, true
@@ -107,7 +107,7 @@ func (o *AccountStatusChangedAccount) GetNativeIdentityOk() (*string, bool) {
 
 // HasNativeIdentity returns a boolean if a field has been set.
 func (o *AccountStatusChangedAccount) HasNativeIdentity() bool {
-	if o != nil && !isNil(o.NativeIdentity) {
+	if o != nil && !IsNil(o.NativeIdentity) {
 		return true
 	}
 
@@ -121,7 +121,7 @@ func (o *AccountStatusChangedAccount) SetNativeIdentity(v string) {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *AccountStatusChangedAccount) GetDisplayName() string {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -131,7 +131,7 @@ func (o *AccountStatusChangedAccount) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountStatusChangedAccount) GetDisplayNameOk() (*string, bool) {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -139,7 +139,7 @@ func (o *AccountStatusChangedAccount) GetDisplayNameOk() (*string, bool) {
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *AccountStatusChangedAccount) HasDisplayName() bool {
-	if o != nil && !isNil(o.DisplayName) {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -153,7 +153,7 @@ func (o *AccountStatusChangedAccount) SetDisplayName(v string) {
 
 // GetSourceId returns the SourceId field value if set, zero value otherwise.
 func (o *AccountStatusChangedAccount) GetSourceId() string {
-	if o == nil || isNil(o.SourceId) {
+	if o == nil || IsNil(o.SourceId) {
 		var ret string
 		return ret
 	}
@@ -163,7 +163,7 @@ func (o *AccountStatusChangedAccount) GetSourceId() string {
 // GetSourceIdOk returns a tuple with the SourceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountStatusChangedAccount) GetSourceIdOk() (*string, bool) {
-	if o == nil || isNil(o.SourceId) {
+	if o == nil || IsNil(o.SourceId) {
 		return nil, false
 	}
 	return o.SourceId, true
@@ -171,7 +171,7 @@ func (o *AccountStatusChangedAccount) GetSourceIdOk() (*string, bool) {
 
 // HasSourceId returns a boolean if a field has been set.
 func (o *AccountStatusChangedAccount) HasSourceId() bool {
-	if o != nil && !isNil(o.SourceId) {
+	if o != nil && !IsNil(o.SourceId) {
 		return true
 	}
 
@@ -185,7 +185,7 @@ func (o *AccountStatusChangedAccount) SetSourceId(v string) {
 
 // GetSourceName returns the SourceName field value if set, zero value otherwise.
 func (o *AccountStatusChangedAccount) GetSourceName() string {
-	if o == nil || isNil(o.SourceName) {
+	if o == nil || IsNil(o.SourceName) {
 		var ret string
 		return ret
 	}
@@ -195,7 +195,7 @@ func (o *AccountStatusChangedAccount) GetSourceName() string {
 // GetSourceNameOk returns a tuple with the SourceName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountStatusChangedAccount) GetSourceNameOk() (*string, bool) {
-	if o == nil || isNil(o.SourceName) {
+	if o == nil || IsNil(o.SourceName) {
 		return nil, false
 	}
 	return o.SourceName, true
@@ -203,7 +203,7 @@ func (o *AccountStatusChangedAccount) GetSourceNameOk() (*string, bool) {
 
 // HasSourceName returns a boolean if a field has been set.
 func (o *AccountStatusChangedAccount) HasSourceName() bool {
-	if o != nil && !isNil(o.SourceName) {
+	if o != nil && !IsNil(o.SourceName) {
 		return true
 	}
 
@@ -217,7 +217,7 @@ func (o *AccountStatusChangedAccount) SetSourceName(v string) {
 
 // GetEntitlementCount returns the EntitlementCount field value if set, zero value otherwise.
 func (o *AccountStatusChangedAccount) GetEntitlementCount() int32 {
-	if o == nil || isNil(o.EntitlementCount) {
+	if o == nil || IsNil(o.EntitlementCount) {
 		var ret int32
 		return ret
 	}
@@ -227,7 +227,7 @@ func (o *AccountStatusChangedAccount) GetEntitlementCount() int32 {
 // GetEntitlementCountOk returns a tuple with the EntitlementCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountStatusChangedAccount) GetEntitlementCountOk() (*int32, bool) {
-	if o == nil || isNil(o.EntitlementCount) {
+	if o == nil || IsNil(o.EntitlementCount) {
 		return nil, false
 	}
 	return o.EntitlementCount, true
@@ -235,7 +235,7 @@ func (o *AccountStatusChangedAccount) GetEntitlementCountOk() (*int32, bool) {
 
 // HasEntitlementCount returns a boolean if a field has been set.
 func (o *AccountStatusChangedAccount) HasEntitlementCount() bool {
-	if o != nil && !isNil(o.EntitlementCount) {
+	if o != nil && !IsNil(o.EntitlementCount) {
 		return true
 	}
 
@@ -249,7 +249,7 @@ func (o *AccountStatusChangedAccount) SetEntitlementCount(v int32) {
 
 // GetAccessType returns the AccessType field value if set, zero value otherwise.
 func (o *AccountStatusChangedAccount) GetAccessType() string {
-	if o == nil || isNil(o.AccessType) {
+	if o == nil || IsNil(o.AccessType) {
 		var ret string
 		return ret
 	}
@@ -259,7 +259,7 @@ func (o *AccountStatusChangedAccount) GetAccessType() string {
 // GetAccessTypeOk returns a tuple with the AccessType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountStatusChangedAccount) GetAccessTypeOk() (*string, bool) {
-	if o == nil || isNil(o.AccessType) {
+	if o == nil || IsNil(o.AccessType) {
 		return nil, false
 	}
 	return o.AccessType, true
@@ -267,7 +267,7 @@ func (o *AccountStatusChangedAccount) GetAccessTypeOk() (*string, bool) {
 
 // HasAccessType returns a boolean if a field has been set.
 func (o *AccountStatusChangedAccount) HasAccessType() bool {
-	if o != nil && !isNil(o.AccessType) {
+	if o != nil && !IsNil(o.AccessType) {
 		return true
 	}
 
@@ -289,25 +289,25 @@ func (o AccountStatusChangedAccount) MarshalJSON() ([]byte, error) {
 
 func (o AccountStatusChangedAccount) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.NativeIdentity) {
+	if !IsNil(o.NativeIdentity) {
 		toSerialize["nativeIdentity"] = o.NativeIdentity
 	}
-	if !isNil(o.DisplayName) {
+	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
-	if !isNil(o.SourceId) {
+	if !IsNil(o.SourceId) {
 		toSerialize["sourceId"] = o.SourceId
 	}
-	if !isNil(o.SourceName) {
+	if !IsNil(o.SourceName) {
 		toSerialize["sourceName"] = o.SourceName
 	}
-	if !isNil(o.EntitlementCount) {
+	if !IsNil(o.EntitlementCount) {
 		toSerialize["entitlementCount"] = o.EntitlementCount
 	}
-	if !isNil(o.AccessType) {
+	if !IsNil(o.AccessType) {
 		toSerialize["accessType"] = o.AccessType
 	}
 
@@ -318,16 +318,20 @@ func (o AccountStatusChangedAccount) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccountStatusChangedAccount) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccountStatusChangedAccount) UnmarshalJSON(data []byte) (err error) {
 	varAccountStatusChangedAccount := _AccountStatusChangedAccount{}
 
-	if err = json.Unmarshal(bytes, &varAccountStatusChangedAccount); err == nil {
+	err = json.Unmarshal(data, &varAccountStatusChangedAccount)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccountStatusChangedAccount(varAccountStatusChangedAccount)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "nativeIdentity")
 		delete(additionalProperties, "displayName")

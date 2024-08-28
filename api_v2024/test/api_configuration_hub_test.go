@@ -19,7 +19,7 @@ import (
 
 func Test_api_v2024_ConfigurationHubAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test ConfigurationHubAPIService CreateObjectMapping", func(t *testing.T) {
@@ -28,7 +28,7 @@ func Test_api_v2024_ConfigurationHubAPIService(t *testing.T) {
 
 		var sourceOrg string
 
-		resp, httpRes, err := apiClient.API_V2024.ConfigurationHubAPI.CreateObjectMapping(context.Background(), sourceOrg).Execute()
+		resp, httpRes, err := apiClient.ConfigurationHubAPI.CreateObjectMapping(context.Background(), sourceOrg).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -42,7 +42,7 @@ func Test_api_v2024_ConfigurationHubAPIService(t *testing.T) {
 
 		var sourceOrg string
 
-		resp, httpRes, err := apiClient.API_V2024.ConfigurationHubAPI.CreateObjectMappings(context.Background(), sourceOrg).Execute()
+		resp, httpRes, err := apiClient.ConfigurationHubAPI.CreateObjectMappings(context.Background(), sourceOrg).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -57,7 +57,7 @@ func Test_api_v2024_ConfigurationHubAPIService(t *testing.T) {
 		var sourceOrg string
 		var objectMappingId string
 
-		httpRes, err := apiClient.API_V2024.ConfigurationHubAPI.DeleteObjectMapping(context.Background(), sourceOrg, objectMappingId).Execute()
+		httpRes, err := apiClient.ConfigurationHubAPI.DeleteObjectMapping(context.Background(), sourceOrg, objectMappingId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -70,7 +70,7 @@ func Test_api_v2024_ConfigurationHubAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_V2024.ConfigurationHubAPI.DeleteUploadedBackup(context.Background(), id).Execute()
+		httpRes, err := apiClient.ConfigurationHubAPI.DeleteUploadedBackup(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -83,7 +83,7 @@ func Test_api_v2024_ConfigurationHubAPIService(t *testing.T) {
 
 		var sourceOrg string
 
-		resp, httpRes, err := apiClient.API_V2024.ConfigurationHubAPI.GetObjectMappings(context.Background(), sourceOrg).Execute()
+		resp, httpRes, err := apiClient.ConfigurationHubAPI.GetObjectMappings(context.Background(), sourceOrg).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -97,7 +97,7 @@ func Test_api_v2024_ConfigurationHubAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.ConfigurationHubAPI.GetUploadedBackup(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.ConfigurationHubAPI.GetUploadedBackup(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -109,7 +109,7 @@ func Test_api_v2024_ConfigurationHubAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.ConfigurationHubAPI.GetUploadedBackups(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ConfigurationHubAPI.GetUploadedBackups(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -121,7 +121,7 @@ func Test_api_v2024_ConfigurationHubAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.ConfigurationHubAPI.ImportUploadedBackup(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ConfigurationHubAPI.ImportUploadedBackup(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -135,7 +135,7 @@ func Test_api_v2024_ConfigurationHubAPIService(t *testing.T) {
 
 		var sourceOrg string
 
-		resp, httpRes, err := apiClient.API_V2024.ConfigurationHubAPI.UpdateObjectMappings(context.Background(), sourceOrg).Execute()
+		resp, httpRes, err := apiClient.ConfigurationHubAPI.UpdateObjectMappings(context.Background(), sourceOrg).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -59,7 +59,7 @@ func NewOutliersContributingFeatureAccessItemsWithDefaults() *OutliersContributi
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *OutliersContributingFeatureAccessItems) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -69,7 +69,7 @@ func (o *OutliersContributingFeatureAccessItems) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutliersContributingFeatureAccessItems) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -77,7 +77,7 @@ func (o *OutliersContributingFeatureAccessItems) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *OutliersContributingFeatureAccessItems) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -91,7 +91,7 @@ func (o *OutliersContributingFeatureAccessItems) SetId(v string) {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *OutliersContributingFeatureAccessItems) GetDisplayName() string {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -101,7 +101,7 @@ func (o *OutliersContributingFeatureAccessItems) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutliersContributingFeatureAccessItems) GetDisplayNameOk() (*string, bool) {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -109,7 +109,7 @@ func (o *OutliersContributingFeatureAccessItems) GetDisplayNameOk() (*string, bo
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *OutliersContributingFeatureAccessItems) HasDisplayName() bool {
-	if o != nil && !isNil(o.DisplayName) {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -123,7 +123,7 @@ func (o *OutliersContributingFeatureAccessItems) SetDisplayName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *OutliersContributingFeatureAccessItems) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -133,7 +133,7 @@ func (o *OutliersContributingFeatureAccessItems) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutliersContributingFeatureAccessItems) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -141,7 +141,7 @@ func (o *OutliersContributingFeatureAccessItems) GetDescriptionOk() (*string, bo
 
 // HasDescription returns a boolean if a field has been set.
 func (o *OutliersContributingFeatureAccessItems) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -155,7 +155,7 @@ func (o *OutliersContributingFeatureAccessItems) SetDescription(v string) {
 
 // GetAccessType returns the AccessType field value if set, zero value otherwise.
 func (o *OutliersContributingFeatureAccessItems) GetAccessType() string {
-	if o == nil || isNil(o.AccessType) {
+	if o == nil || IsNil(o.AccessType) {
 		var ret string
 		return ret
 	}
@@ -165,7 +165,7 @@ func (o *OutliersContributingFeatureAccessItems) GetAccessType() string {
 // GetAccessTypeOk returns a tuple with the AccessType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutliersContributingFeatureAccessItems) GetAccessTypeOk() (*string, bool) {
-	if o == nil || isNil(o.AccessType) {
+	if o == nil || IsNil(o.AccessType) {
 		return nil, false
 	}
 	return o.AccessType, true
@@ -173,7 +173,7 @@ func (o *OutliersContributingFeatureAccessItems) GetAccessTypeOk() (*string, boo
 
 // HasAccessType returns a boolean if a field has been set.
 func (o *OutliersContributingFeatureAccessItems) HasAccessType() bool {
-	if o != nil && !isNil(o.AccessType) {
+	if o != nil && !IsNil(o.AccessType) {
 		return true
 	}
 
@@ -187,7 +187,7 @@ func (o *OutliersContributingFeatureAccessItems) SetAccessType(v string) {
 
 // GetSourceName returns the SourceName field value if set, zero value otherwise.
 func (o *OutliersContributingFeatureAccessItems) GetSourceName() string {
-	if o == nil || isNil(o.SourceName) {
+	if o == nil || IsNil(o.SourceName) {
 		var ret string
 		return ret
 	}
@@ -197,7 +197,7 @@ func (o *OutliersContributingFeatureAccessItems) GetSourceName() string {
 // GetSourceNameOk returns a tuple with the SourceName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutliersContributingFeatureAccessItems) GetSourceNameOk() (*string, bool) {
-	if o == nil || isNil(o.SourceName) {
+	if o == nil || IsNil(o.SourceName) {
 		return nil, false
 	}
 	return o.SourceName, true
@@ -205,7 +205,7 @@ func (o *OutliersContributingFeatureAccessItems) GetSourceNameOk() (*string, boo
 
 // HasSourceName returns a boolean if a field has been set.
 func (o *OutliersContributingFeatureAccessItems) HasSourceName() bool {
-	if o != nil && !isNil(o.SourceName) {
+	if o != nil && !IsNil(o.SourceName) {
 		return true
 	}
 
@@ -219,7 +219,7 @@ func (o *OutliersContributingFeatureAccessItems) SetSourceName(v string) {
 
 // GetExtremelyRare returns the ExtremelyRare field value if set, zero value otherwise.
 func (o *OutliersContributingFeatureAccessItems) GetExtremelyRare() bool {
-	if o == nil || isNil(o.ExtremelyRare) {
+	if o == nil || IsNil(o.ExtremelyRare) {
 		var ret bool
 		return ret
 	}
@@ -229,7 +229,7 @@ func (o *OutliersContributingFeatureAccessItems) GetExtremelyRare() bool {
 // GetExtremelyRareOk returns a tuple with the ExtremelyRare field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutliersContributingFeatureAccessItems) GetExtremelyRareOk() (*bool, bool) {
-	if o == nil || isNil(o.ExtremelyRare) {
+	if o == nil || IsNil(o.ExtremelyRare) {
 		return nil, false
 	}
 	return o.ExtremelyRare, true
@@ -237,7 +237,7 @@ func (o *OutliersContributingFeatureAccessItems) GetExtremelyRareOk() (*bool, bo
 
 // HasExtremelyRare returns a boolean if a field has been set.
 func (o *OutliersContributingFeatureAccessItems) HasExtremelyRare() bool {
-	if o != nil && !isNil(o.ExtremelyRare) {
+	if o != nil && !IsNil(o.ExtremelyRare) {
 		return true
 	}
 
@@ -259,22 +259,22 @@ func (o OutliersContributingFeatureAccessItems) MarshalJSON() ([]byte, error) {
 
 func (o OutliersContributingFeatureAccessItems) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.DisplayName) {
+	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.AccessType) {
+	if !IsNil(o.AccessType) {
 		toSerialize["accessType"] = o.AccessType
 	}
-	if !isNil(o.SourceName) {
+	if !IsNil(o.SourceName) {
 		toSerialize["sourceName"] = o.SourceName
 	}
-	if !isNil(o.ExtremelyRare) {
+	if !IsNil(o.ExtremelyRare) {
 		toSerialize["extremelyRare"] = o.ExtremelyRare
 	}
 
@@ -285,16 +285,20 @@ func (o OutliersContributingFeatureAccessItems) ToMap() (map[string]interface{},
 	return toSerialize, nil
 }
 
-func (o *OutliersContributingFeatureAccessItems) UnmarshalJSON(bytes []byte) (err error) {
+func (o *OutliersContributingFeatureAccessItems) UnmarshalJSON(data []byte) (err error) {
 	varOutliersContributingFeatureAccessItems := _OutliersContributingFeatureAccessItems{}
 
-	if err = json.Unmarshal(bytes, &varOutliersContributingFeatureAccessItems); err == nil {
+	err = json.Unmarshal(data, &varOutliersContributingFeatureAccessItems)
+
+	if err != nil {
+		return err
+	}
+
 	*o = OutliersContributingFeatureAccessItems(varOutliersContributingFeatureAccessItems)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "displayName")
 		delete(additionalProperties, "description")

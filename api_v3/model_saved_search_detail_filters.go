@@ -53,7 +53,7 @@ func NewSavedSearchDetailFiltersWithDefaults() *SavedSearchDetailFilters {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *SavedSearchDetailFilters) GetType() FilterType {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret FilterType
 		return ret
 	}
@@ -63,7 +63,7 @@ func (o *SavedSearchDetailFilters) GetType() FilterType {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SavedSearchDetailFilters) GetTypeOk() (*FilterType, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -71,7 +71,7 @@ func (o *SavedSearchDetailFilters) GetTypeOk() (*FilterType, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *SavedSearchDetailFilters) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o *SavedSearchDetailFilters) SetType(v FilterType) {
 
 // GetRange returns the Range field value if set, zero value otherwise.
 func (o *SavedSearchDetailFilters) GetRange() Range {
-	if o == nil || isNil(o.Range) {
+	if o == nil || IsNil(o.Range) {
 		var ret Range
 		return ret
 	}
@@ -95,7 +95,7 @@ func (o *SavedSearchDetailFilters) GetRange() Range {
 // GetRangeOk returns a tuple with the Range field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SavedSearchDetailFilters) GetRangeOk() (*Range, bool) {
-	if o == nil || isNil(o.Range) {
+	if o == nil || IsNil(o.Range) {
 		return nil, false
 	}
 	return o.Range, true
@@ -103,7 +103,7 @@ func (o *SavedSearchDetailFilters) GetRangeOk() (*Range, bool) {
 
 // HasRange returns a boolean if a field has been set.
 func (o *SavedSearchDetailFilters) HasRange() bool {
-	if o != nil && !isNil(o.Range) {
+	if o != nil && !IsNil(o.Range) {
 		return true
 	}
 
@@ -117,7 +117,7 @@ func (o *SavedSearchDetailFilters) SetRange(v Range) {
 
 // GetTerms returns the Terms field value if set, zero value otherwise.
 func (o *SavedSearchDetailFilters) GetTerms() []string {
-	if o == nil || isNil(o.Terms) {
+	if o == nil || IsNil(o.Terms) {
 		var ret []string
 		return ret
 	}
@@ -127,7 +127,7 @@ func (o *SavedSearchDetailFilters) GetTerms() []string {
 // GetTermsOk returns a tuple with the Terms field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SavedSearchDetailFilters) GetTermsOk() ([]string, bool) {
-	if o == nil || isNil(o.Terms) {
+	if o == nil || IsNil(o.Terms) {
 		return nil, false
 	}
 	return o.Terms, true
@@ -135,7 +135,7 @@ func (o *SavedSearchDetailFilters) GetTermsOk() ([]string, bool) {
 
 // HasTerms returns a boolean if a field has been set.
 func (o *SavedSearchDetailFilters) HasTerms() bool {
-	if o != nil && !isNil(o.Terms) {
+	if o != nil && !IsNil(o.Terms) {
 		return true
 	}
 
@@ -149,7 +149,7 @@ func (o *SavedSearchDetailFilters) SetTerms(v []string) {
 
 // GetExclude returns the Exclude field value if set, zero value otherwise.
 func (o *SavedSearchDetailFilters) GetExclude() bool {
-	if o == nil || isNil(o.Exclude) {
+	if o == nil || IsNil(o.Exclude) {
 		var ret bool
 		return ret
 	}
@@ -159,7 +159,7 @@ func (o *SavedSearchDetailFilters) GetExclude() bool {
 // GetExcludeOk returns a tuple with the Exclude field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SavedSearchDetailFilters) GetExcludeOk() (*bool, bool) {
-	if o == nil || isNil(o.Exclude) {
+	if o == nil || IsNil(o.Exclude) {
 		return nil, false
 	}
 	return o.Exclude, true
@@ -167,7 +167,7 @@ func (o *SavedSearchDetailFilters) GetExcludeOk() (*bool, bool) {
 
 // HasExclude returns a boolean if a field has been set.
 func (o *SavedSearchDetailFilters) HasExclude() bool {
-	if o != nil && !isNil(o.Exclude) {
+	if o != nil && !IsNil(o.Exclude) {
 		return true
 	}
 
@@ -189,16 +189,16 @@ func (o SavedSearchDetailFilters) MarshalJSON() ([]byte, error) {
 
 func (o SavedSearchDetailFilters) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Range) {
+	if !IsNil(o.Range) {
 		toSerialize["range"] = o.Range
 	}
-	if !isNil(o.Terms) {
+	if !IsNil(o.Terms) {
 		toSerialize["terms"] = o.Terms
 	}
-	if !isNil(o.Exclude) {
+	if !IsNil(o.Exclude) {
 		toSerialize["exclude"] = o.Exclude
 	}
 
@@ -209,16 +209,20 @@ func (o SavedSearchDetailFilters) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SavedSearchDetailFilters) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SavedSearchDetailFilters) UnmarshalJSON(data []byte) (err error) {
 	varSavedSearchDetailFilters := _SavedSearchDetailFilters{}
 
-	if err = json.Unmarshal(bytes, &varSavedSearchDetailFilters); err == nil {
+	err = json.Unmarshal(data, &varSavedSearchDetailFilters)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SavedSearchDetailFilters(varSavedSearchDetailFilters)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "range")
 		delete(additionalProperties, "terms")

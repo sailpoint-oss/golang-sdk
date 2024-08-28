@@ -47,7 +47,7 @@ func NewLoadAccountsTaskTaskReturnsInnerWithDefaults() *LoadAccountsTaskTaskRetu
 
 // GetDisplayLabel returns the DisplayLabel field value if set, zero value otherwise.
 func (o *LoadAccountsTaskTaskReturnsInner) GetDisplayLabel() string {
-	if o == nil || isNil(o.DisplayLabel) {
+	if o == nil || IsNil(o.DisplayLabel) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *LoadAccountsTaskTaskReturnsInner) GetDisplayLabel() string {
 // GetDisplayLabelOk returns a tuple with the DisplayLabel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LoadAccountsTaskTaskReturnsInner) GetDisplayLabelOk() (*string, bool) {
-	if o == nil || isNil(o.DisplayLabel) {
+	if o == nil || IsNil(o.DisplayLabel) {
 		return nil, false
 	}
 	return o.DisplayLabel, true
@@ -65,7 +65,7 @@ func (o *LoadAccountsTaskTaskReturnsInner) GetDisplayLabelOk() (*string, bool) {
 
 // HasDisplayLabel returns a boolean if a field has been set.
 func (o *LoadAccountsTaskTaskReturnsInner) HasDisplayLabel() bool {
-	if o != nil && !isNil(o.DisplayLabel) {
+	if o != nil && !IsNil(o.DisplayLabel) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *LoadAccountsTaskTaskReturnsInner) SetDisplayLabel(v string) {
 
 // GetAttributeName returns the AttributeName field value if set, zero value otherwise.
 func (o *LoadAccountsTaskTaskReturnsInner) GetAttributeName() string {
-	if o == nil || isNil(o.AttributeName) {
+	if o == nil || IsNil(o.AttributeName) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *LoadAccountsTaskTaskReturnsInner) GetAttributeName() string {
 // GetAttributeNameOk returns a tuple with the AttributeName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LoadAccountsTaskTaskReturnsInner) GetAttributeNameOk() (*string, bool) {
-	if o == nil || isNil(o.AttributeName) {
+	if o == nil || IsNil(o.AttributeName) {
 		return nil, false
 	}
 	return o.AttributeName, true
@@ -97,7 +97,7 @@ func (o *LoadAccountsTaskTaskReturnsInner) GetAttributeNameOk() (*string, bool) 
 
 // HasAttributeName returns a boolean if a field has been set.
 func (o *LoadAccountsTaskTaskReturnsInner) HasAttributeName() bool {
-	if o != nil && !isNil(o.AttributeName) {
+	if o != nil && !IsNil(o.AttributeName) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o LoadAccountsTaskTaskReturnsInner) MarshalJSON() ([]byte, error) {
 
 func (o LoadAccountsTaskTaskReturnsInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.DisplayLabel) {
+	if !IsNil(o.DisplayLabel) {
 		toSerialize["displayLabel"] = o.DisplayLabel
 	}
-	if !isNil(o.AttributeName) {
+	if !IsNil(o.AttributeName) {
 		toSerialize["attributeName"] = o.AttributeName
 	}
 
@@ -133,16 +133,20 @@ func (o LoadAccountsTaskTaskReturnsInner) ToMap() (map[string]interface{}, error
 	return toSerialize, nil
 }
 
-func (o *LoadAccountsTaskTaskReturnsInner) UnmarshalJSON(bytes []byte) (err error) {
+func (o *LoadAccountsTaskTaskReturnsInner) UnmarshalJSON(data []byte) (err error) {
 	varLoadAccountsTaskTaskReturnsInner := _LoadAccountsTaskTaskReturnsInner{}
 
-	if err = json.Unmarshal(bytes, &varLoadAccountsTaskTaskReturnsInner); err == nil {
+	err = json.Unmarshal(data, &varLoadAccountsTaskTaskReturnsInner)
+
+	if err != nil {
+		return err
+	}
+
 	*o = LoadAccountsTaskTaskReturnsInner(varLoadAccountsTaskTaskReturnsInner)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "displayLabel")
 		delete(additionalProperties, "attributeName")
 		o.AdditionalProperties = additionalProperties

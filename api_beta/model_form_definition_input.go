@@ -51,7 +51,7 @@ func NewFormDefinitionInputWithDefaults() *FormDefinitionInput {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *FormDefinitionInput) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -61,7 +61,7 @@ func (o *FormDefinitionInput) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormDefinitionInput) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -69,7 +69,7 @@ func (o *FormDefinitionInput) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *FormDefinitionInput) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -83,7 +83,7 @@ func (o *FormDefinitionInput) SetId(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *FormDefinitionInput) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -93,7 +93,7 @@ func (o *FormDefinitionInput) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormDefinitionInput) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -101,7 +101,7 @@ func (o *FormDefinitionInput) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *FormDefinitionInput) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -115,7 +115,7 @@ func (o *FormDefinitionInput) SetType(v string) {
 
 // GetLabel returns the Label field value if set, zero value otherwise.
 func (o *FormDefinitionInput) GetLabel() string {
-	if o == nil || isNil(o.Label) {
+	if o == nil || IsNil(o.Label) {
 		var ret string
 		return ret
 	}
@@ -125,7 +125,7 @@ func (o *FormDefinitionInput) GetLabel() string {
 // GetLabelOk returns a tuple with the Label field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormDefinitionInput) GetLabelOk() (*string, bool) {
-	if o == nil || isNil(o.Label) {
+	if o == nil || IsNil(o.Label) {
 		return nil, false
 	}
 	return o.Label, true
@@ -133,7 +133,7 @@ func (o *FormDefinitionInput) GetLabelOk() (*string, bool) {
 
 // HasLabel returns a boolean if a field has been set.
 func (o *FormDefinitionInput) HasLabel() bool {
-	if o != nil && !isNil(o.Label) {
+	if o != nil && !IsNil(o.Label) {
 		return true
 	}
 
@@ -147,7 +147,7 @@ func (o *FormDefinitionInput) SetLabel(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *FormDefinitionInput) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -157,7 +157,7 @@ func (o *FormDefinitionInput) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormDefinitionInput) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -165,7 +165,7 @@ func (o *FormDefinitionInput) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *FormDefinitionInput) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -187,16 +187,16 @@ func (o FormDefinitionInput) MarshalJSON() ([]byte, error) {
 
 func (o FormDefinitionInput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Label) {
+	if !IsNil(o.Label) {
 		toSerialize["label"] = o.Label
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 
@@ -207,16 +207,20 @@ func (o FormDefinitionInput) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *FormDefinitionInput) UnmarshalJSON(bytes []byte) (err error) {
+func (o *FormDefinitionInput) UnmarshalJSON(data []byte) (err error) {
 	varFormDefinitionInput := _FormDefinitionInput{}
 
-	if err = json.Unmarshal(bytes, &varFormDefinitionInput); err == nil {
+	err = json.Unmarshal(data, &varFormDefinitionInput)
+
+	if err != nil {
+		return err
+	}
+
 	*o = FormDefinitionInput(varFormDefinitionInput)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "label")

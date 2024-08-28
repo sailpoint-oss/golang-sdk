@@ -109,7 +109,7 @@ func NewAccountWithDefaults() *Account {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Account) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -119,7 +119,7 @@ func (o *Account) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Account) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -127,7 +127,7 @@ func (o *Account) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *Account) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -165,7 +165,7 @@ func (o *Account) SetName(v string) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *Account) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -175,7 +175,7 @@ func (o *Account) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Account) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -183,7 +183,7 @@ func (o *Account) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *Account) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -197,7 +197,7 @@ func (o *Account) SetCreated(v time.Time) {
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *Account) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		var ret time.Time
 		return ret
 	}
@@ -207,7 +207,7 @@ func (o *Account) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Account) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -215,7 +215,7 @@ func (o *Account) GetModifiedOk() (*time.Time, bool) {
 
 // HasModified returns a boolean if a field has been set.
 func (o *Account) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -277,7 +277,7 @@ func (o *Account) SetSourceName(v string) {
 
 // GetIdentityId returns the IdentityId field value if set, zero value otherwise.
 func (o *Account) GetIdentityId() string {
-	if o == nil || isNil(o.IdentityId) {
+	if o == nil || IsNil(o.IdentityId) {
 		var ret string
 		return ret
 	}
@@ -287,7 +287,7 @@ func (o *Account) GetIdentityId() string {
 // GetIdentityIdOk returns a tuple with the IdentityId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Account) GetIdentityIdOk() (*string, bool) {
-	if o == nil || isNil(o.IdentityId) {
+	if o == nil || IsNil(o.IdentityId) {
 		return nil, false
 	}
 	return o.IdentityId, true
@@ -295,7 +295,7 @@ func (o *Account) GetIdentityIdOk() (*string, bool) {
 
 // HasIdentityId returns a boolean if a field has been set.
 func (o *Account) HasIdentityId() bool {
-	if o != nil && !isNil(o.IdentityId) {
+	if o != nil && !IsNil(o.IdentityId) {
 		return true
 	}
 
@@ -309,7 +309,7 @@ func (o *Account) SetIdentityId(v string) {
 
 // GetCloudLifecycleState returns the CloudLifecycleState field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Account) GetCloudLifecycleState() string {
-	if o == nil || isNil(o.CloudLifecycleState.Get()) {
+	if o == nil || IsNil(o.CloudLifecycleState.Get()) {
 		var ret string
 		return ret
 	}
@@ -351,7 +351,7 @@ func (o *Account) UnsetCloudLifecycleState() {
 
 // GetIdentityState returns the IdentityState field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Account) GetIdentityState() string {
-	if o == nil || isNil(o.IdentityState.Get()) {
+	if o == nil || IsNil(o.IdentityState.Get()) {
 		var ret string
 		return ret
 	}
@@ -393,7 +393,7 @@ func (o *Account) UnsetIdentityState() {
 
 // GetConnectionType returns the ConnectionType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Account) GetConnectionType() string {
-	if o == nil || isNil(o.ConnectionType.Get()) {
+	if o == nil || IsNil(o.ConnectionType.Get()) {
 		var ret string
 		return ret
 	}
@@ -435,7 +435,7 @@ func (o *Account) UnsetConnectionType() {
 
 // GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Account) GetType() string {
-	if o == nil || isNil(o.Type.Get()) {
+	if o == nil || IsNil(o.Type.Get()) {
 		var ret string
 		return ret
 	}
@@ -490,7 +490,7 @@ func (o *Account) GetAttributes() map[string]interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Account) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
@@ -527,7 +527,7 @@ func (o *Account) SetAuthoritative(v bool) {
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Account) GetDescription() string {
-	if o == nil || isNil(o.Description.Get()) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
@@ -689,7 +689,7 @@ func (o *Account) SetUncorrelated(v bool) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Account) GetUuid() string {
-	if o == nil || isNil(o.Uuid.Get()) {
+	if o == nil || IsNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -779,7 +779,7 @@ func (o *Account) SetHasEntitlements(v bool) {
 
 // GetIdentity returns the Identity field value if set, zero value otherwise.
 func (o *Account) GetIdentity() AccountAllOfIdentity {
-	if o == nil || isNil(o.Identity) {
+	if o == nil || IsNil(o.Identity) {
 		var ret AccountAllOfIdentity
 		return ret
 	}
@@ -789,7 +789,7 @@ func (o *Account) GetIdentity() AccountAllOfIdentity {
 // GetIdentityOk returns a tuple with the Identity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Account) GetIdentityOk() (*AccountAllOfIdentity, bool) {
-	if o == nil || isNil(o.Identity) {
+	if o == nil || IsNil(o.Identity) {
 		return nil, false
 	}
 	return o.Identity, true
@@ -797,7 +797,7 @@ func (o *Account) GetIdentityOk() (*AccountAllOfIdentity, bool) {
 
 // HasIdentity returns a boolean if a field has been set.
 func (o *Account) HasIdentity() bool {
-	if o != nil && !isNil(o.Identity) {
+	if o != nil && !IsNil(o.Identity) {
 		return true
 	}
 
@@ -811,7 +811,7 @@ func (o *Account) SetIdentity(v AccountAllOfIdentity) {
 
 // GetSourceOwner returns the SourceOwner field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Account) GetSourceOwner() AccountAllOfSourceOwner {
-	if o == nil || isNil(o.SourceOwner.Get()) {
+	if o == nil || IsNil(o.SourceOwner.Get()) {
 		var ret AccountAllOfSourceOwner
 		return ret
 	}
@@ -853,7 +853,7 @@ func (o *Account) UnsetSourceOwner() {
 
 // GetFeatures returns the Features field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Account) GetFeatures() string {
-	if o == nil || isNil(o.Features.Get()) {
+	if o == nil || IsNil(o.Features.Get()) {
 		var ret string
 		return ret
 	}
@@ -895,7 +895,7 @@ func (o *Account) UnsetFeatures() {
 
 // GetOrigin returns the Origin field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Account) GetOrigin() string {
-	if o == nil || isNil(o.Origin.Get()) {
+	if o == nil || IsNil(o.Origin.Get()) {
 		var ret string
 		return ret
 	}
@@ -937,7 +937,7 @@ func (o *Account) UnsetOrigin() {
 
 // GetOwnerIdentity returns the OwnerIdentity field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Account) GetOwnerIdentity() AccountAllOfOwnerIdentity {
-	if o == nil || isNil(o.OwnerIdentity.Get()) {
+	if o == nil || IsNil(o.OwnerIdentity.Get()) {
 		var ret AccountAllOfOwnerIdentity
 		return ret
 	}
@@ -979,7 +979,7 @@ func (o *Account) UnsetOwnerIdentity() {
 
 // GetOwnerGroup returns the OwnerGroup field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Account) GetOwnerGroup() AccountAllOfOwnerGroup {
-	if o == nil || isNil(o.OwnerGroup.Get()) {
+	if o == nil || IsNil(o.OwnerGroup.Get()) {
 		var ret AccountAllOfOwnerGroup
 		return ret
 	}
@@ -1029,13 +1029,19 @@ func (o Account) MarshalJSON() ([]byte, error) {
 
 func (o Account) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["name"] = o.Name
-	// skip: created is readOnly
-	// skip: modified is readOnly
+	if !IsNil(o.Created) {
+		toSerialize["created"] = o.Created
+	}
+	if !IsNil(o.Modified) {
+		toSerialize["modified"] = o.Modified
+	}
 	toSerialize["sourceId"] = o.SourceId
 	toSerialize["sourceName"] = o.SourceName
-	if !isNil(o.IdentityId) {
+	if !IsNil(o.IdentityId) {
 		toSerialize["identityId"] = o.IdentityId
 	}
 	if o.CloudLifecycleState.IsSet() {
@@ -1067,7 +1073,7 @@ func (o Account) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["manuallyCorrelated"] = o.ManuallyCorrelated
 	toSerialize["hasEntitlements"] = o.HasEntitlements
-	if !isNil(o.Identity) {
+	if !IsNil(o.Identity) {
 		toSerialize["identity"] = o.Identity
 	}
 	if o.SourceOwner.IsSet() {
@@ -1093,8 +1099,8 @@ func (o Account) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Account) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *Account) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -1114,7 +1120,7 @@ func (o *Account) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -1128,13 +1134,17 @@ func (o *Account) UnmarshalJSON(bytes []byte) (err error) {
 
 	varAccount := _Account{}
 
-	if err = json.Unmarshal(bytes, &varAccount); err == nil {
+	err = json.Unmarshal(data, &varAccount)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Account(varAccount)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "created")

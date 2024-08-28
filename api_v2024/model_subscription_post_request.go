@@ -94,7 +94,7 @@ func (o *SubscriptionPostRequest) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *SubscriptionPostRequest) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -104,7 +104,7 @@ func (o *SubscriptionPostRequest) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SubscriptionPostRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -112,7 +112,7 @@ func (o *SubscriptionPostRequest) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *SubscriptionPostRequest) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -174,7 +174,7 @@ func (o *SubscriptionPostRequest) SetType(v SubscriptionType) {
 
 // GetResponseDeadline returns the ResponseDeadline field value if set, zero value otherwise.
 func (o *SubscriptionPostRequest) GetResponseDeadline() string {
-	if o == nil || isNil(o.ResponseDeadline) {
+	if o == nil || IsNil(o.ResponseDeadline) {
 		var ret string
 		return ret
 	}
@@ -184,7 +184,7 @@ func (o *SubscriptionPostRequest) GetResponseDeadline() string {
 // GetResponseDeadlineOk returns a tuple with the ResponseDeadline field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SubscriptionPostRequest) GetResponseDeadlineOk() (*string, bool) {
-	if o == nil || isNil(o.ResponseDeadline) {
+	if o == nil || IsNil(o.ResponseDeadline) {
 		return nil, false
 	}
 	return o.ResponseDeadline, true
@@ -192,7 +192,7 @@ func (o *SubscriptionPostRequest) GetResponseDeadlineOk() (*string, bool) {
 
 // HasResponseDeadline returns a boolean if a field has been set.
 func (o *SubscriptionPostRequest) HasResponseDeadline() bool {
-	if o != nil && !isNil(o.ResponseDeadline) {
+	if o != nil && !IsNil(o.ResponseDeadline) {
 		return true
 	}
 
@@ -206,7 +206,7 @@ func (o *SubscriptionPostRequest) SetResponseDeadline(v string) {
 
 // GetHttpConfig returns the HttpConfig field value if set, zero value otherwise.
 func (o *SubscriptionPostRequest) GetHttpConfig() HttpConfig {
-	if o == nil || isNil(o.HttpConfig) {
+	if o == nil || IsNil(o.HttpConfig) {
 		var ret HttpConfig
 		return ret
 	}
@@ -216,7 +216,7 @@ func (o *SubscriptionPostRequest) GetHttpConfig() HttpConfig {
 // GetHttpConfigOk returns a tuple with the HttpConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SubscriptionPostRequest) GetHttpConfigOk() (*HttpConfig, bool) {
-	if o == nil || isNil(o.HttpConfig) {
+	if o == nil || IsNil(o.HttpConfig) {
 		return nil, false
 	}
 	return o.HttpConfig, true
@@ -224,7 +224,7 @@ func (o *SubscriptionPostRequest) GetHttpConfigOk() (*HttpConfig, bool) {
 
 // HasHttpConfig returns a boolean if a field has been set.
 func (o *SubscriptionPostRequest) HasHttpConfig() bool {
-	if o != nil && !isNil(o.HttpConfig) {
+	if o != nil && !IsNil(o.HttpConfig) {
 		return true
 	}
 
@@ -238,7 +238,7 @@ func (o *SubscriptionPostRequest) SetHttpConfig(v HttpConfig) {
 
 // GetEventBridgeConfig returns the EventBridgeConfig field value if set, zero value otherwise.
 func (o *SubscriptionPostRequest) GetEventBridgeConfig() EventBridgeConfig {
-	if o == nil || isNil(o.EventBridgeConfig) {
+	if o == nil || IsNil(o.EventBridgeConfig) {
 		var ret EventBridgeConfig
 		return ret
 	}
@@ -248,7 +248,7 @@ func (o *SubscriptionPostRequest) GetEventBridgeConfig() EventBridgeConfig {
 // GetEventBridgeConfigOk returns a tuple with the EventBridgeConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SubscriptionPostRequest) GetEventBridgeConfigOk() (*EventBridgeConfig, bool) {
-	if o == nil || isNil(o.EventBridgeConfig) {
+	if o == nil || IsNil(o.EventBridgeConfig) {
 		return nil, false
 	}
 	return o.EventBridgeConfig, true
@@ -256,7 +256,7 @@ func (o *SubscriptionPostRequest) GetEventBridgeConfigOk() (*EventBridgeConfig, 
 
 // HasEventBridgeConfig returns a boolean if a field has been set.
 func (o *SubscriptionPostRequest) HasEventBridgeConfig() bool {
-	if o != nil && !isNil(o.EventBridgeConfig) {
+	if o != nil && !IsNil(o.EventBridgeConfig) {
 		return true
 	}
 
@@ -270,7 +270,7 @@ func (o *SubscriptionPostRequest) SetEventBridgeConfig(v EventBridgeConfig) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *SubscriptionPostRequest) GetEnabled() bool {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -280,7 +280,7 @@ func (o *SubscriptionPostRequest) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SubscriptionPostRequest) GetEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -288,7 +288,7 @@ func (o *SubscriptionPostRequest) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *SubscriptionPostRequest) HasEnabled() bool {
-	if o != nil && !isNil(o.Enabled) {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -302,7 +302,7 @@ func (o *SubscriptionPostRequest) SetEnabled(v bool) {
 
 // GetFilter returns the Filter field value if set, zero value otherwise.
 func (o *SubscriptionPostRequest) GetFilter() string {
-	if o == nil || isNil(o.Filter) {
+	if o == nil || IsNil(o.Filter) {
 		var ret string
 		return ret
 	}
@@ -312,7 +312,7 @@ func (o *SubscriptionPostRequest) GetFilter() string {
 // GetFilterOk returns a tuple with the Filter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SubscriptionPostRequest) GetFilterOk() (*string, bool) {
-	if o == nil || isNil(o.Filter) {
+	if o == nil || IsNil(o.Filter) {
 		return nil, false
 	}
 	return o.Filter, true
@@ -320,7 +320,7 @@ func (o *SubscriptionPostRequest) GetFilterOk() (*string, bool) {
 
 // HasFilter returns a boolean if a field has been set.
 func (o *SubscriptionPostRequest) HasFilter() bool {
-	if o != nil && !isNil(o.Filter) {
+	if o != nil && !IsNil(o.Filter) {
 		return true
 	}
 
@@ -343,24 +343,24 @@ func (o SubscriptionPostRequest) MarshalJSON() ([]byte, error) {
 func (o SubscriptionPostRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 	toSerialize["triggerId"] = o.TriggerId
 	toSerialize["type"] = o.Type
-	if !isNil(o.ResponseDeadline) {
+	if !IsNil(o.ResponseDeadline) {
 		toSerialize["responseDeadline"] = o.ResponseDeadline
 	}
-	if !isNil(o.HttpConfig) {
+	if !IsNil(o.HttpConfig) {
 		toSerialize["httpConfig"] = o.HttpConfig
 	}
-	if !isNil(o.EventBridgeConfig) {
+	if !IsNil(o.EventBridgeConfig) {
 		toSerialize["eventBridgeConfig"] = o.EventBridgeConfig
 	}
-	if !isNil(o.Enabled) {
+	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if !isNil(o.Filter) {
+	if !IsNil(o.Filter) {
 		toSerialize["filter"] = o.Filter
 	}
 
@@ -371,8 +371,8 @@ func (o SubscriptionPostRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SubscriptionPostRequest) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *SubscriptionPostRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -383,7 +383,7 @@ func (o *SubscriptionPostRequest) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -397,13 +397,17 @@ func (o *SubscriptionPostRequest) UnmarshalJSON(bytes []byte) (err error) {
 
 	varSubscriptionPostRequest := _SubscriptionPostRequest{}
 
-	if err = json.Unmarshal(bytes, &varSubscriptionPostRequest); err == nil {
+	err = json.Unmarshal(data, &varSubscriptionPostRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SubscriptionPostRequest(varSubscriptionPostRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "triggerId")

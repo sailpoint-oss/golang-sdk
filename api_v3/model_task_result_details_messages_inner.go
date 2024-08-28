@@ -61,7 +61,7 @@ func NewTaskResultDetailsMessagesInnerWithDefaults() *TaskResultDetailsMessagesI
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *TaskResultDetailsMessagesInner) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -71,7 +71,7 @@ func (o *TaskResultDetailsMessagesInner) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TaskResultDetailsMessagesInner) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -79,7 +79,7 @@ func (o *TaskResultDetailsMessagesInner) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *TaskResultDetailsMessagesInner) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -93,7 +93,7 @@ func (o *TaskResultDetailsMessagesInner) SetType(v string) {
 
 // GetError returns the Error field value if set, zero value otherwise.
 func (o *TaskResultDetailsMessagesInner) GetError() bool {
-	if o == nil || isNil(o.Error) {
+	if o == nil || IsNil(o.Error) {
 		var ret bool
 		return ret
 	}
@@ -103,7 +103,7 @@ func (o *TaskResultDetailsMessagesInner) GetError() bool {
 // GetErrorOk returns a tuple with the Error field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TaskResultDetailsMessagesInner) GetErrorOk() (*bool, bool) {
-	if o == nil || isNil(o.Error) {
+	if o == nil || IsNil(o.Error) {
 		return nil, false
 	}
 	return o.Error, true
@@ -111,7 +111,7 @@ func (o *TaskResultDetailsMessagesInner) GetErrorOk() (*bool, bool) {
 
 // HasError returns a boolean if a field has been set.
 func (o *TaskResultDetailsMessagesInner) HasError() bool {
-	if o != nil && !isNil(o.Error) {
+	if o != nil && !IsNil(o.Error) {
 		return true
 	}
 
@@ -125,7 +125,7 @@ func (o *TaskResultDetailsMessagesInner) SetError(v bool) {
 
 // GetWarning returns the Warning field value if set, zero value otherwise.
 func (o *TaskResultDetailsMessagesInner) GetWarning() bool {
-	if o == nil || isNil(o.Warning) {
+	if o == nil || IsNil(o.Warning) {
 		var ret bool
 		return ret
 	}
@@ -135,7 +135,7 @@ func (o *TaskResultDetailsMessagesInner) GetWarning() bool {
 // GetWarningOk returns a tuple with the Warning field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TaskResultDetailsMessagesInner) GetWarningOk() (*bool, bool) {
-	if o == nil || isNil(o.Warning) {
+	if o == nil || IsNil(o.Warning) {
 		return nil, false
 	}
 	return o.Warning, true
@@ -143,7 +143,7 @@ func (o *TaskResultDetailsMessagesInner) GetWarningOk() (*bool, bool) {
 
 // HasWarning returns a boolean if a field has been set.
 func (o *TaskResultDetailsMessagesInner) HasWarning() bool {
-	if o != nil && !isNil(o.Warning) {
+	if o != nil && !IsNil(o.Warning) {
 		return true
 	}
 
@@ -157,7 +157,7 @@ func (o *TaskResultDetailsMessagesInner) SetWarning(v bool) {
 
 // GetKey returns the Key field value if set, zero value otherwise.
 func (o *TaskResultDetailsMessagesInner) GetKey() string {
-	if o == nil || isNil(o.Key) {
+	if o == nil || IsNil(o.Key) {
 		var ret string
 		return ret
 	}
@@ -167,7 +167,7 @@ func (o *TaskResultDetailsMessagesInner) GetKey() string {
 // GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TaskResultDetailsMessagesInner) GetKeyOk() (*string, bool) {
-	if o == nil || isNil(o.Key) {
+	if o == nil || IsNil(o.Key) {
 		return nil, false
 	}
 	return o.Key, true
@@ -175,7 +175,7 @@ func (o *TaskResultDetailsMessagesInner) GetKeyOk() (*string, bool) {
 
 // HasKey returns a boolean if a field has been set.
 func (o *TaskResultDetailsMessagesInner) HasKey() bool {
-	if o != nil && !isNil(o.Key) {
+	if o != nil && !IsNil(o.Key) {
 		return true
 	}
 
@@ -189,7 +189,7 @@ func (o *TaskResultDetailsMessagesInner) SetKey(v string) {
 
 // GetLocalizedText returns the LocalizedText field value if set, zero value otherwise.
 func (o *TaskResultDetailsMessagesInner) GetLocalizedText() string {
-	if o == nil || isNil(o.LocalizedText) {
+	if o == nil || IsNil(o.LocalizedText) {
 		var ret string
 		return ret
 	}
@@ -199,7 +199,7 @@ func (o *TaskResultDetailsMessagesInner) GetLocalizedText() string {
 // GetLocalizedTextOk returns a tuple with the LocalizedText field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TaskResultDetailsMessagesInner) GetLocalizedTextOk() (*string, bool) {
-	if o == nil || isNil(o.LocalizedText) {
+	if o == nil || IsNil(o.LocalizedText) {
 		return nil, false
 	}
 	return o.LocalizedText, true
@@ -207,7 +207,7 @@ func (o *TaskResultDetailsMessagesInner) GetLocalizedTextOk() (*string, bool) {
 
 // HasLocalizedText returns a boolean if a field has been set.
 func (o *TaskResultDetailsMessagesInner) HasLocalizedText() bool {
-	if o != nil && !isNil(o.LocalizedText) {
+	if o != nil && !IsNil(o.LocalizedText) {
 		return true
 	}
 
@@ -229,19 +229,19 @@ func (o TaskResultDetailsMessagesInner) MarshalJSON() ([]byte, error) {
 
 func (o TaskResultDetailsMessagesInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Error) {
+	if !IsNil(o.Error) {
 		toSerialize["error"] = o.Error
 	}
-	if !isNil(o.Warning) {
+	if !IsNil(o.Warning) {
 		toSerialize["warning"] = o.Warning
 	}
-	if !isNil(o.Key) {
+	if !IsNil(o.Key) {
 		toSerialize["key"] = o.Key
 	}
-	if !isNil(o.LocalizedText) {
+	if !IsNil(o.LocalizedText) {
 		toSerialize["localizedText"] = o.LocalizedText
 	}
 
@@ -252,16 +252,20 @@ func (o TaskResultDetailsMessagesInner) ToMap() (map[string]interface{}, error) 
 	return toSerialize, nil
 }
 
-func (o *TaskResultDetailsMessagesInner) UnmarshalJSON(bytes []byte) (err error) {
+func (o *TaskResultDetailsMessagesInner) UnmarshalJSON(data []byte) (err error) {
 	varTaskResultDetailsMessagesInner := _TaskResultDetailsMessagesInner{}
 
-	if err = json.Unmarshal(bytes, &varTaskResultDetailsMessagesInner); err == nil {
+	err = json.Unmarshal(data, &varTaskResultDetailsMessagesInner)
+
+	if err != nil {
+		return err
+	}
+
 	*o = TaskResultDetailsMessagesInner(varTaskResultDetailsMessagesInner)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "error")
 		delete(additionalProperties, "warning")

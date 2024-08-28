@@ -113,7 +113,7 @@ func (o *BrandingItemCreate) SetProductName(v string) {
 
 // GetActionButtonColor returns the ActionButtonColor field value if set, zero value otherwise.
 func (o *BrandingItemCreate) GetActionButtonColor() string {
-	if o == nil || isNil(o.ActionButtonColor) {
+	if o == nil || IsNil(o.ActionButtonColor) {
 		var ret string
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *BrandingItemCreate) GetActionButtonColor() string {
 // GetActionButtonColorOk returns a tuple with the ActionButtonColor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BrandingItemCreate) GetActionButtonColorOk() (*string, bool) {
-	if o == nil || isNil(o.ActionButtonColor) {
+	if o == nil || IsNil(o.ActionButtonColor) {
 		return nil, false
 	}
 	return o.ActionButtonColor, true
@@ -131,7 +131,7 @@ func (o *BrandingItemCreate) GetActionButtonColorOk() (*string, bool) {
 
 // HasActionButtonColor returns a boolean if a field has been set.
 func (o *BrandingItemCreate) HasActionButtonColor() bool {
-	if o != nil && !isNil(o.ActionButtonColor) {
+	if o != nil && !IsNil(o.ActionButtonColor) {
 		return true
 	}
 
@@ -145,7 +145,7 @@ func (o *BrandingItemCreate) SetActionButtonColor(v string) {
 
 // GetActiveLinkColor returns the ActiveLinkColor field value if set, zero value otherwise.
 func (o *BrandingItemCreate) GetActiveLinkColor() string {
-	if o == nil || isNil(o.ActiveLinkColor) {
+	if o == nil || IsNil(o.ActiveLinkColor) {
 		var ret string
 		return ret
 	}
@@ -155,7 +155,7 @@ func (o *BrandingItemCreate) GetActiveLinkColor() string {
 // GetActiveLinkColorOk returns a tuple with the ActiveLinkColor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BrandingItemCreate) GetActiveLinkColorOk() (*string, bool) {
-	if o == nil || isNil(o.ActiveLinkColor) {
+	if o == nil || IsNil(o.ActiveLinkColor) {
 		return nil, false
 	}
 	return o.ActiveLinkColor, true
@@ -163,7 +163,7 @@ func (o *BrandingItemCreate) GetActiveLinkColorOk() (*string, bool) {
 
 // HasActiveLinkColor returns a boolean if a field has been set.
 func (o *BrandingItemCreate) HasActiveLinkColor() bool {
-	if o != nil && !isNil(o.ActiveLinkColor) {
+	if o != nil && !IsNil(o.ActiveLinkColor) {
 		return true
 	}
 
@@ -177,7 +177,7 @@ func (o *BrandingItemCreate) SetActiveLinkColor(v string) {
 
 // GetNavigationColor returns the NavigationColor field value if set, zero value otherwise.
 func (o *BrandingItemCreate) GetNavigationColor() string {
-	if o == nil || isNil(o.NavigationColor) {
+	if o == nil || IsNil(o.NavigationColor) {
 		var ret string
 		return ret
 	}
@@ -187,7 +187,7 @@ func (o *BrandingItemCreate) GetNavigationColor() string {
 // GetNavigationColorOk returns a tuple with the NavigationColor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BrandingItemCreate) GetNavigationColorOk() (*string, bool) {
-	if o == nil || isNil(o.NavigationColor) {
+	if o == nil || IsNil(o.NavigationColor) {
 		return nil, false
 	}
 	return o.NavigationColor, true
@@ -195,7 +195,7 @@ func (o *BrandingItemCreate) GetNavigationColorOk() (*string, bool) {
 
 // HasNavigationColor returns a boolean if a field has been set.
 func (o *BrandingItemCreate) HasNavigationColor() bool {
-	if o != nil && !isNil(o.NavigationColor) {
+	if o != nil && !IsNil(o.NavigationColor) {
 		return true
 	}
 
@@ -209,7 +209,7 @@ func (o *BrandingItemCreate) SetNavigationColor(v string) {
 
 // GetEmailFromAddress returns the EmailFromAddress field value if set, zero value otherwise.
 func (o *BrandingItemCreate) GetEmailFromAddress() string {
-	if o == nil || isNil(o.EmailFromAddress) {
+	if o == nil || IsNil(o.EmailFromAddress) {
 		var ret string
 		return ret
 	}
@@ -219,7 +219,7 @@ func (o *BrandingItemCreate) GetEmailFromAddress() string {
 // GetEmailFromAddressOk returns a tuple with the EmailFromAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BrandingItemCreate) GetEmailFromAddressOk() (*string, bool) {
-	if o == nil || isNil(o.EmailFromAddress) {
+	if o == nil || IsNil(o.EmailFromAddress) {
 		return nil, false
 	}
 	return o.EmailFromAddress, true
@@ -227,7 +227,7 @@ func (o *BrandingItemCreate) GetEmailFromAddressOk() (*string, bool) {
 
 // HasEmailFromAddress returns a boolean if a field has been set.
 func (o *BrandingItemCreate) HasEmailFromAddress() bool {
-	if o != nil && !isNil(o.EmailFromAddress) {
+	if o != nil && !IsNil(o.EmailFromAddress) {
 		return true
 	}
 
@@ -241,7 +241,7 @@ func (o *BrandingItemCreate) SetEmailFromAddress(v string) {
 
 // GetLoginInformationalMessage returns the LoginInformationalMessage field value if set, zero value otherwise.
 func (o *BrandingItemCreate) GetLoginInformationalMessage() string {
-	if o == nil || isNil(o.LoginInformationalMessage) {
+	if o == nil || IsNil(o.LoginInformationalMessage) {
 		var ret string
 		return ret
 	}
@@ -251,7 +251,7 @@ func (o *BrandingItemCreate) GetLoginInformationalMessage() string {
 // GetLoginInformationalMessageOk returns a tuple with the LoginInformationalMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BrandingItemCreate) GetLoginInformationalMessageOk() (*string, bool) {
-	if o == nil || isNil(o.LoginInformationalMessage) {
+	if o == nil || IsNil(o.LoginInformationalMessage) {
 		return nil, false
 	}
 	return o.LoginInformationalMessage, true
@@ -259,7 +259,7 @@ func (o *BrandingItemCreate) GetLoginInformationalMessageOk() (*string, bool) {
 
 // HasLoginInformationalMessage returns a boolean if a field has been set.
 func (o *BrandingItemCreate) HasLoginInformationalMessage() bool {
-	if o != nil && !isNil(o.LoginInformationalMessage) {
+	if o != nil && !IsNil(o.LoginInformationalMessage) {
 		return true
 	}
 
@@ -273,7 +273,7 @@ func (o *BrandingItemCreate) SetLoginInformationalMessage(v string) {
 
 // GetFileStandard returns the FileStandard field value if set, zero value otherwise.
 func (o *BrandingItemCreate) GetFileStandard() *os.File {
-	if o == nil || isNil(o.FileStandard) {
+	if o == nil || IsNil(o.FileStandard) {
 		var ret *os.File
 		return ret
 	}
@@ -283,7 +283,7 @@ func (o *BrandingItemCreate) GetFileStandard() *os.File {
 // GetFileStandardOk returns a tuple with the FileStandard field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BrandingItemCreate) GetFileStandardOk() (**os.File, bool) {
-	if o == nil || isNil(o.FileStandard) {
+	if o == nil || IsNil(o.FileStandard) {
 		return nil, false
 	}
 	return o.FileStandard, true
@@ -291,7 +291,7 @@ func (o *BrandingItemCreate) GetFileStandardOk() (**os.File, bool) {
 
 // HasFileStandard returns a boolean if a field has been set.
 func (o *BrandingItemCreate) HasFileStandard() bool {
-	if o != nil && !isNil(o.FileStandard) {
+	if o != nil && !IsNil(o.FileStandard) {
 		return true
 	}
 
@@ -315,22 +315,22 @@ func (o BrandingItemCreate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	toSerialize["productName"] = o.ProductName.Get()
-	if !isNil(o.ActionButtonColor) {
+	if !IsNil(o.ActionButtonColor) {
 		toSerialize["actionButtonColor"] = o.ActionButtonColor
 	}
-	if !isNil(o.ActiveLinkColor) {
+	if !IsNil(o.ActiveLinkColor) {
 		toSerialize["activeLinkColor"] = o.ActiveLinkColor
 	}
-	if !isNil(o.NavigationColor) {
+	if !IsNil(o.NavigationColor) {
 		toSerialize["navigationColor"] = o.NavigationColor
 	}
-	if !isNil(o.EmailFromAddress) {
+	if !IsNil(o.EmailFromAddress) {
 		toSerialize["emailFromAddress"] = o.EmailFromAddress
 	}
-	if !isNil(o.LoginInformationalMessage) {
+	if !IsNil(o.LoginInformationalMessage) {
 		toSerialize["loginInformationalMessage"] = o.LoginInformationalMessage
 	}
-	if !isNil(o.FileStandard) {
+	if !IsNil(o.FileStandard) {
 		toSerialize["fileStandard"] = o.FileStandard
 	}
 
@@ -341,8 +341,8 @@ func (o BrandingItemCreate) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *BrandingItemCreate) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *BrandingItemCreate) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -352,7 +352,7 @@ func (o *BrandingItemCreate) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -366,13 +366,17 @@ func (o *BrandingItemCreate) UnmarshalJSON(bytes []byte) (err error) {
 
 	varBrandingItemCreate := _BrandingItemCreate{}
 
-	if err = json.Unmarshal(bytes, &varBrandingItemCreate); err == nil {
+	err = json.Unmarshal(data, &varBrandingItemCreate)
+
+	if err != nil {
+		return err
+	}
+
 	*o = BrandingItemCreate(varBrandingItemCreate)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "productName")
 		delete(additionalProperties, "actionButtonColor")

@@ -61,7 +61,7 @@ func NewSedBatchStatsWithDefaults() *SedBatchStats {
 
 // GetBatchComplete returns the BatchComplete field value if set, zero value otherwise.
 func (o *SedBatchStats) GetBatchComplete() bool {
-	if o == nil || isNil(o.BatchComplete) {
+	if o == nil || IsNil(o.BatchComplete) {
 		var ret bool
 		return ret
 	}
@@ -71,7 +71,7 @@ func (o *SedBatchStats) GetBatchComplete() bool {
 // GetBatchCompleteOk returns a tuple with the BatchComplete field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SedBatchStats) GetBatchCompleteOk() (*bool, bool) {
-	if o == nil || isNil(o.BatchComplete) {
+	if o == nil || IsNil(o.BatchComplete) {
 		return nil, false
 	}
 	return o.BatchComplete, true
@@ -79,7 +79,7 @@ func (o *SedBatchStats) GetBatchCompleteOk() (*bool, bool) {
 
 // HasBatchComplete returns a boolean if a field has been set.
 func (o *SedBatchStats) HasBatchComplete() bool {
-	if o != nil && !isNil(o.BatchComplete) {
+	if o != nil && !IsNil(o.BatchComplete) {
 		return true
 	}
 
@@ -93,7 +93,7 @@ func (o *SedBatchStats) SetBatchComplete(v bool) {
 
 // GetBatchId returns the BatchId field value if set, zero value otherwise.
 func (o *SedBatchStats) GetBatchId() string {
-	if o == nil || isNil(o.BatchId) {
+	if o == nil || IsNil(o.BatchId) {
 		var ret string
 		return ret
 	}
@@ -103,7 +103,7 @@ func (o *SedBatchStats) GetBatchId() string {
 // GetBatchIdOk returns a tuple with the BatchId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SedBatchStats) GetBatchIdOk() (*string, bool) {
-	if o == nil || isNil(o.BatchId) {
+	if o == nil || IsNil(o.BatchId) {
 		return nil, false
 	}
 	return o.BatchId, true
@@ -111,7 +111,7 @@ func (o *SedBatchStats) GetBatchIdOk() (*string, bool) {
 
 // HasBatchId returns a boolean if a field has been set.
 func (o *SedBatchStats) HasBatchId() bool {
-	if o != nil && !isNil(o.BatchId) {
+	if o != nil && !IsNil(o.BatchId) {
 		return true
 	}
 
@@ -125,7 +125,7 @@ func (o *SedBatchStats) SetBatchId(v string) {
 
 // GetDiscoveredCount returns the DiscoveredCount field value if set, zero value otherwise.
 func (o *SedBatchStats) GetDiscoveredCount() int64 {
-	if o == nil || isNil(o.DiscoveredCount) {
+	if o == nil || IsNil(o.DiscoveredCount) {
 		var ret int64
 		return ret
 	}
@@ -135,7 +135,7 @@ func (o *SedBatchStats) GetDiscoveredCount() int64 {
 // GetDiscoveredCountOk returns a tuple with the DiscoveredCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SedBatchStats) GetDiscoveredCountOk() (*int64, bool) {
-	if o == nil || isNil(o.DiscoveredCount) {
+	if o == nil || IsNil(o.DiscoveredCount) {
 		return nil, false
 	}
 	return o.DiscoveredCount, true
@@ -143,7 +143,7 @@ func (o *SedBatchStats) GetDiscoveredCountOk() (*int64, bool) {
 
 // HasDiscoveredCount returns a boolean if a field has been set.
 func (o *SedBatchStats) HasDiscoveredCount() bool {
-	if o != nil && !isNil(o.DiscoveredCount) {
+	if o != nil && !IsNil(o.DiscoveredCount) {
 		return true
 	}
 
@@ -157,7 +157,7 @@ func (o *SedBatchStats) SetDiscoveredCount(v int64) {
 
 // GetDiscoveryComplete returns the DiscoveryComplete field value if set, zero value otherwise.
 func (o *SedBatchStats) GetDiscoveryComplete() bool {
-	if o == nil || isNil(o.DiscoveryComplete) {
+	if o == nil || IsNil(o.DiscoveryComplete) {
 		var ret bool
 		return ret
 	}
@@ -167,7 +167,7 @@ func (o *SedBatchStats) GetDiscoveryComplete() bool {
 // GetDiscoveryCompleteOk returns a tuple with the DiscoveryComplete field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SedBatchStats) GetDiscoveryCompleteOk() (*bool, bool) {
-	if o == nil || isNil(o.DiscoveryComplete) {
+	if o == nil || IsNil(o.DiscoveryComplete) {
 		return nil, false
 	}
 	return o.DiscoveryComplete, true
@@ -175,7 +175,7 @@ func (o *SedBatchStats) GetDiscoveryCompleteOk() (*bool, bool) {
 
 // HasDiscoveryComplete returns a boolean if a field has been set.
 func (o *SedBatchStats) HasDiscoveryComplete() bool {
-	if o != nil && !isNil(o.DiscoveryComplete) {
+	if o != nil && !IsNil(o.DiscoveryComplete) {
 		return true
 	}
 
@@ -189,7 +189,7 @@ func (o *SedBatchStats) SetDiscoveryComplete(v bool) {
 
 // GetProcessedCount returns the ProcessedCount field value if set, zero value otherwise.
 func (o *SedBatchStats) GetProcessedCount() int64 {
-	if o == nil || isNil(o.ProcessedCount) {
+	if o == nil || IsNil(o.ProcessedCount) {
 		var ret int64
 		return ret
 	}
@@ -199,7 +199,7 @@ func (o *SedBatchStats) GetProcessedCount() int64 {
 // GetProcessedCountOk returns a tuple with the ProcessedCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SedBatchStats) GetProcessedCountOk() (*int64, bool) {
-	if o == nil || isNil(o.ProcessedCount) {
+	if o == nil || IsNil(o.ProcessedCount) {
 		return nil, false
 	}
 	return o.ProcessedCount, true
@@ -207,7 +207,7 @@ func (o *SedBatchStats) GetProcessedCountOk() (*int64, bool) {
 
 // HasProcessedCount returns a boolean if a field has been set.
 func (o *SedBatchStats) HasProcessedCount() bool {
-	if o != nil && !isNil(o.ProcessedCount) {
+	if o != nil && !IsNil(o.ProcessedCount) {
 		return true
 	}
 
@@ -229,19 +229,19 @@ func (o SedBatchStats) MarshalJSON() ([]byte, error) {
 
 func (o SedBatchStats) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.BatchComplete) {
+	if !IsNil(o.BatchComplete) {
 		toSerialize["batchComplete"] = o.BatchComplete
 	}
-	if !isNil(o.BatchId) {
+	if !IsNil(o.BatchId) {
 		toSerialize["batchId"] = o.BatchId
 	}
-	if !isNil(o.DiscoveredCount) {
+	if !IsNil(o.DiscoveredCount) {
 		toSerialize["discoveredCount"] = o.DiscoveredCount
 	}
-	if !isNil(o.DiscoveryComplete) {
+	if !IsNil(o.DiscoveryComplete) {
 		toSerialize["discoveryComplete"] = o.DiscoveryComplete
 	}
-	if !isNil(o.ProcessedCount) {
+	if !IsNil(o.ProcessedCount) {
 		toSerialize["processedCount"] = o.ProcessedCount
 	}
 
@@ -252,16 +252,20 @@ func (o SedBatchStats) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SedBatchStats) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SedBatchStats) UnmarshalJSON(data []byte) (err error) {
 	varSedBatchStats := _SedBatchStats{}
 
-	if err = json.Unmarshal(bytes, &varSedBatchStats); err == nil {
+	err = json.Unmarshal(data, &varSedBatchStats)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SedBatchStats(varSedBatchStats)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "batchComplete")
 		delete(additionalProperties, "batchId")
 		delete(additionalProperties, "discoveredCount")

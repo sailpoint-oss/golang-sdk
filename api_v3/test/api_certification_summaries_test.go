@@ -19,7 +19,7 @@ import (
 
 func Test_api_v3_CertificationSummariesAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test CertificationSummariesAPIService GetIdentityAccessSummaries", func(t *testing.T) {
@@ -29,7 +29,7 @@ func Test_api_v3_CertificationSummariesAPIService(t *testing.T) {
 		var id string
 		var type_ string
 
-		resp, httpRes, err := apiClient.API_V3.CertificationSummariesAPI.GetIdentityAccessSummaries(context.Background(), id, type_).Execute()
+		resp, httpRes, err := apiClient.CertificationSummariesAPI.GetIdentityAccessSummaries(context.Background(), id, type_).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -43,7 +43,7 @@ func Test_api_v3_CertificationSummariesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.CertificationSummariesAPI.GetIdentityDecisionSummary(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.CertificationSummariesAPI.GetIdentityDecisionSummary(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -57,7 +57,7 @@ func Test_api_v3_CertificationSummariesAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V3.CertificationSummariesAPI.GetIdentitySummaries(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.CertificationSummariesAPI.GetIdentitySummaries(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -72,7 +72,7 @@ func Test_api_v3_CertificationSummariesAPIService(t *testing.T) {
 		var id string
 		var identitySummaryId string
 
-		resp, httpRes, err := apiClient.API_V3.CertificationSummariesAPI.GetIdentitySummary(context.Background(), id, identitySummaryId).Execute()
+		resp, httpRes, err := apiClient.CertificationSummariesAPI.GetIdentitySummary(context.Background(), id, identitySummaryId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

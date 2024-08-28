@@ -19,7 +19,7 @@ import (
 
 func Test_api_v2024_EntitlementsAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test EntitlementsAPIService CreateAccessModelMetadataForEntitlement", func(t *testing.T) {
@@ -30,7 +30,7 @@ func Test_api_v2024_EntitlementsAPIService(t *testing.T) {
 		var attributeKey string
 		var attributeValue string
 
-		resp, httpRes, err := apiClient.API_V2024.EntitlementsAPI.CreateAccessModelMetadataForEntitlement(context.Background(), id, attributeKey, attributeValue).Execute()
+		resp, httpRes, err := apiClient.EntitlementsAPI.CreateAccessModelMetadataForEntitlement(context.Background(), id, attributeKey, attributeValue).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -46,7 +46,7 @@ func Test_api_v2024_EntitlementsAPIService(t *testing.T) {
 		var attributeKey string
 		var attributeValue string
 
-		httpRes, err := apiClient.API_V2024.EntitlementsAPI.DeleteAccessModelMetadataFromEntitlement(context.Background(), id, attributeKey, attributeValue).Execute()
+		httpRes, err := apiClient.EntitlementsAPI.DeleteAccessModelMetadataFromEntitlement(context.Background(), id, attributeKey, attributeValue).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -59,7 +59,7 @@ func Test_api_v2024_EntitlementsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.EntitlementsAPI.GetEntitlement(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.EntitlementsAPI.GetEntitlement(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -73,7 +73,7 @@ func Test_api_v2024_EntitlementsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.EntitlementsAPI.GetEntitlementRequestConfig(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.EntitlementsAPI.GetEntitlementRequestConfig(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -87,7 +87,7 @@ func Test_api_v2024_EntitlementsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.EntitlementsAPI.ImportEntitlementsBySource(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.EntitlementsAPI.ImportEntitlementsBySource(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -101,7 +101,7 @@ func Test_api_v2024_EntitlementsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.EntitlementsAPI.ListEntitlementChildren(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.EntitlementsAPI.ListEntitlementChildren(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -115,7 +115,7 @@ func Test_api_v2024_EntitlementsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.EntitlementsAPI.ListEntitlementParents(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.EntitlementsAPI.ListEntitlementParents(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -127,7 +127,7 @@ func Test_api_v2024_EntitlementsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.EntitlementsAPI.ListEntitlements(context.Background()).Execute()
+		resp, httpRes, err := apiClient.EntitlementsAPI.ListEntitlements(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -141,7 +141,7 @@ func Test_api_v2024_EntitlementsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.EntitlementsAPI.PatchEntitlement(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.EntitlementsAPI.PatchEntitlement(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -155,7 +155,7 @@ func Test_api_v2024_EntitlementsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.EntitlementsAPI.PutEntitlementRequestConfig(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.EntitlementsAPI.PutEntitlementRequestConfig(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -169,7 +169,7 @@ func Test_api_v2024_EntitlementsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.EntitlementsAPI.ResetSourceEntitlements(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.EntitlementsAPI.ResetSourceEntitlements(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -181,7 +181,7 @@ func Test_api_v2024_EntitlementsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.API_V2024.EntitlementsAPI.UpdateEntitlementsInBulk(context.Background()).Execute()
+		httpRes, err := apiClient.EntitlementsAPI.UpdateEntitlementsInBulk(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

@@ -47,7 +47,7 @@ func NewObjectExportImportOptionsWithDefaults() *ObjectExportImportOptions {
 
 // GetIncludedIds returns the IncludedIds field value if set, zero value otherwise.
 func (o *ObjectExportImportOptions) GetIncludedIds() []string {
-	if o == nil || isNil(o.IncludedIds) {
+	if o == nil || IsNil(o.IncludedIds) {
 		var ret []string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *ObjectExportImportOptions) GetIncludedIds() []string {
 // GetIncludedIdsOk returns a tuple with the IncludedIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ObjectExportImportOptions) GetIncludedIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.IncludedIds) {
+	if o == nil || IsNil(o.IncludedIds) {
 		return nil, false
 	}
 	return o.IncludedIds, true
@@ -65,7 +65,7 @@ func (o *ObjectExportImportOptions) GetIncludedIdsOk() ([]string, bool) {
 
 // HasIncludedIds returns a boolean if a field has been set.
 func (o *ObjectExportImportOptions) HasIncludedIds() bool {
-	if o != nil && !isNil(o.IncludedIds) {
+	if o != nil && !IsNil(o.IncludedIds) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *ObjectExportImportOptions) SetIncludedIds(v []string) {
 
 // GetIncludedNames returns the IncludedNames field value if set, zero value otherwise.
 func (o *ObjectExportImportOptions) GetIncludedNames() []string {
-	if o == nil || isNil(o.IncludedNames) {
+	if o == nil || IsNil(o.IncludedNames) {
 		var ret []string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *ObjectExportImportOptions) GetIncludedNames() []string {
 // GetIncludedNamesOk returns a tuple with the IncludedNames field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ObjectExportImportOptions) GetIncludedNamesOk() ([]string, bool) {
-	if o == nil || isNil(o.IncludedNames) {
+	if o == nil || IsNil(o.IncludedNames) {
 		return nil, false
 	}
 	return o.IncludedNames, true
@@ -97,7 +97,7 @@ func (o *ObjectExportImportOptions) GetIncludedNamesOk() ([]string, bool) {
 
 // HasIncludedNames returns a boolean if a field has been set.
 func (o *ObjectExportImportOptions) HasIncludedNames() bool {
-	if o != nil && !isNil(o.IncludedNames) {
+	if o != nil && !IsNil(o.IncludedNames) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o ObjectExportImportOptions) MarshalJSON() ([]byte, error) {
 
 func (o ObjectExportImportOptions) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.IncludedIds) {
+	if !IsNil(o.IncludedIds) {
 		toSerialize["includedIds"] = o.IncludedIds
 	}
-	if !isNil(o.IncludedNames) {
+	if !IsNil(o.IncludedNames) {
 		toSerialize["includedNames"] = o.IncludedNames
 	}
 
@@ -133,16 +133,20 @@ func (o ObjectExportImportOptions) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ObjectExportImportOptions) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ObjectExportImportOptions) UnmarshalJSON(data []byte) (err error) {
 	varObjectExportImportOptions := _ObjectExportImportOptions{}
 
-	if err = json.Unmarshal(bytes, &varObjectExportImportOptions); err == nil {
+	err = json.Unmarshal(data, &varObjectExportImportOptions)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ObjectExportImportOptions(varObjectExportImportOptions)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "includedIds")
 		delete(additionalProperties, "includedNames")
 		o.AdditionalProperties = additionalProperties

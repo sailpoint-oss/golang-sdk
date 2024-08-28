@@ -78,7 +78,7 @@ func NewSearchWithDefaults() *Search {
 
 // GetIndices returns the Indices field value if set, zero value otherwise.
 func (o *Search) GetIndices() []Index {
-	if o == nil || isNil(o.Indices) {
+	if o == nil || IsNil(o.Indices) {
 		var ret []Index
 		return ret
 	}
@@ -88,7 +88,7 @@ func (o *Search) GetIndices() []Index {
 // GetIndicesOk returns a tuple with the Indices field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Search) GetIndicesOk() ([]Index, bool) {
-	if o == nil || isNil(o.Indices) {
+	if o == nil || IsNil(o.Indices) {
 		return nil, false
 	}
 	return o.Indices, true
@@ -96,7 +96,7 @@ func (o *Search) GetIndicesOk() ([]Index, bool) {
 
 // HasIndices returns a boolean if a field has been set.
 func (o *Search) HasIndices() bool {
-	if o != nil && !isNil(o.Indices) {
+	if o != nil && !IsNil(o.Indices) {
 		return true
 	}
 
@@ -110,7 +110,7 @@ func (o *Search) SetIndices(v []Index) {
 
 // GetQueryType returns the QueryType field value if set, zero value otherwise.
 func (o *Search) GetQueryType() QueryType {
-	if o == nil || isNil(o.QueryType) {
+	if o == nil || IsNil(o.QueryType) {
 		var ret QueryType
 		return ret
 	}
@@ -120,7 +120,7 @@ func (o *Search) GetQueryType() QueryType {
 // GetQueryTypeOk returns a tuple with the QueryType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Search) GetQueryTypeOk() (*QueryType, bool) {
-	if o == nil || isNil(o.QueryType) {
+	if o == nil || IsNil(o.QueryType) {
 		return nil, false
 	}
 	return o.QueryType, true
@@ -128,7 +128,7 @@ func (o *Search) GetQueryTypeOk() (*QueryType, bool) {
 
 // HasQueryType returns a boolean if a field has been set.
 func (o *Search) HasQueryType() bool {
-	if o != nil && !isNil(o.QueryType) {
+	if o != nil && !IsNil(o.QueryType) {
 		return true
 	}
 
@@ -142,7 +142,7 @@ func (o *Search) SetQueryType(v QueryType) {
 
 // GetQueryVersion returns the QueryVersion field value if set, zero value otherwise.
 func (o *Search) GetQueryVersion() string {
-	if o == nil || isNil(o.QueryVersion) {
+	if o == nil || IsNil(o.QueryVersion) {
 		var ret string
 		return ret
 	}
@@ -152,7 +152,7 @@ func (o *Search) GetQueryVersion() string {
 // GetQueryVersionOk returns a tuple with the QueryVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Search) GetQueryVersionOk() (*string, bool) {
-	if o == nil || isNil(o.QueryVersion) {
+	if o == nil || IsNil(o.QueryVersion) {
 		return nil, false
 	}
 	return o.QueryVersion, true
@@ -160,7 +160,7 @@ func (o *Search) GetQueryVersionOk() (*string, bool) {
 
 // HasQueryVersion returns a boolean if a field has been set.
 func (o *Search) HasQueryVersion() bool {
-	if o != nil && !isNil(o.QueryVersion) {
+	if o != nil && !IsNil(o.QueryVersion) {
 		return true
 	}
 
@@ -174,7 +174,7 @@ func (o *Search) SetQueryVersion(v string) {
 
 // GetQuery returns the Query field value if set, zero value otherwise.
 func (o *Search) GetQuery() Query {
-	if o == nil || isNil(o.Query) {
+	if o == nil || IsNil(o.Query) {
 		var ret Query
 		return ret
 	}
@@ -184,7 +184,7 @@ func (o *Search) GetQuery() Query {
 // GetQueryOk returns a tuple with the Query field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Search) GetQueryOk() (*Query, bool) {
-	if o == nil || isNil(o.Query) {
+	if o == nil || IsNil(o.Query) {
 		return nil, false
 	}
 	return o.Query, true
@@ -192,7 +192,7 @@ func (o *Search) GetQueryOk() (*Query, bool) {
 
 // HasQuery returns a boolean if a field has been set.
 func (o *Search) HasQuery() bool {
-	if o != nil && !isNil(o.Query) {
+	if o != nil && !IsNil(o.Query) {
 		return true
 	}
 
@@ -206,7 +206,7 @@ func (o *Search) SetQuery(v Query) {
 
 // GetQueryDsl returns the QueryDsl field value if set, zero value otherwise.
 func (o *Search) GetQueryDsl() map[string]interface{} {
-	if o == nil || isNil(o.QueryDsl) {
+	if o == nil || IsNil(o.QueryDsl) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -216,7 +216,7 @@ func (o *Search) GetQueryDsl() map[string]interface{} {
 // GetQueryDslOk returns a tuple with the QueryDsl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Search) GetQueryDslOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.QueryDsl) {
+	if o == nil || IsNil(o.QueryDsl) {
 		return map[string]interface{}{}, false
 	}
 	return o.QueryDsl, true
@@ -224,7 +224,7 @@ func (o *Search) GetQueryDslOk() (map[string]interface{}, bool) {
 
 // HasQueryDsl returns a boolean if a field has been set.
 func (o *Search) HasQueryDsl() bool {
-	if o != nil && !isNil(o.QueryDsl) {
+	if o != nil && !IsNil(o.QueryDsl) {
 		return true
 	}
 
@@ -238,7 +238,7 @@ func (o *Search) SetQueryDsl(v map[string]interface{}) {
 
 // GetTextQuery returns the TextQuery field value if set, zero value otherwise.
 func (o *Search) GetTextQuery() TextQuery {
-	if o == nil || isNil(o.TextQuery) {
+	if o == nil || IsNil(o.TextQuery) {
 		var ret TextQuery
 		return ret
 	}
@@ -248,7 +248,7 @@ func (o *Search) GetTextQuery() TextQuery {
 // GetTextQueryOk returns a tuple with the TextQuery field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Search) GetTextQueryOk() (*TextQuery, bool) {
-	if o == nil || isNil(o.TextQuery) {
+	if o == nil || IsNil(o.TextQuery) {
 		return nil, false
 	}
 	return o.TextQuery, true
@@ -256,7 +256,7 @@ func (o *Search) GetTextQueryOk() (*TextQuery, bool) {
 
 // HasTextQuery returns a boolean if a field has been set.
 func (o *Search) HasTextQuery() bool {
-	if o != nil && !isNil(o.TextQuery) {
+	if o != nil && !IsNil(o.TextQuery) {
 		return true
 	}
 
@@ -270,7 +270,7 @@ func (o *Search) SetTextQuery(v TextQuery) {
 
 // GetTypeAheadQuery returns the TypeAheadQuery field value if set, zero value otherwise.
 func (o *Search) GetTypeAheadQuery() TypeAheadQuery {
-	if o == nil || isNil(o.TypeAheadQuery) {
+	if o == nil || IsNil(o.TypeAheadQuery) {
 		var ret TypeAheadQuery
 		return ret
 	}
@@ -280,7 +280,7 @@ func (o *Search) GetTypeAheadQuery() TypeAheadQuery {
 // GetTypeAheadQueryOk returns a tuple with the TypeAheadQuery field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Search) GetTypeAheadQueryOk() (*TypeAheadQuery, bool) {
-	if o == nil || isNil(o.TypeAheadQuery) {
+	if o == nil || IsNil(o.TypeAheadQuery) {
 		return nil, false
 	}
 	return o.TypeAheadQuery, true
@@ -288,7 +288,7 @@ func (o *Search) GetTypeAheadQueryOk() (*TypeAheadQuery, bool) {
 
 // HasTypeAheadQuery returns a boolean if a field has been set.
 func (o *Search) HasTypeAheadQuery() bool {
-	if o != nil && !isNil(o.TypeAheadQuery) {
+	if o != nil && !IsNil(o.TypeAheadQuery) {
 		return true
 	}
 
@@ -302,7 +302,7 @@ func (o *Search) SetTypeAheadQuery(v TypeAheadQuery) {
 
 // GetIncludeNested returns the IncludeNested field value if set, zero value otherwise.
 func (o *Search) GetIncludeNested() bool {
-	if o == nil || isNil(o.IncludeNested) {
+	if o == nil || IsNil(o.IncludeNested) {
 		var ret bool
 		return ret
 	}
@@ -312,7 +312,7 @@ func (o *Search) GetIncludeNested() bool {
 // GetIncludeNestedOk returns a tuple with the IncludeNested field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Search) GetIncludeNestedOk() (*bool, bool) {
-	if o == nil || isNil(o.IncludeNested) {
+	if o == nil || IsNil(o.IncludeNested) {
 		return nil, false
 	}
 	return o.IncludeNested, true
@@ -320,7 +320,7 @@ func (o *Search) GetIncludeNestedOk() (*bool, bool) {
 
 // HasIncludeNested returns a boolean if a field has been set.
 func (o *Search) HasIncludeNested() bool {
-	if o != nil && !isNil(o.IncludeNested) {
+	if o != nil && !IsNil(o.IncludeNested) {
 		return true
 	}
 
@@ -334,7 +334,7 @@ func (o *Search) SetIncludeNested(v bool) {
 
 // GetQueryResultFilter returns the QueryResultFilter field value if set, zero value otherwise.
 func (o *Search) GetQueryResultFilter() QueryResultFilter {
-	if o == nil || isNil(o.QueryResultFilter) {
+	if o == nil || IsNil(o.QueryResultFilter) {
 		var ret QueryResultFilter
 		return ret
 	}
@@ -344,7 +344,7 @@ func (o *Search) GetQueryResultFilter() QueryResultFilter {
 // GetQueryResultFilterOk returns a tuple with the QueryResultFilter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Search) GetQueryResultFilterOk() (*QueryResultFilter, bool) {
-	if o == nil || isNil(o.QueryResultFilter) {
+	if o == nil || IsNil(o.QueryResultFilter) {
 		return nil, false
 	}
 	return o.QueryResultFilter, true
@@ -352,7 +352,7 @@ func (o *Search) GetQueryResultFilterOk() (*QueryResultFilter, bool) {
 
 // HasQueryResultFilter returns a boolean if a field has been set.
 func (o *Search) HasQueryResultFilter() bool {
-	if o != nil && !isNil(o.QueryResultFilter) {
+	if o != nil && !IsNil(o.QueryResultFilter) {
 		return true
 	}
 
@@ -366,7 +366,7 @@ func (o *Search) SetQueryResultFilter(v QueryResultFilter) {
 
 // GetAggregationType returns the AggregationType field value if set, zero value otherwise.
 func (o *Search) GetAggregationType() AggregationType {
-	if o == nil || isNil(o.AggregationType) {
+	if o == nil || IsNil(o.AggregationType) {
 		var ret AggregationType
 		return ret
 	}
@@ -376,7 +376,7 @@ func (o *Search) GetAggregationType() AggregationType {
 // GetAggregationTypeOk returns a tuple with the AggregationType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Search) GetAggregationTypeOk() (*AggregationType, bool) {
-	if o == nil || isNil(o.AggregationType) {
+	if o == nil || IsNil(o.AggregationType) {
 		return nil, false
 	}
 	return o.AggregationType, true
@@ -384,7 +384,7 @@ func (o *Search) GetAggregationTypeOk() (*AggregationType, bool) {
 
 // HasAggregationType returns a boolean if a field has been set.
 func (o *Search) HasAggregationType() bool {
-	if o != nil && !isNil(o.AggregationType) {
+	if o != nil && !IsNil(o.AggregationType) {
 		return true
 	}
 
@@ -398,7 +398,7 @@ func (o *Search) SetAggregationType(v AggregationType) {
 
 // GetAggregationsVersion returns the AggregationsVersion field value if set, zero value otherwise.
 func (o *Search) GetAggregationsVersion() string {
-	if o == nil || isNil(o.AggregationsVersion) {
+	if o == nil || IsNil(o.AggregationsVersion) {
 		var ret string
 		return ret
 	}
@@ -408,7 +408,7 @@ func (o *Search) GetAggregationsVersion() string {
 // GetAggregationsVersionOk returns a tuple with the AggregationsVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Search) GetAggregationsVersionOk() (*string, bool) {
-	if o == nil || isNil(o.AggregationsVersion) {
+	if o == nil || IsNil(o.AggregationsVersion) {
 		return nil, false
 	}
 	return o.AggregationsVersion, true
@@ -416,7 +416,7 @@ func (o *Search) GetAggregationsVersionOk() (*string, bool) {
 
 // HasAggregationsVersion returns a boolean if a field has been set.
 func (o *Search) HasAggregationsVersion() bool {
-	if o != nil && !isNil(o.AggregationsVersion) {
+	if o != nil && !IsNil(o.AggregationsVersion) {
 		return true
 	}
 
@@ -430,7 +430,7 @@ func (o *Search) SetAggregationsVersion(v string) {
 
 // GetAggregationsDsl returns the AggregationsDsl field value if set, zero value otherwise.
 func (o *Search) GetAggregationsDsl() map[string]interface{} {
-	if o == nil || isNil(o.AggregationsDsl) {
+	if o == nil || IsNil(o.AggregationsDsl) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -440,7 +440,7 @@ func (o *Search) GetAggregationsDsl() map[string]interface{} {
 // GetAggregationsDslOk returns a tuple with the AggregationsDsl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Search) GetAggregationsDslOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.AggregationsDsl) {
+	if o == nil || IsNil(o.AggregationsDsl) {
 		return map[string]interface{}{}, false
 	}
 	return o.AggregationsDsl, true
@@ -448,7 +448,7 @@ func (o *Search) GetAggregationsDslOk() (map[string]interface{}, bool) {
 
 // HasAggregationsDsl returns a boolean if a field has been set.
 func (o *Search) HasAggregationsDsl() bool {
-	if o != nil && !isNil(o.AggregationsDsl) {
+	if o != nil && !IsNil(o.AggregationsDsl) {
 		return true
 	}
 
@@ -462,7 +462,7 @@ func (o *Search) SetAggregationsDsl(v map[string]interface{}) {
 
 // GetAggregations returns the Aggregations field value if set, zero value otherwise.
 func (o *Search) GetAggregations() SearchAggregationSpecification {
-	if o == nil || isNil(o.Aggregations) {
+	if o == nil || IsNil(o.Aggregations) {
 		var ret SearchAggregationSpecification
 		return ret
 	}
@@ -472,7 +472,7 @@ func (o *Search) GetAggregations() SearchAggregationSpecification {
 // GetAggregationsOk returns a tuple with the Aggregations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Search) GetAggregationsOk() (*SearchAggregationSpecification, bool) {
-	if o == nil || isNil(o.Aggregations) {
+	if o == nil || IsNil(o.Aggregations) {
 		return nil, false
 	}
 	return o.Aggregations, true
@@ -480,7 +480,7 @@ func (o *Search) GetAggregationsOk() (*SearchAggregationSpecification, bool) {
 
 // HasAggregations returns a boolean if a field has been set.
 func (o *Search) HasAggregations() bool {
-	if o != nil && !isNil(o.Aggregations) {
+	if o != nil && !IsNil(o.Aggregations) {
 		return true
 	}
 
@@ -494,7 +494,7 @@ func (o *Search) SetAggregations(v SearchAggregationSpecification) {
 
 // GetSort returns the Sort field value if set, zero value otherwise.
 func (o *Search) GetSort() []string {
-	if o == nil || isNil(o.Sort) {
+	if o == nil || IsNil(o.Sort) {
 		var ret []string
 		return ret
 	}
@@ -504,7 +504,7 @@ func (o *Search) GetSort() []string {
 // GetSortOk returns a tuple with the Sort field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Search) GetSortOk() ([]string, bool) {
-	if o == nil || isNil(o.Sort) {
+	if o == nil || IsNil(o.Sort) {
 		return nil, false
 	}
 	return o.Sort, true
@@ -512,7 +512,7 @@ func (o *Search) GetSortOk() ([]string, bool) {
 
 // HasSort returns a boolean if a field has been set.
 func (o *Search) HasSort() bool {
-	if o != nil && !isNil(o.Sort) {
+	if o != nil && !IsNil(o.Sort) {
 		return true
 	}
 
@@ -526,7 +526,7 @@ func (o *Search) SetSort(v []string) {
 
 // GetSearchAfter returns the SearchAfter field value if set, zero value otherwise.
 func (o *Search) GetSearchAfter() []string {
-	if o == nil || isNil(o.SearchAfter) {
+	if o == nil || IsNil(o.SearchAfter) {
 		var ret []string
 		return ret
 	}
@@ -536,7 +536,7 @@ func (o *Search) GetSearchAfter() []string {
 // GetSearchAfterOk returns a tuple with the SearchAfter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Search) GetSearchAfterOk() ([]string, bool) {
-	if o == nil || isNil(o.SearchAfter) {
+	if o == nil || IsNil(o.SearchAfter) {
 		return nil, false
 	}
 	return o.SearchAfter, true
@@ -544,7 +544,7 @@ func (o *Search) GetSearchAfterOk() ([]string, bool) {
 
 // HasSearchAfter returns a boolean if a field has been set.
 func (o *Search) HasSearchAfter() bool {
-	if o != nil && !isNil(o.SearchAfter) {
+	if o != nil && !IsNil(o.SearchAfter) {
 		return true
 	}
 
@@ -558,7 +558,7 @@ func (o *Search) SetSearchAfter(v []string) {
 
 // GetFilters returns the Filters field value if set, zero value otherwise.
 func (o *Search) GetFilters() map[string]Filter {
-	if o == nil || isNil(o.Filters) {
+	if o == nil || IsNil(o.Filters) {
 		var ret map[string]Filter
 		return ret
 	}
@@ -568,7 +568,7 @@ func (o *Search) GetFilters() map[string]Filter {
 // GetFiltersOk returns a tuple with the Filters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Search) GetFiltersOk() (*map[string]Filter, bool) {
-	if o == nil || isNil(o.Filters) {
+	if o == nil || IsNil(o.Filters) {
 		return nil, false
 	}
 	return o.Filters, true
@@ -576,7 +576,7 @@ func (o *Search) GetFiltersOk() (*map[string]Filter, bool) {
 
 // HasFilters returns a boolean if a field has been set.
 func (o *Search) HasFilters() bool {
-	if o != nil && !isNil(o.Filters) {
+	if o != nil && !IsNil(o.Filters) {
 		return true
 	}
 
@@ -598,52 +598,52 @@ func (o Search) MarshalJSON() ([]byte, error) {
 
 func (o Search) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Indices) {
+	if !IsNil(o.Indices) {
 		toSerialize["indices"] = o.Indices
 	}
-	if !isNil(o.QueryType) {
+	if !IsNil(o.QueryType) {
 		toSerialize["queryType"] = o.QueryType
 	}
-	if !isNil(o.QueryVersion) {
+	if !IsNil(o.QueryVersion) {
 		toSerialize["queryVersion"] = o.QueryVersion
 	}
-	if !isNil(o.Query) {
+	if !IsNil(o.Query) {
 		toSerialize["query"] = o.Query
 	}
-	if !isNil(o.QueryDsl) {
+	if !IsNil(o.QueryDsl) {
 		toSerialize["queryDsl"] = o.QueryDsl
 	}
-	if !isNil(o.TextQuery) {
+	if !IsNil(o.TextQuery) {
 		toSerialize["textQuery"] = o.TextQuery
 	}
-	if !isNil(o.TypeAheadQuery) {
+	if !IsNil(o.TypeAheadQuery) {
 		toSerialize["typeAheadQuery"] = o.TypeAheadQuery
 	}
-	if !isNil(o.IncludeNested) {
+	if !IsNil(o.IncludeNested) {
 		toSerialize["includeNested"] = o.IncludeNested
 	}
-	if !isNil(o.QueryResultFilter) {
+	if !IsNil(o.QueryResultFilter) {
 		toSerialize["queryResultFilter"] = o.QueryResultFilter
 	}
-	if !isNil(o.AggregationType) {
+	if !IsNil(o.AggregationType) {
 		toSerialize["aggregationType"] = o.AggregationType
 	}
-	if !isNil(o.AggregationsVersion) {
+	if !IsNil(o.AggregationsVersion) {
 		toSerialize["aggregationsVersion"] = o.AggregationsVersion
 	}
-	if !isNil(o.AggregationsDsl) {
+	if !IsNil(o.AggregationsDsl) {
 		toSerialize["aggregationsDsl"] = o.AggregationsDsl
 	}
-	if !isNil(o.Aggregations) {
+	if !IsNil(o.Aggregations) {
 		toSerialize["aggregations"] = o.Aggregations
 	}
-	if !isNil(o.Sort) {
+	if !IsNil(o.Sort) {
 		toSerialize["sort"] = o.Sort
 	}
-	if !isNil(o.SearchAfter) {
+	if !IsNil(o.SearchAfter) {
 		toSerialize["searchAfter"] = o.SearchAfter
 	}
-	if !isNil(o.Filters) {
+	if !IsNil(o.Filters) {
 		toSerialize["filters"] = o.Filters
 	}
 
@@ -654,16 +654,20 @@ func (o Search) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Search) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Search) UnmarshalJSON(data []byte) (err error) {
 	varSearch := _Search{}
 
-	if err = json.Unmarshal(bytes, &varSearch); err == nil {
+	err = json.Unmarshal(data, &varSearch)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Search(varSearch)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "indices")
 		delete(additionalProperties, "queryType")
 		delete(additionalProperties, "queryVersion")

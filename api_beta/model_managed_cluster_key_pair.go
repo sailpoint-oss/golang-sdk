@@ -49,7 +49,7 @@ func NewManagedClusterKeyPairWithDefaults() *ManagedClusterKeyPair {
 
 // GetPublicKey returns the PublicKey field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedClusterKeyPair) GetPublicKey() string {
-	if o == nil || isNil(o.PublicKey.Get()) {
+	if o == nil || IsNil(o.PublicKey.Get()) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *ManagedClusterKeyPair) UnsetPublicKey() {
 
 // GetPublicKeyThumbprint returns the PublicKeyThumbprint field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedClusterKeyPair) GetPublicKeyThumbprint() string {
-	if o == nil || isNil(o.PublicKeyThumbprint.Get()) {
+	if o == nil || IsNil(o.PublicKeyThumbprint.Get()) {
 		var ret string
 		return ret
 	}
@@ -133,7 +133,7 @@ func (o *ManagedClusterKeyPair) UnsetPublicKeyThumbprint() {
 
 // GetPublicKeyCertificate returns the PublicKeyCertificate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedClusterKeyPair) GetPublicKeyCertificate() string {
-	if o == nil || isNil(o.PublicKeyCertificate.Get()) {
+	if o == nil || IsNil(o.PublicKeyCertificate.Get()) {
 		var ret string
 		return ret
 	}
@@ -200,16 +200,20 @@ func (o ManagedClusterKeyPair) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ManagedClusterKeyPair) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ManagedClusterKeyPair) UnmarshalJSON(data []byte) (err error) {
 	varManagedClusterKeyPair := _ManagedClusterKeyPair{}
 
-	if err = json.Unmarshal(bytes, &varManagedClusterKeyPair); err == nil {
+	err = json.Unmarshal(data, &varManagedClusterKeyPair)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ManagedClusterKeyPair(varManagedClusterKeyPair)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "publicKey")
 		delete(additionalProperties, "publicKeyThumbprint")
 		delete(additionalProperties, "publicKeyCertificate")

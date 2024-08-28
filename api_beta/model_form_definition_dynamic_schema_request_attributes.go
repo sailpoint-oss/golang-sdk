@@ -45,7 +45,7 @@ func NewFormDefinitionDynamicSchemaRequestAttributesWithDefaults() *FormDefiniti
 
 // GetFormDefinitionId returns the FormDefinitionId field value if set, zero value otherwise.
 func (o *FormDefinitionDynamicSchemaRequestAttributes) GetFormDefinitionId() string {
-	if o == nil || isNil(o.FormDefinitionId) {
+	if o == nil || IsNil(o.FormDefinitionId) {
 		var ret string
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *FormDefinitionDynamicSchemaRequestAttributes) GetFormDefinitionId() str
 // GetFormDefinitionIdOk returns a tuple with the FormDefinitionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormDefinitionDynamicSchemaRequestAttributes) GetFormDefinitionIdOk() (*string, bool) {
-	if o == nil || isNil(o.FormDefinitionId) {
+	if o == nil || IsNil(o.FormDefinitionId) {
 		return nil, false
 	}
 	return o.FormDefinitionId, true
@@ -63,7 +63,7 @@ func (o *FormDefinitionDynamicSchemaRequestAttributes) GetFormDefinitionIdOk() (
 
 // HasFormDefinitionId returns a boolean if a field has been set.
 func (o *FormDefinitionDynamicSchemaRequestAttributes) HasFormDefinitionId() bool {
-	if o != nil && !isNil(o.FormDefinitionId) {
+	if o != nil && !IsNil(o.FormDefinitionId) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o FormDefinitionDynamicSchemaRequestAttributes) MarshalJSON() ([]byte, err
 
 func (o FormDefinitionDynamicSchemaRequestAttributes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.FormDefinitionId) {
+	if !IsNil(o.FormDefinitionId) {
 		toSerialize["formDefinitionId"] = o.FormDefinitionId
 	}
 
@@ -96,16 +96,20 @@ func (o FormDefinitionDynamicSchemaRequestAttributes) ToMap() (map[string]interf
 	return toSerialize, nil
 }
 
-func (o *FormDefinitionDynamicSchemaRequestAttributes) UnmarshalJSON(bytes []byte) (err error) {
+func (o *FormDefinitionDynamicSchemaRequestAttributes) UnmarshalJSON(data []byte) (err error) {
 	varFormDefinitionDynamicSchemaRequestAttributes := _FormDefinitionDynamicSchemaRequestAttributes{}
 
-	if err = json.Unmarshal(bytes, &varFormDefinitionDynamicSchemaRequestAttributes); err == nil {
+	err = json.Unmarshal(data, &varFormDefinitionDynamicSchemaRequestAttributes)
+
+	if err != nil {
+		return err
+	}
+
 	*o = FormDefinitionDynamicSchemaRequestAttributes(varFormDefinitionDynamicSchemaRequestAttributes)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "formDefinitionId")
 		o.AdditionalProperties = additionalProperties
 	}

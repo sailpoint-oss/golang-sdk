@@ -61,7 +61,7 @@ func NewRequestableObjectWithDefaults() *RequestableObject {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *RequestableObject) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -71,7 +71,7 @@ func (o *RequestableObject) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestableObject) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -79,7 +79,7 @@ func (o *RequestableObject) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *RequestableObject) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -93,7 +93,7 @@ func (o *RequestableObject) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *RequestableObject) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -103,7 +103,7 @@ func (o *RequestableObject) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestableObject) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -111,7 +111,7 @@ func (o *RequestableObject) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *RequestableObject) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -125,7 +125,7 @@ func (o *RequestableObject) SetName(v string) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *RequestableObject) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -135,7 +135,7 @@ func (o *RequestableObject) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestableObject) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -143,7 +143,7 @@ func (o *RequestableObject) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *RequestableObject) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -157,7 +157,7 @@ func (o *RequestableObject) SetCreated(v time.Time) {
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RequestableObject) GetModified() time.Time {
-	if o == nil || isNil(o.Modified.Get()) {
+	if o == nil || IsNil(o.Modified.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -199,7 +199,7 @@ func (o *RequestableObject) UnsetModified() {
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RequestableObject) GetDescription() string {
-	if o == nil || isNil(o.Description.Get()) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
@@ -241,7 +241,7 @@ func (o *RequestableObject) UnsetDescription() {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *RequestableObject) GetType() RequestableObjectType {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret RequestableObjectType
 		return ret
 	}
@@ -251,7 +251,7 @@ func (o *RequestableObject) GetType() RequestableObjectType {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestableObject) GetTypeOk() (*RequestableObjectType, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -259,7 +259,7 @@ func (o *RequestableObject) GetTypeOk() (*RequestableObjectType, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *RequestableObject) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -273,7 +273,7 @@ func (o *RequestableObject) SetType(v RequestableObjectType) {
 
 // GetRequestStatus returns the RequestStatus field value if set, zero value otherwise.
 func (o *RequestableObject) GetRequestStatus() RequestableObjectRequestStatus {
-	if o == nil || isNil(o.RequestStatus) {
+	if o == nil || IsNil(o.RequestStatus) {
 		var ret RequestableObjectRequestStatus
 		return ret
 	}
@@ -283,7 +283,7 @@ func (o *RequestableObject) GetRequestStatus() RequestableObjectRequestStatus {
 // GetRequestStatusOk returns a tuple with the RequestStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestableObject) GetRequestStatusOk() (*RequestableObjectRequestStatus, bool) {
-	if o == nil || isNil(o.RequestStatus) {
+	if o == nil || IsNil(o.RequestStatus) {
 		return nil, false
 	}
 	return o.RequestStatus, true
@@ -291,7 +291,7 @@ func (o *RequestableObject) GetRequestStatusOk() (*RequestableObjectRequestStatu
 
 // HasRequestStatus returns a boolean if a field has been set.
 func (o *RequestableObject) HasRequestStatus() bool {
-	if o != nil && !isNil(o.RequestStatus) {
+	if o != nil && !IsNil(o.RequestStatus) {
 		return true
 	}
 
@@ -305,7 +305,7 @@ func (o *RequestableObject) SetRequestStatus(v RequestableObjectRequestStatus) {
 
 // GetIdentityRequestId returns the IdentityRequestId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RequestableObject) GetIdentityRequestId() string {
-	if o == nil || isNil(o.IdentityRequestId.Get()) {
+	if o == nil || IsNil(o.IdentityRequestId.Get()) {
 		var ret string
 		return ret
 	}
@@ -347,7 +347,7 @@ func (o *RequestableObject) UnsetIdentityRequestId() {
 
 // GetOwnerRef returns the OwnerRef field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RequestableObject) GetOwnerRef() IdentityReferenceWithNameAndEmail {
-	if o == nil || isNil(o.OwnerRef.Get()) {
+	if o == nil || IsNil(o.OwnerRef.Get()) {
 		var ret IdentityReferenceWithNameAndEmail
 		return ret
 	}
@@ -389,7 +389,7 @@ func (o *RequestableObject) UnsetOwnerRef() {
 
 // GetRequestCommentsRequired returns the RequestCommentsRequired field value if set, zero value otherwise.
 func (o *RequestableObject) GetRequestCommentsRequired() bool {
-	if o == nil || isNil(o.RequestCommentsRequired) {
+	if o == nil || IsNil(o.RequestCommentsRequired) {
 		var ret bool
 		return ret
 	}
@@ -399,7 +399,7 @@ func (o *RequestableObject) GetRequestCommentsRequired() bool {
 // GetRequestCommentsRequiredOk returns a tuple with the RequestCommentsRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RequestableObject) GetRequestCommentsRequiredOk() (*bool, bool) {
-	if o == nil || isNil(o.RequestCommentsRequired) {
+	if o == nil || IsNil(o.RequestCommentsRequired) {
 		return nil, false
 	}
 	return o.RequestCommentsRequired, true
@@ -407,7 +407,7 @@ func (o *RequestableObject) GetRequestCommentsRequiredOk() (*bool, bool) {
 
 // HasRequestCommentsRequired returns a boolean if a field has been set.
 func (o *RequestableObject) HasRequestCommentsRequired() bool {
-	if o != nil && !isNil(o.RequestCommentsRequired) {
+	if o != nil && !IsNil(o.RequestCommentsRequired) {
 		return true
 	}
 
@@ -429,13 +429,13 @@ func (o RequestableObject) MarshalJSON() ([]byte, error) {
 
 func (o RequestableObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Created) {
+	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
 	if o.Modified.IsSet() {
@@ -444,10 +444,10 @@ func (o RequestableObject) ToMap() (map[string]interface{}, error) {
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.RequestStatus) {
+	if !IsNil(o.RequestStatus) {
 		toSerialize["requestStatus"] = o.RequestStatus
 	}
 	if o.IdentityRequestId.IsSet() {
@@ -456,7 +456,7 @@ func (o RequestableObject) ToMap() (map[string]interface{}, error) {
 	if o.OwnerRef.IsSet() {
 		toSerialize["ownerRef"] = o.OwnerRef.Get()
 	}
-	if !isNil(o.RequestCommentsRequired) {
+	if !IsNil(o.RequestCommentsRequired) {
 		toSerialize["requestCommentsRequired"] = o.RequestCommentsRequired
 	}
 
@@ -467,16 +467,20 @@ func (o RequestableObject) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *RequestableObject) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RequestableObject) UnmarshalJSON(data []byte) (err error) {
 	varRequestableObject := _RequestableObject{}
 
-	if err = json.Unmarshal(bytes, &varRequestableObject); err == nil {
+	err = json.Unmarshal(data, &varRequestableObject)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RequestableObject(varRequestableObject)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "created")

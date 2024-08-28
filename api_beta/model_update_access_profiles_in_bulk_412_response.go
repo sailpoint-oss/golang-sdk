@@ -45,7 +45,7 @@ func NewUpdateAccessProfilesInBulk412ResponseWithDefaults() *UpdateAccessProfile
 
 // GetMessage returns the Message field value if set, zero value otherwise.
 func (o *UpdateAccessProfilesInBulk412Response) GetMessage() map[string]interface{} {
-	if o == nil || isNil(o.Message) {
+	if o == nil || IsNil(o.Message) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *UpdateAccessProfilesInBulk412Response) GetMessage() map[string]interfac
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateAccessProfilesInBulk412Response) GetMessageOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Message) {
+	if o == nil || IsNil(o.Message) {
 		return map[string]interface{}{}, false
 	}
 	return o.Message, true
@@ -63,7 +63,7 @@ func (o *UpdateAccessProfilesInBulk412Response) GetMessageOk() (map[string]inter
 
 // HasMessage returns a boolean if a field has been set.
 func (o *UpdateAccessProfilesInBulk412Response) HasMessage() bool {
-	if o != nil && !isNil(o.Message) {
+	if o != nil && !IsNil(o.Message) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o UpdateAccessProfilesInBulk412Response) MarshalJSON() ([]byte, error) {
 
 func (o UpdateAccessProfilesInBulk412Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Message) {
+	if !IsNil(o.Message) {
 		toSerialize["message"] = o.Message
 	}
 
@@ -96,16 +96,20 @@ func (o UpdateAccessProfilesInBulk412Response) ToMap() (map[string]interface{}, 
 	return toSerialize, nil
 }
 
-func (o *UpdateAccessProfilesInBulk412Response) UnmarshalJSON(bytes []byte) (err error) {
+func (o *UpdateAccessProfilesInBulk412Response) UnmarshalJSON(data []byte) (err error) {
 	varUpdateAccessProfilesInBulk412Response := _UpdateAccessProfilesInBulk412Response{}
 
-	if err = json.Unmarshal(bytes, &varUpdateAccessProfilesInBulk412Response); err == nil {
+	err = json.Unmarshal(data, &varUpdateAccessProfilesInBulk412Response)
+
+	if err != nil {
+		return err
+	}
+
 	*o = UpdateAccessProfilesInBulk412Response(varUpdateAccessProfilesInBulk412Response)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "message")
 		o.AdditionalProperties = additionalProperties
 	}

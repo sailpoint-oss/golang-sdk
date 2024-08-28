@@ -75,7 +75,7 @@ func NewServiceDeskIntegrationDtoWithDefaults() *ServiceDeskIntegrationDto {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ServiceDeskIntegrationDto) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -85,7 +85,7 @@ func (o *ServiceDeskIntegrationDto) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceDeskIntegrationDto) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -93,7 +93,7 @@ func (o *ServiceDeskIntegrationDto) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ServiceDeskIntegrationDto) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -131,7 +131,7 @@ func (o *ServiceDeskIntegrationDto) SetName(v string) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *ServiceDeskIntegrationDto) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -141,7 +141,7 @@ func (o *ServiceDeskIntegrationDto) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceDeskIntegrationDto) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -149,7 +149,7 @@ func (o *ServiceDeskIntegrationDto) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *ServiceDeskIntegrationDto) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -163,7 +163,7 @@ func (o *ServiceDeskIntegrationDto) SetCreated(v time.Time) {
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *ServiceDeskIntegrationDto) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		var ret time.Time
 		return ret
 	}
@@ -173,7 +173,7 @@ func (o *ServiceDeskIntegrationDto) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceDeskIntegrationDto) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -181,7 +181,7 @@ func (o *ServiceDeskIntegrationDto) GetModifiedOk() (*time.Time, bool) {
 
 // HasModified returns a boolean if a field has been set.
 func (o *ServiceDeskIntegrationDto) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -243,7 +243,7 @@ func (o *ServiceDeskIntegrationDto) SetType(v string) {
 
 // GetOwnerRef returns the OwnerRef field value if set, zero value otherwise.
 func (o *ServiceDeskIntegrationDto) GetOwnerRef() OwnerDto {
-	if o == nil || isNil(o.OwnerRef) {
+	if o == nil || IsNil(o.OwnerRef) {
 		var ret OwnerDto
 		return ret
 	}
@@ -253,7 +253,7 @@ func (o *ServiceDeskIntegrationDto) GetOwnerRef() OwnerDto {
 // GetOwnerRefOk returns a tuple with the OwnerRef field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceDeskIntegrationDto) GetOwnerRefOk() (*OwnerDto, bool) {
-	if o == nil || isNil(o.OwnerRef) {
+	if o == nil || IsNil(o.OwnerRef) {
 		return nil, false
 	}
 	return o.OwnerRef, true
@@ -261,7 +261,7 @@ func (o *ServiceDeskIntegrationDto) GetOwnerRefOk() (*OwnerDto, bool) {
 
 // HasOwnerRef returns a boolean if a field has been set.
 func (o *ServiceDeskIntegrationDto) HasOwnerRef() bool {
-	if o != nil && !isNil(o.OwnerRef) {
+	if o != nil && !IsNil(o.OwnerRef) {
 		return true
 	}
 
@@ -275,7 +275,7 @@ func (o *ServiceDeskIntegrationDto) SetOwnerRef(v OwnerDto) {
 
 // GetClusterRef returns the ClusterRef field value if set, zero value otherwise.
 func (o *ServiceDeskIntegrationDto) GetClusterRef() SourceClusterDto {
-	if o == nil || isNil(o.ClusterRef) {
+	if o == nil || IsNil(o.ClusterRef) {
 		var ret SourceClusterDto
 		return ret
 	}
@@ -285,7 +285,7 @@ func (o *ServiceDeskIntegrationDto) GetClusterRef() SourceClusterDto {
 // GetClusterRefOk returns a tuple with the ClusterRef field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceDeskIntegrationDto) GetClusterRefOk() (*SourceClusterDto, bool) {
-	if o == nil || isNil(o.ClusterRef) {
+	if o == nil || IsNil(o.ClusterRef) {
 		return nil, false
 	}
 	return o.ClusterRef, true
@@ -293,7 +293,7 @@ func (o *ServiceDeskIntegrationDto) GetClusterRefOk() (*SourceClusterDto, bool) 
 
 // HasClusterRef returns a boolean if a field has been set.
 func (o *ServiceDeskIntegrationDto) HasClusterRef() bool {
-	if o != nil && !isNil(o.ClusterRef) {
+	if o != nil && !IsNil(o.ClusterRef) {
 		return true
 	}
 
@@ -308,7 +308,7 @@ func (o *ServiceDeskIntegrationDto) SetClusterRef(v SourceClusterDto) {
 // GetCluster returns the Cluster field value if set, zero value otherwise (both if not set or set to explicit null).
 // Deprecated
 func (o *ServiceDeskIntegrationDto) GetCluster() string {
-	if o == nil || isNil(o.Cluster.Get()) {
+	if o == nil || IsNil(o.Cluster.Get()) {
 		var ret string
 		return ret
 	}
@@ -353,7 +353,7 @@ func (o *ServiceDeskIntegrationDto) UnsetCluster() {
 // GetManagedSources returns the ManagedSources field value if set, zero value otherwise.
 // Deprecated
 func (o *ServiceDeskIntegrationDto) GetManagedSources() []string {
-	if o == nil || isNil(o.ManagedSources) {
+	if o == nil || IsNil(o.ManagedSources) {
 		var ret []string
 		return ret
 	}
@@ -364,7 +364,7 @@ func (o *ServiceDeskIntegrationDto) GetManagedSources() []string {
 // and a boolean to check if the value has been set.
 // Deprecated
 func (o *ServiceDeskIntegrationDto) GetManagedSourcesOk() ([]string, bool) {
-	if o == nil || isNil(o.ManagedSources) {
+	if o == nil || IsNil(o.ManagedSources) {
 		return nil, false
 	}
 	return o.ManagedSources, true
@@ -372,7 +372,7 @@ func (o *ServiceDeskIntegrationDto) GetManagedSourcesOk() ([]string, bool) {
 
 // HasManagedSources returns a boolean if a field has been set.
 func (o *ServiceDeskIntegrationDto) HasManagedSources() bool {
-	if o != nil && !isNil(o.ManagedSources) {
+	if o != nil && !IsNil(o.ManagedSources) {
 		return true
 	}
 
@@ -387,7 +387,7 @@ func (o *ServiceDeskIntegrationDto) SetManagedSources(v []string) {
 
 // GetProvisioningConfig returns the ProvisioningConfig field value if set, zero value otherwise.
 func (o *ServiceDeskIntegrationDto) GetProvisioningConfig() ProvisioningConfig {
-	if o == nil || isNil(o.ProvisioningConfig) {
+	if o == nil || IsNil(o.ProvisioningConfig) {
 		var ret ProvisioningConfig
 		return ret
 	}
@@ -397,7 +397,7 @@ func (o *ServiceDeskIntegrationDto) GetProvisioningConfig() ProvisioningConfig {
 // GetProvisioningConfigOk returns a tuple with the ProvisioningConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceDeskIntegrationDto) GetProvisioningConfigOk() (*ProvisioningConfig, bool) {
-	if o == nil || isNil(o.ProvisioningConfig) {
+	if o == nil || IsNil(o.ProvisioningConfig) {
 		return nil, false
 	}
 	return o.ProvisioningConfig, true
@@ -405,7 +405,7 @@ func (o *ServiceDeskIntegrationDto) GetProvisioningConfigOk() (*ProvisioningConf
 
 // HasProvisioningConfig returns a boolean if a field has been set.
 func (o *ServiceDeskIntegrationDto) HasProvisioningConfig() bool {
-	if o != nil && !isNil(o.ProvisioningConfig) {
+	if o != nil && !IsNil(o.ProvisioningConfig) {
 		return true
 	}
 
@@ -443,7 +443,7 @@ func (o *ServiceDeskIntegrationDto) SetAttributes(v map[string]interface{}) {
 
 // GetBeforeProvisioningRule returns the BeforeProvisioningRule field value if set, zero value otherwise.
 func (o *ServiceDeskIntegrationDto) GetBeforeProvisioningRule() BeforeProvisioningRuleDto {
-	if o == nil || isNil(o.BeforeProvisioningRule) {
+	if o == nil || IsNil(o.BeforeProvisioningRule) {
 		var ret BeforeProvisioningRuleDto
 		return ret
 	}
@@ -453,7 +453,7 @@ func (o *ServiceDeskIntegrationDto) GetBeforeProvisioningRule() BeforeProvisioni
 // GetBeforeProvisioningRuleOk returns a tuple with the BeforeProvisioningRule field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceDeskIntegrationDto) GetBeforeProvisioningRuleOk() (*BeforeProvisioningRuleDto, bool) {
-	if o == nil || isNil(o.BeforeProvisioningRule) {
+	if o == nil || IsNil(o.BeforeProvisioningRule) {
 		return nil, false
 	}
 	return o.BeforeProvisioningRule, true
@@ -461,7 +461,7 @@ func (o *ServiceDeskIntegrationDto) GetBeforeProvisioningRuleOk() (*BeforeProvis
 
 // HasBeforeProvisioningRule returns a boolean if a field has been set.
 func (o *ServiceDeskIntegrationDto) HasBeforeProvisioningRule() bool {
-	if o != nil && !isNil(o.BeforeProvisioningRule) {
+	if o != nil && !IsNil(o.BeforeProvisioningRule) {
 		return true
 	}
 
@@ -483,35 +483,35 @@ func (o ServiceDeskIntegrationDto) MarshalJSON() ([]byte, error) {
 
 func (o ServiceDeskIntegrationDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
 	toSerialize["name"] = o.Name
-	if !isNil(o.Created) {
+	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
-	if !isNil(o.Modified) {
+	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
 	toSerialize["description"] = o.Description
 	toSerialize["type"] = o.Type
-	if !isNil(o.OwnerRef) {
+	if !IsNil(o.OwnerRef) {
 		toSerialize["ownerRef"] = o.OwnerRef
 	}
-	if !isNil(o.ClusterRef) {
+	if !IsNil(o.ClusterRef) {
 		toSerialize["clusterRef"] = o.ClusterRef
 	}
 	if o.Cluster.IsSet() {
 		toSerialize["cluster"] = o.Cluster.Get()
 	}
-	if !isNil(o.ManagedSources) {
+	if !IsNil(o.ManagedSources) {
 		toSerialize["managedSources"] = o.ManagedSources
 	}
-	if !isNil(o.ProvisioningConfig) {
+	if !IsNil(o.ProvisioningConfig) {
 		toSerialize["provisioningConfig"] = o.ProvisioningConfig
 	}
 	toSerialize["attributes"] = o.Attributes
-	if !isNil(o.BeforeProvisioningRule) {
+	if !IsNil(o.BeforeProvisioningRule) {
 		toSerialize["beforeProvisioningRule"] = o.BeforeProvisioningRule
 	}
 
@@ -522,8 +522,8 @@ func (o ServiceDeskIntegrationDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ServiceDeskIntegrationDto) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *ServiceDeskIntegrationDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -535,7 +535,7 @@ func (o *ServiceDeskIntegrationDto) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -549,13 +549,17 @@ func (o *ServiceDeskIntegrationDto) UnmarshalJSON(bytes []byte) (err error) {
 
 	varServiceDeskIntegrationDto := _ServiceDeskIntegrationDto{}
 
-	if err = json.Unmarshal(bytes, &varServiceDeskIntegrationDto); err == nil {
+	err = json.Unmarshal(data, &varServiceDeskIntegrationDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ServiceDeskIntegrationDto(varServiceDeskIntegrationDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "created")

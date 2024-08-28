@@ -62,7 +62,7 @@ func (o *InviteIdentitiesRequest) GetIds() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InviteIdentitiesRequest) GetIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.Ids) {
+	if o == nil || IsNil(o.Ids) {
 		return nil, false
 	}
 	return o.Ids, true
@@ -70,7 +70,7 @@ func (o *InviteIdentitiesRequest) GetIdsOk() ([]string, bool) {
 
 // HasIds returns a boolean if a field has been set.
 func (o *InviteIdentitiesRequest) HasIds() bool {
-	if o != nil && isNil(o.Ids) {
+	if o != nil && !IsNil(o.Ids) {
 		return true
 	}
 
@@ -84,7 +84,7 @@ func (o *InviteIdentitiesRequest) SetIds(v []string) {
 
 // GetUninvited returns the Uninvited field value if set, zero value otherwise.
 func (o *InviteIdentitiesRequest) GetUninvited() bool {
-	if o == nil || isNil(o.Uninvited) {
+	if o == nil || IsNil(o.Uninvited) {
 		var ret bool
 		return ret
 	}
@@ -94,7 +94,7 @@ func (o *InviteIdentitiesRequest) GetUninvited() bool {
 // GetUninvitedOk returns a tuple with the Uninvited field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InviteIdentitiesRequest) GetUninvitedOk() (*bool, bool) {
-	if o == nil || isNil(o.Uninvited) {
+	if o == nil || IsNil(o.Uninvited) {
 		return nil, false
 	}
 	return o.Uninvited, true
@@ -102,7 +102,7 @@ func (o *InviteIdentitiesRequest) GetUninvitedOk() (*bool, bool) {
 
 // HasUninvited returns a boolean if a field has been set.
 func (o *InviteIdentitiesRequest) HasUninvited() bool {
-	if o != nil && !isNil(o.Uninvited) {
+	if o != nil && !IsNil(o.Uninvited) {
 		return true
 	}
 
@@ -127,7 +127,7 @@ func (o InviteIdentitiesRequest) ToMap() (map[string]interface{}, error) {
 	if o.Ids != nil {
 		toSerialize["ids"] = o.Ids
 	}
-	if !isNil(o.Uninvited) {
+	if !IsNil(o.Uninvited) {
 		toSerialize["uninvited"] = o.Uninvited
 	}
 
@@ -138,16 +138,20 @@ func (o InviteIdentitiesRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *InviteIdentitiesRequest) UnmarshalJSON(bytes []byte) (err error) {
+func (o *InviteIdentitiesRequest) UnmarshalJSON(data []byte) (err error) {
 	varInviteIdentitiesRequest := _InviteIdentitiesRequest{}
 
-	if err = json.Unmarshal(bytes, &varInviteIdentitiesRequest); err == nil {
+	err = json.Unmarshal(data, &varInviteIdentitiesRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = InviteIdentitiesRequest(varInviteIdentitiesRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "ids")
 		delete(additionalProperties, "uninvited")
 		o.AdditionalProperties = additionalProperties

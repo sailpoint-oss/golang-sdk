@@ -47,7 +47,7 @@ func NewIdentityAssociationDetailsAssociationDetailsInnerWithDefaults() *Identit
 
 // GetAssociationType returns the AssociationType field value if set, zero value otherwise.
 func (o *IdentityAssociationDetailsAssociationDetailsInner) GetAssociationType() string {
-	if o == nil || isNil(o.AssociationType) {
+	if o == nil || IsNil(o.AssociationType) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *IdentityAssociationDetailsAssociationDetailsInner) GetAssociationType()
 // GetAssociationTypeOk returns a tuple with the AssociationType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityAssociationDetailsAssociationDetailsInner) GetAssociationTypeOk() (*string, bool) {
-	if o == nil || isNil(o.AssociationType) {
+	if o == nil || IsNil(o.AssociationType) {
 		return nil, false
 	}
 	return o.AssociationType, true
@@ -65,7 +65,7 @@ func (o *IdentityAssociationDetailsAssociationDetailsInner) GetAssociationTypeOk
 
 // HasAssociationType returns a boolean if a field has been set.
 func (o *IdentityAssociationDetailsAssociationDetailsInner) HasAssociationType() bool {
-	if o != nil && !isNil(o.AssociationType) {
+	if o != nil && !IsNil(o.AssociationType) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *IdentityAssociationDetailsAssociationDetailsInner) SetAssociationType(v
 
 // GetEntities returns the Entities field value if set, zero value otherwise.
 func (o *IdentityAssociationDetailsAssociationDetailsInner) GetEntities() []IdentityEntities {
-	if o == nil || isNil(o.Entities) {
+	if o == nil || IsNil(o.Entities) {
 		var ret []IdentityEntities
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *IdentityAssociationDetailsAssociationDetailsInner) GetEntities() []Iden
 // GetEntitiesOk returns a tuple with the Entities field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityAssociationDetailsAssociationDetailsInner) GetEntitiesOk() ([]IdentityEntities, bool) {
-	if o == nil || isNil(o.Entities) {
+	if o == nil || IsNil(o.Entities) {
 		return nil, false
 	}
 	return o.Entities, true
@@ -97,7 +97,7 @@ func (o *IdentityAssociationDetailsAssociationDetailsInner) GetEntitiesOk() ([]I
 
 // HasEntities returns a boolean if a field has been set.
 func (o *IdentityAssociationDetailsAssociationDetailsInner) HasEntities() bool {
-	if o != nil && !isNil(o.Entities) {
+	if o != nil && !IsNil(o.Entities) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o IdentityAssociationDetailsAssociationDetailsInner) MarshalJSON() ([]byte
 
 func (o IdentityAssociationDetailsAssociationDetailsInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AssociationType) {
+	if !IsNil(o.AssociationType) {
 		toSerialize["associationType"] = o.AssociationType
 	}
-	if !isNil(o.Entities) {
+	if !IsNil(o.Entities) {
 		toSerialize["entities"] = o.Entities
 	}
 
@@ -133,16 +133,20 @@ func (o IdentityAssociationDetailsAssociationDetailsInner) ToMap() (map[string]i
 	return toSerialize, nil
 }
 
-func (o *IdentityAssociationDetailsAssociationDetailsInner) UnmarshalJSON(bytes []byte) (err error) {
+func (o *IdentityAssociationDetailsAssociationDetailsInner) UnmarshalJSON(data []byte) (err error) {
 	varIdentityAssociationDetailsAssociationDetailsInner := _IdentityAssociationDetailsAssociationDetailsInner{}
 
-	if err = json.Unmarshal(bytes, &varIdentityAssociationDetailsAssociationDetailsInner); err == nil {
+	err = json.Unmarshal(data, &varIdentityAssociationDetailsAssociationDetailsInner)
+
+	if err != nil {
+		return err
+	}
+
 	*o = IdentityAssociationDetailsAssociationDetailsInner(varIdentityAssociationDetailsAssociationDetailsInner)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "associationType")
 		delete(additionalProperties, "entities")
 		o.AdditionalProperties = additionalProperties

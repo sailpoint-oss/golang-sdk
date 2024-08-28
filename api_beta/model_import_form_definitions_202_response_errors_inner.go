@@ -46,7 +46,7 @@ func NewImportFormDefinitions202ResponseErrorsInnerWithDefaults() *ImportFormDef
 
 // GetDetail returns the Detail field value if set, zero value otherwise.
 func (o *ImportFormDefinitions202ResponseErrorsInner) GetDetail() map[string]map[string]interface{} {
-	if o == nil || isNil(o.Detail) {
+	if o == nil || IsNil(o.Detail) {
 		var ret map[string]map[string]interface{}
 		return ret
 	}
@@ -56,7 +56,7 @@ func (o *ImportFormDefinitions202ResponseErrorsInner) GetDetail() map[string]map
 // GetDetailOk returns a tuple with the Detail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImportFormDefinitions202ResponseErrorsInner) GetDetailOk() (map[string]map[string]interface{}, bool) {
-	if o == nil || isNil(o.Detail) {
+	if o == nil || IsNil(o.Detail) {
 		return map[string]map[string]interface{}{}, false
 	}
 	return o.Detail, true
@@ -64,7 +64,7 @@ func (o *ImportFormDefinitions202ResponseErrorsInner) GetDetailOk() (map[string]
 
 // HasDetail returns a boolean if a field has been set.
 func (o *ImportFormDefinitions202ResponseErrorsInner) HasDetail() bool {
-	if o != nil && !isNil(o.Detail) {
+	if o != nil && !IsNil(o.Detail) {
 		return true
 	}
 
@@ -78,7 +78,7 @@ func (o *ImportFormDefinitions202ResponseErrorsInner) SetDetail(v map[string]map
 
 // GetKey returns the Key field value if set, zero value otherwise.
 func (o *ImportFormDefinitions202ResponseErrorsInner) GetKey() string {
-	if o == nil || isNil(o.Key) {
+	if o == nil || IsNil(o.Key) {
 		var ret string
 		return ret
 	}
@@ -88,7 +88,7 @@ func (o *ImportFormDefinitions202ResponseErrorsInner) GetKey() string {
 // GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImportFormDefinitions202ResponseErrorsInner) GetKeyOk() (*string, bool) {
-	if o == nil || isNil(o.Key) {
+	if o == nil || IsNil(o.Key) {
 		return nil, false
 	}
 	return o.Key, true
@@ -96,7 +96,7 @@ func (o *ImportFormDefinitions202ResponseErrorsInner) GetKeyOk() (*string, bool)
 
 // HasKey returns a boolean if a field has been set.
 func (o *ImportFormDefinitions202ResponseErrorsInner) HasKey() bool {
-	if o != nil && !isNil(o.Key) {
+	if o != nil && !IsNil(o.Key) {
 		return true
 	}
 
@@ -110,7 +110,7 @@ func (o *ImportFormDefinitions202ResponseErrorsInner) SetKey(v string) {
 
 // GetText returns the Text field value if set, zero value otherwise.
 func (o *ImportFormDefinitions202ResponseErrorsInner) GetText() string {
-	if o == nil || isNil(o.Text) {
+	if o == nil || IsNil(o.Text) {
 		var ret string
 		return ret
 	}
@@ -120,7 +120,7 @@ func (o *ImportFormDefinitions202ResponseErrorsInner) GetText() string {
 // GetTextOk returns a tuple with the Text field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImportFormDefinitions202ResponseErrorsInner) GetTextOk() (*string, bool) {
-	if o == nil || isNil(o.Text) {
+	if o == nil || IsNil(o.Text) {
 		return nil, false
 	}
 	return o.Text, true
@@ -128,7 +128,7 @@ func (o *ImportFormDefinitions202ResponseErrorsInner) GetTextOk() (*string, bool
 
 // HasText returns a boolean if a field has been set.
 func (o *ImportFormDefinitions202ResponseErrorsInner) HasText() bool {
-	if o != nil && !isNil(o.Text) {
+	if o != nil && !IsNil(o.Text) {
 		return true
 	}
 
@@ -150,13 +150,13 @@ func (o ImportFormDefinitions202ResponseErrorsInner) MarshalJSON() ([]byte, erro
 
 func (o ImportFormDefinitions202ResponseErrorsInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Detail) {
+	if !IsNil(o.Detail) {
 		toSerialize["detail"] = o.Detail
 	}
-	if !isNil(o.Key) {
+	if !IsNil(o.Key) {
 		toSerialize["key"] = o.Key
 	}
-	if !isNil(o.Text) {
+	if !IsNil(o.Text) {
 		toSerialize["text"] = o.Text
 	}
 
@@ -167,16 +167,20 @@ func (o ImportFormDefinitions202ResponseErrorsInner) ToMap() (map[string]interfa
 	return toSerialize, nil
 }
 
-func (o *ImportFormDefinitions202ResponseErrorsInner) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ImportFormDefinitions202ResponseErrorsInner) UnmarshalJSON(data []byte) (err error) {
 	varImportFormDefinitions202ResponseErrorsInner := _ImportFormDefinitions202ResponseErrorsInner{}
 
-	if err = json.Unmarshal(bytes, &varImportFormDefinitions202ResponseErrorsInner); err == nil {
+	err = json.Unmarshal(data, &varImportFormDefinitions202ResponseErrorsInner)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ImportFormDefinitions202ResponseErrorsInner(varImportFormDefinitions202ResponseErrorsInner)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "detail")
 		delete(additionalProperties, "key")
 		delete(additionalProperties, "text")

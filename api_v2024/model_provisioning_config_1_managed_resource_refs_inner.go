@@ -49,7 +49,7 @@ func NewProvisioningConfig1ManagedResourceRefsInnerWithDefaults() *ProvisioningC
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *ProvisioningConfig1ManagedResourceRefsInner) GetType() map[string]interface{} {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *ProvisioningConfig1ManagedResourceRefsInner) GetType() map[string]inter
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProvisioningConfig1ManagedResourceRefsInner) GetTypeOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return map[string]interface{}{}, false
 	}
 	return o.Type, true
@@ -67,7 +67,7 @@ func (o *ProvisioningConfig1ManagedResourceRefsInner) GetTypeOk() (map[string]in
 
 // HasType returns a boolean if a field has been set.
 func (o *ProvisioningConfig1ManagedResourceRefsInner) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *ProvisioningConfig1ManagedResourceRefsInner) SetType(v map[string]inter
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ProvisioningConfig1ManagedResourceRefsInner) GetId() map[string]interface{} {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *ProvisioningConfig1ManagedResourceRefsInner) GetId() map[string]interfa
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProvisioningConfig1ManagedResourceRefsInner) GetIdOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return map[string]interface{}{}, false
 	}
 	return o.Id, true
@@ -99,7 +99,7 @@ func (o *ProvisioningConfig1ManagedResourceRefsInner) GetIdOk() (map[string]inte
 
 // HasId returns a boolean if a field has been set.
 func (o *ProvisioningConfig1ManagedResourceRefsInner) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *ProvisioningConfig1ManagedResourceRefsInner) SetId(v map[string]interfa
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ProvisioningConfig1ManagedResourceRefsInner) GetName() map[string]interface{} {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *ProvisioningConfig1ManagedResourceRefsInner) GetName() map[string]inter
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProvisioningConfig1ManagedResourceRefsInner) GetNameOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return map[string]interface{}{}, false
 	}
 	return o.Name, true
@@ -131,7 +131,7 @@ func (o *ProvisioningConfig1ManagedResourceRefsInner) GetNameOk() (map[string]in
 
 // HasName returns a boolean if a field has been set.
 func (o *ProvisioningConfig1ManagedResourceRefsInner) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o ProvisioningConfig1ManagedResourceRefsInner) MarshalJSON() ([]byte, erro
 
 func (o ProvisioningConfig1ManagedResourceRefsInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 
@@ -170,16 +170,20 @@ func (o ProvisioningConfig1ManagedResourceRefsInner) ToMap() (map[string]interfa
 	return toSerialize, nil
 }
 
-func (o *ProvisioningConfig1ManagedResourceRefsInner) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ProvisioningConfig1ManagedResourceRefsInner) UnmarshalJSON(data []byte) (err error) {
 	varProvisioningConfig1ManagedResourceRefsInner := _ProvisioningConfig1ManagedResourceRefsInner{}
 
-	if err = json.Unmarshal(bytes, &varProvisioningConfig1ManagedResourceRefsInner); err == nil {
+	err = json.Unmarshal(data, &varProvisioningConfig1ManagedResourceRefsInner)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ProvisioningConfig1ManagedResourceRefsInner(varProvisioningConfig1ManagedResourceRefsInner)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")

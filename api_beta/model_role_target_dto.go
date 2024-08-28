@@ -47,7 +47,7 @@ func NewRoleTargetDtoWithDefaults() *RoleTargetDto {
 
 // GetSource returns the Source field value if set, zero value otherwise.
 func (o *RoleTargetDto) GetSource() BaseReferenceDto {
-	if o == nil || isNil(o.Source) {
+	if o == nil || IsNil(o.Source) {
 		var ret BaseReferenceDto
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *RoleTargetDto) GetSource() BaseReferenceDto {
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleTargetDto) GetSourceOk() (*BaseReferenceDto, bool) {
-	if o == nil || isNil(o.Source) {
+	if o == nil || IsNil(o.Source) {
 		return nil, false
 	}
 	return o.Source, true
@@ -65,7 +65,7 @@ func (o *RoleTargetDto) GetSourceOk() (*BaseReferenceDto, bool) {
 
 // HasSource returns a boolean if a field has been set.
 func (o *RoleTargetDto) HasSource() bool {
-	if o != nil && !isNil(o.Source) {
+	if o != nil && !IsNil(o.Source) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *RoleTargetDto) SetSource(v BaseReferenceDto) {
 
 // GetAccountInfo returns the AccountInfo field value if set, zero value otherwise.
 func (o *RoleTargetDto) GetAccountInfo() AccountInfoDto {
-	if o == nil || isNil(o.AccountInfo) {
+	if o == nil || IsNil(o.AccountInfo) {
 		var ret AccountInfoDto
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *RoleTargetDto) GetAccountInfo() AccountInfoDto {
 // GetAccountInfoOk returns a tuple with the AccountInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleTargetDto) GetAccountInfoOk() (*AccountInfoDto, bool) {
-	if o == nil || isNil(o.AccountInfo) {
+	if o == nil || IsNil(o.AccountInfo) {
 		return nil, false
 	}
 	return o.AccountInfo, true
@@ -97,7 +97,7 @@ func (o *RoleTargetDto) GetAccountInfoOk() (*AccountInfoDto, bool) {
 
 // HasAccountInfo returns a boolean if a field has been set.
 func (o *RoleTargetDto) HasAccountInfo() bool {
-	if o != nil && !isNil(o.AccountInfo) {
+	if o != nil && !IsNil(o.AccountInfo) {
 		return true
 	}
 
@@ -111,7 +111,7 @@ func (o *RoleTargetDto) SetAccountInfo(v AccountInfoDto) {
 
 // GetRoleName returns the RoleName field value if set, zero value otherwise.
 func (o *RoleTargetDto) GetRoleName() string {
-	if o == nil || isNil(o.RoleName) {
+	if o == nil || IsNil(o.RoleName) {
 		var ret string
 		return ret
 	}
@@ -121,7 +121,7 @@ func (o *RoleTargetDto) GetRoleName() string {
 // GetRoleNameOk returns a tuple with the RoleName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleTargetDto) GetRoleNameOk() (*string, bool) {
-	if o == nil || isNil(o.RoleName) {
+	if o == nil || IsNil(o.RoleName) {
 		return nil, false
 	}
 	return o.RoleName, true
@@ -129,7 +129,7 @@ func (o *RoleTargetDto) GetRoleNameOk() (*string, bool) {
 
 // HasRoleName returns a boolean if a field has been set.
 func (o *RoleTargetDto) HasRoleName() bool {
-	if o != nil && !isNil(o.RoleName) {
+	if o != nil && !IsNil(o.RoleName) {
 		return true
 	}
 
@@ -151,13 +151,13 @@ func (o RoleTargetDto) MarshalJSON() ([]byte, error) {
 
 func (o RoleTargetDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Source) {
+	if !IsNil(o.Source) {
 		toSerialize["source"] = o.Source
 	}
-	if !isNil(o.AccountInfo) {
+	if !IsNil(o.AccountInfo) {
 		toSerialize["accountInfo"] = o.AccountInfo
 	}
-	if !isNil(o.RoleName) {
+	if !IsNil(o.RoleName) {
 		toSerialize["roleName"] = o.RoleName
 	}
 
@@ -168,16 +168,20 @@ func (o RoleTargetDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *RoleTargetDto) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RoleTargetDto) UnmarshalJSON(data []byte) (err error) {
 	varRoleTargetDto := _RoleTargetDto{}
 
-	if err = json.Unmarshal(bytes, &varRoleTargetDto); err == nil {
+	err = json.Unmarshal(data, &varRoleTargetDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RoleTargetDto(varRoleTargetDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "source")
 		delete(additionalProperties, "accountInfo")
 		delete(additionalProperties, "roleName")

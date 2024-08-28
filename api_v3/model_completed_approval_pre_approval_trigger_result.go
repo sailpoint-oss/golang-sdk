@@ -51,7 +51,7 @@ func NewCompletedApprovalPreApprovalTriggerResultWithDefaults() *CompletedApprov
 
 // GetComment returns the Comment field value if set, zero value otherwise.
 func (o *CompletedApprovalPreApprovalTriggerResult) GetComment() string {
-	if o == nil || isNil(o.Comment) {
+	if o == nil || IsNil(o.Comment) {
 		var ret string
 		return ret
 	}
@@ -61,7 +61,7 @@ func (o *CompletedApprovalPreApprovalTriggerResult) GetComment() string {
 // GetCommentOk returns a tuple with the Comment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CompletedApprovalPreApprovalTriggerResult) GetCommentOk() (*string, bool) {
-	if o == nil || isNil(o.Comment) {
+	if o == nil || IsNil(o.Comment) {
 		return nil, false
 	}
 	return o.Comment, true
@@ -69,7 +69,7 @@ func (o *CompletedApprovalPreApprovalTriggerResult) GetCommentOk() (*string, boo
 
 // HasComment returns a boolean if a field has been set.
 func (o *CompletedApprovalPreApprovalTriggerResult) HasComment() bool {
-	if o != nil && !isNil(o.Comment) {
+	if o != nil && !IsNil(o.Comment) {
 		return true
 	}
 
@@ -83,7 +83,7 @@ func (o *CompletedApprovalPreApprovalTriggerResult) SetComment(v string) {
 
 // GetDecision returns the Decision field value if set, zero value otherwise.
 func (o *CompletedApprovalPreApprovalTriggerResult) GetDecision() CompletedApprovalState {
-	if o == nil || isNil(o.Decision) {
+	if o == nil || IsNil(o.Decision) {
 		var ret CompletedApprovalState
 		return ret
 	}
@@ -93,7 +93,7 @@ func (o *CompletedApprovalPreApprovalTriggerResult) GetDecision() CompletedAppro
 // GetDecisionOk returns a tuple with the Decision field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CompletedApprovalPreApprovalTriggerResult) GetDecisionOk() (*CompletedApprovalState, bool) {
-	if o == nil || isNil(o.Decision) {
+	if o == nil || IsNil(o.Decision) {
 		return nil, false
 	}
 	return o.Decision, true
@@ -101,7 +101,7 @@ func (o *CompletedApprovalPreApprovalTriggerResult) GetDecisionOk() (*CompletedA
 
 // HasDecision returns a boolean if a field has been set.
 func (o *CompletedApprovalPreApprovalTriggerResult) HasDecision() bool {
-	if o != nil && !isNil(o.Decision) {
+	if o != nil && !IsNil(o.Decision) {
 		return true
 	}
 
@@ -115,7 +115,7 @@ func (o *CompletedApprovalPreApprovalTriggerResult) SetDecision(v CompletedAppro
 
 // GetReviewer returns the Reviewer field value if set, zero value otherwise.
 func (o *CompletedApprovalPreApprovalTriggerResult) GetReviewer() string {
-	if o == nil || isNil(o.Reviewer) {
+	if o == nil || IsNil(o.Reviewer) {
 		var ret string
 		return ret
 	}
@@ -125,7 +125,7 @@ func (o *CompletedApprovalPreApprovalTriggerResult) GetReviewer() string {
 // GetReviewerOk returns a tuple with the Reviewer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CompletedApprovalPreApprovalTriggerResult) GetReviewerOk() (*string, bool) {
-	if o == nil || isNil(o.Reviewer) {
+	if o == nil || IsNil(o.Reviewer) {
 		return nil, false
 	}
 	return o.Reviewer, true
@@ -133,7 +133,7 @@ func (o *CompletedApprovalPreApprovalTriggerResult) GetReviewerOk() (*string, bo
 
 // HasReviewer returns a boolean if a field has been set.
 func (o *CompletedApprovalPreApprovalTriggerResult) HasReviewer() bool {
-	if o != nil && !isNil(o.Reviewer) {
+	if o != nil && !IsNil(o.Reviewer) {
 		return true
 	}
 
@@ -147,7 +147,7 @@ func (o *CompletedApprovalPreApprovalTriggerResult) SetReviewer(v string) {
 
 // GetDate returns the Date field value if set, zero value otherwise.
 func (o *CompletedApprovalPreApprovalTriggerResult) GetDate() time.Time {
-	if o == nil || isNil(o.Date) {
+	if o == nil || IsNil(o.Date) {
 		var ret time.Time
 		return ret
 	}
@@ -157,7 +157,7 @@ func (o *CompletedApprovalPreApprovalTriggerResult) GetDate() time.Time {
 // GetDateOk returns a tuple with the Date field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CompletedApprovalPreApprovalTriggerResult) GetDateOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Date) {
+	if o == nil || IsNil(o.Date) {
 		return nil, false
 	}
 	return o.Date, true
@@ -165,7 +165,7 @@ func (o *CompletedApprovalPreApprovalTriggerResult) GetDateOk() (*time.Time, boo
 
 // HasDate returns a boolean if a field has been set.
 func (o *CompletedApprovalPreApprovalTriggerResult) HasDate() bool {
-	if o != nil && !isNil(o.Date) {
+	if o != nil && !IsNil(o.Date) {
 		return true
 	}
 
@@ -187,16 +187,16 @@ func (o CompletedApprovalPreApprovalTriggerResult) MarshalJSON() ([]byte, error)
 
 func (o CompletedApprovalPreApprovalTriggerResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Comment) {
+	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if !isNil(o.Decision) {
+	if !IsNil(o.Decision) {
 		toSerialize["decision"] = o.Decision
 	}
-	if !isNil(o.Reviewer) {
+	if !IsNil(o.Reviewer) {
 		toSerialize["reviewer"] = o.Reviewer
 	}
-	if !isNil(o.Date) {
+	if !IsNil(o.Date) {
 		toSerialize["date"] = o.Date
 	}
 
@@ -207,16 +207,20 @@ func (o CompletedApprovalPreApprovalTriggerResult) ToMap() (map[string]interface
 	return toSerialize, nil
 }
 
-func (o *CompletedApprovalPreApprovalTriggerResult) UnmarshalJSON(bytes []byte) (err error) {
+func (o *CompletedApprovalPreApprovalTriggerResult) UnmarshalJSON(data []byte) (err error) {
 	varCompletedApprovalPreApprovalTriggerResult := _CompletedApprovalPreApprovalTriggerResult{}
 
-	if err = json.Unmarshal(bytes, &varCompletedApprovalPreApprovalTriggerResult); err == nil {
+	err = json.Unmarshal(data, &varCompletedApprovalPreApprovalTriggerResult)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CompletedApprovalPreApprovalTriggerResult(varCompletedApprovalPreApprovalTriggerResult)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "comment")
 		delete(additionalProperties, "decision")
 		delete(additionalProperties, "reviewer")

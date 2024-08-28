@@ -50,7 +50,7 @@ func NewReviewRecommendationWithDefaults() *ReviewRecommendation {
 
 // GetRecommendation returns the Recommendation field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ReviewRecommendation) GetRecommendation() string {
-	if o == nil || isNil(o.Recommendation.Get()) {
+	if o == nil || IsNil(o.Recommendation.Get()) {
 		var ret string
 		return ret
 	}
@@ -92,7 +92,7 @@ func (o *ReviewRecommendation) UnsetRecommendation() {
 
 // GetReasons returns the Reasons field value if set, zero value otherwise.
 func (o *ReviewRecommendation) GetReasons() []string {
-	if o == nil || isNil(o.Reasons) {
+	if o == nil || IsNil(o.Reasons) {
 		var ret []string
 		return ret
 	}
@@ -102,7 +102,7 @@ func (o *ReviewRecommendation) GetReasons() []string {
 // GetReasonsOk returns a tuple with the Reasons field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReviewRecommendation) GetReasonsOk() ([]string, bool) {
-	if o == nil || isNil(o.Reasons) {
+	if o == nil || IsNil(o.Reasons) {
 		return nil, false
 	}
 	return o.Reasons, true
@@ -110,7 +110,7 @@ func (o *ReviewRecommendation) GetReasonsOk() ([]string, bool) {
 
 // HasReasons returns a boolean if a field has been set.
 func (o *ReviewRecommendation) HasReasons() bool {
-	if o != nil && !isNil(o.Reasons) {
+	if o != nil && !IsNil(o.Reasons) {
 		return true
 	}
 
@@ -124,7 +124,7 @@ func (o *ReviewRecommendation) SetReasons(v []string) {
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise.
 func (o *ReviewRecommendation) GetTimestamp() time.Time {
-	if o == nil || isNil(o.Timestamp) {
+	if o == nil || IsNil(o.Timestamp) {
 		var ret time.Time
 		return ret
 	}
@@ -134,7 +134,7 @@ func (o *ReviewRecommendation) GetTimestamp() time.Time {
 // GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReviewRecommendation) GetTimestampOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Timestamp) {
+	if o == nil || IsNil(o.Timestamp) {
 		return nil, false
 	}
 	return o.Timestamp, true
@@ -142,7 +142,7 @@ func (o *ReviewRecommendation) GetTimestampOk() (*time.Time, bool) {
 
 // HasTimestamp returns a boolean if a field has been set.
 func (o *ReviewRecommendation) HasTimestamp() bool {
-	if o != nil && !isNil(o.Timestamp) {
+	if o != nil && !IsNil(o.Timestamp) {
 		return true
 	}
 
@@ -167,10 +167,10 @@ func (o ReviewRecommendation) ToMap() (map[string]interface{}, error) {
 	if o.Recommendation.IsSet() {
 		toSerialize["recommendation"] = o.Recommendation.Get()
 	}
-	if !isNil(o.Reasons) {
+	if !IsNil(o.Reasons) {
 		toSerialize["reasons"] = o.Reasons
 	}
-	if !isNil(o.Timestamp) {
+	if !IsNil(o.Timestamp) {
 		toSerialize["timestamp"] = o.Timestamp
 	}
 
@@ -181,16 +181,20 @@ func (o ReviewRecommendation) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ReviewRecommendation) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ReviewRecommendation) UnmarshalJSON(data []byte) (err error) {
 	varReviewRecommendation := _ReviewRecommendation{}
 
-	if err = json.Unmarshal(bytes, &varReviewRecommendation); err == nil {
+	err = json.Unmarshal(data, &varReviewRecommendation)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ReviewRecommendation(varReviewRecommendation)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "recommendation")
 		delete(additionalProperties, "reasons")
 		delete(additionalProperties, "timestamp")

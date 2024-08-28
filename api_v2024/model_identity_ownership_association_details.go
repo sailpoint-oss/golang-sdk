@@ -45,7 +45,7 @@ func NewIdentityOwnershipAssociationDetailsWithDefaults() *IdentityOwnershipAsso
 
 // GetAssociationDetails returns the AssociationDetails field value if set, zero value otherwise.
 func (o *IdentityOwnershipAssociationDetails) GetAssociationDetails() []IdentityOwnershipAssociationDetailsAssociationDetailsInner {
-	if o == nil || isNil(o.AssociationDetails) {
+	if o == nil || IsNil(o.AssociationDetails) {
 		var ret []IdentityOwnershipAssociationDetailsAssociationDetailsInner
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *IdentityOwnershipAssociationDetails) GetAssociationDetails() []Identity
 // GetAssociationDetailsOk returns a tuple with the AssociationDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityOwnershipAssociationDetails) GetAssociationDetailsOk() ([]IdentityOwnershipAssociationDetailsAssociationDetailsInner, bool) {
-	if o == nil || isNil(o.AssociationDetails) {
+	if o == nil || IsNil(o.AssociationDetails) {
 		return nil, false
 	}
 	return o.AssociationDetails, true
@@ -63,7 +63,7 @@ func (o *IdentityOwnershipAssociationDetails) GetAssociationDetailsOk() ([]Ident
 
 // HasAssociationDetails returns a boolean if a field has been set.
 func (o *IdentityOwnershipAssociationDetails) HasAssociationDetails() bool {
-	if o != nil && !isNil(o.AssociationDetails) {
+	if o != nil && !IsNil(o.AssociationDetails) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o IdentityOwnershipAssociationDetails) MarshalJSON() ([]byte, error) {
 
 func (o IdentityOwnershipAssociationDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AssociationDetails) {
+	if !IsNil(o.AssociationDetails) {
 		toSerialize["associationDetails"] = o.AssociationDetails
 	}
 
@@ -96,16 +96,20 @@ func (o IdentityOwnershipAssociationDetails) ToMap() (map[string]interface{}, er
 	return toSerialize, nil
 }
 
-func (o *IdentityOwnershipAssociationDetails) UnmarshalJSON(bytes []byte) (err error) {
+func (o *IdentityOwnershipAssociationDetails) UnmarshalJSON(data []byte) (err error) {
 	varIdentityOwnershipAssociationDetails := _IdentityOwnershipAssociationDetails{}
 
-	if err = json.Unmarshal(bytes, &varIdentityOwnershipAssociationDetails); err == nil {
+	err = json.Unmarshal(data, &varIdentityOwnershipAssociationDetails)
+
+	if err != nil {
+		return err
+	}
+
 	*o = IdentityOwnershipAssociationDetails(varIdentityOwnershipAssociationDetails)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "associationDetails")
 		o.AdditionalProperties = additionalProperties
 	}

@@ -47,7 +47,7 @@ func NewMessageCatalogDtoWithDefaults() *MessageCatalogDto {
 
 // GetLocale returns the Locale field value if set, zero value otherwise.
 func (o *MessageCatalogDto) GetLocale() string {
-	if o == nil || isNil(o.Locale) {
+	if o == nil || IsNil(o.Locale) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *MessageCatalogDto) GetLocale() string {
 // GetLocaleOk returns a tuple with the Locale field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MessageCatalogDto) GetLocaleOk() (*string, bool) {
-	if o == nil || isNil(o.Locale) {
+	if o == nil || IsNil(o.Locale) {
 		return nil, false
 	}
 	return o.Locale, true
@@ -65,7 +65,7 @@ func (o *MessageCatalogDto) GetLocaleOk() (*string, bool) {
 
 // HasLocale returns a boolean if a field has been set.
 func (o *MessageCatalogDto) HasLocale() bool {
-	if o != nil && !isNil(o.Locale) {
+	if o != nil && !IsNil(o.Locale) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *MessageCatalogDto) SetLocale(v string) {
 
 // GetMessages returns the Messages field value if set, zero value otherwise.
 func (o *MessageCatalogDto) GetMessages() []ResourceBundleMessage {
-	if o == nil || isNil(o.Messages) {
+	if o == nil || IsNil(o.Messages) {
 		var ret []ResourceBundleMessage
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *MessageCatalogDto) GetMessages() []ResourceBundleMessage {
 // GetMessagesOk returns a tuple with the Messages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MessageCatalogDto) GetMessagesOk() ([]ResourceBundleMessage, bool) {
-	if o == nil || isNil(o.Messages) {
+	if o == nil || IsNil(o.Messages) {
 		return nil, false
 	}
 	return o.Messages, true
@@ -97,7 +97,7 @@ func (o *MessageCatalogDto) GetMessagesOk() ([]ResourceBundleMessage, bool) {
 
 // HasMessages returns a boolean if a field has been set.
 func (o *MessageCatalogDto) HasMessages() bool {
-	if o != nil && !isNil(o.Messages) {
+	if o != nil && !IsNil(o.Messages) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o MessageCatalogDto) MarshalJSON() ([]byte, error) {
 
 func (o MessageCatalogDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Locale) {
+	if !IsNil(o.Locale) {
 		toSerialize["locale"] = o.Locale
 	}
-	if !isNil(o.Messages) {
+	if !IsNil(o.Messages) {
 		toSerialize["messages"] = o.Messages
 	}
 
@@ -133,16 +133,20 @@ func (o MessageCatalogDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *MessageCatalogDto) UnmarshalJSON(bytes []byte) (err error) {
+func (o *MessageCatalogDto) UnmarshalJSON(data []byte) (err error) {
 	varMessageCatalogDto := _MessageCatalogDto{}
 
-	if err = json.Unmarshal(bytes, &varMessageCatalogDto); err == nil {
+	err = json.Unmarshal(data, &varMessageCatalogDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = MessageCatalogDto(varMessageCatalogDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "locale")
 		delete(additionalProperties, "messages")
 		o.AdditionalProperties = additionalProperties

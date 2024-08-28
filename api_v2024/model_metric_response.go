@@ -47,7 +47,7 @@ func NewMetricResponseWithDefaults() *MetricResponse {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *MetricResponse) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *MetricResponse) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MetricResponse) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -65,7 +65,7 @@ func (o *MetricResponse) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *MetricResponse) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *MetricResponse) SetName(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *MetricResponse) GetValue() float32 {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret float32
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *MetricResponse) GetValue() float32 {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MetricResponse) GetValueOk() (*float32, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -97,7 +97,7 @@ func (o *MetricResponse) GetValueOk() (*float32, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *MetricResponse) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o MetricResponse) MarshalJSON() ([]byte, error) {
 
 func (o MetricResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Value) {
+	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
 
@@ -133,16 +133,20 @@ func (o MetricResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *MetricResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *MetricResponse) UnmarshalJSON(data []byte) (err error) {
 	varMetricResponse := _MetricResponse{}
 
-	if err = json.Unmarshal(bytes, &varMetricResponse); err == nil {
+	err = json.Unmarshal(data, &varMetricResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = MetricResponse(varMetricResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "value")
 		o.AdditionalProperties = additionalProperties

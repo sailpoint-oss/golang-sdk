@@ -46,7 +46,7 @@ func NewSavedSearchCompleteSearchResultsWithDefaults() *SavedSearchCompleteSearc
 
 // GetAccount returns the Account field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SavedSearchCompleteSearchResults) GetAccount() SavedSearchCompleteSearchResultsAccount {
-	if o == nil || isNil(o.Account.Get()) {
+	if o == nil || IsNil(o.Account.Get()) {
 		var ret SavedSearchCompleteSearchResultsAccount
 		return ret
 	}
@@ -88,7 +88,7 @@ func (o *SavedSearchCompleteSearchResults) UnsetAccount() {
 
 // GetEntitlement returns the Entitlement field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SavedSearchCompleteSearchResults) GetEntitlement() SavedSearchCompleteSearchResultsEntitlement {
-	if o == nil || isNil(o.Entitlement.Get()) {
+	if o == nil || IsNil(o.Entitlement.Get()) {
 		var ret SavedSearchCompleteSearchResultsEntitlement
 		return ret
 	}
@@ -130,7 +130,7 @@ func (o *SavedSearchCompleteSearchResults) UnsetEntitlement() {
 
 // GetIdentity returns the Identity field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SavedSearchCompleteSearchResults) GetIdentity() SavedSearchCompleteSearchResultsIdentity {
-	if o == nil || isNil(o.Identity.Get()) {
+	if o == nil || IsNil(o.Identity.Get()) {
 		var ret SavedSearchCompleteSearchResultsIdentity
 		return ret
 	}
@@ -197,16 +197,20 @@ func (o SavedSearchCompleteSearchResults) ToMap() (map[string]interface{}, error
 	return toSerialize, nil
 }
 
-func (o *SavedSearchCompleteSearchResults) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SavedSearchCompleteSearchResults) UnmarshalJSON(data []byte) (err error) {
 	varSavedSearchCompleteSearchResults := _SavedSearchCompleteSearchResults{}
 
-	if err = json.Unmarshal(bytes, &varSavedSearchCompleteSearchResults); err == nil {
+	err = json.Unmarshal(data, &varSavedSearchCompleteSearchResults)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SavedSearchCompleteSearchResults(varSavedSearchCompleteSearchResults)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "Account")
 		delete(additionalProperties, "Entitlement")
 		delete(additionalProperties, "Identity")

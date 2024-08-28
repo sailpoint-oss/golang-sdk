@@ -55,7 +55,7 @@ func NewPasswordInfoWithDefaults() *PasswordInfo {
 
 // GetIdentityId returns the IdentityId field value if set, zero value otherwise.
 func (o *PasswordInfo) GetIdentityId() string {
-	if o == nil || isNil(o.IdentityId) {
+	if o == nil || IsNil(o.IdentityId) {
 		var ret string
 		return ret
 	}
@@ -65,7 +65,7 @@ func (o *PasswordInfo) GetIdentityId() string {
 // GetIdentityIdOk returns a tuple with the IdentityId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordInfo) GetIdentityIdOk() (*string, bool) {
-	if o == nil || isNil(o.IdentityId) {
+	if o == nil || IsNil(o.IdentityId) {
 		return nil, false
 	}
 	return o.IdentityId, true
@@ -73,7 +73,7 @@ func (o *PasswordInfo) GetIdentityIdOk() (*string, bool) {
 
 // HasIdentityId returns a boolean if a field has been set.
 func (o *PasswordInfo) HasIdentityId() bool {
-	if o != nil && !isNil(o.IdentityId) {
+	if o != nil && !IsNil(o.IdentityId) {
 		return true
 	}
 
@@ -87,7 +87,7 @@ func (o *PasswordInfo) SetIdentityId(v string) {
 
 // GetSourceId returns the SourceId field value if set, zero value otherwise.
 func (o *PasswordInfo) GetSourceId() string {
-	if o == nil || isNil(o.SourceId) {
+	if o == nil || IsNil(o.SourceId) {
 		var ret string
 		return ret
 	}
@@ -97,7 +97,7 @@ func (o *PasswordInfo) GetSourceId() string {
 // GetSourceIdOk returns a tuple with the SourceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordInfo) GetSourceIdOk() (*string, bool) {
-	if o == nil || isNil(o.SourceId) {
+	if o == nil || IsNil(o.SourceId) {
 		return nil, false
 	}
 	return o.SourceId, true
@@ -105,7 +105,7 @@ func (o *PasswordInfo) GetSourceIdOk() (*string, bool) {
 
 // HasSourceId returns a boolean if a field has been set.
 func (o *PasswordInfo) HasSourceId() bool {
-	if o != nil && !isNil(o.SourceId) {
+	if o != nil && !IsNil(o.SourceId) {
 		return true
 	}
 
@@ -119,7 +119,7 @@ func (o *PasswordInfo) SetSourceId(v string) {
 
 // GetPublicKeyId returns the PublicKeyId field value if set, zero value otherwise.
 func (o *PasswordInfo) GetPublicKeyId() string {
-	if o == nil || isNil(o.PublicKeyId) {
+	if o == nil || IsNil(o.PublicKeyId) {
 		var ret string
 		return ret
 	}
@@ -129,7 +129,7 @@ func (o *PasswordInfo) GetPublicKeyId() string {
 // GetPublicKeyIdOk returns a tuple with the PublicKeyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordInfo) GetPublicKeyIdOk() (*string, bool) {
-	if o == nil || isNil(o.PublicKeyId) {
+	if o == nil || IsNil(o.PublicKeyId) {
 		return nil, false
 	}
 	return o.PublicKeyId, true
@@ -137,7 +137,7 @@ func (o *PasswordInfo) GetPublicKeyIdOk() (*string, bool) {
 
 // HasPublicKeyId returns a boolean if a field has been set.
 func (o *PasswordInfo) HasPublicKeyId() bool {
-	if o != nil && !isNil(o.PublicKeyId) {
+	if o != nil && !IsNil(o.PublicKeyId) {
 		return true
 	}
 
@@ -151,7 +151,7 @@ func (o *PasswordInfo) SetPublicKeyId(v string) {
 
 // GetPublicKey returns the PublicKey field value if set, zero value otherwise.
 func (o *PasswordInfo) GetPublicKey() string {
-	if o == nil || isNil(o.PublicKey) {
+	if o == nil || IsNil(o.PublicKey) {
 		var ret string
 		return ret
 	}
@@ -161,7 +161,7 @@ func (o *PasswordInfo) GetPublicKey() string {
 // GetPublicKeyOk returns a tuple with the PublicKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordInfo) GetPublicKeyOk() (*string, bool) {
-	if o == nil || isNil(o.PublicKey) {
+	if o == nil || IsNil(o.PublicKey) {
 		return nil, false
 	}
 	return o.PublicKey, true
@@ -169,7 +169,7 @@ func (o *PasswordInfo) GetPublicKeyOk() (*string, bool) {
 
 // HasPublicKey returns a boolean if a field has been set.
 func (o *PasswordInfo) HasPublicKey() bool {
-	if o != nil && !isNil(o.PublicKey) {
+	if o != nil && !IsNil(o.PublicKey) {
 		return true
 	}
 
@@ -183,7 +183,7 @@ func (o *PasswordInfo) SetPublicKey(v string) {
 
 // GetAccounts returns the Accounts field value if set, zero value otherwise.
 func (o *PasswordInfo) GetAccounts() []PasswordInfoAccount {
-	if o == nil || isNil(o.Accounts) {
+	if o == nil || IsNil(o.Accounts) {
 		var ret []PasswordInfoAccount
 		return ret
 	}
@@ -193,7 +193,7 @@ func (o *PasswordInfo) GetAccounts() []PasswordInfoAccount {
 // GetAccountsOk returns a tuple with the Accounts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordInfo) GetAccountsOk() ([]PasswordInfoAccount, bool) {
-	if o == nil || isNil(o.Accounts) {
+	if o == nil || IsNil(o.Accounts) {
 		return nil, false
 	}
 	return o.Accounts, true
@@ -201,7 +201,7 @@ func (o *PasswordInfo) GetAccountsOk() ([]PasswordInfoAccount, bool) {
 
 // HasAccounts returns a boolean if a field has been set.
 func (o *PasswordInfo) HasAccounts() bool {
-	if o != nil && !isNil(o.Accounts) {
+	if o != nil && !IsNil(o.Accounts) {
 		return true
 	}
 
@@ -215,7 +215,7 @@ func (o *PasswordInfo) SetAccounts(v []PasswordInfoAccount) {
 
 // GetPolicies returns the Policies field value if set, zero value otherwise.
 func (o *PasswordInfo) GetPolicies() []string {
-	if o == nil || isNil(o.Policies) {
+	if o == nil || IsNil(o.Policies) {
 		var ret []string
 		return ret
 	}
@@ -225,7 +225,7 @@ func (o *PasswordInfo) GetPolicies() []string {
 // GetPoliciesOk returns a tuple with the Policies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordInfo) GetPoliciesOk() ([]string, bool) {
-	if o == nil || isNil(o.Policies) {
+	if o == nil || IsNil(o.Policies) {
 		return nil, false
 	}
 	return o.Policies, true
@@ -233,7 +233,7 @@ func (o *PasswordInfo) GetPoliciesOk() ([]string, bool) {
 
 // HasPolicies returns a boolean if a field has been set.
 func (o *PasswordInfo) HasPolicies() bool {
-	if o != nil && !isNil(o.Policies) {
+	if o != nil && !IsNil(o.Policies) {
 		return true
 	}
 
@@ -255,22 +255,22 @@ func (o PasswordInfo) MarshalJSON() ([]byte, error) {
 
 func (o PasswordInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.IdentityId) {
+	if !IsNil(o.IdentityId) {
 		toSerialize["identityId"] = o.IdentityId
 	}
-	if !isNil(o.SourceId) {
+	if !IsNil(o.SourceId) {
 		toSerialize["sourceId"] = o.SourceId
 	}
-	if !isNil(o.PublicKeyId) {
+	if !IsNil(o.PublicKeyId) {
 		toSerialize["publicKeyId"] = o.PublicKeyId
 	}
-	if !isNil(o.PublicKey) {
+	if !IsNil(o.PublicKey) {
 		toSerialize["publicKey"] = o.PublicKey
 	}
-	if !isNil(o.Accounts) {
+	if !IsNil(o.Accounts) {
 		toSerialize["accounts"] = o.Accounts
 	}
-	if !isNil(o.Policies) {
+	if !IsNil(o.Policies) {
 		toSerialize["policies"] = o.Policies
 	}
 
@@ -281,16 +281,20 @@ func (o PasswordInfo) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *PasswordInfo) UnmarshalJSON(bytes []byte) (err error) {
+func (o *PasswordInfo) UnmarshalJSON(data []byte) (err error) {
 	varPasswordInfo := _PasswordInfo{}
 
-	if err = json.Unmarshal(bytes, &varPasswordInfo); err == nil {
+	err = json.Unmarshal(data, &varPasswordInfo)
+
+	if err != nil {
+		return err
+	}
+
 	*o = PasswordInfo(varPasswordInfo)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "identityId")
 		delete(additionalProperties, "sourceId")
 		delete(additionalProperties, "publicKeyId")

@@ -61,7 +61,7 @@ func NewRemediationItemsWithDefaults() *RemediationItems {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *RemediationItems) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -71,7 +71,7 @@ func (o *RemediationItems) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RemediationItems) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -79,7 +79,7 @@ func (o *RemediationItems) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *RemediationItems) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -93,7 +93,7 @@ func (o *RemediationItems) SetId(v string) {
 
 // GetTargetId returns the TargetId field value if set, zero value otherwise.
 func (o *RemediationItems) GetTargetId() string {
-	if o == nil || isNil(o.TargetId) {
+	if o == nil || IsNil(o.TargetId) {
 		var ret string
 		return ret
 	}
@@ -103,7 +103,7 @@ func (o *RemediationItems) GetTargetId() string {
 // GetTargetIdOk returns a tuple with the TargetId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RemediationItems) GetTargetIdOk() (*string, bool) {
-	if o == nil || isNil(o.TargetId) {
+	if o == nil || IsNil(o.TargetId) {
 		return nil, false
 	}
 	return o.TargetId, true
@@ -111,7 +111,7 @@ func (o *RemediationItems) GetTargetIdOk() (*string, bool) {
 
 // HasTargetId returns a boolean if a field has been set.
 func (o *RemediationItems) HasTargetId() bool {
-	if o != nil && !isNil(o.TargetId) {
+	if o != nil && !IsNil(o.TargetId) {
 		return true
 	}
 
@@ -125,7 +125,7 @@ func (o *RemediationItems) SetTargetId(v string) {
 
 // GetTargetName returns the TargetName field value if set, zero value otherwise.
 func (o *RemediationItems) GetTargetName() string {
-	if o == nil || isNil(o.TargetName) {
+	if o == nil || IsNil(o.TargetName) {
 		var ret string
 		return ret
 	}
@@ -135,7 +135,7 @@ func (o *RemediationItems) GetTargetName() string {
 // GetTargetNameOk returns a tuple with the TargetName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RemediationItems) GetTargetNameOk() (*string, bool) {
-	if o == nil || isNil(o.TargetName) {
+	if o == nil || IsNil(o.TargetName) {
 		return nil, false
 	}
 	return o.TargetName, true
@@ -143,7 +143,7 @@ func (o *RemediationItems) GetTargetNameOk() (*string, bool) {
 
 // HasTargetName returns a boolean if a field has been set.
 func (o *RemediationItems) HasTargetName() bool {
-	if o != nil && !isNil(o.TargetName) {
+	if o != nil && !IsNil(o.TargetName) {
 		return true
 	}
 
@@ -157,7 +157,7 @@ func (o *RemediationItems) SetTargetName(v string) {
 
 // GetTargetDisplayName returns the TargetDisplayName field value if set, zero value otherwise.
 func (o *RemediationItems) GetTargetDisplayName() string {
-	if o == nil || isNil(o.TargetDisplayName) {
+	if o == nil || IsNil(o.TargetDisplayName) {
 		var ret string
 		return ret
 	}
@@ -167,7 +167,7 @@ func (o *RemediationItems) GetTargetDisplayName() string {
 // GetTargetDisplayNameOk returns a tuple with the TargetDisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RemediationItems) GetTargetDisplayNameOk() (*string, bool) {
-	if o == nil || isNil(o.TargetDisplayName) {
+	if o == nil || IsNil(o.TargetDisplayName) {
 		return nil, false
 	}
 	return o.TargetDisplayName, true
@@ -175,7 +175,7 @@ func (o *RemediationItems) GetTargetDisplayNameOk() (*string, bool) {
 
 // HasTargetDisplayName returns a boolean if a field has been set.
 func (o *RemediationItems) HasTargetDisplayName() bool {
-	if o != nil && !isNil(o.TargetDisplayName) {
+	if o != nil && !IsNil(o.TargetDisplayName) {
 		return true
 	}
 
@@ -189,7 +189,7 @@ func (o *RemediationItems) SetTargetDisplayName(v string) {
 
 // GetApplicationName returns the ApplicationName field value if set, zero value otherwise.
 func (o *RemediationItems) GetApplicationName() string {
-	if o == nil || isNil(o.ApplicationName) {
+	if o == nil || IsNil(o.ApplicationName) {
 		var ret string
 		return ret
 	}
@@ -199,7 +199,7 @@ func (o *RemediationItems) GetApplicationName() string {
 // GetApplicationNameOk returns a tuple with the ApplicationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RemediationItems) GetApplicationNameOk() (*string, bool) {
-	if o == nil || isNil(o.ApplicationName) {
+	if o == nil || IsNil(o.ApplicationName) {
 		return nil, false
 	}
 	return o.ApplicationName, true
@@ -207,7 +207,7 @@ func (o *RemediationItems) GetApplicationNameOk() (*string, bool) {
 
 // HasApplicationName returns a boolean if a field has been set.
 func (o *RemediationItems) HasApplicationName() bool {
-	if o != nil && !isNil(o.ApplicationName) {
+	if o != nil && !IsNil(o.ApplicationName) {
 		return true
 	}
 
@@ -221,7 +221,7 @@ func (o *RemediationItems) SetApplicationName(v string) {
 
 // GetAttributeName returns the AttributeName field value if set, zero value otherwise.
 func (o *RemediationItems) GetAttributeName() string {
-	if o == nil || isNil(o.AttributeName) {
+	if o == nil || IsNil(o.AttributeName) {
 		var ret string
 		return ret
 	}
@@ -231,7 +231,7 @@ func (o *RemediationItems) GetAttributeName() string {
 // GetAttributeNameOk returns a tuple with the AttributeName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RemediationItems) GetAttributeNameOk() (*string, bool) {
-	if o == nil || isNil(o.AttributeName) {
+	if o == nil || IsNil(o.AttributeName) {
 		return nil, false
 	}
 	return o.AttributeName, true
@@ -239,7 +239,7 @@ func (o *RemediationItems) GetAttributeNameOk() (*string, bool) {
 
 // HasAttributeName returns a boolean if a field has been set.
 func (o *RemediationItems) HasAttributeName() bool {
-	if o != nil && !isNil(o.AttributeName) {
+	if o != nil && !IsNil(o.AttributeName) {
 		return true
 	}
 
@@ -253,7 +253,7 @@ func (o *RemediationItems) SetAttributeName(v string) {
 
 // GetAttributeOperation returns the AttributeOperation field value if set, zero value otherwise.
 func (o *RemediationItems) GetAttributeOperation() string {
-	if o == nil || isNil(o.AttributeOperation) {
+	if o == nil || IsNil(o.AttributeOperation) {
 		var ret string
 		return ret
 	}
@@ -263,7 +263,7 @@ func (o *RemediationItems) GetAttributeOperation() string {
 // GetAttributeOperationOk returns a tuple with the AttributeOperation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RemediationItems) GetAttributeOperationOk() (*string, bool) {
-	if o == nil || isNil(o.AttributeOperation) {
+	if o == nil || IsNil(o.AttributeOperation) {
 		return nil, false
 	}
 	return o.AttributeOperation, true
@@ -271,7 +271,7 @@ func (o *RemediationItems) GetAttributeOperationOk() (*string, bool) {
 
 // HasAttributeOperation returns a boolean if a field has been set.
 func (o *RemediationItems) HasAttributeOperation() bool {
-	if o != nil && !isNil(o.AttributeOperation) {
+	if o != nil && !IsNil(o.AttributeOperation) {
 		return true
 	}
 
@@ -285,7 +285,7 @@ func (o *RemediationItems) SetAttributeOperation(v string) {
 
 // GetAttributeValue returns the AttributeValue field value if set, zero value otherwise.
 func (o *RemediationItems) GetAttributeValue() string {
-	if o == nil || isNil(o.AttributeValue) {
+	if o == nil || IsNil(o.AttributeValue) {
 		var ret string
 		return ret
 	}
@@ -295,7 +295,7 @@ func (o *RemediationItems) GetAttributeValue() string {
 // GetAttributeValueOk returns a tuple with the AttributeValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RemediationItems) GetAttributeValueOk() (*string, bool) {
-	if o == nil || isNil(o.AttributeValue) {
+	if o == nil || IsNil(o.AttributeValue) {
 		return nil, false
 	}
 	return o.AttributeValue, true
@@ -303,7 +303,7 @@ func (o *RemediationItems) GetAttributeValueOk() (*string, bool) {
 
 // HasAttributeValue returns a boolean if a field has been set.
 func (o *RemediationItems) HasAttributeValue() bool {
-	if o != nil && !isNil(o.AttributeValue) {
+	if o != nil && !IsNil(o.AttributeValue) {
 		return true
 	}
 
@@ -317,7 +317,7 @@ func (o *RemediationItems) SetAttributeValue(v string) {
 
 // GetNativeIdentity returns the NativeIdentity field value if set, zero value otherwise.
 func (o *RemediationItems) GetNativeIdentity() string {
-	if o == nil || isNil(o.NativeIdentity) {
+	if o == nil || IsNil(o.NativeIdentity) {
 		var ret string
 		return ret
 	}
@@ -327,7 +327,7 @@ func (o *RemediationItems) GetNativeIdentity() string {
 // GetNativeIdentityOk returns a tuple with the NativeIdentity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RemediationItems) GetNativeIdentityOk() (*string, bool) {
-	if o == nil || isNil(o.NativeIdentity) {
+	if o == nil || IsNil(o.NativeIdentity) {
 		return nil, false
 	}
 	return o.NativeIdentity, true
@@ -335,7 +335,7 @@ func (o *RemediationItems) GetNativeIdentityOk() (*string, bool) {
 
 // HasNativeIdentity returns a boolean if a field has been set.
 func (o *RemediationItems) HasNativeIdentity() bool {
-	if o != nil && !isNil(o.NativeIdentity) {
+	if o != nil && !IsNil(o.NativeIdentity) {
 		return true
 	}
 
@@ -357,31 +357,31 @@ func (o RemediationItems) MarshalJSON() ([]byte, error) {
 
 func (o RemediationItems) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.TargetId) {
+	if !IsNil(o.TargetId) {
 		toSerialize["targetId"] = o.TargetId
 	}
-	if !isNil(o.TargetName) {
+	if !IsNil(o.TargetName) {
 		toSerialize["targetName"] = o.TargetName
 	}
-	if !isNil(o.TargetDisplayName) {
+	if !IsNil(o.TargetDisplayName) {
 		toSerialize["targetDisplayName"] = o.TargetDisplayName
 	}
-	if !isNil(o.ApplicationName) {
+	if !IsNil(o.ApplicationName) {
 		toSerialize["applicationName"] = o.ApplicationName
 	}
-	if !isNil(o.AttributeName) {
+	if !IsNil(o.AttributeName) {
 		toSerialize["attributeName"] = o.AttributeName
 	}
-	if !isNil(o.AttributeOperation) {
+	if !IsNil(o.AttributeOperation) {
 		toSerialize["attributeOperation"] = o.AttributeOperation
 	}
-	if !isNil(o.AttributeValue) {
+	if !IsNil(o.AttributeValue) {
 		toSerialize["attributeValue"] = o.AttributeValue
 	}
-	if !isNil(o.NativeIdentity) {
+	if !IsNil(o.NativeIdentity) {
 		toSerialize["nativeIdentity"] = o.NativeIdentity
 	}
 
@@ -392,16 +392,20 @@ func (o RemediationItems) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *RemediationItems) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RemediationItems) UnmarshalJSON(data []byte) (err error) {
 	varRemediationItems := _RemediationItems{}
 
-	if err = json.Unmarshal(bytes, &varRemediationItems); err == nil {
+	err = json.Unmarshal(data, &varRemediationItems)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RemediationItems(varRemediationItems)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "targetId")
 		delete(additionalProperties, "targetName")

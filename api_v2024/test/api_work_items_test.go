@@ -19,7 +19,7 @@ import (
 
 func Test_api_v2024_WorkItemsAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test WorkItemsAPIService ApproveApprovalItem", func(t *testing.T) {
@@ -29,7 +29,7 @@ func Test_api_v2024_WorkItemsAPIService(t *testing.T) {
 		var id string
 		var approvalItemId string
 
-		resp, httpRes, err := apiClient.API_V2024.WorkItemsAPI.ApproveApprovalItem(context.Background(), id, approvalItemId).Execute()
+		resp, httpRes, err := apiClient.WorkItemsAPI.ApproveApprovalItem(context.Background(), id, approvalItemId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -43,7 +43,7 @@ func Test_api_v2024_WorkItemsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.WorkItemsAPI.ApproveApprovalItemsInBulk(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.WorkItemsAPI.ApproveApprovalItemsInBulk(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -57,7 +57,7 @@ func Test_api_v2024_WorkItemsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.WorkItemsAPI.CompleteWorkItem(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.WorkItemsAPI.CompleteWorkItem(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -69,7 +69,7 @@ func Test_api_v2024_WorkItemsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.WorkItemsAPI.GetCompletedWorkItems(context.Background()).Execute()
+		resp, httpRes, err := apiClient.WorkItemsAPI.GetCompletedWorkItems(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -81,7 +81,7 @@ func Test_api_v2024_WorkItemsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.WorkItemsAPI.GetCountCompletedWorkItems(context.Background()).Execute()
+		resp, httpRes, err := apiClient.WorkItemsAPI.GetCountCompletedWorkItems(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -93,7 +93,7 @@ func Test_api_v2024_WorkItemsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.WorkItemsAPI.GetCountWorkItems(context.Background()).Execute()
+		resp, httpRes, err := apiClient.WorkItemsAPI.GetCountWorkItems(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -107,7 +107,7 @@ func Test_api_v2024_WorkItemsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.WorkItemsAPI.GetWorkItem(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.WorkItemsAPI.GetWorkItem(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -119,7 +119,7 @@ func Test_api_v2024_WorkItemsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.WorkItemsAPI.GetWorkItemsSummary(context.Background()).Execute()
+		resp, httpRes, err := apiClient.WorkItemsAPI.GetWorkItemsSummary(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -131,7 +131,7 @@ func Test_api_v2024_WorkItemsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.WorkItemsAPI.ListWorkItems(context.Background()).Execute()
+		resp, httpRes, err := apiClient.WorkItemsAPI.ListWorkItems(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -146,7 +146,7 @@ func Test_api_v2024_WorkItemsAPIService(t *testing.T) {
 		var id string
 		var approvalItemId string
 
-		resp, httpRes, err := apiClient.API_V2024.WorkItemsAPI.RejectApprovalItem(context.Background(), id, approvalItemId).Execute()
+		resp, httpRes, err := apiClient.WorkItemsAPI.RejectApprovalItem(context.Background(), id, approvalItemId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -160,7 +160,7 @@ func Test_api_v2024_WorkItemsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.WorkItemsAPI.RejectApprovalItemsInBulk(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.WorkItemsAPI.RejectApprovalItemsInBulk(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -174,7 +174,7 @@ func Test_api_v2024_WorkItemsAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.API_V2024.WorkItemsAPI.SendWorkItemForward(context.Background(), id).Execute()
+		httpRes, err := apiClient.WorkItemsAPI.SendWorkItemForward(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -187,7 +187,7 @@ func Test_api_v2024_WorkItemsAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_V2024.WorkItemsAPI.SubmitAccountSelection(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.WorkItemsAPI.SubmitAccountSelection(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -53,7 +53,7 @@ func NewConditionRuleWithDefaults() *ConditionRule {
 
 // GetSourceType returns the SourceType field value if set, zero value otherwise.
 func (o *ConditionRule) GetSourceType() string {
-	if o == nil || isNil(o.SourceType) {
+	if o == nil || IsNil(o.SourceType) {
 		var ret string
 		return ret
 	}
@@ -63,7 +63,7 @@ func (o *ConditionRule) GetSourceType() string {
 // GetSourceTypeOk returns a tuple with the SourceType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConditionRule) GetSourceTypeOk() (*string, bool) {
-	if o == nil || isNil(o.SourceType) {
+	if o == nil || IsNil(o.SourceType) {
 		return nil, false
 	}
 	return o.SourceType, true
@@ -71,7 +71,7 @@ func (o *ConditionRule) GetSourceTypeOk() (*string, bool) {
 
 // HasSourceType returns a boolean if a field has been set.
 func (o *ConditionRule) HasSourceType() bool {
-	if o != nil && !isNil(o.SourceType) {
+	if o != nil && !IsNil(o.SourceType) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o *ConditionRule) SetSourceType(v string) {
 
 // GetSource returns the Source field value if set, zero value otherwise.
 func (o *ConditionRule) GetSource() string {
-	if o == nil || isNil(o.Source) {
+	if o == nil || IsNil(o.Source) {
 		var ret string
 		return ret
 	}
@@ -95,7 +95,7 @@ func (o *ConditionRule) GetSource() string {
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConditionRule) GetSourceOk() (*string, bool) {
-	if o == nil || isNil(o.Source) {
+	if o == nil || IsNil(o.Source) {
 		return nil, false
 	}
 	return o.Source, true
@@ -103,7 +103,7 @@ func (o *ConditionRule) GetSourceOk() (*string, bool) {
 
 // HasSource returns a boolean if a field has been set.
 func (o *ConditionRule) HasSource() bool {
-	if o != nil && !isNil(o.Source) {
+	if o != nil && !IsNil(o.Source) {
 		return true
 	}
 
@@ -117,7 +117,7 @@ func (o *ConditionRule) SetSource(v string) {
 
 // GetOperator returns the Operator field value if set, zero value otherwise.
 func (o *ConditionRule) GetOperator() string {
-	if o == nil || isNil(o.Operator) {
+	if o == nil || IsNil(o.Operator) {
 		var ret string
 		return ret
 	}
@@ -127,7 +127,7 @@ func (o *ConditionRule) GetOperator() string {
 // GetOperatorOk returns a tuple with the Operator field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConditionRule) GetOperatorOk() (*string, bool) {
-	if o == nil || isNil(o.Operator) {
+	if o == nil || IsNil(o.Operator) {
 		return nil, false
 	}
 	return o.Operator, true
@@ -135,7 +135,7 @@ func (o *ConditionRule) GetOperatorOk() (*string, bool) {
 
 // HasOperator returns a boolean if a field has been set.
 func (o *ConditionRule) HasOperator() bool {
-	if o != nil && !isNil(o.Operator) {
+	if o != nil && !IsNil(o.Operator) {
 		return true
 	}
 
@@ -149,7 +149,7 @@ func (o *ConditionRule) SetOperator(v string) {
 
 // GetValueType returns the ValueType field value if set, zero value otherwise.
 func (o *ConditionRule) GetValueType() string {
-	if o == nil || isNil(o.ValueType) {
+	if o == nil || IsNil(o.ValueType) {
 		var ret string
 		return ret
 	}
@@ -159,7 +159,7 @@ func (o *ConditionRule) GetValueType() string {
 // GetValueTypeOk returns a tuple with the ValueType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConditionRule) GetValueTypeOk() (*string, bool) {
-	if o == nil || isNil(o.ValueType) {
+	if o == nil || IsNil(o.ValueType) {
 		return nil, false
 	}
 	return o.ValueType, true
@@ -167,7 +167,7 @@ func (o *ConditionRule) GetValueTypeOk() (*string, bool) {
 
 // HasValueType returns a boolean if a field has been set.
 func (o *ConditionRule) HasValueType() bool {
-	if o != nil && !isNil(o.ValueType) {
+	if o != nil && !IsNil(o.ValueType) {
 		return true
 	}
 
@@ -181,7 +181,7 @@ func (o *ConditionRule) SetValueType(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *ConditionRule) GetValue() map[string]interface{} {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -191,7 +191,7 @@ func (o *ConditionRule) GetValue() map[string]interface{} {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConditionRule) GetValueOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		return map[string]interface{}{}, false
 	}
 	return o.Value, true
@@ -199,7 +199,7 @@ func (o *ConditionRule) GetValueOk() (map[string]interface{}, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *ConditionRule) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -221,19 +221,19 @@ func (o ConditionRule) MarshalJSON() ([]byte, error) {
 
 func (o ConditionRule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.SourceType) {
+	if !IsNil(o.SourceType) {
 		toSerialize["sourceType"] = o.SourceType
 	}
-	if !isNil(o.Source) {
+	if !IsNil(o.Source) {
 		toSerialize["source"] = o.Source
 	}
-	if !isNil(o.Operator) {
+	if !IsNil(o.Operator) {
 		toSerialize["operator"] = o.Operator
 	}
-	if !isNil(o.ValueType) {
+	if !IsNil(o.ValueType) {
 		toSerialize["valueType"] = o.ValueType
 	}
-	if !isNil(o.Value) {
+	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
 
@@ -244,16 +244,20 @@ func (o ConditionRule) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ConditionRule) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ConditionRule) UnmarshalJSON(data []byte) (err error) {
 	varConditionRule := _ConditionRule{}
 
-	if err = json.Unmarshal(bytes, &varConditionRule); err == nil {
+	err = json.Unmarshal(data, &varConditionRule)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ConditionRule(varConditionRule)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "sourceType")
 		delete(additionalProperties, "source")
 		delete(additionalProperties, "operator")

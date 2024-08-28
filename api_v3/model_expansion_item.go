@@ -50,7 +50,7 @@ func NewExpansionItemWithDefaults() *ExpansionItem {
 
 // GetAccountId returns the AccountId field value if set, zero value otherwise.
 func (o *ExpansionItem) GetAccountId() string {
-	if o == nil || isNil(o.AccountId) {
+	if o == nil || IsNil(o.AccountId) {
 		var ret string
 		return ret
 	}
@@ -60,7 +60,7 @@ func (o *ExpansionItem) GetAccountId() string {
 // GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExpansionItem) GetAccountIdOk() (*string, bool) {
-	if o == nil || isNil(o.AccountId) {
+	if o == nil || IsNil(o.AccountId) {
 		return nil, false
 	}
 	return o.AccountId, true
@@ -68,7 +68,7 @@ func (o *ExpansionItem) GetAccountIdOk() (*string, bool) {
 
 // HasAccountId returns a boolean if a field has been set.
 func (o *ExpansionItem) HasAccountId() bool {
-	if o != nil && !isNil(o.AccountId) {
+	if o != nil && !IsNil(o.AccountId) {
 		return true
 	}
 
@@ -82,7 +82,7 @@ func (o *ExpansionItem) SetAccountId(v string) {
 
 // GetCause returns the Cause field value if set, zero value otherwise.
 func (o *ExpansionItem) GetCause() string {
-	if o == nil || isNil(o.Cause) {
+	if o == nil || IsNil(o.Cause) {
 		var ret string
 		return ret
 	}
@@ -92,7 +92,7 @@ func (o *ExpansionItem) GetCause() string {
 // GetCauseOk returns a tuple with the Cause field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExpansionItem) GetCauseOk() (*string, bool) {
-	if o == nil || isNil(o.Cause) {
+	if o == nil || IsNil(o.Cause) {
 		return nil, false
 	}
 	return o.Cause, true
@@ -100,7 +100,7 @@ func (o *ExpansionItem) GetCauseOk() (*string, bool) {
 
 // HasCause returns a boolean if a field has been set.
 func (o *ExpansionItem) HasCause() bool {
-	if o != nil && !isNil(o.Cause) {
+	if o != nil && !IsNil(o.Cause) {
 		return true
 	}
 
@@ -114,7 +114,7 @@ func (o *ExpansionItem) SetCause(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ExpansionItem) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -124,7 +124,7 @@ func (o *ExpansionItem) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExpansionItem) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -132,7 +132,7 @@ func (o *ExpansionItem) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ExpansionItem) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -146,7 +146,7 @@ func (o *ExpansionItem) SetName(v string) {
 
 // GetAttributeRequests returns the AttributeRequests field value if set, zero value otherwise.
 func (o *ExpansionItem) GetAttributeRequests() []AttributeRequest {
-	if o == nil || isNil(o.AttributeRequests) {
+	if o == nil || IsNil(o.AttributeRequests) {
 		var ret []AttributeRequest
 		return ret
 	}
@@ -156,7 +156,7 @@ func (o *ExpansionItem) GetAttributeRequests() []AttributeRequest {
 // GetAttributeRequestsOk returns a tuple with the AttributeRequests field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExpansionItem) GetAttributeRequestsOk() ([]AttributeRequest, bool) {
-	if o == nil || isNil(o.AttributeRequests) {
+	if o == nil || IsNil(o.AttributeRequests) {
 		return nil, false
 	}
 	return o.AttributeRequests, true
@@ -164,7 +164,7 @@ func (o *ExpansionItem) GetAttributeRequestsOk() ([]AttributeRequest, bool) {
 
 // HasAttributeRequests returns a boolean if a field has been set.
 func (o *ExpansionItem) HasAttributeRequests() bool {
-	if o != nil && !isNil(o.AttributeRequests) {
+	if o != nil && !IsNil(o.AttributeRequests) {
 		return true
 	}
 
@@ -178,7 +178,7 @@ func (o *ExpansionItem) SetAttributeRequests(v []AttributeRequest) {
 
 // GetSource returns the Source field value if set, zero value otherwise.
 func (o *ExpansionItem) GetSource() AccountSource {
-	if o == nil || isNil(o.Source) {
+	if o == nil || IsNil(o.Source) {
 		var ret AccountSource
 		return ret
 	}
@@ -188,7 +188,7 @@ func (o *ExpansionItem) GetSource() AccountSource {
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExpansionItem) GetSourceOk() (*AccountSource, bool) {
-	if o == nil || isNil(o.Source) {
+	if o == nil || IsNil(o.Source) {
 		return nil, false
 	}
 	return o.Source, true
@@ -196,7 +196,7 @@ func (o *ExpansionItem) GetSourceOk() (*AccountSource, bool) {
 
 // HasSource returns a boolean if a field has been set.
 func (o *ExpansionItem) HasSource() bool {
-	if o != nil && !isNil(o.Source) {
+	if o != nil && !IsNil(o.Source) {
 		return true
 	}
 
@@ -218,19 +218,19 @@ func (o ExpansionItem) MarshalJSON() ([]byte, error) {
 
 func (o ExpansionItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AccountId) {
+	if !IsNil(o.AccountId) {
 		toSerialize["accountId"] = o.AccountId
 	}
-	if !isNil(o.Cause) {
+	if !IsNil(o.Cause) {
 		toSerialize["cause"] = o.Cause
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.AttributeRequests) {
+	if !IsNil(o.AttributeRequests) {
 		toSerialize["attributeRequests"] = o.AttributeRequests
 	}
-	if !isNil(o.Source) {
+	if !IsNil(o.Source) {
 		toSerialize["source"] = o.Source
 	}
 
@@ -241,16 +241,20 @@ func (o ExpansionItem) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ExpansionItem) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ExpansionItem) UnmarshalJSON(data []byte) (err error) {
 	varExpansionItem := _ExpansionItem{}
 
-	if err = json.Unmarshal(bytes, &varExpansionItem); err == nil {
+	err = json.Unmarshal(data, &varExpansionItem)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ExpansionItem(varExpansionItem)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "accountId")
 		delete(additionalProperties, "cause")
 		delete(additionalProperties, "name")

@@ -587,19 +587,19 @@ func (a *CertificationCampaignFiltersAPIService) ListCampaignFiltersExecute(r Ap
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
 	} else {
 		var defaultValue int32 = 250
 		r.limit = &defaultValue
 	}
 	if r.start != nil {
-		parameterAddToQuery(localVarQueryParams, "start", r.start, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "", "")
 	} else {
 		var defaultValue int32 = 0
 		r.start = &defaultValue
 	}
 	if r.includeSystemFilters != nil {
-		parameterAddToQuery(localVarQueryParams, "includeSystemFilters", r.includeSystemFilters, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeSystemFilters", r.includeSystemFilters, "", "")
 	} else {
 		var defaultValue bool = true
 		r.includeSystemFilters = &defaultValue

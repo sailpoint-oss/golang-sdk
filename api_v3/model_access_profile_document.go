@@ -136,7 +136,7 @@ func (o *AccessProfileDocument) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *AccessProfileDocument) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -146,7 +146,7 @@ func (o *AccessProfileDocument) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessProfileDocument) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -154,7 +154,7 @@ func (o *AccessProfileDocument) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *AccessProfileDocument) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -168,7 +168,7 @@ func (o *AccessProfileDocument) SetDescription(v string) {
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessProfileDocument) GetCreated() time.Time {
-	if o == nil || isNil(o.Created.Get()) {
+	if o == nil || IsNil(o.Created.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -210,7 +210,7 @@ func (o *AccessProfileDocument) UnsetCreated() {
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessProfileDocument) GetModified() time.Time {
-	if o == nil || isNil(o.Modified.Get()) {
+	if o == nil || IsNil(o.Modified.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -252,7 +252,7 @@ func (o *AccessProfileDocument) UnsetModified() {
 
 // GetSynced returns the Synced field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessProfileDocument) GetSynced() time.Time {
-	if o == nil || isNil(o.Synced.Get()) {
+	if o == nil || IsNil(o.Synced.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -294,7 +294,7 @@ func (o *AccessProfileDocument) UnsetSynced() {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *AccessProfileDocument) GetEnabled() bool {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -304,7 +304,7 @@ func (o *AccessProfileDocument) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessProfileDocument) GetEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -312,7 +312,7 @@ func (o *AccessProfileDocument) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *AccessProfileDocument) HasEnabled() bool {
-	if o != nil && !isNil(o.Enabled) {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -326,7 +326,7 @@ func (o *AccessProfileDocument) SetEnabled(v bool) {
 
 // GetRequestable returns the Requestable field value if set, zero value otherwise.
 func (o *AccessProfileDocument) GetRequestable() bool {
-	if o == nil || isNil(o.Requestable) {
+	if o == nil || IsNil(o.Requestable) {
 		var ret bool
 		return ret
 	}
@@ -336,7 +336,7 @@ func (o *AccessProfileDocument) GetRequestable() bool {
 // GetRequestableOk returns a tuple with the Requestable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessProfileDocument) GetRequestableOk() (*bool, bool) {
-	if o == nil || isNil(o.Requestable) {
+	if o == nil || IsNil(o.Requestable) {
 		return nil, false
 	}
 	return o.Requestable, true
@@ -344,7 +344,7 @@ func (o *AccessProfileDocument) GetRequestableOk() (*bool, bool) {
 
 // HasRequestable returns a boolean if a field has been set.
 func (o *AccessProfileDocument) HasRequestable() bool {
-	if o != nil && !isNil(o.Requestable) {
+	if o != nil && !IsNil(o.Requestable) {
 		return true
 	}
 
@@ -358,7 +358,7 @@ func (o *AccessProfileDocument) SetRequestable(v bool) {
 
 // GetRequestCommentsRequired returns the RequestCommentsRequired field value if set, zero value otherwise.
 func (o *AccessProfileDocument) GetRequestCommentsRequired() bool {
-	if o == nil || isNil(o.RequestCommentsRequired) {
+	if o == nil || IsNil(o.RequestCommentsRequired) {
 		var ret bool
 		return ret
 	}
@@ -368,7 +368,7 @@ func (o *AccessProfileDocument) GetRequestCommentsRequired() bool {
 // GetRequestCommentsRequiredOk returns a tuple with the RequestCommentsRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessProfileDocument) GetRequestCommentsRequiredOk() (*bool, bool) {
-	if o == nil || isNil(o.RequestCommentsRequired) {
+	if o == nil || IsNil(o.RequestCommentsRequired) {
 		return nil, false
 	}
 	return o.RequestCommentsRequired, true
@@ -376,7 +376,7 @@ func (o *AccessProfileDocument) GetRequestCommentsRequiredOk() (*bool, bool) {
 
 // HasRequestCommentsRequired returns a boolean if a field has been set.
 func (o *AccessProfileDocument) HasRequestCommentsRequired() bool {
-	if o != nil && !isNil(o.RequestCommentsRequired) {
+	if o != nil && !IsNil(o.RequestCommentsRequired) {
 		return true
 	}
 
@@ -390,7 +390,7 @@ func (o *AccessProfileDocument) SetRequestCommentsRequired(v bool) {
 
 // GetOwner returns the Owner field value if set, zero value otherwise.
 func (o *AccessProfileDocument) GetOwner() BaseAccessAllOfOwner {
-	if o == nil || isNil(o.Owner) {
+	if o == nil || IsNil(o.Owner) {
 		var ret BaseAccessAllOfOwner
 		return ret
 	}
@@ -400,7 +400,7 @@ func (o *AccessProfileDocument) GetOwner() BaseAccessAllOfOwner {
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessProfileDocument) GetOwnerOk() (*BaseAccessAllOfOwner, bool) {
-	if o == nil || isNil(o.Owner) {
+	if o == nil || IsNil(o.Owner) {
 		return nil, false
 	}
 	return o.Owner, true
@@ -408,7 +408,7 @@ func (o *AccessProfileDocument) GetOwnerOk() (*BaseAccessAllOfOwner, bool) {
 
 // HasOwner returns a boolean if a field has been set.
 func (o *AccessProfileDocument) HasOwner() bool {
-	if o != nil && !isNil(o.Owner) {
+	if o != nil && !IsNil(o.Owner) {
 		return true
 	}
 
@@ -446,7 +446,7 @@ func (o *AccessProfileDocument) SetType(v string) {
 
 // GetSource returns the Source field value if set, zero value otherwise.
 func (o *AccessProfileDocument) GetSource() AccessProfileDocumentAllOfSource {
-	if o == nil || isNil(o.Source) {
+	if o == nil || IsNil(o.Source) {
 		var ret AccessProfileDocumentAllOfSource
 		return ret
 	}
@@ -456,7 +456,7 @@ func (o *AccessProfileDocument) GetSource() AccessProfileDocumentAllOfSource {
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessProfileDocument) GetSourceOk() (*AccessProfileDocumentAllOfSource, bool) {
-	if o == nil || isNil(o.Source) {
+	if o == nil || IsNil(o.Source) {
 		return nil, false
 	}
 	return o.Source, true
@@ -464,7 +464,7 @@ func (o *AccessProfileDocument) GetSourceOk() (*AccessProfileDocumentAllOfSource
 
 // HasSource returns a boolean if a field has been set.
 func (o *AccessProfileDocument) HasSource() bool {
-	if o != nil && !isNil(o.Source) {
+	if o != nil && !IsNil(o.Source) {
 		return true
 	}
 
@@ -478,7 +478,7 @@ func (o *AccessProfileDocument) SetSource(v AccessProfileDocumentAllOfSource) {
 
 // GetEntitlements returns the Entitlements field value if set, zero value otherwise.
 func (o *AccessProfileDocument) GetEntitlements() []BaseEntitlement {
-	if o == nil || isNil(o.Entitlements) {
+	if o == nil || IsNil(o.Entitlements) {
 		var ret []BaseEntitlement
 		return ret
 	}
@@ -488,7 +488,7 @@ func (o *AccessProfileDocument) GetEntitlements() []BaseEntitlement {
 // GetEntitlementsOk returns a tuple with the Entitlements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessProfileDocument) GetEntitlementsOk() ([]BaseEntitlement, bool) {
-	if o == nil || isNil(o.Entitlements) {
+	if o == nil || IsNil(o.Entitlements) {
 		return nil, false
 	}
 	return o.Entitlements, true
@@ -496,7 +496,7 @@ func (o *AccessProfileDocument) GetEntitlementsOk() ([]BaseEntitlement, bool) {
 
 // HasEntitlements returns a boolean if a field has been set.
 func (o *AccessProfileDocument) HasEntitlements() bool {
-	if o != nil && !isNil(o.Entitlements) {
+	if o != nil && !IsNil(o.Entitlements) {
 		return true
 	}
 
@@ -510,7 +510,7 @@ func (o *AccessProfileDocument) SetEntitlements(v []BaseEntitlement) {
 
 // GetEntitlementCount returns the EntitlementCount field value if set, zero value otherwise.
 func (o *AccessProfileDocument) GetEntitlementCount() int32 {
-	if o == nil || isNil(o.EntitlementCount) {
+	if o == nil || IsNil(o.EntitlementCount) {
 		var ret int32
 		return ret
 	}
@@ -520,7 +520,7 @@ func (o *AccessProfileDocument) GetEntitlementCount() int32 {
 // GetEntitlementCountOk returns a tuple with the EntitlementCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessProfileDocument) GetEntitlementCountOk() (*int32, bool) {
-	if o == nil || isNil(o.EntitlementCount) {
+	if o == nil || IsNil(o.EntitlementCount) {
 		return nil, false
 	}
 	return o.EntitlementCount, true
@@ -528,7 +528,7 @@ func (o *AccessProfileDocument) GetEntitlementCountOk() (*int32, bool) {
 
 // HasEntitlementCount returns a boolean if a field has been set.
 func (o *AccessProfileDocument) HasEntitlementCount() bool {
-	if o != nil && !isNil(o.EntitlementCount) {
+	if o != nil && !IsNil(o.EntitlementCount) {
 		return true
 	}
 
@@ -542,7 +542,7 @@ func (o *AccessProfileDocument) SetEntitlementCount(v int32) {
 
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *AccessProfileDocument) GetTags() []string {
-	if o == nil || isNil(o.Tags) {
+	if o == nil || IsNil(o.Tags) {
 		var ret []string
 		return ret
 	}
@@ -552,7 +552,7 @@ func (o *AccessProfileDocument) GetTags() []string {
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessProfileDocument) GetTagsOk() ([]string, bool) {
-	if o == nil || isNil(o.Tags) {
+	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
 	return o.Tags, true
@@ -560,7 +560,7 @@ func (o *AccessProfileDocument) GetTagsOk() ([]string, bool) {
 
 // HasTags returns a boolean if a field has been set.
 func (o *AccessProfileDocument) HasTags() bool {
-	if o != nil && !isNil(o.Tags) {
+	if o != nil && !IsNil(o.Tags) {
 		return true
 	}
 
@@ -584,7 +584,7 @@ func (o AccessProfileDocument) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 	if o.Created.IsSet() {
@@ -596,29 +596,29 @@ func (o AccessProfileDocument) ToMap() (map[string]interface{}, error) {
 	if o.Synced.IsSet() {
 		toSerialize["synced"] = o.Synced.Get()
 	}
-	if !isNil(o.Enabled) {
+	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if !isNil(o.Requestable) {
+	if !IsNil(o.Requestable) {
 		toSerialize["requestable"] = o.Requestable
 	}
-	if !isNil(o.RequestCommentsRequired) {
+	if !IsNil(o.RequestCommentsRequired) {
 		toSerialize["requestCommentsRequired"] = o.RequestCommentsRequired
 	}
-	if !isNil(o.Owner) {
+	if !IsNil(o.Owner) {
 		toSerialize["owner"] = o.Owner
 	}
 	toSerialize["_type"] = o.Type
-	if !isNil(o.Source) {
+	if !IsNil(o.Source) {
 		toSerialize["source"] = o.Source
 	}
-	if !isNil(o.Entitlements) {
+	if !IsNil(o.Entitlements) {
 		toSerialize["entitlements"] = o.Entitlements
 	}
-	if !isNil(o.EntitlementCount) {
+	if !IsNil(o.EntitlementCount) {
 		toSerialize["entitlementCount"] = o.EntitlementCount
 	}
-	if !isNil(o.Tags) {
+	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
 	}
 
@@ -629,8 +629,8 @@ func (o AccessProfileDocument) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccessProfileDocument) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *AccessProfileDocument) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -641,7 +641,7 @@ func (o *AccessProfileDocument) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -655,13 +655,17 @@ func (o *AccessProfileDocument) UnmarshalJSON(bytes []byte) (err error) {
 
 	varAccessProfileDocument := _AccessProfileDocument{}
 
-	if err = json.Unmarshal(bytes, &varAccessProfileDocument); err == nil {
+	err = json.Unmarshal(data, &varAccessProfileDocument)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessProfileDocument(varAccessProfileDocument)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")

@@ -74,7 +74,7 @@ func NewIdpDetailsWithDefaults() *IdpDetails {
 
 // GetRole returns the Role field value if set, zero value otherwise.
 func (o *IdpDetails) GetRole() string {
-	if o == nil || isNil(o.Role) {
+	if o == nil || IsNil(o.Role) {
 		var ret string
 		return ret
 	}
@@ -84,7 +84,7 @@ func (o *IdpDetails) GetRole() string {
 // GetRoleOk returns a tuple with the Role field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdpDetails) GetRoleOk() (*string, bool) {
-	if o == nil || isNil(o.Role) {
+	if o == nil || IsNil(o.Role) {
 		return nil, false
 	}
 	return o.Role, true
@@ -92,7 +92,7 @@ func (o *IdpDetails) GetRoleOk() (*string, bool) {
 
 // HasRole returns a boolean if a field has been set.
 func (o *IdpDetails) HasRole() bool {
-	if o != nil && !isNil(o.Role) {
+	if o != nil && !IsNil(o.Role) {
 		return true
 	}
 
@@ -106,7 +106,7 @@ func (o *IdpDetails) SetRole(v string) {
 
 // GetEntityId returns the EntityId field value if set, zero value otherwise.
 func (o *IdpDetails) GetEntityId() string {
-	if o == nil || isNil(o.EntityId) {
+	if o == nil || IsNil(o.EntityId) {
 		var ret string
 		return ret
 	}
@@ -116,7 +116,7 @@ func (o *IdpDetails) GetEntityId() string {
 // GetEntityIdOk returns a tuple with the EntityId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdpDetails) GetEntityIdOk() (*string, bool) {
-	if o == nil || isNil(o.EntityId) {
+	if o == nil || IsNil(o.EntityId) {
 		return nil, false
 	}
 	return o.EntityId, true
@@ -124,7 +124,7 @@ func (o *IdpDetails) GetEntityIdOk() (*string, bool) {
 
 // HasEntityId returns a boolean if a field has been set.
 func (o *IdpDetails) HasEntityId() bool {
-	if o != nil && !isNil(o.EntityId) {
+	if o != nil && !IsNil(o.EntityId) {
 		return true
 	}
 
@@ -138,7 +138,7 @@ func (o *IdpDetails) SetEntityId(v string) {
 
 // GetBinding returns the Binding field value if set, zero value otherwise.
 func (o *IdpDetails) GetBinding() string {
-	if o == nil || isNil(o.Binding) {
+	if o == nil || IsNil(o.Binding) {
 		var ret string
 		return ret
 	}
@@ -148,7 +148,7 @@ func (o *IdpDetails) GetBinding() string {
 // GetBindingOk returns a tuple with the Binding field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdpDetails) GetBindingOk() (*string, bool) {
-	if o == nil || isNil(o.Binding) {
+	if o == nil || IsNil(o.Binding) {
 		return nil, false
 	}
 	return o.Binding, true
@@ -156,7 +156,7 @@ func (o *IdpDetails) GetBindingOk() (*string, bool) {
 
 // HasBinding returns a boolean if a field has been set.
 func (o *IdpDetails) HasBinding() bool {
-	if o != nil && !isNil(o.Binding) {
+	if o != nil && !IsNil(o.Binding) {
 		return true
 	}
 
@@ -170,7 +170,7 @@ func (o *IdpDetails) SetBinding(v string) {
 
 // GetAuthContext returns the AuthContext field value if set, zero value otherwise.
 func (o *IdpDetails) GetAuthContext() string {
-	if o == nil || isNil(o.AuthContext) {
+	if o == nil || IsNil(o.AuthContext) {
 		var ret string
 		return ret
 	}
@@ -180,7 +180,7 @@ func (o *IdpDetails) GetAuthContext() string {
 // GetAuthContextOk returns a tuple with the AuthContext field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdpDetails) GetAuthContextOk() (*string, bool) {
-	if o == nil || isNil(o.AuthContext) {
+	if o == nil || IsNil(o.AuthContext) {
 		return nil, false
 	}
 	return o.AuthContext, true
@@ -188,7 +188,7 @@ func (o *IdpDetails) GetAuthContextOk() (*string, bool) {
 
 // HasAuthContext returns a boolean if a field has been set.
 func (o *IdpDetails) HasAuthContext() bool {
-	if o != nil && !isNil(o.AuthContext) {
+	if o != nil && !IsNil(o.AuthContext) {
 		return true
 	}
 
@@ -202,7 +202,7 @@ func (o *IdpDetails) SetAuthContext(v string) {
 
 // GetLogoutUrl returns the LogoutUrl field value if set, zero value otherwise.
 func (o *IdpDetails) GetLogoutUrl() string {
-	if o == nil || isNil(o.LogoutUrl) {
+	if o == nil || IsNil(o.LogoutUrl) {
 		var ret string
 		return ret
 	}
@@ -212,7 +212,7 @@ func (o *IdpDetails) GetLogoutUrl() string {
 // GetLogoutUrlOk returns a tuple with the LogoutUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdpDetails) GetLogoutUrlOk() (*string, bool) {
-	if o == nil || isNil(o.LogoutUrl) {
+	if o == nil || IsNil(o.LogoutUrl) {
 		return nil, false
 	}
 	return o.LogoutUrl, true
@@ -220,7 +220,7 @@ func (o *IdpDetails) GetLogoutUrlOk() (*string, bool) {
 
 // HasLogoutUrl returns a boolean if a field has been set.
 func (o *IdpDetails) HasLogoutUrl() bool {
-	if o != nil && !isNil(o.LogoutUrl) {
+	if o != nil && !IsNil(o.LogoutUrl) {
 		return true
 	}
 
@@ -234,7 +234,7 @@ func (o *IdpDetails) SetLogoutUrl(v string) {
 
 // GetIncludeAuthContext returns the IncludeAuthContext field value if set, zero value otherwise.
 func (o *IdpDetails) GetIncludeAuthContext() bool {
-	if o == nil || isNil(o.IncludeAuthContext) {
+	if o == nil || IsNil(o.IncludeAuthContext) {
 		var ret bool
 		return ret
 	}
@@ -244,7 +244,7 @@ func (o *IdpDetails) GetIncludeAuthContext() bool {
 // GetIncludeAuthContextOk returns a tuple with the IncludeAuthContext field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdpDetails) GetIncludeAuthContextOk() (*bool, bool) {
-	if o == nil || isNil(o.IncludeAuthContext) {
+	if o == nil || IsNil(o.IncludeAuthContext) {
 		return nil, false
 	}
 	return o.IncludeAuthContext, true
@@ -252,7 +252,7 @@ func (o *IdpDetails) GetIncludeAuthContextOk() (*bool, bool) {
 
 // HasIncludeAuthContext returns a boolean if a field has been set.
 func (o *IdpDetails) HasIncludeAuthContext() bool {
-	if o != nil && !isNil(o.IncludeAuthContext) {
+	if o != nil && !IsNil(o.IncludeAuthContext) {
 		return true
 	}
 
@@ -266,7 +266,7 @@ func (o *IdpDetails) SetIncludeAuthContext(v bool) {
 
 // GetNameId returns the NameId field value if set, zero value otherwise.
 func (o *IdpDetails) GetNameId() string {
-	if o == nil || isNil(o.NameId) {
+	if o == nil || IsNil(o.NameId) {
 		var ret string
 		return ret
 	}
@@ -276,7 +276,7 @@ func (o *IdpDetails) GetNameId() string {
 // GetNameIdOk returns a tuple with the NameId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdpDetails) GetNameIdOk() (*string, bool) {
-	if o == nil || isNil(o.NameId) {
+	if o == nil || IsNil(o.NameId) {
 		return nil, false
 	}
 	return o.NameId, true
@@ -284,7 +284,7 @@ func (o *IdpDetails) GetNameIdOk() (*string, bool) {
 
 // HasNameId returns a boolean if a field has been set.
 func (o *IdpDetails) HasNameId() bool {
-	if o != nil && !isNil(o.NameId) {
+	if o != nil && !IsNil(o.NameId) {
 		return true
 	}
 
@@ -298,7 +298,7 @@ func (o *IdpDetails) SetNameId(v string) {
 
 // GetJitConfiguration returns the JitConfiguration field value if set, zero value otherwise.
 func (o *IdpDetails) GetJitConfiguration() JITConfiguration {
-	if o == nil || isNil(o.JitConfiguration) {
+	if o == nil || IsNil(o.JitConfiguration) {
 		var ret JITConfiguration
 		return ret
 	}
@@ -308,7 +308,7 @@ func (o *IdpDetails) GetJitConfiguration() JITConfiguration {
 // GetJitConfigurationOk returns a tuple with the JitConfiguration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdpDetails) GetJitConfigurationOk() (*JITConfiguration, bool) {
-	if o == nil || isNil(o.JitConfiguration) {
+	if o == nil || IsNil(o.JitConfiguration) {
 		return nil, false
 	}
 	return o.JitConfiguration, true
@@ -316,7 +316,7 @@ func (o *IdpDetails) GetJitConfigurationOk() (*JITConfiguration, bool) {
 
 // HasJitConfiguration returns a boolean if a field has been set.
 func (o *IdpDetails) HasJitConfiguration() bool {
-	if o != nil && !isNil(o.JitConfiguration) {
+	if o != nil && !IsNil(o.JitConfiguration) {
 		return true
 	}
 
@@ -330,7 +330,7 @@ func (o *IdpDetails) SetJitConfiguration(v JITConfiguration) {
 
 // GetCert returns the Cert field value if set, zero value otherwise.
 func (o *IdpDetails) GetCert() string {
-	if o == nil || isNil(o.Cert) {
+	if o == nil || IsNil(o.Cert) {
 		var ret string
 		return ret
 	}
@@ -340,7 +340,7 @@ func (o *IdpDetails) GetCert() string {
 // GetCertOk returns a tuple with the Cert field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdpDetails) GetCertOk() (*string, bool) {
-	if o == nil || isNil(o.Cert) {
+	if o == nil || IsNil(o.Cert) {
 		return nil, false
 	}
 	return o.Cert, true
@@ -348,7 +348,7 @@ func (o *IdpDetails) GetCertOk() (*string, bool) {
 
 // HasCert returns a boolean if a field has been set.
 func (o *IdpDetails) HasCert() bool {
-	if o != nil && !isNil(o.Cert) {
+	if o != nil && !IsNil(o.Cert) {
 		return true
 	}
 
@@ -362,7 +362,7 @@ func (o *IdpDetails) SetCert(v string) {
 
 // GetLoginUrlPost returns the LoginUrlPost field value if set, zero value otherwise.
 func (o *IdpDetails) GetLoginUrlPost() string {
-	if o == nil || isNil(o.LoginUrlPost) {
+	if o == nil || IsNil(o.LoginUrlPost) {
 		var ret string
 		return ret
 	}
@@ -372,7 +372,7 @@ func (o *IdpDetails) GetLoginUrlPost() string {
 // GetLoginUrlPostOk returns a tuple with the LoginUrlPost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdpDetails) GetLoginUrlPostOk() (*string, bool) {
-	if o == nil || isNil(o.LoginUrlPost) {
+	if o == nil || IsNil(o.LoginUrlPost) {
 		return nil, false
 	}
 	return o.LoginUrlPost, true
@@ -380,7 +380,7 @@ func (o *IdpDetails) GetLoginUrlPostOk() (*string, bool) {
 
 // HasLoginUrlPost returns a boolean if a field has been set.
 func (o *IdpDetails) HasLoginUrlPost() bool {
-	if o != nil && !isNil(o.LoginUrlPost) {
+	if o != nil && !IsNil(o.LoginUrlPost) {
 		return true
 	}
 
@@ -394,7 +394,7 @@ func (o *IdpDetails) SetLoginUrlPost(v string) {
 
 // GetLoginUrlRedirect returns the LoginUrlRedirect field value if set, zero value otherwise.
 func (o *IdpDetails) GetLoginUrlRedirect() string {
-	if o == nil || isNil(o.LoginUrlRedirect) {
+	if o == nil || IsNil(o.LoginUrlRedirect) {
 		var ret string
 		return ret
 	}
@@ -404,7 +404,7 @@ func (o *IdpDetails) GetLoginUrlRedirect() string {
 // GetLoginUrlRedirectOk returns a tuple with the LoginUrlRedirect field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdpDetails) GetLoginUrlRedirectOk() (*string, bool) {
-	if o == nil || isNil(o.LoginUrlRedirect) {
+	if o == nil || IsNil(o.LoginUrlRedirect) {
 		return nil, false
 	}
 	return o.LoginUrlRedirect, true
@@ -412,7 +412,7 @@ func (o *IdpDetails) GetLoginUrlRedirectOk() (*string, bool) {
 
 // HasLoginUrlRedirect returns a boolean if a field has been set.
 func (o *IdpDetails) HasLoginUrlRedirect() bool {
-	if o != nil && !isNil(o.LoginUrlRedirect) {
+	if o != nil && !IsNil(o.LoginUrlRedirect) {
 		return true
 	}
 
@@ -426,7 +426,7 @@ func (o *IdpDetails) SetLoginUrlRedirect(v string) {
 
 // GetMappingAttribute returns the MappingAttribute field value if set, zero value otherwise.
 func (o *IdpDetails) GetMappingAttribute() string {
-	if o == nil || isNil(o.MappingAttribute) {
+	if o == nil || IsNil(o.MappingAttribute) {
 		var ret string
 		return ret
 	}
@@ -436,7 +436,7 @@ func (o *IdpDetails) GetMappingAttribute() string {
 // GetMappingAttributeOk returns a tuple with the MappingAttribute field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdpDetails) GetMappingAttributeOk() (*string, bool) {
-	if o == nil || isNil(o.MappingAttribute) {
+	if o == nil || IsNil(o.MappingAttribute) {
 		return nil, false
 	}
 	return o.MappingAttribute, true
@@ -444,7 +444,7 @@ func (o *IdpDetails) GetMappingAttributeOk() (*string, bool) {
 
 // HasMappingAttribute returns a boolean if a field has been set.
 func (o *IdpDetails) HasMappingAttribute() bool {
-	if o != nil && !isNil(o.MappingAttribute) {
+	if o != nil && !IsNil(o.MappingAttribute) {
 		return true
 	}
 
@@ -458,7 +458,7 @@ func (o *IdpDetails) SetMappingAttribute(v string) {
 
 // GetCertificateExpirationDate returns the CertificateExpirationDate field value if set, zero value otherwise.
 func (o *IdpDetails) GetCertificateExpirationDate() string {
-	if o == nil || isNil(o.CertificateExpirationDate) {
+	if o == nil || IsNil(o.CertificateExpirationDate) {
 		var ret string
 		return ret
 	}
@@ -468,7 +468,7 @@ func (o *IdpDetails) GetCertificateExpirationDate() string {
 // GetCertificateExpirationDateOk returns a tuple with the CertificateExpirationDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdpDetails) GetCertificateExpirationDateOk() (*string, bool) {
-	if o == nil || isNil(o.CertificateExpirationDate) {
+	if o == nil || IsNil(o.CertificateExpirationDate) {
 		return nil, false
 	}
 	return o.CertificateExpirationDate, true
@@ -476,7 +476,7 @@ func (o *IdpDetails) GetCertificateExpirationDateOk() (*string, bool) {
 
 // HasCertificateExpirationDate returns a boolean if a field has been set.
 func (o *IdpDetails) HasCertificateExpirationDate() bool {
-	if o != nil && !isNil(o.CertificateExpirationDate) {
+	if o != nil && !IsNil(o.CertificateExpirationDate) {
 		return true
 	}
 
@@ -490,7 +490,7 @@ func (o *IdpDetails) SetCertificateExpirationDate(v string) {
 
 // GetCertificateName returns the CertificateName field value if set, zero value otherwise.
 func (o *IdpDetails) GetCertificateName() string {
-	if o == nil || isNil(o.CertificateName) {
+	if o == nil || IsNil(o.CertificateName) {
 		var ret string
 		return ret
 	}
@@ -500,7 +500,7 @@ func (o *IdpDetails) GetCertificateName() string {
 // GetCertificateNameOk returns a tuple with the CertificateName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdpDetails) GetCertificateNameOk() (*string, bool) {
-	if o == nil || isNil(o.CertificateName) {
+	if o == nil || IsNil(o.CertificateName) {
 		return nil, false
 	}
 	return o.CertificateName, true
@@ -508,7 +508,7 @@ func (o *IdpDetails) GetCertificateNameOk() (*string, bool) {
 
 // HasCertificateName returns a boolean if a field has been set.
 func (o *IdpDetails) HasCertificateName() bool {
-	if o != nil && !isNil(o.CertificateName) {
+	if o != nil && !IsNil(o.CertificateName) {
 		return true
 	}
 
@@ -530,46 +530,46 @@ func (o IdpDetails) MarshalJSON() ([]byte, error) {
 
 func (o IdpDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Role) {
+	if !IsNil(o.Role) {
 		toSerialize["role"] = o.Role
 	}
-	if !isNil(o.EntityId) {
+	if !IsNil(o.EntityId) {
 		toSerialize["entityId"] = o.EntityId
 	}
-	if !isNil(o.Binding) {
+	if !IsNil(o.Binding) {
 		toSerialize["binding"] = o.Binding
 	}
-	if !isNil(o.AuthContext) {
+	if !IsNil(o.AuthContext) {
 		toSerialize["authContext"] = o.AuthContext
 	}
-	if !isNil(o.LogoutUrl) {
+	if !IsNil(o.LogoutUrl) {
 		toSerialize["logoutUrl"] = o.LogoutUrl
 	}
-	if !isNil(o.IncludeAuthContext) {
+	if !IsNil(o.IncludeAuthContext) {
 		toSerialize["includeAuthContext"] = o.IncludeAuthContext
 	}
-	if !isNil(o.NameId) {
+	if !IsNil(o.NameId) {
 		toSerialize["nameId"] = o.NameId
 	}
-	if !isNil(o.JitConfiguration) {
+	if !IsNil(o.JitConfiguration) {
 		toSerialize["jitConfiguration"] = o.JitConfiguration
 	}
-	if !isNil(o.Cert) {
+	if !IsNil(o.Cert) {
 		toSerialize["cert"] = o.Cert
 	}
-	if !isNil(o.LoginUrlPost) {
+	if !IsNil(o.LoginUrlPost) {
 		toSerialize["loginUrlPost"] = o.LoginUrlPost
 	}
-	if !isNil(o.LoginUrlRedirect) {
+	if !IsNil(o.LoginUrlRedirect) {
 		toSerialize["loginUrlRedirect"] = o.LoginUrlRedirect
 	}
-	if !isNil(o.MappingAttribute) {
+	if !IsNil(o.MappingAttribute) {
 		toSerialize["mappingAttribute"] = o.MappingAttribute
 	}
-	if !isNil(o.CertificateExpirationDate) {
+	if !IsNil(o.CertificateExpirationDate) {
 		toSerialize["certificateExpirationDate"] = o.CertificateExpirationDate
 	}
-	if !isNil(o.CertificateName) {
+	if !IsNil(o.CertificateName) {
 		toSerialize["certificateName"] = o.CertificateName
 	}
 
@@ -580,16 +580,20 @@ func (o IdpDetails) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *IdpDetails) UnmarshalJSON(bytes []byte) (err error) {
+func (o *IdpDetails) UnmarshalJSON(data []byte) (err error) {
 	varIdpDetails := _IdpDetails{}
 
-	if err = json.Unmarshal(bytes, &varIdpDetails); err == nil {
+	err = json.Unmarshal(data, &varIdpDetails)
+
+	if err != nil {
+		return err
+	}
+
 	*o = IdpDetails(varIdpDetails)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "role")
 		delete(additionalProperties, "entityId")
 		delete(additionalProperties, "binding")

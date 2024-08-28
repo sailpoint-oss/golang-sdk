@@ -50,7 +50,7 @@ func NewAccessItemDiffWithDefaults() *AccessItemDiff {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *AccessItemDiff) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -60,7 +60,7 @@ func (o *AccessItemDiff) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemDiff) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -68,7 +68,7 @@ func (o *AccessItemDiff) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *AccessItemDiff) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -82,7 +82,7 @@ func (o *AccessItemDiff) SetId(v string) {
 
 // GetEventType returns the EventType field value if set, zero value otherwise.
 func (o *AccessItemDiff) GetEventType() string {
-	if o == nil || isNil(o.EventType) {
+	if o == nil || IsNil(o.EventType) {
 		var ret string
 		return ret
 	}
@@ -92,7 +92,7 @@ func (o *AccessItemDiff) GetEventType() string {
 // GetEventTypeOk returns a tuple with the EventType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemDiff) GetEventTypeOk() (*string, bool) {
-	if o == nil || isNil(o.EventType) {
+	if o == nil || IsNil(o.EventType) {
 		return nil, false
 	}
 	return o.EventType, true
@@ -100,7 +100,7 @@ func (o *AccessItemDiff) GetEventTypeOk() (*string, bool) {
 
 // HasEventType returns a boolean if a field has been set.
 func (o *AccessItemDiff) HasEventType() bool {
-	if o != nil && !isNil(o.EventType) {
+	if o != nil && !IsNil(o.EventType) {
 		return true
 	}
 
@@ -114,7 +114,7 @@ func (o *AccessItemDiff) SetEventType(v string) {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *AccessItemDiff) GetDisplayName() string {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -124,7 +124,7 @@ func (o *AccessItemDiff) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemDiff) GetDisplayNameOk() (*string, bool) {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -132,7 +132,7 @@ func (o *AccessItemDiff) GetDisplayNameOk() (*string, bool) {
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *AccessItemDiff) HasDisplayName() bool {
-	if o != nil && !isNil(o.DisplayName) {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -146,7 +146,7 @@ func (o *AccessItemDiff) SetDisplayName(v string) {
 
 // GetSourceName returns the SourceName field value if set, zero value otherwise.
 func (o *AccessItemDiff) GetSourceName() string {
-	if o == nil || isNil(o.SourceName) {
+	if o == nil || IsNil(o.SourceName) {
 		var ret string
 		return ret
 	}
@@ -156,7 +156,7 @@ func (o *AccessItemDiff) GetSourceName() string {
 // GetSourceNameOk returns a tuple with the SourceName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessItemDiff) GetSourceNameOk() (*string, bool) {
-	if o == nil || isNil(o.SourceName) {
+	if o == nil || IsNil(o.SourceName) {
 		return nil, false
 	}
 	return o.SourceName, true
@@ -164,7 +164,7 @@ func (o *AccessItemDiff) GetSourceNameOk() (*string, bool) {
 
 // HasSourceName returns a boolean if a field has been set.
 func (o *AccessItemDiff) HasSourceName() bool {
-	if o != nil && !isNil(o.SourceName) {
+	if o != nil && !IsNil(o.SourceName) {
 		return true
 	}
 
@@ -186,16 +186,16 @@ func (o AccessItemDiff) MarshalJSON() ([]byte, error) {
 
 func (o AccessItemDiff) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.EventType) {
+	if !IsNil(o.EventType) {
 		toSerialize["eventType"] = o.EventType
 	}
-	if !isNil(o.DisplayName) {
+	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
-	if !isNil(o.SourceName) {
+	if !IsNil(o.SourceName) {
 		toSerialize["sourceName"] = o.SourceName
 	}
 
@@ -206,16 +206,20 @@ func (o AccessItemDiff) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccessItemDiff) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccessItemDiff) UnmarshalJSON(data []byte) (err error) {
 	varAccessItemDiff := _AccessItemDiff{}
 
-	if err = json.Unmarshal(bytes, &varAccessItemDiff); err == nil {
+	err = json.Unmarshal(data, &varAccessItemDiff)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessItemDiff(varAccessItemDiff)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "eventType")
 		delete(additionalProperties, "displayName")

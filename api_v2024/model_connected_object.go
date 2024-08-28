@@ -50,7 +50,7 @@ func NewConnectedObjectWithDefaults() *ConnectedObject {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *ConnectedObject) GetType() ConnectedObjectType {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret ConnectedObjectType
 		return ret
 	}
@@ -60,7 +60,7 @@ func (o *ConnectedObject) GetType() ConnectedObjectType {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConnectedObject) GetTypeOk() (*ConnectedObjectType, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -68,7 +68,7 @@ func (o *ConnectedObject) GetTypeOk() (*ConnectedObjectType, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *ConnectedObject) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -82,7 +82,7 @@ func (o *ConnectedObject) SetType(v ConnectedObjectType) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ConnectedObject) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -92,7 +92,7 @@ func (o *ConnectedObject) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConnectedObject) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -100,7 +100,7 @@ func (o *ConnectedObject) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ConnectedObject) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -114,7 +114,7 @@ func (o *ConnectedObject) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ConnectedObject) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -124,7 +124,7 @@ func (o *ConnectedObject) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConnectedObject) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -132,7 +132,7 @@ func (o *ConnectedObject) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ConnectedObject) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -146,7 +146,7 @@ func (o *ConnectedObject) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ConnectedObject) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -156,7 +156,7 @@ func (o *ConnectedObject) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConnectedObject) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -164,7 +164,7 @@ func (o *ConnectedObject) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *ConnectedObject) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -186,16 +186,16 @@ func (o ConnectedObject) MarshalJSON() ([]byte, error) {
 
 func (o ConnectedObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 
@@ -206,16 +206,20 @@ func (o ConnectedObject) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ConnectedObject) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ConnectedObject) UnmarshalJSON(data []byte) (err error) {
 	varConnectedObject := _ConnectedObject{}
 
-	if err = json.Unmarshal(bytes, &varConnectedObject); err == nil {
+	err = json.Unmarshal(data, &varConnectedObject)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ConnectedObject(varConnectedObject)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")

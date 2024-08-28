@@ -12,6 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
@@ -68,7 +69,11 @@ func (dst *IdentityAttributesChangedChangesInnerOldValue) UnmarshalJSON(data []b
 		if string(jsonArrayOfString) == "{}" { // empty struct
 			dst.ArrayOfString = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.ArrayOfString); err != nil {
+				dst.ArrayOfString = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.ArrayOfString = nil
@@ -81,7 +86,11 @@ func (dst *IdentityAttributesChangedChangesInnerOldValue) UnmarshalJSON(data []b
 		if string(jsonBool) == "{}" { // empty struct
 			dst.Bool = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.Bool); err != nil {
+				dst.Bool = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.Bool = nil
@@ -94,7 +103,11 @@ func (dst *IdentityAttributesChangedChangesInnerOldValue) UnmarshalJSON(data []b
 		if string(jsonMapmapOfStringIdentityAttributesChangedChangesInnerOldValueOneOfValue) == "{}" { // empty struct
 			dst.MapmapOfStringIdentityAttributesChangedChangesInnerOldValueOneOfValue = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.MapmapOfStringIdentityAttributesChangedChangesInnerOldValueOneOfValue); err != nil {
+				dst.MapmapOfStringIdentityAttributesChangedChangesInnerOldValueOneOfValue = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.MapmapOfStringIdentityAttributesChangedChangesInnerOldValueOneOfValue = nil
@@ -107,7 +120,11 @@ func (dst *IdentityAttributesChangedChangesInnerOldValue) UnmarshalJSON(data []b
 		if string(jsonString) == "{}" { // empty struct
 			dst.String = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.String); err != nil {
+				dst.String = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.String = nil

@@ -47,7 +47,7 @@ func NewPasswordChangeResponseWithDefaults() *PasswordChangeResponse {
 
 // GetRequestId returns the RequestId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PasswordChangeResponse) GetRequestId() string {
-	if o == nil || isNil(o.RequestId.Get()) {
+	if o == nil || IsNil(o.RequestId.Get()) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *PasswordChangeResponse) UnsetRequestId() {
 
 // GetState returns the State field value if set, zero value otherwise.
 func (o *PasswordChangeResponse) GetState() string {
-	if o == nil || isNil(o.State) {
+	if o == nil || IsNil(o.State) {
 		var ret string
 		return ret
 	}
@@ -99,7 +99,7 @@ func (o *PasswordChangeResponse) GetState() string {
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordChangeResponse) GetStateOk() (*string, bool) {
-	if o == nil || isNil(o.State) {
+	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
 	return o.State, true
@@ -107,7 +107,7 @@ func (o *PasswordChangeResponse) GetStateOk() (*string, bool) {
 
 // HasState returns a boolean if a field has been set.
 func (o *PasswordChangeResponse) HasState() bool {
-	if o != nil && !isNil(o.State) {
+	if o != nil && !IsNil(o.State) {
 		return true
 	}
 
@@ -132,7 +132,7 @@ func (o PasswordChangeResponse) ToMap() (map[string]interface{}, error) {
 	if o.RequestId.IsSet() {
 		toSerialize["requestId"] = o.RequestId.Get()
 	}
-	if !isNil(o.State) {
+	if !IsNil(o.State) {
 		toSerialize["state"] = o.State
 	}
 
@@ -143,16 +143,20 @@ func (o PasswordChangeResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *PasswordChangeResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *PasswordChangeResponse) UnmarshalJSON(data []byte) (err error) {
 	varPasswordChangeResponse := _PasswordChangeResponse{}
 
-	if err = json.Unmarshal(bytes, &varPasswordChangeResponse); err == nil {
+	err = json.Unmarshal(data, &varPasswordChangeResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = PasswordChangeResponse(varPasswordChangeResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "requestId")
 		delete(additionalProperties, "state")
 		o.AdditionalProperties = additionalProperties

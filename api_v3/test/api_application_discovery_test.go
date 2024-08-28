@@ -19,14 +19,14 @@ import (
 
 func Test_api_v3_ApplicationDiscoveryAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test ApplicationDiscoveryAPIService GetDiscoveredApplications", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.ApplicationDiscoveryAPI.GetDiscoveredApplications(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ApplicationDiscoveryAPI.GetDiscoveredApplications(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -38,7 +38,7 @@ func Test_api_v3_ApplicationDiscoveryAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.ApplicationDiscoveryAPI.GetManualDiscoverApplicationsCsvTemplate(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ApplicationDiscoveryAPI.GetManualDiscoverApplicationsCsvTemplate(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -50,7 +50,7 @@ func Test_api_v3_ApplicationDiscoveryAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V3.ApplicationDiscoveryAPI.GetVendorConnectorMappings(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ApplicationDiscoveryAPI.GetVendorConnectorMappings(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -62,7 +62,7 @@ func Test_api_v3_ApplicationDiscoveryAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.API_V3.ApplicationDiscoveryAPI.SendManualDiscoverApplicationsCsvTemplate(context.Background()).Execute()
+		httpRes, err := apiClient.ApplicationDiscoveryAPI.SendManualDiscoverApplicationsCsvTemplate(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

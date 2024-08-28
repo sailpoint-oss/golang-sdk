@@ -63,7 +63,7 @@ func NewObjectMappingResponseWithDefaults() *ObjectMappingResponse {
 
 // GetObjectMappingId returns the ObjectMappingId field value if set, zero value otherwise.
 func (o *ObjectMappingResponse) GetObjectMappingId() string {
-	if o == nil || isNil(o.ObjectMappingId) {
+	if o == nil || IsNil(o.ObjectMappingId) {
 		var ret string
 		return ret
 	}
@@ -73,7 +73,7 @@ func (o *ObjectMappingResponse) GetObjectMappingId() string {
 // GetObjectMappingIdOk returns a tuple with the ObjectMappingId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ObjectMappingResponse) GetObjectMappingIdOk() (*string, bool) {
-	if o == nil || isNil(o.ObjectMappingId) {
+	if o == nil || IsNil(o.ObjectMappingId) {
 		return nil, false
 	}
 	return o.ObjectMappingId, true
@@ -81,7 +81,7 @@ func (o *ObjectMappingResponse) GetObjectMappingIdOk() (*string, bool) {
 
 // HasObjectMappingId returns a boolean if a field has been set.
 func (o *ObjectMappingResponse) HasObjectMappingId() bool {
-	if o != nil && !isNil(o.ObjectMappingId) {
+	if o != nil && !IsNil(o.ObjectMappingId) {
 		return true
 	}
 
@@ -95,7 +95,7 @@ func (o *ObjectMappingResponse) SetObjectMappingId(v string) {
 
 // GetObjectType returns the ObjectType field value if set, zero value otherwise.
 func (o *ObjectMappingResponse) GetObjectType() string {
-	if o == nil || isNil(o.ObjectType) {
+	if o == nil || IsNil(o.ObjectType) {
 		var ret string
 		return ret
 	}
@@ -105,7 +105,7 @@ func (o *ObjectMappingResponse) GetObjectType() string {
 // GetObjectTypeOk returns a tuple with the ObjectType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ObjectMappingResponse) GetObjectTypeOk() (*string, bool) {
-	if o == nil || isNil(o.ObjectType) {
+	if o == nil || IsNil(o.ObjectType) {
 		return nil, false
 	}
 	return o.ObjectType, true
@@ -113,7 +113,7 @@ func (o *ObjectMappingResponse) GetObjectTypeOk() (*string, bool) {
 
 // HasObjectType returns a boolean if a field has been set.
 func (o *ObjectMappingResponse) HasObjectType() bool {
-	if o != nil && !isNil(o.ObjectType) {
+	if o != nil && !IsNil(o.ObjectType) {
 		return true
 	}
 
@@ -127,7 +127,7 @@ func (o *ObjectMappingResponse) SetObjectType(v string) {
 
 // GetJsonPath returns the JsonPath field value if set, zero value otherwise.
 func (o *ObjectMappingResponse) GetJsonPath() string {
-	if o == nil || isNil(o.JsonPath) {
+	if o == nil || IsNil(o.JsonPath) {
 		var ret string
 		return ret
 	}
@@ -137,7 +137,7 @@ func (o *ObjectMappingResponse) GetJsonPath() string {
 // GetJsonPathOk returns a tuple with the JsonPath field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ObjectMappingResponse) GetJsonPathOk() (*string, bool) {
-	if o == nil || isNil(o.JsonPath) {
+	if o == nil || IsNil(o.JsonPath) {
 		return nil, false
 	}
 	return o.JsonPath, true
@@ -145,7 +145,7 @@ func (o *ObjectMappingResponse) GetJsonPathOk() (*string, bool) {
 
 // HasJsonPath returns a boolean if a field has been set.
 func (o *ObjectMappingResponse) HasJsonPath() bool {
-	if o != nil && !isNil(o.JsonPath) {
+	if o != nil && !IsNil(o.JsonPath) {
 		return true
 	}
 
@@ -159,7 +159,7 @@ func (o *ObjectMappingResponse) SetJsonPath(v string) {
 
 // GetSourceValue returns the SourceValue field value if set, zero value otherwise.
 func (o *ObjectMappingResponse) GetSourceValue() string {
-	if o == nil || isNil(o.SourceValue) {
+	if o == nil || IsNil(o.SourceValue) {
 		var ret string
 		return ret
 	}
@@ -169,7 +169,7 @@ func (o *ObjectMappingResponse) GetSourceValue() string {
 // GetSourceValueOk returns a tuple with the SourceValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ObjectMappingResponse) GetSourceValueOk() (*string, bool) {
-	if o == nil || isNil(o.SourceValue) {
+	if o == nil || IsNil(o.SourceValue) {
 		return nil, false
 	}
 	return o.SourceValue, true
@@ -177,7 +177,7 @@ func (o *ObjectMappingResponse) GetSourceValueOk() (*string, bool) {
 
 // HasSourceValue returns a boolean if a field has been set.
 func (o *ObjectMappingResponse) HasSourceValue() bool {
-	if o != nil && !isNil(o.SourceValue) {
+	if o != nil && !IsNil(o.SourceValue) {
 		return true
 	}
 
@@ -191,7 +191,7 @@ func (o *ObjectMappingResponse) SetSourceValue(v string) {
 
 // GetTargetValue returns the TargetValue field value if set, zero value otherwise.
 func (o *ObjectMappingResponse) GetTargetValue() string {
-	if o == nil || isNil(o.TargetValue) {
+	if o == nil || IsNil(o.TargetValue) {
 		var ret string
 		return ret
 	}
@@ -201,7 +201,7 @@ func (o *ObjectMappingResponse) GetTargetValue() string {
 // GetTargetValueOk returns a tuple with the TargetValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ObjectMappingResponse) GetTargetValueOk() (*string, bool) {
-	if o == nil || isNil(o.TargetValue) {
+	if o == nil || IsNil(o.TargetValue) {
 		return nil, false
 	}
 	return o.TargetValue, true
@@ -209,7 +209,7 @@ func (o *ObjectMappingResponse) GetTargetValueOk() (*string, bool) {
 
 // HasTargetValue returns a boolean if a field has been set.
 func (o *ObjectMappingResponse) HasTargetValue() bool {
-	if o != nil && !isNil(o.TargetValue) {
+	if o != nil && !IsNil(o.TargetValue) {
 		return true
 	}
 
@@ -223,7 +223,7 @@ func (o *ObjectMappingResponse) SetTargetValue(v string) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *ObjectMappingResponse) GetEnabled() bool {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -233,7 +233,7 @@ func (o *ObjectMappingResponse) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ObjectMappingResponse) GetEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -241,7 +241,7 @@ func (o *ObjectMappingResponse) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *ObjectMappingResponse) HasEnabled() bool {
-	if o != nil && !isNil(o.Enabled) {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -255,7 +255,7 @@ func (o *ObjectMappingResponse) SetEnabled(v bool) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *ObjectMappingResponse) GetCreated() string {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret string
 		return ret
 	}
@@ -265,7 +265,7 @@ func (o *ObjectMappingResponse) GetCreated() string {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ObjectMappingResponse) GetCreatedOk() (*string, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -273,7 +273,7 @@ func (o *ObjectMappingResponse) GetCreatedOk() (*string, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *ObjectMappingResponse) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -287,7 +287,7 @@ func (o *ObjectMappingResponse) SetCreated(v string) {
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *ObjectMappingResponse) GetModified() string {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		var ret string
 		return ret
 	}
@@ -297,7 +297,7 @@ func (o *ObjectMappingResponse) GetModified() string {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ObjectMappingResponse) GetModifiedOk() (*string, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -305,7 +305,7 @@ func (o *ObjectMappingResponse) GetModifiedOk() (*string, bool) {
 
 // HasModified returns a boolean if a field has been set.
 func (o *ObjectMappingResponse) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -327,28 +327,28 @@ func (o ObjectMappingResponse) MarshalJSON() ([]byte, error) {
 
 func (o ObjectMappingResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ObjectMappingId) {
+	if !IsNil(o.ObjectMappingId) {
 		toSerialize["objectMappingId"] = o.ObjectMappingId
 	}
-	if !isNil(o.ObjectType) {
+	if !IsNil(o.ObjectType) {
 		toSerialize["objectType"] = o.ObjectType
 	}
-	if !isNil(o.JsonPath) {
+	if !IsNil(o.JsonPath) {
 		toSerialize["jsonPath"] = o.JsonPath
 	}
-	if !isNil(o.SourceValue) {
+	if !IsNil(o.SourceValue) {
 		toSerialize["sourceValue"] = o.SourceValue
 	}
-	if !isNil(o.TargetValue) {
+	if !IsNil(o.TargetValue) {
 		toSerialize["targetValue"] = o.TargetValue
 	}
-	if !isNil(o.Enabled) {
+	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if !isNil(o.Created) {
+	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
-	if !isNil(o.Modified) {
+	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
 
@@ -359,16 +359,20 @@ func (o ObjectMappingResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ObjectMappingResponse) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ObjectMappingResponse) UnmarshalJSON(data []byte) (err error) {
 	varObjectMappingResponse := _ObjectMappingResponse{}
 
-	if err = json.Unmarshal(bytes, &varObjectMappingResponse); err == nil {
+	err = json.Unmarshal(data, &varObjectMappingResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ObjectMappingResponse(varObjectMappingResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "objectMappingId")
 		delete(additionalProperties, "objectType")
 		delete(additionalProperties, "jsonPath")

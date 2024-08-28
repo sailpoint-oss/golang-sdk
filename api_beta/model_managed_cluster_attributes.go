@@ -46,7 +46,7 @@ func NewManagedClusterAttributesWithDefaults() *ManagedClusterAttributes {
 
 // GetQueue returns the Queue field value if set, zero value otherwise.
 func (o *ManagedClusterAttributes) GetQueue() ManagedClusterQueue {
-	if o == nil || isNil(o.Queue) {
+	if o == nil || IsNil(o.Queue) {
 		var ret ManagedClusterQueue
 		return ret
 	}
@@ -56,7 +56,7 @@ func (o *ManagedClusterAttributes) GetQueue() ManagedClusterQueue {
 // GetQueueOk returns a tuple with the Queue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedClusterAttributes) GetQueueOk() (*ManagedClusterQueue, bool) {
-	if o == nil || isNil(o.Queue) {
+	if o == nil || IsNil(o.Queue) {
 		return nil, false
 	}
 	return o.Queue, true
@@ -64,7 +64,7 @@ func (o *ManagedClusterAttributes) GetQueueOk() (*ManagedClusterQueue, bool) {
 
 // HasQueue returns a boolean if a field has been set.
 func (o *ManagedClusterAttributes) HasQueue() bool {
-	if o != nil && !isNil(o.Queue) {
+	if o != nil && !IsNil(o.Queue) {
 		return true
 	}
 
@@ -78,7 +78,7 @@ func (o *ManagedClusterAttributes) SetQueue(v ManagedClusterQueue) {
 
 // GetKeystore returns the Keystore field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedClusterAttributes) GetKeystore() string {
-	if o == nil || isNil(o.Keystore.Get()) {
+	if o == nil || IsNil(o.Keystore.Get()) {
 		var ret string
 		return ret
 	}
@@ -128,7 +128,7 @@ func (o ManagedClusterAttributes) MarshalJSON() ([]byte, error) {
 
 func (o ManagedClusterAttributes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Queue) {
+	if !IsNil(o.Queue) {
 		toSerialize["queue"] = o.Queue
 	}
 	if o.Keystore.IsSet() {
@@ -142,16 +142,20 @@ func (o ManagedClusterAttributes) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ManagedClusterAttributes) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ManagedClusterAttributes) UnmarshalJSON(data []byte) (err error) {
 	varManagedClusterAttributes := _ManagedClusterAttributes{}
 
-	if err = json.Unmarshal(bytes, &varManagedClusterAttributes); err == nil {
+	err = json.Unmarshal(data, &varManagedClusterAttributes)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ManagedClusterAttributes(varManagedClusterAttributes)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "queue")
 		delete(additionalProperties, "keystore")
 		o.AdditionalProperties = additionalProperties

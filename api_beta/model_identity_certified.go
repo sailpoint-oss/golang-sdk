@@ -58,7 +58,7 @@ func NewIdentityCertifiedWithDefaults() *IdentityCertified {
 
 // GetCertificationId returns the CertificationId field value if set, zero value otherwise.
 func (o *IdentityCertified) GetCertificationId() string {
-	if o == nil || isNil(o.CertificationId) {
+	if o == nil || IsNil(o.CertificationId) {
 		var ret string
 		return ret
 	}
@@ -68,7 +68,7 @@ func (o *IdentityCertified) GetCertificationId() string {
 // GetCertificationIdOk returns a tuple with the CertificationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertified) GetCertificationIdOk() (*string, bool) {
-	if o == nil || isNil(o.CertificationId) {
+	if o == nil || IsNil(o.CertificationId) {
 		return nil, false
 	}
 	return o.CertificationId, true
@@ -76,7 +76,7 @@ func (o *IdentityCertified) GetCertificationIdOk() (*string, bool) {
 
 // HasCertificationId returns a boolean if a field has been set.
 func (o *IdentityCertified) HasCertificationId() bool {
-	if o != nil && !isNil(o.CertificationId) {
+	if o != nil && !IsNil(o.CertificationId) {
 		return true
 	}
 
@@ -90,7 +90,7 @@ func (o *IdentityCertified) SetCertificationId(v string) {
 
 // GetCertificationName returns the CertificationName field value if set, zero value otherwise.
 func (o *IdentityCertified) GetCertificationName() string {
-	if o == nil || isNil(o.CertificationName) {
+	if o == nil || IsNil(o.CertificationName) {
 		var ret string
 		return ret
 	}
@@ -100,7 +100,7 @@ func (o *IdentityCertified) GetCertificationName() string {
 // GetCertificationNameOk returns a tuple with the CertificationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertified) GetCertificationNameOk() (*string, bool) {
-	if o == nil || isNil(o.CertificationName) {
+	if o == nil || IsNil(o.CertificationName) {
 		return nil, false
 	}
 	return o.CertificationName, true
@@ -108,7 +108,7 @@ func (o *IdentityCertified) GetCertificationNameOk() (*string, bool) {
 
 // HasCertificationName returns a boolean if a field has been set.
 func (o *IdentityCertified) HasCertificationName() bool {
-	if o != nil && !isNil(o.CertificationName) {
+	if o != nil && !IsNil(o.CertificationName) {
 		return true
 	}
 
@@ -122,7 +122,7 @@ func (o *IdentityCertified) SetCertificationName(v string) {
 
 // GetSignedDate returns the SignedDate field value if set, zero value otherwise.
 func (o *IdentityCertified) GetSignedDate() string {
-	if o == nil || isNil(o.SignedDate) {
+	if o == nil || IsNil(o.SignedDate) {
 		var ret string
 		return ret
 	}
@@ -132,7 +132,7 @@ func (o *IdentityCertified) GetSignedDate() string {
 // GetSignedDateOk returns a tuple with the SignedDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertified) GetSignedDateOk() (*string, bool) {
-	if o == nil || isNil(o.SignedDate) {
+	if o == nil || IsNil(o.SignedDate) {
 		return nil, false
 	}
 	return o.SignedDate, true
@@ -140,7 +140,7 @@ func (o *IdentityCertified) GetSignedDateOk() (*string, bool) {
 
 // HasSignedDate returns a boolean if a field has been set.
 func (o *IdentityCertified) HasSignedDate() bool {
-	if o != nil && !isNil(o.SignedDate) {
+	if o != nil && !IsNil(o.SignedDate) {
 		return true
 	}
 
@@ -154,7 +154,7 @@ func (o *IdentityCertified) SetSignedDate(v string) {
 
 // GetCertifiers returns the Certifiers field value if set, zero value otherwise.
 func (o *IdentityCertified) GetCertifiers() []CertifierResponse {
-	if o == nil || isNil(o.Certifiers) {
+	if o == nil || IsNil(o.Certifiers) {
 		var ret []CertifierResponse
 		return ret
 	}
@@ -164,7 +164,7 @@ func (o *IdentityCertified) GetCertifiers() []CertifierResponse {
 // GetCertifiersOk returns a tuple with the Certifiers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertified) GetCertifiersOk() ([]CertifierResponse, bool) {
-	if o == nil || isNil(o.Certifiers) {
+	if o == nil || IsNil(o.Certifiers) {
 		return nil, false
 	}
 	return o.Certifiers, true
@@ -172,7 +172,7 @@ func (o *IdentityCertified) GetCertifiersOk() ([]CertifierResponse, bool) {
 
 // HasCertifiers returns a boolean if a field has been set.
 func (o *IdentityCertified) HasCertifiers() bool {
-	if o != nil && !isNil(o.Certifiers) {
+	if o != nil && !IsNil(o.Certifiers) {
 		return true
 	}
 
@@ -186,7 +186,7 @@ func (o *IdentityCertified) SetCertifiers(v []CertifierResponse) {
 
 // GetReviewers returns the Reviewers field value if set, zero value otherwise.
 func (o *IdentityCertified) GetReviewers() []CertifierResponse {
-	if o == nil || isNil(o.Reviewers) {
+	if o == nil || IsNil(o.Reviewers) {
 		var ret []CertifierResponse
 		return ret
 	}
@@ -196,7 +196,7 @@ func (o *IdentityCertified) GetReviewers() []CertifierResponse {
 // GetReviewersOk returns a tuple with the Reviewers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertified) GetReviewersOk() ([]CertifierResponse, bool) {
-	if o == nil || isNil(o.Reviewers) {
+	if o == nil || IsNil(o.Reviewers) {
 		return nil, false
 	}
 	return o.Reviewers, true
@@ -204,7 +204,7 @@ func (o *IdentityCertified) GetReviewersOk() ([]CertifierResponse, bool) {
 
 // HasReviewers returns a boolean if a field has been set.
 func (o *IdentityCertified) HasReviewers() bool {
-	if o != nil && !isNil(o.Reviewers) {
+	if o != nil && !IsNil(o.Reviewers) {
 		return true
 	}
 
@@ -218,7 +218,7 @@ func (o *IdentityCertified) SetReviewers(v []CertifierResponse) {
 
 // GetSigner returns the Signer field value if set, zero value otherwise.
 func (o *IdentityCertified) GetSigner() CertifierResponse {
-	if o == nil || isNil(o.Signer) {
+	if o == nil || IsNil(o.Signer) {
 		var ret CertifierResponse
 		return ret
 	}
@@ -228,7 +228,7 @@ func (o *IdentityCertified) GetSigner() CertifierResponse {
 // GetSignerOk returns a tuple with the Signer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertified) GetSignerOk() (*CertifierResponse, bool) {
-	if o == nil || isNil(o.Signer) {
+	if o == nil || IsNil(o.Signer) {
 		return nil, false
 	}
 	return o.Signer, true
@@ -236,7 +236,7 @@ func (o *IdentityCertified) GetSignerOk() (*CertifierResponse, bool) {
 
 // HasSigner returns a boolean if a field has been set.
 func (o *IdentityCertified) HasSigner() bool {
-	if o != nil && !isNil(o.Signer) {
+	if o != nil && !IsNil(o.Signer) {
 		return true
 	}
 
@@ -250,7 +250,7 @@ func (o *IdentityCertified) SetSigner(v CertifierResponse) {
 
 // GetEventType returns the EventType field value if set, zero value otherwise.
 func (o *IdentityCertified) GetEventType() string {
-	if o == nil || isNil(o.EventType) {
+	if o == nil || IsNil(o.EventType) {
 		var ret string
 		return ret
 	}
@@ -260,7 +260,7 @@ func (o *IdentityCertified) GetEventType() string {
 // GetEventTypeOk returns a tuple with the EventType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertified) GetEventTypeOk() (*string, bool) {
-	if o == nil || isNil(o.EventType) {
+	if o == nil || IsNil(o.EventType) {
 		return nil, false
 	}
 	return o.EventType, true
@@ -268,7 +268,7 @@ func (o *IdentityCertified) GetEventTypeOk() (*string, bool) {
 
 // HasEventType returns a boolean if a field has been set.
 func (o *IdentityCertified) HasEventType() bool {
-	if o != nil && !isNil(o.EventType) {
+	if o != nil && !IsNil(o.EventType) {
 		return true
 	}
 
@@ -282,7 +282,7 @@ func (o *IdentityCertified) SetEventType(v string) {
 
 // GetDt returns the Dt field value if set, zero value otherwise.
 func (o *IdentityCertified) GetDt() string {
-	if o == nil || isNil(o.Dt) {
+	if o == nil || IsNil(o.Dt) {
 		var ret string
 		return ret
 	}
@@ -292,7 +292,7 @@ func (o *IdentityCertified) GetDt() string {
 // GetDtOk returns a tuple with the Dt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityCertified) GetDtOk() (*string, bool) {
-	if o == nil || isNil(o.Dt) {
+	if o == nil || IsNil(o.Dt) {
 		return nil, false
 	}
 	return o.Dt, true
@@ -300,7 +300,7 @@ func (o *IdentityCertified) GetDtOk() (*string, bool) {
 
 // HasDt returns a boolean if a field has been set.
 func (o *IdentityCertified) HasDt() bool {
-	if o != nil && !isNil(o.Dt) {
+	if o != nil && !IsNil(o.Dt) {
 		return true
 	}
 
@@ -322,28 +322,28 @@ func (o IdentityCertified) MarshalJSON() ([]byte, error) {
 
 func (o IdentityCertified) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.CertificationId) {
+	if !IsNil(o.CertificationId) {
 		toSerialize["certificationId"] = o.CertificationId
 	}
-	if !isNil(o.CertificationName) {
+	if !IsNil(o.CertificationName) {
 		toSerialize["certificationName"] = o.CertificationName
 	}
-	if !isNil(o.SignedDate) {
+	if !IsNil(o.SignedDate) {
 		toSerialize["signedDate"] = o.SignedDate
 	}
-	if !isNil(o.Certifiers) {
+	if !IsNil(o.Certifiers) {
 		toSerialize["certifiers"] = o.Certifiers
 	}
-	if !isNil(o.Reviewers) {
+	if !IsNil(o.Reviewers) {
 		toSerialize["reviewers"] = o.Reviewers
 	}
-	if !isNil(o.Signer) {
+	if !IsNil(o.Signer) {
 		toSerialize["signer"] = o.Signer
 	}
-	if !isNil(o.EventType) {
+	if !IsNil(o.EventType) {
 		toSerialize["eventType"] = o.EventType
 	}
-	if !isNil(o.Dt) {
+	if !IsNil(o.Dt) {
 		toSerialize["dt"] = o.Dt
 	}
 
@@ -354,16 +354,20 @@ func (o IdentityCertified) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *IdentityCertified) UnmarshalJSON(bytes []byte) (err error) {
+func (o *IdentityCertified) UnmarshalJSON(data []byte) (err error) {
 	varIdentityCertified := _IdentityCertified{}
 
-	if err = json.Unmarshal(bytes, &varIdentityCertified); err == nil {
+	err = json.Unmarshal(data, &varIdentityCertified)
+
+	if err != nil {
+		return err
+	}
+
 	*o = IdentityCertified(varIdentityCertified)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "certificationId")
 		delete(additionalProperties, "certificationName")
 		delete(additionalProperties, "signedDate")

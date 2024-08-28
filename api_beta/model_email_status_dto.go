@@ -47,7 +47,7 @@ func NewEmailStatusDtoWithDefaults() *EmailStatusDto {
 
 // GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EmailStatusDto) GetId() string {
-	if o == nil || isNil(o.Id.Get()) {
+	if o == nil || IsNil(o.Id.Get()) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *EmailStatusDto) UnsetId() {
 
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *EmailStatusDto) GetEmail() string {
-	if o == nil || isNil(o.Email) {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
@@ -99,7 +99,7 @@ func (o *EmailStatusDto) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmailStatusDto) GetEmailOk() (*string, bool) {
-	if o == nil || isNil(o.Email) {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
 	return o.Email, true
@@ -107,7 +107,7 @@ func (o *EmailStatusDto) GetEmailOk() (*string, bool) {
 
 // HasEmail returns a boolean if a field has been set.
 func (o *EmailStatusDto) HasEmail() bool {
-	if o != nil && !isNil(o.Email) {
+	if o != nil && !IsNil(o.Email) {
 		return true
 	}
 
@@ -121,7 +121,7 @@ func (o *EmailStatusDto) SetEmail(v string) {
 
 // GetIsVerifiedByDomain returns the IsVerifiedByDomain field value if set, zero value otherwise.
 func (o *EmailStatusDto) GetIsVerifiedByDomain() bool {
-	if o == nil || isNil(o.IsVerifiedByDomain) {
+	if o == nil || IsNil(o.IsVerifiedByDomain) {
 		var ret bool
 		return ret
 	}
@@ -131,7 +131,7 @@ func (o *EmailStatusDto) GetIsVerifiedByDomain() bool {
 // GetIsVerifiedByDomainOk returns a tuple with the IsVerifiedByDomain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmailStatusDto) GetIsVerifiedByDomainOk() (*bool, bool) {
-	if o == nil || isNil(o.IsVerifiedByDomain) {
+	if o == nil || IsNil(o.IsVerifiedByDomain) {
 		return nil, false
 	}
 	return o.IsVerifiedByDomain, true
@@ -139,7 +139,7 @@ func (o *EmailStatusDto) GetIsVerifiedByDomainOk() (*bool, bool) {
 
 // HasIsVerifiedByDomain returns a boolean if a field has been set.
 func (o *EmailStatusDto) HasIsVerifiedByDomain() bool {
-	if o != nil && !isNil(o.IsVerifiedByDomain) {
+	if o != nil && !IsNil(o.IsVerifiedByDomain) {
 		return true
 	}
 
@@ -153,7 +153,7 @@ func (o *EmailStatusDto) SetIsVerifiedByDomain(v bool) {
 
 // GetVerificationStatus returns the VerificationStatus field value if set, zero value otherwise.
 func (o *EmailStatusDto) GetVerificationStatus() string {
-	if o == nil || isNil(o.VerificationStatus) {
+	if o == nil || IsNil(o.VerificationStatus) {
 		var ret string
 		return ret
 	}
@@ -163,7 +163,7 @@ func (o *EmailStatusDto) GetVerificationStatus() string {
 // GetVerificationStatusOk returns a tuple with the VerificationStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmailStatusDto) GetVerificationStatusOk() (*string, bool) {
-	if o == nil || isNil(o.VerificationStatus) {
+	if o == nil || IsNil(o.VerificationStatus) {
 		return nil, false
 	}
 	return o.VerificationStatus, true
@@ -171,7 +171,7 @@ func (o *EmailStatusDto) GetVerificationStatusOk() (*string, bool) {
 
 // HasVerificationStatus returns a boolean if a field has been set.
 func (o *EmailStatusDto) HasVerificationStatus() bool {
-	if o != nil && !isNil(o.VerificationStatus) {
+	if o != nil && !IsNil(o.VerificationStatus) {
 		return true
 	}
 
@@ -196,13 +196,13 @@ func (o EmailStatusDto) ToMap() (map[string]interface{}, error) {
 	if o.Id.IsSet() {
 		toSerialize["id"] = o.Id.Get()
 	}
-	if !isNil(o.Email) {
+	if !IsNil(o.Email) {
 		toSerialize["email"] = o.Email
 	}
-	if !isNil(o.IsVerifiedByDomain) {
+	if !IsNil(o.IsVerifiedByDomain) {
 		toSerialize["isVerifiedByDomain"] = o.IsVerifiedByDomain
 	}
-	if !isNil(o.VerificationStatus) {
+	if !IsNil(o.VerificationStatus) {
 		toSerialize["verificationStatus"] = o.VerificationStatus
 	}
 
@@ -213,16 +213,20 @@ func (o EmailStatusDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *EmailStatusDto) UnmarshalJSON(bytes []byte) (err error) {
+func (o *EmailStatusDto) UnmarshalJSON(data []byte) (err error) {
 	varEmailStatusDto := _EmailStatusDto{}
 
-	if err = json.Unmarshal(bytes, &varEmailStatusDto); err == nil {
+	err = json.Unmarshal(data, &varEmailStatusDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = EmailStatusDto(varEmailStatusDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "email")
 		delete(additionalProperties, "isVerifiedByDomain")

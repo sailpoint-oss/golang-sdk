@@ -75,7 +75,7 @@ func (o *PasswordDigitTokenReset) SetUserId(v string) {
 
 // GetLength returns the Length field value if set, zero value otherwise.
 func (o *PasswordDigitTokenReset) GetLength() int32 {
-	if o == nil || isNil(o.Length) {
+	if o == nil || IsNil(o.Length) {
 		var ret int32
 		return ret
 	}
@@ -85,7 +85,7 @@ func (o *PasswordDigitTokenReset) GetLength() int32 {
 // GetLengthOk returns a tuple with the Length field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordDigitTokenReset) GetLengthOk() (*int32, bool) {
-	if o == nil || isNil(o.Length) {
+	if o == nil || IsNil(o.Length) {
 		return nil, false
 	}
 	return o.Length, true
@@ -93,7 +93,7 @@ func (o *PasswordDigitTokenReset) GetLengthOk() (*int32, bool) {
 
 // HasLength returns a boolean if a field has been set.
 func (o *PasswordDigitTokenReset) HasLength() bool {
-	if o != nil && !isNil(o.Length) {
+	if o != nil && !IsNil(o.Length) {
 		return true
 	}
 
@@ -107,7 +107,7 @@ func (o *PasswordDigitTokenReset) SetLength(v int32) {
 
 // GetDurationMinutes returns the DurationMinutes field value if set, zero value otherwise.
 func (o *PasswordDigitTokenReset) GetDurationMinutes() int32 {
-	if o == nil || isNil(o.DurationMinutes) {
+	if o == nil || IsNil(o.DurationMinutes) {
 		var ret int32
 		return ret
 	}
@@ -117,7 +117,7 @@ func (o *PasswordDigitTokenReset) GetDurationMinutes() int32 {
 // GetDurationMinutesOk returns a tuple with the DurationMinutes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordDigitTokenReset) GetDurationMinutesOk() (*int32, bool) {
-	if o == nil || isNil(o.DurationMinutes) {
+	if o == nil || IsNil(o.DurationMinutes) {
 		return nil, false
 	}
 	return o.DurationMinutes, true
@@ -125,7 +125,7 @@ func (o *PasswordDigitTokenReset) GetDurationMinutesOk() (*int32, bool) {
 
 // HasDurationMinutes returns a boolean if a field has been set.
 func (o *PasswordDigitTokenReset) HasDurationMinutes() bool {
-	if o != nil && !isNil(o.DurationMinutes) {
+	if o != nil && !IsNil(o.DurationMinutes) {
 		return true
 	}
 
@@ -148,10 +148,10 @@ func (o PasswordDigitTokenReset) MarshalJSON() ([]byte, error) {
 func (o PasswordDigitTokenReset) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["userId"] = o.UserId
-	if !isNil(o.Length) {
+	if !IsNil(o.Length) {
 		toSerialize["length"] = o.Length
 	}
-	if !isNil(o.DurationMinutes) {
+	if !IsNil(o.DurationMinutes) {
 		toSerialize["durationMinutes"] = o.DurationMinutes
 	}
 
@@ -162,8 +162,8 @@ func (o PasswordDigitTokenReset) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *PasswordDigitTokenReset) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *PasswordDigitTokenReset) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -172,7 +172,7 @@ func (o *PasswordDigitTokenReset) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -186,13 +186,17 @@ func (o *PasswordDigitTokenReset) UnmarshalJSON(bytes []byte) (err error) {
 
 	varPasswordDigitTokenReset := _PasswordDigitTokenReset{}
 
-	if err = json.Unmarshal(bytes, &varPasswordDigitTokenReset); err == nil {
+	err = json.Unmarshal(data, &varPasswordDigitTokenReset)
+
+	if err != nil {
+		return err
+	}
+
 	*o = PasswordDigitTokenReset(varPasswordDigitTokenReset)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "userId")
 		delete(additionalProperties, "length")
 		delete(additionalProperties, "durationMinutes")

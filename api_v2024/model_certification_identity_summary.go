@@ -51,7 +51,7 @@ func NewCertificationIdentitySummaryWithDefaults() *CertificationIdentitySummary
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *CertificationIdentitySummary) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -61,7 +61,7 @@ func (o *CertificationIdentitySummary) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificationIdentitySummary) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -69,7 +69,7 @@ func (o *CertificationIdentitySummary) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *CertificationIdentitySummary) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -83,7 +83,7 @@ func (o *CertificationIdentitySummary) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *CertificationIdentitySummary) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -93,7 +93,7 @@ func (o *CertificationIdentitySummary) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificationIdentitySummary) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -101,7 +101,7 @@ func (o *CertificationIdentitySummary) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *CertificationIdentitySummary) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -115,7 +115,7 @@ func (o *CertificationIdentitySummary) SetName(v string) {
 
 // GetIdentityId returns the IdentityId field value if set, zero value otherwise.
 func (o *CertificationIdentitySummary) GetIdentityId() string {
-	if o == nil || isNil(o.IdentityId) {
+	if o == nil || IsNil(o.IdentityId) {
 		var ret string
 		return ret
 	}
@@ -125,7 +125,7 @@ func (o *CertificationIdentitySummary) GetIdentityId() string {
 // GetIdentityIdOk returns a tuple with the IdentityId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificationIdentitySummary) GetIdentityIdOk() (*string, bool) {
-	if o == nil || isNil(o.IdentityId) {
+	if o == nil || IsNil(o.IdentityId) {
 		return nil, false
 	}
 	return o.IdentityId, true
@@ -133,7 +133,7 @@ func (o *CertificationIdentitySummary) GetIdentityIdOk() (*string, bool) {
 
 // HasIdentityId returns a boolean if a field has been set.
 func (o *CertificationIdentitySummary) HasIdentityId() bool {
-	if o != nil && !isNil(o.IdentityId) {
+	if o != nil && !IsNil(o.IdentityId) {
 		return true
 	}
 
@@ -147,7 +147,7 @@ func (o *CertificationIdentitySummary) SetIdentityId(v string) {
 
 // GetCompleted returns the Completed field value if set, zero value otherwise.
 func (o *CertificationIdentitySummary) GetCompleted() bool {
-	if o == nil || isNil(o.Completed) {
+	if o == nil || IsNil(o.Completed) {
 		var ret bool
 		return ret
 	}
@@ -157,7 +157,7 @@ func (o *CertificationIdentitySummary) GetCompleted() bool {
 // GetCompletedOk returns a tuple with the Completed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificationIdentitySummary) GetCompletedOk() (*bool, bool) {
-	if o == nil || isNil(o.Completed) {
+	if o == nil || IsNil(o.Completed) {
 		return nil, false
 	}
 	return o.Completed, true
@@ -165,7 +165,7 @@ func (o *CertificationIdentitySummary) GetCompletedOk() (*bool, bool) {
 
 // HasCompleted returns a boolean if a field has been set.
 func (o *CertificationIdentitySummary) HasCompleted() bool {
-	if o != nil && !isNil(o.Completed) {
+	if o != nil && !IsNil(o.Completed) {
 		return true
 	}
 
@@ -187,16 +187,16 @@ func (o CertificationIdentitySummary) MarshalJSON() ([]byte, error) {
 
 func (o CertificationIdentitySummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.IdentityId) {
+	if !IsNil(o.IdentityId) {
 		toSerialize["identityId"] = o.IdentityId
 	}
-	if !isNil(o.Completed) {
+	if !IsNil(o.Completed) {
 		toSerialize["completed"] = o.Completed
 	}
 
@@ -207,16 +207,20 @@ func (o CertificationIdentitySummary) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CertificationIdentitySummary) UnmarshalJSON(bytes []byte) (err error) {
+func (o *CertificationIdentitySummary) UnmarshalJSON(data []byte) (err error) {
 	varCertificationIdentitySummary := _CertificationIdentitySummary{}
 
-	if err = json.Unmarshal(bytes, &varCertificationIdentitySummary); err == nil {
+	err = json.Unmarshal(data, &varCertificationIdentitySummary)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CertificationIdentitySummary(varCertificationIdentitySummary)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "identityId")

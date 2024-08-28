@@ -45,7 +45,7 @@ func NewFormItemWithDefaults() *FormItem {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *FormItem) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *FormItem) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormItem) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -63,7 +63,7 @@ func (o *FormItem) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *FormItem) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o FormItem) MarshalJSON() ([]byte, error) {
 
 func (o FormItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 
@@ -96,16 +96,20 @@ func (o FormItem) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *FormItem) UnmarshalJSON(bytes []byte) (err error) {
+func (o *FormItem) UnmarshalJSON(data []byte) (err error) {
 	varFormItem := _FormItem{}
 
-	if err = json.Unmarshal(bytes, &varFormItem); err == nil {
+	err = json.Unmarshal(data, &varFormItem)
+
+	if err != nil {
+		return err
+	}
+
 	*o = FormItem(varFormItem)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		o.AdditionalProperties = additionalProperties
 	}

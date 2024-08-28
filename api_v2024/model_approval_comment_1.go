@@ -50,7 +50,7 @@ func NewApprovalComment1WithDefaults() *ApprovalComment1 {
 
 // GetComment returns the Comment field value if set, zero value otherwise.
 func (o *ApprovalComment1) GetComment() string {
-	if o == nil || isNil(o.Comment) {
+	if o == nil || IsNil(o.Comment) {
 		var ret string
 		return ret
 	}
@@ -60,7 +60,7 @@ func (o *ApprovalComment1) GetComment() string {
 // GetCommentOk returns a tuple with the Comment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalComment1) GetCommentOk() (*string, bool) {
-	if o == nil || isNil(o.Comment) {
+	if o == nil || IsNil(o.Comment) {
 		return nil, false
 	}
 	return o.Comment, true
@@ -68,7 +68,7 @@ func (o *ApprovalComment1) GetCommentOk() (*string, bool) {
 
 // HasComment returns a boolean if a field has been set.
 func (o *ApprovalComment1) HasComment() bool {
-	if o != nil && !isNil(o.Comment) {
+	if o != nil && !IsNil(o.Comment) {
 		return true
 	}
 
@@ -82,7 +82,7 @@ func (o *ApprovalComment1) SetComment(v string) {
 
 // GetCommenter returns the Commenter field value if set, zero value otherwise.
 func (o *ApprovalComment1) GetCommenter() string {
-	if o == nil || isNil(o.Commenter) {
+	if o == nil || IsNil(o.Commenter) {
 		var ret string
 		return ret
 	}
@@ -92,7 +92,7 @@ func (o *ApprovalComment1) GetCommenter() string {
 // GetCommenterOk returns a tuple with the Commenter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalComment1) GetCommenterOk() (*string, bool) {
-	if o == nil || isNil(o.Commenter) {
+	if o == nil || IsNil(o.Commenter) {
 		return nil, false
 	}
 	return o.Commenter, true
@@ -100,7 +100,7 @@ func (o *ApprovalComment1) GetCommenterOk() (*string, bool) {
 
 // HasCommenter returns a boolean if a field has been set.
 func (o *ApprovalComment1) HasCommenter() bool {
-	if o != nil && !isNil(o.Commenter) {
+	if o != nil && !IsNil(o.Commenter) {
 		return true
 	}
 
@@ -114,7 +114,7 @@ func (o *ApprovalComment1) SetCommenter(v string) {
 
 // GetDate returns the Date field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApprovalComment1) GetDate() time.Time {
-	if o == nil || isNil(o.Date.Get()) {
+	if o == nil || IsNil(o.Date.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -164,10 +164,10 @@ func (o ApprovalComment1) MarshalJSON() ([]byte, error) {
 
 func (o ApprovalComment1) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Comment) {
+	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if !isNil(o.Commenter) {
+	if !IsNil(o.Commenter) {
 		toSerialize["commenter"] = o.Commenter
 	}
 	if o.Date.IsSet() {
@@ -181,16 +181,20 @@ func (o ApprovalComment1) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ApprovalComment1) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ApprovalComment1) UnmarshalJSON(data []byte) (err error) {
 	varApprovalComment1 := _ApprovalComment1{}
 
-	if err = json.Unmarshal(bytes, &varApprovalComment1); err == nil {
+	err = json.Unmarshal(data, &varApprovalComment1)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ApprovalComment1(varApprovalComment1)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "comment")
 		delete(additionalProperties, "commenter")
 		delete(additionalProperties, "date")

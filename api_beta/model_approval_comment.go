@@ -48,7 +48,7 @@ func NewApprovalCommentWithDefaults() *ApprovalComment {
 
 // GetAuthor returns the Author field value if set, zero value otherwise.
 func (o *ApprovalComment) GetAuthor() ApprovalIdentity {
-	if o == nil || isNil(o.Author) {
+	if o == nil || IsNil(o.Author) {
 		var ret ApprovalIdentity
 		return ret
 	}
@@ -58,7 +58,7 @@ func (o *ApprovalComment) GetAuthor() ApprovalIdentity {
 // GetAuthorOk returns a tuple with the Author field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalComment) GetAuthorOk() (*ApprovalIdentity, bool) {
-	if o == nil || isNil(o.Author) {
+	if o == nil || IsNil(o.Author) {
 		return nil, false
 	}
 	return o.Author, true
@@ -66,7 +66,7 @@ func (o *ApprovalComment) GetAuthorOk() (*ApprovalIdentity, bool) {
 
 // HasAuthor returns a boolean if a field has been set.
 func (o *ApprovalComment) HasAuthor() bool {
-	if o != nil && !isNil(o.Author) {
+	if o != nil && !IsNil(o.Author) {
 		return true
 	}
 
@@ -80,7 +80,7 @@ func (o *ApprovalComment) SetAuthor(v ApprovalIdentity) {
 
 // GetComment returns the Comment field value if set, zero value otherwise.
 func (o *ApprovalComment) GetComment() string {
-	if o == nil || isNil(o.Comment) {
+	if o == nil || IsNil(o.Comment) {
 		var ret string
 		return ret
 	}
@@ -90,7 +90,7 @@ func (o *ApprovalComment) GetComment() string {
 // GetCommentOk returns a tuple with the Comment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalComment) GetCommentOk() (*string, bool) {
-	if o == nil || isNil(o.Comment) {
+	if o == nil || IsNil(o.Comment) {
 		return nil, false
 	}
 	return o.Comment, true
@@ -98,7 +98,7 @@ func (o *ApprovalComment) GetCommentOk() (*string, bool) {
 
 // HasComment returns a boolean if a field has been set.
 func (o *ApprovalComment) HasComment() bool {
-	if o != nil && !isNil(o.Comment) {
+	if o != nil && !IsNil(o.Comment) {
 		return true
 	}
 
@@ -112,7 +112,7 @@ func (o *ApprovalComment) SetComment(v string) {
 
 // GetCreatedDate returns the CreatedDate field value if set, zero value otherwise.
 func (o *ApprovalComment) GetCreatedDate() string {
-	if o == nil || isNil(o.CreatedDate) {
+	if o == nil || IsNil(o.CreatedDate) {
 		var ret string
 		return ret
 	}
@@ -122,7 +122,7 @@ func (o *ApprovalComment) GetCreatedDate() string {
 // GetCreatedDateOk returns a tuple with the CreatedDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalComment) GetCreatedDateOk() (*string, bool) {
-	if o == nil || isNil(o.CreatedDate) {
+	if o == nil || IsNil(o.CreatedDate) {
 		return nil, false
 	}
 	return o.CreatedDate, true
@@ -130,7 +130,7 @@ func (o *ApprovalComment) GetCreatedDateOk() (*string, bool) {
 
 // HasCreatedDate returns a boolean if a field has been set.
 func (o *ApprovalComment) HasCreatedDate() bool {
-	if o != nil && !isNil(o.CreatedDate) {
+	if o != nil && !IsNil(o.CreatedDate) {
 		return true
 	}
 
@@ -152,13 +152,13 @@ func (o ApprovalComment) MarshalJSON() ([]byte, error) {
 
 func (o ApprovalComment) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Author) {
+	if !IsNil(o.Author) {
 		toSerialize["author"] = o.Author
 	}
-	if !isNil(o.Comment) {
+	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if !isNil(o.CreatedDate) {
+	if !IsNil(o.CreatedDate) {
 		toSerialize["createdDate"] = o.CreatedDate
 	}
 
@@ -169,16 +169,20 @@ func (o ApprovalComment) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ApprovalComment) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ApprovalComment) UnmarshalJSON(data []byte) (err error) {
 	varApprovalComment := _ApprovalComment{}
 
-	if err = json.Unmarshal(bytes, &varApprovalComment); err == nil {
+	err = json.Unmarshal(data, &varApprovalComment)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ApprovalComment(varApprovalComment)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "author")
 		delete(additionalProperties, "comment")
 		delete(additionalProperties, "createdDate")

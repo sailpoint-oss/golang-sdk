@@ -46,7 +46,7 @@ func NewRoleAssignmentRefWithDefaults() *RoleAssignmentRef {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *RoleAssignmentRef) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -56,7 +56,7 @@ func (o *RoleAssignmentRef) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleAssignmentRef) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -64,7 +64,7 @@ func (o *RoleAssignmentRef) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *RoleAssignmentRef) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -78,7 +78,7 @@ func (o *RoleAssignmentRef) SetId(v string) {
 
 // GetRole returns the Role field value if set, zero value otherwise.
 func (o *RoleAssignmentRef) GetRole() BaseReferenceDto1 {
-	if o == nil || isNil(o.Role) {
+	if o == nil || IsNil(o.Role) {
 		var ret BaseReferenceDto1
 		return ret
 	}
@@ -88,7 +88,7 @@ func (o *RoleAssignmentRef) GetRole() BaseReferenceDto1 {
 // GetRoleOk returns a tuple with the Role field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleAssignmentRef) GetRoleOk() (*BaseReferenceDto1, bool) {
-	if o == nil || isNil(o.Role) {
+	if o == nil || IsNil(o.Role) {
 		return nil, false
 	}
 	return o.Role, true
@@ -96,7 +96,7 @@ func (o *RoleAssignmentRef) GetRoleOk() (*BaseReferenceDto1, bool) {
 
 // HasRole returns a boolean if a field has been set.
 func (o *RoleAssignmentRef) HasRole() bool {
-	if o != nil && !isNil(o.Role) {
+	if o != nil && !IsNil(o.Role) {
 		return true
 	}
 
@@ -118,10 +118,10 @@ func (o RoleAssignmentRef) MarshalJSON() ([]byte, error) {
 
 func (o RoleAssignmentRef) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Role) {
+	if !IsNil(o.Role) {
 		toSerialize["role"] = o.Role
 	}
 
@@ -132,16 +132,20 @@ func (o RoleAssignmentRef) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *RoleAssignmentRef) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RoleAssignmentRef) UnmarshalJSON(data []byte) (err error) {
 	varRoleAssignmentRef := _RoleAssignmentRef{}
 
-	if err = json.Unmarshal(bytes, &varRoleAssignmentRef); err == nil {
+	err = json.Unmarshal(data, &varRoleAssignmentRef)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RoleAssignmentRef(varRoleAssignmentRef)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "role")
 		o.AdditionalProperties = additionalProperties

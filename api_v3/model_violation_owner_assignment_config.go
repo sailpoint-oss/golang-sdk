@@ -46,7 +46,7 @@ func NewViolationOwnerAssignmentConfigWithDefaults() *ViolationOwnerAssignmentCo
 
 // GetAssignmentRule returns the AssignmentRule field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ViolationOwnerAssignmentConfig) GetAssignmentRule() string {
-	if o == nil || isNil(o.AssignmentRule.Get()) {
+	if o == nil || IsNil(o.AssignmentRule.Get()) {
 		var ret string
 		return ret
 	}
@@ -88,7 +88,7 @@ func (o *ViolationOwnerAssignmentConfig) UnsetAssignmentRule() {
 
 // GetOwnerRef returns the OwnerRef field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ViolationOwnerAssignmentConfig) GetOwnerRef() ViolationOwnerAssignmentConfigOwnerRef {
-	if o == nil || isNil(o.OwnerRef.Get()) {
+	if o == nil || IsNil(o.OwnerRef.Get()) {
 		var ret ViolationOwnerAssignmentConfigOwnerRef
 		return ret
 	}
@@ -152,16 +152,20 @@ func (o ViolationOwnerAssignmentConfig) ToMap() (map[string]interface{}, error) 
 	return toSerialize, nil
 }
 
-func (o *ViolationOwnerAssignmentConfig) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ViolationOwnerAssignmentConfig) UnmarshalJSON(data []byte) (err error) {
 	varViolationOwnerAssignmentConfig := _ViolationOwnerAssignmentConfig{}
 
-	if err = json.Unmarshal(bytes, &varViolationOwnerAssignmentConfig); err == nil {
+	err = json.Unmarshal(data, &varViolationOwnerAssignmentConfig)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ViolationOwnerAssignmentConfig(varViolationOwnerAssignmentConfig)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "assignmentRule")
 		delete(additionalProperties, "ownerRef")
 		o.AdditionalProperties = additionalProperties

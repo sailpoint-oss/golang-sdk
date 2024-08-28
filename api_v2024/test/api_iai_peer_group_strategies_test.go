@@ -19,7 +19,7 @@ import (
 
 func Test_api_v2024_IAIPeerGroupStrategiesAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test IAIPeerGroupStrategiesAPIService GetPeerGroupOutliers", func(t *testing.T) {
@@ -28,7 +28,7 @@ func Test_api_v2024_IAIPeerGroupStrategiesAPIService(t *testing.T) {
 
 		var strategy string
 
-		resp, httpRes, err := apiClient.API_V2024.IAIPeerGroupStrategiesAPI.GetPeerGroupOutliers(context.Background(), strategy).Execute()
+		resp, httpRes, err := apiClient.IAIPeerGroupStrategiesAPI.GetPeerGroupOutliers(context.Background(), strategy).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

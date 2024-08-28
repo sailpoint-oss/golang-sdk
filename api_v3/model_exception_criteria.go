@@ -45,7 +45,7 @@ func NewExceptionCriteriaWithDefaults() *ExceptionCriteria {
 
 // GetCriteriaList returns the CriteriaList field value if set, zero value otherwise.
 func (o *ExceptionCriteria) GetCriteriaList() []ExceptionCriteriaCriteriaListInner {
-	if o == nil || isNil(o.CriteriaList) {
+	if o == nil || IsNil(o.CriteriaList) {
 		var ret []ExceptionCriteriaCriteriaListInner
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *ExceptionCriteria) GetCriteriaList() []ExceptionCriteriaCriteriaListInn
 // GetCriteriaListOk returns a tuple with the CriteriaList field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExceptionCriteria) GetCriteriaListOk() ([]ExceptionCriteriaCriteriaListInner, bool) {
-	if o == nil || isNil(o.CriteriaList) {
+	if o == nil || IsNil(o.CriteriaList) {
 		return nil, false
 	}
 	return o.CriteriaList, true
@@ -63,7 +63,7 @@ func (o *ExceptionCriteria) GetCriteriaListOk() ([]ExceptionCriteriaCriteriaList
 
 // HasCriteriaList returns a boolean if a field has been set.
 func (o *ExceptionCriteria) HasCriteriaList() bool {
-	if o != nil && !isNil(o.CriteriaList) {
+	if o != nil && !IsNil(o.CriteriaList) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o ExceptionCriteria) MarshalJSON() ([]byte, error) {
 
 func (o ExceptionCriteria) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.CriteriaList) {
+	if !IsNil(o.CriteriaList) {
 		toSerialize["criteriaList"] = o.CriteriaList
 	}
 
@@ -96,16 +96,20 @@ func (o ExceptionCriteria) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ExceptionCriteria) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ExceptionCriteria) UnmarshalJSON(data []byte) (err error) {
 	varExceptionCriteria := _ExceptionCriteria{}
 
-	if err = json.Unmarshal(bytes, &varExceptionCriteria); err == nil {
+	err = json.Unmarshal(data, &varExceptionCriteria)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ExceptionCriteria(varExceptionCriteria)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "criteriaList")
 		o.AdditionalProperties = additionalProperties
 	}

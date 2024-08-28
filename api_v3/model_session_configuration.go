@@ -53,7 +53,7 @@ func NewSessionConfigurationWithDefaults() *SessionConfiguration {
 
 // GetMaxIdleTime returns the MaxIdleTime field value if set, zero value otherwise.
 func (o *SessionConfiguration) GetMaxIdleTime() int32 {
-	if o == nil || isNil(o.MaxIdleTime) {
+	if o == nil || IsNil(o.MaxIdleTime) {
 		var ret int32
 		return ret
 	}
@@ -63,7 +63,7 @@ func (o *SessionConfiguration) GetMaxIdleTime() int32 {
 // GetMaxIdleTimeOk returns a tuple with the MaxIdleTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SessionConfiguration) GetMaxIdleTimeOk() (*int32, bool) {
-	if o == nil || isNil(o.MaxIdleTime) {
+	if o == nil || IsNil(o.MaxIdleTime) {
 		return nil, false
 	}
 	return o.MaxIdleTime, true
@@ -71,7 +71,7 @@ func (o *SessionConfiguration) GetMaxIdleTimeOk() (*int32, bool) {
 
 // HasMaxIdleTime returns a boolean if a field has been set.
 func (o *SessionConfiguration) HasMaxIdleTime() bool {
-	if o != nil && !isNil(o.MaxIdleTime) {
+	if o != nil && !IsNil(o.MaxIdleTime) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o *SessionConfiguration) SetMaxIdleTime(v int32) {
 
 // GetRememberMe returns the RememberMe field value if set, zero value otherwise.
 func (o *SessionConfiguration) GetRememberMe() bool {
-	if o == nil || isNil(o.RememberMe) {
+	if o == nil || IsNil(o.RememberMe) {
 		var ret bool
 		return ret
 	}
@@ -95,7 +95,7 @@ func (o *SessionConfiguration) GetRememberMe() bool {
 // GetRememberMeOk returns a tuple with the RememberMe field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SessionConfiguration) GetRememberMeOk() (*bool, bool) {
-	if o == nil || isNil(o.RememberMe) {
+	if o == nil || IsNil(o.RememberMe) {
 		return nil, false
 	}
 	return o.RememberMe, true
@@ -103,7 +103,7 @@ func (o *SessionConfiguration) GetRememberMeOk() (*bool, bool) {
 
 // HasRememberMe returns a boolean if a field has been set.
 func (o *SessionConfiguration) HasRememberMe() bool {
-	if o != nil && !isNil(o.RememberMe) {
+	if o != nil && !IsNil(o.RememberMe) {
 		return true
 	}
 
@@ -117,7 +117,7 @@ func (o *SessionConfiguration) SetRememberMe(v bool) {
 
 // GetMaxSessionTime returns the MaxSessionTime field value if set, zero value otherwise.
 func (o *SessionConfiguration) GetMaxSessionTime() int32 {
-	if o == nil || isNil(o.MaxSessionTime) {
+	if o == nil || IsNil(o.MaxSessionTime) {
 		var ret int32
 		return ret
 	}
@@ -127,7 +127,7 @@ func (o *SessionConfiguration) GetMaxSessionTime() int32 {
 // GetMaxSessionTimeOk returns a tuple with the MaxSessionTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SessionConfiguration) GetMaxSessionTimeOk() (*int32, bool) {
-	if o == nil || isNil(o.MaxSessionTime) {
+	if o == nil || IsNil(o.MaxSessionTime) {
 		return nil, false
 	}
 	return o.MaxSessionTime, true
@@ -135,7 +135,7 @@ func (o *SessionConfiguration) GetMaxSessionTimeOk() (*int32, bool) {
 
 // HasMaxSessionTime returns a boolean if a field has been set.
 func (o *SessionConfiguration) HasMaxSessionTime() bool {
-	if o != nil && !isNil(o.MaxSessionTime) {
+	if o != nil && !IsNil(o.MaxSessionTime) {
 		return true
 	}
 
@@ -157,13 +157,13 @@ func (o SessionConfiguration) MarshalJSON() ([]byte, error) {
 
 func (o SessionConfiguration) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.MaxIdleTime) {
+	if !IsNil(o.MaxIdleTime) {
 		toSerialize["maxIdleTime"] = o.MaxIdleTime
 	}
-	if !isNil(o.RememberMe) {
+	if !IsNil(o.RememberMe) {
 		toSerialize["rememberMe"] = o.RememberMe
 	}
-	if !isNil(o.MaxSessionTime) {
+	if !IsNil(o.MaxSessionTime) {
 		toSerialize["maxSessionTime"] = o.MaxSessionTime
 	}
 
@@ -174,16 +174,20 @@ func (o SessionConfiguration) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SessionConfiguration) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SessionConfiguration) UnmarshalJSON(data []byte) (err error) {
 	varSessionConfiguration := _SessionConfiguration{}
 
-	if err = json.Unmarshal(bytes, &varSessionConfiguration); err == nil {
+	err = json.Unmarshal(data, &varSessionConfiguration)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SessionConfiguration(varSessionConfiguration)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "maxIdleTime")
 		delete(additionalProperties, "rememberMe")
 		delete(additionalProperties, "maxSessionTime")

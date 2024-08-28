@@ -50,7 +50,7 @@ func NewAuditDetailsWithDefaults() *AuditDetails {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *AuditDetails) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -60,7 +60,7 @@ func (o *AuditDetails) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuditDetails) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -68,7 +68,7 @@ func (o *AuditDetails) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *AuditDetails) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -82,7 +82,7 @@ func (o *AuditDetails) SetCreated(v time.Time) {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
 func (o *AuditDetails) GetCreatedBy() Identity1 {
-	if o == nil || isNil(o.CreatedBy) {
+	if o == nil || IsNil(o.CreatedBy) {
 		var ret Identity1
 		return ret
 	}
@@ -92,7 +92,7 @@ func (o *AuditDetails) GetCreatedBy() Identity1 {
 // GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuditDetails) GetCreatedByOk() (*Identity1, bool) {
-	if o == nil || isNil(o.CreatedBy) {
+	if o == nil || IsNil(o.CreatedBy) {
 		return nil, false
 	}
 	return o.CreatedBy, true
@@ -100,7 +100,7 @@ func (o *AuditDetails) GetCreatedByOk() (*Identity1, bool) {
 
 // HasCreatedBy returns a boolean if a field has been set.
 func (o *AuditDetails) HasCreatedBy() bool {
-	if o != nil && !isNil(o.CreatedBy) {
+	if o != nil && !IsNil(o.CreatedBy) {
 		return true
 	}
 
@@ -114,7 +114,7 @@ func (o *AuditDetails) SetCreatedBy(v Identity1) {
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *AuditDetails) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		var ret time.Time
 		return ret
 	}
@@ -124,7 +124,7 @@ func (o *AuditDetails) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuditDetails) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -132,7 +132,7 @@ func (o *AuditDetails) GetModifiedOk() (*time.Time, bool) {
 
 // HasModified returns a boolean if a field has been set.
 func (o *AuditDetails) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -146,7 +146,7 @@ func (o *AuditDetails) SetModified(v time.Time) {
 
 // GetModifiedBy returns the ModifiedBy field value if set, zero value otherwise.
 func (o *AuditDetails) GetModifiedBy() Identity1 {
-	if o == nil || isNil(o.ModifiedBy) {
+	if o == nil || IsNil(o.ModifiedBy) {
 		var ret Identity1
 		return ret
 	}
@@ -156,7 +156,7 @@ func (o *AuditDetails) GetModifiedBy() Identity1 {
 // GetModifiedByOk returns a tuple with the ModifiedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuditDetails) GetModifiedByOk() (*Identity1, bool) {
-	if o == nil || isNil(o.ModifiedBy) {
+	if o == nil || IsNil(o.ModifiedBy) {
 		return nil, false
 	}
 	return o.ModifiedBy, true
@@ -164,7 +164,7 @@ func (o *AuditDetails) GetModifiedByOk() (*Identity1, bool) {
 
 // HasModifiedBy returns a boolean if a field has been set.
 func (o *AuditDetails) HasModifiedBy() bool {
-	if o != nil && !isNil(o.ModifiedBy) {
+	if o != nil && !IsNil(o.ModifiedBy) {
 		return true
 	}
 
@@ -186,16 +186,16 @@ func (o AuditDetails) MarshalJSON() ([]byte, error) {
 
 func (o AuditDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Created) {
+	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
-	if !isNil(o.CreatedBy) {
+	if !IsNil(o.CreatedBy) {
 		toSerialize["createdBy"] = o.CreatedBy
 	}
-	if !isNil(o.Modified) {
+	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
-	if !isNil(o.ModifiedBy) {
+	if !IsNil(o.ModifiedBy) {
 		toSerialize["modifiedBy"] = o.ModifiedBy
 	}
 
@@ -206,16 +206,20 @@ func (o AuditDetails) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AuditDetails) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AuditDetails) UnmarshalJSON(data []byte) (err error) {
 	varAuditDetails := _AuditDetails{}
 
-	if err = json.Unmarshal(bytes, &varAuditDetails); err == nil {
+	err = json.Unmarshal(data, &varAuditDetails)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AuditDetails(varAuditDetails)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "createdBy")
 		delete(additionalProperties, "modified")

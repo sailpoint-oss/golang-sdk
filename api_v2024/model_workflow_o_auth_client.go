@@ -49,7 +49,7 @@ func NewWorkflowOAuthClientWithDefaults() *WorkflowOAuthClient {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *WorkflowOAuthClient) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *WorkflowOAuthClient) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowOAuthClient) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -67,7 +67,7 @@ func (o *WorkflowOAuthClient) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *WorkflowOAuthClient) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *WorkflowOAuthClient) SetId(v string) {
 
 // GetSecret returns the Secret field value if set, zero value otherwise.
 func (o *WorkflowOAuthClient) GetSecret() string {
-	if o == nil || isNil(o.Secret) {
+	if o == nil || IsNil(o.Secret) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *WorkflowOAuthClient) GetSecret() string {
 // GetSecretOk returns a tuple with the Secret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowOAuthClient) GetSecretOk() (*string, bool) {
-	if o == nil || isNil(o.Secret) {
+	if o == nil || IsNil(o.Secret) {
 		return nil, false
 	}
 	return o.Secret, true
@@ -99,7 +99,7 @@ func (o *WorkflowOAuthClient) GetSecretOk() (*string, bool) {
 
 // HasSecret returns a boolean if a field has been set.
 func (o *WorkflowOAuthClient) HasSecret() bool {
-	if o != nil && !isNil(o.Secret) {
+	if o != nil && !IsNil(o.Secret) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *WorkflowOAuthClient) SetSecret(v string) {
 
 // GetUrl returns the Url field value if set, zero value otherwise.
 func (o *WorkflowOAuthClient) GetUrl() string {
-	if o == nil || isNil(o.Url) {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *WorkflowOAuthClient) GetUrl() string {
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WorkflowOAuthClient) GetUrlOk() (*string, bool) {
-	if o == nil || isNil(o.Url) {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
 	return o.Url, true
@@ -131,7 +131,7 @@ func (o *WorkflowOAuthClient) GetUrlOk() (*string, bool) {
 
 // HasUrl returns a boolean if a field has been set.
 func (o *WorkflowOAuthClient) HasUrl() bool {
-	if o != nil && !isNil(o.Url) {
+	if o != nil && !IsNil(o.Url) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o WorkflowOAuthClient) MarshalJSON() ([]byte, error) {
 
 func (o WorkflowOAuthClient) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Secret) {
+	if !IsNil(o.Secret) {
 		toSerialize["secret"] = o.Secret
 	}
-	if !isNil(o.Url) {
+	if !IsNil(o.Url) {
 		toSerialize["url"] = o.Url
 	}
 
@@ -170,16 +170,20 @@ func (o WorkflowOAuthClient) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *WorkflowOAuthClient) UnmarshalJSON(bytes []byte) (err error) {
+func (o *WorkflowOAuthClient) UnmarshalJSON(data []byte) (err error) {
 	varWorkflowOAuthClient := _WorkflowOAuthClient{}
 
-	if err = json.Unmarshal(bytes, &varWorkflowOAuthClient); err == nil {
+	err = json.Unmarshal(data, &varWorkflowOAuthClient)
+
+	if err != nil {
+		return err
+	}
+
 	*o = WorkflowOAuthClient(varWorkflowOAuthClient)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "secret")
 		delete(additionalProperties, "url")

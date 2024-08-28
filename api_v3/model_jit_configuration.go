@@ -53,7 +53,7 @@ func NewJITConfigurationWithDefaults() *JITConfiguration {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *JITConfiguration) GetEnabled() bool {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -63,7 +63,7 @@ func (o *JITConfiguration) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JITConfiguration) GetEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -71,7 +71,7 @@ func (o *JITConfiguration) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *JITConfiguration) HasEnabled() bool {
-	if o != nil && !isNil(o.Enabled) {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o *JITConfiguration) SetEnabled(v bool) {
 
 // GetSourceId returns the SourceId field value if set, zero value otherwise.
 func (o *JITConfiguration) GetSourceId() string {
-	if o == nil || isNil(o.SourceId) {
+	if o == nil || IsNil(o.SourceId) {
 		var ret string
 		return ret
 	}
@@ -95,7 +95,7 @@ func (o *JITConfiguration) GetSourceId() string {
 // GetSourceIdOk returns a tuple with the SourceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JITConfiguration) GetSourceIdOk() (*string, bool) {
-	if o == nil || isNil(o.SourceId) {
+	if o == nil || IsNil(o.SourceId) {
 		return nil, false
 	}
 	return o.SourceId, true
@@ -103,7 +103,7 @@ func (o *JITConfiguration) GetSourceIdOk() (*string, bool) {
 
 // HasSourceId returns a boolean if a field has been set.
 func (o *JITConfiguration) HasSourceId() bool {
-	if o != nil && !isNil(o.SourceId) {
+	if o != nil && !IsNil(o.SourceId) {
 		return true
 	}
 
@@ -117,7 +117,7 @@ func (o *JITConfiguration) SetSourceId(v string) {
 
 // GetSourceAttributeMappings returns the SourceAttributeMappings field value if set, zero value otherwise.
 func (o *JITConfiguration) GetSourceAttributeMappings() map[string]string {
-	if o == nil || isNil(o.SourceAttributeMappings) {
+	if o == nil || IsNil(o.SourceAttributeMappings) {
 		var ret map[string]string
 		return ret
 	}
@@ -127,7 +127,7 @@ func (o *JITConfiguration) GetSourceAttributeMappings() map[string]string {
 // GetSourceAttributeMappingsOk returns a tuple with the SourceAttributeMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JITConfiguration) GetSourceAttributeMappingsOk() (*map[string]string, bool) {
-	if o == nil || isNil(o.SourceAttributeMappings) {
+	if o == nil || IsNil(o.SourceAttributeMappings) {
 		return nil, false
 	}
 	return o.SourceAttributeMappings, true
@@ -135,7 +135,7 @@ func (o *JITConfiguration) GetSourceAttributeMappingsOk() (*map[string]string, b
 
 // HasSourceAttributeMappings returns a boolean if a field has been set.
 func (o *JITConfiguration) HasSourceAttributeMappings() bool {
-	if o != nil && !isNil(o.SourceAttributeMappings) {
+	if o != nil && !IsNil(o.SourceAttributeMappings) {
 		return true
 	}
 
@@ -157,13 +157,13 @@ func (o JITConfiguration) MarshalJSON() ([]byte, error) {
 
 func (o JITConfiguration) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Enabled) {
+	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if !isNil(o.SourceId) {
+	if !IsNil(o.SourceId) {
 		toSerialize["sourceId"] = o.SourceId
 	}
-	if !isNil(o.SourceAttributeMappings) {
+	if !IsNil(o.SourceAttributeMappings) {
 		toSerialize["sourceAttributeMappings"] = o.SourceAttributeMappings
 	}
 
@@ -174,16 +174,20 @@ func (o JITConfiguration) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *JITConfiguration) UnmarshalJSON(bytes []byte) (err error) {
+func (o *JITConfiguration) UnmarshalJSON(data []byte) (err error) {
 	varJITConfiguration := _JITConfiguration{}
 
-	if err = json.Unmarshal(bytes, &varJITConfiguration); err == nil {
+	err = json.Unmarshal(data, &varJITConfiguration)
+
+	if err != nil {
+		return err
+	}
+
 	*o = JITConfiguration(varJITConfiguration)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "enabled")
 		delete(additionalProperties, "sourceId")
 		delete(additionalProperties, "sourceAttributeMappings")

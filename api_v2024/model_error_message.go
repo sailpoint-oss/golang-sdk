@@ -49,7 +49,7 @@ func NewErrorMessageWithDefaults() *ErrorMessage {
 
 // GetLocale returns the Locale field value if set, zero value otherwise.
 func (o *ErrorMessage) GetLocale() string {
-	if o == nil || isNil(o.Locale) {
+	if o == nil || IsNil(o.Locale) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *ErrorMessage) GetLocale() string {
 // GetLocaleOk returns a tuple with the Locale field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ErrorMessage) GetLocaleOk() (*string, bool) {
-	if o == nil || isNil(o.Locale) {
+	if o == nil || IsNil(o.Locale) {
 		return nil, false
 	}
 	return o.Locale, true
@@ -67,7 +67,7 @@ func (o *ErrorMessage) GetLocaleOk() (*string, bool) {
 
 // HasLocale returns a boolean if a field has been set.
 func (o *ErrorMessage) HasLocale() bool {
-	if o != nil && !isNil(o.Locale) {
+	if o != nil && !IsNil(o.Locale) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *ErrorMessage) SetLocale(v string) {
 
 // GetLocaleOrigin returns the LocaleOrigin field value if set, zero value otherwise.
 func (o *ErrorMessage) GetLocaleOrigin() string {
-	if o == nil || isNil(o.LocaleOrigin) {
+	if o == nil || IsNil(o.LocaleOrigin) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *ErrorMessage) GetLocaleOrigin() string {
 // GetLocaleOriginOk returns a tuple with the LocaleOrigin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ErrorMessage) GetLocaleOriginOk() (*string, bool) {
-	if o == nil || isNil(o.LocaleOrigin) {
+	if o == nil || IsNil(o.LocaleOrigin) {
 		return nil, false
 	}
 	return o.LocaleOrigin, true
@@ -99,7 +99,7 @@ func (o *ErrorMessage) GetLocaleOriginOk() (*string, bool) {
 
 // HasLocaleOrigin returns a boolean if a field has been set.
 func (o *ErrorMessage) HasLocaleOrigin() bool {
-	if o != nil && !isNil(o.LocaleOrigin) {
+	if o != nil && !IsNil(o.LocaleOrigin) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *ErrorMessage) SetLocaleOrigin(v string) {
 
 // GetText returns the Text field value if set, zero value otherwise.
 func (o *ErrorMessage) GetText() string {
-	if o == nil || isNil(o.Text) {
+	if o == nil || IsNil(o.Text) {
 		var ret string
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *ErrorMessage) GetText() string {
 // GetTextOk returns a tuple with the Text field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ErrorMessage) GetTextOk() (*string, bool) {
-	if o == nil || isNil(o.Text) {
+	if o == nil || IsNil(o.Text) {
 		return nil, false
 	}
 	return o.Text, true
@@ -131,7 +131,7 @@ func (o *ErrorMessage) GetTextOk() (*string, bool) {
 
 // HasText returns a boolean if a field has been set.
 func (o *ErrorMessage) HasText() bool {
-	if o != nil && !isNil(o.Text) {
+	if o != nil && !IsNil(o.Text) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o ErrorMessage) MarshalJSON() ([]byte, error) {
 
 func (o ErrorMessage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Locale) {
+	if !IsNil(o.Locale) {
 		toSerialize["locale"] = o.Locale
 	}
-	if !isNil(o.LocaleOrigin) {
+	if !IsNil(o.LocaleOrigin) {
 		toSerialize["localeOrigin"] = o.LocaleOrigin
 	}
-	if !isNil(o.Text) {
+	if !IsNil(o.Text) {
 		toSerialize["text"] = o.Text
 	}
 
@@ -170,16 +170,20 @@ func (o ErrorMessage) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ErrorMessage) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ErrorMessage) UnmarshalJSON(data []byte) (err error) {
 	varErrorMessage := _ErrorMessage{}
 
-	if err = json.Unmarshal(bytes, &varErrorMessage); err == nil {
+	err = json.Unmarshal(data, &varErrorMessage)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ErrorMessage(varErrorMessage)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "locale")
 		delete(additionalProperties, "localeOrigin")
 		delete(additionalProperties, "text")

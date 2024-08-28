@@ -19,7 +19,7 @@ import (
 
 func Test_api_beta_ManagedClustersAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test ManagedClustersAPIService GetClientLogConfiguration", func(t *testing.T) {
@@ -28,7 +28,7 @@ func Test_api_beta_ManagedClustersAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.ManagedClustersAPI.GetClientLogConfiguration(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.ManagedClustersAPI.GetClientLogConfiguration(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -42,7 +42,7 @@ func Test_api_beta_ManagedClustersAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.ManagedClustersAPI.GetManagedCluster(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.ManagedClustersAPI.GetManagedCluster(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -54,7 +54,7 @@ func Test_api_beta_ManagedClustersAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_BETA.ManagedClustersAPI.GetManagedClusters(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ManagedClustersAPI.GetManagedClusters(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -68,7 +68,7 @@ func Test_api_beta_ManagedClustersAPIService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.API_BETA.ManagedClustersAPI.PutClientLogConfiguration(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.ManagedClustersAPI.PutClientLogConfiguration(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

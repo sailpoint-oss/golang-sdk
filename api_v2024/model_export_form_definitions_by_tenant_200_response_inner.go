@@ -46,7 +46,7 @@ func NewExportFormDefinitionsByTenant200ResponseInnerWithDefaults() *ExportFormD
 
 // GetObject returns the Object field value if set, zero value otherwise.
 func (o *ExportFormDefinitionsByTenant200ResponseInner) GetObject() FormDefinitionResponse {
-	if o == nil || isNil(o.Object) {
+	if o == nil || IsNil(o.Object) {
 		var ret FormDefinitionResponse
 		return ret
 	}
@@ -56,7 +56,7 @@ func (o *ExportFormDefinitionsByTenant200ResponseInner) GetObject() FormDefiniti
 // GetObjectOk returns a tuple with the Object field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExportFormDefinitionsByTenant200ResponseInner) GetObjectOk() (*FormDefinitionResponse, bool) {
-	if o == nil || isNil(o.Object) {
+	if o == nil || IsNil(o.Object) {
 		return nil, false
 	}
 	return o.Object, true
@@ -64,7 +64,7 @@ func (o *ExportFormDefinitionsByTenant200ResponseInner) GetObjectOk() (*FormDefi
 
 // HasObject returns a boolean if a field has been set.
 func (o *ExportFormDefinitionsByTenant200ResponseInner) HasObject() bool {
-	if o != nil && !isNil(o.Object) {
+	if o != nil && !IsNil(o.Object) {
 		return true
 	}
 
@@ -78,7 +78,7 @@ func (o *ExportFormDefinitionsByTenant200ResponseInner) SetObject(v FormDefiniti
 
 // GetSelf returns the Self field value if set, zero value otherwise.
 func (o *ExportFormDefinitionsByTenant200ResponseInner) GetSelf() string {
-	if o == nil || isNil(o.Self) {
+	if o == nil || IsNil(o.Self) {
 		var ret string
 		return ret
 	}
@@ -88,7 +88,7 @@ func (o *ExportFormDefinitionsByTenant200ResponseInner) GetSelf() string {
 // GetSelfOk returns a tuple with the Self field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExportFormDefinitionsByTenant200ResponseInner) GetSelfOk() (*string, bool) {
-	if o == nil || isNil(o.Self) {
+	if o == nil || IsNil(o.Self) {
 		return nil, false
 	}
 	return o.Self, true
@@ -96,7 +96,7 @@ func (o *ExportFormDefinitionsByTenant200ResponseInner) GetSelfOk() (*string, bo
 
 // HasSelf returns a boolean if a field has been set.
 func (o *ExportFormDefinitionsByTenant200ResponseInner) HasSelf() bool {
-	if o != nil && !isNil(o.Self) {
+	if o != nil && !IsNil(o.Self) {
 		return true
 	}
 
@@ -110,7 +110,7 @@ func (o *ExportFormDefinitionsByTenant200ResponseInner) SetSelf(v string) {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *ExportFormDefinitionsByTenant200ResponseInner) GetVersion() int32 {
-	if o == nil || isNil(o.Version) {
+	if o == nil || IsNil(o.Version) {
 		var ret int32
 		return ret
 	}
@@ -120,7 +120,7 @@ func (o *ExportFormDefinitionsByTenant200ResponseInner) GetVersion() int32 {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExportFormDefinitionsByTenant200ResponseInner) GetVersionOk() (*int32, bool) {
-	if o == nil || isNil(o.Version) {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -128,7 +128,7 @@ func (o *ExportFormDefinitionsByTenant200ResponseInner) GetVersionOk() (*int32, 
 
 // HasVersion returns a boolean if a field has been set.
 func (o *ExportFormDefinitionsByTenant200ResponseInner) HasVersion() bool {
-	if o != nil && !isNil(o.Version) {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -150,13 +150,13 @@ func (o ExportFormDefinitionsByTenant200ResponseInner) MarshalJSON() ([]byte, er
 
 func (o ExportFormDefinitionsByTenant200ResponseInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Object) {
+	if !IsNil(o.Object) {
 		toSerialize["object"] = o.Object
 	}
-	if !isNil(o.Self) {
+	if !IsNil(o.Self) {
 		toSerialize["self"] = o.Self
 	}
-	if !isNil(o.Version) {
+	if !IsNil(o.Version) {
 		toSerialize["version"] = o.Version
 	}
 
@@ -167,16 +167,20 @@ func (o ExportFormDefinitionsByTenant200ResponseInner) ToMap() (map[string]inter
 	return toSerialize, nil
 }
 
-func (o *ExportFormDefinitionsByTenant200ResponseInner) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ExportFormDefinitionsByTenant200ResponseInner) UnmarshalJSON(data []byte) (err error) {
 	varExportFormDefinitionsByTenant200ResponseInner := _ExportFormDefinitionsByTenant200ResponseInner{}
 
-	if err = json.Unmarshal(bytes, &varExportFormDefinitionsByTenant200ResponseInner); err == nil {
+	err = json.Unmarshal(data, &varExportFormDefinitionsByTenant200ResponseInner)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ExportFormDefinitionsByTenant200ResponseInner(varExportFormDefinitionsByTenant200ResponseInner)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "object")
 		delete(additionalProperties, "self")
 		delete(additionalProperties, "version")

@@ -47,7 +47,7 @@ func NewAccessSummaryWithDefaults() *AccessSummary {
 
 // GetAccess returns the Access field value if set, zero value otherwise.
 func (o *AccessSummary) GetAccess() AccessSummaryAccess {
-	if o == nil || isNil(o.Access) {
+	if o == nil || IsNil(o.Access) {
 		var ret AccessSummaryAccess
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *AccessSummary) GetAccess() AccessSummaryAccess {
 // GetAccessOk returns a tuple with the Access field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessSummary) GetAccessOk() (*AccessSummaryAccess, bool) {
-	if o == nil || isNil(o.Access) {
+	if o == nil || IsNil(o.Access) {
 		return nil, false
 	}
 	return o.Access, true
@@ -65,7 +65,7 @@ func (o *AccessSummary) GetAccessOk() (*AccessSummaryAccess, bool) {
 
 // HasAccess returns a boolean if a field has been set.
 func (o *AccessSummary) HasAccess() bool {
-	if o != nil && !isNil(o.Access) {
+	if o != nil && !IsNil(o.Access) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *AccessSummary) SetAccess(v AccessSummaryAccess) {
 
 // GetEntitlement returns the Entitlement field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessSummary) GetEntitlement() ReviewableEntitlement {
-	if o == nil || isNil(o.Entitlement.Get()) {
+	if o == nil || IsNil(o.Entitlement.Get()) {
 		var ret ReviewableEntitlement
 		return ret
 	}
@@ -121,7 +121,7 @@ func (o *AccessSummary) UnsetEntitlement() {
 
 // GetAccessProfile returns the AccessProfile field value if set, zero value otherwise.
 func (o *AccessSummary) GetAccessProfile() ReviewableAccessProfile {
-	if o == nil || isNil(o.AccessProfile) {
+	if o == nil || IsNil(o.AccessProfile) {
 		var ret ReviewableAccessProfile
 		return ret
 	}
@@ -131,7 +131,7 @@ func (o *AccessSummary) GetAccessProfile() ReviewableAccessProfile {
 // GetAccessProfileOk returns a tuple with the AccessProfile field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessSummary) GetAccessProfileOk() (*ReviewableAccessProfile, bool) {
-	if o == nil || isNil(o.AccessProfile) {
+	if o == nil || IsNil(o.AccessProfile) {
 		return nil, false
 	}
 	return o.AccessProfile, true
@@ -139,7 +139,7 @@ func (o *AccessSummary) GetAccessProfileOk() (*ReviewableAccessProfile, bool) {
 
 // HasAccessProfile returns a boolean if a field has been set.
 func (o *AccessSummary) HasAccessProfile() bool {
-	if o != nil && !isNil(o.AccessProfile) {
+	if o != nil && !IsNil(o.AccessProfile) {
 		return true
 	}
 
@@ -153,7 +153,7 @@ func (o *AccessSummary) SetAccessProfile(v ReviewableAccessProfile) {
 
 // GetRole returns the Role field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessSummary) GetRole() ReviewableRole {
-	if o == nil || isNil(o.Role.Get()) {
+	if o == nil || IsNil(o.Role.Get()) {
 		var ret ReviewableRole
 		return ret
 	}
@@ -203,13 +203,13 @@ func (o AccessSummary) MarshalJSON() ([]byte, error) {
 
 func (o AccessSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Access) {
+	if !IsNil(o.Access) {
 		toSerialize["access"] = o.Access
 	}
 	if o.Entitlement.IsSet() {
 		toSerialize["entitlement"] = o.Entitlement.Get()
 	}
-	if !isNil(o.AccessProfile) {
+	if !IsNil(o.AccessProfile) {
 		toSerialize["accessProfile"] = o.AccessProfile
 	}
 	if o.Role.IsSet() {
@@ -223,16 +223,20 @@ func (o AccessSummary) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccessSummary) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AccessSummary) UnmarshalJSON(data []byte) (err error) {
 	varAccessSummary := _AccessSummary{}
 
-	if err = json.Unmarshal(bytes, &varAccessSummary); err == nil {
+	err = json.Unmarshal(data, &varAccessSummary)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessSummary(varAccessSummary)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "access")
 		delete(additionalProperties, "entitlement")
 		delete(additionalProperties, "accessProfile")

@@ -48,7 +48,7 @@ func NewBaseReferenceDtoWithDefaults() *BaseReferenceDto {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *BaseReferenceDto) GetType() DtoType {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret DtoType
 		return ret
 	}
@@ -58,7 +58,7 @@ func (o *BaseReferenceDto) GetType() DtoType {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BaseReferenceDto) GetTypeOk() (*DtoType, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -66,7 +66,7 @@ func (o *BaseReferenceDto) GetTypeOk() (*DtoType, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *BaseReferenceDto) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -80,7 +80,7 @@ func (o *BaseReferenceDto) SetType(v DtoType) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *BaseReferenceDto) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -90,7 +90,7 @@ func (o *BaseReferenceDto) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BaseReferenceDto) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -98,7 +98,7 @@ func (o *BaseReferenceDto) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *BaseReferenceDto) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -112,7 +112,7 @@ func (o *BaseReferenceDto) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *BaseReferenceDto) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -122,7 +122,7 @@ func (o *BaseReferenceDto) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BaseReferenceDto) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -130,7 +130,7 @@ func (o *BaseReferenceDto) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *BaseReferenceDto) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -152,13 +152,13 @@ func (o BaseReferenceDto) MarshalJSON() ([]byte, error) {
 
 func (o BaseReferenceDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 
@@ -169,16 +169,20 @@ func (o BaseReferenceDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *BaseReferenceDto) UnmarshalJSON(bytes []byte) (err error) {
+func (o *BaseReferenceDto) UnmarshalJSON(data []byte) (err error) {
 	varBaseReferenceDto := _BaseReferenceDto{}
 
-	if err = json.Unmarshal(bytes, &varBaseReferenceDto); err == nil {
+	err = json.Unmarshal(data, &varBaseReferenceDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = BaseReferenceDto(varBaseReferenceDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")

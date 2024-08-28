@@ -45,7 +45,7 @@ func NewBearerTokenAuthConfigWithDefaults() *BearerTokenAuthConfig {
 
 // GetBearerToken returns the BearerToken field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BearerTokenAuthConfig) GetBearerToken() string {
-	if o == nil || isNil(o.BearerToken.Get()) {
+	if o == nil || IsNil(o.BearerToken.Get()) {
 		var ret string
 		return ret
 	}
@@ -106,16 +106,20 @@ func (o BearerTokenAuthConfig) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *BearerTokenAuthConfig) UnmarshalJSON(bytes []byte) (err error) {
+func (o *BearerTokenAuthConfig) UnmarshalJSON(data []byte) (err error) {
 	varBearerTokenAuthConfig := _BearerTokenAuthConfig{}
 
-	if err = json.Unmarshal(bytes, &varBearerTokenAuthConfig); err == nil {
+	err = json.Unmarshal(data, &varBearerTokenAuthConfig)
+
+	if err != nil {
+		return err
+	}
+
 	*o = BearerTokenAuthConfig(varBearerTokenAuthConfig)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "bearerToken")
 		o.AdditionalProperties = additionalProperties
 	}

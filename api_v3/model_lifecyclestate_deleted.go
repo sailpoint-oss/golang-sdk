@@ -49,7 +49,7 @@ func NewLifecyclestateDeletedWithDefaults() *LifecyclestateDeleted {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *LifecyclestateDeleted) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *LifecyclestateDeleted) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LifecyclestateDeleted) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -67,7 +67,7 @@ func (o *LifecyclestateDeleted) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *LifecyclestateDeleted) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *LifecyclestateDeleted) SetType(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *LifecyclestateDeleted) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *LifecyclestateDeleted) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LifecyclestateDeleted) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -99,7 +99,7 @@ func (o *LifecyclestateDeleted) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *LifecyclestateDeleted) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *LifecyclestateDeleted) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *LifecyclestateDeleted) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *LifecyclestateDeleted) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LifecyclestateDeleted) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -131,7 +131,7 @@ func (o *LifecyclestateDeleted) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *LifecyclestateDeleted) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o LifecyclestateDeleted) MarshalJSON() ([]byte, error) {
 
 func (o LifecyclestateDeleted) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 
@@ -170,16 +170,20 @@ func (o LifecyclestateDeleted) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *LifecyclestateDeleted) UnmarshalJSON(bytes []byte) (err error) {
+func (o *LifecyclestateDeleted) UnmarshalJSON(data []byte) (err error) {
 	varLifecyclestateDeleted := _LifecyclestateDeleted{}
 
-	if err = json.Unmarshal(bytes, &varLifecyclestateDeleted); err == nil {
+	err = json.Unmarshal(data, &varLifecyclestateDeleted)
+
+	if err != nil {
+		return err
+	}
+
 	*o = LifecyclestateDeleted(varLifecyclestateDeleted)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")

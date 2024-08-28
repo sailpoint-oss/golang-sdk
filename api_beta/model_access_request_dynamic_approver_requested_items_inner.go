@@ -108,7 +108,7 @@ func (o *AccessRequestDynamicApproverRequestedItemsInner) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessRequestDynamicApproverRequestedItemsInner) GetDescription() string {
-	if o == nil || isNil(o.Description.Get()) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
@@ -198,7 +198,7 @@ func (o *AccessRequestDynamicApproverRequestedItemsInner) SetOperation(v map[str
 
 // GetComment returns the Comment field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessRequestDynamicApproverRequestedItemsInner) GetComment() string {
-	if o == nil || isNil(o.Comment.Get()) {
+	if o == nil || IsNil(o.Comment.Get()) {
 		var ret string
 		return ret
 	}
@@ -266,8 +266,8 @@ func (o AccessRequestDynamicApproverRequestedItemsInner) ToMap() (map[string]int
 	return toSerialize, nil
 }
 
-func (o *AccessRequestDynamicApproverRequestedItemsInner) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *AccessRequestDynamicApproverRequestedItemsInner) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -279,7 +279,7 @@ func (o *AccessRequestDynamicApproverRequestedItemsInner) UnmarshalJSON(bytes []
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -293,13 +293,17 @@ func (o *AccessRequestDynamicApproverRequestedItemsInner) UnmarshalJSON(bytes []
 
 	varAccessRequestDynamicApproverRequestedItemsInner := _AccessRequestDynamicApproverRequestedItemsInner{}
 
-	if err = json.Unmarshal(bytes, &varAccessRequestDynamicApproverRequestedItemsInner); err == nil {
+	err = json.Unmarshal(data, &varAccessRequestDynamicApproverRequestedItemsInner)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessRequestDynamicApproverRequestedItemsInner(varAccessRequestDynamicApproverRequestedItemsInner)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")

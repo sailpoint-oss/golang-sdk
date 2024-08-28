@@ -51,7 +51,7 @@ func NewSpDetailsWithDefaults() *SpDetails {
 
 // GetRole returns the Role field value if set, zero value otherwise.
 func (o *SpDetails) GetRole() string {
-	if o == nil || isNil(o.Role) {
+	if o == nil || IsNil(o.Role) {
 		var ret string
 		return ret
 	}
@@ -61,7 +61,7 @@ func (o *SpDetails) GetRole() string {
 // GetRoleOk returns a tuple with the Role field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpDetails) GetRoleOk() (*string, bool) {
-	if o == nil || isNil(o.Role) {
+	if o == nil || IsNil(o.Role) {
 		return nil, false
 	}
 	return o.Role, true
@@ -69,7 +69,7 @@ func (o *SpDetails) GetRoleOk() (*string, bool) {
 
 // HasRole returns a boolean if a field has been set.
 func (o *SpDetails) HasRole() bool {
-	if o != nil && !isNil(o.Role) {
+	if o != nil && !IsNil(o.Role) {
 		return true
 	}
 
@@ -83,7 +83,7 @@ func (o *SpDetails) SetRole(v string) {
 
 // GetEntityId returns the EntityId field value if set, zero value otherwise.
 func (o *SpDetails) GetEntityId() string {
-	if o == nil || isNil(o.EntityId) {
+	if o == nil || IsNil(o.EntityId) {
 		var ret string
 		return ret
 	}
@@ -93,7 +93,7 @@ func (o *SpDetails) GetEntityId() string {
 // GetEntityIdOk returns a tuple with the EntityId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpDetails) GetEntityIdOk() (*string, bool) {
-	if o == nil || isNil(o.EntityId) {
+	if o == nil || IsNil(o.EntityId) {
 		return nil, false
 	}
 	return o.EntityId, true
@@ -101,7 +101,7 @@ func (o *SpDetails) GetEntityIdOk() (*string, bool) {
 
 // HasEntityId returns a boolean if a field has been set.
 func (o *SpDetails) HasEntityId() bool {
-	if o != nil && !isNil(o.EntityId) {
+	if o != nil && !IsNil(o.EntityId) {
 		return true
 	}
 
@@ -115,7 +115,7 @@ func (o *SpDetails) SetEntityId(v string) {
 
 // GetAlias returns the Alias field value if set, zero value otherwise.
 func (o *SpDetails) GetAlias() string {
-	if o == nil || isNil(o.Alias) {
+	if o == nil || IsNil(o.Alias) {
 		var ret string
 		return ret
 	}
@@ -125,7 +125,7 @@ func (o *SpDetails) GetAlias() string {
 // GetAliasOk returns a tuple with the Alias field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpDetails) GetAliasOk() (*string, bool) {
-	if o == nil || isNil(o.Alias) {
+	if o == nil || IsNil(o.Alias) {
 		return nil, false
 	}
 	return o.Alias, true
@@ -133,7 +133,7 @@ func (o *SpDetails) GetAliasOk() (*string, bool) {
 
 // HasAlias returns a boolean if a field has been set.
 func (o *SpDetails) HasAlias() bool {
-	if o != nil && !isNil(o.Alias) {
+	if o != nil && !IsNil(o.Alias) {
 		return true
 	}
 
@@ -147,7 +147,7 @@ func (o *SpDetails) SetAlias(v string) {
 
 // GetCallbackUrl returns the CallbackUrl field value if set, zero value otherwise.
 func (o *SpDetails) GetCallbackUrl() string {
-	if o == nil || isNil(o.CallbackUrl) {
+	if o == nil || IsNil(o.CallbackUrl) {
 		var ret string
 		return ret
 	}
@@ -157,7 +157,7 @@ func (o *SpDetails) GetCallbackUrl() string {
 // GetCallbackUrlOk returns a tuple with the CallbackUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpDetails) GetCallbackUrlOk() (*string, bool) {
-	if o == nil || isNil(o.CallbackUrl) {
+	if o == nil || IsNil(o.CallbackUrl) {
 		return nil, false
 	}
 	return o.CallbackUrl, true
@@ -165,7 +165,7 @@ func (o *SpDetails) GetCallbackUrlOk() (*string, bool) {
 
 // HasCallbackUrl returns a boolean if a field has been set.
 func (o *SpDetails) HasCallbackUrl() bool {
-	if o != nil && !isNil(o.CallbackUrl) {
+	if o != nil && !IsNil(o.CallbackUrl) {
 		return true
 	}
 
@@ -187,16 +187,16 @@ func (o SpDetails) MarshalJSON() ([]byte, error) {
 
 func (o SpDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Role) {
+	if !IsNil(o.Role) {
 		toSerialize["role"] = o.Role
 	}
-	if !isNil(o.EntityId) {
+	if !IsNil(o.EntityId) {
 		toSerialize["entityId"] = o.EntityId
 	}
-	if !isNil(o.Alias) {
+	if !IsNil(o.Alias) {
 		toSerialize["alias"] = o.Alias
 	}
-	if !isNil(o.CallbackUrl) {
+	if !IsNil(o.CallbackUrl) {
 		toSerialize["callbackUrl"] = o.CallbackUrl
 	}
 
@@ -207,16 +207,20 @@ func (o SpDetails) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SpDetails) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SpDetails) UnmarshalJSON(data []byte) (err error) {
 	varSpDetails := _SpDetails{}
 
-	if err = json.Unmarshal(bytes, &varSpDetails); err == nil {
+	err = json.Unmarshal(data, &varSpDetails)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SpDetails(varSpDetails)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "role")
 		delete(additionalProperties, "entityId")
 		delete(additionalProperties, "alias")

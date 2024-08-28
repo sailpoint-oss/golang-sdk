@@ -56,7 +56,7 @@ func NewProvisioningConfigWithDefaults() *ProvisioningConfig {
 
 // GetUniversalManager returns the UniversalManager field value if set, zero value otherwise.
 func (o *ProvisioningConfig) GetUniversalManager() bool {
-	if o == nil || isNil(o.UniversalManager) {
+	if o == nil || IsNil(o.UniversalManager) {
 		var ret bool
 		return ret
 	}
@@ -66,7 +66,7 @@ func (o *ProvisioningConfig) GetUniversalManager() bool {
 // GetUniversalManagerOk returns a tuple with the UniversalManager field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProvisioningConfig) GetUniversalManagerOk() (*bool, bool) {
-	if o == nil || isNil(o.UniversalManager) {
+	if o == nil || IsNil(o.UniversalManager) {
 		return nil, false
 	}
 	return o.UniversalManager, true
@@ -74,7 +74,7 @@ func (o *ProvisioningConfig) GetUniversalManagerOk() (*bool, bool) {
 
 // HasUniversalManager returns a boolean if a field has been set.
 func (o *ProvisioningConfig) HasUniversalManager() bool {
-	if o != nil && !isNil(o.UniversalManager) {
+	if o != nil && !IsNil(o.UniversalManager) {
 		return true
 	}
 
@@ -88,7 +88,7 @@ func (o *ProvisioningConfig) SetUniversalManager(v bool) {
 
 // GetManagedResourceRefs returns the ManagedResourceRefs field value if set, zero value otherwise.
 func (o *ProvisioningConfig) GetManagedResourceRefs() []ServiceDeskSource {
-	if o == nil || isNil(o.ManagedResourceRefs) {
+	if o == nil || IsNil(o.ManagedResourceRefs) {
 		var ret []ServiceDeskSource
 		return ret
 	}
@@ -98,7 +98,7 @@ func (o *ProvisioningConfig) GetManagedResourceRefs() []ServiceDeskSource {
 // GetManagedResourceRefsOk returns a tuple with the ManagedResourceRefs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProvisioningConfig) GetManagedResourceRefsOk() ([]ServiceDeskSource, bool) {
-	if o == nil || isNil(o.ManagedResourceRefs) {
+	if o == nil || IsNil(o.ManagedResourceRefs) {
 		return nil, false
 	}
 	return o.ManagedResourceRefs, true
@@ -106,7 +106,7 @@ func (o *ProvisioningConfig) GetManagedResourceRefsOk() ([]ServiceDeskSource, bo
 
 // HasManagedResourceRefs returns a boolean if a field has been set.
 func (o *ProvisioningConfig) HasManagedResourceRefs() bool {
-	if o != nil && !isNil(o.ManagedResourceRefs) {
+	if o != nil && !IsNil(o.ManagedResourceRefs) {
 		return true
 	}
 
@@ -120,7 +120,7 @@ func (o *ProvisioningConfig) SetManagedResourceRefs(v []ServiceDeskSource) {
 
 // GetPlanInitializerScript returns the PlanInitializerScript field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProvisioningConfig) GetPlanInitializerScript() ProvisioningConfigPlanInitializerScript {
-	if o == nil || isNil(o.PlanInitializerScript.Get()) {
+	if o == nil || IsNil(o.PlanInitializerScript.Get()) {
 		var ret ProvisioningConfigPlanInitializerScript
 		return ret
 	}
@@ -162,7 +162,7 @@ func (o *ProvisioningConfig) UnsetPlanInitializerScript() {
 
 // GetNoProvisioningRequests returns the NoProvisioningRequests field value if set, zero value otherwise.
 func (o *ProvisioningConfig) GetNoProvisioningRequests() bool {
-	if o == nil || isNil(o.NoProvisioningRequests) {
+	if o == nil || IsNil(o.NoProvisioningRequests) {
 		var ret bool
 		return ret
 	}
@@ -172,7 +172,7 @@ func (o *ProvisioningConfig) GetNoProvisioningRequests() bool {
 // GetNoProvisioningRequestsOk returns a tuple with the NoProvisioningRequests field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProvisioningConfig) GetNoProvisioningRequestsOk() (*bool, bool) {
-	if o == nil || isNil(o.NoProvisioningRequests) {
+	if o == nil || IsNil(o.NoProvisioningRequests) {
 		return nil, false
 	}
 	return o.NoProvisioningRequests, true
@@ -180,7 +180,7 @@ func (o *ProvisioningConfig) GetNoProvisioningRequestsOk() (*bool, bool) {
 
 // HasNoProvisioningRequests returns a boolean if a field has been set.
 func (o *ProvisioningConfig) HasNoProvisioningRequests() bool {
-	if o != nil && !isNil(o.NoProvisioningRequests) {
+	if o != nil && !IsNil(o.NoProvisioningRequests) {
 		return true
 	}
 
@@ -194,7 +194,7 @@ func (o *ProvisioningConfig) SetNoProvisioningRequests(v bool) {
 
 // GetProvisioningRequestExpiration returns the ProvisioningRequestExpiration field value if set, zero value otherwise.
 func (o *ProvisioningConfig) GetProvisioningRequestExpiration() int32 {
-	if o == nil || isNil(o.ProvisioningRequestExpiration) {
+	if o == nil || IsNil(o.ProvisioningRequestExpiration) {
 		var ret int32
 		return ret
 	}
@@ -204,7 +204,7 @@ func (o *ProvisioningConfig) GetProvisioningRequestExpiration() int32 {
 // GetProvisioningRequestExpirationOk returns a tuple with the ProvisioningRequestExpiration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProvisioningConfig) GetProvisioningRequestExpirationOk() (*int32, bool) {
-	if o == nil || isNil(o.ProvisioningRequestExpiration) {
+	if o == nil || IsNil(o.ProvisioningRequestExpiration) {
 		return nil, false
 	}
 	return o.ProvisioningRequestExpiration, true
@@ -212,7 +212,7 @@ func (o *ProvisioningConfig) GetProvisioningRequestExpirationOk() (*int32, bool)
 
 // HasProvisioningRequestExpiration returns a boolean if a field has been set.
 func (o *ProvisioningConfig) HasProvisioningRequestExpiration() bool {
-	if o != nil && !isNil(o.ProvisioningRequestExpiration) {
+	if o != nil && !IsNil(o.ProvisioningRequestExpiration) {
 		return true
 	}
 
@@ -234,17 +234,19 @@ func (o ProvisioningConfig) MarshalJSON() ([]byte, error) {
 
 func (o ProvisioningConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: universalManager is readOnly
-	if !isNil(o.ManagedResourceRefs) {
+	if !IsNil(o.UniversalManager) {
+		toSerialize["universalManager"] = o.UniversalManager
+	}
+	if !IsNil(o.ManagedResourceRefs) {
 		toSerialize["managedResourceRefs"] = o.ManagedResourceRefs
 	}
 	if o.PlanInitializerScript.IsSet() {
 		toSerialize["planInitializerScript"] = o.PlanInitializerScript.Get()
 	}
-	if !isNil(o.NoProvisioningRequests) {
+	if !IsNil(o.NoProvisioningRequests) {
 		toSerialize["noProvisioningRequests"] = o.NoProvisioningRequests
 	}
-	if !isNil(o.ProvisioningRequestExpiration) {
+	if !IsNil(o.ProvisioningRequestExpiration) {
 		toSerialize["provisioningRequestExpiration"] = o.ProvisioningRequestExpiration
 	}
 
@@ -255,16 +257,20 @@ func (o ProvisioningConfig) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ProvisioningConfig) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ProvisioningConfig) UnmarshalJSON(data []byte) (err error) {
 	varProvisioningConfig := _ProvisioningConfig{}
 
-	if err = json.Unmarshal(bytes, &varProvisioningConfig); err == nil {
+	err = json.Unmarshal(data, &varProvisioningConfig)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ProvisioningConfig(varProvisioningConfig)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "universalManager")
 		delete(additionalProperties, "managedResourceRefs")
 		delete(additionalProperties, "planInitializerScript")

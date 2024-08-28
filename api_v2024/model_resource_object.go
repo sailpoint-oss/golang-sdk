@@ -69,7 +69,7 @@ func NewResourceObjectWithDefaults() *ResourceObject {
 
 // GetInstance returns the Instance field value if set, zero value otherwise.
 func (o *ResourceObject) GetInstance() string {
-	if o == nil || isNil(o.Instance) {
+	if o == nil || IsNil(o.Instance) {
 		var ret string
 		return ret
 	}
@@ -79,7 +79,7 @@ func (o *ResourceObject) GetInstance() string {
 // GetInstanceOk returns a tuple with the Instance field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceObject) GetInstanceOk() (*string, bool) {
-	if o == nil || isNil(o.Instance) {
+	if o == nil || IsNil(o.Instance) {
 		return nil, false
 	}
 	return o.Instance, true
@@ -87,7 +87,7 @@ func (o *ResourceObject) GetInstanceOk() (*string, bool) {
 
 // HasInstance returns a boolean if a field has been set.
 func (o *ResourceObject) HasInstance() bool {
-	if o != nil && !isNil(o.Instance) {
+	if o != nil && !IsNil(o.Instance) {
 		return true
 	}
 
@@ -101,7 +101,7 @@ func (o *ResourceObject) SetInstance(v string) {
 
 // GetIdentity returns the Identity field value if set, zero value otherwise.
 func (o *ResourceObject) GetIdentity() string {
-	if o == nil || isNil(o.Identity) {
+	if o == nil || IsNil(o.Identity) {
 		var ret string
 		return ret
 	}
@@ -111,7 +111,7 @@ func (o *ResourceObject) GetIdentity() string {
 // GetIdentityOk returns a tuple with the Identity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceObject) GetIdentityOk() (*string, bool) {
-	if o == nil || isNil(o.Identity) {
+	if o == nil || IsNil(o.Identity) {
 		return nil, false
 	}
 	return o.Identity, true
@@ -119,7 +119,7 @@ func (o *ResourceObject) GetIdentityOk() (*string, bool) {
 
 // HasIdentity returns a boolean if a field has been set.
 func (o *ResourceObject) HasIdentity() bool {
-	if o != nil && !isNil(o.Identity) {
+	if o != nil && !IsNil(o.Identity) {
 		return true
 	}
 
@@ -133,7 +133,7 @@ func (o *ResourceObject) SetIdentity(v string) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise.
 func (o *ResourceObject) GetUuid() string {
-	if o == nil || isNil(o.Uuid) {
+	if o == nil || IsNil(o.Uuid) {
 		var ret string
 		return ret
 	}
@@ -143,7 +143,7 @@ func (o *ResourceObject) GetUuid() string {
 // GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceObject) GetUuidOk() (*string, bool) {
-	if o == nil || isNil(o.Uuid) {
+	if o == nil || IsNil(o.Uuid) {
 		return nil, false
 	}
 	return o.Uuid, true
@@ -151,7 +151,7 @@ func (o *ResourceObject) GetUuidOk() (*string, bool) {
 
 // HasUuid returns a boolean if a field has been set.
 func (o *ResourceObject) HasUuid() bool {
-	if o != nil && !isNil(o.Uuid) {
+	if o != nil && !IsNil(o.Uuid) {
 		return true
 	}
 
@@ -165,7 +165,7 @@ func (o *ResourceObject) SetUuid(v string) {
 
 // GetPreviousIdentity returns the PreviousIdentity field value if set, zero value otherwise.
 func (o *ResourceObject) GetPreviousIdentity() string {
-	if o == nil || isNil(o.PreviousIdentity) {
+	if o == nil || IsNil(o.PreviousIdentity) {
 		var ret string
 		return ret
 	}
@@ -175,7 +175,7 @@ func (o *ResourceObject) GetPreviousIdentity() string {
 // GetPreviousIdentityOk returns a tuple with the PreviousIdentity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceObject) GetPreviousIdentityOk() (*string, bool) {
-	if o == nil || isNil(o.PreviousIdentity) {
+	if o == nil || IsNil(o.PreviousIdentity) {
 		return nil, false
 	}
 	return o.PreviousIdentity, true
@@ -183,7 +183,7 @@ func (o *ResourceObject) GetPreviousIdentityOk() (*string, bool) {
 
 // HasPreviousIdentity returns a boolean if a field has been set.
 func (o *ResourceObject) HasPreviousIdentity() bool {
-	if o != nil && !isNil(o.PreviousIdentity) {
+	if o != nil && !IsNil(o.PreviousIdentity) {
 		return true
 	}
 
@@ -197,7 +197,7 @@ func (o *ResourceObject) SetPreviousIdentity(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ResourceObject) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -207,7 +207,7 @@ func (o *ResourceObject) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceObject) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -215,7 +215,7 @@ func (o *ResourceObject) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ResourceObject) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -229,7 +229,7 @@ func (o *ResourceObject) SetName(v string) {
 
 // GetObjectType returns the ObjectType field value if set, zero value otherwise.
 func (o *ResourceObject) GetObjectType() string {
-	if o == nil || isNil(o.ObjectType) {
+	if o == nil || IsNil(o.ObjectType) {
 		var ret string
 		return ret
 	}
@@ -239,7 +239,7 @@ func (o *ResourceObject) GetObjectType() string {
 // GetObjectTypeOk returns a tuple with the ObjectType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceObject) GetObjectTypeOk() (*string, bool) {
-	if o == nil || isNil(o.ObjectType) {
+	if o == nil || IsNil(o.ObjectType) {
 		return nil, false
 	}
 	return o.ObjectType, true
@@ -247,7 +247,7 @@ func (o *ResourceObject) GetObjectTypeOk() (*string, bool) {
 
 // HasObjectType returns a boolean if a field has been set.
 func (o *ResourceObject) HasObjectType() bool {
-	if o != nil && !isNil(o.ObjectType) {
+	if o != nil && !IsNil(o.ObjectType) {
 		return true
 	}
 
@@ -261,7 +261,7 @@ func (o *ResourceObject) SetObjectType(v string) {
 
 // GetIncomplete returns the Incomplete field value if set, zero value otherwise.
 func (o *ResourceObject) GetIncomplete() bool {
-	if o == nil || isNil(o.Incomplete) {
+	if o == nil || IsNil(o.Incomplete) {
 		var ret bool
 		return ret
 	}
@@ -271,7 +271,7 @@ func (o *ResourceObject) GetIncomplete() bool {
 // GetIncompleteOk returns a tuple with the Incomplete field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceObject) GetIncompleteOk() (*bool, bool) {
-	if o == nil || isNil(o.Incomplete) {
+	if o == nil || IsNil(o.Incomplete) {
 		return nil, false
 	}
 	return o.Incomplete, true
@@ -279,7 +279,7 @@ func (o *ResourceObject) GetIncompleteOk() (*bool, bool) {
 
 // HasIncomplete returns a boolean if a field has been set.
 func (o *ResourceObject) HasIncomplete() bool {
-	if o != nil && !isNil(o.Incomplete) {
+	if o != nil && !IsNil(o.Incomplete) {
 		return true
 	}
 
@@ -293,7 +293,7 @@ func (o *ResourceObject) SetIncomplete(v bool) {
 
 // GetIncremental returns the Incremental field value if set, zero value otherwise.
 func (o *ResourceObject) GetIncremental() bool {
-	if o == nil || isNil(o.Incremental) {
+	if o == nil || IsNil(o.Incremental) {
 		var ret bool
 		return ret
 	}
@@ -303,7 +303,7 @@ func (o *ResourceObject) GetIncremental() bool {
 // GetIncrementalOk returns a tuple with the Incremental field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceObject) GetIncrementalOk() (*bool, bool) {
-	if o == nil || isNil(o.Incremental) {
+	if o == nil || IsNil(o.Incremental) {
 		return nil, false
 	}
 	return o.Incremental, true
@@ -311,7 +311,7 @@ func (o *ResourceObject) GetIncrementalOk() (*bool, bool) {
 
 // HasIncremental returns a boolean if a field has been set.
 func (o *ResourceObject) HasIncremental() bool {
-	if o != nil && !isNil(o.Incremental) {
+	if o != nil && !IsNil(o.Incremental) {
 		return true
 	}
 
@@ -325,7 +325,7 @@ func (o *ResourceObject) SetIncremental(v bool) {
 
 // GetDelete returns the Delete field value if set, zero value otherwise.
 func (o *ResourceObject) GetDelete() bool {
-	if o == nil || isNil(o.Delete) {
+	if o == nil || IsNil(o.Delete) {
 		var ret bool
 		return ret
 	}
@@ -335,7 +335,7 @@ func (o *ResourceObject) GetDelete() bool {
 // GetDeleteOk returns a tuple with the Delete field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceObject) GetDeleteOk() (*bool, bool) {
-	if o == nil || isNil(o.Delete) {
+	if o == nil || IsNil(o.Delete) {
 		return nil, false
 	}
 	return o.Delete, true
@@ -343,7 +343,7 @@ func (o *ResourceObject) GetDeleteOk() (*bool, bool) {
 
 // HasDelete returns a boolean if a field has been set.
 func (o *ResourceObject) HasDelete() bool {
-	if o != nil && !isNil(o.Delete) {
+	if o != nil && !IsNil(o.Delete) {
 		return true
 	}
 
@@ -357,7 +357,7 @@ func (o *ResourceObject) SetDelete(v bool) {
 
 // GetRemove returns the Remove field value if set, zero value otherwise.
 func (o *ResourceObject) GetRemove() bool {
-	if o == nil || isNil(o.Remove) {
+	if o == nil || IsNil(o.Remove) {
 		var ret bool
 		return ret
 	}
@@ -367,7 +367,7 @@ func (o *ResourceObject) GetRemove() bool {
 // GetRemoveOk returns a tuple with the Remove field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceObject) GetRemoveOk() (*bool, bool) {
-	if o == nil || isNil(o.Remove) {
+	if o == nil || IsNil(o.Remove) {
 		return nil, false
 	}
 	return o.Remove, true
@@ -375,7 +375,7 @@ func (o *ResourceObject) GetRemoveOk() (*bool, bool) {
 
 // HasRemove returns a boolean if a field has been set.
 func (o *ResourceObject) HasRemove() bool {
-	if o != nil && !isNil(o.Remove) {
+	if o != nil && !IsNil(o.Remove) {
 		return true
 	}
 
@@ -389,7 +389,7 @@ func (o *ResourceObject) SetRemove(v bool) {
 
 // GetMissing returns the Missing field value if set, zero value otherwise.
 func (o *ResourceObject) GetMissing() []string {
-	if o == nil || isNil(o.Missing) {
+	if o == nil || IsNil(o.Missing) {
 		var ret []string
 		return ret
 	}
@@ -399,7 +399,7 @@ func (o *ResourceObject) GetMissing() []string {
 // GetMissingOk returns a tuple with the Missing field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceObject) GetMissingOk() ([]string, bool) {
-	if o == nil || isNil(o.Missing) {
+	if o == nil || IsNil(o.Missing) {
 		return nil, false
 	}
 	return o.Missing, true
@@ -407,7 +407,7 @@ func (o *ResourceObject) GetMissingOk() ([]string, bool) {
 
 // HasMissing returns a boolean if a field has been set.
 func (o *ResourceObject) HasMissing() bool {
-	if o != nil && !isNil(o.Missing) {
+	if o != nil && !IsNil(o.Missing) {
 		return true
 	}
 
@@ -421,7 +421,7 @@ func (o *ResourceObject) SetMissing(v []string) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *ResourceObject) GetAttributes() map[string]interface{} {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -431,7 +431,7 @@ func (o *ResourceObject) GetAttributes() map[string]interface{} {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceObject) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
@@ -439,7 +439,7 @@ func (o *ResourceObject) GetAttributesOk() (map[string]interface{}, bool) {
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *ResourceObject) HasAttributes() bool {
-	if o != nil && !isNil(o.Attributes) {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -453,7 +453,7 @@ func (o *ResourceObject) SetAttributes(v map[string]interface{}) {
 
 // GetFinalUpdate returns the FinalUpdate field value if set, zero value otherwise.
 func (o *ResourceObject) GetFinalUpdate() bool {
-	if o == nil || isNil(o.FinalUpdate) {
+	if o == nil || IsNil(o.FinalUpdate) {
 		var ret bool
 		return ret
 	}
@@ -463,7 +463,7 @@ func (o *ResourceObject) GetFinalUpdate() bool {
 // GetFinalUpdateOk returns a tuple with the FinalUpdate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceObject) GetFinalUpdateOk() (*bool, bool) {
-	if o == nil || isNil(o.FinalUpdate) {
+	if o == nil || IsNil(o.FinalUpdate) {
 		return nil, false
 	}
 	return o.FinalUpdate, true
@@ -471,7 +471,7 @@ func (o *ResourceObject) GetFinalUpdateOk() (*bool, bool) {
 
 // HasFinalUpdate returns a boolean if a field has been set.
 func (o *ResourceObject) HasFinalUpdate() bool {
-	if o != nil && !isNil(o.FinalUpdate) {
+	if o != nil && !IsNil(o.FinalUpdate) {
 		return true
 	}
 
@@ -493,19 +493,45 @@ func (o ResourceObject) MarshalJSON() ([]byte, error) {
 
 func (o ResourceObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: instance is readOnly
-	// skip: identity is readOnly
-	// skip: uuid is readOnly
-	// skip: previousIdentity is readOnly
-	// skip: name is readOnly
-	// skip: objectType is readOnly
-	// skip: incomplete is readOnly
-	// skip: incremental is readOnly
-	// skip: delete is readOnly
-	// skip: remove is readOnly
-	// skip: missing is readOnly
-	// skip: attributes is readOnly
-	// skip: finalUpdate is readOnly
+	if !IsNil(o.Instance) {
+		toSerialize["instance"] = o.Instance
+	}
+	if !IsNil(o.Identity) {
+		toSerialize["identity"] = o.Identity
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
+	if !IsNil(o.PreviousIdentity) {
+		toSerialize["previousIdentity"] = o.PreviousIdentity
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.ObjectType) {
+		toSerialize["objectType"] = o.ObjectType
+	}
+	if !IsNil(o.Incomplete) {
+		toSerialize["incomplete"] = o.Incomplete
+	}
+	if !IsNil(o.Incremental) {
+		toSerialize["incremental"] = o.Incremental
+	}
+	if !IsNil(o.Delete) {
+		toSerialize["delete"] = o.Delete
+	}
+	if !IsNil(o.Remove) {
+		toSerialize["remove"] = o.Remove
+	}
+	if !IsNil(o.Missing) {
+		toSerialize["missing"] = o.Missing
+	}
+	if !IsNil(o.Attributes) {
+		toSerialize["attributes"] = o.Attributes
+	}
+	if !IsNil(o.FinalUpdate) {
+		toSerialize["finalUpdate"] = o.FinalUpdate
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -514,16 +540,20 @@ func (o ResourceObject) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ResourceObject) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ResourceObject) UnmarshalJSON(data []byte) (err error) {
 	varResourceObject := _ResourceObject{}
 
-	if err = json.Unmarshal(bytes, &varResourceObject); err == nil {
+	err = json.Unmarshal(data, &varResourceObject)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ResourceObject(varResourceObject)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "instance")
 		delete(additionalProperties, "identity")
 		delete(additionalProperties, "uuid")

@@ -211,7 +211,7 @@ func (o *InvocationStatus) SetCreated(v time.Time) {
 
 // GetCompleted returns the Completed field value if set, zero value otherwise.
 func (o *InvocationStatus) GetCompleted() time.Time {
-	if o == nil || isNil(o.Completed) {
+	if o == nil || IsNil(o.Completed) {
 		var ret time.Time
 		return ret
 	}
@@ -221,7 +221,7 @@ func (o *InvocationStatus) GetCompleted() time.Time {
 // GetCompletedOk returns a tuple with the Completed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InvocationStatus) GetCompletedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Completed) {
+	if o == nil || IsNil(o.Completed) {
 		return nil, false
 	}
 	return o.Completed, true
@@ -229,7 +229,7 @@ func (o *InvocationStatus) GetCompletedOk() (*time.Time, bool) {
 
 // HasCompleted returns a boolean if a field has been set.
 func (o *InvocationStatus) HasCompleted() bool {
-	if o != nil && !isNil(o.Completed) {
+	if o != nil && !IsNil(o.Completed) {
 		return true
 	}
 
@@ -267,7 +267,7 @@ func (o *InvocationStatus) SetStartInvocationInput(v StartInvocationInput) {
 
 // GetCompleteInvocationInput returns the CompleteInvocationInput field value if set, zero value otherwise.
 func (o *InvocationStatus) GetCompleteInvocationInput() CompleteInvocationInput {
-	if o == nil || isNil(o.CompleteInvocationInput) {
+	if o == nil || IsNil(o.CompleteInvocationInput) {
 		var ret CompleteInvocationInput
 		return ret
 	}
@@ -277,7 +277,7 @@ func (o *InvocationStatus) GetCompleteInvocationInput() CompleteInvocationInput 
 // GetCompleteInvocationInputOk returns a tuple with the CompleteInvocationInput field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InvocationStatus) GetCompleteInvocationInputOk() (*CompleteInvocationInput, bool) {
-	if o == nil || isNil(o.CompleteInvocationInput) {
+	if o == nil || IsNil(o.CompleteInvocationInput) {
 		return nil, false
 	}
 	return o.CompleteInvocationInput, true
@@ -285,7 +285,7 @@ func (o *InvocationStatus) GetCompleteInvocationInputOk() (*CompleteInvocationIn
 
 // HasCompleteInvocationInput returns a boolean if a field has been set.
 func (o *InvocationStatus) HasCompleteInvocationInput() bool {
-	if o != nil && !isNil(o.CompleteInvocationInput) {
+	if o != nil && !IsNil(o.CompleteInvocationInput) {
 		return true
 	}
 
@@ -313,11 +313,11 @@ func (o InvocationStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize["subscriptionId"] = o.SubscriptionId
 	toSerialize["type"] = o.Type
 	toSerialize["created"] = o.Created
-	if !isNil(o.Completed) {
+	if !IsNil(o.Completed) {
 		toSerialize["completed"] = o.Completed
 	}
 	toSerialize["startInvocationInput"] = o.StartInvocationInput
-	if !isNil(o.CompleteInvocationInput) {
+	if !IsNil(o.CompleteInvocationInput) {
 		toSerialize["completeInvocationInput"] = o.CompleteInvocationInput
 	}
 
@@ -328,8 +328,8 @@ func (o InvocationStatus) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *InvocationStatus) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *InvocationStatus) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -344,7 +344,7 @@ func (o *InvocationStatus) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -358,13 +358,17 @@ func (o *InvocationStatus) UnmarshalJSON(bytes []byte) (err error) {
 
 	varInvocationStatus := _InvocationStatus{}
 
-	if err = json.Unmarshal(bytes, &varInvocationStatus); err == nil {
+	err = json.Unmarshal(data, &varInvocationStatus)
+
+	if err != nil {
+		return err
+	}
+
 	*o = InvocationStatus(varInvocationStatus)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "triggerId")
 		delete(additionalProperties, "subscriptionName")

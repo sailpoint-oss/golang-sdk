@@ -47,7 +47,7 @@ func NewRoleMiningPotentialRoleEditEntitlementsWithDefaults() *RoleMiningPotenti
 
 // GetIds returns the Ids field value if set, zero value otherwise.
 func (o *RoleMiningPotentialRoleEditEntitlements) GetIds() []string {
-	if o == nil || isNil(o.Ids) {
+	if o == nil || IsNil(o.Ids) {
 		var ret []string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *RoleMiningPotentialRoleEditEntitlements) GetIds() []string {
 // GetIdsOk returns a tuple with the Ids field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningPotentialRoleEditEntitlements) GetIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.Ids) {
+	if o == nil || IsNil(o.Ids) {
 		return nil, false
 	}
 	return o.Ids, true
@@ -65,7 +65,7 @@ func (o *RoleMiningPotentialRoleEditEntitlements) GetIdsOk() ([]string, bool) {
 
 // HasIds returns a boolean if a field has been set.
 func (o *RoleMiningPotentialRoleEditEntitlements) HasIds() bool {
-	if o != nil && !isNil(o.Ids) {
+	if o != nil && !IsNil(o.Ids) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *RoleMiningPotentialRoleEditEntitlements) SetIds(v []string) {
 
 // GetExclude returns the Exclude field value if set, zero value otherwise.
 func (o *RoleMiningPotentialRoleEditEntitlements) GetExclude() bool {
-	if o == nil || isNil(o.Exclude) {
+	if o == nil || IsNil(o.Exclude) {
 		var ret bool
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *RoleMiningPotentialRoleEditEntitlements) GetExclude() bool {
 // GetExcludeOk returns a tuple with the Exclude field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningPotentialRoleEditEntitlements) GetExcludeOk() (*bool, bool) {
-	if o == nil || isNil(o.Exclude) {
+	if o == nil || IsNil(o.Exclude) {
 		return nil, false
 	}
 	return o.Exclude, true
@@ -97,7 +97,7 @@ func (o *RoleMiningPotentialRoleEditEntitlements) GetExcludeOk() (*bool, bool) {
 
 // HasExclude returns a boolean if a field has been set.
 func (o *RoleMiningPotentialRoleEditEntitlements) HasExclude() bool {
-	if o != nil && !isNil(o.Exclude) {
+	if o != nil && !IsNil(o.Exclude) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o RoleMiningPotentialRoleEditEntitlements) MarshalJSON() ([]byte, error) {
 
 func (o RoleMiningPotentialRoleEditEntitlements) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Ids) {
+	if !IsNil(o.Ids) {
 		toSerialize["ids"] = o.Ids
 	}
-	if !isNil(o.Exclude) {
+	if !IsNil(o.Exclude) {
 		toSerialize["exclude"] = o.Exclude
 	}
 
@@ -133,16 +133,20 @@ func (o RoleMiningPotentialRoleEditEntitlements) ToMap() (map[string]interface{}
 	return toSerialize, nil
 }
 
-func (o *RoleMiningPotentialRoleEditEntitlements) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RoleMiningPotentialRoleEditEntitlements) UnmarshalJSON(data []byte) (err error) {
 	varRoleMiningPotentialRoleEditEntitlements := _RoleMiningPotentialRoleEditEntitlements{}
 
-	if err = json.Unmarshal(bytes, &varRoleMiningPotentialRoleEditEntitlements); err == nil {
+	err = json.Unmarshal(data, &varRoleMiningPotentialRoleEditEntitlements)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RoleMiningPotentialRoleEditEntitlements(varRoleMiningPotentialRoleEditEntitlements)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "ids")
 		delete(additionalProperties, "exclude")
 		o.AdditionalProperties = additionalProperties

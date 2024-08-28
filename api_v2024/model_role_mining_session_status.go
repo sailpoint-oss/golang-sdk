@@ -44,7 +44,7 @@ func NewRoleMiningSessionStatusWithDefaults() *RoleMiningSessionStatus {
 
 // GetState returns the State field value if set, zero value otherwise.
 func (o *RoleMiningSessionStatus) GetState() RoleMiningSessionState {
-	if o == nil || isNil(o.State) {
+	if o == nil || IsNil(o.State) {
 		var ret RoleMiningSessionState
 		return ret
 	}
@@ -54,7 +54,7 @@ func (o *RoleMiningSessionStatus) GetState() RoleMiningSessionState {
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleMiningSessionStatus) GetStateOk() (*RoleMiningSessionState, bool) {
-	if o == nil || isNil(o.State) {
+	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
 	return o.State, true
@@ -62,7 +62,7 @@ func (o *RoleMiningSessionStatus) GetStateOk() (*RoleMiningSessionState, bool) {
 
 // HasState returns a boolean if a field has been set.
 func (o *RoleMiningSessionStatus) HasState() bool {
-	if o != nil && !isNil(o.State) {
+	if o != nil && !IsNil(o.State) {
 		return true
 	}
 
@@ -84,7 +84,7 @@ func (o RoleMiningSessionStatus) MarshalJSON() ([]byte, error) {
 
 func (o RoleMiningSessionStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.State) {
+	if !IsNil(o.State) {
 		toSerialize["state"] = o.State
 	}
 
@@ -95,16 +95,20 @@ func (o RoleMiningSessionStatus) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *RoleMiningSessionStatus) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RoleMiningSessionStatus) UnmarshalJSON(data []byte) (err error) {
 	varRoleMiningSessionStatus := _RoleMiningSessionStatus{}
 
-	if err = json.Unmarshal(bytes, &varRoleMiningSessionStatus); err == nil {
+	err = json.Unmarshal(data, &varRoleMiningSessionStatus)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RoleMiningSessionStatus(varRoleMiningSessionStatus)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "state")
 		o.AdditionalProperties = additionalProperties
 	}

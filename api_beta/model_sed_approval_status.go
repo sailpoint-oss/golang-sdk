@@ -49,7 +49,7 @@ func NewSedApprovalStatusWithDefaults() *SedApprovalStatus {
 
 // GetFailedReason returns the FailedReason field value if set, zero value otherwise.
 func (o *SedApprovalStatus) GetFailedReason() string {
-	if o == nil || isNil(o.FailedReason) {
+	if o == nil || IsNil(o.FailedReason) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *SedApprovalStatus) GetFailedReason() string {
 // GetFailedReasonOk returns a tuple with the FailedReason field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SedApprovalStatus) GetFailedReasonOk() (*string, bool) {
-	if o == nil || isNil(o.FailedReason) {
+	if o == nil || IsNil(o.FailedReason) {
 		return nil, false
 	}
 	return o.FailedReason, true
@@ -67,7 +67,7 @@ func (o *SedApprovalStatus) GetFailedReasonOk() (*string, bool) {
 
 // HasFailedReason returns a boolean if a field has been set.
 func (o *SedApprovalStatus) HasFailedReason() bool {
-	if o != nil && !isNil(o.FailedReason) {
+	if o != nil && !IsNil(o.FailedReason) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *SedApprovalStatus) SetFailedReason(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *SedApprovalStatus) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *SedApprovalStatus) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SedApprovalStatus) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -99,7 +99,7 @@ func (o *SedApprovalStatus) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *SedApprovalStatus) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *SedApprovalStatus) SetId(v string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *SedApprovalStatus) GetStatus() string {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *SedApprovalStatus) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SedApprovalStatus) GetStatusOk() (*string, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -131,7 +131,7 @@ func (o *SedApprovalStatus) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *SedApprovalStatus) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o SedApprovalStatus) MarshalJSON() ([]byte, error) {
 
 func (o SedApprovalStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.FailedReason) {
+	if !IsNil(o.FailedReason) {
 		toSerialize["failedReason"] = o.FailedReason
 	}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Status) {
+	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
 
@@ -170,16 +170,20 @@ func (o SedApprovalStatus) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SedApprovalStatus) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SedApprovalStatus) UnmarshalJSON(data []byte) (err error) {
 	varSedApprovalStatus := _SedApprovalStatus{}
 
-	if err = json.Unmarshal(bytes, &varSedApprovalStatus); err == nil {
+	err = json.Unmarshal(data, &varSedApprovalStatus)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SedApprovalStatus(varSedApprovalStatus)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "failedReason")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "status")

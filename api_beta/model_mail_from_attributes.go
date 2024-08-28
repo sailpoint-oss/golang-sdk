@@ -53,7 +53,7 @@ func NewMailFromAttributesWithDefaults() *MailFromAttributes {
 
 // GetIdentity returns the Identity field value if set, zero value otherwise.
 func (o *MailFromAttributes) GetIdentity() string {
-	if o == nil || isNil(o.Identity) {
+	if o == nil || IsNil(o.Identity) {
 		var ret string
 		return ret
 	}
@@ -63,7 +63,7 @@ func (o *MailFromAttributes) GetIdentity() string {
 // GetIdentityOk returns a tuple with the Identity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MailFromAttributes) GetIdentityOk() (*string, bool) {
-	if o == nil || isNil(o.Identity) {
+	if o == nil || IsNil(o.Identity) {
 		return nil, false
 	}
 	return o.Identity, true
@@ -71,7 +71,7 @@ func (o *MailFromAttributes) GetIdentityOk() (*string, bool) {
 
 // HasIdentity returns a boolean if a field has been set.
 func (o *MailFromAttributes) HasIdentity() bool {
-	if o != nil && !isNil(o.Identity) {
+	if o != nil && !IsNil(o.Identity) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o *MailFromAttributes) SetIdentity(v string) {
 
 // GetMailFromDomain returns the MailFromDomain field value if set, zero value otherwise.
 func (o *MailFromAttributes) GetMailFromDomain() string {
-	if o == nil || isNil(o.MailFromDomain) {
+	if o == nil || IsNil(o.MailFromDomain) {
 		var ret string
 		return ret
 	}
@@ -95,7 +95,7 @@ func (o *MailFromAttributes) GetMailFromDomain() string {
 // GetMailFromDomainOk returns a tuple with the MailFromDomain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MailFromAttributes) GetMailFromDomainOk() (*string, bool) {
-	if o == nil || isNil(o.MailFromDomain) {
+	if o == nil || IsNil(o.MailFromDomain) {
 		return nil, false
 	}
 	return o.MailFromDomain, true
@@ -103,7 +103,7 @@ func (o *MailFromAttributes) GetMailFromDomainOk() (*string, bool) {
 
 // HasMailFromDomain returns a boolean if a field has been set.
 func (o *MailFromAttributes) HasMailFromDomain() bool {
-	if o != nil && !isNil(o.MailFromDomain) {
+	if o != nil && !IsNil(o.MailFromDomain) {
 		return true
 	}
 
@@ -117,7 +117,7 @@ func (o *MailFromAttributes) SetMailFromDomain(v string) {
 
 // GetMxRecord returns the MxRecord field value if set, zero value otherwise.
 func (o *MailFromAttributes) GetMxRecord() string {
-	if o == nil || isNil(o.MxRecord) {
+	if o == nil || IsNil(o.MxRecord) {
 		var ret string
 		return ret
 	}
@@ -127,7 +127,7 @@ func (o *MailFromAttributes) GetMxRecord() string {
 // GetMxRecordOk returns a tuple with the MxRecord field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MailFromAttributes) GetMxRecordOk() (*string, bool) {
-	if o == nil || isNil(o.MxRecord) {
+	if o == nil || IsNil(o.MxRecord) {
 		return nil, false
 	}
 	return o.MxRecord, true
@@ -135,7 +135,7 @@ func (o *MailFromAttributes) GetMxRecordOk() (*string, bool) {
 
 // HasMxRecord returns a boolean if a field has been set.
 func (o *MailFromAttributes) HasMxRecord() bool {
-	if o != nil && !isNil(o.MxRecord) {
+	if o != nil && !IsNil(o.MxRecord) {
 		return true
 	}
 
@@ -149,7 +149,7 @@ func (o *MailFromAttributes) SetMxRecord(v string) {
 
 // GetTxtRecord returns the TxtRecord field value if set, zero value otherwise.
 func (o *MailFromAttributes) GetTxtRecord() string {
-	if o == nil || isNil(o.TxtRecord) {
+	if o == nil || IsNil(o.TxtRecord) {
 		var ret string
 		return ret
 	}
@@ -159,7 +159,7 @@ func (o *MailFromAttributes) GetTxtRecord() string {
 // GetTxtRecordOk returns a tuple with the TxtRecord field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MailFromAttributes) GetTxtRecordOk() (*string, bool) {
-	if o == nil || isNil(o.TxtRecord) {
+	if o == nil || IsNil(o.TxtRecord) {
 		return nil, false
 	}
 	return o.TxtRecord, true
@@ -167,7 +167,7 @@ func (o *MailFromAttributes) GetTxtRecordOk() (*string, bool) {
 
 // HasTxtRecord returns a boolean if a field has been set.
 func (o *MailFromAttributes) HasTxtRecord() bool {
-	if o != nil && !isNil(o.TxtRecord) {
+	if o != nil && !IsNil(o.TxtRecord) {
 		return true
 	}
 
@@ -181,7 +181,7 @@ func (o *MailFromAttributes) SetTxtRecord(v string) {
 
 // GetMailFromDomainStatus returns the MailFromDomainStatus field value if set, zero value otherwise.
 func (o *MailFromAttributes) GetMailFromDomainStatus() string {
-	if o == nil || isNil(o.MailFromDomainStatus) {
+	if o == nil || IsNil(o.MailFromDomainStatus) {
 		var ret string
 		return ret
 	}
@@ -191,7 +191,7 @@ func (o *MailFromAttributes) GetMailFromDomainStatus() string {
 // GetMailFromDomainStatusOk returns a tuple with the MailFromDomainStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MailFromAttributes) GetMailFromDomainStatusOk() (*string, bool) {
-	if o == nil || isNil(o.MailFromDomainStatus) {
+	if o == nil || IsNil(o.MailFromDomainStatus) {
 		return nil, false
 	}
 	return o.MailFromDomainStatus, true
@@ -199,7 +199,7 @@ func (o *MailFromAttributes) GetMailFromDomainStatusOk() (*string, bool) {
 
 // HasMailFromDomainStatus returns a boolean if a field has been set.
 func (o *MailFromAttributes) HasMailFromDomainStatus() bool {
-	if o != nil && !isNil(o.MailFromDomainStatus) {
+	if o != nil && !IsNil(o.MailFromDomainStatus) {
 		return true
 	}
 
@@ -221,19 +221,19 @@ func (o MailFromAttributes) MarshalJSON() ([]byte, error) {
 
 func (o MailFromAttributes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Identity) {
+	if !IsNil(o.Identity) {
 		toSerialize["identity"] = o.Identity
 	}
-	if !isNil(o.MailFromDomain) {
+	if !IsNil(o.MailFromDomain) {
 		toSerialize["mailFromDomain"] = o.MailFromDomain
 	}
-	if !isNil(o.MxRecord) {
+	if !IsNil(o.MxRecord) {
 		toSerialize["mxRecord"] = o.MxRecord
 	}
-	if !isNil(o.TxtRecord) {
+	if !IsNil(o.TxtRecord) {
 		toSerialize["txtRecord"] = o.TxtRecord
 	}
-	if !isNil(o.MailFromDomainStatus) {
+	if !IsNil(o.MailFromDomainStatus) {
 		toSerialize["mailFromDomainStatus"] = o.MailFromDomainStatus
 	}
 
@@ -244,16 +244,20 @@ func (o MailFromAttributes) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *MailFromAttributes) UnmarshalJSON(bytes []byte) (err error) {
+func (o *MailFromAttributes) UnmarshalJSON(data []byte) (err error) {
 	varMailFromAttributes := _MailFromAttributes{}
 
-	if err = json.Unmarshal(bytes, &varMailFromAttributes); err == nil {
+	err = json.Unmarshal(data, &varMailFromAttributes)
+
+	if err != nil {
+		return err
+	}
+
 	*o = MailFromAttributes(varMailFromAttributes)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "identity")
 		delete(additionalProperties, "mailFromDomain")
 		delete(additionalProperties, "mxRecord")

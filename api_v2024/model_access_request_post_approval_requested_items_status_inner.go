@@ -113,7 +113,7 @@ func (o *AccessRequestPostApprovalRequestedItemsStatusInner) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessRequestPostApprovalRequestedItemsStatusInner) GetDescription() string {
-	if o == nil || isNil(o.Description.Get()) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
@@ -203,7 +203,7 @@ func (o *AccessRequestPostApprovalRequestedItemsStatusInner) SetOperation(v map[
 
 // GetComment returns the Comment field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessRequestPostApprovalRequestedItemsStatusInner) GetComment() string {
-	if o == nil || isNil(o.Comment.Get()) {
+	if o == nil || IsNil(o.Comment.Get()) {
 		var ret string
 		return ret
 	}
@@ -256,7 +256,7 @@ func (o *AccessRequestPostApprovalRequestedItemsStatusInner) GetClientMetadata()
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessRequestPostApprovalRequestedItemsStatusInner) GetClientMetadataOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.ClientMetadata) {
+	if o == nil || IsNil(o.ClientMetadata) {
 		return map[string]interface{}{}, false
 	}
 	return o.ClientMetadata, true
@@ -264,7 +264,7 @@ func (o *AccessRequestPostApprovalRequestedItemsStatusInner) GetClientMetadataOk
 
 // HasClientMetadata returns a boolean if a field has been set.
 func (o *AccessRequestPostApprovalRequestedItemsStatusInner) HasClientMetadata() bool {
-	if o != nil && isNil(o.ClientMetadata) {
+	if o != nil && !IsNil(o.ClientMetadata) {
 		return true
 	}
 
@@ -332,8 +332,8 @@ func (o AccessRequestPostApprovalRequestedItemsStatusInner) ToMap() (map[string]
 	return toSerialize, nil
 }
 
-func (o *AccessRequestPostApprovalRequestedItemsStatusInner) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *AccessRequestPostApprovalRequestedItemsStatusInner) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -346,7 +346,7 @@ func (o *AccessRequestPostApprovalRequestedItemsStatusInner) UnmarshalJSON(bytes
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -360,13 +360,17 @@ func (o *AccessRequestPostApprovalRequestedItemsStatusInner) UnmarshalJSON(bytes
 
 	varAccessRequestPostApprovalRequestedItemsStatusInner := _AccessRequestPostApprovalRequestedItemsStatusInner{}
 
-	if err = json.Unmarshal(bytes, &varAccessRequestPostApprovalRequestedItemsStatusInner); err == nil {
+	err = json.Unmarshal(data, &varAccessRequestPostApprovalRequestedItemsStatusInner)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AccessRequestPostApprovalRequestedItemsStatusInner(varAccessRequestPostApprovalRequestedItemsStatusInner)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")

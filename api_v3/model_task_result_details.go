@@ -72,7 +72,7 @@ func NewTaskResultDetailsWithDefaults() *TaskResultDetails {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *TaskResultDetails) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -82,7 +82,7 @@ func (o *TaskResultDetails) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TaskResultDetails) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -90,7 +90,7 @@ func (o *TaskResultDetails) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *TaskResultDetails) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -104,7 +104,7 @@ func (o *TaskResultDetails) SetType(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *TaskResultDetails) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -114,7 +114,7 @@ func (o *TaskResultDetails) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TaskResultDetails) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -122,7 +122,7 @@ func (o *TaskResultDetails) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *TaskResultDetails) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -136,7 +136,7 @@ func (o *TaskResultDetails) SetId(v string) {
 
 // GetReportType returns the ReportType field value if set, zero value otherwise.
 func (o *TaskResultDetails) GetReportType() map[string]interface{} {
-	if o == nil || isNil(o.ReportType) {
+	if o == nil || IsNil(o.ReportType) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -146,7 +146,7 @@ func (o *TaskResultDetails) GetReportType() map[string]interface{} {
 // GetReportTypeOk returns a tuple with the ReportType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TaskResultDetails) GetReportTypeOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.ReportType) {
+	if o == nil || IsNil(o.ReportType) {
 		return map[string]interface{}{}, false
 	}
 	return o.ReportType, true
@@ -154,7 +154,7 @@ func (o *TaskResultDetails) GetReportTypeOk() (map[string]interface{}, bool) {
 
 // HasReportType returns a boolean if a field has been set.
 func (o *TaskResultDetails) HasReportType() bool {
-	if o != nil && !isNil(o.ReportType) {
+	if o != nil && !IsNil(o.ReportType) {
 		return true
 	}
 
@@ -168,7 +168,7 @@ func (o *TaskResultDetails) SetReportType(v map[string]interface{}) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *TaskResultDetails) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -178,7 +178,7 @@ func (o *TaskResultDetails) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TaskResultDetails) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -186,7 +186,7 @@ func (o *TaskResultDetails) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *TaskResultDetails) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -200,7 +200,7 @@ func (o *TaskResultDetails) SetDescription(v string) {
 
 // GetParentName returns the ParentName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaskResultDetails) GetParentName() string {
-	if o == nil || isNil(o.ParentName.Get()) {
+	if o == nil || IsNil(o.ParentName.Get()) {
 		var ret string
 		return ret
 	}
@@ -242,7 +242,7 @@ func (o *TaskResultDetails) UnsetParentName() {
 
 // GetLauncher returns the Launcher field value if set, zero value otherwise.
 func (o *TaskResultDetails) GetLauncher() string {
-	if o == nil || isNil(o.Launcher) {
+	if o == nil || IsNil(o.Launcher) {
 		var ret string
 		return ret
 	}
@@ -252,7 +252,7 @@ func (o *TaskResultDetails) GetLauncher() string {
 // GetLauncherOk returns a tuple with the Launcher field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TaskResultDetails) GetLauncherOk() (*string, bool) {
-	if o == nil || isNil(o.Launcher) {
+	if o == nil || IsNil(o.Launcher) {
 		return nil, false
 	}
 	return o.Launcher, true
@@ -260,7 +260,7 @@ func (o *TaskResultDetails) GetLauncherOk() (*string, bool) {
 
 // HasLauncher returns a boolean if a field has been set.
 func (o *TaskResultDetails) HasLauncher() bool {
-	if o != nil && !isNil(o.Launcher) {
+	if o != nil && !IsNil(o.Launcher) {
 		return true
 	}
 
@@ -274,7 +274,7 @@ func (o *TaskResultDetails) SetLauncher(v string) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *TaskResultDetails) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
@@ -284,7 +284,7 @@ func (o *TaskResultDetails) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TaskResultDetails) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -292,7 +292,7 @@ func (o *TaskResultDetails) GetCreatedOk() (*time.Time, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *TaskResultDetails) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -306,7 +306,7 @@ func (o *TaskResultDetails) SetCreated(v time.Time) {
 
 // GetLaunched returns the Launched field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaskResultDetails) GetLaunched() time.Time {
-	if o == nil || isNil(o.Launched.Get()) {
+	if o == nil || IsNil(o.Launched.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -348,7 +348,7 @@ func (o *TaskResultDetails) UnsetLaunched() {
 
 // GetCompleted returns the Completed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaskResultDetails) GetCompleted() time.Time {
-	if o == nil || isNil(o.Completed.Get()) {
+	if o == nil || IsNil(o.Completed.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -390,7 +390,7 @@ func (o *TaskResultDetails) UnsetCompleted() {
 
 // GetCompletionStatus returns the CompletionStatus field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaskResultDetails) GetCompletionStatus() string {
-	if o == nil || isNil(o.CompletionStatus.Get()) {
+	if o == nil || IsNil(o.CompletionStatus.Get()) {
 		var ret string
 		return ret
 	}
@@ -432,7 +432,7 @@ func (o *TaskResultDetails) UnsetCompletionStatus() {
 
 // GetMessages returns the Messages field value if set, zero value otherwise.
 func (o *TaskResultDetails) GetMessages() []TaskResultDetailsMessagesInner {
-	if o == nil || isNil(o.Messages) {
+	if o == nil || IsNil(o.Messages) {
 		var ret []TaskResultDetailsMessagesInner
 		return ret
 	}
@@ -442,7 +442,7 @@ func (o *TaskResultDetails) GetMessages() []TaskResultDetailsMessagesInner {
 // GetMessagesOk returns a tuple with the Messages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TaskResultDetails) GetMessagesOk() ([]TaskResultDetailsMessagesInner, bool) {
-	if o == nil || isNil(o.Messages) {
+	if o == nil || IsNil(o.Messages) {
 		return nil, false
 	}
 	return o.Messages, true
@@ -450,7 +450,7 @@ func (o *TaskResultDetails) GetMessagesOk() ([]TaskResultDetailsMessagesInner, b
 
 // HasMessages returns a boolean if a field has been set.
 func (o *TaskResultDetails) HasMessages() bool {
-	if o != nil && !isNil(o.Messages) {
+	if o != nil && !IsNil(o.Messages) {
 		return true
 	}
 
@@ -464,7 +464,7 @@ func (o *TaskResultDetails) SetMessages(v []TaskResultDetailsMessagesInner) {
 
 // GetReturns returns the Returns field value if set, zero value otherwise.
 func (o *TaskResultDetails) GetReturns() []TaskResultDetailsReturnsInner {
-	if o == nil || isNil(o.Returns) {
+	if o == nil || IsNil(o.Returns) {
 		var ret []TaskResultDetailsReturnsInner
 		return ret
 	}
@@ -474,7 +474,7 @@ func (o *TaskResultDetails) GetReturns() []TaskResultDetailsReturnsInner {
 // GetReturnsOk returns a tuple with the Returns field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TaskResultDetails) GetReturnsOk() ([]TaskResultDetailsReturnsInner, bool) {
-	if o == nil || isNil(o.Returns) {
+	if o == nil || IsNil(o.Returns) {
 		return nil, false
 	}
 	return o.Returns, true
@@ -482,7 +482,7 @@ func (o *TaskResultDetails) GetReturnsOk() ([]TaskResultDetailsReturnsInner, boo
 
 // HasReturns returns a boolean if a field has been set.
 func (o *TaskResultDetails) HasReturns() bool {
-	if o != nil && !isNil(o.Returns) {
+	if o != nil && !IsNil(o.Returns) {
 		return true
 	}
 
@@ -496,7 +496,7 @@ func (o *TaskResultDetails) SetReturns(v []TaskResultDetailsReturnsInner) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *TaskResultDetails) GetAttributes() map[string]map[string]interface{} {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		var ret map[string]map[string]interface{}
 		return ret
 	}
@@ -506,7 +506,7 @@ func (o *TaskResultDetails) GetAttributes() map[string]map[string]interface{} {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TaskResultDetails) GetAttributesOk() (map[string]map[string]interface{}, bool) {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		return map[string]map[string]interface{}{}, false
 	}
 	return o.Attributes, true
@@ -514,7 +514,7 @@ func (o *TaskResultDetails) GetAttributesOk() (map[string]map[string]interface{}
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *TaskResultDetails) HasAttributes() bool {
-	if o != nil && !isNil(o.Attributes) {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -528,7 +528,7 @@ func (o *TaskResultDetails) SetAttributes(v map[string]map[string]interface{}) {
 
 // GetProgress returns the Progress field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaskResultDetails) GetProgress() string {
-	if o == nil || isNil(o.Progress.Get()) {
+	if o == nil || IsNil(o.Progress.Get()) {
 		var ret string
 		return ret
 	}
@@ -578,25 +578,25 @@ func (o TaskResultDetails) MarshalJSON() ([]byte, error) {
 
 func (o TaskResultDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Type) {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.ReportType) {
+	if !IsNil(o.ReportType) {
 		toSerialize["reportType"] = o.ReportType
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 	if o.ParentName.IsSet() {
 		toSerialize["parentName"] = o.ParentName.Get()
 	}
-	if !isNil(o.Launcher) {
+	if !IsNil(o.Launcher) {
 		toSerialize["launcher"] = o.Launcher
 	}
-	if !isNil(o.Created) {
+	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
 	if o.Launched.IsSet() {
@@ -608,13 +608,13 @@ func (o TaskResultDetails) ToMap() (map[string]interface{}, error) {
 	if o.CompletionStatus.IsSet() {
 		toSerialize["completionStatus"] = o.CompletionStatus.Get()
 	}
-	if !isNil(o.Messages) {
+	if !IsNil(o.Messages) {
 		toSerialize["messages"] = o.Messages
 	}
-	if !isNil(o.Returns) {
+	if !IsNil(o.Returns) {
 		toSerialize["returns"] = o.Returns
 	}
-	if !isNil(o.Attributes) {
+	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
 	if o.Progress.IsSet() {
@@ -628,16 +628,20 @@ func (o TaskResultDetails) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *TaskResultDetails) UnmarshalJSON(bytes []byte) (err error) {
+func (o *TaskResultDetails) UnmarshalJSON(data []byte) (err error) {
 	varTaskResultDetails := _TaskResultDetails{}
 
-	if err = json.Unmarshal(bytes, &varTaskResultDetails); err == nil {
+	err = json.Unmarshal(data, &varTaskResultDetails)
+
+	if err != nil {
+		return err
+	}
+
 	*o = TaskResultDetails(varTaskResultDetails)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "reportType")

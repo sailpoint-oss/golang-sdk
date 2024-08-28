@@ -49,7 +49,7 @@ func NewNonEmployeeApprovalSummaryWithDefaults() *NonEmployeeApprovalSummary {
 
 // GetApproved returns the Approved field value if set, zero value otherwise.
 func (o *NonEmployeeApprovalSummary) GetApproved() float32 {
-	if o == nil || isNil(o.Approved) {
+	if o == nil || IsNil(o.Approved) {
 		var ret float32
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *NonEmployeeApprovalSummary) GetApproved() float32 {
 // GetApprovedOk returns a tuple with the Approved field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeApprovalSummary) GetApprovedOk() (*float32, bool) {
-	if o == nil || isNil(o.Approved) {
+	if o == nil || IsNil(o.Approved) {
 		return nil, false
 	}
 	return o.Approved, true
@@ -67,7 +67,7 @@ func (o *NonEmployeeApprovalSummary) GetApprovedOk() (*float32, bool) {
 
 // HasApproved returns a boolean if a field has been set.
 func (o *NonEmployeeApprovalSummary) HasApproved() bool {
-	if o != nil && !isNil(o.Approved) {
+	if o != nil && !IsNil(o.Approved) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *NonEmployeeApprovalSummary) SetApproved(v float32) {
 
 // GetPending returns the Pending field value if set, zero value otherwise.
 func (o *NonEmployeeApprovalSummary) GetPending() float32 {
-	if o == nil || isNil(o.Pending) {
+	if o == nil || IsNil(o.Pending) {
 		var ret float32
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *NonEmployeeApprovalSummary) GetPending() float32 {
 // GetPendingOk returns a tuple with the Pending field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeApprovalSummary) GetPendingOk() (*float32, bool) {
-	if o == nil || isNil(o.Pending) {
+	if o == nil || IsNil(o.Pending) {
 		return nil, false
 	}
 	return o.Pending, true
@@ -99,7 +99,7 @@ func (o *NonEmployeeApprovalSummary) GetPendingOk() (*float32, bool) {
 
 // HasPending returns a boolean if a field has been set.
 func (o *NonEmployeeApprovalSummary) HasPending() bool {
-	if o != nil && !isNil(o.Pending) {
+	if o != nil && !IsNil(o.Pending) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *NonEmployeeApprovalSummary) SetPending(v float32) {
 
 // GetRejected returns the Rejected field value if set, zero value otherwise.
 func (o *NonEmployeeApprovalSummary) GetRejected() float32 {
-	if o == nil || isNil(o.Rejected) {
+	if o == nil || IsNil(o.Rejected) {
 		var ret float32
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *NonEmployeeApprovalSummary) GetRejected() float32 {
 // GetRejectedOk returns a tuple with the Rejected field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeApprovalSummary) GetRejectedOk() (*float32, bool) {
-	if o == nil || isNil(o.Rejected) {
+	if o == nil || IsNil(o.Rejected) {
 		return nil, false
 	}
 	return o.Rejected, true
@@ -131,7 +131,7 @@ func (o *NonEmployeeApprovalSummary) GetRejectedOk() (*float32, bool) {
 
 // HasRejected returns a boolean if a field has been set.
 func (o *NonEmployeeApprovalSummary) HasRejected() bool {
-	if o != nil && !isNil(o.Rejected) {
+	if o != nil && !IsNil(o.Rejected) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o NonEmployeeApprovalSummary) MarshalJSON() ([]byte, error) {
 
 func (o NonEmployeeApprovalSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Approved) {
+	if !IsNil(o.Approved) {
 		toSerialize["approved"] = o.Approved
 	}
-	if !isNil(o.Pending) {
+	if !IsNil(o.Pending) {
 		toSerialize["pending"] = o.Pending
 	}
-	if !isNil(o.Rejected) {
+	if !IsNil(o.Rejected) {
 		toSerialize["rejected"] = o.Rejected
 	}
 
@@ -170,16 +170,20 @@ func (o NonEmployeeApprovalSummary) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *NonEmployeeApprovalSummary) UnmarshalJSON(bytes []byte) (err error) {
+func (o *NonEmployeeApprovalSummary) UnmarshalJSON(data []byte) (err error) {
 	varNonEmployeeApprovalSummary := _NonEmployeeApprovalSummary{}
 
-	if err = json.Unmarshal(bytes, &varNonEmployeeApprovalSummary); err == nil {
+	err = json.Unmarshal(data, &varNonEmployeeApprovalSummary)
+
+	if err != nil {
+		return err
+	}
+
 	*o = NonEmployeeApprovalSummary(varNonEmployeeApprovalSummary)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "approved")
 		delete(additionalProperties, "pending")
 		delete(additionalProperties, "rejected")

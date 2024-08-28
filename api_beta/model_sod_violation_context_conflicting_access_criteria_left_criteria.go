@@ -44,7 +44,7 @@ func NewSodViolationContextConflictingAccessCriteriaLeftCriteriaWithDefaults() *
 
 // GetCriteriaList returns the CriteriaList field value if set, zero value otherwise.
 func (o *SodViolationContextConflictingAccessCriteriaLeftCriteria) GetCriteriaList() []SodExemptCriteria {
-	if o == nil || isNil(o.CriteriaList) {
+	if o == nil || IsNil(o.CriteriaList) {
 		var ret []SodExemptCriteria
 		return ret
 	}
@@ -54,7 +54,7 @@ func (o *SodViolationContextConflictingAccessCriteriaLeftCriteria) GetCriteriaLi
 // GetCriteriaListOk returns a tuple with the CriteriaList field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SodViolationContextConflictingAccessCriteriaLeftCriteria) GetCriteriaListOk() ([]SodExemptCriteria, bool) {
-	if o == nil || isNil(o.CriteriaList) {
+	if o == nil || IsNil(o.CriteriaList) {
 		return nil, false
 	}
 	return o.CriteriaList, true
@@ -62,7 +62,7 @@ func (o *SodViolationContextConflictingAccessCriteriaLeftCriteria) GetCriteriaLi
 
 // HasCriteriaList returns a boolean if a field has been set.
 func (o *SodViolationContextConflictingAccessCriteriaLeftCriteria) HasCriteriaList() bool {
-	if o != nil && !isNil(o.CriteriaList) {
+	if o != nil && !IsNil(o.CriteriaList) {
 		return true
 	}
 
@@ -84,7 +84,7 @@ func (o SodViolationContextConflictingAccessCriteriaLeftCriteria) MarshalJSON() 
 
 func (o SodViolationContextConflictingAccessCriteriaLeftCriteria) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.CriteriaList) {
+	if !IsNil(o.CriteriaList) {
 		toSerialize["criteriaList"] = o.CriteriaList
 	}
 
@@ -95,16 +95,20 @@ func (o SodViolationContextConflictingAccessCriteriaLeftCriteria) ToMap() (map[s
 	return toSerialize, nil
 }
 
-func (o *SodViolationContextConflictingAccessCriteriaLeftCriteria) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SodViolationContextConflictingAccessCriteriaLeftCriteria) UnmarshalJSON(data []byte) (err error) {
 	varSodViolationContextConflictingAccessCriteriaLeftCriteria := _SodViolationContextConflictingAccessCriteriaLeftCriteria{}
 
-	if err = json.Unmarshal(bytes, &varSodViolationContextConflictingAccessCriteriaLeftCriteria); err == nil {
+	err = json.Unmarshal(data, &varSodViolationContextConflictingAccessCriteriaLeftCriteria)
+
+	if err != nil {
+		return err
+	}
+
 	*o = SodViolationContextConflictingAccessCriteriaLeftCriteria(varSodViolationContextConflictingAccessCriteriaLeftCriteria)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "criteriaList")
 		o.AdditionalProperties = additionalProperties
 	}

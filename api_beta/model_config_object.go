@@ -48,7 +48,7 @@ func NewConfigObjectWithDefaults() *ConfigObject {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *ConfigObject) GetVersion() int32 {
-	if o == nil || isNil(o.Version) {
+	if o == nil || IsNil(o.Version) {
 		var ret int32
 		return ret
 	}
@@ -58,7 +58,7 @@ func (o *ConfigObject) GetVersion() int32 {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConfigObject) GetVersionOk() (*int32, bool) {
-	if o == nil || isNil(o.Version) {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -66,7 +66,7 @@ func (o *ConfigObject) GetVersionOk() (*int32, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *ConfigObject) HasVersion() bool {
-	if o != nil && !isNil(o.Version) {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -80,7 +80,7 @@ func (o *ConfigObject) SetVersion(v int32) {
 
 // GetSelf returns the Self field value if set, zero value otherwise.
 func (o *ConfigObject) GetSelf() SelfImportExportDto {
-	if o == nil || isNil(o.Self) {
+	if o == nil || IsNil(o.Self) {
 		var ret SelfImportExportDto
 		return ret
 	}
@@ -90,7 +90,7 @@ func (o *ConfigObject) GetSelf() SelfImportExportDto {
 // GetSelfOk returns a tuple with the Self field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConfigObject) GetSelfOk() (*SelfImportExportDto, bool) {
-	if o == nil || isNil(o.Self) {
+	if o == nil || IsNil(o.Self) {
 		return nil, false
 	}
 	return o.Self, true
@@ -98,7 +98,7 @@ func (o *ConfigObject) GetSelfOk() (*SelfImportExportDto, bool) {
 
 // HasSelf returns a boolean if a field has been set.
 func (o *ConfigObject) HasSelf() bool {
-	if o != nil && !isNil(o.Self) {
+	if o != nil && !IsNil(o.Self) {
 		return true
 	}
 
@@ -112,7 +112,7 @@ func (o *ConfigObject) SetSelf(v SelfImportExportDto) {
 
 // GetObject returns the Object field value if set, zero value otherwise.
 func (o *ConfigObject) GetObject() map[string]interface{} {
-	if o == nil || isNil(o.Object) {
+	if o == nil || IsNil(o.Object) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -122,7 +122,7 @@ func (o *ConfigObject) GetObject() map[string]interface{} {
 // GetObjectOk returns a tuple with the Object field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConfigObject) GetObjectOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Object) {
+	if o == nil || IsNil(o.Object) {
 		return map[string]interface{}{}, false
 	}
 	return o.Object, true
@@ -130,7 +130,7 @@ func (o *ConfigObject) GetObjectOk() (map[string]interface{}, bool) {
 
 // HasObject returns a boolean if a field has been set.
 func (o *ConfigObject) HasObject() bool {
-	if o != nil && !isNil(o.Object) {
+	if o != nil && !IsNil(o.Object) {
 		return true
 	}
 
@@ -152,13 +152,13 @@ func (o ConfigObject) MarshalJSON() ([]byte, error) {
 
 func (o ConfigObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Version) {
+	if !IsNil(o.Version) {
 		toSerialize["version"] = o.Version
 	}
-	if !isNil(o.Self) {
+	if !IsNil(o.Self) {
 		toSerialize["self"] = o.Self
 	}
-	if !isNil(o.Object) {
+	if !IsNil(o.Object) {
 		toSerialize["object"] = o.Object
 	}
 
@@ -169,16 +169,20 @@ func (o ConfigObject) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ConfigObject) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ConfigObject) UnmarshalJSON(data []byte) (err error) {
 	varConfigObject := _ConfigObject{}
 
-	if err = json.Unmarshal(bytes, &varConfigObject); err == nil {
+	err = json.Unmarshal(data, &varConfigObject)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ConfigObject(varConfigObject)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "version")
 		delete(additionalProperties, "self")
 		delete(additionalProperties, "object")

@@ -47,7 +47,7 @@ func NewChildrenWithDefaults() *Children {
 
 // GetOperator returns the Operator field value if set, zero value otherwise.
 func (o *Children) GetOperator() string {
-	if o == nil || isNil(o.Operator) {
+	if o == nil || IsNil(o.Operator) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *Children) GetOperator() string {
 // GetOperatorOk returns a tuple with the Operator field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Children) GetOperatorOk() (*string, bool) {
-	if o == nil || isNil(o.Operator) {
+	if o == nil || IsNil(o.Operator) {
 		return nil, false
 	}
 	return o.Operator, true
@@ -65,7 +65,7 @@ func (o *Children) GetOperatorOk() (*string, bool) {
 
 // HasOperator returns a boolean if a field has been set.
 func (o *Children) HasOperator() bool {
-	if o != nil && !isNil(o.Operator) {
+	if o != nil && !IsNil(o.Operator) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *Children) SetOperator(v string) {
 
 // GetAttribute returns the Attribute field value if set, zero value otherwise.
 func (o *Children) GetAttribute() string {
-	if o == nil || isNil(o.Attribute) {
+	if o == nil || IsNil(o.Attribute) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *Children) GetAttribute() string {
 // GetAttributeOk returns a tuple with the Attribute field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Children) GetAttributeOk() (*string, bool) {
-	if o == nil || isNil(o.Attribute) {
+	if o == nil || IsNil(o.Attribute) {
 		return nil, false
 	}
 	return o.Attribute, true
@@ -97,7 +97,7 @@ func (o *Children) GetAttributeOk() (*string, bool) {
 
 // HasAttribute returns a boolean if a field has been set.
 func (o *Children) HasAttribute() bool {
-	if o != nil && !isNil(o.Attribute) {
+	if o != nil && !IsNil(o.Attribute) {
 		return true
 	}
 
@@ -111,7 +111,7 @@ func (o *Children) SetAttribute(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Children) GetValue() Value {
-	if o == nil || isNil(o.Value.Get()) {
+	if o == nil || IsNil(o.Value.Get()) {
 		var ret Value
 		return ret
 	}
@@ -153,7 +153,7 @@ func (o *Children) UnsetValue() {
 
 // GetChildren returns the Children field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Children) GetChildren() string {
-	if o == nil || isNil(o.Children.Get()) {
+	if o == nil || IsNil(o.Children.Get()) {
 		var ret string
 		return ret
 	}
@@ -203,10 +203,10 @@ func (o Children) MarshalJSON() ([]byte, error) {
 
 func (o Children) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Operator) {
+	if !IsNil(o.Operator) {
 		toSerialize["operator"] = o.Operator
 	}
-	if !isNil(o.Attribute) {
+	if !IsNil(o.Attribute) {
 		toSerialize["attribute"] = o.Attribute
 	}
 	if o.Value.IsSet() {
@@ -223,16 +223,20 @@ func (o Children) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Children) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Children) UnmarshalJSON(data []byte) (err error) {
 	varChildren := _Children{}
 
-	if err = json.Unmarshal(bytes, &varChildren); err == nil {
+	err = json.Unmarshal(data, &varChildren)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Children(varChildren)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "operator")
 		delete(additionalProperties, "attribute")
 		delete(additionalProperties, "value")

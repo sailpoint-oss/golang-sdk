@@ -110,7 +110,7 @@ func (o *ProvisioningCompleted) SetSources(v string) {
 
 // GetAction returns the Action field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProvisioningCompleted) GetAction() string {
-	if o == nil || isNil(o.Action.Get()) {
+	if o == nil || IsNil(o.Action.Get()) {
 		var ret string
 		return ret
 	}
@@ -163,7 +163,7 @@ func (o *ProvisioningCompleted) GetErrors() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProvisioningCompleted) GetErrorsOk() ([]string, bool) {
-	if o == nil || isNil(o.Errors) {
+	if o == nil || IsNil(o.Errors) {
 		return nil, false
 	}
 	return o.Errors, true
@@ -171,7 +171,7 @@ func (o *ProvisioningCompleted) GetErrorsOk() ([]string, bool) {
 
 // HasErrors returns a boolean if a field has been set.
 func (o *ProvisioningCompleted) HasErrors() bool {
-	if o != nil && isNil(o.Errors) {
+	if o != nil && !IsNil(o.Errors) {
 		return true
 	}
 
@@ -196,7 +196,7 @@ func (o *ProvisioningCompleted) GetWarnings() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProvisioningCompleted) GetWarningsOk() ([]string, bool) {
-	if o == nil || isNil(o.Warnings) {
+	if o == nil || IsNil(o.Warnings) {
 		return nil, false
 	}
 	return o.Warnings, true
@@ -204,7 +204,7 @@ func (o *ProvisioningCompleted) GetWarningsOk() ([]string, bool) {
 
 // HasWarnings returns a boolean if a field has been set.
 func (o *ProvisioningCompleted) HasWarnings() bool {
-	if o != nil && isNil(o.Warnings) {
+	if o != nil && !IsNil(o.Warnings) {
 		return true
 	}
 
@@ -242,7 +242,7 @@ func (o *ProvisioningCompleted) SetRecipient(v ProvisioningCompletedRecipient) {
 
 // GetRequester returns the Requester field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProvisioningCompleted) GetRequester() ProvisioningCompletedRequester {
-	if o == nil || isNil(o.Requester.Get()) {
+	if o == nil || IsNil(o.Requester.Get()) {
 		var ret ProvisioningCompletedRequester
 		return ret
 	}
@@ -340,8 +340,8 @@ func (o ProvisioningCompleted) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ProvisioningCompleted) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *ProvisioningCompleted) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -353,7 +353,7 @@ func (o *ProvisioningCompleted) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -367,13 +367,17 @@ func (o *ProvisioningCompleted) UnmarshalJSON(bytes []byte) (err error) {
 
 	varProvisioningCompleted := _ProvisioningCompleted{}
 
-	if err = json.Unmarshal(bytes, &varProvisioningCompleted); err == nil {
+	err = json.Unmarshal(data, &varProvisioningCompleted)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ProvisioningCompleted(varProvisioningCompleted)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "trackingNumber")
 		delete(additionalProperties, "sources")
 		delete(additionalProperties, "action")

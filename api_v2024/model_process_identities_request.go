@@ -45,7 +45,7 @@ func NewProcessIdentitiesRequestWithDefaults() *ProcessIdentitiesRequest {
 
 // GetIdentityIds returns the IdentityIds field value if set, zero value otherwise.
 func (o *ProcessIdentitiesRequest) GetIdentityIds() []string {
-	if o == nil || isNil(o.IdentityIds) {
+	if o == nil || IsNil(o.IdentityIds) {
 		var ret []string
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *ProcessIdentitiesRequest) GetIdentityIds() []string {
 // GetIdentityIdsOk returns a tuple with the IdentityIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProcessIdentitiesRequest) GetIdentityIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.IdentityIds) {
+	if o == nil || IsNil(o.IdentityIds) {
 		return nil, false
 	}
 	return o.IdentityIds, true
@@ -63,7 +63,7 @@ func (o *ProcessIdentitiesRequest) GetIdentityIdsOk() ([]string, bool) {
 
 // HasIdentityIds returns a boolean if a field has been set.
 func (o *ProcessIdentitiesRequest) HasIdentityIds() bool {
-	if o != nil && !isNil(o.IdentityIds) {
+	if o != nil && !IsNil(o.IdentityIds) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o ProcessIdentitiesRequest) MarshalJSON() ([]byte, error) {
 
 func (o ProcessIdentitiesRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.IdentityIds) {
+	if !IsNil(o.IdentityIds) {
 		toSerialize["identityIds"] = o.IdentityIds
 	}
 
@@ -96,16 +96,20 @@ func (o ProcessIdentitiesRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ProcessIdentitiesRequest) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ProcessIdentitiesRequest) UnmarshalJSON(data []byte) (err error) {
 	varProcessIdentitiesRequest := _ProcessIdentitiesRequest{}
 
-	if err = json.Unmarshal(bytes, &varProcessIdentitiesRequest); err == nil {
+	err = json.Unmarshal(data, &varProcessIdentitiesRequest)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ProcessIdentitiesRequest(varProcessIdentitiesRequest)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "identityIds")
 		o.AdditionalProperties = additionalProperties
 	}

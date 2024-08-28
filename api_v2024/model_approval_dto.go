@@ -53,7 +53,7 @@ func NewApprovalDtoWithDefaults() *ApprovalDto {
 
 // GetComments returns the Comments field value if set, zero value otherwise.
 func (o *ApprovalDto) GetComments() map[string]interface{} {
-	if o == nil || isNil(o.Comments) {
+	if o == nil || IsNil(o.Comments) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -63,7 +63,7 @@ func (o *ApprovalDto) GetComments() map[string]interface{} {
 // GetCommentsOk returns a tuple with the Comments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalDto) GetCommentsOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Comments) {
+	if o == nil || IsNil(o.Comments) {
 		return map[string]interface{}{}, false
 	}
 	return o.Comments, true
@@ -71,7 +71,7 @@ func (o *ApprovalDto) GetCommentsOk() (map[string]interface{}, bool) {
 
 // HasComments returns a boolean if a field has been set.
 func (o *ApprovalDto) HasComments() bool {
-	if o != nil && !isNil(o.Comments) {
+	if o != nil && !IsNil(o.Comments) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o *ApprovalDto) SetComments(v map[string]interface{}) {
 
 // GetApprovedBy returns the ApprovedBy field value if set, zero value otherwise.
 func (o *ApprovalDto) GetApprovedBy() []ApprovalIdentity {
-	if o == nil || isNil(o.ApprovedBy) {
+	if o == nil || IsNil(o.ApprovedBy) {
 		var ret []ApprovalIdentity
 		return ret
 	}
@@ -95,7 +95,7 @@ func (o *ApprovalDto) GetApprovedBy() []ApprovalIdentity {
 // GetApprovedByOk returns a tuple with the ApprovedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalDto) GetApprovedByOk() ([]ApprovalIdentity, bool) {
-	if o == nil || isNil(o.ApprovedBy) {
+	if o == nil || IsNil(o.ApprovedBy) {
 		return nil, false
 	}
 	return o.ApprovedBy, true
@@ -103,7 +103,7 @@ func (o *ApprovalDto) GetApprovedByOk() ([]ApprovalIdentity, bool) {
 
 // HasApprovedBy returns a boolean if a field has been set.
 func (o *ApprovalDto) HasApprovedBy() bool {
-	if o != nil && !isNil(o.ApprovedBy) {
+	if o != nil && !IsNil(o.ApprovedBy) {
 		return true
 	}
 
@@ -117,7 +117,7 @@ func (o *ApprovalDto) SetApprovedBy(v []ApprovalIdentity) {
 
 // GetRejectedBy returns the RejectedBy field value if set, zero value otherwise.
 func (o *ApprovalDto) GetRejectedBy() []ApprovalIdentity {
-	if o == nil || isNil(o.RejectedBy) {
+	if o == nil || IsNil(o.RejectedBy) {
 		var ret []ApprovalIdentity
 		return ret
 	}
@@ -127,7 +127,7 @@ func (o *ApprovalDto) GetRejectedBy() []ApprovalIdentity {
 // GetRejectedByOk returns a tuple with the RejectedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalDto) GetRejectedByOk() ([]ApprovalIdentity, bool) {
-	if o == nil || isNil(o.RejectedBy) {
+	if o == nil || IsNil(o.RejectedBy) {
 		return nil, false
 	}
 	return o.RejectedBy, true
@@ -135,7 +135,7 @@ func (o *ApprovalDto) GetRejectedByOk() ([]ApprovalIdentity, bool) {
 
 // HasRejectedBy returns a boolean if a field has been set.
 func (o *ApprovalDto) HasRejectedBy() bool {
-	if o != nil && !isNil(o.RejectedBy) {
+	if o != nil && !IsNil(o.RejectedBy) {
 		return true
 	}
 
@@ -149,7 +149,7 @@ func (o *ApprovalDto) SetRejectedBy(v []ApprovalIdentity) {
 
 // GetReassignFrom returns the ReassignFrom field value if set, zero value otherwise.
 func (o *ApprovalDto) GetReassignFrom() ApprovalIdentity {
-	if o == nil || isNil(o.ReassignFrom) {
+	if o == nil || IsNil(o.ReassignFrom) {
 		var ret ApprovalIdentity
 		return ret
 	}
@@ -159,7 +159,7 @@ func (o *ApprovalDto) GetReassignFrom() ApprovalIdentity {
 // GetReassignFromOk returns a tuple with the ReassignFrom field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalDto) GetReassignFromOk() (*ApprovalIdentity, bool) {
-	if o == nil || isNil(o.ReassignFrom) {
+	if o == nil || IsNil(o.ReassignFrom) {
 		return nil, false
 	}
 	return o.ReassignFrom, true
@@ -167,7 +167,7 @@ func (o *ApprovalDto) GetReassignFromOk() (*ApprovalIdentity, bool) {
 
 // HasReassignFrom returns a boolean if a field has been set.
 func (o *ApprovalDto) HasReassignFrom() bool {
-	if o != nil && !isNil(o.ReassignFrom) {
+	if o != nil && !IsNil(o.ReassignFrom) {
 		return true
 	}
 
@@ -181,7 +181,7 @@ func (o *ApprovalDto) SetReassignFrom(v ApprovalIdentity) {
 
 // GetReassignTo returns the ReassignTo field value if set, zero value otherwise.
 func (o *ApprovalDto) GetReassignTo() ApprovalIdentity {
-	if o == nil || isNil(o.ReassignTo) {
+	if o == nil || IsNil(o.ReassignTo) {
 		var ret ApprovalIdentity
 		return ret
 	}
@@ -191,7 +191,7 @@ func (o *ApprovalDto) GetReassignTo() ApprovalIdentity {
 // GetReassignToOk returns a tuple with the ReassignTo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalDto) GetReassignToOk() (*ApprovalIdentity, bool) {
-	if o == nil || isNil(o.ReassignTo) {
+	if o == nil || IsNil(o.ReassignTo) {
 		return nil, false
 	}
 	return o.ReassignTo, true
@@ -199,7 +199,7 @@ func (o *ApprovalDto) GetReassignToOk() (*ApprovalIdentity, bool) {
 
 // HasReassignTo returns a boolean if a field has been set.
 func (o *ApprovalDto) HasReassignTo() bool {
-	if o != nil && !isNil(o.ReassignTo) {
+	if o != nil && !IsNil(o.ReassignTo) {
 		return true
 	}
 
@@ -213,7 +213,7 @@ func (o *ApprovalDto) SetReassignTo(v ApprovalIdentity) {
 
 // GetAdditionalAttributes returns the AdditionalAttributes field value if set, zero value otherwise.
 func (o *ApprovalDto) GetAdditionalAttributes() map[string]interface{} {
-	if o == nil || isNil(o.AdditionalAttributes) {
+	if o == nil || IsNil(o.AdditionalAttributes) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -223,7 +223,7 @@ func (o *ApprovalDto) GetAdditionalAttributes() map[string]interface{} {
 // GetAdditionalAttributesOk returns a tuple with the AdditionalAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalDto) GetAdditionalAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.AdditionalAttributes) {
+	if o == nil || IsNil(o.AdditionalAttributes) {
 		return map[string]interface{}{}, false
 	}
 	return o.AdditionalAttributes, true
@@ -231,7 +231,7 @@ func (o *ApprovalDto) GetAdditionalAttributesOk() (map[string]interface{}, bool)
 
 // HasAdditionalAttributes returns a boolean if a field has been set.
 func (o *ApprovalDto) HasAdditionalAttributes() bool {
-	if o != nil && !isNil(o.AdditionalAttributes) {
+	if o != nil && !IsNil(o.AdditionalAttributes) {
 		return true
 	}
 
@@ -253,22 +253,22 @@ func (o ApprovalDto) MarshalJSON() ([]byte, error) {
 
 func (o ApprovalDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Comments) {
+	if !IsNil(o.Comments) {
 		toSerialize["comments"] = o.Comments
 	}
-	if !isNil(o.ApprovedBy) {
+	if !IsNil(o.ApprovedBy) {
 		toSerialize["approvedBy"] = o.ApprovedBy
 	}
-	if !isNil(o.RejectedBy) {
+	if !IsNil(o.RejectedBy) {
 		toSerialize["rejectedBy"] = o.RejectedBy
 	}
-	if !isNil(o.ReassignFrom) {
+	if !IsNil(o.ReassignFrom) {
 		toSerialize["reassignFrom"] = o.ReassignFrom
 	}
-	if !isNil(o.ReassignTo) {
+	if !IsNil(o.ReassignTo) {
 		toSerialize["reassignTo"] = o.ReassignTo
 	}
-	if !isNil(o.AdditionalAttributes) {
+	if !IsNil(o.AdditionalAttributes) {
 		toSerialize["additionalAttributes"] = o.AdditionalAttributes
 	}
 
@@ -279,16 +279,20 @@ func (o ApprovalDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ApprovalDto) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ApprovalDto) UnmarshalJSON(data []byte) (err error) {
 	varApprovalDto := _ApprovalDto{}
 
-	if err = json.Unmarshal(bytes, &varApprovalDto); err == nil {
+	err = json.Unmarshal(data, &varApprovalDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ApprovalDto(varApprovalDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "comments")
 		delete(additionalProperties, "approvedBy")
 		delete(additionalProperties, "rejectedBy")

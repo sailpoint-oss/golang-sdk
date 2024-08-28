@@ -49,7 +49,7 @@ func NewIdentitiesReportArgumentsWithDefaults() *IdentitiesReportArguments {
 
 // GetCorrelatedOnly returns the CorrelatedOnly field value if set, zero value otherwise.
 func (o *IdentitiesReportArguments) GetCorrelatedOnly() bool {
-	if o == nil || isNil(o.CorrelatedOnly) {
+	if o == nil || IsNil(o.CorrelatedOnly) {
 		var ret bool
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *IdentitiesReportArguments) GetCorrelatedOnly() bool {
 // GetCorrelatedOnlyOk returns a tuple with the CorrelatedOnly field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentitiesReportArguments) GetCorrelatedOnlyOk() (*bool, bool) {
-	if o == nil || isNil(o.CorrelatedOnly) {
+	if o == nil || IsNil(o.CorrelatedOnly) {
 		return nil, false
 	}
 	return o.CorrelatedOnly, true
@@ -67,7 +67,7 @@ func (o *IdentitiesReportArguments) GetCorrelatedOnlyOk() (*bool, bool) {
 
 // HasCorrelatedOnly returns a boolean if a field has been set.
 func (o *IdentitiesReportArguments) HasCorrelatedOnly() bool {
-	if o != nil && !isNil(o.CorrelatedOnly) {
+	if o != nil && !IsNil(o.CorrelatedOnly) {
 		return true
 	}
 
@@ -89,7 +89,7 @@ func (o IdentitiesReportArguments) MarshalJSON() ([]byte, error) {
 
 func (o IdentitiesReportArguments) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.CorrelatedOnly) {
+	if !IsNil(o.CorrelatedOnly) {
 		toSerialize["correlatedOnly"] = o.CorrelatedOnly
 	}
 
@@ -100,16 +100,20 @@ func (o IdentitiesReportArguments) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *IdentitiesReportArguments) UnmarshalJSON(bytes []byte) (err error) {
+func (o *IdentitiesReportArguments) UnmarshalJSON(data []byte) (err error) {
 	varIdentitiesReportArguments := _IdentitiesReportArguments{}
 
-	if err = json.Unmarshal(bytes, &varIdentitiesReportArguments); err == nil {
+	err = json.Unmarshal(data, &varIdentitiesReportArguments)
+
+	if err != nil {
+		return err
+	}
+
 	*o = IdentitiesReportArguments(varIdentitiesReportArguments)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "correlatedOnly")
 		o.AdditionalProperties = additionalProperties
 	}

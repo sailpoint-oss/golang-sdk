@@ -134,7 +134,7 @@ func (o *Trigger) SetType(v TriggerType) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Trigger) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -144,7 +144,7 @@ func (o *Trigger) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Trigger) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -152,7 +152,7 @@ func (o *Trigger) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Trigger) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -214,7 +214,7 @@ func (o *Trigger) SetExampleInput(v TriggerExampleInput) {
 
 // GetOutputSchema returns the OutputSchema field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Trigger) GetOutputSchema() string {
-	if o == nil || isNil(o.OutputSchema.Get()) {
+	if o == nil || IsNil(o.OutputSchema.Get()) {
 		var ret string
 		return ret
 	}
@@ -256,7 +256,7 @@ func (o *Trigger) UnsetOutputSchema() {
 
 // GetExampleOutput returns the ExampleOutput field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Trigger) GetExampleOutput() TriggerExampleOutput {
-	if o == nil || isNil(o.ExampleOutput.Get()) {
+	if o == nil || IsNil(o.ExampleOutput.Get()) {
 		var ret TriggerExampleOutput
 		return ret
 	}
@@ -309,7 +309,7 @@ func (o Trigger) ToMap() (map[string]interface{}, error) {
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
 	toSerialize["type"] = o.Type
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 	toSerialize["inputSchema"] = o.InputSchema
@@ -328,8 +328,8 @@ func (o Trigger) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Trigger) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *Trigger) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -342,7 +342,7 @@ func (o *Trigger) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -356,13 +356,17 @@ func (o *Trigger) UnmarshalJSON(bytes []byte) (err error) {
 
 	varTrigger := _Trigger{}
 
-	if err = json.Unmarshal(bytes, &varTrigger); err == nil {
+	err = json.Unmarshal(data, &varTrigger)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Trigger(varTrigger)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "type")

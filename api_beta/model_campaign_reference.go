@@ -258,8 +258,8 @@ func (o CampaignReference) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CampaignReference) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *CampaignReference) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -274,7 +274,7 @@ func (o *CampaignReference) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -288,13 +288,17 @@ func (o *CampaignReference) UnmarshalJSON(bytes []byte) (err error) {
 
 	varCampaignReference := _CampaignReference{}
 
-	if err = json.Unmarshal(bytes, &varCampaignReference); err == nil {
+	err = json.Unmarshal(data, &varCampaignReference)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CampaignReference(varCampaignReference)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "type")

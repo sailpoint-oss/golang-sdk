@@ -53,7 +53,7 @@ func NewApproval1WithDefaults() *Approval1 {
 
 // GetComments returns the Comments field value if set, zero value otherwise.
 func (o *Approval1) GetComments() []ApprovalComment1 {
-	if o == nil || isNil(o.Comments) {
+	if o == nil || IsNil(o.Comments) {
 		var ret []ApprovalComment1
 		return ret
 	}
@@ -63,7 +63,7 @@ func (o *Approval1) GetComments() []ApprovalComment1 {
 // GetCommentsOk returns a tuple with the Comments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Approval1) GetCommentsOk() ([]ApprovalComment1, bool) {
-	if o == nil || isNil(o.Comments) {
+	if o == nil || IsNil(o.Comments) {
 		return nil, false
 	}
 	return o.Comments, true
@@ -71,7 +71,7 @@ func (o *Approval1) GetCommentsOk() ([]ApprovalComment1, bool) {
 
 // HasComments returns a boolean if a field has been set.
 func (o *Approval1) HasComments() bool {
-	if o != nil && !isNil(o.Comments) {
+	if o != nil && !IsNil(o.Comments) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o *Approval1) SetComments(v []ApprovalComment1) {
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Approval1) GetCreated() time.Time {
-	if o == nil || isNil(o.Created.Get()) {
+	if o == nil || IsNil(o.Created.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -127,7 +127,7 @@ func (o *Approval1) UnsetCreated() {
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Approval1) GetModified() time.Time {
-	if o == nil || isNil(o.Modified.Get()) {
+	if o == nil || IsNil(o.Modified.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -169,7 +169,7 @@ func (o *Approval1) UnsetModified() {
 
 // GetOwner returns the Owner field value if set, zero value otherwise.
 func (o *Approval1) GetOwner() AccountSource {
-	if o == nil || isNil(o.Owner) {
+	if o == nil || IsNil(o.Owner) {
 		var ret AccountSource
 		return ret
 	}
@@ -179,7 +179,7 @@ func (o *Approval1) GetOwner() AccountSource {
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Approval1) GetOwnerOk() (*AccountSource, bool) {
-	if o == nil || isNil(o.Owner) {
+	if o == nil || IsNil(o.Owner) {
 		return nil, false
 	}
 	return o.Owner, true
@@ -187,7 +187,7 @@ func (o *Approval1) GetOwnerOk() (*AccountSource, bool) {
 
 // HasOwner returns a boolean if a field has been set.
 func (o *Approval1) HasOwner() bool {
-	if o != nil && !isNil(o.Owner) {
+	if o != nil && !IsNil(o.Owner) {
 		return true
 	}
 
@@ -201,7 +201,7 @@ func (o *Approval1) SetOwner(v AccountSource) {
 
 // GetResult returns the Result field value if set, zero value otherwise.
 func (o *Approval1) GetResult() string {
-	if o == nil || isNil(o.Result) {
+	if o == nil || IsNil(o.Result) {
 		var ret string
 		return ret
 	}
@@ -211,7 +211,7 @@ func (o *Approval1) GetResult() string {
 // GetResultOk returns a tuple with the Result field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Approval1) GetResultOk() (*string, bool) {
-	if o == nil || isNil(o.Result) {
+	if o == nil || IsNil(o.Result) {
 		return nil, false
 	}
 	return o.Result, true
@@ -219,7 +219,7 @@ func (o *Approval1) GetResultOk() (*string, bool) {
 
 // HasResult returns a boolean if a field has been set.
 func (o *Approval1) HasResult() bool {
-	if o != nil && !isNil(o.Result) {
+	if o != nil && !IsNil(o.Result) {
 		return true
 	}
 
@@ -233,7 +233,7 @@ func (o *Approval1) SetResult(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Approval1) GetType() string {
-	if o == nil || isNil(o.Type.Get()) {
+	if o == nil || IsNil(o.Type.Get()) {
 		var ret string
 		return ret
 	}
@@ -283,7 +283,7 @@ func (o Approval1) MarshalJSON() ([]byte, error) {
 
 func (o Approval1) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Comments) {
+	if !IsNil(o.Comments) {
 		toSerialize["comments"] = o.Comments
 	}
 	if o.Created.IsSet() {
@@ -292,10 +292,10 @@ func (o Approval1) ToMap() (map[string]interface{}, error) {
 	if o.Modified.IsSet() {
 		toSerialize["modified"] = o.Modified.Get()
 	}
-	if !isNil(o.Owner) {
+	if !IsNil(o.Owner) {
 		toSerialize["owner"] = o.Owner
 	}
-	if !isNil(o.Result) {
+	if !IsNil(o.Result) {
 		toSerialize["result"] = o.Result
 	}
 	if o.Type.IsSet() {
@@ -309,16 +309,20 @@ func (o Approval1) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Approval1) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Approval1) UnmarshalJSON(data []byte) (err error) {
 	varApproval1 := _Approval1{}
 
-	if err = json.Unmarshal(bytes, &varApproval1); err == nil {
+	err = json.Unmarshal(data, &varApproval1)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Approval1(varApproval1)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "comments")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "modified")

@@ -104,7 +104,7 @@ func (o *HttpConfig) SetHttpDispatchMode(v HttpDispatchMode) {
 
 // GetHttpAuthenticationType returns the HttpAuthenticationType field value if set, zero value otherwise.
 func (o *HttpConfig) GetHttpAuthenticationType() HttpAuthenticationType {
-	if o == nil || isNil(o.HttpAuthenticationType) {
+	if o == nil || IsNil(o.HttpAuthenticationType) {
 		var ret HttpAuthenticationType
 		return ret
 	}
@@ -114,7 +114,7 @@ func (o *HttpConfig) GetHttpAuthenticationType() HttpAuthenticationType {
 // GetHttpAuthenticationTypeOk returns a tuple with the HttpAuthenticationType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *HttpConfig) GetHttpAuthenticationTypeOk() (*HttpAuthenticationType, bool) {
-	if o == nil || isNil(o.HttpAuthenticationType) {
+	if o == nil || IsNil(o.HttpAuthenticationType) {
 		return nil, false
 	}
 	return o.HttpAuthenticationType, true
@@ -122,7 +122,7 @@ func (o *HttpConfig) GetHttpAuthenticationTypeOk() (*HttpAuthenticationType, boo
 
 // HasHttpAuthenticationType returns a boolean if a field has been set.
 func (o *HttpConfig) HasHttpAuthenticationType() bool {
-	if o != nil && !isNil(o.HttpAuthenticationType) {
+	if o != nil && !IsNil(o.HttpAuthenticationType) {
 		return true
 	}
 
@@ -136,7 +136,7 @@ func (o *HttpConfig) SetHttpAuthenticationType(v HttpAuthenticationType) {
 
 // GetBasicAuthConfig returns the BasicAuthConfig field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HttpConfig) GetBasicAuthConfig() BasicAuthConfig {
-	if o == nil || isNil(o.BasicAuthConfig.Get()) {
+	if o == nil || IsNil(o.BasicAuthConfig.Get()) {
 		var ret BasicAuthConfig
 		return ret
 	}
@@ -178,7 +178,7 @@ func (o *HttpConfig) UnsetBasicAuthConfig() {
 
 // GetBearerTokenAuthConfig returns the BearerTokenAuthConfig field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HttpConfig) GetBearerTokenAuthConfig() BearerTokenAuthConfig {
-	if o == nil || isNil(o.BearerTokenAuthConfig.Get()) {
+	if o == nil || IsNil(o.BearerTokenAuthConfig.Get()) {
 		var ret BearerTokenAuthConfig
 		return ret
 	}
@@ -230,7 +230,7 @@ func (o HttpConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["url"] = o.Url
 	toSerialize["httpDispatchMode"] = o.HttpDispatchMode
-	if !isNil(o.HttpAuthenticationType) {
+	if !IsNil(o.HttpAuthenticationType) {
 		toSerialize["httpAuthenticationType"] = o.HttpAuthenticationType
 	}
 	if o.BasicAuthConfig.IsSet() {
@@ -247,8 +247,8 @@ func (o HttpConfig) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *HttpConfig) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *HttpConfig) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -258,7 +258,7 @@ func (o *HttpConfig) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -272,13 +272,17 @@ func (o *HttpConfig) UnmarshalJSON(bytes []byte) (err error) {
 
 	varHttpConfig := _HttpConfig{}
 
-	if err = json.Unmarshal(bytes, &varHttpConfig); err == nil {
+	err = json.Unmarshal(data, &varHttpConfig)
+
+	if err != nil {
+		return err
+	}
+
 	*o = HttpConfig(varHttpConfig)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "url")
 		delete(additionalProperties, "httpDispatchMode")
 		delete(additionalProperties, "httpAuthenticationType")

@@ -49,7 +49,7 @@ func NewActivateCampaignOptionsWithDefaults() *ActivateCampaignOptions {
 
 // GetTimeZone returns the TimeZone field value if set, zero value otherwise.
 func (o *ActivateCampaignOptions) GetTimeZone() string {
-	if o == nil || isNil(o.TimeZone) {
+	if o == nil || IsNil(o.TimeZone) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *ActivateCampaignOptions) GetTimeZone() string {
 // GetTimeZoneOk returns a tuple with the TimeZone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ActivateCampaignOptions) GetTimeZoneOk() (*string, bool) {
-	if o == nil || isNil(o.TimeZone) {
+	if o == nil || IsNil(o.TimeZone) {
 		return nil, false
 	}
 	return o.TimeZone, true
@@ -67,7 +67,7 @@ func (o *ActivateCampaignOptions) GetTimeZoneOk() (*string, bool) {
 
 // HasTimeZone returns a boolean if a field has been set.
 func (o *ActivateCampaignOptions) HasTimeZone() bool {
-	if o != nil && !isNil(o.TimeZone) {
+	if o != nil && !IsNil(o.TimeZone) {
 		return true
 	}
 
@@ -89,7 +89,7 @@ func (o ActivateCampaignOptions) MarshalJSON() ([]byte, error) {
 
 func (o ActivateCampaignOptions) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.TimeZone) {
+	if !IsNil(o.TimeZone) {
 		toSerialize["timeZone"] = o.TimeZone
 	}
 
@@ -100,16 +100,20 @@ func (o ActivateCampaignOptions) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ActivateCampaignOptions) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ActivateCampaignOptions) UnmarshalJSON(data []byte) (err error) {
 	varActivateCampaignOptions := _ActivateCampaignOptions{}
 
-	if err = json.Unmarshal(bytes, &varActivateCampaignOptions); err == nil {
+	err = json.Unmarshal(data, &varActivateCampaignOptions)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ActivateCampaignOptions(varActivateCampaignOptions)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "timeZone")
 		o.AdditionalProperties = additionalProperties
 	}

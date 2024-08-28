@@ -51,7 +51,7 @@ func NewFormElementDynamicDataSourceConfigWithDefaults() *FormElementDynamicData
 
 // GetAggregationBucketField returns the AggregationBucketField field value if set, zero value otherwise.
 func (o *FormElementDynamicDataSourceConfig) GetAggregationBucketField() string {
-	if o == nil || isNil(o.AggregationBucketField) {
+	if o == nil || IsNil(o.AggregationBucketField) {
 		var ret string
 		return ret
 	}
@@ -61,7 +61,7 @@ func (o *FormElementDynamicDataSourceConfig) GetAggregationBucketField() string 
 // GetAggregationBucketFieldOk returns a tuple with the AggregationBucketField field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormElementDynamicDataSourceConfig) GetAggregationBucketFieldOk() (*string, bool) {
-	if o == nil || isNil(o.AggregationBucketField) {
+	if o == nil || IsNil(o.AggregationBucketField) {
 		return nil, false
 	}
 	return o.AggregationBucketField, true
@@ -69,7 +69,7 @@ func (o *FormElementDynamicDataSourceConfig) GetAggregationBucketFieldOk() (*str
 
 // HasAggregationBucketField returns a boolean if a field has been set.
 func (o *FormElementDynamicDataSourceConfig) HasAggregationBucketField() bool {
-	if o != nil && !isNil(o.AggregationBucketField) {
+	if o != nil && !IsNil(o.AggregationBucketField) {
 		return true
 	}
 
@@ -83,7 +83,7 @@ func (o *FormElementDynamicDataSourceConfig) SetAggregationBucketField(v string)
 
 // GetIndices returns the Indices field value if set, zero value otherwise.
 func (o *FormElementDynamicDataSourceConfig) GetIndices() []string {
-	if o == nil || isNil(o.Indices) {
+	if o == nil || IsNil(o.Indices) {
 		var ret []string
 		return ret
 	}
@@ -93,7 +93,7 @@ func (o *FormElementDynamicDataSourceConfig) GetIndices() []string {
 // GetIndicesOk returns a tuple with the Indices field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormElementDynamicDataSourceConfig) GetIndicesOk() ([]string, bool) {
-	if o == nil || isNil(o.Indices) {
+	if o == nil || IsNil(o.Indices) {
 		return nil, false
 	}
 	return o.Indices, true
@@ -101,7 +101,7 @@ func (o *FormElementDynamicDataSourceConfig) GetIndicesOk() ([]string, bool) {
 
 // HasIndices returns a boolean if a field has been set.
 func (o *FormElementDynamicDataSourceConfig) HasIndices() bool {
-	if o != nil && !isNil(o.Indices) {
+	if o != nil && !IsNil(o.Indices) {
 		return true
 	}
 
@@ -115,7 +115,7 @@ func (o *FormElementDynamicDataSourceConfig) SetIndices(v []string) {
 
 // GetObjectType returns the ObjectType field value if set, zero value otherwise.
 func (o *FormElementDynamicDataSourceConfig) GetObjectType() string {
-	if o == nil || isNil(o.ObjectType) {
+	if o == nil || IsNil(o.ObjectType) {
 		var ret string
 		return ret
 	}
@@ -125,7 +125,7 @@ func (o *FormElementDynamicDataSourceConfig) GetObjectType() string {
 // GetObjectTypeOk returns a tuple with the ObjectType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormElementDynamicDataSourceConfig) GetObjectTypeOk() (*string, bool) {
-	if o == nil || isNil(o.ObjectType) {
+	if o == nil || IsNil(o.ObjectType) {
 		return nil, false
 	}
 	return o.ObjectType, true
@@ -133,7 +133,7 @@ func (o *FormElementDynamicDataSourceConfig) GetObjectTypeOk() (*string, bool) {
 
 // HasObjectType returns a boolean if a field has been set.
 func (o *FormElementDynamicDataSourceConfig) HasObjectType() bool {
-	if o != nil && !isNil(o.ObjectType) {
+	if o != nil && !IsNil(o.ObjectType) {
 		return true
 	}
 
@@ -147,7 +147,7 @@ func (o *FormElementDynamicDataSourceConfig) SetObjectType(v string) {
 
 // GetQuery returns the Query field value if set, zero value otherwise.
 func (o *FormElementDynamicDataSourceConfig) GetQuery() string {
-	if o == nil || isNil(o.Query) {
+	if o == nil || IsNil(o.Query) {
 		var ret string
 		return ret
 	}
@@ -157,7 +157,7 @@ func (o *FormElementDynamicDataSourceConfig) GetQuery() string {
 // GetQueryOk returns a tuple with the Query field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FormElementDynamicDataSourceConfig) GetQueryOk() (*string, bool) {
-	if o == nil || isNil(o.Query) {
+	if o == nil || IsNil(o.Query) {
 		return nil, false
 	}
 	return o.Query, true
@@ -165,7 +165,7 @@ func (o *FormElementDynamicDataSourceConfig) GetQueryOk() (*string, bool) {
 
 // HasQuery returns a boolean if a field has been set.
 func (o *FormElementDynamicDataSourceConfig) HasQuery() bool {
-	if o != nil && !isNil(o.Query) {
+	if o != nil && !IsNil(o.Query) {
 		return true
 	}
 
@@ -187,16 +187,16 @@ func (o FormElementDynamicDataSourceConfig) MarshalJSON() ([]byte, error) {
 
 func (o FormElementDynamicDataSourceConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AggregationBucketField) {
+	if !IsNil(o.AggregationBucketField) {
 		toSerialize["aggregationBucketField"] = o.AggregationBucketField
 	}
-	if !isNil(o.Indices) {
+	if !IsNil(o.Indices) {
 		toSerialize["indices"] = o.Indices
 	}
-	if !isNil(o.ObjectType) {
+	if !IsNil(o.ObjectType) {
 		toSerialize["objectType"] = o.ObjectType
 	}
-	if !isNil(o.Query) {
+	if !IsNil(o.Query) {
 		toSerialize["query"] = o.Query
 	}
 
@@ -207,16 +207,20 @@ func (o FormElementDynamicDataSourceConfig) ToMap() (map[string]interface{}, err
 	return toSerialize, nil
 }
 
-func (o *FormElementDynamicDataSourceConfig) UnmarshalJSON(bytes []byte) (err error) {
+func (o *FormElementDynamicDataSourceConfig) UnmarshalJSON(data []byte) (err error) {
 	varFormElementDynamicDataSourceConfig := _FormElementDynamicDataSourceConfig{}
 
-	if err = json.Unmarshal(bytes, &varFormElementDynamicDataSourceConfig); err == nil {
+	err = json.Unmarshal(data, &varFormElementDynamicDataSourceConfig)
+
+	if err != nil {
+		return err
+	}
+
 	*o = FormElementDynamicDataSourceConfig(varFormElementDynamicDataSourceConfig)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "aggregationBucketField")
 		delete(additionalProperties, "indices")
 		delete(additionalProperties, "objectType")

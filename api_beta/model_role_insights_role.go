@@ -53,7 +53,7 @@ func NewRoleInsightsRoleWithDefaults() *RoleInsightsRole {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *RoleInsightsRole) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -63,7 +63,7 @@ func (o *RoleInsightsRole) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleInsightsRole) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -71,7 +71,7 @@ func (o *RoleInsightsRole) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *RoleInsightsRole) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o *RoleInsightsRole) SetName(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *RoleInsightsRole) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -95,7 +95,7 @@ func (o *RoleInsightsRole) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleInsightsRole) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -103,7 +103,7 @@ func (o *RoleInsightsRole) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *RoleInsightsRole) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -117,7 +117,7 @@ func (o *RoleInsightsRole) SetId(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *RoleInsightsRole) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -127,7 +127,7 @@ func (o *RoleInsightsRole) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleInsightsRole) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -135,7 +135,7 @@ func (o *RoleInsightsRole) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *RoleInsightsRole) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -149,7 +149,7 @@ func (o *RoleInsightsRole) SetDescription(v string) {
 
 // GetOwnerName returns the OwnerName field value if set, zero value otherwise.
 func (o *RoleInsightsRole) GetOwnerName() string {
-	if o == nil || isNil(o.OwnerName) {
+	if o == nil || IsNil(o.OwnerName) {
 		var ret string
 		return ret
 	}
@@ -159,7 +159,7 @@ func (o *RoleInsightsRole) GetOwnerName() string {
 // GetOwnerNameOk returns a tuple with the OwnerName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleInsightsRole) GetOwnerNameOk() (*string, bool) {
-	if o == nil || isNil(o.OwnerName) {
+	if o == nil || IsNil(o.OwnerName) {
 		return nil, false
 	}
 	return o.OwnerName, true
@@ -167,7 +167,7 @@ func (o *RoleInsightsRole) GetOwnerNameOk() (*string, bool) {
 
 // HasOwnerName returns a boolean if a field has been set.
 func (o *RoleInsightsRole) HasOwnerName() bool {
-	if o != nil && !isNil(o.OwnerName) {
+	if o != nil && !IsNil(o.OwnerName) {
 		return true
 	}
 
@@ -181,7 +181,7 @@ func (o *RoleInsightsRole) SetOwnerName(v string) {
 
 // GetOwnerId returns the OwnerId field value if set, zero value otherwise.
 func (o *RoleInsightsRole) GetOwnerId() string {
-	if o == nil || isNil(o.OwnerId) {
+	if o == nil || IsNil(o.OwnerId) {
 		var ret string
 		return ret
 	}
@@ -191,7 +191,7 @@ func (o *RoleInsightsRole) GetOwnerId() string {
 // GetOwnerIdOk returns a tuple with the OwnerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleInsightsRole) GetOwnerIdOk() (*string, bool) {
-	if o == nil || isNil(o.OwnerId) {
+	if o == nil || IsNil(o.OwnerId) {
 		return nil, false
 	}
 	return o.OwnerId, true
@@ -199,7 +199,7 @@ func (o *RoleInsightsRole) GetOwnerIdOk() (*string, bool) {
 
 // HasOwnerId returns a boolean if a field has been set.
 func (o *RoleInsightsRole) HasOwnerId() bool {
-	if o != nil && !isNil(o.OwnerId) {
+	if o != nil && !IsNil(o.OwnerId) {
 		return true
 	}
 
@@ -221,19 +221,19 @@ func (o RoleInsightsRole) MarshalJSON() ([]byte, error) {
 
 func (o RoleInsightsRole) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.OwnerName) {
+	if !IsNil(o.OwnerName) {
 		toSerialize["ownerName"] = o.OwnerName
 	}
-	if !isNil(o.OwnerId) {
+	if !IsNil(o.OwnerId) {
 		toSerialize["ownerId"] = o.OwnerId
 	}
 
@@ -244,16 +244,20 @@ func (o RoleInsightsRole) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *RoleInsightsRole) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RoleInsightsRole) UnmarshalJSON(data []byte) (err error) {
 	varRoleInsightsRole := _RoleInsightsRole{}
 
-	if err = json.Unmarshal(bytes, &varRoleInsightsRole); err == nil {
+	err = json.Unmarshal(data, &varRoleInsightsRole)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RoleInsightsRole(varRoleInsightsRole)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "description")

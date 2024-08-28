@@ -45,7 +45,7 @@ func NewViolationPredictionWithDefaults() *ViolationPrediction {
 
 // GetViolationContexts returns the ViolationContexts field value if set, zero value otherwise.
 func (o *ViolationPrediction) GetViolationContexts() []ViolationContext {
-	if o == nil || isNil(o.ViolationContexts) {
+	if o == nil || IsNil(o.ViolationContexts) {
 		var ret []ViolationContext
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *ViolationPrediction) GetViolationContexts() []ViolationContext {
 // GetViolationContextsOk returns a tuple with the ViolationContexts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ViolationPrediction) GetViolationContextsOk() ([]ViolationContext, bool) {
-	if o == nil || isNil(o.ViolationContexts) {
+	if o == nil || IsNil(o.ViolationContexts) {
 		return nil, false
 	}
 	return o.ViolationContexts, true
@@ -63,7 +63,7 @@ func (o *ViolationPrediction) GetViolationContextsOk() ([]ViolationContext, bool
 
 // HasViolationContexts returns a boolean if a field has been set.
 func (o *ViolationPrediction) HasViolationContexts() bool {
-	if o != nil && !isNil(o.ViolationContexts) {
+	if o != nil && !IsNil(o.ViolationContexts) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o ViolationPrediction) MarshalJSON() ([]byte, error) {
 
 func (o ViolationPrediction) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ViolationContexts) {
+	if !IsNil(o.ViolationContexts) {
 		toSerialize["violationContexts"] = o.ViolationContexts
 	}
 
@@ -96,16 +96,20 @@ func (o ViolationPrediction) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ViolationPrediction) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ViolationPrediction) UnmarshalJSON(data []byte) (err error) {
 	varViolationPrediction := _ViolationPrediction{}
 
-	if err = json.Unmarshal(bytes, &varViolationPrediction); err == nil {
+	err = json.Unmarshal(data, &varViolationPrediction)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ViolationPrediction(varViolationPrediction)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "violationContexts")
 		o.AdditionalProperties = additionalProperties
 	}

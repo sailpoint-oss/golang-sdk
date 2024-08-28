@@ -49,7 +49,7 @@ func NewActivityInsightsWithDefaults() *ActivityInsights {
 
 // GetAccountID returns the AccountID field value if set, zero value otherwise.
 func (o *ActivityInsights) GetAccountID() string {
-	if o == nil || isNil(o.AccountID) {
+	if o == nil || IsNil(o.AccountID) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *ActivityInsights) GetAccountID() string {
 // GetAccountIDOk returns a tuple with the AccountID field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ActivityInsights) GetAccountIDOk() (*string, bool) {
-	if o == nil || isNil(o.AccountID) {
+	if o == nil || IsNil(o.AccountID) {
 		return nil, false
 	}
 	return o.AccountID, true
@@ -67,7 +67,7 @@ func (o *ActivityInsights) GetAccountIDOk() (*string, bool) {
 
 // HasAccountID returns a boolean if a field has been set.
 func (o *ActivityInsights) HasAccountID() bool {
-	if o != nil && !isNil(o.AccountID) {
+	if o != nil && !IsNil(o.AccountID) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *ActivityInsights) SetAccountID(v string) {
 
 // GetUsageDays returns the UsageDays field value if set, zero value otherwise.
 func (o *ActivityInsights) GetUsageDays() int32 {
-	if o == nil || isNil(o.UsageDays) {
+	if o == nil || IsNil(o.UsageDays) {
 		var ret int32
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *ActivityInsights) GetUsageDays() int32 {
 // GetUsageDaysOk returns a tuple with the UsageDays field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ActivityInsights) GetUsageDaysOk() (*int32, bool) {
-	if o == nil || isNil(o.UsageDays) {
+	if o == nil || IsNil(o.UsageDays) {
 		return nil, false
 	}
 	return o.UsageDays, true
@@ -99,7 +99,7 @@ func (o *ActivityInsights) GetUsageDaysOk() (*int32, bool) {
 
 // HasUsageDays returns a boolean if a field has been set.
 func (o *ActivityInsights) HasUsageDays() bool {
-	if o != nil && !isNil(o.UsageDays) {
+	if o != nil && !IsNil(o.UsageDays) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *ActivityInsights) SetUsageDays(v int32) {
 
 // GetUsageDaysState returns the UsageDaysState field value if set, zero value otherwise.
 func (o *ActivityInsights) GetUsageDaysState() string {
-	if o == nil || isNil(o.UsageDaysState) {
+	if o == nil || IsNil(o.UsageDaysState) {
 		var ret string
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *ActivityInsights) GetUsageDaysState() string {
 // GetUsageDaysStateOk returns a tuple with the UsageDaysState field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ActivityInsights) GetUsageDaysStateOk() (*string, bool) {
-	if o == nil || isNil(o.UsageDaysState) {
+	if o == nil || IsNil(o.UsageDaysState) {
 		return nil, false
 	}
 	return o.UsageDaysState, true
@@ -131,7 +131,7 @@ func (o *ActivityInsights) GetUsageDaysStateOk() (*string, bool) {
 
 // HasUsageDaysState returns a boolean if a field has been set.
 func (o *ActivityInsights) HasUsageDaysState() bool {
-	if o != nil && !isNil(o.UsageDaysState) {
+	if o != nil && !IsNil(o.UsageDaysState) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o ActivityInsights) MarshalJSON() ([]byte, error) {
 
 func (o ActivityInsights) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AccountID) {
+	if !IsNil(o.AccountID) {
 		toSerialize["accountID"] = o.AccountID
 	}
-	if !isNil(o.UsageDays) {
+	if !IsNil(o.UsageDays) {
 		toSerialize["usageDays"] = o.UsageDays
 	}
-	if !isNil(o.UsageDaysState) {
+	if !IsNil(o.UsageDaysState) {
 		toSerialize["usageDaysState"] = o.UsageDaysState
 	}
 
@@ -170,16 +170,20 @@ func (o ActivityInsights) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ActivityInsights) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ActivityInsights) UnmarshalJSON(data []byte) (err error) {
 	varActivityInsights := _ActivityInsights{}
 
-	if err = json.Unmarshal(bytes, &varActivityInsights); err == nil {
+	err = json.Unmarshal(data, &varActivityInsights)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ActivityInsights(varActivityInsights)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "accountID")
 		delete(additionalProperties, "usageDays")
 		delete(additionalProperties, "usageDaysState")

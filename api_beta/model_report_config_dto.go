@@ -59,7 +59,7 @@ func NewReportConfigDTOWithDefaults() *ReportConfigDTO {
 
 // GetColumnName returns the ColumnName field value if set, zero value otherwise.
 func (o *ReportConfigDTO) GetColumnName() string {
-	if o == nil || isNil(o.ColumnName) {
+	if o == nil || IsNil(o.ColumnName) {
 		var ret string
 		return ret
 	}
@@ -69,7 +69,7 @@ func (o *ReportConfigDTO) GetColumnName() string {
 // GetColumnNameOk returns a tuple with the ColumnName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReportConfigDTO) GetColumnNameOk() (*string, bool) {
-	if o == nil || isNil(o.ColumnName) {
+	if o == nil || IsNil(o.ColumnName) {
 		return nil, false
 	}
 	return o.ColumnName, true
@@ -77,7 +77,7 @@ func (o *ReportConfigDTO) GetColumnNameOk() (*string, bool) {
 
 // HasColumnName returns a boolean if a field has been set.
 func (o *ReportConfigDTO) HasColumnName() bool {
-	if o != nil && !isNil(o.ColumnName) {
+	if o != nil && !IsNil(o.ColumnName) {
 		return true
 	}
 
@@ -91,7 +91,7 @@ func (o *ReportConfigDTO) SetColumnName(v string) {
 
 // GetRequired returns the Required field value if set, zero value otherwise.
 func (o *ReportConfigDTO) GetRequired() bool {
-	if o == nil || isNil(o.Required) {
+	if o == nil || IsNil(o.Required) {
 		var ret bool
 		return ret
 	}
@@ -101,7 +101,7 @@ func (o *ReportConfigDTO) GetRequired() bool {
 // GetRequiredOk returns a tuple with the Required field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReportConfigDTO) GetRequiredOk() (*bool, bool) {
-	if o == nil || isNil(o.Required) {
+	if o == nil || IsNil(o.Required) {
 		return nil, false
 	}
 	return o.Required, true
@@ -109,7 +109,7 @@ func (o *ReportConfigDTO) GetRequiredOk() (*bool, bool) {
 
 // HasRequired returns a boolean if a field has been set.
 func (o *ReportConfigDTO) HasRequired() bool {
-	if o != nil && !isNil(o.Required) {
+	if o != nil && !IsNil(o.Required) {
 		return true
 	}
 
@@ -123,7 +123,7 @@ func (o *ReportConfigDTO) SetRequired(v bool) {
 
 // GetIncluded returns the Included field value if set, zero value otherwise.
 func (o *ReportConfigDTO) GetIncluded() bool {
-	if o == nil || isNil(o.Included) {
+	if o == nil || IsNil(o.Included) {
 		var ret bool
 		return ret
 	}
@@ -133,7 +133,7 @@ func (o *ReportConfigDTO) GetIncluded() bool {
 // GetIncludedOk returns a tuple with the Included field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReportConfigDTO) GetIncludedOk() (*bool, bool) {
-	if o == nil || isNil(o.Included) {
+	if o == nil || IsNil(o.Included) {
 		return nil, false
 	}
 	return o.Included, true
@@ -141,7 +141,7 @@ func (o *ReportConfigDTO) GetIncludedOk() (*bool, bool) {
 
 // HasIncluded returns a boolean if a field has been set.
 func (o *ReportConfigDTO) HasIncluded() bool {
-	if o != nil && !isNil(o.Included) {
+	if o != nil && !IsNil(o.Included) {
 		return true
 	}
 
@@ -155,7 +155,7 @@ func (o *ReportConfigDTO) SetIncluded(v bool) {
 
 // GetOrder returns the Order field value if set, zero value otherwise.
 func (o *ReportConfigDTO) GetOrder() int32 {
-	if o == nil || isNil(o.Order) {
+	if o == nil || IsNil(o.Order) {
 		var ret int32
 		return ret
 	}
@@ -165,7 +165,7 @@ func (o *ReportConfigDTO) GetOrder() int32 {
 // GetOrderOk returns a tuple with the Order field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReportConfigDTO) GetOrderOk() (*int32, bool) {
-	if o == nil || isNil(o.Order) {
+	if o == nil || IsNil(o.Order) {
 		return nil, false
 	}
 	return o.Order, true
@@ -173,7 +173,7 @@ func (o *ReportConfigDTO) GetOrderOk() (*int32, bool) {
 
 // HasOrder returns a boolean if a field has been set.
 func (o *ReportConfigDTO) HasOrder() bool {
-	if o != nil && !isNil(o.Order) {
+	if o != nil && !IsNil(o.Order) {
 		return true
 	}
 
@@ -195,16 +195,16 @@ func (o ReportConfigDTO) MarshalJSON() ([]byte, error) {
 
 func (o ReportConfigDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ColumnName) {
+	if !IsNil(o.ColumnName) {
 		toSerialize["columnName"] = o.ColumnName
 	}
-	if !isNil(o.Required) {
+	if !IsNil(o.Required) {
 		toSerialize["required"] = o.Required
 	}
-	if !isNil(o.Included) {
+	if !IsNil(o.Included) {
 		toSerialize["included"] = o.Included
 	}
-	if !isNil(o.Order) {
+	if !IsNil(o.Order) {
 		toSerialize["order"] = o.Order
 	}
 
@@ -215,16 +215,20 @@ func (o ReportConfigDTO) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ReportConfigDTO) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ReportConfigDTO) UnmarshalJSON(data []byte) (err error) {
 	varReportConfigDTO := _ReportConfigDTO{}
 
-	if err = json.Unmarshal(bytes, &varReportConfigDTO); err == nil {
+	err = json.Unmarshal(data, &varReportConfigDTO)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ReportConfigDTO(varReportConfigDTO)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "columnName")
 		delete(additionalProperties, "required")
 		delete(additionalProperties, "included")

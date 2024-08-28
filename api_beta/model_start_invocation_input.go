@@ -49,7 +49,7 @@ func NewStartInvocationInputWithDefaults() *StartInvocationInput {
 
 // GetTriggerId returns the TriggerId field value if set, zero value otherwise.
 func (o *StartInvocationInput) GetTriggerId() string {
-	if o == nil || isNil(o.TriggerId) {
+	if o == nil || IsNil(o.TriggerId) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *StartInvocationInput) GetTriggerId() string {
 // GetTriggerIdOk returns a tuple with the TriggerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StartInvocationInput) GetTriggerIdOk() (*string, bool) {
-	if o == nil || isNil(o.TriggerId) {
+	if o == nil || IsNil(o.TriggerId) {
 		return nil, false
 	}
 	return o.TriggerId, true
@@ -67,7 +67,7 @@ func (o *StartInvocationInput) GetTriggerIdOk() (*string, bool) {
 
 // HasTriggerId returns a boolean if a field has been set.
 func (o *StartInvocationInput) HasTriggerId() bool {
-	if o != nil && !isNil(o.TriggerId) {
+	if o != nil && !IsNil(o.TriggerId) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *StartInvocationInput) SetTriggerId(v string) {
 
 // GetInput returns the Input field value if set, zero value otherwise.
 func (o *StartInvocationInput) GetInput() map[string]interface{} {
-	if o == nil || isNil(o.Input) {
+	if o == nil || IsNil(o.Input) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *StartInvocationInput) GetInput() map[string]interface{} {
 // GetInputOk returns a tuple with the Input field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StartInvocationInput) GetInputOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Input) {
+	if o == nil || IsNil(o.Input) {
 		return map[string]interface{}{}, false
 	}
 	return o.Input, true
@@ -99,7 +99,7 @@ func (o *StartInvocationInput) GetInputOk() (map[string]interface{}, bool) {
 
 // HasInput returns a boolean if a field has been set.
 func (o *StartInvocationInput) HasInput() bool {
-	if o != nil && !isNil(o.Input) {
+	if o != nil && !IsNil(o.Input) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *StartInvocationInput) SetInput(v map[string]interface{}) {
 
 // GetContentJson returns the ContentJson field value if set, zero value otherwise.
 func (o *StartInvocationInput) GetContentJson() map[string]interface{} {
-	if o == nil || isNil(o.ContentJson) {
+	if o == nil || IsNil(o.ContentJson) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *StartInvocationInput) GetContentJson() map[string]interface{} {
 // GetContentJsonOk returns a tuple with the ContentJson field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StartInvocationInput) GetContentJsonOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.ContentJson) {
+	if o == nil || IsNil(o.ContentJson) {
 		return map[string]interface{}{}, false
 	}
 	return o.ContentJson, true
@@ -131,7 +131,7 @@ func (o *StartInvocationInput) GetContentJsonOk() (map[string]interface{}, bool)
 
 // HasContentJson returns a boolean if a field has been set.
 func (o *StartInvocationInput) HasContentJson() bool {
-	if o != nil && !isNil(o.ContentJson) {
+	if o != nil && !IsNil(o.ContentJson) {
 		return true
 	}
 
@@ -153,13 +153,13 @@ func (o StartInvocationInput) MarshalJSON() ([]byte, error) {
 
 func (o StartInvocationInput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.TriggerId) {
+	if !IsNil(o.TriggerId) {
 		toSerialize["triggerId"] = o.TriggerId
 	}
-	if !isNil(o.Input) {
+	if !IsNil(o.Input) {
 		toSerialize["input"] = o.Input
 	}
-	if !isNil(o.ContentJson) {
+	if !IsNil(o.ContentJson) {
 		toSerialize["contentJson"] = o.ContentJson
 	}
 
@@ -170,16 +170,20 @@ func (o StartInvocationInput) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *StartInvocationInput) UnmarshalJSON(bytes []byte) (err error) {
+func (o *StartInvocationInput) UnmarshalJSON(data []byte) (err error) {
 	varStartInvocationInput := _StartInvocationInput{}
 
-	if err = json.Unmarshal(bytes, &varStartInvocationInput); err == nil {
+	err = json.Unmarshal(data, &varStartInvocationInput)
+
+	if err != nil {
+		return err
+	}
+
 	*o = StartInvocationInput(varStartInvocationInput)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "triggerId")
 		delete(additionalProperties, "input")
 		delete(additionalProperties, "contentJson")

@@ -19,14 +19,14 @@ import (
 
 func Test_api_v2024_SearchAttributeConfigurationAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test SearchAttributeConfigurationAPIService CreateSearchAttributeConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.SearchAttributeConfigurationAPI.CreateSearchAttributeConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SearchAttributeConfigurationAPI.CreateSearchAttributeConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_api_v2024_SearchAttributeConfigurationAPIService(t *testing.T) {
 
 		var name string
 
-		httpRes, err := apiClient.API_V2024.SearchAttributeConfigurationAPI.DeleteSearchAttributeConfig(context.Background(), name).Execute()
+		httpRes, err := apiClient.SearchAttributeConfigurationAPI.DeleteSearchAttributeConfig(context.Background(), name).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -51,7 +51,7 @@ func Test_api_v2024_SearchAttributeConfigurationAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.SearchAttributeConfigurationAPI.GetSearchAttributeConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SearchAttributeConfigurationAPI.GetSearchAttributeConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -65,7 +65,7 @@ func Test_api_v2024_SearchAttributeConfigurationAPIService(t *testing.T) {
 
 		var name string
 
-		resp, httpRes, err := apiClient.API_V2024.SearchAttributeConfigurationAPI.GetSingleSearchAttributeConfig(context.Background(), name).Execute()
+		resp, httpRes, err := apiClient.SearchAttributeConfigurationAPI.GetSingleSearchAttributeConfig(context.Background(), name).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -79,7 +79,7 @@ func Test_api_v2024_SearchAttributeConfigurationAPIService(t *testing.T) {
 
 		var name string
 
-		resp, httpRes, err := apiClient.API_V2024.SearchAttributeConfigurationAPI.PatchSearchAttributeConfig(context.Background(), name).Execute()
+		resp, httpRes, err := apiClient.SearchAttributeConfigurationAPI.PatchSearchAttributeConfig(context.Background(), name).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

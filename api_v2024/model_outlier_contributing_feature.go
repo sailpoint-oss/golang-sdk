@@ -57,7 +57,7 @@ func NewOutlierContributingFeatureWithDefaults() *OutlierContributingFeature {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *OutlierContributingFeature) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -67,7 +67,7 @@ func (o *OutlierContributingFeature) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutlierContributingFeature) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -75,7 +75,7 @@ func (o *OutlierContributingFeature) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *OutlierContributingFeature) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -89,7 +89,7 @@ func (o *OutlierContributingFeature) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *OutlierContributingFeature) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -99,7 +99,7 @@ func (o *OutlierContributingFeature) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutlierContributingFeature) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -107,7 +107,7 @@ func (o *OutlierContributingFeature) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *OutlierContributingFeature) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -121,7 +121,7 @@ func (o *OutlierContributingFeature) SetName(v string) {
 
 // GetValueType returns the ValueType field value if set, zero value otherwise.
 func (o *OutlierContributingFeature) GetValueType() string {
-	if o == nil || isNil(o.ValueType) {
+	if o == nil || IsNil(o.ValueType) {
 		var ret string
 		return ret
 	}
@@ -131,7 +131,7 @@ func (o *OutlierContributingFeature) GetValueType() string {
 // GetValueTypeOk returns a tuple with the ValueType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutlierContributingFeature) GetValueTypeOk() (*string, bool) {
-	if o == nil || isNil(o.ValueType) {
+	if o == nil || IsNil(o.ValueType) {
 		return nil, false
 	}
 	return o.ValueType, true
@@ -139,7 +139,7 @@ func (o *OutlierContributingFeature) GetValueTypeOk() (*string, bool) {
 
 // HasValueType returns a boolean if a field has been set.
 func (o *OutlierContributingFeature) HasValueType() bool {
-	if o != nil && !isNil(o.ValueType) {
+	if o != nil && !IsNil(o.ValueType) {
 		return true
 	}
 
@@ -153,7 +153,7 @@ func (o *OutlierContributingFeature) SetValueType(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *OutlierContributingFeature) GetValue() OutlierContributingFeatureValue {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret OutlierContributingFeatureValue
 		return ret
 	}
@@ -163,7 +163,7 @@ func (o *OutlierContributingFeature) GetValue() OutlierContributingFeatureValue 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutlierContributingFeature) GetValueOk() (*OutlierContributingFeatureValue, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -171,7 +171,7 @@ func (o *OutlierContributingFeature) GetValueOk() (*OutlierContributingFeatureVa
 
 // HasValue returns a boolean if a field has been set.
 func (o *OutlierContributingFeature) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -185,7 +185,7 @@ func (o *OutlierContributingFeature) SetValue(v OutlierContributingFeatureValue)
 
 // GetImportance returns the Importance field value if set, zero value otherwise.
 func (o *OutlierContributingFeature) GetImportance() float32 {
-	if o == nil || isNil(o.Importance) {
+	if o == nil || IsNil(o.Importance) {
 		var ret float32
 		return ret
 	}
@@ -195,7 +195,7 @@ func (o *OutlierContributingFeature) GetImportance() float32 {
 // GetImportanceOk returns a tuple with the Importance field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutlierContributingFeature) GetImportanceOk() (*float32, bool) {
-	if o == nil || isNil(o.Importance) {
+	if o == nil || IsNil(o.Importance) {
 		return nil, false
 	}
 	return o.Importance, true
@@ -203,7 +203,7 @@ func (o *OutlierContributingFeature) GetImportanceOk() (*float32, bool) {
 
 // HasImportance returns a boolean if a field has been set.
 func (o *OutlierContributingFeature) HasImportance() bool {
-	if o != nil && !isNil(o.Importance) {
+	if o != nil && !IsNil(o.Importance) {
 		return true
 	}
 
@@ -217,7 +217,7 @@ func (o *OutlierContributingFeature) SetImportance(v float32) {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *OutlierContributingFeature) GetDisplayName() string {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -227,7 +227,7 @@ func (o *OutlierContributingFeature) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutlierContributingFeature) GetDisplayNameOk() (*string, bool) {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -235,7 +235,7 @@ func (o *OutlierContributingFeature) GetDisplayNameOk() (*string, bool) {
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *OutlierContributingFeature) HasDisplayName() bool {
-	if o != nil && !isNil(o.DisplayName) {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -249,7 +249,7 @@ func (o *OutlierContributingFeature) SetDisplayName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *OutlierContributingFeature) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -259,7 +259,7 @@ func (o *OutlierContributingFeature) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutlierContributingFeature) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -267,7 +267,7 @@ func (o *OutlierContributingFeature) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *OutlierContributingFeature) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -281,7 +281,7 @@ func (o *OutlierContributingFeature) SetDescription(v string) {
 
 // GetTranslationMessages returns the TranslationMessages field value if set, zero value otherwise.
 func (o *OutlierContributingFeature) GetTranslationMessages() OutlierFeatureTranslation {
-	if o == nil || isNil(o.TranslationMessages) {
+	if o == nil || IsNil(o.TranslationMessages) {
 		var ret OutlierFeatureTranslation
 		return ret
 	}
@@ -291,7 +291,7 @@ func (o *OutlierContributingFeature) GetTranslationMessages() OutlierFeatureTran
 // GetTranslationMessagesOk returns a tuple with the TranslationMessages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutlierContributingFeature) GetTranslationMessagesOk() (*OutlierFeatureTranslation, bool) {
-	if o == nil || isNil(o.TranslationMessages) {
+	if o == nil || IsNil(o.TranslationMessages) {
 		return nil, false
 	}
 	return o.TranslationMessages, true
@@ -299,7 +299,7 @@ func (o *OutlierContributingFeature) GetTranslationMessagesOk() (*OutlierFeature
 
 // HasTranslationMessages returns a boolean if a field has been set.
 func (o *OutlierContributingFeature) HasTranslationMessages() bool {
-	if o != nil && !isNil(o.TranslationMessages) {
+	if o != nil && !IsNil(o.TranslationMessages) {
 		return true
 	}
 
@@ -321,28 +321,28 @@ func (o OutlierContributingFeature) MarshalJSON() ([]byte, error) {
 
 func (o OutlierContributingFeature) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.ValueType) {
+	if !IsNil(o.ValueType) {
 		toSerialize["valueType"] = o.ValueType
 	}
-	if !isNil(o.Value) {
+	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
-	if !isNil(o.Importance) {
+	if !IsNil(o.Importance) {
 		toSerialize["importance"] = o.Importance
 	}
-	if !isNil(o.DisplayName) {
+	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.TranslationMessages) {
+	if !IsNil(o.TranslationMessages) {
 		toSerialize["translationMessages"] = o.TranslationMessages
 	}
 
@@ -353,16 +353,20 @@ func (o OutlierContributingFeature) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *OutlierContributingFeature) UnmarshalJSON(bytes []byte) (err error) {
+func (o *OutlierContributingFeature) UnmarshalJSON(data []byte) (err error) {
 	varOutlierContributingFeature := _OutlierContributingFeature{}
 
-	if err = json.Unmarshal(bytes, &varOutlierContributingFeature); err == nil {
+	err = json.Unmarshal(data, &varOutlierContributingFeature)
+
+	if err != nil {
+		return err
+	}
+
 	*o = OutlierContributingFeature(varOutlierContributingFeature)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "valueType")

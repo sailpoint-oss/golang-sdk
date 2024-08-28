@@ -45,7 +45,7 @@ func NewNonEmployeeApprovalDecisionWithDefaults() *NonEmployeeApprovalDecision {
 
 // GetComment returns the Comment field value if set, zero value otherwise.
 func (o *NonEmployeeApprovalDecision) GetComment() string {
-	if o == nil || isNil(o.Comment) {
+	if o == nil || IsNil(o.Comment) {
 		var ret string
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *NonEmployeeApprovalDecision) GetComment() string {
 // GetCommentOk returns a tuple with the Comment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NonEmployeeApprovalDecision) GetCommentOk() (*string, bool) {
-	if o == nil || isNil(o.Comment) {
+	if o == nil || IsNil(o.Comment) {
 		return nil, false
 	}
 	return o.Comment, true
@@ -63,7 +63,7 @@ func (o *NonEmployeeApprovalDecision) GetCommentOk() (*string, bool) {
 
 // HasComment returns a boolean if a field has been set.
 func (o *NonEmployeeApprovalDecision) HasComment() bool {
-	if o != nil && !isNil(o.Comment) {
+	if o != nil && !IsNil(o.Comment) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o NonEmployeeApprovalDecision) MarshalJSON() ([]byte, error) {
 
 func (o NonEmployeeApprovalDecision) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Comment) {
+	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
 
@@ -96,16 +96,20 @@ func (o NonEmployeeApprovalDecision) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *NonEmployeeApprovalDecision) UnmarshalJSON(bytes []byte) (err error) {
+func (o *NonEmployeeApprovalDecision) UnmarshalJSON(data []byte) (err error) {
 	varNonEmployeeApprovalDecision := _NonEmployeeApprovalDecision{}
 
-	if err = json.Unmarshal(bytes, &varNonEmployeeApprovalDecision); err == nil {
+	err = json.Unmarshal(data, &varNonEmployeeApprovalDecision)
+
+	if err != nil {
+		return err
+	}
+
 	*o = NonEmployeeApprovalDecision(varNonEmployeeApprovalDecision)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "comment")
 		o.AdditionalProperties = additionalProperties
 	}

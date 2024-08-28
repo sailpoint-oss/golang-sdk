@@ -23,23 +23,23 @@ Delete an icon
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    objectType := "application" // string | Object type. Available options ['application']
-    objectId := "a291e870-48c3-4953-b656-fb5ce2a93169" // string | Object id.
+	objectType := "application" // string | Object type. Available options ['application']
+	objectId := "a291e870-48c3-4953-b656-fb5ce2a93169" // string | Object id.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.IconsAPI.DeleteIcon(context.Background(), objectType, objectId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IconsAPI.DeleteIcon``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.IconsAPI.DeleteIcon(context.Background(), objectType, objectId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IconsAPI.DeleteIcon``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -94,26 +94,26 @@ Update an icon
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    objectType := "application" // string | Object type. Available options ['application']
-    objectId := "a291e870-48c3-4953-b656-fb5ce2a93169" // string | Object id.
-    image := os.NewFile(1234, "some_file") // *os.File | file with icon. Allowed mime-types ['image/png', 'image/jpeg']
+	objectType := "application" // string | Object type. Available options ['application']
+	objectId := "a291e870-48c3-4953-b656-fb5ce2a93169" // string | Object id.
+	image := os.NewFile(1234, "some_file") // *os.File | file with icon. Allowed mime-types ['image/png', 'image/jpeg']
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IconsAPI.SetIcon(context.Background(), objectType, objectId).Image(image).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IconsAPI.SetIcon``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `SetIcon`: SetIcon200Response
-    fmt.Fprintf(os.Stdout, "Response from `IconsAPI.SetIcon`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.IconsAPI.SetIcon(context.Background(), objectType, objectId).Image(image).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IconsAPI.SetIcon``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `SetIcon`: SetIcon200Response
+	fmt.Fprintf(os.Stdout, "Response from `IconsAPI.SetIcon`: %v\n", resp)
 }
 ```
 

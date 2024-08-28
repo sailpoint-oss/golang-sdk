@@ -123,7 +123,7 @@ func (o *CreatePersonalAccessTokenResponse) GetScope() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreatePersonalAccessTokenResponse) GetScopeOk() ([]string, bool) {
-	if o == nil || isNil(o.Scope) {
+	if o == nil || IsNil(o.Scope) {
 		return nil, false
 	}
 	return o.Scope, true
@@ -232,8 +232,8 @@ func (o CreatePersonalAccessTokenResponse) ToMap() (map[string]interface{}, erro
 	return toSerialize, nil
 }
 
-func (o *CreatePersonalAccessTokenResponse) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *CreatePersonalAccessTokenResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -247,7 +247,7 @@ func (o *CreatePersonalAccessTokenResponse) UnmarshalJSON(bytes []byte) (err err
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -261,13 +261,17 @@ func (o *CreatePersonalAccessTokenResponse) UnmarshalJSON(bytes []byte) (err err
 
 	varCreatePersonalAccessTokenResponse := _CreatePersonalAccessTokenResponse{}
 
-	if err = json.Unmarshal(bytes, &varCreatePersonalAccessTokenResponse); err == nil {
+	err = json.Unmarshal(data, &varCreatePersonalAccessTokenResponse)
+
+	if err != nil {
+		return err
+	}
+
 	*o = CreatePersonalAccessTokenResponse(varCreatePersonalAccessTokenResponse)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "secret")
 		delete(additionalProperties, "scope")

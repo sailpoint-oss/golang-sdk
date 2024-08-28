@@ -50,7 +50,7 @@ func NewAttributesChangedWithDefaults() *AttributesChanged {
 
 // GetChanges returns the Changes field value if set, zero value otherwise.
 func (o *AttributesChanged) GetChanges() []AttributeChange {
-	if o == nil || isNil(o.Changes) {
+	if o == nil || IsNil(o.Changes) {
 		var ret []AttributeChange
 		return ret
 	}
@@ -60,7 +60,7 @@ func (o *AttributesChanged) GetChanges() []AttributeChange {
 // GetChangesOk returns a tuple with the Changes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AttributesChanged) GetChangesOk() ([]AttributeChange, bool) {
-	if o == nil || isNil(o.Changes) {
+	if o == nil || IsNil(o.Changes) {
 		return nil, false
 	}
 	return o.Changes, true
@@ -68,7 +68,7 @@ func (o *AttributesChanged) GetChangesOk() ([]AttributeChange, bool) {
 
 // HasChanges returns a boolean if a field has been set.
 func (o *AttributesChanged) HasChanges() bool {
-	if o != nil && !isNil(o.Changes) {
+	if o != nil && !IsNil(o.Changes) {
 		return true
 	}
 
@@ -82,7 +82,7 @@ func (o *AttributesChanged) SetChanges(v []AttributeChange) {
 
 // GetEventType returns the EventType field value if set, zero value otherwise.
 func (o *AttributesChanged) GetEventType() string {
-	if o == nil || isNil(o.EventType) {
+	if o == nil || IsNil(o.EventType) {
 		var ret string
 		return ret
 	}
@@ -92,7 +92,7 @@ func (o *AttributesChanged) GetEventType() string {
 // GetEventTypeOk returns a tuple with the EventType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AttributesChanged) GetEventTypeOk() (*string, bool) {
-	if o == nil || isNil(o.EventType) {
+	if o == nil || IsNil(o.EventType) {
 		return nil, false
 	}
 	return o.EventType, true
@@ -100,7 +100,7 @@ func (o *AttributesChanged) GetEventTypeOk() (*string, bool) {
 
 // HasEventType returns a boolean if a field has been set.
 func (o *AttributesChanged) HasEventType() bool {
-	if o != nil && !isNil(o.EventType) {
+	if o != nil && !IsNil(o.EventType) {
 		return true
 	}
 
@@ -114,7 +114,7 @@ func (o *AttributesChanged) SetEventType(v string) {
 
 // GetIdentityId returns the IdentityId field value if set, zero value otherwise.
 func (o *AttributesChanged) GetIdentityId() string {
-	if o == nil || isNil(o.IdentityId) {
+	if o == nil || IsNil(o.IdentityId) {
 		var ret string
 		return ret
 	}
@@ -124,7 +124,7 @@ func (o *AttributesChanged) GetIdentityId() string {
 // GetIdentityIdOk returns a tuple with the IdentityId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AttributesChanged) GetIdentityIdOk() (*string, bool) {
-	if o == nil || isNil(o.IdentityId) {
+	if o == nil || IsNil(o.IdentityId) {
 		return nil, false
 	}
 	return o.IdentityId, true
@@ -132,7 +132,7 @@ func (o *AttributesChanged) GetIdentityIdOk() (*string, bool) {
 
 // HasIdentityId returns a boolean if a field has been set.
 func (o *AttributesChanged) HasIdentityId() bool {
-	if o != nil && !isNil(o.IdentityId) {
+	if o != nil && !IsNil(o.IdentityId) {
 		return true
 	}
 
@@ -146,7 +146,7 @@ func (o *AttributesChanged) SetIdentityId(v string) {
 
 // GetDt returns the Dt field value if set, zero value otherwise.
 func (o *AttributesChanged) GetDt() string {
-	if o == nil || isNil(o.Dt) {
+	if o == nil || IsNil(o.Dt) {
 		var ret string
 		return ret
 	}
@@ -156,7 +156,7 @@ func (o *AttributesChanged) GetDt() string {
 // GetDtOk returns a tuple with the Dt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AttributesChanged) GetDtOk() (*string, bool) {
-	if o == nil || isNil(o.Dt) {
+	if o == nil || IsNil(o.Dt) {
 		return nil, false
 	}
 	return o.Dt, true
@@ -164,7 +164,7 @@ func (o *AttributesChanged) GetDtOk() (*string, bool) {
 
 // HasDt returns a boolean if a field has been set.
 func (o *AttributesChanged) HasDt() bool {
-	if o != nil && !isNil(o.Dt) {
+	if o != nil && !IsNil(o.Dt) {
 		return true
 	}
 
@@ -186,16 +186,16 @@ func (o AttributesChanged) MarshalJSON() ([]byte, error) {
 
 func (o AttributesChanged) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Changes) {
+	if !IsNil(o.Changes) {
 		toSerialize["changes"] = o.Changes
 	}
-	if !isNil(o.EventType) {
+	if !IsNil(o.EventType) {
 		toSerialize["eventType"] = o.EventType
 	}
-	if !isNil(o.IdentityId) {
+	if !IsNil(o.IdentityId) {
 		toSerialize["identityId"] = o.IdentityId
 	}
-	if !isNil(o.Dt) {
+	if !IsNil(o.Dt) {
 		toSerialize["dt"] = o.Dt
 	}
 
@@ -206,16 +206,20 @@ func (o AttributesChanged) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AttributesChanged) UnmarshalJSON(bytes []byte) (err error) {
+func (o *AttributesChanged) UnmarshalJSON(data []byte) (err error) {
 	varAttributesChanged := _AttributesChanged{}
 
-	if err = json.Unmarshal(bytes, &varAttributesChanged); err == nil {
+	err = json.Unmarshal(data, &varAttributesChanged)
+
+	if err != nil {
+		return err
+	}
+
 	*o = AttributesChanged(varAttributesChanged)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "changes")
 		delete(additionalProperties, "eventType")
 		delete(additionalProperties, "identityId")

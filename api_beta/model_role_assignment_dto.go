@@ -57,7 +57,7 @@ func NewRoleAssignmentDtoWithDefaults() *RoleAssignmentDto {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *RoleAssignmentDto) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -67,7 +67,7 @@ func (o *RoleAssignmentDto) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleAssignmentDto) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -75,7 +75,7 @@ func (o *RoleAssignmentDto) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *RoleAssignmentDto) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -89,7 +89,7 @@ func (o *RoleAssignmentDto) SetId(v string) {
 
 // GetRole returns the Role field value if set, zero value otherwise.
 func (o *RoleAssignmentDto) GetRole() BaseReferenceDto {
-	if o == nil || isNil(o.Role) {
+	if o == nil || IsNil(o.Role) {
 		var ret BaseReferenceDto
 		return ret
 	}
@@ -99,7 +99,7 @@ func (o *RoleAssignmentDto) GetRole() BaseReferenceDto {
 // GetRoleOk returns a tuple with the Role field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleAssignmentDto) GetRoleOk() (*BaseReferenceDto, bool) {
-	if o == nil || isNil(o.Role) {
+	if o == nil || IsNil(o.Role) {
 		return nil, false
 	}
 	return o.Role, true
@@ -107,7 +107,7 @@ func (o *RoleAssignmentDto) GetRoleOk() (*BaseReferenceDto, bool) {
 
 // HasRole returns a boolean if a field has been set.
 func (o *RoleAssignmentDto) HasRole() bool {
-	if o != nil && !isNil(o.Role) {
+	if o != nil && !IsNil(o.Role) {
 		return true
 	}
 
@@ -121,7 +121,7 @@ func (o *RoleAssignmentDto) SetRole(v BaseReferenceDto) {
 
 // GetComments returns the Comments field value if set, zero value otherwise.
 func (o *RoleAssignmentDto) GetComments() string {
-	if o == nil || isNil(o.Comments) {
+	if o == nil || IsNil(o.Comments) {
 		var ret string
 		return ret
 	}
@@ -131,7 +131,7 @@ func (o *RoleAssignmentDto) GetComments() string {
 // GetCommentsOk returns a tuple with the Comments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleAssignmentDto) GetCommentsOk() (*string, bool) {
-	if o == nil || isNil(o.Comments) {
+	if o == nil || IsNil(o.Comments) {
 		return nil, false
 	}
 	return o.Comments, true
@@ -139,7 +139,7 @@ func (o *RoleAssignmentDto) GetCommentsOk() (*string, bool) {
 
 // HasComments returns a boolean if a field has been set.
 func (o *RoleAssignmentDto) HasComments() bool {
-	if o != nil && !isNil(o.Comments) {
+	if o != nil && !IsNil(o.Comments) {
 		return true
 	}
 
@@ -153,7 +153,7 @@ func (o *RoleAssignmentDto) SetComments(v string) {
 
 // GetAssignmentSource returns the AssignmentSource field value if set, zero value otherwise.
 func (o *RoleAssignmentDto) GetAssignmentSource() string {
-	if o == nil || isNil(o.AssignmentSource) {
+	if o == nil || IsNil(o.AssignmentSource) {
 		var ret string
 		return ret
 	}
@@ -163,7 +163,7 @@ func (o *RoleAssignmentDto) GetAssignmentSource() string {
 // GetAssignmentSourceOk returns a tuple with the AssignmentSource field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleAssignmentDto) GetAssignmentSourceOk() (*string, bool) {
-	if o == nil || isNil(o.AssignmentSource) {
+	if o == nil || IsNil(o.AssignmentSource) {
 		return nil, false
 	}
 	return o.AssignmentSource, true
@@ -171,7 +171,7 @@ func (o *RoleAssignmentDto) GetAssignmentSourceOk() (*string, bool) {
 
 // HasAssignmentSource returns a boolean if a field has been set.
 func (o *RoleAssignmentDto) HasAssignmentSource() bool {
-	if o != nil && !isNil(o.AssignmentSource) {
+	if o != nil && !IsNil(o.AssignmentSource) {
 		return true
 	}
 
@@ -185,7 +185,7 @@ func (o *RoleAssignmentDto) SetAssignmentSource(v string) {
 
 // GetAssigner returns the Assigner field value if set, zero value otherwise.
 func (o *RoleAssignmentDto) GetAssigner() BaseReferenceDto {
-	if o == nil || isNil(o.Assigner) {
+	if o == nil || IsNil(o.Assigner) {
 		var ret BaseReferenceDto
 		return ret
 	}
@@ -195,7 +195,7 @@ func (o *RoleAssignmentDto) GetAssigner() BaseReferenceDto {
 // GetAssignerOk returns a tuple with the Assigner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleAssignmentDto) GetAssignerOk() (*BaseReferenceDto, bool) {
-	if o == nil || isNil(o.Assigner) {
+	if o == nil || IsNil(o.Assigner) {
 		return nil, false
 	}
 	return o.Assigner, true
@@ -203,7 +203,7 @@ func (o *RoleAssignmentDto) GetAssignerOk() (*BaseReferenceDto, bool) {
 
 // HasAssigner returns a boolean if a field has been set.
 func (o *RoleAssignmentDto) HasAssigner() bool {
-	if o != nil && !isNil(o.Assigner) {
+	if o != nil && !IsNil(o.Assigner) {
 		return true
 	}
 
@@ -217,7 +217,7 @@ func (o *RoleAssignmentDto) SetAssigner(v BaseReferenceDto) {
 
 // GetAssignedDimensions returns the AssignedDimensions field value if set, zero value otherwise.
 func (o *RoleAssignmentDto) GetAssignedDimensions() []BaseReferenceDto {
-	if o == nil || isNil(o.AssignedDimensions) {
+	if o == nil || IsNil(o.AssignedDimensions) {
 		var ret []BaseReferenceDto
 		return ret
 	}
@@ -227,7 +227,7 @@ func (o *RoleAssignmentDto) GetAssignedDimensions() []BaseReferenceDto {
 // GetAssignedDimensionsOk returns a tuple with the AssignedDimensions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleAssignmentDto) GetAssignedDimensionsOk() ([]BaseReferenceDto, bool) {
-	if o == nil || isNil(o.AssignedDimensions) {
+	if o == nil || IsNil(o.AssignedDimensions) {
 		return nil, false
 	}
 	return o.AssignedDimensions, true
@@ -235,7 +235,7 @@ func (o *RoleAssignmentDto) GetAssignedDimensionsOk() ([]BaseReferenceDto, bool)
 
 // HasAssignedDimensions returns a boolean if a field has been set.
 func (o *RoleAssignmentDto) HasAssignedDimensions() bool {
-	if o != nil && !isNil(o.AssignedDimensions) {
+	if o != nil && !IsNil(o.AssignedDimensions) {
 		return true
 	}
 
@@ -249,7 +249,7 @@ func (o *RoleAssignmentDto) SetAssignedDimensions(v []BaseReferenceDto) {
 
 // GetAssignmentContext returns the AssignmentContext field value if set, zero value otherwise.
 func (o *RoleAssignmentDto) GetAssignmentContext() AssignmentContextDto {
-	if o == nil || isNil(o.AssignmentContext) {
+	if o == nil || IsNil(o.AssignmentContext) {
 		var ret AssignmentContextDto
 		return ret
 	}
@@ -259,7 +259,7 @@ func (o *RoleAssignmentDto) GetAssignmentContext() AssignmentContextDto {
 // GetAssignmentContextOk returns a tuple with the AssignmentContext field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleAssignmentDto) GetAssignmentContextOk() (*AssignmentContextDto, bool) {
-	if o == nil || isNil(o.AssignmentContext) {
+	if o == nil || IsNil(o.AssignmentContext) {
 		return nil, false
 	}
 	return o.AssignmentContext, true
@@ -267,7 +267,7 @@ func (o *RoleAssignmentDto) GetAssignmentContextOk() (*AssignmentContextDto, boo
 
 // HasAssignmentContext returns a boolean if a field has been set.
 func (o *RoleAssignmentDto) HasAssignmentContext() bool {
-	if o != nil && !isNil(o.AssignmentContext) {
+	if o != nil && !IsNil(o.AssignmentContext) {
 		return true
 	}
 
@@ -281,7 +281,7 @@ func (o *RoleAssignmentDto) SetAssignmentContext(v AssignmentContextDto) {
 
 // GetAccountTargets returns the AccountTargets field value if set, zero value otherwise.
 func (o *RoleAssignmentDto) GetAccountTargets() []RoleTargetDto {
-	if o == nil || isNil(o.AccountTargets) {
+	if o == nil || IsNil(o.AccountTargets) {
 		var ret []RoleTargetDto
 		return ret
 	}
@@ -291,7 +291,7 @@ func (o *RoleAssignmentDto) GetAccountTargets() []RoleTargetDto {
 // GetAccountTargetsOk returns a tuple with the AccountTargets field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleAssignmentDto) GetAccountTargetsOk() ([]RoleTargetDto, bool) {
-	if o == nil || isNil(o.AccountTargets) {
+	if o == nil || IsNil(o.AccountTargets) {
 		return nil, false
 	}
 	return o.AccountTargets, true
@@ -299,7 +299,7 @@ func (o *RoleAssignmentDto) GetAccountTargetsOk() ([]RoleTargetDto, bool) {
 
 // HasAccountTargets returns a boolean if a field has been set.
 func (o *RoleAssignmentDto) HasAccountTargets() bool {
-	if o != nil && !isNil(o.AccountTargets) {
+	if o != nil && !IsNil(o.AccountTargets) {
 		return true
 	}
 
@@ -313,7 +313,7 @@ func (o *RoleAssignmentDto) SetAccountTargets(v []RoleTargetDto) {
 
 // GetRemoveDate returns the RemoveDate field value if set, zero value otherwise.
 func (o *RoleAssignmentDto) GetRemoveDate() string {
-	if o == nil || isNil(o.RemoveDate) {
+	if o == nil || IsNil(o.RemoveDate) {
 		var ret string
 		return ret
 	}
@@ -323,7 +323,7 @@ func (o *RoleAssignmentDto) GetRemoveDate() string {
 // GetRemoveDateOk returns a tuple with the RemoveDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleAssignmentDto) GetRemoveDateOk() (*string, bool) {
-	if o == nil || isNil(o.RemoveDate) {
+	if o == nil || IsNil(o.RemoveDate) {
 		return nil, false
 	}
 	return o.RemoveDate, true
@@ -331,7 +331,7 @@ func (o *RoleAssignmentDto) GetRemoveDateOk() (*string, bool) {
 
 // HasRemoveDate returns a boolean if a field has been set.
 func (o *RoleAssignmentDto) HasRemoveDate() bool {
-	if o != nil && !isNil(o.RemoveDate) {
+	if o != nil && !IsNil(o.RemoveDate) {
 		return true
 	}
 
@@ -353,31 +353,31 @@ func (o RoleAssignmentDto) MarshalJSON() ([]byte, error) {
 
 func (o RoleAssignmentDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Role) {
+	if !IsNil(o.Role) {
 		toSerialize["role"] = o.Role
 	}
-	if !isNil(o.Comments) {
+	if !IsNil(o.Comments) {
 		toSerialize["comments"] = o.Comments
 	}
-	if !isNil(o.AssignmentSource) {
+	if !IsNil(o.AssignmentSource) {
 		toSerialize["assignmentSource"] = o.AssignmentSource
 	}
-	if !isNil(o.Assigner) {
+	if !IsNil(o.Assigner) {
 		toSerialize["assigner"] = o.Assigner
 	}
-	if !isNil(o.AssignedDimensions) {
+	if !IsNil(o.AssignedDimensions) {
 		toSerialize["assignedDimensions"] = o.AssignedDimensions
 	}
-	if !isNil(o.AssignmentContext) {
+	if !IsNil(o.AssignmentContext) {
 		toSerialize["assignmentContext"] = o.AssignmentContext
 	}
-	if !isNil(o.AccountTargets) {
+	if !IsNil(o.AccountTargets) {
 		toSerialize["accountTargets"] = o.AccountTargets
 	}
-	if !isNil(o.RemoveDate) {
+	if !IsNil(o.RemoveDate) {
 		toSerialize["removeDate"] = o.RemoveDate
 	}
 
@@ -388,16 +388,20 @@ func (o RoleAssignmentDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *RoleAssignmentDto) UnmarshalJSON(bytes []byte) (err error) {
+func (o *RoleAssignmentDto) UnmarshalJSON(data []byte) (err error) {
 	varRoleAssignmentDto := _RoleAssignmentDto{}
 
-	if err = json.Unmarshal(bytes, &varRoleAssignmentDto); err == nil {
+	err = json.Unmarshal(data, &varRoleAssignmentDto)
+
+	if err != nil {
+		return err
+	}
+
 	*o = RoleAssignmentDto(varRoleAssignmentDto)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "role")
 		delete(additionalProperties, "comments")

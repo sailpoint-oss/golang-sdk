@@ -47,7 +47,7 @@ func NewConditionEffectConfigWithDefaults() *ConditionEffectConfig {
 
 // GetDefaultValueLabel returns the DefaultValueLabel field value if set, zero value otherwise.
 func (o *ConditionEffectConfig) GetDefaultValueLabel() string {
-	if o == nil || isNil(o.DefaultValueLabel) {
+	if o == nil || IsNil(o.DefaultValueLabel) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *ConditionEffectConfig) GetDefaultValueLabel() string {
 // GetDefaultValueLabelOk returns a tuple with the DefaultValueLabel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConditionEffectConfig) GetDefaultValueLabelOk() (*string, bool) {
-	if o == nil || isNil(o.DefaultValueLabel) {
+	if o == nil || IsNil(o.DefaultValueLabel) {
 		return nil, false
 	}
 	return o.DefaultValueLabel, true
@@ -65,7 +65,7 @@ func (o *ConditionEffectConfig) GetDefaultValueLabelOk() (*string, bool) {
 
 // HasDefaultValueLabel returns a boolean if a field has been set.
 func (o *ConditionEffectConfig) HasDefaultValueLabel() bool {
-	if o != nil && !isNil(o.DefaultValueLabel) {
+	if o != nil && !IsNil(o.DefaultValueLabel) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *ConditionEffectConfig) SetDefaultValueLabel(v string) {
 
 // GetElement returns the Element field value if set, zero value otherwise.
 func (o *ConditionEffectConfig) GetElement() string {
-	if o == nil || isNil(o.Element) {
+	if o == nil || IsNil(o.Element) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *ConditionEffectConfig) GetElement() string {
 // GetElementOk returns a tuple with the Element field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConditionEffectConfig) GetElementOk() (*string, bool) {
-	if o == nil || isNil(o.Element) {
+	if o == nil || IsNil(o.Element) {
 		return nil, false
 	}
 	return o.Element, true
@@ -97,7 +97,7 @@ func (o *ConditionEffectConfig) GetElementOk() (*string, bool) {
 
 // HasElement returns a boolean if a field has been set.
 func (o *ConditionEffectConfig) HasElement() bool {
-	if o != nil && !isNil(o.Element) {
+	if o != nil && !IsNil(o.Element) {
 		return true
 	}
 
@@ -119,10 +119,10 @@ func (o ConditionEffectConfig) MarshalJSON() ([]byte, error) {
 
 func (o ConditionEffectConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.DefaultValueLabel) {
+	if !IsNil(o.DefaultValueLabel) {
 		toSerialize["defaultValueLabel"] = o.DefaultValueLabel
 	}
-	if !isNil(o.Element) {
+	if !IsNil(o.Element) {
 		toSerialize["element"] = o.Element
 	}
 
@@ -133,16 +133,20 @@ func (o ConditionEffectConfig) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ConditionEffectConfig) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ConditionEffectConfig) UnmarshalJSON(data []byte) (err error) {
 	varConditionEffectConfig := _ConditionEffectConfig{}
 
-	if err = json.Unmarshal(bytes, &varConditionEffectConfig); err == nil {
+	err = json.Unmarshal(data, &varConditionEffectConfig)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ConditionEffectConfig(varConditionEffectConfig)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "defaultValueLabel")
 		delete(additionalProperties, "element")
 		o.AdditionalProperties = additionalProperties

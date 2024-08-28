@@ -45,7 +45,7 @@ func NewListAccessModelMetadataAttribute429ResponseWithDefaults() *ListAccessMod
 
 // GetMessage returns the Message field value if set, zero value otherwise.
 func (o *ListAccessModelMetadataAttribute429Response) GetMessage() map[string]interface{} {
-	if o == nil || isNil(o.Message) {
+	if o == nil || IsNil(o.Message) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *ListAccessModelMetadataAttribute429Response) GetMessage() map[string]in
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ListAccessModelMetadataAttribute429Response) GetMessageOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Message) {
+	if o == nil || IsNil(o.Message) {
 		return map[string]interface{}{}, false
 	}
 	return o.Message, true
@@ -63,7 +63,7 @@ func (o *ListAccessModelMetadataAttribute429Response) GetMessageOk() (map[string
 
 // HasMessage returns a boolean if a field has been set.
 func (o *ListAccessModelMetadataAttribute429Response) HasMessage() bool {
-	if o != nil && !isNil(o.Message) {
+	if o != nil && !IsNil(o.Message) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o ListAccessModelMetadataAttribute429Response) MarshalJSON() ([]byte, erro
 
 func (o ListAccessModelMetadataAttribute429Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Message) {
+	if !IsNil(o.Message) {
 		toSerialize["message"] = o.Message
 	}
 
@@ -96,16 +96,20 @@ func (o ListAccessModelMetadataAttribute429Response) ToMap() (map[string]interfa
 	return toSerialize, nil
 }
 
-func (o *ListAccessModelMetadataAttribute429Response) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ListAccessModelMetadataAttribute429Response) UnmarshalJSON(data []byte) (err error) {
 	varListAccessModelMetadataAttribute429Response := _ListAccessModelMetadataAttribute429Response{}
 
-	if err = json.Unmarshal(bytes, &varListAccessModelMetadataAttribute429Response); err == nil {
+	err = json.Unmarshal(data, &varListAccessModelMetadataAttribute429Response)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ListAccessModelMetadataAttribute429Response(varListAccessModelMetadataAttribute429Response)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "message")
 		o.AdditionalProperties = additionalProperties
 	}

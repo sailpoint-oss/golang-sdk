@@ -69504,6 +69504,50 @@ components:
         - systemAccount
         - uncorrelated
         type: object
+      example:
+        sourceId: 2c9180835d2e5168015d32f890ca1581
+        origin: AGGREGATED
+        description: description
+        type: NON_HUMAN
+        sourceOwner:
+          name: John Cavender
+          id: 4c5c8534e99445de98eef6c75e25eb01
+          type: IDENTITY
+        connectionType: direct
+        uuid: slpt.support
+        ownerIdentity:
+          name: Adam Kennedy
+          id: 2c918084660f45d6016617daa9210584
+          type: IDENTITY
+        features: ENABLE
+        identity:
+          name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+        modified: 2015-05-28T14:07:17Z
+        disabled: false
+        hasEntitlements: true
+        id: id12345
+        locked: false
+        authoritative: false
+        created: 2015-05-28T14:07:17Z
+        ownerGroup:
+          name: GovGroup AX17Z
+          id: 8d3e0094e99445de98eef6c75e25jc04
+          type: GOVERNANCE_GROUP
+        manuallyCorrelated: false
+        identityState: ACTIVE
+        nativeIdentity: "552775"
+        uncorrelated: false
+        identityId: 2c9180835d2e5168015d32f890ca1581
+        name: aName
+        cloudLifecycleState: active
+        attributes:
+          firstName: SailPoint
+          lastName: Support
+          displayName: SailPoint Support
+        sourceName: Employees
+        systemAccount: false
     AccountActivity:
       example:
         clientMetadata:
@@ -69925,7 +69969,7 @@ components:
             - CORRELATED
             - UNCORRELATED
             example: CORRELATED
-            type: object
+            type: string
           filter:
             $ref: '#/components/schemas/Campaign_allOf_filter'
           sunsetCommentsRequired:
@@ -69961,6 +70005,102 @@ components:
             example: NO_DECISIONS
             type: string
         type: object
+      example:
+        totalCertifications: 100
+        sourcesWithOrphanEntitlements:
+        - name: Source with orphan entitlements
+          id: 2c90ad2a70ace7d50170acf22ca90010
+          type: SOURCE
+        - name: Source with orphan entitlements
+          id: 2c90ad2a70ace7d50170acf22ca90010
+          type: SOURCE
+        recommendationsEnabled: true
+        sunsetCommentsRequired: true
+        created: 2020-03-03T22:15:13.611Z
+        description: Everyone needs to be reviewed by their manager
+        type: MANAGER
+        sourceOwnerCampaignInfo:
+          sourceIds:
+          - 0fbe863c063c4c88a35fd7f17e8a3df5
+        emailNotificationEnabled: false
+        alerts:
+        - level: ERROR
+          localizations:
+          - localeOrigin: DEFAULT
+            text: The request was syntactically correct but its content is semantically
+              invalid.
+            locale: en-US
+          - localeOrigin: DEFAULT
+            text: The request was syntactically correct but its content is semantically
+              invalid.
+            locale: en-US
+        - level: ERROR
+          localizations:
+          - localeOrigin: DEFAULT
+            text: The request was syntactically correct but its content is semantically
+              invalid.
+            locale: en-US
+          - localeOrigin: DEFAULT
+            text: The request was syntactically correct but its content is semantically
+              invalid.
+            locale: en-US
+        filter:
+          name: Test Filter
+          id: 0fbe863c063c4c88a35fd7f17e8a3df5
+          type: CAMPAIGN_FILTER
+        searchCampaignInfo:
+          identityIds:
+          - 0fbe863c063c4c88a35fd7f17e8a3df5
+          query: Search Campaign query description
+          description: Search Campaign description
+          reviewer:
+            name: William Wilson
+            id: 2c91808568c529c60168cca6f90c1313
+            type: IDENTITY
+          type: ACCESS
+          accessConstraints:
+          - ids:
+            - 2c90ad2a70ace7d50170acf22ca90010
+            type: ENTITLEMENT
+            operator: SELECTED
+          - ids:
+            - 2c90ad2a70ace7d50170acf22ca90010
+            type: ENTITLEMENT
+            operator: SELECTED
+          - ids:
+            - 2c90ad2a70ace7d50170acf22ca90010
+            type: ENTITLEMENT
+            operator: SELECTED
+          - ids:
+            - 2c90ad2a70ace7d50170acf22ca90010
+            type: ENTITLEMENT
+            operator: SELECTED
+          - ids:
+            - 2c90ad2a70ace7d50170acf22ca90010
+            type: ENTITLEMENT
+            operator: SELECTED
+        autoRevokeAllowed: false
+        name: Manager Campaign
+        mandatoryCommentRequirement: NO_DECISIONS
+        modified: 2020-03-03T22:20:12.674Z
+        roleCompositionCampaignInfo:
+          remediatorRef:
+            name: Role Admin
+            id: 2c90ad2a70ace7d50170acf22ca90010
+            type: IDENTITY
+          roleIds:
+          - 2c90ad2a70ace7d50170acf22ca90010
+          query: Search Query
+          description: Role Composition Description
+          reviewer:
+            name: William Wilson
+            id: 2c91808568c529c60168cca6f90c1313
+            type: IDENTITY
+        completedCertifications: 10
+        id: 2c9079b270a266a60170a2779fcb0007
+        deadline: 2020-03-15T10:00:01.456Z
+        status: ACTIVE
+        correlatedStatus: CORRELATED
       title: Campaign
       type: object
     Certification:
@@ -70470,6 +70610,44 @@ components:
         required:
         - authoritativeSource
         type: object
+      example:
+        owner:
+          name: William Wilson
+          id: 2c9180835d191a86015d28455b4b232a
+          type: IDENTITY
+        identityExceptionReportReference:
+          reportName: My annual report
+          taskResultId: 2b838de9-db9b-abcf-e646-d4f274ad4238
+        authoritativeSource:
+          name: HR Active Directory
+          id: 2c9180835d191a86015d28455b4b232a
+          type: SOURCE
+        hasTimeBasedAttr: true
+        created: 2015-05-28T14:07:17Z
+        description: My custom flat file profile
+        identityRefreshRequired: true
+        identityCount: 8
+        priority: 10
+        identityAttributeConfig:
+          attributeTransforms:
+          - transformDefinition:
+              attributes:
+                attributeName: e-mail
+                sourceName: MySource
+                sourceId: 2c9180877a826e68017a8c0b03da1a53
+              type: accountAttribute
+            identityAttributeName: email
+          - transformDefinition:
+              attributes:
+                attributeName: e-mail
+                sourceName: MySource
+                sourceId: 2c9180877a826e68017a8c0b03da1a53
+              type: accountAttribute
+            identityAttributeName: email
+          enabled: true
+        name: aName
+        modified: 2015-05-28T14:07:17Z
+        id: id12345
     IdentityReferenceWithNameAndEmail:
       example:
         name: Alison Ferguso
@@ -70497,6 +70675,20 @@ components:
       type: object
     ProvisioningConfig:
       description: Specification of a Service Desk integration provisioning configuration.
+      example:
+        managedResourceRefs:
+        - type: SOURCE
+          id: 2c9180855d191c59015d291ceb051111
+          name: My Source 1
+        - type: SOURCE
+          id: 2c9180855d191c59015d291ceb052222
+          name: My Source 2
+        provisioningRequestExpiration: 7
+        noProvisioningRequests: true
+        universalManager: true
+        planInitializerScript:
+          source: |
+            <?xml version='1.0' encoding='UTF-8'?>\r\n<!DOCTYPE Rule PUBLIC \"sailpoint.dtd\" \"sailpoint.dtd\">\r\n<Rule name=\"Example Rule\" type=\"BeforeProvisioning\">\r\n  <Description>Before Provisioning Rule which changes disables and enables to a modify.</Description>\r\n  <Source><![CDATA[\r\nimport sailpoint.object.*;\r\nimport sailpoint.object.ProvisioningPlan.AccountRequest;\r\nimport sailpoint.object.ProvisioningPlan.AccountRequest.Operation;\r\nimport sailpoint.object.ProvisioningPlan.AttributeRequest;\r\nimport sailpoint.object.ProvisioningPlan;\r\nimport sailpoint.object.ProvisioningPlan.Operation;\r\n\r\nfor ( AccountRequest accountRequest : plan.getAccountRequests() ) {\r\n  if ( accountRequest.getOp().equals( ProvisioningPlan.ObjectOperation.Disable ) ) {\r\n    accountRequest.setOp( ProvisioningPlan.ObjectOperation.Modify );\r\n  }\r\n  if ( accountRequest.getOp().equals( ProvisioningPlan.ObjectOperation.Enable ) ) {\r\n    accountRequest.setOp( ProvisioningPlan.ObjectOperation.Modify );\r\n  }\r\n}\r\n\r\n  ]]></Source>
       properties:
         universalManager:
           default: false
@@ -70902,6 +71094,49 @@ components:
         type: object
       - $ref: '#/components/schemas/SavedSearchName'
       - $ref: '#/components/schemas/SavedSearchDetail'
+      example:
+        owner:
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+        created: 2018-06-25T20:22:28.104Z
+        columns:
+          identity:
+          - field: displayName
+            header: Display Name
+          - field: e-mail
+            header: Work Email
+        query: '@accounts(disabled:true)'
+        description: Disabled accounts
+        orderBy:
+          identity:
+          - lastName
+          - firstName
+          role:
+          - name
+        sort:
+        - displayName
+        filters:
+          terms:
+          - account_count
+          - account_count
+          range:
+            lower:
+              inclusive: false
+              value: "1"
+            upper:
+              inclusive: false
+              value: "1"
+          exclude: false
+          type: RANGE
+        ownerId: 2c91808568c529c60168cca6f90c1313
+        indices:
+        - identities
+        public: false
+        name: Disabled accounts
+        modified: 2018-06-25T20:22:28.104Z
+        id: 0de46054-fe90-434a-b84e-c6b3359d0c64
+        fields:
+        - disabled
       type: object
     Schedule:
       example:
@@ -70979,6 +71214,47 @@ components:
         type: object
       - $ref: '#/components/schemas/ScheduledSearchName'
       - $ref: '#/components/schemas/SearchSchedule'
+      example:
+        owner:
+          id: 2c9180867624cbd7017642d8c8c81f67
+          type: IDENTITY
+        displayQueryDetails: false
+        created: ""
+        description: Daily disabled accounts
+        ownerId: 2c9180867624cbd7017642d8c8c81f67
+        enabled: false
+        schedule:
+          hours:
+            values:
+            - MON
+            - WED
+            interval: 3
+            type: LIST
+          months:
+            values:
+            - MON
+            - WED
+            interval: 3
+            type: LIST
+          timeZoneId: America/Chicago
+          days:
+            values:
+            - MON
+            - WED
+            interval: 3
+            type: LIST
+          expiration: 2018-06-25T20:22:28.104Z
+          type: WEEKLY
+        recipients:
+        - id: 2c9180867624cbd7017642d8c8c81f67
+          type: IDENTITY
+        - id: 2c9180867624cbd7017642d8c8c81f67
+          type: IDENTITY
+        savedSearchId: 554f1511-f0a1-4744-ab14-599514d3e57c
+        name: Daily disabled accounts
+        modified: ""
+        id: 0de46054-fe90-434a-b84e-c6b3359d0c64
+        emailEmptyResults: false
       required:
       - id
       - owner
@@ -71062,6 +71338,37 @@ components:
         - name
         - type
         type: object
+      example:
+        ownerRef: ""
+        cluster: xyzzy999
+        created: 2024-01-17T18:45:25.994Z
+        description: A very nice Service Desk integration
+        clusterRef: ""
+        type: ServiceNowSDIM
+        managedSources:
+        - 2c9180835d191a86015d28455b4a2329
+        - 2c5680835d191a85765d28455b4a9823
+        provisioningConfig:
+          managedResourceRefs:
+          - type: SOURCE
+            id: 2c9180855d191c59015d291ceb051111
+            name: My Source 1
+          - type: SOURCE
+            id: 2c9180855d191c59015d291ceb052222
+            name: My Source 2
+          provisioningRequestExpiration: 7
+          noProvisioningRequests: true
+          universalManager: true
+          planInitializerScript:
+            source: |
+              <?xml version='1.0' encoding='UTF-8'?>\r\n<!DOCTYPE Rule PUBLIC \"sailpoint.dtd\" \"sailpoint.dtd\">\r\n<Rule name=\"Example Rule\" type=\"BeforeProvisioning\">\r\n  <Description>Before Provisioning Rule which changes disables and enables to a modify.</Description>\r\n  <Source><![CDATA[\r\nimport sailpoint.object.*;\r\nimport sailpoint.object.ProvisioningPlan.AccountRequest;\r\nimport sailpoint.object.ProvisioningPlan.AccountRequest.Operation;\r\nimport sailpoint.object.ProvisioningPlan.AttributeRequest;\r\nimport sailpoint.object.ProvisioningPlan;\r\nimport sailpoint.object.ProvisioningPlan.Operation;\r\n\r\nfor ( AccountRequest accountRequest : plan.getAccountRequests() ) {\r\n  if ( accountRequest.getOp().equals( ProvisioningPlan.ObjectOperation.Disable ) ) {\r\n    accountRequest.setOp( ProvisioningPlan.ObjectOperation.Modify );\r\n  }\r\n  if ( accountRequest.getOp().equals( ProvisioningPlan.ObjectOperation.Enable ) ) {\r\n    accountRequest.setOp( ProvisioningPlan.ObjectOperation.Modify );\r\n  }\r\n}\r\n\r\n  ]]></Source>
+        name: Service Desk Integration Name
+        modified: 2024-02-18T18:45:25.994Z
+        attributes:
+          property: value
+          key: value
+        id: 62945a496ef440189b1f03e3623411c8
+        beforeProvisioningRule: ""
     ServiceDeskIntegrationTemplateDto:
       allOf:
       - $ref: '#/components/schemas/BaseCommonDto'
@@ -71089,6 +71396,29 @@ components:
         - provisioningConfig
         - type
         type: object
+      example:
+        provisioningConfig:
+          managedResourceRefs:
+          - type: SOURCE
+            id: 2c9180855d191c59015d291ceb051111
+            name: My Source 1
+          - type: SOURCE
+            id: 2c9180855d191c59015d291ceb052222
+            name: My Source 2
+          provisioningRequestExpiration: 7
+          noProvisioningRequests: true
+          universalManager: true
+          planInitializerScript:
+            source: |
+              <?xml version='1.0' encoding='UTF-8'?>\r\n<!DOCTYPE Rule PUBLIC \"sailpoint.dtd\" \"sailpoint.dtd\">\r\n<Rule name=\"Example Rule\" type=\"BeforeProvisioning\">\r\n  <Description>Before Provisioning Rule which changes disables and enables to a modify.</Description>\r\n  <Source><![CDATA[\r\nimport sailpoint.object.*;\r\nimport sailpoint.object.ProvisioningPlan.AccountRequest;\r\nimport sailpoint.object.ProvisioningPlan.AccountRequest.Operation;\r\nimport sailpoint.object.ProvisioningPlan.AttributeRequest;\r\nimport sailpoint.object.ProvisioningPlan;\r\nimport sailpoint.object.ProvisioningPlan.Operation;\r\n\r\nfor ( AccountRequest accountRequest : plan.getAccountRequests() ) {\r\n  if ( accountRequest.getOp().equals( ProvisioningPlan.ObjectOperation.Disable ) ) {\r\n    accountRequest.setOp( ProvisioningPlan.ObjectOperation.Modify );\r\n  }\r\n  if ( accountRequest.getOp().equals( ProvisioningPlan.ObjectOperation.Enable ) ) {\r\n    accountRequest.setOp( ProvisioningPlan.ObjectOperation.Modify );\r\n  }\r\n}\r\n\r\n  ]]></Source>
+        created: 2015-05-28T14:07:17Z
+        name: aName
+        modified: 2015-05-28T14:07:17Z
+        attributes:
+          property: value
+          key: value
+        id: id12345
+        type: Web Service SDIM
     ServiceDeskIntegrationTemplateType:
       description: This represents a Service Desk Integration template type.
       example:
@@ -71162,7 +71492,9 @@ components:
           - uid
           - mail
         created: 2022-02-08T14:50:03.827Z
-        managerCorrelationMapping: null
+        managerCorrelationMapping:
+          accountAttributeName: manager
+          identityAttributeName: manager
         credentialProviderEnabled: false
         accountCorrelationConfig:
           name: "Directory [source-62867] Account Correlation"
@@ -71582,7 +71914,19 @@ components:
         type: Generic
         numItems: 19
         ownerName: Jason Smith
-        form: null
+        form:
+          subtitle: Please select from the following
+          name: AccountSelection Form
+          id: 2c9180835d2e5168015d32f890ca1581
+          title: Account Selection for John.Doe
+          targetUser: Jane.Doe
+          sections:
+          - formItems: []
+            name: Field1
+            label: Section 1
+          - formItems: []
+            name: Field1
+            label: Section 1
         remediationItems:
         - targetName: john.smith
           targetId: 2c9180835d2e5168015d32f890ca1581
@@ -71720,7 +72064,7 @@ components:
       type: object
     AccountUsage:
       example:
-        date: 2023-04-21T00:00:00.000+00:00
+        date: 2023-04-21
         count: 10
       properties:
         date:
@@ -71737,7 +72081,7 @@ components:
       type: object
     SourceUsage:
       example:
-        date: 2023-04-21T00:00:00.000+00:00
+        date: 2023-04-21
         count: 10.45
       properties:
         date:
@@ -72007,6 +72351,27 @@ components:
       - source
       type: object
     ErrorResponseDto:
+      example:
+        causes:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        messages:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        detailCode: 400.1 Bad Request Content
+        trackingId: e7eab60924f64aa284175b9fa3309599
       properties:
         detailCode:
           description: Fine-grained error code providing more detail of the error.
@@ -72310,7 +72675,10 @@ components:
             id: 2c7180a46faadee4016fb4e018c20642
             type: IDENTITY
           scheme: MANAGER
-          currentOwner: null
+          currentOwner:
+            name: Allen Albertson
+            id: 2c3780a46faadee4016fb4e018c20652
+            type: IDENTITY
           modified: 2019-08-23T18:52:57.398Z
           comment: I approve this request
           forwarded: false
@@ -72330,7 +72698,10 @@ components:
             id: 2c7180a46faadee4016fb4e018c20642
             type: IDENTITY
           scheme: MANAGER
-          currentOwner: null
+          currentOwner:
+            name: Allen Albertson
+            id: 2c3780a46faadee4016fb4e018c20652
+            type: IDENTITY
           modified: 2019-08-23T18:52:57.398Z
           comment: I approve this request
           forwarded: false
@@ -72338,17 +72709,116 @@ components:
         cancelable: true
         requestType: GRANT_ACCESS
         created: 2019-08-23T18:40:35.772Z
-        requesterComment: null
-        preApprovalTriggerDetails: null
+        requesterComment:
+          created: 2017-07-11T18:45:37.098Z
+          author:
+            name: john.doe
+            id: 2c9180847e25f377017e2ae8cae4650b
+            type: IDENTITY
+          comment: This is a comment.
+        preApprovalTriggerDetails:
+          decision: APPROVED
+          comment: Access is Approved
+          reviewer: John Doe
         description: This is the Engineering role that engineers are granted.
         type: ACCESS_PROFILE
         errorMessages:
-        - null
-        - null
-        sodViolationContext: null
-        cancelledRequestDetails: null
+        - - localeOrigin: DEFAULT
+            text: The request was syntactically correct but its content is semantically
+              invalid.
+            locale: en-US
+          - localeOrigin: DEFAULT
+            text: The request was syntactically correct but its content is semantically
+              invalid.
+            locale: en-US
+        - - localeOrigin: DEFAULT
+            text: The request was syntactically correct but its content is semantically
+              invalid.
+            locale: en-US
+          - localeOrigin: DEFAULT
+            text: The request was syntactically correct but its content is semantically
+              invalid.
+            locale: en-US
+        sodViolationContext:
+          violationCheckResult:
+            clientMetadata:
+              requestedAppName: test-app
+              requestedAppId: 2c91808f7892918f0178b78da4a305a1
+            violationContexts:
+            - conflictingAccessCriteria:
+                leftCriteria:
+                  criteriaList:
+                  - existing: true
+                    name: My HR Entitlement
+                    id: 2c918085771e9d3301773b3cb66f6398
+                    type: IDENTITY
+                  - existing: true
+                    name: My HR Entitlement
+                    id: 2c918085771e9d3301773b3cb66f6398
+                    type: IDENTITY
+                rightCriteria:
+                  criteriaList:
+                  - existing: true
+                    name: My HR Entitlement
+                    id: 2c918085771e9d3301773b3cb66f6398
+                    type: IDENTITY
+                  - existing: true
+                    name: My HR Entitlement
+                    id: 2c918085771e9d3301773b3cb66f6398
+                    type: IDENTITY
+              policy:
+                name: Business SOD Policy
+                id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+                type: SOD_POLICY
+            - conflictingAccessCriteria:
+                leftCriteria:
+                  criteriaList:
+                  - existing: true
+                    name: My HR Entitlement
+                    id: 2c918085771e9d3301773b3cb66f6398
+                    type: IDENTITY
+                  - existing: true
+                    name: My HR Entitlement
+                    id: 2c918085771e9d3301773b3cb66f6398
+                    type: IDENTITY
+                rightCriteria:
+                  criteriaList:
+                  - existing: true
+                    name: My HR Entitlement
+                    id: 2c918085771e9d3301773b3cb66f6398
+                    type: IDENTITY
+                  - existing: true
+                    name: My HR Entitlement
+                    id: 2c918085771e9d3301773b3cb66f6398
+                    type: IDENTITY
+              policy:
+                name: Business SOD Policy
+                id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+                type: SOD_POLICY
+            violatedPolicies:
+            - name: Business SOD Policy
+              id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+              type: SOD_POLICY
+            - name: Business SOD Policy
+              id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+              type: SOD_POLICY
+            message:
+              localeOrigin: DEFAULT
+              text: The request was syntactically correct but its content is semantically
+                invalid.
+              locale: en-US
+          state: SUCCESS
+          uuid: f73d16e9-a038-46c5-b217-1246e15fdbdd
+        cancelledRequestDetails:
+          owner:
+            name: Support
+            id: 2c9180a46faadee4016fb4e018c20639
+            type: IDENTITY
+          modified: 2019-12-20T09:17:12.192Z
+          comment: This request must be cancelled.
         accessRequestId: 2b838de9-db9b-abcf-e646-d4f274ad4238
-        provisioningDetails: null
+        provisioningDetails:
+          orderedSubPhaseReferences: manualWorkItemDetails
         accountActivityItemId: 2c9180926cbfbddd016cbfc7c3b10010
         name: AccessProfile1
         manualWorkItemDetails:
@@ -72758,7 +73228,13 @@ components:
           name: Support
           id: 2c9180a46faadee4016fb4e018c20639
           type: IDENTITY
-        reviewerComment: null
+        reviewerComment:
+          created: 2017-07-11T18:45:37.098Z
+          author:
+            name: john.doe
+            id: 2c9180847e25f377017e2ae8cae4650b
+            type: IDENTITY
+          comment: This is a comment.
         removeDate: 2020-07-11T00:00:00Z
         clientMetadata:
           requestedAppName: test-app
@@ -72779,7 +73255,13 @@ components:
             id: 2c9180847e25f377017e2ae8cae4650b
             type: IDENTITY
           comment: This is a comment.
-        requesterComment: null
+        requesterComment:
+          created: 2017-07-11T18:45:37.098Z
+          author:
+            name: john.doe
+            id: 2c9180847e25f377017e2ae8cae4650b
+            type: IDENTITY
+          comment: This is a comment.
         currentRemoveDate: 2020-07-11T00:00:00Z
         reviewedBy:
           name: Allen Albertson
@@ -73094,6 +73576,24 @@ components:
           source:
             $ref: '#/components/schemas/EntitlementSource'
         type: object
+      example:
+        privileged: false
+        created: 2015-05-28T14:07:17Z
+        name: aName
+        modified: 2015-05-28T14:07:17Z
+        description: Active Directory DC
+        attributes:
+          GroupType: Security
+          sAMAccountName: Buyer
+        sourceSchemaObjectType: group
+        id: id12345
+        attribute: authorizationType
+        source:
+          name: HR Active Directory
+          id: 2c9180835d191a86015d28455b4b232a
+          type: SOURCE
+        value: "CN=Users,dc=sailpoint,dc=com"
+        cloudGoverned: false
     NetworkConfiguration:
       example:
         range:
@@ -73671,7 +74171,102 @@ components:
         name: Manager Campaign Template
         description: Template for the annual manager campaign.
         modified: 2020-03-05T22:52:09.969Z
-        campaign: null
+        campaign:
+          totalCertifications: 100
+          sourcesWithOrphanEntitlements:
+          - name: Source with orphan entitlements
+            id: 2c90ad2a70ace7d50170acf22ca90010
+            type: SOURCE
+          - name: Source with orphan entitlements
+            id: 2c90ad2a70ace7d50170acf22ca90010
+            type: SOURCE
+          recommendationsEnabled: true
+          sunsetCommentsRequired: true
+          created: 2020-03-03T22:15:13.611Z
+          description: Everyone needs to be reviewed by their manager
+          type: MANAGER
+          sourceOwnerCampaignInfo:
+            sourceIds:
+            - 0fbe863c063c4c88a35fd7f17e8a3df5
+          emailNotificationEnabled: false
+          alerts:
+          - level: ERROR
+            localizations:
+            - localeOrigin: DEFAULT
+              text: The request was syntactically correct but its content is semantically
+                invalid.
+              locale: en-US
+            - localeOrigin: DEFAULT
+              text: The request was syntactically correct but its content is semantically
+                invalid.
+              locale: en-US
+          - level: ERROR
+            localizations:
+            - localeOrigin: DEFAULT
+              text: The request was syntactically correct but its content is semantically
+                invalid.
+              locale: en-US
+            - localeOrigin: DEFAULT
+              text: The request was syntactically correct but its content is semantically
+                invalid.
+              locale: en-US
+          filter:
+            name: Test Filter
+            id: 0fbe863c063c4c88a35fd7f17e8a3df5
+            type: CAMPAIGN_FILTER
+          searchCampaignInfo:
+            identityIds:
+            - 0fbe863c063c4c88a35fd7f17e8a3df5
+            query: Search Campaign query description
+            description: Search Campaign description
+            reviewer:
+              name: William Wilson
+              id: 2c91808568c529c60168cca6f90c1313
+              type: IDENTITY
+            type: ACCESS
+            accessConstraints:
+            - ids:
+              - 2c90ad2a70ace7d50170acf22ca90010
+              type: ENTITLEMENT
+              operator: SELECTED
+            - ids:
+              - 2c90ad2a70ace7d50170acf22ca90010
+              type: ENTITLEMENT
+              operator: SELECTED
+            - ids:
+              - 2c90ad2a70ace7d50170acf22ca90010
+              type: ENTITLEMENT
+              operator: SELECTED
+            - ids:
+              - 2c90ad2a70ace7d50170acf22ca90010
+              type: ENTITLEMENT
+              operator: SELECTED
+            - ids:
+              - 2c90ad2a70ace7d50170acf22ca90010
+              type: ENTITLEMENT
+              operator: SELECTED
+          autoRevokeAllowed: false
+          name: Manager Campaign
+          mandatoryCommentRequirement: NO_DECISIONS
+          modified: 2020-03-03T22:20:12.674Z
+          roleCompositionCampaignInfo:
+            remediatorRef:
+              name: Role Admin
+              id: 2c90ad2a70ace7d50170acf22ca90010
+              type: IDENTITY
+            roleIds:
+            - 2c90ad2a70ace7d50170acf22ca90010
+            query: Search Query
+            description: Role Composition Description
+            reviewer:
+              name: William Wilson
+              id: 2c91808568c529c60168cca6f90c1313
+              type: IDENTITY
+          completedCertifications: 10
+          id: 2c9079b270a266a60170a2779fcb0007
+          deadline: 2020-03-15T10:00:01.456Z
+          status: ACTIVE
+          correlatedStatus: CORRELATED
         id: 2c9079b270a266a60170a277bb960008
       properties:
         id:
@@ -75944,6 +76539,35 @@ components:
         required:
         - technicalName
         type: object
+      example:
+        accessProfileIds:
+        - 2c918084660f45d6016617daa9210584
+        - 2c918084660f45d6016617daa9210500
+        emailNotificationOption:
+          notifyManagers: true
+          notifySpecificUsers: true
+          emailAddressList:
+          - test@test.com
+          - test2@test.com
+          notifyAllAdmins: true
+        created: 2015-05-28T14:07:17Z
+        name: aName
+        modified: 2015-05-28T14:07:17Z
+        description: Lifecycle description
+        accountActions:
+        - action: ENABLE
+          sourceIds:
+          - 2c918084660f45d6016617daa9210584
+          - 2c918084660f45d6016617daa9210500
+        - action: ENABLE
+          sourceIds:
+          - 2c918084660f45d6016617daa9210584
+          - 2c918084660f45d6016617daa9210500
+        id: id12345
+        identityCount: 42
+        technicalName: Technical Name
+        identityState: identityState
+        enabled: true
     LifecyclestateDeleted:
       description: Deleted lifecycle state.
       example:
@@ -76029,7 +76653,44 @@ components:
           id: 2c9180835d191a86015d28455b4b232a
           type: SOURCE
         version: 1
-        object: null
+        object:
+          owner:
+            name: William Wilson
+            id: 2c9180835d191a86015d28455b4b232a
+            type: IDENTITY
+          identityExceptionReportReference:
+            reportName: My annual report
+            taskResultId: 2b838de9-db9b-abcf-e646-d4f274ad4238
+          authoritativeSource:
+            name: HR Active Directory
+            id: 2c9180835d191a86015d28455b4b232a
+            type: SOURCE
+          hasTimeBasedAttr: true
+          created: 2015-05-28T14:07:17Z
+          description: My custom flat file profile
+          identityRefreshRequired: true
+          identityCount: 8
+          priority: 10
+          identityAttributeConfig:
+            attributeTransforms:
+            - transformDefinition:
+                attributes:
+                  attributeName: e-mail
+                  sourceName: MySource
+                  sourceId: 2c9180877a826e68017a8c0b03da1a53
+                type: accountAttribute
+              identityAttributeName: email
+            - transformDefinition:
+                attributes:
+                  attributeName: e-mail
+                  sourceName: MySource
+                  sourceId: 2c9180877a826e68017a8c0b03da1a53
+                type: accountAttribute
+              identityAttributeName: email
+            enabled: true
+          name: aName
+          modified: 2015-05-28T14:07:17Z
+          id: id12345
       properties:
         version:
           description: Version or object from the target service.
@@ -77043,6 +77704,52 @@ components:
             format: date-time
             type: string
         type: object
+      example:
+        sourceId: 2c91808568c529c60168cca6f90c1313
+        approvalStatus: APPROVED
+        lastName: Smith
+        manager: jane.doe
+        data:
+          description: Auditing
+        accountName: william.smith
+        endDate: 2021-03-25T00:00:00-05:00
+        created: 2020-03-24T11:11:41.139-05:00
+        approvalItems:
+        - approver:
+            id: 5168015d32f890ca15812c9180835d2e
+            type: IDENTITY
+          approvalStatus: APPROVED
+          accountName: test.account
+          approvalOrder: 1
+          created: 2019-08-23T18:40:35.772Z
+          modified: 2019-08-23T18:52:59.162Z
+          comment: I approve
+          id: 2c1e388b-1e55-4b0a-ab5c-897f1204159c
+        - approver:
+            id: 5168015d32f890ca15812c9180835d2e
+            type: IDENTITY
+          approvalStatus: APPROVED
+          accountName: test.account
+          approvalOrder: 1
+          created: 2019-08-23T18:40:35.772Z
+          modified: 2019-08-23T18:52:59.162Z
+          comment: I approve
+          id: 2c1e388b-1e55-4b0a-ab5c-897f1204159c
+        description: Source description
+        nonEmployeeSource:
+          sourceId: 2c91808568c529c60168cca6f90c1313
+          name: Retail
+          description: Source description
+          id: a0303682-5e4a-44f7-bdc2-6ce6112549c1
+        firstName: William
+        phone: "5555555555"
+        name: Retail
+        modified: 2020-03-24T11:11:41.139-05:00
+        comment: approved
+        completionDate: 2020-03-24T11:11:41.139-05:00
+        id: a0303682-5e4a-44f7-bdc2-6ce6112549c1
+        email: william.smith@example.com
+        startDate: 2020-03-24T00:00:00-05:00
     NonEmployeeRequestSummary:
       example:
         approved: 2
@@ -77086,6 +77793,24 @@ components:
             nullable: true
             type: integer
         type: object
+      example:
+        sourceId: 2c91808568c529c60168cca6f90c1313
+        created: 2019-08-23T18:40:35.772Z
+        accountManagers:
+        - id: 5168015d32f890ca15812c9180835d2e
+          type: IDENTITY
+        - id: 5168015d32f890ca15812c9180835d2e
+          type: IDENTITY
+        name: Retail
+        description: Source description
+        approvers:
+        - id: 5168015d32f890ca15812c9180835d2e
+          type: IDENTITY
+        - id: 5168015d32f890ca15812c9180835d2e
+          type: IDENTITY
+        modified: 2019-08-23T18:52:59.162Z
+        id: a0303682-5e4a-44f7-bdc2-6ce6112549c1
+        nonEmployeeCount: 120
     NonEmployeeSourceRequestBody:
       example:
         owner:
@@ -77146,6 +77871,24 @@ components:
             example: "99999"
             type: string
         type: object
+      example:
+        sourceId: 2c91808568c529c60168cca6f90c1313
+        created: 2019-08-23T18:40:35.772Z
+        accountManagers:
+        - id: 5168015d32f890ca15812c9180835d2e
+          type: IDENTITY
+        - id: 5168015d32f890ca15812c9180835d2e
+          type: IDENTITY
+        name: Retail
+        description: Source description
+        approvers:
+        - id: 5168015d32f890ca15812c9180835d2e
+          type: IDENTITY
+        - id: 5168015d32f890ca15812c9180835d2e
+          type: IDENTITY
+        modified: 2019-08-23T18:52:59.162Z
+        cloudExternalId: "99999"
+        id: a0303682-5e4a-44f7-bdc2-6ce6112549c1
     NonEmployeeSource:
       allOf:
       - $ref: '#/components/schemas/NonEmployeeSourceLite'
@@ -77171,6 +77914,23 @@ components:
             format: date-time
             type: string
         type: object
+      example:
+        sourceId: 2c91808568c529c60168cca6f90c1313
+        created: 2019-08-23T18:40:35.772Z
+        accountManagers:
+        - id: 5168015d32f890ca15812c9180835d2e
+          type: IDENTITY
+        - id: 5168015d32f890ca15812c9180835d2e
+          type: IDENTITY
+        name: Retail
+        description: Source description
+        approvers:
+        - id: 5168015d32f890ca15812c9180835d2e
+          type: IDENTITY
+        - id: 5168015d32f890ca15812c9180835d2e
+          type: IDENTITY
+        modified: 2019-08-23T18:52:59.162Z
+        id: a0303682-5e4a-44f7-bdc2-6ce6112549c1
     NonEmployeeBulkUploadJob:
       example:
         sourceId: 2c91808568c529c60168cca6f90c1313
@@ -77239,6 +77999,22 @@ components:
           nonEmployeeRequest:
             $ref: '#/components/schemas/NonEmployeeRequestLite'
         type: object
+      example:
+        approver:
+          id: 5168015d32f890ca15812c9180835d2e
+          type: IDENTITY
+        approvalStatus: APPROVED
+        accountName: test.account
+        approvalOrder: 1
+        created: 2019-08-23T18:40:35.772Z
+        modified: 2019-08-23T18:52:59.162Z
+        comment: I approve
+        id: 2c1e388b-1e55-4b0a-ab5c-897f1204159c
+        nonEmployeeRequest:
+          requester:
+            id: 5168015d32f890ca15812c9180835d2e
+            type: IDENTITY
+          id: ac110005-7156-1150-8171-5b292e3e0084
     NonEmployeeApprovalItemDetail:
       allOf:
       - $ref: '#/components/schemas/NonEmployeeApprovalItemBase'
@@ -77246,6 +78022,63 @@ components:
           nonEmployeeRequest:
             $ref: '#/components/schemas/NonEmployeeRequestWithoutApprovalItem'
         type: object
+      example:
+        approver:
+          id: 5168015d32f890ca15812c9180835d2e
+          type: IDENTITY
+        approvalStatus: APPROVED
+        accountName: test.account
+        approvalOrder: 1
+        created: 2019-08-23T18:40:35.772Z
+        modified: 2019-08-23T18:52:59.162Z
+        comment: I approve
+        id: 2c1e388b-1e55-4b0a-ab5c-897f1204159c
+        nonEmployeeRequest:
+          requester:
+            id: 5168015d32f890ca15812c9180835d2e
+            type: IDENTITY
+          approvalStatus: APPROVED
+          lastName: Smith
+          manager: jane.doe
+          data:
+            description: Auditing
+          accountName: william.smith
+          endDate: 2021-03-25
+          created: 2020-03-24T11:11:41.139-05:00
+          nonEmployeeSource:
+            sourceId: 2c91808568c529c60168cca6f90c1313
+            name: Retail
+            description: Source description
+            id: a0303682-5e4a-44f7-bdc2-6ce6112549c1
+            schemaAttributes:
+            - system: true
+              helpText: The unique identifier for the account
+              created: 2019-08-23T18:40:35.772Z
+              modified: 2019-08-23T18:52:59.162Z
+              id: ac110005-7156-1150-8171-5b292e3e0084
+              label: Account Name
+              placeholder: Enter a unique user name for this account.
+              type: TEXT
+              technicalName: account.name
+              required: true
+            - system: true
+              helpText: The unique identifier for the account
+              created: 2019-08-23T18:40:35.772Z
+              modified: 2019-08-23T18:52:59.162Z
+              id: ac110005-7156-1150-8171-5b292e3e0084
+              label: Account Name
+              placeholder: Enter a unique user name for this account.
+              type: TEXT
+              technicalName: account.name
+              required: true
+          firstName: William
+          phone: "5555555555"
+          modified: 2020-03-24T11:11:41.139-05:00
+          comment: approved
+          completionDate: 2020-03-24T11:11:41.139-05:00
+          id: ac110005-7156-1150-8171-5b292e3e0084
+          email: william.smith@example.com
+          startDate: 2020-03-24
     NonEmployeeApprovalDecision:
       example:
         comment: Approved by manager
@@ -78847,7 +79680,63 @@ components:
         searchAfter:
         - John Doe
         - 2c91808375d8e80a0175e1f88a575221
-        aggregations: null
+        aggregations:
+          filter:
+            field: access.type
+            name: Entitlements
+            type: TERM
+            value: ENTITLEMENT
+          bucket:
+            field: attributes.city
+            size: 100
+            minDocCount: 2
+            name: Identity Locations
+            type: TERMS
+          metric:
+            field: '@access.name'
+            name: Access Name Count
+            type: COUNT
+          subAggregation:
+            filter:
+              field: access.type
+              name: Entitlements
+              type: TERM
+              value: ENTITLEMENT
+            bucket:
+              field: attributes.city
+              size: 100
+              minDocCount: 2
+              name: Identity Locations
+              type: TERMS
+            metric:
+              field: '@access.name'
+              name: Access Name Count
+              type: COUNT
+            subAggregation:
+              filter:
+                field: access.type
+                name: Entitlements
+                type: TERM
+                value: ENTITLEMENT
+              bucket:
+                field: attributes.city
+                size: 100
+                minDocCount: 2
+                name: Identity Locations
+                type: TERMS
+              metric:
+                field: '@access.name'
+                name: Access Name Count
+                type: COUNT
+              nested:
+                name: id
+                type: access
+            nested:
+              name: id
+              type: access
+          nested:
+            name: id
+            type: access
       properties:
         indices:
           description: "The names of the Elasticsearch indices in which to search.\
@@ -79018,7 +79907,14 @@ components:
           id: 2c9180a46faadee4016fb4e018c20639
           type: IDENTITY
         created: 2020-01-01T00:00:00Z
-        visibilityCriteria: null
+        visibilityCriteria:
+          expression:
+            children: []
+            attribute: location
+            value:
+              type: STRING
+              value: Austin
+            operator: EQUALS
         name: segment-xyz
         modified: 2020-01-01T00:00:00Z
         description: This segment represents xyz
@@ -79453,7 +80349,25 @@ components:
       type: object
     SodPolicy:
       example:
-        conflictingAccessCriteria: null
+        conflictingAccessCriteria:
+          leftCriteria:
+            name: money-in
+            criteriaList:
+            - type: ENTITLEMENT
+              id: 2c9180866166b5b0016167c32ef31a66
+              name: Administrator
+            - type: ENTITLEMENT
+              id: 2c9180866166b5b0016167c32ef31a67
+              name: Administrator
+          rightCriteria:
+            name: money-in
+            criteriaList:
+            - type: ENTITLEMENT
+              id: 2c9180866166b5b0016167c32ef31a66
+              name: Administrator
+            - type: ENTITLEMENT
+              id: 2c9180866166b5b0016167c32ef31a67
+              name: Administrator
         ownerRef:
           name: Support
           id: 2c9180a46faadee4016fb4e018c20639
@@ -79593,13 +80507,33 @@ components:
             example: PENDING
             type: string
         type: object
+      example:
+        name: SOD Policy 1 Violation
+        id: 2c9180835d191a86015d28455b4b232a
+        type: REPORT_RESULT
+        status: PENDING
     SodPolicySchedule:
       example:
         schedule:
-          hours: null
-          months: null
+          hours:
+            values:
+            - MON
+            - WED
+            interval: 3
+            type: LIST
+          months:
+            values:
+            - MON
+            - WED
+            interval: 3
+            type: LIST
           timeZoneId: America/Chicago
-          days: null
+          days:
+            values:
+            - MON
+            - WED
+            interval: 3
+            type: LIST
           expiration: 2018-06-25T20:22:28.104Z
           type: WEEKLY
         created: 2020-01-01T00:00:00Z
@@ -80202,6 +81136,12 @@ components:
         - id
         - internal
         type: object
+      example:
+        internal: false
+        name: Timestamp To Date
+        attributes: "{}"
+        id: 2cd78adghjkja34jh2b1hkjhasuecd
+        type: dateFormat
     Workflow:
       allOf:
       - properties:
@@ -80235,6 +81175,46 @@ components:
             $ref: '#/components/schemas/Workflow_allOf_creator'
         type: object
       - $ref: '#/components/schemas/WorkflowBody'
+      example:
+        owner:
+          name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+        creator:
+          name: Michael Michaels
+          id: 2c7180a46faadee4016fb4e018c20642
+          type: IDENTITY
+        created: 2022-01-10T16:06:16.636381447Z
+        description: Send an email to the identity who's attributes changed.
+        trigger:
+          displayName: displayName
+          attributes: "{}"
+          type: EVENT
+        enabled: false
+        name: Send Email
+        executionCount: 2
+        modified: 2023-12-05T15:18:27.699132301Z
+        modifiedBy:
+          name: Thomas Edison
+          id: 2c9180a46faadee4016fb4e018c20639
+          type: IDENTITY
+        definition:
+          start: Send Email Test
+          steps:
+            Send Email:
+              actionId: sp:send-email
+              attributes:
+                body: This is a test
+                from: sailpoint@sailpoint.com
+                recipientId.$: $.identity.id
+                subject: test
+              nextStep: success
+              selectResult: null
+              type: ACTION
+            success:
+              type: success
+        id: d201c5e9-d37b-4aff-af14-66414f39d569
+        failureCount: 0
     WorkflowBody:
       example:
         owner:
@@ -80454,7 +81434,7 @@ components:
               type: string
           title: sp:create-campaign
           type: object
-        exampleOutput: null
+        exampleOutput: "{}"
         deprecated: true
         isSimulationEnabled: true
         name: Create Certification Campaign
@@ -81388,6 +82368,29 @@ components:
         - id
         type: object
       description: ConnectorRuleResponse
+      example:
+        sourceCode:
+          version: "1.0"
+          script: return "Mr. " + firstName;
+        signature:
+          output:
+            name: firstName
+            description: the first name of the identity
+            type: String
+          input:
+          - name: firstName
+            description: the first name of the identity
+            type: String
+          - name: firstName
+            description: the first name of the identity
+            type: String
+        created: 021-07-22T15:59:23Z
+        name: WebServiceBeforeOperationRule
+        description: This rule does that
+        modified: 021-07-22T15:59:23Z
+        attributes: {}
+        id: 8113d48c0b914f17b4c6072d4dcb9dfe
+        type: BuildMap
     ConnectorRuleCreateRequest:
       description: ConnectorRuleCreateRequest
       example:
@@ -81473,6 +82476,27 @@ components:
         type: object
       - $ref: '#/components/schemas/ConnectorRuleCreateRequest'
       description: ConnectorRuleUpdateRequest
+      example:
+        sourceCode:
+          version: "1.0"
+          script: return "Mr. " + firstName;
+        signature:
+          output:
+            name: firstName
+            description: the first name of the identity
+            type: String
+          input:
+          - name: firstName
+            description: the first name of the identity
+            type: String
+          - name: firstName
+            description: the first name of the identity
+            type: String
+        name: WebServiceBeforeOperationRule
+        description: This rule does that
+        attributes: {}
+        id: 8113d48c0b914f17b4c6072d4dcb9dfe
+        type: BuildMap
     SourceCode:
       description: SourceCode
       example:
@@ -81559,7 +82583,10 @@ components:
       type: object
     Entitlement_1:
       example:
-        owner: null
+        owner:
+          name: identity 1
+          id: 2a2fdacca5e345f18bf7970cfbb8fec2
+          type: IDENTITY
         created: 2020-10-08T18:33:52.029Z
         description: "CN=LauncherTest2,OU=LauncherTestOrg,OU=slpt-automation,DC=TestAutomationAD,DC=local"
         source:
@@ -81579,13 +82606,29 @@ components:
           - SELECT
           - SELECT
           target: SYS.GV_$TRANSACTION
-        manuallyUpdatedFields: null
+        manuallyUpdatedFields:
+          DESCRIPTION: true
+          DISPLAY_NAME: true
         name: LauncherTest2
         modified: 2020-10-08T18:33:52.029Z
         sourceSchemaObjectType: group
         attributes:
           fieldName: fieldValue
-        accessModelMetadata: null
+        accessModelMetadata:
+          attributes:
+          - key: iscPrivacy
+            name: Privacy
+            multiselect: false
+            status: active
+            type: governance
+            objectTypes:
+            - all
+            description: Specifies the level of privacy associated with an access
+              item.
+            values:
+            - value: public
+              name: Public
+              status: active
         id: 2c91808874ff91550175097daaec161c
         attribute: memberOf
         requestable: true
@@ -81941,6 +82984,19 @@ components:
           type: object
       type: object
     AccessItemAccessProfileResponse:
+      example:
+        accessType: accessProfile
+        sourceId: 2793o32dwd
+        entitlementCount: "12"
+        removeDate: 2024-07-01T06:00:00.00Z
+        displayName: Dr. Arden Rogahn MD
+        appDisplayName: AppName
+        name: sample
+        standalone: false
+        description: AccessProfile - Workday/Citizenship access
+        id: 2c918087763e69d901763e72e97f006f
+        sourceName: DataScienceDataset
+        revocable: true
       properties:
         accessType:
           description: the access item type. accessProfile in this case
@@ -82166,7 +83222,7 @@ components:
           name: name
           description: description
           id: id
-          type: null
+          type: ACCESS_PROFILE
           ownerId: ownerId
         createdByUser: false
         commonAccessType: UNSET
@@ -82211,9 +83267,9 @@ components:
           name: name
           description: description
           id: id
-          type: null
+          type: ACCESS_PROFILE
           ownerId: ownerId
-        status: null
+        status: CONFIRMED
       properties:
         access:
           $ref: '#/components/schemas/CommonAccessItemAccess'
@@ -82228,12 +83284,12 @@ components:
           name: name
           description: description
           id: id
-          type: null
+          type: ACCESS_PROFILE
           ownerId: ownerId
         createdByUser: createdByUser
         id: id
         reviewedByUser: true
-        status: null
+        status: CONFIRMED
         lastReviewed: lastReviewed
       properties:
         id:
@@ -82275,6 +83331,31 @@ components:
           type: array
       type: object
     AccessItemAssociated:
+      example:
+        dt: 2019-03-08T22:37:33.901Z
+        governanceEvent:
+          dt: 2019-03-08T22:37:33.901Z
+          name: Manager Certification for Jon Snow
+          owners:
+          - id: 8a80828f643d484f01643e14202e206f
+            displayName: John Snow
+          decisionMaker:
+            displayName: John Snow
+            id: 8a80828f643d484f01643e14202e206f
+          type: certification
+          reviewers:
+          - id: 8a80828f643d484f01643e14202e206f
+            displayName: John Snow
+          governanceId: 2c91808a77ff216301782327a50f09bf
+        identityId: 8c190e6787aa4ed9a90bd9d5344523fb
+        eventType: AccessItemAssociated
+        accessItem:
+          id: 8c190e6787aa4ed9a90bd9d5344523fb
+          accessType: account
+          nativeIdentity: 127999
+          sourceName: JDBC Entitlements Source
+          entitlementCount: 0
+          displayName: Sample Name
       properties:
         accessItem:
           $ref: '#/components/schemas/AccessItemAssociated_accessItem'
@@ -82566,17 +83647,47 @@ components:
             format: date-time
             type: string
           attributes:
-            description: A map with the identity attributes for the identity
-            example: "{\"uid\":\"Walter White\",\"firstname\":\"walter\",\"cloudStatus\"\
-              :\"UNREGISTERED\",\"displayName\":\"Walter White\",\"identificationNumber\"\
-              :\"942\",\"lastSyncDate\":1470348809380,\"email\":\"walter@gmail.com\"\
-              ,\"lastname\":\"white\"}"
-            type: object
+            $ref: '#/components/schemas/IdentityDto_attributes'
           lifecycleState:
             $ref: '#/components/schemas/IdentityDto_lifecycleState'
         title: IdentityDto
         type: object
+      example:
+        lifecycleState:
+          stateName: active
+          manuallyUpdated: true
+        lastRefresh: 2020-11-22T15:42:31.123Z
+        created: 2023-01-03T21:16:22.432Z
+        processingState: ERROR
+        emailAddress: sender@example.com
+        identityStatus: LOCKED
+        name: aName
+        modified: 2023-01-03T21:16:22.432Z
+        alias: walter.white
+        isManager: true
+        attributes: "{\"uid\":\"Walter White\",\"firstname\":\"walter\",\"cloudStatus\"\
+          :\"UNREGISTERED\",\"displayName\":\"Walter White\",\"identificationNumber\"\
+          :\"942\",\"lastSyncDate\":1470348809380,\"email\":\"walter@gmail.com\",\"\
+          lastname\":\"white\"}"
+        id: id12345
+        managerRef:
+          name: Robert Robinson
+          id: 2c4180a46faadee4016fb4e018c20626
+          type: IDENTITY
     IdentityAssociationDetails:
+      example:
+        associationDetails:
+        - entities:
+            id: b660a232f05b4e04812ca974b3011e0f
+            name: Gaston.800ddf9640a
+            type: CAMPAIGN_CAMPAIGNER
+          associationType: CAMPAIGN_OWNER
+        - entities:
+            id: b660a232f05b4e04812ca974b3011e0f
+            name: Gaston.800ddf9640a
+            type: CAMPAIGN_CAMPAIGNER
+          associationType: CAMPAIGN_OWNER
+        message: Identity cannot be deleted as it is owner of following resources
       properties:
         message:
           description: any additional context information of the http call result
@@ -82626,6 +83737,11 @@ components:
           type: string
       type: object
     RoleAssignmentRef:
+      example:
+        role:
+          name: Github
+          id: ff8081814d977c21014da056804a0af3
+        id: 1cbb0705b38c4226b1334eadd8874086
       properties:
         id:
           description: Assignment Id
@@ -84626,7 +85742,9 @@ components:
           id: e0cc5d7d-bf7f-4f81-b2af-8885b09d9923
         quality: 80
         createdDate: 2000-01-23T04:56:07.000+00:00
-        createdBy: null
+        createdBy:
+          displayName: Ashley.Pierce
+          id: 2c918090761a5aac0176215c46a62d58
         name: Potential Role - e0cc5d
         id: e0cc5d7d-bf7f-4f81-b2af-8885b09d9923
         identityGroupStatus: OBTAINED
@@ -84754,7 +85872,9 @@ components:
           - attributeValue: NM Tier 3
             count: 6
         createdDate: 2000-01-23T04:56:07.000+00:00
-        createdBy: null
+        createdBy:
+          displayName: Ashley.Pierce
+          id: 2c918090761a5aac0176215c46a62d58
         name: Saved Potential Role - 07/10
         modifiedDate: 2000-01-23T04:56:07.000+00:00
         id: e0cc5d7d-bf7f-4f81-b2af-8885b09d9923
@@ -85206,6 +86326,34 @@ components:
         - name
         - type
         type: object
+      example:
+        ownerRef: ""
+        cluster: xyzzy999
+        managedSources:
+        - 2c9180835d191a86015d28455b4a2329
+        - 2c5680835d191a85765d28455b4a9823
+        provisioningConfig:
+          managedResourceRefs:
+          - type: SOURCE
+            id: 2c9180855d191c59015d291ceb051111
+            name: My Source 1
+          - type: SOURCE
+            id: 2c9180855d191c59015d291ceb052222
+            name: My Source 2
+          provisioningRequestExpiration: 7
+          noProvisioningRequests: true
+          universalManager: true
+          planInitializerScript:
+            source: |
+              <?xml version='1.0' encoding='UTF-8'?>\r\n<!DOCTYPE Rule PUBLIC \"sailpoint.dtd\" \"sailpoint.dtd\">\r\n<Rule name=\"Example Rule\" type=\"BeforeProvisioning\">\r\n  <Description>Before Provisioning Rule which changes disables and enables to a modify.</Description>\r\n  <Source><![CDATA[\r\nimport sailpoint.object.*;\r\nimport sailpoint.object.ProvisioningPlan.AccountRequest;\r\nimport sailpoint.object.ProvisioningPlan.AccountRequest.Operation;\r\nimport sailpoint.object.ProvisioningPlan.AttributeRequest;\r\nimport sailpoint.object.ProvisioningPlan;\r\nimport sailpoint.object.ProvisioningPlan.Operation;\r\n\r\nfor ( AccountRequest accountRequest : plan.getAccountRequests() ) {\r\n  if ( accountRequest.getOp().equals( ProvisioningPlan.ObjectOperation.Disable ) ) {\r\n    accountRequest.setOp( ProvisioningPlan.ObjectOperation.Modify );\r\n  }\r\n  if ( accountRequest.getOp().equals( ProvisioningPlan.ObjectOperation.Enable ) ) {\r\n    accountRequest.setOp( ProvisioningPlan.ObjectOperation.Modify );\r\n  }\r\n}\r\n\r\n  ]]></Source>
+        name: Service Desk Integration Name
+        description: A very nice Service Desk integration
+        attributes:
+          property: value
+          key: value
+        clusterRef: ""
+        type: ServiceNowSDIM
+        beforeProvisioningRule: ""
     SimIntegrationDetails:
       allOf:
       - $ref: '#/components/schemas/BaseCommonDto_1'
@@ -85221,14 +86369,7 @@ components:
             nullable: false
             type: string
           attributes:
-            description: The attributes map containing the credentials used to configure
-              the integration.
-            example: "{\"uid\":\"Walter White\",\"firstname\":\"walter\",\"cloudStatus\"\
-              :\"UNREGISTERED\",\"displayName\":\"Walter White\",\"identificationNumber\"\
-              :\"942\",\"lastSyncDate\":1470348809380,\"email\":\"walter@gmail.com\"\
-              ,\"lastname\":\"white\"}"
-            nullable: true
-            type: object
+            $ref: '#/components/schemas/SimIntegrationDetails_allOf_attributes'
           sources:
             description: The list of sources (managed resources)
             example:
@@ -85244,28 +86385,37 @@ components:
             nullable: false
             type: string
           statusMap:
-            description: Custom mapping between the integration result and the provisioning
-              result
-            example:
-              closed_cancelled: Failed
-              closed_complete: Committed
-              closed_incomplete: Failed
-              closed_rejected: Failed
-              in_process: Queued
-              requested: Queued
-            type: object
+            $ref: '#/components/schemas/SimIntegrationDetails_allOf_statusMap'
           request:
-            description: Request data to customize desc and body of the created ticket
-            example:
-              description: "SailPoint Access Request,"
-              req_description: "The Service Request created by SailPoint ServiceNow\
-                \ Service Integration Module (SIM).,"
-              req_short_description: "SailPoint New Access Request Created from IdentityNow,"
-              short_description: SailPoint Access Request $!plan.arguments.identityRequestId
-            type: object
+            $ref: '#/components/schemas/SimIntegrationDetails_allOf_request'
           beforeProvisioningRule:
             $ref: '#/components/schemas/SimIntegrationDetails_allOf_beforeProvisioningRule'
         type: object
+      example:
+        cluster: xyzzy999
+        statusMap: "{closed_cancelled=Failed, closed_complete=Committed, closed_incomplete=Failed,\
+          \ closed_rejected=Failed, in_process=Queued, requested=Queued}"
+        request: "{description=SailPoint Access Request,, req_description=The Service\
+          \ Request created by SailPoint ServiceNow Service Integration Module (SIM).,,\
+          \ req_short_description=SailPoint New Access Request Created from IdentityNow,,\
+          \ short_description=SailPoint Access Request $!plan.arguments.identityRequestId}"
+        sources:
+        - 2c9180835d191a86015d28455b4a2329
+        - 2c5680835d191a85765d28455b4a9823
+        created: 2023-01-03T21:16:22.432Z
+        name: aName
+        modified: 2023-01-03T21:16:22.432Z
+        description: Integration description
+        attributes: "{\"uid\":\"Walter White\",\"firstname\":\"walter\",\"cloudStatus\"\
+          :\"UNREGISTERED\",\"displayName\":\"Walter White\",\"identificationNumber\"\
+          :\"942\",\"lastSyncDate\":1470348809380,\"email\":\"walter@gmail.com\",\"\
+          lastname\":\"white\"}"
+        id: id12345
+        type: ServiceNow Service Desk
+        beforeProvisioningRule:
+          name: Example Rule
+          id: 2c918085708c274401708c2a8a760001
+          type: IDENTITY
       title: Sim Integration Details
       type: object
     JsonPatch:
@@ -85301,6 +86451,14 @@ components:
         required:
         - description
         type: object
+      example:
+        jobId: 3469b87d-48ca-439a-868f-2160001da8c1
+        created: 2021-05-11T22:23:16Z
+        modified: 2021-05-11T22:23:16Z
+        description: ETS configuration objects from Acme-Solar sandbox
+        expiration: 2021-05-11T22:23:16Z
+        type: IMPORT
+        status: COMPLETE
     SpConfigExportJobStatus:
       allOf:
       - $ref: '#/components/schemas/SpConfigExportJob'
@@ -85313,6 +86471,15 @@ components:
         required:
         - completed
         type: object
+      example:
+        jobId: 3469b87d-48ca-439a-868f-2160001da8c1
+        created: 2021-05-11T22:23:16Z
+        modified: 2021-05-11T22:23:16Z
+        description: ETS configuration objects from Acme-Solar sandbox
+        expiration: 2021-05-11T22:23:16Z
+        completed: 2021-05-11T22:23:16Z
+        type: IMPORT
+        status: COMPLETE
     SpConfigExportResults:
       description: Response model for config export download response.
       example:
@@ -85508,6 +86675,15 @@ components:
         - completed
         - message
         type: object
+      example:
+        jobId: 3469b87d-48ca-439a-868f-2160001da8c1
+        created: 2021-05-11T22:23:16Z
+        modified: 2021-05-11T22:23:16Z
+        expiration: 2021-05-11T22:23:16Z
+        completed: 2021-05-11T22:23:16Z
+        type: IMPORT
+        message: Download import results for details.
+        status: COMPLETE
     SpConfigImportResults:
       description: Response Body for Config Import command.
       example:
@@ -86526,8 +87702,60 @@ components:
           :true,\"properties\":{\"type\":{\"type\":\"string\"},\"id\":{\"type\":\"\
           string\"},\"name\":{\"type\":\"string\"}}}},\"$ref\":\"#/definitions/record:AccessRequestDynamicApproverInput\"\
           }"
-        exampleOutput: null
-        exampleInput: null
+        exampleOutput:
+          name: Adam Adams
+          id: 2c91808b6ef1d43e016efba0ce470906
+          type: IDENTITY
+        exampleInput:
+          requestedFor:
+          - name: Robert Robinson
+            id: 2c4180a46faadee4016fb4e018c20626
+            type: IDENTITY
+          - name: Robert Robinson
+            id: 2c4180a46faadee4016fb4e018c20626
+            type: IDENTITY
+          - name: Robert Robinson
+            id: 2c4180a46faadee4016fb4e018c20626
+            type: IDENTITY
+          - name: Robert Robinson
+            id: 2c4180a46faadee4016fb4e018c20626
+            type: IDENTITY
+          - name: Robert Robinson
+            id: 2c4180a46faadee4016fb4e018c20626
+            type: IDENTITY
+          requestedBy: ""
+          accessRequestId: 4b4d982dddff4267ab12f0f1e72b5a6d
+          requestedItems:
+          - name: Engineering Access
+            description: Engineering Access
+            comment: William needs this access for his day to day job activities.
+            id: 2c91808b6ef1d43e016efba0ce470904
+            type: ACCESS_PROFILE
+            operation: Add
+          - name: Engineering Access
+            description: Engineering Access
+            comment: William needs this access for his day to day job activities.
+            id: 2c91808b6ef1d43e016efba0ce470904
+            type: ACCESS_PROFILE
+            operation: Add
+          - name: Engineering Access
+            description: Engineering Access
+            comment: William needs this access for his day to day job activities.
+            id: 2c91808b6ef1d43e016efba0ce470904
+            type: ACCESS_PROFILE
+            operation: Add
+          - name: Engineering Access
+            description: Engineering Access
+            comment: William needs this access for his day to day job activities.
+            id: 2c91808b6ef1d43e016efba0ce470904
+            type: ACCESS_PROFILE
+            operation: Add
+          - name: Engineering Access
+            description: Engineering Access
+            comment: William needs this access for his day to day job activities.
+            id: 2c91808b6ef1d43e016efba0ce470904
+            type: ACCESS_PROFILE
+            operation: Add
         name: Access Request Dynamic Approver
         description: Trigger for getting a dynamic approver.
         id: idn:access-request-dynamic-approver
@@ -87181,7 +88409,12 @@ components:
       type: object
     WorkgroupDto:
       example:
-        owner: null
+        owner:
+          emailAddress: support@sailpoint.com
+          displayName: Support
+          name: Support
+          id: 2c9180a46faadee4016fb4e018c20639
+          type: IDENTITY
         connectionCount: 1641498673000
         created: 2022-01-06T19:51:13Z
         memberCount: 1641498673000
@@ -87513,6 +88746,16 @@ components:
       type: object
       x-go-package: github.com/sailpoint/atlas-go/atlas/web
     Error:
+      example:
+        messages:
+        - localeOrigin: DEFAULT
+          text: This is an error
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: This is an error
+          locale: en-US
+        detailCode: Internal Server Error
+        trackingId: 9cd03ef80e6a425eb6b11bdbb057cdb4
       properties:
         detailCode:
           description: DetailCode is the text of the status code returned
@@ -88841,6 +90084,18 @@ components:
       type: object
     SlimDiscoveredApplications:
       description: Discovered applications
+      example:
+        createdAt: 2023-01-01T12:00:00Z
+        discoveredVendor: ExampleVendor
+        discoverySource: csv
+        name: ExampleApp
+        recommendedConnectors:
+        - ConnectorA
+        - ConnectorB
+        description: An application for managing examples.
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        discoveredAt: 2023-01-01T12:00:00Z
+        status: ACTIVE
       properties:
         id:
           description: Unique identifier for the discovered application.
@@ -88959,9 +90214,6 @@ components:
       title: Discovered Application
       type: object
     ManualDiscoverApplicationsTemplate:
-      example:
-        application_name: Example Application
-        description: Example Description
       properties:
         application_name:
           description: Name of the application.
@@ -89073,6 +90325,10 @@ components:
       - name
       type: object
     BaseReferenceDto:
+      example:
+        name: William Wilson
+        id: 2c91808568c529c60168cca6f90c1313
+        type: IDENTITY
       properties:
         type:
           $ref: '#/components/schemas/DtoType'
@@ -89376,6 +90632,11 @@ components:
             type: object
       type: object
     AccessConstraint:
+      example:
+        ids:
+        - 2c90ad2a70ace7d50170acf22ca90010
+        type: ENTITLEMENT
+        operator: SELECTED
       properties:
         type:
           description: Type of Access
@@ -89507,6 +90768,9 @@ components:
         type: object
       description: Event
     IdentityExceptionReportReference:
+      example:
+        reportName: My annual report
+        taskResultId: 2b838de9-db9b-abcf-e646-d4f274ad4238
       nullable: true
       properties:
         taskResultId:
@@ -90177,7 +91441,10 @@ components:
           id: 2c7180a46faadee4016fb4e018c20642
           type: IDENTITY
         scheme: MANAGER
-        currentOwner: null
+        currentOwner:
+          name: Allen Albertson
+          id: 2c3780a46faadee4016fb4e018c20652
+          type: IDENTITY
         modified: 2019-08-23T18:52:57.398Z
         comment: I approve this request
         forwarded: false
@@ -90596,6 +91863,10 @@ components:
       type: string
     EntitlementSource:
       description: Source the entitlement belongs to.
+      example:
+        name: HR Active Directory
+        id: 2c9180835d191a86015d28455b4b232a
+        type: SOURCE
       properties:
         type:
           description: DTO type of source the entitlement belongs to.
@@ -91382,6 +92653,13 @@ components:
     EmailNotificationOption:
       description: This is used for representing email configuration for a lifecycle
         state
+      example:
+        notifyManagers: true
+        notifySpecificUsers: true
+        emailAddressList:
+        - test@test.com
+        - test2@test.com
+        notifyAllAdmins: true
       properties:
         notifyManagers:
           default: false
@@ -91414,6 +92692,11 @@ components:
     AccountAction:
       description: Object for specifying Actions to be performed on a specified list
         of sources' account.
+      example:
+        action: ENABLE
+        sourceIds:
+        - 2c918084660f45d6016617daa9210584
+        - 2c918084660f45d6016617daa9210500
       properties:
         action:
           description: Describes if action will be enabled or disabled
@@ -91623,6 +92906,11 @@ components:
       - rootLevel
       type: object
     NonEmployeeSourceLite:
+      example:
+        sourceId: 2c91808568c529c60168cca6f90c1313
+        name: Retail
+        description: Source description
+        id: a0303682-5e4a-44f7-bdc2-6ce6112549c1
       properties:
         id:
           description: Non-Employee source id.
@@ -91643,6 +92931,17 @@ components:
           type: string
       type: object
     NonEmployeeApprovalItemBase:
+      example:
+        approver:
+          id: 5168015d32f890ca15812c9180835d2e
+          type: IDENTITY
+        approvalStatus: APPROVED
+        accountName: test.account
+        approvalOrder: 1
+        created: 2019-08-23T18:40:35.772Z
+        modified: 2019-08-23T18:52:59.162Z
+        comment: I approve
+        id: 2c1e388b-1e55-4b0a-ab5c-897f1204159c
       properties:
         id:
           description: Non-Employee approval item id
@@ -91700,6 +92999,9 @@ components:
       - id
       type: object
     NonEmployeeIdentityReferenceWithId:
+      example:
+        id: 5168015d32f890ca15812c9180835d2e
+        type: IDENTITY
       properties:
         type:
           $ref: '#/components/schemas/NonEmployeeIdentityDtoType'
@@ -91709,6 +93011,11 @@ components:
           type: string
       type: object
     NonEmployeeRequestLite:
+      example:
+        requester:
+          id: 5168015d32f890ca15812c9180835d2e
+          type: IDENTITY
+        id: ac110005-7156-1150-8171-5b292e3e0084
       properties:
         id:
           description: Non-Employee request id.
@@ -91788,6 +93095,52 @@ components:
             format: date-time
             type: string
         type: object
+      example:
+        requester:
+          id: 5168015d32f890ca15812c9180835d2e
+          type: IDENTITY
+        approvalStatus: APPROVED
+        lastName: Smith
+        manager: jane.doe
+        data:
+          description: Auditing
+        accountName: william.smith
+        endDate: 2021-03-25
+        created: 2020-03-24T11:11:41.139-05:00
+        nonEmployeeSource:
+          sourceId: 2c91808568c529c60168cca6f90c1313
+          name: Retail
+          description: Source description
+          id: a0303682-5e4a-44f7-bdc2-6ce6112549c1
+          schemaAttributes:
+          - system: true
+            helpText: The unique identifier for the account
+            created: 2019-08-23T18:40:35.772Z
+            modified: 2019-08-23T18:52:59.162Z
+            id: ac110005-7156-1150-8171-5b292e3e0084
+            label: Account Name
+            placeholder: Enter a unique user name for this account.
+            type: TEXT
+            technicalName: account.name
+            required: true
+          - system: true
+            helpText: The unique identifier for the account
+            created: 2019-08-23T18:40:35.772Z
+            modified: 2019-08-23T18:52:59.162Z
+            id: ac110005-7156-1150-8171-5b292e3e0084
+            label: Account Name
+            placeholder: Enter a unique user name for this account.
+            type: TEXT
+            technicalName: account.name
+            required: true
+        firstName: William
+        phone: "5555555555"
+        modified: 2020-03-24T11:11:41.139-05:00
+        comment: approved
+        completionDate: 2020-03-24T11:11:41.139-05:00
+        id: ac110005-7156-1150-8171-5b292e3e0084
+        email: william.smith@example.com
+        startDate: 2020-03-24
     NonEmployeeSchemaAttributeType:
       description: Enum representing the type of data a schema attribute accepts.
       enum:
@@ -92116,10 +93469,25 @@ components:
     Schedule_1:
       description: The schedule information.
       example:
-        hours: null
-        months: null
+        hours:
+          values:
+          - MON
+          - WED
+          interval: 3
+          type: LIST
+        months:
+          values:
+          - MON
+          - WED
+          interval: 3
+          type: LIST
         timeZoneId: America/Chicago
-        days: null
+        days:
+          values:
+          - MON
+          - WED
+          interval: 3
+          type: LIST
         expiration: 2018-06-25T20:22:28.104Z
         type: WEEKLY
       properties:
@@ -92355,6 +93723,63 @@ components:
           subAggregation:
             $ref: '#/components/schemas/SubSearchAggregationSpecification'
         type: object
+      example:
+        filter:
+          field: access.type
+          name: Entitlements
+          type: TERM
+          value: ENTITLEMENT
+        bucket:
+          field: attributes.city
+          size: 100
+          minDocCount: 2
+          name: Identity Locations
+          type: TERMS
+        metric:
+          field: '@access.name'
+          name: Access Name Count
+          type: COUNT
+        subAggregation:
+          filter:
+            field: access.type
+            name: Entitlements
+            type: TERM
+            value: ENTITLEMENT
+          bucket:
+            field: attributes.city
+            size: 100
+            minDocCount: 2
+            name: Identity Locations
+            type: TERMS
+          metric:
+            field: '@access.name'
+            name: Access Name Count
+            type: COUNT
+          subAggregation:
+            filter:
+              field: access.type
+              name: Entitlements
+              type: TERM
+              value: ENTITLEMENT
+            bucket:
+              field: attributes.city
+              size: 100
+              minDocCount: 2
+              name: Identity Locations
+              type: TERMS
+            metric:
+              field: '@access.name'
+              name: Access Name Count
+              type: COUNT
+            nested:
+              name: id
+              type: access
+          nested:
+            name: id
+            type: access
+        nested:
+          name: id
+          type: access
     OwnerReferenceSegments:
       description: The owner of this object.
       example:
@@ -92755,6 +94180,10 @@ components:
           type: string
       type: object
     WorkflowModifiedBy:
+      example:
+        name: Thomas Edison
+        id: 2c9180a46faadee4016fb4e018c20639
+        type: IDENTITY
       properties:
         type:
           enum:
@@ -93127,7 +94556,7 @@ components:
         name: name
         description: description
         id: id
-        type: null
+        type: ACCESS_PROFILE
         ownerId: ownerId
       properties:
         id:
@@ -93156,6 +94585,20 @@ components:
       - DENIED
       type: string
     CorrelatedGovernanceEvent:
+      example:
+        dt: 2019-03-08T22:37:33.901Z
+        name: Manager Certification for Jon Snow
+        owners:
+        - id: 8a80828f643d484f01643e14202e206f
+          displayName: John Snow
+        decisionMaker:
+          displayName: John Snow
+          id: 8a80828f643d484f01643e14202e206f
+        type: certification
+        reviewers:
+        - id: 8a80828f643d484f01643e14202e206f
+          displayName: John Snow
+        governanceId: 2c91808a77ff216301782327a50f09bf
       properties:
         name:
           description: "The name of the governance event, such as the certification\
@@ -93242,6 +94685,9 @@ components:
           type: array
       type: object
     CertifierResponse:
+      example:
+        displayName: John Snow
+        id: 8a80828f643d484f01643e14202e206f
       properties:
         id:
           description: the id of the certifier
@@ -94016,6 +95462,9 @@ components:
       example: SPECIALIZED
       type: string
     EntityCreatedByDTO:
+      example:
+        displayName: Ashley.Pierce
+        id: 2c918090761a5aac0176215c46a62d58
       properties:
         id:
           description: ID of the creator
@@ -94183,6 +95632,20 @@ components:
       type: string
     ProvisioningConfig_1:
       description: Specification of a Service Desk integration provisioning configuration.
+      example:
+        managedResourceRefs:
+        - type: SOURCE
+          id: 2c9180855d191c59015d291ceb051111
+          name: My Source 1
+        - type: SOURCE
+          id: 2c9180855d191c59015d291ceb052222
+          name: My Source 2
+        provisioningRequestExpiration: 7
+        noProvisioningRequests: true
+        universalManager: true
+        planInitializerScript:
+          source: |
+            <?xml version='1.0' encoding='UTF-8'?>\r\n<!DOCTYPE Rule PUBLIC \"sailpoint.dtd\" \"sailpoint.dtd\">\r\n<Rule name=\"Example Rule\" type=\"BeforeProvisioning\">\r\n  <Description>Before Provisioning Rule which changes disables and enables to a modify.</Description>\r\n  <Source><![CDATA[\r\nimport sailpoint.object.*;\r\nimport sailpoint.object.ProvisioningPlan.AccountRequest;\r\nimport sailpoint.object.ProvisioningPlan.AccountRequest.Operation;\r\nimport sailpoint.object.ProvisioningPlan.AttributeRequest;\r\nimport sailpoint.object.ProvisioningPlan;\r\nimport sailpoint.object.ProvisioningPlan.Operation;\r\n\r\nfor ( AccountRequest accountRequest : plan.getAccountRequests() ) {\r\n  if ( accountRequest.getOp().equals( ProvisioningPlan.ObjectOperation.Disable ) ) {\r\n    accountRequest.setOp( ProvisioningPlan.ObjectOperation.Modify );\r\n  }\r\n  if ( accountRequest.getOp().equals( ProvisioningPlan.ObjectOperation.Enable ) ) {\r\n    accountRequest.setOp( ProvisioningPlan.ObjectOperation.Modify );\r\n  }\r\n}\r\n\r\n  ]]></Source>
       properties:
         universalManager:
           default: false
@@ -94817,6 +96280,56 @@ components:
       example: FIRE_AND_FORGET
       type: string
     AccessRequestDynamicApprover:
+      example:
+        requestedFor:
+        - name: Robert Robinson
+          id: 2c4180a46faadee4016fb4e018c20626
+          type: IDENTITY
+        - name: Robert Robinson
+          id: 2c4180a46faadee4016fb4e018c20626
+          type: IDENTITY
+        - name: Robert Robinson
+          id: 2c4180a46faadee4016fb4e018c20626
+          type: IDENTITY
+        - name: Robert Robinson
+          id: 2c4180a46faadee4016fb4e018c20626
+          type: IDENTITY
+        - name: Robert Robinson
+          id: 2c4180a46faadee4016fb4e018c20626
+          type: IDENTITY
+        requestedBy: ""
+        accessRequestId: 4b4d982dddff4267ab12f0f1e72b5a6d
+        requestedItems:
+        - name: Engineering Access
+          description: Engineering Access
+          comment: William needs this access for his day to day job activities.
+          id: 2c91808b6ef1d43e016efba0ce470904
+          type: ACCESS_PROFILE
+          operation: Add
+        - name: Engineering Access
+          description: Engineering Access
+          comment: William needs this access for his day to day job activities.
+          id: 2c91808b6ef1d43e016efba0ce470904
+          type: ACCESS_PROFILE
+          operation: Add
+        - name: Engineering Access
+          description: Engineering Access
+          comment: William needs this access for his day to day job activities.
+          id: 2c91808b6ef1d43e016efba0ce470904
+          type: ACCESS_PROFILE
+          operation: Add
+        - name: Engineering Access
+          description: Engineering Access
+          comment: William needs this access for his day to day job activities.
+          id: 2c91808b6ef1d43e016efba0ce470904
+          type: ACCESS_PROFILE
+          operation: Add
+        - name: Engineering Access
+          description: Engineering Access
+          comment: William needs this access for his day to day job activities.
+          id: 2c91808b6ef1d43e016efba0ce470904
+          type: ACCESS_PROFILE
+          operation: Add
       properties:
         accessRequestId:
           description: |
@@ -95564,6 +97077,10 @@ components:
       title: VA Cluster Status Change Event
       type: object
     AccessRequestDynamicApprover_1:
+      example:
+        name: Adam Adams
+        id: 2c91808b6ef1d43e016efba0ce470906
+        type: IDENTITY
       nullable: true
       properties:
         id:
@@ -96747,6 +98264,10 @@ components:
               type: object
             type: array
         type: object
+      example:
+        formItems: []
+        name: Field1
+        label: Section 1
       type: object
     AccessProfileApprovalScheme:
       example:
@@ -97144,6 +98665,32 @@ components:
               $ref: '#/components/schemas/NonEmployeeSchemaAttribute'
             type: array
         type: object
+      example:
+        sourceId: 2c91808568c529c60168cca6f90c1313
+        name: Retail
+        description: Source description
+        id: a0303682-5e4a-44f7-bdc2-6ce6112549c1
+        schemaAttributes:
+        - system: true
+          helpText: The unique identifier for the account
+          created: 2019-08-23T18:40:35.772Z
+          modified: 2019-08-23T18:52:59.162Z
+          id: ac110005-7156-1150-8171-5b292e3e0084
+          label: Account Name
+          placeholder: Enter a unique user name for this account.
+          type: TEXT
+          technicalName: account.name
+          required: true
+        - system: true
+          helpText: The unique identifier for the account
+          created: 2019-08-23T18:40:35.772Z
+          modified: 2019-08-23T18:52:59.162Z
+          id: ac110005-7156-1150-8171-5b292e3e0084
+          label: Account Name
+          placeholder: Enter a unique user name for this account.
+          type: TEXT
+          technicalName: account.name
+          required: true
     RoleMembershipSelectorType:
       description: |-
         This enum characterizes the type of a Role's membership selector. Only the following two are fully supported:
@@ -97294,6 +98841,13 @@ components:
       type: string
     Range:
       description: The range of values to be filtered.
+      example:
+        lower:
+          inclusive: false
+          value: "1"
+        upper:
+          inclusive: false
+          value: "1"
       properties:
         lower:
           $ref: '#/components/schemas/Bound'
@@ -97361,6 +98915,25 @@ components:
       - type
       type: object
     Aggregations:
+      example:
+        filter:
+          field: access.type
+          name: Entitlements
+          type: TERM
+          value: ENTITLEMENT
+        bucket:
+          field: attributes.city
+          size: 100
+          minDocCount: 2
+          name: Identity Locations
+          type: TERMS
+        metric:
+          field: '@access.name'
+          name: Access Name Count
+          type: COUNT
+        nested:
+          name: id
+          type: access
       properties:
         nested:
           $ref: '#/components/schemas/NestedAggregation'
@@ -97378,7 +98951,52 @@ components:
           subAggregation:
             $ref: '#/components/schemas/Aggregations'
         type: object
+      example:
+        filter:
+          field: access.type
+          name: Entitlements
+          type: TERM
+          value: ENTITLEMENT
+        bucket:
+          field: attributes.city
+          size: 100
+          minDocCount: 2
+          name: Identity Locations
+          type: TERMS
+        metric:
+          field: '@access.name'
+          name: Access Name Count
+          type: COUNT
+        subAggregation:
+          filter:
+            field: access.type
+            name: Entitlements
+            type: TERM
+            value: ENTITLEMENT
+          bucket:
+            field: attributes.city
+            size: 100
+            minDocCount: 2
+            name: Identity Locations
+            type: TERMS
+          metric:
+            field: '@access.name'
+            name: Access Name Count
+            type: COUNT
+          nested:
+            name: id
+            type: access
+        nested:
+          name: id
+          type: access
     Expression:
+      example:
+        children: []
+        attribute: location
+        value:
+          type: STRING
+          value: Austin
+        operator: EQUALS
       properties:
         operator:
           description: Operator for the expression
@@ -97403,6 +99021,15 @@ components:
           type: array
       type: object
     AccessCriteria:
+      example:
+        name: money-in
+        criteriaList:
+        - type: ENTITLEMENT
+          id: 2c9180866166b5b0016167c32ef31a66
+          name: Administrator
+        - type: ENTITLEMENT
+          id: 2c9180866166b5b0016167c32ef31a67
+          name: Administrator
       properties:
         name:
           description: Business name for the access construct list
@@ -97803,6 +99430,10 @@ components:
       type: object
     AccessItemRequestedForDto:
       description: Identity the access item is requested for.
+      example:
+        name: Robert Robinson
+        id: 2c4180a46faadee4016fb4e018c20626
+        type: IDENTITY
       properties:
         type:
           description: DTO type of identity the access item is requested for.
@@ -98444,6 +100075,9 @@ components:
           type: array
       type: object
     Bound:
+      example:
+        inclusive: false
+        value: "1"
       properties:
         value:
           description: The value of the range's endpoint.
@@ -98473,6 +100107,9 @@ components:
       type: string
     NestedAggregation:
       description: The nested aggregation object.
+      example:
+        name: id
+        type: access
       properties:
         name:
           description: The name of the nested aggregate to be included in the result.
@@ -98488,6 +100125,10 @@ components:
       type: object
     MetricAggregation:
       description: The calculation done on the results of the query
+      example:
+        field: '@access.name'
+        name: Access Name Count
+        type: COUNT
       properties:
         name:
           description: |-
@@ -98510,6 +100151,11 @@ components:
       type: object
     FilterAggregation:
       description: An additional filter to constrain the results of the search query.
+      example:
+        field: access.type
+        name: Entitlements
+        type: TERM
+        value: ENTITLEMENT
       properties:
         name:
           description: The name of the filter aggregate to be included in the result.
@@ -98535,6 +100181,12 @@ components:
       type: object
     BucketAggregation:
       description: The bucket to group the results of the aggregation query by.
+      example:
+        field: attributes.city
+        size: 100
+        minDocCount: 2
+        name: Identity Locations
+        type: TERMS
       properties:
         name:
           description: The name of the bucket aggregate to be included in the result.
@@ -98563,6 +100215,9 @@ components:
       - name
       type: object
     Value:
+      example:
+        type: STRING
+        value: Austin
       nullable: true
       properties:
         type:
@@ -98827,6 +100482,8 @@ components:
           type: string
       type: object
     listAccessProfiles_401_response:
+      example:
+        error: "JWT validation failed: JWT is expired"
       properties:
         error:
           description: A message describing the error
@@ -98834,6 +100491,8 @@ components:
           type: object
       type: object
     listAccessProfiles_429_response:
+      example:
+        message: ' Rate Limit Exceeded '
       properties:
         message:
           description: A message describing the error
@@ -99104,6 +100763,8 @@ components:
           type: object
       type: object
     updateAccessProfilesInBulk_412_response:
+      example:
+        message: ' API/Feature not enabled for your organization.'
       properties:
         message:
           description: A message describing the error
@@ -99171,6 +100832,10 @@ components:
           type: string
       type: object
     createDomainDkim_405_response:
+      example:
+        errorName: NotSupportedException
+        errorMessage: Cannot consume content type
+        trackingId: e7eab60924f64aa284175b9fa3309599
       properties:
         errorName:
           description: A message describing the error
@@ -99213,6 +100878,17 @@ components:
           type: string
       type: object
     searchFormDefinitionsByTenant_400_response:
+      example:
+        messages:
+        - localeOrigin: DEFAULT
+          text: This is an error
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: This is an error
+          locale: en-US
+        detailCode: detailCode
+        statusCode: 0
+        trackingId: trackingId
       properties:
         detailCode:
           type: string
@@ -99638,9 +101314,12 @@ components:
           example: Employees
           type: string
       type: object
-      example: null
     Account_allOf_sourceOwner:
       description: The owner of this object.
+      example:
+        name: John Cavender
+        id: 4c5c8534e99445de98eef6c75e25eb01
+        type: IDENTITY
       nullable: true
       properties:
         type:
@@ -99658,10 +101337,13 @@ components:
           example: John Cavender
           type: string
       type: object
-      example: null
     Account_allOf_ownerIdentity:
       description: "The identity who owns this account, typically used for non-human\
         \ accounts"
+      example:
+        name: Adam Kennedy
+        id: 2c918084660f45d6016617daa9210584
+        type: IDENTITY
       nullable: true
       properties:
         type:
@@ -99679,10 +101361,13 @@ components:
           example: Adam Kennedy
           type: string
       type: object
-      example: null
     Account_allOf_ownerGroup:
       description: "The governance group who owns this account, typically used for\
         \ non-human accounts"
+      example:
+        name: GovGroup AX17Z
+        id: 8d3e0094e99445de98eef6c75e25jc04
+        type: GOVERNANCE_GROUP
       nullable: true
       properties:
         type:
@@ -99700,10 +101385,13 @@ components:
           example: GovGroup AX17Z
           type: string
       type: object
-      example: null
     Campaign_allOf_filter:
       description: Determines which items will be included in this campaign. The default
         campaign filter is used if this field is left blank.
+      example:
+        name: Test Filter
+        id: 0fbe863c063c4c88a35fd7f17e8a3df5
+        type: CAMPAIGN_FILTER
       properties:
         id:
           description: The ID of whatever type of filter is being used.
@@ -99721,9 +101409,11 @@ components:
           example: Test Filter
           type: string
       type: object
-      example: null
     Campaign_allOf_sourceOwnerCampaignInfo:
       description: Must be set only if the campaign type is SOURCE_OWNER.
+      example:
+        sourceIds:
+        - 0fbe863c063c4c88a35fd7f17e8a3df5
       properties:
         sourceIds:
           description: The list of sources to be included in the campaign.
@@ -99733,11 +101423,14 @@ components:
             type: string
           type: array
       type: object
-      example: null
     Campaign_allOf_searchCampaignInfo_reviewer:
       description: "If specified, this identity or governance group will be the reviewer\
         \ for all certifications in this campaign. The allowed DTO types are IDENTITY\
         \ and GOVERNANCE_GROUP."
+      example:
+        name: William Wilson
+        id: 2c91808568c529c60168cca6f90c1313
+        type: IDENTITY
       properties:
         type:
           description: The reviewer's DTO type.
@@ -99755,9 +101448,39 @@ components:
           example: William Wilson
           type: string
       type: object
-      example: null
     Campaign_allOf_searchCampaignInfo:
       description: Must be set only if the campaign type is SEARCH.
+      example:
+        identityIds:
+        - 0fbe863c063c4c88a35fd7f17e8a3df5
+        query: Search Campaign query description
+        description: Search Campaign description
+        reviewer:
+          name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+        type: ACCESS
+        accessConstraints:
+        - ids:
+          - 2c90ad2a70ace7d50170acf22ca90010
+          type: ENTITLEMENT
+          operator: SELECTED
+        - ids:
+          - 2c90ad2a70ace7d50170acf22ca90010
+          type: ENTITLEMENT
+          operator: SELECTED
+        - ids:
+          - 2c90ad2a70ace7d50170acf22ca90010
+          type: ENTITLEMENT
+          operator: SELECTED
+        - ids:
+          - 2c90ad2a70ace7d50170acf22ca90010
+          type: ENTITLEMENT
+          operator: SELECTED
+        - ids:
+          - 2c90ad2a70ace7d50170acf22ca90010
+          type: ENTITLEMENT
+          operator: SELECTED
       properties:
         type:
           description: The type of search campaign represented.
@@ -99798,12 +101521,15 @@ components:
       required:
       - type
       type: object
-      example: null
     Campaign_allOf_roleCompositionCampaignInfo_remediatorRef:
       description: "This determines who remediation tasks will be assigned to. Remediation\
         \ tasks are created for each revoke decision on items in the campaign. The\
         \ only legal remediator type is 'IDENTITY', and the chosen identity must be\
         \ a Role Admin or Org Admin."
+      example:
+        name: Role Admin
+        id: 2c90ad2a70ace7d50170acf22ca90010
+        type: IDENTITY
       properties:
         type:
           description: Legal Remediator Type
@@ -99824,9 +101550,21 @@ components:
       - id
       - type
       type: object
-      example: null
     Campaign_allOf_roleCompositionCampaignInfo:
       description: Optional configuration options for role composition campaigns.
+      example:
+        remediatorRef:
+          name: Role Admin
+          id: 2c90ad2a70ace7d50170acf22ca90010
+          type: IDENTITY
+        roleIds:
+        - 2c90ad2a70ace7d50170acf22ca90010
+        query: Search Query
+        description: Role Composition Description
+        reviewer:
+          name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
       properties:
         reviewer:
           $ref: '#/components/schemas/Campaign_allOf_searchCampaignInfo_reviewer'
@@ -99855,8 +101593,11 @@ components:
       required:
       - remediatorRef
       type: object
-      example: null
     Campaign_allOf_sourcesWithOrphanEntitlements:
+      example:
+        name: Source with orphan entitlements
+        id: 2c90ad2a70ace7d50170acf22ca90010
+        type: SOURCE
       properties:
         id:
           description: Id of the source
@@ -99873,7 +101614,6 @@ components:
           example: Source with orphan entitlements
           type: string
       type: object
-      example: null
     EntitlementDocument_allOf_source:
       description: Entitlement's source.
       properties:
@@ -99886,7 +101626,6 @@ components:
           example: ODS-HR-Employees
           type: string
       type: object
-      example: null
     IdentityDocument_allOf_manager:
       description: Identity's manager.
       nullable: true
@@ -99904,7 +101643,6 @@ components:
           example: Amanda.Ross
           type: string
       type: object
-      example: null
     IdentityDocument_allOf_identityProfile:
       description: Identity's identity profile.
       properties:
@@ -99917,7 +101655,6 @@ components:
           example: HR Employees
           type: string
       type: object
-      example: null
     IdentityDocument_allOf_source:
       description: Identity's source.
       properties:
@@ -99930,9 +101667,12 @@ components:
           example: ODS-HR-Employees
           type: string
       type: object
-      example: null
     IdentityProfile_allOf_owner:
       description: The owner of the Identity Profile.
+      example:
+        name: William Wilson
+        id: 2c9180835d191a86015d28455b4b232a
+        type: IDENTITY
       nullable: true
       properties:
         type:
@@ -99951,8 +101691,11 @@ components:
           example: William Wilson
           type: string
       type: object
-      example: null
     IdentityProfile_allOf_authoritativeSource:
+      example:
+        name: HR Active Directory
+        id: 2c9180835d191a86015d28455b4b232a
+        type: SOURCE
       properties:
         type:
           description: Type of the object to which this reference applies
@@ -99970,9 +101713,11 @@ components:
           example: HR Active Directory
           type: string
       type: object
-      example: null
     ProvisioningConfig_planInitializerScript:
       description: This is a reference to a plan initializer script.
+      example:
+        source: |
+          <?xml version='1.0' encoding='UTF-8'?>\r\n<!DOCTYPE Rule PUBLIC \"sailpoint.dtd\" \"sailpoint.dtd\">\r\n<Rule name=\"Example Rule\" type=\"BeforeProvisioning\">\r\n  <Description>Before Provisioning Rule which changes disables and enables to a modify.</Description>\r\n  <Source><![CDATA[\r\nimport sailpoint.object.*;\r\nimport sailpoint.object.ProvisioningPlan.AccountRequest;\r\nimport sailpoint.object.ProvisioningPlan.AccountRequest.Operation;\r\nimport sailpoint.object.ProvisioningPlan.AttributeRequest;\r\nimport sailpoint.object.ProvisioningPlan;\r\nimport sailpoint.object.ProvisioningPlan.Operation;\r\n\r\nfor ( AccountRequest accountRequest : plan.getAccountRequests() ) {\r\n  if ( accountRequest.getOp().equals( ProvisioningPlan.ObjectOperation.Disable ) ) {\r\n    accountRequest.setOp( ProvisioningPlan.ObjectOperation.Modify );\r\n  }\r\n  if ( accountRequest.getOp().equals( ProvisioningPlan.ObjectOperation.Enable ) ) {\r\n    accountRequest.setOp( ProvisioningPlan.ObjectOperation.Modify );\r\n  }\r\n}\r\n\r\n  ]]></Source>
       nullable: true
       properties:
         source:
@@ -100136,6 +101881,9 @@ components:
       type: object
     ScheduledSearch_allOf_owner:
       description: The owner of the scheduled search
+      example:
+        id: 2c9180867624cbd7017642d8c8c81f67
+        type: IDENTITY
       properties:
         type:
           description: The type of object being referenced
@@ -100152,7 +101900,6 @@ components:
       - id
       - type
       type: object
-      example: null
     Source_owner:
       description: Reference to identity object who owns the source.
       example:
@@ -100257,6 +102004,9 @@ components:
           account/identity.
         nullable: true
         type: object
+      example:
+        accountAttributeName: manager
+        identityAttributeName: manager
     Source_managerCorrelationRule:
       description: Reference to the ManagerCorrelationRule. Only use this rule when
         a simple filter isn't sufficient.
@@ -100367,6 +102117,19 @@ components:
       - $ref: '#/components/schemas/FormDetails'
       - nullable: true
         type: object
+      example:
+        subtitle: Please select from the following
+        name: AccountSelection Form
+        id: 2c9180835d2e5168015d32f890ca1581
+        title: Account Selection for John.Doe
+        targetUser: Jane.Doe
+        sections:
+        - formItems: []
+          name: Field1
+          label: Section 1
+        - formItems: []
+          name: Field1
+          label: Section 1
     array_inner:
       anyOf:
       - type: string
@@ -100423,6 +102186,13 @@ components:
       - $ref: '#/components/schemas/CancelledRequestDetails'
       - nullable: true
         type: object
+      example:
+        owner:
+          name: Support
+          id: 2c9180a46faadee4016fb4e018c20639
+          type: IDENTITY
+        modified: 2019-12-20T09:17:12.192Z
+        comment: This request must be cancelled.
     RequestedItemStatus_requestedFor:
       description: Identity access was requested for.
       example:
@@ -100452,22 +102222,105 @@ components:
       - description: The requester's comment.
         nullable: true
         type: object
+      example:
+        created: 2017-07-11T18:45:37.098Z
+        author:
+          name: john.doe
+          id: 2c9180847e25f377017e2ae8cae4650b
+          type: IDENTITY
+        comment: This is a comment.
     RequestedItemStatus_sodViolationContext:
       allOf:
       - $ref: '#/components/schemas/SodViolationContextCheckCompleted'
       - description: The details of the SOD violations for the associated approval.
         nullable: true
         type: object
+      example:
+        violationCheckResult:
+          clientMetadata:
+            requestedAppName: test-app
+            requestedAppId: 2c91808f7892918f0178b78da4a305a1
+          violationContexts:
+          - conflictingAccessCriteria:
+              leftCriteria:
+                criteriaList:
+                - existing: true
+                  name: My HR Entitlement
+                  id: 2c918085771e9d3301773b3cb66f6398
+                  type: IDENTITY
+                - existing: true
+                  name: My HR Entitlement
+                  id: 2c918085771e9d3301773b3cb66f6398
+                  type: IDENTITY
+              rightCriteria:
+                criteriaList:
+                - existing: true
+                  name: My HR Entitlement
+                  id: 2c918085771e9d3301773b3cb66f6398
+                  type: IDENTITY
+                - existing: true
+                  name: My HR Entitlement
+                  id: 2c918085771e9d3301773b3cb66f6398
+                  type: IDENTITY
+            policy:
+              name: Business SOD Policy
+              id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+              type: SOD_POLICY
+          - conflictingAccessCriteria:
+              leftCriteria:
+                criteriaList:
+                - existing: true
+                  name: My HR Entitlement
+                  id: 2c918085771e9d3301773b3cb66f6398
+                  type: IDENTITY
+                - existing: true
+                  name: My HR Entitlement
+                  id: 2c918085771e9d3301773b3cb66f6398
+                  type: IDENTITY
+              rightCriteria:
+                criteriaList:
+                - existing: true
+                  name: My HR Entitlement
+                  id: 2c918085771e9d3301773b3cb66f6398
+                  type: IDENTITY
+                - existing: true
+                  name: My HR Entitlement
+                  id: 2c918085771e9d3301773b3cb66f6398
+                  type: IDENTITY
+            policy:
+              name: Business SOD Policy
+              id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+              type: SOD_POLICY
+          violatedPolicies:
+          - name: Business SOD Policy
+            id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+            type: SOD_POLICY
+          - name: Business SOD Policy
+            id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+            type: SOD_POLICY
+          message:
+            localeOrigin: DEFAULT
+            text: The request was syntactically correct but its content is semantically
+              invalid.
+            locale: en-US
+        state: SUCCESS
+        uuid: f73d16e9-a038-46c5-b217-1246e15fdbdd
     RequestedItemStatus_provisioningDetails:
       allOf:
       - $ref: '#/components/schemas/ProvisioningDetails'
       - nullable: true
         type: object
+      example:
+        orderedSubPhaseReferences: manualWorkItemDetails
     RequestedItemStatus_preApprovalTriggerDetails:
       allOf:
       - $ref: '#/components/schemas/PreApprovalTriggerDetails'
       - nullable: true
         type: object
+      example:
+        decision: APPROVED
+        comment: Access is Approved
+        reviewer: John Doe
     PendingApproval_owner:
       description: Access item owner's identity.
       example:
@@ -100495,12 +102348,26 @@ components:
       - $ref: '#/components/schemas/CommentDto'
       - description: The requester's comment.
         type: object
+      example:
+        created: 2017-07-11T18:45:37.098Z
+        author:
+          name: john.doe
+          id: 2c9180847e25f377017e2ae8cae4650b
+          type: IDENTITY
+        comment: This is a comment.
     CompletedApproval_reviewerComment:
       allOf:
       - $ref: '#/components/schemas/CommentDto'
       - description: The approval's reviewer's comment.
         nullable: true
         type: object
+      example:
+        created: 2017-07-11T18:45:37.098Z
+        author:
+          name: john.doe
+          id: 2c9180847e25f377017e2ae8cae4650b
+          type: IDENTITY
+        comment: This is a comment.
     CompletedApproval_preApprovalTriggerResult:
       description: "If the access request submitted event trigger is configured and\
         \ this access request was intercepted by it, then this is the result of the\
@@ -100735,8 +102602,24 @@ components:
             - "true"
         type: object
       - $ref: '#/components/schemas/Filter'
+      example:
+        terms:
+        - account_count
+        - account_count
+        range:
+          lower:
+            inclusive: false
+            value: "1"
+          upper:
+            inclusive: false
+            value: "1"
+        exclude: false
+        type: RANGE
       nullable: true
     SearchSchedule_recipients_inner:
+      example:
+        id: 2c9180867624cbd7017642d8c8c81f67
+        type: IDENTITY
       properties:
         type:
           description: The type of object being referenced
@@ -100757,6 +102640,14 @@ components:
       - $ref: '#/components/schemas/VisibilityCriteria'
       - nullable: true
         type: object
+      example:
+        expression:
+          children: []
+          attribute: location
+          value:
+            type: STRING
+            value: Austin
+          operator: EQUALS
     ReportDetails_arguments:
       description: The string-object map(dictionary) with the arguments needed for
         report processing.
@@ -100838,6 +102729,25 @@ components:
       - $ref: '#/components/schemas/ConflictingAccessCriteria'
       - nullable: true
         type: object
+      example:
+        leftCriteria:
+          name: money-in
+          criteriaList:
+          - type: ENTITLEMENT
+            id: 2c9180866166b5b0016167c32ef31a66
+            name: Administrator
+          - type: ENTITLEMENT
+            id: 2c9180866166b5b0016167c32ef31a67
+            name: Administrator
+        rightCriteria:
+          name: money-in
+          criteriaList:
+          - type: ENTITLEMENT
+            id: 2c9180866166b5b0016167c32ef31a66
+            name: Administrator
+          - type: ENTITLEMENT
+            id: 2c9180866166b5b0016167c32ef31a67
+            name: Administrator
     IdentityWithNewAccess_accessRefs_inner:
       description: Entitlement including a specific set of access.
       properties:
@@ -100858,6 +102768,10 @@ components:
       type: object
     Workflow_allOf_creator:
       description: Workflow creator's identity.
+      example:
+        name: Michael Michaels
+        id: 2c7180a46faadee4016fb4e018c20642
+        type: IDENTITY
       properties:
         type:
           description: Workflow creator's DTO type.
@@ -100874,7 +102788,6 @@ components:
           example: Michael Michaels
           type: string
       type: object
-      example: null
     WorkflowBody_owner:
       description: The identity that owns the workflow.  The owner's permissions in
         IDN will determine what actions the workflow is allowed to perform.  Ownership
@@ -101037,6 +102950,10 @@ components:
       - $ref: '#/components/schemas/OwnerReferenceDto'
       - nullable: true
         type: object
+      example:
+        name: identity 1
+        id: 2a2fdacca5e345f18bf7970cfbb8fec2
+        type: IDENTITY
     Entitlement_1_manuallyUpdatedFields:
       allOf:
       - $ref: '#/components/schemas/ManuallyUpdatedFieldsDTO'
@@ -101051,12 +102968,29 @@ components:
           DESCRIPTION: true
         nullable: true
         type: object
+      example:
+        DESCRIPTION: true
+        DISPLAY_NAME: true
     Entitlement_1_accessModelMetadata:
       allOf:
       - $ref: '#/components/schemas/AttributeDTOList'
       - description: Access Model Metadata (beta).
         nullable: true
         type: object
+      example:
+        attributes:
+        - key: iscPrivacy
+          name: Privacy
+          multiselect: false
+          status: active
+          type: governance
+          objectTypes:
+          - all
+          description: Specifies the level of privacy associated with an access item.
+          values:
+          - value: public
+            name: Public
+            status: active
     LoadEntitlementTask_returns_inner:
       properties:
         displayLabel:
@@ -101148,6 +103082,10 @@ components:
       type: object
     IdentityDto_managerRef:
       description: Identity's manager.
+      example:
+        name: Robert Robinson
+        id: 2c4180a46faadee4016fb4e018c20626
+        type: IDENTITY
       nullable: true
       properties:
         type:
@@ -101165,7 +103103,13 @@ components:
           example: Robert Robinson
           type: string
       type: object
-      example: null
+    IdentityDto_attributes:
+      description: A map with the identity attributes for the identity
+      example: "{\"uid\":\"Walter White\",\"firstname\":\"walter\",\"cloudStatus\"\
+        :\"UNREGISTERED\",\"displayName\":\"Walter White\",\"identificationNumber\"\
+        :\"942\",\"lastSyncDate\":1470348809380,\"email\":\"walter@gmail.com\",\"\
+        lastname\":\"white\"}"
+      type: object
     IdentityDto_lifecycleState:
       allOf:
       - $ref: '#/components/schemas/LifecycleStateDto'
@@ -101173,7 +103117,16 @@ components:
           whether this lifecycle state has been set manually
         nullable: true
         type: object
+      example:
+        stateName: active
+        manuallyUpdated: true
     IdentityAssociationDetails_associationDetails_inner:
+      example:
+        entities:
+          id: b660a232f05b4e04812ca974b3011e0f
+          name: Gaston.800ddf9640a
+          type: CAMPAIGN_CAMPAIGNER
+        associationType: CAMPAIGN_OWNER
       properties:
         associationType:
           description: association type with the identity
@@ -101231,8 +103184,34 @@ components:
       oneOf:
       - $ref: '#/components/schemas/EntityCreatedByDTO'
       - $ref: '#/components/schemas/NullableEntityCreatedByDTO'
+    SimIntegrationDetails_allOf_attributes:
+      description: The attributes map containing the credentials used to configure
+        the integration.
+      example: "{\"uid\":\"Walter White\",\"firstname\":\"walter\",\"cloudStatus\"\
+        :\"UNREGISTERED\",\"displayName\":\"Walter White\",\"identificationNumber\"\
+        :\"942\",\"lastSyncDate\":1470348809380,\"email\":\"walter@gmail.com\",\"\
+        lastname\":\"white\"}"
+      nullable: true
+      type: object
+    SimIntegrationDetails_allOf_statusMap:
+      description: Custom mapping between the integration result and the provisioning
+        result
+      example: "{closed_cancelled=Failed, closed_complete=Committed, closed_incomplete=Failed,\
+        \ closed_rejected=Failed, in_process=Queued, requested=Queued}"
+      type: object
+    SimIntegrationDetails_allOf_request:
+      description: Request data to customize desc and body of the created ticket
+      example: "{description=SailPoint Access Request,, req_description=The Service\
+        \ Request created by SailPoint ServiceNow Service Integration Module (SIM).,,\
+        \ req_short_description=SailPoint New Access Request Created from IdentityNow,,\
+        \ short_description=SailPoint Access Request $!plan.arguments.identityRequestId}"
+      type: object
     SimIntegrationDetails_allOf_beforeProvisioningRule:
       description: Before provisioning rule of integration
+      example:
+        name: Example Rule
+        id: 2c918085708c274401708c2a8a760001
+        type: IDENTITY
       properties:
         type:
           $ref: '#/components/schemas/DtoType'
@@ -101245,7 +103224,6 @@ components:
           example: Example Rule
           type: string
       type: object
-      example: null
     LoadAccountsTask_task_messages_inner:
       properties:
         type:
@@ -101901,6 +103879,12 @@ components:
             readOnly: true
             type: string
         type: object
+      example:
+        emailAddress: support@sailpoint.com
+        displayName: Support
+        name: Support
+        id: 2c9180a46faadee4016fb4e018c20639
+        type: IDENTITY
     FormDefinitionDynamicSchemaRequest_attributes:
       example:
         formDefinitionId: 00000000-0000-0000-0000-000000000000
@@ -102040,6 +104024,10 @@ components:
       - $ref: '#/components/schemas/AccessItemReviewedBy'
       - nullable: true
         type: object
+      example:
+        name: Allen Albertson
+        id: 2c3780a46faadee4016fb4e018c20652
+        type: IDENTITY
     ManualWorkItemDetails_originalOwner:
       description: "Identity of original work item owner, if the work item has been\
         \ forwarded."
@@ -102161,6 +104149,12 @@ components:
           - "12"
         nullable: true
         type: object
+      example:
+        values:
+        - MON
+        - WED
+        interval: 3
+        type: LIST
     Schedule_1_days:
       allOf:
       - $ref: '#/components/schemas/Selector'
@@ -102178,6 +104172,12 @@ components:
           - FRI
         nullable: true
         type: object
+      example:
+        values:
+        - MON
+        - WED
+        interval: 3
+        type: LIST
     Schedule_1_hours:
       allOf:
       - $ref: '#/components/schemas/Selector'
@@ -102189,6 +104189,12 @@ components:
           - "18"
           interval: 3
         type: object
+      example:
+        values:
+        - MON
+        - WED
+        interval: 3
+        type: LIST
     ViolationOwnerAssignmentConfig_ownerRef:
       description: The owner of the violation assignment config.
       example:
@@ -102336,6 +104342,9 @@ components:
           type: object
     ProvisioningConfig_1_planInitializerScript:
       description: This is a reference to a plan initializer script.
+      example:
+        source: |
+          <?xml version='1.0' encoding='UTF-8'?>\r\n<!DOCTYPE Rule PUBLIC \"sailpoint.dtd\" \"sailpoint.dtd\">\r\n<Rule name=\"Example Rule\" type=\"BeforeProvisioning\">\r\n  <Description>Before Provisioning Rule which changes disables and enables to a modify.</Description>\r\n  <Source><![CDATA[\r\nimport sailpoint.object.*;\r\nimport sailpoint.object.ProvisioningPlan.AccountRequest;\r\nimport sailpoint.object.ProvisioningPlan.AccountRequest.Operation;\r\nimport sailpoint.object.ProvisioningPlan.AttributeRequest;\r\nimport sailpoint.object.ProvisioningPlan;\r\nimport sailpoint.object.ProvisioningPlan.Operation;\r\n\r\nfor ( AccountRequest accountRequest : plan.getAccountRequests() ) {\r\n  if ( accountRequest.getOp().equals( ProvisioningPlan.ObjectOperation.Disable ) ) {\r\n    accountRequest.setOp( ProvisioningPlan.ObjectOperation.Modify );\r\n  }\r\n  if ( accountRequest.getOp().equals( ProvisioningPlan.ObjectOperation.Enable ) ) {\r\n    accountRequest.setOp( ProvisioningPlan.ObjectOperation.Modify );\r\n  }\r\n}\r\n\r\n  ]]></Source>
       properties:
         source:
           description: This is a Rule that allows provisioning instruction changes.
@@ -102344,6 +104353,13 @@ components:
           type: string
       type: object
     AccessRequestDynamicApprover_requestedItems_inner:
+      example:
+        name: Engineering Access
+        description: Engineering Access
+        comment: William needs this access for his day to day job activities.
+        id: 2c91808b6ef1d43e016efba0ce470904
+        type: ACCESS_PROFILE
+        operation: Add
       properties:
         id:
           description: The unique ID of the access item.
@@ -103670,7 +105686,6 @@ components:
           example: cloud-support@sailpoint.com
           type: string
       type: object
-      example: null
     AccountRequest_result:
       properties:
         errors:
@@ -103708,7 +105723,6 @@ components:
           example: "CN=Carol Adams,OU=Austin,OU=Americas,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"
           type: string
       type: object
-      example: null
     DataAccess_policies_inner:
       example:
         value: GDPR-20

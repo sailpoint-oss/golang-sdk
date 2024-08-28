@@ -49,7 +49,7 @@ func NewTargetWithDefaults() *Target {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Target) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *Target) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Target) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -67,7 +67,7 @@ func (o *Target) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *Target) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *Target) SetId(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Target) GetType() string {
-	if o == nil || isNil(o.Type.Get()) {
+	if o == nil || IsNil(o.Type.Get()) {
 		var ret string
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *Target) UnsetType() {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Target) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -133,7 +133,7 @@ func (o *Target) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Target) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -141,7 +141,7 @@ func (o *Target) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *Target) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -163,13 +163,13 @@ func (o Target) MarshalJSON() ([]byte, error) {
 
 func (o Target) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
 	if o.Type.IsSet() {
 		toSerialize["type"] = o.Type.Get()
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 
@@ -180,16 +180,20 @@ func (o Target) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Target) UnmarshalJSON(bytes []byte) (err error) {
+func (o *Target) UnmarshalJSON(data []byte) (err error) {
 	varTarget := _Target{}
 
-	if err = json.Unmarshal(bytes, &varTarget); err == nil {
+	err = json.Unmarshal(data, &varTarget)
+
+	if err != nil {
+		return err
+	}
+
 	*o = Target(varTarget)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "name")

@@ -19,14 +19,14 @@ import (
 
 func Test_api_v2024_AccessRequestsAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewDefaultConfiguration()
+	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test AccessRequestsAPIService CancelAccessRequest", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.AccessRequestsAPI.CancelAccessRequest(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AccessRequestsAPI.CancelAccessRequest(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -38,7 +38,7 @@ func Test_api_v2024_AccessRequestsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.AccessRequestsAPI.CloseAccessRequest(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AccessRequestsAPI.CloseAccessRequest(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -50,7 +50,7 @@ func Test_api_v2024_AccessRequestsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.AccessRequestsAPI.CreateAccessRequest(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AccessRequestsAPI.CreateAccessRequest(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -62,7 +62,7 @@ func Test_api_v2024_AccessRequestsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.AccessRequestsAPI.GetAccessRequestConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AccessRequestsAPI.GetAccessRequestConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,7 +74,7 @@ func Test_api_v2024_AccessRequestsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.AccessRequestsAPI.ListAccessRequestStatus(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AccessRequestsAPI.ListAccessRequestStatus(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -86,7 +86,7 @@ func Test_api_v2024_AccessRequestsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.API_V2024.AccessRequestsAPI.SetAccessRequestConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AccessRequestsAPI.SetAccessRequestConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

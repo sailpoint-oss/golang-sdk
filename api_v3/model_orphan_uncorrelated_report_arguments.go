@@ -45,7 +45,7 @@ func NewOrphanUncorrelatedReportArgumentsWithDefaults() *OrphanUncorrelatedRepor
 
 // GetSelectedFormats returns the SelectedFormats field value if set, zero value otherwise.
 func (o *OrphanUncorrelatedReportArguments) GetSelectedFormats() []string {
-	if o == nil || isNil(o.SelectedFormats) {
+	if o == nil || IsNil(o.SelectedFormats) {
 		var ret []string
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *OrphanUncorrelatedReportArguments) GetSelectedFormats() []string {
 // GetSelectedFormatsOk returns a tuple with the SelectedFormats field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrphanUncorrelatedReportArguments) GetSelectedFormatsOk() ([]string, bool) {
-	if o == nil || isNil(o.SelectedFormats) {
+	if o == nil || IsNil(o.SelectedFormats) {
 		return nil, false
 	}
 	return o.SelectedFormats, true
@@ -63,7 +63,7 @@ func (o *OrphanUncorrelatedReportArguments) GetSelectedFormatsOk() ([]string, bo
 
 // HasSelectedFormats returns a boolean if a field has been set.
 func (o *OrphanUncorrelatedReportArguments) HasSelectedFormats() bool {
-	if o != nil && !isNil(o.SelectedFormats) {
+	if o != nil && !IsNil(o.SelectedFormats) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o OrphanUncorrelatedReportArguments) MarshalJSON() ([]byte, error) {
 
 func (o OrphanUncorrelatedReportArguments) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.SelectedFormats) {
+	if !IsNil(o.SelectedFormats) {
 		toSerialize["selectedFormats"] = o.SelectedFormats
 	}
 
@@ -96,16 +96,20 @@ func (o OrphanUncorrelatedReportArguments) ToMap() (map[string]interface{}, erro
 	return toSerialize, nil
 }
 
-func (o *OrphanUncorrelatedReportArguments) UnmarshalJSON(bytes []byte) (err error) {
+func (o *OrphanUncorrelatedReportArguments) UnmarshalJSON(data []byte) (err error) {
 	varOrphanUncorrelatedReportArguments := _OrphanUncorrelatedReportArguments{}
 
-	if err = json.Unmarshal(bytes, &varOrphanUncorrelatedReportArguments); err == nil {
+	err = json.Unmarshal(data, &varOrphanUncorrelatedReportArguments)
+
+	if err != nil {
+		return err
+	}
+
 	*o = OrphanUncorrelatedReportArguments(varOrphanUncorrelatedReportArguments)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "selectedFormats")
 		o.AdditionalProperties = additionalProperties
 	}

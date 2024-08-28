@@ -52,7 +52,7 @@ func NewVendorConnectorMappingDeletedAtWithDefaults() *VendorConnectorMappingDel
 
 // GetTime returns the Time field value if set, zero value otherwise.
 func (o *VendorConnectorMappingDeletedAt) GetTime() time.Time {
-	if o == nil || isNil(o.Time) {
+	if o == nil || IsNil(o.Time) {
 		var ret time.Time
 		return ret
 	}
@@ -62,7 +62,7 @@ func (o *VendorConnectorMappingDeletedAt) GetTime() time.Time {
 // GetTimeOk returns a tuple with the Time field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VendorConnectorMappingDeletedAt) GetTimeOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Time) {
+	if o == nil || IsNil(o.Time) {
 		return nil, false
 	}
 	return o.Time, true
@@ -70,7 +70,7 @@ func (o *VendorConnectorMappingDeletedAt) GetTimeOk() (*time.Time, bool) {
 
 // HasTime returns a boolean if a field has been set.
 func (o *VendorConnectorMappingDeletedAt) HasTime() bool {
-	if o != nil && !isNil(o.Time) {
+	if o != nil && !IsNil(o.Time) {
 		return true
 	}
 
@@ -84,7 +84,7 @@ func (o *VendorConnectorMappingDeletedAt) SetTime(v time.Time) {
 
 // GetValid returns the Valid field value if set, zero value otherwise.
 func (o *VendorConnectorMappingDeletedAt) GetValid() bool {
-	if o == nil || isNil(o.Valid) {
+	if o == nil || IsNil(o.Valid) {
 		var ret bool
 		return ret
 	}
@@ -94,7 +94,7 @@ func (o *VendorConnectorMappingDeletedAt) GetValid() bool {
 // GetValidOk returns a tuple with the Valid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VendorConnectorMappingDeletedAt) GetValidOk() (*bool, bool) {
-	if o == nil || isNil(o.Valid) {
+	if o == nil || IsNil(o.Valid) {
 		return nil, false
 	}
 	return o.Valid, true
@@ -102,7 +102,7 @@ func (o *VendorConnectorMappingDeletedAt) GetValidOk() (*bool, bool) {
 
 // HasValid returns a boolean if a field has been set.
 func (o *VendorConnectorMappingDeletedAt) HasValid() bool {
-	if o != nil && !isNil(o.Valid) {
+	if o != nil && !IsNil(o.Valid) {
 		return true
 	}
 
@@ -124,10 +124,10 @@ func (o VendorConnectorMappingDeletedAt) MarshalJSON() ([]byte, error) {
 
 func (o VendorConnectorMappingDeletedAt) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Time) {
+	if !IsNil(o.Time) {
 		toSerialize["Time"] = o.Time
 	}
-	if !isNil(o.Valid) {
+	if !IsNil(o.Valid) {
 		toSerialize["Valid"] = o.Valid
 	}
 
@@ -138,16 +138,20 @@ func (o VendorConnectorMappingDeletedAt) ToMap() (map[string]interface{}, error)
 	return toSerialize, nil
 }
 
-func (o *VendorConnectorMappingDeletedAt) UnmarshalJSON(bytes []byte) (err error) {
+func (o *VendorConnectorMappingDeletedAt) UnmarshalJSON(data []byte) (err error) {
 	varVendorConnectorMappingDeletedAt := _VendorConnectorMappingDeletedAt{}
 
-	if err = json.Unmarshal(bytes, &varVendorConnectorMappingDeletedAt); err == nil {
+	err = json.Unmarshal(data, &varVendorConnectorMappingDeletedAt)
+
+	if err != nil {
+		return err
+	}
+
 	*o = VendorConnectorMappingDeletedAt(varVendorConnectorMappingDeletedAt)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "Time")
 		delete(additionalProperties, "Valid")
 		o.AdditionalProperties = additionalProperties

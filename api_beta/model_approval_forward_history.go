@@ -55,7 +55,7 @@ func NewApprovalForwardHistoryWithDefaults() *ApprovalForwardHistory {
 
 // GetOldApproverName returns the OldApproverName field value if set, zero value otherwise.
 func (o *ApprovalForwardHistory) GetOldApproverName() string {
-	if o == nil || isNil(o.OldApproverName) {
+	if o == nil || IsNil(o.OldApproverName) {
 		var ret string
 		return ret
 	}
@@ -65,7 +65,7 @@ func (o *ApprovalForwardHistory) GetOldApproverName() string {
 // GetOldApproverNameOk returns a tuple with the OldApproverName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalForwardHistory) GetOldApproverNameOk() (*string, bool) {
-	if o == nil || isNil(o.OldApproverName) {
+	if o == nil || IsNil(o.OldApproverName) {
 		return nil, false
 	}
 	return o.OldApproverName, true
@@ -73,7 +73,7 @@ func (o *ApprovalForwardHistory) GetOldApproverNameOk() (*string, bool) {
 
 // HasOldApproverName returns a boolean if a field has been set.
 func (o *ApprovalForwardHistory) HasOldApproverName() bool {
-	if o != nil && !isNil(o.OldApproverName) {
+	if o != nil && !IsNil(o.OldApproverName) {
 		return true
 	}
 
@@ -87,7 +87,7 @@ func (o *ApprovalForwardHistory) SetOldApproverName(v string) {
 
 // GetNewApproverName returns the NewApproverName field value if set, zero value otherwise.
 func (o *ApprovalForwardHistory) GetNewApproverName() string {
-	if o == nil || isNil(o.NewApproverName) {
+	if o == nil || IsNil(o.NewApproverName) {
 		var ret string
 		return ret
 	}
@@ -97,7 +97,7 @@ func (o *ApprovalForwardHistory) GetNewApproverName() string {
 // GetNewApproverNameOk returns a tuple with the NewApproverName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalForwardHistory) GetNewApproverNameOk() (*string, bool) {
-	if o == nil || isNil(o.NewApproverName) {
+	if o == nil || IsNil(o.NewApproverName) {
 		return nil, false
 	}
 	return o.NewApproverName, true
@@ -105,7 +105,7 @@ func (o *ApprovalForwardHistory) GetNewApproverNameOk() (*string, bool) {
 
 // HasNewApproverName returns a boolean if a field has been set.
 func (o *ApprovalForwardHistory) HasNewApproverName() bool {
-	if o != nil && !isNil(o.NewApproverName) {
+	if o != nil && !IsNil(o.NewApproverName) {
 		return true
 	}
 
@@ -119,7 +119,7 @@ func (o *ApprovalForwardHistory) SetNewApproverName(v string) {
 
 // GetComment returns the Comment field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApprovalForwardHistory) GetComment() string {
-	if o == nil || isNil(o.Comment.Get()) {
+	if o == nil || IsNil(o.Comment.Get()) {
 		var ret string
 		return ret
 	}
@@ -161,7 +161,7 @@ func (o *ApprovalForwardHistory) UnsetComment() {
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *ApprovalForwardHistory) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		var ret time.Time
 		return ret
 	}
@@ -171,7 +171,7 @@ func (o *ApprovalForwardHistory) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalForwardHistory) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -179,7 +179,7 @@ func (o *ApprovalForwardHistory) GetModifiedOk() (*time.Time, bool) {
 
 // HasModified returns a boolean if a field has been set.
 func (o *ApprovalForwardHistory) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -193,7 +193,7 @@ func (o *ApprovalForwardHistory) SetModified(v time.Time) {
 
 // GetForwarderName returns the ForwarderName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApprovalForwardHistory) GetForwarderName() string {
-	if o == nil || isNil(o.ForwarderName.Get()) {
+	if o == nil || IsNil(o.ForwarderName.Get()) {
 		var ret string
 		return ret
 	}
@@ -235,7 +235,7 @@ func (o *ApprovalForwardHistory) UnsetForwarderName() {
 
 // GetReassignmentType returns the ReassignmentType field value if set, zero value otherwise.
 func (o *ApprovalForwardHistory) GetReassignmentType() ReassignmentType {
-	if o == nil || isNil(o.ReassignmentType) {
+	if o == nil || IsNil(o.ReassignmentType) {
 		var ret ReassignmentType
 		return ret
 	}
@@ -245,7 +245,7 @@ func (o *ApprovalForwardHistory) GetReassignmentType() ReassignmentType {
 // GetReassignmentTypeOk returns a tuple with the ReassignmentType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApprovalForwardHistory) GetReassignmentTypeOk() (*ReassignmentType, bool) {
-	if o == nil || isNil(o.ReassignmentType) {
+	if o == nil || IsNil(o.ReassignmentType) {
 		return nil, false
 	}
 	return o.ReassignmentType, true
@@ -253,7 +253,7 @@ func (o *ApprovalForwardHistory) GetReassignmentTypeOk() (*ReassignmentType, boo
 
 // HasReassignmentType returns a boolean if a field has been set.
 func (o *ApprovalForwardHistory) HasReassignmentType() bool {
-	if o != nil && !isNil(o.ReassignmentType) {
+	if o != nil && !IsNil(o.ReassignmentType) {
 		return true
 	}
 
@@ -275,22 +275,22 @@ func (o ApprovalForwardHistory) MarshalJSON() ([]byte, error) {
 
 func (o ApprovalForwardHistory) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.OldApproverName) {
+	if !IsNil(o.OldApproverName) {
 		toSerialize["oldApproverName"] = o.OldApproverName
 	}
-	if !isNil(o.NewApproverName) {
+	if !IsNil(o.NewApproverName) {
 		toSerialize["newApproverName"] = o.NewApproverName
 	}
 	if o.Comment.IsSet() {
 		toSerialize["comment"] = o.Comment.Get()
 	}
-	if !isNil(o.Modified) {
+	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
 	if o.ForwarderName.IsSet() {
 		toSerialize["forwarderName"] = o.ForwarderName.Get()
 	}
-	if !isNil(o.ReassignmentType) {
+	if !IsNil(o.ReassignmentType) {
 		toSerialize["reassignmentType"] = o.ReassignmentType
 	}
 
@@ -301,16 +301,20 @@ func (o ApprovalForwardHistory) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ApprovalForwardHistory) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ApprovalForwardHistory) UnmarshalJSON(data []byte) (err error) {
 	varApprovalForwardHistory := _ApprovalForwardHistory{}
 
-	if err = json.Unmarshal(bytes, &varApprovalForwardHistory); err == nil {
+	err = json.Unmarshal(data, &varApprovalForwardHistory)
+
+	if err != nil {
+		return err
+	}
+
 	*o = ApprovalForwardHistory(varApprovalForwardHistory)
-}
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "oldApproverName")
 		delete(additionalProperties, "newApproverName")
 		delete(additionalProperties, "comment")
