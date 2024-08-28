@@ -28,7 +28,7 @@ type ConditionRule struct {
 	// ConditionRuleValueType type. STRING ConditionRuleValueTypeString  This value is a static string. STRING_LIST ConditionRuleValueTypeStringList  This value is an array of string values. INPUT ConditionRuleValueTypeInput  This value is a reference to a form input. ELEMENT ConditionRuleValueTypeElement  This value is a reference to a form element (by technical key). LIST ConditionRuleValueTypeList BOOLEAN ConditionRuleValueTypeBoolean
 	ValueType *string `json:"valueType,omitempty"`
 	// Based on the ValueType.
-	Value map[string]interface{} `json:"value,omitempty"`
+	Value *string `json:"value,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -180,19 +180,19 @@ func (o *ConditionRule) SetValueType(v string) {
 }
 
 // GetValue returns the Value field value if set, zero value otherwise.
-func (o *ConditionRule) GetValue() map[string]interface{} {
+func (o *ConditionRule) GetValue() string {
 	if o == nil || IsNil(o.Value) {
-		var ret map[string]interface{}
+		var ret string
 		return ret
 	}
-	return o.Value
+	return *o.Value
 }
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ConditionRule) GetValueOk() (map[string]interface{}, bool) {
+func (o *ConditionRule) GetValueOk() (*string, bool) {
 	if o == nil || IsNil(o.Value) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.Value, true
 }
@@ -206,9 +206,9 @@ func (o *ConditionRule) HasValue() bool {
 	return false
 }
 
-// SetValue gets a reference to the given map[string]interface{} and assigns it to the Value field.
-func (o *ConditionRule) SetValue(v map[string]interface{}) {
-	o.Value = v
+// SetValue gets a reference to the given string and assigns it to the Value field.
+func (o *ConditionRule) SetValue(v string) {
+	o.Value = &v
 }
 
 func (o ConditionRule) MarshalJSON() ([]byte, error) {

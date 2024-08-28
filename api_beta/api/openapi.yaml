@@ -73522,16 +73522,16 @@ components:
           formElements:
           - id: 00000000-0000-0000-0000-000000000000
             validations:
-            - - validationType: REQUIRED
-            - - validationType: REQUIRED
+            - validationType: REQUIRED
+            - validationType: REQUIRED
             elementType: TEXT
             config:
               label: Department
             key: department
           - id: 00000000-0000-0000-0000-000000000000
             validations:
-            - - validationType: REQUIRED
-            - - validationType: REQUIRED
+            - validationType: REQUIRED
+            - validationType: REQUIRED
             elementType: TEXT
             config:
               label: Department
@@ -73609,16 +73609,16 @@ components:
           formElements:
           - id: 00000000-0000-0000-0000-000000000000
             validations:
-            - - validationType: REQUIRED
-            - - validationType: REQUIRED
+            - validationType: REQUIRED
+            - validationType: REQUIRED
             elementType: TEXT
             config:
               label: Department
             key: department
           - id: 00000000-0000-0000-0000-000000000000
             validations:
-            - - validationType: REQUIRED
-            - - validationType: REQUIRED
+            - validationType: REQUIRED
+            - validationType: REQUIRED
             elementType: TEXT
             config:
               label: Department
@@ -73761,16 +73761,16 @@ components:
         formElements:
         - id: 00000000-0000-0000-0000-000000000000
           validations:
-          - - validationType: REQUIRED
-          - - validationType: REQUIRED
+          - validationType: REQUIRED
+          - validationType: REQUIRED
           elementType: TEXT
           config:
             label: Department
           key: department
         - id: 00000000-0000-0000-0000-000000000000
           validations:
-          - - validationType: REQUIRED
-          - - validationType: REQUIRED
+          - validationType: REQUIRED
+          - validationType: REQUIRED
           elementType: TEXT
           config:
             label: Department
@@ -73899,16 +73899,16 @@ components:
         formElements:
         - id: 00000000-0000-0000-0000-000000000000
           validations:
-          - - validationType: REQUIRED
-          - - validationType: REQUIRED
+          - validationType: REQUIRED
+          - validationType: REQUIRED
           elementType: TEXT
           config:
             label: Department
           key: department
         - id: 00000000-0000-0000-0000-000000000000
           validations:
-          - - validationType: REQUIRED
-          - - validationType: REQUIRED
+          - validationType: REQUIRED
+          - validationType: REQUIRED
           elementType: TEXT
           config:
             label: Department
@@ -74274,16 +74274,16 @@ components:
         formElements:
         - id: 00000000-0000-0000-0000-000000000000
           validations:
-          - - validationType: REQUIRED
-          - - validationType: REQUIRED
+          - validationType: REQUIRED
+          - validationType: REQUIRED
           elementType: TEXT
           config:
             label: Department
           key: department
         - id: 00000000-0000-0000-0000-000000000000
           validations:
-          - - validationType: REQUIRED
-          - - validationType: REQUIRED
+          - validationType: REQUIRED
+          - validationType: REQUIRED
           elementType: TEXT
           config:
             label: Department
@@ -74314,12 +74314,12 @@ components:
           type: array
           x-go-name: FormConditions
         formData:
-          additionalProperties:
-            type: object
+          additionalProperties: true
           description: FormData is the data provided by the form on submit. The data
             is in a key -> value map
           example:
             department: Engineering
+          nullable: true
           type: object
           x-go-name: FormData
         formDefinitionId:
@@ -80994,8 +80994,8 @@ components:
       example:
         id: 00000000-0000-0000-0000-000000000000
         validations:
-        - - validationType: REQUIRED
-        - - validationType: REQUIRED
+        - validationType: REQUIRED
+        - validationType: REQUIRED
         elementType: TEXT
         config:
           label: Department
@@ -81029,8 +81029,7 @@ components:
           type: string
           x-go-name: ElementType
         config:
-          additionalProperties:
-            type: object
+          additionalProperties: true
           description: Config object.
           example:
             label: Department
@@ -82721,7 +82720,7 @@ components:
         value:
           description: Based on the ValueType.
           example: Engineering
-          type: object
+          type: string
           x-go-name: Value
       type: object
       x-go-package: github.com/sailpoint/sp-forms/domain
@@ -82775,9 +82774,11 @@ components:
     FormElementValidationsSet:
       description: Set of FormElementValidation items.
       example:
-      - validationType: REQUIRED
+        validationType: REQUIRED
       properties:
         validationType:
+          description: "The type of data validation that you wish to enforce, e.g.,\
+            \ a required field, a minimum length, etc."
           enum:
           - REQUIRED
           - MIN_LENGTH
@@ -82791,6 +82792,7 @@ components:
           - EMAIL
           - DATA_SOURCE
           - TEXTAREA
+          example: REQUIRED
           type: string
       type: object
       x-go-package: github.com/sailpoint/sp-forms/domain
@@ -83812,16 +83814,16 @@ components:
           formElements:
           - id: 00000000-0000-0000-0000-000000000000
             validations:
-            - - validationType: REQUIRED
-            - - validationType: REQUIRED
+            - validationType: REQUIRED
+            - validationType: REQUIRED
             elementType: TEXT
             config:
               label: Department
             key: department
           - id: 00000000-0000-0000-0000-000000000000
             validations:
-            - - validationType: REQUIRED
-            - - validationType: REQUIRED
+            - validationType: REQUIRED
+            - validationType: REQUIRED
             elementType: TEXT
             config:
               label: Department
@@ -83947,16 +83949,16 @@ components:
             formElements:
             - id: 00000000-0000-0000-0000-000000000000
               validations:
-              - - validationType: REQUIRED
-              - - validationType: REQUIRED
+              - validationType: REQUIRED
+              - validationType: REQUIRED
               elementType: TEXT
               config:
                 label: Department
               key: department
             - id: 00000000-0000-0000-0000-000000000000
               validations:
-              - - validationType: REQUIRED
-              - - validationType: REQUIRED
+              - validationType: REQUIRED
+              - validationType: REQUIRED
               elementType: TEXT
               config:
                 label: Department
@@ -84040,16 +84042,16 @@ components:
             formElements:
             - id: 00000000-0000-0000-0000-000000000000
               validations:
-              - - validationType: REQUIRED
-              - - validationType: REQUIRED
+              - validationType: REQUIRED
+              - validationType: REQUIRED
               elementType: TEXT
               config:
                 label: Department
               key: department
             - id: 00000000-0000-0000-0000-000000000000
               validations:
-              - - validationType: REQUIRED
-              - - validationType: REQUIRED
+              - validationType: REQUIRED
+              - validationType: REQUIRED
               elementType: TEXT
               config:
                 label: Department

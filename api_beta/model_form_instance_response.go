@@ -28,7 +28,7 @@ type FormInstanceResponse struct {
 	// FormConditions is the conditional logic that modify the form dynamically modify the form as the recipient is interacting out the form
 	FormConditions []FormCondition `json:"formConditions,omitempty"`
 	// FormData is the data provided by the form on submit. The data is in a key -> value map
-	FormData map[string]map[string]interface{} `json:"formData,omitempty"`
+	FormData map[string]interface{} `json:"formData,omitempty"`
 	// FormDefinitionID is the id of the form definition that created this form
 	FormDefinitionId *string `json:"formDefinitionId,omitempty"`
 	// FormElements is the configuration of the form, this would be a repeat of the fields from the form-config
@@ -203,10 +203,10 @@ func (o *FormInstanceResponse) SetFormConditions(v []FormCondition) {
 	o.FormConditions = v
 }
 
-// GetFormData returns the FormData field value if set, zero value otherwise.
-func (o *FormInstanceResponse) GetFormData() map[string]map[string]interface{} {
-	if o == nil || IsNil(o.FormData) {
-		var ret map[string]map[string]interface{}
+// GetFormData returns the FormData field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *FormInstanceResponse) GetFormData() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
 		return ret
 	}
 	return o.FormData
@@ -214,9 +214,10 @@ func (o *FormInstanceResponse) GetFormData() map[string]map[string]interface{} {
 
 // GetFormDataOk returns a tuple with the FormData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormInstanceResponse) GetFormDataOk() (map[string]map[string]interface{}, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *FormInstanceResponse) GetFormDataOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.FormData) {
-		return map[string]map[string]interface{}{}, false
+		return map[string]interface{}{}, false
 	}
 	return o.FormData, true
 }
@@ -230,8 +231,8 @@ func (o *FormInstanceResponse) HasFormData() bool {
 	return false
 }
 
-// SetFormData gets a reference to the given map[string]map[string]interface{} and assigns it to the FormData field.
-func (o *FormInstanceResponse) SetFormData(v map[string]map[string]interface{}) {
+// SetFormData gets a reference to the given map[string]interface{} and assigns it to the FormData field.
+func (o *FormInstanceResponse) SetFormData(v map[string]interface{}) {
 	o.FormData = v
 }
 
@@ -578,7 +579,7 @@ func (o FormInstanceResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.FormConditions) {
 		toSerialize["formConditions"] = o.FormConditions
 	}
-	if !IsNil(o.FormData) {
+	if o.FormData != nil {
 		toSerialize["formData"] = o.FormData
 	}
 	if !IsNil(o.FormDefinitionId) {

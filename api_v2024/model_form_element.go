@@ -24,7 +24,7 @@ type FormElement struct {
 	// FormElementType value.  TEXT FormElementTypeText TOGGLE FormElementTypeToggle TEXTAREA FormElementTypeTextArea HIDDEN FormElementTypeHidden PHONE FormElementTypePhone EMAIL FormElementTypeEmail SELECT FormElementTypeSelect DATE FormElementTypeDate SECTION FormElementTypeSection COLUMN_SET FormElementTypeColumns IMAGE FormElementTypeImage DESCRIPTION FormElementTypeDescription
 	ElementType *string `json:"elementType,omitempty"`
 	// Config object.
-	Config map[string]map[string]interface{} `json:"config,omitempty"`
+	Config map[string]interface{} `json:"config,omitempty"`
 	// Technical key.
 	Key *string `json:"key,omitempty"`
 	Validations []FormElementValidationsSet `json:"validations,omitempty"`
@@ -115,9 +115,9 @@ func (o *FormElement) SetElementType(v string) {
 }
 
 // GetConfig returns the Config field value if set, zero value otherwise.
-func (o *FormElement) GetConfig() map[string]map[string]interface{} {
+func (o *FormElement) GetConfig() map[string]interface{} {
 	if o == nil || IsNil(o.Config) {
-		var ret map[string]map[string]interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 	return o.Config
@@ -125,9 +125,9 @@ func (o *FormElement) GetConfig() map[string]map[string]interface{} {
 
 // GetConfigOk returns a tuple with the Config field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormElement) GetConfigOk() (map[string]map[string]interface{}, bool) {
+func (o *FormElement) GetConfigOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Config) {
-		return map[string]map[string]interface{}{}, false
+		return map[string]interface{}{}, false
 	}
 	return o.Config, true
 }
@@ -141,8 +141,8 @@ func (o *FormElement) HasConfig() bool {
 	return false
 }
 
-// SetConfig gets a reference to the given map[string]map[string]interface{} and assigns it to the Config field.
-func (o *FormElement) SetConfig(v map[string]map[string]interface{}) {
+// SetConfig gets a reference to the given map[string]interface{} and assigns it to the Config field.
+func (o *FormElement) SetConfig(v map[string]interface{}) {
 	o.Config = v
 }
 

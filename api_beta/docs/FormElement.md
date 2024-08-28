@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Form element identifier. | [optional] 
 **ElementType** | Pointer to **string** | FormElementType value.  TEXT FormElementTypeText TOGGLE FormElementTypeToggle TEXTAREA FormElementTypeTextArea HIDDEN FormElementTypeHidden PHONE FormElementTypePhone EMAIL FormElementTypeEmail SELECT FormElementTypeSelect DATE FormElementTypeDate SECTION FormElementTypeSection COLUMN_SET FormElementTypeColumns IMAGE FormElementTypeImage DESCRIPTION FormElementTypeDescription | [optional] 
-**Config** | Pointer to **map[string]map[string]interface{}** | Config object. | [optional] 
+**Config** | Pointer to **map[string]interface{}** | Config object. | [optional] 
 **Key** | Pointer to **string** | Technical key. | [optional] 
 **Validations** | Pointer to [**[]FormElementValidationsSet**](FormElementValidationsSet.md) |  | [optional] 
 
@@ -81,20 +81,20 @@ HasElementType returns a boolean if a field has been set.
 
 ### GetConfig
 
-`func (o *FormElement) GetConfig() map[string]map[string]interface{}`
+`func (o *FormElement) GetConfig() map[string]interface{}`
 
 GetConfig returns the Config field if non-nil, zero value otherwise.
 
 ### GetConfigOk
 
-`func (o *FormElement) GetConfigOk() (*map[string]map[string]interface{}, bool)`
+`func (o *FormElement) GetConfigOk() (*map[string]interface{}, bool)`
 
 GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConfig
 
-`func (o *FormElement) SetConfig(v map[string]map[string]interface{})`
+`func (o *FormElement) SetConfig(v map[string]interface{})`
 
 SetConfig sets Config field to given value.
 

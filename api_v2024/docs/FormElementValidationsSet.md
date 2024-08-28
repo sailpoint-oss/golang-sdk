@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ValidationType** | Pointer to **string** |  | [optional] 
+**ValidationType** | Pointer to **string** | The type of data validation that you wish to enforce, e.g., a required field, a minimum length, etc. | [optional] 
 
 ## Methods
 

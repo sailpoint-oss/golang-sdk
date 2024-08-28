@@ -19,6 +19,7 @@ var _ MappedNullable = &FormElementValidationsSet{}
 
 // FormElementValidationsSet Set of FormElementValidation items.
 type FormElementValidationsSet struct {
+	// The type of data validation that you wish to enforce, e.g., a required field, a minimum length, etc.
 	ValidationType *string `json:"validationType,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
