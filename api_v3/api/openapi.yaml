@@ -35641,6 +35641,107 @@ paths:
       summary: Upload connector file to source
       tags:
       - Sources
+  /sources/{sourceId}/connections:
+    get:
+      description: |-
+        Use this API to get all dependent Profiles, Attributes, Applications and Custom Transforms for a source by a specified ID in Identity Security Cloud (ISC).
+        A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+      operationId: getSourceConnections
+      parameters:
+      - description: Source ID.
+        example: 2c9180835d191a86015d28455b4a2329
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SourceConnectionsDto'
+          description: Source Connections object.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:sources:read
+      summary: Get Source Connections by ID
+      tags:
+      - Sources
   /tagged-objects:
     get:
       description: |-
@@ -55260,6 +55361,127 @@ components:
           format: date-time
           type: string
       type: object
+    SourceConnectionsDto:
+      example:
+        identityProfiles:
+        - name: ODS-Identity-Profile
+          id: 76cfddb62818416f816bc494410f46c4
+          identityCount: 100
+        - name: ODS-Identity-Profile
+          id: 76cfddb62818416f816bc494410f46c4
+          identityCount: 100
+        dependentApps:
+        - owner:
+          - name: William Wilson
+            id: 2c91808568c529c60168cca6f90c1313
+            type: IDENTITY
+          - name: William Wilson
+            id: 2c91808568c529c60168cca6f90c1313
+            type: IDENTITY
+          launcherCount: 100
+          cloudAppId: 9e3cdd80edf84f119327df8bbd5bb5ac
+          description: This is a Sailpoint application
+          accountSource:
+            passwordPolicies:
+            - name: Policy ODS
+              id: 2c91808568c529c60168cca6f90c1313
+              type: PASSWORD_POLICY
+            - name: Policy ODS
+              id: 2c91808568c529c60168cca6f90c1313
+              type: PASSWORD_POLICY
+            useForPasswordManagement: false
+          provisionRequestEnabled: true
+          appCenterEnabled: false
+          enabled: true
+          matchAllAccount: true
+        - owner:
+          - name: William Wilson
+            id: 2c91808568c529c60168cca6f90c1313
+            type: IDENTITY
+          - name: William Wilson
+            id: 2c91808568c529c60168cca6f90c1313
+            type: IDENTITY
+          launcherCount: 100
+          cloudAppId: 9e3cdd80edf84f119327df8bbd5bb5ac
+          description: This is a Sailpoint application
+          accountSource:
+            passwordPolicies:
+            - name: Policy ODS
+              id: 2c91808568c529c60168cca6f90c1313
+              type: PASSWORD_POLICY
+            - name: Policy ODS
+              id: 2c91808568c529c60168cca6f90c1313
+              type: PASSWORD_POLICY
+            useForPasswordManagement: false
+          provisionRequestEnabled: true
+          appCenterEnabled: false
+          enabled: true
+          matchAllAccount: true
+        dependentCustomTransforms:
+        - name: Timestamp To Date
+          attributes: "{}"
+          type: dateFormat
+        - name: Timestamp To Date
+          attributes: "{}"
+          type: dateFormat
+        mappingProfiles:
+        - ODS-AD-Profile
+        - ODS-Profile2
+        credentialProfiles:
+        - "[Profile ODS]"
+        - "[Profile ODS]"
+        missingDependents:
+        - reason: "If there was an error retrieving any dependencies, it would lbe\
+            \ listed here"
+          dependencyType: dependantApps
+        - reason: "If there was an error retrieving any dependencies, it would lbe\
+            \ listed here"
+          dependencyType: dependantApps
+        sourceAttributes:
+        - "[sAMAccountName, mail, sn, givenName, displayName, employeeNumber, manager,\
+          \ telephoneNumber]"
+        - "[sAMAccountName, mail, sn, givenName, displayName, employeeNumber, manager,\
+          \ telephoneNumber]"
+      properties:
+        identityProfiles:
+          description: The IdentityProfile attached to this source
+          items:
+            $ref: '#/components/schemas/IdentityProfilesConnections'
+          type: array
+        credentialProfiles:
+          description: Name of the CredentialProfile attached to this source
+          items:
+            example: "[Profile ODS]"
+            type: string
+          type: array
+        sourceAttributes:
+          description: The attributes attached to this source
+          items:
+            example: "[sAMAccountName, mail, sn, givenName, displayName, employeeNumber,\
+              \ manager, telephoneNumber]"
+            type: string
+          type: array
+        mappingProfiles:
+          description: The profiles attached to this source
+          example:
+          - ODS-AD-Profile
+          - ODS-Profile2
+          items:
+            type: string
+          type: array
+        dependentCustomTransforms:
+          items:
+            $ref: '#/components/schemas/Transform'
+          type: array
+        dependentApps:
+          items:
+            $ref: '#/components/schemas/DependantAppConnections'
+          type: array
+        missingDependents:
+          items:
+            $ref: '#/components/schemas/DependantConnectionsMissingDto'
+          type: array
+      type: object
     TaggedObject:
       description: Tagged object.
       example:
@@ -60302,6 +60524,117 @@ components:
           example: false
           type: boolean
       type: object
+    IdentityProfilesConnections:
+      example:
+        name: ODS-Identity-Profile
+        id: 76cfddb62818416f816bc494410f46c4
+        identityCount: 100
+      properties:
+        id:
+          description: ID of the IdentityProfile this reference applies
+          example: 76cfddb62818416f816bc494410f46c4
+          type: string
+        name:
+          description: Human-readable display name of the IdentityProfile to which
+            this reference applies
+          example: ODS-Identity-Profile
+          type: string
+        identityCount:
+          description: The Number of Identities managed by this IdentityProfile
+          example: 100
+          format: int64
+          type: integer
+      type: object
+    DependantAppConnections:
+      example:
+        owner:
+        - name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+        - name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+        launcherCount: 100
+        cloudAppId: 9e3cdd80edf84f119327df8bbd5bb5ac
+        description: This is a Sailpoint application
+        accountSource:
+          passwordPolicies:
+          - name: Policy ODS
+            id: 2c91808568c529c60168cca6f90c1313
+            type: PASSWORD_POLICY
+          - name: Policy ODS
+            id: 2c91808568c529c60168cca6f90c1313
+            type: PASSWORD_POLICY
+          useForPasswordManagement: false
+        provisionRequestEnabled: true
+        appCenterEnabled: false
+        enabled: true
+        matchAllAccount: true
+      properties:
+        cloudAppId:
+          description: Id of the connected Application
+          example: 9e3cdd80edf84f119327df8bbd5bb5ac
+          type: string
+        description:
+          description: Description of the connected Application
+          example: This is a Sailpoint application
+          type: string
+        enabled:
+          default: true
+          description: Is the Application enabled
+          example: true
+          type: boolean
+        provisionRequestEnabled:
+          default: true
+          description: Is Provisioning enabled for connected Application
+          example: true
+          type: boolean
+        accountSource:
+          $ref: '#/components/schemas/DependantAppConnections_accountSource'
+        launcherCount:
+          description: The amount of launchers for connected Application (long type)
+          example: 100
+          format: int64
+          type: integer
+        matchAllAccount:
+          default: false
+          description: Is Provisioning enabled for connected Application
+          example: true
+          type: boolean
+        owner:
+          description: The owner of the connected Application
+          items:
+            $ref: '#/components/schemas/BaseReferenceDto'
+          type: array
+        appCenterEnabled:
+          default: false
+          description: Is App Center enabled for connected Application
+          example: false
+          type: boolean
+      type: object
+    DependantConnectionsMissingDto:
+      example:
+        reason: "If there was an error retrieving any dependencies, it would lbe listed\
+          \ here"
+        dependencyType: dependantApps
+      properties:
+        dependencyType:
+          description: The type of dependency type that is missing in the SourceConnections
+          enum:
+          - identityProfiles
+          - credentialProfiles
+          - mappingProfiles
+          - sourceAttributes
+          - dependantCustomTransforms
+          - dependantApps
+          example: dependantApps
+          type: string
+        reason:
+          description: The reason why this dependency is missing
+          example: "If there was an error retrieving any dependencies, it would lbe\
+            \ listed here"
+          type: string
+      type: object
     TaggedObjectDto:
       example:
         name: William Wilson
@@ -64598,6 +64931,49 @@ components:
           description: The human-readable display name of the object.
           example: group
           type: string
+      type: object
+    DependantAppConnections_accountSource_passwordPolicies_inner:
+      example:
+        name: Policy ODS
+        id: 2c91808568c529c60168cca6f90c1313
+        type: PASSWORD_POLICY
+      properties:
+        type:
+          description: DTO type
+          example: PASSWORD_POLICY
+          type: string
+        id:
+          description: ID of the object to which this reference applies
+          example: 2c91808568c529c60168cca6f90c1313
+          type: string
+        name:
+          description: Human-readable display name of the object to which this reference
+            applies
+          example: Policy ODS
+          type: string
+      type: object
+    DependantAppConnections_accountSource:
+      description: The Account Source of the connected Application
+      example:
+        passwordPolicies:
+        - name: Policy ODS
+          id: 2c91808568c529c60168cca6f90c1313
+          type: PASSWORD_POLICY
+        - name: Policy ODS
+          id: 2c91808568c529c60168cca6f90c1313
+          type: PASSWORD_POLICY
+        useForPasswordManagement: false
+      properties:
+        useForPasswordManagement:
+          default: false
+          description: Use this Account Source for password management
+          example: false
+          type: boolean
+        passwordPolicies:
+          description: A list of Password Policies for this Account Source
+          items:
+            $ref: '#/components/schemas/DependantAppConnections_accountSource_passwordPolicies_inner'
+          type: array
       type: object
     BaseAccess_allOf_owner:
       description: Owner's identity.

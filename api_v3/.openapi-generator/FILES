@@ -226,6 +226,10 @@ docs/DataAccessPoliciesInner.md
 docs/DeleteNonEmployeeRecordsInBulkRequest.md
 docs/DeleteSource202Response.md
 docs/DeleteVendorConnectorMapping200Response.md
+docs/DependantAppConnections.md
+docs/DependantAppConnectionsAccountSource.md
+docs/DependantAppConnectionsAccountSourcePasswordPoliciesInner.md
+docs/DependantConnectionsMissingDto.md
 docs/DisplayReference.md
 docs/DocumentType.md
 docs/DtoType.md
@@ -292,6 +296,7 @@ docs/IdentityProfileExportedObject.md
 docs/IdentityProfileExportedObjectSelf.md
 docs/IdentityProfileIdentityErrorReportArguments.md
 docs/IdentityProfilesAPI.md
+docs/IdentityProfilesConnections.md
 docs/IdentityReference.md
 docs/IdentityReferenceWithNameAndEmail.md
 docs/IdentitySummary.md
@@ -569,6 +574,7 @@ docs/SourceAccountCorrelationRule.md
 docs/SourceBeforeProvisioningRule.md
 docs/SourceCluster.md
 docs/SourceClusterDto.md
+docs/SourceConnectionsDto.md
 docs/SourceHealthDto.md
 docs/SourceManagementWorkgroup.md
 docs/SourceManagerCorrelationMapping.md
@@ -811,6 +817,10 @@ model_data_access_policies_inner.go
 model_delete_non_employee_records_in_bulk_request.go
 model_delete_source_202_response.go
 model_delete_vendor_connector_mapping_200_response.go
+model_dependant_app_connections.go
+model_dependant_app_connections_account_source.go
+model_dependant_app_connections_account_source_password_policies_inner.go
+model_dependant_connections_missing_dto.go
 model_display_reference.go
 model_document_type.go
 model_dto_type.go
@@ -875,6 +885,7 @@ model_identity_profile_all_of_owner.go
 model_identity_profile_exported_object.go
 model_identity_profile_exported_object_self.go
 model_identity_profile_identity_error_report_arguments.go
+model_identity_profiles_connections.go
 model_identity_reference.go
 model_identity_reference_with_name_and_email.go
 model_identity_summary.go
@@ -1126,6 +1137,7 @@ model_source_account_correlation_rule.go
 model_source_before_provisioning_rule.go
 model_source_cluster.go
 model_source_cluster_dto.go
+model_source_connections_dto.go
 model_source_health_dto.go
 model_source_management_workgroup.go
 model_source_manager_correlation_mapping.go

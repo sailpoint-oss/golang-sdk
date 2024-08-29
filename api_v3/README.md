@@ -379,6 +379,7 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**GetEntitlementsSchema**](docs/SourcesAPI.md#getentitlementsschema) | **Get** /sources/{id}/schemas/entitlements | Downloads source entitlements schema template
 *SourcesAPI* | [**GetProvisioningPolicy**](docs/SourcesAPI.md#getprovisioningpolicy) | **Get** /sources/{sourceId}/provisioning-policies/{usageType} | Get Provisioning Policy by UsageType
 *SourcesAPI* | [**GetSource**](docs/SourcesAPI.md#getsource) | **Get** /sources/{id} | Get Source by ID
+*SourcesAPI* | [**GetSourceConnections**](docs/SourcesAPI.md#getsourceconnections) | **Get** /sources/{sourceId}/connections | Get Source Connections by ID
 *SourcesAPI* | [**GetSourceHealth**](docs/SourcesAPI.md#getsourcehealth) | **Get** /sources/{sourceId}/source-health | Fetches source health by id
 *SourcesAPI* | [**GetSourceSchema**](docs/SourcesAPI.md#getsourceschema) | **Get** /sources/{sourceId}/schemas/{schemaId} | Get Source Schema by ID
 *SourcesAPI* | [**GetSourceSchemas**](docs/SourcesAPI.md#getsourceschemas) | **Get** /sources/{sourceId}/schemas | List Schemas on Source
@@ -600,6 +601,10 @@ Class | Method | HTTP request | Description
  - [DeleteNonEmployeeRecordsInBulkRequest](docs/DeleteNonEmployeeRecordsInBulkRequest.md)
  - [DeleteSource202Response](docs/DeleteSource202Response.md)
  - [DeleteVendorConnectorMapping200Response](docs/DeleteVendorConnectorMapping200Response.md)
+ - [DependantAppConnections](docs/DependantAppConnections.md)
+ - [DependantAppConnectionsAccountSource](docs/DependantAppConnectionsAccountSource.md)
+ - [DependantAppConnectionsAccountSourcePasswordPoliciesInner](docs/DependantAppConnectionsAccountSourcePasswordPoliciesInner.md)
+ - [DependantConnectionsMissingDto](docs/DependantConnectionsMissingDto.md)
  - [DisplayReference](docs/DisplayReference.md)
  - [DocumentType](docs/DocumentType.md)
  - [DtoType](docs/DtoType.md)
@@ -664,6 +669,7 @@ Class | Method | HTTP request | Description
  - [IdentityProfileExportedObject](docs/IdentityProfileExportedObject.md)
  - [IdentityProfileExportedObjectSelf](docs/IdentityProfileExportedObjectSelf.md)
  - [IdentityProfileIdentityErrorReportArguments](docs/IdentityProfileIdentityErrorReportArguments.md)
+ - [IdentityProfilesConnections](docs/IdentityProfilesConnections.md)
  - [IdentityReference](docs/IdentityReference.md)
  - [IdentityReferenceWithNameAndEmail](docs/IdentityReferenceWithNameAndEmail.md)
  - [IdentitySummary](docs/IdentitySummary.md)
@@ -915,6 +921,7 @@ Class | Method | HTTP request | Description
  - [SourceBeforeProvisioningRule](docs/SourceBeforeProvisioningRule.md)
  - [SourceCluster](docs/SourceCluster.md)
  - [SourceClusterDto](docs/SourceClusterDto.md)
+ - [SourceConnectionsDto](docs/SourceConnectionsDto.md)
  - [SourceHealthDto](docs/SourceHealthDto.md)
  - [SourceManagementWorkgroup](docs/SourceManagementWorkgroup.md)
  - [SourceManagerCorrelationMapping](docs/SourceManagerCorrelationMapping.md)
