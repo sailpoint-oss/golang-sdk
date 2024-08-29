@@ -30,7 +30,7 @@ type AccountActivity struct {
 	Modified NullableTime `json:"modified,omitempty"`
 	// When the activity was completed
 	Completed NullableTime `json:"completed,omitempty"`
-	CompletionStatus *CompletionStatus `json:"completionStatus,omitempty"`
+	CompletionStatus NullableCompletionStatus `json:"completionStatus,omitempty"`
 	// The type of action the activity performed.  Please see the following list of types.  This list may grow over time.  - CloudAutomated - IdentityAttributeUpdate - appRequest - LifecycleStateChange - AccountStateUpdate - AccountAttributeUpdate - CloudPasswordRequest - Attribute Synchronization Refresh - Certification - Identity Refresh - Lifecycle Change Refresh   [Learn more here](https://documentation.sailpoint.com/saas/help/search/searchable-fields.html#searching-account-activity-data). 
 	Type NullableString `json:"type,omitempty"`
 	RequesterIdentitySummary NullableIdentitySummary `json:"requesterIdentitySummary,omitempty"`
@@ -246,36 +246,46 @@ func (o *AccountActivity) UnsetCompleted() {
 	o.Completed.Unset()
 }
 
-// GetCompletionStatus returns the CompletionStatus field value if set, zero value otherwise.
+// GetCompletionStatus returns the CompletionStatus field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountActivity) GetCompletionStatus() CompletionStatus {
-	if o == nil || IsNil(o.CompletionStatus) {
+	if o == nil || IsNil(o.CompletionStatus.Get()) {
 		var ret CompletionStatus
 		return ret
 	}
-	return *o.CompletionStatus
+	return *o.CompletionStatus.Get()
 }
 
 // GetCompletionStatusOk returns a tuple with the CompletionStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountActivity) GetCompletionStatusOk() (*CompletionStatus, bool) {
-	if o == nil || IsNil(o.CompletionStatus) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CompletionStatus, true
+	return o.CompletionStatus.Get(), o.CompletionStatus.IsSet()
 }
 
 // HasCompletionStatus returns a boolean if a field has been set.
 func (o *AccountActivity) HasCompletionStatus() bool {
-	if o != nil && !IsNil(o.CompletionStatus) {
+	if o != nil && o.CompletionStatus.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCompletionStatus gets a reference to the given CompletionStatus and assigns it to the CompletionStatus field.
+// SetCompletionStatus gets a reference to the given NullableCompletionStatus and assigns it to the CompletionStatus field.
 func (o *AccountActivity) SetCompletionStatus(v CompletionStatus) {
-	o.CompletionStatus = &v
+	o.CompletionStatus.Set(&v)
+}
+// SetCompletionStatusNil sets the value for CompletionStatus to be an explicit nil
+func (o *AccountActivity) SetCompletionStatusNil() {
+	o.CompletionStatus.Set(nil)
+}
+
+// UnsetCompletionStatus ensures that no value is present for CompletionStatus, not even an explicit nil
+func (o *AccountActivity) UnsetCompletionStatus() {
+	o.CompletionStatus.Unset()
 }
 
 // GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -593,8 +603,8 @@ func (o AccountActivity) ToMap() (map[string]interface{}, error) {
 	if o.Completed.IsSet() {
 		toSerialize["completed"] = o.Completed.Get()
 	}
-	if !IsNil(o.CompletionStatus) {
-		toSerialize["completionStatus"] = o.CompletionStatus
+	if o.CompletionStatus.IsSet() {
+		toSerialize["completionStatus"] = o.CompletionStatus.Get()
 	}
 	if o.Type.IsSet() {
 		toSerialize["type"] = o.Type.Get()

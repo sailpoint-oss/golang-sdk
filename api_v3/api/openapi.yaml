@@ -5047,7 +5047,7 @@ paths:
 
           Filtering is supported for the following fields and operators:
 
-          **type**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
+          **type**: *eq, in, ge, le, lt, ne, isnull, sw*
 
           **created**: *gt, lt, ge, le, eq, in, ne, isnull, sw*
 
@@ -43391,9 +43391,9 @@ components:
           completed: true
         modified: 2018-06-25T20:22:28.104Z
         id: 2c9180835d2e5168015d32f890ca1581
-        completionStatus: ""
+        completionStatus: SUCCESS
         items:
-        - approvalStatus: ""
+        - approvalStatus: PENDING
           reviewerComment:
             date: 2017-07-11T18:45:37.098Z
             commenterName: Adam Kennedy
@@ -43426,9 +43426,9 @@ components:
           name: 48c545831b264409a81befcabb0e3c5a
           id: 48c545831b264409a81befcabb0e3c5a
           attribute: detectedRoles
-          operation: ""
+          operation: ADD
           value: "Treasury Analyst [AccessProfile-1529010191212]"
-        - approvalStatus: ""
+        - approvalStatus: PENDING
           reviewerComment:
             date: 2017-07-11T18:45:37.098Z
             commenterName: Adam Kennedy
@@ -43461,7 +43461,7 @@ components:
           name: 48c545831b264409a81befcabb0e3c5a
           id: 48c545831b264409a81befcabb0e3c5a
           attribute: detectedRoles
-          operation: ""
+          operation: ADD
           value: "Treasury Analyst [AccessProfile-1529010191212]"
         errors:
         - "sailpoint.connector.ConnectorException: java.lang.InterruptedException:\
@@ -43494,10 +43494,7 @@ components:
           nullable: true
           type: string
         completionStatus:
-          allOf:
-          - $ref: '#/components/schemas/CompletionStatus'
-          - nullable: true
-            type: object
+          $ref: '#/components/schemas/CompletionStatus'
         type:
           description: |
             The type of action the activity performed.  Please see the following list of types.  This list may grow over time.
@@ -56410,7 +56407,7 @@ components:
       type: object
     AccountActivityItem:
       example:
-        approvalStatus: ""
+        approvalStatus: PENDING
         reviewerComment:
           date: 2017-07-11T18:45:37.098Z
           commenterName: Adam Kennedy
@@ -56443,7 +56440,7 @@ components:
         name: 48c545831b264409a81befcabb0e3c5a
         id: 48c545831b264409a81befcabb0e3c5a
         attribute: detectedRoles
-        operation: ""
+        operation: ADD
         value: "Treasury Analyst [AccessProfile-1529010191212]"
       properties:
         id:
@@ -56460,10 +56457,7 @@ components:
           format: date-time
           type: string
         approvalStatus:
-          allOf:
-          - $ref: '#/components/schemas/AccountActivityApprovalStatus'
-          - nullable: true
-            type: object
+          $ref: '#/components/schemas/AccountActivityApprovalStatus'
         provisioningStatus:
           $ref: '#/components/schemas/ProvisioningState'
         requesterComment:
@@ -56473,10 +56467,7 @@ components:
         reviewerComment:
           $ref: '#/components/schemas/Comment'
         operation:
-          allOf:
-          - $ref: '#/components/schemas/AccountActivityItemOperation'
-          - nullable: true
-            type: object
+          $ref: '#/components/schemas/AccountActivityItemOperation'
         attribute:
           description: Attribute to which account activity applies
           example: detectedRoles
@@ -60970,6 +60961,7 @@ components:
       - SET
       - null
       example: ADD
+      nullable: true
       type: string
     AccountRequestInfo:
       description: "If an account activity item is associated with an access request,\

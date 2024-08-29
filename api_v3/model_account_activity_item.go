@@ -26,12 +26,12 @@ type AccountActivityItem struct {
 	Name *string `json:"name,omitempty"`
 	// Date and time item was requested
 	Requested *time.Time `json:"requested,omitempty"`
-	ApprovalStatus *AccountActivityApprovalStatus `json:"approvalStatus,omitempty"`
+	ApprovalStatus NullableAccountActivityApprovalStatus `json:"approvalStatus,omitempty"`
 	ProvisioningStatus *ProvisioningState `json:"provisioningStatus,omitempty"`
 	RequesterComment NullableComment `json:"requesterComment,omitempty"`
 	ReviewerIdentitySummary NullableIdentitySummary `json:"reviewerIdentitySummary,omitempty"`
 	ReviewerComment NullableComment `json:"reviewerComment,omitempty"`
-	Operation *AccountActivityItemOperation `json:"operation,omitempty"`
+	Operation NullableAccountActivityItemOperation `json:"operation,omitempty"`
 	// Attribute to which account activity applies
 	Attribute NullableString `json:"attribute,omitempty"`
 	// Value of attribute
@@ -163,36 +163,46 @@ func (o *AccountActivityItem) SetRequested(v time.Time) {
 	o.Requested = &v
 }
 
-// GetApprovalStatus returns the ApprovalStatus field value if set, zero value otherwise.
+// GetApprovalStatus returns the ApprovalStatus field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountActivityItem) GetApprovalStatus() AccountActivityApprovalStatus {
-	if o == nil || IsNil(o.ApprovalStatus) {
+	if o == nil || IsNil(o.ApprovalStatus.Get()) {
 		var ret AccountActivityApprovalStatus
 		return ret
 	}
-	return *o.ApprovalStatus
+	return *o.ApprovalStatus.Get()
 }
 
 // GetApprovalStatusOk returns a tuple with the ApprovalStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountActivityItem) GetApprovalStatusOk() (*AccountActivityApprovalStatus, bool) {
-	if o == nil || IsNil(o.ApprovalStatus) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ApprovalStatus, true
+	return o.ApprovalStatus.Get(), o.ApprovalStatus.IsSet()
 }
 
 // HasApprovalStatus returns a boolean if a field has been set.
 func (o *AccountActivityItem) HasApprovalStatus() bool {
-	if o != nil && !IsNil(o.ApprovalStatus) {
+	if o != nil && o.ApprovalStatus.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetApprovalStatus gets a reference to the given AccountActivityApprovalStatus and assigns it to the ApprovalStatus field.
+// SetApprovalStatus gets a reference to the given NullableAccountActivityApprovalStatus and assigns it to the ApprovalStatus field.
 func (o *AccountActivityItem) SetApprovalStatus(v AccountActivityApprovalStatus) {
-	o.ApprovalStatus = &v
+	o.ApprovalStatus.Set(&v)
+}
+// SetApprovalStatusNil sets the value for ApprovalStatus to be an explicit nil
+func (o *AccountActivityItem) SetApprovalStatusNil() {
+	o.ApprovalStatus.Set(nil)
+}
+
+// UnsetApprovalStatus ensures that no value is present for ApprovalStatus, not even an explicit nil
+func (o *AccountActivityItem) UnsetApprovalStatus() {
+	o.ApprovalStatus.Unset()
 }
 
 // GetProvisioningStatus returns the ProvisioningStatus field value if set, zero value otherwise.
@@ -353,36 +363,46 @@ func (o *AccountActivityItem) UnsetReviewerComment() {
 	o.ReviewerComment.Unset()
 }
 
-// GetOperation returns the Operation field value if set, zero value otherwise.
+// GetOperation returns the Operation field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountActivityItem) GetOperation() AccountActivityItemOperation {
-	if o == nil || IsNil(o.Operation) {
+	if o == nil || IsNil(o.Operation.Get()) {
 		var ret AccountActivityItemOperation
 		return ret
 	}
-	return *o.Operation
+	return *o.Operation.Get()
 }
 
 // GetOperationOk returns a tuple with the Operation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountActivityItem) GetOperationOk() (*AccountActivityItemOperation, bool) {
-	if o == nil || IsNil(o.Operation) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Operation, true
+	return o.Operation.Get(), o.Operation.IsSet()
 }
 
 // HasOperation returns a boolean if a field has been set.
 func (o *AccountActivityItem) HasOperation() bool {
-	if o != nil && !IsNil(o.Operation) {
+	if o != nil && o.Operation.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetOperation gets a reference to the given AccountActivityItemOperation and assigns it to the Operation field.
+// SetOperation gets a reference to the given NullableAccountActivityItemOperation and assigns it to the Operation field.
 func (o *AccountActivityItem) SetOperation(v AccountActivityItemOperation) {
-	o.Operation = &v
+	o.Operation.Set(&v)
+}
+// SetOperationNil sets the value for Operation to be an explicit nil
+func (o *AccountActivityItem) SetOperationNil() {
+	o.Operation.Set(nil)
+}
+
+// UnsetOperation ensures that no value is present for Operation, not even an explicit nil
+func (o *AccountActivityItem) UnsetOperation() {
+	o.Operation.Unset()
 }
 
 // GetAttribute returns the Attribute field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -679,8 +699,8 @@ func (o AccountActivityItem) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Requested) {
 		toSerialize["requested"] = o.Requested
 	}
-	if !IsNil(o.ApprovalStatus) {
-		toSerialize["approvalStatus"] = o.ApprovalStatus
+	if o.ApprovalStatus.IsSet() {
+		toSerialize["approvalStatus"] = o.ApprovalStatus.Get()
 	}
 	if !IsNil(o.ProvisioningStatus) {
 		toSerialize["provisioningStatus"] = o.ProvisioningStatus
@@ -694,8 +714,8 @@ func (o AccountActivityItem) ToMap() (map[string]interface{}, error) {
 	if o.ReviewerComment.IsSet() {
 		toSerialize["reviewerComment"] = o.ReviewerComment.Get()
 	}
-	if !IsNil(o.Operation) {
-		toSerialize["operation"] = o.Operation
+	if o.Operation.IsSet() {
+		toSerialize["operation"] = o.Operation.Get()
 	}
 	if o.Attribute.IsSet() {
 		toSerialize["attribute"] = o.Attribute.Get()

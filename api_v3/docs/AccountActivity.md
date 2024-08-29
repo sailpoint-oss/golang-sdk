@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Created** | Pointer to **time.Time** | When the activity was first created | [optional] 
 **Modified** | Pointer to **NullableTime** | When the activity was last modified | [optional] 
 **Completed** | Pointer to **NullableTime** | When the activity was completed | [optional] 
-**CompletionStatus** | Pointer to [**CompletionStatus**](CompletionStatus.md) |  | [optional] 
+**CompletionStatus** | Pointer to [**NullableCompletionStatus**](CompletionStatus.md) |  | [optional] 
 **Type** | Pointer to **NullableString** | The type of action the activity performed.  Please see the following list of types.  This list may grow over time.  - CloudAutomated - IdentityAttributeUpdate - appRequest - LifecycleStateChange - AccountStateUpdate - AccountAttributeUpdate - CloudPasswordRequest - Attribute Synchronization Refresh - Certification - Identity Refresh - Lifecycle Change Refresh   [Learn more here](https://documentation.sailpoint.com/saas/help/search/searchable-fields.html#searching-account-activity-data).  | [optional] 
 **RequesterIdentitySummary** | Pointer to [**NullableIdentitySummary**](IdentitySummary.md) |  | [optional] 
 **TargetIdentitySummary** | Pointer to [**NullableIdentitySummary**](IdentitySummary.md) |  | [optional] 
@@ -208,6 +208,16 @@ SetCompletionStatus sets CompletionStatus field to given value.
 
 HasCompletionStatus returns a boolean if a field has been set.
 
+### SetCompletionStatusNil
+
+`func (o *AccountActivity) SetCompletionStatusNil(b bool)`
+
+ SetCompletionStatusNil sets the value for CompletionStatus to be an explicit nil
+
+### UnsetCompletionStatus
+`func (o *AccountActivity) UnsetCompletionStatus()`
+
+UnsetCompletionStatus ensures that no value is present for CompletionStatus, not even an explicit nil
 ### GetType
 
 `func (o *AccountActivity) GetType() string`
