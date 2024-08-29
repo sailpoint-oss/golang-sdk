@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | System-generated unique ID of the Object | [optional] [readonly] 
-**Name** | **string** | Name of the Object | 
-**Created** | Pointer to **time.Time** | Creation date of the Object | [optional] [readonly] 
-**Modified** | Pointer to **time.Time** | Last modification date of the Object | [optional] [readonly] 
-**Alias** | Pointer to **string** | Alternate unique identifier for the identity | [optional] 
+**Id** | Pointer to **string** | System-generated unique ID of the identity | [optional] [readonly] 
+**Name** | **string** | The identity&#39;s name is equivalent to its Display Name attribute. | 
+**Created** | Pointer to **time.Time** | Creation date of the identity | [optional] [readonly] 
+**Modified** | Pointer to **time.Time** | Last modification date of the identity | [optional] [readonly] 
+**Alias** | Pointer to **string** | The identity&#39;s alternate unique identifier is equivalent to its Account Name on the authoritative source account schema. | [optional] 
 **EmailAddress** | Pointer to **NullableString** | The email address of the identity | [optional] 
 **ProcessingState** | Pointer to **NullableString** | The processing state of the identity | [optional] 
 **IdentityStatus** | Pointer to **string** | The identity&#39;s status in the system | [optional] 
-**ManagerRef** | Pointer to [**NullableIdentityDtoManagerRef**](IdentityDtoManagerRef.md) |  | [optional] 
+**ManagerRef** | Pointer to [**NullableIdentityManagerRef**](IdentityManagerRef.md) |  | [optional] 
 **IsManager** | Pointer to **bool** | Whether this identity is a manager of another identity | [optional] [default to false]
 **LastRefresh** | Pointer to **time.Time** | The last time the identity was refreshed by the system | [optional] 
 **Attributes** | Pointer to **map[string]interface{}** | A map with the identity attributes for the identity | [optional] 
-**LifecycleState** | Pointer to [**IdentityDtoLifecycleState**](IdentityDtoLifecycleState.md) |  | [optional] 
+**LifecycleState** | Pointer to [**IdentityLifecycleState**](IdentityLifecycleState.md) |  | [optional] 
 
 ## Methods
 
@@ -254,20 +254,20 @@ HasIdentityStatus returns a boolean if a field has been set.
 
 ### GetManagerRef
 
-`func (o *Identity) GetManagerRef() IdentityDtoManagerRef`
+`func (o *Identity) GetManagerRef() IdentityManagerRef`
 
 GetManagerRef returns the ManagerRef field if non-nil, zero value otherwise.
 
 ### GetManagerRefOk
 
-`func (o *Identity) GetManagerRefOk() (*IdentityDtoManagerRef, bool)`
+`func (o *Identity) GetManagerRefOk() (*IdentityManagerRef, bool)`
 
 GetManagerRefOk returns a tuple with the ManagerRef field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetManagerRef
 
-`func (o *Identity) SetManagerRef(v IdentityDtoManagerRef)`
+`func (o *Identity) SetManagerRef(v IdentityManagerRef)`
 
 SetManagerRef sets ManagerRef field to given value.
 
@@ -364,20 +364,20 @@ HasAttributes returns a boolean if a field has been set.
 
 ### GetLifecycleState
 
-`func (o *Identity) GetLifecycleState() IdentityDtoLifecycleState`
+`func (o *Identity) GetLifecycleState() IdentityLifecycleState`
 
 GetLifecycleState returns the LifecycleState field if non-nil, zero value otherwise.
 
 ### GetLifecycleStateOk
 
-`func (o *Identity) GetLifecycleStateOk() (*IdentityDtoLifecycleState, bool)`
+`func (o *Identity) GetLifecycleStateOk() (*IdentityLifecycleState, bool)`
 
 GetLifecycleStateOk returns a tuple with the LifecycleState field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLifecycleState
 
-`func (o *Identity) SetLifecycleState(v IdentityDtoLifecycleState)`
+`func (o *Identity) SetLifecycleState(v IdentityLifecycleState)`
 
 SetLifecycleState sets LifecycleState field to given value.
 

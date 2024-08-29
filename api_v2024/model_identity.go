@@ -21,15 +21,15 @@ var _ MappedNullable = &Identity{}
 
 // Identity struct for Identity
 type Identity struct {
-	// System-generated unique ID of the Object
+	// System-generated unique ID of the identity
 	Id *string `json:"id,omitempty"`
-	// Name of the Object
+	// The identity's name is equivalent to its Display Name attribute.
 	Name string `json:"name"`
-	// Creation date of the Object
+	// Creation date of the identity
 	Created *time.Time `json:"created,omitempty"`
-	// Last modification date of the Object
+	// Last modification date of the identity
 	Modified *time.Time `json:"modified,omitempty"`
-	// Alternate unique identifier for the identity
+	// The identity's alternate unique identifier is equivalent to its Account Name on the authoritative source account schema.
 	Alias *string `json:"alias,omitempty"`
 	// The email address of the identity
 	EmailAddress NullableString `json:"emailAddress,omitempty"`
@@ -37,14 +37,14 @@ type Identity struct {
 	ProcessingState NullableString `json:"processingState,omitempty"`
 	// The identity's status in the system
 	IdentityStatus *string `json:"identityStatus,omitempty"`
-	ManagerRef NullableIdentityDtoManagerRef `json:"managerRef,omitempty"`
+	ManagerRef NullableIdentityManagerRef `json:"managerRef,omitempty"`
 	// Whether this identity is a manager of another identity
 	IsManager *bool `json:"isManager,omitempty"`
 	// The last time the identity was refreshed by the system
 	LastRefresh *time.Time `json:"lastRefresh,omitempty"`
 	// A map with the identity attributes for the identity
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
-	LifecycleState *IdentityDtoLifecycleState `json:"lifecycleState,omitempty"`
+	LifecycleState *IdentityLifecycleState `json:"lifecycleState,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -341,9 +341,9 @@ func (o *Identity) SetIdentityStatus(v string) {
 }
 
 // GetManagerRef returns the ManagerRef field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Identity) GetManagerRef() IdentityDtoManagerRef {
+func (o *Identity) GetManagerRef() IdentityManagerRef {
 	if o == nil || IsNil(o.ManagerRef.Get()) {
-		var ret IdentityDtoManagerRef
+		var ret IdentityManagerRef
 		return ret
 	}
 	return *o.ManagerRef.Get()
@@ -352,7 +352,7 @@ func (o *Identity) GetManagerRef() IdentityDtoManagerRef {
 // GetManagerRefOk returns a tuple with the ManagerRef field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Identity) GetManagerRefOk() (*IdentityDtoManagerRef, bool) {
+func (o *Identity) GetManagerRefOk() (*IdentityManagerRef, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -368,8 +368,8 @@ func (o *Identity) HasManagerRef() bool {
 	return false
 }
 
-// SetManagerRef gets a reference to the given NullableIdentityDtoManagerRef and assigns it to the ManagerRef field.
-func (o *Identity) SetManagerRef(v IdentityDtoManagerRef) {
+// SetManagerRef gets a reference to the given NullableIdentityManagerRef and assigns it to the ManagerRef field.
+func (o *Identity) SetManagerRef(v IdentityManagerRef) {
 	o.ManagerRef.Set(&v)
 }
 // SetManagerRefNil sets the value for ManagerRef to be an explicit nil
@@ -479,9 +479,9 @@ func (o *Identity) SetAttributes(v map[string]interface{}) {
 }
 
 // GetLifecycleState returns the LifecycleState field value if set, zero value otherwise.
-func (o *Identity) GetLifecycleState() IdentityDtoLifecycleState {
+func (o *Identity) GetLifecycleState() IdentityLifecycleState {
 	if o == nil || IsNil(o.LifecycleState) {
-		var ret IdentityDtoLifecycleState
+		var ret IdentityLifecycleState
 		return ret
 	}
 	return *o.LifecycleState
@@ -489,7 +489,7 @@ func (o *Identity) GetLifecycleState() IdentityDtoLifecycleState {
 
 // GetLifecycleStateOk returns a tuple with the LifecycleState field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Identity) GetLifecycleStateOk() (*IdentityDtoLifecycleState, bool) {
+func (o *Identity) GetLifecycleStateOk() (*IdentityLifecycleState, bool) {
 	if o == nil || IsNil(o.LifecycleState) {
 		return nil, false
 	}
@@ -505,8 +505,8 @@ func (o *Identity) HasLifecycleState() bool {
 	return false
 }
 
-// SetLifecycleState gets a reference to the given IdentityDtoLifecycleState and assigns it to the LifecycleState field.
-func (o *Identity) SetLifecycleState(v IdentityDtoLifecycleState) {
+// SetLifecycleState gets a reference to the given IdentityLifecycleState and assigns it to the LifecycleState field.
+func (o *Identity) SetLifecycleState(v IdentityLifecycleState) {
 	o.LifecycleState = &v
 }
 

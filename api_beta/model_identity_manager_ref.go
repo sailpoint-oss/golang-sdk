@@ -14,41 +14,41 @@ import (
 	"encoding/json"
 )
 
-// checks if the IdentityDtoManagerRef type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &IdentityDtoManagerRef{}
+// checks if the IdentityManagerRef type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityManagerRef{}
 
-// IdentityDtoManagerRef Identity's manager.
-type IdentityDtoManagerRef struct {
-	// DTO type of identity's manager.
+// IdentityManagerRef Identity's manager
+type IdentityManagerRef struct {
+	// DTO type of identity's manager
 	Type *string `json:"type,omitempty"`
-	// ID of identity's manager.
+	// ID of identity's manager
 	Id *string `json:"id,omitempty"`
-	// Human-readable display name of identity's manager.
+	// Human-readable display name of identity's manager
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _IdentityDtoManagerRef IdentityDtoManagerRef
+type _IdentityManagerRef IdentityManagerRef
 
-// NewIdentityDtoManagerRef instantiates a new IdentityDtoManagerRef object
+// NewIdentityManagerRef instantiates a new IdentityManagerRef object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentityDtoManagerRef() *IdentityDtoManagerRef {
-	this := IdentityDtoManagerRef{}
+func NewIdentityManagerRef() *IdentityManagerRef {
+	this := IdentityManagerRef{}
 	return &this
 }
 
-// NewIdentityDtoManagerRefWithDefaults instantiates a new IdentityDtoManagerRef object
+// NewIdentityManagerRefWithDefaults instantiates a new IdentityManagerRef object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewIdentityDtoManagerRefWithDefaults() *IdentityDtoManagerRef {
-	this := IdentityDtoManagerRef{}
+func NewIdentityManagerRefWithDefaults() *IdentityManagerRef {
+	this := IdentityManagerRef{}
 	return &this
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *IdentityDtoManagerRef) GetType() string {
+func (o *IdentityManagerRef) GetType() string {
 	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
@@ -58,7 +58,7 @@ func (o *IdentityDtoManagerRef) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityDtoManagerRef) GetTypeOk() (*string, bool) {
+func (o *IdentityManagerRef) GetTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *IdentityDtoManagerRef) GetTypeOk() (*string, bool) {
 }
 
 // HasType returns a boolean if a field has been set.
-func (o *IdentityDtoManagerRef) HasType() bool {
+func (o *IdentityManagerRef) HasType() bool {
 	if o != nil && !IsNil(o.Type) {
 		return true
 	}
@@ -75,12 +75,12 @@ func (o *IdentityDtoManagerRef) HasType() bool {
 }
 
 // SetType gets a reference to the given string and assigns it to the Type field.
-func (o *IdentityDtoManagerRef) SetType(v string) {
+func (o *IdentityManagerRef) SetType(v string) {
 	o.Type = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *IdentityDtoManagerRef) GetId() string {
+func (o *IdentityManagerRef) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -90,7 +90,7 @@ func (o *IdentityDtoManagerRef) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityDtoManagerRef) GetIdOk() (*string, bool) {
+func (o *IdentityManagerRef) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -98,7 +98,7 @@ func (o *IdentityDtoManagerRef) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *IdentityDtoManagerRef) HasId() bool {
+func (o *IdentityManagerRef) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -107,12 +107,12 @@ func (o *IdentityDtoManagerRef) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *IdentityDtoManagerRef) SetId(v string) {
+func (o *IdentityManagerRef) SetId(v string) {
 	o.Id = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *IdentityDtoManagerRef) GetName() string {
+func (o *IdentityManagerRef) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
@@ -122,7 +122,7 @@ func (o *IdentityDtoManagerRef) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityDtoManagerRef) GetNameOk() (*string, bool) {
+func (o *IdentityManagerRef) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
@@ -130,7 +130,7 @@ func (o *IdentityDtoManagerRef) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *IdentityDtoManagerRef) HasName() bool {
+func (o *IdentityManagerRef) HasName() bool {
 	if o != nil && !IsNil(o.Name) {
 		return true
 	}
@@ -139,11 +139,11 @@ func (o *IdentityDtoManagerRef) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *IdentityDtoManagerRef) SetName(v string) {
+func (o *IdentityManagerRef) SetName(v string) {
 	o.Name = &v
 }
 
-func (o IdentityDtoManagerRef) MarshalJSON() ([]byte, error) {
+func (o IdentityManagerRef) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -151,7 +151,7 @@ func (o IdentityDtoManagerRef) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o IdentityDtoManagerRef) ToMap() (map[string]interface{}, error) {
+func (o IdentityManagerRef) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -170,16 +170,16 @@ func (o IdentityDtoManagerRef) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *IdentityDtoManagerRef) UnmarshalJSON(data []byte) (err error) {
-	varIdentityDtoManagerRef := _IdentityDtoManagerRef{}
+func (o *IdentityManagerRef) UnmarshalJSON(data []byte) (err error) {
+	varIdentityManagerRef := _IdentityManagerRef{}
 
-	err = json.Unmarshal(data, &varIdentityDtoManagerRef)
+	err = json.Unmarshal(data, &varIdentityManagerRef)
 
 	if err != nil {
 		return err
 	}
 
-	*o = IdentityDtoManagerRef(varIdentityDtoManagerRef)
+	*o = IdentityManagerRef(varIdentityManagerRef)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -193,38 +193,38 @@ func (o *IdentityDtoManagerRef) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableIdentityDtoManagerRef struct {
-	value *IdentityDtoManagerRef
+type NullableIdentityManagerRef struct {
+	value *IdentityManagerRef
 	isSet bool
 }
 
-func (v NullableIdentityDtoManagerRef) Get() *IdentityDtoManagerRef {
+func (v NullableIdentityManagerRef) Get() *IdentityManagerRef {
 	return v.value
 }
 
-func (v *NullableIdentityDtoManagerRef) Set(val *IdentityDtoManagerRef) {
+func (v *NullableIdentityManagerRef) Set(val *IdentityManagerRef) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableIdentityDtoManagerRef) IsSet() bool {
+func (v NullableIdentityManagerRef) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableIdentityDtoManagerRef) Unset() {
+func (v *NullableIdentityManagerRef) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableIdentityDtoManagerRef(val *IdentityDtoManagerRef) *NullableIdentityDtoManagerRef {
-	return &NullableIdentityDtoManagerRef{value: val, isSet: true}
+func NewNullableIdentityManagerRef(val *IdentityManagerRef) *NullableIdentityManagerRef {
+	return &NullableIdentityManagerRef{value: val, isSet: true}
 }
 
-func (v NullableIdentityDtoManagerRef) MarshalJSON() ([]byte, error) {
+func (v NullableIdentityManagerRef) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableIdentityDtoManagerRef) UnmarshalJSON(src []byte) error {
+func (v *NullableIdentityManagerRef) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

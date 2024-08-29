@@ -1,104 +1,104 @@
-# IdentityDtoManagerRef
+# IdentityManagerRef
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | DTO type of identity&#39;s manager. | [optional] 
-**Id** | Pointer to **string** | ID of identity&#39;s manager. | [optional] 
-**Name** | Pointer to **string** | Human-readable display name of identity&#39;s manager. | [optional] 
+**Type** | Pointer to **string** | DTO type of identity&#39;s manager | [optional] 
+**Id** | Pointer to **string** | ID of identity&#39;s manager | [optional] 
+**Name** | Pointer to **string** | Human-readable display name of identity&#39;s manager | [optional] 
 
 ## Methods
 
-### NewIdentityDtoManagerRef
+### NewIdentityManagerRef
 
-`func NewIdentityDtoManagerRef() *IdentityDtoManagerRef`
+`func NewIdentityManagerRef() *IdentityManagerRef`
 
-NewIdentityDtoManagerRef instantiates a new IdentityDtoManagerRef object
+NewIdentityManagerRef instantiates a new IdentityManagerRef object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewIdentityDtoManagerRefWithDefaults
+### NewIdentityManagerRefWithDefaults
 
-`func NewIdentityDtoManagerRefWithDefaults() *IdentityDtoManagerRef`
+`func NewIdentityManagerRefWithDefaults() *IdentityManagerRef`
 
-NewIdentityDtoManagerRefWithDefaults instantiates a new IdentityDtoManagerRef object
+NewIdentityManagerRefWithDefaults instantiates a new IdentityManagerRef object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *IdentityDtoManagerRef) GetType() string`
+`func (o *IdentityManagerRef) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *IdentityDtoManagerRef) GetTypeOk() (*string, bool)`
+`func (o *IdentityManagerRef) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *IdentityDtoManagerRef) SetType(v string)`
+`func (o *IdentityManagerRef) SetType(v string)`
 
 SetType sets Type field to given value.
 
 ### HasType
 
-`func (o *IdentityDtoManagerRef) HasType() bool`
+`func (o *IdentityManagerRef) HasType() bool`
 
 HasType returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *IdentityDtoManagerRef) GetId() string`
+`func (o *IdentityManagerRef) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *IdentityDtoManagerRef) GetIdOk() (*string, bool)`
+`func (o *IdentityManagerRef) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *IdentityDtoManagerRef) SetId(v string)`
+`func (o *IdentityManagerRef) SetId(v string)`
 
 SetId sets Id field to given value.
 
 ### HasId
 
-`func (o *IdentityDtoManagerRef) HasId() bool`
+`func (o *IdentityManagerRef) HasId() bool`
 
 HasId returns a boolean if a field has been set.
 
 ### GetName
 
-`func (o *IdentityDtoManagerRef) GetName() string`
+`func (o *IdentityManagerRef) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *IdentityDtoManagerRef) GetNameOk() (*string, bool)`
+`func (o *IdentityManagerRef) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *IdentityDtoManagerRef) SetName(v string)`
+`func (o *IdentityManagerRef) SetName(v string)`
 
 SetName sets Name field to given value.
 
 ### HasName
 
-`func (o *IdentityDtoManagerRef) HasName() bool`
+`func (o *IdentityManagerRef) HasName() bool`
 
 HasName returns a boolean if a field has been set.
 

@@ -1,4 +1,4 @@
-# IdentityDtoLifecycleState
+# IdentityLifecycleState
 
 ## Properties
 
@@ -9,59 +9,59 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewIdentityDtoLifecycleState
+### NewIdentityLifecycleState
 
-`func NewIdentityDtoLifecycleState(stateName string, manuallyUpdated bool, ) *IdentityDtoLifecycleState`
+`func NewIdentityLifecycleState(stateName string, manuallyUpdated bool, ) *IdentityLifecycleState`
 
-NewIdentityDtoLifecycleState instantiates a new IdentityDtoLifecycleState object
+NewIdentityLifecycleState instantiates a new IdentityLifecycleState object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewIdentityDtoLifecycleStateWithDefaults
+### NewIdentityLifecycleStateWithDefaults
 
-`func NewIdentityDtoLifecycleStateWithDefaults() *IdentityDtoLifecycleState`
+`func NewIdentityLifecycleStateWithDefaults() *IdentityLifecycleState`
 
-NewIdentityDtoLifecycleStateWithDefaults instantiates a new IdentityDtoLifecycleState object
+NewIdentityLifecycleStateWithDefaults instantiates a new IdentityLifecycleState object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetStateName
 
-`func (o *IdentityDtoLifecycleState) GetStateName() string`
+`func (o *IdentityLifecycleState) GetStateName() string`
 
 GetStateName returns the StateName field if non-nil, zero value otherwise.
 
 ### GetStateNameOk
 
-`func (o *IdentityDtoLifecycleState) GetStateNameOk() (*string, bool)`
+`func (o *IdentityLifecycleState) GetStateNameOk() (*string, bool)`
 
 GetStateNameOk returns a tuple with the StateName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStateName
 
-`func (o *IdentityDtoLifecycleState) SetStateName(v string)`
+`func (o *IdentityLifecycleState) SetStateName(v string)`
 
 SetStateName sets StateName field to given value.
 
 
 ### GetManuallyUpdated
 
-`func (o *IdentityDtoLifecycleState) GetManuallyUpdated() bool`
+`func (o *IdentityLifecycleState) GetManuallyUpdated() bool`
 
 GetManuallyUpdated returns the ManuallyUpdated field if non-nil, zero value otherwise.
 
 ### GetManuallyUpdatedOk
 
-`func (o *IdentityDtoLifecycleState) GetManuallyUpdatedOk() (*bool, bool)`
+`func (o *IdentityLifecycleState) GetManuallyUpdatedOk() (*bool, bool)`
 
 GetManuallyUpdatedOk returns a tuple with the ManuallyUpdated field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetManuallyUpdated
 
-`func (o *IdentityDtoLifecycleState) SetManuallyUpdated(v bool)`
+`func (o *IdentityLifecycleState) SetManuallyUpdated(v bool)`
 
 SetManuallyUpdated sets ManuallyUpdated field to given value.
 

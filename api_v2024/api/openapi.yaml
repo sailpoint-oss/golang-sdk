@@ -83598,60 +83598,6 @@ components:
           type: array
       type: object
     Identity:
-      allOf:
-      - $ref: '#/components/schemas/BaseCommonDto_1'
-      - properties:
-          alias:
-            description: Alternate unique identifier for the identity
-            example: walter.white
-            type: string
-          emailAddress:
-            description: The email address of the identity
-            example: sender@example.com
-            nullable: true
-            type: string
-          processingState:
-            description: The processing state of the identity
-            enum:
-            - ERROR
-            - OK
-            - null
-            example: ERROR
-            nullable: true
-            type: string
-          identityStatus:
-            description: The identity's status in the system
-            enum:
-            - UNREGISTERED
-            - REGISTERED
-            - PENDING
-            - WARNING
-            - DISABLED
-            - ACTIVE
-            - DEACTIVATED
-            - TERMINATED
-            - ERROR
-            - LOCKED
-            example: LOCKED
-            type: string
-          managerRef:
-            $ref: '#/components/schemas/IdentityDto_managerRef'
-          isManager:
-            default: false
-            description: Whether this identity is a manager of another identity
-            example: true
-            type: boolean
-          lastRefresh:
-            description: The last time the identity was refreshed by the system
-            example: 2020-11-22T15:42:31.123Z
-            format: date-time
-            type: string
-          attributes:
-            $ref: '#/components/schemas/IdentityDto_attributes'
-          lifecycleState:
-            $ref: '#/components/schemas/IdentityDto_lifecycleState'
-        title: IdentityDto
-        type: object
       example:
         lifecycleState:
           stateName: active
@@ -83659,21 +83605,112 @@ components:
         lastRefresh: 2020-11-22T15:42:31.123Z
         created: 2023-01-03T21:16:22.432Z
         processingState: ERROR
-        emailAddress: sender@example.com
+        emailAddress: walter.white@example.com
         identityStatus: LOCKED
-        name: aName
+        name: Walter White
         modified: 2023-01-03T21:16:22.432Z
         alias: walter.white
         isManager: true
-        attributes: "{\"uid\":\"Walter White\",\"firstname\":\"walter\",\"cloudStatus\"\
-          :\"UNREGISTERED\",\"displayName\":\"Walter White\",\"identificationNumber\"\
-          :\"942\",\"lastSyncDate\":1470348809380,\"email\":\"walter@gmail.com\",\"\
-          lastname\":\"white\"}"
-        id: id12345
+        attributes:
+          uid: "86754"
+          firstname: Walter
+          cloudStatus: UNREGISTERED
+          displayName: Walter White
+          identificationNumber: "86754"
+          lastSyncDate: 1470348809380
+          email: walter.white@example.com
+          lastname: White
+        id: 01f04e428c484542a241dc89c303b178
         managerRef:
           name: Robert Robinson
           id: 2c4180a46faadee4016fb4e018c20626
           type: IDENTITY
+      properties:
+        id:
+          description: System-generated unique ID of the identity
+          example: 01f04e428c484542a241dc89c303b178
+          readOnly: true
+          type: string
+        name:
+          description: The identity's name is equivalent to its Display Name attribute.
+          example: Walter White
+          type: string
+        created:
+          description: Creation date of the identity
+          example: 2023-01-03T21:16:22.432Z
+          format: date-time
+          readOnly: true
+          type: string
+        modified:
+          description: Last modification date of the identity
+          example: 2023-01-03T21:16:22.432Z
+          format: date-time
+          readOnly: true
+          type: string
+        alias:
+          description: The identity's alternate unique identifier is equivalent to
+            its Account Name on the authoritative source account schema.
+          example: walter.white
+          type: string
+        emailAddress:
+          description: The email address of the identity
+          example: walter.white@example.com
+          nullable: true
+          type: string
+        processingState:
+          description: The processing state of the identity
+          enum:
+          - ERROR
+          - OK
+          - null
+          example: ERROR
+          nullable: true
+          type: string
+        identityStatus:
+          description: The identity's status in the system
+          enum:
+          - UNREGISTERED
+          - REGISTERED
+          - PENDING
+          - WARNING
+          - DISABLED
+          - ACTIVE
+          - DEACTIVATED
+          - TERMINATED
+          - ERROR
+          - LOCKED
+          example: LOCKED
+          type: string
+        managerRef:
+          $ref: '#/components/schemas/Identity_managerRef'
+        isManager:
+          default: false
+          description: Whether this identity is a manager of another identity
+          example: true
+          type: boolean
+        lastRefresh:
+          description: The last time the identity was refreshed by the system
+          example: 2020-11-22T15:42:31.123Z
+          format: date-time
+          type: string
+        attributes:
+          description: A map with the identity attributes for the identity
+          example:
+            uid: "86754"
+            firstname: Walter
+            cloudStatus: UNREGISTERED
+            displayName: Walter White
+            identificationNumber: "86754"
+            lastSyncDate: 1470348809380
+            email: walter.white@example.com
+            lastname: White
+          type: object
+        lifecycleState:
+          $ref: '#/components/schemas/Identity_lifecycleState'
+      required:
+      - name
+      title: IdentityDto
+      type: object
     IdentityAssociationDetails:
       example:
         associationDetails:
@@ -94720,32 +94757,6 @@ components:
         identityEntity:
           $ref: '#/components/schemas/IdentityEntities_identityEntity'
       type: object
-    BaseCommonDto_1:
-      properties:
-        id:
-          description: System-generated unique ID of the Object
-          example: id12345
-          readOnly: true
-          type: string
-        name:
-          description: Name of the Object
-          example: aName
-          type: string
-        created:
-          description: Creation date of the Object
-          example: 2023-01-03T21:16:22.432Z
-          format: date-time
-          readOnly: true
-          type: string
-        modified:
-          description: Last modification date of the Object
-          example: 2023-01-03T21:16:22.432Z
-          format: date-time
-          readOnly: true
-          type: string
-      required:
-      - name
-      type: object
     LifecycleStateDto:
       properties:
         stateName:
@@ -95683,6 +95694,32 @@ components:
           example: 7
           format: int32
           type: integer
+      type: object
+    BaseCommonDto_1:
+      properties:
+        id:
+          description: System-generated unique ID of the Object
+          example: id12345
+          readOnly: true
+          type: string
+        name:
+          description: Name of the Object
+          example: aName
+          type: string
+        created:
+          description: Creation date of the Object
+          example: 2023-01-03T21:16:22.432Z
+          format: date-time
+          readOnly: true
+          type: string
+        modified:
+          description: Last modification date of the Object
+          example: 2023-01-03T21:16:22.432Z
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - name
       type: object
     ExportOptions:
       example:
@@ -103082,8 +103119,8 @@ components:
             $ref: '#/components/schemas/IdentityEntities'
           type: array
       type: object
-    IdentityDto_managerRef:
-      description: Identity's manager.
+    Identity_managerRef:
+      description: Identity's manager
       example:
         name: Robert Robinson
         id: 2c4180a46faadee4016fb4e018c20626
@@ -103091,28 +103128,21 @@ components:
       nullable: true
       properties:
         type:
-          description: DTO type of identity's manager.
+          description: DTO type of identity's manager
           enum:
           - IDENTITY
           example: IDENTITY
           type: string
         id:
-          description: ID of identity's manager.
+          description: ID of identity's manager
           example: 2c4180a46faadee4016fb4e018c20626
           type: string
         name:
-          description: Human-readable display name of identity's manager.
+          description: Human-readable display name of identity's manager
           example: Robert Robinson
           type: string
       type: object
-    IdentityDto_attributes:
-      description: A map with the identity attributes for the identity
-      example: "{\"uid\":\"Walter White\",\"firstname\":\"walter\",\"cloudStatus\"\
-        :\"UNREGISTERED\",\"displayName\":\"Walter White\",\"identificationNumber\"\
-        :\"942\",\"lastSyncDate\":1470348809380,\"email\":\"walter@gmail.com\",\"\
-        lastname\":\"white\"}"
-      type: object
-    IdentityDto_lifecycleState:
+    Identity_lifecycleState:
       allOf:
       - $ref: '#/components/schemas/LifecycleStateDto'
       - description: Lifecycle state details that include lifecycle state name and

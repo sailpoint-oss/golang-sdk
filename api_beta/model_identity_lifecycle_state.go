@@ -15,11 +15,11 @@ import (
 	"fmt"
 )
 
-// checks if the IdentityDtoLifecycleState type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &IdentityDtoLifecycleState{}
+// checks if the IdentityLifecycleState type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityLifecycleState{}
 
-// IdentityDtoLifecycleState struct for IdentityDtoLifecycleState
-type IdentityDtoLifecycleState struct {
+// IdentityLifecycleState struct for IdentityLifecycleState
+type IdentityLifecycleState struct {
 	// The name of the lifecycle state
 	StateName string `json:"stateName"`
 	// Whether the lifecycle state has been manually or automatically set
@@ -27,29 +27,29 @@ type IdentityDtoLifecycleState struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _IdentityDtoLifecycleState IdentityDtoLifecycleState
+type _IdentityLifecycleState IdentityLifecycleState
 
-// NewIdentityDtoLifecycleState instantiates a new IdentityDtoLifecycleState object
+// NewIdentityLifecycleState instantiates a new IdentityLifecycleState object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentityDtoLifecycleState(stateName string, manuallyUpdated bool) *IdentityDtoLifecycleState {
-	this := IdentityDtoLifecycleState{}
+func NewIdentityLifecycleState(stateName string, manuallyUpdated bool) *IdentityLifecycleState {
+	this := IdentityLifecycleState{}
 	this.StateName = stateName
 	this.ManuallyUpdated = manuallyUpdated
 	return &this
 }
 
-// NewIdentityDtoLifecycleStateWithDefaults instantiates a new IdentityDtoLifecycleState object
+// NewIdentityLifecycleStateWithDefaults instantiates a new IdentityLifecycleState object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewIdentityDtoLifecycleStateWithDefaults() *IdentityDtoLifecycleState {
-	this := IdentityDtoLifecycleState{}
+func NewIdentityLifecycleStateWithDefaults() *IdentityLifecycleState {
+	this := IdentityLifecycleState{}
 	return &this
 }
 
 // GetStateName returns the StateName field value
-func (o *IdentityDtoLifecycleState) GetStateName() string {
+func (o *IdentityLifecycleState) GetStateName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -60,7 +60,7 @@ func (o *IdentityDtoLifecycleState) GetStateName() string {
 
 // GetStateNameOk returns a tuple with the StateName field value
 // and a boolean to check if the value has been set.
-func (o *IdentityDtoLifecycleState) GetStateNameOk() (*string, bool) {
+func (o *IdentityLifecycleState) GetStateNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -68,12 +68,12 @@ func (o *IdentityDtoLifecycleState) GetStateNameOk() (*string, bool) {
 }
 
 // SetStateName sets field value
-func (o *IdentityDtoLifecycleState) SetStateName(v string) {
+func (o *IdentityLifecycleState) SetStateName(v string) {
 	o.StateName = v
 }
 
 // GetManuallyUpdated returns the ManuallyUpdated field value
-func (o *IdentityDtoLifecycleState) GetManuallyUpdated() bool {
+func (o *IdentityLifecycleState) GetManuallyUpdated() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -84,7 +84,7 @@ func (o *IdentityDtoLifecycleState) GetManuallyUpdated() bool {
 
 // GetManuallyUpdatedOk returns a tuple with the ManuallyUpdated field value
 // and a boolean to check if the value has been set.
-func (o *IdentityDtoLifecycleState) GetManuallyUpdatedOk() (*bool, bool) {
+func (o *IdentityLifecycleState) GetManuallyUpdatedOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -92,11 +92,11 @@ func (o *IdentityDtoLifecycleState) GetManuallyUpdatedOk() (*bool, bool) {
 }
 
 // SetManuallyUpdated sets field value
-func (o *IdentityDtoLifecycleState) SetManuallyUpdated(v bool) {
+func (o *IdentityLifecycleState) SetManuallyUpdated(v bool) {
 	o.ManuallyUpdated = v
 }
 
-func (o IdentityDtoLifecycleState) MarshalJSON() ([]byte, error) {
+func (o IdentityLifecycleState) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -104,7 +104,7 @@ func (o IdentityDtoLifecycleState) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o IdentityDtoLifecycleState) ToMap() (map[string]interface{}, error) {
+func (o IdentityLifecycleState) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["stateName"] = o.StateName
 	toSerialize["manuallyUpdated"] = o.ManuallyUpdated
@@ -116,7 +116,7 @@ func (o IdentityDtoLifecycleState) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *IdentityDtoLifecycleState) UnmarshalJSON(data []byte) (err error) {
+func (o *IdentityLifecycleState) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -139,15 +139,15 @@ func (o *IdentityDtoLifecycleState) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varIdentityDtoLifecycleState := _IdentityDtoLifecycleState{}
+	varIdentityLifecycleState := _IdentityLifecycleState{}
 
-	err = json.Unmarshal(data, &varIdentityDtoLifecycleState)
+	err = json.Unmarshal(data, &varIdentityLifecycleState)
 
 	if err != nil {
 		return err
 	}
 
-	*o = IdentityDtoLifecycleState(varIdentityDtoLifecycleState)
+	*o = IdentityLifecycleState(varIdentityLifecycleState)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -160,38 +160,38 @@ func (o *IdentityDtoLifecycleState) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableIdentityDtoLifecycleState struct {
-	value *IdentityDtoLifecycleState
+type NullableIdentityLifecycleState struct {
+	value *IdentityLifecycleState
 	isSet bool
 }
 
-func (v NullableIdentityDtoLifecycleState) Get() *IdentityDtoLifecycleState {
+func (v NullableIdentityLifecycleState) Get() *IdentityLifecycleState {
 	return v.value
 }
 
-func (v *NullableIdentityDtoLifecycleState) Set(val *IdentityDtoLifecycleState) {
+func (v *NullableIdentityLifecycleState) Set(val *IdentityLifecycleState) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableIdentityDtoLifecycleState) IsSet() bool {
+func (v NullableIdentityLifecycleState) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableIdentityDtoLifecycleState) Unset() {
+func (v *NullableIdentityLifecycleState) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableIdentityDtoLifecycleState(val *IdentityDtoLifecycleState) *NullableIdentityDtoLifecycleState {
-	return &NullableIdentityDtoLifecycleState{value: val, isSet: true}
+func NewNullableIdentityLifecycleState(val *IdentityLifecycleState) *NullableIdentityLifecycleState {
+	return &NullableIdentityLifecycleState{value: val, isSet: true}
 }
 
-func (v NullableIdentityDtoLifecycleState) MarshalJSON() ([]byte, error) {
+func (v NullableIdentityLifecycleState) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableIdentityDtoLifecycleState) UnmarshalJSON(src []byte) error {
+func (v *NullableIdentityLifecycleState) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
