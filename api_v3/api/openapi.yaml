@@ -48267,6 +48267,7 @@ components:
           description: Modification date of Campaign Template
           example: 2020-03-05T22:52:09.969Z
           format: date-time
+          nullable: true
           readOnly: true
           type: string
         scheduled:

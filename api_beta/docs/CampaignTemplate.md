@@ -8,17 +8,17 @@ Name | Type | Description | Notes
 **Name** | **string** | This template&#39;s name. Has no bearing on generated campaigns&#39; names. | 
 **Description** | **string** | This template&#39;s description. Has no bearing on generated campaigns&#39; descriptions. | 
 **Created** | **time.Time** | Creation date of Campaign Template | [readonly] 
-**Modified** | **time.Time** | Modification date of Campaign Template | [readonly] 
+**Modified** | **NullableTime** | Modification date of Campaign Template | [readonly] 
 **Scheduled** | Pointer to **bool** | Indicates if this campaign template has been scheduled. | [optional] [readonly] [default to false]
 **OwnerRef** | Pointer to [**CampaignTemplateOwnerRef**](CampaignTemplateOwnerRef.md) |  | [optional] 
 **DeadlineDuration** | Pointer to **string** | The time period during which the campaign should be completed, formatted as an ISO-8601 Duration. When this template generates a campaign, the campaign&#39;s deadline will be the current date plus this duration. For example, if generation occurred on 2020-01-01 and this field was \&quot;P2W\&quot; (two weeks), the resulting campaign&#39;s deadline would be 2020-01-15 (the current date plus 14 days). | [optional] 
-**Campaign** | [**Campaign**](Campaign.md) | This will hold campaign related information like name, description etc. | 
+**Campaign** | [**Campaign**](Campaign.md) |  | 
 
 ## Methods
 
 ### NewCampaignTemplate
 
-`func NewCampaignTemplate(name string, description string, created time.Time, modified time.Time, campaign Campaign, ) *CampaignTemplate`
+`func NewCampaignTemplate(name string, description string, created time.Time, modified NullableTime, campaign Campaign, ) *CampaignTemplate`
 
 NewCampaignTemplate instantiates a new CampaignTemplate object
 This constructor will assign default values to properties that have it defined,
@@ -138,6 +138,16 @@ and a boolean to check if the value has been set.
 SetModified sets Modified field to given value.
 
 
+### SetModifiedNil
+
+`func (o *CampaignTemplate) SetModifiedNil(b bool)`
+
+ SetModifiedNil sets the value for Modified to be an explicit nil
+
+### UnsetModified
+`func (o *CampaignTemplate) UnsetModified()`
+
+UnsetModified ensures that no value is present for Modified, not even an explicit nil
 ### GetScheduled
 
 `func (o *CampaignTemplate) GetScheduled() bool`
