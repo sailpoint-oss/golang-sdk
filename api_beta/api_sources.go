@@ -3035,11 +3035,18 @@ type ApiGetSourceSchemasRequest struct {
 	ApiService *SourcesAPIService
 	sourceId string
 	includeTypes *string
+	includeNames *string
 }
 
-// If set to &#39;group&#39;, then the account schema is filtered and only group schemas are returned. Only a value of &#39;group&#39; is recognized.
+// If set to &#39;group&#39;, then the account schema is filtered and only group schemas are returned. Only a value of &#39;group&#39; is recognized presently.  Note: The API will check whether include-types is group or not, if not, it will list schemas based on include-names, if include-names is not provided, it will list all schemas.
 func (r ApiGetSourceSchemasRequest) IncludeTypes(includeTypes string) ApiGetSourceSchemasRequest {
 	r.includeTypes = &includeTypes
+	return r
+}
+
+// A comma-separated list of schema names to filter result.
+func (r ApiGetSourceSchemasRequest) IncludeNames(includeNames string) ApiGetSourceSchemasRequest {
+	r.includeNames = &includeNames
 	return r
 }
 
@@ -3088,6 +3095,9 @@ func (a *SourcesAPIService) GetSourceSchemasExecute(r ApiGetSourceSchemasRequest
 
 	if r.includeTypes != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "include-types", r.includeTypes, "", "")
+	}
+	if r.includeNames != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include-names", r.includeNames, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

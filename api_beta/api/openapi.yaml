@@ -41299,7 +41299,10 @@ paths:
         schema:
           type: string
       - description: "If set to 'group', then the account schema is filtered and only\
-          \ group schemas are returned. Only a value of 'group' is recognized."
+          \ group schemas are returned. Only a value of 'group' is recognized presently.\
+          \ \nNote: The API will check whether include-types is group or not, if not,\
+          \ it will list schemas based on include-names, if include-names is not provided,\
+          \ it will list all schemas."
         example: group
         in: query
         name: include-types
@@ -41308,6 +41311,13 @@ paths:
           enum:
           - group
           - user
+          type: string
+      - description: A comma-separated list of schema names to filter result.
+        example: account
+        in: query
+        name: include-names
+        required: false
+        schema:
           type: string
       responses:
         "200":
@@ -41392,6 +41402,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth:
+        - idn:source-schema:read
       summary: List Schemas on Source
       tags:
       - Sources
@@ -41476,6 +41489,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth:
+        - idn:source-schema:create
       summary: Create Schema on Source
       tags:
       - Sources
