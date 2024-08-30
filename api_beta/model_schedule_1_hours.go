@@ -12,7 +12,6 @@ package api_beta
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the Schedule1Hours type satisfies the MappedNullable interface at compile time
@@ -20,11 +19,9 @@ var _ MappedNullable = &Schedule1Hours{}
 
 // Schedule1Hours struct for Schedule1Hours
 type Schedule1Hours struct {
-	Type SelectorType `json:"type"`
-	// The selected values. 
-	Values []string `json:"values"`
-	// The selected interval for RANGE selectors. 
-	Interval NullableInt32 `json:"interval,omitempty"`
+	// The application id
+	ApplicationId *string `json:"applicationId,omitempty"`
+	AccountMatchConfig *SelectorAccountMatchConfig `json:"accountMatchConfig,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -34,10 +31,8 @@ type _Schedule1Hours Schedule1Hours
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSchedule1Hours(type_ SelectorType, values []string) *Schedule1Hours {
+func NewSchedule1Hours() *Schedule1Hours {
 	this := Schedule1Hours{}
-	this.Type = type_
-	this.Values = values
 	return &this
 }
 
@@ -49,94 +44,68 @@ func NewSchedule1HoursWithDefaults() *Schedule1Hours {
 	return &this
 }
 
-// GetType returns the Type field value
-func (o *Schedule1Hours) GetType() SelectorType {
-	if o == nil {
-		var ret SelectorType
+// GetApplicationId returns the ApplicationId field value if set, zero value otherwise.
+func (o *Schedule1Hours) GetApplicationId() string {
+	if o == nil || IsNil(o.ApplicationId) {
+		var ret string
 		return ret
 	}
-
-	return o.Type
+	return *o.ApplicationId
 }
 
-// GetTypeOk returns a tuple with the Type field value
+// GetApplicationIdOk returns a tuple with the ApplicationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Schedule1Hours) GetTypeOk() (*SelectorType, bool) {
-	if o == nil {
+func (o *Schedule1Hours) GetApplicationIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ApplicationId) {
 		return nil, false
 	}
-	return &o.Type, true
+	return o.ApplicationId, true
 }
 
-// SetType sets field value
-func (o *Schedule1Hours) SetType(v SelectorType) {
-	o.Type = v
-}
-
-// GetValues returns the Values field value
-func (o *Schedule1Hours) GetValues() []string {
-	if o == nil {
-		var ret []string
-		return ret
-	}
-
-	return o.Values
-}
-
-// GetValuesOk returns a tuple with the Values field value
-// and a boolean to check if the value has been set.
-func (o *Schedule1Hours) GetValuesOk() ([]string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Values, true
-}
-
-// SetValues sets field value
-func (o *Schedule1Hours) SetValues(v []string) {
-	o.Values = v
-}
-
-// GetInterval returns the Interval field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Schedule1Hours) GetInterval() int32 {
-	if o == nil || IsNil(o.Interval.Get()) {
-		var ret int32
-		return ret
-	}
-	return *o.Interval.Get()
-}
-
-// GetIntervalOk returns a tuple with the Interval field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Schedule1Hours) GetIntervalOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Interval.Get(), o.Interval.IsSet()
-}
-
-// HasInterval returns a boolean if a field has been set.
-func (o *Schedule1Hours) HasInterval() bool {
-	if o != nil && o.Interval.IsSet() {
+// HasApplicationId returns a boolean if a field has been set.
+func (o *Schedule1Hours) HasApplicationId() bool {
+	if o != nil && !IsNil(o.ApplicationId) {
 		return true
 	}
 
 	return false
 }
 
-// SetInterval gets a reference to the given NullableInt32 and assigns it to the Interval field.
-func (o *Schedule1Hours) SetInterval(v int32) {
-	o.Interval.Set(&v)
-}
-// SetIntervalNil sets the value for Interval to be an explicit nil
-func (o *Schedule1Hours) SetIntervalNil() {
-	o.Interval.Set(nil)
+// SetApplicationId gets a reference to the given string and assigns it to the ApplicationId field.
+func (o *Schedule1Hours) SetApplicationId(v string) {
+	o.ApplicationId = &v
 }
 
-// UnsetInterval ensures that no value is present for Interval, not even an explicit nil
-func (o *Schedule1Hours) UnsetInterval() {
-	o.Interval.Unset()
+// GetAccountMatchConfig returns the AccountMatchConfig field value if set, zero value otherwise.
+func (o *Schedule1Hours) GetAccountMatchConfig() SelectorAccountMatchConfig {
+	if o == nil || IsNil(o.AccountMatchConfig) {
+		var ret SelectorAccountMatchConfig
+		return ret
+	}
+	return *o.AccountMatchConfig
+}
+
+// GetAccountMatchConfigOk returns a tuple with the AccountMatchConfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Schedule1Hours) GetAccountMatchConfigOk() (*SelectorAccountMatchConfig, bool) {
+	if o == nil || IsNil(o.AccountMatchConfig) {
+		return nil, false
+	}
+	return o.AccountMatchConfig, true
+}
+
+// HasAccountMatchConfig returns a boolean if a field has been set.
+func (o *Schedule1Hours) HasAccountMatchConfig() bool {
+	if o != nil && !IsNil(o.AccountMatchConfig) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountMatchConfig gets a reference to the given SelectorAccountMatchConfig and assigns it to the AccountMatchConfig field.
+func (o *Schedule1Hours) SetAccountMatchConfig(v SelectorAccountMatchConfig) {
+	o.AccountMatchConfig = &v
 }
 
 func (o Schedule1Hours) MarshalJSON() ([]byte, error) {
@@ -149,10 +118,11 @@ func (o Schedule1Hours) MarshalJSON() ([]byte, error) {
 
 func (o Schedule1Hours) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["type"] = o.Type
-	toSerialize["values"] = o.Values
-	if o.Interval.IsSet() {
-		toSerialize["interval"] = o.Interval.Get()
+	if !IsNil(o.ApplicationId) {
+		toSerialize["applicationId"] = o.ApplicationId
+	}
+	if !IsNil(o.AccountMatchConfig) {
+		toSerialize["accountMatchConfig"] = o.AccountMatchConfig
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -163,28 +133,6 @@ func (o Schedule1Hours) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *Schedule1Hours) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"type",
-		"values",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
 	varSchedule1Hours := _Schedule1Hours{}
 
 	err = json.Unmarshal(data, &varSchedule1Hours)
@@ -198,9 +146,8 @@ func (o *Schedule1Hours) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "values")
-		delete(additionalProperties, "interval")
+		delete(additionalProperties, "applicationId")
+		delete(additionalProperties, "accountMatchConfig")
 		o.AdditionalProperties = additionalProperties
 	}
 

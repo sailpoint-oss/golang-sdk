@@ -132,6 +132,20 @@ Class | Method | HTTP request | Description
 *ApprovalsAPI* | [**GetApproval**](docs/ApprovalsAPI.md#getapproval) | **Get** /generic-approvals/{id} | Get an approval
 *ApprovalsAPI* | [**GetApprovals**](docs/ApprovalsAPI.md#getapprovals) | **Get** /generic-approvals | Get Approvals
 *ApprovalsAPI* | [**PatchApproval**](docs/ApprovalsAPI.md#patchapproval) | **Patch** /generic-approvals/{id} | Change an approval
+*AppsAPI* | [**CreateSourceApp**](docs/AppsAPI.md#createsourceapp) | **Post** /source-apps | Create source app
+*AppsAPI* | [**DeleteAccessProfilesFromSourceAppByBulk**](docs/AppsAPI.md#deleteaccessprofilesfromsourceappbybulk) | **Post** /source-apps/{id}/access-profiles/bulk-remove | Bulk remove access profiles from the specified source app
+*AppsAPI* | [**DeleteSourceApp**](docs/AppsAPI.md#deletesourceapp) | **Delete** /source-apps/{id} | Delete source app by ID
+*AppsAPI* | [**GetSourceApp**](docs/AppsAPI.md#getsourceapp) | **Get** /source-apps/{id} | Get source app by ID
+*AppsAPI* | [**ListAccessProfilesForSourceApp**](docs/AppsAPI.md#listaccessprofilesforsourceapp) | **Get** /source-apps/{id}/access-profiles | List access profiles for the specified source app
+*AppsAPI* | [**ListAllSourceApp**](docs/AppsAPI.md#listallsourceapp) | **Get** /source-apps/all | List all source apps
+*AppsAPI* | [**ListAllUserApps**](docs/AppsAPI.md#listalluserapps) | **Get** /user-apps/all | List all user apps
+*AppsAPI* | [**ListAssignedSourceApp**](docs/AppsAPI.md#listassignedsourceapp) | **Get** /source-apps/assigned | List assigned source apps
+*AppsAPI* | [**ListAvailableAccountsForUserApp**](docs/AppsAPI.md#listavailableaccountsforuserapp) | **Get** /user-apps/{id}/available-accounts | List available accounts for user app
+*AppsAPI* | [**ListAvailableSourceApps**](docs/AppsAPI.md#listavailablesourceapps) | **Get** /source-apps | List available source apps
+*AppsAPI* | [**ListOwnedUserApps**](docs/AppsAPI.md#listowneduserapps) | **Get** /user-apps | List owned user apps
+*AppsAPI* | [**PatchSourceApp**](docs/AppsAPI.md#patchsourceapp) | **Patch** /source-apps/{id} | Patch source app by ID
+*AppsAPI* | [**PatchUserApp**](docs/AppsAPI.md#patchuserapp) | **Patch** /user-apps/{id} | Patch user app by ID
+*AppsAPI* | [**UpdateSourceAppsInBulk**](docs/AppsAPI.md#updatesourceappsinbulk) | **Post** /source-apps/bulk-update | Bulk update source apps
 *AuthProfileAPI* | [**GetProfileConfig**](docs/AuthProfileAPI.md#getprofileconfig) | **Get** /auth-profiles/{id} | Get Auth Profile.
 *AuthProfileAPI* | [**GetProfileConfigList**](docs/AuthProfileAPI.md#getprofileconfiglist) | **Get** /auth-profiles | Get list of Auth Profiles.
 *AuthProfileAPI* | [**PatchProfileConfig**](docs/AuthProfileAPI.md#patchprofileconfig) | **Patch** /auth-profiles/{id} | Patch a specified Auth Profile
@@ -627,6 +641,8 @@ Class | Method | HTTP request | Description
  - [AccessProfileBulkDeleteRequest](docs/AccessProfileBulkDeleteRequest.md)
  - [AccessProfileBulkDeleteResponse](docs/AccessProfileBulkDeleteResponse.md)
  - [AccessProfileBulkUpdateRequestInner](docs/AccessProfileBulkUpdateRequestInner.md)
+ - [AccessProfileDetails](docs/AccessProfileDetails.md)
+ - [AccessProfileDetailsAccountSelector](docs/AccessProfileDetailsAccountSelector.md)
  - [AccessProfileRef](docs/AccessProfileRef.md)
  - [AccessProfileSourceRef](docs/AccessProfileSourceRef.md)
  - [AccessProfileUpdateItem](docs/AccessProfileUpdateItem.md)
@@ -706,6 +722,8 @@ Class | Method | HTTP request | Description
  - [ActivateCampaignOptions](docs/ActivateCampaignOptions.md)
  - [AdminReviewReassign](docs/AdminReviewReassign.md)
  - [AdminReviewReassignReassignTo](docs/AdminReviewReassignReassignTo.md)
+ - [AppAccountDetails](docs/AppAccountDetails.md)
+ - [AppAccountDetailsSourceAccount](docs/AppAccountDetailsSourceAccount.md)
  - [Approval](docs/Approval.md)
  - [ApprovalBatch](docs/ApprovalBatch.md)
  - [ApprovalComment](docs/ApprovalComment.md)
@@ -746,6 +764,7 @@ Class | Method | HTTP request | Description
  - [BaseCommonDto](docs/BaseCommonDto.md)
  - [BaseCommonDto1](docs/BaseCommonDto1.md)
  - [BaseReferenceDto](docs/BaseReferenceDto.md)
+ - [BaseReferenceDto1](docs/BaseReferenceDto1.md)
  - [BasicAuthConfig](docs/BasicAuthConfig.md)
  - [BearerTokenAuthConfig](docs/BearerTokenAuthConfig.md)
  - [BeforeProvisioningRuleDto](docs/BeforeProvisioningRuleDto.md)
@@ -1049,6 +1068,7 @@ Class | Method | HTTP request | Description
  - [ManualWorkItemDetailsOriginalOwner](docs/ManualWorkItemDetailsOriginalOwner.md)
  - [ManualWorkItemState](docs/ManualWorkItemState.md)
  - [ManuallyUpdatedFieldsDTO](docs/ManuallyUpdatedFieldsDTO.md)
+ - [MatchTerm](docs/MatchTerm.md)
  - [Medium](docs/Medium.md)
  - [MessageCatalogDto](docs/MessageCatalogDto.md)
  - [MetricResponse](docs/MetricResponse.md)
@@ -1265,7 +1285,8 @@ Class | Method | HTTP request | Description
  - [SedPatch](docs/SedPatch.md)
  - [Segment](docs/Segment.md)
  - [Selector](docs/Selector.md)
- - [SelectorType](docs/SelectorType.md)
+ - [SelectorAccountMatchConfig](docs/SelectorAccountMatchConfig.md)
+ - [SelectorAccountMatchConfigMatchExpression](docs/SelectorAccountMatchConfigMatchExpression.md)
  - [SelfImportExportDto](docs/SelfImportExportDto.md)
  - [SendAccountVerificationRequest](docs/SendAccountVerificationRequest.md)
  - [SendTestNotificationRequestDto](docs/SendTestNotificationRequestDto.md)
@@ -1307,6 +1328,12 @@ Class | Method | HTTP request | Description
  - [SourceAccountCreated](docs/SourceAccountCreated.md)
  - [SourceAccountDeleted](docs/SourceAccountDeleted.md)
  - [SourceAccountUpdated](docs/SourceAccountUpdated.md)
+ - [SourceApp](docs/SourceApp.md)
+ - [SourceAppAccountSource](docs/SourceAppAccountSource.md)
+ - [SourceAppBulkUpdateRequest](docs/SourceAppBulkUpdateRequest.md)
+ - [SourceAppCreateDto](docs/SourceAppCreateDto.md)
+ - [SourceAppCreateDtoAccountSource](docs/SourceAppCreateDtoAccountSource.md)
+ - [SourceAppPatchDto](docs/SourceAppPatchDto.md)
  - [SourceBeforeProvisioningRule](docs/SourceBeforeProvisioningRule.md)
  - [SourceCluster](docs/SourceCluster.md)
  - [SourceClusterDto](docs/SourceClusterDto.md)
@@ -1389,6 +1416,11 @@ Class | Method | HTTP request | Description
  - [TriggerType](docs/TriggerType.md)
  - [UpdateAccessProfilesInBulk412Response](docs/UpdateAccessProfilesInBulk412Response.md)
  - [UsageType](docs/UsageType.md)
+ - [UserApp](docs/UserApp.md)
+ - [UserAppAccount](docs/UserAppAccount.md)
+ - [UserAppOwner](docs/UserAppOwner.md)
+ - [UserAppSource](docs/UserAppSource.md)
+ - [UserAppSourceApp](docs/UserAppSourceApp.md)
  - [V3ConnectorDto](docs/V3ConnectorDto.md)
  - [VAClusterStatusChangeEvent](docs/VAClusterStatusChangeEvent.md)
  - [VAClusterStatusChangeEventApplication](docs/VAClusterStatusChangeEventApplication.md)

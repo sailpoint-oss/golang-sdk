@@ -43220,6 +43220,1185 @@ paths:
       summary: Update Source Correlation Configuration
       tags:
       - Sources
+  /source-apps/{id}:
+    delete:
+      description: Use this API to delete a specific source app
+      operationId: deleteSourceApp
+      parameters:
+      - description: source app ID.
+        example: 2c9180835d191a86015d28455b4a2329
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SourceApp'
+          description: Responds with the source app as deleted.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:app-roles:manage
+        - idn:app-roles:delete
+      summary: Delete source app by ID
+      tags:
+      - Apps
+    get:
+      description: This API returns a source app by its ID.
+      operationId: getSourceApp
+      parameters:
+      - description: ID of the source app
+        in: path
+        name: id
+        required: true
+        schema:
+          example: 2c91808a7813090a017814121e121518
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SourceApp'
+          description: Responds with the source app.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:app-roles:read
+      summary: Get source app by ID
+      tags:
+      - Apps
+    patch:
+      description: |-
+        This API updates an existing source app using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
+        The following fields are patchable: **name**, **description**, **enabled**, **owner**, **provisionRequestEnabled**, **appCenterEnabled**, **accountSource**,  **matchAllAccounts** and **accessProfiles**.
+        Name, description and owner can't be empty or null.
+      operationId: patchSourceApp
+      parameters:
+      - description: ID of the source app to patch
+        in: path
+        name: id
+        required: true
+        schema:
+          example: 2c91808a7813090a017814121e121518
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            examples:
+              Make an app enabled and matchAllAccounts in one call:
+                description: This example shows how multiple fields may be updated
+                  with a single patch call.
+                value:
+                - op: replace
+                  path: /enabled
+                  value: true
+                - op: replace
+                  path: /matchAllAccounts
+                  value: true
+              Replace an owner for an source app:
+                description: This example shows how to use patch to replace the source
+                  app's owner by replacing the owner's info.
+                value:
+                - op: replace
+                  path: /owner
+                  value:
+                    id: 2c9180858315595501831958427e5424
+              Update the description for the source app:
+                description: This example shows how to use patch to update a description
+                  for the source app.
+                value:
+                - op: replace
+                  path: /description
+                  value: new description for the source app
+              Update the name for the source app:
+                description: This example shows how to use patch to update the source
+                  app's name.
+                value:
+                - op: replace
+                  path: /name
+                  value: source app new name
+              Add access profiles:
+                description: Add one or more access profiles to the end of the list
+                value:
+                - op: add
+                  path: /accessProfiles
+                  value:
+                  - 2c9180857725c14301772a93bb77242d
+                  - c9575abb5e3a4e3db82b2f989a738aa2
+              Insert access profile:
+                description: Add an access profile at the beginning of the access
+                  profile list
+                value:
+                - op: add
+                  path: /accessProfiles/0
+                  value: 2c9180857725c14301772a93bb77242d
+              Replace access profiles:
+                description: Replace all access profiles with a new list of access
+                  profiles
+                value:
+                - op: replace
+                  path: /accessProfiles
+                  value:
+                  - 2c9180857725c14301772a93bb77242d
+                  - c9575abb5e3a4e3db82b2f989a738aa2
+              Remove access profile:
+                description: Remove the first access profile in the list
+                value:
+                - op: remove
+                  path: /accessProfiles/0
+            schema:
+              example:
+              - op: replace
+                path: /enabled
+                value: true
+              items:
+                $ref: '#/components/schemas/JsonPatchOperation'
+              type: array
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SourceAppPatchDto'
+          description: Responds with the source app as updated.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:app-roles:manage
+      summary: Patch source app by ID
+      tags:
+      - Apps
+  /source-apps/bulk-update:
+    post:
+      description: |-
+        This API updates source apps using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.  It can update up to 50 source apps in a batch.
+        The following fields can be updated: **name**, **description**, **enabled**, **owner**, **provisionRequestEnabled**, **appCenterEnabled**, **accountSource**,  **matchAllAccounts**, and **accessProfiles**.
+        Name, description and owner can't be empty or null.
+      operationId: updateSourceAppsInBulk
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SourceAppBulkUpdateRequest'
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:app-roles:manage
+      summary: Bulk update source apps
+      tags:
+      - Apps
+  /source-apps/assigned:
+    get:
+      description: This API returns the list of source apps assigned for logged in
+        user.
+      operationId: listAssignedSourceApp
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **id, name, created, modified, accountSource.id**
+        example: "name,-modified"
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq, in*
+
+          **name**: *eq, in, co, sw*
+
+          **created**: *gt, lt, ge, le*
+
+          **modified**: *gt, lt, ge, le*
+
+          **accountSource.id**: *eq, in*
+        example: name eq "source app name"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/SourceApp'
+                type: array
+          description: List of source apps
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:app-roles:read
+      summary: List assigned source apps
+      tags:
+      - Apps
+  /source-apps:
+    get:
+      description: This API returns the list of source apps available for access request.
+      operationId: listAvailableSourceApps
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **id, name, created, modified, owner.id, accountSource.id**
+        example: "name,-modified"
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq, in*
+
+          **name**: *eq, in, co, sw*
+
+          **created**: *gt, lt, ge, le*
+
+          **modified**: *gt, lt, ge, le*
+
+          **accountSource.id**: *eq, in*
+        example: name eq "source app name"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/SourceApp'
+                type: array
+          description: List of source apps
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:app-roles:read
+      summary: List available source apps
+      tags:
+      - Apps
+    post:
+      description: This endpoint creates a source app using the given source app payload
+      operationId: createSourceApp
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: new app name
+              description: app description
+              matchAllAccounts: true
+              accountSource:
+                id: edcb0951812949d085b60cd8bf35bc78
+            schema:
+              $ref: '#/components/schemas/SourceAppCreateDto'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SourceApp'
+          description: Responds with the source app as created.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:app-roles:manage
+      summary: Create source app
+      tags:
+      - Apps
+  /source-apps/all:
+    get:
+      description: |-
+        This API returns the list of all source apps for the org.
+
+        A token with ORG_ADMIN authority is required to call this API.
+      operationId: listAllSourceApp
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **id, name, created, modified, owner.id, accountSource.id**
+        example: "name,-modified"
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq, in*
+
+          **name**: *eq, in, co, sw*
+
+          **created**: *gt, lt, ge, le*
+
+          **modified**: *gt, lt, ge, le*
+
+          **owner.id**: *eq, in*
+
+          **accountSource.id**: *eq, in*
+
+          **enabled**: *eq*
+        example: enabled eq true
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/SourceApp'
+                type: array
+          description: List of source apps
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:app-roles:manage
+      summary: List all source apps
+      tags:
+      - Apps
+  /source-apps/{id}/access-profiles:
+    get:
+      description: This API returns the list of access profiles for the specified
+        source app
+      operationId: listAccessProfilesForSourceApp
+      parameters:
+      - description: ID of the source app
+        in: path
+        name: id
+        required: true
+        schema:
+          example: 2c91808a7813090a017814121e121518
+          type: string
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq, in*
+
+          **name**: *eq, in*
+
+          **created**: *gt, lt, ge, le*
+
+          **modified**: *gt, lt, ge, le*
+        example: name eq "developer access profile"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AccessProfileDetails'
+                type: array
+          description: List of access profiles for the specified source app
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:app-roles:manage
+      summary: List access profiles for the specified source app
+      tags:
+      - Apps
+  /source-apps/{id}/access-profiles/bulk-remove:
+    post:
+      description: This API returns the final list of access profiles for the specified
+        source app after removing
+      operationId: deleteAccessProfilesFromSourceAppByBulk
+      parameters:
+      - description: ID of the source app
+        in: path
+        name: id
+        required: true
+        schema:
+          example: 2c91808a7813090a017814121e121518
+          type: string
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            example:
+            - c9575abb5e3a4e3db82b2f989a738aa2
+            - c9dc28e148a24d65b3ccb5fb8ca5ddd9
+            schema:
+              items:
+                type: string
+              type: array
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AccessProfileDetails'
+                type: array
+          description: The final list of access profiles for the specified source
+            app
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:app-roles:manage
+      summary: Bulk remove access profiles from the specified source app
+      tags:
+      - Apps
   /task-status/{id}:
     get:
       description: Get a TaskStatus for a task by task ID.
@@ -46764,6 +47943,482 @@ paths:
       summary: Update tenant UI metadata
       tags:
       - UI Metadata
+  /user-apps/{id}:
+    patch:
+      description: |-
+        This API updates an existing user app using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
+        The following fields are patchable: **account**
+      operationId: patchUserApp
+      parameters:
+      - description: ID of the user app to patch
+        in: path
+        name: id
+        required: true
+        schema:
+          example: 2c91808a7813090a017814121e121518
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              example:
+              - op: replace
+                path: /account
+                value:
+                  id: 0891808a7813090a017814121e121518
+                  type: ACCOUNT
+              items:
+                $ref: '#/components/schemas/JsonPatchOperation'
+              type: array
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserApp'
+          description: Responds with the user app as updated.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:app-roles:read
+      summary: Patch user app by ID
+      tags:
+      - Apps
+  /user-apps/{id}/available-accounts:
+    get:
+      description: This API returns the list of available accounts for the specified
+        user app. The user app needs to belong lo logged in user.
+      operationId: listAvailableAccountsForUserApp
+      parameters:
+      - description: ID of the user app
+        in: path
+        name: id
+        required: true
+        schema:
+          example: 2c91808a7813090a017814121e121518
+          type: string
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AppAccountDetails'
+                type: array
+          description: List of available accounts for the specified user app
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:app-roles:read
+      summary: List available accounts for user app
+      tags:
+      - Apps
+  /user-apps:
+    get:
+      description: This API returns the list of user apps assigned to logged in user
+      operationId: listOwnedUserApps
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq*
+
+          **ownerName**: *eq, sw*
+
+          **ownerAlias**: *eq, sw*
+
+          **accountId**: *eq*
+
+          **sourceAppId**: *eq*
+        example: name eq "user app name"
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UserApp'
+                type: array
+          description: List of user apps
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:app-roles:read
+      summary: List owned user apps
+      tags:
+      - Apps
+  /user-apps/all:
+    get:
+      description: |-
+        This API returns the list of all user apps with specified filters.
+        This API must be used with **filters** query parameter.
+      operationId: listAllUserApps
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq*
+
+          **ownerId**: *eq*
+
+          **ownerName**: *eq, sw*
+
+          **ownerAlias**: *eq, sw*
+
+          **accountId**: *eq*
+
+          **sourceAppId**: *eq*
+        example: name eq "user app name"
+        explode: true
+        in: query
+        name: filters
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UserApp'
+                type: array
+          description: List of user apps
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:app-roles:manage
+      summary: List all user apps
+      tags:
+      - Apps
   /verified-from-addresses:
     get:
       description: Retrieve a list of sender email addresses and their verification
@@ -71365,6 +73020,444 @@ components:
             $ref: '#/components/schemas/CorrelationConfig_attributeAssignments_inner'
           type: array
       type: object
+    SourceApp:
+      example:
+        owner:
+          id: 85d173e7d57e496569df763231d6deb6a
+          type: IDENTITY
+          name: John Doe
+        created: 2020-10-08T18:33:52.029Z
+        name: my app
+        cloudAppId: "9854520"
+        modified: 2020-10-08T18:33:52.029Z
+        description: the source app for engineers
+        accountSource:
+          name: ODS-AD-Source
+          passwordPolicies:
+          - type: PASSWORD_POLICY
+            id: 006a072ecc6647f68bba9f4a4ad34649
+            name: Password Policy 1
+          id: 2c9180827ca885d7017ca8ce28a000eb
+          type: SOURCE
+          useForPasswordManagement: false
+        matchAllAccounts: true
+        id: 2c91808874ff91550175097daaec161c
+        provisionRequestEnabled: true
+        appCenterEnabled: true
+        enabled: true
+      properties:
+        id:
+          description: The source app id
+          example: 2c91808874ff91550175097daaec161c
+          type: string
+        cloudAppId:
+          description: The deprecated source app id
+          example: "9854520"
+          type: string
+        name:
+          description: The source app name
+          example: my app
+          type: string
+        created:
+          description: Time when the source app was created
+          example: 2020-10-08T18:33:52.029Z
+          format: date-time
+          type: string
+        modified:
+          description: Time when the source app was last modified
+          example: 2020-10-08T18:33:52.029Z
+          format: date-time
+          type: string
+        enabled:
+          default: false
+          description: True if the source app is enabled
+          example: true
+          type: boolean
+        provisionRequestEnabled:
+          default: false
+          description: True if the source app is provision request enabled
+          example: true
+          type: boolean
+        description:
+          description: The description of the source app
+          example: the source app for engineers
+          nullable: false
+          type: string
+        matchAllAccounts:
+          default: false
+          description: True if the source app match all accounts
+          example: true
+          type: boolean
+        appCenterEnabled:
+          default: true
+          description: True if the source app is shown in the app center
+          example: true
+          type: boolean
+        accountSource:
+          $ref: '#/components/schemas/SourceApp_accountSource'
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BaseReferenceDto_1'
+          description: The owner of source app
+          example:
+            id: 85d173e7d57e496569df763231d6deb6a
+            type: IDENTITY
+            name: John Doe
+          nullable: true
+          type: object
+      type: object
+    SourceAppPatchDto:
+      example:
+        owner:
+          id: 85d173e7d57e496569df763231d6deb6a
+          type: IDENTITY
+          name: John Doe
+        created: 2020-10-08T18:33:52.029Z
+        cloudAppId: "9854520"
+        description: the source app for engineers
+        appCenterEnabled: true
+        enabled: true
+        accessProfiles:
+        - 2c9180857725c14301772a93bb77242d
+        - c9dc28e148a24d65b3ccb5fb8ca5ddd9
+        name: my app
+        modified: 2020-10-08T18:33:52.029Z
+        accountSource:
+          name: ODS-AD-Source
+          passwordPolicies:
+          - type: PASSWORD_POLICY
+            id: 006a072ecc6647f68bba9f4a4ad34649
+            name: Password Policy 1
+          id: 2c9180827ca885d7017ca8ce28a000eb
+          type: SOURCE
+          useForPasswordManagement: false
+        matchAllAccounts: true
+        id: 2c91808874ff91550175097daaec161c
+        provisionRequestEnabled: true
+      properties:
+        id:
+          description: The source app id
+          example: 2c91808874ff91550175097daaec161c
+          type: string
+        cloudAppId:
+          description: The deprecated source app id
+          example: "9854520"
+          type: string
+        name:
+          description: The source app name
+          example: my app
+          type: string
+        created:
+          description: Time when the source app was created
+          example: 2020-10-08T18:33:52.029Z
+          format: date-time
+          type: string
+        modified:
+          description: Time when the source app was last modified
+          example: 2020-10-08T18:33:52.029Z
+          format: date-time
+          type: string
+        enabled:
+          default: false
+          description: True if the source app is enabled
+          example: true
+          type: boolean
+        provisionRequestEnabled:
+          default: false
+          description: True if the source app is provision request enabled
+          example: true
+          type: boolean
+        description:
+          description: The description of the source app
+          example: the source app for engineers
+          nullable: false
+          type: string
+        matchAllAccounts:
+          default: false
+          description: True if the source app match all accounts
+          example: true
+          type: boolean
+        appCenterEnabled:
+          default: true
+          description: True if the source app is shown in the app center
+          example: true
+          type: boolean
+        accessProfiles:
+          description: List of IDs of access profiles
+          example:
+          - 2c9180857725c14301772a93bb77242d
+          - c9dc28e148a24d65b3ccb5fb8ca5ddd9
+          items:
+            type: string
+          nullable: true
+          type: array
+        accountSource:
+          $ref: '#/components/schemas/SourceApp_accountSource'
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BaseReferenceDto_1'
+          description: The owner of source app
+          example:
+            id: 85d173e7d57e496569df763231d6deb6a
+            type: IDENTITY
+            name: John Doe
+          nullable: true
+          type: object
+      type: object
+    SourceAppBulkUpdateRequest:
+      example:
+        appIds:
+        - 2c91808a7624751a01762f19d665220d
+        - 2c91808a7624751a01762f19d67c220e
+        - 2c91808a7624751a01762f19d692220f
+        jsonPatch:
+        - op: replace
+          path: /enabled
+          value: false
+        - op: replace
+          path: /matchAllAccounts
+          value: false
+      properties:
+        appIds:
+          description: List of source app ids to update
+          example:
+          - 2c91808a7624751a01762f19d665220d
+          - 2c91808a7624751a01762f19d67c220e
+          - 2c91808a7624751a01762f19d692220f
+          items:
+            type: string
+          maxItems: 50
+          type: array
+        jsonPatch:
+          description: The JSONPatch payload used to update the source app.
+          example:
+          - op: replace
+            path: /enabled
+            value: false
+          - op: replace
+            path: /matchAllAccounts
+            value: false
+          items:
+            $ref: '#/components/schemas/JsonPatchOperation'
+          type: array
+      required:
+      - appIds
+      - jsonPatch
+      type: object
+    SourceAppCreateDto:
+      example:
+        name: my app
+        description: the source app for engineers
+        accountSource:
+          name: ODS-AD-Source
+          id: 2c9180827ca885d7017ca8ce28a000eb
+          type: SOURCE
+        matchAllAccounts: true
+      properties:
+        name:
+          description: The source app name
+          example: my app
+          type: string
+        description:
+          description: The description of the source app
+          example: the source app for engineers
+          nullable: false
+          type: string
+        matchAllAccounts:
+          default: false
+          description: True if the source app match all accounts
+          example: true
+          type: boolean
+        accountSource:
+          $ref: '#/components/schemas/SourceAppCreateDto_accountSource'
+      required:
+      - accountSource
+      - description
+      - name
+      type: object
+    AccessProfileDetails:
+      example:
+        sourceId: 10360661
+        entitlements:
+        - 2c9180857725c14301772a93bb77242d
+        - c9dc28e148a24d65b3ccb5fb8ca5ddd9
+        requestCommentsRequired: true
+        entitlementCount: 12
+        approvalSchemes: accessProfileOwner
+        created: 2021-03-01T22:32:58.104Z
+        appName: mail app
+        description: Collection of entitlements to read/write the employee database
+        ownerId: 9870808a7190d06e01719938fcd20792
+        type: source
+        segments:
+        - f7b1b8a3-5fed-4fd4-ad29-82014e137e19
+        - 29cb6c06-1da8-43ea-8be4-b3125f248f2a
+        deniedCommentsRequired: true
+        protected: false
+        revokeRequestApprovalSchemes: accessProfileOwner
+        appId: 10360661
+        name: Employee-database-read-write
+        modified: 2021-03-02T20:22:28.104Z
+        disabled: true
+        id: 2c91808a7190d06e01719938fcd20792
+        requestable: true
+        sourceName: AD Source
+        applicationId: edcb0951812949d085b60cd8bf35bc78
+        accountSelector:
+          selectors:
+          - accountMatchConfig:
+              matchExpression:
+                and: true
+                matchTerms:
+                - name: ""
+                  value: ""
+                  op: null
+                  container: true
+                  and: false
+                  children:
+                  - name: businessCategory
+                    value: Service
+                    op: eq
+                    container: false
+                    and: false
+                    children: null
+            applicationId: 2c91808874ff91550175097daaec161c"
+          - accountMatchConfig:
+              matchExpression:
+                and: true
+                matchTerms:
+                - name: ""
+                  value: ""
+                  op: null
+                  container: true
+                  and: false
+                  children:
+                  - name: businessCategory
+                    value: Service
+                    op: eq
+                    container: false
+                    and: false
+                    children: null
+            applicationId: 2c91808874ff91550175097daaec161c"
+      properties:
+        id:
+          description: The ID of the Access Profile
+          example: 2c91808a7190d06e01719938fcd20792
+          type: string
+        name:
+          description: Name of the Access Profile
+          example: Employee-database-read-write
+          type: string
+        description:
+          description: Information about the Access Profile
+          example: Collection of entitlements to read/write the employee database
+          nullable: true
+          type: string
+        created:
+          description: Date the Access Profile was created
+          example: 2021-03-01T22:32:58.104Z
+          format: date-time
+          type: string
+        modified:
+          description: Date the Access Profile was last modified.
+          example: 2021-03-02T20:22:28.104Z
+          format: date-time
+          type: string
+        disabled:
+          default: true
+          description: Whether the Access Profile is enabled.
+          example: true
+          type: boolean
+        requestable:
+          default: false
+          description: Whether the Access Profile is requestable via access request.
+          example: true
+          type: boolean
+        protected:
+          default: false
+          description: Whether the Access Profile is protected.
+          example: false
+          type: boolean
+        ownerId:
+          description: The owner ID of the Access Profile
+          example: 9870808a7190d06e01719938fcd20792
+          type: string
+        sourceId:
+          description: The source ID of the Access Profile
+          example: 10360661
+          format: int64
+          nullable: true
+          type: integer
+        sourceName:
+          description: The source name of the Access Profile
+          example: AD Source
+          type: string
+        appId:
+          description: The source app ID of the Access Profile
+          example: 10360661
+          format: int64
+          nullable: true
+          type: integer
+        appName:
+          description: The source app name of the Access Profile
+          example: mail app
+          nullable: true
+          type: string
+        applicationId:
+          description: The id of the application
+          example: edcb0951812949d085b60cd8bf35bc78
+          type: string
+        type:
+          description: The type of the access profile
+          example: source
+          type: string
+        entitlements:
+          description: List of IDs of entitlements
+          example:
+          - 2c9180857725c14301772a93bb77242d
+          - c9dc28e148a24d65b3ccb5fb8ca5ddd9
+          items:
+            type: string
+          type: array
+        entitlementCount:
+          description: The number of entitlements in the access profile
+          example: 12
+          format: int32
+          type: integer
+        segments:
+          description: "List of IDs of segments, if any, to which this Access Profile\
+            \ is assigned."
+          example:
+          - f7b1b8a3-5fed-4fd4-ad29-82014e137e19
+          - 29cb6c06-1da8-43ea-8be4-b3125f248f2a
+          items:
+            type: string
+          type: array
+        approvalSchemes:
+          description: Comma-separated list of approval schemes. Each approval scheme
+            is one of - manager - appOwner - sourceOwner - accessProfileOwner - workgroup:<workgroupId>
+          example: accessProfileOwner
+          type: string
+        revokeRequestApprovalSchemes:
+          description: Comma-separated list of revoke request approval schemes. Each
+            approval scheme is one of - manager - sourceOwner - accessProfileOwner
+            - workgroup:<workgroupId>
+          example: accessProfileOwner
+          type: string
+        requestCommentsRequired:
+          default: false
+          description: Whether the access profile require request comment for access
+            request.
+          example: true
+          type: boolean
+        deniedCommentsRequired:
+          default: false
+          description: Whether denied comment is required when access request is denied.
+          example: true
+          type: boolean
+        accountSelector:
+          $ref: '#/components/schemas/AccessProfileDetails_accountSelector'
+      type: object
     TaggedObject:
       example:
         objectRef:
@@ -72219,6 +74312,100 @@ components:
           nullable: true
           type: string
       type: object
+    UserApp:
+      example:
+        owner:
+          name: John
+          alias: John.Doe
+          id: 2c9180827ca885d7017ca8ce28a000eb
+          type: IDENTITY
+        hasMultipleAccounts: false
+        sourceApp:
+          name: test-app
+          id: edcb0951812949d085b60cd8bf35bc78
+          type: APPLICATION
+        created: 2020-10-08T18:33:52.029Z
+        modified: 2020-10-08T18:33:52.029Z
+        id: 2c91808874ff91550175097daaec161c
+        provisionRequestEnabled: true
+        source:
+          name: test-source
+          id: 9870808a7190d06e01719938fcd20792
+          type: SOURCE
+        useForPasswordManagement: true
+        appCenterEnabled: true
+        account:
+          name: test account
+          id: 85d173e7d57e496569df763231d6deb6a
+          type: ACCOUNT
+      properties:
+        id:
+          description: The user app id
+          example: 2c91808874ff91550175097daaec161c
+          type: string
+        created:
+          description: Time when the user app was created
+          example: 2020-10-08T18:33:52.029Z
+          format: date-time
+          type: string
+        modified:
+          description: Time when the user app was last modified
+          example: 2020-10-08T18:33:52.029Z
+          format: date-time
+          type: string
+        hasMultipleAccounts:
+          default: false
+          description: True if the owner has multiple accounts for the source
+          example: false
+          type: boolean
+        useForPasswordManagement:
+          default: false
+          description: True if the source has password feature
+          example: true
+          type: boolean
+        provisionRequestEnabled:
+          default: false
+          description: True if the source app related to the user app is provision
+            request enabled
+          example: true
+          type: boolean
+        appCenterEnabled:
+          default: true
+          description: True if the source app related to the user app is shown in
+            the app center
+          example: true
+          type: boolean
+        sourceApp:
+          $ref: '#/components/schemas/UserApp_sourceApp'
+        source:
+          $ref: '#/components/schemas/UserApp_source'
+        account:
+          $ref: '#/components/schemas/UserApp_account'
+        owner:
+          $ref: '#/components/schemas/UserApp_owner'
+      type: object
+    AppAccountDetails:
+      example:
+        sourceAccount:
+          sourceId: 10efa58ea3954883b52bf74f489ce8f9
+          sourceDisplayName: ODS-AD-SOURCE
+          displayName: Abby Smith
+          id: fbf4f72280304f1a8bc808fc2a3bcf7b
+          nativeIdentity: "CN=Abby Smith,OU=Austin,OU=Americas,OU=Demo,DC=seri,DC=acme,DC=com"
+        appDisplayName: AD source app
+        appId: fbf4f72280304f1a8bc808fc2a3bcf7b
+      properties:
+        appId:
+          description: The source app ID
+          example: fbf4f72280304f1a8bc808fc2a3bcf7b
+          type: string
+        appDisplayName:
+          description: The source app display name
+          example: AD source app
+          type: string
+        sourceAccount:
+          $ref: '#/components/schemas/AppAccountDetails_sourceAccount'
+      type: object
     EmailStatusDto:
       example:
         isVerifiedByDomain: false
@@ -72479,24 +74666,60 @@ components:
       example:
         schedule:
           hours:
-            values:
-            - MON
-            - WED
-            interval: 3
-            type: LIST
+            accountMatchConfig:
+              matchExpression:
+                and: true
+                matchTerms:
+                - name: ""
+                  value: ""
+                  op: null
+                  container: true
+                  and: false
+                  children:
+                  - name: businessCategory
+                    value: Service
+                    op: eq
+                    container: false
+                    and: false
+                    children: null
+            applicationId: 2c91808874ff91550175097daaec161c"
           months:
-            values:
-            - MON
-            - WED
-            interval: 3
-            type: LIST
+            accountMatchConfig:
+              matchExpression:
+                and: true
+                matchTerms:
+                - name: ""
+                  value: ""
+                  op: null
+                  container: true
+                  and: false
+                  children:
+                  - name: businessCategory
+                    value: Service
+                    op: eq
+                    container: false
+                    and: false
+                    children: null
+            applicationId: 2c91808874ff91550175097daaec161c"
           timeZoneId: America/Chicago
           days:
-            values:
-            - MON
-            - WED
-            interval: 3
-            type: LIST
+            accountMatchConfig:
+              matchExpression:
+                and: true
+                matchTerms:
+                - name: ""
+                  value: ""
+                  op: null
+                  container: true
+                  and: false
+                  children:
+                  - name: businessCategory
+                    value: Service
+                    op: eq
+                    container: false
+                    and: false
+                    children: null
+            applicationId: 2c91808874ff91550175097daaec161c"
           expiration: 2018-06-25T20:22:28.104Z
           type: WEEKLY
         created: 2020-01-01T00:00:00Z
@@ -79468,6 +81691,47 @@ components:
       - dataJson
       - type
       type: object
+    BaseReferenceDto_1:
+      properties:
+        type:
+          $ref: '#/components/schemas/DtoType'
+        id:
+          description: ID of the object to which this reference applies
+          example: 2c91808568c529c60168cca6f90c1313
+          type: string
+        name:
+          description: Human-readable display name of the object to which this reference
+            applies
+          example: William Wilson
+          type: string
+      type: object
+    selector:
+      example:
+        accountMatchConfig:
+          matchExpression:
+            and: true
+            matchTerms:
+            - name: ""
+              value: ""
+              op: null
+              container: true
+              and: false
+              children:
+              - name: businessCategory
+                value: Service
+                op: eq
+                container: false
+                and: false
+                children: null
+        applicationId: 2c91808874ff91550175097daaec161c"
+      properties:
+        applicationId:
+          description: The application id
+          example: 2c91808874ff91550175097daaec161c"
+          type: string
+        accountMatchConfig:
+          $ref: '#/components/schemas/selector_accountMatchConfig'
+      type: object
     TaggedObjectDto:
       example:
         name: William Wilson
@@ -80609,24 +82873,60 @@ components:
       description: The schedule information.
       example:
         hours:
-          values:
-          - MON
-          - WED
-          interval: 3
-          type: LIST
+          accountMatchConfig:
+            matchExpression:
+              and: true
+              matchTerms:
+              - name: ""
+                value: ""
+                op: null
+                container: true
+                and: false
+                children:
+                - name: businessCategory
+                  value: Service
+                  op: eq
+                  container: false
+                  and: false
+                  children: null
+          applicationId: 2c91808874ff91550175097daaec161c"
         months:
-          values:
-          - MON
-          - WED
-          interval: 3
-          type: LIST
+          accountMatchConfig:
+            matchExpression:
+              and: true
+              matchTerms:
+              - name: ""
+                value: ""
+                op: null
+                container: true
+                and: false
+                children:
+                - name: businessCategory
+                  value: Service
+                  op: eq
+                  container: false
+                  and: false
+                  children: null
+          applicationId: 2c91808874ff91550175097daaec161c"
         timeZoneId: America/Chicago
         days:
-          values:
-          - MON
-          - WED
-          interval: 3
-          type: LIST
+          accountMatchConfig:
+            matchExpression:
+              and: true
+              matchTerms:
+              - name: ""
+                value: ""
+                op: null
+                container: true
+                and: false
+                children:
+                - name: businessCategory
+                  value: Service
+                  op: eq
+                  container: false
+                  and: false
+                  children: null
+          applicationId: 2c91808874ff91550175097daaec161c"
         expiration: 2018-06-25T20:22:28.104Z
         type: WEEKLY
       properties:
@@ -82380,6 +84680,44 @@ components:
       - BOOLEAN
       example: STRING
       type: string
+    matchTerm:
+      properties:
+        name:
+          description: The attribute name
+          example: mail
+          type: string
+        value:
+          description: The attribute value
+          example: 1234 Albany Dr
+          type: string
+        op:
+          description: The operator between name and value
+          example: eq
+          type: string
+        container:
+          default: false
+          description: If it is a container or a real match term
+          example: true
+          type: boolean
+        and:
+          default: false
+          description: If it is AND logical operator for the children match terms
+          example: false
+          type: boolean
+        children:
+          description: The children under this match term
+          example:
+          - name: businessCategory
+            value: Service
+            op: eq
+            container: false
+            and: false
+            children: null
+          items:
+            $ref: '#/components/schemas/matchTerm'
+          nullable: true
+          type: array
+      type: object
     License:
       example:
         legacyFeatureName: ACCESS_REQUEST
@@ -82581,30 +84919,6 @@ components:
       - ANNUALLY
       example: WEEKLY
       type: string
-    Selector:
-      properties:
-        type:
-          $ref: '#/components/schemas/SelectorType'
-        values:
-          description: |
-            The selected values.
-          example:
-          - MON
-          - WED
-          items:
-            type: string
-          type: array
-        interval:
-          description: |
-            The selected interval for RANGE selectors.
-          example: 3
-          format: int32
-          nullable: true
-          type: integer
-      required:
-      - type
-      - values
-      type: object
     DateTime:
       description: A date-time in ISO-8601 format
       example: 2018-06-25T20:22:28.104Z
@@ -83250,20 +85564,6 @@ components:
           example: Please review
           type: string
       type: object
-    SelectorType:
-      description: |
-        Enum representing the currently supported selector types.
-
-        LIST - the *values* array contains one or more distinct values.
-
-        RANGE - the *values* array contains two values: the start and end of the range, inclusive.
-
-        Additional values may be added in the future without notice.
-      enum:
-      - LIST
-      - RANGE
-      example: LIST
-      type: string
     ExceptionCriteria:
       example:
         criteriaList:
@@ -86240,6 +88540,114 @@ components:
           example: first_name == "John"
           type: string
       type: object
+    SourceApp_accountSource:
+      example:
+        name: ODS-AD-Source
+        passwordPolicies:
+        - type: PASSWORD_POLICY
+          id: 006a072ecc6647f68bba9f4a4ad34649
+          name: Password Policy 1
+        id: 2c9180827ca885d7017ca8ce28a000eb
+        type: SOURCE
+        useForPasswordManagement: false
+      nullable: true
+      properties:
+        id:
+          description: The source ID
+          example: 2c9180827ca885d7017ca8ce28a000eb
+          type: string
+        type:
+          description: "The source type, will always be \"SOURCE\""
+          example: SOURCE
+          type: string
+        name:
+          description: The source name
+          example: ODS-AD-Source
+          type: string
+        useForPasswordManagement:
+          default: false
+          description: If the source is used for password management
+          example: false
+          type: boolean
+        passwordPolicies:
+          description: The password policies for the source
+          example:
+          - type: PASSWORD_POLICY
+            id: 006a072ecc6647f68bba9f4a4ad34649
+            name: Password Policy 1
+          items:
+            $ref: '#/components/schemas/BaseReferenceDto_1'
+          nullable: true
+          type: array
+      type: object
+    SourceAppCreateDto_accountSource:
+      example:
+        name: ODS-AD-Source
+        id: 2c9180827ca885d7017ca8ce28a000eb
+        type: SOURCE
+      properties:
+        id:
+          description: The source ID
+          example: 2c9180827ca885d7017ca8ce28a000eb
+          nullable: false
+          type: string
+        type:
+          description: "The source type, will always be \"SOURCE\""
+          example: SOURCE
+          type: string
+        name:
+          description: The source name
+          example: ODS-AD-Source
+          type: string
+      required:
+      - id
+      type: object
+    AccessProfileDetails_accountSelector:
+      description: How to select account when there are multiple accounts for the
+        user
+      example:
+        selectors:
+        - accountMatchConfig:
+            matchExpression:
+              and: true
+              matchTerms:
+              - name: ""
+                value: ""
+                op: null
+                container: true
+                and: false
+                children:
+                - name: businessCategory
+                  value: Service
+                  op: eq
+                  container: false
+                  and: false
+                  children: null
+          applicationId: 2c91808874ff91550175097daaec161c"
+        - accountMatchConfig:
+            matchExpression:
+              and: true
+              matchTerms:
+              - name: ""
+                value: ""
+                op: null
+                container: true
+                and: false
+                children:
+                - name: businessCategory
+                  value: Service
+                  op: eq
+                  container: false
+                  and: false
+                  children: null
+          applicationId: 2c91808874ff91550175097daaec161c"
+      properties:
+        selectors:
+          items:
+            $ref: '#/components/schemas/selector'
+          nullable: true
+          type: array
+      type: object
     TaggedObject_objectRef:
       example:
         name: William Wilson
@@ -86344,6 +88752,116 @@ components:
       required:
       - op
       - path
+      type: object
+    UserApp_sourceApp:
+      example:
+        name: test-app
+        id: edcb0951812949d085b60cd8bf35bc78
+        type: APPLICATION
+      properties:
+        id:
+          description: the source app ID
+          example: edcb0951812949d085b60cd8bf35bc78
+          type: string
+        type:
+          description: It will always be "APPLICATION"
+          example: APPLICATION
+          type: string
+        name:
+          description: the source app name
+          example: test-app
+          type: string
+      type: object
+    UserApp_source:
+      example:
+        name: test-source
+        id: 9870808a7190d06e01719938fcd20792
+        type: SOURCE
+      properties:
+        id:
+          description: the source ID
+          example: 9870808a7190d06e01719938fcd20792
+          type: string
+        type:
+          description: It will always be "SOURCE"
+          example: SOURCE
+          type: string
+        name:
+          description: the source name
+          example: test-source
+          type: string
+      type: object
+    UserApp_account:
+      example:
+        name: test account
+        id: 85d173e7d57e496569df763231d6deb6a
+        type: ACCOUNT
+      properties:
+        id:
+          description: the account ID
+          example: 85d173e7d57e496569df763231d6deb6a
+          type: string
+        type:
+          description: It will always be "ACCOUNT"
+          example: ACCOUNT
+          type: string
+        name:
+          description: the account name
+          example: test account
+          type: string
+      type: object
+    UserApp_owner:
+      example:
+        name: John
+        alias: John.Doe
+        id: 2c9180827ca885d7017ca8ce28a000eb
+        type: IDENTITY
+      properties:
+        id:
+          description: The identity ID
+          example: 2c9180827ca885d7017ca8ce28a000eb
+          type: string
+        type:
+          description: It will always be "IDENTITY"
+          example: IDENTITY
+          type: string
+        name:
+          description: The identity name
+          example: John
+          type: string
+        alias:
+          description: The identity alias
+          example: John.Doe
+          type: string
+      type: object
+    AppAccountDetails_sourceAccount:
+      example:
+        sourceId: 10efa58ea3954883b52bf74f489ce8f9
+        sourceDisplayName: ODS-AD-SOURCE
+        displayName: Abby Smith
+        id: fbf4f72280304f1a8bc808fc2a3bcf7b
+        nativeIdentity: "CN=Abby Smith,OU=Austin,OU=Americas,OU=Demo,DC=seri,DC=acme,DC=com"
+      properties:
+        id:
+          description: The account ID
+          example: fbf4f72280304f1a8bc808fc2a3bcf7b
+          type: string
+        nativeIdentity:
+          description: The native identity of account
+          example: "CN=Abby Smith,OU=Austin,OU=Americas,OU=Demo,DC=seri,DC=acme,DC=com"
+          type: string
+        displayName:
+          description: The display name of account
+          example: Abby Smith
+          type: string
+        sourceId:
+          description: The source ID of account
+          example: 10efa58ea3954883b52bf74f489ce8f9
+          type: string
+        sourceDisplayName:
+          description: The source name of account
+          example: ODS-AD-SOURCE
+          type: string
       type: object
     SodPolicy_ownerRef:
       description: The owner of the SOD policy.
@@ -86849,6 +89367,67 @@ components:
           description: The human-readable display name of the object.
           example: group
           type: string
+      type: object
+    selector_accountMatchConfig_matchExpression:
+      example:
+        and: true
+        matchTerms:
+        - name: ""
+          value: ""
+          op: null
+          container: true
+          and: false
+          children:
+          - name: businessCategory
+            value: Service
+            op: eq
+            container: false
+            and: false
+            children: null
+      properties:
+        matchTerms:
+          example:
+          - name: ""
+            value: ""
+            op: null
+            container: true
+            and: false
+            children:
+            - name: businessCategory
+              value: Service
+              op: eq
+              container: false
+              and: false
+              children: null
+          items:
+            $ref: '#/components/schemas/matchTerm'
+          type: array
+        and:
+          default: true
+          description: If it is AND operators for match terms
+          example: true
+          type: boolean
+      type: object
+    selector_accountMatchConfig:
+      example:
+        matchExpression:
+          and: true
+          matchTerms:
+          - name: ""
+            value: ""
+            op: null
+            container: true
+            and: false
+            children:
+            - name: businessCategory
+              value: Service
+              op: eq
+              container: false
+              and: false
+              children: null
+      properties:
+        matchExpression:
+          $ref: '#/components/schemas/selector_accountMatchConfig_matchExpression'
       type: object
     AccessRequestDynamicApprover_requestedItems_inner:
       example:
@@ -88190,7 +90769,7 @@ components:
       type: object
     Schedule_1_months:
       allOf:
-      - $ref: '#/components/schemas/Selector'
+      - $ref: '#/components/schemas/selector'
       - description: |
           The months to execute the search. This only applies to schedules with a type of `ANNUALLY`.
         example:
@@ -88203,14 +90782,26 @@ components:
         nullable: true
         type: object
       example:
-        values:
-        - MON
-        - WED
-        interval: 3
-        type: LIST
+        accountMatchConfig:
+          matchExpression:
+            and: true
+            matchTerms:
+            - name: ""
+              value: ""
+              op: null
+              container: true
+              and: false
+              children:
+              - name: businessCategory
+                value: Service
+                op: eq
+                container: false
+                and: false
+                children: null
+        applicationId: 2c91808874ff91550175097daaec161c"
     Schedule_1_days:
       allOf:
-      - $ref: '#/components/schemas/Selector'
+      - $ref: '#/components/schemas/selector'
       - description: |
           The days to execute the search.
 
@@ -88226,14 +90817,26 @@ components:
         nullable: true
         type: object
       example:
-        values:
-        - MON
-        - WED
-        interval: 3
-        type: LIST
+        accountMatchConfig:
+          matchExpression:
+            and: true
+            matchTerms:
+            - name: ""
+              value: ""
+              op: null
+              container: true
+              and: false
+              children:
+              - name: businessCategory
+                value: Service
+                op: eq
+                container: false
+                and: false
+                children: null
+        applicationId: 2c91808874ff91550175097daaec161c"
     Schedule_1_hours:
       allOf:
-      - $ref: '#/components/schemas/Selector'
+      - $ref: '#/components/schemas/selector'
       - description: The hours selected.
         example:
           type: RANGE
@@ -88243,11 +90846,23 @@ components:
           interval: 3
         type: object
       example:
-        values:
-        - MON
-        - WED
-        interval: 3
-        type: LIST
+        accountMatchConfig:
+          matchExpression:
+            and: true
+            matchTerms:
+            - name: ""
+              value: ""
+              op: null
+              container: true
+              and: false
+              children:
+              - name: businessCategory
+                value: Service
+                op: eq
+                container: false
+                and: false
+                children: null
+        applicationId: 2c91808874ff91550175097daaec161c"
     ViolationContext_policy:
       allOf:
       - $ref: '#/components/schemas/SodPolicyDto'

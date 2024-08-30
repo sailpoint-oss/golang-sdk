@@ -14,6 +14,7 @@ api_account_usages.go
 api_accounts.go
 api_application_discovery.go
 api_approvals.go
+api_apps.go
 api_auth_profile.go
 api_certification_campaigns.go
 api_certifications.go
@@ -101,6 +102,8 @@ docs/AccessProfileApprovalScheme.md
 docs/AccessProfileBulkDeleteRequest.md
 docs/AccessProfileBulkDeleteResponse.md
 docs/AccessProfileBulkUpdateRequestInner.md
+docs/AccessProfileDetails.md
+docs/AccessProfileDetailsAccountSelector.md
 docs/AccessProfileRef.md
 docs/AccessProfileSourceRef.md
 docs/AccessProfileUpdateItem.md
@@ -188,6 +191,8 @@ docs/AccountsCollectedForAggregationStats.md
 docs/ActivateCampaignOptions.md
 docs/AdminReviewReassign.md
 docs/AdminReviewReassignReassignTo.md
+docs/AppAccountDetails.md
+docs/AppAccountDetailsSourceAccount.md
 docs/ApplicationDiscoveryAPI.md
 docs/Approval.md
 docs/ApprovalBatch.md
@@ -210,6 +215,7 @@ docs/ApprovalStatusDtoCurrentOwner.md
 docs/ApprovalStatusDtoOriginalOwner.md
 docs/ApprovalSummary.md
 docs/ApprovalsAPI.md
+docs/AppsAPI.md
 docs/Argument.md
 docs/ArrayInner.md
 docs/AssignmentContextDto.md
@@ -231,6 +237,7 @@ docs/AuthProfileSummary.md
 docs/BaseCommonDto.md
 docs/BaseCommonDto1.md
 docs/BaseReferenceDto.md
+docs/BaseReferenceDto1.md
 docs/BasicAuthConfig.md
 docs/BearerTokenAuthConfig.md
 docs/BeforeProvisioningRuleDto.md
@@ -559,6 +566,7 @@ docs/ManualWorkItemDetailsCurrentOwner.md
 docs/ManualWorkItemDetailsOriginalOwner.md
 docs/ManualWorkItemState.md
 docs/ManuallyUpdatedFieldsDTO.md
+docs/MatchTerm.md
 docs/Medium.md
 docs/MessageCatalogDto.md
 docs/MetricResponse.md
@@ -795,7 +803,8 @@ docs/SedPatch.md
 docs/Segment.md
 docs/SegmentsAPI.md
 docs/Selector.md
-docs/SelectorType.md
+docs/SelectorAccountMatchConfig.md
+docs/SelectorAccountMatchConfigMatchExpression.md
 docs/SelfImportExportDto.md
 docs/SendAccountVerificationRequest.md
 docs/SendTestNotificationRequestDto.md
@@ -838,6 +847,12 @@ docs/SourceAccountCorrelationRule.md
 docs/SourceAccountCreated.md
 docs/SourceAccountDeleted.md
 docs/SourceAccountUpdated.md
+docs/SourceApp.md
+docs/SourceAppAccountSource.md
+docs/SourceAppBulkUpdateRequest.md
+docs/SourceAppCreateDto.md
+docs/SourceAppCreateDtoAccountSource.md
+docs/SourceAppPatchDto.md
 docs/SourceBeforeProvisioningRule.md
 docs/SourceCluster.md
 docs/SourceClusterDto.md
@@ -929,6 +944,11 @@ docs/TriggersAPI.md
 docs/UIMetadataAPI.md
 docs/UpdateAccessProfilesInBulk412Response.md
 docs/UsageType.md
+docs/UserApp.md
+docs/UserAppAccount.md
+docs/UserAppOwner.md
+docs/UserAppSource.md
+docs/UserAppSourceApp.md
 docs/V3ConnectorDto.md
 docs/VAClusterStatusChangeEvent.md
 docs/VAClusterStatusChangeEventApplication.md
@@ -1009,6 +1029,8 @@ model_access_profile_approval_scheme.go
 model_access_profile_bulk_delete_request.go
 model_access_profile_bulk_delete_response.go
 model_access_profile_bulk_update_request_inner.go
+model_access_profile_details.go
+model_access_profile_details_account_selector.go
 model_access_profile_ref.go
 model_access_profile_source_ref.go
 model_access_profile_update_item.go
@@ -1088,6 +1110,8 @@ model_accounts_collected_for_aggregation_stats.go
 model_activate_campaign_options.go
 model_admin_review_reassign.go
 model_admin_review_reassign_reassign_to.go
+model_app_account_details.go
+model_app_account_details_source_account.go
 model_approval.go
 model_approval_batch.go
 model_approval_comment.go
@@ -1128,6 +1152,7 @@ model_auth_profile_summary.go
 model_base_common_dto.go
 model_base_common_dto_1.go
 model_base_reference_dto.go
+model_base_reference_dto_1.go
 model_basic_auth_config.go
 model_bearer_token_auth_config.go
 model_before_provisioning_rule_dto.go
@@ -1431,6 +1456,7 @@ model_manual_work_item_details_current_owner.go
 model_manual_work_item_details_original_owner.go
 model_manual_work_item_state.go
 model_manually_updated_fields_dto.go
+model_match_term.go
 model_medium.go
 model_message_catalog_dto.go
 model_metric_response.go
@@ -1647,7 +1673,8 @@ model_sed_batch_status.go
 model_sed_patch.go
 model_segment.go
 model_selector.go
-model_selector_type.go
+model_selector_account_match_config.go
+model_selector_account_match_config_match_expression.go
 model_self_import_export_dto.go
 model_send_account_verification_request.go
 model_send_test_notification_request_dto.go
@@ -1689,6 +1716,12 @@ model_source_account_correlation_rule.go
 model_source_account_created.go
 model_source_account_deleted.go
 model_source_account_updated.go
+model_source_app.go
+model_source_app_account_source.go
+model_source_app_bulk_update_request.go
+model_source_app_create_dto.go
+model_source_app_create_dto_account_source.go
+model_source_app_patch_dto.go
 model_source_before_provisioning_rule.go
 model_source_cluster.go
 model_source_cluster_dto.go
@@ -1771,6 +1804,11 @@ model_trigger_example_output.go
 model_trigger_type.go
 model_update_access_profiles_in_bulk_412_response.go
 model_usage_type.go
+model_user_app.go
+model_user_app_account.go
+model_user_app_owner.go
+model_user_app_source.go
+model_user_app_source_app.go
 model_v3_connector_dto.go
 model_va_cluster_status_change_event.go
 model_va_cluster_status_change_event_application.go
@@ -1832,6 +1870,7 @@ test/api_account_usages_test.go
 test/api_accounts_test.go
 test/api_application_discovery_test.go
 test/api_approvals_test.go
+test/api_apps_test.go
 test/api_auth_profile_test.go
 test/api_certification_campaigns_test.go
 test/api_certifications_test.go
