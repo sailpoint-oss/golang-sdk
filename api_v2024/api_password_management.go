@@ -23,7 +23,7 @@ import (
 // PasswordManagementAPIService PasswordManagementAPI service
 type PasswordManagementAPIService service
 
-type ApiGenerateDigitTokenRequest struct {
+type ApiCreateDigitTokenRequest struct {
 	ctx context.Context
 	ApiService *PasswordManagementAPIService
 	xSailPointExperimental *string
@@ -31,30 +31,30 @@ type ApiGenerateDigitTokenRequest struct {
 }
 
 // Use this header to enable this experimental API.
-func (r ApiGenerateDigitTokenRequest) XSailPointExperimental(xSailPointExperimental string) ApiGenerateDigitTokenRequest {
+func (r ApiCreateDigitTokenRequest) XSailPointExperimental(xSailPointExperimental string) ApiCreateDigitTokenRequest {
 	r.xSailPointExperimental = &xSailPointExperimental
 	return r
 }
 
-func (r ApiGenerateDigitTokenRequest) PasswordDigitTokenReset(passwordDigitTokenReset PasswordDigitTokenReset) ApiGenerateDigitTokenRequest {
+func (r ApiCreateDigitTokenRequest) PasswordDigitTokenReset(passwordDigitTokenReset PasswordDigitTokenReset) ApiCreateDigitTokenRequest {
 	r.passwordDigitTokenReset = &passwordDigitTokenReset
 	return r
 }
 
-func (r ApiGenerateDigitTokenRequest) Execute() (*PasswordDigitToken, *http.Response, error) {
-	return r.ApiService.GenerateDigitTokenExecute(r)
+func (r ApiCreateDigitTokenRequest) Execute() (*PasswordDigitToken, *http.Response, error) {
+	return r.ApiService.CreateDigitTokenExecute(r)
 }
 
 /*
-GenerateDigitToken Generate a digit token
+CreateDigitToken Generate a digit token
 
 This API is used to generate a digit token for password management. Requires authorization scope of "idn:password-digit-token:create".
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGenerateDigitTokenRequest
+ @return ApiCreateDigitTokenRequest
 */
-func (a *PasswordManagementAPIService) GenerateDigitToken(ctx context.Context) ApiGenerateDigitTokenRequest {
-	return ApiGenerateDigitTokenRequest{
+func (a *PasswordManagementAPIService) CreateDigitToken(ctx context.Context) ApiCreateDigitTokenRequest {
+	return ApiCreateDigitTokenRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -62,7 +62,7 @@ func (a *PasswordManagementAPIService) GenerateDigitToken(ctx context.Context) A
 
 // Execute executes the request
 //  @return PasswordDigitToken
-func (a *PasswordManagementAPIService) GenerateDigitTokenExecute(r ApiGenerateDigitTokenRequest) (*PasswordDigitToken, *http.Response, error) {
+func (a *PasswordManagementAPIService) CreateDigitTokenExecute(r ApiCreateDigitTokenRequest) (*PasswordDigitToken, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -70,7 +70,7 @@ func (a *PasswordManagementAPIService) GenerateDigitTokenExecute(r ApiGenerateDi
 		localVarReturnValue  *PasswordDigitToken
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordManagementAPIService.GenerateDigitToken")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordManagementAPIService.CreateDigitToken")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -152,8 +152,30 @@ func (a *PasswordManagementAPIService) GenerateDigitTokenExecute(r ApiGenerateDi
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListAccessProfiles401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

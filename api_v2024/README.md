@@ -429,7 +429,7 @@ Class | Method | HTTP request | Description
 *PasswordConfigurationAPI* | [**PutPasswordOrgConfig**](docs/PasswordConfigurationAPI.md#putpasswordorgconfig) | **Put** /password-org-config | Update Password Org Config
 *PasswordDictionaryAPI* | [**GetPasswordDictionary**](docs/PasswordDictionaryAPI.md#getpassworddictionary) | **Get** /password-dictionary | Get Password Dictionary
 *PasswordDictionaryAPI* | [**PutPasswordDictionary**](docs/PasswordDictionaryAPI.md#putpassworddictionary) | **Put** /password-dictionary | Update Password Dictionary
-*PasswordManagementAPI* | [**GenerateDigitToken**](docs/PasswordManagementAPI.md#generatedigittoken) | **Post** /generate-password-reset-token/digit | Generate a digit token
+*PasswordManagementAPI* | [**CreateDigitToken**](docs/PasswordManagementAPI.md#createdigittoken) | **Post** /generate-password-reset-token/digit | Generate a digit token
 *PasswordManagementAPI* | [**GetPasswordChangeStatus**](docs/PasswordManagementAPI.md#getpasswordchangestatus) | **Get** /password-change-status/{id} | Get Password Change Request Status
 *PasswordManagementAPI* | [**QueryPasswordInfo**](docs/PasswordManagementAPI.md#querypasswordinfo) | **Post** /query-password-info | Query Password Info
 *PasswordManagementAPI* | [**SetPassword**](docs/PasswordManagementAPI.md#setpassword) | **Post** /set-password | Set Identity&#39;s Password

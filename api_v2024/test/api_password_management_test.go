@@ -22,11 +22,11 @@ func Test_api_v2024_PasswordManagementAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test PasswordManagementAPIService GenerateDigitToken", func(t *testing.T) {
+	t.Run("Test PasswordManagementAPIService CreateDigitToken", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.PasswordManagementAPI.GenerateDigitToken(context.Background()).Execute()
+		resp, httpRes, err := apiClient.PasswordManagementAPI.CreateDigitToken(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
