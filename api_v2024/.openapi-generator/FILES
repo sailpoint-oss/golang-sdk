@@ -14,6 +14,7 @@ api_account_usages.go
 api_accounts.go
 api_application_discovery.go
 api_approvals.go
+api_apps.go
 api_auth_profile.go
 api_auth_users.go
 api_branding.go
@@ -111,6 +112,8 @@ docs/AccessProfileApprovalScheme.md
 docs/AccessProfileBulkDeleteRequest.md
 docs/AccessProfileBulkDeleteResponse.md
 docs/AccessProfileBulkUpdateRequestInner.md
+docs/AccessProfileDetails.md
+docs/AccessProfileDetailsAccountSelector.md
 docs/AccessProfileDocument.md
 docs/AccessProfileDocumentAllOfSource.md
 docs/AccessProfileEntitlement.md
@@ -217,6 +220,8 @@ docs/AggregationResult.md
 docs/AggregationType.md
 docs/Aggregations.md
 docs/App.md
+docs/AppAccountDetails.md
+docs/AppAccountDetailsSourceAccount.md
 docs/AppAllOfAccount.md
 docs/ApplicationDiscoveryAPI.md
 docs/Approval.md
@@ -242,6 +247,7 @@ docs/ApprovalStatusDtoCurrentOwner.md
 docs/ApprovalStatusDtoOriginalOwner.md
 docs/ApprovalSummary.md
 docs/ApprovalsAPI.md
+docs/AppsAPI.md
 docs/Argument.md
 docs/ArrayInner.md
 docs/AssignmentContextDto.md
@@ -638,6 +644,7 @@ docs/ManualWorkItemDetailsCurrentOwner.md
 docs/ManualWorkItemDetailsOriginalOwner.md
 docs/ManualWorkItemState.md
 docs/ManuallyUpdatedFieldsDTO.md
+docs/MatchTerm.md
 docs/Medium.md
 docs/MetricAggregation.md
 docs/MetricResponse.md
@@ -934,7 +941,8 @@ docs/Segment.md
 docs/SegmentVisibilityCriteria.md
 docs/SegmentsAPI.md
 docs/Selector.md
-docs/SelectorType.md
+docs/SelectorAccountMatchConfig.md
+docs/SelectorAccountMatchConfigMatchExpression.md
 docs/SelfImportExportDto.md
 docs/SendTestNotificationRequestDto.md
 docs/ServiceDeskIntegrationAPI.md
@@ -972,6 +980,12 @@ docs/SourceAccountCorrelationRule.md
 docs/SourceAccountCreated.md
 docs/SourceAccountDeleted.md
 docs/SourceAccountUpdated.md
+docs/SourceApp.md
+docs/SourceAppAccountSource.md
+docs/SourceAppBulkUpdateRequest.md
+docs/SourceAppCreateDto.md
+docs/SourceAppCreateDtoAccountSource.md
+docs/SourceAppPatchDto.md
 docs/SourceBeforeProvisioningRule.md
 docs/SourceCluster.md
 docs/SourceClusterDto.md
@@ -1072,6 +1086,11 @@ docs/UpdateDetail.md
 docs/UploadsRequest.md
 docs/UploadsResponse.md
 docs/UsageType.md
+docs/UserApp.md
+docs/UserAppAccount.md
+docs/UserAppOwner.md
+docs/UserAppSource.md
+docs/UserAppSourceApp.md
 docs/V3ConnectorDto.md
 docs/V3CreateConnectorDto.md
 docs/VAClusterStatusChangeEvent.md
@@ -1154,6 +1173,8 @@ model_access_profile_approval_scheme.go
 model_access_profile_bulk_delete_request.go
 model_access_profile_bulk_delete_response.go
 model_access_profile_bulk_update_request_inner.go
+model_access_profile_details.go
+model_access_profile_details_account_selector.go
 model_access_profile_document.go
 model_access_profile_document_all_of_source.go
 model_access_profile_entitlement.go
@@ -1252,6 +1273,8 @@ model_aggregation_result.go
 model_aggregation_type.go
 model_aggregations.go
 model_app.go
+model_app_account_details.go
+model_app_account_details_source_account.go
 model_app_all_of_account.go
 model_approval.go
 model_approval_1.go
@@ -1641,6 +1664,7 @@ model_manual_work_item_details_current_owner.go
 model_manual_work_item_details_original_owner.go
 model_manual_work_item_state.go
 model_manually_updated_fields_dto.go
+model_match_term.go
 model_medium.go
 model_metric_aggregation.go
 model_metric_response.go
@@ -1912,7 +1936,8 @@ model_sed_patch.go
 model_segment.go
 model_segment_visibility_criteria.go
 model_selector.go
-model_selector_type.go
+model_selector_account_match_config.go
+model_selector_account_match_config_match_expression.go
 model_self_import_export_dto.go
 model_send_test_notification_request_dto.go
 model_service_desk_integration_dto.go
@@ -1949,6 +1974,12 @@ model_source_account_correlation_rule.go
 model_source_account_created.go
 model_source_account_deleted.go
 model_source_account_updated.go
+model_source_app.go
+model_source_app_account_source.go
+model_source_app_bulk_update_request.go
+model_source_app_create_dto.go
+model_source_app_create_dto_account_source.go
+model_source_app_patch_dto.go
 model_source_before_provisioning_rule.go
 model_source_cluster.go
 model_source_cluster_dto.go
@@ -2040,6 +2071,11 @@ model_update_detail.go
 model_uploads_request.go
 model_uploads_response.go
 model_usage_type.go
+model_user_app.go
+model_user_app_account.go
+model_user_app_owner.go
+model_user_app_source.go
+model_user_app_source_app.go
 model_v3_connector_dto.go
 model_v3_create_connector_dto.go
 model_va_cluster_status_change_event.go
@@ -2102,6 +2138,7 @@ test/api_account_usages_test.go
 test/api_accounts_test.go
 test/api_application_discovery_test.go
 test/api_approvals_test.go
+test/api_apps_test.go
 test/api_auth_profile_test.go
 test/api_auth_users_test.go
 test/api_branding_test.go

@@ -43468,20 +43468,11 @@ paths:
                 - op: replace
                   path: /name
                   value: source app new name
-              Add access profiles:
-                description: Add one or more access profiles to the end of the list
+              Add access profile:
+                description: Add one access profile to the existing list
                 value:
                 - op: add
-                  path: /accessProfiles
-                  value:
-                  - 2c9180857725c14301772a93bb77242d
-                  - c9575abb5e3a4e3db82b2f989a738aa2
-              Insert access profile:
-                description: Add an access profile at the beginning of the access
-                  profile list
-                value:
-                - op: add
-                  path: /accessProfiles/0
+                  path: /accessProfiles/-
                   value: 2c9180857725c14301772a93bb77242d
               Replace access profiles:
                 description: Replace all access profiles with a new list of access
