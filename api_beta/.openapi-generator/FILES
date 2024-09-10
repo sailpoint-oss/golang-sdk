@@ -218,6 +218,7 @@ docs/ApprovalsAPI.md
 docs/AppsAPI.md
 docs/Argument.md
 docs/ArrayInner.md
+docs/ArrayInner1.md
 docs/AssignmentContextDto.md
 docs/AttrSyncSource.md
 docs/AttrSyncSourceAttributeConfig.md
@@ -509,6 +510,8 @@ docs/InvocationStatusType.md
 docs/JsonPatch.md
 docs/JsonPatchOperation.md
 docs/JsonPatchOperationValue.md
+docs/JsonPatchOperations.md
+docs/JsonPatchOperationsValue.md
 docs/KbaAnswerRequestItem.md
 docs/KbaAnswerResponseItem.md
 docs/KbaAuthResponse.md
@@ -1134,6 +1137,7 @@ model_approval_status_dto_original_owner.go
 model_approval_summary.go
 model_argument.go
 model_array_inner.go
+model_array_inner_1.go
 model_assignment_context_dto.go
 model_attr_sync_source.go
 model_attr_sync_source_attribute_config.go
@@ -1404,6 +1408,8 @@ model_invocation_status_type.go
 model_json_patch.go
 model_json_patch_operation.go
 model_json_patch_operation_value.go
+model_json_patch_operations.go
+model_json_patch_operations_value.go
 model_kba_answer_request_item.go
 model_kba_answer_response_item.go
 model_kba_auth_response.go

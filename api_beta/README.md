@@ -125,9 +125,11 @@ Class | Method | HTTP request | Description
 *AccountsAPI* | [**SubmitReloadAccount**](docs/AccountsAPI.md#submitreloadaccount) | **Post** /accounts/{id}/reload | Reload Account
 *AccountsAPI* | [**UnlockAccount**](docs/AccountsAPI.md#unlockaccount) | **Post** /accounts/{id}/unlock | Unlock Account
 *AccountsAPI* | [**UpdateAccount**](docs/AccountsAPI.md#updateaccount) | **Patch** /accounts/{id} | Update Account
+*ApplicationDiscoveryAPI* | [**GetDiscoveredApplicationByID**](docs/ApplicationDiscoveryAPI.md#getdiscoveredapplicationbyid) | **Get** /discovered-applications/{id} | Get Discovered Application by ID
 *ApplicationDiscoveryAPI* | [**GetDiscoveredApplications**](docs/ApplicationDiscoveryAPI.md#getdiscoveredapplications) | **Get** /discovered-applications | Retrieve discovered applications for tenant
 *ApplicationDiscoveryAPI* | [**GetManualDiscoverApplicationsCsvTemplate**](docs/ApplicationDiscoveryAPI.md#getmanualdiscoverapplicationscsvtemplate) | **Get** /manual-discover-applications-template | CSV template download for discovery
 *ApplicationDiscoveryAPI* | [**GetVendorConnectorMappings**](docs/ApplicationDiscoveryAPI.md#getvendorconnectormappings) | **Get** /vendor-connector-mappings | List vendor connector mappings
+*ApplicationDiscoveryAPI* | [**PatchDiscoveredApplicationByID**](docs/ApplicationDiscoveryAPI.md#patchdiscoveredapplicationbyid) | **Patch** /discovered-applications/{id} | Patch Discovered Application by Id
 *ApplicationDiscoveryAPI* | [**SendManualDiscoverApplicationsCsvTemplate**](docs/ApplicationDiscoveryAPI.md#sendmanualdiscoverapplicationscsvtemplate) | **Post** /manual-discover-applications | CSV Upload to discover applications
 *ApprovalsAPI* | [**GetApproval**](docs/ApprovalsAPI.md#getapproval) | **Get** /generic-approvals/{id} | Get an approval
 *ApprovalsAPI* | [**GetApprovals**](docs/ApprovalsAPI.md#getapprovals) | **Get** /generic-approvals | Get Approvals
@@ -746,6 +748,7 @@ Class | Method | HTTP request | Description
  - [ApprovalSummary](docs/ApprovalSummary.md)
  - [Argument](docs/Argument.md)
  - [ArrayInner](docs/ArrayInner.md)
+ - [ArrayInner1](docs/ArrayInner1.md)
  - [AssignmentContextDto](docs/AssignmentContextDto.md)
  - [AttrSyncSource](docs/AttrSyncSource.md)
  - [AttrSyncSourceAttributeConfig](docs/AttrSyncSourceAttributeConfig.md)
@@ -1016,6 +1019,8 @@ Class | Method | HTTP request | Description
  - [JsonPatch](docs/JsonPatch.md)
  - [JsonPatchOperation](docs/JsonPatchOperation.md)
  - [JsonPatchOperationValue](docs/JsonPatchOperationValue.md)
+ - [JsonPatchOperations](docs/JsonPatchOperations.md)
+ - [JsonPatchOperationsValue](docs/JsonPatchOperationsValue.md)
  - [KbaAnswerRequestItem](docs/KbaAnswerRequestItem.md)
  - [KbaAnswerResponseItem](docs/KbaAnswerResponseItem.md)
  - [KbaAuthResponse](docs/KbaAuthResponse.md)

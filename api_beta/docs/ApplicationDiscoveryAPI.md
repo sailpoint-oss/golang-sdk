@@ -4,11 +4,81 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**GetDiscoveredApplicationByID**](ApplicationDiscoveryAPI.md#GetDiscoveredApplicationByID) | **Get** /discovered-applications/{id} | Get Discovered Application by ID
 [**GetDiscoveredApplications**](ApplicationDiscoveryAPI.md#GetDiscoveredApplications) | **Get** /discovered-applications | Retrieve discovered applications for tenant
 [**GetManualDiscoverApplicationsCsvTemplate**](ApplicationDiscoveryAPI.md#GetManualDiscoverApplicationsCsvTemplate) | **Get** /manual-discover-applications-template | CSV template download for discovery
 [**GetVendorConnectorMappings**](ApplicationDiscoveryAPI.md#GetVendorConnectorMappings) | **Get** /vendor-connector-mappings | List vendor connector mappings
+[**PatchDiscoveredApplicationByID**](ApplicationDiscoveryAPI.md#PatchDiscoveredApplicationByID) | **Patch** /discovered-applications/{id} | Patch Discovered Application by Id
 [**SendManualDiscoverApplicationsCsvTemplate**](ApplicationDiscoveryAPI.md#SendManualDiscoverApplicationsCsvTemplate) | **Post** /manual-discover-applications | CSV Upload to discover applications
 
+
+
+## GetDiscoveredApplicationByID
+
+> GetDiscoveredApplicationByID(ctx, id).Execute()
+
+Get Discovered Application by ID
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+	id := "123e4567-e89b-12d3-a456-426655440000" // string | ID of the discovered application.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ApplicationDiscoveryAPI.GetDiscoveredApplicationByID(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDiscoveryAPI.GetDiscoveredApplicationByID``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | ID of the discovered application. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetDiscoveredApplicationByIDRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## GetDiscoveredApplications
@@ -200,6 +270,76 @@ Other parameters are passed through a pointer to a apiGetVendorConnectorMappings
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PatchDiscoveredApplicationByID
+
+> PatchDiscoveredApplicationByID(ctx, id).JsonPatchOperations(jsonPatchOperations).Execute()
+
+Patch Discovered Application by Id
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+	id := "123e4567-e89b-12d3-a456-426655440000" // string | ID of the discovered application.
+	jsonPatchOperations := []openapiclient.JsonPatchOperations{*openapiclient.NewJsonPatchOperations("replace", "/dismissed")} // []JsonPatchOperations |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ApplicationDiscoveryAPI.PatchDiscoveredApplicationByID(context.Background(), id).JsonPatchOperations(jsonPatchOperations).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDiscoveryAPI.PatchDiscoveredApplicationByID``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | ID of the discovered application. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPatchDiscoveredApplicationByIDRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **jsonPatchOperations** | [**[]JsonPatchOperations**](JsonPatchOperations.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

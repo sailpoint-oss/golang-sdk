@@ -57453,6 +57453,235 @@ paths:
       summary: Retrieve discovered applications for tenant
       tags:
       - Application Discovery
+  /discovered-applications/{id}:
+    get:
+      description: |
+        This API returns a discovered application with its associated sources based on the ID provided.
+      operationId: getDiscoveredApplicationByID
+      parameters:
+      - description: ID of the discovered application.
+        example: 123e4567-e89b-12d3-a456-426655440000
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                id: app-123
+                name: Example App
+                discoverySource: csv
+                discoveredVendor: Example Vendor
+                description: An application for managing examples.
+                recommendedConnectors:
+                - ConnectorA
+                - ConnectorB
+                discoveredAt: 2023-07-01T12:00:00Z
+                createdAt: 2024-06-01T12:00:00Z
+                status: ACTIVE
+                associatedSources:
+                - 4e2d7605-833f-4c34-8d03-5b2c7d2f4f66
+                - f9b7e2ce-aced-4117-a95f-4ffad8b33989
+                - a3b159f2-5f09-43c9-b40e-a6f317aa5b8f
+          description: Returns the discovered application along with its associated
+            sources.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:application-discovery:read
+      summary: Get Discovered Application by ID
+      tags:
+      - Application Discovery
+    patch:
+      description: |-
+        This API updates an existing discovered application using a limited version of the [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
+        The following fields are patchable: - **associatedSources** - **dismissed**
+      operationId: patchDiscoveredApplicationByID
+      parameters:
+      - description: ID of the discovered application.
+        example: 123e4567-e89b-12d3-a456-426655440000
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            examples:
+              Dismiss an app:
+                description: This example shows how use patch to set the dismissal
+                  status of a correlated application to true
+                value:
+                - op: replace
+                  path: /dismissed
+                  value: true
+              Replace associated sources:
+                description: This example shows how use patch to replace the values
+                  of the associatedSources field.
+                value:
+                - op: replace
+                  path: /associatedSources
+                  value:
+                  - 4e2d7605-833f-4c34-8d03-5b2c7d2f4f66
+                  - f9b7e2ce-aced-4117-a95f-4ffad8b33989
+                  - a3b159f2-5f09-43c9-b40e-a6f317aa5b8f
+              Add an associated source to a correlated application:
+                description: This example shows how to use patch to add an associated
+                  source to a correlated application
+                value:
+                - op: add
+                  path: /associatedSources
+                  value: 123e4567-e89b-a456-42655440005
+            schema:
+              example:
+              - op: replace
+                path: /dismissed
+                value: false
+              items:
+                $ref: '#/components/schemas/JsonPatchOperations'
+              type: array
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                id: app-123
+                name: Example App
+                discoverySource: csv
+                discoveredVendor: Example Vendor
+                description: An application for managing examples.
+                recommendedConnectors:
+                - ConnectorA
+                - ConnectorB
+                discoveredAt: 2023-07-01T12:00:00Z
+                createdAt: 2024-06-01T12:00:00Z
+                status: ACTIVE
+                associatedSources:
+                - 4e2d7605-833f-4c34-8d03-5b2c7d2f4f66
+                - f9b7e2ce-aced-4117-a95f-4ffad8b33989
+                - a3b159f2-5f09-43c9-b40e-a6f317aa5b8f
+          description: Returns the single patched discovered application.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:application-discovery:write
+      summary: Patch Discovered Application by Id
+      tags:
+      - Application Discovery
   /vendor-connector-mappings:
     delete:
       description: |
@@ -77008,6 +77237,32 @@ components:
           type: array
       title: Discovered Application
       type: object
+    JsonPatchOperations:
+      description: "A limited JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      example:
+        op: replace
+        path: /dismissed
+        value: true
+      properties:
+        op:
+          description: The operation to be performed
+          enum:
+          - add
+          - remove
+          - replace
+          example: replace
+          type: string
+        path:
+          description: A string representing the target path to an element to be affected
+            by the operation
+          example: /dismissed
+          type: string
+        value:
+          $ref: '#/components/schemas/JsonPatchOperations_value'
+      required:
+      - op
+      - path
+      type: object
     VendorConnectorMapping:
       example:
         createdAt: 2024-03-13T12:56:19.391294Z
@@ -89041,6 +89296,28 @@ components:
           x-go-name: FormDefinitionID
       type: object
       x-go-name: Attributes
+    array_inner_1:
+      anyOf:
+      - type: string
+      example:
+      - 4e2d7605-833f-4c34-8d03-5b2c7d2f4f66
+      - f9b7e2ce-aced-4117-a95f-4ffad8b33989
+      - a3b159f2-5f09-43c9-b40e-a6f317aa5b8f
+    JsonPatchOperations_value:
+      description: "The value to be used for the operation, required for \"add\" and\
+        \ \"replace\" operations"
+      example: true
+      oneOf:
+      - example: New description
+        title: string
+        type: string
+      - example: true
+        title: boolean
+        type: boolean
+      - items:
+          $ref: '#/components/schemas/array_inner_1'
+        title: array
+        type: array
     VendorConnectorMapping_updatedAt:
       description: An object representing the nullable timestamp of the last update.
       example:
