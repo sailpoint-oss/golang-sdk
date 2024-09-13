@@ -10,13 +10,13 @@ Name | Type | Description | Notes
 **Expiration** | **time.Time** | The time until which the artifacts will be available for download. | 
 **Created** | **time.Time** | The time the job was started. | 
 **Modified** | **time.Time** | The time of the last update to the job. | 
-**Description** | **string** | Optional user defined description/name for export job. | 
+**Description** | Pointer to **string** | Optional user defined description/name for export job. | [optional] 
 
 ## Methods
 
 ### NewSpConfigExportJob
 
-`func NewSpConfigExportJob(jobId string, status string, type_ string, expiration time.Time, created time.Time, modified time.Time, description string, ) *SpConfigExportJob`
+`func NewSpConfigExportJob(jobId string, status string, type_ string, expiration time.Time, created time.Time, modified time.Time, ) *SpConfigExportJob`
 
 NewSpConfigExportJob instantiates a new SpConfigExportJob object
 This constructor will assign default values to properties that have it defined,
@@ -170,6 +170,11 @@ and a boolean to check if the value has been set.
 
 SetDescription sets Description field to given value.
 
+### HasDescription
+
+`func (o *SpConfigExportJob) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

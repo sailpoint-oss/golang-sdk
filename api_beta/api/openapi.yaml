@@ -71658,13 +71658,12 @@ components:
     SpConfigExportJob:
       allOf:
       - $ref: '#/components/schemas/SpConfigJob'
-      - properties:
+      - nullable: true
+        properties:
           description:
             description: Optional user defined description/name for export job.
             example: ETS configuration objects from Acme-Solar sandbox
             type: string
-        required:
-        - description
         type: object
       example:
         jobId: 3469b87d-48ca-439a-868f-2160001da8c1

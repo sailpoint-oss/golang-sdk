@@ -34,7 +34,7 @@ type SpConfigExportJobStatus struct {
 	// The time of the last update to the job.
 	Modified time.Time `json:"modified"`
 	// Optional user defined description/name for export job.
-	Description string `json:"description"`
+	Description *string `json:"description,omitempty"`
 	// The time the job was completed.
 	Completed time.Time `json:"completed"`
 	AdditionalProperties map[string]interface{}
@@ -46,7 +46,7 @@ type _SpConfigExportJobStatus SpConfigExportJobStatus
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSpConfigExportJobStatus(jobId string, status string, type_ string, expiration time.Time, created time.Time, modified time.Time, description string, completed time.Time) *SpConfigExportJobStatus {
+func NewSpConfigExportJobStatus(jobId string, status string, type_ string, expiration time.Time, created time.Time, modified time.Time, completed time.Time) *SpConfigExportJobStatus {
 	this := SpConfigExportJobStatus{}
 	this.JobId = jobId
 	this.Status = status
@@ -54,7 +54,6 @@ func NewSpConfigExportJobStatus(jobId string, status string, type_ string, expir
 	this.Expiration = expiration
 	this.Created = created
 	this.Modified = modified
-	this.Description = description
 	this.Completed = completed
 	return &this
 }
@@ -211,28 +210,36 @@ func (o *SpConfigExportJobStatus) SetModified(v time.Time) {
 	o.Modified = v
 }
 
-// GetDescription returns the Description field value
+// GetDescription returns the Description field value if set, zero value otherwise.
 func (o *SpConfigExportJobStatus) GetDescription() string {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
-
-	return o.Description
+	return *o.Description
 }
 
-// GetDescriptionOk returns a tuple with the Description field value
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpConfigExportJobStatus) GetDescriptionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
-	return &o.Description, true
+	return o.Description, true
 }
 
-// SetDescription sets field value
+// HasDescription returns a boolean if a field has been set.
+func (o *SpConfigExportJobStatus) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *SpConfigExportJobStatus) SetDescription(v string) {
-	o.Description = v
+	o.Description = &v
 }
 
 // GetCompleted returns the Completed field value
@@ -275,7 +282,9 @@ func (o SpConfigExportJobStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize["expiration"] = o.Expiration
 	toSerialize["created"] = o.Created
 	toSerialize["modified"] = o.Modified
-	toSerialize["description"] = o.Description
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
 	toSerialize["completed"] = o.Completed
 
 	for key, value := range o.AdditionalProperties {
@@ -296,7 +305,6 @@ func (o *SpConfigExportJobStatus) UnmarshalJSON(data []byte) (err error) {
 		"expiration",
 		"created",
 		"modified",
-		"description",
 		"completed",
 	}
 

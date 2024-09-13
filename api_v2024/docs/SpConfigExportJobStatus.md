@@ -10,14 +10,14 @@ Name | Type | Description | Notes
 **Expiration** | **time.Time** | The time until which the artifacts will be available for download. | 
 **Created** | **time.Time** | The time the job was started. | 
 **Modified** | **time.Time** | The time of the last update to the job. | 
-**Description** | **string** | Optional user defined description/name for export job. | 
+**Description** | Pointer to **string** | Optional user defined description/name for export job. | [optional] 
 **Completed** | **time.Time** | The time the job was completed. | 
 
 ## Methods
 
 ### NewSpConfigExportJobStatus
 
-`func NewSpConfigExportJobStatus(jobId string, status string, type_ string, expiration time.Time, created time.Time, modified time.Time, description string, completed time.Time, ) *SpConfigExportJobStatus`
+`func NewSpConfigExportJobStatus(jobId string, status string, type_ string, expiration time.Time, created time.Time, modified time.Time, completed time.Time, ) *SpConfigExportJobStatus`
 
 NewSpConfigExportJobStatus instantiates a new SpConfigExportJobStatus object
 This constructor will assign default values to properties that have it defined,
@@ -171,6 +171,11 @@ and a boolean to check if the value has been set.
 
 SetDescription sets Description field to given value.
 
+### HasDescription
+
+`func (o *SpConfigExportJobStatus) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetCompleted
 
