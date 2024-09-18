@@ -6,14 +6,16 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateObjectMapping**](ConfigurationHubAPI.md#CreateObjectMapping) | **Post** /configuration-hub/object-mappings/{sourceOrg} | Creates an object mapping
 [**CreateObjectMappings**](ConfigurationHubAPI.md#CreateObjectMappings) | **Post** /configuration-hub/object-mappings/{sourceOrg}/bulk-create | Bulk creates object mappings
+[**CreateUploadedConfiguration**](ConfigurationHubAPI.md#CreateUploadedConfiguration) | **Post** /configuration-hub/backups/uploads | Upload a Configuration
+[**DeleteBackup**](ConfigurationHubAPI.md#DeleteBackup) | **Delete** /configuration-hub/backups/{id} | Delete a Backup
 [**DeleteDraft**](ConfigurationHubAPI.md#DeleteDraft) | **Delete** /configuration-hub/drafts/{id} | Delete a draft
 [**DeleteObjectMapping**](ConfigurationHubAPI.md#DeleteObjectMapping) | **Delete** /configuration-hub/object-mappings/{sourceOrg}/{objectMappingId} | Deletes an object mapping
-[**DeleteUploadedBackup**](ConfigurationHubAPI.md#DeleteUploadedBackup) | **Delete** /configuration-hub/backups/uploads/{id} | Deletes an uploaded backup file
+[**DeleteUploadedConfiguration**](ConfigurationHubAPI.md#DeleteUploadedConfiguration) | **Delete** /configuration-hub/backups/uploads/{id} | Delete an Uploaded Configuration
 [**GetObjectMappings**](ConfigurationHubAPI.md#GetObjectMappings) | **Get** /configuration-hub/object-mappings/{sourceOrg} | Gets list of object mappings
-[**GetUploadedBackup**](ConfigurationHubAPI.md#GetUploadedBackup) | **Get** /configuration-hub/backups/uploads/{id} | Get an uploaded backup&#39;s information
-[**GetUploadedBackups**](ConfigurationHubAPI.md#GetUploadedBackups) | **Get** /configuration-hub/backups/uploads | Gets list of Uploaded backups
-[**ImportUploadedBackup**](ConfigurationHubAPI.md#ImportUploadedBackup) | **Post** /configuration-hub/backups/uploads | Uploads a backup file
+[**GetUploadedConfiguration**](ConfigurationHubAPI.md#GetUploadedConfiguration) | **Get** /configuration-hub/backups/uploads/{id} | Get an Uploaded Configuration
+[**ListBackups**](ConfigurationHubAPI.md#ListBackups) | **Get** /configuration-hub/backups | List Backups
 [**ListDrafts**](ConfigurationHubAPI.md#ListDrafts) | **Get** /configuration-hub/drafts | List Drafts
+[**ListUploadedConfigurations**](ConfigurationHubAPI.md#ListUploadedConfigurations) | **Get** /configuration-hub/backups/uploads | List Uploaded Configurations
 [**UpdateObjectMappings**](ConfigurationHubAPI.md#UpdateObjectMappings) | **Post** /configuration-hub/object-mappings/{sourceOrg}/bulk-patch | Bulk updates object mappings
 
 
@@ -162,6 +164,142 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## CreateUploadedConfiguration
+
+> BackupResponse CreateUploadedConfiguration(ctx).Data(data).Name(name).Execute()
+
+Upload a Configuration
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+	data := os.NewFile(1234, "some_file") // *os.File | JSON file containing the objects to be imported.
+	name := "name_example" // string | Name that will be assigned to the uploaded configuration file.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ConfigurationHubAPI.CreateUploadedConfiguration(context.Background()).Data(data).Name(name).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.CreateUploadedConfiguration``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateUploadedConfiguration`: BackupResponse
+	fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.CreateUploadedConfiguration`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateUploadedConfigurationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data** | ***os.File** | JSON file containing the objects to be imported. | 
+ **name** | **string** | Name that will be assigned to the uploaded configuration file. | 
+
+### Return type
+
+[**BackupResponse**](BackupResponse.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteBackup
+
+> DeleteBackup(ctx, id).Execute()
+
+Delete a Backup
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+	id := "07659d7d-2cce-47c0-9e49-185787ee565a" // string | The id of the backup to delete.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ConfigurationHubAPI.DeleteBackup(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.DeleteBackup``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The id of the backup to delete. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteBackupRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DeleteDraft
 
 > DeleteDraft(ctx, id).Execute()
@@ -301,11 +439,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteUploadedBackup
+## DeleteUploadedConfiguration
 
-> DeleteUploadedBackup(ctx, id).Execute()
+> DeleteUploadedConfiguration(ctx, id).Execute()
 
-Deletes an uploaded backup file
+Delete an Uploaded Configuration
 
 
 
@@ -322,13 +460,13 @@ import (
 )
 
 func main() {
-	id := "3d0fe04b-57df-4a46-a83b-8f04b0f9d10b" // string | The id of the uploaded backup.
+	id := "3d0fe04b-57df-4a46-a83b-8f04b0f9d10b" // string | The id of the uploaded configuration.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ConfigurationHubAPI.DeleteUploadedBackup(context.Background(), id).Execute()
+	r, err := apiClient.ConfigurationHubAPI.DeleteUploadedConfiguration(context.Background(), id).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.DeleteUploadedBackup``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.DeleteUploadedConfiguration``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -340,11 +478,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The id of the uploaded backup. | 
+**id** | **string** | The id of the uploaded configuration. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteUploadedBackupRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteUploadedConfigurationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -439,11 +577,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetUploadedBackup
+## GetUploadedConfiguration
 
-> map[string]interface{} GetUploadedBackup(ctx, id).Execute()
+> BackupResponse GetUploadedConfiguration(ctx, id).Execute()
 
-Get an uploaded backup's information
+Get an Uploaded Configuration
 
 
 
@@ -460,17 +598,17 @@ import (
 )
 
 func main() {
-	id := "3d0fe04b-57df-4a46-a83b-8f04b0f9d10b" // string | The id of the uploaded backup.
+	id := "3d0fe04b-57df-4a46-a83b-8f04b0f9d10b" // string | The id of the uploaded configuration.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ConfigurationHubAPI.GetUploadedBackup(context.Background(), id).Execute()
+	resp, r, err := apiClient.ConfigurationHubAPI.GetUploadedConfiguration(context.Background(), id).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.GetUploadedBackup``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.GetUploadedConfiguration``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetUploadedBackup`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.GetUploadedBackup`: %v\n", resp)
+	// response from `GetUploadedConfiguration`: BackupResponse
+	fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.GetUploadedConfiguration`: %v\n", resp)
 }
 ```
 
@@ -480,11 +618,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The id of the uploaded backup. | 
+**id** | **string** | The id of the uploaded configuration. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetUploadedBackupRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetUploadedConfigurationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -493,7 +631,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**BackupResponse**](BackupResponse.md)
 
 ### Authorization
 
@@ -509,11 +647,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetUploadedBackups
+## ListBackups
 
-> []UploadsResponse GetUploadedBackups(ctx).Status(status).Execute()
+> []BackupResponse ListBackups(ctx).Filters(filters).Execute()
 
-Gets list of Uploaded backups
+List Backups
 
 
 
@@ -530,17 +668,17 @@ import (
 )
 
 func main() {
-	status := "COMPLETE" // string | Filter listed uploaded backups by status of operation (optional)
+	filters := "status eq "COMPLETE"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq* (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ConfigurationHubAPI.GetUploadedBackups(context.Background()).Status(status).Execute()
+	resp, r, err := apiClient.ConfigurationHubAPI.ListBackups(context.Background()).Filters(filters).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.GetUploadedBackups``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.ListBackups``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetUploadedBackups`: []UploadsResponse
-	fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.GetUploadedBackups`: %v\n", resp)
+	// response from `ListBackups`: []BackupResponse
+	fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.ListBackups`: %v\n", resp)
 }
 ```
 
@@ -550,16 +688,16 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetUploadedBackupsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListBackupsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **status** | **string** | Filter listed uploaded backups by status of operation | 
+ **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq* | 
 
 ### Return type
 
-[**[]UploadsResponse**](UploadsResponse.md)
+[**[]BackupResponse**](BackupResponse.md)
 
 ### Authorization
 
@@ -568,74 +706,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ImportUploadedBackup
-
-> UploadsRequest ImportUploadedBackup(ctx).Data(data).Name(name).Execute()
-
-Uploads a backup file
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-	data := os.NewFile(1234, "some_file") // *os.File | JSON file containing the objects to be imported.
-	name := "name_example" // string | Name that will be assigned to the uploaded file.
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ConfigurationHubAPI.ImportUploadedBackup(context.Background()).Data(data).Name(name).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.ImportUploadedBackup``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ImportUploadedBackup`: UploadsRequest
-	fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.ImportUploadedBackup`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiImportUploadedBackupRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **data** | ***os.File** | JSON file containing the objects to be imported. | 
- **name** | **string** | Name that will be assigned to the uploaded file. | 
-
-### Return type
-
-[**UploadsRequest**](UploadsRequest.md)
-
-### Authorization
-
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
-
-### HTTP request headers
-
-- **Content-Type**: multipart/form-data
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -694,6 +764,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]DraftResponse**](DraftResponse.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListUploadedConfigurations
+
+> []BackupResponse ListUploadedConfigurations(ctx).Filters(filters).Execute()
+
+List Uploaded Configurations
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+	filters := "status eq "COMPLETE"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq* (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ConfigurationHubAPI.ListUploadedConfigurations(context.Background()).Filters(filters).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.ListUploadedConfigurations``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListUploadedConfigurations`: []BackupResponse
+	fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.ListUploadedConfigurations`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListUploadedConfigurationsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq* | 
+
+### Return type
+
+[**[]BackupResponse**](BackupResponse.md)
 
 ### Authorization
 

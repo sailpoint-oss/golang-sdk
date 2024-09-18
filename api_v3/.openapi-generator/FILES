@@ -144,6 +144,8 @@ docs/AttributeDefinitionType.md
 docs/AttributeRequest.md
 docs/AuthUser.md
 docs/AuthUsersAPI.md
+docs/BackupOptions.md
+docs/BackupResponse.md
 docs/BaseAccess.md
 docs/BaseAccessAllOfOwner.md
 docs/BaseAccessProfile.md
@@ -217,6 +219,7 @@ docs/CreatePersonalAccessTokenRequest.md
 docs/CreatePersonalAccessTokenResponse.md
 docs/CreateSavedSearchRequest.md
 docs/CreateScheduledSearchRequest.md
+docs/CreateUploadedConfigurationRequest.md
 docs/CreateWorkflowRequest.md
 docs/CriteriaType.md
 docs/DataAccess.md
@@ -306,7 +309,6 @@ docs/IdentityWithNewAccessAccessRefsInner.md
 docs/IdpDetails.md
 docs/ImportNonEmployeeRecordsInBulkRequest.md
 docs/ImportObject.md
-docs/ImportUploadedBackupRequest.md
 docs/Index.md
 docs/InnerHit.md
 docs/JITConfiguration.md
@@ -385,6 +387,7 @@ docs/NonEmployeeSourceRequestBody.md
 docs/NonEmployeeSourceWithCloudExternalId.md
 docs/NonEmployeeSourceWithNECount.md
 docs/OAuthClientsAPI.md
+docs/ObjectExportImportNames.md
 docs/ObjectImportResult.md
 docs/ObjectMappingBulkCreateRequest.md
 docs/ObjectMappingBulkCreateResponse.md
@@ -613,8 +616,6 @@ docs/TransformsAPI.md
 docs/TypeAheadQuery.md
 docs/TypedReference.md
 docs/UpdateDetail.md
-docs/UploadsRequest.md
-docs/UploadsResponse.md
 docs/UsageType.md
 docs/V3ConnectorDto.md
 docs/V3CreateConnectorDto.md
@@ -742,6 +743,8 @@ model_attribute_definition_schema.go
 model_attribute_definition_type.go
 model_attribute_request.go
 model_auth_user.go
+model_backup_options.go
+model_backup_response.go
 model_base_access.go
 model_base_access_all_of_owner.go
 model_base_access_profile.go
@@ -808,6 +811,7 @@ model_create_personal_access_token_request.go
 model_create_personal_access_token_response.go
 model_create_saved_search_request.go
 model_create_scheduled_search_request.go
+model_create_uploaded_configuration_request.go
 model_create_workflow_request.go
 model_criteria_type.go
 model_data_access.go
@@ -895,7 +899,6 @@ model_identity_with_new_access_access_refs_inner.go
 model_idp_details.go
 model_import_non_employee_records_in_bulk_request.go
 model_import_object.go
-model_import_uploaded_backup_request.go
 model_index.go
 model_inner_hit.go
 model_jit_configuration.go
@@ -967,6 +970,7 @@ model_non_employee_source_lite_with_schema_attributes.go
 model_non_employee_source_request_body.go
 model_non_employee_source_with_cloud_external_id.go
 model_non_employee_source_with_ne_count.go
+model_object_export_import_names.go
 model_object_import_result.go
 model_object_mapping_bulk_create_request.go
 model_object_mapping_bulk_create_response.go
@@ -1172,8 +1176,6 @@ model_transform_read.go
 model_type_ahead_query.go
 model_typed_reference.go
 model_update_detail.go
-model_uploads_request.go
-model_uploads_response.go
 model_usage_type.go
 model_v3_connector_dto.go
 model_v3_create_connector_dto.go

@@ -200,14 +200,16 @@ Class | Method | HTTP request | Description
 *CertificationsAPI* | [**SubmitReassignCertsAsync**](docs/CertificationsAPI.md#submitreassigncertsasync) | **Post** /certifications/{id}/reassign-async | Reassign Certifications Asynchronously
 *ConfigurationHubAPI* | [**CreateObjectMapping**](docs/ConfigurationHubAPI.md#createobjectmapping) | **Post** /configuration-hub/object-mappings/{sourceOrg} | Creates an object mapping
 *ConfigurationHubAPI* | [**CreateObjectMappings**](docs/ConfigurationHubAPI.md#createobjectmappings) | **Post** /configuration-hub/object-mappings/{sourceOrg}/bulk-create | Bulk creates object mappings
+*ConfigurationHubAPI* | [**CreateUploadedConfiguration**](docs/ConfigurationHubAPI.md#createuploadedconfiguration) | **Post** /configuration-hub/backups/uploads | Upload a Configuration
+*ConfigurationHubAPI* | [**DeleteBackup**](docs/ConfigurationHubAPI.md#deletebackup) | **Delete** /configuration-hub/backups/{id} | Delete a Backup
 *ConfigurationHubAPI* | [**DeleteDraft**](docs/ConfigurationHubAPI.md#deletedraft) | **Delete** /configuration-hub/drafts/{id} | Delete a draft
 *ConfigurationHubAPI* | [**DeleteObjectMapping**](docs/ConfigurationHubAPI.md#deleteobjectmapping) | **Delete** /configuration-hub/object-mappings/{sourceOrg}/{objectMappingId} | Deletes an object mapping
-*ConfigurationHubAPI* | [**DeleteUploadedBackup**](docs/ConfigurationHubAPI.md#deleteuploadedbackup) | **Delete** /configuration-hub/backups/uploads/{id} | Deletes an uploaded backup file
+*ConfigurationHubAPI* | [**DeleteUploadedConfiguration**](docs/ConfigurationHubAPI.md#deleteuploadedconfiguration) | **Delete** /configuration-hub/backups/uploads/{id} | Delete an Uploaded Configuration
 *ConfigurationHubAPI* | [**GetObjectMappings**](docs/ConfigurationHubAPI.md#getobjectmappings) | **Get** /configuration-hub/object-mappings/{sourceOrg} | Gets list of object mappings
-*ConfigurationHubAPI* | [**GetUploadedBackup**](docs/ConfigurationHubAPI.md#getuploadedbackup) | **Get** /configuration-hub/backups/uploads/{id} | Get an uploaded backup&#39;s information
-*ConfigurationHubAPI* | [**GetUploadedBackups**](docs/ConfigurationHubAPI.md#getuploadedbackups) | **Get** /configuration-hub/backups/uploads | Gets list of Uploaded backups
-*ConfigurationHubAPI* | [**ImportUploadedBackup**](docs/ConfigurationHubAPI.md#importuploadedbackup) | **Post** /configuration-hub/backups/uploads | Uploads a backup file
+*ConfigurationHubAPI* | [**GetUploadedConfiguration**](docs/ConfigurationHubAPI.md#getuploadedconfiguration) | **Get** /configuration-hub/backups/uploads/{id} | Get an Uploaded Configuration
+*ConfigurationHubAPI* | [**ListBackups**](docs/ConfigurationHubAPI.md#listbackups) | **Get** /configuration-hub/backups | List Backups
 *ConfigurationHubAPI* | [**ListDrafts**](docs/ConfigurationHubAPI.md#listdrafts) | **Get** /configuration-hub/drafts | List Drafts
+*ConfigurationHubAPI* | [**ListUploadedConfigurations**](docs/ConfigurationHubAPI.md#listuploadedconfigurations) | **Get** /configuration-hub/backups/uploads | List Uploaded Configurations
 *ConfigurationHubAPI* | [**UpdateObjectMappings**](docs/ConfigurationHubAPI.md#updateobjectmappings) | **Post** /configuration-hub/object-mappings/{sourceOrg}/bulk-patch | Bulk updates object mappings
 *ConnectorRuleManagementAPI* | [**CreateConnectorRule**](docs/ConnectorRuleManagementAPI.md#createconnectorrule) | **Post** /connector-rules | Create Connector Rule
 *ConnectorRuleManagementAPI* | [**DeleteConnectorRule**](docs/ConnectorRuleManagementAPI.md#deleteconnectorrule) | **Delete** /connector-rules/{id} | Delete a Connector-Rule
@@ -854,6 +856,8 @@ Class | Method | HTTP request | Description
  - [AuthProfile](docs/AuthProfile.md)
  - [AuthProfileSummary](docs/AuthProfileSummary.md)
  - [AuthUser](docs/AuthUser.md)
+ - [BackupOptions](docs/BackupOptions.md)
+ - [BackupResponse](docs/BackupResponse.md)
  - [BaseAccess](docs/BaseAccess.md)
  - [BaseAccessAllOfOwner](docs/BaseAccessAllOfOwner.md)
  - [BaseAccessProfile](docs/BaseAccessProfile.md)
@@ -976,6 +980,7 @@ Class | Method | HTTP request | Description
  - [CreatePersonalAccessTokenResponse](docs/CreatePersonalAccessTokenResponse.md)
  - [CreateSavedSearchRequest](docs/CreateSavedSearchRequest.md)
  - [CreateScheduledSearchRequest](docs/CreateScheduledSearchRequest.md)
+ - [CreateUploadedConfigurationRequest](docs/CreateUploadedConfigurationRequest.md)
  - [CreateWorkflowRequest](docs/CreateWorkflowRequest.md)
  - [CriteriaType](docs/CriteriaType.md)
  - [CustomPasswordInstruction](docs/CustomPasswordInstruction.md)
@@ -1139,7 +1144,6 @@ Class | Method | HTTP request | Description
  - [ImportObject](docs/ImportObject.md)
  - [ImportOptions](docs/ImportOptions.md)
  - [ImportSpConfigRequest](docs/ImportSpConfigRequest.md)
- - [ImportUploadedBackupRequest](docs/ImportUploadedBackupRequest.md)
  - [Index](docs/Index.md)
  - [InnerHit](docs/InnerHit.md)
  - [Invocation](docs/Invocation.md)
@@ -1241,6 +1245,7 @@ Class | Method | HTTP request | Description
  - [NonEmployeeSourceWithCloudExternalId](docs/NonEmployeeSourceWithCloudExternalId.md)
  - [NonEmployeeSourceWithNECount](docs/NonEmployeeSourceWithNECount.md)
  - [NotificationTemplateContext](docs/NotificationTemplateContext.md)
+ - [ObjectExportImportNames](docs/ObjectExportImportNames.md)
  - [ObjectExportImportOptions](docs/ObjectExportImportOptions.md)
  - [ObjectImportResult](docs/ObjectImportResult.md)
  - [ObjectImportResult1](docs/ObjectImportResult1.md)
@@ -1606,8 +1611,6 @@ Class | Method | HTTP request | Description
  - [TypedReference](docs/TypedReference.md)
  - [UpdateAccessProfilesInBulk412Response](docs/UpdateAccessProfilesInBulk412Response.md)
  - [UpdateDetail](docs/UpdateDetail.md)
- - [UploadsRequest](docs/UploadsRequest.md)
- - [UploadsResponse](docs/UploadsResponse.md)
  - [UsageType](docs/UsageType.md)
  - [UserApp](docs/UserApp.md)
  - [UserAppAccount](docs/UserAppAccount.md)

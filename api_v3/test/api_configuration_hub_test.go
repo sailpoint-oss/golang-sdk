@@ -50,6 +50,18 @@ func Test_api_v3_ConfigurationHubAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ConfigurationHubAPIService CreateUploadedConfiguration", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.ConfigurationHubAPI.CreateUploadedConfiguration(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ConfigurationHubAPIService DeleteObjectMapping", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -64,13 +76,13 @@ func Test_api_v3_ConfigurationHubAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ConfigurationHubAPIService DeleteUploadedBackup", func(t *testing.T) {
+	t.Run("Test ConfigurationHubAPIService DeleteUploadedConfiguration", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		httpRes, err := apiClient.ConfigurationHubAPI.DeleteUploadedBackup(context.Background(), id).Execute()
+		httpRes, err := apiClient.ConfigurationHubAPI.DeleteUploadedConfiguration(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -91,13 +103,13 @@ func Test_api_v3_ConfigurationHubAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ConfigurationHubAPIService GetUploadedBackup", func(t *testing.T) {
+	t.Run("Test ConfigurationHubAPIService GetUploadedConfiguration", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.ConfigurationHubAPI.GetUploadedBackup(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.ConfigurationHubAPI.GetUploadedConfiguration(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -105,23 +117,11 @@ func Test_api_v3_ConfigurationHubAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ConfigurationHubAPIService GetUploadedBackups", func(t *testing.T) {
+	t.Run("Test ConfigurationHubAPIService ListUploadedConfigurations", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ConfigurationHubAPI.GetUploadedBackups(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ConfigurationHubAPIService ImportUploadedBackup", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.ConfigurationHubAPI.ImportUploadedBackup(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ConfigurationHubAPI.ListUploadedConfigurations(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

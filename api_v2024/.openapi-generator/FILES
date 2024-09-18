@@ -270,6 +270,8 @@ docs/AuthProfileAPI.md
 docs/AuthProfileSummary.md
 docs/AuthUser.md
 docs/AuthUsersAPI.md
+docs/BackupOptions.md
+docs/BackupResponse.md
 docs/BaseAccess.md
 docs/BaseAccessAllOfOwner.md
 docs/BaseAccessProfile.md
@@ -400,6 +402,7 @@ docs/CreatePersonalAccessTokenRequest.md
 docs/CreatePersonalAccessTokenResponse.md
 docs/CreateSavedSearchRequest.md
 docs/CreateScheduledSearchRequest.md
+docs/CreateUploadedConfigurationRequest.md
 docs/CreateWorkflowRequest.md
 docs/CriteriaType.md
 docs/CustomFormsAPI.md
@@ -579,7 +582,6 @@ docs/ImportNonEmployeeRecordsInBulkRequest.md
 docs/ImportObject.md
 docs/ImportOptions.md
 docs/ImportSpConfigRequest.md
-docs/ImportUploadedBackupRequest.md
 docs/Index.md
 docs/InnerHit.md
 docs/Invocation.md
@@ -688,6 +690,7 @@ docs/NonEmployeeSourceWithNECount.md
 docs/NotificationTemplateContext.md
 docs/NotificationsAPI.md
 docs/OAuthClientsAPI.md
+docs/ObjectExportImportNames.md
 docs/ObjectExportImportOptions.md
 docs/ObjectImportResult.md
 docs/ObjectImportResult1.md
@@ -1085,8 +1088,6 @@ docs/TypedReference.md
 docs/UIMetadataAPI.md
 docs/UpdateAccessProfilesInBulk412Response.md
 docs/UpdateDetail.md
-docs/UploadsRequest.md
-docs/UploadsResponse.md
 docs/UsageType.md
 docs/UserApp.md
 docs/UserAppAccount.md
@@ -1320,6 +1321,8 @@ model_audit_details.go
 model_auth_profile.go
 model_auth_profile_summary.go
 model_auth_user.go
+model_backup_options.go
+model_backup_response.go
 model_base_access.go
 model_base_access_all_of_owner.go
 model_base_access_profile.go
@@ -1442,6 +1445,7 @@ model_create_personal_access_token_request.go
 model_create_personal_access_token_response.go
 model_create_saved_search_request.go
 model_create_scheduled_search_request.go
+model_create_uploaded_configuration_request.go
 model_create_workflow_request.go
 model_criteria_type.go
 model_custom_password_instruction.go
@@ -1605,7 +1609,6 @@ model_import_non_employee_records_in_bulk_request.go
 model_import_object.go
 model_import_options.go
 model_import_sp_config_request.go
-model_import_uploaded_backup_request.go
 model_index.go
 model_inner_hit.go
 model_invocation.go
@@ -1707,6 +1710,7 @@ model_non_employee_source_request_body.go
 model_non_employee_source_with_cloud_external_id.go
 model_non_employee_source_with_ne_count.go
 model_notification_template_context.go
+model_object_export_import_names.go
 model_object_export_import_options.go
 model_object_import_result.go
 model_object_import_result_1.go
@@ -2072,8 +2076,6 @@ model_type_ahead_query.go
 model_typed_reference.go
 model_update_access_profiles_in_bulk_412_response.go
 model_update_detail.go
-model_uploads_request.go
-model_uploads_response.go
 model_usage_type.go
 model_user_app.go
 model_user_app_account.go

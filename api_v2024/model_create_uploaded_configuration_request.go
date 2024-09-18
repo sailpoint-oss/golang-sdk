@@ -16,41 +16,41 @@ import (
 	"fmt"
 )
 
-// checks if the ImportUploadedBackupRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ImportUploadedBackupRequest{}
+// checks if the CreateUploadedConfigurationRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreateUploadedConfigurationRequest{}
 
-// ImportUploadedBackupRequest struct for ImportUploadedBackupRequest
-type ImportUploadedBackupRequest struct {
+// CreateUploadedConfigurationRequest struct for CreateUploadedConfigurationRequest
+type CreateUploadedConfigurationRequest struct {
 	// JSON file containing the objects to be imported.
 	Data *os.File `json:"data"`
-	// Name that will be assigned to the uploaded file.
+	// Name that will be assigned to the uploaded configuration file.
 	Name string `json:"name"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _ImportUploadedBackupRequest ImportUploadedBackupRequest
+type _CreateUploadedConfigurationRequest CreateUploadedConfigurationRequest
 
-// NewImportUploadedBackupRequest instantiates a new ImportUploadedBackupRequest object
+// NewCreateUploadedConfigurationRequest instantiates a new CreateUploadedConfigurationRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewImportUploadedBackupRequest(data *os.File, name string) *ImportUploadedBackupRequest {
-	this := ImportUploadedBackupRequest{}
+func NewCreateUploadedConfigurationRequest(data *os.File, name string) *CreateUploadedConfigurationRequest {
+	this := CreateUploadedConfigurationRequest{}
 	this.Data = data
 	this.Name = name
 	return &this
 }
 
-// NewImportUploadedBackupRequestWithDefaults instantiates a new ImportUploadedBackupRequest object
+// NewCreateUploadedConfigurationRequestWithDefaults instantiates a new CreateUploadedConfigurationRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewImportUploadedBackupRequestWithDefaults() *ImportUploadedBackupRequest {
-	this := ImportUploadedBackupRequest{}
+func NewCreateUploadedConfigurationRequestWithDefaults() *CreateUploadedConfigurationRequest {
+	this := CreateUploadedConfigurationRequest{}
 	return &this
 }
 
 // GetData returns the Data field value
-func (o *ImportUploadedBackupRequest) GetData() *os.File {
+func (o *CreateUploadedConfigurationRequest) GetData() *os.File {
 	if o == nil {
 		var ret *os.File
 		return ret
@@ -61,7 +61,7 @@ func (o *ImportUploadedBackupRequest) GetData() *os.File {
 
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
-func (o *ImportUploadedBackupRequest) GetDataOk() (**os.File, bool) {
+func (o *CreateUploadedConfigurationRequest) GetDataOk() (**os.File, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -69,12 +69,12 @@ func (o *ImportUploadedBackupRequest) GetDataOk() (**os.File, bool) {
 }
 
 // SetData sets field value
-func (o *ImportUploadedBackupRequest) SetData(v *os.File) {
+func (o *CreateUploadedConfigurationRequest) SetData(v *os.File) {
 	o.Data = v
 }
 
 // GetName returns the Name field value
-func (o *ImportUploadedBackupRequest) GetName() string {
+func (o *CreateUploadedConfigurationRequest) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -85,7 +85,7 @@ func (o *ImportUploadedBackupRequest) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *ImportUploadedBackupRequest) GetNameOk() (*string, bool) {
+func (o *CreateUploadedConfigurationRequest) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,11 +93,11 @@ func (o *ImportUploadedBackupRequest) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *ImportUploadedBackupRequest) SetName(v string) {
+func (o *CreateUploadedConfigurationRequest) SetName(v string) {
 	o.Name = v
 }
 
-func (o ImportUploadedBackupRequest) MarshalJSON() ([]byte, error) {
+func (o CreateUploadedConfigurationRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -105,7 +105,7 @@ func (o ImportUploadedBackupRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o ImportUploadedBackupRequest) ToMap() (map[string]interface{}, error) {
+func (o CreateUploadedConfigurationRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["data"] = o.Data
 	toSerialize["name"] = o.Name
@@ -117,7 +117,7 @@ func (o ImportUploadedBackupRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ImportUploadedBackupRequest) UnmarshalJSON(data []byte) (err error) {
+func (o *CreateUploadedConfigurationRequest) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -140,15 +140,15 @@ func (o *ImportUploadedBackupRequest) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varImportUploadedBackupRequest := _ImportUploadedBackupRequest{}
+	varCreateUploadedConfigurationRequest := _CreateUploadedConfigurationRequest{}
 
-	err = json.Unmarshal(data, &varImportUploadedBackupRequest)
+	err = json.Unmarshal(data, &varCreateUploadedConfigurationRequest)
 
 	if err != nil {
 		return err
 	}
 
-	*o = ImportUploadedBackupRequest(varImportUploadedBackupRequest)
+	*o = CreateUploadedConfigurationRequest(varCreateUploadedConfigurationRequest)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -161,38 +161,38 @@ func (o *ImportUploadedBackupRequest) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableImportUploadedBackupRequest struct {
-	value *ImportUploadedBackupRequest
+type NullableCreateUploadedConfigurationRequest struct {
+	value *CreateUploadedConfigurationRequest
 	isSet bool
 }
 
-func (v NullableImportUploadedBackupRequest) Get() *ImportUploadedBackupRequest {
+func (v NullableCreateUploadedConfigurationRequest) Get() *CreateUploadedConfigurationRequest {
 	return v.value
 }
 
-func (v *NullableImportUploadedBackupRequest) Set(val *ImportUploadedBackupRequest) {
+func (v *NullableCreateUploadedConfigurationRequest) Set(val *CreateUploadedConfigurationRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableImportUploadedBackupRequest) IsSet() bool {
+func (v NullableCreateUploadedConfigurationRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableImportUploadedBackupRequest) Unset() {
+func (v *NullableCreateUploadedConfigurationRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableImportUploadedBackupRequest(val *ImportUploadedBackupRequest) *NullableImportUploadedBackupRequest {
-	return &NullableImportUploadedBackupRequest{value: val, isSet: true}
+func NewNullableCreateUploadedConfigurationRequest(val *CreateUploadedConfigurationRequest) *NullableCreateUploadedConfigurationRequest {
+	return &NullableCreateUploadedConfigurationRequest{value: val, isSet: true}
 }
 
-func (v NullableImportUploadedBackupRequest) MarshalJSON() ([]byte, error) {
+func (v NullableCreateUploadedConfigurationRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableImportUploadedBackupRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableCreateUploadedConfigurationRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
