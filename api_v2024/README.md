@@ -200,12 +200,14 @@ Class | Method | HTTP request | Description
 *CertificationsAPI* | [**SubmitReassignCertsAsync**](docs/CertificationsAPI.md#submitreassigncertsasync) | **Post** /certifications/{id}/reassign-async | Reassign Certifications Asynchronously
 *ConfigurationHubAPI* | [**CreateObjectMapping**](docs/ConfigurationHubAPI.md#createobjectmapping) | **Post** /configuration-hub/object-mappings/{sourceOrg} | Creates an object mapping
 *ConfigurationHubAPI* | [**CreateObjectMappings**](docs/ConfigurationHubAPI.md#createobjectmappings) | **Post** /configuration-hub/object-mappings/{sourceOrg}/bulk-create | Bulk creates object mappings
+*ConfigurationHubAPI* | [**DeleteDraft**](docs/ConfigurationHubAPI.md#deletedraft) | **Delete** /configuration-hub/drafts/{id} | Delete a draft
 *ConfigurationHubAPI* | [**DeleteObjectMapping**](docs/ConfigurationHubAPI.md#deleteobjectmapping) | **Delete** /configuration-hub/object-mappings/{sourceOrg}/{objectMappingId} | Deletes an object mapping
 *ConfigurationHubAPI* | [**DeleteUploadedBackup**](docs/ConfigurationHubAPI.md#deleteuploadedbackup) | **Delete** /configuration-hub/backups/uploads/{id} | Deletes an uploaded backup file
 *ConfigurationHubAPI* | [**GetObjectMappings**](docs/ConfigurationHubAPI.md#getobjectmappings) | **Get** /configuration-hub/object-mappings/{sourceOrg} | Gets list of object mappings
 *ConfigurationHubAPI* | [**GetUploadedBackup**](docs/ConfigurationHubAPI.md#getuploadedbackup) | **Get** /configuration-hub/backups/uploads/{id} | Get an uploaded backup&#39;s information
 *ConfigurationHubAPI* | [**GetUploadedBackups**](docs/ConfigurationHubAPI.md#getuploadedbackups) | **Get** /configuration-hub/backups/uploads | Gets list of Uploaded backups
 *ConfigurationHubAPI* | [**ImportUploadedBackup**](docs/ConfigurationHubAPI.md#importuploadedbackup) | **Post** /configuration-hub/backups/uploads | Uploads a backup file
+*ConfigurationHubAPI* | [**ListDrafts**](docs/ConfigurationHubAPI.md#listdrafts) | **Get** /configuration-hub/drafts | List Drafts
 *ConfigurationHubAPI* | [**UpdateObjectMappings**](docs/ConfigurationHubAPI.md#updateobjectmappings) | **Post** /configuration-hub/object-mappings/{sourceOrg}/bulk-patch | Bulk updates object mappings
 *ConnectorRuleManagementAPI* | [**CreateConnectorRule**](docs/ConnectorRuleManagementAPI.md#createconnectorrule) | **Post** /connector-rules | Create Connector Rule
 *ConnectorRuleManagementAPI* | [**DeleteConnectorRule**](docs/ConnectorRuleManagementAPI.md#deleteconnectorrule) | **Delete** /connector-rules/{id} | Delete a Connector-Rule
@@ -815,6 +817,7 @@ Class | Method | HTTP request | Description
  - [ApprovalBatch](docs/ApprovalBatch.md)
  - [ApprovalComment](docs/ApprovalComment.md)
  - [ApprovalComment1](docs/ApprovalComment1.md)
+ - [ApprovalComment2](docs/ApprovalComment2.md)
  - [ApprovalDescription](docs/ApprovalDescription.md)
  - [ApprovalDto](docs/ApprovalDto.md)
  - [ApprovalForwardHistory](docs/ApprovalForwardHistory.md)
@@ -988,6 +991,7 @@ Class | Method | HTTP request | Description
  - [DocumentType](docs/DocumentType.md)
  - [DomainAddress](docs/DomainAddress.md)
  - [DomainStatusDto](docs/DomainStatusDto.md)
+ - [DraftResponse](docs/DraftResponse.md)
  - [DtoType](docs/DtoType.md)
  - [EmailNotificationOption](docs/EmailNotificationOption.md)
  - [EmailStatusDto](docs/EmailStatusDto.md)

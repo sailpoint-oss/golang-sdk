@@ -229,6 +229,7 @@ docs/Approval1.md
 docs/ApprovalBatch.md
 docs/ApprovalComment.md
 docs/ApprovalComment1.md
+docs/ApprovalComment2.md
 docs/ApprovalDescription.md
 docs/ApprovalDto.md
 docs/ApprovalForwardHistory.md
@@ -416,6 +417,7 @@ docs/DkimAttributes.md
 docs/DocumentType.md
 docs/DomainAddress.md
 docs/DomainStatusDto.md
+docs/DraftResponse.md
 docs/DtoType.md
 docs/EmailNotificationOption.md
 docs/EmailStatusDto.md
@@ -1281,6 +1283,7 @@ model_approval_1.go
 model_approval_batch.go
 model_approval_comment.go
 model_approval_comment_1.go
+model_approval_comment_2.go
 model_approval_description.go
 model_approval_dto.go
 model_approval_forward_history.go
@@ -1454,6 +1457,7 @@ model_dkim_attributes.go
 model_document_type.go
 model_domain_address.go
 model_domain_status_dto.go
+model_draft_response.go
 model_dto_type.go
 model_email_notification_option.go
 model_email_status_dto.go

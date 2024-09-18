@@ -4,15 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Author** | Pointer to [**ApprovalIdentity**](ApprovalIdentity.md) |  | [optional] 
-**Comment** | Pointer to **string** | Comment to be left on an approval | [optional] 
-**CreatedDate** | Pointer to **string** | Date the comment was created | [optional] 
+**Comment** | **string** | Comment provided either by the approval requester or the approver. | 
+**Timestamp** | **time.Time** | The time when this comment was provided. | 
+**User** | **string** | Name of the user that provided this comment. | 
+**Id** | **string** | Id of the user that provided this comment. | 
+**ChangedToStatus** | **string** | Status transition of the draft. | 
 
 ## Methods
 
 ### NewApprovalComment
 
-`func NewApprovalComment() *ApprovalComment`
+`func NewApprovalComment(comment string, timestamp time.Time, user string, id string, changedToStatus string, ) *ApprovalComment`
 
 NewApprovalComment instantiates a new ApprovalComment object
 This constructor will assign default values to properties that have it defined,
@@ -26,31 +28,6 @@ will change when the set of required properties is changed
 NewApprovalCommentWithDefaults instantiates a new ApprovalComment object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetAuthor
-
-`func (o *ApprovalComment) GetAuthor() ApprovalIdentity`
-
-GetAuthor returns the Author field if non-nil, zero value otherwise.
-
-### GetAuthorOk
-
-`func (o *ApprovalComment) GetAuthorOk() (*ApprovalIdentity, bool)`
-
-GetAuthorOk returns a tuple with the Author field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAuthor
-
-`func (o *ApprovalComment) SetAuthor(v ApprovalIdentity)`
-
-SetAuthor sets Author field to given value.
-
-### HasAuthor
-
-`func (o *ApprovalComment) HasAuthor() bool`
-
-HasAuthor returns a boolean if a field has been set.
 
 ### GetComment
 
@@ -71,36 +48,86 @@ and a boolean to check if the value has been set.
 
 SetComment sets Comment field to given value.
 
-### HasComment
 
-`func (o *ApprovalComment) HasComment() bool`
+### GetTimestamp
 
-HasComment returns a boolean if a field has been set.
+`func (o *ApprovalComment) GetTimestamp() time.Time`
 
-### GetCreatedDate
+GetTimestamp returns the Timestamp field if non-nil, zero value otherwise.
 
-`func (o *ApprovalComment) GetCreatedDate() string`
+### GetTimestampOk
 
-GetCreatedDate returns the CreatedDate field if non-nil, zero value otherwise.
+`func (o *ApprovalComment) GetTimestampOk() (*time.Time, bool)`
 
-### GetCreatedDateOk
-
-`func (o *ApprovalComment) GetCreatedDateOk() (*string, bool)`
-
-GetCreatedDateOk returns a tuple with the CreatedDate field if it's non-nil, zero value otherwise
+GetTimestampOk returns a tuple with the Timestamp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCreatedDate
+### SetTimestamp
 
-`func (o *ApprovalComment) SetCreatedDate(v string)`
+`func (o *ApprovalComment) SetTimestamp(v time.Time)`
 
-SetCreatedDate sets CreatedDate field to given value.
+SetTimestamp sets Timestamp field to given value.
 
-### HasCreatedDate
 
-`func (o *ApprovalComment) HasCreatedDate() bool`
+### GetUser
 
-HasCreatedDate returns a boolean if a field has been set.
+`func (o *ApprovalComment) GetUser() string`
+
+GetUser returns the User field if non-nil, zero value otherwise.
+
+### GetUserOk
+
+`func (o *ApprovalComment) GetUserOk() (*string, bool)`
+
+GetUserOk returns a tuple with the User field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUser
+
+`func (o *ApprovalComment) SetUser(v string)`
+
+SetUser sets User field to given value.
+
+
+### GetId
+
+`func (o *ApprovalComment) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *ApprovalComment) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *ApprovalComment) SetId(v string)`
+
+SetId sets Id field to given value.
+
+
+### GetChangedToStatus
+
+`func (o *ApprovalComment) GetChangedToStatus() string`
+
+GetChangedToStatus returns the ChangedToStatus field if non-nil, zero value otherwise.
+
+### GetChangedToStatusOk
+
+`func (o *ApprovalComment) GetChangedToStatusOk() (*string, bool)`
+
+GetChangedToStatusOk returns a tuple with the ChangedToStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChangedToStatus
+
+`func (o *ApprovalComment) SetChangedToStatus(v string)`
+
+SetChangedToStatus sets ChangedToStatus field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

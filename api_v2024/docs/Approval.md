@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to [**[]ApprovalDescription**](ApprovalDescription.md) | The description of the approval for a given locale | [optional] 
 **Priority** | Pointer to **string** | The priority of the approval | [optional] 
 **Requester** | Pointer to [**ApprovalIdentity**](ApprovalIdentity.md) | Object representation of the requester of the approval | [optional] 
-**Comments** | Pointer to [**[]ApprovalComment**](ApprovalComment.md) | Object representation of a comment on the approval | [optional] 
+**Comments** | Pointer to [**[]ApprovalComment1**](ApprovalComment1.md) | Object representation of a comment on the approval | [optional] 
 **ApprovedBy** | Pointer to [**[]ApprovalIdentity**](ApprovalIdentity.md) | Array of approvers who have approved the approval | [optional] 
 **RejectedBy** | Pointer to [**[]ApprovalIdentity**](ApprovalIdentity.md) | Array of approvers who have rejected the approval | [optional] 
 **CompletedDate** | Pointer to **string** | Date the approval was completed | [optional] 
@@ -268,20 +268,20 @@ HasRequester returns a boolean if a field has been set.
 
 ### GetComments
 
-`func (o *Approval) GetComments() []ApprovalComment`
+`func (o *Approval) GetComments() []ApprovalComment1`
 
 GetComments returns the Comments field if non-nil, zero value otherwise.
 
 ### GetCommentsOk
 
-`func (o *Approval) GetCommentsOk() (*[]ApprovalComment, bool)`
+`func (o *Approval) GetCommentsOk() (*[]ApprovalComment1, bool)`
 
 GetCommentsOk returns a tuple with the Comments field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetComments
 
-`func (o *Approval) SetComments(v []ApprovalComment)`
+`func (o *Approval) SetComments(v []ApprovalComment1)`
 
 SetComments sets Comments field to given value.
 

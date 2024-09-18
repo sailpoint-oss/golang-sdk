@@ -20,7 +20,7 @@ var _ MappedNullable = &Approval1{}
 
 // Approval1 struct for Approval1
 type Approval1 struct {
-	Comments []ApprovalComment1 `json:"comments,omitempty"`
+	Comments []ApprovalComment2 `json:"comments,omitempty"`
 	// A date-time in ISO-8601 format
 	Created NullableTime `json:"created,omitempty"`
 	// A date-time in ISO-8601 format
@@ -52,9 +52,9 @@ func NewApproval1WithDefaults() *Approval1 {
 }
 
 // GetComments returns the Comments field value if set, zero value otherwise.
-func (o *Approval1) GetComments() []ApprovalComment1 {
+func (o *Approval1) GetComments() []ApprovalComment2 {
 	if o == nil || IsNil(o.Comments) {
-		var ret []ApprovalComment1
+		var ret []ApprovalComment2
 		return ret
 	}
 	return o.Comments
@@ -62,7 +62,7 @@ func (o *Approval1) GetComments() []ApprovalComment1 {
 
 // GetCommentsOk returns a tuple with the Comments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Approval1) GetCommentsOk() ([]ApprovalComment1, bool) {
+func (o *Approval1) GetCommentsOk() ([]ApprovalComment2, bool) {
 	if o == nil || IsNil(o.Comments) {
 		return nil, false
 	}
@@ -78,8 +78,8 @@ func (o *Approval1) HasComments() bool {
 	return false
 }
 
-// SetComments gets a reference to the given []ApprovalComment1 and assigns it to the Comments field.
-func (o *Approval1) SetComments(v []ApprovalComment1) {
+// SetComments gets a reference to the given []ApprovalComment2 and assigns it to the Comments field.
+func (o *Approval1) SetComments(v []ApprovalComment2) {
 	o.Comments = v
 }
 

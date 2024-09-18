@@ -6,12 +6,14 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateObjectMapping**](ConfigurationHubAPI.md#CreateObjectMapping) | **Post** /configuration-hub/object-mappings/{sourceOrg} | Creates an object mapping
 [**CreateObjectMappings**](ConfigurationHubAPI.md#CreateObjectMappings) | **Post** /configuration-hub/object-mappings/{sourceOrg}/bulk-create | Bulk creates object mappings
+[**DeleteDraft**](ConfigurationHubAPI.md#DeleteDraft) | **Delete** /configuration-hub/drafts/{id} | Delete a draft
 [**DeleteObjectMapping**](ConfigurationHubAPI.md#DeleteObjectMapping) | **Delete** /configuration-hub/object-mappings/{sourceOrg}/{objectMappingId} | Deletes an object mapping
 [**DeleteUploadedBackup**](ConfigurationHubAPI.md#DeleteUploadedBackup) | **Delete** /configuration-hub/backups/uploads/{id} | Deletes an uploaded backup file
 [**GetObjectMappings**](ConfigurationHubAPI.md#GetObjectMappings) | **Get** /configuration-hub/object-mappings/{sourceOrg} | Gets list of object mappings
 [**GetUploadedBackup**](ConfigurationHubAPI.md#GetUploadedBackup) | **Get** /configuration-hub/backups/uploads/{id} | Get an uploaded backup&#39;s information
 [**GetUploadedBackups**](ConfigurationHubAPI.md#GetUploadedBackups) | **Get** /configuration-hub/backups/uploads | Gets list of Uploaded backups
 [**ImportUploadedBackup**](ConfigurationHubAPI.md#ImportUploadedBackup) | **Post** /configuration-hub/backups/uploads | Uploads a backup file
+[**ListDrafts**](ConfigurationHubAPI.md#ListDrafts) | **Get** /configuration-hub/drafts | List Drafts
 [**UpdateObjectMappings**](ConfigurationHubAPI.md#UpdateObjectMappings) | **Post** /configuration-hub/object-mappings/{sourceOrg}/bulk-patch | Bulk updates object mappings
 
 
@@ -153,6 +155,74 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteDraft
+
+> DeleteDraft(ctx, id).Execute()
+
+Delete a draft
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+	id := "07659d7d-2cce-47c0-9e49-185787ee565a" // string | The id of the draft to delete.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ConfigurationHubAPI.DeleteDraft(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.DeleteDraft``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The id of the draft to delete. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteDraftRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -566,6 +636,72 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListDrafts
+
+> []DraftResponse ListDrafts(ctx).Filters(filters).Execute()
+
+List Drafts
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+	filters := "status eq "COMPLETE"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq*  **approvalStatus**: *eq* (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ConfigurationHubAPI.ListDrafts(context.Background()).Filters(filters).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.ListDrafts``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListDrafts`: []DraftResponse
+	fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.ListDrafts`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListDraftsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq*  **approvalStatus**: *eq* | 
+
+### Return type
+
+[**[]DraftResponse**](DraftResponse.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

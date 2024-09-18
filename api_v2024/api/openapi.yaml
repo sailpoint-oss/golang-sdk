@@ -413,15 +413,17 @@ tags:
     \ the certification campaign completes once all the remediation requests are completed.\n"
   name: Certifications
 - description: |
-    Upload configurations and manage object mappings between tenants.
+    Use this API to implement and customize configuration settings management. With this functionality, you can access the Configuration Hub actions and build your own automated pipeline for Identity Security Cloud configuration change delivery and deployment.
 
-    Configuration files can be managed and deployed using Configuration Hub by uploading a JSON file which contains configuration data.
+    Common usages for Configuration Hub includes:
 
-    The function of object mapping allows objects with varying names and IDs to be compared. While objects are compared, a user can replace a value in the source tenant with a new value. Object mapping also helps in locating referenced objects to the source object during the drafting process.
+    - Upload configuration file - Configuration files can be managed and deployed using Configuration Hub by uploading a JSON file which contains configuration data.
+    - Manage object mapping - Create rules to map and substitute attributes when migrating configurations.
+    - Manage backups for configuration settings
+    - Manage configuration drafts
+    - Upload configurations and manage object mappings between tenants.
 
-    Refer to [Uploading a Configuration File](https://documentation.sailpoint.com/saas/help/confighub/config_hub.html#uploading-a-configuration-file) for more information about uploading Configuration Files
-
-    Refer to [Mapping Objects](https://documentation.sailpoint.com/saas/help/confighub/config_hub.html#mapping-objects) for more information about object mappings.
+    Refer to [Using the SailPoint Configuration Hub](https://documentation.sailpoint.com/saas/help/confighub/config_hub.html) for more information about Configuration Hub.
   name: Configuration Hub
 - name: Connector Rule Management
 - description: |
@@ -12284,6 +12286,219 @@ paths:
       - UserContextAuth:
         - sp:config-backups:read
       summary: Get an uploaded backup's information
+      tags:
+      - Configuration Hub
+  /configuration-hub/drafts:
+    get:
+      description: This API gets a list of existing drafts for the current tenant.
+      operationId: listDrafts
+      parameters:
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **status**: *eq*
+
+          **approvalStatus**: *eq*
+        example: status eq "COMPLETE"
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - jobId: 07659d7d-2cce-47c0-9e49-185787ee565a
+                status: COMPLETE
+                type: CREATE_DRAFT
+                message: Draft creation message
+                requesterName: Requester Name
+                fileExists: true
+                created: 2024-08-16T14:16:58.389Z
+                completed: 2024-08-16T14:17:12.355Z
+                name: Draft Name
+                sourceTenant: source-tenant
+                sourceBackupId: 9393e1f5-bed6-4fa8-80fb-6f86b19bd3d6
+                sourceBackupName: Source Backup Name
+                mode: RESTORE
+                approvalStatus: DEFAULT
+                approvalComment:
+                - comment: Approval comment
+                  timestamp: 2024-08-26T19:32:46.384137Z
+                  user: User name
+                  id: User id
+                  changedToStatus: PENDING_FOR_APPROVAL
+              schema:
+                items:
+                  $ref: '#/components/schemas/DraftResponse'
+                type: array
+          description: List of existing drafts.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - sp:config-draft:read
+        - sp:config-draft:manage
+      summary: List Drafts
+      tags:
+      - Configuration Hub
+  /configuration-hub/drafts/{id}:
+    delete:
+      description: |-
+        This API deletes an existing draft for the current tenant.
+
+        On success, this endpoint will return an empty response.
+
+        The draft id can be obtained from the response after a draft was successfully created, or from the list drafts endpoint.
+      operationId: deleteDraft
+      parameters:
+      - description: The id of the draft to delete.
+        example: 07659d7d-2cce-47c0-9e49-185787ee565a
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - sp:config-draft:manage
+      summary: Delete a draft
       tags:
       - Configuration Hub
   /connectors/{scriptName}:
@@ -77951,6 +78166,130 @@ components:
       - status
       - type
       type: object
+    DraftResponse:
+      example:
+        approvalStatus: APPROVED
+        sourceTenant: source-tenant
+        created: 2021-05-11T22:23:16Z
+        sourceBackupName: Source backup name
+        fileExists: true
+        completed: 2021-05-11T22:23:16Z
+        type: CREATE_DRAFT
+        message: Draft creation message
+        sourceBackupId: 549bf881-1ac4-4a64-9acf-6014e8a3a887
+        mode: RESTORE
+        jobId: 07659d7d-2cce-47c0-9e49-185787ee565a
+        approvalComment:
+        - changedToStatus: PENDING_APPROVAL
+          comment: Approval comment
+          id: 549bf881-1ac4-4a64-9acf-6014e8a3a887
+          user: user.name
+          timestamp: 2021-05-11T22:23:16Z
+        - changedToStatus: PENDING_APPROVAL
+          comment: Approval comment
+          id: 549bf881-1ac4-4a64-9acf-6014e8a3a887
+          user: user.name
+          timestamp: 2021-05-11T22:23:16Z
+        requesterName: requester.name
+        name: Draft name
+        modified: 2021-05-11T22:23:16Z
+        status: COMPLETE
+      properties:
+        jobId:
+          description: Unique id assigned to this job.
+          example: 07659d7d-2cce-47c0-9e49-185787ee565a
+          type: string
+        status:
+          description: Status of the job.
+          enum:
+          - NOT_STARTED
+          - IN_PROGRESS
+          - COMPLETE
+          - CANCELLED
+          - FAILED
+          example: COMPLETE
+          type: string
+        type:
+          description: "Type of the job, will always be CREATE_DRAFT for this type\
+            \ of job."
+          enum:
+          - CREATE_DRAFT
+          example: CREATE_DRAFT
+          type: string
+        message:
+          description: Message providing information about the outcome of the draft
+            process.
+          example: Draft creation message
+          type: string
+        requesterName:
+          description: The name of user that that initiated the draft process.
+          example: requester.name
+          type: string
+        fileExists:
+          default: true
+          description: Whether or not a file was generated for this draft.
+          example: true
+          type: boolean
+        created:
+          description: The time the job was started.
+          example: 2021-05-11T22:23:16Z
+          format: date-time
+          type: string
+        modified:
+          description: The time of the last update to the job.
+          example: 2021-05-11T22:23:16Z
+          format: date-time
+          type: string
+        completed:
+          description: The time the job was completed.
+          example: 2021-05-11T22:23:16Z
+          format: date-time
+          type: string
+        name:
+          description: Name of the draft.
+          example: Draft name
+          type: string
+        sourceTenant:
+          description: Tenant owner of the backup from which the draft was generated.
+          example: source-tenant
+          type: string
+        sourceBackupId:
+          description: Id of the backup from which the draft was generated.
+          example: 549bf881-1ac4-4a64-9acf-6014e8a3a887
+          type: string
+        sourceBackupName:
+          description: Name of the backup from which the draft was generated.
+          example: Source backup name
+          type: string
+        mode:
+          description: |-
+            Denotes the origin of the source backup from which the draft was generated.
+            - RESTORE - Same tenant.
+            - PROMOTE - Different tenant.
+            - UPLOAD - Uploaded configuration.
+          enum:
+          - RESTORE
+          - PROMOTE
+          - UPLOAD
+          example: RESTORE
+          type: string
+        approvalStatus:
+          description: Approval status of the draft used to determine whether or not
+            the draft can be deployed.
+          enum:
+          - DEFAULT
+          - PENDING_APPROVAL
+          - APPROVED
+          - DENIED
+          example: APPROVED
+          type: string
+        approvalComment:
+          description: List of comments that have been exchanged between an approval
+            requester and an approver.
+          items:
+            $ref: '#/components/schemas/ApprovalComment'
+          type: array
+      type: object
     ConnectorDetail:
       example:
         applicationXml: |
@@ -85979,7 +86318,7 @@ components:
         comments:
           description: Object representation of a comment on the approval
           items:
-            $ref: '#/components/schemas/ApprovalComment'
+            $ref: '#/components/schemas/ApprovalComment_1'
           type: array
         approvedBy:
           description: Array of approvers who have approved the approval
@@ -95060,6 +95399,47 @@ components:
             $ref: '#/components/schemas/ReviewableEntitlement'
           type: array
       type: object
+    ApprovalComment:
+      example:
+        changedToStatus: PENDING_APPROVAL
+        comment: Approval comment
+        id: 549bf881-1ac4-4a64-9acf-6014e8a3a887
+        user: user.name
+        timestamp: 2021-05-11T22:23:16Z
+      properties:
+        comment:
+          description: Comment provided either by the approval requester or the approver.
+          example: Approval comment
+          type: string
+        timestamp:
+          description: The time when this comment was provided.
+          example: 2021-05-11T22:23:16Z
+          format: date-time
+          type: string
+        user:
+          description: Name of the user that provided this comment.
+          example: user.name
+          type: string
+        id:
+          description: Id of the user that provided this comment.
+          example: 549bf881-1ac4-4a64-9acf-6014e8a3a887
+          type: string
+        changedToStatus:
+          description: Status transition of the draft.
+          enum:
+          - PENDING_APPROVAL
+          - APPROVED
+          - REJECTED
+          example: PENDING_APPROVAL
+          type: string
+      required:
+      - changedToStatus
+      - comment
+      - id
+      - timestamp
+      - user
+      title: Approval Comment
+      type: object
     EmailNotificationOption:
       description: This is used for representing email configuration for a lifecycle
         state
@@ -97344,7 +97724,7 @@ components:
           example: en_US
           type: string
       type: object
-    ApprovalComment:
+    ApprovalComment_1:
       description: Comments Object
       example:
         createdDate: 2023-04-12T23:20:50.52Z
@@ -100372,7 +100752,7 @@ components:
       properties:
         comments:
           items:
-            $ref: '#/components/schemas/ApprovalComment_1'
+            $ref: '#/components/schemas/ApprovalComment_2'
           type: array
         created:
           description: A date-time in ISO-8601 format
@@ -102372,7 +102752,7 @@ components:
       - role
       example: identity
       type: string
-    ApprovalComment_1:
+    ApprovalComment_2:
       properties:
         comment:
           description: The comment text

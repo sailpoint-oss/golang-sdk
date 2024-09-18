@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Comments** | Pointer to [**[]ApprovalComment1**](ApprovalComment1.md) |  | [optional] 
+**Comments** | Pointer to [**[]ApprovalComment2**](ApprovalComment2.md) |  | [optional] 
 **Created** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
 **Modified** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
 **Owner** | Pointer to [**AccountSource**](AccountSource.md) |  | [optional] 
@@ -32,20 +32,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetComments
 
-`func (o *Approval1) GetComments() []ApprovalComment1`
+`func (o *Approval1) GetComments() []ApprovalComment2`
 
 GetComments returns the Comments field if non-nil, zero value otherwise.
 
 ### GetCommentsOk
 
-`func (o *Approval1) GetCommentsOk() (*[]ApprovalComment1, bool)`
+`func (o *Approval1) GetCommentsOk() (*[]ApprovalComment2, bool)`
 
 GetCommentsOk returns a tuple with the Comments field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetComments
 
-`func (o *Approval1) SetComments(v []ApprovalComment1)`
+`func (o *Approval1) SetComments(v []ApprovalComment2)`
 
 SetComments sets Comments field to given value.
 

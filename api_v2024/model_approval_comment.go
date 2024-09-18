@@ -12,18 +12,25 @@ package api_v2024
 
 import (
 	"encoding/json"
+	"time"
+	"fmt"
 )
 
 // checks if the ApprovalComment type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ApprovalComment{}
 
-// ApprovalComment Comments Object
+// ApprovalComment struct for ApprovalComment
 type ApprovalComment struct {
-	Author *ApprovalIdentity `json:"author,omitempty"`
-	// Comment to be left on an approval
-	Comment *string `json:"comment,omitempty"`
-	// Date the comment was created
-	CreatedDate *string `json:"createdDate,omitempty"`
+	// Comment provided either by the approval requester or the approver.
+	Comment string `json:"comment"`
+	// The time when this comment was provided.
+	Timestamp time.Time `json:"timestamp"`
+	// Name of the user that provided this comment.
+	User string `json:"user"`
+	// Id of the user that provided this comment.
+	Id string `json:"id"`
+	// Status transition of the draft.
+	ChangedToStatus string `json:"changedToStatus"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -33,8 +40,13 @@ type _ApprovalComment ApprovalComment
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApprovalComment() *ApprovalComment {
+func NewApprovalComment(comment string, timestamp time.Time, user string, id string, changedToStatus string) *ApprovalComment {
 	this := ApprovalComment{}
+	this.Comment = comment
+	this.Timestamp = timestamp
+	this.User = user
+	this.Id = id
+	this.ChangedToStatus = changedToStatus
 	return &this
 }
 
@@ -46,100 +58,124 @@ func NewApprovalCommentWithDefaults() *ApprovalComment {
 	return &this
 }
 
-// GetAuthor returns the Author field value if set, zero value otherwise.
-func (o *ApprovalComment) GetAuthor() ApprovalIdentity {
-	if o == nil || IsNil(o.Author) {
-		var ret ApprovalIdentity
-		return ret
-	}
-	return *o.Author
-}
-
-// GetAuthorOk returns a tuple with the Author field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApprovalComment) GetAuthorOk() (*ApprovalIdentity, bool) {
-	if o == nil || IsNil(o.Author) {
-		return nil, false
-	}
-	return o.Author, true
-}
-
-// HasAuthor returns a boolean if a field has been set.
-func (o *ApprovalComment) HasAuthor() bool {
-	if o != nil && !IsNil(o.Author) {
-		return true
-	}
-
-	return false
-}
-
-// SetAuthor gets a reference to the given ApprovalIdentity and assigns it to the Author field.
-func (o *ApprovalComment) SetAuthor(v ApprovalIdentity) {
-	o.Author = &v
-}
-
-// GetComment returns the Comment field value if set, zero value otherwise.
+// GetComment returns the Comment field value
 func (o *ApprovalComment) GetComment() string {
-	if o == nil || IsNil(o.Comment) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Comment
+
+	return o.Comment
 }
 
-// GetCommentOk returns a tuple with the Comment field value if set, nil otherwise
+// GetCommentOk returns a tuple with the Comment field value
 // and a boolean to check if the value has been set.
 func (o *ApprovalComment) GetCommentOk() (*string, bool) {
-	if o == nil || IsNil(o.Comment) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Comment, true
+	return &o.Comment, true
 }
 
-// HasComment returns a boolean if a field has been set.
-func (o *ApprovalComment) HasComment() bool {
-	if o != nil && !IsNil(o.Comment) {
-		return true
+// SetComment sets field value
+func (o *ApprovalComment) SetComment(v string) {
+	o.Comment = v
+}
+
+// GetTimestamp returns the Timestamp field value
+func (o *ApprovalComment) GetTimestamp() time.Time {
+	if o == nil {
+		var ret time.Time
+		return ret
 	}
 
-	return false
+	return o.Timestamp
 }
 
-// SetComment gets a reference to the given string and assigns it to the Comment field.
-func (o *ApprovalComment) SetComment(v string) {
-	o.Comment = &v
+// GetTimestampOk returns a tuple with the Timestamp field value
+// and a boolean to check if the value has been set.
+func (o *ApprovalComment) GetTimestampOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Timestamp, true
 }
 
-// GetCreatedDate returns the CreatedDate field value if set, zero value otherwise.
-func (o *ApprovalComment) GetCreatedDate() string {
-	if o == nil || IsNil(o.CreatedDate) {
+// SetTimestamp sets field value
+func (o *ApprovalComment) SetTimestamp(v time.Time) {
+	o.Timestamp = v
+}
+
+// GetUser returns the User field value
+func (o *ApprovalComment) GetUser() string {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.CreatedDate
+
+	return o.User
 }
 
-// GetCreatedDateOk returns a tuple with the CreatedDate field value if set, nil otherwise
+// GetUserOk returns a tuple with the User field value
 // and a boolean to check if the value has been set.
-func (o *ApprovalComment) GetCreatedDateOk() (*string, bool) {
-	if o == nil || IsNil(o.CreatedDate) {
+func (o *ApprovalComment) GetUserOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedDate, true
+	return &o.User, true
 }
 
-// HasCreatedDate returns a boolean if a field has been set.
-func (o *ApprovalComment) HasCreatedDate() bool {
-	if o != nil && !IsNil(o.CreatedDate) {
-		return true
+// SetUser sets field value
+func (o *ApprovalComment) SetUser(v string) {
+	o.User = v
+}
+
+// GetId returns the Id field value
+func (o *ApprovalComment) GetId() string {
+	if o == nil {
+		var ret string
+		return ret
 	}
 
-	return false
+	return o.Id
 }
 
-// SetCreatedDate gets a reference to the given string and assigns it to the CreatedDate field.
-func (o *ApprovalComment) SetCreatedDate(v string) {
-	o.CreatedDate = &v
+// GetIdOk returns a tuple with the Id field value
+// and a boolean to check if the value has been set.
+func (o *ApprovalComment) GetIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Id, true
+}
+
+// SetId sets field value
+func (o *ApprovalComment) SetId(v string) {
+	o.Id = v
+}
+
+// GetChangedToStatus returns the ChangedToStatus field value
+func (o *ApprovalComment) GetChangedToStatus() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ChangedToStatus
+}
+
+// GetChangedToStatusOk returns a tuple with the ChangedToStatus field value
+// and a boolean to check if the value has been set.
+func (o *ApprovalComment) GetChangedToStatusOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ChangedToStatus, true
+}
+
+// SetChangedToStatus sets field value
+func (o *ApprovalComment) SetChangedToStatus(v string) {
+	o.ChangedToStatus = v
 }
 
 func (o ApprovalComment) MarshalJSON() ([]byte, error) {
@@ -152,15 +188,11 @@ func (o ApprovalComment) MarshalJSON() ([]byte, error) {
 
 func (o ApprovalComment) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Author) {
-		toSerialize["author"] = o.Author
-	}
-	if !IsNil(o.Comment) {
-		toSerialize["comment"] = o.Comment
-	}
-	if !IsNil(o.CreatedDate) {
-		toSerialize["createdDate"] = o.CreatedDate
-	}
+	toSerialize["comment"] = o.Comment
+	toSerialize["timestamp"] = o.Timestamp
+	toSerialize["user"] = o.User
+	toSerialize["id"] = o.Id
+	toSerialize["changedToStatus"] = o.ChangedToStatus
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -170,6 +202,31 @@ func (o ApprovalComment) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *ApprovalComment) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"comment",
+		"timestamp",
+		"user",
+		"id",
+		"changedToStatus",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varApprovalComment := _ApprovalComment{}
 
 	err = json.Unmarshal(data, &varApprovalComment)
@@ -183,9 +240,11 @@ func (o *ApprovalComment) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "author")
 		delete(additionalProperties, "comment")
-		delete(additionalProperties, "createdDate")
+		delete(additionalProperties, "timestamp")
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "changedToStatus")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -12,20 +12,18 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"time"
 )
 
 // checks if the ApprovalComment1 type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ApprovalComment1{}
 
-// ApprovalComment1 struct for ApprovalComment1
+// ApprovalComment1 Comments Object
 type ApprovalComment1 struct {
-	// The comment text
+	Author *ApprovalIdentity `json:"author,omitempty"`
+	// Comment to be left on an approval
 	Comment *string `json:"comment,omitempty"`
-	// The name of the commenter
-	Commenter *string `json:"commenter,omitempty"`
-	// A date-time in ISO-8601 format
-	Date NullableTime `json:"date,omitempty"`
+	// Date the comment was created
+	CreatedDate *string `json:"createdDate,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -46,6 +44,38 @@ func NewApprovalComment1() *ApprovalComment1 {
 func NewApprovalComment1WithDefaults() *ApprovalComment1 {
 	this := ApprovalComment1{}
 	return &this
+}
+
+// GetAuthor returns the Author field value if set, zero value otherwise.
+func (o *ApprovalComment1) GetAuthor() ApprovalIdentity {
+	if o == nil || IsNil(o.Author) {
+		var ret ApprovalIdentity
+		return ret
+	}
+	return *o.Author
+}
+
+// GetAuthorOk returns a tuple with the Author field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalComment1) GetAuthorOk() (*ApprovalIdentity, bool) {
+	if o == nil || IsNil(o.Author) {
+		return nil, false
+	}
+	return o.Author, true
+}
+
+// HasAuthor returns a boolean if a field has been set.
+func (o *ApprovalComment1) HasAuthor() bool {
+	if o != nil && !IsNil(o.Author) {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthor gets a reference to the given ApprovalIdentity and assigns it to the Author field.
+func (o *ApprovalComment1) SetAuthor(v ApprovalIdentity) {
+	o.Author = &v
 }
 
 // GetComment returns the Comment field value if set, zero value otherwise.
@@ -80,78 +110,36 @@ func (o *ApprovalComment1) SetComment(v string) {
 	o.Comment = &v
 }
 
-// GetCommenter returns the Commenter field value if set, zero value otherwise.
-func (o *ApprovalComment1) GetCommenter() string {
-	if o == nil || IsNil(o.Commenter) {
+// GetCreatedDate returns the CreatedDate field value if set, zero value otherwise.
+func (o *ApprovalComment1) GetCreatedDate() string {
+	if o == nil || IsNil(o.CreatedDate) {
 		var ret string
 		return ret
 	}
-	return *o.Commenter
+	return *o.CreatedDate
 }
 
-// GetCommenterOk returns a tuple with the Commenter field value if set, nil otherwise
+// GetCreatedDateOk returns a tuple with the CreatedDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApprovalComment1) GetCommenterOk() (*string, bool) {
-	if o == nil || IsNil(o.Commenter) {
+func (o *ApprovalComment1) GetCreatedDateOk() (*string, bool) {
+	if o == nil || IsNil(o.CreatedDate) {
 		return nil, false
 	}
-	return o.Commenter, true
+	return o.CreatedDate, true
 }
 
-// HasCommenter returns a boolean if a field has been set.
-func (o *ApprovalComment1) HasCommenter() bool {
-	if o != nil && !IsNil(o.Commenter) {
+// HasCreatedDate returns a boolean if a field has been set.
+func (o *ApprovalComment1) HasCreatedDate() bool {
+	if o != nil && !IsNil(o.CreatedDate) {
 		return true
 	}
 
 	return false
 }
 
-// SetCommenter gets a reference to the given string and assigns it to the Commenter field.
-func (o *ApprovalComment1) SetCommenter(v string) {
-	o.Commenter = &v
-}
-
-// GetDate returns the Date field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ApprovalComment1) GetDate() time.Time {
-	if o == nil || IsNil(o.Date.Get()) {
-		var ret time.Time
-		return ret
-	}
-	return *o.Date.Get()
-}
-
-// GetDateOk returns a tuple with the Date field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ApprovalComment1) GetDateOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Date.Get(), o.Date.IsSet()
-}
-
-// HasDate returns a boolean if a field has been set.
-func (o *ApprovalComment1) HasDate() bool {
-	if o != nil && o.Date.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetDate gets a reference to the given NullableTime and assigns it to the Date field.
-func (o *ApprovalComment1) SetDate(v time.Time) {
-	o.Date.Set(&v)
-}
-// SetDateNil sets the value for Date to be an explicit nil
-func (o *ApprovalComment1) SetDateNil() {
-	o.Date.Set(nil)
-}
-
-// UnsetDate ensures that no value is present for Date, not even an explicit nil
-func (o *ApprovalComment1) UnsetDate() {
-	o.Date.Unset()
+// SetCreatedDate gets a reference to the given string and assigns it to the CreatedDate field.
+func (o *ApprovalComment1) SetCreatedDate(v string) {
+	o.CreatedDate = &v
 }
 
 func (o ApprovalComment1) MarshalJSON() ([]byte, error) {
@@ -164,14 +152,14 @@ func (o ApprovalComment1) MarshalJSON() ([]byte, error) {
 
 func (o ApprovalComment1) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Author) {
+		toSerialize["author"] = o.Author
+	}
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.Commenter) {
-		toSerialize["commenter"] = o.Commenter
-	}
-	if o.Date.IsSet() {
-		toSerialize["date"] = o.Date.Get()
+	if !IsNil(o.CreatedDate) {
+		toSerialize["createdDate"] = o.CreatedDate
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -195,9 +183,9 @@ func (o *ApprovalComment1) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "author")
 		delete(additionalProperties, "comment")
-		delete(additionalProperties, "commenter")
-		delete(additionalProperties, "date")
+		delete(additionalProperties, "createdDate")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -50,6 +50,19 @@ func Test_api_v2024_ConfigurationHubAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ConfigurationHubAPIService DeleteDraft", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		httpRes, err := apiClient.ConfigurationHubAPI.DeleteDraft(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ConfigurationHubAPIService DeleteObjectMapping", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -122,6 +135,18 @@ func Test_api_v2024_ConfigurationHubAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.ConfigurationHubAPI.ImportUploadedBackup(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ConfigurationHubAPIService ListDrafts", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.ConfigurationHubAPI.ListDrafts(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
