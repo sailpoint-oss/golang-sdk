@@ -6,8 +6,10 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateManagedCluster**](ManagedClustersAPI.md#CreateManagedCluster) | **Post** /managed-clusters | Create a new Managed Cluster
 [**DeleteManagedCluster**](ManagedClustersAPI.md#DeleteManagedCluster) | **Delete** /managed-clusters/{id} | Delete a Managed Cluster
+[**GetClientLogConfiguration**](ManagedClustersAPI.md#GetClientLogConfiguration) | **Get** /managed-clusters/{id}/log-config | Get managed cluster&#39;s log configuration
 [**GetManagedCluster**](ManagedClustersAPI.md#GetManagedCluster) | **Get** /managed-clusters/{id} | Get a specified Managed Cluster.
 [**GetManagedClusters**](ManagedClustersAPI.md#GetManagedClusters) | **Get** /managed-clusters | Retrieve all Managed Clusters.
+[**PutClientLogConfiguration**](ManagedClustersAPI.md#PutClientLogConfiguration) | **Put** /managed-clusters/{id}/log-config | Update managed cluster&#39;s log configuration
 [**UpdateManagedCluster**](ManagedClustersAPI.md#UpdateManagedCluster) | **Patch** /managed-clusters/{id} | Update a Managed Cluster
 
 
@@ -133,6 +135,76 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetClientLogConfiguration
+
+> ClientLogConfiguration GetClientLogConfiguration(ctx, id).Execute()
+
+Get managed cluster's log configuration
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+	id := "2b838de9-db9b-abcf-e646-d4f274ad4238" // string | ID of ManagedCluster to get log configuration for
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ManagedClustersAPI.GetClientLogConfiguration(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.GetClientLogConfiguration``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetClientLogConfiguration`: ClientLogConfiguration
+	fmt.Fprintf(os.Stdout, "Response from `ManagedClustersAPI.GetClientLogConfiguration`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | ID of ManagedCluster to get log configuration for | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetClientLogConfigurationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ClientLogConfiguration**](ClientLogConfiguration.md)
 
 ### Authorization
 
@@ -283,6 +355,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PutClientLogConfiguration
+
+> ClientLogConfiguration PutClientLogConfiguration(ctx, id).ClientLogConfiguration(clientLogConfiguration).Execute()
+
+Update managed cluster's log configuration
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+	id := "2b838de9-db9b-abcf-e646-d4f274ad4238" // string | ID of ManagedCluster to update log configuration for
+	clientLogConfiguration := *openapiclient.NewClientLogConfiguration(int32(120), openapiclient.StandardLevel("false")) // ClientLogConfiguration | ClientLogConfiguration for given ManagedCluster
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ManagedClustersAPI.PutClientLogConfiguration(context.Background(), id).ClientLogConfiguration(clientLogConfiguration).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.PutClientLogConfiguration``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PutClientLogConfiguration`: ClientLogConfiguration
+	fmt.Fprintf(os.Stdout, "Response from `ManagedClustersAPI.PutClientLogConfiguration`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | ID of ManagedCluster to update log configuration for | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPutClientLogConfigurationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **clientLogConfiguration** | [**ClientLogConfiguration**](ClientLogConfiguration.md) | ClientLogConfiguration for given ManagedCluster | 
+
+### Return type
+
+[**ClientLogConfiguration**](ClientLogConfiguration.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

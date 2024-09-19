@@ -17086,6 +17086,217 @@ paths:
       summary: Update a Managed Cluster
       tags:
       - Managed Clusters
+  /managed-clusters/{id}/log-config:
+    get:
+      description: Get managed cluster's log configuration.
+      operationId: getClientLogConfiguration
+      parameters:
+      - description: ID of ManagedCluster to get log configuration for
+        example: 2b838de9-db9b-abcf-e646-d4f274ad4238
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientLogConfiguration'
+          description: Log configuration of ManagedCluster matching given cluster
+            ID
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:remote-client:read
+        - idn:remote-client:manage
+      summary: Get managed cluster's log configuration
+      tags:
+      - Managed Clusters
+    put:
+      description: Update managed cluster's log configuration
+      operationId: putClientLogConfiguration
+      parameters:
+      - description: ID of ManagedCluster to update log configuration for
+        example: 2b838de9-db9b-abcf-e646-d4f274ad4238
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientLogConfiguration'
+        description: ClientLogConfiguration for given ManagedCluster
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientLogConfiguration'
+          description: Responds with updated ClientLogConfiguration for given ManagedCluster
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:remote-client:manage
+      summary: Update managed cluster's log configuration
+      tags:
+      - Managed Clusters
   /mfa/okta-verify/config:
     get:
       description: This API returns the configuration of an Okta MFA method. A token
@@ -79540,6 +79751,45 @@ components:
       required:
       - name
       type: object
+    ClientLogConfiguration:
+      description: Client Runtime Logging Configuration
+      example:
+        durationMinutes: 120
+        rootLevel: INFO
+        clientId: aClientId
+        expiration: 2020-12-15T19:13:36.079Z
+        logLevels: INFO
+      nullable: true
+      properties:
+        clientId:
+          description: Log configuration's client ID
+          example: aClientId
+          type: string
+        durationMinutes:
+          description: Duration in minutes for log configuration to remain in effect
+            before resetting to defaults
+          example: 120
+          format: int32
+          maximum: 1440
+          minimum: 5
+          type: integer
+        expiration:
+          description: Expiration date-time of the log configuration request
+          example: 2020-12-15T19:13:36.079Z
+          format: date-time
+          type: string
+        rootLevel:
+          $ref: '#/components/schemas/StandardLevel'
+        logLevels:
+          additionalProperties:
+            $ref: '#/components/schemas/StandardLevel'
+          description: Mapping of identifiers to Standard Log Level values
+          example: INFO
+          type: object
+      required:
+      - durationMinutes
+      - rootLevel
+      type: object
     MfaOktaConfig:
       example:
         accessKey: qw123Y3QlA5UqocYpdU3rEkzrK2D497y
@@ -95811,44 +96061,23 @@ components:
           format: int32
           type: integer
       type: object
-    ClientLogConfiguration:
-      description: Client Runtime Logging Configuration
-      example:
-        durationMinutes: 120
-        rootLevel: INFO
-        clientId: aClientId
-        expiration: 2020-12-15T19:13:36.079Z
-        logLevels: INFO
-      nullable: true
-      properties:
-        clientId:
-          description: Log configuration's client ID
-          example: aClientId
-          type: string
-        durationMinutes:
-          description: Duration in minutes for log configuration to remain in effect
-            before resetting to defaults
-          example: 120
-          format: int32
-          maximum: 1440
-          minimum: 5
-          type: integer
-        expiration:
-          description: Expiration date-time of the log configuration request
-          example: 2020-12-15T19:13:36.079Z
-          format: date-time
-          type: string
-        rootLevel:
-          $ref: '#/components/schemas/StandardLevel'
-        logLevels:
-          additionalProperties:
-            $ref: '#/components/schemas/StandardLevel'
-          description: Mapping of identifiers to Standard Log Level values
-          example: INFO
-          type: object
-      required:
-      - durationMinutes
-      - rootLevel
+    StandardLevel:
+      description: Standard Log4j log level
+      enum:
+      - "false"
+      - FATAL
+      - ERROR
+      - WARN
+      - INFO
+      - DEBUG
+      - TRACE
+      example: INFO
+      type: string
+    LogLevelSpec:
+      additionalProperties:
+        $ref: '#/components/schemas/StandardLevel'
+      description: Mapping of identifiers to Standard Log Level values
+      example: INFO
       type: object
     NonEmployeeSourceLite:
       example:
@@ -101644,24 +101873,6 @@ components:
           description: ManagedCluster queue aws region
           example: us-east-1
           type: string
-      type: object
-    StandardLevel:
-      description: Standard Log4j log level
-      enum:
-      - "false"
-      - FATAL
-      - ERROR
-      - WARN
-      - INFO
-      - DEBUG
-      - TRACE
-      example: INFO
-      type: string
-    LogLevelSpec:
-      additionalProperties:
-        $ref: '#/components/schemas/StandardLevel'
-      description: Mapping of identifiers to Standard Log Level values
-      example: INFO
       type: object
     NonEmployeeIdentityDtoType:
       description: Identifies if the identity is a normal identity or a governance
