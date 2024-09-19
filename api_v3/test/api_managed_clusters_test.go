@@ -47,6 +47,20 @@ func Test_api_v3_ManagedClustersAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ManagedClustersAPIService GetClientLogConfiguration", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.ManagedClustersAPI.GetClientLogConfiguration(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ManagedClustersAPIService GetManagedCluster", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -66,6 +80,20 @@ func Test_api_v3_ManagedClustersAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.ManagedClustersAPI.GetManagedClusters(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ManagedClustersAPIService PutClientLogConfiguration", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.ManagedClustersAPI.PutClientLogConfiguration(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
