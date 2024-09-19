@@ -462,7 +462,7 @@ import (
 
 func main() {
 	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
-	sedBatchRequest := *openapiclient.NewSedBatchRequest() // SedBatchRequest | Sed Batch Request (optional)
+	sedBatchRequest := openapiclient.SedBatchRequest{MapmapOfStringAny: new(map[string]interface{})} // SedBatchRequest | Sed Batch Request (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

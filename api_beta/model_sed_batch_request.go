@@ -12,109 +12,76 @@ package api_beta
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
+	"fmt"
 )
 
-// checks if the SedBatchRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SedBatchRequest{}
-
-// SedBatchRequest Sed Batch Request
+// SedBatchRequest - Sed Batch Request
 type SedBatchRequest struct {
-	// list of entitlement ids
-	Entitlements []string `json:"entitlements,omitempty"`
-	AdditionalProperties map[string]interface{}
+	MapmapOfStringAny *map[string]interface{}
 }
 
-type _SedBatchRequest SedBatchRequest
-
-// NewSedBatchRequest instantiates a new SedBatchRequest object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewSedBatchRequest() *SedBatchRequest {
-	this := SedBatchRequest{}
-	return &this
-}
-
-// NewSedBatchRequestWithDefaults instantiates a new SedBatchRequest object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewSedBatchRequestWithDefaults() *SedBatchRequest {
-	this := SedBatchRequest{}
-	return &this
-}
-
-// GetEntitlements returns the Entitlements field value if set, zero value otherwise.
-func (o *SedBatchRequest) GetEntitlements() []string {
-	if o == nil || IsNil(o.Entitlements) {
-		var ret []string
-		return ret
+// map[string]interface{}AsSedBatchRequest is a convenience function that returns map[string]interface{} wrapped in SedBatchRequest
+func MapmapOfStringAnyAsSedBatchRequest(v *map[string]interface{}) SedBatchRequest {
+	return SedBatchRequest{
+		MapmapOfStringAny: v,
 	}
-	return o.Entitlements
 }
 
-// GetEntitlementsOk returns a tuple with the Entitlements field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SedBatchRequest) GetEntitlementsOk() ([]string, bool) {
-	if o == nil || IsNil(o.Entitlements) {
-		return nil, false
-	}
-	return o.Entitlements, true
-}
 
-// HasEntitlements returns a boolean if a field has been set.
-func (o *SedBatchRequest) HasEntitlements() bool {
-	if o != nil && !IsNil(o.Entitlements) {
-		return true
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *SedBatchRequest) UnmarshalJSON(data []byte) error {
+	var err error
+	match := 0
+	// try to unmarshal data into MapmapOfStringAny
+	err = newStrictDecoder(data).Decode(&dst.MapmapOfStringAny)
+	if err == nil {
+		jsonMapmapOfStringAny, _ := json.Marshal(dst.MapmapOfStringAny)
+		if string(jsonMapmapOfStringAny) == "{}" { // empty struct
+			dst.MapmapOfStringAny = nil
+		} else {
+			if err = validator.Validate(dst.MapmapOfStringAny); err != nil {
+				dst.MapmapOfStringAny = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.MapmapOfStringAny = nil
 	}
 
-	return false
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.MapmapOfStringAny = nil
+
+		return fmt.Errorf("data matches more than one schema in oneOf(SedBatchRequest)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("data failed to match schemas in oneOf(SedBatchRequest)")
+	}
 }
 
-// SetEntitlements gets a reference to the given []string and assigns it to the Entitlements field.
-func (o *SedBatchRequest) SetEntitlements(v []string) {
-	o.Entitlements = v
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src SedBatchRequest) MarshalJSON() ([]byte, error) {
+	if src.MapmapOfStringAny != nil {
+		return json.Marshal(&src.MapmapOfStringAny)
+	}
+
+	return nil, nil // no data in oneOf schemas
 }
 
-func (o SedBatchRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+// Get the actual instance
+func (obj *SedBatchRequest) GetActualInstance() (interface{}) {
+	if obj == nil {
+		return nil
 	}
-	return json.Marshal(toSerialize)
-}
-
-func (o SedBatchRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Entitlements) {
-		toSerialize["entitlements"] = o.Entitlements
+	if obj.MapmapOfStringAny != nil {
+		return obj.MapmapOfStringAny
 	}
 
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
-	return toSerialize, nil
-}
-
-func (o *SedBatchRequest) UnmarshalJSON(data []byte) (err error) {
-	varSedBatchRequest := _SedBatchRequest{}
-
-	err = json.Unmarshal(data, &varSedBatchRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SedBatchRequest(varSedBatchRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "entitlements")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
+	// all schemas are nil
+	return nil
 }
 
 type NullableSedBatchRequest struct {

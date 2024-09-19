@@ -446,7 +446,7 @@ import (
 )
 
 func main() {
-	sedBatchRequest := *openapiclient.NewSedBatchRequest() // SedBatchRequest | Sed Batch Request (optional)
+	sedBatchRequest := openapiclient.SedBatchRequest{MapmapOfStringAny: new(map[string]interface{})} // SedBatchRequest | Sed Batch Request (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
