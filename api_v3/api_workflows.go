@@ -1333,7 +1333,7 @@ func (r ApiGetWorkflowExecutionsRequest) Count(count bool) ApiGetWorkflowExecuti
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **startTime**: *eq, lt, le, gt, ge*  **status**: *eq*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **start_time**: *eq, lt, le, gt, ge*  **status**: *eq*
 func (r ApiGetWorkflowExecutionsRequest) Filters(filters string) ApiGetWorkflowExecutionsRequest {
 	r.filters = &filters
 	return r

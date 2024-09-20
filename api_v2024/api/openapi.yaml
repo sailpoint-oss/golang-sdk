@@ -38087,7 +38087,7 @@ paths:
 
           Filtering is supported for the following fields and operators:
 
-          **startTime**: *eq, lt, le, gt, ge*
+          **start_time**: *eq, lt, le, gt, ge*
 
           **status**: *eq*
         example: status eq "Failed"
