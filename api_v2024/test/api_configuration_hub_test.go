@@ -22,6 +22,18 @@ func Test_api_v2024_ConfigurationHubAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test ConfigurationHubAPIService CreateDeploy", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.ConfigurationHubAPI.CreateDeploy(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ConfigurationHubAPIService CreateObjectMapping", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -115,6 +127,20 @@ func Test_api_v2024_ConfigurationHubAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ConfigurationHubAPIService GetDeploy", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.ConfigurationHubAPI.GetDeploy(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ConfigurationHubAPIService GetObjectMappings", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -148,6 +174,18 @@ func Test_api_v2024_ConfigurationHubAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.ConfigurationHubAPI.ListBackups(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ConfigurationHubAPIService ListDeploys", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.ConfigurationHubAPI.ListDeploys(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

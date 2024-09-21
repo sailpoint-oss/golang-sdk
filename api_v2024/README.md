@@ -198,6 +198,7 @@ Class | Method | HTTP request | Description
 *CertificationsAPI* | [**ReassignIdentityCertifications**](docs/CertificationsAPI.md#reassignidentitycertifications) | **Post** /certifications/{id}/reassign | Reassign Identities or Items
 *CertificationsAPI* | [**SignOffIdentityCertification**](docs/CertificationsAPI.md#signoffidentitycertification) | **Post** /certifications/{id}/sign-off | Finalize Identity Certification Decisions
 *CertificationsAPI* | [**SubmitReassignCertsAsync**](docs/CertificationsAPI.md#submitreassigncertsasync) | **Post** /certifications/{id}/reassign-async | Reassign Certifications Asynchronously
+*ConfigurationHubAPI* | [**CreateDeploy**](docs/ConfigurationHubAPI.md#createdeploy) | **Post** /configuration-hub/deploys | Create a Deploy
 *ConfigurationHubAPI* | [**CreateObjectMapping**](docs/ConfigurationHubAPI.md#createobjectmapping) | **Post** /configuration-hub/object-mappings/{sourceOrg} | Creates an object mapping
 *ConfigurationHubAPI* | [**CreateObjectMappings**](docs/ConfigurationHubAPI.md#createobjectmappings) | **Post** /configuration-hub/object-mappings/{sourceOrg}/bulk-create | Bulk creates object mappings
 *ConfigurationHubAPI* | [**CreateUploadedConfiguration**](docs/ConfigurationHubAPI.md#createuploadedconfiguration) | **Post** /configuration-hub/backups/uploads | Upload a Configuration
@@ -205,9 +206,11 @@ Class | Method | HTTP request | Description
 *ConfigurationHubAPI* | [**DeleteDraft**](docs/ConfigurationHubAPI.md#deletedraft) | **Delete** /configuration-hub/drafts/{id} | Delete a draft
 *ConfigurationHubAPI* | [**DeleteObjectMapping**](docs/ConfigurationHubAPI.md#deleteobjectmapping) | **Delete** /configuration-hub/object-mappings/{sourceOrg}/{objectMappingId} | Deletes an object mapping
 *ConfigurationHubAPI* | [**DeleteUploadedConfiguration**](docs/ConfigurationHubAPI.md#deleteuploadedconfiguration) | **Delete** /configuration-hub/backups/uploads/{id} | Delete an Uploaded Configuration
+*ConfigurationHubAPI* | [**GetDeploy**](docs/ConfigurationHubAPI.md#getdeploy) | **Get** /configuration-hub/deploys/{id} | Get a Deploy
 *ConfigurationHubAPI* | [**GetObjectMappings**](docs/ConfigurationHubAPI.md#getobjectmappings) | **Get** /configuration-hub/object-mappings/{sourceOrg} | Gets list of object mappings
 *ConfigurationHubAPI* | [**GetUploadedConfiguration**](docs/ConfigurationHubAPI.md#getuploadedconfiguration) | **Get** /configuration-hub/backups/uploads/{id} | Get an Uploaded Configuration
 *ConfigurationHubAPI* | [**ListBackups**](docs/ConfigurationHubAPI.md#listbackups) | **Get** /configuration-hub/backups | List Backups
+*ConfigurationHubAPI* | [**ListDeploys**](docs/ConfigurationHubAPI.md#listdeploys) | **Get** /configuration-hub/deploys | List Deploys
 *ConfigurationHubAPI* | [**ListDrafts**](docs/ConfigurationHubAPI.md#listdrafts) | **Get** /configuration-hub/drafts | List Drafts
 *ConfigurationHubAPI* | [**ListUploadedConfigurations**](docs/ConfigurationHubAPI.md#listuploadedconfigurations) | **Get** /configuration-hub/backups/uploads | List Uploaded Configurations
 *ConfigurationHubAPI* | [**UpdateObjectMappings**](docs/ConfigurationHubAPI.md#updateobjectmappings) | **Post** /configuration-hub/object-mappings/{sourceOrg}/bulk-patch | Bulk updates object mappings
@@ -993,6 +996,8 @@ Class | Method | HTTP request | Description
  - [DeleteNonEmployeeRecordsInBulkRequest](docs/DeleteNonEmployeeRecordsInBulkRequest.md)
  - [DeleteSource202Response](docs/DeleteSource202Response.md)
  - [DeleteVendorConnectorMapping200Response](docs/DeleteVendorConnectorMapping200Response.md)
+ - [DeployRequest](docs/DeployRequest.md)
+ - [DeployResponse](docs/DeployResponse.md)
  - [DisplayReference](docs/DisplayReference.md)
  - [DkimAttributes](docs/DkimAttributes.md)
  - [DocumentType](docs/DocumentType.md)

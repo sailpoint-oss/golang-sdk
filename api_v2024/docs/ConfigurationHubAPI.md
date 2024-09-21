@@ -4,6 +4,7 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2024*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**CreateDeploy**](ConfigurationHubAPI.md#CreateDeploy) | **Post** /configuration-hub/deploys | Create a Deploy
 [**CreateObjectMapping**](ConfigurationHubAPI.md#CreateObjectMapping) | **Post** /configuration-hub/object-mappings/{sourceOrg} | Creates an object mapping
 [**CreateObjectMappings**](ConfigurationHubAPI.md#CreateObjectMappings) | **Post** /configuration-hub/object-mappings/{sourceOrg}/bulk-create | Bulk creates object mappings
 [**CreateUploadedConfiguration**](ConfigurationHubAPI.md#CreateUploadedConfiguration) | **Post** /configuration-hub/backups/uploads | Upload a Configuration
@@ -11,13 +12,81 @@ Method | HTTP request | Description
 [**DeleteDraft**](ConfigurationHubAPI.md#DeleteDraft) | **Delete** /configuration-hub/drafts/{id} | Delete a draft
 [**DeleteObjectMapping**](ConfigurationHubAPI.md#DeleteObjectMapping) | **Delete** /configuration-hub/object-mappings/{sourceOrg}/{objectMappingId} | Deletes an object mapping
 [**DeleteUploadedConfiguration**](ConfigurationHubAPI.md#DeleteUploadedConfiguration) | **Delete** /configuration-hub/backups/uploads/{id} | Delete an Uploaded Configuration
+[**GetDeploy**](ConfigurationHubAPI.md#GetDeploy) | **Get** /configuration-hub/deploys/{id} | Get a Deploy
 [**GetObjectMappings**](ConfigurationHubAPI.md#GetObjectMappings) | **Get** /configuration-hub/object-mappings/{sourceOrg} | Gets list of object mappings
 [**GetUploadedConfiguration**](ConfigurationHubAPI.md#GetUploadedConfiguration) | **Get** /configuration-hub/backups/uploads/{id} | Get an Uploaded Configuration
 [**ListBackups**](ConfigurationHubAPI.md#ListBackups) | **Get** /configuration-hub/backups | List Backups
+[**ListDeploys**](ConfigurationHubAPI.md#ListDeploys) | **Get** /configuration-hub/deploys | List Deploys
 [**ListDrafts**](ConfigurationHubAPI.md#ListDrafts) | **Get** /configuration-hub/drafts | List Drafts
 [**ListUploadedConfigurations**](ConfigurationHubAPI.md#ListUploadedConfigurations) | **Get** /configuration-hub/backups/uploads | List Uploaded Configurations
 [**UpdateObjectMappings**](ConfigurationHubAPI.md#UpdateObjectMappings) | **Post** /configuration-hub/object-mappings/{sourceOrg}/bulk-patch | Bulk updates object mappings
 
+
+
+## CreateDeploy
+
+> DeployResponse CreateDeploy(ctx).DeployRequest(deployRequest).Execute()
+
+Create a Deploy
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+	deployRequest := *openapiclient.NewDeployRequest("3d0fe04b-57df-4a46-a83b-8f04b0f9d10b") // DeployRequest | The deploy request body.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ConfigurationHubAPI.CreateDeploy(context.Background()).DeployRequest(deployRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.CreateDeploy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateDeploy`: DeployResponse
+	fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.CreateDeploy`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateDeployRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **deployRequest** | [**DeployRequest**](DeployRequest.md) | The deploy request body. | 
+
+### Return type
+
+[**DeployResponse**](DeployResponse.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## CreateObjectMapping
@@ -507,6 +576,76 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetDeploy
+
+> DeployResponse GetDeploy(ctx, id).Execute()
+
+Get a Deploy
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+	id := "3d0fe04b-57df-4a46-a83b-8f04b0f9d10b" // string | The id of the deploy.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ConfigurationHubAPI.GetDeploy(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.GetDeploy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetDeploy`: DeployResponse
+	fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.GetDeploy`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The id of the deploy. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetDeployRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**DeployResponse**](DeployResponse.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetObjectMappings
 
 > []ObjectMappingResponse GetObjectMappings(ctx, sourceOrg).Execute()
@@ -698,6 +837,67 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]BackupResponse**](BackupResponse.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListDeploys
+
+> []DeployResponse ListDeploys(ctx).Execute()
+
+List Deploys
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ConfigurationHubAPI.ListDeploys(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationHubAPI.ListDeploys``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListDeploys`: []DeployResponse
+	fmt.Fprintf(os.Stdout, "Response from `ConfigurationHubAPI.ListDeploys`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListDeploysRequest struct via the builder pattern
+
+
+### Return type
+
+[**[]DeployResponse**](DeployResponse.md)
 
 ### Authorization
 
