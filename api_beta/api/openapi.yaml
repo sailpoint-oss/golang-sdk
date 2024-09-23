@@ -77228,25 +77228,21 @@ components:
         seds:
         - 016629d1-1d25-463f-97f3-c6686846650
         - 016629d1-1d25-463f-97f3-c6686846650
-      oneOf:
-      - required:
-        - entitlements
-        type: object
-      - required:
-        - seds
-        type: object
+      minProperties: 1
       properties:
         entitlements:
           description: list of entitlement ids
           items:
             example: 016629d1-1d25-463f-97f3-c6686846650
             type: string
+          minItems: 1
           type: array
         seds:
           description: list of sed ids
           items:
             example: 016629d1-1d25-463f-97f3-c6686846650
             type: string
+          minItems: 1
           type: array
       type: object
     SedBatchResponse:
