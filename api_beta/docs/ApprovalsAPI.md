@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetApproval**](ApprovalsAPI.md#GetApproval) | **Get** /generic-approvals/{id} | Get an approval
 [**GetApprovals**](ApprovalsAPI.md#GetApprovals) | **Get** /generic-approvals | Get Approvals
-[**PatchApproval**](ApprovalsAPI.md#PatchApproval) | **Patch** /generic-approvals/{id} | Change an approval
 
 
 
@@ -143,72 +142,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## PatchApproval
-
-> Approval PatchApproval(ctx).ApprovalDto(approvalDto).Execute()
-
-Change an approval
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-	approvalDto := *openapiclient.NewApprovalDto() // ApprovalDto | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ApprovalsAPI.PatchApproval(context.Background()).ApprovalDto(approvalDto).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApprovalsAPI.PatchApproval``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `PatchApproval`: Approval
-	fmt.Fprintf(os.Stdout, "Response from `ApprovalsAPI.PatchApproval`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPatchApprovalRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **approvalDto** | [**ApprovalDto**](ApprovalDto.md) |  | 
-
-### Return type
-
-[**Approval**](Approval.md)
-
-### Authorization
-
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

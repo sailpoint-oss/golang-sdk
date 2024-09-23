@@ -231,7 +231,6 @@ docs/ApprovalComment.md
 docs/ApprovalComment1.md
 docs/ApprovalComment2.md
 docs/ApprovalDescription.md
-docs/ApprovalDto.md
 docs/ApprovalForwardHistory.md
 docs/ApprovalIdentity.md
 docs/ApprovalInfoResponse.md
@@ -1288,7 +1287,6 @@ model_approval_comment.go
 model_approval_comment_1.go
 model_approval_comment_2.go
 model_approval_description.go
-model_approval_dto.go
 model_approval_forward_history.go
 model_approval_identity.go
 model_approval_info_response.go

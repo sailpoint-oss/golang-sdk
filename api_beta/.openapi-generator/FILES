@@ -198,7 +198,6 @@ docs/Approval.md
 docs/ApprovalBatch.md
 docs/ApprovalComment.md
 docs/ApprovalDescription.md
-docs/ApprovalDto.md
 docs/ApprovalForwardHistory.md
 docs/ApprovalIdentity.md
 docs/ApprovalInfoResponse.md
@@ -1119,7 +1118,6 @@ model_approval.go
 model_approval_batch.go
 model_approval_comment.go
 model_approval_description.go
-model_approval_dto.go
 model_approval_forward_history.go
 model_approval_identity.go
 model_approval_info_response.go

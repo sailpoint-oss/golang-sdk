@@ -48,16 +48,4 @@ func Test_api_beta_ApprovalsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ApprovalsAPIService PatchApproval", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.ApprovalsAPI.PatchApproval(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 }

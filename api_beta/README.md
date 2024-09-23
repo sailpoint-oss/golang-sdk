@@ -133,7 +133,6 @@ Class | Method | HTTP request | Description
 *ApplicationDiscoveryAPI* | [**SendManualDiscoverApplicationsCsvTemplate**](docs/ApplicationDiscoveryAPI.md#sendmanualdiscoverapplicationscsvtemplate) | **Post** /manual-discover-applications | CSV Upload to discover applications
 *ApprovalsAPI* | [**GetApproval**](docs/ApprovalsAPI.md#getapproval) | **Get** /generic-approvals/{id} | Get an approval
 *ApprovalsAPI* | [**GetApprovals**](docs/ApprovalsAPI.md#getapprovals) | **Get** /generic-approvals | Get Approvals
-*ApprovalsAPI* | [**PatchApproval**](docs/ApprovalsAPI.md#patchapproval) | **Patch** /generic-approvals/{id} | Change an approval
 *AppsAPI* | [**CreateSourceApp**](docs/AppsAPI.md#createsourceapp) | **Post** /source-apps | Create source app
 *AppsAPI* | [**DeleteAccessProfilesFromSourceAppByBulk**](docs/AppsAPI.md#deleteaccessprofilesfromsourceappbybulk) | **Post** /source-apps/{id}/access-profiles/bulk-remove | Bulk remove access profiles from the specified source app
 *AppsAPI* | [**DeleteSourceApp**](docs/AppsAPI.md#deletesourceapp) | **Delete** /source-apps/{id} | Delete source app by ID
@@ -730,7 +729,6 @@ Class | Method | HTTP request | Description
  - [ApprovalBatch](docs/ApprovalBatch.md)
  - [ApprovalComment](docs/ApprovalComment.md)
  - [ApprovalDescription](docs/ApprovalDescription.md)
- - [ApprovalDto](docs/ApprovalDto.md)
  - [ApprovalForwardHistory](docs/ApprovalForwardHistory.md)
  - [ApprovalIdentity](docs/ApprovalIdentity.md)
  - [ApprovalInfoResponse](docs/ApprovalInfoResponse.md)
