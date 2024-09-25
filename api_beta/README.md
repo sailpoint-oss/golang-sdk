@@ -1434,7 +1434,6 @@ Class | Method | HTTP request | Description
  - [Transform](docs/Transform.md)
  - [TransformDefinition](docs/TransformDefinition.md)
  - [TransformDefinition1](docs/TransformDefinition1.md)
- - [TransformDefinition1AttributesValue](docs/TransformDefinition1AttributesValue.md)
  - [TransformRead](docs/TransformRead.md)
  - [TranslationMessage](docs/TranslationMessage.md)
  - [Trigger](docs/Trigger.md)

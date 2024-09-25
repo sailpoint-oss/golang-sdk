@@ -1605,7 +1605,6 @@ Class | Method | HTTP request | Description
  - [TextQuery](docs/TextQuery.md)
  - [Transform](docs/Transform.md)
  - [TransformDefinition](docs/TransformDefinition.md)
- - [TransformDefinitionAttributesValue](docs/TransformDefinitionAttributesValue.md)
  - [TransformRead](docs/TransformRead.md)
  - [TranslationMessage](docs/TranslationMessage.md)
  - [Trigger](docs/Trigger.md)

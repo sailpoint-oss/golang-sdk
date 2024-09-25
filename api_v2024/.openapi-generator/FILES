@@ -1075,7 +1075,6 @@ docs/TestWorkflowRequest.md
 docs/TextQuery.md
 docs/Transform.md
 docs/TransformDefinition.md
-docs/TransformDefinitionAttributesValue.md
 docs/TransformRead.md
 docs/TransformsAPI.md
 docs/TranslationMessage.md
@@ -2067,7 +2066,6 @@ model_test_workflow_request.go
 model_text_query.go
 model_transform.go
 model_transform_definition.go
-model_transform_definition_attributes_value.go
 model_transform_read.go
 model_translation_message.go
 model_trigger.go

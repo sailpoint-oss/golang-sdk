@@ -610,7 +610,6 @@ docs/TokenAuthRequest.md
 docs/TokenAuthResponse.md
 docs/Transform.md
 docs/TransformDefinition.md
-docs/TransformDefinitionAttributesValue.md
 docs/TransformRead.md
 docs/TransformsAPI.md
 docs/TypeAheadQuery.md
@@ -1171,7 +1170,6 @@ model_token_auth_request.go
 model_token_auth_response.go
 model_transform.go
 model_transform_definition.go
-model_transform_definition_attributes_value.go
 model_transform_read.go
 model_type_ahead_query.go
 model_typed_reference.go

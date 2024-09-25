@@ -88019,8 +88019,7 @@ components:
           example: accountAttribute
           type: string
         attributes:
-          additionalProperties:
-            $ref: '#/components/schemas/TransformDefinition_1_attributes_value'
+          additionalProperties: true
           description: Arbitrary key-value pairs to store any metadata for the object
           example:
             attributeName: e-mail
@@ -93567,10 +93566,6 @@ components:
           - ENTITLEMENT
           example: ENTITLEMENT
           type: object
-    TransformDefinition_1_attributes_value:
-      anyOf:
-      - type: string
-      - type: object
   securitySchemes:
     UserContextAuth:
       description: "OAuth2 Bearer token (JWT) generated using either a Personal Access\

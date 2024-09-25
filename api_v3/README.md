@@ -956,7 +956,6 @@ Class | Method | HTTP request | Description
  - [TokenAuthResponse](docs/TokenAuthResponse.md)
  - [Transform](docs/Transform.md)
  - [TransformDefinition](docs/TransformDefinition.md)
- - [TransformDefinitionAttributesValue](docs/TransformDefinitionAttributesValue.md)
  - [TransformRead](docs/TransformRead.md)
  - [TypeAheadQuery](docs/TypeAheadQuery.md)
  - [TypedReference](docs/TypedReference.md)

@@ -22,7 +22,7 @@ type TransformDefinition1 struct {
 	// The type of the transform definition.
 	Type *string `json:"type,omitempty"`
 	// Arbitrary key-value pairs to store any metadata for the object
-	Attributes *map[string]TransformDefinition1AttributesValue `json:"attributes,omitempty"`
+	Attributes map[string]interface{} `json:"attributes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -78,19 +78,19 @@ func (o *TransformDefinition1) SetType(v string) {
 }
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
-func (o *TransformDefinition1) GetAttributes() map[string]TransformDefinition1AttributesValue {
+func (o *TransformDefinition1) GetAttributes() map[string]interface{} {
 	if o == nil || IsNil(o.Attributes) {
-		var ret map[string]TransformDefinition1AttributesValue
+		var ret map[string]interface{}
 		return ret
 	}
-	return *o.Attributes
+	return o.Attributes
 }
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TransformDefinition1) GetAttributesOk() (*map[string]TransformDefinition1AttributesValue, bool) {
+func (o *TransformDefinition1) GetAttributesOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Attributes) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
 }
@@ -104,9 +104,9 @@ func (o *TransformDefinition1) HasAttributes() bool {
 	return false
 }
 
-// SetAttributes gets a reference to the given map[string]TransformDefinition1AttributesValue and assigns it to the Attributes field.
-func (o *TransformDefinition1) SetAttributes(v map[string]TransformDefinition1AttributesValue) {
-	o.Attributes = &v
+// SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
+func (o *TransformDefinition1) SetAttributes(v map[string]interface{}) {
+	o.Attributes = v
 }
 
 func (o TransformDefinition1) MarshalJSON() ([]byte, error) {

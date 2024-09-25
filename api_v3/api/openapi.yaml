@@ -15409,7 +15409,7 @@ paths:
 
           **id**: *eq, ne, ge, gt, in, le, lt, isnull, sw*
 
-          **name**: *eq, ne, in, le, lt, isnull, sw*
+          **name**: *eq, ne, ge, gt, in, le, lt, isnull, sw*
 
           **priority**: *eq, ne*
         example: id eq "ef38f94347e94562b5bb8424a56397d8"
@@ -61891,8 +61891,7 @@ components:
           example: accountAttribute
           type: string
         attributes:
-          additionalProperties:
-            $ref: '#/components/schemas/TransformDefinition_attributes_value'
+          additionalProperties: true
           description: Arbitrary key-value pairs to store any metadata for the object
           example:
             attributeName: e-mail
@@ -65227,10 +65226,6 @@ components:
           example: Medium
           type: string
       type: object
-    TransformDefinition_attributes_value:
-      anyOf:
-      - type: string
-      - type: object
     Expression_children_inner:
       properties:
         operator:

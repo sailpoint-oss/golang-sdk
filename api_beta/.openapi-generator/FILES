@@ -947,7 +947,6 @@ docs/TokenAuthResponse.md
 docs/Transform.md
 docs/TransformDefinition.md
 docs/TransformDefinition1.md
-docs/TransformDefinition1AttributesValue.md
 docs/TransformRead.md
 docs/TransformsAPI.md
 docs/TranslationMessage.md
@@ -1824,7 +1823,6 @@ model_token_auth_response.go
 model_transform.go
 model_transform_definition.go
 model_transform_definition_1.go
-model_transform_definition_1_attributes_value.go
 model_transform_read.go
 model_translation_message.go
 model_trigger.go

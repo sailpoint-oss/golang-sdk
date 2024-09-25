@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | Pointer to **string** | The type of the transform definition. | [optional] 
-**Attributes** | Pointer to [**map[string]TransformDefinitionAttributesValue**](TransformDefinitionAttributesValue.md) | Arbitrary key-value pairs to store any metadata for the object | [optional] 
+**Attributes** | Pointer to **map[string]interface{}** | Arbitrary key-value pairs to store any metadata for the object | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasType returns a boolean if a field has been set.
 
 ### GetAttributes
 
-`func (o *TransformDefinition) GetAttributes() map[string]TransformDefinitionAttributesValue`
+`func (o *TransformDefinition) GetAttributes() map[string]interface{}`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *TransformDefinition) GetAttributesOk() (*map[string]TransformDefinitionAttributesValue, bool)`
+`func (o *TransformDefinition) GetAttributesOk() (*map[string]interface{}, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *TransformDefinition) SetAttributes(v map[string]TransformDefinitionAttributesValue)`
+`func (o *TransformDefinition) SetAttributes(v map[string]interface{})`
 
 SetAttributes sets Attributes field to given value.
 
