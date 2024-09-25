@@ -14,41 +14,41 @@ import (
 	"encoding/json"
 )
 
-// checks if the SourceAccountCorrelationConfig type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SourceAccountCorrelationConfig{}
+// checks if the MultiHostIntegrationsOwner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MultiHostIntegrationsOwner{}
 
-// SourceAccountCorrelationConfig Reference to account correlation config object.
-type SourceAccountCorrelationConfig struct {
+// MultiHostIntegrationsOwner Reference to identity object who owns the source.
+type MultiHostIntegrationsOwner struct {
 	// Type of object being referenced.
 	Type *string `json:"type,omitempty"`
-	// Account correlation config ID.
+	// Owner identity's ID.
 	Id *string `json:"id,omitempty"`
-	// Account correlation config's human-readable display name.
+	// Owner identity's human-readable display name.
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _SourceAccountCorrelationConfig SourceAccountCorrelationConfig
+type _MultiHostIntegrationsOwner MultiHostIntegrationsOwner
 
-// NewSourceAccountCorrelationConfig instantiates a new SourceAccountCorrelationConfig object
+// NewMultiHostIntegrationsOwner instantiates a new MultiHostIntegrationsOwner object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSourceAccountCorrelationConfig() *SourceAccountCorrelationConfig {
-	this := SourceAccountCorrelationConfig{}
+func NewMultiHostIntegrationsOwner() *MultiHostIntegrationsOwner {
+	this := MultiHostIntegrationsOwner{}
 	return &this
 }
 
-// NewSourceAccountCorrelationConfigWithDefaults instantiates a new SourceAccountCorrelationConfig object
+// NewMultiHostIntegrationsOwnerWithDefaults instantiates a new MultiHostIntegrationsOwner object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSourceAccountCorrelationConfigWithDefaults() *SourceAccountCorrelationConfig {
-	this := SourceAccountCorrelationConfig{}
+func NewMultiHostIntegrationsOwnerWithDefaults() *MultiHostIntegrationsOwner {
+	this := MultiHostIntegrationsOwner{}
 	return &this
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *SourceAccountCorrelationConfig) GetType() string {
+func (o *MultiHostIntegrationsOwner) GetType() string {
 	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
@@ -58,7 +58,7 @@ func (o *SourceAccountCorrelationConfig) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SourceAccountCorrelationConfig) GetTypeOk() (*string, bool) {
+func (o *MultiHostIntegrationsOwner) GetTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *SourceAccountCorrelationConfig) GetTypeOk() (*string, bool) {
 }
 
 // HasType returns a boolean if a field has been set.
-func (o *SourceAccountCorrelationConfig) HasType() bool {
+func (o *MultiHostIntegrationsOwner) HasType() bool {
 	if o != nil && !IsNil(o.Type) {
 		return true
 	}
@@ -75,12 +75,12 @@ func (o *SourceAccountCorrelationConfig) HasType() bool {
 }
 
 // SetType gets a reference to the given string and assigns it to the Type field.
-func (o *SourceAccountCorrelationConfig) SetType(v string) {
+func (o *MultiHostIntegrationsOwner) SetType(v string) {
 	o.Type = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *SourceAccountCorrelationConfig) GetId() string {
+func (o *MultiHostIntegrationsOwner) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -90,7 +90,7 @@ func (o *SourceAccountCorrelationConfig) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SourceAccountCorrelationConfig) GetIdOk() (*string, bool) {
+func (o *MultiHostIntegrationsOwner) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -98,7 +98,7 @@ func (o *SourceAccountCorrelationConfig) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *SourceAccountCorrelationConfig) HasId() bool {
+func (o *MultiHostIntegrationsOwner) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -107,12 +107,12 @@ func (o *SourceAccountCorrelationConfig) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *SourceAccountCorrelationConfig) SetId(v string) {
+func (o *MultiHostIntegrationsOwner) SetId(v string) {
 	o.Id = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *SourceAccountCorrelationConfig) GetName() string {
+func (o *MultiHostIntegrationsOwner) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
@@ -122,7 +122,7 @@ func (o *SourceAccountCorrelationConfig) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SourceAccountCorrelationConfig) GetNameOk() (*string, bool) {
+func (o *MultiHostIntegrationsOwner) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
@@ -130,7 +130,7 @@ func (o *SourceAccountCorrelationConfig) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *SourceAccountCorrelationConfig) HasName() bool {
+func (o *MultiHostIntegrationsOwner) HasName() bool {
 	if o != nil && !IsNil(o.Name) {
 		return true
 	}
@@ -139,11 +139,11 @@ func (o *SourceAccountCorrelationConfig) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *SourceAccountCorrelationConfig) SetName(v string) {
+func (o *MultiHostIntegrationsOwner) SetName(v string) {
 	o.Name = &v
 }
 
-func (o SourceAccountCorrelationConfig) MarshalJSON() ([]byte, error) {
+func (o MultiHostIntegrationsOwner) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -151,7 +151,7 @@ func (o SourceAccountCorrelationConfig) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o SourceAccountCorrelationConfig) ToMap() (map[string]interface{}, error) {
+func (o MultiHostIntegrationsOwner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -170,16 +170,16 @@ func (o SourceAccountCorrelationConfig) ToMap() (map[string]interface{}, error) 
 	return toSerialize, nil
 }
 
-func (o *SourceAccountCorrelationConfig) UnmarshalJSON(data []byte) (err error) {
-	varSourceAccountCorrelationConfig := _SourceAccountCorrelationConfig{}
+func (o *MultiHostIntegrationsOwner) UnmarshalJSON(data []byte) (err error) {
+	varMultiHostIntegrationsOwner := _MultiHostIntegrationsOwner{}
 
-	err = json.Unmarshal(data, &varSourceAccountCorrelationConfig)
+	err = json.Unmarshal(data, &varMultiHostIntegrationsOwner)
 
 	if err != nil {
 		return err
 	}
 
-	*o = SourceAccountCorrelationConfig(varSourceAccountCorrelationConfig)
+	*o = MultiHostIntegrationsOwner(varMultiHostIntegrationsOwner)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -193,38 +193,38 @@ func (o *SourceAccountCorrelationConfig) UnmarshalJSON(data []byte) (err error) 
 	return err
 }
 
-type NullableSourceAccountCorrelationConfig struct {
-	value *SourceAccountCorrelationConfig
+type NullableMultiHostIntegrationsOwner struct {
+	value *MultiHostIntegrationsOwner
 	isSet bool
 }
 
-func (v NullableSourceAccountCorrelationConfig) Get() *SourceAccountCorrelationConfig {
+func (v NullableMultiHostIntegrationsOwner) Get() *MultiHostIntegrationsOwner {
 	return v.value
 }
 
-func (v *NullableSourceAccountCorrelationConfig) Set(val *SourceAccountCorrelationConfig) {
+func (v *NullableMultiHostIntegrationsOwner) Set(val *MultiHostIntegrationsOwner) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSourceAccountCorrelationConfig) IsSet() bool {
+func (v NullableMultiHostIntegrationsOwner) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSourceAccountCorrelationConfig) Unset() {
+func (v *NullableMultiHostIntegrationsOwner) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSourceAccountCorrelationConfig(val *SourceAccountCorrelationConfig) *NullableSourceAccountCorrelationConfig {
-	return &NullableSourceAccountCorrelationConfig{value: val, isSet: true}
+func NewNullableMultiHostIntegrationsOwner(val *MultiHostIntegrationsOwner) *NullableMultiHostIntegrationsOwner {
+	return &NullableMultiHostIntegrationsOwner{value: val, isSet: true}
 }
 
-func (v NullableSourceAccountCorrelationConfig) MarshalJSON() ([]byte, error) {
+func (v NullableMultiHostIntegrationsOwner) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSourceAccountCorrelationConfig) UnmarshalJSON(src []byte) error {
+func (v *NullableMultiHostIntegrationsOwner) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -14,41 +14,41 @@ import (
 	"encoding/json"
 )
 
-// checks if the SourceOwner type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SourceOwner{}
+// checks if the MultiHostSourcesSchemasInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MultiHostSourcesSchemasInner{}
 
-// SourceOwner Reference to identity object who owns the source.
-type SourceOwner struct {
+// MultiHostSourcesSchemasInner struct for MultiHostSourcesSchemasInner
+type MultiHostSourcesSchemasInner struct {
 	// Type of object being referenced.
 	Type *string `json:"type,omitempty"`
-	// Owner identity's ID.
+	// Schema ID.
 	Id *string `json:"id,omitempty"`
-	// Owner identity's human-readable display name.
+	// Schema's human-readable display name.
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _SourceOwner SourceOwner
+type _MultiHostSourcesSchemasInner MultiHostSourcesSchemasInner
 
-// NewSourceOwner instantiates a new SourceOwner object
+// NewMultiHostSourcesSchemasInner instantiates a new MultiHostSourcesSchemasInner object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSourceOwner() *SourceOwner {
-	this := SourceOwner{}
+func NewMultiHostSourcesSchemasInner() *MultiHostSourcesSchemasInner {
+	this := MultiHostSourcesSchemasInner{}
 	return &this
 }
 
-// NewSourceOwnerWithDefaults instantiates a new SourceOwner object
+// NewMultiHostSourcesSchemasInnerWithDefaults instantiates a new MultiHostSourcesSchemasInner object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSourceOwnerWithDefaults() *SourceOwner {
-	this := SourceOwner{}
+func NewMultiHostSourcesSchemasInnerWithDefaults() *MultiHostSourcesSchemasInner {
+	this := MultiHostSourcesSchemasInner{}
 	return &this
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *SourceOwner) GetType() string {
+func (o *MultiHostSourcesSchemasInner) GetType() string {
 	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
@@ -58,7 +58,7 @@ func (o *SourceOwner) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SourceOwner) GetTypeOk() (*string, bool) {
+func (o *MultiHostSourcesSchemasInner) GetTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *SourceOwner) GetTypeOk() (*string, bool) {
 }
 
 // HasType returns a boolean if a field has been set.
-func (o *SourceOwner) HasType() bool {
+func (o *MultiHostSourcesSchemasInner) HasType() bool {
 	if o != nil && !IsNil(o.Type) {
 		return true
 	}
@@ -75,12 +75,12 @@ func (o *SourceOwner) HasType() bool {
 }
 
 // SetType gets a reference to the given string and assigns it to the Type field.
-func (o *SourceOwner) SetType(v string) {
+func (o *MultiHostSourcesSchemasInner) SetType(v string) {
 	o.Type = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *SourceOwner) GetId() string {
+func (o *MultiHostSourcesSchemasInner) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -90,7 +90,7 @@ func (o *SourceOwner) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SourceOwner) GetIdOk() (*string, bool) {
+func (o *MultiHostSourcesSchemasInner) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -98,7 +98,7 @@ func (o *SourceOwner) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *SourceOwner) HasId() bool {
+func (o *MultiHostSourcesSchemasInner) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -107,12 +107,12 @@ func (o *SourceOwner) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *SourceOwner) SetId(v string) {
+func (o *MultiHostSourcesSchemasInner) SetId(v string) {
 	o.Id = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *SourceOwner) GetName() string {
+func (o *MultiHostSourcesSchemasInner) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
@@ -122,7 +122,7 @@ func (o *SourceOwner) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SourceOwner) GetNameOk() (*string, bool) {
+func (o *MultiHostSourcesSchemasInner) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
@@ -130,7 +130,7 @@ func (o *SourceOwner) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *SourceOwner) HasName() bool {
+func (o *MultiHostSourcesSchemasInner) HasName() bool {
 	if o != nil && !IsNil(o.Name) {
 		return true
 	}
@@ -139,11 +139,11 @@ func (o *SourceOwner) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *SourceOwner) SetName(v string) {
+func (o *MultiHostSourcesSchemasInner) SetName(v string) {
 	o.Name = &v
 }
 
-func (o SourceOwner) MarshalJSON() ([]byte, error) {
+func (o MultiHostSourcesSchemasInner) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -151,7 +151,7 @@ func (o SourceOwner) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o SourceOwner) ToMap() (map[string]interface{}, error) {
+func (o MultiHostSourcesSchemasInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -170,16 +170,16 @@ func (o SourceOwner) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SourceOwner) UnmarshalJSON(data []byte) (err error) {
-	varSourceOwner := _SourceOwner{}
+func (o *MultiHostSourcesSchemasInner) UnmarshalJSON(data []byte) (err error) {
+	varMultiHostSourcesSchemasInner := _MultiHostSourcesSchemasInner{}
 
-	err = json.Unmarshal(data, &varSourceOwner)
+	err = json.Unmarshal(data, &varMultiHostSourcesSchemasInner)
 
 	if err != nil {
 		return err
 	}
 
-	*o = SourceOwner(varSourceOwner)
+	*o = MultiHostSourcesSchemasInner(varMultiHostSourcesSchemasInner)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -193,38 +193,38 @@ func (o *SourceOwner) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableSourceOwner struct {
-	value *SourceOwner
+type NullableMultiHostSourcesSchemasInner struct {
+	value *MultiHostSourcesSchemasInner
 	isSet bool
 }
 
-func (v NullableSourceOwner) Get() *SourceOwner {
+func (v NullableMultiHostSourcesSchemasInner) Get() *MultiHostSourcesSchemasInner {
 	return v.value
 }
 
-func (v *NullableSourceOwner) Set(val *SourceOwner) {
+func (v *NullableMultiHostSourcesSchemasInner) Set(val *MultiHostSourcesSchemasInner) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSourceOwner) IsSet() bool {
+func (v NullableMultiHostSourcesSchemasInner) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSourceOwner) Unset() {
+func (v *NullableMultiHostSourcesSchemasInner) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSourceOwner(val *SourceOwner) *NullableSourceOwner {
-	return &NullableSourceOwner{value: val, isSet: true}
+func NewNullableMultiHostSourcesSchemasInner(val *MultiHostSourcesSchemasInner) *NullableMultiHostSourcesSchemasInner {
+	return &NullableMultiHostSourcesSchemasInner{value: val, isSet: true}
 }
 
-func (v NullableSourceOwner) MarshalJSON() ([]byte, error) {
+func (v NullableMultiHostSourcesSchemasInner) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSourceOwner) UnmarshalJSON(src []byte) error {
+func (v *NullableMultiHostSourcesSchemasInner) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

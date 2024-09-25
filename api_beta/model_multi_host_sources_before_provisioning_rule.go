@@ -14,41 +14,41 @@ import (
 	"encoding/json"
 )
 
-// checks if the SourceSchemasInner type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SourceSchemasInner{}
+// checks if the MultiHostSourcesBeforeProvisioningRule type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MultiHostSourcesBeforeProvisioningRule{}
 
-// SourceSchemasInner struct for SourceSchemasInner
-type SourceSchemasInner struct {
+// MultiHostSourcesBeforeProvisioningRule Rule that runs on the CCG and allows for customization of provisioning plans before the API calls the connector. 
+type MultiHostSourcesBeforeProvisioningRule struct {
 	// Type of object being referenced.
 	Type *string `json:"type,omitempty"`
-	// Schema ID.
+	// Rule ID.
 	Id *string `json:"id,omitempty"`
-	// Schema's human-readable display name.
+	// Rule's human-readable display name.
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _SourceSchemasInner SourceSchemasInner
+type _MultiHostSourcesBeforeProvisioningRule MultiHostSourcesBeforeProvisioningRule
 
-// NewSourceSchemasInner instantiates a new SourceSchemasInner object
+// NewMultiHostSourcesBeforeProvisioningRule instantiates a new MultiHostSourcesBeforeProvisioningRule object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSourceSchemasInner() *SourceSchemasInner {
-	this := SourceSchemasInner{}
+func NewMultiHostSourcesBeforeProvisioningRule() *MultiHostSourcesBeforeProvisioningRule {
+	this := MultiHostSourcesBeforeProvisioningRule{}
 	return &this
 }
 
-// NewSourceSchemasInnerWithDefaults instantiates a new SourceSchemasInner object
+// NewMultiHostSourcesBeforeProvisioningRuleWithDefaults instantiates a new MultiHostSourcesBeforeProvisioningRule object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSourceSchemasInnerWithDefaults() *SourceSchemasInner {
-	this := SourceSchemasInner{}
+func NewMultiHostSourcesBeforeProvisioningRuleWithDefaults() *MultiHostSourcesBeforeProvisioningRule {
+	this := MultiHostSourcesBeforeProvisioningRule{}
 	return &this
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *SourceSchemasInner) GetType() string {
+func (o *MultiHostSourcesBeforeProvisioningRule) GetType() string {
 	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
@@ -58,7 +58,7 @@ func (o *SourceSchemasInner) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SourceSchemasInner) GetTypeOk() (*string, bool) {
+func (o *MultiHostSourcesBeforeProvisioningRule) GetTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *SourceSchemasInner) GetTypeOk() (*string, bool) {
 }
 
 // HasType returns a boolean if a field has been set.
-func (o *SourceSchemasInner) HasType() bool {
+func (o *MultiHostSourcesBeforeProvisioningRule) HasType() bool {
 	if o != nil && !IsNil(o.Type) {
 		return true
 	}
@@ -75,12 +75,12 @@ func (o *SourceSchemasInner) HasType() bool {
 }
 
 // SetType gets a reference to the given string and assigns it to the Type field.
-func (o *SourceSchemasInner) SetType(v string) {
+func (o *MultiHostSourcesBeforeProvisioningRule) SetType(v string) {
 	o.Type = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *SourceSchemasInner) GetId() string {
+func (o *MultiHostSourcesBeforeProvisioningRule) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -90,7 +90,7 @@ func (o *SourceSchemasInner) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SourceSchemasInner) GetIdOk() (*string, bool) {
+func (o *MultiHostSourcesBeforeProvisioningRule) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -98,7 +98,7 @@ func (o *SourceSchemasInner) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *SourceSchemasInner) HasId() bool {
+func (o *MultiHostSourcesBeforeProvisioningRule) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -107,12 +107,12 @@ func (o *SourceSchemasInner) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *SourceSchemasInner) SetId(v string) {
+func (o *MultiHostSourcesBeforeProvisioningRule) SetId(v string) {
 	o.Id = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *SourceSchemasInner) GetName() string {
+func (o *MultiHostSourcesBeforeProvisioningRule) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
@@ -122,7 +122,7 @@ func (o *SourceSchemasInner) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SourceSchemasInner) GetNameOk() (*string, bool) {
+func (o *MultiHostSourcesBeforeProvisioningRule) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
@@ -130,7 +130,7 @@ func (o *SourceSchemasInner) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *SourceSchemasInner) HasName() bool {
+func (o *MultiHostSourcesBeforeProvisioningRule) HasName() bool {
 	if o != nil && !IsNil(o.Name) {
 		return true
 	}
@@ -139,11 +139,11 @@ func (o *SourceSchemasInner) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *SourceSchemasInner) SetName(v string) {
+func (o *MultiHostSourcesBeforeProvisioningRule) SetName(v string) {
 	o.Name = &v
 }
 
-func (o SourceSchemasInner) MarshalJSON() ([]byte, error) {
+func (o MultiHostSourcesBeforeProvisioningRule) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -151,7 +151,7 @@ func (o SourceSchemasInner) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o SourceSchemasInner) ToMap() (map[string]interface{}, error) {
+func (o MultiHostSourcesBeforeProvisioningRule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -170,16 +170,16 @@ func (o SourceSchemasInner) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SourceSchemasInner) UnmarshalJSON(data []byte) (err error) {
-	varSourceSchemasInner := _SourceSchemasInner{}
+func (o *MultiHostSourcesBeforeProvisioningRule) UnmarshalJSON(data []byte) (err error) {
+	varMultiHostSourcesBeforeProvisioningRule := _MultiHostSourcesBeforeProvisioningRule{}
 
-	err = json.Unmarshal(data, &varSourceSchemasInner)
+	err = json.Unmarshal(data, &varMultiHostSourcesBeforeProvisioningRule)
 
 	if err != nil {
 		return err
 	}
 
-	*o = SourceSchemasInner(varSourceSchemasInner)
+	*o = MultiHostSourcesBeforeProvisioningRule(varMultiHostSourcesBeforeProvisioningRule)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -193,38 +193,38 @@ func (o *SourceSchemasInner) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableSourceSchemasInner struct {
-	value *SourceSchemasInner
+type NullableMultiHostSourcesBeforeProvisioningRule struct {
+	value *MultiHostSourcesBeforeProvisioningRule
 	isSet bool
 }
 
-func (v NullableSourceSchemasInner) Get() *SourceSchemasInner {
+func (v NullableMultiHostSourcesBeforeProvisioningRule) Get() *MultiHostSourcesBeforeProvisioningRule {
 	return v.value
 }
 
-func (v *NullableSourceSchemasInner) Set(val *SourceSchemasInner) {
+func (v *NullableMultiHostSourcesBeforeProvisioningRule) Set(val *MultiHostSourcesBeforeProvisioningRule) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSourceSchemasInner) IsSet() bool {
+func (v NullableMultiHostSourcesBeforeProvisioningRule) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSourceSchemasInner) Unset() {
+func (v *NullableMultiHostSourcesBeforeProvisioningRule) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSourceSchemasInner(val *SourceSchemasInner) *NullableSourceSchemasInner {
-	return &NullableSourceSchemasInner{value: val, isSet: true}
+func NewNullableMultiHostSourcesBeforeProvisioningRule(val *MultiHostSourcesBeforeProvisioningRule) *NullableMultiHostSourcesBeforeProvisioningRule {
+	return &NullableMultiHostSourcesBeforeProvisioningRule{value: val, isSet: true}
 }
 
-func (v NullableSourceSchemasInner) MarshalJSON() ([]byte, error) {
+func (v NullableMultiHostSourcesBeforeProvisioningRule) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSourceSchemasInner) UnmarshalJSON(src []byte) error {
+func (v *NullableMultiHostSourcesBeforeProvisioningRule) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

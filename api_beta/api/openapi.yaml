@@ -488,6 +488,11 @@ tags:
     specified method
   name: MFA Controller
 - description: |
+    Use this API to build a Multi-Host Integration.
+    Multi-Host Integration will help customers to configure and manage similar type of target system in Identity Security Cloud.
+    In Identity Security Cloud, administrators can create a Multi-Host Integration by going to Admin > Connections > Multi-Host Sources and selecting 'Create.'
+  name: Multi-Host Integration
+- description: |
     Use this API to implement non-employee lifecycle management functionality.
     With this functionality in place, administrators can create non-employee records and configure them for use in their organizations.
     This allows organizations to provide secure access to non-employees and control that access.
@@ -18528,6 +18533,1505 @@ paths:
       summary: Update Lifecycle State
       tags:
       - Lifecycle States
+  /multihosts:
+    get:
+      description: "Get a list of Multi-Host Integrations.  \n\nA token with Org Admin\
+        \ or Multi-Host Admin authority is required to access this endpoint."
+      operationId: getMultiHostIntegrationsList
+      parameters:
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **name**
+        example: name
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **type**: *in*
+
+          **forSubAdminId**: *in*
+        example: id eq 2c91808b6ef1d43e016efba0ce470904
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - description: |-
+          If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity or SOURCE_SUBADMIN identity.
+
+          The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID.
+
+          A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin.
+        example: 5168015d32f890ca15812c9180835d2e
+        in: query
+        name: for-subadmin
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/MultiHostIntegrations'
+                type: array
+          description: OK. Returned if the request was successfully accepted into
+            the system.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:multihosts:read
+        - idn:sources:read
+      summary: List All Existing Multi-Host Integrations
+      tags:
+      - Multi-Host Integration
+    post:
+      description: |-
+        This API is used to create Multi-Host Integration. Multi-host Integration holds similar types of sources.
+
+        A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
+      operationId: createMultiHostIntegration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MultiHostIntegrationsCreate'
+        description: The specifics of the Multi-Host Integration to create
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultiHostIntegrations'
+          description: OK. Returned if the request was successfully accepted into
+            the system.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:multihosts:create
+        - idn:sources:create
+      summary: Create Multi-Host Integration
+      tags:
+      - Multi-Host Integration
+  /multihosts/types:
+    get:
+      description: "This API endpoint returns the current list of supported Multi-Host\
+        \ Integration types.  \n\nA token with Org Admin or Multi-Host Admin authority\
+        \ is required to access this endpoint."
+      operationId: getMultihostIntegrationTypes
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/MultiHostIntegrationTemplateType'
+                type: array
+          description: OK. Returned if the request was successfully accepted into
+            the system.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:multihosts:read
+        - idn:sources:read
+      summary: List Multi-Host Integration Types
+      tags:
+      - Multi-Host Integration
+  /multihosts/{id}:
+    delete:
+      description: "Delete an existing Multi-Host Integration by ID.  \n\nA token\
+        \ with Org Admin or Multi Host Admin authority is required to access this\
+        \ endpoint."
+      operationId: deleteMultiHost
+      parameters:
+      - description: ID of Multi-Host Integration to delete.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: 2c91808568c529c60168cca6f90c1326
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: OK. Returned if the request was successfully accepted into
+            the system.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:multihosts:delete
+        - idn:sources:delete
+      summary: Delete Multi-Host Integration
+      tags:
+      - Multi-Host Integration
+    get:
+      description: "Get an existing Multi-Host Integration. \n\nA token with Org Admin\
+        \ or Multi-Host Integration Admin authority is required to access this endpoint."
+      operationId: getMultiHostIntegrations
+      parameters:
+      - description: ID of the Multi-Host Integration.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: 2c91808568c529c60168cca6f90c1326
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultiHostIntegrations'
+          description: OK. Returned if the request was successfully accepted into
+            the system.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:multihosts:read
+        - idn:sources:read
+      summary: Get Multi-Host Integration By ID
+      tags:
+      - Multi-Host Integration
+    patch:
+      description: |-
+        Update existing sources within Multi-Host Integration.
+
+        A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
+      operationId: updateMultiHostSources
+      parameters:
+      - description: ID of the Multi-Host Integration to update.
+        explode: false
+        in: path
+        name: multihost_id
+        required: true
+        schema:
+          example: anId
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+            - op: add
+              path: /description
+              value: MDK Multi-Host Integration 222 description
+            schema:
+              $ref: '#/components/schemas/updateMultiHostSources_request'
+        description: |
+          A list of Multi-Host Integration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+
+          Only `replace` operations are accepted by this endpoint.
+
+          A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed.
+        required: true
+      responses:
+        "200":
+          description: OK. Returned if the request was successfully accepted into
+            the system.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:multihosts:update
+      summary: Update Multi-Host Integration
+      tags:
+      - Multi-Host Integration
+    post:
+      description: |-
+        This API is used to create sources within Multi-Host Integration. Multi-Host Integration holds similar types of sources.
+
+        A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
+      operationId: createSourcesWithinMultiHost
+      parameters:
+      - description: ID of the Multi-Host Integration.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: 2c91808568c529c60168cca6f90c1326
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/MultiHostIntegrationsCreateSources'
+              type: array
+        description: The specifics of the sources to create within Multi-Host Integration.
+        required: true
+      responses:
+        "200":
+          description: OK. Returned if the request was successfully accepted into
+            the system.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:multihosts:create
+        - idn:sources:create
+      summary: Create Sources Within Multi-Host Integration
+      tags:
+      - Multi-Host Integration
+  /multihosts/{multihost_id}/sources/testConnection:
+    post:
+      description: |-
+        This endpoint performs a more detailed validation of the Multi-Host Integration's configuration.
+
+        A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
+      operationId: testConnectionMultiHostSources
+      parameters:
+      - description: ID of the Multi-Host Integration
+        explode: false
+        in: path
+        name: multihost_id
+        required: true
+        schema:
+          example: 2c91808568c529c60168cca6f90c1324
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: OK. Returned if the request was successfully accepted into
+            the system.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:multihosts:read
+        - idn:sources:read
+      summary: Test Configuration For Multi-Host Integration
+      tags:
+      - Multi-Host Integration
+  /multihosts/{multihost_id}/sources/{sourceId}/testConnection:
+    get:
+      description: "This endpoint performs a more detailed validation of the source's\
+        \ configuration.  \n\nA token with Org Admin or Multi-Host Admin authority\
+        \ is required to access this endpoint."
+      operationId: testSourceConnectionMultihost
+      parameters:
+      - description: ID of the Multi-Host Integration
+        explode: false
+        in: path
+        name: multihost_id
+        required: true
+        schema:
+          example: 2c91808568c529c60168cca6f90c1326
+          type: string
+        style: simple
+      - description: ID of the source within the Multi-Host Integration
+        explode: false
+        in: path
+        name: sourceId
+        required: true
+        schema:
+          example: 2c91808568c529f60168cca6f90c1324
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/testSourceConnectionMultihost_200_response'
+          description: OK. Returned if the request was successfully accepted into
+            the system.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:multihosts:read
+        - idn:sources:read
+      summary: Test Configuration For Multi-Host Integration's Single Source
+      tags:
+      - Multi-Host Integration
+  /multihosts/{id}/sources:
+    get:
+      description: "Get a list of sources within Multi-Host Integration ID.  \n\n\
+        A token with Org Admin or Multi-Host Admin authority is required to access\
+        \ this endpoint."
+      operationId: getSourcesWithinMultiHost
+      parameters:
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **name**
+        example: name
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *in*
+        example: id eq 2c91808b6ef1d43e016efba0ce470904
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/MultiHostSources'
+                type: array
+          description: OK. Returned if the request was successfully accepted into
+            the system.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:multihosts:read
+        - idn:sources:read
+      summary: List Sources Within Multi-Host Integration
+      tags:
+      - Multi-Host Integration
+  /multihosts/{multiHostId}/sources/errors:
+    get:
+      description: "Get a list of sources creation errors within Multi-Host Integration\
+        \ ID.  \n\nA token with Org Admin or Multi-Host Admin authority is required\
+        \ to access this endpoint."
+      operationId: getSourcesWithinMultiHost
+      parameters:
+      - description: ID of the Multi-Host Integration
+        explode: false
+        in: path
+        name: multiHostId
+        required: true
+        schema:
+          example: 004091cb79b04636b88662afa50a4440
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/SourceCreationErrors'
+                type: array
+          description: OK. Returned if the request was successfully accepted into
+            the system.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:multihosts:read
+        - idn:sources:read
+      summary: List Multi-Host Integration Sources Creation Errors
+      tags:
+      - Multi-Host Integration
+  /multihosts/{multihostId}/acctAggregationGroups:
+    get:
+      description: |-
+        This API will return array of account aggregation groups within provided Multi-Host Integration ID.
+
+        A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
+      operationId: getAcctAggregationGroups
+      parameters:
+      - description: ID of the Multi-Host Integration to update
+        explode: false
+        in: path
+        name: multiHostId
+        required: true
+        schema:
+          example: aMultiHostId
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultiHostIntegrationsAggScheduleUpdate'
+          description: OK. Returned if the request was successfully accepted into
+            the system.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:multihosts:update
+      summary: Get Account Aggregation Groups Within Multi-Host Integration ID
+      tags:
+      - Multi-Host Integration
+  /multihosts/{multiHostId}/entitlementAggregationGroups:
+    get:
+      description: "This API will return array of aggregation groups within provided\
+        \ Multi-Host Integration ID.  \n\nA token with Org Admin or Multi-Host Admin\
+        \ authority is required to access this endpoint."
+      operationId: getEntitlementAggregationGroups
+      parameters:
+      - description: ID of the Multi-Host Integration to update
+        explode: false
+        in: path
+        name: multiHostId
+        required: true
+        schema:
+          example: aMultiHostId
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultiHostIntegrationsAggScheduleUpdate'
+          description: OK. Returned if the request was successfully accepted into
+            the system.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:multihosts:update
+      summary: Get Entitlement Aggregation Groups Within Multi-Host Integration ID
+      tags:
+      - Multi-Host Integration
   /non-employee-records:
     get:
       description: This gets a list of non-employee records.
@@ -66142,6 +67646,735 @@ components:
             type: string
           type: array
       type: object
+    MultiHostIntegrations:
+      example:
+        cluster:
+          name: Corporate Cluster
+          id: 2c9180866166b5b0016167c32ef31a66
+          type: CLUSTER
+        deleteThreshold: 10
+        connectorId: multihost-microsoft-sql-server
+        description: This is a Multi-Host Integration.
+        type: Multi-Host - Microsoft SQL Server
+        connectorClass: sailpoint.connector.OpenConnectorAdapter
+        connectionType: direct
+        modified: 2024-01-23T18:08:50.897Z
+        id: 2c91808568c529c60168cca6f90c1324
+        connectorImplementationId: multihost-microsoft-sql-server
+        owner:
+          name: MyName
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+        managementWorkgroup:
+          name: My Management Workgroup
+          id: 2c91808568c529c60168cca6f90c2222
+          type: GOVERNANCE_GROUP
+        lastSourceUploadSuccessCount: 50
+        authoritative: false
+        maxSourcesPerAggGroup: 10
+        connectorAttributes:
+          multiHostAttributes:
+            password: Password
+            user: Username
+            connector_files: mssql-jdbc-8.4.1.jre8.jar
+            authType: SQLAuthentication
+          connectorFileUploadHistory:
+            connectorFileNameUploadedDate: 2024-08-29T10:20:38.896479Z
+          maxAllowedSources: 30
+          lastSourceUploadCount: 50
+          showEntitlementSchema: true
+          showAccountSchema: true
+          multihost_status: ready
+        created: 2022-02-08T14:50:03.827Z
+        credentialProviderEnabled: false
+        connector: multihost-microsoft-sql-server
+        healthy: true
+        name: My Multi-Host Integration
+        connectorName: Multi-Host Microsoft SQL Server
+        category: CredentialProvider
+        status: SOURCE_STATE_HEALTHY
+        since: 2000-01-23T04:56:07.000+00:00
+      properties:
+        id:
+          description: Multi-Host Integration ID.
+          example: 2c91808568c529c60168cca6f90c1324
+          readOnly: true
+          type: string
+        name:
+          description: Multi-Host Integration's human-readable name.
+          example: My Multi-Host Integration
+          type: string
+        description:
+          description: Multi-Host Integration's human-readable description.
+          example: This is a Multi-Host Integration.
+          type: string
+        owner:
+          $ref: '#/components/schemas/MultiHostIntegrations_owner'
+        cluster:
+          $ref: '#/components/schemas/MultiHostIntegrations_cluster'
+        type:
+          description: "Specifies the type of system being managed e.g. Workday, Multi-Host\
+            \ - Microsoft SQL Server, etc.. If you are creating a delimited file source,\
+            \ you must set the `provisionasCsv` query parameter to `true`. "
+          example: Multi-Host - Microsoft SQL Server
+          type: string
+        connector:
+          description: Connector script name.
+          example: multihost-microsoft-sql-server
+          type: string
+        lastSourceUploadSuccessCount:
+          description: Last successfully uploaded source count of given Multi-Host
+            Integration.
+          example: 50
+          format: int32
+          type: integer
+        maxSourcesPerAggGroup:
+          description: Maximum sources that can contain in a aggregation group of
+            Multi-Host Integration.
+          example: 10
+          format: int32
+          type: integer
+        connectorClass:
+          description: Fully qualified name of the Java class that implements the
+            connector interface.
+          example: sailpoint.connector.OpenConnectorAdapter
+          type: string
+        connectorAttributes:
+          $ref: '#/components/schemas/MultiHostIntegrations_connectorAttributes'
+        deleteThreshold:
+          description: Number from 0 to 100 that specifies when to skip the delete
+            phase.
+          example: 10
+          format: int32
+          maximum: 100
+          minimum: 0
+          type: integer
+        authoritative:
+          default: false
+          description: "When this is true, it indicates that the source is referenced\
+            \ by an identity profile."
+          example: false
+          type: boolean
+        managementWorkgroup:
+          $ref: '#/components/schemas/MultiHostIntegrations_managementWorkgroup'
+        healthy:
+          default: false
+          description: "When this is true, it indicates that the source is healthy."
+          example: true
+          type: boolean
+        status:
+          description: 'Status identifier that gives specific information about why
+            a source is or isn''t healthy. '
+          enum:
+          - SOURCE_STATE_ERROR_ACCOUNT_FILE_IMPORT
+          - SOURCE_STATE_ERROR_CLUSTER
+          - SOURCE_STATE_ERROR_SOURCE
+          - SOURCE_STATE_ERROR_VA
+          - SOURCE_STATE_FAILURE_CLUSTER
+          - SOURCE_STATE_FAILURE_SOURCE
+          - SOURCE_STATE_HEALTHY
+          - SOURCE_STATE_UNCHECKED_CLUSTER
+          - SOURCE_STATE_UNCHECKED_CLUSTER_NO_SOURCES
+          - SOURCE_STATE_UNCHECKED_SOURCE
+          - SOURCE_STATE_UNCHECKED_SOURCE_NO_ACCOUNTS
+          example: SOURCE_STATE_HEALTHY
+          type: string
+        since:
+          description: Timestamp that shows when a source health check was last performed.
+          format: date-time
+          type: string
+        connectorId:
+          description: Connector ID
+          example: multihost-microsoft-sql-server
+          type: string
+        connectorName:
+          description: Name of the connector that was chosen during source creation.
+          example: Multi-Host Microsoft SQL Server
+          type: string
+        connectionType:
+          description: Type of connection (direct or file).
+          enum:
+          - direct
+          - file
+          example: direct
+          type: string
+        connectorImplementationId:
+          description: Connector implementation ID.
+          example: multihost-microsoft-sql-server
+          type: string
+        created:
+          description: Date-time when the source was created
+          example: 2022-02-08T14:50:03.827Z
+          format: date-time
+          type: string
+        modified:
+          description: Date-time when the source was last modified.
+          example: 2024-01-23T18:08:50.897Z
+          format: date-time
+          type: string
+        credentialProviderEnabled:
+          default: false
+          description: "If this is true, it enables a credential provider for the\
+            \ source. If credentialProvider is turned on,  then the source can use\
+            \ credential provider(s) to fetch credentials."
+          example: false
+          type: boolean
+        category:
+          description: "Source category (e.g. null, CredentialProvider)."
+          example: CredentialProvider
+          nullable: true
+          type: string
+      required:
+      - connector
+      - description
+      - id
+      - name
+      - owner
+      type: object
+    MultiHostIntegrationsCreate:
+      example:
+        owner:
+          name: MyName
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+        managementWorkgroup:
+          name: My Management Workgroup
+          id: 2c91808568c529c60168cca6f90c2222
+          type: GOVERNANCE_GROUP
+        cluster:
+          name: Corporate Cluster
+          id: 2c9180866166b5b0016167c32ef31a66
+          type: CLUSTER
+        connector: multihost-microsoft-sql-server
+        connectorAttributes:
+          maxSourcesPerAggGroup: 10
+          maxAllowedSources: 300
+        created: 2022-02-08T14:50:03.827Z
+        name: My Multi-Host Integration
+        description: This is the Multi-Host Integration.
+        modified: 2024-01-23T18:08:50.897Z
+      properties:
+        name:
+          description: Multi-Host Integration's human-readable name.
+          example: My Multi-Host Integration
+          type: string
+        description:
+          description: Multi-Host Integration's human-readable description.
+          example: This is the Multi-Host Integration.
+          type: string
+        owner:
+          $ref: '#/components/schemas/MultiHostIntegrations_owner'
+        cluster:
+          $ref: '#/components/schemas/MultiHostIntegrations_cluster'
+        connector:
+          description: Connector script name.
+          example: multihost-microsoft-sql-server
+          type: string
+        connectorAttributes:
+          additionalProperties: true
+          description: "Multi-Host Integration specific configuration. User can add\
+            \ any number of additional attributes. e.g. maxSourcesPerAggGroup, maxAllowedSources\
+            \ etc."
+          example:
+            maxSourcesPerAggGroup: 10
+            maxAllowedSources: 300
+          type: object
+        managementWorkgroup:
+          $ref: '#/components/schemas/MultiHostIntegrations_managementWorkgroup'
+        created:
+          description: Date-time when the source was created
+          example: 2022-02-08T14:50:03.827Z
+          format: date-time
+          type: string
+        modified:
+          description: Date-time when the source was last modified.
+          example: 2024-01-23T18:08:50.897Z
+          format: date-time
+          type: string
+      required:
+      - connector
+      - description
+      - name
+      - owner
+      type: object
+    MultiHostIntegrationTemplateType:
+      description: This represents a Multi-Host Integration template type.
+      example:
+        name: aName
+        scriptName: aScriptName
+        type: aType
+      properties:
+        name:
+          description: This is the name of the type.
+          example: aName
+          type: string
+        type:
+          description: This is the type value for the type.
+          example: aType
+          type: string
+        scriptName:
+          description: This is the scriptName attribute value for the type.
+          example: aScriptName
+          type: string
+      required:
+      - scriptName
+      - type
+      type: object
+    MultiHostIntegrationsCreateSources:
+      description: This represents sources to be created of same type.
+      example:
+        connectorAttributes:
+          authType: SQLAuthentication
+          url: jdbc:sqlserver://178.18.41.118:1433
+          user: username
+          driverClass: com.microsoft.sqlserver.jdbc.SQLServerDriver
+          maxSourcesPerAggGroup: 10
+          maxAllowedSources: 300
+        name: My Source
+        description: This is the corporate directory.
+      properties:
+        name:
+          description: Source's human-readable name.
+          example: My Source
+          type: string
+        description:
+          description: Source's human-readable description.
+          example: This is the corporate directory.
+          type: string
+        connectorAttributes:
+          additionalProperties: true
+          description: Connector specific configuration. This configuration will differ
+            from type to type.
+          example:
+            authType: SQLAuthentication
+            url: jdbc:sqlserver://178.18.41.118:1433
+            user: username
+            driverClass: com.microsoft.sqlserver.jdbc.SQLServerDriver
+            maxSourcesPerAggGroup: 10
+            maxAllowedSources: 300
+          type: object
+      required:
+      - name
+      type: object
+    MultiHostSources:
+      example:
+        cluster:
+          name: Corporate Cluster
+          id: 2c9180866166b5b0016167c32ef31a66
+          type: CLUSTER
+        deleteThreshold: 10
+        connectorId: multihost-microsoft-sql-server
+        description: This is the Source.
+        type: Multi-Host - Microsoft SQL Server
+        connectorClass: sailpoint.connector.OpenConnectorAdapter
+        connectionType: file
+        features:
+        - PROVISIONING
+        - NO_PERMISSIONS_PROVISIONING
+        - GROUPS_HAVE_MEMBERS
+        passwordPolicies:
+        - type: PASSWORD_POLICY
+          id: 2c9180855d191c59015d291ceb053980
+          name: Corporate Password Policy
+        - type: PASSWORD_POLICY
+          id: 2c9180855d191c59015d291ceb057777
+          name: Vendor Password Policy
+        modified: 2024-01-23T18:08:50.897Z
+        id: 2c91808568c529c60168cca6f90c1324
+        connectorImplementationId: multihost-microsoft-sql-server
+        managerCorrelationRule:
+          name: Example Rule
+          id: 2c918085708c274401708c2a8a760001
+          type: RULE
+        owner:
+          name: MyName
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+        managementWorkgroup:
+          name: My Management Workgroup
+          id: 2c91808568c529c60168cca6f90c2222
+          type: GOVERNANCE_GROUP
+        accountCorrelationRule:
+          name: Example Rule
+          id: 2c918085708c274401708c2a8a760001
+          type: RULE
+        authoritative: false
+        connectorAttributes:
+          healthCheckTimeout: 30
+          authSearchAttributes:
+          - cn
+          - uid
+          - mail
+        created: 2022-02-08T14:50:03.827Z
+        managerCorrelationMapping:
+          accountAttributeName: manager
+          identityAttributeName: manager
+        credentialProviderEnabled: false
+        accountCorrelationConfig:
+          name: "Directory [source-62867] Account Correlation"
+          id: 2c9180855d191c59015d28583727245a
+          type: ACCOUNT_CORRELATION_CONFIG
+        connector: multihost-microsoft-sql-server
+        healthy: true
+        schemas:
+        - type: CONNECTOR_SCHEMA
+          id: 2c9180835d191a86015d28455b4b232a
+          name: account
+        - type: CONNECTOR_SCHEMA
+          id: 2c9180835d191a86015d28455b4b232b
+          name: group
+        name: My Source
+        connectorName: Multi-Host Microsoft SQL Server
+        category: CredentialProvider
+        beforeProvisioningRule:
+          name: Example Rule
+          id: 2c918085708c274401708c2a8a760001
+          type: RULE
+        status: SOURCE_STATE_HEALTHY
+        since: 2000-01-23T04:56:07.000+00:00
+      properties:
+        id:
+          description: Source ID.
+          example: 2c91808568c529c60168cca6f90c1324
+          readOnly: true
+          type: string
+        name:
+          description: Source's human-readable name.
+          example: My Source
+          type: string
+        description:
+          description: Source's human-readable description.
+          example: This is the Source.
+          type: string
+        owner:
+          $ref: '#/components/schemas/MultiHostIntegrations_owner'
+        cluster:
+          $ref: '#/components/schemas/MultiHostIntegrations_cluster'
+        accountCorrelationConfig:
+          $ref: '#/components/schemas/MultiHostSources_accountCorrelationConfig'
+        accountCorrelationRule:
+          $ref: '#/components/schemas/MultiHostSources_accountCorrelationRule'
+        managerCorrelationMapping:
+          $ref: '#/components/schemas/ManagerCorrelationMapping'
+        managerCorrelationRule:
+          $ref: '#/components/schemas/MultiHostSources_managerCorrelationRule'
+        beforeProvisioningRule:
+          $ref: '#/components/schemas/MultiHostSources_beforeProvisioningRule'
+        schemas:
+          description: List of references to schema objects.
+          example:
+          - type: CONNECTOR_SCHEMA
+            id: 2c9180835d191a86015d28455b4b232a
+            name: account
+          - type: CONNECTOR_SCHEMA
+            id: 2c9180835d191a86015d28455b4b232b
+            name: group
+          items:
+            $ref: '#/components/schemas/MultiHostSources_schemas_inner'
+          type: array
+        passwordPolicies:
+          description: List of references to the associated PasswordPolicy objects.
+          example:
+          - type: PASSWORD_POLICY
+            id: 2c9180855d191c59015d291ceb053980
+            name: Corporate Password Policy
+          - type: PASSWORD_POLICY
+            id: 2c9180855d191c59015d291ceb057777
+            name: Vendor Password Policy
+          items:
+            $ref: '#/components/schemas/MultiHostSources_passwordPolicies_inner'
+          nullable: true
+          type: array
+        features:
+          description: |-
+            Optional features that can be supported by a source. Modifying the features array may cause source configuration errors that are unsupportable. It is recommended to not modify this array for SailPoint supported connectors.
+            * AUTHENTICATE: The source supports pass-through authentication.
+            * COMPOSITE: The source supports composite source creation.
+            * DIRECT_PERMISSIONS: The source supports returning DirectPermissions.
+            * DISCOVER_SCHEMA: The source supports discovering schemas for users and groups.
+            * ENABLE The source supports reading if an account is enabled or disabled.
+            * MANAGER_LOOKUP: The source supports looking up managers as they are encountered in a feed. This is the opposite of NO_RANDOM_ACCESS.
+            * NO_RANDOM_ACCESS: The source does not support random access and the getObject() methods should not be called and expected to perform.
+            * PROXY: The source can serve as a proxy for another source. When an source has a proxy, all connector calls made with that source are redirected through the connector for the proxy source.
+            * SEARCH
+            * TEMPLATE
+            * UNLOCK: The source supports reading if an account is locked or unlocked.
+            * UNSTRUCTURED_TARGETS: The source supports returning unstructured Targets.
+            * SHAREPOINT_TARGET: The source supports returning unstructured Target data for SharePoint. It will be typically used by AD, LDAP sources.
+            * PROVISIONING: The source can both read and write accounts. Having this feature implies that the provision() method is implemented. It also means that direct and target permissions can also be provisioned if they can be returned by aggregation.
+            * GROUP_PROVISIONING: The source can both read and write groups. Having this feature implies that the provision() method is implemented.
+            * SYNC_PROVISIONING: The source can provision accounts synchronously.
+            * PASSWORD: The source can provision password changes. Since sources can never read passwords, this is should only be used in conjunction with the PROVISIONING feature.
+            * CURRENT_PASSWORD: Some source types support verification of the current password
+            * ACCOUNT_ONLY_REQUEST: The source supports requesting accounts without entitlements.
+            * ADDITIONAL_ACCOUNT_REQUEST: The source supports requesting additional accounts.
+            * NO_AGGREGATION: A source that does not support aggregation.
+            * GROUPS_HAVE_MEMBERS: The source models group memberships with a member attribute on the group object rather than a groups attribute on the account object. This effects the implementation of delta account aggregation.
+            * NO_PERMISSIONS_PROVISIONING: Indicates that the connector cannot provision direct or target permissions for accounts. When DIRECT_PERMISSIONS and PROVISIONING features are present, it is assumed that the connector can also provision direct permissions. This feature disables that assumption and causes permission request to be converted to work items for accounts.
+            * NO_GROUP_PERMISSIONS_PROVISIONING: Indicates that the connector cannot provision direct or target permissions for groups. When DIRECT_PERMISSIONS and PROVISIONING features are present, it is assumed that the connector can also provision direct permissions. This feature disables that assumption and causes permission request to be converted to work items for groups.
+            * NO_UNSTRUCTURED_TARGETS_PROVISIONING: This string will be replaced by NO_GROUP_PERMISSIONS_PROVISIONING and NO_PERMISSIONS_PROVISIONING.
+            * NO_DIRECT_PERMISSIONS_PROVISIONING: This string will be replaced by NO_GROUP_PERMISSIONS_PROVISIONING and NO_PERMISSIONS_PROVISIONING.
+            * USES_UUID: Connectivity 2.0 flag used to indicate that the connector supports a compound naming structure.
+            * PREFER_UUID: Used in ISC Provisioning AND Aggregation to decide if it should prefer account.uuid to account.nativeIdentity when data is read in through aggregation OR pushed out through provisioning.
+            * ARM_SECURITY_EXTRACT: Indicates the application supports Security extracts for ARM
+            * ARM_UTILIZATION_EXTRACT: Indicates the application supports Utilization extracts for ARM
+            * ARM_CHANGELOG_EXTRACT: Indicates the application supports Change-log extracts for ARM
+          example:
+          - PROVISIONING
+          - NO_PERMISSIONS_PROVISIONING
+          - GROUPS_HAVE_MEMBERS
+          items:
+            enum:
+            - AUTHENTICATE
+            - COMPOSITE
+            - DIRECT_PERMISSIONS
+            - DISCOVER_SCHEMA
+            - ENABLE
+            - MANAGER_LOOKUP
+            - NO_RANDOM_ACCESS
+            - PROXY
+            - SEARCH
+            - TEMPLATE
+            - UNLOCK
+            - UNSTRUCTURED_TARGETS
+            - SHAREPOINT_TARGET
+            - PROVISIONING
+            - GROUP_PROVISIONING
+            - SYNC_PROVISIONING
+            - PASSWORD
+            - CURRENT_PASSWORD
+            - ACCOUNT_ONLY_REQUEST
+            - ADDITIONAL_ACCOUNT_REQUEST
+            - NO_AGGREGATION
+            - GROUPS_HAVE_MEMBERS
+            - NO_PERMISSIONS_PROVISIONING
+            - NO_GROUP_PERMISSIONS_PROVISIONING
+            - NO_UNSTRUCTURED_TARGETS_PROVISIONING
+            - NO_DIRECT_PERMISSIONS_PROVISIONING
+            - PREFER_UUID
+            - ARM_SECURITY_EXTRACT
+            - ARM_UTILIZATION_EXTRACT
+            - ARM_CHANGELOG_EXTRACT
+            - USES_UUID
+            example: AUTHENTICATE
+            type: string
+          type: array
+        type:
+          description: "Specifies the type of system being managed e.g. Multi-Host\
+            \ - Microsoft SQL Server, Workday, etc.. If you are creating a delimited\
+            \ file source, you must set the `provisionasCsv` query parameter to `true`. "
+          example: Multi-Host - Microsoft SQL Server
+          type: string
+        connector:
+          description: Connector script name.
+          example: multihost-microsoft-sql-server
+          type: string
+        connectorClass:
+          description: Fully qualified name of the Java class that implements the
+            connector interface.
+          example: sailpoint.connector.OpenConnectorAdapter
+          type: string
+        connectorAttributes:
+          additionalProperties: true
+          description: Connector specific configuration. This configuration will differ
+            from type to type.
+          example:
+            healthCheckTimeout: 30
+            authSearchAttributes:
+            - cn
+            - uid
+            - mail
+          type: object
+        deleteThreshold:
+          description: Number from 0 to 100 that specifies when to skip the delete
+            phase.
+          example: 10
+          format: int32
+          maximum: 100
+          minimum: 0
+          type: integer
+        authoritative:
+          default: false
+          description: "When this is true, it indicates that the source is referenced\
+            \ by an identity profile."
+          example: false
+          type: boolean
+        managementWorkgroup:
+          $ref: '#/components/schemas/MultiHostIntegrations_managementWorkgroup'
+        healthy:
+          default: false
+          description: "When this is true, it indicates that the source is healthy."
+          example: true
+          type: boolean
+        status:
+          description: 'Status identifier that gives specific information about why
+            a source is or isn''t healthy. '
+          enum:
+          - SOURCE_STATE_ERROR_ACCOUNT_FILE_IMPORT
+          - SOURCE_STATE_ERROR_CLUSTER
+          - SOURCE_STATE_ERROR_SOURCE
+          - SOURCE_STATE_ERROR_VA
+          - SOURCE_STATE_FAILURE_CLUSTER
+          - SOURCE_STATE_FAILURE_SOURCE
+          - SOURCE_STATE_HEALTHY
+          - SOURCE_STATE_UNCHECKED_CLUSTER
+          - SOURCE_STATE_UNCHECKED_CLUSTER_NO_SOURCES
+          - SOURCE_STATE_UNCHECKED_SOURCE
+          - SOURCE_STATE_UNCHECKED_SOURCE_NO_ACCOUNTS
+          example: SOURCE_STATE_HEALTHY
+          type: string
+        since:
+          description: Timestamp that shows when a source health check was last performed.
+          format: date-time
+          type: string
+        connectorId:
+          description: Connector ID
+          example: multihost-microsoft-sql-server
+          type: string
+        connectorName:
+          description: Name of the connector that was chosen during source creation.
+          example: Multi-Host Microsoft SQL Server
+          type: string
+        connectionType:
+          description: Type of connection (direct or file).
+          example: file
+          type: string
+        connectorImplementationId:
+          description: Connector implementation ID.
+          example: multihost-microsoft-sql-server
+          type: string
+        created:
+          description: Date-time when the source was created
+          example: 2022-02-08T14:50:03.827Z
+          format: date-time
+          type: string
+        modified:
+          description: Date-time when the source was last modified.
+          example: 2024-01-23T18:08:50.897Z
+          format: date-time
+          type: string
+        credentialProviderEnabled:
+          default: false
+          description: "If this is true, it enables a credential provider for the\
+            \ source. If credentialProvider is turned on,  then the source can use\
+            \ credential provider(s) to fetch credentials."
+          example: false
+          type: boolean
+        category:
+          description: "Source category (e.g. null, CredentialProvider)."
+          example: CredentialProvider
+          nullable: true
+          type: string
+      required:
+      - connector
+      - connectorName
+      - id
+      - name
+      - owner
+      type: object
+    SourceCreationErrors:
+      example:
+        multihost_id: 2c91808568c529c60168cca6f90c1324
+        created: 2022-02-08T14:50:03.827Z
+        modified: 2024-01-23T18:08:50.897Z
+        operation: DELETE
+        source_name: My Source
+        source_error: "Source with internal name \"My Source [source]\" already exists."
+      properties:
+        multihost_id:
+          description: Multi-Host Integration ID.
+          example: 2c91808568c529c60168cca6f90c1324
+          readOnly: true
+          type: string
+        source_name:
+          description: Source's human-readable name.
+          example: My Source
+          type: string
+        source_error:
+          description: Source's human-readable description.
+          example: "Source with internal name \"My Source [source]\" already exists."
+          type: string
+        created:
+          description: Date-time when the source was created
+          example: 2022-02-08T14:50:03.827Z
+          format: date-time
+          type: string
+        modified:
+          description: Date-time when the source was last modified.
+          example: 2024-01-23T18:08:50.897Z
+          format: date-time
+          type: string
+        operation:
+          description: operation category (e.g. DELETE).
+          example: DELETE
+          nullable: true
+          type: string
+      type: object
+    MultiHostIntegrationsAggScheduleUpdate:
+      allOf:
+      - description: Multi-Host Integration's aggregation schedule specification.
+        properties:
+          multihost_id:
+            description: Multi-Host Integration ID. The ID must be unique
+            example: 004091cb79b04636b88662afa50a4456
+            type: string
+          aggregation_grp_id:
+            description: Multi-Host Integration aggregation group ID
+            example: 004091cb79b04636b88662afa50a4448
+            type: string
+          aggregation_grp_name:
+            description: Multi-Host Integration name
+            example: Multi-Host Integration aggregation group name
+            type: string
+          aggregation_cron_schedule:
+            description: Cron expression to schedule aggregation
+            example: 0 0 0 * * ?
+            type: string
+          enableSchedule:
+            default: false
+            description: |-
+              Boolean value for Multi-Host Integration aggregation schedule.
+
+              This specifies if scheduled aggregation is enabled or disabled.
+            example: false
+            type: boolean
+          source_id_list:
+            description: Source IDs of the Multi-Host Integration
+            example:
+            - 004091cb79b04636b88662afa50a4440
+            - 00af6d0d562a49b591c47be908740542
+            items:
+              type: string
+            type: array
+          created:
+            description: Created date of Multi-Host Integration aggregation schedule
+            example: 2024-01-23T18:08:50.897Z
+            format: date-time
+            type: string
+          modified:
+            description: Modified date of Multi-Host Integration aggregation schedule
+            example: 2024-01-23T18:08:50.897Z
+            format: date-time
+            type: string
+        required:
+        - aggregation_cron_schedule
+        - aggregation_grp_id
+        - aggregation_grp_name
+        - enableSchedule
+        - multihost_id
+        - source_id_list
+        type: object
+      example:
+        aggregation_cron_schedule: 0 0 0 * * ?
+        multihost_id: 004091cb79b04636b88662afa50a4456
+        created: 2024-01-23T18:08:50.897Z
+        modified: 2024-01-23T18:08:50.897Z
+        aggregation_grp_id: 004091cb79b04636b88662afa50a4448
+        aggregation_grp_name: Multi-Host Integration aggregation group name
+        source_id_list:
+        - 004091cb79b04636b88662afa50a4440
+        - 00af6d0d562a49b591c47be908740542
+        enableSchedule: false
     NonEmployeeRecord:
       example:
         sourceId: 2c91808568c529c60168cca6f90c1313
@@ -71992,19 +74225,19 @@ components:
           example: This is the corporate directory.
           type: string
         owner:
-          $ref: '#/components/schemas/Source_owner'
+          $ref: '#/components/schemas/MultiHostIntegrations_owner'
         cluster:
-          $ref: '#/components/schemas/Source_cluster'
+          $ref: '#/components/schemas/MultiHostIntegrations_cluster'
         accountCorrelationConfig:
-          $ref: '#/components/schemas/Source_accountCorrelationConfig'
+          $ref: '#/components/schemas/MultiHostSources_accountCorrelationConfig'
         accountCorrelationRule:
-          $ref: '#/components/schemas/Source_accountCorrelationRule'
+          $ref: '#/components/schemas/MultiHostSources_accountCorrelationRule'
         managerCorrelationMapping:
           $ref: '#/components/schemas/ManagerCorrelationMapping'
         managerCorrelationRule:
-          $ref: '#/components/schemas/Source_managerCorrelationRule'
+          $ref: '#/components/schemas/MultiHostSources_managerCorrelationRule'
         beforeProvisioningRule:
-          $ref: '#/components/schemas/Source_beforeProvisioningRule'
+          $ref: '#/components/schemas/MultiHostSources_beforeProvisioningRule'
         schemas:
           description: List of references to schema objects.
           example:
@@ -72015,7 +74248,7 @@ components:
             id: 2c9180835d191a86015d28455b4b232b
             name: group
           items:
-            $ref: '#/components/schemas/Source_schemas_inner'
+            $ref: '#/components/schemas/MultiHostSources_schemas_inner'
           type: array
         passwordPolicies:
           description: List of references to the associated PasswordPolicy objects.
@@ -72027,7 +74260,7 @@ components:
             id: 2c9180855d191c59015d291ceb057777
             name: Vendor Password Policy
           items:
-            $ref: '#/components/schemas/Source_passwordPolicies_inner'
+            $ref: '#/components/schemas/MultiHostSources_passwordPolicies_inner'
           nullable: true
           type: array
         features:
@@ -72142,7 +74375,7 @@ components:
           example: false
           type: boolean
         managementWorkgroup:
-          $ref: '#/components/schemas/Source_managementWorkgroup'
+          $ref: '#/components/schemas/MultiHostIntegrations_managementWorkgroup'
         healthy:
           default: false
           description: "When this is true, it indicates that the source is healthy."
@@ -79873,6 +82106,97 @@ components:
             type: string
           type: array
       type: object
+    ManagerCorrelationMapping:
+      example:
+        accountAttributeName: manager
+        identityAttributeName: manager
+      nullable: true
+      properties:
+        accountAttributeName:
+          description: Name of the attribute to use for manager correlation. The value
+            found on the account attribute will be used to lookup the manager's identity.
+          example: manager
+          type: string
+        identityAttributeName:
+          description: Name of the identity attribute to search when trying to find
+            a manager using the value from the accountAttribute.
+          example: manager
+          type: string
+      type: object
+    SourceFeature:
+      description: |-
+        Optional features that can be supported by a source. Modifying the features array may cause source configuration errors that are unsupportable. It is recommended to not modify this array for SailPoint supported connectors.
+        * AUTHENTICATE: The source supports pass-through authentication.
+        * COMPOSITE: The source supports composite source creation.
+        * DIRECT_PERMISSIONS: The source supports returning DirectPermissions.
+        * DISCOVER_SCHEMA: The source supports discovering schemas for users and groups.
+        * ENABLE The source supports reading if an account is enabled or disabled.
+        * MANAGER_LOOKUP: The source supports looking up managers as they are encountered in a feed. This is the opposite of NO_RANDOM_ACCESS.
+        * NO_RANDOM_ACCESS: The source does not support random access and the getObject() methods should not be called and expected to perform.
+        * PROXY: The source can serve as a proxy for another source. When an source has a proxy, all connector calls made with that source are redirected through the connector for the proxy source.
+        * SEARCH
+        * TEMPLATE
+        * UNLOCK: The source supports reading if an account is locked or unlocked.
+        * UNSTRUCTURED_TARGETS: The source supports returning unstructured Targets.
+        * SHAREPOINT_TARGET: The source supports returning unstructured Target data for SharePoint. It will be typically used by AD, LDAP sources.
+        * PROVISIONING: The source can both read and write accounts. Having this feature implies that the provision() method is implemented. It also means that direct and target permissions can also be provisioned if they can be returned by aggregation.
+        * GROUP_PROVISIONING: The source can both read and write groups. Having this feature implies that the provision() method is implemented.
+        * SYNC_PROVISIONING: The source can provision accounts synchronously.
+        * PASSWORD: The source can provision password changes. Since sources can never read passwords, this is should only be used in conjunction with the PROVISIONING feature.
+        * CURRENT_PASSWORD: Some source types support verification of the current password
+        * ACCOUNT_ONLY_REQUEST: The source supports requesting accounts without entitlements.
+        * ADDITIONAL_ACCOUNT_REQUEST: The source supports requesting additional accounts.
+        * NO_AGGREGATION: A source that does not support aggregation.
+        * GROUPS_HAVE_MEMBERS: The source models group memberships with a member attribute on the group object rather than a groups attribute on the account object. This effects the implementation of delta account aggregation.
+        * NO_PERMISSIONS_PROVISIONING: Indicates that the connector cannot provision direct or target permissions for accounts. When DIRECT_PERMISSIONS and PROVISIONING features are present, it is assumed that the connector can also provision direct permissions. This feature disables that assumption and causes permission request to be converted to work items for accounts.
+        * NO_GROUP_PERMISSIONS_PROVISIONING: Indicates that the connector cannot provision direct or target permissions for groups. When DIRECT_PERMISSIONS and PROVISIONING features are present, it is assumed that the connector can also provision direct permissions. This feature disables that assumption and causes permission request to be converted to work items for groups.
+        * NO_UNSTRUCTURED_TARGETS_PROVISIONING: This string will be replaced by NO_GROUP_PERMISSIONS_PROVISIONING and NO_PERMISSIONS_PROVISIONING.
+        * NO_DIRECT_PERMISSIONS_PROVISIONING: This string will be replaced by NO_GROUP_PERMISSIONS_PROVISIONING and NO_PERMISSIONS_PROVISIONING.
+        * USES_UUID: Connectivity 2.0 flag used to indicate that the connector supports a compound naming structure.
+        * PREFER_UUID: Used in ISC Provisioning AND Aggregation to decide if it should prefer account.uuid to account.nativeIdentity when data is read in through aggregation OR pushed out through provisioning.
+        * ARM_SECURITY_EXTRACT: Indicates the application supports Security extracts for ARM
+        * ARM_UTILIZATION_EXTRACT: Indicates the application supports Utilization extracts for ARM
+        * ARM_CHANGELOG_EXTRACT: Indicates the application supports Change-log extracts for ARM
+      example:
+      - PROVISIONING
+      - NO_PERMISSIONS_PROVISIONING
+      - GROUPS_HAVE_MEMBERS
+      items:
+        enum:
+        - AUTHENTICATE
+        - COMPOSITE
+        - DIRECT_PERMISSIONS
+        - DISCOVER_SCHEMA
+        - ENABLE
+        - MANAGER_LOOKUP
+        - NO_RANDOM_ACCESS
+        - PROXY
+        - SEARCH
+        - TEMPLATE
+        - UNLOCK
+        - UNSTRUCTURED_TARGETS
+        - SHAREPOINT_TARGET
+        - PROVISIONING
+        - GROUP_PROVISIONING
+        - SYNC_PROVISIONING
+        - PASSWORD
+        - CURRENT_PASSWORD
+        - ACCOUNT_ONLY_REQUEST
+        - ADDITIONAL_ACCOUNT_REQUEST
+        - NO_AGGREGATION
+        - GROUPS_HAVE_MEMBERS
+        - NO_PERMISSIONS_PROVISIONING
+        - NO_GROUP_PERMISSIONS_PROVISIONING
+        - NO_UNSTRUCTURED_TARGETS_PROVISIONING
+        - NO_DIRECT_PERMISSIONS_PROVISIONING
+        - PREFER_UUID
+        - ARM_SECURITY_EXTRACT
+        - ARM_UTILIZATION_EXTRACT
+        - ARM_CHANGELOG_EXTRACT
+        - USES_UUID
+        example: AUTHENTICATE
+        type: string
+      type: array
     NonEmployeeSourceLite:
       example:
         sourceId: 2c91808568c529c60168cca6f90c1313
@@ -81479,97 +83803,6 @@ components:
           example: null
       title: Resolver URL Format for Object Configuration.
       type: object
-    ManagerCorrelationMapping:
-      example:
-        accountAttributeName: manager
-        identityAttributeName: manager
-      nullable: true
-      properties:
-        accountAttributeName:
-          description: Name of the attribute to use for manager correlation. The value
-            found on the account attribute will be used to lookup the manager's identity.
-          example: manager
-          type: string
-        identityAttributeName:
-          description: Name of the identity attribute to search when trying to find
-            a manager using the value from the accountAttribute.
-          example: manager
-          type: string
-      type: object
-    SourceFeature:
-      description: |-
-        Optional features that can be supported by a source. Modifying the features array may cause source configuration errors that are unsupportable. It is recommended to not modify this array for SailPoint supported connectors.
-        * AUTHENTICATE: The source supports pass-through authentication.
-        * COMPOSITE: The source supports composite source creation.
-        * DIRECT_PERMISSIONS: The source supports returning DirectPermissions.
-        * DISCOVER_SCHEMA: The source supports discovering schemas for users and groups.
-        * ENABLE The source supports reading if an account is enabled or disabled.
-        * MANAGER_LOOKUP: The source supports looking up managers as they are encountered in a feed. This is the opposite of NO_RANDOM_ACCESS.
-        * NO_RANDOM_ACCESS: The source does not support random access and the getObject() methods should not be called and expected to perform.
-        * PROXY: The source can serve as a proxy for another source. When an source has a proxy, all connector calls made with that source are redirected through the connector for the proxy source.
-        * SEARCH
-        * TEMPLATE
-        * UNLOCK: The source supports reading if an account is locked or unlocked.
-        * UNSTRUCTURED_TARGETS: The source supports returning unstructured Targets.
-        * SHAREPOINT_TARGET: The source supports returning unstructured Target data for SharePoint. It will be typically used by AD, LDAP sources.
-        * PROVISIONING: The source can both read and write accounts. Having this feature implies that the provision() method is implemented. It also means that direct and target permissions can also be provisioned if they can be returned by aggregation.
-        * GROUP_PROVISIONING: The source can both read and write groups. Having this feature implies that the provision() method is implemented.
-        * SYNC_PROVISIONING: The source can provision accounts synchronously.
-        * PASSWORD: The source can provision password changes. Since sources can never read passwords, this is should only be used in conjunction with the PROVISIONING feature.
-        * CURRENT_PASSWORD: Some source types support verification of the current password
-        * ACCOUNT_ONLY_REQUEST: The source supports requesting accounts without entitlements.
-        * ADDITIONAL_ACCOUNT_REQUEST: The source supports requesting additional accounts.
-        * NO_AGGREGATION: A source that does not support aggregation.
-        * GROUPS_HAVE_MEMBERS: The source models group memberships with a member attribute on the group object rather than a groups attribute on the account object. This effects the implementation of delta account aggregation.
-        * NO_PERMISSIONS_PROVISIONING: Indicates that the connector cannot provision direct or target permissions for accounts. When DIRECT_PERMISSIONS and PROVISIONING features are present, it is assumed that the connector can also provision direct permissions. This feature disables that assumption and causes permission request to be converted to work items for accounts.
-        * NO_GROUP_PERMISSIONS_PROVISIONING: Indicates that the connector cannot provision direct or target permissions for groups. When DIRECT_PERMISSIONS and PROVISIONING features are present, it is assumed that the connector can also provision direct permissions. This feature disables that assumption and causes permission request to be converted to work items for groups.
-        * NO_UNSTRUCTURED_TARGETS_PROVISIONING: This string will be replaced by NO_GROUP_PERMISSIONS_PROVISIONING and NO_PERMISSIONS_PROVISIONING.
-        * NO_DIRECT_PERMISSIONS_PROVISIONING: This string will be replaced by NO_GROUP_PERMISSIONS_PROVISIONING and NO_PERMISSIONS_PROVISIONING.
-        * USES_UUID: Connectivity 2.0 flag used to indicate that the connector supports a compound naming structure.
-        * PREFER_UUID: Used in ISC Provisioning AND Aggregation to decide if it should prefer account.uuid to account.nativeIdentity when data is read in through aggregation OR pushed out through provisioning.
-        * ARM_SECURITY_EXTRACT: Indicates the application supports Security extracts for ARM
-        * ARM_UTILIZATION_EXTRACT: Indicates the application supports Utilization extracts for ARM
-        * ARM_CHANGELOG_EXTRACT: Indicates the application supports Change-log extracts for ARM
-      example:
-      - PROVISIONING
-      - NO_PERMISSIONS_PROVISIONING
-      - GROUPS_HAVE_MEMBERS
-      items:
-        enum:
-        - AUTHENTICATE
-        - COMPOSITE
-        - DIRECT_PERMISSIONS
-        - DISCOVER_SCHEMA
-        - ENABLE
-        - MANAGER_LOOKUP
-        - NO_RANDOM_ACCESS
-        - PROXY
-        - SEARCH
-        - TEMPLATE
-        - UNLOCK
-        - UNSTRUCTURED_TARGETS
-        - SHAREPOINT_TARGET
-        - PROVISIONING
-        - GROUP_PROVISIONING
-        - SYNC_PROVISIONING
-        - PASSWORD
-        - CURRENT_PASSWORD
-        - ACCOUNT_ONLY_REQUEST
-        - ADDITIONAL_ACCOUNT_REQUEST
-        - NO_AGGREGATION
-        - GROUPS_HAVE_MEMBERS
-        - NO_PERMISSIONS_PROVISIONING
-        - NO_GROUP_PERMISSIONS_PROVISIONING
-        - NO_UNSTRUCTURED_TARGETS_PROVISIONING
-        - NO_DIRECT_PERMISSIONS_PROVISIONING
-        - PREFER_UUID
-        - ARM_SECURITY_EXTRACT
-        - ARM_UTILIZATION_EXTRACT
-        - ARM_CHANGELOG_EXTRACT
-        - USES_UUID
-        example: AUTHENTICATE
-        type: string
-      type: array
     AttrSyncSource:
       description: Target source for attribute synchronization.
       example:
@@ -85931,6 +88164,56 @@ components:
       anyOf:
       - $ref: '#/components/schemas/RoleAssignmentRef'
       - $ref: '#/components/schemas/RoleAssignmentDto'
+    updateMultiHostSources_request:
+      description: "A JSONPatch document as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902).\
+        \  Only `replace` operations are accepted by this endpoint."
+      properties:
+        operations:
+          description: Operations to be applied.
+          items:
+            $ref: '#/components/schemas/JsonPatchOperation'
+          type: array
+      type: object
+    testSourceConnectionMultihost_200_response:
+      example:
+        success: true
+        timing: 0
+        testConnectionDetails: testConnectionDetails
+        message: Tes.
+        resultType: SOURCE_STATE_HEALTHY
+      properties:
+        success:
+          description: Source's test connection status.
+          example: true
+          type: boolean
+        message:
+          description: Source's test connection message.
+          example: Tes.
+          type: string
+        timing:
+          description: Source's test connection timing.
+          type: integer
+        resultType:
+          description: Source's human-readable result type.
+          enum:
+          - SOURCE_STATE_ERROR_CLUSTER
+          - SOURCE_STATE_ERROR_SOURCE
+          - SOURCE_STATE_ERROR_VA
+          - SOURCE_STATE_FAILURE_CLUSTER
+          - SOURCE_STATE_FAILURE_SOURCE
+          - SOURCE_STATE_HEALTHY
+          - SOURCE_STATE_UNCHECKED_CLUSTER
+          - SOURCE_STATE_UNCHECKED_CLUSTER_NO_SOURCES
+          - SOURCE_STATE_UNCHECKED_SOURCE
+          - SOURCE_STATE_UNCHECKED_SOURCE_NO_ACCOUNTS
+          - SOURCE_STATE_ERROR_ACCOUNT_FILE_IMPORT
+          example: SOURCE_STATE_HEALTHY
+          type: object
+        testConnectionDetails:
+          description: Source's human-readable test connection details.
+          type: string
+          example: null
+      type: object
     deleteNonEmployeeRecordInBulk_request:
       properties:
         ids:
@@ -87782,6 +90065,291 @@ components:
           example: Robert Robinson
           type: string
       type: object
+    MultiHostIntegrations_owner:
+      description: Reference to identity object who owns the source.
+      example:
+        name: MyName
+        id: 2c91808568c529c60168cca6f90c1313
+        type: IDENTITY
+      properties:
+        type:
+          description: Type of object being referenced.
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        id:
+          description: Owner identity's ID.
+          example: 2c91808568c529c60168cca6f90c1313
+          type: string
+        name:
+          description: Owner identity's human-readable display name.
+          example: MyName
+          type: string
+      type: object
+    MultiHostIntegrations_cluster:
+      description: Reference to the source's associated cluster.
+      example:
+        name: Corporate Cluster
+        id: 2c9180866166b5b0016167c32ef31a66
+        type: CLUSTER
+      nullable: true
+      properties:
+        type:
+          description: Type of object being referenced.
+          enum:
+          - CLUSTER
+          example: CLUSTER
+          type: string
+        id:
+          description: Cluster ID.
+          example: 2c9180866166b5b0016167c32ef31a66
+          type: string
+        name:
+          description: Cluster's human-readable display name.
+          example: Corporate Cluster
+          type: string
+      required:
+      - id
+      - name
+      - type
+      type: object
+    MultiHostIntegrations_connectorAttributes_connectorFileUploadHistory:
+      properties:
+        connectorFileNameUploadedDate:
+          description: File name of the connector JAR
+          example: 2024-08-29T10:20:38.896479Z
+          type: string
+      type: object
+    MultiHostIntegrations_connectorAttributes_multiHostAttributes:
+      description: Attributes of Multi-Host Integration
+      properties:
+        password:
+          description: Password.
+          example: Password
+          type: string
+        connector_files:
+          description: Connector file.
+          example: mssql-jdbc-8.4.1.jre8.jar
+          type: string
+        authType:
+          description: Authentication type.
+          example: SQLAuthentication
+          type: string
+        user:
+          description: Username.
+          example: My Username
+          type: string
+      type: object
+    MultiHostIntegrations_connectorAttributes:
+      additionalProperties:
+        type: string
+      description: Connector specific configuration. This configuration will differ
+        for Multi-Host Integration type.
+      example:
+        multiHostAttributes:
+          password: Password
+          user: Username
+          connector_files: mssql-jdbc-8.4.1.jre8.jar
+          authType: SQLAuthentication
+        connectorFileUploadHistory:
+          connectorFileNameUploadedDate: 2024-08-29T10:20:38.896479Z
+        maxAllowedSources: 30
+        lastSourceUploadCount: 50
+        showEntitlementSchema: true
+        showAccountSchema: true
+        multihost_status: ready
+      properties:
+        maxAllowedSources:
+          description: Maximum sources allowed count of a Multi-Host Integration
+          example: 250
+          format: int32
+          type: integer
+        lastSourceUploadCount:
+          description: Last upload sources count of a Multi-Host Integration
+          example: 40
+          format: int32
+          type: integer
+        connectorFileUploadHistory:
+          $ref: '#/components/schemas/MultiHostIntegrations_connectorAttributes_connectorFileUploadHistory'
+        multihost_status:
+          description: Multi-Host integration status.
+          enum:
+          - ready
+          - processing
+          - fileUploadInProgress
+          - sourceCreationInProgress
+          - aggregationGroupingInProgress
+          - aggregationScheduleInProgress
+          - deleteInProgress
+          - deleteFailed
+          example: ready
+          type: string
+        showAccountSchema:
+          default: true
+          description: Show account schema
+          example: true
+          type: boolean
+        showEntitlementSchema:
+          default: true
+          description: Show entitlement schema
+          example: true
+          type: boolean
+        multiHostAttributes:
+          $ref: '#/components/schemas/MultiHostIntegrations_connectorAttributes_multiHostAttributes'
+      type: object
+    MultiHostIntegrations_managementWorkgroup:
+      description: Reference to management workgroup for the source.
+      example:
+        name: My Management Workgroup
+        id: 2c91808568c529c60168cca6f90c2222
+        type: GOVERNANCE_GROUP
+      nullable: true
+      properties:
+        type:
+          description: Type of object being referenced.
+          enum:
+          - GOVERNANCE_GROUP
+          example: GOVERNANCE_GROUP
+          type: string
+        id:
+          description: Management workgroup ID.
+          example: 2c91808568c529c60168cca6f90c2222
+          type: string
+        name:
+          description: Management workgroup's human-readable display name.
+          example: My Management Workgroup
+          type: string
+      type: object
+    MultiHostSources_accountCorrelationConfig:
+      description: Reference to account correlation config object.
+      example:
+        name: "Directory [source-62867] Account Correlation"
+        id: 2c9180855d191c59015d28583727245a
+        type: ACCOUNT_CORRELATION_CONFIG
+      nullable: true
+      properties:
+        type:
+          description: Type of object being referenced.
+          enum:
+          - ACCOUNT_CORRELATION_CONFIG
+          example: ACCOUNT_CORRELATION_CONFIG
+          type: string
+        id:
+          description: Account correlation config ID.
+          example: 2c9180855d191c59015d28583727245a
+          type: string
+        name:
+          description: Account correlation config's human-readable display name.
+          example: "Directory [source-62867] Account Correlation"
+          type: string
+      type: object
+    MultiHostSources_accountCorrelationRule:
+      description: Reference to a rule that can do COMPLEX correlation. Only use this
+        rule when you can't use accountCorrelationConfig.
+      example:
+        name: Example Rule
+        id: 2c918085708c274401708c2a8a760001
+        type: RULE
+      nullable: true
+      properties:
+        type:
+          description: Type of object being referenced.
+          enum:
+          - RULE
+          example: RULE
+          type: string
+        id:
+          description: Rule ID.
+          example: 2c918085708c274401708c2a8a760001
+          type: string
+        name:
+          description: Rule's human-readable display name.
+          example: Example Rule
+          type: string
+      type: object
+    MultiHostSources_managerCorrelationRule:
+      description: Reference to the ManagerCorrelationRule. Only use this rule when
+        a simple filter isn't sufficient.
+      example:
+        name: Example Rule
+        id: 2c918085708c274401708c2a8a760001
+        type: RULE
+      nullable: true
+      properties:
+        type:
+          description: Type of object being referenced.
+          enum:
+          - RULE
+          example: RULE
+          type: string
+        id:
+          description: Rule ID.
+          example: 2c918085708c274401708c2a8a760001
+          type: string
+        name:
+          description: Rule's human-readable display name.
+          example: Example Rule
+          type: string
+      type: object
+    MultiHostSources_beforeProvisioningRule:
+      description: 'Rule that runs on the CCG and allows for customization of provisioning
+        plans before the API calls the connector. '
+      example:
+        name: Example Rule
+        id: 2c918085708c274401708c2a8a760001
+        type: RULE
+      nullable: true
+      properties:
+        type:
+          description: Type of object being referenced.
+          enum:
+          - RULE
+          example: RULE
+          type: string
+        id:
+          description: Rule ID.
+          example: 2c918085708c274401708c2a8a760001
+          type: string
+        name:
+          description: Rule's human-readable display name.
+          example: Example Rule
+          type: string
+      type: object
+    MultiHostSources_schemas_inner:
+      properties:
+        type:
+          description: Type of object being referenced.
+          enum:
+          - CONNECTOR_SCHEMA
+          example: CONNECTOR_SCHEMA
+          type: string
+        id:
+          description: Schema ID.
+          example: 2c91808568c529c60168cca6f90c1777
+          type: string
+        name:
+          description: Schema's human-readable display name.
+          example: MySchema
+          type: string
+      type: object
+    MultiHostSources_passwordPolicies_inner:
+      properties:
+        type:
+          description: Type of object being referenced.
+          enum:
+          - PASSWORD_POLICY
+          example: PASSWORD_POLICY
+          type: string
+        id:
+          description: Policy ID.
+          example: 2c91808568c529c60168cca6f90c1777
+          type: string
+        name:
+          description: Policy's human-readable display name.
+          example: My Password Policy
+          type: string
+      type: object
     OutlierContributingFeature_value:
       description: The feature value
       example: 0.92
@@ -87862,207 +90430,6 @@ components:
         name:
           description: Human-readable display name of the rule
           example: Example Rule
-          type: string
-      type: object
-    Source_owner:
-      description: Reference to identity object who owns the source.
-      example:
-        name: MyName
-        id: 2c91808568c529c60168cca6f90c1313
-        type: IDENTITY
-      properties:
-        type:
-          description: Type of object being referenced.
-          enum:
-          - IDENTITY
-          example: IDENTITY
-          type: string
-        id:
-          description: Owner identity's ID.
-          example: 2c91808568c529c60168cca6f90c1313
-          type: string
-        name:
-          description: Owner identity's human-readable display name.
-          example: MyName
-          type: string
-      type: object
-    Source_cluster:
-      description: Reference to the source's associated cluster.
-      example:
-        name: Corporate Cluster
-        id: 2c9180866166b5b0016167c32ef31a66
-        type: CLUSTER
-      nullable: true
-      properties:
-        type:
-          description: Type of object being referenced.
-          enum:
-          - CLUSTER
-          example: CLUSTER
-          type: string
-        id:
-          description: Cluster ID.
-          example: 2c9180866166b5b0016167c32ef31a66
-          type: string
-        name:
-          description: Cluster's human-readable display name.
-          example: Corporate Cluster
-          type: string
-      required:
-      - id
-      - name
-      - type
-      type: object
-    Source_accountCorrelationConfig:
-      description: Reference to account correlation config object.
-      example:
-        name: "Directory [source-62867] Account Correlation"
-        id: 2c9180855d191c59015d28583727245a
-        type: ACCOUNT_CORRELATION_CONFIG
-      nullable: true
-      properties:
-        type:
-          description: Type of object being referenced.
-          enum:
-          - ACCOUNT_CORRELATION_CONFIG
-          example: ACCOUNT_CORRELATION_CONFIG
-          type: string
-        id:
-          description: Account correlation config ID.
-          example: 2c9180855d191c59015d28583727245a
-          type: string
-        name:
-          description: Account correlation config's human-readable display name.
-          example: "Directory [source-62867] Account Correlation"
-          type: string
-      type: object
-    Source_accountCorrelationRule:
-      description: Reference to a rule that can do COMPLEX correlation. Only use this
-        rule when you can't use accountCorrelationConfig.
-      example:
-        name: Example Rule
-        id: 2c918085708c274401708c2a8a760001
-        type: RULE
-      nullable: true
-      properties:
-        type:
-          description: Type of object being referenced.
-          enum:
-          - RULE
-          example: RULE
-          type: string
-        id:
-          description: Rule ID.
-          example: 2c918085708c274401708c2a8a760001
-          type: string
-        name:
-          description: Rule's human-readable display name.
-          example: Example Rule
-          type: string
-      type: object
-    Source_managerCorrelationRule:
-      description: Reference to the ManagerCorrelationRule. Only use this rule when
-        a simple filter isn't sufficient.
-      example:
-        name: Example Rule
-        id: 2c918085708c274401708c2a8a760001
-        type: RULE
-      nullable: true
-      properties:
-        type:
-          description: Type of object being referenced.
-          enum:
-          - RULE
-          example: RULE
-          type: string
-        id:
-          description: Rule ID.
-          example: 2c918085708c274401708c2a8a760001
-          type: string
-        name:
-          description: Rule's human-readable display name.
-          example: Example Rule
-          type: string
-      type: object
-    Source_beforeProvisioningRule:
-      description: 'Rule that runs on the CCG and allows for customization of provisioning
-        plans before the API calls the connector. '
-      example:
-        name: Example Rule
-        id: 2c918085708c274401708c2a8a760001
-        type: RULE
-      nullable: true
-      properties:
-        type:
-          description: Type of object being referenced.
-          enum:
-          - RULE
-          example: RULE
-          type: string
-        id:
-          description: Rule ID.
-          example: 2c918085708c274401708c2a8a760001
-          type: string
-        name:
-          description: Rule's human-readable display name.
-          example: Example Rule
-          type: string
-      type: object
-    Source_schemas_inner:
-      properties:
-        type:
-          description: Type of object being referenced.
-          enum:
-          - CONNECTOR_SCHEMA
-          example: CONNECTOR_SCHEMA
-          type: string
-        id:
-          description: Schema ID.
-          example: 2c91808568c529c60168cca6f90c1777
-          type: string
-        name:
-          description: Schema's human-readable display name.
-          example: MySchema
-          type: string
-      type: object
-    Source_passwordPolicies_inner:
-      properties:
-        type:
-          description: Type of object being referenced.
-          enum:
-          - PASSWORD_POLICY
-          example: PASSWORD_POLICY
-          type: string
-        id:
-          description: Policy ID.
-          example: 2c91808568c529c60168cca6f90c1777
-          type: string
-        name:
-          description: Policy's human-readable display name.
-          example: My Password Policy
-          type: string
-      type: object
-    Source_managementWorkgroup:
-      description: Reference to management workgroup for the source.
-      example:
-        name: My Management Workgroup
-        id: 2c91808568c529c60168cca6f90c2222
-        type: GOVERNANCE_GROUP
-      nullable: true
-      properties:
-        type:
-          description: Type of object being referenced.
-          enum:
-          - GOVERNANCE_GROUP
-          example: GOVERNANCE_GROUP
-          type: string
-        id:
-          description: Management workgroup ID.
-          example: 2c91808568c529c60168cca6f90c2222
-          type: string
-        name:
-          description: Management workgroup's human-readable display name.
-          example: My Management Workgroup
           type: string
       type: object
     LoadAccountsTask_task_messages_inner:

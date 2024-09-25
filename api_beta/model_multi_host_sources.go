@@ -16,13 +16,13 @@ import (
 	"fmt"
 )
 
-// checks if the Source type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Source{}
+// checks if the MultiHostSources type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MultiHostSources{}
 
-// Source struct for Source
-type Source struct {
+// MultiHostSources struct for MultiHostSources
+type MultiHostSources struct {
 	// Source ID.
-	Id *string `json:"id,omitempty"`
+	Id string `json:"id"`
 	// Source's human-readable name.
 	Name string `json:"name"`
 	// Source's human-readable description.
@@ -40,7 +40,7 @@ type Source struct {
 	PasswordPolicies []MultiHostSourcesPasswordPoliciesInner `json:"passwordPolicies,omitempty"`
 	// Optional features that can be supported by a source. Modifying the features array may cause source configuration errors that are unsupportable. It is recommended to not modify this array for SailPoint supported connectors. * AUTHENTICATE: The source supports pass-through authentication. * COMPOSITE: The source supports composite source creation. * DIRECT_PERMISSIONS: The source supports returning DirectPermissions. * DISCOVER_SCHEMA: The source supports discovering schemas for users and groups. * ENABLE The source supports reading if an account is enabled or disabled. * MANAGER_LOOKUP: The source supports looking up managers as they are encountered in a feed. This is the opposite of NO_RANDOM_ACCESS. * NO_RANDOM_ACCESS: The source does not support random access and the getObject() methods should not be called and expected to perform. * PROXY: The source can serve as a proxy for another source. When an source has a proxy, all connector calls made with that source are redirected through the connector for the proxy source. * SEARCH * TEMPLATE * UNLOCK: The source supports reading if an account is locked or unlocked. * UNSTRUCTURED_TARGETS: The source supports returning unstructured Targets. * SHAREPOINT_TARGET: The source supports returning unstructured Target data for SharePoint. It will be typically used by AD, LDAP sources. * PROVISIONING: The source can both read and write accounts. Having this feature implies that the provision() method is implemented. It also means that direct and target permissions can also be provisioned if they can be returned by aggregation. * GROUP_PROVISIONING: The source can both read and write groups. Having this feature implies that the provision() method is implemented. * SYNC_PROVISIONING: The source can provision accounts synchronously. * PASSWORD: The source can provision password changes. Since sources can never read passwords, this is should only be used in conjunction with the PROVISIONING feature. * CURRENT_PASSWORD: Some source types support verification of the current password * ACCOUNT_ONLY_REQUEST: The source supports requesting accounts without entitlements. * ADDITIONAL_ACCOUNT_REQUEST: The source supports requesting additional accounts. * NO_AGGREGATION: A source that does not support aggregation. * GROUPS_HAVE_MEMBERS: The source models group memberships with a member attribute on the group object rather than a groups attribute on the account object. This effects the implementation of delta account aggregation. * NO_PERMISSIONS_PROVISIONING: Indicates that the connector cannot provision direct or target permissions for accounts. When DIRECT_PERMISSIONS and PROVISIONING features are present, it is assumed that the connector can also provision direct permissions. This feature disables that assumption and causes permission request to be converted to work items for accounts. * NO_GROUP_PERMISSIONS_PROVISIONING: Indicates that the connector cannot provision direct or target permissions for groups. When DIRECT_PERMISSIONS and PROVISIONING features are present, it is assumed that the connector can also provision direct permissions. This feature disables that assumption and causes permission request to be converted to work items for groups. * NO_UNSTRUCTURED_TARGETS_PROVISIONING: This string will be replaced by NO_GROUP_PERMISSIONS_PROVISIONING and NO_PERMISSIONS_PROVISIONING. * NO_DIRECT_PERMISSIONS_PROVISIONING: This string will be replaced by NO_GROUP_PERMISSIONS_PROVISIONING and NO_PERMISSIONS_PROVISIONING. * USES_UUID: Connectivity 2.0 flag used to indicate that the connector supports a compound naming structure. * PREFER_UUID: Used in ISC Provisioning AND Aggregation to decide if it should prefer account.uuid to account.nativeIdentity when data is read in through aggregation OR pushed out through provisioning. * ARM_SECURITY_EXTRACT: Indicates the application supports Security extracts for ARM * ARM_UTILIZATION_EXTRACT: Indicates the application supports Utilization extracts for ARM * ARM_CHANGELOG_EXTRACT: Indicates the application supports Change-log extracts for ARM
 	Features []string `json:"features,omitempty"`
-	// Specifies the type of system being managed e.g. Active Directory, Workday, etc.. If you are creating a delimited file source, you must set the `provisionasCsv` query parameter to `true`. 
+	// Specifies the type of system being managed e.g. Multi-Host - Microsoft SQL Server, Workday, etc.. If you are creating a delimited file source, you must set the `provisionasCsv` query parameter to `true`. 
 	Type *string `json:"type,omitempty"`
 	// Connector script name.
 	Connector string `json:"connector"`
@@ -58,11 +58,11 @@ type Source struct {
 	// Status identifier that gives specific information about why a source is or isn't healthy. 
 	Status *string `json:"status,omitempty"`
 	// Timestamp that shows when a source health check was last performed.
-	Since *string `json:"since,omitempty"`
+	Since *time.Time `json:"since,omitempty"`
 	// Connector ID
 	ConnectorId *string `json:"connectorId,omitempty"`
 	// Name of the connector that was chosen during source creation.
-	ConnectorName *string `json:"connectorName,omitempty"`
+	ConnectorName string `json:"connectorName"`
 	// Type of connection (direct or file).
 	ConnectionType *string `json:"connectionType,omitempty"`
 	// Connector implementation ID.
@@ -78,14 +78,15 @@ type Source struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _Source Source
+type _MultiHostSources MultiHostSources
 
-// NewSource instantiates a new Source object
+// NewMultiHostSources instantiates a new MultiHostSources object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSource(name string, owner MultiHostIntegrationsOwner, connector string) *Source {
-	this := Source{}
+func NewMultiHostSources(id string, name string, owner MultiHostIntegrationsOwner, connector string, connectorName string) *MultiHostSources {
+	this := MultiHostSources{}
+	this.Id = id
 	this.Name = name
 	this.Owner = owner
 	this.Connector = connector
@@ -93,16 +94,17 @@ func NewSource(name string, owner MultiHostIntegrationsOwner, connector string) 
 	this.Authoritative = &authoritative
 	var healthy bool = false
 	this.Healthy = &healthy
+	this.ConnectorName = connectorName
 	var credentialProviderEnabled bool = false
 	this.CredentialProviderEnabled = &credentialProviderEnabled
 	return &this
 }
 
-// NewSourceWithDefaults instantiates a new Source object
+// NewMultiHostSourcesWithDefaults instantiates a new MultiHostSources object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSourceWithDefaults() *Source {
-	this := Source{}
+func NewMultiHostSourcesWithDefaults() *MultiHostSources {
+	this := MultiHostSources{}
 	var authoritative bool = false
 	this.Authoritative = &authoritative
 	var healthy bool = false
@@ -112,40 +114,32 @@ func NewSourceWithDefaults() *Source {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *Source) GetId() string {
-	if o == nil || IsNil(o.Id) {
+// GetId returns the Id field value
+func (o *MultiHostSources) GetId() string {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *Source) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+func (o *MultiHostSources) GetIdOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *Source) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *Source) SetId(v string) {
-	o.Id = &v
+// SetId sets field value
+func (o *MultiHostSources) SetId(v string) {
+	o.Id = v
 }
 
 // GetName returns the Name field value
-func (o *Source) GetName() string {
+func (o *MultiHostSources) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -156,7 +150,7 @@ func (o *Source) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *Source) GetNameOk() (*string, bool) {
+func (o *MultiHostSources) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -164,12 +158,12 @@ func (o *Source) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *Source) SetName(v string) {
+func (o *MultiHostSources) SetName(v string) {
 	o.Name = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
-func (o *Source) GetDescription() string {
+func (o *MultiHostSources) GetDescription() string {
 	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
@@ -179,7 +173,7 @@ func (o *Source) GetDescription() string {
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Source) GetDescriptionOk() (*string, bool) {
+func (o *MultiHostSources) GetDescriptionOk() (*string, bool) {
 	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
@@ -187,7 +181,7 @@ func (o *Source) GetDescriptionOk() (*string, bool) {
 }
 
 // HasDescription returns a boolean if a field has been set.
-func (o *Source) HasDescription() bool {
+func (o *MultiHostSources) HasDescription() bool {
 	if o != nil && !IsNil(o.Description) {
 		return true
 	}
@@ -196,12 +190,12 @@ func (o *Source) HasDescription() bool {
 }
 
 // SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *Source) SetDescription(v string) {
+func (o *MultiHostSources) SetDescription(v string) {
 	o.Description = &v
 }
 
 // GetOwner returns the Owner field value
-func (o *Source) GetOwner() MultiHostIntegrationsOwner {
+func (o *MultiHostSources) GetOwner() MultiHostIntegrationsOwner {
 	if o == nil {
 		var ret MultiHostIntegrationsOwner
 		return ret
@@ -212,7 +206,7 @@ func (o *Source) GetOwner() MultiHostIntegrationsOwner {
 
 // GetOwnerOk returns a tuple with the Owner field value
 // and a boolean to check if the value has been set.
-func (o *Source) GetOwnerOk() (*MultiHostIntegrationsOwner, bool) {
+func (o *MultiHostSources) GetOwnerOk() (*MultiHostIntegrationsOwner, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -220,12 +214,12 @@ func (o *Source) GetOwnerOk() (*MultiHostIntegrationsOwner, bool) {
 }
 
 // SetOwner sets field value
-func (o *Source) SetOwner(v MultiHostIntegrationsOwner) {
+func (o *MultiHostSources) SetOwner(v MultiHostIntegrationsOwner) {
 	o.Owner = v
 }
 
 // GetCluster returns the Cluster field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Source) GetCluster() MultiHostIntegrationsCluster {
+func (o *MultiHostSources) GetCluster() MultiHostIntegrationsCluster {
 	if o == nil || IsNil(o.Cluster.Get()) {
 		var ret MultiHostIntegrationsCluster
 		return ret
@@ -236,7 +230,7 @@ func (o *Source) GetCluster() MultiHostIntegrationsCluster {
 // GetClusterOk returns a tuple with the Cluster field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Source) GetClusterOk() (*MultiHostIntegrationsCluster, bool) {
+func (o *MultiHostSources) GetClusterOk() (*MultiHostIntegrationsCluster, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -244,7 +238,7 @@ func (o *Source) GetClusterOk() (*MultiHostIntegrationsCluster, bool) {
 }
 
 // HasCluster returns a boolean if a field has been set.
-func (o *Source) HasCluster() bool {
+func (o *MultiHostSources) HasCluster() bool {
 	if o != nil && o.Cluster.IsSet() {
 		return true
 	}
@@ -253,21 +247,21 @@ func (o *Source) HasCluster() bool {
 }
 
 // SetCluster gets a reference to the given NullableMultiHostIntegrationsCluster and assigns it to the Cluster field.
-func (o *Source) SetCluster(v MultiHostIntegrationsCluster) {
+func (o *MultiHostSources) SetCluster(v MultiHostIntegrationsCluster) {
 	o.Cluster.Set(&v)
 }
 // SetClusterNil sets the value for Cluster to be an explicit nil
-func (o *Source) SetClusterNil() {
+func (o *MultiHostSources) SetClusterNil() {
 	o.Cluster.Set(nil)
 }
 
 // UnsetCluster ensures that no value is present for Cluster, not even an explicit nil
-func (o *Source) UnsetCluster() {
+func (o *MultiHostSources) UnsetCluster() {
 	o.Cluster.Unset()
 }
 
 // GetAccountCorrelationConfig returns the AccountCorrelationConfig field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Source) GetAccountCorrelationConfig() MultiHostSourcesAccountCorrelationConfig {
+func (o *MultiHostSources) GetAccountCorrelationConfig() MultiHostSourcesAccountCorrelationConfig {
 	if o == nil || IsNil(o.AccountCorrelationConfig.Get()) {
 		var ret MultiHostSourcesAccountCorrelationConfig
 		return ret
@@ -278,7 +272,7 @@ func (o *Source) GetAccountCorrelationConfig() MultiHostSourcesAccountCorrelatio
 // GetAccountCorrelationConfigOk returns a tuple with the AccountCorrelationConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Source) GetAccountCorrelationConfigOk() (*MultiHostSourcesAccountCorrelationConfig, bool) {
+func (o *MultiHostSources) GetAccountCorrelationConfigOk() (*MultiHostSourcesAccountCorrelationConfig, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -286,7 +280,7 @@ func (o *Source) GetAccountCorrelationConfigOk() (*MultiHostSourcesAccountCorrel
 }
 
 // HasAccountCorrelationConfig returns a boolean if a field has been set.
-func (o *Source) HasAccountCorrelationConfig() bool {
+func (o *MultiHostSources) HasAccountCorrelationConfig() bool {
 	if o != nil && o.AccountCorrelationConfig.IsSet() {
 		return true
 	}
@@ -295,21 +289,21 @@ func (o *Source) HasAccountCorrelationConfig() bool {
 }
 
 // SetAccountCorrelationConfig gets a reference to the given NullableMultiHostSourcesAccountCorrelationConfig and assigns it to the AccountCorrelationConfig field.
-func (o *Source) SetAccountCorrelationConfig(v MultiHostSourcesAccountCorrelationConfig) {
+func (o *MultiHostSources) SetAccountCorrelationConfig(v MultiHostSourcesAccountCorrelationConfig) {
 	o.AccountCorrelationConfig.Set(&v)
 }
 // SetAccountCorrelationConfigNil sets the value for AccountCorrelationConfig to be an explicit nil
-func (o *Source) SetAccountCorrelationConfigNil() {
+func (o *MultiHostSources) SetAccountCorrelationConfigNil() {
 	o.AccountCorrelationConfig.Set(nil)
 }
 
 // UnsetAccountCorrelationConfig ensures that no value is present for AccountCorrelationConfig, not even an explicit nil
-func (o *Source) UnsetAccountCorrelationConfig() {
+func (o *MultiHostSources) UnsetAccountCorrelationConfig() {
 	o.AccountCorrelationConfig.Unset()
 }
 
 // GetAccountCorrelationRule returns the AccountCorrelationRule field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Source) GetAccountCorrelationRule() MultiHostSourcesAccountCorrelationRule {
+func (o *MultiHostSources) GetAccountCorrelationRule() MultiHostSourcesAccountCorrelationRule {
 	if o == nil || IsNil(o.AccountCorrelationRule.Get()) {
 		var ret MultiHostSourcesAccountCorrelationRule
 		return ret
@@ -320,7 +314,7 @@ func (o *Source) GetAccountCorrelationRule() MultiHostSourcesAccountCorrelationR
 // GetAccountCorrelationRuleOk returns a tuple with the AccountCorrelationRule field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Source) GetAccountCorrelationRuleOk() (*MultiHostSourcesAccountCorrelationRule, bool) {
+func (o *MultiHostSources) GetAccountCorrelationRuleOk() (*MultiHostSourcesAccountCorrelationRule, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -328,7 +322,7 @@ func (o *Source) GetAccountCorrelationRuleOk() (*MultiHostSourcesAccountCorrelat
 }
 
 // HasAccountCorrelationRule returns a boolean if a field has been set.
-func (o *Source) HasAccountCorrelationRule() bool {
+func (o *MultiHostSources) HasAccountCorrelationRule() bool {
 	if o != nil && o.AccountCorrelationRule.IsSet() {
 		return true
 	}
@@ -337,21 +331,21 @@ func (o *Source) HasAccountCorrelationRule() bool {
 }
 
 // SetAccountCorrelationRule gets a reference to the given NullableMultiHostSourcesAccountCorrelationRule and assigns it to the AccountCorrelationRule field.
-func (o *Source) SetAccountCorrelationRule(v MultiHostSourcesAccountCorrelationRule) {
+func (o *MultiHostSources) SetAccountCorrelationRule(v MultiHostSourcesAccountCorrelationRule) {
 	o.AccountCorrelationRule.Set(&v)
 }
 // SetAccountCorrelationRuleNil sets the value for AccountCorrelationRule to be an explicit nil
-func (o *Source) SetAccountCorrelationRuleNil() {
+func (o *MultiHostSources) SetAccountCorrelationRuleNil() {
 	o.AccountCorrelationRule.Set(nil)
 }
 
 // UnsetAccountCorrelationRule ensures that no value is present for AccountCorrelationRule, not even an explicit nil
-func (o *Source) UnsetAccountCorrelationRule() {
+func (o *MultiHostSources) UnsetAccountCorrelationRule() {
 	o.AccountCorrelationRule.Unset()
 }
 
 // GetManagerCorrelationMapping returns the ManagerCorrelationMapping field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Source) GetManagerCorrelationMapping() ManagerCorrelationMapping {
+func (o *MultiHostSources) GetManagerCorrelationMapping() ManagerCorrelationMapping {
 	if o == nil || IsNil(o.ManagerCorrelationMapping.Get()) {
 		var ret ManagerCorrelationMapping
 		return ret
@@ -362,7 +356,7 @@ func (o *Source) GetManagerCorrelationMapping() ManagerCorrelationMapping {
 // GetManagerCorrelationMappingOk returns a tuple with the ManagerCorrelationMapping field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Source) GetManagerCorrelationMappingOk() (*ManagerCorrelationMapping, bool) {
+func (o *MultiHostSources) GetManagerCorrelationMappingOk() (*ManagerCorrelationMapping, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -370,7 +364,7 @@ func (o *Source) GetManagerCorrelationMappingOk() (*ManagerCorrelationMapping, b
 }
 
 // HasManagerCorrelationMapping returns a boolean if a field has been set.
-func (o *Source) HasManagerCorrelationMapping() bool {
+func (o *MultiHostSources) HasManagerCorrelationMapping() bool {
 	if o != nil && o.ManagerCorrelationMapping.IsSet() {
 		return true
 	}
@@ -379,21 +373,21 @@ func (o *Source) HasManagerCorrelationMapping() bool {
 }
 
 // SetManagerCorrelationMapping gets a reference to the given NullableManagerCorrelationMapping and assigns it to the ManagerCorrelationMapping field.
-func (o *Source) SetManagerCorrelationMapping(v ManagerCorrelationMapping) {
+func (o *MultiHostSources) SetManagerCorrelationMapping(v ManagerCorrelationMapping) {
 	o.ManagerCorrelationMapping.Set(&v)
 }
 // SetManagerCorrelationMappingNil sets the value for ManagerCorrelationMapping to be an explicit nil
-func (o *Source) SetManagerCorrelationMappingNil() {
+func (o *MultiHostSources) SetManagerCorrelationMappingNil() {
 	o.ManagerCorrelationMapping.Set(nil)
 }
 
 // UnsetManagerCorrelationMapping ensures that no value is present for ManagerCorrelationMapping, not even an explicit nil
-func (o *Source) UnsetManagerCorrelationMapping() {
+func (o *MultiHostSources) UnsetManagerCorrelationMapping() {
 	o.ManagerCorrelationMapping.Unset()
 }
 
 // GetManagerCorrelationRule returns the ManagerCorrelationRule field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Source) GetManagerCorrelationRule() MultiHostSourcesManagerCorrelationRule {
+func (o *MultiHostSources) GetManagerCorrelationRule() MultiHostSourcesManagerCorrelationRule {
 	if o == nil || IsNil(o.ManagerCorrelationRule.Get()) {
 		var ret MultiHostSourcesManagerCorrelationRule
 		return ret
@@ -404,7 +398,7 @@ func (o *Source) GetManagerCorrelationRule() MultiHostSourcesManagerCorrelationR
 // GetManagerCorrelationRuleOk returns a tuple with the ManagerCorrelationRule field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Source) GetManagerCorrelationRuleOk() (*MultiHostSourcesManagerCorrelationRule, bool) {
+func (o *MultiHostSources) GetManagerCorrelationRuleOk() (*MultiHostSourcesManagerCorrelationRule, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -412,7 +406,7 @@ func (o *Source) GetManagerCorrelationRuleOk() (*MultiHostSourcesManagerCorrelat
 }
 
 // HasManagerCorrelationRule returns a boolean if a field has been set.
-func (o *Source) HasManagerCorrelationRule() bool {
+func (o *MultiHostSources) HasManagerCorrelationRule() bool {
 	if o != nil && o.ManagerCorrelationRule.IsSet() {
 		return true
 	}
@@ -421,21 +415,21 @@ func (o *Source) HasManagerCorrelationRule() bool {
 }
 
 // SetManagerCorrelationRule gets a reference to the given NullableMultiHostSourcesManagerCorrelationRule and assigns it to the ManagerCorrelationRule field.
-func (o *Source) SetManagerCorrelationRule(v MultiHostSourcesManagerCorrelationRule) {
+func (o *MultiHostSources) SetManagerCorrelationRule(v MultiHostSourcesManagerCorrelationRule) {
 	o.ManagerCorrelationRule.Set(&v)
 }
 // SetManagerCorrelationRuleNil sets the value for ManagerCorrelationRule to be an explicit nil
-func (o *Source) SetManagerCorrelationRuleNil() {
+func (o *MultiHostSources) SetManagerCorrelationRuleNil() {
 	o.ManagerCorrelationRule.Set(nil)
 }
 
 // UnsetManagerCorrelationRule ensures that no value is present for ManagerCorrelationRule, not even an explicit nil
-func (o *Source) UnsetManagerCorrelationRule() {
+func (o *MultiHostSources) UnsetManagerCorrelationRule() {
 	o.ManagerCorrelationRule.Unset()
 }
 
 // GetBeforeProvisioningRule returns the BeforeProvisioningRule field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Source) GetBeforeProvisioningRule() MultiHostSourcesBeforeProvisioningRule {
+func (o *MultiHostSources) GetBeforeProvisioningRule() MultiHostSourcesBeforeProvisioningRule {
 	if o == nil || IsNil(o.BeforeProvisioningRule.Get()) {
 		var ret MultiHostSourcesBeforeProvisioningRule
 		return ret
@@ -446,7 +440,7 @@ func (o *Source) GetBeforeProvisioningRule() MultiHostSourcesBeforeProvisioningR
 // GetBeforeProvisioningRuleOk returns a tuple with the BeforeProvisioningRule field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Source) GetBeforeProvisioningRuleOk() (*MultiHostSourcesBeforeProvisioningRule, bool) {
+func (o *MultiHostSources) GetBeforeProvisioningRuleOk() (*MultiHostSourcesBeforeProvisioningRule, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -454,7 +448,7 @@ func (o *Source) GetBeforeProvisioningRuleOk() (*MultiHostSourcesBeforeProvision
 }
 
 // HasBeforeProvisioningRule returns a boolean if a field has been set.
-func (o *Source) HasBeforeProvisioningRule() bool {
+func (o *MultiHostSources) HasBeforeProvisioningRule() bool {
 	if o != nil && o.BeforeProvisioningRule.IsSet() {
 		return true
 	}
@@ -463,21 +457,21 @@ func (o *Source) HasBeforeProvisioningRule() bool {
 }
 
 // SetBeforeProvisioningRule gets a reference to the given NullableMultiHostSourcesBeforeProvisioningRule and assigns it to the BeforeProvisioningRule field.
-func (o *Source) SetBeforeProvisioningRule(v MultiHostSourcesBeforeProvisioningRule) {
+func (o *MultiHostSources) SetBeforeProvisioningRule(v MultiHostSourcesBeforeProvisioningRule) {
 	o.BeforeProvisioningRule.Set(&v)
 }
 // SetBeforeProvisioningRuleNil sets the value for BeforeProvisioningRule to be an explicit nil
-func (o *Source) SetBeforeProvisioningRuleNil() {
+func (o *MultiHostSources) SetBeforeProvisioningRuleNil() {
 	o.BeforeProvisioningRule.Set(nil)
 }
 
 // UnsetBeforeProvisioningRule ensures that no value is present for BeforeProvisioningRule, not even an explicit nil
-func (o *Source) UnsetBeforeProvisioningRule() {
+func (o *MultiHostSources) UnsetBeforeProvisioningRule() {
 	o.BeforeProvisioningRule.Unset()
 }
 
 // GetSchemas returns the Schemas field value if set, zero value otherwise.
-func (o *Source) GetSchemas() []MultiHostSourcesSchemasInner {
+func (o *MultiHostSources) GetSchemas() []MultiHostSourcesSchemasInner {
 	if o == nil || IsNil(o.Schemas) {
 		var ret []MultiHostSourcesSchemasInner
 		return ret
@@ -487,7 +481,7 @@ func (o *Source) GetSchemas() []MultiHostSourcesSchemasInner {
 
 // GetSchemasOk returns a tuple with the Schemas field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Source) GetSchemasOk() ([]MultiHostSourcesSchemasInner, bool) {
+func (o *MultiHostSources) GetSchemasOk() ([]MultiHostSourcesSchemasInner, bool) {
 	if o == nil || IsNil(o.Schemas) {
 		return nil, false
 	}
@@ -495,7 +489,7 @@ func (o *Source) GetSchemasOk() ([]MultiHostSourcesSchemasInner, bool) {
 }
 
 // HasSchemas returns a boolean if a field has been set.
-func (o *Source) HasSchemas() bool {
+func (o *MultiHostSources) HasSchemas() bool {
 	if o != nil && !IsNil(o.Schemas) {
 		return true
 	}
@@ -504,12 +498,12 @@ func (o *Source) HasSchemas() bool {
 }
 
 // SetSchemas gets a reference to the given []MultiHostSourcesSchemasInner and assigns it to the Schemas field.
-func (o *Source) SetSchemas(v []MultiHostSourcesSchemasInner) {
+func (o *MultiHostSources) SetSchemas(v []MultiHostSourcesSchemasInner) {
 	o.Schemas = v
 }
 
 // GetPasswordPolicies returns the PasswordPolicies field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Source) GetPasswordPolicies() []MultiHostSourcesPasswordPoliciesInner {
+func (o *MultiHostSources) GetPasswordPolicies() []MultiHostSourcesPasswordPoliciesInner {
 	if o == nil {
 		var ret []MultiHostSourcesPasswordPoliciesInner
 		return ret
@@ -520,7 +514,7 @@ func (o *Source) GetPasswordPolicies() []MultiHostSourcesPasswordPoliciesInner {
 // GetPasswordPoliciesOk returns a tuple with the PasswordPolicies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Source) GetPasswordPoliciesOk() ([]MultiHostSourcesPasswordPoliciesInner, bool) {
+func (o *MultiHostSources) GetPasswordPoliciesOk() ([]MultiHostSourcesPasswordPoliciesInner, bool) {
 	if o == nil || IsNil(o.PasswordPolicies) {
 		return nil, false
 	}
@@ -528,7 +522,7 @@ func (o *Source) GetPasswordPoliciesOk() ([]MultiHostSourcesPasswordPoliciesInne
 }
 
 // HasPasswordPolicies returns a boolean if a field has been set.
-func (o *Source) HasPasswordPolicies() bool {
+func (o *MultiHostSources) HasPasswordPolicies() bool {
 	if o != nil && !IsNil(o.PasswordPolicies) {
 		return true
 	}
@@ -537,12 +531,12 @@ func (o *Source) HasPasswordPolicies() bool {
 }
 
 // SetPasswordPolicies gets a reference to the given []MultiHostSourcesPasswordPoliciesInner and assigns it to the PasswordPolicies field.
-func (o *Source) SetPasswordPolicies(v []MultiHostSourcesPasswordPoliciesInner) {
+func (o *MultiHostSources) SetPasswordPolicies(v []MultiHostSourcesPasswordPoliciesInner) {
 	o.PasswordPolicies = v
 }
 
 // GetFeatures returns the Features field value if set, zero value otherwise.
-func (o *Source) GetFeatures() []string {
+func (o *MultiHostSources) GetFeatures() []string {
 	if o == nil || IsNil(o.Features) {
 		var ret []string
 		return ret
@@ -552,7 +546,7 @@ func (o *Source) GetFeatures() []string {
 
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Source) GetFeaturesOk() ([]string, bool) {
+func (o *MultiHostSources) GetFeaturesOk() ([]string, bool) {
 	if o == nil || IsNil(o.Features) {
 		return nil, false
 	}
@@ -560,7 +554,7 @@ func (o *Source) GetFeaturesOk() ([]string, bool) {
 }
 
 // HasFeatures returns a boolean if a field has been set.
-func (o *Source) HasFeatures() bool {
+func (o *MultiHostSources) HasFeatures() bool {
 	if o != nil && !IsNil(o.Features) {
 		return true
 	}
@@ -569,12 +563,12 @@ func (o *Source) HasFeatures() bool {
 }
 
 // SetFeatures gets a reference to the given []string and assigns it to the Features field.
-func (o *Source) SetFeatures(v []string) {
+func (o *MultiHostSources) SetFeatures(v []string) {
 	o.Features = v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *Source) GetType() string {
+func (o *MultiHostSources) GetType() string {
 	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
@@ -584,7 +578,7 @@ func (o *Source) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Source) GetTypeOk() (*string, bool) {
+func (o *MultiHostSources) GetTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -592,7 +586,7 @@ func (o *Source) GetTypeOk() (*string, bool) {
 }
 
 // HasType returns a boolean if a field has been set.
-func (o *Source) HasType() bool {
+func (o *MultiHostSources) HasType() bool {
 	if o != nil && !IsNil(o.Type) {
 		return true
 	}
@@ -601,12 +595,12 @@ func (o *Source) HasType() bool {
 }
 
 // SetType gets a reference to the given string and assigns it to the Type field.
-func (o *Source) SetType(v string) {
+func (o *MultiHostSources) SetType(v string) {
 	o.Type = &v
 }
 
 // GetConnector returns the Connector field value
-func (o *Source) GetConnector() string {
+func (o *MultiHostSources) GetConnector() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -617,7 +611,7 @@ func (o *Source) GetConnector() string {
 
 // GetConnectorOk returns a tuple with the Connector field value
 // and a boolean to check if the value has been set.
-func (o *Source) GetConnectorOk() (*string, bool) {
+func (o *MultiHostSources) GetConnectorOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -625,12 +619,12 @@ func (o *Source) GetConnectorOk() (*string, bool) {
 }
 
 // SetConnector sets field value
-func (o *Source) SetConnector(v string) {
+func (o *MultiHostSources) SetConnector(v string) {
 	o.Connector = v
 }
 
 // GetConnectorClass returns the ConnectorClass field value if set, zero value otherwise.
-func (o *Source) GetConnectorClass() string {
+func (o *MultiHostSources) GetConnectorClass() string {
 	if o == nil || IsNil(o.ConnectorClass) {
 		var ret string
 		return ret
@@ -640,7 +634,7 @@ func (o *Source) GetConnectorClass() string {
 
 // GetConnectorClassOk returns a tuple with the ConnectorClass field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Source) GetConnectorClassOk() (*string, bool) {
+func (o *MultiHostSources) GetConnectorClassOk() (*string, bool) {
 	if o == nil || IsNil(o.ConnectorClass) {
 		return nil, false
 	}
@@ -648,7 +642,7 @@ func (o *Source) GetConnectorClassOk() (*string, bool) {
 }
 
 // HasConnectorClass returns a boolean if a field has been set.
-func (o *Source) HasConnectorClass() bool {
+func (o *MultiHostSources) HasConnectorClass() bool {
 	if o != nil && !IsNil(o.ConnectorClass) {
 		return true
 	}
@@ -657,12 +651,12 @@ func (o *Source) HasConnectorClass() bool {
 }
 
 // SetConnectorClass gets a reference to the given string and assigns it to the ConnectorClass field.
-func (o *Source) SetConnectorClass(v string) {
+func (o *MultiHostSources) SetConnectorClass(v string) {
 	o.ConnectorClass = &v
 }
 
 // GetConnectorAttributes returns the ConnectorAttributes field value if set, zero value otherwise.
-func (o *Source) GetConnectorAttributes() map[string]interface{} {
+func (o *MultiHostSources) GetConnectorAttributes() map[string]interface{} {
 	if o == nil || IsNil(o.ConnectorAttributes) {
 		var ret map[string]interface{}
 		return ret
@@ -672,7 +666,7 @@ func (o *Source) GetConnectorAttributes() map[string]interface{} {
 
 // GetConnectorAttributesOk returns a tuple with the ConnectorAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Source) GetConnectorAttributesOk() (map[string]interface{}, bool) {
+func (o *MultiHostSources) GetConnectorAttributesOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.ConnectorAttributes) {
 		return map[string]interface{}{}, false
 	}
@@ -680,7 +674,7 @@ func (o *Source) GetConnectorAttributesOk() (map[string]interface{}, bool) {
 }
 
 // HasConnectorAttributes returns a boolean if a field has been set.
-func (o *Source) HasConnectorAttributes() bool {
+func (o *MultiHostSources) HasConnectorAttributes() bool {
 	if o != nil && !IsNil(o.ConnectorAttributes) {
 		return true
 	}
@@ -689,12 +683,12 @@ func (o *Source) HasConnectorAttributes() bool {
 }
 
 // SetConnectorAttributes gets a reference to the given map[string]interface{} and assigns it to the ConnectorAttributes field.
-func (o *Source) SetConnectorAttributes(v map[string]interface{}) {
+func (o *MultiHostSources) SetConnectorAttributes(v map[string]interface{}) {
 	o.ConnectorAttributes = v
 }
 
 // GetDeleteThreshold returns the DeleteThreshold field value if set, zero value otherwise.
-func (o *Source) GetDeleteThreshold() int32 {
+func (o *MultiHostSources) GetDeleteThreshold() int32 {
 	if o == nil || IsNil(o.DeleteThreshold) {
 		var ret int32
 		return ret
@@ -704,7 +698,7 @@ func (o *Source) GetDeleteThreshold() int32 {
 
 // GetDeleteThresholdOk returns a tuple with the DeleteThreshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Source) GetDeleteThresholdOk() (*int32, bool) {
+func (o *MultiHostSources) GetDeleteThresholdOk() (*int32, bool) {
 	if o == nil || IsNil(o.DeleteThreshold) {
 		return nil, false
 	}
@@ -712,7 +706,7 @@ func (o *Source) GetDeleteThresholdOk() (*int32, bool) {
 }
 
 // HasDeleteThreshold returns a boolean if a field has been set.
-func (o *Source) HasDeleteThreshold() bool {
+func (o *MultiHostSources) HasDeleteThreshold() bool {
 	if o != nil && !IsNil(o.DeleteThreshold) {
 		return true
 	}
@@ -721,12 +715,12 @@ func (o *Source) HasDeleteThreshold() bool {
 }
 
 // SetDeleteThreshold gets a reference to the given int32 and assigns it to the DeleteThreshold field.
-func (o *Source) SetDeleteThreshold(v int32) {
+func (o *MultiHostSources) SetDeleteThreshold(v int32) {
 	o.DeleteThreshold = &v
 }
 
 // GetAuthoritative returns the Authoritative field value if set, zero value otherwise.
-func (o *Source) GetAuthoritative() bool {
+func (o *MultiHostSources) GetAuthoritative() bool {
 	if o == nil || IsNil(o.Authoritative) {
 		var ret bool
 		return ret
@@ -736,7 +730,7 @@ func (o *Source) GetAuthoritative() bool {
 
 // GetAuthoritativeOk returns a tuple with the Authoritative field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Source) GetAuthoritativeOk() (*bool, bool) {
+func (o *MultiHostSources) GetAuthoritativeOk() (*bool, bool) {
 	if o == nil || IsNil(o.Authoritative) {
 		return nil, false
 	}
@@ -744,7 +738,7 @@ func (o *Source) GetAuthoritativeOk() (*bool, bool) {
 }
 
 // HasAuthoritative returns a boolean if a field has been set.
-func (o *Source) HasAuthoritative() bool {
+func (o *MultiHostSources) HasAuthoritative() bool {
 	if o != nil && !IsNil(o.Authoritative) {
 		return true
 	}
@@ -753,12 +747,12 @@ func (o *Source) HasAuthoritative() bool {
 }
 
 // SetAuthoritative gets a reference to the given bool and assigns it to the Authoritative field.
-func (o *Source) SetAuthoritative(v bool) {
+func (o *MultiHostSources) SetAuthoritative(v bool) {
 	o.Authoritative = &v
 }
 
 // GetManagementWorkgroup returns the ManagementWorkgroup field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Source) GetManagementWorkgroup() MultiHostIntegrationsManagementWorkgroup {
+func (o *MultiHostSources) GetManagementWorkgroup() MultiHostIntegrationsManagementWorkgroup {
 	if o == nil || IsNil(o.ManagementWorkgroup.Get()) {
 		var ret MultiHostIntegrationsManagementWorkgroup
 		return ret
@@ -769,7 +763,7 @@ func (o *Source) GetManagementWorkgroup() MultiHostIntegrationsManagementWorkgro
 // GetManagementWorkgroupOk returns a tuple with the ManagementWorkgroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Source) GetManagementWorkgroupOk() (*MultiHostIntegrationsManagementWorkgroup, bool) {
+func (o *MultiHostSources) GetManagementWorkgroupOk() (*MultiHostIntegrationsManagementWorkgroup, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -777,7 +771,7 @@ func (o *Source) GetManagementWorkgroupOk() (*MultiHostIntegrationsManagementWor
 }
 
 // HasManagementWorkgroup returns a boolean if a field has been set.
-func (o *Source) HasManagementWorkgroup() bool {
+func (o *MultiHostSources) HasManagementWorkgroup() bool {
 	if o != nil && o.ManagementWorkgroup.IsSet() {
 		return true
 	}
@@ -786,21 +780,21 @@ func (o *Source) HasManagementWorkgroup() bool {
 }
 
 // SetManagementWorkgroup gets a reference to the given NullableMultiHostIntegrationsManagementWorkgroup and assigns it to the ManagementWorkgroup field.
-func (o *Source) SetManagementWorkgroup(v MultiHostIntegrationsManagementWorkgroup) {
+func (o *MultiHostSources) SetManagementWorkgroup(v MultiHostIntegrationsManagementWorkgroup) {
 	o.ManagementWorkgroup.Set(&v)
 }
 // SetManagementWorkgroupNil sets the value for ManagementWorkgroup to be an explicit nil
-func (o *Source) SetManagementWorkgroupNil() {
+func (o *MultiHostSources) SetManagementWorkgroupNil() {
 	o.ManagementWorkgroup.Set(nil)
 }
 
 // UnsetManagementWorkgroup ensures that no value is present for ManagementWorkgroup, not even an explicit nil
-func (o *Source) UnsetManagementWorkgroup() {
+func (o *MultiHostSources) UnsetManagementWorkgroup() {
 	o.ManagementWorkgroup.Unset()
 }
 
 // GetHealthy returns the Healthy field value if set, zero value otherwise.
-func (o *Source) GetHealthy() bool {
+func (o *MultiHostSources) GetHealthy() bool {
 	if o == nil || IsNil(o.Healthy) {
 		var ret bool
 		return ret
@@ -810,7 +804,7 @@ func (o *Source) GetHealthy() bool {
 
 // GetHealthyOk returns a tuple with the Healthy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Source) GetHealthyOk() (*bool, bool) {
+func (o *MultiHostSources) GetHealthyOk() (*bool, bool) {
 	if o == nil || IsNil(o.Healthy) {
 		return nil, false
 	}
@@ -818,7 +812,7 @@ func (o *Source) GetHealthyOk() (*bool, bool) {
 }
 
 // HasHealthy returns a boolean if a field has been set.
-func (o *Source) HasHealthy() bool {
+func (o *MultiHostSources) HasHealthy() bool {
 	if o != nil && !IsNil(o.Healthy) {
 		return true
 	}
@@ -827,12 +821,12 @@ func (o *Source) HasHealthy() bool {
 }
 
 // SetHealthy gets a reference to the given bool and assigns it to the Healthy field.
-func (o *Source) SetHealthy(v bool) {
+func (o *MultiHostSources) SetHealthy(v bool) {
 	o.Healthy = &v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *Source) GetStatus() string {
+func (o *MultiHostSources) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
@@ -842,7 +836,7 @@ func (o *Source) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Source) GetStatusOk() (*string, bool) {
+func (o *MultiHostSources) GetStatusOk() (*string, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -850,7 +844,7 @@ func (o *Source) GetStatusOk() (*string, bool) {
 }
 
 // HasStatus returns a boolean if a field has been set.
-func (o *Source) HasStatus() bool {
+func (o *MultiHostSources) HasStatus() bool {
 	if o != nil && !IsNil(o.Status) {
 		return true
 	}
@@ -859,14 +853,14 @@ func (o *Source) HasStatus() bool {
 }
 
 // SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *Source) SetStatus(v string) {
+func (o *MultiHostSources) SetStatus(v string) {
 	o.Status = &v
 }
 
 // GetSince returns the Since field value if set, zero value otherwise.
-func (o *Source) GetSince() string {
+func (o *MultiHostSources) GetSince() time.Time {
 	if o == nil || IsNil(o.Since) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.Since
@@ -874,7 +868,7 @@ func (o *Source) GetSince() string {
 
 // GetSinceOk returns a tuple with the Since field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Source) GetSinceOk() (*string, bool) {
+func (o *MultiHostSources) GetSinceOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Since) {
 		return nil, false
 	}
@@ -882,7 +876,7 @@ func (o *Source) GetSinceOk() (*string, bool) {
 }
 
 // HasSince returns a boolean if a field has been set.
-func (o *Source) HasSince() bool {
+func (o *MultiHostSources) HasSince() bool {
 	if o != nil && !IsNil(o.Since) {
 		return true
 	}
@@ -890,13 +884,13 @@ func (o *Source) HasSince() bool {
 	return false
 }
 
-// SetSince gets a reference to the given string and assigns it to the Since field.
-func (o *Source) SetSince(v string) {
+// SetSince gets a reference to the given time.Time and assigns it to the Since field.
+func (o *MultiHostSources) SetSince(v time.Time) {
 	o.Since = &v
 }
 
 // GetConnectorId returns the ConnectorId field value if set, zero value otherwise.
-func (o *Source) GetConnectorId() string {
+func (o *MultiHostSources) GetConnectorId() string {
 	if o == nil || IsNil(o.ConnectorId) {
 		var ret string
 		return ret
@@ -906,7 +900,7 @@ func (o *Source) GetConnectorId() string {
 
 // GetConnectorIdOk returns a tuple with the ConnectorId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Source) GetConnectorIdOk() (*string, bool) {
+func (o *MultiHostSources) GetConnectorIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ConnectorId) {
 		return nil, false
 	}
@@ -914,7 +908,7 @@ func (o *Source) GetConnectorIdOk() (*string, bool) {
 }
 
 // HasConnectorId returns a boolean if a field has been set.
-func (o *Source) HasConnectorId() bool {
+func (o *MultiHostSources) HasConnectorId() bool {
 	if o != nil && !IsNil(o.ConnectorId) {
 		return true
 	}
@@ -923,44 +917,36 @@ func (o *Source) HasConnectorId() bool {
 }
 
 // SetConnectorId gets a reference to the given string and assigns it to the ConnectorId field.
-func (o *Source) SetConnectorId(v string) {
+func (o *MultiHostSources) SetConnectorId(v string) {
 	o.ConnectorId = &v
 }
 
-// GetConnectorName returns the ConnectorName field value if set, zero value otherwise.
-func (o *Source) GetConnectorName() string {
-	if o == nil || IsNil(o.ConnectorName) {
+// GetConnectorName returns the ConnectorName field value
+func (o *MultiHostSources) GetConnectorName() string {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ConnectorName
+
+	return o.ConnectorName
 }
 
-// GetConnectorNameOk returns a tuple with the ConnectorName field value if set, nil otherwise
+// GetConnectorNameOk returns a tuple with the ConnectorName field value
 // and a boolean to check if the value has been set.
-func (o *Source) GetConnectorNameOk() (*string, bool) {
-	if o == nil || IsNil(o.ConnectorName) {
+func (o *MultiHostSources) GetConnectorNameOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ConnectorName, true
+	return &o.ConnectorName, true
 }
 
-// HasConnectorName returns a boolean if a field has been set.
-func (o *Source) HasConnectorName() bool {
-	if o != nil && !IsNil(o.ConnectorName) {
-		return true
-	}
-
-	return false
-}
-
-// SetConnectorName gets a reference to the given string and assigns it to the ConnectorName field.
-func (o *Source) SetConnectorName(v string) {
-	o.ConnectorName = &v
+// SetConnectorName sets field value
+func (o *MultiHostSources) SetConnectorName(v string) {
+	o.ConnectorName = v
 }
 
 // GetConnectionType returns the ConnectionType field value if set, zero value otherwise.
-func (o *Source) GetConnectionType() string {
+func (o *MultiHostSources) GetConnectionType() string {
 	if o == nil || IsNil(o.ConnectionType) {
 		var ret string
 		return ret
@@ -970,7 +956,7 @@ func (o *Source) GetConnectionType() string {
 
 // GetConnectionTypeOk returns a tuple with the ConnectionType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Source) GetConnectionTypeOk() (*string, bool) {
+func (o *MultiHostSources) GetConnectionTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.ConnectionType) {
 		return nil, false
 	}
@@ -978,7 +964,7 @@ func (o *Source) GetConnectionTypeOk() (*string, bool) {
 }
 
 // HasConnectionType returns a boolean if a field has been set.
-func (o *Source) HasConnectionType() bool {
+func (o *MultiHostSources) HasConnectionType() bool {
 	if o != nil && !IsNil(o.ConnectionType) {
 		return true
 	}
@@ -987,12 +973,12 @@ func (o *Source) HasConnectionType() bool {
 }
 
 // SetConnectionType gets a reference to the given string and assigns it to the ConnectionType field.
-func (o *Source) SetConnectionType(v string) {
+func (o *MultiHostSources) SetConnectionType(v string) {
 	o.ConnectionType = &v
 }
 
 // GetConnectorImplementationId returns the ConnectorImplementationId field value if set, zero value otherwise.
-func (o *Source) GetConnectorImplementationId() string {
+func (o *MultiHostSources) GetConnectorImplementationId() string {
 	if o == nil || IsNil(o.ConnectorImplementationId) {
 		var ret string
 		return ret
@@ -1002,7 +988,7 @@ func (o *Source) GetConnectorImplementationId() string {
 
 // GetConnectorImplementationIdOk returns a tuple with the ConnectorImplementationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Source) GetConnectorImplementationIdOk() (*string, bool) {
+func (o *MultiHostSources) GetConnectorImplementationIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ConnectorImplementationId) {
 		return nil, false
 	}
@@ -1010,7 +996,7 @@ func (o *Source) GetConnectorImplementationIdOk() (*string, bool) {
 }
 
 // HasConnectorImplementationId returns a boolean if a field has been set.
-func (o *Source) HasConnectorImplementationId() bool {
+func (o *MultiHostSources) HasConnectorImplementationId() bool {
 	if o != nil && !IsNil(o.ConnectorImplementationId) {
 		return true
 	}
@@ -1019,12 +1005,12 @@ func (o *Source) HasConnectorImplementationId() bool {
 }
 
 // SetConnectorImplementationId gets a reference to the given string and assigns it to the ConnectorImplementationId field.
-func (o *Source) SetConnectorImplementationId(v string) {
+func (o *MultiHostSources) SetConnectorImplementationId(v string) {
 	o.ConnectorImplementationId = &v
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Source) GetCreated() time.Time {
+func (o *MultiHostSources) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
@@ -1034,7 +1020,7 @@ func (o *Source) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Source) GetCreatedOk() (*time.Time, bool) {
+func (o *MultiHostSources) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -1042,7 +1028,7 @@ func (o *Source) GetCreatedOk() (*time.Time, bool) {
 }
 
 // HasCreated returns a boolean if a field has been set.
-func (o *Source) HasCreated() bool {
+func (o *MultiHostSources) HasCreated() bool {
 	if o != nil && !IsNil(o.Created) {
 		return true
 	}
@@ -1051,12 +1037,12 @@ func (o *Source) HasCreated() bool {
 }
 
 // SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *Source) SetCreated(v time.Time) {
+func (o *MultiHostSources) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Source) GetModified() time.Time {
+func (o *MultiHostSources) GetModified() time.Time {
 	if o == nil || IsNil(o.Modified) {
 		var ret time.Time
 		return ret
@@ -1066,7 +1052,7 @@ func (o *Source) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Source) GetModifiedOk() (*time.Time, bool) {
+func (o *MultiHostSources) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -1074,7 +1060,7 @@ func (o *Source) GetModifiedOk() (*time.Time, bool) {
 }
 
 // HasModified returns a boolean if a field has been set.
-func (o *Source) HasModified() bool {
+func (o *MultiHostSources) HasModified() bool {
 	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
@@ -1083,12 +1069,12 @@ func (o *Source) HasModified() bool {
 }
 
 // SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *Source) SetModified(v time.Time) {
+func (o *MultiHostSources) SetModified(v time.Time) {
 	o.Modified = &v
 }
 
 // GetCredentialProviderEnabled returns the CredentialProviderEnabled field value if set, zero value otherwise.
-func (o *Source) GetCredentialProviderEnabled() bool {
+func (o *MultiHostSources) GetCredentialProviderEnabled() bool {
 	if o == nil || IsNil(o.CredentialProviderEnabled) {
 		var ret bool
 		return ret
@@ -1098,7 +1084,7 @@ func (o *Source) GetCredentialProviderEnabled() bool {
 
 // GetCredentialProviderEnabledOk returns a tuple with the CredentialProviderEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Source) GetCredentialProviderEnabledOk() (*bool, bool) {
+func (o *MultiHostSources) GetCredentialProviderEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.CredentialProviderEnabled) {
 		return nil, false
 	}
@@ -1106,7 +1092,7 @@ func (o *Source) GetCredentialProviderEnabledOk() (*bool, bool) {
 }
 
 // HasCredentialProviderEnabled returns a boolean if a field has been set.
-func (o *Source) HasCredentialProviderEnabled() bool {
+func (o *MultiHostSources) HasCredentialProviderEnabled() bool {
 	if o != nil && !IsNil(o.CredentialProviderEnabled) {
 		return true
 	}
@@ -1115,12 +1101,12 @@ func (o *Source) HasCredentialProviderEnabled() bool {
 }
 
 // SetCredentialProviderEnabled gets a reference to the given bool and assigns it to the CredentialProviderEnabled field.
-func (o *Source) SetCredentialProviderEnabled(v bool) {
+func (o *MultiHostSources) SetCredentialProviderEnabled(v bool) {
 	o.CredentialProviderEnabled = &v
 }
 
 // GetCategory returns the Category field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Source) GetCategory() string {
+func (o *MultiHostSources) GetCategory() string {
 	if o == nil || IsNil(o.Category.Get()) {
 		var ret string
 		return ret
@@ -1131,7 +1117,7 @@ func (o *Source) GetCategory() string {
 // GetCategoryOk returns a tuple with the Category field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Source) GetCategoryOk() (*string, bool) {
+func (o *MultiHostSources) GetCategoryOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -1139,7 +1125,7 @@ func (o *Source) GetCategoryOk() (*string, bool) {
 }
 
 // HasCategory returns a boolean if a field has been set.
-func (o *Source) HasCategory() bool {
+func (o *MultiHostSources) HasCategory() bool {
 	if o != nil && o.Category.IsSet() {
 		return true
 	}
@@ -1148,20 +1134,20 @@ func (o *Source) HasCategory() bool {
 }
 
 // SetCategory gets a reference to the given NullableString and assigns it to the Category field.
-func (o *Source) SetCategory(v string) {
+func (o *MultiHostSources) SetCategory(v string) {
 	o.Category.Set(&v)
 }
 // SetCategoryNil sets the value for Category to be an explicit nil
-func (o *Source) SetCategoryNil() {
+func (o *MultiHostSources) SetCategoryNil() {
 	o.Category.Set(nil)
 }
 
 // UnsetCategory ensures that no value is present for Category, not even an explicit nil
-func (o *Source) UnsetCategory() {
+func (o *MultiHostSources) UnsetCategory() {
 	o.Category.Unset()
 }
 
-func (o Source) MarshalJSON() ([]byte, error) {
+func (o MultiHostSources) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -1169,11 +1155,9 @@ func (o Source) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o Source) ToMap() (map[string]interface{}, error) {
+func (o MultiHostSources) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
+	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
@@ -1237,9 +1221,7 @@ func (o Source) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ConnectorId) {
 		toSerialize["connectorId"] = o.ConnectorId
 	}
-	if !IsNil(o.ConnectorName) {
-		toSerialize["connectorName"] = o.ConnectorName
-	}
+	toSerialize["connectorName"] = o.ConnectorName
 	if !IsNil(o.ConnectionType) {
 		toSerialize["connectionType"] = o.ConnectionType
 	}
@@ -1266,14 +1248,16 @@ func (o Source) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Source) UnmarshalJSON(data []byte) (err error) {
+func (o *MultiHostSources) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"id",
 		"name",
 		"owner",
 		"connector",
+		"connectorName",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -1290,15 +1274,15 @@ func (o *Source) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varSource := _Source{}
+	varMultiHostSources := _MultiHostSources{}
 
-	err = json.Unmarshal(data, &varSource)
+	err = json.Unmarshal(data, &varMultiHostSources)
 
 	if err != nil {
 		return err
 	}
 
-	*o = Source(varSource)
+	*o = MultiHostSources(varMultiHostSources)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -1340,38 +1324,38 @@ func (o *Source) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableSource struct {
-	value *Source
+type NullableMultiHostSources struct {
+	value *MultiHostSources
 	isSet bool
 }
 
-func (v NullableSource) Get() *Source {
+func (v NullableMultiHostSources) Get() *MultiHostSources {
 	return v.value
 }
 
-func (v *NullableSource) Set(val *Source) {
+func (v *NullableMultiHostSources) Set(val *MultiHostSources) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSource) IsSet() bool {
+func (v NullableMultiHostSources) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSource) Unset() {
+func (v *NullableMultiHostSources) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSource(val *Source) *NullableSource {
-	return &NullableSource{value: val, isSet: true}
+func NewNullableMultiHostSources(val *MultiHostSources) *NullableMultiHostSources {
+	return &NullableMultiHostSources{value: val, isSet: true}
 }
 
-func (v NullableSource) MarshalJSON() ([]byte, error) {
+func (v NullableMultiHostSources) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSource) UnmarshalJSON(src []byte) error {
+func (v *NullableMultiHostSources) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

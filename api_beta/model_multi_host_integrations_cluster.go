@@ -15,11 +15,11 @@ import (
 	"fmt"
 )
 
-// checks if the SourceCluster type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SourceCluster{}
+// checks if the MultiHostIntegrationsCluster type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MultiHostIntegrationsCluster{}
 
-// SourceCluster Reference to the source's associated cluster.
-type SourceCluster struct {
+// MultiHostIntegrationsCluster Reference to the source's associated cluster.
+type MultiHostIntegrationsCluster struct {
 	// Type of object being referenced.
 	Type string `json:"type"`
 	// Cluster ID.
@@ -29,30 +29,30 @@ type SourceCluster struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _SourceCluster SourceCluster
+type _MultiHostIntegrationsCluster MultiHostIntegrationsCluster
 
-// NewSourceCluster instantiates a new SourceCluster object
+// NewMultiHostIntegrationsCluster instantiates a new MultiHostIntegrationsCluster object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSourceCluster(type_ string, id string, name string) *SourceCluster {
-	this := SourceCluster{}
+func NewMultiHostIntegrationsCluster(type_ string, id string, name string) *MultiHostIntegrationsCluster {
+	this := MultiHostIntegrationsCluster{}
 	this.Type = type_
 	this.Id = id
 	this.Name = name
 	return &this
 }
 
-// NewSourceClusterWithDefaults instantiates a new SourceCluster object
+// NewMultiHostIntegrationsClusterWithDefaults instantiates a new MultiHostIntegrationsCluster object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSourceClusterWithDefaults() *SourceCluster {
-	this := SourceCluster{}
+func NewMultiHostIntegrationsClusterWithDefaults() *MultiHostIntegrationsCluster {
+	this := MultiHostIntegrationsCluster{}
 	return &this
 }
 
 // GetType returns the Type field value
-func (o *SourceCluster) GetType() string {
+func (o *MultiHostIntegrationsCluster) GetType() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -63,7 +63,7 @@ func (o *SourceCluster) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *SourceCluster) GetTypeOk() (*string, bool) {
+func (o *MultiHostIntegrationsCluster) GetTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -71,12 +71,12 @@ func (o *SourceCluster) GetTypeOk() (*string, bool) {
 }
 
 // SetType sets field value
-func (o *SourceCluster) SetType(v string) {
+func (o *MultiHostIntegrationsCluster) SetType(v string) {
 	o.Type = v
 }
 
 // GetId returns the Id field value
-func (o *SourceCluster) GetId() string {
+func (o *MultiHostIntegrationsCluster) GetId() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -87,7 +87,7 @@ func (o *SourceCluster) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *SourceCluster) GetIdOk() (*string, bool) {
+func (o *MultiHostIntegrationsCluster) GetIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -95,12 +95,12 @@ func (o *SourceCluster) GetIdOk() (*string, bool) {
 }
 
 // SetId sets field value
-func (o *SourceCluster) SetId(v string) {
+func (o *MultiHostIntegrationsCluster) SetId(v string) {
 	o.Id = v
 }
 
 // GetName returns the Name field value
-func (o *SourceCluster) GetName() string {
+func (o *MultiHostIntegrationsCluster) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -111,7 +111,7 @@ func (o *SourceCluster) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *SourceCluster) GetNameOk() (*string, bool) {
+func (o *MultiHostIntegrationsCluster) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -119,11 +119,11 @@ func (o *SourceCluster) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *SourceCluster) SetName(v string) {
+func (o *MultiHostIntegrationsCluster) SetName(v string) {
 	o.Name = v
 }
 
-func (o SourceCluster) MarshalJSON() ([]byte, error) {
+func (o MultiHostIntegrationsCluster) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -131,7 +131,7 @@ func (o SourceCluster) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o SourceCluster) ToMap() (map[string]interface{}, error) {
+func (o MultiHostIntegrationsCluster) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["id"] = o.Id
@@ -144,7 +144,7 @@ func (o SourceCluster) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SourceCluster) UnmarshalJSON(data []byte) (err error) {
+func (o *MultiHostIntegrationsCluster) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -168,15 +168,15 @@ func (o *SourceCluster) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varSourceCluster := _SourceCluster{}
+	varMultiHostIntegrationsCluster := _MultiHostIntegrationsCluster{}
 
-	err = json.Unmarshal(data, &varSourceCluster)
+	err = json.Unmarshal(data, &varMultiHostIntegrationsCluster)
 
 	if err != nil {
 		return err
 	}
 
-	*o = SourceCluster(varSourceCluster)
+	*o = MultiHostIntegrationsCluster(varMultiHostIntegrationsCluster)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -190,38 +190,38 @@ func (o *SourceCluster) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableSourceCluster struct {
-	value *SourceCluster
+type NullableMultiHostIntegrationsCluster struct {
+	value *MultiHostIntegrationsCluster
 	isSet bool
 }
 
-func (v NullableSourceCluster) Get() *SourceCluster {
+func (v NullableMultiHostIntegrationsCluster) Get() *MultiHostIntegrationsCluster {
 	return v.value
 }
 
-func (v *NullableSourceCluster) Set(val *SourceCluster) {
+func (v *NullableMultiHostIntegrationsCluster) Set(val *MultiHostIntegrationsCluster) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSourceCluster) IsSet() bool {
+func (v NullableMultiHostIntegrationsCluster) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSourceCluster) Unset() {
+func (v *NullableMultiHostIntegrationsCluster) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSourceCluster(val *SourceCluster) *NullableSourceCluster {
-	return &NullableSourceCluster{value: val, isSet: true}
+func NewNullableMultiHostIntegrationsCluster(val *MultiHostIntegrationsCluster) *NullableMultiHostIntegrationsCluster {
+	return &NullableMultiHostIntegrationsCluster{value: val, isSet: true}
 }
 
-func (v NullableSourceCluster) MarshalJSON() ([]byte, error) {
+func (v NullableMultiHostIntegrationsCluster) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSourceCluster) UnmarshalJSON(src []byte) error {
+func (v *NullableMultiHostIntegrationsCluster) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

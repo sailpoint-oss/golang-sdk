@@ -14,11 +14,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the SourceAccountCorrelationRule type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SourceAccountCorrelationRule{}
+// checks if the MultiHostSourcesAccountCorrelationRule type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MultiHostSourcesAccountCorrelationRule{}
 
-// SourceAccountCorrelationRule Reference to a rule that can do COMPLEX correlation. Only use this rule when you can't use accountCorrelationConfig.
-type SourceAccountCorrelationRule struct {
+// MultiHostSourcesAccountCorrelationRule Reference to a rule that can do COMPLEX correlation. Only use this rule when you can't use accountCorrelationConfig.
+type MultiHostSourcesAccountCorrelationRule struct {
 	// Type of object being referenced.
 	Type *string `json:"type,omitempty"`
 	// Rule ID.
@@ -28,27 +28,27 @@ type SourceAccountCorrelationRule struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _SourceAccountCorrelationRule SourceAccountCorrelationRule
+type _MultiHostSourcesAccountCorrelationRule MultiHostSourcesAccountCorrelationRule
 
-// NewSourceAccountCorrelationRule instantiates a new SourceAccountCorrelationRule object
+// NewMultiHostSourcesAccountCorrelationRule instantiates a new MultiHostSourcesAccountCorrelationRule object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSourceAccountCorrelationRule() *SourceAccountCorrelationRule {
-	this := SourceAccountCorrelationRule{}
+func NewMultiHostSourcesAccountCorrelationRule() *MultiHostSourcesAccountCorrelationRule {
+	this := MultiHostSourcesAccountCorrelationRule{}
 	return &this
 }
 
-// NewSourceAccountCorrelationRuleWithDefaults instantiates a new SourceAccountCorrelationRule object
+// NewMultiHostSourcesAccountCorrelationRuleWithDefaults instantiates a new MultiHostSourcesAccountCorrelationRule object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSourceAccountCorrelationRuleWithDefaults() *SourceAccountCorrelationRule {
-	this := SourceAccountCorrelationRule{}
+func NewMultiHostSourcesAccountCorrelationRuleWithDefaults() *MultiHostSourcesAccountCorrelationRule {
+	this := MultiHostSourcesAccountCorrelationRule{}
 	return &this
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *SourceAccountCorrelationRule) GetType() string {
+func (o *MultiHostSourcesAccountCorrelationRule) GetType() string {
 	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
@@ -58,7 +58,7 @@ func (o *SourceAccountCorrelationRule) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SourceAccountCorrelationRule) GetTypeOk() (*string, bool) {
+func (o *MultiHostSourcesAccountCorrelationRule) GetTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *SourceAccountCorrelationRule) GetTypeOk() (*string, bool) {
 }
 
 // HasType returns a boolean if a field has been set.
-func (o *SourceAccountCorrelationRule) HasType() bool {
+func (o *MultiHostSourcesAccountCorrelationRule) HasType() bool {
 	if o != nil && !IsNil(o.Type) {
 		return true
 	}
@@ -75,12 +75,12 @@ func (o *SourceAccountCorrelationRule) HasType() bool {
 }
 
 // SetType gets a reference to the given string and assigns it to the Type field.
-func (o *SourceAccountCorrelationRule) SetType(v string) {
+func (o *MultiHostSourcesAccountCorrelationRule) SetType(v string) {
 	o.Type = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *SourceAccountCorrelationRule) GetId() string {
+func (o *MultiHostSourcesAccountCorrelationRule) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -90,7 +90,7 @@ func (o *SourceAccountCorrelationRule) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SourceAccountCorrelationRule) GetIdOk() (*string, bool) {
+func (o *MultiHostSourcesAccountCorrelationRule) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -98,7 +98,7 @@ func (o *SourceAccountCorrelationRule) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *SourceAccountCorrelationRule) HasId() bool {
+func (o *MultiHostSourcesAccountCorrelationRule) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -107,12 +107,12 @@ func (o *SourceAccountCorrelationRule) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *SourceAccountCorrelationRule) SetId(v string) {
+func (o *MultiHostSourcesAccountCorrelationRule) SetId(v string) {
 	o.Id = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *SourceAccountCorrelationRule) GetName() string {
+func (o *MultiHostSourcesAccountCorrelationRule) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
@@ -122,7 +122,7 @@ func (o *SourceAccountCorrelationRule) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SourceAccountCorrelationRule) GetNameOk() (*string, bool) {
+func (o *MultiHostSourcesAccountCorrelationRule) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
@@ -130,7 +130,7 @@ func (o *SourceAccountCorrelationRule) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *SourceAccountCorrelationRule) HasName() bool {
+func (o *MultiHostSourcesAccountCorrelationRule) HasName() bool {
 	if o != nil && !IsNil(o.Name) {
 		return true
 	}
@@ -139,11 +139,11 @@ func (o *SourceAccountCorrelationRule) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *SourceAccountCorrelationRule) SetName(v string) {
+func (o *MultiHostSourcesAccountCorrelationRule) SetName(v string) {
 	o.Name = &v
 }
 
-func (o SourceAccountCorrelationRule) MarshalJSON() ([]byte, error) {
+func (o MultiHostSourcesAccountCorrelationRule) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -151,7 +151,7 @@ func (o SourceAccountCorrelationRule) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o SourceAccountCorrelationRule) ToMap() (map[string]interface{}, error) {
+func (o MultiHostSourcesAccountCorrelationRule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -170,16 +170,16 @@ func (o SourceAccountCorrelationRule) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SourceAccountCorrelationRule) UnmarshalJSON(data []byte) (err error) {
-	varSourceAccountCorrelationRule := _SourceAccountCorrelationRule{}
+func (o *MultiHostSourcesAccountCorrelationRule) UnmarshalJSON(data []byte) (err error) {
+	varMultiHostSourcesAccountCorrelationRule := _MultiHostSourcesAccountCorrelationRule{}
 
-	err = json.Unmarshal(data, &varSourceAccountCorrelationRule)
+	err = json.Unmarshal(data, &varMultiHostSourcesAccountCorrelationRule)
 
 	if err != nil {
 		return err
 	}
 
-	*o = SourceAccountCorrelationRule(varSourceAccountCorrelationRule)
+	*o = MultiHostSourcesAccountCorrelationRule(varMultiHostSourcesAccountCorrelationRule)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -193,38 +193,38 @@ func (o *SourceAccountCorrelationRule) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableSourceAccountCorrelationRule struct {
-	value *SourceAccountCorrelationRule
+type NullableMultiHostSourcesAccountCorrelationRule struct {
+	value *MultiHostSourcesAccountCorrelationRule
 	isSet bool
 }
 
-func (v NullableSourceAccountCorrelationRule) Get() *SourceAccountCorrelationRule {
+func (v NullableMultiHostSourcesAccountCorrelationRule) Get() *MultiHostSourcesAccountCorrelationRule {
 	return v.value
 }
 
-func (v *NullableSourceAccountCorrelationRule) Set(val *SourceAccountCorrelationRule) {
+func (v *NullableMultiHostSourcesAccountCorrelationRule) Set(val *MultiHostSourcesAccountCorrelationRule) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSourceAccountCorrelationRule) IsSet() bool {
+func (v NullableMultiHostSourcesAccountCorrelationRule) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSourceAccountCorrelationRule) Unset() {
+func (v *NullableMultiHostSourcesAccountCorrelationRule) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSourceAccountCorrelationRule(val *SourceAccountCorrelationRule) *NullableSourceAccountCorrelationRule {
-	return &NullableSourceAccountCorrelationRule{value: val, isSet: true}
+func NewNullableMultiHostSourcesAccountCorrelationRule(val *MultiHostSourcesAccountCorrelationRule) *NullableMultiHostSourcesAccountCorrelationRule {
+	return &NullableMultiHostSourcesAccountCorrelationRule{value: val, isSet: true}
 }
 
-func (v NullableSourceAccountCorrelationRule) MarshalJSON() ([]byte, error) {
+func (v NullableMultiHostSourcesAccountCorrelationRule) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSourceAccountCorrelationRule) UnmarshalJSON(src []byte) error {
+func (v *NullableMultiHostSourcesAccountCorrelationRule) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

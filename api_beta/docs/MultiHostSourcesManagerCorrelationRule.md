@@ -1,104 +1,104 @@
-# SourceManagementWorkgroup
+# MultiHostSourcesManagerCorrelationRule
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | Pointer to **string** | Type of object being referenced. | [optional] 
-**Id** | Pointer to **string** | Management workgroup ID. | [optional] 
-**Name** | Pointer to **string** | Management workgroup&#39;s human-readable display name. | [optional] 
+**Id** | Pointer to **string** | Rule ID. | [optional] 
+**Name** | Pointer to **string** | Rule&#39;s human-readable display name. | [optional] 
 
 ## Methods
 
-### NewSourceManagementWorkgroup
+### NewMultiHostSourcesManagerCorrelationRule
 
-`func NewSourceManagementWorkgroup() *SourceManagementWorkgroup`
+`func NewMultiHostSourcesManagerCorrelationRule() *MultiHostSourcesManagerCorrelationRule`
 
-NewSourceManagementWorkgroup instantiates a new SourceManagementWorkgroup object
+NewMultiHostSourcesManagerCorrelationRule instantiates a new MultiHostSourcesManagerCorrelationRule object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewSourceManagementWorkgroupWithDefaults
+### NewMultiHostSourcesManagerCorrelationRuleWithDefaults
 
-`func NewSourceManagementWorkgroupWithDefaults() *SourceManagementWorkgroup`
+`func NewMultiHostSourcesManagerCorrelationRuleWithDefaults() *MultiHostSourcesManagerCorrelationRule`
 
-NewSourceManagementWorkgroupWithDefaults instantiates a new SourceManagementWorkgroup object
+NewMultiHostSourcesManagerCorrelationRuleWithDefaults instantiates a new MultiHostSourcesManagerCorrelationRule object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *SourceManagementWorkgroup) GetType() string`
+`func (o *MultiHostSourcesManagerCorrelationRule) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *SourceManagementWorkgroup) GetTypeOk() (*string, bool)`
+`func (o *MultiHostSourcesManagerCorrelationRule) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *SourceManagementWorkgroup) SetType(v string)`
+`func (o *MultiHostSourcesManagerCorrelationRule) SetType(v string)`
 
 SetType sets Type field to given value.
 
 ### HasType
 
-`func (o *SourceManagementWorkgroup) HasType() bool`
+`func (o *MultiHostSourcesManagerCorrelationRule) HasType() bool`
 
 HasType returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *SourceManagementWorkgroup) GetId() string`
+`func (o *MultiHostSourcesManagerCorrelationRule) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *SourceManagementWorkgroup) GetIdOk() (*string, bool)`
+`func (o *MultiHostSourcesManagerCorrelationRule) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *SourceManagementWorkgroup) SetId(v string)`
+`func (o *MultiHostSourcesManagerCorrelationRule) SetId(v string)`
 
 SetId sets Id field to given value.
 
 ### HasId
 
-`func (o *SourceManagementWorkgroup) HasId() bool`
+`func (o *MultiHostSourcesManagerCorrelationRule) HasId() bool`
 
 HasId returns a boolean if a field has been set.
 
 ### GetName
 
-`func (o *SourceManagementWorkgroup) GetName() string`
+`func (o *MultiHostSourcesManagerCorrelationRule) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *SourceManagementWorkgroup) GetNameOk() (*string, bool)`
+`func (o *MultiHostSourcesManagerCorrelationRule) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *SourceManagementWorkgroup) SetName(v string)`
+`func (o *MultiHostSourcesManagerCorrelationRule) SetName(v string)`
 
 SetName sets Name field to given value.
 
 ### HasName
 
-`func (o *SourceManagementWorkgroup) HasName() bool`
+`func (o *MultiHostSourcesManagerCorrelationRule) HasName() bool`
 
 HasName returns a boolean if a field has been set.
 

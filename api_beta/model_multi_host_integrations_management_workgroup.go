@@ -14,41 +14,41 @@ import (
 	"encoding/json"
 )
 
-// checks if the SourceManagerCorrelationRule type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SourceManagerCorrelationRule{}
+// checks if the MultiHostIntegrationsManagementWorkgroup type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MultiHostIntegrationsManagementWorkgroup{}
 
-// SourceManagerCorrelationRule Reference to the ManagerCorrelationRule. Only use this rule when a simple filter isn't sufficient.
-type SourceManagerCorrelationRule struct {
+// MultiHostIntegrationsManagementWorkgroup Reference to management workgroup for the source.
+type MultiHostIntegrationsManagementWorkgroup struct {
 	// Type of object being referenced.
 	Type *string `json:"type,omitempty"`
-	// Rule ID.
+	// Management workgroup ID.
 	Id *string `json:"id,omitempty"`
-	// Rule's human-readable display name.
+	// Management workgroup's human-readable display name.
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _SourceManagerCorrelationRule SourceManagerCorrelationRule
+type _MultiHostIntegrationsManagementWorkgroup MultiHostIntegrationsManagementWorkgroup
 
-// NewSourceManagerCorrelationRule instantiates a new SourceManagerCorrelationRule object
+// NewMultiHostIntegrationsManagementWorkgroup instantiates a new MultiHostIntegrationsManagementWorkgroup object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSourceManagerCorrelationRule() *SourceManagerCorrelationRule {
-	this := SourceManagerCorrelationRule{}
+func NewMultiHostIntegrationsManagementWorkgroup() *MultiHostIntegrationsManagementWorkgroup {
+	this := MultiHostIntegrationsManagementWorkgroup{}
 	return &this
 }
 
-// NewSourceManagerCorrelationRuleWithDefaults instantiates a new SourceManagerCorrelationRule object
+// NewMultiHostIntegrationsManagementWorkgroupWithDefaults instantiates a new MultiHostIntegrationsManagementWorkgroup object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSourceManagerCorrelationRuleWithDefaults() *SourceManagerCorrelationRule {
-	this := SourceManagerCorrelationRule{}
+func NewMultiHostIntegrationsManagementWorkgroupWithDefaults() *MultiHostIntegrationsManagementWorkgroup {
+	this := MultiHostIntegrationsManagementWorkgroup{}
 	return &this
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *SourceManagerCorrelationRule) GetType() string {
+func (o *MultiHostIntegrationsManagementWorkgroup) GetType() string {
 	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
@@ -58,7 +58,7 @@ func (o *SourceManagerCorrelationRule) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SourceManagerCorrelationRule) GetTypeOk() (*string, bool) {
+func (o *MultiHostIntegrationsManagementWorkgroup) GetTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *SourceManagerCorrelationRule) GetTypeOk() (*string, bool) {
 }
 
 // HasType returns a boolean if a field has been set.
-func (o *SourceManagerCorrelationRule) HasType() bool {
+func (o *MultiHostIntegrationsManagementWorkgroup) HasType() bool {
 	if o != nil && !IsNil(o.Type) {
 		return true
 	}
@@ -75,12 +75,12 @@ func (o *SourceManagerCorrelationRule) HasType() bool {
 }
 
 // SetType gets a reference to the given string and assigns it to the Type field.
-func (o *SourceManagerCorrelationRule) SetType(v string) {
+func (o *MultiHostIntegrationsManagementWorkgroup) SetType(v string) {
 	o.Type = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *SourceManagerCorrelationRule) GetId() string {
+func (o *MultiHostIntegrationsManagementWorkgroup) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -90,7 +90,7 @@ func (o *SourceManagerCorrelationRule) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SourceManagerCorrelationRule) GetIdOk() (*string, bool) {
+func (o *MultiHostIntegrationsManagementWorkgroup) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -98,7 +98,7 @@ func (o *SourceManagerCorrelationRule) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *SourceManagerCorrelationRule) HasId() bool {
+func (o *MultiHostIntegrationsManagementWorkgroup) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -107,12 +107,12 @@ func (o *SourceManagerCorrelationRule) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *SourceManagerCorrelationRule) SetId(v string) {
+func (o *MultiHostIntegrationsManagementWorkgroup) SetId(v string) {
 	o.Id = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *SourceManagerCorrelationRule) GetName() string {
+func (o *MultiHostIntegrationsManagementWorkgroup) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
@@ -122,7 +122,7 @@ func (o *SourceManagerCorrelationRule) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SourceManagerCorrelationRule) GetNameOk() (*string, bool) {
+func (o *MultiHostIntegrationsManagementWorkgroup) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
@@ -130,7 +130,7 @@ func (o *SourceManagerCorrelationRule) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *SourceManagerCorrelationRule) HasName() bool {
+func (o *MultiHostIntegrationsManagementWorkgroup) HasName() bool {
 	if o != nil && !IsNil(o.Name) {
 		return true
 	}
@@ -139,11 +139,11 @@ func (o *SourceManagerCorrelationRule) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *SourceManagerCorrelationRule) SetName(v string) {
+func (o *MultiHostIntegrationsManagementWorkgroup) SetName(v string) {
 	o.Name = &v
 }
 
-func (o SourceManagerCorrelationRule) MarshalJSON() ([]byte, error) {
+func (o MultiHostIntegrationsManagementWorkgroup) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -151,7 +151,7 @@ func (o SourceManagerCorrelationRule) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o SourceManagerCorrelationRule) ToMap() (map[string]interface{}, error) {
+func (o MultiHostIntegrationsManagementWorkgroup) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -170,16 +170,16 @@ func (o SourceManagerCorrelationRule) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SourceManagerCorrelationRule) UnmarshalJSON(data []byte) (err error) {
-	varSourceManagerCorrelationRule := _SourceManagerCorrelationRule{}
+func (o *MultiHostIntegrationsManagementWorkgroup) UnmarshalJSON(data []byte) (err error) {
+	varMultiHostIntegrationsManagementWorkgroup := _MultiHostIntegrationsManagementWorkgroup{}
 
-	err = json.Unmarshal(data, &varSourceManagerCorrelationRule)
+	err = json.Unmarshal(data, &varMultiHostIntegrationsManagementWorkgroup)
 
 	if err != nil {
 		return err
 	}
 
-	*o = SourceManagerCorrelationRule(varSourceManagerCorrelationRule)
+	*o = MultiHostIntegrationsManagementWorkgroup(varMultiHostIntegrationsManagementWorkgroup)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -193,38 +193,38 @@ func (o *SourceManagerCorrelationRule) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableSourceManagerCorrelationRule struct {
-	value *SourceManagerCorrelationRule
+type NullableMultiHostIntegrationsManagementWorkgroup struct {
+	value *MultiHostIntegrationsManagementWorkgroup
 	isSet bool
 }
 
-func (v NullableSourceManagerCorrelationRule) Get() *SourceManagerCorrelationRule {
+func (v NullableMultiHostIntegrationsManagementWorkgroup) Get() *MultiHostIntegrationsManagementWorkgroup {
 	return v.value
 }
 
-func (v *NullableSourceManagerCorrelationRule) Set(val *SourceManagerCorrelationRule) {
+func (v *NullableMultiHostIntegrationsManagementWorkgroup) Set(val *MultiHostIntegrationsManagementWorkgroup) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSourceManagerCorrelationRule) IsSet() bool {
+func (v NullableMultiHostIntegrationsManagementWorkgroup) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSourceManagerCorrelationRule) Unset() {
+func (v *NullableMultiHostIntegrationsManagementWorkgroup) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSourceManagerCorrelationRule(val *SourceManagerCorrelationRule) *NullableSourceManagerCorrelationRule {
-	return &NullableSourceManagerCorrelationRule{value: val, isSet: true}
+func NewNullableMultiHostIntegrationsManagementWorkgroup(val *MultiHostIntegrationsManagementWorkgroup) *NullableMultiHostIntegrationsManagementWorkgroup {
+	return &NullableMultiHostIntegrationsManagementWorkgroup{value: val, isSet: true}
 }
 
-func (v NullableSourceManagerCorrelationRule) MarshalJSON() ([]byte, error) {
+func (v NullableMultiHostIntegrationsManagementWorkgroup) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSourceManagerCorrelationRule) UnmarshalJSON(src []byte) error {
+func (v *NullableMultiHostIntegrationsManagementWorkgroup) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

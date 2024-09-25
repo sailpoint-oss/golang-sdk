@@ -14,41 +14,41 @@ import (
 	"encoding/json"
 )
 
-// checks if the SourcePasswordPoliciesInner type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SourcePasswordPoliciesInner{}
+// checks if the MultiHostSourcesManagerCorrelationRule type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MultiHostSourcesManagerCorrelationRule{}
 
-// SourcePasswordPoliciesInner struct for SourcePasswordPoliciesInner
-type SourcePasswordPoliciesInner struct {
+// MultiHostSourcesManagerCorrelationRule Reference to the ManagerCorrelationRule. Only use this rule when a simple filter isn't sufficient.
+type MultiHostSourcesManagerCorrelationRule struct {
 	// Type of object being referenced.
 	Type *string `json:"type,omitempty"`
-	// Policy ID.
+	// Rule ID.
 	Id *string `json:"id,omitempty"`
-	// Policy's human-readable display name.
+	// Rule's human-readable display name.
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _SourcePasswordPoliciesInner SourcePasswordPoliciesInner
+type _MultiHostSourcesManagerCorrelationRule MultiHostSourcesManagerCorrelationRule
 
-// NewSourcePasswordPoliciesInner instantiates a new SourcePasswordPoliciesInner object
+// NewMultiHostSourcesManagerCorrelationRule instantiates a new MultiHostSourcesManagerCorrelationRule object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSourcePasswordPoliciesInner() *SourcePasswordPoliciesInner {
-	this := SourcePasswordPoliciesInner{}
+func NewMultiHostSourcesManagerCorrelationRule() *MultiHostSourcesManagerCorrelationRule {
+	this := MultiHostSourcesManagerCorrelationRule{}
 	return &this
 }
 
-// NewSourcePasswordPoliciesInnerWithDefaults instantiates a new SourcePasswordPoliciesInner object
+// NewMultiHostSourcesManagerCorrelationRuleWithDefaults instantiates a new MultiHostSourcesManagerCorrelationRule object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSourcePasswordPoliciesInnerWithDefaults() *SourcePasswordPoliciesInner {
-	this := SourcePasswordPoliciesInner{}
+func NewMultiHostSourcesManagerCorrelationRuleWithDefaults() *MultiHostSourcesManagerCorrelationRule {
+	this := MultiHostSourcesManagerCorrelationRule{}
 	return &this
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *SourcePasswordPoliciesInner) GetType() string {
+func (o *MultiHostSourcesManagerCorrelationRule) GetType() string {
 	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
@@ -58,7 +58,7 @@ func (o *SourcePasswordPoliciesInner) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SourcePasswordPoliciesInner) GetTypeOk() (*string, bool) {
+func (o *MultiHostSourcesManagerCorrelationRule) GetTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *SourcePasswordPoliciesInner) GetTypeOk() (*string, bool) {
 }
 
 // HasType returns a boolean if a field has been set.
-func (o *SourcePasswordPoliciesInner) HasType() bool {
+func (o *MultiHostSourcesManagerCorrelationRule) HasType() bool {
 	if o != nil && !IsNil(o.Type) {
 		return true
 	}
@@ -75,12 +75,12 @@ func (o *SourcePasswordPoliciesInner) HasType() bool {
 }
 
 // SetType gets a reference to the given string and assigns it to the Type field.
-func (o *SourcePasswordPoliciesInner) SetType(v string) {
+func (o *MultiHostSourcesManagerCorrelationRule) SetType(v string) {
 	o.Type = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *SourcePasswordPoliciesInner) GetId() string {
+func (o *MultiHostSourcesManagerCorrelationRule) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -90,7 +90,7 @@ func (o *SourcePasswordPoliciesInner) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SourcePasswordPoliciesInner) GetIdOk() (*string, bool) {
+func (o *MultiHostSourcesManagerCorrelationRule) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -98,7 +98,7 @@ func (o *SourcePasswordPoliciesInner) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *SourcePasswordPoliciesInner) HasId() bool {
+func (o *MultiHostSourcesManagerCorrelationRule) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -107,12 +107,12 @@ func (o *SourcePasswordPoliciesInner) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *SourcePasswordPoliciesInner) SetId(v string) {
+func (o *MultiHostSourcesManagerCorrelationRule) SetId(v string) {
 	o.Id = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *SourcePasswordPoliciesInner) GetName() string {
+func (o *MultiHostSourcesManagerCorrelationRule) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
@@ -122,7 +122,7 @@ func (o *SourcePasswordPoliciesInner) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SourcePasswordPoliciesInner) GetNameOk() (*string, bool) {
+func (o *MultiHostSourcesManagerCorrelationRule) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
@@ -130,7 +130,7 @@ func (o *SourcePasswordPoliciesInner) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *SourcePasswordPoliciesInner) HasName() bool {
+func (o *MultiHostSourcesManagerCorrelationRule) HasName() bool {
 	if o != nil && !IsNil(o.Name) {
 		return true
 	}
@@ -139,11 +139,11 @@ func (o *SourcePasswordPoliciesInner) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *SourcePasswordPoliciesInner) SetName(v string) {
+func (o *MultiHostSourcesManagerCorrelationRule) SetName(v string) {
 	o.Name = &v
 }
 
-func (o SourcePasswordPoliciesInner) MarshalJSON() ([]byte, error) {
+func (o MultiHostSourcesManagerCorrelationRule) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -151,7 +151,7 @@ func (o SourcePasswordPoliciesInner) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o SourcePasswordPoliciesInner) ToMap() (map[string]interface{}, error) {
+func (o MultiHostSourcesManagerCorrelationRule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -170,16 +170,16 @@ func (o SourcePasswordPoliciesInner) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SourcePasswordPoliciesInner) UnmarshalJSON(data []byte) (err error) {
-	varSourcePasswordPoliciesInner := _SourcePasswordPoliciesInner{}
+func (o *MultiHostSourcesManagerCorrelationRule) UnmarshalJSON(data []byte) (err error) {
+	varMultiHostSourcesManagerCorrelationRule := _MultiHostSourcesManagerCorrelationRule{}
 
-	err = json.Unmarshal(data, &varSourcePasswordPoliciesInner)
+	err = json.Unmarshal(data, &varMultiHostSourcesManagerCorrelationRule)
 
 	if err != nil {
 		return err
 	}
 
-	*o = SourcePasswordPoliciesInner(varSourcePasswordPoliciesInner)
+	*o = MultiHostSourcesManagerCorrelationRule(varMultiHostSourcesManagerCorrelationRule)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -193,38 +193,38 @@ func (o *SourcePasswordPoliciesInner) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableSourcePasswordPoliciesInner struct {
-	value *SourcePasswordPoliciesInner
+type NullableMultiHostSourcesManagerCorrelationRule struct {
+	value *MultiHostSourcesManagerCorrelationRule
 	isSet bool
 }
 
-func (v NullableSourcePasswordPoliciesInner) Get() *SourcePasswordPoliciesInner {
+func (v NullableMultiHostSourcesManagerCorrelationRule) Get() *MultiHostSourcesManagerCorrelationRule {
 	return v.value
 }
 
-func (v *NullableSourcePasswordPoliciesInner) Set(val *SourcePasswordPoliciesInner) {
+func (v *NullableMultiHostSourcesManagerCorrelationRule) Set(val *MultiHostSourcesManagerCorrelationRule) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSourcePasswordPoliciesInner) IsSet() bool {
+func (v NullableMultiHostSourcesManagerCorrelationRule) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSourcePasswordPoliciesInner) Unset() {
+func (v *NullableMultiHostSourcesManagerCorrelationRule) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSourcePasswordPoliciesInner(val *SourcePasswordPoliciesInner) *NullableSourcePasswordPoliciesInner {
-	return &NullableSourcePasswordPoliciesInner{value: val, isSet: true}
+func NewNullableMultiHostSourcesManagerCorrelationRule(val *MultiHostSourcesManagerCorrelationRule) *NullableMultiHostSourcesManagerCorrelationRule {
+	return &NullableMultiHostSourcesManagerCorrelationRule{value: val, isSet: true}
 }
 
-func (v NullableSourcePasswordPoliciesInner) MarshalJSON() ([]byte, error) {
+func (v NullableMultiHostSourcesManagerCorrelationRule) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSourcePasswordPoliciesInner) UnmarshalJSON(src []byte) error {
+func (v *NullableMultiHostSourcesManagerCorrelationRule) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

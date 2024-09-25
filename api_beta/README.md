@@ -340,6 +340,19 @@ Class | Method | HTTP request | Description
 *ManagedClustersAPI* | [**GetManagedCluster**](docs/ManagedClustersAPI.md#getmanagedcluster) | **Get** /managed-clusters/{id} | Get a specified ManagedCluster.
 *ManagedClustersAPI* | [**GetManagedClusters**](docs/ManagedClustersAPI.md#getmanagedclusters) | **Get** /managed-clusters | Retrieve all Managed Clusters.
 *ManagedClustersAPI* | [**PutClientLogConfiguration**](docs/ManagedClustersAPI.md#putclientlogconfiguration) | **Put** /managed-clusters/{id}/log-config | Update managed cluster&#39;s log configuration
+*MultiHostIntegrationAPI* | [**CreateMultiHostIntegration**](docs/MultiHostIntegrationAPI.md#createmultihostintegration) | **Post** /multihosts | Create Multi-Host Integration
+*MultiHostIntegrationAPI* | [**CreateSourcesWithinMultiHost**](docs/MultiHostIntegrationAPI.md#createsourceswithinmultihost) | **Post** /multihosts/{id} | Create Sources Within Multi-Host Integration
+*MultiHostIntegrationAPI* | [**DeleteMultiHost**](docs/MultiHostIntegrationAPI.md#deletemultihost) | **Delete** /multihosts/{id} | Delete Multi-Host Integration
+*MultiHostIntegrationAPI* | [**GetAcctAggregationGroups**](docs/MultiHostIntegrationAPI.md#getacctaggregationgroups) | **Get** /multihosts/{multihostId}/acctAggregationGroups | Get Account Aggregation Groups Within Multi-Host Integration ID
+*MultiHostIntegrationAPI* | [**GetEntitlementAggregationGroups**](docs/MultiHostIntegrationAPI.md#getentitlementaggregationgroups) | **Get** /multihosts/{multiHostId}/entitlementAggregationGroups | Get Entitlement Aggregation Groups Within Multi-Host Integration ID
+*MultiHostIntegrationAPI* | [**GetMultiHostIntegrations**](docs/MultiHostIntegrationAPI.md#getmultihostintegrations) | **Get** /multihosts/{id} | Get Multi-Host Integration By ID
+*MultiHostIntegrationAPI* | [**GetMultiHostIntegrationsList**](docs/MultiHostIntegrationAPI.md#getmultihostintegrationslist) | **Get** /multihosts | List All Existing Multi-Host Integrations
+*MultiHostIntegrationAPI* | [**GetMultihostIntegrationTypes**](docs/MultiHostIntegrationAPI.md#getmultihostintegrationtypes) | **Get** /multihosts/types | List Multi-Host Integration Types
+*MultiHostIntegrationAPI* | [**GetSourcesWithinMultiHost**](docs/MultiHostIntegrationAPI.md#getsourceswithinmultihost) | **Get** /multihosts/{id}/sources | List Sources Within Multi-Host Integration
+*MultiHostIntegrationAPI* | [**GetSourcesWithinMultiHost_0**](docs/MultiHostIntegrationAPI.md#getsourceswithinmultihost_0) | **Get** /multihosts/{multiHostId}/sources/errors | List Multi-Host Integration Sources Creation Errors
+*MultiHostIntegrationAPI* | [**TestConnectionMultiHostSources**](docs/MultiHostIntegrationAPI.md#testconnectionmultihostsources) | **Post** /multihosts/{multihost_id}/sources/testConnection | Test Configuration For Multi-Host Integration
+*MultiHostIntegrationAPI* | [**TestSourceConnectionMultihost**](docs/MultiHostIntegrationAPI.md#testsourceconnectionmultihost) | **Get** /multihosts/{multihost_id}/sources/{sourceId}/testConnection | Test Configuration For Multi-Host Integration&#39;s Single Source
+*MultiHostIntegrationAPI* | [**UpdateMultiHostSources**](docs/MultiHostIntegrationAPI.md#updatemultihostsources) | **Patch** /multihosts/{id} | Update Multi-Host Integration
 *NonEmployeeLifecycleManagementAPI* | [**ApproveNonEmployeeRequest**](docs/NonEmployeeLifecycleManagementAPI.md#approvenonemployeerequest) | **Post** /non-employee-approvals/{id}/approve | Approve a Non-Employee Request
 *NonEmployeeLifecycleManagementAPI* | [**CreateNonEmployeeRecord**](docs/NonEmployeeLifecycleManagementAPI.md#createnonemployeerecord) | **Post** /non-employee-records | Create Non-Employee Record
 *NonEmployeeLifecycleManagementAPI* | [**CreateNonEmployeeRequest**](docs/NonEmployeeLifecycleManagementAPI.md#createnonemployeerequest) | **Post** /non-employee-requests | Create Non-Employee Request
@@ -1078,6 +1091,24 @@ Class | Method | HTTP request | Description
  - [MfaConfigTestResponse](docs/MfaConfigTestResponse.md)
  - [MfaDuoConfig](docs/MfaDuoConfig.md)
  - [MfaOktaConfig](docs/MfaOktaConfig.md)
+ - [MultiHostIntegrationTemplateType](docs/MultiHostIntegrationTemplateType.md)
+ - [MultiHostIntegrations](docs/MultiHostIntegrations.md)
+ - [MultiHostIntegrationsAggScheduleUpdate](docs/MultiHostIntegrationsAggScheduleUpdate.md)
+ - [MultiHostIntegrationsCluster](docs/MultiHostIntegrationsCluster.md)
+ - [MultiHostIntegrationsConnectorAttributes](docs/MultiHostIntegrationsConnectorAttributes.md)
+ - [MultiHostIntegrationsConnectorAttributesConnectorFileUploadHistory](docs/MultiHostIntegrationsConnectorAttributesConnectorFileUploadHistory.md)
+ - [MultiHostIntegrationsConnectorAttributesMultiHostAttributes](docs/MultiHostIntegrationsConnectorAttributesMultiHostAttributes.md)
+ - [MultiHostIntegrationsCreate](docs/MultiHostIntegrationsCreate.md)
+ - [MultiHostIntegrationsCreateSources](docs/MultiHostIntegrationsCreateSources.md)
+ - [MultiHostIntegrationsManagementWorkgroup](docs/MultiHostIntegrationsManagementWorkgroup.md)
+ - [MultiHostIntegrationsOwner](docs/MultiHostIntegrationsOwner.md)
+ - [MultiHostSources](docs/MultiHostSources.md)
+ - [MultiHostSourcesAccountCorrelationConfig](docs/MultiHostSourcesAccountCorrelationConfig.md)
+ - [MultiHostSourcesAccountCorrelationRule](docs/MultiHostSourcesAccountCorrelationRule.md)
+ - [MultiHostSourcesBeforeProvisioningRule](docs/MultiHostSourcesBeforeProvisioningRule.md)
+ - [MultiHostSourcesManagerCorrelationRule](docs/MultiHostSourcesManagerCorrelationRule.md)
+ - [MultiHostSourcesPasswordPoliciesInner](docs/MultiHostSourcesPasswordPoliciesInner.md)
+ - [MultiHostSourcesSchemasInner](docs/MultiHostSourcesSchemasInner.md)
  - [MultiPolicyRequest](docs/MultiPolicyRequest.md)
  - [NativeChangeDetectionConfig](docs/NativeChangeDetectionConfig.md)
  - [NonEmployeeApprovalDecision](docs/NonEmployeeApprovalDecision.md)
@@ -1326,8 +1357,6 @@ Class | Method | HTTP request | Description
  - [SodViolationContextConflictingAccessCriteriaLeftCriteria](docs/SodViolationContextConflictingAccessCriteriaLeftCriteria.md)
  - [Source](docs/Source.md)
  - [Source1](docs/Source1.md)
- - [SourceAccountCorrelationConfig](docs/SourceAccountCorrelationConfig.md)
- - [SourceAccountCorrelationRule](docs/SourceAccountCorrelationRule.md)
  - [SourceAccountCreated](docs/SourceAccountCreated.md)
  - [SourceAccountDeleted](docs/SourceAccountDeleted.md)
  - [SourceAccountUpdated](docs/SourceAccountUpdated.md)
@@ -1337,20 +1366,14 @@ Class | Method | HTTP request | Description
  - [SourceAppCreateDto](docs/SourceAppCreateDto.md)
  - [SourceAppCreateDtoAccountSource](docs/SourceAppCreateDtoAccountSource.md)
  - [SourceAppPatchDto](docs/SourceAppPatchDto.md)
- - [SourceBeforeProvisioningRule](docs/SourceBeforeProvisioningRule.md)
- - [SourceCluster](docs/SourceCluster.md)
  - [SourceClusterDto](docs/SourceClusterDto.md)
  - [SourceCode](docs/SourceCode.md)
  - [SourceCreated](docs/SourceCreated.md)
  - [SourceCreatedActor](docs/SourceCreatedActor.md)
+ - [SourceCreationErrors](docs/SourceCreationErrors.md)
  - [SourceDeleted](docs/SourceDeleted.md)
  - [SourceDeletedActor](docs/SourceDeletedActor.md)
  - [SourceEntitlementRequestConfig](docs/SourceEntitlementRequestConfig.md)
- - [SourceManagementWorkgroup](docs/SourceManagementWorkgroup.md)
- - [SourceManagerCorrelationRule](docs/SourceManagerCorrelationRule.md)
- - [SourceOwner](docs/SourceOwner.md)
- - [SourcePasswordPoliciesInner](docs/SourcePasswordPoliciesInner.md)
- - [SourceSchemasInner](docs/SourceSchemasInner.md)
  - [SourceSyncJob](docs/SourceSyncJob.md)
  - [SourceSyncPayload](docs/SourceSyncPayload.md)
  - [SourceUpdated](docs/SourceUpdated.md)
@@ -1403,6 +1426,7 @@ Class | Method | HTTP request | Description
  - [TestExternalExecuteWorkflow200Response](docs/TestExternalExecuteWorkflow200Response.md)
  - [TestExternalExecuteWorkflowRequest](docs/TestExternalExecuteWorkflowRequest.md)
  - [TestInvocation](docs/TestInvocation.md)
+ - [TestSourceConnectionMultihost200Response](docs/TestSourceConnectionMultihost200Response.md)
  - [TestWorkflow200Response](docs/TestWorkflow200Response.md)
  - [TestWorkflowRequest](docs/TestWorkflowRequest.md)
  - [TokenAuthRequest](docs/TokenAuthRequest.md)
@@ -1418,6 +1442,7 @@ Class | Method | HTTP request | Description
  - [TriggerExampleOutput](docs/TriggerExampleOutput.md)
  - [TriggerType](docs/TriggerType.md)
  - [UpdateAccessProfilesInBulk412Response](docs/UpdateAccessProfilesInBulk412Response.md)
+ - [UpdateMultiHostSourcesRequest](docs/UpdateMultiHostSourcesRequest.md)
  - [UsageType](docs/UsageType.md)
  - [UserApp](docs/UserApp.md)
  - [UserAppAccount](docs/UserAppAccount.md)

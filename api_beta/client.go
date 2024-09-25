@@ -128,6 +128,8 @@ type APIClient struct {
 
 	ManagedClustersAPI *ManagedClustersAPIService
 
+	MultiHostIntegrationAPI *MultiHostIntegrationAPIService
+
 	NonEmployeeLifecycleManagementAPI *NonEmployeeLifecycleManagementAPIService
 
 	NotificationsAPI *NotificationsAPIService
@@ -251,6 +253,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.MFAControllerAPI = (*MFAControllerAPIService)(&c.common)
 	c.ManagedClientsAPI = (*ManagedClientsAPIService)(&c.common)
 	c.ManagedClustersAPI = (*ManagedClustersAPIService)(&c.common)
+	c.MultiHostIntegrationAPI = (*MultiHostIntegrationAPIService)(&c.common)
 	c.NonEmployeeLifecycleManagementAPI = (*NonEmployeeLifecycleManagementAPIService)(&c.common)
 	c.NotificationsAPI = (*NotificationsAPIService)(&c.common)
 	c.OAuthClientsAPI = (*OAuthClientsAPIService)(&c.common)

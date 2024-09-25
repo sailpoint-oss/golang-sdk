@@ -14,41 +14,41 @@ import (
 	"encoding/json"
 )
 
-// checks if the SourceManagementWorkgroup type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SourceManagementWorkgroup{}
+// checks if the MultiHostSourcesPasswordPoliciesInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MultiHostSourcesPasswordPoliciesInner{}
 
-// SourceManagementWorkgroup Reference to management workgroup for the source.
-type SourceManagementWorkgroup struct {
+// MultiHostSourcesPasswordPoliciesInner struct for MultiHostSourcesPasswordPoliciesInner
+type MultiHostSourcesPasswordPoliciesInner struct {
 	// Type of object being referenced.
 	Type *string `json:"type,omitempty"`
-	// Management workgroup ID.
+	// Policy ID.
 	Id *string `json:"id,omitempty"`
-	// Management workgroup's human-readable display name.
+	// Policy's human-readable display name.
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _SourceManagementWorkgroup SourceManagementWorkgroup
+type _MultiHostSourcesPasswordPoliciesInner MultiHostSourcesPasswordPoliciesInner
 
-// NewSourceManagementWorkgroup instantiates a new SourceManagementWorkgroup object
+// NewMultiHostSourcesPasswordPoliciesInner instantiates a new MultiHostSourcesPasswordPoliciesInner object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSourceManagementWorkgroup() *SourceManagementWorkgroup {
-	this := SourceManagementWorkgroup{}
+func NewMultiHostSourcesPasswordPoliciesInner() *MultiHostSourcesPasswordPoliciesInner {
+	this := MultiHostSourcesPasswordPoliciesInner{}
 	return &this
 }
 
-// NewSourceManagementWorkgroupWithDefaults instantiates a new SourceManagementWorkgroup object
+// NewMultiHostSourcesPasswordPoliciesInnerWithDefaults instantiates a new MultiHostSourcesPasswordPoliciesInner object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSourceManagementWorkgroupWithDefaults() *SourceManagementWorkgroup {
-	this := SourceManagementWorkgroup{}
+func NewMultiHostSourcesPasswordPoliciesInnerWithDefaults() *MultiHostSourcesPasswordPoliciesInner {
+	this := MultiHostSourcesPasswordPoliciesInner{}
 	return &this
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *SourceManagementWorkgroup) GetType() string {
+func (o *MultiHostSourcesPasswordPoliciesInner) GetType() string {
 	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
@@ -58,7 +58,7 @@ func (o *SourceManagementWorkgroup) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SourceManagementWorkgroup) GetTypeOk() (*string, bool) {
+func (o *MultiHostSourcesPasswordPoliciesInner) GetTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *SourceManagementWorkgroup) GetTypeOk() (*string, bool) {
 }
 
 // HasType returns a boolean if a field has been set.
-func (o *SourceManagementWorkgroup) HasType() bool {
+func (o *MultiHostSourcesPasswordPoliciesInner) HasType() bool {
 	if o != nil && !IsNil(o.Type) {
 		return true
 	}
@@ -75,12 +75,12 @@ func (o *SourceManagementWorkgroup) HasType() bool {
 }
 
 // SetType gets a reference to the given string and assigns it to the Type field.
-func (o *SourceManagementWorkgroup) SetType(v string) {
+func (o *MultiHostSourcesPasswordPoliciesInner) SetType(v string) {
 	o.Type = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *SourceManagementWorkgroup) GetId() string {
+func (o *MultiHostSourcesPasswordPoliciesInner) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -90,7 +90,7 @@ func (o *SourceManagementWorkgroup) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SourceManagementWorkgroup) GetIdOk() (*string, bool) {
+func (o *MultiHostSourcesPasswordPoliciesInner) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -98,7 +98,7 @@ func (o *SourceManagementWorkgroup) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *SourceManagementWorkgroup) HasId() bool {
+func (o *MultiHostSourcesPasswordPoliciesInner) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -107,12 +107,12 @@ func (o *SourceManagementWorkgroup) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *SourceManagementWorkgroup) SetId(v string) {
+func (o *MultiHostSourcesPasswordPoliciesInner) SetId(v string) {
 	o.Id = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *SourceManagementWorkgroup) GetName() string {
+func (o *MultiHostSourcesPasswordPoliciesInner) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
@@ -122,7 +122,7 @@ func (o *SourceManagementWorkgroup) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SourceManagementWorkgroup) GetNameOk() (*string, bool) {
+func (o *MultiHostSourcesPasswordPoliciesInner) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
@@ -130,7 +130,7 @@ func (o *SourceManagementWorkgroup) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *SourceManagementWorkgroup) HasName() bool {
+func (o *MultiHostSourcesPasswordPoliciesInner) HasName() bool {
 	if o != nil && !IsNil(o.Name) {
 		return true
 	}
@@ -139,11 +139,11 @@ func (o *SourceManagementWorkgroup) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *SourceManagementWorkgroup) SetName(v string) {
+func (o *MultiHostSourcesPasswordPoliciesInner) SetName(v string) {
 	o.Name = &v
 }
 
-func (o SourceManagementWorkgroup) MarshalJSON() ([]byte, error) {
+func (o MultiHostSourcesPasswordPoliciesInner) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -151,7 +151,7 @@ func (o SourceManagementWorkgroup) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o SourceManagementWorkgroup) ToMap() (map[string]interface{}, error) {
+func (o MultiHostSourcesPasswordPoliciesInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -170,16 +170,16 @@ func (o SourceManagementWorkgroup) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SourceManagementWorkgroup) UnmarshalJSON(data []byte) (err error) {
-	varSourceManagementWorkgroup := _SourceManagementWorkgroup{}
+func (o *MultiHostSourcesPasswordPoliciesInner) UnmarshalJSON(data []byte) (err error) {
+	varMultiHostSourcesPasswordPoliciesInner := _MultiHostSourcesPasswordPoliciesInner{}
 
-	err = json.Unmarshal(data, &varSourceManagementWorkgroup)
+	err = json.Unmarshal(data, &varMultiHostSourcesPasswordPoliciesInner)
 
 	if err != nil {
 		return err
 	}
 
-	*o = SourceManagementWorkgroup(varSourceManagementWorkgroup)
+	*o = MultiHostSourcesPasswordPoliciesInner(varMultiHostSourcesPasswordPoliciesInner)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -193,38 +193,38 @@ func (o *SourceManagementWorkgroup) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableSourceManagementWorkgroup struct {
-	value *SourceManagementWorkgroup
+type NullableMultiHostSourcesPasswordPoliciesInner struct {
+	value *MultiHostSourcesPasswordPoliciesInner
 	isSet bool
 }
 
-func (v NullableSourceManagementWorkgroup) Get() *SourceManagementWorkgroup {
+func (v NullableMultiHostSourcesPasswordPoliciesInner) Get() *MultiHostSourcesPasswordPoliciesInner {
 	return v.value
 }
 
-func (v *NullableSourceManagementWorkgroup) Set(val *SourceManagementWorkgroup) {
+func (v *NullableMultiHostSourcesPasswordPoliciesInner) Set(val *MultiHostSourcesPasswordPoliciesInner) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSourceManagementWorkgroup) IsSet() bool {
+func (v NullableMultiHostSourcesPasswordPoliciesInner) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSourceManagementWorkgroup) Unset() {
+func (v *NullableMultiHostSourcesPasswordPoliciesInner) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSourceManagementWorkgroup(val *SourceManagementWorkgroup) *NullableSourceManagementWorkgroup {
-	return &NullableSourceManagementWorkgroup{value: val, isSet: true}
+func NewNullableMultiHostSourcesPasswordPoliciesInner(val *MultiHostSourcesPasswordPoliciesInner) *NullableMultiHostSourcesPasswordPoliciesInner {
+	return &NullableMultiHostSourcesPasswordPoliciesInner{value: val, isSet: true}
 }
 
-func (v NullableSourceManagementWorkgroup) MarshalJSON() ([]byte, error) {
+func (v NullableMultiHostSourcesPasswordPoliciesInner) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSourceManagementWorkgroup) UnmarshalJSON(src []byte) error {
+func (v *NullableMultiHostSourcesPasswordPoliciesInner) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

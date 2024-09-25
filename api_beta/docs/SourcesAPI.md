@@ -143,7 +143,7 @@ import (
 )
 
 func main() {
-	source := *openapiclient.NewSource("My Source", *openapiclient.NewSourceOwner(), "active-directory") // Source | 
+	source := *openapiclient.NewSource("My Source", *openapiclient.NewMultiHostIntegrationsOwner(), "active-directory") // Source | 
 	provisionAsCsv := false // bool | If this parameter is `true`, it configures the source as a Delimited File (CSV) source. Setting this to `true` will automatically set the `type` of the source to `DelimitedFile`.  You must use this query parameter to create a Delimited File source as you would in the UI.  If you don't set this query parameter and you attempt to set the `type` attribute directly, the request won't correctly generate the source.   (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -2342,7 +2342,7 @@ import (
 
 func main() {
 	id := "2c9180835d191a86015d28455b4a2329" // string | Source ID.
-	source := *openapiclient.NewSource("My Source", *openapiclient.NewSourceOwner(), "active-directory") // Source | 
+	source := *openapiclient.NewSource("My Source", *openapiclient.NewMultiHostIntegrationsOwner(), "active-directory") // Source | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
