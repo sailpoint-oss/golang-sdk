@@ -27,7 +27,8 @@ servers:
       default: sailpoint.api.identitynow.com
       description: This is the api url of your tenant
 security:
-- UserContextAuth: []
+- userAuth:
+  - sp:scopes:all
 tags:
 - description: |
     Use this API to create and manage metadata attributes for your Access Model.
@@ -1462,7 +1463,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:access-profile:read
       summary: List Access Profiles
       tags:
@@ -1543,7 +1544,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:access-profile:manage
       summary: Create Access Profile
       tags:
@@ -1639,7 +1640,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:access-profile:manage
       summary: Delete the specified Access Profile
       tags:
@@ -1722,7 +1723,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:access-profile:read
       summary: Get an Access Profile
       tags:
@@ -1890,7 +1891,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:access-profile:manage
       summary: Patch a specified Access Profile
       tags:
@@ -2010,7 +2011,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:access-profile:manage
       summary: Delete Access Profile(s)
       tags:
@@ -2161,7 +2162,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:access-profile:read
       summary: List Access Profile's Entitlements
       tags:
@@ -2280,7 +2281,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:access-request:manage
       summary: Submit Access Request
       tags:
@@ -2383,7 +2384,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:access-request:cancel
       summary: Cancel Access Request
       tags:
@@ -2456,7 +2457,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:access-request-config:read
       summary: Get Access Request Configuration
       tags:
@@ -2536,7 +2537,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:access-request-config:update
       summary: Update Access Request Configuration
       tags:
@@ -2702,7 +2703,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:access-request-status:read
       summary: Access Request Status
       tags:
@@ -3418,7 +3419,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:access-request-approvals-summary:read
       summary: Get Access Requests Approvals Number
       tags:
@@ -3584,7 +3585,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:accounts:read
       summary: Accounts List
       tags:
@@ -3675,7 +3676,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:accounts:manage
       summary: Create Account
       tags:
@@ -3783,7 +3784,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:accounts:manage
       summary: Delete Account
       tags:
@@ -3883,7 +3884,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:accounts:read
       summary: Account Details
       tags:
@@ -4032,7 +4033,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:accounts:manage
       summary: Update Account
       tags:
@@ -4140,7 +4141,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:accounts:manage
       summary: Update Account
       tags:
@@ -4281,7 +4282,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:accounts:read
       summary: Account Entitlements
       tags:
@@ -4383,7 +4384,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:accounts-state:manage
       summary: Reload Account
       tags:
@@ -4490,7 +4491,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:accounts-state:manage
       summary: Enable Account
       tags:
@@ -4597,7 +4598,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:accounts-state:manage
       summary: Disable Account
       tags:
@@ -4706,7 +4707,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:accounts-state:manage
         - idn:accounts-provisioning:manage
       summary: Unlock Account
@@ -5059,7 +5060,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:auth-org:read
       summary: Get security network configuration.
       tags:
@@ -5176,7 +5177,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:auth-org:manage
       summary: Update security network configuration.
       tags:
@@ -5279,7 +5280,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:auth-org:manage
       summary: Create security network configuration.
       tags:
@@ -5378,7 +5379,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:auth-user:read
       summary: Auth User Details
       tags:
@@ -5494,7 +5495,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:auth-user:update
       summary: Auth User Update
       tags:
@@ -5572,7 +5573,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:branding:read
       summary: List of branding items
       tags:
@@ -5652,7 +5653,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:branding:manage
       summary: Create a branding item
       tags:
@@ -5750,7 +5751,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:branding:manage
       summary: Delete a branding item
       tags:
@@ -5850,7 +5851,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:branding:read
       summary: Get a branding item
       tags:
@@ -5956,7 +5957,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:branding:manage
       summary: Update a branding item
       tags:
@@ -6117,7 +6118,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:campaign:read
         - idn:campaign:manage
         - idn:campaign-report:read
@@ -6220,7 +6221,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:campaign:manage
       summary: Create a campaign
       tags:
@@ -6342,7 +6343,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:campaign:read
         - idn:campaign:manage
       summary: Get Campaign
@@ -6483,7 +6484,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:campaign:read
         - idn:campaign:manage
       summary: Update a Campaign
@@ -6600,7 +6601,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:campaign:manage
       summary: Reassign Certifications
       tags:
@@ -6714,7 +6715,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:campaign:manage
       summary: Activate a Campaign
       tags:
@@ -6834,7 +6835,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:campaign:manage
       summary: Complete a Campaign
       tags:
@@ -6936,7 +6937,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:campaign:manage
       summary: Delete Campaigns
       tags:
@@ -7039,7 +7040,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:campaign-report:manage
       summary: Run Campaign Remediation Scan
       tags:
@@ -7143,7 +7144,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:campaign-report:read
         - idn:campaign-report:manage
       summary: Get Campaign Reports
@@ -7253,7 +7254,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:campaign-report:manage
       summary: Run Campaign Report
       tags:
@@ -7329,7 +7330,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:campaign:read
         - idn:campaign:manage
       summary: Get Campaign Reports Configuration
@@ -7411,7 +7412,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:campaign:manage
       summary: Set Campaign Reports Configuration
       tags:
@@ -7559,7 +7560,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:campaign-filter-list:read
       summary: List Campaign Filters
       tags:
@@ -7638,7 +7639,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:campaign-filter:create
       summary: Create Campaign Filter
       tags:
@@ -7740,7 +7741,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:campaign-filter:read
       summary: Get Campaign Filter by ID
       tags:
@@ -7827,7 +7828,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:campaign-filter:update
       summary: Updates a Campaign Filter
       tags:
@@ -7929,7 +7930,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:campaign-filter:delete
       summary: Deletes Campaign Filters
       tags:
@@ -8072,7 +8073,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:campaign-template:read
         - idn:campaign-template:manage
       summary: List Campaign Templates
@@ -8172,7 +8173,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:campaign-template:manage
       summary: Create a Campaign Template
       tags:
@@ -8271,7 +8272,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:campaign-template:manage
       summary: Delete a Campaign Template
       tags:
@@ -8381,7 +8382,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:campaign-template:read
         - idn:campaign-template:manage
       summary: Get a Campaign Template
@@ -8516,7 +8517,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:campaign-template:manage
       summary: Update a Campaign Template
       tags:
@@ -8615,7 +8616,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - userAuth: []
       summary: Delete Campaign Template Schedule
       tags:
       - Certification Campaigns
@@ -8717,7 +8718,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - userAuth: []
       summary: Get Campaign Template Schedule
       tags:
       - Certification Campaigns
@@ -8887,7 +8888,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - userAuth: []
       summary: Set Campaign Template Schedule
       tags:
       - Certification Campaigns
@@ -8981,7 +8982,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:campaign-template:manage
       summary: Generate a Campaign from Template
       tags:
@@ -10550,7 +10551,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:certification:read
       summary: Permissions for Entitlement Certification Item
       tags:
@@ -10716,7 +10717,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:certification:read
       summary: List of Reviewers for certification
       tags:
@@ -10827,7 +10828,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:campaign:manage
       summary: Reassign Certifications Asynchronously
       tags:
@@ -10928,7 +10929,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:certification:read
       summary: Certification Task by ID
       tags:
@@ -11084,7 +11085,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:certification:read
       summary: List of Pending Certification Tasks
       tags:
@@ -11207,7 +11208,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:config-object-mapping:read
         - sp:config-object-mapping:manage
       summary: Gets list of object mappings
@@ -11332,7 +11333,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:config-object-mapping:manage
       summary: Creates an object mapping
       tags:
@@ -11439,7 +11440,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:config-object-mapping:manage
       summary: Deletes an object mapping
       tags:
@@ -11579,7 +11580,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:config-object-mapping:manage
       summary: Bulk creates object mappings
       tags:
@@ -11717,7 +11718,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:config-object-mapping:manage
       summary: Bulk updates object mappings
       tags:
@@ -11840,7 +11841,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:config-backup:read
         - sp:config-backup:manage
       summary: List Uploaded Configurations
@@ -12011,7 +12012,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:config-backup:manage
       summary: Upload a Configuration
       tags:
@@ -12112,7 +12113,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:config-backup:manage
       summary: Delete an Uploaded Configuration
       tags:
@@ -12227,7 +12228,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:config-backup:read
         - sp:config-backup:manage
       summary: Get an Uploaded Configuration
@@ -12340,7 +12341,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:config-backup:read
         - sp:config-backup:manage
       summary: List Backups
@@ -12442,7 +12443,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:config-backup:manage
       summary: Delete a Backup
       tags:
@@ -12553,7 +12554,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:config-draft:read
         - sp:config-draft:manage
       summary: List Drafts
@@ -12655,7 +12656,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:config-draft:manage
       summary: Delete a draft
       tags:
@@ -12755,7 +12756,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:config-deploy:read
         - sp:config-deploy:manage
       summary: List Deploys
@@ -12847,7 +12848,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:config-deploy:manage
       summary: Create a Deploy
       tags:
@@ -12959,7 +12960,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:config-deploy:read
         - sp:config-deploy:manage
       summary: Get a Deploy
@@ -13061,7 +13062,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:connector-config:delete
       summary: Deletes connector by script name
       tags:
@@ -13191,7 +13192,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:connector-config:read
       summary: Gets connector by script name
       tags:
@@ -13304,7 +13305,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:connector-config:update
       summary: Update connector by script name
       tags:
@@ -13486,7 +13487,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:connector-source-config:read
       summary: Gets connector list
       tags:
@@ -13584,7 +13585,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:connector-config:create
       summary: Create custom connector
       tags:
@@ -13688,7 +13689,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:connector-config:read
       tags:
       - Connectors
@@ -13796,7 +13797,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:connector-config:update
       tags:
       - Connectors
@@ -13927,7 +13928,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:connector-config:read
       tags:
       - Connectors
@@ -14063,7 +14064,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:connector-config:update
       tags:
       - Connectors
@@ -14166,7 +14167,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:connector-config:read
       tags:
       - Connectors
@@ -14274,7 +14275,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:connector-config:update
       tags:
       - Connectors
@@ -14377,7 +14378,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:connector-config:read
       tags:
       - Connectors
@@ -14485,7 +14486,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:connector-config:update
       tags:
       - Connectors
@@ -14591,7 +14592,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity-lifecycle-state:update
       summary: Set Lifecycle State
       tags:
@@ -14725,7 +14726,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity-profile-lifecycle-state:read
       summary: Lists LifecycleStates
       tags:
@@ -14814,7 +14815,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity-profile-lifecycle-state:manage
       summary: Create Lifecycle State
       tags:
@@ -14921,7 +14922,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity-profile-lifecycle-state:manage
       summary: Delete Lifecycle State
       tags:
@@ -15028,7 +15029,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity-profile-lifecycle-state:read
       summary: Get Lifecycle State
       tags:
@@ -15178,7 +15179,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity-profile-lifecycle-state:manage
       summary: Update Lifecycle State
       tags:
@@ -15321,7 +15322,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity-profile:read
       summary: Identity Profiles List
       tags:
@@ -15402,7 +15403,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity-profile:manage
       summary: Create an Identity Profile
       tags:
@@ -15490,7 +15491,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity-profile:delete
       summary: Delete Identity Profiles
       tags:
@@ -15632,7 +15633,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity-profile:read
       summary: Export Identity Profiles
       tags:
@@ -15714,7 +15715,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity-profile:manage
       summary: Import Identity Profiles
       tags:
@@ -15822,7 +15823,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity-profile:delete
       summary: Delete an Identity Profile
       tags:
@@ -15924,7 +15925,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity-profile:read
       summary: Get single Identity Profile
       tags:
@@ -16059,7 +16060,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity-profile:manage
       summary: Update the Identity Profile
       tags:
@@ -16161,7 +16162,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity-profile:manage
       summary: Get default Identity Attribute Config
       tags:
@@ -16280,7 +16281,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity-profile:refresh
       summary: Process identities under profile
       tags:
@@ -16412,7 +16413,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:remote-client:read
         - idn:remote-client:manage
       summary: Get Managed Clients
@@ -16493,7 +16494,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:remote-client:manage
       summary: Create a new Managed Client
       tags:
@@ -16571,7 +16572,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:remote-client:manage
       summary: Delete a Managed Client
       tags:
@@ -16669,7 +16670,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:remote-client:read
         - idn:remote-client:manage
         - idn:managed-client-status:read
@@ -16779,7 +16780,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:remote-client:manage
       summary: Update a Managed Client
       tags:
@@ -16885,7 +16886,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:managed-client-status:read
       summary: Get Managed Client Status.
       tags:
@@ -17011,7 +17012,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:remote-client:read
         - idn:remote-client:manage
       summary: Retrieve all Managed Clusters.
@@ -17092,7 +17093,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:remote-client:manage
       summary: Create a new Managed Cluster
       tags:
@@ -17178,7 +17179,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:remote-client:manage
       summary: Delete a Managed Cluster
       tags:
@@ -17278,7 +17279,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:remote-client:read
         - idn:remote-client:manage
       summary: Get a specified Managed Cluster.
@@ -17386,7 +17387,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:remote-client:manage
       summary: Update a Managed Cluster
       tags:
@@ -17490,7 +17491,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:remote-client:read
         - idn:remote-client:manage
       summary: Get managed cluster's log configuration
@@ -17597,7 +17598,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:remote-client:manage
       summary: Update managed cluster's log configuration
       tags:
@@ -17677,7 +17678,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:mfa-configuration:read
         - idn:mfa-configuration:manage
       summary: Configuration of Okta MFA method
@@ -17769,7 +17770,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:mfa-configuration:manage
       summary: Set Okta MFA configuration
       tags:
@@ -17852,7 +17853,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:mfa-configuration:read
         - idn:mfa-configuration:manage
       summary: Configuration of Duo MFA method
@@ -17950,7 +17951,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:mfa-configuration:manage
       summary: Set Duo MFA configuration
       tags:
@@ -18048,7 +18049,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:mfa-kba:read
       summary: Configuration of KBA MFA method
       tags:
@@ -18151,7 +18152,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:mfa-kba:authenticate
       summary: Set MFA KBA configuration
       tags:
@@ -18238,7 +18239,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:mfa-configuration:read
         - idn:mfa-configuration:manage
       summary: MFA method's test configuration
@@ -18379,7 +18380,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - userAuth: []
       summary: List Non-Employee Records
       tags:
       - Non-Employee Lifecycle Management
@@ -18731,7 +18732,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - userAuth: []
       summary: Patch Non-Employee Record
       tags:
       - Non-Employee Lifecycle Management
@@ -18842,7 +18843,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - userAuth: []
       summary: Update Non-Employee Record
       tags:
       - Non-Employee Lifecycle Management
@@ -19064,7 +19065,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - userAuth: []
       summary: List Non-Employee Requests
       tags:
       - Non-Employee Lifecycle Management
@@ -19164,7 +19165,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - userAuth: []
       summary: Create Non-Employee Request
       tags:
       - Non-Employee Lifecycle Management
@@ -19361,7 +19362,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - userAuth: []
       summary: Get a Non-Employee Request
       tags:
       - Non-Employee Lifecycle Management
@@ -19449,7 +19450,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - userAuth: []
       summary: Get Summary of Non-Employee Requests
       tags:
       - Non-Employee Lifecycle Management
@@ -19595,7 +19596,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - userAuth: []
       summary: List Non-Employee Sources
       tags:
       - Non-Employee Lifecycle Management
@@ -19831,7 +19832,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - userAuth: []
       summary: Get a Non-Employee Source
       tags:
       - Non-Employee Lifecycle Management
@@ -20136,7 +20137,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:nelm:manage
       summary: "Imports, or Updates, Non-Employee Records"
       tags:
@@ -20463,7 +20464,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - userAuth: []
       summary: Get List of Non-Employee Approval Requests
       tags:
       - Non-Employee Lifecycle Management
@@ -20555,7 +20556,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - userAuth: []
       summary: Get a non-employee approval item detail
       tags:
       - Non-Employee Lifecycle Management
@@ -20642,7 +20643,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - userAuth: []
       summary: Approve a Non-Employee Request
       tags:
       - Non-Employee Lifecycle Management
@@ -20729,7 +20730,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - userAuth: []
       summary: Reject a Non-Employee Request
       tags:
       - Non-Employee Lifecycle Management
@@ -20815,7 +20816,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - userAuth: []
       summary: Get Summary of Non-Employee Approval Requests
       tags:
       - Non-Employee Lifecycle Management
@@ -20993,7 +20994,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - userAuth: []
       summary: List Schema Attributes Non-Employee Source
       tags:
       - Non-Employee Lifecycle Management
@@ -21250,7 +21251,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - userAuth: []
       summary: Get Schema Attribute Non-Employee Source
       tags:
       - Non-Employee Lifecycle Management
@@ -21458,7 +21459,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:oauth-client:manage
       summary: List OAuth Clients
       tags:
@@ -21536,7 +21537,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:oauth-client:manage
       summary: Create OAuth Client
       tags:
@@ -21631,7 +21632,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:oauth-client:manage
       summary: Delete OAuth Client
       tags:
@@ -21729,7 +21730,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:oauth-client:manage
         - sp:oauth-client:read
       summary: Get OAuth Client
@@ -21861,7 +21862,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:oauth-client:manage
       summary: Patch OAuth Client
       tags:
@@ -21976,7 +21977,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:password-sync-group-management:read
       summary: Get Password Sync Group List
       tags:
@@ -22068,7 +22069,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:password-sync-group-management:write
       summary: Create Password Sync Group
       tags:
@@ -22147,7 +22148,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:password-sync-group-management:write
       summary: Delete Password Sync Group by ID
       tags:
@@ -22253,7 +22254,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:password-sync-group-management:read
       summary: Get Password Sync Group by ID
       tags:
@@ -22372,7 +22373,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:password-sync-group-management:write
       summary: Update Password Sync Group by ID
       tags:
@@ -22469,7 +22470,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:password-policy:write
       summary: Delete Password Policy by ID
       tags:
@@ -22600,7 +22601,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:password-policy:read
       summary: Get Password Policy by ID
       tags:
@@ -22769,7 +22770,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:password-policy:write
       summary: Update Password Policy by ID
       tags:
@@ -22946,7 +22947,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:password-policy:read
       summary: List Password Policies
       tags:
@@ -23076,7 +23077,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:password-policy:write
       summary: Create Password Policy
       tags:
@@ -23179,7 +23180,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:my-personal-access-tokens:read
         - sp:my-personal-access-tokens:manage
         - sp:all-personal-access-tokens:read
@@ -23262,7 +23263,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:my-personal-access-tokens:manage
         - sp:all-personal-access-tokens:manage
       summary: Create Personal Access Token
@@ -23358,7 +23359,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:my-personal-access-tokens:manage
         - sp:all-personal-access-tokens:manage
       summary: Delete Personal Access Token
@@ -23482,7 +23483,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:my-personal-access-tokens:manage
       summary: Patch Personal Access Token
       tags:
@@ -24187,7 +24188,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:role-unchecked:read
         - idn:role-unchecked:manage
         - idn:role-checked:manage
@@ -24275,7 +24276,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:role-unchecked:manage
         - idn:role-checked:manage
       summary: Create a Role
@@ -24357,7 +24358,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:role-unchecked:manage
         - idn:role-checked:manage
       summary: Delete a Role
@@ -24441,7 +24442,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:role-unchecked:read
         - idn:role-unchecked:manage
         - idn:role-checked:manage
@@ -24605,7 +24606,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:role-unchecked:manage
         - idn:role-checked:manage
       summary: Patch a specified Role
@@ -24732,7 +24733,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:role-unchecked:manage
         - idn:role-checked:manage
       summary: Delete Role(s)
@@ -24880,7 +24881,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:role-unchecked:read
         - idn:role-unchecked:manage
         - idn:role-checked:manage
@@ -25016,7 +25017,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:saved-search:read
       summary: A list of Saved Searches
       tags:
@@ -25096,7 +25097,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:saved-search:create
       summary: Create a saved search
       tags:
@@ -26352,7 +26353,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:search:read
       summary: Perform Search
       tags:
@@ -26438,7 +26439,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:search:read
       summary: Count Documents Satisfying a Query
       tags:
@@ -26591,7 +26592,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:search:read
       summary: Perform a Search Query Aggregation
       tags:
@@ -26712,7 +26713,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:search:read
       summary: Get a Document by ID
       tags:
@@ -26827,7 +26828,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:segment:read
         - idn:segment:manage
       summary: List Segments
@@ -26908,7 +26909,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:segment:manage
       summary: Create Segment
       tags:
@@ -27006,7 +27007,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:segment:manage
       summary: Delete Segment by ID
       tags:
@@ -27106,7 +27107,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:segment:read
         - idn:segment:manage
       summary: Get Segment by ID
@@ -27246,7 +27247,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:segment:manage
       summary: Update Segment
       tags:
@@ -27413,7 +27414,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:service-desk-admin:read
         - idn:service-desk-integration:read
       summary: List existing Service Desk Integrations
@@ -27512,7 +27513,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:service-desk-admin:manage
         - idn:service-desk-integration:manage
       summary: Create new Service Desk integration
@@ -27611,7 +27612,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:service-desk-admin:manage
         - idn:service-desk-integration:manage
       summary: Delete a Service Desk integration
@@ -27713,7 +27714,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:service-desk-admin:read
         - idn:service-desk-integration:read
       summary: Get a Service Desk integration
@@ -27826,7 +27827,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:service-desk-admin:manage
         - idn:service-desk-integration:manage
       summary: Service Desk Integration Update PATCH
@@ -27936,7 +27937,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:service-desk-admin:manage
         - idn:service-desk-integration:manage
       summary: Update a Service Desk integration
@@ -28033,7 +28034,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:service-desk-admin:read
         - idn:service-desk-integration:read
       summary: Service Desk Integration Types List.
@@ -28139,7 +28140,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:service-desk-admin:read
         - idn:service-desk-integration:read
       summary: Service Desk integration template by scriptName.
@@ -28233,7 +28234,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:service-desk-admin:read
         - idn:service-desk-integration:read
       summary: Get the time check configuration
@@ -28333,7 +28334,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:service-desk-admin:manage
         - idn:service-desk-integration:manage
       summary: Update the time check configuration
@@ -28746,7 +28747,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:password-dictionary-management:read
       summary: Get Password Dictionary
       tags:
@@ -28871,7 +28872,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:password-dictionary:manage
       summary: Update Password Dictionary
       tags:
@@ -28950,7 +28951,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:password-org-config:read
       summary: Get Password Org Config
       tags:
@@ -29041,7 +29042,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:password-org-config:write
       summary: Create Password Org Config
       tags:
@@ -29130,7 +29131,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:password-org-config:write
       summary: Update Password Org Config
       tags:
@@ -29225,7 +29226,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:report-result:read
       summary: Get Report Result
       tags:
@@ -29314,7 +29315,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:report:create
       summary: Run Report
       tags:
@@ -29394,7 +29395,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:report:delete
       summary: Cancel Report
       tags:
@@ -29532,7 +29533,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:report:read
       summary: Get Report File
       tags:
@@ -29741,7 +29742,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sod-policy:read
       summary: List SOD policies
       tags:
@@ -29951,7 +29952,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sod-policy:write
       summary: Create SOD policy
       tags:
@@ -30059,7 +30060,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sod-policy:write
       summary: Delete SOD policy by ID
       tags:
@@ -30229,7 +30230,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sod-policy:read
       summary: Get SOD policy by ID
       tags:
@@ -30444,7 +30445,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sod-policy:write
       summary: Patch SOD policy by ID
       tags:
@@ -30679,7 +30680,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sod-policy:write
       summary: Update SOD policy by ID
       tags:
@@ -30766,7 +30767,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sod-violation:write
       summary: Evaluate one policy by ID
       tags:
@@ -30861,7 +30862,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sod-policy:write
       summary: Delete SOD policy schedule
       tags:
@@ -30941,7 +30942,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sod-policy:read
       summary: Get SOD policy schedule
       tags:
@@ -31027,7 +31028,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sod-policy:write
       summary: Update SOD Policy schedule
       tags:
@@ -31133,7 +31134,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sod-violation:write
       summary: Runs SOD policy violation report
       tags:
@@ -31238,7 +31239,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sod-violation:read
       summary: Get SOD violation report status
       tags:
@@ -31343,7 +31344,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sod-violation:read
       summary: Get violation report run status
       tags:
@@ -31452,7 +31453,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sod-violation:read
       summary: Predict SOD violations for identity.
       tags:
@@ -31565,7 +31566,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sod-violation:read
       summary: Check SOD violations
       tags:
@@ -31656,7 +31657,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sod-violation:write
       summary: Runs all policies for org
       tags:
@@ -31735,7 +31736,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sod-violation:read
       summary: Get multi-report run task status
       tags:
@@ -31836,7 +31837,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sod-violation:read
       summary: Download violation report
       tags:
@@ -31945,7 +31946,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sod-violation:read
       summary: Download custom violation report
       tags:
@@ -32136,7 +32137,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sources:read
       summary: Lists all sources in IdentityNow.
       tags:
@@ -32231,7 +32232,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sources:manage
       summary: Creates a source in IdentityNow.
       tags:
@@ -32341,7 +32342,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sources:manage
       summary: Delete Source by ID
       tags:
@@ -32441,7 +32442,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sources:read
       summary: Get Source by ID
       tags:
@@ -32634,7 +32635,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sources:manage
       summary: Update Source (Partial)
       tags:
@@ -32754,7 +32755,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sources:manage
       summary: Update Source (Full)
       tags:
@@ -32857,7 +32858,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:provisioning-policy:read
         - idn:provisioning-policy:manage
       summary: Lists ProvisioningPolicies
@@ -33034,7 +33035,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:provisioning-policy:manage
       summary: Create Provisioning Policy
       tags:
@@ -33156,7 +33157,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:provisioning-policy:manage
       summary: Delete Provisioning Policy by UsageType
       tags:
@@ -33280,7 +33281,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:provisioning-policy:read
         - idn:provisioning-policy-source:read
         - idn:provisioning-policy:manage
@@ -33434,7 +33435,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:provisioning-policy:update
       summary: Partial update of Provisioning Policy
       tags:
@@ -33566,7 +33567,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:provisioning-policy:manage
         - idn:provisioning-policy-source-admin-operations:manage
       summary: Update Provisioning Policy by UsageType
@@ -33678,7 +33679,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:provisioning-policy:manage
       summary: Bulk Update Provisioning Policies
       tags:
@@ -34429,7 +34430,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sources:read
       summary: Fetches source health by id
       tags:
@@ -34529,7 +34530,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:source-schema:read
       summary: Downloads source accounts schema template
       tags:
@@ -34620,7 +34621,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:source-schema:manage
       summary: Uploads source accounts schema template
       tags:
@@ -34727,7 +34728,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:source-schema:read
       summary: Downloads source entitlements schema template
       tags:
@@ -34823,7 +34824,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:source-schema:manage
       summary: Uploads source entitlements schema template
       tags:
@@ -34912,7 +34913,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sources-admin:manage
       summary: Upload connector file to source
       tags:
@@ -35045,7 +35046,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:tag:read
         - idn:tag:manage
       summary: List Tagged Objects
@@ -35123,7 +35124,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:tag:manage
       summary: Add Tag to Object
       tags:
@@ -35270,7 +35271,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:tag:read
         - idn:tag:manage
       summary: List Tagged Objects by Type
@@ -35364,7 +35365,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:tag:manage
       summary: Delete Tagged Object
       tags:
@@ -35460,7 +35461,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:tag:read
         - idn:tag:manage
       summary: Get Tagged Object
@@ -35563,7 +35564,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:tag:manage
       summary: Update Tagged Object
       tags:
@@ -35649,7 +35650,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:tag:manage
       summary: Tag Multiple Objects
       tags:
@@ -35730,7 +35731,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:tag:manage
       summary: Remove Tags from Multiple Objects
       tags:
@@ -35903,7 +35904,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:transform:read
         - idn:transform:manage
       summary: List transforms
@@ -36013,7 +36014,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:transform:manage
       summary: Create transform
       tags:
@@ -36113,7 +36114,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:transform:manage
       summary: Delete a transform
       tags:
@@ -36215,7 +36216,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:transform:read
         - idn:transform:manage
       summary: Transform by ID
@@ -36340,7 +36341,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:transform:manage
       summary: Update a transform
       tags:
@@ -37647,7 +37648,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:workflow:read
       summary: List Workflows
       tags:
@@ -37728,7 +37729,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:workflow:manage
       summary: Delete Workflow By Id
       tags:
@@ -37810,7 +37811,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:workflow:read
       summary: Get Workflow By Id
       tags:
@@ -37944,7 +37945,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:workflow:manage
       summary: Patch Workflow
       tags:
@@ -38113,7 +38114,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:workflow:manage
       summary: Create Workflow
       tags:
@@ -38202,7 +38203,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:workflow:manage
       summary: Update Workflow
       tags:
@@ -38319,7 +38320,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:workflow-execute:external
       summary: Test Workflow By Id
       tags:
@@ -38485,7 +38486,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:workflow:read
       summary: List Workflow Executions
       tags:
@@ -38591,7 +38592,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:workflow:read
       summary: Get Workflow Execution
       tags:
@@ -38697,7 +38698,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:workflow:read
       summary: Get Workflow Execution History
       tags:
@@ -38795,7 +38796,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:workflow-execute:external
       summary: Cancel Workflow Execution by ID
       tags:
@@ -38899,7 +38900,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:workflow:read
       summary: List Complete Workflow Library
       tags:
@@ -39015,7 +39016,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:workflow:read
       summary: List Workflow Library Actions
       tags:
@@ -39131,7 +39132,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:workflow:read
       summary: List Workflow Library Triggers
       tags:
@@ -39206,7 +39207,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:workflow:read
       summary: List Workflow Library Operators
       tags:
@@ -39292,7 +39293,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:workflow:manage
       summary: Generate External Trigger OAuth Client
       tags:
@@ -39384,7 +39385,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:workflow-execute:external
       summary: Execute Workflow via External Trigger
       tags:
@@ -39475,7 +39476,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:workflow-execute:external
       summary: Test Workflow via External Trigger
       tags:
@@ -39557,7 +39558,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:accounts:read
       summary: Finds status of source usage
       tags:
@@ -39689,7 +39690,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:accounts:read
       summary: Returns source usage insights
       tags:
@@ -39821,7 +39822,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:accounts:read
       summary: Returns account usage insights
       tags:
@@ -39905,7 +39906,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity-profile:manage
       summary: Generate Identity Profile Preview
       tags:
@@ -39991,7 +39992,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:work-item:update
       summary: Forward a Work Item
       tags:
@@ -40068,7 +40069,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:account-config:read
       summary: Retrieve attribute list in IdentityNow.
       tags:
@@ -40173,7 +40174,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:account-config:create
       summary: Configure/create search attributes in IdentityNow.
       tags:
@@ -40271,7 +40272,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:account-config:delete
       summary: Delete search attribute in IdentityNow.
       tags:
@@ -40376,7 +40377,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:account-config:read
       summary: Get specific attribute in IdentityNow.
       tags:
@@ -40496,7 +40497,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:account-config:create
       summary: Update search attribute in IdentityNow.
       tags:
@@ -40599,7 +40600,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:access-model-metadata:read
       summary: List Access Model Metadata Attributes
       tags:
@@ -40688,7 +40689,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:access-model-metadata:read
       summary: Get Access Model Metadata Attribute
       tags:
@@ -40779,7 +40780,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:access-model-metadata:read
       summary: List Access Model Metadata Values
       tags:
@@ -40875,7 +40876,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:access-model-metadata:read
       summary: Get Access Model Metadata Value
       tags:
@@ -40985,7 +40986,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:access-profile:manage
       summary: Update Access Profile(s) requestable field.
       tags:
@@ -42133,7 +42134,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:account:remove
       summary: Remove Account
       tags:
@@ -42244,7 +42245,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:accounts-state:manage
       summary: Enable IDN Account for Identity
       tags:
@@ -42355,7 +42356,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:accounts-state:manage
       summary: Disable IDN Account for Identity
       tags:
@@ -42457,7 +42458,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:accounts-state:manage
       summary: Enable IDN Accounts for Identities
       tags:
@@ -42559,7 +42560,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:accounts-state:manage
       summary: Disable IDN Accounts for Identities
       tags:
@@ -42748,7 +42749,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:auth-profile:read
       summary: Get list of Auth Profiles.
       tags:
@@ -42848,7 +42849,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:auth-profile:read
       summary: Get Auth Profile.
       tags:
@@ -42946,7 +42947,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:auth-profile:update
       summary: Patch a specified Auth Profile
       tags:
@@ -43032,7 +43033,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:rule-management-connector:read
         - idn:rule-management-connector:manage
       summary: List Connector Rules
@@ -43123,7 +43124,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:rule-management-connector:manage
       summary: Create Connector Rule
       tags:
@@ -43231,7 +43232,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:rule-management-connector:manage
       summary: Delete a Connector-Rule
       tags:
@@ -43341,7 +43342,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:rule-management-connector:read
         - idn:rule-management-connector:manage
       summary: Connector-Rule by ID
@@ -43458,7 +43459,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:rule-management-connector:manage
       summary: Update a Connector Rule
       tags:
@@ -43549,7 +43550,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:rule-management-connector:read
         - idn:rule-management-connector:manage
       summary: Validate Connector Rule
@@ -44060,7 +44061,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:entitlement:read
         - idn:entitlement:manage
       summary: Gets a list of entitlements.
@@ -44200,7 +44201,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:entitlement:read
         - idn:entitlement:manage
       summary: Get an entitlement
@@ -44387,7 +44388,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:entitlement:manage
       summary: Patch an entitlement
       tags:
@@ -44609,7 +44610,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:entitlement:read
         - idn:entitlement:manage
       summary: List of entitlements parents
@@ -44832,7 +44833,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:entitlement:read
       summary: List of entitlements children
       tags:
@@ -45041,7 +45042,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:entitlement:read
         - idn:entitlement:manage
       summary: Get Entitlement Request Config
@@ -45168,7 +45169,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:entitlement:manage
       summary: Replace Entitlement Request Config
       tags:
@@ -45257,7 +45258,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:entitlement:update
       summary: Reset Source Entitlements
       tags:
@@ -45356,7 +45357,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:entitlement:delete
       summary: Remove metadata from an entitlement.
       tags:
@@ -45458,7 +45459,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:entitlement:update
       summary: Add metadata to an entitlement.
       tags:
@@ -45558,7 +45559,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:entitlements:manage
       summary: Aggregate Entitlements
       tags:
@@ -45654,7 +45655,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:password-digit-token:create
       summary: Generate a digit token
       tags:
@@ -45786,7 +45787,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity-history:read
       summary: Lists all the identities
       tags:
@@ -45876,7 +45877,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity-history:read
       summary: Get latest snapshot of identity
       tags:
@@ -47879,7 +47880,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity:read
       summary: Get ownership details
       tags:
@@ -48058,7 +48059,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity:read
         - idn:identity:manage
       summary: List Identities
@@ -48173,7 +48174,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity:delete
       summary: Delete identity
       tags:
@@ -48279,7 +48280,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity:read
         - idn:identity:manage
       summary: Identity Details
@@ -48403,7 +48404,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity:manage
       summary: Process a list of identityIds
       tags:
@@ -48509,7 +48510,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity:update
       summary: Reset an identity
       tags:
@@ -48634,7 +48635,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity:read
       summary: List role assignments
       tags:
@@ -48747,7 +48748,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity:read
       summary: Role assignment details
       tags:
@@ -48868,7 +48869,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity-profile-attribute-list:read
       summary: List Identity Attributes
       tags:
@@ -48973,7 +48974,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity-profile-attribute:create
       summary: Create Identity Attribute
       tags:
@@ -49079,7 +49080,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity-profile-attribute:delete
       summary: Delete Identity Attribute
       tags:
@@ -49185,7 +49186,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity-profile-attribute:read
       summary: Get Identity Attribute
       tags:
@@ -49299,7 +49300,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity-profile-attribute:create
       summary: Update Identity Attribute
       tags:
@@ -49405,7 +49406,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:identity-profile-attribute-bulk:delete
       summary: Bulk delete Identity Attributes
       tags:
@@ -49497,7 +49498,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:notification-mail-from-attributes:write
       summary: Change MAIL FROM domain
       tags:
@@ -49587,7 +49588,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:notification-mail-from-attributes:read
       summary: Get MAIL FROM Attributes
       tags:
@@ -49701,7 +49702,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:approvals:read
       summary: Get Approvals
       tags:
@@ -49792,7 +49793,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:approvals:read
       summary: Get an approval
       tags:
@@ -49917,7 +49918,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:notification-template-defaults:read
       summary: List Notification Template Defaults
       tags:
@@ -50041,7 +50042,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:notification-templates:read
       summary: List Notification Templates
       tags:
@@ -50133,7 +50134,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:notification-templates:create
       summary: Create Notification Template
       tags:
@@ -50312,7 +50313,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:notification-templates:delete
       summary: Bulk Delete Notification Templates
       tags:
@@ -50413,7 +50414,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:org-configs:read
         - idn:org-configs:manage
       summary: Get Org configuration settings
@@ -50528,7 +50529,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:org-configs:manage
       summary: Patch an Org configuration property
       tags:
@@ -50621,7 +50622,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:org-configs:read
         - idn:org-configs-user:read
       summary: Get list of time zones
@@ -51400,7 +51401,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - iai:outliers-management:read
       summary: Gets a list of access items associated with each identity outlier contributing
         feature
@@ -51788,7 +51789,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - iai:outliers-management:read
       summary: Get identity outlier contibuting feature summary
       tags:
@@ -51922,7 +51923,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - userAuth: []
       summary: Identity Outliers List
       tags:
       - IAI Peer Group Strategies
@@ -52005,7 +52006,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:notification-templates:read
       summary: Get Notification Template Context
       tags:
@@ -52107,7 +52108,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:notification-preferences:read
       summary: List Notification Preferences for tenant.
       tags:
@@ -52192,7 +52193,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:reassignment-configuration:read
       summary: List Reassignment Config Types
       tags:
@@ -52294,7 +52295,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:reassignment-configuration:read
       summary: List Reassignment Configurations
       tags:
@@ -52381,7 +52382,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:reassignment-configuration:create
       summary: Create a Reassignment Configuration
       tags:
@@ -52466,7 +52467,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:reassignment-configuration:delete
       summary: Delete Reassignment Configuration
       tags:
@@ -52572,7 +52573,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:reassignment-configuration:read
       summary: Get Reassignment Configuration
       tags:
@@ -52667,7 +52668,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:reassignment-configuration:update
       summary: Update Reassignment Configuration
       tags:
@@ -52792,7 +52793,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:reassignment-configuration:evaluate
       summary: Evaluate Reassignment Configuration
       tags:
@@ -52893,7 +52894,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:reassignment-tenant-configuration:read
       summary: Get Tenant-wide Reassignment Configuration settings
       tags:
@@ -52981,7 +52982,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:reassignment-tenant-configuration:update
       summary: Update Tenant-wide Reassignment Configuration settings
       tags:
@@ -53071,7 +53072,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - userAuth: []
       summary: Returns a Recommendation Based on Object
       tags:
       - IAI Recommendations
@@ -53144,7 +53145,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - userAuth: []
       summary: Get certification recommendation config values
       tags:
       - IAI Recommendations
@@ -53222,7 +53223,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - userAuth: []
       summary: Update certification recommendation config values
       tags:
       - IAI Recommendations
@@ -55427,7 +55428,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - userAuth: []
       summary: Retrieves entitlements for a potential role in a role mining session
       tags:
       - IAI Role Mining
@@ -56610,7 +56611,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - userAuth: []
       summary: Retrieves all potential role summaries
       tags:
       - IAI Role Mining
@@ -56699,7 +56700,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - userAuth: []
       summary: Retrieves a specific potential role
       tags:
       - IAI Role Mining
@@ -56850,7 +56851,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - userAuth: []
       summary: Update a potential role
       tags:
       - IAI Role Mining
@@ -56984,7 +56985,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - userAuth: []
       summary: Retrieves all saved potential roles
       tags:
       - IAI Role Mining
@@ -57133,7 +57134,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth: []
+      - userAuth: []
       summary: Retrieves potential role source usage
       tags:
       - IAI Role Mining
@@ -57301,7 +57302,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:role-unchecked:read
         - idn:role-unchecked:manage
         - idn:role-checked:manage
@@ -57514,7 +57515,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:service-desk-admin:write
       summary: Delete a SIM integration
       tags:
@@ -57621,7 +57622,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:service-desk-admin:read
       summary: Get a SIM integration details.
       tags:
@@ -57735,7 +57736,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:service-desk-admin:write
       summary: Patch a SIM attribute.
       tags:
@@ -57849,7 +57850,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:service-desk-admin:create
       summary: Update an existing SIM integration
       tags:
@@ -57965,7 +57966,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:service-desk-admin:write
       summary: Patch a SIM beforeProvisioningRule attribute.
       tags:
@@ -58066,7 +58067,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:service-desk-admin:read
       summary: List the existing SIM integrations.
       tags:
@@ -58173,7 +58174,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:service-desk-admin:create
       summary: Create new SIM integration
       tags:
@@ -58366,7 +58367,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:config:read
         - sp:config:manage
       summary: Initiates configuration objects export job
@@ -58487,7 +58488,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:config:read
         - sp:config:manage
       summary: Get export job status
@@ -58889,7 +58890,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:config:manage
       summary: Get import job status
       tags:
@@ -59101,7 +59102,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:config:read
         - sp:config:manage
       summary: Get config object details
@@ -59211,7 +59212,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:attr-sync-source-config:read
         - idn:attr-sync-source-config:manage
       summary: Attribute Sync Config
@@ -59329,7 +59330,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:attr-sync-source-config:manage
       summary: Update Attribute Sync Config
       tags:
@@ -59439,7 +59440,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:source-connector:manage
       summary: Check connection for source connector.
       tags:
@@ -59554,7 +59555,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:source-connector:manage
       summary: Peek source connector's resource objects
       tags:
@@ -59663,7 +59664,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:source-connector:manage
       summary: Ping cluster for source connector
       tags:
@@ -59773,7 +59774,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:source-connector:manage
       summary: Test configuration for source connector
       tags:
@@ -60004,7 +60005,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sources:update
       summary: Delete Native Change Detection Configuration
       tags:
@@ -60112,7 +60113,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sources:read
       summary: Native Change Detection Configuration
       tags:
@@ -60226,7 +60227,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sources:update
       summary: Update Native Change Detection Configuration
       tags:
@@ -60325,7 +60326,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:account:remove
       summary: Remove All Accounts in a Source
       tags:
@@ -60560,7 +60561,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sources:read
         - idn:sources:manage
       summary: Get Source Entitlement Request Configuration
@@ -60684,7 +60685,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sources:manage
       summary: Update Source Entitlement Request Configuration
       tags:
@@ -60782,7 +60783,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sources:manage
       summary: Account Aggregation
       tags:
@@ -60877,7 +60878,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sources:manage
       summary: Process Uncorrelated Accounts
       tags:
@@ -60955,7 +60956,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:task-management:read
       summary: Get task status by ID.
       tags:
@@ -61081,7 +61082,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:task-management:write
       summary: Update task status by ID
       tags:
@@ -61252,7 +61253,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:task-management:read
       summary: Retrieve a task status list.
       tags:
@@ -61345,7 +61346,7 @@ paths:
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:task-management:read
       summary: Retrieve a pending task list.
       tags:
@@ -61431,7 +61432,7 @@ paths:
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:task-management:read
       summary: Retrieve headers only for pending task list.
       tags:
@@ -61531,7 +61532,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:tenant:read
       summary: Get Tenant Information.
       tags:
@@ -61676,7 +61677,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:trigger-service-subscriptions:read
       summary: List Triggers
       tags:
@@ -61876,7 +61877,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:trigger-service-subscriptions:read
       summary: List Subscriptions
       tags:
@@ -62013,7 +62014,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:trigger-service-subscriptions:manage
       summary: Create a Subscription
       tags:
@@ -62117,7 +62118,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:trigger-service-subscriptions:manage
       summary: Delete a Subscription
       tags:
@@ -62232,7 +62233,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:trigger-service-subscriptions:manage
       summary: Patch a Subscription
       tags:
@@ -62397,7 +62398,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:trigger-service-subscriptions:manage
       summary: Update a Subscription
       tags:
@@ -62495,7 +62496,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:trigger-service-subscriptions:manage
       summary: Validate a Subscription Filter
       tags:
@@ -62645,7 +62646,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:trigger-service-invocation-status:read
         - sp:trigger-service-invocation-status:manage
       summary: List Latest Invocation Statuses
@@ -62850,7 +62851,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:trigger-service-invocation-status:manage
       summary: Start a Test Invocation
       tags:
@@ -62952,7 +62953,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:ui-access-metadata-page:read
       summary: Get a tenant UI metadata
       tags:
@@ -63059,7 +63060,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:ui-access-metadata-page:manage
       summary: Update tenant UI metadata
       tags:
@@ -63464,7 +63465,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:notification-dkim-attributes:read
       summary: Get DKIM Attributes
       tags:
@@ -63559,7 +63560,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:notification-verify-domain-dkim:write
       summary: Verify domain address via DKIM
       tags:
@@ -63708,7 +63709,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:workgroup:read
       summary: List Governance Groups
       tags:
@@ -63795,7 +63796,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:workgroup:write
       summary: Create a new Governance Group.
       tags:
@@ -63881,7 +63882,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:workgroup:write
       summary: Delete a Governance Group
       tags:
@@ -63969,7 +63970,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:workgroup:read
       summary: Get Governance Group by Id
       tags:
@@ -64073,7 +64074,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:workgroup:write
       summary: Patch a Governance Group
       tags:
@@ -64181,7 +64182,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:workgroup:write
       summary: Delete Governance Group(s)
       tags:
@@ -64322,7 +64323,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:workgroup:read
       summary: List connections for Governance Group
       tags:
@@ -64462,7 +64463,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:workgroup:read
       summary: List Governance Group Members
       tags:
@@ -64565,7 +64566,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:workgroup:write
       summary: Add members to Governance Group
       tags:
@@ -64668,7 +64669,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:workgroup:write
       summary: Remove members from Governance Group
       tags:
@@ -64789,7 +64790,7 @@ paths:
                 $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
           description: An internal server error occurred
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:forms:manage
       summary: Export form definitions by tenant.
       tags:
@@ -64856,7 +64857,7 @@ paths:
                 $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
           description: An internal server error occurred
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:forms:manage
       summary: Creates a form definition.
       tags:
@@ -64929,7 +64930,7 @@ paths:
                 $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
           description: An internal server error occurred
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:forms:manage
       summary: Deletes a form definition.
       tags:
@@ -65000,7 +65001,7 @@ paths:
                 $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
           description: An internal server error occurred
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:forms:manage
       summary: Return a form definition.
       tags:
@@ -65083,7 +65084,7 @@ paths:
                 $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
           description: An internal server error occurred
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:forms:manage
       summary: Patch a form definition.
       tags:
@@ -65209,7 +65210,7 @@ paths:
                 $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
           description: An internal server error occurred
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:forms:manage
       summary: Preview form definition data source.
       tags:
@@ -65333,7 +65334,7 @@ paths:
                 $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
           description: An internal server error occurred
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:forms:manage
       summary: List form definitions by tenant.
       tags:
@@ -65409,7 +65410,7 @@ paths:
                 $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
           description: An internal server error occurred
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:forms:manage
       summary: Generate JSON Schema dynamically.
       tags:
@@ -65528,7 +65529,7 @@ paths:
                 $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
           description: An internal server error occurred
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:forms:manage
       summary: Import form definitions from export.
       tags:
@@ -65631,7 +65632,7 @@ paths:
                 $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
           description: An external service is not available
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:forms:manage
       summary: Upload new form definition file.
       tags:
@@ -65791,7 +65792,7 @@ paths:
                 $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
           description: An external service is not available
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:forms:manage
       summary: Download definition file by fileId.
       tags:
@@ -65848,7 +65849,7 @@ paths:
                 $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
           description: An internal server error occurred
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:forms:manage
       summary: List form instances by tenant.
       tags:
@@ -65918,7 +65919,7 @@ paths:
                 $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
           description: An internal server error occurred
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:forms:manage
       summary: Creates a form instance.
       tags:
@@ -65990,7 +65991,7 @@ paths:
                 $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
           description: An internal server error occurred
       security:
-      - UserContextAuth: []
+      - userAuth: []
       summary: Returns a form instance.
       tags:
       - Custom Forms
@@ -66083,7 +66084,7 @@ paths:
                 $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
           description: An internal server error occurred
       security:
-      - UserContextAuth: []
+      - userAuth: []
       summary: Patch a form instance.
       tags:
       - Custom Forms
@@ -66213,7 +66214,7 @@ paths:
                 $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
           description: An internal server error occurred
       security:
-      - UserContextAuth: []
+      - userAuth: []
       summary: Retrieves dynamic data by element.
       tags:
       - Custom Forms
@@ -66371,7 +66372,7 @@ paths:
                 $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
           description: An external service is not available
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:forms:manage
       summary: Download instance file by fileId.
       tags:
@@ -66428,7 +66429,7 @@ paths:
                 $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
           description: An internal server error occurred
       security:
-      - UserContextAuth:
+      - userAuth:
         - sp:forms:manage
       summary: List predefined select options.
       tags:
@@ -66536,7 +66537,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:access-request-approvals:read
       summary: Return access request identity metrics
       tags:
@@ -66648,7 +66649,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:icons:manage
       summary: Delete an icon
       tags:
@@ -66768,7 +66769,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:icons:manage
       summary: Update an icon
       tags:
@@ -66878,7 +66879,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sed:read
       summary: Submit Sed Batch Stats Request
       tags:
@@ -66980,7 +66981,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sed:read
       summary: List Sed Batch Request
       tags:
@@ -67087,7 +67088,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sed:write
       summary: Submit Sed Batch Request
       tags:
@@ -67200,7 +67201,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sed:write
       summary: Submit Bulk Approval Request
       tags:
@@ -67309,7 +67310,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sed:write
       summary: Submit Sed Assignment Request
       tags:
@@ -67470,7 +67471,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sed:read
       summary: List Suggested Entitlement Description
       tags:
@@ -67586,7 +67587,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:sed:write
       summary: Patch Suggested Entitlement Description
       tags:
@@ -67730,7 +67731,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:application-discovery:read
       summary: Retrieve discovered applications for tenant
       tags:
@@ -67809,7 +67810,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:application-discovery:read
       summary: CSV template download for discovery
       tags:
@@ -67885,7 +67886,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:application-discovery:write
       summary: CSV Upload to discover applications
       tags:
@@ -67983,7 +67984,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:application-discovery:write
       summary: Delete a vendor connector mapping
       tags:
@@ -68100,7 +68101,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:application-discovery:read
       summary: List vendor connector mappings
       tags:
@@ -68186,7 +68187,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:application-discovery:write
       summary: Create a vendor connector mapping
       tags:
@@ -68275,7 +68276,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:app-roles:manage
         - idn:app-roles:delete
       summary: Delete source app by ID
@@ -68382,7 +68383,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:app-roles:read
       summary: Get source app by ID
       tags:
@@ -68555,7 +68556,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:app-roles:manage
       summary: Patch source app by ID
       tags:
@@ -68660,7 +68661,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:app-roles:manage
       summary: Bulk update source apps
       tags:
@@ -68806,7 +68807,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:app-roles:read
       summary: List assigned source apps
       tags:
@@ -68951,7 +68952,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:app-roles:read
       summary: List available source apps
       tags:
@@ -69044,7 +69045,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:app-roles:manage
       summary: Create source app
       tags:
@@ -69196,7 +69197,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:app-roles:manage
       summary: List all source apps
       tags:
@@ -69321,7 +69322,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:app-roles:manage
       summary: List access profiles for the specified source app
       tags:
@@ -69438,7 +69439,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:app-roles:manage
       summary: Bulk remove access profiles from the specified source app
       tags:
@@ -69560,7 +69561,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:app-roles:read
       summary: Patch user app by ID
       tags:
@@ -69678,7 +69679,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:app-roles:read
       summary: List available accounts for user app
       tags:
@@ -69810,7 +69811,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:app-roles:read
       summary: List owned user apps
       tags:
@@ -69946,7 +69947,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - UserContextAuth:
+      - userAuth:
         - idn:app-roles:manage
       summary: List all user apps
       tags:
@@ -109672,16 +109673,13 @@ components:
           type: string
         type: array
   securitySchemes:
-    UserContextAuth:
-      description: "OAuth2 Bearer token (JWT) generated using either a Personal Access\
-        \ token or through the Authorization Code flow. \nSee [Identity Security Cloud\
-        \ REST API Authentication](https://developer.sailpoint.com/docs/api/authentication/)\
-        \ for more information.\n- Directions for generating a [personal access token](https://developer.sailpoint.com/docs/api/authentication/#personal-access-tokens)\n\
-        - Directions using [client credentials flow](https://developer.sailpoint.com/docs/api/authentication/#client-credentials-grant-flow)\n\
-        - Directions for using [authorization code flow](https://developer.sailpoint.com/docs/api/authentication/#authorization-code-grant-flow)\n\
-        \nWhich authentication method should I choose?  See the [guide](https://developer.sailpoint.com/docs/api/authentication/#which-oauth-20-grant-flow-should-i-use).\n\
-        \nLearn more about how to find your `tokenUrl` and `authorizationUrl` [in\
-        \ the docs](https://developer.sailpoint.com/docs/api/authentication/#find-your-tenants-oauth-details).\n"
+    userAuth:
+      description: |
+        OAuth2 Bearer token (JWT) generated using either a [personal access token (PAT)](https://developer.sailpoint.com/docs/api/authentication/#generate-a-personal-access-token) or through the [authorization code flow](https://developer.sailpoint.com/docs/api/authentication/#request-access-token-with-authorization-code-grant-flow).
+
+        Personal access tokens are associated with a user in Identity Security Cloud and relies on the user's [user level](https://documentation.sailpoint.com/saas/help/common/users/index.html) (ex. Admin, Helpdesk, etc.) to determine a base level of access.
+
+        See [Identity Security Cloud REST API Authentication](https://developer.sailpoint.com/docs/api/authentication/) for more information.
       flows:
         authorizationCode:
           authorizationUrl: https://tenant.login.sailpoint.com/oauth/authorize
@@ -109695,16 +109693,19 @@ components:
             sp:scopes:all: access to all scopes
           tokenUrl: https://tenant.api.identitynow.com/oauth/token
       type: oauth2
-    ApplicationOnlyAuth:
-      description: "OAuth2 Bearer token (JWT) generated using client credentials flow.\
-        \ \nSee [Identity Security Cloud REST API Authentication](https://developer.sailpoint.com/docs/api/authentication/)\
-        \ for more information.\n- Directions using [client credentials flow](https://developer.sailpoint.com/docs/api/authentication/#client-credentials-grant-flow)\n\
-        \nWhich authentication method should I choose?  See the [guide](https://developer.sailpoint.com/docs/api/authentication/#which-oauth-20-grant-flow-should-i-use).\n\
-        \nLearn more about how to find your `tokenUrl` and `authorizationUrl` [in\
-        \ the docs](https://developer.sailpoint.com/docs/api/authentication/#find-your-tenants-oauth-details).\n"
+      x-displayName: Personal Access Token
+    applicationAuth:
+      description: |
+        OAuth2 Bearer token (JWT) generated using [client credentials flow](https://developer.sailpoint.com/docs/api/authentication/#request-access-token-with-client-credentials-grant-flow).
+
+        Client credentials refers to tokens that are not associated with a user in Identity Security Cloud.
+
+        See [Identity Security Cloud REST API Authentication](https://developer.sailpoint.com/docs/api/authentication/) for more information.
       flows:
         clientCredentials:
           scopes:
             sp:scopes:default: default scope
+            sp:scopes:all: access to all scopes
           tokenUrl: https://tenant.api.identitynow.com/oauth/token
       type: oauth2
+      x-displayName: Client Credentials

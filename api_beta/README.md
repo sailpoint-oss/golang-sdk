@@ -1503,7 +1503,7 @@ Class | Method | HTTP request | Description
 
 
 Authentication schemes defined for the API:
-### UserContextAuth
+### userAuth
 
 
 - **Type**: OAuth
@@ -1532,7 +1532,7 @@ auth := context.WithValue(oauth2.NoContext, api_beta.ContextOAuth2, tokenSource)
 r, err := client.Service.Operation(auth, args)
 ```
 
-### UserContextAuth
+### userAuth
 
 
 - **Type**: OAuth
@@ -1561,7 +1561,7 @@ auth := context.WithValue(oauth2.NoContext, api_beta.ContextOAuth2, tokenSource)
 r, err := client.Service.Operation(auth, args)
 ```
 
-### ApplicationOnlyAuth
+### applicationAuth
 
 
 - **Type**: OAuth
@@ -1569,6 +1569,7 @@ r, err := client.Service.Operation(auth, args)
 - **Authorization URL**: 
 - **Scopes**: 
  - **sp:scopes:default**: default scope
+ - **sp:scopes:all**: access to all scopes
 
 Example
 
