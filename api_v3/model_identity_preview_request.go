@@ -21,7 +21,7 @@ var _ MappedNullable = &IdentityPreviewRequest{}
 type IdentityPreviewRequest struct {
 	// The Identity id
 	IdentityId *string `json:"identityId,omitempty"`
-	IdentityAttributeConfig []IdentityAttributeConfig `json:"identityAttributeConfig,omitempty"`
+	IdentityAttributeConfig *IdentityAttributeConfig `json:"identityAttributeConfig,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,17 +77,17 @@ func (o *IdentityPreviewRequest) SetIdentityId(v string) {
 }
 
 // GetIdentityAttributeConfig returns the IdentityAttributeConfig field value if set, zero value otherwise.
-func (o *IdentityPreviewRequest) GetIdentityAttributeConfig() []IdentityAttributeConfig {
+func (o *IdentityPreviewRequest) GetIdentityAttributeConfig() IdentityAttributeConfig {
 	if o == nil || IsNil(o.IdentityAttributeConfig) {
-		var ret []IdentityAttributeConfig
+		var ret IdentityAttributeConfig
 		return ret
 	}
-	return o.IdentityAttributeConfig
+	return *o.IdentityAttributeConfig
 }
 
 // GetIdentityAttributeConfigOk returns a tuple with the IdentityAttributeConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityPreviewRequest) GetIdentityAttributeConfigOk() ([]IdentityAttributeConfig, bool) {
+func (o *IdentityPreviewRequest) GetIdentityAttributeConfigOk() (*IdentityAttributeConfig, bool) {
 	if o == nil || IsNil(o.IdentityAttributeConfig) {
 		return nil, false
 	}
@@ -103,9 +103,9 @@ func (o *IdentityPreviewRequest) HasIdentityAttributeConfig() bool {
 	return false
 }
 
-// SetIdentityAttributeConfig gets a reference to the given []IdentityAttributeConfig and assigns it to the IdentityAttributeConfig field.
-func (o *IdentityPreviewRequest) SetIdentityAttributeConfig(v []IdentityAttributeConfig) {
-	o.IdentityAttributeConfig = v
+// SetIdentityAttributeConfig gets a reference to the given IdentityAttributeConfig and assigns it to the IdentityAttributeConfig field.
+func (o *IdentityPreviewRequest) SetIdentityAttributeConfig(v IdentityAttributeConfig) {
+	o.IdentityAttributeConfig = &v
 }
 
 func (o IdentityPreviewRequest) MarshalJSON() ([]byte, error) {

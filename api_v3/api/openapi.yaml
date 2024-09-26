@@ -50951,23 +50951,7 @@ components:
       example:
         identityId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         identityAttributeConfig:
-        - attributeTransforms:
-          - transformDefinition:
-              attributes:
-                attributeName: e-mail
-                sourceName: MySource
-                sourceId: 2c9180877a826e68017a8c0b03da1a53
-              type: accountAttribute
-            identityAttributeName: email
-          - transformDefinition:
-              attributes:
-                attributeName: e-mail
-                sourceName: MySource
-                sourceId: 2c9180877a826e68017a8c0b03da1a53
-              type: accountAttribute
-            identityAttributeName: email
-          enabled: true
-        - attributeTransforms:
+          attributeTransforms:
           - transformDefinition:
               attributes:
                 attributeName: e-mail
@@ -50989,9 +50973,7 @@ components:
           format: uuid
           type: string
         identityAttributeConfig:
-          items:
-            $ref: '#/components/schemas/IdentityAttributeConfig'
-          type: array
+          $ref: '#/components/schemas/IdentityAttributeConfig'
       type: object
     IdentityPreviewResponse:
       example:
@@ -59316,11 +59298,11 @@ components:
         value:
           description: Value that was derived during the preview.
           example: email@mail.com
-          type: object
+          type: string
         previousValue:
           description: The value of the attribute before the preview.
           example: oldEmail@mail.com
-          type: object
+          type: string
         errorMessages:
           items:
             $ref: '#/components/schemas/ErrorMessageDto'

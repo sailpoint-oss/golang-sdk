@@ -19135,13 +19135,12 @@ paths:
               path: /description
               value: MDK Multi-Host Integration 222 description
             schema:
-              $ref: '#/components/schemas/updateMultiHostSources_request'
+              description: "A JSONPatch document as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)."
+              items:
+                $ref: '#/components/schemas/updateMultiHostSources_request_inner'
+              type: array
         description: |
-          A list of Multi-Host Integration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
-
-          Only `replace` operations are accepted by this endpoint.
-
-          A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed.
+          This endpoint allows you to update a Multi-Host Integration.
         required: true
       responses:
         "200":
@@ -19721,7 +19720,7 @@ paths:
       description: "Get a list of sources creation errors within Multi-Host Integration\
         \ ID.  \n\nA token with Org Admin or Multi-Host Admin authority is required\
         \ to access this endpoint."
-      operationId: getSourcesWithinMultiHost
+      operationId: getMultiHostSourceCreationErrors
       parameters:
       - description: ID of the Multi-Host Integration
         explode: false
@@ -19820,7 +19819,7 @@ paths:
       - UserContextAuth:
         - idn:multihosts:read
         - idn:sources:read
-      summary: List Multi-Host Integration Sources Creation Errors
+      summary: List Multi-Host Source Creation Errors
       tags:
       - Multi-Host Integration
   /multihosts/{multihostId}/acctAggregationGroups:
@@ -62817,7 +62816,7 @@ components:
           example: /description
           type: string
         value:
-          $ref: '#/components/schemas/JsonPatchOperation_value'
+          $ref: '#/components/schemas/updateMultiHostSources_request_inner_value'
       required:
       - op
       - path
@@ -88163,15 +88162,58 @@ components:
       anyOf:
       - $ref: '#/components/schemas/RoleAssignmentRef'
       - $ref: '#/components/schemas/RoleAssignmentDto'
-    updateMultiHostSources_request:
-      description: "A JSONPatch document as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902).\
-        \  Only `replace` operations are accepted by this endpoint."
+    array_inner:
+      anyOf:
+      - type: string
+      - type: integer
+      - type: object
+      example:
+      - "001"
+      - "002"
+      - "003"
+    updateMultiHostSources_request_inner_value:
+      description: "The value to be used for the operation, required for \"add\" and\
+        \ \"replace\" operations"
+      example: New description
+      oneOf:
+      - example: New description
+        title: string
+        type: string
+      - example: true
+        title: boolean
+        type: boolean
+      - example: 300
+        title: integer
+        type: integer
+      - example:
+          attributes:
+            name: philip
+        title: object
+        type: object
+      - items:
+          $ref: '#/components/schemas/array_inner'
+        title: array
+        type: array
+    updateMultiHostSources_request_inner:
+      description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
       properties:
-        operations:
-          description: Operations to be applied.
-          items:
-            $ref: '#/components/schemas/JsonPatchOperation'
-          type: array
+        op:
+          description: The operation to be performed
+          enum:
+          - add
+          - replace
+          example: replace
+          type: string
+        path:
+          description: A string JSON Pointer representing the target path to an element
+            to be affected by the operation
+          example: /description
+          type: string
+        value:
+          $ref: '#/components/schemas/updateMultiHostSources_request_inner_value'
+      required:
+      - op
+      - path
       type: object
     testSourceConnectionMultihost_200_response:
       example:
@@ -89194,38 +89236,6 @@ components:
     Field_allOf_value:
       description: Value of the field
       type: object
-    array_inner:
-      anyOf:
-      - type: string
-      - type: integer
-      - type: object
-      example:
-      - "001"
-      - "002"
-      - "003"
-    JsonPatchOperation_value:
-      description: "The value to be used for the operation, required for \"add\" and\
-        \ \"replace\" operations"
-      example: New description
-      oneOf:
-      - example: New description
-        title: string
-        type: string
-      - example: true
-        title: boolean
-        type: boolean
-      - example: 300
-        title: integer
-        type: integer
-      - example:
-          attributes:
-            name: philip
-        title: object
-        type: object
-      - items:
-          $ref: '#/components/schemas/array_inner'
-        title: array
-        type: array
     AccessProfileBulkUpdateRequest_inner:
       description: Access Profile's basic details.
       properties:

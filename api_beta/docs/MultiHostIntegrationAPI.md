@@ -11,9 +11,9 @@ Method | HTTP request | Description
 [**GetEntitlementAggregationGroups**](MultiHostIntegrationAPI.md#GetEntitlementAggregationGroups) | **Get** /multihosts/{multiHostId}/entitlementAggregationGroups | Get Entitlement Aggregation Groups Within Multi-Host Integration ID
 [**GetMultiHostIntegrations**](MultiHostIntegrationAPI.md#GetMultiHostIntegrations) | **Get** /multihosts/{id} | Get Multi-Host Integration By ID
 [**GetMultiHostIntegrationsList**](MultiHostIntegrationAPI.md#GetMultiHostIntegrationsList) | **Get** /multihosts | List All Existing Multi-Host Integrations
+[**GetMultiHostSourceCreationErrors**](MultiHostIntegrationAPI.md#GetMultiHostSourceCreationErrors) | **Get** /multihosts/{multiHostId}/sources/errors | List Multi-Host Source Creation Errors
 [**GetMultihostIntegrationTypes**](MultiHostIntegrationAPI.md#GetMultihostIntegrationTypes) | **Get** /multihosts/types | List Multi-Host Integration Types
 [**GetSourcesWithinMultiHost**](MultiHostIntegrationAPI.md#GetSourcesWithinMultiHost) | **Get** /multihosts/{id}/sources | List Sources Within Multi-Host Integration
-[**GetSourcesWithinMultiHost_0**](MultiHostIntegrationAPI.md#GetSourcesWithinMultiHost_0) | **Get** /multihosts/{multiHostId}/sources/errors | List Multi-Host Integration Sources Creation Errors
 [**TestConnectionMultiHostSources**](MultiHostIntegrationAPI.md#TestConnectionMultiHostSources) | **Post** /multihosts/{multihost_id}/sources/testConnection | Test Configuration For Multi-Host Integration
 [**TestSourceConnectionMultihost**](MultiHostIntegrationAPI.md#TestSourceConnectionMultihost) | **Get** /multihosts/{multihost_id}/sources/{sourceId}/testConnection | Test Configuration For Multi-Host Integration&#39;s Single Source
 [**UpdateMultiHostSources**](MultiHostIntegrationAPI.md#UpdateMultiHostSources) | **Patch** /multihosts/{id} | Update Multi-Host Integration
@@ -510,6 +510,76 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetMultiHostSourceCreationErrors
+
+> []SourceCreationErrors GetMultiHostSourceCreationErrors(ctx, multiHostId).Execute()
+
+List Multi-Host Source Creation Errors
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+	multiHostId := "004091cb79b04636b88662afa50a4440" // string | ID of the Multi-Host Integration
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MultiHostIntegrationAPI.GetMultiHostSourceCreationErrors(context.Background(), multiHostId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.GetMultiHostSourceCreationErrors``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetMultiHostSourceCreationErrors`: []SourceCreationErrors
+	fmt.Fprintf(os.Stdout, "Response from `MultiHostIntegrationAPI.GetMultiHostSourceCreationErrors`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**multiHostId** | **string** | ID of the Multi-Host Integration | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetMultiHostSourceCreationErrorsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]SourceCreationErrors**](SourceCreationErrors.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetMultihostIntegrationTypes
 
 > []MultiHostIntegrationTemplateType GetMultihostIntegrationTypes(ctx).Execute()
@@ -630,76 +700,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]MultiHostSources**](MultiHostSources.md)
-
-### Authorization
-
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetSourcesWithinMultiHost_0
-
-> []SourceCreationErrors GetSourcesWithinMultiHost_0(ctx, multiHostId).Execute()
-
-List Multi-Host Integration Sources Creation Errors
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-	multiHostId := "004091cb79b04636b88662afa50a4440" // string | ID of the Multi-Host Integration
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MultiHostIntegrationAPI.GetSourcesWithinMultiHost_0(context.Background(), multiHostId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.GetSourcesWithinMultiHost_0``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetSourcesWithinMultiHost_0`: []SourceCreationErrors
-	fmt.Fprintf(os.Stdout, "Response from `MultiHostIntegrationAPI.GetSourcesWithinMultiHost_0`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**multiHostId** | **string** | ID of the Multi-Host Integration | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetSourcesWithinMultiHost_1Request struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**[]SourceCreationErrors**](SourceCreationErrors.md)
 
 ### Authorization
 
@@ -858,7 +858,7 @@ Name | Type | Description  | Notes
 
 ## UpdateMultiHostSources
 
-> UpdateMultiHostSources(ctx, multihostId).UpdateMultiHostSourcesRequest(updateMultiHostSourcesRequest).Execute()
+> UpdateMultiHostSources(ctx, multihostId).UpdateMultiHostSourcesRequestInner(updateMultiHostSourcesRequestInner).Execute()
 
 Update Multi-Host Integration
 
@@ -878,11 +878,11 @@ import (
 
 func main() {
 	multihostId := "anId" // string | ID of the Multi-Host Integration to update.
-	updateMultiHostSourcesRequest := *openapiclient.NewUpdateMultiHostSourcesRequest() // UpdateMultiHostSourcesRequest | A list of Multi-Host Integration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed. 
+	updateMultiHostSourcesRequestInner := []openapiclient.UpdateMultiHostSourcesRequestInner{*openapiclient.NewUpdateMultiHostSourcesRequestInner("replace", "/description")} // []UpdateMultiHostSourcesRequestInner | This endpoint allows you to update a Multi-Host Integration. 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.MultiHostIntegrationAPI.UpdateMultiHostSources(context.Background(), multihostId).UpdateMultiHostSourcesRequest(updateMultiHostSourcesRequest).Execute()
+	r, err := apiClient.MultiHostIntegrationAPI.UpdateMultiHostSources(context.Background(), multihostId).UpdateMultiHostSourcesRequestInner(updateMultiHostSourcesRequestInner).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MultiHostIntegrationAPI.UpdateMultiHostSources``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -906,7 +906,7 @@ Other parameters are passed through a pointer to a apiUpdateMultiHostSourcesRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **updateMultiHostSourcesRequest** | [**UpdateMultiHostSourcesRequest**](UpdateMultiHostSourcesRequest.md) | A list of Multi-Host Integration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only &#x60;replace&#x60; operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed.  | 
+ **updateMultiHostSourcesRequestInner** | [**[]UpdateMultiHostSourcesRequestInner**](UpdateMultiHostSourcesRequestInner.md) | This endpoint allows you to update a Multi-Host Integration.  | 
 
 ### Return type
 

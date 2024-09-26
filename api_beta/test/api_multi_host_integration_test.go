@@ -114,6 +114,20 @@ func Test_api_beta_MultiHostIntegrationAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test MultiHostIntegrationAPIService GetMultiHostSourceCreationErrors", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var multiHostId string
+
+		resp, httpRes, err := apiClient.MultiHostIntegrationAPI.GetMultiHostSourceCreationErrors(context.Background(), multiHostId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test MultiHostIntegrationAPIService GetMultihostIntegrationTypes", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -131,20 +145,6 @@ func Test_api_beta_MultiHostIntegrationAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.MultiHostIntegrationAPI.GetSourcesWithinMultiHost(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test MultiHostIntegrationAPIService GetSourcesWithinMultiHost_1", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var multiHostId string
-
-		resp, httpRes, err := apiClient.MultiHostIntegrationAPI.GetSourcesWithinMultiHost_0(context.Background(), multiHostId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

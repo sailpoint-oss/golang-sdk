@@ -1,4 +1,4 @@
-# JsonPatchOperationValue
+# UpdateMultiHostSourcesRequestInnerValue
 
 ## Properties
 
@@ -7,20 +7,20 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewJsonPatchOperationValue
+### NewUpdateMultiHostSourcesRequestInnerValue
 
-`func NewJsonPatchOperationValue() *JsonPatchOperationValue`
+`func NewUpdateMultiHostSourcesRequestInnerValue() *UpdateMultiHostSourcesRequestInnerValue`
 
-NewJsonPatchOperationValue instantiates a new JsonPatchOperationValue object
+NewUpdateMultiHostSourcesRequestInnerValue instantiates a new UpdateMultiHostSourcesRequestInnerValue object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewJsonPatchOperationValueWithDefaults
+### NewUpdateMultiHostSourcesRequestInnerValueWithDefaults
 
-`func NewJsonPatchOperationValueWithDefaults() *JsonPatchOperationValue`
+`func NewUpdateMultiHostSourcesRequestInnerValueWithDefaults() *UpdateMultiHostSourcesRequestInnerValue`
 
-NewJsonPatchOperationValueWithDefaults instantiates a new JsonPatchOperationValue object
+NewUpdateMultiHostSourcesRequestInnerValueWithDefaults instantiates a new UpdateMultiHostSourcesRequestInnerValue object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 

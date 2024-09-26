@@ -1276,6 +1276,176 @@ func (a *MultiHostIntegrationAPIService) GetMultiHostIntegrationsListExecute(r A
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGetMultiHostSourceCreationErrorsRequest struct {
+	ctx context.Context
+	ApiService *MultiHostIntegrationAPIService
+	multiHostId string
+}
+
+func (r ApiGetMultiHostSourceCreationErrorsRequest) Execute() ([]SourceCreationErrors, *http.Response, error) {
+	return r.ApiService.GetMultiHostSourceCreationErrorsExecute(r)
+}
+
+/*
+GetMultiHostSourceCreationErrors List Multi-Host Source Creation Errors
+
+Get a list of sources creation errors within Multi-Host Integration ID.  
+
+A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param multiHostId ID of the Multi-Host Integration
+ @return ApiGetMultiHostSourceCreationErrorsRequest
+*/
+func (a *MultiHostIntegrationAPIService) GetMultiHostSourceCreationErrors(ctx context.Context, multiHostId string) ApiGetMultiHostSourceCreationErrorsRequest {
+	return ApiGetMultiHostSourceCreationErrorsRequest{
+		ApiService: a,
+		ctx: ctx,
+		multiHostId: multiHostId,
+	}
+}
+
+// Execute executes the request
+//  @return []SourceCreationErrors
+func (a *MultiHostIntegrationAPIService) GetMultiHostSourceCreationErrorsExecute(r ApiGetMultiHostSourceCreationErrorsRequest) ([]SourceCreationErrors, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []SourceCreationErrors
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MultiHostIntegrationAPIService.GetMultiHostSourceCreationErrors")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/multihosts/{multiHostId}/sources/errors"
+	localVarPath = strings.Replace(localVarPath, "{"+"multiHostId"+"}", url.PathEscape(parameterValueToString(r.multiHostId, "multiHostId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListAccessModelMetadataAttribute401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessModelMetadataAttribute429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGetMultihostIntegrationTypesRequest struct {
 	ctx context.Context
 	ApiService *MultiHostIntegrationAPIService
@@ -1548,176 +1718,6 @@ func (a *MultiHostIntegrationAPIService) GetSourcesWithinMultiHostExecute(r ApiG
 		var defaultValue bool = false
 		r.count = &defaultValue
 	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessModelMetadataAttribute401Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessModelMetadataAttribute429Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetSourcesWithinMultiHost_0Request struct {
-	ctx context.Context
-	ApiService *MultiHostIntegrationAPIService
-	multiHostId string
-}
-
-func (r ApiGetSourcesWithinMultiHost_0Request) Execute() ([]SourceCreationErrors, *http.Response, error) {
-	return r.ApiService.GetSourcesWithinMultiHost_1Execute(r)
-}
-
-/*
-GetSourcesWithinMultiHost_0 List Multi-Host Integration Sources Creation Errors
-
-Get a list of sources creation errors within Multi-Host Integration ID.  
-
-A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param multiHostId ID of the Multi-Host Integration
- @return ApiGetSourcesWithinMultiHost_0Request
-*/
-func (a *MultiHostIntegrationAPIService) GetSourcesWithinMultiHost_1(ctx context.Context, multiHostId string) ApiGetSourcesWithinMultiHost_0Request {
-	return ApiGetSourcesWithinMultiHost_0Request{
-		ApiService: a,
-		ctx: ctx,
-		multiHostId: multiHostId,
-	}
-}
-
-// Execute executes the request
-//  @return []SourceCreationErrors
-func (a *MultiHostIntegrationAPIService) GetSourcesWithinMultiHost_1Execute(r ApiGetSourcesWithinMultiHost_0Request) ([]SourceCreationErrors, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []SourceCreationErrors
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MultiHostIntegrationAPIService.GetSourcesWithinMultiHost_1")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/multihosts/{multiHostId}/sources/errors"
-	localVarPath = strings.Replace(localVarPath, "{"+"multiHostId"+"}", url.PathEscape(parameterValueToString(r.multiHostId, "multiHostId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2174,12 +2174,12 @@ type ApiUpdateMultiHostSourcesRequest struct {
 	ctx context.Context
 	ApiService *MultiHostIntegrationAPIService
 	multihostId string
-	updateMultiHostSourcesRequest *UpdateMultiHostSourcesRequest
+	updateMultiHostSourcesRequestInner *[]UpdateMultiHostSourcesRequestInner
 }
 
-// A list of Multi-Host Integration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only &#x60;replace&#x60; operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed. 
-func (r ApiUpdateMultiHostSourcesRequest) UpdateMultiHostSourcesRequest(updateMultiHostSourcesRequest UpdateMultiHostSourcesRequest) ApiUpdateMultiHostSourcesRequest {
-	r.updateMultiHostSourcesRequest = &updateMultiHostSourcesRequest
+// This endpoint allows you to update a Multi-Host Integration. 
+func (r ApiUpdateMultiHostSourcesRequest) UpdateMultiHostSourcesRequestInner(updateMultiHostSourcesRequestInner []UpdateMultiHostSourcesRequestInner) ApiUpdateMultiHostSourcesRequest {
+	r.updateMultiHostSourcesRequestInner = &updateMultiHostSourcesRequestInner
 	return r
 }
 
@@ -2225,8 +2225,8 @@ func (a *MultiHostIntegrationAPIService) UpdateMultiHostSourcesExecute(r ApiUpda
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.updateMultiHostSourcesRequest == nil {
-		return nil, reportError("updateMultiHostSourcesRequest is required and must be specified")
+	if r.updateMultiHostSourcesRequestInner == nil {
+		return nil, reportError("updateMultiHostSourcesRequestInner is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2247,7 +2247,7 @@ func (a *MultiHostIntegrationAPIService) UpdateMultiHostSourcesExecute(r ApiUpda
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.updateMultiHostSourcesRequest
+	localVarPostBody = r.updateMultiHostSourcesRequestInner
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err

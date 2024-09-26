@@ -16,8 +16,8 @@ import (
 	"fmt"
 )
 
-// JsonPatchOperationValue - The value to be used for the operation, required for \"add\" and \"replace\" operations
-type JsonPatchOperationValue struct {
+// UpdateMultiHostSourcesRequestInnerValue - The value to be used for the operation, required for \"add\" and \"replace\" operations
+type UpdateMultiHostSourcesRequestInnerValue struct {
 	ArrayOfArrayInner *[]ArrayInner
 	Bool *bool
 	Int32 *int32
@@ -25,44 +25,44 @@ type JsonPatchOperationValue struct {
 	String *string
 }
 
-// []ArrayInnerAsJsonPatchOperationValue is a convenience function that returns []ArrayInner wrapped in JsonPatchOperationValue
-func ArrayOfArrayInnerAsJsonPatchOperationValue(v *[]ArrayInner) JsonPatchOperationValue {
-	return JsonPatchOperationValue{
+// []ArrayInnerAsUpdateMultiHostSourcesRequestInnerValue is a convenience function that returns []ArrayInner wrapped in UpdateMultiHostSourcesRequestInnerValue
+func ArrayOfArrayInnerAsUpdateMultiHostSourcesRequestInnerValue(v *[]ArrayInner) UpdateMultiHostSourcesRequestInnerValue {
+	return UpdateMultiHostSourcesRequestInnerValue{
 		ArrayOfArrayInner: v,
 	}
 }
 
-// boolAsJsonPatchOperationValue is a convenience function that returns bool wrapped in JsonPatchOperationValue
-func BoolAsJsonPatchOperationValue(v *bool) JsonPatchOperationValue {
-	return JsonPatchOperationValue{
+// boolAsUpdateMultiHostSourcesRequestInnerValue is a convenience function that returns bool wrapped in UpdateMultiHostSourcesRequestInnerValue
+func BoolAsUpdateMultiHostSourcesRequestInnerValue(v *bool) UpdateMultiHostSourcesRequestInnerValue {
+	return UpdateMultiHostSourcesRequestInnerValue{
 		Bool: v,
 	}
 }
 
-// int32AsJsonPatchOperationValue is a convenience function that returns int32 wrapped in JsonPatchOperationValue
-func Int32AsJsonPatchOperationValue(v *int32) JsonPatchOperationValue {
-	return JsonPatchOperationValue{
+// int32AsUpdateMultiHostSourcesRequestInnerValue is a convenience function that returns int32 wrapped in UpdateMultiHostSourcesRequestInnerValue
+func Int32AsUpdateMultiHostSourcesRequestInnerValue(v *int32) UpdateMultiHostSourcesRequestInnerValue {
+	return UpdateMultiHostSourcesRequestInnerValue{
 		Int32: v,
 	}
 }
 
-// map[string]interface{}AsJsonPatchOperationValue is a convenience function that returns map[string]interface{} wrapped in JsonPatchOperationValue
-func MapmapOfStringAnyAsJsonPatchOperationValue(v *map[string]interface{}) JsonPatchOperationValue {
-	return JsonPatchOperationValue{
+// map[string]interface{}AsUpdateMultiHostSourcesRequestInnerValue is a convenience function that returns map[string]interface{} wrapped in UpdateMultiHostSourcesRequestInnerValue
+func MapmapOfStringAnyAsUpdateMultiHostSourcesRequestInnerValue(v *map[string]interface{}) UpdateMultiHostSourcesRequestInnerValue {
+	return UpdateMultiHostSourcesRequestInnerValue{
 		MapmapOfStringAny: v,
 	}
 }
 
-// stringAsJsonPatchOperationValue is a convenience function that returns string wrapped in JsonPatchOperationValue
-func StringAsJsonPatchOperationValue(v *string) JsonPatchOperationValue {
-	return JsonPatchOperationValue{
+// stringAsUpdateMultiHostSourcesRequestInnerValue is a convenience function that returns string wrapped in UpdateMultiHostSourcesRequestInnerValue
+func StringAsUpdateMultiHostSourcesRequestInnerValue(v *string) UpdateMultiHostSourcesRequestInnerValue {
+	return UpdateMultiHostSourcesRequestInnerValue{
 		String: v,
 	}
 }
 
 
 // Unmarshal JSON data into one of the pointers in the struct
-func (dst *JsonPatchOperationValue) UnmarshalJSON(data []byte) error {
+func (dst *UpdateMultiHostSourcesRequestInnerValue) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
 	// try to unmarshal data into ArrayOfArrayInner
@@ -158,16 +158,16 @@ func (dst *JsonPatchOperationValue) UnmarshalJSON(data []byte) error {
 		dst.MapmapOfStringAny = nil
 		dst.String = nil
 
-		return fmt.Errorf("data matches more than one schema in oneOf(JsonPatchOperationValue)")
+		return fmt.Errorf("data matches more than one schema in oneOf(UpdateMultiHostSourcesRequestInnerValue)")
 	} else if match == 1 {
 		return nil // exactly one match
 	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(JsonPatchOperationValue)")
+		return fmt.Errorf("data failed to match schemas in oneOf(UpdateMultiHostSourcesRequestInnerValue)")
 	}
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src JsonPatchOperationValue) MarshalJSON() ([]byte, error) {
+func (src UpdateMultiHostSourcesRequestInnerValue) MarshalJSON() ([]byte, error) {
 	if src.ArrayOfArrayInner != nil {
 		return json.Marshal(&src.ArrayOfArrayInner)
 	}
@@ -192,7 +192,7 @@ func (src JsonPatchOperationValue) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *JsonPatchOperationValue) GetActualInstance() (interface{}) {
+func (obj *UpdateMultiHostSourcesRequestInnerValue) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -220,38 +220,38 @@ func (obj *JsonPatchOperationValue) GetActualInstance() (interface{}) {
 	return nil
 }
 
-type NullableJsonPatchOperationValue struct {
-	value *JsonPatchOperationValue
+type NullableUpdateMultiHostSourcesRequestInnerValue struct {
+	value *UpdateMultiHostSourcesRequestInnerValue
 	isSet bool
 }
 
-func (v NullableJsonPatchOperationValue) Get() *JsonPatchOperationValue {
+func (v NullableUpdateMultiHostSourcesRequestInnerValue) Get() *UpdateMultiHostSourcesRequestInnerValue {
 	return v.value
 }
 
-func (v *NullableJsonPatchOperationValue) Set(val *JsonPatchOperationValue) {
+func (v *NullableUpdateMultiHostSourcesRequestInnerValue) Set(val *UpdateMultiHostSourcesRequestInnerValue) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableJsonPatchOperationValue) IsSet() bool {
+func (v NullableUpdateMultiHostSourcesRequestInnerValue) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableJsonPatchOperationValue) Unset() {
+func (v *NullableUpdateMultiHostSourcesRequestInnerValue) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableJsonPatchOperationValue(val *JsonPatchOperationValue) *NullableJsonPatchOperationValue {
-	return &NullableJsonPatchOperationValue{value: val, isSet: true}
+func NewNullableUpdateMultiHostSourcesRequestInnerValue(val *UpdateMultiHostSourcesRequestInnerValue) *NullableUpdateMultiHostSourcesRequestInnerValue {
+	return &NullableUpdateMultiHostSourcesRequestInnerValue{value: val, isSet: true}
 }
 
-func (v NullableJsonPatchOperationValue) MarshalJSON() ([]byte, error) {
+func (v NullableUpdateMultiHostSourcesRequestInnerValue) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableJsonPatchOperationValue) UnmarshalJSON(src []byte) error {
+func (v *NullableUpdateMultiHostSourcesRequestInnerValue) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

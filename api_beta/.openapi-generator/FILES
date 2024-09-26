@@ -509,7 +509,6 @@ docs/InvocationStatus.md
 docs/InvocationStatusType.md
 docs/JsonPatch.md
 docs/JsonPatchOperation.md
-docs/JsonPatchOperationValue.md
 docs/JsonPatchOperations.md
 docs/JsonPatchOperationsValue.md
 docs/KbaAnswerRequestItem.md
@@ -957,7 +956,8 @@ docs/TriggerType.md
 docs/TriggersAPI.md
 docs/UIMetadataAPI.md
 docs/UpdateAccessProfilesInBulk412Response.md
-docs/UpdateMultiHostSourcesRequest.md
+docs/UpdateMultiHostSourcesRequestInner.md
+docs/UpdateMultiHostSourcesRequestInnerValue.md
 docs/UsageType.md
 docs/UserApp.md
 docs/UserAppAccount.md
@@ -1418,7 +1418,6 @@ model_invocation_status.go
 model_invocation_status_type.go
 model_json_patch.go
 model_json_patch_operation.go
-model_json_patch_operation_value.go
 model_json_patch_operations.go
 model_json_patch_operations_value.go
 model_kba_answer_request_item.go
@@ -1830,7 +1829,8 @@ model_trigger_example_input.go
 model_trigger_example_output.go
 model_trigger_type.go
 model_update_access_profiles_in_bulk_412_response.go
-model_update_multi_host_sources_request.go
+model_update_multi_host_sources_request_inner.go
+model_update_multi_host_sources_request_inner_value.go
 model_usage_type.go
 model_user_app.go
 model_user_app_account.go

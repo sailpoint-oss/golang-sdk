@@ -15,11 +15,11 @@ import (
 	"fmt"
 )
 
-// checks if the JsonPatchOperation type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &JsonPatchOperation{}
+// checks if the UpdateMultiHostSourcesRequestInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UpdateMultiHostSourcesRequestInner{}
 
-// JsonPatchOperation A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)
-type JsonPatchOperation struct {
+// UpdateMultiHostSourcesRequestInner A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)
+type UpdateMultiHostSourcesRequestInner struct {
 	// The operation to be performed
 	Op string `json:"op"`
 	// A string JSON Pointer representing the target path to an element to be affected by the operation
@@ -28,29 +28,29 @@ type JsonPatchOperation struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _JsonPatchOperation JsonPatchOperation
+type _UpdateMultiHostSourcesRequestInner UpdateMultiHostSourcesRequestInner
 
-// NewJsonPatchOperation instantiates a new JsonPatchOperation object
+// NewUpdateMultiHostSourcesRequestInner instantiates a new UpdateMultiHostSourcesRequestInner object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewJsonPatchOperation(op string, path string) *JsonPatchOperation {
-	this := JsonPatchOperation{}
+func NewUpdateMultiHostSourcesRequestInner(op string, path string) *UpdateMultiHostSourcesRequestInner {
+	this := UpdateMultiHostSourcesRequestInner{}
 	this.Op = op
 	this.Path = path
 	return &this
 }
 
-// NewJsonPatchOperationWithDefaults instantiates a new JsonPatchOperation object
+// NewUpdateMultiHostSourcesRequestInnerWithDefaults instantiates a new UpdateMultiHostSourcesRequestInner object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewJsonPatchOperationWithDefaults() *JsonPatchOperation {
-	this := JsonPatchOperation{}
+func NewUpdateMultiHostSourcesRequestInnerWithDefaults() *UpdateMultiHostSourcesRequestInner {
+	this := UpdateMultiHostSourcesRequestInner{}
 	return &this
 }
 
 // GetOp returns the Op field value
-func (o *JsonPatchOperation) GetOp() string {
+func (o *UpdateMultiHostSourcesRequestInner) GetOp() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -61,7 +61,7 @@ func (o *JsonPatchOperation) GetOp() string {
 
 // GetOpOk returns a tuple with the Op field value
 // and a boolean to check if the value has been set.
-func (o *JsonPatchOperation) GetOpOk() (*string, bool) {
+func (o *UpdateMultiHostSourcesRequestInner) GetOpOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -69,12 +69,12 @@ func (o *JsonPatchOperation) GetOpOk() (*string, bool) {
 }
 
 // SetOp sets field value
-func (o *JsonPatchOperation) SetOp(v string) {
+func (o *UpdateMultiHostSourcesRequestInner) SetOp(v string) {
 	o.Op = v
 }
 
 // GetPath returns the Path field value
-func (o *JsonPatchOperation) GetPath() string {
+func (o *UpdateMultiHostSourcesRequestInner) GetPath() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -85,7 +85,7 @@ func (o *JsonPatchOperation) GetPath() string {
 
 // GetPathOk returns a tuple with the Path field value
 // and a boolean to check if the value has been set.
-func (o *JsonPatchOperation) GetPathOk() (*string, bool) {
+func (o *UpdateMultiHostSourcesRequestInner) GetPathOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,12 +93,12 @@ func (o *JsonPatchOperation) GetPathOk() (*string, bool) {
 }
 
 // SetPath sets field value
-func (o *JsonPatchOperation) SetPath(v string) {
+func (o *UpdateMultiHostSourcesRequestInner) SetPath(v string) {
 	o.Path = v
 }
 
 // GetValue returns the Value field value if set, zero value otherwise.
-func (o *JsonPatchOperation) GetValue() UpdateMultiHostSourcesRequestInnerValue {
+func (o *UpdateMultiHostSourcesRequestInner) GetValue() UpdateMultiHostSourcesRequestInnerValue {
 	if o == nil || IsNil(o.Value) {
 		var ret UpdateMultiHostSourcesRequestInnerValue
 		return ret
@@ -108,7 +108,7 @@ func (o *JsonPatchOperation) GetValue() UpdateMultiHostSourcesRequestInnerValue 
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *JsonPatchOperation) GetValueOk() (*UpdateMultiHostSourcesRequestInnerValue, bool) {
+func (o *UpdateMultiHostSourcesRequestInner) GetValueOk() (*UpdateMultiHostSourcesRequestInnerValue, bool) {
 	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
@@ -116,7 +116,7 @@ func (o *JsonPatchOperation) GetValueOk() (*UpdateMultiHostSourcesRequestInnerVa
 }
 
 // HasValue returns a boolean if a field has been set.
-func (o *JsonPatchOperation) HasValue() bool {
+func (o *UpdateMultiHostSourcesRequestInner) HasValue() bool {
 	if o != nil && !IsNil(o.Value) {
 		return true
 	}
@@ -125,11 +125,11 @@ func (o *JsonPatchOperation) HasValue() bool {
 }
 
 // SetValue gets a reference to the given UpdateMultiHostSourcesRequestInnerValue and assigns it to the Value field.
-func (o *JsonPatchOperation) SetValue(v UpdateMultiHostSourcesRequestInnerValue) {
+func (o *UpdateMultiHostSourcesRequestInner) SetValue(v UpdateMultiHostSourcesRequestInnerValue) {
 	o.Value = &v
 }
 
-func (o JsonPatchOperation) MarshalJSON() ([]byte, error) {
+func (o UpdateMultiHostSourcesRequestInner) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -137,7 +137,7 @@ func (o JsonPatchOperation) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o JsonPatchOperation) ToMap() (map[string]interface{}, error) {
+func (o UpdateMultiHostSourcesRequestInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["op"] = o.Op
 	toSerialize["path"] = o.Path
@@ -152,7 +152,7 @@ func (o JsonPatchOperation) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *JsonPatchOperation) UnmarshalJSON(data []byte) (err error) {
+func (o *UpdateMultiHostSourcesRequestInner) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -175,15 +175,15 @@ func (o *JsonPatchOperation) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varJsonPatchOperation := _JsonPatchOperation{}
+	varUpdateMultiHostSourcesRequestInner := _UpdateMultiHostSourcesRequestInner{}
 
-	err = json.Unmarshal(data, &varJsonPatchOperation)
+	err = json.Unmarshal(data, &varUpdateMultiHostSourcesRequestInner)
 
 	if err != nil {
 		return err
 	}
 
-	*o = JsonPatchOperation(varJsonPatchOperation)
+	*o = UpdateMultiHostSourcesRequestInner(varUpdateMultiHostSourcesRequestInner)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -197,38 +197,38 @@ func (o *JsonPatchOperation) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableJsonPatchOperation struct {
-	value *JsonPatchOperation
+type NullableUpdateMultiHostSourcesRequestInner struct {
+	value *UpdateMultiHostSourcesRequestInner
 	isSet bool
 }
 
-func (v NullableJsonPatchOperation) Get() *JsonPatchOperation {
+func (v NullableUpdateMultiHostSourcesRequestInner) Get() *UpdateMultiHostSourcesRequestInner {
 	return v.value
 }
 
-func (v *NullableJsonPatchOperation) Set(val *JsonPatchOperation) {
+func (v *NullableUpdateMultiHostSourcesRequestInner) Set(val *UpdateMultiHostSourcesRequestInner) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableJsonPatchOperation) IsSet() bool {
+func (v NullableUpdateMultiHostSourcesRequestInner) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableJsonPatchOperation) Unset() {
+func (v *NullableUpdateMultiHostSourcesRequestInner) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableJsonPatchOperation(val *JsonPatchOperation) *NullableJsonPatchOperation {
-	return &NullableJsonPatchOperation{value: val, isSet: true}
+func NewNullableUpdateMultiHostSourcesRequestInner(val *UpdateMultiHostSourcesRequestInner) *NullableUpdateMultiHostSourcesRequestInner {
+	return &NullableUpdateMultiHostSourcesRequestInner{value: val, isSet: true}
 }
 
-func (v NullableJsonPatchOperation) MarshalJSON() ([]byte, error) {
+func (v NullableUpdateMultiHostSourcesRequestInner) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableJsonPatchOperation) UnmarshalJSON(src []byte) error {
+func (v *NullableUpdateMultiHostSourcesRequestInner) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

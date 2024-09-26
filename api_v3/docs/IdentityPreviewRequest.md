@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **IdentityId** | Pointer to **string** | The Identity id | [optional] 
-**IdentityAttributeConfig** | Pointer to [**[]IdentityAttributeConfig**](IdentityAttributeConfig.md) |  | [optional] 
+**IdentityAttributeConfig** | Pointer to [**IdentityAttributeConfig**](IdentityAttributeConfig.md) |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasIdentityId returns a boolean if a field has been set.
 
 ### GetIdentityAttributeConfig
 
-`func (o *IdentityPreviewRequest) GetIdentityAttributeConfig() []IdentityAttributeConfig`
+`func (o *IdentityPreviewRequest) GetIdentityAttributeConfig() IdentityAttributeConfig`
 
 GetIdentityAttributeConfig returns the IdentityAttributeConfig field if non-nil, zero value otherwise.
 
 ### GetIdentityAttributeConfigOk
 
-`func (o *IdentityPreviewRequest) GetIdentityAttributeConfigOk() (*[]IdentityAttributeConfig, bool)`
+`func (o *IdentityPreviewRequest) GetIdentityAttributeConfigOk() (*IdentityAttributeConfig, bool)`
 
 GetIdentityAttributeConfigOk returns a tuple with the IdentityAttributeConfig field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIdentityAttributeConfig
 
-`func (o *IdentityPreviewRequest) SetIdentityAttributeConfig(v []IdentityAttributeConfig)`
+`func (o *IdentityPreviewRequest) SetIdentityAttributeConfig(v IdentityAttributeConfig)`
 
 SetIdentityAttributeConfig sets IdentityAttributeConfig field to given value.
 

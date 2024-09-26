@@ -347,9 +347,9 @@ Class | Method | HTTP request | Description
 *MultiHostIntegrationAPI* | [**GetEntitlementAggregationGroups**](docs/MultiHostIntegrationAPI.md#getentitlementaggregationgroups) | **Get** /multihosts/{multiHostId}/entitlementAggregationGroups | Get Entitlement Aggregation Groups Within Multi-Host Integration ID
 *MultiHostIntegrationAPI* | [**GetMultiHostIntegrations**](docs/MultiHostIntegrationAPI.md#getmultihostintegrations) | **Get** /multihosts/{id} | Get Multi-Host Integration By ID
 *MultiHostIntegrationAPI* | [**GetMultiHostIntegrationsList**](docs/MultiHostIntegrationAPI.md#getmultihostintegrationslist) | **Get** /multihosts | List All Existing Multi-Host Integrations
+*MultiHostIntegrationAPI* | [**GetMultiHostSourceCreationErrors**](docs/MultiHostIntegrationAPI.md#getmultihostsourcecreationerrors) | **Get** /multihosts/{multiHostId}/sources/errors | List Multi-Host Source Creation Errors
 *MultiHostIntegrationAPI* | [**GetMultihostIntegrationTypes**](docs/MultiHostIntegrationAPI.md#getmultihostintegrationtypes) | **Get** /multihosts/types | List Multi-Host Integration Types
 *MultiHostIntegrationAPI* | [**GetSourcesWithinMultiHost**](docs/MultiHostIntegrationAPI.md#getsourceswithinmultihost) | **Get** /multihosts/{id}/sources | List Sources Within Multi-Host Integration
-*MultiHostIntegrationAPI* | [**GetSourcesWithinMultiHost_0**](docs/MultiHostIntegrationAPI.md#getsourceswithinmultihost_0) | **Get** /multihosts/{multiHostId}/sources/errors | List Multi-Host Integration Sources Creation Errors
 *MultiHostIntegrationAPI* | [**TestConnectionMultiHostSources**](docs/MultiHostIntegrationAPI.md#testconnectionmultihostsources) | **Post** /multihosts/{multihost_id}/sources/testConnection | Test Configuration For Multi-Host Integration
 *MultiHostIntegrationAPI* | [**TestSourceConnectionMultihost**](docs/MultiHostIntegrationAPI.md#testsourceconnectionmultihost) | **Get** /multihosts/{multihost_id}/sources/{sourceId}/testConnection | Test Configuration For Multi-Host Integration&#39;s Single Source
 *MultiHostIntegrationAPI* | [**UpdateMultiHostSources**](docs/MultiHostIntegrationAPI.md#updatemultihostsources) | **Patch** /multihosts/{id} | Update Multi-Host Integration
@@ -1029,7 +1029,6 @@ Class | Method | HTTP request | Description
  - [InvocationStatusType](docs/InvocationStatusType.md)
  - [JsonPatch](docs/JsonPatch.md)
  - [JsonPatchOperation](docs/JsonPatchOperation.md)
- - [JsonPatchOperationValue](docs/JsonPatchOperationValue.md)
  - [JsonPatchOperations](docs/JsonPatchOperations.md)
  - [JsonPatchOperationsValue](docs/JsonPatchOperationsValue.md)
  - [KbaAnswerRequestItem](docs/KbaAnswerRequestItem.md)
@@ -1441,7 +1440,8 @@ Class | Method | HTTP request | Description
  - [TriggerExampleOutput](docs/TriggerExampleOutput.md)
  - [TriggerType](docs/TriggerType.md)
  - [UpdateAccessProfilesInBulk412Response](docs/UpdateAccessProfilesInBulk412Response.md)
- - [UpdateMultiHostSourcesRequest](docs/UpdateMultiHostSourcesRequest.md)
+ - [UpdateMultiHostSourcesRequestInner](docs/UpdateMultiHostSourcesRequestInner.md)
+ - [UpdateMultiHostSourcesRequestInnerValue](docs/UpdateMultiHostSourcesRequestInnerValue.md)
  - [UsageType](docs/UsageType.md)
  - [UserApp](docs/UserApp.md)
  - [UserAppAccount](docs/UserAppAccount.md)
