@@ -45,8 +45,11 @@ type Role struct {
 	RevocationRequestConfig *RevocabilityForRole `json:"revocationRequestConfig,omitempty"`
 	// List of IDs of segments, if any, to which this Role is assigned.
 	Segments []string `json:"segments,omitempty"`
+	// Whether the Role is dimensional.
 	Dimensional NullableBool `json:"dimensional,omitempty"`
+	// TBD
 	DimensionRefs NullableString `json:"dimensionRefs,omitempty"`
+	AccessModelMetadata []AttributeDTOList `json:"accessModelMetadata,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -64,6 +67,8 @@ func NewRole(name string, owner OwnerReference) *Role {
 	this.Enabled = &enabled
 	var requestable bool = false
 	this.Requestable = &requestable
+	var dimensional bool = false
+	this.Dimensional = *NewNullableBool(&dimensional)
 	return &this
 }
 
@@ -76,6 +81,8 @@ func NewRoleWithDefaults() *Role {
 	this.Enabled = &enabled
 	var requestable bool = false
 	this.Requestable = &requestable
+	var dimensional bool = false
+	this.Dimensional = *NewNullableBool(&dimensional)
 	return &this
 }
 
@@ -650,6 +657,38 @@ func (o *Role) UnsetDimensionRefs() {
 	o.DimensionRefs.Unset()
 }
 
+// GetAccessModelMetadata returns the AccessModelMetadata field value if set, zero value otherwise.
+func (o *Role) GetAccessModelMetadata() []AttributeDTOList {
+	if o == nil || IsNil(o.AccessModelMetadata) {
+		var ret []AttributeDTOList
+		return ret
+	}
+	return o.AccessModelMetadata
+}
+
+// GetAccessModelMetadataOk returns a tuple with the AccessModelMetadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Role) GetAccessModelMetadataOk() ([]AttributeDTOList, bool) {
+	if o == nil || IsNil(o.AccessModelMetadata) {
+		return nil, false
+	}
+	return o.AccessModelMetadata, true
+}
+
+// HasAccessModelMetadata returns a boolean if a field has been set.
+func (o *Role) HasAccessModelMetadata() bool {
+	if o != nil && !IsNil(o.AccessModelMetadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessModelMetadata gets a reference to the given []AttributeDTOList and assigns it to the AccessModelMetadata field.
+func (o *Role) SetAccessModelMetadata(v []AttributeDTOList) {
+	o.AccessModelMetadata = v
+}
+
 func (o Role) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -706,6 +745,9 @@ func (o Role) ToMap() (map[string]interface{}, error) {
 	}
 	if o.DimensionRefs.IsSet() {
 		toSerialize["dimensionRefs"] = o.DimensionRefs.Get()
+	}
+	if !IsNil(o.AccessModelMetadata) {
+		toSerialize["accessModelMetadata"] = o.AccessModelMetadata
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -768,6 +810,7 @@ func (o *Role) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "segments")
 		delete(additionalProperties, "dimensional")
 		delete(additionalProperties, "dimensionRefs")
+		delete(additionalProperties, "accessModelMetadata")
 		o.AdditionalProperties = additionalProperties
 	}
 

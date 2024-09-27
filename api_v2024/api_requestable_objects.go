@@ -98,7 +98,7 @@ func (r ApiListRequestableObjectsRequest) Execute() ([]RequestableObject, *http.
 ListRequestableObjects Requestable Objects List
 
 This endpoint returns a list of acccess items that that can be requested through the Access Request endpoints. Access items are marked with AVAILABLE, PENDING or ASSIGNED with respect to the identity provided using *identity-id* query param.
-Any authenticated token can call this endpoint to see their requestable access items. A token with ORG_ADMIN authority is required to call this endpoint to return a list of all of the requestable access items for the org or for another identity.
+Any authenticated token can call this endpoint to see their requestable access items.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListRequestableObjectsRequest

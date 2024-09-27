@@ -37,7 +37,6 @@ func (r ApiDeleteMFAConfigRequest) Execute() (*MfaOktaConfig, *http.Response, er
 DeleteMFAConfig Delete MFA method configuration
 
 This API removes the configuration for the specified MFA method.
-A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param method The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'.
@@ -193,7 +192,7 @@ func (r ApiGetMFADuoConfigRequest) Execute() (*MfaDuoConfig, *http.Response, err
 /*
 GetMFADuoConfig Configuration of Duo MFA method
 
-This API returns the configuration of an Duo MFA method. A token with ORG_ADMIN authority is required to call this API.
+This API returns the configuration of an Duo MFA method.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetMFADuoConfigRequest
@@ -353,7 +352,7 @@ func (r ApiGetMFAKbaConfigRequest) Execute() ([]KbaQuestion, *http.Response, err
 /*
 GetMFAKbaConfig Configuration of KBA MFA method
 
-This API returns the KBA configuration for MFA. A token with USER or ORG_ADMIN authority is required to call this API.
+This API returns the KBA configuration for MFA.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetMFAKbaConfigRequest
@@ -509,7 +508,7 @@ func (r ApiGetMFAOktaConfigRequest) Execute() (*MfaOktaConfig, *http.Response, e
 /*
 GetMFAOktaConfig Configuration of Okta MFA method
 
-This API returns the configuration of an Okta MFA method. A token with ORG_ADMIN authority is required to call this API.
+This API returns the configuration of an Okta MFA method.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetMFAOktaConfigRequest
@@ -668,7 +667,7 @@ func (r ApiSetMFADuoConfigRequest) Execute() (*MfaDuoConfig, *http.Response, err
 /*
 SetMFADuoConfig Set Duo MFA configuration
 
-This API sets the configuration of an Duo MFA method. A token with ORG_ADMIN authority is required to call this API.
+This API sets the configuration of an Duo MFA method.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSetMFADuoConfigRequest
@@ -832,8 +831,7 @@ func (r ApiSetMFAKBAConfigRequest) Execute() ([]KbaAnswerResponseItem, *http.Res
 /*
 SetMFAKBAConfig Set MFA KBA configuration
 
-This API sets answers to challenge questions.  Any configured questions omitted from the request are removed from user KBA configuration.
-A token with USER authority is required to call this API.
+This API sets answers to challenge questions.  Any configured questions omitted from the request are removed from user KBA configuration.    
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSetMFAKBAConfigRequest
@@ -997,7 +995,7 @@ func (r ApiSetMFAOktaConfigRequest) Execute() (*MfaOktaConfig, *http.Response, e
 /*
 SetMFAOktaConfig Set Okta MFA configuration
 
-This API sets the configuration of an Okta MFA method. A token with ORG_ADMIN authority is required to call this API.
+This API sets the configuration of an Okta MFA method.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSetMFAOktaConfigRequest
@@ -1157,7 +1155,6 @@ func (r ApiTestMFAConfigRequest) Execute() (*MfaConfigTestResponse, *http.Respon
 TestMFAConfig MFA method's test configuration
 
 This API validates that the configuration is valid and will properly authenticate with the MFA provider identified by the method path parameter.
-A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param method The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'.

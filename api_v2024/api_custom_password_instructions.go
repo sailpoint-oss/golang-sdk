@@ -48,7 +48,7 @@ func (r ApiCreateCustomPasswordInstructionsRequest) Execute() (*CustomPasswordIn
 /*
 CreateCustomPasswordInstructions Create Custom Password Instructions
 
-This API creates the custom password instructions for the specified page ID. A token with ORG_ADMIN authority is required to call this API.
+This API creates the custom password instructions for the specified page ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateCustomPasswordInstructionsRequest
@@ -215,7 +215,7 @@ func (r ApiDeleteCustomPasswordInstructionsRequest) Execute() (*http.Response, e
 /*
 DeleteCustomPasswordInstructions Delete Custom Password Instructions by page ID
 
-This API delete the custom password instructions for the specified page ID. A token with ORG_ADMIN authority is required to call this API.
+This API delete the custom password instructions for the specified page ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param pageId The page ID of custom password instructions to delete.
@@ -377,7 +377,7 @@ func (r ApiGetCustomPasswordInstructionsRequest) Execute() (*CustomPasswordInstr
 /*
 GetCustomPasswordInstructions Get Custom Password Instructions by Page ID
 
-This API returns the custom password instructions for the specified page ID. A token with ORG_ADMIN authority is required to call this API.
+This API returns the custom password instructions for the specified page ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param pageId The page ID of custom password instructions to query.

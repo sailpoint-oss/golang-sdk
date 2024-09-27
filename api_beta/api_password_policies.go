@@ -41,7 +41,7 @@ func (r ApiCreatePasswordPolicyRequest) Execute() (*PasswordPolicyV3Dto, *http.R
 /*
 CreatePasswordPolicy Create Password Policy
 
-This API creates the specified password policy. A token with ORG_ADMIN authority is required to call this API.
+This API creates the specified password policy.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreatePasswordPolicyRequest
@@ -211,7 +211,7 @@ func (r ApiDeletePasswordPolicyRequest) Execute() (*http.Response, error) {
 /*
 DeletePasswordPolicy Delete Password Policy by ID
 
-This API deletes the specified password policy. A token with ORG_ADMIN authority is required to call this API.
+This API deletes the specified password policy.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of password policy to delete.
@@ -368,7 +368,7 @@ func (r ApiGetPasswordPolicyByIdRequest) Execute() (*PasswordPolicyV3Dto, *http.
 /*
 GetPasswordPolicyById Get Password Policy by ID
 
-This API returns the password policy for the specified ID. A token with ORG_ADMIN authority is required to call this API.
+This API returns the password policy for the specified ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of password policy to retrieve.
@@ -735,7 +735,7 @@ func (r ApiSetPasswordPolicyRequest) Execute() (*PasswordPolicyV3Dto, *http.Resp
 /*
 SetPasswordPolicy Update Password Policy by ID
 
-This API updates the specified password policy. A token with ORG_ADMIN authority is required to call this API.
+This API updates the specified password policy.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of password policy to update.

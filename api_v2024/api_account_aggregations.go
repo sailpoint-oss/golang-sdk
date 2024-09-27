@@ -50,8 +50,7 @@ Accounts that have not changed since the previous aggregation are not included i
 Since this endpoint reports on the status of an *in-progress* account aggregation, totalAccounts and processedAccounts may change between calls to this endpoint.
 
 *Only available up to an hour after the aggregation completes. May respond with *404 Not Found* after that.*
-
-A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN or DASHBOARD authority is required to call this API.
+required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The account aggregation id

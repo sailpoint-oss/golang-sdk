@@ -1728,10 +1728,7 @@ paths:
       tags:
       - Access Profiles
     get:
-      description: |-
-        This API returns an Access Profile by its ID.
-
-        A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+      description: This API returns an Access Profile by its ID.
       operationId: getAccessProfile
       parameters:
       - description: ID of the Access Profile
@@ -1808,9 +1805,18 @@ paths:
       - userAuth:
         - idn:access-profile:read
         - idn:access-profile:manage
+      - applicationAuth:
+        - idn:access-profile:read
+        - idn:access-profile:manage
       summary: Get an Access Profile
       tags:
       - Access Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     patch:
       description: |-
         This API updates an existing Access Profile. The following fields are patchable:
@@ -1951,10 +1957,7 @@ paths:
         \ performed and the **inUse** field of the response indicates the usages that\
         \ must be removed first. If the request field **bestEffortOnly** is **true**,\
         \ however, usages are reported in the **inUse** response field but all other\
-        \ indicated access profiles will be deleted.\nA token with API, ORG_ADMIN,\
-        \ SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this endpoint.\
-        \ In addition, a SOURCE_SUBADMIN can only use this endpoint to delete access\
-        \ profiles associated with sources they're able to administer."
+        \ indicated access profiles will be deleted."
       operationId: deleteAccessProfilesInBulk
       requestBody:
         content:
@@ -2056,9 +2059,17 @@ paths:
       security:
       - userAuth:
         - idn:access-profile:manage
+      - applicationAuth:
+        - idn:access-profile:manage
       summary: Delete Access Profile(s)
       tags:
       - Access Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /access-profiles/bulk-update-requestable:
     post:
       description: |-
@@ -2068,7 +2079,7 @@ paths:
             list of the response.Requestable field of these Access Profiles marked as **true** or **false**.
 
         >  If any of the indicated Access Profiles is not does not exists in Organization,then those Access Profiles will be added in **notFound** list of the response. Access Profiles marked as **notFound** will not be updated.
-        >  A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. In addition, a SOURCE_SUBADMIN may only use this API to update Access Profiles which are associated with Sources they are able to administer.
+        A SOURCE_SUBADMIN user may only use this API to update Access Profiles which are associated with Sources they are able to administer.
       operationId: updateAccessProfilesInBulk
       requestBody:
         content:
@@ -2157,16 +2168,20 @@ paths:
       security:
       - userAuth:
         - idn:access-profile:manage
+      - applicationAuth:
+        - idn:access-profile:manage
       summary: Update Access Profile(s) requestable field.
       tags:
       - Access Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /access-profiles/{id}/entitlements:
     get:
       description: "Use this API to get a list of an access profile's entitlements.\
-        \ \nA token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority\
-        \ is required to call this API. In addition, a token with SOURCE_SUBADMIN\
-        \ authority must have access to the source associated with the specified access\
-        \ profile."
+        \ \nA user with SOURCE_SUBADMIN authority must have access to the source associated\
+        \ with the specified access profile."
       operationId: getAccessProfileEntitlements
       parameters:
       - description: ID of the access profile containing the entitlements.
@@ -2308,9 +2323,16 @@ paths:
       - userAuth:
         - idn:access-profile:read
         - idn:access-profile:manage
+      - applicationAuth:
+        - idn:access-profile:read
+        - idn:access-profile:manage
       summary: List Access Profile's Entitlements
       tags:
       - Access Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /access-requests:
     post:
       description: "Use this API to submit an access request in Identity Security\
@@ -2350,9 +2372,8 @@ paths:
         \ entitlements are limited to 1 entitlement per access request currently.\n\
         * You can specify a `removeDate` if the access doesn't already have a sunset\
         \ date. The `removeDate` must be a future date, in the UTC timezone. \n* Allows\
-        \ a manager to request to revoke access for direct employees. A token with\
-        \ ORG_ADMIN authority can also request to revoke access from anyone.\n\nA\
-        \ token with API authority cannot be used to call this endpoint. \n"
+        \ a manager to request to revoke access for direct employees. A user with\
+        \ ORG_ADMIN authority can also request to revoke access from anyone.\n"
       operationId: createAccessRequest
       requestBody:
         content:
@@ -2430,11 +2451,14 @@ paths:
       summary: Submit Access Request
       tags:
       - Access Requests
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - USER
   /access-requests/cancel:
     post:
       description: |-
         This API endpoint cancels a pending access request. An access request can be cancelled only if it has not passed the approval step.
-        Any token with ORG_ADMIN authority or token of the user who originally requested the access request is required to cancel it.
+        In addition to users with ORG_ADMIN, any user who originally submitted the access request may cancel it.
       operationId: cancelAccessRequest
       requestBody:
         content:
@@ -2533,10 +2557,12 @@ paths:
       summary: Cancel Access Request
       tags:
       - Access Requests
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /access-requests/close:
     post:
       description: |
-        This endpoint closes access requests that are stuck in a pending state. It can be used throughout a request's lifecycle even after the approval state, unlike the [Cancel Access Request endpoint](https://developer.sailpoint.com/idn/api/v3/cancel-access-request/). A token with ORG_ADMIN authority is required.
+        This endpoint closes access requests that are stuck in a pending state. It can be used throughout a request's lifecycle even after the approval state, unlike the [Cancel Access Request endpoint](https://developer.sailpoint.com/idn/api/v3/cancel-access-request/).
 
         To find pending access requests with the UI, navigate to Search and use this query: status: Pending AND "Access Request". Use the Column Chooser to select 'Tracking Number', and use the 'Download' button to export a CSV containing the tracking numbers.
 
@@ -2624,9 +2650,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - sp:scopes:all
       summary: Close Access Request
       tags:
       - Access Requests
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /access-request-config:
     get:
       description: This endpoint returns the current access-request configuration.
@@ -2701,9 +2732,7 @@ paths:
       tags:
       - Access Requests
     put:
-      description: |-
-        This endpoint replaces the current access-request configuration.
-        A token with ORG_ADMIN authority is required to call this API.
+      description: This endpoint replaces the current access-request configuration.
       operationId: setAccessRequestConfig
       requestBody:
         content:
@@ -2780,12 +2809,14 @@ paths:
       summary: Update Access Request Configuration
       tags:
       - Access Requests
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /access-request-status:
     get:
       description: |-
         Use this API to return a list of access request statuses based on the specified query parameters.
         If an access request was made for access that an identity already has, the API ignores the access request.  These ignored requests do not display in the list of access request statuses.
-        Any token with any authority can request their own status. A token with ORG_ADMIN authority is required to call this API to get a list of statuses for other users.
+        Any user with any user level can get the status of their own access requests. A user with ORG_ADMIN is required to call this API to get a list of statuses for other users.
       operationId: listAccessRequestStatus
       parameters:
       - description: Filter the results by the identity the requests were made for.
@@ -2946,6 +2977,8 @@ paths:
       summary: Access Request Status
       tags:
       - Access Requests
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /access-request-approvals/pending:
     get:
       description: This endpoint returns a list of pending approvals. See "owner-id"
@@ -24207,8 +24240,7 @@ paths:
       - Approvals
   /mfa/okta-verify/config:
     get:
-      description: This API returns the configuration of an Okta MFA method. A token
-        with ORG_ADMIN authority is required to call this API.
+      description: This API returns the configuration of an Okta MFA method.
       operationId: getMFAOktaConfig
       responses:
         "200":
@@ -24286,9 +24318,10 @@ paths:
       summary: Configuration of Okta MFA method
       tags:
       - MFA Configuration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     put:
-      description: This API sets the configuration of an Okta MFA method. A token
-        with ORG_ADMIN authority is required to call this API.
+      description: This API sets the configuration of an Okta MFA method.
       operationId: setMFAOktaConfig
       requestBody:
         content:
@@ -24377,10 +24410,11 @@ paths:
       summary: Set Okta MFA configuration
       tags:
       - MFA Configuration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /mfa/duo-web/config:
     get:
-      description: This API returns the configuration of an Duo MFA method. A token
-        with ORG_ADMIN authority is required to call this API.
+      description: This API returns the configuration of an Duo MFA method.
       operationId: getMFADuoConfig
       responses:
         "200":
@@ -24461,9 +24495,10 @@ paths:
       summary: Configuration of Duo MFA method
       tags:
       - MFA Configuration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     put:
-      description: This API sets the configuration of an Duo MFA method. A token with
-        ORG_ADMIN authority is required to call this API.
+      description: This API sets the configuration of an Duo MFA method.
       operationId: setMFADuoConfig
       requestBody:
         content:
@@ -24558,10 +24593,11 @@ paths:
       summary: Set Duo MFA configuration
       tags:
       - MFA Configuration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /mfa/kba/config:
     get:
-      description: This API returns the KBA configuration for MFA. A token with USER
-        or ORG_ADMIN authority is required to call this API.
+      description: This API returns the KBA configuration for MFA.
       operationId: getMFAKbaConfig
       parameters:
       - description: "Indicator whether the question text should be returned in all\
@@ -24656,11 +24692,13 @@ paths:
       summary: Configuration of KBA MFA method
       tags:
       - MFA Configuration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - USER
   /mfa/kba/config/answers:
     post:
-      description: |-
-        This API sets answers to challenge questions.  Any configured questions omitted from the request are removed from user KBA configuration.
-        A token with USER authority is required to call this API.
+      description: 'This API sets answers to challenge questions.  Any configured
+        questions omitted from the request are removed from user KBA configuration.    '
       operationId: setMFAKBAConfig
       requestBody:
         content:
@@ -24759,11 +24797,12 @@ paths:
       summary: Set MFA KBA configuration
       tags:
       - MFA Configuration
+      x-sailpoint-userLevels:
+      - USER
   /mfa/{method}/test:
     get:
-      description: |-
-        This API validates that the configuration is valid and will properly authenticate with the MFA provider identified by the method path parameter.
-        A token with ORG_ADMIN authority is required to call this API.
+      description: This API validates that the configuration is valid and will properly
+        authenticate with the MFA provider identified by the method path parameter.
       operationId: testMFAConfig
       parameters:
       - description: The name of the MFA method. The currently supported method names
@@ -24847,11 +24886,11 @@ paths:
       summary: MFA method's test configuration
       tags:
       - MFA Configuration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /mfa/{method}/delete:
     delete:
-      description: |-
-        This API removes the configuration for the specified MFA method.
-        A token with ORG_ADMIN authority is required to call this API.
+      description: This API removes the configuration for the specified MFA method.
       operationId: deleteMFAConfig
       parameters:
       - description: The name of the MFA method. The currently supported method names
@@ -24937,6 +24976,8 @@ paths:
       summary: Delete MFA method configuration
       tags:
       - MFA Configuration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /mfa/okta-verify/verify:
     post:
       description: "This API Authenticates the user via Okta-Verify MFA method. Request\
@@ -25113,7 +25154,7 @@ paths:
   /mfa/{method}/poll:
     post:
       description: This API poll the VerificationPollRequest for the specified MFA
-        method. A token with ORG_ADMIN authority is required to call this API.
+        method.
       operationId: pingVerificationStatus
       parameters:
       - description: "The name of the MFA method. The currently supported method names\
@@ -25205,6 +25246,8 @@ paths:
       summary: Polling MFA method by VerificationPollRequest
       tags:
       - MFA Controller
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /mfa/kba/authenticate:
     post:
       description: This API Authenticate user in KBA MFA method.
@@ -27818,7 +27861,6 @@ paths:
     get:
       description: |-
         This gets password dictionary for the organization.
-        A token with ORG_ADMIN authority is required to call this API.
         The password dictionary file can contain lines that are:
         1. comment lines - the first character is '#', can be 128 Unicode codepoints in length, and are ignored during processing
         2. empty lines
@@ -27935,10 +27977,11 @@ paths:
       summary: Get Password Dictionary
       tags:
       - Password Dictionary
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     put:
       description: |-
         This updates password dictionary for the organization.
-        A token with ORG_ADMIN authority is required to call this API.
         The password dictionary file can contain lines that are:
         1. comment lines - the first character is '#', can be 128 Unicode codepoints in length, and are ignored during processing
         2. empty lines
@@ -28060,6 +28103,8 @@ paths:
       summary: Update Password Dictionary
       tags:
       - Password Dictionary
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /query-password-info:
     post:
       description: "This API is used to query password related information. \n\nA\
@@ -28377,8 +28422,7 @@ paths:
       - Password Management
   /password-sync-groups:
     get:
-      description: This API returns a list of password sync groups. A token with ORG_ADMIN
-        authority is required to call this API.
+      description: This API returns a list of password sync groups.
       operationId: getPasswordSyncGroups
       parameters:
       - description: |-
@@ -28490,9 +28534,11 @@ paths:
       summary: Get Password Sync Group List
       tags:
       - Password Sync Groups
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     post:
       description: This API creates a password sync group based on the specifications
-        provided. A token with ORG_ADMIN authority is required to call this API.
+        provided.
       operationId: createPasswordSyncGroup
       requestBody:
         content:
@@ -28582,10 +28628,11 @@ paths:
       summary: Create Password Sync Group
       tags:
       - Password Sync Groups
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /password-sync-groups/{id}:
     delete:
-      description: This API deletes the specified password sync group. A token with
-        ORG_ADMIN authority is required to call this API.
+      description: This API deletes the specified password sync group.
       operationId: deletePasswordSyncGroup
       parameters:
       - description: The ID of password sync group to delete.
@@ -28661,9 +28708,10 @@ paths:
       summary: Delete Password Sync Group by ID
       tags:
       - Password Sync Groups
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     get:
-      description: This API returns the sync group for the specified ID. A token with
-        ORG_ADMIN authority is required to call this API.
+      description: This API returns the sync group for the specified ID.
       operationId: getPasswordSyncGroup
       parameters:
       - description: The ID of password sync group to retrieve.
@@ -28767,9 +28815,10 @@ paths:
       summary: Get Password Sync Group by ID
       tags:
       - Password Sync Groups
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     put:
-      description: This API updates the specified password sync group. A token with
-        ORG_ADMIN authority is required to call this API.
+      description: This API updates the specified password sync group.
       operationId: updatePasswordSyncGroup
       parameters:
       - description: The ID of password sync group to update.
@@ -28886,10 +28935,11 @@ paths:
       summary: Update Password Sync Group by ID
       tags:
       - Password Sync Groups
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /password-policies/{id}:
     delete:
-      description: This API deletes the specified password policy. A token with ORG_ADMIN
-        authority is required to call this API.
+      description: This API deletes the specified password policy.
       operationId: deletePasswordPolicy
       parameters:
       - description: The ID of password policy to delete.
@@ -28983,9 +29033,10 @@ paths:
       summary: Delete Password Policy by ID
       tags:
       - Password Policies
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     get:
-      description: This API returns the password policy for the specified ID. A token
-        with ORG_ADMIN authority is required to call this API.
+      description: This API returns the password policy for the specified ID.
       operationId: getPasswordPolicyById
       parameters:
       - description: The ID of password policy to retrieve.
@@ -29114,9 +29165,10 @@ paths:
       summary: Get Password Policy by ID
       tags:
       - Password Policies
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     put:
-      description: This API updates the specified password policy. A token with ORG_ADMIN
-        authority is required to call this API.
+      description: This API updates the specified password policy.
       operationId: setPasswordPolicy
       parameters:
       - description: The ID of password policy to update.
@@ -29283,6 +29335,8 @@ paths:
       summary: Update Password Policy by ID
       tags:
       - Password Policies
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /password-policies:
     get:
       description: |-
@@ -29461,8 +29515,7 @@ paths:
       tags:
       - Password Policies
     post:
-      description: This API creates the specified password policy. A token with ORG_ADMIN
-        authority is required to call this API.
+      description: This API creates the specified password policy.
       operationId: createPasswordPolicy
       requestBody:
         content:
@@ -29590,6 +29643,8 @@ paths:
       summary: Create Password Policy
       tags:
       - Password Policies
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /password-org-config:
     get:
       description: "This API returns the password org config . Requires ORG_ADMIN,\
@@ -31706,7 +31761,7 @@ paths:
     get:
       description: |-
         This endpoint returns a list of acccess items that that can be requested through the Access Request endpoints. Access items are marked with AVAILABLE, PENDING or ASSIGNED with respect to the identity provided using *identity-id* query param.
-        Any authenticated token can call this endpoint to see their requestable access items. A token with ORG_ADMIN authority is required to call this endpoint to return a list of all of the requestable access items for the org or for another identity.
+        Any authenticated token can call this endpoint to see their requestable access items.
       operationId: listRequestableObjects
       parameters:
       - description: |-
@@ -31884,9 +31939,13 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth: []
       summary: Requestable Objects List
       tags:
       - Requestable Objects
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /role-insights/requests:
     post:
       deprecated: true
@@ -35702,7 +35761,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth:
+      - UserContextAuth:
         - idn:role-unchecked:read
         - idn:role-unchecked:manage
         - idn:role-checked:manage
@@ -35790,7 +35849,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth:
+      - UserContextAuth:
         - idn:role-unchecked:manage
         - idn:role-checked:manage
       summary: Create a Role
@@ -35872,7 +35931,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth:
+      - UserContextAuth:
         - idn:role-unchecked:manage
         - idn:role-checked:manage
       summary: Delete a Role
@@ -35881,7 +35940,6 @@ paths:
     get:
       description: |-
         This API returns a Role by its ID.
-
         A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
       operationId: getRole
       parameters:
@@ -35956,7 +36014,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth:
+      - UserContextAuth:
         - idn:role-unchecked:read
         - idn:role-unchecked:manage
         - idn:role-checked:manage
@@ -35968,16 +36026,16 @@ paths:
       description: "This API updates an existing role using [JSON Patch](https://tools.ietf.org/html/rfc6902)\
         \ syntax.\n\nThe following fields are patchable:\n\n* name\n* description\n\
         * enabled\n* owner\n* accessProfiles\n* membership\n* requestable\n* accessRequestConfig\n\
-        * revokeRequestConfig\n* segments\n\nA token with API, ORG_ADMIN, ROLE_ADMIN,\
-        \ or ROLE_SUBADMIN authority is required to call this API. In addition, a\
-        \ token with ROLE_SUBADMIN authority may only call this API if all access\
-        \ profiles included in the role are associated to Sources with management\
-        \ workgroups of which the ROLE_SUBADMIN is a member.\n\nThe maximum supported\
-        \ length for the description field is 2000 characters. Longer descriptions\
-        \ will be preserved for existing roles, however, any new roles as well as\
-        \ any updates to existing descriptions will be limited to 2000 characters.\n\
-        \nWhen you use this API to modify a role's membership identities, you can\
-        \ only modify up to a limit of 500 membership identities at a time. "
+        * revokeRequestConfig\n* segments\n* accessModelMetadata   \nA token with\
+        \ API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call\
+        \ this API. In addition, a token with ROLE_SUBADMIN authority may only call\
+        \ this API if all access profiles included in the role are associated to Sources\
+        \ with management workgroups of which the ROLE_SUBADMIN is a member.\n\nThe\
+        \ maximum supported length for the description field is 2000 characters. Longer\
+        \ descriptions will be preserved for existing roles, however, any new roles\
+        \ as well as any updates to existing descriptions will be limited to 2000\
+        \ characters.\n\nWhen you use this API to modify a role's membership identities,\
+        \ you can only modify up to a limit of 500 membership identities at a time. "
       operationId: patchRole
       parameters:
       - description: ID of the Role to patch
@@ -36051,6 +36109,16 @@ paths:
                       type: IDENTITY
                       property: attribute.email
                     stringValue: '@identitynow.com'
+              Assign a Access Model Metadata to a role:
+                description: This example shows how to assign a existing metadata
+                  to a role.
+                value:
+                - op: add
+                  path: /accessModelMetadata/attributes/0
+                  value:
+                    key: iscFederalClassifications
+                    values:
+                    - value: secret
             schema:
               items:
                 $ref: '#/components/schemas/JsonPatchOperation'
@@ -36120,7 +36188,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth:
+      - UserContextAuth:
         - idn:role-unchecked:manage
         - idn:role-checked:manage
       summary: Patch a specified Role
@@ -41716,9 +41784,7 @@ paths:
       - Sources
   /sources/{sourceId}/provisioning-policies:
     get:
-      description: |-
-        This end-point lists all the ProvisioningPolicies in IdentityNow.
-        A token with API, or ORG_ADMIN authority is required to call this API.
+      description: This end-point lists all the ProvisioningPolicies in IdentityNow.
       operationId: listProvisioningPolicies
       parameters:
       - description: The Source id
@@ -41815,15 +41881,19 @@ paths:
       - userAuth:
         - idn:provisioning-policy:read
         - idn:provisioning-policy:manage
+      - applicationAuth:
+        - idn:provisioning-policy:read
+        - idn:provisioning-policy:manage
       summary: Lists ProvisioningPolicies
       tags:
       - Sources
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     post:
       description: |-
         This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types.
         Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning.
         Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
-        A token with ORG_ADMIN authority is required to call this API.
       operationId: createProvisioningPolicy
       parameters:
       - description: The Source id
@@ -41994,11 +42064,12 @@ paths:
       summary: Create Provisioning Policy
       tags:
       - Sources
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /sources/{sourceId}/provisioning-policies/{usageType}:
     delete:
-      description: |-
-        Deletes the provisioning policy with the specified usage on an application.
-        A token with API, or ORG_ADMIN authority is required to call this API.
+      description: Deletes the provisioning policy with the specified usage on an
+        application.
       operationId: deleteProvisioningPolicy
       parameters:
       - description: The Source ID.
@@ -42113,13 +42184,16 @@ paths:
       security:
       - userAuth:
         - idn:provisioning-policy:manage
+      - applicationAuth:
+        - idn:provisioning-policy:manage
       summary: Delete Provisioning Policy by UsageType
       tags:
       - Sources
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     get:
-      description: |-
-        This end-point retrieves the ProvisioningPolicy with the specified usage on the specified Source in IdentityNow.
-        A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+      description: This end-point retrieves the ProvisioningPolicy with the specified
+        usage on the specified Source in IdentityNow.
       operationId: getProvisioningPolicy
       parameters:
       - description: The Source ID.
@@ -42240,15 +42314,23 @@ paths:
         - idn:provisioning-policy-source:read
         - idn:provisioning-policy:manage
         - idn:provisioning-policy-source-admin-operations:manage
+      - applicationAuth:
+        - idn:provisioning-policy:read
+        - idn:provisioning-policy-source:read
+        - idn:provisioning-policy:manage
+        - idn:provisioning-policy-source-admin-operations:manage
       summary: Get Provisioning Policy by UsageType
       tags:
       - Sources
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     patch:
       description: |-
         This API selectively updates an existing Provisioning Policy using a JSONPatch payload.
         Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning.
         Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
-        A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
       operationId: updateProvisioningPolicy
       parameters:
       - description: The Source id.
@@ -42391,15 +42473,20 @@ paths:
       security:
       - userAuth:
         - idn:provisioning-policy:update
+      - applicationAuth:
+        - idn:provisioning-policy:update
       summary: Partial update of Provisioning Policy
       tags:
       - Sources
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     put:
       description: |-
         This end-point updates the provisioning policy with the specified usage on the specified source in IdentityNow.
         Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning.
         Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
-        A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
       operationId: putProvisioningPolicy
       parameters:
       - description: The Source ID.
@@ -42524,14 +42611,20 @@ paths:
       - userAuth:
         - idn:provisioning-policy:manage
         - idn:provisioning-policy-source-admin-operations:manage
+      - applicationAuth:
+        - idn:provisioning-policy:manage
+        - idn:provisioning-policy-source-admin-operations:manage
       summary: Update Provisioning Policy by UsageType
       tags:
       - Sources
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /sources/{sourceId}/provisioning-policies/bulk-update:
     post:
-      description: |-
-        This end-point updates a list of provisioning policies on the specified source in IdentityNow.
-        A token with API, or ORG_ADMIN authority is required to call this API.
+      description: This end-point updates a list of provisioning policies on the specified
+        source in IdentityNow.
       operationId: updateProvisioningPoliciesInBulk
       parameters:
       - description: The Source id.
@@ -42635,9 +42728,13 @@ paths:
       security:
       - userAuth:
         - idn:provisioning-policy:manage
+      - applicationAuth:
+        - idn:provisioning-policy:manage
       summary: Bulk Update Provisioning Policies
       tags:
       - Sources
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /sources/{id}/remove-accounts:
     post:
       description: |
@@ -73178,7 +73275,7 @@ components:
         - name: "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local"
           id: 2c91809773dee32014e13e122092014e
           type: ENTITLEMENT
-        dimensional: true
+        dimensional: false
         created: 2021-03-01T22:32:58.104Z
         dimensionRefs: dimensionRefs
         description: Urna amet cursus pellentesque nisl orci maximus lorem nisl euismod
@@ -73273,6 +73370,20 @@ components:
           type: ACCESS_PROFILE
         name: Role 2567
         modified: 2021-03-02T20:22:28.104Z
+        accessModelMetadata:
+        - key: iscFederalClassifications
+          name: Federal Classifications
+          multiselect: true
+          status: active
+          type: governance
+          objectTypes:
+          - general
+          description: Classification used by government organizations to specify
+            the level of confidentiality for an access item.
+          values:
+          - value: secret
+            name: Secret
+            status: active
         id: 2c918086749d78830174a1a40e121518
         requestable: true
       properties:
@@ -73355,11 +73466,32 @@ components:
           nullable: true
           type: array
         dimensional:
+          default: false
+          description: Whether the Role is dimensional.
           nullable: true
           type: boolean
         dimensionRefs:
+          description: TBD
           nullable: true
           type: string
+        accessModelMetadata:
+          example:
+          - key: iscFederalClassifications
+            name: Federal Classifications
+            multiselect: true
+            status: active
+            type: governance
+            objectTypes:
+            - general
+            description: Classification used by government organizations to specify
+              the level of confidentiality for an access item.
+            values:
+            - value: secret
+              name: Secret
+              status: active
+          items:
+            $ref: '#/components/schemas/AttributeDTOList'
+          type: array
       required:
       - name
       - owner

@@ -1411,9 +1411,6 @@ This endpoint will perform the following tasks:
 4. Recalculate manager relationships.
 5. Potentially clean-up identity processing errors, assuming the error has been resolved.
 
-A token with ORG_ADMIN or HELPDESK authority is required to call this API.
-
-
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStartIdentityProcessingRequest
 */
@@ -1605,7 +1602,7 @@ func (r ApiSynchronizeAttributesForIdentityRequest) Execute() (*IdentitySyncJob,
 /*
 SynchronizeAttributesForIdentity Attribute synchronization for single identity.
 
-This end-point performs attribute synchronization for a selected identity. The endpoint can be called once in 10 seconds per identity. A token with ORG_ADMIN or API authority is required to call this API.
+This end-point performs attribute synchronization for a selected identity. The endpoint can be called once in 10 seconds per identity.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param identityId The Identity id

@@ -138,10 +138,13 @@ docs/ApprovalStatusDtoCurrentOwner.md
 docs/ApprovalStatusDtoOriginalOwner.md
 docs/ApprovalSummary.md
 docs/ArrayInner.md
+docs/AttributeDTO.md
+docs/AttributeDTOList.md
 docs/AttributeDefinition.md
 docs/AttributeDefinitionSchema.md
 docs/AttributeDefinitionType.md
 docs/AttributeRequest.md
+docs/AttributeValueDTO.md
 docs/AuthUser.md
 docs/AuthUsersAPI.md
 docs/BackupOptions.md
@@ -740,7 +743,10 @@ model_array_inner.go
 model_attribute_definition.go
 model_attribute_definition_schema.go
 model_attribute_definition_type.go
+model_attribute_dto.go
+model_attribute_dto_list.go
 model_attribute_request.go
+model_attribute_value_dto.go
 model_auth_user.go
 model_backup_options.go
 model_backup_response.go

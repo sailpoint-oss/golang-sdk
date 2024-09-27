@@ -34,7 +34,7 @@ func (r ApiGetPublicIdentityConfigRequest) Execute() (*PublicIdentityConfig, *ht
 /*
 GetPublicIdentityConfig Get the Public Identities Configuration
 
-Returns the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns. A token with ORG ADMIN authority is required to call this API.
+Returns the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetPublicIdentityConfigRequest
@@ -193,7 +193,7 @@ func (r ApiUpdatePublicIdentityConfigRequest) Execute() (*PublicIdentityConfig, 
 /*
 UpdatePublicIdentityConfig Update the Public Identities Configuration
 
-Updates the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns. A token with ORG ADMIN authority is required to call this API.
+Updates the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiUpdatePublicIdentityConfigRequest

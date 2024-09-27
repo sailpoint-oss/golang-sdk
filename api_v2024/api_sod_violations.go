@@ -42,8 +42,6 @@ StartPredictSodViolations Predict SOD violations for identity.
 
 This API is used to check if granting some additional accesses would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.
 
-A token with ORG_ADMIN or API authority is required to call this API.
-
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStartPredictSodViolationsRequest
 */
@@ -218,8 +216,6 @@ func (r ApiStartViolationCheckRequest) Execute() (*SodViolationCheck, *http.Resp
 StartViolationCheck Check SOD violations
 
 This API initiates a SOD policy verification asynchronously.
-
-A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStartViolationCheckRequest

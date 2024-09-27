@@ -42,8 +42,7 @@ func (r ApiCreateCustomConnectorRequest) Execute() (*V3ConnectorDto, *http.Respo
 /*
 CreateCustomConnector Create custom connector
 
-Create custom connector.
-A token with ORG_ADMIN authority is required to call this API.
+Create custom connector.    
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateCustomConnectorRequest
@@ -214,7 +213,6 @@ func (r ApiDeleteCustomConnectorRequest) Execute() (*http.Response, error) {
 DeleteCustomConnector Deletes connector by script name
 
 Delete a custom connector that using its script name.
-A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param scriptName The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
@@ -378,8 +376,7 @@ func (r ApiGetConnectorRequest) Execute() (*ConnectorDetail, *http.Response, err
 /*
 GetConnector Gets connector by script name
 
-Fetches a connector that using its script name.
-A token with ORG_ADMIN authority is required to call this API.
+Fetches a connector that using its script name.    
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param scriptName The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
@@ -550,8 +547,7 @@ func (r ApiGetConnectorCorrelationConfigRequest) Execute() (string, *http.Respon
 /*
 GetConnectorCorrelationConfig Method for GetConnectorCorrelationConfig
 
-Fetches a connector's correlation config using its script name.
-A token with ORG_ADMIN authority is required to call this API.
+Fetches a connector's correlation config using its script name.    
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param scriptName The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
@@ -754,7 +750,6 @@ func (r ApiGetConnectorListRequest) Execute() ([]V3ConnectorDto, *http.Response,
 GetConnectorList Gets connector list
 
 Fetches list of connectors that have 'RELEASED' status using filtering and pagination.
-A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetConnectorListRequest
@@ -943,8 +938,7 @@ func (r ApiGetConnectorSourceConfigRequest) Execute() (string, *http.Response, e
 /*
 GetConnectorSourceConfig Method for GetConnectorSourceConfig
 
-Fetches a connector's source config using its script name.
-A token with ORG_ADMIN authority is required to call this API.
+Fetches a connector's source config using its script name.    
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param scriptName The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
@@ -1112,8 +1106,7 @@ func (r ApiGetConnectorSourceTemplateRequest) Execute() (string, *http.Response,
 /*
 GetConnectorSourceTemplate Method for GetConnectorSourceTemplate
 
-Fetches a connector's source template using its script name.
-A token with ORG_ADMIN authority is required to call this API.
+Fetches a connector's source template using its script name.    
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param scriptName The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
@@ -1282,8 +1275,7 @@ func (r ApiGetConnectorTranslationsRequest) Execute() (string, *http.Response, e
 /*
 GetConnectorTranslations Method for GetConnectorTranslations
 
-Fetches a connector's translations using its script name.
-A token with ORG_ADMIN authority is required to call this API.
+Fetches a connector's translations using its script name.    
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param scriptName The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
@@ -1461,8 +1453,7 @@ func (r ApiPutCorrelationConfigRequest) Execute() (*UpdateDetail, *http.Response
 /*
 PutCorrelationConfig Method for PutCorrelationConfig
 
-Update a connector's correlation config using its script name.
-A token with ORG_ADMIN authority is required to call this API.
+Update a connector's correlation config using its script name.    
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param scriptName The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
@@ -1655,8 +1646,7 @@ func (r ApiPutSourceConfigRequest) Execute() (*UpdateDetail, *http.Response, err
 /*
 PutSourceConfig Method for PutSourceConfig
 
-Update a connector's source config using its script name.
-A token with ORG_ADMIN authority is required to call this API.
+Update a connector's source config using its script name.    
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param scriptName The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
@@ -1849,8 +1839,7 @@ func (r ApiPutSourceTemplateRequest) Execute() (*UpdateDetail, *http.Response, e
 /*
 PutSourceTemplate Method for PutSourceTemplate
 
-Update a connector's source template using its script name.
-A token with ORG_ADMIN authority is required to call this API.
+Update a connector's source template using its script name.    
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param scriptName The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
@@ -2037,8 +2026,7 @@ func (r ApiPutTranslationsRequest) Execute() (*UpdateDetail, *http.Response, err
 /*
 PutTranslations Method for PutTranslations
 
-Update a connector's translations using its script name.
-A token with ORG_ADMIN authority is required to call this API.
+Update a connector's translations using its script name.    
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param scriptName The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
@@ -2217,7 +2205,7 @@ func (r ApiUpdateConnectorRequest) Execute() (*ConnectorDetail, *http.Response, 
 UpdateConnector Update connector by script name
 
 Patch a custom connector that using its script name.
-A token with ORG_ADMIN authority is required to call this API. The following fields are patchable: * connectorMetadata * applicationXml * correlationConfigXml * sourceConfigXml
+The following fields are patchable: * connectorMetadata * applicationXml * correlationConfigXml * sourceConfigXml
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param scriptName The scriptName value of the connector. Scriptname is the unique id generated at connector creation.

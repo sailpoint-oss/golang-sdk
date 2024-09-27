@@ -46,6 +46,22 @@ func Test_api_v2024_RolesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test RolesAPIService DeleteMetadataFromRoleByKeyAndValue", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+		var attributeKey string
+		var attributeValue string
+
+		resp, httpRes, err := apiClient.RolesAPI.DeleteMetadataFromRoleByKeyAndValue(context.Background(), id, attributeKey, attributeValue).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test RolesAPIService DeleteRole", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -55,6 +71,32 @@ func Test_api_v2024_RolesAPIService(t *testing.T) {
 		httpRes, err := apiClient.RolesAPI.DeleteRole(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RolesAPIService GetBulkUpdateStatus", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.RolesAPI.GetBulkUpdateStatus(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RolesAPIService GetBulkUpdateStatusById", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.RolesAPI.GetBulkUpdateStatusById(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -120,6 +162,70 @@ func Test_api_v2024_RolesAPIService(t *testing.T) {
 		var id string
 
 		resp, httpRes, err := apiClient.RolesAPI.PatchRole(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RolesAPIService SearchRolesByFilter", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.RolesAPI.SearchRolesByFilter(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RolesAPIService UpdateAttributeKeyAndValueToRole", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+		var attributeKey string
+		var attributeValue string
+
+		resp, httpRes, err := apiClient.RolesAPI.UpdateAttributeKeyAndValueToRole(context.Background(), id, attributeKey, attributeValue).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RolesAPIService UpdateRolesMetadataByFilter", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.RolesAPI.UpdateRolesMetadataByFilter(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RolesAPIService UpdateRolesMetadataByIds", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.RolesAPI.UpdateRolesMetadataByIds(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RolesAPIService UpdateRolesMetadataByQuery", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.RolesAPI.UpdateRolesMetadataByQuery(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

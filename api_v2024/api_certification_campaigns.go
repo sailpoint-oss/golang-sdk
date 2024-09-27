@@ -54,8 +54,6 @@ This endpoint will return a content error if the campaign is **not past due**.
 Use this API to complete a certification campaign. This functionality is provided to admins so that they
 can complete a certification even if all items have not been completed.
 
-A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
-
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Campaign ID.
@@ -230,9 +228,7 @@ func (r ApiCreateCampaignRequest) Execute() (*Campaign, *http.Response, error) {
 /*
 CreateCampaign Create a campaign
 
-Use this API to create a certification campaign with the information provided in the request body.
-
-A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
+Use this API to create a certification campaign with the information provided in the request body.    
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -399,8 +395,6 @@ CreateCampaignTemplate Create a Campaign Template
 
 Use this API to create a certification campaign template based on campaign.
 
-A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
-
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateCampaignTemplateRequest
@@ -561,8 +555,6 @@ DeleteCampaignTemplate Delete a Campaign Template
 
 Use this API to delete a certification campaign template by ID.
 
-A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
-
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the campaign template being deleted.
@@ -720,8 +712,6 @@ func (r ApiDeleteCampaignTemplateScheduleRequest) Execute() (*http.Response, err
 DeleteCampaignTemplateSchedule Delete Campaign Template Schedule
 
 Use this API to delete the schedule for a certification campaign template. The API returns a 404 if there is no schedule set.
-
-A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -886,8 +876,6 @@ func (r ApiDeleteCampaignsRequest) Execute() (map[string]interface{}, *http.Resp
 DeleteCampaigns Delete Campaigns
 
 Use this API to delete certification campaigns whose IDs are specified in the provided list of campaign IDs.
-
-A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1101,8 +1089,6 @@ GetActiveCampaigns List Campaigns
 
 Use this API to get a list of campaigns. This API can provide increased level of detail for each campaign for the correct provided query.
 
-A token with ORG_ADMIN, CERT_ADMIN or REPORT_ADMIN authority is required to call this API.
-
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetActiveCampaignsRequest
@@ -1292,8 +1278,6 @@ GetCampaign Get Campaign
 
 Use this API to get information for an existing certification campaign by the campaign's ID.
 
-A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
-
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the campaign to be retrieved.
@@ -1466,8 +1450,6 @@ GetCampaignReports Get Campaign Reports
 
 Use this API to fetch all reports for a certification campaign by campaign ID.
 
-A token with ORG_ADMIN, CERT_ADMIN or REPORT_ADMIN authority is required to call this API.
-
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the campaign whose reports are being fetched.
@@ -1636,8 +1618,6 @@ GetCampaignReportsConfig Get Campaign Reports Configuration
 
 Use this API to fetch the configuration for certification campaign reports. The configuration includes only one element - identity attributes defined as custom report columns. 
 
-A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
-
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetCampaignReportsConfigRequest
@@ -1792,8 +1772,6 @@ func (r ApiGetCampaignTemplateRequest) Execute() (*CampaignTemplate, *http.Respo
 GetCampaignTemplate Get a Campaign Template
 
 Use this API to fetch a certification campaign template by ID.
-
-A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1963,8 +1941,6 @@ func (r ApiGetCampaignTemplateScheduleRequest) Execute() (*Schedule, *http.Respo
 GetCampaignTemplateSchedule Get Campaign Template Schedule
 
 Use this API to get the schedule for a certification campaign template. The API returns a 404 if there is no schedule set.
-
-A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -2171,8 +2147,6 @@ Use this API to get a list of all campaign templates. Scope can be reduced throu
 
 The API returns all campaign templates matching the query parameters. 
 
-A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
-
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetCampaignTemplatesRequest
@@ -2356,9 +2330,7 @@ func (r ApiMoveRequest) Execute() (*CertificationTask, *http.Response, error) {
 /*
 Move Reassign Certifications
 
-This API reassigns the specified certifications from one identity to another.
-
-A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
+This API reassigns the specified certifications from one identity to another.    
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -2541,8 +2513,6 @@ PatchCampaignTemplate Update a Campaign Template
 
 Use this API to update individual fields on a certification campaign template, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
-A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
-
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the campaign template being modified.
@@ -2723,8 +2693,6 @@ SetCampaignReportsConfig Set Campaign Reports Configuration
 
 Use this API to overwrite the configuration for campaign reports. 
 
-A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
-
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSetCampaignReportsConfigRequest
@@ -2890,8 +2858,6 @@ func (r ApiSetCampaignTemplateScheduleRequest) Execute() (*http.Response, error)
 SetCampaignTemplateSchedule Set Campaign Template Schedule
 
 Use this API to set the schedule for a certification campaign template. If a schedule already exists, the API overwrites it with the new one.
-
-A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -3059,8 +3025,6 @@ func (r ApiStartCampaignRequest) Execute() (map[string]interface{}, *http.Respon
 StartCampaign Activate a Campaign
 
 Use this API to submit a job to activate the certified campaign with the specified ID. The campaign must be staged.
-
-A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -3233,8 +3197,6 @@ StartCampaignRemediationScan Run Campaign Remediation Scan
 
 Use this API to run a remediation scan task for a certification campaign.
 
-A token with ORG_ADMIN, CERT_ADMIN or REPORT_ADMIN authority is required to call this API.
-
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the campaign the remediation scan is being run for.
@@ -3404,8 +3366,6 @@ func (r ApiStartCampaignReportRequest) Execute() (map[string]interface{}, *http.
 StartCampaignReport Run Campaign Report
 
 Use this API to run a report for a certification campaign.
-
-A token with ORG_ADMIN, CERT_ADMIN or REPORT_ADMIN authority is required to call this API.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -3589,8 +3549,6 @@ campaign called "Campaign for 2020" (assuming the year at generation time is 202
 
 Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html).
 
-A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
-
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the campaign template to use for generation.
@@ -3755,8 +3713,6 @@ func (r ApiUpdateCampaignRequest) Execute() (*SlimCampaign, *http.Response, erro
 UpdateCampaign Update a Campaign
 
 Use this API to update individual fields on a certification campaign, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
-
-A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

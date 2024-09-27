@@ -488,12 +488,20 @@ Class | Method | HTTP request | Description
 *RoleInsightsAPI* | [**GetRoleInsightsSummary**](docs/RoleInsightsAPI.md#getroleinsightssummary) | **Get** /role-insights/summary | Get role insights summary information
 *RolesAPI* | [**CreateRole**](docs/RolesAPI.md#createrole) | **Post** /roles | Create a Role
 *RolesAPI* | [**DeleteBulkRoles**](docs/RolesAPI.md#deletebulkroles) | **Post** /roles/bulk-delete | Delete Role(s)
+*RolesAPI* | [**DeleteMetadataFromRoleByKeyAndValue**](docs/RolesAPI.md#deletemetadatafromrolebykeyandvalue) | **Delete** /roles/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Remove a Metadata From Role.
 *RolesAPI* | [**DeleteRole**](docs/RolesAPI.md#deleterole) | **Delete** /roles/{id} | Delete a Role
+*RolesAPI* | [**GetBulkUpdateStatus**](docs/RolesAPI.md#getbulkupdatestatus) | **Get** /roles/access-model-metadata/bulk-update | Get Bulk-Update Statuses
+*RolesAPI* | [**GetBulkUpdateStatusById**](docs/RolesAPI.md#getbulkupdatestatusbyid) | **Get** /roles/access-model-metadata/bulk-update/id | Get Bulk-Update Status by ID
 *RolesAPI* | [**GetRole**](docs/RolesAPI.md#getrole) | **Get** /roles/{id} | Get a Role
 *RolesAPI* | [**GetRoleAssignedIdentities**](docs/RolesAPI.md#getroleassignedidentities) | **Get** /roles/{id}/assigned-identities | List Identities assigned a Role
 *RolesAPI* | [**GetRoleEntitlements**](docs/RolesAPI.md#getroleentitlements) | **Get** /roles/{id}/entitlements | List role&#39;s Entitlements
 *RolesAPI* | [**ListRoles**](docs/RolesAPI.md#listroles) | **Get** /roles | List Roles
 *RolesAPI* | [**PatchRole**](docs/RolesAPI.md#patchrole) | **Patch** /roles/{id} | Patch a specified Role
+*RolesAPI* | [**SearchRolesByFilter**](docs/RolesAPI.md#searchrolesbyfilter) | **Post** /roles/filter | Filter Roles by Metadata
+*RolesAPI* | [**UpdateAttributeKeyAndValueToRole**](docs/RolesAPI.md#updateattributekeyandvaluetorole) | **Post** /roles/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Add a Metadata to Role.
+*RolesAPI* | [**UpdateRolesMetadataByFilter**](docs/RolesAPI.md#updaterolesmetadatabyfilter) | **Post** /roles/access-model-metadata/bulk-update/filter | Bulk-Update Roles&#39; Metadata by Filters
+*RolesAPI* | [**UpdateRolesMetadataByIds**](docs/RolesAPI.md#updaterolesmetadatabyids) | **Post** /roles/access-model-metadata/bulk-update/ids | Bulk-Update Roles&#39; Metadata by ID
+*RolesAPI* | [**UpdateRolesMetadataByQuery**](docs/RolesAPI.md#updaterolesmetadatabyquery) | **Post** /roles/access-model-metadata/bulk-update/query | Bulk-Update Roles&#39; Metadata by Query
 *SIMIntegrationsAPI* | [**CreateSIMIntegration**](docs/SIMIntegrationsAPI.md#createsimintegration) | **Post** /sim-integrations | Create new SIM integration
 *SIMIntegrationsAPI* | [**DeleteSIMIntegration**](docs/SIMIntegrationsAPI.md#deletesimintegration) | **Delete** /sim-integrations/{id} | Delete a SIM integration
 *SIMIntegrationsAPI* | [**GetSIMIntegration**](docs/SIMIntegrationsAPI.md#getsimintegration) | **Get** /sim-integrations/{id} | Get a SIM integration details.
@@ -1390,6 +1398,7 @@ Class | Method | HTTP request | Description
  - [RoleAssignmentRef](docs/RoleAssignmentRef.md)
  - [RoleAssignmentSourceType](docs/RoleAssignmentSourceType.md)
  - [RoleBulkDeleteRequest](docs/RoleBulkDeleteRequest.md)
+ - [RoleBulkUpdateResponse](docs/RoleBulkUpdateResponse.md)
  - [RoleCriteriaKey](docs/RoleCriteriaKey.md)
  - [RoleCriteriaKeyType](docs/RoleCriteriaKeyType.md)
  - [RoleCriteriaLevel1](docs/RoleCriteriaLevel1.md)
@@ -1406,10 +1415,18 @@ Class | Method | HTTP request | Description
  - [RoleInsightsResponse](docs/RoleInsightsResponse.md)
  - [RoleInsightsRole](docs/RoleInsightsRole.md)
  - [RoleInsightsSummary](docs/RoleInsightsSummary.md)
+ - [RoleListFilterDTO](docs/RoleListFilterDTO.md)
+ - [RoleListFilterDTOAmmKeyValuesInner](docs/RoleListFilterDTOAmmKeyValuesInner.md)
  - [RoleMatchDto](docs/RoleMatchDto.md)
  - [RoleMembershipIdentity](docs/RoleMembershipIdentity.md)
  - [RoleMembershipSelector](docs/RoleMembershipSelector.md)
  - [RoleMembershipSelectorType](docs/RoleMembershipSelectorType.md)
+ - [RoleMetadataBulkUpdateByFilterRequest](docs/RoleMetadataBulkUpdateByFilterRequest.md)
+ - [RoleMetadataBulkUpdateByFilterRequestValuesInner](docs/RoleMetadataBulkUpdateByFilterRequestValuesInner.md)
+ - [RoleMetadataBulkUpdateByIdRequest](docs/RoleMetadataBulkUpdateByIdRequest.md)
+ - [RoleMetadataBulkUpdateByIdRequestValuesInner](docs/RoleMetadataBulkUpdateByIdRequestValuesInner.md)
+ - [RoleMetadataBulkUpdateByQueryRequest](docs/RoleMetadataBulkUpdateByQueryRequest.md)
+ - [RoleMetadataBulkUpdateByQueryRequestValuesInner](docs/RoleMetadataBulkUpdateByQueryRequestValuesInner.md)
  - [RoleMiningEntitlement](docs/RoleMiningEntitlement.md)
  - [RoleMiningEntitlementRef](docs/RoleMiningEntitlementRef.md)
  - [RoleMiningIdentity](docs/RoleMiningIdentity.md)

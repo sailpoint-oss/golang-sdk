@@ -41,7 +41,7 @@ func (r ApiCreatePasswordSyncGroupRequest) Execute() (*PasswordSyncGroup, *http.
 /*
 CreatePasswordSyncGroup Create Password Sync Group
 
-This API creates a password sync group based on the specifications provided. A token with ORG_ADMIN authority is required to call this API.
+This API creates a password sync group based on the specifications provided.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreatePasswordSyncGroupRequest
@@ -200,7 +200,7 @@ func (r ApiDeletePasswordSyncGroupRequest) Execute() (*http.Response, error) {
 /*
 DeletePasswordSyncGroup Delete Password Sync Group by ID
 
-This API deletes the specified password sync group. A token with ORG_ADMIN authority is required to call this API.
+This API deletes the specified password sync group.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of password sync group to delete.
@@ -346,7 +346,7 @@ func (r ApiGetPasswordSyncGroupRequest) Execute() (*PasswordSyncGroup, *http.Res
 /*
 GetPasswordSyncGroup Get Password Sync Group by ID
 
-This API returns the sync group for the specified ID. A token with ORG_ADMIN authority is required to call this API.
+This API returns the sync group for the specified ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of password sync group to retrieve.
@@ -534,7 +534,7 @@ func (r ApiGetPasswordSyncGroupsRequest) Execute() ([]PasswordSyncGroup, *http.R
 /*
 GetPasswordSyncGroups Get Password Sync Group List
 
-This API returns a list of password sync groups. A token with ORG_ADMIN authority is required to call this API.
+This API returns a list of password sync groups.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetPasswordSyncGroupsRequest
@@ -712,7 +712,7 @@ func (r ApiUpdatePasswordSyncGroupRequest) Execute() (*PasswordSyncGroup, *http.
 /*
 UpdatePasswordSyncGroup Update Password Sync Group by ID
 
-This API updates the specified password sync group. A token with ORG_ADMIN authority is required to call this API.
+This API updates the specified password sync group.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of password sync group to update.

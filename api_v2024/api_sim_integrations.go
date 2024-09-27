@@ -49,7 +49,7 @@ func (r ApiCreateSIMIntegrationRequest) Execute() (*ServiceDeskIntegrationDto1, 
 /*
 CreateSIMIntegration Create new SIM integration
 
-Create a new SIM Integrations.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Create a new SIM Integrations.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateSIMIntegrationRequest
@@ -242,7 +242,7 @@ func (r ApiDeleteSIMIntegrationRequest) Execute() (*http.Response, error) {
 /*
 DeleteSIMIntegration Delete a SIM integration
 
-Get the details of a SIM integration. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Get the details of a SIM integration.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The id of the integration to delete.
@@ -416,7 +416,7 @@ func (r ApiGetSIMIntegrationRequest) Execute() (*ServiceDeskIntegrationDto1, *ht
 /*
 GetSIMIntegration Get a SIM integration details.
 
-Get the details of a SIM integration. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Get the details of a SIM integration.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The id of the integration.
@@ -600,7 +600,7 @@ func (r ApiGetSIMIntegrationsRequest) Execute() (*ServiceDeskIntegrationDto1, *h
 /*
 GetSIMIntegrations List the existing SIM integrations.
 
-List the existing SIM integrations. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+List the existing SIM integrations.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetSIMIntegrationsRequest
@@ -789,7 +789,7 @@ func (r ApiPatchBeforeProvisioningRuleRequest) Execute() (*ServiceDeskIntegratio
 /*
 PatchBeforeProvisioningRule Patch a SIM beforeProvisioningRule attribute.
 
-Patch a SIM beforeProvisioningRule attribute given a JsonPatch object. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Patch a SIM beforeProvisioningRule attribute given a JsonPatch object.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id SIM integration id
@@ -992,7 +992,7 @@ func (r ApiPatchSIMAttributesRequest) Execute() (*ServiceDeskIntegrationDto1, *h
 /*
 PatchSIMAttributes Patch a SIM attribute.
 
-Patch a SIM attribute given a JsonPatch object. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Patch a SIM attribute given a JsonPatch object.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id SIM integration id
@@ -1195,7 +1195,7 @@ func (r ApiPutSIMIntegrationRequest) Execute() (*ServiceDeskIntegrationDto1, *ht
 /*
 PutSIMIntegration Update an existing SIM integration
 
-Update an existing SIM integration.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Update an existing SIM integration.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The id of the integration.

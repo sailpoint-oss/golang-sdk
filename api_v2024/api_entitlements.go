@@ -1746,8 +1746,6 @@ The following fields are patchable: **requestable**, **privileged**, **segments*
 
 When you're patching owner, only owner type and owner id must be provided. Owner name is optional, and it won't be modified. If the owner name is provided, it should correspond to the real name. The only owner type currently supported is IDENTITY.
 
-A token with ORG_ADMIN or SOURCE_ADMIN authority is required to call this API.
-
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the entitlement to patch
  @return ApiPatchEntitlementRequest
@@ -2318,9 +2316,7 @@ This API applies an update to every entitlement of the list.
 
 The number of entitlements to update is limited to 50 items maximum.
 
-The JsonPatch update follows the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. allowed operations : **{ "op": "replace", "path": "/privileged", "value": boolean }**  **{ "op": "replace", "path": "/requestable","value": boolean }** 
-
-A token with ORG_ADMIN or API authority is required to call this API.
+The JsonPatch update follows the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. allowed operations : **{ "op": "replace", "path": "/privileged", "value": boolean }**  **{ "op": "replace", "path": "/requestable","value": boolean }**
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiUpdateEntitlementsInBulkRequest

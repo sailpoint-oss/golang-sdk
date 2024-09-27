@@ -46,7 +46,6 @@ CreateProvisioningPolicy Create Provisioning Policy
 This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types.
 Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning.
 Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
-A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The Source id
@@ -232,7 +231,6 @@ func (r ApiCreateSourceRequest) Execute() (*Source, *http.Response, error) {
 CreateSource Creates a source in IdentityNow.
 
 This creates a specific source with a full source JSON representation. Any passwords are submitted as plain-text and encrypted upon receipt in IdentityNow.
-A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateSourceRequest
@@ -565,7 +563,6 @@ func (r ApiDeleteProvisioningPolicyRequest) Execute() (*http.Response, error) {
 DeleteProvisioningPolicy Delete Provisioning Policy by UsageType
 
 Deletes the provisioning policy with the specified usage on an application.
-A token with API, or ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The Source ID.
@@ -727,7 +724,6 @@ DeleteSource Delete Source by ID
 
 Use this API to delete a specific source in Identity Security Cloud (ISC).
 The API removes all the accounts on the source first, and then it deletes the source. You can retrieve the actual task execution status with this method: GET `/task-status/{id}`
-A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Source ID.
@@ -1383,7 +1379,6 @@ func (r ApiGetProvisioningPolicyRequest) Execute() (*ProvisioningPolicyDto, *htt
 GetProvisioningPolicy Get Provisioning Policy by UsageType
 
 This end-point retrieves the ProvisioningPolicy with the specified usage on the specified Source in IdentityNow.
-A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The Source ID.
@@ -1555,7 +1550,6 @@ func (r ApiGetSourceRequest) Execute() (*Source, *http.Response, error) {
 GetSource Get Source by ID
 
 Use this API to get a source by a specified ID in Identity Security Cloud (ISC).
-A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Source ID.
@@ -1724,7 +1718,6 @@ func (r ApiGetSourceConnectionsRequest) Execute() (*SourceConnectionsDto, *http.
 GetSourceConnections Get Source Connections by ID
 
 Use this API to get all dependent Profiles, Attributes, Applications and Custom Transforms for a source by a specified ID in Identity Security Cloud (ISC).
-A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Source ID.
@@ -2603,7 +2596,6 @@ func (r ApiImportConnectorFileRequest) Execute() (*Source, *http.Response, error
 ImportConnectorFile Upload connector file to source
 
 This uploads a supplemental source connector file (like jdbc driver jars) to a source's S3 bucket. This also sends ETS and Audit events.
-A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The Source id.
@@ -2970,7 +2962,6 @@ func (r ApiListProvisioningPoliciesRequest) Execute() ([]ProvisioningPolicyDto, 
 ListProvisioningPolicies Lists ProvisioningPolicies
 
 This end-point lists all the ProvisioningPolicies in IdentityNow.
-A token with API, or ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The Source id
@@ -3180,7 +3171,6 @@ func (r ApiListSourcesRequest) Execute() ([]Source, *http.Response, error) {
 ListSources Lists all sources in IdentityNow.
 
 This end-point lists all the sources in IdentityNow.
-A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or ROLE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListSourcesRequest
@@ -3382,7 +3372,6 @@ PutProvisioningPolicy Update Provisioning Policy by UsageType
 This end-point updates the provisioning policy with the specified usage on the specified source in IdentityNow.
 Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning.
 Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
-A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The Source ID.
@@ -3576,8 +3565,6 @@ These fields are immutable, so they cannot be changed:
 * passwordPolicies
 
 Attempts to modify these fields will result in a 400 error.
-
-A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -3951,7 +3938,6 @@ func (r ApiUpdateProvisioningPoliciesInBulkRequest) Execute() ([]ProvisioningPol
 UpdateProvisioningPoliciesInBulk Bulk Update Provisioning Policies
 
 This end-point updates a list of provisioning policies on the specified source in IdentityNow.
-A token with API, or ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The Source id.
@@ -4135,7 +4121,6 @@ UpdateProvisioningPolicy Partial update of Provisioning Policy
 This API selectively updates an existing Provisioning Policy using a JSONPatch payload.
 Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning.
 Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
-A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The Source id.
@@ -4333,8 +4318,6 @@ These fields are immutable, so they cannot be changed:
 * passwordPolicies
 
 Attempts to modify these fields will result in a 400 error.
-
-A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or API authority is required to call this API.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

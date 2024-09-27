@@ -46,7 +46,6 @@ CreateProvisioningPolicy Create Provisioning Policy
 This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types.
 Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning.
 Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
-A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The Source id
@@ -232,7 +231,6 @@ func (r ApiCreateSourceRequest) Execute() (*Source, *http.Response, error) {
 CreateSource Creates a source in IdentityNow.
 
 This creates a specific source with a full source JSON representation. Any passwords are submitted as plain-text and encrypted upon receipt in IdentityNow.
-A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateSourceRequest
@@ -751,7 +749,6 @@ func (r ApiDeleteNativeChangeDetectionConfigRequest) Execute() (*http.Response, 
 DeleteNativeChangeDetectionConfig Delete Native Change Detection Configuration
 
 Deletes the native change detection configuration for the source specified by the given ID.
-A token with API, or ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The source id
@@ -920,7 +917,6 @@ func (r ApiDeleteProvisioningPolicyRequest) Execute() (*http.Response, error) {
 DeleteProvisioningPolicy Delete Provisioning Policy by UsageType
 
 Deletes the provisioning policy with the specified usage on an application.
-A token with API, or ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The Source ID.
@@ -1082,7 +1078,6 @@ DeleteSource Delete Source by ID
 
 Use this API to delete a specific source in Identity Security Cloud (ISC).
 The API removes all the accounts on the source first, and then it deletes the source. You can retrieve the actual task execution status with this method: GET `/task-status/{id}`
-A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Source ID.
@@ -1744,7 +1739,6 @@ func (r ApiGetNativeChangeDetectionConfigRequest) Execute() (*NativeChangeDetect
 GetNativeChangeDetectionConfig Native Change Detection Configuration
 
 This API returns the existing native change detection configuration for a source specified by the given ID.
-A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The source id
@@ -1924,7 +1918,6 @@ func (r ApiGetProvisioningPolicyRequest) Execute() (*ProvisioningPolicyDto, *htt
 GetProvisioningPolicy Get Provisioning Policy by UsageType
 
 This end-point retrieves the ProvisioningPolicy with the specified usage on the specified Source in IdentityNow.
-A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The Source ID.
@@ -2096,7 +2089,6 @@ func (r ApiGetSourceRequest) Execute() (*Source, *http.Response, error) {
 GetSource Get Source by ID
 
 Use this API to get a source by a specified ID in Identity Security Cloud (ISC).
-A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Source ID.
@@ -2272,7 +2264,6 @@ func (r ApiGetSourceAttrSyncConfigRequest) Execute() (*AttrSyncSourceConfig, *ht
 GetSourceAttrSyncConfig Attribute Sync Config
 
 This API returns the existing attribute synchronization configuration for a source specified by the given ID. The response contains all attributes, regardless of whether they enabled or not.
-A token with ORG_ADMIN or HELPDESK authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The source id
@@ -2465,7 +2456,6 @@ func (r ApiGetSourceConfigRequest) Execute() (*ConnectorDetail1, *http.Response,
 GetSourceConfig Gets source config with language translations
 
 Looks up and returns the source config for the requested source id after populating the source config values and applying language translations.
-A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The Source id
@@ -2646,8 +2636,6 @@ This API gets the current entitlement request configuration for a source. This s
 Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined.
 - During access request, this source-level entitlement request configuration overrides the global organization-level configuration.
 - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
-
-A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetSourceEntitlementRequestConfigRequest
@@ -3355,7 +3343,6 @@ ImportAccounts Account Aggregation
 Starts an account aggregation on the specified source. 
 If the target source is a delimited file source, then the CSV file needs to be included in the request body.
 You will also need to set the Content-Type header to `multipart/form-data`.
-A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Source Id
@@ -3731,7 +3718,6 @@ func (r ApiImportConnectorFileRequest) Execute() (*Source, *http.Response, error
 ImportConnectorFile Upload connector file to source
 
 This uploads a supplemental source connector file (like jdbc driver jars) to a source's S3 bucket. This also sends ETS and Audit events.
-A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The Source id.
@@ -4293,7 +4279,6 @@ func (r ApiListProvisioningPoliciesRequest) Execute() ([]ProvisioningPolicyDto, 
 ListProvisioningPolicies Lists ProvisioningPolicies
 
 This end-point lists all the ProvisioningPolicies in IdentityNow.
-A token with API, or ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The Source id
@@ -4503,7 +4488,6 @@ func (r ApiListSourcesRequest) Execute() ([]Source, *http.Response, error) {
 ListSources Lists all sources in IdentityNow.
 
 This end-point lists all the sources in IdentityNow.
-A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or ROLE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListSourcesRequest
@@ -4709,7 +4693,6 @@ func (r ApiPeekResourceObjectsRequest) Execute() (*ResourceObjectsResponse, *htt
 PeekResourceObjects Peek source connector's resource objects
 
 Retrieves a sample of data returned from account and group aggregation requests.
-A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The ID of the Source
@@ -4906,7 +4889,6 @@ func (r ApiPingClusterRequest) Execute() (*StatusResponse, *http.Response, error
 PingCluster Ping cluster for source connector
 
 This endpoint validates that the cluster being used by the source is reachable from IdentityNow.
-A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The ID of the Source
@@ -5098,8 +5080,6 @@ func (r ApiPutNativeChangeDetectionConfigRequest) Execute() (*NativeChangeDetect
 PutNativeChangeDetectionConfig Update Native Change Detection Configuration
 
 Replaces the native change detection configuration for the source specified by the given ID with the configuration provided in the request body.
-    
-A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The source id
@@ -5298,7 +5278,6 @@ PutProvisioningPolicy Update Provisioning Policy by UsageType
 This end-point updates the provisioning policy with the specified usage on the specified source in IdentityNow.
 Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning.
 Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
-A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The Source ID.
@@ -5493,8 +5472,6 @@ These fields are immutable, so they cannot be changed:
 
 Attempts to modify these fields will result in a 400 error.
 
-A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
-
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Source ID.
@@ -5681,8 +5658,7 @@ func (r ApiPutSourceAttrSyncConfigRequest) Execute() (*AttrSyncSourceConfig, *ht
 PutSourceAttrSyncConfig Update Attribute Sync Config
 
 Replaces the attribute synchronization configuration for the source specified by the given ID with the configuration provided in the request body. Only the "enabled" field of the values in the "attributes" array is mutable. Attempting to change other attributes or add new values to the "attributes" array will result in an error.
-    
-A token with ORG_ADMIN authority is required to call this API.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The source id
@@ -6072,7 +6048,6 @@ func (r ApiSyncAttributesForSourceRequest) Execute() (*SourceSyncJob, *http.Resp
 SyncAttributesForSource Synchronize single source attributes.
 
 This end-point performs attribute synchronization for a selected source.
-A token with ORG_ADMIN or SOURCE_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The Source id
@@ -6257,8 +6232,7 @@ func (r ApiTestSourceConfigurationRequest) Execute() (*StatusResponse, *http.Res
 /*
 TestSourceConfiguration Test configuration for source connector
 
-This endpoint performs a more detailed validation of the source's configuration that can take longer than the lighter weight credential validation performed by the checkConnection API.
-A token with ORG_ADMIN authority is required to call this API.
+This endpoint performs a more detailed validation of the source''s configuration that can take longer than the lighter weight credential validation performed by the checkConnection API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The ID of the Source
@@ -6444,7 +6418,6 @@ func (r ApiTestSourceConnectionRequest) Execute() (*StatusResponse, *http.Respon
 TestSourceConnection Check connection for source connector.
 
 This endpoint validates that the configured credentials are valid and will properly authenticate with the source identified by the sourceId path parameter.
-A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The ID of the Source.
@@ -6629,7 +6602,6 @@ func (r ApiUpdateProvisioningPoliciesInBulkRequest) Execute() ([]ProvisioningPol
 UpdateProvisioningPoliciesInBulk Bulk Update Provisioning Policies
 
 This end-point updates a list of provisioning policies on the specified source in IdentityNow.
-A token with API, or ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The Source id.
@@ -6813,7 +6785,6 @@ UpdateProvisioningPolicy Partial update of Provisioning Policy
 This API selectively updates an existing Provisioning Policy using a JSONPatch payload.
 Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning.
 Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
-A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The Source id.
@@ -7012,8 +6983,6 @@ These fields are immutable, so they cannot be changed:
 
 Attempts to modify these fields will result in a 400 error.
 
-A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or API authority is required to call this API.
-
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Source ID.
@@ -7203,8 +7172,6 @@ This API replaces the current entitlement request configuration for a source. Th
 Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined.
 - During access request, this source-level entitlement request configuration overrides the global organization-level configuration.
 - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
-
-A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiUpdateSourceEntitlementRequestConfigRequest

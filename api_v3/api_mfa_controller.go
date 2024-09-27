@@ -206,7 +206,7 @@ func (r ApiPingVerificationStatusRequest) Execute() (*VerificationResponse, *htt
 /*
 PingVerificationStatus Polling MFA method by VerificationPollRequest
 
-This API poll the VerificationPollRequest for the specified MFA method. A token with ORG_ADMIN authority is required to call this API.
+This API poll the VerificationPollRequest for the specified MFA method.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param method The name of the MFA method. The currently supported method names are 'okta-verify', 'duo-web', 'kba','token', 'rsa'

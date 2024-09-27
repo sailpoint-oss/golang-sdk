@@ -42,7 +42,6 @@ func (r ApiGetTenantUiMetadataRequest) Execute() (*TenantUiMetadataItemResponse,
 GetTenantUiMetadata Get a tenant UI metadata
 
 This API endpoint retrieves UI metadata configured for your tenant.
-A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetTenantUiMetadataRequest
@@ -230,7 +229,6 @@ func (r ApiSetTenantUiMetadataRequest) Execute() (*TenantUiMetadataItemResponse,
 SetTenantUiMetadata Update tenant UI metadata
 
 This API endpoint updates UI metadata for your tenant. These changes may require up to 5 minutes to take effect on the UI.
-A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSetTenantUiMetadataRequest

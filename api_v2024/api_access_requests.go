@@ -41,7 +41,7 @@ func (r ApiCancelAccessRequestRequest) Execute() (map[string]interface{}, *http.
 CancelAccessRequest Cancel Access Request
 
 This API endpoint cancels a pending access request. An access request can be cancelled only if it has not passed the approval step.
-Any token with ORG_ADMIN authority or token of the user who originally requested the access request is required to cancel it.
+In addition to users with ORG_ADMIN, any user who originally submitted the access request may cancel it.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCancelAccessRequestRequest
@@ -223,7 +223,7 @@ func (r ApiCloseAccessRequestRequest) Execute() (map[string]interface{}, *http.R
 /*
 CloseAccessRequest Close Access Request
 
-This endpoint closes access requests that are stuck in a pending state. It can be used throughout a request's lifecycle even after the approval state, unlike the [Cancel Access Request endpoint](https://developer.sailpoint.com/idn/api/v3/cancel-access-request/). A token with ORG_ADMIN authority is required.
+This endpoint closes access requests that are stuck in a pending state. It can be used throughout a request's lifecycle even after the approval state, unlike the [Cancel Access Request endpoint](https://developer.sailpoint.com/idn/api/v3/cancel-access-request/).
 
 To find pending access requests with the UI, navigate to Search and use this query: status: Pending AND "Access Request". Use the Column Chooser to select 'Tracking Number', and use the 'Download' button to export a CSV containing the tracking numbers.
 
@@ -443,9 +443,7 @@ __REVOKE_ACCESS__
 * Roles, access profiles, and entitlements can be requested for revocation.
 * Revoke requests for entitlements are limited to 1 entitlement per access request currently.
 * You can specify a `removeDate` if the access doesn't already have a sunset date. The `removeDate` must be a future date, in the UTC timezone. 
-* Allows a manager to request to revoke access for direct employees. A token with ORG_ADMIN authority can also request to revoke access from anyone.
-
-A token with API authority cannot be used to call this endpoint. 
+* Allows a manager to request to revoke access for direct employees. A user with ORG_ADMIN authority can also request to revoke access from anyone.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -822,7 +820,7 @@ ListAccessRequestStatus Access Request Status
 
 Use this API to return a list of access request statuses based on the specified query parameters.
 If an access request was made for access that an identity already has, the API ignores the access request.  These ignored requests do not display in the list of access request statuses.
-Any token with any authority can request their own status. A token with ORG_ADMIN authority is required to call this API to get a list of statuses for other users.
+Any user with any user level can get the status of their own access requests. A user with ORG_ADMIN is required to call this API to get a list of statuses for other users.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListAccessRequestStatusRequest
@@ -1015,7 +1013,6 @@ func (r ApiSetAccessRequestConfigRequest) Execute() (*AccessRequestConfig, *http
 SetAccessRequestConfig Update Access Request Configuration
 
 This endpoint replaces the current access-request configuration.
-A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSetAccessRequestConfigRequest

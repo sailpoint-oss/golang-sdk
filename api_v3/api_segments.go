@@ -43,7 +43,6 @@ CreateSegment Create Segment
 
 This API creates a segment. 
 >**Note:** Segment definitions may take time to propagate to all identities.
-A token with ORG_ADMIN or API authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateSegmentRequest
@@ -203,8 +202,7 @@ func (r ApiDeleteSegmentRequest) Execute() (*http.Response, error) {
 DeleteSegment Delete Segment by ID
 
 This API deletes the segment specified by the given ID.
->**Note:** that segment deletion may take some time to become effective.
-A token with ORG_ADMIN or API authority is required to call this API.
+>**Note:** that segment deletion may take some time to become effective.    
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The segment ID to delete.
@@ -362,7 +360,6 @@ func (r ApiGetSegmentRequest) Execute() (*Segment, *http.Response, error) {
 GetSegment Get Segment by ID
 
 This API returns the segment specified by the given ID.
-A token with ORG_ADMIN or API authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The segment ID to retrieve.
@@ -551,7 +548,6 @@ func (r ApiListSegmentsRequest) Execute() ([]Segment, *http.Response, error) {
 ListSegments List Segments
 
 This API returns a list of all segments. 
-A token with ORG_ADMIN or API authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListSegmentsRequest
@@ -732,7 +728,6 @@ PatchSegment Update Segment
 
 Use this API to update segment fields by using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 >**Note:** Changes to a segment may take some time to propagate to all identities.
-A token with ORG_ADMIN or API authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The segment ID to modify.

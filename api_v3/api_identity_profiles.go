@@ -41,9 +41,7 @@ func (r ApiCreateIdentityProfileRequest) Execute() (*IdentityProfile, *http.Resp
 /*
 CreateIdentityProfile Create an Identity Profile
 
-This creates an Identity Profile.
-
-A token with ORG_ADMIN authority is required to call this API to create an Identity Profile.
+This creates an Identity Profile.    
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateIdentityProfileRequest
@@ -205,8 +203,7 @@ DeleteIdentityProfile Delete an Identity Profile
 This deletes an Identity Profile based on ID.
 
 On success, this endpoint will return a reference to the bulk delete task result.
-
-A token with ORG_ADMIN authority is required to call this API.
+    
 
 The following rights are required to access this endpoint: idn:identity-profile:delete
 
@@ -385,8 +382,6 @@ DeleteIdentityProfiles Delete Identity Profiles
 This deletes multiple Identity Profiles via a list of supplied IDs.
 
 On success, this endpoint will return a reference to the bulk delete task result.
-
-A token with ORG_ADMIN authority is required to call this API.
 
 The following rights are required to access this endpoint: idn:identity-profile:delete
 
@@ -760,7 +755,6 @@ func (r ApiGetDefaultIdentityAttributeConfigRequest) Execute() (*IdentityAttribu
 GetDefaultIdentityAttributeConfig Get default Identity Attribute Config
 
 This returns the default identity attribute config.
-A token with ORG_ADMIN authority is required to call this API to get the default identity attribute config.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param identityProfileId The Identity Profile ID.
@@ -929,8 +923,6 @@ func (r ApiGetIdentityProfileRequest) Execute() (*IdentityProfile, *http.Respons
 GetIdentityProfile Get single Identity Profile
 
 This returns a single Identity Profile based on ID.
-
-A token with ORG_ADMIN or API authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param identityProfileId The Identity Profile ID.
@@ -1298,7 +1290,6 @@ func (r ApiListIdentityProfilesRequest) Execute() ([]IdentityProfile, *http.Resp
 ListIdentityProfiles Identity Profiles List
 
 This returns a list of Identity Profiles based on the specified query parameters.
-A token with ORG_ADMIN or API authority is required to call this API to get a list of Identity Profiles.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListIdentityProfilesRequest
@@ -1484,7 +1475,6 @@ ShowIdentityPreview Generate Identity Profile Preview
 
 Use this API to generate a non-persisted preview of the identity object after applying `IdentityAttributeConfig` sent in request body.
 This API only allows `accountAttribute`, `reference` and `rule` transform types in the `IdentityAttributeConfig` sent in the request body.
-A token with ORG_ADMIN authority is required to call this API to generate an identity preview.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiShowIdentityPreviewRequest
@@ -1648,7 +1638,6 @@ This operation should not be used to schedule your own identity processing or to
 This should only be run on identity profiles that have the `identityRefreshRequired` attribute set to `true`. If `identityRefreshRequired` is false, then there is no benefit to running this operation. Typically, this operation is performed when a change is made to the identity profile or its related lifecycle states that requires a refresh.
 This operation will perform the following activities on all identities under the identity profile.
 1. Updates identity attribute according to the identity profile mappings. 2. Determines the identity's correct manager through manager correlation. 3. Updates the identity's access according to their assigned lifecycle state. 4. Updates the identity's access based on role assignment criteria.
-A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param identityProfileId The Identity Profile ID to be processed
@@ -1824,8 +1813,7 @@ func (r ApiUpdateIdentityProfileRequest) Execute() (*IdentityProfile, *http.Resp
 UpdateIdentityProfile Update the Identity Profile
 
 This updates the specified Identity Profile.
-
-A token with ORG_ADMIN authority is required to call this API to update the Identity Profile.
+  
 
 Some fields of the Schema cannot be updated. These fields are listed below:
 * id

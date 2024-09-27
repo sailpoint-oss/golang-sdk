@@ -194,8 +194,6 @@ DeleteTagsToManyObject Remove Tags from Multiple Objects
 
 This API removes tags from multiple objects.
 
-A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
-
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDeleteTagsToManyObjectRequest
 */
@@ -1249,8 +1247,6 @@ func (r ApiSetTagsToManyObjectsRequest) Execute() ([]BulkTaggedObjectResponse, *
 SetTagsToManyObjects Tag Multiple Objects
 
 This API adds tags to multiple objects.
-
-A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSetTagsToManyObjectsRequest

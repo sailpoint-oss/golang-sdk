@@ -400,8 +400,7 @@ func (r ApiDeleteWorkgroupMembersRequest) Execute() ([]WorkgroupMemberDeleteItem
 /*
 DeleteWorkgroupMembers Remove members from Governance Group
 
-This API removes one or more  members from a Governance Group.  A token with API, ORG_ADMIN authority is required to call this API.
-
+This API removes one or more  members from a Governance Group.  A
 >  **Following field of Identity is an optional field in the request.**
 
 >  **name**
@@ -1642,13 +1641,10 @@ func (r ApiPatchWorkgroupRequest) Execute() (*WorkgroupDto, *http.Response, erro
 /*
 PatchWorkgroup Patch a Governance Group
 
-This API updates an existing governance group by ID. 
-The following fields and objects are patchable:
-  * name
-  * description
-  * owner
-
-A token with API or ORG_ADMIN authority is required to call this API.
+This API updates an existing governance group by ID. The following fields and objects are patchable:
+* name
+* description
+* owner
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Governance Group

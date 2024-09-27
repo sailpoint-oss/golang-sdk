@@ -1053,10 +1053,9 @@ tags:
 paths:
   /access-profiles:
     get:
-      description: "Use this API to get a list of access profiles.\nA token with API,\
-        \ ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority\
-        \ is required to call this API.\n>**Note:** When you filter for access profiles\
-        \ that have the '+' symbol in their names, the response is blank. "
+      description: "Use this API to get a list of access profiles.\n>**Note:** When\
+        \ you filter for access profiles that have the '+' symbol in their names,\
+        \ the response is blank. "
       operationId: listAccessProfiles
       parameters:
       - description: |-
@@ -1221,13 +1220,21 @@ paths:
       security:
       - userAuth:
         - idn:access-profile:read
+      - applicationAuth:
+        - idn:access-profile:read
       summary: List Access Profiles
       tags:
       - Access Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     post:
       description: |-
         Use this API to create an access profile.
-        A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. In addition, a token with only ROLE_SUBADMIN or SOURCE_SUBADMIN authority must be associated with the access profile's Source.
+        A user with only ROLE_SUBADMIN or SOURCE_SUBADMIN authority must be associated with the access profile's Source.
         The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles. However, any new access profiles as well as any updates to existing descriptions are limited to 2000 characters.
       operationId: createAccessProfile
       requestBody:
@@ -1302,9 +1309,17 @@ paths:
       security:
       - userAuth:
         - idn:access-profile:manage
+      - applicationAuth:
+        - idn:access-profile:manage
       summary: Create Access Profile
       tags:
       - Access Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /access-profiles/{id}:
     delete:
       description: |-
@@ -1312,7 +1327,7 @@ paths:
 
         The Access Profile must not be in use, for example, Access Profile can not be deleted if they belong to an Application, Life Cycle State or a Role. If it is, a 400 error is returned.
 
-        A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to invoke this API. In addition, a SOURCE_SUBADMIN token must be able to administer the Source associated with the Access Profile.
+        A user with SOURCE_SUBADMIN must be able to administer the Source associated with the Access Profile.
       operationId: deleteAccessProfile
       parameters:
       - description: ID of the Access Profile to delete
@@ -1398,14 +1413,17 @@ paths:
       security:
       - userAuth:
         - idn:access-profile:manage
+      - applicationAuth:
+        - idn:access-profile:manage
       summary: Delete the specified Access Profile
       tags:
       - Access Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     get:
-      description: |-
-        This API returns an Access Profile by its ID.
-
-        A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+      description: This API returns an Access Profile by its ID.
       operationId: getAccessProfile
       parameters:
       - description: ID of the Access Profile
@@ -1481,9 +1499,17 @@ paths:
       security:
       - userAuth:
         - idn:access-profile:read
+      - applicationAuth:
+        - idn:access-profile:read
       summary: Get an Access Profile
       tags:
       - Access Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     patch:
       description: |-
         This API updates an existing Access Profile. The following fields are patchable:
@@ -1512,7 +1538,7 @@ paths:
 
         If you need to change the `source` of the access profile, you can do so only if you update the `entitlements` in the same API call.  The new entitlements can only come from the target source that you want to change to.  Look for the example "Replace Source" in the examples dropdown.
 
-        A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. In addition, a SOURCE_SUBADMIN may only use this API to patch Access Profiles which are associated with Sources they are able to administer.
+        A user with SOURCE_SUBADMIN may only use this API to patch Access Profiles which are associated with Sources they are able to administer.
         >  The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles, however, any new access profiles as well as any updates to existing descriptions will be limited to 2000 characters.
 
         > You can only add or replace **entitlements** that exist on the source that the access profile is attached to. You can use the **list entitlements** endpoint with the **filters** query parameter to get a list of available entitlements on the access profile's source.
@@ -1649,9 +1675,15 @@ paths:
       security:
       - userAuth:
         - idn:access-profile:manage
+      - applicationAuth:
+        - idn:access-profile:manage
       summary: Patch a specified Access Profile
       tags:
       - Access Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /access-profiles/bulk-delete:
     post:
       description: "This endpoint initiates a bulk deletion of one or more access\
@@ -1664,10 +1696,9 @@ paths:
         \ performed and the **inUse** field of the response indicates the usages that\
         \ must be removed first. If the request field **bestEffortOnly** is **true**,\
         \ however, usages are reported in the **inUse** response field but all other\
-        \ indicated access profiles will be deleted.\nA token with API, ORG_ADMIN,\
-        \ SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this endpoint.\
-        \ In addition, a SOURCE_SUBADMIN can only use this endpoint to delete access\
-        \ profiles associated with sources they're able to administer."
+        \ indicated access profiles will be deleted.\nA SOURCE_SUBADMIN user can only\
+        \ use this endpoint to delete access profiles associated with sources they're\
+        \ able to administer."
       operationId: deleteAccessProfilesInBulk
       requestBody:
         content:
@@ -1769,17 +1800,21 @@ paths:
       security:
       - userAuth:
         - idn:access-profile:manage
+      - applicationAuth:
+        - idn:access-profile:manage
       summary: Delete Access Profile(s)
       tags:
       - Access Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /access-profiles/{id}/entitlements:
     get:
       description: "Use this API to get a list of an access profile's entitlements.\
-        \ \nA token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority\
-        \ is required to call this API. In addition, a token with SOURCE_SUBADMIN\
-        \ authority must have access to the source associated with the specified access\
-        \ profile.\n>**Note:** When you filter for access profiles that have the '+'\
-        \ symbol in their names, the response is blank. "
+        \ \nA SOURCE_SUBADMIN user must have access to the source associated with\
+        \ the specified access profile.\n>**Note:** When you filter for access profiles\
+        \ that have the '+' symbol in their names, the response is blank. "
       operationId: getAccessProfileEntitlements
       parameters:
       - description: ID of the access profile containing the entitlements.
@@ -1920,9 +1955,15 @@ paths:
       security:
       - userAuth:
         - idn:access-profile:read
+      - applicationAuth:
+        - idn:access-profile:read
       summary: List Access Profile's Entitlements
       tags:
       - Access Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /access-requests:
     post:
       description: "Use this API to submit an access request in Identity Security\
@@ -1962,9 +2003,8 @@ paths:
         \ entitlements are limited to 1 entitlement per access request currently.\n\
         * You can specify a `removeDate` if the access doesn't already have a sunset\
         \ date. The `removeDate` must be a future date, in the UTC timezone. \n* Allows\
-        \ a manager to request to revoke access for direct employees. A token with\
-        \ ORG_ADMIN authority can also request to revoke access from anyone.\n\nA\
-        \ token with API authority cannot be used to call this endpoint. \n"
+        \ a manager to request to revoke access for direct employees. A user with\
+        \ ORG_ADMIN authority can also request to revoke access from anyone.\n"
       operationId: createAccessRequest
       requestBody:
         content:
@@ -2042,11 +2082,14 @@ paths:
       summary: Submit Access Request
       tags:
       - Access Requests
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - USER
   /access-requests/cancel:
     post:
       description: |-
         This API endpoint cancels a pending access request. An access request can be cancelled only if it has not passed the approval step.
-        Any token with ORG_ADMIN authority or token of the user who originally requested the access request is required to cancel it.
+        In addition to users with ORG_ADMIN, any user who originally submitted the access request may cancel it.
       operationId: cancelAccessRequest
       requestBody:
         content:
@@ -2145,6 +2188,8 @@ paths:
       summary: Cancel Access Request
       tags:
       - Access Requests
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /access-request-config:
     get:
       description: This endpoint returns the current access-request configuration.
@@ -2219,9 +2264,7 @@ paths:
       tags:
       - Access Requests
     put:
-      description: |-
-        This endpoint replaces the current access-request configuration.
-        A token with ORG_ADMIN authority is required to call this API.
+      description: This endpoint replaces the current access-request configuration.
       operationId: setAccessRequestConfig
       requestBody:
         content:
@@ -2298,12 +2341,14 @@ paths:
       summary: Update Access Request Configuration
       tags:
       - Access Requests
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /access-request-status:
     get:
       description: |-
         Use this API to return a list of access request statuses based on the specified query parameters.
         If an access request was made for access that an identity already has, the API ignores the access request.  These ignored requests do not display in the list of access request statuses.
-        Any token with any authority can request their own status. A token with ORG_ADMIN authority is required to call this API to get a list of statuses for other users.
+        Any user with any user level can get the status of their own access requests. A user with ORG_ADMIN is required to call this API to get a list of statuses for other users.
       operationId: listAccessRequestStatus
       parameters:
       - description: Filter the results by the identity the requests were made for.
@@ -2464,6 +2509,8 @@ paths:
       summary: Access Request Status
       tags:
       - Access Requests
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /access-request-approvals/pending:
     get:
       description: This endpoint returns a list of pending approvals. See "owner-id"
@@ -3182,8 +3229,7 @@ paths:
       - Access Request Approvals
   /accounts:
     get:
-      description: "This returns a list of accounts.  \nA token with ORG_ADMIN, SOURCE_ADMIN,\
-        \ SOURCE_SUBADMIN, or HELPDESK authority is required to call this API."
+      description: 'This returns a list of accounts.  '
       operationId: listAccounts
       parameters:
       - description: |-
@@ -3346,6 +3392,11 @@ paths:
       summary: Accounts List
       tags:
       - Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
     post:
       description: "This API submits an account creation task and returns the task\
         \ ID.  \n\nYou must include the `sourceId` where the account will be created\
@@ -3359,8 +3410,7 @@ paths:
         \ the account doesn't also exist on the target source, an aggregation between\
         \ the source and your tenant will remove it from your tenant. \n\nBy providing\
         \ the account ID of an existing account in the request body, this API will\
-        \ function as a PATCH operation and update the account.\n\nA token with ORG_ADMIN,\
-        \ SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.\n"
+        \ function as a PATCH operation and update the account.\n"
       operationId: createAccount
       requestBody:
         content:
@@ -3437,6 +3487,10 @@ paths:
       summary: Create Account
       tags:
       - Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /accounts/{id}:
     delete:
       description: "Use this API to delete an account. \nThis endpoint submits an\
@@ -3446,9 +3500,8 @@ paths:
         \ IdentityNow.  To avoid this scenario, it is recommended that you [disable\
         \ accounts](https://developer.sailpoint.com/idn/api/v3/disable-account) rather\
         \ than delete them. This will also allow you to reenable the accounts in the\
-        \ future. \nA token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority\
-        \ is required to call this API.\n>**NOTE: You can only delete accounts from\
-        \ sources of the \"DelimitedFile\" type.**"
+        \ future. \n>**NOTE: You can only delete accounts from sources of the \"DelimitedFile\"\
+        \ type.**"
       operationId: deleteAccount
       parameters:
       - description: Account ID.
@@ -3545,10 +3598,13 @@ paths:
       summary: Delete Account
       tags:
       - Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     get:
-      description: "Use this API to return the details for a single account by its\
-        \ ID.  \nA token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK\
-        \ authority is required to call this API."
+      description: 'Use this API to return the details for a single account by its
+        ID.  '
       operationId: getAccount
       parameters:
       - description: Account ID.
@@ -3645,19 +3701,23 @@ paths:
       summary: Account Details
       tags:
       - Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
     patch:
-      description: "Use this API to update account details. \nA token with ORG_ADMIN,\
-        \ SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.\n\
-        \nThis API supports updating an account's correlation by modifying the `identityId`\
-        \ and `manuallyCorrelated` fields. \nTo reassign an account from one identity\
-        \ to another, replace the current `identityId` with a new value. \nIf the\
-        \ account you're assigning was provisioned by Identity Security Cloud (ISC),\
-        \ it's possible for ISC to create a new account \nfor the previous identity\
-        \ as soon as the account is moved. If the account you're assigning is authoritative,\
-        \ \nthis causes the previous identity to become uncorrelated and can even\
-        \ result in its deletion.\nAll accounts that are reassigned will be set to\
-        \ `manuallyCorrelated: true` unless you specify otherwise.\n\n>**Note:** The\
-        \ `attributes` field can only be modified for flat file accounts. \n"
+      description: "Use this API to update account details. \n\nThis API supports\
+        \ updating an account's correlation by modifying the `identityId` and `manuallyCorrelated`\
+        \ fields. \nTo reassign an account from one identity to another, replace the\
+        \ current `identityId` with a new value. \nIf the account you're assigning\
+        \ was provisioned by Identity Security Cloud (ISC), it's possible for ISC\
+        \ to create a new account \nfor the previous identity as soon as the account\
+        \ is moved. If the account you're assigning is authoritative, \nthis causes\
+        \ the previous identity to become uncorrelated and can even result in its\
+        \ deletion.\nAll accounts that are reassigned will be set to `manuallyCorrelated:\
+        \ true` unless you specify otherwise.\n\n>**Note:** The `attributes` field\
+        \ can only be modified for flat file accounts. \n"
       operationId: updateAccount
       parameters:
       - description: Account ID.
@@ -3794,12 +3854,14 @@ paths:
       summary: Update Account
       tags:
       - Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     put:
       description: "Use this API to update an account with a PUT request. \n\nThis\
-        \ endpoint submits an account update task and returns the task ID. \n\nA token\
-        \ with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to\
-        \ call this API.\n\n>**Note: You can only use this PUT endpoint to update\
-        \ accounts from flat file sources.**\n"
+        \ endpoint submits an account update task and returns the task ID. \n\n>**Note:\
+        \ You can only use this PUT endpoint to update accounts from flat file sources.**\n"
       operationId: putAccount
       parameters:
       - description: Account ID.
@@ -3902,11 +3964,13 @@ paths:
       summary: Update Account
       tags:
       - Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /accounts/{id}/entitlements:
     get:
-      description: "This API returns entitlements of the account.  \nA token with\
-        \ ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required\
-        \ to call this API."
+      description: 'This API returns entitlements of the account.      '
       operationId: getAccountEntitlements
       parameters:
       - description: |-
@@ -4043,12 +4107,15 @@ paths:
       summary: Account Entitlements
       tags:
       - Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
   /accounts/{id}/reload:
     post:
-      description: "This API asynchronously reloads the account directly from the\
-        \ connector and performs a one-time aggregation process.  \nA token with ORG_ADMIN,\
-        \ SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call\
-        \ this API."
+      description: 'This API asynchronously reloads the account directly from the
+        connector and performs a one-time aggregation process.      '
       operationId: submitReloadAccount
       parameters:
       - description: The account id
@@ -4145,11 +4212,15 @@ paths:
       summary: Reload Account
       tags:
       - Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
   /accounts/{id}/enable:
     post:
-      description: "This API submits a task to enable account and returns the task\
-        \ ID.  \nA token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK\
-        \ authority is required to call this API."
+      description: 'This API submits a task to enable account and returns the task
+        ID.      '
       operationId: enableAccount
       parameters:
       - description: The account id
@@ -4252,11 +4323,15 @@ paths:
       summary: Enable Account
       tags:
       - Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
   /accounts/{id}/disable:
     post:
-      description: "This API submits a task to disable the account and returns the\
-        \ task ID.  \nA token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK\
-        \ authority is required to call this API."
+      description: 'This API submits a task to disable the account and returns the
+        task ID.      '
       operationId: disableAccount
       parameters:
       - description: The account id
@@ -4359,13 +4434,16 @@ paths:
       summary: Disable Account
       tags:
       - Accounts
+      x-sailpont-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
   /accounts/{id}/unlock:
     post:
       description: "This API submits a task to unlock an account and returns the task\
         \ ID.  \nTo use this endpoint to unlock an account that has the `forceProvisioning`\
-        \ option set to true, the `idn:accounts-provisioning:manage` scope is required.\
-        \ \nA token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority\
-        \ is required to call this API."
+        \ option set to true, the `idn:accounts-provisioning:manage` scope is required. "
       operationId: unlockAccount
       parameters:
       - description: The account ID.
@@ -4469,11 +4547,15 @@ paths:
       summary: Unlock Account
       tags:
       - Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
   /accounts/search-attribute-config:
     get:
-      description: |-
-        This API retrieves a list of extended search attribute/application associates currently configured in IdentityNow.
-        A token with ORG_ADMIN authority is required to call this API.
+      description: This API retrieves a list of extended search attribute/application
+        associates currently configured in IdentityNow.
       operationId: getSearchAttributeConfig
       responses:
         "200":
@@ -4546,10 +4628,13 @@ paths:
       summary: Retrieve attribute list in IdentityNow.
       tags:
       - Search Attribute Configuration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     post:
-      description: |-
-        This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names.  It will then validate the inputs and configure/create and attribute promotion configuration in the Link ObjectConfig.
-        A token with ORG_ADMIN authority is required to call this API.
+      description: "This API accepts an attribute name, an attribute display name\
+        \ and a list of name/value pair associates of application IDs to attribute\
+        \ names.  It will then validate the inputs and configure/create and attribute\
+        \ promotion configuration in the Link ObjectConfig."
       operationId: createSearchAttributeConfig
       requestBody:
         content:
@@ -4651,11 +4736,12 @@ paths:
       summary: Configure/create search attributes in IdentityNow.
       tags:
       - Search Attribute Configuration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /accounts/search-attribute-config/{name}:
     delete:
-      description: |-
-        This API accepts an extended search attribute name and deletes the corresponding extended attribute configuration.
-        A token with ORG_ADMIN authority is required to call this API.
+      description: This API accepts an extended search attribute name and deletes
+        the corresponding extended attribute configuration.
       operationId: deleteSearchAttributeConfig
       parameters:
       - description: Name of the extended search attribute configuration to delete.
@@ -4749,10 +4835,11 @@ paths:
       summary: Delete search attribute in IdentityNow.
       tags:
       - Search Attribute Configuration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     get:
-      description: |-
-        This API accepts an extended search attribute name and retrieves the corresponding extended attribute configuration.
-        A token with ORG_ADMIN authority is required to call this API.
+      description: This API accepts an extended search attribute name and retrieves
+        the corresponding extended attribute configuration.
       operationId: getSingleSearchAttributeConfig
       parameters:
       - description: Name of the extended search attribute configuration to retrieve.
@@ -4854,11 +4941,12 @@ paths:
       summary: Get specific attribute in IdentityNow.
       tags:
       - Search Attribute Configuration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     patch:
       description: |-
         This API updates an existing Search Attribute Configuration. The following fields are patchable:
         **name**, **displayName**, **applicationAttributes**
-        A token with ORG_ADMIN authority is required to call this API.
       operationId: patchSearchAttributeConfig
       parameters:
       - description: Name of the Search Attribute Configuration to patch.
@@ -4974,6 +5062,8 @@ paths:
       summary: Update search attribute in IdentityNow.
       tags:
       - Search Attribute Configuration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /account-activities:
     get:
       description: This gets a collection of account activities that satisfy the given
@@ -6408,10 +6498,7 @@ paths:
       - Auth Users
   /brandings:
     get:
-      description: |-
-        This API endpoint returns a list of branding items.
-
-        A token with API, ORG_ADMIN authority is required to call this API.
+      description: This API endpoint returns a list of branding items.
       operationId: getBrandingList
       responses:
         "200":
@@ -6481,13 +6568,15 @@ paths:
       security:
       - userAuth:
         - idn:branding:read
+      - applicationAuth:
+        - idn:branding:read
       summary: List of branding items
       tags:
       - Branding
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     post:
-      description: |-
-        This API endpoint creates a branding item.
-        A token with API, ORG_ADMIN authority is required to call this API.
+      description: This API endpoint creates a branding item.
       operationId: createBrandingItem
       requestBody:
         content:
@@ -6561,14 +6650,17 @@ paths:
       security:
       - userAuth:
         - idn:branding:manage
+      - applicationAuth:
+        - idn:branding:manage
       summary: Create a branding item
       tags:
       - Branding
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /brandings/{name}:
     delete:
-      description: |-
-        This API endpoint delete information for an existing branding item by name.
-        A token with API, ORG_ADMIN authority is required to call this API.
+      description: 'This API endpoint delete information for an existing branding
+        item by name.    '
       operationId: deleteBranding
       parameters:
       - description: The name of the branding item to be deleted
@@ -6659,13 +6751,16 @@ paths:
       security:
       - userAuth:
         - idn:branding:manage
+      - applicationAuth:
+        - idn:branding:manage
       summary: Delete a branding item
       tags:
       - Branding
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     get:
-      description: |-
-        This API endpoint retrieves information for an existing branding item by name.
-        A token with API, ORG_ADMIN authority is required to call this API.
+      description: 'This API endpoint retrieves information for an existing branding
+        item by name.    '
       operationId: getBranding
       parameters:
       - description: The name of the branding item to be retrieved
@@ -6759,13 +6854,16 @@ paths:
       security:
       - userAuth:
         - idn:branding:read
+      - applicationAuth:
+        - idn:branding:read
       summary: Get a branding item
       tags:
       - Branding
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     put:
-      description: |-
-        This API endpoint updates information for an existing branding item.
-        A token with API, ORG_ADMIN authority is required to call this API.
+      description: This API endpoint updates information for an existing branding
+        item.
       operationId: setBrandingItem
       parameters:
       - description: The name of the branding item to be retrieved
@@ -6865,15 +6963,17 @@ paths:
       security:
       - userAuth:
         - idn:branding:manage
+      - applicationAuth:
+        - idn:branding:manage
       summary: Update a branding item
       tags:
       - Branding
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /campaigns:
     get:
       description: |
         Use this API to get a list of campaigns. This API can provide increased level of detail for each campaign for the correct provided query.
-
-        A token with ORG_ADMIN, CERT_ADMIN or REPORT_ADMIN authority is required to call this API.
       operationId: getActiveCampaigns
       parameters:
       - description: "Determines whether slim, or increased level of detail is provided\
@@ -7032,11 +7132,13 @@ paths:
       summary: List Campaigns
       tags:
       - Certification Campaigns
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
+      - REPORT_ADMIN
     post:
-      description: |
-        Use this API to create a certification campaign with the information provided in the request body.
-
-        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
+      description: "Use this API to create a certification campaign with the information\
+        \ provided in the request body.    \n"
       operationId: createCampaign
       requestBody:
         content:
@@ -7132,12 +7234,13 @@ paths:
       summary: Create a campaign
       tags:
       - Certification Campaigns
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
   /campaigns/{id}:
     get:
       description: |
         Use this API to get information for an existing certification campaign by the campaign's ID.
-
-        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: getCampaign
       parameters:
       - description: ID of the campaign to be retrieved.
@@ -7255,11 +7358,12 @@ paths:
       summary: Get Campaign
       tags:
       - Certification Campaigns
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
     patch:
       description: |
         Use this API to update individual fields on a certification campaign, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
-
-        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: updateCampaign
       parameters:
       - description: ID of the campaign template being modified.
@@ -7396,12 +7500,13 @@ paths:
       summary: Update a Campaign
       tags:
       - Certification Campaigns
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
   /campaigns/{id}/reassign:
     post:
-      description: |
-        This API reassigns the specified certifications from one identity to another.
-
-        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
+      description: "This API reassigns the specified certifications from one identity\
+        \ to another.    \n"
       operationId: move
       parameters:
       - description: The certification campaign ID
@@ -7512,11 +7617,13 @@ paths:
       summary: Reassign Certifications
       tags:
       - Certification Campaigns
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
   /campaigns/{id}/activate:
     post:
-      description: "Use this API to submit a job to activate the certified campaign\
-        \ with the specified ID. The campaign must be staged.\n\nA token with ORG_ADMIN\
-        \ or CERT_ADMIN authority is required to call this API. \n"
+      description: |
+        Use this API to submit a job to activate the certified campaign with the specified ID. The campaign must be staged.
       operationId: startCampaign
       parameters:
       - description: Campaign ID.
@@ -7626,6 +7733,9 @@ paths:
       summary: Activate a Campaign
       tags:
       - Certification Campaigns
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
   /campaigns/{id}/complete:
     post:
       description: |
@@ -7639,8 +7749,6 @@ paths:
 
         Use this API to complete a certification campaign. This functionality is provided to admins so that they
         can complete a certification even if all items have not been completed.
-
-        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: completeCampaign
       parameters:
       - description: Campaign ID.
@@ -7746,12 +7854,13 @@ paths:
       summary: Complete a Campaign
       tags:
       - Certification Campaigns
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
   /campaigns/delete:
     post:
       description: |
         Use this API to delete certification campaigns whose IDs are specified in the provided list of campaign IDs.
-
-        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: deleteCampaigns
       requestBody:
         content:
@@ -7848,12 +7957,13 @@ paths:
       summary: Delete Campaigns
       tags:
       - Certification Campaigns
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
   /campaigns/{id}/run-remediation-scan:
     post:
       description: |
         Use this API to run a remediation scan task for a certification campaign.
-
-        A token with ORG_ADMIN, CERT_ADMIN or REPORT_ADMIN authority is required to call this API.
       operationId: startCampaignRemediationScan
       parameters:
       - description: ID of the campaign the remediation scan is being run for.
@@ -7951,12 +8061,14 @@ paths:
       summary: Run Campaign Remediation Scan
       tags:
       - Certification Campaigns
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
+      - REPORT_ADMIN
   /campaigns/{id}/reports:
     get:
       description: |
         Use this API to fetch all reports for a certification campaign by campaign ID.
-
-        A token with ORG_ADMIN, CERT_ADMIN or REPORT_ADMIN authority is required to call this API.
       operationId: getCampaignReports
       parameters:
       - description: ID of the campaign whose reports are being fetched.
@@ -8056,12 +8168,14 @@ paths:
       summary: Get Campaign Reports
       tags:
       - Certification Campaigns
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
+      - REPORT_ADMIN
   /campaigns/{id}/run-report/{type}:
     post:
       description: |
         Use this API to run a report for a certification campaign.
-
-        A token with ORG_ADMIN, CERT_ADMIN or REPORT_ADMIN authority is required to call this API.
       operationId: startCampaignReport
       parameters:
       - description: ID of the campaign the report is being run for.
@@ -8165,12 +8279,15 @@ paths:
       summary: Run Campaign Report
       tags:
       - Certification Campaigns
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
+      - REPORT_ADMIN
   /campaigns/reports-configuration:
     get:
       description: "Use this API to fetch the configuration for certification campaign\
         \ reports. The configuration includes only one element - identity attributes\
-        \ defined as custom report columns. \n\nA token with ORG_ADMIN or CERT_ADMIN\
-        \ authority is required to call this API.\n"
+        \ defined as custom report columns. \n"
       operationId: getCampaignReportsConfig
       responses:
         "200":
@@ -8242,10 +8359,12 @@ paths:
       summary: Get Campaign Reports Configuration
       tags:
       - Certification Campaigns
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
     put:
       description: "Use this API to overwrite the configuration for campaign reports.\
-        \ \n\nA token with ORG_ADMIN or CERT_ADMIN authority is required to call this\
-        \ API.\n"
+        \ \n"
       operationId: setCampaignReportsConfig
       requestBody:
         content:
@@ -8323,6 +8442,9 @@ paths:
       summary: Set Campaign Reports Configuration
       tags:
       - Certification Campaigns
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
   /campaign-filters:
     get:
       description: Use this API to list all campaign filters. You can reduce scope
@@ -8845,8 +8967,7 @@ paths:
     get:
       description: "Use this API to get a list of all campaign templates. Scope can\
         \ be reduced through standard V3 query params.\n\nThe API returns all campaign\
-        \ templates matching the query parameters. \n\nA token with ORG_ADMIN or CERT_ADMIN\
-        \ authority is required to call this API.\n"
+        \ templates matching the query parameters. \n"
       operationId: getCampaignTemplates
       parameters:
       - description: |-
@@ -8985,11 +9106,12 @@ paths:
       summary: List Campaign Templates
       tags:
       - Certification Campaigns
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
     post:
       description: |
         Use this API to create a certification campaign template based on campaign.
-
-        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: createCampaignTemplate
       requestBody:
         content:
@@ -9084,12 +9206,13 @@ paths:
       summary: Create a Campaign Template
       tags:
       - Certification Campaigns
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
   /campaign-templates/{id}:
     delete:
       description: |
         Use this API to delete a certification campaign template by ID.
-
-        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: deleteCampaignTemplate
       parameters:
       - description: ID of the campaign template being deleted.
@@ -9183,11 +9306,12 @@ paths:
       summary: Delete a Campaign Template
       tags:
       - Certification Campaigns
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
     get:
       description: |
         Use this API to fetch a certification campaign template by ID.
-
-        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: getCampaignTemplate
       parameters:
       - description: Requested campaign template's ID.
@@ -9294,11 +9418,12 @@ paths:
       summary: Get a Campaign Template
       tags:
       - Certification Campaigns
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
     patch:
       description: |
         Use this API to update individual fields on a certification campaign template, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
-
-        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: patchCampaignTemplate
       parameters:
       - description: ID of the campaign template being modified.
@@ -9428,12 +9553,13 @@ paths:
       summary: Update a Campaign Template
       tags:
       - Certification Campaigns
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
   /campaign-templates/{id}/schedule:
     delete:
       description: |
         Use this API to delete the schedule for a certification campaign template. The API returns a 404 if there is no schedule set.
-
-        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: deleteCampaignTemplateSchedule
       parameters:
       - description: ID of the campaign template whose schedule is being deleted.
@@ -9526,11 +9652,12 @@ paths:
       summary: Delete Campaign Template Schedule
       tags:
       - Certification Campaigns
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
     get:
       description: |
         Use this API to get the schedule for a certification campaign template. The API returns a 404 if there is no schedule set.
-
-        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: getCampaignTemplateSchedule
       parameters:
       - description: ID of the campaign template whose schedule is being fetched.
@@ -9628,11 +9755,12 @@ paths:
       summary: Get Campaign Template Schedule
       tags:
       - Certification Campaigns
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
     put:
       description: |
         Use this API to set the schedule for a certification campaign template. If a schedule already exists, the API overwrites it with the new one.
-
-        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: setCampaignTemplateSchedule
       parameters:
       - description: ID of the campaign template being scheduled.
@@ -9798,6 +9926,9 @@ paths:
       summary: Set Campaign Template Schedule
       tags:
       - Certification Campaigns
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
   /campaign-templates/{id}/generate:
     post:
       description: |
@@ -9812,8 +9943,6 @@ paths:
         campaign called "Campaign for 2020" (assuming the year at generation time is 2020).
 
         Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html).
-
-        A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
       operationId: startGenerateCampaignTemplate
       parameters:
       - description: ID of the campaign template to use for generation.
@@ -9893,6 +10022,9 @@ paths:
       summary: Generate a Campaign from Template
       tags:
       - Certification Campaigns
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
   /certifications:
     get:
       description: "Use this API to get a list of identity campaign certifications\
@@ -10047,8 +10179,7 @@ paths:
   /certifications/{id}:
     get:
       description: This API returns a single identity campaign certification by its
-        ID. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this
-        API. Reviewers for this certification can also call this API. This API does
+        ID. Reviewers for this certification can also call this API. This API does
         not support requests for certifications assigned to Governance Groups.
       operationId: getIdentityCertification
       parameters:
@@ -10140,16 +10271,20 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth: []
       summary: Identity Certification by ID
       tags:
       - Certifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
   /certifications/{id}/access-review-items:
     get:
       description: This API returns a list of access review items for an identity
-        campaign certification. A token with ORG_ADMIN or CERT_ADMIN authority is
-        required to call this API. Reviewers for this certification can also call
-        this API. This API does not support requests for certifications assigned to
-        Governance Groups.
+        campaign certification. Reviewers for this certification can also call this
+        API. This API does not support requests for certifications assigned to Governance
+        Groups.
       operationId: listIdentityAccessReviewItems
       parameters:
       - description: The identity campaign certification ID
@@ -10351,14 +10486,18 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth: []
       summary: List of Access Review Items
       tags:
       - Certifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
   /certifications/{id}/decide:
     post:
       description: The API makes a decision to approve or revoke one or more identity
-        campaign certification items. A token with ORG_ADMIN or CERT_ADMIN authority
-        is required to call this API. Reviewers for this certification can also call
+        campaign certification items. Reviewers for this certification can also call
         this API. This API does not support requests for certifications assigned to
         Governance Groups.
       operationId: makeIdentityDecision
@@ -10472,9 +10611,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth: []
       summary: Decide on a Certification Item
       tags:
       - Certifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
   /certifications/{id}/reassign:
     post:
       description: This API reassigns up to 50 identities or items in an identity
@@ -10585,9 +10729,8 @@ paths:
   /certifications/{id}/sign-off:
     post:
       description: This API finalizes all decisions made on an identity campaign certification
-        and initiates any remediations required. A token with ORG_ADMIN or CERT_ADMIN
-        authority is required to call this API. Reviewers for this certification can
-        also call this API. This API does not support requests for certifications
+        and initiates any remediations required. Reviewers for this certification
+        can also call this API. This API does not support requests for certifications
         assigned to Governance Groups.
       operationId: signOffIdentityCertification
       parameters:
@@ -10679,15 +10822,19 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth: []
       summary: Finalize Identity Certification Decisions
       tags:
       - Certifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
   /certifications/{id}/decision-summary:
     get:
       description: This API returns a summary of the decisions made on an identity
-        campaign certification. The decisions are summarized by type. A token with
-        ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers
-        for this certification can also call this API.
+        campaign certification. The decisions are summarized by type. Reviewers for
+        this certification can also call this API.
       operationId: getIdentityDecisionSummary
       parameters:
       - description: The certification ID
@@ -10790,15 +10937,19 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth: []
       summary: Summary of Certification Decisions
       tags:
       - Certification Summaries
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
   /certifications/{id}/identity-summaries:
     get:
       description: This API returns a list of the identity summaries for a specific
-        identity campaign certification. A token with ORG_ADMIN or CERT_ADMIN authority
-        is required to call this API. Reviewers for this certification can also call
-        this API.
+        identity campaign certification. Reviewers for this certification can also
+        call this API.
       operationId: getIdentitySummaries
       parameters:
       - description: The identity campaign certification ID
@@ -10965,15 +11116,19 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth: []
       summary: Identity Summaries for Campaign Certification
       tags:
       - Certification Summaries
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
   /certifications/{id}/access-summaries/{type}:
     get:
       description: This API returns a list of access summaries for the specified identity
-        campaign certification and type. A token with ORG_ADMIN or CERT_ADMIN authority
-        is required to call this API. Reviewers for this certification can also call
-        this API.
+        campaign certification and type. Reviewers for this certification can also
+        call this API.
       operationId: getIdentityAccessSummaries
       parameters:
       - description: The identity campaign certification ID
@@ -11179,17 +11334,19 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - oauth2:
+      - userAuth:
         - idn:certification:read
       summary: Access Summaries
       tags:
       - Certification Summaries
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
   /certifications/{id}/identity-summaries/{identitySummaryId}:
     get:
       description: This API returns the summary for an identity on a specified identity
-        campaign certification. A token with ORG_ADMIN or CERT_ADMIN authority is
-        required to call this API. Reviewers for this certification can also call
-        this API.
+        campaign certification. Reviewers for this certification can also call this
+        API.
       operationId: getIdentitySummary
       parameters:
       - description: The identity campaign certification ID
@@ -11287,15 +11444,19 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth: []
       summary: Summary for Identity
       tags:
       - Certification Summaries
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
   /certifications/{certificationId}/access-review-items/{itemId}/permissions:
     get:
       description: This API returns the permissions associated with an entitlement
-        certification item based on the certification item's ID. A token with ORG_ADMIN
-        or CERT_ADMIN authority is required to call this API. Reviewers for this certification
-        can also call this API.
+        certification item based on the certification item's ID. Reviewers for this
+        certification can also call this API.
       operationId: getIdentityCertificationItemPermissions
       parameters:
       - description: |-
@@ -11462,10 +11623,12 @@ paths:
       summary: Permissions for Entitlement Certification Item
       tags:
       - Certifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
   /certifications/{id}/reviewers:
     get:
-      description: This API returns a list of reviewers for the certification. A token
-        with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers
+      description: This API returns a list of reviewers for the certification. Reviewers
         for this certification can also call this API.
       operationId: listCertificationReviewers
       parameters:
@@ -11628,14 +11791,16 @@ paths:
       summary: List of Reviewers for certification
       tags:
       - Certifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
   /certifications/{id}/reassign-async:
     post:
       description: "This API initiates a task to reassign up to 500 identities or\
         \ items in an identity campaign certification to another\nreviewer. The `certification-tasks`\
         \ API can be used to get an updated status on the task and determine when\
-        \ the\nreassignment is complete. \n\nA token with ORG_ADMIN or CERT_ADMIN\
-        \ authority is required to call this API. Reviewers for\nthis certification\
-        \ can also call this API.\n"
+        \ the\nreassignment is complete. \n\nReviewers for this certification can\
+        \ also call this API.\n"
       operationId: submitReassignCertsAsync
       parameters:
       - description: The identity campaign certification ID
@@ -11739,11 +11904,13 @@ paths:
       summary: Reassign Certifications Asynchronously
       tags:
       - Certifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
   /certification-tasks/{id}:
     get:
-      description: This API returns the certification task for the specified ID. A
-        token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
-        Reviewers for the specified certification can also call this API.
+      description: This API returns the certification task for the specified ID. Reviewers
+        for the specified certification can also call this API.
       operationId: getCertificationTask
       parameters:
       - description: The task ID
@@ -11840,6 +12007,9 @@ paths:
       summary: Certification Task by ID
       tags:
       - Certifications
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
   /certification-tasks:
     get:
       description: "This API returns a list of pending (`QUEUED` or `IN_PROGRESS`)\
@@ -13142,9 +13312,7 @@ paths:
       - Configuration Hub
   /connectors/{scriptName}:
     delete:
-      description: |-
-        Delete a custom connector that using its script name.
-        A token with ORG_ADMIN authority is required to call this API.
+      description: Delete a custom connector that using its script name.
       operationId: deleteCustomConnector
       parameters:
       - description: The scriptName value of the connector. Scriptname is the unique
@@ -13241,10 +13409,10 @@ paths:
       summary: Deletes connector by script name
       tags:
       - Connectors
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     get:
-      description: |-
-        Fetches a connector that using its script name.
-        A token with ORG_ADMIN authority is required to call this API.
+      description: 'Fetches a connector that using its script name.    '
       operationId: getConnector
       parameters:
       - description: The scriptName value of the connector. Scriptname is the unique
@@ -13371,10 +13539,12 @@ paths:
       summary: Gets connector by script name
       tags:
       - Connectors
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     patch:
       description: |-
         Patch a custom connector that using its script name.
-        A token with ORG_ADMIN authority is required to call this API. The following fields are patchable: * connectorMetadata * applicationXml * correlationConfigXml * sourceConfigXml
+        The following fields are patchable: * connectorMetadata * applicationXml * correlationConfigXml * sourceConfigXml
       operationId: updateConnector
       parameters:
       - description: The scriptName value of the connector. Scriptname is the unique
@@ -13484,11 +13654,12 @@ paths:
       summary: Update connector by script name
       tags:
       - Connectors
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /connectors:
     get:
-      description: |-
-        Fetches list of connectors that have 'RELEASED' status using filtering and pagination.
-        A token with ORG_ADMIN authority is required to call this API.
+      description: Fetches list of connectors that have 'RELEASED' status using filtering
+        and pagination.
       operationId: getConnectorList
       parameters:
       - description: |-
@@ -13666,10 +13837,10 @@ paths:
       summary: Gets connector list
       tags:
       - Connectors
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     post:
-      description: |-
-        Create custom connector.
-        A token with ORG_ADMIN authority is required to call this API.
+      description: 'Create custom connector.    '
       operationId: createCustomConnector
       requestBody:
         content:
@@ -13764,11 +13935,11 @@ paths:
       summary: Create custom connector
       tags:
       - Connectors
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /connectors/{scriptName}/source-config:
     get:
-      description: |-
-        Fetches a connector's source config using its script name.
-        A token with ORG_ADMIN authority is required to call this API.
+      description: 'Fetches a connector''s source config using its script name.    '
       operationId: getConnectorSourceConfig
       parameters:
       - description: The scriptName value of the connector. Scriptname is the unique
@@ -13867,10 +14038,10 @@ paths:
         - idn:connector-config:read
       tags:
       - Connectors
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     put:
-      description: |-
-        Update a connector's source config using its script name.
-        A token with ORG_ADMIN authority is required to call this API.
+      description: 'Update a connector''s source config using its script name.    '
       operationId: putSourceConfig
       parameters:
       - description: The scriptName value of the connector. Scriptname is the unique
@@ -13975,11 +14146,11 @@ paths:
         - idn:connector-config:update
       tags:
       - Connectors
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /connectors/{scriptName}/translations/{locale}:
     get:
-      description: |-
-        Fetches a connector's translations using its script name.
-        A token with ORG_ADMIN authority is required to call this API.
+      description: 'Fetches a connector''s translations using its script name.    '
       operationId: getConnectorTranslations
       parameters:
       - description: The scriptName value of the connector. Scriptname is the unique
@@ -14106,10 +14277,10 @@ paths:
         - idn:connector-config:read
       tags:
       - Connectors
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     put:
-      description: |-
-        Update a connector's translations using its script name.
-        A token with ORG_ADMIN authority is required to call this API.
+      description: 'Update a connector''s translations using its script name.    '
       operationId: putTranslations
       parameters:
       - description: The scriptName value of the connector. Scriptname is the unique
@@ -14242,11 +14413,11 @@ paths:
         - idn:connector-config:update
       tags:
       - Connectors
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /connectors/{scriptName}/source-template:
     get:
-      description: |-
-        Fetches a connector's source template using its script name.
-        A token with ORG_ADMIN authority is required to call this API.
+      description: 'Fetches a connector''s source template using its script name.    '
       operationId: getConnectorSourceTemplate
       parameters:
       - description: The scriptName value of the connector. Scriptname is the unique
@@ -14345,10 +14516,10 @@ paths:
         - idn:connector-config:read
       tags:
       - Connectors
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     put:
-      description: |-
-        Update a connector's source template using its script name.
-        A token with ORG_ADMIN authority is required to call this API.
+      description: 'Update a connector''s source template using its script name.    '
       operationId: putSourceTemplate
       parameters:
       - description: The scriptName value of the connector. Scriptname is the unique
@@ -14453,11 +14624,11 @@ paths:
         - idn:connector-config:update
       tags:
       - Connectors
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /connectors/{scriptName}/correlation-config:
     get:
-      description: |-
-        Fetches a connector's correlation config using its script name.
-        A token with ORG_ADMIN authority is required to call this API.
+      description: 'Fetches a connector''s correlation config using its script name.    '
       operationId: getConnectorCorrelationConfig
       parameters:
       - description: The scriptName value of the connector. Scriptname is the unique
@@ -14556,10 +14727,10 @@ paths:
         - idn:connector-config:read
       tags:
       - Connectors
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     put:
-      description: |-
-        Update a connector's correlation config using its script name.
-        A token with ORG_ADMIN authority is required to call this API.
+      description: 'Update a connector''s correlation config using its script name.    '
       operationId: putCorrelationConfig
       parameters:
       - description: The scriptName value of the connector. Scriptname is the unique
@@ -14664,11 +14835,12 @@ paths:
         - idn:connector-config:update
       tags:
       - Connectors
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /identities/{identity-id}/set-lifecycle-state:
     post:
-      description: |-
-        Use this API to set/update an identity's lifecycle state to the one provided and update the corresponding identity profile.
-        A token with ORG_ADMIN or API authority and the appropriate user context is required to call this API.
+      description: Use this API to set/update an identity's lifecycle state to the
+        one provided and update the corresponding identity profile.
       operationId: setLifecycleState
       parameters:
       - description: ID of the identity to update.
@@ -14768,14 +14940,17 @@ paths:
       security:
       - userAuth:
         - idn:identity-lifecycle-state:update
+      - applicationAuth:
+        - idn:identity-lifecycle-state:update
       summary: Set Lifecycle State
       tags:
       - Lifecycle States
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /identity-profiles/{identity-profile-id}/lifecycle-states:
     get:
-      description: "Use this endpoint to list all lifecycle states by their associated\
-        \ identity profiles. \nA token with API, or ORG_ADMIN authority is required\
-        \ to call this API."
+      description: 'Use this endpoint to list all lifecycle states by their associated
+        identity profiles. '
       operationId: getLifecycleStates
       parameters:
       - description: Identity profile ID.
@@ -14902,13 +15077,15 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile-lifecycle-state:read
+      - applicationAuth:
+        - idn:identity-profile-lifecycle-state:read
       summary: Lists LifecycleStates
       tags:
       - Lifecycle States
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     post:
-      description: |-
-        Use this endpoint to create a lifecycle state.
-        A token with ORG_ADMIN or API authority is required to call this API.
+      description: Use this endpoint to create a lifecycle state.
       operationId: createLifecycleState
       parameters:
       - description: Identity profile ID.
@@ -14991,13 +15168,16 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile-lifecycle-state:manage
+      - applicationAuth:
+        - idn:identity-profile-lifecycle-state:manage
       summary: Create Lifecycle State
       tags:
       - Lifecycle States
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id}:
     delete:
-      description: "Use this endpoint to delete the lifecycle state by its ID. \n\
-        A token with API, or ORG_ADMIN authority is required to call this API."
+      description: 'Use this endpoint to delete the lifecycle state by its ID. '
       operationId: deleteLifecycleState
       parameters:
       - description: Identity profile ID.
@@ -15098,13 +15278,16 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile-lifecycle-state:manage
+      - applicationAuth:
+        - idn:identity-profile-lifecycle-state:manage
       summary: Delete Lifecycle State
       tags:
       - Lifecycle States
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     get:
-      description: "Use this endpoint to get a lifecycle state by its ID and its associated\
-        \ identity profile ID. \nA token with ORG_ADMIN or API authority is required\
-        \ to call this API."
+      description: 'Use this endpoint to get a lifecycle state by its ID and its associated
+        identity profile ID. '
       operationId: getLifecycleState
       parameters:
       - description: Identity profile ID.
@@ -15208,10 +15391,11 @@ paths:
       summary: Get Lifecycle State
       tags:
       - Lifecycle States
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     patch:
-      description: |-
-        Use this endpoint to update individual lifecycle state fields, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
-        A token with ORG_ADMIN or API authority is required to call this API.
+      description: "Use this endpoint to update individual lifecycle state fields,\
+        \ using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard."
       operationId: updateLifecycleStates
       parameters:
       - description: Identity profile ID.
@@ -15355,14 +15539,17 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile-lifecycle-state:manage
+      - applicationAuth:
+        - idn:identity-profile-lifecycle-state:manage
       summary: Update Lifecycle State
       tags:
       - Lifecycle States
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /identity-profiles:
     get:
-      description: |-
-        This returns a list of Identity Profiles based on the specified query parameters.
-        A token with ORG_ADMIN or API authority is required to call this API to get a list of Identity Profiles.
+      description: This returns a list of Identity Profiles based on the specified
+        query parameters.
       operationId: listIdentityProfiles
       parameters:
       - description: |-
@@ -15498,14 +15685,15 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile:read
+      - applicationAuth:
+        - idn:identity-profile:read
       summary: Identity Profiles List
       tags:
       - Identity Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     post:
-      description: |-
-        This creates an Identity Profile.
-
-        A token with ORG_ADMIN authority is required to call this API to create an Identity Profile.
+      description: 'This creates an Identity Profile.    '
       operationId: createIdentityProfile
       requestBody:
         content:
@@ -15582,14 +15770,14 @@ paths:
       summary: Create an Identity Profile
       tags:
       - Identity Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /identity-profiles/bulk-delete:
     post:
       description: |-
         This deletes multiple Identity Profiles via a list of supplied IDs.
 
         On success, this endpoint will return a reference to the bulk delete task result.
-
-        A token with ORG_ADMIN authority is required to call this API.
 
         The following rights are required to access this endpoint: idn:identity-profile:delete
       operationId: deleteIdentityProfiles
@@ -15670,6 +15858,8 @@ paths:
       summary: Delete Identity Profiles
       tags:
       - Identity Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /identity-profiles/export:
     get:
       description: This exports existing identity profiles in the format specified
@@ -15899,7 +16089,6 @@ paths:
       description: |-
         Use this API to generate a non-persisted preview of the identity object after applying `IdentityAttributeConfig` sent in request body.
         This API only allows `accountAttribute`, `reference` and `rule` transform types in the `IdentityAttributeConfig` sent in the request body.
-        A token with ORG_ADMIN authority is required to call this API to generate an identity preview.
       operationId: showIdentityPreview
       requestBody:
         content:
@@ -15978,16 +16167,13 @@ paths:
       summary: Generate Identity Profile Preview
       tags:
       - Identity Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /identity-profiles/{identity-profile-id}:
     delete:
-      description: |-
-        This deletes an Identity Profile based on ID.
-
-        On success, this endpoint will return a reference to the bulk delete task result.
-
-        A token with ORG_ADMIN authority is required to call this API.
-
-        The following rights are required to access this endpoint: idn:identity-profile:delete
+      description: "This deletes an Identity Profile based on ID.\n\nOn success, this\
+        \ endpoint will return a reference to the bulk delete task result.\n    \n\
+        \nThe following rights are required to access this endpoint: idn:identity-profile:delete"
       operationId: deleteIdentityProfile
       parameters:
       - description: The Identity Profile ID.
@@ -16086,11 +16272,10 @@ paths:
       summary: Delete an Identity Profile
       tags:
       - Identity Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     get:
-      description: |-
-        This returns a single Identity Profile based on ID.
-
-        A token with ORG_ADMIN or API authority is required to call this API.
+      description: This returns a single Identity Profile based on ID.
       operationId: getIdentityProfile
       parameters:
       - description: The Identity Profile ID.
@@ -16185,23 +16370,19 @@ paths:
       security:
       - userAuth:
         - idn:identity-profile:read
+      - applicationAuth:
+        - idn:identity-profile:read
       summary: Get single Identity Profile
       tags:
       - Identity Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     patch:
-      description: |-
-        This updates the specified Identity Profile.
-
-        A token with ORG_ADMIN authority is required to call this API to update the Identity Profile.
-
-        Some fields of the Schema cannot be updated. These fields are listed below:
-        * id
-        * name
-        * created
-        * modified
-        * identityCount
-        * identityRefreshRequired
-        * Authoritative Source and Identity Attribute Configuration cannot be modified at once.
+      description: "This updates the specified Identity Profile.\n  \n\nSome fields\
+        \ of the Schema cannot be updated. These fields are listed below:\n* id\n\
+        * name\n* created\n* modified\n* identityCount\n* identityRefreshRequired\n\
+        * Authoritative Source and Identity Attribute Configuration cannot be modified\
+        \ at once."
       operationId: updateIdentityProfile
       parameters:
       - description: The Identity Profile ID
@@ -16323,11 +16504,11 @@ paths:
       summary: Update the Identity Profile
       tags:
       - Identity Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /identity-profiles/{identity-profile-id}/default-identity-attribute-config:
     get:
-      description: |-
-        This returns the default identity attribute config.
-        A token with ORG_ADMIN authority is required to call this API to get the default identity attribute config.
+      description: This returns the default identity attribute config.
       operationId: getDefaultIdentityAttributeConfig
       parameters:
       - description: The Identity Profile ID.
@@ -16425,6 +16606,8 @@ paths:
       summary: Get default Identity Attribute Config
       tags:
       - Identity Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /identity-profiles/{identity-profile-id}/process-identities:
     post:
       description: "Process identities under the profile\nThis operation should not\
@@ -16441,8 +16624,7 @@ paths:
         \ profile.\n1. Updates identity attribute according to the identity profile\
         \ mappings. 2. Determines the identity's correct manager through manager correlation.\
         \ 3. Updates the identity's access according to their assigned lifecycle state.\
-        \ 4. Updates the identity's access based on role assignment criteria.\nA token\
-        \ with ORG_ADMIN authority is required to call this API."
+        \ 4. Updates the identity's access based on role assignment criteria."
       externalDocs:
         description: Learn more about manually processing identities here
         url: https://documentation.sailpoint.com/saas/help/setup/identity_processing.html
@@ -16544,6 +16726,8 @@ paths:
       summary: Process identities under profile
       tags:
       - Identity Profiles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /managed-clients:
     get:
       description: Get a list of Managed Clients.
@@ -17863,8 +18047,7 @@ paths:
       - Managed Clusters
   /mfa/okta-verify/config:
     get:
-      description: This API returns the configuration of an Okta MFA method. A token
-        with ORG_ADMIN authority is required to call this API.
+      description: This API returns the configuration of an Okta MFA method.
       operationId: getMFAOktaConfig
       responses:
         "200":
@@ -17942,9 +18125,10 @@ paths:
       summary: Configuration of Okta MFA method
       tags:
       - MFA Configuration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     put:
-      description: This API sets the configuration of an Okta MFA method. A token
-        with ORG_ADMIN authority is required to call this API.
+      description: This API sets the configuration of an Okta MFA method.
       operationId: setMFAOktaConfig
       requestBody:
         content:
@@ -18033,10 +18217,11 @@ paths:
       summary: Set Okta MFA configuration
       tags:
       - MFA Configuration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /mfa/duo-web/config:
     get:
-      description: This API returns the configuration of an Duo MFA method. A token
-        with ORG_ADMIN authority is required to call this API.
+      description: This API returns the configuration of an Duo MFA method.
       operationId: getMFADuoConfig
       responses:
         "200":
@@ -18117,9 +18302,10 @@ paths:
       summary: Configuration of Duo MFA method
       tags:
       - MFA Configuration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     put:
-      description: This API sets the configuration of an Duo MFA method. A token with
-        ORG_ADMIN authority is required to call this API.
+      description: This API sets the configuration of an Duo MFA method.
       operationId: setMFADuoConfig
       requestBody:
         content:
@@ -18214,10 +18400,11 @@ paths:
       summary: Set Duo MFA configuration
       tags:
       - MFA Configuration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /mfa/kba/config:
     get:
-      description: This API returns the KBA configuration for MFA. A token with USER
-        or ORG_ADMIN authority is required to call this API.
+      description: This API returns the KBA configuration for MFA.
       operationId: getMFAKbaConfig
       parameters:
       - description: "Indicator whether the question text should be returned in all\
@@ -18312,11 +18499,13 @@ paths:
       summary: Configuration of KBA MFA method
       tags:
       - MFA Configuration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - USER
   /mfa/kba/config/answers:
     post:
-      description: |-
-        This API sets answers to challenge questions.  Any configured questions omitted from the request are removed from user KBA configuration.
-        A token with USER authority is required to call this API.
+      description: 'This API sets answers to challenge questions.  Any configured
+        questions omitted from the request are removed from user KBA configuration.    '
       operationId: setMFAKBAConfig
       requestBody:
         content:
@@ -18415,11 +18604,12 @@ paths:
       summary: Set MFA KBA configuration
       tags:
       - MFA Configuration
+      x-sailpoint-userLevels:
+      - USER
   /mfa/{method}/test:
     get:
-      description: |-
-        This API validates that the configuration is valid and will properly authenticate with the MFA provider identified by the method path parameter.
-        A token with ORG_ADMIN authority is required to call this API.
+      description: This API validates that the configuration is valid and will properly
+        authenticate with the MFA provider identified by the method path parameter.
       operationId: testMFAConfig
       parameters:
       - description: The name of the MFA method. The currently supported method names
@@ -18503,11 +18693,11 @@ paths:
       summary: MFA method's test configuration
       tags:
       - MFA Configuration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /mfa/{method}/delete:
     delete:
-      description: |-
-        This API removes the configuration for the specified MFA method.
-        A token with ORG_ADMIN authority is required to call this API.
+      description: This API removes the configuration for the specified MFA method.
       operationId: deleteMFAConfig
       parameters:
       - description: The name of the MFA method. The currently supported method names
@@ -18593,6 +18783,8 @@ paths:
       summary: Delete MFA method configuration
       tags:
       - MFA Configuration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /mfa/okta-verify/verify:
     post:
       description: "This API Authenticates the user via Okta-Verify MFA method. Request\
@@ -18769,7 +18961,7 @@ paths:
   /mfa/{method}/poll:
     post:
       description: This API poll the VerificationPollRequest for the specified MFA
-        method. A token with ORG_ADMIN authority is required to call this API.
+        method.
       operationId: pingVerificationStatus
       parameters:
       - description: "The name of the MFA method. The currently supported method names\
@@ -18861,6 +19053,8 @@ paths:
       summary: Polling MFA method by VerificationPollRequest
       tags:
       - MFA Controller
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /mfa/kba/authenticate:
     post:
       description: This API Authenticate user in KBA MFA method.
@@ -22749,8 +22943,7 @@ paths:
       - OAuth Clients
   /password-sync-groups:
     get:
-      description: This API returns a list of password sync groups. A token with ORG_ADMIN
-        authority is required to call this API.
+      description: This API returns a list of password sync groups.
       operationId: getPasswordSyncGroups
       parameters:
       - description: |-
@@ -22862,9 +23055,11 @@ paths:
       summary: Get Password Sync Group List
       tags:
       - Password Sync Groups
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     post:
       description: This API creates a password sync group based on the specifications
-        provided. A token with ORG_ADMIN authority is required to call this API.
+        provided.
       operationId: createPasswordSyncGroup
       requestBody:
         content:
@@ -22954,10 +23149,11 @@ paths:
       summary: Create Password Sync Group
       tags:
       - Password Sync Groups
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /password-sync-groups/{id}:
     delete:
-      description: This API deletes the specified password sync group. A token with
-        ORG_ADMIN authority is required to call this API.
+      description: This API deletes the specified password sync group.
       operationId: deletePasswordSyncGroup
       parameters:
       - description: The ID of password sync group to delete.
@@ -23033,9 +23229,10 @@ paths:
       summary: Delete Password Sync Group by ID
       tags:
       - Password Sync Groups
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     get:
-      description: This API returns the sync group for the specified ID. A token with
-        ORG_ADMIN authority is required to call this API.
+      description: This API returns the sync group for the specified ID.
       operationId: getPasswordSyncGroup
       parameters:
       - description: The ID of password sync group to retrieve.
@@ -23139,9 +23336,10 @@ paths:
       summary: Get Password Sync Group by ID
       tags:
       - Password Sync Groups
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     put:
-      description: This API updates the specified password sync group. A token with
-        ORG_ADMIN authority is required to call this API.
+      description: This API updates the specified password sync group.
       operationId: updatePasswordSyncGroup
       parameters:
       - description: The ID of password sync group to update.
@@ -23258,10 +23456,11 @@ paths:
       summary: Update Password Sync Group by ID
       tags:
       - Password Sync Groups
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /password-policies/{id}:
     delete:
-      description: This API deletes the specified password policy. A token with ORG_ADMIN
-        authority is required to call this API.
+      description: This API deletes the specified password policy.
       operationId: deletePasswordPolicy
       parameters:
       - description: The ID of password policy to delete.
@@ -23355,9 +23554,10 @@ paths:
       summary: Delete Password Policy by ID
       tags:
       - Password Policies
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     get:
-      description: This API returns the password policy for the specified ID. A token
-        with ORG_ADMIN authority is required to call this API.
+      description: This API returns the password policy for the specified ID.
       operationId: getPasswordPolicyById
       parameters:
       - description: The ID of password policy to retrieve.
@@ -23486,9 +23686,10 @@ paths:
       summary: Get Password Policy by ID
       tags:
       - Password Policies
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     put:
-      description: This API updates the specified password policy. A token with ORG_ADMIN
-        authority is required to call this API.
+      description: This API updates the specified password policy.
       operationId: setPasswordPolicy
       parameters:
       - description: The ID of password policy to update.
@@ -23655,6 +23856,8 @@ paths:
       summary: Update Password Policy by ID
       tags:
       - Password Policies
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /password-policies:
     get:
       description: |-
@@ -23833,8 +24036,7 @@ paths:
       tags:
       - Password Policies
     post:
-      description: This API creates the specified password policy. A token with ORG_ADMIN
-        authority is required to call this API.
+      description: This API creates the specified password policy.
       operationId: createPasswordPolicy
       requestBody:
         content:
@@ -23962,6 +24164,8 @@ paths:
       summary: Create Password Policy
       tags:
       - Password Policies
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /personal-access-tokens:
     get:
       description: "This gets a collection of personal access tokens associated with\
@@ -24559,8 +24763,7 @@ paths:
   /public-identities-config:
     get:
       description: Returns the publicly visible attributes of an identity available
-        to request approvers for Access Requests and Certification Campaigns. A token
-        with ORG ADMIN authority is required to call this API.
+        to request approvers for Access Requests and Certification Campaigns.
       operationId: getPublicIdentityConfig
       responses:
         "200":
@@ -24625,13 +24828,16 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth: []
       summary: Get the Public Identities Configuration
       tags:
       - Public Identities Config
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     put:
       description: Updates the publicly visible attributes of an identity available
-        to request approvers for Access Requests and Certification Campaigns. A token
-        with ORG ADMIN authority is required to call this API.
+        to request approvers for Access Requests and Certification Campaigns.
       operationId: updatePublicIdentityConfig
       requestBody:
         content:
@@ -24702,14 +24908,18 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth: []
       summary: Update the Public Identities Configuration
       tags:
       - Public Identities Config
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /requestable-objects:
     get:
       description: |-
         This endpoint returns a list of acccess items that that can be requested through the Access Request endpoints. Access items are marked with AVAILABLE, PENDING or ASSIGNED with respect to the identity provided using *identity-id* query param.
-        Any authenticated token can call this endpoint to see their requestable access items. A token with ORG_ADMIN authority is required to call this endpoint to return a list of all of the requestable access items for the org or for another identity.
+        Any authenticated token can call this endpoint to see their requestable access items.
       operationId: listRequestableObjects
       parameters:
       - description: |-
@@ -24887,15 +25097,16 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth: []
       summary: Requestable Objects List
       tags:
       - Requestable Objects
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /roles:
     get:
-      description: |-
-        This API returns a list of Roles.
-
-        A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API.
+      description: This API returns a list of Roles.
       operationId: listRoles
       parameters:
       - description: "If provided, filters the returned list according to what is\
@@ -25073,18 +25284,26 @@ paths:
         - idn:role-unchecked:manage
         - idn:role-checked:manage
         - idn:role-checked:read
+      - applicationAuth:
+        - idn:role-unchecked:read
+        - idn:role-unchecked:manage
+        - idn:role-checked:manage
+        - idn:role-checked:read
       summary: List Roles
       tags:
       - Roles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
     post:
-      description: "This API creates a role.\n\nYou must have a token with API, ORG_ADMIN,\
-        \ ROLE_ADMIN, or ROLE_SUBADMIN authority to call this API. \n\nIn addition,\
-        \ a ROLE_SUBADMIN may not create a role including an access profile if that\
-        \ access profile is associated with a source the ROLE_SUBADMIN is not associated\
-        \ with themselves. \n\nThe maximum supported length for the description field\
-        \ is 2000 characters. Longer descriptions will be preserved for existing roles.\
-        \ However, any new roles as well as any updates to existing descriptions will\
-        \ be limited to 2000 characters."
+      description: "This API creates a role.\nIn addition, a ROLE_SUBADMIN may not\
+        \ create a role including an access profile if that access profile is associated\
+        \ with a source the ROLE_SUBADMIN is not associated with themselves. \n\n\
+        The maximum supported length for the description field is 2000 characters.\
+        \ Longer descriptions will be preserved for existing roles. However, any new\
+        \ roles as well as any updates to existing descriptions will be limited to\
+        \ 2000 characters."
       operationId: createRole
       requestBody:
         content:
@@ -25159,15 +25378,24 @@ paths:
       - userAuth:
         - idn:role-unchecked:manage
         - idn:role-checked:manage
+      - applicationAuth:
+        - idn:role-unchecked:read
+        - idn:role-unchecked:manage
+        - idn:role-checked:manage
+        - idn:role-checked:read
       summary: Create a Role
       tags:
       - Roles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
   /roles/{id}:
     delete:
       description: |-
         This API deletes a Role by its ID.
 
-        A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
+        A user with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
       operationId: deleteRole
       parameters:
       - description: ID of the Role
@@ -25241,14 +25469,22 @@ paths:
       - userAuth:
         - idn:role-unchecked:manage
         - idn:role-checked:manage
+      - applicationAuth:
+        - idn:role-unchecked:read
+        - idn:role-unchecked:manage
+        - idn:role-checked:manage
+        - idn:role-checked:read
       summary: Delete a Role
       tags:
       - Roles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
     get:
       description: |-
         This API returns a Role by its ID.
-
-        A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
+        A user with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
       operationId: getRole
       parameters:
       - description: ID of the Role
@@ -25327,23 +25563,31 @@ paths:
         - idn:role-unchecked:manage
         - idn:role-checked:manage
         - idn:role-checked:read
+      - applicationAuth:
+        - idn:role-unchecked:read
+        - idn:role-unchecked:manage
+        - idn:role-checked:manage
+        - idn:role-checked:read
       summary: Get a Role
       tags:
       - Roles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
     patch:
       description: "This API updates an existing role using [JSON Patch](https://tools.ietf.org/html/rfc6902)\
-        \ syntax.\n\nThe following fields are patchable:\n\n* name\n* description\n\
-        * enabled\n* owner\n* accessProfiles\n* membership\n* requestable\n* accessRequestConfig\n\
-        * revokeRequestConfig\n* segments\n\nA token with API, ORG_ADMIN, ROLE_ADMIN,\
-        \ or ROLE_SUBADMIN authority is required to call this API. In addition, a\
-        \ token with ROLE_SUBADMIN authority may only call this API if all access\
-        \ profiles included in the role are associated to Sources with management\
-        \ workgroups of which the ROLE_SUBADMIN is a member.\n\nThe maximum supported\
-        \ length for the description field is 2000 characters. Longer descriptions\
-        \ will be preserved for existing roles, however, any new roles as well as\
-        \ any updates to existing descriptions will be limited to 2000 characters.\n\
-        \nWhen you use this API to modify a role's membership identities, you can\
-        \ only modify up to a limit of 500 membership identities at a time. "
+        \ syntax.\nThe following fields are patchable:\n* name\n* description\n* enabled\n\
+        * owner\n* accessProfiles\n* membership\n* requestable\n* accessRequestConfig\n\
+        * revokeRequestConfig\n* segments\n* accessModelMetadata\n\nA user with ROLE_SUBADMIN\
+        \ authority may only call this API if all access profiles included in the\
+        \ role are associated to Sources with management workgroups of which the ROLE_SUBADMIN\
+        \ is a member.\n\nThe maximum supported length for the description field is\
+        \ 2000 characters. Longer descriptions will be preserved for existing roles,\
+        \ however, any new roles as well as any updates to existing descriptions will\
+        \ be limited to 2000 characters.\n\nWhen you use this API to modify a role's\
+        \ membership identities, you can only modify up to a limit of 500 membership\
+        \ identities at a time. "
       operationId: patchRole
       parameters:
       - description: ID of the Role to patch
@@ -25417,6 +25661,16 @@ paths:
                       type: IDENTITY
                       property: attribute.email
                     stringValue: '@identitynow.com'
+              Assign a Access Model Metadata to a role:
+                description: This example shows how to assign a existing metadata
+                  to a role.
+                value:
+                - op: add
+                  path: /accessModelMetadata/attributes/0
+                  value:
+                    key: iscFederalClassifications
+                    values:
+                    - value: secret
             schema:
               items:
                 $ref: '#/components/schemas/JsonPatchOperation'
@@ -25489,20 +25743,28 @@ paths:
       - userAuth:
         - idn:role-unchecked:manage
         - idn:role-checked:manage
+      - applicationAuth:
+        - idn:role-unchecked:read
+        - idn:role-unchecked:manage
+        - idn:role-checked:manage
+        - idn:role-checked:read
       summary: Patch a specified Role
       tags:
       - Roles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
   /roles/bulk-delete:
     post:
       description: "This endpoint initiates a bulk deletion of one or more roles.\n\
         When the request is successful, the endpoint returns the bulk delete's task\
         \ result ID.  To follow the task, you can use [Get Task Status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status),\
         \ which will return the task result's status and information. \nThis endpoint\
-        \ can only bulk delete up to a limit of 50 roles per request. \nA token with\
-        \ API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call\
-        \ this endpoint. In addition, a token with ROLE_SUBADMIN authority can only\
-        \ call this endpoint if all roles included in the request are associated with\
-        \ sources with management workgroups the ROLE_SUBADMIN is a member of."
+        \ can only bulk delete up to a limit of 50 roles per request. \nA user with\
+        \ ROLE_SUBADMIN authority can only call this endpoint if all roles included\
+        \ in the request are associated with sources with management workgroups the\
+        \ ROLE_SUBADMIN is a member of."
       operationId: deleteBulkRoles
       requestBody:
         content:
@@ -25619,6 +25881,10 @@ paths:
       summary: Delete Role(s)
       tags:
       - Roles
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
   /roles/{id}/assigned-identities:
     get:
       operationId: getRoleAssignedIdentities
@@ -27600,8 +27866,7 @@ paths:
       - Search
   /segments:
     get:
-      description: "This API returns a list of all segments. \nA token with ORG_ADMIN\
-        \ or API authority is required to call this API."
+      description: 'This API returns a list of all segments. '
       operationId: listSegments
       parameters:
       - description: |-
@@ -27711,13 +27976,17 @@ paths:
       - userAuth:
         - idn:segment:read
         - idn:segment:manage
+      - applicationAuth:
+        - idn:segment:read
+        - idn:segment:manage
       summary: List Segments
       tags:
       - Segments
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     post:
       description: "This API creates a segment. \n>**Note:** Segment definitions may\
-        \ take time to propagate to all identities.\nA token with ORG_ADMIN or API\
-        \ authority is required to call this API."
+        \ take time to propagate to all identities."
       operationId: createSegment
       requestBody:
         content:
@@ -27791,15 +28060,17 @@ paths:
       security:
       - userAuth:
         - idn:segment:manage
+      - applicationAuth:
+        - idn:segment:manage
       summary: Create Segment
       tags:
       - Segments
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /segments/{id}:
     delete:
-      description: |-
-        This API deletes the segment specified by the given ID.
-        >**Note:** that segment deletion may take some time to become effective.
-        A token with ORG_ADMIN or API authority is required to call this API.
+      description: "This API deletes the segment specified by the given ID.\n>**Note:**\
+        \ that segment deletion may take some time to become effective.    "
       operationId: deleteSegment
       parameters:
       - description: The segment ID to delete.
@@ -27889,13 +28160,15 @@ paths:
       security:
       - userAuth:
         - idn:segment:manage
+      - applicationAuth:
+        - idn:segment:manage
       summary: Delete Segment by ID
       tags:
       - Segments
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     get:
-      description: |-
-        This API returns the segment specified by the given ID.
-        A token with ORG_ADMIN or API authority is required to call this API.
+      description: This API returns the segment specified by the given ID.
       operationId: getSegment
       parameters:
       - description: The segment ID to retrieve.
@@ -27990,14 +28263,18 @@ paths:
       - userAuth:
         - idn:segment:read
         - idn:segment:manage
+      - applicationAuth:
+        - idn:segment:read
+        - idn:segment:manage
       summary: Get Segment by ID
       tags:
       - Segments
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     patch:
       description: |-
         Use this API to update segment fields by using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
         >**Note:** Changes to a segment may take some time to propagate to all identities.
-        A token with ORG_ADMIN or API authority is required to call this API.
       operationId: patchSegment
       parameters:
       - description: The segment ID to modify.
@@ -28129,14 +28406,17 @@ paths:
       security:
       - userAuth:
         - idn:segment:manage
+      - applicationAuth:
+        - idn:segment:manage
       summary: Update Segment
       tags:
       - Segments
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /service-desk-integrations:
     get:
       description: Get a list of ServiceDeskIntegrationDto for existing Service Desk
-        Integrations.  A token with Org Admin or Service Desk Admin authority is required
-        to access this endpoint.
+        Integrations.
       operationId: getServiceDeskIntegrations
       parameters:
       - description: |-
@@ -28300,9 +28580,10 @@ paths:
       summary: List existing Service Desk Integrations
       tags:
       - Service Desk Integration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     post:
-      description: Create a new Service Desk Integrations.  A token with Org Admin
-        or Service Desk Admin authority is required to access this endpoint.
+      description: Create a new Service Desk Integrations.
       operationId: createServiceDeskIntegration
       requestBody:
         content:
@@ -28399,10 +28680,11 @@ paths:
       summary: Create new Service Desk integration
       tags:
       - Service Desk Integration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /service-desk-integrations/{id}:
     delete:
-      description: Delete an existing Service Desk integration by ID.  A token with
-        Org Admin or Service Desk Admin authority is required to access this endpoint.
+      description: Delete an existing Service Desk integration by ID.
       operationId: deleteServiceDeskIntegration
       parameters:
       - description: ID of Service Desk integration to delete
@@ -28498,9 +28780,10 @@ paths:
       summary: Delete a Service Desk integration
       tags:
       - Service Desk Integration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     get:
-      description: Get an existing Service Desk integration by ID.  A token with Org
-        Admin or Service Desk Admin authority is required to access this endpoint.
+      description: Get an existing Service Desk integration by ID.
       operationId: getServiceDeskIntegration
       parameters:
       - description: ID of the Service Desk integration to get
@@ -28600,6 +28883,8 @@ paths:
       summary: Get a Service Desk integration
       tags:
       - Service Desk Integration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     patch:
       description: Update an existing ServiceDeskIntegration by ID with a PATCH request.
       operationId: patchServiceDeskIntegration
@@ -28713,10 +28998,11 @@ paths:
       summary: Service Desk Integration Update PATCH
       tags:
       - Service Desk Integration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     put:
       description: Update an existing Service Desk integration by ID with updated
-        value in JSON form as the request body.  A token with Org Admin or Service
-        Desk Admin authority is required to access this endpoint.
+        value in JSON form as the request body.
       operationId: putServiceDeskIntegration
       parameters:
       - description: ID of the Service Desk integration to update
@@ -28823,11 +29109,12 @@ paths:
       summary: Update a Service Desk integration
       tags:
       - Service Desk Integration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /service-desk-integrations/types:
     get:
       description: This API endpoint returns the current list of supported Service
-        Desk integration types.  A token with Org Admin or Service Desk Admin authority
-        is required to access this endpoint.
+        Desk integration types.
       operationId: getServiceDeskIntegrationTypes
       responses:
         "200":
@@ -28920,11 +29207,12 @@ paths:
       summary: Service Desk Integration Types List.
       tags:
       - Service Desk Integration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /service-desk-integrations/templates/{scriptName}:
     get:
       description: This API endpoint returns an existing Service Desk integration
-        template by scriptName.  A token with Org Admin or Service Desk Admin authority
-        is required to access this endpoint.
+        template by scriptName.
       operationId: getServiceDeskIntegrationTemplate
       parameters:
       - description: The scriptName value of the Service Desk integration template
@@ -29026,11 +29314,11 @@ paths:
       summary: Service Desk integration template by scriptName.
       tags:
       - Service Desk Integration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /service-desk-integrations/status-check-configuration:
     get:
-      description: Get the time check configuration of queued SDIM tickets.  A token
-        with Org Admin or Service Desk Admin authority is required to access this
-        endpoint.
+      description: Get the time check configuration of queued SDIM tickets.
       operationId: getStatusCheckDetails
       responses:
         "200":
@@ -29120,10 +29408,10 @@ paths:
       summary: Get the time check configuration
       tags:
       - Service Desk Integration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     put:
-      description: Update the time check configuration of queued SDIM tickets.  A
-        token with Org Admin or Service Desk Admin authority is required to access
-        this endpoint.
+      description: Update the time check configuration of queued SDIM tickets.
       operationId: updateStatusCheckDetails
       requestBody:
         content:
@@ -29220,16 +29508,11 @@ paths:
       summary: Update the time check configuration
       tags:
       - Service Desk Integration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /query-password-info:
     post:
-      description: "This API is used to query password related information. \n\nA\
-        \ token with [API authority](https://developer.sailpoint.com/idn/api/authentication#client-credentials-grant-flow)\
-        \ \nis required to call this API.  \"API authority\" refers to a token that\
-        \ only has the \"client_credentials\" \ngrant type, and therefore no user\
-        \ context. A [personal access token](https://developer.sailpoint.com/idn/api/authentication#personal-access-tokens)\
-        \ \nor a token generated with the [authorization_code](https://developer.sailpoint.com/idn/api/authentication#authorization-code-grant-flow)\
-        \ \ngrant type will **NOT** work on this endpoint, and a `403 Forbidden` response\
-        \ \nwill be returned.\n"
+      description: "This API is used to query password related information. \n"
       operationId: queryPasswordInfo
       requestBody:
         content:
@@ -29300,6 +29583,8 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - applicationAuth: []
       summary: Query Password Info
       tags:
       - Password Management
@@ -29310,12 +29595,9 @@ paths:
         \ if they use a token generated by their ISC user, such as a [personal access\
         \ token](https://developer.sailpoint.com/idn/api/authentication#personal-access-tokens)\
         \ or [\"authorization_code\" derived OAuth token](https://developer.sailpoint.com/idn/api/authentication#authorization-code-grant-flow).\n\
-        \nA token with [API authority](https://developer.sailpoint.com/idn/api/authentication#client-credentials-grant-flow)\
-        \ can be used to change **any** identity's password or the password of any\
-        \ of the identity's accounts. \n\"API authority\" refers to a token that only\
-        \ has the \"client_credentials\" grant type.\n\n>**Note: If you want to set\
-        \ an identity's source account password, you must enable `PASSWORD` as one\
-        \ of the source's features. You can use the [PATCH Source endpoint](https://developer.sailpoint.com/docs/api/v3/update-source)\
+        \n>**Note: If you want to set an identity's source account password, you must\
+        \ enable `PASSWORD` as one of the source's features. You can use the [PATCH\
+        \ Source endpoint](https://developer.sailpoint.com/docs/api/v3/update-source)\
         \ to add the `PASSWORD` feature.**\n\nYou can use this endpoint to generate\
         \ an `encryptedPassword` (RSA encrypted using publicKey). \nTo do so, follow\
         \ these steps:\n\n1. Use [Query Password Info](https://developer.sailpoint.com/idn/api/v3/query-password-info)\
@@ -29410,14 +29692,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - applicationAuth: []
       summary: Set Identity's Password
       tags:
       - Password Management
   /password-change-status/{id}:
     get:
-      description: This API returns the status of a password change request. A token
-        with identity owner or trusted API client application authority is required
-        to call this API.
+      description: This API returns the status of a password change request.
       operationId: getPasswordChangeStatus
       parameters:
       - description: Password change request ID
@@ -29508,14 +29790,18 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth: []
+      - applicationAuth: []
       summary: Get Password Change Request Status
       tags:
       - Password Management
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /password-dictionary:
     get:
       description: |-
         This gets password dictionary for the organization.
-        A token with ORG_ADMIN authority is required to call this API.
         The password dictionary file can contain lines that are:
         1. comment lines - the first character is '#', can be 128 Unicode codepoints in length, and are ignored during processing
         2. empty lines
@@ -29632,10 +29918,11 @@ paths:
       summary: Get Password Dictionary
       tags:
       - Password Dictionary
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     put:
       description: |-
         This updates password dictionary for the organization.
-        A token with ORG_ADMIN authority is required to call this API.
         The password dictionary file can contain lines that are:
         1. comment lines - the first character is '#', can be 128 Unicode codepoints in length, and are ignored during processing
         2. empty lines
@@ -29757,6 +30044,8 @@ paths:
       summary: Update Password Dictionary
       tags:
       - Password Dictionary
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /password-org-config:
     get:
       description: "This API returns the password org config . Requires ORG_ADMIN,\
@@ -32231,10 +32520,9 @@ paths:
       - SOD Policies
   /sod-violations/predict:
     post:
-      description: |-
-        This API is used to check if granting some additional accesses would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.
-
-        A token with ORG_ADMIN or API authority is required to call this API.
+      description: This API is used to check if granting some additional accesses
+        would cause the subject to be in violation of any SOD policies. Returns the
+        violations that would be caused.
       operationId: startPredictSodViolations
       requestBody:
         content:
@@ -32335,15 +32623,16 @@ paths:
       security:
       - userAuth:
         - idn:sod-violation:read
+      - applicationAuth:
+        - idn:sod-violation:read
       summary: Predict SOD violations for identity.
       tags:
       - SOD Violations
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /sod-violations/check:
     post:
-      description: |-
-        This API initiates a SOD policy verification asynchronously.
-
-        A token with ORG_ADMIN authority is required to call this API.
+      description: This API initiates a SOD policy verification asynchronously.
       operationId: startViolationCheck
       requestBody:
         content:
@@ -32451,6 +32740,8 @@ paths:
       summary: Check SOD violations
       tags:
       - SOD Violations
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /sod-violation-report/run:
     post:
       description: "Runs multi-policy report for the org. If a policy reports more\
@@ -32833,9 +33124,7 @@ paths:
       - SOD Policies
   /sources:
     get:
-      description: |-
-        This end-point lists all the sources in IdentityNow.
-        A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or ROLE_SUBADMIN authority is required to call this API.
+      description: This end-point lists all the sources in IdentityNow.
       operationId: listSources
       parameters:
       - description: |-
@@ -33022,10 +33311,14 @@ paths:
       summary: Lists all sources in IdentityNow.
       tags:
       - Sources
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - ROLE_SUBADMIN
     post:
-      description: |-
-        This creates a specific source with a full source JSON representation. Any passwords are submitted as plain-text and encrypted upon receipt in IdentityNow.
-        A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+      description: This creates a specific source with a full source JSON representation.
+        Any passwords are submitted as plain-text and encrypted upon receipt in IdentityNow.
       operationId: createSource
       parameters:
       - description: "If this parameter is `true`, it configures the source as a Delimited\
@@ -33117,12 +33410,15 @@ paths:
       summary: Creates a source in IdentityNow.
       tags:
       - Sources
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /sources/{id}:
     delete:
       description: |-
         Use this API to delete a specific source in Identity Security Cloud (ISC).
         The API removes all the accounts on the source first, and then it deletes the source. You can retrieve the actual task execution status with this method: GET `/task-status/{id}`
-        A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
       operationId: deleteSource
       parameters:
       - description: Source ID.
@@ -33227,10 +33523,13 @@ paths:
       summary: Delete Source by ID
       tags:
       - Sources
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     get:
-      description: |-
-        Use this API to get a source by a specified ID in Identity Security Cloud (ISC).
-        A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+      description: Use this API to get a source by a specified ID in Identity Security
+        Cloud (ISC).
       operationId: getSource
       parameters:
       - description: Source ID.
@@ -33327,6 +33626,10 @@ paths:
       summary: Get Source by ID
       tags:
       - Sources
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     patch:
       description: |
         Use this API to partially update a source in Identity Security Cloud (ISC), using a list of patch operations according to the
@@ -33344,8 +33647,6 @@ paths:
         * passwordPolicies
 
         Attempts to modify these fields will result in a 400 error.
-
-        A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or API authority is required to call this API.
       operationId: updateSource
       parameters:
       - description: Source ID.
@@ -33520,6 +33821,10 @@ paths:
       summary: Update Source (Partial)
       tags:
       - Sources
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     put:
       description: |
         Use this API to update a source in Identity Security Cloud (ISC), using a full object representation. This means that when you use this API, it completely replaces the existing source configuration.
@@ -33534,8 +33839,6 @@ paths:
         * passwordPolicies
 
         Attempts to modify these fields will result in a 400 error.
-
-        A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
       operationId: putSource
       parameters:
       - description: Source ID.
@@ -33640,11 +33943,13 @@ paths:
       summary: Update Source (Full)
       tags:
       - Sources
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /sources/{sourceId}/provisioning-policies:
     get:
-      description: |-
-        This end-point lists all the ProvisioningPolicies in IdentityNow.
-        A token with API, or ORG_ADMIN authority is required to call this API.
+      description: This end-point lists all the ProvisioningPolicies in IdentityNow.
       operationId: listProvisioningPolicies
       parameters:
       - description: The Source id
@@ -33741,15 +34046,19 @@ paths:
       - userAuth:
         - idn:provisioning-policy:read
         - idn:provisioning-policy:manage
+      - applicationAuth:
+        - idn:provisioning-policy:read
+        - idn:provisioning-policy:manage
       summary: Lists ProvisioningPolicies
       tags:
       - Sources
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     post:
       description: |-
         This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types.
         Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning.
         Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
-        A token with ORG_ADMIN authority is required to call this API.
       operationId: createProvisioningPolicy
       parameters:
       - description: The Source id
@@ -33920,11 +34229,12 @@ paths:
       summary: Create Provisioning Policy
       tags:
       - Sources
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /sources/{sourceId}/provisioning-policies/{usageType}:
     delete:
-      description: |-
-        Deletes the provisioning policy with the specified usage on an application.
-        A token with API, or ORG_ADMIN authority is required to call this API.
+      description: Deletes the provisioning policy with the specified usage on an
+        application.
       operationId: deleteProvisioningPolicy
       parameters:
       - description: The Source ID.
@@ -34039,13 +34349,16 @@ paths:
       security:
       - userAuth:
         - idn:provisioning-policy:manage
+      - applicationAuth:
+        - idn:provisioning-policy:manage
       summary: Delete Provisioning Policy by UsageType
       tags:
       - Sources
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     get:
-      description: |-
-        This end-point retrieves the ProvisioningPolicy with the specified usage on the specified Source in IdentityNow.
-        A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+      description: This end-point retrieves the ProvisioningPolicy with the specified
+        usage on the specified Source in IdentityNow.
       operationId: getProvisioningPolicy
       parameters:
       - description: The Source ID.
@@ -34166,15 +34479,23 @@ paths:
         - idn:provisioning-policy-source:read
         - idn:provisioning-policy:manage
         - idn:provisioning-policy-source-admin-operations:manage
+      - applicationAuth:
+        - idn:provisioning-policy:read
+        - idn:provisioning-policy-source:read
+        - idn:provisioning-policy:manage
+        - idn:provisioning-policy-source-admin-operations:manage
       summary: Get Provisioning Policy by UsageType
       tags:
       - Sources
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     patch:
       description: |-
         This API selectively updates an existing Provisioning Policy using a JSONPatch payload.
         Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning.
         Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
-        A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
       operationId: updateProvisioningPolicy
       parameters:
       - description: The Source id.
@@ -34317,15 +34638,20 @@ paths:
       security:
       - userAuth:
         - idn:provisioning-policy:update
+      - applicationAuth:
+        - idn:provisioning-policy:update
       summary: Partial update of Provisioning Policy
       tags:
       - Sources
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     put:
       description: |-
         This end-point updates the provisioning policy with the specified usage on the specified source in IdentityNow.
         Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning.
         Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
-        A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
       operationId: putProvisioningPolicy
       parameters:
       - description: The Source ID.
@@ -34450,14 +34776,20 @@ paths:
       - userAuth:
         - idn:provisioning-policy:manage
         - idn:provisioning-policy-source-admin-operations:manage
+      - applicationAuth:
+        - idn:provisioning-policy:manage
+        - idn:provisioning-policy-source-admin-operations:manage
       summary: Update Provisioning Policy by UsageType
       tags:
       - Sources
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /sources/{sourceId}/provisioning-policies/bulk-update:
     post:
-      description: |-
-        This end-point updates a list of provisioning policies on the specified source in IdentityNow.
-        A token with API, or ORG_ADMIN authority is required to call this API.
+      description: This end-point updates a list of provisioning policies on the specified
+        source in IdentityNow.
       operationId: updateProvisioningPoliciesInBulk
       parameters:
       - description: The Source id.
@@ -34561,9 +34893,13 @@ paths:
       security:
       - userAuth:
         - idn:provisioning-policy:manage
+      - applicationAuth:
+        - idn:provisioning-policy:manage
       summary: Bulk Update Provisioning Policies
       tags:
       - Sources
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /sources/{sourceId}/schemas:
     get:
       description: |
@@ -35711,9 +36047,8 @@ paths:
       - Sources
   /sources/{sourceId}/upload-connector-file:
     post:
-      description: |-
-        This uploads a supplemental source connector file (like jdbc driver jars) to a source's S3 bucket. This also sends ETS and Audit events.
-        A token with ORG_ADMIN authority is required to call this API.
+      description: This uploads a supplemental source connector file (like jdbc driver
+        jars) to a source's S3 bucket. This also sends ETS and Audit events.
       operationId: importConnectorFile
       parameters:
       - description: The Source id.
@@ -35798,11 +36133,13 @@ paths:
       summary: Upload connector file to source
       tags:
       - Sources
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /sources/{sourceId}/connections:
     get:
-      description: |-
-        Use this API to get all dependent Profiles, Attributes, Applications and Custom Transforms for a source by a specified ID in Identity Security Cloud (ISC).
-        A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+      description: "Use this API to get all dependent Profiles, Attributes, Applications\
+        \ and Custom Transforms for a source by a specified ID in Identity Security\
+        \ Cloud (ISC)."
       operationId: getSourceConnections
       parameters:
       - description: Source ID.
@@ -35899,6 +36236,10 @@ paths:
       summary: Get Source Connections by ID
       tags:
       - Sources
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /tagged-objects:
     get:
       description: |-
@@ -36552,10 +36893,7 @@ paths:
       - Tagged Objects
   /tagged-objects/bulk-add:
     post:
-      description: |-
-        This API adds tags to multiple objects.
-
-        A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+      description: This API adds tags to multiple objects.
       operationId: setTagsToManyObjects
       requestBody:
         content:
@@ -36633,15 +36971,22 @@ paths:
       security:
       - userAuth:
         - idn:tag:manage
+      - applicationAuth:
+        - idn:tag:manage
       summary: Tag Multiple Objects
       tags:
       - Tagged Objects
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
+      - REPORT_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /tagged-objects/bulk-remove:
     post:
-      description: |-
-        This API removes tags from multiple objects.
-
-        A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+      description: This API removes tags from multiple objects.
       operationId: deleteTagsToManyObject
       requestBody:
         content:
@@ -36714,14 +37059,22 @@ paths:
       security:
       - userAuth:
         - idn:tag:manage
+      - applicationAuth:
+        - idn:tag:manage
       summary: Remove Tags from Multiple Objects
       tags:
       - Tagged Objects
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
+      - REPORT_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /transforms:
     get:
-      description: |-
-        Gets a list of all saved transform objects.
-        A token with transforms-list read authority is required to call this API.
+      description: Gets a list of all saved transform objects.
       operationId: listTransforms
       parameters:
       - description: |-
@@ -36891,13 +37244,14 @@ paths:
       summary: List transforms
       tags:
       - Transforms
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     post:
       description: "Creates a new transform object immediately. By default, the internal\
         \ flag is set to false to indicate that this is a custom transform. Only SailPoint\
         \ employees have the ability to create a transform with internal set to true.\
         \ Newly created Transforms can be used in the Identity Profile mappings within\
-        \ the UI. A token with transform write authority is required to call this\
-        \ API."
+        \ the UI."
       operationId: createTransform
       requestBody:
         content:
@@ -37000,11 +37354,14 @@ paths:
       summary: Create transform
       tags:
       - Transforms
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /transforms/{id}:
     delete:
-      description: |-
-        Deletes the transform specified by the given ID. Attempting to delete a transform that is used in one or more Identity Profile mappings will result in an error. If this occurs, you must first remove the transform from all mappings before deleting the transform.
-        A token with transform delete authority is required to call this API.
+      description: "Deletes the transform specified by the given ID. Attempting to\
+        \ delete a transform that is used in one or more Identity Profile mappings\
+        \ will result in an error. If this occurs, you must first remove the transform\
+        \ from all mappings before deleting the transform."
       operationId: deleteTransform
       parameters:
       - description: ID of the transform to delete
@@ -37100,10 +37457,10 @@ paths:
       summary: Delete a transform
       tags:
       - Transforms
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     get:
-      description: |-
-        This API returns the transform specified by the given ID.
-        A token with transform read authority is required to call this API.
+      description: This API returns the transform specified by the given ID.
       operationId: getTransform
       parameters:
       - description: ID of the transform to retrieve
@@ -37203,10 +37560,12 @@ paths:
       summary: Transform by ID
       tags:
       - Transforms
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     put:
-      description: |-
-        Replaces the transform specified by the given ID with the transform provided in the request body. Only the "attributes" field is mutable. Attempting to change other properties (ex. "name" and "type") will result in an error.
-        A token with transform write authority is required to call this API.
+      description: Replaces the transform specified by the given ID with the transform
+        provided in the request body. Only the "attributes" field is mutable. Attempting
+        to change other properties (ex. "name" and "type") will result in an error.
       operationId: updateTransform
       parameters:
       - description: ID of the transform to update
@@ -37327,6 +37686,8 @@ paths:
       summary: Update a transform
       tags:
       - Transforms
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /work-items:
     get:
       description: "This gets a collection of work items belonging to either the specified\
@@ -53645,7 +54006,7 @@ components:
         - name: "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local"
           id: 2c91809773dee32014e13e122092014e
           type: ENTITLEMENT
-        dimensional: true
+        dimensional: false
         created: 2021-03-01T22:32:58.104Z
         dimensionRefs: dimensionRefs
         description: Urna amet cursus pellentesque nisl orci maximus lorem nisl euismod
@@ -53740,6 +54101,20 @@ components:
           type: ACCESS_PROFILE
         name: Role 2567
         modified: 2021-03-02T20:22:28.104Z
+        accessModelMetadata:
+        - key: iscFederalClassifications
+          name: Federal Classifications
+          multiselect: true
+          status: active
+          type: governance
+          objectTypes:
+          - general
+          description: Classification used by government organizations to specify
+            the level of confidentiality for an access item.
+          values:
+          - value: secret
+            name: Secret
+            status: active
         id: 2c918086749d78830174a1a40e121518
         requestable: true
       properties:
@@ -53822,11 +54197,32 @@ components:
           nullable: true
           type: array
         dimensional:
+          default: false
+          description: Whether the Role is dimensional.
           nullable: true
           type: boolean
         dimensionRefs:
+          description: TBD
           nullable: true
           type: string
+        accessModelMetadata:
+          example:
+          - key: iscFederalClassifications
+            name: Federal Classifications
+            multiselect: true
+            status: active
+            type: governance
+            objectTypes:
+            - general
+            description: Classification used by government organizations to specify
+              the level of confidentiality for an access item.
+            values:
+            - value: secret
+              name: Secret
+              status: active
+          items:
+            $ref: '#/components/schemas/AttributeDTOList'
+          type: array
       required:
       - name
       - owner
@@ -59933,6 +60329,28 @@ components:
             $ref: '#/components/schemas/ApprovalSchemeForRole'
           type: array
       type: object
+    AttributeDTOList:
+      properties:
+        attributes:
+          example:
+          - key: iscPrivacy
+            name: Privacy
+            multiselect: false
+            status: active
+            type: governance
+            objectTypes:
+            - all
+            description: Specifies the level of privacy associated with an access
+              item.
+            values:
+            - value: public
+              name: Public
+              status: active
+          items:
+            $ref: '#/components/schemas/AttributeDTO'
+          nullable: true
+          type: array
+      type: object
     RoleAssignmentSourceType:
       description: Type which indicates how a particular Identity obtained a particular
         Role
@@ -62080,6 +62498,50 @@ components:
           nullable: true
           type: string
       type: object
+    AttributeDTO:
+      properties:
+        key:
+          description: Technical name of the Attribute. This is unique and cannot
+            be changed after creation.
+          example: iscPrivacy
+          type: string
+        name:
+          description: The display name of the key.
+          example: Privacy
+          type: string
+        multiselect:
+          default: false
+          description: Indicates whether the attribute can have multiple values.
+          example: false
+          type: boolean
+        status:
+          description: The status of the Attribute.
+          example: active
+          type: string
+        type:
+          description: The type of the Attribute. This can be either "custom" or "governance".
+          example: governance
+          type: string
+        objectTypes:
+          description: An array of object types this attributes values can be applied
+            to. Possible values are "all" or "entitlement". Value "all" means this
+            attribute can be used with all object types that are supported.
+          example:
+          - entitlement
+          items:
+            type: string
+          nullable: true
+          type: array
+        description:
+          description: The description of the Attribute.
+          example: Specifies the level of privacy associated with an access item.
+          type: string
+        values:
+          items:
+            $ref: '#/components/schemas/AttributeValueDTO'
+          nullable: true
+          type: array
+      type: object
     FilterType:
       description: |-
         Enum representing the currently supported filter types.
@@ -62564,6 +63026,22 @@ components:
             $ref: '#/components/schemas/RoleCriteriaLevel3'
           nullable: true
           type: array
+      type: object
+    AttributeValueDTO:
+      properties:
+        value:
+          description: Technical name of the Attribute value. This is unique and cannot
+            be changed after creation.
+          example: public
+          type: string
+        name:
+          description: The display name of the Attribute value.
+          example: Public
+          type: string
+        status:
+          description: The status of the Attribute value.
+          example: active
+          type: string
       type: object
     Bound:
       example:
