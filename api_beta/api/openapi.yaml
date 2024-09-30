@@ -205,9 +205,19 @@ tags:
 
     Refer to [Managing User Accounts](https://documentation.sailpoint.com/saas/help/common/users/user_access.html#managing-user-accounts) for more information about accounts.
   name: Accounts
+- description: "Use this API to implement source application functionality. With this\
+    \ functionality in place, you can create, customize, and manage applications within\
+    \ sources. \n"
+  name: Apps
 - description: |
     Use this API to discover applications within your Okta connector and receive connector recommendations by manually uploading application names.
   name: Application Discovery
+- description: "Use this API to implement approval functionality. With this functionality\
+    \ in place, you can get generic approvals and modify them. \n\nThe main advantages\
+    \ this API has vs [Access Request Approvals](https://developer.sailpoint.com/docs/api/beta/access-request-approvals)\
+    \ are that you can use it to get generic approvals individually or in batches\
+    \ and make changes to those approvals. \n"
+  name: Approvals
 - description: |
     Auth Profile - Represents authentication configuration for an Identity Profile. This object gets created when an Identity Profile is created.
 
@@ -732,7 +742,31 @@ tags:
 
     Refer to [Working with Roles](https://documentation.sailpoint.com/saas/help/access/roles.html) for more information about roles.
   name: Roles
-- name: Search Attribute Configuration
+- description: "Use this API to implement search attribute configuration functionality,\
+    \ along with [Search](https://developer.sailpoint.com/docs/api/v3/search).\nWith\
+    \ this functionality in place, administrators can create custom search attributes\
+    \ that and run extended searches based on those attributes to further narrow down\
+    \ their searches and get the information and insights they want. \n\nIdentity\
+    \ Security Cloud (ISC) enables organizations to store user data from across all\
+    \ their connected sources and manage the users' access, so the ability to query\
+    \ and filter that data is essential.  \nIts search goes through all those sources\
+    \ and finds the results quickly and specifically. \n\nThe search query is flexible\
+    \ - it can be very broad or very narrow. \nThe search only returns results for\
+    \ searchable objects it is filtering for. \nThe following objects are searchable:\
+    \ identities, roles, access profiles, entitlements, events, and account activities.\
+    \ \nBy default, no filter is applied, so a search for \"Ad\" returns both the\
+    \ identity \"Adam.Archer\" as well as the role \"Administrator.\"\n\nUsers can\
+    \ further narrow their results by using ISC's specific syntax and punctuation\
+    \ to structure their queries. \nFor example, the query \"attributes.location:austin\
+    \ AND NOT manager.name:amanda.ross\" returns all results associated with the Austin\
+    \ location, but it excludes those associated with the manager Amanda Ross.\nRefer\
+    \ to [Building a Search Query](https://documentation.sailpoint.com/saas/help/search/building-query.html)\
+    \ for more information about how to construct specific search queries. \n\nRefer\
+    \ to [Using Search](https://documentation.sailpoint.com/saas/help/search/index.html)\
+    \ for more information about ISC's search and its different possibilities. \n\n\
+    With Search Attribute Configuration, administrators can create, manage, and run\
+    \ searches based on the attributes they want to search. \n"
+  name: Search Attribute Configuration
 - description: "Use this API to implement and customize access request segment functionality.\
     \ \nWith this functionality in place, administrators can create and manage access\
     \ request segments. \nSegments provide organizations with a way to make the access\
@@ -1000,6 +1034,13 @@ tags:
     API for managing UI Metadata. Use this API to manage metadata about your User Interface.
     For example you can set the iFrameWhitelist parameter to permit another domain to encapsulate IDN within an iframe or set the usernameEmptyText to change the placeholder text for Username on your tenant's login screen.
   name: UI Metadata
+- description: "Vendors use ISC connectors to connect their source data to ISC, but\
+    \ the data in their source and the data in ISC may be stored in different formats.\
+    \ \nConnector mappings allow vendors to match their data on both sides of the\
+    \ connection. \nThe vendors can then track and manage access across their sources\
+    \ from ISC. \nThis API allows you to create and manage these vendor connector\
+    \ mappings. \n"
+  name: Vendor Connector Mappings
 - description: |
     Use this API to implement work item functionality.
     With this functionality in place, users can manage their work items (tasks).
@@ -6375,7 +6416,7 @@ paths:
   /accounts/search-attribute-config:
     get:
       description: |-
-        This API retrieves a list of attribute/application associates currently configured in IdentityNow.
+        Get a list of attribute/application associates currently configured in Identity Security Cloud (ISC).
         A token with ORG_ADMIN authority is required to call this API.
       operationId: getSearchAttributeConfig
       responses:
@@ -6386,7 +6427,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/SearchAttributeConfig'
                 type: array
-          description: List of attribute configurations in IdentityNow.
+          description: List of attribute configurations in ISC.
         "401":
           content:
             application/json:
@@ -6437,12 +6478,12 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Retrieve a list of extended search attributes in IdentityNow.
+      summary: List Extended Search Attributes
       tags:
       - Search Attribute Configuration
     post:
       description: |-
-        This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names.  It will then validate the inputs and configure/create and attribute promotion configuration in the Link ObjectConfig.
+        Create and configure extended search attributes. This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names. It will then validate the inputs and configure/create and attribute promotion configuration in the Link ObjectConfig.
         A token with ORG_ADMIN authority is required to call this API.
       operationId: createSearchAttributeConfig
       requestBody:
@@ -6539,14 +6580,12 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Configure/create extended search attributes in IdentityNow.
+      summary: Create Extended Search Attributes
       tags:
       - Search Attribute Configuration
   /accounts/search-attribute-config/{name}:
     delete:
-      description: |-
-        This API accepts an extended attribute name and deletes the corresponding extended attribute configuration.
-        A token with ORG_ADMIN authority is required to call this API.
+      description: Delete an extended attribute configuration by name.
       operationId: deleteSearchAttributeConfig
       parameters:
       - description: Name of the extended search attribute configuration to delete.
@@ -6628,16 +6667,19 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Delete an extended search attribute in IdentityNow.
+      security:
+      - userAuth:
+        - idn:account-config:delete
+      summary: Delete Extended Search Attribute
       tags:
       - Search Attribute Configuration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     get:
-      description: |-
-        This API accepts an extended attribute name and retrieves the corresponding extended attribute configuration.
-        A token with ORG_ADMIN authority is required to call this API.
+      description: Get an extended attribute configuration by name.
       operationId: getSingleSearchAttributeConfig
       parameters:
-      - description: Name of the extended search attribute configuration to delete.
+      - description: Name of the extended search attribute configuration to get.
         in: path
         name: name
         required: true
@@ -6724,17 +6766,20 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Get the details of a specific extended search attribute in IdentityNow.
+      security:
+      - userAuth:
+        - idn:account-config:read
+      summary: Get Extended Search Attribute
       tags:
       - Search Attribute Configuration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     patch:
-      description: |-
-        This API updates an existing Search Attribute Configuration. The following fields are patchable:
-        **name**, **displayName**, **applicationAttributes**
-        A token with ORG_ADMIN authority is required to call this API.
+      description: "Update an existing search attribute configuration. \nYou can patch\
+        \ these fields:\n* name  * displayName * applicationAttributes"
       operationId: patchSearchAttributeConfig
       parameters:
-      - description: Name of the Search Attribute Configuration to patch.
+      - description: Name of the extended search attribute configuration to patch.
         in: path
         name: name
         required: true
@@ -6766,7 +6811,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SearchAttributeConfig'
-          description: Responds with the Search Attribute Configuration as updated.
+          description: Responds with the search attribute configuration as updated.
         "400":
           content:
             application/json:
@@ -6841,9 +6886,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Update the details of a specific extended search attribute in IdentityNow.
+      security:
+      - userAuth:
+        - idn:account-config:create
+      summary: Update Extended Search Attribute
       tags:
       - Search Attribute Configuration
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /account-activities:
     get:
       description: This gets a collection of account activities that satisfy the given
@@ -24051,21 +24101,20 @@ paths:
       - Notifications
   /generic-approvals:
     get:
-      description: "Retrieve a list of approvals, which can be filtered by requester\
-        \ ID, status, or reference type. \"Mine\" query parameter can be used and\
-        \ it will return all approvals for the current approver. This endpoint is\
-        \ for generic approvals, different than the access-request-approval endpoint\
-        \ and does not include access-request-approvals. \nAbsence of all query parameters\
-        \ will will default to mine=true."
+      description: "Get a list of approvals, which can be filtered by requester ID,\
+        \ status, or reference type. You can use the \"Mine\" query parameter to return\
+        \ all approvals for the current approver. This endpoint is for generic approvals,\
+        \ unlike the access-request-approval endpoint, and does not include access-request-approvals.\
+        \ \nAbsence of all query parameters will will default to mine=true."
       operationId: getApprovals
       parameters:
-      - description: Returns the list of approvals for the current caller
+      - description: Returns the list of approvals for the current caller.
         example: "true"
         in: query
         name: mine
         schema:
           type: boolean
-      - description: Returns the list of approvals for a given requester ID
+      - description: Returns the list of approvals for a given requester ID.
         example: 17e633e7d57e481569df76323169deb6a
         in: query
         name: requesterId
@@ -24092,7 +24141,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Approval'
                 type: array
-          description: List of Approvals
+          description: List of approvals.
         "400":
           content:
             application/json:
@@ -24157,12 +24206,12 @@ paths:
       - Approvals
   /generic-approvals/{id}:
     get:
-      description: "Retrieve a single approval for a given approval ID. This endpoint\
-        \ is for generic approvals, different than the access-request-approval endpoint\
-        \ and does not include access-request-approvals."
+      description: "Get a single approval for a given approval ID. This endpoint is\
+        \ for generic approvals, unlike the access-request-approval endpoint, and\
+        \ doesn't include access-request-approvals."
       operationId: getApproval
       parameters:
-      - description: ID of the approval that is to be returned
+      - description: ID of the approval that to be returned.
         example: 38453251-6be2-5f8f-df93-5ce19e295837
         in: path
         name: id
@@ -24235,7 +24284,7 @@ paths:
       security:
       - userAuth:
         - sp:approvals:read
-      summary: Get an approval
+      summary: Get Approval
       tags:
       - Approvals
   /mfa/okta-verify/config:
@@ -58680,7 +58729,7 @@ paths:
   /manual-discover-applications-template:
     get:
       description: |
-        This endpoint allows the user to download an example CSV file with two columns `application_name` and `description`.  The CSV file contains a single row with the values 'Example Application' and 'Example Description'.
+        Download an example CSV file with two columns `application_name` and `description`.  The CSV file contains a single row with the values 'Example Application' and 'Example Description'.
 
         The downloaded template is specifically designed for use with the `/manual-discover-applications` endpoint.
       operationId: getManualDiscoverApplicationsCsvTemplate
@@ -58753,14 +58802,14 @@ paths:
       security:
       - userAuth:
         - idn:application-discovery:read
-      summary: CSV template download for discovery
+      summary: Download CSV Template for Discovery
       tags:
       - Application Discovery
   /manual-discover-applications:
     post:
-      description: "This endpoint supports uploading a CSV file with application data\
-        \ for manual correlation to specific IDN connectors. \nIf a suitable IDN connector\
-        \ is unavailable, the system will recommend generic connectors instead."
+      description: "Upload a CSV file with application data for manual correlation\
+        \ to specific ISC connectors. \nIf a suitable ISC connector is unavailable,\
+        \ the system will recommend generic connectors instead."
       operationId: sendManualDiscoverApplicationsCsvTemplate
       requestBody:
         content:
@@ -58829,13 +58878,13 @@ paths:
       security:
       - userAuth:
         - idn:application-discovery:write
-      summary: CSV Upload to discover applications
+      summary: Upload CSV to Discover Applications
       tags:
       - Application Discovery
   /discovered-applications:
     get:
       description: |
-        Fetches a list of applications that have been identified within the environment. This includes details such as application names, discovery dates, potential correlated saas_vendors and related suggested connectors.
+        Get a list of applications that have been identified within the environment. This includes details such as application names, discovery dates, potential correlated saas_vendors and related suggested connectors.
       operationId: getDiscoveredApplications
       parameters:
       - description: |-
@@ -58979,10 +59028,10 @@ paths:
   /discovered-applications/{id}:
     get:
       description: |
-        This API returns a discovered application with its associated sources based on the ID provided.
+        Get the discovered application, along with with its associated sources, based on the provided ID.
       operationId: getDiscoveredApplicationByID
       parameters:
-      - description: ID of the discovered application.
+      - description: Discovered application's ID.
         example: 123e4567-e89b-12d3-a456-426655440000
         in: path
         name: id
@@ -59009,8 +59058,8 @@ paths:
                 - 4e2d7605-833f-4c34-8d03-5b2c7d2f4f66
                 - f9b7e2ce-aced-4117-a95f-4ffad8b33989
                 - a3b159f2-5f09-43c9-b40e-a6f317aa5b8f
-          description: Returns the discovered application along with its associated
-            sources.
+          description: "Returns the discovered application, along with its associated\
+            \ sources."
         "400":
           content:
             application/json:
@@ -59075,11 +59124,11 @@ paths:
       - Application Discovery
     patch:
       description: |-
-        This API updates an existing discovered application using a limited version of the [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
-        The following fields are patchable: - **associatedSources** - **dismissed**
+        Update an existing discovered application by using a limited version of the [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
+        You can patch these fields: - **associatedSources** - **dismissed**
       operationId: patchDiscoveredApplicationByID
       parameters:
-      - description: ID of the discovered application.
+      - description: Discovered application's ID.
         example: 123e4567-e89b-12d3-a456-426655440000
         in: path
         name: id
@@ -59092,7 +59141,7 @@ paths:
             examples:
               Dismiss an app:
                 description: This example shows how use patch to set the dismissal
-                  status of a correlated application to true
+                  status of a correlated application to true.
                 value:
                 - op: replace
                   path: /dismissed
@@ -59109,7 +59158,7 @@ paths:
                   - a3b159f2-5f09-43c9-b40e-a6f317aa5b8f
               Add an associated source to a correlated application:
                 description: This example shows how to use patch to add an associated
-                  source to a correlated application
+                  source to a correlated application.
                 value:
                 - op: add
                   path: /associatedSources
@@ -59202,13 +59251,13 @@ paths:
       security:
       - userAuth:
         - idn:application-discovery:write
-      summary: Patch Discovered Application by Id
+      summary: Patch Discovered Application by ID
       tags:
       - Application Discovery
   /vendor-connector-mappings:
     delete:
       description: |
-        Soft deletes a mapping between a SaaS vendor and an IDN connector, removing the established correlation.
+        Soft delete a mapping between a SaaS vendor and an ISC connector, removing the established correlation.
       operationId: deleteVendorConnectorMapping
       requestBody:
         content:
@@ -59300,12 +59349,12 @@ paths:
       security:
       - userAuth:
         - idn:application-discovery:write
-      summary: Delete a vendor connector mapping
+      summary: Delete Vendor Connector Mapping
       tags:
       - Vendor Connector Mappings
     get:
       description: |
-        Retrieves a list of mappings between SaaS vendors and IDN connectors, detailing the connections established for correlation.
+        Get a list of mappings between SaaS vendors and ISC connectors, detailing the connections established for correlation.
       operationId: getVendorConnectorMappings
       responses:
         "200":
@@ -59417,12 +59466,12 @@ paths:
       security:
       - userAuth:
         - idn:application-discovery:read
-      summary: List vendor connector mappings
+      summary: List Vendor Connector Mappings
       tags:
-      - Application Discovery
+      - Vendor Connector Mappings
     post:
       description: |
-        Creates a new mapping between a SaaS vendor and an IDN connector to establish correlation paths.
+        Create a new mapping between a SaaS vendor and an ISC connector to establish correlation paths.
       operationId: createVendorConnectorMapping
       requestBody:
         content:
@@ -59503,7 +59552,7 @@ paths:
       security:
       - userAuth:
         - idn:application-discovery:write
-      summary: Create a vendor connector mapping
+      summary: Create Vendor Connector Mapping
       tags:
       - Vendor Connector Mappings
   /icons/{objectType}/{objectId}:

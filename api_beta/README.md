@@ -127,11 +127,10 @@ Class | Method | HTTP request | Description
 *AccountsAPI* | [**UpdateAccount**](docs/AccountsAPI.md#updateaccount) | **Patch** /accounts/{id} | Update Account
 *ApplicationDiscoveryAPI* | [**GetDiscoveredApplicationByID**](docs/ApplicationDiscoveryAPI.md#getdiscoveredapplicationbyid) | **Get** /discovered-applications/{id} | Get Discovered Application by ID
 *ApplicationDiscoveryAPI* | [**GetDiscoveredApplications**](docs/ApplicationDiscoveryAPI.md#getdiscoveredapplications) | **Get** /discovered-applications | Retrieve discovered applications for tenant
-*ApplicationDiscoveryAPI* | [**GetManualDiscoverApplicationsCsvTemplate**](docs/ApplicationDiscoveryAPI.md#getmanualdiscoverapplicationscsvtemplate) | **Get** /manual-discover-applications-template | CSV template download for discovery
-*ApplicationDiscoveryAPI* | [**GetVendorConnectorMappings**](docs/ApplicationDiscoveryAPI.md#getvendorconnectormappings) | **Get** /vendor-connector-mappings | List vendor connector mappings
-*ApplicationDiscoveryAPI* | [**PatchDiscoveredApplicationByID**](docs/ApplicationDiscoveryAPI.md#patchdiscoveredapplicationbyid) | **Patch** /discovered-applications/{id} | Patch Discovered Application by Id
-*ApplicationDiscoveryAPI* | [**SendManualDiscoverApplicationsCsvTemplate**](docs/ApplicationDiscoveryAPI.md#sendmanualdiscoverapplicationscsvtemplate) | **Post** /manual-discover-applications | CSV Upload to discover applications
-*ApprovalsAPI* | [**GetApproval**](docs/ApprovalsAPI.md#getapproval) | **Get** /generic-approvals/{id} | Get an approval
+*ApplicationDiscoveryAPI* | [**GetManualDiscoverApplicationsCsvTemplate**](docs/ApplicationDiscoveryAPI.md#getmanualdiscoverapplicationscsvtemplate) | **Get** /manual-discover-applications-template | Download CSV Template for Discovery
+*ApplicationDiscoveryAPI* | [**PatchDiscoveredApplicationByID**](docs/ApplicationDiscoveryAPI.md#patchdiscoveredapplicationbyid) | **Patch** /discovered-applications/{id} | Patch Discovered Application by ID
+*ApplicationDiscoveryAPI* | [**SendManualDiscoverApplicationsCsvTemplate**](docs/ApplicationDiscoveryAPI.md#sendmanualdiscoverapplicationscsvtemplate) | **Post** /manual-discover-applications | Upload CSV to Discover Applications
+*ApprovalsAPI* | [**GetApproval**](docs/ApprovalsAPI.md#getapproval) | **Get** /generic-approvals/{id} | Get Approval
 *ApprovalsAPI* | [**GetApprovals**](docs/ApprovalsAPI.md#getapprovals) | **Get** /generic-approvals | Get Approvals
 *AppsAPI* | [**CreateSourceApp**](docs/AppsAPI.md#createsourceapp) | **Post** /source-apps | Create source app
 *AppsAPI* | [**DeleteAccessProfilesFromSourceAppByBulk**](docs/AppsAPI.md#deleteaccessprofilesfromsourceappbybulk) | **Post** /source-apps/{id}/access-profiles/bulk-remove | Bulk remove access profiles from the specified source app
@@ -482,11 +481,11 @@ Class | Method | HTTP request | Description
 *SPConfigAPI* | [**GetSpConfigImportStatus**](docs/SPConfigAPI.md#getspconfigimportstatus) | **Get** /sp-config/import/{id} | Get import job status
 *SPConfigAPI* | [**ImportSpConfig**](docs/SPConfigAPI.md#importspconfig) | **Post** /sp-config/import | Initiates configuration objects import job
 *SPConfigAPI* | [**ListSpConfigObjects**](docs/SPConfigAPI.md#listspconfigobjects) | **Get** /sp-config/config-objects | Get config object details
-*SearchAttributeConfigurationAPI* | [**CreateSearchAttributeConfig**](docs/SearchAttributeConfigurationAPI.md#createsearchattributeconfig) | **Post** /accounts/search-attribute-config | Configure/create extended search attributes in IdentityNow.
-*SearchAttributeConfigurationAPI* | [**DeleteSearchAttributeConfig**](docs/SearchAttributeConfigurationAPI.md#deletesearchattributeconfig) | **Delete** /accounts/search-attribute-config/{name} | Delete an extended search attribute in IdentityNow.
-*SearchAttributeConfigurationAPI* | [**GetSearchAttributeConfig**](docs/SearchAttributeConfigurationAPI.md#getsearchattributeconfig) | **Get** /accounts/search-attribute-config | Retrieve a list of extended search attributes in IdentityNow.
-*SearchAttributeConfigurationAPI* | [**GetSingleSearchAttributeConfig**](docs/SearchAttributeConfigurationAPI.md#getsinglesearchattributeconfig) | **Get** /accounts/search-attribute-config/{name} | Get the details of a specific extended search attribute in IdentityNow.
-*SearchAttributeConfigurationAPI* | [**PatchSearchAttributeConfig**](docs/SearchAttributeConfigurationAPI.md#patchsearchattributeconfig) | **Patch** /accounts/search-attribute-config/{name} | Update the details of a specific extended search attribute in IdentityNow.
+*SearchAttributeConfigurationAPI* | [**CreateSearchAttributeConfig**](docs/SearchAttributeConfigurationAPI.md#createsearchattributeconfig) | **Post** /accounts/search-attribute-config | Create Extended Search Attributes
+*SearchAttributeConfigurationAPI* | [**DeleteSearchAttributeConfig**](docs/SearchAttributeConfigurationAPI.md#deletesearchattributeconfig) | **Delete** /accounts/search-attribute-config/{name} | Delete Extended Search Attribute
+*SearchAttributeConfigurationAPI* | [**GetSearchAttributeConfig**](docs/SearchAttributeConfigurationAPI.md#getsearchattributeconfig) | **Get** /accounts/search-attribute-config | List Extended Search Attributes
+*SearchAttributeConfigurationAPI* | [**GetSingleSearchAttributeConfig**](docs/SearchAttributeConfigurationAPI.md#getsinglesearchattributeconfig) | **Get** /accounts/search-attribute-config/{name} | Get Extended Search Attribute
+*SearchAttributeConfigurationAPI* | [**PatchSearchAttributeConfig**](docs/SearchAttributeConfigurationAPI.md#patchsearchattributeconfig) | **Patch** /accounts/search-attribute-config/{name} | Update Extended Search Attribute
 *SegmentsAPI* | [**CreateSegment**](docs/SegmentsAPI.md#createsegment) | **Post** /segments | Create Segment
 *SegmentsAPI* | [**DeleteSegment**](docs/SegmentsAPI.md#deletesegment) | **Delete** /segments/{id} | Delete Segment by ID
 *SegmentsAPI* | [**GetSegment**](docs/SegmentsAPI.md#getsegment) | **Get** /segments/{id} | Get Segment by ID
@@ -585,8 +584,9 @@ Class | Method | HTTP request | Description
 *TriggersAPI* | [**UpdateSubscription**](docs/TriggersAPI.md#updatesubscription) | **Put** /trigger-subscriptions/{id} | Update a Subscription
 *UIMetadataAPI* | [**GetTenantUiMetadata**](docs/UIMetadataAPI.md#gettenantuimetadata) | **Get** /ui-metadata/tenant | Get a tenant UI metadata
 *UIMetadataAPI* | [**SetTenantUiMetadata**](docs/UIMetadataAPI.md#settenantuimetadata) | **Put** /ui-metadata/tenant | Update tenant UI metadata
-*VendorConnectorMappingsAPI* | [**CreateVendorConnectorMapping**](docs/VendorConnectorMappingsAPI.md#createvendorconnectormapping) | **Post** /vendor-connector-mappings | Create a vendor connector mapping
-*VendorConnectorMappingsAPI* | [**DeleteVendorConnectorMapping**](docs/VendorConnectorMappingsAPI.md#deletevendorconnectormapping) | **Delete** /vendor-connector-mappings | Delete a vendor connector mapping
+*VendorConnectorMappingsAPI* | [**CreateVendorConnectorMapping**](docs/VendorConnectorMappingsAPI.md#createvendorconnectormapping) | **Post** /vendor-connector-mappings | Create Vendor Connector Mapping
+*VendorConnectorMappingsAPI* | [**DeleteVendorConnectorMapping**](docs/VendorConnectorMappingsAPI.md#deletevendorconnectormapping) | **Delete** /vendor-connector-mappings | Delete Vendor Connector Mapping
+*VendorConnectorMappingsAPI* | [**GetVendorConnectorMappings**](docs/VendorConnectorMappingsAPI.md#getvendorconnectormappings) | **Get** /vendor-connector-mappings | List Vendor Connector Mappings
 *WorkItemsAPI* | [**ApproveApprovalItem**](docs/WorkItemsAPI.md#approveapprovalitem) | **Post** /work-items/{id}/approve/{approvalItemId} | Approve an Approval Item
 *WorkItemsAPI* | [**ApproveApprovalItemsInBulk**](docs/WorkItemsAPI.md#approveapprovalitemsinbulk) | **Post** /work-items/bulk-approve/{id} | Bulk approve Approval Items
 *WorkItemsAPI* | [**CompleteWorkItem**](docs/WorkItemsAPI.md#completeworkitem) | **Post** /work-items/{id} | Complete a Work Item

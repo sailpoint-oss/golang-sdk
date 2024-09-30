@@ -4,7 +4,7 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetApproval**](ApprovalsAPI.md#GetApproval) | **Get** /generic-approvals/{id} | Get an approval
+[**GetApproval**](ApprovalsAPI.md#GetApproval) | **Get** /generic-approvals/{id} | Get Approval
 [**GetApprovals**](ApprovalsAPI.md#GetApprovals) | **Get** /generic-approvals | Get Approvals
 
 
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 > Approval GetApproval(ctx, id).Execute()
 
-Get an approval
+Get Approval
 
 
 
@@ -30,7 +30,7 @@ import (
 )
 
 func main() {
-	id := "38453251-6be2-5f8f-df93-5ce19e295837" // string | ID of the approval that is to be returned
+	id := "38453251-6be2-5f8f-df93-5ce19e295837" // string | ID of the approval that to be returned.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -50,7 +50,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | ID of the approval that is to be returned | 
+**id** | **string** | ID of the approval that to be returned. | 
 
 ### Other Parameters
 
@@ -100,8 +100,8 @@ import (
 )
 
 func main() {
-	mine := true // bool | Returns the list of approvals for the current caller (optional)
-	requesterId := "17e633e7d57e481569df76323169deb6a" // string | Returns the list of approvals for a given requester ID (optional)
+	mine := true // bool | Returns the list of approvals for the current caller. (optional)
+	requesterId := "17e633e7d57e481569df76323169deb6a" // string | Returns the list of approvals for a given requester ID. (optional)
 	filters := "filters=status eq PENDING" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq*  **referenceType**: *eq* (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -127,8 +127,8 @@ Other parameters are passed through a pointer to a apiGetApprovalsRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **mine** | **bool** | Returns the list of approvals for the current caller | 
- **requesterId** | **string** | Returns the list of approvals for a given requester ID | 
+ **mine** | **bool** | Returns the list of approvals for the current caller. | 
+ **requesterId** | **string** | Returns the list of approvals for a given requester ID. | 
  **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq*  **referenceType**: *eq* | 
 
 ### Return type

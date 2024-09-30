@@ -34,12 +34,12 @@ func (r ApiGetApprovalRequest) Execute() (*Approval, *http.Response, error) {
 }
 
 /*
-GetApproval Get an approval
+GetApproval Get Approval
 
-Retrieve a single approval for a given approval ID. This endpoint is for generic approvals, different than the access-request-approval endpoint and does not include access-request-approvals.
+Get a single approval for a given approval ID. This endpoint is for generic approvals, unlike the access-request-approval endpoint, and doesn't include access-request-approvals.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the approval that is to be returned
+ @param id ID of the approval that to be returned.
  @return ApiGetApprovalRequest
 */
 func (a *ApprovalsAPIService) GetApproval(ctx context.Context, id string) ApiGetApprovalRequest {
@@ -188,13 +188,13 @@ type ApiGetApprovalsRequest struct {
 	filters *string
 }
 
-// Returns the list of approvals for the current caller
+// Returns the list of approvals for the current caller.
 func (r ApiGetApprovalsRequest) Mine(mine bool) ApiGetApprovalsRequest {
 	r.mine = &mine
 	return r
 }
 
-// Returns the list of approvals for a given requester ID
+// Returns the list of approvals for a given requester ID.
 func (r ApiGetApprovalsRequest) RequesterId(requesterId string) ApiGetApprovalsRequest {
 	r.requesterId = &requesterId
 	return r
@@ -213,7 +213,7 @@ func (r ApiGetApprovalsRequest) Execute() ([]Approval, *http.Response, error) {
 /*
 GetApprovals Get Approvals
 
-Retrieve a list of approvals, which can be filtered by requester ID, status, or reference type. "Mine" query parameter can be used and it will return all approvals for the current approver. This endpoint is for generic approvals, different than the access-request-approval endpoint and does not include access-request-approvals. 
+Get a list of approvals, which can be filtered by requester ID, status, or reference type. You can use the "Mine" query parameter to return all approvals for the current approver. This endpoint is for generic approvals, unlike the access-request-approval endpoint, and does not include access-request-approvals. 
 Absence of all query parameters will will default to mine=true.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

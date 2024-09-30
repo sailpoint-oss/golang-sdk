@@ -46,18 +46,6 @@ func Test_api_v3_ApplicationDiscoveryAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ApplicationDiscoveryAPIService GetVendorConnectorMappings", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.ApplicationDiscoveryAPI.GetVendorConnectorMappings(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test ApplicationDiscoveryAPIService SendManualDiscoverApplicationsCsvTemplate", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

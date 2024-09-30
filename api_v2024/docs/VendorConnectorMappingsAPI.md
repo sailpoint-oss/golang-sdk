@@ -4,8 +4,8 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2024*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateVendorConnectorMapping**](VendorConnectorMappingsAPI.md#CreateVendorConnectorMapping) | **Post** /vendor-connector-mappings | Create a vendor connector mapping
-[**DeleteVendorConnectorMapping**](VendorConnectorMappingsAPI.md#DeleteVendorConnectorMapping) | **Delete** /vendor-connector-mappings | Delete a vendor connector mapping
+[**CreateVendorConnectorMapping**](VendorConnectorMappingsAPI.md#CreateVendorConnectorMapping) | **Post** /vendor-connector-mappings | Create Vendor Connector Mapping
+[**DeleteVendorConnectorMapping**](VendorConnectorMappingsAPI.md#DeleteVendorConnectorMapping) | **Delete** /vendor-connector-mappings | Delete Vendor Connector Mapping
 
 
 
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 > VendorConnectorMapping CreateVendorConnectorMapping(ctx).VendorConnectorMapping(vendorConnectorMapping).Execute()
 
-Create a vendor connector mapping
+Create Vendor Connector Mapping
 
 
 
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 > DeleteVendorConnectorMapping200Response DeleteVendorConnectorMapping(ctx).VendorConnectorMapping(vendorConnectorMapping).Execute()
 
-Delete a vendor connector mapping
+Delete Vendor Connector Mapping
 
 
 

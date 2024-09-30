@@ -51,6 +51,7 @@ api_sources.go
 api_tagged_objects.go
 api_transforms.go
 api_vendor_connector_mappings.go
+api_vendor_connector_mappping.go
 api_work_items.go
 api_workflows.go
 client.go
@@ -628,6 +629,7 @@ docs/VendorConnectorMappingDeletedBy.md
 docs/VendorConnectorMappingUpdatedAt.md
 docs/VendorConnectorMappingUpdatedBy.md
 docs/VendorConnectorMappingsAPI.md
+docs/VendorConnectorMapppingAPI.md
 docs/VerificationPollRequest.md
 docs/VerificationResponse.md
 docs/ViolationContext.md
@@ -1269,6 +1271,7 @@ test/api_sources_test.go
 test/api_tagged_objects_test.go
 test/api_transforms_test.go
 test/api_vendor_connector_mappings_test.go
+test/api_vendor_connector_mappping_test.go
 test/api_work_items_test.go
 test/api_workflows_test.go
 utils.go

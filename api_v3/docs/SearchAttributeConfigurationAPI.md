@@ -4,11 +4,11 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateSearchAttributeConfig**](SearchAttributeConfigurationAPI.md#CreateSearchAttributeConfig) | **Post** /accounts/search-attribute-config | Configure/create search attributes in IdentityNow.
-[**DeleteSearchAttributeConfig**](SearchAttributeConfigurationAPI.md#DeleteSearchAttributeConfig) | **Delete** /accounts/search-attribute-config/{name} | Delete search attribute in IdentityNow.
-[**GetSearchAttributeConfig**](SearchAttributeConfigurationAPI.md#GetSearchAttributeConfig) | **Get** /accounts/search-attribute-config | Retrieve attribute list in IdentityNow.
-[**GetSingleSearchAttributeConfig**](SearchAttributeConfigurationAPI.md#GetSingleSearchAttributeConfig) | **Get** /accounts/search-attribute-config/{name} | Get specific attribute in IdentityNow.
-[**PatchSearchAttributeConfig**](SearchAttributeConfigurationAPI.md#PatchSearchAttributeConfig) | **Patch** /accounts/search-attribute-config/{name} | Update search attribute in IdentityNow.
+[**CreateSearchAttributeConfig**](SearchAttributeConfigurationAPI.md#CreateSearchAttributeConfig) | **Post** /accounts/search-attribute-config | Create Extended Search Attributes
+[**DeleteSearchAttributeConfig**](SearchAttributeConfigurationAPI.md#DeleteSearchAttributeConfig) | **Delete** /accounts/search-attribute-config/{name} | Delete Extended Search Attribute
+[**GetSearchAttributeConfig**](SearchAttributeConfigurationAPI.md#GetSearchAttributeConfig) | **Get** /accounts/search-attribute-config | List Extended Search Attributes
+[**GetSingleSearchAttributeConfig**](SearchAttributeConfigurationAPI.md#GetSingleSearchAttributeConfig) | **Get** /accounts/search-attribute-config/{name} | Get Extended Search Attribute
+[**PatchSearchAttributeConfig**](SearchAttributeConfigurationAPI.md#PatchSearchAttributeConfig) | **Patch** /accounts/search-attribute-config/{name} | Update Extended Search Attribute
 
 
 
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 > map[string]interface{} CreateSearchAttributeConfig(ctx).SearchAttributeConfig(searchAttributeConfig).Execute()
 
-Configure/create search attributes in IdentityNow.
+Create Extended Search Attributes
 
 
 
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 > DeleteSearchAttributeConfig(ctx, name).Execute()
 
-Delete search attribute in IdentityNow.
+Delete Extended Search Attribute
 
 
 
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 > []SearchAttributeConfig GetSearchAttributeConfig(ctx).Execute()
 
-Retrieve attribute list in IdentityNow.
+List Extended Search Attributes
 
 
 
@@ -211,7 +211,7 @@ Other parameters are passed through a pointer to a apiGetSearchAttributeConfigRe
 
 > []SearchAttributeConfig GetSingleSearchAttributeConfig(ctx, name).Execute()
 
-Get specific attribute in IdentityNow.
+Get Extended Search Attribute
 
 
 
@@ -281,7 +281,7 @@ Name | Type | Description  | Notes
 
 > SearchAttributeConfig PatchSearchAttributeConfig(ctx, name).JsonPatchOperation(jsonPatchOperation).Execute()
 
-Update search attribute in IdentityNow.
+Update Extended Search Attribute
 
 
 
@@ -298,7 +298,7 @@ import (
 )
 
 func main() {
-	name := "promotedMailAttribute" // string | Name of the Search Attribute Configuration to patch.
+	name := "promotedMailAttribute" // string | Name of the search attribute configuration to patch.
 	jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -319,7 +319,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**name** | **string** | Name of the Search Attribute Configuration to patch. | 
+**name** | **string** | Name of the search attribute configuration to patch. | 
 
 ### Other Parameters
 

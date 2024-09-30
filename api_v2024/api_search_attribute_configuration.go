@@ -39,9 +39,9 @@ func (r ApiCreateSearchAttributeConfigRequest) Execute() (map[string]interface{}
 }
 
 /*
-CreateSearchAttributeConfig Configure/create search attributes in IdentityNow.
+CreateSearchAttributeConfig Create Extended Search Attributes
 
-This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names.  It will then validate the inputs and configure/create and attribute promotion configuration in the Link ObjectConfig.
+Create and configure extended search attributes. This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names. It will then validate the inputs and configure/create and attribute promotion configuration in the Link ObjectConfig.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateSearchAttributeConfigRequest
@@ -209,9 +209,9 @@ func (r ApiDeleteSearchAttributeConfigRequest) Execute() (*http.Response, error)
 }
 
 /*
-DeleteSearchAttributeConfig Delete search attribute in IdentityNow.
+DeleteSearchAttributeConfig Delete Extended Search Attribute
 
-This API accepts an extended search attribute name and deletes the corresponding extended attribute configuration.
+Delete an extended attribute configuration by name.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param name Name of the extended search attribute configuration to delete.
@@ -365,9 +365,9 @@ func (r ApiGetSearchAttributeConfigRequest) Execute() ([]SearchAttributeConfig, 
 }
 
 /*
-GetSearchAttributeConfig Retrieve attribute list in IdentityNow.
+GetSearchAttributeConfig List Extended Search Attributes
 
-This API retrieves a list of extended search attribute/application associates currently configured in IdentityNow.
+Get a list of attribute/application associates currently configured in Identity Security Cloud (ISC).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetSearchAttributeConfigRequest
@@ -519,9 +519,9 @@ func (r ApiGetSingleSearchAttributeConfigRequest) Execute() ([]SearchAttributeCo
 }
 
 /*
-GetSingleSearchAttributeConfig Get specific attribute in IdentityNow.
+GetSingleSearchAttributeConfig Get Extended Search Attribute
 
-This API accepts an extended search attribute name and retrieves the corresponding extended attribute configuration.
+Get an extended attribute configuration by name.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param name Name of the extended search attribute configuration to retrieve.
@@ -693,13 +693,14 @@ func (r ApiPatchSearchAttributeConfigRequest) Execute() (*SearchAttributeConfig,
 }
 
 /*
-PatchSearchAttributeConfig Update search attribute in IdentityNow.
+PatchSearchAttributeConfig Update Extended Search Attribute
 
-This API updates an existing Search Attribute Configuration. The following fields are patchable:
-**name**, **displayName**, **applicationAttributes**
+Update an existing search attribute configuration. 
+You can patch these fields:
+* name  * displayName * applicationAttributes
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param name Name of the Search Attribute Configuration to patch.
+ @param name Name of the search attribute configuration to patch.
  @return ApiPatchSearchAttributeConfigRequest
 */
 func (a *SearchAttributeConfigurationAPIService) PatchSearchAttributeConfig(ctx context.Context, name string) ApiPatchSearchAttributeConfigRequest {

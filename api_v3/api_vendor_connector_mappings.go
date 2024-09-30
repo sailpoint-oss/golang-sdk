@@ -38,9 +38,9 @@ func (r ApiCreateVendorConnectorMappingRequest) Execute() (*VendorConnectorMappi
 }
 
 /*
-CreateVendorConnectorMapping Create a vendor connector mapping
+CreateVendorConnectorMapping Create Vendor Connector Mapping
 
-Creates a new mapping between a SaaS vendor and an IDN connector to establish correlation paths.
+Create a new mapping between a SaaS vendor and an ISC connector to establish correlation paths.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -214,9 +214,9 @@ func (r ApiDeleteVendorConnectorMappingRequest) Execute() (*DeleteVendorConnecto
 }
 
 /*
-DeleteVendorConnectorMapping Delete a vendor connector mapping
+DeleteVendorConnectorMapping Delete Vendor Connector Mapping
 
-Soft deletes a mapping between a SaaS vendor and an IDN connector, removing the established correlation.
+Soft delete a mapping between a SaaS vendor and an ISC connector, removing the established correlation.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

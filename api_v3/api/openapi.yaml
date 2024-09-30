@@ -4554,8 +4554,8 @@ paths:
       - HELPDESK
   /accounts/search-attribute-config:
     get:
-      description: This API retrieves a list of extended search attribute/application
-        associates currently configured in IdentityNow.
+      description: Get a list of attribute/application associates currently configured
+        in Identity Security Cloud (ISC).
       operationId: getSearchAttributeConfig
       responses:
         "200":
@@ -4625,16 +4625,17 @@ paths:
       security:
       - userAuth:
         - idn:account-config:read
-      summary: Retrieve attribute list in IdentityNow.
+      summary: List Extended Search Attributes
       tags:
       - Search Attribute Configuration
       x-sailpoint-userLevels:
       - ORG_ADMIN
     post:
-      description: "This API accepts an attribute name, an attribute display name\
-        \ and a list of name/value pair associates of application IDs to attribute\
-        \ names.  It will then validate the inputs and configure/create and attribute\
-        \ promotion configuration in the Link ObjectConfig."
+      description: "Create and configure extended search attributes. This API accepts\
+        \ an attribute name, an attribute display name and a list of name/value pair\
+        \ associates of application IDs to attribute names. It will then validate\
+        \ the inputs and configure/create and attribute promotion configuration in\
+        \ the Link ObjectConfig."
       operationId: createSearchAttributeConfig
       requestBody:
         content:
@@ -4733,15 +4734,14 @@ paths:
       security:
       - userAuth:
         - idn:account-config:create
-      summary: Configure/create search attributes in IdentityNow.
+      summary: Create Extended Search Attributes
       tags:
       - Search Attribute Configuration
       x-sailpoint-userLevels:
       - ORG_ADMIN
   /accounts/search-attribute-config/{name}:
     delete:
-      description: This API accepts an extended search attribute name and deletes
-        the corresponding extended attribute configuration.
+      description: Delete an extended attribute configuration by name.
       operationId: deleteSearchAttributeConfig
       parameters:
       - description: Name of the extended search attribute configuration to delete.
@@ -4832,14 +4832,13 @@ paths:
       security:
       - userAuth:
         - idn:account-config:delete
-      summary: Delete search attribute in IdentityNow.
+      summary: Delete Extended Search Attribute
       tags:
       - Search Attribute Configuration
       x-sailpoint-userLevels:
       - ORG_ADMIN
     get:
-      description: This API accepts an extended search attribute name and retrieves
-        the corresponding extended attribute configuration.
+      description: Get an extended attribute configuration by name.
       operationId: getSingleSearchAttributeConfig
       parameters:
       - description: Name of the extended search attribute configuration to retrieve.
@@ -4857,7 +4856,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/SearchAttributeConfig'
                 type: array
-          description: Specific attribute configuration in IdentityNow.
+          description: Specific attribute configuration in ISC.
         "204":
           description: No content - indicates the request was successful but there
             is no content to be returned in the response.
@@ -4938,18 +4937,17 @@ paths:
       security:
       - userAuth:
         - idn:account-config:read
-      summary: Get specific attribute in IdentityNow.
+      summary: Get Extended Search Attribute
       tags:
       - Search Attribute Configuration
       x-sailpoint-userLevels:
       - ORG_ADMIN
     patch:
-      description: |-
-        This API updates an existing Search Attribute Configuration. The following fields are patchable:
-        **name**, **displayName**, **applicationAttributes**
+      description: "Update an existing search attribute configuration. \nYou can patch\
+        \ these fields:\n* name  * displayName * applicationAttributes"
       operationId: patchSearchAttributeConfig
       parameters:
-      - description: Name of the Search Attribute Configuration to patch.
+      - description: Name of the search attribute configuration to patch.
         in: path
         name: name
         required: true
@@ -4981,7 +4979,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SearchAttributeConfig'
-          description: Responds with the Search Attribute Configuration as updated.
+          description: The updated search attribute configuration.
         "400":
           content:
             application/json:
@@ -5059,7 +5057,7 @@ paths:
       security:
       - userAuth:
         - idn:account-config:create
-      summary: Update search attribute in IdentityNow.
+      summary: Update Extended Search Attribute
       tags:
       - Search Attribute Configuration
       x-sailpoint-userLevels:
@@ -41258,7 +41256,7 @@ paths:
   /manual-discover-applications-template:
     get:
       description: |
-        This endpoint allows the user to download an example CSV file with two columns `application_name` and `description`.  The CSV file contains a single row with the values 'Example Application' and 'Example Description'.
+        Download an example CSV file with two columns `application_name` and `description`.  The CSV file contains a single row with the values 'Example Application' and 'Example Description'.
 
         The downloaded template is specifically designed for use with the `/manual-discover-applications` endpoint.
       operationId: getManualDiscoverApplicationsCsvTemplate
@@ -41331,14 +41329,14 @@ paths:
       security:
       - userAuth:
         - idn:application-discovery:read
-      summary: CSV template download for discovery
+      summary: Download CSV Template for Discovery
       tags:
       - Application Discovery
   /manual-discover-applications:
     post:
-      description: "This endpoint supports uploading a CSV file with application data\
-        \ for manual correlation to specific IDN connectors. \nIf a suitable IDN connector\
-        \ is unavailable, the system will recommend generic connectors instead."
+      description: "Uploading a CSV file with application data for manual correlation\
+        \ to specific ISC connectors. \nIf a suitable ISC connector is unavailable,\
+        \ the system will recommend generic connectors instead."
       operationId: sendManualDiscoverApplicationsCsvTemplate
       requestBody:
         content:
@@ -41407,13 +41405,13 @@ paths:
       security:
       - userAuth:
         - idn:application-discovery:write
-      summary: CSV Upload to discover applications
+      summary: Upload CSV to Discover Applications
       tags:
       - Application Discovery
   /discovered-applications:
     get:
       description: |
-        Fetches a list of applications that have been identified within the environment. This includes details such as application names, discovery dates, potential correlated saas_vendors and related suggested connectors.
+        Get a list of applications that have been identified within the environment. This includes details such as application names, discovery dates, potential correlated saas_vendors and related suggested connectors.
       operationId: getDiscoveredApplications
       parameters:
       - description: |-
@@ -41551,13 +41549,13 @@ paths:
       security:
       - userAuth:
         - idn:application-discovery:read
-      summary: Retrieve discovered applications for tenant
+      summary: Get Discovered Applications for Tenant
       tags:
       - Application Discovery
   /vendor-connector-mappings:
     delete:
       description: |
-        Soft deletes a mapping between a SaaS vendor and an IDN connector, removing the established correlation.
+        Soft delete a mapping between a SaaS vendor and an ISC connector, removing the established correlation.
       operationId: deleteVendorConnectorMapping
       requestBody:
         content:
@@ -41649,12 +41647,12 @@ paths:
       security:
       - userAuth:
         - idn:application-discovery:write
-      summary: Delete a vendor connector mapping
+      summary: Delete Vendor Connector Mapping
       tags:
       - Vendor Connector Mappings
     get:
       description: |
-        Retrieves a list of mappings between SaaS vendors and IDN connectors, detailing the connections established for correlation.
+        Get a list of mappings between SaaS vendors and ISC connectors, detailing the connections established for correlation.
       operationId: getVendorConnectorMappings
       responses:
         "200":
@@ -41766,12 +41764,12 @@ paths:
       security:
       - userAuth:
         - idn:application-discovery:read
-      summary: List vendor connector mappings
+      summary: List Vendor Connector Mappings
       tags:
-      - Application Discovery
+      - Vendor Connector Mappping
     post:
       description: |
-        Creates a new mapping between a SaaS vendor and an IDN connector to establish correlation paths.
+        Create a new mapping between a SaaS vendor and an ISC connector to establish correlation paths.
       operationId: createVendorConnectorMapping
       requestBody:
         content:
@@ -41852,7 +41850,7 @@ paths:
       security:
       - userAuth:
         - idn:application-discovery:write
-      summary: Create a vendor connector mapping
+      summary: Create Vendor Connector Mapping
       tags:
       - Vendor Connector Mappings
 components:
