@@ -358,7 +358,7 @@ type ApiGetCampaignFilterByIdRequest struct {
 	id string
 }
 
-func (r ApiGetCampaignFilterByIdRequest) Execute() ([]CampaignFilterDetails, *http.Response, error) {
+func (r ApiGetCampaignFilterByIdRequest) Execute() (*CampaignFilterDetails, *http.Response, error) {
 	return r.ApiService.GetCampaignFilterByIdExecute(r)
 }
 
@@ -380,13 +380,13 @@ func (a *CertificationCampaignFiltersAPIService) GetCampaignFilterById(ctx conte
 }
 
 // Execute executes the request
-//  @return []CampaignFilterDetails
-func (a *CertificationCampaignFiltersAPIService) GetCampaignFilterByIdExecute(r ApiGetCampaignFilterByIdRequest) ([]CampaignFilterDetails, *http.Response, error) {
+//  @return CampaignFilterDetails
+func (a *CertificationCampaignFiltersAPIService) GetCampaignFilterByIdExecute(r ApiGetCampaignFilterByIdRequest) (*CampaignFilterDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []CampaignFilterDetails
+		localVarReturnValue  *CampaignFilterDetails
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignFiltersAPIService.GetCampaignFilterById")

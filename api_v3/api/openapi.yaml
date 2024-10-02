@@ -8713,9 +8713,7 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/CampaignFilterDetails'
-                type: array
+                $ref: '#/components/schemas/CampaignFilterDetails'
           description: A campaign filter object.
         "400":
           content:

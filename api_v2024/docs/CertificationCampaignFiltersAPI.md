@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 
 ## GetCampaignFilterById
 
-> []CampaignFilterDetails GetCampaignFilterById(ctx, id).Execute()
+> CampaignFilterDetails GetCampaignFilterById(ctx, id).Execute()
 
 Get Campaign Filter by ID
 
@@ -172,7 +172,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignFiltersAPI.GetCampaignFilterById``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetCampaignFilterById`: []CampaignFilterDetails
+	// response from `GetCampaignFilterById`: CampaignFilterDetails
 	fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignFiltersAPI.GetCampaignFilterById`: %v\n", resp)
 }
 ```
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]CampaignFilterDetails**](CampaignFilterDetails.md)
+[**CampaignFilterDetails**](CampaignFilterDetails.md)
 
 ### Authorization
 
