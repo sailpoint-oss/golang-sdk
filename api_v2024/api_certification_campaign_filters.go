@@ -355,7 +355,7 @@ func (a *CertificationCampaignFiltersAPIService) DeleteCampaignFiltersExecute(r 
 type ApiGetCampaignFilterByIdRequest struct {
 	ctx context.Context
 	ApiService *CertificationCampaignFiltersAPIService
-	filterId string
+	id string
 }
 
 func (r ApiGetCampaignFilterByIdRequest) Execute() ([]CampaignFilterDetails, *http.Response, error) {
@@ -368,14 +368,14 @@ GetCampaignFilterById Get Campaign Filter by ID
 Retrieves information for an existing campaign filter using the filter's ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param filterId The ID of the campaign filter to be retrieved.
+ @param id The ID of the campaign filter to be retrieved.
  @return ApiGetCampaignFilterByIdRequest
 */
-func (a *CertificationCampaignFiltersAPIService) GetCampaignFilterById(ctx context.Context, filterId string) ApiGetCampaignFilterByIdRequest {
+func (a *CertificationCampaignFiltersAPIService) GetCampaignFilterById(ctx context.Context, id string) ApiGetCampaignFilterByIdRequest {
 	return ApiGetCampaignFilterByIdRequest{
 		ApiService: a,
 		ctx: ctx,
-		filterId: filterId,
+		id: id,
 	}
 }
 
@@ -395,7 +395,7 @@ func (a *CertificationCampaignFiltersAPIService) GetCampaignFilterByIdExecute(r 
 	}
 
 	localVarPath := localBasePath + "/campaign-filters/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"filterId"+"}", url.PathEscape(parameterValueToString(r.filterId, "filterId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

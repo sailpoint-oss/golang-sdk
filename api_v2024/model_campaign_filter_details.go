@@ -20,6 +20,8 @@ var _ MappedNullable = &CampaignFilterDetails{}
 
 // CampaignFilterDetails Campaign Filter Details
 type CampaignFilterDetails struct {
+	// The unique ID of the campaign filter
+	Id string `json:"id"`
 	// Campaign filter name.
 	Name string `json:"name"`
 	// Campaign filter description.
@@ -30,6 +32,8 @@ type CampaignFilterDetails struct {
 	Mode map[string]interface{} `json:"mode"`
 	// List of criteria.
 	CriteriaList []CampaignFilterDetailsCriteriaListInner `json:"criteriaList,omitempty"`
+	// If true, the filter is created by the system. If false, the filter is created by a user.
+	IsSystemFilter bool `json:"isSystemFilter"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -39,11 +43,13 @@ type _CampaignFilterDetails CampaignFilterDetails
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCampaignFilterDetails(name string, owner NullableString, mode map[string]interface{}) *CampaignFilterDetails {
+func NewCampaignFilterDetails(id string, name string, owner NullableString, mode map[string]interface{}, isSystemFilter bool) *CampaignFilterDetails {
 	this := CampaignFilterDetails{}
+	this.Id = id
 	this.Name = name
 	this.Owner = owner
 	this.Mode = mode
+	this.IsSystemFilter = isSystemFilter
 	return &this
 }
 
@@ -52,7 +58,33 @@ func NewCampaignFilterDetails(name string, owner NullableString, mode map[string
 // but it doesn't guarantee that properties required by API are set
 func NewCampaignFilterDetailsWithDefaults() *CampaignFilterDetails {
 	this := CampaignFilterDetails{}
+	var isSystemFilter bool = false
+	this.IsSystemFilter = isSystemFilter
 	return &this
+}
+
+// GetId returns the Id field value
+func (o *CampaignFilterDetails) GetId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value
+// and a boolean to check if the value has been set.
+func (o *CampaignFilterDetails) GetIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Id, true
+}
+
+// SetId sets field value
+func (o *CampaignFilterDetails) SetId(v string) {
+	o.Id = v
 }
 
 // GetName returns the Name field value
@@ -193,6 +225,30 @@ func (o *CampaignFilterDetails) SetCriteriaList(v []CampaignFilterDetailsCriteri
 	o.CriteriaList = v
 }
 
+// GetIsSystemFilter returns the IsSystemFilter field value
+func (o *CampaignFilterDetails) GetIsSystemFilter() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.IsSystemFilter
+}
+
+// GetIsSystemFilterOk returns a tuple with the IsSystemFilter field value
+// and a boolean to check if the value has been set.
+func (o *CampaignFilterDetails) GetIsSystemFilterOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.IsSystemFilter, true
+}
+
+// SetIsSystemFilter sets field value
+func (o *CampaignFilterDetails) SetIsSystemFilter(v bool) {
+	o.IsSystemFilter = v
+}
+
 func (o CampaignFilterDetails) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -203,6 +259,7 @@ func (o CampaignFilterDetails) MarshalJSON() ([]byte, error) {
 
 func (o CampaignFilterDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
@@ -212,6 +269,7 @@ func (o CampaignFilterDetails) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CriteriaList) {
 		toSerialize["criteriaList"] = o.CriteriaList
 	}
+	toSerialize["isSystemFilter"] = o.IsSystemFilter
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -225,9 +283,11 @@ func (o *CampaignFilterDetails) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"id",
 		"name",
 		"owner",
 		"mode",
+		"isSystemFilter",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -257,11 +317,13 @@ func (o *CampaignFilterDetails) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "owner")
 		delete(additionalProperties, "mode")
 		delete(additionalProperties, "criteriaList")
+		delete(additionalProperties, "isSystemFilter")
 		o.AdditionalProperties = additionalProperties
 	}
 

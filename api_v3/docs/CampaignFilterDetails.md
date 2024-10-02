@@ -4,17 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Id** | **string** | The unique ID of the campaign filter | 
 **Name** | **string** | Campaign filter name. | 
 **Description** | Pointer to **string** | Campaign filter description. | [optional] 
 **Owner** | **NullableString** | Owner of the filter. This field automatically populates at creation time with the current user. | 
 **Mode** | **map[string]interface{}** | Mode/type of filter, either the INCLUSION or EXCLUSION type. The INCLUSION type includes the data in generated campaigns  as per specified in the criteria, whereas the EXCLUSION type excludes the data in generated campaigns as per specified in criteria. | 
 **CriteriaList** | Pointer to [**[]CampaignFilterDetailsCriteriaListInner**](CampaignFilterDetailsCriteriaListInner.md) | List of criteria. | [optional] 
+**IsSystemFilter** | **bool** | If true, the filter is created by the system. If false, the filter is created by a user. | [default to false]
 
 ## Methods
 
 ### NewCampaignFilterDetails
 
-`func NewCampaignFilterDetails(name string, owner NullableString, mode map[string]interface{}, ) *CampaignFilterDetails`
+`func NewCampaignFilterDetails(id string, name string, owner NullableString, mode map[string]interface{}, isSystemFilter bool, ) *CampaignFilterDetails`
 
 NewCampaignFilterDetails instantiates a new CampaignFilterDetails object
 This constructor will assign default values to properties that have it defined,
@@ -28,6 +30,26 @@ will change when the set of required properties is changed
 NewCampaignFilterDetailsWithDefaults instantiates a new CampaignFilterDetails object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetId
+
+`func (o *CampaignFilterDetails) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *CampaignFilterDetails) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *CampaignFilterDetails) SetId(v string)`
+
+SetId sets Id field to given value.
+
 
 ### GetName
 
@@ -148,6 +170,26 @@ SetCriteriaList sets CriteriaList field to given value.
 `func (o *CampaignFilterDetails) HasCriteriaList() bool`
 
 HasCriteriaList returns a boolean if a field has been set.
+
+### GetIsSystemFilter
+
+`func (o *CampaignFilterDetails) GetIsSystemFilter() bool`
+
+GetIsSystemFilter returns the IsSystemFilter field if non-nil, zero value otherwise.
+
+### GetIsSystemFilterOk
+
+`func (o *CampaignFilterDetails) GetIsSystemFilterOk() (*bool, bool)`
+
+GetIsSystemFilterOk returns a tuple with the IsSystemFilter field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsSystemFilter
+
+`func (o *CampaignFilterDetails) SetIsSystemFilter(v bool)`
+
+SetIsSystemFilter sets IsSystemFilter field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

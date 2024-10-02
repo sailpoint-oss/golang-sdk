@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-	campaignFilterDetails := *openapiclient.NewCampaignFilterDetails("Identity Attribute Campaign Filter", "SailPoint Support", map[string]interface{}(INCLUSION)) // CampaignFilterDetails | 
+	campaignFilterDetails := *openapiclient.NewCampaignFilterDetails("5ec18cef39020d6fd7a60ad3970aba61", "Identity Attribute Campaign Filter", "SailPoint Support", map[string]interface{}(INCLUSION), false) // CampaignFilterDetails | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 
 ## GetCampaignFilterById
 
-> []CampaignFilterDetails GetCampaignFilterById(ctx, filterId).Execute()
+> []CampaignFilterDetails GetCampaignFilterById(ctx, id).Execute()
 
 Get Campaign Filter by ID
 
@@ -163,11 +163,11 @@ import (
 )
 
 func main() {
-	filterId := "e9f9a1397b842fd5a65842087040d3ac" // string | The ID of the campaign filter to be retrieved.
+	id := "e9f9a1397b842fd5a65842087040d3ac" // string | The ID of the campaign filter to be retrieved.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CertificationCampaignFiltersAPI.GetCampaignFilterById(context.Background(), filterId).Execute()
+	resp, r, err := apiClient.CertificationCampaignFiltersAPI.GetCampaignFilterById(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignFiltersAPI.GetCampaignFilterById``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -183,7 +183,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**filterId** | **string** | The ID of the campaign filter to be retrieved. | 
+**id** | **string** | The ID of the campaign filter to be retrieved. | 
 
 ### Other Parameters
 
@@ -304,7 +304,7 @@ import (
 
 func main() {
 	filterId := "e9f9a1397b842fd5a65842087040d3ac" // string | The ID of the campaign filter being modified.
-	campaignFilterDetails := *openapiclient.NewCampaignFilterDetails("Identity Attribute Campaign Filter", "SailPoint Support", map[string]interface{}(INCLUSION)) // CampaignFilterDetails | A campaign filter details with updated field values.
+	campaignFilterDetails := *openapiclient.NewCampaignFilterDetails("5ec18cef39020d6fd7a60ad3970aba61", "Identity Attribute Campaign Filter", "SailPoint Support", map[string]interface{}(INCLUSION), false) // CampaignFilterDetails | A campaign filter details with updated field values.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
