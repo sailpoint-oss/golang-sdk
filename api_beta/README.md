@@ -875,6 +875,7 @@ Class | Method | HTTP request | Description
  - [DeleteCampaignsRequest](docs/DeleteCampaignsRequest.md)
  - [DeleteNonEmployeeRecordInBulkRequest](docs/DeleteNonEmployeeRecordInBulkRequest.md)
  - [DeleteVendorConnectorMapping200Response](docs/DeleteVendorConnectorMapping200Response.md)
+ - [DimensionRef](docs/DimensionRef.md)
  - [DkimAttributes](docs/DkimAttributes.md)
  - [DomainAddress](docs/DomainAddress.md)
  - [DomainStatusDto](docs/DomainStatusDto.md)

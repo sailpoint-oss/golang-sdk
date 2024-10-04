@@ -341,6 +341,7 @@ docs/Delete202Response.md
 docs/DeleteCampaignsRequest.md
 docs/DeleteNonEmployeeRecordInBulkRequest.md
 docs/DeleteVendorConnectorMapping200Response.md
+docs/DimensionRef.md
 docs/DkimAttributes.md
 docs/DomainAddress.md
 docs/DomainStatusDto.md
@@ -1264,6 +1265,7 @@ model_delete_202_response.go
 model_delete_campaigns_request.go
 model_delete_non_employee_record_in_bulk_request.go
 model_delete_vendor_connector_mapping_200_response.go
+model_dimension_ref.go
 model_dkim_attributes.go
 model_domain_address.go
 model_domain_status_dto.go

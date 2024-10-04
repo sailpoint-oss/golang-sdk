@@ -54043,7 +54043,13 @@ components:
           type: ENTITLEMENT
         dimensional: false
         created: 2021-03-01T22:32:58.104Z
-        dimensionRefs: dimensionRefs
+        dimensionRefs:
+        - name: Role 2
+          id: 2c91808568c529c60168cca6f90c1313
+          type: DIMENSION
+        - name: Role 2
+          id: 2c91808568c529c60168cca6f90c1313
+          type: DIMENSION
         description: Urna amet cursus pellentesque nisl orci maximus lorem nisl euismod
           fusce morbi placerat adipiscing maecenas nisi tristique et metus et lacus
           sed morbi nunc nisl maximus magna arcu varius sollicitudin elementum enim
@@ -54237,9 +54243,12 @@ components:
           nullable: true
           type: boolean
         dimensionRefs:
-          description: TBD
+          description: List of references to dimensions to which this Role is assigned.
+            This field is only relevant if the Role is dimensional.
+          items:
+            $ref: '#/components/schemas/DimensionRef'
           nullable: true
-          type: string
+          type: array
         accessModelMetadata:
           example:
           - key: iscFederalClassifications
@@ -60363,6 +60372,28 @@ components:
           items:
             $ref: '#/components/schemas/ApprovalSchemeForRole'
           type: array
+      type: object
+    DimensionRef:
+      example:
+        name: Role 2
+        id: 2c91808568c529c60168cca6f90c1313
+        type: DIMENSION
+      properties:
+        type:
+          description: The type of the object to which this reference applies
+          enum:
+          - DIMENSION
+          example: DIMENSION
+          type: string
+        id:
+          description: ID of the object to which this reference applies
+          example: 2c91808568c529c60168cca6f90c1313
+          type: string
+        name:
+          description: Human-readable display name of the object to which this reference
+            applies
+          example: Role 2
+          type: string
       type: object
     AttributeDTOList:
       properties:

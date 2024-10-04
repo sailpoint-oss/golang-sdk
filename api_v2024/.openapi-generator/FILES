@@ -417,6 +417,7 @@ docs/DeleteSource202Response.md
 docs/DeleteVendorConnectorMapping200Response.md
 docs/DeployRequest.md
 docs/DeployResponse.md
+docs/DimensionRef.md
 docs/DisplayReference.md
 docs/DkimAttributes.md
 docs/DocumentType.md
@@ -1468,6 +1469,7 @@ model_delete_source_202_response.go
 model_delete_vendor_connector_mapping_200_response.go
 model_deploy_request.go
 model_deploy_response.go
+model_dimension_ref.go
 model_display_reference.go
 model_dkim_attributes.go
 model_document_type.go

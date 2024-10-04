@@ -47,8 +47,8 @@ type Role struct {
 	Segments []string `json:"segments,omitempty"`
 	// Whether the Role is dimensional.
 	Dimensional NullableBool `json:"dimensional,omitempty"`
-	// TBD
-	DimensionRefs NullableString `json:"dimensionRefs,omitempty"`
+	// List of references to dimensions to which this Role is assigned. This field is only relevant if the Role is dimensional.
+	DimensionRefs []DimensionRef `json:"dimensionRefs,omitempty"`
 	AccessModelMetadata []AttributeDTOList `json:"accessModelMetadata,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -616,45 +616,36 @@ func (o *Role) UnsetDimensional() {
 }
 
 // GetDimensionRefs returns the DimensionRefs field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Role) GetDimensionRefs() string {
-	if o == nil || IsNil(o.DimensionRefs.Get()) {
-		var ret string
+func (o *Role) GetDimensionRefs() []DimensionRef {
+	if o == nil {
+		var ret []DimensionRef
 		return ret
 	}
-	return *o.DimensionRefs.Get()
+	return o.DimensionRefs
 }
 
 // GetDimensionRefsOk returns a tuple with the DimensionRefs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Role) GetDimensionRefsOk() (*string, bool) {
-	if o == nil {
+func (o *Role) GetDimensionRefsOk() ([]DimensionRef, bool) {
+	if o == nil || IsNil(o.DimensionRefs) {
 		return nil, false
 	}
-	return o.DimensionRefs.Get(), o.DimensionRefs.IsSet()
+	return o.DimensionRefs, true
 }
 
 // HasDimensionRefs returns a boolean if a field has been set.
 func (o *Role) HasDimensionRefs() bool {
-	if o != nil && o.DimensionRefs.IsSet() {
+	if o != nil && !IsNil(o.DimensionRefs) {
 		return true
 	}
 
 	return false
 }
 
-// SetDimensionRefs gets a reference to the given NullableString and assigns it to the DimensionRefs field.
-func (o *Role) SetDimensionRefs(v string) {
-	o.DimensionRefs.Set(&v)
-}
-// SetDimensionRefsNil sets the value for DimensionRefs to be an explicit nil
-func (o *Role) SetDimensionRefsNil() {
-	o.DimensionRefs.Set(nil)
-}
-
-// UnsetDimensionRefs ensures that no value is present for DimensionRefs, not even an explicit nil
-func (o *Role) UnsetDimensionRefs() {
-	o.DimensionRefs.Unset()
+// SetDimensionRefs gets a reference to the given []DimensionRef and assigns it to the DimensionRefs field.
+func (o *Role) SetDimensionRefs(v []DimensionRef) {
+	o.DimensionRefs = v
 }
 
 // GetAccessModelMetadata returns the AccessModelMetadata field value if set, zero value otherwise.
@@ -743,8 +734,8 @@ func (o Role) ToMap() (map[string]interface{}, error) {
 	if o.Dimensional.IsSet() {
 		toSerialize["dimensional"] = o.Dimensional.Get()
 	}
-	if o.DimensionRefs.IsSet() {
-		toSerialize["dimensionRefs"] = o.DimensionRefs.Get()
+	if o.DimensionRefs != nil {
+		toSerialize["dimensionRefs"] = o.DimensionRefs
 	}
 	if !IsNil(o.AccessModelMetadata) {
 		toSerialize["accessModelMetadata"] = o.AccessModelMetadata

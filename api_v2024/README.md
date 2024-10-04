@@ -1004,6 +1004,7 @@ Class | Method | HTTP request | Description
  - [DeleteVendorConnectorMapping200Response](docs/DeleteVendorConnectorMapping200Response.md)
  - [DeployRequest](docs/DeployRequest.md)
  - [DeployResponse](docs/DeployResponse.md)
+ - [DimensionRef](docs/DimensionRef.md)
  - [DisplayReference](docs/DisplayReference.md)
  - [DkimAttributes](docs/DkimAttributes.md)
  - [DocumentType](docs/DocumentType.md)

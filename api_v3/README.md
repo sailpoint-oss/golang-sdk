@@ -613,6 +613,7 @@ Class | Method | HTTP request | Description
  - [DependantAppConnectionsAccountSource](docs/DependantAppConnectionsAccountSource.md)
  - [DependantAppConnectionsAccountSourcePasswordPoliciesInner](docs/DependantAppConnectionsAccountSourcePasswordPoliciesInner.md)
  - [DependantConnectionsMissingDto](docs/DependantConnectionsMissingDto.md)
+ - [DimensionRef](docs/DimensionRef.md)
  - [DisplayReference](docs/DisplayReference.md)
  - [DocumentType](docs/DocumentType.md)
  - [DtoType](docs/DtoType.md)

@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **RevocationRequestConfig** | Pointer to [**RevocabilityForRole**](RevocabilityForRole.md) |  | [optional] 
 **Segments** | Pointer to **[]string** | List of IDs of segments, if any, to which this Role is assigned. | [optional] 
 **Dimensional** | Pointer to **NullableBool** | Whether the Role is dimensional. | [optional] [default to false]
-**DimensionRefs** | Pointer to **NullableString** | TBD | [optional] 
+**DimensionRefs** | Pointer to [**[]DimensionRef**](DimensionRef.md) | List of references to dimensions to which this Role is assigned. This field is only relevant if the Role is dimensional. | [optional] 
 **AccessModelMetadata** | Pointer to [**[]AttributeDTOList**](AttributeDTOList.md) |  | [optional] 
 
 ## Methods
@@ -494,20 +494,20 @@ HasDimensional returns a boolean if a field has been set.
 UnsetDimensional ensures that no value is present for Dimensional, not even an explicit nil
 ### GetDimensionRefs
 
-`func (o *Role) GetDimensionRefs() string`
+`func (o *Role) GetDimensionRefs() []DimensionRef`
 
 GetDimensionRefs returns the DimensionRefs field if non-nil, zero value otherwise.
 
 ### GetDimensionRefsOk
 
-`func (o *Role) GetDimensionRefsOk() (*string, bool)`
+`func (o *Role) GetDimensionRefsOk() (*[]DimensionRef, bool)`
 
 GetDimensionRefsOk returns a tuple with the DimensionRefs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDimensionRefs
 
-`func (o *Role) SetDimensionRefs(v string)`
+`func (o *Role) SetDimensionRefs(v []DimensionRef)`
 
 SetDimensionRefs sets DimensionRefs field to given value.
 
