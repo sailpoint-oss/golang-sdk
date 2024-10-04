@@ -11,13 +11,13 @@ Name | Type | Description | Notes
 **Created** | **time.Time** | The time the job was started. | 
 **Modified** | **time.Time** | The time of the last update to the job. | 
 **Description** | Pointer to **string** | Optional user defined description/name for export job. | [optional] 
-**Completed** | **time.Time** | The time the job was completed. | 
+**Completed** | Pointer to **time.Time** | The time the job was completed. | [optional] 
 
 ## Methods
 
 ### NewSpConfigExportJobStatus
 
-`func NewSpConfigExportJobStatus(jobId string, status string, type_ string, expiration time.Time, created time.Time, modified time.Time, completed time.Time, ) *SpConfigExportJobStatus`
+`func NewSpConfigExportJobStatus(jobId string, status string, type_ string, expiration time.Time, created time.Time, modified time.Time, ) *SpConfigExportJobStatus`
 
 NewSpConfigExportJobStatus instantiates a new SpConfigExportJobStatus object
 This constructor will assign default values to properties that have it defined,
@@ -196,6 +196,11 @@ and a boolean to check if the value has been set.
 
 SetCompleted sets Completed field to given value.
 
+### HasCompleted
+
+`func (o *SpConfigExportJobStatus) HasCompleted() bool`
+
+HasCompleted returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

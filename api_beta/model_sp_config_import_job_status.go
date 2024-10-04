@@ -36,7 +36,7 @@ type SpConfigImportJobStatus struct {
 	// This message contains additional information about the overall status of the job.
 	Message string `json:"message"`
 	// The time the job was completed.
-	Completed time.Time `json:"completed"`
+	Completed *time.Time `json:"completed,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -46,7 +46,7 @@ type _SpConfigImportJobStatus SpConfigImportJobStatus
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSpConfigImportJobStatus(jobId string, status string, type_ string, expiration time.Time, created time.Time, modified time.Time, message string, completed time.Time) *SpConfigImportJobStatus {
+func NewSpConfigImportJobStatus(jobId string, status string, type_ string, expiration time.Time, created time.Time, modified time.Time, message string) *SpConfigImportJobStatus {
 	this := SpConfigImportJobStatus{}
 	this.JobId = jobId
 	this.Status = status
@@ -55,7 +55,6 @@ func NewSpConfigImportJobStatus(jobId string, status string, type_ string, expir
 	this.Created = created
 	this.Modified = modified
 	this.Message = message
-	this.Completed = completed
 	return &this
 }
 
@@ -235,28 +234,36 @@ func (o *SpConfigImportJobStatus) SetMessage(v string) {
 	o.Message = v
 }
 
-// GetCompleted returns the Completed field value
+// GetCompleted returns the Completed field value if set, zero value otherwise.
 func (o *SpConfigImportJobStatus) GetCompleted() time.Time {
-	if o == nil {
+	if o == nil || IsNil(o.Completed) {
 		var ret time.Time
 		return ret
 	}
-
-	return o.Completed
+	return *o.Completed
 }
 
-// GetCompletedOk returns a tuple with the Completed field value
+// GetCompletedOk returns a tuple with the Completed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpConfigImportJobStatus) GetCompletedOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Completed) {
 		return nil, false
 	}
-	return &o.Completed, true
+	return o.Completed, true
 }
 
-// SetCompleted sets field value
+// HasCompleted returns a boolean if a field has been set.
+func (o *SpConfigImportJobStatus) HasCompleted() bool {
+	if o != nil && !IsNil(o.Completed) {
+		return true
+	}
+
+	return false
+}
+
+// SetCompleted gets a reference to the given time.Time and assigns it to the Completed field.
 func (o *SpConfigImportJobStatus) SetCompleted(v time.Time) {
-	o.Completed = v
+	o.Completed = &v
 }
 
 func (o SpConfigImportJobStatus) MarshalJSON() ([]byte, error) {
@@ -276,7 +283,9 @@ func (o SpConfigImportJobStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize["created"] = o.Created
 	toSerialize["modified"] = o.Modified
 	toSerialize["message"] = o.Message
-	toSerialize["completed"] = o.Completed
+	if !IsNil(o.Completed) {
+		toSerialize["completed"] = o.Completed
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -297,7 +306,6 @@ func (o *SpConfigImportJobStatus) UnmarshalJSON(data []byte) (err error) {
 		"created",
 		"modified",
 		"message",
-		"completed",
 	}
 
 	allProperties := make(map[string]interface{})

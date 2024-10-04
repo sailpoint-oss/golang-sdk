@@ -3132,11 +3132,18 @@ type ApiGetSourceSchemasRequest struct {
 	ApiService *SourcesAPIService
 	sourceId string
 	includeTypes *string
+	includeNames *string
 }
 
-// If this is set to &#x60;group&#x60;, the API filters the account schema and only returns only group schemas. If this is set to &#x60;user&#x60;, the API returns the account schema for the source. 
+// If set to &#39;group&#39;, then the account schema is filtered and only group schemas are returned. Only a value of &#39;group&#39; is recognized presently.  Note: The API will check whether include-types is group or not, if not, it will list schemas based on include-names, if include-names is not provided, it will list all schemas.
 func (r ApiGetSourceSchemasRequest) IncludeTypes(includeTypes string) ApiGetSourceSchemasRequest {
 	r.includeTypes = &includeTypes
+	return r
+}
+
+// A comma-separated list of schema names to filter result.
+func (r ApiGetSourceSchemasRequest) IncludeNames(includeNames string) ApiGetSourceSchemasRequest {
+	r.includeNames = &includeNames
 	return r
 }
 
@@ -3148,7 +3155,6 @@ func (r ApiGetSourceSchemasRequest) Execute() ([]Schema, *http.Response, error) 
 GetSourceSchemas List Schemas on Source
 
 Use this API to list the schemas that exist on the specified source in Identity Security Cloud (ISC).
-
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId Source ID.
@@ -3186,6 +3192,9 @@ func (a *SourcesAPIService) GetSourceSchemasExecute(r ApiGetSourceSchemasRequest
 
 	if r.includeTypes != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "include-types", r.includeTypes, "", "")
+	}
+	if r.includeNames != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include-names", r.includeNames, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

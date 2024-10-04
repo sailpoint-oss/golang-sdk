@@ -42998,6 +42998,10 @@ paths:
       summary: List Schemas on Source
       tags:
       - Sources
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     post:
       description: Use this API to create a new schema on the specified source in
         Identity Security Cloud (ISC).
@@ -43085,6 +43089,9 @@ paths:
       summary: Create Schema on Source
       tags:
       - Sources
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
   /sources/{sourceId}/schemas/{schemaId}:
     delete:
       operationId: deleteSourceSchema
@@ -73961,14 +73968,13 @@ components:
     SpConfigExportJobStatus:
       allOf:
       - $ref: '#/components/schemas/SpConfigExportJob'
-      - properties:
+      - nullable: true
+        properties:
           completed:
             description: The time the job was completed.
             example: 2021-05-11T22:23:16Z
             format: date-time
             type: string
-        required:
-        - completed
         type: object
       example:
         jobId: 3469b87d-48ca-439a-868f-2160001da8c1
@@ -74165,14 +74171,16 @@ components:
               status of the job.
             example: Download import results for details.
             type: string
+        required:
+        - message
+        type: object
+      - nullable: true
+        properties:
           completed:
             description: The time the job was completed.
             example: 2021-05-11T22:23:16Z
             format: date-time
             type: string
-        required:
-        - completed
-        - message
         type: object
       example:
         jobId: 3469b87d-48ca-439a-868f-2160001da8c1

@@ -951,7 +951,7 @@ Name | Type | Description  | Notes
 
 ## GetSourceSchemas
 
-> []Schema GetSourceSchemas(ctx, sourceId).IncludeTypes(includeTypes).Execute()
+> []Schema GetSourceSchemas(ctx, sourceId).IncludeTypes(includeTypes).IncludeNames(includeNames).Execute()
 
 List Schemas on Source
 
@@ -971,11 +971,12 @@ import (
 
 func main() {
 	sourceId := "2c9180835d191a86015d28455b4a2329" // string | Source ID.
-	includeTypes := "group" // string | If this is set to `group`, the API filters the account schema and only returns only group schemas. If this is set to `user`, the API returns the account schema for the source.  (optional)
+	includeTypes := "group" // string | If set to 'group', then the account schema is filtered and only group schemas are returned. Only a value of 'group' is recognized presently.  Note: The API will check whether include-types is group or not, if not, it will list schemas based on include-names, if include-names is not provided, it will list all schemas. (optional)
+	includeNames := "account" // string | A comma-separated list of schema names to filter result. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.GetSourceSchemas(context.Background(), sourceId).IncludeTypes(includeTypes).Execute()
+	resp, r, err := apiClient.SourcesAPI.GetSourceSchemas(context.Background(), sourceId).IncludeTypes(includeTypes).IncludeNames(includeNames).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceSchemas``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1001,7 +1002,8 @@ Other parameters are passed through a pointer to a apiGetSourceSchemasRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **includeTypes** | **string** | If this is set to &#x60;group&#x60;, the API filters the account schema and only returns only group schemas. If this is set to &#x60;user&#x60;, the API returns the account schema for the source.  | 
+ **includeTypes** | **string** | If set to &#39;group&#39;, then the account schema is filtered and only group schemas are returned. Only a value of &#39;group&#39; is recognized presently.  Note: The API will check whether include-types is group or not, if not, it will list schemas based on include-names, if include-names is not provided, it will list all schemas. | 
+ **includeNames** | **string** | A comma-separated list of schema names to filter result. | 
 
 ### Return type
 

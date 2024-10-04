@@ -34923,8 +34923,8 @@ paths:
       - ORG_ADMIN
   /sources/{sourceId}/schemas:
     get:
-      description: |
-        Use this API to list the schemas that exist on the specified source in Identity Security Cloud (ISC).
+      description: Use this API to list the schemas that exist on the specified source
+        in Identity Security Cloud (ISC).
       operationId: getSourceSchemas
       parameters:
       - description: Source ID.
@@ -34934,9 +34934,11 @@ paths:
         required: true
         schema:
           type: string
-      - description: "If this is set to `group`, the API filters the account schema\
-          \ and only returns only group schemas. If this is set to `user`, the API\
-          \ returns the account schema for the source. "
+      - description: "If set to 'group', then the account schema is filtered and only\
+          \ group schemas are returned. Only a value of 'group' is recognized presently.\
+          \ \nNote: The API will check whether include-types is group or not, if not,\
+          \ it will list schemas based on include-names, if include-names is not provided,\
+          \ it will list all schemas."
         example: group
         in: query
         name: include-types
@@ -34945,6 +34947,13 @@ paths:
           enum:
           - group
           - user
+          type: string
+      - description: A comma-separated list of schema names to filter result.
+        example: account
+        in: query
+        name: include-names
+        required: false
+        schema:
           type: string
       responses:
         "200":
@@ -35029,9 +35038,16 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:source-schema:read
       summary: List Schemas on Source
       tags:
       - Sources
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     post:
       description: |
         Use this API to create a new schema on the specified source in Identity Security Cloud (ISC).
@@ -35113,9 +35129,15 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:source-schema:create
       summary: Create Schema on Source
       tags:
       - Sources
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
   /sources/{sourceId}/schemas/{schemaId}:
     delete:
       operationId: deleteSourceSchema

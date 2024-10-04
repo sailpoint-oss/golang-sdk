@@ -11,13 +11,13 @@ Name | Type | Description | Notes
 **Created** | **time.Time** | The time the job was started. | 
 **Modified** | **time.Time** | The time of the last update to the job. | 
 **Message** | **string** | This message contains additional information about the overall status of the job. | 
-**Completed** | **time.Time** | The time the job was completed. | 
+**Completed** | Pointer to **time.Time** | The time the job was completed. | [optional] 
 
 ## Methods
 
 ### NewSpConfigImportJobStatus
 
-`func NewSpConfigImportJobStatus(jobId string, status string, type_ string, expiration time.Time, created time.Time, modified time.Time, message string, completed time.Time, ) *SpConfigImportJobStatus`
+`func NewSpConfigImportJobStatus(jobId string, status string, type_ string, expiration time.Time, created time.Time, modified time.Time, message string, ) *SpConfigImportJobStatus`
 
 NewSpConfigImportJobStatus instantiates a new SpConfigImportJobStatus object
 This constructor will assign default values to properties that have it defined,
@@ -191,6 +191,11 @@ and a boolean to check if the value has been set.
 
 SetCompleted sets Completed field to given value.
 
+### HasCompleted
+
+`func (o *SpConfigImportJobStatus) HasCompleted() bool`
+
+HasCompleted returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
