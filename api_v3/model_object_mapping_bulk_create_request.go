@@ -20,7 +20,7 @@ var _ MappedNullable = &ObjectMappingBulkCreateRequest{}
 
 // ObjectMappingBulkCreateRequest struct for ObjectMappingBulkCreateRequest
 type ObjectMappingBulkCreateRequest struct {
-	NewObjectMappings []ObjectMappingRequest `json:"newObjectMappings"`
+	NewObjectsMappings []ObjectMappingRequest `json:"newObjectsMappings"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -30,9 +30,9 @@ type _ObjectMappingBulkCreateRequest ObjectMappingBulkCreateRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewObjectMappingBulkCreateRequest(newObjectMappings []ObjectMappingRequest) *ObjectMappingBulkCreateRequest {
+func NewObjectMappingBulkCreateRequest(newObjectsMappings []ObjectMappingRequest) *ObjectMappingBulkCreateRequest {
 	this := ObjectMappingBulkCreateRequest{}
-	this.NewObjectMappings = newObjectMappings
+	this.NewObjectsMappings = newObjectsMappings
 	return &this
 }
 
@@ -44,28 +44,28 @@ func NewObjectMappingBulkCreateRequestWithDefaults() *ObjectMappingBulkCreateReq
 	return &this
 }
 
-// GetNewObjectMappings returns the NewObjectMappings field value
-func (o *ObjectMappingBulkCreateRequest) GetNewObjectMappings() []ObjectMappingRequest {
+// GetNewObjectsMappings returns the NewObjectsMappings field value
+func (o *ObjectMappingBulkCreateRequest) GetNewObjectsMappings() []ObjectMappingRequest {
 	if o == nil {
 		var ret []ObjectMappingRequest
 		return ret
 	}
 
-	return o.NewObjectMappings
+	return o.NewObjectsMappings
 }
 
-// GetNewObjectMappingsOk returns a tuple with the NewObjectMappings field value
+// GetNewObjectsMappingsOk returns a tuple with the NewObjectsMappings field value
 // and a boolean to check if the value has been set.
-func (o *ObjectMappingBulkCreateRequest) GetNewObjectMappingsOk() ([]ObjectMappingRequest, bool) {
+func (o *ObjectMappingBulkCreateRequest) GetNewObjectsMappingsOk() ([]ObjectMappingRequest, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.NewObjectMappings, true
+	return o.NewObjectsMappings, true
 }
 
-// SetNewObjectMappings sets field value
-func (o *ObjectMappingBulkCreateRequest) SetNewObjectMappings(v []ObjectMappingRequest) {
-	o.NewObjectMappings = v
+// SetNewObjectsMappings sets field value
+func (o *ObjectMappingBulkCreateRequest) SetNewObjectsMappings(v []ObjectMappingRequest) {
+	o.NewObjectsMappings = v
 }
 
 func (o ObjectMappingBulkCreateRequest) MarshalJSON() ([]byte, error) {
@@ -78,7 +78,7 @@ func (o ObjectMappingBulkCreateRequest) MarshalJSON() ([]byte, error) {
 
 func (o ObjectMappingBulkCreateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["newObjectMappings"] = o.NewObjectMappings
+	toSerialize["newObjectsMappings"] = o.NewObjectsMappings
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -92,7 +92,7 @@ func (o *ObjectMappingBulkCreateRequest) UnmarshalJSON(data []byte) (err error) 
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"newObjectMappings",
+		"newObjectsMappings",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -122,7 +122,7 @@ func (o *ObjectMappingBulkCreateRequest) UnmarshalJSON(data []byte) (err error) 
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "newObjectMappings")
+		delete(additionalProperties, "newObjectsMappings")
 		o.AdditionalProperties = additionalProperties
 	}
 

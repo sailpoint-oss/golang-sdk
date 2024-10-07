@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**NewObjectMappings** | [**[]ObjectMappingRequest**](ObjectMappingRequest.md) |  | 
+**NewObjectsMappings** | [**[]ObjectMappingRequest**](ObjectMappingRequest.md) |  | 
 
 ## Methods
 
 ### NewObjectMappingBulkCreateRequest
 
-`func NewObjectMappingBulkCreateRequest(newObjectMappings []ObjectMappingRequest, ) *ObjectMappingBulkCreateRequest`
+`func NewObjectMappingBulkCreateRequest(newObjectsMappings []ObjectMappingRequest, ) *ObjectMappingBulkCreateRequest`
 
 NewObjectMappingBulkCreateRequest instantiates a new ObjectMappingBulkCreateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -25,24 +25,24 @@ NewObjectMappingBulkCreateRequestWithDefaults instantiates a new ObjectMappingBu
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetNewObjectMappings
+### GetNewObjectsMappings
 
-`func (o *ObjectMappingBulkCreateRequest) GetNewObjectMappings() []ObjectMappingRequest`
+`func (o *ObjectMappingBulkCreateRequest) GetNewObjectsMappings() []ObjectMappingRequest`
 
-GetNewObjectMappings returns the NewObjectMappings field if non-nil, zero value otherwise.
+GetNewObjectsMappings returns the NewObjectsMappings field if non-nil, zero value otherwise.
 
-### GetNewObjectMappingsOk
+### GetNewObjectsMappingsOk
 
-`func (o *ObjectMappingBulkCreateRequest) GetNewObjectMappingsOk() (*[]ObjectMappingRequest, bool)`
+`func (o *ObjectMappingBulkCreateRequest) GetNewObjectsMappingsOk() (*[]ObjectMappingRequest, bool)`
 
-GetNewObjectMappingsOk returns a tuple with the NewObjectMappings field if it's non-nil, zero value otherwise
+GetNewObjectsMappingsOk returns a tuple with the NewObjectsMappings field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetNewObjectMappings
+### SetNewObjectsMappings
 
-`func (o *ObjectMappingBulkCreateRequest) SetNewObjectMappings(v []ObjectMappingRequest)`
+`func (o *ObjectMappingBulkCreateRequest) SetNewObjectsMappings(v []ObjectMappingRequest)`
 
-SetNewObjectMappings sets NewObjectMappings field to given value.
+SetNewObjectsMappings sets NewObjectsMappings field to given value.
 
 
 

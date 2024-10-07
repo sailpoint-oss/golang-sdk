@@ -50499,7 +50499,7 @@ components:
       type: object
     ObjectMappingBulkCreateRequest:
       example:
-        newObjectMappings:
+        newObjectsMappings:
         - targetValue: My New Governance Group Name
           jsonPath: $.name
           sourceValue: My Governance Group Name
@@ -50511,12 +50511,12 @@ components:
           enabled: false
           objectType: IDENTITY
       properties:
-        newObjectMappings:
+        newObjectsMappings:
           items:
             $ref: '#/components/schemas/ObjectMappingRequest'
           type: array
       required:
-      - newObjectMappings
+      - newObjectsMappings
       title: Bulk Create Object Mapping Request
       type: object
     ObjectMappingBulkCreateResponse:
