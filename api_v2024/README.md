@@ -252,6 +252,14 @@ Class | Method | HTTP request | Description
 *CustomPasswordInstructionsAPI* | [**CreateCustomPasswordInstructions**](docs/CustomPasswordInstructionsAPI.md#createcustompasswordinstructions) | **Post** /custom-password-instructions | Create Custom Password Instructions
 *CustomPasswordInstructionsAPI* | [**DeleteCustomPasswordInstructions**](docs/CustomPasswordInstructionsAPI.md#deletecustompasswordinstructions) | **Delete** /custom-password-instructions/{pageId} | Delete Custom Password Instructions by page ID
 *CustomPasswordInstructionsAPI* | [**GetCustomPasswordInstructions**](docs/CustomPasswordInstructionsAPI.md#getcustompasswordinstructions) | **Get** /custom-password-instructions/{pageId} | Get Custom Password Instructions by Page ID
+*DimensionsAPI* | [**CreateDimension**](docs/DimensionsAPI.md#createdimension) | **Post** /roles/{roleId}/dimensions | Create a Dimension
+*DimensionsAPI* | [**DeleteBulkDimensions**](docs/DimensionsAPI.md#deletebulkdimensions) | **Post** /roles/{roleId}/dimensions/bulk-delete | Delete Dimension(s)
+*DimensionsAPI* | [**DeleteDimension**](docs/DimensionsAPI.md#deletedimension) | **Delete** /roles/{roleId}/dimensions/{dimensionId} | Delete a Dimension
+*DimensionsAPI* | [**GetDimension**](docs/DimensionsAPI.md#getdimension) | **Get** /roles/{roleId}/dimensions/{dimensionId} | Get a Dimension under Role.
+*DimensionsAPI* | [**GetDimensionEntitlements**](docs/DimensionsAPI.md#getdimensionentitlements) | **Get** /roles/{roleId}/dimensions/{dimensionId}/entitlements | List Dimension&#39;s Entitlements
+*DimensionsAPI* | [**ListDimensionAccessProfiles**](docs/DimensionsAPI.md#listdimensionaccessprofiles) | **Get** /roles/{roleId}/dimensions/{dimensionId}/access-profiles | List Dimension&#39;s Access Profiles
+*DimensionsAPI* | [**ListDimensions**](docs/DimensionsAPI.md#listdimensions) | **Get** /roles/{roleId}/dimensions | List Dimensions
+*DimensionsAPI* | [**PatchDimension**](docs/DimensionsAPI.md#patchdimension) | **Patch** /roles/{roleId}/dimensions/{dimensionId} | Patch a specified Dimension
 *EntitlementsAPI* | [**CreateAccessModelMetadataForEntitlement**](docs/EntitlementsAPI.md#createaccessmodelmetadataforentitlement) | **Post** /entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Add metadata to an entitlement.
 *EntitlementsAPI* | [**DeleteAccessModelMetadataFromEntitlement**](docs/EntitlementsAPI.md#deleteaccessmodelmetadatafromentitlement) | **Delete** /entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Remove metadata from an entitlement.
 *EntitlementsAPI* | [**GetEntitlement**](docs/EntitlementsAPI.md#getentitlement) | **Get** /entitlements/{id} | Get an entitlement
@@ -1004,6 +1012,16 @@ Class | Method | HTTP request | Description
  - [DeleteVendorConnectorMapping200Response](docs/DeleteVendorConnectorMapping200Response.md)
  - [DeployRequest](docs/DeployRequest.md)
  - [DeployResponse](docs/DeployResponse.md)
+ - [Dimension](docs/Dimension.md)
+ - [DimensionBulkDeleteRequest](docs/DimensionBulkDeleteRequest.md)
+ - [DimensionCriteriaKey](docs/DimensionCriteriaKey.md)
+ - [DimensionCriteriaKeyType](docs/DimensionCriteriaKeyType.md)
+ - [DimensionCriteriaLevel1](docs/DimensionCriteriaLevel1.md)
+ - [DimensionCriteriaLevel2](docs/DimensionCriteriaLevel2.md)
+ - [DimensionCriteriaLevel3](docs/DimensionCriteriaLevel3.md)
+ - [DimensionCriteriaOperation](docs/DimensionCriteriaOperation.md)
+ - [DimensionMembershipSelector](docs/DimensionMembershipSelector.md)
+ - [DimensionMembershipSelectorType](docs/DimensionMembershipSelectorType.md)
  - [DimensionRef](docs/DimensionRef.md)
  - [DisplayReference](docs/DisplayReference.md)
  - [DkimAttributes](docs/DkimAttributes.md)
