@@ -34,7 +34,7 @@ type SpConfigImportJobStatus struct {
 	// The time of the last update to the job.
 	Modified time.Time `json:"modified"`
 	// This message contains additional information about the overall status of the job.
-	Message string `json:"message"`
+	Message *string `json:"message,omitempty"`
 	// The time the job was completed.
 	Completed *time.Time `json:"completed,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -46,7 +46,7 @@ type _SpConfigImportJobStatus SpConfigImportJobStatus
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSpConfigImportJobStatus(jobId string, status string, type_ string, expiration time.Time, created time.Time, modified time.Time, message string) *SpConfigImportJobStatus {
+func NewSpConfigImportJobStatus(jobId string, status string, type_ string, expiration time.Time, created time.Time, modified time.Time) *SpConfigImportJobStatus {
 	this := SpConfigImportJobStatus{}
 	this.JobId = jobId
 	this.Status = status
@@ -54,7 +54,6 @@ func NewSpConfigImportJobStatus(jobId string, status string, type_ string, expir
 	this.Expiration = expiration
 	this.Created = created
 	this.Modified = modified
-	this.Message = message
 	return &this
 }
 
@@ -210,28 +209,36 @@ func (o *SpConfigImportJobStatus) SetModified(v time.Time) {
 	o.Modified = v
 }
 
-// GetMessage returns the Message field value
+// GetMessage returns the Message field value if set, zero value otherwise.
 func (o *SpConfigImportJobStatus) GetMessage() string {
-	if o == nil {
+	if o == nil || IsNil(o.Message) {
 		var ret string
 		return ret
 	}
-
-	return o.Message
+	return *o.Message
 }
 
-// GetMessageOk returns a tuple with the Message field value
+// GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SpConfigImportJobStatus) GetMessageOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Message) {
 		return nil, false
 	}
-	return &o.Message, true
+	return o.Message, true
 }
 
-// SetMessage sets field value
+// HasMessage returns a boolean if a field has been set.
+func (o *SpConfigImportJobStatus) HasMessage() bool {
+	if o != nil && !IsNil(o.Message) {
+		return true
+	}
+
+	return false
+}
+
+// SetMessage gets a reference to the given string and assigns it to the Message field.
 func (o *SpConfigImportJobStatus) SetMessage(v string) {
-	o.Message = v
+	o.Message = &v
 }
 
 // GetCompleted returns the Completed field value if set, zero value otherwise.
@@ -282,7 +289,9 @@ func (o SpConfigImportJobStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize["expiration"] = o.Expiration
 	toSerialize["created"] = o.Created
 	toSerialize["modified"] = o.Modified
-	toSerialize["message"] = o.Message
+	if !IsNil(o.Message) {
+		toSerialize["message"] = o.Message
+	}
 	if !IsNil(o.Completed) {
 		toSerialize["completed"] = o.Completed
 	}
@@ -305,7 +314,6 @@ func (o *SpConfigImportJobStatus) UnmarshalJSON(data []byte) (err error) {
 		"expiration",
 		"created",
 		"modified",
-		"message",
 	}
 
 	allProperties := make(map[string]interface{})

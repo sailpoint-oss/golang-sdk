@@ -74184,14 +74184,13 @@ components:
     SpConfigImportJobStatus:
       allOf:
       - $ref: '#/components/schemas/SpConfigJob'
-      - properties:
+      - nullable: true
+        properties:
           message:
             description: This message contains additional information about the overall
               status of the job.
             example: Download import results for details.
             type: string
-        required:
-        - message
         type: object
       - nullable: true
         properties:
