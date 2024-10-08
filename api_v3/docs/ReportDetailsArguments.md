@@ -4,22 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Application** | **string** | Id of the authoritative source to export related accounts e.g. identities | 
-**SourceName** | **string** | Name of the authoritative source for accounts export | 
-**CorrelatedOnly** | **bool** | Boolean FLAG to specify if only correlated identities should be used in report processing | [default to false]
-**AuthoritativeSource** | **string** | Source Id to be checked on errors of identity profiles aggregation | 
-**SelectedFormats** | Pointer to **[]string** | Output report file formats. This are formats for calling get endpoint as a query parameter &#39;fileFormat&#39;.  In case report won&#39;t have this argument there will be [&#39;CSV&#39;, &#39;PDF&#39;] as default. | [optional] 
+**Application** | **string** | Source ID. | 
+**SourceName** | **string** | Source name. | 
+**CorrelatedOnly** | **bool** | Flag to specify if only correlated identities are included in report. | [default to false]
+**AuthoritativeSource** | **string** | Source ID. | 
+**SelectedFormats** | Pointer to **[]string** | Output report file formats. These are formats for calling GET endpoint as query parameter &#39;fileFormat&#39;.  In case report won&#39;t have this argument there will be [&#39;CSV&#39;, &#39;PDF&#39;] as default. | [optional] 
 **Indices** | Pointer to [**[]Index**](Index.md) | The names of the Elasticsearch indices in which to search. If none are provided, then all indices will be searched. | [optional] 
-**Filters** | Pointer to [**map[string]Filter**](Filter.md) | The filters to be applied for each filtered field name. | [optional] 
-**Query** | [**Query**](Query.md) |  | 
-**IncludeNested** | Pointer to **bool** | Indicates whether nested objects from returned search results should be included. | [optional] [default to true]
+**Query** | **string** | The query using the Elasticsearch [Query String Query](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html#query-string) syntax from the Query DSL extended by SailPoint to support Nested queries. | 
+**Columns** | Pointer to **string** | Comma separated string consisting of technical attribute names of fields to include in report.  Use &#x60;access.spread&#x60;, &#x60;apps.spread&#x60;, &#x60;accounts.spread&#x60; to include respective identity access details.  Use &#x60;accessProfiles.spread&#x60; to unclude access profile details.  Use &#x60;entitlements.spread&#x60; to include entitlement details.  | [optional] 
 **Sort** | Pointer to **[]string** | The fields to be used to sort the search results. Use + or - to specify the sort direction. | [optional] 
 
 ## Methods
 
 ### NewReportDetailsArguments
 
-`func NewReportDetailsArguments(application string, sourceName string, correlatedOnly bool, authoritativeSource string, query Query, ) *ReportDetailsArguments`
+`func NewReportDetailsArguments(application string, sourceName string, correlatedOnly bool, authoritativeSource string, query string, ) *ReportDetailsArguments`
 
 NewReportDetailsArguments instantiates a new ReportDetailsArguments object
 This constructor will assign default values to properties that have it defined,
@@ -164,75 +163,50 @@ SetIndices sets Indices field to given value.
 
 HasIndices returns a boolean if a field has been set.
 
-### GetFilters
-
-`func (o *ReportDetailsArguments) GetFilters() map[string]Filter`
-
-GetFilters returns the Filters field if non-nil, zero value otherwise.
-
-### GetFiltersOk
-
-`func (o *ReportDetailsArguments) GetFiltersOk() (*map[string]Filter, bool)`
-
-GetFiltersOk returns a tuple with the Filters field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFilters
-
-`func (o *ReportDetailsArguments) SetFilters(v map[string]Filter)`
-
-SetFilters sets Filters field to given value.
-
-### HasFilters
-
-`func (o *ReportDetailsArguments) HasFilters() bool`
-
-HasFilters returns a boolean if a field has been set.
-
 ### GetQuery
 
-`func (o *ReportDetailsArguments) GetQuery() Query`
+`func (o *ReportDetailsArguments) GetQuery() string`
 
 GetQuery returns the Query field if non-nil, zero value otherwise.
 
 ### GetQueryOk
 
-`func (o *ReportDetailsArguments) GetQueryOk() (*Query, bool)`
+`func (o *ReportDetailsArguments) GetQueryOk() (*string, bool)`
 
 GetQueryOk returns a tuple with the Query field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetQuery
 
-`func (o *ReportDetailsArguments) SetQuery(v Query)`
+`func (o *ReportDetailsArguments) SetQuery(v string)`
 
 SetQuery sets Query field to given value.
 
 
-### GetIncludeNested
+### GetColumns
 
-`func (o *ReportDetailsArguments) GetIncludeNested() bool`
+`func (o *ReportDetailsArguments) GetColumns() string`
 
-GetIncludeNested returns the IncludeNested field if non-nil, zero value otherwise.
+GetColumns returns the Columns field if non-nil, zero value otherwise.
 
-### GetIncludeNestedOk
+### GetColumnsOk
 
-`func (o *ReportDetailsArguments) GetIncludeNestedOk() (*bool, bool)`
+`func (o *ReportDetailsArguments) GetColumnsOk() (*string, bool)`
 
-GetIncludeNestedOk returns a tuple with the IncludeNested field if it's non-nil, zero value otherwise
+GetColumnsOk returns a tuple with the Columns field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIncludeNested
+### SetColumns
 
-`func (o *ReportDetailsArguments) SetIncludeNested(v bool)`
+`func (o *ReportDetailsArguments) SetColumns(v string)`
 
-SetIncludeNested sets IncludeNested field to given value.
+SetColumns sets Columns field to given value.
 
-### HasIncludeNested
+### HasColumns
 
-`func (o *ReportDetailsArguments) HasIncludeNested() bool`
+`func (o *ReportDetailsArguments) HasColumns() bool`
 
-HasIncludeNested returns a boolean if a field has been set.
+HasColumns returns a boolean if a field has been set.
 
 ### GetSort
 

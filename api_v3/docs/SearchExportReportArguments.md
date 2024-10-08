@@ -5,16 +5,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Indices** | Pointer to [**[]Index**](Index.md) | The names of the Elasticsearch indices in which to search. If none are provided, then all indices will be searched. | [optional] 
-**Filters** | Pointer to [**map[string]Filter**](Filter.md) | The filters to be applied for each filtered field name. | [optional] 
-**Query** | [**Query**](Query.md) |  | 
-**IncludeNested** | Pointer to **bool** | Indicates whether nested objects from returned search results should be included. | [optional] [default to true]
+**Query** | **string** | The query using the Elasticsearch [Query String Query](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html#query-string) syntax from the Query DSL extended by SailPoint to support Nested queries. | 
+**Columns** | Pointer to **string** | Comma separated string consisting of technical attribute names of fields to include in report.  Use &#x60;access.spread&#x60;, &#x60;apps.spread&#x60;, &#x60;accounts.spread&#x60; to include respective identity access details.  Use &#x60;accessProfiles.spread&#x60; to unclude access profile details.  Use &#x60;entitlements.spread&#x60; to include entitlement details.  | [optional] 
 **Sort** | Pointer to **[]string** | The fields to be used to sort the search results. Use + or - to specify the sort direction. | [optional] 
 
 ## Methods
 
 ### NewSearchExportReportArguments
 
-`func NewSearchExportReportArguments(query Query, ) *SearchExportReportArguments`
+`func NewSearchExportReportArguments(query string, ) *SearchExportReportArguments`
 
 NewSearchExportReportArguments instantiates a new SearchExportReportArguments object
 This constructor will assign default values to properties that have it defined,
@@ -54,75 +53,50 @@ SetIndices sets Indices field to given value.
 
 HasIndices returns a boolean if a field has been set.
 
-### GetFilters
-
-`func (o *SearchExportReportArguments) GetFilters() map[string]Filter`
-
-GetFilters returns the Filters field if non-nil, zero value otherwise.
-
-### GetFiltersOk
-
-`func (o *SearchExportReportArguments) GetFiltersOk() (*map[string]Filter, bool)`
-
-GetFiltersOk returns a tuple with the Filters field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFilters
-
-`func (o *SearchExportReportArguments) SetFilters(v map[string]Filter)`
-
-SetFilters sets Filters field to given value.
-
-### HasFilters
-
-`func (o *SearchExportReportArguments) HasFilters() bool`
-
-HasFilters returns a boolean if a field has been set.
-
 ### GetQuery
 
-`func (o *SearchExportReportArguments) GetQuery() Query`
+`func (o *SearchExportReportArguments) GetQuery() string`
 
 GetQuery returns the Query field if non-nil, zero value otherwise.
 
 ### GetQueryOk
 
-`func (o *SearchExportReportArguments) GetQueryOk() (*Query, bool)`
+`func (o *SearchExportReportArguments) GetQueryOk() (*string, bool)`
 
 GetQueryOk returns a tuple with the Query field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetQuery
 
-`func (o *SearchExportReportArguments) SetQuery(v Query)`
+`func (o *SearchExportReportArguments) SetQuery(v string)`
 
 SetQuery sets Query field to given value.
 
 
-### GetIncludeNested
+### GetColumns
 
-`func (o *SearchExportReportArguments) GetIncludeNested() bool`
+`func (o *SearchExportReportArguments) GetColumns() string`
 
-GetIncludeNested returns the IncludeNested field if non-nil, zero value otherwise.
+GetColumns returns the Columns field if non-nil, zero value otherwise.
 
-### GetIncludeNestedOk
+### GetColumnsOk
 
-`func (o *SearchExportReportArguments) GetIncludeNestedOk() (*bool, bool)`
+`func (o *SearchExportReportArguments) GetColumnsOk() (*string, bool)`
 
-GetIncludeNestedOk returns a tuple with the IncludeNested field if it's non-nil, zero value otherwise
+GetColumnsOk returns a tuple with the Columns field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIncludeNested
+### SetColumns
 
-`func (o *SearchExportReportArguments) SetIncludeNested(v bool)`
+`func (o *SearchExportReportArguments) SetColumns(v string)`
 
-SetIncludeNested sets IncludeNested field to given value.
+SetColumns sets Columns field to given value.
 
-### HasIncludeNested
+### HasColumns
 
-`func (o *SearchExportReportArguments) HasIncludeNested() bool`
+`func (o *SearchExportReportArguments) HasColumns() bool`
 
-HasIncludeNested returns a boolean if a field has been set.
+HasColumns returns a boolean if a field has been set.
 
 ### GetSort
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AuthoritativeSource** | **string** | Source Id to be checked on errors of identity profiles aggregation | 
+**AuthoritativeSource** | **string** | Source ID. | 
 
 ## Methods
 

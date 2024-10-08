@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CorrelatedOnly** | Pointer to **bool** | Boolean FLAG to specify if only correlated identities should be used in report processing | [optional] [default to false]
+**CorrelatedOnly** | Pointer to **bool** | Flag to specify if only correlated identities are included in report. | [optional] [default to false]
 
 ## Methods
 

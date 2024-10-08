@@ -403,7 +403,7 @@ docs/ObjectMappingResponse.md
 docs/OktaVerificationRequest.md
 docs/Operation.md
 docs/OriginalRequest.md
-docs/OrphanUncorrelatedReportArguments.md
+docs/OrphanIdentitiesReportArguments.md
 docs/OwnerDto.md
 docs/OwnerReference.md
 docs/OwnerReferenceSegments.md
@@ -619,6 +619,7 @@ docs/TransformRead.md
 docs/TransformsAPI.md
 docs/TypeAheadQuery.md
 docs/TypedReference.md
+docs/UncorrelatedAccountsReportArguments.md
 docs/UpdateDetail.md
 docs/UsageType.md
 docs/V3ConnectorDto.md
@@ -990,7 +991,7 @@ model_object_mapping_response.go
 model_okta_verification_request.go
 model_operation.go
 model_original_request.go
-model_orphan_uncorrelated_report_arguments.go
+model_orphan_identities_report_arguments.go
 model_owner_dto.go
 model_owner_reference.go
 model_owner_reference_segments.go
@@ -1183,6 +1184,7 @@ model_transform_definition.go
 model_transform_read.go
 model_type_ahead_query.go
 model_typed_reference.go
+model_uncorrelated_accounts_report_arguments.go
 model_update_detail.go
 model_usage_type.go
 model_v3_connector_dto.go

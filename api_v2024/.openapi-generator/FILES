@@ -719,7 +719,7 @@ docs/Operation.md
 docs/OrgConfig.md
 docs/OrgConfigAPI.md
 docs/OriginalRequest.md
-docs/OrphanUncorrelatedReportArguments.md
+docs/OrphanIdentitiesReportArguments.md
 docs/Outlier.md
 docs/OutlierContributingFeature.md
 docs/OutlierContributingFeatureValue.md
@@ -1109,6 +1109,7 @@ docs/TriggersAPI.md
 docs/TypeAheadQuery.md
 docs/TypedReference.md
 docs/UIMetadataAPI.md
+docs/UncorrelatedAccountsReportArguments.md
 docs/UpdateAccessProfilesInBulk412Response.md
 docs/UpdateDetail.md
 docs/UsageType.md
@@ -1759,7 +1760,7 @@ model_object_mapping_response.go
 model_operation.go
 model_org_config.go
 model_original_request.go
-model_orphan_uncorrelated_report_arguments.go
+model_orphan_identities_report_arguments.go
 model_outlier.go
 model_outlier_contributing_feature.go
 model_outlier_contributing_feature_value.go
@@ -2118,6 +2119,7 @@ model_trigger_example_output.go
 model_trigger_type.go
 model_type_ahead_query.go
 model_typed_reference.go
+model_uncorrelated_accounts_report_arguments.go
 model_update_access_profiles_in_bulk_412_response.go
 model_update_detail.go
 model_usage_type.go

@@ -560,7 +560,7 @@ func (r ApiStartReportRequest) Execute() (*TaskResultDetails, *http.Response, er
 /*
 StartReport Run Report
 
-Runs a report according to input report details. If non-concurrent task is already running then it returns, otherwise new task creates and returns.
+Use this API to run a report according to report input details. If non-concurrent task is already running then it returns, otherwise new task creates and returns.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStartReportRequest

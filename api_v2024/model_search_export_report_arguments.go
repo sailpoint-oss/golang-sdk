@@ -18,15 +18,14 @@ import (
 // checks if the SearchExportReportArguments type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SearchExportReportArguments{}
 
-// SearchExportReportArguments Arguments for Search Export report (SEARCH_EXPORT)
+// SearchExportReportArguments Arguments for Search Export report (SEARCH_EXPORT)  The report file generated will be a zip file containing csv files of the search results. 
 type SearchExportReportArguments struct {
 	// The names of the Elasticsearch indices in which to search. If none are provided, then all indices will be searched.
 	Indices []Index `json:"indices,omitempty"`
-	// The filters to be applied for each filtered field name.
-	Filters *map[string]Filter `json:"filters,omitempty"`
-	Query Query `json:"query"`
-	// Indicates whether nested objects from returned search results should be included.
-	IncludeNested *bool `json:"includeNested,omitempty"`
+	// The query using the Elasticsearch [Query String Query](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html#query-string) syntax from the Query DSL extended by SailPoint to support Nested queries.
+	Query string `json:"query"`
+	// Comma separated string consisting of technical attribute names of fields to include in report.  Use `access.spread`, `apps.spread`, `accounts.spread` to include respective identity access details.  Use `accessProfiles.spread` to unclude access profile details.  Use `entitlements.spread` to include entitlement details. 
+	Columns *string `json:"columns,omitempty"`
 	// The fields to be used to sort the search results. Use + or - to specify the sort direction.
 	Sort []string `json:"sort,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -38,11 +37,9 @@ type _SearchExportReportArguments SearchExportReportArguments
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSearchExportReportArguments(query Query) *SearchExportReportArguments {
+func NewSearchExportReportArguments(query string) *SearchExportReportArguments {
 	this := SearchExportReportArguments{}
 	this.Query = query
-	var includeNested bool = true
-	this.IncludeNested = &includeNested
 	return &this
 }
 
@@ -51,8 +48,6 @@ func NewSearchExportReportArguments(query Query) *SearchExportReportArguments {
 // but it doesn't guarantee that properties required by API are set
 func NewSearchExportReportArgumentsWithDefaults() *SearchExportReportArguments {
 	this := SearchExportReportArguments{}
-	var includeNested bool = true
-	this.IncludeNested = &includeNested
 	return &this
 }
 
@@ -88,42 +83,10 @@ func (o *SearchExportReportArguments) SetIndices(v []Index) {
 	o.Indices = v
 }
 
-// GetFilters returns the Filters field value if set, zero value otherwise.
-func (o *SearchExportReportArguments) GetFilters() map[string]Filter {
-	if o == nil || IsNil(o.Filters) {
-		var ret map[string]Filter
-		return ret
-	}
-	return *o.Filters
-}
-
-// GetFiltersOk returns a tuple with the Filters field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SearchExportReportArguments) GetFiltersOk() (*map[string]Filter, bool) {
-	if o == nil || IsNil(o.Filters) {
-		return nil, false
-	}
-	return o.Filters, true
-}
-
-// HasFilters returns a boolean if a field has been set.
-func (o *SearchExportReportArguments) HasFilters() bool {
-	if o != nil && !IsNil(o.Filters) {
-		return true
-	}
-
-	return false
-}
-
-// SetFilters gets a reference to the given map[string]Filter and assigns it to the Filters field.
-func (o *SearchExportReportArguments) SetFilters(v map[string]Filter) {
-	o.Filters = &v
-}
-
 // GetQuery returns the Query field value
-func (o *SearchExportReportArguments) GetQuery() Query {
+func (o *SearchExportReportArguments) GetQuery() string {
 	if o == nil {
-		var ret Query
+		var ret string
 		return ret
 	}
 
@@ -132,7 +95,7 @@ func (o *SearchExportReportArguments) GetQuery() Query {
 
 // GetQueryOk returns a tuple with the Query field value
 // and a boolean to check if the value has been set.
-func (o *SearchExportReportArguments) GetQueryOk() (*Query, bool) {
+func (o *SearchExportReportArguments) GetQueryOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -140,40 +103,40 @@ func (o *SearchExportReportArguments) GetQueryOk() (*Query, bool) {
 }
 
 // SetQuery sets field value
-func (o *SearchExportReportArguments) SetQuery(v Query) {
+func (o *SearchExportReportArguments) SetQuery(v string) {
 	o.Query = v
 }
 
-// GetIncludeNested returns the IncludeNested field value if set, zero value otherwise.
-func (o *SearchExportReportArguments) GetIncludeNested() bool {
-	if o == nil || IsNil(o.IncludeNested) {
-		var ret bool
+// GetColumns returns the Columns field value if set, zero value otherwise.
+func (o *SearchExportReportArguments) GetColumns() string {
+	if o == nil || IsNil(o.Columns) {
+		var ret string
 		return ret
 	}
-	return *o.IncludeNested
+	return *o.Columns
 }
 
-// GetIncludeNestedOk returns a tuple with the IncludeNested field value if set, nil otherwise
+// GetColumnsOk returns a tuple with the Columns field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SearchExportReportArguments) GetIncludeNestedOk() (*bool, bool) {
-	if o == nil || IsNil(o.IncludeNested) {
+func (o *SearchExportReportArguments) GetColumnsOk() (*string, bool) {
+	if o == nil || IsNil(o.Columns) {
 		return nil, false
 	}
-	return o.IncludeNested, true
+	return o.Columns, true
 }
 
-// HasIncludeNested returns a boolean if a field has been set.
-func (o *SearchExportReportArguments) HasIncludeNested() bool {
-	if o != nil && !IsNil(o.IncludeNested) {
+// HasColumns returns a boolean if a field has been set.
+func (o *SearchExportReportArguments) HasColumns() bool {
+	if o != nil && !IsNil(o.Columns) {
 		return true
 	}
 
 	return false
 }
 
-// SetIncludeNested gets a reference to the given bool and assigns it to the IncludeNested field.
-func (o *SearchExportReportArguments) SetIncludeNested(v bool) {
-	o.IncludeNested = &v
+// SetColumns gets a reference to the given string and assigns it to the Columns field.
+func (o *SearchExportReportArguments) SetColumns(v string) {
+	o.Columns = &v
 }
 
 // GetSort returns the Sort field value if set, zero value otherwise.
@@ -221,12 +184,9 @@ func (o SearchExportReportArguments) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Indices) {
 		toSerialize["indices"] = o.Indices
 	}
-	if !IsNil(o.Filters) {
-		toSerialize["filters"] = o.Filters
-	}
 	toSerialize["query"] = o.Query
-	if !IsNil(o.IncludeNested) {
-		toSerialize["includeNested"] = o.IncludeNested
+	if !IsNil(o.Columns) {
+		toSerialize["columns"] = o.Columns
 	}
 	if !IsNil(o.Sort) {
 		toSerialize["sort"] = o.Sort
@@ -275,9 +235,8 @@ func (o *SearchExportReportArguments) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "indices")
-		delete(additionalProperties, "filters")
 		delete(additionalProperties, "query")
-		delete(additionalProperties, "includeNested")
+		delete(additionalProperties, "columns")
 		delete(additionalProperties, "sort")
 		o.AdditionalProperties = additionalProperties
 	}

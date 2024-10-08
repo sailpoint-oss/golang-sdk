@@ -18,11 +18,11 @@ import (
 // checks if the AccountsExportReportArguments type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AccountsExportReportArguments{}
 
-// AccountsExportReportArguments Arguments for Account Export (ACCOUNTS)
+// AccountsExportReportArguments Arguments for Account Export report (ACCOUNTS)
 type AccountsExportReportArguments struct {
-	// Id of the authoritative source to export related accounts e.g. identities
+	// Source ID.
 	Application string `json:"application"`
-	// Name of the authoritative source for accounts export
+	// Source name.
 	SourceName string `json:"sourceName"`
 	AdditionalProperties map[string]interface{}
 }

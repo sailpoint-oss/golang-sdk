@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Application** | **string** | Id of the authoritative source to export related accounts e.g. identities | 
-**SourceName** | **string** | Name of the authoritative source for accounts export | 
+**Application** | **string** | Source ID. | 
+**SourceName** | **string** | Source name. | 
 
 ## Methods
 

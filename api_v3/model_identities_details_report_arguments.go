@@ -18,9 +18,9 @@ import (
 // checks if the IdentitiesDetailsReportArguments type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &IdentitiesDetailsReportArguments{}
 
-// IdentitiesDetailsReportArguments Arguments for Identities details report (IDENTITIES_DETAILS)
+// IdentitiesDetailsReportArguments Arguments for Identities Details report (IDENTITIES_DETAILS)
 type IdentitiesDetailsReportArguments struct {
-	// Boolean FLAG to specify if only correlated identities should be used in report processing
+	// Flag to specify if only correlated identities are included in report.
 	CorrelatedOnly bool `json:"correlatedOnly"`
 	AdditionalProperties map[string]interface{}
 }

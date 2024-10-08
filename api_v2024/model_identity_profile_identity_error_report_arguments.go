@@ -20,7 +20,7 @@ var _ MappedNullable = &IdentityProfileIdentityErrorReportArguments{}
 
 // IdentityProfileIdentityErrorReportArguments Arguments for Identity Profile Identity Error report (IDENTITY_PROFILE_IDENTITY_ERROR)
 type IdentityProfileIdentityErrorReportArguments struct {
-	// Source Id to be checked on errors of identity profiles aggregation
+	// Source ID.
 	AuthoritativeSource string `json:"authoritativeSource"`
 	AdditionalProperties map[string]interface{}
 }

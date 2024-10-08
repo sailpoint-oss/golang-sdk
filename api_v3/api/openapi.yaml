@@ -30423,16 +30423,28 @@ paths:
       - Reports Data Extraction
   /reports/run:
     post:
-      description: "Runs a report according to input report details. If non-concurrent\
-        \ task is already running then it returns, otherwise new task creates and\
-        \ returns."
+      description: "Use this API to run a report according to report input details.\
+        \ If non-concurrent task is already running then it returns, otherwise new\
+        \ task creates and returns."
       operationId: startReport
       requestBody:
         content:
           application/json:
             examples:
+              Account Export Report:
+                $ref: '#/components/examples/account-export-report-details'
               Identities Details Report:
                 $ref: '#/components/examples/identities-details-report-details'
+              Identities Report:
+                $ref: '#/components/examples/identities-report-details'
+              Identity Profile Identity Error Report:
+                $ref: '#/components/examples/identity-profile-identity-error-report-details'
+              Orphan Identities Report:
+                $ref: '#/components/examples/orphan-identities-report-details'
+              Search Export Report:
+                $ref: '#/components/examples/search-export-report-details'
+              Uncorrelated Accounts Report:
+                $ref: '#/components/examples/uncorrelated-accounts-report-details'
             schema:
               $ref: '#/components/schemas/ReportDetails'
         required: true
@@ -30506,10 +30518,20 @@ paths:
             error.
       security:
       - userAuth:
-        - sp:report:create
+        - sp:report:manage
+      - applicationAuth:
+        - sp:report:manage
       summary: Run Report
       tags:
       - Reports Data Extraction
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - CERT_ADMIN
+      - REPORT_ADMIN
+      - ROLE_ADMIN
+      - ROLE_SUBADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /reports/{id}/cancel:
     post:
       description: Cancels a running report.
@@ -43318,12 +43340,58 @@ components:
         rows: 193
         availableFormats:
         - CSV
+    account-export-report-details:
+      summary: Account Export report
+      value:
+        reportType: ACCOUNTS
+        arguments:
+          application: 2c9180897eSourceIde781782f705b9
+          sourceName: Active Directory
     identities-details-report-details:
       summary: Identities Details report
       value:
         reportType: IDENTITIES_DETAILS
         arguments:
           correlatedOnly: true
+    identities-report-details:
+      summary: Identities report
+      value:
+        reportType: IDENTITIES
+        arguments:
+          correlatedOnly: true
+    identity-profile-identity-error-report-details:
+      summary: Identity Profile Identity Error report
+      value:
+        reportType: IDENTITY_PROFILE_IDENTITY_ERROR
+        arguments:
+          authoritativeSource: 2c9180847de347aa017de8ef09167792
+    orphan-identities-report-details:
+      summary: Orphan Identities report
+      value:
+        reportType: ORPHAN_IDENTITIES
+        arguments:
+          selectedFormats:
+          - CSV
+          - PDF
+    search-export-report-details:
+      summary: Search Export report
+      value:
+        reportType: SEARCH_EXPORT
+        arguments:
+          indices:
+          - identities
+          query: attributes.city:London
+          columns: "displayName,firstName,lastName,email,attributes.city,created,attributes.cloudLifecycleState,access.spread"
+          sort:
+          - +displayName
+    uncorrelated-accounts-report-details:
+      summary: Uncorrelated Accounts report
+      value:
+        reportType: UNCORRELATED_ACCOUNTS
+        arguments:
+          selectedFormats:
+          - CSV
+          - PDF
     identities-details-report-task-result:
       summary: Identities Details Report task result.
       value:
@@ -55152,10 +55220,10 @@ components:
     ReportDetails:
       description: Details about report to be processed.
       example:
-        reportType: IDENTITIES_DETAILS
+        reportType: ACCOUNTS
         arguments:
           application: 2c9180897e7742b2017e781782f705b9
-          sourceName: DataScienceWorkday
+          sourceName: Active Directory
       properties:
         reportType:
           description: Use this property to define what report should be processed
@@ -55168,7 +55236,7 @@ components:
           - ORPHAN_IDENTITIES
           - SEARCH_EXPORT
           - UNCORRELATED_ACCOUNTS
-          example: IDENTITIES_DETAILS
+          example: ACCOUNTS
           type: string
         arguments:
           $ref: '#/components/schemas/ReportDetails_arguments'
@@ -60865,16 +60933,15 @@ components:
           type: string
       type: object
     accounts-export-report-arguments:
-      description: Arguments for Account Export (ACCOUNTS)
+      description: Arguments for Account Export report (ACCOUNTS)
       properties:
         application:
-          description: Id of the authoritative source to export related accounts e.g.
-            identities
+          description: Source ID.
           example: 2c9180897eSourceIde781782f705b9
           type: string
         sourceName:
-          description: Name of the authoritative source for accounts export
-          example: DataScienceSourceName
+          description: Source name.
+          example: Active Directory
           type: string
       required:
       - application
@@ -60882,12 +60949,12 @@ components:
       title: ACCOUNTS
       type: object
     identities-details-report-arguments:
-      description: Arguments for Identities details report (IDENTITIES_DETAILS)
+      description: Arguments for Identities Details report (IDENTITIES_DETAILS)
       properties:
         correlatedOnly:
           default: false
-          description: Boolean FLAG to specify if only correlated identities should
-            be used in report processing
+          description: Flag to specify if only correlated identities are included
+            in report.
           example: true
           type: boolean
       required:
@@ -60899,8 +60966,8 @@ components:
       properties:
         correlatedOnly:
           default: false
-          description: Boolean FLAG to specify if only correlated identities should
-            be used in report processing
+          description: Flag to specify if only correlated identities are included
+            in report.
           example: true
           type: boolean
       title: IDENTITIES
@@ -60909,21 +60976,20 @@ components:
       description: Arguments for Identity Profile Identity Error report (IDENTITY_PROFILE_IDENTITY_ERROR)
       properties:
         authoritativeSource:
-          description: Source Id to be checked on errors of identity profiles aggregation
+          description: Source ID.
           example: 1234sourceId5678902
           type: string
       required:
       - authoritativeSource
       title: IDENTITY_PROFILE_IDENTITY_ERROR
       type: object
-    orphan-uncorrelated-report-arguments:
-      description: Arguments for Orphan Identities report (ORPHAN_IDENTITIES) and
-        Uncorrelated Accounts report (UNCORRELATED_ACCOUNTS)
+    orphan-identities-report-arguments:
+      description: Arguments for Orphan Identities report (ORPHAN_IDENTITIES)
       properties:
         selectedFormats:
-          description: "Output report file formats. This are formats for calling get\
-            \ endpoint as a query parameter 'fileFormat'.  In case report won't have\
-            \ this argument there will be ['CSV', 'PDF'] as default."
+          description: "Output report file formats. These are formats for calling\
+            \ GET endpoint as query parameter 'fileFormat'.  In case report won't\
+            \ have this argument there will be ['CSV', 'PDF'] as default."
           example:
           - CSV
           items:
@@ -60932,10 +60998,13 @@ components:
             - PDF
             type: string
           type: array
-      title: ORPHAN_IDENTITIES & UNCORRELATED_ACCOUNTS
+      title: ORPHAN_IDENTITIES
       type: object
     search-export-report-arguments:
-      description: Arguments for Search Export report (SEARCH_EXPORT)
+      description: |
+        Arguments for Search Export report (SEARCH_EXPORT)
+
+        The report file generated will be a zip file containing csv files of the search results.
       properties:
         indices:
           description: "The names of the Elasticsearch indices in which to search.\
@@ -60948,29 +61017,22 @@ components:
           items:
             $ref: '#/components/schemas/Index'
           type: array
-        filters:
-          additionalProperties:
-            $ref: '#/components/schemas/Filter'
-          description: The filters to be applied for each filtered field name.
-          example:
-            source.id:
-              type: TERMS
-              terms:
-              - 2c9180897termsId780bd2920576
-            source.name.exact:
-              type: TERMS
-              terms:
-              - IdentityNow
-              exclude: true
-          type: object
         query:
-          $ref: '#/components/schemas/Query'
-        includeNested:
-          default: true
-          description: Indicates whether nested objects from returned search results
-            should be included.
-          example: true
-          type: boolean
+          description: "The query using the Elasticsearch [Query String Query](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html#query-string)\
+            \ syntax from the Query DSL extended by SailPoint to support Nested queries."
+          example: name:a*
+          type: string
+        columns:
+          description: |
+            Comma separated string consisting of technical attribute names of fields to include in report.
+
+            Use `access.spread`, `apps.spread`, `accounts.spread` to include respective identity access details.
+
+            Use `accessProfiles.spread` to unclude access profile details.
+
+            Use `entitlements.spread` to include entitlement details.
+          example: "displayName,firstName,lastName,email,created,attributes.cloudLifecycleState"
+          type: string
         sort:
           description: The fields to be used to sort the search results. Use + or
             - to specify the sort direction.
@@ -60983,6 +61045,23 @@ components:
       required:
       - query
       title: SEARCH_EXPORT
+      type: object
+    uncorrelated-accounts-report-arguments:
+      description: Arguments for Uncorrelated Accounts report (UNCORRELATED_ACCOUNTS)
+      properties:
+        selectedFormats:
+          description: "Output report file formats. These are formats for calling\
+            \ GET endpoint as query parameter 'fileFormat'.  In case report won't\
+            \ have this argument there will be ['CSV', 'PDF'] as default."
+          example:
+          - CSV
+          items:
+            enum:
+            - CSV
+            - PDF
+            type: string
+          type: array
+      title: UNCORRELATED_ACCOUNTS
       type: object
     ViolationOwnerAssignmentConfig:
       example:
@@ -65114,14 +65193,15 @@ components:
         report processing.
       example:
         application: 2c9180897e7742b2017e781782f705b9
-        sourceName: DataScienceWorkday
+        sourceName: Active Directory
       oneOf:
       - $ref: '#/components/schemas/accounts-export-report-arguments'
       - $ref: '#/components/schemas/identities-details-report-arguments'
       - $ref: '#/components/schemas/identities-report-arguments'
       - $ref: '#/components/schemas/identity-profile-identity-error-report-arguments'
-      - $ref: '#/components/schemas/orphan-uncorrelated-report-arguments'
+      - $ref: '#/components/schemas/orphan-identities-report-arguments'
       - $ref: '#/components/schemas/search-export-report-arguments'
+      - $ref: '#/components/schemas/uncorrelated-accounts-report-arguments'
     TaskResultDetails_messages_inner:
       properties:
         type:

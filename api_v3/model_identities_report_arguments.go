@@ -19,7 +19,7 @@ var _ MappedNullable = &IdentitiesReportArguments{}
 
 // IdentitiesReportArguments Arguments for Identities report (IDENTITIES)
 type IdentitiesReportArguments struct {
-	// Boolean FLAG to specify if only correlated identities should be used in report processing
+	// Flag to specify if only correlated identities are included in report.
 	CorrelatedOnly *bool `json:"correlatedOnly,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
