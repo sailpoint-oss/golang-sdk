@@ -205,9 +205,8 @@ tags:
 
     Refer to [Managing User Accounts](https://documentation.sailpoint.com/saas/help/common/users/user_access.html#managing-user-accounts) for more information about accounts.
   name: Accounts
-- description: "Use this API to implement source application functionality. With this\
-    \ functionality in place, you can create, customize, and manage applications within\
-    \ sources. \n"
+- description: |
+    Use this API to implement source application functionality. With this functionality in place, you can create, customize, and manage applications within sources.
   name: Apps
 - description: |
     Use this API to discover applications within your Okta connector and receive connector recommendations by manually uploading application names.
@@ -216,7 +215,7 @@ tags:
     \ in place, you can get generic approvals and modify them. \n\nThe main advantages\
     \ this API has vs [Access Request Approvals](https://developer.sailpoint.com/docs/api/beta/access-request-approvals)\
     \ are that you can use it to get generic approvals individually or in batches\
-    \ and make changes to those approvals. \n"
+    \ and make changes to those approvals.\n"
   name: Approvals
 - description: |
     Auth Profile - Represents authentication configuration for an Identity Profile. This object gets created when an Identity Profile is created.
@@ -449,6 +448,11 @@ tags:
 
     Refer to [Creating Identity Profiles](https://documentation.sailpoint.com/saas/help/setup/identity_profiles.html) for more information about identity profiles.
   name: Identity Profiles
+- description: |
+    Use this API to manage Launchers.
+
+    Launchers are objects that allow users to launch various tasks from ISC such as Privileged Workflows.
+  name: Launchers
 - description: |
     Use this API to implement and customize lifecycle state functionality.
     With this functionality in place, administrators can view and configure custom lifecycle states for use across their organizations, which is key to controlling which users have access, when they have access, and the access they have.
@@ -765,7 +769,7 @@ tags:
     \ to [Using Search](https://documentation.sailpoint.com/saas/help/search/index.html)\
     \ for more information about ISC's search and its different possibilities. \n\n\
     With Search Attribute Configuration, administrators can create, manage, and run\
-    \ searches based on the attributes they want to search. \n"
+    \ searches based on the attributes they want to search.\n"
   name: Search Attribute Configuration
 - description: "Use this API to implement and customize access request segment functionality.\
     \ \nWith this functionality in place, administrators can create and manage access\
@@ -1039,7 +1043,7 @@ tags:
     \ \nConnector mappings allow vendors to match their data on both sides of the\
     \ connection. \nThe vendors can then track and manage access across their sources\
     \ from ISC. \nThis API allows you to create and manage these vendor connector\
-    \ mappings. \n"
+    \ mappings.\n"
   name: Vendor Connector Mappings
 - description: |
     Use this API to implement work item functionality.
@@ -60575,6 +60579,638 @@ paths:
       summary: Patch Suggested Entitlement Description
       tags:
       - Suggested Entitlement Description
+  /launchers:
+    get:
+      description: Return a list of Launchers for the authenticated tenant
+      operationId: getLaunchers
+      parameters:
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **description**: *sw*
+
+          **disabled**: *eq*
+
+          **name**: *sw*
+        example: disabled eq "true"
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+      - description: Pagination marker
+        example: eyJuZXh0IjoxMjN9Cg==
+        in: query
+        name: next
+        required: false
+        schema:
+          type: string
+      - description: Number of Launchers to return
+        example: 42
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 10
+          format: int32
+          maximum: 100
+          minimum: 1
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getLaunchers_200_response'
+          description: List of Launchers
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:launcher-admin:read
+        - sp:launcher-user:read
+      summary: List all Launchers for tenant
+      tags:
+      - Launchers
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    post:
+      description: Create a Launcher with given information
+      operationId: createLauncher
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LauncherRequest'
+        description: Payload to create a Launcher
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Launcher'
+          description: Launcher created successfully
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:launcher-admin:write
+      summary: Create launcher
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /launchers/{launcherID}:
+    delete:
+      description: Delete the given Launcher ID
+      operationId: deleteLauncher
+      parameters:
+      - description: ID of the Launcher to be deleted
+        example: e3012408-8b61-4564-ad41-c5ec131c325b
+        in: path
+        name: launcherID
+        required: true
+        schema:
+          format: uuid
+          type: string
+      responses:
+        "204":
+          description: Launcher deleted successfully
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:launcher-admin:delete
+      summary: Delete Launcher
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    get:
+      description: Get details for the given Launcher ID
+      operationId: getLauncher
+      parameters:
+      - description: ID of the Launcher to be retrieved
+        example: e3012408-8b61-4564-ad41-c5ec131c325b
+        in: path
+        name: launcherID
+        required: true
+        schema:
+          format: uuid
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Launcher'
+          description: Launcher retrieved successfully
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:launcher-admin:read
+        - sp:launcher-user:read
+      summary: Get Launcher by ID
+      tags:
+      - Launchers
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+    put:
+      description: Replace the given Launcher ID with given payload
+      operationId: putLauncher
+      parameters:
+      - description: ID of the Launcher to be replaced
+        example: e3012408-8b61-4564-ad41-c5ec131c325b
+        in: path
+        name: launcherID
+        required: true
+        schema:
+          format: uuid
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LauncherRequest'
+        description: Payload to replace Launcher
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Launcher'
+          description: Launcher replaced successfully
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:launcher-admin:write
+      summary: Replace Launcher
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /beta/launchers/{launcherID}/launch:
+    post:
+      description: Launch the given Launcher ID
+      operationId: startLauncher
+      parameters:
+      - description: ID of the Launcher to be launched
+        example: e3012408-8b61-4564-ad41-c5ec131c325b
+        in: path
+        name: launcherID
+        required: true
+        schema:
+          format: uuid
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/startLauncher_200_response'
+          description: Launcher launched successfully
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - sp:launcher-user:launch
+      summary: Launch a Launcher
+      tags:
+      - Launchers
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
 components:
   examples:
     SlimCampaigns:
@@ -79870,6 +80506,121 @@ components:
           example: approved
           type: object
       type: object
+    Launcher:
+      example:
+        owner:
+          id: 123180847373330f0173c7e1756b6890
+          type: IDENTITY
+        reference:
+          id: 2fd6ff94-2081-4d29-acbc-83a0a2f744a5
+          type: WORKFLOW
+        created: 2024-04-16T20:07:30.601016489Z
+        name: Group Create
+        modified: 2024-04-17T18:02:07.320143194Z
+        description: Create a new Active Directory Group
+        disabled: false
+        id: 1b630bed-0941-4792-a712-57a5868ca34d
+        type: INTERACTIVE_PROCESS
+        config: "{\"workflowId\" : \"6b42d9be-61b6-46af-827e-ea29ba8aa3d9\"}"
+      properties:
+        id:
+          description: ID of the Launcher
+          example: 1b630bed-0941-4792-a712-57a5868ca34d
+          format: uuid
+          type: string
+        created:
+          description: Date the Launcher was created
+          example: 2024-04-16T20:07:30.601016489Z
+          format: date-time
+          type: string
+        modified:
+          description: Date the Launcher was last modified
+          example: 2024-04-17T18:02:07.320143194Z
+          format: date-time
+          type: string
+        owner:
+          $ref: '#/components/schemas/Launcher_owner'
+        name:
+          description: "Name of the Launcher, limited to 255 characters"
+          example: Group Create
+          type: string
+        description:
+          description: "Description of the Launcher, limited to 2000 characters"
+          example: Create a new Active Directory Group
+          type: string
+        type:
+          description: Launcher type
+          enum:
+          - INTERACTIVE_PROCESS
+          example: INTERACTIVE_PROCESS
+          type: string
+        disabled:
+          description: State of the Launcher
+          example: false
+          type: boolean
+        reference:
+          $ref: '#/components/schemas/Launcher_reference'
+        config:
+          description: |
+            JSON configuration associated with this Launcher, restricted to a max size of 4KB
+          example: "{\"workflowId\" : \"6b42d9be-61b6-46af-827e-ea29ba8aa3d9\"}"
+          pattern: "^\\{\\}$"
+          type: string
+      required:
+      - config
+      - created
+      - description
+      - disabled
+      - id
+      - modified
+      - name
+      - owner
+      - type
+      type: object
+    LauncherRequest:
+      example:
+        reference:
+          id: 2fd6ff94-2081-4d29-acbc-83a0a2f744a5
+          type: WORKFLOW
+        name: Group Create
+        description: Create a new Active Directory Group
+        disabled: false
+        type: INTERACTIVE_PROCESS
+        config: "{\"workflowId\" : \"6b42d9be-61b6-46af-827e-ea29ba8aa3d9\"}"
+      properties:
+        name:
+          description: "Name of the Launcher, limited to 255 characters"
+          example: Group Create
+          type: string
+        description:
+          description: "Description of the Launcher, limited to 2000 characters"
+          example: Create a new Active Directory Group
+          type: string
+        type:
+          description: Launcher type
+          enum:
+          - INTERACTIVE_PROCESS
+          example: INTERACTIVE_PROCESS
+          type: string
+        disabled:
+          description: State of the Launcher
+          example: false
+          type: boolean
+        reference:
+          $ref: '#/components/schemas/LauncherRequest_reference'
+        config:
+          description: |
+            JSON configuration associated with this Launcher, restricted to a max size of 4KB
+          example: "{\"workflowId\" : \"6b42d9be-61b6-46af-827e-ea29ba8aa3d9\"}"
+          pattern: "^\\{\\}$"
+          type: string
+      required:
+      - config
+      - description
+      - disabled
+      - name
+      - type
+      type: object
     ApprovalItemDetails:
       example:
         application: Active Directory
@@ -89254,6 +90005,58 @@ components:
           example: ""
           type: string
       type: object
+    getLaunchers_200_response:
+      example:
+        next: next
+        items:
+        - owner:
+            id: 123180847373330f0173c7e1756b6890
+            type: IDENTITY
+          reference:
+            id: 2fd6ff94-2081-4d29-acbc-83a0a2f744a5
+            type: WORKFLOW
+          created: 2024-04-16T20:07:30.601016489Z
+          name: Group Create
+          modified: 2024-04-17T18:02:07.320143194Z
+          description: Create a new Active Directory Group
+          disabled: false
+          id: 1b630bed-0941-4792-a712-57a5868ca34d
+          type: INTERACTIVE_PROCESS
+          config: "{\"workflowId\" : \"6b42d9be-61b6-46af-827e-ea29ba8aa3d9\"}"
+        - owner:
+            id: 123180847373330f0173c7e1756b6890
+            type: IDENTITY
+          reference:
+            id: 2fd6ff94-2081-4d29-acbc-83a0a2f744a5
+            type: WORKFLOW
+          created: 2024-04-16T20:07:30.601016489Z
+          name: Group Create
+          modified: 2024-04-17T18:02:07.320143194Z
+          description: Create a new Active Directory Group
+          disabled: false
+          id: 1b630bed-0941-4792-a712-57a5868ca34d
+          type: INTERACTIVE_PROCESS
+          config: "{\"workflowId\" : \"6b42d9be-61b6-46af-827e-ea29ba8aa3d9\"}"
+      properties:
+        next:
+          description: Pagination marker
+          type: string
+        items:
+          items:
+            $ref: '#/components/schemas/Launcher'
+          type: array
+      type: object
+    startLauncher_200_response:
+      example:
+        interactiveProcessId: 5da68cfe-2d60-4b09-858f-0d03acd2f47a
+      properties:
+        interactiveProcessId:
+          description: ID of the Interactive Process that was launched
+          example: 5da68cfe-2d60-4b09-858f-0d03acd2f47a
+          type: string
+      required:
+      - interactiveProcessId
+      type: object
     fullcampaign_allOf_filter:
       description: Determines which items will be included in this campaign. The default
         campaign filter is used if this field is left blank.
@@ -91941,6 +92744,59 @@ components:
             \ i.e., if the mapping has been deleted."
           example: false
           type: boolean
+      type: object
+    Launcher_owner:
+      description: Owner of the Launcher
+      example:
+        id: 123180847373330f0173c7e1756b6890
+        type: IDENTITY
+      properties:
+        type:
+          description: Owner type
+          example: IDENTITY
+          type: string
+        id:
+          description: Owner ID
+          example: 123180847373330f0173c7e1756b6890
+          type: string
+      required:
+      - id
+      - type
+      type: object
+    Launcher_reference:
+      example:
+        id: 2fd6ff94-2081-4d29-acbc-83a0a2f744a5
+        type: WORKFLOW
+      properties:
+        type:
+          description: Type of Launcher reference
+          enum:
+          - WORKFLOW
+          example: WORKFLOW
+          type: string
+        id:
+          description: ID of Launcher reference
+          example: 2fd6ff94-2081-4d29-acbc-83a0a2f744a5
+          type: string
+      type: object
+    LauncherRequest_reference:
+      example:
+        id: 2fd6ff94-2081-4d29-acbc-83a0a2f744a5
+        type: WORKFLOW
+      properties:
+        type:
+          description: Type of Launcher reference
+          enum:
+          - WORKFLOW
+          example: WORKFLOW
+          type: string
+        id:
+          description: ID of Launcher reference
+          example: 2fd6ff94-2081-4d29-acbc-83a0a2f744a5
+          type: string
+      required:
+      - id
+      - type
       type: object
     AccessProfileUsage_usedBy_inner:
       description: Role using the access profile.

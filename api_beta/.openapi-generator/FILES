@@ -22,6 +22,7 @@ api_connector_rule_management.go
 api_connectors.go
 api_custom_forms.go
 api_custom_password_instructions.go
+api_default.go
 api_entitlements.go
 api_governance_groups.go
 api_iai_access_request_recommendations.go
@@ -36,6 +37,7 @@ api_identities.go
 api_identity_attributes.go
 api_identity_history.go
 api_identity_profiles.go
+api_launchers.go
 api_lifecycle_states.go
 api_managed_clients.go
 api_managed_clusters.go
@@ -337,6 +339,7 @@ docs/CreateWorkflowRequest.md
 docs/CustomFormsAPI.md
 docs/CustomPasswordInstruction.md
 docs/CustomPasswordInstructionsAPI.md
+docs/DefaultAPI.md
 docs/Delete202Response.md
 docs/DeleteCampaignsRequest.md
 docs/DeleteNonEmployeeRecordInBulkRequest.md
@@ -420,6 +423,7 @@ docs/GetActiveCampaigns200ResponseInner.md
 docs/GetDiscoveredApplications200ResponseInner.md
 docs/GetFormDefinitionByKey400Response.md
 docs/GetHistoricalIdentityEvents200ResponseInner.md
+docs/GetLaunchers200Response.md
 docs/GetOAuthClientResponse.md
 docs/GetPersonalAccessTokenResponse.md
 docs/GetRoleAssignments200ResponseInner.md
@@ -518,6 +522,12 @@ docs/KbaAuthResponse.md
 docs/KbaAuthResponseItem.md
 docs/KbaQuestion.md
 docs/LatestOutlierSummary.md
+docs/Launcher.md
+docs/LauncherOwner.md
+docs/LauncherReference.md
+docs/LauncherRequest.md
+docs/LauncherRequestReference.md
+docs/LaunchersAPI.md
 docs/License.md
 docs/LifecycleState.md
 docs/LifecycleStateDto.md
@@ -901,6 +911,7 @@ docs/SpConfigRule.md
 docs/SpConfigRules.md
 docs/StandardLevel.md
 docs/StartInvocationInput.md
+docs/StartLauncher200Response.md
 docs/StatusResponse.md
 docs/Subscription.md
 docs/SubscriptionPatchRequestInner.md
@@ -1344,6 +1355,7 @@ model_get_active_campaigns_200_response_inner.go
 model_get_discovered_applications_200_response_inner.go
 model_get_form_definition_by_key_400_response.go
 model_get_historical_identity_events_200_response_inner.go
+model_get_launchers_200_response.go
 model_get_o_auth_client_response.go
 model_get_personal_access_token_response.go
 model_get_role_assignments_200_response_inner.go
@@ -1429,6 +1441,11 @@ model_kba_auth_response.go
 model_kba_auth_response_item.go
 model_kba_question.go
 model_latest_outlier_summary.go
+model_launcher.go
+model_launcher_owner.go
+model_launcher_reference.go
+model_launcher_request.go
+model_launcher_request_reference.go
 model_license.go
 model_lifecycle_state.go
 model_lifecycle_state_dto.go
@@ -1783,6 +1800,7 @@ model_sp_config_rule.go
 model_sp_config_rules.go
 model_standard_level.go
 model_start_invocation_input.go
+model_start_launcher_200_response.go
 model_status_response.go
 model_subscription.go
 model_subscription_patch_request_inner.go
@@ -1910,6 +1928,7 @@ test/api_connector_rule_management_test.go
 test/api_connectors_test.go
 test/api_custom_forms_test.go
 test/api_custom_password_instructions_test.go
+test/api_default_test.go
 test/api_entitlements_test.go
 test/api_governance_groups_test.go
 test/api_iai_access_request_recommendations_test.go
@@ -1924,6 +1943,7 @@ test/api_identities_test.go
 test/api_identity_attributes_test.go
 test/api_identity_history_test.go
 test/api_identity_profiles_test.go
+test/api_launchers_test.go
 test/api_lifecycle_states_test.go
 test/api_managed_clients_test.go
 test/api_managed_clusters_test.go

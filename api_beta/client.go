@@ -90,6 +90,8 @@ type APIClient struct {
 
 	CustomPasswordInstructionsAPI *CustomPasswordInstructionsAPIService
 
+	DefaultAPI *DefaultAPIService
+
 	EntitlementsAPI *EntitlementsAPIService
 
 	GovernanceGroupsAPI *GovernanceGroupsAPIService
@@ -117,6 +119,8 @@ type APIClient struct {
 	IdentityHistoryAPI *IdentityHistoryAPIService
 
 	IdentityProfilesAPI *IdentityProfilesAPIService
+
+	LaunchersAPI *LaunchersAPIService
 
 	LifecycleStatesAPI *LifecycleStatesAPIService
 
@@ -234,6 +238,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ConnectorsAPI = (*ConnectorsAPIService)(&c.common)
 	c.CustomFormsAPI = (*CustomFormsAPIService)(&c.common)
 	c.CustomPasswordInstructionsAPI = (*CustomPasswordInstructionsAPIService)(&c.common)
+	c.DefaultAPI = (*DefaultAPIService)(&c.common)
 	c.EntitlementsAPI = (*EntitlementsAPIService)(&c.common)
 	c.GovernanceGroupsAPI = (*GovernanceGroupsAPIService)(&c.common)
 	c.IAIAccessRequestRecommendationsAPI = (*IAIAccessRequestRecommendationsAPIService)(&c.common)
@@ -248,6 +253,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.IdentityAttributesAPI = (*IdentityAttributesAPIService)(&c.common)
 	c.IdentityHistoryAPI = (*IdentityHistoryAPIService)(&c.common)
 	c.IdentityProfilesAPI = (*IdentityProfilesAPIService)(&c.common)
+	c.LaunchersAPI = (*LaunchersAPIService)(&c.common)
 	c.LifecycleStatesAPI = (*LifecycleStatesAPIService)(&c.common)
 	c.MFAConfigurationAPI = (*MFAConfigurationAPIService)(&c.common)
 	c.MFAControllerAPI = (*MFAControllerAPIService)(&c.common)
