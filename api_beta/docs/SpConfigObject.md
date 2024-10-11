@@ -5,18 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ObjectType** | Pointer to **string** | The object type this configuration is for. | [optional] 
-**ResolveByIdUrl** | Pointer to [**SpConfigUrl**](SpConfigUrl.md) |  | [optional] 
-**ResolveByNameUrl** | Pointer to [**[]SpConfigUrl**](SpConfigUrl.md) | Url and query parameters to be used to resolve this type of object by name. | [optional] 
-**ExportUrl** | Pointer to [**SpConfigUrl**](SpConfigUrl.md) |  | [optional] 
-**ExportRight** | Pointer to **string** | Rights needed by the invoker of sp-config/export in order to export this type of object. | [optional] 
-**ExportLimit** | Pointer to **int32** | Pagination limit imposed by the target service for this object type. | [optional] 
-**ImportUrl** | Pointer to [**SpConfigUrl**](SpConfigUrl.md) |  | [optional] 
-**ImportRight** | Pointer to **string** | Rights needed by the invoker of sp-config/import in order to import this type of object. | [optional] 
-**ImportLimit** | Pointer to **int32** | Pagination limit imposed by the target service for this object type. | [optional] 
 **ReferenceExtractors** | Pointer to **[]string** | List of json paths within an exported object of this type that represent references that need to be resolved. | [optional] 
 **SignatureRequired** | Pointer to **bool** | If true, this type of object will be JWS signed and cannot be modified before import. | [optional] [default to false]
-**LegacyObject** | Pointer to **bool** |  | [optional] [default to false]
-**OnePerTenant** | Pointer to **bool** |  | [optional] [default to false]
+**LegacyObject** | Pointer to **bool** | Whether this is a legacy object | [optional] [default to false]
+**OnePerTenant** | Pointer to **bool** | Whether there is only one object of this type | [optional] [default to false]
+**Exportable** | Pointer to **bool** | Whether this object can be exported or it is just a reference object | [optional] [default to false]
+**Rules** | Pointer to [**SpConfigRules**](SpConfigRules.md) |  | [optional] 
 
 ## Methods
 
@@ -61,206 +55,6 @@ SetObjectType sets ObjectType field to given value.
 `func (o *SpConfigObject) HasObjectType() bool`
 
 HasObjectType returns a boolean if a field has been set.
-
-### GetResolveByIdUrl
-
-`func (o *SpConfigObject) GetResolveByIdUrl() SpConfigUrl`
-
-GetResolveByIdUrl returns the ResolveByIdUrl field if non-nil, zero value otherwise.
-
-### GetResolveByIdUrlOk
-
-`func (o *SpConfigObject) GetResolveByIdUrlOk() (*SpConfigUrl, bool)`
-
-GetResolveByIdUrlOk returns a tuple with the ResolveByIdUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetResolveByIdUrl
-
-`func (o *SpConfigObject) SetResolveByIdUrl(v SpConfigUrl)`
-
-SetResolveByIdUrl sets ResolveByIdUrl field to given value.
-
-### HasResolveByIdUrl
-
-`func (o *SpConfigObject) HasResolveByIdUrl() bool`
-
-HasResolveByIdUrl returns a boolean if a field has been set.
-
-### GetResolveByNameUrl
-
-`func (o *SpConfigObject) GetResolveByNameUrl() []SpConfigUrl`
-
-GetResolveByNameUrl returns the ResolveByNameUrl field if non-nil, zero value otherwise.
-
-### GetResolveByNameUrlOk
-
-`func (o *SpConfigObject) GetResolveByNameUrlOk() (*[]SpConfigUrl, bool)`
-
-GetResolveByNameUrlOk returns a tuple with the ResolveByNameUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetResolveByNameUrl
-
-`func (o *SpConfigObject) SetResolveByNameUrl(v []SpConfigUrl)`
-
-SetResolveByNameUrl sets ResolveByNameUrl field to given value.
-
-### HasResolveByNameUrl
-
-`func (o *SpConfigObject) HasResolveByNameUrl() bool`
-
-HasResolveByNameUrl returns a boolean if a field has been set.
-
-### GetExportUrl
-
-`func (o *SpConfigObject) GetExportUrl() SpConfigUrl`
-
-GetExportUrl returns the ExportUrl field if non-nil, zero value otherwise.
-
-### GetExportUrlOk
-
-`func (o *SpConfigObject) GetExportUrlOk() (*SpConfigUrl, bool)`
-
-GetExportUrlOk returns a tuple with the ExportUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExportUrl
-
-`func (o *SpConfigObject) SetExportUrl(v SpConfigUrl)`
-
-SetExportUrl sets ExportUrl field to given value.
-
-### HasExportUrl
-
-`func (o *SpConfigObject) HasExportUrl() bool`
-
-HasExportUrl returns a boolean if a field has been set.
-
-### GetExportRight
-
-`func (o *SpConfigObject) GetExportRight() string`
-
-GetExportRight returns the ExportRight field if non-nil, zero value otherwise.
-
-### GetExportRightOk
-
-`func (o *SpConfigObject) GetExportRightOk() (*string, bool)`
-
-GetExportRightOk returns a tuple with the ExportRight field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExportRight
-
-`func (o *SpConfigObject) SetExportRight(v string)`
-
-SetExportRight sets ExportRight field to given value.
-
-### HasExportRight
-
-`func (o *SpConfigObject) HasExportRight() bool`
-
-HasExportRight returns a boolean if a field has been set.
-
-### GetExportLimit
-
-`func (o *SpConfigObject) GetExportLimit() int32`
-
-GetExportLimit returns the ExportLimit field if non-nil, zero value otherwise.
-
-### GetExportLimitOk
-
-`func (o *SpConfigObject) GetExportLimitOk() (*int32, bool)`
-
-GetExportLimitOk returns a tuple with the ExportLimit field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExportLimit
-
-`func (o *SpConfigObject) SetExportLimit(v int32)`
-
-SetExportLimit sets ExportLimit field to given value.
-
-### HasExportLimit
-
-`func (o *SpConfigObject) HasExportLimit() bool`
-
-HasExportLimit returns a boolean if a field has been set.
-
-### GetImportUrl
-
-`func (o *SpConfigObject) GetImportUrl() SpConfigUrl`
-
-GetImportUrl returns the ImportUrl field if non-nil, zero value otherwise.
-
-### GetImportUrlOk
-
-`func (o *SpConfigObject) GetImportUrlOk() (*SpConfigUrl, bool)`
-
-GetImportUrlOk returns a tuple with the ImportUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetImportUrl
-
-`func (o *SpConfigObject) SetImportUrl(v SpConfigUrl)`
-
-SetImportUrl sets ImportUrl field to given value.
-
-### HasImportUrl
-
-`func (o *SpConfigObject) HasImportUrl() bool`
-
-HasImportUrl returns a boolean if a field has been set.
-
-### GetImportRight
-
-`func (o *SpConfigObject) GetImportRight() string`
-
-GetImportRight returns the ImportRight field if non-nil, zero value otherwise.
-
-### GetImportRightOk
-
-`func (o *SpConfigObject) GetImportRightOk() (*string, bool)`
-
-GetImportRightOk returns a tuple with the ImportRight field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetImportRight
-
-`func (o *SpConfigObject) SetImportRight(v string)`
-
-SetImportRight sets ImportRight field to given value.
-
-### HasImportRight
-
-`func (o *SpConfigObject) HasImportRight() bool`
-
-HasImportRight returns a boolean if a field has been set.
-
-### GetImportLimit
-
-`func (o *SpConfigObject) GetImportLimit() int32`
-
-GetImportLimit returns the ImportLimit field if non-nil, zero value otherwise.
-
-### GetImportLimitOk
-
-`func (o *SpConfigObject) GetImportLimitOk() (*int32, bool)`
-
-GetImportLimitOk returns a tuple with the ImportLimit field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetImportLimit
-
-`func (o *SpConfigObject) SetImportLimit(v int32)`
-
-SetImportLimit sets ImportLimit field to given value.
-
-### HasImportLimit
-
-`func (o *SpConfigObject) HasImportLimit() bool`
-
-HasImportLimit returns a boolean if a field has been set.
 
 ### GetReferenceExtractors
 
@@ -371,6 +165,56 @@ SetOnePerTenant sets OnePerTenant field to given value.
 `func (o *SpConfigObject) HasOnePerTenant() bool`
 
 HasOnePerTenant returns a boolean if a field has been set.
+
+### GetExportable
+
+`func (o *SpConfigObject) GetExportable() bool`
+
+GetExportable returns the Exportable field if non-nil, zero value otherwise.
+
+### GetExportableOk
+
+`func (o *SpConfigObject) GetExportableOk() (*bool, bool)`
+
+GetExportableOk returns a tuple with the Exportable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExportable
+
+`func (o *SpConfigObject) SetExportable(v bool)`
+
+SetExportable sets Exportable field to given value.
+
+### HasExportable
+
+`func (o *SpConfigObject) HasExportable() bool`
+
+HasExportable returns a boolean if a field has been set.
+
+### GetRules
+
+`func (o *SpConfigObject) GetRules() SpConfigRules`
+
+GetRules returns the Rules field if non-nil, zero value otherwise.
+
+### GetRulesOk
+
+`func (o *SpConfigObject) GetRulesOk() (*SpConfigRules, bool)`
+
+GetRulesOk returns a tuple with the Rules field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRules
+
+`func (o *SpConfigObject) SetRules(v SpConfigRules)`
+
+SetRules sets Rules field to given value.
+
+### HasRules
+
+`func (o *SpConfigObject) HasRules() bool`
+
+HasRules returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

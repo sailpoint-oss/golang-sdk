@@ -1048,7 +1048,8 @@ docs/SpConfigJob.md
 docs/SpConfigMessage.md
 docs/SpConfigMessage1.md
 docs/SpConfigObject.md
-docs/SpConfigUrl.md
+docs/SpConfigRule.md
+docs/SpConfigRules.md
 docs/StandardLevel.md
 docs/StartInvocationInput.md
 docs/StatusResponse.md
@@ -2065,7 +2066,8 @@ model_sp_config_job.go
 model_sp_config_message.go
 model_sp_config_message_1.go
 model_sp_config_object.go
-model_sp_config_url.go
+model_sp_config_rule.go
+model_sp_config_rules.go
 model_standard_level.go
 model_start_invocation_input.go
 model_status_response.go

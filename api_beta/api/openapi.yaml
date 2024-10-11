@@ -74262,69 +74262,42 @@ components:
     SpConfigObject:
       description: Response model for get object configuration.
       example:
-        resolveByIdUrl:
-          query: "{}"
-          url: ets://trigger-subscriptions/$id
-        importRight: idn:trigger-service-subscriptions:create
-        importLimit: 10
+        exportable: true
+        signatureRequired: false
+        legacyObject: false
+        rules:
+          defaultRules:
+          - mode:
+            - RESTORE
+            - PROMOTE
+            path: $.enabled
+            value: "{}"
+          - mode:
+            - RESTORE
+            - PROMOTE
+            path: $.enabled
+            value: "{}"
+          takeFromTargetRules:
+          - mode:
+            - RESTORE
+            - PROMOTE
+            path: $.enabled
+            value: "{}"
+          - mode:
+            - RESTORE
+            - PROMOTE
+            path: $.enabled
+            value: "{}"
+          editable: true
         referenceExtractors:
         - $.owner
         objectType: TRIGGER_SUBSCRIPTION
-        exportRight: idn:trigger-service-subscriptions:read
-        exportLimit: 10
-        exportUrl:
-          query: "{}"
-          url: ets://trigger-subscriptions/$id
-        signatureRequired: false
-        resolveByNameUrl:
-        - query: "{}"
-          url: ets://trigger-subscriptions/$id
-        - query: "{}"
-          url: ets://trigger-subscriptions/$id
-        legacyObject: false
-        importUrl:
-          query: "{}"
-          url: ets://trigger-subscriptions/$id
         onePerTenant: false
       properties:
         objectType:
           description: The object type this configuration is for.
           example: TRIGGER_SUBSCRIPTION
           type: string
-        resolveByIdUrl:
-          $ref: '#/components/schemas/SpConfigUrl'
-        resolveByNameUrl:
-          description: Url and query parameters to be used to resolve this type of
-            object by name.
-          items:
-            $ref: '#/components/schemas/SpConfigUrl'
-          type: array
-        exportUrl:
-          $ref: '#/components/schemas/SpConfigUrl'
-        exportRight:
-          description: Rights needed by the invoker of sp-config/export in order to
-            export this type of object.
-          example: idn:trigger-service-subscriptions:read
-          type: string
-        exportLimit:
-          description: Pagination limit imposed by the target service for this object
-            type.
-          example: 10
-          format: int32
-          type: integer
-        importUrl:
-          $ref: '#/components/schemas/SpConfigUrl'
-        importRight:
-          description: Rights needed by the invoker of sp-config/import in order to
-            import this type of object.
-          example: idn:trigger-service-subscriptions:create
-          type: string
-        importLimit:
-          description: Pagination limit imposed by the target service for this object
-            type.
-          example: 10
-          format: int32
-          type: integer
         referenceExtractors:
           description: List of json paths within an exported object of this type that
             represent references that need to be resolved.
@@ -74342,12 +74315,22 @@ components:
           type: boolean
         legacyObject:
           default: false
+          description: Whether this is a legacy object
           example: false
           type: boolean
         onePerTenant:
           default: false
+          description: Whether there is only one object of this type
           example: false
           type: boolean
+        exportable:
+          default: false
+          description: Whether this object can be exported or it is just a reference
+            object
+          example: true
+          type: boolean
+        rules:
+          $ref: '#/components/schemas/SpConfigRules'
       title: Object Configuration Model
       type: object
     Source:
@@ -84024,22 +84007,47 @@ components:
             type: string
           type: array
       type: object
-    SpConfigUrl:
-      description: Format of resolver URLs for Object Configurations
+    SpConfigRules:
+      description: Rules to be applied to the config object during draft process
       example:
-        query: "{}"
-        url: ets://trigger-subscriptions/$id
+        defaultRules:
+        - mode:
+          - RESTORE
+          - PROMOTE
+          path: $.enabled
+          value: "{}"
+        - mode:
+          - RESTORE
+          - PROMOTE
+          path: $.enabled
+          value: "{}"
+        takeFromTargetRules:
+        - mode:
+          - RESTORE
+          - PROMOTE
+          path: $.enabled
+          value: "{}"
+        - mode:
+          - RESTORE
+          - PROMOTE
+          path: $.enabled
+          value: "{}"
+        editable: true
       properties:
-        url:
-          description: URL for the target object endpoint.
-          example: ets://trigger-subscriptions/$id
-          type: string
-        query:
-          description: Any query parameters that are needed for the URL.
-          nullable: true
-          type: object
-          example: null
-      title: Resolver URL Format for Object Configuration.
+        takeFromTargetRules:
+          items:
+            $ref: '#/components/schemas/SpConfigRule'
+          type: array
+        defaultRules:
+          items:
+            $ref: '#/components/schemas/SpConfigRule'
+          type: array
+        editable:
+          default: false
+          description: Whether this object can be edited
+          example: true
+          type: boolean
+      title: Config Object Rules
       type: object
     AttrSyncSource:
       description: Target source for attribute synchronization.
@@ -87278,6 +87286,39 @@ components:
             template.
           example: HR Active Directory
           type: string
+      type: object
+    SpConfigRule:
+      description: Format of Config Hub Object Rules
+      example:
+        mode:
+        - RESTORE
+        - PROMOTE
+        path: $.enabled
+        value: "{}"
+      properties:
+        path:
+          description: JSONPath expression denoting the path within the object where
+            a value substitution should be applied
+          example: $.enabled
+          type: string
+        value:
+          description: Value to be assigned at the jsonPath location within the object
+          nullable: true
+          type: object
+          example: null
+        mode:
+          description: Draft modes to which this rule will apply
+          example:
+          - RESTORE
+          - PROMOTE
+          items:
+            enum:
+            - RESTORE
+            - PROMOTE
+            - UPLOAD
+            type: string
+          type: array
+      title: Config Object Rule
       type: object
     AttributeDefinitionType:
       description: The underlying type of the value which an AttributeDefinition represents.
