@@ -40100,6 +40100,14 @@ paths:
         name: for-subadmin
         schema:
           type: string
+      - description: Include the IdentityNow source in the response.
+        example: true
+        in: query
+        name: includeIDNSource
+        required: false
+        schema:
+          default: false
+          type: boolean
       responses:
         "200":
           content:
@@ -40189,6 +40197,11 @@ paths:
       summary: Lists all sources in IdentityNow.
       tags:
       - Sources
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - ROLE_SUBADMIN
     post:
       description: |-
         This creates a specific source with a full source JSON representation. Any passwords are submitted as plain-text and encrypted upon receipt in IdentityNow.
@@ -40284,6 +40297,10 @@ paths:
       summary: Creates a source in IdentityNow.
       tags:
       - Sources
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /sources/{id}:
     delete:
       description: |-

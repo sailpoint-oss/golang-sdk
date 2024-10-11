@@ -4489,6 +4489,7 @@ type ApiListSourcesRequest struct {
 	filters *string
 	sorters *string
 	forSubadmin *string
+	includeIDNSource *bool
 }
 
 // Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -4524,6 +4525,12 @@ func (r ApiListSourcesRequest) Sorters(sorters string) ApiListSourcesRequest {
 // Filter the returned list of sources for the identity specified by the parameter, which is the id of an identity with the role SOURCE_SUBADMIN. By convention, the value **me** indicates the identity id of the current user. Subadmins may only view Sources which they are able to administer; all other Sources will be filtered out when this parameter is set. If the current user is a SOURCE_SUBADMIN but fails to pass a valid value for this parameter, a 403 Forbidden is returned.
 func (r ApiListSourcesRequest) ForSubadmin(forSubadmin string) ApiListSourcesRequest {
 	r.forSubadmin = &forSubadmin
+	return r
+}
+
+// Include the IdentityNow source in the response.
+func (r ApiListSourcesRequest) IncludeIDNSource(includeIDNSource bool) ApiListSourcesRequest {
+	r.includeIDNSource = &includeIDNSource
 	return r
 }
 
@@ -4595,6 +4602,12 @@ func (a *SourcesAPIService) ListSourcesExecute(r ApiListSourcesRequest) ([]Sourc
 	}
 	if r.forSubadmin != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "for-subadmin", r.forSubadmin, "", "")
+	}
+	if r.includeIDNSource != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeIDNSource", r.includeIDNSource, "", "")
+	} else {
+		var defaultValue bool = false
+		r.includeIDNSource = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
