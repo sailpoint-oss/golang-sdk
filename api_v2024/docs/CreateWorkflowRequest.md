@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | The name of the workflow | 
-**Owner** | [**WorkflowBodyOwner**](WorkflowBodyOwner.md) |  | 
+**Owner** | Pointer to [**WorkflowBodyOwner**](WorkflowBodyOwner.md) |  | [optional] 
 **Description** | Pointer to **string** | Description of what the workflow accomplishes | [optional] 
 **Definition** | Pointer to [**WorkflowDefinition**](WorkflowDefinition.md) |  | [optional] 
 **Enabled** | Pointer to **bool** | Enable or disable the workflow.  Workflows cannot be created in an enabled state. | [optional] [default to false]
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewCreateWorkflowRequest
 
-`func NewCreateWorkflowRequest(name string, owner WorkflowBodyOwner, ) *CreateWorkflowRequest`
+`func NewCreateWorkflowRequest(name string, ) *CreateWorkflowRequest`
 
 NewCreateWorkflowRequest instantiates a new CreateWorkflowRequest object
 This constructor will assign default values to properties that have it defined,
@@ -69,6 +69,11 @@ and a boolean to check if the value has been set.
 
 SetOwner sets Owner field to given value.
 
+### HasOwner
+
+`func (o *CreateWorkflowRequest) HasOwner() bool`
+
+HasOwner returns a boolean if a field has been set.
 
 ### GetDescription
 

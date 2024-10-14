@@ -686,7 +686,7 @@ Class | Method | HTTP request | Description
 *WorkReassignmentAPI* | [**PutTenantConfiguration**](docs/WorkReassignmentAPI.md#puttenantconfiguration) | **Put** /reassignment-configurations/tenant-config | Update Tenant-wide Reassignment Configuration settings
 *WorkflowsAPI* | [**CancelWorkflowExecution**](docs/WorkflowsAPI.md#cancelworkflowexecution) | **Post** /workflow-executions/{id}/cancel | Cancel Workflow Execution by ID
 *WorkflowsAPI* | [**CreateExternalExecuteWorkflow**](docs/WorkflowsAPI.md#createexternalexecuteworkflow) | **Post** /workflows/execute/external/{id} | Execute Workflow via External Trigger
-*WorkflowsAPI* | [**CreateWorkflow**](docs/WorkflowsAPI.md#createworkflow) | **Post** /workflows/{id} | Create Workflow
+*WorkflowsAPI* | [**CreateWorkflow**](docs/WorkflowsAPI.md#createworkflow) | **Post** /workflows | Create Workflow
 *WorkflowsAPI* | [**CreateWorkflowExternalTrigger**](docs/WorkflowsAPI.md#createworkflowexternaltrigger) | **Post** /workflows/{id}/external/oauth-clients | Generate External Trigger OAuth Client
 *WorkflowsAPI* | [**DeleteWorkflow**](docs/WorkflowsAPI.md#deleteworkflow) | **Delete** /workflows/{id} | Delete Workflow By Id
 *WorkflowsAPI* | [**GetWorkflow**](docs/WorkflowsAPI.md#getworkflow) | **Get** /workflows/{id} | Get Workflow By Id

@@ -390,7 +390,7 @@ func (a *WorkflowsAPIService) CreateWorkflowExecute(r ApiCreateWorkflowRequest) 
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/workflows/{id}"
+	localVarPath := localBasePath + "/workflows"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

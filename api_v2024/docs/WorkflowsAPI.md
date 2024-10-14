@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CancelWorkflowExecution**](WorkflowsAPI.md#CancelWorkflowExecution) | **Post** /workflow-executions/{id}/cancel | Cancel Workflow Execution by ID
 [**CreateExternalExecuteWorkflow**](WorkflowsAPI.md#CreateExternalExecuteWorkflow) | **Post** /workflows/execute/external/{id} | Execute Workflow via External Trigger
-[**CreateWorkflow**](WorkflowsAPI.md#CreateWorkflow) | **Post** /workflows/{id} | Create Workflow
+[**CreateWorkflow**](WorkflowsAPI.md#CreateWorkflow) | **Post** /workflows | Create Workflow
 [**CreateWorkflowExternalTrigger**](WorkflowsAPI.md#CreateWorkflowExternalTrigger) | **Post** /workflows/{id}/external/oauth-clients | Generate External Trigger OAuth Client
 [**DeleteWorkflow**](WorkflowsAPI.md#DeleteWorkflow) | **Delete** /workflows/{id} | Delete Workflow By Id
 [**GetWorkflow**](WorkflowsAPI.md#GetWorkflow) | **Get** /workflows/{id} | Get Workflow By Id
@@ -186,7 +186,7 @@ import (
 )
 
 func main() {
-	createWorkflowRequest := *openapiclient.NewCreateWorkflowRequest("Send Email", *openapiclient.NewWorkflowBodyOwner()) // CreateWorkflowRequest | 
+	createWorkflowRequest := *openapiclient.NewCreateWorkflowRequest("Send Email") // CreateWorkflowRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

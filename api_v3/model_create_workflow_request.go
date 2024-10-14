@@ -22,7 +22,7 @@ var _ MappedNullable = &CreateWorkflowRequest{}
 type CreateWorkflowRequest struct {
 	// The name of the workflow
 	Name string `json:"name"`
-	Owner WorkflowBodyOwner `json:"owner"`
+	Owner *WorkflowBodyOwner `json:"owner,omitempty"`
 	// Description of what the workflow accomplishes
 	Description *string `json:"description,omitempty"`
 	Definition *WorkflowDefinition `json:"definition,omitempty"`
@@ -38,10 +38,9 @@ type _CreateWorkflowRequest CreateWorkflowRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateWorkflowRequest(name string, owner WorkflowBodyOwner) *CreateWorkflowRequest {
+func NewCreateWorkflowRequest(name string) *CreateWorkflowRequest {
 	this := CreateWorkflowRequest{}
 	this.Name = name
-	this.Owner = owner
 	var enabled bool = false
 	this.Enabled = &enabled
 	return &this
@@ -81,28 +80,36 @@ func (o *CreateWorkflowRequest) SetName(v string) {
 	o.Name = v
 }
 
-// GetOwner returns the Owner field value
+// GetOwner returns the Owner field value if set, zero value otherwise.
 func (o *CreateWorkflowRequest) GetOwner() WorkflowBodyOwner {
-	if o == nil {
+	if o == nil || IsNil(o.Owner) {
 		var ret WorkflowBodyOwner
 		return ret
 	}
-
-	return o.Owner
+	return *o.Owner
 }
 
-// GetOwnerOk returns a tuple with the Owner field value
+// GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateWorkflowRequest) GetOwnerOk() (*WorkflowBodyOwner, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Owner) {
 		return nil, false
 	}
-	return &o.Owner, true
+	return o.Owner, true
 }
 
-// SetOwner sets field value
+// HasOwner returns a boolean if a field has been set.
+func (o *CreateWorkflowRequest) HasOwner() bool {
+	if o != nil && !IsNil(o.Owner) {
+		return true
+	}
+
+	return false
+}
+
+// SetOwner gets a reference to the given WorkflowBodyOwner and assigns it to the Owner field.
 func (o *CreateWorkflowRequest) SetOwner(v WorkflowBodyOwner) {
-	o.Owner = v
+	o.Owner = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -244,7 +251,9 @@ func (o CreateWorkflowRequest) MarshalJSON() ([]byte, error) {
 func (o CreateWorkflowRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
-	toSerialize["owner"] = o.Owner
+	if !IsNil(o.Owner) {
+		toSerialize["owner"] = o.Owner
+	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -271,7 +280,6 @@ func (o *CreateWorkflowRequest) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"name",
-		"owner",
 	}
 
 	allProperties := make(map[string]interface{})
