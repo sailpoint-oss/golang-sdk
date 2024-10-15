@@ -163,3 +163,20 @@ func Test_v2024(t *testing.T) {
 
 	})
 }
+
+func Test_generic(t *testing.T) {
+
+	configuration := NewDefaultConfiguration()
+	apiClient := NewAPIClient(configuration)
+
+	t.Run("Test List Accounts", func(t *testing.T) {
+
+		resp, r, err := apiClient.Generic.DefaultAPI.GenericGet(context.TODO(), "v2024/accounts").Execute()
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "during test`: %v\n", err)
+		}
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, r.StatusCode)
+	})
+}

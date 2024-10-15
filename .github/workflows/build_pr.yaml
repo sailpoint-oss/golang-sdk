@@ -62,6 +62,14 @@ jobs:
           java -jar openapi-generator-cli.jar generate -i api-specs/idn/sailpoint-api.v2024.yaml -g go -o api_v2024 --global-property skipFormModel=false --config sdk-resources/v2024-config.yaml
           node sdk-resources/postscript.js ./api_v2024
 
+      - name: Build Generic SDK
+        id: buildGeneric
+        if: steps.buildBeta.outcome == 'success'
+        run: |
+          rm -rf ./api_generic
+          java -jar openapi-generator-cli.jar generate -i sdk-resources/generic-api.yaml -g go -o api_generic --global-property skipFormModel=false --config sdk-resources/generic-config.yaml
+          node sdk-resources/postscript.js ./api_generic
+
       - name: After SDK Build
         if: steps.buildV2024.outcome == 'success'
         run: |

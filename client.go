@@ -13,6 +13,7 @@ import (
 
 	"github.com/hashicorp/go-retryablehttp"
 	beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
+	generic "github.com/sailpoint-oss/golang-sdk/v2/api_generic"
 	v2024 "github.com/sailpoint-oss/golang-sdk/v2/api_v2024"
 	v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
 )
@@ -30,16 +31,18 @@ type APIClient struct {
 
 	// API Services
 
-	V3    *v3.APIClient
-	Beta  *beta.APIClient
-	V2024 *v2024.APIClient
-	token string
+	V3      *v3.APIClient
+	Beta    *beta.APIClient
+	V2024   *v2024.APIClient
+	Generic *generic.APIClient
+	token   string
 }
 
 type service struct {
-	client      *v3.APIClient
-	betaClient  *beta.APIClient
-	v2024Client *v2024.APIClient
+	client        *v3.APIClient
+	betaClient    *beta.APIClient
+	v2024Client   *v2024.APIClient
+	genericClient *generic.APIClient
 }
 
 // NewAPIClient creates a new API client. Requires a userAgent string describing your application.
@@ -54,14 +57,17 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	CV3 := v3.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL+"/v3", cfg.ClientConfiguration.TokenURL, cfg.ClientConfiguration.Token, cfg.Experimental)
 	CBeta := beta.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL+"/beta", cfg.ClientConfiguration.TokenURL, cfg.ClientConfiguration.Token, cfg.Experimental)
 	CV2024 := v2024.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL+"/v2024", cfg.ClientConfiguration.TokenURL, cfg.ClientConfiguration.Token, cfg.Experimental)
+	CVGeneric := generic.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL, cfg.ClientConfiguration.TokenURL, cfg.ClientConfiguration.Token, cfg.Experimental)
 
 	CV3.HTTPClient = cfg.HTTPClient
 	CBeta.HTTPClient = cfg.HTTPClient
 	CV2024.HTTPClient = cfg.HTTPClient
+	CVGeneric.HTTPClient = cfg.HTTPClient
 
 	c.V3 = v3.NewAPIClient(CV3)
 	c.Beta = beta.NewAPIClient(CBeta)
 	c.V2024 = v2024.NewAPIClient(CV2024)
+	c.Generic = generic.NewAPIClient(CVGeneric)
 
 	// API Services
 
