@@ -164,8 +164,24 @@ func (a *DefaultAPIService) GenericGetExecute(r ApiGenericGetRequest) (map[strin
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/{path}"
-	localVarPath = strings.Replace(localVarPath, "{"+"path"+"}", url.PathEscape(parameterValueToString(r.path, "path")), -1)
+	// Remove the {path} placeholder from localBasePath
+	localVarPath := strings.TrimSuffix(localBasePath, "/{path}")
+
+	// Append the path parameter directly
+	if r.path != "" {
+		// Ensure the path starts with a forward slash
+		if !strings.HasPrefix(r.path, "/") {
+			localVarPath += "/"
+		}
+		localVarPath += r.path
+	}
+
+	// URL encode each path segment separately
+	segments := strings.Split(localVarPath, "/")
+	for i, segment := range segments {
+		segments[i] = url.PathEscape(segment)
+	}
+	localVarPath = strings.Join(segments, "/")
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
