@@ -6,11 +6,13 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateProvisioningPolicy**](SourcesAPI.md#CreateProvisioningPolicy) | **Post** /sources/{sourceId}/provisioning-policies | Create Provisioning Policy
 [**CreateSource**](SourcesAPI.md#CreateSource) | **Post** /sources | Creates a source in IdentityNow.
+[**CreateSourceSchedule**](SourcesAPI.md#CreateSourceSchedule) | **Post** /sources/{sourceId}/schedules | Create Schedule on Source
 [**CreateSourceSchema**](SourcesAPI.md#CreateSourceSchema) | **Post** /sources/{sourceId}/schemas | Create Schema on Source
 [**DeleteAccountsAsync**](SourcesAPI.md#DeleteAccountsAsync) | **Post** /sources/{id}/remove-accounts | Remove All Accounts in a Source
 [**DeleteNativeChangeDetectionConfig**](SourcesAPI.md#DeleteNativeChangeDetectionConfig) | **Delete** /sources/{sourceId}/native-change-detection-config | Delete Native Change Detection Configuration
 [**DeleteProvisioningPolicy**](SourcesAPI.md#DeleteProvisioningPolicy) | **Delete** /sources/{sourceId}/provisioning-policies/{usageType} | Delete Provisioning Policy by UsageType
 [**DeleteSource**](SourcesAPI.md#DeleteSource) | **Delete** /sources/{id} | Delete Source by ID
+[**DeleteSourceSchedule**](SourcesAPI.md#DeleteSourceSchedule) | **Delete** /sources/{sourceId}/schedules/{scheduleType} | Delete Source Schedule by type.
 [**DeleteSourceSchema**](SourcesAPI.md#DeleteSourceSchema) | **Delete** /sources/{sourceId}/schemas/{schemaId} | Delete Source Schema by ID
 [**GetAccountsSchema**](SourcesAPI.md#GetAccountsSchema) | **Get** /sources/{id}/schemas/accounts | Downloads source accounts schema template
 [**GetEntitlementsSchema**](SourcesAPI.md#GetEntitlementsSchema) | **Get** /sources/{id}/schemas/entitlements | Downloads source entitlements schema template
@@ -21,6 +23,8 @@ Method | HTTP request | Description
 [**GetSourceConfig**](SourcesAPI.md#GetSourceConfig) | **Get** /sources/{id}/connectors/source-config | Gets source config with language translations
 [**GetSourceEntitlementRequestConfig**](SourcesAPI.md#GetSourceEntitlementRequestConfig) | **Get** /sources/{id}/entitlement-request-config | Get Source Entitlement Request Configuration
 [**GetSourceHealth**](SourcesAPI.md#GetSourceHealth) | **Get** /sources/{sourceId}/source-health | Fetches source health by id
+[**GetSourceSchedule**](SourcesAPI.md#GetSourceSchedule) | **Get** /sources/{sourceId}/schedules/{scheduleType} | Get Source Schedule by Type
+[**GetSourceSchedules**](SourcesAPI.md#GetSourceSchedules) | **Get** /sources/{sourceId}/schedules | List Schedules on Source
 [**GetSourceSchema**](SourcesAPI.md#GetSourceSchema) | **Get** /sources/{sourceId}/schemas/{schemaId} | Get Source Schema by ID
 [**GetSourceSchemas**](SourcesAPI.md#GetSourceSchemas) | **Get** /sources/{sourceId}/schemas | List Schemas on Source
 [**ImportAccounts**](SourcesAPI.md#ImportAccounts) | **Post** /sources/{id}/load-accounts | Account Aggregation
@@ -44,6 +48,7 @@ Method | HTTP request | Description
 [**UpdateProvisioningPolicy**](SourcesAPI.md#UpdateProvisioningPolicy) | **Patch** /sources/{sourceId}/provisioning-policies/{usageType} | Partial update of Provisioning Policy
 [**UpdateSource**](SourcesAPI.md#UpdateSource) | **Patch** /sources/{id} | Update Source (Partial)
 [**UpdateSourceEntitlementRequestConfig**](SourcesAPI.md#UpdateSourceEntitlementRequestConfig) | **Put** /sources/{id}/entitlement-request-config | Update Source Entitlement Request Configuration
+[**UpdateSourceSchedule**](SourcesAPI.md#UpdateSourceSchedule) | **Patch** /sources/{sourceId}/schedules/{scheduleType} | Update Source Schedule (Partial)
 [**UpdateSourceSchema**](SourcesAPI.md#UpdateSourceSchema) | **Patch** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Partial)
 
 
@@ -173,6 +178,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Source**](Source.md)
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateSourceSchedule
+
+> Schedule1 CreateSourceSchedule(ctx, sourceId).Schedule1(schedule1).Execute()
+
+Create Schedule on Source
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+	sourceId := "2c9180835d191a86015d28455b4a2329" // string | Source ID.
+	schedule1 := *openapiclient.NewSchedule1("ACCOUNT_AGGREGATION", "0 0 5,13,21 * * ?") // Schedule1 | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SourcesAPI.CreateSourceSchedule(context.Background(), sourceId).Schedule1(schedule1).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.CreateSourceSchedule``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateSourceSchedule`: Schedule1
+	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.CreateSourceSchedule`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | Source ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateSourceScheduleRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **schedule1** | [**Schedule1**](Schedule1.md) |  | 
+
+### Return type
+
+[**Schedule1**](Schedule1.md)
 
 ### Authorization
 
@@ -528,6 +605,75 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DeleteSource202Response**](DeleteSource202Response.md)
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteSourceSchedule
+
+> DeleteSourceSchedule(ctx, sourceId, scheduleType).Execute()
+
+Delete Source Schedule by type.
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+	sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source id.
+	scheduleType := "ACCOUNT_AGGREGATION" // string | The Schedule type.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.SourcesAPI.DeleteSourceSchedule(context.Background(), sourceId, scheduleType).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.DeleteSourceSchedule``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | The Source id. | 
+**scheduleType** | **string** | The Schedule type. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteSourceScheduleRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
 
 ### Authorization
 
@@ -1232,6 +1378,149 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**SourceHealthDto**](SourceHealthDto.md)
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetSourceSchedule
+
+> Schedule1 GetSourceSchedule(ctx, sourceId, scheduleType).Execute()
+
+Get Source Schedule by Type
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+	sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source id.
+	scheduleType := "ACCOUNT_AGGREGATION" // string | The Schedule type.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SourcesAPI.GetSourceSchedule(context.Background(), sourceId, scheduleType).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceSchedule``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetSourceSchedule`: Schedule1
+	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetSourceSchedule`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | The Source id. | 
+**scheduleType** | **string** | The Schedule type. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetSourceScheduleRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**Schedule1**](Schedule1.md)
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetSourceSchedules
+
+> []Schedule1 GetSourceSchedules(ctx, sourceId).Execute()
+
+List Schedules on Source
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+	sourceId := "2c9180835d191a86015d28455b4a2329" // string | Source ID.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SourcesAPI.GetSourceSchedules(context.Background(), sourceId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceSchedules``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetSourceSchedules`: []Schedule1
+	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetSourceSchedules`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | Source ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetSourceSchedulesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]Schedule1**](Schedule1.md)
 
 ### Authorization
 
@@ -2922,6 +3211,81 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateSourceSchedule
+
+> Schedule1 UpdateSourceSchedule(ctx, sourceId, scheduleType).JsonPatchOperation(jsonPatchOperation).Execute()
+
+Update Source Schedule (Partial)
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+	sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source id.
+	scheduleType := "ACCOUNT_AGGREGATION" // string | The Schedule type.
+	jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | The JSONPatch payload used to update the schedule.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SourcesAPI.UpdateSourceSchedule(context.Background(), sourceId, scheduleType).JsonPatchOperation(jsonPatchOperation).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateSourceSchedule``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateSourceSchedule`: Schedule1
+	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.UpdateSourceSchedule`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | The Source id. | 
+**scheduleType** | **string** | The Schedule type. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateSourceScheduleRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](JsonPatchOperation.md) | The JSONPatch payload used to update the schedule. | 
+
+### Return type
+
+[**Schedule1**](Schedule1.md)
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

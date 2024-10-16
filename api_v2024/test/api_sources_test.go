@@ -48,6 +48,20 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test SourcesAPIService CreateSourceSchedule", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+
+		resp, httpRes, err := apiClient.SourcesAPI.CreateSourceSchedule(context.Background(), sourceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test SourcesAPIService CreateSourceSchema", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -113,6 +127,20 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesAPIService DeleteSourceSchedule", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+		var scheduleType string
+
+		httpRes, err := apiClient.SourcesAPI.DeleteSourceSchedule(context.Background(), sourceId, scheduleType).Execute()
+
+		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -247,6 +275,35 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 		var sourceId string
 
 		resp, httpRes, err := apiClient.SourcesAPI.GetSourceHealth(context.Background(), sourceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesAPIService GetSourceSchedule", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+		var scheduleType string
+
+		resp, httpRes, err := apiClient.SourcesAPI.GetSourceSchedule(context.Background(), sourceId, scheduleType).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesAPIService GetSourceSchedules", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+
+		resp, httpRes, err := apiClient.SourcesAPI.GetSourceSchedules(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -569,6 +626,21 @@ func Test_api_v2024_SourcesAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.SourcesAPI.UpdateSourceEntitlementRequestConfig(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesAPIService UpdateSourceSchedule", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+		var scheduleType string
+
+		resp, httpRes, err := apiClient.SourcesAPI.UpdateSourceSchedule(context.Background(), sourceId, scheduleType).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -931,9 +931,10 @@ docs/SavedSearchDetailFilters.md
 docs/SavedSearchName.md
 docs/Schedule.md
 docs/Schedule1.md
-docs/Schedule1Days.md
-docs/Schedule1Hours.md
-docs/Schedule1Months.md
+docs/Schedule2.md
+docs/Schedule2Days.md
+docs/Schedule2Hours.md
+docs/Schedule2Months.md
 docs/ScheduleDays.md
 docs/ScheduleHours.md
 docs/ScheduleMonths.md
@@ -1030,6 +1031,7 @@ docs/SourceManagerCorrelationMapping.md
 docs/SourceManagerCorrelationRule.md
 docs/SourceOwner.md
 docs/SourcePasswordPoliciesInner.md
+docs/SourceSchedule.md
 docs/SourceSchemasInner.md
 docs/SourceSyncJob.md
 docs/SourceSyncPayload.md
@@ -1956,9 +1958,10 @@ model_saved_search_detail_filters.go
 model_saved_search_name.go
 model_schedule.go
 model_schedule_1.go
-model_schedule_1_days.go
-model_schedule_1_hours.go
-model_schedule_1_months.go
+model_schedule_2.go
+model_schedule_2_days.go
+model_schedule_2_hours.go
+model_schedule_2_months.go
 model_schedule_days.go
 model_schedule_hours.go
 model_schedule_months.go
@@ -2050,6 +2053,7 @@ model_source_manager_correlation_mapping.go
 model_source_manager_correlation_rule.go
 model_source_owner.go
 model_source_password_policies_inner.go
+model_source_schedule.go
 model_source_schemas_inner.go
 model_source_sync_job.go
 model_source_sync_payload.go

@@ -28,7 +28,7 @@ type SodPolicySchedule struct {
 	Modified *time.Time `json:"modified,omitempty"`
 	// SOD Policy schedule description
 	Description *string `json:"description,omitempty"`
-	Schedule *Schedule1 `json:"schedule,omitempty"`
+	Schedule *Schedule2 `json:"schedule,omitempty"`
 	Recipients []SodRecipient `json:"recipients,omitempty"`
 	// Indicates if empty results need to be emailed
 	EmailEmptyResults *bool `json:"emailEmptyResults,omitempty"`
@@ -191,9 +191,9 @@ func (o *SodPolicySchedule) SetDescription(v string) {
 }
 
 // GetSchedule returns the Schedule field value if set, zero value otherwise.
-func (o *SodPolicySchedule) GetSchedule() Schedule1 {
+func (o *SodPolicySchedule) GetSchedule() Schedule2 {
 	if o == nil || IsNil(o.Schedule) {
-		var ret Schedule1
+		var ret Schedule2
 		return ret
 	}
 	return *o.Schedule
@@ -201,7 +201,7 @@ func (o *SodPolicySchedule) GetSchedule() Schedule1 {
 
 // GetScheduleOk returns a tuple with the Schedule field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SodPolicySchedule) GetScheduleOk() (*Schedule1, bool) {
+func (o *SodPolicySchedule) GetScheduleOk() (*Schedule2, bool) {
 	if o == nil || IsNil(o.Schedule) {
 		return nil, false
 	}
@@ -217,8 +217,8 @@ func (o *SodPolicySchedule) HasSchedule() bool {
 	return false
 }
 
-// SetSchedule gets a reference to the given Schedule1 and assigns it to the Schedule field.
-func (o *SodPolicySchedule) SetSchedule(v Schedule1) {
+// SetSchedule gets a reference to the given Schedule2 and assigns it to the Schedule field.
+func (o *SodPolicySchedule) SetSchedule(v Schedule2) {
 	o.Schedule = &v
 }
 

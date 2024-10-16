@@ -582,11 +582,13 @@ Class | Method | HTTP request | Description
 *SourceUsagesAPI* | [**GetUsagesBySourceId**](docs/SourceUsagesAPI.md#getusagesbysourceid) | **Get** /source-usages/{sourceId}/summaries | Returns source usage insights
 *SourcesAPI* | [**CreateProvisioningPolicy**](docs/SourcesAPI.md#createprovisioningpolicy) | **Post** /sources/{sourceId}/provisioning-policies | Create Provisioning Policy
 *SourcesAPI* | [**CreateSource**](docs/SourcesAPI.md#createsource) | **Post** /sources | Creates a source in IdentityNow.
+*SourcesAPI* | [**CreateSourceSchedule**](docs/SourcesAPI.md#createsourceschedule) | **Post** /sources/{sourceId}/schedules | Create Schedule on Source
 *SourcesAPI* | [**CreateSourceSchema**](docs/SourcesAPI.md#createsourceschema) | **Post** /sources/{sourceId}/schemas | Create Schema on Source
 *SourcesAPI* | [**DeleteAccountsAsync**](docs/SourcesAPI.md#deleteaccountsasync) | **Post** /sources/{id}/remove-accounts | Remove All Accounts in a Source
 *SourcesAPI* | [**DeleteNativeChangeDetectionConfig**](docs/SourcesAPI.md#deletenativechangedetectionconfig) | **Delete** /sources/{sourceId}/native-change-detection-config | Delete Native Change Detection Configuration
 *SourcesAPI* | [**DeleteProvisioningPolicy**](docs/SourcesAPI.md#deleteprovisioningpolicy) | **Delete** /sources/{sourceId}/provisioning-policies/{usageType} | Delete Provisioning Policy by UsageType
 *SourcesAPI* | [**DeleteSource**](docs/SourcesAPI.md#deletesource) | **Delete** /sources/{id} | Delete Source by ID
+*SourcesAPI* | [**DeleteSourceSchedule**](docs/SourcesAPI.md#deletesourceschedule) | **Delete** /sources/{sourceId}/schedules/{scheduleType} | Delete Source Schedule by type.
 *SourcesAPI* | [**DeleteSourceSchema**](docs/SourcesAPI.md#deletesourceschema) | **Delete** /sources/{sourceId}/schemas/{schemaId} | Delete Source Schema by ID
 *SourcesAPI* | [**GetAccountsSchema**](docs/SourcesAPI.md#getaccountsschema) | **Get** /sources/{id}/schemas/accounts | Downloads source accounts schema template
 *SourcesAPI* | [**GetEntitlementsSchema**](docs/SourcesAPI.md#getentitlementsschema) | **Get** /sources/{id}/schemas/entitlements | Downloads source entitlements schema template
@@ -597,6 +599,8 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**GetSourceConfig**](docs/SourcesAPI.md#getsourceconfig) | **Get** /sources/{id}/connectors/source-config | Gets source config with language translations
 *SourcesAPI* | [**GetSourceEntitlementRequestConfig**](docs/SourcesAPI.md#getsourceentitlementrequestconfig) | **Get** /sources/{id}/entitlement-request-config | Get Source Entitlement Request Configuration
 *SourcesAPI* | [**GetSourceHealth**](docs/SourcesAPI.md#getsourcehealth) | **Get** /sources/{sourceId}/source-health | Fetches source health by id
+*SourcesAPI* | [**GetSourceSchedule**](docs/SourcesAPI.md#getsourceschedule) | **Get** /sources/{sourceId}/schedules/{scheduleType} | Get Source Schedule by Type
+*SourcesAPI* | [**GetSourceSchedules**](docs/SourcesAPI.md#getsourceschedules) | **Get** /sources/{sourceId}/schedules | List Schedules on Source
 *SourcesAPI* | [**GetSourceSchema**](docs/SourcesAPI.md#getsourceschema) | **Get** /sources/{sourceId}/schemas/{schemaId} | Get Source Schema by ID
 *SourcesAPI* | [**GetSourceSchemas**](docs/SourcesAPI.md#getsourceschemas) | **Get** /sources/{sourceId}/schemas | List Schemas on Source
 *SourcesAPI* | [**ImportAccounts**](docs/SourcesAPI.md#importaccounts) | **Post** /sources/{id}/load-accounts | Account Aggregation
@@ -620,6 +624,7 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**UpdateProvisioningPolicy**](docs/SourcesAPI.md#updateprovisioningpolicy) | **Patch** /sources/{sourceId}/provisioning-policies/{usageType} | Partial update of Provisioning Policy
 *SourcesAPI* | [**UpdateSource**](docs/SourcesAPI.md#updatesource) | **Patch** /sources/{id} | Update Source (Partial)
 *SourcesAPI* | [**UpdateSourceEntitlementRequestConfig**](docs/SourcesAPI.md#updatesourceentitlementrequestconfig) | **Put** /sources/{id}/entitlement-request-config | Update Source Entitlement Request Configuration
+*SourcesAPI* | [**UpdateSourceSchedule**](docs/SourcesAPI.md#updatesourceschedule) | **Patch** /sources/{sourceId}/schedules/{scheduleType} | Update Source Schedule (Partial)
 *SourcesAPI* | [**UpdateSourceSchema**](docs/SourcesAPI.md#updatesourceschema) | **Patch** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Partial)
 *SuggestedEntitlementDescriptionAPI* | [**GetSedBatchStats**](docs/SuggestedEntitlementDescriptionAPI.md#getsedbatchstats) | **Get** /suggested-entitlement-description-batches/{batchId}/stats | Submit Sed Batch Stats Request
 *SuggestedEntitlementDescriptionAPI* | [**GetSedBatches**](docs/SuggestedEntitlementDescriptionAPI.md#getsedbatches) | **Get** /suggested-entitlement-description-batches | List Sed Batch Request
@@ -1485,9 +1490,10 @@ Class | Method | HTTP request | Description
  - [SavedSearchName](docs/SavedSearchName.md)
  - [Schedule](docs/Schedule.md)
  - [Schedule1](docs/Schedule1.md)
- - [Schedule1Days](docs/Schedule1Days.md)
- - [Schedule1Hours](docs/Schedule1Hours.md)
- - [Schedule1Months](docs/Schedule1Months.md)
+ - [Schedule2](docs/Schedule2.md)
+ - [Schedule2Days](docs/Schedule2Days.md)
+ - [Schedule2Hours](docs/Schedule2Hours.md)
+ - [Schedule2Months](docs/Schedule2Months.md)
  - [ScheduleDays](docs/ScheduleDays.md)
  - [ScheduleHours](docs/ScheduleHours.md)
  - [ScheduleMonths](docs/ScheduleMonths.md)
@@ -1579,6 +1585,7 @@ Class | Method | HTTP request | Description
  - [SourceManagerCorrelationRule](docs/SourceManagerCorrelationRule.md)
  - [SourceOwner](docs/SourceOwner.md)
  - [SourcePasswordPoliciesInner](docs/SourcePasswordPoliciesInner.md)
+ - [SourceSchedule](docs/SourceSchedule.md)
  - [SourceSchemasInner](docs/SourceSchemasInner.md)
  - [SourceSyncJob](docs/SourceSyncJob.md)
  - [SourceSyncPayload](docs/SourceSyncPayload.md)

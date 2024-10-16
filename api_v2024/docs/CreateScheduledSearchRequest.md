@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **SavedSearchId** | **string** | The ID of the saved search that will be executed. | 
 **Created** | Pointer to **NullableTime** | The date the scheduled search was initially created. | [optional] [readonly] 
 **Modified** | Pointer to **NullableTime** | The last date the scheduled search was modified. | [optional] [readonly] 
-**Schedule** | [**Schedule1**](Schedule1.md) |  | 
+**Schedule** | [**Schedule2**](Schedule2.md) |  | 
 **Recipients** | [**[]SearchScheduleRecipientsInner**](SearchScheduleRecipientsInner.md) | A list of identities that should receive the scheduled search report via email. | 
 **Enabled** | Pointer to **bool** | Indicates if the scheduled search is enabled.  | [optional] [default to false]
 **EmailEmptyResults** | Pointer to **bool** | Indicates if email generation should occur when search returns no results.  | [optional] [default to false]
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewCreateScheduledSearchRequest
 
-`func NewCreateScheduledSearchRequest(savedSearchId string, schedule Schedule1, recipients []SearchScheduleRecipientsInner, ) *CreateScheduledSearchRequest`
+`func NewCreateScheduledSearchRequest(savedSearchId string, schedule Schedule2, recipients []SearchScheduleRecipientsInner, ) *CreateScheduledSearchRequest`
 
 NewCreateScheduledSearchRequest instantiates a new CreateScheduledSearchRequest object
 This constructor will assign default values to properties that have it defined,
@@ -196,20 +196,20 @@ HasModified returns a boolean if a field has been set.
 UnsetModified ensures that no value is present for Modified, not even an explicit nil
 ### GetSchedule
 
-`func (o *CreateScheduledSearchRequest) GetSchedule() Schedule1`
+`func (o *CreateScheduledSearchRequest) GetSchedule() Schedule2`
 
 GetSchedule returns the Schedule field if non-nil, zero value otherwise.
 
 ### GetScheduleOk
 
-`func (o *CreateScheduledSearchRequest) GetScheduleOk() (*Schedule1, bool)`
+`func (o *CreateScheduledSearchRequest) GetScheduleOk() (*Schedule2, bool)`
 
 GetScheduleOk returns a tuple with the Schedule field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSchedule
 
-`func (o *CreateScheduledSearchRequest) SetSchedule(v Schedule1)`
+`func (o *CreateScheduledSearchRequest) SetSchedule(v Schedule2)`
 
 SetSchedule sets Schedule field to given value.
 
