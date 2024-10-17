@@ -49,7 +49,7 @@ type Role struct {
 	Dimensional NullableBool `json:"dimensional,omitempty"`
 	// List of references to dimensions to which this Role is assigned. This field is only relevant if the Role is dimensional.
 	DimensionRefs []DimensionRef `json:"dimensionRefs,omitempty"`
-	AccessModelMetadata []AttributeDTOList `json:"accessModelMetadata,omitempty"`
+	AccessModelMetadata *AttributeDTOList `json:"accessModelMetadata,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -649,17 +649,17 @@ func (o *Role) SetDimensionRefs(v []DimensionRef) {
 }
 
 // GetAccessModelMetadata returns the AccessModelMetadata field value if set, zero value otherwise.
-func (o *Role) GetAccessModelMetadata() []AttributeDTOList {
+func (o *Role) GetAccessModelMetadata() AttributeDTOList {
 	if o == nil || IsNil(o.AccessModelMetadata) {
-		var ret []AttributeDTOList
+		var ret AttributeDTOList
 		return ret
 	}
-	return o.AccessModelMetadata
+	return *o.AccessModelMetadata
 }
 
 // GetAccessModelMetadataOk returns a tuple with the AccessModelMetadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Role) GetAccessModelMetadataOk() ([]AttributeDTOList, bool) {
+func (o *Role) GetAccessModelMetadataOk() (*AttributeDTOList, bool) {
 	if o == nil || IsNil(o.AccessModelMetadata) {
 		return nil, false
 	}
@@ -675,9 +675,9 @@ func (o *Role) HasAccessModelMetadata() bool {
 	return false
 }
 
-// SetAccessModelMetadata gets a reference to the given []AttributeDTOList and assigns it to the AccessModelMetadata field.
-func (o *Role) SetAccessModelMetadata(v []AttributeDTOList) {
-	o.AccessModelMetadata = v
+// SetAccessModelMetadata gets a reference to the given AttributeDTOList and assigns it to the AccessModelMetadata field.
+func (o *Role) SetAccessModelMetadata(v AttributeDTOList) {
+	o.AccessModelMetadata = &v
 }
 
 func (o Role) MarshalJSON() ([]byte, error) {

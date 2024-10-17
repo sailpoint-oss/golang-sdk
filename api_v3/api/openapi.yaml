@@ -54241,19 +54241,20 @@ components:
         name: Role 2567
         modified: 2021-03-02T20:22:28.104Z
         accessModelMetadata:
-        - key: iscFederalClassifications
-          name: Federal Classifications
-          multiselect: true
-          status: active
-          type: governance
-          objectTypes:
-          - general
-          description: Classification used by government organizations to specify
-            the level of confidentiality for an access item.
-          values:
-          - value: secret
-            name: Secret
+          attributes:
+          - key: iscPrivacy
+            name: Privacy
+            multiselect: false
             status: active
+            type: governance
+            objectTypes:
+            - all
+            description: Specifies the level of privacy associated with an access
+              item.
+            values:
+            - value: public
+              name: Public
+              status: active
         id: 2c918086749d78830174a1a40e121518
         requestable: true
       properties:
@@ -54348,23 +54349,7 @@ components:
           nullable: true
           type: array
         accessModelMetadata:
-          example:
-          - key: iscFederalClassifications
-            name: Federal Classifications
-            multiselect: true
-            status: active
-            type: governance
-            objectTypes:
-            - general
-            description: Classification used by government organizations to specify
-              the level of confidentiality for an access item.
-            values:
-            - value: secret
-              name: Secret
-              status: active
-          items:
-            $ref: '#/components/schemas/AttributeDTOList'
-          type: array
+          $ref: '#/components/schemas/AttributeDTOList'
       required:
       - name
       - owner
@@ -60494,6 +60479,20 @@ components:
           type: string
       type: object
     AttributeDTOList:
+      example:
+        attributes:
+        - key: iscPrivacy
+          name: Privacy
+          multiselect: false
+          status: active
+          type: governance
+          objectTypes:
+          - all
+          description: Specifies the level of privacy associated with an access item.
+          values:
+          - value: public
+            name: Public
+            status: active
       properties:
         attributes:
           example:

@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **Segments** | Pointer to **[]string** | List of IDs of segments, if any, to which this Role is assigned. | [optional] 
 **Dimensional** | Pointer to **NullableBool** | Whether the Role is dimensional. | [optional] [default to false]
 **DimensionRefs** | Pointer to [**[]DimensionRef**](DimensionRef.md) | List of references to dimensions to which this Role is assigned. This field is only relevant if the Role is dimensional. | [optional] 
-**AccessModelMetadata** | Pointer to [**[]AttributeDTOList**](AttributeDTOList.md) |  | [optional] 
+**AccessModelMetadata** | Pointer to [**AttributeDTOList**](AttributeDTOList.md) |  | [optional] 
 
 ## Methods
 
@@ -529,20 +529,20 @@ HasDimensionRefs returns a boolean if a field has been set.
 UnsetDimensionRefs ensures that no value is present for DimensionRefs, not even an explicit nil
 ### GetAccessModelMetadata
 
-`func (o *Role) GetAccessModelMetadata() []AttributeDTOList`
+`func (o *Role) GetAccessModelMetadata() AttributeDTOList`
 
 GetAccessModelMetadata returns the AccessModelMetadata field if non-nil, zero value otherwise.
 
 ### GetAccessModelMetadataOk
 
-`func (o *Role) GetAccessModelMetadataOk() (*[]AttributeDTOList, bool)`
+`func (o *Role) GetAccessModelMetadataOk() (*AttributeDTOList, bool)`
 
 GetAccessModelMetadataOk returns a tuple with the AccessModelMetadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessModelMetadata
 
-`func (o *Role) SetAccessModelMetadata(v []AttributeDTOList)`
+`func (o *Role) SetAccessModelMetadata(v AttributeDTOList)`
 
 SetAccessModelMetadata sets AccessModelMetadata field to given value.
 
