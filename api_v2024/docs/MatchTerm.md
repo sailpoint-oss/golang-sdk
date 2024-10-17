@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Op** | Pointer to **string** | The operator between name and value | [optional] 
 **Container** | Pointer to **bool** | If it is a container or a real match term | [optional] [default to false]
 **And** | Pointer to **bool** | If it is AND logical operator for the children match terms | [optional] [default to false]
-**Children** | Pointer to [**[]MatchTerm**](MatchTerm.md) | The children under this match term | [optional] 
+**Children** | Pointer to **[]map[string]interface{}** | The children under this match term | [optional] 
 
 ## Methods
 
@@ -157,20 +157,20 @@ HasAnd returns a boolean if a field has been set.
 
 ### GetChildren
 
-`func (o *MatchTerm) GetChildren() []MatchTerm`
+`func (o *MatchTerm) GetChildren() []map[string]interface{}`
 
 GetChildren returns the Children field if non-nil, zero value otherwise.
 
 ### GetChildrenOk
 
-`func (o *MatchTerm) GetChildrenOk() (*[]MatchTerm, bool)`
+`func (o *MatchTerm) GetChildrenOk() (*[]map[string]interface{}, bool)`
 
 GetChildrenOk returns a tuple with the Children field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetChildren
 
-`func (o *MatchTerm) SetChildren(v []MatchTerm)`
+`func (o *MatchTerm) SetChildren(v []map[string]interface{})`
 
 SetChildren sets Children field to given value.
 

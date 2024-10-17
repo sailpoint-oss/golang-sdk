@@ -30,7 +30,7 @@ type MatchTerm struct {
 	// If it is AND logical operator for the children match terms
 	And *bool `json:"and,omitempty"`
 	// The children under this match term
-	Children []MatchTerm `json:"children,omitempty"`
+	Children []map[string]interface{} `json:"children,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -222,9 +222,9 @@ func (o *MatchTerm) SetAnd(v bool) {
 }
 
 // GetChildren returns the Children field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *MatchTerm) GetChildren() []MatchTerm {
+func (o *MatchTerm) GetChildren() []map[string]interface{} {
 	if o == nil {
-		var ret []MatchTerm
+		var ret []map[string]interface{}
 		return ret
 	}
 	return o.Children
@@ -233,7 +233,7 @@ func (o *MatchTerm) GetChildren() []MatchTerm {
 // GetChildrenOk returns a tuple with the Children field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *MatchTerm) GetChildrenOk() ([]MatchTerm, bool) {
+func (o *MatchTerm) GetChildrenOk() ([]map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Children) {
 		return nil, false
 	}
@@ -249,8 +249,8 @@ func (o *MatchTerm) HasChildren() bool {
 	return false
 }
 
-// SetChildren gets a reference to the given []MatchTerm and assigns it to the Children field.
-func (o *MatchTerm) SetChildren(v []MatchTerm) {
+// SetChildren gets a reference to the given []map[string]interface{} and assigns it to the Children field.
+func (o *MatchTerm) SetChildren(v []map[string]interface{}) {
 	o.Children = v
 }
 
