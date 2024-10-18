@@ -31,8 +31,8 @@ type WorkgroupDto struct {
 	MemberCount *int64 `json:"memberCount,omitempty"`
 	// Number of connections in the governance group.
 	ConnectionCount *int64 `json:"connectionCount,omitempty"`
-	Created *time.Time `json:"created,omitempty"`
-	Modified *time.Time `json:"modified,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
+	Modified *SailPointTime  `json:"modified,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -248,9 +248,9 @@ func (o *WorkgroupDto) SetConnectionCount(v int64) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *WorkgroupDto) GetCreated() time.Time {
+func (o *WorkgroupDto) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -258,7 +258,7 @@ func (o *WorkgroupDto) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkgroupDto) GetCreatedOk() (*time.Time, bool) {
+func (o *WorkgroupDto) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -275,14 +275,14 @@ func (o *WorkgroupDto) HasCreated() bool {
 }
 
 // SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *WorkgroupDto) SetCreated(v time.Time) {
+func (o *WorkgroupDto) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *WorkgroupDto) GetModified() time.Time {
+func (o *WorkgroupDto) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified
@@ -290,7 +290,7 @@ func (o *WorkgroupDto) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkgroupDto) GetModifiedOk() (*time.Time, bool) {
+func (o *WorkgroupDto) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -307,7 +307,7 @@ func (o *WorkgroupDto) HasModified() bool {
 }
 
 // SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *WorkgroupDto) SetModified(v time.Time) {
+func (o *WorkgroupDto) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 
@@ -351,6 +351,39 @@ func (o WorkgroupDto) ToMap() (map[string]interface{}, error) {
 	}
 
 	return toSerialize, nil
+}
+
+type SailPointTime struct {
+    time.Time
+}
+    
+func (m *SailPointTime) UnmarshalJSON(data []byte) error {
+        if string(data) == "null" || string(data) == `""` {
+            return nil;
+        }
+    
+        // Strip the quotes from the data
+        str := string(data);
+        str = str[1 : len(str)-1];
+    
+        // Try parsing with seconds first
+        formats := []string{
+            time.RFC3339,                   // Format with seconds (e.g., "2012-04-23T18:25:43Z")
+            "2006-01-02T15:04Z",            // Format without seconds (e.g., "2012-04-23T18:25Z")
+            "2006-01-02T15:04:05.999999999", // Optional milliseconds and nanoseconds
+        }
+    
+        var err error;
+        for _, format := range formats {
+            var t time.Time;
+            t, err = time.Parse(format, str);
+            if err == nil {
+                *m = SailPointTime{t};
+                return nil;
+            }
+        }
+    
+        return nil;
 }
 
 func (o *WorkgroupDto) UnmarshalJSON(data []byte) (err error) {
