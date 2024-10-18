@@ -239,15 +239,10 @@ func (o *WorkgroupDto) UnmarshalJSON(data []byte) (err error) {`;
         } else if (line.includes('func (o *WorkgroupDto) SetCreated(v time.Time) {')) {
           fileOut.push(line.replace('func (o *WorkgroupDto) SetCreated(v time.Time) {', 'func (o *WorkgroupDto) SetCreated(v SailPointTime) {'));
           madeChange = true;
-        }else if (line.includes('func (o *WorkgroupDto) UnmarshalJSON(data []byte) (err error) {')) {
+        } else if (line.includes('func (o *WorkgroupDto) UnmarshalJSON(data []byte) (err error) {')) {
           fileOut.push(line.replace('func (o *WorkgroupDto) UnmarshalJSON(data []byte) (err error) {', sailPointTimeCode));
           madeChange = true;
-        } else if (line.includes('')) {
-          fileOut.push(line.replace('', ''));
-          madeChange = true;
-        } 
-        
-        else {
+        } else {
           fileOut.push(line);
         }
       }
