@@ -32,6 +32,8 @@ type CreatePersonalAccessTokenResponse struct {
 	Owner PatOwner `json:"owner"`
 	// The date and time, down to the millisecond, when this personal access token was created.
 	Created time.Time `json:"created"`
+	// Number of seconds an access token is valid when generated using this Personal Access Token. If no value is specified, the token will be created with the default value of 43200.
+	AccessTokenValiditySeconds int32 `json:"accessTokenValiditySeconds"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -41,7 +43,7 @@ type _CreatePersonalAccessTokenResponse CreatePersonalAccessTokenResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreatePersonalAccessTokenResponse(id string, secret string, scope []string, name string, owner PatOwner, created time.Time) *CreatePersonalAccessTokenResponse {
+func NewCreatePersonalAccessTokenResponse(id string, secret string, scope []string, name string, owner PatOwner, created time.Time, accessTokenValiditySeconds int32) *CreatePersonalAccessTokenResponse {
 	this := CreatePersonalAccessTokenResponse{}
 	this.Id = id
 	this.Secret = secret
@@ -49,6 +51,7 @@ func NewCreatePersonalAccessTokenResponse(id string, secret string, scope []stri
 	this.Name = name
 	this.Owner = owner
 	this.Created = created
+	this.AccessTokenValiditySeconds = accessTokenValiditySeconds
 	return &this
 }
 
@@ -206,6 +209,30 @@ func (o *CreatePersonalAccessTokenResponse) SetCreated(v time.Time) {
 	o.Created = v
 }
 
+// GetAccessTokenValiditySeconds returns the AccessTokenValiditySeconds field value
+func (o *CreatePersonalAccessTokenResponse) GetAccessTokenValiditySeconds() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.AccessTokenValiditySeconds
+}
+
+// GetAccessTokenValiditySecondsOk returns a tuple with the AccessTokenValiditySeconds field value
+// and a boolean to check if the value has been set.
+func (o *CreatePersonalAccessTokenResponse) GetAccessTokenValiditySecondsOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AccessTokenValiditySeconds, true
+}
+
+// SetAccessTokenValiditySeconds sets field value
+func (o *CreatePersonalAccessTokenResponse) SetAccessTokenValiditySeconds(v int32) {
+	o.AccessTokenValiditySeconds = v
+}
+
 func (o CreatePersonalAccessTokenResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -224,6 +251,7 @@ func (o CreatePersonalAccessTokenResponse) ToMap() (map[string]interface{}, erro
 	toSerialize["name"] = o.Name
 	toSerialize["owner"] = o.Owner
 	toSerialize["created"] = o.Created
+	toSerialize["accessTokenValiditySeconds"] = o.AccessTokenValiditySeconds
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -243,6 +271,7 @@ func (o *CreatePersonalAccessTokenResponse) UnmarshalJSON(data []byte) (err erro
 		"name",
 		"owner",
 		"created",
+		"accessTokenValiditySeconds",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -278,6 +307,7 @@ func (o *CreatePersonalAccessTokenResponse) UnmarshalJSON(data []byte) (err erro
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "owner")
 		delete(additionalProperties, "created")
+		delete(additionalProperties, "accessTokenValiditySeconds")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -10,12 +10,13 @@ Name | Type | Description | Notes
 **Name** | **string** | The name of the personal access token. Cannot be the same as other personal access tokens owned by a user. | 
 **Owner** | [**PatOwner**](PatOwner.md) |  | 
 **Created** | **time.Time** | The date and time, down to the millisecond, when this personal access token was created. | 
+**AccessTokenValiditySeconds** | **int32** | Number of seconds an access token is valid when generated using this Personal Access Token. If no value is specified, the token will be created with the default value of 43200. | 
 
 ## Methods
 
 ### NewCreatePersonalAccessTokenResponse
 
-`func NewCreatePersonalAccessTokenResponse(id string, secret string, scope []string, name string, owner PatOwner, created time.Time, ) *CreatePersonalAccessTokenResponse`
+`func NewCreatePersonalAccessTokenResponse(id string, secret string, scope []string, name string, owner PatOwner, created time.Time, accessTokenValiditySeconds int32, ) *CreatePersonalAccessTokenResponse`
 
 NewCreatePersonalAccessTokenResponse instantiates a new CreatePersonalAccessTokenResponse object
 This constructor will assign default values to properties that have it defined,
@@ -158,6 +159,26 @@ and a boolean to check if the value has been set.
 `func (o *CreatePersonalAccessTokenResponse) SetCreated(v time.Time)`
 
 SetCreated sets Created field to given value.
+
+
+### GetAccessTokenValiditySeconds
+
+`func (o *CreatePersonalAccessTokenResponse) GetAccessTokenValiditySeconds() int32`
+
+GetAccessTokenValiditySeconds returns the AccessTokenValiditySeconds field if non-nil, zero value otherwise.
+
+### GetAccessTokenValiditySecondsOk
+
+`func (o *CreatePersonalAccessTokenResponse) GetAccessTokenValiditySecondsOk() (*int32, bool)`
+
+GetAccessTokenValiditySecondsOk returns a tuple with the AccessTokenValiditySeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessTokenValiditySeconds
+
+`func (o *CreatePersonalAccessTokenResponse) SetAccessTokenValiditySeconds(v int32)`
+
+SetAccessTokenValiditySeconds sets AccessTokenValiditySeconds field to given value.
 
 
 

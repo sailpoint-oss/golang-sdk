@@ -24,6 +24,8 @@ type CreatePersonalAccessTokenRequest struct {
 	Name string `json:"name"`
 	// Scopes of the personal access token. If no scope is specified, the token will be created with the default scope \"sp:scopes:all\". This means the personal access token will have all the rights of the owner who created it.
 	Scope []string `json:"scope,omitempty"`
+	// Number of seconds an access token is valid when generated using this Personal Access Token. If no value is specified, the token will be created with the default value of 43200.
+	AccessTokenValiditySeconds *int32 `json:"accessTokenValiditySeconds,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -104,6 +106,38 @@ func (o *CreatePersonalAccessTokenRequest) SetScope(v []string) {
 	o.Scope = v
 }
 
+// GetAccessTokenValiditySeconds returns the AccessTokenValiditySeconds field value if set, zero value otherwise.
+func (o *CreatePersonalAccessTokenRequest) GetAccessTokenValiditySeconds() int32 {
+	if o == nil || IsNil(o.AccessTokenValiditySeconds) {
+		var ret int32
+		return ret
+	}
+	return *o.AccessTokenValiditySeconds
+}
+
+// GetAccessTokenValiditySecondsOk returns a tuple with the AccessTokenValiditySeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreatePersonalAccessTokenRequest) GetAccessTokenValiditySecondsOk() (*int32, bool) {
+	if o == nil || IsNil(o.AccessTokenValiditySeconds) {
+		return nil, false
+	}
+	return o.AccessTokenValiditySeconds, true
+}
+
+// HasAccessTokenValiditySeconds returns a boolean if a field has been set.
+func (o *CreatePersonalAccessTokenRequest) HasAccessTokenValiditySeconds() bool {
+	if o != nil && !IsNil(o.AccessTokenValiditySeconds) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessTokenValiditySeconds gets a reference to the given int32 and assigns it to the AccessTokenValiditySeconds field.
+func (o *CreatePersonalAccessTokenRequest) SetAccessTokenValiditySeconds(v int32) {
+	o.AccessTokenValiditySeconds = &v
+}
+
 func (o CreatePersonalAccessTokenRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -117,6 +151,9 @@ func (o CreatePersonalAccessTokenRequest) ToMap() (map[string]interface{}, error
 	toSerialize["name"] = o.Name
 	if o.Scope != nil {
 		toSerialize["scope"] = o.Scope
+	}
+	if !IsNil(o.AccessTokenValiditySeconds) {
+		toSerialize["accessTokenValiditySeconds"] = o.AccessTokenValiditySeconds
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -163,6 +200,7 @@ func (o *CreatePersonalAccessTokenRequest) UnmarshalJSON(data []byte) (err error
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "scope")
+		delete(additionalProperties, "accessTokenValiditySeconds")
 		o.AdditionalProperties = additionalProperties
 	}
 
