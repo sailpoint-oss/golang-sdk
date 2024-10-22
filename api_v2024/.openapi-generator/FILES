@@ -303,6 +303,7 @@ docs/CampaignActivatedCampaign.md
 docs/CampaignActivatedCampaignCampaignOwner.md
 docs/CampaignAlert.md
 docs/CampaignAllOfFilter.md
+docs/CampaignAllOfMachineAccountCampaignInfo.md
 docs/CampaignAllOfRoleCompositionCampaignInfo.md
 docs/CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.md
 docs/CampaignAllOfSearchCampaignInfo.md
@@ -846,6 +847,7 @@ docs/ReviewRecommendation.md
 docs/ReviewableAccessProfile.md
 docs/ReviewableEntitlement.md
 docs/ReviewableEntitlementAccount.md
+docs/ReviewableEntitlementAccountOwner.md
 docs/ReviewableRole.md
 docs/Reviewer.md
 docs/Reviewer1.md
@@ -1379,6 +1381,7 @@ model_campaign_activated_campaign.go
 model_campaign_activated_campaign_campaign_owner.go
 model_campaign_alert.go
 model_campaign_all_of_filter.go
+model_campaign_all_of_machine_account_campaign_info.go
 model_campaign_all_of_role_composition_campaign_info.go
 model_campaign_all_of_role_composition_campaign_info_remediator_ref.go
 model_campaign_all_of_search_campaign_info.go
@@ -1880,6 +1883,7 @@ model_review_recommendation.go
 model_reviewable_access_profile.go
 model_reviewable_entitlement.go
 model_reviewable_entitlement_account.go
+model_reviewable_entitlement_account_owner.go
 model_reviewable_role.go
 model_reviewer.go
 model_reviewer_1.go

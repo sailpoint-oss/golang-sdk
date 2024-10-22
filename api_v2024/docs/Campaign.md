@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **SourceOwnerCampaignInfo** | Pointer to [**CampaignAllOfSourceOwnerCampaignInfo**](CampaignAllOfSourceOwnerCampaignInfo.md) |  | [optional] 
 **SearchCampaignInfo** | Pointer to [**CampaignAllOfSearchCampaignInfo**](CampaignAllOfSearchCampaignInfo.md) |  | [optional] 
 **RoleCompositionCampaignInfo** | Pointer to [**CampaignAllOfRoleCompositionCampaignInfo**](CampaignAllOfRoleCompositionCampaignInfo.md) |  | [optional] 
+**MachineAccountCampaignInfo** | Pointer to [**CampaignAllOfMachineAccountCampaignInfo**](CampaignAllOfMachineAccountCampaignInfo.md) |  | [optional] 
 **SourcesWithOrphanEntitlements** | Pointer to [**[]CampaignAllOfSourcesWithOrphanEntitlements**](CampaignAllOfSourcesWithOrphanEntitlements.md) | A list of sources in the campaign that contain \\\&quot;orphan entitlements\\\&quot; (entitlements without a corresponding Managed Attribute). An empty list indicates the campaign has no orphan entitlements. Null indicates there may be unknown orphan entitlements in the campaign (the campaign was created before this feature was implemented). | [optional] [readonly] 
 **MandatoryCommentRequirement** | Pointer to **string** | Determines whether comments are required for decisions during certification reviews. You can require comments for all decisions, revoke-only decisions, or no decisions. By default, comments are not required for decisions. | [optional] 
 
@@ -530,6 +531,31 @@ SetRoleCompositionCampaignInfo sets RoleCompositionCampaignInfo field to given v
 `func (o *Campaign) HasRoleCompositionCampaignInfo() bool`
 
 HasRoleCompositionCampaignInfo returns a boolean if a field has been set.
+
+### GetMachineAccountCampaignInfo
+
+`func (o *Campaign) GetMachineAccountCampaignInfo() CampaignAllOfMachineAccountCampaignInfo`
+
+GetMachineAccountCampaignInfo returns the MachineAccountCampaignInfo field if non-nil, zero value otherwise.
+
+### GetMachineAccountCampaignInfoOk
+
+`func (o *Campaign) GetMachineAccountCampaignInfoOk() (*CampaignAllOfMachineAccountCampaignInfo, bool)`
+
+GetMachineAccountCampaignInfoOk returns a tuple with the MachineAccountCampaignInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMachineAccountCampaignInfo
+
+`func (o *Campaign) SetMachineAccountCampaignInfo(v CampaignAllOfMachineAccountCampaignInfo)`
+
+SetMachineAccountCampaignInfo sets MachineAccountCampaignInfo field to given value.
+
+### HasMachineAccountCampaignInfo
+
+`func (o *Campaign) HasMachineAccountCampaignInfo() bool`
+
+HasMachineAccountCampaignInfo returns a boolean if a field has been set.
 
 ### GetSourcesWithOrphanEntitlements
 

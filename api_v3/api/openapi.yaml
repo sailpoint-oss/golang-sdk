@@ -7175,6 +7175,8 @@ paths:
                 $ref: '#/components/examples/CreateCampaignSourceOwner'
               Role Composition:
                 $ref: '#/components/examples/CreateCampaignRoleComposition'
+              Machine Account:
+                $ref: '#/components/examples/CreateCampaignMachineAccount'
             schema:
               $ref: '#/components/schemas/Campaign'
         required: true
@@ -7191,6 +7193,8 @@ paths:
                   $ref: '#/components/examples/FullCampaignSourceOwner'
                 Role Composition:
                   $ref: '#/components/examples/FullCampaignRoleComposition'
+                Machine Account Owner:
+                  $ref: '#/components/examples/FullCampaignMachineAccount'
               schema:
                 $ref: '#/components/schemas/Campaign'
           description: "This response indicates that the requested campaign was successfully\
@@ -42170,6 +42174,22 @@ components:
           roleIds:
           - b15d609fc5c8434b865fe552315fda8f
         mandatoryCommentRequirement: NO_DECISIONS
+    CreateCampaignMachineAccount:
+      value:
+        name: Machine Account Owner Campaign
+        description: A review done by a Machine Account's owner.
+        deadline: 2024-12-25T06:00:00.468Z
+        type: MACHINE_ACCOUNT
+        emailNotificationEnabled: false
+        autoRevokeAllowed: false
+        recommendationsEnabled: false
+        filter:
+          type: CAMPAIGN_FILTER
+          id: 0c46fb26c6b20967a55517ee90d15b93
+        machineAccountCampaignInfo:
+          sourceIds:
+          - d988f117b7624a16ab0b64c439d5dbb8
+          reviewerType: ACCOUNT_OWNER
     FullCampaignManager:
       value:
         id: 5594f43b76804a6980ece5fdccf74be7
@@ -42191,6 +42211,7 @@ components:
         sourceOwnerCampaignInfo: null
         searchCampaignInfo: null
         roleCompositionCampaignInfo: null
+        machineAccountCampaignInfo: null
         alerts: null
         totalCertifications: 0
         completedCertifications: 0
@@ -42226,6 +42247,7 @@ components:
           identityIds: null
           accessConstraints: []
         roleCompositionCampaignInfo: null
+        machineAccountCampaignInfo: null
         alerts: null
         totalCertifications: 0
         completedCertifications: 0
@@ -42254,6 +42276,7 @@ components:
         - 612b31b1a0f04aaf83123bdb80e70db6
         searchCampaignInfo: null
         roleCompositionCampaignInfo: null
+        machineAccountCampaignInfo: null
         alerts: null
         totalCertifications: 0
         completedCertifications: 0
@@ -42295,7 +42318,36 @@ components:
         totalCertifications: 0
         completedCertifications: 0
         sourcesWithOrphanEntitlements: null
+        machineAccountCampaignInfo: null
         mandatoryCommentRequirement: NO_DECISIONS
+    FullCampaignMachineAccount:
+      value:
+        id: 3e9ff3d6555e4721b74695d5b578e847
+        name: Machine Account Owner Campaign
+        description: A review done by a machine account's owner.
+        deadline: 2024-05-07T19:43:38.186Z
+        type: MACHINE_ACCOUNT
+        status: PENDING
+        emailNotificationEnabled: false
+        autoRevokeAllowed: false
+        recommendationsEnabled: false
+        created: 2024-04-23T19:43:38.355Z
+        modified: 2024-04-23T19:43:38.355Z
+        filter: null
+        sunsetCommentsRequired: true
+        mandatoryCommentRequirement: NO_DECISIONS
+        sourceOwnerCampaignInfo: null
+        searchCampaignInfo: null
+        roleCompositionCampaignInfo: null
+        totalCertifications: 0
+        completedCertifications: 0
+        alerts: null
+        correlatedStatus: CORRELATED
+        sourcesWithOrphanEntitlements: []
+        machineAccountCampaignInfo:
+          sourceIds:
+          - d988f117b7624a16ab0b64c439d5dbb8
+          reviewerType: ACCOUNT_OWNER
     SlimCampaignManager:
       value:
         id: 2c918086719eec070171a7e3355a360a
@@ -44537,6 +44589,8 @@ components:
             $ref: '#/components/schemas/Campaign_allOf_searchCampaignInfo'
           roleCompositionCampaignInfo:
             $ref: '#/components/schemas/Campaign_allOf_roleCompositionCampaignInfo'
+          machineAccountCampaignInfo:
+            $ref: '#/components/schemas/Campaign_allOf_machineAccountCampaignInfo'
           sourcesWithOrphanEntitlements:
             description: A list of sources in the campaign that contain \"orphan entitlements\"
               (entitlements without a corresponding Managed Attribute). An empty list
@@ -44571,6 +44625,10 @@ components:
         recommendationsEnabled: true
         sunsetCommentsRequired: true
         created: 2020-03-03T22:15:13.611Z
+        machineAccountCampaignInfo:
+          reviewerType: ACCOUNT_OWNER
+          sourceIds:
+          - 0fbe863c063c4c88a35fd7f17e8a3df5
         description: Everyone needs to be reviewed by their manager
         type: MANAGER
         sourceOwnerCampaignInfo:
@@ -48529,6 +48587,7 @@ components:
           - SOURCE_OWNER
           - SEARCH
           - ROLE_COMPOSITION
+          - MACHINE_ACCOUNT
           example: MANAGER
           type: string
         emailNotificationEnabled:
@@ -48909,6 +48968,10 @@ components:
           recommendationsEnabled: true
           sunsetCommentsRequired: true
           created: 2020-03-03T22:15:13.611Z
+          machineAccountCampaignInfo:
+            reviewerType: ACCOUNT_OWNER
+            sourceIds:
+            - 0fbe863c063c4c88a35fd7f17e8a3df5
           description: Everyone needs to be reviewed by their manager
           type: MANAGER
           sourceOwnerCampaignInfo:
@@ -49290,10 +49353,16 @@ components:
               sourceName: ODS-AD-Source
               cloudGoverned: false
               account:
+                owner:
+                  displayName: Alison Ferguson
+                  id: 2c9180857182305e0171993737eb29e8
+                  type: IDENTITY
                 created: 2020-04-20T20:11:05.067Z
                 name: Alison Ferguso
                 modified: 2020-05-20T18:57:16.987Z
+                description: Account for Read/write to the company database
                 disabled: false
+                governanceGroupId: 2c9180857182305e0171993737eb29e6
                 id: 2c9180857182305e0171993737eb29e6
                 locked: false
                 type: IDENTITY
@@ -49334,10 +49403,16 @@ components:
               sourceName: ODS-AD-Source
               cloudGoverned: false
               account:
+                owner:
+                  displayName: Alison Ferguson
+                  id: 2c9180857182305e0171993737eb29e8
+                  type: IDENTITY
                 created: 2020-04-20T20:11:05.067Z
                 name: Alison Ferguso
                 modified: 2020-05-20T18:57:16.987Z
+                description: Account for Read/write to the company database
                 disabled: false
+                governanceGroupId: 2c9180857182305e0171993737eb29e6
                 id: 2c9180857182305e0171993737eb29e6
                 locked: false
                 type: IDENTITY
@@ -49387,10 +49462,16 @@ components:
                 sourceName: ODS-AD-Source
                 cloudGoverned: false
                 account:
+                  owner:
+                    displayName: Alison Ferguson
+                    id: 2c9180857182305e0171993737eb29e8
+                    type: IDENTITY
                   created: 2020-04-20T20:11:05.067Z
                   name: Alison Ferguso
                   modified: 2020-05-20T18:57:16.987Z
+                  description: Account for Read/write to the company database
                   disabled: false
+                  governanceGroupId: 2c9180857182305e0171993737eb29e6
                   id: 2c9180857182305e0171993737eb29e6
                   locked: false
                   type: IDENTITY
@@ -49431,10 +49512,16 @@ components:
                 sourceName: ODS-AD-Source
                 cloudGoverned: false
                 account:
+                  owner:
+                    displayName: Alison Ferguson
+                    id: 2c9180857182305e0171993737eb29e8
+                    type: IDENTITY
                   created: 2020-04-20T20:11:05.067Z
                   name: Alison Ferguso
                   modified: 2020-05-20T18:57:16.987Z
+                  description: Account for Read/write to the company database
                   disabled: false
+                  governanceGroupId: 2c9180857182305e0171993737eb29e6
                   id: 2c9180857182305e0171993737eb29e6
                   locked: false
                   type: IDENTITY
@@ -49489,10 +49576,16 @@ components:
                 sourceName: ODS-AD-Source
                 cloudGoverned: false
                 account:
+                  owner:
+                    displayName: Alison Ferguson
+                    id: 2c9180857182305e0171993737eb29e8
+                    type: IDENTITY
                   created: 2020-04-20T20:11:05.067Z
                   name: Alison Ferguso
                   modified: 2020-05-20T18:57:16.987Z
+                  description: Account for Read/write to the company database
                   disabled: false
+                  governanceGroupId: 2c9180857182305e0171993737eb29e6
                   id: 2c9180857182305e0171993737eb29e6
                   locked: false
                   type: IDENTITY
@@ -49533,10 +49626,16 @@ components:
                 sourceName: ODS-AD-Source
                 cloudGoverned: false
                 account:
+                  owner:
+                    displayName: Alison Ferguson
+                    id: 2c9180857182305e0171993737eb29e8
+                    type: IDENTITY
                   created: 2020-04-20T20:11:05.067Z
                   name: Alison Ferguso
                   modified: 2020-05-20T18:57:16.987Z
+                  description: Account for Read/write to the company database
                   disabled: false
+                  governanceGroupId: 2c9180857182305e0171993737eb29e6
                   id: 2c9180857182305e0171993737eb29e6
                   locked: false
                   type: IDENTITY
@@ -49590,10 +49689,16 @@ components:
             sourceName: ODS-AD-Source
             cloudGoverned: false
             account:
+              owner:
+                displayName: Alison Ferguson
+                id: 2c9180857182305e0171993737eb29e8
+                type: IDENTITY
               created: 2020-04-20T20:11:05.067Z
               name: Alison Ferguso
               modified: 2020-05-20T18:57:16.987Z
+              description: Account for Read/write to the company database
               disabled: false
+              governanceGroupId: 2c9180857182305e0171993737eb29e6
               id: 2c9180857182305e0171993737eb29e6
               locked: false
               type: IDENTITY
@@ -49642,10 +49747,16 @@ components:
               sourceName: ODS-AD-Source
               cloudGoverned: false
               account:
+                owner:
+                  displayName: Alison Ferguson
+                  id: 2c9180857182305e0171993737eb29e8
+                  type: IDENTITY
                 created: 2020-04-20T20:11:05.067Z
                 name: Alison Ferguso
                 modified: 2020-05-20T18:57:16.987Z
+                description: Account for Read/write to the company database
                 disabled: false
+                governanceGroupId: 2c9180857182305e0171993737eb29e6
                 id: 2c9180857182305e0171993737eb29e6
                 locked: false
                 type: IDENTITY
@@ -49686,10 +49797,16 @@ components:
               sourceName: ODS-AD-Source
               cloudGoverned: false
               account:
+                owner:
+                  displayName: Alison Ferguson
+                  id: 2c9180857182305e0171993737eb29e8
+                  type: IDENTITY
                 created: 2020-04-20T20:11:05.067Z
                 name: Alison Ferguso
                 modified: 2020-05-20T18:57:16.987Z
+                description: Account for Read/write to the company database
                 disabled: false
+                governanceGroupId: 2c9180857182305e0171993737eb29e6
                 id: 2c9180857182305e0171993737eb29e6
                 locked: false
                 type: IDENTITY
@@ -49985,10 +50102,16 @@ components:
             sourceName: ODS-AD-Source
             cloudGoverned: false
             account:
+              owner:
+                displayName: Alison Ferguson
+                id: 2c9180857182305e0171993737eb29e8
+                type: IDENTITY
               created: 2020-04-20T20:11:05.067Z
               name: Alison Ferguso
               modified: 2020-05-20T18:57:16.987Z
+              description: Account for Read/write to the company database
               disabled: false
+              governanceGroupId: 2c9180857182305e0171993737eb29e6
               id: 2c9180857182305e0171993737eb29e6
               locked: false
               type: IDENTITY
@@ -50029,10 +50152,16 @@ components:
             sourceName: ODS-AD-Source
             cloudGoverned: false
             account:
+              owner:
+                displayName: Alison Ferguson
+                id: 2c9180857182305e0171993737eb29e8
+                type: IDENTITY
               created: 2020-04-20T20:11:05.067Z
               name: Alison Ferguso
               modified: 2020-05-20T18:57:16.987Z
+              description: Account for Read/write to the company database
               disabled: false
+              governanceGroupId: 2c9180857182305e0171993737eb29e6
               id: 2c9180857182305e0171993737eb29e6
               locked: false
               type: IDENTITY
@@ -50082,10 +50211,16 @@ components:
               sourceName: ODS-AD-Source
               cloudGoverned: false
               account:
+                owner:
+                  displayName: Alison Ferguson
+                  id: 2c9180857182305e0171993737eb29e8
+                  type: IDENTITY
                 created: 2020-04-20T20:11:05.067Z
                 name: Alison Ferguso
                 modified: 2020-05-20T18:57:16.987Z
+                description: Account for Read/write to the company database
                 disabled: false
+                governanceGroupId: 2c9180857182305e0171993737eb29e6
                 id: 2c9180857182305e0171993737eb29e6
                 locked: false
                 type: IDENTITY
@@ -50126,10 +50261,16 @@ components:
               sourceName: ODS-AD-Source
               cloudGoverned: false
               account:
+                owner:
+                  displayName: Alison Ferguson
+                  id: 2c9180857182305e0171993737eb29e8
+                  type: IDENTITY
                 created: 2020-04-20T20:11:05.067Z
                 name: Alison Ferguso
                 modified: 2020-05-20T18:57:16.987Z
+                description: Account for Read/write to the company database
                 disabled: false
+                governanceGroupId: 2c9180857182305e0171993737eb29e6
                 id: 2c9180857182305e0171993737eb29e6
                 locked: false
                 type: IDENTITY
@@ -50184,10 +50325,16 @@ components:
               sourceName: ODS-AD-Source
               cloudGoverned: false
               account:
+                owner:
+                  displayName: Alison Ferguson
+                  id: 2c9180857182305e0171993737eb29e8
+                  type: IDENTITY
                 created: 2020-04-20T20:11:05.067Z
                 name: Alison Ferguso
                 modified: 2020-05-20T18:57:16.987Z
+                description: Account for Read/write to the company database
                 disabled: false
+                governanceGroupId: 2c9180857182305e0171993737eb29e6
                 id: 2c9180857182305e0171993737eb29e6
                 locked: false
                 type: IDENTITY
@@ -50228,10 +50375,16 @@ components:
               sourceName: ODS-AD-Source
               cloudGoverned: false
               account:
+                owner:
+                  displayName: Alison Ferguson
+                  id: 2c9180857182305e0171993737eb29e8
+                  type: IDENTITY
                 created: 2020-04-20T20:11:05.067Z
                 name: Alison Ferguso
                 modified: 2020-05-20T18:57:16.987Z
+                description: Account for Read/write to the company database
                 disabled: false
+                governanceGroupId: 2c9180857182305e0171993737eb29e6
                 id: 2c9180857182305e0171993737eb29e6
                 locked: false
                 type: IDENTITY
@@ -50285,10 +50438,16 @@ components:
           sourceName: ODS-AD-Source
           cloudGoverned: false
           account:
+            owner:
+              displayName: Alison Ferguson
+              id: 2c9180857182305e0171993737eb29e8
+              type: IDENTITY
             created: 2020-04-20T20:11:05.067Z
             name: Alison Ferguso
             modified: 2020-05-20T18:57:16.987Z
+            description: Account for Read/write to the company database
             disabled: false
+            governanceGroupId: 2c9180857182305e0171993737eb29e6
             id: 2c9180857182305e0171993737eb29e6
             locked: false
             type: IDENTITY
@@ -50337,10 +50496,16 @@ components:
             sourceName: ODS-AD-Source
             cloudGoverned: false
             account:
+              owner:
+                displayName: Alison Ferguson
+                id: 2c9180857182305e0171993737eb29e8
+                type: IDENTITY
               created: 2020-04-20T20:11:05.067Z
               name: Alison Ferguso
               modified: 2020-05-20T18:57:16.987Z
+              description: Account for Read/write to the company database
               disabled: false
+              governanceGroupId: 2c9180857182305e0171993737eb29e6
               id: 2c9180857182305e0171993737eb29e6
               locked: false
               type: IDENTITY
@@ -50381,10 +50546,16 @@ components:
             sourceName: ODS-AD-Source
             cloudGoverned: false
             account:
+              owner:
+                displayName: Alison Ferguson
+                id: 2c9180857182305e0171993737eb29e8
+                type: IDENTITY
               created: 2020-04-20T20:11:05.067Z
               name: Alison Ferguso
               modified: 2020-05-20T18:57:16.987Z
+              description: Account for Read/write to the company database
               disabled: false
+              governanceGroupId: 2c9180857182305e0171993737eb29e6
               id: 2c9180857182305e0171993737eb29e6
               locked: false
               type: IDENTITY
@@ -59061,10 +59232,16 @@ components:
         sourceName: ODS-AD-Source
         cloudGoverned: false
         account:
+          owner:
+            displayName: Alison Ferguson
+            id: 2c9180857182305e0171993737eb29e8
+            type: IDENTITY
           created: 2020-04-20T20:11:05.067Z
           name: Alison Ferguso
           modified: 2020-05-20T18:57:16.987Z
+          description: Account for Read/write to the company database
           disabled: false
+          governanceGroupId: 2c9180857182305e0171993737eb29e6
           id: 2c9180857182305e0171993737eb29e6
           locked: false
           type: IDENTITY
@@ -59192,10 +59369,16 @@ components:
           sourceName: ODS-AD-Source
           cloudGoverned: false
           account:
+            owner:
+              displayName: Alison Ferguson
+              id: 2c9180857182305e0171993737eb29e8
+              type: IDENTITY
             created: 2020-04-20T20:11:05.067Z
             name: Alison Ferguso
             modified: 2020-05-20T18:57:16.987Z
+            description: Account for Read/write to the company database
             disabled: false
+            governanceGroupId: 2c9180857182305e0171993737eb29e6
             id: 2c9180857182305e0171993737eb29e6
             locked: false
             type: IDENTITY
@@ -59236,10 +59419,16 @@ components:
           sourceName: ODS-AD-Source
           cloudGoverned: false
           account:
+            owner:
+              displayName: Alison Ferguson
+              id: 2c9180857182305e0171993737eb29e8
+              type: IDENTITY
             created: 2020-04-20T20:11:05.067Z
             name: Alison Ferguso
             modified: 2020-05-20T18:57:16.987Z
+            description: Account for Read/write to the company database
             disabled: false
+            governanceGroupId: 2c9180857182305e0171993737eb29e6
             id: 2c9180857182305e0171993737eb29e6
             locked: false
             type: IDENTITY
@@ -59341,10 +59530,16 @@ components:
           sourceName: ODS-AD-Source
           cloudGoverned: false
           account:
+            owner:
+              displayName: Alison Ferguson
+              id: 2c9180857182305e0171993737eb29e8
+              type: IDENTITY
             created: 2020-04-20T20:11:05.067Z
             name: Alison Ferguso
             modified: 2020-05-20T18:57:16.987Z
+            description: Account for Read/write to the company database
             disabled: false
+            governanceGroupId: 2c9180857182305e0171993737eb29e6
             id: 2c9180857182305e0171993737eb29e6
             locked: false
             type: IDENTITY
@@ -59385,10 +59580,16 @@ components:
           sourceName: ODS-AD-Source
           cloudGoverned: false
           account:
+            owner:
+              displayName: Alison Ferguson
+              id: 2c9180857182305e0171993737eb29e8
+              type: IDENTITY
             created: 2020-04-20T20:11:05.067Z
             name: Alison Ferguso
             modified: 2020-05-20T18:57:16.987Z
+            description: Account for Read/write to the company database
             disabled: false
+            governanceGroupId: 2c9180857182305e0171993737eb29e6
             id: 2c9180857182305e0171993737eb29e6
             locked: false
             type: IDENTITY
@@ -59438,10 +59639,16 @@ components:
             sourceName: ODS-AD-Source
             cloudGoverned: false
             account:
+              owner:
+                displayName: Alison Ferguson
+                id: 2c9180857182305e0171993737eb29e8
+                type: IDENTITY
               created: 2020-04-20T20:11:05.067Z
               name: Alison Ferguso
               modified: 2020-05-20T18:57:16.987Z
+              description: Account for Read/write to the company database
               disabled: false
+              governanceGroupId: 2c9180857182305e0171993737eb29e6
               id: 2c9180857182305e0171993737eb29e6
               locked: false
               type: IDENTITY
@@ -59482,10 +59689,16 @@ components:
             sourceName: ODS-AD-Source
             cloudGoverned: false
             account:
+              owner:
+                displayName: Alison Ferguson
+                id: 2c9180857182305e0171993737eb29e8
+                type: IDENTITY
               created: 2020-04-20T20:11:05.067Z
               name: Alison Ferguso
               modified: 2020-05-20T18:57:16.987Z
+              description: Account for Read/write to the company database
               disabled: false
+              governanceGroupId: 2c9180857182305e0171993737eb29e6
               id: 2c9180857182305e0171993737eb29e6
               locked: false
               type: IDENTITY
@@ -59540,10 +59753,16 @@ components:
             sourceName: ODS-AD-Source
             cloudGoverned: false
             account:
+              owner:
+                displayName: Alison Ferguson
+                id: 2c9180857182305e0171993737eb29e8
+                type: IDENTITY
               created: 2020-04-20T20:11:05.067Z
               name: Alison Ferguso
               modified: 2020-05-20T18:57:16.987Z
+              description: Account for Read/write to the company database
               disabled: false
+              governanceGroupId: 2c9180857182305e0171993737eb29e6
               id: 2c9180857182305e0171993737eb29e6
               locked: false
               type: IDENTITY
@@ -59584,10 +59803,16 @@ components:
             sourceName: ODS-AD-Source
             cloudGoverned: false
             account:
+              owner:
+                displayName: Alison Ferguson
+                id: 2c9180857182305e0171993737eb29e8
+                type: IDENTITY
               created: 2020-04-20T20:11:05.067Z
               name: Alison Ferguso
               modified: 2020-05-20T18:57:16.987Z
+              description: Account for Read/write to the company database
               disabled: false
+              governanceGroupId: 2c9180857182305e0171993737eb29e6
               id: 2c9180857182305e0171993737eb29e6
               locked: false
               type: IDENTITY
@@ -64140,6 +64365,27 @@ components:
       required:
       - remediatorRef
       type: object
+    Campaign_allOf_machineAccountCampaignInfo:
+      description: Must be set only if the campaign type is MACHINE_ACCOUNT.
+      example:
+        reviewerType: ACCOUNT_OWNER
+        sourceIds:
+        - 0fbe863c063c4c88a35fd7f17e8a3df5
+      properties:
+        sourceIds:
+          description: The list of sources to be included in the campaign.
+          example:
+          - 0fbe863c063c4c88a35fd7f17e8a3df5
+          items:
+            type: string
+          type: array
+        reviewerType:
+          description: The reviewer's type.
+          enum:
+          - ACCOUNT_OWNER
+          example: ACCOUNT_OWNER
+          type: string
+      type: object
     Campaign_allOf_sourcesWithOrphanEntitlements:
       example:
         name: Source with orphan entitlements
@@ -65574,13 +65820,45 @@ components:
           example: Allen Albertson
           type: string
       type: object
+    ReviewableEntitlement_account_owner:
+      description: Information about the machine account owner
+      example:
+        displayName: Alison Ferguson
+        id: 2c9180857182305e0171993737eb29e8
+        type: IDENTITY
+      nullable: true
+      properties:
+        id:
+          description: The id associated with the machine account owner
+          example: 2c9180857182305e0171993737eb29e8
+          nullable: true
+          type: string
+        type:
+          description: An enumeration of the types of Owner supported within the IdentityNow
+            infrastructure.
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        displayName:
+          description: The machine account owner's display name
+          example: Alison Ferguson
+          nullable: true
+          type: string
+      type: object
     ReviewableEntitlement_account:
       description: Information about the status of the entitlement
       example:
+        owner:
+          displayName: Alison Ferguson
+          id: 2c9180857182305e0171993737eb29e8
+          type: IDENTITY
         created: 2020-04-20T20:11:05.067Z
         name: Alison Ferguso
         modified: 2020-05-20T18:57:16.987Z
+        description: Account for Read/write to the company database
         disabled: false
+        governanceGroupId: 2c9180857182305e0171993737eb29e6
         id: 2c9180857182305e0171993737eb29e6
         locked: false
         type: IDENTITY
@@ -65631,6 +65909,18 @@ components:
           type: string
         activityInsights:
           $ref: '#/components/schemas/ActivityInsights'
+        description:
+          description: Information about the account
+          example: Account for Read/write to the company database
+          nullable: true
+          type: string
+        governanceGroupId:
+          description: The id associated with the machine Account Governance Group
+          example: 2c9180857182305e0171993737eb29e6
+          nullable: true
+          type: string
+        owner:
+          $ref: '#/components/schemas/ReviewableEntitlement_account_owner'
       type: object
     Schedule_1_months:
       allOf:

@@ -13,6 +13,9 @@ Name | Type | Description | Notes
 **Created** | Pointer to **NullableTime** | When the account was created | [optional] 
 **Modified** | Pointer to **NullableTime** | When the account was last modified | [optional] 
 **ActivityInsights** | Pointer to [**ActivityInsights**](ActivityInsights.md) |  | [optional] 
+**Description** | Pointer to **NullableString** | Information about the account | [optional] 
+**GovernanceGroupId** | Pointer to **NullableString** | The id associated with the machine Account Governance Group | [optional] 
+**Owner** | Pointer to [**NullableReviewableEntitlementAccountOwner**](ReviewableEntitlementAccountOwner.md) |  | [optional] 
 
 ## Methods
 
@@ -298,6 +301,111 @@ SetActivityInsights sets ActivityInsights field to given value.
 
 HasActivityInsights returns a boolean if a field has been set.
 
+### GetDescription
+
+`func (o *ReviewableEntitlementAccount) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *ReviewableEntitlementAccount) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *ReviewableEntitlementAccount) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *ReviewableEntitlementAccount) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
+
+### SetDescriptionNil
+
+`func (o *ReviewableEntitlementAccount) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *ReviewableEntitlementAccount) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
+### GetGovernanceGroupId
+
+`func (o *ReviewableEntitlementAccount) GetGovernanceGroupId() string`
+
+GetGovernanceGroupId returns the GovernanceGroupId field if non-nil, zero value otherwise.
+
+### GetGovernanceGroupIdOk
+
+`func (o *ReviewableEntitlementAccount) GetGovernanceGroupIdOk() (*string, bool)`
+
+GetGovernanceGroupIdOk returns a tuple with the GovernanceGroupId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGovernanceGroupId
+
+`func (o *ReviewableEntitlementAccount) SetGovernanceGroupId(v string)`
+
+SetGovernanceGroupId sets GovernanceGroupId field to given value.
+
+### HasGovernanceGroupId
+
+`func (o *ReviewableEntitlementAccount) HasGovernanceGroupId() bool`
+
+HasGovernanceGroupId returns a boolean if a field has been set.
+
+### SetGovernanceGroupIdNil
+
+`func (o *ReviewableEntitlementAccount) SetGovernanceGroupIdNil(b bool)`
+
+ SetGovernanceGroupIdNil sets the value for GovernanceGroupId to be an explicit nil
+
+### UnsetGovernanceGroupId
+`func (o *ReviewableEntitlementAccount) UnsetGovernanceGroupId()`
+
+UnsetGovernanceGroupId ensures that no value is present for GovernanceGroupId, not even an explicit nil
+### GetOwner
+
+`func (o *ReviewableEntitlementAccount) GetOwner() ReviewableEntitlementAccountOwner`
+
+GetOwner returns the Owner field if non-nil, zero value otherwise.
+
+### GetOwnerOk
+
+`func (o *ReviewableEntitlementAccount) GetOwnerOk() (*ReviewableEntitlementAccountOwner, bool)`
+
+GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOwner
+
+`func (o *ReviewableEntitlementAccount) SetOwner(v ReviewableEntitlementAccountOwner)`
+
+SetOwner sets Owner field to given value.
+
+### HasOwner
+
+`func (o *ReviewableEntitlementAccount) HasOwner() bool`
+
+HasOwner returns a boolean if a field has been set.
+
+### SetOwnerNil
+
+`func (o *ReviewableEntitlementAccount) SetOwnerNil(b bool)`
+
+ SetOwnerNil sets the value for Owner to be an explicit nil
+
+### UnsetOwner
+`func (o *ReviewableEntitlementAccount) UnsetOwner()`
+
+UnsetOwner ensures that no value is present for Owner, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

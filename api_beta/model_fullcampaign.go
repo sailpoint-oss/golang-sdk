@@ -57,6 +57,7 @@ type Fullcampaign struct {
 	SourceOwnerCampaignInfo *FullcampaignAllOfSourceOwnerCampaignInfo `json:"sourceOwnerCampaignInfo,omitempty"`
 	SearchCampaignInfo *FullcampaignAllOfSearchCampaignInfo `json:"searchCampaignInfo,omitempty"`
 	RoleCompositionCampaignInfo *FullcampaignAllOfRoleCompositionCampaignInfo `json:"roleCompositionCampaignInfo,omitempty"`
+	MachineAccountCampaignInfo *FullcampaignAllOfMachineAccountCampaignInfo `json:"machineAccountCampaignInfo,omitempty"`
 	// A list of sources in the campaign that contain \\\"orphan entitlements\\\" (entitlements without a corresponding Managed Attribute). An empty list indicates the campaign has no orphan entitlements. Null indicates there may be unknown orphan entitlements in the campaign (the campaign was created before this feature was implemented).
 	SourcesWithOrphanEntitlements []FullcampaignAllOfSourcesWithOrphanEntitlements `json:"sourcesWithOrphanEntitlements,omitempty"`
 	// Determines whether comments are required for decisions during certification reviews. You can require comments for all decisions, revoke-only decisions, or no decisions. By default, comments are not required for decisions.
@@ -718,6 +719,38 @@ func (o *Fullcampaign) SetRoleCompositionCampaignInfo(v FullcampaignAllOfRoleCom
 	o.RoleCompositionCampaignInfo = &v
 }
 
+// GetMachineAccountCampaignInfo returns the MachineAccountCampaignInfo field value if set, zero value otherwise.
+func (o *Fullcampaign) GetMachineAccountCampaignInfo() FullcampaignAllOfMachineAccountCampaignInfo {
+	if o == nil || IsNil(o.MachineAccountCampaignInfo) {
+		var ret FullcampaignAllOfMachineAccountCampaignInfo
+		return ret
+	}
+	return *o.MachineAccountCampaignInfo
+}
+
+// GetMachineAccountCampaignInfoOk returns a tuple with the MachineAccountCampaignInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Fullcampaign) GetMachineAccountCampaignInfoOk() (*FullcampaignAllOfMachineAccountCampaignInfo, bool) {
+	if o == nil || IsNil(o.MachineAccountCampaignInfo) {
+		return nil, false
+	}
+	return o.MachineAccountCampaignInfo, true
+}
+
+// HasMachineAccountCampaignInfo returns a boolean if a field has been set.
+func (o *Fullcampaign) HasMachineAccountCampaignInfo() bool {
+	if o != nil && !IsNil(o.MachineAccountCampaignInfo) {
+		return true
+	}
+
+	return false
+}
+
+// SetMachineAccountCampaignInfo gets a reference to the given FullcampaignAllOfMachineAccountCampaignInfo and assigns it to the MachineAccountCampaignInfo field.
+func (o *Fullcampaign) SetMachineAccountCampaignInfo(v FullcampaignAllOfMachineAccountCampaignInfo) {
+	o.MachineAccountCampaignInfo = &v
+}
+
 // GetSourcesWithOrphanEntitlements returns the SourcesWithOrphanEntitlements field value if set, zero value otherwise.
 func (o *Fullcampaign) GetSourcesWithOrphanEntitlements() []FullcampaignAllOfSourcesWithOrphanEntitlements {
 	if o == nil || IsNil(o.SourcesWithOrphanEntitlements) {
@@ -846,6 +879,9 @@ func (o Fullcampaign) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RoleCompositionCampaignInfo) {
 		toSerialize["roleCompositionCampaignInfo"] = o.RoleCompositionCampaignInfo
 	}
+	if !IsNil(o.MachineAccountCampaignInfo) {
+		toSerialize["machineAccountCampaignInfo"] = o.MachineAccountCampaignInfo
+	}
 	if !IsNil(o.SourcesWithOrphanEntitlements) {
 		toSerialize["sourcesWithOrphanEntitlements"] = o.SourcesWithOrphanEntitlements
 	}
@@ -917,6 +953,7 @@ func (o *Fullcampaign) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "sourceOwnerCampaignInfo")
 		delete(additionalProperties, "searchCampaignInfo")
 		delete(additionalProperties, "roleCompositionCampaignInfo")
+		delete(additionalProperties, "machineAccountCampaignInfo")
 		delete(additionalProperties, "sourcesWithOrphanEntitlements")
 		delete(additionalProperties, "mandatoryCommentRequirement")
 		o.AdditionalProperties = additionalProperties

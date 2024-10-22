@@ -949,6 +949,7 @@ Class | Method | HTTP request | Description
  - [FullDiscoveredApplications](docs/FullDiscoveredApplications.md)
  - [Fullcampaign](docs/Fullcampaign.md)
  - [FullcampaignAllOfFilter](docs/FullcampaignAllOfFilter.md)
+ - [FullcampaignAllOfMachineAccountCampaignInfo](docs/FullcampaignAllOfMachineAccountCampaignInfo.md)
  - [FullcampaignAllOfRoleCompositionCampaignInfo](docs/FullcampaignAllOfRoleCompositionCampaignInfo.md)
  - [FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef](docs/FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef.md)
  - [FullcampaignAllOfSearchCampaignInfo](docs/FullcampaignAllOfSearchCampaignInfo.md)

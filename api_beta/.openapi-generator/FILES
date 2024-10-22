@@ -413,6 +413,7 @@ docs/ForwardApprovalDto.md
 docs/FullDiscoveredApplications.md
 docs/Fullcampaign.md
 docs/FullcampaignAllOfFilter.md
+docs/FullcampaignAllOfMachineAccountCampaignInfo.md
 docs/FullcampaignAllOfRoleCompositionCampaignInfo.md
 docs/FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef.md
 docs/FullcampaignAllOfSearchCampaignInfo.md
@@ -1345,6 +1346,7 @@ model_forward_approval_dto.go
 model_full_discovered_applications.go
 model_fullcampaign.go
 model_fullcampaign_all_of_filter.go
+model_fullcampaign_all_of_machine_account_campaign_info.go
 model_fullcampaign_all_of_role_composition_campaign_info.go
 model_fullcampaign_all_of_role_composition_campaign_info_remediator_ref.go
 model_fullcampaign_all_of_search_campaign_info.go
