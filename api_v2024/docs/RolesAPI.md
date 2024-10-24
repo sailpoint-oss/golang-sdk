@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 ## DeleteMetadataFromRoleByKeyAndValue
 
-> Role DeleteMetadataFromRoleByKeyAndValue(ctx, id, attributeKey, attributeValue).Execute()
+> DeleteMetadataFromRoleByKeyAndValue(ctx, id, attributeKey, attributeValue).Execute()
 
 Remove a Metadata From Role.
 
@@ -182,13 +182,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RolesAPI.DeleteMetadataFromRoleByKeyAndValue(context.Background(), id, attributeKey, attributeValue).Execute()
+	r, err := apiClient.RolesAPI.DeleteMetadataFromRoleByKeyAndValue(context.Background(), id, attributeKey, attributeValue).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.DeleteMetadataFromRoleByKeyAndValue``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DeleteMetadataFromRoleByKeyAndValue`: Role
-	fmt.Fprintf(os.Stdout, "Response from `RolesAPI.DeleteMetadataFromRoleByKeyAndValue`: %v\n", resp)
 }
 ```
 
@@ -215,7 +213,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Role**](Role.md)
+ (empty response body)
 
 ### Authorization
 

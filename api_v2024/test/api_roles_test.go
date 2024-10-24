@@ -54,10 +54,9 @@ func Test_api_v2024_RolesAPIService(t *testing.T) {
 		var attributeKey string
 		var attributeValue string
 
-		resp, httpRes, err := apiClient.RolesAPI.DeleteMetadataFromRoleByKeyAndValue(context.Background(), id, attributeKey, attributeValue).Execute()
+		httpRes, err := apiClient.RolesAPI.DeleteMetadataFromRoleByKeyAndValue(context.Background(), id, attributeKey, attributeValue).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
