@@ -22,7 +22,6 @@ api_connector_rule_management.go
 api_connectors.go
 api_custom_forms.go
 api_custom_password_instructions.go
-api_default.go
 api_entitlements.go
 api_governance_groups.go
 api_iai_access_request_recommendations.go
@@ -339,7 +338,6 @@ docs/CreateWorkflowRequest.md
 docs/CustomFormsAPI.md
 docs/CustomPasswordInstruction.md
 docs/CustomPasswordInstructionsAPI.md
-docs/DefaultAPI.md
 docs/Delete202Response.md
 docs/DeleteCampaignsRequest.md
 docs/DeleteNonEmployeeRecordInBulkRequest.md
@@ -1930,7 +1928,6 @@ test/api_connector_rule_management_test.go
 test/api_connectors_test.go
 test/api_custom_forms_test.go
 test/api_custom_password_instructions_test.go
-test/api_default_test.go
 test/api_entitlements_test.go
 test/api_governance_groups_test.go
 test/api_iai_access_request_recommendations_test.go

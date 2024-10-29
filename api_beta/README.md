@@ -205,9 +205,6 @@ Class | Method | HTTP request | Description
 *CustomPasswordInstructionsAPI* | [**CreateCustomPasswordInstructions**](docs/CustomPasswordInstructionsAPI.md#createcustompasswordinstructions) | **Post** /custom-password-instructions | Create Custom Password Instructions
 *CustomPasswordInstructionsAPI* | [**DeleteCustomPasswordInstructions**](docs/CustomPasswordInstructionsAPI.md#deletecustompasswordinstructions) | **Delete** /custom-password-instructions/{pageId} | Delete Custom Password Instructions by page ID
 *CustomPasswordInstructionsAPI* | [**GetCustomPasswordInstructions**](docs/CustomPasswordInstructionsAPI.md#getcustompasswordinstructions) | **Get** /custom-password-instructions/{pageId} | Get Custom Password Instructions by Page ID
-*DefaultAPI* | [**CreateLauncher**](docs/DefaultAPI.md#createlauncher) | **Post** /launchers | Create launcher
-*DefaultAPI* | [**DeleteLauncher**](docs/DefaultAPI.md#deletelauncher) | **Delete** /launchers/{launcherID} | Delete Launcher
-*DefaultAPI* | [**PutLauncher**](docs/DefaultAPI.md#putlauncher) | **Put** /launchers/{launcherID} | Replace Launcher
 *EntitlementsAPI* | [**CreateAccessModelMetadataForEntitlement**](docs/EntitlementsAPI.md#createaccessmodelmetadataforentitlement) | **Post** /entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Add metadata to an entitlement.
 *EntitlementsAPI* | [**DeleteAccessModelMetadataFromEntitlement**](docs/EntitlementsAPI.md#deleteaccessmodelmetadatafromentitlement) | **Delete** /entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Remove metadata from an entitlement.
 *EntitlementsAPI* | [**GetEntitlement**](docs/EntitlementsAPI.md#getentitlement) | **Get** /entitlements/{id} | Get an entitlement
@@ -320,8 +317,11 @@ Class | Method | HTTP request | Description
 *IdentityProfilesAPI* | [**ShowGenerateIdentityPreview**](docs/IdentityProfilesAPI.md#showgenerateidentitypreview) | **Post** /identity-profiles/identity-preview | Generate Identity Profile Preview
 *IdentityProfilesAPI* | [**SyncIdentityProfile**](docs/IdentityProfilesAPI.md#syncidentityprofile) | **Post** /identity-profiles/{identity-profile-id}/process-identities | Process identities under profile
 *IdentityProfilesAPI* | [**UpdateIdentityProfile**](docs/IdentityProfilesAPI.md#updateidentityprofile) | **Patch** /identity-profiles/{identity-profile-id} | Update the Identity Profile
+*LaunchersAPI* | [**CreateLauncher**](docs/LaunchersAPI.md#createlauncher) | **Post** /launchers | Create launcher
+*LaunchersAPI* | [**DeleteLauncher**](docs/LaunchersAPI.md#deletelauncher) | **Delete** /launchers/{launcherID} | Delete Launcher
 *LaunchersAPI* | [**GetLauncher**](docs/LaunchersAPI.md#getlauncher) | **Get** /launchers/{launcherID} | Get Launcher by ID
 *LaunchersAPI* | [**GetLaunchers**](docs/LaunchersAPI.md#getlaunchers) | **Get** /launchers | List all Launchers for tenant
+*LaunchersAPI* | [**PutLauncher**](docs/LaunchersAPI.md#putlauncher) | **Put** /launchers/{launcherID} | Replace Launcher
 *LaunchersAPI* | [**StartLauncher**](docs/LaunchersAPI.md#startlauncher) | **Post** /beta/launchers/{launcherID}/launch | Launch a Launcher
 *LifecycleStatesAPI* | [**GetLifecycleStates**](docs/LifecycleStatesAPI.md#getlifecyclestates) | **Get** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Get Lifecycle State
 *LifecycleStatesAPI* | [**UpdateLifecycleStates**](docs/LifecycleStatesAPI.md#updatelifecyclestates) | **Patch** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Update Lifecycle State

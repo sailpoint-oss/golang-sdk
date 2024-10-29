@@ -19,12 +19,12 @@ import (
 )
 
 
-// VendorConnectorMapppingAPIService VendorConnectorMapppingAPI service
-type VendorConnectorMapppingAPIService service
+// VendorConnectorMapppingsAPIService VendorConnectorMapppingsAPI service
+type VendorConnectorMapppingsAPIService service
 
 type ApiGetVendorConnectorMappingsRequest struct {
 	ctx context.Context
-	ApiService *VendorConnectorMapppingAPIService
+	ApiService *VendorConnectorMapppingsAPIService
 }
 
 func (r ApiGetVendorConnectorMappingsRequest) Execute() ([]VendorConnectorMapping, *http.Response, error) {
@@ -40,7 +40,7 @@ Get a list of mappings between SaaS vendors and ISC connectors, detailing the co
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetVendorConnectorMappingsRequest
 */
-func (a *VendorConnectorMapppingAPIService) GetVendorConnectorMappings(ctx context.Context) ApiGetVendorConnectorMappingsRequest {
+func (a *VendorConnectorMapppingsAPIService) GetVendorConnectorMappings(ctx context.Context) ApiGetVendorConnectorMappingsRequest {
 	return ApiGetVendorConnectorMappingsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -49,7 +49,7 @@ func (a *VendorConnectorMapppingAPIService) GetVendorConnectorMappings(ctx conte
 
 // Execute executes the request
 //  @return []VendorConnectorMapping
-func (a *VendorConnectorMapppingAPIService) GetVendorConnectorMappingsExecute(r ApiGetVendorConnectorMappingsRequest) ([]VendorConnectorMapping, *http.Response, error) {
+func (a *VendorConnectorMapppingsAPIService) GetVendorConnectorMappingsExecute(r ApiGetVendorConnectorMappingsRequest) ([]VendorConnectorMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -57,7 +57,7 @@ func (a *VendorConnectorMapppingAPIService) GetVendorConnectorMappingsExecute(r 
 		localVarReturnValue  []VendorConnectorMapping
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VendorConnectorMapppingAPIService.GetVendorConnectorMappings")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VendorConnectorMapppingsAPIService.GetVendorConnectorMappings")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

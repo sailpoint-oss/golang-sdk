@@ -1,10 +1,10 @@
-# \VendorConnectorMapppingAPI
+# \VendorConnectorMapppingsAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v2024*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetVendorConnectorMappings**](VendorConnectorMapppingAPI.md#GetVendorConnectorMappings) | **Get** /vendor-connector-mappings | List Vendor Connector Mappings
+[**GetVendorConnectorMappings**](VendorConnectorMapppingsAPI.md#GetVendorConnectorMappings) | **Get** /vendor-connector-mappings | List Vendor Connector Mappings
 
 
 
@@ -32,13 +32,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.VendorConnectorMapppingAPI.GetVendorConnectorMappings(context.Background()).Execute()
+	resp, r, err := apiClient.VendorConnectorMapppingsAPI.GetVendorConnectorMappings(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `VendorConnectorMapppingAPI.GetVendorConnectorMappings``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `VendorConnectorMapppingsAPI.GetVendorConnectorMappings``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `GetVendorConnectorMappings`: []VendorConnectorMapping
-	fmt.Fprintf(os.Stdout, "Response from `VendorConnectorMapppingAPI.GetVendorConnectorMappings`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `VendorConnectorMapppingsAPI.GetVendorConnectorMappings`: %v\n", resp)
 }
 ```
 

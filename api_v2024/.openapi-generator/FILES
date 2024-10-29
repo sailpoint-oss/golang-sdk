@@ -82,7 +82,7 @@ api_transforms.go
 api_triggers.go
 api_ui_metadata.go
 api_vendor_connector_mappings.go
-api_vendor_connector_mappping.go
+api_vendor_connector_mapppings.go
 api_work_items.go
 api_work_reassignment.go
 api_workflows.go
@@ -1138,7 +1138,7 @@ docs/VendorConnectorMappingDeletedBy.md
 docs/VendorConnectorMappingUpdatedAt.md
 docs/VendorConnectorMappingUpdatedBy.md
 docs/VendorConnectorMappingsAPI.md
-docs/VendorConnectorMapppingAPI.md
+docs/VendorConnectorMapppingsAPI.md
 docs/ViolationContext.md
 docs/ViolationContextPolicy.md
 docs/ViolationOwnerAssignmentConfig.md
@@ -2268,7 +2268,7 @@ test/api_transforms_test.go
 test/api_triggers_test.go
 test/api_ui_metadata_test.go
 test/api_vendor_connector_mappings_test.go
-test/api_vendor_connector_mappping_test.go
+test/api_vendor_connector_mapppings_test.go
 test/api_work_items_test.go
 test/api_work_reassignment_test.go
 test/api_workflows_test.go

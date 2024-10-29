@@ -60808,6 +60808,8 @@ paths:
       - userAuth:
         - sp:launcher-admin:write
       summary: Create launcher
+      tags:
+      - Launchers
       x-sailpoint-userLevels:
       - ORG_ADMIN
   /launchers/{launcherID}:
@@ -60904,6 +60906,8 @@ paths:
       - userAuth:
         - sp:launcher-admin:delete
       summary: Delete Launcher
+      tags:
+      - Launchers
       x-sailpoint-userLevels:
       - ORG_ADMIN
     get:
@@ -61112,6 +61116,8 @@ paths:
       - userAuth:
         - sp:launcher-admin:write
       summary: Replace Launcher
+      tags:
+      - Launchers
       x-sailpoint-userLevels:
       - ORG_ADMIN
   /beta/launchers/{launcherID}/launch:

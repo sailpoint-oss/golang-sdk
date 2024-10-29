@@ -1,7 +1,7 @@
 /*
 Identity Security Cloud V2024 API
 
-Testing VendorConnectorMapppingAPIService
+Testing VendorConnectorMapppingsAPIService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
-func Test_api_v2024_VendorConnectorMapppingAPIService(t *testing.T) {
+func Test_api_v2024_VendorConnectorMapppingsAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test VendorConnectorMapppingAPIService GetVendorConnectorMappings", func(t *testing.T) {
+	t.Run("Test VendorConnectorMapppingsAPIService GetVendorConnectorMappings", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.VendorConnectorMapppingAPI.GetVendorConnectorMappings(context.Background()).Execute()
+		resp, httpRes, err := apiClient.VendorConnectorMapppingsAPI.GetVendorConnectorMappings(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
