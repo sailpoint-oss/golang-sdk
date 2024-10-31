@@ -5,7 +5,7 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateReassignmentConfiguration**](WorkReassignmentAPI.md#CreateReassignmentConfiguration) | **Post** /reassignment-configurations | Create a Reassignment Configuration
-[**DeleteReassignmentConfiguration**](WorkReassignmentAPI.md#DeleteReassignmentConfiguration) | **Delete** /reassignment-configurations/{identityId} | Delete Reassignment Configuration
+[**DeleteReassignmentConfiguration**](WorkReassignmentAPI.md#DeleteReassignmentConfiguration) | **Delete** /reassignment-configurations/{identityId}/{configType} | Delete Reassignment Configuration
 [**GetEvaluateReassignmentConfiguration**](WorkReassignmentAPI.md#GetEvaluateReassignmentConfiguration) | **Get** /reassignment-configurations/{identityId}/evaluate/{configType} | Evaluate Reassignment Configuration
 [**GetReassignmentConfigTypes**](WorkReassignmentAPI.md#GetReassignmentConfigTypes) | **Get** /reassignment-configurations/types | List Reassignment Config Types
 [**GetReassignmentConfiguration**](WorkReassignmentAPI.md#GetReassignmentConfiguration) | **Get** /reassignment-configurations/{identityId} | Get Reassignment Configuration
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 ## DeleteReassignmentConfiguration
 
-> DeleteReassignmentConfiguration(ctx, identityId).Execute()
+> DeleteReassignmentConfiguration(ctx, identityId, configType).Execute()
 
 Delete Reassignment Configuration
 
@@ -104,10 +104,11 @@ import (
 
 func main() {
 	identityId := "2c91808781a71ddb0181b9090b5c504e" // string | unique identity id
+	configType := openapiclient.ConfigTypeEnum("ACCESS_REQUESTS") // ConfigTypeEnum | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.WorkReassignmentAPI.DeleteReassignmentConfiguration(context.Background(), identityId).Execute()
+	r, err := apiClient.WorkReassignmentAPI.DeleteReassignmentConfiguration(context.Background(), identityId, configType).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.DeleteReassignmentConfiguration``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -122,6 +123,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **identityId** | **string** | unique identity id | 
+**configType** | [**ConfigTypeEnum**](.md) |  | 
 
 ### Other Parameters
 
@@ -130,6 +132,7 @@ Other parameters are passed through a pointer to a apiDeleteReassignmentConfigur
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 ### Return type

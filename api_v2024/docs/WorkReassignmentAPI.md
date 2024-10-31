@@ -5,7 +5,7 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2024*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateReassignmentConfiguration**](WorkReassignmentAPI.md#CreateReassignmentConfiguration) | **Post** /reassignment-configurations | Create a Reassignment Configuration
-[**DeleteReassignmentConfiguration**](WorkReassignmentAPI.md#DeleteReassignmentConfiguration) | **Delete** /reassignment-configurations/{identityId} | Delete Reassignment Configuration
+[**DeleteReassignmentConfiguration**](WorkReassignmentAPI.md#DeleteReassignmentConfiguration) | **Delete** /reassignment-configurations/{identityId}/{configType} | Delete Reassignment Configuration
 [**GetEvaluateReassignmentConfiguration**](WorkReassignmentAPI.md#GetEvaluateReassignmentConfiguration) | **Get** /reassignment-configurations/{identityId}/evaluate/{configType} | Evaluate Reassignment Configuration
 [**GetReassignmentConfigTypes**](WorkReassignmentAPI.md#GetReassignmentConfigTypes) | **Get** /reassignment-configurations/types | List Reassignment Config Types
 [**GetReassignmentConfiguration**](WorkReassignmentAPI.md#GetReassignmentConfiguration) | **Get** /reassignment-configurations/{identityId} | Get Reassignment Configuration
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## DeleteReassignmentConfiguration
 
-> DeleteReassignmentConfiguration(ctx, identityId).XSailPointExperimental(xSailPointExperimental).Execute()
+> DeleteReassignmentConfiguration(ctx, identityId, configType).XSailPointExperimental(xSailPointExperimental).Execute()
 
 Delete Reassignment Configuration
 
@@ -106,11 +106,12 @@ import (
 
 func main() {
 	identityId := "2c91808781a71ddb0181b9090b5c504e" // string | unique identity id
+	configType := openapiclient.ConfigTypeEnum("ACCESS_REQUESTS") // ConfigTypeEnum | 
 	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.WorkReassignmentAPI.DeleteReassignmentConfiguration(context.Background(), identityId).XSailPointExperimental(xSailPointExperimental).Execute()
+	r, err := apiClient.WorkReassignmentAPI.DeleteReassignmentConfiguration(context.Background(), identityId, configType).XSailPointExperimental(xSailPointExperimental).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WorkReassignmentAPI.DeleteReassignmentConfiguration``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -125,6 +126,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **identityId** | **string** | unique identity id | 
+**configType** | [**ConfigTypeEnum**](.md) |  | 
 
 ### Other Parameters
 
@@ -133,6 +135,7 @@ Other parameters are passed through a pointer to a apiDeleteReassignmentConfigur
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
 

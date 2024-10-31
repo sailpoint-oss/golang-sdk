@@ -214,6 +214,7 @@ type ApiDeleteReassignmentConfigurationRequest struct {
 	ctx context.Context
 	ApiService *WorkReassignmentAPIService
 	identityId string
+	configType ConfigTypeEnum
 	xSailPointExperimental *string
 }
 
@@ -230,17 +231,19 @@ func (r ApiDeleteReassignmentConfigurationRequest) Execute() (*http.Response, er
 /*
 DeleteReassignmentConfiguration Delete Reassignment Configuration
 
-Deletes all Reassignment Configuration for the specified identity
+Deletes a single reassignment configuration for the specified identity
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param identityId unique identity id
+ @param configType
  @return ApiDeleteReassignmentConfigurationRequest
 */
-func (a *WorkReassignmentAPIService) DeleteReassignmentConfiguration(ctx context.Context, identityId string) ApiDeleteReassignmentConfigurationRequest {
+func (a *WorkReassignmentAPIService) DeleteReassignmentConfiguration(ctx context.Context, identityId string, configType ConfigTypeEnum) ApiDeleteReassignmentConfigurationRequest {
 	return ApiDeleteReassignmentConfigurationRequest{
 		ApiService: a,
 		ctx: ctx,
 		identityId: identityId,
+		configType: configType,
 	}
 }
 
@@ -257,8 +260,9 @@ func (a *WorkReassignmentAPIService) DeleteReassignmentConfigurationExecute(r Ap
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/reassignment-configurations/{identityId}"
+	localVarPath := localBasePath + "/reassignment-configurations/{identityId}/{configType}"
 	localVarPath = strings.Replace(localVarPath, "{"+"identityId"+"}", url.PathEscape(parameterValueToString(r.identityId, "identityId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"configType"+"}", url.PathEscape(parameterValueToString(r.configType, "configType")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

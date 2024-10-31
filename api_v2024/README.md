@@ -681,7 +681,7 @@ Class | Method | HTTP request | Description
 *WorkItemsAPI* | [**SendWorkItemForward**](docs/WorkItemsAPI.md#sendworkitemforward) | **Post** /work-items/{id}/forward | Forward a Work Item
 *WorkItemsAPI* | [**SubmitAccountSelection**](docs/WorkItemsAPI.md#submitaccountselection) | **Post** /work-items/{id}/submit-account-selection | Submit Account Selections
 *WorkReassignmentAPI* | [**CreateReassignmentConfiguration**](docs/WorkReassignmentAPI.md#createreassignmentconfiguration) | **Post** /reassignment-configurations | Create a Reassignment Configuration
-*WorkReassignmentAPI* | [**DeleteReassignmentConfiguration**](docs/WorkReassignmentAPI.md#deletereassignmentconfiguration) | **Delete** /reassignment-configurations/{identityId} | Delete Reassignment Configuration
+*WorkReassignmentAPI* | [**DeleteReassignmentConfiguration**](docs/WorkReassignmentAPI.md#deletereassignmentconfiguration) | **Delete** /reassignment-configurations/{identityId}/{configType} | Delete Reassignment Configuration
 *WorkReassignmentAPI* | [**GetEvaluateReassignmentConfiguration**](docs/WorkReassignmentAPI.md#getevaluatereassignmentconfiguration) | **Get** /reassignment-configurations/{identityId}/evaluate/{configType} | Evaluate Reassignment Configuration
 *WorkReassignmentAPI* | [**GetReassignmentConfigTypes**](docs/WorkReassignmentAPI.md#getreassignmentconfigtypes) | **Get** /reassignment-configurations/types | List Reassignment Config Types
 *WorkReassignmentAPI* | [**GetReassignmentConfiguration**](docs/WorkReassignmentAPI.md#getreassignmentconfiguration) | **Get** /reassignment-configurations/{identityId} | Get Reassignment Configuration
