@@ -41845,7 +41845,7 @@ paths:
         - idn:application-discovery:read
       summary: List Vendor Connector Mappings
       tags:
-      - Vendor Connector Mapppings
+      - Vendor Connector Mappings
     post:
       description: |
         Create a new mapping between a SaaS vendor and an ISC connector to establish correlation paths.

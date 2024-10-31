@@ -148,8 +148,6 @@ type APIClient struct {
 
 	VendorConnectorMappingsAPI *VendorConnectorMappingsAPIService
 
-	VendorConnectorMapppingsAPI *VendorConnectorMapppingsAPIService
-
 	WorkItemsAPI *WorkItemsAPIService
 
 	WorkflowsAPI *WorkflowsAPIService
@@ -219,7 +217,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.TaggedObjectsAPI = (*TaggedObjectsAPIService)(&c.common)
 	c.TransformsAPI = (*TransformsAPIService)(&c.common)
 	c.VendorConnectorMappingsAPI = (*VendorConnectorMappingsAPIService)(&c.common)
-	c.VendorConnectorMapppingsAPI = (*VendorConnectorMapppingsAPIService)(&c.common)
 	c.WorkItemsAPI = (*WorkItemsAPIService)(&c.common)
 	c.WorkflowsAPI = (*WorkflowsAPIService)(&c.common)
 
