@@ -65091,6 +65091,7 @@ components:
           sourceName:
             description: The display name of the source this account belongs to
             example: Employees
+            nullable: true
             type: string
           identityId:
             description: The unique ID of the identity this account is correlated

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Id of the campaign | [optional] [readonly] 
 **Name** | **string** | The campaign name. If this object is part of a template, special formatting applies; see the &#x60;/campaign-templates/{id}/generate&#x60; endpoint documentation for details. | 
-**Description** | **string** | The campaign description. If this object is part of a template, special formatting applies; see the &#x60;/campaign-templates/{id}/generate&#x60; endpoint documentation for details. | 
+**Description** | **NullableString** | The campaign description. If this object is part of a template, special formatting applies; see the &#x60;/campaign-templates/{id}/generate&#x60; endpoint documentation for details. | 
 **Deadline** | Pointer to **time.Time** | The campaign&#39;s completion deadline.  This date must be in the future in order to activate the campaign.  If you try to activate a campaign with a deadline of today or in the past, you will receive a 400 error response. | [optional] 
 **Type** | **string** | The type of campaign. Could be extended in the future. | 
 **EmailNotificationEnabled** | Pointer to **bool** | Enables email notification for this campaign | [optional] [default to false]
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewSlimCampaign
 
-`func NewSlimCampaign(name string, description string, type_ string, ) *SlimCampaign`
+`func NewSlimCampaign(name string, description NullableString, type_ string, ) *SlimCampaign`
 
 NewSlimCampaign instantiates a new SlimCampaign object
 This constructor will assign default values to properties that have it defined,
@@ -103,6 +103,16 @@ and a boolean to check if the value has been set.
 SetDescription sets Description field to given value.
 
 
+### SetDescriptionNil
+
+`func (o *SlimCampaign) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *SlimCampaign) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetDeadline
 
 `func (o *SlimCampaign) GetDeadline() time.Time`

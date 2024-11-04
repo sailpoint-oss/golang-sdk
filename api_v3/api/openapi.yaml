@@ -43996,6 +43996,7 @@ components:
           sourceName:
             description: The display name of the source this account belongs to
             example: Employees
+            nullable: true
             type: string
           identityId:
             description: The unique ID of the identity this account is correlated
@@ -48571,6 +48572,7 @@ components:
             \ special formatting applies; see the `/campaign-templates/{id}/generate`\
             \ endpoint documentation for details."
           example: Everyone needs to be reviewed by their manager
+          nullable: true
           type: string
         deadline:
           description: "The campaign's completion deadline.  This date must be in\
@@ -63777,7 +63779,7 @@ components:
           type: object
       type: object
     getActiveCampaigns_200_response_inner:
-      oneOf:
+      anyOf:
       - $ref: '#/components/schemas/SlimCampaign'
       - $ref: '#/components/schemas/Campaign'
     listCampaignFilters_200_response:

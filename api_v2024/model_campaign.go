@@ -26,7 +26,7 @@ type Campaign struct {
 	// The campaign name. If this object is part of a template, special formatting applies; see the `/campaign-templates/{id}/generate` endpoint documentation for details.
 	Name string `json:"name"`
 	// The campaign description. If this object is part of a template, special formatting applies; see the `/campaign-templates/{id}/generate` endpoint documentation for details.
-	Description string `json:"description"`
+	Description NullableString `json:"description"`
 	// The campaign's completion deadline.  This date must be in the future in order to activate the campaign.  If you try to activate a campaign with a deadline of today or in the past, you will receive a 400 error response.
 	Deadline *time.Time `json:"deadline,omitempty"`
 	// The type of campaign. Could be extended in the future.
@@ -71,7 +71,7 @@ type _Campaign Campaign
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCampaign(name string, description string, type_ string) *Campaign {
+func NewCampaign(name string, description NullableString, type_ string) *Campaign {
 	this := Campaign{}
 	this.Name = name
 	this.Description = description
@@ -160,27 +160,29 @@ func (o *Campaign) SetName(v string) {
 }
 
 // GetDescription returns the Description field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *Campaign) GetDescription() string {
-	if o == nil {
+	if o == nil || o.Description.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Description
+	return *o.Description.Get()
 }
 
 // GetDescriptionOk returns a tuple with the Description field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Campaign) GetDescriptionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
 // SetDescription sets field value
 func (o *Campaign) SetDescription(v string) {
-	o.Description = v
+	o.Description.Set(&v)
 }
 
 // GetDeadline returns the Deadline field value if set, zero value otherwise.
@@ -829,7 +831,7 @@ func (o Campaign) ToMap() (map[string]interface{}, error) {
 		toSerialize["id"] = o.Id
 	}
 	toSerialize["name"] = o.Name
-	toSerialize["description"] = o.Description
+	toSerialize["description"] = o.Description.Get()
 	if !IsNil(o.Deadline) {
 		toSerialize["deadline"] = o.Deadline
 	}

@@ -32,7 +32,7 @@ type Account struct {
 	// The unique ID of the source this account belongs to
 	SourceId string `json:"sourceId"`
 	// The display name of the source this account belongs to
-	SourceName string `json:"sourceName"`
+	SourceName NullableString `json:"sourceName"`
 	// The unique ID of the identity this account is correlated to
 	IdentityId *string `json:"identityId,omitempty"`
 	// The lifecycle state of the identity this account is correlated to
@@ -82,7 +82,7 @@ type _Account Account
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccount(name string, sourceId string, sourceName string, attributes map[string]interface{}, authoritative bool, disabled bool, locked bool, nativeIdentity string, systemAccount bool, uncorrelated bool, manuallyCorrelated bool, hasEntitlements bool) *Account {
+func NewAccount(name string, sourceId string, sourceName NullableString, attributes map[string]interface{}, authoritative bool, disabled bool, locked bool, nativeIdentity string, systemAccount bool, uncorrelated bool, manuallyCorrelated bool, hasEntitlements bool) *Account {
 	this := Account{}
 	this.Name = name
 	this.SourceId = sourceId
@@ -252,27 +252,29 @@ func (o *Account) SetSourceId(v string) {
 }
 
 // GetSourceName returns the SourceName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *Account) GetSourceName() string {
-	if o == nil {
+	if o == nil || o.SourceName.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.SourceName
+	return *o.SourceName.Get()
 }
 
 // GetSourceNameOk returns a tuple with the SourceName field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Account) GetSourceNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.SourceName, true
+	return o.SourceName.Get(), o.SourceName.IsSet()
 }
 
 // SetSourceName sets field value
 func (o *Account) SetSourceName(v string) {
-	o.SourceName = v
+	o.SourceName.Set(&v)
 }
 
 // GetIdentityId returns the IdentityId field value if set, zero value otherwise.
@@ -1040,7 +1042,7 @@ func (o Account) ToMap() (map[string]interface{}, error) {
 		toSerialize["modified"] = o.Modified
 	}
 	toSerialize["sourceId"] = o.SourceId
-	toSerialize["sourceName"] = o.SourceName
+	toSerialize["sourceName"] = o.SourceName.Get()
 	if !IsNil(o.IdentityId) {
 		toSerialize["identityId"] = o.IdentityId
 	}

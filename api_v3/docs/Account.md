@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Created** | Pointer to **time.Time** | Creation date of the Object | [optional] [readonly] 
 **Modified** | Pointer to **time.Time** | Last modification date of the Object | [optional] [readonly] 
 **SourceId** | **string** | The unique ID of the source this account belongs to | 
-**SourceName** | **string** | The display name of the source this account belongs to | 
+**SourceName** | **NullableString** | The display name of the source this account belongs to | 
 **IdentityId** | Pointer to **string** | The unique ID of the identity this account is correlated to | [optional] 
 **CloudLifecycleState** | Pointer to **NullableString** | The lifecycle state of the identity this account is correlated to | [optional] 
 **IdentityState** | Pointer to **NullableString** | The identity state of the identity this account is correlated to | [optional] 
@@ -37,7 +37,7 @@ Name | Type | Description | Notes
 
 ### NewAccount
 
-`func NewAccount(name string, sourceId string, sourceName string, attributes map[string]interface{}, authoritative bool, disabled bool, locked bool, nativeIdentity string, systemAccount bool, uncorrelated bool, manuallyCorrelated bool, hasEntitlements bool, ) *Account`
+`func NewAccount(name string, sourceId string, sourceName NullableString, attributes map[string]interface{}, authoritative bool, disabled bool, locked bool, nativeIdentity string, systemAccount bool, uncorrelated bool, manuallyCorrelated bool, hasEntitlements bool, ) *Account`
 
 NewAccount instantiates a new Account object
 This constructor will assign default values to properties that have it defined,
@@ -187,6 +187,16 @@ and a boolean to check if the value has been set.
 SetSourceName sets SourceName field to given value.
 
 
+### SetSourceNameNil
+
+`func (o *Account) SetSourceNameNil(b bool)`
+
+ SetSourceNameNil sets the value for SourceName to be an explicit nil
+
+### UnsetSourceName
+`func (o *Account) UnsetSourceName()`
+
+UnsetSourceName ensures that no value is present for SourceName, not even an explicit nil
 ### GetIdentityId
 
 `func (o *Account) GetIdentityId() string`
