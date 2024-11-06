@@ -234,10 +234,10 @@ Class | Method | HTTP request | Description
 *ManagedClientsAPI* | [**UpdateManagedClient**](docs/ManagedClientsAPI.md#updatemanagedclient) | **Patch** /managed-clients/{id} | Update a Managed Client
 *ManagedClustersAPI* | [**CreateManagedCluster**](docs/ManagedClustersAPI.md#createmanagedcluster) | **Post** /managed-clusters | Create a new Managed Cluster
 *ManagedClustersAPI* | [**DeleteManagedCluster**](docs/ManagedClustersAPI.md#deletemanagedcluster) | **Delete** /managed-clusters/{id} | Delete a Managed Cluster
-*ManagedClustersAPI* | [**GetClientLogConfiguration**](docs/ManagedClustersAPI.md#getclientlogconfiguration) | **Get** /managed-clusters/{id}/log-config | Get managed cluster&#39;s log configuration
+*ManagedClustersAPI* | [**GetClientLogConfiguration**](docs/ManagedClustersAPI.md#getclientlogconfiguration) | **Get** /managed-clusters/{id}/log-config | Get Managed Cluster&#39;s log configuration
 *ManagedClustersAPI* | [**GetManagedCluster**](docs/ManagedClustersAPI.md#getmanagedcluster) | **Get** /managed-clusters/{id} | Get a specified Managed Cluster.
 *ManagedClustersAPI* | [**GetManagedClusters**](docs/ManagedClustersAPI.md#getmanagedclusters) | **Get** /managed-clusters | Retrieve all Managed Clusters.
-*ManagedClustersAPI* | [**PutClientLogConfiguration**](docs/ManagedClustersAPI.md#putclientlogconfiguration) | **Put** /managed-clusters/{id}/log-config | Update managed cluster&#39;s log configuration
+*ManagedClustersAPI* | [**PutClientLogConfiguration**](docs/ManagedClustersAPI.md#putclientlogconfiguration) | **Put** /managed-clusters/{id}/log-config | Update Managed Cluster&#39;s log configuration
 *ManagedClustersAPI* | [**UpdateManagedCluster**](docs/ManagedClustersAPI.md#updatemanagedcluster) | **Patch** /managed-clusters/{id} | Update a Managed Cluster
 *NonEmployeeLifecycleManagementAPI* | [**ApproveNonEmployeeRequest**](docs/NonEmployeeLifecycleManagementAPI.md#approvenonemployeerequest) | **Post** /non-employee-approvals/{id}/approve | Approve a Non-Employee Request
 *NonEmployeeLifecycleManagementAPI* | [**CreateNonEmployeeRecord**](docs/NonEmployeeLifecycleManagementAPI.md#createnonemployeerecord) | **Post** /non-employee-records | Create Non-Employee Record
@@ -579,6 +579,8 @@ Class | Method | HTTP request | Description
  - [CertificationReference](docs/CertificationReference.md)
  - [CertificationTask](docs/CertificationTask.md)
  - [ClientLogConfiguration](docs/ClientLogConfiguration.md)
+ - [ClientLogConfigurationDurationMinutes](docs/ClientLogConfigurationDurationMinutes.md)
+ - [ClientLogConfigurationExpiration](docs/ClientLogConfigurationExpiration.md)
  - [ClientType](docs/ClientType.md)
  - [Column](docs/Column.md)
  - [Comment](docs/Comment.md)
@@ -806,6 +808,7 @@ Class | Method | HTTP request | Description
  - [PublicIdentity](docs/PublicIdentity.md)
  - [PublicIdentityAttributeConfig](docs/PublicIdentityAttributeConfig.md)
  - [PublicIdentityConfig](docs/PublicIdentityConfig.md)
+ - [PutClientLogConfigurationRequest](docs/PutClientLogConfigurationRequest.md)
  - [PutCorrelationConfigRequest](docs/PutCorrelationConfigRequest.md)
  - [PutPasswordDictionaryRequest](docs/PutPasswordDictionaryRequest.md)
  - [PutSourceConfigRequest](docs/PutSourceConfigRequest.md)

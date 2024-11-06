@@ -342,6 +342,8 @@ docs/CertificationTask.md
 docs/CertificationsAPI.md
 docs/CertifierResponse.md
 docs/ClientLogConfiguration.md
+docs/ClientLogConfigurationDurationMinutes.md
+docs/ClientLogConfigurationExpiration.md
 docs/ClientType.md
 docs/CloseAccessRequest.md
 docs/Column.md
@@ -788,6 +790,7 @@ docs/PublicIdentitiesConfigAPI.md
 docs/PublicIdentity.md
 docs/PublicIdentityAttributeConfig.md
 docs/PublicIdentityConfig.md
+docs/PutClientLogConfigurationRequest.md
 docs/PutCorrelationConfigRequest.md
 docs/PutPasswordDictionaryRequest.md
 docs/PutSourceConfigRequest.md
@@ -1415,6 +1418,8 @@ model_certification_signed_off_certification.go
 model_certification_task.go
 model_certifier_response.go
 model_client_log_configuration.go
+model_client_log_configuration_duration_minutes.go
+model_client_log_configuration_expiration.go
 model_client_type.go
 model_close_access_request.go
 model_column.go
@@ -1825,6 +1830,7 @@ model_provisioning_state.go
 model_public_identity.go
 model_public_identity_attribute_config.go
 model_public_identity_config.go
+model_put_client_log_configuration_request.go
 model_put_correlation_config_request.go
 model_put_password_dictionary_request.go
 model_put_source_config_request.go

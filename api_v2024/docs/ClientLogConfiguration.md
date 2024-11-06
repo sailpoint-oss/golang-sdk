@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClientId** | Pointer to **string** | Log configuration&#39;s client ID | [optional] 
-**DurationMinutes** | **int32** | Duration in minutes for log configuration to remain in effect before resetting to defaults | 
-**Expiration** | Pointer to **time.Time** | Expiration date-time of the log configuration request | [optional] 
+**DurationMinutes** | Pointer to **int32** | Duration in minutes for log configuration to remain in effect before resetting to defaults. | [optional] [default to 240]
+**Expiration** | Pointer to **time.Time** | Expiration date-time of the log configuration request.  Can be no greater than 24 hours from current date-time. | [optional] 
 **RootLevel** | [**StandardLevel**](StandardLevel.md) |  | 
 **LogLevels** | Pointer to [**map[string]StandardLevel**](StandardLevel.md) | Mapping of identifiers to Standard Log Level values | [optional] 
 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewClientLogConfiguration
 
-`func NewClientLogConfiguration(durationMinutes int32, rootLevel StandardLevel, ) *ClientLogConfiguration`
+`func NewClientLogConfiguration(rootLevel StandardLevel, ) *ClientLogConfiguration`
 
 NewClientLogConfiguration instantiates a new ClientLogConfiguration object
 This constructor will assign default values to properties that have it defined,
@@ -73,6 +73,11 @@ and a boolean to check if the value has been set.
 
 SetDurationMinutes sets DurationMinutes field to given value.
 
+### HasDurationMinutes
+
+`func (o *ClientLogConfiguration) HasDurationMinutes() bool`
+
+HasDurationMinutes returns a boolean if a field has been set.
 
 ### GetExpiration
 

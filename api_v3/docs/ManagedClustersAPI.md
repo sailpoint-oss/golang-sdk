@@ -6,10 +6,10 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateManagedCluster**](ManagedClustersAPI.md#CreateManagedCluster) | **Post** /managed-clusters | Create a new Managed Cluster
 [**DeleteManagedCluster**](ManagedClustersAPI.md#DeleteManagedCluster) | **Delete** /managed-clusters/{id} | Delete a Managed Cluster
-[**GetClientLogConfiguration**](ManagedClustersAPI.md#GetClientLogConfiguration) | **Get** /managed-clusters/{id}/log-config | Get managed cluster&#39;s log configuration
+[**GetClientLogConfiguration**](ManagedClustersAPI.md#GetClientLogConfiguration) | **Get** /managed-clusters/{id}/log-config | Get Managed Cluster&#39;s log configuration
 [**GetManagedCluster**](ManagedClustersAPI.md#GetManagedCluster) | **Get** /managed-clusters/{id} | Get a specified Managed Cluster.
 [**GetManagedClusters**](ManagedClustersAPI.md#GetManagedClusters) | **Get** /managed-clusters | Retrieve all Managed Clusters.
-[**PutClientLogConfiguration**](ManagedClustersAPI.md#PutClientLogConfiguration) | **Put** /managed-clusters/{id}/log-config | Update managed cluster&#39;s log configuration
+[**PutClientLogConfiguration**](ManagedClustersAPI.md#PutClientLogConfiguration) | **Put** /managed-clusters/{id}/log-config | Update Managed Cluster&#39;s log configuration
 [**UpdateManagedCluster**](ManagedClustersAPI.md#UpdateManagedCluster) | **Patch** /managed-clusters/{id} | Update a Managed Cluster
 
 
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 > ClientLogConfiguration GetClientLogConfiguration(ctx, id).Execute()
 
-Get managed cluster's log configuration
+Get Managed Cluster's log configuration
 
 
 
@@ -364,9 +364,9 @@ Name | Type | Description  | Notes
 
 ## PutClientLogConfiguration
 
-> ClientLogConfiguration PutClientLogConfiguration(ctx, id).ClientLogConfiguration(clientLogConfiguration).Execute()
+> ClientLogConfiguration PutClientLogConfiguration(ctx, id).PutClientLogConfigurationRequest(putClientLogConfigurationRequest).Execute()
 
-Update managed cluster's log configuration
+Update Managed Cluster's log configuration
 
 
 
@@ -384,11 +384,11 @@ import (
 
 func main() {
 	id := "2b838de9-db9b-abcf-e646-d4f274ad4238" // string | ID of ManagedCluster to update log configuration for
-	clientLogConfiguration := *openapiclient.NewClientLogConfiguration(int32(120), openapiclient.StandardLevel("false")) // ClientLogConfiguration | ClientLogConfiguration for given ManagedCluster
+	putClientLogConfigurationRequest := openapiclient.putClientLogConfiguration_request{ClientLogConfigurationDurationMinutes: openapiclient.NewClientLogConfigurationDurationMinutes(openapiclient.StandardLevel("false"))} // PutClientLogConfigurationRequest | ClientLogConfiguration for given ManagedCluster
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ManagedClustersAPI.PutClientLogConfiguration(context.Background(), id).ClientLogConfiguration(clientLogConfiguration).Execute()
+	resp, r, err := apiClient.ManagedClustersAPI.PutClientLogConfiguration(context.Background(), id).PutClientLogConfigurationRequest(putClientLogConfigurationRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.PutClientLogConfiguration``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -414,7 +414,7 @@ Other parameters are passed through a pointer to a apiPutClientLogConfigurationR
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **clientLogConfiguration** | [**ClientLogConfiguration**](ClientLogConfiguration.md) | ClientLogConfiguration for given ManagedCluster | 
+ **putClientLogConfigurationRequest** | [**PutClientLogConfigurationRequest**](PutClientLogConfigurationRequest.md) | ClientLogConfiguration for given ManagedCluster | 
 
 ### Return type
 

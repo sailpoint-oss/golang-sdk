@@ -23,9 +23,9 @@ var _ MappedNullable = &ClientLogConfiguration{}
 type ClientLogConfiguration struct {
 	// Log configuration's client ID
 	ClientId *string `json:"clientId,omitempty"`
-	// Duration in minutes for log configuration to remain in effect before resetting to defaults
-	DurationMinutes int32 `json:"durationMinutes"`
-	// Expiration date-time of the log configuration request
+	// Duration in minutes for log configuration to remain in effect before resetting to defaults.
+	DurationMinutes *int32 `json:"durationMinutes,omitempty"`
+	// Expiration date-time of the log configuration request.  Can be no greater than 24 hours from current date-time.
 	Expiration *time.Time `json:"expiration,omitempty"`
 	RootLevel StandardLevel `json:"rootLevel"`
 	// Mapping of identifiers to Standard Log Level values
@@ -39,9 +39,10 @@ type _ClientLogConfiguration ClientLogConfiguration
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewClientLogConfiguration(durationMinutes int32, rootLevel StandardLevel) *ClientLogConfiguration {
+func NewClientLogConfiguration(rootLevel StandardLevel) *ClientLogConfiguration {
 	this := ClientLogConfiguration{}
-	this.DurationMinutes = durationMinutes
+	var durationMinutes int32 = 240
+	this.DurationMinutes = &durationMinutes
 	this.RootLevel = rootLevel
 	return &this
 }
@@ -51,6 +52,8 @@ func NewClientLogConfiguration(durationMinutes int32, rootLevel StandardLevel) *
 // but it doesn't guarantee that properties required by API are set
 func NewClientLogConfigurationWithDefaults() *ClientLogConfiguration {
 	this := ClientLogConfiguration{}
+	var durationMinutes int32 = 240
+	this.DurationMinutes = &durationMinutes
 	return &this
 }
 
@@ -86,28 +89,36 @@ func (o *ClientLogConfiguration) SetClientId(v string) {
 	o.ClientId = &v
 }
 
-// GetDurationMinutes returns the DurationMinutes field value
+// GetDurationMinutes returns the DurationMinutes field value if set, zero value otherwise.
 func (o *ClientLogConfiguration) GetDurationMinutes() int32 {
-	if o == nil {
+	if o == nil || IsNil(o.DurationMinutes) {
 		var ret int32
 		return ret
 	}
-
-	return o.DurationMinutes
+	return *o.DurationMinutes
 }
 
-// GetDurationMinutesOk returns a tuple with the DurationMinutes field value
+// GetDurationMinutesOk returns a tuple with the DurationMinutes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientLogConfiguration) GetDurationMinutesOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DurationMinutes) {
 		return nil, false
 	}
-	return &o.DurationMinutes, true
+	return o.DurationMinutes, true
 }
 
-// SetDurationMinutes sets field value
+// HasDurationMinutes returns a boolean if a field has been set.
+func (o *ClientLogConfiguration) HasDurationMinutes() bool {
+	if o != nil && !IsNil(o.DurationMinutes) {
+		return true
+	}
+
+	return false
+}
+
+// SetDurationMinutes gets a reference to the given int32 and assigns it to the DurationMinutes field.
 func (o *ClientLogConfiguration) SetDurationMinutes(v int32) {
-	o.DurationMinutes = v
+	o.DurationMinutes = &v
 }
 
 // GetExpiration returns the Expiration field value if set, zero value otherwise.
@@ -211,7 +222,9 @@ func (o ClientLogConfiguration) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ClientId) {
 		toSerialize["clientId"] = o.ClientId
 	}
-	toSerialize["durationMinutes"] = o.DurationMinutes
+	if !IsNil(o.DurationMinutes) {
+		toSerialize["durationMinutes"] = o.DurationMinutes
+	}
 	if !IsNil(o.Expiration) {
 		toSerialize["expiration"] = o.Expiration
 	}
@@ -232,7 +245,6 @@ func (o *ClientLogConfiguration) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"durationMinutes",
 		"rootLevel",
 	}
 

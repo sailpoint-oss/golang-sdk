@@ -358,7 +358,7 @@ func (r ApiGetClientLogConfigurationRequest) Execute() (*ClientLogConfiguration,
 }
 
 /*
-GetClientLogConfiguration Get managed cluster's log configuration
+GetClientLogConfiguration Get Managed Cluster's log configuration
 
 Get managed cluster's log configuration.
 
@@ -889,12 +889,12 @@ type ApiPutClientLogConfigurationRequest struct {
 	ctx context.Context
 	ApiService *ManagedClustersAPIService
 	id string
-	clientLogConfiguration *ClientLogConfiguration
+	putClientLogConfigurationRequest *PutClientLogConfigurationRequest
 }
 
 // ClientLogConfiguration for given ManagedCluster
-func (r ApiPutClientLogConfigurationRequest) ClientLogConfiguration(clientLogConfiguration ClientLogConfiguration) ApiPutClientLogConfigurationRequest {
-	r.clientLogConfiguration = &clientLogConfiguration
+func (r ApiPutClientLogConfigurationRequest) PutClientLogConfigurationRequest(putClientLogConfigurationRequest PutClientLogConfigurationRequest) ApiPutClientLogConfigurationRequest {
+	r.putClientLogConfigurationRequest = &putClientLogConfigurationRequest
 	return r
 }
 
@@ -903,9 +903,9 @@ func (r ApiPutClientLogConfigurationRequest) Execute() (*ClientLogConfiguration,
 }
 
 /*
-PutClientLogConfiguration Update managed cluster's log configuration
+PutClientLogConfiguration Update Managed Cluster's log configuration
 
-Update managed cluster's log configuration
+Update managed cluster's log configuration.  Only one of `durationMinutes` or `expiration` may be specified, up to 1440 minutes (24 hours) in the future. If neither is specified, the default value for `durationMinutes` will be 240.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of ManagedCluster to update log configuration for
@@ -940,8 +940,8 @@ func (a *ManagedClustersAPIService) PutClientLogConfigurationExecute(r ApiPutCli
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.clientLogConfiguration == nil {
-		return localVarReturnValue, nil, reportError("clientLogConfiguration is required and must be specified")
+	if r.putClientLogConfigurationRequest == nil {
+		return localVarReturnValue, nil, reportError("putClientLogConfigurationRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -962,7 +962,7 @@ func (a *ManagedClustersAPIService) PutClientLogConfigurationExecute(r ApiPutCli
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.clientLogConfiguration
+	localVarPostBody = r.putClientLogConfigurationRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
