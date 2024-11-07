@@ -28,7 +28,7 @@ type SourceAppAccountSource struct {
 	// If the source is used for password management
 	UseForPasswordManagement *bool `json:"useForPasswordManagement,omitempty"`
 	// The password policies for the source
-	PasswordPolicies []BaseReferenceDto1 `json:"passwordPolicies,omitempty"`
+	PasswordPolicies []BaseReferenceDto `json:"passwordPolicies,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -184,9 +184,9 @@ func (o *SourceAppAccountSource) SetUseForPasswordManagement(v bool) {
 }
 
 // GetPasswordPolicies returns the PasswordPolicies field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SourceAppAccountSource) GetPasswordPolicies() []BaseReferenceDto1 {
+func (o *SourceAppAccountSource) GetPasswordPolicies() []BaseReferenceDto {
 	if o == nil {
-		var ret []BaseReferenceDto1
+		var ret []BaseReferenceDto
 		return ret
 	}
 	return o.PasswordPolicies
@@ -195,7 +195,7 @@ func (o *SourceAppAccountSource) GetPasswordPolicies() []BaseReferenceDto1 {
 // GetPasswordPoliciesOk returns a tuple with the PasswordPolicies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SourceAppAccountSource) GetPasswordPoliciesOk() ([]BaseReferenceDto1, bool) {
+func (o *SourceAppAccountSource) GetPasswordPoliciesOk() ([]BaseReferenceDto, bool) {
 	if o == nil || IsNil(o.PasswordPolicies) {
 		return nil, false
 	}
@@ -211,8 +211,8 @@ func (o *SourceAppAccountSource) HasPasswordPolicies() bool {
 	return false
 }
 
-// SetPasswordPolicies gets a reference to the given []BaseReferenceDto1 and assigns it to the PasswordPolicies field.
-func (o *SourceAppAccountSource) SetPasswordPolicies(v []BaseReferenceDto1) {
+// SetPasswordPolicies gets a reference to the given []BaseReferenceDto and assigns it to the PasswordPolicies field.
+func (o *SourceAppAccountSource) SetPasswordPolicies(v []BaseReferenceDto) {
 	o.PasswordPolicies = v
 }
 

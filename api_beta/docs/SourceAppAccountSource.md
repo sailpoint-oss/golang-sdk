@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Type** | Pointer to **string** | The source type, will always be \&quot;SOURCE\&quot; | [optional] 
 **Name** | Pointer to **string** | The source name | [optional] 
 **UseForPasswordManagement** | Pointer to **bool** | If the source is used for password management | [optional] [default to false]
-**PasswordPolicies** | Pointer to [**[]BaseReferenceDto1**](BaseReferenceDto1.md) | The password policies for the source | [optional] 
+**PasswordPolicies** | Pointer to [**[]BaseReferenceDto**](BaseReferenceDto.md) | The password policies for the source | [optional] 
 
 ## Methods
 
@@ -131,20 +131,20 @@ HasUseForPasswordManagement returns a boolean if a field has been set.
 
 ### GetPasswordPolicies
 
-`func (o *SourceAppAccountSource) GetPasswordPolicies() []BaseReferenceDto1`
+`func (o *SourceAppAccountSource) GetPasswordPolicies() []BaseReferenceDto`
 
 GetPasswordPolicies returns the PasswordPolicies field if non-nil, zero value otherwise.
 
 ### GetPasswordPoliciesOk
 
-`func (o *SourceAppAccountSource) GetPasswordPoliciesOk() (*[]BaseReferenceDto1, bool)`
+`func (o *SourceAppAccountSource) GetPasswordPoliciesOk() (*[]BaseReferenceDto, bool)`
 
 GetPasswordPoliciesOk returns a tuple with the PasswordPolicies field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPasswordPolicies
 
-`func (o *SourceAppAccountSource) SetPasswordPolicies(v []BaseReferenceDto1)`
+`func (o *SourceAppAccountSource) SetPasswordPolicies(v []BaseReferenceDto)`
 
 SetPasswordPolicies sets PasswordPolicies field to given value.
 

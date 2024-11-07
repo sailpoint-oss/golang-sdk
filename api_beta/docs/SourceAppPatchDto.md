@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **AppCenterEnabled** | Pointer to **bool** | True if the source app is shown in the app center | [optional] [default to true]
 **AccessProfiles** | Pointer to **[]string** | List of IDs of access profiles | [optional] 
 **AccountSource** | Pointer to [**NullableSourceAppAccountSource**](SourceAppAccountSource.md) |  | [optional] 
-**Owner** | Pointer to [**NullableBaseReferenceDto1**](BaseReferenceDto1.md) | The owner of source app | [optional] 
+**Owner** | Pointer to [**NullableBaseReferenceDto**](BaseReferenceDto.md) | The owner of source app | [optional] 
 
 ## Methods
 
@@ -359,20 +359,20 @@ HasAccountSource returns a boolean if a field has been set.
 UnsetAccountSource ensures that no value is present for AccountSource, not even an explicit nil
 ### GetOwner
 
-`func (o *SourceAppPatchDto) GetOwner() BaseReferenceDto1`
+`func (o *SourceAppPatchDto) GetOwner() BaseReferenceDto`
 
 GetOwner returns the Owner field if non-nil, zero value otherwise.
 
 ### GetOwnerOk
 
-`func (o *SourceAppPatchDto) GetOwnerOk() (*BaseReferenceDto1, bool)`
+`func (o *SourceAppPatchDto) GetOwnerOk() (*BaseReferenceDto, bool)`
 
 GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwner
 
-`func (o *SourceAppPatchDto) SetOwner(v BaseReferenceDto1)`
+`func (o *SourceAppPatchDto) SetOwner(v BaseReferenceDto)`
 
 SetOwner sets Owner field to given value.
 

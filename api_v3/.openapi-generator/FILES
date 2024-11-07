@@ -97,9 +97,6 @@ docs/AccountActivityDocument.md
 docs/AccountActivityItem.md
 docs/AccountActivityItemOperation.md
 docs/AccountActivitySearchedItem.md
-docs/AccountAllOfOwnerGroup.md
-docs/AccountAllOfOwnerIdentity.md
-docs/AccountAllOfSourceOwner.md
 docs/AccountAttributes.md
 docs/AccountAttributesCreate.md
 docs/AccountAttributesCreateAttributes.md
@@ -463,6 +460,7 @@ docs/Reassignment.md
 docs/ReassignmentReference.md
 docs/ReassignmentTrailDTO.md
 docs/ReassignmentType.md
+docs/Recommendation.md
 docs/Reference.md
 docs/RemediationItemDetails.md
 docs/RemediationItems.md
@@ -709,9 +707,6 @@ model_account_activity_document.go
 model_account_activity_item.go
 model_account_activity_item_operation.go
 model_account_activity_searched_item.go
-model_account_all_of_owner_group.go
-model_account_all_of_owner_identity.go
-model_account_all_of_source_owner.go
 model_account_attributes.go
 model_account_attributes_create.go
 model_account_attributes_create_attributes.go
@@ -1047,6 +1042,7 @@ model_reassignment.go
 model_reassignment_reference.go
 model_reassignment_trail_dto.go
 model_reassignment_type.go
+model_recommendation.go
 model_reference.go
 model_remediation_item_details.go
 model_remediation_items.go

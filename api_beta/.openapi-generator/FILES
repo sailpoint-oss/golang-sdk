@@ -154,10 +154,6 @@ docs/AccountAggregationCompletedSource.md
 docs/AccountAggregationCompletedStats.md
 docs/AccountAggregationStatus.md
 docs/AccountAggregationsAPI.md
-docs/AccountAllOfIdentity.md
-docs/AccountAllOfOwnerGroup.md
-docs/AccountAllOfOwnerIdentity.md
-docs/AccountAllOfSourceOwner.md
 docs/AccountAttributes.md
 docs/AccountAttributesChanged.md
 docs/AccountAttributesChangedAccount.md
@@ -707,6 +703,7 @@ docs/ReassignReference.md
 docs/Reassignment.md
 docs/ReassignmentType.md
 docs/ReassignmentTypeEnum.md
+docs/Recommendation.md
 docs/RecommendationConfigDto.md
 docs/RecommendationRequest.md
 docs/RecommendationRequestDto.md
@@ -1100,10 +1097,6 @@ model_account_aggregation_completed.go
 model_account_aggregation_completed_source.go
 model_account_aggregation_completed_stats.go
 model_account_aggregation_status.go
-model_account_all_of_identity.go
-model_account_all_of_owner_group.go
-model_account_all_of_owner_identity.go
-model_account_all_of_source_owner.go
 model_account_attributes.go
 model_account_attributes_changed.go
 model_account_attributes_changed_account.go
@@ -1609,6 +1602,7 @@ model_reassign_reference.go
 model_reassignment.go
 model_reassignment_type.go
 model_reassignment_type_enum.go
+model_recommendation.go
 model_recommendation_config_dto.go
 model_recommendation_request.go
 model_recommendation_request_dto.go

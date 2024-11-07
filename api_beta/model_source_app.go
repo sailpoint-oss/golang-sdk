@@ -42,7 +42,7 @@ type SourceApp struct {
 	AppCenterEnabled *bool `json:"appCenterEnabled,omitempty"`
 	AccountSource NullableSourceAppAccountSource `json:"accountSource,omitempty"`
 	// The owner of source app
-	Owner NullableBaseReferenceDto1 `json:"owner,omitempty"`
+	Owner NullableBaseReferenceDto `json:"owner,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -444,9 +444,9 @@ func (o *SourceApp) UnsetAccountSource() {
 }
 
 // GetOwner returns the Owner field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SourceApp) GetOwner() BaseReferenceDto1 {
+func (o *SourceApp) GetOwner() BaseReferenceDto {
 	if o == nil || IsNil(o.Owner.Get()) {
-		var ret BaseReferenceDto1
+		var ret BaseReferenceDto
 		return ret
 	}
 	return *o.Owner.Get()
@@ -455,7 +455,7 @@ func (o *SourceApp) GetOwner() BaseReferenceDto1 {
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SourceApp) GetOwnerOk() (*BaseReferenceDto1, bool) {
+func (o *SourceApp) GetOwnerOk() (*BaseReferenceDto, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -471,8 +471,8 @@ func (o *SourceApp) HasOwner() bool {
 	return false
 }
 
-// SetOwner gets a reference to the given NullableBaseReferenceDto1 and assigns it to the Owner field.
-func (o *SourceApp) SetOwner(v BaseReferenceDto1) {
+// SetOwner gets a reference to the given NullableBaseReferenceDto and assigns it to the Owner field.
+func (o *SourceApp) SetOwner(v BaseReferenceDto) {
 	o.Owner.Set(&v)
 }
 // SetOwnerNil sets the value for Owner to be an explicit nil

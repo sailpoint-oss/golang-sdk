@@ -21,14 +21,14 @@ var _ MappedNullable = &RoleAssignmentDto{}
 type RoleAssignmentDto struct {
 	// Assignment Id
 	Id *string `json:"id,omitempty"`
-	Role *BaseReferenceDto `json:"role,omitempty"`
+	Role *BaseReferenceDto1 `json:"role,omitempty"`
 	// Comments added by the user when the assignment was made
 	Comments *string `json:"comments,omitempty"`
 	// Source describing how this assignment was made
 	AssignmentSource *string `json:"assignmentSource,omitempty"`
-	Assigner *BaseReferenceDto `json:"assigner,omitempty"`
+	Assigner *BaseReferenceDto1 `json:"assigner,omitempty"`
 	// Dimensions assigned related to this role
-	AssignedDimensions []BaseReferenceDto `json:"assignedDimensions,omitempty"`
+	AssignedDimensions []BaseReferenceDto1 `json:"assignedDimensions,omitempty"`
 	AssignmentContext *AssignmentContextDto `json:"assignmentContext,omitempty"`
 	AccountTargets []RoleTargetDto `json:"accountTargets,omitempty"`
 	// Date that the assignment will be removed
@@ -88,9 +88,9 @@ func (o *RoleAssignmentDto) SetId(v string) {
 }
 
 // GetRole returns the Role field value if set, zero value otherwise.
-func (o *RoleAssignmentDto) GetRole() BaseReferenceDto {
+func (o *RoleAssignmentDto) GetRole() BaseReferenceDto1 {
 	if o == nil || IsNil(o.Role) {
-		var ret BaseReferenceDto
+		var ret BaseReferenceDto1
 		return ret
 	}
 	return *o.Role
@@ -98,7 +98,7 @@ func (o *RoleAssignmentDto) GetRole() BaseReferenceDto {
 
 // GetRoleOk returns a tuple with the Role field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleAssignmentDto) GetRoleOk() (*BaseReferenceDto, bool) {
+func (o *RoleAssignmentDto) GetRoleOk() (*BaseReferenceDto1, bool) {
 	if o == nil || IsNil(o.Role) {
 		return nil, false
 	}
@@ -114,8 +114,8 @@ func (o *RoleAssignmentDto) HasRole() bool {
 	return false
 }
 
-// SetRole gets a reference to the given BaseReferenceDto and assigns it to the Role field.
-func (o *RoleAssignmentDto) SetRole(v BaseReferenceDto) {
+// SetRole gets a reference to the given BaseReferenceDto1 and assigns it to the Role field.
+func (o *RoleAssignmentDto) SetRole(v BaseReferenceDto1) {
 	o.Role = &v
 }
 
@@ -184,9 +184,9 @@ func (o *RoleAssignmentDto) SetAssignmentSource(v string) {
 }
 
 // GetAssigner returns the Assigner field value if set, zero value otherwise.
-func (o *RoleAssignmentDto) GetAssigner() BaseReferenceDto {
+func (o *RoleAssignmentDto) GetAssigner() BaseReferenceDto1 {
 	if o == nil || IsNil(o.Assigner) {
-		var ret BaseReferenceDto
+		var ret BaseReferenceDto1
 		return ret
 	}
 	return *o.Assigner
@@ -194,7 +194,7 @@ func (o *RoleAssignmentDto) GetAssigner() BaseReferenceDto {
 
 // GetAssignerOk returns a tuple with the Assigner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleAssignmentDto) GetAssignerOk() (*BaseReferenceDto, bool) {
+func (o *RoleAssignmentDto) GetAssignerOk() (*BaseReferenceDto1, bool) {
 	if o == nil || IsNil(o.Assigner) {
 		return nil, false
 	}
@@ -210,15 +210,15 @@ func (o *RoleAssignmentDto) HasAssigner() bool {
 	return false
 }
 
-// SetAssigner gets a reference to the given BaseReferenceDto and assigns it to the Assigner field.
-func (o *RoleAssignmentDto) SetAssigner(v BaseReferenceDto) {
+// SetAssigner gets a reference to the given BaseReferenceDto1 and assigns it to the Assigner field.
+func (o *RoleAssignmentDto) SetAssigner(v BaseReferenceDto1) {
 	o.Assigner = &v
 }
 
 // GetAssignedDimensions returns the AssignedDimensions field value if set, zero value otherwise.
-func (o *RoleAssignmentDto) GetAssignedDimensions() []BaseReferenceDto {
+func (o *RoleAssignmentDto) GetAssignedDimensions() []BaseReferenceDto1 {
 	if o == nil || IsNil(o.AssignedDimensions) {
-		var ret []BaseReferenceDto
+		var ret []BaseReferenceDto1
 		return ret
 	}
 	return o.AssignedDimensions
@@ -226,7 +226,7 @@ func (o *RoleAssignmentDto) GetAssignedDimensions() []BaseReferenceDto {
 
 // GetAssignedDimensionsOk returns a tuple with the AssignedDimensions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleAssignmentDto) GetAssignedDimensionsOk() ([]BaseReferenceDto, bool) {
+func (o *RoleAssignmentDto) GetAssignedDimensionsOk() ([]BaseReferenceDto1, bool) {
 	if o == nil || IsNil(o.AssignedDimensions) {
 		return nil, false
 	}
@@ -242,8 +242,8 @@ func (o *RoleAssignmentDto) HasAssignedDimensions() bool {
 	return false
 }
 
-// SetAssignedDimensions gets a reference to the given []BaseReferenceDto and assigns it to the AssignedDimensions field.
-func (o *RoleAssignmentDto) SetAssignedDimensions(v []BaseReferenceDto) {
+// SetAssignedDimensions gets a reference to the given []BaseReferenceDto1 and assigns it to the AssignedDimensions field.
+func (o *RoleAssignmentDto) SetAssignedDimensions(v []BaseReferenceDto1) {
 	o.AssignedDimensions = v
 }
 

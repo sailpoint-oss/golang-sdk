@@ -4601,6 +4601,7 @@ paths:
         example: FULL
         in: query
         name: detailLevel
+        required: false
         schema:
           enum:
           - SLIM
@@ -4678,9 +4679,12 @@ paths:
           **source.authoritative**: *eq*
 
           **source.connectionType**: *eq, in*
+
+          **recommendation.method**: *eq, in, isnull*
         example: identityId eq "2c9180858082150f0180893dbaf44201"
         in: query
         name: filters
+        required: false
         schema:
           type: string
       - description: |-
@@ -4810,6 +4814,11 @@ paths:
       summary: Accounts List
       tags:
       - Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
+      - HELPDESK
     post:
       description: "This API submits an account creation task and returns the task\
         \ ID.  \n\nThe `sourceId` where this account will be created must be included\
@@ -4901,6 +4910,10 @@ paths:
       summary: Create Account
       tags:
       - Accounts
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /accounts/{id}:
     delete:
       description: "Use this API to delete an account. \nThis endpoint submits an\
@@ -65115,11 +65128,13 @@ components:
             example: direct
             nullable: true
             type: string
-          type:
-            description: The type of the account
-            example: NON_HUMAN
-            nullable: true
-            type: string
+          isMachine:
+            default: false
+            description: Indicates if the account is of machine type
+            example: true
+            type: boolean
+          recommendation:
+            $ref: '#/components/schemas/Recommendation'
           attributes:
             additionalProperties: true
             description: The account attributes that are aggregated
@@ -65162,7 +65177,7 @@ components:
           uuid:
             description: The unique ID of the account as determined by the account
               schema
-            example: slpt.support
+            example: "{b0dce506-d6d4-44d2-8a32-d9a5b21fb175}"
             nullable: true
             type: string
           manuallyCorrelated:
@@ -65175,9 +65190,9 @@ components:
             example: true
             type: boolean
           identity:
-            $ref: '#/components/schemas/Account_allOf_identity'
+            $ref: '#/components/schemas/BaseReferenceDto'
           sourceOwner:
-            $ref: '#/components/schemas/Account_allOf_sourceOwner'
+            $ref: '#/components/schemas/BaseReferenceDto'
           features:
             description: A string list containing the owning source's features
             example: ENABLE
@@ -65193,9 +65208,7 @@ components:
             nullable: true
             type: string
           ownerIdentity:
-            $ref: '#/components/schemas/Account_allOf_ownerIdentity'
-          ownerGroup:
-            $ref: '#/components/schemas/Account_allOf_ownerGroup'
+            $ref: '#/components/schemas/BaseReferenceDto'
         required:
         - attributes
         - authoritative
@@ -65212,34 +65225,33 @@ components:
       example:
         sourceId: 2c9180835d2e5168015d32f890ca1581
         origin: AGGREGATED
+        recommendation:
+          method: DISCOVERY
+          type: MACHINE
         description: description
-        type: NON_HUMAN
         sourceOwner:
-          name: SailPoint Support
-          id: 4c5c8534e99445de98eef6c75e25eb01
+          name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
           type: IDENTITY
         connectionType: direct
-        uuid: slpt.support
+        uuid: "{b0dce506-d6d4-44d2-8a32-d9a5b21fb175}"
         ownerIdentity:
-          name: Adam Kennedy
-          id: 2c918084660f45d6016617daa9210584
+          name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
           type: IDENTITY
         features: ENABLE
         identity:
-          name: Adam Kennedy
-          id: 2c918084660f45d6016617daa9210584
+          name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
           type: IDENTITY
         modified: 2023-01-03T21:16:22.432Z
         disabled: false
         hasEntitlements: true
         id: id12345
         locked: false
+        isMachine: true
         authoritative: false
         created: 2023-01-03T21:16:22.432Z
-        ownerGroup:
-          name: GovGroup AX17Z
-          id: 8d3e0094e99445de98eef6c75e25jc04
-          type: GOVERNANCE_GROUP
         manuallyCorrelated: false
         identityState: ACTIVE
         nativeIdentity: "552775"
@@ -68006,7 +68018,7 @@ components:
           example: 1cbb0705b38c4226b1334eadd8874086
           type: string
         role:
-          $ref: '#/components/schemas/BaseReferenceDto'
+          $ref: '#/components/schemas/BaseReferenceDto_1'
       type: object
     RoleAssignmentDto:
       example:
@@ -68078,7 +68090,7 @@ components:
           example: 1cbb0705b38c4226b1334eadd8874086
           type: string
         role:
-          $ref: '#/components/schemas/BaseReferenceDto'
+          $ref: '#/components/schemas/BaseReferenceDto_1'
         comments:
           description: Comments added by the user when the assignment was made
           example: I'm a new Engineer and need this role to do my work
@@ -68088,7 +68100,7 @@ components:
           example: UI
           type: string
         assigner:
-          $ref: '#/components/schemas/BaseReferenceDto'
+          $ref: '#/components/schemas/BaseReferenceDto_1'
         assignedDimensions:
           description: Dimensions assigned related to this role
           example:
@@ -68096,7 +68108,7 @@ components:
             type: DIMENSION
             name: Northeast region
           items:
-            $ref: '#/components/schemas/BaseReferenceDto'
+            $ref: '#/components/schemas/BaseReferenceDto_1'
           type: array
         assignmentContext:
           $ref: '#/components/schemas/AssignmentContextDto'
@@ -76376,7 +76388,7 @@ components:
           $ref: '#/components/schemas/SourceApp_accountSource'
         owner:
           allOf:
-          - $ref: '#/components/schemas/BaseReferenceDto_1'
+          - $ref: '#/components/schemas/BaseReferenceDto'
           description: The owner of source app
           example:
             id: 85d173e7d57e496569df763231d6deb6a
@@ -76474,7 +76486,7 @@ components:
           $ref: '#/components/schemas/SourceApp_accountSource'
         owner:
           allOf:
-          - $ref: '#/components/schemas/BaseReferenceDto_1'
+          - $ref: '#/components/schemas/BaseReferenceDto'
           description: The owner of source app
           example:
             id: 85d173e7d57e496569df763231d6deb6a
@@ -82194,6 +82206,50 @@ components:
         type:
           $ref: '#/components/schemas/AccessRequestRecommendationItemType'
       type: object
+    Recommendation:
+      example:
+        method: DISCOVERY
+        type: MACHINE
+      properties:
+        type:
+          description: Recommended type of account.
+          enum:
+          - HUMAN
+          - MACHINE
+          example: MACHINE
+          type: string
+        method:
+          description: "Method used to produce the recommendation. DISCOVERY - suggested\
+            \ by AI, SOURCE - the account comes from a source flagged as containing\
+            \ machine accounts, CRITERIA - the account satisfies classification criteria."
+          enum:
+          - DISCOVERY
+          - SOURCE
+          - CRITERIA
+          example: DISCOVERY
+          type: string
+      required:
+      - method
+      - type
+      type: object
+    BaseReferenceDto:
+      example:
+        name: William Wilson
+        id: 2c91808568c529c60168cca6f90c1313
+        type: IDENTITY
+      properties:
+        type:
+          $ref: '#/components/schemas/DtoType'
+        id:
+          description: ID of the object to which this reference applies
+          example: 2c91808568c529c60168cca6f90c1313
+          type: string
+        name:
+          description: Human-readable display name of the object to which this reference
+            applies
+          example: William Wilson
+          type: string
+      type: object
     CompletionStatus:
       description: The status after completion.
       enum:
@@ -82789,7 +82845,7 @@ components:
       - parentName
       - uniqueName
       type: object
-    BaseReferenceDto:
+    BaseReferenceDto_1:
       example:
         name: Github
         id: ff8081814d977c21014da056804a0af3
@@ -82859,7 +82915,7 @@ components:
           id: ff8081814d977c21014da056804a0af3
       properties:
         source:
-          $ref: '#/components/schemas/BaseReferenceDto'
+          $ref: '#/components/schemas/BaseReferenceDto_1'
         accountInfo:
           $ref: '#/components/schemas/AccountInfoDto'
         roleName:
@@ -84740,6 +84796,7 @@ components:
       - IDENTITY
       - IDENTITY_PROFILE
       - IDENTITY_REQUEST
+      - MACHINE_IDENTITY
       - LIFECYCLE_STATE
       - PASSWORD_POLICY
       - ROLE
@@ -85183,20 +85240,6 @@ components:
       required:
       - dataJson
       - type
-      type: object
-    BaseReferenceDto_1:
-      properties:
-        type:
-          $ref: '#/components/schemas/DtoType'
-        id:
-          description: ID of the object to which this reference applies
-          example: 2c91808568c529c60168cca6f90c1313
-          type: string
-        name:
-          description: Human-readable display name of the object to which this reference
-            applies
-          example: William Wilson
-          type: string
       type: object
     selector:
       example:
@@ -87785,7 +87828,7 @@ components:
           id: ff8081814d977c21014da056804a0af3
       properties:
         roleRef:
-          $ref: '#/components/schemas/BaseReferenceDto'
+          $ref: '#/components/schemas/BaseReferenceDto_1'
         matchedAttributes:
           items:
             $ref: '#/components/schemas/ContextAttributeDto'
@@ -90779,99 +90822,6 @@ components:
           example: This item grants an employee read and write access to the database
           type: string
       type: object
-    Account_allOf_identity:
-      description: The identity this account is correlated to
-      example:
-        name: Adam Kennedy
-        id: 2c918084660f45d6016617daa9210584
-        type: IDENTITY
-      properties:
-        type:
-          description: The type of object being referenced
-          enum:
-          - IDENTITY
-          example: IDENTITY
-          type: string
-        id:
-          description: ID of the identity
-          example: 2c918084660f45d6016617daa9210584
-          type: string
-        name:
-          description: Human-readable display name of the identity
-          example: Adam Kennedy
-          type: string
-      type: object
-    Account_allOf_sourceOwner:
-      description: The owner of the source this account belongs to
-      example:
-        name: SailPoint Support
-        id: 4c5c8534e99445de98eef6c75e25eb01
-        type: IDENTITY
-      nullable: true
-      properties:
-        type:
-          description: The type of object being referenced
-          enum:
-          - IDENTITY
-          example: IDENTITY
-          type: string
-        id:
-          description: ID of the identity
-          example: 4c5c8534e99445de98eef6c75e25eb01
-          type: string
-        name:
-          description: Human-readable display name of the identity
-          example: SailPoint Support
-          type: string
-      type: object
-    Account_allOf_ownerIdentity:
-      description: "The identity who owns this account, typically used for non-human\
-        \ accounts"
-      example:
-        name: Adam Kennedy
-        id: 2c918084660f45d6016617daa9210584
-        type: IDENTITY
-      nullable: true
-      properties:
-        type:
-          description: The type of object being referenced
-          enum:
-          - IDENTITY
-          example: IDENTITY
-          type: string
-        id:
-          description: ID of the identity
-          example: 2c918084660f45d6016617daa9210584
-          type: string
-        name:
-          description: Human-readable display name of the identity
-          example: Adam Kennedy
-          type: string
-      type: object
-    Account_allOf_ownerGroup:
-      description: "The governance group who owns this account, typically used for\
-        \ non-human accounts"
-      example:
-        name: GovGroup AX17Z
-        id: 8d3e0094e99445de98eef6c75e25jc04
-        type: GOVERNANCE_GROUP
-      nullable: true
-      properties:
-        type:
-          description: The type of object being referenced
-          enum:
-          - GOVERNANCE_GROUP
-          example: GOVERNANCE_GROUP
-          type: string
-        id:
-          description: ID of the governance group
-          example: 8d3e0094e99445de98eef6c75e25jc04
-          type: string
-        name:
-          description: Human-readable display name of the governance group
-          example: GovGroup AX17Z
-          type: string
-      type: object
     AccountAttributesCreate_attributes:
       additionalProperties:
         type: string
@@ -92320,7 +92270,7 @@ components:
             id: 006a072ecc6647f68bba9f4a4ad34649
             name: Password Policy 1
           items:
-            $ref: '#/components/schemas/BaseReferenceDto_1'
+            $ref: '#/components/schemas/BaseReferenceDto'
           nullable: true
           type: array
       type: object

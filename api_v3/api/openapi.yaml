@@ -3329,6 +3329,8 @@ paths:
           **source.authoritative**: *eq*
 
           **source.connectionType**: *eq, in*
+
+          **recommendation.method**: *eq, in, isnull*
         example: identityId eq "2c9180858082150f0180893dbaf44201"
         in: query
         name: filters
@@ -44050,11 +44052,13 @@ components:
             example: direct
             nullable: true
             type: string
-          type:
-            description: The type of the account
-            example: NON_HUMAN
-            nullable: true
-            type: string
+          isMachine:
+            default: false
+            description: Indicates if the account is of machine type
+            example: true
+            type: boolean
+          recommendation:
+            $ref: '#/components/schemas/Recommendation'
           attributes:
             additionalProperties: true
             description: The account attributes that are aggregated
@@ -44097,7 +44101,7 @@ components:
           uuid:
             description: The unique ID of the account as determined by the account
               schema
-            example: slpt.support
+            example: "{b0dce506-d6d4-44d2-8a32-d9a5b21fb175}"
             nullable: true
             type: string
           manuallyCorrelated:
@@ -44112,7 +44116,7 @@ components:
           identity:
             $ref: '#/components/schemas/BaseReferenceDto'
           sourceOwner:
-            $ref: '#/components/schemas/Account_allOf_sourceOwner'
+            $ref: '#/components/schemas/BaseReferenceDto'
           features:
             description: A string list containing the owning source's features
             example: ENABLE
@@ -44128,9 +44132,7 @@ components:
             nullable: true
             type: string
           ownerIdentity:
-            $ref: '#/components/schemas/Account_allOf_ownerIdentity'
-          ownerGroup:
-            $ref: '#/components/schemas/Account_allOf_ownerGroup'
+            $ref: '#/components/schemas/BaseReferenceDto'
         required:
         - attributes
         - authoritative
@@ -44147,17 +44149,19 @@ components:
       example:
         sourceId: 2c9180835d2e5168015d32f890ca1581
         origin: AGGREGATED
+        recommendation:
+          method: DISCOVERY
+          type: MACHINE
         description: description
-        type: NON_HUMAN
         sourceOwner:
-          name: John Cavender
-          id: 4c5c8534e99445de98eef6c75e25eb01
+          name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
           type: IDENTITY
         connectionType: direct
-        uuid: slpt.support
+        uuid: "{b0dce506-d6d4-44d2-8a32-d9a5b21fb175}"
         ownerIdentity:
-          name: Adam Kennedy
-          id: 2c918084660f45d6016617daa9210584
+          name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
           type: IDENTITY
         features: ENABLE
         identity:
@@ -44169,12 +44173,9 @@ components:
         hasEntitlements: true
         id: id12345
         locked: false
+        isMachine: true
         authoritative: false
         created: 2015-05-28T14:07:17Z
-        ownerGroup:
-          name: GovGroup AX17Z
-          id: 8d3e0094e99445de98eef6c75e25jc04
-          type: GOVERNANCE_GROUP
         manuallyCorrelated: false
         identityState: ACTIVE
         nativeIdentity: "552775"
@@ -57500,6 +57501,32 @@ components:
       required:
       - name
       type: object
+    Recommendation:
+      example:
+        method: DISCOVERY
+        type: MACHINE
+      properties:
+        type:
+          description: Recommended type of account.
+          enum:
+          - HUMAN
+          - MACHINE
+          example: MACHINE
+          type: string
+        method:
+          description: "Method used to produce the recommendation. DISCOVERY - suggested\
+            \ by AI, SOURCE - the account comes from a source flagged as containing\
+            \ machine accounts, CRITERIA - the account satisfies classification criteria."
+          enum:
+          - DISCOVERY
+          - SOURCE
+          - CRITERIA
+          example: DISCOVERY
+          type: string
+      required:
+      - method
+      - type
+      type: object
     BaseReferenceDto:
       example:
         name: William Wilson
@@ -59271,6 +59298,7 @@ components:
       - IDENTITY
       - IDENTITY_PROFILE
       - IDENTITY_REQUEST
+      - MACHINE_IDENTITY
       - LIFECYCLE_STATE
       - PASSWORD_POLICY
       - ROLE
@@ -64176,77 +64204,6 @@ components:
         name:
           description: Source's name.
           example: Employees
-          type: string
-      type: object
-    Account_allOf_sourceOwner:
-      description: The owner of this object.
-      example:
-        name: John Cavender
-        id: 4c5c8534e99445de98eef6c75e25eb01
-        type: IDENTITY
-      nullable: true
-      properties:
-        type:
-          description: Type of owner object.
-          enum:
-          - IDENTITY
-          example: IDENTITY
-          type: string
-        id:
-          description: Identity id
-          example: 4c5c8534e99445de98eef6c75e25eb01
-          type: string
-        name:
-          description: Human-readable display name of the owner.
-          example: John Cavender
-          type: string
-      type: object
-    Account_allOf_ownerIdentity:
-      description: "The identity who owns this account, typically used for non-human\
-        \ accounts"
-      example:
-        name: Adam Kennedy
-        id: 2c918084660f45d6016617daa9210584
-        type: IDENTITY
-      nullable: true
-      properties:
-        type:
-          description: The type of object being referenced
-          enum:
-          - IDENTITY
-          example: IDENTITY
-          type: string
-        id:
-          description: ID of the identity
-          example: 2c918084660f45d6016617daa9210584
-          type: string
-        name:
-          description: Human-readable display name of the identity
-          example: Adam Kennedy
-          type: string
-      type: object
-    Account_allOf_ownerGroup:
-      description: "The governance group who owns this account, typically used for\
-        \ non-human accounts"
-      example:
-        name: GovGroup AX17Z
-        id: 8d3e0094e99445de98eef6c75e25jc04
-        type: GOVERNANCE_GROUP
-      nullable: true
-      properties:
-        type:
-          description: The type of object being referenced
-          enum:
-          - GOVERNANCE_GROUP
-          example: GOVERNANCE_GROUP
-          type: string
-        id:
-          description: ID of the governance group
-          example: 8d3e0094e99445de98eef6c75e25jc04
-          type: string
-        name:
-          description: Human-readable display name of the governance group
-          example: GovGroup AX17Z
           type: string
       type: object
     Campaign_allOf_filter:

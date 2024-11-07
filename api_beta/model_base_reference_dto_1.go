@@ -19,10 +19,9 @@ var _ MappedNullable = &BaseReferenceDto1{}
 
 // BaseReferenceDto1 struct for BaseReferenceDto1
 type BaseReferenceDto1 struct {
-	Type *DtoType `json:"type,omitempty"`
-	// ID of the object to which this reference applies
+	// the application ID
 	Id *string `json:"id,omitempty"`
-	// Human-readable display name of the object to which this reference applies
+	// the application name
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -44,38 +43,6 @@ func NewBaseReferenceDto1() *BaseReferenceDto1 {
 func NewBaseReferenceDto1WithDefaults() *BaseReferenceDto1 {
 	this := BaseReferenceDto1{}
 	return &this
-}
-
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *BaseReferenceDto1) GetType() DtoType {
-	if o == nil || IsNil(o.Type) {
-		var ret DtoType
-		return ret
-	}
-	return *o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BaseReferenceDto1) GetTypeOk() (*DtoType, bool) {
-	if o == nil || IsNil(o.Type) {
-		return nil, false
-	}
-	return o.Type, true
-}
-
-// HasType returns a boolean if a field has been set.
-func (o *BaseReferenceDto1) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given DtoType and assigns it to the Type field.
-func (o *BaseReferenceDto1) SetType(v DtoType) {
-	o.Type = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -152,9 +119,6 @@ func (o BaseReferenceDto1) MarshalJSON() ([]byte, error) {
 
 func (o BaseReferenceDto1) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
@@ -183,7 +147,6 @@ func (o *BaseReferenceDto1) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "type")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		o.AdditionalProperties = additionalProperties

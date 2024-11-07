@@ -19,7 +19,7 @@ var _ MappedNullable = &RoleMatchDto{}
 
 // RoleMatchDto struct for RoleMatchDto
 type RoleMatchDto struct {
-	RoleRef *BaseReferenceDto `json:"roleRef,omitempty"`
+	RoleRef *BaseReferenceDto1 `json:"roleRef,omitempty"`
 	MatchedAttributes []ContextAttributeDto `json:"matchedAttributes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -44,9 +44,9 @@ func NewRoleMatchDtoWithDefaults() *RoleMatchDto {
 }
 
 // GetRoleRef returns the RoleRef field value if set, zero value otherwise.
-func (o *RoleMatchDto) GetRoleRef() BaseReferenceDto {
+func (o *RoleMatchDto) GetRoleRef() BaseReferenceDto1 {
 	if o == nil || IsNil(o.RoleRef) {
-		var ret BaseReferenceDto
+		var ret BaseReferenceDto1
 		return ret
 	}
 	return *o.RoleRef
@@ -54,7 +54,7 @@ func (o *RoleMatchDto) GetRoleRef() BaseReferenceDto {
 
 // GetRoleRefOk returns a tuple with the RoleRef field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleMatchDto) GetRoleRefOk() (*BaseReferenceDto, bool) {
+func (o *RoleMatchDto) GetRoleRefOk() (*BaseReferenceDto1, bool) {
 	if o == nil || IsNil(o.RoleRef) {
 		return nil, false
 	}
@@ -70,8 +70,8 @@ func (o *RoleMatchDto) HasRoleRef() bool {
 	return false
 }
 
-// SetRoleRef gets a reference to the given BaseReferenceDto and assigns it to the RoleRef field.
-func (o *RoleMatchDto) SetRoleRef(v BaseReferenceDto) {
+// SetRoleRef gets a reference to the given BaseReferenceDto1 and assigns it to the RoleRef field.
+func (o *RoleMatchDto) SetRoleRef(v BaseReferenceDto1) {
 	o.RoleRef = &v
 }
 

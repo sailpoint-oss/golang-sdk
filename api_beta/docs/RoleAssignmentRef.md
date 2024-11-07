@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Assignment Id | [optional] 
-**Role** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**Role** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetRole
 
-`func (o *RoleAssignmentRef) GetRole() BaseReferenceDto`
+`func (o *RoleAssignmentRef) GetRole() BaseReferenceDto1`
 
 GetRole returns the Role field if non-nil, zero value otherwise.
 
 ### GetRoleOk
 
-`func (o *RoleAssignmentRef) GetRoleOk() (*BaseReferenceDto, bool)`
+`func (o *RoleAssignmentRef) GetRoleOk() (*BaseReferenceDto1, bool)`
 
 GetRoleOk returns a tuple with the Role field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRole
 
-`func (o *RoleAssignmentRef) SetRole(v BaseReferenceDto)`
+`func (o *RoleAssignmentRef) SetRole(v BaseReferenceDto1)`
 
 SetRole sets Role field to given value.
 

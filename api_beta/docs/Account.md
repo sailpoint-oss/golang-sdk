@@ -14,7 +14,8 @@ Name | Type | Description | Notes
 **CloudLifecycleState** | Pointer to **NullableString** | The lifecycle state of the identity this account is correlated to | [optional] 
 **IdentityState** | Pointer to **NullableString** | The identity state of the identity this account is correlated to | [optional] 
 **ConnectionType** | Pointer to **NullableString** | The connection type of the source this account is from | [optional] 
-**Type** | Pointer to **NullableString** | The type of the account | [optional] 
+**IsMachine** | Pointer to **bool** | Indicates if the account is of machine type | [optional] [default to false]
+**Recommendation** | Pointer to [**Recommendation**](Recommendation.md) |  | [optional] 
 **Attributes** | **map[string]interface{}** | The account attributes that are aggregated | 
 **Authoritative** | **bool** | Indicates if this account is from an authoritative source | 
 **Description** | Pointer to **NullableString** | A description of the account | [optional] 
@@ -26,12 +27,11 @@ Name | Type | Description | Notes
 **Uuid** | Pointer to **NullableString** | The unique ID of the account as determined by the account schema | [optional] 
 **ManuallyCorrelated** | **bool** | Indicates if the account has been manually correlated to an identity | 
 **HasEntitlements** | **bool** | Indicates if the account has entitlements | 
-**Identity** | Pointer to [**AccountAllOfIdentity**](AccountAllOfIdentity.md) |  | [optional] 
-**SourceOwner** | Pointer to [**NullableAccountAllOfSourceOwner**](AccountAllOfSourceOwner.md) |  | [optional] 
+**Identity** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**SourceOwner** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
 **Features** | Pointer to **NullableString** | A string list containing the owning source&#39;s features | [optional] 
 **Origin** | Pointer to **NullableString** | The origin of the account either aggregated or provisioned | [optional] 
-**OwnerIdentity** | Pointer to [**NullableAccountAllOfOwnerIdentity**](AccountAllOfOwnerIdentity.md) |  | [optional] 
-**OwnerGroup** | Pointer to [**NullableAccountAllOfOwnerGroup**](AccountAllOfOwnerGroup.md) |  | [optional] 
+**OwnerIdentity** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
 
 ## Methods
 
@@ -327,41 +327,56 @@ HasConnectionType returns a boolean if a field has been set.
 `func (o *Account) UnsetConnectionType()`
 
 UnsetConnectionType ensures that no value is present for ConnectionType, not even an explicit nil
-### GetType
+### GetIsMachine
 
-`func (o *Account) GetType() string`
+`func (o *Account) GetIsMachine() bool`
 
-GetType returns the Type field if non-nil, zero value otherwise.
+GetIsMachine returns the IsMachine field if non-nil, zero value otherwise.
 
-### GetTypeOk
+### GetIsMachineOk
 
-`func (o *Account) GetTypeOk() (*string, bool)`
+`func (o *Account) GetIsMachineOk() (*bool, bool)`
 
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+GetIsMachineOk returns a tuple with the IsMachine field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetType
+### SetIsMachine
 
-`func (o *Account) SetType(v string)`
+`func (o *Account) SetIsMachine(v bool)`
 
-SetType sets Type field to given value.
+SetIsMachine sets IsMachine field to given value.
 
-### HasType
+### HasIsMachine
 
-`func (o *Account) HasType() bool`
+`func (o *Account) HasIsMachine() bool`
 
-HasType returns a boolean if a field has been set.
+HasIsMachine returns a boolean if a field has been set.
 
-### SetTypeNil
+### GetRecommendation
 
-`func (o *Account) SetTypeNil(b bool)`
+`func (o *Account) GetRecommendation() Recommendation`
 
- SetTypeNil sets the value for Type to be an explicit nil
+GetRecommendation returns the Recommendation field if non-nil, zero value otherwise.
 
-### UnsetType
-`func (o *Account) UnsetType()`
+### GetRecommendationOk
 
-UnsetType ensures that no value is present for Type, not even an explicit nil
+`func (o *Account) GetRecommendationOk() (*Recommendation, bool)`
+
+GetRecommendationOk returns a tuple with the Recommendation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRecommendation
+
+`func (o *Account) SetRecommendation(v Recommendation)`
+
+SetRecommendation sets Recommendation field to given value.
+
+### HasRecommendation
+
+`func (o *Account) HasRecommendation() bool`
+
+HasRecommendation returns a boolean if a field has been set.
+
 ### GetAttributes
 
 `func (o *Account) GetAttributes() map[string]interface{}`
@@ -624,20 +639,20 @@ SetHasEntitlements sets HasEntitlements field to given value.
 
 ### GetIdentity
 
-`func (o *Account) GetIdentity() AccountAllOfIdentity`
+`func (o *Account) GetIdentity() BaseReferenceDto`
 
 GetIdentity returns the Identity field if non-nil, zero value otherwise.
 
 ### GetIdentityOk
 
-`func (o *Account) GetIdentityOk() (*AccountAllOfIdentity, bool)`
+`func (o *Account) GetIdentityOk() (*BaseReferenceDto, bool)`
 
 GetIdentityOk returns a tuple with the Identity field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIdentity
 
-`func (o *Account) SetIdentity(v AccountAllOfIdentity)`
+`func (o *Account) SetIdentity(v BaseReferenceDto)`
 
 SetIdentity sets Identity field to given value.
 
@@ -649,20 +664,20 @@ HasIdentity returns a boolean if a field has been set.
 
 ### GetSourceOwner
 
-`func (o *Account) GetSourceOwner() AccountAllOfSourceOwner`
+`func (o *Account) GetSourceOwner() BaseReferenceDto`
 
 GetSourceOwner returns the SourceOwner field if non-nil, zero value otherwise.
 
 ### GetSourceOwnerOk
 
-`func (o *Account) GetSourceOwnerOk() (*AccountAllOfSourceOwner, bool)`
+`func (o *Account) GetSourceOwnerOk() (*BaseReferenceDto, bool)`
 
 GetSourceOwnerOk returns a tuple with the SourceOwner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSourceOwner
 
-`func (o *Account) SetSourceOwner(v AccountAllOfSourceOwner)`
+`func (o *Account) SetSourceOwner(v BaseReferenceDto)`
 
 SetSourceOwner sets SourceOwner field to given value.
 
@@ -672,16 +687,6 @@ SetSourceOwner sets SourceOwner field to given value.
 
 HasSourceOwner returns a boolean if a field has been set.
 
-### SetSourceOwnerNil
-
-`func (o *Account) SetSourceOwnerNil(b bool)`
-
- SetSourceOwnerNil sets the value for SourceOwner to be an explicit nil
-
-### UnsetSourceOwner
-`func (o *Account) UnsetSourceOwner()`
-
-UnsetSourceOwner ensures that no value is present for SourceOwner, not even an explicit nil
 ### GetFeatures
 
 `func (o *Account) GetFeatures() string`
@@ -754,20 +759,20 @@ HasOrigin returns a boolean if a field has been set.
 UnsetOrigin ensures that no value is present for Origin, not even an explicit nil
 ### GetOwnerIdentity
 
-`func (o *Account) GetOwnerIdentity() AccountAllOfOwnerIdentity`
+`func (o *Account) GetOwnerIdentity() BaseReferenceDto`
 
 GetOwnerIdentity returns the OwnerIdentity field if non-nil, zero value otherwise.
 
 ### GetOwnerIdentityOk
 
-`func (o *Account) GetOwnerIdentityOk() (*AccountAllOfOwnerIdentity, bool)`
+`func (o *Account) GetOwnerIdentityOk() (*BaseReferenceDto, bool)`
 
 GetOwnerIdentityOk returns a tuple with the OwnerIdentity field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwnerIdentity
 
-`func (o *Account) SetOwnerIdentity(v AccountAllOfOwnerIdentity)`
+`func (o *Account) SetOwnerIdentity(v BaseReferenceDto)`
 
 SetOwnerIdentity sets OwnerIdentity field to given value.
 
@@ -777,51 +782,6 @@ SetOwnerIdentity sets OwnerIdentity field to given value.
 
 HasOwnerIdentity returns a boolean if a field has been set.
 
-### SetOwnerIdentityNil
-
-`func (o *Account) SetOwnerIdentityNil(b bool)`
-
- SetOwnerIdentityNil sets the value for OwnerIdentity to be an explicit nil
-
-### UnsetOwnerIdentity
-`func (o *Account) UnsetOwnerIdentity()`
-
-UnsetOwnerIdentity ensures that no value is present for OwnerIdentity, not even an explicit nil
-### GetOwnerGroup
-
-`func (o *Account) GetOwnerGroup() AccountAllOfOwnerGroup`
-
-GetOwnerGroup returns the OwnerGroup field if non-nil, zero value otherwise.
-
-### GetOwnerGroupOk
-
-`func (o *Account) GetOwnerGroupOk() (*AccountAllOfOwnerGroup, bool)`
-
-GetOwnerGroupOk returns a tuple with the OwnerGroup field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOwnerGroup
-
-`func (o *Account) SetOwnerGroup(v AccountAllOfOwnerGroup)`
-
-SetOwnerGroup sets OwnerGroup field to given value.
-
-### HasOwnerGroup
-
-`func (o *Account) HasOwnerGroup() bool`
-
-HasOwnerGroup returns a boolean if a field has been set.
-
-### SetOwnerGroupNil
-
-`func (o *Account) SetOwnerGroupNil(b bool)`
-
- SetOwnerGroupNil sets the value for OwnerGroup to be an explicit nil
-
-### UnsetOwnerGroup
-`func (o *Account) UnsetOwnerGroup()`
-
-UnsetOwnerGroup ensures that no value is present for OwnerGroup, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

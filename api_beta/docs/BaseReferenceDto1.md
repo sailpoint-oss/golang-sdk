@@ -4,9 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to [**DtoType**](DtoType.md) |  | [optional] 
-**Id** | Pointer to **string** | ID of the object to which this reference applies | [optional] 
-**Name** | Pointer to **string** | Human-readable display name of the object to which this reference applies | [optional] 
+**Id** | Pointer to **string** | the application ID | [optional] 
+**Name** | Pointer to **string** | the application name | [optional] 
 
 ## Methods
 
@@ -26,31 +25,6 @@ will change when the set of required properties is changed
 NewBaseReferenceDto1WithDefaults instantiates a new BaseReferenceDto1 object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetType
-
-`func (o *BaseReferenceDto1) GetType() DtoType`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *BaseReferenceDto1) GetTypeOk() (*DtoType, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *BaseReferenceDto1) SetType(v DtoType)`
-
-SetType sets Type field to given value.
-
-### HasType
-
-`func (o *BaseReferenceDto1) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 ### GetId
 
