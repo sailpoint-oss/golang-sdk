@@ -28454,8 +28454,7 @@ paths:
       - ORG_ADMIN
   /service-desk-integrations:
     get:
-      description: Get a list of ServiceDeskIntegrationDto for existing Service Desk
-        Integrations.
+      description: Get a list of Service Desk integration objects.
       operationId: getServiceDeskIntegrations
       parameters:
       - description: |-
@@ -28614,15 +28613,15 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:service-desk-admin:read
         - idn:service-desk-integration:read
-      summary: List existing Service Desk Integrations
+        - idn:service-desk-integration:manage
+      summary: List existing Service Desk integrations
       tags:
       - Service Desk Integration
       x-sailpoint-userLevels:
       - ORG_ADMIN
     post:
-      description: Create a new Service Desk Integrations.
+      description: Create a new Service Desk integration.
       operationId: createServiceDeskIntegration
       requestBody:
         content:
@@ -28637,7 +28636,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ServiceDeskIntegrationDto'
-          description: details of the created integration
+          description: Details of the created integration
         "400":
           content:
             application/json:
@@ -28714,7 +28713,6 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:service-desk-admin:manage
         - idn:service-desk-integration:manage
       summary: Create new Service Desk integration
       tags:
@@ -28814,7 +28812,6 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:service-desk-admin:manage
         - idn:service-desk-integration:manage
       summary: Delete a Service Desk integration
       tags:
@@ -28917,15 +28914,16 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:service-desk-admin:read
         - idn:service-desk-integration:read
+        - idn:service-desk-integration:manage
       summary: Get a Service Desk integration
       tags:
       - Service Desk Integration
       x-sailpoint-userLevels:
       - ORG_ADMIN
     patch:
-      description: Update an existing ServiceDeskIntegration by ID with a PATCH request.
+      description: Update an existing Service Desk integration by ID with a PATCH
+        request.
       operationId: patchServiceDeskIntegration
       parameters:
       - description: ID of the Service Desk integration to update
@@ -28947,7 +28945,7 @@ paths:
 
           Only `replace` operations are accepted by this endpoint.
 
-          A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed.
+          A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed.
         required: true
       responses:
         "200":
@@ -29032,16 +29030,14 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:service-desk-admin:manage
         - idn:service-desk-integration:manage
-      summary: Service Desk Integration Update PATCH
+      summary: Patch a Service Desk Integration
       tags:
       - Service Desk Integration
       x-sailpoint-userLevels:
       - ORG_ADMIN
     put:
-      description: Update an existing Service Desk integration by ID with updated
-        value in JSON form as the request body.
+      description: Update an existing Service Desk integration by ID.
       operationId: putServiceDeskIntegration
       parameters:
       - description: ID of the Service Desk integration to update
@@ -29143,7 +29139,6 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:service-desk-admin:manage
         - idn:service-desk-integration:manage
       summary: Update a Service Desk integration
       tags:
@@ -29241,9 +29236,9 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:service-desk-admin:read
         - idn:service-desk-integration:read
-      summary: Service Desk Integration Types List.
+        - idn:service-desk-integration:manage
+      summary: List Service Desk integration types
       tags:
       - Service Desk Integration
       x-sailpoint-userLevels:
@@ -29348,9 +29343,9 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:service-desk-admin:read
         - idn:service-desk-integration:read
-      summary: Service Desk integration template by scriptName.
+        - idn:service-desk-integration:manage
+      summary: Service Desk integration template by scriptName
       tags:
       - Service Desk Integration
       x-sailpoint-userLevels:
@@ -29442,8 +29437,8 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:service-desk-admin:read
         - idn:service-desk-integration:read
+        - idn:service-desk-integration:manage
       summary: Get the time check configuration
       tags:
       - Service Desk Integration
@@ -29457,7 +29452,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/QueuedCheckConfigDetails'
-        description: the modified time check configuration
+        description: The modified time check configuration
         required: true
       responses:
         "200":
@@ -29542,7 +29537,6 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:service-desk-admin:manage
         - idn:service-desk-integration:manage
       summary: Update the time check configuration
       tags:
@@ -45425,18 +45419,18 @@ components:
       - name
       type: object
     QueuedCheckConfigDetails:
-      description: Configuration of maximum number days and interval for checking
-        Service Desk integration queue status
+      description: Configuration of maximum number of days and interval for checking
+        Service Desk integration queue status.
       example:
         provisioningStatusCheckIntervalMinutes: "30"
         provisioningMaxStatusCheckDays: "2"
       properties:
         provisioningStatusCheckIntervalMinutes:
-          description: interval in minutes between status checks
+          description: Interval in minutes between status checks
           example: "30"
           type: string
         provisioningMaxStatusCheckDays:
-          description: maximum number of days to check
+          description: Maximum number of days to check
           example: "2"
           type: string
       required:
@@ -64044,18 +64038,13 @@ components:
     patchServiceDeskIntegration_request:
       description: "A JSONPatch document as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902).\
         \  Only `replace` operations are accepted by this endpoint."
-      example: |-
-        [
-          {
-            "op": "replace",
-            "path": "/ownerRef",
-            "value": {
-              "id": "2c9180867d05b227017d09921a205b4d",
-              "type": "IDENTITY",
-              "name": "Angelo2 tester"
-            }
-          }
-        ]
+      example:
+      - op: replace
+        path: /ownerRef
+        value:
+          id: 2c9180867d05b227017d09921a205b4d
+          type: IDENTITY
+          name: Angelo Medici
       properties:
         operations:
           description: Operations to be applied

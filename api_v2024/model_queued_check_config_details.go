@@ -18,11 +18,11 @@ import (
 // checks if the QueuedCheckConfigDetails type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &QueuedCheckConfigDetails{}
 
-// QueuedCheckConfigDetails Configuration of maximum number days and interval for checking Service Desk integration queue status
+// QueuedCheckConfigDetails Configuration of maximum number of days and interval for checking Service Desk integration queue status.
 type QueuedCheckConfigDetails struct {
-	// interval in minutes between status checks
+	// Interval in minutes between status checks
 	ProvisioningStatusCheckIntervalMinutes string `json:"provisioningStatusCheckIntervalMinutes"`
-	// maximum number of days to check
+	// Maximum number of days to check
 	ProvisioningMaxStatusCheckDays string `json:"provisioningMaxStatusCheckDays"`
 	AdditionalProperties map[string]interface{}
 }

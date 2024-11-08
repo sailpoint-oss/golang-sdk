@@ -42,7 +42,7 @@ func (r ApiCreateServiceDeskIntegrationRequest) Execute() (*ServiceDeskIntegrati
 /*
 CreateServiceDeskIntegration Create new Service Desk integration
 
-Create a new Service Desk Integrations.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Create a new Service Desk integration.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateServiceDeskIntegrationRequest
@@ -212,7 +212,7 @@ func (r ApiDeleteServiceDeskIntegrationRequest) Execute() (*http.Response, error
 /*
 DeleteServiceDeskIntegration Delete a Service Desk integration
 
-Delete an existing Service Desk integration by ID.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Delete an existing Service Desk integration by ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of Service Desk integration to delete
@@ -369,7 +369,7 @@ func (r ApiGetServiceDeskIntegrationRequest) Execute() (*ServiceDeskIntegrationD
 /*
 GetServiceDeskIntegration Get a Service Desk integration
 
-Get an existing Service Desk integration by ID.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Get an existing Service Desk integration by ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Service Desk integration to get
@@ -569,9 +569,9 @@ func (r ApiGetServiceDeskIntegrationListRequest) Execute() ([]ServiceDeskIntegra
 }
 
 /*
-GetServiceDeskIntegrationList List existing Service Desk Integrations
+GetServiceDeskIntegrationList List existing Service Desk integrations
 
-Get a list of ServiceDeskIntegrationDto for existing Service Desk Integrations.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Get a list of Service Desk integration objects.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetServiceDeskIntegrationListRequest
@@ -758,9 +758,9 @@ func (r ApiGetServiceDeskIntegrationTemplateRequest) Execute() (*ServiceDeskInte
 }
 
 /*
-GetServiceDeskIntegrationTemplate Service Desk integration template by scriptName.
+GetServiceDeskIntegrationTemplate Service Desk integration template by scriptName
 
-This API endpoint returns an existing Service Desk integration template by scriptName.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+This API endpoint returns an existing Service Desk integration template by scriptName.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param scriptName The scriptName value of the Service Desk integration template to get
@@ -925,9 +925,9 @@ func (r ApiGetServiceDeskIntegrationTypesRequest) Execute() ([]ServiceDeskIntegr
 }
 
 /*
-GetServiceDeskIntegrationTypes Service Desk Integration Types List.
+GetServiceDeskIntegrationTypes List Service Desk integration types
 
-This API endpoint returns the current list of supported Service Desk integration types.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+This API endpoint returns the current list of supported Service Desk integration types.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetServiceDeskIntegrationTypesRequest
@@ -1091,7 +1091,7 @@ func (r ApiGetStatusCheckDetailsRequest) Execute() (*QueuedCheckConfigDetails, *
 /*
 GetStatusCheckDetails Get the time check configuration
 
-Get the time check configuration of queued SDIM tickets.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Get the time check configuration of queued SDIM tickets.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetStatusCheckDetailsRequest
@@ -1250,7 +1250,7 @@ type ApiPatchServiceDeskIntegrationRequest struct {
 	patchServiceDeskIntegrationRequest *PatchServiceDeskIntegrationRequest
 }
 
-// A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only &#x60;replace&#x60; operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed. 
+// A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only &#x60;replace&#x60; operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed. 
 func (r ApiPatchServiceDeskIntegrationRequest) PatchServiceDeskIntegrationRequest(patchServiceDeskIntegrationRequest PatchServiceDeskIntegrationRequest) ApiPatchServiceDeskIntegrationRequest {
 	r.patchServiceDeskIntegrationRequest = &patchServiceDeskIntegrationRequest
 	return r
@@ -1261,9 +1261,9 @@ func (r ApiPatchServiceDeskIntegrationRequest) Execute() (*ServiceDeskIntegratio
 }
 
 /*
-PatchServiceDeskIntegration Service Desk Integration Update PATCH
+PatchServiceDeskIntegration Patch a Service Desk Integration
 
-Update an existing ServiceDeskIntegration by ID with a PATCH request.
+Update an existing Service Desk integration by ID with a PATCH request.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Service Desk integration to update
@@ -1443,7 +1443,7 @@ func (r ApiPutServiceDeskIntegrationRequest) Execute() (*ServiceDeskIntegrationD
 /*
 PutServiceDeskIntegration Update a Service Desk integration
 
-Update an existing Service Desk integration by ID with updated value in JSON form as the request body.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Update an existing Service Desk integration by ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Service Desk integration to update
@@ -1609,7 +1609,7 @@ type ApiUpdateStatusCheckDetailsRequest struct {
 	queuedCheckConfigDetails *QueuedCheckConfigDetails
 }
 
-// the modified time check configuration
+// The modified time check configuration
 func (r ApiUpdateStatusCheckDetailsRequest) QueuedCheckConfigDetails(queuedCheckConfigDetails QueuedCheckConfigDetails) ApiUpdateStatusCheckDetailsRequest {
 	r.queuedCheckConfigDetails = &queuedCheckConfigDetails
 	return r
@@ -1622,7 +1622,7 @@ func (r ApiUpdateStatusCheckDetailsRequest) Execute() (*QueuedCheckConfigDetails
 /*
 UpdateStatusCheckDetails Update the time check configuration
 
-Update the time check configuration of queued SDIM tickets.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Update the time check configuration of queued SDIM tickets.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiUpdateStatusCheckDetailsRequest
