@@ -2384,7 +2384,7 @@ paths:
         required: false
         schema:
           type: string
-      - description: Filter the results by the identity twho made the requests. *me*
+      - description: Filter the results by the identity who made the requests. *me*
           indicates the current user. Mutually exclusive with *regarding-identity*.
         example: 2c9180877b2b6ea4017b2c545f971429
         in: query
@@ -2462,6 +2462,14 @@ paths:
         required: false
         schema:
           format: comma-separated
+          type: string
+      - description: Filter the results by the state of the request. The only valid
+          value is *EXECUTING*.
+        example: request-state=EXECUTING
+        in: query
+        name: request-state
+        required: false
+        schema:
           type: string
       responses:
         "200":

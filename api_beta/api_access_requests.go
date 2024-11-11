@@ -732,6 +732,7 @@ type ApiListAccessRequestStatusRequest struct {
 	offset *int32
 	filters *string
 	sorters *string
+	requestState *string
 }
 
 // Filter the results by the identity the requests were made for. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
@@ -740,7 +741,7 @@ func (r ApiListAccessRequestStatusRequest) RequestedFor(requestedFor string) Api
 	return r
 }
 
-// Filter the results by the identity twho made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
+// Filter the results by the identity who made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
 func (r ApiListAccessRequestStatusRequest) RequestedBy(requestedBy string) ApiListAccessRequestStatusRequest {
 	r.requestedBy = &requestedBy
 	return r
@@ -785,6 +786,12 @@ func (r ApiListAccessRequestStatusRequest) Filters(filters string) ApiListAccess
 // Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name**
 func (r ApiListAccessRequestStatusRequest) Sorters(sorters string) ApiListAccessRequestStatusRequest {
 	r.sorters = &sorters
+	return r
+}
+
+// Filter the results by the state of the request. The only valid value is *EXECUTING*.
+func (r ApiListAccessRequestStatusRequest) RequestState(requestState string) ApiListAccessRequestStatusRequest {
+	r.requestState = &requestState
 	return r
 }
 
@@ -862,6 +869,9 @@ func (a *AccessRequestsAPIService) ListAccessRequestStatusExecute(r ApiListAcces
 	}
 	if r.sorters != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "", "")
+	}
+	if r.requestState != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "request-state", r.requestState, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
