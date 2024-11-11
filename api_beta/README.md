@@ -554,7 +554,7 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**UpdateSourceSchema**](docs/SourcesAPI.md#updatesourceschema) | **Patch** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Partial)
 *SuggestedEntitlementDescriptionAPI* | [**GetSedBatchStats**](docs/SuggestedEntitlementDescriptionAPI.md#getsedbatchstats) | **Get** /suggested-entitlement-description-batches/{batchId}/stats | Submit Sed Batch Stats Request
 *SuggestedEntitlementDescriptionAPI* | [**GetSedBatches**](docs/SuggestedEntitlementDescriptionAPI.md#getsedbatches) | **Get** /suggested-entitlement-description-batches | List Sed Batch Request
-*SuggestedEntitlementDescriptionAPI* | [**ListSeds**](docs/SuggestedEntitlementDescriptionAPI.md#listseds) | **Get** /suggested-entitlement-descriptions | List Suggested Entitlement Description
+*SuggestedEntitlementDescriptionAPI* | [**ListSeds**](docs/SuggestedEntitlementDescriptionAPI.md#listseds) | **Get** /suggested-entitlement-descriptions | List Suggested Entitlement Descriptions
 *SuggestedEntitlementDescriptionAPI* | [**PatchSed**](docs/SuggestedEntitlementDescriptionAPI.md#patchsed) | **Patch** /suggested-entitlement-descriptions | Patch Suggested Entitlement Description
 *SuggestedEntitlementDescriptionAPI* | [**SubmitSedApproval**](docs/SuggestedEntitlementDescriptionAPI.md#submitsedapproval) | **Post** /suggested-entitlement-description-approvals | Submit Bulk Approval Request
 *SuggestedEntitlementDescriptionAPI* | [**SubmitSedAssignment**](docs/SuggestedEntitlementDescriptionAPI.md#submitsedassignment) | **Post** /suggested-entitlement-description-assignments | Submit Sed Assignment Request

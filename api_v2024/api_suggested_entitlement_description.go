@@ -397,6 +397,7 @@ type ApiListSedsRequest struct {
 	xSailPointExperimental *string
 	limit *int64
 	filters *string
+	sorters *string
 	count *bool
 	countOnly *bool
 	requestedByAnyone *bool
@@ -415,9 +416,15 @@ func (r ApiListSedsRequest) Limit(limit int64) ApiListSedsRequest {
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **batchId**: *eq*  **status**: *eq, ne, in*  **displayName**: *eq, co*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **batchId**: *eq, ne*  **displayName**: *eq, ne, co*  **sourceName**: *eq, ne, co*  **sourceId**: *eq, ne*  **status**: *eq, ne*  **fullText**: *co*
 func (r ApiListSedsRequest) Filters(filters string) ApiListSedsRequest {
 	r.filters = &filters
+	return r
+}
+
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName, sourceName, status**
+func (r ApiListSedsRequest) Sorters(sorters string) ApiListSedsRequest {
+	r.sorters = &sorters
 	return r
 }
 
@@ -450,9 +457,23 @@ func (r ApiListSedsRequest) Execute() ([]Sed, *http.Response, error) {
 }
 
 /*
-ListSeds List Suggested Entitlement Description
+ListSeds List Suggested Entitlement Descriptions
 
-List of Suggested Entitlement Description
+List of Suggested Entitlement Descriptions (SED)
+
+SED field descriptions:
+
+**batchId**: the ID of the batch of entitlements that are submitted for description generation
+
+**displayName**: the display name of the entitlement that we are generating a description for
+
+**sourceName**: the name of the source associated with the entitlement that we are generating the description for
+
+**sourceId**: the ID of the source associated with the entitlement that we are generating the description for
+
+**status**: the status of the suggested entitlement description, valid status options: "requested", "suggested", "not_suggested", "failed", "assigned", "approved", "denied"
+
+**fullText**: will filter suggested entitlement description records by text found in any of the following fields: entitlement name, entitlement display name, suggested description, source name
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListSedsRequest
@@ -499,6 +520,9 @@ func (a *SuggestedEntitlementDescriptionAPIService) ListSedsExecute(r ApiListSed
 	}
 	if r.filters != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "", "")
+	}
+	if r.sorters != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "", "")
 	}
 	if r.count != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "", "")

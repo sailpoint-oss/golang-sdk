@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetSedBatchStats**](SuggestedEntitlementDescriptionAPI.md#GetSedBatchStats) | **Get** /suggested-entitlement-description-batches/{batchId}/stats | Submit Sed Batch Stats Request
 [**GetSedBatches**](SuggestedEntitlementDescriptionAPI.md#GetSedBatches) | **Get** /suggested-entitlement-description-batches | List Sed Batch Request
-[**ListSeds**](SuggestedEntitlementDescriptionAPI.md#ListSeds) | **Get** /suggested-entitlement-descriptions | List Suggested Entitlement Description
+[**ListSeds**](SuggestedEntitlementDescriptionAPI.md#ListSeds) | **Get** /suggested-entitlement-descriptions | List Suggested Entitlement Descriptions
 [**PatchSed**](SuggestedEntitlementDescriptionAPI.md#PatchSed) | **Patch** /suggested-entitlement-descriptions | Patch Suggested Entitlement Description
 [**SubmitSedApproval**](SuggestedEntitlementDescriptionAPI.md#SubmitSedApproval) | **Post** /suggested-entitlement-description-approvals | Submit Bulk Approval Request
 [**SubmitSedAssignment**](SuggestedEntitlementDescriptionAPI.md#SubmitSedAssignment) | **Post** /suggested-entitlement-description-assignments | Submit Sed Assignment Request
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 
 ## ListSeds
 
-> []Sed ListSeds(ctx).XSailPointExperimental(xSailPointExperimental).Limit(limit).Filters(filters).Count(count).CountOnly(countOnly).RequestedByAnyone(requestedByAnyone).ShowPendingStatusOnly(showPendingStatusOnly).Execute()
+> []Sed ListSeds(ctx).XSailPointExperimental(xSailPointExperimental).Limit(limit).Filters(filters).Sorters(sorters).Count(count).CountOnly(countOnly).RequestedByAnyone(requestedByAnyone).ShowPendingStatusOnly(showPendingStatusOnly).Execute()
 
-List Suggested Entitlement Description
+List Suggested Entitlement Descriptions
 
 
 
@@ -174,8 +174,9 @@ import (
 
 func main() {
 	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
-	limit := int64(limit=0) // int64 | Integer specifying the maximum number of records to return in a single API call.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional)
-	filters := "displayName co "Read and Write"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **batchId**: *eq*  **status**: *eq, ne, in*  **displayName**: *eq, co* (optional)
+	limit := int64(limit=25) // int64 | Integer specifying the maximum number of records to return in a single API call.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional)
+	filters := "displayName co "Read and Write"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **batchId**: *eq, ne*  **displayName**: *eq, ne, co*  **sourceName**: *eq, ne, co*  **sourceId**: *eq, ne*  **status**: *eq, ne*  **fullText**: *co* (optional)
+	sorters := "sorters=displayName" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName, sourceName, status** (optional)
 	count := false // bool | If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). Since requesting a total count can have a performance impact, it is recommended not to send `count=true` if that value will not be used. (optional)
 	countOnly := false // bool | If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored. This parameter differs from the Coun parameter in that this one skip executing the actual query and always return an empty array. (optional)
 	requestedByAnyone := false // bool | By default, the ListSeds API will only return items that you have requested to be generated.   This option will allow you to see all items that have been requested (optional)
@@ -183,7 +184,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.ListSeds(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Filters(filters).Count(count).CountOnly(countOnly).RequestedByAnyone(requestedByAnyone).ShowPendingStatusOnly(showPendingStatusOnly).Execute()
+	resp, r, err := apiClient.SuggestedEntitlementDescriptionAPI.ListSeds(context.Background()).XSailPointExperimental(xSailPointExperimental).Limit(limit).Filters(filters).Sorters(sorters).Count(count).CountOnly(countOnly).RequestedByAnyone(requestedByAnyone).ShowPendingStatusOnly(showPendingStatusOnly).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SuggestedEntitlementDescriptionAPI.ListSeds``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -206,7 +207,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **limit** | **int64** | Integer specifying the maximum number of records to return in a single API call.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. | 
- **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **batchId**: *eq*  **status**: *eq, ne, in*  **displayName**: *eq, co* | 
+ **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **batchId**: *eq, ne*  **displayName**: *eq, ne, co*  **sourceName**: *eq, ne, co*  **sourceId**: *eq, ne*  **status**: *eq, ne*  **fullText**: *co* | 
+ **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName, sourceName, status** | 
  **count** | **bool** | If &#x60;true&#x60; it will populate the &#x60;X-Total-Count&#x60; response header with the number of results that would be returned if &#x60;limit&#x60; and &#x60;offset&#x60; were ignored.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). Since requesting a total count can have a performance impact, it is recommended not to send &#x60;count&#x3D;true&#x60; if that value will not be used. | 
  **countOnly** | **bool** | If &#x60;true&#x60; it will populate the &#x60;X-Total-Count&#x60; response header with the number of results that would be returned if &#x60;limit&#x60; and &#x60;offset&#x60; were ignored. This parameter differs from the Coun parameter in that this one skip executing the actual query and always return an empty array. | 
  **requestedByAnyone** | **bool** | By default, the ListSeds API will only return items that you have requested to be generated.   This option will allow you to see all items that have been requested | 
