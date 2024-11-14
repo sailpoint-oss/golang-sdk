@@ -23,8 +23,7 @@ type WorkflowTrigger struct {
 	// The trigger type
 	Type string `json:"type"`
 	DisplayName NullableString `json:"displayName,omitempty"`
-	// Workflow Trigger Attributes.
-	Attributes map[string]interface{} `json:"attributes"`
+	Attributes NullableWorkflowTriggerAttributes `json:"attributes"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -34,7 +33,7 @@ type _WorkflowTrigger WorkflowTrigger
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWorkflowTrigger(type_ string, attributes map[string]interface{}) *WorkflowTrigger {
+func NewWorkflowTrigger(type_ string, attributes NullableWorkflowTriggerAttributes) *WorkflowTrigger {
 	this := WorkflowTrigger{}
 	this.Type = type_
 	this.Attributes = attributes
@@ -116,27 +115,29 @@ func (o *WorkflowTrigger) UnsetDisplayName() {
 }
 
 // GetAttributes returns the Attributes field value
-func (o *WorkflowTrigger) GetAttributes() map[string]interface{} {
-	if o == nil {
-		var ret map[string]interface{}
+// If the value is explicit nil, the zero value for WorkflowTriggerAttributes will be returned
+func (o *WorkflowTrigger) GetAttributes() WorkflowTriggerAttributes {
+	if o == nil || o.Attributes.Get() == nil {
+		var ret WorkflowTriggerAttributes
 		return ret
 	}
 
-	return o.Attributes
+	return *o.Attributes.Get()
 }
 
 // GetAttributesOk returns a tuple with the Attributes field value
 // and a boolean to check if the value has been set.
-func (o *WorkflowTrigger) GetAttributesOk() (map[string]interface{}, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *WorkflowTrigger) GetAttributesOk() (*WorkflowTriggerAttributes, bool) {
 	if o == nil {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Attributes, true
+	return o.Attributes.Get(), o.Attributes.IsSet()
 }
 
 // SetAttributes sets field value
-func (o *WorkflowTrigger) SetAttributes(v map[string]interface{}) {
-	o.Attributes = v
+func (o *WorkflowTrigger) SetAttributes(v WorkflowTriggerAttributes) {
+	o.Attributes.Set(&v)
 }
 
 func (o WorkflowTrigger) MarshalJSON() ([]byte, error) {
@@ -153,7 +154,7 @@ func (o WorkflowTrigger) ToMap() (map[string]interface{}, error) {
 	if o.DisplayName.IsSet() {
 		toSerialize["displayName"] = o.DisplayName.Get()
 	}
-	toSerialize["attributes"] = o.Attributes
+	toSerialize["attributes"] = o.Attributes.Get()
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value

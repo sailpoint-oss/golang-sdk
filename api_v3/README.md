@@ -631,6 +631,7 @@ Class | Method | HTTP request | Description
  - [ErrorMessageDto](docs/ErrorMessageDto.md)
  - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [Event](docs/Event.md)
+ - [EventAttributes](docs/EventAttributes.md)
  - [EventDocument](docs/EventDocument.md)
  - [ExceptionAccessCriteria](docs/ExceptionAccessCriteria.md)
  - [ExceptionCriteria](docs/ExceptionCriteria.md)
@@ -640,6 +641,7 @@ Class | Method | HTTP request | Description
  - [ExpansionItem](docs/ExpansionItem.md)
  - [Expression](docs/Expression.md)
  - [ExpressionChildrenInner](docs/ExpressionChildrenInner.md)
+ - [ExternalAttributes](docs/ExternalAttributes.md)
  - [FederationProtocolDetails](docs/FederationProtocolDetails.md)
  - [FieldDetailsDto](docs/FieldDetailsDto.md)
  - [Filter](docs/Filter.md)
@@ -883,6 +885,7 @@ Class | Method | HTTP request | Description
  - [ScheduleHours](docs/ScheduleHours.md)
  - [ScheduleMonths](docs/ScheduleMonths.md)
  - [ScheduleType](docs/ScheduleType.md)
+ - [ScheduledAttributes](docs/ScheduledAttributes.md)
  - [ScheduledSearch](docs/ScheduledSearch.md)
  - [ScheduledSearchAllOfOwner](docs/ScheduledSearchAllOfOwner.md)
  - [ScheduledSearchName](docs/ScheduledSearchName.md)
@@ -1008,6 +1011,7 @@ Class | Method | HTTP request | Description
  - [WorkflowModifiedBy](docs/WorkflowModifiedBy.md)
  - [WorkflowOAuthClient](docs/WorkflowOAuthClient.md)
  - [WorkflowTrigger](docs/WorkflowTrigger.md)
+ - [WorkflowTriggerAttributes](docs/WorkflowTriggerAttributes.md)
 
 
 ## Documentation For Authorization

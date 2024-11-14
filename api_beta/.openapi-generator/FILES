@@ -365,6 +365,7 @@ docs/ErrorMessage.md
 docs/ErrorMessageDto.md
 docs/ErrorResponseDto.md
 docs/EvaluateResponse.md
+docs/EventAttributes.md
 docs/EventBridgeConfig.md
 docs/ExceptionAccessCriteria.md
 docs/ExceptionCriteria.md
@@ -375,6 +376,7 @@ docs/ExportFormDefinitionsByTenant200ResponseInner.md
 docs/ExportOptions.md
 docs/ExportPayload.md
 docs/Expression.md
+docs/ExternalAttributes.md
 docs/FeatureValueDto.md
 docs/Field.md
 docs/FieldDetails.md
@@ -811,6 +813,7 @@ docs/ScheduleDays.md
 docs/ScheduleHours.md
 docs/ScheduleMonths.md
 docs/ScheduleType.md
+docs/ScheduledAttributes.md
 docs/Schema.md
 docs/SearchAttributeConfig.md
 docs/SearchAttributeConfigurationAPI.md
@@ -1018,6 +1021,7 @@ docs/WorkflowLibraryTrigger.md
 docs/WorkflowModifiedBy.md
 docs/WorkflowOAuthClient.md
 docs/WorkflowTrigger.md
+docs/WorkflowTriggerAttributes.md
 docs/WorkflowsAPI.md
 docs/WorkgroupBulkDeleteRequest.md
 docs/WorkgroupConnectionDto.md
@@ -1295,6 +1299,7 @@ model_error_message.go
 model_error_message_dto.go
 model_error_response_dto.go
 model_evaluate_response.go
+model_event_attributes.go
 model_event_bridge_config.go
 model_exception_access_criteria.go
 model_exception_criteria.go
@@ -1305,6 +1310,7 @@ model_export_form_definitions_by_tenant_200_response_inner.go
 model_export_options.go
 model_export_payload.go
 model_expression.go
+model_external_attributes.go
 model_feature_value_dto.go
 model_field.go
 model_field_details.go
@@ -1703,6 +1709,7 @@ model_schedule_days.go
 model_schedule_hours.go
 model_schedule_months.go
 model_schedule_type.go
+model_scheduled_attributes.go
 model_schema.go
 model_search_attribute_config.go
 model_search_form_definitions_by_tenant_400_response.go
@@ -1895,6 +1902,7 @@ model_workflow_library_trigger.go
 model_workflow_modified_by.go
 model_workflow_o_auth_client.go
 model_workflow_trigger.go
+model_workflow_trigger_attributes.go
 model_workgroup_bulk_delete_request.go
 model_workgroup_connection_dto.go
 model_workgroup_delete_item.go

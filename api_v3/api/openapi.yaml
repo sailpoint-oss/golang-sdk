@@ -56622,7 +56622,10 @@ components:
         description: Send an email to the identity who's attributes changed.
         trigger:
           displayName: displayName
-          attributes: "{}"
+          attributes:
+            description: description
+            id: idn:identity-attributes-changed
+            filter.$: "$.changes[?(@.attribute == 'manager')]"
           type: EVENT
         enabled: false
         name: Send Email
@@ -56674,7 +56677,10 @@ components:
               type: success
         trigger:
           displayName: displayName
-          attributes: "{}"
+          attributes:
+            description: description
+            id: idn:identity-attributes-changed
+            filter.$: "$.changes[?(@.attribute == 'manager')]"
           type: EVENT
         enabled: false
       properties:
@@ -61850,7 +61856,10 @@ components:
       description: The trigger that starts the workflow
       example:
         displayName: displayName
-        attributes: "{}"
+        attributes:
+          description: description
+          id: idn:identity-attributes-changed
+          filter.$: "$.changes[?(@.attribute == 'manager')]"
         type: EVENT
       properties:
         type:
@@ -61859,14 +61868,14 @@ components:
           - EVENT
           - EXTERNAL
           - SCHEDULED
+          - ""
           example: EVENT
           type: string
         displayName:
           nullable: true
           type: string
         attributes:
-          description: Workflow Trigger Attributes.
-          type: object
+          $ref: '#/components/schemas/WorkflowTrigger_attributes'
       required:
       - attributes
       - type
@@ -63368,6 +63377,92 @@ components:
       - BOOLEAN
       example: STRING
       type: string
+    EventAttributes:
+      additionalProperties: false
+      description: Attributes related to an IdentityNow ETS event
+      example:
+        description: description
+        id: idn:identity-attributes-changed
+        filter.$: "$.changes[?(@.attribute == 'manager')]"
+      properties:
+        id:
+          description: The unique ID of the trigger
+          example: idn:identity-attributes-changed
+          type: string
+        filter.$:
+          description: JSON path expression that will limit which events the trigger
+            will fire on
+          example: "$.changes[?(@.attribute == 'manager')]"
+          type: string
+        description:
+          description: Description of the event trigger
+          type: string
+      required:
+      - id
+      title: Event Trigger Attributes
+      type: object
+    ExternalAttributes:
+      additionalProperties: false
+      description: Attributes related to an external trigger
+      properties:
+        name:
+          description: A unique name for the external trigger
+          example: search-and-notify
+          type: string
+        description:
+          description: Additonal context about the external trigger
+          example: Run a search and notify the results
+          type: string
+        clientId:
+          description: OAuth Client ID to authenticate with this trigger
+          example: 87e239b2-b85b-4bde-b9a7-55bf304ddcdc
+          type: string
+        url:
+          description: URL to invoke this workflow
+          example: https://tenant.api.identitynow.com/beta/workflows/execute/external/c79e0079-562c-4df5-aa73-60a9e25c916d
+          type: string
+      title: External Trigger Attributes
+      type: object
+    ScheduledAttributes:
+      additionalProperties: false
+      description: Attributes related to a scheduled trigger
+      properties:
+        cronString:
+          description: A valid CRON expression
+          example: 0 9 * * 1
+          externalDocs:
+            description: CRON expression editor
+            url: https://crontab.guru/
+          type: string
+        frequency:
+          description: Frequency of execution
+          enum:
+          - daily
+          - weekly
+          - monthly
+          - yearly
+          - cronSchedule
+          type: string
+        timeZone:
+          description: Time zone identifier
+          example: America/Chicago
+          type: string
+        weeklyDays:
+          description: Scheduled days of the week for execution
+          example: Monday
+          items:
+            type: string
+          type: array
+        weeklyTimes:
+          description: Scheduled execution times
+          example: Monday
+          items:
+            type: string
+          type: array
+      required:
+      - frequency
+      title: Scheduled Trigger Attributes
+      type: object
     DocumentType:
       description: |-
         Enum representing the currently supported document types.
@@ -66142,6 +66237,13 @@ components:
             $ref: '#/components/schemas/DependantAppConnections_accountSource_passwordPolicies_inner'
           type: array
       type: object
+    WorkflowTrigger_attributes:
+      anyOf:
+      - $ref: '#/components/schemas/EventAttributes'
+      - $ref: '#/components/schemas/ExternalAttributes'
+      - $ref: '#/components/schemas/ScheduledAttributes'
+      description: Workflow Trigger Attributes.
+      nullable: true
     BaseAccess_allOf_owner:
       description: Owner's identity.
       properties:
