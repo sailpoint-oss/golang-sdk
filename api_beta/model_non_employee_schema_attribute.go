@@ -51,9 +51,13 @@ type _NonEmployeeSchemaAttribute NonEmployeeSchemaAttribute
 // will change when the set of required properties is changed
 func NewNonEmployeeSchemaAttribute(type_ NonEmployeeSchemaAttributeType, label string, technicalName string) *NonEmployeeSchemaAttribute {
 	this := NonEmployeeSchemaAttribute{}
+	var system bool = false
+	this.System = &system
 	this.Type = type_
 	this.Label = label
 	this.TechnicalName = technicalName
+	var required bool = false
+	this.Required = &required
 	return &this
 }
 
@@ -62,6 +66,10 @@ func NewNonEmployeeSchemaAttribute(type_ NonEmployeeSchemaAttributeType, label s
 // but it doesn't guarantee that properties required by API are set
 func NewNonEmployeeSchemaAttributeWithDefaults() *NonEmployeeSchemaAttribute {
 	this := NonEmployeeSchemaAttribute{}
+	var system bool = false
+	this.System = &system
+	var required bool = false
+	this.Required = &required
 	return &this
 }
 

@@ -41,12 +41,12 @@ type NonEmployeeRequest struct {
 	// The account ID of a valid identity to serve as this non-employee's manager.
 	Manager *string `json:"manager,omitempty"`
 	NonEmployeeSource *NonEmployeeSourceLite `json:"nonEmployeeSource,omitempty"`
-	// Attribute blob/bag for a non-employee.
+	// Additional attributes for a non-employee. Up to 10 custom attributes can be added.
 	Data *map[string]string `json:"data,omitempty"`
 	// List of approval item for the request
 	ApprovalItems []NonEmployeeApprovalItemBase `json:"approvalItems,omitempty"`
 	ApprovalStatus *ApprovalStatus `json:"approvalStatus,omitempty"`
-	// comment of requester
+	// Comment of requester
 	Comment *string `json:"comment,omitempty"`
 	// When the request was completely approved.
 	CompletionDate *time.Time `json:"completionDate,omitempty"`

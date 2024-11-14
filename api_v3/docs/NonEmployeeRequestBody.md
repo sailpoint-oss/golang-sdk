@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Phone** | **string** | Non-Employee&#39;s phone. | 
 **Manager** | **string** | The account ID of a valid identity to serve as this non-employee&#39;s manager. | 
 **SourceId** | **string** | Non-Employee&#39;s source id. | 
-**Data** | Pointer to **map[string]string** | Attribute blob/bag for a non-employee, 10 attributes is the maximum size supported. | [optional] 
+**Data** | Pointer to **map[string]string** | Additional attributes for a non-employee. Up to 10 custom attributes can be added. | [optional] 
 **StartDate** | **time.Time** | Non-Employee employment start date. | 
 **EndDate** | **time.Time** | Non-Employee employment end date. | 
 

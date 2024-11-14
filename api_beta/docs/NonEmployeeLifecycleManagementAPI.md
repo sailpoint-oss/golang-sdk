@@ -133,7 +133,7 @@ import (
 )
 
 func main() {
-	nonEmployeeRequestBody := *openapiclient.NewNonEmployeeRequestBody("william.smith", "William", "Smith", "william.smith@example.com", "5555555555", "jane.doe", "2c91808568c529c60168cca6f90c1313", time.Now(), time.Now()) // NonEmployeeRequestBody | Non-Employee record creation request body.
+	nonEmployeeRequestBody := *openapiclient.NewNonEmployeeRequestBody("william.smith", "William", "Smith", "william.smith@example.com", "5125555555", "jane.doe", "2c91808568c529c60168cca6f90c1313", time.Now(), time.Now()) // NonEmployeeRequestBody | Non-Employee record creation request body.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -200,7 +200,7 @@ import (
 )
 
 func main() {
-	nonEmployeeRequestBody := *openapiclient.NewNonEmployeeRequestBody("william.smith", "William", "Smith", "william.smith@example.com", "5555555555", "jane.doe", "2c91808568c529c60168cca6f90c1313", time.Now(), time.Now()) // NonEmployeeRequestBody | Non-Employee creation request body
+	nonEmployeeRequestBody := *openapiclient.NewNonEmployeeRequestBody("william.smith", "William", "Smith", "william.smith@example.com", "5125555555", "jane.doe", "2c91808568c529c60168cca6f90c1313", time.Now(), time.Now()) // NonEmployeeRequestBody | Non-Employee creation request body
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -2249,7 +2249,7 @@ import (
 
 func main() {
 	id := "2c91808b6ef1d43e016efba0ce470904" // string | Non-employee record id (UUID)
-	nonEmployeeRequestBody := *openapiclient.NewNonEmployeeRequestBody("william.smith", "William", "Smith", "william.smith@example.com", "5555555555", "jane.doe", "2c91808568c529c60168cca6f90c1313", time.Now(), time.Now()) // NonEmployeeRequestBody | Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.
+	nonEmployeeRequestBody := *openapiclient.NewNonEmployeeRequestBody("william.smith", "William", "Smith", "william.smith@example.com", "5125555555", "jane.doe", "2c91808568c529c60168cca6f90c1313", time.Now(), time.Now()) // NonEmployeeRequestBody | Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

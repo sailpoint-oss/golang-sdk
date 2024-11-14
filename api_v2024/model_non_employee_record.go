@@ -36,7 +36,7 @@ type NonEmployeeRecord struct {
 	Manager *string `json:"manager,omitempty"`
 	// Non-Employee's source id.
 	SourceId *string `json:"sourceId,omitempty"`
-	// Attribute blob/bag for a non-employee.
+	// Additional attributes for a non-employee. Up to 10 custom attributes can be added.
 	Data *map[string]string `json:"data,omitempty"`
 	// Non-Employee employment start date.
 	StartDate *time.Time `json:"startDate,omitempty"`

@@ -35,7 +35,7 @@ type NonEmployeeRequestBody struct {
 	Manager string `json:"manager"`
 	// Non-Employee's source id.
 	SourceId string `json:"sourceId"`
-	// Attribute blob/bag for a non-employee, 10 attributes is the maximum size supported.
+	// Additional attributes for a non-employee. Up to 10 custom attributes can be added.
 	Data *map[string]string `json:"data,omitempty"`
 	// Non-Employee employment start date.
 	StartDate time.Time `json:"startDate"`

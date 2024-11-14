@@ -52719,7 +52719,7 @@ components:
         endDate: 2020-08-23T18:52:59.162Z
         created: 2019-08-23T18:40:35.772Z
         firstName: William
-        phone: "5555555555"
+        phone: "5125555555"
         modified: 2019-08-23T18:52:59.162Z
         id: ef38f94347e94562b5bb8424a56397d8
         email: william.smith@example.com
@@ -52748,7 +52748,7 @@ components:
           type: string
         phone:
           description: Non-Employee's phone.
-          example: "5555555555"
+          example: "5125555555"
           type: string
         manager:
           description: The account ID of a valid identity to serve as this non-employee's
@@ -52762,7 +52762,8 @@ components:
         data:
           additionalProperties:
             type: string
-          description: Attribute blob/bag for a non-employee.
+          description: Additional attributes for a non-employee. Up to 10 custom attributes
+            can be added.
           example:
             description: Auditing
           type: object
@@ -52796,7 +52797,7 @@ components:
         data:
           description: Auditing
         accountName: william.smith
-        phone: "5555555555"
+        phone: "5125555555"
         endDate: 2021-03-25T00:00:00-05:00
         email: william.smith@example.com
         startDate: 2020-03-24T00:00:00-05:00
@@ -52819,7 +52820,7 @@ components:
           type: string
         phone:
           description: Non-Employee's phone.
-          example: "5555555555"
+          example: "5125555555"
           type: string
         manager:
           description: The account ID of a valid identity to serve as this non-employee's
@@ -52833,8 +52834,8 @@ components:
         data:
           additionalProperties:
             type: string
-          description: "Attribute blob/bag for a non-employee, 10 attributes is the\
-            \ maximum size supported."
+          description: Additional attributes for a non-employee. Up to 10 custom attributes
+            can be added.
           example:
             description: Auditing
           type: object
@@ -52881,7 +52882,7 @@ components:
             type: string
           phone:
             description: Non-Employee's phone.
-            example: "5555555555"
+            example: "5125555555"
             type: string
           manager:
             description: The account ID of a valid identity to serve as this non-employee's
@@ -52893,7 +52894,8 @@ components:
           data:
             additionalProperties:
               type: string
-            description: Attribute blob/bag for a non-employee.
+            description: Additional attributes for a non-employee. Up to 10 custom
+              attributes can be added.
             example:
               description: Auditing
             type: object
@@ -52905,7 +52907,7 @@ components:
           approvalStatus:
             $ref: '#/components/schemas/ApprovalStatus'
           comment:
-            description: comment of requester
+            description: Comment of requester
             example: approved
             type: string
           completionDate:
@@ -52972,7 +52974,7 @@ components:
           description: Source description
           id: a0303682-5e4a-44f7-bdc2-6ce6112549c1
         firstName: William
-        phone: "5555555555"
+        phone: "5125555555"
         name: Retail
         modified: 2020-03-24T11:11:41.139-05:00
         comment: approved
@@ -53302,7 +53304,7 @@ components:
               technicalName: account.name
               required: true
           firstName: William
-          phone: "5555555555"
+          phone: "5125555555"
           modified: 2020-03-24T11:11:41.139-05:00
           comment: approved
           completionDate: 2020-03-24T11:11:41.139-05:00
@@ -53372,6 +53374,7 @@ components:
           format: UUID
           type: string
         system:
+          default: false
           description: True if this schema attribute is mandatory on all non-employees
             sources.
           example: true
@@ -53405,6 +53408,7 @@ components:
           example: Enter a unique user name for this account.
           type: string
         required:
+          default: false
           description: "If true, the schema attribute is required for all non-employees\
             \ in the source"
           example: true
@@ -60468,7 +60472,7 @@ components:
             type: string
           phone:
             description: Non-Employee's phone.
-            example: "5555555555"
+            example: "5125555555"
             type: string
           manager:
             description: The account ID of a valid identity to serve as this non-employee's
@@ -60480,14 +60484,15 @@ components:
           data:
             additionalProperties:
               type: string
-            description: Attribute blob/bag for a non-employee.
+            description: Additional attributes for a non-employee. Up to 10 custom
+              attributes can be added.
             example:
               description: Auditing
             type: object
           approvalStatus:
             $ref: '#/components/schemas/ApprovalStatus'
           comment:
-            description: comment of requester
+            description: Comment of requester
             example: approved
             type: string
           completionDate:
@@ -60555,7 +60560,7 @@ components:
             technicalName: account.name
             required: true
         firstName: William
-        phone: "5555555555"
+        phone: "5125555555"
         modified: 2020-03-24T11:11:41.139-05:00
         comment: approved
         completionDate: 2020-03-24T11:11:41.139-05:00

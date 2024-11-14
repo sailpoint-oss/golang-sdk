@@ -69334,23 +69334,25 @@ components:
         lastName: Smith
         manager: jane.doe
         data:
-          key: data
-        accountName: accountName
+          description: Auditing
+        accountName: william.smith
         endDate: 2020-08-23T18:52:59.162Z
         created: 2019-08-23T18:40:35.772Z
         firstName: William
-        phone: "5555555555"
+        phone: "5125555555"
         modified: 2019-08-23T18:52:59.162Z
-        id: id
+        id: ac10e21c-931c-1ef2-8193-1c51e7ff0003
         email: william.smith@example.com
         startDate: 2019-08-23T18:52:59.162Z
       properties:
         id:
           description: Non-Employee record id.
+          example: ac10e21c-931c-1ef2-8193-1c51e7ff0003
           format: UUID
           type: string
         accountName:
           description: Requested identity account name.
+          example: william.smith
           type: string
         firstName:
           description: Non-Employee's first name.
@@ -69366,7 +69368,7 @@ components:
           type: string
         phone:
           description: Non-Employee's phone.
-          example: "5555555555"
+          example: "5125555555"
           type: string
         manager:
           description: The account ID of a valid identity to serve as this non-employee's
@@ -69380,7 +69382,10 @@ components:
         data:
           additionalProperties:
             type: string
-          description: Attribute blob/bag for a non-employee.
+          description: Additional attributes for a non-employee. Up to 10 custom attributes
+            can be added.
+          example:
+            description: Auditing
           type: object
         startDate:
           description: Non-Employee employment start date.
@@ -69410,9 +69415,9 @@ components:
         lastName: Smith
         manager: jane.doe
         data:
-          key: data
+          description: Auditing
         accountName: william.smith
-        phone: "5555555555"
+        phone: "5125555555"
         endDate: 2021-03-25T00:00:00-05:00
         email: william.smith@example.com
         startDate: 2020-03-24T00:00:00-05:00
@@ -69435,7 +69440,7 @@ components:
           type: string
         phone:
           description: Non-Employee's phone.
-          example: "5555555555"
+          example: "5125555555"
           type: string
         manager:
           description: The account ID of a valid identity to serve as this non-employee's
@@ -69449,8 +69454,10 @@ components:
         data:
           additionalProperties:
             type: string
-          description: "Attribute blob/bag for a non-employee, 10 attributes is the\
-            \ maximum size supported."
+          description: Additional attributes for a non-employee. Up to 10 custom attributes
+            can be added.
+          example:
+            description: Auditing
           type: object
         startDate:
           description: Non-Employee employment start date.
@@ -69495,7 +69502,7 @@ components:
             type: string
           phone:
             description: Non-Employee's phone.
-            example: "5555555555"
+            example: "5125555555"
             type: string
           manager:
             description: The account ID of a valid identity to serve as this non-employee's
@@ -69507,7 +69514,10 @@ components:
           data:
             additionalProperties:
               type: string
-            description: Attribute blob/bag for a non-employee.
+            description: Additional attributes for a non-employee. Up to 10 custom
+              attributes can be added.
+            example:
+              description: Auditing
             type: object
           approvalItems:
             description: List of approval item for the request
@@ -69517,7 +69527,8 @@ components:
           approvalStatus:
             $ref: '#/components/schemas/ApprovalStatus'
           comment:
-            description: comment of requester
+            description: Comment of requester
+            example: approved
             type: string
           completionDate:
             description: When the request was completely approved.
@@ -69547,11 +69558,11 @@ components:
         type: object
       example:
         sourceId: 2c91808568c529c60168cca6f90c1313
-        approvalStatus: null
+        approvalStatus: APPROVED
         lastName: Smith
         manager: jane.doe
         data:
-          key: data
+          description: Auditing
         accountName: william.smith
         endDate: 2021-03-25T00:00:00-05:00
         created: 2020-03-24T11:11:41.139-05:00
@@ -69564,7 +69575,7 @@ components:
           approvalOrder: 1
           created: 2019-08-23T18:40:35.772Z
           modified: 2019-08-23T18:52:59.162Z
-          comment: comment
+          comment: "true"
           id: 2c1e388b-1e55-4b0a-ab5c-897f1204159c
         - approver:
             id: 5168015d32f890ca15812c9180835d2e
@@ -69574,7 +69585,7 @@ components:
           approvalOrder: 1
           created: 2019-08-23T18:40:35.772Z
           modified: 2019-08-23T18:52:59.162Z
-          comment: comment
+          comment: "true"
           id: 2c1e388b-1e55-4b0a-ab5c-897f1204159c
         description: Source description
         nonEmployeeSource:
@@ -69583,10 +69594,10 @@ components:
           description: Source description
           id: a0303682-5e4a-44f7-bdc2-6ce6112549c1
         firstName: William
-        phone: "5555555555"
+        phone: "5125555555"
         name: Retail
         modified: 2020-03-24T11:11:41.139-05:00
-        comment: comment
+        comment: approved
         completionDate: 2020-03-24T11:11:41.139-05:00
         id: a0303682-5e4a-44f7-bdc2-6ce6112549c1
         email: william.smith@example.com
@@ -69849,13 +69860,13 @@ components:
         approvalOrder: 1
         created: 2019-08-23T18:40:35.772Z
         modified: 2019-08-23T18:52:59.162Z
-        comment: comment
+        comment: "true"
         id: 2c1e388b-1e55-4b0a-ab5c-897f1204159c
         nonEmployeeRequest:
           requester:
             id: 5168015d32f890ca15812c9180835d2e
             type: IDENTITY
-          id: id
+          id: ac10e21c-931c-1ef2-8193-1c51e7ff0003
     NonEmployeeApprovalItemDetail:
       allOf:
       - $ref: '#/components/schemas/NonEmployeeApprovalItemBase'
@@ -69872,17 +69883,17 @@ components:
         approvalOrder: 1
         created: 2019-08-23T18:40:35.772Z
         modified: 2019-08-23T18:52:59.162Z
-        comment: comment
+        comment: "true"
         id: 2c1e388b-1e55-4b0a-ab5c-897f1204159c
         nonEmployeeRequest:
           requester:
             id: 5168015d32f890ca15812c9180835d2e
             type: IDENTITY
-          approvalStatus: null
+          approvalStatus: APPROVED
           lastName: Smith
           manager: jane.doe
           data:
-            key: data
+            description: Auditing
           accountName: william.smith
           endDate: 2021-03-25
           created: 2020-03-24T11:11:41.139-05:00
@@ -69913,11 +69924,11 @@ components:
               technicalName: account.name
               required: true
           firstName: William
-          phone: "5555555555"
+          phone: "5125555555"
           modified: 2020-03-24T11:11:41.139-05:00
-          comment: comment
+          comment: approved
           completionDate: 2020-03-24T11:11:41.139-05:00
-          id: id
+          id: ac10e21c-931c-1ef2-8193-1c51e7ff0003
           email: william.smith@example.com
           startDate: 2020-03-24
     NonEmployeeApprovalDecision:
@@ -69975,6 +69986,7 @@ components:
           format: UUID
           type: string
         system:
+          default: false
           description: True if this schema attribute is mandatory on all non-employees
             sources.
           example: true
@@ -70008,6 +70020,7 @@ components:
           example: Enter a unique user name for this account.
           type: string
         required:
+          default: false
           description: "If true, the schema attribute is required for all non-employees\
             \ in the source"
           example: true
@@ -83397,7 +83410,7 @@ components:
         approvalOrder: 1
         created: 2019-08-23T18:40:35.772Z
         modified: 2019-08-23T18:52:59.162Z
-        comment: comment
+        comment: "true"
         id: 2c1e388b-1e55-4b0a-ab5c-897f1204159c
       properties:
         id:
@@ -83416,9 +83429,11 @@ components:
         approvalOrder:
           description: Approval order
           example: 1
+          format: float
           type: number
         comment:
           description: comment of approver
+          example: "true"
           type: string
         modified:
           description: When the request was last modified.
@@ -83439,6 +83454,7 @@ components:
       - PENDING
       - NOT_READY
       - CANCELLED
+      example: APPROVED
       type: string
     NonEmployeeIdnUserRequest:
       example:
@@ -83469,10 +83485,11 @@ components:
         requester:
           id: 5168015d32f890ca15812c9180835d2e
           type: IDENTITY
-        id: id
+        id: ac10e21c-931c-1ef2-8193-1c51e7ff0003
       properties:
         id:
           description: Non-Employee request id.
+          example: ac10e21c-931c-1ef2-8193-1c51e7ff0003
           format: UUID
           type: string
         requester:
@@ -83500,7 +83517,7 @@ components:
             type: string
           phone:
             description: Non-Employee's phone.
-            example: "5555555555"
+            example: "5125555555"
             type: string
           manager:
             description: The account ID of a valid identity to serve as this non-employee's
@@ -83512,12 +83529,16 @@ components:
           data:
             additionalProperties:
               type: string
-            description: Attribute blob/bag for a non-employee.
+            description: Additional attributes for a non-employee. Up to 10 custom
+              attributes can be added.
+            example:
+              description: Auditing
             type: object
           approvalStatus:
             $ref: '#/components/schemas/ApprovalStatus'
           comment:
-            description: comment of requester
+            description: Comment of requester
+            example: approved
             type: string
           completionDate:
             description: When the request was completely approved.
@@ -83549,11 +83570,11 @@ components:
         requester:
           id: 5168015d32f890ca15812c9180835d2e
           type: IDENTITY
-        approvalStatus: null
+        approvalStatus: APPROVED
         lastName: Smith
         manager: jane.doe
         data:
-          key: data
+          description: Auditing
         accountName: william.smith
         endDate: 2021-03-25
         created: 2020-03-24T11:11:41.139-05:00
@@ -83584,11 +83605,11 @@ components:
             technicalName: account.name
             required: true
         firstName: William
-        phone: "5555555555"
+        phone: "5125555555"
         modified: 2020-03-24T11:11:41.139-05:00
-        comment: comment
+        comment: approved
         completionDate: 2020-03-24T11:11:41.139-05:00
-        id: id
+        id: ac10e21c-931c-1ef2-8193-1c51e7ff0003
         email: william.smith@example.com
         startDate: 2020-03-24
     NonEmployeeSchemaAttributeType:
@@ -83597,6 +83618,7 @@ components:
       - TEXT
       - DATE
       - IDENTITY
+      example: TEXT
       type: string
     ManagedClusterTypes:
       description: The Type of Cluster
