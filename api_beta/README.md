@@ -567,6 +567,10 @@ Class | Method | HTTP request | Description
 *TaggedObjectsAPI* | [**PutTaggedObject**](docs/TaggedObjectsAPI.md#puttaggedobject) | **Put** /tagged-objects/{type}/{id} | Update Tagged Object
 *TaggedObjectsAPI* | [**SetTagToObject**](docs/TaggedObjectsAPI.md#settagtoobject) | **Post** /tagged-objects | Add Tag to Object
 *TaggedObjectsAPI* | [**SetTagsToManyObjects**](docs/TaggedObjectsAPI.md#settagstomanyobjects) | **Post** /tagged-objects/bulk-add | Tag Multiple Objects
+*TagsAPI* | [**CreateTag**](docs/TagsAPI.md#createtag) | **Post** /tags | Create Tag
+*TagsAPI* | [**DeleteTagById**](docs/TagsAPI.md#deletetagbyid) | **Delete** /tags/{id} | Delete Tag
+*TagsAPI* | [**GetTagById**](docs/TagsAPI.md#gettagbyid) | **Get** /tags/{id} | Get Tag By Id
+*TagsAPI* | [**ListTags**](docs/TagsAPI.md#listtags) | **Get** /tags | List Tags
 *TaskManagementAPI* | [**GetPendingTaskHeaders**](docs/TaskManagementAPI.md#getpendingtaskheaders) | **Head** /task-status/pending-tasks | Retrieve headers only for pending task list.
 *TaskManagementAPI* | [**GetPendingTasks**](docs/TaskManagementAPI.md#getpendingtasks) | **Get** /task-status/pending-tasks | Retrieve a pending task list.
 *TaskManagementAPI* | [**GetTaskStatus**](docs/TaskManagementAPI.md#gettaskstatus) | **Get** /task-status/{id} | Get task status by ID.
@@ -1414,6 +1418,8 @@ Class | Method | HTTP request | Description
  - [SubscriptionPostRequest](docs/SubscriptionPostRequest.md)
  - [SubscriptionPutRequest](docs/SubscriptionPutRequest.md)
  - [SubscriptionType](docs/SubscriptionType.md)
+ - [Tag](docs/Tag.md)
+ - [TagTagCategoryRefsInner](docs/TagTagCategoryRefsInner.md)
  - [TaggedObject](docs/TaggedObject.md)
  - [TaggedObjectDto](docs/TaggedObjectDto.md)
  - [TaggedObjectObjectRef](docs/TaggedObjectObjectRef.md)
