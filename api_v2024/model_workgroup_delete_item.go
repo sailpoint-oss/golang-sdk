@@ -23,7 +23,7 @@ type WorkgroupDeleteItem struct {
 	// Id of the Governance Group.
 	Id string `json:"id"`
 	//  The HTTP response status code returned for an individual Governance Group that is requested for deletion during a bulk delete operation.  > 204   -  Governance Group deleted successfully.  > 409   - Governance Group is in use,hence can not be deleted.  > 404   - Governance Group not found. 
-	Status string `json:"status"`
+	Status int32 `json:"status"`
 	// Human readable status description and containing additional context information about success or failures etc. 
 	Description *string `json:"description,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -35,7 +35,7 @@ type _WorkgroupDeleteItem WorkgroupDeleteItem
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWorkgroupDeleteItem(id string, status string) *WorkgroupDeleteItem {
+func NewWorkgroupDeleteItem(id string, status int32) *WorkgroupDeleteItem {
 	this := WorkgroupDeleteItem{}
 	this.Id = id
 	this.Status = status
@@ -75,9 +75,9 @@ func (o *WorkgroupDeleteItem) SetId(v string) {
 }
 
 // GetStatus returns the Status field value
-func (o *WorkgroupDeleteItem) GetStatus() string {
+func (o *WorkgroupDeleteItem) GetStatus() int32 {
 	if o == nil {
-		var ret string
+		var ret int32
 		return ret
 	}
 
@@ -86,7 +86,7 @@ func (o *WorkgroupDeleteItem) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
-func (o *WorkgroupDeleteItem) GetStatusOk() (*string, bool) {
+func (o *WorkgroupDeleteItem) GetStatusOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -94,7 +94,7 @@ func (o *WorkgroupDeleteItem) GetStatusOk() (*string, bool) {
 }
 
 // SetStatus sets field value
-func (o *WorkgroupDeleteItem) SetStatus(v string) {
+func (o *WorkgroupDeleteItem) SetStatus(v int32) {
 	o.Status = v
 }
 

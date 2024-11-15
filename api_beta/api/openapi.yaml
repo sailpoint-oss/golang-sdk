@@ -79511,7 +79511,7 @@ components:
       description: Bulk remove Governance Groups Response.
       example:
       - id: 464ae7bf791e49fdb74606a2e4a89635
-        status: "204"
+        status: 204
         description: Governance Group deleted successfully.
       items:
         $ref: '#/components/schemas/WorkgroupDeleteItem'
@@ -79550,7 +79550,7 @@ components:
       description: Bulk add Governance Group members Response.
       example:
       - id: 464ae7bf791e49fdb74606a2e4a89635
-        status: "201"
+        status: 201
         description: Identity added to Governance Group members list.
       items:
         $ref: '#/components/schemas/WorkgroupMemberAddItem'
@@ -79559,7 +79559,7 @@ components:
       description: Bulk add Governance Group members Response.
       example:
       - id: 464ae7bf791e49fdb74606a2e4a89635
-        status: "204"
+        status: 204
         description: Identity deleted from Governance Group members list.
       items:
         $ref: '#/components/schemas/WorkgroupMemberDeleteItem'
@@ -87284,8 +87284,9 @@ components:
             > 409   - Governance Group is in use,hence can not be deleted.
 
             > 404   - Governance Group not found.
-          example: "204"
-          type: string
+          example: 204
+          format: int32
+          type: integer
         description:
           description: |
             Human readable status description and containing additional context information about success or failures etc.
@@ -87333,15 +87334,14 @@ components:
           description: |2
 
             The HTTP response status code returned for an individual member that is requested for addition during a bulk add operation.
-
-             The HTTP response status code returned for an individual Governance Group is requested for deletion.
-
+            The HTTP response status code returned for an individual Governance Group is requested for deletion.
 
             > 201   - Identity is added into Governance Group members list.
 
             > 409   - Identity is already member of  Governance Group.
-          example: "201"
-          type: string
+          example: 201
+          format: int32
+          type: integer
         description:
           description: |
             Human readable status description and containing additional context information about success or failures etc.
@@ -87362,15 +87362,15 @@ components:
           example: 464ae7bf791e49fdb74606a2e4a89635
           type: string
         status:
-          description: |2
-
+          description: |
             The HTTP response status code returned for an individual  member that is requested for deletion during a bulk delete operation.
 
             > 204   - Identity is removed from Governance Group members list.
 
             > 404   - Identity is not member of Governance Group.
-          example: "204"
-          type: string
+          example: 204
+          format: int32
+          type: integer
         description:
           description: |
             Human readable status description and containing additional context information about success or failures etc.

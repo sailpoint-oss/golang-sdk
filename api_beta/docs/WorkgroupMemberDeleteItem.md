@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | Identifier of identity in bulk member add /remove request. | 
-**Status** | **string** |  The HTTP response status code returned for an individual  member that is requested for deletion during a bulk delete operation.  &gt; 204   - Identity is removed from Governance Group members list.  &gt; 404   - Identity is not member of Governance Group.  | 
+**Status** | **int32** | The HTTP response status code returned for an individual  member that is requested for deletion during a bulk delete operation.  &gt; 204   - Identity is removed from Governance Group members list.  &gt; 404   - Identity is not member of Governance Group.  | 
 **Description** | Pointer to **string** | Human readable status description and containing additional context information about success or failures etc.  | [optional] 
 
 ## Methods
 
 ### NewWorkgroupMemberDeleteItem
 
-`func NewWorkgroupMemberDeleteItem(id string, status string, ) *WorkgroupMemberDeleteItem`
+`func NewWorkgroupMemberDeleteItem(id string, status int32, ) *WorkgroupMemberDeleteItem`
 
 NewWorkgroupMemberDeleteItem instantiates a new WorkgroupMemberDeleteItem object
 This constructor will assign default values to properties that have it defined,
@@ -49,20 +49,20 @@ SetId sets Id field to given value.
 
 ### GetStatus
 
-`func (o *WorkgroupMemberDeleteItem) GetStatus() string`
+`func (o *WorkgroupMemberDeleteItem) GetStatus() int32`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *WorkgroupMemberDeleteItem) GetStatusOk() (*string, bool)`
+`func (o *WorkgroupMemberDeleteItem) GetStatusOk() (*int32, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *WorkgroupMemberDeleteItem) SetStatus(v string)`
+`func (o *WorkgroupMemberDeleteItem) SetStatus(v int32)`
 
 SetStatus sets Status field to given value.
 

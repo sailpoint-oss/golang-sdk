@@ -22,8 +22,8 @@ var _ MappedNullable = &WorkgroupMemberAddItem{}
 type WorkgroupMemberAddItem struct {
 	// Identifier of identity in bulk member add request.
 	Id string `json:"id"`
-	//  The HTTP response status code returned for an individual member that is requested for addition during a bulk add operation.   The HTTP response status code returned for an individual Governance Group is requested for deletion.   > 201   - Identity is added into Governance Group members list.  > 409   - Identity is already member of  Governance Group. 
-	Status string `json:"status"`
+	//  The HTTP response status code returned for an individual member that is requested for addition during a bulk add operation. The HTTP response status code returned for an individual Governance Group is requested for deletion.  > 201   - Identity is added into Governance Group members list.  > 409   - Identity is already member of  Governance Group. 
+	Status int32 `json:"status"`
 	// Human readable status description and containing additional context information about success or failures etc. 
 	Description *string `json:"description,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -35,7 +35,7 @@ type _WorkgroupMemberAddItem WorkgroupMemberAddItem
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWorkgroupMemberAddItem(id string, status string) *WorkgroupMemberAddItem {
+func NewWorkgroupMemberAddItem(id string, status int32) *WorkgroupMemberAddItem {
 	this := WorkgroupMemberAddItem{}
 	this.Id = id
 	this.Status = status
@@ -75,9 +75,9 @@ func (o *WorkgroupMemberAddItem) SetId(v string) {
 }
 
 // GetStatus returns the Status field value
-func (o *WorkgroupMemberAddItem) GetStatus() string {
+func (o *WorkgroupMemberAddItem) GetStatus() int32 {
 	if o == nil {
-		var ret string
+		var ret int32
 		return ret
 	}
 
@@ -86,7 +86,7 @@ func (o *WorkgroupMemberAddItem) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
-func (o *WorkgroupMemberAddItem) GetStatusOk() (*string, bool) {
+func (o *WorkgroupMemberAddItem) GetStatusOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -94,7 +94,7 @@ func (o *WorkgroupMemberAddItem) GetStatusOk() (*string, bool) {
 }
 
 // SetStatus sets field value
-func (o *WorkgroupMemberAddItem) SetStatus(v string) {
+func (o *WorkgroupMemberAddItem) SetStatus(v int32) {
 	o.Status = v
 }
 

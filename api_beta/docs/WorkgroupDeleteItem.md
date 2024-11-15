@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | Id of the Governance Group. | 
-**Status** | **string** |  The HTTP response status code returned for an individual Governance Group that is requested for deletion during a bulk delete operation.  &gt; 204   -  Governance Group deleted successfully.  &gt; 409   - Governance Group is in use,hence can not be deleted.  &gt; 404   - Governance Group not found.  | 
+**Status** | **int32** |  The HTTP response status code returned for an individual Governance Group that is requested for deletion during a bulk delete operation.  &gt; 204   -  Governance Group deleted successfully.  &gt; 409   - Governance Group is in use,hence can not be deleted.  &gt; 404   - Governance Group not found.  | 
 **Description** | Pointer to **string** | Human readable status description and containing additional context information about success or failures etc.  | [optional] 
 
 ## Methods
 
 ### NewWorkgroupDeleteItem
 
-`func NewWorkgroupDeleteItem(id string, status string, ) *WorkgroupDeleteItem`
+`func NewWorkgroupDeleteItem(id string, status int32, ) *WorkgroupDeleteItem`
 
 NewWorkgroupDeleteItem instantiates a new WorkgroupDeleteItem object
 This constructor will assign default values to properties that have it defined,
@@ -49,20 +49,20 @@ SetId sets Id field to given value.
 
 ### GetStatus
 
-`func (o *WorkgroupDeleteItem) GetStatus() string`
+`func (o *WorkgroupDeleteItem) GetStatus() int32`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *WorkgroupDeleteItem) GetStatusOk() (*string, bool)`
+`func (o *WorkgroupDeleteItem) GetStatusOk() (*int32, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *WorkgroupDeleteItem) SetStatus(v string)`
+`func (o *WorkgroupDeleteItem) SetStatus(v int32)`
 
 SetStatus sets Status field to given value.
 
