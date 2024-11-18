@@ -22,30 +22,36 @@ const fixFiles = function (myArray) {
       fs.unlinkSync(file)
       continue
     }
-
+    
     if (file.includes("api_default.go")) {
-      let rawdata = fs.readFileSync(file).toString();
+      let rawdata = fs.readFileSync(file, 'utf8');
       let updatedData = rawdata.replace(
-        /localVarPath\s*:=\s*localBasePath\s*\+\s*"\{path\}"\s*\n\s*localVarPath\s*=\s*strings\.Replace\(localVarPath,\s*"\{\s*\+\s*"path"\s*\+\s*"\}",\s*url\.PathEscape\(parameterValueToString\(r\.path,\s*"path"\)\),\s*-1\)/,
+        /localVarPath\s*:=\s*localBasePath\s*\+\s*"\/\{path\}"\s*\n\s*localVarPath\s*=\s*strings\.Replace\(localVarPath,\s*"\{"\s*\+\s*"path"\s*\+\s*"\}",\s*url\.PathEscape\(parameterValueToString\(r\.path,\s*"path"\)\),\s*-1\)/g,
         `// Added this code segment to allow for paths to be replaced fully
-localVarPath := strings.TrimSuffix(localBasePath, "/{path}")
-
-if r.path != "" {
-    // Ensure the path starts with a forward slash
-    if !strings.HasPrefix(r.path, "/") {
-        localVarPath += "/"
+    localVarPath := strings.TrimSuffix(localBasePath, "/{path}")
+    
+    if r.path != "" {
+        // Ensure the path starts with a forward slash
+        if !strings.HasPrefix(r.path, "/") {
+            localVarPath += "/"
+        }
+        localVarPath += r.path
     }
-    localVarPath += r.path
-}
-
-segments := strings.Split(localVarPath, "/")
-for i, segment := range segments {
-    segments[i] = url.PathEscape(segment)
-}
-localVarPath = strings.Join(segments, "/")
-// Done adding path replacement`
+    
+    segments := strings.Split(localVarPath, "/")
+    for i, segment := range segments {
+        segments[i] = url.PathEscape(segment)
+    }
+    localVarPath = strings.Join(segments, "/")
+    // Done adding path replacement`
       );
-      fs.writeFileSync(file, updatedData);
+      
+      if (rawdata !== updatedData) {
+        fs.writeFileSync(file, updatedData, 'utf8');
+        console.log(`Updated ${file}`);
+      } else {
+        console.log(`No changes needed in ${file}`);
+      }
       continue;
     }
     
