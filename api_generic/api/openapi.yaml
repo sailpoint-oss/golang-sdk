@@ -1,0 +1,176 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Developer Relations
+    url: https://developer.sailpoint.com/discuss/api-help
+  description: Generic API specification for the Identity Security Cloud platform
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://developer.sailpoint.com/discuss/tos
+  title: Generic Identity Security Cloud V2024 API
+  version: v2024
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com/v2024"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+- description: This is the V2024 API server.
+  url: "https://{apiUrl}/v2024"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
+security:
+- userAuth:
+  - sp:scopes:all
+paths:
+  /{path}:
+    delete:
+      operationId: genericDelete
+      parameters:
+      - explode: false
+        in: path
+        name: path
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericResponse'
+          description: Successful response
+      summary: Generic DELETE request
+    get:
+      operationId: genericGet
+      parameters:
+      - explode: false
+        in: path
+        name: path
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericResponse'
+          description: Successful response
+      summary: Generic GET request
+    patch:
+      operationId: genericPatch
+      parameters:
+      - explode: false
+        in: path
+        name: path
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenericRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericResponse'
+          description: Successful response
+      summary: Generic PATCH request
+    post:
+      operationId: genericPost
+      parameters:
+      - explode: false
+        in: path
+        name: path
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenericRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericResponse'
+          description: Successful response
+      summary: Generic POST request
+    put:
+      operationId: genericPut
+      parameters:
+      - explode: false
+        in: path
+        name: path
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenericRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericResponse'
+          description: Successful response
+      summary: Generic PUT request
+components:
+  schemas:
+    GenericRequest:
+      additionalProperties: true
+      type: object
+    GenericResponse:
+      oneOf:
+      - additionalProperties: true
+        type: object
+      - items:
+          additionalProperties: true
+          type: object
+        type: array
+  securitySchemes:
+    userAuth:
+      description: OAuth2 Bearer token (JWT) generated using either a personal access
+        token (PAT) or through the authorization code flow.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://tenant.login.sailpoint.com/oauth/authorize
+          scopes:
+            sp:scopes:default: default scope
+            sp:scopes:all: access to all scopes
+          tokenUrl: https://tenant.api.identitynow.com/oauth/token
+        clientCredentials:
+          scopes:
+            sp:scopes:default: default scope
+            sp:scopes:all: access to all scopes
+          tokenUrl: https://tenant.api.identitynow.com/oauth/token
+      type: oauth2
+      x-displayName: Personal Access Token
+    applicationAuth:
+      description: OAuth2 Bearer token (JWT) generated using client credentials flow.
+      flows:
+        clientCredentials:
+          scopes:
+            sp:scopes:default: default scope
+            sp:scopes:all: access to all scopes
+          tokenUrl: https://tenant.api.identitynow.com/oauth/token
+      type: oauth2
+      x-displayName: Client Credentials
