@@ -74,7 +74,9 @@ func (r ApiGetPublicIdentitiesRequest) Execute() ([]PublicIdentity, *http.Respon
 }
 
 /*
-GetPublicIdentities Get a list of public identities
+GetPublicIdentities Get list of public identities
+
+Get a list of public identities.  Set `add-core-filters` to `true` to exclude incomplete identities and uncorrelated accounts.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetPublicIdentitiesRequest

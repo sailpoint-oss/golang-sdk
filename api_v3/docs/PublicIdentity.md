@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Status** | Pointer to **NullableString** | The lifecycle status for the identity | [optional] 
 **IdentityState** | Pointer to **NullableString** | The current state of the identity, which determines how Identity Security Cloud interacts with the identity. An identity that is Active will be included identity picklists in Request Center, identity processing, and more. Identities that are Inactive will be excluded from these features.  | [optional] 
 **Manager** | Pointer to [**NullableIdentityReference**](IdentityReference.md) |  | [optional] 
-**Attributes** | Pointer to [**[]IdentityAttribute**](IdentityAttribute.md) | The public identity attributes of the identity | [optional] 
+**Attributes** | Pointer to [**[]PublicIdentityAttributesInner**](PublicIdentityAttributesInner.md) | The public identity attributes of the identity | [optional] 
 
 ## Methods
 
@@ -249,20 +249,20 @@ HasManager returns a boolean if a field has been set.
 UnsetManager ensures that no value is present for Manager, not even an explicit nil
 ### GetAttributes
 
-`func (o *PublicIdentity) GetAttributes() []IdentityAttribute`
+`func (o *PublicIdentity) GetAttributes() []PublicIdentityAttributesInner`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *PublicIdentity) GetAttributesOk() (*[]IdentityAttribute, bool)`
+`func (o *PublicIdentity) GetAttributesOk() (*[]PublicIdentityAttributesInner, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *PublicIdentity) SetAttributes(v []IdentityAttribute)`
+`func (o *PublicIdentity) SetAttributes(v []PublicIdentityAttributesInner)`
 
 SetAttributes sets Attributes field to given value.
 

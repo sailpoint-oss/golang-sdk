@@ -284,7 +284,6 @@ docs/GrantType.md
 docs/IdentitiesDetailsReportArguments.md
 docs/IdentitiesReportArguments.md
 docs/IdentityAccess.md
-docs/IdentityAttribute.md
 docs/IdentityAttributeConfig.md
 docs/IdentityAttributePreview.md
 docs/IdentityAttributeTransform.md
@@ -446,6 +445,7 @@ docs/PublicIdentitiesAPI.md
 docs/PublicIdentitiesConfigAPI.md
 docs/PublicIdentity.md
 docs/PublicIdentityAttributeConfig.md
+docs/PublicIdentityAttributesInner.md
 docs/PublicIdentityConfig.md
 docs/PutClientLogConfigurationRequest.md
 docs/PutCorrelationConfigRequest.md
@@ -886,7 +886,6 @@ model_grant_type.go
 model_identities_details_report_arguments.go
 model_identities_report_arguments.go
 model_identity_access.go
-model_identity_attribute.go
 model_identity_attribute_config.go
 model_identity_attribute_preview.go
 model_identity_attribute_transform.go
@@ -1032,6 +1031,7 @@ model_provisioning_policy_dto.go
 model_provisioning_state.go
 model_public_identity.go
 model_public_identity_attribute_config.go
+model_public_identity_attributes_inner.go
 model_public_identity_config.go
 model_put_client_log_configuration_request.go
 model_put_correlation_config_request.go

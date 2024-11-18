@@ -298,7 +298,7 @@ Class | Method | HTTP request | Description
 *PersonalAccessTokensAPI* | [**DeletePersonalAccessToken**](docs/PersonalAccessTokensAPI.md#deletepersonalaccesstoken) | **Delete** /personal-access-tokens/{id} | Delete Personal Access Token
 *PersonalAccessTokensAPI* | [**ListPersonalAccessTokens**](docs/PersonalAccessTokensAPI.md#listpersonalaccesstokens) | **Get** /personal-access-tokens | List Personal Access Tokens
 *PersonalAccessTokensAPI* | [**PatchPersonalAccessToken**](docs/PersonalAccessTokensAPI.md#patchpersonalaccesstoken) | **Patch** /personal-access-tokens/{id} | Patch Personal Access Token
-*PublicIdentitiesAPI* | [**GetPublicIdentities**](docs/PublicIdentitiesAPI.md#getpublicidentities) | **Get** /public-identities | Get a list of public identities
+*PublicIdentitiesAPI* | [**GetPublicIdentities**](docs/PublicIdentitiesAPI.md#getpublicidentities) | **Get** /public-identities | Get list of public identities
 *PublicIdentitiesConfigAPI* | [**GetPublicIdentityConfig**](docs/PublicIdentitiesConfigAPI.md#getpublicidentityconfig) | **Get** /public-identities-config | Get the Public Identities Configuration
 *PublicIdentitiesConfigAPI* | [**UpdatePublicIdentityConfig**](docs/PublicIdentitiesConfigAPI.md#updatepublicidentityconfig) | **Put** /public-identities-config | Update the Public Identities Configuration
 *ReportsDataExtractionAPI* | [**CancelReport**](docs/ReportsDataExtractionAPI.md#cancelreport) | **Post** /reports/{id}/cancel | Cancel Report
@@ -660,7 +660,6 @@ Class | Method | HTTP request | Description
  - [IdentitiesDetailsReportArguments](docs/IdentitiesDetailsReportArguments.md)
  - [IdentitiesReportArguments](docs/IdentitiesReportArguments.md)
  - [IdentityAccess](docs/IdentityAccess.md)
- - [IdentityAttribute](docs/IdentityAttribute.md)
  - [IdentityAttributeConfig](docs/IdentityAttributeConfig.md)
  - [IdentityAttributePreview](docs/IdentityAttributePreview.md)
  - [IdentityAttributeTransform](docs/IdentityAttributeTransform.md)
@@ -806,6 +805,7 @@ Class | Method | HTTP request | Description
  - [ProvisioningState](docs/ProvisioningState.md)
  - [PublicIdentity](docs/PublicIdentity.md)
  - [PublicIdentityAttributeConfig](docs/PublicIdentityAttributeConfig.md)
+ - [PublicIdentityAttributesInner](docs/PublicIdentityAttributesInner.md)
  - [PublicIdentityConfig](docs/PublicIdentityConfig.md)
  - [PutClientLogConfigurationRequest](docs/PutClientLogConfigurationRequest.md)
  - [PutCorrelationConfigRequest](docs/PutCorrelationConfigRequest.md)

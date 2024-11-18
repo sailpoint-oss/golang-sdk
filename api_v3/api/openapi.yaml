@@ -24621,6 +24621,8 @@ paths:
       - Personal Access Tokens
   /public-identities:
     get:
+      description: Get a list of public identities.  Set `add-core-filters` to `true`
+        to exclude incomplete identities and uncorrelated accounts.
       operationId: getPublicIdentities
       parameters:
       - description: |-
@@ -24804,9 +24806,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Get a list of public identities
+      security:
+      - userAuth:
+        - sp:scopes:default
+      summary: Get list of public identities
       tags:
       - Public Identities
+      x-sailpoint-userLevels:
+      - USER
   /public-identities-config:
     get:
       description: Returns the publicly visible attributes of an identity available
@@ -54384,7 +54391,7 @@ components:
         attributes:
           description: The public identity attributes of the identity
           items:
-            $ref: '#/components/schemas/IdentityAttribute'
+            $ref: '#/components/schemas/PublicIdentity_attributes_inner'
           type: array
       title: Public Identity
       type: object
@@ -60644,25 +60651,6 @@ components:
           example: Thomas Edison
           type: string
       type: object
-    IdentityAttribute:
-      example:
-        name: Country
-        value: US
-        key: country
-      properties:
-        key:
-          description: The attribute key
-          example: country
-          type: string
-        name:
-          description: Human-readable display name of the attribute
-          example: Country
-          type: string
-        value:
-          description: The attribute value
-          example: US
-          type: string
-      type: object
     PublicIdentityAttributeConfig:
       description: Used to map an attribute key for an Identity to its display name.
       example:
@@ -65533,6 +65521,26 @@ components:
         name:
           description: Identity's display name.
           example: Michael Michaels
+          type: string
+      type: object
+    PublicIdentity_attributes_inner:
+      example:
+        name: Country
+        value: US
+        key: country
+      properties:
+        key:
+          description: The attribute key
+          example: country
+          type: string
+        name:
+          description: Human-readable display name of the attribute
+          example: Country
+          type: string
+        value:
+          description: The attribute value
+          example: US
+          nullable: true
           type: string
       type: object
     SavedSearchDetail_filters:
