@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## GenericDelete
 
-> map[string]interface{} GenericDelete(ctx, path).Execute()
+> GenericResponse GenericDelete(ctx, path).Execute()
 
 Generic DELETE request
 
@@ -40,7 +40,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.GenericDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GenericDelete`: map[string]interface{}
+	// response from `GenericDelete`: GenericResponse
 	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.GenericDelete`: %v\n", resp)
 }
 ```
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**GenericResponse**](GenericResponse.md)
 
 ### Authorization
 
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 ## GenericGet
 
-> map[string]interface{} GenericGet(ctx, path).Execute()
+> GenericResponse GenericGet(ctx, path).Execute()
 
 Generic GET request
 
@@ -108,7 +108,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.GenericGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GenericGet`: map[string]interface{}
+	// response from `GenericGet`: GenericResponse
 	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.GenericGet`: %v\n", resp)
 }
 ```
@@ -132,7 +132,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**GenericResponse**](GenericResponse.md)
 
 ### Authorization
 
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 ## GenericPatch
 
-> map[string]interface{} GenericPatch(ctx, path).RequestBody(requestBody).Execute()
+> GenericResponse GenericPatch(ctx, path).RequestBody(requestBody).Execute()
 
 Generic PATCH request
 
@@ -177,7 +177,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.GenericPatch``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GenericPatch`: map[string]interface{}
+	// response from `GenericPatch`: GenericResponse
 	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.GenericPatch`: %v\n", resp)
 }
 ```
@@ -202,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**GenericResponse**](GenericResponse.md)
 
 ### Authorization
 
@@ -220,7 +220,7 @@ Name | Type | Description  | Notes
 
 ## GenericPost
 
-> map[string]interface{} GenericPost(ctx, path).RequestBody(requestBody).Execute()
+> GenericResponse GenericPost(ctx, path).RequestBody(requestBody).Execute()
 
 Generic POST request
 
@@ -247,7 +247,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.GenericPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GenericPost`: map[string]interface{}
+	// response from `GenericPost`: GenericResponse
 	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.GenericPost`: %v\n", resp)
 }
 ```
@@ -272,7 +272,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**GenericResponse**](GenericResponse.md)
 
 ### Authorization
 
@@ -290,7 +290,7 @@ Name | Type | Description  | Notes
 
 ## GenericPut
 
-> map[string]interface{} GenericPut(ctx, path).RequestBody(requestBody).Execute()
+> GenericResponse GenericPut(ctx, path).RequestBody(requestBody).Execute()
 
 Generic PUT request
 
@@ -317,7 +317,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.GenericPut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GenericPut`: map[string]interface{}
+	// response from `GenericPut`: GenericResponse
 	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.GenericPut`: %v\n", resp)
 }
 ```
@@ -342,7 +342,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**GenericResponse**](GenericResponse.md)
 
 ### Authorization
 

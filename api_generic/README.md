@@ -89,6 +89,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [GenericResponse](docs/GenericResponse.md)
 
 
 ## Documentation For Authorization

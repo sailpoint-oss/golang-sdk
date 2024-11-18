@@ -139,8 +139,13 @@ components:
       additionalProperties: true
       type: object
     GenericResponse:
-      additionalProperties: true
-      type: object
+      oneOf:
+      - additionalProperties: true
+        type: object
+      - items:
+          additionalProperties: true
+          type: object
+        type: array
   securitySchemes:
     userAuth:
       description: OAuth2 Bearer token (JWT) generated using either a personal access

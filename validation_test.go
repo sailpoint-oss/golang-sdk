@@ -2,7 +2,9 @@ package sailpoint
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
+	"io"
 	"os"
 	"testing"
 
@@ -172,6 +174,75 @@ func Test_generic(t *testing.T) {
 	t.Run("Test List Accounts", func(t *testing.T) {
 
 		resp, r, err := apiClient.Generic.DefaultAPI.GenericGet(context.TODO(), "v2024/accounts").Execute()
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "during test`: %v\n", err)
+		}
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, r.StatusCode)
+	})
+
+	t.Run("Test get transforms", func(t *testing.T) {
+
+		resp, r, err := apiClient.Generic.DefaultAPI.GenericGet(context.TODO(), "v2024/transforms").Execute()
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "during test`: %v\n", err)
+		}
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, r.StatusCode)
+	})
+
+	t.Run("Test create workflow", func(t *testing.T) {
+
+		jsonStr := `{
+  "name": "Send Email2",
+  "description": "Send an email to the identity who's attributes changed.",
+  "definition": {
+    "start": "Send Email Test",
+    "steps": {
+      "Send Email": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "This is a test",
+          "from": "sailpoint@sailpoint.com",
+          "recipientId.$": "$.identity.id",
+          "subject": "test"
+        },
+        "nextStep": "success",
+        "selectResult": null,
+        "type": "action"
+      },
+      "success": {
+        "type": "success"
+      }
+    }
+  },
+  "enabled": false,
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "id": "idn:identity-attributes-changed",
+      "filter": "$.changes[?(@.attribute == 'manager')]"
+    }
+  }
+}`
+
+		var result map[string]interface{}
+		err := json.Unmarshal([]byte(jsonStr), &result)
+		if err != nil {
+			fmt.Println("Error:", err)
+			return
+		}
+
+		resp, r, err := apiClient.Generic.DefaultAPI.GenericPost(context.TODO(), "v2024/workflows").RequestBody(result).Execute()
+		bodyBytes, err := io.ReadAll(r.Body)
+		if err != nil {
+			fmt.Println("Error reading response body:", err)
+			return
+		}
+		bodyString := string(bodyBytes)
+		fmt.Println("Response Body:", bodyString)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "during test`: %v\n", err)
 		}

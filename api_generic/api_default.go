@@ -29,7 +29,7 @@ type ApiGenericDeleteRequest struct {
 	path string
 }
 
-func (r ApiGenericDeleteRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiGenericDeleteRequest) Execute() (*GenericResponse, *http.Response, error) {
 	return r.ApiService.GenericDeleteExecute(r)
 }
 
@@ -49,13 +49,13 @@ func (a *DefaultAPIService) GenericDelete(ctx context.Context, path string) ApiG
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *DefaultAPIService) GenericDeleteExecute(r ApiGenericDeleteRequest) (map[string]interface{}, *http.Response, error) {
+//  @return GenericResponse
+func (a *DefaultAPIService) GenericDeleteExecute(r ApiGenericDeleteRequest) (*GenericResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *GenericResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GenericDelete")
@@ -130,7 +130,7 @@ type ApiGenericGetRequest struct {
 	path string
 }
 
-func (r ApiGenericGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiGenericGetRequest) Execute() (*GenericResponse, *http.Response, error) {
 	return r.ApiService.GenericGetExecute(r)
 }
 
@@ -150,13 +150,13 @@ func (a *DefaultAPIService) GenericGet(ctx context.Context, path string) ApiGene
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *DefaultAPIService) GenericGetExecute(r ApiGenericGetRequest) (map[string]interface{}, *http.Response, error) {
+//  @return GenericResponse
+func (a *DefaultAPIService) GenericGetExecute(r ApiGenericGetRequest) (*GenericResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *GenericResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GenericGet")
@@ -253,7 +253,7 @@ func (r ApiGenericPatchRequest) RequestBody(requestBody map[string]interface{}) 
 	return r
 }
 
-func (r ApiGenericPatchRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiGenericPatchRequest) Execute() (*GenericResponse, *http.Response, error) {
 	return r.ApiService.GenericPatchExecute(r)
 }
 
@@ -273,13 +273,13 @@ func (a *DefaultAPIService) GenericPatch(ctx context.Context, path string) ApiGe
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *DefaultAPIService) GenericPatchExecute(r ApiGenericPatchRequest) (map[string]interface{}, *http.Response, error) {
+//  @return GenericResponse
+func (a *DefaultAPIService) GenericPatchExecute(r ApiGenericPatchRequest) (*GenericResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *GenericResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GenericPatch")
@@ -362,7 +362,7 @@ func (r ApiGenericPostRequest) RequestBody(requestBody map[string]interface{}) A
 	return r
 }
 
-func (r ApiGenericPostRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiGenericPostRequest) Execute() (*GenericResponse, *http.Response, error) {
 	return r.ApiService.GenericPostExecute(r)
 }
 
@@ -382,13 +382,13 @@ func (a *DefaultAPIService) GenericPost(ctx context.Context, path string) ApiGen
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *DefaultAPIService) GenericPostExecute(r ApiGenericPostRequest) (map[string]interface{}, *http.Response, error) {
+//  @return GenericResponse
+func (a *DefaultAPIService) GenericPostExecute(r ApiGenericPostRequest) (*GenericResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *GenericResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GenericPost")
@@ -471,7 +471,7 @@ func (r ApiGenericPutRequest) RequestBody(requestBody map[string]interface{}) Ap
 	return r
 }
 
-func (r ApiGenericPutRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiGenericPutRequest) Execute() (*GenericResponse, *http.Response, error) {
 	return r.ApiService.GenericPutExecute(r)
 }
 
@@ -491,13 +491,13 @@ func (a *DefaultAPIService) GenericPut(ctx context.Context, path string) ApiGene
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *DefaultAPIService) GenericPutExecute(r ApiGenericPutRequest) (map[string]interface{}, *http.Response, error) {
+//  @return GenericResponse
+func (a *DefaultAPIService) GenericPutExecute(r ApiGenericPutRequest) (*GenericResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *GenericResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GenericPut")

@@ -132,8 +132,13 @@ components:
       type: object
       additionalProperties: true
     GenericResponse:
-      type: object
-      additionalProperties: true
+      oneOf:
+        - type: object
+          additionalProperties: true
+        - type: array
+          items:
+            additionalProperties: true
+            type: object
   securitySchemes:
     userAuth:
       type: oauth2
