@@ -322,6 +322,7 @@ Class | Method | HTTP request | Description
 *IAIRoleMiningAPI* | [**GetIdentitiesPotentialRole**](docs/IAIRoleMiningAPI.md#getidentitiespotentialrole) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/identities | Retrieves identities for a potential role in a role mining session
 *IAIRoleMiningAPI* | [**GetPotentialRole**](docs/IAIRoleMiningAPI.md#getpotentialrole) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Retrieves a specific potential role
 *IAIRoleMiningAPI* | [**GetPotentialRoleApplications**](docs/IAIRoleMiningAPI.md#getpotentialroleapplications) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}/applications | Retrieves the applications of a potential role for a role mining session
+*IAIRoleMiningAPI* | [**GetPotentialRoleEntitlements**](docs/IAIRoleMiningAPI.md#getpotentialroleentitlements) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}/entitlements | Retrieves the entitlements of a potential role for a role mining session
 *IAIRoleMiningAPI* | [**GetPotentialRoleSourceIdentityUsage**](docs/IAIRoleMiningAPI.md#getpotentialrolesourceidentityusage) | **Get** /role-mining-potential-roles/{potentialRoleId}/sources/{sourceId}/identityUsage | Retrieves potential role source usage
 *IAIRoleMiningAPI* | [**GetPotentialRoleSummaries**](docs/IAIRoleMiningAPI.md#getpotentialrolesummaries) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries | Retrieves all potential role summaries
 *IAIRoleMiningAPI* | [**GetRoleMiningPotentialRole**](docs/IAIRoleMiningAPI.md#getroleminingpotentialrole) | **Get** /role-mining-potential-roles/{potentialRoleId} | Retrieves a specific potential role
@@ -1463,6 +1464,7 @@ Class | Method | HTTP request | Description
  - [RoleMiningPotentialRole](docs/RoleMiningPotentialRole.md)
  - [RoleMiningPotentialRoleApplication](docs/RoleMiningPotentialRoleApplication.md)
  - [RoleMiningPotentialRoleEditEntitlements](docs/RoleMiningPotentialRoleEditEntitlements.md)
+ - [RoleMiningPotentialRoleEntitlements](docs/RoleMiningPotentialRoleEntitlements.md)
  - [RoleMiningPotentialRoleExportRequest](docs/RoleMiningPotentialRoleExportRequest.md)
  - [RoleMiningPotentialRoleExportResponse](docs/RoleMiningPotentialRoleExportResponse.md)
  - [RoleMiningPotentialRoleExportState](docs/RoleMiningPotentialRoleExportState.md)

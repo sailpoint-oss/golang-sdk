@@ -19,9 +19,9 @@ var _ MappedNullable = &RoleMiningPotentialRoleApplication{}
 
 // RoleMiningPotentialRoleApplication struct for RoleMiningPotentialRoleApplication
 type RoleMiningPotentialRoleApplication struct {
-	// Id of the potential role
+	// Id of the application
 	Id *string `json:"id,omitempty"`
-	// Name of the potential role
+	// Name of the application
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

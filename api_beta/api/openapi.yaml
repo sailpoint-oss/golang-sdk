@@ -33800,6 +33800,18 @@ paths:
         role mining session.
       operationId: getPotentialRoleApplications
       parameters:
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **applicationName**: *sw*
+        example: applicationName sw "test"
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
       - description: The role mining session id
         example: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
         in: path
@@ -33808,7 +33820,7 @@ paths:
         schema:
           type: string
       - description: A potential role id in a role mining session
-        example: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
+        example: 62f28d91-7d9f-4d17-be15-666d5b41d77f
         in: path
         name: potentialRoleId
         required: true
@@ -33893,6 +33905,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
         "500":
           content:
             application/json:
@@ -33910,9 +33930,158 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:access-modeling:read
       summary: Retrieves the applications of a potential role for a role mining session
       tags:
       - IAI Role Mining
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+  /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}/entitlements:
+    get:
+      description: This method returns the entitlements of a potential role for a
+        role mining session.
+      operationId: getPotentialRoleEntitlements
+      parameters:
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **entitlementRef.name**: *sw*
+        example: entitlementRef.name sw "test"
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+      - description: The role mining session id
+        example: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
+        in: path
+        name: sessionId
+        required: true
+        schema:
+          type: string
+      - description: A potential role id in a role mining session
+        example: 62f28d91-7d9f-4d17-be15-666d5b41d77f
+        in: path
+        name: potentialRoleId
+        required: true
+        schema:
+          type: string
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/RoleMiningPotentialRoleEntitlements'
+                type: array
+          description: Succeeded. Returns the entitlements of a potential role for
+            a role mining session.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessModelMetadataAttribute_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - userAuth:
+        - iai:access-modeling:read
+      summary: Retrieves the entitlements of a potential role for a role mining session
+      tags:
+      - IAI Role Mining
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/entitlement-popularities:
     get:
       description: This method returns entitlements for a potential role in a role
@@ -74339,14 +74508,30 @@ components:
       type: object
     RoleMiningPotentialRoleApplication:
       example:
-        id: 2c9180877212632a017228d5a796292b
-        name: Slack
+        name: "{name=Slack}"
+        id: "{id=2c9180877212632a017228d5a796292b}"
       properties:
         id:
-          description: Id of the potential role
+          description: Id of the application
+          example: "{id=2c9180877212632a017228d5a796292b}"
           type: string
         name:
-          description: Name of the potential role
+          description: Name of the application
+          example: "{name=Slack}"
+          type: string
+      type: object
+    RoleMiningPotentialRoleEntitlements:
+      example:
+        name: "{name=LauncherTest2}"
+        id: "{id=2c9180877212632a017228d5a796292c}"
+      properties:
+        id:
+          description: Id of the entitlement
+          example: "{id=2c9180877212632a017228d5a796292c}"
+          type: string
+        name:
+          description: Name of the entitlement
+          example: "{name=LauncherTest2}"
           type: string
       type: object
     RoleMiningEntitlement:

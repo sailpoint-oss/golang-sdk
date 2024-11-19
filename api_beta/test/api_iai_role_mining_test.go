@@ -213,6 +213,21 @@ func Test_api_beta_IAIRoleMiningAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test IAIRoleMiningAPIService GetPotentialRoleEntitlements", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sessionId string
+		var potentialRoleId string
+
+		resp, httpRes, err := apiClient.IAIRoleMiningAPI.GetPotentialRoleEntitlements(context.Background(), sessionId, potentialRoleId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test IAIRoleMiningAPIService GetPotentialRoleSourceIdentityUsage", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
