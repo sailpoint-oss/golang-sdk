@@ -3810,7 +3810,7 @@ func (r ApiUpdateCampaignRequest) Execute() (*Slimcampaign, *http.Response, erro
 /*
 UpdateCampaign Update a Campaign
 
-Use this API to update individual fields on a certification campaign, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Though this endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/beta/update-campaign).
+Use this API to update individual fields on a certification campaign, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Though this endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/update-campaign).
 
 A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
 
