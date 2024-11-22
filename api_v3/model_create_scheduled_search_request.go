@@ -12,7 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -186,9 +186,9 @@ func (o *CreateScheduledSearchRequest) SetSavedSearchId(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CreateScheduledSearchRequest) GetCreated() time.Time {
+func (o *CreateScheduledSearchRequest) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created.Get()
@@ -197,7 +197,7 @@ func (o *CreateScheduledSearchRequest) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CreateScheduledSearchRequest) GetCreatedOk() (*time.Time, bool) {
+func (o *CreateScheduledSearchRequest) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -214,7 +214,7 @@ func (o *CreateScheduledSearchRequest) HasCreated() bool {
 }
 
 // SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
-func (o *CreateScheduledSearchRequest) SetCreated(v time.Time) {
+func (o *CreateScheduledSearchRequest) SetCreated(v SailPointTime) {
 	o.Created.Set(&v)
 }
 // SetCreatedNil sets the value for Created to be an explicit nil
@@ -228,9 +228,9 @@ func (o *CreateScheduledSearchRequest) UnsetCreated() {
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CreateScheduledSearchRequest) GetModified() time.Time {
+func (o *CreateScheduledSearchRequest) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified.Get()
@@ -239,7 +239,7 @@ func (o *CreateScheduledSearchRequest) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CreateScheduledSearchRequest) GetModifiedOk() (*time.Time, bool) {
+func (o *CreateScheduledSearchRequest) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -256,7 +256,7 @@ func (o *CreateScheduledSearchRequest) HasModified() bool {
 }
 
 // SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
-func (o *CreateScheduledSearchRequest) SetModified(v time.Time) {
+func (o *CreateScheduledSearchRequest) SetModified(v SailPointTime) {
 	o.Modified.Set(&v)
 }
 // SetModifiedNil sets the value for Modified to be an explicit nil

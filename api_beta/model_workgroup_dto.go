@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the WorkgroupDto type satisfies the MappedNullable interface at compile time
@@ -32,7 +32,7 @@ type WorkgroupDto struct {
 	// Number of connections in the governance group.
 	ConnectionCount *int64 `json:"connectionCount,omitempty"`
 	Created *SailPointTime `json:"created,omitempty"`
-	Modified *SailPointTime  `json:"modified,omitempty"`
+	Modified *SailPointTime `json:"modified,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -274,7 +274,7 @@ func (o *WorkgroupDto) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
 func (o *WorkgroupDto) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
@@ -306,7 +306,7 @@ func (o *WorkgroupDto) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
 func (o *WorkgroupDto) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
@@ -351,39 +351,6 @@ func (o WorkgroupDto) ToMap() (map[string]interface{}, error) {
 	}
 
 	return toSerialize, nil
-}
-
-type SailPointTime struct {
-    time.Time
-}
-    
-func (m *SailPointTime) UnmarshalJSON(data []byte) error {
-        if string(data) == "null" || string(data) == `""` {
-            return nil;
-        }
-    
-        // Strip the quotes from the data
-        str := string(data);
-        str = str[1 : len(str)-1];
-    
-        // Try parsing with seconds first
-        formats := []string{
-            time.RFC3339,                   // Format with seconds (e.g., "2012-04-23T18:25:43Z")
-            "2006-01-02T15:04Z",            // Format without seconds (e.g., "2012-04-23T18:25Z")
-            "2006-01-02T15:04:05.999999999", // Optional milliseconds and nanoseconds
-        }
-    
-        var err error;
-        for _, format := range formats {
-            var t time.Time;
-            t, err = time.Parse(format, str);
-            if err == nil {
-                *m = SailPointTime{t};
-                return nil;
-            }
-        }
-    
-        return nil;
 }
 
 func (o *WorkgroupDto) UnmarshalJSON(data []byte) (err error) {

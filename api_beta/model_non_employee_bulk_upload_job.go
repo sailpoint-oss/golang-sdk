@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the NonEmployeeBulkUploadJob type satisfies the MappedNullable interface at compile time
@@ -25,9 +25,9 @@ type NonEmployeeBulkUploadJob struct {
 	// The ID of the source to bulk-upload non-employees to. (UUID)
 	SourceId *string `json:"sourceId,omitempty"`
 	// The date-time the job was submitted.
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	// The date-time that the job was last updated.
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified *SailPointTime `json:"modified,omitempty"`
 	// Returns the following values indicating the progress or result of the bulk upload job. \"PENDING\" means the job is queued and waiting to be processed. \"IN_PROGRESS\" means the job is currently being processed. \"COMPLETED\" means the job has been completed without any errors. \"ERROR\" means the job failed to process with errors. 
 	Status *string `json:"status,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -117,9 +117,9 @@ func (o *NonEmployeeBulkUploadJob) SetSourceId(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *NonEmployeeBulkUploadJob) GetCreated() time.Time {
+func (o *NonEmployeeBulkUploadJob) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -127,7 +127,7 @@ func (o *NonEmployeeBulkUploadJob) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NonEmployeeBulkUploadJob) GetCreatedOk() (*time.Time, bool) {
+func (o *NonEmployeeBulkUploadJob) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -143,15 +143,15 @@ func (o *NonEmployeeBulkUploadJob) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *NonEmployeeBulkUploadJob) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *NonEmployeeBulkUploadJob) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *NonEmployeeBulkUploadJob) GetModified() time.Time {
+func (o *NonEmployeeBulkUploadJob) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified
@@ -159,7 +159,7 @@ func (o *NonEmployeeBulkUploadJob) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NonEmployeeBulkUploadJob) GetModifiedOk() (*time.Time, bool) {
+func (o *NonEmployeeBulkUploadJob) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -175,8 +175,8 @@ func (o *NonEmployeeBulkUploadJob) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *NonEmployeeBulkUploadJob) SetModified(v time.Time) {
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+func (o *NonEmployeeBulkUploadJob) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 

@@ -295,15 +295,15 @@ func (v *NullableString) UnmarshalJSON(src []byte) error {
 }
 
 type NullableTime struct {
-	value *time.Time
+	value *SailPointTime
 	isSet bool
 }
 
-func (v NullableTime) Get() *time.Time {
+func (v NullableTime) Get() *SailPointTime {
 	return v.value
 }
 
-func (v *NullableTime) Set(val *time.Time) {
+func (v *NullableTime) Set(val *SailPointTime) {
 	v.value = val
 	v.isSet = true
 }
@@ -317,7 +317,7 @@ func (v *NullableTime) Unset() {
 	v.isSet = false
 }
 
-func NewNullableTime(val *time.Time) *NullableTime {
+func NewNullableTime(val *SailPointTime) *NullableTime {
 	return &NullableTime{value: val, isSet: true}
 }
 
@@ -358,4 +358,36 @@ func newStrictDecoder(data []byte) *json.Decoder {
 // Prevent trying to import "fmt"
 func reportError(format string, a ...interface{}) error {
 	return fmt.Errorf(format, a...)
+}
+type SailPointTime struct {
+    time.Time
+}
+    
+func (m *SailPointTime) UnmarshalJSON(data []byte) error {
+        if string(data) == "null" || string(data) == `""` {
+            return nil;
+        }
+    
+        // Strip the quotes from the data
+        str := string(data);
+        str = str[1 : len(str)-1];
+    
+        // Try parsing with seconds first
+        formats := []string{
+            time.RFC3339,                   // Format with seconds (e.g., "2012-04-23T18:25:43Z")
+            "2006-01-02T15:04Z",            // Format without seconds (e.g., "2012-04-23T18:25Z")
+            "2006-01-02T15:04:05.999999999", // Optional milliseconds and nanoseconds
+        }
+    
+        var err error;
+        for _, format := range formats {
+            var t time.Time;
+            t, err = time.Parse(format, str);
+            if err == nil {
+                *m = SailPointTime{t};
+                return nil;
+            }
+        }
+    
+        return nil;
 }

@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -26,15 +26,15 @@ type CertificationSignedOffCertification struct {
 	// The name of the certification.
 	Name string `json:"name"`
 	// The date and time the certification was created.
-	Created time.Time `json:"created"`
+	Created SailPointTime `json:"created"`
 	// The date and time the certification was last modified.
 	Modified NullableTime `json:"modified,omitempty"`
 	CampaignRef CampaignReference `json:"campaignRef"`
 	Phase CertificationPhase `json:"phase"`
 	// The due date of the certification.
-	Due time.Time `json:"due"`
+	Due SailPointTime `json:"due"`
 	// The date the reviewer signed off on the certification.
-	Signed time.Time `json:"signed"`
+	Signed SailPointTime `json:"signed"`
 	Reviewer Reviewer `json:"reviewer"`
 	Reassignment *Reassignment `json:"reassignment,omitempty"`
 	// Indicates it the certification has any errors.
@@ -60,7 +60,7 @@ type _CertificationSignedOffCertification CertificationSignedOffCertification
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCertificationSignedOffCertification(id string, name string, created time.Time, campaignRef CampaignReference, phase CertificationPhase, due time.Time, signed time.Time, reviewer Reviewer, hasErrors bool, completed bool, decisionsMade int32, decisionsTotal int32, entitiesCompleted int32, entitiesTotal int32) *CertificationSignedOffCertification {
+func NewCertificationSignedOffCertification(id string, name string, created SailPointTime, campaignRef CampaignReference, phase CertificationPhase, due SailPointTime, signed SailPointTime, reviewer Reviewer, hasErrors bool, completed bool, decisionsMade int32, decisionsTotal int32, entitiesCompleted int32, entitiesTotal int32) *CertificationSignedOffCertification {
 	this := CertificationSignedOffCertification{}
 	this.CampaignRef = campaignRef
 	this.Phase = phase
@@ -133,9 +133,9 @@ func (o *CertificationSignedOffCertification) SetName(v string) {
 }
 
 // GetCreated returns the Created field value
-func (o *CertificationSignedOffCertification) GetCreated() time.Time {
+func (o *CertificationSignedOffCertification) GetCreated() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -144,7 +144,7 @@ func (o *CertificationSignedOffCertification) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value
 // and a boolean to check if the value has been set.
-func (o *CertificationSignedOffCertification) GetCreatedOk() (*time.Time, bool) {
+func (o *CertificationSignedOffCertification) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -152,14 +152,14 @@ func (o *CertificationSignedOffCertification) GetCreatedOk() (*time.Time, bool) 
 }
 
 // SetCreated sets field value
-func (o *CertificationSignedOffCertification) SetCreated(v time.Time) {
+func (o *CertificationSignedOffCertification) SetCreated(v SailPointTime) {
 	o.Created = v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CertificationSignedOffCertification) GetModified() time.Time {
+func (o *CertificationSignedOffCertification) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified.Get()
@@ -168,7 +168,7 @@ func (o *CertificationSignedOffCertification) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CertificationSignedOffCertification) GetModifiedOk() (*time.Time, bool) {
+func (o *CertificationSignedOffCertification) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -185,7 +185,7 @@ func (o *CertificationSignedOffCertification) HasModified() bool {
 }
 
 // SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
-func (o *CertificationSignedOffCertification) SetModified(v time.Time) {
+func (o *CertificationSignedOffCertification) SetModified(v SailPointTime) {
 	o.Modified.Set(&v)
 }
 // SetModifiedNil sets the value for Modified to be an explicit nil
@@ -247,9 +247,9 @@ func (o *CertificationSignedOffCertification) SetPhase(v CertificationPhase) {
 }
 
 // GetDue returns the Due field value
-func (o *CertificationSignedOffCertification) GetDue() time.Time {
+func (o *CertificationSignedOffCertification) GetDue() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -258,7 +258,7 @@ func (o *CertificationSignedOffCertification) GetDue() time.Time {
 
 // GetDueOk returns a tuple with the Due field value
 // and a boolean to check if the value has been set.
-func (o *CertificationSignedOffCertification) GetDueOk() (*time.Time, bool) {
+func (o *CertificationSignedOffCertification) GetDueOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -266,14 +266,14 @@ func (o *CertificationSignedOffCertification) GetDueOk() (*time.Time, bool) {
 }
 
 // SetDue sets field value
-func (o *CertificationSignedOffCertification) SetDue(v time.Time) {
+func (o *CertificationSignedOffCertification) SetDue(v SailPointTime) {
 	o.Due = v
 }
 
 // GetSigned returns the Signed field value
-func (o *CertificationSignedOffCertification) GetSigned() time.Time {
+func (o *CertificationSignedOffCertification) GetSigned() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -282,7 +282,7 @@ func (o *CertificationSignedOffCertification) GetSigned() time.Time {
 
 // GetSignedOk returns a tuple with the Signed field value
 // and a boolean to check if the value has been set.
-func (o *CertificationSignedOffCertification) GetSignedOk() (*time.Time, bool) {
+func (o *CertificationSignedOffCertification) GetSignedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -290,7 +290,7 @@ func (o *CertificationSignedOffCertification) GetSignedOk() (*time.Time, bool) {
 }
 
 // SetSigned sets field value
-func (o *CertificationSignedOffCertification) SetSigned(v time.Time) {
+func (o *CertificationSignedOffCertification) SetSigned(v SailPointTime) {
 	o.Signed = v
 }
 

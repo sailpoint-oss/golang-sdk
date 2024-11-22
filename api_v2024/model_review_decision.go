@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -25,7 +25,7 @@ type ReviewDecision struct {
 	Id string `json:"id"`
 	Decision CertificationDecision `json:"decision"`
 	// The date at which a user's access should be taken away. Should only be set for `REVOKE` decisions.
-	ProposedEndDate *time.Time `json:"proposedEndDate,omitempty"`
+	ProposedEndDate *SailPointTime `json:"proposedEndDate,omitempty"`
 	// Indicates whether decision should be marked as part of a larger bulk decision
 	Bulk bool `json:"bulk"`
 	Recommendation *ReviewRecommendation `json:"recommendation,omitempty"`
@@ -105,9 +105,9 @@ func (o *ReviewDecision) SetDecision(v CertificationDecision) {
 }
 
 // GetProposedEndDate returns the ProposedEndDate field value if set, zero value otherwise.
-func (o *ReviewDecision) GetProposedEndDate() time.Time {
+func (o *ReviewDecision) GetProposedEndDate() SailPointTime {
 	if o == nil || IsNil(o.ProposedEndDate) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.ProposedEndDate
@@ -115,7 +115,7 @@ func (o *ReviewDecision) GetProposedEndDate() time.Time {
 
 // GetProposedEndDateOk returns a tuple with the ProposedEndDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ReviewDecision) GetProposedEndDateOk() (*time.Time, bool) {
+func (o *ReviewDecision) GetProposedEndDateOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.ProposedEndDate) {
 		return nil, false
 	}
@@ -131,8 +131,8 @@ func (o *ReviewDecision) HasProposedEndDate() bool {
 	return false
 }
 
-// SetProposedEndDate gets a reference to the given time.Time and assigns it to the ProposedEndDate field.
-func (o *ReviewDecision) SetProposedEndDate(v time.Time) {
+// SetProposedEndDate gets a reference to the given SailPointTime and assigns it to the ProposedEndDate field.
+func (o *ReviewDecision) SetProposedEndDate(v SailPointTime) {
 	o.ProposedEndDate = &v
 }
 

@@ -180,22 +180,22 @@ func (a *DefaultAPIService) GenericGetExecute(r ApiGenericGetRequest) (*GenericR
 	}
 
 	// Added this code segment to allow for paths to be replaced fully
-	localVarPath := strings.TrimSuffix(localBasePath, "/{path}")
-
-	if r.path != "" {
-		// Ensure the path starts with a forward slash
-		if !strings.HasPrefix(r.path, "/") {
-			localVarPath += "/"
-		}
-		localVarPath += r.path
-	}
-
-	segments := strings.Split(localVarPath, "/")
-	for i, segment := range segments {
-		segments[i] = url.PathEscape(segment)
-	}
-	localVarPath = strings.Join(segments, "/")
-	// Done adding path replacement
+    localVarPath := strings.TrimSuffix(localBasePath, "/{path}")
+    
+    if r.path != "" {
+        // Ensure the path starts with a forward slash
+        if !strings.HasPrefix(r.path, "/") {
+            localVarPath += "/"
+        }
+        localVarPath += r.path
+    }
+    
+    segments := strings.Split(localVarPath, "/")
+    for i, segment := range segments {
+        segments[i] = url.PathEscape(segment)
+    }
+    localVarPath = strings.Join(segments, "/")
+    // Done adding path replacement
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

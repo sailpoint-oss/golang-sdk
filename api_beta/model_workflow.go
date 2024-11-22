@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Workflow type satisfies the MappedNullable interface at compile time
@@ -32,14 +32,14 @@ type Workflow struct {
 	// Workflow ID. This is a UUID generated upon creation.
 	Id *string `json:"id,omitempty"`
 	// The date and time the workflow was modified.
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified *SailPointTime `json:"modified,omitempty"`
 	ModifiedBy *WorkflowModifiedBy `json:"modifiedBy,omitempty"`
 	// The number of times this workflow has been executed.
 	ExecutionCount *int32 `json:"executionCount,omitempty"`
 	// The number of times this workflow has failed during execution.
 	FailureCount *int32 `json:"failureCount,omitempty"`
 	// The date and time the workflow was created.
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	Creator *WorkflowAllOfCreator `json:"creator,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -292,9 +292,9 @@ func (o *Workflow) SetId(v string) {
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Workflow) GetModified() time.Time {
+func (o *Workflow) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified
@@ -302,7 +302,7 @@ func (o *Workflow) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Workflow) GetModifiedOk() (*time.Time, bool) {
+func (o *Workflow) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -318,8 +318,8 @@ func (o *Workflow) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *Workflow) SetModified(v time.Time) {
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+func (o *Workflow) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 
@@ -420,9 +420,9 @@ func (o *Workflow) SetFailureCount(v int32) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Workflow) GetCreated() time.Time {
+func (o *Workflow) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -430,7 +430,7 @@ func (o *Workflow) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Workflow) GetCreatedOk() (*time.Time, bool) {
+func (o *Workflow) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -446,8 +446,8 @@ func (o *Workflow) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *Workflow) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *Workflow) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 

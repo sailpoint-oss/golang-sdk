@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the LatestOutlierSummary type satisfies the MappedNullable interface at compile time
@@ -23,7 +23,7 @@ type LatestOutlierSummary struct {
 	// The type of outlier summary
 	Type *string `json:"type,omitempty"`
 	// The date the bulk outlier detection ran/snapshot was created
-	SnapshotDate *time.Time `json:"snapshotDate,omitempty"`
+	SnapshotDate *SailPointTime `json:"snapshotDate,omitempty"`
 	// Total number of outliers for the customer making the request
 	TotalOutliers *int32 `json:"totalOutliers,omitempty"`
 	// Total number of identities for the customer making the request
@@ -85,9 +85,9 @@ func (o *LatestOutlierSummary) SetType(v string) {
 }
 
 // GetSnapshotDate returns the SnapshotDate field value if set, zero value otherwise.
-func (o *LatestOutlierSummary) GetSnapshotDate() time.Time {
+func (o *LatestOutlierSummary) GetSnapshotDate() SailPointTime {
 	if o == nil || IsNil(o.SnapshotDate) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.SnapshotDate
@@ -95,7 +95,7 @@ func (o *LatestOutlierSummary) GetSnapshotDate() time.Time {
 
 // GetSnapshotDateOk returns a tuple with the SnapshotDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LatestOutlierSummary) GetSnapshotDateOk() (*time.Time, bool) {
+func (o *LatestOutlierSummary) GetSnapshotDateOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.SnapshotDate) {
 		return nil, false
 	}
@@ -111,8 +111,8 @@ func (o *LatestOutlierSummary) HasSnapshotDate() bool {
 	return false
 }
 
-// SetSnapshotDate gets a reference to the given time.Time and assigns it to the SnapshotDate field.
-func (o *LatestOutlierSummary) SetSnapshotDate(v time.Time) {
+// SetSnapshotDate gets a reference to the given SailPointTime and assigns it to the SnapshotDate field.
+func (o *LatestOutlierSummary) SetSnapshotDate(v SailPointTime) {
 	o.SnapshotDate = &v
 }
 

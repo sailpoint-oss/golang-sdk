@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the SodPolicy type satisfies the MappedNullable interface at compile time
@@ -25,9 +25,9 @@ type SodPolicy struct {
 	// Policy Business Name
 	Name *string `json:"name,omitempty"`
 	// The time when this SOD policy is created.
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	// The time when this SOD policy is modified.
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified *SailPointTime `json:"modified,omitempty"`
 	// Optional description of the SOD policy
 	Description NullableString `json:"description,omitempty"`
 	OwnerRef *SodPolicyOwnerRef `json:"ownerRef,omitempty"`
@@ -148,9 +148,9 @@ func (o *SodPolicy) SetName(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *SodPolicy) GetCreated() time.Time {
+func (o *SodPolicy) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -158,7 +158,7 @@ func (o *SodPolicy) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SodPolicy) GetCreatedOk() (*time.Time, bool) {
+func (o *SodPolicy) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -174,15 +174,15 @@ func (o *SodPolicy) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *SodPolicy) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *SodPolicy) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *SodPolicy) GetModified() time.Time {
+func (o *SodPolicy) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified
@@ -190,7 +190,7 @@ func (o *SodPolicy) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SodPolicy) GetModifiedOk() (*time.Time, bool) {
+func (o *SodPolicy) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -206,8 +206,8 @@ func (o *SodPolicy) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *SodPolicy) SetModified(v time.Time) {
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+func (o *SodPolicy) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 

@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the CertificationTask type satisfies the MappedNullable interface at compile time
@@ -32,7 +32,7 @@ type CertificationTask struct {
 	Status *string `json:"status,omitempty"`
 	Errors []ErrorMessageDto `json:"errors,omitempty"`
 	// The date and time on which this task was created.
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -248,9 +248,9 @@ func (o *CertificationTask) SetErrors(v []ErrorMessageDto) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *CertificationTask) GetCreated() time.Time {
+func (o *CertificationTask) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -258,7 +258,7 @@ func (o *CertificationTask) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CertificationTask) GetCreatedOk() (*time.Time, bool) {
+func (o *CertificationTask) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -274,8 +274,8 @@ func (o *CertificationTask) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *CertificationTask) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *CertificationTask) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 

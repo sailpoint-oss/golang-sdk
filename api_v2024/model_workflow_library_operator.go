@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the WorkflowLibraryOperator type satisfies the MappedNullable interface at compile time
@@ -31,7 +31,7 @@ type WorkflowLibraryOperator struct {
 	// Determines whether the dynamic output schema is returned in place of the action's output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields.
 	IsDynamicSchema *bool `json:"isDynamicSchema,omitempty"`
 	Deprecated *bool `json:"deprecated,omitempty"`
-	DeprecatedBy *time.Time `json:"deprecatedBy,omitempty"`
+	DeprecatedBy *SailPointTime `json:"deprecatedBy,omitempty"`
 	IsSimulationEnabled *bool `json:"isSimulationEnabled,omitempty"`
 	// One or more inputs that the operator accepts
 	FormFields []WorkflowLibraryFormFields `json:"formFields,omitempty"`
@@ -250,9 +250,9 @@ func (o *WorkflowLibraryOperator) SetDeprecated(v bool) {
 }
 
 // GetDeprecatedBy returns the DeprecatedBy field value if set, zero value otherwise.
-func (o *WorkflowLibraryOperator) GetDeprecatedBy() time.Time {
+func (o *WorkflowLibraryOperator) GetDeprecatedBy() SailPointTime {
 	if o == nil || IsNil(o.DeprecatedBy) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.DeprecatedBy
@@ -260,7 +260,7 @@ func (o *WorkflowLibraryOperator) GetDeprecatedBy() time.Time {
 
 // GetDeprecatedByOk returns a tuple with the DeprecatedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkflowLibraryOperator) GetDeprecatedByOk() (*time.Time, bool) {
+func (o *WorkflowLibraryOperator) GetDeprecatedByOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.DeprecatedBy) {
 		return nil, false
 	}
@@ -276,8 +276,8 @@ func (o *WorkflowLibraryOperator) HasDeprecatedBy() bool {
 	return false
 }
 
-// SetDeprecatedBy gets a reference to the given time.Time and assigns it to the DeprecatedBy field.
-func (o *WorkflowLibraryOperator) SetDeprecatedBy(v time.Time) {
+// SetDeprecatedBy gets a reference to the given SailPointTime and assigns it to the DeprecatedBy field.
+func (o *WorkflowLibraryOperator) SetDeprecatedBy(v SailPointTime) {
 	o.DeprecatedBy = &v
 }
 

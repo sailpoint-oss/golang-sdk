@@ -12,7 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -52,9 +52,9 @@ type CreateOAuthClientResponse struct {
 	// An indicator of whether the API Client supports the serialization of SAML claims when used with the authorization_code flow
 	ClaimsSupported bool `json:"claimsSupported"`
 	// The date and time, down to the millisecond, when the API Client was created
-	Created time.Time `json:"created"`
+	Created SailPointTime `json:"created"`
 	// The date and time, down to the millisecond, when the API Client was last updated
-	Modified time.Time `json:"modified"`
+	Modified SailPointTime `json:"modified"`
 	// Scopes of the API Client.
 	Scope []string `json:"scope"`
 	AdditionalProperties map[string]interface{}
@@ -66,7 +66,7 @@ type _CreateOAuthClientResponse CreateOAuthClientResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateOAuthClientResponse(id string, secret string, businessName string, homepageUrl string, name string, description string, accessTokenValiditySeconds int32, refreshTokenValiditySeconds int32, redirectUris []string, grantTypes []GrantType, accessType AccessType, type_ ClientType, internal bool, enabled bool, strongAuthSupported bool, claimsSupported bool, created time.Time, modified time.Time, scope []string) *CreateOAuthClientResponse {
+func NewCreateOAuthClientResponse(id string, secret string, businessName string, homepageUrl string, name string, description string, accessTokenValiditySeconds int32, refreshTokenValiditySeconds int32, redirectUris []string, grantTypes []GrantType, accessType AccessType, type_ ClientType, internal bool, enabled bool, strongAuthSupported bool, claimsSupported bool, created SailPointTime, modified SailPointTime, scope []string) *CreateOAuthClientResponse {
 	this := CreateOAuthClientResponse{}
 	this.Id = id
 	this.Secret = secret
@@ -483,9 +483,9 @@ func (o *CreateOAuthClientResponse) SetClaimsSupported(v bool) {
 }
 
 // GetCreated returns the Created field value
-func (o *CreateOAuthClientResponse) GetCreated() time.Time {
+func (o *CreateOAuthClientResponse) GetCreated() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -494,7 +494,7 @@ func (o *CreateOAuthClientResponse) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value
 // and a boolean to check if the value has been set.
-func (o *CreateOAuthClientResponse) GetCreatedOk() (*time.Time, bool) {
+func (o *CreateOAuthClientResponse) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -502,14 +502,14 @@ func (o *CreateOAuthClientResponse) GetCreatedOk() (*time.Time, bool) {
 }
 
 // SetCreated sets field value
-func (o *CreateOAuthClientResponse) SetCreated(v time.Time) {
+func (o *CreateOAuthClientResponse) SetCreated(v SailPointTime) {
 	o.Created = v
 }
 
 // GetModified returns the Modified field value
-func (o *CreateOAuthClientResponse) GetModified() time.Time {
+func (o *CreateOAuthClientResponse) GetModified() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -518,7 +518,7 @@ func (o *CreateOAuthClientResponse) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value
 // and a boolean to check if the value has been set.
-func (o *CreateOAuthClientResponse) GetModifiedOk() (*time.Time, bool) {
+func (o *CreateOAuthClientResponse) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -526,7 +526,7 @@ func (o *CreateOAuthClientResponse) GetModifiedOk() (*time.Time, bool) {
 }
 
 // SetModified sets field value
-func (o *CreateOAuthClientResponse) SetModified(v time.Time) {
+func (o *CreateOAuthClientResponse) SetModified(v SailPointTime) {
 	o.Modified = v
 }
 
