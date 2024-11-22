@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Product type satisfies the MappedNullable interface at compile time
@@ -40,7 +40,7 @@ type Product struct {
 	// Status of the product
 	Status *string `json:"status,omitempty"`
 	// Status datetime
-	StatusDateTime *time.Time `json:"statusDateTime,omitempty"`
+	StatusDateTime *SailPointTime `json:"statusDateTime,omitempty"`
 	// If there's a tenant provisioning failure then reason will have the description of error
 	Reason *string `json:"reason,omitempty"`
 	// Product could have additional notes added during tenant provisioning.
@@ -404,9 +404,9 @@ func (o *Product) SetStatus(v string) {
 }
 
 // GetStatusDateTime returns the StatusDateTime field value if set, zero value otherwise.
-func (o *Product) GetStatusDateTime() time.Time {
+func (o *Product) GetStatusDateTime() SailPointTime {
 	if o == nil || IsNil(o.StatusDateTime) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.StatusDateTime
@@ -414,7 +414,7 @@ func (o *Product) GetStatusDateTime() time.Time {
 
 // GetStatusDateTimeOk returns a tuple with the StatusDateTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Product) GetStatusDateTimeOk() (*time.Time, bool) {
+func (o *Product) GetStatusDateTimeOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.StatusDateTime) {
 		return nil, false
 	}
@@ -430,8 +430,8 @@ func (o *Product) HasStatusDateTime() bool {
 	return false
 }
 
-// SetStatusDateTime gets a reference to the given time.Time and assigns it to the StatusDateTime field.
-func (o *Product) SetStatusDateTime(v time.Time) {
+// SetStatusDateTime gets a reference to the given SailPointTime and assigns it to the StatusDateTime field.
+func (o *Product) SetStatusDateTime(v SailPointTime) {
 	o.StatusDateTime = &v
 }
 
@@ -500,9 +500,9 @@ func (o *Product) SetNotes(v string) {
 }
 
 // GetDateCreated returns the DateCreated field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Product) GetDateCreated() time.Time {
+func (o *Product) GetDateCreated() SailPointTime {
 	if o == nil || IsNil(o.DateCreated.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.DateCreated.Get()
@@ -511,7 +511,7 @@ func (o *Product) GetDateCreated() time.Time {
 // GetDateCreatedOk returns a tuple with the DateCreated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Product) GetDateCreatedOk() (*time.Time, bool) {
+func (o *Product) GetDateCreatedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -528,7 +528,7 @@ func (o *Product) HasDateCreated() bool {
 }
 
 // SetDateCreated gets a reference to the given NullableTime and assigns it to the DateCreated field.
-func (o *Product) SetDateCreated(v time.Time) {
+func (o *Product) SetDateCreated(v SailPointTime) {
 	o.DateCreated.Set(&v)
 }
 // SetDateCreatedNil sets the value for DateCreated to be an explicit nil
@@ -542,9 +542,9 @@ func (o *Product) UnsetDateCreated() {
 }
 
 // GetLastUpdated returns the LastUpdated field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Product) GetLastUpdated() time.Time {
+func (o *Product) GetLastUpdated() SailPointTime {
 	if o == nil || IsNil(o.LastUpdated.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.LastUpdated.Get()
@@ -553,7 +553,7 @@ func (o *Product) GetLastUpdated() time.Time {
 // GetLastUpdatedOk returns a tuple with the LastUpdated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Product) GetLastUpdatedOk() (*time.Time, bool) {
+func (o *Product) GetLastUpdatedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -570,7 +570,7 @@ func (o *Product) HasLastUpdated() bool {
 }
 
 // SetLastUpdated gets a reference to the given NullableTime and assigns it to the LastUpdated field.
-func (o *Product) SetLastUpdated(v time.Time) {
+func (o *Product) SetLastUpdated(v SailPointTime) {
 	o.LastUpdated.Set(&v)
 }
 // SetLastUpdatedNil sets the value for LastUpdated to be an explicit nil

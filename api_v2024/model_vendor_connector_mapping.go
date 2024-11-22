@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the VendorConnectorMapping type satisfies the MappedNullable interface at compile time
@@ -27,7 +27,7 @@ type VendorConnectorMapping struct {
 	// The name of the connector.
 	Connector *string `json:"connector,omitempty"`
 	// The creation timestamp of the mapping.
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	CreatedAt *SailPointTime `json:"createdAt,omitempty"`
 	// The identifier of the user who created the mapping.
 	CreatedBy *string `json:"createdBy,omitempty"`
 	UpdatedAt NullableVendorConnectorMappingUpdatedAt `json:"updatedAt,omitempty"`
@@ -153,9 +153,9 @@ func (o *VendorConnectorMapping) SetConnector(v string) {
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *VendorConnectorMapping) GetCreatedAt() time.Time {
+func (o *VendorConnectorMapping) GetCreatedAt() SailPointTime {
 	if o == nil || IsNil(o.CreatedAt) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.CreatedAt
@@ -163,7 +163,7 @@ func (o *VendorConnectorMapping) GetCreatedAt() time.Time {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VendorConnectorMapping) GetCreatedAtOk() (*time.Time, bool) {
+func (o *VendorConnectorMapping) GetCreatedAtOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
@@ -179,8 +179,8 @@ func (o *VendorConnectorMapping) HasCreatedAt() bool {
 	return false
 }
 
-// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
-func (o *VendorConnectorMapping) SetCreatedAt(v time.Time) {
+// SetCreatedAt gets a reference to the given SailPointTime and assigns it to the CreatedAt field.
+func (o *VendorConnectorMapping) SetCreatedAt(v SailPointTime) {
 	o.CreatedAt = &v
 }
 

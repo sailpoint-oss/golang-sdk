@@ -12,7 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -50,9 +50,9 @@ type GetOAuthClientResponse struct {
 	// An indicator of whether the API Client supports the serialization of SAML claims when used with the authorization_code flow
 	ClaimsSupported bool `json:"claimsSupported"`
 	// The date and time, down to the millisecond, when the API Client was created
-	Created time.Time `json:"created"`
+	Created SailPointTime `json:"created"`
 	// The date and time, down to the millisecond, when the API Client was last updated
-	Modified time.Time `json:"modified"`
+	Modified SailPointTime `json:"modified"`
 	Secret NullableString `json:"secret,omitempty"`
 	Metadata NullableString `json:"metadata,omitempty"`
 	// The date and time, down to the millisecond, when this API Client was last used to generate an access token. This timestamp does not get updated on every API Client usage, but only once a day. This property can be useful for identifying which API Clients are no longer actively used and can be removed.
@@ -68,7 +68,7 @@ type _GetOAuthClientResponse GetOAuthClientResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetOAuthClientResponse(id string, businessName NullableString, homepageUrl NullableString, name string, description NullableString, accessTokenValiditySeconds int32, refreshTokenValiditySeconds int32, redirectUris []string, grantTypes []GrantType, accessType AccessType, type_ ClientType, internal bool, enabled bool, strongAuthSupported bool, claimsSupported bool, created time.Time, modified time.Time, scope []string) *GetOAuthClientResponse {
+func NewGetOAuthClientResponse(id string, businessName NullableString, homepageUrl NullableString, name string, description NullableString, accessTokenValiditySeconds int32, refreshTokenValiditySeconds int32, redirectUris []string, grantTypes []GrantType, accessType AccessType, type_ ClientType, internal bool, enabled bool, strongAuthSupported bool, claimsSupported bool, created SailPointTime, modified SailPointTime, scope []string) *GetOAuthClientResponse {
 	this := GetOAuthClientResponse{}
 	this.Id = id
 	this.BusinessName = businessName
@@ -468,9 +468,9 @@ func (o *GetOAuthClientResponse) SetClaimsSupported(v bool) {
 }
 
 // GetCreated returns the Created field value
-func (o *GetOAuthClientResponse) GetCreated() time.Time {
+func (o *GetOAuthClientResponse) GetCreated() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -479,7 +479,7 @@ func (o *GetOAuthClientResponse) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value
 // and a boolean to check if the value has been set.
-func (o *GetOAuthClientResponse) GetCreatedOk() (*time.Time, bool) {
+func (o *GetOAuthClientResponse) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -487,14 +487,14 @@ func (o *GetOAuthClientResponse) GetCreatedOk() (*time.Time, bool) {
 }
 
 // SetCreated sets field value
-func (o *GetOAuthClientResponse) SetCreated(v time.Time) {
+func (o *GetOAuthClientResponse) SetCreated(v SailPointTime) {
 	o.Created = v
 }
 
 // GetModified returns the Modified field value
-func (o *GetOAuthClientResponse) GetModified() time.Time {
+func (o *GetOAuthClientResponse) GetModified() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -503,7 +503,7 @@ func (o *GetOAuthClientResponse) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value
 // and a boolean to check if the value has been set.
-func (o *GetOAuthClientResponse) GetModifiedOk() (*time.Time, bool) {
+func (o *GetOAuthClientResponse) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -511,7 +511,7 @@ func (o *GetOAuthClientResponse) GetModifiedOk() (*time.Time, bool) {
 }
 
 // SetModified sets field value
-func (o *GetOAuthClientResponse) SetModified(v time.Time) {
+func (o *GetOAuthClientResponse) SetModified(v SailPointTime) {
 	o.Modified = v
 }
 
@@ -600,9 +600,9 @@ func (o *GetOAuthClientResponse) UnsetMetadata() {
 }
 
 // GetLastUsed returns the LastUsed field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *GetOAuthClientResponse) GetLastUsed() time.Time {
+func (o *GetOAuthClientResponse) GetLastUsed() SailPointTime {
 	if o == nil || IsNil(o.LastUsed.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.LastUsed.Get()
@@ -611,7 +611,7 @@ func (o *GetOAuthClientResponse) GetLastUsed() time.Time {
 // GetLastUsedOk returns a tuple with the LastUsed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GetOAuthClientResponse) GetLastUsedOk() (*time.Time, bool) {
+func (o *GetOAuthClientResponse) GetLastUsedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -628,7 +628,7 @@ func (o *GetOAuthClientResponse) HasLastUsed() bool {
 }
 
 // SetLastUsed gets a reference to the given NullableTime and assigns it to the LastUsed field.
-func (o *GetOAuthClientResponse) SetLastUsed(v time.Time) {
+func (o *GetOAuthClientResponse) SetLastUsed(v SailPointTime) {
 	o.LastUsed.Set(&v)
 }
 // SetLastUsedNil sets the value for LastUsed to be an explicit nil

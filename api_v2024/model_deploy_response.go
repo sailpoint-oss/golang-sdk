@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the DeployResponse type satisfies the MappedNullable interface at compile time
@@ -33,11 +33,11 @@ type DeployResponse struct {
 	// Whether or not a results file was created and stored for this deploy.
 	FileExists *bool `json:"fileExists,omitempty"`
 	// The time the job was started.
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	// The time of the last update to the job.
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified *SailPointTime `json:"modified,omitempty"`
 	// The time the job was completed.
-	Completed *time.Time `json:"completed,omitempty"`
+	Completed *SailPointTime `json:"completed,omitempty"`
 	// The id of the draft that was used for this deploy.
 	DraftId *string `json:"draftId,omitempty"`
 	// The name of the draft that was used for this deploy.
@@ -263,9 +263,9 @@ func (o *DeployResponse) SetFileExists(v bool) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *DeployResponse) GetCreated() time.Time {
+func (o *DeployResponse) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -273,7 +273,7 @@ func (o *DeployResponse) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeployResponse) GetCreatedOk() (*time.Time, bool) {
+func (o *DeployResponse) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -289,15 +289,15 @@ func (o *DeployResponse) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *DeployResponse) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *DeployResponse) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *DeployResponse) GetModified() time.Time {
+func (o *DeployResponse) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified
@@ -305,7 +305,7 @@ func (o *DeployResponse) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeployResponse) GetModifiedOk() (*time.Time, bool) {
+func (o *DeployResponse) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -321,15 +321,15 @@ func (o *DeployResponse) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *DeployResponse) SetModified(v time.Time) {
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+func (o *DeployResponse) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 
 // GetCompleted returns the Completed field value if set, zero value otherwise.
-func (o *DeployResponse) GetCompleted() time.Time {
+func (o *DeployResponse) GetCompleted() SailPointTime {
 	if o == nil || IsNil(o.Completed) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Completed
@@ -337,7 +337,7 @@ func (o *DeployResponse) GetCompleted() time.Time {
 
 // GetCompletedOk returns a tuple with the Completed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeployResponse) GetCompletedOk() (*time.Time, bool) {
+func (o *DeployResponse) GetCompletedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Completed) {
 		return nil, false
 	}
@@ -353,8 +353,8 @@ func (o *DeployResponse) HasCompleted() bool {
 	return false
 }
 
-// SetCompleted gets a reference to the given time.Time and assigns it to the Completed field.
-func (o *DeployResponse) SetCompleted(v time.Time) {
+// SetCompleted gets a reference to the given SailPointTime and assigns it to the Completed field.
+func (o *DeployResponse) SetCompleted(v SailPointTime) {
 	o.Completed = &v
 }
 

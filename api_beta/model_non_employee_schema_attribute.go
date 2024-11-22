@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -26,9 +26,9 @@ type NonEmployeeSchemaAttribute struct {
 	// True if this schema attribute is mandatory on all non-employees sources.
 	System *bool `json:"system,omitempty"`
 	// When the schema attribute was last modified.
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified *SailPointTime `json:"modified,omitempty"`
 	// When the schema attribute was created.
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	Type NonEmployeeSchemaAttributeType `json:"type"`
 	// Label displayed on the UI for this schema attribute.
 	Label string `json:"label"`
@@ -138,9 +138,9 @@ func (o *NonEmployeeSchemaAttribute) SetSystem(v bool) {
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *NonEmployeeSchemaAttribute) GetModified() time.Time {
+func (o *NonEmployeeSchemaAttribute) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified
@@ -148,7 +148,7 @@ func (o *NonEmployeeSchemaAttribute) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NonEmployeeSchemaAttribute) GetModifiedOk() (*time.Time, bool) {
+func (o *NonEmployeeSchemaAttribute) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -164,15 +164,15 @@ func (o *NonEmployeeSchemaAttribute) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *NonEmployeeSchemaAttribute) SetModified(v time.Time) {
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+func (o *NonEmployeeSchemaAttribute) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *NonEmployeeSchemaAttribute) GetCreated() time.Time {
+func (o *NonEmployeeSchemaAttribute) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -180,7 +180,7 @@ func (o *NonEmployeeSchemaAttribute) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NonEmployeeSchemaAttribute) GetCreatedOk() (*time.Time, bool) {
+func (o *NonEmployeeSchemaAttribute) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -196,8 +196,8 @@ func (o *NonEmployeeSchemaAttribute) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *NonEmployeeSchemaAttribute) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *NonEmployeeSchemaAttribute) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 

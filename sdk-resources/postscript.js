@@ -205,76 +205,15 @@ const fixFiles = function (myArray) {
       fileOut = [];
     }
 
-    if (file.includes("model_workgroup_dto.go")) {
-
-    const sailPointTimeCode = `type SailPointTime struct {
-    time.Time
-}
-    
-func (m *SailPointTime) UnmarshalJSON(data []byte) error {
-        if string(data) == "null" || string(data) == \`""\` {
-            return nil;
-        }
-    
-        // Strip the quotes from the data
-        str := string(data);
-        str = str[1 : len(str)-1];
-    
-        // Try parsing with seconds first
-        formats := []string{
-            time.RFC3339,                   // Format with seconds (e.g., "2012-04-23T18:25:43Z")
-            "2006-01-02T15:04Z",            // Format without seconds (e.g., "2012-04-23T18:25Z")
-            "2006-01-02T15:04:05.999999999", // Optional milliseconds and nanoseconds
-        }
-    
-        var err error;
-        for _, format := range formats {
-            var t time.Time;
-            t, err = time.Parse(format, str);
-            if err == nil {
-                *m = SailPointTime{t};
-                return nil;
-            }
-        }
-    
-        return nil;
-}
-
-func (o *WorkgroupDto) UnmarshalJSON(data []byte) (err error) {`;
-    
-
+    if (matchFileName(file, "model*")) {
       for (const line of rawDataArra) {
-        if (line.includes('Created *time.Time `json:"created,omitempty"`')) {
-          fileOut.push(line.replace('Created *time.Time `json:"created,omitempty"`', 'Created *SailPointTime `json:"created,omitempty"`'));
+        if (line.includes("\"time\"")) {
+          fileOut.push(line.replace("\"time\"", ""));
           madeChange = true;
-        } else if (line.includes('Modified *time.Time `json:"modified,omitempty"`')) {
-          fileOut.push(line.replace('Modified *time.Time `json:"modified,omitempty"`', 'Modified *SailPointTime  `json:"modified,omitempty"`'));
+        } else if (line.includes('time.Time')) {
+          fileOut.push(line.replace(/time\.Time/g, 'SailPointTime'));
           madeChange = true;
-        } else if (line.includes('func (o *WorkgroupDto) GetCreated() time.Time {')) {
-          fileOut.push(line.replace('func (o *WorkgroupDto) GetCreated() time.Time {', 'func (o *WorkgroupDto) GetCreated() SailPointTime {'));
-          madeChange = true;
-        } else if (line.includes('func (o *WorkgroupDto) GetCreatedOk() (*time.Time, bool) {')) {
-          fileOut.push(line.replace('func (o *WorkgroupDto) GetCreatedOk() (*time.Time, bool) {', 'func (o *WorkgroupDto) GetCreatedOk() (*SailPointTime, bool) {'));
-          madeChange = true;
-        } else if (line.includes('func (o *WorkgroupDto) GetModified() time.Time {')) {
-          fileOut.push(line.replace('func (o *WorkgroupDto) GetModified() time.Time {', 'func (o *WorkgroupDto) GetModified() SailPointTime {'));
-          madeChange = true;
-        } else if (line.includes('var ret time.Time')) {
-          fileOut.push(line.replace('var ret time.Time', 'var ret SailPointTime'));
-          madeChange = true;
-        } else if (line.includes('func (o *WorkgroupDto) GetModifiedOk() (*time.Time, bool) {')) {
-          fileOut.push(line.replace('func (o *WorkgroupDto) GetModifiedOk() (*time.Time, bool) {', 'func (o *WorkgroupDto) GetModifiedOk() (*SailPointTime, bool) {'));
-          madeChange = true;
-        } else if (line.includes('func (o *WorkgroupDto) SetModified(v time.Time) {')) {
-          fileOut.push(line.replace('func (o *WorkgroupDto) SetModified(v time.Time) {', 'func (o *WorkgroupDto) SetModified(v SailPointTime) {'));
-          madeChange = true;
-        } else if (line.includes('func (o *WorkgroupDto) SetCreated(v time.Time) {')) {
-          fileOut.push(line.replace('func (o *WorkgroupDto) SetCreated(v time.Time) {', 'func (o *WorkgroupDto) SetCreated(v SailPointTime) {'));
-          madeChange = true;
-        } else if (line.includes('func (o *WorkgroupDto) UnmarshalJSON(data []byte) (err error) {')) {
-          fileOut.push(line.replace('func (o *WorkgroupDto) UnmarshalJSON(data []byte) (err error) {', sailPointTimeCode));
-          madeChange = true;
-        } else {
+         } else {
           fileOut.push(line);
         }
       }
@@ -289,6 +228,13 @@ func (o *WorkgroupDto) UnmarshalJSON(data []byte) (err error) {`;
     }
   }
   console.log(`fixed ${fixCheck} files`)
+}
+
+function matchFileName(path, pattern) {
+  text = path.replace(/\/$/, "").split("/").pop();
+  const regexPattern =
+      new RegExp('^' + pattern.replace(/\?/g, '.').replace(/\*/g, '.*') + '$');
+  return regexPattern.test(text);
 }
 
 

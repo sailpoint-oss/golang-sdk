@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the PasswordSyncGroup type satisfies the MappedNullable interface at compile time
@@ -183,9 +183,9 @@ func (o *PasswordSyncGroup) SetSourceIds(v []string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PasswordSyncGroup) GetCreated() time.Time {
+func (o *PasswordSyncGroup) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created.Get()
@@ -194,7 +194,7 @@ func (o *PasswordSyncGroup) GetCreated() time.Time {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PasswordSyncGroup) GetCreatedOk() (*time.Time, bool) {
+func (o *PasswordSyncGroup) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -211,7 +211,7 @@ func (o *PasswordSyncGroup) HasCreated() bool {
 }
 
 // SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
-func (o *PasswordSyncGroup) SetCreated(v time.Time) {
+func (o *PasswordSyncGroup) SetCreated(v SailPointTime) {
 	o.Created.Set(&v)
 }
 // SetCreatedNil sets the value for Created to be an explicit nil
@@ -225,9 +225,9 @@ func (o *PasswordSyncGroup) UnsetCreated() {
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PasswordSyncGroup) GetModified() time.Time {
+func (o *PasswordSyncGroup) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified.Get()
@@ -236,7 +236,7 @@ func (o *PasswordSyncGroup) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PasswordSyncGroup) GetModifiedOk() (*time.Time, bool) {
+func (o *PasswordSyncGroup) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -253,7 +253,7 @@ func (o *PasswordSyncGroup) HasModified() bool {
 }
 
 // SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
-func (o *PasswordSyncGroup) SetModified(v time.Time) {
+func (o *PasswordSyncGroup) SetModified(v SailPointTime) {
 	o.Modified.Set(&v)
 }
 // SetModifiedNil sets the value for Modified to be an explicit nil

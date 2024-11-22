@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the Entitlement type satisfies the MappedNullable interface at compile time
@@ -37,9 +37,9 @@ type Entitlement struct {
 	// True if the entitlement is cloud governed
 	CloudGoverned *bool `json:"cloudGoverned,omitempty"`
 	// Time when the entitlement was created
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	// Time when the entitlement was last modified
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified *SailPointTime `json:"modified,omitempty"`
 	Source *EntitlementSource `json:"source,omitempty"`
 	// A map of free-form key-value pairs from the source system
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
@@ -325,9 +325,9 @@ func (o *Entitlement) SetCloudGoverned(v bool) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Entitlement) GetCreated() time.Time {
+func (o *Entitlement) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -335,7 +335,7 @@ func (o *Entitlement) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Entitlement) GetCreatedOk() (*time.Time, bool) {
+func (o *Entitlement) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -351,15 +351,15 @@ func (o *Entitlement) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *Entitlement) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *Entitlement) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Entitlement) GetModified() time.Time {
+func (o *Entitlement) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified
@@ -367,7 +367,7 @@ func (o *Entitlement) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Entitlement) GetModifiedOk() (*time.Time, bool) {
+func (o *Entitlement) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -383,8 +383,8 @@ func (o *Entitlement) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *Entitlement) SetModified(v time.Time) {
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+func (o *Entitlement) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 

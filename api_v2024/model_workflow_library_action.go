@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the WorkflowLibraryAction type satisfies the MappedNullable interface at compile time
@@ -32,7 +32,7 @@ type WorkflowLibraryAction struct {
 	FormFields []WorkflowLibraryFormFields `json:"formFields,omitempty"`
 	ExampleOutput *WorkflowLibraryActionExampleOutput `json:"exampleOutput,omitempty"`
 	Deprecated *bool `json:"deprecated,omitempty"`
-	DeprecatedBy *time.Time `json:"deprecatedBy,omitempty"`
+	DeprecatedBy *SailPointTime `json:"deprecatedBy,omitempty"`
 	// Version number
 	VersionNumber *int32 `json:"versionNumber,omitempty"`
 	IsSimulationEnabled *bool `json:"isSimulationEnabled,omitempty"`
@@ -292,9 +292,9 @@ func (o *WorkflowLibraryAction) SetDeprecated(v bool) {
 }
 
 // GetDeprecatedBy returns the DeprecatedBy field value if set, zero value otherwise.
-func (o *WorkflowLibraryAction) GetDeprecatedBy() time.Time {
+func (o *WorkflowLibraryAction) GetDeprecatedBy() SailPointTime {
 	if o == nil || IsNil(o.DeprecatedBy) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.DeprecatedBy
@@ -302,7 +302,7 @@ func (o *WorkflowLibraryAction) GetDeprecatedBy() time.Time {
 
 // GetDeprecatedByOk returns a tuple with the DeprecatedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkflowLibraryAction) GetDeprecatedByOk() (*time.Time, bool) {
+func (o *WorkflowLibraryAction) GetDeprecatedByOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.DeprecatedBy) {
 		return nil, false
 	}
@@ -318,8 +318,8 @@ func (o *WorkflowLibraryAction) HasDeprecatedBy() bool {
 	return false
 }
 
-// SetDeprecatedBy gets a reference to the given time.Time and assigns it to the DeprecatedBy field.
-func (o *WorkflowLibraryAction) SetDeprecatedBy(v time.Time) {
+// SetDeprecatedBy gets a reference to the given SailPointTime and assigns it to the DeprecatedBy field.
+func (o *WorkflowLibraryAction) SetDeprecatedBy(v SailPointTime) {
 	o.DeprecatedBy = &v
 }
 

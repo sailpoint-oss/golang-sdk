@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -28,7 +28,7 @@ type CampaignGeneratedCampaign struct {
 	// Extended description of the campaign.
 	Description string `json:"description"`
 	// The date and time the campaign was created.
-	Created time.Time `json:"created"`
+	Created SailPointTime `json:"created"`
 	// The date and time the campaign was last modified.
 	Modified NullableString `json:"modified,omitempty"`
 	// The date and time when the campaign must be finished by.
@@ -47,7 +47,7 @@ type _CampaignGeneratedCampaign CampaignGeneratedCampaign
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCampaignGeneratedCampaign(id string, name string, description string, created time.Time, type_ map[string]interface{}, campaignOwner CampaignGeneratedCampaignCampaignOwner, status map[string]interface{}) *CampaignGeneratedCampaign {
+func NewCampaignGeneratedCampaign(id string, name string, description string, created SailPointTime, type_ map[string]interface{}, campaignOwner CampaignGeneratedCampaignCampaignOwner, status map[string]interface{}) *CampaignGeneratedCampaign {
 	this := CampaignGeneratedCampaign{}
 	this.Id = id
 	this.Name = name
@@ -140,9 +140,9 @@ func (o *CampaignGeneratedCampaign) SetDescription(v string) {
 }
 
 // GetCreated returns the Created field value
-func (o *CampaignGeneratedCampaign) GetCreated() time.Time {
+func (o *CampaignGeneratedCampaign) GetCreated() SailPointTime {
 	if o == nil {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 
@@ -151,7 +151,7 @@ func (o *CampaignGeneratedCampaign) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value
 // and a boolean to check if the value has been set.
-func (o *CampaignGeneratedCampaign) GetCreatedOk() (*time.Time, bool) {
+func (o *CampaignGeneratedCampaign) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -159,7 +159,7 @@ func (o *CampaignGeneratedCampaign) GetCreatedOk() (*time.Time, bool) {
 }
 
 // SetCreated sets field value
-func (o *CampaignGeneratedCampaign) SetCreated(v time.Time) {
+func (o *CampaignGeneratedCampaign) SetCreated(v SailPointTime) {
 	o.Created = v
 }
 

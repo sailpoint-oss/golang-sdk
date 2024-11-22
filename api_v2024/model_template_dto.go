@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -48,9 +48,9 @@ type TemplateDto struct {
 	// This is auto-generated.
 	Id *string `json:"id,omitempty"`
 	// The time when this template is created. This is auto-generated.
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	// The time when this template was last modified. This is auto-generated.
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified *SailPointTime `json:"modified,omitempty"`
 	SlackTemplate NullableString `json:"slackTemplate,omitempty"`
 	TeamsTemplate NullableString `json:"teamsTemplate,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -465,9 +465,9 @@ func (o *TemplateDto) SetId(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *TemplateDto) GetCreated() time.Time {
+func (o *TemplateDto) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -475,7 +475,7 @@ func (o *TemplateDto) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TemplateDto) GetCreatedOk() (*time.Time, bool) {
+func (o *TemplateDto) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -491,15 +491,15 @@ func (o *TemplateDto) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *TemplateDto) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *TemplateDto) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *TemplateDto) GetModified() time.Time {
+func (o *TemplateDto) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified
@@ -507,7 +507,7 @@ func (o *TemplateDto) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TemplateDto) GetModifiedOk() (*time.Time, bool) {
+func (o *TemplateDto) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -523,8 +523,8 @@ func (o *TemplateDto) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *TemplateDto) SetModified(v time.Time) {
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+func (o *TemplateDto) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 

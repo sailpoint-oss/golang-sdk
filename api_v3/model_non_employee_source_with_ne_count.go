@@ -12,7 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the NonEmployeeSourceWithNECount type satisfies the MappedNullable interface at compile time
@@ -33,9 +33,9 @@ type NonEmployeeSourceWithNECount struct {
 	// List of account managers
 	AccountManagers []NonEmployeeIdentityReferenceWithId `json:"accountManagers,omitempty"`
 	// When the request was last modified.
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified *SailPointTime `json:"modified,omitempty"`
 	// When the request was created.
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	// Number of non-employee records associated with this source.
 	NonEmployeeCount NullableInt32 `json:"nonEmployeeCount,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -253,9 +253,9 @@ func (o *NonEmployeeSourceWithNECount) SetAccountManagers(v []NonEmployeeIdentit
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *NonEmployeeSourceWithNECount) GetModified() time.Time {
+func (o *NonEmployeeSourceWithNECount) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified
@@ -263,7 +263,7 @@ func (o *NonEmployeeSourceWithNECount) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NonEmployeeSourceWithNECount) GetModifiedOk() (*time.Time, bool) {
+func (o *NonEmployeeSourceWithNECount) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -279,15 +279,15 @@ func (o *NonEmployeeSourceWithNECount) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *NonEmployeeSourceWithNECount) SetModified(v time.Time) {
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+func (o *NonEmployeeSourceWithNECount) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *NonEmployeeSourceWithNECount) GetCreated() time.Time {
+func (o *NonEmployeeSourceWithNECount) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -295,7 +295,7 @@ func (o *NonEmployeeSourceWithNECount) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NonEmployeeSourceWithNECount) GetCreatedOk() (*time.Time, bool) {
+func (o *NonEmployeeSourceWithNECount) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -311,8 +311,8 @@ func (o *NonEmployeeSourceWithNECount) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *NonEmployeeSourceWithNECount) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *NonEmployeeSourceWithNECount) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 

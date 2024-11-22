@@ -12,7 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -26,9 +26,9 @@ type IdentityProfile struct {
 	// Name of the Object
 	Name string `json:"name"`
 	// Creation date of the Object
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	// Last modification date of the Object
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified *SailPointTime `json:"modified,omitempty"`
 	// The description of the Identity Profile.
 	Description NullableString `json:"description,omitempty"`
 	Owner NullableIdentityProfileAllOfOwner `json:"owner,omitempty"`
@@ -132,9 +132,9 @@ func (o *IdentityProfile) SetName(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *IdentityProfile) GetCreated() time.Time {
+func (o *IdentityProfile) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -142,7 +142,7 @@ func (o *IdentityProfile) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityProfile) GetCreatedOk() (*time.Time, bool) {
+func (o *IdentityProfile) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -158,15 +158,15 @@ func (o *IdentityProfile) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *IdentityProfile) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *IdentityProfile) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *IdentityProfile) GetModified() time.Time {
+func (o *IdentityProfile) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified
@@ -174,7 +174,7 @@ func (o *IdentityProfile) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityProfile) GetModifiedOk() (*time.Time, bool) {
+func (o *IdentityProfile) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
@@ -190,8 +190,8 @@ func (o *IdentityProfile) HasModified() bool {
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *IdentityProfile) SetModified(v time.Time) {
+// SetModified gets a reference to the given SailPointTime and assigns it to the Modified field.
+func (o *IdentityProfile) SetModified(v SailPointTime) {
 	o.Modified = &v
 }
 

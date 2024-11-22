@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the RoleInsightsResponse type satisfies the MappedNullable interface at compile time
@@ -23,9 +23,9 @@ type RoleInsightsResponse struct {
 	// Request Id for a role insight generation request
 	Id *string `json:"id,omitempty"`
 	// The date-time role insights request was created.
-	CreatedDate *time.Time `json:"createdDate,omitempty"`
+	CreatedDate *SailPointTime `json:"createdDate,omitempty"`
 	// The date-time role insights request was completed.
-	LastGenerated *time.Time `json:"lastGenerated,omitempty"`
+	LastGenerated *SailPointTime `json:"lastGenerated,omitempty"`
 	// Total number of updates for this request. Starts with 0 and will have correct number when request is COMPLETED.
 	NumberOfUpdates *int32 `json:"numberOfUpdates,omitempty"`
 	// The role IDs that are in this request.
@@ -87,9 +87,9 @@ func (o *RoleInsightsResponse) SetId(v string) {
 }
 
 // GetCreatedDate returns the CreatedDate field value if set, zero value otherwise.
-func (o *RoleInsightsResponse) GetCreatedDate() time.Time {
+func (o *RoleInsightsResponse) GetCreatedDate() SailPointTime {
 	if o == nil || IsNil(o.CreatedDate) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.CreatedDate
@@ -97,7 +97,7 @@ func (o *RoleInsightsResponse) GetCreatedDate() time.Time {
 
 // GetCreatedDateOk returns a tuple with the CreatedDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleInsightsResponse) GetCreatedDateOk() (*time.Time, bool) {
+func (o *RoleInsightsResponse) GetCreatedDateOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.CreatedDate) {
 		return nil, false
 	}
@@ -113,15 +113,15 @@ func (o *RoleInsightsResponse) HasCreatedDate() bool {
 	return false
 }
 
-// SetCreatedDate gets a reference to the given time.Time and assigns it to the CreatedDate field.
-func (o *RoleInsightsResponse) SetCreatedDate(v time.Time) {
+// SetCreatedDate gets a reference to the given SailPointTime and assigns it to the CreatedDate field.
+func (o *RoleInsightsResponse) SetCreatedDate(v SailPointTime) {
 	o.CreatedDate = &v
 }
 
 // GetLastGenerated returns the LastGenerated field value if set, zero value otherwise.
-func (o *RoleInsightsResponse) GetLastGenerated() time.Time {
+func (o *RoleInsightsResponse) GetLastGenerated() SailPointTime {
 	if o == nil || IsNil(o.LastGenerated) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.LastGenerated
@@ -129,7 +129,7 @@ func (o *RoleInsightsResponse) GetLastGenerated() time.Time {
 
 // GetLastGeneratedOk returns a tuple with the LastGenerated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleInsightsResponse) GetLastGeneratedOk() (*time.Time, bool) {
+func (o *RoleInsightsResponse) GetLastGeneratedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.LastGenerated) {
 		return nil, false
 	}
@@ -145,8 +145,8 @@ func (o *RoleInsightsResponse) HasLastGenerated() bool {
 	return false
 }
 
-// SetLastGenerated gets a reference to the given time.Time and assigns it to the LastGenerated field.
-func (o *RoleInsightsResponse) SetLastGenerated(v time.Time) {
+// SetLastGenerated gets a reference to the given SailPointTime and assigns it to the LastGenerated field.
+func (o *RoleInsightsResponse) SetLastGenerated(v SailPointTime) {
 	o.LastGenerated = &v
 }
 

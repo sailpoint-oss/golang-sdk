@@ -12,7 +12,7 @@ package api_v2024
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the AccessRequestRecommendationActionItemResponseDto type satisfies the MappedNullable interface at compile time
@@ -23,7 +23,7 @@ type AccessRequestRecommendationActionItemResponseDto struct {
 	// The identity ID taking the action.
 	IdentityId *string `json:"identityId,omitempty"`
 	Access *AccessRequestRecommendationItem `json:"access,omitempty"`
-	Timestamp *time.Time `json:"timestamp,omitempty"`
+	Timestamp *SailPointTime `json:"timestamp,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -111,9 +111,9 @@ func (o *AccessRequestRecommendationActionItemResponseDto) SetAccess(v AccessReq
 }
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise.
-func (o *AccessRequestRecommendationActionItemResponseDto) GetTimestamp() time.Time {
+func (o *AccessRequestRecommendationActionItemResponseDto) GetTimestamp() SailPointTime {
 	if o == nil || IsNil(o.Timestamp) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Timestamp
@@ -121,7 +121,7 @@ func (o *AccessRequestRecommendationActionItemResponseDto) GetTimestamp() time.T
 
 // GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessRequestRecommendationActionItemResponseDto) GetTimestampOk() (*time.Time, bool) {
+func (o *AccessRequestRecommendationActionItemResponseDto) GetTimestampOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Timestamp) {
 		return nil, false
 	}
@@ -137,8 +137,8 @@ func (o *AccessRequestRecommendationActionItemResponseDto) HasTimestamp() bool {
 	return false
 }
 
-// SetTimestamp gets a reference to the given time.Time and assigns it to the Timestamp field.
-func (o *AccessRequestRecommendationActionItemResponseDto) SetTimestamp(v time.Time) {
+// SetTimestamp gets a reference to the given SailPointTime and assigns it to the Timestamp field.
+func (o *AccessRequestRecommendationActionItemResponseDto) SetTimestamp(v SailPointTime) {
 	o.Timestamp = &v
 }
 

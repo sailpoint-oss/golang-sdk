@@ -12,7 +12,7 @@ package api_v3
 
 import (
 	"encoding/json"
-	"time"
+	
 )
 
 // checks if the WorkItems type satisfies the MappedNullable interface at compile time
@@ -31,7 +31,7 @@ type WorkItems struct {
 	// The name of the owner
 	OwnerName *string `json:"ownerName,omitempty"`
 	// Time when the work item was created
-	Created *time.Time `json:"created,omitempty"`
+	Created *SailPointTime `json:"created,omitempty"`
 	// Time when the work item was last updated
 	Modified NullableTime `json:"modified,omitempty"`
 	// The description of the work item
@@ -264,9 +264,9 @@ func (o *WorkItems) SetOwnerName(v string) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *WorkItems) GetCreated() time.Time {
+func (o *WorkItems) GetCreated() SailPointTime {
 	if o == nil || IsNil(o.Created) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Created
@@ -274,7 +274,7 @@ func (o *WorkItems) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkItems) GetCreatedOk() (*time.Time, bool) {
+func (o *WorkItems) GetCreatedOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -290,15 +290,15 @@ func (o *WorkItems) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *WorkItems) SetCreated(v time.Time) {
+// SetCreated gets a reference to the given SailPointTime and assigns it to the Created field.
+func (o *WorkItems) SetCreated(v SailPointTime) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *WorkItems) GetModified() time.Time {
+func (o *WorkItems) GetModified() SailPointTime {
 	if o == nil || IsNil(o.Modified.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Modified.Get()
@@ -307,7 +307,7 @@ func (o *WorkItems) GetModified() time.Time {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *WorkItems) GetModifiedOk() (*time.Time, bool) {
+func (o *WorkItems) GetModifiedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -324,7 +324,7 @@ func (o *WorkItems) HasModified() bool {
 }
 
 // SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
-func (o *WorkItems) SetModified(v time.Time) {
+func (o *WorkItems) SetModified(v SailPointTime) {
 	o.Modified.Set(&v)
 }
 // SetModifiedNil sets the value for Modified to be an explicit nil
@@ -542,9 +542,9 @@ func (o *WorkItems) UnsetName() {
 }
 
 // GetCompleted returns the Completed field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *WorkItems) GetCompleted() time.Time {
+func (o *WorkItems) GetCompleted() SailPointTime {
 	if o == nil || IsNil(o.Completed.Get()) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.Completed.Get()
@@ -553,7 +553,7 @@ func (o *WorkItems) GetCompleted() time.Time {
 // GetCompletedOk returns a tuple with the Completed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *WorkItems) GetCompletedOk() (*time.Time, bool) {
+func (o *WorkItems) GetCompletedOk() (*SailPointTime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -570,7 +570,7 @@ func (o *WorkItems) HasCompleted() bool {
 }
 
 // SetCompleted gets a reference to the given NullableTime and assigns it to the Completed field.
-func (o *WorkItems) SetCompleted(v time.Time) {
+func (o *WorkItems) SetCompleted(v SailPointTime) {
 	o.Completed.Set(&v)
 }
 // SetCompletedNil sets the value for Completed to be an explicit nil

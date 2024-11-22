@@ -12,7 +12,7 @@ package api_beta
 
 import (
 	"encoding/json"
-	"time"
+	
 	"fmt"
 )
 
@@ -40,7 +40,7 @@ type ManagedClient struct {
 	// The public IP address of the ManagedClient
 	IpAddress *string `json:"ipAddress,omitempty"`
 	// When the ManagedClient was last seen by the server
-	LastSeen *time.Time `json:"lastSeen,omitempty"`
+	LastSeen *SailPointTime `json:"lastSeen,omitempty"`
 	// ManagedClient name
 	Name *string `json:"name,omitempty"`
 	// Milliseconds since the ManagedClient has polled the server
@@ -346,9 +346,9 @@ func (o *ManagedClient) SetIpAddress(v string) {
 }
 
 // GetLastSeen returns the LastSeen field value if set, zero value otherwise.
-func (o *ManagedClient) GetLastSeen() time.Time {
+func (o *ManagedClient) GetLastSeen() SailPointTime {
 	if o == nil || IsNil(o.LastSeen) {
-		var ret time.Time
+		var ret SailPointTime
 		return ret
 	}
 	return *o.LastSeen
@@ -356,7 +356,7 @@ func (o *ManagedClient) GetLastSeen() time.Time {
 
 // GetLastSeenOk returns a tuple with the LastSeen field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ManagedClient) GetLastSeenOk() (*time.Time, bool) {
+func (o *ManagedClient) GetLastSeenOk() (*SailPointTime, bool) {
 	if o == nil || IsNil(o.LastSeen) {
 		return nil, false
 	}
@@ -372,8 +372,8 @@ func (o *ManagedClient) HasLastSeen() bool {
 	return false
 }
 
-// SetLastSeen gets a reference to the given time.Time and assigns it to the LastSeen field.
-func (o *ManagedClient) SetLastSeen(v time.Time) {
+// SetLastSeen gets a reference to the given SailPointTime and assigns it to the LastSeen field.
+func (o *ManagedClient) SetLastSeen(v SailPointTime) {
 	o.LastSeen = &v
 }
 
