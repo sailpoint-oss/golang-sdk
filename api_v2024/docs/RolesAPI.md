@@ -299,7 +299,7 @@ Name | Type | Description  | Notes
 
 ## GetBulkUpdateStatus
 
-> []RoleBulkUpdateResponse GetBulkUpdateStatus(ctx).Execute()
+> []RoleGetAllBulkUpdateResponse GetBulkUpdateStatus(ctx).Execute()
 
 Get Bulk-Update Statuses
 
@@ -326,7 +326,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.GetBulkUpdateStatus``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetBulkUpdateStatus`: []RoleBulkUpdateResponse
+	// response from `GetBulkUpdateStatus`: []RoleGetAllBulkUpdateResponse
 	fmt.Fprintf(os.Stdout, "Response from `RolesAPI.GetBulkUpdateStatus`: %v\n", resp)
 }
 ```
@@ -342,7 +342,7 @@ Other parameters are passed through a pointer to a apiGetBulkUpdateStatusRequest
 
 ### Return type
 
-[**[]RoleBulkUpdateResponse**](RoleBulkUpdateResponse.md)
+[**[]RoleGetAllBulkUpdateResponse**](RoleGetAllBulkUpdateResponse.md)
 
 ### Authorization
 
@@ -987,7 +987,7 @@ import (
 )
 
 func main() {
-	roleMetadataBulkUpdateByFilterRequest := *openapiclient.NewRoleMetadataBulkUpdateByFilterRequest(" requestable eq false", "replace", []openapiclient.RoleMetadataBulkUpdateByFilterRequestValuesInner{*openapiclient.NewRoleMetadataBulkUpdateByFilterRequestValuesInner([]string{"secret"})}) // RoleMetadataBulkUpdateByFilterRequest | 
+	roleMetadataBulkUpdateByFilterRequest := *openapiclient.NewRoleMetadataBulkUpdateByFilterRequest(" requestable eq false", "REPLACE", []openapiclient.RoleMetadataBulkUpdateByFilterRequestValuesInner{*openapiclient.NewRoleMetadataBulkUpdateByFilterRequestValuesInner([]string{"secret"})}) // RoleMetadataBulkUpdateByFilterRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1053,7 +1053,7 @@ import (
 )
 
 func main() {
-	roleMetadataBulkUpdateByIdRequest := *openapiclient.NewRoleMetadataBulkUpdateByIdRequest([]string{"Roles_example"}, "replace", []openapiclient.RoleMetadataBulkUpdateByIdRequestValuesInner{*openapiclient.NewRoleMetadataBulkUpdateByIdRequestValuesInner("iscFederalClassifications", []string{"secret"})}) // RoleMetadataBulkUpdateByIdRequest | 
+	roleMetadataBulkUpdateByIdRequest := *openapiclient.NewRoleMetadataBulkUpdateByIdRequest([]string{"Roles_example"}, "REPLACE", []openapiclient.RoleMetadataBulkUpdateByIdRequestValuesInner{*openapiclient.NewRoleMetadataBulkUpdateByIdRequestValuesInner("iscFederalClassifications", []string{"secret"})}) // RoleMetadataBulkUpdateByIdRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1119,7 +1119,7 @@ import (
 )
 
 func main() {
-	roleMetadataBulkUpdateByQueryRequest := *openapiclient.NewRoleMetadataBulkUpdateByQueryRequest(map[string]interface{}({query"={indices=[roles], queryType=TEXT, textQuery={terms=[test123], fields=[id], matchAny=false, contains=true}, includeNested=false}}), "replace", []openapiclient.RoleMetadataBulkUpdateByQueryRequestValuesInner{*openapiclient.NewRoleMetadataBulkUpdateByQueryRequestValuesInner()}) // RoleMetadataBulkUpdateByQueryRequest | 
+	roleMetadataBulkUpdateByQueryRequest := *openapiclient.NewRoleMetadataBulkUpdateByQueryRequest(map[string]interface{}({query"={indices=[roles], queryType=TEXT, textQuery={terms=[test123], fields=[id], matchAny=false, contains=true}, includeNested=false}}), "REPLACE", []openapiclient.RoleMetadataBulkUpdateByQueryRequestValuesInner{*openapiclient.NewRoleMetadataBulkUpdateByQueryRequestValuesInner()}) // RoleMetadataBulkUpdateByQueryRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

@@ -664,15 +664,14 @@ type ApiGetBulkUpdateStatusRequest struct {
 	ApiService *RolesAPIService
 }
 
-func (r ApiGetBulkUpdateStatusRequest) Execute() ([]RoleBulkUpdateResponse, *http.Response, error) {
+func (r ApiGetBulkUpdateStatusRequest) Execute() ([]RoleGetAllBulkUpdateResponse, *http.Response, error) {
 	return r.ApiService.GetBulkUpdateStatusExecute(r)
 }
 
 /*
 GetBulkUpdateStatus Get Bulk-Update Statuses
 
-This API returns a list of all  bulk update process status of the tenant.
-A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN  authority is required to call this API. 
+This API returns a list of all unfinished bulk update process status of the tenant.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetBulkUpdateStatusRequest
@@ -685,13 +684,13 @@ func (a *RolesAPIService) GetBulkUpdateStatus(ctx context.Context) ApiGetBulkUpd
 }
 
 // Execute executes the request
-//  @return []RoleBulkUpdateResponse
-func (a *RolesAPIService) GetBulkUpdateStatusExecute(r ApiGetBulkUpdateStatusRequest) ([]RoleBulkUpdateResponse, *http.Response, error) {
+//  @return []RoleGetAllBulkUpdateResponse
+func (a *RolesAPIService) GetBulkUpdateStatusExecute(r ApiGetBulkUpdateStatusRequest) ([]RoleGetAllBulkUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []RoleBulkUpdateResponse
+		localVarReturnValue  []RoleGetAllBulkUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesAPIService.GetBulkUpdateStatus")
@@ -2267,7 +2266,7 @@ func (r ApiUpdateAttributeKeyAndValueToRoleRequest) Execute() (*Role, *http.Resp
 /*
 UpdateAttributeKeyAndValueToRole Add a Metadata to Role.
 
-This API initialize a request to add a single Access Model Metadata to a role by attribute key and attribute value. A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN authority is required to call this API. Custom metadata update, including ADD and REPLACE need suit licensed.
+This API initialize a request to add a single Access Model Metadata to a role by attribute key and attribute value. A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN authority is required to call this API. The maximum number of attributes in one role is 25. Custom metadata update, including ADD and REPLACE need suit licensed.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The Id of a role

@@ -868,6 +868,7 @@ docs/RoleCriteriaLevel2.md
 docs/RoleCriteriaLevel3.md
 docs/RoleCriteriaOperation.md
 docs/RoleDocument.md
+docs/RoleGetAllBulkUpdateResponse.md
 docs/RoleIdentity.md
 docs/RoleInsight.md
 docs/RoleInsightsAPI.md
@@ -1909,6 +1910,7 @@ model_role_criteria_level2.go
 model_role_criteria_level3.go
 model_role_criteria_operation.go
 model_role_document.go
+model_role_get_all_bulk_update_response.go
 model_role_identity.go
 model_role_insight.go
 model_role_insights_entitlement.go

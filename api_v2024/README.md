@@ -1436,6 +1436,7 @@ Class | Method | HTTP request | Description
  - [RoleCriteriaLevel3](docs/RoleCriteriaLevel3.md)
  - [RoleCriteriaOperation](docs/RoleCriteriaOperation.md)
  - [RoleDocument](docs/RoleDocument.md)
+ - [RoleGetAllBulkUpdateResponse](docs/RoleGetAllBulkUpdateResponse.md)
  - [RoleIdentity](docs/RoleIdentity.md)
  - [RoleInsight](docs/RoleInsight.md)
  - [RoleInsightsEntitlement](docs/RoleInsightsEntitlement.md)
