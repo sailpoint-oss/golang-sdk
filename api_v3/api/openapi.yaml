@@ -29646,28 +29646,19 @@ paths:
         \n>**Note: If you want to set an identity's source account password, you must\
         \ enable `PASSWORD` as one of the source's features. You can use the [PATCH\
         \ Source endpoint](https://developer.sailpoint.com/docs/api/v3/update-source)\
-        \ to add the `PASSWORD` feature.**\n\nYou can use this endpoint to generate\
-        \ an `encryptedPassword` (RSA encrypted using publicKey). \nTo do so, follow\
-        \ these steps:\n\n1. Use [Query Password Info](https://developer.sailpoint.com/idn/api/v3/query-password-info)\
-        \ to get the following information: `identityId`, `sourceId`, `publicKeyId`,\
-        \ `publicKey`, `accounts`, and `policies`. \n\n2. Choose an account from the\
-        \ previous response that you will provide as an `accountId` in your request\
-        \ to set an encrypted password. \n\n3. Use [Set Identity's Password](https://developer.sailpoint.com/idn/api/v3/set-password)\
-        \ and provide the information you got from your earlier query. Then add this\
-        \ code to your request to get the encrypted password:\n\n```java\nimport javax.crypto.Cipher;\n\
-        import java.security.KeyFactory;\nimport java.security.PublicKey;\nimport\
-        \ java.security.spec.X509EncodedKeySpec;\nimport java util.Base64;\n\nString\
-        \ encrypt(String publicKey, String toEncrypt) throws Exception {\n  byte[]\
-        \ publicKeyBytes = Base64.getDecoder().decode(publicKey);\n  byte[] encryptedBytes\
-        \ = encryptRsa(publicKeyBytes, toEncrypt.getBytes(\"UTF-8\"));\n  return Base64.getEncoder().encodeToString(encryptedBytes);\n\
-        }\n\nprivate byte[] encryptRsa(byte[] publicKeyBytes, byte[] toEncryptBytes)\
-        \ throws Exception {\n  PublicKey key = KeyFactory.getInstance(\"RSA\").generatePublic(new\
-        \ X509EncodedKeySpec(publicKeyBytes));\n  String transformation = \"RSA/ECB/PKCS1Padding\"\
-        ;\n  Cipher cipher = Cipher.getInstance(transformation);\n  cipher.init(1,\
-        \ key);\n  return cipher.doFinal(toEncryptBytes);\n}\n```    \n\nIn this example,\
-        \ `toEncrypt` refers to the plain text password you are setting and then encrypting,\
-        \ and the `publicKey` refers to the publicKey you got from the first request\
-        \ you sent. \n\nYou can then use [Get Password Change Request Status](https://developer.sailpoint.com/idn/api/v3/get-password-change-status)\
+        \ to add the `PASSWORD` feature.**\n\nTo generate the encryptedPassword (RSA\
+        \ encrypted using publicKey) for the request body, run the following command:\n\
+        \n```bash\necho \"myPassword\" | openssl pkeyutl -encrypt -inkey public_key.pem\
+        \ -pubin | base64\n```\n\nIn this example, myPassword is the plain text password\
+        \ being set and encrypted, and public_key.pem is the path to the public key\
+        \ file. You can retrieve the required publicKey, along with other information\
+        \ like identityId, sourceId, publicKeyId, accounts, and policies, using the\
+        \ Query Password Info endpoint.\n\nTo successfully run this command, you must\
+        \ have OpenSSL installed on your machine. If OpenSSL is unavailable, consider\
+        \ using the Virtual Appliance (VA), which has OpenSSL pre-installed and configured.\n\
+        \nIf you are using a Windows machine, refer to this [guide](https://tecadmin.net/install-openssl-on-windows/)\
+        \ for instructions on installing OpenSSL.\n\nYou can then use [Get Password\
+        \ Change Request Status](https://developer.sailpoint.com/idn/api/v3/get-password-change-status)\
         \ to check the password change request status. To do so, you must provide\
         \ the `requestId` from your earlier request to set the password. \n"
       operationId: setPassword
