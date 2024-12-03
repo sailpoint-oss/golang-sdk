@@ -26846,9 +26846,8 @@ paths:
       - Org Config
   /outlier-summaries:
     get:
-      description: |-
-        This API receives a summary containing: the number of identities that customer has, the number of outliers, and the type of outlier
-        Requires authorization scope of 'iai:outliers-management:read'
+      description: "This API returns a summary containing the number of identities\
+        \ that customer has, the number of outliers, and the type of outlier."
       operationId: getIdentityOutlierSnapshots
       parameters:
       - description: |-
@@ -26877,6 +26876,7 @@ paths:
           minimum: 0
           type: integer
       - description: Type of the identity outliers snapshot to filter on
+        example: LOW_SIMILARITY
         in: query
         name: type
         required: false
@@ -26894,6 +26894,7 @@ paths:
         example: snapshotDate ge "2022-02-07T20:13:29.356648026Z"
         in: query
         name: filters
+        required: false
         schema:
           type: string
       - description: |-
@@ -26916,7 +26917,7 @@ paths:
                   $ref: '#/components/schemas/OutlierSummary'
                 type: array
           description: Succeeded. Returns list of objects. Each object is a summary
-            to give high level statistics/counts of outliers
+            to give high level statistics/counts of outliers.
           headers:
             X-Total-Count:
               description: The total result count.
@@ -26985,17 +26986,28 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:outliers:read
+        - iai:outliers:manage
+      - applicationAuth:
+        - iai:outliers:read
+        - iai:outliers:manage
       summary: IAI Identity Outliers Summary
       tags:
       - IAI Outliers
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - REPORT_ADMIN
   /outlier-summaries/latest:
     get:
-      description: |-
-        This API returns a most recent snapshot of each outlier type, each containing: the number of identities that customer has, the number of outliers, and the type of outlier
-        Requires authorization scope of 'iai:outliers-management:read'
+      description: "This API returns a most recent snapshot of each outlier type,\
+        \ each containing the number of identities that customer has, the number of\
+        \ outliers, and the type of outlier."
       operationId: getLatestIdentityOutlierSnapshots
       parameters:
       - description: Type of the identity outliers snapshot to filter on
+        example: LOW_SIMILARITY
         in: query
         name: type
         required: false
@@ -27013,7 +27025,7 @@ paths:
                   $ref: '#/components/schemas/LatestOutlierSummary'
                 type: array
           description: Succeeded. Returns list of objects. Each object is a summary
-            to give high level statistics/counts of outliers
+            to give high level statistics/counts of outliers.
         "202":
           content:
             application/json:
@@ -27077,14 +27089,24 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:outliers:read
+        - iai:outliers:manage
+      - applicationAuth:
+        - iai:outliers:read
+        - iai:outliers:manage
       summary: IAI Identity Outliers Latest Summary
       tags:
       - IAI Outliers
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - REPORT_ADMIN
   /outliers:
     get:
-      description: |-
-        This API receives a list of outliers, containing data such as: identityId, outlier type, detection dates, identity attributes, if identity is ignore, and certification information
-        Requires authorization scope of 'iai:outliers-management:read'
+      description: "This API returns a list of outliers, containing data such as identity\
+        \ ID, outlier type, detection dates, identity attributes, if identity is ignored,\
+        \ and certification information."
       operationId: getIdentityOutliers
       parameters:
       - description: |-
@@ -27175,7 +27197,7 @@ paths:
                   $ref: '#/components/schemas/Outlier'
                 type: array
           description: Succeeded. Returns list of objects. Each object contains information
-            about outliers
+            about outliers.
           headers:
             X-Total-Count:
               description: The total result count.
@@ -27237,14 +27259,25 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:outliers:read
+        - iai:outliers:manage
+      - applicationAuth:
+        - iai:outliers:read
+        - iai:outliers:manage
       summary: IAI Get Identity Outliers
       tags:
       - IAI Outliers
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - REPORT_ADMIN
   /outliers/{outlierId}/contributing-features:
     get:
-      description: |-
-        This API returns a list of contributing feature objects for a single outlier. The object contains: feature name, feature value type, value, importance, display name (translated text or message key), description (translated text or message key), translation messages object
-        Requires authorization scope of 'iai:outliers-management:read'
+      description: |
+        This API returns a list of contributing feature objects for a single outlier.
+
+        The object contains: feature name, feature value type, value, importance, display name (translated text or message key), description (translated text or message key), translation messages object.
       operationId: getPeerGroupOutliersContributingFeatures
       parameters:
       - description: |-
@@ -27320,7 +27353,7 @@ paths:
                   $ref: '#/components/schemas/OutlierContributingFeature'
                 type: array
           description: Succeeded. Returns list of objects. Each object contains a
-            feature and metadata about that feature
+            feature and metadata about that feature.
           headers:
             X-Total-Count:
               description: The total result count.
@@ -27405,14 +27438,25 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:outliers:read
+        - iai:outliers:manage
+      - applicationAuth:
+        - iai:outliers:read
+        - iai:outliers:manage
       summary: Get identity outlier's contibuting features
       tags:
       - IAI Outliers
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - REPORT_ADMIN
   /outliers/{outlierId}/feature-details/{contributingFeatureName}/access-items:
     get:
-      description: |-
-        This API returns a list of the enriched access items associated with each feature filtered by the access item type  The object contains: accessItemId, display name (translated text or message key), description (translated text or message key), accessType, sourceName, extremelyRare
-        Requires authorization scope of 'iai:outliers-management:read'
+      description: |
+        This API returns a list of the enriched access items associated with each feature filtered by the access item type.
+
+        The object contains: accessItemId, display name (translated text or message key), description (translated text or message key), accessType, sourceName, extremelyRare.
       operationId: listOutliersContributingFeatureAccessItems
       parameters:
       - description: |-
@@ -27475,7 +27519,7 @@ paths:
           - peerless_score
           type: string
       - description: "The type of access item for the identity outlier contributing\
-          \ feature. If not provided, it returns all"
+          \ feature. If not provided, it returns all."
         example: ENTITLEMENT
         in: query
         name: accessType
@@ -27578,16 +27622,22 @@ paths:
             error.
       security:
       - userAuth:
-        - iai:outliers-management:read
+        - iai:outliers:read
+        - iai:outliers:manage
+      - applicationAuth:
+        - iai:outliers:read
+        - iai:outliers:manage
       summary: Gets a list of access items associated with each identity outlier contributing
         feature
       tags:
       - IAI Outliers
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - REPORT_ADMIN
   /outliers/ignore:
     post:
-      description: |-
-        This API receives a list of IdentityIDs in the request, changes the outliers to be ignored--returning a 204 if successful.
-        Requires authorization scope of 'iai:outliers-management:update'
+      description: "This API receives a list of identity IDs in the request, changes\
+        \ the outliers to be ignored."
       operationId: ignoreIdentityOutliers
       requestBody:
         content:
@@ -27595,8 +27645,8 @@ paths:
             schema:
               description: List of identity IDs to ignore from outlier listing
               example:
-              - abc123def456
-              - ghi789jkl012
+              - 897ef96559df40e1baa6bae6b53e7340
+              - 2c918085837fbfb4018384420dac60c3
               items:
                 type: string
               type: array
@@ -27661,14 +27711,21 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:outliers:manage
+      - applicationAuth:
+        - iai:outliers:manage
       summary: IAI Identity Outliers Ignore
       tags:
       - IAI Outliers
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - REPORT_ADMIN
   /outliers/unignore:
     post:
-      description: |-
-        This API receives a list of IdentityIDs in the request, changes the outliers to be un-ignored--returning a 204 if successful.
-        Requires authorization scope of 'iai:outliers-management:update'
+      description: "This API receives a list of identity IDs in the request, changes\
+        \ the outliers to be un-ignored."
       operationId: unIgnoreIdentityOutliers
       requestBody:
         content:
@@ -27676,8 +27733,8 @@ paths:
             schema:
               description: List of identity IDs to un-ignore from outlier listing
               example:
-              - abc123def456
-              - ghi789jkl012
+              - 897ef96559df40e1baa6bae6b53e7340
+              - 2c918085837fbfb4018384420dac60c3
               items:
                 type: string
               type: array
@@ -27742,17 +27799,27 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:outliers:manage
+      - applicationAuth:
+        - iai:outliers:manage
       summary: IAI Identity Outliers Unignore
       tags:
       - IAI Outliers
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - REPORT_ADMIN
   /outliers/export:
     get:
-      description: |-
-        This API exports a list of ignored outliers to a CSV as well as list of non-ignored outliers to a CSV. These two CSVs will be zipped and exported Columns will include: identityID, type, firstDetectionDate, latestDetectionDate, ignored, & attributes (defined set of identity attributes)
-        Requires authorization scope of 'iai:outliers-management:read'
+      description: |
+        This API exports a list of ignored outliers to a CSV as well as list of non-ignored outliers to a CSV. These two CSVs will be zipped and exported.
+
+        Columns will include: identityId, type, firstDetectionDate, latestDetectionDate, ignored, & attributes (defined set of identity attributes).
       operationId: exportOutliersZip
       parameters:
       - description: Type of the identity outliers snapshot to filter on
+        example: LOW_SIMILARITY
         in: query
         name: type
         required: false
@@ -27768,8 +27835,8 @@ paths:
               schema:
                 format: binary
                 type: string
-          description: Succeeded. Returns zip of 2 CSVs to download. 1 CSV for ignored
-            outliers and 1 for non-ignored outliers
+          description: Succeeded. Returns zip of two CSVs to download. One CSV for
+            ignored outliers and the other for non-ignored outliers.
         "400":
           content:
             application/json:
@@ -27826,14 +27893,25 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - iai:outliers:read
+        - iai:outliers:manage
+      - applicationAuth:
+        - iai:outliers:read
+        - iai:outliers:manage
       summary: IAI Identity Outliers Export
       tags:
       - IAI Outliers
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - REPORT_ADMIN
   /outlier-feature-summaries/{outlierFeatureId}:
     get:
-      description: |-
-        This API returns a summary of a contributing feature for an identity outlier. The object contains: contributing feature name (translated text or message key), identity outlier display name, feature values, feature definition and explanation (translated text or message key), peer display name and identityId, access item reference, translation messages object
-        Requires authorization scope of 'iai:outliers-management:read'
+      description: |
+        This API returns a summary of a contributing feature for an identity outlier.
+
+        The object contains: contributing feature name (translated text or message key), identity outlier display name, feature values, feature definition and explanation (translated text or message key), peer display name and identityId, access item reference, translation messages object.
       operationId: getOutlierContributingFeatureSummary
       parameters:
       - description: Contributing feature id
@@ -27850,7 +27928,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/OutlierFeatureSummary'
           description: Succeeded. Returns selected contributing feature summary for
-            an outlier
+            an outlier.
           headers:
             accept-language:
               description: The locale to use for translations
@@ -27932,10 +28010,17 @@ paths:
             error.
       security:
       - userAuth:
-        - iai:outliers-management:read
+        - iai:outliers:read
+        - iai:outliers:manage
+      - applicationAuth:
+        - iai:outliers:read
+        - iai:outliers:manage
       summary: Get identity outlier contibuting feature summary
       tags:
       - IAI Outliers
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - REPORT_ADMIN
   /password-dictionary:
     get:
       description: |-
