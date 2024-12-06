@@ -205,8 +205,10 @@ tags:
 
     Refer to [Managing User Accounts](https://documentation.sailpoint.com/saas/help/common/users/user_access.html#managing-user-accounts) for more information about accounts.
   name: Accounts
-- description: |
-    Use this API to discover applications within your Okta connector and receive connector recommendations by manually uploading application names.
+- description: "Use this API to implement application discovery functionality. \n\
+    With this functionality in place, you can discover applications within your Okta\
+    \ connector and receive connector recommendations by manually uploading application\
+    \ names.\n"
   name: Application Discovery
 - description: "Use this API to implement approval functionality. With this functionality\
     \ in place, you can get generic approvals and modify them. \n\nThe main advantages\
@@ -214,13 +216,17 @@ tags:
     \ are that you can use it to get generic approvals individually or in batches\
     \ and make changes to those approvals.\n"
   name: Approvals
-- description: |
-    Use this API to implement source application functionality. With this functionality in place, you can create, customize, and manage applications within sources.
+- description: "Use this API to implement source application functionality. \nWith\
+    \ this functionality in place, you can create, customize, and manage applications\
+    \ within sources.\n"
   name: Apps
-- description: |
-    Auth Profile - Represents authentication configuration for an Identity Profile. This object gets created when an Identity Profile is created.
-
-    APIs can be used to retrieve and update Auth Profiles.
+- description: "Use this API to implement Auth Profile functionality. \nWith this\
+    \ functionality in place, users can read authentication profiles and make changes\
+    \ to them. \n\nAn authentication profile represents an identity profile's authentication\
+    \ configuration. \nWhen the identity profile is created, its authentication profile\
+    \ is also created. \nAn authentication profile includes information like its authentication\
+    \ profile type (`BLOCK`, `MFA`, `NON_PTA`, PTA`) and settings controlling whether\
+    \ or not it blocks access from off network or untrusted geographies. \n"
   name: Auth Profile
 - description: |
     Use this API to implement certification campaign functionality.
@@ -951,8 +957,10 @@ tags:
   name: Sources
 - description: Import and export configuration for some objects between tenants.
   name: SP-Config
-- description: |
-    Use this API to leverage power of LLM to generate suggested entitlement description.
+- description: "Use this API to implement Suggested Entitlement Description (SED)\
+    \ functionality. \nSED functionality leverages the power of LLM to generate suggested\
+    \ entitlement descriptions. \nRefer to [GenAI Entitlement Descriptions](https://documentation.sailpoint.com/saas/help/access/entitlements.html#genai-entitlement-descriptions)\
+    \ to learn more about SED in Identity Security Cloud (ISC). \n"
   name: Suggested Entitlement Description
 - description: "Use this API to implement object tagging functionality. \nWith object\
     \ tagging functionality in place, any user in an organization can use tags as\

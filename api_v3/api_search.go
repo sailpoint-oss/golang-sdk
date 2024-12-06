@@ -590,7 +590,7 @@ func (r ApiSearchPostRequest) Execute() ([]map[string]interface{}, *http.Respons
 /*
 SearchPost Perform Search
 
-Performs a search with the provided query and returns a matching result collection. By default, you can page a maximum of 10,000 search result records.  To page past 10,000 records, you can use searchAfter paging.  Refer to [Paginating Search Queries](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-search-queries) for more information about how to implement searchAfter paging. 
+Perform a search with the provided query and return a matching result collection. To page past 10,000 records, you can use `searchAfter` paging.  Refer to [Paginating Search Queries](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-search-queries) for more information about how to implement `searchAfter` paging. 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSearchPostRequest
@@ -635,7 +635,7 @@ func (a *SearchAPIService) SearchPostExecute(r ApiSearchPostRequest) ([]map[stri
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
 	} else {
-		var defaultValue int32 = 10000
+		var defaultValue int32 = 250
 		r.limit = &defaultValue
 	}
 	if r.count != nil {
