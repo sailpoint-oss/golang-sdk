@@ -226,12 +226,12 @@ Class | Method | HTTP request | Description
 *MFAControllerAPI* | [**SendKbaAnswers**](docs/MFAControllerAPI.md#sendkbaanswers) | **Post** /mfa/kba/authenticate | Authenticate KBA provided MFA method
 *MFAControllerAPI* | [**SendOktaVerifyRequest**](docs/MFAControllerAPI.md#sendoktaverifyrequest) | **Post** /mfa/okta-verify/verify | Verifying authentication via Okta method
 *MFAControllerAPI* | [**SendTokenAuthRequest**](docs/MFAControllerAPI.md#sendtokenauthrequest) | **Post** /mfa/token/authenticate | Authenticate Token provided MFA method
-*ManagedClientsAPI* | [**CreateManagedClient**](docs/ManagedClientsAPI.md#createmanagedclient) | **Post** /managed-clients | Create a new Managed Client
-*ManagedClientsAPI* | [**DeleteManagedClient**](docs/ManagedClientsAPI.md#deletemanagedclient) | **Delete** /managed-clients/{id} | Delete a Managed Client
+*ManagedClientsAPI* | [**CreateManagedClient**](docs/ManagedClientsAPI.md#createmanagedclient) | **Post** /managed-clients | Create Managed Client
+*ManagedClientsAPI* | [**DeleteManagedClient**](docs/ManagedClientsAPI.md#deletemanagedclient) | **Delete** /managed-clients/{id} | Delete Managed Client
 *ManagedClientsAPI* | [**GetManagedClient**](docs/ManagedClientsAPI.md#getmanagedclient) | **Get** /managed-clients/{id} | Get a Managed Client
-*ManagedClientsAPI* | [**GetManagedClientStatus**](docs/ManagedClientsAPI.md#getmanagedclientstatus) | **Get** /managed-clients/{id}/status | Get Managed Client Status.
+*ManagedClientsAPI* | [**GetManagedClientStatus**](docs/ManagedClientsAPI.md#getmanagedclientstatus) | **Get** /managed-clients/{id}/status | Get Managed Client Status
 *ManagedClientsAPI* | [**GetManagedClients**](docs/ManagedClientsAPI.md#getmanagedclients) | **Get** /managed-clients | Get Managed Clients
-*ManagedClientsAPI* | [**UpdateManagedClient**](docs/ManagedClientsAPI.md#updatemanagedclient) | **Patch** /managed-clients/{id} | Update a Managed Client
+*ManagedClientsAPI* | [**UpdateManagedClient**](docs/ManagedClientsAPI.md#updatemanagedclient) | **Patch** /managed-clients/{id} | Update Managed Client
 *ManagedClustersAPI* | [**CreateManagedCluster**](docs/ManagedClustersAPI.md#createmanagedcluster) | **Post** /managed-clusters | Create a new Managed Cluster
 *ManagedClustersAPI* | [**DeleteManagedCluster**](docs/ManagedClustersAPI.md#deletemanagedcluster) | **Delete** /managed-clusters/{id} | Delete a Managed Cluster
 *ManagedClustersAPI* | [**GetClientLogConfiguration**](docs/ManagedClustersAPI.md#getclientlogconfiguration) | **Get** /managed-clusters/{id}/log-config | Get Managed Cluster&#39;s log configuration

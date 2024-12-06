@@ -16767,7 +16767,7 @@ paths:
       - ORG_ADMIN
   /managed-clients:
     get:
-      description: Get a list of Managed Clients.
+      description: List managed clients.
       operationId: getManagedClients
       parameters:
       - description: |-
@@ -16833,8 +16833,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/ManagedClient'
                 type: array
-          description: Responds with a list of ManagedClient based on the query params
-            provided
+          description: "Response with a list of managed clients, based on the specified\
+            \ query parameters."
         "400":
           content:
             application/json:
@@ -16900,8 +16900,8 @@ paths:
       - Managed Clients
     post:
       description: |-
-        Create a new Managed Client.
-        The API returns a result that includes the Managed Client ID.
+        Create a new managed client.
+        The API returns a result that includes the managed client ID.
       operationId: createManagedClient
       requestBody:
         content:
@@ -16915,7 +16915,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ManagedClient'
-          description: The created ManagedClient
+          description: Created ManagedClient.
         "400":
           content:
             application/json:
@@ -16975,15 +16975,15 @@ paths:
       security:
       - userAuth:
         - idn:remote-client:manage
-      summary: Create a new Managed Client
+      summary: Create Managed Client
       tags:
       - Managed Clients
   /managed-clients/{id}:
     delete:
-      description: Delete an existing Managed Client.
+      description: Delete an existing managed client.
       operationId: deleteManagedClient
       parameters:
-      - description: Managed Client ID.
+      - description: Managed client ID.
         example: 4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7
         in: path
         name: id
@@ -17053,7 +17053,7 @@ paths:
       security:
       - userAuth:
         - idn:remote-client:manage
-      summary: Delete a Managed Client
+      summary: Delete Managed Client
       tags:
       - Managed Clients
     get:
@@ -17158,10 +17158,10 @@ paths:
       tags:
       - Managed Clients
     patch:
-      description: Update an existing Managed Client.
+      description: Update an existing managed client.
       operationId: updateManagedClient
       parameters:
-      - description: Managed Client ID.
+      - description: Managed client ID.
         example: 4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7
         in: path
         name: id
@@ -17175,7 +17175,7 @@ paths:
               items:
                 $ref: '#/components/schemas/JsonPatchOperation'
               type: array
-        description: The JSONPatch payload used to update the object.
+        description: JSONPatch payload used to update the object.
         required: true
       responses:
         "200":
@@ -17183,7 +17183,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ManagedClient'
-          description: The updated Managed Client
+          description: Updated managed client.
         "400":
           content:
             application/json:
@@ -17261,22 +17261,22 @@ paths:
       security:
       - userAuth:
         - idn:remote-client:manage
-      summary: Update a Managed Client
+      summary: Update Managed Client
       tags:
       - Managed Clients
   /managed-clients/{id}/status:
     get:
-      description: Retrieve the Status of a Managed Client by ID.
+      description: "Get a managed client's status, using its ID."
       operationId: getManagedClientStatus
       parameters:
-      - description: ID of the Managed Client to get Status of
+      - description: Managed client ID to get status for.
         in: path
         name: id
         required: true
         schema:
           example: aClientId
           type: string
-      - description: Type of the Managed Client to get Status of
+      - description: Managed client type to get status for.
         in: query
         name: type
         required: true
@@ -17288,8 +17288,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ManagedClientStatus'
-          description: Responds with the Status of the Managed Client with the given
-            ID and Type.
+          description: "Response with the managed client status, with the given ID\
+            \ and type."
         "400":
           content:
             application/json:
@@ -17367,7 +17367,7 @@ paths:
       security:
       - userAuth:
         - idn:managed-client-status:read
-      summary: Get Managed Client Status.
+      summary: Get Managed Client Status
       tags:
       - Managed Clients
   /managed-clusters:

@@ -39,10 +39,10 @@ func (r ApiCreateManagedClientRequest) Execute() (*ManagedClient, *http.Response
 }
 
 /*
-CreateManagedClient Create a new Managed Client
+CreateManagedClient Create Managed Client
 
-Create a new Managed Client.
-The API returns a result that includes the Managed Client ID.
+Create a new managed client.
+The API returns a result that includes the managed client ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateManagedClientRequest
@@ -199,12 +199,12 @@ func (r ApiDeleteManagedClientRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteManagedClient Delete a Managed Client
+DeleteManagedClient Delete Managed Client
 
-Delete an existing Managed Client.
+Delete an existing managed client.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Managed Client ID.
+ @param id Managed client ID.
  @return ApiDeleteManagedClientRequest
 */
 func (a *ManagedClientsAPIService) DeleteManagedClient(ctx context.Context, id string) ApiDeleteManagedClientRequest {
@@ -509,7 +509,7 @@ type ApiGetManagedClientStatusRequest struct {
 	type_ *ManagedClientType
 }
 
-// Type of the Managed Client to get Status of
+// Managed client type to get status for.
 func (r ApiGetManagedClientStatusRequest) Type_(type_ ManagedClientType) ApiGetManagedClientStatusRequest {
 	r.type_ = &type_
 	return r
@@ -520,12 +520,12 @@ func (r ApiGetManagedClientStatusRequest) Execute() (*ManagedClientStatus, *http
 }
 
 /*
-GetManagedClientStatus Get Managed Client Status.
+GetManagedClientStatus Get Managed Client Status
 
-Retrieve the Status of a Managed Client by ID.
+Get a managed client's status, using its ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the Managed Client to get Status of
+ @param id Managed client ID to get status for.
  @return ApiGetManagedClientStatusRequest
 */
 func (a *ManagedClientsAPIService) GetManagedClientStatus(ctx context.Context, id string) ApiGetManagedClientStatusRequest {
@@ -721,7 +721,7 @@ func (r ApiGetManagedClientsRequest) Execute() ([]ManagedClient, *http.Response,
 /*
 GetManagedClients Get Managed Clients
 
-Get a list of Managed Clients.
+List managed clients.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetManagedClientsRequest
@@ -890,7 +890,7 @@ type ApiUpdateManagedClientRequest struct {
 	jsonPatchOperation *[]JsonPatchOperation
 }
 
-// The JSONPatch payload used to update the object.
+// JSONPatch payload used to update the object.
 func (r ApiUpdateManagedClientRequest) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiUpdateManagedClientRequest {
 	r.jsonPatchOperation = &jsonPatchOperation
 	return r
@@ -901,12 +901,12 @@ func (r ApiUpdateManagedClientRequest) Execute() (*ManagedClient, *http.Response
 }
 
 /*
-UpdateManagedClient Update a Managed Client
+UpdateManagedClient Update Managed Client
 
-Update an existing Managed Client.
+Update an existing managed client.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Managed Client ID.
+ @param id Managed client ID.
  @return ApiUpdateManagedClientRequest
 */
 func (a *ManagedClientsAPIService) UpdateManagedClient(ctx context.Context, id string) ApiUpdateManagedClientRequest {

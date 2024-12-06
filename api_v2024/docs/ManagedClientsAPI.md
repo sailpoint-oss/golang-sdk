@@ -4,12 +4,12 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2024*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateManagedClient**](ManagedClientsAPI.md#CreateManagedClient) | **Post** /managed-clients | Create a new Managed Client
-[**DeleteManagedClient**](ManagedClientsAPI.md#DeleteManagedClient) | **Delete** /managed-clients/{id} | Delete a Managed Client
+[**CreateManagedClient**](ManagedClientsAPI.md#CreateManagedClient) | **Post** /managed-clients | Create Managed Client
+[**DeleteManagedClient**](ManagedClientsAPI.md#DeleteManagedClient) | **Delete** /managed-clients/{id} | Delete Managed Client
 [**GetManagedClient**](ManagedClientsAPI.md#GetManagedClient) | **Get** /managed-clients/{id} | Get a Managed Client
-[**GetManagedClientStatus**](ManagedClientsAPI.md#GetManagedClientStatus) | **Get** /managed-clients/{id}/status | Get Managed Client Status.
+[**GetManagedClientStatus**](ManagedClientsAPI.md#GetManagedClientStatus) | **Get** /managed-clients/{id}/status | Get Managed Client Status
 [**GetManagedClients**](ManagedClientsAPI.md#GetManagedClients) | **Get** /managed-clients | Get Managed Clients
-[**UpdateManagedClient**](ManagedClientsAPI.md#UpdateManagedClient) | **Patch** /managed-clients/{id} | Update a Managed Client
+[**UpdateManagedClient**](ManagedClientsAPI.md#UpdateManagedClient) | **Patch** /managed-clients/{id} | Update Managed Client
 
 
 
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 > ManagedClient CreateManagedClient(ctx).ManagedClientRequest(managedClientRequest).Execute()
 
-Create a new Managed Client
+Create Managed Client
 
 
 
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 > DeleteManagedClient(ctx, id).Execute()
 
-Delete a Managed Client
+Delete Managed Client
 
 
 
@@ -100,7 +100,7 @@ import (
 )
 
 func main() {
-	id := "4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7" // string | Managed Client ID.
+	id := "4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7" // string | Managed client ID.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -118,7 +118,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Managed Client ID. | 
+**id** | **string** | Managed client ID. | 
 
 ### Other Parameters
 
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 > ManagedClientStatus GetManagedClientStatus(ctx, id).Type_(type_).Execute()
 
-Get Managed Client Status.
+Get Managed Client Status
 
 
 
@@ -238,8 +238,8 @@ import (
 )
 
 func main() {
-	id := "aClientId" // string | ID of the Managed Client to get Status of
-	type_ := openapiclient.ManagedClientType("CCG") // ManagedClientType | Type of the Managed Client to get Status of
+	id := "aClientId" // string | Managed client ID to get status for.
+	type_ := openapiclient.ManagedClientType("CCG") // ManagedClientType | Managed client type to get status for.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -259,7 +259,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | ID of the Managed Client to get Status of | 
+**id** | **string** | Managed client ID to get status for. | 
 
 ### Other Parameters
 
@@ -269,7 +269,7 @@ Other parameters are passed through a pointer to a apiGetManagedClientStatusRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **type_** | [**ManagedClientType**](ManagedClientType.md) | Type of the Managed Client to get Status of | 
+ **type_** | [**ManagedClientType**](ManagedClientType.md) | Managed client type to get status for. | 
 
 ### Return type
 
@@ -365,7 +365,7 @@ Name | Type | Description  | Notes
 
 > ManagedClient UpdateManagedClient(ctx, id).JsonPatchOperation(jsonPatchOperation).Execute()
 
-Update a Managed Client
+Update Managed Client
 
 
 
@@ -382,8 +382,8 @@ import (
 )
 
 func main() {
-	id := "4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7" // string | Managed Client ID.
-	jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | The JSONPatch payload used to update the object.
+	id := "4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7" // string | Managed client ID.
+	jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | JSONPatch payload used to update the object.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -403,7 +403,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Managed Client ID. | 
+**id** | **string** | Managed client ID. | 
 
 ### Other Parameters
 
@@ -413,7 +413,7 @@ Other parameters are passed through a pointer to a apiUpdateManagedClientRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonPatchOperation** | [**[]JsonPatchOperation**](JsonPatchOperation.md) | The JSONPatch payload used to update the object. | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](JsonPatchOperation.md) | JSONPatch payload used to update the object. | 
 
 ### Return type
 
