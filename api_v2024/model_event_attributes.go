@@ -27,6 +27,8 @@ type EventAttributes struct {
 	Filter *string `json:"filter.$,omitempty"`
 	// Description of the event trigger
 	Description *string `json:"description,omitempty"`
+	// The attribute to filter on
+	AttributeToFilter *string `json:"attributeToFilter,omitempty"`
 }
 
 type _EventAttributes EventAttributes
@@ -137,6 +139,38 @@ func (o *EventAttributes) SetDescription(v string) {
 	o.Description = &v
 }
 
+// GetAttributeToFilter returns the AttributeToFilter field value if set, zero value otherwise.
+func (o *EventAttributes) GetAttributeToFilter() string {
+	if o == nil || IsNil(o.AttributeToFilter) {
+		var ret string
+		return ret
+	}
+	return *o.AttributeToFilter
+}
+
+// GetAttributeToFilterOk returns a tuple with the AttributeToFilter field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventAttributes) GetAttributeToFilterOk() (*string, bool) {
+	if o == nil || IsNil(o.AttributeToFilter) {
+		return nil, false
+	}
+	return o.AttributeToFilter, true
+}
+
+// HasAttributeToFilter returns a boolean if a field has been set.
+func (o *EventAttributes) HasAttributeToFilter() bool {
+	if o != nil && !IsNil(o.AttributeToFilter) {
+		return true
+	}
+
+	return false
+}
+
+// SetAttributeToFilter gets a reference to the given string and assigns it to the AttributeToFilter field.
+func (o *EventAttributes) SetAttributeToFilter(v string) {
+	o.AttributeToFilter = &v
+}
+
 func (o EventAttributes) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -153,6 +187,9 @@ func (o EventAttributes) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.AttributeToFilter) {
+		toSerialize["attributeToFilter"] = o.AttributeToFilter
 	}
 	return toSerialize, nil
 }

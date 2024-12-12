@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Id** | **string** | The unique ID of the trigger | 
 **Filter** | Pointer to **string** | JSON path expression that will limit which events the trigger will fire on | [optional] 
 **Description** | Pointer to **string** | Additonal context about the external trigger | [optional] 
+**AttributeToFilter** | Pointer to **string** | The attribute to filter on | [optional] 
 **Name** | Pointer to **string** | A unique name for the external trigger | [optional] 
 **ClientId** | Pointer to **string** | OAuth Client ID to authenticate with this trigger | [optional] 
 **Url** | Pointer to **string** | URL to invoke this workflow | [optional] 
@@ -104,6 +105,31 @@ SetDescription sets Description field to given value.
 `func (o *WorkflowTriggerAttributes) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetAttributeToFilter
+
+`func (o *WorkflowTriggerAttributes) GetAttributeToFilter() string`
+
+GetAttributeToFilter returns the AttributeToFilter field if non-nil, zero value otherwise.
+
+### GetAttributeToFilterOk
+
+`func (o *WorkflowTriggerAttributes) GetAttributeToFilterOk() (*string, bool)`
+
+GetAttributeToFilterOk returns a tuple with the AttributeToFilter field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAttributeToFilter
+
+`func (o *WorkflowTriggerAttributes) SetAttributeToFilter(v string)`
+
+SetAttributeToFilter sets AttributeToFilter field to given value.
+
+### HasAttributeToFilter
+
+`func (o *WorkflowTriggerAttributes) HasAttributeToFilter() bool`
+
+HasAttributeToFilter returns a boolean if a field has been set.
 
 ### GetName
 

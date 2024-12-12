@@ -56622,7 +56622,8 @@ components:
         trigger:
           displayName: displayName
           attributes:
-            description: description
+            description: Triggered when an identity's manager attribute changes
+            attributeToFilter: LifecycleState
             id: idn:identity-attributes-changed
             filter.$: "$.changes[?(@.attribute == 'manager')]"
           type: EVENT
@@ -56677,7 +56678,8 @@ components:
         trigger:
           displayName: displayName
           attributes:
-            description: description
+            description: Triggered when an identity's manager attribute changes
+            attributeToFilter: LifecycleState
             id: idn:identity-attributes-changed
             filter.$: "$.changes[?(@.attribute == 'manager')]"
           type: EVENT
@@ -61837,7 +61839,8 @@ components:
       example:
         displayName: displayName
         attributes:
-          description: description
+          description: Triggered when an identity's manager attribute changes
+          attributeToFilter: LifecycleState
           id: idn:identity-attributes-changed
           filter.$: "$.changes[?(@.attribute == 'manager')]"
         type: EVENT
@@ -63361,7 +63364,8 @@ components:
       additionalProperties: false
       description: Attributes related to an IdentityNow ETS event
       example:
-        description: description
+        description: Triggered when an identity's manager attribute changes
+        attributeToFilter: LifecycleState
         id: idn:identity-attributes-changed
         filter.$: "$.changes[?(@.attribute == 'manager')]"
       properties:
@@ -63376,6 +63380,11 @@ components:
           type: string
         description:
           description: Description of the event trigger
+          example: Triggered when an identity's manager attribute changes
+          type: string
+        attributeToFilter:
+          description: The attribute to filter on
+          example: LifecycleState
           type: string
       required:
       - id
