@@ -1373,6 +1373,7 @@ The following fields are patchable:
 * enabled
 * owner
 * accessProfiles
+* entitlements
 * membership
 * requestable
 * accessRequestConfig

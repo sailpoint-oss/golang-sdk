@@ -25340,11 +25340,6 @@ paths:
         - idn:role-unchecked:manage
         - idn:role-checked:manage
         - idn:role-checked:read
-      - applicationAuth:
-        - idn:role-unchecked:read
-        - idn:role-unchecked:manage
-        - idn:role-checked:manage
-        - idn:role-checked:read
       summary: List Roles
       tags:
       - Roles
@@ -25434,11 +25429,6 @@ paths:
       - userAuth:
         - idn:role-unchecked:manage
         - idn:role-checked:manage
-      - applicationAuth:
-        - idn:role-unchecked:read
-        - idn:role-unchecked:manage
-        - idn:role-checked:manage
-        - idn:role-checked:read
       summary: Create a Role
       tags:
       - Roles
@@ -25525,11 +25515,6 @@ paths:
       - userAuth:
         - idn:role-unchecked:manage
         - idn:role-checked:manage
-      - applicationAuth:
-        - idn:role-unchecked:read
-        - idn:role-unchecked:manage
-        - idn:role-checked:manage
-        - idn:role-checked:read
       summary: Delete a Role
       tags:
       - Roles
@@ -25619,11 +25604,6 @@ paths:
         - idn:role-unchecked:manage
         - idn:role-checked:manage
         - idn:role-checked:read
-      - applicationAuth:
-        - idn:role-unchecked:read
-        - idn:role-unchecked:manage
-        - idn:role-checked:manage
-        - idn:role-checked:read
       summary: Get a Role
       tags:
       - Roles
@@ -25634,16 +25614,16 @@ paths:
     patch:
       description: "This API updates an existing role using [JSON Patch](https://tools.ietf.org/html/rfc6902)\
         \ syntax.\nThe following fields are patchable:\n* name\n* description\n* enabled\n\
-        * owner\n* accessProfiles\n* membership\n* requestable\n* accessRequestConfig\n\
-        * revokeRequestConfig\n* segments\n* accessModelMetadata\n\nA user with ROLE_SUBADMIN\
-        \ authority may only call this API if all access profiles included in the\
-        \ role are associated to Sources with management workgroups of which the ROLE_SUBADMIN\
-        \ is a member.\n\nThe maximum supported length for the description field is\
-        \ 2000 characters. Longer descriptions will be preserved for existing roles,\
-        \ however, any new roles as well as any updates to existing descriptions will\
-        \ be limited to 2000 characters.\n\nWhen you use this API to modify a role's\
-        \ membership identities, you can only modify up to a limit of 500 membership\
-        \ identities at a time. "
+        * owner\n* accessProfiles\n* entitlements\n* membership\n* requestable\n*\
+        \ accessRequestConfig\n* revokeRequestConfig\n* segments\n* accessModelMetadata\n\
+        \nA user with ROLE_SUBADMIN authority may only call this API if all access\
+        \ profiles included in the role are associated to Sources with management\
+        \ workgroups of which the ROLE_SUBADMIN is a member.\n\nThe maximum supported\
+        \ length for the description field is 2000 characters. Longer descriptions\
+        \ will be preserved for existing roles, however, any new roles as well as\
+        \ any updates to existing descriptions will be limited to 2000 characters.\n\
+        \nWhen you use this API to modify a role's membership identities, you can\
+        \ only modify up to a limit of 500 membership identities at a time. "
       operationId: patchRole
       parameters:
       - description: ID of the Role to patch
@@ -25717,7 +25697,7 @@ paths:
                       type: IDENTITY
                       property: attribute.email
                     stringValue: '@identitynow.com'
-              Assign a Access Model Metadata to a role:
+              Assign a Access Model Metadata to a Role:
                 description: This example shows how to assign a existing metadata
                   to a role.
                 value:
@@ -25727,6 +25707,23 @@ paths:
                     key: iscFederalClassifications
                     values:
                     - value: secret
+              Add an Access Profile to a Role:
+                description: This example shows how to add an access profile to a
+                  role.
+                value:
+                - op: add
+                  path: /accessProfiles/-
+                  value:
+                    id: 1de104e1f9024b1289b3a31e22d28cd1
+                    type: ACCESS_PROFILE
+              Add an Entitlement to a Role:
+                description: This example shows how to add an entitlement to a role.
+                value:
+                - op: add
+                  path: /entitlements/-
+                  value:
+                    id: 0fb2f8051e48421b8f1f8a64aee3b205
+                    type: ENTITLEMENT
             schema:
               items:
                 $ref: '#/components/schemas/JsonPatchOperation'
@@ -25799,11 +25796,6 @@ paths:
       - userAuth:
         - idn:role-unchecked:manage
         - idn:role-checked:manage
-      - applicationAuth:
-        - idn:role-unchecked:read
-        - idn:role-unchecked:manage
-        - idn:role-checked:manage
-        - idn:role-checked:read
       summary: Patch a specified Role
       tags:
       - Roles
