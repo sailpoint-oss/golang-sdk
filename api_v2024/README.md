@@ -642,11 +642,11 @@ Class | Method | HTTP request | Description
 *TaggedObjectsAPI* | [**PutTaggedObject**](docs/TaggedObjectsAPI.md#puttaggedobject) | **Put** /tagged-objects/{type}/{id} | Update Tagged Object
 *TaggedObjectsAPI* | [**SetTagToObject**](docs/TaggedObjectsAPI.md#settagtoobject) | **Post** /tagged-objects | Add Tag to Object
 *TaggedObjectsAPI* | [**SetTagsToManyObjects**](docs/TaggedObjectsAPI.md#settagstomanyobjects) | **Post** /tagged-objects/bulk-add | Tag Multiple Objects
-*TaskManagementAPI* | [**GetPendingTaskHeaders**](docs/TaskManagementAPI.md#getpendingtaskheaders) | **Head** /task-status/pending-tasks | Retrieve headers only for pending task list.
-*TaskManagementAPI* | [**GetPendingTasks**](docs/TaskManagementAPI.md#getpendingtasks) | **Get** /task-status/pending-tasks | Retrieve a pending task list.
-*TaskManagementAPI* | [**GetTaskStatus**](docs/TaskManagementAPI.md#gettaskstatus) | **Get** /task-status/{id} | Get task status by ID.
-*TaskManagementAPI* | [**GetTaskStatusList**](docs/TaskManagementAPI.md#gettaskstatuslist) | **Get** /task-status | Retrieve a task status list.
-*TaskManagementAPI* | [**UpdateTaskStatus**](docs/TaskManagementAPI.md#updatetaskstatus) | **Patch** /task-status/{id} | Update task status by ID
+*TaskManagementAPI* | [**GetPendingTaskHeaders**](docs/TaskManagementAPI.md#getpendingtaskheaders) | **Head** /task-status/pending-tasks | Retrieve Pending Task List Headers
+*TaskManagementAPI* | [**GetPendingTasks**](docs/TaskManagementAPI.md#getpendingtasks) | **Get** /task-status/pending-tasks | Retrieve Pending Task Status List
+*TaskManagementAPI* | [**GetTaskStatus**](docs/TaskManagementAPI.md#gettaskstatus) | **Get** /task-status/{id} | Get Task Status by ID
+*TaskManagementAPI* | [**GetTaskStatusList**](docs/TaskManagementAPI.md#gettaskstatuslist) | **Get** /task-status | Retrieve Task Status List
+*TaskManagementAPI* | [**UpdateTaskStatus**](docs/TaskManagementAPI.md#updatetaskstatus) | **Patch** /task-status/{id} | Update Task Status by ID
 *TenantAPI* | [**GetTenant**](docs/TenantAPI.md#gettenant) | **Get** /tenant | Get Tenant Information.
 *TransformsAPI* | [**CreateTransform**](docs/TransformsAPI.md#createtransform) | **Post** /transforms | Create transform
 *TransformsAPI* | [**DeleteTransform**](docs/TransformsAPI.md#deletetransform) | **Delete** /transforms/{id} | Delete a transform
@@ -1637,6 +1637,7 @@ Class | Method | HTTP request | Description
  - [TaskReturnDetails](docs/TaskReturnDetails.md)
  - [TaskStatus](docs/TaskStatus.md)
  - [TaskStatusMessage](docs/TaskStatusMessage.md)
+ - [TaskStatusMessageParametersInner](docs/TaskStatusMessageParametersInner.md)
  - [TemplateBulkDeleteDto](docs/TemplateBulkDeleteDto.md)
  - [TemplateDto](docs/TemplateDto.md)
  - [TemplateDtoDefault](docs/TemplateDtoDefault.md)

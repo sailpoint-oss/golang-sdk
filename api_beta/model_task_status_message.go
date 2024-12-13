@@ -26,7 +26,7 @@ type TaskStatusMessage struct {
 	// Key of the message
 	Key string `json:"key"`
 	// Message parameters for internationalization
-	Parameters []map[string]interface{} `json:"parameters"`
+	Parameters []TaskStatusMessageParametersInner `json:"parameters"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -36,7 +36,7 @@ type _TaskStatusMessage TaskStatusMessage
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTaskStatusMessage(type_ string, localizedText NullableLocalizedMessage, key string, parameters []map[string]interface{}) *TaskStatusMessage {
+func NewTaskStatusMessage(type_ string, localizedText NullableLocalizedMessage, key string, parameters []TaskStatusMessageParametersInner) *TaskStatusMessage {
 	this := TaskStatusMessage{}
 	this.Type = type_
 	this.LocalizedText = localizedText
@@ -128,10 +128,10 @@ func (o *TaskStatusMessage) SetKey(v string) {
 }
 
 // GetParameters returns the Parameters field value
-// If the value is explicit nil, the zero value for []map[string]interface{} will be returned
-func (o *TaskStatusMessage) GetParameters() []map[string]interface{} {
+// If the value is explicit nil, the zero value for []TaskStatusMessageParametersInner will be returned
+func (o *TaskStatusMessage) GetParameters() []TaskStatusMessageParametersInner {
 	if o == nil {
-		var ret []map[string]interface{}
+		var ret []TaskStatusMessageParametersInner
 		return ret
 	}
 
@@ -141,7 +141,7 @@ func (o *TaskStatusMessage) GetParameters() []map[string]interface{} {
 // GetParametersOk returns a tuple with the Parameters field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TaskStatusMessage) GetParametersOk() ([]map[string]interface{}, bool) {
+func (o *TaskStatusMessage) GetParametersOk() ([]TaskStatusMessageParametersInner, bool) {
 	if o == nil || IsNil(o.Parameters) {
 		return nil, false
 	}
@@ -149,7 +149,7 @@ func (o *TaskStatusMessage) GetParametersOk() ([]map[string]interface{}, bool) {
 }
 
 // SetParameters sets field value
-func (o *TaskStatusMessage) SetParameters(v []map[string]interface{}) {
+func (o *TaskStatusMessage) SetParameters(v []TaskStatusMessageParametersInner) {
 	o.Parameters = v
 }
 

@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 **Type** | **string** | Type of the message | 
 **LocalizedText** | [**NullableLocalizedMessage**](LocalizedMessage.md) |  | 
 **Key** | **string** | Key of the message | 
-**Parameters** | **[]map[string]interface{}** | Message parameters for internationalization | 
+**Parameters** | [**[]TaskStatusMessageParametersInner**](TaskStatusMessageParametersInner.md) | Message parameters for internationalization | 
 
 ## Methods
 
 ### NewTaskStatusMessage
 
-`func NewTaskStatusMessage(type_ string, localizedText NullableLocalizedMessage, key string, parameters []map[string]interface{}, ) *TaskStatusMessage`
+`func NewTaskStatusMessage(type_ string, localizedText NullableLocalizedMessage, key string, parameters []TaskStatusMessageParametersInner, ) *TaskStatusMessage`
 
 NewTaskStatusMessage instantiates a new TaskStatusMessage object
 This constructor will assign default values to properties that have it defined,
@@ -100,20 +100,20 @@ SetKey sets Key field to given value.
 
 ### GetParameters
 
-`func (o *TaskStatusMessage) GetParameters() []map[string]interface{}`
+`func (o *TaskStatusMessage) GetParameters() []TaskStatusMessageParametersInner`
 
 GetParameters returns the Parameters field if non-nil, zero value otherwise.
 
 ### GetParametersOk
 
-`func (o *TaskStatusMessage) GetParametersOk() (*[]map[string]interface{}, bool)`
+`func (o *TaskStatusMessage) GetParametersOk() (*[]TaskStatusMessageParametersInner, bool)`
 
 GetParametersOk returns a tuple with the Parameters field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetParameters
 
-`func (o *TaskStatusMessage) SetParameters(v []map[string]interface{})`
+`func (o *TaskStatusMessage) SetParameters(v []TaskStatusMessageParametersInner)`
 
 SetParameters sets Parameters field to given value.
 

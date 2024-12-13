@@ -938,6 +938,7 @@ docs/TaskResultSimplified.md
 docs/TaskReturnDetails.md
 docs/TaskStatus.md
 docs/TaskStatusMessage.md
+docs/TaskStatusMessageParametersInner.md
 docs/TemplateBulkDeleteDto.md
 docs/TemplateDto.md
 docs/TemplateDtoDefault.md
@@ -1829,6 +1830,7 @@ model_task_result_simplified.go
 model_task_return_details.go
 model_task_status.go
 model_task_status_message.go
+model_task_status_message_parameters_inner.go
 model_template_bulk_delete_dto.go
 model_template_dto.go
 model_template_dto_default.go

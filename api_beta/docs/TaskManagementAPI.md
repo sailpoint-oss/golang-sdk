@@ -4,11 +4,11 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetPendingTaskHeaders**](TaskManagementAPI.md#GetPendingTaskHeaders) | **Head** /task-status/pending-tasks | Retrieve headers only for pending task list.
-[**GetPendingTasks**](TaskManagementAPI.md#GetPendingTasks) | **Get** /task-status/pending-tasks | Retrieve a pending task list.
-[**GetTaskStatus**](TaskManagementAPI.md#GetTaskStatus) | **Get** /task-status/{id} | Get task status by ID.
-[**GetTaskStatusList**](TaskManagementAPI.md#GetTaskStatusList) | **Get** /task-status | Retrieve a task status list.
-[**UpdateTaskStatus**](TaskManagementAPI.md#UpdateTaskStatus) | **Patch** /task-status/{id} | Update task status by ID
+[**GetPendingTaskHeaders**](TaskManagementAPI.md#GetPendingTaskHeaders) | **Head** /task-status/pending-tasks | Retrieve Pending Task List Headers
+[**GetPendingTasks**](TaskManagementAPI.md#GetPendingTasks) | **Get** /task-status/pending-tasks | Retrieve Pending Task Status List
+[**GetTaskStatus**](TaskManagementAPI.md#GetTaskStatus) | **Get** /task-status/{id} | Get Task Status by ID
+[**GetTaskStatusList**](TaskManagementAPI.md#GetTaskStatusList) | **Get** /task-status | Retrieve Task Status List
+[**UpdateTaskStatus**](TaskManagementAPI.md#UpdateTaskStatus) | **Patch** /task-status/{id} | Update Task Status by ID
 
 
 
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 > GetPendingTaskHeaders(ctx).Offset(offset).Limit(limit).Count(count).Execute()
 
-Retrieve headers only for pending task list.
+Retrieve Pending Task List Headers
 
 
 
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth), [applicationAuth](../README.md#applicationAuth)
 
 ### HTTP request headers
 
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 > []TaskStatus GetPendingTasks(ctx).Offset(offset).Limit(limit).Count(count).Execute()
 
-Retrieve a pending task list.
+Retrieve Pending Task Status List
 
 
 
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth), [applicationAuth](../README.md#applicationAuth)
 
 ### HTTP request headers
 
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 > TaskStatus GetTaskStatus(ctx, id).Execute()
 
-Get task status by ID.
+Get Task Status by ID
 
 
 
@@ -208,7 +208,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth), [applicationAuth](../README.md#applicationAuth)
 
 ### HTTP request headers
 
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 
 > []TaskStatus GetTaskStatusList(ctx).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
 
-Retrieve a task status list.
+Retrieve Task Status List
 
 
 
@@ -282,7 +282,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth), [applicationAuth](../README.md#applicationAuth)
 
 ### HTTP request headers
 
@@ -298,7 +298,7 @@ Name | Type | Description  | Notes
 
 > TaskStatus UpdateTaskStatus(ctx, id).JsonPatchOperation(jsonPatchOperation).Execute()
 
-Update task status by ID
+Update Task Status by ID
 
 
 
