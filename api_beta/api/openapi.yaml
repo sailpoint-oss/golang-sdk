@@ -65013,6 +65013,7 @@ components:
           deniedCommentsRequired: false
           allowEntitlementRequest: true
           grantRequestApprovalSchemes: "entitlementOwner, sourceOwner, manager, workgroup:2c918084660f45d6016617daa9210584"
+        reauthorizationEnabled: true
         approvalsMustBeExternal: true
       properties:
         approvalsMustBeExternal:
@@ -65026,6 +65027,13 @@ components:
           default: false
           description: "If this is true and the requester and reviewer are the same,\
             \ the request is automatically approved."
+          example: true
+          type: boolean
+        reauthorizationEnabled:
+          default: false
+          description: "If this is true, reauthorization will be enforced for appropriately\
+            \ configured access items. Enablement of this feature is currently in\
+            \ a limited state."
           example: true
           type: boolean
         requestOnBehalfOfConfig:

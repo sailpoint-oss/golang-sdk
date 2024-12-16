@@ -23,6 +23,8 @@ type AccessRequestConfig struct {
 	ApprovalsMustBeExternal *bool `json:"approvalsMustBeExternal,omitempty"`
 	// If this is true and the requester and reviewer are the same, the request is automatically approved.
 	AutoApprovalEnabled *bool `json:"autoApprovalEnabled,omitempty"`
+	// If this is true, reauthorization will be enforced for appropriately configured access items. Enablement of this feature is currently in a limited state.
+	ReauthorizationEnabled *bool `json:"reauthorizationEnabled,omitempty"`
 	RequestOnBehalfOfConfig *RequestOnBehalfOfConfig `json:"requestOnBehalfOfConfig,omitempty"`
 	ApprovalReminderAndEscalationConfig *ApprovalReminderAndEscalationConfig `json:"approvalReminderAndEscalationConfig,omitempty"`
 	EntitlementRequestConfig *EntitlementRequestConfig1 `json:"entitlementRequestConfig,omitempty"`
@@ -41,6 +43,8 @@ func NewAccessRequestConfig() *AccessRequestConfig {
 	this.ApprovalsMustBeExternal = &approvalsMustBeExternal
 	var autoApprovalEnabled bool = false
 	this.AutoApprovalEnabled = &autoApprovalEnabled
+	var reauthorizationEnabled bool = false
+	this.ReauthorizationEnabled = &reauthorizationEnabled
 	return &this
 }
 
@@ -53,6 +57,8 @@ func NewAccessRequestConfigWithDefaults() *AccessRequestConfig {
 	this.ApprovalsMustBeExternal = &approvalsMustBeExternal
 	var autoApprovalEnabled bool = false
 	this.AutoApprovalEnabled = &autoApprovalEnabled
+	var reauthorizationEnabled bool = false
+	this.ReauthorizationEnabled = &reauthorizationEnabled
 	return &this
 }
 
@@ -118,6 +124,38 @@ func (o *AccessRequestConfig) HasAutoApprovalEnabled() bool {
 // SetAutoApprovalEnabled gets a reference to the given bool and assigns it to the AutoApprovalEnabled field.
 func (o *AccessRequestConfig) SetAutoApprovalEnabled(v bool) {
 	o.AutoApprovalEnabled = &v
+}
+
+// GetReauthorizationEnabled returns the ReauthorizationEnabled field value if set, zero value otherwise.
+func (o *AccessRequestConfig) GetReauthorizationEnabled() bool {
+	if o == nil || IsNil(o.ReauthorizationEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.ReauthorizationEnabled
+}
+
+// GetReauthorizationEnabledOk returns a tuple with the ReauthorizationEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccessRequestConfig) GetReauthorizationEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.ReauthorizationEnabled) {
+		return nil, false
+	}
+	return o.ReauthorizationEnabled, true
+}
+
+// HasReauthorizationEnabled returns a boolean if a field has been set.
+func (o *AccessRequestConfig) HasReauthorizationEnabled() bool {
+	if o != nil && !IsNil(o.ReauthorizationEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetReauthorizationEnabled gets a reference to the given bool and assigns it to the ReauthorizationEnabled field.
+func (o *AccessRequestConfig) SetReauthorizationEnabled(v bool) {
+	o.ReauthorizationEnabled = &v
 }
 
 // GetRequestOnBehalfOfConfig returns the RequestOnBehalfOfConfig field value if set, zero value otherwise.
@@ -232,6 +270,9 @@ func (o AccessRequestConfig) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AutoApprovalEnabled) {
 		toSerialize["autoApprovalEnabled"] = o.AutoApprovalEnabled
 	}
+	if !IsNil(o.ReauthorizationEnabled) {
+		toSerialize["reauthorizationEnabled"] = o.ReauthorizationEnabled
+	}
 	if !IsNil(o.RequestOnBehalfOfConfig) {
 		toSerialize["requestOnBehalfOfConfig"] = o.RequestOnBehalfOfConfig
 	}
@@ -265,6 +306,7 @@ func (o *AccessRequestConfig) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "approvalsMustBeExternal")
 		delete(additionalProperties, "autoApprovalEnabled")
+		delete(additionalProperties, "reauthorizationEnabled")
 		delete(additionalProperties, "requestOnBehalfOfConfig")
 		delete(additionalProperties, "approvalReminderAndEscalationConfig")
 		delete(additionalProperties, "entitlementRequestConfig")
