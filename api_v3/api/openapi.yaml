@@ -13361,7 +13361,7 @@ paths:
       description: Delete a custom connector that using its script name.
       operationId: deleteCustomConnector
       parameters:
-      - description: The scriptName value of the connector. Scriptname is the unique
+      - description: The scriptName value of the connector. ScriptName is the unique
           id generated at connector creation.
         explode: false
         in: path
@@ -13451,17 +13451,19 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:connector-config:delete
-      summary: Deletes connector by script name
+        - idn:connector-config:manage
+      summary: Delete Connector by Script Name
       tags:
       - Connectors
       x-sailpoint-userLevels:
       - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     get:
       description: 'Fetches a connector that using its script name.    '
       operationId: getConnector
       parameters:
-      - description: The scriptName value of the connector. Scriptname is the unique
+      - description: The scriptName value of the connector. ScriptName is the unique
           id generated at connector creation.
         explode: false
         in: path
@@ -13475,6 +13477,7 @@ paths:
           \ it will default to \"en\""
         in: query
         name: locale
+        required: false
         schema:
           enum:
           - de
@@ -13582,18 +13585,31 @@ paths:
       security:
       - userAuth:
         - idn:connector-config:read
-      summary: Gets connector by script name
+        - idn:connector-config:manage
+      summary: Get Connector by Script Name
       tags:
       - Connectors
       x-sailpoint-userLevels:
       - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     patch:
-      description: |-
-        Patch a custom connector that using its script name.
-        The following fields are patchable: * connectorMetadata * applicationXml * correlationConfigXml * sourceConfigXml
+      description: |
+        This API updates a custom connector by script name using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
+
+        The following fields are patchable:
+
+
+        * connectorMetadata
+
+        * applicationXml
+
+        * correlationConfigXml
+
+        * sourceConfigXml
       operationId: updateConnector
       parameters:
-      - description: The scriptName value of the connector. Scriptname is the unique
+      - description: The scriptName value of the connector. ScriptName is the unique
           id generated at connector creation.
         explode: false
         in: path
@@ -13610,8 +13626,8 @@ paths:
               items:
                 $ref: '#/components/schemas/JsonPatchOperation'
               type: array
-        description: "A list of connector detail update operations according to the\
-          \ [JSON Patch](https://tools.ietf.org/html/rfc6902) standard."
+        description: |
+          A list of connector detail update operations
         required: true
       responses:
         "200":
@@ -13696,12 +13712,14 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:connector-config:update
-      summary: Update connector by script name
+        - idn:connector-config:manage
+      summary: Update Connector by Script Name
       tags:
       - Connectors
       x-sailpoint-userLevels:
       - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /connectors:
     get:
       description: Fetches list of connectors that have 'RELEASED' status using filtering
@@ -13727,6 +13745,7 @@ paths:
         example: directConnect eq "true"
         in: query
         name: filters
+        required: false
         schema:
           type: string
       - description: |-
@@ -13771,6 +13790,7 @@ paths:
           \ it will default to \"en\""
         in: query
         name: locale
+        required: false
         schema:
           enum:
           - de
@@ -13879,12 +13899,15 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:connector-source-config:read
-      summary: Gets connector list
+        - idn:connector-config:read
+        - idn:connector-config:manage
+      summary: Get Connector List
       tags:
       - Connectors
       x-sailpoint-userLevels:
       - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     post:
       description: 'Create custom connector.    '
       operationId: createCustomConnector
@@ -13977,18 +14000,20 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:connector-config:create
-      summary: Create custom connector
+        - idn:connector-config:manage
+      summary: Create Custom Connector
       tags:
       - Connectors
       x-sailpoint-userLevels:
       - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /connectors/{scriptName}/source-config:
     get:
       description: 'Fetches a connector''s source config using its script name.    '
       operationId: getConnectorSourceConfig
       parameters:
-      - description: The scriptName value of the connector. Scriptname is the unique
+      - description: The scriptName value of the connector. ScriptName is the unique
           id generated at connector creation.
         explode: false
         in: path
@@ -14082,15 +14107,19 @@ paths:
       security:
       - userAuth:
         - idn:connector-config:read
+        - idn:connector-config:manage
+      summary: Get Connector Source Configuration
       tags:
       - Connectors
       x-sailpoint-userLevels:
       - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     put:
       description: 'Update a connector''s source config using its script name.    '
-      operationId: putSourceConfig
+      operationId: putConnectorSourceConfig
       parameters:
-      - description: The scriptName value of the connector. Scriptname is the unique
+      - description: The scriptName value of the connector. ScriptName is the unique
           id generated at connector creation.
         explode: false
         in: path
@@ -14104,7 +14133,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/putSourceConfig_request'
+              $ref: '#/components/schemas/putConnectorSourceConfig_request'
         required: true
       responses:
         "200":
@@ -14189,11 +14218,14 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:connector-config:update
+        - idn:connector-config:manage
+      summary: Update Connector Source Configuration
       tags:
       - Connectors
       x-sailpoint-userLevels:
       - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /connectors/{scriptName}/translations/{locale}:
     get:
       description: 'Fetches a connector''s translations using its script name.    '
@@ -14321,13 +14353,17 @@ paths:
       security:
       - userAuth:
         - idn:connector-config:read
+        - idn:connector-config:manage
+      summary: Get Connector Translations
       tags:
       - Connectors
       x-sailpoint-userLevels:
       - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     put:
       description: 'Update a connector''s translations using its script name.    '
-      operationId: putTranslations
+      operationId: putConnectorTranslations
       parameters:
       - description: The scriptName value of the connector. Scriptname is the unique
           id generated at connector creation.
@@ -14456,17 +14492,20 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:connector-config:update
+        - idn:connector-config:manage
+      summary: Update Connector Translations
       tags:
       - Connectors
       x-sailpoint-userLevels:
       - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /connectors/{scriptName}/source-template:
     get:
       description: 'Fetches a connector''s source template using its script name.    '
       operationId: getConnectorSourceTemplate
       parameters:
-      - description: The scriptName value of the connector. Scriptname is the unique
+      - description: The scriptName value of the connector. ScriptName is the unique
           id generated at connector creation.
         explode: false
         in: path
@@ -14560,15 +14599,19 @@ paths:
       security:
       - userAuth:
         - idn:connector-config:read
+        - idn:connector-config:manage
+      summary: Get Connector Source Template
       tags:
       - Connectors
       x-sailpoint-userLevels:
       - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     put:
       description: 'Update a connector''s source template using its script name.    '
-      operationId: putSourceTemplate
+      operationId: putConnectorSourceTemplate
       parameters:
-      - description: The scriptName value of the connector. Scriptname is the unique
+      - description: The scriptName value of the connector. ScriptName is the unique
           id generated at connector creation.
         explode: false
         in: path
@@ -14582,7 +14625,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/putSourceTemplate_request'
+              $ref: '#/components/schemas/putConnectorSourceTemplate_request'
         required: true
       responses:
         "200":
@@ -14667,222 +14710,14 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:connector-config:update
+        - idn:connector-config:manage
+      summary: Update Connector Source Template
       tags:
       - Connectors
       x-sailpoint-userLevels:
       - ORG_ADMIN
-  /connectors/{scriptName}/correlation-config:
-    get:
-      description: 'Fetches a connector''s correlation config using its script name.    '
-      operationId: getConnectorCorrelationConfig
-      parameters:
-      - description: The scriptName value of the connector. Scriptname is the unique
-          id generated at connector creation.
-        explode: false
-        in: path
-        name: scriptName
-        required: true
-        schema:
-          example: aScriptName
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/xml:
-              schema:
-                type: string
-          description: The connector's correlation config
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: Client Error - Returned if the request body is invalid.
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listAccessProfiles_401_response'
-          description: "Unauthorized - Returned if there is no authorization header,\
-            \ or if the JWT token is expired."
-        "403":
-          content:
-            application/json:
-              examples:
-                "403":
-                  summary: An example of a 403 response object
-                  value:
-                    detailCode: 403 Forbidden
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: The server understood the request but refuses to authorize
-                        it.
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: "Forbidden - Returned if the user you are running as, doesn't\
-            \ have access to this end-point."
-        "404":
-          content:
-            application/json:
-              examples:
-                "404":
-                  summary: An example of a 404 response object
-                  value:
-                    detailCode: 404 Not found
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: The server did not find a current representation for the
-                        target resource.
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: Not Found - returned if the request URL refers to a resource
-            or object that does not exist
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listAccessProfiles_429_response'
-          description: Too Many Requests - Returned in response to too many requests
-            in a given period of time - rate limited. The Retry-After header in the
-            response includes how long to wait before trying again.
-        "500":
-          content:
-            application/json:
-              examples:
-                "500":
-                  summary: An example of a 500 response object
-                  value:
-                    detailCode: 500.0 Internal Fault
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: An internal fault occurred.
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: Internal Server Error - Returned if there is an unexpected
-            error.
-      security:
-      - userAuth:
-        - idn:connector-config:read
-      tags:
-      - Connectors
-      x-sailpoint-userLevels:
-      - ORG_ADMIN
-    put:
-      description: 'Update a connector''s correlation config using its script name.    '
-      operationId: putCorrelationConfig
-      parameters:
-      - description: The scriptName value of the connector. Scriptname is the unique
-          id generated at connector creation.
-        explode: false
-        in: path
-        name: scriptName
-        required: true
-        schema:
-          example: aScriptName
-          type: string
-        style: simple
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/putCorrelationConfig_request'
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateDetail'
-          description: The connector's update detail
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: Client Error - Returned if the request body is invalid.
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listAccessProfiles_401_response'
-          description: "Unauthorized - Returned if there is no authorization header,\
-            \ or if the JWT token is expired."
-        "403":
-          content:
-            application/json:
-              examples:
-                "403":
-                  summary: An example of a 403 response object
-                  value:
-                    detailCode: 403 Forbidden
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: The server understood the request but refuses to authorize
-                        it.
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: "Forbidden - Returned if the user you are running as, doesn't\
-            \ have access to this end-point."
-        "404":
-          content:
-            application/json:
-              examples:
-                "404":
-                  summary: An example of a 404 response object
-                  value:
-                    detailCode: 404 Not found
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: The server did not find a current representation for the
-                        target resource.
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: Not Found - returned if the request URL refers to a resource
-            or object that does not exist
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listAccessProfiles_429_response'
-          description: Too Many Requests - Returned in response to too many requests
-            in a given period of time - rate limited. The Retry-After header in the
-            response includes how long to wait before trying again.
-        "500":
-          content:
-            application/json:
-              examples:
-                "500":
-                  summary: An example of a 500 response object
-                  value:
-                    detailCode: 500.0 Internal Fault
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: An internal fault occurred.
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: Internal Server Error - Returned if there is an unexpected
-            error.
-      security:
-      - userAuth:
-        - idn:connector-config:update
-      tags:
-      - Connectors
-      x-sailpoint-userLevels:
-      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /identities/{identity-id}/set-lifecycle-state:
     post:
       description: Use this API to set/update an identity's lifecycle state to the
@@ -64151,7 +63986,7 @@ components:
       - data
       - name
       type: object
-    putSourceConfig_request:
+    putConnectorSourceConfig_request:
       properties:
         file:
           description: connector source config xml file
@@ -64160,19 +63995,10 @@ components:
       required:
       - file
       type: object
-    putSourceTemplate_request:
+    putConnectorSourceTemplate_request:
       properties:
         file:
           description: connector source template xml file
-          format: binary
-          type: string
-      required:
-      - file
-      type: object
-    putCorrelationConfig_request:
-      properties:
-        file:
-          description: connector correlation config xml file
           format: binary
           type: string
       required:

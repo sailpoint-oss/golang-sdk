@@ -40,7 +40,7 @@ func (r ApiCreateCustomConnectorRequest) Execute() (*V3ConnectorDto, *http.Respo
 }
 
 /*
-CreateCustomConnector Create custom connector
+CreateCustomConnector Create Custom Connector
 
 Create custom connector.    
 
@@ -210,12 +210,12 @@ func (r ApiDeleteCustomConnectorRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteCustomConnector Deletes connector by script name
+DeleteCustomConnector Delete Connector by Script Name
 
 Delete a custom connector that using its script name.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param scriptName The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+ @param scriptName The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
  @return ApiDeleteCustomConnectorRequest
 */
 func (a *ConnectorsAPIService) DeleteCustomConnector(ctx context.Context, scriptName string) ApiDeleteCustomConnectorRequest {
@@ -374,12 +374,12 @@ func (r ApiGetConnectorRequest) Execute() (*ConnectorDetail, *http.Response, err
 }
 
 /*
-GetConnector Gets connector by script name
+GetConnector Get Connector by Script Name
 
 Fetches a connector that using its script name.    
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param scriptName The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+ @param scriptName The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
  @return ApiGetConnectorRequest
 */
 func (a *ConnectorsAPIService) GetConnector(ctx context.Context, scriptName string) ApiGetConnectorRequest {
@@ -534,174 +534,6 @@ func (a *ConnectorsAPIService) GetConnectorExecute(r ApiGetConnectorRequest) (*C
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetConnectorCorrelationConfigRequest struct {
-	ctx context.Context
-	ApiService *ConnectorsAPIService
-	scriptName string
-}
-
-func (r ApiGetConnectorCorrelationConfigRequest) Execute() (string, *http.Response, error) {
-	return r.ApiService.GetConnectorCorrelationConfigExecute(r)
-}
-
-/*
-GetConnectorCorrelationConfig Method for GetConnectorCorrelationConfig
-
-Fetches a connector's correlation config using its script name.    
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param scriptName The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
- @return ApiGetConnectorCorrelationConfigRequest
-*/
-func (a *ConnectorsAPIService) GetConnectorCorrelationConfig(ctx context.Context, scriptName string) ApiGetConnectorCorrelationConfigRequest {
-	return ApiGetConnectorCorrelationConfigRequest{
-		ApiService: a,
-		ctx: ctx,
-		scriptName: scriptName,
-	}
-}
-
-// Execute executes the request
-//  @return string
-func (a *ConnectorsAPIService) GetConnectorCorrelationConfigExecute(r ApiGetConnectorCorrelationConfigRequest) (string, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  string
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.GetConnectorCorrelationConfig")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/connectors/{scriptName}/correlation-config"
-	localVarPath = strings.Replace(localVarPath, "{"+"scriptName"+"}", url.PathEscape(parameterValueToString(r.scriptName, "scriptName")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/xml", "application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiGetConnectorListRequest struct {
 	ctx context.Context
 	ApiService *ConnectorsAPIService
@@ -747,7 +579,7 @@ func (r ApiGetConnectorListRequest) Execute() ([]V3ConnectorDto, *http.Response,
 }
 
 /*
-GetConnectorList Gets connector list
+GetConnectorList Get Connector List
 
 Fetches list of connectors that have 'RELEASED' status using filtering and pagination.
 
@@ -936,12 +768,12 @@ func (r ApiGetConnectorSourceConfigRequest) Execute() (string, *http.Response, e
 }
 
 /*
-GetConnectorSourceConfig Method for GetConnectorSourceConfig
+GetConnectorSourceConfig Get Connector Source Configuration
 
 Fetches a connector's source config using its script name.    
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param scriptName The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+ @param scriptName The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
  @return ApiGetConnectorSourceConfigRequest
 */
 func (a *ConnectorsAPIService) GetConnectorSourceConfig(ctx context.Context, scriptName string) ApiGetConnectorSourceConfigRequest {
@@ -1104,12 +936,12 @@ func (r ApiGetConnectorSourceTemplateRequest) Execute() (string, *http.Response,
 }
 
 /*
-GetConnectorSourceTemplate Method for GetConnectorSourceTemplate
+GetConnectorSourceTemplate Get Connector Source Template
 
 Fetches a connector's source template using its script name.    
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param scriptName The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+ @param scriptName The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
  @return ApiGetConnectorSourceTemplateRequest
 */
 func (a *ConnectorsAPIService) GetConnectorSourceTemplate(ctx context.Context, scriptName string) ApiGetConnectorSourceTemplateRequest {
@@ -1273,7 +1105,7 @@ func (r ApiGetConnectorTranslationsRequest) Execute() (string, *http.Response, e
 }
 
 /*
-GetConnectorTranslations Method for GetConnectorTranslations
+GetConnectorTranslations Get Connector Translations
 
 Fetches a connector's translations using its script name.    
 
@@ -1433,200 +1265,7 @@ func (a *ConnectorsAPIService) GetConnectorTranslationsExecute(r ApiGetConnector
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPutCorrelationConfigRequest struct {
-	ctx context.Context
-	ApiService *ConnectorsAPIService
-	scriptName string
-	file *os.File
-}
-
-// connector correlation config xml file
-func (r ApiPutCorrelationConfigRequest) File(file *os.File) ApiPutCorrelationConfigRequest {
-	r.file = file
-	return r
-}
-
-func (r ApiPutCorrelationConfigRequest) Execute() (*UpdateDetail, *http.Response, error) {
-	return r.ApiService.PutCorrelationConfigExecute(r)
-}
-
-/*
-PutCorrelationConfig Method for PutCorrelationConfig
-
-Update a connector's correlation config using its script name.    
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param scriptName The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
- @return ApiPutCorrelationConfigRequest
-*/
-func (a *ConnectorsAPIService) PutCorrelationConfig(ctx context.Context, scriptName string) ApiPutCorrelationConfigRequest {
-	return ApiPutCorrelationConfigRequest{
-		ApiService: a,
-		ctx: ctx,
-		scriptName: scriptName,
-	}
-}
-
-// Execute executes the request
-//  @return UpdateDetail
-func (a *ConnectorsAPIService) PutCorrelationConfigExecute(r ApiPutCorrelationConfigRequest) (*UpdateDetail, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *UpdateDetail
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.PutCorrelationConfig")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/connectors/{scriptName}/correlation-config"
-	localVarPath = strings.Replace(localVarPath, "{"+"scriptName"+"}", url.PathEscape(parameterValueToString(r.scriptName, "scriptName")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.file == nil {
-		return localVarReturnValue, nil, reportError("file is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"multipart/form-data"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	var fileLocalVarFormFileName string
-	var fileLocalVarFileName     string
-	var fileLocalVarFileBytes    []byte
-
-	fileLocalVarFormFileName = "file"
-	fileLocalVarFile := r.file
-
-	if fileLocalVarFile != nil {
-		fbs, _ := io.ReadAll(fileLocalVarFile)
-
-		fileLocalVarFileBytes = fbs
-		fileLocalVarFileName = fileLocalVarFile.Name()
-		fileLocalVarFile.Close()
-		formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiPutSourceConfigRequest struct {
+type ApiPutConnectorSourceConfigRequest struct {
 	ctx context.Context
 	ApiService *ConnectorsAPIService
 	scriptName string
@@ -1634,26 +1273,26 @@ type ApiPutSourceConfigRequest struct {
 }
 
 // connector source config xml file
-func (r ApiPutSourceConfigRequest) File(file *os.File) ApiPutSourceConfigRequest {
+func (r ApiPutConnectorSourceConfigRequest) File(file *os.File) ApiPutConnectorSourceConfigRequest {
 	r.file = file
 	return r
 }
 
-func (r ApiPutSourceConfigRequest) Execute() (*UpdateDetail, *http.Response, error) {
-	return r.ApiService.PutSourceConfigExecute(r)
+func (r ApiPutConnectorSourceConfigRequest) Execute() (*UpdateDetail, *http.Response, error) {
+	return r.ApiService.PutConnectorSourceConfigExecute(r)
 }
 
 /*
-PutSourceConfig Method for PutSourceConfig
+PutConnectorSourceConfig Update Connector Source Configuration
 
 Update a connector's source config using its script name.    
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param scriptName The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
- @return ApiPutSourceConfigRequest
+ @param scriptName The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
+ @return ApiPutConnectorSourceConfigRequest
 */
-func (a *ConnectorsAPIService) PutSourceConfig(ctx context.Context, scriptName string) ApiPutSourceConfigRequest {
-	return ApiPutSourceConfigRequest{
+func (a *ConnectorsAPIService) PutConnectorSourceConfig(ctx context.Context, scriptName string) ApiPutConnectorSourceConfigRequest {
+	return ApiPutConnectorSourceConfigRequest{
 		ApiService: a,
 		ctx: ctx,
 		scriptName: scriptName,
@@ -1662,7 +1301,7 @@ func (a *ConnectorsAPIService) PutSourceConfig(ctx context.Context, scriptName s
 
 // Execute executes the request
 //  @return UpdateDetail
-func (a *ConnectorsAPIService) PutSourceConfigExecute(r ApiPutSourceConfigRequest) (*UpdateDetail, *http.Response, error) {
+func (a *ConnectorsAPIService) PutConnectorSourceConfigExecute(r ApiPutConnectorSourceConfigRequest) (*UpdateDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1670,7 +1309,7 @@ func (a *ConnectorsAPIService) PutSourceConfigExecute(r ApiPutSourceConfigReques
 		localVarReturnValue  *UpdateDetail
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.PutSourceConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.PutConnectorSourceConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1819,7 +1458,7 @@ func (a *ConnectorsAPIService) PutSourceConfigExecute(r ApiPutSourceConfigReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPutSourceTemplateRequest struct {
+type ApiPutConnectorSourceTemplateRequest struct {
 	ctx context.Context
 	ApiService *ConnectorsAPIService
 	scriptName string
@@ -1827,26 +1466,26 @@ type ApiPutSourceTemplateRequest struct {
 }
 
 // connector source template xml file
-func (r ApiPutSourceTemplateRequest) File(file *os.File) ApiPutSourceTemplateRequest {
+func (r ApiPutConnectorSourceTemplateRequest) File(file *os.File) ApiPutConnectorSourceTemplateRequest {
 	r.file = file
 	return r
 }
 
-func (r ApiPutSourceTemplateRequest) Execute() (*UpdateDetail, *http.Response, error) {
-	return r.ApiService.PutSourceTemplateExecute(r)
+func (r ApiPutConnectorSourceTemplateRequest) Execute() (*UpdateDetail, *http.Response, error) {
+	return r.ApiService.PutConnectorSourceTemplateExecute(r)
 }
 
 /*
-PutSourceTemplate Method for PutSourceTemplate
+PutConnectorSourceTemplate Update Connector Source Template
 
 Update a connector's source template using its script name.    
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param scriptName The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
- @return ApiPutSourceTemplateRequest
+ @param scriptName The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
+ @return ApiPutConnectorSourceTemplateRequest
 */
-func (a *ConnectorsAPIService) PutSourceTemplate(ctx context.Context, scriptName string) ApiPutSourceTemplateRequest {
-	return ApiPutSourceTemplateRequest{
+func (a *ConnectorsAPIService) PutConnectorSourceTemplate(ctx context.Context, scriptName string) ApiPutConnectorSourceTemplateRequest {
+	return ApiPutConnectorSourceTemplateRequest{
 		ApiService: a,
 		ctx: ctx,
 		scriptName: scriptName,
@@ -1855,7 +1494,7 @@ func (a *ConnectorsAPIService) PutSourceTemplate(ctx context.Context, scriptName
 
 // Execute executes the request
 //  @return UpdateDetail
-func (a *ConnectorsAPIService) PutSourceTemplateExecute(r ApiPutSourceTemplateRequest) (*UpdateDetail, *http.Response, error) {
+func (a *ConnectorsAPIService) PutConnectorSourceTemplateExecute(r ApiPutConnectorSourceTemplateRequest) (*UpdateDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1863,7 +1502,7 @@ func (a *ConnectorsAPIService) PutSourceTemplateExecute(r ApiPutSourceTemplateRe
 		localVarReturnValue  *UpdateDetail
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.PutSourceTemplate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.PutConnectorSourceTemplate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2012,29 +1651,29 @@ func (a *ConnectorsAPIService) PutSourceTemplateExecute(r ApiPutSourceTemplateRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPutTranslationsRequest struct {
+type ApiPutConnectorTranslationsRequest struct {
 	ctx context.Context
 	ApiService *ConnectorsAPIService
 	scriptName string
 	locale string
 }
 
-func (r ApiPutTranslationsRequest) Execute() (*UpdateDetail, *http.Response, error) {
-	return r.ApiService.PutTranslationsExecute(r)
+func (r ApiPutConnectorTranslationsRequest) Execute() (*UpdateDetail, *http.Response, error) {
+	return r.ApiService.PutConnectorTranslationsExecute(r)
 }
 
 /*
-PutTranslations Method for PutTranslations
+PutConnectorTranslations Update Connector Translations
 
 Update a connector's translations using its script name.    
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param scriptName The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
  @param locale The locale to apply to the config. If no viable locale is given, it will default to \"en\"
- @return ApiPutTranslationsRequest
+ @return ApiPutConnectorTranslationsRequest
 */
-func (a *ConnectorsAPIService) PutTranslations(ctx context.Context, scriptName string, locale string) ApiPutTranslationsRequest {
-	return ApiPutTranslationsRequest{
+func (a *ConnectorsAPIService) PutConnectorTranslations(ctx context.Context, scriptName string, locale string) ApiPutConnectorTranslationsRequest {
+	return ApiPutConnectorTranslationsRequest{
 		ApiService: a,
 		ctx: ctx,
 		scriptName: scriptName,
@@ -2044,7 +1683,7 @@ func (a *ConnectorsAPIService) PutTranslations(ctx context.Context, scriptName s
 
 // Execute executes the request
 //  @return UpdateDetail
-func (a *ConnectorsAPIService) PutTranslationsExecute(r ApiPutTranslationsRequest) (*UpdateDetail, *http.Response, error) {
+func (a *ConnectorsAPIService) PutConnectorTranslationsExecute(r ApiPutConnectorTranslationsRequest) (*UpdateDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -2052,7 +1691,7 @@ func (a *ConnectorsAPIService) PutTranslationsExecute(r ApiPutTranslationsReques
 		localVarReturnValue  *UpdateDetail
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.PutTranslations")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.PutConnectorTranslations")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2191,7 +1830,7 @@ type ApiUpdateConnectorRequest struct {
 	jsonPatchOperation *[]JsonPatchOperation
 }
 
-// A list of connector detail update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+// A list of connector detail update operations 
 func (r ApiUpdateConnectorRequest) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiUpdateConnectorRequest {
 	r.jsonPatchOperation = &jsonPatchOperation
 	return r
@@ -2202,13 +1841,24 @@ func (r ApiUpdateConnectorRequest) Execute() (*ConnectorDetail, *http.Response, 
 }
 
 /*
-UpdateConnector Update connector by script name
+UpdateConnector Update Connector by Script Name
 
-Patch a custom connector that using its script name.
-The following fields are patchable: * connectorMetadata * applicationXml * correlationConfigXml * sourceConfigXml
+This API updates a custom connector by script name using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
+
+The following fields are patchable:
+
+
+* connectorMetadata
+
+* applicationXml
+
+* correlationConfigXml
+
+* sourceConfigXml
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param scriptName The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+ @param scriptName The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
  @return ApiUpdateConnectorRequest
 */
 func (a *ConnectorsAPIService) UpdateConnector(ctx context.Context, scriptName string) ApiUpdateConnectorRequest {

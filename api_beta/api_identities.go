@@ -1261,6 +1261,7 @@ func (a *IdentitiesAPIService) ResetIdentityExecute(r ApiResetIdentityRequest) (
 type ApiSendIdentityVerificationAccountTokenRequest struct {
 	ctx context.Context
 	ApiService *IdentitiesAPIService
+	id string
 	sendAccountVerificationRequest *SendAccountVerificationRequest
 }
 
@@ -1278,16 +1279,16 @@ SendIdentityVerificationAccountToken Send password reset email
 
 This API sends an email with the link to start Password Reset. After selecting the link an identity will be able to set up a new password. Emails expire after 2 hours.
 
-A token with ORG_ADMIN or HELPDESK authority is required to call this API.
-
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Identity ID
  @return ApiSendIdentityVerificationAccountTokenRequest
 */
-func (a *IdentitiesAPIService) SendIdentityVerificationAccountToken(ctx context.Context) ApiSendIdentityVerificationAccountTokenRequest {
+func (a *IdentitiesAPIService) SendIdentityVerificationAccountToken(ctx context.Context, id string) ApiSendIdentityVerificationAccountTokenRequest {
 	return ApiSendIdentityVerificationAccountTokenRequest{
 		ApiService: a,
 		ctx: ctx,
+		id: id,
 	}
 }
 
@@ -1305,6 +1306,7 @@ func (a *IdentitiesAPIService) SendIdentityVerificationAccountTokenExecute(r Api
 	}
 
 	localVarPath := localBasePath + "/identities/{id}/verification/account/send"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1447,9 +1449,7 @@ This API submits a task for inviting given identities via email to complete regi
 
 This task will send an invitation email only for unregistered identities.
 
-The executed task status can be checked by Task Management > [Get task status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status)
-
-A token with ORG_ADMIN or HELPDESK authority is required to call this API.
+The executed task status can be checked by Task Management > [Get task status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status).
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

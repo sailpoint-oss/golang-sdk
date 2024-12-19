@@ -61,20 +61,6 @@ func Test_api_v3_ConnectorsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ConnectorsAPIService GetConnectorCorrelationConfig", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var scriptName string
-
-		resp, httpRes, err := apiClient.ConnectorsAPI.GetConnectorCorrelationConfig(context.Background(), scriptName).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test ConnectorsAPIService GetConnectorList", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -130,13 +116,13 @@ func Test_api_v3_ConnectorsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ConnectorsAPIService PutCorrelationConfig", func(t *testing.T) {
+	t.Run("Test ConnectorsAPIService PutConnectorSourceConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var scriptName string
 
-		resp, httpRes, err := apiClient.ConnectorsAPI.PutCorrelationConfig(context.Background(), scriptName).Execute()
+		resp, httpRes, err := apiClient.ConnectorsAPI.PutConnectorSourceConfig(context.Background(), scriptName).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -144,13 +130,13 @@ func Test_api_v3_ConnectorsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ConnectorsAPIService PutSourceConfig", func(t *testing.T) {
+	t.Run("Test ConnectorsAPIService PutConnectorSourceTemplate", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var scriptName string
 
-		resp, httpRes, err := apiClient.ConnectorsAPI.PutSourceConfig(context.Background(), scriptName).Execute()
+		resp, httpRes, err := apiClient.ConnectorsAPI.PutConnectorSourceTemplate(context.Background(), scriptName).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -158,28 +144,14 @@ func Test_api_v3_ConnectorsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ConnectorsAPIService PutSourceTemplate", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var scriptName string
-
-		resp, httpRes, err := apiClient.ConnectorsAPI.PutSourceTemplate(context.Background(), scriptName).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ConnectorsAPIService PutTranslations", func(t *testing.T) {
+	t.Run("Test ConnectorsAPIService PutConnectorTranslations", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var scriptName string
 		var locale string
 
-		resp, httpRes, err := apiClient.ConnectorsAPI.PutTranslations(context.Background(), scriptName, locale).Execute()
+		resp, httpRes, err := apiClient.ConnectorsAPI.PutConnectorTranslations(context.Background(), scriptName, locale).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

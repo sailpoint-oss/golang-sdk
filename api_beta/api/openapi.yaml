@@ -11280,9 +11280,8 @@ paths:
       - Connector Rule Management
   /connectors:
     get:
-      description: |-
-        Fetches list of connectors that have 'RELEASED' status using filtering and pagination.
-        A token with ORG_ADMIN authority is required to call this API.
+      description: Fetches list of connectors that have 'RELEASED' status using filtering
+        and pagination.
       operationId: getConnectorList
       parameters:
       - description: |-
@@ -11302,6 +11301,7 @@ paths:
         example: directConnect eq "true"
         in: query
         name: filters
+        required: false
         schema:
           type: string
       - description: |-
@@ -11346,6 +11346,7 @@ paths:
           \ it will default to \"en\""
         in: query
         name: locale
+        required: false
         schema:
           enum:
           - de
@@ -11454,10 +11455,15 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:connector-source-config:read
-      summary: Gets connector list
+        - idn:connector-config:read
+        - idn:connector-config:manage
+      summary: Get Connector List
       tags:
       - Connectors
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /custom-password-instructions:
     post:
       description: This API creates the custom password instructions for the specified
@@ -16045,9 +16051,7 @@ paths:
 
         This task will send an invitation email only for unregistered identities.
 
-        The executed task status can be checked by Task Management > [Get task status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status)
-
-        A token with ORG_ADMIN or HELPDESK authority is required to call this API.
+        The executed task status can be checked by Task Management > [Get task status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status).
       externalDocs:
         description: Learn more about inviting identities here
         url: https://documentation.sailpoint.com/saas/help/common/users/inviting_users.html
@@ -16139,19 +16143,26 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      security:
-      - userAuth:
-        - idn:password-user-invite:create
       summary: Invite identities to register
       tags:
       - Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - HELPDESK
   /identities/{id}/verification/account/send:
     post:
       description: |
         This API sends an email with the link to start Password Reset. After selecting the link an identity will be able to set up a new password. Emails expire after 2 hours.
-
-        A token with ORG_ADMIN or HELPDESK authority is required to call this API.
       operationId: sendIdentityVerificationAccountToken
+      parameters:
+      - description: Identity ID
+        example: ef38f94347e94562b5bb8424a56397d8
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
       requestBody:
         content:
           application/json:
@@ -16235,12 +16246,12 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      security:
-      - userAuth:
-        - idn:password-user-invite:create
       summary: Send password reset email
       tags:
       - Identities
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - HELPDESK
   /identities/process:
     post:
       description: "This operation should not be used to schedule your own identity\
@@ -45014,9 +45025,8 @@ paths:
       - Sources
   /sources/{id}/correlation-config:
     get:
-      description: |-
-        This API returns the existing correlation configuration for a source specified by the given ID.
-        A token with ORG_ADMIN authority is required to call this API.
+      description: This API returns the existing correlation configuration for a source
+        specified by the given ID.
       operationId: getCorrelationConfig
       parameters:
       - description: The source id
@@ -45110,13 +45120,17 @@ paths:
       security:
       - userAuth:
         - idn:sources:read
+        - idn:sources:manage
       summary: Get Source Correlation Configuration
       tags:
       - Sources
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
     put:
-      description: "Replaces the correlation configuration for the source specified\
-        \ by the given ID with the configuration provided in the request body.\n \
-        \   \nA token with ORG_ADMIN authority is required to call this API."
+      description: Replaces the correlation configuration for the source specified
+        by the given ID with the configuration provided in the request body.
       operationId: putCorrelationConfig
       parameters:
       - description: The source id
@@ -45215,10 +45229,14 @@ paths:
             error.
       security:
       - userAuth:
-        - idn:sources:update
+        - idn:sources:manage
       summary: Update Source Correlation Configuration
       tags:
       - Sources
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - SOURCE_ADMIN
+      - SOURCE_SUBADMIN
   /source-apps/{id}:
     delete:
       description: Use this API to delete a specific source app

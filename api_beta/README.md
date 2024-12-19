@@ -182,7 +182,7 @@ Class | Method | HTTP request | Description
 *ConnectorRuleManagementAPI* | [**GetConnectorRuleList**](docs/ConnectorRuleManagementAPI.md#getconnectorrulelist) | **Get** /connector-rules | List Connector Rules
 *ConnectorRuleManagementAPI* | [**UpdateConnectorRule**](docs/ConnectorRuleManagementAPI.md#updateconnectorrule) | **Put** /connector-rules/{id} | Update a Connector Rule
 *ConnectorRuleManagementAPI* | [**ValidateConnectorRule**](docs/ConnectorRuleManagementAPI.md#validateconnectorrule) | **Post** /connector-rules/validate | Validate Connector Rule
-*ConnectorsAPI* | [**GetConnectorList**](docs/ConnectorsAPI.md#getconnectorlist) | **Get** /connectors | Gets connector list
+*ConnectorsAPI* | [**GetConnectorList**](docs/ConnectorsAPI.md#getconnectorlist) | **Get** /connectors | Get Connector List
 *CustomFormsAPI* | [**CreateFormDefinition**](docs/CustomFormsAPI.md#createformdefinition) | **Post** /form-definitions | Creates a form definition.
 *CustomFormsAPI* | [**CreateFormDefinitionByTemplate**](docs/CustomFormsAPI.md#createformdefinitionbytemplate) | **Post** /form-definitions/template | Create a form definition by template.
 *CustomFormsAPI* | [**CreateFormDefinitionDynamicSchema**](docs/CustomFormsAPI.md#createformdefinitiondynamicschema) | **Post** /form-definitions/forms-action-dynamic-schema | Generate JSON Schema dynamically.

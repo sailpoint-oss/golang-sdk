@@ -121,7 +121,9 @@ func Test_api_beta_IdentitiesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.IdentitiesAPI.SendIdentityVerificationAccountToken(context.Background()).Execute()
+		var id string
+
+		httpRes, err := apiClient.IdentitiesAPI.SendIdentityVerificationAccountToken(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

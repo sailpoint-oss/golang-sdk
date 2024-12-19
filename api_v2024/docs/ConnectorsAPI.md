@@ -4,19 +4,19 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2024*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateCustomConnector**](ConnectorsAPI.md#CreateCustomConnector) | **Post** /connectors | Create custom connector
-[**DeleteCustomConnector**](ConnectorsAPI.md#DeleteCustomConnector) | **Delete** /connectors/{scriptName} | Deletes connector by script name
-[**GetConnector**](ConnectorsAPI.md#GetConnector) | **Get** /connectors/{scriptName} | Gets connector by script name
-[**GetConnectorCorrelationConfig**](ConnectorsAPI.md#GetConnectorCorrelationConfig) | **Get** /connectors/{scriptName}/correlation-config | 
-[**GetConnectorList**](ConnectorsAPI.md#GetConnectorList) | **Get** /connectors | Gets connector list
-[**GetConnectorSourceConfig**](ConnectorsAPI.md#GetConnectorSourceConfig) | **Get** /connectors/{scriptName}/source-config | 
-[**GetConnectorSourceTemplate**](ConnectorsAPI.md#GetConnectorSourceTemplate) | **Get** /connectors/{scriptName}/source-template | 
-[**GetConnectorTranslations**](ConnectorsAPI.md#GetConnectorTranslations) | **Get** /connectors/{scriptName}/translations/{locale} | 
-[**PutCorrelationConfig**](ConnectorsAPI.md#PutCorrelationConfig) | **Put** /connectors/{scriptName}/correlation-config | 
-[**PutSourceConfig**](ConnectorsAPI.md#PutSourceConfig) | **Put** /connectors/{scriptName}/source-config | 
-[**PutSourceTemplate**](ConnectorsAPI.md#PutSourceTemplate) | **Put** /connectors/{scriptName}/source-template | 
-[**PutTranslations**](ConnectorsAPI.md#PutTranslations) | **Put** /connectors/{scriptName}/translations/{locale} | 
-[**UpdateConnector**](ConnectorsAPI.md#UpdateConnector) | **Patch** /connectors/{scriptName} | Update connector by script name
+[**CreateCustomConnector**](ConnectorsAPI.md#CreateCustomConnector) | **Post** /connectors | Create Custom Connector
+[**DeleteCustomConnector**](ConnectorsAPI.md#DeleteCustomConnector) | **Delete** /connectors/{scriptName} | Delete Connector by Script Name
+[**GetConnector**](ConnectorsAPI.md#GetConnector) | **Get** /connectors/{scriptName} | Get Connector by Script Name
+[**GetConnectorCorrelationConfig**](ConnectorsAPI.md#GetConnectorCorrelationConfig) | **Get** /connectors/{scriptName}/correlation-config | Get Connector Correlation Configuration
+[**GetConnectorList**](ConnectorsAPI.md#GetConnectorList) | **Get** /connectors | Get Connector List
+[**GetConnectorSourceConfig**](ConnectorsAPI.md#GetConnectorSourceConfig) | **Get** /connectors/{scriptName}/source-config | Get Connector Source Configuration
+[**GetConnectorSourceTemplate**](ConnectorsAPI.md#GetConnectorSourceTemplate) | **Get** /connectors/{scriptName}/source-template | Get Connector Source Template
+[**GetConnectorTranslations**](ConnectorsAPI.md#GetConnectorTranslations) | **Get** /connectors/{scriptName}/translations/{locale} | Get Connector Translations
+[**PutConnectorCorrelationConfig**](ConnectorsAPI.md#PutConnectorCorrelationConfig) | **Put** /connectors/{scriptName}/correlation-config | Update Connector Correlation Configuration
+[**PutConnectorSourceConfig**](ConnectorsAPI.md#PutConnectorSourceConfig) | **Put** /connectors/{scriptName}/source-config | Update Connector Source Configuration
+[**PutConnectorSourceTemplate**](ConnectorsAPI.md#PutConnectorSourceTemplate) | **Put** /connectors/{scriptName}/source-template | Update Connector Source Template
+[**PutConnectorTranslations**](ConnectorsAPI.md#PutConnectorTranslations) | **Put** /connectors/{scriptName}/translations/{locale} | Update Connector Translations
+[**UpdateConnector**](ConnectorsAPI.md#UpdateConnector) | **Patch** /connectors/{scriptName} | Update Connector by Script Name
 
 
 
@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 > V3ConnectorDto CreateCustomConnector(ctx).V3CreateConnectorDto(v3CreateConnectorDto).Execute()
 
-Create custom connector
+Create Custom Connector
 
 
 
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 > DeleteCustomConnector(ctx, scriptName).Execute()
 
-Deletes connector by script name
+Delete Connector by Script Name
 
 
 
@@ -107,7 +107,7 @@ import (
 )
 
 func main() {
-	scriptName := "aScriptName" // string | The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+	scriptName := "aScriptName" // string | The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -125,7 +125,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**scriptName** | **string** | The scriptName value of the connector. Scriptname is the unique id generated at connector creation. | 
+**scriptName** | **string** | The scriptName value of the connector. ScriptName is the unique id generated at connector creation. | 
 
 ### Other Parameters
 
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 > ConnectorDetail GetConnector(ctx, scriptName).Locale(locale).Execute()
 
-Gets connector by script name
+Get Connector by Script Name
 
 
 
@@ -175,7 +175,7 @@ import (
 )
 
 func main() {
-	scriptName := "aScriptName" // string | The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+	scriptName := "aScriptName" // string | The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
 	locale := "de" // string | The locale to apply to the config. If no viable locale is given, it will default to \"en\" (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -196,7 +196,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**scriptName** | **string** | The scriptName value of the connector. Scriptname is the unique id generated at connector creation. | 
+**scriptName** | **string** | The scriptName value of the connector. ScriptName is the unique id generated at connector creation. | 
 
 ### Other Parameters
 
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 > string GetConnectorCorrelationConfig(ctx, scriptName).Execute()
 
-
+Get Connector Correlation Configuration
 
 
 
@@ -300,7 +300,7 @@ Name | Type | Description  | Notes
 
 > []V3ConnectorDto GetConnectorList(ctx).Filters(filters).Limit(limit).Offset(offset).Count(count).Locale(locale).Execute()
 
-Gets connector list
+Get Connector List
 
 
 
@@ -374,7 +374,7 @@ Name | Type | Description  | Notes
 
 > string GetConnectorSourceConfig(ctx, scriptName).Execute()
 
-
+Get Connector Source Configuration
 
 
 
@@ -391,7 +391,7 @@ import (
 )
 
 func main() {
-	scriptName := "aScriptName" // string | The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+	scriptName := "aScriptName" // string | The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -411,7 +411,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**scriptName** | **string** | The scriptName value of the connector. Scriptname is the unique id generated at connector creation. | 
+**scriptName** | **string** | The scriptName value of the connector. ScriptName is the unique id generated at connector creation. | 
 
 ### Other Parameters
 
@@ -444,7 +444,7 @@ Name | Type | Description  | Notes
 
 > string GetConnectorSourceTemplate(ctx, scriptName).Execute()
 
-
+Get Connector Source Template
 
 
 
@@ -461,7 +461,7 @@ import (
 )
 
 func main() {
-	scriptName := "aScriptName" // string | The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+	scriptName := "aScriptName" // string | The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -481,7 +481,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**scriptName** | **string** | The scriptName value of the connector. Scriptname is the unique id generated at connector creation. | 
+**scriptName** | **string** | The scriptName value of the connector. ScriptName is the unique id generated at connector creation. | 
 
 ### Other Parameters
 
@@ -514,7 +514,7 @@ Name | Type | Description  | Notes
 
 > string GetConnectorTranslations(ctx, scriptName, locale).Execute()
 
-
+Get Connector Translations
 
 
 
@@ -583,11 +583,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PutCorrelationConfig
+## PutConnectorCorrelationConfig
 
-> UpdateDetail PutCorrelationConfig(ctx, scriptName).File(file).Execute()
+> UpdateDetail PutConnectorCorrelationConfig(ctx, scriptName).File(file).Execute()
 
-
+Update Connector Correlation Configuration
 
 
 
@@ -609,13 +609,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ConnectorsAPI.PutCorrelationConfig(context.Background(), scriptName).File(file).Execute()
+	resp, r, err := apiClient.ConnectorsAPI.PutConnectorCorrelationConfig(context.Background(), scriptName).File(file).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.PutCorrelationConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.PutConnectorCorrelationConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PutCorrelationConfig`: UpdateDetail
-	fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.PutCorrelationConfig`: %v\n", resp)
+	// response from `PutConnectorCorrelationConfig`: UpdateDetail
+	fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.PutConnectorCorrelationConfig`: %v\n", resp)
 }
 ```
 
@@ -629,7 +629,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPutCorrelationConfigRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPutConnectorCorrelationConfigRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -655,11 +655,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PutSourceConfig
+## PutConnectorSourceConfig
 
-> UpdateDetail PutSourceConfig(ctx, scriptName).File(file).Execute()
+> UpdateDetail PutConnectorSourceConfig(ctx, scriptName).File(file).Execute()
 
-
+Update Connector Source Configuration
 
 
 
@@ -676,18 +676,18 @@ import (
 )
 
 func main() {
-	scriptName := "aScriptName" // string | The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+	scriptName := "aScriptName" // string | The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
 	file := os.NewFile(1234, "some_file") // *os.File | connector source config xml file
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ConnectorsAPI.PutSourceConfig(context.Background(), scriptName).File(file).Execute()
+	resp, r, err := apiClient.ConnectorsAPI.PutConnectorSourceConfig(context.Background(), scriptName).File(file).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.PutSourceConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.PutConnectorSourceConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PutSourceConfig`: UpdateDetail
-	fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.PutSourceConfig`: %v\n", resp)
+	// response from `PutConnectorSourceConfig`: UpdateDetail
+	fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.PutConnectorSourceConfig`: %v\n", resp)
 }
 ```
 
@@ -697,11 +697,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**scriptName** | **string** | The scriptName value of the connector. Scriptname is the unique id generated at connector creation. | 
+**scriptName** | **string** | The scriptName value of the connector. ScriptName is the unique id generated at connector creation. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPutSourceConfigRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPutConnectorSourceConfigRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -727,11 +727,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PutSourceTemplate
+## PutConnectorSourceTemplate
 
-> UpdateDetail PutSourceTemplate(ctx, scriptName).File(file).Execute()
+> UpdateDetail PutConnectorSourceTemplate(ctx, scriptName).File(file).Execute()
 
-
+Update Connector Source Template
 
 
 
@@ -748,18 +748,18 @@ import (
 )
 
 func main() {
-	scriptName := "aScriptName" // string | The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+	scriptName := "aScriptName" // string | The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
 	file := os.NewFile(1234, "some_file") // *os.File | connector source template xml file
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ConnectorsAPI.PutSourceTemplate(context.Background(), scriptName).File(file).Execute()
+	resp, r, err := apiClient.ConnectorsAPI.PutConnectorSourceTemplate(context.Background(), scriptName).File(file).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.PutSourceTemplate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.PutConnectorSourceTemplate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PutSourceTemplate`: UpdateDetail
-	fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.PutSourceTemplate`: %v\n", resp)
+	// response from `PutConnectorSourceTemplate`: UpdateDetail
+	fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.PutConnectorSourceTemplate`: %v\n", resp)
 }
 ```
 
@@ -769,11 +769,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**scriptName** | **string** | The scriptName value of the connector. Scriptname is the unique id generated at connector creation. | 
+**scriptName** | **string** | The scriptName value of the connector. ScriptName is the unique id generated at connector creation. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPutSourceTemplateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPutConnectorSourceTemplateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -799,11 +799,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PutTranslations
+## PutConnectorTranslations
 
-> UpdateDetail PutTranslations(ctx, scriptName, locale).Execute()
+> UpdateDetail PutConnectorTranslations(ctx, scriptName, locale).Execute()
 
-
+Update Connector Translations
 
 
 
@@ -825,13 +825,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ConnectorsAPI.PutTranslations(context.Background(), scriptName, locale).Execute()
+	resp, r, err := apiClient.ConnectorsAPI.PutConnectorTranslations(context.Background(), scriptName, locale).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.PutTranslations``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.PutConnectorTranslations``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PutTranslations`: UpdateDetail
-	fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.PutTranslations`: %v\n", resp)
+	// response from `PutConnectorTranslations`: UpdateDetail
+	fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.PutConnectorTranslations`: %v\n", resp)
 }
 ```
 
@@ -846,7 +846,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPutTranslationsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPutConnectorTranslationsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -876,7 +876,7 @@ Name | Type | Description  | Notes
 
 > ConnectorDetail UpdateConnector(ctx, scriptName).JsonPatchOperation(jsonPatchOperation).Execute()
 
-Update connector by script name
+Update Connector by Script Name
 
 
 
@@ -893,8 +893,8 @@ import (
 )
 
 func main() {
-	scriptName := "aScriptName" // string | The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
-	jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of connector detail update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+	scriptName := "aScriptName" // string | The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
+	jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of connector detail update operations 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -914,7 +914,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**scriptName** | **string** | The scriptName value of the connector. Scriptname is the unique id generated at connector creation. | 
+**scriptName** | **string** | The scriptName value of the connector. ScriptName is the unique id generated at connector creation. | 
 
 ### Other Parameters
 
@@ -924,7 +924,7 @@ Other parameters are passed through a pointer to a apiUpdateConnectorRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonPatchOperation** | [**[]JsonPatchOperation**](JsonPatchOperation.md) | A list of connector detail update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](JsonPatchOperation.md) | A list of connector detail update operations  | 
 
 ### Return type
 

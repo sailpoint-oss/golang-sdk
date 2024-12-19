@@ -218,19 +218,19 @@ Class | Method | HTTP request | Description
 *ConnectorRuleManagementAPI* | [**GetConnectorRuleList**](docs/ConnectorRuleManagementAPI.md#getconnectorrulelist) | **Get** /connector-rules | List Connector Rules
 *ConnectorRuleManagementAPI* | [**UpdateConnectorRule**](docs/ConnectorRuleManagementAPI.md#updateconnectorrule) | **Put** /connector-rules/{id} | Update a Connector Rule
 *ConnectorRuleManagementAPI* | [**ValidateConnectorRule**](docs/ConnectorRuleManagementAPI.md#validateconnectorrule) | **Post** /connector-rules/validate | Validate Connector Rule
-*ConnectorsAPI* | [**CreateCustomConnector**](docs/ConnectorsAPI.md#createcustomconnector) | **Post** /connectors | Create custom connector
-*ConnectorsAPI* | [**DeleteCustomConnector**](docs/ConnectorsAPI.md#deletecustomconnector) | **Delete** /connectors/{scriptName} | Deletes connector by script name
-*ConnectorsAPI* | [**GetConnector**](docs/ConnectorsAPI.md#getconnector) | **Get** /connectors/{scriptName} | Gets connector by script name
-*ConnectorsAPI* | [**GetConnectorCorrelationConfig**](docs/ConnectorsAPI.md#getconnectorcorrelationconfig) | **Get** /connectors/{scriptName}/correlation-config | 
-*ConnectorsAPI* | [**GetConnectorList**](docs/ConnectorsAPI.md#getconnectorlist) | **Get** /connectors | Gets connector list
-*ConnectorsAPI* | [**GetConnectorSourceConfig**](docs/ConnectorsAPI.md#getconnectorsourceconfig) | **Get** /connectors/{scriptName}/source-config | 
-*ConnectorsAPI* | [**GetConnectorSourceTemplate**](docs/ConnectorsAPI.md#getconnectorsourcetemplate) | **Get** /connectors/{scriptName}/source-template | 
-*ConnectorsAPI* | [**GetConnectorTranslations**](docs/ConnectorsAPI.md#getconnectortranslations) | **Get** /connectors/{scriptName}/translations/{locale} | 
-*ConnectorsAPI* | [**PutCorrelationConfig**](docs/ConnectorsAPI.md#putcorrelationconfig) | **Put** /connectors/{scriptName}/correlation-config | 
-*ConnectorsAPI* | [**PutSourceConfig**](docs/ConnectorsAPI.md#putsourceconfig) | **Put** /connectors/{scriptName}/source-config | 
-*ConnectorsAPI* | [**PutSourceTemplate**](docs/ConnectorsAPI.md#putsourcetemplate) | **Put** /connectors/{scriptName}/source-template | 
-*ConnectorsAPI* | [**PutTranslations**](docs/ConnectorsAPI.md#puttranslations) | **Put** /connectors/{scriptName}/translations/{locale} | 
-*ConnectorsAPI* | [**UpdateConnector**](docs/ConnectorsAPI.md#updateconnector) | **Patch** /connectors/{scriptName} | Update connector by script name
+*ConnectorsAPI* | [**CreateCustomConnector**](docs/ConnectorsAPI.md#createcustomconnector) | **Post** /connectors | Create Custom Connector
+*ConnectorsAPI* | [**DeleteCustomConnector**](docs/ConnectorsAPI.md#deletecustomconnector) | **Delete** /connectors/{scriptName} | Delete Connector by Script Name
+*ConnectorsAPI* | [**GetConnector**](docs/ConnectorsAPI.md#getconnector) | **Get** /connectors/{scriptName} | Get Connector by Script Name
+*ConnectorsAPI* | [**GetConnectorCorrelationConfig**](docs/ConnectorsAPI.md#getconnectorcorrelationconfig) | **Get** /connectors/{scriptName}/correlation-config | Get Connector Correlation Configuration
+*ConnectorsAPI* | [**GetConnectorList**](docs/ConnectorsAPI.md#getconnectorlist) | **Get** /connectors | Get Connector List
+*ConnectorsAPI* | [**GetConnectorSourceConfig**](docs/ConnectorsAPI.md#getconnectorsourceconfig) | **Get** /connectors/{scriptName}/source-config | Get Connector Source Configuration
+*ConnectorsAPI* | [**GetConnectorSourceTemplate**](docs/ConnectorsAPI.md#getconnectorsourcetemplate) | **Get** /connectors/{scriptName}/source-template | Get Connector Source Template
+*ConnectorsAPI* | [**GetConnectorTranslations**](docs/ConnectorsAPI.md#getconnectortranslations) | **Get** /connectors/{scriptName}/translations/{locale} | Get Connector Translations
+*ConnectorsAPI* | [**PutConnectorCorrelationConfig**](docs/ConnectorsAPI.md#putconnectorcorrelationconfig) | **Put** /connectors/{scriptName}/correlation-config | Update Connector Correlation Configuration
+*ConnectorsAPI* | [**PutConnectorSourceConfig**](docs/ConnectorsAPI.md#putconnectorsourceconfig) | **Put** /connectors/{scriptName}/source-config | Update Connector Source Configuration
+*ConnectorsAPI* | [**PutConnectorSourceTemplate**](docs/ConnectorsAPI.md#putconnectorsourcetemplate) | **Put** /connectors/{scriptName}/source-template | Update Connector Source Template
+*ConnectorsAPI* | [**PutConnectorTranslations**](docs/ConnectorsAPI.md#putconnectortranslations) | **Put** /connectors/{scriptName}/translations/{locale} | Update Connector Translations
+*ConnectorsAPI* | [**UpdateConnector**](docs/ConnectorsAPI.md#updateconnector) | **Patch** /connectors/{scriptName} | Update Connector by Script Name
 *CustomFormsAPI* | [**CreateFormDefinition**](docs/CustomFormsAPI.md#createformdefinition) | **Post** /form-definitions | Creates a form definition.
 *CustomFormsAPI* | [**CreateFormDefinitionDynamicSchema**](docs/CustomFormsAPI.md#createformdefinitiondynamicschema) | **Post** /form-definitions/forms-action-dynamic-schema | Generate JSON Schema dynamically.
 *CustomFormsAPI* | [**CreateFormDefinitionFileRequest**](docs/CustomFormsAPI.md#createformdefinitionfilerequest) | **Post** /form-definitions/{formDefinitionID}/upload | Upload new form definition file.
@@ -343,6 +343,8 @@ Class | Method | HTTP request | Description
 *IdentitiesAPI* | [**GetRoleAssignments**](docs/IdentitiesAPI.md#getroleassignments) | **Get** /identities/{identityId}/role-assignments | List role assignments
 *IdentitiesAPI* | [**ListIdentities**](docs/IdentitiesAPI.md#listidentities) | **Get** /identities | List Identities
 *IdentitiesAPI* | [**ResetIdentity**](docs/IdentitiesAPI.md#resetidentity) | **Post** /identities/{id}/reset | Reset an identity
+*IdentitiesAPI* | [**SendIdentityVerificationAccountToken**](docs/IdentitiesAPI.md#sendidentityverificationaccounttoken) | **Post** /identities/{id}/verification/account/send | Send password reset email
+*IdentitiesAPI* | [**StartIdentitiesInvite**](docs/IdentitiesAPI.md#startidentitiesinvite) | **Post** /identities/invite | Invite identities to register
 *IdentitiesAPI* | [**StartIdentityProcessing**](docs/IdentitiesAPI.md#startidentityprocessing) | **Post** /identities/process | Process a list of identityIds
 *IdentitiesAPI* | [**SynchronizeAttributesForIdentity**](docs/IdentitiesAPI.md#synchronizeattributesforidentity) | **Post** /identities/{identityId}/synchronize-attributes | Attribute synchronization for single identity.
 *IdentityAttributesAPI* | [**CreateIdentityAttribute**](docs/IdentityAttributesAPI.md#createidentityattribute) | **Post** /identity-attributes | Create Identity Attribute
@@ -592,6 +594,7 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**DeleteSourceSchedule**](docs/SourcesAPI.md#deletesourceschedule) | **Delete** /sources/{sourceId}/schedules/{scheduleType} | Delete Source Schedule by type.
 *SourcesAPI* | [**DeleteSourceSchema**](docs/SourcesAPI.md#deletesourceschema) | **Delete** /sources/{sourceId}/schemas/{schemaId} | Delete Source Schema by ID
 *SourcesAPI* | [**GetAccountsSchema**](docs/SourcesAPI.md#getaccountsschema) | **Get** /sources/{id}/schemas/accounts | Downloads source accounts schema template
+*SourcesAPI* | [**GetCorrelationConfig**](docs/SourcesAPI.md#getcorrelationconfig) | **Get** /sources/{id}/correlation-config | Get Source Correlation Configuration
 *SourcesAPI* | [**GetEntitlementsSchema**](docs/SourcesAPI.md#getentitlementsschema) | **Get** /sources/{id}/schemas/entitlements | Downloads source entitlements schema template
 *SourcesAPI* | [**GetNativeChangeDetectionConfig**](docs/SourcesAPI.md#getnativechangedetectionconfig) | **Get** /sources/{sourceId}/native-change-detection-config | Native Change Detection Configuration
 *SourcesAPI* | [**GetProvisioningPolicy**](docs/SourcesAPI.md#getprovisioningpolicy) | **Get** /sources/{sourceId}/provisioning-policies/{usageType} | Get Provisioning Policy by UsageType
@@ -613,6 +616,7 @@ Class | Method | HTTP request | Description
 *SourcesAPI* | [**ListSources**](docs/SourcesAPI.md#listsources) | **Get** /sources | Lists all sources in IdentityNow.
 *SourcesAPI* | [**PeekResourceObjects**](docs/SourcesAPI.md#peekresourceobjects) | **Post** /sources/{sourceId}/connector/peek-resource-objects | Peek source connector&#39;s resource objects
 *SourcesAPI* | [**PingCluster**](docs/SourcesAPI.md#pingcluster) | **Post** /sources/{sourceId}/connector/ping-cluster | Ping cluster for source connector
+*SourcesAPI* | [**PutCorrelationConfig**](docs/SourcesAPI.md#putcorrelationconfig) | **Put** /sources/{id}/correlation-config | Update Source Correlation Configuration
 *SourcesAPI* | [**PutNativeChangeDetectionConfig**](docs/SourcesAPI.md#putnativechangedetectionconfig) | **Put** /sources/{sourceId}/native-change-detection-config | Update Native Change Detection Configuration
 *SourcesAPI* | [**PutProvisioningPolicy**](docs/SourcesAPI.md#putprovisioningpolicy) | **Put** /sources/{sourceId}/provisioning-policies/{usageType} | Update Provisioning Policy by UsageType
 *SourcesAPI* | [**PutSource**](docs/SourcesAPI.md#putsource) | **Put** /sources/{id} | Update Source (Full)
@@ -995,6 +999,8 @@ Class | Method | HTTP request | Description
  - [ContextAttributeDto](docs/ContextAttributeDto.md)
  - [ContextAttributeDtoValue](docs/ContextAttributeDtoValue.md)
  - [CorrelatedGovernanceEvent](docs/CorrelatedGovernanceEvent.md)
+ - [CorrelationConfig](docs/CorrelationConfig.md)
+ - [CorrelationConfigAttributeAssignmentsInner](docs/CorrelationConfigAttributeAssignmentsInner.md)
  - [CreateDomainDkim405Response](docs/CreateDomainDkim405Response.md)
  - [CreateExternalExecuteWorkflow200Response](docs/CreateExternalExecuteWorkflow200Response.md)
  - [CreateExternalExecuteWorkflowRequest](docs/CreateExternalExecuteWorkflowRequest.md)
@@ -1187,6 +1193,7 @@ Class | Method | HTTP request | Description
  - [ImportSpConfigRequest](docs/ImportSpConfigRequest.md)
  - [Index](docs/Index.md)
  - [InnerHit](docs/InnerHit.md)
+ - [InviteIdentitiesRequest](docs/InviteIdentitiesRequest.md)
  - [Invocation](docs/Invocation.md)
  - [InvocationStatus](docs/InvocationStatus.md)
  - [InvocationStatusType](docs/InvocationStatusType.md)
@@ -1362,10 +1369,10 @@ Class | Method | HTTP request | Description
  - [PublicIdentityAttributesInner](docs/PublicIdentityAttributesInner.md)
  - [PublicIdentityConfig](docs/PublicIdentityConfig.md)
  - [PutClientLogConfigurationRequest](docs/PutClientLogConfigurationRequest.md)
- - [PutCorrelationConfigRequest](docs/PutCorrelationConfigRequest.md)
+ - [PutConnectorCorrelationConfigRequest](docs/PutConnectorCorrelationConfigRequest.md)
+ - [PutConnectorSourceConfigRequest](docs/PutConnectorSourceConfigRequest.md)
+ - [PutConnectorSourceTemplateRequest](docs/PutConnectorSourceTemplateRequest.md)
  - [PutPasswordDictionaryRequest](docs/PutPasswordDictionaryRequest.md)
- - [PutSourceConfigRequest](docs/PutSourceConfigRequest.md)
- - [PutSourceTemplateRequest](docs/PutSourceTemplateRequest.md)
  - [Query](docs/Query.md)
  - [QueryResultFilter](docs/QueryResultFilter.md)
  - [QueryType](docs/QueryType.md)
@@ -1541,6 +1548,7 @@ Class | Method | HTTP request | Description
  - [SelectorAccountMatchConfig](docs/SelectorAccountMatchConfig.md)
  - [SelectorAccountMatchConfigMatchExpression](docs/SelectorAccountMatchConfigMatchExpression.md)
  - [SelfImportExportDto](docs/SelfImportExportDto.md)
+ - [SendAccountVerificationRequest](docs/SendAccountVerificationRequest.md)
  - [SendTestNotificationRequestDto](docs/SendTestNotificationRequestDto.md)
  - [ServiceDeskIntegrationDto](docs/ServiceDeskIntegrationDto.md)
  - [ServiceDeskIntegrationDto1](docs/ServiceDeskIntegrationDto1.md)

@@ -67,10 +67,9 @@ func (r ApiGetConnectorListRequest) Execute() ([]V3ConnectorDto, *http.Response,
 }
 
 /*
-GetConnectorList Gets connector list
+GetConnectorList Get Connector List
 
 Fetches list of connectors that have 'RELEASED' status using filtering and pagination.
-A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetConnectorListRequest

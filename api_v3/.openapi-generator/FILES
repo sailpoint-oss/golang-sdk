@@ -450,10 +450,9 @@ docs/PublicIdentityAttributeConfig.md
 docs/PublicIdentityAttributesInner.md
 docs/PublicIdentityConfig.md
 docs/PutClientLogConfigurationRequest.md
-docs/PutCorrelationConfigRequest.md
+docs/PutConnectorSourceConfigRequest.md
+docs/PutConnectorSourceTemplateRequest.md
 docs/PutPasswordDictionaryRequest.md
-docs/PutSourceConfigRequest.md
-docs/PutSourceTemplateRequest.md
 docs/Query.md
 docs/QueryResultFilter.md
 docs/QueryType.md
@@ -1039,10 +1038,9 @@ model_public_identity_attribute_config.go
 model_public_identity_attributes_inner.go
 model_public_identity_config.go
 model_put_client_log_configuration_request.go
-model_put_correlation_config_request.go
+model_put_connector_source_config_request.go
+model_put_connector_source_template_request.go
 model_put_password_dictionary_request.go
-model_put_source_config_request.go
-model_put_source_template_request.go
 model_query.go
 model_query_result_filter.go
 model_query_type.go

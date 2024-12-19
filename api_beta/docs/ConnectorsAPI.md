@@ -4,7 +4,7 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetConnectorList**](ConnectorsAPI.md#GetConnectorList) | **Get** /connectors | Gets connector list
+[**GetConnectorList**](ConnectorsAPI.md#GetConnectorList) | **Get** /connectors | Get Connector List
 
 
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 > []V3ConnectorDto GetConnectorList(ctx).Filters(filters).Limit(limit).Offset(offset).Count(count).Locale(locale).Execute()
 
-Gets connector list
+Get Connector List
 
 
 

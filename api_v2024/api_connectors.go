@@ -40,7 +40,7 @@ func (r ApiCreateCustomConnectorRequest) Execute() (*V3ConnectorDto, *http.Respo
 }
 
 /*
-CreateCustomConnector Create custom connector
+CreateCustomConnector Create Custom Connector
 
 Create custom connector.    
 
@@ -210,12 +210,12 @@ func (r ApiDeleteCustomConnectorRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteCustomConnector Deletes connector by script name
+DeleteCustomConnector Delete Connector by Script Name
 
 Delete a custom connector that using its script name.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param scriptName The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+ @param scriptName The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
  @return ApiDeleteCustomConnectorRequest
 */
 func (a *ConnectorsAPIService) DeleteCustomConnector(ctx context.Context, scriptName string) ApiDeleteCustomConnectorRequest {
@@ -374,12 +374,12 @@ func (r ApiGetConnectorRequest) Execute() (*ConnectorDetail, *http.Response, err
 }
 
 /*
-GetConnector Gets connector by script name
+GetConnector Get Connector by Script Name
 
 Fetches a connector that using its script name.    
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param scriptName The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+ @param scriptName The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
  @return ApiGetConnectorRequest
 */
 func (a *ConnectorsAPIService) GetConnector(ctx context.Context, scriptName string) ApiGetConnectorRequest {
@@ -545,7 +545,7 @@ func (r ApiGetConnectorCorrelationConfigRequest) Execute() (string, *http.Respon
 }
 
 /*
-GetConnectorCorrelationConfig Method for GetConnectorCorrelationConfig
+GetConnectorCorrelationConfig Get Connector Correlation Configuration
 
 Fetches a connector's correlation config using its script name.    
 
@@ -747,7 +747,7 @@ func (r ApiGetConnectorListRequest) Execute() ([]V3ConnectorDto, *http.Response,
 }
 
 /*
-GetConnectorList Gets connector list
+GetConnectorList Get Connector List
 
 Fetches list of connectors that have 'RELEASED' status using filtering and pagination.
 
@@ -936,12 +936,12 @@ func (r ApiGetConnectorSourceConfigRequest) Execute() (string, *http.Response, e
 }
 
 /*
-GetConnectorSourceConfig Method for GetConnectorSourceConfig
+GetConnectorSourceConfig Get Connector Source Configuration
 
 Fetches a connector's source config using its script name.    
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param scriptName The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+ @param scriptName The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
  @return ApiGetConnectorSourceConfigRequest
 */
 func (a *ConnectorsAPIService) GetConnectorSourceConfig(ctx context.Context, scriptName string) ApiGetConnectorSourceConfigRequest {
@@ -1104,12 +1104,12 @@ func (r ApiGetConnectorSourceTemplateRequest) Execute() (string, *http.Response,
 }
 
 /*
-GetConnectorSourceTemplate Method for GetConnectorSourceTemplate
+GetConnectorSourceTemplate Get Connector Source Template
 
 Fetches a connector's source template using its script name.    
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param scriptName The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+ @param scriptName The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
  @return ApiGetConnectorSourceTemplateRequest
 */
 func (a *ConnectorsAPIService) GetConnectorSourceTemplate(ctx context.Context, scriptName string) ApiGetConnectorSourceTemplateRequest {
@@ -1273,7 +1273,7 @@ func (r ApiGetConnectorTranslationsRequest) Execute() (string, *http.Response, e
 }
 
 /*
-GetConnectorTranslations Method for GetConnectorTranslations
+GetConnectorTranslations Get Connector Translations
 
 Fetches a connector's translations using its script name.    
 
@@ -1433,7 +1433,7 @@ func (a *ConnectorsAPIService) GetConnectorTranslationsExecute(r ApiGetConnector
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPutCorrelationConfigRequest struct {
+type ApiPutConnectorCorrelationConfigRequest struct {
 	ctx context.Context
 	ApiService *ConnectorsAPIService
 	scriptName string
@@ -1441,26 +1441,26 @@ type ApiPutCorrelationConfigRequest struct {
 }
 
 // connector correlation config xml file
-func (r ApiPutCorrelationConfigRequest) File(file *os.File) ApiPutCorrelationConfigRequest {
+func (r ApiPutConnectorCorrelationConfigRequest) File(file *os.File) ApiPutConnectorCorrelationConfigRequest {
 	r.file = file
 	return r
 }
 
-func (r ApiPutCorrelationConfigRequest) Execute() (*UpdateDetail, *http.Response, error) {
-	return r.ApiService.PutCorrelationConfigExecute(r)
+func (r ApiPutConnectorCorrelationConfigRequest) Execute() (*UpdateDetail, *http.Response, error) {
+	return r.ApiService.PutConnectorCorrelationConfigExecute(r)
 }
 
 /*
-PutCorrelationConfig Method for PutCorrelationConfig
+PutConnectorCorrelationConfig Update Connector Correlation Configuration
 
 Update a connector's correlation config using its script name.    
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param scriptName The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
- @return ApiPutCorrelationConfigRequest
+ @return ApiPutConnectorCorrelationConfigRequest
 */
-func (a *ConnectorsAPIService) PutCorrelationConfig(ctx context.Context, scriptName string) ApiPutCorrelationConfigRequest {
-	return ApiPutCorrelationConfigRequest{
+func (a *ConnectorsAPIService) PutConnectorCorrelationConfig(ctx context.Context, scriptName string) ApiPutConnectorCorrelationConfigRequest {
+	return ApiPutConnectorCorrelationConfigRequest{
 		ApiService: a,
 		ctx: ctx,
 		scriptName: scriptName,
@@ -1469,7 +1469,7 @@ func (a *ConnectorsAPIService) PutCorrelationConfig(ctx context.Context, scriptN
 
 // Execute executes the request
 //  @return UpdateDetail
-func (a *ConnectorsAPIService) PutCorrelationConfigExecute(r ApiPutCorrelationConfigRequest) (*UpdateDetail, *http.Response, error) {
+func (a *ConnectorsAPIService) PutConnectorCorrelationConfigExecute(r ApiPutConnectorCorrelationConfigRequest) (*UpdateDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1477,7 +1477,7 @@ func (a *ConnectorsAPIService) PutCorrelationConfigExecute(r ApiPutCorrelationCo
 		localVarReturnValue  *UpdateDetail
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.PutCorrelationConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.PutConnectorCorrelationConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1626,7 +1626,7 @@ func (a *ConnectorsAPIService) PutCorrelationConfigExecute(r ApiPutCorrelationCo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPutSourceConfigRequest struct {
+type ApiPutConnectorSourceConfigRequest struct {
 	ctx context.Context
 	ApiService *ConnectorsAPIService
 	scriptName string
@@ -1634,26 +1634,26 @@ type ApiPutSourceConfigRequest struct {
 }
 
 // connector source config xml file
-func (r ApiPutSourceConfigRequest) File(file *os.File) ApiPutSourceConfigRequest {
+func (r ApiPutConnectorSourceConfigRequest) File(file *os.File) ApiPutConnectorSourceConfigRequest {
 	r.file = file
 	return r
 }
 
-func (r ApiPutSourceConfigRequest) Execute() (*UpdateDetail, *http.Response, error) {
-	return r.ApiService.PutSourceConfigExecute(r)
+func (r ApiPutConnectorSourceConfigRequest) Execute() (*UpdateDetail, *http.Response, error) {
+	return r.ApiService.PutConnectorSourceConfigExecute(r)
 }
 
 /*
-PutSourceConfig Method for PutSourceConfig
+PutConnectorSourceConfig Update Connector Source Configuration
 
 Update a connector's source config using its script name.    
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param scriptName The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
- @return ApiPutSourceConfigRequest
+ @param scriptName The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
+ @return ApiPutConnectorSourceConfigRequest
 */
-func (a *ConnectorsAPIService) PutSourceConfig(ctx context.Context, scriptName string) ApiPutSourceConfigRequest {
-	return ApiPutSourceConfigRequest{
+func (a *ConnectorsAPIService) PutConnectorSourceConfig(ctx context.Context, scriptName string) ApiPutConnectorSourceConfigRequest {
+	return ApiPutConnectorSourceConfigRequest{
 		ApiService: a,
 		ctx: ctx,
 		scriptName: scriptName,
@@ -1662,7 +1662,7 @@ func (a *ConnectorsAPIService) PutSourceConfig(ctx context.Context, scriptName s
 
 // Execute executes the request
 //  @return UpdateDetail
-func (a *ConnectorsAPIService) PutSourceConfigExecute(r ApiPutSourceConfigRequest) (*UpdateDetail, *http.Response, error) {
+func (a *ConnectorsAPIService) PutConnectorSourceConfigExecute(r ApiPutConnectorSourceConfigRequest) (*UpdateDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1670,7 +1670,7 @@ func (a *ConnectorsAPIService) PutSourceConfigExecute(r ApiPutSourceConfigReques
 		localVarReturnValue  *UpdateDetail
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.PutSourceConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.PutConnectorSourceConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1819,7 +1819,7 @@ func (a *ConnectorsAPIService) PutSourceConfigExecute(r ApiPutSourceConfigReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPutSourceTemplateRequest struct {
+type ApiPutConnectorSourceTemplateRequest struct {
 	ctx context.Context
 	ApiService *ConnectorsAPIService
 	scriptName string
@@ -1827,26 +1827,26 @@ type ApiPutSourceTemplateRequest struct {
 }
 
 // connector source template xml file
-func (r ApiPutSourceTemplateRequest) File(file *os.File) ApiPutSourceTemplateRequest {
+func (r ApiPutConnectorSourceTemplateRequest) File(file *os.File) ApiPutConnectorSourceTemplateRequest {
 	r.file = file
 	return r
 }
 
-func (r ApiPutSourceTemplateRequest) Execute() (*UpdateDetail, *http.Response, error) {
-	return r.ApiService.PutSourceTemplateExecute(r)
+func (r ApiPutConnectorSourceTemplateRequest) Execute() (*UpdateDetail, *http.Response, error) {
+	return r.ApiService.PutConnectorSourceTemplateExecute(r)
 }
 
 /*
-PutSourceTemplate Method for PutSourceTemplate
+PutConnectorSourceTemplate Update Connector Source Template
 
 Update a connector's source template using its script name.    
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param scriptName The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
- @return ApiPutSourceTemplateRequest
+ @param scriptName The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
+ @return ApiPutConnectorSourceTemplateRequest
 */
-func (a *ConnectorsAPIService) PutSourceTemplate(ctx context.Context, scriptName string) ApiPutSourceTemplateRequest {
-	return ApiPutSourceTemplateRequest{
+func (a *ConnectorsAPIService) PutConnectorSourceTemplate(ctx context.Context, scriptName string) ApiPutConnectorSourceTemplateRequest {
+	return ApiPutConnectorSourceTemplateRequest{
 		ApiService: a,
 		ctx: ctx,
 		scriptName: scriptName,
@@ -1855,7 +1855,7 @@ func (a *ConnectorsAPIService) PutSourceTemplate(ctx context.Context, scriptName
 
 // Execute executes the request
 //  @return UpdateDetail
-func (a *ConnectorsAPIService) PutSourceTemplateExecute(r ApiPutSourceTemplateRequest) (*UpdateDetail, *http.Response, error) {
+func (a *ConnectorsAPIService) PutConnectorSourceTemplateExecute(r ApiPutConnectorSourceTemplateRequest) (*UpdateDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1863,7 +1863,7 @@ func (a *ConnectorsAPIService) PutSourceTemplateExecute(r ApiPutSourceTemplateRe
 		localVarReturnValue  *UpdateDetail
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.PutSourceTemplate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.PutConnectorSourceTemplate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2012,29 +2012,29 @@ func (a *ConnectorsAPIService) PutSourceTemplateExecute(r ApiPutSourceTemplateRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPutTranslationsRequest struct {
+type ApiPutConnectorTranslationsRequest struct {
 	ctx context.Context
 	ApiService *ConnectorsAPIService
 	scriptName string
 	locale string
 }
 
-func (r ApiPutTranslationsRequest) Execute() (*UpdateDetail, *http.Response, error) {
-	return r.ApiService.PutTranslationsExecute(r)
+func (r ApiPutConnectorTranslationsRequest) Execute() (*UpdateDetail, *http.Response, error) {
+	return r.ApiService.PutConnectorTranslationsExecute(r)
 }
 
 /*
-PutTranslations Method for PutTranslations
+PutConnectorTranslations Update Connector Translations
 
 Update a connector's translations using its script name.    
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param scriptName The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
  @param locale The locale to apply to the config. If no viable locale is given, it will default to \"en\"
- @return ApiPutTranslationsRequest
+ @return ApiPutConnectorTranslationsRequest
 */
-func (a *ConnectorsAPIService) PutTranslations(ctx context.Context, scriptName string, locale string) ApiPutTranslationsRequest {
-	return ApiPutTranslationsRequest{
+func (a *ConnectorsAPIService) PutConnectorTranslations(ctx context.Context, scriptName string, locale string) ApiPutConnectorTranslationsRequest {
+	return ApiPutConnectorTranslationsRequest{
 		ApiService: a,
 		ctx: ctx,
 		scriptName: scriptName,
@@ -2044,7 +2044,7 @@ func (a *ConnectorsAPIService) PutTranslations(ctx context.Context, scriptName s
 
 // Execute executes the request
 //  @return UpdateDetail
-func (a *ConnectorsAPIService) PutTranslationsExecute(r ApiPutTranslationsRequest) (*UpdateDetail, *http.Response, error) {
+func (a *ConnectorsAPIService) PutConnectorTranslationsExecute(r ApiPutConnectorTranslationsRequest) (*UpdateDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -2052,7 +2052,7 @@ func (a *ConnectorsAPIService) PutTranslationsExecute(r ApiPutTranslationsReques
 		localVarReturnValue  *UpdateDetail
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.PutTranslations")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.PutConnectorTranslations")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2191,7 +2191,7 @@ type ApiUpdateConnectorRequest struct {
 	jsonPatchOperation *[]JsonPatchOperation
 }
 
-// A list of connector detail update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+// A list of connector detail update operations 
 func (r ApiUpdateConnectorRequest) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiUpdateConnectorRequest {
 	r.jsonPatchOperation = &jsonPatchOperation
 	return r
@@ -2202,13 +2202,24 @@ func (r ApiUpdateConnectorRequest) Execute() (*ConnectorDetail, *http.Response, 
 }
 
 /*
-UpdateConnector Update connector by script name
+UpdateConnector Update Connector by Script Name
 
-Patch a custom connector that using its script name.
-The following fields are patchable: * connectorMetadata * applicationXml * correlationConfigXml * sourceConfigXml
+This API updates a custom connector by script name using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
+
+The following fields are patchable:
+
+
+* connectorMetadata
+
+* applicationXml
+
+* correlationConfigXml
+
+* sourceConfigXml
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param scriptName The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+ @param scriptName The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
  @return ApiUpdateConnectorRequest
 */
 func (a *ConnectorsAPIService) UpdateConnector(ctx context.Context, scriptName string) ApiUpdateConnectorRequest {

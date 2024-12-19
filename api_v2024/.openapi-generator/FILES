@@ -392,6 +392,8 @@ docs/ConnectorsAPI.md
 docs/ContextAttributeDto.md
 docs/ContextAttributeDtoValue.md
 docs/CorrelatedGovernanceEvent.md
+docs/CorrelationConfig.md
+docs/CorrelationConfigAttributeAssignmentsInner.md
 docs/CreateDomainDkim405Response.md
 docs/CreateExternalExecuteWorkflow200Response.md
 docs/CreateExternalExecuteWorkflowRequest.md
@@ -601,6 +603,7 @@ docs/ImportOptions.md
 docs/ImportSpConfigRequest.md
 docs/Index.md
 docs/InnerHit.md
+docs/InviteIdentitiesRequest.md
 docs/Invocation.md
 docs/InvocationStatus.md
 docs/InvocationStatusType.md
@@ -792,10 +795,10 @@ docs/PublicIdentityAttributeConfig.md
 docs/PublicIdentityAttributesInner.md
 docs/PublicIdentityConfig.md
 docs/PutClientLogConfigurationRequest.md
-docs/PutCorrelationConfigRequest.md
+docs/PutConnectorCorrelationConfigRequest.md
+docs/PutConnectorSourceConfigRequest.md
+docs/PutConnectorSourceTemplateRequest.md
 docs/PutPasswordDictionaryRequest.md
-docs/PutSourceConfigRequest.md
-docs/PutSourceTemplateRequest.md
 docs/Query.md
 docs/QueryResultFilter.md
 docs/QueryType.md
@@ -984,6 +987,7 @@ docs/Selector.md
 docs/SelectorAccountMatchConfig.md
 docs/SelectorAccountMatchConfigMatchExpression.md
 docs/SelfImportExportDto.md
+docs/SendAccountVerificationRequest.md
 docs/SendTestNotificationRequestDto.md
 docs/ServiceDeskIntegrationAPI.md
 docs/ServiceDeskIntegrationDto.md
@@ -1473,6 +1477,8 @@ model_connector_rule_validation_response_details_inner.go
 model_context_attribute_dto.go
 model_context_attribute_dto_value.go
 model_correlated_governance_event.go
+model_correlation_config.go
+model_correlation_config_attribute_assignments_inner.go
 model_create_domain_dkim_405_response.go
 model_create_external_execute_workflow_200_response.go
 model_create_external_execute_workflow_request.go
@@ -1665,6 +1671,7 @@ model_import_options.go
 model_import_sp_config_request.go
 model_index.go
 model_inner_hit.go
+model_invite_identities_request.go
 model_invocation.go
 model_invocation_status.go
 model_invocation_status_type.go
@@ -1840,10 +1847,10 @@ model_public_identity_attribute_config.go
 model_public_identity_attributes_inner.go
 model_public_identity_config.go
 model_put_client_log_configuration_request.go
-model_put_correlation_config_request.go
+model_put_connector_correlation_config_request.go
+model_put_connector_source_config_request.go
+model_put_connector_source_template_request.go
 model_put_password_dictionary_request.go
-model_put_source_config_request.go
-model_put_source_template_request.go
 model_query.go
 model_query_result_filter.go
 model_query_type.go
@@ -2019,6 +2026,7 @@ model_selector.go
 model_selector_account_match_config.go
 model_selector_account_match_config_match_expression.go
 model_self_import_export_dto.go
+model_send_account_verification_request.go
 model_send_test_notification_request_dto.go
 model_service_desk_integration_dto.go
 model_service_desk_integration_dto_1.go

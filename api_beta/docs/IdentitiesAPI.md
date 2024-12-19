@@ -517,7 +517,7 @@ Name | Type | Description  | Notes
 
 ## SendIdentityVerificationAccountToken
 
-> SendIdentityVerificationAccountToken(ctx).SendAccountVerificationRequest(sendAccountVerificationRequest).Execute()
+> SendIdentityVerificationAccountToken(ctx, id).SendAccountVerificationRequest(sendAccountVerificationRequest).Execute()
 
 Send password reset email
 
@@ -536,11 +536,12 @@ import (
 )
 
 func main() {
+	id := "ef38f94347e94562b5bb8424a56397d8" // string | Identity ID
 	sendAccountVerificationRequest := *openapiclient.NewSendAccountVerificationRequest("EMAIL_WORK") // SendAccountVerificationRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.IdentitiesAPI.SendIdentityVerificationAccountToken(context.Background()).SendAccountVerificationRequest(sendAccountVerificationRequest).Execute()
+	r, err := apiClient.IdentitiesAPI.SendIdentityVerificationAccountToken(context.Background(), id).SendAccountVerificationRequest(sendAccountVerificationRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.SendIdentityVerificationAccountToken``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -551,6 +552,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Identity ID | 
 
 ### Other Parameters
 
@@ -559,6 +564,7 @@ Other parameters are passed through a pointer to a apiSendIdentityVerificationAc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **sendAccountVerificationRequest** | [**SendAccountVerificationRequest**](SendAccountVerificationRequest.md) |  | 
 
 ### Return type
