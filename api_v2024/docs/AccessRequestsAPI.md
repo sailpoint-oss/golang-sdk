@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 
 ## CreateAccessRequest
 
-> map[string]interface{} CreateAccessRequest(ctx).AccessRequest(accessRequest).Execute()
+> AccessRequestResponse CreateAccessRequest(ctx).AccessRequest(accessRequest).Execute()
 
 Submit Access Request
 
@@ -177,7 +177,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.CreateAccessRequest``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateAccessRequest`: map[string]interface{}
+	// response from `CreateAccessRequest`: AccessRequestResponse
 	fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.CreateAccessRequest`: %v\n", resp)
 }
 ```
@@ -197,7 +197,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**AccessRequestResponse**](AccessRequestResponse.md)
 
 ### Authorization
 

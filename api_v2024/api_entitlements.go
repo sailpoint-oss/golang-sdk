@@ -2312,11 +2312,13 @@ func (r ApiUpdateEntitlementsInBulkRequest) Execute() (*http.Response, error) {
 /*
 UpdateEntitlementsInBulk Bulk update an entitlement list
 
-This API applies an update to every entitlement of the list.
+"This API applies an update to every entitlement of the list.\n\nThe\
+ \ number of entitlements to update is limited to 50 items maximum.\n\nThe JsonPatch\
+ \ update follows the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.\
+ \ allowed operations : `**{ \"op\": \"replace\", \"path\": \"/privileged\", \"\
+ value\": boolean }**  **{ \"op\": \"replace\", \"path\": \"/requestable\",\"value\"\
+ : boolean }**`"
 
-The number of entitlements to update is limited to 50 items maximum.
-
-The JsonPatch update follows the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. allowed operations : **{ "op": "replace", "path": "/privileged", "value": boolean }**  **{ "op": "replace", "path": "/requestable","value": boolean }**
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiUpdateEntitlementsInBulkRequest

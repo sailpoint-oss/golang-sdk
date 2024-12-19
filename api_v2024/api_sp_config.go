@@ -805,10 +805,11 @@ func (r ApiGetSpConfigImportStatusRequest) Execute() (*SpConfigImportJobStatus, 
 /*
 GetSpConfigImportStatus Get import job status
 
-This gets the status of the import job identified by the `id` parameter.
-For more information about the object types that currently support import functionality, refer to [SaaS Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects).
-The request will need the following security scope:
-- sp:config:manage
+'This gets the status of the import job identified by the `id` parameter.
+
+ For more information about the object types that currently support import functionality,
+ refer to [SaaS Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects).'
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the import job whose status will be returned.
@@ -994,7 +995,7 @@ func (r ApiImportSpConfigRequest) Data(data *os.File) ApiImportSpConfigRequest {
 	return r
 }
 
-// This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \&quot;true\&quot;, no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported.
+// This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \&quot;true\&quot;, no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported. 
 func (r ApiImportSpConfigRequest) Preview(preview bool) ApiImportSpConfigRequest {
 	r.preview = &preview
 	return r
@@ -1012,11 +1013,19 @@ func (r ApiImportSpConfigRequest) Execute() (*SpConfigJob, *http.Response, error
 /*
 ImportSpConfig Initiates configuration objects import job
 
-This post will import objects from a JSON configuration file into a tenant. By default, every import will first export all existing objects supported by sp-config as a backup before the import is attempted. The backup is provided so that the state of the configuration prior to the import is available for inspection or restore if needed. The backup can be skipped by setting "excludeBackup" to true in the import options. If a backup is performed, the id of the backup will be provided in the ImportResult as the "exportJobId". This can be downloaded  using the /sp-config/export/{exportJobId}/download endpoint.
-You cannot currently import from the Non-Employee Lifecycle Management (NELM) source. You cannot use this endpoint to back up or store NELM data. 
-For more information about the object types that currently support import functionality, refer to [SaaS Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects).
-The request will need the following security scope:
-- sp:config:manage
+"This post will import objects from a JSON configuration file into\
+ \ a tenant. By default, every import will first export all existing objects supported\
+ \ by sp-config as a backup before the import is attempted. The backup is provided\
+ \ so that the state of the configuration prior to the import is available for\
+ \ inspection or restore if needed. The backup can be skipped by setting \"excludeBackup\"\
+ \ to true in the import options. If a backup is performed, the id of the backup\
+ \ will be provided in the ImportResult as the \"exportJobId\". This can be downloaded\
+ \  using the `/sp-config/export/{exportJobId}/download` endpoint.\nYou cannot currently\
+ \ import from the Non-Employee Lifecycle Management (NELM) source. You cannot\
+ \ use this endpoint to back up or store NELM data. \nFor more information about\
+ \ the object types that currently support import functionality, refer to [SaaS\
+ \ Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects)."
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiImportSpConfigRequest

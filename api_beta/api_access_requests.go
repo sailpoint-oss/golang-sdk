@@ -384,7 +384,7 @@ func (r ApiCreateAccessRequestRequest) AccessRequest(accessRequest AccessRequest
 	return r
 }
 
-func (r ApiCreateAccessRequestRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiCreateAccessRequestRequest) Execute() (*AccessRequestResponse, *http.Response, error) {
 	return r.ApiService.CreateAccessRequestExecute(r)
 }
 
@@ -434,13 +434,13 @@ func (a *AccessRequestsAPIService) CreateAccessRequest(ctx context.Context) ApiC
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *AccessRequestsAPIService) CreateAccessRequestExecute(r ApiCreateAccessRequestRequest) (map[string]interface{}, *http.Response, error) {
+//  @return AccessRequestResponse
+func (a *AccessRequestsAPIService) CreateAccessRequestExecute(r ApiCreateAccessRequestRequest) (*AccessRequestResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *AccessRequestResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestsAPIService.CreateAccessRequest")

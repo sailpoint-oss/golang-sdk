@@ -1634,6 +1634,9 @@ type ApiListIdentityAccessItemsRequest struct {
 	filters *string
 	sorters *string
 	query *string
+	limit *int32
+	count *bool
+	offset *int32
 }
 
 // The type of access item for the identity. If not provided, it defaults to account.  Types of access items: **accessProfile, account, app, entitlement, role**
@@ -1660,14 +1663,32 @@ func (r ApiListIdentityAccessItemsRequest) Query(query string) ApiListIdentityAc
 	return r
 }
 
+// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiListIdentityAccessItemsRequest) Limit(limit int32) ApiListIdentityAccessItemsRequest {
+	r.limit = &limit
+	return r
+}
+
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiListIdentityAccessItemsRequest) Count(count bool) ApiListIdentityAccessItemsRequest {
+	r.count = &count
+	return r
+}
+
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiListIdentityAccessItemsRequest) Offset(offset int32) ApiListIdentityAccessItemsRequest {
+	r.offset = &offset
+	return r
+}
+
 func (r ApiListIdentityAccessItemsRequest) Execute() ([]ListIdentityAccessItems200ResponseInner, *http.Response, error) {
 	return r.ApiService.ListIdentityAccessItemsExecute(r)
 }
 
 /*
-ListIdentityAccessItems Gets a list of access items for the identity filtered by item type
+ListIdentityAccessItems List Access Items by Identity
 
-This method retrieves a list of access item for the identity filtered by the access item type Requires authorization scope of 'idn:identity-history:read' 
+This method retrieves a list of access item for the identity filtered by the access item type
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The identity id
@@ -1714,6 +1735,24 @@ func (a *IdentityHistoryAPIService) ListIdentityAccessItemsExecute(r ApiListIden
 	}
 	if r.query != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "query", r.query, "", "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
+	}
+	if r.count != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "", "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

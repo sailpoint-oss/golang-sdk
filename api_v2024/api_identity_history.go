@@ -1768,6 +1768,9 @@ type ApiListIdentityAccessItemsRequest struct {
 	id string
 	xSailPointExperimental *string
 	type_ *string
+	limit *int32
+	count *bool
+	offset *int32
 }
 
 // Use this header to enable this experimental API.
@@ -1782,14 +1785,33 @@ func (r ApiListIdentityAccessItemsRequest) Type_(type_ string) ApiListIdentityAc
 	return r
 }
 
+// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiListIdentityAccessItemsRequest) Limit(limit int32) ApiListIdentityAccessItemsRequest {
+	r.limit = &limit
+	return r
+}
+
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiListIdentityAccessItemsRequest) Count(count bool) ApiListIdentityAccessItemsRequest {
+	r.count = &count
+	return r
+}
+
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiListIdentityAccessItemsRequest) Offset(offset int32) ApiListIdentityAccessItemsRequest {
+	r.offset = &offset
+	return r
+}
+
 func (r ApiListIdentityAccessItemsRequest) Execute() ([]ListIdentityAccessItems200ResponseInner, *http.Response, error) {
 	return r.ApiService.ListIdentityAccessItemsExecute(r)
 }
 
 /*
-ListIdentityAccessItems Gets a list of access items for the identity filtered by item type
+ListIdentityAccessItems List Access Items by Identity
 
-This method retrieves a list of access item for the identity filtered by the access item type Requires authorization scope of 'idn:identity-history:read' 
+This method retrieves a list of access item for the identity filtered by the access item type
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The identity id
@@ -1836,6 +1858,24 @@ func (a *IdentityHistoryAPIService) ListIdentityAccessItemsExecute(r ApiListIden
 
 	if r.type_ != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "", "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
+	}
+	if r.count != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "", "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1912,6 +1952,17 @@ func (a *IdentityHistoryAPIService) ListIdentityAccessItemsExecute(r ApiListIden
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

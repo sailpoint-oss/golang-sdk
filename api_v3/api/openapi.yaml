@@ -2044,9 +2044,8 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-          description: Accepted - Returned if the request was successfully accepted
-            into the system.
+                $ref: '#/components/schemas/AccessRequestResponse'
+          description: Access Request Response.
         "400":
           content:
             application/json:
@@ -5361,8 +5360,7 @@ paths:
       - Account Activities
   /auth-org/network-config:
     get:
-      description: "This API returns the details of an org's network auth configuration.\
-        \ Requires security scope of: 'sp:auth-org:read'"
+      description: This API returns the details of an org's network auth configuration.
       operationId: getAuthOrgNetworkConfig
       responses:
         "200":
@@ -5763,9 +5761,8 @@ paths:
       tags:
       - Global Tenant Security Settings
     patch:
-      description: |-
+      description: |
         This API updates an existing lockout configuration for an org using PATCH
-         Requires security scope of:  'sp:auth-org:update'
       operationId: patchAuthOrgLockoutConfig
       requestBody:
         content:
@@ -5784,9 +5781,9 @@ paths:
         description: |-
           A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
           Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:
-            1. maximumAttempts >= 1 && maximumAttempts <= 15
+            `1. maximumAttempts >= 1 && maximumAttempts <= 15
             2. lockoutDuration >= 5 && lockoutDuration <= 60
-            3. lockoutWindow >= 5 && lockoutDuration <= 60
+            3. lockoutWindow >= 5 && lockoutDuration <= 60`
         required: true
       responses:
         "200":
@@ -5870,10 +5867,14 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - sp:auth-org:manage
       summary: Update Auth Org Lockout Configuration
       tags:
       - Global Tenant Security Settings
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - HELPDESK
   /auth-org/service-provider-config:
     get:
       description: This API returns the details of an org's service provider auth
@@ -6201,7 +6202,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - sp:auth-org:read
       summary: Get Auth Org Session Configuration.
       tags:
       - Global Tenant Security Settings
@@ -6223,12 +6225,15 @@ paths:
               items:
                 $ref: '#/components/schemas/JsonPatchOperation'
               type: array
-        description: |-
-          A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
-          Ensures that the patched Session Config conforms to certain logical guidelines, which are:
-            1. maxSessionTime >= 1 && maxSessionTime <= 10080 (1 week)
+        description: |
+          A list of auth org session configuration update operations according to
+          the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+
+          Ensures that the patched Session Config conforms to certain logical
+          guidelines, which are:
+            `1. maxSessionTime >= 1 && maxSessionTime <= 10080 (1 week)
             2. maxIdleTime >= 1 && maxIdleTime <= 1440 (1 day)
-            3. maxSessionTime must have a greater duration than maxIdleTime.
+            3. maxSessionTime must have a greater duration than maxIdleTime.`
         required: true
       responses:
         "200":
@@ -6312,10 +6317,14 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - userAuth: []
+      - userAuth:
+        - sp:auth-org:manage
       summary: Update Auth Org Session Configuration
       tags:
       - Global Tenant Security Settings
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - HELPDESK
   /auth-users/{id}:
     get:
       description: Return the specified user's authentication system details.
@@ -47221,6 +47230,55 @@ components:
             $ref: '#/components/schemas/PermissionDto'
           type: array
       type: object
+    AccessRequestResponse:
+      example:
+        newRequests:
+        - requestedFor: 899fd612ecfc4cf3bf48f14d0afdef89
+          requestedItemsDetails:
+          - type: ENTITLEMENT
+            id: 779c6fd7171540bba1184e5946112c28
+          attributesHash: -1928438224
+          accessRequestIds:
+          - 5d3118c518a44ec7805450d53479ccdb
+        existingRequests:
+        - requestedFor: 899fd612ecfc4cf3bf48f14d0afdef89
+          requestedItemsDetails:
+          - type: ROLE
+            id: 779c6fd7171540bbc1184e5946112c28
+          attributesHash: 2843118224
+          accessRequestIds:
+          - 5d3118c518a44ec7805450d53479ccdc
+      properties:
+        newRequests:
+          description: A list of new access request tracking data mapped to the values
+            requested.
+          example:
+          - requestedFor: 899fd612ecfc4cf3bf48f14d0afdef89
+            requestedItemsDetails:
+            - type: ENTITLEMENT
+              id: 779c6fd7171540bba1184e5946112c28
+            attributesHash: -1928438224
+            accessRequestIds:
+            - 5d3118c518a44ec7805450d53479ccdb
+          items:
+            $ref: '#/components/schemas/AccessRequestTracking'
+          type: array
+        existingRequests:
+          description: A list of existing access request tracking data mapped to the
+            values requested.  This indicates access has already been requested for
+            this item.
+          example:
+          - requestedFor: 899fd612ecfc4cf3bf48f14d0afdef89
+            requestedItemsDetails:
+            - type: ROLE
+              id: 779c6fd7171540bbc1184e5946112c28
+            attributesHash: 2843118224
+            accessRequestIds:
+            - 5d3118c518a44ec7805450d53479ccdc
+          items:
+            $ref: '#/components/schemas/AccessRequestTracking'
+          type: array
+      type: object
     CancelAccessRequest:
       description: Request body payload for cancel access request endpoint.
       example:
@@ -48594,15 +48652,15 @@ components:
           readOnly: true
           type: string
         name:
-          description: "The campaign name. If this object is part of a template, special\
-            \ formatting applies; see the `/campaign-templates/{id}/generate` endpoint\
-            \ documentation for details."
+          description: |
+            The campaign name. If this object is part of a template, special formatting applies; see the
+            `/campaign-templates/{id}/generate` endpoint documentation for details.
           example: Manager Campaign
           type: string
         description:
-          description: "The campaign description. If this object is part of a template,\
-            \ special formatting applies; see the `/campaign-templates/{id}/generate`\
-            \ endpoint documentation for details."
+          description: |
+            The campaign description. If this object is part of a template, special formatting applies; see the
+            `/campaign-templates/{id}/generate` endpoint documentation for details.
           example: Everyone needs to be reviewed by their manager
           nullable: true
           type: string
@@ -58504,6 +58562,33 @@ components:
             $ref: '#/components/schemas/AccessProfileUsage_usedBy_inner'
           type: array
       type: object
+    AccessRequestTracking:
+      properties:
+        requestedFor:
+          description: The identity id in which the access request is for.
+          example: 2c918084660f45d6016617daa9210584
+          type: string
+        requestedItemsDetails:
+          description: The details of the item requested.
+          example: "{\n\"type\": \"ENTITLEMENT\", \n\"id\": \"779c6fd7171540bba1184e5946112c28\"\
+            \ \n }"
+          items:
+            $ref: '#/components/schemas/RequestedItemDetails'
+          type: array
+        attributesHash:
+          description: "a hash representation of the access requested, useful for\
+            \ longer term tracking client side."
+          example: "-1928438224"
+          type: string
+        accessRequestIds:
+          description: "a list of access request identifiers, generally only one will\
+            \ be populated, but high volume requested may result in multiple ids."
+          example:
+          - 5d3118c518a44ec7805450d53479ccdb
+          items:
+            type: string
+          type: array
+      type: object
     RequestOnBehalfOfConfig:
       example:
         allowRequestOnBehalfOfEmployeeByManager: true
@@ -58584,7 +58669,7 @@ components:
           default: sourceOwner
           description: |
             Approval schemes for granting entitlement request. This can be empty if no approval is needed.
-            Multiple schemes must be comma-separated. The valid schemes are "entitlementOwner", "sourceOwner", "manager" and "workgroup:{id}".
+            Multiple schemes must be comma-separated. The valid schemes are "entitlementOwner", "sourceOwner", "manager" and "`workgroup:{id}`".
             You can use multiple governance groups (workgroups).
           example: "entitlementOwner, sourceOwner, manager, workgroup:2c918084660f45d6016617daa9210584"
           nullable: true
@@ -62550,6 +62635,21 @@ components:
       example: DEFAULT
       nullable: true
       type: string
+    RequestedItemDetails:
+      properties:
+        type:
+          description: The type of access item requested.
+          enum:
+          - ACCESS_PROFILE
+          - ENTITLEMENT
+          - ROLE
+          example: ENTITLEMENT
+          type: string
+        id:
+          description: The id of the access item requested.
+          example: 779c6fd7171540bba1184e5946112c28
+          type: string
+      type: object
     ManualWorkItemState:
       description: |-
         Indicates the state of the request processing for this item:

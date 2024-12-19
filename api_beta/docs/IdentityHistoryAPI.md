@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**GetIdentitySnapshotSummary**](IdentityHistoryAPI.md#GetIdentitySnapshotSummary) | **Get** /historical-identities/{id}/snapshot-summary | Gets the summary for the event count for a specific identity
 [**GetIdentityStartDate**](IdentityHistoryAPI.md#GetIdentityStartDate) | **Get** /historical-identities/{id}/start-date | Gets the start date of the identity
 [**ListHistoricalIdentities**](IdentityHistoryAPI.md#ListHistoricalIdentities) | **Get** /historical-identities | Lists all the identities
-[**ListIdentityAccessItems**](IdentityHistoryAPI.md#ListIdentityAccessItems) | **Get** /historical-identities/{id}/access-items | Gets a list of access items for the identity filtered by item type
+[**ListIdentityAccessItems**](IdentityHistoryAPI.md#ListIdentityAccessItems) | **Get** /historical-identities/{id}/access-items | List Access Items by Identity
 [**ListIdentitySnapshotAccessItems**](IdentityHistoryAPI.md#ListIdentitySnapshotAccessItems) | **Get** /historical-identities/{id}/snapshots/{date}/access-items | Get Identity Access Items Snapshot
 [**ListIdentitySnapshots**](IdentityHistoryAPI.md#ListIdentitySnapshots) | **Get** /historical-identities/{id}/snapshots | Lists all the snapshots for the identity
 
@@ -638,9 +638,9 @@ Name | Type | Description  | Notes
 
 ## ListIdentityAccessItems
 
-> []ListIdentityAccessItems200ResponseInner ListIdentityAccessItems(ctx, id).Type_(type_).Filters(filters).Sorters(sorters).Query(query).Execute()
+> []ListIdentityAccessItems200ResponseInner ListIdentityAccessItems(ctx, id).Type_(type_).Filters(filters).Sorters(sorters).Query(query).Limit(limit).Count(count).Offset(offset).Execute()
 
-Gets a list of access items for the identity filtered by item type
+List Access Items by Identity
 
 
 
@@ -662,10 +662,13 @@ func main() {
 	filters := "source eq "DataScienceDataset"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **source**: *eq*  **standalone**: *eq*  **privileged**: *eq*  **attribute**: *eq*  **cloudGoverned**: *eq* (optional)
 	sorters := "name" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, value, standalone, privileged, attribute, source, cloudGoverned, removeDate, nativeIdentity, entitlementCount** (optional)
 	query := "Dr. Arden" // string | This param is used to search if certain fields of the access item contain the string provided.  Searching is supported for the following fields depending on the type:  Access Profiles: **name, description**  Accounts: **name, nativeIdentity**  Apps: **name**  Entitlements: **name, value, description**  Roles: **name, description** (optional)
+	limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+	count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+	offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.IdentityHistoryAPI.ListIdentityAccessItems(context.Background(), id).Type_(type_).Filters(filters).Sorters(sorters).Query(query).Execute()
+	resp, r, err := apiClient.IdentityHistoryAPI.ListIdentityAccessItems(context.Background(), id).Type_(type_).Filters(filters).Sorters(sorters).Query(query).Limit(limit).Count(count).Offset(offset).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.ListIdentityAccessItems``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -695,6 +698,9 @@ Name | Type | Description  | Notes
  **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **source**: *eq*  **standalone**: *eq*  **privileged**: *eq*  **attribute**: *eq*  **cloudGoverned**: *eq* | 
  **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, value, standalone, privileged, attribute, source, cloudGoverned, removeDate, nativeIdentity, entitlementCount** | 
  **query** | **string** | This param is used to search if certain fields of the access item contain the string provided.  Searching is supported for the following fields depending on the type:  Access Profiles: **name, description**  Accounts: **name, nativeIdentity**  Apps: **name**  Entitlements: **name, value, description**  Roles: **name, description** | 
+ **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
+ **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
+ **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
 
 ### Return type
 

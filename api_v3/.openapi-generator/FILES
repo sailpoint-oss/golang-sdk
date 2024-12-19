@@ -81,6 +81,8 @@ docs/AccessRequestApprovalsAPI.md
 docs/AccessRequestConfig.md
 docs/AccessRequestItem.md
 docs/AccessRequestPhases.md
+docs/AccessRequestResponse.md
+docs/AccessRequestTracking.md
 docs/AccessRequestType.md
 docs/AccessRequestsAPI.md
 docs/AccessReviewItem.md
@@ -480,6 +482,7 @@ docs/RequestableObjectReference.md
 docs/RequestableObjectRequestStatus.md
 docs/RequestableObjectType.md
 docs/RequestableObjectsAPI.md
+docs/RequestedItemDetails.md
 docs/RequestedItemStatus.md
 docs/RequestedItemStatusCancelledRequestDetails.md
 docs/RequestedItemStatusPreApprovalTriggerDetails.md
@@ -697,6 +700,8 @@ model_access_request.go
 model_access_request_config.go
 model_access_request_item.go
 model_access_request_phases.go
+model_access_request_response.go
+model_access_request_tracking.go
 model_access_request_type.go
 model_access_review_item.go
 model_access_review_reassignment.go
@@ -1064,6 +1069,7 @@ model_requestable_object.go
 model_requestable_object_reference.go
 model_requestable_object_request_status.go
 model_requestable_object_type.go
+model_requested_item_details.go
 model_requested_item_status.go
 model_requested_item_status_cancelled_request_details.go
 model_requested_item_status_pre_approval_trigger_details.go

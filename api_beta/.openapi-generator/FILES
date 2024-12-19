@@ -139,6 +139,8 @@ docs/AccessRequestRecommendationItemDetail.md
 docs/AccessRequestRecommendationItemDetailAccess.md
 docs/AccessRequestRecommendationItemType.md
 docs/AccessRequestResponse.md
+docs/AccessRequestResponse1.md
+docs/AccessRequestTracking.md
 docs/AccessRequestType.md
 docs/AccessRequested.md
 docs/AccessRequestsAPI.md
@@ -727,6 +729,7 @@ docs/RequestableObjectReference.md
 docs/RequestableObjectRequestStatus.md
 docs/RequestableObjectType.md
 docs/RequestableObjectsAPI.md
+docs/RequestedItemDetails.md
 docs/RequestedItemStatus.md
 docs/RequestedItemStatusCancelledRequestDetails.md
 docs/RequestedItemStatusPreApprovalTriggerDetails.md
@@ -1094,6 +1097,8 @@ model_access_request_recommendation_item_detail.go
 model_access_request_recommendation_item_detail_access.go
 model_access_request_recommendation_item_type.go
 model_access_request_response.go
+model_access_request_response_1.go
+model_access_request_tracking.go
 model_access_request_type.go
 model_access_requested.go
 model_access_type.go
@@ -1634,6 +1639,7 @@ model_requestable_object.go
 model_requestable_object_reference.go
 model_requestable_object_request_status.go
 model_requestable_object_type.go
+model_requested_item_details.go
 model_requested_item_status.go
 model_requested_item_status_cancelled_request_details.go
 model_requested_item_status_pre_approval_trigger_details.go

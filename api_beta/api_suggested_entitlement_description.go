@@ -37,7 +37,10 @@ func (r ApiGetSedBatchStatsRequest) Execute() (*SedBatchStats, *http.Response, e
 GetSedBatchStats Submit Sed Batch Stats Request
 
 Submit Sed Batch Stats Request.
-Submits batchId in the path param (e.g. {batchId}/stats). API responses with stats of the batchId.
+
+Submits batchId in the path param `(e.g. {batchId}/stats)`.
+API responses with stats of the batchId.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param batchId Batch Id

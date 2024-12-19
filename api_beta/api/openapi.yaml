@@ -2440,9 +2440,8 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-          description: Accepted - Returned if the request was successfully accepted
-            into the system.
+                $ref: '#/components/schemas/AccessRequestResponse'
+          description: Access Request Response.
         "400":
           content:
             application/json:
@@ -12681,13 +12680,20 @@ paths:
       - Entitlements
   /entitlements/bulk-update:
     post:
-      description: "This API applies an update to every entitlement of the list.\n\
-        \nThe number of entitlements to update is limited to 50 items maximum.\n\n\
-        The JsonPatch update follows the [JSON Patch](https://tools.ietf.org/html/rfc6902)\
-        \ standard. allowed operations : **{ \"op\": \"replace\", \"path\": \"/privileged\"\
-        , \"value\": boolean }**  **{ \"op\": \"replace\", \"path\": \"/requestable\"\
-        ,\"value\": boolean }** \n\nA token with ORG_ADMIN or API authority is required\
-        \ to call this API."
+      description: |
+        This API applies an update to every entitlement of the list.
+
+
+        The number of entitlements to update is limited to 50 items maximum.
+
+
+        The JsonPatch update follows the [JSON
+        Patch](https://tools.ietf.org/html/rfc6902) standard. allowed operations :
+        `**{ "op": "replace", "path": "/privileged", "value": boolean }**  **{ "op":
+        "replace", "path": "/requestable","value": boolean }**`
+
+
+        A token with ORG_ADMIN or API authority is required to call this API.
       operationId: updateEntitlementsInBulk
       requestBody:
         content:
@@ -13643,8 +13649,8 @@ paths:
       - Identity History
   /historical-identities/{id}/access-items:
     get:
-      description: 'This method retrieves a list of access item for the identity filtered
-        by the access item type Requires authorization scope of ''idn:identity-history:read'' '
+      description: This method retrieves a list of access item for the identity filtered
+        by the access item type
       operationId: listIdentityAccessItems
       parameters:
       - description: The identity id
@@ -13661,6 +13667,7 @@ paths:
         example: account
         in: query
         name: type
+        required: false
         schema:
           type: string
       - description: |-
@@ -13680,6 +13687,7 @@ paths:
         example: source eq "DataScienceDataset"
         in: query
         name: filters
+        required: false
         schema:
           type: string
       - description: |-
@@ -13689,6 +13697,7 @@ paths:
         example: name
         in: query
         name: sorters
+        required: false
         schema:
           format: comma-separated
           type: string
@@ -13709,8 +13718,47 @@ paths:
         example: Dr. Arden
         in: query
         name: query
+        required: false
         schema:
           type: string
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
       responses:
         "200":
           content:
@@ -13853,9 +13901,13 @@ paths:
       security:
       - userAuth:
         - idn:identity-history:read
-      summary: Gets a list of access items for the identity filtered by item type
+      summary: List Access Items by Identity
       tags:
       - Identity History
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - HELPDESK
+      - REPORT_ADMIN
   /historical-identities/{id}/snapshots:
     get:
       description: 'This method retrieves all the snapshots for the identity Requires
@@ -39837,28 +39889,26 @@ paths:
   /sp-config/import:
     post:
       description: "This post will import objects from a JSON configuration file into\
-        \ a tenant. By default, every import will first export all existing objects\
-        \ supported by sp-config as a backup before the import is attempted. The backup\
-        \ is provided so that the state of the configuration prior to the import is\
-        \ available for inspection or restore if needed. The backup can be skipped\
-        \ by setting \"excludeBackup\" to true in the import options. If a backup\
+        \ a tenant.\nBy default, every import will first export all existing objects\
+        \ supported by sp-config as a backup before the import is attempted.\nThe\
+        \ backup is provided so that the state of the configuration prior to the import\
+        \ is available for inspection or restore if needed.\nThe backup can be skipped\
+        \ by setting \"excludeBackup\" to true in the import options.\nIf a backup\
         \ is performed, the id of the backup will be provided in the ImportResult\
-        \ as the \"exportJobId\". This can be downloaded  using the /sp-config/export/{exportJobId}/download\
-        \ endpoint.\nYou cannot currently import from the Non-Employee Lifecycle Management\
-        \ (NELM) source. You cannot use this endpoint to back up or store NELM data.\
-        \ \nFor more information about the object types that currently support import\
-        \ functionality, refer to [SaaS Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects).\n\
-        The request will need the following security scope:\n- sp:config:manage"
+        \ as the \"exportJobId\". This can be downloaded \nusing the `/sp-config/export/{exportJobId}/download`\
+        \ endpoint.\n\nYou cannot currently import from the Non-Employee Lifecycle\
+        \ Management (NELM) source. You cannot use this endpoint to back up or store\
+        \ NELM data. \n\nFor more information about the object types that currently\
+        \ support import functionality, refer to [SaaS Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects).\n"
       operationId: importSpConfig
       parameters:
-      - description: "This option is intended to give the user information about how\
-          \ an import operation would proceed, without having any effect on the target\
-          \ tenant. If this parameter is \"true\", no objects will be imported. Instead,\
-          \ the import process will pre-process the import file and attempt to resolve\
-          \ references within imported objects. The import result file will contain\
-          \ messages pertaining to how specific references were resolved, any errors\
-          \ associated with the preprocessing, and messages indicating which objects\
-          \ would be imported."
+      - description: |
+          This option is intended to give the user information about how an import operation would proceed, without
+          having any effect on the target tenant.
+          If this parameter is "true", no objects will be imported. Instead, the import process will pre-process the import file and
+          attempt to resolve references within imported objects. The import result file will contain messages
+          pertaining to how specific references were resolved, any errors associated with the preprocessing,
+          and messages indicating which objects would be imported.
         example: "true"
         in: query
         name: preview
@@ -39996,16 +40046,19 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - sp:config:manage
       summary: Initiates configuration objects import job
       tags:
       - SP-Config
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /sp-config/import/{id}:
     get:
       description: |-
         This gets the status of the import job identified by the `id` parameter.
         For more information about the object types that currently support import functionality, refer to [SaaS Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects).
-        The request will need the following security scope:
-        - sp:config:manage
       operationId: getSpConfigImportStatus
       parameters:
       - description: The ID of the import job whose status will be returned.
@@ -40112,6 +40165,8 @@ paths:
       summary: Get import job status
       tags:
       - SP-Config
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /sp-config/import/{id}/download:
     get:
       description: |-
@@ -60708,9 +60763,11 @@ paths:
       - Icons
   /suggested-entitlement-description-batches/{batchId}/stats:
     get:
-      description: |-
+      description: |
         Submit Sed Batch Stats Request.
-        Submits batchId in the path param (e.g. {batchId}/stats). API responses with stats of the batchId.
+
+        Submits batchId in the path param `(e.g. {batchId}/stats)`.
+        API responses with stats of the batchId.
       operationId: getSedBatchStats
       parameters:
       - description: Batch Id
@@ -63278,15 +63335,15 @@ components:
           readOnly: true
           type: string
         name:
-          description: "The campaign name. If this object is part of a template, special\
-            \ formatting applies; see the `/campaign-templates/{id}/generate` endpoint\
-            \ documentation for details."
+          description: |
+            The campaign name. If this object is part of a template, special formatting applies; see the
+            `/campaign-templates/{id}/generate` endpoint documentation for details.
           example: Manager Campaign
           type: string
         description:
-          description: "The campaign description. If this object is part of a template,\
-            \ special formatting applies; see the `/campaign-templates/{id}/generate`\
-            \ endpoint documentation for details."
+          description: |
+            The campaign description. If this object is part of a template, special formatting applies; see the
+            `/campaign-templates/{id}/generate` endpoint documentation for details.
           example: Everyone needs to be reviewed by their manager
           type: string
         deadline:
@@ -63319,10 +63376,10 @@ components:
           type: boolean
         recommendationsEnabled:
           default: false
-          description: Enables IAI for this campaign. Accepts true even if the IAI
-            product feature is off. If IAI is turned off then campaigns generated
-            from this template will indicate false. The real value will then be returned
-            if IAI is ever enabled for the org in the future.
+          description: |
+            Enables IAI for this campaign. Accepts true even if the IAI product feature is off. If IAI is turned off
+            then campaigns generated from this template will indicate false. The real value will then be returned if
+            IAI is ever enabled for the org in the future.
           example: true
           type: boolean
         status:
@@ -63341,10 +63398,9 @@ components:
           readOnly: true
           type: string
         correlatedStatus:
-          description: The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns
-            can be Uncorrelated. An Uncorrelated certification campaign only includes
-            Uncorrelated identities (An identity is uncorrelated if it has no accounts
-            on an authoritative source).
+          description: |
+            The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated.
+            An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source).
           enum:
           - CORRELATED
           - UNCORRELATED
@@ -64930,6 +64986,55 @@ components:
       required:
       - requestedFor
       - requestedItems
+      type: object
+    AccessRequestResponse:
+      example:
+        newRequests:
+        - requestedFor: 899fd612ecfc4cf3bf48f14d0afdef89
+          requestedItemsDetails:
+          - type: ENTITLEMENT
+            id: 779c6fd7171540bba1184e5946112c28
+          attributesHash: -1928438224
+          accessRequestIds:
+          - 5d3118c518a44ec7805450d53479ccdb
+        existingRequests:
+        - requestedFor: 899fd612ecfc4cf3bf48f14d0afdef89
+          requestedItemsDetails:
+          - type: ROLE
+            id: 779c6fd7171540bbc1184e5946112c28
+          attributesHash: 2843118224
+          accessRequestIds:
+          - 5d3118c518a44ec7805450d53479ccdc
+      properties:
+        newRequests:
+          description: A list of new access request tracking data mapped to the values
+            requested.
+          example:
+          - requestedFor: 899fd612ecfc4cf3bf48f14d0afdef89
+            requestedItemsDetails:
+            - type: ENTITLEMENT
+              id: 779c6fd7171540bba1184e5946112c28
+            attributesHash: -1928438224
+            accessRequestIds:
+            - 5d3118c518a44ec7805450d53479ccdb
+          items:
+            $ref: '#/components/schemas/AccessRequestTracking'
+          type: array
+        existingRequests:
+          description: A list of existing access request tracking data mapped to the
+            values requested.  This indicates access has already been requested for
+            this item.
+          example:
+          - requestedFor: 899fd612ecfc4cf3bf48f14d0afdef89
+            requestedItemsDetails:
+            - type: ROLE
+              id: 779c6fd7171540bbc1184e5946112c28
+            attributesHash: 2843118224
+            accessRequestIds:
+            - 5d3118c518a44ec7805450d53479ccdc
+          items:
+            $ref: '#/components/schemas/AccessRequestTracking'
+          type: array
       type: object
     CancelAccessRequest:
       description: Request body payload for cancel access request endpoint.
@@ -67612,7 +67717,8 @@ components:
       type: object
     CustomPasswordInstruction:
       example:
-        pageContent: pageContent
+        pageContent: Please enter a new password. Your password must be at least 8
+          characters long and contain at least one number and one letter.
         pageId: change-password:enter-password
         locale: en
       properties:
@@ -67632,17 +67738,15 @@ components:
           - reset-password:finish
           - unlock-account:enter-username
           - unlock-account:finish
+          example: change-password:enter-password
           type: string
         pageContent:
-          description: "The custom instructions for the specified page. Allow basic\
-            \ HTML format and maximum length is 1000 characters. The custom instructions\
-            \ will be sanitized to avoid attacks. If the customization text includes\
-            \ a link, like <A HREF=\\\"URL\\\">...</A> clicking on this will open\
-            \ the link on the current browser page. If you want your link to be redirected\
-            \ to a different page, please redirect it to \"_blank\" like this: <a\
-            \ href=\\\"URL\" target=\\\"_blank\\\" >link</a>. This will open a new\
-            \ tab when the link is clicked. Notice we're only supporting _blank as\
-            \ the redirection target."
+          description: |
+            The custom instructions for the specified page. Allow basic HTML format and maximum length is 1000 characters. The custom instructions will be sanitized to avoid attacks.
+            If the customization text includes a link, like `<A HREF=\"URL\">...</A>` clicking on this will open the link on the current browser page.
+            If you want your link to be redirected to a different page, please redirect it to "_blank" like this: `<a href=\"URL" target=\"_blank\" >link</a>`. This will open a new tab when the link is clicked. Notice we're only supporting _blank as the redirection target.
+          example: Please enter a new password. Your password must be at least 8 characters
+            long and contain at least one number and one letter.
           type: string
         locale:
           description: "The locale for the custom instructions, a BCP47 language tag.\
@@ -68355,7 +68459,7 @@ components:
     AccessRequested:
       properties:
         accessRequest:
-          $ref: '#/components/schemas/AccessRequestResponse'
+          $ref: '#/components/schemas/AccessRequestResponse_1'
         identityId:
           description: the identity id
           example: 8a80828f643d484f01643e14202e206f
@@ -77664,14 +77768,15 @@ components:
             type: string
           type: array
         approvalSchemes:
-          description: Comma-separated list of approval schemes. Each approval scheme
-            is one of - manager - appOwner - sourceOwner - accessProfileOwner - workgroup:<workgroupId>
+          description: |
+            Comma-separated list of approval schemes. Each approval scheme is one of -
+            manager - appOwner - sourceOwner - accessProfileOwner - workgroup:&lt;workgroupId&gt;
           example: accessProfileOwner
           type: string
         revokeRequestApprovalSchemes:
-          description: Comma-separated list of revoke request approval schemes. Each
-            approval scheme is one of - manager - sourceOwner - accessProfileOwner
-            - workgroup:<workgroupId>
+          description: |
+            Comma-separated list of revoke request approval schemes. Each approval
+            scheme is one of - manager - sourceOwner - accessProfileOwner - workgroup:&lt;workgroupId&gt;
           example: accessProfileOwner
           type: string
         requestCommentsRequired:
@@ -82521,6 +82626,33 @@ components:
       - id
       - type
       type: object
+    AccessRequestTracking:
+      properties:
+        requestedFor:
+          description: The identity id in which the access request is for.
+          example: 2c918084660f45d6016617daa9210584
+          type: string
+        requestedItemsDetails:
+          description: The details of the item requested.
+          example: "{\n\"type\": \"ENTITLEMENT\", \n\"id\": \"779c6fd7171540bba1184e5946112c28\"\
+            \ \n }"
+          items:
+            $ref: '#/components/schemas/RequestedItemDetails'
+          type: array
+        attributesHash:
+          description: "a hash representation of the access requested, useful for\
+            \ longer term tracking client side."
+          example: "-1928438224"
+          type: string
+        accessRequestIds:
+          description: "a list of access request identifiers, generally only one will\
+            \ be populated, but high volume requested may result in multiple ids."
+          example:
+          - 5d3118c518a44ec7805450d53479ccdb
+          items:
+            type: string
+          type: array
+      type: object
     RequestOnBehalfOfConfig:
       example:
         allowRequestOnBehalfOfEmployeeByManager: true
@@ -82601,7 +82733,7 @@ components:
           default: sourceOwner
           description: |
             Approval schemes for granting entitlement request. This can be empty if no approval is needed.
-            Multiple schemes must be comma-separated. The valid schemes are "entitlementOwner", "sourceOwner", "manager" and "workgroup:{id}".
+            Multiple schemes must be comma-separated. The valid schemes are "entitlementOwner", "sourceOwner", "manager" and "`workgroup:{id}`".
             You can use multiple governance groups (workgroups).
           example: "entitlementOwner, sourceOwner, manager, workgroup:2c918084660f45d6016617daa9210584"
           nullable: true
@@ -83633,7 +83765,7 @@ components:
           description: the new value of attribute
           type: string
       type: object
-    AccessRequestResponse:
+    AccessRequestResponse_1:
       properties:
         requesterId:
           description: the requester Id
@@ -88381,6 +88513,21 @@ components:
           nullable: true
           type: array
           example: null
+      type: object
+    RequestedItemDetails:
+      properties:
+        type:
+          description: The type of access item requested.
+          enum:
+          - ACCESS_PROFILE
+          - ENTITLEMENT
+          - ROLE
+          example: ENTITLEMENT
+          type: string
+        id:
+          description: The id of the access item requested.
+          example: 779c6fd7171540bba1184e5946112c28
+          type: string
       type: object
     AccessItemReviewedBy:
       description: Identity who reviewed the access item request.

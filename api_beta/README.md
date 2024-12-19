@@ -304,7 +304,7 @@ Class | Method | HTTP request | Description
 *IdentityHistoryAPI* | [**GetIdentitySnapshotSummary**](docs/IdentityHistoryAPI.md#getidentitysnapshotsummary) | **Get** /historical-identities/{id}/snapshot-summary | Gets the summary for the event count for a specific identity
 *IdentityHistoryAPI* | [**GetIdentityStartDate**](docs/IdentityHistoryAPI.md#getidentitystartdate) | **Get** /historical-identities/{id}/start-date | Gets the start date of the identity
 *IdentityHistoryAPI* | [**ListHistoricalIdentities**](docs/IdentityHistoryAPI.md#listhistoricalidentities) | **Get** /historical-identities | Lists all the identities
-*IdentityHistoryAPI* | [**ListIdentityAccessItems**](docs/IdentityHistoryAPI.md#listidentityaccessitems) | **Get** /historical-identities/{id}/access-items | Gets a list of access items for the identity filtered by item type
+*IdentityHistoryAPI* | [**ListIdentityAccessItems**](docs/IdentityHistoryAPI.md#listidentityaccessitems) | **Get** /historical-identities/{id}/access-items | List Access Items by Identity
 *IdentityHistoryAPI* | [**ListIdentitySnapshotAccessItems**](docs/IdentityHistoryAPI.md#listidentitysnapshotaccessitems) | **Get** /historical-identities/{id}/snapshots/{date}/access-items | Get Identity Access Items Snapshot
 *IdentityHistoryAPI* | [**ListIdentitySnapshots**](docs/IdentityHistoryAPI.md#listidentitysnapshots) | **Get** /historical-identities/{id}/snapshots | Lists all the snapshots for the identity
 *IdentityProfilesAPI* | [**CreateIdentityProfile**](docs/IdentityProfilesAPI.md#createidentityprofile) | **Post** /identity-profiles | Create an Identity Profile
@@ -697,6 +697,8 @@ Class | Method | HTTP request | Description
  - [AccessRequestRecommendationItemDetailAccess](docs/AccessRequestRecommendationItemDetailAccess.md)
  - [AccessRequestRecommendationItemType](docs/AccessRequestRecommendationItemType.md)
  - [AccessRequestResponse](docs/AccessRequestResponse.md)
+ - [AccessRequestResponse1](docs/AccessRequestResponse1.md)
+ - [AccessRequestTracking](docs/AccessRequestTracking.md)
  - [AccessRequestType](docs/AccessRequestType.md)
  - [AccessRequested](docs/AccessRequested.md)
  - [AccessType](docs/AccessType.md)
@@ -1237,6 +1239,7 @@ Class | Method | HTTP request | Description
  - [RequestableObjectReference](docs/RequestableObjectReference.md)
  - [RequestableObjectRequestStatus](docs/RequestableObjectRequestStatus.md)
  - [RequestableObjectType](docs/RequestableObjectType.md)
+ - [RequestedItemDetails](docs/RequestedItemDetails.md)
  - [RequestedItemStatus](docs/RequestedItemStatus.md)
  - [RequestedItemStatusCancelledRequestDetails](docs/RequestedItemStatusCancelledRequestDetails.md)
  - [RequestedItemStatusPreApprovalTriggerDetails](docs/RequestedItemStatusPreApprovalTriggerDetails.md)

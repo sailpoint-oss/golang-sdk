@@ -374,7 +374,7 @@ func (r ApiGetAuthOrgNetworkConfigRequest) Execute() (*NetworkConfiguration, *ht
 /*
 GetAuthOrgNetworkConfig Get security network configuration.
 
-This API returns the details of an org's network auth configuration. Requires security scope of: 'sp:auth-org:read'
+This API returns the details of an org's network auth configuration.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetAuthOrgNetworkConfigRequest
@@ -860,7 +860,7 @@ type ApiPatchAuthOrgLockoutConfigRequest struct {
 	jsonPatchOperation *[]JsonPatchOperation
 }
 
-// A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   1. maximumAttempts &gt;&#x3D; 1 &amp;&amp; maximumAttempts &lt;&#x3D; 15   2. lockoutDuration &gt;&#x3D; 5 &amp;&amp; lockoutDuration &lt;&#x3D; 60   3. lockoutWindow &gt;&#x3D; 5 &amp;&amp; lockoutDuration &lt;&#x3D; 60
+// A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   &#x60;1. maximumAttempts &gt;&#x3D; 1 &amp;&amp; maximumAttempts &lt;&#x3D; 15   2. lockoutDuration &gt;&#x3D; 5 &amp;&amp; lockoutDuration &lt;&#x3D; 60   3. lockoutWindow &gt;&#x3D; 5 &amp;&amp; lockoutDuration &lt;&#x3D; 60&#x60;
 func (r ApiPatchAuthOrgLockoutConfigRequest) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchAuthOrgLockoutConfigRequest {
 	r.jsonPatchOperation = &jsonPatchOperation
 	return r
@@ -874,7 +874,7 @@ func (r ApiPatchAuthOrgLockoutConfigRequest) Execute() (*LockoutConfiguration, *
 PatchAuthOrgLockoutConfig Update Auth Org Lockout Configuration
 
 This API updates an existing lockout configuration for an org using PATCH
- Requires security scope of:  'sp:auth-org:update'
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPatchAuthOrgLockoutConfigRequest
@@ -1390,7 +1390,7 @@ type ApiPatchAuthOrgSessionConfigRequest struct {
 	jsonPatchOperation *[]JsonPatchOperation
 }
 
-// A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Session Config conforms to certain logical guidelines, which are:   1. maxSessionTime &gt;&#x3D; 1 &amp;&amp; maxSessionTime &lt;&#x3D; 10080 (1 week)   2. maxIdleTime &gt;&#x3D; 1 &amp;&amp; maxIdleTime &lt;&#x3D; 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime.
+// A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Ensures that the patched Session Config conforms to certain logical guidelines, which are:   &#x60;1. maxSessionTime &gt;&#x3D; 1 &amp;&amp; maxSessionTime &lt;&#x3D; 10080 (1 week)   2. maxIdleTime &gt;&#x3D; 1 &amp;&amp; maxIdleTime &lt;&#x3D; 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime.&#x60; 
 func (r ApiPatchAuthOrgSessionConfigRequest) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchAuthOrgSessionConfigRequest {
 	r.jsonPatchOperation = &jsonPatchOperation
 	return r

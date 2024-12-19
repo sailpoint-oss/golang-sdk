@@ -56,9 +56,9 @@ type AccessProfileDetails struct {
 	EntitlementCount *int32 `json:"entitlementCount,omitempty"`
 	// List of IDs of segments, if any, to which this Access Profile is assigned.
 	Segments []string `json:"segments,omitempty"`
-	// Comma-separated list of approval schemes. Each approval scheme is one of - manager - appOwner - sourceOwner - accessProfileOwner - workgroup:<workgroupId>
+	// Comma-separated list of approval schemes. Each approval scheme is one of - manager - appOwner - sourceOwner - accessProfileOwner - workgroup:&lt;workgroupId&gt; 
 	ApprovalSchemes *string `json:"approvalSchemes,omitempty"`
-	// Comma-separated list of revoke request approval schemes. Each approval scheme is one of - manager - sourceOwner - accessProfileOwner - workgroup:<workgroupId>
+	// Comma-separated list of revoke request approval schemes. Each approval scheme is one of - manager - sourceOwner - accessProfileOwner - workgroup:&lt;workgroupId&gt; 
 	RevokeRequestApprovalSchemes *string `json:"revokeRequestApprovalSchemes,omitempty"`
 	// Whether the access profile require request comment for access request.
 	RequestCommentsRequired *bool `json:"requestCommentsRequired,omitempty"`

@@ -210,7 +210,7 @@ func (r ApiGetAuthOrgNetworkConfigRequest) Execute() (*NetworkConfiguration, *ht
 /*
 GetAuthOrgNetworkConfig Get security network configuration.
 
-This API returns the details of an org's network auth configuration. Requires security scope of: 'sp:auth-org:read'
+This API returns the details of an org's network auth configuration.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetAuthOrgNetworkConfigRequest

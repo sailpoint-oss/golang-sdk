@@ -19,11 +19,10 @@ var _ MappedNullable = &AccessRequestResponse{}
 
 // AccessRequestResponse struct for AccessRequestResponse
 type AccessRequestResponse struct {
-	// the requester Id
-	RequesterId *string `json:"requesterId,omitempty"`
-	// the requesterName
-	RequesterName *string `json:"requesterName,omitempty"`
-	Items []AccessRequestItemResponse `json:"items,omitempty"`
+	// A list of new access request tracking data mapped to the values requested.
+	NewRequests []AccessRequestTracking `json:"newRequests,omitempty"`
+	// A list of existing access request tracking data mapped to the values requested.  This indicates access has already been requested for this item.
+	ExistingRequests []AccessRequestTracking `json:"existingRequests,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -46,100 +45,68 @@ func NewAccessRequestResponseWithDefaults() *AccessRequestResponse {
 	return &this
 }
 
-// GetRequesterId returns the RequesterId field value if set, zero value otherwise.
-func (o *AccessRequestResponse) GetRequesterId() string {
-	if o == nil || IsNil(o.RequesterId) {
-		var ret string
+// GetNewRequests returns the NewRequests field value if set, zero value otherwise.
+func (o *AccessRequestResponse) GetNewRequests() []AccessRequestTracking {
+	if o == nil || IsNil(o.NewRequests) {
+		var ret []AccessRequestTracking
 		return ret
 	}
-	return *o.RequesterId
+	return o.NewRequests
 }
 
-// GetRequesterIdOk returns a tuple with the RequesterId field value if set, nil otherwise
+// GetNewRequestsOk returns a tuple with the NewRequests field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessRequestResponse) GetRequesterIdOk() (*string, bool) {
-	if o == nil || IsNil(o.RequesterId) {
+func (o *AccessRequestResponse) GetNewRequestsOk() ([]AccessRequestTracking, bool) {
+	if o == nil || IsNil(o.NewRequests) {
 		return nil, false
 	}
-	return o.RequesterId, true
+	return o.NewRequests, true
 }
 
-// HasRequesterId returns a boolean if a field has been set.
-func (o *AccessRequestResponse) HasRequesterId() bool {
-	if o != nil && !IsNil(o.RequesterId) {
+// HasNewRequests returns a boolean if a field has been set.
+func (o *AccessRequestResponse) HasNewRequests() bool {
+	if o != nil && !IsNil(o.NewRequests) {
 		return true
 	}
 
 	return false
 }
 
-// SetRequesterId gets a reference to the given string and assigns it to the RequesterId field.
-func (o *AccessRequestResponse) SetRequesterId(v string) {
-	o.RequesterId = &v
+// SetNewRequests gets a reference to the given []AccessRequestTracking and assigns it to the NewRequests field.
+func (o *AccessRequestResponse) SetNewRequests(v []AccessRequestTracking) {
+	o.NewRequests = v
 }
 
-// GetRequesterName returns the RequesterName field value if set, zero value otherwise.
-func (o *AccessRequestResponse) GetRequesterName() string {
-	if o == nil || IsNil(o.RequesterName) {
-		var ret string
+// GetExistingRequests returns the ExistingRequests field value if set, zero value otherwise.
+func (o *AccessRequestResponse) GetExistingRequests() []AccessRequestTracking {
+	if o == nil || IsNil(o.ExistingRequests) {
+		var ret []AccessRequestTracking
 		return ret
 	}
-	return *o.RequesterName
+	return o.ExistingRequests
 }
 
-// GetRequesterNameOk returns a tuple with the RequesterName field value if set, nil otherwise
+// GetExistingRequestsOk returns a tuple with the ExistingRequests field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessRequestResponse) GetRequesterNameOk() (*string, bool) {
-	if o == nil || IsNil(o.RequesterName) {
+func (o *AccessRequestResponse) GetExistingRequestsOk() ([]AccessRequestTracking, bool) {
+	if o == nil || IsNil(o.ExistingRequests) {
 		return nil, false
 	}
-	return o.RequesterName, true
+	return o.ExistingRequests, true
 }
 
-// HasRequesterName returns a boolean if a field has been set.
-func (o *AccessRequestResponse) HasRequesterName() bool {
-	if o != nil && !IsNil(o.RequesterName) {
+// HasExistingRequests returns a boolean if a field has been set.
+func (o *AccessRequestResponse) HasExistingRequests() bool {
+	if o != nil && !IsNil(o.ExistingRequests) {
 		return true
 	}
 
 	return false
 }
 
-// SetRequesterName gets a reference to the given string and assigns it to the RequesterName field.
-func (o *AccessRequestResponse) SetRequesterName(v string) {
-	o.RequesterName = &v
-}
-
-// GetItems returns the Items field value if set, zero value otherwise.
-func (o *AccessRequestResponse) GetItems() []AccessRequestItemResponse {
-	if o == nil || IsNil(o.Items) {
-		var ret []AccessRequestItemResponse
-		return ret
-	}
-	return o.Items
-}
-
-// GetItemsOk returns a tuple with the Items field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccessRequestResponse) GetItemsOk() ([]AccessRequestItemResponse, bool) {
-	if o == nil || IsNil(o.Items) {
-		return nil, false
-	}
-	return o.Items, true
-}
-
-// HasItems returns a boolean if a field has been set.
-func (o *AccessRequestResponse) HasItems() bool {
-	if o != nil && !IsNil(o.Items) {
-		return true
-	}
-
-	return false
-}
-
-// SetItems gets a reference to the given []AccessRequestItemResponse and assigns it to the Items field.
-func (o *AccessRequestResponse) SetItems(v []AccessRequestItemResponse) {
-	o.Items = v
+// SetExistingRequests gets a reference to the given []AccessRequestTracking and assigns it to the ExistingRequests field.
+func (o *AccessRequestResponse) SetExistingRequests(v []AccessRequestTracking) {
+	o.ExistingRequests = v
 }
 
 func (o AccessRequestResponse) MarshalJSON() ([]byte, error) {
@@ -152,14 +119,11 @@ func (o AccessRequestResponse) MarshalJSON() ([]byte, error) {
 
 func (o AccessRequestResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.RequesterId) {
-		toSerialize["requesterId"] = o.RequesterId
+	if !IsNil(o.NewRequests) {
+		toSerialize["newRequests"] = o.NewRequests
 	}
-	if !IsNil(o.RequesterName) {
-		toSerialize["requesterName"] = o.RequesterName
-	}
-	if !IsNil(o.Items) {
-		toSerialize["items"] = o.Items
+	if !IsNil(o.ExistingRequests) {
+		toSerialize["existingRequests"] = o.ExistingRequests
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -183,9 +147,8 @@ func (o *AccessRequestResponse) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "requesterId")
-		delete(additionalProperties, "requesterName")
-		delete(additionalProperties, "items")
+		delete(additionalProperties, "newRequests")
+		delete(additionalProperties, "existingRequests")
 		o.AdditionalProperties = additionalProperties
 	}
 

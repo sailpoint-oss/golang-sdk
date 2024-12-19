@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**GetIdentitySnapshotSummary**](IdentityHistoryAPI.md#GetIdentitySnapshotSummary) | **Get** /historical-identities/{id}/snapshot-summary | Gets the summary for the event count for a specific identity
 [**GetIdentityStartDate**](IdentityHistoryAPI.md#GetIdentityStartDate) | **Get** /historical-identities/{id}/start-date | Gets the start date of the identity
 [**ListHistoricalIdentities**](IdentityHistoryAPI.md#ListHistoricalIdentities) | **Get** /historical-identities | Lists all the identities
-[**ListIdentityAccessItems**](IdentityHistoryAPI.md#ListIdentityAccessItems) | **Get** /historical-identities/{id}/access-items | Gets a list of access items for the identity filtered by item type
+[**ListIdentityAccessItems**](IdentityHistoryAPI.md#ListIdentityAccessItems) | **Get** /historical-identities/{id}/access-items | List Access Items by Identity
 [**ListIdentitySnapshotAccessItems**](IdentityHistoryAPI.md#ListIdentitySnapshotAccessItems) | **Get** /historical-identities/{id}/snapshots/{date}/access-items | Gets the list of identity access items at a given date filterd by item type
 [**ListIdentitySnapshots**](IdentityHistoryAPI.md#ListIdentitySnapshots) | **Get** /historical-identities/{id}/snapshots | Lists all the snapshots for the identity
 
@@ -654,9 +654,9 @@ Name | Type | Description  | Notes
 
 ## ListIdentityAccessItems
 
-> []ListIdentityAccessItems200ResponseInner ListIdentityAccessItems(ctx, id).XSailPointExperimental(xSailPointExperimental).Type_(type_).Execute()
+> []ListIdentityAccessItems200ResponseInner ListIdentityAccessItems(ctx, id).XSailPointExperimental(xSailPointExperimental).Type_(type_).Limit(limit).Count(count).Offset(offset).Execute()
 
-Gets a list of access items for the identity filtered by item type
+List Access Items by Identity
 
 
 
@@ -676,10 +676,13 @@ func main() {
 	id := "8c190e6787aa4ed9a90bd9d5344523fb" // string | The identity id
 	xSailPointExperimental := "true" // string | Use this header to enable this experimental API. (default to "true")
 	type_ := "account" // string | The type of access item for the identity. If not provided, it defaults to account (optional)
+	limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+	count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+	offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.IdentityHistoryAPI.ListIdentityAccessItems(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Type_(type_).Execute()
+	resp, r, err := apiClient.IdentityHistoryAPI.ListIdentityAccessItems(context.Background(), id).XSailPointExperimental(xSailPointExperimental).Type_(type_).Limit(limit).Count(count).Offset(offset).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.ListIdentityAccessItems``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -707,6 +710,9 @@ Name | Type | Description  | Notes
 
  **xSailPointExperimental** | **string** | Use this header to enable this experimental API. | [default to &quot;true&quot;]
  **type_** | **string** | The type of access item for the identity. If not provided, it defaults to account | 
+ **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
+ **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
+ **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
 
 ### Return type
 

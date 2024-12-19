@@ -25,7 +25,7 @@ type EntitlementRequestConfig struct {
 	RequestCommentsRequired *bool `json:"requestCommentsRequired,omitempty"`
 	// If this is true, comments are required to reject entitlement requests.
 	DeniedCommentsRequired *bool `json:"deniedCommentsRequired,omitempty"`
-	// Approval schemes for granting entitlement request. This can be empty if no approval is needed. Multiple schemes must be comma-separated. The valid schemes are \"entitlementOwner\", \"sourceOwner\", \"manager\" and \"workgroup:{id}\". You can use multiple governance groups (workgroups). 
+	// Approval schemes for granting entitlement request. This can be empty if no approval is needed. Multiple schemes must be comma-separated. The valid schemes are \"entitlementOwner\", \"sourceOwner\", \"manager\" and \"`workgroup:{id}`\". You can use multiple governance groups (workgroups). 
 	GrantRequestApprovalSchemes NullableString `json:"grantRequestApprovalSchemes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

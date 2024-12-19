@@ -19,7 +19,7 @@ var _ MappedNullable = &AccessRequested{}
 
 // AccessRequested struct for AccessRequested
 type AccessRequested struct {
-	AccessRequest *AccessRequestResponse `json:"accessRequest,omitempty"`
+	AccessRequest *AccessRequestResponse1 `json:"accessRequest,omitempty"`
 	// the identity id
 	IdentityId *string `json:"identityId,omitempty"`
 	// the event type
@@ -49,9 +49,9 @@ func NewAccessRequestedWithDefaults() *AccessRequested {
 }
 
 // GetAccessRequest returns the AccessRequest field value if set, zero value otherwise.
-func (o *AccessRequested) GetAccessRequest() AccessRequestResponse {
+func (o *AccessRequested) GetAccessRequest() AccessRequestResponse1 {
 	if o == nil || IsNil(o.AccessRequest) {
-		var ret AccessRequestResponse
+		var ret AccessRequestResponse1
 		return ret
 	}
 	return *o.AccessRequest
@@ -59,7 +59,7 @@ func (o *AccessRequested) GetAccessRequest() AccessRequestResponse {
 
 // GetAccessRequestOk returns a tuple with the AccessRequest field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessRequested) GetAccessRequestOk() (*AccessRequestResponse, bool) {
+func (o *AccessRequested) GetAccessRequestOk() (*AccessRequestResponse1, bool) {
 	if o == nil || IsNil(o.AccessRequest) {
 		return nil, false
 	}
@@ -75,8 +75,8 @@ func (o *AccessRequested) HasAccessRequest() bool {
 	return false
 }
 
-// SetAccessRequest gets a reference to the given AccessRequestResponse and assigns it to the AccessRequest field.
-func (o *AccessRequested) SetAccessRequest(v AccessRequestResponse) {
+// SetAccessRequest gets a reference to the given AccessRequestResponse1 and assigns it to the AccessRequest field.
+func (o *AccessRequested) SetAccessRequest(v AccessRequestResponse1) {
 	o.AccessRequest = &v
 }
 
