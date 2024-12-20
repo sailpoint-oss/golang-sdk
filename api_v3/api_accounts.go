@@ -41,7 +41,7 @@ func (r ApiCreateAccountRequest) Execute() (*AccountsAsyncResult, *http.Response
 /*
 CreateAccount Create Account
 
-This API submits an account creation task and returns the task ID.  
+Submit an account creation task - the API then returns the task ID.  
 
 You must include the `sourceId` where the account will be created in the `attributes` object.
 
@@ -1108,6 +1108,7 @@ type ApiListAccountsRequest struct {
 	limit *int32
 	offset *int32
 	count *bool
+	detailLevel *string
 	filters *string
 	sorters *string
 }
@@ -1130,6 +1131,12 @@ func (r ApiListAccountsRequest) Count(count bool) ApiListAccountsRequest {
 	return r
 }
 
+// This value determines whether the API provides &#x60;SLIM&#x60; or increased level of detail (&#x60;FULL&#x60;) for each account in the returned list. &#x60;FULL&#x60; is the default behavior.
+func (r ApiListAccountsRequest) DetailLevel(detailLevel string) ApiListAccountsRequest {
+	r.detailLevel = &detailLevel
+	return r
+}
+
 // Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **identityId**: *eq, in, sw*  **name**: *eq, in, sw*  **nativeIdentity**: *eq, in, sw*  **sourceId**: *eq, in, sw*  **uncorrelated**: *eq*  **entitlements**: *eq*  **origin**: *eq, in*  **manuallyCorrelated**: *eq*  **identity.name**: *eq, in, sw*  **identity.correlated**: *eq*  **identity.identityState**: *eq, in*  **source.displayableName**: *eq, in*  **source.authoritative**: *eq*  **source.connectionType**: *eq, in*  **recommendation.method**: *eq, in, isnull*
 func (r ApiListAccountsRequest) Filters(filters string) ApiListAccountsRequest {
 	r.filters = &filters
@@ -1149,7 +1156,7 @@ func (r ApiListAccountsRequest) Execute() ([]Account, *http.Response, error) {
 /*
 ListAccounts Accounts List
 
-This returns a list of accounts.  
+List accounts. 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListAccountsRequest
@@ -1199,6 +1206,9 @@ func (a *AccountsAPIService) ListAccountsExecute(r ApiListAccountsRequest) ([]Ac
 	} else {
 		var defaultValue bool = false
 		r.count = &defaultValue
+	}
+	if r.detailLevel != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "detailLevel", r.detailLevel, "", "")
 	}
 	if r.filters != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "", "")

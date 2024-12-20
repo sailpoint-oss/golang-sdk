@@ -345,12 +345,12 @@ func (r ApiGetManagedClientRequest) Execute() (*ManagedClient, *http.Response, e
 }
 
 /*
-GetManagedClient Get a Managed Client
+GetManagedClient Get Managed Client
 
-Get a Managed Client.
+Get managed client by ID. 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Managed Client ID.
+ @param id Managed client ID.
  @return ApiGetManagedClientRequest
 */
 func (a *ManagedClientsAPIService) GetManagedClient(ctx context.Context, id string) ApiGetManagedClientRequest {

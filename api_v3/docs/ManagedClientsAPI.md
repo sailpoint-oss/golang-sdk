@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateManagedClient**](ManagedClientsAPI.md#CreateManagedClient) | **Post** /managed-clients | Create Managed Client
 [**DeleteManagedClient**](ManagedClientsAPI.md#DeleteManagedClient) | **Delete** /managed-clients/{id} | Delete Managed Client
-[**GetManagedClient**](ManagedClientsAPI.md#GetManagedClient) | **Get** /managed-clients/{id} | Get a Managed Client
+[**GetManagedClient**](ManagedClientsAPI.md#GetManagedClient) | **Get** /managed-clients/{id} | Get Managed Client
 [**GetManagedClientStatus**](ManagedClientsAPI.md#GetManagedClientStatus) | **Get** /managed-clients/{id}/status | Get Managed Client Status
 [**GetManagedClients**](ManagedClientsAPI.md#GetManagedClients) | **Get** /managed-clients | Get Managed Clients
 [**UpdateManagedClient**](ManagedClientsAPI.md#UpdateManagedClient) | **Patch** /managed-clients/{id} | Update Managed Client
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 > ManagedClient GetManagedClient(ctx, id).Execute()
 
-Get a Managed Client
+Get Managed Client
 
 
 
@@ -168,7 +168,7 @@ import (
 )
 
 func main() {
-	id := "4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7" // string | Managed Client ID.
+	id := "4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7" // string | Managed client ID.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -188,7 +188,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Managed Client ID. | 
+**id** | **string** | Managed client ID. | 
 
 ### Other Parameters
 

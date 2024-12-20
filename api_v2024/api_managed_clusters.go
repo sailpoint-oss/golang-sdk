@@ -39,10 +39,10 @@ func (r ApiCreateManagedClusterRequest) Execute() (*ManagedCluster, *http.Respon
 }
 
 /*
-CreateManagedCluster Create a new Managed Cluster
+CreateManagedCluster Create Create Managed Cluster
 
 Create a new Managed Cluster.
-The API returns a result that includes the Managed Cluster ID.
+The API returns a result that includes the managed cluster ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateManagedClusterRequest
@@ -195,7 +195,7 @@ type ApiDeleteManagedClusterRequest struct {
 	removeClients *bool
 }
 
-// Flag to determine the need to delete a cluster with clients
+// Flag to determine the need to delete a cluster with clients.
 func (r ApiDeleteManagedClusterRequest) RemoveClients(removeClients bool) ApiDeleteManagedClusterRequest {
 	r.removeClients = &removeClients
 	return r
@@ -206,12 +206,12 @@ func (r ApiDeleteManagedClusterRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteManagedCluster Delete a Managed Cluster
+DeleteManagedCluster Delete Managed Cluster
 
-Delete an existing Managed Cluster.
+Delete an existing managed cluster.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Managed Cluster ID.
+ @param id Managed cluster ID.
  @return ApiDeleteManagedClusterRequest
 */
 func (a *ManagedClustersAPIService) DeleteManagedCluster(ctx context.Context, id string) ApiDeleteManagedClusterRequest {
@@ -358,12 +358,12 @@ func (r ApiGetClientLogConfigurationRequest) Execute() (*ClientLogConfiguration,
 }
 
 /*
-GetClientLogConfiguration Get Managed Cluster's log configuration
+GetClientLogConfiguration Get Managed Cluster Log Configuration
 
-Get managed cluster's log configuration.
+Get a managed cluster's log configuration.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of ManagedCluster to get log configuration for
+ @param id ID of managed cluster to get log configuration for.
  @return ApiGetClientLogConfigurationRequest
 */
 func (a *ManagedClustersAPIService) GetClientLogConfiguration(ctx context.Context, id string) ApiGetClientLogConfigurationRequest {
@@ -526,12 +526,12 @@ func (r ApiGetManagedClusterRequest) Execute() (*ManagedCluster, *http.Response,
 }
 
 /*
-GetManagedCluster Get a specified Managed Cluster.
+GetManagedCluster Get Managed Cluster
 
-Retrieve a ManagedCluster by ID.
+Get a managed cluster by ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ManagedCluster ID.
+ @param id Managed cluster ID.
  @return ApiGetManagedClusterRequest
 */
 func (a *ManagedClustersAPIService) GetManagedCluster(ctx context.Context, id string) ApiGetManagedClusterRequest {
@@ -721,9 +721,9 @@ func (r ApiGetManagedClustersRequest) Execute() ([]ManagedCluster, *http.Respons
 }
 
 /*
-GetManagedClusters Retrieve all Managed Clusters.
+GetManagedClusters Get Managed Clusters
 
-Retrieve all Managed Clusters for the current Org, based on request context.
+List current organization's managed clusters, based on request context.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetManagedClustersRequest
@@ -892,7 +892,7 @@ type ApiPutClientLogConfigurationRequest struct {
 	putClientLogConfigurationRequest *PutClientLogConfigurationRequest
 }
 
-// ClientLogConfiguration for given ManagedCluster
+// Client log configuration for the given managed cluster.
 func (r ApiPutClientLogConfigurationRequest) PutClientLogConfigurationRequest(putClientLogConfigurationRequest PutClientLogConfigurationRequest) ApiPutClientLogConfigurationRequest {
 	r.putClientLogConfigurationRequest = &putClientLogConfigurationRequest
 	return r
@@ -903,12 +903,12 @@ func (r ApiPutClientLogConfigurationRequest) Execute() (*ClientLogConfiguration,
 }
 
 /*
-PutClientLogConfiguration Update Managed Cluster's log configuration
+PutClientLogConfiguration Update Managed Cluster Log Configuration
 
-Update managed cluster's log configuration.  Only one of `durationMinutes` or `expiration` may be specified, up to 1440 minutes (24 hours) in the future. If neither is specified, the default value for `durationMinutes` will be 240.
+Update a managed cluster's log configuration. You may only specify one of `durationMinutes` or `expiration`, up to 1440 minutes (24 hours) in the future. If neither is specified, the default value for `durationMinutes` is 240.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of ManagedCluster to update log configuration for
+ @param id ID of the managed cluster to update the log configuration for.
  @return ApiPutClientLogConfigurationRequest
 */
 func (a *ManagedClustersAPIService) PutClientLogConfiguration(ctx context.Context, id string) ApiPutClientLogConfigurationRequest {
@@ -1072,7 +1072,7 @@ type ApiUpdateManagedClusterRequest struct {
 	jsonPatchOperation *[]JsonPatchOperation
 }
 
-// The JSONPatch payload used to update the object.
+// JSONPatch payload used to update the object.
 func (r ApiUpdateManagedClusterRequest) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiUpdateManagedClusterRequest {
 	r.jsonPatchOperation = &jsonPatchOperation
 	return r
@@ -1083,12 +1083,12 @@ func (r ApiUpdateManagedClusterRequest) Execute() (*ManagedCluster, *http.Respon
 }
 
 /*
-UpdateManagedCluster Update a Managed Cluster
+UpdateManagedCluster Update Managed Cluster
 
-Update an existing Managed Cluster.
+Update an existing managed cluster.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Managed Cluster ID.
+ @param id Managed cluster ID.
  @return ApiUpdateManagedClusterRequest
 */
 func (a *ManagedClustersAPIService) UpdateManagedCluster(ctx context.Context, id string) ApiUpdateManagedClusterRequest {

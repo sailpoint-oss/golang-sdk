@@ -474,9 +474,14 @@ tags:
     \ to [Setting Up Lifecycle States](https://documentation.sailpoint.com/saas/help/provisioning/lifecycle.html)\
     \ for more information about lifecycle states.\n"
   name: Lifecycle States
-- description: Read and create operations for client data and statuses
+- description: "Use this API to implement managed client functionality. \nWith this\
+    \ functionality in place, administrators can modify and delete existing managed\
+    \ clients, create new ones, and view and make changes to their log configurations.\
+    \ \n"
   name: Managed Clients
-- description: "Read and create pperations for client Clusters, including Log Configuration"
+- description: "Use this API to implement managed cluster functionality. \nWith this\
+    \ functionality in place, administrators can modify and delete existing managed\
+    \ clients, get their statuses, and create new ones. \n"
   name: Managed Clusters
 - description: Configure and test multifactor authentication (MFA) methods
   name: MFA Configuration
@@ -3263,7 +3268,7 @@ paths:
       - Access Request Approvals
   /accounts:
     get:
-      description: 'This returns a list of accounts.  '
+      description: 'List accounts. '
       operationId: listAccounts
       parameters:
       - description: |-
@@ -3304,6 +3309,17 @@ paths:
         schema:
           default: false
           type: boolean
+      - description: This value determines whether the API provides `SLIM` or increased
+          level of detail (`FULL`) for each account in the returned list. `FULL` is
+          the default behavior.
+        example: FULL
+        in: query
+        name: detailLevel
+        schema:
+          enum:
+          - SLIM
+          - FULL
+          type: string
       - description: |-
           Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
 
@@ -3365,7 +3381,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Account'
                 type: array
-          description: List of account objects
+          description: List of account objects.
         "400":
           content:
             application/json:
@@ -3434,7 +3450,7 @@ paths:
       - SOURCE_SUBADMIN
       - HELPDESK
     post:
-      description: "This API submits an account creation task and returns the task\
+      description: "Submit an account creation task - the API then returns the task\
         \ ID.  \n\nYou must include the `sourceId` where the account will be created\
         \ in the `attributes` object.\n\nThis endpoint creates an account on the source\
         \ record in your ISC tenant.\nThis is useful for Flat File (`DelimitedFile`)\
@@ -3460,7 +3476,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AccountsAsyncResult'
-          description: Async task details
+          description: Async task details.
         "400":
           content:
             application/json:
@@ -16667,6 +16683,7 @@ paths:
         example: name eq "client name"
         in: query
         name: filters
+        required: false
         schema:
           type: string
       responses:
@@ -16742,6 +16759,8 @@ paths:
       summary: Get Managed Clients
       tags:
       - Managed Clients
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     post:
       description: |-
         Create a new managed client.
@@ -16759,7 +16778,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ManagedClient'
-          description: Created ManagedClient.
+          description: Created managed client.
         "400":
           content:
             application/json:
@@ -16822,6 +16841,8 @@ paths:
       summary: Create Managed Client
       tags:
       - Managed Clients
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /managed-clients/{id}:
     delete:
       description: Delete an existing managed client.
@@ -16900,11 +16921,13 @@ paths:
       summary: Delete Managed Client
       tags:
       - Managed Clients
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     get:
-      description: Get a Managed Client.
+      description: 'Get managed client by ID. '
       operationId: getManagedClient
       parameters:
-      - description: Managed Client ID.
+      - description: Managed client ID.
         example: 4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7
         in: path
         name: id
@@ -16917,7 +16940,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ManagedClient'
-          description: Responds with a Managed Client
+          description: Managed client response.
         "400":
           content:
             application/json:
@@ -16998,9 +17021,11 @@ paths:
         - idn:remote-client:manage
         - idn:managed-client-status:read
         - idn:managed-client-status:manage
-      summary: Get a Managed Client
+      summary: Get Managed Client
       tags:
       - Managed Clients
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     patch:
       description: Update an existing managed client.
       operationId: updateManagedClient
@@ -17108,6 +17133,8 @@ paths:
       summary: Update Managed Client
       tags:
       - Managed Clients
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /managed-clients/{id}/status:
     get:
       description: "Get a managed client's status, using its ID."
@@ -17216,7 +17243,7 @@ paths:
       - Managed Clients
   /managed-clusters:
     get:
-      description: "Retrieve all Managed Clusters for the current Org, based on request\
+      description: "List current organization's managed clusters, based on request\
         \ context."
       operationId: getManagedClusters
       parameters:
@@ -17267,6 +17294,7 @@ paths:
         example: operational eq "operation"
         in: query
         name: filters
+        required: false
         schema:
           type: string
       responses:
@@ -17277,7 +17305,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ManagedCluster'
                 type: array
-          description: Responds with a list of ManagedCluster.
+          description: Response with a list of managed clusters.
         "400":
           content:
             application/json:
@@ -17338,13 +17366,15 @@ paths:
       - userAuth:
         - idn:remote-client:read
         - idn:remote-client:manage
-      summary: Retrieve all Managed Clusters.
+      summary: Get Managed Clusters
       tags:
       - Managed Clusters
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     post:
       description: |-
         Create a new Managed Cluster.
-        The API returns a result that includes the Managed Cluster ID.
+        The API returns a result that includes the managed cluster ID.
       operationId: createManagedCluster
       requestBody:
         content:
@@ -17358,7 +17388,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ManagedCluster'
-          description: The created ManagedClient
+          description: Created managed cluster.
         "400":
           content:
             application/json:
@@ -17418,22 +17448,24 @@ paths:
       security:
       - userAuth:
         - idn:remote-client:manage
-      summary: Create a new Managed Cluster
+      summary: Create Create Managed Cluster
       tags:
       - Managed Clusters
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /managed-clusters/{id}:
     delete:
-      description: Delete an existing Managed Cluster.
+      description: Delete an existing managed cluster.
       operationId: deleteManagedCluster
       parameters:
-      - description: Managed Cluster ID.
+      - description: Managed cluster ID.
         example: 2c9180897de347a2017de8859e8c5039
         in: path
         name: id
         required: true
         schema:
           type: string
-      - description: Flag to determine the need to delete a cluster with clients
+      - description: Flag to determine the need to delete a cluster with clients.
         example: false
         in: query
         name: removeClients
@@ -17504,14 +17536,16 @@ paths:
       security:
       - userAuth:
         - idn:remote-client:manage
-      summary: Delete a Managed Cluster
+      summary: Delete Managed Cluster
       tags:
       - Managed Clusters
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     get:
-      description: Retrieve a ManagedCluster by ID.
+      description: Get a managed cluster by ID.
       operationId: getManagedCluster
       parameters:
-      - description: ManagedCluster ID.
+      - description: Managed cluster ID.
         example: 2c9180897de347a2017de8859e8c5039
         explode: false
         in: path
@@ -17526,7 +17560,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ManagedCluster'
-          description: Responds with ManagedCluster having the given ID.
+          description: Response with managed cluster for the given ID.
         "400":
           content:
             application/json:
@@ -17605,14 +17639,16 @@ paths:
       - userAuth:
         - idn:remote-client:read
         - idn:remote-client:manage
-      summary: Get a specified Managed Cluster.
+      summary: Get Managed Cluster
       tags:
       - Managed Clusters
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
     patch:
-      description: Update an existing Managed Cluster.
+      description: Update an existing managed cluster.
       operationId: updateManagedCluster
       parameters:
-      - description: Managed Cluster ID.
+      - description: Managed cluster ID.
         example: 2c9180897de347a2017de8859e8c5039
         in: path
         name: id
@@ -17626,7 +17662,7 @@ paths:
               items:
                 $ref: '#/components/schemas/JsonPatchOperation'
               type: array
-        description: The JSONPatch payload used to update the object.
+        description: JSONPatch payload used to update the object.
         required: true
       responses:
         "200":
@@ -17634,7 +17670,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ManagedCluster'
-          description: The updated Managed Cluster
+          description: Updated managed cluster.
         "400":
           content:
             application/json:
@@ -17712,15 +17748,17 @@ paths:
       security:
       - userAuth:
         - idn:remote-client:manage
-      summary: Update a Managed Cluster
+      summary: Update Managed Cluster
       tags:
       - Managed Clusters
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
   /managed-clusters/{id}/log-config:
     get:
-      description: Get managed cluster's log configuration.
+      description: Get a managed cluster's log configuration.
       operationId: getClientLogConfiguration
       parameters:
-      - description: ID of ManagedCluster to get log configuration for
+      - description: ID of managed cluster to get log configuration for.
         example: 2b838de9-db9b-abcf-e646-d4f274ad4238
         in: path
         name: id
@@ -17734,8 +17772,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClientLogConfiguration'
-          description: Log configuration of ManagedCluster matching given cluster
-            ID
+          description: Log configuration of managed cluster for given cluster ID.
         "204":
           description: No content - indicates the request was successful but there
             is no content to be returned in the response.
@@ -17817,19 +17854,19 @@ paths:
       - userAuth:
         - idn:remote-client:read
         - idn:remote-client:manage
-      summary: Get Managed Cluster's log configuration
+      summary: Get Managed Cluster Log Configuration
       tags:
       - Managed Clusters
       x-sailpoint-userLevels:
       - ORG_ADMIN
     put:
-      description: "Update managed cluster's log configuration.  Only one of `durationMinutes`\
-        \ or `expiration` may be specified, up to 1440 minutes (24 hours) in the future.\
-        \ If neither is specified, the default value for `durationMinutes` will be\
-        \ 240."
+      description: "Update a managed cluster's log configuration. You may only specify\
+        \ one of `durationMinutes` or `expiration`, up to 1440 minutes (24 hours)\
+        \ in the future. If neither is specified, the default value for `durationMinutes`\
+        \ is 240."
       operationId: putClientLogConfiguration
       parameters:
-      - description: ID of ManagedCluster to update log configuration for
+      - description: ID of the managed cluster to update the log configuration for.
         example: 2b838de9-db9b-abcf-e646-d4f274ad4238
         in: path
         name: id
@@ -17847,7 +17884,7 @@ paths:
                 $ref: '#/components/examples/client-log-configuration-expiration'
             schema:
               $ref: '#/components/schemas/putClientLogConfiguration_request'
-        description: ClientLogConfiguration for given ManagedCluster
+        description: Client log configuration for the given managed cluster.
         required: true
       responses:
         "200":
@@ -17855,7 +17892,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClientLogConfiguration'
-          description: Responds with updated ClientLogConfiguration for given ManagedCluster
+          description: Response with updated client log configuration for the given
+            managed cluster.
         "400":
           content:
             application/json:
@@ -17933,7 +17971,7 @@ paths:
       security:
       - userAuth:
         - idn:remote-client:manage
-      summary: Update Managed Cluster's log configuration
+      summary: Update Managed Cluster Log Configuration
       tags:
       - Managed Clusters
       x-sailpoint-userLevels:
@@ -29485,7 +29523,7 @@ paths:
         \ Source endpoint](https://developer.sailpoint.com/docs/api/v3/update-source)\
         \ to add the `PASSWORD` feature.**\n\nTo generate the encryptedPassword (RSA\
         \ encrypted using publicKey) for the request body, run the following command:\n\
-        \n```bash\necho \"myPassword\" | openssl pkeyutl -encrypt -inkey public_key.pem\
+        \n```bash\necho -n \"myPassword\" | openssl pkeyutl -encrypt -inkey public_key.pem\
         \ -pubin | base64\n```\n\nIn this example, myPassword is the plain text password\
         \ being set and encrypted, and public_key.pem is the path to the public key\
         \ file. You can retrieve the required publicKey, along with other information\
@@ -36529,10 +36567,10 @@ paths:
       - Tagged Objects
   /tagged-objects/{type}/{id}:
     delete:
-      description: This deletes a tagged object for the specified type.
+      description: Delete all tags from a tagged object.
       operationId: deleteTaggedObject
       parameters:
-      - description: The type of tagged object to delete.
+      - description: The type of object to delete tags from.
         example: ROLE
         in: path
         name: type
@@ -36548,7 +36586,7 @@ paths:
           - SOD_POLICY
           - SOURCE
           type: string
-      - description: The ID of the object reference to delete.
+      - description: The ID of the object to delete tags from.
         example: ef38f94347e94562b5bb8424a56397d8
         in: path
         name: id
@@ -36617,7 +36655,7 @@ paths:
       security:
       - userAuth:
         - idn:tag:manage
-      summary: Delete Tagged Object
+      summary: Delete Object Tags
       tags:
       - Tagged Objects
     get:

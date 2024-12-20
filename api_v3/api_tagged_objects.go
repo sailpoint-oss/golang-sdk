@@ -35,13 +35,13 @@ func (r ApiDeleteTaggedObjectRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteTaggedObject Delete Tagged Object
+DeleteTaggedObject Delete Object Tags
 
-This deletes a tagged object for the specified type.
+Delete all tags from a tagged object.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param type_ The type of tagged object to delete.
- @param id The ID of the object reference to delete.
+ @param type_ The type of object to delete tags from.
+ @param id The ID of the object to delete tags from.
  @return ApiDeleteTaggedObjectRequest
 */
 func (a *TaggedObjectsAPIService) DeleteTaggedObject(ctx context.Context, type_ string, id string) ApiDeleteTaggedObjectRequest {

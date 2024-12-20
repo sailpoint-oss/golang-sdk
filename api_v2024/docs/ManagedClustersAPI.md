@@ -4,13 +4,13 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2024*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateManagedCluster**](ManagedClustersAPI.md#CreateManagedCluster) | **Post** /managed-clusters | Create a new Managed Cluster
-[**DeleteManagedCluster**](ManagedClustersAPI.md#DeleteManagedCluster) | **Delete** /managed-clusters/{id} | Delete a Managed Cluster
-[**GetClientLogConfiguration**](ManagedClustersAPI.md#GetClientLogConfiguration) | **Get** /managed-clusters/{id}/log-config | Get Managed Cluster&#39;s log configuration
-[**GetManagedCluster**](ManagedClustersAPI.md#GetManagedCluster) | **Get** /managed-clusters/{id} | Get a specified Managed Cluster.
-[**GetManagedClusters**](ManagedClustersAPI.md#GetManagedClusters) | **Get** /managed-clusters | Retrieve all Managed Clusters.
-[**PutClientLogConfiguration**](ManagedClustersAPI.md#PutClientLogConfiguration) | **Put** /managed-clusters/{id}/log-config | Update Managed Cluster&#39;s log configuration
-[**UpdateManagedCluster**](ManagedClustersAPI.md#UpdateManagedCluster) | **Patch** /managed-clusters/{id} | Update a Managed Cluster
+[**CreateManagedCluster**](ManagedClustersAPI.md#CreateManagedCluster) | **Post** /managed-clusters | Create Create Managed Cluster
+[**DeleteManagedCluster**](ManagedClustersAPI.md#DeleteManagedCluster) | **Delete** /managed-clusters/{id} | Delete Managed Cluster
+[**GetClientLogConfiguration**](ManagedClustersAPI.md#GetClientLogConfiguration) | **Get** /managed-clusters/{id}/log-config | Get Managed Cluster Log Configuration
+[**GetManagedCluster**](ManagedClustersAPI.md#GetManagedCluster) | **Get** /managed-clusters/{id} | Get Managed Cluster
+[**GetManagedClusters**](ManagedClustersAPI.md#GetManagedClusters) | **Get** /managed-clusters | Get Managed Clusters
+[**PutClientLogConfiguration**](ManagedClustersAPI.md#PutClientLogConfiguration) | **Put** /managed-clusters/{id}/log-config | Update Managed Cluster Log Configuration
+[**UpdateManagedCluster**](ManagedClustersAPI.md#UpdateManagedCluster) | **Patch** /managed-clusters/{id} | Update Managed Cluster
 
 
 
@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 > ManagedCluster CreateManagedCluster(ctx).ManagedClusterRequest(managedClusterRequest).Execute()
 
-Create a new Managed Cluster
+Create Create Managed Cluster
 
 
 
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 > DeleteManagedCluster(ctx, id).RemoveClients(removeClients).Execute()
 
-Delete a Managed Cluster
+Delete Managed Cluster
 
 
 
@@ -101,8 +101,8 @@ import (
 )
 
 func main() {
-	id := "2c9180897de347a2017de8859e8c5039" // string | Managed Cluster ID.
-	removeClients := false // bool | Flag to determine the need to delete a cluster with clients (optional) (default to false)
+	id := "2c9180897de347a2017de8859e8c5039" // string | Managed cluster ID.
+	removeClients := false // bool | Flag to determine the need to delete a cluster with clients. (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -120,7 +120,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Managed Cluster ID. | 
+**id** | **string** | Managed cluster ID. | 
 
 ### Other Parameters
 
@@ -130,7 +130,7 @@ Other parameters are passed through a pointer to a apiDeleteManagedClusterReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **removeClients** | **bool** | Flag to determine the need to delete a cluster with clients | [default to false]
+ **removeClients** | **bool** | Flag to determine the need to delete a cluster with clients. | [default to false]
 
 ### Return type
 
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 > ClientLogConfiguration GetClientLogConfiguration(ctx, id).Execute()
 
-Get Managed Cluster's log configuration
+Get Managed Cluster Log Configuration
 
 
 
@@ -171,7 +171,7 @@ import (
 )
 
 func main() {
-	id := "2b838de9-db9b-abcf-e646-d4f274ad4238" // string | ID of ManagedCluster to get log configuration for
+	id := "2b838de9-db9b-abcf-e646-d4f274ad4238" // string | ID of managed cluster to get log configuration for.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -191,7 +191,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | ID of ManagedCluster to get log configuration for | 
+**id** | **string** | ID of managed cluster to get log configuration for. | 
 
 ### Other Parameters
 
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 
 > ManagedCluster GetManagedCluster(ctx, id).Execute()
 
-Get a specified Managed Cluster.
+Get Managed Cluster
 
 
 
@@ -241,7 +241,7 @@ import (
 )
 
 func main() {
-	id := "2c9180897de347a2017de8859e8c5039" // string | ManagedCluster ID.
+	id := "2c9180897de347a2017de8859e8c5039" // string | Managed cluster ID.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -261,7 +261,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | ManagedCluster ID. | 
+**id** | **string** | Managed cluster ID. | 
 
 ### Other Parameters
 
@@ -294,7 +294,7 @@ Name | Type | Description  | Notes
 
 > []ManagedCluster GetManagedClusters(ctx).Offset(offset).Limit(limit).Count(count).Filters(filters).Execute()
 
-Retrieve all Managed Clusters.
+Get Managed Clusters
 
 
 
@@ -366,7 +366,7 @@ Name | Type | Description  | Notes
 
 > ClientLogConfiguration PutClientLogConfiguration(ctx, id).PutClientLogConfigurationRequest(putClientLogConfigurationRequest).Execute()
 
-Update Managed Cluster's log configuration
+Update Managed Cluster Log Configuration
 
 
 
@@ -383,8 +383,8 @@ import (
 )
 
 func main() {
-	id := "2b838de9-db9b-abcf-e646-d4f274ad4238" // string | ID of ManagedCluster to update log configuration for
-	putClientLogConfigurationRequest := openapiclient.putClientLogConfiguration_request{ClientLogConfigurationDurationMinutes: openapiclient.NewClientLogConfigurationDurationMinutes(openapiclient.StandardLevel("false"))} // PutClientLogConfigurationRequest | ClientLogConfiguration for given ManagedCluster
+	id := "2b838de9-db9b-abcf-e646-d4f274ad4238" // string | ID of the managed cluster to update the log configuration for.
+	putClientLogConfigurationRequest := openapiclient.putClientLogConfiguration_request{ClientLogConfigurationDurationMinutes: openapiclient.NewClientLogConfigurationDurationMinutes(openapiclient.StandardLevel("false"))} // PutClientLogConfigurationRequest | Client log configuration for the given managed cluster.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -404,7 +404,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | ID of ManagedCluster to update log configuration for | 
+**id** | **string** | ID of the managed cluster to update the log configuration for. | 
 
 ### Other Parameters
 
@@ -414,7 +414,7 @@ Other parameters are passed through a pointer to a apiPutClientLogConfigurationR
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **putClientLogConfigurationRequest** | [**PutClientLogConfigurationRequest**](PutClientLogConfigurationRequest.md) | ClientLogConfiguration for given ManagedCluster | 
+ **putClientLogConfigurationRequest** | [**PutClientLogConfigurationRequest**](PutClientLogConfigurationRequest.md) | Client log configuration for the given managed cluster. | 
 
 ### Return type
 
@@ -438,7 +438,7 @@ Name | Type | Description  | Notes
 
 > ManagedCluster UpdateManagedCluster(ctx, id).JsonPatchOperation(jsonPatchOperation).Execute()
 
-Update a Managed Cluster
+Update Managed Cluster
 
 
 
@@ -455,8 +455,8 @@ import (
 )
 
 func main() {
-	id := "2c9180897de347a2017de8859e8c5039" // string | Managed Cluster ID.
-	jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | The JSONPatch payload used to update the object.
+	id := "2c9180897de347a2017de8859e8c5039" // string | Managed cluster ID.
+	jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | JSONPatch payload used to update the object.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -476,7 +476,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Managed Cluster ID. | 
+**id** | **string** | Managed cluster ID. | 
 
 ### Other Parameters
 
@@ -486,7 +486,7 @@ Other parameters are passed through a pointer to a apiUpdateManagedClusterReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonPatchOperation** | [**[]JsonPatchOperation**](JsonPatchOperation.md) | The JSONPatch payload used to update the object. | 
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](JsonPatchOperation.md) | JSONPatch payload used to update the object. | 
 
 ### Return type
 

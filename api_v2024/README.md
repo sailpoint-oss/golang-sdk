@@ -390,17 +390,17 @@ Class | Method | HTTP request | Description
 *MFAConfigurationAPI* | [**TestMFAConfig**](docs/MFAConfigurationAPI.md#testmfaconfig) | **Get** /mfa/{method}/test | MFA method&#39;s test configuration
 *ManagedClientsAPI* | [**CreateManagedClient**](docs/ManagedClientsAPI.md#createmanagedclient) | **Post** /managed-clients | Create Managed Client
 *ManagedClientsAPI* | [**DeleteManagedClient**](docs/ManagedClientsAPI.md#deletemanagedclient) | **Delete** /managed-clients/{id} | Delete Managed Client
-*ManagedClientsAPI* | [**GetManagedClient**](docs/ManagedClientsAPI.md#getmanagedclient) | **Get** /managed-clients/{id} | Get a Managed Client
+*ManagedClientsAPI* | [**GetManagedClient**](docs/ManagedClientsAPI.md#getmanagedclient) | **Get** /managed-clients/{id} | Get Managed Client
 *ManagedClientsAPI* | [**GetManagedClientStatus**](docs/ManagedClientsAPI.md#getmanagedclientstatus) | **Get** /managed-clients/{id}/status | Get Managed Client Status
 *ManagedClientsAPI* | [**GetManagedClients**](docs/ManagedClientsAPI.md#getmanagedclients) | **Get** /managed-clients | Get Managed Clients
 *ManagedClientsAPI* | [**UpdateManagedClient**](docs/ManagedClientsAPI.md#updatemanagedclient) | **Patch** /managed-clients/{id} | Update Managed Client
-*ManagedClustersAPI* | [**CreateManagedCluster**](docs/ManagedClustersAPI.md#createmanagedcluster) | **Post** /managed-clusters | Create a new Managed Cluster
-*ManagedClustersAPI* | [**DeleteManagedCluster**](docs/ManagedClustersAPI.md#deletemanagedcluster) | **Delete** /managed-clusters/{id} | Delete a Managed Cluster
-*ManagedClustersAPI* | [**GetClientLogConfiguration**](docs/ManagedClustersAPI.md#getclientlogconfiguration) | **Get** /managed-clusters/{id}/log-config | Get Managed Cluster&#39;s log configuration
-*ManagedClustersAPI* | [**GetManagedCluster**](docs/ManagedClustersAPI.md#getmanagedcluster) | **Get** /managed-clusters/{id} | Get a specified Managed Cluster.
-*ManagedClustersAPI* | [**GetManagedClusters**](docs/ManagedClustersAPI.md#getmanagedclusters) | **Get** /managed-clusters | Retrieve all Managed Clusters.
-*ManagedClustersAPI* | [**PutClientLogConfiguration**](docs/ManagedClustersAPI.md#putclientlogconfiguration) | **Put** /managed-clusters/{id}/log-config | Update Managed Cluster&#39;s log configuration
-*ManagedClustersAPI* | [**UpdateManagedCluster**](docs/ManagedClustersAPI.md#updatemanagedcluster) | **Patch** /managed-clusters/{id} | Update a Managed Cluster
+*ManagedClustersAPI* | [**CreateManagedCluster**](docs/ManagedClustersAPI.md#createmanagedcluster) | **Post** /managed-clusters | Create Create Managed Cluster
+*ManagedClustersAPI* | [**DeleteManagedCluster**](docs/ManagedClustersAPI.md#deletemanagedcluster) | **Delete** /managed-clusters/{id} | Delete Managed Cluster
+*ManagedClustersAPI* | [**GetClientLogConfiguration**](docs/ManagedClustersAPI.md#getclientlogconfiguration) | **Get** /managed-clusters/{id}/log-config | Get Managed Cluster Log Configuration
+*ManagedClustersAPI* | [**GetManagedCluster**](docs/ManagedClustersAPI.md#getmanagedcluster) | **Get** /managed-clusters/{id} | Get Managed Cluster
+*ManagedClustersAPI* | [**GetManagedClusters**](docs/ManagedClustersAPI.md#getmanagedclusters) | **Get** /managed-clusters | Get Managed Clusters
+*ManagedClustersAPI* | [**PutClientLogConfiguration**](docs/ManagedClustersAPI.md#putclientlogconfiguration) | **Put** /managed-clusters/{id}/log-config | Update Managed Cluster Log Configuration
+*ManagedClustersAPI* | [**UpdateManagedCluster**](docs/ManagedClustersAPI.md#updatemanagedcluster) | **Patch** /managed-clusters/{id} | Update Managed Cluster
 *NonEmployeeLifecycleManagementAPI* | [**ApproveNonEmployeeRequest**](docs/NonEmployeeLifecycleManagementAPI.md#approvenonemployeerequest) | **Post** /non-employee-approvals/{id}/approve | Approve a Non-Employee Request
 *NonEmployeeLifecycleManagementAPI* | [**CreateNonEmployeeRecord**](docs/NonEmployeeLifecycleManagementAPI.md#createnonemployeerecord) | **Post** /non-employee-records | Create Non-Employee Record
 *NonEmployeeLifecycleManagementAPI* | [**CreateNonEmployeeRequest**](docs/NonEmployeeLifecycleManagementAPI.md#createnonemployeerequest) | **Post** /non-employee-requests | Create Non-Employee Request
@@ -638,7 +638,7 @@ Class | Method | HTTP request | Description
 *SuggestedEntitlementDescriptionAPI* | [**SubmitSedApproval**](docs/SuggestedEntitlementDescriptionAPI.md#submitsedapproval) | **Post** /suggested-entitlement-description-approvals | Submit Bulk Approval Request
 *SuggestedEntitlementDescriptionAPI* | [**SubmitSedAssignment**](docs/SuggestedEntitlementDescriptionAPI.md#submitsedassignment) | **Post** /suggested-entitlement-description-assignments | Submit Sed Assignment Request
 *SuggestedEntitlementDescriptionAPI* | [**SubmitSedBatchRequest**](docs/SuggestedEntitlementDescriptionAPI.md#submitsedbatchrequest) | **Post** /suggested-entitlement-description-batches | Submit Sed Batch Request
-*TaggedObjectsAPI* | [**DeleteTaggedObject**](docs/TaggedObjectsAPI.md#deletetaggedobject) | **Delete** /tagged-objects/{type}/{id} | Delete Tagged Object
+*TaggedObjectsAPI* | [**DeleteTaggedObject**](docs/TaggedObjectsAPI.md#deletetaggedobject) | **Delete** /tagged-objects/{type}/{id} | Delete Object Tags
 *TaggedObjectsAPI* | [**DeleteTagsToManyObject**](docs/TaggedObjectsAPI.md#deletetagstomanyobject) | **Post** /tagged-objects/bulk-remove | Remove Tags from Multiple Objects
 *TaggedObjectsAPI* | [**GetTaggedObject**](docs/TaggedObjectsAPI.md#gettaggedobject) | **Get** /tagged-objects/{type}/{id} | Get Tagged Object
 *TaggedObjectsAPI* | [**ListTaggedObjects**](docs/TaggedObjectsAPI.md#listtaggedobjects) | **Get** /tagged-objects | List Tagged Objects
