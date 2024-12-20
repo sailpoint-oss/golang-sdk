@@ -312,7 +312,18 @@ tags:
 
     Refer to [Managing User Accounts](https://documentation.sailpoint.com/saas/help/common/users/user_access.html#managing-user-accounts) for more information about accounts.
   name: Certifications
-- name: Connector Rule Management
+- description: "Use this API to implement connector rule management functionality.\
+    \ \nWith this functionality in place, administrators can implement connector-executed\
+    \ rules in a programmatic, scalable way. \n\nIn Identity Security Cloud (ISC),\
+    \ [rules](https://developer.sailpoint.com/docs/extensibility/rules) serve as a\
+    \ flexible configuration framework you can leverage to perform complex or advanced\
+    \ configurations. \n[Connector-executed rules](https://developer.sailpoint.com/docs/extensibility/rules/connector-rules)\
+    \ are rules that are executed in the ISC virtual appliance (VA), usually extensions\
+    \ of the [connector](https://documentation.sailpoint.com/connectors/isc/landingpages/help/landingpages/isc_landing.html)\
+    \ itself, the bridge between the data source and ISC. \nThis API allows administrators\
+    \ to view existing connector-executed rules, make changes to them, delete them,\
+    \ and create new ones from the available types.\n"
+  name: Connector Rule Management
 - description: |
     Use this API to implement connector functionality.
     With this functionality in place, administrators can view available connectors.
@@ -497,10 +508,14 @@ tags:
 
     Refer to [Setting Up Lifecycle States](https://documentation.sailpoint.com/saas/help/provisioning/lifecycle.html) for more information about lifecycle states.
   name: Lifecycle States
-- description: Read and write operations for managing client data and statuses
+- description: "Use this API to implement managed client functionality. \nWith this\
+    \ functionality in place, administrators can modify and delete existing managed\
+    \ clients, create new ones, and view and make changes to their log configurations.\
+    \ \n"
   name: Managed Clients
-- description: "Operations for accessing and managing client Clusters, including Log\
-    \ Configuration"
+- description: "Use this API to implement managed cluster functionality. \nWith this\
+    \ functionality in place, administrators can modify and delete existing managed\
+    \ clients, get their statuses, and create new ones. \n"
   name: Managed Clusters
 - description: Configure and test multifactor authentication (MFA) methods
   name: MFA Configuration
@@ -552,7 +567,9 @@ tags:
     With this functionality in place, users with the appropriate security scopes can create and configure OAuth clients to use as a way to obtain authorization to use the Identity Security Cloud REST API.
     Refer to [Authentication](https://developer.sailpoint.com/docs/api/authentication/) for more information about OAuth and how it works with the Identity Security Cloud REST API.
   name: OAuth Clients
-- description: Operations for managing org configuration settings (eg. time zone)
+- description: "Use this API to implement organization configuration functionality.\
+    \ \nAdministrators can use this functionality to manage organization settings,\
+    \ such as time zones. \n"
   name: Org Config
 - description: |
     Use this API to implement organization password configuration functionality.
@@ -4608,12 +4625,12 @@ paths:
       - IAI Access Request Recommendations
   /accounts:
     get:
-      description: "This returns a list of accounts.  \nA token with ORG_ADMIN, SOURCE_ADMIN,\
-        \ SOURCE_SUBADMIN, or HELPDESK authority is required to call this API."
+      description: 'List accounts.  '
       operationId: listAccounts
       parameters:
-      - description: "Determines whether Slim, or increased level of detail is provided\
-          \ for each account in the returned list. FULL is the default behavior."
+      - description: This value determines whether the API provides `SLIM` or increased
+          level of detail (`FULL`) for each account in the returned list. `FULL` is
+          the default behavior.
         example: FULL
         in: query
         name: detailLevel
@@ -4766,7 +4783,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Account'
                 type: array
-          description: List of account objects
+          description: List of account objects.
         "400":
           content:
             application/json:
@@ -4836,7 +4853,7 @@ paths:
       - SOURCE_SUBADMIN
       - HELPDESK
     post:
-      description: "This API submits an account creation task and returns the task\
+      description: "Submits an account creation task - the API then returns the task\
         \ ID.  \n\nThe `sourceId` where this account will be created must be included\
         \ in the `attributes` object.\n\nThis endpoint creates an account on the source\
         \ record in your ISC tenant.\nThis is useful for Flat File (`DelimitedFile`)\
@@ -4848,8 +4865,7 @@ paths:
         \ the account doesn't also exist on the target source, an aggregation between\
         \ the source and your tenant will remove it from your tenant. \n\nBy providing\
         \ the account ID of an existing account in the request body, this API will\
-        \ function as a PATCH operation and update the account.\n\nA token with ORG_ADMIN,\
-        \ SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.\n"
+        \ function as a PATCH operation and update the account.\n"
       operationId: createAccount
       requestBody:
         content:
@@ -4863,7 +4879,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AccountsAsyncResult'
-          description: Async task details
+          description: Async task details.
         "400":
           content:
             application/json:
@@ -47412,10 +47428,10 @@ paths:
       - Tagged Objects
   /tagged-objects/{type}/{id}:
     delete:
-      description: This deletes a tagged object for the specified type.
+      description: Delete all tags from a tagged object.
       operationId: deleteTaggedObject
       parameters:
-      - description: The type of tagged object to delete.
+      - description: The type of object to delete tags from.
         example: ROLE
         in: path
         name: type
@@ -47431,7 +47447,7 @@ paths:
           - SOD_POLICY
           - SOURCE
           type: string
-      - description: The ID of the object reference to delete.
+      - description: The ID of the object to delete tags from.
         example: ef38f94347e94562b5bb8424a56397d8
         in: path
         name: id
@@ -47500,7 +47516,7 @@ paths:
       security:
       - userAuth:
         - idn:tag:manage
-      summary: Delete Tagged Object
+      summary: Delete Object Tags
       tags:
       - Tagged Objects
     get:

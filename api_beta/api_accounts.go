@@ -41,7 +41,7 @@ func (r ApiCreateAccountRequest) Execute() (*AccountsAsyncResult, *http.Response
 /*
 CreateAccount Create Account
 
-This API submits an account creation task and returns the task ID.  
+Submits an account creation task - the API then returns the task ID.  
 
 The `sourceId` where this account will be created must be included in the `attributes` object.
 
@@ -52,8 +52,6 @@ However, if you use this endpoint to create an account for a Direct Connection t
 The endpoint doesn't actually provision the account on the target source, which means that if the account doesn't also exist on the target source, an aggregation between the source and your tenant will remove it from your tenant. 
 
 By providing the account ID of an existing account in the request body, this API will function as a PATCH operation and update the account.
-
-A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1947,7 +1945,7 @@ type ApiListAccountsRequest struct {
 	sorters *string
 }
 
-// Determines whether Slim, or increased level of detail is provided for each account in the returned list. FULL is the default behavior.
+// This value determines whether the API provides &#x60;SLIM&#x60; or increased level of detail (&#x60;FULL&#x60;) for each account in the returned list. &#x60;FULL&#x60; is the default behavior.
 func (r ApiListAccountsRequest) DetailLevel(detailLevel string) ApiListAccountsRequest {
 	r.detailLevel = &detailLevel
 	return r
@@ -1990,8 +1988,7 @@ func (r ApiListAccountsRequest) Execute() ([]Account, *http.Response, error) {
 /*
 ListAccounts Accounts List
 
-This returns a list of accounts.  
-A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
+List accounts.  
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListAccountsRequest

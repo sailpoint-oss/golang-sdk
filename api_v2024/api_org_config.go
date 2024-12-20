@@ -39,9 +39,9 @@ func (r ApiGetOrgConfigRequest) Execute() (*OrgConfig, *http.Response, error) {
 }
 
 /*
-GetOrgConfig Get Org configuration settings
+GetOrgConfig Get Org Config Settings
 
-Get org configuration with only external (org admin) accessible properties for the current org.
+Get the current organization's configuration settings, only external accessible properties.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetOrgConfigRequest
@@ -207,6 +207,9 @@ type ApiGetValidTimeZonesRequest struct {
 	ctx context.Context
 	ApiService *OrgConfigAPIService
 	xSailPointExperimental *string
+	limit *int32
+	offset *int32
+	count *bool
 }
 
 // Use this header to enable this experimental API.
@@ -215,14 +218,32 @@ func (r ApiGetValidTimeZonesRequest) XSailPointExperimental(xSailPointExperiment
 	return r
 }
 
+// Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiGetValidTimeZonesRequest) Limit(limit int32) ApiGetValidTimeZonesRequest {
+	r.limit = &limit
+	return r
+}
+
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiGetValidTimeZonesRequest) Offset(offset int32) ApiGetValidTimeZonesRequest {
+	r.offset = &offset
+	return r
+}
+
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiGetValidTimeZonesRequest) Count(count bool) ApiGetValidTimeZonesRequest {
+	r.count = &count
+	return r
+}
+
 func (r ApiGetValidTimeZonesRequest) Execute() ([]string, *http.Response, error) {
 	return r.ApiService.GetValidTimeZonesExecute(r)
 }
 
 /*
-GetValidTimeZones Get list of time zones
+GetValidTimeZones Get Valid Time Zones
 
-Get a list of valid time zones that can be set in org configurations.
+List the valid time zones that can be set in organization configurations.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetValidTimeZonesRequest
@@ -264,6 +285,24 @@ func (a *OrgConfigAPIService) GetValidTimeZonesExecute(r ApiGetValidTimeZonesReq
 		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
 	}
 
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+	} else {
+		var defaultValue int32 = 50
+		r.limit = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
+	}
+	if r.count != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "", "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -397,9 +436,9 @@ func (r ApiPatchOrgConfigRequest) Execute() (*OrgConfig, *http.Response, error) 
 }
 
 /*
-PatchOrgConfig Patch an Org configuration property
+PatchOrgConfig Patch Org Config
 
-Patch configuration of the current org using http://jsonpatch.com/ syntax.  Commonly used for changing the time zone of an org.
+Patch the current organization's configuration, using http://jsonpatch.com/ syntax. This is commonly used to changing an organization's time zone.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPatchOrgConfigRequest

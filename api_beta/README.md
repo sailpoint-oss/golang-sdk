@@ -560,7 +560,7 @@ Class | Method | HTTP request | Description
 *SuggestedEntitlementDescriptionAPI* | [**SubmitSedApproval**](docs/SuggestedEntitlementDescriptionAPI.md#submitsedapproval) | **Post** /suggested-entitlement-description-approvals | Submit Bulk Approval Request
 *SuggestedEntitlementDescriptionAPI* | [**SubmitSedAssignment**](docs/SuggestedEntitlementDescriptionAPI.md#submitsedassignment) | **Post** /suggested-entitlement-description-assignments | Submit Sed Assignment Request
 *SuggestedEntitlementDescriptionAPI* | [**SubmitSedBatchRequest**](docs/SuggestedEntitlementDescriptionAPI.md#submitsedbatchrequest) | **Post** /suggested-entitlement-description-batches | Submit Sed Batch Request
-*TaggedObjectsAPI* | [**DeleteTaggedObject**](docs/TaggedObjectsAPI.md#deletetaggedobject) | **Delete** /tagged-objects/{type}/{id} | Delete Tagged Object
+*TaggedObjectsAPI* | [**DeleteTaggedObject**](docs/TaggedObjectsAPI.md#deletetaggedobject) | **Delete** /tagged-objects/{type}/{id} | Delete Object Tags
 *TaggedObjectsAPI* | [**DeleteTagsToManyObject**](docs/TaggedObjectsAPI.md#deletetagstomanyobject) | **Post** /tagged-objects/bulk-remove | Remove Tags from Multiple Objects
 *TaggedObjectsAPI* | [**GetTaggedObject**](docs/TaggedObjectsAPI.md#gettaggedobject) | **Get** /tagged-objects/{type}/{id} | Get Tagged Object
 *TaggedObjectsAPI* | [**ListTaggedObjects**](docs/TaggedObjectsAPI.md#listtaggedobjects) | **Get** /tagged-objects | List Tagged Objects

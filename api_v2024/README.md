@@ -213,11 +213,11 @@ Class | Method | HTTP request | Description
 *ConfigurationHubAPI* | [**ListUploadedConfigurations**](docs/ConfigurationHubAPI.md#listuploadedconfigurations) | **Get** /configuration-hub/backups/uploads | List Uploaded Configurations
 *ConfigurationHubAPI* | [**UpdateObjectMappings**](docs/ConfigurationHubAPI.md#updateobjectmappings) | **Post** /configuration-hub/object-mappings/{sourceOrg}/bulk-patch | Bulk updates object mappings
 *ConnectorRuleManagementAPI* | [**CreateConnectorRule**](docs/ConnectorRuleManagementAPI.md#createconnectorrule) | **Post** /connector-rules | Create Connector Rule
-*ConnectorRuleManagementAPI* | [**DeleteConnectorRule**](docs/ConnectorRuleManagementAPI.md#deleteconnectorrule) | **Delete** /connector-rules/{id} | Delete a Connector-Rule
-*ConnectorRuleManagementAPI* | [**GetConnectorRule**](docs/ConnectorRuleManagementAPI.md#getconnectorrule) | **Get** /connector-rules/{id} | Connector-Rule by ID
+*ConnectorRuleManagementAPI* | [**DeleteConnectorRule**](docs/ConnectorRuleManagementAPI.md#deleteconnectorrule) | **Delete** /connector-rules/{id} | Delete Connector Rule
+*ConnectorRuleManagementAPI* | [**GetConnectorRule**](docs/ConnectorRuleManagementAPI.md#getconnectorrule) | **Get** /connector-rules/{id} | Get Connector Rule
 *ConnectorRuleManagementAPI* | [**GetConnectorRuleList**](docs/ConnectorRuleManagementAPI.md#getconnectorrulelist) | **Get** /connector-rules | List Connector Rules
-*ConnectorRuleManagementAPI* | [**UpdateConnectorRule**](docs/ConnectorRuleManagementAPI.md#updateconnectorrule) | **Put** /connector-rules/{id} | Update a Connector Rule
-*ConnectorRuleManagementAPI* | [**ValidateConnectorRule**](docs/ConnectorRuleManagementAPI.md#validateconnectorrule) | **Post** /connector-rules/validate | Validate Connector Rule
+*ConnectorRuleManagementAPI* | [**PutConnectorRule**](docs/ConnectorRuleManagementAPI.md#putconnectorrule) | **Put** /connector-rules/{id} | Update Connector Rule
+*ConnectorRuleManagementAPI* | [**TestConnectorRule**](docs/ConnectorRuleManagementAPI.md#testconnectorrule) | **Post** /connector-rules/validate | Validate Connector Rule
 *ConnectorsAPI* | [**CreateCustomConnector**](docs/ConnectorsAPI.md#createcustomconnector) | **Post** /connectors | Create Custom Connector
 *ConnectorsAPI* | [**DeleteCustomConnector**](docs/ConnectorsAPI.md#deletecustomconnector) | **Delete** /connectors/{scriptName} | Delete Connector by Script Name
 *ConnectorsAPI* | [**GetConnector**](docs/ConnectorsAPI.md#getconnector) | **Get** /connectors/{scriptName} | Get Connector by Script Name
@@ -453,9 +453,9 @@ Class | Method | HTTP request | Description
 *OAuthClientsAPI* | [**GetOauthClient**](docs/OAuthClientsAPI.md#getoauthclient) | **Get** /oauth-clients/{id} | Get OAuth Client
 *OAuthClientsAPI* | [**ListOauthClients**](docs/OAuthClientsAPI.md#listoauthclients) | **Get** /oauth-clients | List OAuth Clients
 *OAuthClientsAPI* | [**PatchOauthClient**](docs/OAuthClientsAPI.md#patchoauthclient) | **Patch** /oauth-clients/{id} | Patch OAuth Client
-*OrgConfigAPI* | [**GetOrgConfig**](docs/OrgConfigAPI.md#getorgconfig) | **Get** /org-config | Get Org configuration settings
-*OrgConfigAPI* | [**GetValidTimeZones**](docs/OrgConfigAPI.md#getvalidtimezones) | **Get** /org-config/valid-time-zones | Get list of time zones
-*OrgConfigAPI* | [**PatchOrgConfig**](docs/OrgConfigAPI.md#patchorgconfig) | **Patch** /org-config | Patch an Org configuration property
+*OrgConfigAPI* | [**GetOrgConfig**](docs/OrgConfigAPI.md#getorgconfig) | **Get** /org-config | Get Org Config Settings
+*OrgConfigAPI* | [**GetValidTimeZones**](docs/OrgConfigAPI.md#getvalidtimezones) | **Get** /org-config/valid-time-zones | Get Valid Time Zones
+*OrgConfigAPI* | [**PatchOrgConfig**](docs/OrgConfigAPI.md#patchorgconfig) | **Patch** /org-config | Patch Org Config
 *PasswordConfigurationAPI* | [**CreatePasswordOrgConfig**](docs/PasswordConfigurationAPI.md#createpasswordorgconfig) | **Post** /password-org-config | Create Password Org Config
 *PasswordConfigurationAPI* | [**GetPasswordOrgConfig**](docs/PasswordConfigurationAPI.md#getpasswordorgconfig) | **Get** /password-org-config | Get Password Org Config
 *PasswordConfigurationAPI* | [**PutPasswordOrgConfig**](docs/PasswordConfigurationAPI.md#putpasswordorgconfig) | **Put** /password-org-config | Update Password Org Config

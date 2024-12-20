@@ -73,13 +73,13 @@ func Test_api_v2024_ConnectorRuleManagementAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ConnectorRuleManagementAPIService UpdateConnectorRule", func(t *testing.T) {
+	t.Run("Test ConnectorRuleManagementAPIService PutConnectorRule", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.ConnectorRuleManagementAPI.UpdateConnectorRule(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.ConnectorRuleManagementAPI.PutConnectorRule(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -87,11 +87,11 @@ func Test_api_v2024_ConnectorRuleManagementAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ConnectorRuleManagementAPIService ValidateConnectorRule", func(t *testing.T) {
+	t.Run("Test ConnectorRuleManagementAPIService TestConnectorRule", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ConnectorRuleManagementAPI.ValidateConnectorRule(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ConnectorRuleManagementAPI.TestConnectorRule(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

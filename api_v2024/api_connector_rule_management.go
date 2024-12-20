@@ -36,7 +36,7 @@ func (r ApiCreateConnectorRuleRequest) XSailPointExperimental(xSailPointExperime
 	return r
 }
 
-// The connector rule to create
+// Connector rule to create.
 func (r ApiCreateConnectorRuleRequest) ConnectorRuleCreateRequest(connectorRuleCreateRequest ConnectorRuleCreateRequest) ApiCreateConnectorRuleRequest {
 	r.connectorRuleCreateRequest = &connectorRuleCreateRequest
 	return r
@@ -49,7 +49,7 @@ func (r ApiCreateConnectorRuleRequest) Execute() (*ConnectorRuleResponse, *http.
 /*
 CreateConnectorRule Create Connector Rule
 
-Creates a new connector rule.
+Create a connector rule from the available types.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateConnectorRuleRequest
@@ -229,12 +229,12 @@ func (r ApiDeleteConnectorRuleRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteConnectorRule Delete a Connector-Rule
+DeleteConnectorRule Delete Connector Rule
 
-Deletes the connector rule specified by the given ID.
+Delete the connector rule for the given ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the connector rule to delete
+ @param id ID of the connector rule to delete.
  @return ApiDeleteConnectorRuleRequest
 */
 func (a *ConnectorRuleManagementAPIService) DeleteConnectorRule(ctx context.Context, id string) ApiDeleteConnectorRuleRequest {
@@ -403,12 +403,12 @@ func (r ApiGetConnectorRuleRequest) Execute() (*ConnectorRuleResponse, *http.Res
 }
 
 /*
-GetConnectorRule Connector-Rule by ID
+GetConnectorRule Get Connector Rule
 
-Returns the connector rule specified by ID.
+Get a connector rule by ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the connector rule to retrieve
+ @param id ID of the connector rule to get.
  @return ApiGetConnectorRuleRequest
 */
 func (a *ConnectorRuleManagementAPIService) GetConnectorRule(ctx context.Context, id string) ApiGetConnectorRuleRequest {
@@ -574,11 +574,32 @@ type ApiGetConnectorRuleListRequest struct {
 	ctx context.Context
 	ApiService *ConnectorRuleManagementAPIService
 	xSailPointExperimental *string
+	limit *int32
+	offset *int32
+	count *bool
 }
 
 // Use this header to enable this experimental API.
 func (r ApiGetConnectorRuleListRequest) XSailPointExperimental(xSailPointExperimental string) ApiGetConnectorRuleListRequest {
 	r.xSailPointExperimental = &xSailPointExperimental
+	return r
+}
+
+// Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiGetConnectorRuleListRequest) Limit(limit int32) ApiGetConnectorRuleListRequest {
+	r.limit = &limit
+	return r
+}
+
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiGetConnectorRuleListRequest) Offset(offset int32) ApiGetConnectorRuleListRequest {
+	r.offset = &offset
+	return r
+}
+
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiGetConnectorRuleListRequest) Count(count bool) ApiGetConnectorRuleListRequest {
+	r.count = &count
 	return r
 }
 
@@ -589,7 +610,7 @@ func (r ApiGetConnectorRuleListRequest) Execute() ([]ConnectorRuleResponse, *htt
 /*
 GetConnectorRuleList List Connector Rules
 
-Returns the list of connector rules.
+List existing connector rules.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetConnectorRuleListRequest
@@ -631,6 +652,24 @@ func (a *ConnectorRuleManagementAPIService) GetConnectorRuleListExecute(r ApiGet
 		return localVarReturnValue, nil, reportError("xSailPointExperimental is required and must be specified")
 	}
 
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+	} else {
+		var defaultValue int32 = 50
+		r.limit = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
+	}
+	if r.count != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "", "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -740,7 +779,7 @@ func (a *ConnectorRuleManagementAPIService) GetConnectorRuleListExecute(r ApiGet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdateConnectorRuleRequest struct {
+type ApiPutConnectorRuleRequest struct {
 	ctx context.Context
 	ApiService *ConnectorRuleManagementAPIService
 	id string
@@ -749,32 +788,32 @@ type ApiUpdateConnectorRuleRequest struct {
 }
 
 // Use this header to enable this experimental API.
-func (r ApiUpdateConnectorRuleRequest) XSailPointExperimental(xSailPointExperimental string) ApiUpdateConnectorRuleRequest {
+func (r ApiPutConnectorRuleRequest) XSailPointExperimental(xSailPointExperimental string) ApiPutConnectorRuleRequest {
 	r.xSailPointExperimental = &xSailPointExperimental
 	return r
 }
 
-// The connector rule with updated data
-func (r ApiUpdateConnectorRuleRequest) ConnectorRuleUpdateRequest(connectorRuleUpdateRequest ConnectorRuleUpdateRequest) ApiUpdateConnectorRuleRequest {
+// Connector rule with updated data.
+func (r ApiPutConnectorRuleRequest) ConnectorRuleUpdateRequest(connectorRuleUpdateRequest ConnectorRuleUpdateRequest) ApiPutConnectorRuleRequest {
 	r.connectorRuleUpdateRequest = &connectorRuleUpdateRequest
 	return r
 }
 
-func (r ApiUpdateConnectorRuleRequest) Execute() (*ConnectorRuleResponse, *http.Response, error) {
-	return r.ApiService.UpdateConnectorRuleExecute(r)
+func (r ApiPutConnectorRuleRequest) Execute() (*ConnectorRuleResponse, *http.Response, error) {
+	return r.ApiService.PutConnectorRuleExecute(r)
 }
 
 /*
-UpdateConnectorRule Update a Connector Rule
+PutConnectorRule Update Connector Rule
 
-Updates an existing connector rule with the one provided in the request body. Note that the fields 'id', 'name', and 'type' are immutable.
+Update an existing connector rule with the one provided in the request body. These fields are immutable: `id`, `name`, `type`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the connector rule to update
- @return ApiUpdateConnectorRuleRequest
+ @param id ID of the connector rule to update.
+ @return ApiPutConnectorRuleRequest
 */
-func (a *ConnectorRuleManagementAPIService) UpdateConnectorRule(ctx context.Context, id string) ApiUpdateConnectorRuleRequest {
-	return ApiUpdateConnectorRuleRequest{
+func (a *ConnectorRuleManagementAPIService) PutConnectorRule(ctx context.Context, id string) ApiPutConnectorRuleRequest {
+	return ApiPutConnectorRuleRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -783,7 +822,7 @@ func (a *ConnectorRuleManagementAPIService) UpdateConnectorRule(ctx context.Cont
 
 // Execute executes the request
 //  @return ConnectorRuleResponse
-func (a *ConnectorRuleManagementAPIService) UpdateConnectorRuleExecute(r ApiUpdateConnectorRuleRequest) (*ConnectorRuleResponse, *http.Response, error) {
+func (a *ConnectorRuleManagementAPIService) PutConnectorRuleExecute(r ApiPutConnectorRuleRequest) (*ConnectorRuleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -791,7 +830,7 @@ func (a *ConnectorRuleManagementAPIService) UpdateConnectorRuleExecute(r ApiUpda
 		localVarReturnValue  *ConnectorRuleResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorRuleManagementAPIService.UpdateConnectorRule")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorRuleManagementAPIService.PutConnectorRule")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -934,7 +973,7 @@ func (a *ConnectorRuleManagementAPIService) UpdateConnectorRuleExecute(r ApiUpda
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiValidateConnectorRuleRequest struct {
+type ApiTestConnectorRuleRequest struct {
 	ctx context.Context
 	ApiService *ConnectorRuleManagementAPIService
 	xSailPointExperimental *string
@@ -942,31 +981,31 @@ type ApiValidateConnectorRuleRequest struct {
 }
 
 // Use this header to enable this experimental API.
-func (r ApiValidateConnectorRuleRequest) XSailPointExperimental(xSailPointExperimental string) ApiValidateConnectorRuleRequest {
+func (r ApiTestConnectorRuleRequest) XSailPointExperimental(xSailPointExperimental string) ApiTestConnectorRuleRequest {
 	r.xSailPointExperimental = &xSailPointExperimental
 	return r
 }
 
-// The code to validate
-func (r ApiValidateConnectorRuleRequest) SourceCode(sourceCode SourceCode) ApiValidateConnectorRuleRequest {
+// Code to validate.
+func (r ApiTestConnectorRuleRequest) SourceCode(sourceCode SourceCode) ApiTestConnectorRuleRequest {
 	r.sourceCode = &sourceCode
 	return r
 }
 
-func (r ApiValidateConnectorRuleRequest) Execute() (*ConnectorRuleValidationResponse, *http.Response, error) {
-	return r.ApiService.ValidateConnectorRuleExecute(r)
+func (r ApiTestConnectorRuleRequest) Execute() (*ConnectorRuleValidationResponse, *http.Response, error) {
+	return r.ApiService.TestConnectorRuleExecute(r)
 }
 
 /*
-ValidateConnectorRule Validate Connector Rule
+TestConnectorRule Validate Connector Rule
 
-Returns a list of issues within the code to fix, if any.
+Detect issues within the connector rule's code to fix and list them.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiValidateConnectorRuleRequest
+ @return ApiTestConnectorRuleRequest
 */
-func (a *ConnectorRuleManagementAPIService) ValidateConnectorRule(ctx context.Context) ApiValidateConnectorRuleRequest {
-	return ApiValidateConnectorRuleRequest{
+func (a *ConnectorRuleManagementAPIService) TestConnectorRule(ctx context.Context) ApiTestConnectorRuleRequest {
+	return ApiTestConnectorRuleRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -974,7 +1013,7 @@ func (a *ConnectorRuleManagementAPIService) ValidateConnectorRule(ctx context.Co
 
 // Execute executes the request
 //  @return ConnectorRuleValidationResponse
-func (a *ConnectorRuleManagementAPIService) ValidateConnectorRuleExecute(r ApiValidateConnectorRuleRequest) (*ConnectorRuleValidationResponse, *http.Response, error) {
+func (a *ConnectorRuleManagementAPIService) TestConnectorRuleExecute(r ApiTestConnectorRuleRequest) (*ConnectorRuleValidationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -982,7 +1021,7 @@ func (a *ConnectorRuleManagementAPIService) ValidateConnectorRuleExecute(r ApiVa
 		localVarReturnValue  *ConnectorRuleValidationResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorRuleManagementAPIService.ValidateConnectorRule")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorRuleManagementAPIService.TestConnectorRule")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
