@@ -4,6 +4,7 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2024*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**ApproveBulkAccessRequest**](AccessRequestsAPI.md#ApproveBulkAccessRequest) | **Post** /access-request-approvals/bulk-approve | Bulk Approve Access Request
 [**CancelAccessRequest**](AccessRequestsAPI.md#CancelAccessRequest) | **Post** /access-requests/cancel | Cancel Access Request
 [**CloseAccessRequest**](AccessRequestsAPI.md#CloseAccessRequest) | **Post** /access-requests/close | Close Access Request
 [**CreateAccessRequest**](AccessRequestsAPI.md#CreateAccessRequest) | **Post** /access-requests | Submit Access Request
@@ -11,6 +12,72 @@ Method | HTTP request | Description
 [**ListAccessRequestStatus**](AccessRequestsAPI.md#ListAccessRequestStatus) | **Get** /access-request-status | Access Request Status
 [**SetAccessRequestConfig**](AccessRequestsAPI.md#SetAccessRequestConfig) | **Put** /access-request-config | Update Access Request Configuration
 
+
+
+## ApproveBulkAccessRequest
+
+> map[string]interface{} ApproveBulkAccessRequest(ctx).BulkApproveAccessRequest(bulkApproveAccessRequest).Execute()
+
+Bulk Approve Access Request
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+	bulkApproveAccessRequest := *openapiclient.NewBulkApproveAccessRequest([]string{"ApprovalIds_example"}, "I approve these request items") // BulkApproveAccessRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AccessRequestsAPI.ApproveBulkAccessRequest(context.Background()).BulkApproveAccessRequest(bulkApproveAccessRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.ApproveBulkAccessRequest``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ApproveBulkAccessRequest`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.ApproveBulkAccessRequest`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApproveBulkAccessRequestRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **bulkApproveAccessRequest** | [**BulkApproveAccessRequest**](BulkApproveAccessRequest.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## CancelAccessRequest
