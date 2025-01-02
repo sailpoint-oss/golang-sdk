@@ -2871,7 +2871,7 @@ paths:
             schema:
               $ref: '#/components/schemas/CommentDto'
         description: Reviewer's comment.
-        required: true
+        required: false
       responses:
         "202":
           content:
@@ -2954,9 +2954,15 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - userAuth:
+        - idn:access-request-approvals:read
       summary: Approve Access Request Approval
       tags:
       - Access Request Approvals
+      x-sailpoint-userLevels:
+      - ORG_ADMIN
+      - APPROVAL_OWNER
   /access-request-approvals/{approvalId}/reject:
     post:
       description: Use this API to reject an access request approval. Only the owner

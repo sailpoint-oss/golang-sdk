@@ -35,7 +35,7 @@ import (
 
 func main() {
 	approvalId := "2c91808b7294bea301729568c68c002e" // string | Approval ID.
-	commentDto := *openapiclient.NewCommentDto() // CommentDto | Reviewer's comment.
+	commentDto := *openapiclient.NewCommentDto() // CommentDto | Reviewer's comment. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

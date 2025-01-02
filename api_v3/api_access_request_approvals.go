@@ -78,9 +78,6 @@ func (a *AccessRequestApprovalsAPIService) ApproveAccessRequestExecute(r ApiAppr
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.commentDto == nil {
-		return localVarReturnValue, nil, reportError("commentDto is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
