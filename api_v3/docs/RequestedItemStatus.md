@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **ErrorMessages** | Pointer to [**[][]ErrorMessageDto**]([]ErrorMessageDto.md) | List of list of localized error messages, if any, encountered during the approval/provisioning process. | [optional] 
 **State** | Pointer to [**RequestedItemStatusRequestState**](RequestedItemStatusRequestState.md) |  | [optional] 
 **ApprovalDetails** | Pointer to [**[]ApprovalStatusDto**](ApprovalStatusDto.md) | Approval details for each item. | [optional] 
+**ApprovalIds** | Pointer to **[]string** | List of approval IDs associated with the request. | [optional] 
 **ManualWorkItemDetails** | Pointer to [**[]ManualWorkItemDetails**](ManualWorkItemDetails.md) | Manual work items created for provisioning the item. | [optional] 
 **AccountActivityItemId** | Pointer to **string** | Id of associated account activity item. | [optional] 
 **RequestType** | Pointer to [**NullableAccessRequestType**](AccessRequestType.md) |  | [optional] 
@@ -227,6 +228,41 @@ SetApprovalDetails sets ApprovalDetails field to given value.
 
 HasApprovalDetails returns a boolean if a field has been set.
 
+### GetApprovalIds
+
+`func (o *RequestedItemStatus) GetApprovalIds() []string`
+
+GetApprovalIds returns the ApprovalIds field if non-nil, zero value otherwise.
+
+### GetApprovalIdsOk
+
+`func (o *RequestedItemStatus) GetApprovalIdsOk() (*[]string, bool)`
+
+GetApprovalIdsOk returns a tuple with the ApprovalIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApprovalIds
+
+`func (o *RequestedItemStatus) SetApprovalIds(v []string)`
+
+SetApprovalIds sets ApprovalIds field to given value.
+
+### HasApprovalIds
+
+`func (o *RequestedItemStatus) HasApprovalIds() bool`
+
+HasApprovalIds returns a boolean if a field has been set.
+
+### SetApprovalIdsNil
+
+`func (o *RequestedItemStatus) SetApprovalIdsNil(b bool)`
+
+ SetApprovalIdsNil sets the value for ApprovalIds to be an explicit nil
+
+### UnsetApprovalIds
+`func (o *RequestedItemStatus) UnsetApprovalIds()`
+
+UnsetApprovalIds ensures that no value is present for ApprovalIds, not even an explicit nil
 ### GetManualWorkItemDetails
 
 `func (o *RequestedItemStatus) GetManualWorkItemDetails() []ManualWorkItemDetails`

@@ -65217,6 +65217,7 @@ components:
             id: 2c3780a46faadee4016fb4e018c20652
             type: IDENTITY
           modified: 2019-08-23T18:52:57.398Z
+          approvalId: 2c9180877b2b6ea4017b2c545f971429
           comment: I approve this request
           forwarded: false
           status: PENDING
@@ -65240,6 +65241,7 @@ components:
             id: 2c3780a46faadee4016fb4e018c20652
             type: IDENTITY
           modified: 2019-08-23T18:52:57.398Z
+          approvalId: 2c9180877b2b6ea4017b2c545f971429
           comment: I approve this request
           forwarded: false
           status: PENDING
@@ -65259,6 +65261,9 @@ components:
           reviewer: John Doe
         description: This is the Engineering role that engineers are granted.
         type: ACCESS_PROFILE
+        approvalIds:
+        - 85f0cf482dd44327b593624c07906c21
+        - fa57e1bfa36f41ee85e33ee59fcbeac5
         errorMessages:
         - - localeOrigin: DEFAULT
             text: The request was syntactically correct but its content is semantically
@@ -65453,6 +65458,15 @@ components:
           description: Approval details for each item.
           items:
             $ref: '#/components/schemas/ApprovalStatusDto'
+          type: array
+        approvalIds:
+          description: List of approval IDs associated with the request.
+          example:
+          - 85f0cf482dd44327b593624c07906c21
+          - fa57e1bfa36f41ee85e33ee59fcbeac5
+          items:
+            type: string
+          nullable: true
           type: array
         manualWorkItemDetails:
           description: Manual work items created for provisioning the item.
@@ -82839,10 +82853,16 @@ components:
           id: 2c3780a46faadee4016fb4e018c20652
           type: IDENTITY
         modified: 2019-08-23T18:52:57.398Z
+        approvalId: 2c9180877b2b6ea4017b2c545f971429
         comment: I approve this request
         forwarded: false
         status: PENDING
       properties:
+        approvalId:
+          description: Unique identifier for the approval.
+          example: 2c9180877b2b6ea4017b2c545f971429
+          nullable: true
+          type: string
         forwarded:
           default: false
           description: True if the request for this item was forwarded from one owner

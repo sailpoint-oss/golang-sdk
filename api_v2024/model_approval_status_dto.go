@@ -20,6 +20,8 @@ var _ MappedNullable = &ApprovalStatusDto{}
 
 // ApprovalStatusDto struct for ApprovalStatusDto
 type ApprovalStatusDto struct {
+	// Unique identifier for the approval.
+	ApprovalId NullableString `json:"approvalId,omitempty"`
 	// True if the request for this item was forwarded from one owner to another.
 	Forwarded *bool `json:"forwarded,omitempty"`
 	OriginalOwner *ApprovalStatusDtoOriginalOwner `json:"originalOwner,omitempty"`
@@ -58,6 +60,48 @@ func NewApprovalStatusDtoWithDefaults() *ApprovalStatusDto {
 	var forwarded bool = false
 	this.Forwarded = &forwarded
 	return &this
+}
+
+// GetApprovalId returns the ApprovalId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ApprovalStatusDto) GetApprovalId() string {
+	if o == nil || IsNil(o.ApprovalId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ApprovalId.Get()
+}
+
+// GetApprovalIdOk returns a tuple with the ApprovalId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ApprovalStatusDto) GetApprovalIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ApprovalId.Get(), o.ApprovalId.IsSet()
+}
+
+// HasApprovalId returns a boolean if a field has been set.
+func (o *ApprovalStatusDto) HasApprovalId() bool {
+	if o != nil && o.ApprovalId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetApprovalId gets a reference to the given NullableString and assigns it to the ApprovalId field.
+func (o *ApprovalStatusDto) SetApprovalId(v string) {
+	o.ApprovalId.Set(&v)
+}
+// SetApprovalIdNil sets the value for ApprovalId to be an explicit nil
+func (o *ApprovalStatusDto) SetApprovalIdNil() {
+	o.ApprovalId.Set(nil)
+}
+
+// UnsetApprovalId ensures that no value is present for ApprovalId, not even an explicit nil
+func (o *ApprovalStatusDto) UnsetApprovalId() {
+	o.ApprovalId.Unset()
 }
 
 // GetForwarded returns the Forwarded field value if set, zero value otherwise.
@@ -389,6 +433,9 @@ func (o ApprovalStatusDto) MarshalJSON() ([]byte, error) {
 
 func (o ApprovalStatusDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if o.ApprovalId.IsSet() {
+		toSerialize["approvalId"] = o.ApprovalId.Get()
+	}
 	if !IsNil(o.Forwarded) {
 		toSerialize["forwarded"] = o.Forwarded
 	}
@@ -438,6 +485,7 @@ func (o *ApprovalStatusDto) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "approvalId")
 		delete(additionalProperties, "forwarded")
 		delete(additionalProperties, "originalOwner")
 		delete(additionalProperties, "currentOwner")
