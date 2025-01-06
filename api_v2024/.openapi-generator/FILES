@@ -293,6 +293,7 @@ docs/BucketAggregation.md
 docs/BucketType.md
 docs/BulkAddTaggedObject.md
 docs/BulkApproveAccessRequest.md
+docs/BulkCancelAccessRequest.md
 docs/BulkIdentitiesAccountsResponse.md
 docs/BulkRemoveTaggedObject.md
 docs/BulkTaggedObjectResponse.md
@@ -1386,6 +1387,7 @@ model_bucket_aggregation.go
 model_bucket_type.go
 model_bulk_add_tagged_object.go
 model_bulk_approve_access_request.go
+model_bulk_cancel_access_request.go
 model_bulk_identities_accounts_response.go
 model_bulk_remove_tagged_object.go
 model_bulk_tagged_object_response.go

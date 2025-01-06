@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ApproveBulkAccessRequest**](AccessRequestsAPI.md#ApproveBulkAccessRequest) | **Post** /access-request-approvals/bulk-approve | Bulk Approve Access Request
 [**CancelAccessRequest**](AccessRequestsAPI.md#CancelAccessRequest) | **Post** /access-requests/cancel | Cancel Access Request
+[**CancelAccessRequestInBulk**](AccessRequestsAPI.md#CancelAccessRequestInBulk) | **Post** /access-requests/bulk-cancel | Bulk Cancel Access Request
 [**CloseAccessRequest**](AccessRequestsAPI.md#CloseAccessRequest) | **Post** /access-requests/close | Close Access Request
 [**CreateAccessRequest**](AccessRequestsAPI.md#CreateAccessRequest) | **Post** /access-requests | Submit Access Request
 [**GetAccessRequestConfig**](AccessRequestsAPI.md#GetAccessRequestConfig) | **Get** /access-request-config | Get Access Request Configuration
@@ -127,6 +128,72 @@ Other parameters are passed through a pointer to a apiCancelAccessRequestRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cancelAccessRequest** | [**CancelAccessRequest**](CancelAccessRequest.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CancelAccessRequestInBulk
+
+> map[string]interface{} CancelAccessRequestInBulk(ctx).BulkCancelAccessRequest(bulkCancelAccessRequest).Execute()
+
+Bulk Cancel Access Request
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+	bulkCancelAccessRequest := *openapiclient.NewBulkCancelAccessRequest([]string{"AccessRequestIds_example"}, "I requested this role by mistake.") // BulkCancelAccessRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AccessRequestsAPI.CancelAccessRequestInBulk(context.Background()).BulkCancelAccessRequest(bulkCancelAccessRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.CancelAccessRequestInBulk``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CancelAccessRequestInBulk`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.CancelAccessRequestInBulk`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCancelAccessRequestInBulkRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **bulkCancelAccessRequest** | [**BulkCancelAccessRequest**](BulkCancelAccessRequest.md) |  | 
 
 ### Return type
 

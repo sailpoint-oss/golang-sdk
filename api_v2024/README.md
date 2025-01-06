@@ -101,6 +101,7 @@ Class | Method | HTTP request | Description
 *AccessRequestIdentityMetricsAPI* | [**GetAccessRequestIdentityMetrics**](docs/AccessRequestIdentityMetricsAPI.md#getaccessrequestidentitymetrics) | **Get** /access-request-identity-metrics/{identityId}/requested-objects/{requestedObjectId}/type/{type} | Return access request identity metrics
 *AccessRequestsAPI* | [**ApproveBulkAccessRequest**](docs/AccessRequestsAPI.md#approvebulkaccessrequest) | **Post** /access-request-approvals/bulk-approve | Bulk Approve Access Request
 *AccessRequestsAPI* | [**CancelAccessRequest**](docs/AccessRequestsAPI.md#cancelaccessrequest) | **Post** /access-requests/cancel | Cancel Access Request
+*AccessRequestsAPI* | [**CancelAccessRequestInBulk**](docs/AccessRequestsAPI.md#cancelaccessrequestinbulk) | **Post** /access-requests/bulk-cancel | Bulk Cancel Access Request
 *AccessRequestsAPI* | [**CloseAccessRequest**](docs/AccessRequestsAPI.md#closeaccessrequest) | **Post** /access-requests/close | Close Access Request
 *AccessRequestsAPI* | [**CreateAccessRequest**](docs/AccessRequestsAPI.md#createaccessrequest) | **Post** /access-requests | Submit Access Request
 *AccessRequestsAPI* | [**GetAccessRequestConfig**](docs/AccessRequestsAPI.md#getaccessrequestconfig) | **Get** /access-request-config | Get Access Request Configuration
@@ -908,6 +909,7 @@ Class | Method | HTTP request | Description
  - [BucketType](docs/BucketType.md)
  - [BulkAddTaggedObject](docs/BulkAddTaggedObject.md)
  - [BulkApproveAccessRequest](docs/BulkApproveAccessRequest.md)
+ - [BulkCancelAccessRequest](docs/BulkCancelAccessRequest.md)
  - [BulkIdentitiesAccountsResponse](docs/BulkIdentitiesAccountsResponse.md)
  - [BulkRemoveTaggedObject](docs/BulkRemoveTaggedObject.md)
  - [BulkTaggedObjectResponse](docs/BulkTaggedObjectResponse.md)
