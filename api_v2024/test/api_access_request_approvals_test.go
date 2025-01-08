@@ -62,6 +62,20 @@ func Test_api_v2024_AccessRequestApprovalsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AccessRequestApprovalsAPIService ListAccessRequestApprovers", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var accessRequestId string
+
+		resp, httpRes, err := apiClient.AccessRequestApprovalsAPI.ListAccessRequestApprovers(context.Background(), accessRequestId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AccessRequestApprovalsAPIService ListCompletedApprovals", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

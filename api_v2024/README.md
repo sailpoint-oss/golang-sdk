@@ -95,6 +95,7 @@ Class | Method | HTTP request | Description
 *AccessRequestApprovalsAPI* | [**ApproveAccessRequest**](docs/AccessRequestApprovalsAPI.md#approveaccessrequest) | **Post** /access-request-approvals/{approvalId}/approve | Approve Access Request Approval
 *AccessRequestApprovalsAPI* | [**ForwardAccessRequest**](docs/AccessRequestApprovalsAPI.md#forwardaccessrequest) | **Post** /access-request-approvals/{approvalId}/forward | Forward Access Request Approval
 *AccessRequestApprovalsAPI* | [**GetAccessRequestApprovalSummary**](docs/AccessRequestApprovalsAPI.md#getaccessrequestapprovalsummary) | **Get** /access-request-approvals/approval-summary | Get Access Requests Approvals Number
+*AccessRequestApprovalsAPI* | [**ListAccessRequestApprovers**](docs/AccessRequestApprovalsAPI.md#listaccessrequestapprovers) | **Get** /access-request-approvals/{accessRequestId}/approvers | Access Request Approvers
 *AccessRequestApprovalsAPI* | [**ListCompletedApprovals**](docs/AccessRequestApprovalsAPI.md#listcompletedapprovals) | **Get** /access-request-approvals/completed | Completed Access Request Approvals List
 *AccessRequestApprovalsAPI* | [**ListPendingApprovals**](docs/AccessRequestApprovalsAPI.md#listpendingapprovals) | **Get** /access-request-approvals/pending | Pending Access Request Approvals List
 *AccessRequestApprovalsAPI* | [**RejectAccessRequest**](docs/AccessRequestApprovalsAPI.md#rejectaccessrequest) | **Post** /access-request-approvals/{approvalId}/reject | Reject Access Request Approval
@@ -757,6 +758,7 @@ Class | Method | HTTP request | Description
  - [AccessProfileUsageUsedByInner](docs/AccessProfileUsageUsedByInner.md)
  - [AccessRecommendationMessage](docs/AccessRecommendationMessage.md)
  - [AccessRequest](docs/AccessRequest.md)
+ - [AccessRequestApproversListResponse](docs/AccessRequestApproversListResponse.md)
  - [AccessRequestConfig](docs/AccessRequestConfig.md)
  - [AccessRequestContext](docs/AccessRequestContext.md)
  - [AccessRequestDynamicApprover](docs/AccessRequestDynamicApprover.md)

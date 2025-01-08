@@ -129,6 +129,7 @@ docs/AccessProfilesAPI.md
 docs/AccessRecommendationMessage.md
 docs/AccessRequest.md
 docs/AccessRequestApprovalsAPI.md
+docs/AccessRequestApproversListResponse.md
 docs/AccessRequestConfig.md
 docs/AccessRequestContext.md
 docs/AccessRequestDynamicApprover.md
@@ -1235,6 +1236,7 @@ model_access_profile_usage.go
 model_access_profile_usage_used_by_inner.go
 model_access_recommendation_message.go
 model_access_request.go
+model_access_request_approvers_list_response.go
 model_access_request_config.go
 model_access_request_context.go
 model_access_request_dynamic_approver.go
