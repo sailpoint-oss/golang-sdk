@@ -13022,7 +13022,10 @@ paths:
       - Entitlements
   /entitlements/reset/sources/{id}:
     post:
-      description: Removes all entitlements on a specific source.
+      description: "Remove all entitlements from a specific source.\nTo reload the\
+        \ accounts along with the entitlements you removed, you must run an unoptimized\
+        \ aggregation.  To do so, use [Import Accounts](https://developer.sailpoint.com/docs/api/beta/import-accounts/)\
+        \ with `disableOptimization` = `true`. "
       operationId: resetSourceEntitlements
       parameters:
       - description: ID of source for the entitlement reset
