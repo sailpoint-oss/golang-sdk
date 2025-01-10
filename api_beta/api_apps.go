@@ -698,12 +698,19 @@ type ApiListAccessProfilesForSourceAppRequest struct {
 	ApiService *AppsAPIService
 	id string
 	limit *int32
+	offset *int32
 	filters *string
 }
 
 // Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 func (r ApiListAccessProfilesForSourceAppRequest) Limit(limit int32) ApiListAccessProfilesForSourceAppRequest {
 	r.limit = &limit
+	return r
+}
+
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiListAccessProfilesForSourceAppRequest) Offset(offset int32) ApiListAccessProfilesForSourceAppRequest {
+	r.offset = &offset
 	return r
 }
 
@@ -761,6 +768,12 @@ func (a *AppsAPIService) ListAccessProfilesForSourceAppExecute(r ApiListAccessPr
 	} else {
 		var defaultValue int32 = 250
 		r.limit = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
@@ -878,6 +891,7 @@ type ApiListAllSourceAppRequest struct {
 	ApiService *AppsAPIService
 	limit *int32
 	count *bool
+	offset *int32
 	sorters *string
 	filters *string
 }
@@ -891,6 +905,12 @@ func (r ApiListAllSourceAppRequest) Limit(limit int32) ApiListAllSourceAppReques
 // If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 func (r ApiListAllSourceAppRequest) Count(count bool) ApiListAllSourceAppRequest {
 	r.count = &count
+	return r
+}
+
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiListAllSourceAppRequest) Offset(offset int32) ApiListAllSourceAppRequest {
+	r.offset = &offset
 	return r
 }
 
@@ -959,6 +979,12 @@ func (a *AppsAPIService) ListAllSourceAppExecute(r ApiListAllSourceAppRequest) (
 	} else {
 		var defaultValue bool = false
 		r.count = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.sorters != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "form", "")
@@ -1080,6 +1106,7 @@ type ApiListAllUserAppsRequest struct {
 	filters *string
 	limit *int32
 	count *bool
+	offset *int32
 }
 
 // Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **ownerId**: *eq*  **ownerName**: *eq, sw*  **ownerAlias**: *eq, sw*  **accountId**: *eq*  **sourceAppId**: *eq*
@@ -1097,6 +1124,12 @@ func (r ApiListAllUserAppsRequest) Limit(limit int32) ApiListAllUserAppsRequest 
 // If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 func (r ApiListAllUserAppsRequest) Count(count bool) ApiListAllUserAppsRequest {
 	r.count = &count
+	return r
+}
+
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiListAllUserAppsRequest) Offset(offset int32) ApiListAllUserAppsRequest {
+	r.offset = &offset
 	return r
 }
 
@@ -1155,6 +1188,12 @@ func (a *AppsAPIService) ListAllUserAppsExecute(r ApiListAllUserAppsRequest) ([]
 	} else {
 		var defaultValue bool = false
 		r.count = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
 	// to determine the Content-Type header
@@ -1270,6 +1309,7 @@ type ApiListAssignedSourceAppRequest struct {
 	ApiService *AppsAPIService
 	limit *int32
 	count *bool
+	offset *int32
 	sorters *string
 	filters *string
 }
@@ -1283,6 +1323,12 @@ func (r ApiListAssignedSourceAppRequest) Limit(limit int32) ApiListAssignedSourc
 // If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 func (r ApiListAssignedSourceAppRequest) Count(count bool) ApiListAssignedSourceAppRequest {
 	r.count = &count
+	return r
+}
+
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiListAssignedSourceAppRequest) Offset(offset int32) ApiListAssignedSourceAppRequest {
+	r.offset = &offset
 	return r
 }
 
@@ -1349,6 +1395,12 @@ func (a *AppsAPIService) ListAssignedSourceAppExecute(r ApiListAssignedSourceApp
 	} else {
 		var defaultValue bool = false
 		r.count = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.sorters != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "form", "")
@@ -1470,6 +1522,7 @@ type ApiListAvailableAccountsForUserAppRequest struct {
 	id string
 	limit *int32
 	count *bool
+	offset *int32
 }
 
 // Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1481,6 +1534,12 @@ func (r ApiListAvailableAccountsForUserAppRequest) Limit(limit int32) ApiListAva
 // If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 func (r ApiListAvailableAccountsForUserAppRequest) Count(count bool) ApiListAvailableAccountsForUserAppRequest {
 	r.count = &count
+	return r
+}
+
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiListAvailableAccountsForUserAppRequest) Offset(offset int32) ApiListAvailableAccountsForUserAppRequest {
+	r.offset = &offset
 	return r
 }
 
@@ -1538,6 +1597,12 @@ func (a *AppsAPIService) ListAvailableAccountsForUserAppExecute(r ApiListAvailab
 	} else {
 		var defaultValue bool = false
 		r.count = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1652,6 +1717,7 @@ type ApiListAvailableSourceAppsRequest struct {
 	ApiService *AppsAPIService
 	limit *int32
 	count *bool
+	offset *int32
 	sorters *string
 	filters *string
 }
@@ -1665,6 +1731,12 @@ func (r ApiListAvailableSourceAppsRequest) Limit(limit int32) ApiListAvailableSo
 // If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 func (r ApiListAvailableSourceAppsRequest) Count(count bool) ApiListAvailableSourceAppsRequest {
 	r.count = &count
+	return r
+}
+
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiListAvailableSourceAppsRequest) Offset(offset int32) ApiListAvailableSourceAppsRequest {
+	r.offset = &offset
 	return r
 }
 
@@ -1731,6 +1803,12 @@ func (a *AppsAPIService) ListAvailableSourceAppsExecute(r ApiListAvailableSource
 	} else {
 		var defaultValue bool = false
 		r.count = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.sorters != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sorters", r.sorters, "form", "")
@@ -1851,6 +1929,7 @@ type ApiListOwnedUserAppsRequest struct {
 	ApiService *AppsAPIService
 	limit *int32
 	count *bool
+	offset *int32
 	filters *string
 }
 
@@ -1863,6 +1942,12 @@ func (r ApiListOwnedUserAppsRequest) Limit(limit int32) ApiListOwnedUserAppsRequ
 // If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 func (r ApiListOwnedUserAppsRequest) Count(count bool) ApiListOwnedUserAppsRequest {
 	r.count = &count
+	return r
+}
+
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiListOwnedUserAppsRequest) Offset(offset int32) ApiListOwnedUserAppsRequest {
+	r.offset = &offset
 	return r
 }
 
@@ -1923,6 +2008,12 @@ func (a *AppsAPIService) ListOwnedUserAppsExecute(r ApiListOwnedUserAppsRequest)
 	} else {
 		var defaultValue bool = false
 		r.count = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
