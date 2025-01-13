@@ -93,7 +93,7 @@ ClientId 		 string
 }
 
 // NewConfiguration returns a new Configuration object
-func NewConfiguration(clientId string, clientSecret string, baseURL string, tokenURL string, token string, experimental bool) *Configuration {
+func NewConfiguration(clientId string, clientSecret string, baseURL string, tokenURL string, token string, userAgent string, experimental bool) *Configuration {
 	cfg := &Configuration{
 ClientId: 		  clientId,
 		ClientSecret:	  clientSecret,
@@ -101,7 +101,7 @@ ClientId: 		  clientId,
 		TokenURL:		  tokenURL,
 		Token:			  token,
 		DefaultHeader:    make(map[string]string),
-		UserAgent:        "OpenAPI-Generator/2.1.17/go",
+		UserAgent:        userAgent,
 		Debug:            false,
 		Experimental:	  experimental,
 		Servers:          ServerConfigurations{
